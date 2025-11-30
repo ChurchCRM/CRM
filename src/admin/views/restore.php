@@ -21,6 +21,11 @@ $maxUploadSize = SystemService::getMaxUploadFileSize();
                     <li><?= gettext('This action cannot be undone. Make sure you have a backup of the current data if needed.') ?></li>
                     <li><?= gettext('If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema.') ?></li>
                 </ul>
+                <div class="mt-3">
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/backup" class="btn btn-outline-primary">
+                        <i class="fa-solid fa-download mr-2"></i><?= gettext('Create a backup first') ?>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -85,21 +90,31 @@ $maxUploadSize = SystemService::getMaxUploadFileSize();
                 <small class="text-muted"><?= gettext('This may take several minutes for large databases. Do not close this page.') ?></small>
             </div>
         </div>
-        <div id="statusComplete" class="d-none">
-            <div class="text-center py-4">
-                <i class="fa-solid fa-check-circle fa-3x text-success mb-3"></i>
-                <p class="mb-2 text-success font-weight-bold"><?= gettext('Database restored successfully!') ?></p>
-                <div id="restoreMessages" class="text-left"></div>
-                <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="btn btn-primary btn-lg mt-3">
-                    <i class="fa-solid fa-sign-in-alt mr-2"></i><?= gettext('Login to Restored Database') ?>
-                </a>
-            </div>
-        </div>
         <div id="statusError" class="d-none">
             <div class="text-center py-4">
                 <i class="fa-solid fa-times-circle fa-3x text-danger mb-3"></i>
                 <p class="mb-2 text-danger font-weight-bold"><?= gettext('Restore failed.') ?></p>
                 <p class="text-muted" id="errorMessage"><?= gettext('Please check the backup file and try again.') ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal Overlay -->
+<div class="modal fade" id="restoreSuccessModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="restoreSuccessModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center py-5">
+                <i class="fa-solid fa-check-circle fa-5x text-success mb-4"></i>
+                <h3 class="text-success mb-3"><?= gettext('Database Restored Successfully!') ?></h3>
+                <div id="restoreModalMessages" class="text-left mb-3"></div>
+                <p class="text-muted mb-2"><?= gettext('You will be logged out and redirected to the login page.') ?></p>
+                <div class="mt-4">
+                    <div class="spinner-border spinner-border-sm text-primary mr-2" role="status">
+                        <span class="sr-only"><?= gettext('Loading...') ?></span>
+                    </div>
+                    <span id="redirectCountdown"><?= gettext('Redirecting in') ?> <strong>5</strong> <?= gettext('seconds...') ?></span>
+                </div>
             </div>
         </div>
     </div>

@@ -136,9 +136,9 @@ function handleRestoreSubmit($form) {
         dataType: 'json'
     })
     .done(function(data) {
-        // Show any messages from the restore process
+        // Show any messages from the restore process in the modal
         if (data.Messages && data.Messages.length > 0) {
-            var $messages = $('#restoreMessages');
+            var $messages = $('#restoreModalMessages');
             $messages.empty();
             $.each(data.Messages, function(index, value) {
                 $('<div>')
@@ -148,7 +148,29 @@ function handleRestoreSubmit($form) {
             });
         }
         
-        setRestoreStatus('complete');
+        // Hide the running status
+        setRestoreStatus('idle');
+        
+        // Show success modal overlay
+        $('#restoreSuccessModal').modal('show');
+        
+        // Log out the user via API
+        $.ajax({
+            url: window.CRM.root + '/session/end',
+            type: 'GET'
+        });
+        
+        // Start countdown and redirect
+        var countdown = 5;
+        var countdownInterval = setInterval(function() {
+            countdown--;
+            $('#redirectCountdown strong').text(countdown);
+            
+            if (countdown <= 0) {
+                clearInterval(countdownInterval);
+                window.location.href = window.CRM.root + '/';
+            }
+        }, 1000);
     })
     .fail(function(xhr, status, error) {
         let errorMessage = i18next.t('Restore failed. Please check the backup file and try again.');
