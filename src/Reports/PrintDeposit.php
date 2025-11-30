@@ -7,6 +7,7 @@ require_once '../Include/Functions.php';
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -42,7 +43,7 @@ if (!$iDepositSlipID) {
 }
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to access denied.
-if (!AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly && $output != 'pdf') {
+if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
     RedirectUtils::securityRedirect('Admin');
 }
 
