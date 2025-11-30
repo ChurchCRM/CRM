@@ -22,11 +22,12 @@ jobs:
             const path = require('path');
             const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
 
-            // Read template files from the repository (bug, question, generic, system-info)
+            // Read template files from the repository (bug, question, generic, system-info, security)
             let bugComment = '';
             let questionComment = '';
             let genericComment = '';
             let systemInfoComment = '';
+            let securityComment = '';
             try {
               bugComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/bug.md'), 'utf8');
             } catch (e) {
@@ -47,22 +48,39 @@ jobs:
             } catch (e) {
               console.log('Could not read system-info.md:', e.message);
             }
+            try {
+              securityComment = fs.readFileSync(path.join(workspace, '.github/issue-comments/security.md'), 'utf8');
+            } catch (e) {
+              console.log('Could not read security.md:', e.message);
+            }
 
             const issue = context.payload.issue || {};
-            const body = (issue.body || '').toLowerCase();
+            const title = (issue.title || '');
+            const body = (issue.body || '');
+            const titleLower = title.toLowerCase();
+            const bodyLower = body.toLowerCase();
+            
+            // Check for CVE mentions in title or body (security vulnerability disclosure)
+            // Match full CVE format (CVE-2025-1234), partial (CVE-), or GitHub Security Advisory (GHSA-xxxx-xxxx-xxxx)
+            const cvePattern = /cve-(\d{4}-\d+)?/i;
+            const ghsaPattern = /ghsa-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}/i;
+            const hasCVE = cvePattern.test(title) || cvePattern.test(body) || ghsaPattern.test(title) || ghsaPattern.test(body);
             
             // Check if system info was collected (in-app reporter includes "Collected Value Title")
-            const hasSystemInfo = body.includes('collected value title');
+            const hasSystemInfo = bodyLower.includes('collected value title');
             
             // Detect issue type from body content patterns
-            const isBug = body.includes('describe the issue');
-            const isQuestion = body.includes('how can we help');
+            const isBug = bodyLower.includes('describe the issue');
+            const isQuestion = bodyLower.includes('how can we help');
             
-            console.log('hasSystemInfo:', hasSystemInfo, 'isBug:', isBug, 'isQuestion:', isQuestion);
+            console.log('hasCVE:', hasCVE, 'hasSystemInfo:', hasSystemInfo, 'isBug:', isBug, 'isQuestion:', isQuestion);
 
-            // Choose template based on priority: system-info > specific type > generic
+            // Choose template based on priority: security (CVE) > system-info > specific type > generic
             let comment = '';
-            if (hasSystemInfo && systemInfoComment) {
+            if (hasCVE && securityComment) {
+              console.log('Posting security comment - CVE detected');
+              comment = securityComment;
+            } else if (hasSystemInfo && systemInfoComment) {
               console.log('Posting system-info comment');
               comment = systemInfoComment;
             } else if (isBug && bugComment) {
@@ -83,6 +101,32 @@ jobs:
                 repo: context.repo.repo,
                 body: comment
               });
+              
+              // If CVE detected, delete the issue to prevent public disclosure
+              if (hasCVE) {
+                console.log('Deleting issue due to CVE disclosure');
+                
+                // Add labels to flag for admin deletion
+                await github.rest.issues.addLabels({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  labels: ['security', 'security-delete-required']
+                });
+                
+                // Close the issue
+                await github.rest.issues.update({
+                  issue_number: context.issue.number,
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  state: 'closed',
+                  state_reason: 'not_planned'
+                });
+                // Note: GitHub API doesn't allow issue deletion via REST API
+                // Issues can only be deleted by repository admins via the UI
+                // The issue is closed and labeled for admin to delete manually
+                console.log('Issue closed and labeled - manual deletion required by admin');
+              }
             } else {
               console.log('No comment template available to post.');
             }
