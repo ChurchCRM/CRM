@@ -578,6 +578,16 @@ PR organization:
 - Make code changes directly without documentation overhead
 - Only create documentation when the user specifically asks for it
 
+### Branching Workflow
+- **ALWAYS create a new branch from master** for each issue fix
+- **Branch naming**: `fix/issue-NUMBER-description` or `fix/CVE-YYYY-NNNNN-description`
+- **Workflow**:
+  1. `git checkout master` - start from master
+  2. `git checkout -b fix/issue-NUMBER-description` - create feature branch
+  3. Make changes and stage files
+  4. Commit with descriptive message referencing the issue
+- **One issue per branch** - do not mix fixes for different issues
+
 ### Git Commits
 - **DO NOT commit** until tests pass (if tests exist for the changes)
 - **ALWAYS run tests first** when changes include test files
