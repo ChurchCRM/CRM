@@ -1,0 +1,76 @@
+.list-group-item {
+    border-left: 4px solid #e9ecef;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    border-left-color: #0d6efd;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.list-group-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    color: #212529;
+}
+
+.list-group-item p {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+/* Badge styling for step numbers */
+.list-group-item .badge {
+    min-width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-right: 1.25rem;
+    margin-top: 0.125rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.btn-group .btn {
+    border-radius: 0.25rem;
+}
+
+/* Improve button styling */
+.btn-sm {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.list-group-item .btn {
+    transition: all 0.2s ease;
+}
+
+.list-group-item .btn:hover {
+    transform: translateX(2px);
+}

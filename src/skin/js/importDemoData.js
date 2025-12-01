@@ -222,19 +222,19 @@
               <div class="demo-import-options mb-4">
                 <h4 class="mb-3">${i18next.t("Optional Data to Include")}</h4>
                 <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="includeDemoFinancial">
-                  <label class="form-check-label" for="includeDemoFinancial">
-                    ${i18next.t("Include financial data (donation funds, pledges)")}
+                  <input type="checkbox" class="form-check-input" id="includeDemoFinancial" disabled>
+                  <label class="form-check-label text-muted" for="includeDemoFinancial">
+                    ${i18next.t("Include financial data (donation funds, pledges)")} <span class="text-muted small">(${i18next.t("Coming soon")})</span>
                   </label>
                 </div>
                 <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="includeDemoEvents">
-                  <label class="form-check-label" for="includeDemoEvents">
-                    ${i18next.t("Include events and calendars")}
+                  <input type="checkbox" class="form-check-input" id="includeDemoEvents" disabled>
+                  <label class="form-check-label text-muted" for="includeDemoEvents">
+                    ${i18next.t("Include events and calendars")} <span class="text-muted small">(${i18next.t("Coming soon")})</span>
                   </label>
                 </div>
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="includeDemoSundaySchool">
+                  <input type="checkbox" class="form-check-input" id="includeDemoSundaySchool" checked>
                   <label class="form-check-label" for="includeDemoSundaySchool">
                     ${i18next.t("Include Sunday School classes and enrollments")}
                   </label>

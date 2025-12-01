@@ -20,9 +20,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-app bg-danger">
                         <i class="fa fa-trash fa-3x"></i><br><?= gettext('Orphaned Files') ?>
                     </a>
-                    <button type="button" class="btn btn-app bg-success" id="importDemoDataQuickBtn">
-                        <i class="fa fa-users fa-3x"></i><br><?= gettext('Import Demo Data') ?>
-                    </button>
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-app bg-primary">
                         <i class="fa fa-cloud-upload-alt fa-3x"></i><br><?= gettext('System Upgrade') ?>
                     </a>
@@ -104,8 +101,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/importDemoData.js"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
 

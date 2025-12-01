@@ -71,6 +71,13 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ->where('Family.DateDeactivated is null')
         ->count();
 
+    // Redirect admin users with no people to the setup dashboard
+    if (AuthenticationManager::getCurrentUser()->isAdmin() && $dashboardCounts['People'] == 1) {
+        return $response
+            ->withStatus(302)
+            ->withHeader('Location', SystemURLs::getRootPath() . '/admin');
+    }
+
     $dashboardCounts['SundaySchool'] = GroupQuery::create()
         ->filterByType(4)
         ->count();
