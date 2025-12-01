@@ -130,18 +130,6 @@ class InputUtils
         return htmlspecialchars(stripslashes($sInput), ENT_QUOTES, 'UTF-8');
     }
 
-    /**
-     * Sanitize special characters - legacy filter
-     * Minimal sanitization, prefer sanitizeText() or escapeHTML() based on use case
-     * 
-     * @param string $sInput Input to filter
-     * @return string Filtered string
-     */
-    public static function filterSanitizeString($sInput): string
-    {
-        return filter_var(trim($sInput), FILTER_SANITIZE_SPECIAL_CHARS);
-    }
-
     public static function filterChar($sInput, $size = 1): string
     {
         return mb_substr(trim($sInput), 0, $size);

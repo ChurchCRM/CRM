@@ -206,11 +206,6 @@ Four core methods for security:
 - ✅ ALWAYS use `escapeAttribute()` for form input values
 - ✅ ALWAYS use `sanitizeHTML()` for rich text editors (Quill)
 
-**Old Method Names (DEPRECATED - DO NOT USE):**
-- `filterString()` → use `sanitizeText()` instead
-- `filterHTML()` → use `sanitizeHTML()` instead
-- `filterSanitizeString()` → use `sanitizeText()` for most cases
-
 ---
 
 ## Code Standards
