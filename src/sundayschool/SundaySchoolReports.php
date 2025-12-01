@@ -179,7 +179,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
             // Create the group select drop-down
             echo '<select id="GroupID" name="GroupID[]" multiple size="8" onChange="UpdateRoles();"><option value="0">' . gettext('None') . '</option>';
             foreach ($groups as $group) {
-                echo '<option value="' . $group->getID() . '">' . htmlspecialchars($group->getName(), ENT_QUOTES, 'UTF-8') . '</option>';
+                echo '<option value="' . $group->getID() . '">' . InputUtils::escapeHTML($group->getName()) . '</option>';
             }
             echo '</select><br>';
             echo gettext('Multiple groups will have a Page Break between Groups<br>');

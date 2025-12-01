@@ -230,9 +230,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iupdateBirthYear = InputUtils::legacyFilterInput($_POST['updateBirthYear'], 'int');
     }
 
-    $sFacebook = InputUtils::filterString($_POST['Facebook']);
-    $sTwitter = InputUtils::filterString($_POST['Twitter']);
-    $sLinkedIn = InputUtils::filterString($_POST['LinkedIn']);
+    $sFacebook = InputUtils::sanitizeText($_POST['Facebook']);
+    $sTwitter = InputUtils::sanitizeText($_POST['Twitter']);
+    $sLinkedIn = InputUtils::sanitizeText($_POST['LinkedIn']);
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
     $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
@@ -640,7 +640,7 @@ require_once 'Include/Header.php';
                     <div class="col-md-3">
                         <label for="Title"><?= gettext('Title') ?>:</label>
                         <input type="text" name="Title" id="Title"
-                               value="<?= htmlentities(stripslashes($sTitle), ENT_NOQUOTES, 'UTF-8') ?>"
+                               value="<?= InputUtils::escapeAttribute(stripslashes($sTitle)) ?>"
                                class="form-control" placeholder="<?= gettext('Mr., Mrs., Dr., Rev.') ?>">
                     </div>
                 </div>
@@ -649,7 +649,7 @@ require_once 'Include/Header.php';
                     <div class="col-md-4">
                         <label for="FirstName"><?= gettext('First Name') ?>:</label>
                         <input type="text" name="FirstName" id="FirstName"
-                               value="<?= htmlentities(stripslashes($sFirstName), ENT_NOQUOTES, 'UTF-8') ?>"
+                               value="<?= InputUtils::escapeAttribute(stripslashes($sFirstName)) ?>"
                                class="form-control">
                         <?php if ($sFirstNameError) {
                             ?><br><span class="text-danger"><?php echo $sFirstNameError ?></span><?php
@@ -659,7 +659,7 @@ require_once 'Include/Header.php';
                     <div class="col-md-2">
                         <label for="MiddleName"><?= gettext('Middle Name') ?>:</label>
                         <input type="text" name="MiddleName" id="MiddleName"
-                               value="<?= htmlentities(stripslashes($sMiddleName), ENT_NOQUOTES, 'UTF-8') ?>"
+                               value="<?= InputUtils::escapeAttribute(stripslashes($sMiddleName)) ?>"
                                class="form-control">
                         <?php if ($sMiddleNameError) {
                             ?><br><span class="text-danger"><?php echo $sMiddleNameError ?></span><?php
@@ -669,7 +669,7 @@ require_once 'Include/Header.php';
                     <div class="col-md-4">
                         <label for="LastName"><?= gettext('Last Name') ?>:</label>
                         <input type="text" name="LastName" id="LastName"
-                               value="<?= htmlentities(stripslashes($sLastName), ENT_NOQUOTES, 'UTF-8') ?>"
+                               value="<?= InputUtils::escapeAttribute(stripslashes($sLastName)) ?>"
                                class="form-control">
                         <?php if ($sLastNameError) {
                             ?><br><span class="text-danger"><?php echo $sLastNameError ?></span><?php
@@ -679,7 +679,7 @@ require_once 'Include/Header.php';
                     <div class="col-md-1">
                         <label for="Suffix"><?= gettext('Suffix') ?>:</label>
                         <input type="text" name="Suffix" id="Suffix"
-                               value="<?= htmlentities(stripslashes($sSuffix), ENT_NOQUOTES, 'UTF-8') ?>"
+                               value="<?= InputUtils::escapeAttribute(stripslashes($sSuffix)) ?>"
                                placeholder="<?= gettext('Jr., Sr., III') ?>" class="form-control">
                     </div>
                 </div>
@@ -836,7 +836,7 @@ require_once 'Include/Header.php';
                                 } ?>
                             </label>
                             <input type="text" name="Address1"
-                                   value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"
+                                   value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>"
                                    size="30" maxlength="50" class="form-control">
                         </div>
                         <div class="col-md-3">
@@ -852,7 +852,7 @@ require_once 'Include/Header.php';
                                 } ?>
                             </label>
                             <input type="text" name="Address2"
-                                   value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>"
+                                   value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>"
                                    size="30" maxlength="50" class="form-control">
                         </div>
                         <div class="col-md-3">
@@ -868,7 +868,7 @@ require_once 'Include/Header.php';
                                 } ?>
                             </label>
                             <input type="text" name="City"
-                                   value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>"
+                                   value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>"
                                    class="form-control">
                         </div>
                     </div>
@@ -893,7 +893,7 @@ require_once 'Include/Header.php';
                         <label><?= gettext('None State') ?>:</label>
                         <input type="text" name="StateTextbox"
                                value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
-                                    echo htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8');
+                                    echo InputUtils::escapeAttribute(stripslashes($sState));
                                       } ?>"
                                size="20" maxlength="30" class="form-control">
                     </div>
@@ -916,7 +916,7 @@ require_once 'Include/Header.php';
                                 echo 'style="text-transform:uppercase" ';
                             }
 
-                            echo 'value="' . htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8') . '" '; ?>
+                            echo 'value="' . InputUtils::escapeAttribute(stripslashes($sZip)) . '" '; ?>
                                maxlength="10" size="8">
                     </div>
                     <div class="form-group col-md-2">
@@ -938,19 +938,19 @@ require_once 'Include/Header.php';
                 <?php
             } else { // put the current values in hidden controls so they are not lost if hiding the person-specific info?>
                 <input type="hidden" name="Address1"
-                       value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>"></input>
+                       value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>"></input>
                 <input type="hidden" name="Address2"
-                       value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>"></input>
+                       value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>"></input>
                 <input type="hidden" name="City"
-                       value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>"></input>
+                       value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>"></input>
                 <input type="hidden" name="State"
                        value="<?= htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="StateTextbox"
                        value="<?= htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8') ?>"></input>
                 <input type="hidden" name="Zip"
-                       value="<?= htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8') ?>"></input>
+                       value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>"></input>
                 <input type="hidden" name="Country"
-                       value="<?= htmlentities(stripslashes($sCountry), ENT_NOQUOTES, 'UTF-8') ?>"></input>
+                       value="<?= InputUtils::escapeAttribute(stripslashes($sCountry)) ?>"></input>
                 <?php
             } ?>
             <div class="row">
@@ -969,7 +969,7 @@ require_once 'Include/Header.php';
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="HomePhone"
-                               value="<?= htmlentities(stripslashes($sHomePhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>" size="30"
                                maxlength="30" class="form-control"
                                data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
                         <br><input type="checkbox" name="NoFormat_HomePhone"
@@ -993,7 +993,7 @@ require_once 'Include/Header.php';
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="WorkPhone"
-                               value="<?= htmlentities(stripslashes($sWorkPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>" size="30"
                                maxlength="30" class="form-control"
                                data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"'
                                data-mask />
@@ -1019,7 +1019,7 @@ require_once 'Include/Header.php';
                             <i class="fa-solid fa-phone"></i>
                         </div>
                         <input type="text" name="CellPhone"
-                               value="<?= htmlentities(stripslashes($sCellPhone), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>" size="30"
                                maxlength="30" class="form-control"
                                data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
                         <br><input type="checkbox" name="NoFormat_CellPhone"
@@ -1046,7 +1046,7 @@ require_once 'Include/Header.php';
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <input type="text" name="Email" id="Email"
-                               value="<?= htmlentities(stripslashes($sEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               value="<?= InputUtils::escapeAttribute(stripslashes($sEmail)) ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sEmailError) {
                             ?><span class="text-danger"><?php echo $sEmailError ?></span><?php
@@ -1060,7 +1060,7 @@ require_once 'Include/Header.php';
                             <i class="fa-solid fa-envelope"></i>
                         </div>
                         <input type="text" name="WorkEmail"
-                               value="<?= htmlentities(stripslashes($sWorkEmail), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               value="<?= InputUtils::escapeAttribute($sWorkEmail) ?>" size="30"
                                maxlength="100" class="form-control">
                         <?php if ($sWorkEmailError) {
                             ?><span class="text-danger"><?php echo $sWorkEmailError ?></span></td><?php
@@ -1084,7 +1084,7 @@ require_once 'Include/Header.php';
                             <i class="fa-brands fa-facebook"></i>
                         </div>
                         <input type="text" name="Facebook"
-                               value="<?= htmlentities(stripslashes($sFacebook), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               value="<?= InputUtils::escapeAttribute($sFacebook) ?>" size="30"
                                maxlength="50" class="form-control">
                         <?php if ($sFacebookError) {
                             ?><span class="text-danger"><?php echo $sFacebookError ?></span><?php
@@ -1098,7 +1098,7 @@ require_once 'Include/Header.php';
                             <i class="fa-brands fa-x-twitter"></i>
                         </div>
                         <input type="text" name="Twitter"
-                               value="<?= htmlentities(stripslashes($sTwitter), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               value="<?= InputUtils::escapeAttribute($sTwitter) ?>" size="30"
                                maxlength="50" class="form-control">
                         <?php if ($sTwitterError) {
                             ?><span class="text-danger"><?php echo $sTwitterError ?></span></td><?php
@@ -1112,7 +1112,7 @@ require_once 'Include/Header.php';
                             <i class="fa-brands fa-linkedin"></i>
                         </div>
                         <input type="text" name="LinkedIn"
-                               value="<?= htmlentities(stripslashes($sLinkedIn), ENT_NOQUOTES, 'UTF-8') ?>" size="30"
+                               value="<?= InputUtils::escapeAttribute($sLinkedIn) ?>" size="30"
                                maxlength="50" class="form-control">
                         <?php if ($sLinkedInError) {
                             ?><span class="text-danger"><?php echo $sLinkedInError ?></span></td><?php

@@ -17,7 +17,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $depositService = $this->get('DepositService');
         $input = $request->getParsedBody();
         $depositType = $input['depositType'] ?? '';
-        $depositComment = InputUtils::filterString($input['depositComment']) ?? '';
+        $depositComment = InputUtils::sanitizeText($input['depositComment']) ?? '';
         $depositDate = $input['depositDate'] ?? date('Y-m-d');
 
         // Validate depositType against allowed values
@@ -63,7 +63,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody();
         $appDeposit = DepositQuery::create()->findOneById($id);
         $appDeposit->setType($input['depositType']);
-        $appDeposit->setComment(htmlspecialchars($input['depositComment'] ?? '', ENT_QUOTES, 'UTF-8'));
+        $appDeposit->setComment(InputUtils::escapeHTML($input['depositComment'] ?? ''));
         $appDeposit->setDate($input['depositDate']);
         $appDeposit->setClosed($input['depositClosed']);
         $appDeposit->save();

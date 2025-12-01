@@ -4,6 +4,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ORMUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -23,14 +24,14 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
 
     foreach ($request->getParsedBody() as $key => $value) {
         if (is_string($value)) {
-            $familyMetadata[$key] = htmlspecialchars(trim(strip_tags($value)), ENT_QUOTES, 'UTF-8');
+            $familyMetadata[$key] = InputUtils::sanitizeAndEscapeText($value);
         } elseif (is_array($value) && $key === 'people') {
             // Sanitize nested people array
             $familyMetadata[$key] = array_map(function ($person) {
                 $sanitized = [];
                 foreach ($person as $pKey => $pValue) {
                     if (is_string($pValue)) {
-                        $sanitized[$pKey] = htmlspecialchars(trim(strip_tags($pValue)), ENT_QUOTES, 'UTF-8');
+                        $sanitized[$pKey] = InputUtils::sanitizeAndEscapeText($pValue);
                     } else {
                         $sanitized[$pKey] = $pValue;
                     }
@@ -122,7 +123,7 @@ function registerPersonAPI(Request $request, Response $response, array $args): R
     $personData = [];
     foreach ($request->getParsedBody() as $key => $value) {
         if (is_string($value)) {
-            $personData[$key] = htmlspecialchars(trim(strip_tags($value)), ENT_QUOTES, 'UTF-8');
+            $personData[$key] = InputUtils::sanitizeAndEscapeText($value);
         } else {
             $personData[$key] = $value;
         }

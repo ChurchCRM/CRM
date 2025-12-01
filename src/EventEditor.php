@@ -326,8 +326,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
-                ->setDesc(InputUtils::filterHTML($sEventDesc))
-                ->setText(InputUtils::filterHTML($sEventText))
+                ->setDesc(InputUtils::sanitizeHTML($sEventDesc))
+                ->setText(InputUtils::sanitizeHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
@@ -354,8 +354,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
-                ->setDesc(InputUtils::filterHTML($sEventDesc))
-                ->setText(InputUtils::filterHTML($sEventText))
+                ->setDesc(InputUtils::sanitizeHTML($sEventDesc))
+                ->setText(InputUtils::sanitizeHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
@@ -405,7 +405,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
 <div class='card'>
     <div class='card-header'>
-        <h3 class="mb-0"><?= ($EventExists === 0) ? gettext('Create a new Event') : gettext('Editing Event') . ': ' . htmlspecialchars($sEventTitle ?: 'ID ' . $iEventID) ?></h3>
+        <h3 class="mb-0"><?= ($EventExists === 0) ? gettext('Create a new Event') : gettext('Editing Event') . ': ' . InputUtils::escapeHTML($sEventTitle ?: 'ID ' . $iEventID) ?></h3>
         <?php if ($iErrors > 0): ?>
             <div class="alert alert-danger mt-2 mb-0"><?= gettext('There were ') . $iErrors . gettext(' errors. Please see below') ?></div>
         <?php endif; ?>
@@ -453,13 +453,13 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     <td colspan="3" class="TextColumn">
                         <input type="hidden" name="EventTypeName" value="<?= ($sTypeName) ?>">
                         <input type="hidden" name="EventTypeID" value="<?= ($iTypeID) ?>">
-                        <span class="badge badge-info font-weight-normal" style="font-size: 1rem;"><?= htmlspecialchars($sTypeName) ?></span>
+                        <span class="badge badge-info font-weight-normal" style="font-size: 1rem;"><?= InputUtils::escapeHTML($sTypeName) ?></span>
                     </td>
                 </tr>
                 <tr>
                     <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Title') ?></td>
                     <td colspan="3" class="TextColumn">
-                        <input type="text" name="EventTitle" value="<?= htmlspecialchars($sEventTitle) ?>" maxlength="100" class="form-control" placeholder="<?= gettext('Enter event title...') ?>" required>
+                        <input type="text" name="EventTitle" value="<?= InputUtils::escapeHTML($sEventTitle) ?>" maxlength="100" class="form-control" placeholder="<?= gettext('Enter event title...') ?>" required>
                     </td>
                 </tr>
                 <tr>
@@ -501,7 +501,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                                                class="form-control attendance-count <?= $isTotal ? 'total-count' : 'addend-count' ?>"
                                                <?= $isTotal ? 'readonly' : '' ?>
                                                min="0"
-                                               data-count-name="<?= htmlspecialchars($countName) ?>">
+                                               data-count-name="<?= InputUtils::escapeHTML($countName) ?>">
                                         <input type="hidden" name="EventCountID[]" value="<?= $aCountID[$c] ?>">
                                         <input type="hidden" name="EventCountName[]" value="<?= $countName ?>">
                                     </div>
@@ -510,7 +510,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                             </div>
                             <div class="form-group mt-3">
                                 <label for="EventCountNotes" class="font-weight-bold"><?= gettext('Attendance Notes') ?></label>
-                                <input type="text" id="EventCountNotes" name="EventCountNotes" value="<?= htmlspecialchars($sCountNotes) ?>" class="form-control" placeholder="<?= gettext('Optional notes about attendance...') ?>">
+                                <input type="text" id="EventCountNotes" name="EventCountNotes" value="<?= InputUtils::escapeHTML($sCountNotes) ?>" class="form-control" placeholder="<?= gettext('Optional notes about attendance...') ?>">
                             </div>
                             <?php
                         } ?>

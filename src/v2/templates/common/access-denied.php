@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -49,7 +50,7 @@ $roleDescription = isset($roleDescriptions[$missingRole])
                 <div class="callout callout-warning text-left">
                     <h5><i class="fa-solid fa-key"></i> <?= gettext('Required Permission') ?></h5>
                     <p class="mb-0">
-                        <strong><?= htmlspecialchars($roleDescription) ?></strong>
+                        <strong><?= InputUtils::escapeHTML($roleDescription) ?></strong>
                     </p>
                 </div>
                 <?php endif; ?>

@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -71,13 +72,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <tr>
                                         <td>
                                             <button class="btn btn-sm btn-primary view-log" 
-                                                    data-file="<?= htmlspecialchars($logFile['name']) ?>"
+                                                    data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>"
                                                     title="<?= gettext('View') ?>">
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
                                             <button class="btn btn-sm btn-danger delete-log" 
-                                                    data-file="<?= htmlspecialchars($logFile['name']) ?>"
-                                                    title="<?= gettext('Delete') ?>">
+                                                    data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>"
+                                                    title="<?= gettext('Delete') ?>">\n
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </td>
