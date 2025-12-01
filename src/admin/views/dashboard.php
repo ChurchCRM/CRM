@@ -8,7 +8,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 // Get system status info
 $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
-$integrityPassed = $integrityStatus === gettext('Passed');
+$integrityPassed = $integrityStatus === 'Passed';
 $orphanedFiles = AppIntegrityService::getOrphanedFiles();
 $hasOrphanedFiles = count($orphanedFiles) > 0;
 ?>
@@ -171,7 +171,7 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
                 </div>
                 <div class="card-body">
                     <p class="small mb-3"><?= gettext('Import sample families, people, and groups to explore ChurchCRM with realistic data.') ?></p>
-                    <button type="button" id="importDemoDataV2" class="btn btn-success w-100">
+                    <button type="button" id="importDemoDataV2" class="btn btn-success btn-lg btn-block">
                         <i class="fa-solid fa-download"></i> <?= gettext('Import Demo Data') ?>
                     </button>
                 </div>
@@ -193,15 +193,15 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
                         <span class="text-muted"><?= gettext('Database:') ?></span>
                         <code><?= VersionUtils::getDBVersion() ?></code>
                     </div>
-                    <div class="btn-group w-100 mb-2" role="group">
-                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/backup" class="btn btn-sm btn-outline-info">
+                    <div class="btn-group d-flex mb-2" role="group">
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/backup" class="btn btn-sm btn-outline-info flex-fill">
                             <i class="fa-solid fa-download"></i> <?= gettext('Backup') ?>
                         </a>
-                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-sm btn-outline-info">
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-sm btn-outline-info flex-fill">
                             <i class="fa-solid fa-arrow-up"></i> <?= gettext('Upgrade') ?>
                         </a>
                     </div>
-                    <a href="https://github.com/ChurchCRM/CRM/wiki" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary w-100">
+                    <a href="https://github.com/ChurchCRM/CRM/wiki" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary btn-block">
                         <i class="fa-solid fa-book"></i> <?= gettext('Documentation') ?>
                     </a>
                 </div>

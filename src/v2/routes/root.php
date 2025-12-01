@@ -72,7 +72,7 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ->count();
 
     // Redirect admin users with no people to the setup dashboard
-    if (AuthenticationManager::getCurrentUser()->isAdmin() && $dashboardCounts['People'] == 1) {
+    if (AuthenticationManager::getCurrentUser()->isAdmin() && $dashboardCounts['People'] === 1) {
         return $response
             ->withStatus(302)
             ->withHeader('Location', SystemURLs::getRootPath() . '/admin');

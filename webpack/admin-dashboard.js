@@ -5,12 +5,9 @@
 import './admin-dashboard.css';
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Initialize tooltips if Bootstrap is available
-    if (typeof bootstrap !== 'undefined') {
-        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-        tooltipTriggerList.map(function (tooltipTriggerEl) {
-            return new bootstrap.Tooltip(tooltipTriggerEl);
-        });
+    // Initialize tooltips if jQuery is available
+    if (typeof jQuery !== 'undefined') {
+        jQuery('[data-toggle="tooltip"]').tooltip();
     }
 
     // Add smooth scroll behavior
