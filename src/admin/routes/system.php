@@ -50,18 +50,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'system-reset.php', $pageArgs);
     });
 
-    $group->get('/maintenance', function (Request $request, Response $response): Response {
-        $renderer = new PhpRenderer(__DIR__ . '/../views/');
-        
-        $pageArgs = [
-            'sRootPath' => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('System Maintenance'),
-            'isFreshInstall' => PersonQuery::create()->count() === 1,
-        ];
-        
-        return $renderer->render($response, 'system-maintenance.php', $pageArgs);
-    });
-
     // System Logs page (moved from v2/admin/logs)
     $group->get('/logs', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
