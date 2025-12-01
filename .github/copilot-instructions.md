@@ -235,6 +235,22 @@ class MyService {
 MakeFYString($id);  // PHP Error: undefined function
 ```
 
+### File Inclusion (require vs include)
+```php
+// CORRECT - Use require for critical layout files
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+
+// WRONG - include allows missing critical files
+include SystemURLs::getDocumentRoot() . '/Include/Header.php';  // Silent failure
+```
+
+**Guidelines:**
+- **Use `require`** for critical files: Header.php, Footer.php, core utilities
+- **Use `include`** for optional content: plugins, supplementary files that gracefully degrade
+- **Why**: `require` fails loudly (fatal error), `include` fails silently (warning)
+- **Admin views** (`src/admin/views/*.php`): ALL must use `require` for Header/Footer
+
 ### Slim 4 Routes
 ```php
 // CORRECT - Inline closure
@@ -562,6 +578,7 @@ Before committing code changes, verify:
 - [ ] Asset paths use SystemURLs::getRootPath()
 - [ ] Service classes used for business logic
 - [ ] Type casting applied to dynamic values (`(int)`, `(string)`, etc.)
+- [ ] Critical files use `require` not `include` (Header.php, Footer.php)
 - [ ] Deprecated HTML attributes replaced with CSS
 - [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
