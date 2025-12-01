@@ -21,18 +21,20 @@ Key conventions (must follow)
 
 Routing & middleware
 - Put API routes in `src/api/routes/` and legacy pages in `src/*.php`.
-- **Admin pages**: Create standalone PHP files in `src/` (e.g., `SystemMaintenance.php`, `SystemSettings.php`) following the legacy pattern:
-  - Use `require_once 'Include/Config.php'` and `'Include/Functions.php'`
-  - Use `AuthenticationManager::redirectHomeIfNotAdmin()` for security
-  - Set `$sPageTitle` then `require_once 'Include/Header.php'`
+- **Admin System Pages** (consolidated at `/admin/system/`):
+  - Routes in `src/admin/routes/system.php`
+  - Views in `src/admin/views/` with PhpRenderer
+  - Examples: `/admin/system/debug`, `/admin/system/menus`, `/admin/system/backup`
   - Add menu entries in `src/ChurchCRM/Config/Menu/Menu.php`
-  - Do NOT create new pages under `/v2/admin/` - use legacy `src/*.php` pattern
-- **Admin APIs**: Place in `src/admin/routes/api/` (NEW location)
-  - Example: `orphaned-files.php` contains `/api/orphaned-files/delete-all` endpoint
+  - Use AdminRoleAuthMiddleware for security
+- **Admin APIs**: Place in `src/admin/routes/api/` (NOT in `src/api/routes/system/`)
+  - Example: `orphaned-files.php` contains `/admin/api/orphaned-files/delete-all` endpoint
   - Routes are prefixed with `/admin/api/` when accessed from frontend
   - Use kebab-case for endpoint names (e.g., `/delete-all`)
   - AdminRoleAuthMiddleware is applied at the router level
-- **Legacy Admin APIs** (deprecated): `src/api/routes/system/` - do NOT add new files here
+- **Deprecated locations** (DO NOT USE):
+  - `src/v2/routes/admin/` - REMOVED (admin routes consolidated to `/admin/system/`)
+  - `src/api/routes/system/` - Legacy admin APIs (no new files here)
 - Middleware order (CRITICAL - Slim 4 uses LIFO):
     1. addBodyParsingMiddleware()
     2. addRoutingMiddleware()
@@ -284,13 +286,6 @@ $app->add(new Cache('public', 3600));
 Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes or Bootstrap 5 classes:
 
 ```php
-## HTML & CSS
-
-**Bootstrap Version: 4.6.2** - NEVER use Bootstrap 5 classes!
-
-Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes or Bootstrap 5 classes:
-
-```php
 // CORRECT - Bootstrap 4.6.2 classes
 <div class="text-center align-top">Content</div>
 <button class="btn btn-primary btn-block">Full Width Button</button>
@@ -318,24 +313,6 @@ Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes or Boot
 - `rounded-*` beyond Bootstrap 4 values
 - `justify-content-*` with `gap-*` (gap is Bootstrap 5 only)
 - `flex-wrap` with `gap-*` (use proper spacing classes instead)
-
-// WRONG - Bootstrap 5 classes (DO NOT USE!)
-<button class="btn btn-primary w-100">Button</button>  // Use btn-block instead
-<div class="d-flex flex-wrap gap-2">Content</div>      // gap- is Bootstrap 5 only
-<div class="d-grid gap-3">Content</div>               // d-grid is Bootstrap 5 only
-
-// WRONG - Deprecated HTML attributes  
-<div align="center" valign="top">Content</div>
-<button style="margin-top: 12px;">Click</button>
-```
-
-**Bootstrap 5 Classes to AVOID:**
-- `w-100` on buttons (use `btn-block`)
-- `gap-*` utilities (use margins/padding instead)
-- `d-grid` (use `d-flex` or Bootstrap 4 grid)
-- `text-decoration-*` (use existing classes)
-- `fw-*` and `fs-*` font utilities
-- `rounded-*` beyond Bootstrap 4 values
 
 ---
 
@@ -520,13 +497,16 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 
 ## Commit & PR Standards
 
-Commit messages:
-- Format: Imperative mood, < 72 chars, no file paths
+**Commit Message Format:**
+- Imperative mood, < 72 chars for subject line
 - Examples: "Fix validation in Checkin form", "Replace deprecated HTML attributes with Bootstrap CSS", "Add missing element ID for test selector"
-- Wrong: "Fixed the bug in src/EventEditor.php"
+- Wrong: "Fixed the bug in src/EventEditor.php" (not imperative, includes file paths)
+- Include issue number when applicable: "Fix issue #7698: Replace Bootstrap 5 classes with BS4"
 
-PR organization:
-- Split large changes into logical feature branches
+**PR Organization:**
+- Create feature branches: `fix/issue-NUMBER-description` or `feature/description`
+- One issue per branch - do not mix fixes for different issues
+- Keep commits small and focused
 - Each PR addresses one specific bug or feature
 - Related but separate concerns get separate branches
 - Test each branch independently before creating PR
@@ -535,19 +515,21 @@ PR organization:
 
 ## Pre-commit Checklist
 
-- PHP syntax validation passed (npm run build:php)
-- Propel ORM used for all database operations (no raw SQL)
-- Asset paths use SystemURLs::getRootPath()
-- Service classes used for business logic
-- Type casting applied to dynamic values
-- Deprecated HTML attributes replaced with CSS
-- Bootstrap CSS classes applied correctly
-- All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
-- No alert() calls - use window.CRM.notify() instead
-- Tests pass (if available)
-- Commit message follows imperative mood (< 72 chars)
-- Branch name follows kebab-case format
-- Logs cleared before testing: rm -f src/logs/$(date +%Y-%m-%d)-*.log
+Before committing code changes, verify:
+
+- [ ] PHP syntax validation passed (npm run build:php)
+- [ ] Propel ORM used for all database operations (no raw SQL)
+- [ ] Asset paths use SystemURLs::getRootPath()
+- [ ] Service classes used for business logic
+- [ ] Type casting applied to dynamic values (`(int)`, `(string)`, etc.)
+- [ ] Deprecated HTML attributes replaced with CSS
+- [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
+- [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
+- [ ] No alert() calls - use window.CRM.notify() instead
+- [ ] Tests pass (if available) - run relevant tests before committing
+- [ ] Commit message follows imperative mood (< 72 chars, no file paths)
+- [ ] Branch name follows kebab-case format
+- [ ] Logs cleared before testing: rm -f src/logs/$(date +%Y-%m-%d)-*.log
 
 ---
 
@@ -589,18 +571,19 @@ PR organization:
 - **One issue per branch** - do not mix fixes for different issues
 
 ### Git Commits
-- **DO NOT commit** until tests pass (if tests exist for the changes)
-- **ALWAYS run tests first** when changes include test files
 - **DO NOT auto-commit** changes without explicit user request
-- **DO NOT run git commit** commands unless the user asks
-- **DO ask permission** before creating commits with test results: "Tests passed. Ready to commit? [describe changes]"
-- Leave commits for the user to handle via their own workflow
+- **DO NOT run git commit** commands unless the user explicitly asks
+- **DO ask permission** before committing when work is complete: "Tests passed. Ready to commit? [describe changes]"
+- **IF user asks to commit**: Use descriptive, imperative mood commit messages referencing the issue
+- Tests should pass before committing (if tests exist for the changes)
+- Keep commits small and focused
 
 ### Code Changes
-- Make all requested changes directly to files
-- Use exact tool calls (replace_string_in_file, create_file, etc.)
+- Make all requested changes directly to files using appropriate tools
+- Use exact tool calls (`replace_string_in_file`, `create_file`, etc.) for precision
 - Keep explanations brief and focused on what was changed
-- Verify changes were applied correctly but don't over-communicate
+- Don't ask for permission—implement code changes based on the user's intent
+- If intent is unclear, infer the most useful approach and clarify with the user
 
 ---
 
@@ -663,80 +646,6 @@ This ensures security vulnerabilities are not publicly disclosed and directs rep
 - Security policy: `SECURITY.md` in repository root
 - Private disclosure: https://github.com/ChurchCRM/CRM/security/advisories
 - Issue comment templates: `.github/issue-comments/security.md`
-
----
-
-## V2 Upgrade Wizard Architecture
-
-ChurchCRM implements a modern upgrade system at `/v2/admin/upgrade` with bs-stepper wizard.
-
-### Route Structure (src/v2/routes/admin/admin.php)
-```php
-$group->get('/upgrade', function ($request, $response, $args) {
-    // Prepare data for template
-    $allowPrereleaseUpgrade = SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade');
-    $isUpdateAvailable = isset($_SESSION['systemUpdateAvailable']) && $_SESSION['systemUpdateAvailable'];
-    
-    // Check integrity and tasks
-    $integrityStatus = $container->get('AppIntegrityService')->getIntegrityCheckStatus();
-    $tasks = $container->get('TaskService')->getActivePreUpgradeTasks();
-    
-    // Render with PhpRenderer
-    return $this->get('renderer')->render($response, 'admin/upgrade.php', [
-        'allowPrereleaseUpgrade' => $allowPrereleaseUpgrade,
-        'isUpdateAvailable' => $isUpdateAvailable,
-        'integrityCheckData' => $integrityCheckData,
-        // ... other data
-    ]);
-})->add(AdminRoleAuthMiddleware::class);
-```
-
-### Template Pattern (src/v2/templates/admin/upgrade.php)
-- **Server-side rendering**: Set initial state via PHP to avoid flash of content
-- **Minimal layout**: Simple row/col grid, NO AdminLTE constructs (content-wrapper, breadcrumbs)
-- **PHP classes for visibility**: `class="<?= $isUpdateAvailable ? ' show' : '' ?>"`
-- **Bootstrap 4.6.2**: Use v2 template pattern with clean card-based layout
-
-Example Initial State:
-```php
-<!-- Checkbox state from PHP -->
-<input type="checkbox" id="allowPrereleaseUpgrade" 
-       <?= $allowPrereleaseUpgrade ? ' checked' : '' ?>>
-
-<!-- Wizard visibility from PHP -->
-<div id="upgrade-wizard-card" class="<?= $isUpdateAvailable ? ' show' : '' ?>">
-```
-
-### JavaScript Integration (webpack/upgrade-wizard-app.js)
-- **No AJAX for initial state**: PHP renders everything, JS only handles interactions
-- **bs-stepper event-driven**: Use `show.bs-stepper` event for step transitions
-- **Auto-download pattern**: Trigger download when entering Step 2
-- **Session refresh flow**: Toggle → Save → GitHub refresh → Page reload
-
-Example bs-stepper Setup:
-```javascript
-stepper.addEventListener('show.bs-stepper', function(event) {
-    if (event.detail.to === 1) {  // Step 2 (zero-indexed)
-        autoDownloadUpdate();  // Auto-trigger download
-    }
-});
-```
-
-### System Settings Integration
-- **Use SystemConfig::getBooleanValue()**: For boolean settings (not getValue())
-- **Bootstrap Toggle**: For checkbox UI with data-size="sm"
-- **Programmatic flag**: Prevent auto-refresh loops with `isTogglingProgrammatically`
-- **Session refresh endpoint**: POST `/systemupgrade/refresh-upgrade-info` calls ChurchCRMReleaseManager::checkForUpdates()
-
-### API Endpoint Naming
-- **Use kebab-case**: `/download-latest-release`, `/do-upgrade`, `/refresh-upgrade-info`
-- **RESTful conventions**: GET for reads, POST for state changes
-- **Descriptive names**: Readable without camelCase compression
-
-### ChurchCRMReleaseManager Integration
-- `downloadLatestRelease()`: Uses `sys_get_temp_dir()`, no version blocking
-- `checkForUpdates()`: Calls `populateReleases()` which respects `bAllowPrereleaseUpgrade`
-- Session storage: `$_SESSION['systemUpdateAvailable']`, `$_SESSION['systemUpdateVersion']`
 
 ---
 
