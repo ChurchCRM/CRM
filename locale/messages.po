@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-29 23:38-0800\n"
+"POT-Creation-Date: 2025-11-30 19:07-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -466,6 +466,9 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
+msgid "Admin Dashboard"
+msgstr ""
+
 msgid "Administrator privileges"
 msgstr ""
 
@@ -476,6 +479,9 @@ msgid "Adult/Child"
 msgstr ""
 
 msgid "Advanced Deposit Report"
+msgstr ""
+
+msgid "Advanced Operations"
 msgstr ""
 
 #. Context: query_qry
@@ -1373,11 +1379,17 @@ msgstr ""
 msgid "Classes"
 msgstr ""
 
+msgid "Classes and enrollments"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Classification"
 msgstr ""
 
 msgid "Classifications Manager"
+msgstr ""
+
+msgid "Clean Up Files"
 msgstr ""
 
 msgid "Cleaned count since last send:"
@@ -1404,7 +1416,7 @@ msgstr ""
 msgid "Clear Filters"
 msgstr ""
 
-msgid "Clear all data and reset the database to factory defaults. Application configuration (database credentials, install location, etc.) is preserved."
+msgid "Clear all data and start fresh. Cannot be undone."
 msgstr ""
 
 msgid "Click a bar to filter payments"
@@ -1437,6 +1449,9 @@ msgstr ""
 msgid "Colombia"
 msgstr ""
 
+msgid "Coming soon"
+msgstr ""
+
 msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
 msgstr ""
 
@@ -1455,6 +1470,12 @@ msgid "Compare pledges between two fiscal years"
 msgstr ""
 
 msgid "Complete"
+msgstr ""
+
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr ""
+
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
 msgstr ""
 
 msgid "Compose New Message"
@@ -1588,9 +1609,6 @@ msgid "Create Report"
 msgstr ""
 
 msgid "Create a backup first"
-msgstr ""
-
-msgid "Create a backup of your ChurchCRM database and optionally include photos."
 msgstr ""
 
 msgid "Create a backup of your database before applying the update."
@@ -1789,6 +1807,9 @@ msgstr ""
 msgid "Database username is required"
 msgstr ""
 
+msgid "Database:"
+msgstr ""
+
 msgid "Date"
 msgstr ""
 
@@ -1953,7 +1974,7 @@ msgstr ""
 msgid "Delimiter to separate emails in mailto: links"
 msgstr ""
 
-msgid "Demo data import failed: "
+msgid "Demo Data"
 msgstr ""
 
 msgid "Demo data imported successfully"
@@ -2086,6 +2107,9 @@ msgid "Do you want to remove"
 msgstr ""
 
 msgid "Document Root"
+msgstr ""
+
+msgid "Documentation"
 msgstr ""
 
 msgid "Does your SMTP server require auththentication (username/password)?"
@@ -2891,6 +2915,9 @@ msgstr ""
 msgid "File Integrity Issues Detected"
 msgstr ""
 
+msgid "File Integrity:"
+msgstr ""
+
 msgid "File Name"
 msgstr ""
 
@@ -3065,6 +3092,12 @@ msgstr ""
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
 msgstr ""
 
+msgid "Force Import"
+msgstr ""
+
+msgid "Force Import will retry and may create duplicate data."
+msgstr ""
+
 msgid "Force Re-install"
 msgstr ""
 
@@ -3221,6 +3254,9 @@ msgid "Girls"
 msgstr ""
 
 msgid "Giving Report (Tax Statements)"
+msgstr ""
+
+msgid "Giving funds and categories"
 msgstr ""
 
 msgid "Global User Settings"
@@ -3564,7 +3600,13 @@ msgstr ""
 msgid "Import eGive"
 msgstr ""
 
-msgid "Import sample families, people, groups and optional events/financial records so you can explore ChurchCRM populated with realistic data."
+msgid "Import failed"
+msgstr ""
+
+msgid "Import from CSV files"
+msgstr ""
+
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
 msgstr ""
 
 msgid "Important Warning"
@@ -3929,6 +3971,9 @@ msgstr ""
 msgid "Lesotho"
 msgstr ""
 
+msgid "Let's get your system set up and ready to use"
+msgstr ""
+
 msgid "Letters and Mailing Labels"
 msgstr ""
 
@@ -4105,9 +4150,6 @@ msgstr ""
 msgid "Make a backup at least once a week unless you have automated backups."
 msgstr ""
 
-msgid "Make backups regularly (at least weekly)"
-msgstr ""
-
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr ""
 
@@ -4154,6 +4196,9 @@ msgid "Manage Orphaned Files"
 msgstr ""
 
 msgid "Manage Properties and Classifications"
+msgstr ""
+
+msgid "Manage Users"
 msgstr ""
 
 msgid "Map Cart"
@@ -5000,10 +5045,19 @@ msgstr ""
 msgid "Optional notes about attendance..."
 msgstr ""
 
+msgid "Organization, timezone, email"
+msgstr ""
+
+msgid "Organizational structure"
+msgstr ""
+
 msgid "Orphaned Files"
 msgstr ""
 
 msgid "Orphaned Files Management"
+msgstr ""
+
+msgid "Orphaned Files:"
 msgstr ""
 
 msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
@@ -5719,6 +5773,9 @@ msgstr ""
 msgid "Quick Search"
 msgstr ""
 
+msgid "Quick Start"
+msgstr ""
+
 msgid "Quick Status"
 msgstr ""
 
@@ -5932,6 +5989,9 @@ msgstr ""
 msgid "Requires users to self-enroll in 2 factor authentication"
 msgstr ""
 
+msgid "Reset"
+msgstr ""
+
 msgid "Reset Database"
 msgstr ""
 
@@ -5944,7 +6004,7 @@ msgstr ""
 msgid "Resize Event"
 msgstr ""
 
-msgid "Restore ChurchCRM database from a backup file."
+msgid "Restore"
 msgstr ""
 
 msgid "Restore Database"
@@ -5957,6 +6017,9 @@ msgid "Restore failed."
 msgstr ""
 
 msgid "Restore failed. Please check the backup file and try again."
+msgstr ""
+
+msgid "Restore from a backup file. Erases existing data."
 msgstr ""
 
 msgid "Restore in progress, please wait..."
@@ -6441,6 +6504,9 @@ msgstr ""
 msgid "Server cache time for remote images"
 msgstr ""
 
+msgid "Server error"
+msgstr ""
+
 msgid "Session Timeout"
 msgstr ""
 
@@ -6780,9 +6846,6 @@ msgstr ""
 msgid "Supported formats:"
 msgstr ""
 
-msgid "Supports ChurchInfo and older ChurchCRM backups"
-msgstr ""
-
 #. Context: countries
 msgid "Suriname"
 msgstr ""
@@ -6817,10 +6880,13 @@ msgstr ""
 msgid "System & Configuration"
 msgstr ""
 
-msgid "System Logs"
+msgid "System Health"
 msgstr ""
 
-msgid "System Maintenance"
+msgid "System Info"
+msgstr ""
+
+msgid "System Logs"
 msgstr ""
 
 msgid "System Settings"
@@ -7110,6 +7176,9 @@ msgstr ""
 msgid "Timor-Leste"
 msgstr ""
 
+msgid "Tip:"
+msgstr ""
+
 msgid "Title"
 msgstr ""
 
@@ -7223,9 +7292,6 @@ msgid "True"
 msgstr ""
 
 msgid "True / False"
-msgstr ""
-
-msgid "Try ChurchCRM with demo data"
 msgstr ""
 
 msgid "Tuesdays"
@@ -7428,6 +7494,9 @@ msgstr ""
 msgid "Updated via Family"
 msgstr ""
 
+msgid "Upgrade"
+msgstr ""
+
 msgid "Upgrade Complete!"
 msgstr ""
 
@@ -7496,6 +7565,9 @@ msgid "User Settings"
 msgstr ""
 
 msgid "User Setup"
+msgstr ""
+
+msgid "User accounts and roles"
 msgstr ""
 
 msgid "User authenticated via API Key: "
@@ -7625,6 +7697,9 @@ msgstr ""
 msgid "Version Information"
 msgstr ""
 
+msgid "Version:"
+msgstr ""
+
 #. Context: countries
 msgid "Vietnam (Việt Nam)"
 msgstr ""
@@ -7731,12 +7806,6 @@ msgstr ""
 msgid "WARNING: This action can not be undone and may have legal implications!"
 msgstr ""
 
-msgid "WARNING: This completely erases all database records including families, groups, events, and financial data"
-msgstr ""
-
-msgid "WARNING: This completely erases the existing database"
-msgstr ""
-
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
 msgstr ""
 
@@ -7808,6 +7877,9 @@ msgid "Weekly on"
 msgstr ""
 
 msgid "Welcome to"
+msgstr ""
+
+msgid "Welcome to ChurchCRM"
 msgstr ""
 
 #. Context: countries
@@ -8121,6 +8193,9 @@ msgid "find family from check account #"
 msgstr ""
 
 msgid "for funds "
+msgstr ""
+
+msgid "found"
 msgstr ""
 
 msgid "from"
