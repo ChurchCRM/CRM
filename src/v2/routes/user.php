@@ -55,7 +55,7 @@ function viewUser(Request $request, Response $response, array $args): Response
         'user' => $user,
     ];
 
-    return $renderer->render($response, 'user/user.php', $pageArgs);
+    return $renderer->render($response, 'user.php', $pageArgs);
 }
 
 function adminChangeUserPassword(Request $request, Response $response, array $args): Response
