@@ -3,7 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Small boxes (Stat box) -->
@@ -184,4 +184,4 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MainDashboard.js"></script>
 <?php
-include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
