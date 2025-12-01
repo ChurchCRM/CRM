@@ -1,76 +1,84 @@
-.list-group-item {
-    border-left: 4px solid #e9ecef;
-    padding-left: 1.5rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    margin-bottom: 1rem;
-    border-radius: 0.375rem;
+/* Quick Start Cards */
+.quick-start-card {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: inherit;
     transition: all 0.2s ease;
+    height: 100%;
+    border: 1px solid #e9ecef;
 }
 
-.list-group-item:hover {
-    background-color: #f8f9fa;
-    border-left-color: #0d6efd;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+.quick-start-card:hover {
+    background: #fff;
+    border-color: #0d6efd;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+    text-decoration: none;
+    color: inherit;
 }
 
-.list-group-item strong {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1.05rem;
-    color: #212529;
-}
-
-.list-group-item p {
-    margin-bottom: 0.75rem;
-    line-height: 1.5;
-}
-
-/* Badge styling for step numbers */
-.list-group-item .badge {
-    min-width: 2.5rem;
+.quick-start-icon {
+    width: 2.5rem;
     height: 2.5rem;
+    min-width: 2.5rem;
+    border-radius: 0.375rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 700;
+    margin-right: 0.75rem;
+    color: #fff;
     font-size: 1rem;
-    flex-shrink: 0;
-    margin-right: 1.25rem;
-    margin-top: 0.125rem;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 }
 
-.badge {
+.quick-start-icon.bg-orange {
+    background-color: #fd7e14;
+}
+
+.quick-start-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.quick-start-content h6 {
+    margin: 0 0 0.125rem 0;
     font-weight: 600;
     font-size: 0.875rem;
+    color: #212529;
 }
 
+.quick-start-content small {
+    color: #6c757d;
+    font-size: 0.75rem;
+    display: block;
+    line-height: 1.3;
+}
+
+/* Card improvements */
 .card {
-    transition: transform 0.2s, box-shadow 0.2s;
     border: none;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+.card-header {
+    border-bottom: none;
 }
 
+.card-header h5 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Badge styling */
+.badge {
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+
+/* Button improvements */
 .btn-group .btn {
     border-radius: 0.25rem;
-}
-
-/* Improve button styling */
-.btn-sm {
-    padding: 0.375rem 0.75rem;
-    font-size: 0.875rem;
-}
-
-.list-group-item .btn {
-    transition: all 0.2s ease;
-}
-
-.list-group-item .btn:hover {
-    transform: translateX(2px);
 }

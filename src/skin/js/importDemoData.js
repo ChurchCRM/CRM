@@ -243,7 +243,7 @@
 
               <div class="demo-import-instructions mb-4">
                 <h4 class="mb-3">${i18next.t("Need to remove this data later?")}</h4>
-                <p>After importing, you can visit the <strong>System Maintenance</strong> page and click the <strong>Reset Database</strong> button to clear all data and start fresh. Your application configuration will be preserved.</p>
+                <p>After importing, you can visit the <strong>Admin Dashboard</strong> and click the <strong>Reset Database</strong> button to clear all data and start fresh. Your application configuration will be preserved.</p>
               </div>
 
               <div class="demo-import-buttons">
@@ -300,7 +300,10 @@
         $("#demoImportSpinnerOverlay").removeClass("show");
     }
 
-    function doImport($button, includeFinancial, includeEvents, includeSundaySchool) {
+    // Track if we're in force import mode
+    var forceImportMode = false;
+
+    function doImport($button, includeFinancial, includeEvents, includeSundaySchool, forceImport) {
         var $status = $("#demoImportStatus");
         var $results = $("#demoImportResults");
         var $resultsList = $("#demoImportResultsList");
@@ -325,6 +328,7 @@
                 includeFinancial: includeFinancial,
                 includeEvents: includeEvents,
                 includeSundaySchool: includeSundaySchool,
+                force: forceImport || false,
             }),
             success: function (data) {
                 hideSpinnerOverlay();
@@ -335,6 +339,10 @@
                 $button.prop("disabled", false);
 
                 if (data && data.success) {
+                    // Reset force import mode on success
+                    forceImportMode = false;
+                    resetImportButton();
+
                     if ($resultsList.length) {
                         $resultsList.empty();
                         var imported = data.imported || {};
@@ -360,11 +368,14 @@
 
                     window.CRM.notify(i18next.t("Demo data imported successfully"), { type: "success", delay: 3000 });
                 } else {
-                    window.CRM.notify(
-                        i18next.t("Demo data import failed: ") +
-                            (data && data.error ? data.error : i18next.t("Unknown error")),
-                        { type: "error", delay: 5000 },
-                    );
+                    // Enable force import mode on failure
+                    forceImportMode = true;
+
+                    var errorMsg = data && data.error ? data.error : i18next.t("Unknown error");
+
+                    // Update button to Force Import and show overlay again with error
+                    setForceImportButton(errorMsg);
+                    showConfirmOverlay();
                 }
             },
             error: function (xhr) {
@@ -375,14 +386,55 @@
                 }
                 $button.prop("disabled", false);
 
+                // Enable force import mode on error
+                forceImportMode = true;
+
                 var errorMessage = i18next.t("An error occurred during demo data import");
                 if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
                     errorMessage = xhr.responseJSON.error;
+                } else if (xhr && xhr.status) {
+                    errorMessage = i18next.t("Server error") + " (" + xhr.status + ")";
                 }
 
-                window.CRM.notify(errorMessage, { type: "error", delay: 5000 });
+                // Update button to Force Import and show overlay again with error
+                setForceImportButton(errorMessage);
+                showConfirmOverlay();
             },
         });
+    }
+
+    function setForceImportButton(errorMessage) {
+        // Remove existing warning if any
+        $("#demoImportWarning").remove();
+
+        // Show inline warning message with specific error - better readability
+        var warningHtml =
+            '<div id="demoImportWarning" class="alert alert-danger mb-4" style="border-left: 4px solid #dc3545; padding: 16px;">' +
+            '<div style="font-weight: 600; font-size: 15px; margin-bottom: 8px; color: #721c24;">' +
+            '<i class="fa fa-exclamation-circle mr-2"></i>' +
+            i18next.t("Import failed") +
+            "</div>" +
+            '<div style="font-size: 14px; color: #495057; margin-bottom: 12px; line-height: 1.5;">' +
+            (errorMessage || i18next.t("Unknown error")) +
+            "</div>" +
+            '<div style="font-size: 13px; color: #856404; background: #fff3cd; padding: 10px 12px; border-radius: 4px; border: 1px solid #ffeeba;">' +
+            '<i class="fa fa-info-circle mr-1"></i>' +
+            i18next.t("Force Import will retry and may create duplicate data.") +
+            "</div></div>";
+        $(".demo-import-options").before(warningHtml);
+
+        $("#demoImportConfirmBtn")
+            .removeClass("btn-success")
+            .addClass("btn-danger")
+            .html('<i class="fa fa-exclamation-triangle mr-2"></i>' + i18next.t("Force Import"));
+    }
+
+    function resetImportButton() {
+        $("#demoImportWarning").remove();
+        $("#demoImportConfirmBtn")
+            .removeClass("btn-danger")
+            .addClass("btn-success")
+            .html('<i class="fa fa-users mr-2"></i>' + i18next.t("Import Demo Data"));
     }
 
     function attachHandlers() {
@@ -408,7 +460,9 @@
                 var includeEvents = $("#includeDemoEvents").is(":checked");
                 var includeSundaySchool = $("#includeDemoSundaySchool").is(":checked");
                 var $btn = $("#importDemoData, #importDemoDataQuickBtn, #importDemoDataV2").first();
-                doImport($btn, includeFinancial, includeEvents, includeSundaySchool);
+
+                // Pass forceImport flag based on current mode
+                doImport($btn, includeFinancial, includeEvents, includeSundaySchool, forceImportMode);
             });
 
         // Attach cancel button handler
