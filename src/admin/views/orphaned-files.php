@@ -76,8 +76,8 @@ $hasOrphanedFiles = $orphanedCount > 0;
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-outline-secondary">
                         <i class="fa fa-arrow-left mr-2"></i><?= gettext('Back to Debug Info') ?>
                     </a>
-                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/maintenance" class="btn btn-outline-primary ml-2">
-                        <i class="fa fa-tools mr-2"></i><?= gettext('System Maintenance') ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/" class="btn btn-outline-primary ml-2">
+                        <i class="fa fa-tools mr-2"></i><?= gettext('Admin Dashboard') ?>
                     </a>
                 </div>
             </div>

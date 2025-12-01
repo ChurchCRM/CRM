@@ -215,6 +215,58 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
             </div>
         </div>
     </div>
+
+    <!-- Advanced Operations Section -->
+    <div class="row mt-4">
+        <div class="col-lg-12">
+            <h3 class="mb-3 text-muted">
+                <i class="fa-solid fa-exclamation-triangle"></i> <?= gettext('Advanced Operations') ?>
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Restore Database -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-upload"></i> <?= gettext('Restore Database') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p><?= gettext('Restore ChurchCRM database from a backup file.') ?></p>
+                    <ul class="mb-3 small text-muted">
+                        <li class="text-danger mb-2"><strong><?= gettext('WARNING: This completely erases the existing database') ?></strong></li>
+                        <li><?= gettext('Supports ChurchInfo and older ChurchCRM backups') ?></li>
+                    </ul>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/restore" class="btn btn-warning w-100">
+                        <i class="fa-solid fa-upload"></i> <?= gettext('Restore Database') ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reset Database -->
+        <div class="col-lg-6 mb-4">
+            <div class="card shadow-sm border-0 h-100">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-exclamation-circle"></i> <?= gettext('Reset Database') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p><?= gettext('Clear all data and reset the database to factory defaults. Application configuration (database credentials, install location, etc.) is preserved.') ?></p>
+                    <ul class="mb-3 small text-muted">
+                        <li class="text-danger mb-2"><strong><?= gettext('WARNING: This completely erases all database records including families, groups, events, and financial data') ?></strong></li>
+                    </ul>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/reset" class="btn btn-danger w-100">
+                        <i class="fa-solid fa-exclamation-triangle"></i> <?= gettext('Reset Database') ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </div>
