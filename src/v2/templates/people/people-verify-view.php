@@ -3,7 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('People Verify Dashboard');
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="card">

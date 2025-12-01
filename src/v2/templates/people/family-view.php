@@ -8,7 +8,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
 
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $curYear = (new DateTime())->format("Y");
 $familyAddress = $family->getAddress();
@@ -685,4 +685,4 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
     </div>
 </div>
 <?php
-include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
