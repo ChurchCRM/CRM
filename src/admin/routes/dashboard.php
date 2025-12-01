@@ -11,6 +11,7 @@ $app->get('/', function (Request $request, Response $response) {
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('Admin Dashboard'),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

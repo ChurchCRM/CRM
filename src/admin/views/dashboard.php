@@ -121,6 +121,43 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
 
         <!-- Sidebar -->
         <div class="col-lg-4">
+            <!-- System Info Card -->
+            <div class="card mb-4 shadow-sm border-0">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-circle-info"></i> <?= gettext('System Info') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <strong><?= gettext('Software:') ?></strong><br>
+                            <code class="text-muted small"><?= VersionUtils::getInstalledVersion() ?></code>
+                        </li>
+                        <li class="mb-3">
+                            <strong><?= gettext('Database:') ?></strong><br>
+                            <code class="text-muted small"><?= VersionUtils::getDBVersion() ?></code>
+                        </li>
+                        <li class="mb-3">
+                            <strong><?= gettext('Admin Tools:') ?></strong><br>
+                            <div class="btn-group w-100 mt-2" role="group">
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/backup" class="btn btn-sm btn-outline-info" title="<?= gettext('Backup Database') ?>">
+                                    <i class="fa-solid fa-download"></i> <?= gettext('Backup') ?>
+                                </a>
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-sm btn-outline-info" title="<?= gettext('System Upgrade') ?>">
+                                    <i class="fa-solid fa-arrow-up"></i> <?= gettext('Upgrade') ?>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="mt-3">
+                            <a href="https://github.com/ChurchCRM/CRM/wiki" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-info w-100">
+                                <i class="fa-solid fa-book"></i> <?= gettext('Documentation') ?>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <!-- Try Demo Data Card -->
             <div class="card mb-4 shadow-sm border-0">
                 <div class="card-header bg-success text-white">
@@ -174,43 +211,6 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-sm btn-outline-secondary w-100">
                         <i class="fa-solid fa-bug"></i> <?= gettext('Full Debug Info') ?>
                     </a>
-                </div>
-            </div>
-
-            <!-- System Info Card -->
-            <div class="card shadow-sm border-0">
-                <div class="card-header bg-info text-white">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-circle-info"></i> <?= gettext('System Info') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li class="mb-3">
-                            <strong><?= gettext('Software:') ?></strong><br>
-                            <code class="text-muted small">v<?= VersionUtils::getInstalledVersion() ?></code>
-                        </li>
-                        <li class="mb-3">
-                            <strong><?= gettext('Database:') ?></strong><br>
-                            <code class="text-muted small"><?= VersionUtils::getDBVersion() ?></code>
-                        </li>
-                        <li class="mb-3">
-                            <strong><?= gettext('Admin Tools:') ?></strong><br>
-                            <div class="btn-group w-100 mt-2" role="group">
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/backup" class="btn btn-sm btn-outline-info" title="<?= gettext('Backup Database') ?>">
-                                    <i class="fa-solid fa-download"></i> <?= gettext('Backup') ?>
-                                </a>
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-sm btn-outline-info" title="<?= gettext('System Upgrade') ?>">
-                                    <i class="fa-solid fa-arrow-up"></i> <?= gettext('Upgrade') ?>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="mt-3">
-                            <a href="https://github.com/ChurchCRM/CRM/wiki" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-info w-100">
-                                <i class="fa-solid fa-book"></i> <?= gettext('Documentation') ?>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
