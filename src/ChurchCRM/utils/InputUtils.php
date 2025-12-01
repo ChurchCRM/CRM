@@ -50,7 +50,36 @@ class InputUtils
 
     public static function filterHTML($sInput): string
     {
-        return strip_tags(trim($sInput), self::$AllowedHTMLTags);
+        $sInput = trim($sInput);
+        
+        if (empty($sInput)) {
+            return '';
+        }
+        
+        // Configure HTML Purifier with strict XSS protection
+        // Requires: composer require ezyang/htmlpurifier
+        $config = \HTMLPurifier_Config::createDefault();
+        
+        // Define allowed HTML tags for safe content (rich text)
+        $config->set('HTML.Allowed', 
+            'a[href],b,i,u,h1,h2,h3,h4,h5,h6,pre,address,img[src|alt|width|height],table,td,tr,ol,li,ul,p,sub,sup,s,hr,span,blockquote,div,small,big,tt,code,kbd,samp,del,ins,cite,q,br,strong,em'
+        );
+        
+        // Block dangerous protocols: only allow safe URLs
+        $config->set('URI.AllowedSchemes', ['http' => true, 'https' => true, 'ftp' => true, 'mailto' => true]);
+        
+        // Disable dangerous elements that could bypass sanitization
+        $config->set('HTML.ForbiddenElements', ['script', 'iframe', 'embed', 'object', 'form', 'style', 'meta']);
+        
+        // Disable automatic paragraph wrapping
+        $config->set('AutoFormat.AutoParagraph', false);
+        
+        // Enable ID attributes for accessibility
+        $config->set('Attr.EnableID', true);
+        
+        $purifier = new \HTMLPurifier($config);
+        
+        return $purifier->purify($sInput);
     }
 
     public static function filterChar($sInput, $size = 1): string
