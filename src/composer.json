@@ -43,6 +43,7 @@
         "defuse/php-encryption": "^2.4.0",
         "drewm/mailchimp-api": "^2.5.4",
         "endroid/qr-code": "^5.0.6",
+        "ezyang/htmlpurifier": "^4.17.0",
         "geocoder-php/bing-maps-provider": "^4.3.0",
         "geocoder-php/google-maps-provider": "^4.7.1",
         "ifsnop/mysqldump-php": "^2.12",

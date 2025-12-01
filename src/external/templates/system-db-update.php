@@ -4,6 +4,7 @@
  * Expects $this->errorMessage to be available when included via the controller
  */
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
 $sPageTitle = gettext('Upgrade Required');
@@ -27,7 +28,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                     <?php if (!empty($successMessage)) { ?>
                         <div class="alert alert-success mt-3" role="alert">
                             <i class="fa-solid fa-check-circle fa-fw"></i>
-                            <?= htmlspecialchars($successMessage, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                            <?= InputUtils::escapeHTML($successMessage) ?>
                         </div>
                         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                             // Redirect to dashboard after short delay
@@ -40,7 +41,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                     <?php } else { ?>
                         <div class="alert alert-danger mt-3" role="alert">
                             <i class="fa-solid fa-triangle-exclamation fa-fw"></i>
-                            <?= htmlspecialchars($errorMessage, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>
+                            <?= InputUtils::escapeHTML($errorMessage) ?>
                         </div>
                     <?php } ?>
                 </div>

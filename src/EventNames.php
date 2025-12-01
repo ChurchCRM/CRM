@@ -262,12 +262,12 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             for ($row = 1; $row <= $numRows; $row++) {
                 ?>
             <tr>
-              <td><strong><?= htmlspecialchars($aTypeName[$row]) ?></strong></td>
+              <td><strong><?= InputUtils::escapeHTML($aTypeName[$row]) ?></strong></td>
               <td><?= $recur[$row] ?></td>
               <td><?= $aDefStartTime[$row] ?: '<span class="text-muted">—</span>' ?></td>
               <td>
                 <?php if (!empty($cCountList[$row])): ?>
-                  <?= htmlspecialchars($cCountList[$row]) ?>
+                  <?= InputUtils::escapeHTML($cCountList[$row]) ?>
                 <?php else: ?>
                   <span class="text-muted">—</span>
                 <?php endif; ?>

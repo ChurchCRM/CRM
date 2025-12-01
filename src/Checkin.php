@@ -102,7 +102,7 @@ if ($EventID > 0) {
 <div class="alert alert-info d-flex justify-content-between align-items-center mb-3">
     <span>
         <i class="fas fa-calendar-check mr-2"></i>
-        <strong><?= gettext('Event') ?>:</strong> <?= htmlspecialchars($event->getTitle()) ?> 
+        <strong><?= gettext('Event') ?>:</strong> <?= InputUtils::escapeHTML($event->getTitle()) ?> 
         <span class="text-muted">(<?= $event->getStart('M j, Y') ?>)</span>
     </span>
     <div>
@@ -138,7 +138,7 @@ if ($EventID > 0) {
                                     <option value="0"><?= gettext('All Event Types') ?></option>
                                     <?php foreach ($eventTypes as $type) { ?>
                                         <option value="<?= $type->getId() ?>" <?= ($eventTypeId == $type->getId()) ? "selected" : "" ?>>
-                                            <?= htmlspecialchars($type->getName()) ?>
+                                            <?= InputUtils::escapeHTML($type->getName()) ?>
                                         </option>
                                     <?php } ?>
                                 </select>
@@ -153,7 +153,7 @@ if ($EventID > 0) {
                                     <option value="" disabled <?= ($EventID == 0) ? "selected" : "" ?>><?= gettext('Select event') ?></option>
                                     <?php foreach ($activeEvents as $evt) { ?>
                                         <option value="<?= $evt->getId() ?>" <?= ($EventID == $evt->getId()) ? "selected" : "" ?>>
-                                            <?= htmlspecialchars($evt->getTitle()) ?> (<?= $evt->getStart('M j, Y') ?>)
+                                            <?= InputUtils::escapeHTML($evt->getTitle()) ?> (<?= $evt->getStart('M j, Y') ?>)
                                         </option>
                                     <?php } ?>
                                 </select>

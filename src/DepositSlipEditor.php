@@ -93,7 +93,7 @@ require_once 'Include/Header.php';
             </div>
             <div class="mb-3">
               <label for="Comment" class="form-label"><?php echo gettext('Comment'); ?>:</label>
-              <textarea class="form-control" name="Comment" id="Comment" rows="3" placeholder="<?= gettext('Add any additional notes about this deposit'); ?>"><?php echo htmlspecialchars($thisDeposit->getComment(), ENT_QUOTES, 'UTF-8'); ?></textarea>
+              <textarea class="form-control" name="Comment" id="Comment" rows="3" placeholder="<?= gettext('Add any additional notes about this deposit'); ?>"><?php echo InputUtils::escapeHTML($thisDeposit->getComment()); ?></textarea>
             </div>
             <?php
             if ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard') {

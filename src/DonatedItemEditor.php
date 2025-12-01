@@ -220,7 +220,7 @@ require_once 'Include/Header.php';
 
                         <div class="form-group">
                             <label><?= gettext('Title') ?>:</label>
-                            <input type="text" name="Title" id="Title" value="<?= htmlentities($sTitle) ?>" class="form-control" />
+                            <input type="text" name="Title" id="Title" value="<?= InputUtils::escapeAttribute($sTitle) ?>" class="form-control" />
                         </div>
 
                         <div class="form-group">
@@ -285,16 +285,16 @@ require_once 'Include/Header.php';
                     <div class="col-md-6 col-md-offset-2 col-xs-12">
                         <div class="form-group">
                             <label><?= gettext('Description') ?>:</label>
-                            <textarea name="Description" rows="5" cols="90" class="form-control"><?= htmlentities($sDescription) ?></textarea>
+                            <textarea name="Description" rows="5" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sDescription) ?></textarea>
                         </div>
 
                         <div class="form-group">
                             <label><?= gettext('Picture URL') ?>:</label>
-                            <textarea name="PictureURL" rows="1" cols="90" class="form-control"><?= htmlentities($sPictureURL) ?></textarea>
+                            <textarea name="PictureURL" rows="1" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sPictureURL) ?></textarea>
                         </div>
 
                         <?php if ($sPictureURL != '') : ?>
-                            <div class="form-group"><img src="<?= htmlentities($sPictureURL) ?>" /></div>
+                            <div class="form-group"><img src="<?= InputUtils::escapeAttribute($sPictureURL) ?>" /></div>
                         <?php endif; ?>
 
                     </div>
