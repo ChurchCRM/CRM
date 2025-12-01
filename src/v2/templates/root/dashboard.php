@@ -6,28 +6,6 @@ use ChurchCRM\dto\SystemURLs;
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<?php if (AuthenticationManager::getCurrentUser()->isAdmin() && $dashboardCounts["People"] == 1) { ?>
-<div class="row mb-4">
-    <div class="col-12">
-        <div class="card bg-info text-white">
-            <div class="card-body text-center" style="padding:2.5rem;">
-                <h1 class="mb-2" style="font-weight:300; font-size:2.5rem; line-height:1.1;"><?= gettext('Try ChurchCRM with demo data') ?></h1>
-                <p class="lead mb-4" style="font-size:1.05rem; color:rgba(255,255,255,0.95); max-width:900px; margin:0 auto;">
-                    <?= gettext('Import sample families, people, groups and optional events/financial records so you can explore ChurchCRM populated with realistic data.') ?>
-                </p>
-                <div>
-                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/maintenance" class="btn btn-light btn-lg" style="font-weight: 600; color: #17a2b8;">
-                        <i class="fa fa-users mr-2"></i><?= gettext('Import Demo Data') ?>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
-
-<?php /* Fresh-install modal removed; dashboard redirects to system maintenance for imports */ ?>
-
 <!-- Small boxes (Stat box) -->
 <div class="row">
     <div class="col-lg-2 col-xs-4">

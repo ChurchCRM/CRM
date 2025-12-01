@@ -1,0 +1,252 @@
+<?php
+
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Utils\VersionUtils;
+
+include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+// Get system status info
+$integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
+$integrityPassed = $integrityStatus === 'Passed';
+$orphanedFiles = AppIntegrityService::getOrphanedFiles();
+$hasOrphanedFiles = count($orphanedFiles) > 0;
+?>
+
+<!-- Load admin dashboard CSS -->
+<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/admin-dashboard.min.css">
+
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="row mb-3">
+        <div class="col-12">
+            <h2 class="mb-1">
+                <i class="fa-solid fa-hand-fist text-primary"></i> <?= gettext('Welcome to ChurchCRM') ?>
+            </h2>
+            <p class="text-muted mb-0"><?= gettext("Let's get your system set up and ready to use") ?></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Quick Start Card -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-primary text-white py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-rocket"></i> <?= gettext('Quick Start') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-3"><?= gettext('Complete these essential setup tasks to get ChurchCRM running smoothly:') ?></p>
+                    
+                    <div class="row">
+                        <!-- System Settings -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php" class="quick-start-card">
+                                <div class="quick-start-icon bg-primary">
+                                    <i class="fa-solid fa-cog"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('System Settings') ?></h6>
+                                    <small><?= gettext('Organization, timezone, email') ?></small>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- Manage Users -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/UserList.php" class="quick-start-card">
+                                <div class="quick-start-icon bg-info">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Manage Users') ?></h6>
+                                    <small><?= gettext('User accounts and roles') ?></small>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- Groups -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="quick-start-card">
+                                <div class="quick-start-icon bg-warning">
+                                    <i class="fa-solid fa-sitemap"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Groups') ?></h6>
+                                    <small><?= gettext('Organizational structure') ?></small>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- Sunday School -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="quick-start-card">
+                                <div class="quick-start-icon bg-orange">
+                                    <i class="fa-solid fa-children"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Sunday School') ?></h6>
+                                    <small><?= gettext('Classes and enrollments') ?></small>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- CSV Import -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/CSVImport.php" class="quick-start-card">
+                                <div class="quick-start-icon bg-secondary">
+                                    <i class="fa-solid fa-file-import"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Import Data') ?></h6>
+                                    <small><?= gettext('Import from CSV files') ?></small>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <!-- Financial Settings -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="quick-start-card">
+                                <div class="quick-start-icon bg-success">
+                                    <i class="fa-solid fa-dollar-sign"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Donation Funds') ?></h6>
+                                    <small><?= gettext('Giving funds and categories') ?></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="alert alert-light border mb-0 py-2">
+                        <small><i class="fa-solid fa-lightbulb text-warning"></i> <strong><?= gettext('Tip:') ?></strong> <?= gettext('Complete these in any order. Use Demo Data to explore with sample records.') ?></small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Operations -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-secondary text-white py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-tools"></i> <?= gettext('Advanced Operations') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Restore Database -->
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <div class="border rounded p-3 h-100">
+                                <h6 class="text-warning"><i class="fa-solid fa-upload"></i> <?= gettext('Restore Database') ?></h6>
+                                <p class="small text-muted mb-2"><?= gettext('Restore from a backup file. Erases existing data.') ?></p>
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/restore" class="btn btn-sm btn-outline-warning">
+                                    <?= gettext('Restore') ?>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Reset Database -->
+                        <div class="col-md-6">
+                            <div class="border rounded p-3 h-100">
+                                <h6 class="text-danger"><i class="fa-solid fa-exclamation-triangle"></i> <?= gettext('Reset Database') ?></h6>
+                                <p class="small text-muted mb-2"><?= gettext('Clear all data and start fresh. Cannot be undone.') ?></p>
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/reset" class="btn btn-sm btn-outline-danger">
+                                    <?= gettext('Reset') ?>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Try Demo Data Card -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-success text-white py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-database"></i> <?= gettext('Demo Data') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="small mb-3"><?= gettext('Import sample families, people, and groups to explore ChurchCRM with realistic data.') ?></p>
+                    <button type="button" id="importDemoDataV2" class="btn btn-success btn-lg btn-block">
+                        <i class="fa-solid fa-download"></i> <?= gettext('Import Demo Data') ?>
+                    </button>
+                </div>
+            </div>
+
+            <!-- System Info Card -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-info text-white py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-circle-info"></i> <?= gettext('System Info') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-2">
+                        <span class="text-muted"><?= gettext('Version:') ?></span>
+                        <code><?= VersionUtils::getInstalledVersion() ?></code>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <span class="text-muted"><?= gettext('Database:') ?></span>
+                        <code><?= VersionUtils::getDBVersion() ?></code>
+                    </div>
+                    <div class="btn-group d-flex mb-2" role="group">
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/backup" class="btn btn-sm btn-outline-info flex-fill">
+                            <i class="fa-solid fa-download"></i> <?= gettext('Backup') ?>
+                        </a>
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-sm btn-outline-info flex-fill">
+                            <i class="fa-solid fa-arrow-up"></i> <?= gettext('Upgrade') ?>
+                        </a>
+                    </div>
+                    <a href="https://github.com/ChurchCRM/CRM/wiki" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary btn-block">
+                        <i class="fa-solid fa-book"></i> <?= gettext('Documentation') ?>
+                    </a>
+                </div>
+            </div>
+
+            <!-- System Health Card -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header <?= $integrityPassed && !$hasOrphanedFiles ? 'bg-success' : 'bg-warning' ?> text-white py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-heartbeat"></i> <?= gettext('System Health') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span><?= gettext('File Integrity:') ?></span>
+                        <?php if ($integrityPassed): ?>
+                            <span class="badge bg-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
+                        <?php else: ?>
+                            <span class="badge bg-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span><?= gettext('Orphaned Files:') ?></span>
+                        <?php if ($hasOrphanedFiles): ?>
+                            <span class="badge bg-danger"><?= count($orphanedFiles) ?> <?= gettext('found') ?></span>
+                        <?php else: ?>
+                            <span class="badge bg-success"><i class="fa-solid fa-check"></i> <?= gettext('None') ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <?php if ($hasOrphanedFiles): ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-sm btn-outline-danger w-100 mb-2">
+                        <i class="fa-solid fa-trash"></i> <?= gettext('Clean Up Files') ?>
+                    </a>
+                    <?php endif; ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-sm btn-outline-secondary w-100">
+                        <i class="fa-solid fa-bug"></i> <?= gettext('Debug Info') ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Load admin dashboard JavaScript -->
+<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/admin-dashboard.min.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/importDemoData.js"></script>
+
+<?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

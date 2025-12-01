@@ -46,7 +46,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     if (result !== i18next.t("I AGREE")) {
                         // If the user cancels the initial warning, go back to the
                         // system maintenance dashboard instead of the site root.
-                        window.location.href = window.CRM.root + '/admin/system/maintenance';
+                        window.location.href = window.CRM.root + '/admin/';
                     }
                 }
             });

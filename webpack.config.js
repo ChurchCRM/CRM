@@ -14,7 +14,8 @@ module.exports = {
     'upgrade-wizard': './webpack/upgrade-wizard',  // Upgrade wizard styles and scripts
     'locale-loader': './webpack/locale-loader',  // Dynamic locale loader
     'backup': './webpack/backup',  // Backup database page
-    'restore': './webpack/restore'  // Restore database page
+    'restore': './webpack/restore',  // Restore database page
+    'admin-dashboard': './webpack/admin-dashboard'  // Admin dashboard page styles and scripts
   },
   output: {
     path: path.resolve('./src/skin/v2'),

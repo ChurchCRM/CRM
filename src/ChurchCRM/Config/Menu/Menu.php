@@ -250,9 +250,9 @@ class Menu
     private static function getAdminMenu(bool $isAdmin): MenuItem
     {
         $menu = new MenuItem(gettext('Admin'), '', true, 'fa-tools');
+        $menu->addSubMenu(new MenuItem(gettext('Admin Dashboard'), 'admin/', $isAdmin, 'fa-tachometer-alt'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'UserList.php', $isAdmin, 'fa-user-cog'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-cog'));
-        $menu->addSubMenu(new MenuItem(gettext('System Maintenance'), 'admin/system/maintenance', $isAdmin, 'fa-tools'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', $isAdmin, 'fa-file-import'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', $isAdmin, 'fa-file-export'));
         $menu->addSubMenu(new MenuItem(gettext('Property Types'), 'PropertyTypeList.php', $isAdmin, 'fa-th-list'));

@@ -9,7 +9,6 @@ use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
@@ -26,6 +25,7 @@ $app = AppFactory::create();
 $app->setBasePath($basePath);
 
 // Register routes FIRST before middleware
+require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/api/demo.php';
 require __DIR__ . '/routes/api/database.php';
 require __DIR__ . '/routes/api/orphaned-files.php';
