@@ -338,7 +338,7 @@ if ($embedded) {
                         </td>
                         <td class="TextColumn">
                             <span class="SmallText">
-                                <input class="input-small" type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="30" maxlength="40">
+                                <input class="input-small" type="text" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" size="30" maxlength="40">
                             </span>
                             <?php
 

@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -19,7 +20,7 @@ if ($sMessage === null) {
       $iCount = (int)($_GET['iCount'] ?? 0);
       $iEID = (int)($_GET['iEID'] ?? 0);
       $event = EventQuery::create()->findPk($iEID);
-      $eventTitle = $event ? htmlspecialchars($event->getTitle(), ENT_QUOTES, 'UTF-8') : '';
+      $eventTitle = $event ? InputUtils::escapeHTML($event->getTitle()) : '';
   ?>
       <p class="text-center alert alert-info"><?= $iCount . ' ' . ($iCount === 1 ? gettext('Record') : gettext('Records')) . ' ' . gettext("Emptied into Event") . ':' ?>
         <a href="<?= SystemURLs::getRootPath() ?>/Checkin.php?eventId=<?= $iEID ?>"><?= $eventTitle ?></a>

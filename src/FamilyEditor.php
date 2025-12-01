@@ -573,7 +573,7 @@ require_once 'Include/Header.php';
                 <div class="row">
                     <div class="col-md-6">
                         <label><?= gettext('Family Name') ?>:</label>
-                        <input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="48" class="form-control">
+                        <input type="text" Name="Name" id="FamilyName" value="<?= InputUtils::escapeAttribute($sName) ?>" maxlength="48" class="form-control">>
                         <?php if ($sNameError) {
                             ?><span class="text-danger"><?= $sNameError ?></span><?php
                         } ?>
@@ -583,15 +583,15 @@ require_once 'Include/Header.php';
                 <div class="row">
                     <div class="col-md-6">
                         <label><?= gettext('Address') ?> 1:</label>
-                        <input type="text" Name="Address1" value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250" class="form-control">
+                        <input type="text" Name="Address1" value="<?= InputUtils::escapeAttribute($sAddress1) ?>" size="50" maxlength="250" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label><?= gettext('Address') ?> 2:</label>
-                        <input type="text" Name="Address2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250" class="form-control">
+                        <input type="text" Name="Address2" value="<?= InputUtils::escapeAttribute($sAddress2) ?>" size="50" maxlength="250" class="form-control">
                     </div>
                     <div class="col-md-6">
                         <label><?= gettext('City') ?>:</label>
-                        <input type="text" Name="City" value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="50" class="form-control">
+                        <input type="text" Name="City" value="<?= InputUtils::escapeAttribute($sCity) ?>" maxlength="50" class="form-control">
                     </div>
                 </div>
                 <p />
@@ -603,7 +603,7 @@ require_once 'Include/Header.php';
                     </div>
                     <div id="stateInputDiv" class="form-group col-md-3 hidden">
                         <label><?= gettext('State') ?>:</label>
-                        <input id="StateTextbox" type="text" class="form-control" name="StateTextbox" value="<?= htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
+                        <input id="StateTextbox" type="text" class="form-control" name="StateTextbox" value="<?= InputUtils::escapeAttribute($sState) ?>" size="20" maxlength="30">
                     </div>
                     <div class="form-group col-md-3">
                         <label><?= gettext('Zip') ?>:</label>
@@ -611,7 +611,7 @@ require_once 'Include/Header.php';
                         if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
                             echo 'style="text-transform:uppercase" ';
                         }
-                                                                            echo 'value="' . htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8') . '" '; ?> maxlength="10" size="8">
+                                                                            echo 'value="' . InputUtils::escapeAttribute($sZip) . '" '; ?> maxlength="10" size="8">
                     </div>
                     <div class="form-group col-md-3">
                         <label> <?= gettext('Country') ?>:</label>
@@ -653,7 +653,7 @@ require_once 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa-solid fa-phone"></i>
                         </div>
-                        <input type="text" Name="HomePhone" value="<?= htmlentities(stripslashes($sHomePhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+                        <input type="text" Name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
                         <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
                                                                                         echo ' checked';
                                                                                    } ?>><?= gettext('Do not auto-format') ?>
@@ -665,7 +665,7 @@ require_once 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa-solid fa-phone"></i>
                         </div>
-                        <input type="text" name="WorkPhone" value="<?= htmlentities(stripslashes($sWorkPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"' data-mask />
+                        <input type="text" name="WorkPhone" value="<?= InputUtils::escapeAttribute($sWorkPhone) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"' data-mask />
                         <input type="checkbox" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? ' checked' : '' ?>><?= gettext('Do not auto-format') ?>
                     </div>
                 </div>
@@ -675,7 +675,7 @@ require_once 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa-solid fa-phone"></i>
                         </div>
-                        <input type="text" name="CellPhone" value="<?= htmlentities(stripslashes($sCellPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
+                        <input type="text" name="CellPhone" value="<?= InputUtils::escapeAttribute($sCellPhone) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
                         <input type="checkbox" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? ' checked' : '' ?>><?= gettext('Do not auto-format') ?>
                     </div>
                 </div>
@@ -687,7 +687,7 @@ require_once 'Include/Header.php';
                         <div class="input-group-addon">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
-                        <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span class="text-danger"><?php echo '<BR>' . $sEmailError ?></span>
+                        <input type="text" Name="Email" class="form-control" value="<?= InputUtils::escapeAttribute($sEmail) ?>" size="30" maxlength="100"><span class="text-danger"><?php echo '<BR>' . $sEmailError ?></span>
                     </div>
                 </div>
                 <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>

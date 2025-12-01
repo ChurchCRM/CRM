@@ -98,7 +98,7 @@ class FinancialService
             $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
             $deposit
                 ->setDate($depositDate)
-                ->setComment(InputUtils::filterString($depositComment))
+                ->setComment(InputUtils::sanitizeText($depositComment))
                 ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setClosed(intval($depositClosed));
             $deposit->save();
@@ -111,7 +111,7 @@ class FinancialService
             $deposit = new Deposit();
             $deposit
                 ->setDate($depositDate)
-                ->setComment(InputUtils::filterString($depositComment))
+                ->setComment(InputUtils::sanitizeText($depositComment))
                 ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setType($depositType);
             $deposit->save();

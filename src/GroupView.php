@@ -44,7 +44,7 @@ $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER B
 $rsPropList = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsPropList);
 
-$sPageTitle = gettext('Group View') . ' : ' . htmlspecialchars($thisGroup->getName(), ENT_QUOTES, 'UTF-8');
+$sPageTitle = gettext('Group View') . ' : ' . InputUtils::escapeHTML($thisGroup->getName());
 
 require_once 'Include/Header.php';
 
@@ -119,11 +119,11 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 
 <div class="card card-info card-outline">
     <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= htmlspecialchars($thisGroup->getName(), ENT_QUOTES, 'UTF-8') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= InputUtils::escapeHTML($thisGroup->getName()) ?></h3>
     </div>
     <div class="card-body">
         <div class="mb-3">
-            <?= htmlspecialchars($thisGroup->getDescription() ?? '', ENT_QUOTES, 'UTF-8') ?>
+            <?= InputUtils::escapeHTML($thisGroup->getDescription() ?? '') ?>
         </div>
         <div class="row mt-3">
             <div class="col-md-4">

@@ -168,6 +168,46 @@ class MyClass {
 
 ---
 
+## HTML Sanitization & XSS Protection
+
+**Use `InputUtils` for all HTML/text handling** - Located in `src/ChurchCRM/Utils/InputUtils.php`
+
+Four core methods for security:
+
+1. **`sanitizeText($input)`** - Plain text, removes ALL HTML tags
+   - Use for: Names, descriptions, social media handles
+   - Example: `$person->setFirstName(InputUtils::sanitizeText($_POST['firstName']))`
+
+2. **`sanitizeHTML($input)`** - Rich text with XSS protection (HTML Purifier)
+   - Use for: User-provided HTML content (event descriptions, Quill editor)
+   - Allows safe tags: `<a><b><i><u><h1-h6><pre><img><table><p><blockquote><div><code>` etc.
+   - Blocks dangerous: `<script><iframe><embed><form><style><meta>`
+   - Example: `$event->setDesc(InputUtils::sanitizeHTML($sEventDesc))`
+
+3. **`escapeHTML($input)`** - Output escaping for HTML body content
+   - Automatically handles `stripslashes()` for magic quotes
+   - Use for: Displaying database/user values in HTML
+   - Example: `<?= InputUtils::escapeHTML($person->getFirstName()) ?>`
+
+4. **`escapeAttribute($input)`** - Output escaping for HTML attributes
+   - Same security as `escapeHTML()` (uses `ENT_QUOTES`)
+   - Use for: Values in HTML attributes or form fields
+   - Example: `<input value="<?= InputUtils::escapeAttribute($address) ?>">`
+
+5. **`sanitizeAndEscapeText($input)`** - Combined plain text sanitization + output escape
+   - Use for: Untrusted user input that must be plain text and escaped
+   - Example: `$data[$key] = InputUtils::sanitizeAndEscapeText($userSubmittedValue)`
+
+**CRITICAL Security Rules:**
+- ❌ NEVER use `htmlspecialchars()` or `htmlentities()` directly
+- ❌ NEVER use `ENT_NOQUOTES` flag (doesn't escape quotes in attributes)
+- ❌ NEVER use `stripslashes()` directly (let InputUtils handle it)
+- ✅ ALWAYS use InputUtils methods for all HTML/text handling
+- ✅ ALWAYS use `escapeAttribute()` for form input values
+- ✅ ALWAYS use `sanitizeHTML()` for rich text editors (Quill)
+
+---
+
 ## Code Standards
 
 ### Database Access

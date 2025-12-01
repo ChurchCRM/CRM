@@ -200,9 +200,9 @@ if ($sReportType == '') {
         $startVal = $sDateStart ? $sDateStart : $today;
         $endVal = $sDateEnd ? $sDateEnd : $today;
         echo '<tr><td class=LabelColumn>' . gettext('Report Start Date:') . "</td>
-            <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='" . htmlentities($startVal) . "'></td></tr>";
+            <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='" . InputUtils::escapeHTML($startVal) . "'></td></tr>";
         echo '<tr><td class=LabelColumn>' . gettext('Report End Date:') . "</td>
-            <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='" . htmlentities($endVal) . "'></td></tr>";
+            <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='" . InputUtils::escapeHTML($endVal) . "'></td></tr>";
         if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report'])) {
             $depChecked = ($datetype !== 'Payment') ? " checked" : "";
             $payChecked = ($datetype === 'Payment') ? " checked" : "";

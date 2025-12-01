@@ -6,6 +6,7 @@ require_once 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext('Free-Text Query');
 
@@ -146,7 +147,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
                     $aHiddenFormField[] = $aRow[$iCount];
                 } else {  //...otherwise just render the field
                     //Write the actual value of this row
-                    echo '<td class="text-center">' . htmlspecialchars($aRow[$iCount]) . '</td>';
+                    echo '<td class="text-center">' . InputUtils::escapeHTML($aRow[$iCount]) . '</td>';
                 }
             }
             echo '</tr>';
@@ -169,7 +170,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
         }
 
         echo '<p class="text-center"><a href="QueryList.php">' . gettext('Return to Query Menu') . '</a></p>';
-        echo '<br><p class="card card-body" style="border-style: solid; margin-left: 50px; margin-right: 50px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', htmlspecialchars($sSQL)) . '</span></p>';
+        echo '<br><p class="card card-body" style="border-style: solid; margin-left: 50px; margin-right: 50px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', InputUtils::escapeHTML($sSQL)) . '</span></p>';
     }
 }
 

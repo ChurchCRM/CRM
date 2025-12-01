@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -51,7 +52,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
                                         <td><?= $index + 1 ?></td>
                                         <td>
                                             <code class="text-monospace" style="word-break: break-all; font-size: 0.85rem;">
-                                                <?= htmlspecialchars($filename) ?>
+                                                <?= InputUtils::escapeHTML($filename) ?>
                                             </code>
                                         </td>
                                     </tr>
