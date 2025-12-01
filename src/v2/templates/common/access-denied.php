@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 // Map role codes to human-readable descriptions
 $roleDescriptions = [
@@ -70,4 +70,4 @@ $roleDescription = isset($roleDescriptions[$missingRole])
 </div>
 
 <?php
-include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
