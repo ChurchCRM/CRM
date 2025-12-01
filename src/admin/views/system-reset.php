@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
     <div class="col-lg-4">
@@ -106,4 +106,4 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
     });
 </script>
 <?php
-include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

@@ -7,7 +7,7 @@ use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\VersionUtils;
 
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <?php
 $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
@@ -385,4 +385,4 @@ EOD;
     }
 </script>
 <?php
-include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
