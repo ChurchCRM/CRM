@@ -2,11 +2,10 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
-use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\Utils\Functions;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
@@ -61,46 +60,39 @@ class PersonService
      */
     public function getPeopleEmailsAndGroups(): array
     {
-        $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_ID, group_grp.grp_Name, lst_OptionName
-                from person_per
-                    left JOIN person2group2role_p2g2r on
-                  person2group2role_p2g2r.p2g2r_per_ID = person_per.per_id
+        // Get people with emails
+        $people = PersonQuery::create()
+            ->filterByEmail('', Criteria::NOT_EQUAL)
+            ->orderById()
+            ->find();
 
-                left JOIN group_grp ON
-                  person2group2role_p2g2r.p2g2r_grp_ID = group_grp.grp_ID
+        $result = [];
+        foreach ($people as $person) {
+            $personData = [
+                'id' => $person->getId(),
+                'email' => $person->getEmail(),
+                'firstName' => $person->getFirstName(),
+                'lastName' => $person->getLastName(),
+            ];
 
-                left JOIN list_lst ON
-                  group_grp.grp_RoleListID = list_lst.lst_ID AND
-                  person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID
-
-              where per_email != ''
-
-              order by per_id;";
-        $rsPeopleWithEmails = Functions::runQuery($sSQL);
-        $people = [];
-        $lastPersonId = 0;
-        $person = [];
-        while ($row = mysqli_fetch_array($rsPeopleWithEmails)) {
-            if ($lastPersonId != $row['per_ID']) {
-                if ($lastPersonId != 0) {
-                    $people[] = $person;
+            // Get group memberships for this person
+            $groupMemberships = $person->getPerson2group2roleP2g2rs();
+            foreach ($groupMemberships as $membership) {
+                $group = $membership->getGroup();
+                if ($group !== null) {
+                    $roleName = '';
+                    $roleList = $group->getListOptionById($membership->getRoleId());
+                    if ($roleList !== null) {
+                        $roleName = $roleList->getOptionName();
+                    }
+                    $personData[$group->getName()] = $roleName;
                 }
-                $person = [];
-                $person['id'] = $row['per_ID'];
-                $person['email'] = $row['per_Email'];
-                $person['firstName'] = $row['per_FirstName'];
-                $person['lastName'] = $row['per_LastName'];
             }
 
-            $person[$row['grp_Name']] = $row['lst_OptionName'];
-
-            if ($lastPersonId != $row['per_ID']) {
-                $lastPersonId = $row['per_ID'];
-            }
+            $result[] = $personData;
         }
-        $people[] = $person;
 
-        return $people;
+        return $result;
     }
 
     /**
@@ -129,83 +121,88 @@ class PersonService
     /**
      * Get a list of families with head of household information.
      *
+     * @param bool $allowAll When true, allows loading all families without search/classification filter
+     *
      * @return array<int, string> Family list keyed by family ID, with formatted name and household head info
      */
-    public function getFamilyList(string $dirRoleHead, string $dirRoleSpouse, int $classification = 0, ?string $searchTerm = null): array
+    public function getFamilyList(string $dirRoleHead, string $dirRoleSpouse, int $classification = 0, ?string $searchTerm = null, bool $allowAll = false): array
     {
-        if ($classification) {
-            if ($searchTerm) {
-                $whereClause = " WHERE per_cls_ID='" . $classification . "' AND fam_Name LIKE '%" . $searchTerm . "%' ";
-            } else {
-                $whereClause = " WHERE per_cls_ID='" . $classification . "' ";
-            }
-            $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID $whereClause ORDER BY fam_Name";
-        } else {
-            if ($searchTerm) {
-                $whereClause = " WHERE fam_Name LIKE '%" . $searchTerm . "%' ";
-            } else {
-                $whereClause = '';
-            }
-            $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam $whereClause ORDER BY fam_Name";
+        // Require minimum 2 characters for search, or classification filter, to prevent loading entire database
+        $hasValidSearch = $searchTerm !== null && mb_strlen(trim($searchTerm)) >= 2;
+        $hasClassification = $classification > 0;
+
+        if (!$hasValidSearch && !$hasClassification && !$allowAll) {
+            return [];
         }
 
-        $rsFamilies = Functions::runQuery($sSQL);
+        // Build family query using Propel ORM
+        $familyQuery = FamilyQuery::create();
 
-        // Build Criteria for Head of Household
-        if (!$dirRoleHead) {
-            $dirRoleHead = '1';
+        if ($hasClassification) {
+            // Get family IDs that have persons with this classification
+            $familyIds = PersonQuery::create()
+                ->filterByClsId((int) $classification)
+                ->filterByFamId(null, Criteria::ISNOTNULL)
+                ->select(['FamId'])
+                ->distinct()
+                ->find()
+                ->toArray();
+
+            if (empty($familyIds)) {
+                return [];
+            }
+            $familyQuery->filterById($familyIds);
         }
-        $head_criteria = ' per_fmr_ID = ' . $dirRoleHead;
-        // If more than one role assigned to Head of Household, add OR
-        $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
-        // Add Spouse to criteria
-        if (intval($dirRoleSpouse) > 0) {
-            $head_criteria .= " OR per_fmr_ID = $dirRoleSpouse";
+
+        if ($hasValidSearch) {
+            $familyQuery->filterByName('%' . trim($searchTerm) . '%', Criteria::LIKE);
         }
-        // Build array of Head of Households and Spouses with fam_ID as the key
-        $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
-        $rs_head = Functions::runQuery($sSQL);
+
+        $families = $familyQuery->orderByName()->find();
+
+        // Build head of household roles array
+        $headRoles = array_filter(array_map('intval', explode(',', $dirRoleHead ?: '1')));
+        $spouseRole = max(0, (int) $dirRoleSpouse);
+        if ($spouseRole > 0) {
+            $headRoles[] = $spouseRole;
+        }
+
+        // Get all heads of household and spouses
+        $headPersons = PersonQuery::create()
+            ->filterByFmrId($headRoles)
+            ->filterByFamId(null, Criteria::ISNOTNULL)
+            ->filterByFamId(0, Criteria::NOT_EQUAL)
+            ->orderByFamId()
+            ->find();
+
         $aHead = [];
-        while ([$head_firstname, $head_famid] = mysqli_fetch_row($rs_head)) {
-            if ($head_firstname && isset($aHead[$head_famid])) {
-                $aHead[$head_famid] .= ' & ' . $head_firstname;
-            } elseif ($head_firstname) {
-                $aHead[$head_famid] = $head_firstname;
+        foreach ($headPersons as $person) {
+            $famId = $person->getFamId();
+            $firstName = $person->getFirstName();
+            if ($firstName) {
+                if (isset($aHead[$famId])) {
+                    $aHead[$famId] .= ' & ' . $firstName;
+                } else {
+                    $aHead[$famId] = $firstName;
+                }
             }
         }
-        $familyArray = [];
-        while ($aRow = mysqli_fetch_array($rsFamilies)) {
-            extract($aRow);
-            $name = $fam_Name;
-            if (isset($aHead[$fam_ID])) {
-                $name .= ', ' . $aHead[$fam_ID];
-            }
-            $name .= ' ' . \FormatAddressLine($fam_Address1, $fam_City, $fam_State);
 
-            $familyArray[$fam_ID] = $name;
+        // Build display array
+        $familyArray = [];
+        foreach ($families as $family) {
+            $name = $family->getName();
+            $famId = $family->getId();
+
+            if (isset($aHead[$famId])) {
+                $name .= ', ' . $aHead[$famId];
+            }
+            $name .= ' ' . $family->getAddress();
+
+            $familyArray[$famId] = $name;
         }
 
         return $familyArray;
-    }
-
-    /**
-     * Build a family select dropdown HTML.
-     *
-     * @return string HTML option tags for family select dropdown
-     */
-    public function buildFamilySelect(int $familyId, string $dirRoleHead, string $dirRoleSpouse): string
-    {
-        $familyArray = $this->getFamilyList($dirRoleHead, $dirRoleSpouse);
-        $html = '';
-        foreach ($familyArray as $fam_ID => $fam_Data) {
-            $html .= '<option value="' . $fam_ID . '"';
-            if ($familyId == $fam_ID) {
-                $html .= ' selected';
-            }
-            $html .= '>' . $fam_Data;
-        }
-
-        return $html;
     }
 
     /**
@@ -231,7 +228,8 @@ class PersonService
         return PersonQuery::create()
             ->filterByFmrId(0)
             ->filterById(1, Criteria::NOT_EQUAL)
-            ->filterByFamId('', Criteria::NOT_EQUAL)
+            ->filterByFamId(null, Criteria::ISNOTNULL)
+            ->filterByFamId(0, Criteria::NOT_EQUAL)
             ->count();
     }
 

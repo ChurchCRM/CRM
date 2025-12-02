@@ -32,7 +32,13 @@ $envelopesByFamID = getEnvelopes($iClassification);
 
 // Get the array of family name/description strings, also indexed by family ID
 $personService = new PersonService();
-$familyArray = $personService->getFamilyList(SystemConfig::getValue('sDirRoleHead'), SystemConfig::getValue('sDirRoleSpouse'), $iClassification);
+$familyArray = $personService->getFamilyList(
+    SystemConfig::getValue('sDirRoleHead'),
+    SystemConfig::getValue('sDirRoleSpouse'),
+    $iClassification,
+    null,
+    true  // allowAll: envelope management needs all families
+);
 asort($familyArray);
 
 if (isset($_POST['Confirm'])) {

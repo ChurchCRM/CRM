@@ -6,10 +6,8 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 // Calculate data quality status
-$hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 || 
+$hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         $classificationDataCheckCount > 0 || $familyCoordinatesCheckCount > 0;
-$totalDataIssues = $genderDataCheckCount + $roleDataCheckCount + 
-                   $classificationDataCheckCount + $familyCoordinatesCheckCount;
 ?>
 
 <!-- Small boxes (Stat box) -->
