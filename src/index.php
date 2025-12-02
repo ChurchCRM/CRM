@@ -1,7 +1,18 @@
 <?php
 
+// Load composer autoloader first so we can use PhpVersion utility
+require_once __DIR__ . '/vendor/autoload.php';
+
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\PhpVersion;
+
+// Get required PHP version from composer.json (single source of truth)
+$requiredPhp = PhpVersion::getRequiredPhpVersion();
+
 $phpVersion = phpversion();
-if (version_compare($phpVersion, '8.2.0', '<')) {
+if (version_compare($phpVersion, $requiredPhp, '<')) {
     $redirectHeader = 'Location: php-error.html';
     if ($phpVersion) {
         header('X-PHP-Version: ' . $phpVersion);
@@ -11,10 +22,6 @@ if (version_compare($phpVersion, '8.2.0', '<')) {
 
     exit;
 }
-
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\MiscUtils;
 
 header('CRM: would redirect');
 
