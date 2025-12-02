@@ -302,20 +302,6 @@ function change_date_for_place_holder(?string $string = null): string
     return '';
 }
 
-function FormatDateOutput(): string
-{
-    $fmt = SystemConfig::getValue("sDateFormatLong");
-
-    $fmt = str_replace("/", " ", $fmt);
-
-    $fmt = str_replace("-", " ", $fmt);
-
-    $fmt = str_replace("d", "%d", $fmt);
-    $fmt = str_replace("m", "%B", $fmt);
-
-    return str_replace("Y", "%Y", $fmt);
-}
-
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
 // bWithtime 1 to be displayed
@@ -364,36 +350,7 @@ function AlternateRowStyle(string $sCurrentStyle): string
     }
 }
 
-function ConvertToBoolean(string $sInput): bool
-{
-    if (empty($sInput)) {
-        return false;
-    } else {
-        if (is_numeric($sInput)) {
-            if ($sInput == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            $sInput = strtolower($sInput);
-            if (in_array($sInput, ['true', 'yes', 'si'])) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
-}
 
-function ConvertFromBoolean($sInput): int
-{
-    if ($sInput) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
 
 //
 // Collapses a formatted phone number as long as the Country is known
@@ -1161,29 +1118,6 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
     }
 }
 
-// Wrapper for number_format that uses the locale information
-// There are three modes: money, integer, and intmoney (whole number money)
-function formatNumber($iNumber, $sMode = 'integer'): string
-{
-    global $aLocaleInfo;
-
-    switch ($sMode) {
-        case 'money':
-            return $aLocaleInfo['currency_symbol'] . ' ' . number_format($iNumber, $aLocaleInfo['frac_digits'], $aLocaleInfo['mon_decimal_point'], $aLocaleInfo['mon_thousands_sep']);
-
-        case 'intmoney':
-            return $aLocaleInfo['currency_symbol'] . ' ' . number_format($iNumber, 0, '', $aLocaleInfo['mon_thousands_sep']);
-
-        case 'float':
-            $iDecimals = 2; // need to calculate # decimals in original number
-            return number_format($iNumber, $iDecimals, $aLocaleInfo['mon_decimal_point'], $aLocaleInfo['mon_thousands_sep']);
-
-        case 'integer':
-        default:
-            return number_format($iNumber, 0, '', $aLocaleInfo['mon_thousands_sep']);
-    }
-}
-
 function FilenameToFontname(string $filename, string $family): string
 {
     if ($filename == $family) {
@@ -1526,14 +1460,9 @@ function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, s
     }
 }
 
-function random_color_part(): string
-{
-    return str_pad(dechex(random_int(0, 255)), 2, '0', STR_PAD_LEFT);
-}
-
 function random_color(): string
 {
-    return random_color_part() . random_color_part() . random_color_part();
+    return bin2hex(random_bytes(3));
 }
 
 function generateGroupRoleEmailDropdown(array $roleEmails, string $href): void

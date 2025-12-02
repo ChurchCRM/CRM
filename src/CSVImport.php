@@ -694,7 +694,7 @@ if (isset($_POST['DoImport'])) {
                             } elseif ($currentType === 1) {
                                 // If boolean, convert to the expected values for custom field
                                 if (strlen($currentFieldData)) {
-                                    $currentFieldData = ConvertToBoolean($currentFieldData);
+                                    $currentFieldData = filter_var($currentFieldData, FILTER_VALIDATE_BOOLEAN) || strtolower($currentFieldData) === 'si';
                                 }
                             } else {
                                 // Sanitize to prevent XSS - strip HTML tags from input
@@ -748,7 +748,7 @@ if (isset($_POST['DoImport'])) {
                         } elseif ($currentType === 1) {
                             // If boolean, convert to the expected values for custom field
                             if (strlen($currentFieldData)) {
-                                $currentFieldData = ConvertToBoolean($currentFieldData);
+                                $currentFieldData = filter_var($currentFieldData, FILTER_VALIDATE_BOOLEAN) || strtolower($currentFieldData) === 'si';
                             }
                         } else {
                             // Sanitize to prevent XSS - strip HTML tags from input
