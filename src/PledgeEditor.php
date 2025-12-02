@@ -463,10 +463,16 @@ if ($iCurrentDeposit) {
 }
 
 if ($PledgeOrPayment === 'Pledge') {
-    $sPageTitle = gettext('Pledge Editor');
+    $sPageTitle = '<i class="fa-solid fa-file-signature text-warning mr-2"></i>' . gettext('New Pledge');
+    $cardHeaderClass = 'bg-warning';
+    $cardHeaderTextClass = 'text-dark';
+    $formTypeLabel = gettext('Pledge');
 } elseif ($iCurrentDeposit) {
     $dep_DateFormatted = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
-    $sPageTitle = gettext('Payment Editor: ') . $dep_Type . gettext(' Deposit Slip #') . $iCurrentDeposit . " ($dep_DateFormatted)";
+    $sPageTitle = '<i class="fa-solid fa-hand-holding-dollar text-primary mr-2"></i>' . gettext('New Payment') . ' - ' . $dep_Type . gettext(' Deposit #') . $iCurrentDeposit . " ($dep_DateFormatted)";
+    $cardHeaderClass = 'bg-primary';
+    $cardHeaderTextClass = 'text-white';
+    $formTypeLabel = gettext('Payment');
 
     $checksFit = SystemConfig::getValue('iChecksPerDepositForm');
 
@@ -490,12 +496,15 @@ if ($PledgeOrPayment === 'Pledge') {
     if ($roomForDeposits <= 0) {
         $sPageTitle .= '</span>';
     }
-} else { // not a plege and a current deposit hasn't been created yet
+} else { // not a pledge and a current deposit hasn't been created yet
     if ($sGroupKey) {
-        $sPageTitle = gettext('Payment Editor - Modify Existing Payment');
+        $sPageTitle = '<i class="fa-solid fa-pen-to-square text-info mr-2"></i>' . gettext('Edit Payment');
     } else {
-        $sPageTitle = gettext('Payment Editor - New Deposit Slip Will Be Created');
+        $sPageTitle = '<i class="fa-solid fa-hand-holding-dollar text-primary mr-2"></i>' . gettext('New Payment') . ' - ' . gettext('New Deposit Will Be Created');
     }
+    $cardHeaderClass = 'bg-primary';
+    $cardHeaderTextClass = 'text-white';
+    $formTypeLabel = gettext('Payment');
 } // end if $PledgeOrPayment
 
 if ($dep_Closed && $sGroupKey && $PledgeOrPayment === 'Payment') {
@@ -517,11 +526,28 @@ require_once 'Include/Header.php';
 
 <form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= $sGroupKey ?>&PledgeOrPayment=<?= $PledgeOrPayment ?>&linkBack=<?= $linkBack ?>" name="PledgeEditor">
 
+    <!-- Mode Indicator Banner -->
+    <div class="row mb-3">
+        <div class="col-lg-12">
+            <div class="alert <?= $PledgeOrPayment === 'Pledge' ? 'alert-warning' : 'alert-primary' ?> d-flex align-items-center" role="alert">
+                <i class="fa-solid <?= $PledgeOrPayment === 'Pledge' ? 'fa-file-signature' : 'fa-hand-holding-dollar' ?> fa-2x mr-3"></i>
+                <div>
+                    <strong><?= $PledgeOrPayment === 'Pledge' ? gettext('Recording a Pledge') : gettext('Recording a Payment') ?></strong>
+                    <p class="mb-0 small">
+                        <?= $PledgeOrPayment === 'Pledge' 
+                            ? gettext('A pledge is a commitment to give. It is not tied to a deposit slip.') 
+                            : gettext('A payment is an actual donation received. It will be added to the current deposit.') ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header with-border">
-                    <h3 class="card-title"><?= gettext("Payment Details") ?></h3>
+                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?> with-border">
+                    <h3 class="card-title"><?= $formTypeLabel ?> <?= gettext('Details') ?></h3>
                 </div>
                 <div class="card-body">
                     <input type="hidden" name="FamilyID" id="FamilyID" value="<?= $iFamily ?>">
@@ -686,8 +712,8 @@ require_once 'Include/Header.php';
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header with-border">
-                    <h3 class="card-title"><?= gettext("Fund Split") ?></h3>
+                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?> with-border">
+                    <h3 class="card-title"><?= $formTypeLabel ?> <?= gettext('Fund Allocation') ?></h3>
                 </div>
                 <div class="card-body">
                     <table class="table">
