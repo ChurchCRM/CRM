@@ -201,7 +201,7 @@ class PersonService
             if ($familyId == $fam_ID) {
                 $html .= ' selected';
             }
-            $html .= '>' . $fam_Data;
+            $html .= '>' . $fam_Data . '</option>';
         }
 
         return $html;
