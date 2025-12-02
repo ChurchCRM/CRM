@@ -7,6 +7,23 @@ describe("Financial Reports", () => {
         cy.setupAdminSession();
     });
 
+    it("Navigate to Financial Reports from Dashboard", () => {
+        cy.visit("/finance/");
+        cy.contains("Finance Dashboard");
+        
+        // Click Generate Reports from Quick Actions
+        cy.contains("a", "Generate Reports").click();
+        cy.url().should("contain", "/finance/reports");
+        cy.contains("Financial Reports");
+    });
+
+    it("Navigate to Giving Report from Reports Index", () => {
+        cy.visit("/finance/reports");
+        cy.contains("Giving Report (Tax Statements)").click();
+        cy.url().should("contain", "FinancialReports.php");
+        cy.contains("Financial Reports");
+    });
+
     it("Giving Report", () => {
         cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
