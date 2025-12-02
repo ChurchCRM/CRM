@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Utils\PhpVersion;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -11,7 +12,13 @@ $app->group('/', function (RouteCollectorProxy $group): void {
     $getHandler = function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
-        if (version_compare(phpversion(), '8.2.0', '<')) {
+        
+        try {
+            if (version_compare(phpversion(), PhpVersion::getRequiredPhpVersion(), '<')) {
+                $renderPage = 'setup-error.php';
+            }
+        } catch (\RuntimeException $e) {
+            // System cannot determine PHP requirements during setup - show error
             $renderPage = 'setup-error.php';
         }
 
