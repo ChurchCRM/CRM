@@ -511,7 +511,6 @@ if ($dep_Closed && $sGroupKey && $PledgeOrPayment === 'Payment') {
     $sPageTitle .= ' &nbsp; <span class="text-danger">' . gettext('Deposit closed') . '</span>';
 }
 
-//$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
 $sFamilyName = '';
 if ($iFamily) {
     $family = FamilyQuery::create()->findPk((int)$iFamily);

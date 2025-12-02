@@ -1,7 +1,10 @@
 <?php
 
+// Get required PHP version from utility (composer.json -> config.platform.php)
+$requiredPhp = \ChurchCRM\Utils\PhpVersion::getRequiredPhpVersion();
+
 $phpVersion = phpversion();
-if (version_compare($phpVersion, '8.2.0', '<')) {
+if (version_compare($phpVersion, $requiredPhp, '<')) {
     $redirectHeader = 'Location: php-error.html';
     if ($phpVersion) {
         header('X-PHP-Version: ' . $phpVersion);
