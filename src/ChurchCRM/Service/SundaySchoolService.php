@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\Utils\Functions;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class SundaySchoolService
@@ -86,7 +87,7 @@ class SundaySchoolService
               and lst.lst_OptionID = person_grp.p2g2r_rle_ID
               and lst.lst_OptionName = '" . $role . "'
             order by per_FirstName";
-        $rsMembers = RunQuery($sql);
+        $rsMembers = Functions::runQuery($sql);
         $members = [];
         while ($row = mysqli_fetch_assoc($rsMembers)) {
             $members[] = $row;
@@ -219,7 +220,7 @@ class SundaySchoolService
 
             order by grp.grp_Name, fam.fam_Name";
 
-        $rsKids = RunQuery($sSQL);
+        $rsKids = Functions::runQuery($sSQL);
         $kids = [];
         while ($row = mysqli_fetch_assoc($rsKids)) {
             $kids[] = $row;
@@ -266,7 +267,7 @@ where
                 person_grp.p2g2r_per_ID = kid.per_ID
         )
 SQL;
-        $rsKidsMissing = RunQuery($sSQL);
+        $rsKidsMissing = Functions::runQuery($sSQL);
         $kids = [];
         while ($row = mysqli_fetch_array($rsKidsMissing)) {
             $kids[] = $row;

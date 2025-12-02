@@ -3,6 +3,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\Service\AuthService;
+use ChurchCRM\Utils\Functions;
 
 class DepositService {
     /**
@@ -64,7 +65,7 @@ class DepositService {
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
                 $q = 'DELETE FROM pledge_plg WHERE plg_depID = ' . $iDepositSlipID . ' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
-                \RunQuery($q);
+                Functions::runQuery($q);
             }
         } else {
             $deposit = new \ChurchCRM\model\ChurchCRM\Deposit();
