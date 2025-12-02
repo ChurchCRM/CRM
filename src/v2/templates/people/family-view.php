@@ -6,6 +6,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -391,8 +392,8 @@ foreach ($family->getPeople() as $personCandidate) {
                                 <strong><?= gettext('Latest Note') ?></strong>
                                 <small class="text-muted"><?= date('Y-m-d H:i', strtotime($latestNote['datetime'])) ?></small>
                             </div>
-                            <p class="mb-1"><?= $latestNote['text'] ?></p>
-                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $latestNote['header'] ?></small>
+                            <p class="mb-1"><?= InputUtils::escapeHTML($latestNote['text']) ?></p>
+                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= InputUtils::escapeHTML($latestNote['header']) ?></small>
                         </div>
                     <?php } ?>
                     <?php if (empty($familyNotes)) { ?>
@@ -432,9 +433,9 @@ foreach ($family->getPeople() as $personCandidate) {
                                         </td>
                                         <td style="width: 99%; vertical-align: top;">
                                             <div style="margin-bottom: 8px;">
-                                                <?= $note['text'] ?>
+                                                <?= InputUtils::escapeHTML($note['text']) ?>
                                             </div>
-                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $note['header'] ?></small>
+                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= InputUtils::escapeHTML($note['header']) ?></small>
                                         </td>
                                     </tr>
                                 <?php } ?>
