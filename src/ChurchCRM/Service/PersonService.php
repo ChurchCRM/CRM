@@ -124,4 +124,85 @@ class PersonService
             ->filterByVolID($opportunityId)
             ->delete();
     }
-}
+
+    /**
+     * Get a list of families with head of household information.
+     *
+     * @return array<int, string> Family list keyed by family ID, with formatted name and household head info
+     */
+    public function getFamilyList(string $dirRoleHead, string $dirRoleSpouse, int $classification = 0, ?string $searchTerm = null): array
+    {
+        if ($classification) {
+            if ($searchTerm) {
+                $whereClause = " WHERE per_cls_ID='" . $classification . "' AND fam_Name LIKE '%" . $searchTerm . "%' ";
+            } else {
+                $whereClause = " WHERE per_cls_ID='" . $classification . "' ";
+            }
+            $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID $whereClause ORDER BY fam_Name";
+        } else {
+            if ($searchTerm) {
+                $whereClause = " WHERE fam_Name LIKE '%" . $searchTerm . "%' ";
+            } else {
+                $whereClause = '';
+            }
+            $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam $whereClause ORDER BY fam_Name";
+        }
+
+        $rsFamilies = Functions::runQuery($sSQL);
+
+        // Build Criteria for Head of Household
+        if (!$dirRoleHead) {
+            $dirRoleHead = '1';
+        }
+        $head_criteria = ' per_fmr_ID = ' . $dirRoleHead;
+        // If more than one role assigned to Head of Household, add OR
+        $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
+        // Add Spouse to criteria
+        if (intval($dirRoleSpouse) > 0) {
+            $head_criteria .= " OR per_fmr_ID = $dirRoleSpouse";
+        }
+        // Build array of Head of Households and Spouses with fam_ID as the key
+        $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
+        $rs_head = Functions::runQuery($sSQL);
+        $aHead = [];
+        while ([$head_firstname, $head_famid] = mysqli_fetch_row($rs_head)) {
+            if ($head_firstname && isset($aHead[$head_famid])) {
+                $aHead[$head_famid] .= ' & ' . $head_firstname;
+            } elseif ($head_firstname) {
+                $aHead[$head_famid] = $head_firstname;
+            }
+        }
+        $familyArray = [];
+        while ($aRow = mysqli_fetch_array($rsFamilies)) {
+            extract($aRow);
+            $name = $fam_Name;
+            if (isset($aHead[$fam_ID])) {
+                $name .= ', ' . $aHead[$fam_ID];
+            }
+            $name .= ' ' . \FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+
+            $familyArray[$fam_ID] = $name;
+        }
+
+        return $familyArray;
+    }
+
+    /**
+     * Build a family select dropdown HTML.
+     *
+     * @return string HTML option tags for family select dropdown
+     */
+    public function buildFamilySelect(int $familyId, string $dirRoleHead, string $dirRoleSpouse): string
+    {
+        $familyArray = $this->getFamilyList($dirRoleHead, $dirRoleSpouse);
+        $html = '';
+        foreach ($familyArray as $fam_ID => $fam_Data) {
+            $html .= '<option value="' . $fam_ID . '"';
+            if ($familyId == $fam_ID) {
+                $html .= ' selected';
+            }
+            $html .= '>' . $fam_Data;
+        }
+
+        return $html;
+    }

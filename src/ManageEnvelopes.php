@@ -8,6 +8,7 @@ require_once 'Include/EnvelopeFunctions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -30,7 +31,8 @@ $envelopesToWrite = [];
 $envelopesByFamID = getEnvelopes($iClassification);
 
 // Get the array of family name/description strings, also indexed by family ID
-$familyArray = getFamilyList(SystemConfig::getValue('sDirRoleHead'), SystemConfig::getValue('sDirRoleSpouse'), $iClassification);
+$personService = new PersonService();
+$familyArray = $personService->getFamilyList(SystemConfig::getValue('sDirRoleHead'), SystemConfig::getValue('sDirRoleSpouse'), $iClassification);
 asort($familyArray);
 
 if (isset($_POST['Confirm'])) {
