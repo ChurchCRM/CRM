@@ -9,11 +9,13 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
+$personService = new PersonService();
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
@@ -43,14 +45,14 @@ if (isset($_POST['VolunteerOpportunityAssign']) && AuthenticationManager::getCur
     $volIDs = $_POST['VolunteerOpportunityIDs'];
     if ($volIDs) {
         foreach ($volIDs as $volID) {
-            AddVolunteerOpportunity($iPersonID, $volID);
+            $personService->addVolunteerOpportunity((int)$iPersonID, (int)$volID);
         }
     }
 }
 
 // Service remove-volunteer-opportunity (these links set RemoveVO)
 if ($iRemoveVO > 0 && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-    RemoveVolunteerOpportunity($iPersonID, $iRemoveVO);
+    $personService->removeVolunteerOpportunity((int)$iPersonID, $iRemoveVO);
 }
 
 // Get this person's data

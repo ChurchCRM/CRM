@@ -177,22 +177,6 @@ function RunQuery(string $sSQL, bool $bStopOnError = true)
     return \ChurchCRM\Utils\Functions::runQuery($sSQL, $bStopOnError);
 }
 
-//
-// Adds a volunteer opportunity assignment to a person
-//
-function AddVolunteerOpportunity(string $iPersonID, string $iVolID)
-{
-    $sSQL = 'INSERT INTO person2volunteeropp_p2vo (p2vo_per_ID, p2vo_vol_ID) VALUES (' . $iPersonID . ', ' . $iVolID . ')';
-
-    return RunQuery($sSQL, false);
-}
-
-function RemoveVolunteerOpportunity(string $iPersonID, string $iVolID): void
-{
-    $sSQL = 'DELETE FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = ' . $iPersonID . ' AND p2vo_vol_ID = ' . $iVolID;
-    RunQuery($sSQL);
-}
-
 function convertCartToString(array $aCartArray): string
 {
     // Implode the array
