@@ -12,7 +12,13 @@ $app->group('/', function (RouteCollectorProxy $group): void {
     $getHandler = function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
-        if (version_compare(phpversion(), PhpVersion::getRequiredPhpVersion(), '<')) {
+        
+        try {
+            if (version_compare(phpversion(), PhpVersion::getRequiredPhpVersion(), '<')) {
+                $renderPage = 'setup-error.php';
+            }
+        } catch (\RuntimeException $e) {
+            // System cannot determine PHP requirements during setup - show error
             $renderPage = 'setup-error.php';
         }
 

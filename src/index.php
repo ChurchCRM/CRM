@@ -9,7 +9,17 @@ use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\PhpVersion;
 
 // Get required PHP version from composer.json (single source of truth)
-$requiredPhp = PhpVersion::getRequiredPhpVersion();
+// Throws RuntimeException if system state cannot be determined
+try {
+    $requiredPhp = PhpVersion::getRequiredPhpVersion();
+} catch (\RuntimeException $e) {
+    // System cannot determine PHP requirements - fail loudly with clear error
+    http_response_code(500);
+    header('Content-Type: text/plain; charset=utf-8');
+    echo "Critical System Error: " . $e->getMessage() . "\n\n";
+    echo "Please contact your system administrator or check your ChurchCRM installation.";
+    exit(1);
+}
 
 $phpVersion = phpversion();
 if (version_compare($phpVersion, $requiredPhp, '<')) {
