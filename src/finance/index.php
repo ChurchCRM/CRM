@@ -52,15 +52,20 @@ $errorMiddleware->setDefaultErrorHandler(function (
         return $response->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/finance/');
     }
     
+    // Log full error details server-side for debugging
     $logger->error('Finance error', [
         'exception' => get_class($exception),
-        'message' => $exception->getMessage()
+        'message' => $exception->getMessage(),
+        'file' => $exception->getFile(),
+        'line' => $exception->getLine(),
+        'trace' => $exception->getTraceAsString()
     ]);
     
+    // Return generic message to client to avoid exposing sensitive internals
     $response = $app->getResponseFactory()->createResponse(500);
     return SlimUtils::renderJSON($response, [
         'success' => false,
-        'error' => $exception->getMessage()
+        'error' => gettext('An unexpected error occurred. Please contact your administrator.')
     ]);
 });
 
