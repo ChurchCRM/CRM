@@ -106,11 +106,13 @@ foreach ($family->getPeople() as $personCandidate) {
                             <i class="fa-solid fa-cart-plus"></i><br><?= gettext('Cart') ?>
                         </a>
                     </div>
+                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <div class="col-6 mb-2">
                         <a class="btn btn-warning btn-block" id="activateDeactivate">
                             <i class="fa-solid fa-power-off"></i><br><?= ($family->isActive() ? gettext('Deactivate') : gettext('Activate')) ?>
                         </a>
                     </div>
+                    <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                     <div class="col-6 mb-2">
                         <a class="btn btn-danger btn-block" id="deleteFamilyBtn" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>">
