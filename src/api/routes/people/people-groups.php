@@ -117,7 +117,11 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         }
         $group->setName(strip_tags($groupSettings['groupName']));
         $group->setDescription(strip_tags($groupSettings['description'] ?? ''));
-        $group->setType($groupSettings['groupType'] ?? 0);
+        // Only set the explicit group type if it was provided in the request.
+        // This prevents overwriting types set by helper methods like makeSundaySchool().
+        if (isset($groupSettings['groupType'])) {
+            $group->setType($groupSettings['groupType']);
+        }
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });

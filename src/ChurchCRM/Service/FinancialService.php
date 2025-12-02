@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Utils\Functions;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\AuthService;
@@ -81,7 +82,7 @@ class FinancialService
             throw new \Exception('error in locating family');
         }
         $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
-        $rsFam = RunQuery($sSQL);
+        $rsFam = Functions::runQuery($sSQL);
         $row = mysqli_fetch_array($rsFam);
         $iCheckNo = $micrObj->findCheckNo($tScanString);
 
@@ -107,7 +108,7 @@ class FinancialService
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
                 $q = 'DELETE FROM pledge_plg WHERE plg_depID = ' . $iDepositSlipID . ' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
-                RunQuery($q);
+                Functions::runQuery($q);
             }
         } else {
             $deposit = new Deposit();
@@ -133,7 +134,7 @@ class FinancialService
         }
         // Get deposit total
         $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' " . $sqlClause;
-        $rsDepositTotal = RunQuery($sSQL);
+        $rsDepositTotal = Functions::runQuery($sSQL);
         [$deposit_total] = mysqli_fetch_row($rsDepositTotal);
 
         return $deposit_total;
@@ -195,7 +196,7 @@ class FinancialService
         $sSQL = 'SELECT count(plg_FamID) from pledge_plg
                  WHERE plg_CheckNo = ' . $checkNumber . ' AND
                  plg_FamID = ' . $fam_ID;
-        $rCount = RunQuery($sSQL);
+        $rCount = Functions::runQuery($sSQL);
 
         return mysqli_fetch_array($rCount)[0];
     }
@@ -232,7 +233,7 @@ class FinancialService
             }
             $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
       VALUES ('" . $groupKey . "','" . $payment->DepositID . "','" . $cdom->currencyID . "','" . $cdom->Count . "')";
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
             unset($sSQL);
         }
     }
@@ -314,7 +315,7 @@ class FinancialService
         AuthService::requireUserGroupMembership('bFinance');
         $total = 0;
         $sSQL = 'SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey="' . $GroupKey . '"';
-        $rsKeys = RunQuery($sSQL);
+        $rsKeys = Functions::runQuery($sSQL);
         $payment = new \stdClass();
         $payment->funds = [];
         while ($aRow = mysqli_fetch_array($rsKeys)) {
@@ -380,7 +381,7 @@ class FinancialService
                  where  plg_depID = ' . $depositID . '
                  AND
                  pdem_denominationID = ' . $currencyID;
-        $rscurrencyDenomination = RunQuery($sSQL);
+        $rscurrencyDenomination = Functions::runQuery($sSQL);
 
         return mysqli_fetch_array($rscurrencyDenomination)[0];
     }
@@ -393,7 +394,7 @@ class FinancialService
         $currencies = [];
         // Get the list of Currency denominations
         $sSQL = 'SELECT * FROM currency_denominations_cdem';
-        $rscurrencyDenomination = RunQuery($sSQL);
+        $rscurrencyDenomination = Functions::runQuery($sSQL);
         mysqli_data_seek($rscurrencyDenomination, 0);
         while ($row = mysqli_fetch_array($rscurrencyDenomination)) {
             $currency = new \stdClass();
@@ -416,7 +417,7 @@ class FinancialService
         $funds = [];
         $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
         $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-        $rsFunds = RunQuery($sSQL);
+        $rsFunds = Functions::runQuery($sSQL);
         mysqli_data_seek($rsFunds, 0);
         while ($aRow = mysqli_fetch_array($rsFunds)) {
             $fund = new \stdClass();
