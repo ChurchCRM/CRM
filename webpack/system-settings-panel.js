@@ -315,7 +315,6 @@ import '../src/skin/scss/system-settings-panel.scss';
 
         // Render the panel HTML
         render() {
-            const self = this;
             let settingsHtml = '';
 
             this.options.settings.forEach(setting => {
