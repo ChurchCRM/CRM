@@ -4,6 +4,12 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+// Calculate data quality status
+$hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 || 
+                        $classificationDataCheckCount > 0 || $familyCoordinatesCheckCount > 0;
+$totalDataIssues = $genderDataCheckCount + $roleDataCheckCount + 
+                   $classificationDataCheckCount + $familyCoordinatesCheckCount;
 ?>
 
 <!-- Small boxes (Stat box) -->
@@ -112,6 +118,43 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php
     } ?>
 </div><!-- /.row -->
+
+<?php if ($hasDataQualityIssues): ?>
+<!-- Row 2: Data Quality Alert -->
+<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+    <div class="d-flex align-items-center">
+        <div class="mr-3">
+            <i class="fa-solid fa-clipboard-check fa-2x"></i>
+        </div>
+        <div class="flex-grow-1">
+            <strong><?= gettext('Data Quality:') ?></strong>
+            <?php 
+            $issues = [];
+            if ($genderDataCheckCount > 0) {
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Gender=0" class="alert-link">' . 
+                            sprintf(gettext('%d missing gender'), $genderDataCheckCount) . '</a>';
+            }
+            if ($roleDataCheckCount > 0) {
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?FamilyRole=0" class="alert-link">' . 
+                            sprintf(gettext('%d missing role'), $roleDataCheckCount) . '</a>';
+            }
+            if ($classificationDataCheckCount > 0) {
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Classification=0" class="alert-link">' . 
+                            sprintf(gettext('%d missing classification'), $classificationDataCheckCount) . '</a>';
+            }
+            if ($familyCoordinatesCheckCount > 0) {
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/GeoPage.php" class="alert-link">' . 
+                            sprintf(gettext('%d families missing coordinates'), $familyCoordinatesCheckCount) . '</a>';
+            }
+            echo implode(' · ', $issues);
+            ?>
+        </div>
+    </div>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<?php endif; ?>
 
 <div class="row">
     <div class="card col-md-6">

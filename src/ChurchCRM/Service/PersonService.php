@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\Functions;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -206,3 +207,44 @@ class PersonService
 
         return $html;
     }
+
+    /**
+     * Get count of people missing gender data.
+     *
+     * @return int Count of people with Gender = 0 (excluding system record)
+     */
+    public function getMissingGenderDataCount(): int
+    {
+        return PersonQuery::create()
+            ->filterByGender(0)
+            ->filterById(1, Criteria::NOT_EQUAL)
+            ->count();
+    }
+
+    /**
+     * Get count of people missing family role data.
+     *
+     * @return int Count of people with FmrId = 0 and assigned to a family
+     */
+    public function getMissingRoleDataCount(): int
+    {
+        return PersonQuery::create()
+            ->filterByFmrId(0)
+            ->filterById(1, Criteria::NOT_EQUAL)
+            ->filterByFamId('', Criteria::NOT_EQUAL)
+            ->count();
+    }
+
+    /**
+     * Get count of people missing classification data.
+     *
+     * @return int Count of people with ClsId = 0 (excluding system record)
+     */
+    public function getMissingClassificationDataCount(): int
+    {
+        return PersonQuery::create()
+            ->filterByClsId(0)
+            ->filterById(1, Criteria::NOT_EQUAL)
+            ->count();
+    }
+}

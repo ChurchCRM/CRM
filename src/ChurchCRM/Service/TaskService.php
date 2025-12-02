@@ -12,9 +12,6 @@ use ChurchCRM\Tasks\ChurchNameTask;
 use ChurchCRM\Tasks\EmailTask;
 use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
-use ChurchCRM\Tasks\PersonClassificationDataCheck;
-use ChurchCRM\Tasks\PersonGenderDataCheck;
-use ChurchCRM\Tasks\PersonRoleDataCheck;
 use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
 use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
 use ChurchCRM\Tasks\PrerequisiteCheckTask;
@@ -22,7 +19,6 @@ use ChurchCRM\Tasks\PreUpgradeTaskInterface;
 use ChurchCRM\Tasks\SecretsConfigurationCheckTask;
 use ChurchCRM\Tasks\TaskInterface;
 use ChurchCRM\Tasks\UnsupportedDepositCheck;
-use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 
 class TaskService
 {
@@ -43,10 +39,6 @@ class TaskService
             new EmailTask(),
             new HttpsTask(),
             new IntegrityCheckTask(),
-            new PersonGenderDataCheck(),
-            new PersonClassificationDataCheck(),
-            new PersonRoleDataCheck(),
-            new UpdateFamilyCoordinatesTask(),
             new CheckUploadSizeTask(),
             new CheckExecutionTimeTask(),
             new UnsupportedDepositCheck(),
