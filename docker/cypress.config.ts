@@ -20,6 +20,8 @@ export default defineConfig({
     'admin.password': 'changeme',
     'standard.username': 'tony.wade@example.com',
     'standard.password': 'basicjoe',
+    'nofinance.username': 'judith.matthews@example.com',
+    'nofinance.password': 'noMoney$',
   },
   retries: 1,
   numTestsKeptInMemory: 0,

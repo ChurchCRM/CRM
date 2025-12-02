@@ -64,6 +64,12 @@ declare namespace Cypress {
     setupStandardSession(options?: { forceLogin?: boolean }): Chainable<void>;
 
     /**
+     * Ensure a no-finance user session is active (optionally forcing a fresh login)
+     * Used to test that finance pages correctly deny access to non-finance users
+     */
+    setupNoFinanceSession(options?: { forceLogin?: boolean }): Chainable<void>;
+
+    /**
      * Wait for page to be fully loaded
      */
     waitForPageLoad(): Chainable<void>;

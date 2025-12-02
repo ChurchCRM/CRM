@@ -79,6 +79,22 @@ Cypress.Commands.add('setupStandardSession', (options = {}) => {
 });
 
 /**
+ * Sets up a cached session for a user WITHOUT finance permissions.
+ * Used to test that finance pages correctly deny access to non-finance users.
+ * Reads credentials from cypress.config.ts env configuration.
+ * Usage in test files:
+ *   beforeEach(() => cy.setupNoFinanceSession());
+ */
+Cypress.Commands.add('setupNoFinanceSession', (options = {}) => {
+    const username = Cypress.env('nofinance.username');
+    const password = Cypress.env('nofinance.password');
+    if (!username || !password) {
+        throw new Error('No-finance user credentials not configured in cypress.config.ts env: nofinance.username and nofinance.password required');
+    }
+    cy.setupLoginSession('nofinance-session', username, password, options);
+});
+
+/**
  * cy.loginWithCredentials(username, password, sessionName, expectSuccess = true)
  * Login with custom credentials (for testing password changes, etc.)
  * Creates a new session with the provided credentials
