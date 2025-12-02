@@ -173,22 +173,10 @@ function MakeFYString(?int $iFYID): string
 
 // Runs an SQL query.  Returns the result resource.
 // By default stop on error, unless a second (optional) argument is passed as false.
+// Delegates to ChurchCRM\Utils\Functions::runQuery() to avoid code duplication.
 function RunQuery(string $sSQL, bool $bStopOnError = true)
 {
-    global $cnInfoCentral;
-    mysqli_query($cnInfoCentral, "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
-    if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
-        return $result;
-    } elseif ($bStopOnError) {
-        LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.') . " " . $sSQL . " -|- " . mysqli_error($cnInfoCentral));
-        if (SystemConfig::getValue('sLogLevel') == "100") { // debug level
-            throw new Exception(gettext('Cannot execute query.') . "<p>$sSQL<p>" . mysqli_error($cnInfoCentral));
-        } else {
-            throw new Exception('Database error or invalid data, change sLogLevel to debug to see more.');
-        }
-    } else {
-        return false;
-    }
+    return \ChurchCRM\Utils\Functions::runQuery($sSQL, $bStopOnError);
 }
 
 //

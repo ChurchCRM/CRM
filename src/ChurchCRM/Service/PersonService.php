@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\Functions;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
@@ -72,7 +73,7 @@ class PersonService
               where per_email != ''
 
               order by per_id;";
-        $rsPeopleWithEmails = RunQuery($sSQL);
+        $rsPeopleWithEmails = Functions::runQuery($sSQL);
         $people = [];
         $lastPersonId = 0;
         $person = [];
