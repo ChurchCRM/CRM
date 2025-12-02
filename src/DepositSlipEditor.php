@@ -5,6 +5,7 @@ require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -45,6 +46,10 @@ if ($noDeposit) {
 
 $sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number: ') . $iDepositSlipID;
 
+// Get previous and next deposits for navigation
+$prevDeposit = Deposit::getPreviousDeposit($iDepositSlipID);
+$nextDeposit = Deposit::getNextDeposit($iDepositSlipID);
+
 //Is this the second pass?
 if (isset($_POST['DepositSlipLoadAuthorized'])) {
     $thisDeposit->loadAuthorized();
@@ -61,6 +66,29 @@ $currentUser->save();
 
 require_once 'Include/Header.php';
 ?>
+<!-- Deposit Navigation -->
+<div class="row mb-3">
+  <div class="col-12">
+    <div class="d-flex justify-content-between align-items-center">
+      <a href="FindDepositSlip.php" class="btn btn-outline-secondary">
+        <i class="fa-solid fa-arrow-left"></i> <?= gettext('Back to Deposits'); ?>
+      </a>
+      <div class="btn-group" role="group" aria-label="<?= gettext('Deposit Navigation'); ?>">
+        <a href="<?= $prevDeposit ? 'DepositSlipEditor.php?DepositSlipID=' . $prevDeposit->getId() : '#'; ?>" 
+           class="btn btn-outline-primary <?= $prevDeposit ? '' : 'disabled'; ?>"
+           <?= $prevDeposit ? '' : 'aria-disabled="true"'; ?>>
+          <i class="fa-solid fa-chevron-left"></i> <?= gettext('Previous'); ?>
+        </a>
+        <a href="<?= $nextDeposit ? 'DepositSlipEditor.php?DepositSlipID=' . $nextDeposit->getId() : '#'; ?>" 
+           class="btn btn-outline-primary <?= $nextDeposit ? '' : 'disabled'; ?>"
+           <?= $nextDeposit ? '' : 'aria-disabled="true"'; ?>>
+          <?= gettext('Next'); ?> <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Deposit Slip Editor Main Container -->
 <div id="depositSlipEditorContainer">
   <div class="row">
