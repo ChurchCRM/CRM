@@ -21,17 +21,37 @@ describe("Admin User Password", () => {
 
     it("Create System Users", () => {
         cy.visit("UserList.php");
-        cy.contains("Peyton Ray").should('not.exist');
+        // Ensure clean start: if Peyton Ray already exists as a user, remove that user first
+        cy.get('body').then(($body) => {
+            if ($body.text().includes('Peyton Ray')) {
+                cy.request({ method: 'DELETE', url: '/api/user/25/', failOnStatusCode: false });
+                cy.visit('UserList.php');
+                cy.get('body').should('not.contain', 'Peyton Ray');
+            }
+        });
         cy.visit("PersonView.php?PersonID=25");
         cy.contains("Peyton Ray");
         cy.contains("Edit User").should('not.exist');
         cy.contains("Make User");
         cy.visit('UserEditor.php?NewPersonID=25');
         cy.contains("User Editor");
-        cy.get('.TextColumnWithBottomBorder > select').type('skin-yellow');
-        cy.get('tr:nth-child(14) .btn-primary').click();
-        cy.url().should('contains', 'UserList.php');
+        cy.get('.TextColumnWithBottomBorder > select').select('skin-yellow');
+        cy.get('#SaveButton').click();
+        cy.url().should('contain', 'UserList.php');
         cy.contains("Peyton Ray");
 
+        // Clean up: remove user status for PersonID=25 via API so test can be re-run
+        cy.request({
+            method: 'DELETE',
+            url: '/api/user/25/',
+            failOnStatusCode: false
+        }).then((resp) => {
+            // Expect success (200) or 204; if user wasn't created, that's fine
+            expect([200, 204, 404]).to.include(resp.status);
+        });
+
+        // Verify user no longer appears in the listing
+        cy.visit('UserList.php');
+        cy.contains('Peyton Ray').should('not.exist');
     });
 });
