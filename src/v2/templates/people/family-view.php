@@ -6,6 +6,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -18,6 +19,8 @@ $iFYID = CurrentFY();
 if (array_key_exists('idefaultFY', $_SESSION)) {
     $iFYID = MakeFYString((int) $_SESSION['idefaultFY']);
 }
+
+$memberCount = count($family->getPeople());
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -65,11 +68,59 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                         <?php endif; ?>
                     </div>
                 </div>
+                <div class="mt-3">
+                    <span class="badge badge-<?= $family->isActive() ? 'success' : 'secondary' ?> mr-1">
+                        <i class="fa-solid fa-circle"></i> <?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
+                    </span>
+                    <span class="badge badge-info mr-1">
+                        <i class="fa-solid fa-users"></i> <?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?>
+                    </span>
+                    <?php if ($family->getEnvelope()) { ?>
+                        <span class="badge badge-primary">
+                            <i class="fa-solid fa-envelope"></i> #<?= $family->getEnvelope() ?>
+                        </span>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+
+        <!-- Family Actions -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3 class="card-title m-0"><i class="fa-solid fa-bolt"></i> <?= gettext("Actions") ?></h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <a class="btn btn-default btn-block" href="#" data-toggle="modal" data-target="#confirm-verify">
+                            <i class="fa-solid fa-clipboard-check"></i><br><?= gettext('Verify') ?>
+                        </a>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <a class="btn btn-default btn-block AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                            <i class="fa-solid fa-cart-plus"></i><br><?= gettext('Cart') ?>
+                        </a>
+                    </div>
+                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+                    <div class="col-6 mb-2">
+                        <a class="btn btn-warning btn-block" id="activateDeactivate">
+                            <i class="fa-solid fa-power-off"></i><br><?= ($family->isActive() ? gettext('Deactivate') : gettext('Activate')) ?>
+                        </a>
+                    </div>
+                    <?php } ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
+                    <div class="col-6 mb-2">
+                        <a class="btn btn-danger btn-block" id="deleteFamilyBtn" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>">
+                            <i class="fa-solid fa-trash-can"></i><br><?= gettext('Delete') ?>
+                        </a>
+                    </div>
+                    <?php } ?>
+                </div>
             </div>
         </div>
 
         <!-- Address Card -->
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?></h3>
                 <div class="card-tools pull-right">
@@ -105,10 +156,10 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
             </div>
         </div>
 
-        <!-- Metadata Card -->
-        <div class="card card-primary">
+        <!-- Contact Info Card -->
+        <div class="card card-primary mb-3">
             <div class="card-header">
-                <h3 class="card-title m-0"><i class="fa-solid fa-thumbtack"></i> <?= gettext("Metadata") ?></h3>
+                <h3 class="card-title m-0"><i class="fa-solid fa-address-book"></i> <?= gettext("Contact Info") ?></h3>
                 <div class="card-tools pull-right">
                     <button type="button" class="btn btn-box-tool edit-family"><i
                             class="fa-solid fa-pen"></i>
@@ -182,7 +233,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
         </div>
 
         <!-- Properties Card -->
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag"></i> <?= gettext("Properties") ?></h3>
                 <div class="card-tools pull-right">
@@ -220,83 +271,29 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
         </div>
     </div>
 
-    <!-- RIGHT COLUMN: Buttons, Timeline, Family Members -->
+    <!-- RIGHT COLUMN: Timeline, Family Members -->
     <div class="col-lg-8">
-        <!-- Action Buttons Card -->
-        <div class="card">
-            <div class="card-body">
-                <!-- Navigation Group -->
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <div class="btn-group btn-group-sm d-flex" role="group">
-                            <a class="btn btn-outline-primary flex-fill" id="lastFamily">
-                                <i class="fa-solid fa-hand-point-left"></i> <?= gettext('Previous Family') ?>
-                            </a>
-                            <a class="btn btn-outline-primary flex-fill" role="button" href="<?= SystemURLs::getRootPath()?>/v2/family">
-                                <i class="fa-solid fa-list-ul"></i> <?= gettext('Family List') ?>
-                            </a>
-                            <a class="btn btn-outline-primary flex-fill" role="button" id="nextFamily">
-                                <i class="fa-solid fa-hand-point-right"></i> <?= gettext('Next Family') ?>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Actions Group -->
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <a class="btn btn-sm btn-outline-info" href="#" data-toggle="modal" data-target="#confirm-verify">
-                            <i class="fa-solid fa-check-square"></i> <?= gettext("Verify Info") ?>
+        <!-- Family Navigation -->
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-outline-secondary">
+                        <i class="fa-solid fa-arrow-left"></i> <?= gettext('Back to Families'); ?>
+                    </a>
+                    <div class="btn-group" role="group" aria-label="<?= gettext('Family Navigation'); ?>">
+                        <a id="lastFamily" class="btn btn-outline-primary">
+                            <i class="fa-solid fa-chevron-left"></i> <?= gettext('Previous'); ?>
                         </a>
-                        <a class="btn btn-sm btn-outline-success" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?=$family->getId()?>">
-                            <i class="fa-solid fa-plus-square"></i> <?= gettext('Add New Member') ?>
-                        </a>
-                        <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                            <button class="btn btn-sm btn-outline-warning" id="activateDeactivate">
-                                <i class="fa-solid fa-toggle-<?= (empty($family->isActive()) ? 'on' : 'off') ?>"></i>
-                                <?php echo(($family->isActive() ? _('Deactivate') : _('Activate'))); ?>
-                            </button>
-                        <?php }
-                        if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
-                            <a id="deleteFamilyBtn" class="btn btn-sm btn-outline-danger" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>">
-                                <i class="fa-solid fa-trash-can"></i> <?= gettext('Delete') ?>
-                            </a>
-                        <?php } ?>
-                    </div>
-                </div>
-
-                <!-- Utility Group -->
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                            <a class="btn btn-sm btn-outline-secondary" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId()?>">
-                                <i class="fa-solid fa-sticky-note"></i> <?= gettext("Add Note") ?>
-                            </a>
-                        <?php } ?>
-                        <button class="AddToCart btn btn-sm btn-outline-secondary" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
-                            <i class="fa-solid fa-cart-plus"></i> <?= gettext("Add to Cart") ?>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Financial Group -->
-                <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <a class="btn btn-sm btn-outline-primary" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
-                            <i class="fa-solid fa-hand-holding-dollar"></i> <?= gettext("Add a new pledge") ?>
-                        </a>
-                        <a class="btn btn-sm btn-outline-primary" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
-                            <i class="fa-solid fa-money-bill-transfer"></i> <?= gettext("Add a new payment") ?>
+                        <a id="nextFamily" class="btn btn-outline-primary">
+                            <?= gettext('Next'); ?> <i class="fa-solid fa-chevron-right"></i>
                         </a>
                     </div>
                 </div>
-                <?php } ?>
             </div>
         </div>
 
         <!-- Timeline Card -->
-        <div class="card collapsed-card">
+        <div class="card card-outline card-info collapsed-card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-history"></i> <?= gettext("Timeline") ?></h3>
                 <div class="card-tools pull-right">
@@ -371,17 +368,31 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                     $familyNotes[] = $item;
                 }
             }
+            $latestNote = !empty($familyNotes) ? $familyNotes[0] : null;
             ?>
             <!-- Notes Card -->
-            <div class="card collapsed-card">
+            <div class="card card-outline card-secondary collapsed-card mb-3">
                 <div class="card-header">
                     <h3 class="card-title m-0"><i class="fa-solid fa-sticky-note"></i> <?= gettext("Notes") ?></h3>
-                    <div class="card-tools pull-right">
+                    <div class="card-tools d-flex align-items-center">
+                        <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add a Note') ?>">
+                            <i class="fa-solid fa-plus"></i> <?= gettext('Add Note') ?>
+                        </a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                         </button>
                     </div>
                 </div>
                 <div class="card-body" style="display: none;">
+                    <?php if ($latestNote) { ?>
+                        <div class="mb-3 border rounded p-3 bg-light">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <strong><?= gettext('Latest Note') ?></strong>
+                                <small class="text-muted"><?= date('Y-m-d H:i', strtotime($latestNote['datetime'])) ?></small>
+                            </div>
+                            <p class="mb-1"><?= InputUtils::escapeHTML($latestNote['text']) ?></p>
+                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= InputUtils::escapeHTML($latestNote['header']) ?></small>
+                        </div>
+                    <?php } ?>
                     <?php if (empty($familyNotes)) { ?>
                         <div class="alert alert-info">
                             <i class="fa-solid fa-info-circle fa-fw fa-lg"></i>
@@ -419,37 +430,36 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                                         </td>
                                         <td style="width: 99%; vertical-align: top;">
                                             <div style="margin-bottom: 8px;">
-                                                <?= $note['text'] ?>
+                                                <?= InputUtils::escapeHTML($note['text']) ?>
                                             </div>
-                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $note['header'] ?></small>
+                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= InputUtils::escapeHTML($note['header']) ?></small>
                                         </td>
                                     </tr>
                                 <?php } ?>
                             </tbody>
                         </table>
                     <?php } ?>
-                    <div class="text-center mt-3">
-                        <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" class="btn btn-success">
-                            <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
-                        </a>
-                    </div>
                 </div>
             </div>
         <?php } ?>
 
-        <!-- Family Members Card - 2nd row in right column -->
-        <div class="card">
+        <!-- Family Members Card -->
+        <div class="card card-outline card-success mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof"></i> <?= gettext("Family Members") ?></h3>
-                <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                            class="fa-solid fa-minus"></i>
-                    </button>
+                <div class="card-tools d-flex align-items-center">
+                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+                        <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New Member') ?>">
+                            <i class="fa-solid fa-user-plus"></i> <?= gettext('Add Member') ?>
+                        </a>
+                    <?php } ?>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
                 </div>
             </div>
-            <div class="card-body d-flex flex-wrap justify-content-start">
+            <div class="card-body">
+                <div class="row">
                 <?php foreach ($family->getPeople() as $person) { ?>
-                    <div class="p-2" style="flex: 0 0 auto; width: 300px;">
+                    <div class="col-md-6 col-lg-4 mb-3">
                         <div class="card card-primary h-100">
                             <div class="card-body box-profile">
                                 <div class="text-center">
@@ -533,6 +543,7 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
                         </div>
                     </div>
                 <?php } ?>
+                </div>
             </div>
         </div>
     </div>
@@ -545,15 +556,37 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext("Pledges and Payments") ?></h3>
-                <div class="card-tools pull-right">
-                    <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::getCurrentUser()->isShowPledges() ? "checked" : "" ?>> <?= gettext("Show Pledges") ?>
-                    <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::getCurrentUser()->isShowPayments() ? "checked" : "" ?>> <?= gettext("Show Payments") ?>
-                    <label for="ShowSinceDate"><?= gettext("Since") ?>:</label>
-                    <input type="text" class="date-picker" id="ShowSinceDate"
-                           value="<?= AuthenticationManager::getCurrentUser()->getShowSince() ?>" maxlength="10" size="15">
-                </div>
             </div>
             <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6 mb-2">
+                        <a class="btn btn-success btn-block" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
+                            <i class="fa-solid fa-hand-holding-dollar"></i> <?= gettext('Add Pledge') ?>
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-2">
+                        <a class="btn btn-success btn-block" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
+                            <i class="fa-solid fa-money-bill-wave"></i> <?= gettext('Add Payment') ?>
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <label class="mb-0 mr-3">
+                                <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::getCurrentUser()->isShowPledges() ? "checked" : "" ?>> 
+                                <?= gettext("Show Pledges") ?>
+                            </label>
+                            <label class="mb-0 mr-3">
+                                <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::getCurrentUser()->isShowPayments() ? "checked" : "" ?>> 
+                                <?= gettext("Show Payments") ?>
+                            </label>
+                            <label class="mb-0 mr-2"><?= gettext("Since") ?>:</label>
+                            <input type="text" class="date-picker form-control form-control-sm" id="ShowSinceDate" style="width: 150px;"
+                                   value="<?= AuthenticationManager::getCurrentUser()->getShowSince() ?>" maxlength="10">
+                        </div>
+                    </div>
+                </div>
                 <div class="table-responsive">
                     <table id="pledge-payment-v2-table" class="table table-striped table-bordered data-table" style="width: 100%;">
                         <tbody></tbody>
