@@ -5,6 +5,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -158,17 +159,14 @@ function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 }
 
 // Formats a fiscal year string
-function MakeFYString(?int $iFYID): string
+function MakeFYString(int|string|null $iFYID): string
 {
-    if ($iFYID === null) {
+    if ($iFYID === null || $iFYID === '') {
         return '';
     }
-    
-    if (SystemConfig::getValue('iFYMonth') == 1) {
-        return (string) (1996 + $iFYID);
-    } else {
-        return 1995 + $iFYID . '/' . mb_substr(1996 + $iFYID, 2, 2);
-    }
+
+    // Delegate to FinancialService to centralize fiscal year formatting logic.
+    return FinancialService::formatFiscalYear((int) $iFYID);
 }
 
 // Runs an SQL query.  Returns the result resource.
