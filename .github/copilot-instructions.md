@@ -32,6 +32,13 @@ Routing & middleware
   - Routes are prefixed with `/admin/api/` when accessed from frontend
   - Use kebab-case for endpoint names (e.g., `/delete-all`)
   - AdminRoleAuthMiddleware is applied at the router level
+- **Finance Module** (consolidated at `/finance/`):
+  - Entry point: `src/finance/index.php` with Slim 4 app
+  - Routes in `src/finance/routes/` (dashboard.php, reports.php)
+  - Views in `src/finance/views/` with PhpRenderer
+  - Examples: `/finance/` (dashboard), `/finance/reports`
+  - Use FinanceRoleAuthMiddleware for security (allows admin OR finance permission)
+  - Menu entry in `src/ChurchCRM/Config/Menu/Menu.php` under "Finance"
 - **Deprecated locations** (DO NOT USE):
   - `src/v2/routes/admin/` - REMOVED (admin routes consolidated to `/admin/system/`)
   - `src/api/routes/system/` - Legacy admin APIs (no new files here)
@@ -464,6 +471,7 @@ describe('Feature X', () => {
 **Available Commands:**
 - `cy.setupAdminSession()` - Authenticates as admin (reads `admin.username`, `admin.password` from config)
 - `cy.setupStandardSession()` - Authenticates as standard user (reads `standard.username`, `standard.password` from config)
+- `cy.setupNoFinanceSession()` - Authenticates as user without finance permission (reads `nofinance.username`, `nofinance.password` from config)
 - `cy.typeInQuill()` - Rich text editor input
 
 **Credentials Configuration:**
@@ -474,6 +482,8 @@ env: {
     'admin.password': 'changeme',
     'standard.username': 'tony.wade@example.com',
     'standard.password': 'basicjoe',
+    'nofinance.username': 'judith.matthews@example.com',
+    'nofinance.password': 'noMoney$',
 }
 ```
 - DO NOT hardcode credentials in test files
@@ -598,6 +608,7 @@ Before committing code changes, verify:
 | `src/ChurchCRM/model/ChurchCRM/` | Propel ORM generated classes (don't edit) |
 | `src/api/` | REST API entry point + routes |
 | `src/admin/routes/api/` | Admin-only API endpoints (NEW - use this for admin APIs) |
+| `src/finance/` | Finance module (Slim 4 MVC) - dashboard, reports |
 | `src/Include/` | Utility functions, helpers, Config.php |
 | `src/locale/` | i18n/translation strings |
 | `src/skin/v2/` | Compiled CSS/JS from Webpack |
@@ -765,6 +776,6 @@ This ensures security vulnerabilities are not publicly disclosed and directs rep
 
 ---
 
-Last updated: November 9, 2025
+Last updated: December 1, 2025
 
 ```
