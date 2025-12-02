@@ -9,12 +9,12 @@ describe("Admin User Password", () => {
     });
 
     it("Admin Change password", () => {
-        cy.visit("v2/user/95/changePassword");
-        cy.contains("Change Password: Judith Kennedy");
+        cy.visit("v2/user/99/changePassword");
+        cy.contains("Change Password: Amanda Black");
         cy.get("#NewPassword1").type("new-user-password");
         cy.get("#NewPassword2").type("new-user-password");
         cy.get("form:nth-child(2)").submit();
-        cy.url().should("contain", "v2/user/95/changePassword");
+        cy.url().should("contain", "v2/user/99/changePassword");
         cy.contains("Password Change Successful");
     });
 
