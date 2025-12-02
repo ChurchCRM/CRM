@@ -8,6 +8,8 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\PersonService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -91,13 +93,26 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ->find()
         ->count();
 
+    // Data quality checks for people
+    $personService = new PersonService();
+    $genderDataCheckCount = $personService->getMissingGenderDataCount();
+    $roleDataCheckCount = $personService->getMissingRoleDataCount();
+    $classificationDataCheckCount = $personService->getMissingClassificationDataCount();
+
+    $familyService = new FamilyService();
+    $familyCoordinatesCheckCount = $familyService->getMissingCoordinatesCount();
+
     $pageArgs = [
-        'sRootPath'           => SystemURLs::getRootPath(),
-        'sPageTitle'          => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
-        'dashboardCounts'     => $dashboardCounts,
-        'sundaySchoolEnabled' => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
-        'depositEnabled'      => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),
-        'eventsEnabled'       => SystemConfig::getBooleanValue('bEnabledEvents'),
+        'sRootPath'                       => SystemURLs::getRootPath(),
+        'sPageTitle'                      => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
+        'dashboardCounts'                 => $dashboardCounts,
+        'sundaySchoolEnabled'             => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
+        'depositEnabled'                  => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),
+        'eventsEnabled'                   => SystemConfig::getBooleanValue('bEnabledEvents'),
+        'genderDataCheckCount'            => $genderDataCheckCount,
+        'roleDataCheckCount'              => $roleDataCheckCount,
+        'classificationDataCheckCount'    => $classificationDataCheckCount,
+        'familyCoordinatesCheckCount'     => $familyCoordinatesCheckCount,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
