@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-01 17:06-0800\n"
+"POT-Creation-Date: 2025-12-02 07:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -340,6 +340,9 @@ msgstr ""
 msgid "Add Individuals to Cart"
 msgstr ""
 
+msgid "Add Member"
+msgstr ""
+
 msgid "Add Menu"
 msgstr ""
 
@@ -419,12 +422,6 @@ msgid "Add a New Property Type"
 msgstr ""
 
 msgid "Add a Note"
-msgstr ""
-
-msgid "Add a new payment"
-msgstr ""
-
-msgid "Add a new pledge"
 msgstr ""
 
 msgid "Add any additional notes about this deposit"
@@ -863,6 +860,12 @@ msgstr ""
 msgid "Back to Deposit Slip"
 msgstr ""
 
+msgid "Back to Deposits"
+msgstr ""
+
+msgid "Back to Families"
+msgstr ""
+
 msgid "Back to Group List"
 msgstr ""
 
@@ -1178,6 +1181,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Caribbean Netherlands"
+msgstr ""
+
+msgid "Cart"
 msgstr ""
 
 msgid "Cart emptied successfully"
@@ -2071,6 +2077,9 @@ msgstr ""
 msgid "Deposit Listing"
 msgstr ""
 
+msgid "Deposit Navigation"
+msgstr ""
+
 msgid "Deposit Reports"
 msgstr ""
 
@@ -2903,6 +2912,9 @@ msgid "Family Members:"
 msgstr ""
 
 msgid "Family Name"
+msgstr ""
+
+msgid "Family Navigation"
 msgstr ""
 
 msgid "Family Photo"
@@ -4070,6 +4082,9 @@ msgstr ""
 msgid "Latest GitHub Version:"
 msgstr ""
 
+msgid "Latest Note"
+msgstr ""
+
 msgid "Latest Persons"
 msgstr ""
 
@@ -4507,9 +4522,6 @@ msgstr ""
 msgid "Menus"
 msgstr ""
 
-msgid "Metadata"
-msgstr ""
-
 msgid "Method"
 msgstr ""
 
@@ -4853,9 +4865,6 @@ msgid "Nexmo SMS From Number"
 msgstr ""
 
 msgid "Next"
-msgstr ""
-
-msgid "Next Family"
 msgstr ""
 
 msgid "Next Member"
@@ -5825,9 +5834,6 @@ msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr ""
 
 msgid "Previous"
-msgstr ""
-
-msgid "Previous Family"
 msgstr ""
 
 msgid "Price"
@@ -7908,9 +7914,6 @@ msgid "Verified In Person"
 msgstr ""
 
 msgid "Verify"
-msgstr ""
-
-msgid "Verify Info"
 msgstr ""
 
 msgid "Verify People"

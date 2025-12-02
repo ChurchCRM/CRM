@@ -4,27 +4,14 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Notification\UiNotification;
-use ChurchCRM\Tasks\CheckExecutionTimeTask;
-use ChurchCRM\Tasks\CheckLogFilesTask;
-use ChurchCRM\Tasks\CheckUploadSizeTask;
-use ChurchCRM\Tasks\ChurchAddress;
-use ChurchCRM\Tasks\ChurchNameTask;
-use ChurchCRM\Tasks\EmailTask;
-use ChurchCRM\Tasks\HttpsTask;
-use ChurchCRM\Tasks\IntegrityCheckTask;
-use ChurchCRM\Tasks\OrphanedFilesCheckTask;
-use ChurchCRM\Tasks\PersonClassificationDataCheck;
-use ChurchCRM\Tasks\PersonGenderDataCheck;
-use ChurchCRM\Tasks\PersonRoleDataCheck;
-use ChurchCRM\Tasks\PHPPendingDeprecationVersionCheckTask;
-use ChurchCRM\Tasks\PHPZipArchiveCheckTask;
-use ChurchCRM\Tasks\PrerequisiteCheckTask;
 use ChurchCRM\Tasks\PreUpgradeTaskInterface;
-use ChurchCRM\Tasks\SecretsConfigurationCheckTask;
 use ChurchCRM\Tasks\TaskInterface;
 use ChurchCRM\Tasks\UnsupportedDepositCheck;
-use ChurchCRM\Tasks\UpdateFamilyCoordinatesTask;
 
+/**
+ * Service for non-admin tasks that need to run per-page.
+ * Admin tasks have been moved to AdminService and display on the admin dashboard only.
+ */
 class TaskService
 {
     /**
@@ -37,25 +24,10 @@ class TaskService
 
     public function __construct()
     {
+        // Only non-admin tasks remain here
+        // Admin tasks are now in AdminService and shown on admin dashboard
         $this->taskClasses = [
-            new PrerequisiteCheckTask(),
-            new ChurchNameTask(),
-            new ChurchAddress(),
-            new EmailTask(),
-            new HttpsTask(),
-            new IntegrityCheckTask(),
-            new OrphanedFilesCheckTask(),
-            new PersonGenderDataCheck(),
-            new PersonClassificationDataCheck(),
-            new PersonRoleDataCheck(),
-            new UpdateFamilyCoordinatesTask(),
-            new CheckUploadSizeTask(),
-            new CheckExecutionTimeTask(),
             new UnsupportedDepositCheck(),
-            new SecretsConfigurationCheckTask(),
-            new PHPPendingDeprecationVersionCheckTask(),
-            new PHPZipArchiveCheckTask(),
-            new CheckLogFilesTask(),
         ];
     }
 
@@ -68,7 +40,7 @@ class TaskService
                     'title' => $taskClass->getTitle(),
                     'link' => $taskClass->getLink(),
                     'admin' => $taskClass->isAdmin(),
-                    'desc' => $taskClass->getDesc()
+                    'desc' => $taskClass->getDesc(),
                 ];
             }
         }
