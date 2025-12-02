@@ -9,13 +9,13 @@ function initializeFamilyView() {
         if (data?.PreFamilyId) {
             $("#lastFamily").attr("href", `${window.CRM.root}/v2/family/${data.PreFamilyId}`);
         } else {
-            $("#lastFamily").addClass("hidden");
+            $("#lastFamily").addClass("disabled").attr("aria-disabled", "true").removeAttr("href");
         }
 
         if (data?.NextFamilyId) {
             $("#nextFamily").attr("href", `${window.CRM.root}/v2/family/${data.NextFamilyId}`);
         } else {
-            $("#nextFamily").addClass("hidden");
+            $("#nextFamily").addClass("disabled").attr("aria-disabled", "true").removeAttr("href");
         }
     });
 
