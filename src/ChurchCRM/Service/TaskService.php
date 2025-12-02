@@ -12,7 +12,6 @@ use ChurchCRM\Tasks\ChurchNameTask;
 use ChurchCRM\Tasks\EmailTask;
 use ChurchCRM\Tasks\HttpsTask;
 use ChurchCRM\Tasks\IntegrityCheckTask;
-use ChurchCRM\Tasks\OrphanedFilesCheckTask;
 use ChurchCRM\Tasks\PersonClassificationDataCheck;
 use ChurchCRM\Tasks\PersonGenderDataCheck;
 use ChurchCRM\Tasks\PersonRoleDataCheck;
@@ -44,7 +43,6 @@ class TaskService
             new EmailTask(),
             new HttpsTask(),
             new IntegrityCheckTask(),
-            new OrphanedFilesCheckTask(),
             new PersonGenderDataCheck(),
             new PersonClassificationDataCheck(),
             new PersonRoleDataCheck(),
