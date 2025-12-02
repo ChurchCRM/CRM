@@ -1,16 +1,27 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\AdminService;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Utils\VersionUtils;
 
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+// Initialize admin service for dashboard checks
+$adminService = new AdminService();
+$setupTasks = $adminService->getSetupTasks();
+$systemWarnings = $adminService->getSystemWarnings();
+$hasSetupTasks = count($setupTasks) > 0;
+$hasWarnings = count($systemWarnings) > 0;
 
 // Get system status info
 $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
 $integrityPassed = $integrityStatus === 'Passed';
 $orphanedFiles = AppIntegrityService::getOrphanedFiles();
 $hasOrphanedFiles = count($orphanedFiles) > 0;
+
+// Calculate overall health status
+$healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCriticalWarnings();
 ?>
 
 <!-- Load admin dashboard CSS -->
@@ -26,6 +37,54 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
             <p class="text-muted mb-0"><?= gettext("Let's get your system set up and ready to use") ?></p>
         </div>
     </div>
+
+    <?php if ($hasWarnings): ?>
+    <!-- System Warnings Alert -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <div class="d-flex align-items-start">
+            <div class="mr-3">
+                <i class="fa-solid fa-exclamation-triangle fa-2x"></i>
+            </div>
+            <div class="flex-grow-1">
+                <strong><?= gettext('System Configuration:') ?></strong>
+                <?php 
+                $warningLinks = [];
+                foreach ($systemWarnings as $warning) {
+                    $warningLinks[] = '<a href="' . $warning['link'] . '" class="alert-link">' . $warning['title'] . '</a>';
+                }
+                echo implode(' · ', $warningLinks);
+                ?>
+            </div>
+        </div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <?php endif; ?>
+
+    <?php if ($hasSetupTasks): ?>
+    <!-- Setup Tasks Alert -->
+    <div class="alert alert-info alert-dismissible fade show" role="alert">
+        <div class="d-flex align-items-start">
+            <div class="mr-3">
+                <i class="fa-solid fa-clipboard-list fa-2x"></i>
+            </div>
+            <div class="flex-grow-1">
+                <strong><?= gettext('Setup Tasks:') ?></strong>
+                <?php 
+                $taskLinks = [];
+                foreach ($setupTasks as $task) {
+                    $taskLinks[] = '<a href="' . $task['link'] . '" class="alert-link">' . $task['title'] . '</a>';
+                }
+                echo implode(' · ', $taskLinks);
+                ?>
+            </div>
+        </div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <?php endif; ?>
 
     <div class="row">
         <!-- Main Content -->
@@ -209,7 +268,7 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
 
             <!-- System Health Card -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header <?= $integrityPassed && !$hasOrphanedFiles ? 'bg-success' : 'bg-warning' ?> text-white py-2">
+                <div class="card-header <?= $healthStatus ? 'bg-success' : 'bg-warning' ?> text-white py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-heartbeat"></i> <?= gettext('System Health') ?>
                     </h5>
@@ -223,12 +282,20 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
                             <span class="badge bg-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
                         <?php endif; ?>
                     </div>
-                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
                         <span><?= gettext('Orphaned Files:') ?></span>
                         <?php if ($hasOrphanedFiles): ?>
                             <span class="badge bg-danger"><?= count($orphanedFiles) ?> <?= gettext('found') ?></span>
                         <?php else: ?>
                             <span class="badge bg-success"><i class="fa-solid fa-check"></i> <?= gettext('None') ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span><?= gettext('Configuration:') ?></span>
+                        <?php if ($hasWarnings): ?>
+                            <span class="badge bg-warning"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
+                        <?php else: ?>
+                            <span class="badge bg-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php endif; ?>
                     </div>
                     <?php if ($hasOrphanedFiles): ?>
