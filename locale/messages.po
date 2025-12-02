@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-02 07:12+0000\n"
+"POT-Creation-Date: 2025-12-02 07:35+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -693,9 +693,6 @@ msgstr ""
 msgid "Application Integrity"
 msgstr ""
 
-msgid "Application Integrity Check Failed"
-msgstr ""
-
 msgid "Application Prerequisites"
 msgstr ""
 
@@ -1329,9 +1326,6 @@ msgstr ""
 msgid "Church Address"
 msgstr ""
 
-msgid "Church Address is not Set."
-msgstr ""
-
 msgid "Church Checking Account Number"
 msgstr ""
 
@@ -1359,9 +1353,6 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
-msgid "Church Name is set to default value"
-msgstr ""
-
 msgid "Church Phone"
 msgstr ""
 
@@ -1372,6 +1363,9 @@ msgid "Church State"
 msgstr ""
 
 msgid "Church Zip"
+msgstr ""
+
+msgid "Church name is set to default value"
 msgstr ""
 
 msgid "ChurchCRM"
@@ -1520,7 +1514,10 @@ msgstr ""
 msgid "Compose New Message"
 msgstr ""
 
-msgid "Configure HTTPS"
+msgid "Configuration:"
+msgstr ""
+
+msgid "Configure Email"
 msgstr ""
 
 msgid "Confirm"
@@ -2847,9 +2844,6 @@ msgstr ""
 msgid "Family Cell Phone"
 msgstr ""
 
-msgid "Family Coordinates Data for Some Families"
-msgstr ""
-
 msgid "Family Custom Fields"
 msgstr ""
 
@@ -3590,6 +3584,9 @@ msgstr ""
 msgid "HTML URL"
 msgstr ""
 
+msgid "HTTPS Not Configured"
+msgstr ""
+
 #. Context: countries
 msgid "Haiti"
 msgstr ""
@@ -3798,12 +3795,6 @@ msgstr ""
 msgid "Incorrect password supplied for current user"
 msgstr ""
 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr ""
-
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr ""
-
 #. Context: countries
 msgid "India (भारत)"
 msgstr ""
@@ -3823,6 +3814,9 @@ msgid "Info"
 msgstr ""
 
 msgid "Information to Include"
+msgstr ""
+
+msgid "Install TLS/SSL certificate for better security"
 msgstr ""
 
 msgid "Integration"
@@ -4572,34 +4566,16 @@ msgstr ""
 msgid "Missing"
 msgstr ""
 
-msgid "Missing Classification Data"
-msgstr ""
-
-msgid "Missing Classification Data for Some People"
-msgstr ""
-
-msgid "Missing Coordinates"
-msgstr ""
-
 msgid "Missing Families? Update Family Latitude or Longitude now."
 msgstr ""
 
 msgid "Missing Files"
 msgstr ""
 
-msgid "Missing Gender Data"
-msgstr ""
-
-msgid "Missing Gender Data for Some People"
-msgstr ""
-
 msgid "Missing PHP ZipArchive"
 msgstr ""
 
-msgid "Missing Role Data"
-msgstr ""
-
-msgid "Missing Role Data for Some People"
+msgid "Missing Secret Keys"
 msgstr ""
 
 msgid "Missing calendar access token"
@@ -5240,9 +5216,6 @@ msgstr ""
 msgid "Orphaned files from previous versions cleaned up"
 msgstr ""
 
-msgid "Orphaned files from previous versions were found. These should be reviewed and deleted for security."
-msgstr ""
-
 msgid "Other"
 msgstr ""
 
@@ -5286,15 +5259,6 @@ msgid "PHP & Server Requirements"
 msgstr ""
 
 msgid "PHP Configuration"
-msgstr ""
-
-msgid "PHP Max Execution Time is too Short"
-msgstr ""
-
-msgid "PHP Max File size too small"
-msgstr ""
-
-msgid "PHP ZipArchive required to support upgrade"
 msgstr ""
 
 msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
@@ -6331,13 +6295,13 @@ msgstr ""
 msgid "SMTP Server Address (mail.server.com:25)"
 msgstr ""
 
-msgid "SMTP Server info are blank"
-msgstr ""
-
 msgid "SMTP Server timeout in sec"
 msgstr ""
 
 msgid "SMTP Username"
+msgstr ""
+
+msgid "SMTP server settings are not configured"
 msgstr ""
 
 msgid "SSE"
@@ -6481,7 +6445,7 @@ msgstr ""
 msgid "Second volunteer opportunity choice"
 msgstr ""
 
-msgid "Secret Keys missing from Config.php"
+msgid "Secret keys missing from Config.php"
 msgstr ""
 
 msgid "Security Group"
@@ -6497,10 +6461,6 @@ msgid "Security Option"
 msgstr ""
 
 msgid "Security Recommendation"
-msgstr ""
-
-#, php-format
-msgid "Security Warning: %d orphaned files detected"
 msgstr ""
 
 msgid "Security Warning: Orphaned Files Detected"
@@ -6704,12 +6664,6 @@ msgid ""
 "Set to zero to disable session timeouts."
 msgstr ""
 
-msgid "Set Church Address"
-msgstr ""
-
-msgid "Set Email Settings"
-msgstr ""
-
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr ""
 
@@ -6768,6 +6722,9 @@ msgid "Settings"
 msgstr ""
 
 msgid "Settings saved successfully"
+msgstr ""
+
+msgid "Setup Tasks:"
 msgstr ""
 
 #. Context: countries
@@ -6872,10 +6829,10 @@ msgstr ""
 msgid "Some ChurchCRM system files may have been modified since the last installation."
 msgstr ""
 
-msgid "Some conditions have been identified which may prevent a successful upgrade"
+msgid "Some application prerequisites are not met"
 msgstr ""
 
-msgid "Some system files have been modified or are missing. Review the debug page for details."
+msgid "Some conditions have been identified which may prevent a successful upgrade"
 msgstr ""
 
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
@@ -7041,9 +6998,6 @@ msgstr ""
 msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr ""
 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr ""
-
 msgid "Supported formats:"
 msgstr ""
 
@@ -7079,6 +7033,9 @@ msgid "System"
 msgstr ""
 
 msgid "System & Configuration"
+msgstr ""
+
+msgid "System Configuration:"
 msgstr ""
 
 msgid "System Health"
@@ -7216,9 +7173,6 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "The gender for which you would like records returned."
-msgstr ""
-
-msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -7452,9 +7406,6 @@ msgstr ""
 msgid "Tonga"
 msgstr ""
 
-msgid "Too Many Log Files"
-msgstr ""
-
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr ""
 
@@ -7653,7 +7604,7 @@ msgstr ""
 msgid "Unknown error"
 msgstr ""
 
-msgid "Unmet Application Prerequisites"
+msgid "Unmet Prerequisites"
 msgstr ""
 
 msgid "Unpinned Events"
@@ -7671,9 +7622,6 @@ msgstr ""
 msgid "Unsupported Deposit Types Detected"
 msgstr ""
 
-msgid "Unsupported PHP Version"
-msgstr ""
-
 msgid "Unsupported Two Factor Authentication Configuration"
 msgstr ""
 
@@ -7686,7 +7634,7 @@ msgstr ""
 msgid "Update Available!"
 msgstr ""
 
-msgid "Update Church Info"
+msgid "Update Church Name"
 msgstr ""
 
 msgid "Update Envelopes"
@@ -8341,9 +8289,6 @@ msgstr ""
 msgid "Your previous session timed out.  Please login again."
 msgstr ""
 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr ""
-
 msgid "Your verification request is complete"
 msgstr ""
 
@@ -8369,6 +8314,9 @@ msgid "Zip Code"
 msgstr ""
 
 msgid "Zip code is required"
+msgstr ""
+
+msgid "ZipArchive extension required for upgrades"
 msgstr ""
 
 msgid "active"
@@ -8475,6 +8423,9 @@ msgid "invalid status value"
 msgstr ""
 
 msgid "is disabled"
+msgstr ""
+
+msgid "issues"
 msgstr ""
 
 msgid "it and lose any corresponding property assignments."
