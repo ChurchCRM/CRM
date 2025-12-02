@@ -2,47 +2,70 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
+
 class SundaySchoolService
 {
     /**
-     * @return mixed[][]|array<'id'|'kids'|'name'|'teachers', string>[]
+     * Get statistics for all Sunday School classes (type 4), including classes
+     * with zero members.
+     *
+     * @return array<int, array{id: int, name: string, teachers: int, kids: int}>
      */
     public function getClassStats(): array
     {
-        $sSQL = 'select grp.grp_id, grp.grp_name, lst.lst_OptionName, count(*) as total
-              from person_per,group_grp grp, person2group2role_p2g2r person_grp, list_lst lst
-            where grp_Type = 4
-              and grp.grp_ID = person_grp.p2g2r_grp_ID
-              and person_grp.p2g2r_per_ID = per_ID
-              and lst.lst_ID = grp.grp_RoleListID
-              and lst.lst_OptionID = person_grp.p2g2r_rle_ID
-              group by grp.grp_name, lst.lst_OptionName
-              order by grp.grp_name, lst.lst_OptionName';
-        $rsClassCounts = RunQuery($sSQL);
+        // First, get all Sunday School groups (type 4). This guarantees we
+        // include classes with zero members.
+        $groups = GroupQuery::create()
+            ->filterByType(4)
+            ->orderByName(Criteria::ASC)
+            ->find();
+
         $classInfo = [];
-        $lastClassId = 0;
-        $curClass = [];
-        while ($row = mysqli_fetch_assoc($rsClassCounts)) {
-            if ($lastClassId != $row['grp_id']) {
-                if ($lastClassId != 0) {
-                    $classInfo[] = $curClass;
+        foreach ($groups as $group) {
+            $groupId = $group->getId();
+            $roleListId = $group->getRoleListId();
+
+            // Count teachers and students for this group by looking up role
+            // names in list_lst.
+            $teachers = 0;
+            $kids = 0;
+
+            if ($roleListId !== null) {
+                // Get all role assignments for this group
+                $roleAssignments = Person2group2roleP2g2rQuery::create()
+                    ->filterByGroupId($groupId)
+                    ->find();
+
+                foreach ($roleAssignments as $assignment) {
+                    $roleId = $assignment->getRoleId();
+
+                    // Look up role name from list_lst
+                    $roleOption = ListOptionQuery::create()
+                        ->filterById($roleListId)
+                        ->filterByOptionId($roleId)
+                        ->findOne();
+
+                    if ($roleOption !== null) {
+                        $roleName = $roleOption->getOptionName();
+                        if ($roleName === 'Teacher') {
+                            $teachers++;
+                        } elseif ($roleName === 'Student') {
+                            $kids++;
+                        }
+                    }
                 }
-                $curClass = [];
-                $curClass['id'] = $row['grp_id'];
-                $curClass['name'] = $row['grp_name'];
-            }
-            if ($row['lst_OptionName'] === 'Teacher') {
-                $curClass['teachers'] = $row['total'];
-            } elseif ($row['lst_OptionName'] === 'Student') {
-                $curClass['kids'] = $row['total'];
             }
 
-            if ($lastClassId != $row['grp_id']) {
-                $lastClassId = $row['grp_id'];
-            }
-        }
-        if (!empty($curClass)) {
-            $classInfo[] = $curClass;
+            $classInfo[] = [
+                'id'       => $groupId,
+                'name'     => $group->getName(),
+                'teachers' => $teachers,
+                'kids'     => $kids,
+            ];
         }
 
         return $classInfo;
