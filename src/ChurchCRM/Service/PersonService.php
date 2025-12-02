@@ -3,6 +3,8 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
+use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use ChurchCRM\Utils\Functions;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -98,5 +100,28 @@ class PersonService
         $people[] = $person;
 
         return $people;
+    }
+
+    /**
+     * Assign a volunteer opportunity to a person.
+     */
+    public function addVolunteerOpportunity(int $personId, int $opportunityId): bool
+    {
+        $assignment = new PersonVolunteerOpportunity();
+        $assignment->setPerID($personId);
+        $assignment->setVolID($opportunityId);
+
+        return (bool)$assignment->save();
+    }
+
+    /**
+     * Remove a volunteer opportunity assignment from a person.
+     */
+    public function removeVolunteerOpportunity(int $personId, int $opportunityId): void
+    {
+        PersonVolunteerOpportunityQuery::create()
+            ->filterByPerID($personId)
+            ->filterByVolID($opportunityId)
+            ->delete();
     }
 }
