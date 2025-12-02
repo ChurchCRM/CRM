@@ -11,6 +11,30 @@ describe("Finance Deposits", () => {
         cy.contains("Envelope Manager");
     });
 
+    it("Navigate to deposits from Finance Dashboard", () => {
+        cy.visit("/finance/");
+        cy.contains("Finance Dashboard");
+        
+        // Click Create Deposit from Quick Actions
+        cy.contains("a", "Create Deposit").click();
+        cy.url().should("contain", "FindDepositSlip.php");
+        cy.contains("Deposit Listing");
+    });
+
+    it("Navigate to deposits from Finance Menu", () => {
+        cy.visit("/finance/");
+        
+        // Use the View All link in Recent Deposits section
+        cy.contains("Recent Deposits")
+            .parents(".card")
+            .find("a")
+            .contains("View All")
+            .click();
+            
+        cy.url().should("contain", "FindDepositSlip.php");
+        cy.contains("Deposit Listing");
+    });
+
     it("Create a new Deposit without comment", () => {
         cy.visit("/FindDepositSlip.php");
         cy.get("#depositComment").clear();

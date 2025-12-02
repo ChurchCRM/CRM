@@ -182,10 +182,11 @@ class Menu
 
     private static function getDepositsMenu(bool $isAdmin, bool $isFinanceEnabled): MenuItem
     {
-        $depositsMenu = new MenuItem(gettext('Deposit'), '', SystemConfig::getBooleanValue('bEnabledFinance') && $isFinanceEnabled, 'fa-cash-register');
+        $depositsMenu = new MenuItem(gettext('Finance'), '', SystemConfig::getBooleanValue('bEnabledFinance') && $isFinanceEnabled, 'fa-cash-register');
+        $depositsMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'finance/', $isFinanceEnabled, 'fa-tachometer-alt'));
         $depositsMenu->addSubMenu(new MenuItem(gettext('View All Deposits'), 'FindDepositSlip.php', $isFinanceEnabled, 'fa-list'));
-        $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'FinancialReports.php', $isFinanceEnabled, 'fa-file-invoice'));
-            $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], $isFinanceEnabled, 'fa-edit'));
+        $depositsMenu->addSubMenu(new MenuItem(gettext('Deposit Reports'), 'finance/reports', $isFinanceEnabled, 'fa-file-invoice'));
+        $depositsMenu->addSubMenu(new MenuItem(gettext('Edit Deposit Slip'), 'DepositSlipEditor.php?DepositSlipID=' . $_SESSION['iCurrentDeposit'], $isFinanceEnabled, 'fa-edit'));
 
         if ($isAdmin) {
             $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);

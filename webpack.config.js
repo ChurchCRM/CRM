@@ -15,7 +15,8 @@ module.exports = {
     'locale-loader': './webpack/locale-loader',  // Dynamic locale loader
     'backup': './webpack/backup',  // Backup database page
     'restore': './webpack/restore',  // Restore database page
-    'admin-dashboard': './webpack/admin-dashboard'  // Admin dashboard page styles and scripts
+    'admin-dashboard': './webpack/admin-dashboard',  // Admin dashboard page styles and scripts
+    'system-settings-panel': './webpack/system-settings-panel'  // Reusable settings panel component
   },
   output: {
     path: path.resolve('./src/skin/v2'),

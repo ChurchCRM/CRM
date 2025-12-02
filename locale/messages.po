@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-30 19:07-0800\n"
+"POT-Creation-Date: 2025-12-01 17:06-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid " Bold Italic"
 msgstr ""
 
-msgid " Deposit Slip #"
+msgid " Deposit #"
 msgstr ""
 
 msgid " Italic"
@@ -232,6 +232,12 @@ msgstr ""
 msgid "A notification was triggered by the classroom teacher at"
 msgstr ""
 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr ""
+
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr ""
+
 msgid "ALERT"
 msgstr ""
 
@@ -383,6 +389,9 @@ msgid "Add Note"
 msgstr ""
 
 msgid "Add Payment"
+msgstr ""
+
+msgid "Add Pledge"
 msgstr ""
 
 msgid "Add Records"
@@ -556,6 +565,9 @@ msgstr ""
 msgid "All People"
 msgstr ""
 
+msgid "All System Settings"
+msgstr ""
+
 msgid "All Types"
 msgstr ""
 
@@ -638,6 +650,9 @@ msgid "An invalid configuration id has been requested"
 msgstr ""
 
 msgid "An invalid configuration name has been requested"
+msgstr ""
+
+msgid "An unexpected error occurred. Please contact your administrator."
 msgstr ""
 
 #. Context: countries
@@ -1105,6 +1120,9 @@ msgstr ""
 msgid "CSV Individual Records"
 msgstr ""
 
+msgid "CSV export is restricted to administrators."
+msgstr ""
+
 msgid "CSV export permission"
 msgstr ""
 
@@ -1215,6 +1233,9 @@ msgid "Change role"
 msgstr ""
 
 msgid "Change the initial page length (number of rows per page)"
+msgstr ""
+
+msgid "Change this in System Settings."
 msgstr ""
 
 msgid "Check"
@@ -1435,7 +1456,16 @@ msgstr ""
 msgid "Close & Refresh"
 msgstr ""
 
+msgid "Close All Deposits"
+msgstr ""
+
 msgid "Closed"
+msgstr ""
+
+msgid "Closed Deposits:"
+msgstr ""
+
+msgid "Closed vs Total"
 msgstr ""
 
 msgid "Cloud Service Type (Supported values: WebDAV, Local)"
@@ -1476,6 +1506,9 @@ msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
 msgstr ""
 
 msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr ""
+
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr ""
 
 msgid "Compose New Message"
@@ -1578,6 +1611,9 @@ msgstr ""
 msgid "Create Class List"
 msgstr ""
 
+msgid "Create Deposit"
+msgstr ""
+
 msgid "Create Directory"
 msgstr ""
 
@@ -1588,6 +1624,9 @@ msgid "Create Event"
 msgstr ""
 
 msgid "Create File"
+msgstr ""
+
+msgid "Create First Deposit"
 msgstr ""
 
 msgid "Create Group + ADD Cart"
@@ -1629,6 +1668,12 @@ msgstr ""
 msgid "Create new family"
 msgstr ""
 
+msgid "Create or open a deposit first"
+msgstr ""
+
+msgid "Create or select a deposit to get started."
+msgstr ""
+
 msgid "Created"
 msgstr ""
 
@@ -1657,6 +1702,9 @@ msgstr ""
 msgid "Current DB Version"
 msgstr ""
 
+msgid "Current Deposit"
+msgstr ""
+
 msgid "Current Role"
 msgstr ""
 
@@ -1667,6 +1715,9 @@ msgid "Current Value"
 msgstr ""
 
 msgid "Current Version:"
+msgstr ""
+
+msgid "Current fiscal year:"
 msgstr ""
 
 msgid "Custom Drop-Down List"
@@ -1714,6 +1765,12 @@ msgstr ""
 
 #. Context: query_qry
 msgid "CustomSearch"
+msgstr ""
+
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr ""
+
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
 msgstr ""
 
 #. Context: countries
@@ -1826,6 +1883,9 @@ msgid "Date Start"
 msgstr ""
 
 msgid "Date Updated"
+msgstr ""
+
+msgid "Date:"
 msgstr ""
 
 msgid "Deactivate"
@@ -1990,6 +2050,9 @@ msgstr ""
 msgid "Deposit"
 msgstr ""
 
+msgid "Deposit #:"
+msgstr ""
+
 msgid "Deposit Comment"
 msgstr ""
 
@@ -2012,6 +2075,9 @@ msgid "Deposit Reports"
 msgstr ""
 
 msgid "Deposit Slip Number: "
+msgstr ""
+
+msgid "Deposit Statistics"
 msgstr ""
 
 msgid "Deposit Total"
@@ -2039,6 +2105,12 @@ msgid "Deposits: "
 msgstr ""
 
 msgid "Description"
+msgstr ""
+
+msgid "Detailed breakdown of a single deposit slip."
+msgstr ""
+
+msgid "Detailed breakdown of pledges and payments by family."
 msgstr ""
 
 msgid "Details"
@@ -2153,6 +2225,9 @@ msgstr ""
 msgid "Donor"
 msgstr ""
 
+msgid "Donor Families"
+msgstr ""
+
 msgid "Download & Apply"
 msgstr ""
 
@@ -2212,6 +2287,9 @@ msgstr ""
 msgid "Edit \"Why Came\" Notes"
 msgstr ""
 
+msgid "Edit Deposit"
+msgstr ""
+
 msgid "Edit Deposit Slip"
 msgstr ""
 
@@ -2237,6 +2315,9 @@ msgid "Edit JSON Settings"
 msgstr ""
 
 msgid "Edit List Options"
+msgstr ""
+
+msgid "Edit Payment"
 msgstr ""
 
 msgid "Edit Records"
@@ -2429,6 +2510,9 @@ msgstr ""
 msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
 msgstr ""
 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr ""
+
 msgid "Enter Name"
 msgstr ""
 
@@ -2618,6 +2702,9 @@ msgstr ""
 msgid "Export All Classes, Kids, and Parent to CSV file"
 msgstr ""
 
+msgid "Export Options"
+msgstr ""
+
 msgid "Export Results to CSV file"
 msgstr ""
 
@@ -2709,6 +2796,9 @@ msgid "Failed to remove group"
 msgstr ""
 
 msgid "Failed to save setting. Please try again."
+msgstr ""
+
+msgid "Failed to save settings"
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -2972,10 +3062,19 @@ msgstr ""
 msgid "Filter by log level:"
 msgstr ""
 
+msgid "Filtering"
+msgstr ""
+
 msgid "Filters"
 msgstr ""
 
 msgid "Final Price"
+msgstr ""
+
+msgid "Finance"
+msgstr ""
+
+msgid "Finance Dashboard"
 msgstr ""
 
 msgid "Finance access"
@@ -3155,10 +3254,10 @@ msgstr ""
 msgid "Fund"
 msgstr ""
 
-msgid "Fund Name"
+msgid "Fund Allocation"
 msgstr ""
 
-msgid "Fund Split"
+msgid "Fund Name"
 msgstr ""
 
 msgid "Fundraiser"
@@ -3191,6 +3290,9 @@ msgstr ""
 msgid "General"
 msgstr ""
 
+msgid "Generate"
+msgstr ""
+
 msgid "Generate & Download Backup"
 msgstr ""
 
@@ -3209,16 +3311,37 @@ msgstr ""
 msgid "Generate Report"
 msgstr ""
 
+msgid "Generate Reports"
+msgstr ""
+
 msgid "Generate Statement"
 msgstr ""
 
 msgid "Generate Statements for Selected"
 msgstr ""
 
+msgid "Generate Tax Statements"
+msgstr ""
+
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr ""
+
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr ""
+
 msgid "Generate class lists and attendance sheets"
 msgstr ""
 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr ""
+
 msgid "Generate letters and mailing labels."
+msgstr ""
+
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr ""
+
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
 msgstr ""
 
 msgid "Generate:"
@@ -3545,6 +3668,9 @@ msgstr ""
 msgid "ICS URL"
 msgstr ""
 
+msgid "ID"
+msgstr ""
+
 msgid "INFO"
 msgstr ""
 
@@ -3553,6 +3679,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Iceland (Ísland)"
+msgstr ""
+
+msgid "Identify members who have not made any donations within a date range."
 msgstr ""
 
 msgid "If adding a new family, enter data below."
@@ -4028,6 +4157,9 @@ msgstr ""
 msgid "List maintenance"
 msgstr ""
 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr ""
+
 msgid "List not found"
 msgstr ""
 
@@ -4184,6 +4316,9 @@ msgid "Manage Check-ins"
 msgstr ""
 
 msgid "Manage Donations and Finance"
+msgstr ""
+
+msgid "Manage Funds"
 msgstr ""
 
 msgid "Manage Groups and Roles"
@@ -4351,6 +4486,9 @@ msgid "Membership Date"
 msgstr ""
 
 msgid "Membership Info"
+msgstr ""
+
+msgid "Membership Reports"
 msgstr ""
 
 #. Context: query_qry
@@ -4539,6 +4677,9 @@ msgstr ""
 msgid "Morocco (‫المغرب‬‎)"
 msgstr ""
 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr ""
+
 msgid "Move"
 msgstr ""
 
@@ -4662,6 +4803,9 @@ msgstr ""
 msgid "New Calendar"
 msgstr ""
 
+msgid "New Deposit Will Be Created"
+msgstr ""
+
 msgid "New Family Added"
 msgstr ""
 
@@ -4671,10 +4815,16 @@ msgstr ""
 msgid "New Password"
 msgstr ""
 
+msgid "New Payment"
+msgstr ""
+
 msgid "New Person Added"
 msgstr ""
 
 msgid "New Person Notification Email Error"
+msgstr ""
+
+msgid "New Pledge"
 msgstr ""
 
 msgid "New Release"
@@ -4730,6 +4880,9 @@ msgstr ""
 msgid "No"
 msgstr ""
 
+msgid "No Active Deposit"
+msgstr ""
+
 msgid "No Attendance counts recorded"
 msgstr ""
 
@@ -4760,6 +4913,9 @@ msgstr ""
 msgid "No Sunday School"
 msgstr ""
 
+msgid "No active funds configured."
+msgstr ""
+
 msgid "No coordinates found"
 msgstr ""
 
@@ -4767,6 +4923,9 @@ msgid "No custom Family fields have been added yet"
 msgstr ""
 
 msgid "No custom person fields have been added yet"
+msgstr ""
+
+msgid "No deposits found."
 msgstr ""
 
 msgid "No email passed in"
@@ -5021,6 +5180,12 @@ msgstr ""
 msgid "Oops! Page not found."
 msgstr ""
 
+msgid "Open"
+msgstr ""
+
+msgid "Open Deposits:"
+msgstr ""
+
 msgid "OpenLP Password"
 msgstr ""
 
@@ -5100,6 +5265,9 @@ msgid ""
 msgstr ""
 
 msgid "PDF successfully emailed to family members."
+msgstr ""
+
+msgid "PDF/CSV"
 msgstr ""
 
 msgid "PDFs successfully emailed "
@@ -5204,19 +5372,10 @@ msgstr ""
 msgid "Patriarch"
 msgstr ""
 
+msgid "Payment"
+msgstr ""
+
 msgid "Payment Date"
-msgstr ""
-
-msgid "Payment Details"
-msgstr ""
-
-msgid "Payment Editor - Modify Existing Payment"
-msgstr ""
-
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr ""
-
-msgid "Payment Editor: "
 msgstr ""
 
 msgid "Payment Schedule"
@@ -5594,9 +5753,6 @@ msgstr ""
 msgid "Pledge"
 msgstr ""
 
-msgid "Pledge Editor"
-msgstr ""
-
 msgid "Pledge Family Summary"
 msgstr ""
 
@@ -5607,6 +5763,9 @@ msgid "Pledge Reminder Signer"
 msgstr ""
 
 msgid "Pledge Reminders"
+msgstr ""
+
+msgid "Pledge Reports"
 msgstr ""
 
 msgid "Pledge Summary"
@@ -5672,6 +5831,9 @@ msgid "Previous Family"
 msgstr ""
 
 msgid "Price"
+msgstr ""
+
+msgid "Print or email annual giving statements to all donors."
 msgstr ""
 
 msgid "Printable Page"
@@ -5770,6 +5932,9 @@ msgstr ""
 msgid "Query View"
 msgstr ""
 
+msgid "Quick Actions"
+msgstr ""
+
 msgid "Quick Search"
 msgstr ""
 
@@ -5797,6 +5962,9 @@ msgstr ""
 msgid "Ready to restore. Select a backup file and click Restore Database."
 msgstr ""
 
+msgid "Recent Deposits"
+msgstr ""
+
 #. Context: query_qry
 msgid "Recent friends"
 msgstr ""
@@ -5808,6 +5976,12 @@ msgid "Recommendation: Review and delete these files before or after the upgrade
 msgstr ""
 
 msgid "Record"
+msgstr ""
+
+msgid "Recording a Payment"
+msgstr ""
+
+msgid "Recording a Pledge"
 msgstr ""
 
 msgid "Records"
@@ -5941,6 +6115,9 @@ msgstr ""
 msgid "Report Start Date:"
 msgstr ""
 
+msgid "Report Tips"
+msgstr ""
+
 msgid "Report Type:"
 msgstr ""
 
@@ -5960,6 +6137,9 @@ msgid "Reports"
 msgstr ""
 
 msgid "Reports on groups and roles"
+msgstr ""
+
+msgid "Reports related to member voting eligibility and organization governance."
 msgstr ""
 
 msgid "Request Family Info Verification"
@@ -6062,6 +6242,9 @@ msgid "Review"
 msgstr ""
 
 msgid "Review & Submit"
+msgstr ""
+
+msgid "Review Donation Funds"
 msgstr ""
 
 msgid "Review the files below and delete them to improve security."
@@ -6575,6 +6758,12 @@ msgstr ""
 msgid "Setting updated successfully"
 msgstr ""
 
+msgid "Settings"
+msgstr ""
+
+msgid "Settings saved successfully"
+msgstr ""
+
 #. Context: countries
 msgid "Seychelles"
 msgstr ""
@@ -6773,6 +6962,9 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
+msgid "Status:"
+msgstr ""
+
 msgid "Store these in a secure location"
 msgstr ""
 
@@ -6805,6 +6997,9 @@ msgid "Suffix"
 msgstr ""
 
 msgid "Summary Data"
+msgstr ""
+
+msgid "Summary of pledges vs payments by fund for the fiscal year."
 msgstr ""
 
 msgid "Summer"
@@ -6933,10 +7128,22 @@ msgstr ""
 msgid "Tanzania"
 msgstr ""
 
+msgid "Tax & Giving Reports"
+msgstr ""
+
 msgid "Tax Report"
 msgstr ""
 
+msgid "Tax Report Verbiage"
+msgstr ""
+
 msgid "Tax Report signer"
+msgstr ""
+
+msgid "Tax Statements (Giving Report)"
+msgstr ""
+
+msgid "Tax Year Reporting Checklist"
 msgstr ""
 
 msgid "Teachers"
@@ -7245,7 +7452,13 @@ msgstr ""
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr ""
 
+msgid "Total"
+msgstr ""
+
 msgid "Total $"
+msgstr ""
+
+msgid "Total Amount"
 msgstr ""
 
 #. Context: query_qry
@@ -7253,6 +7466,9 @@ msgid "Total By Gender"
 msgstr ""
 
 msgid "Total Deposit"
+msgstr ""
+
+msgid "Total Deposits:"
 msgstr ""
 
 msgid "Total Logins"
@@ -7278,6 +7494,9 @@ msgid "Total purchases: $"
 msgstr ""
 
 msgid "Totals"
+msgstr ""
+
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr ""
 
 #. Context: countries
@@ -7334,6 +7553,9 @@ msgid "Type"
 msgstr ""
 
 msgid "Type of Group"
+msgstr ""
+
+msgid "Type:"
 msgstr ""
 
 #. Context: countries
@@ -7540,6 +7762,9 @@ msgstr ""
 msgid "Use address/contact data from"
 msgstr ""
 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr ""
+
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr ""
 
@@ -7579,6 +7804,9 @@ msgstr ""
 msgid "User must be an Admin"
 msgstr ""
 
+msgid "User must be an Admin or have Finance permission"
+msgstr ""
+
 msgid "User must have Add Event permission"
 msgstr ""
 
@@ -7586,9 +7814,6 @@ msgid "User must have Delete Records permission"
 msgstr ""
 
 msgid "User must have Edit Records permission"
-msgstr ""
-
-msgid "User must have Finance permission"
 msgstr ""
 
 msgid "User must have Manage Groups permission"
@@ -7689,6 +7914,12 @@ msgid "Verify Info"
 msgstr ""
 
 msgid "Verify People"
+msgstr ""
+
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr ""
+
+msgid "Verify fund names and descriptions are accurate for statements."
 msgstr ""
 
 msgid "Version"
@@ -7947,6 +8178,12 @@ msgstr ""
 msgid "WorkEmail"
 msgstr ""
 
+msgid "YTD Payments"
+msgstr ""
+
+msgid "YTD Pledges"
+msgstr ""
+
 msgid "Year"
 msgstr ""
 
@@ -8083,6 +8320,9 @@ msgstr ""
 msgid "Your cart is empty!"
 msgstr ""
 
+msgid "Your fiscal year starts in month"
+msgstr ""
+
 msgid "Your new password is too similar to your old one."
 msgstr ""
 
@@ -8126,6 +8366,9 @@ msgid "Zip Code"
 msgstr ""
 
 msgid "Zip code is required"
+msgstr ""
+
+msgid "active"
 msgstr ""
 
 msgid "added"
@@ -8265,6 +8508,9 @@ msgid "not found or user without an email"
 msgstr ""
 
 msgid "of People"
+msgstr ""
+
+msgid "open"
 msgstr ""
 
 msgid "open rate"
