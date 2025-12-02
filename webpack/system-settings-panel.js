@@ -315,6 +315,7 @@ import '../src/skin/scss/system-settings-panel.scss';
 
         // Render the panel HTML
         render() {
+            let settingsHtml = '';
 
             this.options.settings.forEach(setting => {
                 const settingName = typeof setting === 'string' ? setting : setting.name;
