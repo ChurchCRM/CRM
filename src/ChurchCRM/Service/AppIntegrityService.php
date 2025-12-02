@@ -6,6 +6,7 @@ use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\PhpVersion;
 
 class AppIntegrityService
 {
@@ -184,8 +185,10 @@ class AppIntegrityService
      */
     public static function getApplicationPrerequisites(): array
     {
+        $requiredPhp = PhpVersion::getRequiredPhpVersion();
+
         return [
-            new Prerequisite('PHP 8.2+', fn (): bool => PHP_VERSION_ID >= 80200),
+            new Prerequisite('PHP ' . $requiredPhp . '+', fn (): bool => version_compare(PHP_VERSION, $requiredPhp, '>=')),
             new Prerequisite('PCRE and UTF-8 Support', fn (): bool => function_exists('preg_match') && @preg_match('/^.$/u', 'ñ') && @preg_match('/^\pL$/u', 'ñ')),
             new Prerequisite('Multibyte Encoding', fn (): bool => function_exists('mb_strlen')),
             new Prerequisite('PHP Phar', fn (): bool => class_exists('PharData')),
