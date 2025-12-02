@@ -21,11 +21,6 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 }
 
 $memberCount = count($family->getPeople());
-$primaryContact = null;
-foreach ($family->getPeople() as $personCandidate) {
-    $primaryContact = $personCandidate;
-    break;
-}
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
