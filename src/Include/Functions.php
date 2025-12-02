@@ -302,20 +302,6 @@ function change_date_for_place_holder(?string $string = null): string
     return '';
 }
 
-function FormatDateOutput(): string
-{
-    $fmt = SystemConfig::getValue("sDateFormatLong");
-
-    $fmt = str_replace("/", " ", $fmt);
-
-    $fmt = str_replace("-", " ", $fmt);
-
-    $fmt = str_replace("d", "%d", $fmt);
-    $fmt = str_replace("m", "%B", $fmt);
-
-    return str_replace("Y", "%Y", $fmt);
-}
-
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
 // bWithtime 1 to be displayed
@@ -364,36 +350,7 @@ function AlternateRowStyle(string $sCurrentStyle): string
     }
 }
 
-function ConvertToBoolean(string $sInput): bool
-{
-    if (empty($sInput)) {
-        return false;
-    } else {
-        if (is_numeric($sInput)) {
-            if ($sInput == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            $sInput = strtolower($sInput);
-            if (in_array($sInput, ['true', 'yes', 'si'])) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
-}
 
-function ConvertFromBoolean($sInput): int
-{
-    if ($sInput) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
 
 //
 // Collapses a formatted phone number as long as the Country is known
