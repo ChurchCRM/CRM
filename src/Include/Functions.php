@@ -1460,14 +1460,9 @@ function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, s
     }
 }
 
-function random_color_part(): string
-{
-    return str_pad(dechex(random_int(0, 255)), 2, '0', STR_PAD_LEFT);
-}
-
 function random_color(): string
 {
-    return random_color_part() . random_color_part() . random_color_part();
+    return bin2hex(random_bytes(3));
 }
 
 function generateGroupRoleEmailDropdown(array $roleEmails, string $href): void
