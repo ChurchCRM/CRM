@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -857,15 +858,17 @@ require_once 'Include/Header.php';
                                         <tbody id="familyMembersTbody">
                                         <?php
 
-                                        //Get family roles
-                                        $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-                                        $rsFamilyRoles = RunQuery($sSQL);
-                                        $numFamilyRoles = mysqli_num_rows($rsFamilyRoles);
-                                        for ($c = 1; $c <= $numFamilyRoles; $c++) {
-                                            $aRow = mysqli_fetch_array($rsFamilyRoles);
-                                            extract($aRow);
-                                            $aFamilyRoleNames[$c] = $lst_OptionName;
-                                            $aFamilyRoleIDs[$c] = $lst_OptionID;
+                                        //Get family roles using Propel ORM
+                                        $familyRoles = ListOptionQuery::create()
+                                            ->filterById(2)
+                                            ->orderByOptionSequence()
+                                            ->find();
+                                        $numFamilyRoles = $familyRoles->count();
+                                        $c = 1;
+                                        foreach ($familyRoles as $role) {
+                                            $aFamilyRoleNames[$c] = $role->getOptionName();
+                                            $aFamilyRoleIDs[$c] = $role->getOptionId();
+                                            $c++;
                                         }
 
                                         for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
@@ -986,7 +989,7 @@ require_once 'Include/Header.php';
                     <input type="hidden" Name="UpdateBirthYear" value="<?= $UpdateBirthYear ?>">
 
                     <!-- Hidden submit buttons for FAB -->
-                    <div style="display: none;">
+                    <div class="d-none">
                         <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="FamilySubmit" id="FamilySubmitBottom">
                         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
                         <input type="submit" class="btn btn-info" value="<?= gettext('Save and Add New Family') ?>" name="FamilySubmitAndAdd" id="FamilySubmitAndAddButton">
@@ -997,14 +1000,14 @@ require_once 'Include/Header.php';
 <!-- FAB Container -->
 <div id="fab-family-editor" class="fab-container fab-family-editor">
     <?php if ($iFamilyID > 0) { ?>
-    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>" class="fab-button fab-cancel">
+    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>" class="fab-button fab-cancel" aria-label="<?= gettext('Cancel') ?>">
         <span class="fab-label"><?= gettext('Cancel') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-xmark"></i>
         </div>
     </a>
     <?php } else { ?>
-    <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="fab-button fab-cancel">
+    <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="fab-button fab-cancel" aria-label="<?= gettext('Cancel') ?>">
         <span class="fab-label"><?= gettext('Cancel') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-xmark"></i>
@@ -1012,14 +1015,14 @@ require_once 'Include/Header.php';
     </a>
     <?php } ?>
     <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
-    <a href="#" class="fab-button fab-save-add" onclick="document.getElementById('FamilySubmitAndAddButton').click(); return false;">
+    <a href="#" class="fab-button fab-save-add" aria-label="<?= gettext('Save and Add New Family') ?>" onclick="document.getElementById('FamilySubmitAndAddButton').click(); return false;">
         <span class="fab-label"><?= gettext('Save and Add New Family') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-users-rectangle"></i>
         </div>
     </a>
     <?php } ?>
-    <a href="#" class="fab-button fab-save" onclick="document.getElementById('FamilySubmitBottom').click(); return false;">
+    <a href="#" class="fab-button fab-save" aria-label="<?= gettext('Save') ?>" onclick="document.getElementById('FamilySubmitBottom').click(); return false;">
         <span class="fab-label"><?= gettext('Save') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-check"></i>
@@ -1028,20 +1031,24 @@ require_once 'Include/Header.php';
 </div>
 
 <?php if ($iFamilyID < 0) {
-    // Get family roles for JavaScript
-    $sSQL = 'SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-    $rsRoles = RunQuery($sSQL);
+    // Get family roles for JavaScript using Propel ORM
+    $familyRolesForJS = ListOptionQuery::create()
+        ->filterById(2)
+        ->orderByOptionSequence()
+        ->find();
     $familyRolesJS = [];
-    while ($row = mysqli_fetch_assoc($rsRoles)) {
-        $familyRolesJS[] = ['id' => $row['lst_OptionID'], 'name' => $row['lst_OptionName']];
+    foreach ($familyRolesForJS as $role) {
+        $familyRolesJS[] = ['id' => $role->getOptionId(), 'name' => $role->getOptionName()];
     }
 
-    // Get classifications for JavaScript
-    $sSQL = 'SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-    $rsClass = RunQuery($sSQL);
+    // Get classifications for JavaScript using Propel ORM
+    $classificationsForJS = ListOptionQuery::create()
+        ->filterById(1)
+        ->orderByOptionSequence()
+        ->find();
     $classificationsJS = [];
-    while ($row = mysqli_fetch_assoc($rsClass)) {
-        $classificationsJS[] = ['id' => $row['lst_OptionID'], 'name' => $row['lst_OptionName']];
+    foreach ($classificationsForJS as $classification) {
+        $classificationsJS[] = ['id' => $classification->getOptionId(), 'name' => $classification->getOptionName()];
     }
 ?>
 <script>

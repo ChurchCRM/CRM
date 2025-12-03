@@ -677,7 +677,7 @@ $memberCount = count($family->getPeople());
 <!-- FAB Container for Family View -->
 <div id="fab-family-view" class="fab-container fab-family-view">
     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" class="fab-button fab-note">
+    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" class="fab-button fab-note" aria-label="<?= gettext('Add a Note') ?>">
         <span class="fab-label"><?= gettext('Add a Note') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-sticky-note"></i>
@@ -685,7 +685,7 @@ $memberCount = count($family->getPeople());
     </a>
     <?php } ?>
     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-    <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>" class="fab-button fab-edit">
+    <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>" class="fab-button fab-edit" aria-label="<?= gettext('Edit Family') ?>">
         <span class="fab-label"><?= gettext('Edit Family') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-pen"></i>
