@@ -176,14 +176,15 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
     // Get anniversaries for 14-day range: 7 days before to 7 days after today
     $today = new \DateTime();
     $conditions = [];
-    
+
     for ($i = -7; $i <= 7; $i++) {
         $date = (clone $today)->modify("{$i} days");
         $month = (int)$date->format('m');
         $day = (int)$date->format('d');
+        // Values are safe: cast to int from DateTime::format()
         $conditions[] = "(MONTH(" . FamilyTableMap::COL_FAM_WEDDINGDATE . ") = {$month} AND DAY(" . FamilyTableMap::COL_FAM_WEDDINGDATE . ") = {$day})";
     }
-    
+
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
         ->filterByWeddingdate(null, Criteria::NOT_EQUAL)

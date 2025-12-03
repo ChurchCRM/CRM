@@ -234,7 +234,6 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
         </div>
     </div>
 </div>
-</div>
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MainDashboard.js"></script>
 <?php
