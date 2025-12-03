@@ -166,11 +166,23 @@ function initializeFormValidation() {
  * - Sets localized labels
  * - Handles scroll behavior to hide buttons on scroll
  * - Auto-hides after 5 seconds
+ * - Hides global FAB if page-specific FAB exists
  */
 function initializeFAB() {
     const fabContainer = $("#fab-container");
     const fabPersonLabel = $("#fab-person-label");
     const fabFamilyLabel = $("#fab-family-label");
+
+    // Hide global FAB if a page-specific FAB exists
+    if (
+        $("#fab-person-view").length > 0 ||
+        $("#fab-person-editor").length > 0 ||
+        $("#fab-family-editor").length > 0 ||
+        $("#fab-family-view").length > 0
+    ) {
+        fabContainer.hide();
+        return;
+    }
 
     // Set localized labels
     fabPersonLabel.text(i18next.t("Add New Person"));

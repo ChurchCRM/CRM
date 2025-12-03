@@ -673,6 +673,27 @@ $memberCount = count($family->getPeople());
     });
 </script>
 <!-- Photos end -->
+
+<!-- FAB Container for Family View -->
+<div id="fab-family-view" class="fab-container fab-family-view">
+    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" class="fab-button fab-note">
+        <span class="fab-label"><?= gettext('Add a Note') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-sticky-note"></i>
+        </div>
+    </a>
+    <?php } ?>
+    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>" class="fab-button fab-edit">
+        <span class="fab-label"><?= gettext('Edit Family') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+    </a>
+    <?php } ?>
+</div>
+
 <div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
      aria-hidden="true">
     <div class="modal-dialog">
