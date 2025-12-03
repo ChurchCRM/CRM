@@ -1,18 +1,18 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 41
-**Complete Locales (≥95%):** 0
+**Complete Locales (≥95%):** 1
 **Incomplete Locales (<50%):** 15
-**Missing Locales with Translations:** 9
+**Missing Locales with Translations:** 10
 
 ## Supported Locale Completeness
 
 | Locale | Language | Translations | Percentage | Status |
 |--------|----------|--------------|------------|--------|
+| `es` | Spanish | 2672 | 100% | 🟢 Complete |
 | `fr` | French | 2427 | 90.83% | 🟡 Good |
 | `ta` | Tamil | 2314 | 86.6% | 🟡 Good |
 | `nl` | Dutch | 2262 | 84.66% | 🟡 Good |
-| `es` | Spanish | 2251 | 84.24% | 🟡 Good |
 | `id` | Indonesian | 2210 | 82.71% | 🟡 Good |
 | `cs` | Czech | 2175 | 81.4% | 🟡 Good |
 | `he` | Hebrew | 2175 | 81.4% | 🟡 Good |
@@ -53,14 +53,13 @@
 
 ## Summary by Status
 
-### 🟢 Complete Locales (≥95%) - 0 total
-*No complete locales*
+### 🟢 Complete Locales (≥95%) - 1 total
+- **Spanish** (`es`): 100%
 
-### 🟡 Good Locales (80-94%) - 17 total
+### 🟡 Good Locales (80-94%) - 16 total
 - **French** (`fr`): 90.83%
 - **Tamil** (`ta`): 86.6%
 - **Dutch** (`nl`): 84.66%
-- **Spanish** (`es`): 84.24%
 - **Indonesian** (`id`): 82.71%
 - **Czech** (`cs`): 81.4%
 - **Hebrew** (`he`): 81.4%
@@ -118,6 +117,7 @@ These locales have translations available in POEditor but are not currently supp
 | Serbian (Cyrillic) | `sr-cyrl` | 76 | 2.84% | ⏸️ Wait for more progress |
 | Slovenian | `sl` | 84 | 3.14% | ⏸️ Wait for more progress |
 | Spanish (AR) | `es-ar` | 52 | 1.95% | ⏸️ Wait for more progress |
+| Spanish (CO) | `es-co` | 99 | 3.71% | ⏸️ Wait for more progress |
 | Spanish (MX) | `es-mx` | 99 | 3.71% | ⏸️ Wait for more progress |
 | Spanish (SV) | `es-sv` | 29 | 1.09% | ⏸️ Wait for more progress |
 
