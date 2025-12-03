@@ -52,7 +52,7 @@ if (isset($_POST['VolunteerOpportunityAssign']) && AuthenticationManager::getCur
 
 // Service remove-volunteer-opportunity (these links set RemoveVO)
 if ($iRemoveVO > 0 && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-    $personService->removeVolunteerOpportunity((int)$iPersonID, $iRemoveVO);
+    $personService->removeVolunteerOpportunity((int)$iPersonID, (int)$iRemoveVO);
 }
 
 // Get this person's data
