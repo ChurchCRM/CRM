@@ -74,7 +74,7 @@ $(document).ready(function () {
             }
 
             // Build day options
-            let dayOptions = '<option value=\"0\">' + window.CRM.i18n.unknown + \"</option>\";
+            let dayOptions = '<option value="0">' + window.CRM.i18n.unknown + "</option>";
             for (let d = 1; d <= 31; d++) {
                 let dayVal = d < 10 ? "0" + d : d;
                 dayOptions += '<option value="' + dayVal + '">' + d + "</option>";
