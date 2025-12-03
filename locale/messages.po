@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-02 07:35+0000\n"
+"POT-Creation-Date: 2025-12-03 03:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,6 +92,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
+msgid "%d families missing coordinates"
+msgstr ""
+
+#, php-format
 msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
 msgstr ""
 
@@ -101,6 +105,18 @@ msgstr ""
 
 #, php-format
 msgid "%d files will be permanently deleted."
+msgstr ""
+
+#, php-format
+msgid "%d missing classification"
+msgstr ""
+
+#, php-format
+msgid "%d missing gender"
+msgstr ""
+
+#, php-format
+msgid "%d missing role"
 msgstr ""
 
 #, php-format
@@ -1811,6 +1827,9 @@ msgid "Dashboard"
 msgstr ""
 
 msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr ""
+
+msgid "Data Quality:"
 msgstr ""
 
 msgid "Data file format:"
@@ -4212,6 +4231,9 @@ msgstr ""
 msgid "Localization"
 msgstr ""
 
+msgid "Location"
+msgstr ""
+
 msgid "Log File"
 msgstr ""
 
@@ -4841,6 +4863,9 @@ msgid "Nexmo SMS From Number"
 msgstr ""
 
 msgid "Next"
+msgstr ""
+
+msgid "Next 7 days and past 7 days"
 msgstr ""
 
 msgid "Next Member"
@@ -7382,6 +7407,9 @@ msgstr ""
 msgid "To:"
 msgstr ""
 
+msgid "Today"
+msgstr ""
+
 msgid "Today's Birthdays"
 msgstr ""
 
@@ -7623,6 +7651,12 @@ msgid "Unsupported Deposit Types Detected"
 msgstr ""
 
 msgid "Unsupported Two Factor Authentication Configuration"
+msgstr ""
+
+msgid "Upcoming Anniversaries"
+msgstr ""
+
+msgid "Upcoming Birthdays"
 msgstr ""
 
 msgid "Update"
@@ -8328,6 +8362,9 @@ msgstr ""
 msgid "added to this event"
 msgstr ""
 
+msgid "ago"
+msgstr ""
+
 msgid "already in cart"
 msgstr ""
 
@@ -8357,6 +8394,12 @@ msgid "characters in length."
 msgstr ""
 
 msgid "data for member"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "days"
 msgstr ""
 
 msgid "denotes required fields"
@@ -8396,6 +8439,9 @@ msgid "from"
 msgstr ""
 
 msgid "from group"
+msgstr ""
+
+msgid "in"
 msgstr ""
 
 msgid "in cart"
@@ -8560,6 +8606,12 @@ msgid "with this Property..."
 msgstr ""
 
 msgid "with this property.."
+msgstr ""
+
+msgid "years"
+msgstr ""
+
+msgid "yes"
 msgstr ""
 
 #. Context: countries
