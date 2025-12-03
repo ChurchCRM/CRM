@@ -266,14 +266,16 @@ function initializeMainDashboard() {
                             " " +
                             diff +
                             " " +
-                            i18next.t("days") +
+                            (diff === 1 ? i18next.t("day") : i18next.t("days")) +
                             "</span>";
                     } else {
                         badge =
                             '<span class="badge badge-secondary ml-2">' +
                             Math.abs(diff) +
                             " " +
-                            i18next.t("days ago") +
+                            (Math.abs(diff) === 1 ? i18next.t("day") : i18next.t("days")) +
+                            " " +
+                            i18next.t("ago") +
                             "</span>";
                     }
                     return data + badge;
