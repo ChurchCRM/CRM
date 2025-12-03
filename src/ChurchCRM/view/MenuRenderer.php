@@ -25,7 +25,7 @@ class MenuRenderer
     {
         ?>
         <li class="nav-item<?= $menuItem->isActive() ? " active" : ""?>">
-            <a href="<?= htmlspecialchars($menuItem->getURI(), ENT_QUOTES, 'UTF-8') ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?> class="nav-link">
+            <a href="<?= htmlspecialchars($menuItem->getURI(), ENT_QUOTES, 'UTF-8') ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?> class="nav-link<?= $menuItem->isActive() ? " active" : ""?>">
                 <i class='nav-icon fa <?= $menuItem->getIcon() ?>'></i>
                 <p>
                     <span><?= htmlspecialchars($menuItem->getName()) ?></span>
@@ -41,8 +41,8 @@ class MenuRenderer
     private static function renderSubMenuItem(MenuItem $menuItem): void
     {
         ?>
-        <div class="nav-item<?= $menuItem->openMenu() ? " menu-open active" : "" ?>">
-            <a href="#" class="nav-link">
+        <li class="nav-item<?= $menuItem->openMenu() ? " menu-open" : "" ?>">
+            <a href="#" class="nav-link<?= $menuItem->openMenu() ? " active" : "" ?>">
                 <i class="nav-icon fa <?= $menuItem->getIcon() ?>"></i>
                 <p>
                     <span><?= htmlspecialchars($menuItem->getName()) ?></span>
@@ -63,7 +63,7 @@ class MenuRenderer
                 }
             } ?>
             </ul>
-        </div>
+        </li>
         <?php
     }
 
