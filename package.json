@@ -99,7 +99,7 @@
         "quill": "^2.0.3",
         "react": "^19.2.0",
         "react-bootstrap": "^2.10.10",
-        "react-datepicker": "^8.8.0",
+        "react-datepicker": "^8.9.0",
         "react-dom": "^19.2.0",
         "react-select": "^5.10.2",
         "select2": "^4.0.13"
