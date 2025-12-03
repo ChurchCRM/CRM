@@ -250,11 +250,6 @@ $bOkToEdit = (
                             } ?>
                         </a>
                     </li>
-
-                    <?php if ($bOkToEdit) { ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block" id="EditPerson"><b><?php echo gettext('Edit'); ?></b></a>
-                    <?php } ?>
-
                 </ul>
             </div>
             <!-- /.box-body -->
@@ -390,7 +385,6 @@ $bOkToEdit = (
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
             ?>
                 <a class="btn btn-app bg-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle fa-3x"></i><br><?= gettext("Edit \"Why Came\" Notes") ?></a>
-                <a class="btn btn-app bg-primary" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sticky-note fa-3x"></i><br><?= gettext("Add a Note") ?></a>
             <?php
             }
             if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
@@ -631,11 +625,6 @@ $bOkToEdit = (
                                         </table>
                                     <?php
                                     } ?>
-                                    <div class="text-center mt-3">
-                                        <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="btn btn-success">
-                                            <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
-                                        </a>
-                                    </div>
                                 </div>
                                 <!-- /.main-box-body -->
                             </div>
@@ -1041,5 +1030,26 @@ $bOkToEdit = (
 
             });
         </script>
-        <?php
-        require_once 'Include/Footer.php';
+
+<!-- Person View Floating Action Buttons -->
+<div class="fab-container fab-person-view" id="fab-person-view">
+    <?php if ($bOkToEdit) { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-edit" title="<?= gettext('Edit Person') ?>">
+        <span class="fab-label"><?= gettext('Edit Person') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+    </a>
+    <?php } ?>
+    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-note" title="<?= gettext('Add a Note') ?>">
+        <span class="fab-label"><?= gettext('Add a Note') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-sticky-note"></i>
+        </div>
+    </a>
+    <?php } ?>
+</div>
+
+<?php
+require_once 'Include/Footer.php';
