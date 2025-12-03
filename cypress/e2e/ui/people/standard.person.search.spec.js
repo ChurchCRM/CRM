@@ -10,7 +10,8 @@ describe("Standard Person", () => {
         cy.visit("PersonEditor.php");
         cy.get("#FirstName").type(name);
         cy.get("#LastName").type("Campbell");
-        cy.get("#PersonSaveButton").click();
+        // Click FAB save button
+        cy.get(".fab-save").click();
 
         cy.url().should("contain", "PersonView.php");
         cy.contains(name).should("be.visible");
@@ -22,7 +23,8 @@ describe("Standard Person", () => {
         cy.get("#FirstName").type(firstName);
         cy.get("#MiddleName").type("Henry");
         cy.get("#LastName").type("Campbell");
-        cy.get("#PersonSaveButton").click();
+        // Click FAB save button
+        cy.get(".fab-save").click();
         cy.url().should("contain", "PersonView.php");
         cy.contains(firstName).should("be.visible");
     });

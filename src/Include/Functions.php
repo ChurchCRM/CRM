@@ -623,44 +623,68 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for boolean fields
         case 1:
             echo '<div class="form-group">' .
-            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value="true"' . ($data == 'true' ? 'checked' : '') . '>' . gettext('Yes') . '</label></div>' .
-            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value="false"' . ($data == 'false' ? 'checked' : '') . '>' . gettext('No') . '</label></div>' .
-            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value=""' . (strlen($data) === 0 ? 'checked' : '') . '>' . gettext('Unknown') . '</label></div>' .
+            '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="' . $fieldname . '_yes" name="' . $fieldname . '" value="true"' . ($data == 'true' ? ' checked' : '') . '><label class="custom-control-label" for="' . $fieldname . '_yes">' . gettext('Yes') . '</label></div>' .
+            '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="' . $fieldname . '_no" name="' . $fieldname . '" value="false"' . ($data == 'false' ? ' checked' : '') . '><label class="custom-control-label" for="' . $fieldname . '_no">' . gettext('No') . '</label></div>' .
+            '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="' . $fieldname . '_unknown" name="' . $fieldname . '" value=""' . (strlen($data) === 0 ? ' checked' : '') . '><label class="custom-control-label" for="' . $fieldname . '_unknown">' . gettext('Unknown') . '</label></div>' .
             '</div>';
             break;
     // Handler for date fields
         case 2:
             echo '<div class="input-group">' .
-            '<div class="input-group-addon">' .
-            '<i class="fa-solid fa-calendar"></i>' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>' .
             '</div>' .
-            '<input class="form-control date-picker" type="text" id="' . $fieldname . '" Name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
+            '<input class="form-control date-picker" type="text" id="' . $fieldname . '" name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
             '</div>';
             break;
 
     // Handler for 50 character max. text fields
         case 3:
-            echo '<input class="form-control" type="text" Name="' . $fieldname . '" maxlength="50" size="50" value="' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '">';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-font"></i></span>' .
+            '</div>' .
+            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="50" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '">' .
+            '</div>';
             break;
 
     // Handler for 100 character max. text fields
         case 4:
-            echo '<textarea class="form-control" Name="' . $fieldname . '" cols="40" rows="2" onKeyPress="LimitTextSize(this, 100)">' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '</textarea>';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-align-left"></i></span>' .
+            '</div>' .
+            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="2" maxlength="100">' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '</textarea>' .
+            '</div>';
             break;
 
     // Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
         case 5:
-            echo '<textarea class="form-control" Name="' . $fieldname . '" cols="60" rows="4" onKeyPress="LimitTextSize(this, 65535)">' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '</textarea>';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-paragraph"></i></span>' .
+            '</div>' .
+            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="4" maxlength="65535">' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '</textarea>' .
+            '</div>';
             break;
 
     // Handler for 4-digit year
         case 6:
-            echo '<input class="form-control" type="text" Name="' . $fieldname . '" maxlength="4" size="6" value="' . $data . '">';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>' .
+            '</div>' .
+            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="4" value="' . InputUtils::escapeAttribute($data) . '" placeholder="YYYY">' .
+            '</div>';
             break;
 
     // Handler for season (drop-down selection)
         case 7:
-            echo "<select name=\"$fieldname\" class=\"form-control\" >";
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-leaf"></i></span>' .
+            '</div>' .
+            '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-control">';
             echo '  <option value="none">' . gettext('Select Season') . '</option>';
             echo '  <option value="winter"';
             if ($data == 'winter') {
@@ -674,7 +698,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             echo '>' . gettext('Spring') . '</option>';
             echo '  <option value="summer"';
             if ($data == 'summer') {
-                echo 'selected';
+                echo ' selected';
             }
             echo '>' . gettext('Summer') . '</option>';
             echo '  <option value="fall"';
@@ -682,12 +706,17 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
                 echo ' selected';
             }
             echo '>' . gettext('Fall') . '</option>';
-            echo '</select>';
+            echo '</select></div>';
             break;
 
     // Handler for integer numbers
         case 8:
-            echo '<input class="form-control" type="text" Name="' . $fieldname . '" maxlength="11" size="15" value="' . $data . '">';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>' .
+            '</div>' .
+            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="11" value="' . InputUtils::escapeAttribute($data) . '">' .
+            '</div>';
             break;
 
     // Handler for "person from group"
@@ -703,7 +732,11 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
 
             $rsGroupPeople = RunQuery($sSQL);
 
-            echo '<select name="' . $fieldname . '" class="form-control" >';
+            echo '<div class="input-group">';
+            echo '<div class="input-group-prepend">';
+            echo '<span class="input-group-text"><i class="fa-solid fa-user"></i></span>';
+            echo '</div>';
+            echo '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-control">';
             echo '<option value="0"';
             if ($data <= 0) {
                 echo ' selected';
@@ -721,12 +754,17 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
                 echo '>' . $per_FirstName . '&nbsp;' . $per_LastName . '</option>';
             }
 
-            echo '</select>';
+            echo '</select></div>';
             break;
 
     // Handler for money amounts
         case 10:
-            echo '<input class="form-control"  type="text" Name="' . $fieldname . '" maxlength="13" size="16" value="' . $data . '">';
+            echo '<div class="input-group">';
+            echo '<div class="input-group-prepend">';
+            echo '<span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>';
+            echo '</div>';
+            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="13" value="' . InputUtils::escapeAttribute($data) . '">';
+            echo '</div>';
             break;
 
     // Handler for phone numbers
@@ -742,16 +780,20 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             }
 
             echo '<div class="input-group">';
-            echo '<div class="input-group-addon">';
-            echo '<i class="fa-solid fa-phone"></i>';
+            echo '<div class="input-group-prepend">';
+            echo '<span class="input-group-text"><i class="fa-solid fa-phone"></i></span>';
             echo '</div>';
-            echo '<input class="form-control"  type="text" Name="' . $fieldname . '" maxlength="30" size="30" value="' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
-            echo '<br><input type="checkbox" name="' . $fieldname . 'noformat" value="1"';
+            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
+            echo '<div class="input-group-append">';
+            echo '<div class="input-group-text">';
+            echo '<div class="custom-control custom-checkbox mb-0">';
+            echo '<input type="checkbox" class="custom-control-input" id="' . $fieldname . 'noformat" name="' . $fieldname . 'noformat" value="1"';
             if ($bNoFormat_Phone) {
                 echo ' checked';
             }
-            echo '>' . gettext('Do not auto-format');
-            echo '</div>';
+            echo '>';
+            echo '<label class="custom-control-label" for="' . $fieldname . 'noformat">' . gettext('No format') . '</label>';
+            echo '</div></div></div></div>';
             break;
 
     // Handler for custom lists
@@ -759,8 +801,12 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $special ORDER BY lst_OptionSequence";
             $rsListOptions = RunQuery($sSQL);
 
-            echo '<select class="form-control" name="' . $fieldname . '">';
-            echo '<option value="0" selected>' . gettext('Unassigned') . '</option>';
+            echo '<div class="input-group">';
+            echo '<div class="input-group-prepend">';
+            echo '<span class="input-group-text"><i class="fa-solid fa-list"></i></span>';
+            echo '</div>';
+            echo '<select class="form-control" id="' . $fieldname . '" name="' . $fieldname . '">';
+            echo '<option value="0">' . gettext('Unassigned') . '</option>';
             echo '<option value="" disabled>-----------------------</option>';
 
             while ($aRow = mysqli_fetch_array($rsListOptions)) {
@@ -772,7 +818,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
                 echo '>' . $lst_OptionName . '</option>';
             }
 
-            echo '</select>';
+            echo '</select></div>';
             break;
 
     // Otherwise, display error for debugging.
