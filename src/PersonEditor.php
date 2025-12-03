@@ -742,7 +742,7 @@ require_once 'Include/Header.php';
                             if ($iFamily === $fam_ID || $queryParamFamilyId === $fam_ID) {
                                 echo ' selected';
                             }
-                            echo '>' . $fam_Name . '&nbsp;' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                            echo '>' . InputUtils::escapeHTML($fam_Name) . '&nbsp;' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
                         } ?>
                     </select>
                 </div>
@@ -977,8 +977,8 @@ require_once 'Include/Header.php';
                 <input type="hidden" name="Address1" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>">
                 <input type="hidden" name="Address2" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>">
                 <input type="hidden" name="City" value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>">
-                <input type="hidden" name="State" value="<?= htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8') ?>">
-                <input type="hidden" name="StateTextbox" value="<?= htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8') ?>">
+                <input type="hidden" name="State" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
+                <input type="hidden" name="StateTextbox" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
                 <input type="hidden" name="Zip" value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>">
                 <input type="hidden" name="Country" value="<?= InputUtils::escapeAttribute(stripslashes($sCountry)) ?>">
             <?php } ?>
@@ -1141,14 +1141,14 @@ require_once 'Include/Header.php';
 <!-- FAB Container -->
 <div id="fab-person-editor" class="fab-container fab-person-editor">
     <?php if ($iPersonID > 0) { ?>
-    <a href="PersonView.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-cancel">
+    <a href="PersonView.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-cancel" title="<?= gettext('Cancel') ?>">
         <span class="fab-label"><?= gettext('Cancel') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-xmark"></i>
         </div>
     </a>
     <?php } else { ?>
-    <a href="v2/people" class="fab-button fab-cancel">
+    <a href="v2/people" class="fab-button fab-cancel" title="<?= gettext('Cancel') ?>">
         <span class="fab-label"><?= gettext('Cancel') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-xmark"></i>
@@ -1156,14 +1156,14 @@ require_once 'Include/Header.php';
     </a>
     <?php } ?>
     <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
-    <a href="#" class="fab-button fab-save-add" onclick="document.getElementById('PersonSaveAndAddButton').click(); return false;">
+    <a href="#" class="fab-button fab-save-add" role="button" title="<?= gettext('Save and Add') ?>" onclick="document.getElementById('PersonSaveAndAddButton').click(); return false;">
         <span class="fab-label"><?= gettext('Save and Add') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-user-plus"></i>
         </div>
     </a>
     <?php } ?>
-    <a href="#" class="fab-button fab-save" onclick="document.getElementById('PersonSaveButton').click(); return false;">
+    <a href="#" class="fab-button fab-save" role="button" title="<?= gettext('Save') ?>" onclick="document.getElementById('PersonSaveButton').click(); return false;">
         <span class="fab-label"><?= gettext('Save') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-check"></i>
