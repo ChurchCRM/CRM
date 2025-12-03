@@ -12,8 +12,8 @@ describe("Standard Family", () => {
     it("Entering a new Family", () => {
         cy.visit("FamilyEditor.php");
 
-        cy.contains("Family Identity");
-        // Fill in Family Identity section
+        cy.contains("Family Info");
+        // Fill in Family Info section
         cy.get("#FamilyName").type("Troy" + Cypress._.random(0, 1e6));
         cy.get('input[name="Address1"').type("4222 Clinton Way");
         cy.get('input[name="City"]').clear().type("Los Angeles");

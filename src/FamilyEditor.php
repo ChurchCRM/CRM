@@ -565,10 +565,10 @@ require_once 'Include/Header.php';
     <input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
     <input type="hidden" id="stateType" name="stateType" value="">
 
-    <!-- Card 1: Family Identity -->
+    <!-- Card 1: Family Info -->
     <div class="card card-info clearfix">
         <div class="card-header">
-            <h3 class="card-title"><?= gettext('Family Identity') ?></h3>
+            <h3 class="card-title"><?= gettext('Family Info') ?></h3>
         </div>
         <div class="card-body">
             <div class="row">
