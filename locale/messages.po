@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 02:59+0000\n"
+"POT-Creation-Date: 2025-12-03 04:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -315,6 +315,9 @@ msgid "Add All Funds"
 msgstr ""
 
 msgid "Add All to Cart"
+msgstr ""
+
+msgid "Add Another Family Member"
 msgstr ""
 
 msgid "Add Buyer"
@@ -727,6 +730,9 @@ msgstr ""
 msgid "Applying System Update..."
 msgstr ""
 
+msgid "Apr"
+msgstr ""
+
 msgid "April"
 msgstr ""
 
@@ -844,6 +850,9 @@ msgid "Audience not in the CRM"
 msgstr ""
 
 msgid "Audience not in the ChurchCRM"
+msgstr ""
+
+msgid "Aug"
 msgstr ""
 
 msgid "August"
@@ -1014,6 +1023,9 @@ msgid "Bid"
 msgstr ""
 
 msgid "Bing map API requires a unique key"
+msgstr ""
+
+msgid "Birth & Family"
 msgstr ""
 
 msgid "Birth / Anniversary Date"
@@ -1366,6 +1378,9 @@ msgstr ""
 msgid "Church Letterhead path and file"
 msgstr ""
 
+msgid "Church Membership"
+msgstr ""
+
 msgid "Church Name"
 msgstr ""
 
@@ -1575,6 +1590,9 @@ msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr ""
 
 msgid "Contact Info"
+msgstr ""
+
+msgid "Contact Information"
 msgstr ""
 
 msgid "Continue to Backup"
@@ -1910,6 +1928,9 @@ msgstr ""
 msgid "Date:"
 msgstr ""
 
+msgid "Day"
+msgstr ""
+
 msgid "Deactivate"
 msgstr ""
 
@@ -1926,6 +1947,9 @@ msgid "Debug Email Connection"
 msgstr ""
 
 msgid "Debug Info"
+msgstr ""
+
+msgid "Dec"
 msgstr ""
 
 msgid "December"
@@ -2327,6 +2351,9 @@ msgstr ""
 msgid "Edit Event Types"
 msgstr ""
 
+msgid "Edit Family"
+msgstr ""
+
 msgid "Edit Fundraiser"
 msgstr ""
 
@@ -2343,6 +2370,9 @@ msgid "Edit List Options"
 msgstr ""
 
 msgid "Edit Payment"
+msgstr ""
+
+msgid "Edit Person"
 msgstr ""
 
 msgid "Edit Records"
@@ -2754,6 +2784,9 @@ msgstr ""
 msgid "Extra Teachers"
 msgstr ""
 
+msgid "F"
+msgstr ""
+
 msgid "Failed"
 msgstr ""
 
@@ -2994,6 +3027,9 @@ msgid "Faroe Islands (Føroyar)"
 msgstr ""
 
 msgid "Fatal error in eGive API datastream: '"
+msgstr ""
+
+msgid "Feb"
 msgstr ""
 
 msgid "February"
@@ -3954,6 +3990,9 @@ msgstr ""
 msgid "Jamaica"
 msgstr ""
 
+msgid "Jan"
+msgstr ""
+
 msgid "January"
 msgstr ""
 
@@ -3976,10 +4015,16 @@ msgstr ""
 msgid "Jordan (‫الأردن‬‎)"
 msgstr ""
 
-msgid "Jr., Sr., III"
+msgid "Jr., Sr."
+msgstr ""
+
+msgid "Jul"
 msgstr ""
 
 msgid "July"
+msgstr ""
+
+msgid "Jun"
 msgstr ""
 
 msgid "June"
@@ -4274,6 +4319,9 @@ msgstr ""
 msgid "Luxembourg"
 msgstr ""
 
+msgid "M"
+msgstr ""
+
 msgid "M/F"
 msgstr ""
 
@@ -4374,6 +4422,9 @@ msgid "Map Settings"
 msgstr ""
 
 msgid "Map this group"
+msgstr ""
+
+msgid "Mar"
 msgstr ""
 
 msgid "March"
@@ -4514,9 +4565,6 @@ msgid "Members:"
 msgstr ""
 
 msgid "Membership Date"
-msgstr ""
-
-msgid "Membership Info"
 msgstr ""
 
 msgid "Membership Reports"
@@ -4703,7 +4751,7 @@ msgstr ""
 msgid "Mozambique (Moçambique)"
 msgstr ""
 
-msgid "Mr., Mrs., Dr., Rev."
+msgid "Mr., Mrs., Dr."
 msgstr ""
 
 msgid "Multiple"
@@ -4770,6 +4818,9 @@ msgstr ""
 
 #. Context: queryparameteroptions_qpo
 msgid "Name"
+msgstr ""
+
+msgid "Name & Identity"
 msgstr ""
 
 msgid "Name Tags"
@@ -4950,6 +5001,9 @@ msgstr ""
 msgid "No file selected for upload."
 msgstr ""
 
+msgid "No format"
+msgstr ""
+
 msgid "No funds have been added yet"
 msgstr ""
 
@@ -5025,9 +5079,6 @@ msgid "None"
 msgstr ""
 
 msgid "None (one-time event)"
-msgstr ""
-
-msgid "None State"
 msgstr ""
 
 #. Context: countries
@@ -5113,6 +5164,9 @@ msgstr ""
 msgid "Notification for"
 msgstr ""
 
+msgid "Nov"
+msgstr ""
+
 msgid "November"
 msgstr ""
 
@@ -5145,6 +5199,9 @@ msgid "OR"
 msgstr ""
 
 msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr ""
+
+msgid "Oct"
 msgstr ""
 
 msgid "October"
@@ -5245,9 +5302,6 @@ msgid "Other"
 msgstr ""
 
 msgid "Other Email"
-msgstr ""
-
-msgid "Other Info"
 msgstr ""
 
 msgid "Other Settings"
@@ -5537,9 +5591,6 @@ msgid "Personal Email"
 msgstr ""
 
 msgid "Personal Home Phone"
-msgstr ""
-
-msgid "Personal Info"
 msgstr ""
 
 msgid "Personal Work Phone"
@@ -6408,6 +6459,9 @@ msgstr ""
 msgid "Save and Add"
 msgstr ""
 
+msgid "Save and Add New Family"
+msgstr ""
+
 msgid "Saving..."
 msgstr ""
 
@@ -6503,9 +6557,6 @@ msgstr ""
 msgid "Select Backup File"
 msgstr ""
 
-msgid "Select Day"
-msgstr ""
-
 msgid "Select Event"
 msgstr ""
 
@@ -6528,9 +6579,6 @@ msgid "Select Group"
 msgstr ""
 
 msgid "Select Group and Role"
-msgstr ""
-
-msgid "Select Month"
 msgstr ""
 
 msgid "Select Property Type"
@@ -6654,6 +6702,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Senegal (Sénégal)"
+msgstr ""
+
+msgid "Sep"
 msgstr ""
 
 msgid "September"
@@ -6837,6 +6888,9 @@ msgstr ""
 msgid "Slovenia (Slovenija)"
 msgstr ""
 
+msgid "Social Media"
+msgstr ""
+
 msgid "Software"
 msgstr ""
 
@@ -6945,6 +6999,9 @@ msgstr ""
 
 #. Context: queryparameteroptions_qpo
 msgid "State"
+msgstr ""
+
+msgid "State (Other)"
 msgstr ""
 
 msgid "Status"
@@ -8224,7 +8281,7 @@ msgstr ""
 msgid "You have no items in your cart."
 msgstr ""
 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
+msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr ""
 
 msgid "You must enter a Last Name if no Family is selected."
@@ -8343,6 +8400,9 @@ msgstr ""
 msgid "Zip"
 msgstr ""
 
+msgid "Zip / Postal Code"
+msgstr ""
+
 #. Context: queryparameteroptions_qpo
 msgid "Zip Code"
 msgstr ""
@@ -8400,9 +8460,6 @@ msgid "day"
 msgstr ""
 
 msgid "days"
-msgstr ""
-
-msgid "days ago"
 msgstr ""
 
 msgid "denotes required fields"
