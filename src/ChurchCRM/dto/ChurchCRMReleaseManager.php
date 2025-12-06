@@ -279,7 +279,7 @@ class ChurchCRMReleaseManager
         // Log detailed file information before attempting hash
         $fileExists = file_exists($zipFilename);
         $isReadable = is_readable($zipFilename);
-        $fileSize = $fileExists ? @filesize($zipFilename) : -1;
+        $fileSize = $fileExists ? filesize($zipFilename) : -1;
         $perms = $fileExists ? @fileperms($zipFilename) : false;
         $filePerms = ($perms !== false) ? substr(sprintf('%o', $perms), -4) : 'N/A';
         $currentUser = get_current_user();
