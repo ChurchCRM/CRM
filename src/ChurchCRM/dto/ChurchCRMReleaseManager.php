@@ -276,7 +276,53 @@ class ChurchCRMReleaseManager
         $logger->info('PHP max_execution_time is now: ' . ini_get('max_execution_time'));
         $logger->info('Beginning hash validation on ' . $zipFilename);
 
+        // Log detailed file information before attempting hash
+        $fileExists = file_exists($zipFilename);
+        $isReadable = is_readable($zipFilename);
+        $fileSize = $fileExists ? @filesize($zipFilename) : -1;
+        $filePerms = $fileExists ? substr(sprintf('%o', fileperms($zipFilename)), -4) : 'N/A';
+        $currentUser = get_current_user();
+        $fileOwner = $fileExists ? posix_getpwuid(fileowner($zipFilename))['name'] ?? 'unknown' : 'N/A';
+        
+        $logger->debug('File pre-flight check', [
+            'zipFilename' => $zipFilename,
+            'fileExists' => $fileExists,
+            'isReadable' => $isReadable,
+            'fileSize' => $fileSize,
+            'filePerms' => $filePerms,
+            'fileOwner' => $fileOwner,
+            'currentUser' => $currentUser,
+            'currentUserId' => posix_getuid(),
+            'fileOwnerId' => $fileExists ? fileowner($zipFilename) : -1,
+        ]);
+
         $actualSha1 = sha1_file($zipFilename);
+        
+        // If sha1_file() returned false, log detailed diagnostic info
+        if ($actualSha1 === false) {
+            $lastError = error_get_last();
+            $logger->error(
+                'sha1_file() returned false - hash calculation failed',
+                [
+                    'zipFilename' => $zipFilename,
+                    'expectedHash' => $sha1,
+                    'actualHash' => false,
+                    'fileExists' => $fileExists,
+                    'isReadable' => $isReadable,
+                    'fileSize' => $fileSize,
+                    'filePerms' => $filePerms,
+                    'fileOwner' => $fileOwner,
+                    'currentUser' => $currentUser,
+                    'lastError' => $lastError['message'] ?? 'none',
+                    'lastErrorType' => $lastError['type'] ?? 'none',
+                    'openBasedir' => ini_get('open_basedir') ?: 'not set',
+                    'disabledFunctions' => ini_get('disable_functions') ?: 'none',
+                    'memoryLimit' => ini_get('memory_limit'),
+                    'uploadTmpDir' => ini_get('upload_tmp_dir') ?: sys_get_temp_dir(),
+                ]
+            );
+        }
+        
         if ($sha1 !== $actualSha1) {
             self::$isUpgradeInProgress = false;
             ini_set('display_errors', $displayErrors);
