@@ -25,14 +25,14 @@ describe("API Private Admin Person Initial Setting", () => {
         const json = { value: "1" };
         cy.makePrivateAdminAPICall(
             "POST",
-            "/api/system/config/iPersonInitialStyle",
+            "/admin/api/system/config/iPersonInitialStyle",
             json,
             200,
         );
 
         cy.request({
             method: "GET",
-            url: "/api/system/config/iPersonInitialStyle",
+            url: "/admin/api/system/config/iPersonInitialStyle",
             headers: {
                 "content-type": "application/json",
                 "x-api-key": Cypress.env("admin.api.key"),

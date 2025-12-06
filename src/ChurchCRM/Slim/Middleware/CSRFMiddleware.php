@@ -33,6 +33,13 @@ class CSRFMiddleware implements MiddlewareInterface
         
         // Only validate CSRF tokens for state-changing methods
         if (in_array($method, ['POST', 'PUT', 'DELETE', 'PATCH'])) {
+            // Skip CSRF validation for API key authenticated requests
+            $apiKey = $request->getHeaderLine('X-API-Key');
+            if (!empty($apiKey)) {
+                // API key authentication provided, skip CSRF validation
+                return $handler->handle($request);
+            }
+
             $body = $request->getParsedBody();
 
             // First try: token in parsed body (standard form posts)
