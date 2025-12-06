@@ -35,12 +35,19 @@ $app->group('/systemupgrade', function (RouteCollectorProxy $group): void {
         try {
             // Force refresh of upgrade information from GitHub
             ChurchCRMReleaseManager::checkForUpdates();
-            
+
+            // Recompute whether an update is available for the installed version
+            $updateInfo = ChurchCRMReleaseManager::checkSystemUpdateAvailable();
+            $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
+            $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
+            $_SESSION['systemLatestVersion'] = $updateInfo['latestVersion'];
+
             // Return fresh session data
             return SlimUtils::renderJSON($response, [
                 'data' => [
                     'updateAvailable' => $_SESSION['systemUpdateAvailable'] ?? false,
-                    'updateVersion' => isset($_SESSION['systemUpdateVersion']) ? $_SESSION['systemUpdateVersion']->__toString() : null
+                    'updateVersion' => isset($_SESSION['systemUpdateVersion']) ? $_SESSION['systemUpdateVersion']->__toString() : null,
+                    'latestVersion' => isset($_SESSION['systemLatestVersion']) ? $_SESSION['systemLatestVersion']->__toString() : null
                 ],
                 'message' => gettext('Upgrade information refreshed successfully')
             ]);

@@ -104,13 +104,25 @@ class ChurchCRMReleaseManager
     public static function isReleaseCurrent(ChurchCRMRelease $Release): bool
     {
         if (empty($_SESSION['ChurchCRMReleases'])) {
-            return true;
-        } else {
-            $CurrentRelease = $_SESSION['ChurchCRMReleases'][0];
-            $isEqual = $CurrentRelease->equals($Release);
-
-            return $isEqual;
+            // If we don't have cached releases, populate them first
+            $_SESSION['ChurchCRMReleases'] = self::populateReleases();
         }
+        
+        if (empty($_SESSION['ChurchCRMReleases'])) {
+            // If still empty (no releases found), assume current
+            return true;
+        }
+        
+        $CurrentRelease = $_SESSION['ChurchCRMReleases'][0];
+        $isEqual = $CurrentRelease->equals($Release);
+        
+        LoggerUtils::getAppLogger()->debug('isReleaseCurrent comparison: Release=' . $Release->__toString() 
+            . ' (MAJOR=' . $Release->MAJOR . ' MINOR=' . $Release->MINOR . ' PATCH=' . $Release->PATCH . ')'
+            . ' vs CurrentRelease=' . $CurrentRelease->__toString()
+            . ' (MAJOR=' . $CurrentRelease->MAJOR . ' MINOR=' . $CurrentRelease->MINOR . ' PATCH=' . $CurrentRelease->PATCH . ')'
+            . ' equals=' . ($isEqual ? 'true' : 'false'));
+
+        return $isEqual;
     }
 
     private static function getHighestReleaseInArray(array $eligibleUpgradeTargetReleases)
@@ -358,7 +370,9 @@ class ChurchCRMReleaseManager
             $installedVersion = self::getReleaseFromString($installedVersionString);
 
             if (empty($_SESSION['ChurchCRMReleases'])) {
-                $_SESSION['ChurchCRMReleases'] = self::populateReleases();
+                $releases = self::populateReleases();
+                $_SESSION['ChurchCRMReleases'] = $releases;
+                $logger->debug('Populated releases cache with ' . count($releases) . ' releases');
             }
             
             // Get the latest release from GitHub
@@ -367,14 +381,25 @@ class ChurchCRMReleaseManager
                 $latestRelease = $_SESSION['ChurchCRMReleases'][0] ?? null;
             }
             
+            if ($latestRelease === null) {
+                $logger->warning('No releases available from GitHub cache');
+            }
+            
+            $logger->debug('Update check: installed=' . $installedVersion->__toString() 
+                . ' (MAJOR=' . $installedVersion->MAJOR . ' MINOR=' . $installedVersion->MINOR . ' PATCH=' . $installedVersion->PATCH . ')'
+                . ', latest=' . ($latestRelease ? $latestRelease->__toString() : 'null')
+                . ($latestRelease ? ' (MAJOR=' . $latestRelease->MAJOR . ' MINOR=' . $latestRelease->MINOR . ' PATCH=' . $latestRelease->PATCH . ')' : ''));
+            
             $isCurrent = self::isReleaseCurrent($installedVersion);
+            $logger->debug('isCurrent=' . ($isCurrent ? 'true' : 'false'));
             
             if (!$isCurrent) {
                 $nextRelease = self::getNextReleaseStep($installedVersion);
                 if (null !== $nextRelease) {
                     $logger->info('System update available', [
                         'currentVersion' => $installedVersionString,
-                        'availableVersion' => $nextRelease->__toString()
+                        'availableVersion' => $nextRelease->__toString(),
+                        'latestVersion' => $latestRelease ? $latestRelease->__toString() : null
                     ]);
                     return [
                         'available' => true,
@@ -382,6 +407,8 @@ class ChurchCRMReleaseManager
                         'latestVersion' => $latestRelease
                     ];
                 }
+            } else {
+                $logger->debug('System is current - no update needed. latestVersion=' . ($latestRelease ? $latestRelease->__toString() : 'null'));
             }
 
             return [
