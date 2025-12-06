@@ -484,4 +484,201 @@ class AppIntegrityService
 
         return $result;
     }
+
+    /**
+     * Get available system locales
+     * Detects which locales are installed on the system
+     *
+     * @return array Locale codes available on the system
+     */
+    public static function getAvailableSystemLocales(): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $availableLocales = [];
+
+        // First, try to get locales using locale -a command (Unix/Linux/macOS)
+        if (function_exists('exec')) {
+            $output = [];
+            try {
+                @exec('locale -a 2>/dev/null', $output, $returnCode);
+                if ($returnCode === 0 && count($output) > 0) {
+                    // Parse output and normalize locale names
+                    foreach ($output as $line) {
+                        $line = trim($line);
+                        if (!empty($line)) {
+                            // Normalize the locale name (remove .utf8, .UTF-8, @modifiers, etc.)
+                            $locale = preg_replace('/(\.[^.]*)?(@.*)?$/', '', $line);
+                            if (!empty($locale)) {
+                                $availableLocales[] = $locale;
+                            }
+                        }
+                    }
+                    $availableLocales = array_unique($availableLocales);
+                    $logger->debug('System locales detected via locale command', [
+                        'count' => count($availableLocales),
+                    ]);
+
+                    return $availableLocales;
+                }
+            } catch (\Exception $e) {
+                $logger->debug('Error executing locale command', ['exception' => $e]);
+            }
+        }
+
+        // Fallback: Check commonly available locales using setlocale
+        $commonLocales = [
+            'C',
+            'en_US',
+            'en_US.UTF-8',
+            'en_GB',
+            'en_GB.UTF-8',
+            'de_DE',
+            'de_DE.UTF-8',
+            'fr_FR',
+            'fr_FR.UTF-8',
+            'es_ES',
+            'es_ES.UTF-8',
+            'it_IT',
+            'it_IT.UTF-8',
+            'pt_BR',
+            'pt_BR.UTF-8',
+            'pt_PT',
+            'pt_PT.UTF-8',
+            'nl_NL',
+            'nl_NL.UTF-8',
+            'ja_JP',
+            'ja_JP.UTF-8',
+            'zh_CN',
+            'zh_CN.UTF-8',
+            'zh_TW',
+            'zh_TW.UTF-8',
+            'ko_KR',
+            'ko_KR.UTF-8',
+            'ru_RU',
+            'ru_RU.UTF-8',
+            'pl_PL',
+            'pl_PL.UTF-8',
+            'ar_EG',
+            'ar_EG.UTF-8',
+        ];
+
+        // Save current locale before testing
+        $originalLocale = setlocale(LC_ALL, 0);
+
+        foreach ($commonLocales as $locale) {
+            $currentLocale = setlocale(LC_ALL, $locale);
+            if ($currentLocale !== false && $currentLocale !== 'C') {
+                // Normalize the locale name
+                $normalized = preg_replace('/(\.[^.]*)?(@.*)?$/', '', $locale);
+                if (!empty($normalized)) {
+                    $availableLocales[] = $normalized;
+                }
+            }
+        }
+
+        // Restore original locale
+        if ($originalLocale !== false) {
+            setlocale(LC_ALL, $originalLocale);
+        }
+
+        $availableLocales = array_unique($availableLocales);
+        $logger->debug('System locales detected via setlocale fallback', [
+            'count' => count($availableLocales),
+        ]);
+
+        return $availableLocales;
+    }
+
+    /**
+     * Get ChurchCRM supported locales
+     *
+     * @return array Array with locale code as key and full locale info as value
+     */
+    public static function getSupportedLocales(): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $documentRoot = AppIntegrityService::resolveDocumentRoot();
+        $localesFile = $documentRoot . '/locale/locales.json';
+
+        try {
+            if (!is_file($localesFile)) {
+                $logger->warning('Locales file not found', ['file' => $localesFile]);
+
+                return [];
+            }
+
+            $localesContent = file_get_contents($localesFile);
+            if ($localesContent === false) {
+                $logger->warning('Failed to read locales file', ['file' => $localesFile]);
+
+                return [];
+            }
+
+            $locales = json_decode($localesContent, true, 512, JSON_THROW_ON_ERROR);
+
+            return $locales ?? [];
+        } catch (\Exception $e) {
+            $logger->warning('Error loading supported locales', ['exception' => $e]);
+
+            return [];
+        }
+    }
+
+    /**
+     * Get locale support information for setup wizard
+     * Returns supported locales with indicator of system availability
+     *
+     * @return array Locale support data with system availability flags
+     */
+    public static function getLocaleSetupInfo(): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $supportedLocales = AppIntegrityService::getSupportedLocales();
+        $availableLocales = AppIntegrityService::getAvailableSystemLocales();
+
+        // Normalize available locales for comparison (remove encoding suffixes)
+        $availableNormalized = array_map(function ($locale) {
+            return preg_replace('/(\.[^.]*)?(@.*)?$/', '', $locale);
+        }, $availableLocales);
+        $availableNormalized = array_unique($availableNormalized);
+
+        $localeInfo = [];
+        $systemSupported = 0;
+        $totalSupported = 0;
+
+        foreach ($supportedLocales as $languageName => $localeConfig) {
+            $localeCode = $localeConfig['locale'] ?? '';
+            $languageCode = $localeConfig['languageCode'] ?? '';
+            $totalSupported++;
+
+            // Check if this locale is available on the system
+            $isAvailable = in_array($localeCode, $availableNormalized, true) ||
+                          in_array($languageCode, $availableNormalized, true) ||
+                          in_array(str_replace('_', '-', $localeCode), $availableNormalized, true);
+
+            if ($isAvailable) {
+                $systemSupported++;
+            }
+
+            $localeInfo[] = [
+                'name' => $languageName,
+                'locale' => $localeCode,
+                'languageCode' => $languageCode,
+                'systemAvailable' => $isAvailable,
+                'countryCode' => $localeConfig['countryCode'] ?? '',
+            ];
+        }
+
+        $logger->info('Locale setup info generated', [
+            'totalSupported' => $totalSupported,
+            'systemSupported' => $systemSupported,
+        ]);
+
+        return [
+            'supportedLocales' => $localeInfo,
+            'availableSystemLocales' => $availableLocales,
+            'systemLocaleSupportSummary' => $systemSupported . '/' . $totalSupported . ' locales available on system',
+            'systemLocaleDetected' => count($availableLocales) > 0,
+        ];
+    }
 }

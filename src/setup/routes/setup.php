@@ -48,6 +48,12 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, $filesystem);
     });
 
+    $group->get('SystemLocaleCheck', function (Request $request, Response $response, array $args): Response {
+        $localeInfo = AppIntegrityService::getLocaleSetupInfo();
+
+        return SlimUtils::renderJSON($response, $localeInfo);
+    });
+
     $postHandler = function (Request $request, Response $response, array $args): Response {
         // Use GLOBALS instead of SystemURLs (Config.php doesn't exist during setup)
         $docRoot = $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] ?? dirname(__DIR__, 2);
