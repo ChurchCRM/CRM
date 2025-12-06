@@ -215,6 +215,18 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                             </div>
                         </div>
                     </div>
+                    <div class="row mt-3">
+                        <!-- System Logs -->
+                        <div class="col-md-6">
+                            <div class="border rounded p-3 h-100">
+                                <h6 class="text-info"><i class="fa-solid fa-file-alt"></i> <?= gettext('System Logs') ?></h6>
+                                <p class="small text-muted mb-2"><?= gettext('View and manage system log files for debugging.') ?></p>
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" class="btn btn-sm btn-outline-info">
+                                    <?= gettext('View Logs') ?>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
