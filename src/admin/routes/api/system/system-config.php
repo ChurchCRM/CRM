@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/system/config/{configName}', function (RouteCollectorProxy $group): void {
+$app->group('/api/system/config/{configName}', function (RouteCollectorProxy $group): void {
     $group->get('', 'getConfigValueByNameAPI');
     $group->post('', 'setConfigValueByNameAPI');
     $group->get('/', 'getConfigValueByNameAPI');

@@ -295,7 +295,7 @@ import '../src/skin/scss/system-settings-panel.scss';
             
             // Fetch all setting values
             const promises = settingNames.map(name => {
-                return fetch(window.CRM.root + '/api/system/config/' + name)
+                return fetch(window.CRM.root + '/admin/api/system/config/' + name)
                     .then(response => response.json())
                     .then(data => {
                         self.settingValues[name] = data.value;
@@ -419,7 +419,7 @@ import '../src/skin/scss/system-settings-panel.scss';
 
             // Save each setting
             const promises = Object.keys(settings).map(function(key) {
-                return fetch(window.CRM.root + '/api/system/config/' + key, {
+                return fetch(window.CRM.root + '/admin/api/system/config/' + key, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

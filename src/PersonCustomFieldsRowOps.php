@@ -6,12 +6,14 @@ require_once 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 
 // Security: user must be administrator to use this page.
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 // Get the Group, Property, and Action from the querystring
-$iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'], 'int');
+$iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'] ?? 1, 'int');
 $sField = InputUtils::legacyFilterInput($_GET['Field']);
 $sAction = $_GET['Action'];
 
@@ -34,30 +36,43 @@ switch ($sAction) {
 
         // Delete a field from the form
     case 'delete':
-        // Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
-        $sSQL = "SELECT type_ID,custom_Special FROM person_custom_master WHERE custom_Field = '" . $sField . "'";
-        $rsTemp = RunQuery($sSQL);
-        $aTemp = mysqli_fetch_array($rsTemp);
-        if ($aTemp[0] == 12) {
-            $sSQL = "DELETE FROM list_lst WHERE lst_ID = $aTemp[1]";
-            RunQuery($sSQL);
+        // Fetch the custom field record by primary key (custom_field)
+        $customField = PersonCustomMasterQuery::create()
+            ->findOneById($sField);
+
+        if ($customField !== null) {
+            // Check if this field is a custom list type (type_ID = 12).  If so, delete the list from list_lst
+            if ($customField->getTypeId() == 12) {
+                $listOption = ListOptionQuery::create()
+                    ->findOneById((int)$customField->getSpecial());
+                if ($listOption !== null) {
+                    $listOption->delete();
+                }
+            }
+
+            // Delete the custom field record
+            $customField->delete();
         }
 
-        $sSQL = 'ALTER TABLE `person_custom` DROP `' . $sField . '` ;';
+        $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '` ;';
         RunQuery($sSQL);
 
-        $sSQL = "DELETE FROM person_custom_master WHERE custom_Field = '" . $sField . "'";
-        RunQuery($sSQL);
-
-        $sSQL = 'SELECT * FROM person_custom_master';
-        $rsPropList = RunQuery($sSQL);
-        $numRows = mysqli_num_rows($rsPropList);
+        // Fetch remaining custom fields to reorder
+        $remainingFields = PersonCustomMasterQuery::create()
+            ->orderByOrder()
+            ->find();
+        $numRows = count($remainingFields);
 
         // Shift the remaining rows up by one, unless we've just deleted the only row
         if ($numRows != 0) {
             for ($reorderRow = $iOrderID + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
-                $sSQL = "UPDATE person_custom_master SET custom_Order = '" . ($reorderRow - 1) . "' WHERE custom_Order = '" . $reorderRow . "'";
-                RunQuery($sSQL);
+                $fieldToReorder = PersonCustomMasterQuery::create()
+                    ->filterByOrder($reorderRow)
+                    ->findOne();
+                if ($fieldToReorder !== null) {
+                    $fieldToReorder->setOrder($reorderRow - 1)
+                        ->save();
+                }
             }
         }
         break;
