@@ -85,6 +85,84 @@ If unsure
 - Check `=== null` not `empty()` for objects
 - Access properties as objects: `$obj->prop`, never `$obj['prop']`
 
+## Propel ORM Method Naming (CRITICAL)
+
+**NEVER guess ORM method names.** Propel uses strict column-to-method mapping. **Always check the Query class documentation comments** to verify exact method names before writing code.
+
+### Method Naming Pattern
+
+Propel converts database column names to PHP method names using **phpName** (derived from table/column structure):
+
+| Database Column | Query Method | Accessor Method | Mutator Method |
+|---|---|---|---|
+| `custom_order` (renamed to `Order` in phpName) | `orderByOrder()`, `filterByOrder()` | `getOrder()` | `setOrder()` |
+| `custom_field` (renamed to `Id` in phpName) | `findOneById()`, `filterById()` | `getId()` | `setId()` |
+| `custom_name` (renamed to `Name` in phpName) | `orderByName()`, `filterByName()` | `getName()` | `setName()` |
+| `lst_ID` (renamed to `Id` in phpName) | `findOneById()`, `orderById()` | `getId()` | `setId()` |
+| `lst_OptionID` (renamed to `OptionId`) | `filterByOptionId()` | `getOptionId()` | `setOptionId()` |
+| `type_ID` (renamed to `TypeId` in phpName) | `filterByTypeId()` | `getTypeId()` | `setTypeId()` |
+
+### How to Find Correct Method Names
+
+1. **Check the Base Query class** at `src/ChurchCRM/model/ChurchCRM/Base/*Query.php`
+2. **Look for `@method` PHPDoc comments** at the top of the class - they list ALL available query methods
+3. **Common patterns to look for:**
+   - `findOneById()` - Find by primary key
+   - `findOneBy[ColumnName]()` - Find by any column
+   - `filterBy[ColumnName]()` - Add WHERE condition
+   - `orderBy[ColumnName]()` - Add ORDER BY
+   - `groupBy[ColumnName]()` - Add GROUP BY
+
+### Example: PersonCustomMasterQuery
+
+```php
+// Check Base/PersonCustomMasterQuery.php for @method comments:
+// @method     ChildPersonCustomMasterQuery orderByOrder($order = Criteria::ASC)
+// @method     ChildPersonCustomMasterQuery orderByName($order = Criteria::ASC)
+// @method     ChildPersonCustomMaster|null findOneById(string $custom_Field)
+// @method     ChildPersonCustomMaster|null findOneByName(string $custom_Name)
+
+// CORRECT - These match the documented methods
+$field = PersonCustomMasterQuery::create()
+    ->findOneById($fieldName);
+$fields = PersonCustomMasterQuery::create()
+    ->orderByOrder()
+    ->find();
+
+// WRONG - These methods don't exist (will throw UnknownColumnException)
+$field = PersonCustomMasterQuery::create()
+    ->filterByCustomfield($fieldName);  // ❌ Should be findOneById()
+$fields = PersonCustomMasterQuery::create()
+    ->filterByCustomorder(1)  // ❌ Should be filterByOrder()
+    ->find();
+```
+
+### Common Mistakes to Avoid
+
+- ❌ `filterByCustomField()` → Use `findOneById()` for primary key lookups
+- ❌ `filterByLstId()` → Use `findOneById()` (Propel renames `lst_ID` to `Id`)
+- ❌ `filterByTypeId()` used with `findOne()` instead of `findOneByTypeId()` 
+- ❌ `orderByCustomOrder()` → Use `orderByOrder()` (Propel uses phpName, not database column)
+- ❌ `setCustomorder()` → Use `setOrder()` (consistent with getter/setter naming)
+
+### When Migrating from Raw SQL
+
+**Always consult the Query class before converting SQL to ORM:**
+
+```php
+// RAW SQL (find what to convert)
+$sSQL = "SELECT * FROM person_custom_master WHERE custom_Field = '" . $fieldName . "'";
+$record = RunQuery($sSQL);
+
+// CORRECT ORM (check Base Query class for method names)
+$record = PersonCustomMasterQuery::create()
+    ->findOneById($fieldName);  // ← primary key lookup method
+
+// Find column mappings in Base class:
+// @method ChildPersonCustomMaster|null findOneById(string $custom_Field)
+// This tells us custom_Field → Id in phpName
+```
+
 ---
 
 ## Service Classes (Business Logic)
