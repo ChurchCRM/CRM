@@ -410,6 +410,45 @@ window.CRM.notify(i18next.t('Operation completed'), {
 
 ---
 
+## Admin API Calls (JavaScript)
+
+**CRITICAL: All `/admin/api/` calls MUST use `window.CRM.AdminAPIRequest()` wrapper**
+
+Never use direct `$.ajax()` for admin endpoints - use the AdminAPIRequest wrapper:
+
+```javascript
+// CORRECT - Use AdminAPIRequest for /admin/api endpoints
+window.CRM.AdminAPIRequest({
+    path: 'orphaned-files/delete-all',
+    method: 'POST'
+})
+.done(function(response) {
+    window.CRM.notify(i18next.t('Success'), { type: 'success' });
+})
+.fail(function(xhr) {
+    window.CRM.notify(i18next.t('Error'), { type: 'error' });
+});
+
+// WRONG - Direct $.ajax
+$.ajax({
+    url: window.CRM.root + '/admin/api/orphaned-files/delete-all',
+    method: 'POST'
+});
+```
+
+**AdminAPIRequest Details:**
+- Automatically prepends `/admin/api/` to the path
+- Sets proper `Content-Type: application/json` and `dataType: 'json'`
+- Integrates with CRM error handler for consistent error display
+- Returns jQuery promise (supports `.done()`, `.fail()`, `.always()`)
+- Path format: `'database/reset'` becomes `/admin/api/database/reset`
+
+**For public/private API calls, use:**
+- `window.CRM.APIRequest()` for `/api/` endpoints
+- Never use direct `$.ajax()` for API calls
+
+---
+
 ## Testing
 
 ### Cypress Configuration & Logging

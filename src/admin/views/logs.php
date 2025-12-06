@@ -278,16 +278,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             'EMERGENCY': '600'
         };
         
-        $.ajax({
-            url: '<?= SystemURLs::getRootPath() ?>/api/system/config/sLogLevel',
-            method: 'GET',
-            cache: false,
-            headers: {
-                'Cache-Control': 'no-cache, no-store, must-revalidate',
-                'Pragma': 'no-cache',
-                'Expires': '0'
-            },
-            success: function(data) {
+        fetch(window.CRM.root + '/admin/api/system/config/sLogLevel')
+            .then(response => response.json())
+            .then(data => {
                 if (data.value) {
                     var logLevelValue = data.value;
                     
@@ -301,31 +294,32 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 } else {
                     $('#logLevel').val('200');
                 }
-            },
-            error: function(xhr, status, error) {
-                console.error(i18next.t('Error loading log level.'), error);
+            })
+            .catch(err => {
+                console.error(i18next.t('Error loading log level.'), err);
                 $('#logLevel').val('200');
-            }
-        });
+            });
     }
 
     function saveLogLevel() {
         var logLevel = $('#logLevel').val();
-        $.ajax({
-            url: '<?= SystemURLs::getRootPath() ?>/api/system/logs/loglevel',
+        fetch(window.CRM.root + '/api/system/logs/loglevel', {
             method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({ value: logLevel }),
-            success: function(data) {
-                $('#logLevelStatus').html('<span class="text-success"><i class="fa-solid fa-check"></i> ' + i18next.t('Saved - Log level updated immediately') + '</span>');
-                setTimeout(function() {
-                    $('#logLevelStatus').html('');
-                }, 3000);
+            headers: {
+                'Content-Type': 'application/json'
             },
-            error: function(xhr, status, error) {
-                console.error('Error:', error);
-                $('#logLevelStatus').html('<span class="text-danger"><i class="fa-solid fa-times"></i> ' + i18next.t('Error') + '</span>');
-            }
+            body: JSON.stringify({ value: logLevel })
+        })
+        .then(response => response.json())
+        .then(data => {
+            $('#logLevelStatus').html('<span class="text-success"><i class="fa-solid fa-check"></i> ' + i18next.t('Saved - Log level updated immediately') + '</span>');
+            setTimeout(function() {
+                $('#logLevelStatus').html('');
+            }, 3000);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            $('#logLevelStatus').html('<span class="text-danger"><i class="fa-solid fa-times"></i> ' + i18next.t('Error') + '</span>');
         });
     }
 </script>
