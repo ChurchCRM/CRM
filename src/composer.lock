@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fdc98522dd7cac6c2980a8c7bee2ed8d",
+    "content-hash": "87822c23f38de33f04f47bb77a81cc7c",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -5298,5 +5298,5 @@
     "platform-overrides": {
         "php": "8.2"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
