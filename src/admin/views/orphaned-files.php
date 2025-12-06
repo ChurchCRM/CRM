@@ -187,11 +187,9 @@ $hasOrphanedFiles = $orphanedCount > 0;
             '<i class="fa fa-spinner fa-spin mr-2"></i>' + i18next.t('Deleting...')
         );
 
-        $.ajax({
-            url: window.CRM.root + '/admin/api/orphaned-files/delete-all',
-            method: 'POST',
-            contentType: 'application/json',
-            dataType: 'json'
+        window.CRM.AdminAPIRequest({
+            path: 'orphaned-files/delete-all',
+            method: 'POST'
         })
         .done(function(response) {
             showResults(response);
