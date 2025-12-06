@@ -4,8 +4,10 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
-// Generate CSRF token for log level updates
-$csrfToken = CSRFUtils::generateToken('log_level_form');
+// Generate CSRF tokens for state-changing operations
+$csrfTokenLogLevel = CSRFUtils::generateToken('log_level_form');
+$csrfTokenDeleteAll = CSRFUtils::generateToken('delete_all_logs');
+$csrfTokenDeleteFile = CSRFUtils::generateToken('delete_log_file');
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -245,6 +247,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             $.ajax({
                 url: '<?= SystemURLs::getRootPath() ?>/api/system/logs/' + encodeURIComponent(fileName),
                 method: 'DELETE',
+                headers: {
+                    'X-CSRF-Token': '<?= htmlspecialchars($csrfTokenDeleteFile, ENT_QUOTES, 'UTF-8') ?>'
+                },
                 success: function() {
                     location.reload();
                 },
@@ -260,6 +265,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             $.ajax({
                 url: '<?= SystemURLs::getRootPath() ?>/api/system/logs',
                 method: 'DELETE',
+                headers: {
+                    'X-CSRF-Token': '<?= htmlspecialchars($csrfTokenDeleteAll, ENT_QUOTES, 'UTF-8') ?>'
+                },
                 success: function() {
                     location.reload();
                 },
@@ -311,7 +319,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRF-Token': '<?= $csrfToken ?>'
+                'X-CSRF-Token': '<?= htmlspecialchars($csrfTokenLogLevel, ENT_QUOTES, 'UTF-8') ?>'
             },
             body: JSON.stringify({ value: logLevel })
         })

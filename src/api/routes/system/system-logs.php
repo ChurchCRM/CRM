@@ -9,14 +9,16 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/system', function (RouteCollectorProxy $group): void {
-    // POST route for log level - requires CSRF protection
+    // State-changing routes require CSRF protection
     $group->post('/logs/loglevel', 'setLogsLogLevel')
         ->add(new CSRFMiddleware('log_level_form'));
+    $group->delete('/logs', 'deleteAllLogFiles')
+        ->add(new CSRFMiddleware('delete_all_logs'));
+    $group->delete('/logs/{filename}', 'deleteLogFile')
+        ->add(new CSRFMiddleware('delete_log_file'));
     
-    // Other log routes don't need CSRF (GET/DELETE with admin auth)
-    $group->delete('/logs', 'deleteAllLogFiles');
+    // Read-only routes
     $group->get('/logs/{filename}', 'getLogsFileContent');
-    $group->delete('/logs/{filename}', 'deleteLogFile');
 })->add(AdminRoleAuthMiddleware::class);
 
 function setLogsLogLevel(Request $request, Response $response, array $args): Response
