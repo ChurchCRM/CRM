@@ -601,16 +601,21 @@ window.Stepper = Stepper;
 						validator: (value) => {
 							try {
 								const url = new URL(value);
-								return (
-									url.protocol === "http:" ||
-									url.protocol === "https:"
-								);
+								// Check for http or https protocol
+								if (url.protocol !== "http:" && url.protocol !== "https:") {
+									return false;
+								}
+								// Check that URL ends with a trailing slash
+								if (!value.endsWith("/")) {
+									return false;
+								}
+								return true;
 							} catch (e) {
 								return false;
 							}
 						},
 						errorMessage: i18next.t(
-							"Must be a valid URL starting with http:// or https://",
+							"Must be a valid URL starting with http:// or https:// and ending with a slash (e.g., https://www.yourdomain.com/ or https://www.yourdomain.com/churchcrm/)",
 						),
 					});
 				}
