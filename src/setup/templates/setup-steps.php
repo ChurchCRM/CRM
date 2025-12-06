@@ -185,13 +185,20 @@ require_once __DIR__ . '/header.php';
                             <label for="URL">Base URL</label>
                             <input type="url" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
                                    aria-describedby="URL_HELP"
-                                   pattern="https?://[a-zA-Z0-9\-\.]+(?::[0-9]+)?(?:/[a-zA-Z0-9\-\./_~:?#\[\]@!$&'()*+,;=%]*)?/?"
-                                   title="Must be a valid URL with only allowed characters (letters, numbers, hyphens, dots, slashes, and standard URL symbols)"
+                                   pattern="https?://[a-zA-Z0-9\-\.]+(:[0-9]+)?(/[a-zA-Z0-9\-\._~:/?#\[\]@!$&'()*+,;=%]*)?/$"
+                                   title="Must be a valid URL starting with http:// or https:// and ending with a forward slash"
                                    required>
                             <div class="invalid-feedback"></div>
                             <small id="URL_HELP" class="form-text text-muted">
-                                <strong>Example:</strong> <code>https://www.yourdomain.com/churchcrm/</code><br>
-                                <strong>Rules:</strong> Must be a valid URL, including <code>http://</code> or <code>https://</code>. If using a non-standard port, include it (e.g., <code>https://www.yourdomain.com:8080/churchcrm/</code>). Case sensitive. Only standard URL characters allowed.
+                                <strong>Examples:</strong><br>
+                                <code>https://www.yourdomain.com/</code> (at domain root)<br>
+                                <code>https://www.yourdomain.com/churchcrm/</code> (in subdirectory)<br>
+                                <code>https://www.yourdomain.com:8080/churchcrm/</code> (with custom port)<br>
+                                <strong>Required rules:</strong><br>
+                                • Must start with <code>http://</code> or <code>https://</code><br>
+                                • Must end with a trailing slash (<code>/</code>)<br>
+                                • Use <code>https://</code> when possible for security<br>
+                                • Include custom port if your server uses a non-standard port (not 80 or 443)
                             </small>
                         </div>
                     </div>
