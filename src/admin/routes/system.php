@@ -147,6 +147,15 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/upgrade', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
         
+        // Ensure we have fresh release information
+        \ChurchCRM\Utils\ChurchCRMReleaseManager::checkForUpdates();
+        
+        // Recompute update availability with fresh data
+        $updateInfo = \ChurchCRM\Utils\ChurchCRMReleaseManager::checkSystemUpdateAvailable();
+        $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
+        $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
+        $_SESSION['systemLatestVersion'] = $updateInfo['latestVersion'];
+        
         // Get pre-upgrade tasks
         $taskService = new TaskService();
         $preUpgradeTasks = $taskService->getActivePreUpgradeTasks();
