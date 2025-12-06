@@ -320,86 +320,85 @@
 
         $button.prop("disabled", true);
 
-        $.ajax({
-            url: window.CRM.root + "/admin/api/demo/load",
+        window.CRM.AdminAPIRequest({
+            path: "demo/load",
             method: "POST",
-            contentType: "application/json",
             data: JSON.stringify({
                 includeFinancial: includeFinancial,
                 includeEvents: includeEvents,
                 includeSundaySchool: includeSundaySchool,
                 force: forceImport || false,
-            }),
-            success: function (data) {
-                hideSpinnerOverlay();
+            })
+        })
+        .done(function (data) {
+            hideSpinnerOverlay();
 
-                if ($status.length) {
-                    $status.hide();
-                }
-                $button.prop("disabled", false);
+            if ($status.length) {
+                $status.hide();
+            }
+            $button.prop("disabled", false);
 
-                if (data && data.success) {
-                    // Reset force import mode on success
-                    forceImportMode = false;
-                    resetImportButton();
+            if (data && data.success) {
+                // Reset force import mode on success
+                forceImportMode = false;
+                resetImportButton();
 
-                    if ($resultsList.length) {
-                        $resultsList.empty();
-                        var imported = data.imported || {};
-                        for (var key in imported) {
-                            if (Object.prototype.hasOwnProperty.call(imported, key) && imported[key] > 0) {
-                                var label = key.replace(/_/g, " ").replace(/\b\w/g, function (l) {
-                                    return l.toUpperCase();
-                                });
-                                $resultsList.append("<li>" + label + ": <strong>" + imported[key] + "</strong></li>");
-                            }
+                if ($resultsList.length) {
+                    $resultsList.empty();
+                    var imported = data.imported || {};
+                    for (var key in imported) {
+                        if (Object.prototype.hasOwnProperty.call(imported, key) && imported[key] > 0) {
+                            var label = key.replace(/_/g, " ").replace(/\b\w/g, function (l) {
+                                return l.toUpperCase();
+                            });
+                            $resultsList.append("<li>" + label + ": <strong>" + imported[key] + "</strong></li>");
                         }
-                        if (data.warnings && data.warnings.length > 0) {
-                            $resultsList.append(
-                                '<li class="text-warning">' +
-                                    i18next.t("Warnings") +
-                                    ": " +
-                                    data.warnings.length +
-                                    "</li>",
-                            );
-                        }
-                        $results.show();
                     }
-
-                    window.CRM.notify(i18next.t("Demo data imported successfully"), { type: "success", delay: 3000 });
-                } else {
-                    // Enable force import mode on failure
-                    forceImportMode = true;
-
-                    var errorMsg = data && data.error ? data.error : i18next.t("Unknown error");
-
-                    // Update button to Force Import and show overlay again with error
-                    setForceImportButton(errorMsg);
-                    showConfirmOverlay();
+                    if (data.warnings && data.warnings.length > 0) {
+                        $resultsList.append(
+                            '<li class="text-warning">' +
+                                i18next.t("Warnings") +
+                                ": " +
+                                data.warnings.length +
+                                "</li>",
+                        );
+                    }
+                    $results.show();
                 }
-            },
-            error: function (xhr) {
-                hideSpinnerOverlay();
 
-                if ($status.length) {
-                    $status.hide();
-                }
-                $button.prop("disabled", false);
-
-                // Enable force import mode on error
+                window.CRM.notify(i18next.t("Demo data imported successfully"), { type: "success", delay: 3000 });
+            } else {
+                // Enable force import mode on failure
                 forceImportMode = true;
 
-                var errorMessage = i18next.t("An error occurred during demo data import");
-                if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
-                    errorMessage = xhr.responseJSON.error;
-                } else if (xhr && xhr.status) {
-                    errorMessage = i18next.t("Server error") + " (" + xhr.status + ")";
-                }
+                var errorMsg = data && data.error ? data.error : i18next.t("Unknown error");
 
                 // Update button to Force Import and show overlay again with error
-                setForceImportButton(errorMessage);
+                setForceImportButton(errorMsg);
                 showConfirmOverlay();
-            },
+            }
+        })
+        .fail(function (xhr) {
+            hideSpinnerOverlay();
+
+            if ($status.length) {
+                $status.hide();
+            }
+            $button.prop("disabled", false);
+
+            // Enable force import mode on error
+            forceImportMode = true;
+
+            var errorMessage = i18next.t("An error occurred during demo data import");
+            if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
+                errorMessage = xhr.responseJSON.error;
+            } else if (xhr && xhr.status) {
+                errorMessage = i18next.t("Server error") + " (" + xhr.status + ")";
+            }
+
+            // Update button to Force Import and show overlay again with error
+            setForceImportButton(errorMessage);
+            showConfirmOverlay();
         });
     }
 

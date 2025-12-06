@@ -5,7 +5,7 @@
 window.CRM.APIRequest = function (options) {
     if (!options.method) {
         options.method = "GET";
-    } 
+    }
     options.dataType = "json";
     options.url = window.CRM.root + "/api/" + options.path;
     options.contentType = "application/json";
@@ -26,7 +26,7 @@ window.CRM.APIRequest = function (options) {
 window.CRM.AdminAPIRequest = function (options) {
     if (!options.method) {
         options.method = "GET";
-    } 
+    }
     options.dataType = "json";
     options.url = window.CRM.root + "/admin/api/" + options.path;
     options.contentType = "application/json";

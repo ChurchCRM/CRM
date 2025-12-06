@@ -68,35 +68,35 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     },
                     callback: function (result) {
                         if (result) {
-                            $.ajax({
-                                url: window.CRM.root + '/admin/api/database/reset',
-                                method: 'DELETE',
-                                success: function (data) {
-                                    // Show default credentials to the admin after reset (matches other flows)
-                                    var username = (data && data.defaultUsername) ? data.defaultUsername : 'admin';
-                                    var password = (data && data.defaultPassword) ? data.defaultPassword : 'changeme';
-                                    var message = i18next.t('The database has been cleared.') + '<br><br>' +
-                                        '<strong>' + i18next.t('Default admin credentials') + ':</strong><br>' +
-                                        '<code>' + username + '</code> / <code>' + password + '</code>';
+                            window.CRM.AdminAPIRequest({
+                                path: 'database/reset',
+                                method: 'DELETE'
+                            })
+                            .done(function (data) {
+                                // Show default credentials to the admin after reset (matches other flows)
+                                var username = (data && data.defaultUsername) ? data.defaultUsername : 'admin';
+                                var password = (data && data.defaultPassword) ? data.defaultPassword : 'changeme';
+                                var message = i18next.t('The database has been cleared.') + '<br><br>' +
+                                    '<strong>' + i18next.t('Default admin credentials') + ':</strong><br>' +
+                                    '<code>' + username + '</code> / <code>' + password + '</code>';
 
-                                    bootbox.alert({
-                                        title: i18next.t('Reset Complete'),
-                                        message: message,
-                                        callback: function () {
-                                            window.location.href = window.CRM.root + "/";
-                                        }
-                                    });
-                                },
-                                error: function (xhr, status, error) {
-                                    var errorMessage = i18next.t('Database reset failed');
-                                    if (xhr.responseJSON && xhr.responseJSON.msg) {
-                                        errorMessage = xhr.responseJSON.msg;
+                                bootbox.alert({
+                                    title: i18next.t('Reset Complete'),
+                                    message: message,
+                                    callback: function () {
+                                        window.location.href = window.CRM.root + "/";
                                     }
-                                    window.CRM.notify(errorMessage, {
-                                        type: 'error',
-                                        delay: 5000
-                                    });
+                                });
+                            })
+                            .fail(function (xhr, status, error) {
+                                var errorMessage = i18next.t('Database reset failed');
+                                if (xhr.responseJSON && xhr.responseJSON.msg) {
+                                    errorMessage = xhr.responseJSON.msg;
                                 }
+                                window.CRM.notify(errorMessage, {
+                                    type: 'error',
+                                    delay: 5000
+                                });
                             });
                         }
                     }
