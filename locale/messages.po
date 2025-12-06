@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-03 04:12+0000\n"
+"POT-Creation-Date: 2025-12-06 18:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -477,12 +477,6 @@ msgid "Added to group"
 msgstr ""
 
 msgid "Address"
-msgstr ""
-
-msgid "Address 1"
-msgstr ""
-
-msgid "Address 2"
 msgstr ""
 
 msgid "Address is required"
@@ -976,6 +970,12 @@ msgstr ""
 msgid "Base URL"
 msgstr ""
 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr ""
+
+msgid "Base URL is not configured in Config.php"
+msgstr ""
+
 msgid "Base URL is required"
 msgstr ""
 
@@ -1228,9 +1228,6 @@ msgid "Cell"
 msgstr ""
 
 msgid "Cell Phone"
-msgstr ""
-
-msgid "Cell phone"
 msgstr ""
 
 #. Context: countries
@@ -1589,6 +1586,9 @@ msgstr ""
 msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr ""
 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr ""
+
 msgid "Contact Info"
 msgstr ""
 
@@ -1724,6 +1724,9 @@ msgstr ""
 msgid "Credit Card People"
 msgstr ""
 
+msgid "Critical Configuration Error"
+msgstr ""
+
 #. Context: countries
 msgid "Croatia (Hrvatska)"
 msgstr ""
@@ -1734,6 +1737,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Curaçao"
+msgstr ""
+
+msgid "Current $URL[0] value:"
 msgstr ""
 
 msgid "Current DB Version"
@@ -1798,6 +1804,9 @@ msgid "Custom message for church greeter email 1, max 255 characters"
 msgstr ""
 
 msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr ""
+
+msgid "Custom port:"
 msgstr ""
 
 #. Context: query_qry
@@ -2535,6 +2544,9 @@ msgstr ""
 msgid "Ending Date"
 msgstr ""
 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr ""
+
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
 msgstr ""
 
@@ -2662,6 +2674,9 @@ msgid "Error sending email(s)"
 msgstr ""
 
 msgid "Error text"
+msgstr ""
+
+msgid "Error:"
 msgstr ""
 
 msgid "Error: A "
@@ -3165,6 +3180,9 @@ msgstr ""
 msgid "Find people with a custom field value"
 msgstr ""
 
+msgid "Find the line:"
+msgstr ""
+
 #. Context: query_qry
 msgid "Find volunteers for a particular opportunity"
 msgstr ""
@@ -3522,6 +3540,9 @@ msgstr ""
 msgid "Group Membership"
 msgstr ""
 
+msgid "Group Memberships"
+msgstr ""
+
 msgid "Group Name"
 msgstr ""
 
@@ -3710,6 +3731,9 @@ msgid "Hostname"
 msgstr ""
 
 msgid "How did you learn of the church?"
+msgstr ""
+
+msgid "How to Fix:"
 msgstr ""
 
 msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
@@ -4270,6 +4294,9 @@ msgstr ""
 msgid "Local"
 msgstr ""
 
+msgid "Local development:"
+msgstr ""
+
 msgid "Locale"
 msgstr ""
 
@@ -4766,10 +4793,10 @@ msgstr ""
 msgid "Multiple items"
 msgstr ""
 
-msgid "Must be a valid URL starting with http:// or https://"
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
 msgstr ""
 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgid "Must be a valid URL starting with http:// or https:// and ending with a slash (e.g., https://www.yourdomain.com/ or https://www.yourdomain.com/churchcrm/)"
 msgstr ""
 
 msgid "Must be a valid port number (e.g., 3306)"
@@ -4838,6 +4865,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Nauru"
+msgstr ""
+
+msgid "Navigate to your ChurchCRM installation directory"
 msgstr ""
 
 msgid "Need to remove this data later?"
@@ -5251,6 +5281,9 @@ msgid "Open"
 msgstr ""
 
 msgid "Open Deposits:"
+msgstr ""
+
+msgid "Open this file in a text editor:"
 msgstr ""
 
 msgid "OpenLP Password"
@@ -6462,6 +6495,9 @@ msgstr ""
 msgid "Save and Add New Family"
 msgstr ""
 
+msgid "Save the file and refresh this page"
+msgstr ""
+
 msgid "Saving..."
 msgstr ""
 
@@ -6997,6 +7033,9 @@ msgstr ""
 msgid "Start with http:// or https://"
 msgstr ""
 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr ""
+
 #. Context: queryparameteroptions_qpo
 msgid "State"
 msgstr ""
@@ -7026,6 +7065,9 @@ msgid "Students not in a Sunday School Class"
 msgstr ""
 
 msgid "Style"
+msgstr ""
+
+msgid "Subdirectory installation:"
 msgstr ""
 
 msgid "Submit Registration"
@@ -7611,6 +7653,21 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
+msgid "URL does not contain a valid hostname"
+msgstr ""
+
+msgid "URL hostname is not valid"
+msgstr ""
+
+msgid "URL is not in valid format"
+msgstr ""
+
+msgid "URL must end with a trailing slash (/)"
+msgstr ""
+
+msgid "URL must start with http:// or https://"
+msgstr ""
+
 #. Context: countries
 msgid "Uganda"
 msgstr ""
@@ -7741,6 +7798,9 @@ msgid "Update Package Details"
 msgstr ""
 
 msgid "Update Properties"
+msgstr ""
+
+msgid "Update it to a valid URL that:"
 msgstr ""
 
 msgid "Update package downloaded successfully."
@@ -7889,6 +7949,9 @@ msgstr ""
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr ""
 
+msgid "Valid Examples:"
+msgstr ""
+
 msgid "Valid Settings"
 msgstr ""
 
@@ -8017,6 +8080,9 @@ msgstr ""
 msgid "View Inactive People"
 msgstr ""
 
+msgid "View Logs"
+msgstr ""
+
 msgid "View Person Page"
 msgstr ""
 
@@ -8027,6 +8093,9 @@ msgid "View User"
 msgstr ""
 
 msgid "View Your Cart"
+msgstr ""
+
+msgid "View and manage system log files for debugging."
 msgstr ""
 
 msgid "View application logs. Click on a log file to view its contents."
