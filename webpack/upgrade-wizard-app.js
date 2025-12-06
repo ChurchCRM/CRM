@@ -172,9 +172,9 @@ function performDownload() {
     const $statusIcon = $("#status-apply");
     const $downloadStatus = $("#downloadStatus");
 
-    window.CRM.APIRequest({
+    window.CRM.AdminAPIRequest({
         type: 'GET',
-        path: 'systemupgrade/download-latest-release',
+        path: 'upgrade/download-latest-release',
     })
         .done(function (data) {
             $statusIcon.html('<i class="fa-solid fa-check text-success"></i>');
@@ -246,9 +246,9 @@ function setupApplyStep() {
         $statusIcon.html('<i class="fa-solid fa-circle-notch fa-spin text-primary"></i>');
         $button.prop('disabled', true);
 
-        window.CRM.APIRequest({
+        window.CRM.AdminAPIRequest({
             method: 'POST',
-            path: 'systemupgrade/do-upgrade',
+            path: 'upgrade/do-upgrade',
             data: JSON.stringify({
                 fullPath: window.CRM.updateFile.fullPath,
                 sha1: window.CRM.updateFile.sha1
@@ -343,9 +343,9 @@ function setupPrereleaseToggle() {
             data: JSON.stringify({ value: newValue ? '1' : '0' })
         }).done(function () {
             // Refresh upgrade info from GitHub
-            window.CRM.APIRequest({
+            window.CRM.AdminAPIRequest({
                 method: 'POST',
-                path: 'systemupgrade/refresh-upgrade-info'
+                path: 'upgrade/refresh-upgrade-info'
             }).done(function (data) {
                 $spinner.removeClass('active');
                 window.CRM.notify(i18next.t('Setting saved. Reloading page...'), {
@@ -399,9 +399,9 @@ function setupRefreshButton() {
         $spinner.addClass('active');
 
         // Call refresh API
-        window.CRM.APIRequest({
+        window.CRM.AdminAPIRequest({
             method: 'POST',
-            path: 'systemupgrade/refresh-upgrade-info'
+            path: 'upgrade/refresh-upgrade-info'
         }).done(function (data) {
             $spinner.removeClass('active');
             window.CRM.notify(i18next.t('Upgrade information refreshed. Reloading page...'), {

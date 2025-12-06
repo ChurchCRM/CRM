@@ -1,16 +1,22 @@
 <?php
 
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Service\UpgradeAPIService;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
-$app->group('/systemupgrade', function (RouteCollectorProxy $group): void {
+$app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
+    /**
+     * Download the latest release from GitHub
+     * GET /admin/api/upgrade/download-latest-release
+     *
+     * @return 200 Success with file info (fileName, fullPath, releaseNotes, sha1)
+     * @return 400 Error downloading file
+     */
     $group->get('/download-latest-release', function (Request $request, Response $response, array $args): Response {
         try {
-            $upgradeFile = ChurchCRMReleaseManager::downloadLatestRelease();
+            $upgradeFile = UpgradeAPIService::downloadLatestRelease();
             return SlimUtils::renderJSON($response, $upgradeFile);
         } catch (\Exception $e) {
             return SlimUtils::renderJSON($response, [
@@ -19,10 +25,21 @@ $app->group('/systemupgrade', function (RouteCollectorProxy $group): void {
         }
     });
 
+    /**
+     * Apply the system upgrade
+     * POST /admin/api/upgrade/do-upgrade
+     *
+     * Request body:
+     *   - fullPath (string): Full path to upgrade file
+     *   - sha1 (string): SHA1 hash for verification
+     *
+     * @return 200 Success with empty data
+     * @return 500 Error applying upgrade
+     */
     $group->post('/do-upgrade', function (Request $request, Response $response, array $args): Response {
         try {
             $input = $request->getParsedBody();
-            ChurchCRMReleaseManager::doUpgrade($input['fullPath'], $input['sha1']);
+            UpgradeAPIService::doUpgrade($input['fullPath'], $input['sha1']);
             return SlimUtils::renderSuccessJSON($response);
         } catch (\Exception $e) {
             return SlimUtils::renderJSON($response, [
@@ -31,24 +48,21 @@ $app->group('/systemupgrade', function (RouteCollectorProxy $group): void {
         }
     });
 
+    /**
+     * Refresh upgrade information from GitHub
+     * POST /admin/api/upgrade/refresh-upgrade-info
+     *
+     * Forces a fresh check of available updates from GitHub and updates session state.
+     *
+     * @return 200 Success with updated session data
+     * @return 500 Error refreshing information
+     */
     $group->post('/refresh-upgrade-info', function (Request $request, Response $response, array $args): Response {
         try {
-            // Force refresh of upgrade information from GitHub
-            ChurchCRMReleaseManager::checkForUpdates();
+            $updateData = UpgradeAPIService::refreshUpgradeInfo();
 
-            // Recompute whether an update is available for the installed version
-            $updateInfo = ChurchCRMReleaseManager::checkSystemUpdateAvailable();
-            $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
-            $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
-            $_SESSION['systemLatestVersion'] = $updateInfo['latestVersion'];
-
-            // Return fresh session data
             return SlimUtils::renderJSON($response, [
-                'data' => [
-                    'updateAvailable' => $_SESSION['systemUpdateAvailable'] ?? false,
-                    'updateVersion' => isset($_SESSION['systemUpdateVersion']) ? $_SESSION['systemUpdateVersion']->__toString() : null,
-                    'latestVersion' => isset($_SESSION['systemLatestVersion']) ? $_SESSION['systemLatestVersion']->__toString() : null
-                ],
+                'data' => $updateData,
                 'message' => gettext('Upgrade information refreshed successfully')
             ]);
         } catch (\Exception $e) {
@@ -57,4 +71,4 @@ $app->group('/systemupgrade', function (RouteCollectorProxy $group): void {
             ], 500);
         }
     });
-})->add(AdminRoleAuthMiddleware::class);
+});
