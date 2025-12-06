@@ -155,6 +155,25 @@ require_once __DIR__ . '/header.php';
                                 <div id="php-extensions-collapse" class="collapse">
                                     <table class="table table-sm table-condensed mb-0" id="php-extensions"></table>
                                 </div>
+
+                                <!-- Locale Support - Collapsible -->
+                                <h6 class="mb-2 mt-3">
+                                    <a href="#locale-support-collapse" data-toggle="collapse" class="text-dark text-decoration-none collapsed" aria-expanded="false" aria-controls="locale-support-collapse">
+                                        <span>
+                                            <i class="fa-solid fa-globe mr-2"></i>Locale Support
+                                            <span id="locale-support-status" class="ml-2">
+                                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                            </span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </a>
+                                </h6>
+                                <div id="locale-support-collapse" class="collapse">
+                                    <div id="locale-support-summary" class="alert alert-info mb-2">
+                                        <i class="fa-solid fa-spinner fa-spin"></i> Detecting available locales...
+                                    </div>
+                                    <table class="table table-sm table-condensed mb-0" id="locale-support-table"></table>
+                                </div>
                             </div>
                         </div>
                     </div>

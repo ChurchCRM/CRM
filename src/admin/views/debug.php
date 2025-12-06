@@ -168,6 +168,59 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             </div>
         </div>
     </div>
+    <!-- Locale Support -->
+    <?php $localeInfo = AppIntegrityService::getLocaleSetupInfo(); ?>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header" id="headingLocaleSupport">
+                <h4 data-toggle="collapse" data-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;">
+                    <i class="fa fa-globe mr-2"></i><?= gettext('Locale Support') ?>
+                    <i class="fa fa-chevron-down float-right"></i>
+                </h4>
+            </div>
+            <div id="collapseLocaleSupport" class="collapse" aria-labelledby="headingLocaleSupport">
+                <div class="card-body">
+                <div class="alert <?= $localeInfo['systemLocaleDetected'] ? 'alert-success' : 'alert-warning' ?> mb-3">
+                    <i class="fa <?= $localeInfo['systemLocaleDetected'] ? 'fa-check-circle' : 'fa-exclamation-triangle' ?> mr-2"></i>
+                    <strong><?= gettext('System Locale Support') ?></strong><br>
+                    <small><?= htmlspecialchars($localeInfo['systemLocaleSupportSummary'], ENT_QUOTES, 'UTF-8') ?></small>
+                </div>
+                <h6 class="text-muted mb-3"><i class="fa fa-language mr-2"></i><?= gettext('ChurchCRM Supported Locales') ?></h6>
+                <table class="table table-sm mb-0">
+                    <thead>
+                        <tr>
+                            <th><?= gettext('Language') ?></th>
+                            <th style="text-align: center; width: 100px;"><?= gettext('System') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if (count($localeInfo['supportedLocales']) > 0): ?>
+                            <?php foreach ($localeInfo['supportedLocales'] as $locale): ?>
+                                <tr>
+                                    <td>
+                                        <div style="font-weight: 500; font-size: 0.95em;"><?= htmlspecialchars($locale['name'], ENT_QUOTES, 'UTF-8') ?></div>
+                                        <small class="text-muted" style="font-size: 0.85em;"><?= htmlspecialchars($locale['locale'], ENT_QUOTES, 'UTF-8') ?></small>
+                                    </td>
+                                    <td style="text-align: center; vertical-align: middle;">
+                                        <?php if ($locale['systemAvailable']): ?>
+                                            <span class="badge badge-success"><i class="fa fa-check mr-1"></i><?= gettext('Yes') ?></span>
+                                        <?php else: ?>
+                                            <span class="badge badge-secondary"><i class="fa fa-times mr-1"></i><?= gettext('No') ?></span>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="2" class="text-muted text-center"><?= gettext('No locales configured') ?></td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Configuration -->
     <div class="col-md-4">
         <div class="card">

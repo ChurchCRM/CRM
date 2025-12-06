@@ -466,7 +466,7 @@ window.Stepper = Stepper;
 				$.each(data, function (index, prerequisite) {
 					renderPrerequisite(prerequisite, "filesystem");
 				});
-				checkIntegrity();
+				checkLocales();
 			})
 			.fail(function () {
 				renderPrerequisite(
@@ -476,8 +476,107 @@ window.Stepper = Stepper;
 					},
 					"filesystem",
 				);
+				checkLocales();
+			});
+	}
+
+	function checkLocales() {
+		$.ajax({
+			url: "./SystemLocaleCheck",
+			method: "GET",
+			contentType: "application/json",
+		})
+			.done(function (data) {
+				renderLocaleInfo(data);
+				checkIntegrity();
+			})
+			.fail(function () {
+				renderLocaleInfoError();
 				checkIntegrity();
 			});
+	}
+
+	function renderLocaleInfo(localeData) {
+		const $table = $("#locale-support-table");
+		const $summary = $("#locale-support-summary");
+		const $status = $("#locale-support-status");
+
+		$table.empty();
+
+		// Display summary
+		const summary = localeData.systemLocaleSupportSummary || "System locale support unknown";
+		const summaryClass =
+			localeData.systemLocaleDetected && localeData.supportedLocales ? "alert-success" : "alert-warning";
+
+		$summary.attr("class", `alert ${summaryClass} mb-2`);
+		$summary.html(`<i class="fa-solid fa-check-circle"></i> ${summary}`);
+
+		// Update status icon
+		$status.html(
+			localeData.systemLocaleDetected
+				? '<i class="fa-solid fa-check text-success"></i>'
+				: '<i class="fa-solid fa-exclamation-triangle text-warning"></i>'
+		);
+
+		// Render locale table
+		if (localeData.supportedLocales && localeData.supportedLocales.length > 0) {
+			const locales = localeData.supportedLocales;
+
+			// Create table header
+			const $thead = $("<thead>").append(
+				$("<tr>")
+					.append($("<th>").text("ChurchCRM Supported Locales"))
+					.append($("<th style='text-align: center; width: 100px;'>").text("System Support"))
+			);
+			$table.append($thead);
+
+			// Create table body
+			const $tbody = $("<tbody>");
+			locales.forEach(function (locale) {
+				const statusBadge = locale.systemAvailable
+					? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>Available</span>`
+					: `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>Not Available</span>`;
+
+				const $row = $("<tr>")
+					.append(
+						$("<td>").html(
+							`<div style="font-weight: 500;">${locale.name}</div>` +
+							`<small class="text-muted" style="display: block; font-size: 0.85em; margin-top: 2px;">${locale.locale}</small>`
+						)
+					)
+					.append(
+						$("<td style='text-align: center; vertical-align: middle;'>").html(statusBadge)
+					);
+
+				$tbody.append($row);
+			});
+			$table.append($tbody);
+		} else {
+			const $row = $("<tr>").append(
+				$("<td colspan='2'>").html(
+					"<i class='fa-solid fa-exclamation-triangle text-warning mr-2'></i>Unable to determine available locales"
+				)
+			);
+			$table.append($row);
+		}
+	}
+
+	function renderLocaleInfoError() {
+		const $table = $("#locale-support-table");
+		const $summary = $("#locale-support-summary");
+		const $status = $("#locale-support-status");
+
+		$table.empty();
+		$summary.attr("class", "alert alert-danger mb-2");
+		$summary.html("<i class='fa-solid fa-times-circle'></i> Unable to detect system locales");
+		$status.html('<i class="fa-solid fa-times text-danger"></i>');
+
+		const $errorRow = $("<tr>").append(
+			$("<td>").html(
+				"<i class='fa-solid fa-exclamation-circle text-danger mr-2'></i>Unable to load locale information"
+			)
+		);
+		$table.append($errorRow);
 	}
 
 	function initializeStepValidation(stepId) {
