@@ -25,6 +25,8 @@ CREATE TABLE `config_cfg` (
   UNIQUE KEY `cfg_name` (`cfg_name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+-- `src/mysql/upgrade/6.2.0.sql` to delete the deprecated config row.
+
 --
 -- Table structure for table `deposit_dep`
 --

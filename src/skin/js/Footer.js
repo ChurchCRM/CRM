@@ -49,10 +49,7 @@ function initializeApp() {
     initializeFormValidation();
 
     window.CRM.dashboard.refresh();
-    DashboardRefreshTimer = setInterval(
-        window.CRM.dashboard.refresh,
-        window.CRM.iDashboardServiceIntervalTime * 1000,
-    );
+    DashboardRefreshTimer = setInterval(window.CRM.dashboard.refresh, window.CRM.iDashboardServiceIntervalTime * 1000);
 
     window.CRM.APIRequest({
         path: "system/notification",
@@ -106,78 +103,61 @@ function initializeFormValidation() {
         });
 
         // Auto-add validation rules based on HTML5 attributes
-        form.querySelectorAll("input, select, textarea").forEach(
-            function (field) {
-                const rules = [];
+        form.querySelectorAll("input, select, textarea").forEach(function (field) {
+            const rules = [];
 
-                if (field.hasAttribute("required")) {
-                    rules.push({
-                        rule: "required",
-                        errorMessage: i18next.t("This field is required"),
-                    });
-                }
+            if (field.hasAttribute("required")) {
+                rules.push({
+                    rule: "required",
+                    errorMessage: i18next.t("This field is required"),
+                });
+            }
 
-                if (field.type === "email") {
-                    rules.push({
-                        rule: "email",
-                        errorMessage: i18next.t(
-                            "Please enter a valid email address",
-                        ),
-                    });
-                }
+            if (field.type === "email") {
+                rules.push({
+                    rule: "email",
+                    errorMessage: i18next.t("Please enter a valid email address"),
+                });
+            }
 
-                if (field.type === "url") {
-                    rules.push({
-                        rule: "customRegexp",
-                        value: /^https?:\/\/.+/,
-                        errorMessage: i18next.t("Please enter a valid URL"),
-                    });
-                }
+            if (field.type === "url") {
+                rules.push({
+                    rule: "customRegexp",
+                    value: /^https?:\/\/.+/,
+                    errorMessage: i18next.t("Please enter a valid URL"),
+                });
+            }
 
-                if (field.hasAttribute("pattern")) {
-                    rules.push({
-                        rule: "customRegexp",
-                        value: new RegExp(field.getAttribute("pattern")),
-                        errorMessage:
-                            field.getAttribute("title") ||
-                            i18next.t("Invalid format"),
-                    });
-                }
+            if (field.hasAttribute("pattern")) {
+                rules.push({
+                    rule: "customRegexp",
+                    value: new RegExp(field.getAttribute("pattern")),
+                    errorMessage: field.getAttribute("title") || i18next.t("Invalid format"),
+                });
+            }
 
-                if (field.hasAttribute("minlength")) {
-                    rules.push({
-                        rule: "minLength",
-                        value: parseInt(field.getAttribute("minlength")),
-                        errorMessage:
-                            i18next.t("Minimum length is") +
-                            " " +
-                            field.getAttribute("minlength"),
-                    });
-                }
+            if (field.hasAttribute("minlength")) {
+                rules.push({
+                    rule: "minLength",
+                    value: parseInt(field.getAttribute("minlength")),
+                    errorMessage: i18next.t("Minimum length is") + " " + field.getAttribute("minlength"),
+                });
+            }
 
-                if (field.hasAttribute("maxlength")) {
-                    rules.push({
-                        rule: "maxLength",
-                        value: parseInt(field.getAttribute("maxlength")),
-                        errorMessage:
-                            i18next.t("Maximum length is") +
-                            " " +
-                            field.getAttribute("maxlength"),
-                    });
-                }
+            if (field.hasAttribute("maxlength")) {
+                rules.push({
+                    rule: "maxLength",
+                    value: parseInt(field.getAttribute("maxlength")),
+                    errorMessage: i18next.t("Maximum length is") + " " + field.getAttribute("maxlength"),
+                });
+            }
 
-                if (rules.length > 0 && field.name) {
-                    rules.forEach(function (rule) {
-                        validator.addField(
-                            field.id
-                                ? "#" + field.id
-                                : '[name="' + field.name + '"]',
-                            [rule],
-                        );
-                    });
-                }
-            },
-        );
+            if (rules.length > 0 && field.name) {
+                rules.forEach(function (rule) {
+                    validator.addField(field.id ? "#" + field.id : '[name="' + field.name + '"]', [rule]);
+                });
+            }
+        });
     });
 }
 
@@ -186,11 +166,23 @@ function initializeFormValidation() {
  * - Sets localized labels
  * - Handles scroll behavior to hide buttons on scroll
  * - Auto-hides after 5 seconds
+ * - Hides global FAB if page-specific FAB exists
  */
 function initializeFAB() {
     const fabContainer = $("#fab-container");
     const fabPersonLabel = $("#fab-person-label");
     const fabFamilyLabel = $("#fab-family-label");
+
+    // Hide global FAB if a page-specific FAB exists
+    if (
+        $("#fab-person-view").length > 0 ||
+        $("#fab-person-editor").length > 0 ||
+        $("#fab-family-editor").length > 0 ||
+        $("#fab-family-view").length > 0
+    ) {
+        fabContainer.hide();
+        return;
+    }
 
     // Set localized labels
     fabPersonLabel.text(i18next.t("Add New Person"));

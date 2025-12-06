@@ -387,7 +387,7 @@
         ],
         "dbVersion": "5.9.0"
     },
-    "current": {
+    "pre-6.0.0": {
         "versions": [
             "5.9.0",
             "5.9.1",
@@ -407,11 +407,34 @@
             "5.19.0",
             "5.20.0",
             "5.21.0",
-            "5.22.0"
+            "5.22.0",
+            "5.22.1"
         ],
         "scripts": [
             "/mysql/upgrade/6.0.0.sql"
         ],
         "dbVersion": "6.0.0"
+    },
+    "pre-6.2.0": {
+        "versions": [
+            "6.0.0",
+            "6.0.1",
+            "6.0.2",
+            "6.1.0"
+        ],
+        "scripts": [
+            "/mysql/upgrade/6.2.0.sql"
+        ],
+        "dbVersion": "6.2.0"
+    },
+    "current": {
+        "versions": [
+            "6.2.0",
+            "6.3.0"
+        ],
+        "scripts": [
+            "/mysql/upgrade/6.3.0.sql"
+        ],
+        "dbVersion": "6.4.0"
     }
 }

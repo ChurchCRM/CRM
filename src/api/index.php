@@ -42,9 +42,9 @@ SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
-$app->add(VersionMiddleware::class);
-$app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
+$app->add(VersionMiddleware::class);
 
 // Group routes for better organization
 require __DIR__ . '/routes/calendar/events.php';
@@ -70,7 +70,6 @@ require __DIR__ . '/routes/system/system-debug.php';
 require __DIR__ . '/routes/system/system-issues.php';
 require __DIR__ . '/routes/system/system-logs.php';
 require __DIR__ . '/routes/system/system-register.php';
-require __DIR__ . '/routes/system/system-upgrade.php';
 require __DIR__ . '/routes/system/system-custom-menu.php';
 require __DIR__ . '/routes/system/system-locale.php';
 require __DIR__ . '/routes/cart.php';

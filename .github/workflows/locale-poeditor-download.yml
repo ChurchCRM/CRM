@@ -234,7 +234,6 @@ jobs:
         delete-branch: true
         labels: |
           localization
-          automated
         milestone: ${{ steps.package-version.outputs.current-version}}
         title: "🌍 POEditor Locale Update - ${{ steps.date.outputs.date }}"
         commit-message: |

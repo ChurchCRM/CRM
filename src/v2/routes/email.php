@@ -1,19 +1,14 @@
 <?php
 
-use ChurchCRM\dto\ChurchMetaData;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
-use ChurchCRM\Emails\TestEmail;
 
 $app->group('/email', function (RouteCollectorProxy $group): void {
-    $group->get('/debug', 'testEmailConnectionMVC')->add(AdminRoleAuthMiddleware::class);
     $group->get('/dashboard', 'getEmailDashboardMVC');
     $group->get('/duplicate', 'getDuplicateEmailsMVC');
     $group->get('/missing', 'getFamiliesWithoutEmailsMVC');
@@ -36,29 +31,6 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
-}
-
-function testEmailConnectionMVC(Request $request, Response $response, array $args): Response
-{
-    $renderer = new PhpRenderer('templates/email/');
-    $message = '';
-
-    if (empty(SystemConfig::getValue('sSMTPHost'))) {
-        $message = gettext('SMTP Host is not setup, please visit the settings page');
-    } elseif (empty(ChurchMetaData::getChurchEmail())) {
-        $message = gettext('Church Email not set, please visit the settings page');
-    } else {
-        $email = new TestEmail([ChurchMetaData::getChurchEmail()]);
-    }
-
-    $pageArgs = [
-        'sRootPath'  => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('Debug Email Connection'),
-        'mailer'     => $email,
-        'message'    => $message,
-    ];
-
-    return $renderer->render($response, 'debug.php', $pageArgs);
 }
 
 function getDuplicateEmailsMVC(Request $request, Response $response, array $args): Response

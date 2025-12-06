@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "데이터베이스 백업"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "이 도구는 ChurchCRM 데이터베이스를 수동으로 백업할 때 도움을 줍니다."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "시스템에 정기 백업 절차가 없다면 최소한 주 1회는 수동 백업을 수행해야 합니다."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "백업 파일을 내려받은 뒤에는 사본을 두 개 만들어야 합니다. 하나는 현장의 내화 금고에, 다른 하나는 외부의 안전한 장소에 보관하세요."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "ChurchCRM 데이터베이스에 저장된 정보의 기밀성이 걱정된다면, 다른 사람이 접근할 수 있는 곳에 보관하기 전에 백업 데이터를 암호화하세요."
-
-#: 
-msgid "Select archive type"
-msgstr "압축 형식 선택"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "백업 파일을 비밀번호로 암호화할까요?"
-
-#: 
-msgid "Re-type Password"
-msgstr "비밀번호 다시 입력"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "백업 생성 후 외부 저장소로 전송"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "당첨자 일괄 등록"
 
@@ -371,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "카트를 행사에 추가"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "카트에 담긴 인원을 추가할 행사를 선택하세요."
-
-#: 
 msgid "OR"
 msgstr "또는"
 
@@ -480,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "카트 전체를 가족에 등록"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "카트 전체를 행사에 등록"
-
-#: 
 msgid "Map Cart"
 msgstr "카트 지도 보기"
 
@@ -540,20 +499,8 @@ msgid "Event Checkin"
 msgstr "행사 체크인"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "체크인할 행사를 선택하세요."
-
-#: 
 msgid "Select Event"
 msgstr "행사 선택"
-
-#: 
-msgid "Add Visitor"
-msgstr "방문자 추가"
-
-#: 
-msgid "CheckIn"
-msgstr "체크인"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +525,6 @@ msgstr "체크아웃 담당"
 #: 
 msgid "Action"
 msgstr "작업"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "행사에 배정된 참석자가 없습니다"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -613,28 +556,14 @@ msgid "Deposit Slip Number: "
 msgstr "입금 내역서 번호: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "입금 내역: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "입금 내역서 닫기(저장을 잊지 마세요)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "입금 내역서 보고서"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "중요: 입금 내역서를 닫으면 실패한 거래는 영구적으로 삭제됩니다."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "입금 요약: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "이 전표에 포함된 결제:"
 
 #: 
 msgid "Import eGive"
@@ -645,7 +574,8 @@ msgid "Add Payment"
 msgstr "결제 추가"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "승인된 거래 불러오기"
 
 #: 
@@ -911,44 +841,8 @@ msgid "Edit"
 msgstr "편집"
 
 #: 
-msgid "Event Attendees"
-msgstr "행사 참석자"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "행사 미참석자"
-
-#: 
-msgid "Event Guests"
-msgstr "행사 방문자"
-
-#: 
-msgid "There "
-msgstr "총 "
-
-#: 
 msgid "Event Title"
 msgstr "행사 제목"
-
-#: 
-msgid "Event Date"
-msgstr "행사 날짜"
-
-#: 
-msgid "Attending Members"
-msgstr "참석한 성도"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "불참 성도"
-
-#: 
-msgid "Guests"
-msgstr "방문자"
-
-#: 
-msgid "There are no events in this category"
-msgstr "이 분류에는 행사가 없습니다."
 
 #: 
 msgid "Create Event"
@@ -959,20 +853,8 @@ msgid "Create a new Event"
 msgstr "새 행사를 생성"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "편집 중인 행사 ID: "
-
-#: 
 msgid " errors. Please see below"
 msgstr "개의 오류가 있습니다. 아래 내용을 확인하세요."
-
-#: 
-msgid "Items with a "
-msgstr "표시된 항목은 "
-
-#: 
-msgid " are required"
-msgstr " 항목은 필수입니다."
 
 #: 
 msgid "Select your event type"
@@ -983,20 +865,8 @@ msgid "You must pick an event type."
 msgstr "행사 유형을 꼭 선택해야 합니다."
 
 #: 
-msgid "Event Desc"
-msgstr "행사 설명"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "등록된 출석 집계가 없습니다."
-
-#: 
-msgid "Attendance Notes: "
-msgstr "출석 메모: "
-
-#: 
-msgid "Event Sermon"
-msgstr "행사 설교"
 
 #: 
 msgid "Event Status"
@@ -1005,10 +875,6 @@ msgstr "행사 상태"
 #: 
 msgid "Return to Events"
 msgstr "행사 목록으로"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "행사 유형 이름"
 
 #: 
 msgid "Sundays"
@@ -1037,30 +903,6 @@ msgstr "금요일"
 #: 
 msgid "Saturdays"
 msgstr "토요일"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "기본 시작 시간"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "출석 집계"
-
-#: 
-msgid "Optional"
-msgstr "선택 사항"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "이 행사에 포함할 출석 집계 항목을 입력하세요."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "각 집계 이름은 쉼표로 구분합니다. 예) 성도, 새가족, 캠퍼스, 어린이"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "모든 행사 유형에는 총합 집계가 기본 포함되므로 따로 입력할 필요가 없습니다."
 
 #: 
 msgid "Add Event Type"
@@ -1631,7 +1473,8 @@ msgid "Date End"
 msgstr "종료일"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "필터 초기화"
 
 #: 
@@ -2020,28 +1863,12 @@ msgid "Confirm data labels"
 msgstr "데이터 라벨 확인"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "해당 유형의 행사 목록 = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "전체 교회 행사 목록"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "표시할 행사 유형 선택"
-
-#: 
-msgid "Display Events in Year"
-msgstr "해당 연도의 행사 표시"
-
-#: 
 msgid "Start Date/Time"
 msgstr "시작 일시"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "출석 기록 없음"
 
 #: 
 msgid "Attendees"
@@ -3834,10 +3661,6 @@ msgid "Details:"
 msgstr "상세:"
 
 #: 
-msgid "File Missing"
-msgstr "파일 없음"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "데이터베이스의 헌금봉투 번호가 이 페이지에서 선택한 값으로 덮어쓰여집니다. 계속할까요?"
 
@@ -4086,20 +3909,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "서명 정의 파일 검증에 실패했습니다"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "서명 정의 파일이 없습니다"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "한 개 이상의 파일이 서명 검증에 실패했습니다"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "HTTPS 설정"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "무결성 검사를 통과하지 못한 파일"
 
 #: 
 msgid "Family:"
@@ -4188,14 +4003,6 @@ msgstr "입력일:"
 #: 
 msgid "CSV Import"
 msgstr "CSV 가져오기"
-
-#: 
-msgid "Comment:"
-msgstr "비고:"
-
-#: 
-msgid "Closed:"
-msgstr "마감:"
 
 #: 
 msgid "Start Date: "
@@ -6822,7 +6629,8 @@ msgid "Profile Image uploaded"
 msgstr "프로필 이미지가 업로드되었습니다"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "결제 건을 삭제하시겠습니까?"
 
 #: 
@@ -7424,10 +7232,6 @@ msgid "Your Church's X Page"
 msgstr "교회의 X(트위터) 페이지"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "로컬 사진이 없을 때 Google에서 사용자 이미지를 조회합니다"
-
-#: 
 msgid "Self Register"
 msgstr "자가 등록"
 
@@ -7989,10 +7793,6 @@ msgid "UserName not set"
 msgstr "사용자 이름이 설정되지 않았습니다"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "개인과 가족 데이터가 데이터베이스에서 삭제되었습니다."
-
-#: 
 msgid "Self Registrations"
 msgstr "자가 등록"
 
@@ -8261,20 +8061,8 @@ msgid "is disabled"
 msgstr "비활성화되어 있습니다"
 
 #: 
-msgid "System Information"
-msgstr "시스템 정보"
-
-#: 
 msgid "Software Version"
 msgstr "소프트웨어 버전"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "유효한 메일 서버 설정"
-
-#: 
-msgid "Database"
-msgstr "데이터베이스"
 
 #: 
 msgid "Database Version"
@@ -8342,10 +8130,6 @@ msgid "Emptied into Event"
 msgstr "행사에 모두 등록됨"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "integrityCheck.json 파일이 없습니다"
-
-#: 
 msgid "Passed"
 msgstr "통과"
 
@@ -8401,10 +8185,6 @@ msgstr "eGive, 신용카드, 자동이체 입금은 더 이상 지원되지 않�
 #: 
 msgid "Estonian"
 msgstr "에스토니아어"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "무결성 검사 결과 파일을 해석하는 중 오류"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8529,10 +8309,6 @@ msgid "Verification URL"
 msgstr "확인 URL"
 
 #: 
-msgid "Reset System"
-msgstr "시스템 초기화"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "예상치 못한 Person ID"
 
@@ -8601,18 +8377,6 @@ msgstr "업그레이드를 진행하기 전에 아래 작업을 해결하세요:
 #: 
 msgid "Database Reset Functions"
 msgstr "데이터베이스 초기화 기능"
-
-#: 
-msgid "Reset Members"
-msgstr "구성원 초기화"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "모든 구성원, 개인, 가족 데이터가 삭제되며 되돌릴 수 없습니다."
-
-#: 
-msgid "Reset Families/People"
-msgstr "가족/개인 초기화"
 
 #: 
 msgid "Reset Database"
@@ -8805,20 +8569,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "ChurchCRM에 없는 오디언스입니다"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM 설치 정보"
-
-#: 
-msgid "Database Server Version"
-msgstr "데이터베이스 서버 버전"
-
-#: 
 msgid "Web Server"
 msgstr "웹 서버"
-
-#: 
-msgid "Email Information"
-msgstr "이메일 정보"
 
 #: 
 msgid "List maintenance"

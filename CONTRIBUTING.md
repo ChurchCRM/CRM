@@ -141,13 +141,15 @@ ChurchCRM uses **standardized AI agent instructions** to ensure consistent code 
 - ✅ **HTML5:** Bootstrap 4.6.2 CSS only, no deprecated attributes
 - ✅ **Asset Paths:** Use `SystemURLs::getRootPath()`
 - ✅ **Services:** Business logic in Service classes
-- ✅ **PHP 8.2+:** Explicit nullable types, modern patterns
+- ✅ **PHP 8.2+:** (See [System Requirements](https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites)) Explicit nullable types, modern patterns
 - ✅ **i18n:** Wrap UI text with `gettext()` or `i18next.t()`
 
 ### Using AI Assistance
 If using GitHub Copilot, Claude, or other AI tools:
 1. Reference `.github/copilot-instructions.md` for project-specific patterns
-2. Follow Slim Framework 4 middleware order (critical for APIs)
+2. **CRITICAL:** Follow Slim Framework 4 LIFO middleware order (see copilot-instructions.md)
+   - Slim 4 executes middleware in reverse order (last added runs first)
+   - Wrong order causes "No active authentication provider" errors
 3. Verify all code follows standards before committing
 4. Run syntax check: `php -l src/YourFile.php`
 

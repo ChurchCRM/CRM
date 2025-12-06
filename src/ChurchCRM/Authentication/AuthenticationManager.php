@@ -240,17 +240,16 @@ class AuthenticationManager
 
     public static function getForgotPasswordURL(): string
     {
-        // this assumes we're using local authentication
-        // TODO: when we implement other authentication providers (SAML/etc)
-        // this URL will need to be configurable by the system administrator
-        // since they likely will not want users attempting to reset ChurchCRM passwords
-        // but rather redirect users to some other password reset mechanism.
         return SystemURLs::getRootPath() . '/session/forgot-password/reset-request';
     }
-    public static function redirectHomeIfFalse(bool $hasAccess): void
+    public static function redirectHomeIfFalse(bool $hasAccess, string $missingRole = ''): void
     {
         if (!$hasAccess) {
-            RedirectUtils::redirect('v2/dashboard');
+            if ($missingRole !== '') {
+                RedirectUtils::securityRedirect($missingRole);
+            } else {
+                RedirectUtils::redirect('v2/dashboard');
+            }
         }
     }
 
@@ -271,11 +270,13 @@ class AuthenticationManager
         if (!$currentUser->isAdmin()) {
             $_SESSION['systemUpdateAvailable'] = false;
             $_SESSION['systemUpdateVersion'] = null;
+            $_SESSION['systemLatestVersion'] = null;
             return;
         }
 
         $updateInfo = ChurchCRMReleaseManager::checkSystemUpdateAvailable();
         $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
         $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
+        $_SESSION['systemLatestVersion'] = $updateInfo['latestVersion'];
     }
 }

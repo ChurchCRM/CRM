@@ -31,22 +31,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
       
+      - name: Install gettext tools
+        run: sudo apt-get update && sudo apt-get install -y gettext
+      
       - name: Start CI Docker containers
         run: npm run docker:ci:start
-      
-      - name: Wait for database to be ready
+
+      - name: Wait for Docker to be ready
         run: |
-          echo "Waiting for database to be ready..."
-          for i in {1..30}; do
-            if docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci exec -T database mysql -h database -u churchcrm -pchurchcrm churchcrm -e "SELECT 1" > /dev/null 2>&1; then
-              echo "Database is ready!"
-              exit 0
-            fi
-            echo "Waiting for database... ($i/30)"
-            sleep 2
-          done
-          echo "Database failed to become ready"
-          exit 1
+          echo "Waiting for services to be ready..."
+          sleep 10
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
       
       - name: Run locale build
         run: npm run locale:build
@@ -129,4 +125,4 @@ jobs:
           - Upload to POEditor for translation if needed" \
             --base ${{ github.ref_name }} \
             --head "$BRANCH_NAME" \
-            --label "i18n"
+            --label "Localization"

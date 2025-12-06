@@ -95,8 +95,8 @@ function beginSession(Request $request, Response $response, array $args): Respon
     $renderer = new PhpRenderer('templates/');
 
     // Determine if appropriate to pre-fill the username field
-    $pageArgs['prefilledUserName'] = InputUtils::filterSanitizeString($request->getQueryParams()['username']) ??
-    InputUtils::filterSanitizeString($request->getServerParams()['username']) ??
+    $pageArgs['prefilledUserName'] = InputUtils::sanitizeText($request->getQueryParams()['username']) ??
+    InputUtils::sanitizeText($request->getServerParams()['username']) ??
         '';
 
     return $renderer->render($response, 'begin-session.php', $pageArgs);

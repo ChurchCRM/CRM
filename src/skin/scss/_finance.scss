@@ -1,0 +1,69 @@
+// Finance Module Styles
+// Used by: /finance/views/dashboard.php, /finance/views/reports.php
+
+// Finance dashboard & reports card styling
+.finance-card {
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    }
+}
+
+// Finance metric cards (YTD Payments, Pledges, etc.)
+.finance-metric-card {
+    border-radius: 0.25rem;
+
+    .finance-metric-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+    }
+
+    .finance-metric-label {
+        letter-spacing: 1px;
+    }
+
+    // Gradient backgrounds for metric cards
+    &.metric-payments {
+        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    }
+
+    &.metric-pledges {
+        background: linear-gradient(135deg, #007bff 0%, #6f42c1 100%);
+    }
+
+    &.metric-donors {
+        background: linear-gradient(135deg, #17a2b8 0%, #20c997 100%);
+    }
+
+    &.metric-count {
+        background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+    }
+}
+
+// Finance report list items with hover effect
+.finance-list-group-item {
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: #f8f9fa;
+        transform: translateX(3px);
+    }
+
+    h6 {
+        margin-bottom: 0.25rem;
+    }
+}
+
+// Finance progress bars
+.finance-progress {
+    height: 20px;
+}
+
+// Truncated text cells
+.finance-truncate {
+    max-width: 200px;
+}

@@ -4,7 +4,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext("User") . " - " . $user->getFullName();
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
     <div class="col-lg-6">
@@ -109,4 +109,4 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/user.js"></script>
 <?php
-include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

@@ -23,10 +23,10 @@ $("#submitIssue").click(function () {
     }).done(function (data) {
         var bugMsg = "**Describe the issue** \n\n\n\n";
         var systemInfo = encodeURIComponent(bugMsg + data["issueBody"]);
-        var gitHubURL =
-            "https://github.com/ChurchCRM/CRM/issues/new?assignees=&labels=Web%20Report&body=" +
-            systemInfo;
-        window.open(gitHubURL, `github`);
+        // Include body parameter to show system info in GitHub issue
+        // Use type=bug to set the issue type (required for workflow detection)
+        var gitHubTemplateURL = "https://github.com/ChurchCRM/CRM/issues/new?type=bug&body=" + systemInfo;
+        window.open(gitHubTemplateURL, `github`);
         $("#IssueReportModal").modal("toggle");
     });
 });

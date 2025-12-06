@@ -64,40 +64,6 @@ msgid "Backup Database"
 msgstr "Створити резервну копію бази даних"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Цей інструмент допоможе вам вручну створити резервну копію бази даних \"ChurchCRM\"."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Ви повинні робити резервну копію вручну принаймні раз на тиждень, якщо у вас вже є регулярне резервне копіювання для ваших систем."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Після завантаження файлу резервної копії слід зробити дві копії. Покладіть одну з них у вогнестійкий сейф на місці, а інший в безпечному місці поза територією помешкання."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Якщо ви турбуєтеся про конфіденційність даних, що зберігаються в базі даних, ви повинні зашифрувати резервні копії даних, якщо він буде зберігатися десь потенційно доступним для інших"
-
-#: 
-msgid "Select archive type"
-msgstr "Виберіть тип архіву"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Зашифрувати файл резервної копії з паролем?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Повторно введіть пароль"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Створити та відправити резервну копію на зовнішнє сховище"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Пакетний запис переможця"
 
@@ -372,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "Додати кошик до події"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Виберіть подію, до якої ви хочете додати свій кошик"
-
-#: 
 msgid "OR"
 msgstr "АБО"
 
@@ -481,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "Порожній кошик для сім'ї"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Порожній кошик до події"
-
-#: 
 msgid "Map Cart"
 msgstr "Карта кошика"
 
@@ -541,21 +499,9 @@ msgid "Event Checkin"
 msgstr "Реєстрація події"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Виберіть подію, на яку ви хочете зареєструвати людей"
-
-#: 
 #, fuzzy
 msgid "Select Event"
 msgstr "Виберіть Подію"
-
-#: 
-msgid "Add Visitor"
-msgstr "Додати відвідувача"
-
-#: 
-msgid "CheckIn"
-msgstr "Перевірь"
 
 #: 
 msgid "CheckOut"
@@ -580,10 +526,6 @@ msgstr "Зареєстрував"
 #: 
 msgid "Action"
 msgstr "Дія"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Жоден учасник не призначений на подію"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -615,29 +557,14 @@ msgid "Deposit Slip Number: "
 msgstr "Номер депозитного квитанції: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Деталі депозиту: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Закрийте депозит (не забудьте натиснути Зберегти)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Звіт про депозит"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Важливе зауваження: невдалі транзакції будуть постійно видалятися, коли депозитний депозит буде закритий."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Підсумок депозиту: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Платежі за цим депозитним листом:"
 
 #: 
 msgid "Import eGive"
@@ -648,7 +575,8 @@ msgid "Add Payment"
 msgstr "Додати платіж"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Завантажте авторизовані транзакції"
 
 #: 
@@ -914,44 +842,8 @@ msgid "Edit"
 msgstr "Редагувати"
 
 #: 
-msgid "Event Attendees"
-msgstr "Учасники заходу"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Події без учасників"
-
-#: 
-msgid "Event Guests"
-msgstr "Гості заходу"
-
-#: 
-msgid "There "
-msgstr "Там "
-
-#: 
 msgid "Event Title"
 msgstr "Назва події"
-
-#: 
-msgid "Event Date"
-msgstr "Дата події"
-
-#: 
-msgid "Attending Members"
-msgstr "Присутні члени"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Неприсутні члени"
-
-#: 
-msgid "Guests"
-msgstr "Гості"
-
-#: 
-msgid "There are no events in this category"
-msgstr "У цій категорії немає подій"
 
 #: 
 msgid "Create Event"
@@ -962,20 +854,8 @@ msgid "Create a new Event"
 msgstr "Створити нову подію"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Редагування ідентифікатора події: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " помилки. Дивіться нижче"
-
-#: 
-msgid "Items with a "
-msgstr "Елементи з a "
-
-#: 
-msgid " are required"
-msgstr " вимагаються"
 
 #: 
 msgid "Select your event type"
@@ -986,20 +866,8 @@ msgid "You must pick an event type."
 msgstr "Ви повинні вибрати тип події."
 
 #: 
-msgid "Event Desc"
-msgstr "Опис події"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Кількість відвідувачів не зафіксовано"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Примітки щодо відвідуваності: "
-
-#: 
-msgid "Event Sermon"
-msgstr "Проповідь події"
 
 #: 
 msgid "Event Status"
@@ -1008,10 +876,6 @@ msgstr "Статус події"
 #: 
 msgid "Return to Events"
 msgstr "Повернутися до подій"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "НАЗВА ТИПУ ПОДІЇ"
 
 #: 
 msgid "Sundays"
@@ -1040,30 +904,6 @@ msgstr "П’ятниці"
 #: 
 msgid "Saturdays"
 msgstr "Суботи"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "ЗАВДАННЯ ЧАС ПОЧАТКУ"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "ЛІЧЕННЯ НА УЧАСТЬ"
-
-#: 
-msgid "Optional"
-msgstr "Необов’язково"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Введіть список кількості відвідувачів, який ви хочете включити в цю подію."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Відокремте кожне ім'я_читання комою. напр. Учасники, відвідувачі, кампус, діти"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Кожен тип події включає загальну кількість, вам не потрібно її включати."
 
 #: 
 msgid "Add Event Type"
@@ -1635,7 +1475,8 @@ msgid "Date End"
 msgstr "Дата закінчення"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Очистити фільтри"
 
 #: 
@@ -2024,28 +1865,12 @@ msgid "Confirm data labels"
 msgstr "Підтвердьте мітки даних"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Перелік подій типу = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Перелік усіх церковних подій"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Виберіть типи подій для відображення"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Відобразити події в році"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Дата / час початку"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Відсутність зафіксовано"
 
 #: 
 msgid "Attendees"
@@ -3840,10 +3665,6 @@ msgid "Details:"
 msgstr "Подробиці:"
 
 #: 
-msgid "File Missing"
-msgstr "Файл відсутній"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Це призведе до заміни номерів сімейних конвертів у базі даних на вибрані на цій сторінці. Продовжити?"
 
@@ -4093,20 +3914,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "Підпис файлу визначення підпису не вдалося перевірити"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Файл визначення підпису відсутній"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Один або кілька файлів не вдалося перевірити підпис"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "Налаштуйте HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Файли не вдалося перевірити цілісність"
 
 #: 
 msgid "Family:"
@@ -4195,14 +4008,6 @@ msgstr "Дата вступу:"
 #: 
 msgid "CSV Import"
 msgstr "Імпорт CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Коментар:"
-
-#: 
-msgid "Closed:"
-msgstr "Зачинено:"
 
 #: 
 msgid "Start Date: "
@@ -6832,7 +6637,8 @@ msgid "Profile Image uploaded"
 msgstr "Зображення профілю завантажено"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "платежі?"
 
 #: 
@@ -7437,10 +7243,6 @@ msgid "Your Church's X Page"
 msgstr "Сторінка Вашої Церкви у X"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "шукати зображення користувачів у Google, коли немає локального зображення"
-
-#: 
 msgid "Self Register"
 msgstr "Самореєстрація"
 
@@ -8003,10 +7805,6 @@ msgid "UserName not set"
 msgstr "Ім'я користувача не встановлено"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Люди та сім'ї вилучені з бази даних."
-
-#: 
 msgid "Self Registrations"
 msgstr "Самореєстрація"
 
@@ -8277,20 +8075,8 @@ msgid "is disabled"
 msgstr "вимкнено"
 
 #: 
-msgid "System Information"
-msgstr "Інформація про систему"
-
-#: 
 msgid "Software Version"
 msgstr "Версія програмного забезпечення"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Дійсні налаштування поштового сервера"
-
-#: 
-msgid "Database"
-msgstr "База даних"
 
 #: 
 msgid "Database Version"
@@ -8359,10 +8145,6 @@ msgid "Emptied into Event"
 msgstr "Порожній в ідентифікаторі події"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "Файл integritetCheck.json відсутній"
-
-#: 
 msgid "Passed"
 msgstr "Пройшов"
 
@@ -8418,10 +8200,6 @@ msgstr "Підтримка платежів eGive, кредитних карто
 #: 
 msgid "Estonian"
 msgstr "Естонська"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Помилка декодування файлу результатів перевірки цілісності"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8547,10 +8325,6 @@ msgid "Verification URL"
 msgstr "URL-адреса для підтвердження"
 
 #: 
-msgid "Reset System"
-msgstr "Скинути систему"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Ідентифікатор несподіваної особи"
 
@@ -8610,18 +8384,6 @@ msgstr "Перш ніж продовжувати оновлення, перег�
 #: 
 msgid "Database Reset Functions"
 msgstr "Функції скидання бази даних"
-
-#: 
-msgid "Reset Members"
-msgstr "Скинути учасників"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Це призведе до видалення всіх даних учасників, людей та сімей, і їх не можна скасувати."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Скинути налаштування сімей / людей"
 
 #: 
 msgid "Reset Database"
@@ -8816,20 +8578,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Аудиторія не в ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Інформація про встановлення ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Версія сервера баз даних"
-
-#: 
 msgid "Web Server"
 msgstr "Веб-сервер"
-
-#: 
-msgid "Email Information"
-msgstr "Інформація про електронну пошту"
 
 #: 
 msgid "List maintenance"

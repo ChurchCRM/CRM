@@ -13,7 +13,7 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\FinancialService;
 
 // Security
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Filter values
 $letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
@@ -27,7 +27,7 @@ $iMinimum = InputUtils::legacyFilterInput($_POST['minimum'], 'int');
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('Admin');
 }
 
 // Prepare filter arrays
@@ -448,7 +448,13 @@ if ($output === 'pdf') {
         // basename: 'TaxReport', includeDateInFilename: true adds today's date, .csv is added automatically
         CsvExporter::create($headers, $rows, 'TaxReport', 'UTF-8', true);
     } else {
-        header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+        $params = [
+            'ReturnMessage' => 'NoRows',
+            'ReportType' => 'Giving Report',
+            'DateStart' => $sDateStart,
+            'DateEnd'   => $sDateEnd,
+        ];
+        header('Location: ../FinancialReports.php?' . http_build_query($params));
         exit();
     }
 }

@@ -1,18 +1,15 @@
 <?php
-
-use ChurchCRM\dto\SystemURLs;
-
-$URL = 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . $_SERVER['HTTP_HOST'] . '/';
-
+// Setup wizard - standalone, no Config.php dependency
+$rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
+$isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (($_SERVER['SERVER_PORT'] ?? '80') === '443');
+$scheme = $isHttps ? 'https' : 'http';
+$normalizedRootPath = rtrim($rootPath, '/');
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$URL = $scheme . '://' . $host . ($normalizedRootPath === '' ? '' : $normalizedRootPath) . '/';
 $sPageTitle = 'ChurchCRM – Setup';
-require_once '../Include/HeaderNotLoggedIn.php';
+
+require_once __DIR__ . '/header.php';
 ?>
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/setup.min.css">
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    window.CRM = {
-        root: "<?= SystemURLs::getRootPath() ?>"
-    };
-</script>
 <div class="container-fluid">
 <div class="jumbotron text-center">
     <h1 class="display-4">Welcome to ChurchCRM Setup Wizard</h1>
@@ -56,21 +53,21 @@ require_once '../Include/HeaderNotLoggedIn.php';
                                     <strong><i class="fa-solid fa-exclamation-triangle"></i> Prerequisites Not Met</strong>
                                     <p class="mb-0 mt-1">Some server requirements are not satisfied. ChurchCRM may not function correctly.</p>
                                 </div>
-                                
-                                <!-- PHP Extensions - Collapsible (Collapsed by default) -->
+
+                                <!-- File Permissions - Collapsible (Collapsed by default) -->
                                 <h6 class="mb-3">
-                                    <a href="#php-extensions-collapse" data-toggle="collapse" class="text-dark text-decoration-none collapsed" aria-expanded="false" aria-controls="php-extensions-collapse">
+                                    <a href="#filesystem-collapse" data-toggle="collapse" class="text-dark text-decoration-none collapsed" aria-expanded="false" aria-controls="filesystem-collapse">
                                         <span>
-                                            <i class="fa-solid fa-php mr-2"></i>PHP Extensions
-                                            <span id="php-extensions-status" class="ml-2">
+                                            <i class="fa-solid fa-folder-open mr-2"></i>File Permissions
+                                            <span id="filesystem-status" class="ml-2">
                                                 <i class="fa-solid fa-spinner fa-spin text-muted"></i>
                                             </span>
                                         </span>
                                         <i class="fa-solid fa-chevron-down"></i>
                                     </a>
                                 </h6>
-                                <div id="php-extensions-collapse" class="collapse">
-                                    <table class="table table-sm table-condensed mb-4" id="php-extensions"></table>
+                                <div id="filesystem-collapse" class="collapse">
+                                    <table class="table table-sm table-condensed mb-4" id="filesystem-checks"></table>
                                 </div>
 
                                 <!-- File Integrity - Collapsible (Collapsed by default) -->
@@ -86,7 +83,26 @@ require_once '../Include/HeaderNotLoggedIn.php';
                                     </a>
                                 </h6>
                                 <div id="integrity-collapse" class="collapse">
-                                    <table class="table table-sm table-condensed mb-0" id="integrity-checks"></table>
+                                    <table class="table table-sm table-condensed mb-4" id="integrity-checks"></table>
+                                </div>
+
+                                <!-- Orphaned Files - Collapsible (Collapsed by default, hidden initially) -->
+                                <div id="orphaned-files-section" style="display: none;">
+                                    <h6 class="mb-3">
+                                        <a href="#orphaned-collapse" data-toggle="collapse" class="text-danger text-decoration-none collapsed" aria-expanded="false" aria-controls="orphaned-collapse">
+                                            <span>
+                                                <i class="fa-solid fa-exclamation-triangle mr-2"></i>Orphaned Files
+                                                <span id="orphaned-status" class="ml-2">
+                                                    <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                                </span>
+                                            </span>
+                                            <i class="fa-solid fa-chevron-down"></i>
+                                        </a>
+                                    </h6>
+                                    <div id="orphaned-collapse" class="collapse">
+                                        <p class="small text-muted mb-2">These files are not part of the official release and should be reviewed.</p>
+                                        <table class="table table-sm table-condensed mb-0" id="orphaned-checks"></table>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer bg-white">
@@ -105,7 +121,11 @@ require_once '../Include/HeaderNotLoggedIn.php';
                                 <h6 class="mb-0"><i class="fa-solid fa-server mr-2"></i>Server Information</h6>
                             </div>
                             <div class="card-body">
-                                <table class="table table-sm table-borderless mb-0">
+                                <table class="table table-sm table-borderless mb-3">
+                                    <tr>
+                                        <td class="text-muted">PHP Version</td>
+                                        <td class="text-right font-weight-bold"><?php echo PHP_VERSION ?></td>
+                                    </tr>
                                     <tr>
                                         <td class="text-muted">Upload Size</td>
                                         <td class="text-right font-weight-bold"><?php echo ini_get('upload_max_filesize') ?></td>
@@ -119,6 +139,22 @@ require_once '../Include/HeaderNotLoggedIn.php';
                                         <td class="text-right font-weight-bold"><?php echo ini_get('memory_limit') ?></td>
                                     </tr>
                                 </table>
+
+                                <!-- PHP Extensions - Collapsible -->
+                                <h6 class="mb-2">
+                                    <a href="#php-extensions-collapse" data-toggle="collapse" class="text-dark text-decoration-none collapsed" aria-expanded="false" aria-controls="php-extensions-collapse">
+                                        <span>
+                                            <i class="fa-brands fa-php mr-2"></i>PHP Extensions
+                                            <span id="php-extensions-status" class="ml-2">
+                                                <i class="fa-solid fa-spinner fa-spin text-muted"></i>
+                                            </span>
+                                        </span>
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </a>
+                                </h6>
+                                <div id="php-extensions-collapse" class="collapse">
+                                    <table class="table table-sm table-condensed mb-0" id="php-extensions"></table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -133,7 +169,7 @@ require_once '../Include/HeaderNotLoggedIn.php';
                         <div class="form-group">
                             <label for="ROOT_PATH">Root Path</label>
                             <input type="text" name="ROOT_PATH" id="ROOT_PATH"
-                                   value="<?= SystemURLs::getRootPath() ?>" class="form-control"
+                                   value="<?= $rootPath ?>" class="form-control"
                                    aria-describedby="ROOT_PATH_HELP"
                                    pattern="^(|\/[a-zA-Z0-9_\-\.\/]*)$"
                                    maxlength="64">
@@ -330,7 +366,5 @@ require_once '../Include/HeaderNotLoggedIn.php';
 </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bs-stepper/bs-stepper.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/setup.js"></script>
-<?php
-require_once '../Include/FooterNotLoggedIn.php';
+</body>
+</html>

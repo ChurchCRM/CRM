@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "Backup da Base de Dados"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Esta ferramenta vai te ajudar a fazer o backup manual da base de dados."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Você deve fazer um backup manual, pelo menos uma vez por semana, a menos que você programe um backup automático."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Depois do download do arquivo de backup, você deve fazer duas cópias. Guarde-as em locais separados à prova de fogo, água e etc."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Se for armazenar backup da base de dados do CRM em algum lugar potencialmente acessível por outras pessoas, é altamente recomendável  criptografar os dados."
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Selecione o tipo de arquivo"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Criptografar a base de dados com uma senha?"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "Repita a Senha"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Gerar e enviar Backup para Armazenamento Externo"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Entrada em lote"
 
@@ -387,11 +351,6 @@ msgid "Add Cart to Event"
 msgstr "Adicionar Carrinho a um Evento"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Selecione o evento para o qual você gostaria de adicionar seu carrinho"
-
-#: 
 msgid "OR"
 msgstr "ou"
 
@@ -500,10 +459,6 @@ msgid "Empty Cart to Family"
 msgstr "Carrinho vazio da Família"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Carrinho vazio do evento"
-
-#: 
 msgid "Map Cart"
 msgstr "Mapa do carrinho"
 
@@ -561,21 +516,8 @@ msgid "Event Checkin"
 msgstr "Entrada no evento"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Selecione o evento ao qual as pessoas serão adicionadas"
-
-#: 
 msgid "Select Event"
 msgstr "Selecione o evento"
-
-#: 
-msgid "Add Visitor"
-msgstr "Adicionar visitante"
-
-#: 
-msgid "CheckIn"
-msgstr "Incluir"
 
 #: 
 msgid "CheckOut"
@@ -600,10 +542,6 @@ msgstr "Retirado por"
 #: 
 msgid "Action"
 msgstr "Ação"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Evento ainda sem pessoas"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -635,29 +573,14 @@ msgid "Deposit Slip Number: "
 msgstr "Número do depósito: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Detalhes do Depósito: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Encerrar depósito (lembre-se de pressionar Gravar)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Relatório de erro do depósito"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Nota importante: transações com falha serão excluídos permanentemente quando o comprovante de depósito está fechado."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Resumo dos Depósitos: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Pagamentos neste comprovante de depósito:"
 
 #: 
 msgid "Import eGive"
@@ -668,7 +591,8 @@ msgid "Add Payment"
 msgstr "Incluir pagamento"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Carregar transações autorizadas"
 
 #: 
@@ -945,44 +869,8 @@ msgid "Edit"
 msgstr "Editar"
 
 #: 
-msgid "Event Attendees"
-msgstr "Participantes do evento"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Faltaram ao evento"
-
-#: 
-msgid "Event Guests"
-msgstr "Visitantes no evento"
-
-#: 
-msgid "There "
-msgstr "Existe "
-
-#: 
 msgid "Event Title"
 msgstr "Título do evento"
-
-#: 
-msgid "Event Date"
-msgstr "Data do evento"
-
-#: 
-msgid "Attending Members"
-msgstr "Membros presentes"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Membros ausentes"
-
-#: 
-msgid "Guests"
-msgstr "Visitantes"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Não existem eventos nesta categoria"
 
 #: 
 msgid "Create Event"
@@ -993,22 +881,8 @@ msgid "Create a new Event"
 msgstr "Criar um Novo Evento"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Editando evento ID:"
-
-#: 
 msgid " errors. Please see below"
 msgstr " erros. Por favor, veja abaixo"
-
-#: 
-#, fuzzy
-msgid "Items with a "
-msgstr "Itens nº"
-
-#: 
-#, fuzzy
-msgid " are required"
-msgstr " este valor é obrigatório."
 
 #: 
 msgid "Select your event type"
@@ -1019,22 +893,8 @@ msgid "You must pick an event type."
 msgstr "Você deve escolher um tipo de evento."
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Descrição do evento"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Não foi registada a contagem dos presentes"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Comentários sobre os presentes: "
-
-#: 
-#, fuzzy
-msgid "Event Sermon"
-msgstr "Evento"
 
 #: 
 #, fuzzy
@@ -1044,10 +904,6 @@ msgstr "Status do evento"
 #: 
 msgid "Return to Events"
 msgstr "Retornar a Eventos"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "NOME DO TIPO DE EVENTO"
 
 #: 
 msgid "Sundays"
@@ -1076,30 +932,6 @@ msgstr "Sextas-feiras"
 #: 
 msgid "Saturdays"
 msgstr "Sábados"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "Tempo de Início Padrão"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "CONTAGEM DOS PRESENTES"
-
-#: 
-msgid "Optional"
-msgstr "Opcional"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Digite uma lista de presença que você deseja incluir neste evento."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Separe cada count_name com uma vírgula. ex.: Membros, Visitantes, Sede, Crianças"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Todo tipo de evento tem um contador total incluído, você não precisa incluí-lo."
 
 #: 
 msgid "Add Event Type"
@@ -1683,7 +1515,8 @@ msgid "Date End"
 msgstr "Data Final"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Limpar filtros"
 
 #: 
@@ -2095,28 +1928,12 @@ msgid "Confirm data labels"
 msgstr "Corfirma conteúdo das etiquetas"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Listando Eventos por Tipo = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Listar todos os eventos da igreja"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Selecione os tipos de evento para mostrar"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Mostrar eventos no ano"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Início Data/Horário"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Não foi registada o número de presentes"
 
 #: 
 #, fuzzy
@@ -3999,10 +3816,6 @@ msgid "Details:"
 msgstr "Detalhes:"
 
 #: 
-msgid "File Missing"
-msgstr "Ficheiros Faltando"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Esta ação substituirá os números dos envelopes das famílias na base de dados por aqueles que foram selecionados nesta página. Continuar?"
 
@@ -4253,20 +4066,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "Falha na validação da assinatura do arquivo de definição de assinaturas"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Arquivo de definição de assinatura não encontrado"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Um ou mais ficheiros falharam na validação da assinatura"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "Configurar HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Aruqivos que falharam na verificação de integridade"
 
 #: 
 msgid "Family:"
@@ -4356,14 +4161,6 @@ msgstr "Data de entrada:"
 #: 
 msgid "CSV Import"
 msgstr "Importar CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Comentário:"
-
-#: 
-msgid "Closed:"
-msgstr "Fechado:"
 
 #: 
 #, fuzzy
@@ -7023,7 +6820,8 @@ msgid "Profile Image uploaded"
 msgstr "Imagem do Perfil Enviada"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "pagamento(s)?"
 
 #: 
@@ -7630,10 +7428,6 @@ msgid "Your Church's X Page"
 msgstr "Página do X da sua igreja"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "Procurar imagens de utilizadores no Google quando não existirem imagens locais presentes"
-
-#: 
 msgid "Self Register"
 msgstr "Auto registo"
 
@@ -8196,10 +7990,6 @@ msgid "UserName not set"
 msgstr "Nome de Utilizador não definido"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "As pessoas e famílias foram removidas da base de dados."
-
-#: 
 msgid "Self Registrations"
 msgstr "Próprios Registos"
 
@@ -8470,20 +8260,8 @@ msgid "is disabled"
 msgstr "está desabilitado"
 
 #: 
-msgid "System Information"
-msgstr "Informações do Sistema"
-
-#: 
 msgid "Software Version"
 msgstr "Versão do Software"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Configurações do servidor de E-mail válidas"
-
-#: 
-msgid "Database"
-msgstr "Base de Dados"
 
 #: 
 msgid "Database Version"
@@ -8553,10 +8331,6 @@ msgid "Emptied into Event"
 msgstr "Esvaziado para o do Evento"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "integrityCheck.json arquivo faltando"
-
-#: 
 msgid "Passed"
 msgstr "Aprovado"
 
@@ -8612,10 +8386,6 @@ msgstr "O suporte para pagamentos de eGive, cartão de crédito e emissão de no
 #: 
 msgid "Estonian"
 msgstr "Estoniano"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Arquivo de resultado de verificação de integridade de erro de decodificação"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8740,10 +8510,6 @@ msgid "Verification URL"
 msgstr "Verificar o URL"
 
 #: 
-msgid "Reset System"
-msgstr "Reiniciar o sistema"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "ID inesperado da pessoa"
 
@@ -8815,18 +8581,6 @@ msgstr "Rever estas tarefas antes de continuar com a atualização:"
 #: 
 msgid "Database Reset Functions"
 msgstr "Funções de redefinição da base de dados"
-
-#: 
-msgid "Reset Members"
-msgstr "Redefinir membros"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Isso removerá todos os dados, pessoas e famílias dos membros e não poderá ser desfeito."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Redefinir famílias / pessoas"
 
 #: 
 msgid "Reset Database"

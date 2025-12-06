@@ -3,6 +3,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\Service\AuthService;
+use ChurchCRM\Utils\Functions;
 
 class DepositService {
     /**
@@ -64,7 +65,7 @@ class DepositService {
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
                 $q = 'DELETE FROM pledge_plg WHERE plg_depID = ' . $iDepositSlipID . ' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
-                \RunQuery($q);
+                Functions::runQuery($q);
             }
         } else {
             $deposit = new \ChurchCRM\model\ChurchCRM\Deposit();
@@ -134,6 +135,36 @@ class DepositService {
     {
         return \ChurchCRM\dto\SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
     }
+
+    /**
+     * Get pledges or payments from a deposit, grouped by GroupKey
+     * @param int $depositId The deposit ID
+     * @param string $type Must be exactly 'Pledge' or 'Payment' (case-sensitive)
+     * @return array Array of pledge/payment records with FamilyString and FundName populated
+     */
+    public function getDepositItemsByType(int $depositId, string $type): array
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+        if (!in_array($type, ['Pledge', 'Payment'], true)) {
+            throw new \InvalidArgumentException("Type must be 'Pledge' or 'Payment'");
+        }
+        
+        $items = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+            ->filterByDepId($depositId)
+            ->filterByPledgeOrPayment($type)
+            ->groupByGroupKey()
+            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->withColumn('GROUP_CONCAT(DonationFund.Name SEPARATOR \', \')', 'FundName')
+            ->joinDonationFund()
+            ->leftJoinWithFamily()
+            ->orderBy('GroupKey', 'ASC')
+            ->find();
+
+        // Propel's ObjectCollection::toArray() doesn't call individual model's toArray(),
+        // so we iterate to ensure each Pledge's custom toArray() executes (which populates FamilyString)
+        return array_map(fn($pledge) => $pledge->toArray(), iterator_to_array($items));
+    }
+
     public function createDeposit(string $depositType, string $depositComment, string $depositDate): Deposit
     {
         $deposit = new Deposit();

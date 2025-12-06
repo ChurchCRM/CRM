@@ -64,40 +64,6 @@ msgid "Backup Database"
 msgstr "גבה מסד נתונים"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "כלי זה יסייע לך ביצירת גיבוי ידני של מסד הנתונים של ChurchCRM"
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "עליך לבצע גיבוי ידני, לפחות פעם בשבוע, אלא אם המערכת שלך מבצעת גיבוי אוטומטי בשיגרה"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "לאחר הורדת קובץ הגיבוי, צור שני עותקים.\n"
-"אחסן אחד מהם בכספת חסינת אש באתר, ועותק נוסף - באתר אחר."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "אם אתה מודאג לגבי מידע רגיש, המאוחסן במערכת ChurchCRM, עליך לבצע הצפנה לקובץ הגיבוי, במידה שהוא מאוחסן במקום הנגיש לאחרים"
-
-#: 
-msgid "Select archive type"
-msgstr "בחר סוג ארכיון"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "להצפין קובץ גיבוי עם סיסמה?"
-
-#: 
-msgid "Re-type Password"
-msgstr "הקלד שוב את הסיסמה"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "צור גיבוי ושלח אל איחסון חיצוני"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "כניסה למנצח אצווה"
 
@@ -372,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "הוסף סל לאירוע"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "בחר באירוע שברצונך להוסיף לסל"
-
-#: 
 msgid "OR"
 msgstr "או"
 
@@ -481,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "רוקן סל למשפחה"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "רוקן סל לאירוע"
-
-#: 
 msgid "Map Cart"
 msgstr "מפה את הסל"
 
@@ -541,20 +499,8 @@ msgid "Event Checkin"
 msgstr "כניסה לאירוע"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "בחר באירוע אליו תרצה להוסיף אנשים"
-
-#: 
 msgid "Select Event"
 msgstr "בחר אירוע"
-
-#: 
-msgid "Add Visitor"
-msgstr "הוסף מבקר"
-
-#: 
-msgid "CheckIn"
-msgstr "כניסה"
 
 #: 
 msgid "CheckOut"
@@ -579,10 +525,6 @@ msgstr "רישום יציאה על-ידי"
 #: 
 msgid "Action"
 msgstr "פעולה"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "לא שוייכו נוכחים לאירוע"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -614,28 +556,14 @@ msgid "Deposit Slip Number: "
 msgstr "מספר אישור הפקדה"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "פרטי הפקדה"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "סגור אישור הפקדה (זכור ללחוץ על 'שמור')"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "דו\"ח הפקדה"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "הערה חשובה: עסקאות שנכשלו יימחקו לצמיתות כאשר שובר ההפקדה ייסגר"
-
-#: 
-msgid "Deposit Summary: "
-msgstr "סיכום הפקדה"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "תשלומים על שובר הפקדה זה"
 
 #: 
 msgid "Import eGive"
@@ -646,7 +574,8 @@ msgid "Add Payment"
 msgstr "הוסף תשלום"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "טען פעולות מאושרות"
 
 #: 
@@ -912,44 +841,8 @@ msgid "Edit"
 msgstr "עריכה"
 
 #: 
-msgid "Event Attendees"
-msgstr "משתתפי האירוע"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "הנעדרים מהאירוע"
-
-#: 
-msgid "Event Guests"
-msgstr "אורחי האירוע"
-
-#: 
-msgid "There "
-msgstr "שם"
-
-#: 
 msgid "Event Title"
 msgstr "כותרת אירוע"
-
-#: 
-msgid "Event Date"
-msgstr "תאריך האירוע"
-
-#: 
-msgid "Attending Members"
-msgstr "חברים נוכחים"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "חברים נעדרים"
-
-#: 
-msgid "Guests"
-msgstr "אורחים"
-
-#: 
-msgid "There are no events in this category"
-msgstr "אין אירועים בקטגוריה זאת"
 
 #: 
 msgid "Create Event"
@@ -960,20 +853,8 @@ msgid "Create a new Event"
 msgstr "צור אירוע חדש"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "עריכת מזהה אירוע: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " שגיאות. אנא ראה מטה"
-
-#: 
-msgid "Items with a "
-msgstr "פריטים עם "
-
-#: 
-msgid " are required"
-msgstr " נדרשים"
 
 #: 
 msgid "Select your event type"
@@ -984,20 +865,8 @@ msgid "You must pick an event type."
 msgstr "עליך לבחור סוג אירוע"
 
 #: 
-msgid "Event Desc"
-msgstr "תיאור האירוע"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "לא נרשמה נוכחות"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "הערות נוכחות: "
-
-#: 
-msgid "Event Sermon"
-msgstr "דרשת האירוע"
 
 #: 
 msgid "Event Status"
@@ -1006,10 +875,6 @@ msgstr "סטטוס האירוע"
 #: 
 msgid "Return to Events"
 msgstr "חזור לאירועים"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "שם סוג האירוע"
 
 #: 
 msgid "Sundays"
@@ -1038,30 +903,6 @@ msgstr "ימי שישי"
 #: 
 msgid "Saturdays"
 msgstr "שבתות"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "שעת התחלה ברירת מחדל"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "ספירת נוכחות"
-
-#: 
-msgid "Optional"
-msgstr "אופציונלי"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "הזן רשימת ספירות נוכחות שברצונך לכלול באירוע זה"
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "הפרד כל שם_ספירה בפסיק. לדוגמה: חברים, מבקרים, קמפוס, ילדים"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "כל סוג אירוע כולל ספירה כוללת, אין צורך לכלול אותה"
 
 #: 
 msgid "Add Event Type"
@@ -1632,7 +1473,8 @@ msgid "Date End"
 msgstr "תאריך סיום"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "נקה מסננים"
 
 #: 
@@ -2021,28 +1863,12 @@ msgid "Confirm data labels"
 msgstr "אשר תוויות נתונים"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "הצגת אירועים מסוג = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "הצגת כל אירועי המוסד"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "בחר סוגי אירועים להצגה"
-
-#: 
-msgid "Display Events in Year"
-msgstr "הצג אירועים בשנה"
-
-#: 
 msgid "Start Date/Time"
 msgstr "תאריך/שעת התחלה"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "לא נרשמה נוכחות"
 
 #: 
 msgid "Attendees"
@@ -3835,10 +3661,6 @@ msgid "Details:"
 msgstr "פרטים:"
 
 #: 
-msgid "File Missing"
-msgstr "קובץ חסר"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "זה יחליף את מספרי המעטפות של המשפחה במסד הנתונים עם אלה שנבחרו בדף זה. להמשיך?"
 
@@ -4087,20 +3909,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "אימות חתימת קובץ הגדרות החתימה נכשל"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "קובץ הגדרות החתימה חסר"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "אימות החתימה נכשל עבור קובץ אחד או יותר"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "הגדרת HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "קבצים שנכשלו בבדיקת השלמות"
 
 #: 
 msgid "Family:"
@@ -4189,14 +4003,6 @@ msgstr "תאריך הכניסה:"
 #: 
 msgid "CSV Import"
 msgstr "ייבוא קובץ CSV"
-
-#: 
-msgid "Comment:"
-msgstr "הערה:"
-
-#: 
-msgid "Closed:"
-msgstr "סגור:"
 
 #: 
 msgid "Start Date: "
@@ -6826,7 +6632,8 @@ msgid "Profile Image uploaded"
 msgstr "תמונת פרופיל הועלתה"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "תשלומים?"
 
 #: 
@@ -7428,10 +7235,6 @@ msgid "Your Church's X Page"
 msgstr "דף ה-X של המוסד שלך"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "חיפוש תמונות משתמש בגוגל כאשר אין תמונה מקומית"
-
-#: 
 msgid "Self Register"
 msgstr "הרשמה עצמית"
 
@@ -7994,10 +7797,6 @@ msgid "UserName not set"
 msgstr "שם משתמש לא הוגדר"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "האנשים והמשפחות נמחקו ממסד הנתונים"
-
-#: 
 msgid "Self Registrations"
 msgstr "הרשמה עצמית"
 
@@ -8266,20 +8065,8 @@ msgid "is disabled"
 msgstr "מושבת"
 
 #: 
-msgid "System Information"
-msgstr "מידע מערכת"
-
-#: 
 msgid "Software Version"
 msgstr "גרסת תוכנה"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "הגדרות שרת דואר חוקיות"
-
-#: 
-msgid "Database"
-msgstr "מסד נתונים"
 
 #: 
 msgid "Database Version"
@@ -8347,10 +8134,6 @@ msgid "Emptied into Event"
 msgstr "רוקן לתוך אירוע"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "קובץ integrityCheck.json חסר"
-
-#: 
 msgid "Passed"
 msgstr "עבר"
 
@@ -8406,10 +8189,6 @@ msgstr "התמיכה בתשלומי eGive, כרטיסי אשראי והעברו�
 #: 
 msgid "Estonian"
 msgstr "אסטונית"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "שגיאה בפענוח קובץ תוצאות בדיקת תקינות"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8535,10 +8314,6 @@ msgid "Verification URL"
 msgstr "URL לאישור"
 
 #: 
-msgid "Reset System"
-msgstr "איתחול מערכת"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "מזהה אדם בלתי צפוי"
 
@@ -8609,18 +8384,6 @@ msgstr "אנא סקור ותקן את הבעיות של משימות אלה לפ
 #: 
 msgid "Database Reset Functions"
 msgstr "פונקציות לאיתחול מסד נתונים"
-
-#: 
-msgid "Reset Members"
-msgstr "איתחול חברים"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "פעולה זו תמחק את כל נתוני החברים, האנשים והמשפחות ולא ניתן לבטל אותה."
-
-#: 
-msgid "Reset Families/People"
-msgstr "אתחל משפחות \\ אנשים"
 
 #: 
 msgid "Reset Database"
@@ -8813,20 +8576,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "קהל לא נמצא ב-ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "מידע התקנת ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Database Server Version (גרסת שרת מסד הנתונים)"
-
-#: 
 msgid "Web Server"
 msgstr "Web Server (שרת אינטרנט)"
-
-#: 
-msgid "Email Information"
-msgstr "מידע דוא\"ל"
 
 #: 
 msgid "List maintenance"

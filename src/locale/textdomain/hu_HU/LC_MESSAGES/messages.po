@@ -64,29 +64,6 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Ez az eszköz segít neked mauális biztonsági mentést csinálni a ChurchCRM adatbázisról."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Meg kell, hogy egy kézi mentés legalább egyszer egy héten, kivéve, ha már van egy rendszeres biztonsági mentés procedule a rendszerek."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Miután letöltötte a backup fájlt, akkor kell, hogy két példányban. Tedd egyikük egy tűzálló széf a helyszínen, a másik pedig biztonságos helyen off-site."
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Válassza archívum típusa"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Titkosítása biztonsági mentés a jelszót?"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Batch Winner bejegyzés"
 
@@ -362,11 +339,6 @@ msgid "Add Cart to Event"
 msgstr "Add kosárba a rendezvény"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Válassza ki az eseményt, amelyre szeretné felvenni a kosárba"
-
-#: 
 msgid "OR"
 msgstr "VAGY"
 
@@ -475,10 +447,6 @@ msgid "Empty Cart to Family"
 msgstr "Üres a kosár Család"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Üres Cart a rendezvény"
-
-#: 
 msgid "Map Cart"
 msgstr "Térkép Cart"
 
@@ -531,21 +499,8 @@ msgid "Event Checkin"
 msgstr "Event Checkin"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Válassza ki az eseményt, amelyre szeretné, hogy ellenőrizze az emberek számára"
-
-#: 
 msgid "Select Event"
 msgstr "Válassza Event"
-
-#: 
-msgid "Add Visitor"
-msgstr "Add Visitor"
-
-#: 
-msgid "CheckIn"
-msgstr "Bejelentkezés-"
 
 #: 
 msgid "CheckOut"
@@ -570,10 +525,6 @@ msgstr "Kivette"
 #: 
 msgid "Action"
 msgstr "Akció"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Nem Résztvevők Hozzárendelve Event"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -605,21 +556,9 @@ msgid "Deposit Slip Number: "
 msgstr "Fizess Slip száma:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Bezárás betét slip (ne feledjük, hogy nyomja meg az Mentés)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Befizetési Slip Jelentés"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Fontos megjegyzés: A sikertelen tranzakciók törlésre kerül permanantly, ha a betét slip zárva van."
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Kifizetések ezen befizetés:"
 
 #: 
 msgid "Import eGive"
@@ -630,7 +569,8 @@ msgid "Add Payment"
 msgstr "Add Fizetés"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Betöltése Jogosult tranzakciók"
 
 #: 
@@ -885,78 +825,16 @@ msgid "Edit"
 msgstr "Szerkeszt"
 
 #: 
-msgid "Event Attendees"
-msgstr "Event Résztvevők"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Event Nonattendees"
-
-#: 
-msgid "Event Guests"
-msgstr "Esemény vendégek"
-
-#: 
-msgid "There "
-msgstr "Ott"
-
-#: 
 msgid "Event Title"
 msgstr "Esemény címe"
-
-#: 
-msgid "Event Date"
-msgstr "Esemény dátuma"
-
-#: 
-msgid "Attending Members"
-msgstr "Résztvevő tagok"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Nem Résztvevő tagok"
-
-#: 
-msgid "Guests"
-msgstr "Vendégek"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Nincs esemény Ebben a kategóriában"
-
-#: 
-msgid "Editing Event ID: "
-msgstr "Szerkesztése Eseményazonosító:"
 
 #: 
 msgid " errors. Please see below"
 msgstr "hibák. Kérjük, olvassa el az alábbi"
 
 #: 
-msgid "Items with a "
-msgstr "Elemek egy"
-
-#: 
-msgid " are required"
-msgstr "van szükség"
-
-#: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Event Leírás"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Nem számít Részvétel rögzített"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Nézőszám Megjegyzések:"
-
-#: 
-#, fuzzy
-msgid "Event Sermon"
-msgstr "Esemény Prédikáció"
 
 #: 
 #, fuzzy
@@ -966,10 +844,6 @@ msgstr "Event Állapot"
 #: 
 msgid "Return to Events"
 msgstr "Vissza az eseményekhez"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "EVENT TYPE NAME"
 
 #: 
 msgid "Sundays"
@@ -998,10 +872,6 @@ msgstr "Fridays"
 #: 
 msgid "Saturdays"
 msgstr "Szombaton"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "JELENLÉTI SZÁMÍT"
 
 #: 
 msgid "Add Event Type"
@@ -1489,7 +1359,8 @@ msgid "Apply Filters"
 msgstr "Szűrők alkalmazása"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Szűrők törlése"
 
 #: 
@@ -1831,20 +1702,8 @@ msgid "Listing All Church Events"
 msgstr "Felsorolja az összes Church Events"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Válassza Esemény típusok megjelenítése"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Kijelző Események év"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Kezdő dátum / idő"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "No Részvétel Adatbázisunkban"
 
 #: 
 #, fuzzy

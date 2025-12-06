@@ -4,6 +4,7 @@ namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\Deposit as BaseDeposit;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery as ChildPledgeQuery;
@@ -483,5 +484,27 @@ class Deposit extends BaseDeposit
         $query->joinWith('DonationFund', Criteria::RIGHT_JOIN);
 
         return $this->getPledges($query, $con);
+    }
+
+    /**
+     * Get the previous deposit (by ID).
+     */
+    public static function getPreviousDeposit(int $currentId): ?Deposit
+    {
+        return DepositQuery::create()
+            ->filterById($currentId, Criteria::LESS_THAN)
+            ->orderById(Criteria::DESC)
+            ->findOne();
+    }
+
+    /**
+     * Get the next deposit (by ID).
+     */
+    public static function getNextDeposit(int $currentId): ?Deposit
+    {
+        return DepositQuery::create()
+            ->filterById($currentId, Criteria::GREATER_THAN)
+            ->orderById(Criteria::ASC)
+            ->findOne();
     }
 }

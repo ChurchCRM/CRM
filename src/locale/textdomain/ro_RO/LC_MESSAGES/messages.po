@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "Baza de date de rezervă"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Această unealtă vă va ajuta în crearea manuală a unei copii de rezervă pentru baza de date ChurchCRM."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Trebuie să faci un backup manual, cel puțin o dată pe săptămână, dacă nu aveți deja o metoda de backup regulată pentru sistemele dvs."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "După ce descărcați fișierul copie de rezervă, ar trebui să faceți două copii. Pune una dintre acestea într-un seif ignifug la fața locului, iar celălaltă într-un loc sigur în afara amplasamentului."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Dacă aveți îngrijorări vis-a-vis de confidențialitatea datelor stocate în baza de date ChurchCRM ar trebui să criptați copia de rezervă, mai ales dacă ele sunt stocate într-un loc în care și alții le-ar putea accesa."
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Selectați tipul de arhivă"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Criptezi fișierul de backup cu o parolă?"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "Re-introduceți parola"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Generează și livrează copia de rezervă (backup) către o stocare externă"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Câștigător lot de intrare"
 
@@ -389,11 +353,6 @@ msgid "Add Cart to Event"
 msgstr "Adauga in cos la eveniment"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Selectați evenimentul care doriți să îl adăugați în coș"
-
-#: 
 msgid "OR"
 msgstr "SAU"
 
@@ -502,10 +461,6 @@ msgid "Empty Cart to Family"
 msgstr "Coșul de Familie gol"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Coșul de Eveniment gol"
-
-#: 
 msgid "Map Cart"
 msgstr "Hartă Coș"
 
@@ -562,21 +517,8 @@ msgid "Event Checkin"
 msgstr "Evenimentul Checkin"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Selectați evenimentul la care doriți să înregistrați persoane"
-
-#: 
 msgid "Select Event"
 msgstr "Selectați Eveniment"
-
-#: 
-msgid "Add Visitor"
-msgstr "Adauga vizitator"
-
-#: 
-msgid "CheckIn"
-msgstr "CheckIn"
 
 #: 
 msgid "CheckOut"
@@ -601,10 +543,6 @@ msgstr "Verificat de către"
 #: 
 msgid "Action"
 msgstr "Acțiune"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Niciun participant nu a fost atribuit Evenimentului"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -636,29 +574,14 @@ msgid "Deposit Slip Number: "
 msgstr "Numărul bonului de depozit:␣"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Detalii depozit"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Închideți bonul de depozit (nu uitați să apăsați Salvare)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Raportul de depozit"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Notă Important: tranzacțiile eșuate vor fi șterse permanent atunci când ordinul de plată este închis."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Sumarizare depozit"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Plăți pe acest bon de depozit"
 
 #: 
 msgid "Import eGive"
@@ -669,7 +592,8 @@ msgid "Add Payment"
 msgstr "Adaugare plată"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Încărcați Tranzacții autorizate"
 
 #: 
@@ -945,44 +869,8 @@ msgid "Edit"
 msgstr "Editati"
 
 #: 
-msgid "Event Attendees"
-msgstr "Participanții la eveniment"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Ne participanții la eveniment"
-
-#: 
-msgid "Event Guests"
-msgstr "Eveniment Vizitatori"
-
-#: 
-msgid "There "
-msgstr "Acolo"
-
-#: 
 msgid "Event Title"
 msgstr "Titlu Eveniment"
-
-#: 
-msgid "Event Date"
-msgstr "Data evenimentului"
-
-#: 
-msgid "Attending Members"
-msgstr "Membrii participanți"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Membrii care nu participă"
-
-#: 
-msgid "Guests"
-msgstr "Vizitatori"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Nu există evenimente în această categorie"
 
 #: 
 msgid "Create Event"
@@ -993,20 +881,8 @@ msgid "Create a new Event"
 msgstr "Crează eveniment nou"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Editarea ID eveniment:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "erori. Vă rugăm să consultați mai jos"
-
-#: 
-msgid "Items with a "
-msgstr "Articole cu o"
-
-#: 
-msgid " are required"
-msgstr "sunt necesare"
 
 #: 
 msgid "Select your event type"
@@ -1017,22 +893,8 @@ msgid "You must pick an event type."
 msgstr "Trebuie să alegi un tip de eveniment"
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Eveniment Desc"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Nu a fost înregistrat niciun număr de prezență"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Note participanți"
-
-#: 
-#, fuzzy
-msgid "Event Sermon"
-msgstr "Predica eveniment"
 
 #: 
 #, fuzzy
@@ -1042,10 +904,6 @@ msgstr "Stare Eveniment"
 #: 
 msgid "Return to Events"
 msgstr "Revenire la Evenimente"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "NUME TIP EVENIMENT"
 
 #: 
 msgid "Sundays"
@@ -1074,30 +932,6 @@ msgstr "Zilele de vineri"
 #: 
 msgid "Saturdays"
 msgstr "Zilele de sâmbătă"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "Timp pornire prestabilit"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "CONTEAZĂ PARTICIPAREA"
-
-#: 
-msgid "Optional"
-msgstr "Opțional"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Introduceți o listă a numărului de prezențe pe care doriți să le includeți la acest eveniment."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Separați fiecare contor_nume cu o virgulă. Ex. Membri, Vizitatori, Campus, Copii"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Fiecare tip de eveniment include un număr total, nu trebuie să îl includeți."
 
 #: 
 msgid "Add Event Type"
@@ -1674,7 +1508,8 @@ msgid "Date End"
 msgstr "Data de încheiere"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Anuleaza filtre"
 
 #: 
@@ -2080,28 +1915,12 @@ msgid "Confirm data labels"
 msgstr "Confirmați etichetele datelor"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Listarea evenimentelor de tip = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Listarea Tuturor Evenimentelor Bisericii"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Selectați Tipurile de Evenimente de Afișat"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Afișați Evenimentele din anul"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Data/Ora de Început"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Fără Prezență Înregistrată"
 
 #: 
 #, fuzzy
@@ -3939,10 +3758,6 @@ msgid "Details:"
 msgstr "Detalii:"
 
 #: 
-msgid "File Missing"
-msgstr "Fișier lipsă"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Aceasta va suprascrie numerele plicului familiei din baza de date cu cele selectate pe această pagină. Continua?"
 
@@ -4193,20 +4008,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "Semnarea fișierului cu definiția semnăturii a eșuat"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Fișier definire semnătură lipsește"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Unul sau mai multe fișiere au semnătura invalidă"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "Configurare HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Fișiere fără verificarea integrității"
 
 #: 
 msgid "Family:"
@@ -4295,14 +4102,6 @@ msgstr "Dată activare:"
 #: 
 msgid "CSV Import"
 msgstr "Import CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Comentariu:"
-
-#: 
-msgid "Closed:"
-msgstr "Închis:"
 
 #: 
 msgid "Start Date: "
@@ -6933,7 +6732,8 @@ msgid "Profile Image uploaded"
 msgstr "Fotografie profil încărcată"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "plată(ți)?"
 
 #: 
@@ -7538,10 +7338,6 @@ msgid "Your Church's X Page"
 msgstr "Pargina de X a bisericii"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "căutați imagini ale utilizatorilor pe Google atunci când nu există nicio imagine locală"
-
-#: 
 msgid "Self Register"
 msgstr "Autoînregistrare"
 
@@ -8104,10 +7900,6 @@ msgid "UserName not set"
 msgstr "UserName nesetat"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Persoanele și familiile au fost șterse din baza de date"
-
-#: 
 msgid "Self Registrations"
 msgstr "Înregistrare personală"
 
@@ -8378,20 +8170,8 @@ msgid "is disabled"
 msgstr "este dezactivat"
 
 #: 
-msgid "System Information"
-msgstr "Informații sistem"
-
-#: 
 msgid "Software Version"
 msgstr "Versiune soft"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Setări valide ale serverului de mail"
-
-#: 
-msgid "Database"
-msgstr "Bază de date"
 
 #: 
 msgid "Database Version"
@@ -8460,10 +8240,6 @@ msgid "Emptied into Event"
 msgstr "Emptied into Event"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "Lipsa fisier integrityCheck.json"
-
-#: 
 msgid "Passed"
 msgstr "A trecut"
 
@@ -8519,10 +8295,6 @@ msgstr "Asistența pentru plățile eGive, card de credit și debit bancar a fos
 #: 
 msgid "Estonian"
 msgstr "Estonă"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Eroare la decodarea fișierului rezultat al verificării integrității"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8644,10 +8416,6 @@ msgid "Verification URL"
 msgstr "URL de verificare"
 
 #: 
-msgid "Reset System"
-msgstr "Resetare sistem"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "ID Persoană neașteptat"
 
@@ -8720,18 +8488,6 @@ msgstr "Vă rugăm să revizuiți și să soluționați aceste sarcini înainte 
 #: 
 msgid "Database Reset Functions"
 msgstr "Funcții de resetare a Bazei de Date"
-
-#: 
-msgid "Reset Members"
-msgstr "Resetare membri"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Aceasta va elimina toate datele membrilor, persoanelor și familiilor și nu poate fi anulat"
-
-#: 
-msgid "Reset Families/People"
-msgstr "Resetare familii/oameni"
 
 #: 
 msgid "Reset Database"
@@ -8925,20 +8681,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Publicul care nu este în ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informații de instalarea a sistemului ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Versiunea serverului bazei de date"
-
-#: 
 msgid "Web Server"
 msgstr "Server web"
-
-#: 
-msgid "Email Information"
-msgstr "Informații email"
 
 #: 
 msgid "List maintenance"

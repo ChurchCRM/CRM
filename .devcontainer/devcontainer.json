@@ -69,7 +69,7 @@
   },
 
   "postCreateCommand": {
-    "install-php-extensions": "apt-get update && apt-get install -y libzip-dev libpng-dev && docker-php-ext-install bcmath exif gd gettext mysqli zip pdo_mysql",
+    "install-php-extensions": "apt-get update && apt-get install -y libzip-dev libpng-dev libfreetype6-dev libjpeg62-turbo-dev libicu-dev libsodium-dev && docker-php-ext-install bcmath curl exif gd gettext intl json mbstring mysqli opcache pdo_mysql phar soap sodium xml zip",
     "setup": "bash .devcontainer/init.sh"
   },
 

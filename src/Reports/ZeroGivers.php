@@ -13,7 +13,7 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\FinancialService;
 
 // Security
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Filter values
 $output = InputUtils::legacyFilterInput($_POST['output']);
@@ -25,7 +25,7 @@ $remittance = InputUtils::legacyFilterInput($_POST['remittance']);
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('Admin');
 }
 
 // Normalize date range
@@ -167,7 +167,13 @@ if ($output === 'pdf') {
         // basename: 'ZeroGivers', includeDateInFilename: true adds today's date, .csv is added automatically
         CsvExporter::create($headers, $rows, 'ZeroGivers', 'UTF-8', true);
     } else {
-        header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Zero%20Givers');
+        $params = [
+            'ReturnMessage' => 'NoRows',
+            'ReportType' => 'Zero Givers',
+            'DateStart' => $sDateStart,
+            'DateEnd'   => $sDateEnd,
+        ];
+        header('Location: ../FinancialReports.php?' . http_build_query($params));
     }
 } else {
     echo '[' . $output . '] output selected, but is not known';

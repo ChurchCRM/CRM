@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -55,7 +56,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $newRow['Nondeductible'] = $row->getNondeductible();
             $newRow['Schedule'] = $row->getSchedule();
             $newRow['Method'] = $row->getMethod();
-            $newRow['Comment'] = htmlspecialchars($row->getComment() ?? '', ENT_QUOTES, 'UTF-8');
+            $newRow['Comment'] = InputUtils::escapeHTML($row->getComment() ?? '');
             $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
             $newRow['Date'] = $row->getDate('Y-m-d');
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');

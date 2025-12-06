@@ -21,12 +21,33 @@ Key conventions (must follow)
 
 Routing & middleware
 - Put API routes in `src/api/routes/` and legacy pages in `src/*.php`.
-- Middleware order (important):
+- **Admin System Pages** (consolidated at `/admin/system/`):
+  - Routes in `src/admin/routes/system.php`
+  - Views in `src/admin/views/` with PhpRenderer
+  - Examples: `/admin/system/debug`, `/admin/system/menus`, `/admin/system/backup`
+  - Add menu entries in `src/ChurchCRM/Config/Menu/Menu.php`
+  - Use AdminRoleAuthMiddleware for security
+- **Admin APIs**: Place in `src/admin/routes/api/` (NOT in `src/api/routes/system/`)
+  - Example: `orphaned-files.php` contains `/admin/api/orphaned-files/delete-all` endpoint
+  - Routes are prefixed with `/admin/api/` when accessed from frontend
+  - Use kebab-case for endpoint names (e.g., `/delete-all`)
+  - AdminRoleAuthMiddleware is applied at the router level
+- **Finance Module** (consolidated at `/finance/`):
+  - Entry point: `src/finance/index.php` with Slim 4 app
+  - Routes in `src/finance/routes/` (dashboard.php, reports.php)
+  - Views in `src/finance/views/` with PhpRenderer
+  - Examples: `/finance/` (dashboard), `/finance/reports`
+  - Use FinanceRoleAuthMiddleware for security (allows admin OR finance permission)
+  - Menu entry in `src/ChurchCRM/Config/Menu/Menu.php` under "Finance"
+- **Deprecated locations** (DO NOT USE):
+  - `src/v2/routes/admin/` - REMOVED (admin routes consolidated to `/admin/system/`)
+  - `src/api/routes/system/` - Legacy admin APIs (no new files here)
+- Middleware order (CRITICAL - Slim 4 uses LIFO):
     1. addBodyParsingMiddleware()
     2. addRoutingMiddleware()
-    3. add(VersionMiddleware)
-    4. add(AuthMiddleware)
-    5. add(CorsMiddleware)
+    3. add(CorsMiddleware)          // Last added, runs FIRST
+    4. add(AuthMiddleware)          // Runs SECOND
+    5. add(VersionMiddleware)       // First added, runs LAST
 
 API & naming
 - Prefer kebab-case endpoints for upgrade/system routes (e.g. `/download-latest-release`).
@@ -154,6 +175,46 @@ class MyClass {
 
 ---
 
+## HTML Sanitization & XSS Protection
+
+**Use `InputUtils` for all HTML/text handling** - Located in `src/ChurchCRM/Utils/InputUtils.php`
+
+Four core methods for security:
+
+1. **`sanitizeText($input)`** - Plain text, removes ALL HTML tags
+   - Use for: Names, descriptions, social media handles
+   - Example: `$person->setFirstName(InputUtils::sanitizeText($_POST['firstName']))`
+
+2. **`sanitizeHTML($input)`** - Rich text with XSS protection (HTML Purifier)
+   - Use for: User-provided HTML content (event descriptions, Quill editor)
+   - Allows safe tags: `<a><b><i><u><h1-h6><pre><img><table><p><blockquote><div><code>` etc.
+   - Blocks dangerous: `<script><iframe><embed><form><style><meta>`
+   - Example: `$event->setDesc(InputUtils::sanitizeHTML($sEventDesc))`
+
+3. **`escapeHTML($input)`** - Output escaping for HTML body content
+   - Automatically handles `stripslashes()` for magic quotes
+   - Use for: Displaying database/user values in HTML
+   - Example: `<?= InputUtils::escapeHTML($person->getFirstName()) ?>`
+
+4. **`escapeAttribute($input)`** - Output escaping for HTML attributes
+   - Same security as `escapeHTML()` (uses `ENT_QUOTES`)
+   - Use for: Values in HTML attributes or form fields
+   - Example: `<input value="<?= InputUtils::escapeAttribute($address) ?>">`
+
+5. **`sanitizeAndEscapeText($input)`** - Combined plain text sanitization + output escape
+   - Use for: Untrusted user input that must be plain text and escaped
+   - Example: `$data[$key] = InputUtils::sanitizeAndEscapeText($userSubmittedValue)`
+
+**CRITICAL Security Rules:**
+- ❌ NEVER use `htmlspecialchars()` or `htmlentities()` directly
+- ❌ NEVER use `ENT_NOQUOTES` flag (doesn't escape quotes in attributes)
+- ❌ NEVER use `stripslashes()` directly (let InputUtils handle it)
+- ✅ ALWAYS use InputUtils methods for all HTML/text handling
+- ✅ ALWAYS use `escapeAttribute()` for form input values
+- ✅ ALWAYS use `sanitizeHTML()` for rich text editors (Quill)
+
+---
+
 ## Code Standards
 
 ### Database Access
@@ -180,6 +241,22 @@ class MyService {
 // WRONG
 MakeFYString($id);  // PHP Error: undefined function
 ```
+
+### File Inclusion (require vs include)
+```php
+// CORRECT - Use require for critical layout files
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+
+// WRONG - include allows missing critical files
+include SystemURLs::getDocumentRoot() . '/Include/Header.php';  // Silent failure
+```
+
+**Guidelines:**
+- **Use `require`** for critical files: Header.php, Footer.php, core utilities
+- **Use `include`** for optional content: plugins, supplementary files that gracefully degrade
+- **Why**: `require` fails loudly (fatal error), `include` fails silently (warning)
+- **Admin views** (`src/admin/views/*.php`): ALL must use `require` for Header/Footer
 
 ### Slim 4 Routes
 ```php
@@ -272,13 +349,6 @@ $app->add(new Cache('public', 3600));
 Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes or Bootstrap 5 classes:
 
 ```php
-## HTML & CSS
-
-**Bootstrap Version: 4.6.2** - NEVER use Bootstrap 5 classes!
-
-Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes or Bootstrap 5 classes:
-
-```php
 // CORRECT - Bootstrap 4.6.2 classes
 <div class="text-center align-top">Content</div>
 <button class="btn btn-primary btn-block">Full Width Button</button>
@@ -306,24 +376,6 @@ Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes or Boot
 - `rounded-*` beyond Bootstrap 4 values
 - `justify-content-*` with `gap-*` (gap is Bootstrap 5 only)
 - `flex-wrap` with `gap-*` (use proper spacing classes instead)
-
-// WRONG - Bootstrap 5 classes (DO NOT USE!)
-<button class="btn btn-primary w-100">Button</button>  // Use btn-block instead
-<div class="d-flex flex-wrap gap-2">Content</div>      // gap- is Bootstrap 5 only
-<div class="d-grid gap-3">Content</div>               // d-grid is Bootstrap 5 only
-
-// WRONG - Deprecated HTML attributes  
-<div align="center" valign="top">Content</div>
-<button style="margin-top: 12px;">Click</button>
-```
-
-**Bootstrap 5 Classes to AVOID:**
-- `w-100` on buttons (use `btn-block`)
-- `gap-*` utilities (use margins/padding instead)
-- `d-grid` (use `d-flex` or Bootstrap 4 grid)
-- `text-decoration-*` (use existing classes)
-- `fw-*` and `fs-*` font utilities
-- `rounded-*` beyond Bootstrap 4 values
 
 ---
 
@@ -384,11 +436,69 @@ Test categories required:
 5. Edge cases - Null values, empty arrays, boundary conditions
 
 ### UI Tests
+
 Location: `cypress/e2e/ui/[feature]/`
-- Maintain element IDs for test selectors
-- Use cy.get() for queries, avoid text-based selectors
+
+#### Session-Based Login Pattern (REQUIRED)
+All UI tests MUST use modern session-based login. This pattern uses `cy.session()` for efficient login caching across tests and configuration-driven credentials.
+
+**✅ CORRECT - Modern Pattern (REQUIRED for all new tests):**
+```javascript
+describe('Feature X', () => {
+    beforeEach(() => {
+        cy.setupAdminSession();  // OR cy.setupStandardSession() for standard users
+        cy.visit('/path/to/page');
+    });
+
+    it('should complete workflow', () => {
+        cy.get('#element-id').click();
+        cy.contains('Expected text').should('exist');
+    });
+});
+```
+
+**❌ WRONG - Old Pattern (DO NOT USE):**
+```javascript
+describe('Feature X', () => {
+    it('should complete workflow', () => {
+        cy.loginAdmin('/path/to/page');  // ❌ DEPRECATED - removed
+        cy.get('#element-id').click();
+    });
+});
+```
+
+#### Commands & Configuration
+**Available Commands:**
+- `cy.setupAdminSession()` - Authenticates as admin (reads `admin.username`, `admin.password` from config)
+- `cy.setupStandardSession()` - Authenticates as standard user (reads `standard.username`, `standard.password` from config)
+- `cy.setupNoFinanceSession()` - Authenticates as user without finance permission (reads `nofinance.username`, `nofinance.password` from config)
+- `cy.typeInQuill()` - Rich text editor input
+
+**Credentials Configuration:**
+Credentials are stored in `cypress.config.ts` and `docker/cypress.config.ts`:
+```typescript
+env: {
+    'admin.username': 'admin',
+    'admin.password': 'changeme',
+    'standard.username': 'tony.wade@example.com',
+    'standard.password': 'basicjoe',
+    'nofinance.username': 'judith.matthews@example.com',
+    'nofinance.password': 'noMoney$',
+}
+```
+- DO NOT hardcode credentials in test files
+- DO NOT add commented-out tests or TODO comments - remove them
+- Configuration-driven approach prevents secrets leaking into git
+
+#### Test Structure Requirements
+- Maintain element IDs for test selectors (use `cy.get('#element-id')`)
+- Avoid text-based selectors (fragile across language changes)
 - Test complete user workflows end-to-end
-- Custom commands: `cy.loginAdmin()`, `cy.loginStandard()`, `cy.typeInQuill()`
+- Clear test descriptions (avoid generic names)
+- Clean test files (no commented code blocks)
+
+#### Migration Guide
+See `PR_SUMMARY.md` for comprehensive migration details from old to new pattern, including all 21 files refactored and lessons learned.
 
 ---
 
@@ -453,13 +563,16 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 
 ## Commit & PR Standards
 
-Commit messages:
-- Format: Imperative mood, < 72 chars, no file paths
-- Examples: "Fix SQL injection in EditEventAttendees", "Replace deprecated HTML attributes with Bootstrap CSS", "Add missing element ID for test selector"
-- Wrong: "Fixed the bug in src/EventEditor.php"
+**Commit Message Format:**
+- Imperative mood, < 72 chars for subject line
+- Examples: "Fix validation in Checkin form", "Replace deprecated HTML attributes with Bootstrap CSS", "Add missing element ID for test selector"
+- Wrong: "Fixed the bug in src/EventEditor.php" (not imperative, includes file paths)
+- Include issue number when applicable: "Fix issue #7698: Replace Bootstrap 5 classes with BS4"
 
-PR organization:
-- Split large changes into logical feature branches
+**PR Organization:**
+- Create feature branches: `fix/issue-NUMBER-description` or `feature/description`
+- One issue per branch - do not mix fixes for different issues
+- Keep commits small and focused
 - Each PR addresses one specific bug or feature
 - Related but separate concerns get separate branches
 - Test each branch independently before creating PR
@@ -468,19 +581,22 @@ PR organization:
 
 ## Pre-commit Checklist
 
-- PHP syntax validation passed (npm run build:php)
-- Propel ORM used for all database operations (no raw SQL)
-- Asset paths use SystemURLs::getRootPath()
-- Service classes used for business logic
-- Type casting applied to dynamic values
-- Deprecated HTML attributes replaced with CSS
-- Bootstrap CSS classes applied correctly
-- All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
-- No alert() calls - use window.CRM.notify() instead
-- Tests pass (if available)
-- Commit message follows imperative mood (< 72 chars)
-- Branch name follows kebab-case format
-- Logs cleared before testing: rm -f src/logs/$(date +%Y-%m-%d)-*.log
+Before committing code changes, verify:
+
+- [ ] PHP syntax validation passed (npm run build:php)
+- [ ] Propel ORM used for all database operations (no raw SQL)
+- [ ] Asset paths use SystemURLs::getRootPath()
+- [ ] Service classes used for business logic
+- [ ] Type casting applied to dynamic values (`(int)`, `(string)`, etc.)
+- [ ] Critical files use `require` not `include` (Header.php, Footer.php)
+- [ ] Deprecated HTML attributes replaced with CSS
+- [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
+- [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
+- [ ] No alert() calls - use window.CRM.notify() instead
+- [ ] Tests pass (if available) - run relevant tests before committing
+- [ ] Commit message follows imperative mood (< 72 chars, no file paths)
+- [ ] Branch name follows kebab-case format
+- [ ] Logs cleared before testing: rm -f src/logs/$(date +%Y-%m-%d)-*.log
 
 ---
 
@@ -491,6 +607,8 @@ PR organization:
 | `src/ChurchCRM/Service/` | Business logic layer |
 | `src/ChurchCRM/model/ChurchCRM/` | Propel ORM generated classes (don't edit) |
 | `src/api/` | REST API entry point + routes |
+| `src/admin/routes/api/` | Admin-only API endpoints (NEW - use this for admin APIs) |
+| `src/finance/` | Finance module (Slim 4 MVC) - dashboard, reports |
 | `src/Include/` | Utility functions, helpers, Config.php |
 | `src/locale/` | i18n/translation strings |
 | `src/skin/v2/` | Compiled CSS/JS from Webpack |
@@ -510,93 +628,92 @@ PR organization:
 - Make code changes directly without documentation overhead
 - Only create documentation when the user specifically asks for it
 
+### Branching Workflow
+- **ALWAYS create a new branch from master** for each issue fix
+- **Branch naming**: `fix/issue-NUMBER-description` or `fix/CVE-YYYY-NNNNN-description`
+- **Workflow**:
+  1. `git checkout master` - start from master
+  2. `git checkout -b fix/issue-NUMBER-description` - create feature branch
+  3. Make changes and stage files
+  4. Commit with descriptive message referencing the issue
+- **One issue per branch** - do not mix fixes for different issues
+
 ### Git Commits
-- **DO NOT commit** until tests pass (if tests exist for the changes)
-- **ALWAYS run tests first** when changes include test files
 - **DO NOT auto-commit** changes without explicit user request
-- **DO NOT run git commit** commands unless the user asks
-- **DO ask permission** before creating commits with test results: "Tests passed. Ready to commit? [describe changes]"
-- Leave commits for the user to handle via their own workflow
+- **DO NOT run git commit** commands unless the user explicitly asks
+- **DO ask permission** before committing when work is complete: "Tests passed. Ready to commit? [describe changes]"
+- **IF user asks to commit**: Use descriptive, imperative mood commit messages referencing the issue
+- Tests should pass before committing (if tests exist for the changes)
+- Keep commits small and focused
 
 ### Code Changes
-- Make all requested changes directly to files
-- Use exact tool calls (replace_string_in_file, create_file, etc.)
+- Make all requested changes directly to files using appropriate tools
+- Use exact tool calls (`replace_string_in_file`, `create_file`, etc.) for precision
 - Keep explanations brief and focused on what was changed
-- Verify changes were applied correctly but don't over-communicate
+- Don't ask for permission—implement code changes based on the user's intent
+- If intent is unclear, infer the most useful approach and clarify with the user
 
 ---
 
-## V2 Upgrade Wizard Architecture
+## Security Vulnerability (CVE) Handling
 
-ChurchCRM implements a modern upgrade system at `/v2/admin/upgrade` with bs-stepper wizard.
+### Reviewing CVE Issues
+When asked to review a CVE issue:
+1. **Fetch the issue** using `github-pull-request_issue_fetch`
+2. **Check if the vulnerable file still exists** - use `file_search` or `read_file`
+3. **Verify the specific vulnerability** - check if input sanitization is in place
+4. **Focus on security fixes only** - ignore code style issues unless explicitly requested
 
-### Route Structure (src/v2/routes/admin/admin.php)
+### Common Security Fixes
+
+**SQL Injection Prevention:**
 ```php
-$group->get('/upgrade', function ($request, $response, $args) {
-    // Prepare data for template
-    $allowPrereleaseUpgrade = SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade');
-    $isUpdateAvailable = isset($_SESSION['systemUpdateAvailable']) && $_SESSION['systemUpdateAvailable'];
-    
-    // Check integrity and tasks
-    $integrityStatus = $container->get('AppIntegrityService')->getIntegrityCheckStatus();
-    $tasks = $container->get('TaskService')->getActivePreUpgradeTasks();
-    
-    // Render with PhpRenderer
-    return $this->get('renderer')->render($response, 'admin/upgrade.php', [
-        'allowPrereleaseUpgrade' => $allowPrereleaseUpgrade,
-        'isUpdateAvailable' => $isUpdateAvailable,
-        'integrityCheckData' => $integrityCheckData,
-        // ... other data
-    ]);
-})->add(AdminRoleAuthMiddleware::class);
+// CORRECT - Use InputUtils::filterInt() for integer parameters
+$iCurrentFundraiser = InputUtils::filterInt($_GET['CurrentFundraiser']);
+$tyid = InputUtils::filterInt($_POST['EN_tyid']);
+
+// CORRECT - Use Propel ORM (parameterized queries)
+$event = EventQuery::create()->findOneById((int)$eventId);
+
+// WRONG - Raw SQL with unsanitized input
+$sSQL = "SELECT * FROM table WHERE id = " . $_GET['id'];
+RunQuery($sSQL);
 ```
 
-### Template Pattern (src/v2/templates/admin/upgrade.php)
-- **Server-side rendering**: Set initial state via PHP to avoid flash of content
-- **Minimal layout**: Simple row/col grid, NO AdminLTE constructs (content-wrapper, breadcrumbs)
-- **PHP classes for visibility**: `class="<?= $isUpdateAvailable ? ' show' : '' ?>"`
-- **Bootstrap 4.6.2**: Use v2 template pattern with clean card-based layout
-
-Example Initial State:
+**XSS Prevention:**
 ```php
-<!-- Checkbox state from PHP -->
-<input type="checkbox" id="allowPrereleaseUpgrade" 
-       <?= $allowPrereleaseUpgrade ? ' checked' : '' ?>>
+// CORRECT - Escape output
+<?= htmlspecialchars($value, ENT_QUOTES, 'UTF-8') ?>
+<?= htmlentities($value, ENT_QUOTES, 'UTF-8') ?>
 
-<!-- Wizard visibility from PHP -->
-<div id="upgrade-wizard-card" class="<?= $isUpdateAvailable ? ' show' : '' ?>">
+// WRONG - Unescaped output
+<?= $value ?>
 ```
 
-### JavaScript Integration (webpack/upgrade-wizard-app.js)
-- **No AJAX for initial state**: PHP renders everything, JS only handles interactions
-- **bs-stepper event-driven**: Use `show.bs-stepper` event for step transitions
-- **Auto-download pattern**: Trigger download when entering Step 2
-- **Session refresh flow**: Toggle → Save → GitHub refresh → Page reload
+### CVE Issue Response Format
+When a CVE issue is confirmed fixed, provide this response in a markdown code block:
 
-Example bs-stepper Setup:
-```javascript
-stepper.addEventListener('show.bs-stepper', function(event) {
-    if (event.detail.to === 1) {  // Step 2 (zero-indexed)
-        autoDownloadUpdate();  // Auto-trigger download
-    }
-});
+```markdown
+**Issue #XXXX (CVE-YYYY-ZZZZZ) - [Brief Description]:**
+
+[Explanation of how the vulnerability was fixed - 1-2 sentences]
+
+We are deleting this issue to ensure the software's safety. Please refer to the new https://github.com/ChurchCRM/CRM/security/policy for reporting CVE issues. Thank you again for reporting it and helping keep our software secure. Happy to accept the CVE via the new process.
 ```
 
-### System Settings Integration
-- **Use SystemConfig::getBooleanValue()**: For boolean settings (not getValue())
-- **Bootstrap Toggle**: For checkbox UI with data-size="sm"
-- **Programmatic flag**: Prevent auto-refresh loops with `isTogglingProgrammatically`
-- **Session refresh endpoint**: POST `/systemupgrade/refresh-upgrade-info` calls ChurchCRMReleaseManager::checkForUpdates()
+### Automated CVE Detection Workflow
+The repository has an automated GitHub Actions workflow (`.github/workflows/issue-comment.yml`) that:
+1. Detects CVE mentions in issue titles or bodies (patterns: `CVE-`, `CVE-YYYY-NNNNN`, or `GHSA-xxxx-xxxx-xxxx`)
+2. Posts a security comment from `.github/issue-comments/security.md`
+3. Adds `security` and `security-delete-required` labels
+4. Closes the issue automatically
 
-### API Endpoint Naming
-- **Use kebab-case**: `/download-latest-release`, `/do-upgrade`, `/refresh-upgrade-info`
-- **RESTful conventions**: GET for reads, POST for state changes
-- **Descriptive names**: Readable without camelCase compression
+This ensures security vulnerabilities are not publicly disclosed and directs reporters to use GitHub Security Advisories instead.
 
-### ChurchCRMReleaseManager Integration
-- `downloadLatestRelease()`: Uses `sys_get_temp_dir()`, no version blocking
-- `checkForUpdates()`: Calls `populateReleases()` which respects `bAllowPrereleaseUpgrade`
-- Session storage: `$_SESSION['systemUpdateAvailable']`, `$_SESSION['systemUpdateVersion']`
+### Security Policy Reference
+- Security policy: `SECURITY.md` in repository root
+- Private disclosure: https://github.com/ChurchCRM/CRM/security/advisories
+- Issue comment templates: `.github/issue-comments/security.md`
 
 ---
 
@@ -648,8 +765,17 @@ stepper.addEventListener('show.bs-stepper', function(event) {
 - Example: "Fix issue #6672: Renumber group property fields after deletion"
 - Include what changed and why in commit message
 
+### File Operations
+- **Moving/renaming files**: Always use `git mv` to preserve history
+  ```bash
+  git mv old/path/file.php new/path/file.php
+  ```
+- **Creating files**: Use `create_file` tool for new files
+- **Deleting files**: Use `rm` command via `run_in_terminal` for simple deletions
+- Git will track file moves properly when using `git mv`
+
 ---
 
-Last updated: November 9, 2025
+Last updated: December 1, 2025
 
 ```

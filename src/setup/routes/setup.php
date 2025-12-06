@@ -1,7 +1,7 @@
 <?php
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Utils\PhpVersion;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -9,20 +9,30 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 $app->group('/', function (RouteCollectorProxy $group): void {
-    $group->get('', function (Request $request, Response $response, array $args): Response {
+    $getHandler = function (Request $request, Response $response, array $args): Response {
         $renderer = new PhpRenderer('templates/');
         $renderPage = 'setup-steps.php';
-        if (version_compare(phpversion(), '8.2.0', '<')) {
+        
+        try {
+            if (version_compare(phpversion(), PhpVersion::getRequiredPhpVersion(), '<')) {
+                $renderPage = 'setup-error.php';
+            }
+        } catch (\RuntimeException $e) {
+            // System cannot determine PHP requirements during setup - show error
             $renderPage = 'setup-error.php';
         }
 
-        return $renderer->render($response, $renderPage, ['sRootPath' => SystemURLs::getRootPath()]);
-    });
+        // Use GLOBALS instead of SystemURLs (Config.php doesn't exist during setup)
+        return $renderer->render($response, $renderPage, ['sRootPath' => $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '']);
+    };
+
+    $group->get('', $getHandler);
+    $group->get('/', $getHandler);
 
     $group->get('SystemIntegrityCheck', function (Request $request, Response $response, array $args): Response {
-        $AppIntegrity = AppIntegrityService::verifyApplicationIntegrity();
+        $integrityStatus = AppIntegrityService::verifyApplicationIntegrity();
 
-        return SlimUtils::renderStringJSON($response, $AppIntegrity['status']);
+        return SlimUtils::renderJSON($response, $integrityStatus);
     });
 
     $group->get('SystemPrerequisiteCheck', function (Request $request, Response $response, array $args): Response {
@@ -31,8 +41,16 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, $required);
     });
 
-    $group->post('', function (Request $request, Response $response, array $args): Response {
-        $configFile = SystemURLs::getDocumentRoot() . '/Include/Config.php';
+    $group->get('SystemFilesystemCheck', function (Request $request, Response $response, array $args): Response {
+        $filesystem = AppIntegrityService::getFilesystemPrerequisites();
+
+        return SlimUtils::renderJSON($response, $filesystem);
+    });
+
+    $postHandler = function (Request $request, Response $response, array $args): Response {
+        // Use GLOBALS instead of SystemURLs (Config.php doesn't exist during setup)
+        $docRoot = $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] ?? dirname(__DIR__, 2);
+        $configFile = $docRoot . '/Include/Config.php';
         if (file_exists($configFile)) {
             return $response->withStatus(403, 'Setup is already complete.');
         }
@@ -89,7 +107,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         $rootPath    = $setupData['ROOT_PATH'];
         $url         = $setupData['URL'];
 
-        $template = file_get_contents(SystemURLs::getDocumentRoot() . '/Include/Config.php.example');
+        $template = file_get_contents($docRoot . '/Include/Config.php.example');
         $template = str_replace('||DB_SERVER_NAME||', $dbServerName, $template);
         $template = str_replace('||DB_SERVER_PORT||', $dbServerPort, $template);
         $template = str_replace('||DB_NAME||', $dbName, $template);
@@ -101,8 +119,12 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         file_put_contents($configFile, $template);
 
         return $response->withStatus(200);
-    });
+    };
+
+    $group->post('', $postHandler);
+    $group->post('/', $postHandler);
 });
+
 
 
 function sanitize_db_field($value)
@@ -145,3 +167,4 @@ function is_valid_root_path($value)
     // Allow empty string OR a path starting with / (no trailing slash)
     return preg_match('#^(|\/[a-zA-Z0-9_\-\.\/]*)$#', $value);
 }
+

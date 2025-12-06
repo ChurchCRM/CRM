@@ -1,0 +1,90 @@
+/* Styles moved from inline in src/FinancialReports.php
+   Purpose: improve spacing and responsive behavior for legacy table-based report forms
+*/
+
+.card.card-body table {
+    width: 100%;
+    max-width: 980px;
+}
+
+td.LabelColumn {
+    width: 220px;
+    vertical-align: top;
+    padding-top: 8px;
+    font-weight: 600;
+}
+
+td.TextColumn,
+td.TextColumnWithBottomBorder {
+    padding-bottom: 14px;
+}
+
+select,
+input[type="text"],
+.select2-container {
+    max-width: 100%;
+}
+
+select[name="deposit"],
+select[name="funds[]"],
+select[name="method[]"],
+select#family {
+    width: 100%;
+}
+
+.btn {
+    margin-right: 6px;
+}
+
+select[multiple] {
+    min-height: 90px;
+}
+
+input.date-picker {
+    width: 160px;
+    display: inline-block;
+}
+
+@media (max-width: 767px) {
+    td.LabelColumn {
+        display: block;
+        width: 100%;
+        padding-top: 6px;
+    }
+    td.TextColumn,
+    td.TextColumnWithBottomBorder {
+        display: block;
+        width: 100%;
+    }
+}
+
+/* Improve spacing between radio inputs and their inline text in the filters form */
+.card.card-body input[type="radio"] {
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Select2: improve appearance and wrapping of selected choices (chips) */
+.card.card-body .select2-container--default .select2-selection--multiple {
+    min-height: 40px;
+    padding: 6px 8px;
+}
+.card.card-body .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    margin: 3px 6px 3px 0;
+    padding: 0 8px;
+    background: #f0f0f0;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    color: #333;
+    border-radius: 3px;
+    line-height: 1.8;
+    max-width: 100%;
+    white-space: normal;
+}
+.card.card-body .select2-container--default .select2-selection--multiple .select2-search--inline {
+    margin-top: 4px;
+}
+
+/* Make native multiple selects readable on narrow widths */
+.card.card-body select[multiple] {
+    padding: 6px;
+}

@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "备份数据库"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "这工具将会协助您手动备份ChurchCRM数据库"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "你应该进行手动备份，每周至少一次，除非你已经有一个的定期备份procedule为您的系统。"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "在您下载的备份文件，你应该一式两份。其中一人在一个防火安全的网站和其他异地在一个安全的位置。"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "如果您担心ChurchCRM数据库存储的数据的机密性，那当它被存储在他人可能访问的位置时，您应该加密备份数据"
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "选择存档类型"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "使用密码加密备份文件？"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "重新输入密码"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "生成备份并将其发送到外部存储"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "批优胜者进入"
 
@@ -389,11 +353,6 @@ msgid "Add Cart to Event"
 msgstr "加入购物车事件"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "选择事件时，如果你想添加您的购物车"
-
-#: 
 msgid "OR"
 msgstr "或"
 
@@ -502,10 +461,6 @@ msgid "Empty Cart to Family"
 msgstr "清空购物车家庭"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "清空购物车事件"
-
-#: 
 msgid "Map Cart"
 msgstr "地图购物车"
 
@@ -562,21 +517,8 @@ msgid "Event Checkin"
 msgstr "事件入住"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "选择事件时，你要检查的人"
-
-#: 
 msgid "Select Event"
 msgstr "选择事件"
-
-#: 
-msgid "Add Visitor"
-msgstr "添加访客"
-
-#: 
-msgid "CheckIn"
-msgstr "签入"
 
 #: 
 msgid "CheckOut"
@@ -601,10 +543,6 @@ msgstr "签出"
 #: 
 msgid "Action"
 msgstr "行动"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "没有分配给事件的参加者"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -636,29 +574,14 @@ msgid "Deposit Slip Number: "
 msgstr "存款单号码："
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "存款详细资料:␣"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "关闭存款凭条（记得按下保存）"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "存款单报告"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "重要提示：在存款凭条被关闭时，失败的交易将被删除permanantly。"
-
-#: 
-msgid "Deposit Summary: "
-msgstr "存款摘要:␣"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "所支付的存款单："
 
 #: 
 msgid "Import eGive"
@@ -669,7 +592,8 @@ msgid "Add Payment"
 msgstr "添加付款"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "加载授权交易"
 
 #: 
@@ -945,44 +869,8 @@ msgid "Edit"
 msgstr "编辑"
 
 #: 
-msgid "Event Attendees"
-msgstr "活动的参与者"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "事件Nonattendees"
-
-#: 
-msgid "Event Guests"
-msgstr "事件客人"
-
-#: 
-msgid "There "
-msgstr "那里"
-
-#: 
 msgid "Event Title"
 msgstr "活动名称"
-
-#: 
-msgid "Event Date"
-msgstr "活动日期"
-
-#: 
-msgid "Attending Members"
-msgstr "出席委员"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "出席委员"
-
-#: 
-msgid "Guests"
-msgstr "宾客"
-
-#: 
-msgid "There are no events in this category"
-msgstr "有没有在这个类别的事件"
 
 #: 
 msgid "Create Event"
@@ -993,20 +881,8 @@ msgid "Create a new Event"
 msgstr "建立新活动"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "编辑事件ID："
-
-#: 
 msgid " errors. Please see below"
 msgstr "错误。请参考下面"
-
-#: 
-msgid "Items with a "
-msgstr "一个项目"
-
-#: 
-msgid " are required"
-msgstr "需要"
 
 #: 
 msgid "Select your event type"
@@ -1017,22 +893,8 @@ msgid "You must pick an event type."
 msgstr "你必须选择事件类型"
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "事件描述"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "没有记录考勤计数"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "出席附注："
-
-#: 
-#, fuzzy
-msgid "Event Sermon"
-msgstr "事件讲道"
 
 #: 
 #, fuzzy
@@ -1042,10 +904,6 @@ msgstr "事件状态"
 #: 
 msgid "Return to Events"
 msgstr "返回至活动"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "事件类型名称"
 
 #: 
 msgid "Sundays"
@@ -1074,30 +932,6 @@ msgstr "星期五"
 #: 
 msgid "Saturdays"
 msgstr "星期六"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "默认开始时间"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "出席COUNTS"
-
-#: 
-msgid "Optional"
-msgstr "选择性"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "输入您要包含在此活动中的出勤计数表。"
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "用逗号分隔每个count_name。 例如 会众，访客，成人，儿童"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "每种活动类型都包含一个总计数，您不需要包含它。"
 
 #: 
 msgid "Add Event Type"
@@ -1675,7 +1509,8 @@ msgid "Date End"
 msgstr "日期结束"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "清除过滤器"
 
 #: 
@@ -2081,28 +1916,12 @@ msgid "Confirm data labels"
 msgstr "确认数据标签"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "列出活动类型="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "列出所有教会活动"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "选择要显示的事件类型"
-
-#: 
-msgid "Display Events in Year"
-msgstr "显示事件在年"
-
-#: 
 msgid "Start Date/Time"
 msgstr "开始日期/时间"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "没有考勤记录的"
 
 #: 
 #, fuzzy
@@ -3945,10 +3764,6 @@ msgid "Details:"
 msgstr "细节："
 
 #: 
-msgid "File Missing"
-msgstr "文件丢失"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "这将用此页面上选择的系列信封覆盖数据库中的系列信封号码。继续吗？"
 
@@ -4199,20 +4014,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "签名定义文件签字验证失败"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "签名定义文件丢失"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "一个或多个文件签名验证失败"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "配置HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "文件未通过完整性检查"
 
 #: 
 msgid "Family:"
@@ -4301,14 +4108,6 @@ msgstr "输入日期："
 #: 
 msgid "CSV Import"
 msgstr "CSV导入"
-
-#: 
-msgid "Comment:"
-msgstr "评价："
-
-#: 
-msgid "Closed:"
-msgstr "关闭："
 
 #: 
 msgid "Start Date: "
@@ -6938,7 +6737,8 @@ msgid "Profile Image uploaded"
 msgstr "个人资料图片已上传"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "付款？"
 
 #: 
@@ -7538,10 +7338,6 @@ msgid "Your Church's Facebook Page"
 msgstr "您的教会的Facebook页面"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "当没有本地图像时，在谷歌上查找用户图像"
-
-#: 
 msgid "Self Register"
 msgstr "自助登记"
 
@@ -8107,10 +7903,6 @@ msgid "UserName not set"
 msgstr "用户名未设置"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "人员和家庭已从数据库中清除。"
-
-#: 
 msgid "Self Registrations"
 msgstr "自助注册"
 
@@ -8381,20 +8173,8 @@ msgid "is disabled"
 msgstr "被禁用"
 
 #: 
-msgid "System Information"
-msgstr "系统信息"
-
-#: 
 msgid "Software Version"
 msgstr "软件版本"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "有效的邮件服务器设置"
-
-#: 
-msgid "Database"
-msgstr "数据库"
 
 #: 
 msgid "Database Version"
@@ -8463,10 +8243,6 @@ msgid "Emptied into Event"
 msgstr "嵌入事件ID"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "缺少完整性检查.json文件"
-
-#: 
 msgid "Passed"
 msgstr "已通过"
 
@@ -8522,10 +8298,6 @@ msgstr "已不再支持eGive，信用卡和银行汇票付款。现有的非银�
 #: 
 msgid "Estonian"
 msgstr "爱沙尼亚语"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "解码完整性检查结果文件时出错"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8651,10 +8423,6 @@ msgid "Verification URL"
 msgstr "验证网址"
 
 #: 
-msgid "Reset System"
-msgstr "重置系统"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "意外的人ID"
 
@@ -8724,18 +8492,6 @@ msgstr "在继续升级之前，请检查并减轻以下任务："
 #: 
 msgid "Database Reset Functions"
 msgstr "数据库重置功能"
-
-#: 
-msgid "Reset Members"
-msgstr "重设会员"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "这将删除所有会员数据，人员和家庭，并且无法撤消。"
-
-#: 
-msgid "Reset Families/People"
-msgstr "重置家庭/人"
 
 #: 
 msgid "Reset Database"
@@ -8930,20 +8686,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "观众不在教堂里"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM安装信息"
-
-#: 
-msgid "Database Server Version"
-msgstr "数据库服务器版本"
-
-#: 
 msgid "Web Server"
 msgstr "网络服务器"
-
-#: 
-msgid "Email Information"
-msgstr "电邮信息"
 
 #: 
 msgid "List maintenance"

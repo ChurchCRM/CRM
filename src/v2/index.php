@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Include/Config.php';
+require_once '../Include/LoadConfig.php';
 require_once '../Include/Functions.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -29,16 +29,15 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
-// Add CORS middleware for browser API access
+// CRITICAL: Middleware order matters in Slim 4 (LIFO - Last In, First Out)
+// CorsMiddleware runs FIRST, AuthMiddleware runs SECOND, VersionMiddleware runs LAST
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
-
-$app->add(VersionMiddleware::class);
-$app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
+$app->add(VersionMiddleware::class);
 
 require __DIR__ . '/routes/common/mvc-helper.php';
-require __DIR__ . '/routes/admin/admin.php';
 require __DIR__ . '/routes/user.php';
 require __DIR__ . '/routes/people.php';
 require __DIR__ . '/routes/family.php';

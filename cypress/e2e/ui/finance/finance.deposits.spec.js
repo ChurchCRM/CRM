@@ -3,18 +3,36 @@
 
 describe("Finance Deposits", () => {
     beforeEach(() => {
-        cy.session('admin-session', () => {
-            // Inline login logic for session caching (no navigation)
-            cy.visit('/login');
-            cy.get('input[name=User]').type('admin');
-            cy.get('input[name=Password]').type('changeme{enter}');
-            cy.url().should('not.include', '/login');
-        });
+        cy.setupAdminSession();
     });
 
     it("Envelope Manager", () => {
         cy.visit("/ManageEnvelopes.php");
         cy.contains("Envelope Manager");
+    });
+
+    it("Navigate to deposits from Finance Dashboard", () => {
+        cy.visit("/finance/");
+        cy.contains("Finance Dashboard");
+        
+        // Click Create Deposit from Quick Actions
+        cy.contains("a", "Create Deposit").click();
+        cy.url().should("contain", "FindDepositSlip.php");
+        cy.contains("Deposit Listing");
+    });
+
+    it("Navigate to deposits from Finance Menu", () => {
+        cy.visit("/finance/");
+        
+        // Use the View All link in Recent Deposits section
+        cy.contains("Recent Deposits")
+            .parents(".card")
+            .find("a")
+            .contains("View All")
+            .click();
+            
+        cy.url().should("contain", "FindDepositSlip.php");
+        cy.contains("Deposit Listing");
     });
 
     it("Create a new Deposit without comment", () => {
@@ -49,8 +67,8 @@ describe("Finance Deposits", () => {
 
     it("Open the Deposits page & Add Payment", () => {
         cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
-        cy.contains("Bank Deposit Slip Number: 5");
-        cy.contains("Payments on this deposit slip");
+        cy.contains("Deposit Slip Number: 5");
+        cy.contains("Payments");
 
         cy.get(".btn-success").click();
         cy.url().should("contain", "PledgeEditor.php");
@@ -96,8 +114,8 @@ describe("Finance Deposits", () => {
         cy.visit("/DepositSlipEditor.php?DepositSlipID=5");
         
         // Verify page loaded
-        cy.contains("Bank Deposit Slip Number: 5");
-        cy.contains("Payments on this deposit slip");
+        cy.contains("Deposit Slip Number: 5");
+        cy.contains("Payments");
         
     });
 });

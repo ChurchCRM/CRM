@@ -128,12 +128,93 @@ function getUpdatedPersons(Request $request, Response $response, array $args): R
 
 function getPersonsWithBirthdays(Request $request, Response $response, array $args): Response
 {
+    // Get birthdays for 14-day range: 7 days before to 7 days after today
+    $today = new \DateTime();
+    $dates = [];
+    
+    for ($i = -7; $i <= 7; $i++) {
+        $date = (clone $today)->modify("{$i} days");
+        $dates[] = [
+            'month' => (int)$date->format('m'),
+            'day' => (int)$date->format('d'),
+            'offset' => $i,
+        ];
+    }
+    
+    // Build query for all dates in range
     $people = PersonQuery::create()
-        ->filterByBirthMonth(date('m'))
-        ->filterByBirthDay(date('d'))
-        ->find();
-
-    return SlimUtils::renderJSON($response, buildFormattedPersonList($people, false, false, true));
+        ->leftJoinWithFamily()
+        ->where('Family.DateDeactivated is null')
+        ->filterByBirthDay(null, Criteria::NOT_EQUAL)
+        ->filterByBirthMonth(null, Criteria::NOT_EQUAL);
+    
+    // Add conditions for each day in range
+    $conditions = [];
+    foreach ($dates as $idx => $dateInfo) {
+        $condName = 'date' . $idx;
+        $people->condition(
+            $condName . '_month',
+            'Person.BirthMonth = ?',
+            $dateInfo['month']
+        );
+        $people->condition(
+            $condName . '_day', 
+            'Person.BirthDay = ?',
+            $dateInfo['day']
+        );
+        $people->combine(
+            [$condName . '_month', $condName . '_day'],
+            'and',
+            $condName
+        );
+        $conditions[] = $condName;
+    }
+    $people->where($conditions, 'or');
+    
+    $results = $people->find();
+    
+    // Build list with age and days until birthday for sorting
+    $formattedList = [];
+    $thisYear = (int) $today->format('Y');
+    
+    foreach ($results as $person) {
+        $formattedPerson = [];
+        $formattedPerson['PersonId'] = $person->getId();
+        $formattedPerson['FirstName'] = $person->getFirstName();
+        $formattedPerson['LastName'] = $person->getLastName();
+        $formattedPerson['FormattedName'] = $person->getFullName();
+        
+        // Calculate days until birthday this year (for sorting)
+        $birthMonth = $person->getBirthMonth();
+        $birthDay = $person->getBirthDay();
+        $birthdayThisYear = new \DateTime("{$thisYear}-{$birthMonth}-{$birthDay}");
+        $diff = (int) $today->diff($birthdayThisYear)->format('%r%a');
+        $formattedPerson['DaysUntil'] = $diff;
+        
+        // Get age (respects hideAge setting)
+        $formattedPerson['Age'] = $person->getAge();
+        
+        // Birthday date for display
+        if ($person->getBirthDate()) {
+            $formattedPerson['Birthday'] = date_format(
+                $person->getBirthDate(),
+                $person->hideAge() ?
+                    SystemConfig::getValue('sDateFormatNoYear') :
+                    SystemConfig::getValue('sDateFormatLong')
+            );
+            $formattedPerson['BirthMonth'] = $birthMonth;
+            $formattedPerson['BirthDay'] = $birthDay;
+        }
+        
+        $formattedList[] = $formattedPerson;
+    }
+    
+    // Sort by days until birthday (ascending: today first, then upcoming, then recent past at end)
+    usort($formattedList, function ($a, $b) {
+        return $a['DaysUntil'] <=> $b['DaysUntil'];
+    });
+    
+    return SlimUtils::renderJSON($response, ['people' => $formattedList]);
 }
 
 function buildFormattedPersonList(Collection $people, bool $created, bool $edited, bool $birthday): array
@@ -148,6 +229,17 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
         $formattedPerson['LastName'] = $person->getLastName();
         $formattedPerson['FormattedName'] = $person->getFullName();
         $formattedPerson['Email'] = $person->getEmail();
+        
+        // Add family information
+        $family = $person->getFamily();
+        if ($family !== null) {
+            $formattedPerson['FamilyId'] = $family->getId();
+            $formattedPerson['FamilyName'] = $family->getName();
+        } else {
+            $formattedPerson['FamilyId'] = null;
+            $formattedPerson['FamilyName'] = null;
+        }
+        
         if ($created && $person->getDateEntered()) {
             $formattedPerson['Created'] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
         }

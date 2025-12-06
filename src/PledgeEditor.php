@@ -25,6 +25,7 @@ $sCheckNoError = '';
 $iCheckNo = '';
 $sDateError = '';
 $sAmountError = '';
+$sNonDeductibleError = [];
 $nNonDeductible = [];
 $sComment = '';
 $tScanString = '';
@@ -50,6 +51,7 @@ while ($aRow = mysqli_fetch_array($rsFunds)) {
     $nAmount[$fun_ID] = 0.0;
     $nNonDeductible[$fun_ID] = 0.0;
     $sAmountError[$fun_ID] = '';
+    $sNonDeductibleError[$fun_ID] = '';
     $sComment[$fun_ID] = '';
     if (!isset($defaultFundID)) {
         $defaultFundID = $fun_ID;
@@ -253,14 +255,32 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     $nonZeroFundAmountEntered = 0;
     foreach ($fundId2Name as $fun_id => $fun_name) {
         //$fun_active = $fundActive[$fun_id];
-        $nAmount[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_Amount']);
+        $rawAmount = InputUtils::legacyFilterInput($_POST[$fun_id . '_Amount']);
+        $nAmount[$fun_id] = (float)$rawAmount;
+        
+        // Validate amount is within DECIMAL(8,2) range: -999999.99 to 999999.99
+        if (abs($nAmount[$fun_id]) > 999999.99) {
+            $sAmountError[$fun_id] = gettext("Amount exceeds maximum allowed value (999999.99).");
+            $bErrorFlag = true;
+            $nAmount[$fun_id] = 0.0; // Reset to 0 to prevent database error
+        }
+        
         $sComment[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_Comment']);
         if ($nAmount[$fun_id] > 0) {
             ++$nonZeroFundAmountEntered;
         }
 
         if ($bEnableNonDeductible) {
-            $nNonDeductible[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_NonDeductible']);
+            $rawNonDeductible = InputUtils::legacyFilterInput($_POST[$fun_id . '_NonDeductible']);
+            $nNonDeductible[$fun_id] = (float)$rawNonDeductible;
+            
+            // Validate non-deductible is within DECIMAL(8,2) range
+            if (abs($nNonDeductible[$fun_id]) > 999999.99) {
+                $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount exceeds maximum allowed value (999999.99).");
+                $bErrorFlag = true;
+                $nNonDeductible[$fun_id] = 0.0;
+            }
+            
             //Validate the NonDeductible Amount
             if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
                 $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
@@ -443,10 +463,16 @@ if ($iCurrentDeposit) {
 }
 
 if ($PledgeOrPayment === 'Pledge') {
-    $sPageTitle = gettext('Pledge Editor');
+    $sPageTitle = '<i class="fa-solid fa-file-signature text-warning mr-2"></i>' . gettext('New Pledge');
+    $cardHeaderClass = 'bg-warning';
+    $cardHeaderTextClass = 'text-dark';
+    $formTypeLabel = gettext('Pledge');
 } elseif ($iCurrentDeposit) {
     $dep_DateFormatted = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
-    $sPageTitle = gettext('Payment Editor: ') . $dep_Type . gettext(' Deposit Slip #') . $iCurrentDeposit . " ($dep_DateFormatted)";
+    $sPageTitle = '<i class="fa-solid fa-hand-holding-dollar text-primary mr-2"></i>' . gettext('New Payment') . ' - ' . $dep_Type . gettext(' Deposit #') . $iCurrentDeposit . " ($dep_DateFormatted)";
+    $cardHeaderClass = 'bg-primary';
+    $cardHeaderTextClass = 'text-white';
+    $formTypeLabel = gettext('Payment');
 
     $checksFit = SystemConfig::getValue('iChecksPerDepositForm');
 
@@ -470,12 +496,15 @@ if ($PledgeOrPayment === 'Pledge') {
     if ($roomForDeposits <= 0) {
         $sPageTitle .= '</span>';
     }
-} else { // not a plege and a current deposit hasn't been created yet
+} else { // not a pledge and a current deposit hasn't been created yet
     if ($sGroupKey) {
-        $sPageTitle = gettext('Payment Editor - Modify Existing Payment');
+        $sPageTitle = '<i class="fa-solid fa-pen-to-square text-info mr-2"></i>' . gettext('Edit Payment');
     } else {
-        $sPageTitle = gettext('Payment Editor - New Deposit Slip Will Be Created');
+        $sPageTitle = '<i class="fa-solid fa-hand-holding-dollar text-primary mr-2"></i>' . gettext('New Payment') . ' - ' . gettext('New Deposit Will Be Created');
     }
+    $cardHeaderClass = 'bg-primary';
+    $cardHeaderTextClass = 'text-white';
+    $formTypeLabel = gettext('Payment');
 } // end if $PledgeOrPayment
 
 if ($dep_Closed && $sGroupKey && $PledgeOrPayment === 'Payment') {
@@ -497,11 +526,28 @@ require_once 'Include/Header.php';
 
 <form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= $sGroupKey ?>&PledgeOrPayment=<?= $PledgeOrPayment ?>&linkBack=<?= $linkBack ?>" name="PledgeEditor">
 
+    <!-- Mode Indicator Banner -->
+    <div class="row mb-3">
+        <div class="col-lg-12">
+            <div class="alert <?= $PledgeOrPayment === 'Pledge' ? 'alert-warning' : 'alert-primary' ?> d-flex align-items-center" role="alert">
+                <i class="fa-solid <?= $PledgeOrPayment === 'Pledge' ? 'fa-file-signature' : 'fa-hand-holding-dollar' ?> fa-2x mr-3"></i>
+                <div>
+                    <strong><?= $PledgeOrPayment === 'Pledge' ? gettext('Recording a Pledge') : gettext('Recording a Payment') ?></strong>
+                    <p class="mb-0 small">
+                        <?= $PledgeOrPayment === 'Pledge' 
+                            ? gettext('A pledge is a commitment to give. It is not tied to a deposit slip.') 
+                            : gettext('A payment is an actual donation received. It will be added to the current deposit.') ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header with-border">
-                    <h3 class="card-title"><?= gettext("Payment Details") ?></h3>
+                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?> with-border">
+                    <h3 class="card-title"><?= $formTypeLabel ?> <?= gettext('Details') ?></h3>
                 </div>
                 <div class="card-body">
                     <input type="hidden" name="FamilyID" id="FamilyID" value="<?= $iFamily ?>">
@@ -666,8 +712,8 @@ require_once 'Include/Header.php';
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header with-border">
-                    <h3 class="card-title"><?= gettext("Fund Split") ?></h3>
+                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?> with-border">
+                    <h3 class="card-title"><?= $formTypeLabel ?> <?= gettext('Fund Allocation') ?></h3>
                 </div>
                 <div class="card-body">
                     <table class="table">

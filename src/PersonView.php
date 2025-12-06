@@ -9,11 +9,13 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
+$personService = new PersonService();
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
@@ -43,14 +45,14 @@ if (isset($_POST['VolunteerOpportunityAssign']) && AuthenticationManager::getCur
     $volIDs = $_POST['VolunteerOpportunityIDs'];
     if ($volIDs) {
         foreach ($volIDs as $volID) {
-            AddVolunteerOpportunity($iPersonID, $volID);
+            $personService->addVolunteerOpportunity((int)$iPersonID, (int)$volID);
         }
     }
 }
 
 // Service remove-volunteer-opportunity (these links set RemoveVO)
 if ($iRemoveVO > 0 && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-    RemoveVolunteerOpportunity($iPersonID, $iRemoveVO);
+    $personService->removeVolunteerOpportunity((int)$iPersonID, (int)$iRemoveVO);
 }
 
 // Get this person's data
@@ -248,11 +250,6 @@ $bOkToEdit = (
                             } ?>
                         </a>
                     </li>
-
-                    <?php if ($bOkToEdit) { ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block" id="EditPerson"><b><?php echo gettext('Edit'); ?></b></a>
-                    <?php } ?>
-
                 </ul>
             </div>
             <!-- /.box-body -->
@@ -333,19 +330,19 @@ $bOkToEdit = (
 
                     if (strlen($per_Facebook) > 0) {
                     ?>
-                        <li><i class="fa-li fa-brands fa-facebook-official"></i>Facebook: <span><a href="https://www.facebook.com/<?= InputUtils::filterString($per_Facebook) ?> " target="_blank"><?= $per_Facebook ?></a></span></li>
+                        <li><i class="fa-li fa-brands fa-facebook-official"></i>Facebook: <span><a href="https://www.facebook.com/<?= InputUtils::sanitizeText($per_Facebook) ?>" target="_blank"><?= $per_Facebook ?></a></span></li>
                     <?php
                     }
 
                     if (strlen($per_Twitter) > 0) {
                     ?>
-                        <li><i class="fa-li fa-brands fa-x-twitter"></i>X: <span><a href="https://www.twitter.com/<?= InputUtils::filterString($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
+                        <li><i class="fa-li fa-brands fa-x-twitter"></i>X: <span><a href="https://www.twitter.com/<?= InputUtils::sanitizeText($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
                     <?php
                     }
 
                     if (strlen($per_LinkedIn) > 0) {
                     ?>
-                        <li><i class="fa-li fa-brands fa-linkedin"></i>LinkedIn: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a></span></li>
+                        <li><i class="fa-li fa-brands fa-linkedin"></i>LinkedIn: <span><a href="https://www.linkedin.com/in/<?= InputUtils::sanitizeText($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a></span></li>
                     <?php
                     }
 
@@ -388,7 +385,6 @@ $bOkToEdit = (
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
             ?>
                 <a class="btn btn-app bg-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle fa-3x"></i><br><?= gettext("Edit \"Why Came\" Notes") ?></a>
-                <a class="btn btn-app bg-primary" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sticky-note fa-3x"></i><br><?= gettext("Add a Note") ?></a>
             <?php
             }
             if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
@@ -629,11 +625,6 @@ $bOkToEdit = (
                                         </table>
                                     <?php
                                     } ?>
-                                    <div class="text-center mt-3">
-                                        <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="btn btn-success">
-                                            <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
-                                        </a>
-                                    </div>
                                 </div>
                                 <!-- /.main-box-body -->
                             </div>
@@ -1039,5 +1030,26 @@ $bOkToEdit = (
 
             });
         </script>
-        <?php
-        require_once 'Include/Footer.php';
+
+<!-- Person View Floating Action Buttons -->
+<div class="fab-container fab-person-view" id="fab-person-view">
+    <?php if ($bOkToEdit) { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-edit" title="<?= gettext('Edit Person') ?>">
+        <span class="fab-label"><?= gettext('Edit Person') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+    </a>
+    <?php } ?>
+    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-note" title="<?= gettext('Add a Note') ?>">
+        <span class="fab-label"><?= gettext('Add a Note') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-sticky-note"></i>
+        </div>
+    </a>
+    <?php } ?>
+</div>
+
+<?php
+require_once 'Include/Footer.php';

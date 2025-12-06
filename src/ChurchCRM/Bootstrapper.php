@@ -111,11 +111,24 @@ class Bootstrapper
         self::configureUserEnvironment();
         self::configureLocale();
         if (!self::isDBCurrent()) {
-            if (!strpos($_SERVER['SCRIPT_NAME'], "SystemDBUpdate")) {
-                self::$bootStrapLogger->info("Database is not current, redirecting to SystemDBUpdate");
-                RedirectUtils::redirect('SystemDBUpdate.php');
+            // If we just ran the DB upgrade, avoid immediately redirecting back (prevents redirect loop)
+            if (session_status() !== PHP_SESSION_ACTIVE) {
+                @session_start();
+            }
+            if (!empty($_SESSION['dbUpgradeJustRan'])) {
+                unset($_SESSION['dbUpgradeJustRan']);
+                self::$bootStrapLogger->info('Database upgrade just ran; skipping immediate redirect to upgrade page.');
             } else {
-                self::$bootStrapLogger->debug("Database is not current, not redirecting to SystemDBUpdate since we're already on it");
+                // Minimal, robust check to avoid redirect loops when already on the external upgrade page
+                $requestUri = $_SERVER['REQUEST_URI'] ?? $_SERVER['SCRIPT_NAME'] ?? '';
+                $isOnUpgradePage = (strpos($requestUri, '/external/system') !== false);
+
+                if (!$isOnUpgradePage) {
+                    self::$bootStrapLogger->info("Database is not current, redirecting to external/system/db-upgrade");
+                    RedirectUtils::redirect('external/system/db-upgrade');
+                } else {
+                    self::$bootStrapLogger->debug("Database is not current, not redirecting to SystemDBUpdate since we're already on it");
+                }
             }
         }
         LoggerUtils::resetAppLoggerLevel();
@@ -456,7 +469,8 @@ class Bootstrapper
             ],
         ];
     }
-    private static function configureUserEnvironment(): void  // TODO: This function needs to stop creating global variable-variables.
+
+    private static function configureUserEnvironment(): void
     {
         global $cnInfoCentral;
         if (AuthenticationManager::validateUserSessionIsActive(false)) { // set on POST to /session/begin

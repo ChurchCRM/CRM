@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Rugsteun databasis"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Hierdie hulpmiddel sal u help om 'n back-up te maak van die ChurchCRM-databasis."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "U moet minstens een keer per week 'n handmatige rugsteun maak, tensy u reeds 'n gereelde rugsteunprosedure vir u stelsels het."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Nadat u die rugsteunlêer afgelaai het, moet u twee eksemplare maak. Sit een daarvan in 'n brandwerende kluis op die perseel en die ander op 'n veilige plek buite die perseel."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "As u bekommerd is oor die vertroulikheid van data wat in die ChurchCRM-databasis gestoor word, moet u die rugsteun-data enkripteer as dit êrens gestoor word wat moontlik vir ander toeganklik is."
-
-#: 
-msgid "Select archive type"
-msgstr "Kies tipe argief"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Rugsteunlêer met 'n wagwoord enkripteer?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Hertik wagwoord"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Genereer en stuur rugsteun na eksterne berging"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Inskrywing vir groepwenners"
 
@@ -371,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "Voeg mandjie by die geleentheid"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Kies die gebeurtenis waaraan u u mandjie wil voeg"
-
-#: 
 msgid "OR"
 msgstr "OF"
 
@@ -480,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "Leë wa aan familie"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Leë wa aan geleentheid"
-
-#: 
 msgid "Map Cart"
 msgstr "Karteer mandtjie"
 
@@ -540,20 +499,8 @@ msgid "Event Checkin"
 msgstr "Geleentheid inklok"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Kies die geleentheid waarby jy mense by wil laat inklok"
-
-#: 
 msgid "Select Event"
 msgstr "Kies geleentheid"
-
-#: 
-msgid "Add Visitor"
-msgstr "Voeg besoeker by"
-
-#: 
-msgid "CheckIn"
-msgstr "Teken in"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +525,6 @@ msgstr "Uitklok teen"
 #: 
 msgid "Action"
 msgstr "Aksie"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Geen bewoners by geleentheid bygevoeg nie"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -613,29 +556,14 @@ msgid "Deposit Slip Number: "
 msgstr "Inbetaling strokie nommer: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Inbetaling besonderhede: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Maak inbetalings strokie toe (onthou om Stoor te druk)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Inbetalingstrokie verslag"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Belangrike kennisgewing: mislukte transaksies sal permanent verwyder word wanneer inbetalings strokie toegemaak word."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Inbetalings opsomming: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Betalings op hierdie inbetaling strokie:"
 
 #: 
 msgid "Import eGive"
@@ -646,7 +574,8 @@ msgid "Add Payment"
 msgstr "Voeg betaling by"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Laai goedgekeurde transaksies"
 
 #: 
@@ -912,44 +841,8 @@ msgid "Edit"
 msgstr "Redigeer"
 
 #: 
-msgid "Event Attendees"
-msgstr "Geleentheid bywoners"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Geleentheid afwesig"
-
-#: 
-msgid "Event Guests"
-msgstr "Geleentheid gaste"
-
-#: 
-msgid "There "
-msgstr "Daar"
-
-#: 
 msgid "Event Title"
 msgstr "Gebeurtenis titel"
-
-#: 
-msgid "Event Date"
-msgstr "Gebeurtenis datum"
-
-#: 
-msgid "Attending Members"
-msgstr "Bywonende lidmate"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Afwesige lidmate"
-
-#: 
-msgid "Guests"
-msgstr "Gaste"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Daar is geen geleenthede in hierdie kategorie"
 
 #: 
 msgid "Create Event"
@@ -960,20 +853,8 @@ msgid "Create a new Event"
 msgstr "Skep 'n nuwe geleentheid"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Wysig geleentheids-ID: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " foute. Sien onder Asseblief"
-
-#: 
-msgid "Items with a "
-msgstr "Items met 'n "
-
-#: 
-msgid " are required"
-msgstr " word benodig"
 
 #: 
 msgid "Select your event type"
@@ -984,20 +865,8 @@ msgid "You must pick an event type."
 msgstr "U moet 'n tipe gebeurtenis kies."
 
 #: 
-msgid "Event Desc"
-msgstr "Gebeurtenisbeskrywing"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Geen bywoningsgetalle aangeteken nie"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Bywoningsnotas: "
-
-#: 
-msgid "Event Sermon"
-msgstr "Preek van die gebeurtenis"
 
 #: 
 msgid "Event Status"
@@ -1006,10 +875,6 @@ msgstr "Gebeurtenisstatus"
 #: 
 msgid "Return to Events"
 msgstr "Keer terug na gebeure"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "TYP NAAM VAN GEBEURTENIS"
 
 #: 
 msgid "Sundays"
@@ -1038,30 +903,6 @@ msgstr "Vrydag"
 #: 
 msgid "Saturdays"
 msgstr "Saterdag"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "STAALTYD STAAL"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "BYWONINGSTELLINGS"
-
-#: 
-msgid "Optional"
-msgstr "Opsioneel"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Voer 'n lys in van die aantal bywonings wat u by hierdie geleentheid wil insluit."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Skei elke telnaam met 'n komma. bv. Lede, besoekers, kampus, kinders"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Elke tipe gebeurtenis bevat 'n totale telling, u hoef dit nie in te sluit nie."
 
 #: 
 msgid "Add Event Type"
@@ -1633,7 +1474,8 @@ msgid "Date End"
 msgstr "Einde van die datum"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Vee filters uit"
 
 #: 
@@ -2022,28 +1864,12 @@ msgid "Confirm data labels"
 msgstr "Bevestig data-etikette"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Lys van gebeure van tipe = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Lys alle kerkgebeurtenisse"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Kies geleentheidstipes om te vertoon"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Vertoon gebeure in die jaar"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Begin datum / tyd"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Geen bywoning aangeteken nie"
 
 #: 
 msgid "Attendees"
@@ -3839,10 +3665,6 @@ msgid "Details:"
 msgstr "Besonderhede:"
 
 #: 
-msgid "File Missing"
-msgstr "Lêer ontbreek"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Dit sal die familie-koevertnommers in die databasis oorskryf met die wat op hierdie bladsy gekies is. Aanhou?"
 
@@ -4094,20 +3916,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "Validasie van handtekeningdefinisie-lêerhandtekening het misluk"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Handtekening definisie Lêer ontbreek"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Een of meer lêers kon nie handtekening bekragtig word nie"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "Stel HTTPS op"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Lêers wat die integriteitskontrole misluk"
 
 #: 
 msgid "Family:"
@@ -4196,14 +4010,6 @@ msgstr "Datum ingevoer:"
 #: 
 msgid "CSV Import"
 msgstr "CSV-invoer"
-
-#: 
-msgid "Comment:"
-msgstr "Opmerking:"
-
-#: 
-msgid "Closed:"
-msgstr "Gesluit:"
 
 #: 
 msgid "Start Date: "
@@ -6833,7 +6639,8 @@ msgid "Profile Image uploaded"
 msgstr "Profielprent opgelaai"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "betalings (s)?"
 
 #: 
@@ -7438,10 +7245,6 @@ msgid "Your Church's X Page"
 msgstr "U Kerk se X-bladsy"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "soek gebruikersfoto's op Google as daar geen plaaslike beeld is nie"
-
-#: 
 msgid "Self Register"
 msgstr "Selfregister"
 
@@ -8004,10 +7807,6 @@ msgid "UserName not set"
 msgstr "Gebruikersnaam nie gestel nie"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Die mense en gesinne is uit die databasis verwyder."
-
-#: 
 msgid "Self Registrations"
 msgstr "Selfregistrasies"
 
@@ -8278,20 +8077,8 @@ msgid "is disabled"
 msgstr "is uitgeskakel"
 
 #: 
-msgid "System Information"
-msgstr "Stelselinligting"
-
-#: 
 msgid "Software Version"
 msgstr "Sagteware weergawe"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Geldige posbedienerinstellings"
-
-#: 
-msgid "Database"
-msgstr "Databasis"
 
 #: 
 msgid "Database Version"
@@ -8360,10 +8147,6 @@ msgid "Emptied into Event"
 msgstr "Leeggestel in gebeurtenis"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "integriteitCheck.json-lêer ontbreek"
-
-#: 
 msgid "Passed"
 msgstr "Geslaag"
 
@@ -8419,10 +8202,6 @@ msgstr "Ondersteuning vir eGive-, kredietkaart- en bankwisselbetalings is verswa
 #: 
 msgid "Estonian"
 msgstr "Esties"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Kon nie die resultaatlêer vir integriteitskontrole dekodeer nie"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8548,10 +8327,6 @@ msgid "Verification URL"
 msgstr "Verifikasie-URL"
 
 #: 
-msgid "Reset System"
-msgstr "Stel die stelsel terug"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Onverwagte persoon ID"
 
@@ -8623,18 +8398,6 @@ msgstr "Gaan hierdie take na en versag dit voordat u met die opgradering voortga
 #: 
 msgid "Database Reset Functions"
 msgstr "Databasisherstelfunksies"
-
-#: 
-msgid "Reset Members"
-msgstr "Stel lede weer in"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Dit sal al die liddata, mense en gesinne verwyder en kan nie ongedaan gemaak word nie."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Stel gesinne / mense terug"
 
 #: 
 msgid "Reset Database"
@@ -8829,20 +8592,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Die publiek is nie in die KerkCRM nie"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM Installasie-inligting"
-
-#: 
-msgid "Database Server Version"
-msgstr "Databasis bediener weergawe"
-
-#: 
 msgid "Web Server"
 msgstr "Web bediener"
-
-#: 
-msgid "Email Information"
-msgstr "Epos informasie"
 
 #: 
 msgid "List maintenance"

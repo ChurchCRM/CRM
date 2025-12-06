@@ -12,7 +12,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
 
 $sPageTitle = gettext('Group Editor');
 $groupService = new GroupService();
@@ -59,13 +59,13 @@ require_once 'Include/Header.php';
         <div class="row">
           <div class="col-sm-4">
             <label for="Name"><?= gettext('Name') ?>:</label>
-            <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup->getName()), ENT_NOQUOTES, 'UTF-8') ?>">
+            <input class="form-control" type="text" Name="Name" value="<?= InputUtils::escapeAttribute($thisGroup->getName()) ?>">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-4">
             <label for="Description"><?= gettext('Description') ?>:</label>
-            <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup->getDescription()), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
+            <textarea  class="form-control" name="Description" cols="40" rows="5"><?= InputUtils::escapeAttribute($thisGroup->getDescription()) ?></textarea></td>
           </div>
         </div>
         <div class="row">

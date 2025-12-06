@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\Functions;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 const GENDER_STATS_UNASSIGNED = 0;
@@ -108,7 +109,7 @@ class DashboardService
                 p2g2r_rle_ID = 2 and grp_Type = 4) as SundaySchoolKidsCount
         from dual ;
         ';
-        $rsQuickStat = RunQuery($sSQL);
+        $rsQuickStat = Functions::runQuery($sSQL);
         $row = mysqli_fetch_array($rsQuickStat);
 
         return ['groups' => $row['Group_cnt'], 'sundaySchoolClasses' => $row['SundaySchoolClasses'], 'sundaySchoolkids' => $row['SundaySchoolKidsCount']];

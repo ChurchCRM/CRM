@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "Archiwizuj Bazę Danych"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "To narzędzie pomoże wykonać ręczną kopię bazy danych ChurchCRM."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Kopia zapasowa powinna być robiona przynajmniej raz w tygodniu, chyba że system robi to za Ciebie."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Po zapisaniu kopii zapasowej, powinny zostać zrobione dwa duplikaty. Jeden zachowany lokalnie oraz jeden przechowywany w bezpiecznej lokalizacji."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "W trosce o poufność danych zawartych w ChurchCRM, kopia bezpieczeństwa powinna być zabezpieczona hasłem (zwłaszcza jeżeli ma być przechowywana w miejscu dostępnym dla osób postronnych)."
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Wybierz rodzaj archiwum"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Zabezpieczyć kopię zapasową hasłem?"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "Ponów hasło"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Wygeneruj i prześlij kopię bezpieczeństwa na zewnętrzny nośnik."
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Wygrany wielu przedmiotów"
 
@@ -389,11 +353,6 @@ msgid "Add Cart to Event"
 msgstr "Dodaj Koszyk do Wydarzenia"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Koszyk"
-
-#: 
 msgid "OR"
 msgstr "LUB"
 
@@ -502,10 +461,6 @@ msgid "Empty Cart to Family"
 msgstr "Opróżnij Koszyk do Rodziny"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Opróżnij Koszyk do Wydarzenia"
-
-#: 
 msgid "Map Cart"
 msgstr "Pokaż Koszyk na mapie"
 
@@ -558,21 +513,8 @@ msgid "Event Checkin"
 msgstr "Zapis do wydarzenia"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Osoby"
-
-#: 
 msgid "Select Event"
 msgstr "Wybierz Wydarzenie"
-
-#: 
-msgid "Add Visitor"
-msgstr "Dodaj Gościa"
-
-#: 
-msgid "CheckIn"
-msgstr "Wpisz"
 
 #: 
 msgid "CheckOut"
@@ -597,10 +539,6 @@ msgstr "Wypisany przez"
 #: 
 msgid "Action"
 msgstr "Akcja"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Nie przypisano żadnych uczestników dla tego Wydarzenia"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -632,21 +570,9 @@ msgid "Deposit Slip Number: "
 msgstr "Deposit Slip Number: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Zamknij Odcinek Wpłaty (pamiętaj aby nacisnąć &quot;Zapisz&quot;)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Raport Odcinków Wpłaty"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Ważna uwaga: nie udane transakcje będą całkowicie usuniętę gdy Odcinek Wpłaty zostanie zamknięty."
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Płatności na tym Odcinku Wpłaty:"
 
 #: 
 msgid "Import eGive"
@@ -657,7 +583,8 @@ msgid "Add Payment"
 msgstr "Dodaj Płatność"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Załaduj Zaakceptowaną Transakcję"
 
 #: 
@@ -925,44 +852,8 @@ msgid "Edit"
 msgstr "Edytuj"
 
 #: 
-msgid "Event Attendees"
-msgstr "Uczestnicy"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Nieobecni-Nie biorący udziału"
-
-#: 
-msgid "Event Guests"
-msgstr "Goście"
-
-#: 
-msgid "There "
-msgstr "Tam"
-
-#: 
 msgid "Event Title"
 msgstr "Tytuł Wydarzenia"
-
-#: 
-msgid "Event Date"
-msgstr "Data Wydarzenia"
-
-#: 
-msgid "Attending Members"
-msgstr "Członkowie biorący udział"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Członkowie nie biorący udziału"
-
-#: 
-msgid "Guests"
-msgstr "Goście"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Nie ma Wydarzeń w tej Kategorii"
 
 #: 
 msgid "Create Event"
@@ -973,20 +864,8 @@ msgid "Create a new Event"
 msgstr "Utwórz nowe wydarzenie"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Edytuj ID Wydarzenia:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "Błędy. Popatrz poniżej"
-
-#: 
-msgid "Items with a "
-msgstr "Pola z "
-
-#: 
-msgid " are required"
-msgstr "są wymagane"
 
 #: 
 msgid "Select your event type"
@@ -997,21 +876,8 @@ msgid "You must pick an event type."
 msgstr "Musisz wybrać typ wydarzenia"
 
 #: 
-msgid "Event Desc"
-msgstr "Opis Wydarzenia"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Nie odnotowano Uczestników"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Notatki od Uczestników:"
-
-#: 
-#, fuzzy
-msgid "Event Sermon"
-msgstr "Kazanie Okolicznościowe"
 
 #: 
 #, fuzzy
@@ -1021,10 +887,6 @@ msgstr "Status Wydarzenia"
 #: 
 msgid "Return to Events"
 msgstr "Wróć do Wydarzeń"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "RODZAJ WYDARZENIA"
 
 #: 
 msgid "Sundays"
@@ -1053,14 +915,6 @@ msgstr "Piątki"
 #: 
 msgid "Saturdays"
 msgstr "Soboty"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "LICZBA UCZESTNIKÓW"
-
-#: 
-msgid "Optional"
-msgstr "Opcjonalne"
 
 #: 
 msgid "Add Event Type"
@@ -1577,7 +1431,8 @@ msgid "Date End"
 msgstr "Data Końcowa"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Usuń Sortowanie"
 
 #: 
@@ -1983,28 +1838,12 @@ msgid "Confirm data labels"
 msgstr "Potwierdź data labels"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Lista Wydarzeń w Kategorii = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Lista Wszystkich Wydarzeń Kościelnych"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Zaznacz Typy Wydarzeń do Pokazania"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Pokaż Wydarzenia w Roku"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Data/Czas Rozpoczęcia"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Nie odnotowane obecnych"
 
 #: 
 #, fuzzy
@@ -4113,20 +3952,8 @@ msgid "is disabled"
 msgstr "wyłączone"
 
 #: 
-msgid "System Information"
-msgstr "Informacje o Systemie"
-
-#: 
 msgid "Software Version"
 msgstr "Wersja Oprogramowania"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Poprawne Ustawienia Serwera Poczty"
-
-#: 
-msgid "Database"
-msgstr "Baza Danych"
 
 #: 
 msgid "Database Version"
@@ -4195,10 +4022,6 @@ msgid "Emptied into Event"
 msgstr "Przekształcono na Wydarzenia"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "brak pliku integrityCheck.json"
-
-#: 
 msgid "Passed"
 msgstr "Poprawne"
 
@@ -4254,10 +4077,6 @@ msgstr "Wsparcie dla eGive, kart płatniczych i wpłat bankowych zostało zakoń
 #: 
 msgid "Estonian"
 msgstr "Estoński"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Błąd podczas odczytu pliku spójności systemu"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -4383,10 +4202,6 @@ msgid "Verification URL"
 msgstr "Adres URL potwierdzenia"
 
 #: 
-msgid "Reset System"
-msgstr "Zresetuj System"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Niespodziewane Id Osoby"
 
@@ -4446,18 +4261,6 @@ msgstr "Przejżyj i rozwiąż problemy przed kontynuacją aktualizacji:"
 #: 
 msgid "Database Reset Functions"
 msgstr "Funkcje Resetowania Bazy Danych"
-
-#: 
-msgid "Reset Members"
-msgstr "Zresetuj Członków"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Spowoduje usunięcie danych członków, osób i rodzin; Zmiany są nieodwracalne."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Zresetuj Rodziny/Osoby"
 
 #: 
 msgid "Reset Database"
@@ -4652,20 +4455,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Uczestnicy z poza ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informacje Instalacji ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Wersja Servera Bazy Danych"
-
-#: 
 msgid "Web Server"
 msgstr "Serwer WWW"
-
-#: 
-msgid "Email Information"
-msgstr "Informacje o Email"
 
 #: 
 msgid "List maintenance"

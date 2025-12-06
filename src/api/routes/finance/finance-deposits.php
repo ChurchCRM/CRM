@@ -17,7 +17,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $depositService = $this->get('DepositService');
         $input = $request->getParsedBody();
         $depositType = $input['depositType'] ?? '';
-        $depositComment = InputUtils::filterString($input['depositComment']) ?? '';
+        $depositComment = InputUtils::sanitizeText($input['depositComment']) ?? '';
         $depositDate = $input['depositDate'] ?? date('Y-m-d');
 
         // Validate depositType against allowed values
@@ -63,7 +63,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody();
         $appDeposit = DepositQuery::create()->findOneById($id);
         $appDeposit->setType($input['depositType']);
-        $appDeposit->setComment(htmlspecialchars($input['depositComment'] ?? '', ENT_QUOTES, 'UTF-8'));
+        $appDeposit->setComment(InputUtils::escapeHTML($input['depositComment'] ?? ''));
         $appDeposit->setDate($input['depositDate']);
         $appDeposit->setClosed($input['depositClosed']);
         $appDeposit->save();
@@ -73,6 +73,9 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->get('/{id:[0-9]+}/ofx', function (Request $request, Response $response, array $args): Response {
     $id = (int) $args['id'];
     $deposit = DepositQuery::create()->findOneById($id);
+    if ($deposit === null) {
+        return SlimUtils::renderJson($response->withStatus(404), ['message' => 'Deposit not found']);
+    }
     $OFX = $deposit->getOFX();
     header($OFX->header);
     return SlimUtils::renderJSON($response, ['content' => $OFX->content]);
@@ -80,7 +83,22 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
 
     $group->get('/{id:[0-9]+}/pdf', function (Request $request, Response $response, array $args): Response {
         $id = (int) $args['id'];
+
+        // If there are no payments for this deposit, return a controlled response
+        $paymentsCount = PledgeQuery::create()->filterByDepId($id)->count();
+        if ($paymentsCount === 0) {
+            // Some clients and probes use HEAD; respond with appropriate status without throwing
+            if (strtoupper($request->getMethod()) === 'HEAD') {
+                return $response->withStatus(404);
+            }
+
+            return SlimUtils::renderJson($response->withStatus(404), ['message' => 'No Payments on this Deposit']);
+        }
+
         $deposit = DepositQuery::create()->findOneById($id);
+        if ($deposit === null) {
+            return SlimUtils::renderJson($response->withStatus(404), ['message' => 'Deposit not found']);
+        }
         $deposit->getPDF();
         return SlimUtils::renderSuccessJSON($response);
     });
@@ -93,7 +111,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             ->joinDonationFund()->useDonationFundQuery()
             ->withColumn('DonationFund.Name', 'DonationFundName')
             ->endUse()
-            ->joinFamily()->useFamilyQuery()
+            ->leftJoinFamily()->useFamilyQuery()
             ->withColumn('Family.Name', 'FamilyName')
             ->endUse()
             ->find()
@@ -118,16 +136,17 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
 
     $group->get('/{id:[0-9]+}/pledges', function (Request $request, Response $response, array $args): Response {
         $id = (int) $args['id'];
-        $pledges = PledgeQuery::create()
-            ->filterByDepId($id)
-            ->groupByGroupKey()
-            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
-            ->joinDonationFund()
-            ->withColumn('DonationFund.Name')
-            ->joinWithFamily()
-            ->find()
-            ->toArray();
+        /** @var ChurchCRM\Service\DepositService $depositService */
+        $depositService = $this->get('DepositService');
+        $result = $depositService->getDepositItemsByType($id, 'Pledge');
+        return SlimUtils::renderJSON($response, $result);
+    });
 
-        return SlimUtils::renderJSON($response, $pledges);
+    $group->get('/{id:[0-9]+}/payments', function (Request $request, Response $response, array $args): Response {
+        $id = (int) $args['id'];
+        /** @var ChurchCRM\Service\DepositService $depositService */
+        $depositService = $this->get('DepositService');
+        $result = $depositService->getDepositItemsByType($id, 'Payment');
+        return SlimUtils::renderJSON($response, $result);
     });
 })->add(FinanceRoleAuthMiddleware::class);

@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Zálohovat databázi"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Tento nástroj vám pomůže při ručním zálohování databáze ChurchCRM."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Ruční zálohování byste měli provádět alespoň jednou týdně, pokud již nemáte zavedený postup pravidelného zálohování systémů."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Po stažení záložního souboru byste měli vytvořit dvě kopie. Jednu z nich uložte do ohnivzdorného trezoru na pracovišti a druhou na bezpečné místo mimo pracoviště."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Pokud máte obavy o důvěrnost dat uložených v databázi ChurchCRM, měli byste záložní data šifrovat, pokud budou uložena na místě potenciálně přístupném jiným osobám"
-
-#: 
-msgid "Select archive type"
-msgstr "Vyberte typ archivu"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Zabezpečit zálohu heslem?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Heslo znovu"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Vytvoření a odeslání zálohy do externího úložiště"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Hromadné zadání vítězů"
 
@@ -371,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "Přidat košík do události"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Vyberte událost, do které chcete přidat svůj košík."
-
-#: 
 msgid "OR"
 msgstr "NEBO"
 
@@ -480,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "Vyprázdnit košík do rodiny"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Vyprázdnit košík do události"
-
-#: 
 msgid "Map Cart"
 msgstr "Mapa košíku"
 
@@ -540,20 +499,8 @@ msgid "Event Checkin"
 msgstr "Přihlašování na událost"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Vyberte událost, na kterou chcete lidi přihlásit."
-
-#: 
 msgid "Select Event"
 msgstr "Vyberte událost"
-
-#: 
-msgid "Add Visitor"
-msgstr "Přidat návštěvníka"
-
-#: 
-msgid "CheckIn"
-msgstr "Přihlásit"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +525,6 @@ msgstr "Odhlášeno kým"
 #: 
 msgid "Action"
 msgstr "Akce"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "K události nejsou přiřazeni žádní účastníci"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -613,28 +556,14 @@ msgid "Deposit Slip Number: "
 msgstr "Číslo vkladového listu: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Podrobnosti o vkladu: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Zavřít doklad o vkladu (nezapomeňte stisknout tlačítko Uložit)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Zpráva o vkladu"
-
-#: 
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Důležité upozornění: neúspěšné transakce budou po uzavření vkladového listu trvale smazány."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Souhrn vkladů: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Platby na tomto vkladovém listu:"
 
 #: 
 msgid "Import eGive"
@@ -645,7 +574,8 @@ msgid "Add Payment"
 msgstr "Vlož platbu"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Načíst autorizované transakce"
 
 #: 
@@ -911,44 +841,8 @@ msgid "Edit"
 msgstr "Upravit"
 
 #: 
-msgid "Event Attendees"
-msgstr "Účastníci události"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Neúčastníci události"
-
-#: 
-msgid "Event Guests"
-msgstr "Hosté události"
-
-#: 
-msgid "There "
-msgstr "Je "
-
-#: 
 msgid "Event Title"
 msgstr "Název události"
-
-#: 
-msgid "Event Date"
-msgstr "Datum události"
-
-#: 
-msgid "Attending Members"
-msgstr "Účastnící se členové"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Neúčastnící se členové"
-
-#: 
-msgid "Guests"
-msgstr "Hosté"
-
-#: 
-msgid "There are no events in this category"
-msgstr "V této kategorii nejsou žádné události"
 
 #: 
 msgid "Create Event"
@@ -959,20 +853,8 @@ msgid "Create a new Event"
 msgstr "Vytvořit novou událost"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Upravujete událost ID: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " chyb. Viz níže"
-
-#: 
-msgid "Items with a "
-msgstr "Položky s "
-
-#: 
-msgid " are required"
-msgstr " je požadováno"
 
 #: 
 msgid "Select your event type"
@@ -983,20 +865,8 @@ msgid "You must pick an event type."
 msgstr "Musíte vybrat typ události"
 
 #: 
-msgid "Event Desc"
-msgstr "Popis události"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Žádné zaznamenané počty účastníků"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Poznámky k účasti: "
-
-#: 
-msgid "Event Sermon"
-msgstr "Kázání při události"
 
 #: 
 msgid "Event Status"
@@ -1005,10 +875,6 @@ msgstr "Stav události"
 #: 
 msgid "Return to Events"
 msgstr "Zpět k událostem"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "NÁZEV TYPU UDÁLOSTI"
 
 #: 
 msgid "Sundays"
@@ -1037,30 +903,6 @@ msgstr "Pátky"
 #: 
 msgid "Saturdays"
 msgstr "Soboty"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "VÝCHOZÍ ČAS ZAČÁTKU"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "POČTY NÁVŠTĚVNOSTI"
-
-#: 
-msgid "Optional"
-msgstr "Volitelné"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Zadejte seznam počtů návštěvnosti, které chcete zařadit k této události."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Oddělte každý count_name pomocí čárky, např. Členové, Návštěvníci, Děti"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Každý typ události obsahuje Celkový počet, nemusíte jej zadávat."
 
 #: 
 msgid "Add Event Type"
@@ -1631,7 +1473,8 @@ msgid "Date End"
 msgstr "Datum konce"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Vymazat filtry"
 
 #: 
@@ -2020,28 +1863,12 @@ msgid "Confirm data labels"
 msgstr "Popisky potvrzovacích dat"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Vypisuji události typu = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Vypisuji všechny sborové události"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Vyberte typy událostí k zobrazení"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Zobrazit události v roce"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Datum a čas začátku"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Účast nebyla zaznamenána"
 
 #: 
 msgid "Attendees"
@@ -3834,10 +3661,6 @@ msgid "Details:"
 msgstr "Detaily:"
 
 #: 
-msgid "File Missing"
-msgstr "Soubor chybí"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Tím se čísla obálek rodin v databázi přepíší čísly vybranými na této stránce.  Pokračovat?"
 
@@ -4086,20 +3909,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "Podpis souboru s definicí podpisu se nepodařilo ověřit"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Chybí soubor s definicí podpisu"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Jeden nebo více souborů neprošlo ověřením podpisu"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "Konfigurovat HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Soubory, u kterých selhala kontrola integrity"
 
 #: 
 msgid "Family:"
@@ -4188,14 +4003,6 @@ msgstr "Zadané datum:"
 #: 
 msgid "CSV Import"
 msgstr "CSV Import"
-
-#: 
-msgid "Comment:"
-msgstr "Poznámka:"
-
-#: 
-msgid "Closed:"
-msgstr "Zavřeno:"
 
 #: 
 msgid "Start Date: "
@@ -6822,7 +6629,8 @@ msgid "Profile Image uploaded"
 msgstr "Profilový obrázek nahrán"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "platba(-y)?"
 
 #: 
@@ -7424,10 +7232,6 @@ msgid "Your Church's X Page"
 msgstr "Stránka sboru na platformě X"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "vyhledat obrázky uživatelů pomocí Google, pokud není k dispozici žádný místní obrázek"
-
-#: 
 msgid "Self Register"
 msgstr "Vlastní registrace"
 
@@ -7990,10 +7794,6 @@ msgid "UserName not set"
 msgstr "UživatelskéJméno není nastaveno"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Osoby a rodiny byly z databáze vymazány."
-
-#: 
 msgid "Self Registrations"
 msgstr "Vlastní registrace"
 
@@ -8262,20 +8062,8 @@ msgid "is disabled"
 msgstr "je zakázáno"
 
 #: 
-msgid "System Information"
-msgstr "Systémové informace"
-
-#: 
 msgid "Software Version"
 msgstr "Verze softwaru"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Validní nastavení e-mailového serveru"
-
-#: 
-msgid "Database"
-msgstr "Databáze"
 
 #: 
 msgid "Database Version"
@@ -8343,10 +8131,6 @@ msgid "Emptied into Event"
 msgstr "Vyprázdněn do Události"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "soubor integrityCheck.json chybí"
-
-#: 
 msgid "Passed"
 msgstr "Splňuje"
 
@@ -8402,10 +8186,6 @@ msgstr "Podpora plateb eGive, kreditní kartou a bankovním převodem byla zruš
 #: 
 msgid "Estonian"
 msgstr "Estonština"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Chyba při dekódování souboru s výsledky kontroly integrity"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8531,10 +8311,6 @@ msgid "Verification URL"
 msgstr "Adresa URL pro ověření"
 
 #: 
-msgid "Reset System"
-msgstr "Obnovení systému"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Neočekávané ID osoby"
 
@@ -8607,18 +8383,6 @@ msgstr "Než budete pokračovat v aktualizaci, zkontrolujte a vyřešte tyto úk
 #: 
 msgid "Database Reset Functions"
 msgstr "Funkce obnovení databáze"
-
-#: 
-msgid "Reset Members"
-msgstr "Obnovit členy"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Tímto se odstraní všechna data členů, osob a rodin a nelze to vrátit zpět."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Vymazat Rodiny/Osoby"
 
 #: 
 msgid "Reset Database"
@@ -8811,20 +8575,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Publikum, které není v systému ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informace o instalaci ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Verze databázového serveru"
-
-#: 
 msgid "Web Server"
 msgstr "Webový server"
-
-#: 
-msgid "Email Information"
-msgstr "Informace o e-mailu"
 
 #: 
 msgid "List maintenance"

@@ -30,10 +30,6 @@ msgid "Mobile Phone"
 msgstr "Cellphone"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Select the event which you would like to add to your cart"
-
-#: 
 msgid "(Use the textbox for countries other than US and Canada)"
 msgstr "(Use the textbox for countries other than South Africa)"
 
@@ -42,7 +38,8 @@ msgid "Select the group to which you would like to add your cart"
 msgstr "Select the group which you would like to add to your cart"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Load Authorised Transactions"
 
 #: 
@@ -56,10 +53,6 @@ msgstr "Personal Cellphone"
 #: 
 msgid "Personal Work/Other Email"
 msgstr "Personal Work / Other Email"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Event Non-attendees"
 
 #: 
 msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"

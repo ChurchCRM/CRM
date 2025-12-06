@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Base de donnée de secours"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Cet assistant va vous aider à sauvegarder manuellement votre base de données ChurchCRM"
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Vous devriez effectuer une sauvegarde manuelle au moins une fois par semaine à moins qu'une sauvegarde régulière ne soit déjà en place sur votre système."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Après avoir téléchargé le fichier de sauvegarde, vous devriez en faire deux copies. Stocker l'une d'elles dans un endroit protégé du feu, sur un site différent."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Si vous êtes préoccupé par la confidentialité des données stockées dans la base ChurchCRM, vous devriez chiffrer les données de sauvegarde si ces dernières seront stockées dans un endroit potentiellement accessible par des tiers"
-
-#: 
-msgid "Select archive type"
-msgstr "Sélectionner le type d'archive"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Chiffrer le fichier de sauvegarde avec un mot de passe ?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Retaper le mot de passe"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Générer et envoyer la sauvegarde vers un stockage externe"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Entrée du lot gagnant"
 
@@ -371,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "Ajouter Panier à Événement"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Sélectionner l&#39;événement auquel vous voulez ajouter le panier"
-
-#: 
 msgid "OR"
 msgstr "OU"
 
@@ -480,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "Vider le panier dans la famille"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Vider le panier dans l'événement"
-
-#: 
 msgid "Map Cart"
 msgstr "Visualiser le panier dans la carte"
 
@@ -540,20 +499,8 @@ msgid "Event Checkin"
 msgstr "Enregistrement Événements"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Sélectionner l&#39;événement pour lequel vous voulez inscrire des personnes"
-
-#: 
 msgid "Select Event"
 msgstr "Sélectionner Événement"
-
-#: 
-msgid "Add Visitor"
-msgstr "Ajouter un visiteur"
-
-#: 
-msgid "CheckIn"
-msgstr "Inscription"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +525,6 @@ msgstr "Désinscrit par"
 #: 
 msgid "Action"
 msgstr "Action"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Aucun participant attribué à Événement"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -613,29 +556,14 @@ msgid "Deposit Slip Number: "
 msgstr "Numéro de Bordereau d&#39;acompte: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Détails de l&#39;acompte : "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Fermer le bordereau d&#39;acompte (ne pas oublier d&#39;enregistrer)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Rapport du Bordereau d&#39;acompte"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Note importante: quand un bordereau d&#39;acompte est fermé, les transactions non réussies sont définitivement supprimées."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Synthèse des acomptes: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Les paiements sur ce bordereau d&#39;acompte:"
 
 #: 
 msgid "Import eGive"
@@ -646,7 +574,8 @@ msgid "Add Payment"
 msgstr "Ajouter un paiement"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Charger les transactions autorisées"
 
 #: 
@@ -912,44 +841,8 @@ msgid "Edit"
 msgstr "Editer"
 
 #: 
-msgid "Event Attendees"
-msgstr "Les participants à l&#39;événement"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Les non participants à l&#39;événements"
-
-#: 
-msgid "Event Guests"
-msgstr "Invités de l&#39;événement"
-
-#: 
-msgid "There "
-msgstr "Là"
-
-#: 
 msgid "Event Title"
 msgstr "Titre de l&#39;événement"
-
-#: 
-msgid "Event Date"
-msgstr "Date de l&#39;événement"
-
-#: 
-msgid "Attending Members"
-msgstr "Membres participants"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Membres qui ne participent pas"
-
-#: 
-msgid "Guests"
-msgstr "Invités"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Il n&#39;y a aucun événement dans cette catégorie"
 
 #: 
 msgid "Create Event"
@@ -960,20 +853,8 @@ msgid "Create a new Event"
 msgstr "Créer un événement"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Edition de l'identifiant événement:"
-
-#: 
 msgid " errors. Please see below"
 msgstr " erreurs. Voir ci-dessous"
-
-#: 
-msgid "Items with a "
-msgstr "Articles avec un/une "
-
-#: 
-msgid " are required"
-msgstr " sont requis"
 
 #: 
 msgid "Select your event type"
@@ -984,20 +865,8 @@ msgid "You must pick an event type."
 msgstr "Vous devez choisir un type d&#39;événement."
 
 #: 
-msgid "Event Desc"
-msgstr "Description événement"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Aucune présence enregistrée"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Notes de présence: "
-
-#: 
-msgid "Event Sermon"
-msgstr "Prédication de l&#39;événement"
 
 #: 
 msgid "Event Status"
@@ -1006,10 +875,6 @@ msgstr "Statut de l&#39;événement"
 #: 
 msgid "Return to Events"
 msgstr "Retour aux événements"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "NOM DU TYPE D&#39;ÉVÉNEMENT"
 
 #: 
 msgid "Sundays"
@@ -1038,30 +903,6 @@ msgstr "Vendredis"
 #: 
 msgid "Saturdays"
 msgstr "Samedis"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "HEURE DE DÉBUT PAR DÉFAUT"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "COMPTE DE PRÉSENCE"
-
-#: 
-msgid "Optional"
-msgstr "Optionnel"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Entrer une liste de compte de présence que vous voulez inclure à cet événement."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Séparer chaque nom_compte avec des virgules. Par exemple: Membres, Visiteurs, Campus, Enfants"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Chaque type d&#39;événement inclus un nombre total, vous n&#39;êtes pas obligé de l&#39;inclure."
 
 #: 
 msgid "Add Event Type"
@@ -1633,7 +1474,8 @@ msgid "Date End"
 msgstr "Date de fin"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Effacer les filtres"
 
 #: 
@@ -2022,28 +1864,12 @@ msgid "Confirm data labels"
 msgstr "Confirmer les données des étiquettes"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Liste des événements de type =␣ "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Lister tous les événements de l&#39;église"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Sélectionner les types d&#39;événements à afficher"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Afficher les Evénements de l&#39;année"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Date/heure de début"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Auncune participation enregistrée"
 
 #: 
 msgid "Attendees"
@@ -3839,10 +3665,6 @@ msgid "Details:"
 msgstr "Détails :"
 
 #: 
-msgid "File Missing"
-msgstr "Fichier manquant"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Cette action va écraser le nombre d'enveloppe par famille au niveau de la base de données, avec ceux sélectionnés dans cette page. Voulez-vous continuer ?"
 
@@ -4092,20 +3914,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "La signature du fichier de définition de la signature n&#39;a pas été validé"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Le fichier de définition de la signature est introuvable."
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Un ou plusieurs fichiers n&#39;ont pas été signé"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "Configurer HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Les fichiers ont échoué au test d'intégrité"
 
 #: 
 msgid "Family:"
@@ -4194,14 +4008,6 @@ msgstr "Date entrée:"
 #: 
 msgid "CSV Import"
 msgstr "Importer un fichier CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Commentaire:"
-
-#: 
-msgid "Closed:"
-msgstr "Fermé:"
 
 #: 
 msgid "Start Date: "
@@ -6831,7 +6637,8 @@ msgid "Profile Image uploaded"
 msgstr "Image de profil téléchargée"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "paiement(s)?"
 
 #: 
@@ -7436,10 +7243,6 @@ msgid "Your Church's X Page"
 msgstr "La page X de l'église"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "chercher des images de l'utilisateur sur Google en l'absence d'image locale"
-
-#: 
 msgid "Self Register"
 msgstr "Enregistrement automatique"
 
@@ -8002,10 +7805,6 @@ msgid "UserName not set"
 msgstr "Nom d'utilisateur non défini"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Les personnes et familles ont été effacées de la base de données."
-
-#: 
 msgid "Self Registrations"
 msgstr "Auto-inscription"
 
@@ -8276,20 +8075,8 @@ msgid "is disabled"
 msgstr "est en situation de handicap"
 
 #: 
-msgid "System Information"
-msgstr "Informations système"
-
-#: 
 msgid "Software Version"
 msgstr "Version du logiciel"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Paramètres du serveur de mail corrects"
-
-#: 
-msgid "Database"
-msgstr "Base de données"
 
 #: 
 msgid "Database Version"
@@ -8358,10 +8145,6 @@ msgid "Emptied into Event"
 msgstr "Vidé dans d'événement"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "fichier integrityCheck.json manquant"
-
-#: 
 msgid "Passed"
 msgstr "Réussi"
 
@@ -8417,10 +8200,6 @@ msgstr "La prise en charge des paiements par eGive, par carte de crédit et par 
 #: 
 msgid "Estonian"
 msgstr "Estonien"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Erreur lors du décodage du fichier de résultat du contrôle d'intégrité"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8545,10 +8324,6 @@ msgid "Verification URL"
 msgstr "URL de vérification"
 
 #: 
-msgid "Reset System"
-msgstr "Réinitialisation"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Identifiant incorrect"
 
@@ -8620,18 +8395,6 @@ msgstr "Veuillez passer en revue et réduire ces tâches avant de poursuivre la 
 #: 
 msgid "Database Reset Functions"
 msgstr "Fonctions de réinitialisation de la base de données"
-
-#: 
-msgid "Reset Members"
-msgstr "Réinitialiser les membres"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Cette opération est irréversible, elle supprimera toutes les données des membres, personnes et familles."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Réinitialiser les familles/individus"
 
 #: 
 msgid "Reset Database"
@@ -8826,20 +8589,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Public non membre de ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informations d'installation de ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Version de base  de données"
-
-#: 
 msgid "Web Server"
 msgstr "Serveur wen"
-
-#: 
-msgid "Email Information"
-msgstr "Informations par e-mail"
 
 #: 
 msgid "List maintenance"
@@ -10071,4 +9822,356 @@ msgstr "Téléchargement de la dernière version depuis GitHub..."
 #: 
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr "Saisissez votre identifiant et nous vous enverrons par e-mail un lien pour réinitialiser votre mot de passe."
+
+#: 
+msgid "Expected Hash"
+msgstr "Hachage attendu"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Échec de la création de la sauvegarde."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Échec du téléchargement du package de mise à jour."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Impossible d'actualiser les informations de mise à niveau depuis GitHub."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "Impossible d'actualiser les informations de mise à niveau. Veuillez réessayer."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "Impossible d'enregistrer les paramètres. Veuillez réessayer."
+
+#: 
+msgid "File Name"
+msgstr "Nom de fichier"
+
+#: 
+msgid "Files Missing"
+msgstr "Fichiers manquants"
+
+#: 
+msgid "Files Modified"
+msgstr "Fichiers modifiés"
+
+#: 
+msgid "Go to Login"
+msgstr "Allez à la page de Connexion"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "Je comprends - Continuer"
+
+#: 
+msgid "Language updated to"
+msgstr "Langue mise à jour à"
+
+#: 
+msgid "Login Name is required"
+msgstr "Un nom d'utilisateur est obligatoire"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "Une fois que vous aurez reçu l'e-mail, vous pourrez vous connecter avec votre mot de passe temporaire et le modifier pour en choisir un autre."
+
+#: 
+msgid "Password Reset Error"
+msgstr "Erreur de réinitialisation du mot de passe"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "Réinitialisation du mot de passe réussie"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "Veuillez vérifier votre boîte mail (y compris le dossier spam/courrier indésirable) pour retrouver votre mot de passe temporaire."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "Veuillez ne pas fermer cette fenêtre ni actualiser la page."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "Tâches préalables à la mise à niveau terminées"
+
+#: 
+msgid "Pre-Upgrade Tasks Detected"
+msgstr "Tâches préalables à la mise à niveau détectées"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "Avertissements préalables à la mise à niveau"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "Actualiser depuis GitHub"
+
+#: 
+msgid "Release Notes:"
+msgstr "Notes de version :"
+
+#: 
+msgid "Request Password Reset"
+msgstr "Demander la réinitialisation du mot de passe"
+
+#: 
+msgid "Retry Download"
+msgstr "Réessayer de télécharger"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Retour au tableau de bord"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "Hachage SHA1 :"
+
+#: 
+msgid "Send Reset Email"
+msgstr "Envoyer un e-mail de réinitialisation"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "Paramètres enregistrés. Rechargement de la page…"
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Paramètre mis à jour avec succès"
+
+#: 
+msgid "Skip Backup"
+msgstr "Ignorer la sauvegarde"
+
+#: 
+msgid "System Up to Date"
+msgstr "Système à jour"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "Assistant de mise à niveau du système"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "Mise à niveau du système effectuée avec succès !"
+
+#: 
+msgid "This may take several minutes."
+msgstr "Cela peut prendre plusieurs minutes."
+
+#: 
+msgid "Up to date"
+msgstr "À jour"
+
+#: 
+msgid "Update Available!"
+msgstr "Mise à jour disponible !"
+
+#: 
+msgid "Update Package Details"
+msgstr "Mettre à jour les détails du package"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Le package de mise à jour a été téléchargé avec succès."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "Mise à jour terminée !"
+
+#: 
+msgid "Upgrade failed."
+msgstr "La mise à jour a échoué."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "La mise à jour a échoué. Veuillez consulter les journaux."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "Informations de mise à jour actualisées avec succès"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Informations de mise à jour actualisées. Rechargement de la page…"
+
+#: 
+msgid "Version Information"
+msgstr "Informations sur la version"
+
+#: 
+msgid "Warnings"
+msgstr "Avertissements"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "Nous n'avons pas pu traiter votre demande de réinitialisation de mot de passe. Veuillez réessayer en demandant un nouveau lien de réinitialisation."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "Vous avez choisi de ne pas effectuer de sauvegarde. Il est fortement recommandé d'en effectuer une avant de procéder à la mise à jour."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "Votre installation ChurchCRM a été mise à jour avec succès."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "Votre installation de ChurchCRM utilise la dernière version."
+
+#: 
+msgid "2-50 characters"
+msgstr "2 à 50 caractères"
+
+#: 
+msgid "Dear Friend"
+msgstr "Cher ami"
+
+#: 
+msgid "No Data Found"
+msgstr "Aucune donnée trouvée"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "Aucun enregistrement n'a été trouvé dans le rapport précédent. Veuillez modifier vos filtres ou votre plage de dates et réessayer."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "Veuillez saisir un nom de menu (2 à 50 caractères)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "Veuillez saisir une URL valide commençant par http:// ou https://"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "Toutes les signatures des fichiers système correspondent aux valeurs attendues"
+
+#: 
+msgid "Files with issues"
+msgstr "Fichiers avec des problèmes"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Le contrôle d'intégrité a échoué"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Contrôle d'intégrité réussi"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "Le fichier de définition de signature existe, mais il est illisible. Vérifiez les permissions du fichier."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "Le fichier de définition de signature est manquant à l'emplacement %s. Exécutez la tâche de packaging ou déployez une version officielle pour régénérer les signatures."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "Impossible de contacter le point de terminaison d'intégrité. Consultez les journaux d'erreurs du serveur web."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "Ajoutez toute note supplémentaire concernant ce dépôt."
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "Le montant dépasse la valeur maximale autorisée (999999,99)."
+
+#: 
+msgid "Checks"
+msgstr "Chèques"
+
+#: 
+msgid "Clear Filters"
+msgstr "Effacer les filtres"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "Cliquez sur une barre pour filtrer les paiements"
+
+#: 
+msgid "Delete Selected"
+msgstr "Supprimer la sélection"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Dépôt enregistré avec succès"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Erreur lors de la suppression des paiements"
+
+#: 
+msgid "Error loading payments"
+msgstr "Erreur lors du chargement des paiements"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Erreur lors de l'enregistrement du dépôt"
+
+#: 
+msgid "Funds"
+msgstr "Fonds"
+
+#: 
+msgid "Generate Report"
+msgstr "Générer un rapport"
+
+#: 
+msgid "No Cash"
+msgstr "Pas d'argent liquide"
+
+#: 
+msgid "No Checks"
+msgstr "Aucun chèque"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Aucun paiement pour l'instant. Cliquez sur « Ajouter un paiement » pour commencer."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "Le montant non déductible dépasse la valeur maximale autorisée (999999,99)."
+
+#: 
+msgid "Payments"
+msgstr "Paiements"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Paiements supprimés avec succès"
+
+#: 
+msgid "Please select a date"
+msgstr "Veuillez sélectionner une date"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Veuillez sélectionner les lignes à supprimer"
+
+#: 
+msgid "Saving..."
+msgstr "Enregistrement..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "Cette action est irréversible."
+
+#: 
+msgid "Total Deposit"
+msgstr "Dépôt total"
+
+#: 
+msgid "Total Payments"
+msgstr "Paiements totaux"
+
+#: 
+msgid "payments(s)?"
+msgstr "paiement(s) ?"
 

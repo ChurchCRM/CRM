@@ -64,7 +64,7 @@ $MenuFirst = 1;
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/v2/admin/upgrade" class="dropdown-item" title="<?= gettext('New Release') ?>">
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="dropdown-item" title="<?= gettext('New Release') ?>">
                         <i class="fa-solid fa-champagne-glasses"></i> <?= gettext('New Release') ?>
                         <?php if ($updateVersion) { ?>
                             <span id="upgradeToVersion"><?= $updateVersion->MAJOR ?>.<?= $updateVersion->MINOR ?>.<?= $updateVersion->PATCH ?></span>

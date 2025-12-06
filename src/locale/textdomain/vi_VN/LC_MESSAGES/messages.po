@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "Sao lưu dữ liệu"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Bạn nên thực hiện một sao lưu thủ công ít nhất một lần một tuần, trừ khi bạn đã có một lịch sao lưu thường xuyên cho hệ thống của bạn."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Sau khi bạn tải về các tập tin sao lưu, bạn nên làm cho hai bản sao. Đặt một trong số tập tin này vào nơi an toàn trong máy chủ và ngoài máy chủ."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Nếu bạn lo lắng về tính bảo mật của dữ liệu được lưu trữ trong cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh, bạn nên mã hóa dữ liệu sao lưu nếu nó sẽ được lưu trữ ở đâu đó có khả năng tiếp cận với những người khác"
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Chọn loại lưu trữ"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Mã hóa tập tin sao lưu với một mật khẩu?"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "Gõ lại mật khẩu:"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Tạo và gửi tập tin lưu trữ đến kho lưu trữ bên ngoài"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Mục nhập người chiến thắng hàng loạt"
 
@@ -387,11 +351,6 @@ msgid "Add Cart to Event"
 msgstr "Thêm vào giỏ rồi gửi đến Sự kiện"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Chọn sự kiện mà bạn muốn thêm vào giỏ của bạn"
-
-#: 
 msgid "OR"
 msgstr "HOẶC"
 
@@ -498,10 +457,6 @@ msgid "Empty Cart to Family"
 msgstr "Xóa bỏ giỏ trong Gia đình"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Xóa bỏ giỏ trong Sự kiện"
-
-#: 
 msgid "Map Cart"
 msgstr "Giỏ Bản đồ"
 
@@ -558,20 +513,8 @@ msgid "Event Checkin"
 msgstr "Đăng ký sự kiện"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Chọn sự kiện mà bạn muốn kiểm tra mọi người"
-
-#: 
 msgid "Select Event"
 msgstr "Lựa chọn sự kiện"
-
-#: 
-msgid "Add Visitor"
-msgstr "Thêm người truy cập"
-
-#: 
-msgid "CheckIn"
-msgstr "Kiểm tra vào"
 
 #: 
 msgid "CheckOut"
@@ -596,10 +539,6 @@ msgstr "Kiểm tra bởi"
 #: 
 msgid "Action"
 msgstr "Hành động"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Không có người tham dự nào được chỉ định cho sự kiện"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -631,29 +570,14 @@ msgid "Deposit Slip Number: "
 msgstr "Số phiếu gửi tiền:"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Chi tiết tiền gửi:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Đóng phiếu gửi (nhớ bấm Lưu)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Báo cáo tiền gửi"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Lưu ý quan trọng: các giao dịch không thành công sẽ bị xóa vĩnh viễn khi đóng phiếu gửi tiền."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Tóm tắt tiền gửi:"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Các khoản thanh toán trên phiếu gửi tiền này:"
 
 #: 
 msgid "Import eGive"
@@ -664,7 +588,8 @@ msgid "Add Payment"
 msgstr "Thêm thanh toán"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Tải các giao dịch được ủy quyền"
 
 #: 
@@ -930,44 +855,8 @@ msgid "Edit"
 msgstr "Chỉnh sửa"
 
 #: 
-msgid "Event Attendees"
-msgstr "Người tham dự sự kiện"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Người không tham dự sự kiện"
-
-#: 
-msgid "Event Guests"
-msgstr "Khách sự kiện"
-
-#: 
-msgid "There "
-msgstr "tại đây␣"
-
-#: 
 msgid "Event Title"
 msgstr "Tiêu đề sự kiện"
-
-#: 
-msgid "Event Date"
-msgstr "Ngày sự kiện"
-
-#: 
-msgid "Attending Members"
-msgstr "Thành viên tham dự"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Thành viên không tham dự"
-
-#: 
-msgid "Guests"
-msgstr "Khách"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Không có sự kiện nào trong chuyên mục này"
 
 #: 
 msgid "Create Event"
@@ -978,20 +867,8 @@ msgid "Create a new Event"
 msgstr "Tạo sự kiện mới"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Chỉnh ID sự kiện: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " bị lỗi. Vui lòng xem bên dưới"
-
-#: 
-msgid "Items with a "
-msgstr "Các mặt hàng có"
-
-#: 
-msgid " are required"
-msgstr "được yêu cầu"
 
 #: 
 msgid "Select your event type"
@@ -1002,20 +879,8 @@ msgid "You must pick an event type."
 msgstr "Bạn cần chọn loại sự kiện"
 
 #: 
-msgid "Event Desc"
-msgstr "Mô tả sự kiện"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Không có số điểm chuyên cần nào được ghi lại"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Ghi chú tham dự: "
-
-#: 
-msgid "Event Sermon"
-msgstr "Bài giảng của sự kiện"
 
 #: 
 msgid "Event Status"
@@ -1024,10 +889,6 @@ msgstr "Trạng thái sự kiện"
 #: 
 msgid "Return to Events"
 msgstr "Quay về sự kiện"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "TÊN LOẠI SỰ KIỆN"
 
 #: 
 msgid "Sundays"
@@ -1056,30 +917,6 @@ msgstr "Thứ Sáu"
 #: 
 msgid "Saturdays"
 msgstr "Thứ Bảy"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "THỜI GIAN BẮT ĐẦU"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "SỐ LƯỢNG THAM DỰ"
-
-#: 
-msgid "Optional"
-msgstr "Không bắt buộc"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Nhập danh sách số lượng người tham dự bạn muốn đưa vào sự kiện này."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Phân tách từng tên_đếm bằng dấu phẩy. ví dụ: Thành viên, Khách truy cập, Cơ sở, Trẻ em"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Mọi loại sự kiện đều bao gồm Tổng số, bạn không cần phải bao gồm nó."
 
 #: 
 msgid "Add Event Type"
@@ -1651,7 +1488,8 @@ msgid "Date End"
 msgstr "Ngày kết thúc"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Xóa bỏ lọc"
 
 #: 
@@ -2040,28 +1878,12 @@ msgid "Confirm data labels"
 msgstr "Xác nhận nhãn dữ liệu"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Sự kiện danh sách thuộc loại ="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Danh sách tất cả các sự kiện Hội Thánh"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Chọn loại sự kiện để hiển thị"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Hiển thị sự kiện trong năm"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Thời gian/ngày bắt đầu"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Không có điểm danh nào được ghi lại"
 
 #: 
 msgid "Attendees"
@@ -3857,10 +3679,6 @@ msgid "Details:"
 msgstr "Chi tiết:"
 
 #: 
-msgid "File Missing"
-msgstr "Tệp bị thiếu"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Thao tác này sẽ ghi đè số phong bì gia đình trong cơ sở dữ liệu với những số được chọn trên trang này. Tiếp tục?"
 
@@ -4111,20 +3929,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "Xác thực tệp định nghĩa chữ ký chữ ký không hợp lệ"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Thiếu tệp định nghĩa chữ ký"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Một hoặc nhiều tệp không xác thực được chữ ký"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "Cấu hình HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Các tệp không kiểm tra được tính toàn vẹn"
 
 #: 
 msgid "Family:"
@@ -4213,14 +4023,6 @@ msgstr "Ngày nhập vào:"
 #: 
 msgid "CSV Import"
 msgstr "Nhập vào CSV"
-
-#: 
-msgid "Comment:"
-msgstr "Bình luận:"
-
-#: 
-msgid "Closed:"
-msgstr "Đã đóng cửa:"
 
 #: 
 msgid "Start Date: "
@@ -6850,7 +6652,8 @@ msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "(các) khoản thanh toán?"
 
 #: 
@@ -7455,10 +7258,6 @@ msgid "Your Church's X Page"
 msgstr "Trang X của Giáo hội của bạn"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "tra cứu hình ảnh người dùng trên Google khi không có hình ảnh cục bộ"
-
-#: 
 msgid "Self Register"
 msgstr "Tự đăng ký"
 
@@ -8021,10 +7820,6 @@ msgid "UserName not set"
 msgstr "UserName chưa được đặt"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "Các thành viên và gia đình đã được xóa sạch khỏi bảng dữ liệu"
-
-#: 
 msgid "Self Registrations"
 msgstr "Tự đăng ký"
 
@@ -8295,20 +8090,8 @@ msgid "is disabled"
 msgstr "đã được vô hiệu hóa"
 
 #: 
-msgid "System Information"
-msgstr "Thông tin hệ thống"
-
-#: 
 msgid "Software Version"
 msgstr "Phiên bản phần mềm"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Cài đặt giá trị máy chủ Email"
-
-#: 
-msgid "Database"
-msgstr "Dữ liệu"
 
 #: 
 msgid "Database Version"
@@ -8377,10 +8160,6 @@ msgid "Emptied into Event"
 msgstr "Đã hết vào sự kiện"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "thiếu tệp tin liêm chính.json"
-
-#: 
 msgid "Passed"
 msgstr "Thông qua"
 
@@ -8436,10 +8215,6 @@ msgstr "Hỗ trợ cho thanh toán eGive, Thẻ tín dụng và Hối phiếu Ng
 #: 
 msgid "Estonian"
 msgstr "Người Estonia"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "Lỗi giải mã tệp kết quả kiểm tra tính toàn vẹn"
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8556,10 +8331,6 @@ msgid "Verification URL"
 msgstr "URL xác minh"
 
 #: 
-msgid "Reset System"
-msgstr "Đặt lại hệ thống"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Id người không mong muốn"
 
@@ -8629,18 +8400,6 @@ msgstr "Vui lòng xem xét và giảm thiểu các tác vụ này trước khi t
 #: 
 msgid "Database Reset Functions"
 msgstr "Các chức năng thiết lập lại cơ sở dữ liệu"
-
-#: 
-msgid "Reset Members"
-msgstr "Đặt lại thành viên"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Thao tác này sẽ xóa tất cả dữ liệu thành viên, mọi người và gia đình và không thể hoàn tác."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Đặt lại gia đình / người"
 
 #: 
 msgid "Reset Database"
@@ -8835,20 +8594,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Khán giả không ở trong Nhà thờCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Thông tin cài đặt ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Phiên bản máy chủ cơ sở dữ liệu"
-
-#: 
 msgid "Web Server"
 msgstr "Máy chủ web"
-
-#: 
-msgid "Email Information"
-msgstr "Thông tin Email"
 
 #: 
 msgid "List maintenance"

@@ -1,3 +1,8 @@
+/* Import Bootstrap and Font Awesome styles */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~bs-stepper/dist/css/bs-stepper.min.css';
+
 /* ChurchCRM Setup Wizard Styles */
 
 body {

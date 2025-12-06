@@ -11,7 +11,7 @@ describe("Event Types Management", () => {
   cy.visit("EventNames.php");
   cy.contains("Event Types");
   cy.get(".table tbody tr").should("exist");
-  cy.get(".table thead").should("contain", "Event Type");
+  cy.get(".table thead").should("contain", "Name");
   cy.get(".table tbody").should("contain", "Church Service");
   cy.get(".table tbody").should("contain", "Sunday School");
   });
@@ -22,8 +22,8 @@ describe("Event Types Management", () => {
     cy.contains("Add Event Type").click();
 
     cy.get('input[name="newEvtName"]').type(eventTypeName);
-    cy.get('input[name="newEvtTypeCntLst"]').type(5);
-    cy.get('#save-event-type').click();
+    cy.get('input[name="newEvtTypeCntLst"]').type("Members, Visitors");
+    cy.contains("Save Event Type").click();
 
     cy.contains(eventTypeName).should("exist");
   });

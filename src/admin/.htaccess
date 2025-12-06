@@ -1,0 +1,9 @@
+# Admin MVC application routing
+# Routes all requests to admin/index.php (Slim app)
+
+Options -Indexes
+RewriteEngine On
+
+# Pass all requests to the admin Slim application
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]

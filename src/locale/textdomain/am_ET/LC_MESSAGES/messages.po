@@ -64,41 +64,6 @@ msgid "Backup Database"
 msgstr "የመረጃ ቋቱን አስቀምጥ"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "ይሄ መሳሪያ የChurchCRM  መረጃ ቋት ለማስቀመጥ ይረዳል"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "ሳምንታዊ የምትኬ መንገድ እስከሌለ ድረስ ቢያንስ በሳምንት አንዴ የመረጃ ቋቱን ምትኬ ማስቀመጥ ያስፈልጋል።"
-
-#: 
-#, fuzzy
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "የምትኬ ሰነዱን ካወረዱ በኋላ በሁለት ቅጂዎች መዘጋጀት አለበት። አንደኛውን እሳት በማይደርስበት ድህረ ገፅ ላይ ይቀመጥ፥ ሁለተኛውን ምትኬ በሌላ ስፍራ ያስቀምጡት።"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "በዚህ ሶፍትዌር የሚቀመጠው መረጃ ደህንነት ካሳሰብዎት፤ አባክዎ ሰዎች ሊያገኙት በሚችሉት ቦታ የተቀመጠን የውሂብ ጎታ አመስጥረው ያስቀምጡ።"
-
-#: 
-msgid "Select archive type"
-msgstr "የማህደሩን አይነት ይምረጡ"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "የምትኬውን ሰነድ በይለፍ ቃል ያመስጥሩት?"
-
-#: 
-msgid "Re-type Password"
-msgstr "የይለፍቃሉን እንደገና ይፃፉ"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "ለውጫዊ የመረጃ ማስቀመጫ ምትኬ አዘጋጅ"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "የአሸናፊው ባች ማስገቢያ"
 
@@ -373,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "ጋሪን ወደ ክስተት ያክሉ"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "ጋሪዎን ለመጨመር የሚፈልጉትን ክስተት ይምረጡ"
-
-#: 
 msgid "OR"
 msgstr "ወይም"
 
@@ -482,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "ባዶ ጋሪ ለቤተሰብ"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "ባዶ ጋሪ ወደ ክስተት"
-
-#: 
 msgid "Map Cart"
 msgstr "የካርታ ጋሪ"
 
@@ -542,20 +499,8 @@ msgid "Event Checkin"
 msgstr "የክስተት ተመዝግቦ መግባት"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "ሰዎችን ማረጋገጥ የምትፈልገውን ክስተት ምረጥ"
-
-#: 
 msgid "Select Event"
 msgstr "ክስተት ይምረጡ"
-
-#: 
-msgid "Add Visitor"
-msgstr "ጎብኝን ጨምር"
-
-#: 
-msgid "CheckIn"
-msgstr "ያረጋግጡ"
 
 #: 
 msgid "CheckOut"
@@ -580,10 +525,6 @@ msgstr "የተረጋገጠ በ"
 #: 
 msgid "Action"
 msgstr "ድርጊት"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "ለክስተቱ የተመደቡ ተሳታፊዎች የሉም"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -615,29 +556,14 @@ msgid "Deposit Slip Number: "
 msgstr "የተቀማጭ ወረቀት ቁጥር፡- "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "የተቀማጭ ዝርዝሮች፡- "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "የተቀማጭ ወረቀት ዝጋ (አስቀምጥን መጫንዎን ያስታውሱ)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "የተቀማጭ መንሸራተት ሪፖርት"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "ጠቃሚ ማስታወሻ፡ የተቀማጭ ወረቀቱ ሲዘጋ ያልተሳኩ ግብይቶች እስከመጨረሻው ይሰረዛሉ።"
-
-#: 
-msgid "Deposit Summary: "
-msgstr "የተቀማጭ ገንዘብ ማጠቃለያ፡- "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "በዚህ የተቀማጭ ወረቀት ላይ ክፍያዎች፡-"
 
 #: 
 msgid "Import eGive"
@@ -648,7 +574,8 @@ msgid "Add Payment"
 msgstr "ክፍያ ጨምር"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "የተፈቀዱ ግብይቶችን ጫን"
 
 #: 
@@ -914,44 +841,8 @@ msgid "Edit"
 msgstr "አርትዕ"
 
 #: 
-msgid "Event Attendees"
-msgstr "የክስተት ተሳታፊዎች"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "የክስተት ተሳታፊ ያልሆኑ"
-
-#: 
-msgid "Event Guests"
-msgstr "የክስተት እንግዶች"
-
-#: 
-msgid "There "
-msgstr "እዚያ "
-
-#: 
 msgid "Event Title"
 msgstr "የክስተት ርዕስ"
-
-#: 
-msgid "Event Date"
-msgstr "የክስተት ቀን"
-
-#: 
-msgid "Attending Members"
-msgstr "ተሳታፊ አባላት"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "የማይሳተፉ አባላት"
-
-#: 
-msgid "Guests"
-msgstr "እንግዶች"
-
-#: 
-msgid "There are no events in this category"
-msgstr "በዚህ ምድብ ውስጥ ምንም ክስተቶች የሉም"
 
 #: 
 msgid "Create Event"
@@ -962,20 +853,8 @@ msgid "Create a new Event"
 msgstr "አዲስ ክስተት ይፍጠሩ"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "የክስተት መታወቂያ ማረም፡ "
-
-#: 
 msgid " errors. Please see below"
 msgstr " ስህተቶች. እባኮትን ከታች ይመልከቱ"
-
-#: 
-msgid "Items with a "
-msgstr "እቃዎች ከ ሀ "
-
-#: 
-msgid " are required"
-msgstr " ያስፈልጋሉ"
 
 #: 
 msgid "Select your event type"
@@ -986,20 +865,8 @@ msgid "You must pick an event type."
 msgstr "የክስተት አይነት መምረጥ አለብህ።"
 
 #: 
-msgid "Event Desc"
-msgstr "የክስተት Desc"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "ምንም የተገኝነት ብዛት ተመዝግቧል"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "የመገኘት ማስታወሻዎች፡- "
-
-#: 
-msgid "Event Sermon"
-msgstr "የክስተት ስብከት"
 
 #: 
 msgid "Event Status"
@@ -1008,10 +875,6 @@ msgstr "የክስተት ሁኔታ"
 #: 
 msgid "Return to Events"
 msgstr "ወደ ዝግጅቶች ተመለስ"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "የክስተት አይነት ስም"
 
 #: 
 msgid "Sundays"
@@ -1040,30 +903,6 @@ msgstr "አርብ"
 #: 
 msgid "Saturdays"
 msgstr "ቅዳሜ"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "ነባሪ መጀመሪያ ሰዓት"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "የመገኘት ብዛት"
-
-#: 
-msgid "Optional"
-msgstr "አማራጭ"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "ከዚህ ክስተት ጋር ማካተት የሚፈልጉትን የመገኘት ብዛት ዝርዝር ያስገቡ።"
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "እያንዳንዱን የቁጥር_ስም በነጠላ ሰረዝ ለይ። ለምሳሌ. አባላት፣ ጎብኝዎች፣ ካምፓስ፣ ልጆች"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "እያንዳንዱ የክስተት አይነት ጠቅላላ ቆጠራን ያካትታል፣ እሱን ማካተት አያስፈልግዎትም።"
 
 #: 
 msgid "Add Event Type"
@@ -1635,7 +1474,8 @@ msgid "Date End"
 msgstr "የመጨረሻ ቀን"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "ማጣሪያዎችን አጽዳ"
 
 #: 
@@ -2024,28 +1864,12 @@ msgid "Confirm data labels"
 msgstr "የውሂብ መለያዎችን ያረጋግጡ"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "የ. ዓይነት ክስተቶች ዝርዝር "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "ሁሉንም የቤተ ክርስቲያን ክስተቶች መዘርዘር"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "ለማሳየት የዝግጅት ዓይነቶችን ይምረጡ"
-
-#: 
-msgid "Display Events in Year"
-msgstr "በዓመት ውስጥ ያሉ ዝግጅቶችን አሳይ"
-
-#: 
 msgid "Start Date/Time"
 msgstr "የመጀመሪያ ቀን/ሰዓት"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "ምንም ተሳትፎ አልተመዘገበም።"
 
 #: 
 msgid "Attendees"
@@ -3840,10 +3664,6 @@ msgid "Details:"
 msgstr "ዝርዝሮች:"
 
 #: 
-msgid "File Missing"
-msgstr "ፋይል ጠፍቷል"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "ይህ በመረጃ ቋቱ ውስጥ ያሉትን የቤተሰብ ኤንቨሎፕ ቁጥሮች በዚህ ገጽ ላይ ከተመረጡት ጋር ይተካል. ይቀጥል?"
 
@@ -4093,20 +3913,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "የፊርማ ፍቺ ፋይል ፊርማ ማረጋገጥ አልተሳካም"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "የፊርማ ትርጉም ፋይል ጠፍቷል"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "አንድ ወይም ከዚያ በላይ ፋይሎች የፊርማ ማረጋገጫ አልተሳካም"
 
 #: 
 msgid "Configure HTTPS"
 msgstr "HTTPS አዋቅር"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "ያልተሳኩ ፋይሎች የንጹህነት ማረጋገጫ"
 
 #: 
 msgid "Family:"
@@ -4195,14 +4007,6 @@ msgstr "የገባበት ቀን:"
 #: 
 msgid "CSV Import"
 msgstr "CSV ማስመጣት"
-
-#: 
-msgid "Comment:"
-msgstr "አስተያየት:"
-
-#: 
-msgid "Closed:"
-msgstr "ዝግ:"
 
 #: 
 msgid "Start Date: "
@@ -6834,7 +6638,8 @@ msgid "Profile Image uploaded"
 msgstr "የመገለጫ ምስል ተለጥፏል"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "ክፍያ(ዎች)?"
 
 #: 
@@ -7439,10 +7244,6 @@ msgid "Your Church's X Page"
 msgstr "የቤተክርስቲያንህ ትዊተር ገጽ"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "ምንም የአካባቢ ምስል በማይኖርበት ጊዜ የተጠቃሚ ምስሎችን በ Google ላይ ይፈልጉ"
-
-#: 
 msgid "Self Register"
 msgstr "ራስን መመዝገብ"
 
@@ -8005,10 +7806,6 @@ msgid "UserName not set"
 msgstr "የተጠቃሚ ስም አልተዘጋጀም"
 
 #: 
-msgid "The people and families has been cleared from the database."
-msgstr "ሰዎቹ እና ቤተሰቦቹ ከመረጃ ቋቱ ጸድተዋል"
-
-#: 
 msgid "Self Registrations"
 msgstr "የግል ምዝገባዎች"
 
@@ -8280,20 +8077,8 @@ msgid "is disabled"
 msgstr "አይሰራም "
 
 #: 
-msgid "System Information"
-msgstr "የስርዓት መረጃ "
-
-#: 
 msgid "Software Version"
 msgstr "የሶፍትዌር ስሪት "
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "ትክክለኛ የደብዳቤ አገልጋይ ቅንብሮች"
-
-#: 
-msgid "Database"
-msgstr "የዉሂብ ጎታ"
 
 #: 
 msgid "Database Version"
@@ -8362,10 +8147,6 @@ msgid "Emptied into Event"
 msgstr "በክስተቱ መታወቂያ ባዶ "
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "ታማኝነት ማረጋገጫ ፋይል ጠፍቷል "
-
-#: 
 msgid "Passed"
 msgstr "አልፈዋል "
 
@@ -8422,10 +8203,6 @@ msgstr "የኢጊቭ፣ የክሬዲት ካርድ እና የባንክ ረቂቅ 
 #: 
 msgid "Estonian"
 msgstr "ኢስቶኒያን"
-
-#: 
-msgid "Error decoding integrity check result file"
-msgstr "የትክክለኛነት ማረጋገጫ ዉጤት ፋይልን የመግለጽ ስህተት "
 
 #: 
 msgid "Error decoding signature definition file"
@@ -8554,10 +8331,6 @@ msgid "Verification URL"
 msgstr "የማረጋገጫ ዩአርኤል"
 
 #: 
-msgid "Reset System"
-msgstr "ስርዓት ዳግም አስጀምር"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "ያልተጠበቀ ሰው መታወቂያ"
 
@@ -8630,19 +8403,6 @@ msgstr "በማሻሻያው ከመቀጠልዎ በፊት እባክዎ እነዚ�
 msgid "Database Reset Functions"
 msgstr "\n"
 "የውሂብ ጎታ ዳግም ማስጀመር ተግባራት"
-
-#: 
-msgid "Reset Members"
-msgstr "አባላትን ዳግም አስጀምር"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "\n"
-"ይህ ሁሉንም የአባል ውሂብ፣ ሰዎች እና ቤተሰቦች ያስወግዳል እና ሊቀለበስ አይችልም።"
-
-#: 
-msgid "Reset Families/People"
-msgstr "ቤተሰቦችን/ሰዎችን ዳግም ማስጀመር"
 
 #: 
 msgid "Reset Database"
@@ -8845,20 +8605,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "ታዳሚዎች በቤተክርስቲያን CRM ውስጥ አይደሉም"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM ጭነት መረጃ"
-
-#: 
-msgid "Database Server Version"
-msgstr "የውሂብ ጎታ አገልጋይ ሥሪት"
-
-#: 
 msgid "Web Server"
 msgstr "የድር አገልጋይ"
-
-#: 
-msgid "Email Information"
-msgstr "የኢሜል መረጃ"
 
 #: 
 msgid "List maintenance"

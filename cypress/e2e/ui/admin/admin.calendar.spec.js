@@ -14,6 +14,5 @@ describe("Admin Calendar", () => {
         cy.get("#ForegroundColor").type("FA8072");
         cy.get("#BackgroundColor").type("212F3D");
         cy.get(".modal-footer > .pull-right").click();
-        // cy.contains(title);
     });
 });

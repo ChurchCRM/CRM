@@ -1,4 +1,6 @@
 {
     "semi": true,
-    "endOfLine": "lf"
+    "endOfLine": "lf",
+    "proseWrap": "preserve",
+    "printWidth": 120
 }

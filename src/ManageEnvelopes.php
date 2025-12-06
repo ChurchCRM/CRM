@@ -8,13 +8,14 @@ require_once 'Include/EnvelopeFunctions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 $iClassification = 0;
 if (isset($_POST['Classification'])) {
@@ -30,7 +31,14 @@ $envelopesToWrite = [];
 $envelopesByFamID = getEnvelopes($iClassification);
 
 // Get the array of family name/description strings, also indexed by family ID
-$familyArray = getFamilyList(SystemConfig::getValue('sDirRoleHead'), SystemConfig::getValue('sDirRoleSpouse'), $iClassification);
+$personService = new PersonService();
+$familyArray = $personService->getFamilyList(
+    SystemConfig::getValue('sDirRoleHead'),
+    SystemConfig::getValue('sDirRoleSpouse'),
+    $iClassification,
+    null,
+    true  // allowAll: envelope management needs all families
+);
 asort($familyArray);
 
 if (isset($_POST['Confirm'])) {

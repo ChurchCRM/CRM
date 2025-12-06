@@ -8,10 +8,40 @@ import 'bs-stepper/dist/css/bs-stepper.min.css';
 
 let upgradeStepper;
 
+// Ensure AdminAPIRequest is available - fallback to regular APIRequest if not defined
+if (window.CRM && !window.CRM.AdminAPIRequest) {
+    window.CRM.AdminAPIRequest = function (options) {
+        // Fallback: if AdminAPIRequest is not defined, assume it's the same as APIRequest
+        // The path should already be prefixed with admin/api/
+        if (!options.method) {
+            options.method = "GET";
+        } else {
+            options.dataType = "json";
+        }
+        options.url = window.CRM.root + "/admin/api/" + options.path;
+        options.contentType = "application/json";
+        options.beforeSend = function (jqXHR, settings) {
+            jqXHR.url = settings.url;
+        };
+        options.error = function (jqXHR, textStatus, errorThrown) {
+            if (window.CRM.system && window.CRM.system.handlejQAJAXError) {
+                window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+            }
+        };
+        return $.ajax(options);
+    };
+}
+
 /**
  * Initialize the upgrade wizard when DOM is ready
  */
 $(document).ready(function () {
+    // Verify AdminAPIRequest is available
+    if (!window.CRM || !window.CRM.AdminAPIRequest) {
+        console.error('AdminAPIRequest not available - upgrade wizard cannot proceed');
+        return;
+    }
+    
     // Initialize bs-stepper
     upgradeStepper = new Stepper(document.querySelector('#upgrade-stepper'), {
         linear: true,
@@ -23,6 +53,7 @@ $(document).ready(function () {
     setupStepHandlers();
     setupPrereleaseToggle();
     setupRefreshButton();
+    setupForceReinstallButton();
     
     // Listen for step changes to auto-download when reaching apply step
     document.querySelector('#upgrade-stepper').addEventListener('show.bs-stepper', function (event) {
@@ -171,9 +202,9 @@ function performDownload() {
     const $statusIcon = $("#status-apply");
     const $downloadStatus = $("#downloadStatus");
 
-    window.CRM.APIRequest({
+    window.CRM.AdminAPIRequest({
         type: 'GET',
-        path: 'systemupgrade/download-latest-release',
+        path: 'upgrade/download-latest-release',
     })
         .done(function (data) {
             $statusIcon.html('<i class="fa-solid fa-check text-success"></i>');
@@ -245,9 +276,9 @@ function setupApplyStep() {
         $statusIcon.html('<i class="fa-solid fa-circle-notch fa-spin text-primary"></i>');
         $button.prop('disabled', true);
 
-        window.CRM.APIRequest({
+        window.CRM.AdminAPIRequest({
             method: 'POST',
-            path: 'systemupgrade/do-upgrade',
+            path: 'upgrade/do-upgrade',
             data: JSON.stringify({
                 fullPath: window.CRM.updateFile.fullPath,
                 sha1: window.CRM.updateFile.sha1
@@ -342,9 +373,9 @@ function setupPrereleaseToggle() {
             data: JSON.stringify({ value: newValue ? '1' : '0' })
         }).done(function () {
             // Refresh upgrade info from GitHub
-            window.CRM.APIRequest({
+            window.CRM.AdminAPIRequest({
                 method: 'POST',
-                path: 'systemupgrade/refresh-upgrade-info'
+                path: 'upgrade/refresh-upgrade-info'
             }).done(function (data) {
                 $spinner.removeClass('active');
                 window.CRM.notify(i18next.t('Setting saved. Reloading page...'), {
@@ -398,9 +429,9 @@ function setupRefreshButton() {
         $spinner.addClass('active');
 
         // Call refresh API
-        window.CRM.APIRequest({
+        window.CRM.AdminAPIRequest({
             method: 'POST',
-            path: 'systemupgrade/refresh-upgrade-info'
+            path: 'upgrade/refresh-upgrade-info'
         }).done(function (data) {
             $spinner.removeClass('active');
             window.CRM.notify(i18next.t('Upgrade information refreshed. Reloading page...'), {
@@ -417,6 +448,7 @@ function setupRefreshButton() {
             $button.prop('disabled', false);
             $icon.removeClass('fa-circle-notch fa-spin').addClass('fa-sync');
             
+            
             let errorMessage = i18next.t('Failed to refresh upgrade information from GitHub.');
             if (xhr.responseJSON && xhr.responseJSON.message) {
                 errorMessage = xhr.responseJSON.message;
@@ -426,6 +458,39 @@ function setupRefreshButton() {
                 type: 'error',
                 delay: 5000
             });
+        });
+    });
+}
+
+/**
+ * Setup force reinstall button - allows re-downloading and applying the current version
+ */
+function setupForceReinstallButton() {
+    $('#forceReinstall').click(function () {
+        // Confirm the action
+        if (!confirm(i18next.t('This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?'))) {
+            return;
+        }
+
+        // Show the upgrade wizard card if hidden
+        $('#upgrade-wizard-card').addClass('show');
+
+        // Reset the stepper to the beginning and then navigate to the backup step
+        upgradeStepper.to(0);
+        
+        // Small delay to ensure stepper is ready, then advance to backup step
+        setTimeout(function() {
+            upgradeStepper.to(1); // Go to backup step
+        }, 100);
+
+        // Scroll to the wizard
+        $('html, body').animate({
+            scrollTop: $('#upgrade-wizard-card').offset().top - 20
+        }, 500);
+
+        window.CRM.notify(i18next.t('Force re-install initiated. Please backup your database before applying.'), {
+            type: 'info',
+            delay: 5000
         });
     });
 }

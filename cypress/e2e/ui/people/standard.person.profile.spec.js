@@ -2,9 +2,11 @@
 
 describe("Person Profile", () => {
     const personId = 2;
+    
+    beforeEach(() => cy.setupStandardSession());
 
     it("Printable page", () => {
-        cy.loginStandard(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`PersonView.php?PersonID=${personId}`);
         cy.contains("Printable Page");
 
         cy.get("#printPerson").click();
@@ -12,10 +14,10 @@ describe("Person Profile", () => {
     });
 
     it("Add a Note", () => {
-        cy.loginStandard(`PersonView.php?PersonID=${personId}`);
-        cy.contains("Add a Note");
+        cy.visit(`PersonView.php?PersonID=${personId}`);
 
-        cy.get("#addNote").click();
+        // Click FAB note button
+        cy.get('.fab-note').click();
         cy.url().should("contain", `NoteEditor.php?PersonID=${personId}`);
 
         const currentDateString = new Date().toISOString();
@@ -29,7 +31,7 @@ describe("Person Profile", () => {
     });
 
     it("Edit Why Came", () => {
-        cy.loginStandard(`PersonView.php?PersonID=${personId}`);
+        cy.visit(`PersonView.php?PersonID=${personId}`);
         cy.contains('Edit "Why Came" Notes');
 
         cy.get("#editWhyCame").click();
