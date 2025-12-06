@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\KeyManager;
+use ChurchCRM\Utils\URLValidator;
 
 /**
  * Service for admin dashboard checks.
@@ -95,6 +96,17 @@ class AdminService
             ];
         }
 
+        // Configuration URL validation check
+        $urlError = $this->getConfigurationURLError();
+        if ($urlError !== null) {
+            $warnings[] = [
+                'title' => gettext('Invalid Configuration URL'),
+                'desc' => $urlError['message'],
+                'link' => SystemURLs::getRootPath() . '/SystemSettings.php',
+                'severity' => 'danger',
+            ];
+        }
+
         return $warnings;
     }
 
@@ -112,5 +124,43 @@ class AdminService
         }
 
         return false;
+    }
+
+    /**
+     * Check if the configuration URL ($URL[0]) is valid.
+     * Returns error details if invalid, null if valid.
+     *
+     * @return array|null Error details with 'code' and 'message', or null if valid
+     */
+    private function getConfigurationURLError(): ?array
+    {
+        // Get the configured URL array from Config.php
+        global $URL;
+
+        // Check if URL is configured
+        if (!isset($URL) || !is_array($URL) || empty($URL[0])) {
+            return [
+                'code' => 'missing_url',
+                'message' => gettext('Base URL is not configured in Config.php'),
+            ];
+        }
+
+        $primaryURL = $URL[0];
+
+        // Validate the URL format and requirements
+        if (!URLValidator::isValidConfigURL($primaryURL)) {
+            $error = URLValidator::getValidationError($primaryURL);
+            if ($error !== null) {
+                return $error;
+            }
+
+            // Generic error if no specific error found
+            return [
+                'code' => 'invalid_url',
+                'message' => gettext('Base URL configuration is invalid. Please check your Config.php file.'),
+            ];
+        }
+
+        return null;
     }
 }
