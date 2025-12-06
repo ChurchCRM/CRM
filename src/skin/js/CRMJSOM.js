@@ -5,10 +5,30 @@
 window.CRM.APIRequest = function (options) {
     if (!options.method) {
         options.method = "GET";
-    } else {
-        options.dataType = "json";
-    }
+    } 
+    options.dataType = "json";
     options.url = window.CRM.root + "/api/" + options.path;
+    options.contentType = "application/json";
+    options.beforeSend = function (jqXHR, settings) {
+        jqXHR.url = settings.url;
+    };
+    options.error = function (jqXHR, textStatus, errorThrown) {
+        window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+    };
+    return $.ajax(options);
+};
+
+/**
+ * Admin-only API Request wrapper
+ * Used for endpoints in /admin/api/* - does NOT add /api prefix
+ * Endpoint paths should be like "upgrade/download-latest-release" which becomes "/admin/api/upgrade/download-latest-release"
+ */
+window.CRM.AdminAPIRequest = function (options) {
+    if (!options.method) {
+        options.method = "GET";
+    } 
+    options.dataType = "json";
+    options.url = window.CRM.root + "/admin/api/" + options.path;
     options.contentType = "application/json";
     options.beforeSend = function (jqXHR, settings) {
         jqXHR.url = settings.url;

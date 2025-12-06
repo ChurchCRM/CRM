@@ -7,6 +7,7 @@ use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\TaskService;
+use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -148,10 +149,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
         
         // Ensure we have fresh release information
-        \ChurchCRM\Utils\ChurchCRMReleaseManager::checkForUpdates();
+        ChurchCRMReleaseManager::checkForUpdates();
         
         // Recompute update availability with fresh data
-        $updateInfo = \ChurchCRM\Utils\ChurchCRMReleaseManager::checkSystemUpdateAvailable();
+        $updateInfo = ChurchCRMReleaseManager::checkSystemUpdateAvailable();
         $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
         $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
         $_SESSION['systemLatestVersion'] = $updateInfo['latestVersion'];

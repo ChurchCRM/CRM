@@ -78,7 +78,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             </button>
                                             <button class="btn btn-sm btn-danger delete-log" 
                                                     data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>"
-                                                    title="<?= gettext('Delete') ?>">\n
+                                                    title="<?= gettext('Delete') ?>">
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </td>
