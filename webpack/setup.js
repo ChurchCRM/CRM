@@ -509,14 +509,14 @@ window.Stepper = Stepper;
 			localeData.systemLocaleDetected && localeData.supportedLocales ? "alert-success" : "alert-warning";
 
 		$summary.attr("class", `alert ${summaryClass} mb-2`);
-		$summary.html(`<i class="fa-solid fa-check-circle"></i> ${summary}`);
+		$summary.text(summary).prepend('<i class="fa-solid fa-check-circle"></i> ');
 
-		// Update status icon
-		$status.html(
-			localeData.systemLocaleDetected
-				? '<i class="fa-solid fa-check text-success"></i>'
-				: '<i class="fa-solid fa-exclamation-triangle text-warning"></i>'
-		);
+		// Update status icon - use same pattern as other checks
+		if (localeData.systemLocaleDetected) {
+			$status.html('<i class="fa-solid fa-check-circle text-success"></i>');
+		} else {
+			$status.html('<i class="fa-solid fa-exclamation-triangle text-warning"></i>');
+		}
 
 		// Render locale table
 		if (localeData.supportedLocales && localeData.supportedLocales.length > 0) {
@@ -537,12 +537,19 @@ window.Stepper = Stepper;
 					? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>Available</span>`
 					: `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>Not Available</span>`;
 
+				const $nameDiv = $("<div>").css("font-weight", "500").text(locale.name);
+				const $localeSmall = $("<small>")
+					.addClass("text-muted")
+					.css({
+						"display": "block",
+						"font-size": "0.85em",
+						"margin-top": "2px"
+					})
+					.text(locale.locale);
+
 				const $row = $("<tr>")
 					.append(
-						$("<td>").html(
-							`<div style="font-weight: 500;">${locale.name}</div>` +
-							`<small class="text-muted" style="display: block; font-size: 0.85em; margin-top: 2px;">${locale.locale}</small>`
-						)
+						$("<td>").append($nameDiv).append($localeSmall)
 					)
 					.append(
 						$("<td style='text-align: center; vertical-align: middle;'>").html(statusBadge)
@@ -569,7 +576,7 @@ window.Stepper = Stepper;
 		$table.empty();
 		$summary.attr("class", "alert alert-danger mb-2");
 		$summary.html("<i class='fa-solid fa-times-circle'></i> Unable to detect system locales");
-		$status.html('<i class="fa-solid fa-times text-danger"></i>');
+		$status.html('<i class="fa-solid fa-exclamation-circle text-danger"></i>');
 
 		const $errorRow = $("<tr>").append(
 			$("<td>").html(
