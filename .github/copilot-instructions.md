@@ -412,12 +412,16 @@ window.CRM.notify(i18next.t('Operation completed'), {
 
 ## Admin API Calls (JavaScript)
 
-**CRITICAL: All `/admin/api/` calls MUST use `window.CRM.AdminAPIRequest()` wrapper**
+**Recommended Approaches for `/admin/api/` calls:**
 
-Never use direct `$.ajax()` for admin endpoints - use the AdminAPIRequest wrapper:
+1. **`window.CRM.AdminAPIRequest()`** - Preferred for jQuery-based code
+2. **Native `fetch()`** - Acceptable for modern JavaScript code
 
+Both approaches are valid. Choose based on the existing code patterns in the file you're editing.
+
+**Option 1: AdminAPIRequest (jQuery-based)**
 ```javascript
-// CORRECT - Use AdminAPIRequest for /admin/api endpoints
+// Use for jQuery-heavy pages or when you need jQuery promise syntax
 window.CRM.AdminAPIRequest({
     path: 'orphaned-files/delete-all',
     method: 'POST'
@@ -428,11 +432,24 @@ window.CRM.AdminAPIRequest({
 .fail(function(xhr) {
     window.CRM.notify(i18next.t('Error'), { type: 'error' });
 });
+```
 
-// WRONG - Direct $.ajax
-$.ajax({
-    url: window.CRM.root + '/admin/api/orphaned-files/delete-all',
-    method: 'POST'
+**Option 2: Native fetch (Modern JavaScript)**
+```javascript
+// Use for modern JavaScript code or ES6+ modules
+fetch(window.CRM.root + '/admin/api/system/config/settingName', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ value: settingValue })
+})
+.then(response => response.json())
+.then(data => {
+    window.CRM.notify(i18next.t('Settings saved'), { type: 'success' });
+})
+.catch(error => {
+    window.CRM.notify(i18next.t('Error saving settings'), { type: 'error' });
 });
 ```
 
@@ -445,7 +462,7 @@ $.ajax({
 
 **For public/private API calls, use:**
 - `window.CRM.APIRequest()` for `/api/` endpoints
-- Never use direct `$.ajax()` for API calls
+- Native `fetch()` is also acceptable for modern code
 
 ---
 
