@@ -562,6 +562,9 @@ class AppIntegrityService
             'ar_EG.UTF-8',
         ];
 
+        // Save current locale before testing
+        $originalLocale = setlocale(LC_ALL, 0);
+
         foreach ($commonLocales as $locale) {
             $currentLocale = setlocale(LC_ALL, $locale);
             if ($currentLocale !== false && $currentLocale !== 'C') {
@@ -571,6 +574,11 @@ class AppIntegrityService
                     $availableLocales[] = $normalized;
                 }
             }
+        }
+
+        // Restore original locale
+        if ($originalLocale !== false) {
+            setlocale(LC_ALL, $originalLocale);
         }
 
         $availableLocales = array_unique($availableLocales);
