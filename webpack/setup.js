@@ -525,8 +525,8 @@ window.Stepper = Stepper;
 			// Create table header
 			const $thead = $("<thead>").append(
 				$("<tr>")
-					.append($("<th>").text("ChurchCRM Supported Locales"))
-					.append($("<th style='text-align: center; width: 100px;'>").text("System Support"))
+					.append($("<th>").text(i18next.t("ChurchCRM Supported Locales")))
+					.append($("<th style='text-align: center; width: 100px;'>").text(i18next.t("System Support")))
 			);
 			$table.append($thead);
 
@@ -534,8 +534,8 @@ window.Stepper = Stepper;
 			const $tbody = $("<tbody>");
 			locales.forEach(function (locale) {
 				const statusBadge = locale.systemAvailable
-					? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>Available</span>`
-					: `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>Not Available</span>`;
+					? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>${i18next.t('Available')}</span>`
+					: `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>${i18next.t('Not Available')}</span>`;
 
 				const $row = $("<tr>")
 					.append(
@@ -554,7 +554,7 @@ window.Stepper = Stepper;
 		} else {
 			const $row = $("<tr>").append(
 				$("<td colspan='2'>").html(
-					"<i class='fa-solid fa-exclamation-triangle text-warning mr-2'></i>Unable to determine available locales"
+					`<i class='fa-solid fa-exclamation-triangle text-warning mr-2'></i>${i18next.t("Unable to determine available locales")}`
 				)
 			);
 			$table.append($row);
@@ -568,12 +568,12 @@ window.Stepper = Stepper;
 
 		$table.empty();
 		$summary.attr("class", "alert alert-danger mb-2");
-		$summary.html("<i class='fa-solid fa-times-circle'></i> Unable to detect system locales");
+		$summary.html(`<i class='fa-solid fa-times-circle'></i> ${i18next.t("Unable to detect system locales")}`);
 		$status.html('<i class="fa-solid fa-times text-danger"></i>');
 
 		const $errorRow = $("<tr>").append(
 			$("<td>").html(
-				"<i class='fa-solid fa-exclamation-circle text-danger mr-2'></i>Unable to load locale information"
+				`<i class='fa-solid fa-exclamation-circle text-danger mr-2'></i>${i18next.t("Unable to load locale information")}`
 			)
 		);
 		$table.append($errorRow);
