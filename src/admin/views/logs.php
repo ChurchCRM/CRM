@@ -1,7 +1,11 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
+
+// Generate CSRF token for log level updates
+$csrfToken = CSRFUtils::generateToken('log_level_form');
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -306,7 +310,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         fetch(window.CRM.root + '/api/system/logs/loglevel', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': '<?= $csrfToken ?>'
             },
             body: JSON.stringify({ value: logLevel })
         })

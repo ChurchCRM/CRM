@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -8,7 +9,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/system', function (RouteCollectorProxy $group): void {
-    $group->post('/logs/loglevel', 'setLogsLogLevel');
+    // POST route for log level - requires CSRF protection
+    $group->post('/logs/loglevel', 'setLogsLogLevel')
+        ->add(new CSRFMiddleware('log_level_form'));
+    
+    // Other log routes don't need CSRF (GET/DELETE with admin auth)
     $group->delete('/logs', 'deleteAllLogFiles');
     $group->get('/logs/{filename}', 'getLogsFileContent');
     $group->delete('/logs/{filename}', 'deleteLogFile');
