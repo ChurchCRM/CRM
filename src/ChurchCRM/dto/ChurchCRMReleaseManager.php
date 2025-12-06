@@ -282,8 +282,8 @@ class ChurchCRMReleaseManager
         $fileSize = $fileExists ? @filesize($zipFilename) : -1;
         $filePerms = $fileExists ? substr(sprintf('%o', fileperms($zipFilename)), -4) : 'N/A';
         $currentUser = get_current_user();
-        $fileOwner = $fileExists ? posix_getpwuid(fileowner($zipFilename))['name'] ?? 'unknown' : 'N/A';
-        
+        $pwuid = $fileExists ? posix_getpwuid(fileowner($zipFilename)) : false;
+        $fileOwner = ($pwuid !== false && isset($pwuid['name'])) ? $pwuid['name'] : 'unknown';
         $logger->debug('File pre-flight check', [
             'zipFilename' => $zipFilename,
             'fileExists' => $fileExists,
