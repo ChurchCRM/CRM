@@ -8,8 +8,8 @@ use ChurchCRM\Utils\ChurchCRMReleaseManager;
  * UpgradeAPIService
  *
  * Provides API operations for system upgrade and update checking.
- * This service wraps ChurchCRMReleaseManager operations for use in API routes.
- * Can be used by both admin and public API endpoints.
+ * This service wraps ChurchCRMReleaseManager operations for admin API routes.
+ * Admin authentication is enforced by AdminRoleAuthMiddleware at the application level.
  */
 class UpgradeAPIService
 {
