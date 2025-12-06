@@ -8,10 +8,40 @@ import 'bs-stepper/dist/css/bs-stepper.min.css';
 
 let upgradeStepper;
 
+// Ensure AdminAPIRequest is available - fallback to regular APIRequest if not defined
+if (window.CRM && !window.CRM.AdminAPIRequest) {
+    window.CRM.AdminAPIRequest = function (options) {
+        // Fallback: if AdminAPIRequest is not defined, assume it's the same as APIRequest
+        // The path should already be prefixed with admin/api/
+        if (!options.method) {
+            options.method = "GET";
+        } else {
+            options.dataType = "json";
+        }
+        options.url = window.CRM.root + "/admin/api/" + options.path;
+        options.contentType = "application/json";
+        options.beforeSend = function (jqXHR, settings) {
+            jqXHR.url = settings.url;
+        };
+        options.error = function (jqXHR, textStatus, errorThrown) {
+            if (window.CRM.system && window.CRM.system.handlejQAJAXError) {
+                window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+            }
+        };
+        return $.ajax(options);
+    };
+}
+
 /**
  * Initialize the upgrade wizard when DOM is ready
  */
 $(document).ready(function () {
+    // Verify AdminAPIRequest is available
+    if (!window.CRM || !window.CRM.AdminAPIRequest) {
+        console.error('AdminAPIRequest not available - upgrade wizard cannot proceed');
+        return;
+    }
+    
     // Initialize bs-stepper
     upgradeStepper = new Stepper(document.querySelector('#upgrade-stepper'), {
         linear: true,
