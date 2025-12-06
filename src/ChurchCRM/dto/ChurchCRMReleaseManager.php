@@ -292,7 +292,7 @@ class ChurchCRMReleaseManager
             'filePerms' => $filePerms,
             'fileOwner' => $fileOwner,
             'currentUser' => $currentUser,
-            'currentUserId' => posix_getuid(),
+            'currentUserId' => function_exists('posix_getuid') ? posix_getuid() : 'N/A',
             'fileOwnerId' => $fileExists ? fileowner($zipFilename) : -1,
         ]);
 
