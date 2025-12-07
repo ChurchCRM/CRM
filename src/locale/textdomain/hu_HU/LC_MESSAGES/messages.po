@@ -958,10 +958,6 @@ msgid "Family Members"
 msgstr "Családtagok"
 
 #: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Létre lehet hozni családtagjai most, vagy vegye fel őket később. Minden bejegyzés lesz <i>új</i> személy rekordok."
-
-#: 
 msgid "First"
 msgstr "Első"
 
@@ -1046,14 +1042,6 @@ msgid "Envelope Number"
 msgstr "Boríték száma"
 
 #: 
-msgid "Previous Family"
-msgstr "Korábbi Family"
-
-#: 
-msgid "Next Family"
-msgstr "Következő Családi"
-
-#: 
 msgid "Upload Photo"
 msgstr "Fotó feltöltése"
 
@@ -1129,14 +1117,6 @@ msgstr "Módszer"
 #: 
 msgid "Comment"
 msgstr "Megjegyzés"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Új fogadalmat"
-
-#: 
-msgid "Add a new payment"
-msgstr "Új fizetési"
 
 #: 
 msgid "Confirm Delete"
@@ -1706,15 +1686,6 @@ msgid "Start Date/Time"
 msgstr "Kezdő dátum / idő"
 
 #: 
-#, fuzzy
-msgid "Attendees"
-msgstr "Résztvevők ("
-
-#: 
-msgid " Monthly Averages"
-msgstr "Havi átlagok"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Érvénytelen login vagy jelszó"
 
@@ -2021,28 +1992,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Ellenőrizze szám nem érvényes a \"készpénz\" fizetési"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Pledge szerkesztő"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Fizetés Vágó:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Fizess Slip #"
-
-#: 
 msgid " more entries will fit."
 msgstr "több bejegyzés fér."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Fizetési Editor - módosítása meglévő támogatási"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Fizetési Editor - New Deposit Slip jön létre"
 
 #: 
 msgid "Find family->"

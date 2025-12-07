@@ -1012,10 +1012,6 @@ msgid "Contact Info"
 msgstr "Kontakt informasjon"
 
 #: 
-msgid "Other Info"
-msgstr "Annen Informasjon"
-
-#: 
 msgid "Envelope Info"
 msgstr "Brev Informasjon"
 
@@ -1026,10 +1022,6 @@ msgstr "Custom Fields"
 #: 
 msgid "Family Members"
 msgstr "Familiemedlemmer"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Du kan opprette familiemedlemmer nå eller legg dem senere. Alle bidrag vil bli <i>nye</i> personer poster."
 
 #: 
 msgid "First"
@@ -1124,20 +1116,8 @@ msgid "Envelope Number"
 msgstr "Konvolutt nummer"
 
 #: 
-msgid "Verify Info"
-msgstr "Verifiser Informasjon"
-
-#: 
 msgid "Add New Member"
 msgstr "Legg til nytt Medlem"
-
-#: 
-msgid "Previous Family"
-msgstr "Forrige Family"
-
-#: 
-msgid "Next Family"
-msgstr "Neste Family"
 
 #: 
 msgid "Upload Photo"
@@ -1227,14 +1207,6 @@ msgstr "Metode"
 #: 
 msgid "Comment"
 msgstr "Kommentar"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Legg til en ny pant"
-
-#: 
-msgid "Add a new payment"
-msgstr "Legg til en ny betaling"
 
 #: 
 msgid "Close"
@@ -1915,15 +1887,6 @@ msgid "Start Date/Time"
 msgstr "Startdato / tid"
 
 #: 
-#, fuzzy
-msgid "Attendees"
-msgstr "Deltakere ("
-
-#: 
-msgid " Monthly Averages"
-msgstr "Månedlige gjennomsnitt"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Ugyldig brukernavn eller passord"
 
@@ -2254,24 +2217,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "indikerer elementer arvet fra den tilknyttede familien posten."
 
 #: 
-msgid "Personal Info"
-msgstr "Personlig Informasjon"
-
-#: 
 msgid "Birth Month"
 msgstr "Fødselsmåned"
 
 #: 
-msgid "Select Month"
-msgstr "Velg Måned"
-
-#: 
 msgid "Birth Day"
 msgstr "Fødselsdag"
-
-#: 
-msgid "Select Day"
-msgstr "Velg Dag"
 
 #: 
 #, fuzzy
@@ -2285,10 +2236,6 @@ msgstr "Skjul Alder"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Opprett en ny familie (med etternavn)"
-
-#: 
-msgid "Membership Info"
-msgstr "Medlemsinformasjon"
 
 #: 
 #, fuzzy
@@ -2377,29 +2324,9 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Sjekk nummeret ikke gyldig for &#39;Cash&#39; betaling"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Pledge Editor"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Betaling Redaktør:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Innskudd Slip #"
-
-#: 
 #, fuzzy
 msgid " more entries will fit."
 msgstr "flere kontroller vil passe."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Betaling Editor - Endre eksisterende betaling"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Betaling Editor - New Deposit Slip vil bli opprettet"
 
 #: 
 msgid "Deposit closed"

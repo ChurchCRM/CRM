@@ -989,10 +989,6 @@ msgid "Contact Info"
 msgstr "بيانات الاتصال"
 
 #: 
-msgid "Other Info"
-msgstr "بيانات اخرى"
-
-#: 
 msgid "Envelope Info"
 msgstr "معلومات المظروف"
 
@@ -1003,10 +999,6 @@ msgstr "حقول خاصة"
 #: 
 msgid "Family Members"
 msgstr "اعضاء العائلة"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "يمكنك إنشاء أفراد الأسرة الآن أو إضافتها لاحقا. وسوف تصبح كل مقالات سجلات الشخص <i>جديدة.</i>"
 
 #: 
 msgid "First"
@@ -1101,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "رقم المظروف"
 
 #: 
-msgid "Verify Info"
-msgstr "تحقق من المعلومات"
-
-#: 
 msgid "Add New Member"
 msgstr "اضافة عضو جديد"
-
-#: 
-msgid "Previous Family"
-msgstr "العائلة السابقة"
-
-#: 
-msgid "Next Family"
-msgstr "الأسرة التالية"
 
 #: 
 msgid "Upload Photo"
@@ -1203,14 +1183,6 @@ msgstr "الطريقة"
 #: 
 msgid "Comment"
 msgstr "تعليق"
-
-#: 
-msgid "Add a new pledge"
-msgstr "إضافة التعهد الجديد"
-
-#: 
-msgid "Add a new payment"
-msgstr "إضافة دفعة جديدة"
 
 #: 
 msgid "Close"
@@ -1872,14 +1844,6 @@ msgid "Start Date/Time"
 msgstr "تاريخ/وقت البدء"
 
 #: 
-msgid "Attendees"
-msgstr "الحضور"
-
-#: 
-msgid " Monthly Averages"
-msgstr "المتوسطات الشهرية"
-
-#: 
 msgid "Invalid login or password"
 msgstr "معلومات الدخول خاطئة او كلمة المرور خاطئة"
 
@@ -2220,32 +2184,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "يشير العناصر الموروثة من سجل الأسرة المرتبطة بها."
 
 #: 
-msgid "Personal Info"
-msgstr "معلومات شخصية"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "السيد، السيدة، الدكتور القس"
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "الابن، الأب، III"
-
-#: 
 msgid "Birth Month"
 msgstr "شهر"
 
 #: 
-msgid "Select Month"
-msgstr "اختر الشهر"
-
-#: 
 msgid "Birth Day"
 msgstr "يوم"
-
-#: 
-msgid "Select Day"
-msgstr "اختر يوم"
 
 #: 
 msgid "Birth Year"
@@ -2258,10 +2202,6 @@ msgstr "اخفاء العمر"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "انشاء عائلة جديدة باستخدام اسم العائلة"
-
-#: 
-msgid "Membership Info"
-msgstr "معلومات العضوية"
 
 #: 
 msgid "Friend Date"
@@ -2348,28 +2288,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "الاختيار رقم غير صالح للدفع \"CASH\""
 
 #: 
-msgid "Pledge Editor"
-msgstr "محرر تعهد"
-
-#: 
-msgid "Payment Editor: "
-msgstr "محرر الدفع:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr "قسيمة الإيداع #"
-
-#: 
 msgid " more entries will fit."
 msgstr "وأكثر من إدخالات يصلح."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "محرر الدفع - تعديل الدفع الحالية"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "محرر الدفع - نيو الإيداع زلة سيتم إنشاء"
 
 #: 
 msgid "Deposit closed"
@@ -2673,10 +2593,6 @@ msgstr "ارسال"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "تعهد تقرير تذكير"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "تقارير الأحداث الحضور"
 
 #: 
 msgid "Restore Database"
@@ -3621,18 +3537,6 @@ msgid "Import Data"
 msgstr "ادخال بيانات"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "هل أنت متأكد أنك تريد حذف هذا الشخص من معرف الحدث:"
-
-#: 
-msgid "Date Range"
-msgstr "نطاق الموعد"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "سوف حذف هذا نوع الحدث NOT حذف أي أحداث الحالية أو التهم الحضور. هل أنت متأكد أنك تريد حذف نوع الحدث ID:"
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "هل أنت متأكد أنك تريد حذف المحدد"
 
@@ -3661,10 +3565,6 @@ msgid "Deposit Date"
 msgstr "تاريخ الايداع"
 
 #: 
-msgid "Details:"
-msgstr "التفاصيل:"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "سيؤدي هذا إلى استبدال الأرقام المغلف الأسرة في قاعدة البيانات مع أولئك الذين يتم اختيارهم على هذه الصفحة. استمر؟"
 
@@ -3679,42 +3579,6 @@ msgstr "مع واحد على الأقل:"
 #: 
 msgid "Welcome to"
 msgstr "مرحبا بك في"
-
-#: 
-msgid "Select Database Files"
-msgstr "ملفات قاعدة البيانات حدد"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "حدد ملف النسخ الاحتياطي لاستعادة"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "تنبيه: هذا سوف يمحو تماما قاعدة البيانات الموجودة، واستبدالها النسخ الاحتياطي"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "إذا قمت بتحميل نسخة احتياطية من ChurchInfo، أو إصدار سابق من ChurchCRM، فإنه سيتم ترقية تلقائيا إلى مخطط قاعدة البيانات الحالية"
-
-#: 
-msgid "Upload Files"
-msgstr "تحميل الملفات"
-
-#: 
-msgid "No Restore Running"
-msgstr "لا استعادة تشغيل"
-
-#: 
-msgid "Restore Complete"
-msgstr "اكتمال الاستعادة"
-
-#: 
-msgid "Login to restored Database"
-msgstr "تسجيل الدخول إلى قاعدة بيانات استعادة"
-
-#: 
-msgid "Restore Error."
-msgstr "استعادة خطأ."
 
 #: 
 msgid "Church Information"
@@ -3818,57 +3682,20 @@ msgid "Enter Name"
 msgstr "ادخل الاسم"
 
 #: 
-msgid "Update Church Info"
-msgstr "تحديث معلومات كنيسة"
-
-#: 
-msgid "Set Church Address"
-msgstr "مجموعة الكنيسة العناوين"
-
-#: 
-msgid "Set Email Settings"
-msgstr "تعيين إعدادات البريد الإلكتروني"
-
-#: 
 msgid "New Release"
 msgstr "إصدار جديد"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "النزاهة تطبيق التحقق من فشل"
 
 #: 
 msgid "Self Registration"
 msgstr "التسجيل الذاتي"
 
 #: 
-msgid "Restore Status:"
-msgstr "استعادة الحالة:"
-
-#: 
 msgid "No coordinates found"
 msgstr "لم يتم العثور على الإحداثيات"
 
 #: 
-msgid "Backup Status:"
-msgstr "الحالة النسخ الاحتياطي:"
-
-#: 
-msgid "No Backup Running"
-msgstr "لا تشغيل النسخ الاحتياطي"
-
-#: 
 msgid "Anonymous"
 msgstr "مجهول"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "الحضور لمعرف الحدث:"
-
-#: 
-msgid "Yearly"
-msgstr "سنوي"
 
 #: 
 msgid "Registration Complete"
@@ -3919,10 +3746,6 @@ msgid "One or more files failed signature validation"
 msgstr "فشل واحد أو أكثر من الملفات التحقق من صحة التوقيع"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "تكوين HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "عائلة:"
 
@@ -3963,10 +3786,6 @@ msgid "Voting members "
 msgstr "أعضاء التصويت"
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "استعادة تشغيل، الرجاء الانتظار."
-
-#: 
 msgid "Family Members:"
 msgstr "أفراد الأسرة:"
 
@@ -3989,10 +3808,6 @@ msgstr "اسم الملف:"
 #: 
 msgid "Fiscal Year:"
 msgstr "السنة المالية:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "إضافة الحضور للحدث"
 
 #: 
 msgid "family"
@@ -4021,10 +3836,6 @@ msgstr "تاريخ الانتهاء:"
 #: 
 msgid "Members:"
 msgstr "أفراد:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "تعديل إعدادات عامة"
 
 #: 
 msgid "There were "
@@ -4897,46 +4708,6 @@ msgstr "على الشهري"
 #: 
 msgid "Yearly on"
 msgstr "سنويا على"
-
-#: 
-msgid "All Events of Type"
-msgstr "كل الأحداث من نوع"
-
-#: 
-msgid "There is"
-msgstr "يوجد"
-
-#: 
-msgid "There are"
-msgstr "يوجد"
-
-#: 
-msgid "event"
-msgstr "حدث"
-
-#: 
-msgid "events"
-msgstr "أحداث"
-
-#: 
-msgid " in this category."
-msgstr "في هذه الفئة."
-
-#: 
-msgid "There currently is"
-msgstr "لا يوجد حاليا"
-
-#: 
-msgid "There currently are"
-msgstr "يوجد حاليا"
-
-#: 
-msgid "custom event type"
-msgstr "عرف نوع الحدث"
-
-#: 
-msgid "custom event types"
-msgstr "أنواع حدث مخصص"
 
 #: 
 msgid "Family Roles Editor"
@@ -6346,42 +6117,6 @@ msgid "Please verify your family's information"
 msgstr "يرجى التحقق من المعلومات عائلتك"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "لم يتم تعيين عنوان الكنيسة."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "تم تعيين اسم الكنيسة إلى القيمة الافتراضية"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "SMTP معلومات خادم فارغة"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "يمكن أن النظام الخاص بك سيكون أكثر أمنا عن طريق تثبيت SSL TLS سيرت /."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "البيانات الناقصة تصنيف"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "البيانات الناقصة تصنيف لبعض الناس"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "بيانات مفقودة الجنس"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "البيانات الناقصة الجنس بالنسبة لبعض الناس"
-
-#: 
-msgid "Missing Role Data"
-msgstr "في عداد المفقودين دور البيانات"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "غير قادر على تحميل معلومات التحقق"
 
@@ -6446,20 +6181,8 @@ msgid "Verified In Person"
 msgstr "تم التحقق منه شخصيا"
 
 #: 
-msgid "None State"
-msgstr "أيا الدولة"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "لا يحتوي أرشيف النسخ الاحتياطي قاعدة بيانات"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "الاحداثيات في عداد المفقودين"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "عائلة بيانات الاحداثيات لبعض الأسر"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6582,28 +6305,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "تجاوز ملف تحديد هذا خوادم أقصى حجم التحميل من"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "غير الملباة تطبيق المتطلبات الأساسية"
-
-#: 
 msgid "Failed"
 msgstr "فشل"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "الكنيسة التحقق من رقم الحساب"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "في عداد المفقودين دور البيانات لبعض الناس"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "PHP الحد الأقصى لحجم الملف صغير جدا"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "زيادة حدود فب تحميل للسماح للتحميل الصورة المحمول، واستعادة النسخ الاحتياطي."
 
 #: 
 msgid "Deactivated the Family"
@@ -6675,10 +6382,6 @@ msgid "Coordinate data base file name:"
 msgstr "تنسيق البيانات اسم ملف قاعدة:"
 
 #: 
-msgid "Intersect With Cart"
-msgstr "تتقاطع مع العربة"
-
-#: 
 msgid "select an option"
 msgstr "حدد اختيارا"
 
@@ -6717,15 +6420,6 @@ msgstr "الخاصية لا يمكن أن يكون غير معين."
 #: 
 msgid "Select event"
 msgstr "حدد الحدث"
-
-#: 
-msgid "Person's Name"
-msgstr "اسم الشخص"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "إيداعه بواسطة (اختياري)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -6834,14 +6528,6 @@ msgstr "تعيين"
 #: 
 msgid "Photo"
 msgstr "صورة فوتوغرافية"
-
-#: 
-msgid "Payment Details"
-msgstr "بيانات الدفع"
-
-#: 
-msgid "Fund Split"
-msgstr "صندوق سبليت"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7637,18 +7323,6 @@ msgid "Upgrade Required"
 msgstr "مطلوب ترقية"
 
 #: 
-msgid "Current DB Version: "
-msgstr "صفحة DB الحالية:"
-
-#: 
-msgid "Current Software Version: "
-msgstr "الإصدار الحالي البرمجيات:"
-
-#: 
-msgid "Upgrade database"
-msgstr "قاعدة بيانات الترقية"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "أظهار تواريخ ميلاد والمناسبات السنوية على البدء من CRM"
 
@@ -7705,14 +7379,6 @@ msgid "Meanwhile, you may"
 msgstr "وفي الوقت نفسه، يجوز لك"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "قاعدة بيانات فقط (.SQL)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "قاعدة بيانات وصور (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "المستخدم يجب ان يكون ادمن"
 
@@ -7745,10 +7411,6 @@ msgid "return to People Dashboard"
 msgstr "العودة إلى الشعب لوحة"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "يجب أن يكون المستخدم إذن MenuOptions"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "المضيف SMTP لا الإعداد، يرجى زيارة صفحة إعدادات"
 
@@ -7761,16 +7423,8 @@ msgid "This Family is Deactivated"
 msgstr "هذه الأسرة هي المعطلة"
 
 #: 
-msgid "Metadata"
-msgstr "البيانات الوصفية"
-
-#: 
 msgid "The database has been cleared."
 msgstr "تم مسح قاعدة البيانات."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "يجب أن يكون المستخدم أذونات bAddEvent"
 
 #: 
 msgid "Anniversaries"
@@ -7911,10 +7565,6 @@ msgid "Enable Events menu."
 msgstr "تمكين القائمة الأحداث."
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "تمكين القائمة التقويم."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "تمكين القائمة لجمع التبرعات."
 
@@ -8040,10 +7690,6 @@ msgid "User must have Edit Records permission"
 msgstr "يجب أن يكون المستخدم إذن تحرير السجلات"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "يجب أن يكون المستخدم إذن المالية"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "لا تستطيع مسح نفسك"
 
@@ -8150,18 +7796,6 @@ msgid "Passed"
 msgstr "تم الاجتياز بنجاح"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "PHP ماكس تنفيذ الوقت هو أيضا قصيرة"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "زيادة الحد PHP وقت التنفيذ للسماح للنسخ الاحتياطي والاستعادة."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "النزاهة تحقق التطبيق"
-
-#: 
 msgid "Focus"
 msgstr "التركيز"
 
@@ -8207,16 +7841,8 @@ msgid "Error decoding signature definition file"
 msgstr "خطأ في ملف تعريف فك توقيع"
 
 #: 
-msgid "Generate Backup"
-msgstr "توليد النسخ الاحتياطي"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "نقطة النهاية النسخ الاحتياطي عن بعد. إذا WEBDAV، وهذا يجب أن يكون رابط المشفرة."
-
-#: 
-msgid "Password (if any)"
-msgstr "كلمة السر (إن وجدت)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8361,20 +7987,8 @@ msgstr[4] "%d سنة"
 msgstr[5] "%d سنة"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "غير معتمد PHP صفحة"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "سيتم قريبا إزالة الدعم لهذا الإصدار PHP. التيار صفحة PHP:"
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "في عداد المفقودين PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "مطلوب PHP ZipArchive لدعم ترقية"
 
 #: 
 msgid "Add Results to Cart"
@@ -8429,10 +8043,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "تحديد اسم التطبيق ليتم عرضها في التطبيق الموثق"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "سر مفاتيح مفقودة من ملف config.php"
 
 #: 
 msgid "Review"
@@ -8819,14 +8429,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "إذا فقدت الوصول إلى تطبيق المصدق المسجل حديثًا ، فستحتاج إلى استخدام رمز الاسترداد للوصول إلى حسابك"
 
 #: 
-msgid "Event Attendance"
-msgstr "حضور الحدث"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "إنشاء تقارير الحضور - و - عدم الحضور للأحداث"
-
-#: 
 msgid "Help translate this project"
 msgstr "ساعد في ترجمة هذا المشروع"
 
@@ -8954,9 +8556,4 @@ msgstr "تغير الدور"
 #: 
 msgid "Delete this person?"
 msgstr "حذف الشخص"
-
-#: 
-#, fuzzy
-msgid "Adult Name (Optional)"
-msgstr "اسم الكبار (اختياري)"
 
