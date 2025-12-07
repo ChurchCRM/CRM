@@ -989,10 +989,6 @@ msgid "Contact Info"
 msgstr "פרטי התקשרות"
 
 #: 
-msgid "Other Info"
-msgstr "מידע אחר"
-
-#: 
 msgid "Envelope Info"
 msgstr "פרטי מעטפה"
 
@@ -1003,10 +999,6 @@ msgstr "שדות מותאמים אישית"
 #: 
 msgid "Family Members"
 msgstr "בני משפחה"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "באפשרותך ליצור בני משפחה כעת או להוסיף אותם מאוחר יותר. כל הרשומות יהפכו לרשומות <i>חדשות</i> של אנשים."
 
 #: 
 msgid "First"
@@ -1101,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "מספר מעטפה"
 
 #: 
-msgid "Verify Info"
-msgstr "אמת מידע"
-
-#: 
 msgid "Add New Member"
 msgstr "הוסף חבר חדש"
-
-#: 
-msgid "Previous Family"
-msgstr "משפחה קודמת"
-
-#: 
-msgid "Next Family"
-msgstr "משפחה הבאה"
 
 #: 
 msgid "Upload Photo"
@@ -1203,14 +1183,6 @@ msgstr "שיטה"
 #: 
 msgid "Comment"
 msgstr "הערה"
-
-#: 
-msgid "Add a new pledge"
-msgstr "הוסף התחייבות חדשה"
-
-#: 
-msgid "Add a new payment"
-msgstr "הוסף תשלום חדש"
 
 #: 
 msgid "Close"
@@ -1871,14 +1843,6 @@ msgid "Start Date/Time"
 msgstr "תאריך/שעת התחלה"
 
 #: 
-msgid "Attendees"
-msgstr "משתתפים"
-
-#: 
-msgid " Monthly Averages"
-msgstr "ממוצעים חודשיים"
-
-#: 
 msgid "Invalid login or password"
 msgstr "שם משתמש או סיסמה לא תקינים"
 
@@ -2219,32 +2183,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "מציין פריטים שנירשו מרשומת המשפחה המקושרת."
 
 #: 
-msgid "Personal Info"
-msgstr "מידע אישי"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "מר, גברת, ד\"ר, כבוד."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "הצעיר, הבכור, III"
-
-#: 
 msgid "Birth Month"
 msgstr "חודש לידה"
 
 #: 
-msgid "Select Month"
-msgstr "בחר חודש"
-
-#: 
 msgid "Birth Day"
 msgstr "יום לידה"
-
-#: 
-msgid "Select Day"
-msgstr "בחר יום"
 
 #: 
 msgid "Birth Year"
@@ -2257,10 +2201,6 @@ msgstr "הסתר גיל"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "צור משפחה חדשה (באמצעות שם משפחה)"
-
-#: 
-msgid "Membership Info"
-msgstr "מידע חברות"
 
 #: 
 msgid "Friend Date"
@@ -2347,28 +2287,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "מספר צ'ק לא תקף עבור תשלום 'מזומן'"
 
 #: 
-msgid "Pledge Editor"
-msgstr "עורך התחייבויות"
-
-#: 
-msgid "Payment Editor: "
-msgstr "עורך תשלומים: "
-
-#: 
-msgid " Deposit Slip #"
-msgstr "פתק הפקדה #"
-
-#: 
 msgid " more entries will fit."
 msgstr "עוד רשומות יתאימו."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "עורך תשלומים - עריכת תשלום קיים"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "עורך תשלומים - ייוצר פתק הפקדה חדש"
 
 #: 
 msgid "Deposit closed"
@@ -2671,10 +2591,6 @@ msgstr "שלח"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "דוח תזכורת התחייבויות"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "דוחות נוכחות באירוע"
 
 #: 
 msgid "Restore Database"
@@ -3617,18 +3533,6 @@ msgid "Import Data"
 msgstr "ייבא נתונים"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "האם אתה בטוח שברצונך למחוק אדם זה מזיהוי האירוע: "
-
-#: 
-msgid "Date Range"
-msgstr "טווח תאריכים"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "מחיקת סוג אירוע זה לא תמחק אירועים קיימים או ספירות נוכחות. האם אתה בטוח שברצונך למחוק את זיהוי סוג האירוע: "
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "אנא אשר שברצונך למחוק את המסומן"
 
@@ -3657,10 +3561,6 @@ msgid "Deposit Date"
 msgstr "תאריך הפקדה"
 
 #: 
-msgid "Details:"
-msgstr "פרטים:"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "זה יחליף את מספרי המעטפות של המשפחה במסד הנתונים עם אלה שנבחרו בדף זה. להמשיך?"
 
@@ -3675,42 +3575,6 @@ msgstr "עם לפחות אחד:"
 #: 
 msgid "Welcome to"
 msgstr "ברוך הבא ל"
-
-#: 
-msgid "Select Database Files"
-msgstr "בחר קבצי מסד נתונים"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "בחר קובץ גיבוי לשחזור"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "זהירות: פעולה זו תמחק לחלוטין את מסד הנתונים הקיים ותחליף אותו בגיבוי"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "אם תעלה גיבוי מ-ChurchInfo, או גרסה קודמת של ChurchCRM, הוא יעודכן אוטומטית לסכמת מסד הנתונים הנוכחית"
-
-#: 
-msgid "Upload Files"
-msgstr "העלה קבצים"
-
-#: 
-msgid "No Restore Running"
-msgstr "אין שחזור פעיל"
-
-#: 
-msgid "Restore Complete"
-msgstr "השחזור הושלם"
-
-#: 
-msgid "Login to restored Database"
-msgstr "התחבר למסד הנתונים המשוחזר"
-
-#: 
-msgid "Restore Error."
-msgstr "שגיאת שחזור."
 
 #: 
 msgid "Church Information"
@@ -3813,56 +3677,20 @@ msgid "Enter Name"
 msgstr "הכנס שם"
 
 #: 
-msgid "Update Church Info"
-msgstr "עדכון מידע על התוכנה"
-
-#: 
-msgid "Set Church Address"
-msgstr "קבע כתובת מוסד"
-
-#: 
-msgid "Set Email Settings"
-msgstr "הגדר הגדרות אימייל"
-
-#: 
 msgid "New Release"
 msgstr "מהדורה חדשה"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "בדיקת תקינות היישום נכשלה"
 
 #: 
 msgid "Self Registration"
 msgstr "הרשמה עצמית"
 
 #: 
-msgid "Restore Status:"
-msgstr "שחזור סטטוס:"
-
-#: 
 msgid "No coordinates found"
 msgstr "לא נמצאו קואורדינטות"
 
 #: 
-msgid "Backup Status:"
-msgstr "סטטוס גיבוי:"
-
-#: 
-msgid "No Backup Running"
-msgstr "אין גיבוי פעיל"
-
-#: 
 msgid "Anonymous"
 msgstr "אנונימי"
-
-#: 
-msgid "Attendees for Event"
-msgstr "משתתפים באירוע"
-
-#: 
-msgid "Yearly"
-msgstr "שנתי"
 
 #: 
 msgid "Registration Complete"
@@ -3913,10 +3741,6 @@ msgid "One or more files failed signature validation"
 msgstr "אימות החתימה נכשל עבור קובץ אחד או יותר"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "הגדרת HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "משפחה"
 
@@ -3957,10 +3781,6 @@ msgid "Voting members "
 msgstr "חברים בעלי זכות הצבעה"
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "שחזור מתבצע, אנא המתן."
-
-#: 
 msgid "Family Members:"
 msgstr "בני משפחה"
 
@@ -3983,10 +3803,6 @@ msgstr "שם הקובץ:"
 #: 
 msgid "Fiscal Year:"
 msgstr "שנת כספים:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "הוספת משתתפים לאירוע"
 
 #: 
 msgid "family"
@@ -4015,10 +3831,6 @@ msgstr "תאריך עזיבה:"
 #: 
 msgid "Members:"
 msgstr "חברים:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "ערוך הגדרות כלליות"
 
 #: 
 msgid "There were "
@@ -4888,46 +4700,6 @@ msgstr "חודשי ב-"
 #: 
 msgid "Yearly on"
 msgstr "שנתי ב-"
-
-#: 
-msgid "All Events of Type"
-msgstr "כל האירועים מסוג"
-
-#: 
-msgid "There is"
-msgstr "יש"
-
-#: 
-msgid "There are"
-msgstr "יש"
-
-#: 
-msgid "event"
-msgstr "אירוע"
-
-#: 
-msgid "events"
-msgstr "אירועים"
-
-#: 
-msgid " in this category."
-msgstr "בקטגוריה זו."
-
-#: 
-msgid "There currently is"
-msgstr "כרגע יש"
-
-#: 
-msgid "There currently are"
-msgstr "כרגע יש"
-
-#: 
-msgid "custom event type"
-msgstr "סוג אירוע מותאם אישית"
-
-#: 
-msgid "custom event types"
-msgstr "סוג אירוע מותאם אישית"
 
 #: 
 msgid "Family Roles Editor"
@@ -6340,42 +6112,6 @@ msgid "Please verify your family's information"
 msgstr "אנא אשרו את פרטי משפחתכם"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "כתובת המוסד לא נקבעה"
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "שם המוסד מוגדר לערך ברירת מחדל"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "פרטי שרת ה - SMTP ריקים"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "המערכת שלך יכולה להיות בטוחה יותר על ידי התקנת תעודת TLS/SSL."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "חסרים נתוני סיווג"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "חסרים נתוני סיווג עבור חלק מהאנשים"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "חסרים נתוני מגדר"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "חסרים נתוני מגדר עבור חלק מהאנשים"
-
-#: 
-msgid "Missing Role Data"
-msgstr "חסרים נתוני תפקיד"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "לא ניתן לטעון מידע אימות"
 
@@ -6440,20 +6176,8 @@ msgid "Verified In Person"
 msgstr "אומת באופן אישי"
 
 #: 
-msgid "None State"
-msgstr "ללא מדינה"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "קובץ הגיבוי אינו מכיל מסד נתונים"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "קואורדינטות חסרות"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "משפחה מתאמת נתונים עבור מספר משפחות"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6576,28 +6300,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "הקובץ שנבחר חורג מגודל ההעלאה המקסימלי של השרת"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "דרישות הקדם של היישום לא ממולאות"
-
-#: 
 msgid "Failed"
 msgstr "נכשל"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "מספר חשבון בנק של המוסד"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "נתוני תפקיד חסרים עבור חלק מהאנשים"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "גודל קובץ מקסימלי של PHP קטן מדי"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "הגדל את מגבלות ההעלאה של PHP כדי לאפשר העלאת תמונות מהנייד ושחזור גיבוי"
 
 #: 
 msgid "Deactivated the Family"
@@ -6669,10 +6377,6 @@ msgid "Coordinate data base file name:"
 msgstr "שם קובץ מסד נתוני קואורדינטות:"
 
 #: 
-msgid "Intersect With Cart"
-msgstr "הצטלבות עם עגלה"
-
-#: 
 msgid "select an option"
 msgstr "בחר אפשרות"
 
@@ -6711,14 +6415,6 @@ msgstr "לא ניתן היה לבטל את שיוך המאפיין."
 #: 
 msgid "Select event"
 msgstr "בחר אירוע"
-
-#: 
-msgid "Person's Name"
-msgstr "שם האדם"
-
-#: 
-msgid "Checked in By (Optional)"
-msgstr "נרשם על ידי (אופציונלי)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -6827,14 +6523,6 @@ msgstr "משויך"
 #: 
 msgid "Photo"
 msgstr "תמונה"
-
-#: 
-msgid "Payment Details"
-msgstr "פרטי תשלום"
-
-#: 
-msgid "Fund Split"
-msgstr "פיצול כספים"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7628,18 +7316,6 @@ msgid "Upgrade Required"
 msgstr "נדרש שדרוג"
 
 #: 
-msgid "Current DB Version: "
-msgstr "גרסת מסד הנתונים הנוכחית: "
-
-#: 
-msgid "Current Software Version: "
-msgstr "גרסת תוכנה נוכחית: "
-
-#: 
-msgid "Upgrade database"
-msgstr "שדרוג מסד הנתונים"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "הצג תאריכי לידה וימי נישואין בעת ​​הפעלת מערכת ה-CRM"
 
@@ -7696,14 +7372,6 @@ msgid "Meanwhile, you may"
 msgstr "בינתיים, אתה יכול"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "מסד נתונים בלבד (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "מסד נתונים ותמונות (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "המשתמש חייב להיות מנהל"
 
@@ -7736,10 +7404,6 @@ msgid "return to People Dashboard"
 msgstr "חזור ללוח הבקרה של אנשים"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "על המשתמש להיות בעל הרשאת תפריט אפשרויות"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "מארח ה-SMTP לא הוגדר, אנא בקר בדף ההגדרות"
 
@@ -7752,16 +7416,8 @@ msgid "This Family is Deactivated"
 msgstr "משפחה זו מושבתת"
 
 #: 
-msgid "Metadata"
-msgstr "מטא-נתונים"
-
-#: 
 msgid "The database has been cleared."
 msgstr "מסד הנתונים נוקה."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "על המשתמש להיות בעל הרשאות bAddEvent"
 
 #: 
 msgid "Anniversaries"
@@ -7901,10 +7557,6 @@ msgid "Enable Events menu."
 msgstr "הפעל תפריט אירועים."
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "הפעל תפריט לוח שנה."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "הפעל תפריט גיוס כספים."
 
@@ -8029,10 +7681,6 @@ msgid "User must have Edit Records permission"
 msgstr "על המשתמש להיות בעל הרשאת עריכת רשומות"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "המשתמש חייב להיות בעל הרשאת כספים"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "לא ניתן למחוק את עצמך"
 
@@ -8138,18 +7786,6 @@ msgid "Passed"
 msgstr "עבר"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "זמן הביצוע המרבי של PHP קצר מדי"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "הגדל את מגבלת זמן הריצה של PHP כדי לאפשר גיבוי ושחזור."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "בדיקת שלמות האפליקציה"
-
-#: 
 msgid "Focus"
 msgstr "מיקוד"
 
@@ -8195,16 +7831,8 @@ msgid "Error decoding signature definition file"
 msgstr "שגיאה בפענוח קובץ הגדרות חתימה"
 
 #: 
-msgid "Generate Backup"
-msgstr "צור גיבוי"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "נקודת קצה לגיבוי מרוחק. אם זה WebDAV, חייב להיות מקודד URL."
-
-#: 
-msgid "Password (if any)"
-msgstr "סיסמא (אם יש)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8350,20 +7978,8 @@ msgstr[0] "%d שנה"
 msgstr[1] "%d שנים"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "גרסת PHP לא נתמכת"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "התמיכה בגרסת PHP זו תוסר בקרוב. גרסת PHP נוכחית: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "חסר PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "נדרש PHP ZipArchive לתמיכה בשדרוג"
 
 #: 
 msgid "Add Results to Cart"
@@ -8417,10 +8033,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "ציין את שם האפליקציה שיוצג באפליקציית האימות"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "מפתחות סודיים חסרים מ-Config.php"
 
 #: 
 msgid "Review"
@@ -8805,14 +8417,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "אם אתה איבדת גישה לאפליקציית האימות החדשה שלך, אתה תצטרך להשתמש בקוד התאוששות כדי לגשת לחשבונך"
 
 #: 
-msgid "Event Attendance"
-msgstr "נוכחות באירוע"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "צור דוחות נוכחות ולא-נוכחות לאירועים"
-
-#: 
 msgid "Help translate this project"
 msgstr "עזור לתרגם את הפרויקט הזה"
 
@@ -9082,10 +8686,6 @@ msgstr "אנשים עם כרטיס אשראי"
 #: 
 msgid "People who are configured to pay by credit card."
 msgstr "אנשים שמוגדרים לשלם בכרטיס אשראי."
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "שם מבוגר (אופציונלי)"
 
 #: 
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."

@@ -1001,10 +1001,6 @@ msgid "Family Members"
 msgstr "Członkowie Rodziny"
 
 #: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Możesz Utworzyć członków teraz lub dodać ich później. Wszystkie wpisy staną się <i>nowymi</i> Osobami ."
-
-#: 
 msgid "First"
 msgstr "Imię"
 
@@ -1089,14 +1085,6 @@ msgid "Envelope Number"
 msgstr "Nr. Koperty"
 
 #: 
-msgid "Previous Family"
-msgstr "Poprzednia Rodzina"
-
-#: 
-msgid "Next Family"
-msgstr "Następna Rodzina"
-
-#: 
 msgid "Upload Photo"
 msgstr "Załaduj Zdjęcie"
 
@@ -1172,14 +1160,6 @@ msgstr "Sposób"
 #: 
 msgid "Comment"
 msgstr "Komentarz"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Dodaj nowy Datek"
-
-#: 
-msgid "Add a new payment"
-msgstr "Dodaj nową Płatność"
 
 #: 
 msgid "Confirm Delete"
@@ -1846,15 +1826,6 @@ msgid "Start Date/Time"
 msgstr "Data/Czas Rozpoczęcia"
 
 #: 
-#, fuzzy
-msgid "Attendees"
-msgstr "Uczestnicy("
-
-#: 
-msgid " Monthly Averages"
-msgstr " Średnia w Miesiącu"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Nieprawidłowa Nazwa Użytkownika lub Hasło"
 
@@ -2194,32 +2165,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "wskazuje pola odziedziczone z ustawień Rodziny."
 
 #: 
-msgid "Personal Info"
-msgstr "Informacje Osobiste"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Pan, Pani, Dr, Ks"
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Mł., St., III"
-
-#: 
 msgid "Birth Month"
 msgstr "Miesiąc Urodzin"
 
 #: 
-msgid "Select Month"
-msgstr "Wybierz Miesiąc"
-
-#: 
 msgid "Birth Day"
 msgstr "Dzień Urodzin"
-
-#: 
-msgid "Select Day"
-msgstr "Wybierz Dzień"
 
 #: 
 #, fuzzy
@@ -2233,10 +2184,6 @@ msgstr "Ukryj Wiek"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Utwórz Nową Rodzinę (używając Nazwiska)"
-
-#: 
-msgid "Membership Info"
-msgstr "Dane Członkostwa"
 
 #: 
 #, fuzzy
@@ -2325,28 +2272,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Pole 'Numer Czeku' nie jest potrzebne dla płatności Gotówką"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Edytor Datków (Pledge)"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Edytor Płatności:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Odcinek Wpłaty #"
-
-#: 
 msgid " more entries will fit."
 msgstr " wpisów może jeszcze zostać dodanych."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Edytor Płatności - Zmodyfikuj Istniejącą Wpłatę"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Edytor Płatności - Nowy Odcinek Wpłaty zostanie utworzony"
 
 #: 
 msgid "Deposit closed"
@@ -2656,10 +2583,6 @@ msgstr "Wyślij"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Raport Przypominający o Datkach"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Raporty Uczestnictwa w Wydarzeniach"
 
 #: 
 msgid "Restore Database"
@@ -3481,10 +3404,6 @@ msgid "Events"
 msgstr "Wydarzenia"
 
 #: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Skasowanie tego typu wydarzenia nie spowoduje usunięcia wszystkich wydarzeń. Czy na pewno usunąć ten typ wydarzenia?"
-
-#: 
 msgid "False"
 msgstr "False"
 
@@ -3511,10 +3430,6 @@ msgstr "Dodaj wszystkie klasy"
 #: 
 msgid "Clear All Classes"
 msgstr "Wyczyść wszystkie klasy"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Dodaj uczestników wydarzenia"
 
 #: 
 msgid "Groups"
@@ -3611,18 +3526,6 @@ msgid "Allow user to add new event"
 msgstr "Zezwól użytkownikom na tworzenie wydarzeń"
 
 #: 
-msgid "All Events of Type"
-msgstr "Wszystkie wydarzenia według typu"
-
-#: 
-msgid "event"
-msgstr "wydarzenie"
-
-#: 
-msgid "events"
-msgstr "wydarzenia"
-
-#: 
 msgid "Person Classification"
 msgstr "Kategoria Osoby"
 
@@ -3633,14 +3536,6 @@ msgstr "Kategorie Osoby"
 #: 
 msgid "Person Classifications Editor"
 msgstr "Edytor Kategorii Osoby"
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Brak Danych Kategorii"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Brak Danych Kategorii dla Niektórych Osób"
 
 #: 
 msgid "Family Registration"
@@ -3812,10 +3707,6 @@ msgid "Enable Events menu."
 msgstr "Pokaż menu Wydarzenia"
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "Pokaż menu Kalendarz"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Pokaż menu Zbiórka Pieniędzy"
 
@@ -3914,10 +3805,6 @@ msgstr "Użytkownik musi mieć dostęp do Zarządzania Grupami"
 #: 
 msgid "User must have Edit Records permission"
 msgstr "Użytkownik musi mieć dostęp do Edycji Rekordów"
-
-#: 
-msgid "User must have Finance permission"
-msgstr "Użytkownik musi mieć dostęp do Finansów"
 
 #: 
 msgid "Can't delete yourself"
@@ -4026,18 +3913,6 @@ msgid "Passed"
 msgstr "Poprawne"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "Maksymalny Czas Wykonania PHP zbyt krótki"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Wydłuż Czas Wykonania PHP aby zezwolić na archiwizację i przywracanie."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Sprawdzenie Spójności Systemu"
-
-#: 
 msgid "Focus"
 msgstr "Zaznacz"
 
@@ -4083,16 +3958,8 @@ msgid "Error decoding signature definition file"
 msgstr "Błąd odczytu pliku podpisów"
 
 #: 
-msgid "Generate Backup"
-msgstr "Wykonaj Kopię Bezpieczeństwa"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Zdalny Punkt Kopii Bezpieczeństwa. Jeżeli jest to WebDAV, URL musi zaeiwrać wszystkie informacje. "
-
-#: 
-msgid "Password (if any)"
-msgstr "Hasło"
 
 #: 
 msgid "All information on this page is correct."
@@ -4226,20 +4093,8 @@ msgid "Maximum number of Calendar Events"
 msgstr "Maksymalna liczba Wydarzeń w kalendarzu"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Nie odbsługiwana wersja PHP"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Wsparcie dla tej wersji PHP wkrótce się skończy. Obecna wersja PHP: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Brak PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "PHP ZipArchive jest wymagane do aktualizacji"
 
 #: 
 msgid "Add Results to Cart"
@@ -4294,10 +4149,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Podaj nazwę wyswietlaną przez aplikację uwierzytelniającą"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Brak Klucza Prywatnego w Config.php"
 
 #: 
 msgid "Review"

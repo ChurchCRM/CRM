@@ -1022,10 +1022,6 @@ msgid "Contact Info"
 msgstr "Kontaktinformation"
 
 #: 
-msgid "Other Info"
-msgstr "Annan information"
-
-#: 
 msgid "Envelope Info"
 msgstr "Kuvertinfo"
 
@@ -1036,10 +1032,6 @@ msgstr "Fritt anpassade fält"
 #: 
 msgid "Family Members"
 msgstr "Familj medlemmar"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Du får skapa familj medlemmer nu eller lägg till de sedan.  Alla inmatningar blir <i>ny</i> person poster"
 
 #: 
 msgid "First"
@@ -1134,20 +1126,8 @@ msgid "Envelope Number"
 msgstr "Kuvertnummer"
 
 #: 
-msgid "Verify Info"
-msgstr "Verifiera Info"
-
-#: 
 msgid "Add New Member"
 msgstr "Lägg till ny medlem"
-
-#: 
-msgid "Previous Family"
-msgstr "Föregående familj"
-
-#: 
-msgid "Next Family"
-msgstr "Nästa familj"
 
 #: 
 msgid "Upload Photo"
@@ -1237,14 +1217,6 @@ msgstr "Metod"
 #: 
 msgid "Comment"
 msgstr "Kommentar"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Lägg till en ny löfte om betalningar"
-
-#: 
-msgid "Add a new payment"
-msgstr "Lägg till en ny betalning"
 
 #: 
 msgid "Close"
@@ -1933,15 +1905,6 @@ msgid "Start Date/Time"
 msgstr "Start datum/tid"
 
 #: 
-#, fuzzy
-msgid "Attendees"
-msgstr "Deltagare"
-
-#: 
-msgid " Monthly Averages"
-msgstr " Månadsgenomsnitt"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Ogiltig användernamn eller lösenord"
 
@@ -2296,32 +2259,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "Visar saker ärvda från motsvarande familj post."
 
 #: 
-msgid "Personal Info"
-msgstr "Personlig information"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Mr, Mrs., Dr., Rev."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Jr., Sr, III"
-
-#: 
 msgid "Birth Month"
 msgstr "Födelsemånad"
 
 #: 
-msgid "Select Month"
-msgstr "Välj månad"
-
-#: 
 msgid "Birth Day"
 msgstr "Födelsedag"
-
-#: 
-msgid "Select Day"
-msgstr "Välj dag"
 
 #: 
 #, fuzzy
@@ -2335,10 +2278,6 @@ msgstr "Gömma åldern"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Skapa en ny famlij (använd efternamn)"
-
-#: 
-msgid "Membership Info"
-msgstr "Info om medlemskap"
 
 #: 
 #, fuzzy
@@ -2427,29 +2366,9 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Kontrollera numret inte giltigt för 'kontant' betalning"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Bidrag löfte redigeringsverktyg"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Betalning redigeringsverktyg:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr " Insättningsblankett nummer"
-
-#: 
 #, fuzzy
 msgid " more entries will fit."
 msgstr " flera checkar har plats."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Betalning redigeringsverktyg - Ändra befintlig betalning"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Betalning redigeringsverktyg - Ny insättningsblankett skapas"
 
 #: 
 msgid "Deposit closed"
@@ -2765,10 +2684,6 @@ msgstr "Skicka"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Bidrag löfte påminnelse rapport"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Rapporter från evenemanget"
 
 #: 
 msgid "Restore Database"
@@ -3756,18 +3671,6 @@ msgid "Import Data"
 msgstr "Importera data"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Är du säker på att du vill ta bort den här personen från Event ID:"
-
-#: 
-msgid "Date Range"
-msgstr "Datumintervall"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Om du raderar denna händelse TYPE raderas INTE befintliga evenemang eller räkningar för deltagande. Är du säker på att du vill radera ID för händelsetyp:"
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Är du säker på att du vill ta bort det valda"
 
@@ -3796,10 +3699,6 @@ msgid "Deposit Date"
 msgstr "Insättningsdatum"
 
 #: 
-msgid "Details:"
-msgstr "detaljer:"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Detta kommer att skriva över familjens kuvertnummer i databasen med de valda på denna sida. Fortsätta?"
 
@@ -3814,42 +3713,6 @@ msgstr "med minst en:"
 #: 
 msgid "Welcome to"
 msgstr "Välkommen till"
-
-#: 
-msgid "Select Database Files"
-msgstr "Välj databasfiler"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Välj en säkerhetskopia som du vill återställa"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "VARNING: Detta raderar den befintliga databasen helt och ersätter den med säkerhetskopian"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Om du laddar upp en säkerhetskopia från ChurchInfo eller en tidigare version av ChurchCRM kommer den att uppgraderas automatiskt till det aktuella databasschemat"
-
-#: 
-msgid "Upload Files"
-msgstr "Ladda upp filer"
-
-#: 
-msgid "No Restore Running"
-msgstr "No Restore Running"
-
-#: 
-msgid "Restore Complete"
-msgstr "Återställ komplett"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Logga in på återställd databas"
-
-#: 
-msgid "Restore Error."
-msgstr "Återställningsfel."
 
 #: 
 msgid "Church Information"
@@ -3953,57 +3816,20 @@ msgid "Enter Name"
 msgstr "Skriv namn"
 
 #: 
-msgid "Update Church Info"
-msgstr "Uppdatera kyrkinfo"
-
-#: 
-msgid "Set Church Address"
-msgstr "Ställ in kyrkans adress"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Ställ e-postinställningar"
-
-#: 
 msgid "New Release"
 msgstr "Nya utgåvan"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Programintegritetskontrollen misslyckades"
 
 #: 
 msgid "Self Registration"
 msgstr "Självregistrering"
 
 #: 
-msgid "Restore Status:"
-msgstr "Återställ status:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Inga koordinater hittades"
 
 #: 
-msgid "Backup Status:"
-msgstr "Säkerhetskopieringsstatus:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Ingen säkerhetskopiering körs"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonym"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Deltagare för evenemangs"
-
-#: 
-msgid "Yearly"
-msgstr "Årlig"
 
 #: 
 msgid "Registration Complete"
@@ -4054,10 +3880,6 @@ msgid "One or more files failed signature validation"
 msgstr "En eller flera filer misslyckades signaturvalidering"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "Konfigurera HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "Familj:"
 
@@ -4098,10 +3920,6 @@ msgid "Voting members "
 msgstr "Rösta medlemmar"
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Återställ igång, vänta."
-
-#: 
 msgid "Family Members:"
 msgstr "Familjemedlemmar:"
 
@@ -4124,10 +3942,6 @@ msgstr "Filnamn:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Räkenskapsår:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Lägg till deltagare för evenemang"
 
 #: 
 msgid "family"
@@ -4156,10 +3970,6 @@ msgstr "Slutdatum:"
 #: 
 msgid "Members:"
 msgstr "medlemmar:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Redigera allmänna inställningar"
 
 #: 
 msgid "There were "
@@ -5032,46 +4842,6 @@ msgstr "Månadsvis på"
 #: 
 msgid "Yearly on"
 msgstr "Årligen på"
-
-#: 
-msgid "All Events of Type"
-msgstr "Alla evenemang av typ"
-
-#: 
-msgid "There is"
-msgstr "Det finns"
-
-#: 
-msgid "There are"
-msgstr "Det finns"
-
-#: 
-msgid "event"
-msgstr "händelse"
-
-#: 
-msgid "events"
-msgstr "evenemang"
-
-#: 
-msgid " in this category."
-msgstr "i denna kategori."
-
-#: 
-msgid "There currently is"
-msgstr "Det finns för närvarande"
-
-#: 
-msgid "There currently are"
-msgstr "Det finns för närvarande"
-
-#: 
-msgid "custom event type"
-msgstr "anpassad händelsetyp"
-
-#: 
-msgid "custom event types"
-msgstr "anpassade händelsetyper"
 
 #: 
 msgid "Family Roles Editor"
@@ -6481,42 +6251,6 @@ msgid "Please verify your family's information"
 msgstr "Kontrollera din familjs information"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Kyrkans adress är inte inställd."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Kyrkans namn är inställt på standardvärde"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "SMTP-serverinfo är tom"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Ditt system kan vara säkrare genom att installera en TLS / SSL Cert."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Klassificeringsdata saknas"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Klassificeringsdata saknas för vissa personer"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Könsdata saknas"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Saknade könsdata för vissa personer"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Saknade rolldata"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Det gick inte att ladda verifieringsinformation"
 
@@ -6581,20 +6315,8 @@ msgid "Verified In Person"
 msgstr "Verifierad person"
 
 #: 
-msgid "None State"
-msgstr "Ingen stat"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Säkerhetskopieringsarkivet innehåller inte en databas"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Saknade koordinater"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Familjekoordinaterar data för vissa familjer"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6717,28 +6439,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Den valda filen överskrider denna servers maximala uppladdningsstorlek på"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Förutsättningar för omöjlig applikation"
-
-#: 
 msgid "Failed"
 msgstr "misslyckades"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Kyrkan kontrollerar kontonummer"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Saknade rolldata för vissa personer"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "PHP Max Filstorlek för liten"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Öka gränserna för uppladdning av php för att möjliggöra mobilfotoöverföring och återställning av säkerhetskopiering."
 
 #: 
 msgid "Deactivated the Family"
@@ -6810,10 +6516,6 @@ msgid "Coordinate data base file name:"
 msgstr "Koordinera databasfilnamn:"
 
 #: 
-msgid "Intersect With Cart"
-msgstr "Korsar med vagn"
-
-#: 
 msgid "select an option"
 msgstr "Välj ett alternativ"
 
@@ -6852,15 +6554,6 @@ msgstr "Fastigheten kunde inte tilldelas."
 #: 
 msgid "Select event"
 msgstr "Välj händelse"
-
-#: 
-msgid "Person's Name"
-msgstr "Personens namn"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Checka in av (valfritt)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -6969,14 +6662,6 @@ msgstr "delad"
 #: 
 msgid "Photo"
 msgstr "Foto"
-
-#: 
-msgid "Payment Details"
-msgstr "Betalningsinformation"
-
-#: 
-msgid "Fund Split"
-msgstr "Fund Split"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7772,18 +7457,6 @@ msgid "Upgrade Required"
 msgstr "Uppgradering krävs"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Nuvarande DB-version:"
-
-#: 
-msgid "Current Software Version: "
-msgstr "Nuvarande programvaruversion:"
-
-#: 
-msgid "Upgrade database"
-msgstr "Uppgradera databasen"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Visa födelsedatum årsdagar vid start av CRM"
 
@@ -7840,14 +7513,6 @@ msgid "Meanwhile, you may"
 msgstr "Under tiden kan du"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Endast databas (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Databas och foton (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Användaren måste vara en administratör"
 
@@ -7880,10 +7545,6 @@ msgid "return to People Dashboard"
 msgstr "tillbaka till person instrumentbräda"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Användaren måste ha MenuOptions-behörighet"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "SMTP-värd är inte inställd, besök inställningssidan"
 
@@ -7896,16 +7557,8 @@ msgid "This Family is Deactivated"
 msgstr "Denna familj är deaktiverad"
 
 #: 
-msgid "Metadata"
-msgstr "metadata"
-
-#: 
 msgid "The database has been cleared."
 msgstr "Databasen har rensats."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Användaren måste ha bAddEvent-behörigheter"
 
 #: 
 msgid "Anniversaries"
@@ -8046,10 +7699,6 @@ msgid "Enable Events menu."
 msgstr "Aktivera händelsemenyn."
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "Aktivera kalender-menyn."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Aktivera Insamlingsmeny."
 
@@ -8175,10 +7824,6 @@ msgid "User must have Edit Records permission"
 msgstr "Användaren måste ha redigeringsposttillstånd"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Användaren måste ha finansieringstillstånd"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Kan inte ta bort dig själv"
 
@@ -8285,18 +7930,6 @@ msgid "Passed"
 msgstr "passerade"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "PHP Max exekveringstid är för kort"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Öka PHP: s exekveringstid för att möjliggöra säkerhetskopiering och återställning."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Programintegritetskontroll"
-
-#: 
 msgid "Focus"
 msgstr "Fokus"
 
@@ -8342,16 +7975,8 @@ msgid "Error decoding signature definition file"
 msgstr "Fel vid avkodning av definitionsfil för signatur"
 
 #: 
-msgid "Generate Backup"
-msgstr "Generera säkerhetskopiering"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint Backpoint Endpoint. Om WebDAV måste detta vara url-kodat."
-
-#: 
-msgid "Password (if any)"
-msgstr "Lösenord (om något)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8497,20 +8122,8 @@ msgstr[0] "%d år gammal"
 msgstr[1] "%d år gammal"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Ostödd PHP-version"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Stöd för denna PHP-version kommer snart att tas bort. Nuvarande PHP-version: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Saknas PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "PHP ZipArchive krävs för att stödja uppgradering"
 
 #: 
 msgid "Add Results to Cart"
@@ -8565,10 +8178,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Ange applikationsnamnet som ska visas i autentiseringsapp"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Hemliga nycklar saknas från Config.php"
 
 #: 
 msgid "Review"
@@ -8955,14 +8564,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "Om du någonsin tappar åtkomst till din nyregistrerade autentiseringsapp måste du använda en återställningskod för att få åtkomst till ditt konto"
 
 #: 
-msgid "Event Attendance"
-msgstr "Deltagande i evenemang"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Skapa närvaro-OCH- rapporter om närvaro för evenemang"
-
-#: 
 msgid "Help translate this project"
 msgstr "Hjälpa till att översätta detta projekt"
 
@@ -9012,8 +8613,4 @@ msgstr "Api Nyckel"
 #: 
 msgid "Regen API Key"
 msgstr "Regen API-nyckel"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Vuxennamn (valfritt)"
 

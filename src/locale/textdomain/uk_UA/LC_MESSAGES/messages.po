@@ -990,10 +990,6 @@ msgid "Contact Info"
 msgstr "Контактна інформація"
 
 #: 
-msgid "Other Info"
-msgstr "Інша інформація"
-
-#: 
 msgid "Envelope Info"
 msgstr "Інформація про конверт"
 
@@ -1004,10 +1000,6 @@ msgstr "Спеціальні поля"
 #: 
 msgid "Family Members"
 msgstr "Члени сім'ї"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Ви можете створити членів сім'ї зараз або додати їх пізніше. Усі записи стануть <i> новими </i> записами осіб."
 
 #: 
 msgid "First"
@@ -1102,20 +1094,8 @@ msgid "Envelope Number"
 msgstr "Номер конверта"
 
 #: 
-msgid "Verify Info"
-msgstr "Перевірити інформацію"
-
-#: 
 msgid "Add New Member"
 msgstr "Додати нового учасника"
-
-#: 
-msgid "Previous Family"
-msgstr "Попередня сім'я"
-
-#: 
-msgid "Next Family"
-msgstr "Наступна сім'я"
 
 #: 
 msgid "Upload Photo"
@@ -1204,14 +1184,6 @@ msgstr "Метод"
 #: 
 msgid "Comment"
 msgstr "Прокоментуйте"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Додайте нову заставу"
-
-#: 
-msgid "Add a new payment"
-msgstr "Додайте новий платіж"
 
 #: 
 msgid "Close"
@@ -1873,14 +1845,6 @@ msgid "Start Date/Time"
 msgstr "Дата / час початку"
 
 #: 
-msgid "Attendees"
-msgstr "Присутні"
-
-#: 
-msgid " Monthly Averages"
-msgstr " Середньомісячні"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Недійсний логін або пароль"
 
@@ -2221,32 +2185,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "вказує на елементи, успадковані від пов'язаного сімейного запису."
 
 #: 
-msgid "Personal Info"
-msgstr "Особиста інформація"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Пан, пані, доктор, преподобний"
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Молодший, старший, III"
-
-#: 
 msgid "Birth Month"
 msgstr "Місяць народження"
 
 #: 
-msgid "Select Month"
-msgstr "Виберіть місяць"
-
-#: 
 msgid "Birth Day"
 msgstr "День народження"
-
-#: 
-msgid "Select Day"
-msgstr "Виберіть День"
 
 #: 
 msgid "Birth Year"
@@ -2259,10 +2203,6 @@ msgstr "Приховати вік"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Створити нову родину (використовуючи прізвище)"
-
-#: 
-msgid "Membership Info"
-msgstr "Інформація про членство"
 
 #: 
 msgid "Friend Date"
@@ -2349,28 +2289,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Номер чека недійсний для оплати \"ГОТОВИМИ\""
 
 #: 
-msgid "Pledge Editor"
-msgstr "Редактор застави"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Редактор платежів: "
-
-#: 
-msgid " Deposit Slip #"
-msgstr " Депозитарна розписка #"
-
-#: 
 msgid " more entries will fit."
 msgstr " підійде більше записів."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Редактор платежів - змініть наявний платіж"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Редактор платежів - буде створено новий депозит"
 
 #: 
 msgid "Deposit closed"
@@ -2674,10 +2594,6 @@ msgstr "Надіслати"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Звіт про нагадування про заставу"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Звіти про відвідуваність подій"
 
 #: 
 msgid "Restore Database"
@@ -3621,18 +3537,6 @@ msgid "Import Data"
 msgstr "Імпорт даних"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Ви впевнені, що хочете ВИДАЛИТИ цю особу з ідентифікатора події: "
-
-#: 
-msgid "Date Range"
-msgstr "Проміжок часу"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Видалення цієї події TYPE НЕ буде видаляти будь-які існуючі події чи кількість відвідувачів. Ви впевнені, що хочете ВИДАЛИТИ Ідентифікатор типу події: "
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Ви впевнені, що хочете видалити вибране"
 
@@ -3661,10 +3565,6 @@ msgid "Deposit Date"
 msgstr "Дата вкладу"
 
 #: 
-msgid "Details:"
-msgstr "Подробиці:"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Це призведе до заміни номерів сімейних конвертів у базі даних на вибрані на цій сторінці. Продовжити?"
 
@@ -3679,42 +3579,6 @@ msgstr "принаймні з одним:"
 #: 
 msgid "Welcome to"
 msgstr "Ласкаво просимо до"
-
-#: 
-msgid "Select Database Files"
-msgstr "Виберіть Файли бази даних"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Виберіть файл резервної копії для відновлення"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "ПОПЕРЕДЖЕННЯ. Це повністю видалить існуючу базу даних і замінить її резервною"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Якщо ви завантажите резервну копію з ChurchInfo або попередньої версії ChurchCRM, вона буде автоматично оновлена до поточної схеми бази даних"
-
-#: 
-msgid "Upload Files"
-msgstr "Завантажити файли"
-
-#: 
-msgid "No Restore Running"
-msgstr "Відновлення не працює"
-
-#: 
-msgid "Restore Complete"
-msgstr "Відновлення завершено"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Увійдіть до відновленої бази даних"
-
-#: 
-msgid "Restore Error."
-msgstr "Помилка відновлення."
 
 #: 
 msgid "Church Information"
@@ -3817,57 +3681,20 @@ msgid "Enter Name"
 msgstr "Введіть ім'я"
 
 #: 
-msgid "Update Church Info"
-msgstr "Оновіть інформацію про церкву"
-
-#: 
-msgid "Set Church Address"
-msgstr "Встановити адресу церкви"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Встановіть налаштування електронної пошти"
-
-#: 
 msgid "New Release"
 msgstr "Новий випуск"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Не вдалося перевірити цілісність програми"
 
 #: 
 msgid "Self Registration"
 msgstr "Самореєстрація"
 
 #: 
-msgid "Restore Status:"
-msgstr "Відновити статус:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Не знайдено координат"
 
 #: 
-msgid "Backup Status:"
-msgstr "Статус резервної копії:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Немає резервного запуску"
-
-#: 
 msgid "Anonymous"
 msgstr "Анонім"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Учасники ідентифікатора події:"
-
-#: 
-msgid "Yearly"
-msgstr "Щорічно"
 
 #: 
 msgid "Registration Complete"
@@ -3918,10 +3745,6 @@ msgid "One or more files failed signature validation"
 msgstr "Один або кілька файлів не вдалося перевірити підпис"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "Налаштуйте HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "Сім'я:"
 
@@ -3962,10 +3785,6 @@ msgid "Voting members "
 msgstr "Члени, що голосують "
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Відновити Запуск, зачекайте."
-
-#: 
 msgid "Family Members:"
 msgstr "Члени сім'ї:"
 
@@ -3988,10 +3807,6 @@ msgstr "Ім'я файлу:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Фінансовий рік:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Додайте учасників до події"
 
 #: 
 msgid "family"
@@ -4020,10 +3835,6 @@ msgstr "Кінцева дата: "
 #: 
 msgid "Members:"
 msgstr "Учасники:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Редагувати загальні налаштування"
 
 #: 
 msgid "There were "
@@ -4896,46 +4707,6 @@ msgstr "Щомісяця"
 #: 
 msgid "Yearly on"
 msgstr "Щороку"
-
-#: 
-msgid "All Events of Type"
-msgstr "Усі події типу"
-
-#: 
-msgid "There is"
-msgstr "є"
-
-#: 
-msgid "There are"
-msgstr "Існує"
-
-#: 
-msgid "event"
-msgstr "подія"
-
-#: 
-msgid "events"
-msgstr "події"
-
-#: 
-msgid " in this category."
-msgstr " у цій категорії."
-
-#: 
-msgid "There currently is"
-msgstr "В даний час є"
-
-#: 
-msgid "There currently are"
-msgstr "В даний час є"
-
-#: 
-msgid "custom event type"
-msgstr "власний тип події"
-
-#: 
-msgid "custom event types"
-msgstr "користувацькі типи подій"
 
 #: 
 msgid "Family Roles Editor"
@@ -6345,42 +6116,6 @@ msgid "Please verify your family's information"
 msgstr "Будь ласка, перевірте інформацію про свою сім’ю"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Адреса церкви не встановлена."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Ім'я церкви встановлено за значенням за замовчуванням"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "Інформація про сервер SMTP порожня"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Ваша система може бути більш безпечною, встановивши сертифікат TLS / SSL."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Відсутні класифікаційні дані"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Відсутні класифікаційні дані для деяких людей"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Відсутні дані про стать"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Відсутні гендерні дані для деяких людей"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Відсутні дані про ролі"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Не вдається завантажити інформацію про підтвердження"
 
@@ -6445,20 +6180,8 @@ msgid "Verified In Person"
 msgstr "Перевірено в особі"
 
 #: 
-msgid "None State"
-msgstr "Жодна держава"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Архів резервної копії не містить бази даних"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Відсутні координати"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Дані про сімейні координати для деяких сімей"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6581,28 +6304,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Вибраний файл перевищує максимальний розмір цього сервера для завантаження"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Незадоволені передумови заявки"
-
-#: 
 msgid "Failed"
 msgstr "Помилка"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Номер церковного чекового рахунку"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Відсутні дані про ролі для деяких людей"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "PHP Максимальний розмір файлу замалий"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Збільште обмеження на завантаження php, щоб дозволити мобільне завантаження фотографій та відновлення резервної копії."
 
 #: 
 msgid "Deactivated the Family"
@@ -6674,10 +6381,6 @@ msgid "Coordinate data base file name:"
 msgstr "Назва файлу бази даних координат:"
 
 #: 
-msgid "Intersect With Cart"
-msgstr "Перетин з кошиком"
-
-#: 
 msgid "select an option"
 msgstr "виберіть варіант"
 
@@ -6716,15 +6419,6 @@ msgstr "Власність не може бути відмінена."
 #: 
 msgid "Select event"
 msgstr "Виберіть подію"
-
-#: 
-msgid "Person's Name"
-msgstr "Ім'я особи"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Зареєструвався (необов’язково)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -6833,14 +6527,6 @@ msgstr "призначений"
 #: 
 msgid "Photo"
 msgstr "Фото"
-
-#: 
-msgid "Payment Details"
-msgstr "Платіжні реквізити"
-
-#: 
-msgid "Fund Split"
-msgstr "Фонд Спліт"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7636,18 +7322,6 @@ msgid "Upgrade Required"
 msgstr "Потрібне оновлення"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Поточна версія БД: "
-
-#: 
-msgid "Current Software Version: "
-msgstr "Поточна версія програмного забезпечення: "
-
-#: 
-msgid "Upgrade database"
-msgstr "Оновити базу даних"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Показувати ювілеї дат народження при запуску CRM"
 
@@ -7704,14 +7378,6 @@ msgid "Meanwhile, you may"
 msgstr "Тим часом ти можеш"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Лише база даних (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "База даних та фотографії (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Користувач повинен бути адміністратором"
 
@@ -7744,10 +7410,6 @@ msgid "return to People Dashboard"
 msgstr "повернутися до Інформаційної панелі людей"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Користувач повинен мати дозвіл MenuOptions"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "Хост SMTP не налаштований, відвідайте сторінку налаштувань"
 
@@ -7760,16 +7422,8 @@ msgid "This Family is Deactivated"
 msgstr "Ця родина деактивована"
 
 #: 
-msgid "Metadata"
-msgstr "Метадані"
-
-#: 
 msgid "The database has been cleared."
 msgstr "База даних очищена."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Користувач повинен мати дозволи bAddEvent"
 
 #: 
 msgid "Anniversaries"
@@ -7910,10 +7564,6 @@ msgid "Enable Events menu."
 msgstr "Увімкнути меню Події."
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "Увімкнути меню Календар."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Увімкнути меню Збору коштів."
 
@@ -8039,10 +7689,6 @@ msgid "User must have Edit Records permission"
 msgstr "Користувач повинен мати дозвіл на редагування записів"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Користувач повинен мати дозвіл на фінанси"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Не вдається видалити себе"
 
@@ -8149,18 +7795,6 @@ msgid "Passed"
 msgstr "Пройшов"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "Макс. Час виконання PHP занадто короткий"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Збільште обмеження часу виконання PHP, щоб дозволити резервне копіювання та відновлення."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Перевірка цілісності програми"
-
-#: 
 msgid "Focus"
 msgstr "Фокус"
 
@@ -8206,16 +7840,8 @@ msgid "Error decoding signature definition file"
 msgstr "Помилка декодування файлу визначення підпису"
 
 #: 
-msgid "Generate Backup"
-msgstr "Створити резервну копію"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Кінцева точка віддаленого резервного копіювання. Якщо WebDAV, це має бути закодовано за адресою url. "
-
-#: 
-msgid "Password (if any)"
-msgstr "Пароль (якщо є)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8349,20 +7975,8 @@ msgid "Maximum number of Calendar Events"
 msgstr "Максимальна кількість подій календаря"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Непідтримувана версія PHP"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Підтримка цієї версії PHP незабаром буде видалена. Поточна версія PHP: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Відсутній PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "Для підтримки оновлення потрібен PHP ZipArchive"
 
 #: 
 msgid "Add Results to Cart"
@@ -8417,10 +8031,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Вкажіть назву програми, яка відображатиметься в програмі автентифікації"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Секретні ключі відсутні в Config.php"
 
 #: 
 msgid "Review"
@@ -8807,14 +8417,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "Якщо ви коли-небудь втратите доступ до своєї нещодавно зареєстрованої програми автентифікації, вам потрібно буде скористатися кодом відновлення, щоб отримати доступ до свого облікового запису"
 
 #: 
-msgid "Event Attendance"
-msgstr "Відвідування подій"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Створення відвідуваності -І- звіти про неявку на події"
-
-#: 
 msgid "Help translate this project"
 msgstr "Допоможіть перекласти цей проект"
 
@@ -8930,10 +8532,6 @@ msgstr "Недійсна дата народження: відсутній мі�
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Недійсна дата народження: відсутні місяць і день народження."
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Ім'я дорослого (необов’язково)"
 
 #: 
 msgid "Please enter a group name."

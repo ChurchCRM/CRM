@@ -1198,10 +1198,6 @@ msgid "Contact Info"
 msgstr "Informação de Contato"
 
 #: 
-msgid "Other Info"
-msgstr "Outras Informações"
-
-#: 
 #, fuzzy
 msgid "Envelope Info"
 msgstr "Informações do Envelope"
@@ -1215,10 +1211,6 @@ msgstr "Campos personalizados"
 #, fuzzy
 msgid "Family Members"
 msgstr "Membros da Família"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Você pode adicionar membros à Família agora ou depois. Todas as entradas serão <i>novos</i> registros de pessoas."
 
 #: 
 #, fuzzy
@@ -1336,23 +1328,8 @@ msgstr "Número do envelope"
 
 #: 
 #, fuzzy
-msgid "Verify Info"
-msgstr "Verificar Informação"
-
-#: 
-#, fuzzy
 msgid "Add New Member"
 msgstr "Adicionar um novo Membro"
-
-#: 
-#, fuzzy
-msgid "Previous Family"
-msgstr "Família anterior"
-
-#: 
-#, fuzzy
-msgid "Next Family"
-msgstr "Próxima Família"
 
 #: 
 #, fuzzy
@@ -1461,16 +1438,6 @@ msgstr "Método"
 #, fuzzy
 msgid "Comment"
 msgstr "Comentário"
-
-#: 
-#, fuzzy
-msgid "Add a new pledge"
-msgstr "Adicionar novo compromisso"
-
-#: 
-#, fuzzy
-msgid "Add a new payment"
-msgstr "Incluir novo pagamento"
 
 #: 
 #, fuzzy
@@ -2263,15 +2230,6 @@ msgid "Start Date/Time"
 msgstr "Início Data/Horário"
 
 #: 
-msgid "Attendees"
-msgstr "Presentes"
-
-#: 
-#, fuzzy
-msgid " Monthly Averages"
-msgstr " Média mensal"
-
-#: 
 #, fuzzy
 msgid "Invalid login or password"
 msgstr "Login ou senha inválidos"
@@ -2683,37 +2641,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "indica dados herdados da família."
 
 #: 
-#, fuzzy
-msgid "Personal Info"
-msgstr "Informações Pessoais"
-
-#: 
-#, fuzzy
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Ex... Sr; Sra; Dr; Pr."
-
-#: 
-#, fuzzy
-msgid "Jr., Sr., III"
-msgstr "Ex... Junior, Filho, Neto"
-
-#: 
 msgid "Birth Month"
 msgstr "Mês de Aniversário"
 
 #: 
-#, fuzzy
-msgid "Select Month"
-msgstr "Selecione o Mês"
-
-#: 
 msgid "Birth Day"
 msgstr "Dia do nascimento"
-
-#: 
-#, fuzzy
-msgid "Select Day"
-msgstr "Selecione o Dia"
 
 #: 
 msgid "Birth Year"
@@ -2728,11 +2661,6 @@ msgstr "Ocultar idade"
 #, fuzzy
 msgid "Create a new family (using last name)"
 msgstr "Criar uma nova família (usando o sobrenome)"
-
-#: 
-#, fuzzy
-msgid "Membership Info"
-msgstr "Informação da Membresia"
 
 #: 
 msgid "Friend Date"
@@ -2839,33 +2767,8 @@ msgstr "Número de cheque não é válido para pagamentos com 'DINHEIRO'"
 
 #: 
 #, fuzzy
-msgid "Pledge Editor"
-msgstr "Editor de compromisso"
-
-#: 
-#, fuzzy
-msgid "Payment Editor: "
-msgstr "Editor de Pagamento: "
-
-#: 
-#, fuzzy
-msgid " Deposit Slip #"
-msgstr " Depósito nº"
-
-#: 
-#, fuzzy
 msgid " more entries will fit."
 msgstr " mais entradas irão caber."
-
-#: 
-#, fuzzy
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Editor de Pagamento | Modificar Pagamentos Existentes"
-
-#: 
-#, fuzzy
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Editor de Pagamentos - Novo Depósito Será Criado"
 
 #: 
 #, fuzzy
@@ -3232,11 +3135,6 @@ msgstr "Enviar"
 #, fuzzy
 msgid "Pledge Reminder Report"
 msgstr "Relatório de lembrete de compromisso"
-
-#: 
-#, fuzzy
-msgid "Event Attendance Reports"
-msgstr "Relatórios de Comparecimento a Evento"
 
 #: 
 #, fuzzy
@@ -4360,20 +4258,6 @@ msgstr "Importar Dados"
 
 #: 
 #, fuzzy
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Você está certo de que deseja EXCLUIR esta pessoa do Evento ID nº: "
-
-#: 
-msgid "Date Range"
-msgstr "Intervalo de Datas"
-
-#: 
-#, fuzzy
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "A exclusão deste TIPO de evento NÃO vai apagar todos os eventos existentes ou contagem de presença. Tem certeza de que deseja excluir Tipo de Evento ID: ␣"
-
-#: 
-#, fuzzy
 msgid "Are you sure you want to delete the selected"
 msgstr "Você tem certeza de que quer apagar o que foi selecionado"
 
@@ -4409,11 +4293,6 @@ msgstr "Data do Depósito"
 
 #: 
 #, fuzzy
-msgid "Details:"
-msgstr "Detalhes:"
-
-#: 
-#, fuzzy
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Esta ação substituirá os números dos envelopes das famílias no banco de dados por aqueles que foram selecionados nesta página. Continuar?"
 
@@ -4431,51 +4310,6 @@ msgstr "com pelo menos um:"
 #, fuzzy
 msgid "Welcome to"
 msgstr "Bem-vindo(a) à"
-
-#: 
-#, fuzzy
-msgid "Select Database Files"
-msgstr "Selecionar arquivo de Banco de Dados"
-
-#: 
-#, fuzzy
-msgid "Select a backup file to restore"
-msgstr "Selecione um arquivo de backup para restaurar"
-
-#: 
-#, fuzzy
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "CUIDADO: Esta ação irá apagar completamente os dados existentes no banco de dados e reescrevê-las com os dados do backup"
-
-#: 
-#, fuzzy
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Se você carregar um backup do ChurchInfo ou uma versão anterior do ChurchCRM, ela será automaticamente atualizada para o esquema de banco de dados atual"
-
-#: 
-#, fuzzy
-msgid "Upload Files"
-msgstr "Carregar Arquivos"
-
-#: 
-#, fuzzy
-msgid "No Restore Running"
-msgstr "Nenhuma Restauração em execução"
-
-#: 
-#, fuzzy
-msgid "Restore Complete"
-msgstr "Restauração Completa"
-
-#: 
-#, fuzzy
-msgid "Login to restored Database"
-msgstr "Faça o Login para restaurar o Banco de Dados"
-
-#: 
-#, fuzzy
-msgid "Restore Error."
-msgstr "Erro de Restauração."
 
 #: 
 #, fuzzy
@@ -4603,28 +4437,8 @@ msgstr "Inserir o Nome"
 
 #: 
 #, fuzzy
-msgid "Update Church Info"
-msgstr "Atualizar Informações da Igreja"
-
-#: 
-#, fuzzy
-msgid "Set Church Address"
-msgstr "Endereço da Igreja"
-
-#: 
-#, fuzzy
-msgid "Set Email Settings"
-msgstr "Configurar conta de E-mail"
-
-#: 
-#, fuzzy
 msgid "New Release"
 msgstr "Nova Versão"
-
-#: 
-#, fuzzy
-msgid "Application Integrity Check Failed"
-msgstr "A verificação de Integridade da Aplicação Falhou"
 
 #: 
 #, fuzzy
@@ -4633,38 +4447,13 @@ msgstr "Auto-registro"
 
 #: 
 #, fuzzy
-msgid "Restore Status:"
-msgstr "Estado da Recuperação:"
-
-#: 
-#, fuzzy
 msgid "No coordinates found"
 msgstr "Nenhuma coordenada encontrada"
 
 #: 
 #, fuzzy
-msgid "Backup Status:"
-msgstr "Estado do Backup:"
-
-#: 
-#, fuzzy
-msgid "No Backup Running"
-msgstr "Nenhum Backup em Execução"
-
-#: 
-#, fuzzy
 msgid "Anonymous"
 msgstr "Anônimo"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Participantes do evento"
-
-#: 
-#, fuzzy
-msgid "Yearly"
-msgstr "Anualmente"
 
 #: 
 #, fuzzy
@@ -4728,11 +4517,6 @@ msgstr "Um ou mais arquivos falharam na validação da assinatura"
 
 #: 
 #, fuzzy
-msgid "Configure HTTPS"
-msgstr "Configurar HTTPS"
-
-#: 
-#, fuzzy
 msgid "Family:"
 msgstr "Família:"
 
@@ -4782,11 +4566,6 @@ msgstr "Membros votantes "
 
 #: 
 #, fuzzy
-msgid "Restore Running, Please wait."
-msgstr "Restauração em execução. Por favor, aguarde."
-
-#: 
-#, fuzzy
 msgid "Family Members:"
 msgstr "Membros da Família:"
 
@@ -4814,11 +4593,6 @@ msgstr "Nome do Arquivo:"
 #, fuzzy
 msgid "Fiscal Year:"
 msgstr "Ano fiscal:"
-
-#: 
-#, fuzzy
-msgid "Add Attendees for Event"
-msgstr "Adicionar Participantes ao Evento"
 
 #: 
 #, fuzzy
@@ -4852,11 +4626,6 @@ msgstr "Data de término: "
 #, fuzzy
 msgid "Members:"
 msgstr "Membros:"
-
-#: 
-#, fuzzy
-msgid "Edit General Settings"
-msgstr "Configurações Gerais"
 
 #: 
 msgid "There were "
@@ -5917,56 +5686,6 @@ msgstr "Mensalmente no"
 #, fuzzy
 msgid "Yearly on"
 msgstr "Anualmente em"
-
-#: 
-#, fuzzy
-msgid "All Events of Type"
-msgstr "Todos os tipos de eventos"
-
-#: 
-#, fuzzy
-msgid "There is"
-msgstr "Existe"
-
-#: 
-#, fuzzy
-msgid "There are"
-msgstr "Existem"
-
-#: 
-#, fuzzy
-msgid "event"
-msgstr "evento"
-
-#: 
-#, fuzzy
-msgid "events"
-msgstr "eventos"
-
-#: 
-#, fuzzy
-msgid " in this category."
-msgstr " nesta categoria."
-
-#: 
-#, fuzzy
-msgid "There currently is"
-msgstr "Existe atualmente"
-
-#: 
-#, fuzzy
-msgid "There currently are"
-msgstr "Existem atualmente"
-
-#: 
-#, fuzzy
-msgid "custom event type"
-msgstr "tipo de evento personalizado"
-
-#: 
-#, fuzzy
-msgid "custom event types"
-msgstr "tipos de eventos personalizados"
 
 #: 
 #, fuzzy
@@ -7665,48 +7384,6 @@ msgstr "Por favor, verifique a informação da sua família"
 
 #: 
 #, fuzzy
-msgid "Church Address is not Set."
-msgstr "O endereço da igreja não está configurado."
-
-#: 
-#, fuzzy
-msgid "Church Name is set to default value"
-msgstr "O nome da Igreja está configurado com o valor padrão"
-
-#: 
-#, fuzzy
-msgid "SMTP Server info are blank"
-msgstr "Informação do servidor SMTP em branco"
-
-#: 
-#, fuzzy
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "O seu sistema poderia ser mais seguro com a instalação de um certificado TLS/SSL."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Classificação de dados perdida"
-
-#: 
-#, fuzzy
-msgid "Missing Classification Data for Some People"
-msgstr "Classificação de dados perdida para algumas pessoas"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Dados de gênero perdido"
-
-#: 
-#, fuzzy
-msgid "Missing Gender Data for Some People"
-msgstr "Dados de gênero perdido para algumas pessoas"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Dado do papel perdido"
-
-#: 
-#, fuzzy
 msgid "Unable to load verification info"
 msgstr "Não foi possível carregar as informações de verificação"
 
@@ -7787,22 +7464,8 @@ msgstr "Verificação Pessoalmente"
 
 #: 
 #, fuzzy
-msgid "None State"
-msgstr "Nenhum Estado"
-
-#: 
-#, fuzzy
 msgid "Backup archive does not contain a database"
 msgstr "O arquivo de backup não contém um banco de dados"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Faltam Coordenadas"
-
-#: 
-#, fuzzy
-msgid "Family Coordinates Data for Some Families"
-msgstr "Dados de coordenadas para algumas famílias"
 
 #: 
 #, fuzzy
@@ -7931,11 +7594,6 @@ msgstr "O arquivo selecionado excede o tamanho máximo para upload deste servido
 
 #: 
 #, fuzzy
-msgid "Unmet Application Prerequisites"
-msgstr "Pré-requisitos da aplicação não satisfeitos"
-
-#: 
-#, fuzzy
 msgid "Failed"
 msgstr "Falhou"
 
@@ -7943,21 +7601,6 @@ msgstr "Falhou"
 #, fuzzy
 msgid "Church Checking Account Number"
 msgstr "Número da Conta Corrente da Igreja"
-
-#: 
-#, fuzzy
-msgid "Missing Role Data for Some People"
-msgstr "Dado do papel perdido para algumas pessoas"
-
-#: 
-#, fuzzy
-msgid "PHP Max File size too small"
-msgstr "O tamanho máximo do arquivo para o PHP é muito pequeno"
-
-#: 
-#, fuzzy
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Aumente os limites de upload do PHP para permitir o upload de foto de celular e restaurar o backup."
 
 #: 
 #, fuzzy
@@ -8046,11 +7689,6 @@ msgstr "Nome do arquivo da base de dados de coordenadas:"
 
 #: 
 #, fuzzy
-msgid "Intersect With Cart"
-msgstr "Interseção com o carrinho"
-
-#: 
-#, fuzzy
 msgid "select an option"
 msgstr "selecione uma opção"
 
@@ -8098,16 +7736,6 @@ msgstr "A propriedade não pôde ser removida."
 #, fuzzy
 msgid "Select event"
 msgstr "Selecionar evento"
-
-#: 
-#, fuzzy
-msgid "Person's Name"
-msgstr "Nome da Pessoa"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Inscrito por (Opcional)"
 
 #: 
 #, fuzzy
@@ -8243,16 +7871,6 @@ msgstr "atribuído"
 #, fuzzy
 msgid "Photo"
 msgstr "Foto"
-
-#: 
-#, fuzzy
-msgid "Payment Details"
-msgstr "Detalhes do Pagamento"
-
-#: 
-#, fuzzy
-msgid "Fund Split"
-msgstr "Divisão do fundo"
 
 #: 
 #, fuzzy
@@ -9242,21 +8860,6 @@ msgstr "Atualização Necessária"
 
 #: 
 #, fuzzy
-msgid "Current DB Version: "
-msgstr "Versão Atual do Banco de Dados: "
-
-#: 
-#, fuzzy
-msgid "Current Software Version: "
-msgstr "Versão Atual do Software: "
-
-#: 
-#, fuzzy
-msgid "Upgrade database"
-msgstr "Atualizar o banco de dados"
-
-#: 
-#, fuzzy
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Mostrar aniversários ao abrir o CRM"
 
@@ -9327,16 +8930,6 @@ msgstr "Enquanto isso, você pode"
 
 #: 
 #, fuzzy
-msgid "Database Only (.sql)"
-msgstr "Apenas Banco de Dados (.sql)"
-
-#: 
-#, fuzzy
-msgid "Database and Photos (.tar.gz)"
-msgstr "Banco de Dados e Fotos (.tar.gz)"
-
-#: 
-#, fuzzy
 msgid "User must be an Admin"
 msgstr "O usuário deve ser um Administrador"
 
@@ -9377,11 +8970,6 @@ msgstr "retornar para o Painel de Pessoas"
 
 #: 
 #, fuzzy
-msgid "User must have MenuOptions permission"
-msgstr "O usuário deve ter permissão de MenuOptions"
-
-#: 
-#, fuzzy
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "Host SMTP não está configurado, por favor acesse a página de configurações"
 
@@ -9397,18 +8985,8 @@ msgstr "Esta Família está Desativada"
 
 #: 
 #, fuzzy
-msgid "Metadata"
-msgstr "Metadados"
-
-#: 
-#, fuzzy
 msgid "The database has been cleared."
 msgstr "O banco de dados foi limpo."
-
-#: 
-#, fuzzy
-msgid "User must have bAddEvent permissions"
-msgstr "O usuário deve ter permissões bAddEvent"
 
 #: 
 #, fuzzy
@@ -9582,11 +9160,6 @@ msgstr "Ativar menu Eventos."
 
 #: 
 #, fuzzy
-msgid "Enable Calendar menu."
-msgstr "Ativar menu Calendário."
-
-#: 
-#, fuzzy
 msgid "Enable Fundraiser menu."
 msgstr "Ativar menu de Campanhas."
 
@@ -9742,11 +9315,6 @@ msgstr "O usuário deve ter permissão para editar Registros"
 
 #: 
 #, fuzzy
-msgid "User must have Finance permission"
-msgstr "O usuário deve ter permissão de Financeiro"
-
-#: 
-#, fuzzy
 msgid "Can't delete yourself"
 msgstr "Você não pode se deletar"
 
@@ -9877,21 +9445,6 @@ msgstr "Aprovado"
 
 #: 
 #, fuzzy
-msgid "PHP Max Execution Time is too Short"
-msgstr "Tempo máximo de execução do PHP é curto demais"
-
-#: 
-#, fuzzy
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Aumente o limite de tempo de execução do PHP para permitir backup e restauração."
-
-#: 
-#, fuzzy
-msgid "Application Integrity Check"
-msgstr "Verificação de integridade do Aplicativo"
-
-#: 
-#, fuzzy
 msgid "Focus"
 msgstr "Foco"
 
@@ -9948,18 +9501,8 @@ msgstr "Erro ao decodificar o arquivo de definição de assinatura"
 
 #: 
 #, fuzzy
-msgid "Generate Backup"
-msgstr "Gerar Backup"
-
-#: 
-#, fuzzy
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Ponto de acesso do backup remoto. Se for WebDAV, isso deve ser codificado por url. "
-
-#: 
-#, fuzzy
-msgid "Password (if any)"
-msgstr "Senha (Se houver)"
 
 #: 
 msgid "All information on this page is correct."
@@ -10134,23 +9677,8 @@ msgstr[1] "%d anos atrás"
 
 #: 
 #, fuzzy
-msgid "Unsupported PHP Version"
-msgstr "Versão do PHP não suportada"
-
-#: 
-#, fuzzy
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "O suporte a esta versão do PHP será removido em breve. Versão atual do PHP: "
-
-#: 
-#, fuzzy
 msgid "Missing PHP ZipArchive"
 msgstr "PHP ZipArchive ausente"
-
-#: 
-#, fuzzy
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "PHP ZipArchive é necessário para atualização"
 
 #: 
 #, fuzzy
@@ -10217,11 +9745,6 @@ msgstr "ChurchCRM"
 #, fuzzy
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Especifique o nome do aplicativo a ser exibido na janela de autenticação"
-
-#: 
-#, fuzzy
-msgid "Secret Keys missing from Config.php"
-msgstr "Chaves secretas ausentes no Config.php"
 
 #: 
 #, fuzzy
@@ -10702,16 +10225,6 @@ msgstr "Se você perder o acesso ao seu aplicativo autenticador recém-configura
 
 #: 
 #, fuzzy
-msgid "Event Attendance"
-msgstr "Presença do evento"
-
-#: 
-#, fuzzy
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Gerar relatórios de presença -E- não comparecimento para eventos"
-
-#: 
-#, fuzzy
 msgid "Help translate this project"
 msgstr "Ajude a traduzir este projeto"
 
@@ -11009,10 +10522,6 @@ msgstr "Cartão de crédito"
 #: 
 msgid "People who are configured to pay by credit card."
 msgstr "Pessoas sem cartão de crédito configurado para pagamento"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nome adulto (Opcional)"
 
 #: 
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."

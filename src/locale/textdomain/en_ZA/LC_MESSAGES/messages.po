@@ -236,14 +236,6 @@ msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work 
 msgstr "Search by any part of Name, City, Province, Postcode, Home Phone, Email, or Work Email."
 
 #: 
-msgid "SMTP Server info are blank"
-msgstr "SMTP Server info is blank"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Your system could be more secure by installing a TLS/SSL certificate."
-
-#: 
 msgid "Page not fond"
 msgstr "Page not found"
 
@@ -254,10 +246,6 @@ msgstr "Make user-entered zip/postcodes in UPPER-CASE when saving to the databas
 #: 
 msgid "Church Checking Account Number"
 msgstr "Church Chequeing Account Number"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Increase the PHP upload limits to allow for mobile photo upload, and backup restore."
 
 #: 
 msgid "Show neighbors with these classifications:"
@@ -282,10 +270,6 @@ msgstr "Person ID for Cart must be numeric"
 #: 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Set the encryption system to use - SSL (deprecated) or TLS"
-
-#: 
-msgid "User must have MenuOptions permission"
-msgstr "User must have Menu Options permission"
 
 #: 
 msgid "Invalid request: Missing calendar id"

@@ -989,10 +989,6 @@ msgid "Contact Info"
 msgstr "సంప్రదింపు సమాచారం"
 
 #: 
-msgid "Other Info"
-msgstr "ఇతర సమాచారం"
-
-#: 
 msgid "Envelope Info"
 msgstr "ఎన్వలప్ సమాచారం"
 
@@ -1003,10 +999,6 @@ msgstr "కస్టమ్ ఫీల్డ్స్"
 #: 
 msgid "Family Members"
 msgstr "కుటుంబ సభ్యులు"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "మీరు ఇప్పుడు కుటుంబ సభ్యులను సృష్టించవచ్చు లేదా తర్వాత వారిని జోడించవచ్చు. అన్ని ఎంట్రీలు <i>కొత్త</i> వ్యక్తి రికార్డులుగా మారతాయి."
 
 #: 
 msgid "First"
@@ -1101,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "ఎన్వలప్ సంఖ్య"
 
 #: 
-msgid "Verify Info"
-msgstr "సమాచారాన్ని ధృవీకరించండి"
-
-#: 
 msgid "Add New Member"
 msgstr "కొత్త సభ్యుడిని జోడించండి"
-
-#: 
-msgid "Previous Family"
-msgstr "మునుపటి కుటుంబం"
-
-#: 
-msgid "Next Family"
-msgstr "తదుపరి కుటుంబం"
 
 #: 
 msgid "Upload Photo"
@@ -1203,14 +1183,6 @@ msgstr "పద్ధతి"
 #: 
 msgid "Comment"
 msgstr "వ్యాఖ్యానించండి"
-
-#: 
-msgid "Add a new pledge"
-msgstr "కొత్త ప్రతిజ్ఞను జోడించండి"
-
-#: 
-msgid "Add a new payment"
-msgstr "కొత్త చెల్లింపును జోడించండి"
 
 #: 
 msgid "Close"
