@@ -646,13 +646,6 @@ require_once 'Include/Header.php';
                                 </option>
                                 <?php
                             } ?>
-                            <?php if ($PledgeOrPayment === 'Pledge') {
-                                ?>
-                                <option value="EGIVE" <?= $iMethod === 'EGIVE' ? 'selected' : '' ?>>
-                                    <?= gettext('eGive') ?>
-                                </option>
-                                <?php
-                            } ?>
                         </select>
 
                         <?php if ($PledgeOrPayment === 'Payment' && $dep_Type === 'Bank') {

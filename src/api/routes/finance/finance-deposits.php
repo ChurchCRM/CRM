@@ -21,7 +21,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $depositDate = $input['depositDate'] ?? date('Y-m-d');
 
         // Validate depositType against allowed values
-        $allowedTypes = ['Bank', 'CreditCard', 'BankDraft', 'eGive'];
+        $allowedTypes = ['Bank', 'CreditCard', 'BankDraft'];
         if (!in_array($depositType, $allowedTypes, true)) {
             $errorMsg = $depositType === ''
                 ? 'Deposit type is required. Please provide one of: ' . implode(', ', $allowedTypes)

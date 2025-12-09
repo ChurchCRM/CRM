@@ -37,7 +37,6 @@ require_once 'Include/Header.php';
               <option value="Bank" selected><?= gettext('Bank') ?></option>
               <option value="CreditCard">Credit Card</option>
               <option value="BankDraft">Bank Draft</option>
-              <option value="eGive">eGive</option>
             </select>
           </div>
           <div class="col-lg-3">

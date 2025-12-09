@@ -37,7 +37,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Comment` text,
   `dep_EnteredBy` mediumint(9) unsigned default NULL,
   `dep_Closed` tinyint(1) NOT NULL default '0',
-  `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') NOT NULL default 'Bank',
+  `dep_Type` enum('Bank','CreditCard','BankDraft') NOT NULL default 'Bank',
   PRIMARY KEY  (`dep_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
@@ -620,7 +620,7 @@ CREATE TABLE `pledge_plg` (
   `plg_date` date default NULL,
   `plg_amount` decimal(8,2) default NULL,
   `plg_schedule` enum('Weekly', 'Monthly','Quarterly','Once','Other') default NULL,
-  `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') default NULL,
+  `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT') default NULL,
   `plg_comment` text,
   `plg_DateLastEdited` date NOT NULL default '2016-01-01',
   `plg_EditedBy` mediumint(9) NOT NULL default '0',
@@ -1131,15 +1131,6 @@ CREATE TABLE `multibuy_mb` (
   `mb_count` decimal(8,0) default NULL,
   PRIMARY KEY  (`mb_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
-
-CREATE TABLE `egive_egv` (
-  `egv_egiveID` varchar(16) character set utf8 NOT NULL,
-  `egv_famID` int(11) NOT NULL,
-  `egv_DateEntered` datetime NOT NULL,
-  `egv_DateLastEdited` datetime NOT NULL,
-  `egv_EnteredBy` smallint(6) NOT NULL default '0',
-  `egv_EditedBy` smallint(6) NOT NULL default '0'
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
 CREATE TABLE `kioskdevice_kdev` (
   `kdev_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
