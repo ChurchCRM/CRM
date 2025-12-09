@@ -23,24 +23,7 @@ try {
 
 $phpVersion = phpversion();
 if (version_compare($phpVersion, $requiredPhp, '<')) {
-    $redirectHeader = 'Location: php-error.php';
-    $queryParams = [];
-    
-    if ($phpVersion) {
-        $queryParams[] = 'currentVersion=' . urlencode($phpVersion);
-        header('X-PHP-Version: ' . $phpVersion);
-    }
-    
-    if ($requiredPhp) {
-        $queryParams[] = 'requiredVersion=' . urlencode($requiredPhp);
-        header('X-Required-PHP-Version: ' . $requiredPhp);
-    }
-    
-    if (!empty($queryParams)) {
-        $redirectHeader .= '?' . implode('&', $queryParams);
-    }
-    
-    header($redirectHeader);
+    header('Location: php-error.php');
     exit;
 }
 

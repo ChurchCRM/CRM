@@ -3,125 +3,130 @@
  * PHP Version Error Page
  * 
  * Displays when the current PHP version is incompatible with ChurchCRM requirements.
- * 
- * Query Parameters:
- * - currentVersion: Current PHP version (e.g., "7.4.0")
- * - requiredVersion: Minimum required PHP version (e.g., "8.2.0")
+ * This page is shown by index.php before autoloader is even loaded.
  */
-
-$currentVersion = $_GET['currentVersion'] ?? null;
-$requiredVersion = $_GET['requiredVersion'] ?? null;
-
-// Sanitize versions to prevent injection
-$currentVersion = $currentVersion ? htmlspecialchars($currentVersion, ENT_QUOTES, 'UTF-8') : null;
-$requiredVersion = $requiredVersion ? htmlspecialchars($requiredVersion, ENT_QUOTES, 'UTF-8') : null;
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="skin/css/php-error.css" />
-    <title>Incompatible PHP Version</title>
-  </head>
-
-  <body>
-    <div class="background">
-      <div class="ground"></div>
-    </div>
-    <div class="container">
-      <div class="left-section">
-        <div class="inner-content">
-          <h1 class="heading">500</h1>
-          <p class="subheading" style="color: yellow">
-            <b>You are running an incompatible PHP version.</b>
-          </p>
-          <br />
-          <p class="subheading">ChurchCRM requires PHP <?php echo $requiredVersion ? htmlspecialchars($requiredVersion, ENT_QUOTES, 'UTF-8') : '8.x'; ?> or higher.</p>
-          <br />
-          <?php if ($currentVersion): ?>
-          <p class="subheading">You are currently running PHP version: <strong><?php echo $currentVersion; ?></strong></p>
-          <br />
-          <?php endif; ?>
-          <p class="subheading">
-            <a href="https://www.php.net/supported-versions.php" style="color: red"
-              >Check supported versions of PHP</a
-            >
-          </p>
+    <title>PHP Version Error - ChurchCRM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .error-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+            max-width: 600px;
+            text-align: center;
+        }
+        .error-code {
+            font-size: 80px;
+            font-weight: bold;
+            color: #dc3545;
+            margin: 0;
+            display: none;
+        }
+        .error-title {
+            font-size: 32px;
+            color: #d32f2f;
+            margin: 20px 0 30px 0;
+        }
+        .error-message {
+            font-size: 16px;
+            color: #333;
+            margin: 15px 0;
+            line-height: 1.8;
+        }
+        .version-info {
+            background: #f8f9fa;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .highlight-version {
+            background: #ffebee;
+            color: #c62828;
+            font-weight: bold;
+            padding: 4px 8px;
+            border-radius: 3px;
+            border: 1px solid #ef5350;
+        }
+        .security-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        .action-required {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+            color: #333;
+        }
+        .action-required strong {
+            color: #d32f2f;
+            font-size: 18px;
+        }
+        .action-required p {
+            margin: 10px 0;
+            font-size: 15px;
+        }
+        .help-link {
+            margin-top: 30px;
+        }
+        .help-link a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        .help-link a:hover {
+            background: #764ba2;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h1 class="error-title">PHP Version Not Supported</h1>
+        
+        <div class="version-info">
+            <p><strong>Current Version:</strong> <span class="highlight-version"><?php echo htmlspecialchars(phpversion(), ENT_QUOTES, 'UTF-8'); ?></span></p>
+            <p><strong>Required Version:</strong> <span>PHP 8.2 or later</span></p>
         </div>
-      </div>
-      <div class="right-section">
-        <svg class="svgimg" xmlns="http://www.w3.org/2000/svg" viewBox="51.5 -15.288 385 505.565">
-          <g class="bench-legs">
-            <path
-              d="M202.778,391.666h11.111v98.611h-11.111V391.666z M370.833,390.277h11.111v100h-11.111V390.277z M183.333,456.944h11.111
-          v33.333h-11.111V456.944z M393.056,456.944h11.111v33.333h-11.111V456.944z"
-            />
-          </g>
-          <g class="top-bench">
-            <path
-              d="M396.527,397.917c0,1.534-1.243,2.777-2.777,2.777H190.972c-1.534,0-2.778-1.243-2.778-2.777v-8.333
-          c0-1.535,1.244-2.778,2.778-2.778H393.75c1.534,0,2.777,1.243,2.777,2.778V397.917z M400.694,414.583
-          c0,1.534-1.243,2.778-2.777,2.778H188.194c-1.534,0-2.778-1.244-2.778-2.778v-8.333c0-1.534,1.244-2.777,2.778-2.777h209.723
-          c1.534,0,2.777,1.243,2.777,2.777V414.583z M403.473,431.25c0,1.534-1.244,2.777-2.778,2.777H184.028
-          c-1.534,0-2.778-1.243-2.778-2.777v-8.333c0-1.534,1.244-2.778,2.778-2.778h216.667c1.534,0,2.778,1.244,2.778,2.778V431.25z"
-            />
-          </g>
-          <g class="bottom-bench">
-            <path
-              d="M417.361,459.027c0,0.769-1.244,1.39-2.778,1.39H170.139c-1.533,0-2.777-0.621-2.777-1.39v-4.86
-          c0-0.769,1.244-0.694,2.777-0.694h244.444c1.534,0,2.778-0.074,2.778,0.694V459.027z"
-            />
-            <path
-              d="M185.417,443.75H400c0,0,18.143,9.721,17.361,10.417l-250-0.696C167.303,451.65,185.417,443.75,185.417,443.75z"
-            />
-          </g>
-          <g id="lamp">
-            <path
-              class="lamp-details"
-              d="M125.694,421.997c0,1.257-0.73,3.697-1.633,3.697H113.44c-0.903,0-1.633-2.44-1.633-3.697V84.917
-          c0-1.257,0.73-2.278,1.633-2.278h10.621c0.903,0,1.633,1.02,1.633,2.278V421.997z"
-            />
-            <path
-              class="lamp-accent"
-              d="M128.472,93.75c0,1.534-1.244,2.778-2.778,2.778h-13.889c-1.534,0-2.778-1.244-2.778-2.778V79.861
-          c0-1.534,1.244-2.778,2.778-2.778h13.889c1.534,0,2.778,1.244,2.778,2.778V93.75z"
-            />
 
-            <circle class="lamp-light" cx="119.676" cy="44.22" r="40.51" />
-            <path
-              class="lamp-details"
-              d="M149.306,71.528c0,3.242-13.37,13.889-29.861,13.889S89.583,75.232,89.583,71.528c0-4.166,13.369-13.889,29.861-13.889
-          S149.306,67.362,149.306,71.528z"
-            />
-            <radialGradient
-              class="light-gradient"
-              id="SVGID_1_"
-              cx="119.676"
-              cy="44.22"
-              r="65"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop offset="0%" style="stop-color: #ffffff; stop-opacity: 1" />
-              <stop offset="50%" style="stop-color: #ededed; stop-opacity: 0.5">
-                <animate
-                  attributeName="stop-opacity"
-                  values="0.0; 0.5; 0.0"
-                  dur="5000ms"
-                  repeatCount="indefinite"
-                ></animate>
-              </stop>
-              <stop offset="100%" style="stop-color: #ededed; stop-opacity: 0" />
-            </radialGradient>
-            <circle class="lamp-light__glow" fill="url(#SVGID_1_)" cx="119.676" cy="44.22" r="65" />
-            <path
-              class="lamp-bottom"
-              d="M135.417,487.781c0,1.378-1.244,2.496-2.778,2.496H106.25c-1.534,0-2.778-1.118-2.778-2.496v-74.869
-          c0-1.378,1.244-2.495,2.778-2.495h26.389c1.534,0,2.778,1.117,2.778,2.495V487.781z"
-            />
-          </g>
-        </svg>
-      </div>
+        <div class="error-message">
+            <p>ChurchCRM requires PHP 8.2 or later with active security support.</p>
+        </div>
+
+        <div class="action-required">
+            <strong>What you need to do:</strong>
+            <p>Contact your hosting provider or system administrator and request an upgrade to PHP 8.2 or later.</p>
+            <p>Older PHP versions no longer receive security updates, which puts your church data at risk.</p>
+        </div>
+
+        <div class="help-link">
+            <a href="https://www.php.net/supported-versions.php" target="_blank">View PHP Support Timeline</a>
+        </div>
     </div>
-  </body>
+</body>
 </html>
