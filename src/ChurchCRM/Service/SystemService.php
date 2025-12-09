@@ -95,14 +95,6 @@ class SystemService
                 LoggerUtils::getAppLogger()->warning('Failure executing backup job: ' . $exc->getMessage());
             }
         }
-        if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'), SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
-            // Since checking for updates from GitHub is a potentially expensive operation,
-            // Run this task as part of the "background jobs" API call
-            // Inside ChurchCRMReleaseManager, the restults are stored to the $_SESSION
-            ChurchCRMReleaseManager::checkForUpdates();
-            $now = new \DateTime();  // update the LastBackupTimeStamp.
-            SystemConfig::setValue('sLastSoftwareUpdateCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
-        }
 
         LoggerUtils::getAppLogger()->debug('Finished background job processing');
     }

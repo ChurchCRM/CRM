@@ -26,3 +26,6 @@ DELETE FROM `config_cfg` WHERE `cfg_id` = 2077;
 
 -- Remove integrity check background job configs (now runs only from admin pages)
 DELETE FROM `config_cfg` WHERE `cfg_id` IN (1044, 1045, 1046);
+
+-- Remove software update check timer configs (runs on admin login instead)
+DELETE FROM `config_cfg` WHERE `cfg_id` IN (2063, 2064);

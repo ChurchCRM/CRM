@@ -292,8 +292,6 @@ class   SystemConfig
             'sGreeterCustomMsg2'                   => new ConfigItem(2059, 'sGreeterCustomMsg2', 'text', '', gettext('Custom message for church greeter email 2, max 255 characters')),
             'IncludeDataInNewPersonNotifications'  => new ConfigItem(2060, 'IncludeDataInNewPersonNotifications', 'boolean', '0', gettext('Include contact and demographic data in new member email notification body')),
             'bSearchIncludeFamilyCustomProperties' => new ConfigItem(2061, 'bSearchIncludeFamilyCustomProperties', 'boolean', '0', gettext('Include family custom properties in global search.')),
-            'iSoftwareUpdateCheckInterval'         => new ConfigItem(2063, 'iSoftwareUpdateCheckInterval', 'number', '24', gettext('Interval in Hours for software update check')),
-            'sLastSoftwareUpdateCheckTimeStamp'    => new ConfigItem(2064, 'sLastSoftwareUpdateCheckTimeStamp', 'text', '', gettext('Last Software Update Check Timestamp')),
             'bAllowPrereleaseUpgrade'              => new ConfigItem(2065, 'bAllowPrereleaseUpgrade', 'boolean', '0', gettext("Allow system upgrades to release marked as 'pre release' on GitHub")),
             'bSearchIncludeCalendarEvents'         => new ConfigItem(2066, 'bSearchIncludeCalendarEvents', 'boolean', '1', gettext('Search Calendar Events')),
             'bSearchIncludeCalendarEventsMax'      => new ConfigItem(2067, 'bSearchIncludeCalendarEventsMax', 'text', '15', gettext('Maximum number of Calendar Events')),
@@ -326,7 +324,7 @@ class   SystemConfig
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Events')             => ['bEnableExternalCalendarAPI', 'bEventsOnDashboardPresence', 'iEventsOnDashboardPresenceTimeOut'],
             gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword'],
-            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'iSoftwareUpdateCheckInterval', 'sLastSoftwareUpdateCheckTimeStamp', 'bAllowPrereleaseUpgrade'],
+            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'bAllowPrereleaseUpgrade'],
         ];
     }
 
