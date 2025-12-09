@@ -529,7 +529,7 @@
         <column name="plg_Problem" phpName="Problem" type="BOOLEAN" size="1"/>
         <column name="plg_scanString" phpName="ScanString" type="LONGVARCHAR"/>
         <column name="plg_aut_ID" phpName="AutId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
-        <column name="plg_method" phpName="Method" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT')"/>
+        <column name="plg_aut_Cleared" phpName="AutCleared" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
         <column name="plg_aut_ResultID" phpName="AutResultId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
         <column name="plg_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
         <column name="plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>
