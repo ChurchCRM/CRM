@@ -509,14 +509,14 @@ window.Stepper = Stepper;
 			localeData.systemLocaleDetected && localeData.supportedLocales ? "alert-success" : "alert-warning";
 
 		$summary.attr("class", `alert ${summaryClass} mb-2`);
-		$summary.text(summary).prepend('<i class="fa-solid fa-check-circle"></i> ');
+		$summary.html(`<i class="fa-solid fa-check-circle"></i> ${summary}`);
 
-		// Update status icon - use same pattern as other checks
-		if (localeData.systemLocaleDetected) {
-			$status.html('<i class="fa-solid fa-check-circle text-success"></i>');
-		} else {
-			$status.html('<i class="fa-solid fa-exclamation-triangle text-warning"></i>');
-		}
+		// Update status icon
+		$status.html(
+			localeData.systemLocaleDetected
+				? '<i class="fa-solid fa-check text-success"></i>'
+				: '<i class="fa-solid fa-exclamation-triangle text-warning"></i>'
+		);
 
 		// Render locale table
 		if (localeData.supportedLocales && localeData.supportedLocales.length > 0) {
@@ -525,8 +525,8 @@ window.Stepper = Stepper;
 			// Create table header
 			const $thead = $("<thead>").append(
 				$("<tr>")
-					.append($("<th>").text("ChurchCRM Supported Locales"))
-					.append($("<th style='text-align: center; width: 100px;'>").text("System Support"))
+					.append($("<th>").text(i18next.t("ChurchCRM Supported Locales")))
+					.append($("<th style='text-align: center; width: 100px;'>").text(i18next.t("System Support")))
 			);
 			$table.append($thead);
 
@@ -534,22 +534,15 @@ window.Stepper = Stepper;
 			const $tbody = $("<tbody>");
 			locales.forEach(function (locale) {
 				const statusBadge = locale.systemAvailable
-					? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>Available</span>`
-					: `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>Not Available</span>`;
-
-				const $nameDiv = $("<div>").css("font-weight", "500").text(locale.name);
-				const $localeSmall = $("<small>")
-					.addClass("text-muted")
-					.css({
-						"display": "block",
-						"font-size": "0.85em",
-						"margin-top": "2px"
-					})
-					.text(locale.locale);
+					? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>${i18next.t('Available')}</span>`
+					: `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>${i18next.t('Not Available')}</span>`;
 
 				const $row = $("<tr>")
 					.append(
-						$("<td>").append($nameDiv).append($localeSmall)
+						$("<td>").html(
+							`<div style="font-weight: 500;">${locale.name}</div>` +
+							`<small class="text-muted" style="display: block; font-size: 0.85em; margin-top: 2px;">${locale.locale}</small>`
+						)
 					)
 					.append(
 						$("<td style='text-align: center; vertical-align: middle;'>").html(statusBadge)
@@ -561,7 +554,7 @@ window.Stepper = Stepper;
 		} else {
 			const $row = $("<tr>").append(
 				$("<td colspan='2'>").html(
-					"<i class='fa-solid fa-exclamation-triangle text-warning mr-2'></i>Unable to determine available locales"
+					`<i class='fa-solid fa-exclamation-triangle text-warning mr-2'></i>${i18next.t("Unable to determine available locales")}`
 				)
 			);
 			$table.append($row);
@@ -575,12 +568,12 @@ window.Stepper = Stepper;
 
 		$table.empty();
 		$summary.attr("class", "alert alert-danger mb-2");
-		$summary.html("<i class='fa-solid fa-times-circle'></i> Unable to detect system locales");
-		$status.html('<i class="fa-solid fa-exclamation-circle text-danger"></i>');
+		$summary.html(`<i class='fa-solid fa-times-circle'></i> ${i18next.t("Unable to detect system locales")}`);
+		$status.html('<i class="fa-solid fa-times text-danger"></i>');
 
 		const $errorRow = $("<tr>").append(
 			$("<td>").html(
-				"<i class='fa-solid fa-exclamation-circle text-danger mr-2'></i>Unable to load locale information"
+				`<i class='fa-solid fa-exclamation-circle text-danger mr-2'></i>${i18next.t("Unable to load locale information")}`
 			)
 		);
 		$table.append($errorRow);
@@ -707,21 +700,16 @@ window.Stepper = Stepper;
 						validator: (value) => {
 							try {
 								const url = new URL(value);
-								// Check for http or https protocol
-								if (url.protocol !== "http:" && url.protocol !== "https:") {
-									return false;
-								}
-								// Check that URL ends with a trailing slash
-								if (!value.endsWith("/")) {
-									return false;
-								}
-								return true;
+								return (
+									url.protocol === "http:" ||
+									url.protocol === "https:"
+								);
 							} catch (e) {
 								return false;
 							}
 						},
 						errorMessage: i18next.t(
-							"Must be a valid URL starting with http:// or https:// and ending with a slash (e.g., https://www.yourdomain.com/ or https://www.yourdomain.com/churchcrm/)",
+							"Must be a valid URL starting with http:// or https://",
 						),
 					});
 				}
