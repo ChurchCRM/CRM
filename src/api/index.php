@@ -22,11 +22,22 @@ $basePath = SlimUtils::getBasePath('/api');
 
 
 $container = new ContainerBuilder();
-$container->set('PersonService', new PersonService());
-$container->set('GroupService', new GroupService());
-$container->set('FinancialService', new FinancialService());
-$container->set('SystemService', new SystemService());
-$container->set('DepositService', new DepositService());
+// Lazy initialization - services created only when requested
+$container->set('PersonService', function() {
+    return new PersonService();
+});
+$container->set('GroupService', function() {
+    return new GroupService();
+});
+$container->set('FinancialService', function() {
+    return new FinancialService();
+});
+$container->set('SystemService', function() {
+    return new SystemService();
+});
+$container->set('DepositService', function() {
+    return new DepositService();
+});
 $container->compile();
 
 AppFactory::setContainer($container);
