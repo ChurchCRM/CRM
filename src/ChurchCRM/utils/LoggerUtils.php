@@ -46,8 +46,8 @@ class LoggerUtils
     }
 
     /**
-     * Create a LineFormatter with the configured timezone
-     * This ensures all logs use the same timezone regardless of when the logger is created
+     * Create a LineFormatter with consistent timestamp formatting
+     * The timezone used for formatting is set via date_default_timezone_set in Bootstrapper
      */
     private static function createFormatter(): LineFormatter
     {
