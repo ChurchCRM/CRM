@@ -37,9 +37,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </button>
                     <span id="logLevelStatus" class="ml-3"></span>
                 </form>
-                <p class="text-muted mt-2 mb-0">
-                    <small><i class="fa-solid fa-info-circle"></i> <?= gettext('Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately.') ?></small>
-                </p>
             </div>
         </div>
     </div>

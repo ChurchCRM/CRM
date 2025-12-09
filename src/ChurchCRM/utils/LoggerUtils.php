@@ -4,6 +4,7 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Monolog\Processor\PsrLogMessageProcessor;
@@ -17,6 +18,7 @@ class LoggerUtils
     private static ?Logger $slimLogger = null;
     private static ?StreamHandler $authLogHandler = null;
     private static ?string $correlationId = null;
+    private static ?LineFormatter $formatter = null;
 
     public static function getCorrelationId(): ?string
     {
@@ -43,6 +45,31 @@ class LoggerUtils
         return self::getLogLevel() == Logger::DEBUG;
     }
 
+    /**
+     * Create a LineFormatter with the configured timezone
+     * This ensures all logs use the same timezone regardless of when the logger is created
+     */
+    private static function createFormatter(): LineFormatter
+    {
+        if (self::$formatter === null) {
+            self::$formatter = new LineFormatter(null, null, false, true);
+            
+            try {
+                // Use configured timezone if available
+                $timezone = SystemConfig::getValue('sTimeZone');
+                if ($timezone) {
+                    self::$formatter->setDateFormat('Y-m-d\TH:i:s.uP');
+                    // The timezone is set via date_default_timezone_set in Bootstrapper
+                    // Monolog will use that for formatting
+                }
+            } catch (\Exception $e) {
+                // Config not initialized - will use UTC (set in Bootstrapper)
+            }
+        }
+        
+        return self::$formatter;
+    }
+
     public static function buildLogFilePath(string $type): string
     {
         try {
@@ -63,6 +90,7 @@ class LoggerUtils
         if (!self::$slimLogger instanceof Logger) {
             $slimLogger = new Logger('slim-app');
             $streamHandler = new StreamHandler(self::buildLogFilePath('slim'), self::getLogLevel());
+            $streamHandler->setFormatter(self::createFormatter());
             $slimLogger->pushHandler($streamHandler);
             self::$slimLogger = $slimLogger;
         }
@@ -82,6 +110,7 @@ class LoggerUtils
 
             self::$appLogger = new Logger('defaultLogger');
             self::$appLogHandler = new StreamHandler(self::buildLogFilePath('app'), $level);
+            self::$appLogHandler->setFormatter(self::createFormatter());
             self::$appLogger->pushHandler(self::$appLogHandler);
             self::$appLogger->pushProcessor(new PsrLogMessageProcessor());
             self::$appLogger->pushProcessor(function (array $entry): array {
@@ -118,6 +147,7 @@ class LoggerUtils
         if (!self::$authLogger instanceof Logger) {
             self::$authLogger = new Logger('authLogger');
             self::$authLogHandler = new StreamHandler(self::buildLogFilePath('auth'), self::getLogLevel());
+            self::$authLogHandler->setFormatter(self::createFormatter());
             self::$authLogger->pushHandler(self::$authLogHandler);
             self::$authLogger->pushProcessor(function (array $entry): array {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
@@ -144,7 +174,9 @@ class LoggerUtils
     {
         if (!self::$cspLogger instanceof Logger) {
             self::$cspLogger = new Logger('cspLogger');
-            self::$cspLogger->pushHandler(new StreamHandler(self::buildLogFilePath('csp'), self::getLogLevel()));
+            $streamHandler = new StreamHandler(self::buildLogFilePath('csp'), self::getLogLevel());
+            $streamHandler->setFormatter(self::createFormatter());
+            self::$cspLogger->pushHandler($streamHandler);
         }
 
         return self::$cspLogger;
