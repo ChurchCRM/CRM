@@ -328,78 +328,78 @@
                 includeEvents: includeEvents,
                 includeSundaySchool: includeSundaySchool,
                 force: forceImport || false,
-            })
+            }),
         })
-        .done(function (data) {
-            hideSpinnerOverlay();
+            .done(function (data) {
+                hideSpinnerOverlay();
 
-            if ($status.length) {
-                $status.hide();
-            }
-            $button.prop("disabled", false);
-
-            if (data && data.success) {
-                // Reset force import mode on success
-                forceImportMode = false;
-                resetImportButton();
-
-                if ($resultsList.length) {
-                    $resultsList.empty();
-                    var imported = data.imported || {};
-                    for (var key in imported) {
-                        if (Object.prototype.hasOwnProperty.call(imported, key) && imported[key] > 0) {
-                            var label = key.replace(/_/g, " ").replace(/\b\w/g, function (l) {
-                                return l.toUpperCase();
-                            });
-                            $resultsList.append("<li>" + label + ": <strong>" + imported[key] + "</strong></li>");
-                        }
-                    }
-                    if (data.warnings && data.warnings.length > 0) {
-                        $resultsList.append(
-                            '<li class="text-warning">' +
-                                i18next.t("Warnings") +
-                                ": " +
-                                data.warnings.length +
-                                "</li>",
-                        );
-                    }
-                    $results.show();
+                if ($status.length) {
+                    $status.hide();
                 }
+                $button.prop("disabled", false);
 
-                window.CRM.notify(i18next.t("Demo data imported successfully"), { type: "success", delay: 3000 });
-            } else {
-                // Enable force import mode on failure
+                if (data && data.success) {
+                    // Reset force import mode on success
+                    forceImportMode = false;
+                    resetImportButton();
+
+                    if ($resultsList.length) {
+                        $resultsList.empty();
+                        var imported = data.imported || {};
+                        for (var key in imported) {
+                            if (Object.prototype.hasOwnProperty.call(imported, key) && imported[key] > 0) {
+                                var label = key.replace(/_/g, " ").replace(/\b\w/g, function (l) {
+                                    return l.toUpperCase();
+                                });
+                                $resultsList.append("<li>" + label + ": <strong>" + imported[key] + "</strong></li>");
+                            }
+                        }
+                        if (data.warnings && data.warnings.length > 0) {
+                            $resultsList.append(
+                                '<li class="text-warning">' +
+                                    i18next.t("Warnings") +
+                                    ": " +
+                                    data.warnings.length +
+                                    "</li>",
+                            );
+                        }
+                        $results.show();
+                    }
+
+                    window.CRM.notify(i18next.t("Demo data imported successfully"), { type: "success", delay: 3000 });
+                } else {
+                    // Enable force import mode on failure
+                    forceImportMode = true;
+
+                    var errorMsg = data && data.error ? data.error : i18next.t("Unknown error");
+
+                    // Update button to Force Import and show overlay again with error
+                    setForceImportButton(errorMsg);
+                    showConfirmOverlay();
+                }
+            })
+            .fail(function (xhr) {
+                hideSpinnerOverlay();
+
+                if ($status.length) {
+                    $status.hide();
+                }
+                $button.prop("disabled", false);
+
+                // Enable force import mode on error
                 forceImportMode = true;
 
-                var errorMsg = data && data.error ? data.error : i18next.t("Unknown error");
+                var errorMessage = i18next.t("An error occurred during demo data import");
+                if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
+                    errorMessage = xhr.responseJSON.error;
+                } else if (xhr && xhr.status) {
+                    errorMessage = i18next.t("Server error") + " (" + xhr.status + ")";
+                }
 
                 // Update button to Force Import and show overlay again with error
-                setForceImportButton(errorMsg);
+                setForceImportButton(errorMessage);
                 showConfirmOverlay();
-            }
-        })
-        .fail(function (xhr) {
-            hideSpinnerOverlay();
-
-            if ($status.length) {
-                $status.hide();
-            }
-            $button.prop("disabled", false);
-
-            // Enable force import mode on error
-            forceImportMode = true;
-
-            var errorMessage = i18next.t("An error occurred during demo data import");
-            if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
-                errorMessage = xhr.responseJSON.error;
-            } else if (xhr && xhr.status) {
-                errorMessage = i18next.t("Server error") + " (" + xhr.status + ")";
-            }
-
-            // Update button to Force Import and show overlay again with error
-            setForceImportButton(errorMessage);
-            showConfirmOverlay();
-        });
+            });
     }
 
     function setForceImportButton(errorMessage) {

@@ -443,10 +443,6 @@ msgid "Contact Info"
 msgstr "連絡先情報"
 
 #: 
-msgid "Other Info"
-msgstr "他の情報"
-
-#: 
 msgid "Custom Fields"
 msgstr "カスタムフィールド"
 
@@ -505,14 +501,6 @@ msgstr "12月"
 #: 
 msgid "Add New Member"
 msgstr "新しいメンバーを追加"
-
-#: 
-msgid "Previous Family"
-msgstr "前の家族"
-
-#: 
-msgid "Next Family"
-msgstr "次の家族"
 
 #: 
 msgid "Upload Photo"

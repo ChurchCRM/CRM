@@ -1018,10 +1018,6 @@ msgid "Contact Info"
 msgstr "Info Contact"
 
 #: 
-msgid "Other Info"
-msgstr "Alte informații"
-
-#: 
 msgid "Envelope Info"
 msgstr "Informații plic"
 
@@ -1032,10 +1028,6 @@ msgstr "Câmpuri personalizate"
 #: 
 msgid "Family Members"
 msgstr "Membrii de familie"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Puteți crea acum membrii de familie sau îi puteți adăuga mai târziu. Toate înregistrările vor deveni înregistrări de persoane <i>noi</i>"
 
 #: 
 msgid "First"
@@ -1130,20 +1122,8 @@ msgid "Envelope Number"
 msgstr "Numărul de plic"
 
 #: 
-msgid "Verify Info"
-msgstr "Verifică informația"
-
-#: 
 msgid "Add New Member"
 msgstr "Adaugă membru nou"
-
-#: 
-msgid "Previous Family"
-msgstr "Familia anterioră"
-
-#: 
-msgid "Next Family"
-msgstr "Familia următoare"
 
 #: 
 msgid "Upload Photo"
@@ -1233,14 +1213,6 @@ msgstr "Metodă"
 #: 
 msgid "Comment"
 msgstr "Comentariu"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Adauga un nou angajament"
-
-#: 
-msgid "Add a new payment"
-msgstr "Adauga o nouă plată"
 
 #: 
 msgid "Close"
@@ -1923,15 +1895,6 @@ msgid "Start Date/Time"
 msgstr "Data/Ora de Început"
 
 #: 
-#, fuzzy
-msgid "Attendees"
-msgstr "Participanți"
-
-#: 
-msgid " Monthly Averages"
-msgstr "Medii lunare"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Parola sau autentificare invalida"
 
@@ -2275,32 +2238,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "Indică elemente moștenite din cazierul familie asociat."
 
 #: 
-msgid "Personal Info"
-msgstr "Informații personale"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Dl, Dna., Dr., Pst."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Jr.,Sr,III"
-
-#: 
 msgid "Birth Month"
 msgstr "Lună naștere"
 
 #: 
-msgid "Select Month"
-msgstr "Selectează lună"
-
-#: 
 msgid "Birth Day"
 msgstr "Zi naștere"
-
-#: 
-msgid "Select Day"
-msgstr "Selectează zi"
 
 #: 
 #, fuzzy
@@ -2314,10 +2257,6 @@ msgstr "Ascundeți Vârsta"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Creați o nouă familie (folosind numele de familie)"
-
-#: 
-msgid "Membership Info"
-msgstr "Informații membralitate"
 
 #: 
 #, fuzzy
@@ -2406,28 +2345,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Verifica numărul nu este valabil pentru plata \"numerar\""
 
 #: 
-msgid "Pledge Editor"
-msgstr "Gaj Editor"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Editor de plată:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Formular de depunere #"
-
-#: 
 msgid " more entries will fit."
 msgstr "mai multe intrări se va potrivi."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Editor de plata - Modificare plată existente"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Editor de plata - chitanța de depunere Vor fi create noi"
 
 #: 
 msgid "Deposit closed"
@@ -2736,10 +2655,6 @@ msgstr "Trimite"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Raportul Memento gaj"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Raport participanți eveniment "
 
 #: 
 msgid "Restore Database"
@@ -3714,18 +3629,6 @@ msgid "Import Data"
 msgstr "Import date"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Sigur vreți să eliminați această persoană de la id eveniment:"
-
-#: 
-msgid "Date Range"
-msgstr "Interval dată"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Ștergerea acestui eveniment TIP NU va șterge niciun eveniment existent sau număr de prezență. Sigur doriți să Ștergeți ID de tip eveniment:"
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Sunteți sigur că vrețis ă ștergeți selecția "
 
@@ -3754,10 +3657,6 @@ msgid "Deposit Date"
 msgstr "Dată depozit"
 
 #: 
-msgid "Details:"
-msgstr "Detalii:"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Aceasta va suprascrie numerele plicului familiei din baza de date cu cele selectate pe această pagină. Continua?"
 
@@ -3772,42 +3671,6 @@ msgstr "cu măcar una:"
 #: 
 msgid "Welcome to"
 msgstr "Bun venit la:"
-
-#: 
-msgid "Select Database Files"
-msgstr "Selectează fișiere bază de date"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Selectați un fișier back-up pentru restaurare"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "ATENȚIE: Aceasta va suprascrie baza de date existăntă cu datele din back-up"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Dacă încărcați o copie de rezervă de la ChurchInfo sau o versiune anterioară a ChurchCRM, aceasta va fi actualizată automat la schema bazei de date curente"
-
-#: 
-msgid "Upload Files"
-msgstr "Încarcă fișiere"
-
-#: 
-msgid "No Restore Running"
-msgstr "Nu rulează restaurări"
-
-#: 
-msgid "Restore Complete"
-msgstr "Restaurare completă"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Autentifică-te pentru a restaura baza de date"
-
-#: 
-msgid "Restore Error."
-msgstr "Eroare la restaurare"
 
 #: 
 msgid "Church Information"
@@ -3911,57 +3774,20 @@ msgid "Enter Name"
 msgstr "Introdu nume"
 
 #: 
-msgid "Update Church Info"
-msgstr "Actualizează informații biserică"
-
-#: 
-msgid "Set Church Address"
-msgstr "Alege adresă biserică"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Alege setări email"
-
-#: 
 msgid "New Release"
 msgstr "Versiune nouă"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Verificare integritate eșuată"
 
 #: 
 msgid "Self Registration"
 msgstr "Auto înregistrare"
 
 #: 
-msgid "Restore Status:"
-msgstr "Stadiu restaurare:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Nu au fost găsite coordonate"
 
 #: 
-msgid "Backup Status:"
-msgstr "Stadiu copie de rezervă: "
-
-#: 
-msgid "No Backup Running"
-msgstr "Nu se creată copii de rezervă"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonim"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Participanți pentru eveniment:"
-
-#: 
-msgid "Yearly"
-msgstr "Anual"
 
 #: 
 msgid "Registration Complete"
@@ -4012,10 +3838,6 @@ msgid "One or more files failed signature validation"
 msgstr "Unul sau mai multe fișiere au semnătura invalidă"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "Configurare HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "Familie:"
 
@@ -4056,10 +3878,6 @@ msgid "Voting members "
 msgstr "Membri votanți:"
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Rulează restaurarea, vă rog așteptați"
-
-#: 
 msgid "Family Members:"
 msgstr "Membri familie:"
 
@@ -4082,10 +3900,6 @@ msgstr "Nume fișier:"
 #: 
 msgid "Fiscal Year:"
 msgstr "An fiscal:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Adaugă participant la eveniment"
 
 #: 
 msgid "family"
@@ -4114,10 +3928,6 @@ msgstr "Dată final:"
 #: 
 msgid "Members:"
 msgstr "Membri:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Editează setări generale"
 
 #: 
 msgid "There were "
@@ -4990,46 +4800,6 @@ msgstr "Lunar pe"
 #: 
 msgid "Yearly on"
 msgstr "Anual pe"
-
-#: 
-msgid "All Events of Type"
-msgstr "Toate evenimentele de acest tip"
-
-#: 
-msgid "There is"
-msgstr "Exitstă"
-
-#: 
-msgid "There are"
-msgstr "Sunt"
-
-#: 
-msgid "event"
-msgstr "eveniment"
-
-#: 
-msgid "events"
-msgstr "evenimente"
-
-#: 
-msgid " in this category."
-msgstr "în această categorie."
-
-#: 
-msgid "There currently is"
-msgstr "Există acum"
-
-#: 
-msgid "There currently are"
-msgstr "Sunt acum"
-
-#: 
-msgid "custom event type"
-msgstr "tip eveniment personalizat"
-
-#: 
-msgid "custom event types"
-msgstr "tip evenimente personalizat"
 
 #: 
 msgid "Family Roles Editor"
@@ -6440,42 +6210,6 @@ msgid "Please verify your family's information"
 msgstr "Vă rugăm verificați informațiile legat de familie"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Adresa biserica nu este stabilită"
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Numele bisericii este stabilit la valoarea implicită"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "Server SMTP este gol"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Systemul ar putea fi mai sigur dacă instalați un certificat TLS/SSL"
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Date de clasificare lipsă"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Date de clasificare lipsă pentru anumite persoane"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Date de gen lipsă"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Date de gen lipsă pentru anumite persoane"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Date de rog lipsă"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Informațiile de verificare nu pot fi încărcate"
 
@@ -6540,20 +6274,8 @@ msgid "Verified In Person"
 msgstr "Verificare în persoană"
 
 #: 
-msgid "None State"
-msgstr "Fără stadiu"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Copia de rezervă nu conține baza de date"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Lipsă coordonate"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Coordonatele familiei pentru unele familii"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6676,28 +6398,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Fișierul selectat depășește mărimea maximă acceptată de server"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Specificații aplicație neîndeplinite"
-
-#: 
 msgid "Failed"
 msgstr "Eșuat"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Numărul contului de verificare al Bisericii"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Rol nespecificat pentru unii oameni"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "PHP Max File prea mic"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Măriți limitele de încărcare php pentru a permite încărcarea de fotografii mobile și restaurarea copiilor de rezervă."
 
 #: 
 msgid "Deactivated the Family"
@@ -6769,10 +6475,6 @@ msgid "Coordinate data base file name:"
 msgstr "Nume fișiere coordonate în baza de date"
 
 #: 
-msgid "Intersect With Cart"
-msgstr "Intersecție cu grafic"
-
-#: 
 msgid "select an option"
 msgstr "selectează o opțiune"
 
@@ -6811,15 +6513,6 @@ msgstr "Proprietatea nu a putut fi ștearsă"
 #: 
 msgid "Select event"
 msgstr "Selectează eveniment"
-
-#: 
-msgid "Person's Name"
-msgstr "Nume persoane"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Verificat de (opțional)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -6928,14 +6621,6 @@ msgstr "asignat"
 #: 
 msgid "Photo"
 msgstr "Foto"
-
-#: 
-msgid "Payment Details"
-msgstr "Detalii plată"
-
-#: 
-msgid "Fund Split"
-msgstr "Împărțirea fondului"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7731,18 +7416,6 @@ msgid "Upgrade Required"
 msgstr "Actualizare necesară"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Versiune curendă DB"
-
-#: 
-msgid "Current Software Version: "
-msgstr "Versiune curentă software"
-
-#: 
-msgid "Upgrade database"
-msgstr "Actualizează baza de date"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Arată aniversări la pornirea CRM-ului"
 
@@ -7799,14 +7472,6 @@ msgid "Meanwhile, you may"
 msgstr "Între timp, puteți"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Doar baza de date (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Baza de date și pozele (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Trebuie să fi administrator"
 
@@ -7839,10 +7504,6 @@ msgid "return to People Dashboard"
 msgstr "revin-o la Panou oameni"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Utilizatorul trebuie să aibă pemisii pentru MenuOptions"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "domeniu SMTP nesetat, vizitați pagina de setări"
 
@@ -7855,16 +7516,8 @@ msgid "This Family is Deactivated"
 msgstr "Această familie este dezactivată"
 
 #: 
-msgid "Metadata"
-msgstr "Metadata"
-
-#: 
 msgid "The database has been cleared."
 msgstr "Baza de date a fost șearsă"
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Utilizator trebuie să aibă permisii bAddEvent "
 
 #: 
 msgid "Anniversaries"
@@ -8005,10 +7658,6 @@ msgid "Enable Events menu."
 msgstr "Activați meniul Evenimente"
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "Activați meniul Calendar"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Activați meniu Strângere de Fonduri"
 
@@ -8134,10 +7783,6 @@ msgid "User must have Edit Records permission"
 msgstr "Utilizatorul trebuie să aibă permisiunea de editare"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Utilizatorul trebuie să aibă permisiuni pentru partea financiară"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Nu poți să te ștergi pe tine"
 
@@ -8244,18 +7889,6 @@ msgid "Passed"
 msgstr "A trecut"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "Timpul maxim de execuție PHP este prea scurt"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Măriți limita de timp de execuție PHP pentru a permite backup și restaurare."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Verificarea integrității aplicației"
-
-#: 
 msgid "Focus"
 msgstr "Focalizare"
 
@@ -8301,16 +7934,8 @@ msgid "Error decoding signature definition file"
 msgstr "Eroare la decodarea fișierului de definire a semnăturii"
 
 #: 
-msgid "Generate Backup"
-msgstr "Generează backup"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint de backup la distanță. Dacă este WebDAV, acesta trebuie să fie codificat în URL"
-
-#: 
-msgid "Password (if any)"
-msgstr "Parola (dacă)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8454,20 +8079,8 @@ msgstr[1] "de %d ani"
 msgstr[2] "de %d ani"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Versiune PHP neacceptată"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "În curând suportul pentru această versiune de PHP nu va mai fi disponibil. Versiunea PHP curentă"
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Lipsește PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "PHP ZipArchive este necesar pentru a susține actualizarea"
 
 #: 
 msgid "Add Results to Cart"
@@ -8521,10 +8134,6 @@ msgstr "BisericaCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Specificați numele aplicației care va fi afișat în aplicația de autentificare"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Cheile secrete lipsesc din Config.php"
 
 #: 
 msgid "Review"
@@ -8910,14 +8519,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "Dacă vreodată pierdeți accesul la aplicația de autentificare proaspăt înregistrată, va trebui să utilizați un cod de recuperare pentru a obține acces la contul dvs"
 
 #: 
-msgid "Event Attendance"
-msgstr "Prezența la Eveniment"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Generați rapoarte de prezență - ȘI - rapoarte de absență pentru evenimente"
-
-#: 
 msgid "Help translate this project"
 msgstr "Ajutați la traducerea acestui proiect"
 
@@ -9099,8 +8700,4 @@ msgstr "Total depozit"
 #: 
 msgid "Group Cart Status"
 msgstr "Stare coș grup"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Nume adult (opțional)"
 

@@ -989,10 +989,6 @@ msgid "Contact Info"
 msgstr "Kontaktinfo"
 
 #: 
-msgid "Other Info"
-msgstr "Muu teave"
-
-#: 
 msgid "Envelope Info"
 msgstr "Ümbriku teave"
 
@@ -1003,10 +999,6 @@ msgstr "Kohandatud väljad"
 #: 
 msgid "Family Members"
 msgstr "Perekonna liikmed"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Võite pereliikmeid luua nüüd või lisada neid hiljem. Kõikidest kannetest saavad <i>uued</i> isikud."
 
 #: 
 msgid "First"
@@ -1101,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "Ümbriku number"
 
 #: 
-msgid "Verify Info"
-msgstr "Kinnitage teave"
-
-#: 
 msgid "Add New Member"
 msgstr "Lisa uus liige"
-
-#: 
-msgid "Previous Family"
-msgstr "Eelmine perekond"
-
-#: 
-msgid "Next Family"
-msgstr "Järgmine perekond"
 
 #: 
 msgid "Upload Photo"
@@ -1203,14 +1183,6 @@ msgstr "Meetod"
 #: 
 msgid "Comment"
 msgstr "Kommenteeri"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Lisage uus annetus"
-
-#: 
-msgid "Add a new payment"
-msgstr "Lisage uus makse"
 
 #: 
 msgid "Close"
@@ -1872,14 +1844,6 @@ msgid "Start Date/Time"
 msgstr "Alguskuupäev / kellaaeg"
 
 #: 
-msgid "Attendees"
-msgstr "Osalejad"
-
-#: 
-msgid " Monthly Averages"
-msgstr " Kuu keskmised"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Vale nimi või parool"
 
@@ -2220,32 +2184,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "tähistab seotud perekonnakirjest päritud üksusi."
 
 #: 
-msgid "Personal Info"
-msgstr "Personaalne informatsioon"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Hr, proua, dr, rev."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Jr., Sr., III"
-
-#: 
 msgid "Birth Month"
 msgstr "Sünnikuu"
 
 #: 
-msgid "Select Month"
-msgstr "Vali Kuu"
-
-#: 
 msgid "Birth Day"
 msgstr "Sünnipäev"
-
-#: 
-msgid "Select Day"
-msgstr "Vali päev"
 
 #: 
 msgid "Birth Year"
@@ -2258,10 +2202,6 @@ msgstr "Peida vanus"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Uue pere loomine (perekonnanime kasutades)"
-
-#: 
-msgid "Membership Info"
-msgstr "Liikmelisuse teave"
 
 #: 
 msgid "Friend Date"
@@ -2348,28 +2288,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Tšeki number ei kehti 'CASH' makse korral"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Lubatud annetuse muutja"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Tasumiste muutja: "
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Sissetuleku kviitungi nr #"
-
-#: 
 msgid " more entries will fit."
 msgstr " rohkem sissekandeid sobib."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Makseredaktor - olemasoleva makse muutmine"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Maksete toimetaja - luuakse uus sissemakse saateleht"
 
 #: 
 msgid "Deposit closed"
@@ -2673,10 +2593,6 @@ msgstr "Saada"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Lubatud annetuste meeldetuletuse aruanne"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Ürituste osalemise aruanded"
 
 #: 
 msgid "Restore Database"
@@ -3621,18 +3537,6 @@ msgid "Import Data"
 msgstr "Andmete importimine"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Kas soovite kindlasti selle inimese kustutada sündmuse ID-st:"
-
-#: 
-msgid "Date Range"
-msgstr "Kuupäevavahemik"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Selle sündmuse TÜÜBI kustutamine EI kustuta ühtegi olemasolevat sündmust ega osalemisarvestust. Kas olete kindel, et soovite kustutada sündmuse tüübi ID:"
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Kas soovite kindlasti valitud valitud kustutada?"
 
@@ -3661,10 +3565,6 @@ msgid "Deposit Date"
 msgstr "Sissemakse kuupäev"
 
 #: 
-msgid "Details:"
-msgstr "Üksikasjad:"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "See kirjutab andmebaasi pereümbrike numbrid üle sellel lehel valitud numbritega. Kas jätkata?"
 
@@ -3679,42 +3579,6 @@ msgstr "vähemalt ühega:"
 #: 
 msgid "Welcome to"
 msgstr "Teretulemast"
-
-#: 
-msgid "Select Database Files"
-msgstr "Valige Andmebaasifailid"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Valige taastamiseks varufail"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "ETTEVAATUST. See kustutab olemasoleva andmebaasi täielikult ja asendab selle varukoopiaga"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Kui laadite varukoopia üles ChurchInfo või ChurchCRM-i eelmisest versioonist, uuendatakse see automaatselt praegusele andmebaasiskeemile"
-
-#: 
-msgid "Upload Files"
-msgstr "Faile üles laadima"
-
-#: 
-msgid "No Restore Running"
-msgstr "Ühtegi taastus ei käi"
-
-#: 
-msgid "Restore Complete"
-msgstr "Taastamine lõpetatud"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Logi sisse taastatud andmebaasi"
-
-#: 
-msgid "Restore Error."
-msgstr "Taasta viga."
 
 #: 
 msgid "Church Information"
@@ -3818,57 +3682,20 @@ msgid "Enter Name"
 msgstr "Sisestage nimi"
 
 #: 
-msgid "Update Church Info"
-msgstr "Koguduse teabe värskendamine"
-
-#: 
-msgid "Set Church Address"
-msgstr "Määra kiriku aadress"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Määrake e-posti seaded"
-
-#: 
 msgid "New Release"
 msgstr "Uus väljalase"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Rakenduse terviklikkuse kontroll nurjus"
 
 #: 
 msgid "Self Registration"
 msgstr "Enda registreerimine"
 
 #: 
-msgid "Restore Status:"
-msgstr "Taasta olek:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Koordinaate ei leitud"
 
 #: 
-msgid "Backup Status:"
-msgstr "Varundamise olek:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Varundamist ei tehta"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonüümne"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Ürituse osalejad:"
-
-#: 
-msgid "Yearly"
-msgstr "Aastas"
 
 #: 
 msgid "Registration Complete"
@@ -3919,10 +3746,6 @@ msgid "One or more files failed signature validation"
 msgstr "Ühe või mitme faili allkirja valideerimine nurjus"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "Seadistage HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "Perekond:"
 
@@ -3963,10 +3786,6 @@ msgid "Voting members "
 msgstr "Hääletavad liikmed "
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Taasta jooksmine, palun oodake."
-
-#: 
 msgid "Family Members:"
 msgstr "Pereliikmed:"
 
@@ -3989,10 +3808,6 @@ msgstr "File Name:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Majandusaasta:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Lisage sündmusel osalejad"
 
 #: 
 msgid "family"
@@ -4021,10 +3836,6 @@ msgstr "Lõppkuupäev:"
 #: 
 msgid "Members:"
 msgstr "Liikmed:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Redigeeri üldsätteid"
 
 #: 
 msgid "There were "
@@ -4896,46 +4707,6 @@ msgstr "Iga kuu"
 #: 
 msgid "Yearly on"
 msgstr "Igal aastal"
-
-#: 
-msgid "All Events of Type"
-msgstr "Kõik tüüpi sündmused"
-
-#: 
-msgid "There is"
-msgstr "Seal on"
-
-#: 
-msgid "There are"
-msgstr "Seal on"
-
-#: 
-msgid "event"
-msgstr "sündmus"
-
-#: 
-msgid "events"
-msgstr "sündmused"
-
-#: 
-msgid " in this category."
-msgstr "selles kategoorias."
-
-#: 
-msgid "There currently is"
-msgstr "Praegu on olemas"
-
-#: 
-msgid "There currently are"
-msgstr "Praegu on olemas"
-
-#: 
-msgid "custom event type"
-msgstr "kohandatud sündmuse tüüp"
-
-#: 
-msgid "custom event types"
-msgstr "kohandatud sündmuse tüübid"
 
 #: 
 msgid "Family Roles Editor"
@@ -6345,42 +6116,6 @@ msgid "Please verify your family's information"
 msgstr "Palun kontrollige oma pere andmeid"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Koguduse aadress pole määratud."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Kiriku nimi on seatud vaikeväärtusele"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "SMTP-serveri andmed on tühjad"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Teie süsteem võib olla turvalisem, installides TLS/SSL-sertifikaadi."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Puuduvad klassifitseerimisandmed"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Mõnede inimeste klassifikatsiooniandmed puuduvad"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Sooandmed puuduvad"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Mõnede inimeste sooandmed puuduvad"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Puuduvad rolliandmed"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Kinnitusteavet ei saa laadida"
 
@@ -6445,20 +6180,8 @@ msgid "Verified In Person"
 msgstr "Isiklikult kinnitatud"
 
 #: 
-msgid "None State"
-msgstr "Mitte ükski maakond"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Varundusarhiiv ei sisalda andmebaasi"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Koordinaadid puuduvad"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Perekond koordineerib mõnede perede andmeid"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6581,28 +6304,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Valitud fail ületab selle serveri maksimaalse üleslaadimismahu"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Täitmata taotlemise eeldused"
-
-#: 
 msgid "Failed"
 msgstr "Ebaõnnestunud"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Koguduse arvelduskonto number"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Mõnede inimeste rolliandmed puuduvad"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "PHP Max faili suurus on liiga väike"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Suurendage php üleslaadimise piiranguid, et võimaldada fotode mobiilset üleslaadimist ja varukoopia taastamist."
 
 #: 
 msgid "Deactivated the Family"
@@ -6674,10 +6381,6 @@ msgid "Coordinate data base file name:"
 msgstr "Koordinaatide andmebaasi faili nimi:"
 
 #: 
-msgid "Intersect With Cart"
-msgstr "Lõikuge valikukorviga"
-
-#: 
 msgid "select an option"
 msgstr "select an option"
 
@@ -6716,15 +6419,6 @@ msgstr "Omaduse määramist ei saanud tühistada."
 #: 
 msgid "Select event"
 msgstr "Valige sündmus"
-
-#: 
-msgid "Person's Name"
-msgstr "Isiku nimi"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Sisse registreeritud (valikuline)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -6833,14 +6527,6 @@ msgstr "määratud"
 #: 
 msgid "Photo"
 msgstr "Foto"
-
-#: 
-msgid "Payment Details"
-msgstr "Makse andmed"
-
-#: 
-msgid "Fund Split"
-msgstr "Fondi jagunemine"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7636,18 +7322,6 @@ msgid "Upgrade Required"
 msgstr "Uuendamine on vajalik"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Praegune DB versioon: "
-
-#: 
-msgid "Current Software Version: "
-msgstr "Praegune tarkvara versioon: "
-
-#: 
-msgid "Upgrade database"
-msgstr "Täiendage andmebaasi"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Näita sünnikuupäevi juubeleid CRM-i käivitamisel"
 
@@ -7704,14 +7378,6 @@ msgid "Meanwhile, you may"
 msgstr "Vahepeal võite"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Ainult andmebaas (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Andmebaas ja fotod (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Kasutaja peab olema administraator"
 
@@ -7744,10 +7410,6 @@ msgid "return to People Dashboard"
 msgstr "naasege inimeste juhtpaneelile"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Kasutajal peab olema MenuOptions(menüüde valikud) luba"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "SMTP-host pole häälestatud, külastage seadete lehte"
 
@@ -7760,16 +7422,8 @@ msgid "This Family is Deactivated"
 msgstr "See perekond on mitteaktiivne (välja lülitatud)"
 
 #: 
-msgid "Metadata"
-msgstr "Metaandmed"
-
-#: 
 msgid "The database has been cleared."
 msgstr "Andmebaas on kustutatud."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Kasutajal peavad olema bAddEvent õigused"
 
 #: 
 msgid "Anniversaries"
@@ -7910,10 +7564,6 @@ msgid "Enable Events menu."
 msgstr "Luba menüü Sündmused."
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "Luba menüü Kalender."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Luba raha kogumise menüü."
 
@@ -8039,10 +7689,6 @@ msgid "User must have Edit Records permission"
 msgstr "Kasutajal peab olema muudetud kirjete luba"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Kasutajal peab olema rahandusluba"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Ei saa ennast kustutada"
 
@@ -8149,18 +7795,6 @@ msgid "Passed"
 msgstr "Surnud"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "PHP maksimaalne täitmisaeg on liiga lühike"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Varundamise ja taastamise võimaldamiseks suurendage PHP täitmise tähtaega."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Rakenduse terviklikkuse kontroll"
-
-#: 
 msgid "Focus"
 msgstr "Fookus"
 
@@ -8206,16 +7840,8 @@ msgid "Error decoding signature definition file"
 msgstr "Viga allkirja määratlusfaili dekodeerimisel"
 
 #: 
-msgid "Generate Backup"
-msgstr "Genereerige varundus"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Kaugvarunduse lõpp-punkt. Kui WebDAV, tuleb see URL kodeerida. "
-
-#: 
-msgid "Password (if any)"
-msgstr "Parool (kui on)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8361,20 +7987,8 @@ msgstr[0] "%d aastane"
 msgstr[1] "%d aastane"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Toetamata PHP versioon"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Selle PHP versiooni tugi eemaldatakse peagi.  Praegune PHP versioon: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Puudub PHP Zip Arhiiv"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "Uuendamise toetamiseks on vaja PHP ZipArhiiv'i"
 
 #: 
 msgid "Add Results to Cart"
@@ -8429,10 +8043,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Määrake autentimisrakenduses kuvatav rakenduse nimi"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Salajased võtmed puuduvad Config.php-st"
 
 #: 
 msgid "Review"
@@ -8819,14 +8429,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "Kui kaotate juurdepääsu oma äsja registreeritud autentimisrakendusele, peate oma kontole juurdepääsu saamiseks kasutama taastekoodi"
 
 #: 
-msgid "Event Attendance"
-msgstr "Sündmustest osavõtt"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Looge sündmuste osavõtu-JA- mitteosalemise aruandeid"
-
-#: 
 msgid "Help translate this project"
 msgstr "Aidake seda projekti tõlkida"
 
@@ -9096,8 +8698,4 @@ msgstr "Krediitkaardi inimesed"
 #: 
 msgid "People who are configured to pay by credit card."
 msgstr "Inimesed kes on konfigureeritud krediitkaardiga maksma."
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Täiskasvanu nimi (valikuline)"
 

@@ -989,10 +989,6 @@ msgid "Contact Info"
 msgstr "Información de Contacto"
 
 #: 
-msgid "Other Info"
-msgstr "Otras Informaciones"
-
-#: 
 msgid "Envelope Info"
 msgstr "Información de Sobre"
 
@@ -1003,10 +999,6 @@ msgstr "Campos personalizados"
 #: 
 msgid "Family Members"
 msgstr "Miembros de la familia"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Usted puede crear miembros de familia ahora o añadirlos posteriormente, todas las entradas serán consideradas como nuevas personas."
 
 #: 
 msgid "First"
@@ -1101,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "Número de sobre"
 
 #: 
-msgid "Verify Info"
-msgstr "Verificar Información"
-
-#: 
 msgid "Add New Member"
 msgstr "Agregar nuevo miembro"
-
-#: 
-msgid "Previous Family"
-msgstr "Familia anterior"
-
-#: 
-msgid "Next Family"
-msgstr "Familia siguiente"
 
 #: 
 msgid "Upload Photo"
@@ -1203,14 +1183,6 @@ msgstr "Método"
 #: 
 msgid "Comment"
 msgstr "Comentario"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Añadir una nueva promesa"
-
-#: 
-msgid "Add a new payment"
-msgstr "Añadir un nuevo pago"
 
 #: 
 msgid "Close"
@@ -1872,14 +1844,6 @@ msgid "Start Date/Time"
 msgstr "Fecha y Hora de Inicio"
 
 #: 
-msgid "Attendees"
-msgstr "Asistentes"
-
-#: 
-msgid " Monthly Averages"
-msgstr " Promedios Mensuales"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Usuario o contraseña no válidos"
 
@@ -2220,32 +2184,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "indica los componentes heredados de los registros asociados a familia"
 
 #: 
-msgid "Personal Info"
-msgstr "Información personal"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Sr., Sra, Dr., Rev."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Jr., Sr., III"
-
-#: 
 msgid "Birth Month"
 msgstr "Mes de Nacimiento"
 
 #: 
-msgid "Select Month"
-msgstr "Seleccionar mes"
-
-#: 
 msgid "Birth Day"
 msgstr "Día de Nacimiento"
-
-#: 
-msgid "Select Day"
-msgstr "Seleccionar día"
 
 #: 
 msgid "Birth Year"
@@ -2258,10 +2202,6 @@ msgstr "Ocultar edad"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Crear nueva familia (usando apellido)"
-
-#: 
-msgid "Membership Info"
-msgstr "Información de Membresía"
 
 #: 
 msgid "Friend Date"
@@ -2348,28 +2288,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Compruebe el número no es válido para pago en 'EFECTIVO'"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Editor de promesas"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Editor de pagos"
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Ficha de depósitos #"
-
-#: 
 msgid " more entries will fit."
 msgstr " Caben más entradas."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Editor de pagos - Modificar pagos existentes"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Editor de pagos - nueva ficha de depósitos será creada"
 
 #: 
 msgid "Deposit closed"
@@ -2673,10 +2593,6 @@ msgstr "Enviar"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Reporte de Recordatorios promesas"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Reportes de asistencia a evento"
 
 #: 
 msgid "Restore Database"
@@ -3620,18 +3536,6 @@ msgid "Import Data"
 msgstr "Importar Datos"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Realmente desea ELIMINAR a esta persona del evento con ID: "
-
-#: 
-msgid "Date Range"
-msgstr "Rango de Fechas"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Borrar este TIPO de evento no borrará ningún evento o contadores de asistencia. Realmente desea ELIMINAR el ID de tipo de evento: "
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Realmente desea borrar el seleccionado"
 
@@ -3660,10 +3564,6 @@ msgid "Deposit Date"
 msgstr "Fecha de depósito"
 
 #: 
-msgid "Details:"
-msgstr "Detalles:"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Esto sobrescribirá los números de sobre de la familia en la base de datos con los seleccionados en esta página. ¿Desea continuar?"
 
@@ -3678,42 +3578,6 @@ msgstr "con al menos uno:"
 #: 
 msgid "Welcome to"
 msgstr "Bienvenido a"
-
-#: 
-msgid "Select Database Files"
-msgstr "Seleccionar archivos de base de datos"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Seleccionar un archivo de respaldo a restaurar"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "CUIDADO: Esto borrará completamente la base de datos existente, y la remplazará con el respaldo"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Si carga un respaldo de ChurchInfo, o una versión previa de ChurchCRM, se actualizará el esquema de la base de datos automáticamente"
-
-#: 
-msgid "Upload Files"
-msgstr "Cargar archivos"
-
-#: 
-msgid "No Restore Running"
-msgstr "No hay Restauraciones Corriendo"
-
-#: 
-msgid "Restore Complete"
-msgstr "Restauración completada"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Ingresar a base de datos restaurada"
-
-#: 
-msgid "Restore Error."
-msgstr "Error de Restauración"
 
 #: 
 msgid "Church Information"
@@ -3816,57 +3680,20 @@ msgid "Enter Name"
 msgstr "Ingresar Nombre"
 
 #: 
-msgid "Update Church Info"
-msgstr "Actualizar Información de iglesia"
-
-#: 
-msgid "Set Church Address"
-msgstr "Establecer Dirección de iglesia"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Ingresar ajustes de correo electrónico"
-
-#: 
 msgid "New Release"
 msgstr "Nueva Publicación"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Comprobación de Integridad de Aplicación Falló"
 
 #: 
 msgid "Self Registration"
 msgstr "Auto registro"
 
 #: 
-msgid "Restore Status:"
-msgstr "Restaurar Estado:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Coordenadas no encontradas"
 
 #: 
-msgid "Backup Status:"
-msgstr "Estado de respaldo:"
-
-#: 
-msgid "No Backup Running"
-msgstr "No hay respaldos Corriendo"
-
-#: 
 msgid "Anonymous"
 msgstr "Anónimo"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Asistentes para evento"
-
-#: 
-msgid "Yearly"
-msgstr "Anual"
 
 #: 
 msgid "Registration Complete"
@@ -3917,10 +3744,6 @@ msgid "One or more files failed signature validation"
 msgstr "Uno o más archivos fallaron la validación de firma"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "Configurar HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "Familia:"
 
@@ -3961,10 +3784,6 @@ msgid "Voting members "
 msgstr "Los miembros votantes"
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Restauración Corriendo, Por favor espere."
-
-#: 
 msgid "Family Members:"
 msgstr "Miembros"
 
@@ -3987,10 +3806,6 @@ msgstr "Nombre de Archivo:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Año Fiscal:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Agregar asistentes para evento"
 
 #: 
 msgid "family"
@@ -4019,10 +3834,6 @@ msgstr "Fecha de Término: "
 #: 
 msgid "Members:"
 msgstr "Miembros:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Editar ajustes generales"
 
 #: 
 msgid "There were "
@@ -4896,46 +4707,6 @@ msgstr "Mensualmente en"
 #: 
 msgid "Yearly on"
 msgstr "Anualmente en"
-
-#: 
-msgid "All Events of Type"
-msgstr "Todos los eventos de Tipo"
-
-#: 
-msgid "There is"
-msgstr "Hay"
-
-#: 
-msgid "There are"
-msgstr "Hay"
-
-#: 
-msgid "event"
-msgstr "evento"
-
-#: 
-msgid "events"
-msgstr "eventos"
-
-#: 
-msgid " in this category."
-msgstr " en esta categoría."
-
-#: 
-msgid "There currently is"
-msgstr "Hay actualmente"
-
-#: 
-msgid "There currently are"
-msgstr "Hay actualmente"
-
-#: 
-msgid "custom event type"
-msgstr "tipo de evento personalizado"
-
-#: 
-msgid "custom event types"
-msgstr "tipos de evento personalizados"
 
 #: 
 msgid "Family Roles Editor"
@@ -6345,43 +6116,6 @@ msgid "Please verify your family's information"
 msgstr "Por favor verifique la información de su familia"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Dirección de iglesia no ha sido Definida."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Nombre de iglesia está definido con valor por defecto"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "El campo de Servidor de SMTP, se encuentra en blanco."
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Su sistema podría ser más seguro instalando un Certificado TLS/SSL."
-
-#: 
-#, fuzzy
-msgid "Missing Classification Data"
-msgstr "Faltan datos de clasificación"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Faltan datos de clasificación para algunas personas"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Faltan datos de género"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Faltan datos de género para algunas personas"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Faltan datos de roles"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "No fue posible cargar la información de verificación"
 
@@ -6447,21 +6181,8 @@ msgid "Verified In Person"
 msgstr "Verificar en persona"
 
 #: 
-msgid "None State"
-msgstr "Ningún Estado"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Archivo de respaldo no contiene una base de datos"
-
-#: 
-#, fuzzy
-msgid "Missing Coordinates"
-msgstr "Faltan coordenadas"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Datos de Coordenadas de familia para Algunas familias"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6604,28 +6325,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "El archivo seleccionado excede el máximo tamaño de carga del servidor de"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Prerequisitos de Aplicación no satisfechos"
-
-#: 
 msgid "Failed"
 msgstr "Fracasó"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Número de cuenta Corriente de iglesia"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Faltan Datos de rol para Algunas personas"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "PHP Tamaño de Archivo Máximo muy peqeño"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Incremente los límites de tamaño de carga de php para permitir carga de foto para móviles y restauración de respaldos."
 
 #: 
 msgid "Deactivated the Family"
@@ -6697,10 +6402,6 @@ msgid "Coordinate data base file name:"
 msgstr "Coordinar nombre de archivo base de datos:"
 
 #: 
-msgid "Intersect With Cart"
-msgstr "Cruzar con carrito"
-
-#: 
 msgid "select an option"
 msgstr "seleccione una opción"
 
@@ -6739,15 +6440,6 @@ msgstr "La propiedad no puedo ser desasignada."
 #: 
 msgid "Select event"
 msgstr "Seleccionar evento"
-
-#: 
-msgid "Person's Name"
-msgstr "Nombre de la persona"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Registrado por (Opcional)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -6856,14 +6548,6 @@ msgstr "asignado"
 #: 
 msgid "Photo"
 msgstr "Foto"
-
-#: 
-msgid "Payment Details"
-msgstr "Detalles de Pago"
-
-#: 
-msgid "Fund Split"
-msgstr "División de fondos"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7661,18 +7345,6 @@ msgid "Upgrade Required"
 msgstr "Actualización requerida"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Versión actual de BD: "
-
-#: 
-msgid "Current Software Version: "
-msgstr "Versión de Software actual: "
-
-#: 
-msgid "Upgrade database"
-msgstr "Actualizar base de datos"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Mostrar Cumpleaños cuando al iniciar el CRM"
 
@@ -7729,14 +7401,6 @@ msgid "Meanwhile, you may"
 msgstr "Mientras tanto, podría"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Solo base de datos (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Base de Datos y Fotos (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Usuario debe ser un Admin"
 
@@ -7769,10 +7433,6 @@ msgid "return to People Dashboard"
 msgstr "volver al Dashboard de personas"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Usuario debe tener permiso MenuOptions"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "Servidor SMTP no ha sido configurado, por favor visite la página de ajustes"
 
@@ -7785,16 +7445,8 @@ msgid "This Family is Deactivated"
 msgstr "Esta familia está Desactivada"
 
 #: 
-msgid "Metadata"
-msgstr "Metadata"
-
-#: 
 msgid "The database has been cleared."
 msgstr "La base de datos ha sido limpiada."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Usuario debe tener permisos de bAddEvent"
 
 #: 
 msgid "Anniversaries"
@@ -7935,10 +7587,6 @@ msgid "Enable Events menu."
 msgstr "Activar menú de eventos."
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "Activar menú de calendario."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Activar menú de recaudaciones."
 
@@ -8064,10 +7712,6 @@ msgid "User must have Edit Records permission"
 msgstr "Usuario debe tener permisos de Edición de registros"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Usuario debe tener permisos de Finanzas"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "No puede borrarse a si mismo"
 
@@ -8175,18 +7819,6 @@ msgid "Passed"
 msgstr "Aprobado"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "Máximo Tiempo de Ejecución de PHP es muy Corto"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Incremente el límite de tiempo de ejecución de PHP para permitir respaldar y restaurar."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Comprobación de Integridad de Aplicación"
-
-#: 
 msgid "Focus"
 msgstr "Enfocar"
 
@@ -8232,16 +7864,8 @@ msgid "Error decoding signature definition file"
 msgstr "Error al decodificar el archivo de definición de firma"
 
 #: 
-msgid "Generate Backup"
-msgstr "Generar respaldo"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Punto de Respaldo Remoto. En caso de WebDAV, este debe tener codificación por url."
-
-#: 
-msgid "Password (if any)"
-msgstr "Contraseña (si hubiera)"
 
 #: 
 #, fuzzy
@@ -8387,20 +8011,8 @@ msgstr[0] "%d año de edad"
 msgstr[1] "%d años de edad"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Versión de PHP no soportada"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "El soporte para esta versión de PHP va a ser quitado. Versión actual de PHP: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Archivo Zip de PHP Falta"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "Archivo Zip de PHP es requerido para actualizar"
 
 #: 
 msgid "Add Results to Cart"
@@ -8455,10 +8067,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Especifique el nombre de aplicación que será mostrado en la app de autenticación"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Faltan llaves secretas (secret keys) en el Config.php"
 
 #: 
 msgid "Review"
@@ -8845,14 +8453,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "Si pierde alguna vez acceso a su app de autenticación recién enrolada, deberá usar un código de recuperación para acceder a su cuenta"
 
 #: 
-msgid "Event Attendance"
-msgstr "Asistencia a evento"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Generar reportes de asistencia -Y- de no asistencia para eventos"
-
-#: 
 msgid "Help translate this project"
 msgstr "Ayudar a traducir este proyecto"
 
@@ -9126,10 +8726,6 @@ msgid "People who are configured to pay by credit card."
 msgstr "Personas que estén configuradas para pagar con tarjeta de crédito."
 
 #: 
-msgid "Adult Name (Optional)"
-msgstr "Nombre de adulto (Opcional)"
-
-#: 
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
 msgstr "Como parte de la restauración, se desactivaron las copias de seguridad externas. Si desea continuar con las copias de seguridad automáticas, debe volver a habilitar manualmente la configuración bEnableExternalBackupTarget."
 
@@ -9209,14 +8805,6 @@ msgstr "Implemente la Política de Seguridad de Contenido (CSP) para protegerse 
 #: 
 msgid "Maximum number of log files to keep"
 msgstr "Número máximo de archivos de registro a mantener"
-
-#: 
-msgid "Too Many Log Files"
-msgstr "Demasiados archivos de registro"
-
-#: 
-msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
-msgstr "El directorio de registros contiene demasiados archivos de registro. Limpie los archivos antiguos para liberar espacio."
 
 #: 
 msgid "Enter event description..."
@@ -9780,10 +9368,6 @@ msgid "Applying System Update..."
 msgstr "Aplicando actualización del sistema..."
 
 #: 
-msgid "Available Version:"
-msgstr "Versión disponible:"
-
-#: 
 msgid "Back to Login"
 msgstr "Volver al inicio de sesión"
 
@@ -9990,10 +9574,6 @@ msgstr "¡La actualización del sistema se completó exitosamente!"
 #: 
 msgid "This may take several minutes."
 msgstr "Esto puede tardar varios minutos."
-
-#: 
-msgid "Up to date"
-msgstr "Up to date"
 
 #: 
 msgid "Update Available!"
@@ -10220,10 +9800,6 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: 
-msgid "Create a backup of your ChurchCRM database and optionally include photos."
-msgstr "Cree una copia de seguridad de su base de datos de ChurchCRM y, opcionalmente, incluya fotos."
-
-#: 
 msgid "DSN"
 msgstr "DSN"
 
@@ -10252,20 +9828,8 @@ msgid "Email Debug Info"
 msgstr "Información de depuración por correo electrónico"
 
 #: 
-msgid "Email server settings are invalid. Outgoing emails may not work."
-msgstr "La configuración del servidor de correo electrónico no es válida. Es posible que los correos salientes no funcionen."
-
-#: 
-msgid "Files Failing Integrity Check"
-msgstr "Archivos que no superan la comprobación de integridad"
-
-#: 
 msgid "Filesystem Permissions"
 msgstr "Permisos del sistema de archivos"
-
-#: 
-msgid "Hash mismatches can occur if you have customized files or installed extensions. If you did not intentionally modify these files, consider re-deploying from an official release."
-msgstr "Pueden producirse discrepancias de hash si tiene archivos personalizados o extensiones instaladas. Si no modificó estos archivos intencionalmente, considere volver a implementar desde una versión oficial."
 
 #: 
 msgid "Hostname"
@@ -10296,14 +9860,6 @@ msgid "Invalid API key"
 msgstr "Clave API no válida"
 
 #: 
-msgid "Make backups regularly (at least weekly)"
-msgstr "Realice copias de seguridad periódicamente (al menos semanalmente)"
-
-#: 
-msgid "No integrity check has been performed yet."
-msgstr "Aún no se ha realizado ninguna verificación de integridad."
-
-#: 
 msgid "Not configured"
 msgstr "No configurado"
 
@@ -10318,10 +9874,6 @@ msgstr "Configuración de PHP"
 #: 
 msgid "Platform"
 msgstr "Plataforma"
-
-#: 
-msgid "Restore ChurchCRM database from a backup file."
-msgstr "Restaurar la base de datos de ChurchCRM desde un archivo de respaldo."
 
 #: 
 msgid "Root Path"
@@ -10340,24 +9892,8 @@ msgid "Software"
 msgstr "Software"
 
 #: 
-msgid "Supports ChurchInfo and older ChurchCRM backups"
-msgstr "Admite copias de seguridad de ChurchInfo y de ChurchCRM más antiguas"
-
-#: 
 msgid "System & Configuration"
 msgstr "Sistema y configuración"
-
-#: 
-msgid "System Health Issues Detected"
-msgstr "Problemas de salud del sistema detectados"
-
-#: 
-msgid "System Maintenance"
-msgstr "Mantenimiento del sistema"
-
-#: 
-msgid "The following files have hash mismatches or are missing:"
-msgstr "Los siguientes archivos tienen errores de coincidencia de hash o faltan:"
 
 #: 
 msgid "Tip:"
@@ -10368,33 +9904,13 @@ msgid "Valid Settings"
 msgstr "Configuraciones válidas"
 
 #: 
-msgid "WARNING: This completely erases the existing database"
-msgstr "ADVERTENCIA: Esto borra completamente la base de datos existente"
-
-#: 
-msgid "Warning: Signature mismatch. Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Advertencia: La firma no coincide. Es posible que algunos archivos del sistema de ChurchCRM se hayan modificado desde la última instalación."
-
-#: 
 msgid "An error occurred during demo data import"
 msgstr "Se produjo un error durante la importación de datos de demostración"
-
-#: 
-msgid "Clear all data and reset the database to factory defaults. Application configuration (database credentials, install location, etc.) is preserved."
-msgstr "Borre todos los datos y restablezca la base de datos a sus valores de fábrica. Se conserva la configuración de la aplicación (credenciales de la base de datos, ubicación de instalación, etc.)."
-
-#: 
-msgid "Demo data import failed: "
-msgstr "Error en la importación de datos de demostración:"
 
 #: 
 msgid "Demo data imported successfully"
 msgstr "Datos de demostración importados correctamente\n"
 ""
-
-#: 
-msgid "Import sample families, people, groups and optional events/financial records so you can explore ChurchCRM populated with realistic data."
-msgstr "Importe familias de muestra, personas, grupos y registros financieros/de eventos opcionales para que pueda explorar ChurchCRM con datos realistas."
 
 #: 
 msgid "Include Sunday School classes and enrollments"
@@ -10421,16 +9937,8 @@ msgid "Skipped"
 msgstr "Omitido"
 
 #: 
-msgid "Try ChurchCRM with demo data"
-msgstr "Pruebe ChurchCRM con datos de demostración"
-
-#: 
 msgid "Unknown error"
 msgstr "Error desconocido"
-
-#: 
-msgid "WARNING: This completely erases all database records including families, groups, events, and financial data"
-msgstr "ADVERTENCIA: Esto borra por completo todos los registros de la base de datos, incluidas familias, grupos, eventos y datos financieros."
 
 #: 
 msgid "deposit(s) with no payments"
@@ -11013,10 +10521,6 @@ msgid "Orphaned files from previous versions cleaned up"
 msgstr "Se limpiaron los archivos huérfanos de versiones anteriores"
 
 #: 
-msgid "Orphaned files from previous versions were found. These should be reviewed and deleted for security."
-msgstr "Se encontraron archivos huérfanos de versiones anteriores. Por seguridad, conviene revisarlos y eliminarlos."
-
-#: 
 msgid "Permission Required"
 msgstr "Se requiere permiso"
 
@@ -11089,20 +10593,12 @@ msgid "Security Recommendation"
 msgstr "Recomendación de seguridad"
 
 #: 
-msgid "Security Warning: %d orphaned files detected"
-msgstr "Advertencia de seguridad: %d archivos huérfanos detectados"
-
-#: 
 msgid "Security Warning: Orphaned Files Detected"
 msgstr "Advertencia de seguridad: Archivos huérfanos detectados"
 
 #: 
 msgid "Select Backup File"
 msgstr "Seleccionar archivo de respaldo"
-
-#: 
-msgid "Some system files have been modified or are missing. Review the debug page for details."
-msgstr "Algunos archivos del sistema se han modificado o faltan. Consulte la página de depuración para obtener más información."
 
 #: 
 msgid "Supported formats:"

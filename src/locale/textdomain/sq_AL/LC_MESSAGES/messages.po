@@ -909,10 +909,6 @@ msgid "Family Members"
 msgstr "Anëtarët e familjes"
 
 #: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Ju mund të krijoni anëtarë të familjes tani ose shtoni ato më vonë. Të gjitha shënimet do të bëhet <i> regjistrimet e reja </ i> personi."
-
-#: 
 msgid "First"
 msgstr "I parë"
 
@@ -997,14 +993,6 @@ msgid "Envelope Number"
 msgstr "Zarf Numri"
 
 #: 
-msgid "Previous Family"
-msgstr "Familja Kthehu"
-
-#: 
-msgid "Next Family"
-msgstr "Familja Next"
-
-#: 
 msgid "Upload Photo"
 msgstr "Ngarko Foto"
 
@@ -1079,14 +1067,6 @@ msgstr "Metodë"
 #: 
 msgid "Comment"
 msgstr "Komento"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Shto një premtim të ri"
-
-#: 
-msgid "Add a new payment"
-msgstr "Shto një pagesë të re"
 
 #: 
 msgid "Confirm Delete"
@@ -1622,15 +1602,6 @@ msgid "Start Date/Time"
 msgstr "Filloni Data / Koha"
 
 #: 
-#, fuzzy
-msgid "Attendees"
-msgstr "Pjesëmarrësit ("
-
-#: 
-msgid " Monthly Averages"
-msgstr " Mesataret mujore"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Login pavlefshme ose regjistrohu"
 
@@ -1927,28 +1898,8 @@ msgid "Must specify non-zero check number"
 msgstr "Specifiko jo-zero numër kontrolloni"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Zotimi Editor"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Editor Pagesa: "
-
-#: 
-msgid " Deposit Slip #"
-msgstr " Shqip Depozita #"
-
-#: 
 msgid " more entries will fit."
 msgstr " më shumë të hyra do të përshtaten."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Editor Pagesa - Ndrysho Pagesa Ekzistuese"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Pagesa Editor - Shqip New Depozita do të krijohet"
 
 #: 
 msgid "Find family->"

@@ -1009,20 +1009,12 @@ msgid "Contact Info"
 msgstr "Контактная информация"
 
 #: 
-msgid "Other Info"
-msgstr "Другая информация"
-
-#: 
 msgid "Custom Fields"
 msgstr "Настраиваемые поля"
 
 #: 
 msgid "Family Members"
 msgstr "Члены семьи"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Вы можете создать членов семьи сейчас или добавить их позже. Все записи станет <I> Новинка! </ I> персональных записей."
 
 #: 
 msgid "First"
@@ -1117,20 +1109,8 @@ msgid "Envelope Number"
 msgstr "Конверт Количество"
 
 #: 
-msgid "Verify Info"
-msgstr "Проверить информацию"
-
-#: 
 msgid "Add New Member"
 msgstr "Добавить нового участника"
-
-#: 
-msgid "Previous Family"
-msgstr "Предыдущая Семья"
-
-#: 
-msgid "Next Family"
-msgstr "Следующая Семья"
 
 #: 
 msgid "Upload Photo"
@@ -1220,14 +1200,6 @@ msgstr "Метод"
 #: 
 msgid "Comment"
 msgstr "Комментарий "
-
-#: 
-msgid "Add a new pledge"
-msgstr "Добавить новый залог"
-
-#: 
-msgid "Add a new payment"
-msgstr "Добавить новый платеж"
 
 #: 
 msgid "Close"
@@ -1908,15 +1880,6 @@ msgid "Start Date/Time"
 msgstr "Дата начала / Время"
 
 #: 
-#, fuzzy
-msgid "Attendees"
-msgstr "Участники ("
-
-#: 
-msgid " Monthly Averages"
-msgstr " Ежемесячные средние"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Неверный Логин или пароль"
 
@@ -2257,28 +2220,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "Указывает на элементы, унаследованные от соответствующего семьи записи."
 
 #: 
-msgid "Personal Info"
-msgstr "Личная информация"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Мистер, миссис, доктор, преподобный."
-
-#: 
 msgid "Birth Month"
 msgstr "Месяц роджения"
 
 #: 
-msgid "Select Month"
-msgstr "Выберите месяц "
-
-#: 
 msgid "Birth Day"
 msgstr "День рождения"
-
-#: 
-msgid "Select Day"
-msgstr "Выберите день"
 
 #: 
 #, fuzzy
@@ -2292,10 +2239,6 @@ msgstr "Скрывать возраст"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Создать новую семью (с использованием фамилию)"
-
-#: 
-msgid "Membership Info"
-msgstr "Информация о членстве"
 
 #: 
 #, fuzzy
@@ -2380,28 +2323,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Номер чека недействителен для оплаты НАЛИЧНЫМИ"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Залог редактор"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Оплата Редактора: "
-
-#: 
-msgid " Deposit Slip #"
-msgstr " Квитанции #"
-
-#: 
 msgid " more entries will fit."
 msgstr " больше записей будет соответствовать."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Редактор платежей - Изменить существующий платеж"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Редактор платежей - будет создана новая квитанция о депозите"
 
 #: 
 msgid "Deposit closed"
@@ -2711,10 +2634,6 @@ msgstr "Отправить"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Залог Напоминание Сообщить"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Отчеты о посещаемости мероприятий"
 
 #: 
 msgid "Restore Database"
@@ -3688,18 +3607,6 @@ msgid "Import Data"
 msgstr "Импортировать данные"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Вы уверенны, что хотите УДАЛИТЬ этого человека из события ID"
-
-#: 
-msgid "Date Range"
-msgstr "Диапазон дат"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Удаление этого ТИПА события НЕ приведет к удалению каких-либо существующих событий или счетчиков посещаемости. Вы действительно хотите УДАЛИТЬ идентификатор типа события:"
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Вы уверенны, что хотите удалить выбранные"
 
@@ -3728,10 +3635,6 @@ msgid "Deposit Date"
 msgstr "Дата депозита"
 
 #: 
-msgid "Details:"
-msgstr "Детали"
-
-#: 
 msgid "Family Select"
 msgstr "Семейный выбор"
 
@@ -3742,42 +3645,6 @@ msgstr "хотя бы с одним:"
 #: 
 msgid "Welcome to"
 msgstr "Добро пожаловать в"
-
-#: 
-msgid "Select Database Files"
-msgstr "Выберите файлы базы данных"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Выберите файл резервной копии для восстановления"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "ВНИМАНИЕ: это полностью сотрет существующую базу данных и заменит ее резервной."
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Если вы загрузите резервную копию из ChurchInfo или предыдущей версии ChurchCRM, она будет автоматически обновлена ​​до текущей схемы базы данных."
-
-#: 
-msgid "Upload Files"
-msgstr "Загрузить файлы"
-
-#: 
-msgid "No Restore Running"
-msgstr "Восстановление не выполняется"
-
-#: 
-msgid "Restore Complete"
-msgstr "Восстановление завершено"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Войти в восстановленную базу данных"
-
-#: 
-msgid "Restore Error."
-msgstr "Войти в восстановленную базу данных"
 
 #: 
 msgid "Church Information"
@@ -3881,57 +3748,20 @@ msgid "Enter Name"
 msgstr "Введите Имя"
 
 #: 
-msgid "Update Church Info"
-msgstr "Обновить информацию о церкви"
-
-#: 
-msgid "Set Church Address"
-msgstr "Установить адрес церкви"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Установить настройки электронной почты"
-
-#: 
 msgid "New Release"
 msgstr "Новый выпуск"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Ошибка проверки целостности приложения"
 
 #: 
 msgid "Self Registration"
 msgstr "Самостоятельная регистрация"
 
 #: 
-msgid "Restore Status:"
-msgstr "Восстановить статус:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Координаты не найдены"
 
 #: 
-msgid "Backup Status:"
-msgstr "Статус резервного копирования:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Резервное копирование не выполняется"
-
-#: 
 msgid "Anonymous"
 msgstr "Анонимный"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Участники для события"
-
-#: 
-msgid "Yearly"
-msgstr "Ежегодно"
 
 #: 
 msgid "Registration Complete"
@@ -3982,10 +3812,6 @@ msgid "One or more files failed signature validation"
 msgstr "Один или несколько файлов не прошли проверку подписи"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "Настроить HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "Семья"
 
@@ -4022,10 +3848,6 @@ msgid "Voting members "
 msgstr "Голосующие члены"
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Восстановление работы, пожалуйста ожидайте"
-
-#: 
 msgid "Family Members:"
 msgstr "Члены семьи "
 
@@ -4048,10 +3870,6 @@ msgstr "Имя файла"
 #: 
 msgid "Fiscal Year:"
 msgstr "Финансовый год:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Добавить участников для мероприятия"
 
 #: 
 msgid "family"
@@ -4080,10 +3898,6 @@ msgstr "Дата окончания"
 #: 
 msgid "Members:"
 msgstr "Участники"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Изменить общие настройки"
 
 #: 
 msgid "There were "
@@ -4852,38 +4666,6 @@ msgid "Yearly on"
 msgstr "Ежегодно на"
 
 #: 
-msgid "All Events of Type"
-msgstr "Все события типа"
-
-#: 
-msgid "event"
-msgstr "событие"
-
-#: 
-msgid "events"
-msgstr "события"
-
-#: 
-msgid " in this category."
-msgstr "в этой категории"
-
-#: 
-msgid "There currently is"
-msgstr "Там в настоящее время"
-
-#: 
-msgid "There currently are"
-msgstr "Там в настоящее время"
-
-#: 
-msgid "custom event type"
-msgstr "тип настраиваемого события"
-
-#: 
-msgid "custom event types"
-msgstr "настраиваемые типы событий"
-
-#: 
 msgid "Family Roles Editor"
 msgstr "Редактор семейных ролей"
 
@@ -5237,14 +5019,6 @@ msgid "Integrity Check Details:"
 msgstr "Детальная информация проверки целостности данных:"
 
 #: 
-msgid "Generate Backup"
-msgstr "Создать резервную копию."
-
-#: 
-msgid "Password (if any)"
-msgstr "Пароль, если есть."
-
-#: 
 msgid "All information on this page is correct."
 msgstr "На этой странице все верно."
 
@@ -5363,10 +5137,6 @@ msgstr[2] "%d месяцев"
 msgstr[3] "%d-месячный"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Неподдерживаемая версия PHP"
-
-#: 
 msgid "Add Results to Cart"
 msgstr "Добавить результаты в корзину"
 
@@ -5419,10 +5189,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Укажите имя приложения, которое будет отображаться в приложении аутентификатора"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Секретных ключей нет в Config.php"
 
 #: 
 msgid "Thank you for registering your family"

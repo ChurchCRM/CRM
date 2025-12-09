@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\KeyManager;
+use ChurchCRM\Utils\URLValidator;
 
 /**
  * Service for admin dashboard checks.
@@ -112,5 +113,46 @@ class AdminService
         }
 
         return false;
+    }
+
+    /**
+     * Check if the configuration URL ($URL[0]) is valid.
+     * Returns error details if invalid, null if valid.
+     *
+     * @return array|null Error details with 'code', 'message', and 'url', or null if valid
+     */
+    public function getConfigurationURLError(): ?array
+    {
+        // Get the configured URL array from Config.php
+        global $URL;
+
+        // Check if URL is configured
+        if (!isset($URL) || !is_array($URL) || empty($URL[0])) {
+            return [
+                'code' => 'missing_url',
+                'message' => gettext('Base URL is not configured in Config.php'),
+                'url' => '',
+            ];
+        }
+
+        $primaryURL = $URL[0];
+
+        // Validate the URL format and requirements
+        if (!URLValidator::isValidConfigURL($primaryURL)) {
+            $error = URLValidator::getValidationError($primaryURL);
+            if ($error !== null) {
+                $error['url'] = $primaryURL;
+                return $error;
+            }
+
+            // Generic error if no specific error found
+            return [
+                'code' => 'invalid_url',
+                'message' => gettext('Base URL configuration is invalid. Please check your Config.php file.'),
+                'url' => $primaryURL,
+            ];
+        }
+
+        return null;
     }
 }

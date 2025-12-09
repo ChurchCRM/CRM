@@ -989,10 +989,6 @@ msgid "Contact Info"
 msgstr "Kontaktní informace"
 
 #: 
-msgid "Other Info"
-msgstr "Ostatní informace"
-
-#: 
 msgid "Envelope Info"
 msgstr "Informace o obálce"
 
@@ -1003,10 +999,6 @@ msgstr "Vlastní pole"
 #: 
 msgid "Family Members"
 msgstr "Členové rodiny"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Členy rodiny můžete vytvořit nyní nebo je přidat později.  Všechny přidané osoby se stanou <i>novými</i> osobami."
 
 #: 
 msgid "First"
@@ -1101,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "Číslo obálky"
 
 #: 
-msgid "Verify Info"
-msgstr "Ověřit info"
-
-#: 
 msgid "Add New Member"
 msgstr "Přidat člena"
-
-#: 
-msgid "Previous Family"
-msgstr "Předchozí rodina"
-
-#: 
-msgid "Next Family"
-msgstr "Další rodina"
 
 #: 
 msgid "Upload Photo"
@@ -1203,14 +1183,6 @@ msgstr "Metoda"
 #: 
 msgid "Comment"
 msgstr "Poznámka"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Přidat nový příslib"
-
-#: 
-msgid "Add a new payment"
-msgstr "Přidat novou platbu"
 
 #: 
 msgid "Close"
@@ -1871,14 +1843,6 @@ msgid "Start Date/Time"
 msgstr "Datum a čas začátku"
 
 #: 
-msgid "Attendees"
-msgstr "Účastníci"
-
-#: 
-msgid " Monthly Averages"
-msgstr " měsíční průměry"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Nesprávné přihlašovací jméno nebo heslo"
 
@@ -2219,32 +2183,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "označuje položky zděděné ze záznamu přiřazené rodiny."
 
 #: 
-msgid "Personal Info"
-msgstr "Osobní informace"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Mgr., Ing., MUDr., Bc."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Ph.D., Th.D."
-
-#: 
 msgid "Birth Month"
 msgstr "Měsíc narození"
 
 #: 
-msgid "Select Month"
-msgstr "Vyberte měsíc"
-
-#: 
 msgid "Birth Day"
 msgstr "Den narození"
-
-#: 
-msgid "Select Day"
-msgstr "Vyberte den"
 
 #: 
 msgid "Birth Year"
@@ -2257,10 +2201,6 @@ msgstr "Skrýt věk"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Vytvořit novou rodinu (s použitím příjmení)"
-
-#: 
-msgid "Membership Info"
-msgstr "Informace o členství"
 
 #: 
 msgid "Friend Date"
@@ -2347,28 +2287,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Číslo šeku není platné pro platbu \"CASH\""
 
 #: 
-msgid "Pledge Editor"
-msgstr "Editor příslibů"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Editor plateb: "
-
-#: 
-msgid " Deposit Slip #"
-msgstr "příjmový doklad #"
-
-#: 
 msgid " more entries will fit."
 msgstr " se vejde více záznamů."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Editor plateb - úprava existující platby"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Editor plateb - bude vytvořen nový doklad o vkladu"
 
 #: 
 msgid "Deposit closed"
@@ -2671,10 +2591,6 @@ msgstr "Odeslat"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Výkaz připomínek příslibů"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Sestava o návštěvnosti události"
 
 #: 
 msgid "Restore Database"
@@ -3617,18 +3533,6 @@ msgid "Import Data"
 msgstr "Importovat data"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Opravdu chcete ODSTRANIT tuto osobu z události ID: "
-
-#: 
-msgid "Date Range"
-msgstr "Rozsah dat"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Odstraněním tohoto TYPU události se NEODSTRANÍ žádné existující události ani počty účastníků.  Jste si jisti, že chcete ODSTRANIT typ události ID: "
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Opravdu chcete smazat vybrané"
 
@@ -3657,10 +3561,6 @@ msgid "Deposit Date"
 msgstr "Datum vkladu"
 
 #: 
-msgid "Details:"
-msgstr "Detaily:"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Tím se čísla obálek rodin v databázi přepíší čísly vybranými na této stránce.  Pokračovat?"
 
@@ -3675,42 +3575,6 @@ msgstr "s alespoň jedním:"
 #: 
 msgid "Welcome to"
 msgstr "Vítá Vás"
-
-#: 
-msgid "Select Database Files"
-msgstr "Vyberte databázové soubory"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Vyberte soubor zálohy, který chcete obnovit"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "UPOZORNĚNÍ: Tato akce kompletně vymaže existující databázi, a nahradí ji zálohou"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Pokud nahrajete zálohu z aplikace ChurchInfo nebo z předchozí verze systému ChurchCRM, bude automaticky aktualizována na aktuální schéma databáze"
-
-#: 
-msgid "Upload Files"
-msgstr "Nahrát soubory"
-
-#: 
-msgid "No Restore Running"
-msgstr "Neprobíhá žádná obnova"
-
-#: 
-msgid "Restore Complete"
-msgstr "Obnova kompletní"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Přihlásit se do obnovené databáze"
-
-#: 
-msgid "Restore Error."
-msgstr "Chyba při obnově."
 
 #: 
 msgid "Church Information"
@@ -3813,56 +3677,20 @@ msgid "Enter Name"
 msgstr "Zadejte název"
 
 #: 
-msgid "Update Church Info"
-msgstr "Aktualizovat informace o sboru"
-
-#: 
-msgid "Set Church Address"
-msgstr "Nastavit adresu sboru"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Nastavit e-mail"
-
-#: 
 msgid "New Release"
 msgstr "Nová verze"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Ověření integrity aplikace selhalo"
 
 #: 
 msgid "Self Registration"
 msgstr "Samostatná registrace"
 
 #: 
-msgid "Restore Status:"
-msgstr "Stav obnovy:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Nebyly nalezeny žádné souřadnice"
 
 #: 
-msgid "Backup Status:"
-msgstr "Stav zálohy:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Neprobíhá žádná záloha"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonymní"
-
-#: 
-msgid "Attendees for Event"
-msgstr "Účastníci události"
-
-#: 
-msgid "Yearly"
-msgstr "Ročně"
 
 #: 
 msgid "Registration Complete"
@@ -3913,10 +3741,6 @@ msgid "One or more files failed signature validation"
 msgstr "Jeden nebo více souborů neprošlo ověřením podpisu"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "Konfigurovat HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "Rodina:"
 
@@ -3957,10 +3781,6 @@ msgid "Voting members "
 msgstr "Hlasovní členové "
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Probíhá obnova, prosím čekejte."
-
-#: 
 msgid "Family Members:"
 msgstr "Členové rodiny:"
 
@@ -3983,10 +3803,6 @@ msgstr "Název souboru:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Fiskální rok:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Přidat účastníky události"
 
 #: 
 msgid "family"
@@ -4015,10 +3831,6 @@ msgstr "Konečné datum: "
 #: 
 msgid "Members:"
 msgstr "Členové:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Hlavní nastavení"
 
 #: 
 msgid "There were "
@@ -4888,46 +4700,6 @@ msgstr "Měsíčně na"
 #: 
 msgid "Yearly on"
 msgstr "Ročně na"
-
-#: 
-msgid "All Events of Type"
-msgstr "Všechny události typu"
-
-#: 
-msgid "There is"
-msgstr "Je"
-
-#: 
-msgid "There are"
-msgstr "Jsou"
-
-#: 
-msgid "event"
-msgstr "událost"
-
-#: 
-msgid "events"
-msgstr "události"
-
-#: 
-msgid " in this category."
-msgstr "v této kategorii."
-
-#: 
-msgid "There currently is"
-msgstr "Momentálně je"
-
-#: 
-msgid "There currently are"
-msgstr "Momentálně jsou"
-
-#: 
-msgid "custom event type"
-msgstr "vlastní typ události"
-
-#: 
-msgid "custom event types"
-msgstr "vlastní typy událostí"
 
 #: 
 msgid "Family Roles Editor"
@@ -6337,42 +6109,6 @@ msgid "Please verify your family's information"
 msgstr "Ověřte prosím informace o své rodině"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Adresa sboru není nastavena."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Adresa sboru je nastavena na výchozí hodnotu"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "Informace o SMTP serveru je prázdná"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Váš systém by mohl být bezpečnější instalací certifikátu TLS/SSL."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Chybějící údaje o klasifikaci"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Chybějící údaje o klasifikaci u některých osob"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Chybějící údaje o pohlaví"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Chybějící údaje o pohlaví některých osob"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Chybějící údaje o rolích"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Nelze načíst informace o ověření"
 
@@ -6437,20 +6173,8 @@ msgid "Verified In Person"
 msgstr "Osobní ověření"
 
 #: 
-msgid "None State"
-msgstr "Žádný stát"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Archiv zálohy neobsahuje databázi"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Chybějící souřadnice"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Údaje o souřadnicích rodin pro některé rodiny"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6573,28 +6297,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Vybraný soubor přesahuje maximální velikost nahrávání tohoto serveru"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Nesplněné předpoklady aplikace"
-
-#: 
 msgid "Failed"
 msgstr "Selhalo"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Číslo účtu sboru"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Chybějící údaje o rolích některých osob"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "Hodnota PHP Max File size je příliš malá"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Zvyšte limity pro nahrávání v php, abyste mohli nahrávat fotografie z mobilních zařízení a obnovovat zálohy."
 
 #: 
 msgid "Deactivated the Family"
@@ -6666,10 +6374,6 @@ msgid "Coordinate data base file name:"
 msgstr "Název souboru databáze souřadnic:"
 
 #: 
-msgid "Intersect With Cart"
-msgstr "Protnout s košíkem"
-
-#: 
 msgid "select an option"
 msgstr "vyberte možnost"
 
@@ -6708,14 +6412,6 @@ msgstr "Přiřazení vlastnosti nemůže být zrušeno."
 #: 
 msgid "Select event"
 msgstr "Vyberte událost"
-
-#: 
-msgid "Person's Name"
-msgstr "Jméno osoby"
-
-#: 
-msgid "Checked in By (Optional)"
-msgstr "Odbaveno kým (nepovinné)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -6824,14 +6520,6 @@ msgstr "přiřazený"
 #: 
 msgid "Photo"
 msgstr "Foto"
-
-#: 
-msgid "Payment Details"
-msgstr "Detaily platby"
-
-#: 
-msgid "Fund Split"
-msgstr "Rozdělení fondu"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7625,18 +7313,6 @@ msgid "Upgrade Required"
 msgstr "Vyžadován upgrade"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Stávající verze DB: "
-
-#: 
-msgid "Current Software Version: "
-msgstr "Stávající verze softwaru: "
-
-#: 
-msgid "Upgrade database"
-msgstr "Upgradovat databázi"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Zobrazovat narozeniny při spuštění CRM"
 
@@ -7693,14 +7369,6 @@ msgid "Meanwhile, you may"
 msgstr "Mezitím můžete"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Pouze databáze (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Databáze a fotky (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Uživatel musí být Admin"
 
@@ -7733,10 +7401,6 @@ msgid "return to People Dashboard"
 msgstr "zpět na Nástěnku osob"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Uživatel musí mít oprávnění MenuOptions"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "Hostitel SMTP není nastaven, navštivte stránku nastavení"
 
@@ -7749,16 +7413,8 @@ msgid "This Family is Deactivated"
 msgstr "Tato rodina je deaktivována"
 
 #: 
-msgid "Metadata"
-msgstr "Metadata"
-
-#: 
 msgid "The database has been cleared."
 msgstr "Databáze byla vyčištěna."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Uživatel musí mít oprávnění bAddEvent"
 
 #: 
 msgid "Anniversaries"
@@ -7898,10 +7554,6 @@ msgid "Enable Events menu."
 msgstr "Povolit nabídku Události."
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "Povolit nabídku Kalendář."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Povolit nabídku Fundraiser."
 
@@ -8026,10 +7678,6 @@ msgid "User must have Edit Records permission"
 msgstr "Uživatel musí mít oprávnění Upravovat záznamy"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Uživatel musí mít oprávnění Finance"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Nejde smazat sám sebe"
 
@@ -8135,18 +7783,6 @@ msgid "Passed"
 msgstr "Splňuje"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "PHP Max Execution Time je příliš krátký"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Zvyšte časový limit pro spuštění PHP, abyste mohli zálohovat a obnovovat."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Kontrola integrity aplikace"
-
-#: 
 msgid "Focus"
 msgstr "Zaměřit"
 
@@ -8192,16 +7828,8 @@ msgid "Error decoding signature definition file"
 msgstr "Chyba při dekódování souboru s definicí podpisu"
 
 #: 
-msgid "Generate Backup"
-msgstr "Generovat zálohu"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Koncový bod vzdáleného zálohování.  Pokud jde o WebDAV, musí být  zakódováno pomocí url. "
-
-#: 
-msgid "Password (if any)"
-msgstr "Heslo (pokud nějaké)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8349,20 +7977,8 @@ msgstr[1] "%d roky"
 msgstr[2] "%d let"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Nepodporovaná verze PHP"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Podpora této verze PHP bude brzy odstraněna.  Aktuální verze PHP: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Chybějící PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "PHP ZipArchive nutný pro podporu aktualizace"
 
 #: 
 msgid "Add Results to Cart"
@@ -8416,10 +8032,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Zadejte název aplikace, který se má zobrazit v autentizační aplikaci "
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "V souboru Config.php chybí tajné klíče"
 
 #: 
 msgid "Review"
@@ -8804,14 +8416,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "Pokud někdy ztratíte přístup k nově zaregistrované autentizační aplikaci, budete muset použít kód pro obnovení, abyste získali přístup ke svému účtu"
 
 #: 
-msgid "Event Attendance"
-msgstr "Návštěvnost události"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Generovat sestavu o účasti -A- neúčasti na událostech"
-
-#: 
 msgid "Help translate this project"
 msgstr "Pomožte přeložit tento projekt"
 
@@ -9083,10 +8687,6 @@ msgid "People who are configured to pay by credit card."
 msgstr "Osoby, které mají nastaveny platbu kartou."
 
 #: 
-msgid "Adult Name (Optional)"
-msgstr "Dospělé jméno (volitelné)"
-
-#: 
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
 msgstr "V rámci obnovy byly zakázány externí zálohy.  Pokud chcete pokračovat v automatickém zálohování, musíte ručně znovu povolit nastavení bEnableExternalBackupTarget."
 
@@ -9149,4 +8749,617 @@ msgstr "Sborový e-mail není zadán, přejděte do Nastavení"
 #: 
 msgid "Telugu - India"
 msgstr "Telugu - Indie"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Korejsky"
+
+#: 
+msgid "System Logs"
+msgstr "Systémové logy"
+
+#: 
+msgid "Maximum number of log files to keep"
+msgstr "Maximální počet uložených logů"
+
+#: 
+msgid "Enter event description..."
+msgstr "Zadejte popis události..."
+
+#: 
+msgid "Event ID"
+msgstr "ID události"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Sem zadejte text poznámky..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "Pro tuto osobu nebyly vloženy žádné poznámky."
+
+#: 
+msgid "Note"
+msgstr "Poznámka"
+
+#: 
+msgid "Log Settings"
+msgstr "Nastavení logů"
+
+#: 
+msgid "Log Level:"
+msgstr "Úroveň logování:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Uložit úroveň logování"
+
+#: 
+msgid "Delete All Logs"
+msgstr "Smazat všechny logy"
+
+#: 
+msgid "No log files found."
+msgstr "Nenalezeny žádné logy."
+
+#: 
+msgid "Log File"
+msgstr "Soubor logu"
+
+#: 
+msgid "Size"
+msgstr "Velikost"
+
+#: 
+msgid "Last Modified"
+msgstr "Naposledy upraveno"
+
+#: 
+msgid "View"
+msgstr "Zobrazit"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Nepodařilo se přidat rodinu do košíku"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Nepodařilo se přidat skupinu do košíku"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Nepodařilo se přidání do košíku"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Nepodařilo se vyprázdnit košík"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Nepodařilo se vyprázdnit košík do skupiny"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Nepodařilo se odstranit rodinu z košíku"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Nepodařilo se odstranění z košíku"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Nepodařilo se odstranit skupinu"
+
+#: 
+msgid "Family added to cart"
+msgstr "Rodina byla přidána do košíku"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Rodina byla odstraněna z košíku"
+
+#: 
+msgid "Group added to cart"
+msgstr "Skupina byla přidána do košíku"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Skupina byla odstraněna z košíku"
+
+#: 
+msgid "in cart"
+msgstr "v košíku"
+
+#: 
+msgid "members. Already had"
+msgstr "členů. Již bylo"
+
+#: 
+msgid "people added to cart"
+msgstr "osob přidáno do košíku"
+
+#: 
+msgid "people already in cart"
+msgstr "osob již v košíku"
+
+#: 
+msgid "people from cart"
+msgstr "osob z košíku"
+
+#: 
+msgid "people removed from cart"
+msgstr "osob odstraněno z košíku"
+
+#: 
+msgid "Person already in cart"
+msgstr "Osoba je již v košíku"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Odstranit tuto rodinu z košíku?"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Prosím zadejte název skupiny."
+
+#: 
+msgid "Role added successfully."
+msgstr "Role byla úspěšně přidána."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Role byla úspěšně smazána."
+
+#: 
+msgid "Role name updated."
+msgstr "Název role aktualizován."
+
+#: 
+msgid "View Group"
+msgstr "Zobrazit skupinu"
+
+#: 
+msgid "Add Note"
+msgstr "Přidat poznámku"
+
+#: 
+msgid "Events Today"
+msgstr "Dnešní události"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Přehled nedělní školy"
+
+#: 
+msgid "Add Family Member"
+msgstr "Přidat člena rodiny"
+
+#: 
+msgid "Address is required"
+msgstr "Adresa je vyžadována"
+
+#: 
+msgid "Base URL is required"
+msgstr "Základní URL je vyžadováno"
+
+#: 
+msgid "City is required"
+msgstr "Město je vyžadováno"
+
+#: 
+msgid "Email Address"
+msgstr "E-mailová adresa"
+
+#: 
+msgid "Email address"
+msgstr "E-mailová adresa"
+
+#: 
+msgid "Enter family name"
+msgstr "Zadej název rodiny"
+
+#: 
+msgid "Family Information"
+msgstr "Informace o rodině"
+
+#: 
+msgid "Next Member"
+msgstr "Další člen"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Hesla nesouhlasí"
+
+#: 
+msgid "Phone Type"
+msgstr "Typ telefonu"
+
+#: 
+msgid "Phone number"
+msgstr "Telefonní číslo"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Prosím zadejte alespoň jednoho člena rodiny."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Před pokračováním opravte chyby ověření."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Prosím zadejte platné URL"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Prosím zadejte platný e-mail"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Prosím zadejte platný e-mail (např. jmeno@priklad.cz)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Prosím zadejte platné číslo"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Prosím zadejte platné telefonní číslo"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Prosím vyplňte řádně všechna požadovaná pole."
+
+#: 
+msgid "Previous"
+msgstr "Předchozí"
+
+#: 
+msgid "Registration Error"
+msgstr "Chyba registrace"
+
+#: 
+msgid "Review & Submit"
+msgstr "Zkontrolovat a potvrdit"
+
+#: 
+msgid "Role in Family"
+msgstr "Role v rodině"
+
+#: 
+msgid "Select date"
+msgstr "Vyberte datum"
+
+#: 
+msgid "Create Backup"
+msgstr "Vytvořit zálohu"
+
+#: 
+msgid "Current Version:"
+msgstr "Současná verze:"
+
+#: 
+msgid "Version Information"
+msgstr "Informace o verzi"
+
+#: 
+msgid "Warnings"
+msgstr "Chyby"
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 znaků"
+
+#: 
+msgid "Dear Friend"
+msgstr "Milý příteli"
+
+#: 
+msgid "Copy"
+msgstr "Kopírovat"
+
+#: 
+msgid "All Types"
+msgstr "Všechny typy"
+
+#: 
+msgid "Change Event"
+msgstr "Změnit událost"
+
+#: 
+msgid "Clear"
+msgstr "Smazat"
+
+#: 
+msgid "Create"
+msgstr "Vytvořit"
+
+#: 
+msgid "Date & Time"
+msgstr "Datum a čas"
+
+#: 
+msgid "Delete Event"
+msgstr "Smazat událost"
+
+#: 
+msgid "Edit Event"
+msgstr "Upravit událost"
+
+#: 
+msgid "Event"
+msgstr "Událost"
+
+#: 
+msgid "Important Warning"
+msgstr "Důležité upozornění"
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Přidat dalšího člena rodiny"
+
+#: 
+msgid "Add Member"
+msgstr "Přidat člena"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Nástěnka správce"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Rozšířené operace"
+
+#: 
+msgid "All System Settings"
+msgstr "Všechna nastavení systému"
+
+#: 
+msgid "Apr"
+msgstr "dub"
+
+#: 
+msgid "Aug"
+msgstr "srp"
+
+#: 
+msgid "Back to Deposits"
+msgstr "Zpátky na vklady"
+
+#: 
+msgid "Back to Families"
+msgstr "Zpátky na rodiny"
+
+#: 
+msgid "Birth & Family"
+msgstr "Narození a rodina"
+
+#: 
+msgid "Cart"
+msgstr "Košík"
+
+#: 
+msgid "Church Membership"
+msgstr "Členství ve sboru"
+
+#: 
+msgid "Configuration:"
+msgstr "Nastavení:"
+
+#: 
+msgid "Configure Email"
+msgstr "Nastavit e-mail"
+
+#: 
+msgid "Contact Information"
+msgstr "Informace o kontaktu"
+
+#: 
+msgid "Data Quality:"
+msgstr "Kvalita dat:"
+
+#: 
+msgid "Database:"
+msgstr "Databáze:"
+
+#: 
+msgid "Date:"
+msgstr "Datum:"
+
+#: 
+msgid "Day"
+msgstr "den"
+
+#: 
+msgid "Dec"
+msgstr "pro"
+
+#: 
+msgid "Demo Data"
+msgstr "Ukázková data"
+
+#: 
+msgid "Documentation"
+msgstr "Dokumentace"
+
+#: 
+msgid "Edit Family"
+msgstr "Upravit rodinu"
+
+#: 
+msgid "Edit Payment"
+msgstr "Upravit platbu"
+
+#: 
+msgid "Edit Person"
+msgstr "Upravit osobu"
+
+#: 
+msgid "Failed to save settings"
+msgstr "Nepodařilo se uložit nastavení"
+
+#: 
+msgid "Family Navigation"
+msgstr "Navigace rodiny"
+
+#: 
+msgid "Feb"
+msgstr "úno"
+
+#: 
+msgid "Finance"
+msgstr "Finance"
+
+#: 
+msgid "Force Import"
+msgstr "Vynutit import"
+
+#: 
+msgid "Generate"
+msgstr "Generovat"
+
+#: 
+msgid "Generate Reports"
+msgstr "Generovat výkazy"
+
+#: 
+msgid "Jan"
+msgstr "led"
+
+#: 
+msgid "Jul"
+msgstr "čec"
+
+#: 
+msgid "Jun"
+msgstr "čen"
+
+#: 
+msgid "Latest Note"
+msgstr "Poslední poznámka"
+
+#: 
+msgid "Location"
+msgstr "Umístění"
+
+#: 
+msgid "Manage Users"
+msgstr "Spravovat uživatele"
+
+#: 
+msgid "Mar"
+msgstr "bře"
+
+#: 
+msgid "Name & Identity"
+msgstr "Jméno a identita"
+
+#: 
+msgid "New Payment"
+msgstr "Nová platba"
+
+#: 
+msgid "Nov"
+msgstr "lis"
+
+#: 
+msgid "Oct"
+msgstr "říj"
+
+#: 
+msgid "Open"
+msgstr "Otevřít"
+
+#: 
+msgid "Payment"
+msgstr "Platba"
+
+#: 
+msgid "Reset"
+msgstr "Resetovat"
+
+#: 
+msgid "Restore"
+msgstr "Obnovit"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "Obnovit ze souboru zálohy. Smaže stávající data."
+
+#: 
+msgid "Save and Add New Family"
+msgstr "Uložit a přidat novou rodinu"
+
+#: 
+msgid "Sep"
+msgstr "zář"
+
+#: 
+msgid "Server error"
+msgstr "Chyba serveru"
+
+#: 
+msgid "Settings"
+msgstr "Nastavení"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "Nastavení úspěšně uloženo"
+
+#: 
+msgid "Social Media"
+msgstr "Sociální sítě"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "Některé požadavky aplikace nejsou splněny"
+
+#: 
+msgid "Status:"
+msgstr "Stav:"
+
+#: 
+msgid "System Configuration:"
+msgstr "Konfigurace systému:"
+
+#: 
+msgid "System Health"
+msgstr "Zdraví systému"
+
+#: 
+msgid "System Info"
+msgstr "Informace o systému"
+
+#: 
+msgid "Today"
+msgstr "Dnes"
+
+#: 
+msgid "Version:"
+msgstr "Verze:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "Vítejte v ChurchCRM"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "PSČ"
+
+#: 
+msgid "day"
+msgstr "den"
+
+#: 
+msgid "days"
+msgstr "dní"
+
+#: 
+msgid "in"
+msgstr "v"
+
+#: 
+msgid "yes"
+msgstr "ano"
 

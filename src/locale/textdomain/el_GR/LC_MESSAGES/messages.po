@@ -989,10 +989,6 @@ msgid "Contact Info"
 msgstr "Πληροφορίες επαφής"
 
 #: 
-msgid "Other Info"
-msgstr "Άλλες Πληροφορίες"
-
-#: 
 msgid "Envelope Info"
 msgstr "Πληροφορίες φακέλου"
 
@@ -1003,10 +999,6 @@ msgstr "Προσαρμοσμένα πεδία"
 #: 
 msgid "Family Members"
 msgstr "Μέλη της οικογένειας"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Μπορείτε να δημιουργήσετε μέλη οικογένειας τώρα ή να τα προσθέσετε αργότερα. Όλες οι καταχωρήσεις θα γίνουν <i>νέα</i> εγγραφές ψ."
 
 #: 
 msgid "First"
@@ -1101,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "Αριθμός φακέλου"
 
 #: 
-msgid "Verify Info"
-msgstr "Επαλήθευση πληροφοριών"
-
-#: 
 msgid "Add New Member"
 msgstr "Προσθήκη νέου μέλους"
-
-#: 
-msgid "Previous Family"
-msgstr "Προηγούμενη Οικογένεια"
-
-#: 
-msgid "Next Family"
-msgstr "Επόμενη Οικογένεια"
 
 #: 
 msgid "Upload Photo"
@@ -1203,14 +1183,6 @@ msgstr "Μέθοδος"
 #: 
 msgid "Comment"
 msgstr "Σχόλιο"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Προσθέστε μια νέα υπόσχεση"
-
-#: 
-msgid "Add a new payment"
-msgstr "Προσθήκη νέας πληρωμής"
 
 #: 
 msgid "Close"
@@ -1872,14 +1844,6 @@ msgid "Start Date/Time"
 msgstr "Ημερομηνία/Ώρα έναρξης"
 
 #: 
-msgid "Attendees"
-msgstr "παρευρισκόμενοι"
-
-#: 
-msgid " Monthly Averages"
-msgstr " Μηνιαίοι μέσοι όροι"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Μη έγκυρη είσοδος ή κωδικός πρόσβασης"
 
@@ -2220,28 +2184,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "υποδεικνύει στοιχεία που κληρονομήθηκαν από το συσχετισμένο οικογενειακό αρχείο."
 
 #: 
-msgid "Personal Info"
-msgstr "Προσωπικές πληροφορίες"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "κ., κα, Δρ., Σεβ."
-
-#: 
 msgid "Birth Month"
 msgstr "Μήνας γέννησης"
 
 #: 
-msgid "Select Month"
-msgstr "Επιλέξτε μήνα"
-
-#: 
 msgid "Birth Day"
 msgstr "Ημέρα Γέννησης"
-
-#: 
-msgid "Select Day"
-msgstr "Επιλέξτε Ημέρα"
 
 #: 
 msgid "Birth Year"
@@ -2254,10 +2202,6 @@ msgstr "Απόκρυψη ηλικίας"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Δημιουργία νέας οικογένειας (χρησιμοποιώντας το επώνυμο)"
-
-#: 
-msgid "Membership Info"
-msgstr "Πληροφορίες μέλους"
 
 #: 
 msgid "Friend Date"
@@ -2344,28 +2288,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Ο αριθμός επιταγής δεν ισχύει για πληρωμή «ΜΕΤΡΗΤΑ»."
 
 #: 
-msgid "Pledge Editor"
-msgstr "Συντάκτης δέσμευσης"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Επεξεργαστής πληρωμών: "
-
-#: 
-msgid " Deposit Slip #"
-msgstr " Απόδειξη κατάθεσης #"
-
-#: 
 msgid " more entries will fit."
 msgstr " θα χωρέσουν περισσότερες συμμετοχές."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Επεξεργαστής πληρωμών - Τροποποίηση υφιστάμενης πληρωμής"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Επεξεργαστής πληρωμής - Θα δημιουργηθεί νέο απόδειξη κατάθεσης"
 
 #: 
 msgid "Deposit closed"
@@ -2669,10 +2593,6 @@ msgstr "Στείλετε"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Αναφορά υπενθύμισης δέσμευσης"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Αναφορές Συμμετοχής Εκδηλώσεων"
 
 #: 
 msgid "Restore Database"
@@ -3616,18 +3536,6 @@ msgid "Import Data"
 msgstr "Εισαγωγή δεδομένων"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Είστε βέβαιοι ότι θέλετε να ΔΙΑΓΡΑΨΕΤΕ αυτό το μέλος με Αναγνωριστικό συμβάντος: "
-
-#: 
-msgid "Date Range"
-msgstr "Εύρος ημερομηνιών"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Η διαγραφή αυτού του συμβάντος TYPE ΔΕΝ θα διαγράψει τυχόν υπάρχοντα Συμβάντα ή Αριθμούς Συμμετοχής. Είστε βέβαιοι ότι θέλετε να ΔΙΑΓΡΑΨΕΤΕ το αναγνωριστικό τύπου συμβάντος: "
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε τα επιλεγμένα"
 
@@ -3656,10 +3564,6 @@ msgid "Deposit Date"
 msgstr "Ημερομηνία κατάθεσης"
 
 #: 
-msgid "Details:"
-msgstr "Λεπτομέριες:"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Αυτό θα αντικαταστήσει τους αριθμούς των οικογενειακών φακέλων στη βάση δεδομένων με αυτούς που έχουν επιλεγεί σε αυτήν τη σελίδα. Να συνεχίσει?"
 
@@ -3674,42 +3578,6 @@ msgstr "με τουλάχιστον ένα:"
 #: 
 msgid "Welcome to"
 msgstr "Καλωσόρισες στο"
-
-#: 
-msgid "Select Database Files"
-msgstr "Επιλέξτε Αρχεία βάσης δεδομένων"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Επιλέξτε ένα αρχείο αντιγράφου ασφαλείας για επαναφορά"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "ΠΡΟΣΟΧΗ: Αυτό θα διαγράψει εντελώς την υπάρχουσα βάση δεδομένων και θα την αντικαταστήσει με το αντίγραφο ασφαλείας"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Εάν ανεβάσετε ένα αντίγραφο ασφαλείας από το ChurchInfo ή μια προηγούμενη έκδοση του ChurchCRM, θα αναβαθμιστεί αυτόματα στο τρέχον σχήμα βάσης δεδομένων"
-
-#: 
-msgid "Upload Files"
-msgstr "Μεταφόρτωση Αρχείων"
-
-#: 
-msgid "No Restore Running"
-msgstr "Δεν εκτελείται επαναφορά"
-
-#: 
-msgid "Restore Complete"
-msgstr "Η επαναφορά ολοκληρώθηκε"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Συνδεθείτε στην αποκατασταθείσα βάση δεδομένων"
-
-#: 
-msgid "Restore Error."
-msgstr "Σφάλμα επαναφοράς."
 
 #: 
 msgid "Church Information"
@@ -3812,57 +3680,20 @@ msgid "Enter Name"
 msgstr "Εισαγάγετε Όνομα"
 
 #: 
-msgid "Update Church Info"
-msgstr "Ενημέρωση πληροφοριών εκκλησίας"
-
-#: 
-msgid "Set Church Address"
-msgstr "Ορισμός διεύθυνσης εκκλησίας"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Ορισμός ρυθμίσεων email"
-
-#: 
 msgid "New Release"
 msgstr "Νέα έκδοση"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Ο έλεγχος ακεραιότητας εφαρμογής απέτυχε"
 
 #: 
 msgid "Self Registration"
 msgstr "Αυτοεγγραφή"
 
 #: 
-msgid "Restore Status:"
-msgstr "Επαναφορά κατάστασης:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Δεν βρέθηκαν συντεταγμένες"
 
 #: 
-msgid "Backup Status:"
-msgstr "Κατάσταση δημιουργίας αντιγράφων ασφαλείας:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Δεν εκτελείται αντίγραφο ασφαλείας"
-
-#: 
 msgid "Anonymous"
 msgstr "Ανώνυμος"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Συμμετέχοντες για Αναγνωριστικό εκδήλωσης"
-
-#: 
-msgid "Yearly"
-msgstr "Ετήσια"
 
 #: 
 msgid "Registration Complete"
@@ -3913,10 +3744,6 @@ msgid "One or more files failed signature validation"
 msgstr "Ένα ή περισσότερα αρχεία απέτυχε στην επικύρωση υπογραφής"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "Διαμόρφωση HTTPS"
-
-#: 
 msgid "Family:"
 msgstr "Οικογένεια:"
 
@@ -3957,10 +3784,6 @@ msgid "Voting members "
 msgstr "Μέλη που ψηφίζουν "
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Επαναφέρετε την εκτέλεση, περιμένετε."
-
-#: 
 msgid "Family Members:"
 msgstr "Μέλη της οικογένειας:"
 
@@ -3983,10 +3806,6 @@ msgstr "Ονομα αρχείου:"
 #: 
 msgid "Fiscal Year:"
 msgstr "Οικονομικό έτος:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Προσθήκη παρευρισκομένων για την εκδήλωση"
 
 #: 
 msgid "family"
@@ -4015,10 +3834,6 @@ msgstr "Ημερομηνία λήξης: "
 #: 
 msgid "Members:"
 msgstr "Μέλη:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Επεξεργασία Γενικών Ρυθμίσεων"
 
 #: 
 msgid "There were "
@@ -4891,46 +4706,6 @@ msgstr "Μηνιαία"
 #: 
 msgid "Yearly on"
 msgstr "Κάθε χρόνο"
-
-#: 
-msgid "All Events of Type"
-msgstr "Όλες οι εκδηλώσεις τύπου"
-
-#: 
-msgid "There is"
-msgstr "Υπάρχει"
-
-#: 
-msgid "There are"
-msgstr "Υπάρχουν"
-
-#: 
-msgid "event"
-msgstr "Εκδήλωση"
-
-#: 
-msgid "events"
-msgstr "εκδηλώσεις"
-
-#: 
-msgid " in this category."
-msgstr " σε αυτή την κατηγορία."
-
-#: 
-msgid "There currently is"
-msgstr "Αυτή τη στιγμή υπάρχει"
-
-#: 
-msgid "There currently are"
-msgstr "Αυτή τη στιγμή υπάρχουν"
-
-#: 
-msgid "custom event type"
-msgstr "προσαρμοσμένο τύπο συμβάντος"
-
-#: 
-msgid "custom event types"
-msgstr "προσαρμοσμένους τύπους συμβάντων"
 
 #: 
 msgid "Family Roles Editor"
@@ -6340,42 +6115,6 @@ msgid "Please verify your family's information"
 msgstr "Επαληθεύστε τα στοιχεία της οικογένειάς σας"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Η διεύθυνση εκκλησίας δεν έχει οριστεί."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Το Όνομα Εκκλησίας έχει οριστεί στην προεπιλεγμένη τιμή"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "Οι πληροφορίες διακομιστή SMTP είναι κενές"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Το σύστημά σας θα μπορούσε να είναι πιο ασφαλές με την εγκατάσταση ενός πιστοποιητικού TLS/SSL."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Λείπουν δεδομένα ταξινόμησης"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Λείπουν δεδομένα ταξινόμησης για ορισμένα άτομα"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Λείπουν δεδομένα φύλου"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Λείπουν δεδομένα φύλου για ορισμένα άτομα"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Λείπουν δεδομένα ρόλου"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Δεν είναι δυνατή η φόρτωση των πληροφοριών επαλήθευσης"
 
@@ -6440,20 +6179,8 @@ msgid "Verified In Person"
 msgstr "Επαληθεύτηκε αυτοπροσώπως"
 
 #: 
-msgid "None State"
-msgstr "Κανένα κράτος"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Το εφεδρικό αρχείο δεν περιέχει βάση δεδομένων"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Λείπουν συντεταγμένες"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Η οικογένεια συντονίζει δεδομένα για ορισμένες οικογένειες"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6576,28 +6303,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Το επιλεγμένο αρχείο υπερβαίνει το μέγιστο μέγεθος μεταφόρτωσης αυτού του διακομιστή"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Ανεκπλήρωτες Προϋποθέσεις Εφαρμογής"
-
-#: 
 msgid "Failed"
 msgstr "Απέτυχε"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Αριθμός λογαριασμού ελέγχου Εκκλησίας"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Λείπουν δεδομένα ρόλου για ορισμένα άτομα"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "Το μέγεθος αρχείου PHP Max είναι πολύ μικρό"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Αυξήστε τα όρια μεταφόρτωσης php για να επιτρέψετε τη μεταφόρτωση φωτογραφιών από κινητά και την επαναφορά αντιγράφων ασφαλείας."
 
 #: 
 msgid "Deactivated the Family"
@@ -6669,10 +6380,6 @@ msgid "Coordinate data base file name:"
 msgstr "Όνομα αρχείου βάσης δεδομένων συντεταγμένων:"
 
 #: 
-msgid "Intersect With Cart"
-msgstr "Διασταύρωση με το καλάθι"
-
-#: 
 msgid "select an option"
 msgstr "επιλέξτε μια επιλογή"
 
@@ -6711,15 +6418,6 @@ msgstr "Δεν ήταν δυνατή η κατάργηση της εκχώρησ
 #: 
 msgid "Select event"
 msgstr "Επιλέξτε εκδήλωση"
-
-#: 
-msgid "Person's Name"
-msgstr "Όνομα Μέλους"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Έγινε check in από (Προαιρετικό)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -6828,14 +6526,6 @@ msgstr "ανατεθεί"
 #: 
 msgid "Photo"
 msgstr "φωτογραφία"
-
-#: 
-msgid "Payment Details"
-msgstr "Οι λεπτομέρειες πληρωμής"
-
-#: 
-msgid "Fund Split"
-msgstr "Διαχωρισμός ταμείου"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7631,18 +7321,6 @@ msgid "Upgrade Required"
 msgstr "Απαιτείται αναβάθμιση"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Τρέχουσα έκδοση DB: "
-
-#: 
-msgid "Current Software Version: "
-msgstr "Τρέχουσα έκδοση λογισμικού: "
-
-#: 
-msgid "Upgrade database"
-msgstr "Αναβάθμιση βάσης δεδομένων"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Εμφάνιση επετείων γενεθλίων κατά την εκκίνηση του CRM"
 
@@ -7699,14 +7377,6 @@ msgid "Meanwhile, you may"
 msgstr "Εν τω μεταξύ, μπορείτε"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Μόνο βάση δεδομένων (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Βάση δεδομένων και φωτογραφίες (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Ο χρήστης πρέπει να είναι Διαχειριστής"
 
@@ -7739,10 +7409,6 @@ msgid "return to People Dashboard"
 msgstr "επιστροφή στον Πίνακα ελέγχου Μελών"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Ο χρήστης πρέπει να έχει άδεια MenuOptions"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "Ο κεντρικός υπολογιστής SMTP δεν έχει ρυθμιστεί, επισκεφτείτε τη σελίδα ρυθμίσεων"
 
@@ -7755,16 +7421,8 @@ msgid "This Family is Deactivated"
 msgstr "Αυτή η οικογένεια είναι απενεργοποιημένη"
 
 #: 
-msgid "Metadata"
-msgstr "Μεταδεδομένα"
-
-#: 
 msgid "The database has been cleared."
 msgstr "Η βάση δεδομένων έχει εκκαθαριστεί."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Ο χρήστης πρέπει να έχει δικαιώματα bAddEvent"
 
 #: 
 msgid "Anniversaries"
@@ -7905,10 +7563,6 @@ msgid "Enable Events menu."
 msgstr "Ενεργοποίηση μενού συμβάντων."
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "Ενεργοποίηση μενού Ημερολογίου."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Ενεργοποίηση μενού Εράνου."
 
@@ -8034,10 +7688,6 @@ msgid "User must have Edit Records permission"
 msgstr "Ο χρήστης πρέπει να έχει άδεια Επεξεργασίας Εγγραφών"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Ο χρήστης πρέπει να έχει άδεια Οικονομικών"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Δεν μπορείτε να διαγράψετε τον εαυτό σας"
 
@@ -8144,18 +7794,6 @@ msgid "Passed"
 msgstr "Πέρασε"
 
 #: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "Ο χρόνος εκτέλεσης του PHP Max είναι πολύ μικρός"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Αυξήστε το χρονικό όριο εκτέλεσης της PHP για να επιτρέψετε τη δημιουργία αντιγράφων ασφαλείας και την επαναφορά."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Έλεγχος ακεραιότητας εφαρμογής"
-
-#: 
 msgid "Focus"
 msgstr "Συγκεντρώνω"
 
@@ -8201,16 +7839,8 @@ msgid "Error decoding signature definition file"
 msgstr "Σφάλμα κατά την αποκωδικοποίηση του αρχείου ορισμού υπογραφής"
 
 #: 
-msgid "Generate Backup"
-msgstr "Δημιουργία αντιγράφων ασφαλείας"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Τελικό σημείο απομακρυσμένου αντιγράφου ασφαλείας. Εάν το WebDAV, αυτό πρέπει να είναι κωδικοποιημένο με url. "
-
-#: 
-msgid "Password (if any)"
-msgstr "Κωδικός πρόσβασης (αν υπάρχει)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8344,20 +7974,8 @@ msgid "Maximum number of Calendar Events"
 msgstr "Μέγιστος αριθμός συμβάντων ημερολογίου"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Μη υποστηριζόμενη έκδοση PHP"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Η υποστήριξη για αυτήν την έκδοση PHP θα καταργηθεί σύντομα. Τρέχουσα έκδοση PHP: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Λείπει το PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "Απαιτείται PHP ZipArchive για την υποστήριξη της αναβάθμισης"
 
 #: 
 msgid "Add Results to Cart"
@@ -8412,10 +8030,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Καθορίστε το όνομα της εφαρμογής που θα εμφανίζεται στην εφαρμογή ελέγχου ταυτότητας"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Λείπουν μυστικά κλειδιά από το Config.php"
 
 #: 
 msgid "Review"
@@ -8802,14 +8416,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "Εάν χάσετε ποτέ την πρόσβαση στην πρόσφατα εγγεγραμμένη εφαρμογή ελέγχου ταυτότητας, θα χρειαστεί να χρησιμοποιήσετε έναν κωδικό ανάκτησης για να αποκτήσετε πρόσβαση στον λογαριασμό σας"
 
 #: 
-msgid "Event Attendance"
-msgstr "Παρακολούθηση εκδήλωσης"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Δημιουργήστε αναφορές παρουσίας -ΚΑΙ- μη συμμετοχής για εκδηλώσεις"
-
-#: 
 msgid "Help translate this project"
 msgstr "Βοηθήστε στη μετάφραση αυτού του έργου"
 
@@ -8925,8 +8531,4 @@ msgstr "Μη έγκυρη ημερομηνία γέννησης: Λείπει ο
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Μη έγκυρη ημερομηνία γέννησης: Λείπει ο μήνας και η ημέρα γέννησης."
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Όνομα ενήλικα (Προαιρετικό)"
 

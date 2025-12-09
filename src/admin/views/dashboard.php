@@ -14,6 +14,10 @@ $systemWarnings = $adminService->getSystemWarnings();
 $hasSetupTasks = count($setupTasks) > 0;
 $hasWarnings = count($systemWarnings) > 0;
 
+// Check for configuration URL errors
+$urlError = $adminService->getConfigurationURLError();
+$hasURLError = $urlError !== null;
+
 // Get system status info
 $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
 $integrityPassed = $integrityStatus === 'Passed';
@@ -21,7 +25,7 @@ $orphanedFiles = AppIntegrityService::getOrphanedFiles();
 $hasOrphanedFiles = count($orphanedFiles) > 0;
 
 // Calculate overall health status
-$healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCriticalWarnings();
+$healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCriticalWarnings() && !$hasURLError;
 ?>
 
 <!-- Load admin dashboard CSS -->
@@ -37,6 +41,78 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
             <p class="text-muted mb-0"><?= gettext("Let's get your system set up and ready to use") ?></p>
         </div>
     </div>
+
+    <?php if ($hasURLError): ?>
+    <!-- Configuration URL Error Alert -->
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="d-flex align-items-start">
+            <div class="mr-3 mt-1">
+                <i class="fa-solid fa-exclamation-circle fa-3x"></i>
+            </div>
+            <div class="flex-grow-1">
+                <h4 class="alert-heading mb-3">
+                    <i class="fa-solid fa-triangle-exclamation mr-2"></i><?= gettext('Critical Configuration Error') ?>
+                </h4>
+                
+                <div class="card border-0 mb-3">
+                    <div class="card-body bg-white">
+                        <h6 class="text-danger mb-2"><strong><?= gettext('Error:') ?></strong></h6>
+                        <p class="mb-0 text-dark"><strong><?= $urlError['message'] ?></strong></p>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <h6 class="mb-2"><?= gettext('Current $URL[0] value:') ?></h6>
+                    <div class="p-3 bg-dark rounded" style="font-family: 'Courier New', monospace; word-break: break-all;">
+                        <code class="text-warning" style="font-size: 1.1em;"><?= htmlspecialchars($urlError['url']) ?></code>
+                    </div>
+                </div>
+
+                <div class="card border-0 mb-3">
+                    <div class="card-body bg-white">
+                        <h6 class="text-dark mb-3"><strong><?= gettext('How to Fix:') ?></strong></h6>
+                        <ol class="mb-2 pl-3 text-dark">
+                            <li class="mb-2"><?= gettext('Connect to your server via SSH, FTP, or your hosting control panel') ?></li>
+                            <li class="mb-2"><?= gettext('Navigate to your ChurchCRM installation directory') ?></li>
+                            <li class="mb-2"><?= gettext('Open this file in a text editor:') ?> <code class="text-primary">src/Include/Config.php</code></li>
+                            <li class="mb-2"><?= gettext('Find the line:') ?> <code>$URL[0] = '...';</code></li>
+                            <li class="mb-2"><?= gettext('Update it to a valid URL that:') ?>
+                                <ul class="mt-1">
+                                    <li><?= gettext('Starts with <strong>http://</strong> or <strong>https://</strong>') ?></li>
+                                    <li><?= gettext('Ends with a <strong>trailing slash</strong> (/)') ?></li>
+                                </ul>
+                            </li>
+                            <li><?= gettext('Save the file and refresh this page') ?></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="card border-success mb-0">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0"><i class="fa-solid fa-check-circle mr-2"></i><?= gettext('Valid Examples:') ?></h6>
+                    </div>
+                    <div class="card-body bg-white">
+                        <div class="mb-2">
+                            <small class="text-muted"><?= gettext('Local development:') ?></small><br>
+                            <code class="text-success" style="font-size: 1em;">$URL[0] = 'http://localhost/';</code>
+                        </div>
+                        <div class="mb-2">
+                            <small class="text-muted"><?= gettext('Subdirectory installation:') ?></small><br>
+                            <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com/churchcrm/';</code>
+                        </div>
+                        <div>
+                            <small class="text-muted"><?= gettext('Custom port:') ?></small><br>
+                            <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com:8080/app/';</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <?php if ($hasWarnings): ?>
     <!-- System Warnings Alert -->

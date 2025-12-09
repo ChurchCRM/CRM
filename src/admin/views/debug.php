@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -169,21 +170,24 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         </div>
     </div>
     <!-- Locale Support -->
-    <?php $localeInfo = AppIntegrityService::getLocaleSetupInfo(); ?>
+    <?php 
+    $localeInfo = AppIntegrityService::getLocaleSetupInfo();
+    $localeDetected = $localeInfo['systemLocaleDetected'];
+    ?>
     <div class="col-md-4">
-        <div class="card">
-            <div class="card-header" id="headingLocaleSupport">
-                <h4 data-toggle="collapse" data-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;">
+        <div class="card <?= $localeDetected ? '' : 'border-warning' ?>">
+            <div class="card-header <?= $localeDetected ? 'bg-success' : 'bg-warning' ?> text-white" id="headingLocaleSupport">
+                <h4 data-toggle="collapse" data-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;" class="mb-0">
                     <i class="fa fa-globe mr-2"></i><?= gettext('Locale Support') ?>
                     <i class="fa fa-chevron-down float-right"></i>
                 </h4>
             </div>
             <div id="collapseLocaleSupport" class="collapse" aria-labelledby="headingLocaleSupport">
-                <div class="card-body">
+            <div class="card-body">
                 <div class="alert <?= $localeInfo['systemLocaleDetected'] ? 'alert-success' : 'alert-warning' ?> mb-3">
                     <i class="fa <?= $localeInfo['systemLocaleDetected'] ? 'fa-check-circle' : 'fa-exclamation-triangle' ?> mr-2"></i>
                     <strong><?= gettext('System Locale Support') ?></strong><br>
-                    <small><?= htmlspecialchars($localeInfo['systemLocaleSupportSummary'], ENT_QUOTES, 'UTF-8') ?></small>
+                    <small><?= InputUtils::escapeHTML($localeInfo['systemLocaleSupportSummary']) ?></small>
                 </div>
                 <h6 class="text-muted mb-3"><i class="fa fa-language mr-2"></i><?= gettext('ChurchCRM Supported Locales') ?></h6>
                 <table class="table table-sm mb-0">
@@ -198,8 +202,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                             <?php foreach ($localeInfo['supportedLocales'] as $locale): ?>
                                 <tr>
                                     <td>
-                                        <div style="font-weight: 500; font-size: 0.95em;"><?= htmlspecialchars($locale['name'], ENT_QUOTES, 'UTF-8') ?></div>
-                                        <small class="text-muted" style="font-size: 0.85em;"><?= htmlspecialchars($locale['locale'], ENT_QUOTES, 'UTF-8') ?></small>
+                                        <div style="font-weight: 500; font-size: 0.95em;"><?= InputUtils::escapeHTML($locale['name']) ?></div>
+                                        <small class="text-muted" style="font-size: 0.85em;"><?= InputUtils::escapeHTML($locale['locale']) ?></small>
                                     </td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <?php if ($locale['systemAvailable']): ?>

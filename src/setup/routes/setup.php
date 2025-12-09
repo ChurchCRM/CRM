@@ -2,6 +2,7 @@
 
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Utils\PhpVersion;
+use ChurchCRM\Utils\URLValidator;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -97,8 +98,8 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         }
         if (!isset($setupData['URL'])) {
             $errors['URL'] = 'Missing URL';
-        } elseif (!filter_var($setupData['URL'], FILTER_VALIDATE_URL)) {
-            $errors['URL'] = 'Invalid URL';
+        } elseif (!URLValidator::isValidConfigURL($setupData['URL'])) {
+            $errors['URL'] = 'Invalid URL format';
         }
         if (!empty($errors)) {
             return SlimUtils::renderJSON($response->withStatus(400), ['errors' => $errors]);
