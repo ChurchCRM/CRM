@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-09 03:01+0000\n"
+"POT-Creation-Date: 2025-12-09 06:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,15 +55,6 @@ msgid " for all funds"
 msgstr ""
 
 msgid " for fund "
-msgstr ""
-
-msgid " gifts not imported due to problems"
-msgstr ""
-
-msgid " gifts unchanged, and "
-msgstr ""
-
-msgid " gifts were imported, "
 msgstr ""
 
 msgid " has a type mismatch"
@@ -874,9 +865,6 @@ msgid "Back"
 msgstr ""
 
 msgid "Back to Debug Info"
-msgstr ""
-
-msgid "Back to Deposit Slip"
 msgstr ""
 
 msgid "Back to Deposits"
@@ -1868,9 +1856,6 @@ msgstr ""
 msgid "Data file format:"
 msgstr ""
 
-msgid "Data import results: "
-msgstr ""
-
 msgid "Data import successful."
 msgstr ""
 
@@ -2543,9 +2528,6 @@ msgstr ""
 msgid "End Date"
 msgstr ""
 
-msgid "End Date: "
-msgstr ""
-
 #. Context: queryparameters_qrp
 msgid "Ending Date"
 msgstr ""
@@ -3045,9 +3027,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Faroe Islands (Føroyar)"
-msgstr ""
-
-msgid "Fatal error in eGive API datastream: '"
 msgstr ""
 
 msgid "Feb"
@@ -3818,9 +3797,6 @@ msgid "Import Data"
 msgstr ""
 
 msgid "Import Demo Data"
-msgstr ""
-
-msgid "Import eGive"
 msgstr ""
 
 msgid "Import failed"
@@ -6050,9 +6026,6 @@ msgstr ""
 msgid "Re-download and re-apply the current version to restore all files to their official state"
 msgstr ""
 
-msgid "Re-import to selected family"
-msgstr ""
-
 msgid "Ready to create a backup. Select your options above and click a backup button."
 msgstr ""
 
@@ -7039,9 +7012,6 @@ msgstr ""
 msgid "Start Date/Time"
 msgstr ""
 
-msgid "Start Date: "
-msgstr ""
-
 msgid "Start Row"
 msgstr ""
 
@@ -7137,7 +7107,7 @@ msgstr ""
 msgid "Sundays"
 msgstr ""
 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr ""
 
 msgid "Supported formats:"
@@ -8571,12 +8541,6 @@ msgid "deposit(s) with no payments"
 msgstr ""
 
 msgid "e.g., Sunday School, Bible Study..."
-msgstr ""
-
-msgid "eGive"
-msgstr ""
-
-msgid "eGive Import"
 msgstr ""
 
 msgid "eMail Dashboard"
