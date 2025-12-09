@@ -309,7 +309,6 @@ class   SystemConfig
             'sDefaultZip'                          => new ConfigItem(2074, 'sDefaultZip', 'text', '', gettext('Default Zip')),
             'sPersonListColumns'                   => new ConfigItem(2075, 'sPersonListColumns', 'json', json_encode(SystemConfig::getPersonListColumns()), gettext('Person List Columns')),
             'sFamilyListColumns'                   => new ConfigItem(2076, 'sFamilyListColumns', 'json', json_encode(SystemConfig::getFamilyListColumns()), gettext('Family List Columns')),
-            'iLogFileThreshold'                    => new ConfigItem(2077, 'iLogFileThreshold', 'number', '100', gettext('Maximum number of log files to keep')),
         ];
     }
 
@@ -330,7 +329,7 @@ class   SystemConfig
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Events')             => ['bEnableExternalCalendarAPI', 'bEventsOnDashboardPresence', 'iEventsOnDashboardPresenceTimeOut'],
             gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword'],
-            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnableIntegrityCheck', 'iIntegrityCheckInterval', 'sLastIntegrityCheckTimeStamp', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'iSoftwareUpdateCheckInterval', 'sLastSoftwareUpdateCheckTimeStamp', 'bAllowPrereleaseUpgrade', 'iLogFileThreshold'],
+            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnableIntegrityCheck', 'iIntegrityCheckInterval', 'sLastIntegrityCheckTimeStamp', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'iSoftwareUpdateCheckInterval', 'sLastSoftwareUpdateCheckTimeStamp', 'bAllowPrereleaseUpgrade'],
         ];
     }
 

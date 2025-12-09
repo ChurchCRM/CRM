@@ -20,3 +20,6 @@ ALTER TABLE `pledge_plg` CHANGE COLUMN `plg_method` `plg_method` enum('CREDITCAR
 
 -- Drop egive_egv table (no longer used)
 DROP TABLE IF EXISTS `egive_egv`;
+
+-- Remove unused iLogFileThreshold config (never implemented)
+DELETE FROM `config_cfg` WHERE `cfg_id` = 2077;
