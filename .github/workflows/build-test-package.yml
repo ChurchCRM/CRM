@@ -131,9 +131,11 @@ jobs:
         
         echo "=== Collecting PHP Application Logs ===" 
         mkdir -p cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci exec -T churchcrm sh -c 'if [ -d "src/logs" ]; then tar -czf - src/logs 2>/dev/null | base64; fi' > cypress/logs/php/app-logs.tar.gz.b64 2>&1 || true
+        if [ -d "src/logs" ]; then
+          cp -r src/logs cypress/logs/php/ || true
+        fi
         
-        echo "✅ Logs collected to cypress/logs/docker/ and cypress/logs/php/"
+        echo "✅ Logs collected to cypress/logs/"
 
     - name: Upload Cypress Artifacts
       if: failure()
