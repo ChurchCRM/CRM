@@ -8823,6 +8823,86 @@ msgid "No log files found."
 msgstr "Geen logbestanden gevonden."
 
 #: 
+msgid "Log File"
+msgstr "Logbestand"
+
+#: 
+msgid "Size"
+msgstr "Afmeting"
+
+#: 
+msgid "Last Modified"
+msgstr "Laatst aangepast"
+
+#: 
+msgid "View"
+msgstr "Weergave"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Bekijk logbestand"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Filter op logniveau:"
+
+#: 
+msgid "Error"
+msgstr "Fout"
+
+#: 
+msgid "Info"
+msgstr "Info"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Aantal weer te geven regels:"
+
+#: 
+msgid "Loading log file..."
+msgstr "Logbestand laden ..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Voor dit gezin zijn geen notities toegevoegd."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Er is een agenda-toegang-token gegenereerd en opgeslagen."
+
+#: 
+msgid "added"
+msgstr "toegevoegd"
+
+#: 
+msgid "Added"
+msgstr "Toegevoegd"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Succesvol aan deelgroep toegevoegd"
+
+#: 
+msgid "All members already in cart"
+msgstr "Alle leden bestaan al in deze deelgroep"
+
+#: 
+msgid "already in cart"
+msgstr "al in deelgroep"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Agenda eigenschappen konden niet geladen worden. Deze agenda mist mogelijk een toegang-token, of is niet juist geconfigureerd."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Deelgroep succesvol geleegd"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Deelgroep succesvol aan groep toegevoegd"
+
+#: 
 msgid "Empty your entire cart?"
 msgstr "Wilt u de gehele verzamelmap legen?"
 
@@ -8983,6 +9063,82 @@ msgid "Enter family name"
 msgstr "Vul achternaam in"
 
 #: 
+msgid "Family Information"
+msgstr "Gezinsinformatie"
+
+#: 
+msgid "Family name is required"
+msgstr "Achternaam is vereist"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "Achternaam moet minimaal 2 tekens bevatten"
+
+#: 
+msgid "First name"
+msgstr "Voornaam"
+
+#: 
+msgid "First name is required"
+msgstr "Voornaam is verplicht"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "Voornaam moet minimaal 2 tekens hebben"
+
+#: 
+msgid "Home phone is required"
+msgstr "Thuistelefoon is verplicht"
+
+#: 
+msgid "Home phone number"
+msgstr "Telefoonnummer thuis"
+
+#: 
+msgid "Invalid format"
+msgstr "Ongeldig format"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "Wordt onderdeel van onze gemeenschap door uw gezin te registreren"
+
+#: 
+msgid "Last name"
+msgstr "Achternaam"
+
+#: 
+msgid "Last name is required"
+msgstr "Achternaam is verplicht"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "Achternaam moet minimaal 2 tekens hebben"
+
+#: 
+msgid "Maximum length is"
+msgstr "Maximumlengte is"
+
+#: 
+msgid "Minimum length is"
+msgstr "Minimumlengte is"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "Dit moet een geldige URL zijn, beginnend met http:// of https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "Dit moet een geldige URL zijn, beginnend met http:// of https:// (bijv. http://localhost of https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "Dit moet een geldig poortnummer zijn (bijv. 3306)"
+
+#: 
+msgid "Next Member"
+msgstr "Volgend Lid"
+
+#: 
 msgid "Passwords do not match"
 msgstr "Wachtwoord komt niet overeen"
 
@@ -9098,4 +9254,120 @@ msgstr "Maken van de backup is mislukt."
 #: 
 msgid "Failed to download update package."
 msgstr "Downloaden van het updatebestand is mislukt."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Het updaten van upgrade informatie vanaf GitHub is mislukt."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "Het updaten van upgrade informatie is mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "Opslaan van instellingen is mislukt. Probeer het opnieuw."
+
+#: 
+msgid "File Name"
+msgstr "Bestandsnaam"
+
+#: 
+msgid "Files Missing"
+msgstr "Missende Bestanden"
+
+#: 
+msgid "Files Modified"
+msgstr "Aangepaste Bestanden"
+
+#: 
+msgid "Go to Login"
+msgstr "Ga naar Login"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "Ik begrijp het - Ga door"
+
+#: 
+msgid "Language updated to"
+msgstr "Taal aangepast naar"
+
+#: 
+msgid "Login Name is required"
+msgstr "Gebruikersnaam is verplicht"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "Zodra u de e-mail ontvangt, kunt u in loggen met uw tijdelijke wachtwoord. U kunt dit wachtwoord later aanpassen."
+
+#: 
+msgid "Password Reset Error"
+msgstr "Resetten van wachtwoord is mislukt"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "Wachtwoord is succesvol gereset"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "Controleer uw e-mail (ook uw SPAM) om uw tijdelijke wachtwoord te vinden."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "Dit scherm niet afsluiten of verversen."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "Pre-Upgrade taken zijn voltooid"
+
+#: 
+msgid "Pre-Upgrade Tasks Detected"
+msgstr "Pre-Upgrade taken gedetecteerd"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "Pre-Upgrade Waarschuwingen"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "Refresh vanaf GitHub"
+
+#: 
+msgid "Release Notes:"
+msgstr "Release Notes:"
+
+#: 
+msgid "Version Information"
+msgstr "Versie Informatie"
+
+#: 
+msgid "Warnings"
+msgstr "Waarschuwingen"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "We konden uw verzoek om uw wachtwoord te herstellen niet uitvoeren. Probeer een nieuwe herstellink aan te vragen."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "U koos ervoor de backup over te slaan. We raden u sterk aan een backup te maken, voordat u verder gaat met de upgrade."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "Uw ChurchCRM installatie is succesvol geüpdatet."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "Uw ChurchCRM installatie is de meest recente versie"
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 tekens"
+
+#: 
+msgid "Dear Friend"
+msgstr "Beste Vriend"
+
+#: 
+msgid "No Data Found"
+msgstr "Geen gegevens gevonden"
 

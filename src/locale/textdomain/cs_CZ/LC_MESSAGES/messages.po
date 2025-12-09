@@ -8750,3 +8750,616 @@ msgstr "Sborový e-mail není zadán, přejděte do Nastavení"
 msgid "Telugu - India"
 msgstr "Telugu - Indie"
 
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Korejsky"
+
+#: 
+msgid "System Logs"
+msgstr "Systémové logy"
+
+#: 
+msgid "Maximum number of log files to keep"
+msgstr "Maximální počet uložených logů"
+
+#: 
+msgid "Enter event description..."
+msgstr "Zadejte popis události..."
+
+#: 
+msgid "Event ID"
+msgstr "ID události"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Sem zadejte text poznámky..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "Pro tuto osobu nebyly vloženy žádné poznámky."
+
+#: 
+msgid "Note"
+msgstr "Poznámka"
+
+#: 
+msgid "Log Settings"
+msgstr "Nastavení logů"
+
+#: 
+msgid "Log Level:"
+msgstr "Úroveň logování:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Uložit úroveň logování"
+
+#: 
+msgid "Delete All Logs"
+msgstr "Smazat všechny logy"
+
+#: 
+msgid "No log files found."
+msgstr "Nenalezeny žádné logy."
+
+#: 
+msgid "Log File"
+msgstr "Soubor logu"
+
+#: 
+msgid "Size"
+msgstr "Velikost"
+
+#: 
+msgid "Last Modified"
+msgstr "Naposledy upraveno"
+
+#: 
+msgid "View"
+msgstr "Zobrazit"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Nepodařilo se přidat rodinu do košíku"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Nepodařilo se přidat skupinu do košíku"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Nepodařilo se přidání do košíku"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Nepodařilo se vyprázdnit košík"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Nepodařilo se vyprázdnit košík do skupiny"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Nepodařilo se odstranit rodinu z košíku"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Nepodařilo se odstranění z košíku"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Nepodařilo se odstranit skupinu"
+
+#: 
+msgid "Family added to cart"
+msgstr "Rodina byla přidána do košíku"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Rodina byla odstraněna z košíku"
+
+#: 
+msgid "Group added to cart"
+msgstr "Skupina byla přidána do košíku"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Skupina byla odstraněna z košíku"
+
+#: 
+msgid "in cart"
+msgstr "v košíku"
+
+#: 
+msgid "members. Already had"
+msgstr "členů. Již bylo"
+
+#: 
+msgid "people added to cart"
+msgstr "osob přidáno do košíku"
+
+#: 
+msgid "people already in cart"
+msgstr "osob již v košíku"
+
+#: 
+msgid "people from cart"
+msgstr "osob z košíku"
+
+#: 
+msgid "people removed from cart"
+msgstr "osob odstraněno z košíku"
+
+#: 
+msgid "Person already in cart"
+msgstr "Osoba je již v košíku"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Odstranit tuto rodinu z košíku?"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Prosím zadejte název skupiny."
+
+#: 
+msgid "Role added successfully."
+msgstr "Role byla úspěšně přidána."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Role byla úspěšně smazána."
+
+#: 
+msgid "Role name updated."
+msgstr "Název role aktualizován."
+
+#: 
+msgid "View Group"
+msgstr "Zobrazit skupinu"
+
+#: 
+msgid "Add Note"
+msgstr "Přidat poznámku"
+
+#: 
+msgid "Events Today"
+msgstr "Dnešní události"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Přehled nedělní školy"
+
+#: 
+msgid "Add Family Member"
+msgstr "Přidat člena rodiny"
+
+#: 
+msgid "Address is required"
+msgstr "Adresa je vyžadována"
+
+#: 
+msgid "Base URL is required"
+msgstr "Základní URL je vyžadováno"
+
+#: 
+msgid "City is required"
+msgstr "Město je vyžadováno"
+
+#: 
+msgid "Email Address"
+msgstr "E-mailová adresa"
+
+#: 
+msgid "Email address"
+msgstr "E-mailová adresa"
+
+#: 
+msgid "Enter family name"
+msgstr "Zadej název rodiny"
+
+#: 
+msgid "Family Information"
+msgstr "Informace o rodině"
+
+#: 
+msgid "Next Member"
+msgstr "Další člen"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Hesla nesouhlasí"
+
+#: 
+msgid "Phone Type"
+msgstr "Typ telefonu"
+
+#: 
+msgid "Phone number"
+msgstr "Telefonní číslo"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Prosím zadejte alespoň jednoho člena rodiny."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Před pokračováním opravte chyby ověření."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Prosím zadejte platné URL"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Prosím zadejte platný e-mail"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Prosím zadejte platný e-mail (např. jmeno@priklad.cz)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Prosím zadejte platné číslo"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Prosím zadejte platné telefonní číslo"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Prosím vyplňte řádně všechna požadovaná pole."
+
+#: 
+msgid "Previous"
+msgstr "Předchozí"
+
+#: 
+msgid "Registration Error"
+msgstr "Chyba registrace"
+
+#: 
+msgid "Review & Submit"
+msgstr "Zkontrolovat a potvrdit"
+
+#: 
+msgid "Role in Family"
+msgstr "Role v rodině"
+
+#: 
+msgid "Select date"
+msgstr "Vyberte datum"
+
+#: 
+msgid "Create Backup"
+msgstr "Vytvořit zálohu"
+
+#: 
+msgid "Current Version:"
+msgstr "Současná verze:"
+
+#: 
+msgid "Version Information"
+msgstr "Informace o verzi"
+
+#: 
+msgid "Warnings"
+msgstr "Chyby"
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 znaků"
+
+#: 
+msgid "Dear Friend"
+msgstr "Milý příteli"
+
+#: 
+msgid "Copy"
+msgstr "Kopírovat"
+
+#: 
+msgid "All Types"
+msgstr "Všechny typy"
+
+#: 
+msgid "Change Event"
+msgstr "Změnit událost"
+
+#: 
+msgid "Clear"
+msgstr "Smazat"
+
+#: 
+msgid "Create"
+msgstr "Vytvořit"
+
+#: 
+msgid "Date & Time"
+msgstr "Datum a čas"
+
+#: 
+msgid "Delete Event"
+msgstr "Smazat událost"
+
+#: 
+msgid "Edit Event"
+msgstr "Upravit událost"
+
+#: 
+msgid "Event"
+msgstr "Událost"
+
+#: 
+msgid "Important Warning"
+msgstr "Důležité upozornění"
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Přidat dalšího člena rodiny"
+
+#: 
+msgid "Add Member"
+msgstr "Přidat člena"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Nástěnka správce"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Rozšířené operace"
+
+#: 
+msgid "All System Settings"
+msgstr "Všechna nastavení systému"
+
+#: 
+msgid "Apr"
+msgstr "dub"
+
+#: 
+msgid "Aug"
+msgstr "srp"
+
+#: 
+msgid "Back to Deposits"
+msgstr "Zpátky na vklady"
+
+#: 
+msgid "Back to Families"
+msgstr "Zpátky na rodiny"
+
+#: 
+msgid "Birth & Family"
+msgstr "Narození a rodina"
+
+#: 
+msgid "Cart"
+msgstr "Košík"
+
+#: 
+msgid "Church Membership"
+msgstr "Členství ve sboru"
+
+#: 
+msgid "Configuration:"
+msgstr "Nastavení:"
+
+#: 
+msgid "Configure Email"
+msgstr "Nastavit e-mail"
+
+#: 
+msgid "Contact Information"
+msgstr "Informace o kontaktu"
+
+#: 
+msgid "Data Quality:"
+msgstr "Kvalita dat:"
+
+#: 
+msgid "Database:"
+msgstr "Databáze:"
+
+#: 
+msgid "Date:"
+msgstr "Datum:"
+
+#: 
+msgid "Day"
+msgstr "den"
+
+#: 
+msgid "Dec"
+msgstr "pro"
+
+#: 
+msgid "Demo Data"
+msgstr "Ukázková data"
+
+#: 
+msgid "Documentation"
+msgstr "Dokumentace"
+
+#: 
+msgid "Edit Family"
+msgstr "Upravit rodinu"
+
+#: 
+msgid "Edit Payment"
+msgstr "Upravit platbu"
+
+#: 
+msgid "Edit Person"
+msgstr "Upravit osobu"
+
+#: 
+msgid "Failed to save settings"
+msgstr "Nepodařilo se uložit nastavení"
+
+#: 
+msgid "Family Navigation"
+msgstr "Navigace rodiny"
+
+#: 
+msgid "Feb"
+msgstr "úno"
+
+#: 
+msgid "Finance"
+msgstr "Finance"
+
+#: 
+msgid "Force Import"
+msgstr "Vynutit import"
+
+#: 
+msgid "Generate"
+msgstr "Generovat"
+
+#: 
+msgid "Generate Reports"
+msgstr "Generovat výkazy"
+
+#: 
+msgid "Jan"
+msgstr "led"
+
+#: 
+msgid "Jul"
+msgstr "čec"
+
+#: 
+msgid "Jun"
+msgstr "čen"
+
+#: 
+msgid "Latest Note"
+msgstr "Poslední poznámka"
+
+#: 
+msgid "Location"
+msgstr "Umístění"
+
+#: 
+msgid "Manage Users"
+msgstr "Spravovat uživatele"
+
+#: 
+msgid "Mar"
+msgstr "bře"
+
+#: 
+msgid "Name & Identity"
+msgstr "Jméno a identita"
+
+#: 
+msgid "New Payment"
+msgstr "Nová platba"
+
+#: 
+msgid "Nov"
+msgstr "lis"
+
+#: 
+msgid "Oct"
+msgstr "říj"
+
+#: 
+msgid "Open"
+msgstr "Otevřít"
+
+#: 
+msgid "Payment"
+msgstr "Platba"
+
+#: 
+msgid "Reset"
+msgstr "Resetovat"
+
+#: 
+msgid "Restore"
+msgstr "Obnovit"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "Obnovit ze souboru zálohy. Smaže stávající data."
+
+#: 
+msgid "Save and Add New Family"
+msgstr "Uložit a přidat novou rodinu"
+
+#: 
+msgid "Sep"
+msgstr "zář"
+
+#: 
+msgid "Server error"
+msgstr "Chyba serveru"
+
+#: 
+msgid "Settings"
+msgstr "Nastavení"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "Nastavení úspěšně uloženo"
+
+#: 
+msgid "Social Media"
+msgstr "Sociální sítě"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "Některé požadavky aplikace nejsou splněny"
+
+#: 
+msgid "Status:"
+msgstr "Stav:"
+
+#: 
+msgid "System Configuration:"
+msgstr "Konfigurace systému:"
+
+#: 
+msgid "System Health"
+msgstr "Zdraví systému"
+
+#: 
+msgid "System Info"
+msgstr "Informace o systému"
+
+#: 
+msgid "Today"
+msgstr "Dnes"
+
+#: 
+msgid "Version:"
+msgstr "Verze:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "Vítejte v ChurchCRM"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "PSČ"
+
+#: 
+msgid "day"
+msgstr "den"
+
+#: 
+msgid "days"
+msgstr "dní"
+
+#: 
+msgid "in"
+msgstr "v"
+
+#: 
+msgid "yes"
+msgstr "ano"
+

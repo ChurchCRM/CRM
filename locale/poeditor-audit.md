@@ -11,10 +11,10 @@
 |--------|----------|--------------|------------|--------|
 | `es` | Spanish | 2547 | 92.99% | 🟡 Good |
 | `fr` | French | 2323 | 84.81% | 🟡 Good |
+| `cs` | Czech | 2228 | 81.34% | 🟡 Good |
+| `nl` | Dutch | 2228 | 81.34% | 🟡 Good |
 | `ta` | Tamil | 2212 | 80.76% | 🟡 Good |
-| `nl` | Dutch | 2160 | 78.86% | 🟠 Needs Work |
 | `id` | Indonesian | 2108 | 76.96% | 🟠 Needs Work |
-| `cs` | Czech | 2075 | 75.76% | 🟠 Needs Work |
 | `he` | Hebrew | 2075 | 75.76% | 🟠 Needs Work |
 | `ko` | Korean | 2075 | 75.76% | 🟠 Needs Work |
 | `pt-br` | Portuguese (BR) | 2070 | 75.58% | 🟠 Needs Work |
@@ -56,15 +56,15 @@
 ### 🟢 Complete Locales (≥95%) - 0 total
 *No complete locales*
 
-### 🟡 Good Locales (80-94%) - 3 total
+### 🟡 Good Locales (80-94%) - 5 total
 - **Spanish** (`es`): 92.99%
 - **French** (`fr`): 84.81%
+- **Czech** (`cs`): 81.34%
+- **Dutch** (`nl`): 81.34%
 - **Tamil** (`ta`): 80.76%
 
-### 🟠 Needs Work (50-79%) - 22 total
-- **Dutch** (`nl`): 78.86%
+### 🟠 Needs Work (50-79%) - 20 total
 - **Indonesian** (`id`): 76.96%
-- **Czech** (`cs`): 75.76%
 - **Hebrew** (`he`): 75.76%
 - **Korean** (`ko`): 75.76%
 - **Portuguese (BR)** (`pt-br`): 75.58%
