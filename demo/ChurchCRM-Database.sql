@@ -3,7 +3,7 @@
 -- Host: database	Database: churchcrm
 -- ------------------------------------------------------
 -- Server version 	11.6.2-MariaDB-ubu2404
--- Date: Mon, 01 Dec 2025 20:27:36 -0500
+-- Date: Tue, 09 Dec 2025 01:37:45 -0500
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `calendars` (
   `foregroundColor` varchar(6) DEFAULT NULL,
   `backgroundColor` varchar(6) DEFAULT NULL,
   PRIMARY KEY (`calendar_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -161,7 +161,7 @@ CREATE TABLE `config_cfg` (
 LOCK TABLES `config_cfg` WRITE;
 /*!40000 ALTER TABLE `config_cfg` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `config_cfg` VALUES (4,'sLogLevel','100'),(10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','mailserver:1025'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20251201-202536'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2050,'bEnabledMenuLinks',''),(2060,'IncludeDataInNewPersonNotifications',''),(2061,'bSearchIncludeFamilyCustomProperties',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20251201-193217'),(2065,'bAllowPrereleaseUpgrade',''),(2069,'bRequire2FA',''),(2071,'bSendUserDeletedEmail',''),(20142,'bHSTSEnable','');
+INSERT INTO `config_cfg` VALUES (4,'sLogLevel','100'),(10,'aFinanceQueries','28,30,31,32'),(21,'sDefaultCity','Kansas City'),(22,'sDefaultState','MO'),(23,'sDefaultCountry','United States'),(27,'sSMTPHost','mailserver:1025'),(28,'bSMTPAuth','1'),(29,'sSMTPUser','c58d4ec1a5a021'),(30,'sSMTPPass','3cfab2ee59990c'),(45,'iChurchLatitude','39.1111974'),(46,'iChurchLongitude','-94.5838009'),(48,'bHideFriendDate',''),(49,'bHideFamilyNewsletter',''),(50,'bHideWeddingDate',''),(51,'bHideLatLon',''),(52,'bUseDonationEnvelopes',''),(58,'bUseScannedChecks',''),(65,'sTimeZone','America/Detroit'),(67,'bForceUppercaseZip',''),(72,'bEnableNonDeductible',''),(80,'bEnableSelfRegistration','1'),(999,'bRegistered',''),(1003,'sChurchName','Main St. Cathedral'),(1004,'sChurchAddress','123 Main St'),(1005,'sChurchCity','Kansas City'),(1006,'sChurchState','MO'),(1007,'sChurchZip','64106'),(1008,'sChurchPhone','555 123 4234'),(1009,'sChurchEmail','demo@churchcrm.io'),(1010,'sHomeAreaCode','555'),(1014,'sTaxSigner','Elder Joe Smith'),(1016,'sReminderSigner','Elder Joe Smith'),(1025,'sConfirmSigner','Elder Joe Smith'),(1027,'sPledgeSummary2','as of'),(1028,'sDirectoryDisclaimer1','Every effort was made to insure the accuracy of this directory.  If there are any errors or omissions, please contact the church office.This directory is for the use of the people of'),(1034,'sChurchChkAcctNum','111111111'),(1035,'bEnableGravatarPhotos','1'),(1037,'sExternalBackupType','WebDAV'),(1046,'sLastIntegrityCheckTimeStamp','20251209-13744'),(1047,'sChurchCountry','United States'),(2010,'bAllowEmptyLastName',''),(2017,'bEnableExternalCalendarAPI',''),(2045,'bPHPMailerAutoTLS',''),(2046,'sPHPMailerSMTPSecure',''),(2050,'bEnabledMenuLinks',''),(2060,'IncludeDataInNewPersonNotifications',''),(2061,'bSearchIncludeFamilyCustomProperties',''),(2064,'sLastSoftwareUpdateCheckTimeStamp','20251209-13744'),(2065,'bAllowPrereleaseUpgrade',''),(2069,'bRequire2FA',''),(2071,'bSendUserDeletedEmail',''),(20142,'bHSTSEnable','');
 /*!40000 ALTER TABLE `config_cfg` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -182,7 +182,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Comment` text DEFAULT NULL,
   `dep_EnteredBy` mediumint(9) unsigned DEFAULT NULL,
   `dep_Closed` tinyint(1) NOT NULL DEFAULT 0,
-  `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') NOT NULL DEFAULT 'Bank',
+  `dep_Type` enum('Bank','CreditCard','BankDraft') NOT NULL DEFAULT 'Bank',
   PRIMARY KEY (`dep_ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci PACK_KEYS=0;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -272,37 +272,6 @@ UNLOCK TABLES;
 COMMIT;
 
 -- Dumped table `donationfund_fun` with 3 row(s)
---
-
---
--- Table structure for table `egive_egv`
---
-
-DROP TABLE IF EXISTS `egive_egv`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `egive_egv` (
-  `egv_egiveID` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `egv_famID` int(11) NOT NULL,
-  `egv_DateEntered` datetime NOT NULL,
-  `egv_DateLastEdited` datetime NOT NULL,
-  `egv_EnteredBy` smallint(6) NOT NULL DEFAULT 0,
-  `egv_EditedBy` smallint(6) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `egive_egv`
---
-
-LOCK TABLES `egive_egv` WRITE;
-/*!40000 ALTER TABLE `egive_egv` DISABLE KEYS */;
-SET autocommit=0;
-/*!40000 ALTER TABLE `egive_egv` ENABLE KEYS */;
-UNLOCK TABLES;
-COMMIT;
-
--- Dumped table `egive_egv` with 0 row(s)
 --
 
 --
@@ -1749,7 +1718,7 @@ CREATE TABLE `pledge_plg` (
   `plg_date` date DEFAULT NULL,
   `plg_amount` decimal(8,2) DEFAULT NULL,
   `plg_schedule` enum('Weekly','Monthly','Quarterly','Once','Other') DEFAULT NULL,
-  `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') DEFAULT NULL,
+  `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT') DEFAULT NULL,
   `plg_comment` text DEFAULT NULL,
   `plg_DateLastEdited` date NOT NULL DEFAULT '2016-01-01',
   `plg_EditedBy` mediumint(9) NOT NULL DEFAULT 0,
@@ -2210,7 +2179,7 @@ CREATE TABLE `user_usr` (
 LOCK TABLES `user_usr` WRITE;
 /*!40000 ALTER TABLE `user_usr` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `user_usr` VALUES (1,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2025-12-01 20:25:34',371,0,0,0,0,0,0,0,0,1,10,'skin-red',1,1,'2016-01-01',23,18,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL),(3,'$2y$12$uWQcp6KU7C4JCTaVH.0hiekfpga36yBVhXG8.M/w9u3MmvHt/NWi2',0,'2025-11-30 02:08:31',2,0,1,1,1,1,1,1,1,0,10,'skin-yellow-light',0,0,'2016-01-01',26,0,'tony.wade@example.com','JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(95,'$2y$12$7R0MqgyidzOqzXPrGbYdkO.y/decFpwSJM..fznzzvT4wiZqaJE4q',0,'2022-12-29 21:01:30',0,0,1,1,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'judith.matthews@example.com',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(99,'$2y$12$OTZ5Y/hvCNVkfQqbQfNjRO/x2cBnx5O3yMJt4jXKw/yu/NjuxTHTK',1,'2025-12-01 20:26:05',0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',29,0,'amanda.black@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user_usr` VALUES (1,'$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S',0,'2025-12-09 01:31:51',372,0,0,0,0,0,0,0,0,1,10,'skin-red',1,1,'2016-01-01',23,18,'Admin','ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL),(3,'$2y$12$uWQcp6KU7C4JCTaVH.0hiekfpga36yBVhXG8.M/w9u3MmvHt/NWi2',0,'2025-11-30 02:08:31',2,0,1,1,1,1,1,1,1,0,10,'skin-yellow-light',0,0,'2016-01-01',26,0,'tony.wade@example.com','JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(95,'$2y$12$7R0MqgyidzOqzXPrGbYdkO.y/decFpwSJM..fznzzvT4wiZqaJE4q',0,'2022-12-29 21:01:30',0,0,1,1,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',26,0,'judith.matthews@example.com',NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(99,'$2y$12$OTZ5Y/hvCNVkfQqbQfNjRO/x2cBnx5O3yMJt4jXKw/yu/NjuxTHTK',1,'2025-12-01 20:26:05',0,0,0,0,0,0,0,0,0,0,10,'skin-blue',0,0,'2016-01-01',29,0,'amanda.black@example.com',NULL,1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user_usr` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
@@ -2232,7 +2201,7 @@ CREATE TABLE `version_ver` (
   `ver_update_end` datetime DEFAULT NULL,
   PRIMARY KEY (`ver_ID`),
   UNIQUE KEY `ver_version` (`ver_version`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2242,12 +2211,12 @@ CREATE TABLE `version_ver` (
 LOCK TABLES `version_ver` WRITE;
 /*!40000 ALTER TABLE `version_ver` DISABLE KEYS */;
 SET autocommit=0;
-INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55'),(20,'5.0.5','2023-10-21 19:04:42','2023-10-21 19:04:42'),(21,'5.1.0','2023-10-31 23:33:49','2023-10-31 23:33:49'),(22,'5.2.2','2023-11-05 12:28:43','2023-11-05 12:28:43'),(23,'5.2.3','2023-11-16 12:39:14','2023-11-16 12:39:14'),(24,'5.3.0','2023-11-18 11:10:21','2023-11-18 11:10:21'),(25,'5.3.1','2023-11-21 02:04:10','2023-11-21 02:04:10'),(27,'5.4.0','2023-12-03 20:27:58','2023-12-03 20:27:58'),(29,'5.4.3','2024-01-03 23:24:10','2024-01-03 23:24:10'),(30,'5.5.0','2024-01-03 23:43:18','2024-01-03 23:43:18'),(31,'5.6.0','2024-03-07 20:35:26','2024-03-07 20:35:26'),(32,'5.7.0','2024-03-08 11:58:40','2024-03-08 11:58:40'),(33,'5.8.0','2024-04-25 14:50:41','2024-04-25 14:50:41'),(35,'5.9.0','2024-07-13 17:23:00','2024-07-13 17:23:00'),(36,'5.17.0','2024-07-13 17:23:02','2025-03-28 17:23:02'),(37,'5.18.0','2025-05-10 20:09:48','2025-05-10 20:09:48'),(38,'5.19.0','2025-09-01 13:44:08','2025-09-01 13:44:08'),(39,'5.20.0','2025-10-11 15:27:51','2025-10-11 15:27:51'),(40,'5.21.0','2025-10-13 02:54:08','2025-10-13 02:54:08'),(41,'5.22.0','2025-10-20 00:31:20','2025-10-20 00:31:20'),(42,'6.0.0','2025-11-01 21:56:03','2025-11-01 21:56:03'),(43,'6.0.1','2025-11-15 20:47:13','2025-11-15 20:47:13'),(44,'6.0.2','2025-11-16 01:28:56','2025-11-16 01:28:56'),(45,'6.1.0','2025-11-21 02:25:12','2025-11-21 02:25:12'),(46,'6.2.0','2025-11-21 04:32:38','2025-11-21 04:32:38'),(47,'6.3.0','2025-11-27 02:22:39','2025-11-27 02:22:39'),(48,'6.4.0','2025-12-06 02:24:41','2025-12-06 02:24:41'),(49,'6.5.0','2025-12-09 06:31:37','2025-12-09 06:31:37');
+INSERT INTO `version_ver` VALUES (1,'3.5.0','2019-02-10 20:14:23',NULL),(2,'3.5.2','2019-09-10 22:54:56','2019-09-10 22:54:56'),(3,'3.5.4','2019-10-11 22:45:35','2019-10-11 22:45:35'),(4,'4.0.0','2020-06-16 13:11:20','2020-06-16 13:11:20'),(5,'4.1.0','2020-06-16 13:11:20','2020-06-16 13:11:21'),(6,'4.2.3','2020-10-17 01:46:16','2020-10-17 01:46:16'),(7,'4.3.1','2020-11-23 18:55:02','2020-11-23 18:55:02'),(8,'4.3.2','2020-12-10 01:57:09','2020-12-10 01:57:09'),(9,'4.4.0','2021-03-21 17:44:23','2021-03-21 17:44:23'),(10,'4.4.1','2021-05-09 13:58:09','2021-04-27 13:58:09'),(11,'4.4.2','2021-05-09 13:58:09','2021-04-27 13:58:09'),(12,'4.4.3','2021-05-09 13:58:09','2021-04-27 13:58:09'),(13,'4.4.4','2021-07-08 13:58:09','2021-07-08 13:58:09'),(14,'4.4.5','2021-07-09 13:58:09','2021-07-09 13:58:09'),(15,'4.5.0','2021-07-09 13:58:09','2021-09-03 13:58:09'),(16,'4.5.1','2022-12-03 14:02:00','2022-12-03 14:02:00'),(17,'4.5.2','2022-12-28 21:42:20','2022-12-28 21:42:20'),(18,'4.5.3','2023-01-01 20:32:08','2023-01-01 20:32:08'),(19,'5.0.0','2023-05-06 17:29:55','2023-05-06 17:29:55'),(20,'5.0.5','2023-10-21 19:04:42','2023-10-21 19:04:42'),(21,'5.1.0','2023-10-31 23:33:49','2023-10-31 23:33:49'),(22,'5.2.2','2023-11-05 12:28:43','2023-11-05 12:28:43'),(23,'5.2.3','2023-11-16 12:39:14','2023-11-16 12:39:14'),(24,'5.3.0','2023-11-18 11:10:21','2023-11-18 11:10:21'),(25,'5.3.1','2023-11-21 02:04:10','2023-11-21 02:04:10'),(27,'5.4.0','2023-12-03 20:27:58','2023-12-03 20:27:58'),(29,'5.4.3','2024-01-03 23:24:10','2024-01-03 23:24:10'),(30,'5.5.0','2024-01-03 23:43:18','2024-01-03 23:43:18'),(31,'5.6.0','2024-03-07 20:35:26','2024-03-07 20:35:26'),(32,'5.7.0','2024-03-08 11:58:40','2024-03-08 11:58:40'),(33,'5.8.0','2024-04-25 14:50:41','2024-04-25 14:50:41'),(35,'5.9.0','2024-07-13 17:23:00','2024-07-13 17:23:00'),(36,'5.17.0','2024-07-13 17:23:02','2025-03-28 17:23:02'),(37,'5.18.0','2025-05-10 20:09:48','2025-05-10 20:09:48'),(38,'5.19.0','2025-09-01 13:44:08','2025-09-01 13:44:08'),(39,'5.20.0','2025-10-11 15:27:51','2025-10-11 15:27:51'),(40,'5.21.0','2025-10-13 02:54:08','2025-10-13 02:54:08'),(41,'5.22.0','2025-10-20 00:31:20','2025-10-20 00:31:20'),(42,'6.0.0','2025-11-01 21:56:03','2025-11-01 21:56:03'),(43,'6.0.1','2025-11-15 20:47:13','2025-11-15 20:47:13'),(44,'6.0.2','2025-11-16 01:28:56','2025-11-16 01:28:56'),(45,'6.1.0','2025-11-21 02:25:12','2025-11-21 02:25:12'),(46,'6.2.0','2025-11-21 04:32:38','2025-11-21 04:32:38'),(47,'6.3.0','2025-11-27 02:22:39','2025-11-27 02:22:39'),(48,'6.4.0','2025-12-06 02:24:41','2025-12-06 02:24:41'),(49,'6.5.0','2025-12-09 01:37:33','2025-12-09 01:37:33');
 /*!40000 ALTER TABLE `version_ver` ENABLE KEYS */;
 UNLOCK TABLES;
 COMMIT;
 
--- Dumped table `version_ver` with 44 row(s)
+-- Dumped table `version_ver` with 46 row(s)
 --
 
 --
@@ -2364,4 +2333,4 @@ DROP TABLE IF EXISTS `email_list`;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on: Mon, 01 Dec 2025 20:27:36 -0500
+-- Dump completed on: Tue, 09 Dec 2025 01:37:45 -0500

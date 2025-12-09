@@ -315,7 +315,7 @@
         <column name="dep_Comment" phpName="Comment" type="LONGVARCHAR"/>
         <column name="dep_EnteredBy" phpName="Enteredby" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
         <column name="dep_Closed" phpName="Closed" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
-        <column name="dep_Type" phpName="Type" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft','eGive')"
+        <column name="dep_Type" phpName="Type" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft')"
                 required="true" defaultValue="Bank"/>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
@@ -357,17 +357,6 @@
         <unique name="fun_ID">
             <unique-column name="fun_ID"/>
         </unique>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
-    <table name="egive_egv" idMethod="native" phpName="Egive">
-        <column name="egv_egiveID" phpName="EgiveId" type="VARCHAR" size="16" required="true"/>
-        <column name="egv_famID" phpName="FamilyId" type="INTEGER" required="true"/>
-        <column name="egv_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"/>
-        <column name="egv_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP" required="true"/>
-        <column name="egv_EnteredBy" phpName="EnteredBy" type="SMALLINT" required="true" defaultValue="0"/>
-        <column name="egv_EditedBy" phpName="EditedBy" type="SMALLINT" required="true" defaultValue="0"/>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
@@ -529,7 +518,7 @@
         <column name="plg_date" phpName="Date" type="DATE"/>
         <column name="plg_amount" phpName="Amount" type="DECIMAL" size="8" scale="2"/>
         <column name="plg_schedule" phpName="Schedule" type="CHAR" sqlType="enum('Weekly','Monthly','Quarterly','Once','Other')"/>
-        <column name="plg_method" phpName="Method" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE')"/>
+        <column name="plg_method" phpName="Method" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT')"/>
         <column name="plg_comment" phpName="Comment" type="LONGVARCHAR"/>
         <column name="plg_DateLastEdited" phpName="DateLastEdited" type="DATE" required="true" defaultValue="2016-01-01"/>
         <column name="plg_EditedBy" phpName="EditedBy" type="SMALLINT" size="9" required="true" defaultValue="0"/>

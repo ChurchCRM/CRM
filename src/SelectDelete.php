@@ -44,11 +44,6 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['
         . "' WHERE plg_FamID='$iFamilyID'";
     RunQuery($sSQL);
 
-    $sSQL = "UPDATE egive_egv SET egv_famID='$iDonationFamilyID',
-        egv_DateLastEdited ='$today', egv_EditedBy='" . AuthenticationManager::getCurrentUser()->getId()
-        . "' WHERE egv_famID='$iFamilyID'";
-    RunQuery($sSQL);
-
     $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
 }
 
@@ -114,7 +109,7 @@ require_once 'Include/Header.php';
     <div class="card-body">
         <?php
         // Delete Family Confirmation
-        // See if this family has any donations OR an Egive association
+        // See if this family has any donations
         $sSQL = "SELECT plg_plgID FROM pledge_plg WHERE plg_PledgeOrPayment = 'Payment' AND plg_FamID = " . $iFamilyID;
         $rsDonations = RunQuery($sSQL);
         $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
