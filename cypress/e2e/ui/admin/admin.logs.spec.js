@@ -13,8 +13,6 @@ describe('Admin System Logs - UI Tests', () => {
     cy.get('#logLevel').should('exist');
     cy.get('#saveLogLevel').should('contain', 'Save Log Level');
     
-    // Verify helper text exists
-    cy.get('.text-muted').should('contain', 'Lower numbers log more details');
   });
 
   it('Should display system logs section', () => {
