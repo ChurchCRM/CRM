@@ -8,24 +8,17 @@ use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 
 return static function (RectorConfig $rectorConfig): void {
+    // Process all PHP files in src/ directory
     $rectorConfig->paths([
-        __DIR__ . '/ChurchCRM',
-        __DIR__ . '/Include',
-        __DIR__ . '/Reports',
-        __DIR__ . '/api',
-        __DIR__ . '/email',
-        __DIR__ . '/external',
-        __DIR__ . '/kiosk',
-        __DIR__ . '/members',
-        __DIR__ . '/mysql',
-        __DIR__ . '/session',
-        __DIR__ . '/setup',
-        __DIR__ . '/sundayschool',
-        __DIR__ . '/v2',
+        __DIR__ . '/src',
     ]);
+    
+    // Skip generated code and vendor libraries
     $rectorConfig->skip([
-        __DIR__ . '/ChurchCRM/model/ChurchCRM/Base',
-        __DIR__ . '/ChurchCRM/model/ChurchCRM/Map',
+        __DIR__ . '/src/ChurchCRM/model/ChurchCRM/Base',
+        __DIR__ . '/src/ChurchCRM/model/ChurchCRM/Map',
+        __DIR__ . '/src/vendor',
+        __DIR__ . '/src/locale/vendor',
     ]);
 
     // Register a single rule
