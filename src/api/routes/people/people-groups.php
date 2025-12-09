@@ -222,7 +222,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        $groupService = $this->get('GroupService');
+        $groupService = new GroupService();
 
         return SlimUtils::renderJSON($response, $groupService->deleteGroupRole($groupID, $roleID));
     });
@@ -230,7 +230,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/{groupID:[0-9]+}/roles', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $roleName = $request->getParsedBody()['roleName'];
-        $groupService = $this->get('GroupService');
+        $groupService = new GroupService();
 
         return SlimUtils::renderJSON($response, $groupService->addGroupRole($groupID, $roleName));
     });
@@ -247,7 +247,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
-        $groupService = $this->get('GroupService');
+        $groupService = new GroupService();
 
         if ($input['GroupSpecificPropertyStatus']) {
             $groupService->enableGroupSpecificProperties($groupID);

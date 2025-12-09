@@ -3,44 +3,17 @@
 require_once '../Include/LoadConfig.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
-use ChurchCRM\Service\DepositService;
-use ChurchCRM\Service\FinancialService;
-use ChurchCRM\Service\GroupService;
-use ChurchCRM\Service\PersonService;
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Slim\Factory\AppFactory;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 // Get base path by combining $sRootPath from Config.php with /api endpoint
 // Examples: '' + '/api' = '/api' (root install)
 //           '/churchcrm' + '/api' = '/churchcrm/api' (subdirectory install)
 $basePath = SlimUtils::getBasePath('/api');
 
-
-$container = new ContainerBuilder();
-// Lazy initialization - services created only when requested
-$container->set('PersonService', function() {
-    return new PersonService();
-});
-$container->set('GroupService', function() {
-    return new GroupService();
-});
-$container->set('FinancialService', function() {
-    return new FinancialService();
-});
-$container->set('SystemService', function() {
-    return new SystemService();
-});
-$container->set('DepositService', function() {
-    return new DepositService();
-});
-$container->compile();
-
-AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
