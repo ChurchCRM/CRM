@@ -84,12 +84,16 @@ class PledgeQuery extends BasePledgeQuery
     ): self {
         $this->filterByPledgeOrPayment('Payment');
 
+        // Always left join optional relationships first (Family, Fund, Person, Deposit)
+        // This ensures we get all pledges even if relationships are NULL
+        $this->leftJoinWithFamily()
+            ->leftJoinWithDonationFund()
+            ->leftJoinWithPerson()
+            ->leftJoinWithDeposit();
+
         // Apply date filtering based on selected datetype
-        // CRITICAL: Use innerJoinWithDeposit (INNER JOIN) when filtering by deposit date
-        // This ensures deposits exist and date filtering works correctly (matches 5.22.0 SQL behavior)
         if ($datetype === 'Deposit') {
-            // Inner join with deposit and filter by deposit date
-            $this->innerJoinWithDeposit();
+            // Filter by deposit date (some pledges may have no deposit)
             if (!empty($dateStart)) {
                 $this->useDepositQuery()
                     ->filterByDate($dateStart, Criteria::GREATER_EQUAL)
@@ -101,15 +105,13 @@ class PledgeQuery extends BasePledgeQuery
                     ->endUse();
             }
         } else {
-            // Filter by payment date
+            // Filter by payment date (default: 'Payment')
             if (!empty($dateStart)) {
                 $this->filterByDate($dateStart, Criteria::GREATER_EQUAL);
             }
             if (!empty($dateEnd)) {
                 $this->filterByDate($dateEnd, Criteria::LESS_EQUAL);
             }
-            // For payment date, left join is fine since deposit is optional
-            $this->leftJoinWithDeposit();
         }
 
         if (!empty($fundIds)) {
@@ -126,11 +128,6 @@ class PledgeQuery extends BasePledgeQuery
         }
         // Note: Classification filtering is complex and requires post-processing
         // as it involves a relationship through ListOption. Can be added to service layer if needed.
-
-        // Left joins for optional relationships
-        $this->leftJoinWithFamily()
-            ->leftJoinWithDonationFund()
-            ->leftJoinWithPerson();
 
         // Apply sorting
         if ($sort === 'fund') {
