@@ -366,8 +366,6 @@ class ChurchCRMReleaseManager
         $logger->info('Deleting zip archive: ' . $zipFilename);
         unlink($zipFilename);
 
-        SystemConfig::setValue('sLastIntegrityCheckTimeStamp', null);
-        $logger->debug('Set sLastIntegrityCheckTimeStamp to null');
         $logger->info('Upgrade process complete');
         ini_set('display_errors', $displayErrors);
         // Only attempt to upgrade the database if the code deploy/move completed successfully

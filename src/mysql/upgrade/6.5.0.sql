@@ -24,6 +24,11 @@ DROP TABLE IF EXISTS `egive_egv`;
 -- Remove unused iLogFileThreshold config (never implemented)
 DELETE FROM `config_cfg` WHERE `cfg_id` = 2077;
 
+-- Remove integrity check background job configs (now runs only from admin pages)
+DELETE FROM `config_cfg` WHERE `cfg_id` IN (1044, 1045, 1046);
+
+-- Remove software update check timer configs (runs on admin login instead)
+DELETE FROM `config_cfg` WHERE `cfg_id` IN (2063, 2064);
 -- Remove orphaned database tables (created but never fully implemented)
 DROP TABLE IF EXISTS `church_location_person`;
 DROP TABLE IF EXISTS `church_location_role`;
