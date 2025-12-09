@@ -23,13 +23,7 @@ try {
 
 $phpVersion = phpversion();
 if (version_compare($phpVersion, $requiredPhp, '<')) {
-    $redirectHeader = 'Location: php-error.html';
-    if ($phpVersion) {
-        header('X-PHP-Version: ' . $phpVersion);
-        $redirectHeader .= '?phpVersion=' . $phpVersion;
-    }
-    header($redirectHeader);
-
+    header('Location: php-error.php');
     exit;
 }
 
