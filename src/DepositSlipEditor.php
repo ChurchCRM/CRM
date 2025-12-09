@@ -34,8 +34,6 @@ if ($iDepositSlipID) {
             $_SESSION['idefaultPaymentMethod'] = 'CREDITCARD';
         } elseif ($thisDeposit->getType() === 'BankDraft') {
             $_SESSION['idefaultPaymentMethod'] = 'BANKDRAFT';
-        } elseif ($thisDeposit->getType() === 'eGive') {
-            $_SESSION['idefaultPaymentMethod'] = 'EGIVE';
         }
     }
 }
@@ -139,15 +137,9 @@ require_once 'Include/Header.php';
                     <i class="fa-solid fa-save"></i> <?= gettext('Save'); ?>
                   </button>
                   <?php if (!$thisDeposit->getClosed()): ?>
-                  <?php if ($thisDeposit->getType() == 'eGive'): ?>
-                  <a href="eGive.php?DepositSlipID=<?= $iDepositSlipID ?>&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success mr-2">
-                    <i class="fa-solid fa-download"></i> <?= gettext('Import eGive'); ?>
-                  </a>
-                  <?php else: ?>
                   <a href="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success mr-2">
                     <i class="fa-solid fa-plus-circle"></i> <?= gettext('Add Payment'); ?>
                   </a>
-                  <?php endif; ?>
                   <?php endif; ?>
                   
                   <!-- Secondary Action -->

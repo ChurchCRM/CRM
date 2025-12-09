@@ -40,6 +40,6 @@ class UnsupportedDepositCheck implements TaskInterface
 
     public function getDesc(): string
     {
-        return gettext('Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.');
+        return gettext('Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.');
     }
 }

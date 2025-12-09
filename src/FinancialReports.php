@@ -277,8 +277,7 @@ if ($sReportType == '') {
         echo "<option value='CHECK'>" . gettext('Check')
             . "<option value='CASH'>" . gettext('Cash')
             . "<option value='CREDITCARD'>" . gettext('Credit Card')
-            . "<option value='BANKDRAFT'>" . gettext('Bank Draft')
-            . "<option value='EGIVE'>" . gettext('eGive');
+            . "<option value='BANKDRAFT'>" . gettext('Bank Draft');
         echo '</select></td></tr>';
     }
 
