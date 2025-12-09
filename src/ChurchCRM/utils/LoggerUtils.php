@@ -55,13 +55,9 @@ class LoggerUtils
             self::$formatter = new LineFormatter(null, null, false, true);
             
             try {
-                // Use configured timezone if available
-                $timezone = SystemConfig::getValue('sTimeZone');
-                if ($timezone) {
-                    self::$formatter->setDateFormat('Y-m-d\TH:i:s.uP');
-                    // The timezone is set via date_default_timezone_set in Bootstrapper
-                    // Monolog will use that for formatting
-                }
+                // Set explicit date format with timezone offset
+                // Monolog uses PHP's timezone set by date_default_timezone_set() in Bootstrapper
+                self::$formatter->setDateFormat('Y-m-d\TH:i:s.uP');
             } catch (\Exception $e) {
                 // Config not initialized - will use UTC (set in Bootstrapper)
             }
