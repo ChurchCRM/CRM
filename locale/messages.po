@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-06 18:25+0000\n"
+"POT-Creation-Date: 2025-12-09 03:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -863,6 +863,9 @@ msgstr ""
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr ""
 
+msgid "Available"
+msgstr ""
+
 #. Context: countries
 msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
@@ -1403,6 +1406,9 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr ""
 
 msgid "ChurchCRM Installation"
+msgstr ""
+
+msgid "ChurchCRM Supported Locales"
 msgstr ""
 
 msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
@@ -4100,6 +4106,9 @@ msgstr ""
 msgid "Label Type"
 msgstr ""
 
+msgid "Language"
+msgstr ""
+
 msgid "Language updated to"
 msgstr ""
 
@@ -4298,6 +4307,9 @@ msgid "Local development:"
 msgstr ""
 
 msgid "Locale"
+msgstr ""
+
+msgid "Locale Support"
 msgstr ""
 
 msgid "Localization"
@@ -4793,10 +4805,10 @@ msgstr ""
 msgid "Multiple items"
 msgstr ""
 
-msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgid "Must be a valid URL starting with http:// or https://"
 msgstr ""
 
-msgid "Must be a valid URL starting with http:// or https:// and ending with a slash (e.g., https://www.yourdomain.com/ or https://www.yourdomain.com/churchcrm/)"
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
 msgstr ""
 
 msgid "Must be a valid port number (e.g., 3306)"
@@ -5040,6 +5052,9 @@ msgstr ""
 msgid "No group assignments."
 msgstr ""
 
+msgid "No locales configured"
+msgstr ""
+
 msgid "No log files found."
 msgstr ""
 
@@ -5129,6 +5144,9 @@ msgstr ""
 
 #. Context: locales
 msgid "Norwegian"
+msgstr ""
+
+msgid "Not Available"
 msgstr ""
 
 msgid "Not Found"
@@ -7168,10 +7186,16 @@ msgstr ""
 msgid "System Info"
 msgstr ""
 
+msgid "System Locale Support"
+msgstr ""
+
 msgid "System Logs"
 msgstr ""
 
 msgid "System Settings"
+msgstr ""
+
+msgid "System Support"
 msgstr ""
 
 msgid "System Up to Date"
@@ -7686,7 +7710,16 @@ msgstr ""
 msgid "Unable to contact integrity endpoint. Check web server error logs."
 msgstr ""
 
+msgid "Unable to detect system locales"
+msgstr ""
+
+msgid "Unable to determine available locales"
+msgstr ""
+
 msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr ""
+
+msgid "Unable to load locale information"
 msgstr ""
 
 msgid "Unable to load verification info"
