@@ -267,9 +267,9 @@
         </vendor>
     </table>
     <table name="groupprop_master" idMethod="native" phpName="GroupPropMaster" description="This contains definitions for the group-specific fields">
-        <column name="grp_ID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"
+        <column name="grp_ID" phpName="GrpId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"
                 defaultValue="0"/>
-        <column name="prop_ID" phpName="Id" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"
+        <column name="prop_ID" phpName="PropId" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"
                 defaultValue="0"/>
         <column name="prop_Field" phpName="Field" type="VARCHAR" size="5" required="true" defaultValue="0"/>
         <column name="prop_Name" phpName="Name" type="VARCHAR" size="40"/>
@@ -512,25 +512,25 @@
     </table>
 
     <table name="pledge_plg" idMethod="native" phpName="Pledge" description="This contains all payment/pledge information">
-        <column name="plg_plgID" phpName="Id" type="SMALLINT" size="9" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="plg_FamID" phpName="FamId" type="SMALLINT" size="9"/>
-        <column name="plg_FYID" phpName="FyId" type="SMALLINT" size="9"/>
+        <column name="plg_plgID" phpName="Id" type="SMALLINT" size="9" sqlType="mediumint(9)" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="plg_FamID" phpName="FamId" type="SMALLINT" size="9" sqlType="mediumint(9)"/>
+        <column name="plg_FYID" phpName="FyId" type="SMALLINT" size="9" sqlType="mediumint(9)"/>
         <column name="plg_date" phpName="Date" type="DATE"/>
         <column name="plg_amount" phpName="Amount" type="DECIMAL" size="8" scale="2"/>
         <column name="plg_schedule" phpName="Schedule" type="CHAR" sqlType="enum('Weekly','Monthly','Quarterly','Once','Other')"/>
         <column name="plg_method" phpName="Method" type="CHAR" sqlType="enum('CREDITCARD','CHECK','CASH','BANKDRAFT')"/>
         <column name="plg_comment" phpName="Comment" type="LONGVARCHAR"/>
         <column name="plg_DateLastEdited" phpName="DateLastEdited" type="DATE" required="true" defaultValue="2016-01-01"/>
-        <column name="plg_EditedBy" phpName="EditedBy" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="plg_EditedBy" phpName="EditedBy" type="SMALLINT" size="9" sqlType="mediumint(9)" required="true" defaultValue="0"/>
         <column name="plg_PledgeOrPayment" phpName="PledgeOrPayment" type="CHAR" sqlType="enum('Pledge','Payment')" required="true" defaultValue="Pledge"/>
         <column name="plg_fundID" phpName="FundId" type="TINYINT" size="3" sqlType="tinyint(3) unsigned"/>
         <column name="plg_depID" phpName="DepId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
         <column name="plg_CheckNo" phpName="CheckNo" type="BIGINT" size="16" sqlType="bigint(16) unsigned"/>
         <column name="plg_Problem" phpName="Problem" type="BOOLEAN" size="1"/>
         <column name="plg_scanString" phpName="ScanString" type="LONGVARCHAR"/>
-        <column name="plg_aut_ID" phpName="AutId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="plg_aut_ID" phpName="AutId" type="SMALLINT" size="9" sqlType="mediumint(9)" required="true" defaultValue="0"/>
         <column name="plg_aut_Cleared" phpName="AutCleared" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
-        <column name="plg_aut_ResultID" phpName="AutResultId" type="SMALLINT" size="9" required="true" defaultValue="0"/>
+        <column name="plg_aut_ResultID" phpName="AutResultId" type="SMALLINT" size="9" sqlType="mediumint(9)" required="true" defaultValue="0"/>
         <column name="plg_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
         <column name="plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>
         <foreign-key foreignTable="deposit_dep">

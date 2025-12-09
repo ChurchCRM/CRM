@@ -23,3 +23,11 @@ DROP TABLE IF EXISTS `egive_egv`;
 
 -- Remove unused iLogFileThreshold config (never implemented)
 DELETE FROM `config_cfg` WHERE `cfg_id` = 2077;
+
+-- Remove orphaned database tables (created but never fully implemented)
+DROP TABLE IF EXISTS `church_location_person`;
+DROP TABLE IF EXISTS `church_location_role`;
+DROP TABLE IF EXISTS `person_permission`;
+DROP TABLE IF EXISTS `person_roles`;
+DROP TABLE IF EXISTS `permissions`;
+DROP TABLE IF EXISTS `roles`;
