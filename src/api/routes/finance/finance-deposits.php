@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Service\DepositService;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -13,8 +14,7 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->post('', function (Request $request, Response $response, array $args): Response {
-        /** @var ChurchCRM\Service\DepositService $depositService */
-        $depositService = $this->get('DepositService');
+        $depositService = new DepositService();
         $input = $request->getParsedBody();
         $depositType = $input['depositType'] ?? '';
         $depositComment = InputUtils::sanitizeText($input['depositComment']) ?? '';
@@ -136,16 +136,14 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
 
     $group->get('/{id:[0-9]+}/pledges', function (Request $request, Response $response, array $args): Response {
         $id = (int) $args['id'];
-        /** @var ChurchCRM\Service\DepositService $depositService */
-        $depositService = $this->get('DepositService');
+        $depositService = new DepositService();
         $result = $depositService->getDepositItemsByType($id, 'Pledge');
         return SlimUtils::renderJSON($response, $result);
     });
 
     $group->get('/{id:[0-9]+}/payments', function (Request $request, Response $response, array $args): Response {
         $id = (int) $args['id'];
-        /** @var ChurchCRM\Service\DepositService $depositService */
-        $depositService = $this->get('DepositService');
+        $depositService = new DepositService();
         $result = $depositService->getDepositItemsByType($id, 'Payment');
         return SlimUtils::renderJSON($response, $result);
     });
