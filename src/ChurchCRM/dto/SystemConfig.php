@@ -232,9 +232,6 @@ class   SystemConfig
             'sExternalBackupAutoInterval'          => new ConfigItem(1041, 'sExternalBackupAutoInterval', 'text', '', gettext('Interval in Hours for Automatic Remote Backups')),
             'sLastBackupTimeStamp'                 => new ConfigItem(1042, 'sLastBackupTimeStamp', 'text', '', gettext('Last Backup Timestamp')),
             'sQBDTSettings'                        => new ConfigItem(1043, 'sQBDTSettings', 'json', '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}', gettext('QuickBooks Deposit Ticket Settings')),
-            'bEnableIntegrityCheck'                => new ConfigItem(1044, 'bEnableIntegrityCheck', 'boolean', '1', gettext('Enable Integrity Check')),
-            'iIntegrityCheckInterval'              => new ConfigItem(1045, 'iIntegrityCheckInterval', 'number', '168', gettext('Interval in Hours for Integrity Check')),
-            'sLastIntegrityCheckTimeStamp'         => new ConfigItem(1046, 'sLastIntegrityCheckTimeStamp', 'text', '', gettext('Last Integrity Check Timestamp')),
             'sChurchCountry'                       => new ConfigItem(1047, 'sChurchCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
             'sConfirmSincerely'                    => new ConfigItem(1048, 'sConfirmSincerely', 'text', 'Sincerely', gettext('Used to end a letter before Signer')),
             'sDear'                                => new ConfigItem(1049, 'sDear', 'text', 'Dear', gettext('Text before name in emails/reports')),
@@ -329,7 +326,7 @@ class   SystemConfig
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Events')             => ['bEnableExternalCalendarAPI', 'bEventsOnDashboardPresence', 'iEventsOnDashboardPresenceTimeOut'],
             gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword'],
-            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnableIntegrityCheck', 'iIntegrityCheckInterval', 'sLastIntegrityCheckTimeStamp', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'iSoftwareUpdateCheckInterval', 'sLastSoftwareUpdateCheckTimeStamp', 'bAllowPrereleaseUpgrade'],
+            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'iSoftwareUpdateCheckInterval', 'sLastSoftwareUpdateCheckTimeStamp', 'bAllowPrereleaseUpgrade'],
         ];
     }
 

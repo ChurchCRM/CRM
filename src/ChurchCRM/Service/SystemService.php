@@ -95,24 +95,6 @@ class SystemService
                 LoggerUtils::getAppLogger()->warning('Failure executing backup job: ' . $exc->getMessage());
             }
         }
-        if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
-            if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'), SystemConfig::getValue('iIntegrityCheckInterval'))) {
-                // if there was no integrity check, or if the interval suggests we do one now.
-                LoggerUtils::getAppLogger()->info('Starting application integrity check');
-                $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
-                $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
-                file_put_contents($integrityCheckFile, json_encode($appIntegrity, JSON_THROW_ON_ERROR));
-                $now = new \DateTime();  // update the LastBackupTimeStamp.
-                SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
-                if ($appIntegrity['status'] === 'success') {
-                    LoggerUtils::getAppLogger()->info('Application integrity check passed');
-                } else {
-                    LoggerUtils::getAppLogger()->warning('Application integrity check failed: ' . $appIntegrity['message']);
-                }
-            } else {
-                LoggerUtils::getAppLogger()->debug('Not starting application integrity check.  Last application integrity check run: ' . SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
-            }
-        }
         if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'), SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
             // Since checking for updates from GitHub is a potentially expensive operation,
             // Run this task as part of the "background jobs" API call

@@ -23,3 +23,6 @@ DROP TABLE IF EXISTS `egive_egv`;
 
 -- Remove unused iLogFileThreshold config (never implemented)
 DELETE FROM `config_cfg` WHERE `cfg_id` = 2077;
+
+-- Remove integrity check background job configs (now runs only from admin pages)
+DELETE FROM `config_cfg` WHERE `cfg_id` IN (1044, 1045, 1046);
