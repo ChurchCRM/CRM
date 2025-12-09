@@ -489,11 +489,12 @@ class FinancialService
             $query->filterByDepId($depositId);
         }
 
-        // Get results and convert to array with foreign objects included
+        // Get results and convert to array WITHOUT foreign objects to avoid circular references
+        // The Pledge::toArray() method handles adding FamilyString when $includeForeignObjects is false
         $collection = $query->find();
         $results = [];
         foreach ($collection as $pledge) {
-            $results[] = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], true);
+            $results[] = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
         }
         return $results;
     }
