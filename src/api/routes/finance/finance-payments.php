@@ -13,8 +13,7 @@ use ChurchCRM\Service\FinancialService;
 
 $app->group('/payments', function (RouteCollectorProxy $group): void {
     $group->get('/', function (Request $request, Response $response, array $args): Response {
-        /** @var FinancialService  $financialService */
-        $financialService = $this->get('FinancialService');
+        $financialService = new FinancialService();
 
         return SlimUtils::renderJSON(
             $response,
@@ -24,8 +23,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
 
     $group->post('/', function (Request $request, Response $response, array $args): Response {
         $payment = (object) $request->getParsedBody();
-        /** @var FinancialService  $financialService */
-        $financialService = $this->get('FinancialService');
+        $financialService = new FinancialService();
 
         return SlimUtils::renderJSON(
             $response,
@@ -70,7 +68,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
 
     $group->delete('/{groupKey}', function (Request $request, Response $response, array $args): Response {
         $groupKey = $args['groupKey'];
-        $financialService = $this->get('FinancialService');
+        $financialService = new FinancialService();
         $financialService->deletePayment($groupKey);
 
         return SlimUtils::renderSuccessJSON($response);

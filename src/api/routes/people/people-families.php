@@ -128,8 +128,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args): Response {
         $scanString = $args['scanString'];
 
-        /** @var FinancialService $financialService */
-        $financialService = $this->get('FinancialService');
+        $financialService = new FinancialService();
 
         return SlimUtils::renderJSON($response, $financialService->getMemberByScanString($scanString));
     });
