@@ -68,7 +68,7 @@ class PledgeQuery extends BasePledgeQuery
      * @param array $familyIds Optional family IDs to filter
      * @param array $methods Optional payment methods to filter
      * @param array $classificationIds Optional classification IDs to filter
-     * @param string $datetype 'Payment' for payment date (plg_date), 'Deposit' for deposit date (dep_date)
+     * @param string $datetype 'Payment' for pledge date, 'Deposit' for deposit date
      * @param string $sort Sort order: 'deposit', 'fund', or 'family'
      * @return self
      */
@@ -84,16 +84,12 @@ class PledgeQuery extends BasePledgeQuery
     ): self {
         $this->filterByPledgeOrPayment('Payment');
 
-        // Always left join optional relationships first (Family, Fund, Person, Deposit)
-        // This ensures we get all pledges even if relationships are NULL
-        $this->leftJoinWithFamily()
-            ->leftJoinWithDonationFund()
-            ->leftJoinWithPerson()
-            ->leftJoinWithDeposit();
-
         // Apply date filtering based on selected datetype
+        // CRITICAL: Use innerJoinWithDeposit (INNER JOIN) when filtering by deposit date
+        // This ensures deposits exist and date filtering works correctly (matches 5.22.0 SQL behavior)
         if ($datetype === 'Deposit') {
-            // Filter by deposit date (some pledges may have no deposit)
+            // Inner join with deposit and filter by deposit date
+            $this->innerJoinWithDeposit();
             if (!empty($dateStart)) {
                 $this->useDepositQuery()
                     ->filterByDate($dateStart, Criteria::GREATER_EQUAL)
@@ -105,15 +101,17 @@ class PledgeQuery extends BasePledgeQuery
                     ->endUse();
             }
         } else {
-            // Filter by payment date (default: 'Payment')
+            // Filter by payment date
             if (!empty($dateStart)) {
                 $this->filterByDate($dateStart, Criteria::GREATER_EQUAL);
             }
             if (!empty($dateEnd)) {
                 $this->filterByDate($dateEnd, Criteria::LESS_EQUAL);
             }
+            // For payment date, left join is fine since deposit is optional
+            $this->leftJoinWithDeposit();
         }
-
+        
         if (!empty($fundIds)) {
             $this->filterByFundId($fundIds, Criteria::IN);
         }
@@ -128,6 +126,11 @@ class PledgeQuery extends BasePledgeQuery
         }
         // Note: Classification filtering is complex and requires post-processing
         // as it involves a relationship through ListOption. Can be added to service layer if needed.
+
+        // Left joins for optional relationships
+        $this->leftJoinWithFamily()
+            ->leftJoinWithDonationFund()
+            ->leftJoinWithPerson();
 
         // Apply sorting
         if ($sort === 'fund') {
