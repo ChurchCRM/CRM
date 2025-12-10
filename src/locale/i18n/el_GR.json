@@ -1853,7 +1853,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "Εάν θέλετε να διατηρήσετε τις αλλαγές σας σε αυτά τα αρχεία, δημιουργήστε ένα μη αυτόματο αντίγραφο ασφαλείας αυτών των αρχείων πριν προχωρήσετε σε αυτήν την αναβάθμιση και, στη συνέχεια, επαναφέρετε τα αρχεία με μη αυτόματο τρόπο μετά την ολοκλήρωση της αναβάθμισης.",
     "Integrity Check Details:": "Λεπτομέρειες ελέγχου ακεραιότητας:",
     "Unsupported Deposit Types Detected": "Εντοπίστηκαν μη υποστηριζόμενοι τύποι κατάθεσης",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "Η υποστήριξη για πληρωμές μέσω eGive, πιστωτικής κάρτας και τραπεζικού προσχεδίου έχει καταργηθεί. Οι υπάρχουσες μη τραπεζικές αναφορές ενδέχεται να μην είναι πλέον προσβάσιμες σε μελλοντικές εκδόσεις.",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "Η υποστήριξη για πληρωμές μέσω eGive, πιστωτικής κάρτας και τραπεζικού προσχεδίου έχει καταργηθεί. Οι υπάρχουσες μη τραπεζικές αναφορές ενδέχεται να μην είναι πλέον προσβάσιμες σε μελλοντικές εκδόσεις.",
     "Estonian": "Εσθονική",
     "Error decoding signature definition file": "Σφάλμα κατά την αποκωδικοποίηση του αρχείου ορισμού υπογραφής",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "Τελικό σημείο απομακρυσμένου αντιγράφου ασφαλείας. Εάν το WebDAV, αυτό πρέπει να είναι κωδικοποιημένο με url. ",

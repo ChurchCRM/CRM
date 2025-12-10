@@ -7826,7 +7826,8 @@ msgid "Unsupported Deposit Types Detected"
 msgstr "Εντοπίστηκαν μη υποστηριζόμενοι τύποι κατάθεσης"
 
 #: 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+#, fuzzy
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Η υποστήριξη για πληρωμές μέσω eGive, πιστωτικής κάρτας και τραπεζικού προσχεδίου έχει καταργηθεί. Οι υπάρχουσες μη τραπεζικές αναφορές ενδέχεται να μην είναι πλέον προσβάσιμες σε μελλοντικές εκδόσεις."
 
 #. Context: locales

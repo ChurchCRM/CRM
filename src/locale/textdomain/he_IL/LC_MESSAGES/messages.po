@@ -7818,7 +7818,8 @@ msgid "Unsupported Deposit Types Detected"
 msgstr "זוהו סוגי הפקדה שאינם נתמכים"
 
 #: 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+#, fuzzy
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "התמיכה בתשלומי eGive, כרטיסי אשראי והעברות בנקאיות הופסקה. ייתכן שדוחות לא-בנקאיים קיימים לא יהיו נגישים בגרסאות עתידיות."
 
 #. Context: locales

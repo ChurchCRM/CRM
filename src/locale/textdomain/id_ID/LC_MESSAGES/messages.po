@@ -7829,8 +7829,9 @@ msgid "Unsupported Deposit Types Detected"
 msgstr "Jenis Deposit Tidak Didukung Terdeteksi"
 
 #: 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Dukungan untuk pembayaran eGive, Kartu Kredit, dan Bank Draft telah ditinggalkan. Laporan non-bank yang ada mungkin tidak lagi dapat diakses di versi mendatang."
+#, fuzzy
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "Dukungan untuk pembayaran Kartu Kredit, dan Bank Draft telah ditinggalkan. Laporan non-bank yang ada mungkin tidak lagi dapat diakses di versi mendatang."
 
 #. Context: locales
 #: 

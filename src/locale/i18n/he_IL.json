@@ -1853,7 +1853,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "אם ברצונך לשמור על השינויים שביצעת בקבצים אלה, אנא בצע גיבוי ידני של קבצים אלה לפני שתמשיך בשדרוג, ולאחר מכן שחזר את הקבצים באופן ידני לאחר השלמת השדרוג.",
     "Integrity Check Details:": "פרטי בדיקת תקינות:",
     "Unsupported Deposit Types Detected": "זוהו סוגי הפקדה שאינם נתמכים",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "התמיכה בתשלומי eGive, כרטיסי אשראי והעברות בנקאיות הופסקה. ייתכן שדוחות לא-בנקאיים קיימים לא יהיו נגישים בגרסאות עתידיות.",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "התמיכה בתשלומי eGive, כרטיסי אשראי והעברות בנקאיות הופסקה. ייתכן שדוחות לא-בנקאיים קיימים לא יהיו נגישים בגרסאות עתידיות.",
     "Estonian": "אסטונית",
     "Error decoding signature definition file": "שגיאה בפענוח קובץ הגדרות חתימה",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "נקודת קצה לגיבוי מרוחק. אם זה WebDAV, חייב להיות מקודד URL.",

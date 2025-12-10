@@ -1853,7 +1853,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "இந்தக் கோப்புகளில் நீங்கள் செய்த மாற்றங்களைப் பராமரிக்க விரும்பினால், இந்த மேம்படுத்தலைத் தொடர்வதற்கு முன், இந்தக் கோப்புகளை கைமுறையாகக் காப்புப் பிரதி எடுக்கவும், பின்னர் மேம்படுத்தல் முடிந்ததும் கோப்புகளை கைமுறையாக மீட்டெடுக்கவும்.",
     "Integrity Check Details:": "நேர்மை சரிபார்ப்பு விவரங்கள்:",
     "Unsupported Deposit Types Detected": "ஆதரிக்கப்படாத டெபாசிட் வகைகள் கண்டறியப்பட்டன",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "eGive, கிரெடிட் கார்டு மற்றும் வங்கி வரைவுப் பணம் செலுத்துவதற்கான ஆதரவு நிறுத்தப்பட்டது. தற்போதுள்ள வங்கி அல்லாத அறிக்கைகளை இனி எதிர்கால பதிப்புகளில் அணுக முடியாது.",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "eGive, கிரெடிட் கார்டு மற்றும் வங்கி வரைவுப் பணம் செலுத்துவதற்கான ஆதரவு நிறுத்தப்பட்டது. தற்போதுள்ள வங்கி அல்லாத அறிக்கைகளை இனி எதிர்கால பதிப்புகளில் அணுக முடியாது.",
     "Estonian": "எஸ்டோனியன்",
     "Error decoding signature definition file": "கையொப்ப வரையறை கோப்பை டிகோட் செய்வதில் பிழை",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "ரிமோட் பேக்கப் எண்ட்பாயிண்ட். WebDAV என்றால், இது url குறியிடப்பட்டதாக இருக்க வேண்டும்.",

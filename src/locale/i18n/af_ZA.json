@@ -1853,7 +1853,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "As u u wysigings aan hierdie lêers wil handhaaf, moet u hierdie lêers handmatig rugsteun voordat u verder gaan met die opgradering en die lêers dan handmatig herstel nadat die opgradering voltooi is.",
     "Integrity Check Details:": "Inligting oor integriteitstoets:",
     "Unsupported Deposit Types Detected": "Nie-ondersteunde deposito-tipes opgespoor",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "Ondersteuning vir eGive-, kredietkaart- en bankwisselbetalings is verswak. Bestaande nie-bankverslae is moontlik nie meer toeganklik in toekomstige weergawes nie.",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "Ondersteuning vir kredietkaart- en bankwisselbetalings is verswak. Bestaande nie-bankverslae is moontlik nie meer toeganklik in toekomstige weergawes nie.",
     "Estonian": "Esties",
     "Error decoding signature definition file": "Kon nie die definisie-lêer van handtekeninge dekodeer nie",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "Remote Backup eindpunt. As WebDAV, moet dit gekodeer word vir url. ",
