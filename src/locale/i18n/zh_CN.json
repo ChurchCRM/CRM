@@ -1852,7 +1852,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "如果您希望保留对这些文件的更改，请在进行此升级之前对这些文件进行手动备份，然后在升级完成后手动还原文件。",
     "Integrity Check Details:": "完整性检查详细信息：",
     "Unsupported Deposit Types Detected": "检测到不支持的存款类型",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "已不再支持eGive，信用卡和银行汇票付款。现有的非银行报告在以后的版本中可能不再可用。",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "已不再支持eGive，信用卡和银行汇票付款。现有的非银行报告在以后的版本中可能不再可用。",
     "Estonian": "爱沙尼亚语",
     "Error decoding signature definition file": "解码签名定义文件时出错",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "远程备份端点。如果是WebDAV，则必须使用url编码。 ",

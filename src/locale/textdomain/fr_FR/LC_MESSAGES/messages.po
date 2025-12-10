@@ -7827,8 +7827,9 @@ msgid "Unsupported Deposit Types Detected"
 msgstr "Types de dépôts incorrects"
 
 #: 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "La prise en charge des paiements par eGive, par carte de crédit et par traite bancaire a été abandonnée. Désolé, mais les rapports non bancaires existants pourraient ne plus être accessibles dans les futures versions."
+#, fuzzy
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "La prise en charge des paiements par par carte de crédit et par traite bancaire a été abandonnée. Désolé, mais les rapports non bancaires existants pourraient ne plus être accessibles dans les futures versions."
 
 #. Context: locales
 #: 

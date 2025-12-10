@@ -1853,7 +1853,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "Bu dosyalardaki değişikliklerinizi korumak istiyorsanız, lütfen bu yükseltmeye devam etmeden önce bu dosyaların manuel yedeğini alın ve yükseltme tamamlandıktan sonra dosyaları manuel olarak geri yükleyin.",
     "Integrity Check Details:": "Dürüstlük Kontrol Detayları:",
     "Unsupported Deposit Types Detected": "Desteklenmemiş depozito türleri tespit edildi",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "Egile, kredi kartı ve banka taslak ödemeleri için destek verilmiştir. Mevcut banka dışı raporlar artık gelecekteki sürümlerde erişilemeyebilir.",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "Egile, kredi kartı ve banka taslak ödemeleri için destek verilmiştir. Mevcut banka dışı raporlar artık gelecekteki sürümlerde erişilemeyebilir.",
     "Estonian": "Estonya",
     "Error decoding signature definition file": "İmza Tanım Dosyasını Kod Çözme Hata",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "Uzak yedekleme uç noktası. WebDav ise, bu URL kodlanmalıdır.",

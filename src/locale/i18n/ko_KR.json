@@ -1853,7 +1853,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "수정 사항을 유지하려면 업그레이드 전에 해당 파일을 직접 백업하고, 업그레이드 후 수동으로 복원하세요.",
     "Integrity Check Details:": "무결성 검사 상세 정보:",
     "Unsupported Deposit Types Detected": "지원되지 않는 입금 유형이 감지되었습니다",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "eGive, 신용카드, 자동이체 입금은 더 이상 지원되지 않습니다. 향후 버전에서는 관련 보고서를 볼 수 없을 수 있습니다.",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "eGive, 신용카드, 자동이체 입금은 더 이상 지원되지 않습니다. 향후 버전에서는 관련 보고서를 볼 수 없을 수 있습니다.",
     "Estonian": "에스토니아어",
     "Error decoding signature definition file": "서명 정의 파일을 해석하는 중 오류",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "원격 백업 엔드포인트(WebDAV인 경우 URL 인코딩 필요). ",

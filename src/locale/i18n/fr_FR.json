@@ -1853,7 +1853,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "Si vous voulez conserver vos modifications sur ces fichiers, effectuez une sauvegarde manuelle avant la mise à jour et restaurez les fichiers après la mise à jour.",
     "Integrity Check Details:": "Détails de la vérification de l'intégrité",
     "Unsupported Deposit Types Detected": "Types de dépôts incorrects",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "La prise en charge des paiements par eGive, par carte de crédit et par traite bancaire a été abandonnée. Désolé, mais les rapports non bancaires existants pourraient ne plus être accessibles dans les futures versions.",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "La prise en charge des paiements par par carte de crédit et par traite bancaire a été abandonnée. Désolé, mais les rapports non bancaires existants pourraient ne plus être accessibles dans les futures versions.",
     "Estonian": "Estonien",
     "Error decoding signature definition file": "Erreur lors du décodage du fichier de définition de signature",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "Point de restauration à distance. S'il s'agit de WebDAV, l'URL doit être encodée.",

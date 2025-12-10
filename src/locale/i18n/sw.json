@@ -1853,7 +1853,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "Iwapo ungependa kudumisha mabadiliko yako kwenye faili hizi, tafadhali chukua nakala ya awali ya faili hizi kabla ya kuendelea na uboreshaji huu, na kisha urejeshe faili mwenyewe baada ya uboreshaji kukamilika.",
     "Integrity Check Details:": "Maelezo ya Kukagua Uadilifu:",
     "Unsupported Deposit Types Detected": "Aina za Amana zisizotumika zimegunduliwa",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "Usaidizi wa malipo ya eGive, Kadi ya Mkopo na Rasimu ya Benki umeacha kutumika. Ripoti zilizopo zisizo za benki huenda zisiweze kufikiwa tena katika matoleo yajayo.",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "Usaidizi wa malipo ya Kadi ya Mkopo na Rasimu ya Benki umeacha kutumika. Ripoti zilizopo zisizo za benki huenda zisiweze kufikiwa tena katika matoleo yajayo.",
     "Estonian": "Kiestonia",
     "Error decoding signature definition file": "Hitilafu katika kusimbua faili ya ufafanuzi wa sahihi",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "Sehemu ya Mwisho ya Hifadhi Nakala ya Mbali. Ikiwa WebDAV, hii lazima iwe url iliyosimbwa. ",

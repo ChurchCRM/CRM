@@ -1853,7 +1853,7 @@
     "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.": "إذا كنت ترغب في الحفاظ على التغييرات على هذه الملفات، يرجى أخذ نسخة احتياطية اليدوي لهذه الملفات قبل الشروع في هذه الترقية، ومن ثم استعادة الملفات يدويا بعد اكتمال عملية الترقية.",
     "Integrity Check Details:": "النزاهة تحقق الصفات:",
     "Unsupported Deposit Types Detected": "أنواع غير معتمد الإيداع التي تم اكتشافها",
-    "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "لقد تم إهمال دعم eGive، وبطاقات الائتمان، ومشروع الدفعات المصرفية. قد لا تكون التقارير غير المصرفية الحالية يمكن الوصول إليها في الإصدارات المستقبل.",
+    "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions.": "لقد تم إهمال دعم eGive، وبطاقات الائتمان، ومشروع الدفعات المصرفية. قد لا تكون التقارير غير المصرفية الحالية يمكن الوصول إليها في الإصدارات المستقبل.",
     "Estonian": "الإستونية",
     "Error decoding signature definition file": "خطأ في ملف تعريف فك توقيع",
     "Remote Backup Endpoint.  If WebDAV, this must be url encoded. ": "نقطة النهاية النسخ الاحتياطي عن بعد. إذا WEBDAV، وهذا يجب أن يكون رابط المشفرة.",
