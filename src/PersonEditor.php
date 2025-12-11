@@ -192,13 +192,8 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iFamilyRole = InputUtils::legacyFilterInput($_POST['FamilyRole'], 'int');
     $family = null;
 
-    // Get their family's country in case person's country was not entered
-    if ($iFamily > 0) {
-        $family = FamilyQuery::create()->findOneById($iFamily);
-        $fam_Country = $family->getCountry();
-    }
-
-    $sCountryTest = SelectWhichInfo($sCountry, $fam_Country, false);
+    // Person data is now authoritative - no family fallback
+    $sCountryTest = $sCountry;
     $sState = '';
     if ($sCountryTest == 'United States' || $sCountryTest == 'Canada') {
         if (array_key_exists('State', $_POST)) {
@@ -243,14 +238,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iFamilyRole = 0;
     }
 
-    //Validate the Last Name.  If family selected, but no last name, inherit from family.
-    if (strlen($sLastName) < 1 && !SystemConfig::getValue('bAllowEmptyLastName')) {
-        if ($iFamily < 1) {
-            $sLastNameError = gettext('You must enter a Last Name if no Family is selected.');
-            $bErrorFlag = true;
-        } else {
-            $sLastName = $family->getName();
-        }
+    //Validate the Last Name. Last name is always required.
+    if (strlen($sLastName) < 1) {
+        $sLastNameError = gettext('You must enter a Last Name.');
+        $bErrorFlag = true;
     }
 
     // If they entered a full date, see if it's valid
@@ -331,7 +322,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     //If no errors, then let's update...
     if (!$bErrorFlag) {
-        $sPhoneCountry = SelectWhichInfo($sCountry, $fam_Country, false);
+        $sPhoneCountry = $sCountry;
 
         if (!$bNoFormat_HomePhone) {
             $sHomePhone = CollapsePhoneNumber($sHomePhone, $sPhoneCountry);
@@ -555,7 +546,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sTwitter = $per_Twitter;
         $sLinkedIn = $per_LinkedIn;
 
-        $sPhoneCountry = SelectWhichInfo($sCountry, $fam_Country, false);
+        $sPhoneCountry = $sCountry;
 
         $sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $bNoFormat_HomePhone);
         $sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $bNoFormat_WorkPhone);
@@ -603,12 +594,6 @@ require_once 'Include/Header.php';
 
 ?>
 <form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?>" name="PersonEditor">
-    <div class="alert alert-info alert-dismissable">
-        <i class="fa-solid fa-info"></i>
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong><span
-                class="text-danger"><?= gettext('Red text') ?></span></strong> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
-    </div>
     <?php if ($bErrorFlag) {
         ?>
         <div class="alert alert-danger alert-dismissable">

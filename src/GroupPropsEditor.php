@@ -23,13 +23,7 @@ extract(mysqli_fetch_array($rsPersonInfo));
 
 $fam_Country = '';
 
-if ($per_fam_ID > 0) {
-    $sSQL = 'SELECT fam_Country FROM family_fam WHERE fam_ID = ' . $per_fam_ID;
-    $rsFam = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsFam));
-}
-
-$sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+$sPhoneCountry = $per_Country ?? '';
 
 // Get the name of this group.
 $sSQL = 'SELECT grp_Name FROM group_grp WHERE grp_ID = ' . $iGroupID;
