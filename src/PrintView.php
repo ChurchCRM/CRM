@@ -77,30 +77,19 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 // Format the BirthDate
 $dBirthDate = MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $per_Flags);
 
-// Assign the values locally, after selecting whether to display the family or person information
-SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
-$sCity = SelectWhichInfo($per_City, $fam_City, false);
-$sState = SelectWhichInfo($per_State, $fam_State, false);
-$sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
-$sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+// Assign person data only - each person must enter their own information
+$sAddress1 = $per_Address1 ?? '';
+$sAddress2 = $per_Address2 ?? '';
+$sCity = $per_City ?? '';
+$sState = $per_State ?? '';
+$sZip = $per_Zip ?? '';
+$sCountry = $per_Country ?? '';
 
-$sHomePhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
-    false
-);
-$sWorkPhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_WorkPhone, $sCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
-    false
-);
-$sCellPhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_CellPhone, $sCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
-    false
-);
+$sHomePhone = ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy);
+$sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sCountry, $dummy);
+$sCellPhone = ExpandPhoneNumber($per_CellPhone, $sCountry, $dummy);
 
-$sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+$sUnformattedEmail = $per_Email ?? '';
 
 $sPageTitle = gettext('Printable View');
 $iTableSpacerWidth = 10;

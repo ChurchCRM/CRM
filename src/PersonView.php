@@ -128,60 +128,38 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 $dBirthDate = $person->getFormattedBirthDate();
 
-$sFamilyInfoBegin = '<span class="text-danger">';
-$sFamilyInfoEnd = '</span>';
-
-// Assign the values locally, after selecting whether to display the family or person information
+// Assign person data only - each person must enter their own information
 
 //Get an unformatted mailing address to pass as a parameter to a google maps search
-SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
-$sCity = SelectWhichInfo($per_City, $fam_City, false);
-$sState = SelectWhichInfo($per_State, $fam_State, false);
-$sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
-$sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+$Address1 = $per_Address1 ?? '';
+$Address2 = $per_Address2 ?? '';
+$sCity = $per_City ?? '';
+$sState = $per_State ?? '';
+$sZip = $per_Zip ?? '';
+$sCountry = $per_Country ?? '';
 $plaintextMailingAddress = $person->getAddress();
 
 //Get a formatted mailing address to use as display to the user.
-SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
-$sCity = SelectWhichInfo($per_City, $fam_City, true);
-$sState = SelectWhichInfo($per_State, $fam_State, true);
-$sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
-$sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
+$Address1 = $per_Address1 ?? '';
+$Address2 = $per_Address2 ?? '';
+$sCity = $per_City ?? '';
+$sState = $per_State ?? '';
+$sZip = $per_Zip ?? '';
+$sCountry = $per_Country ?? '';
 $formattedMailingAddress = $person->getAddress();
 
-$sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-$sHomePhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
-    true
-);
-$sHomePhoneUnformatted = SelectWhichInfo(
-    ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
-    false
-);
-$sWorkPhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
-    true
-);
-$sWorkPhoneUnformatted = SelectWhichInfo(
-    ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
-    false
-);
-$sCellPhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
-    true
-);
-$sCellPhoneUnformatted = SelectWhichInfo(
-    ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
-    false
-);
-$sEmail = SelectWhichInfo($per_Email, $fam_Email, true);
-$sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+$sPhoneCountry = $per_Country ?? '';
+$sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
+$sHomePhoneUnformatted = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
+
+$sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
+$sWorkPhoneUnformatted = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
+
+$sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+$sCellPhoneUnformatted = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+
+$sEmail = $per_Email ?? '';
+$sUnformattedEmail = $per_Email ?? '';
 
 if ($per_Envelope > 0) {
     $sEnvelope = $per_Envelope;
@@ -373,9 +351,6 @@ $bOkToEdit = (
                     } ?>
                 </ul>
             </div>
-        </div>
-        <div class="alert alert-info alert-dismissable">
-            <i class="fa-solid fa-fw fa-tree"></i> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">

@@ -68,7 +68,7 @@ $sEmailLink = '';
 $roleEmails = [];
 $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
 while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
-    $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+    $sEmail = $per_Email;
     if ($sEmail) {
         /* if ($sEmailLink) // Don't put delimiter before first email
     $sEmailLink .= $sMailtoDelimiter; */
@@ -104,7 +104,7 @@ $rsPhoneList = RunQuery($sSQL);
 $sPhoneLink = '';
 $sCommaDelimiter = ', ';
 while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
-    $sPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, false);
+    $sPhone = $per_CellPhone;
     if ($sPhone) {
         /* if ($sPhoneLink) // Don't put delimiter before first phone
     $sPhoneLink .= $sCommaDelimiter; */
