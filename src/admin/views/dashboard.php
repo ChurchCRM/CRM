@@ -354,6 +354,22 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 </div>
             </div>
 
+            <!-- Register Your Church Card -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-primary text-white py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-handshake"></i> <?= gettext('Register Your Church') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="small text-muted mb-3"><?= gettext('Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!') ?></p>
+                    <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+                        <i class="fa-solid fa-external-link-alt"></i> <?= gettext('Register Now') ?>
+                    </a>
+                    <p class="small text-muted mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
+                </div>
+            </div>
+
             <!-- System Health Card -->
             <div class="card shadow-sm border-0 mb-4">
                 <div class="card-header <?= $healthStatus ? 'bg-success' : 'bg-warning' ?> text-white py-2">
