@@ -959,7 +959,7 @@ function GetAge(int $Month, int $Day, ?int $Year): int
     });
   });
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
 <?php
 require_once 'Include/Footer.php';
