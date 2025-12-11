@@ -1176,8 +1176,8 @@ require_once 'Include/Header.php';
     });
 </script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonEditor.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonEditor.js"></script>
 
 <?php
 require_once 'Include/Footer.php';
