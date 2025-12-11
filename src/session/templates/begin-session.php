@@ -70,9 +70,10 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                 </p>
             <?php }
             if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) { ?>
-                <p class="mb-0">
-                    <a href="<?= SystemURLs::getRootPath() ?>/external/register/" class="text-center"><?= gettext('Register a new Family'); ?></a>
-                </p>
+                <div class="mt-3 pt-2 border-top">
+                    <p class="text-muted small mb-2"><?= gettext('New to') ?> <?= ChurchMetaData::getChurchName() ?>?</p>
+                    <a href="<?= SystemURLs::getRootPath() ?>/external/register/" class="btn btn-outline-primary btn-block"><?= gettext('Register a New Family'); ?></a>
+                </div>
             <?php } ?>
         </div>
         <!-- /.card-body -->
