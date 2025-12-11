@@ -795,7 +795,14 @@ require_once 'Include/Header.php';
                            value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>"
                            class="form-control">
                 </div>
-                <div id="stateOptionDiv" class="form-group col-md-3">
+                <?php
+                // Determine initial visibility based on whether country has states
+                // US and Canada have state dropdowns, others use text input
+                $hasStates = in_array($sCountry, ['United States', 'Canada', 'US', 'CA']);
+                $stateDropdownClass = $hasStates ? 'form-group col-md-3' : 'form-group col-md-3 d-none';
+                $stateInputClass = $hasStates ? 'form-group col-md-3 d-none' : 'form-group col-md-3';
+                ?>
+                <div id="stateOptionDiv" class="<?= $stateDropdownClass ?>">
                     <label for="State">
                         <?= $bFamilyState ? '<span class="text-danger">' : '' ?>
                         <?= gettext('State') ?>:
@@ -804,10 +811,10 @@ require_once 'Include/Header.php';
                     <select id="State" name="State" class="form-control select2" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
                     </select>
                 </div>
-                <div id="stateInputDiv" class="form-group col-md-3 d-none">
+                <div id="stateInputDiv" class="<?= $stateInputClass ?>">
                     <label for="StateTextbox"><?= gettext('State (Other)') ?>:</label>
                     <input type="text" name="StateTextbox" id="StateTextbox"
-                           value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
+                           value="<?php if (!$hasStates) {
                                 echo InputUtils::escapeAttribute(stripslashes($sState));
                            } ?>"
                            maxlength="30" class="form-control">
