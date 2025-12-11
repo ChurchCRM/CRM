@@ -273,11 +273,10 @@ SQL;
             <tr>
                 <td class="LabelColumn"><?= gettext('State') ?>:</td>
                 <td class="TextColumn">
-                    <?php require_once 'Include/StateDropDown.php'; ?>
+                    <select id="State" name="State" class="form-control" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    </select>
                     OR
-                    <input type="text" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
-                                                                        echo $sState;
-                                                                    } ?>" size="20" maxlength="30">
+                    <input type="text" name="StateTextbox" id="StateTextbox" value="" size="20" maxlength="30">
                     <BR><?= gettext('(Use the textbox for countries other than US and Canada)') ?>
                 </td>
             </tr>
@@ -293,7 +292,8 @@ SQL;
             <tr>
                 <td class="LabelColumn"><?= gettext('Country') ?>:</td>
                 <td class="TextColumnWithBottomBorder">
-                    <?php require_once 'Include/CountryDropDown.php' ?>
+                    <select id="Country" name="Country" class="form-control" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    </select>
                 </td>
             </tr>
 
@@ -345,12 +345,16 @@ SQL;
         <input type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Add to Family') ?>">
         <BR><BR>
     </p>
-    </form>
+    </div>
 <?php
         } else {
             echo '<p class="alert alert-warning text-center">' . gettext('Your cart is empty!') . '</p>';
         }
 ?>
 </div>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/CartToFamily.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+
 <?php
 require_once 'Include/Footer.php';

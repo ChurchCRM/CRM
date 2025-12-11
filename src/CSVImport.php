@@ -244,11 +244,11 @@ if (isset($_POST['UploadCSV'])) {
         </select>
         <?= gettext('NOTE: Separators (dashes, etc.) or lack thereof do not matter') ?>
         <BR><BR>
-        <?php
-            $sCountry = SystemConfig::getValue('sDefaultCountry');
-        require_once 'Include/CountryDropDown.php';
-        echo gettext('Default country if none specified otherwise');
+        <select id="DefaultCountry" name="Country" class="form-control" style="max-width: 300px;" data-user-selected="<?= SystemConfig::getValue('sDefaultCountry') ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+        </select>
+        <BR><?= gettext('Default country if none specified otherwise') ?>
 
+        <?php
         $sSQL = 'SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
         $rsClassifications = RunQuery($sSQL); ?>
         <BR><BR>
@@ -951,8 +951,15 @@ function GetAge(int $Month, int $Day, ?int $Year): int
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function(){
     $(".columns").select2();
+    
+    // Initialize Default Country dropdown using DropdownManager
+    DropdownManager.initializeCountry("DefaultCountry", null, {
+        systemDefault: $("#DefaultCountry").data("system-default"),
+        initSelect2: false
+    });
   });
 </script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
 <?php
 require_once 'Include/Footer.php';

@@ -750,142 +750,15 @@ require_once 'Include/Header.php';
         </div>
     </div>
 
-    <!-- Card 3: Contact Information -->
+    <!-- Card 2: Address -->
+    <?php if (!SystemConfig::getValue('bHidePersonAddress')) { /* Person Address can be hidden - General Settings */ ?>
     <div class="card card-info clearfix">
         <div class="card-header">
-            <h3 class="card-title"><?= gettext('Contact Information') ?></h3>
+            <h3 class="card-title"><?= gettext('Address') ?></h3>
         </div>
         <div class="card-body">
-            <!-- Email Row -->
             <div class="row">
-                <div class="form-group col-md-4">
-                    <label for="Email">
-                        <?php
-                        if ($bFamilyEmail) {
-                            echo '<span class="text-danger">' . gettext('Email') . ':</span>';
-                        } else {
-                            echo gettext('Email') . ':';
-                        }
-                        ?>
-                    </label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
-                        </div>
-                        <input type="email" name="Email" id="Email"
-                               value="<?= InputUtils::escapeAttribute(stripslashes($sEmail)) ?>"
-                               maxlength="100" class="form-control">
-                    </div>
-                    <?php if ($sEmailError) { ?>
-                        <span class="text-danger small"><?= $sEmailError ?></span>
-                    <?php } ?>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="WorkEmail"><?= gettext('Work / Other Email') ?>:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-briefcase"></i></span>
-                        </div>
-                        <input type="email" name="WorkEmail" id="WorkEmail"
-                               value="<?= InputUtils::escapeAttribute($sWorkEmail) ?>"
-                               maxlength="100" class="form-control">
-                    </div>
-                    <?php if ($sWorkEmailError) { ?>
-                        <span class="text-danger small"><?= $sWorkEmailError ?></span>
-                    <?php } ?>
-                </div>
-            </div>
-            <!-- Phone Row -->
-            <div class="row">
-                <div class="form-group col-md-4">
-                    <label for="CellPhone">
-                        <?php
-                        if ($bFamilyCellPhone) {
-                            echo '<span class="text-danger">' . gettext('Mobile Phone') . ':</span>';
-                        } else {
-                            echo gettext('Mobile Phone') . ':';
-                        }
-                        ?>
-                    </label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-mobile-screen"></i></span>
-                        </div>
-                        <input type="tel" name="CellPhone" id="CellPhone"
-                               value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
-                               maxlength="30" class="form-control"
-                               data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <div class="custom-control custom-checkbox mb-0">
-                                    <input type="checkbox" class="custom-control-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
-                                    <label class="custom-control-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="HomePhone">
-                        <?php
-                        if ($bFamilyHomePhone) {
-                            echo '<span class="text-danger">' . gettext('Home Phone') . ':</span>';
-                        } else {
-                            echo gettext('Home Phone') . ':';
-                        }
-                        ?>
-                    </label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
-                        </div>
-                        <input type="tel" name="HomePhone" id="HomePhone"
-                               value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
-                               maxlength="30" class="form-control"
-                               data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <div class="custom-control custom-checkbox mb-0">
-                                    <input type="checkbox" class="custom-control-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                                    <label class="custom-control-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="WorkPhone">
-                        <?php
-                        if ($bFamilyWorkPhone) {
-                            echo '<span class="text-danger">' . gettext('Work Phone') . ':</span>';
-                        } else {
-                            echo gettext('Work Phone') . ':';
-                        }
-                        ?>
-                    </label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-building"></i></span>
-                        </div>
-                        <input type="tel" name="WorkPhone" id="WorkPhone"
-                               value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
-                               maxlength="30" class="form-control"
-                               data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"' data-mask>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <div class="custom-control custom-checkbox mb-0">
-                                    <input type="checkbox" class="custom-control-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
-                                    <label class="custom-control-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php if (!SystemConfig::getValue('bHidePersonAddress')) { /* Person Address can be hidden - General Settings */ ?>
-            <!-- Address Row -->
-            <div class="row">
-                <div class="form-group col-md-5">
+                <div class="form-group col-md-6">
                     <label for="Address1">
                         <?= $bFamilyAddress1 ? '<span class="text-danger">' : '' ?>
                         <?= gettext('Address') ?> 1:
@@ -897,10 +770,10 @@ require_once 'Include/Header.php';
                         </div>
                         <input type="text" name="Address1" id="Address1"
                                value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>"
-                               maxlength="50" class="form-control">
+                               maxlength="250" class="form-control">
                     </div>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="Address2">
                         <?= $bFamilyAddress2 ? '<span class="text-danger">' : '' ?>
                         <?= gettext('Address') ?> 2:
@@ -908,9 +781,11 @@ require_once 'Include/Header.php';
                     </label>
                     <input type="text" name="Address2" id="Address2"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>"
-                           maxlength="50" class="form-control">
+                           maxlength="250" class="form-control">
                 </div>
-                <div class="form-group col-md-3">
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
                     <label for="City">
                         <?= $bFamilyCity ? '<span class="text-danger">' : '' ?>
                         <?= gettext('City') ?>:
@@ -920,25 +795,16 @@ require_once 'Include/Header.php';
                            value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>"
                            class="form-control">
                 </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-md-3">
-                    <label for="Country">
-                        <?= $bFamilyCountry ? '<span class="text-danger">' : '' ?>
-                        <?= gettext('Country') ?>:
-                        <?= $bFamilyCountry ? '</span>' : '' ?>
-                    </label>
-                    <?php require_once 'Include/CountryDropDown.php'; ?>
-                </div>
-                <div class="form-group col-md-3">
+                <div id="stateOptionDiv" class="form-group col-md-3">
                     <label for="State">
                         <?= $bFamilyState ? '<span class="text-danger">' : '' ?>
                         <?= gettext('State') ?>:
                         <?= $bFamilyState ? '</span>' : '' ?>
                     </label>
-                    <?php require_once 'Include/StateDropDown.php'; ?>
+                    <select id="State" name="State" class="form-control select2" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    </select>
                 </div>
-                <div class="form-group col-md-3">
+                <div id="stateInputDiv" class="form-group col-md-3 d-none">
                     <label for="StateTextbox"><?= gettext('State (Other)') ?>:</label>
                     <input type="text" name="StateTextbox" id="StateTextbox"
                            value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
@@ -946,7 +812,7 @@ require_once 'Include/Header.php';
                            } ?>"
                            maxlength="30" class="form-control">
                 </div>
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-2">
                     <label for="Zip">
                         <?= $bFamilyZip ? '<span class="text-danger">' : '' ?>
                         <?= gettext('Zip / Postal Code') ?>:
@@ -957,16 +823,163 @@ require_once 'Include/Header.php';
                            value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>"
                            maxlength="10">
                 </div>
+                <div class="form-group col-md-3">
+                    <label for="Country">
+                        <?= $bFamilyCountry ? '<span class="text-danger">' : '' ?>
+                        <?= gettext('Country') ?>:
+                        <?= $bFamilyCountry ? '</span>' : '' ?>
+                    </label>
+                    <select id="Country" name="Country" class="form-control select2" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    </select>
+                </div>
             </div>
-            <?php } else { // Hidden fields when address is hidden ?>
-                <input type="hidden" name="Address1" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>">
-                <input type="hidden" name="Address2" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>">
-                <input type="hidden" name="City" value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>">
-                <input type="hidden" name="State" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
-                <input type="hidden" name="StateTextbox" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
-                <input type="hidden" name="Zip" value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>">
-                <input type="hidden" name="Country" value="<?= InputUtils::escapeAttribute(stripslashes($sCountry)) ?>">
-            <?php } ?>
+        </div>
+    </div>
+    <?php } else { // Hidden fields when address is hidden ?>
+        <input type="hidden" name="Address1" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>">
+        <input type="hidden" name="Address2" value="<?= InputUtils::escapeAttribute(stripslashes($sAddress2)) ?>">
+        <input type="hidden" name="City" value="<?= InputUtils::escapeAttribute(stripslashes($sCity)) ?>">
+        <input type="hidden" name="State" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
+        <input type="hidden" name="StateTextbox" value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>">
+        <input type="hidden" name="Zip" value="<?= InputUtils::escapeAttribute(stripslashes($sZip)) ?>">
+        <input type="hidden" name="Country" value="<?= InputUtils::escapeAttribute(stripslashes($sCountry)) ?>">
+    <?php } ?>
+
+    <!-- Card 3: Contact Information -->
+    <div class="card card-info clearfix">
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Contact Information') ?></h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Phones Column -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="HomePhone">
+                            <?php
+                            if ($bFamilyHomePhone) {
+                                echo '<span class="text-danger">' . gettext('Home Phone') . ':</span>';
+                            } else {
+                                echo gettext('Home Phone') . ':';
+                            }
+                            ?>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
+                            </div>
+                            <input type="tel" name="HomePhone" id="HomePhone"
+                                   value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
+                                   maxlength="30" class="form-control"
+                                   data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <div class="custom-control custom-checkbox mb-0">
+                                        <input type="checkbox" class="custom-control-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                                        <label class="custom-control-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="CellPhone">
+                            <?php
+                            if ($bFamilyCellPhone) {
+                                echo '<span class="text-danger">' . gettext('Mobile Phone') . ':</span>';
+                            } else {
+                                echo gettext('Mobile Phone') . ':';
+                            }
+                            ?>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa-solid fa-mobile-screen"></i></span>
+                            </div>
+                            <input type="tel" name="CellPhone" id="CellPhone"
+                                   value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
+                                   maxlength="30" class="form-control"
+                                   data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <div class="custom-control custom-checkbox mb-0">
+                                        <input type="checkbox" class="custom-control-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
+                                        <label class="custom-control-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="WorkPhone">
+                            <?php
+                            if ($bFamilyWorkPhone) {
+                                echo '<span class="text-danger">' . gettext('Work Phone') . ':</span>';
+                            } else {
+                                echo gettext('Work Phone') . ':';
+                            }
+                            ?>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa-solid fa-building"></i></span>
+                            </div>
+                            <input type="tel" name="WorkPhone" id="WorkPhone"
+                                   value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
+                                   maxlength="30" class="form-control"
+                                   data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"' data-mask>
+                            <div class="input-group-append">
+                                <div class="input-group-text">
+                                    <div class="custom-control custom-checkbox mb-0">
+                                        <input type="checkbox" class="custom-control-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
+                                        <label class="custom-control-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emails Column -->
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Email">
+                            <?php
+                            if ($bFamilyEmail) {
+                                echo '<span class="text-danger">' . gettext('Email') . ':</span>';
+                            } else {
+                                echo gettext('Email') . ':';
+                            }
+                            ?>
+                        </label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
+                            </div>
+                            <input type="email" name="Email" id="Email"
+                                   value="<?= InputUtils::escapeAttribute(stripslashes($sEmail)) ?>"
+                                   maxlength="100" class="form-control">
+                        </div>
+                        <?php if ($sEmailError) { ?>
+                            <span class="text-danger small"><?= $sEmailError ?></span>
+                        <?php } ?>
+                    </div>
+                    <div class="form-group">
+                        <label for="WorkEmail"><?= gettext('Work / Other Email') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa-solid fa-briefcase"></i></span>
+                            </div>
+                            <input type="email" name="WorkEmail" id="WorkEmail"
+                                   value="<?= InputUtils::escapeAttribute($sWorkEmail) ?>"
+                                   maxlength="100" class="form-control">
+                        </div>
+                        <?php if ($sWorkEmailError) { ?>
+                            <span class="text-danger small"><?= $sWorkEmailError ?></span>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1162,5 +1175,9 @@ require_once 'Include/Header.php';
         $("#familyId").select2();
     });
 </script>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonEditor.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+
 <?php
 require_once 'Include/Footer.php';

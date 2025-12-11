@@ -1,25 +1,23 @@
 $(document).ready(function () {
-    $.ajax({
-        type: "GET",
-        url: window.CRM.root + "/api/public/data/countries",
-    }).done(function (data) {
-        let familyCountry = $("#Country");
-        $.each(data, function (idx, country) {
-            let selected = false;
-            if (familyCountry.data("user-selected") == "") {
-                selected = familyCountry.data("system-default") == country.name;
-            } else if (
-                familyCountry.data("user-selected") == country.name ||
-                familyCountry.data("user-selected") == country.code
-            ) {
-                selected = true;
+    // Initialize Country and State dropdowns using DropdownManager
+    DropdownManager.initializeCountry("Country", "State", {
+        userSelected: $("#Country").data("user-selected"),
+        systemDefault: $("#Country").data("system-default"),
+        cascadeState: true,
+        initSelect2: true,
+        onCountryChange: function(countryCode) {
+            // Update state type field based on whether states exist
+            const stateSelect = $("#State");
+            if (stateSelect.find("option").length > 1) {
+                $("#stateType").val("dropDown");
+            } else {
+                $("#stateType").val("input");
             }
-            familyCountry.append(new Option(country.name, country.code, selected, selected));
-        });
-        familyCountry.change();
+        }
     });
 
-    $("#Country").change(function () {
+    // Manual initialization of state dropdown on country change
+    $("#Country").off("change").on("change", function() {
         $.ajax({
             type: "GET",
             url: window.CRM.root + "/api/public/data/countries/" + this.value.toLowerCase() + "/states",
