@@ -350,7 +350,7 @@ if (!empty($sHeader)) {
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/external/bs-stepper/bs-stepper.min.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/family-register.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyRegister.js"></script>
 
 <?php
