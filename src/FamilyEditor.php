@@ -1079,7 +1079,7 @@ require_once 'Include/Header.php';
     };
 </script>
 <?php } ?>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyEditor.js"></script>
 <?php
 require_once 'Include/Footer.php';
