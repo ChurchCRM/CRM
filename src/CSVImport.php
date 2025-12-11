@@ -948,6 +948,7 @@ function GetAge(int $Month, int $Day, ?int $Year): int
 </div>
 </div>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function(){
     $(".columns").select2();
@@ -959,7 +960,6 @@ function GetAge(int $Month, int $Day, ?int $Year): int
     });
   });
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js"></script>
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js" ></script>
 <?php
 require_once 'Include/Footer.php';

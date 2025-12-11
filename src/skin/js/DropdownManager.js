@@ -54,6 +54,11 @@ class DropdownManager {
             if (config.initSelect2) {
                 countrySelect.select2();
             }
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            window.CRM.notify(i18next.t("Unable to load country list. Please try again later."), { type: "error" });
+            if (window.console && window.console.error) {
+                window.console.error("Country dropdown AJAX error:", textStatus, errorThrown);
+            }
         });
 
         // Handle cascading to state dropdown if configured
@@ -223,6 +228,11 @@ class DropdownManager {
             
             countrySelect.change();
             countrySelect.select2();
+        }).fail(function (jqXHR, textStatus, errorThrown) {
+            window.CRM.notify(i18next.t("Unable to load country list. Please try again later."), { type: "error" });
+            if (window.console && window.console.error) {
+                window.console.error("Country list AJAX error:", textStatus, errorThrown);
+            }
         });
 
         // Handle country change
@@ -231,11 +241,22 @@ class DropdownManager {
                 type: "GET",
                 url: window.CRM.root + "/api/public/data/countries/" + this.value.toLowerCase() + "/states",
             }).done(function (data) {
+                // Escape defaultState to prevent XSS
                 const defaultState = config.stateDefault || "";
+                const escapedDefaultState = $('<div>').text(defaultState).html();
+                // Sanitize stateFieldId to ensure it only contains safe characters for use in ID/name attributes
+                const sanitizedFieldId = stateFieldId.replace(/[^a-zA-Z0-9_-]/g, '');
+                // Extract the name attribute by stripping any prefix before underscore (e.g., "familyRegister_State" -> "State")
+                const fieldName = sanitizedFieldId.replace(/^[^_]+_/, '');
                 
                 if (Object.keys(data).length > 0) {
                     // Country has states - show dropdown
-                    const $select = $(`<select id="${stateFieldId}" name="${stateFieldId.replace(/^[^-]+_/, '')}" class="form-control" data-default="${defaultState}"></select>`);
+                    const $select = $('<select></select>')
+                        .attr('id', sanitizedFieldId)
+                        .attr('name', fieldName)
+                        .attr('class', 'form-control')
+                        .attr('data-default', escapedDefaultState)
+                        .attr('aria-label', 'State');
                     
                     $.each(data, function (code, name) {
                         const $option = $("<option></option>").val(code).text(name);
@@ -249,11 +270,23 @@ class DropdownManager {
                     $select.select2();
                 } else {
                     // Country has no states - show text input
-                    const $input = $(`<input type="text" id="${stateFieldId}" name="${stateFieldId.replace(/^[^-]+_/, '')}" class="form-control" data-default="${defaultState}">`);
+                    const $input = $('<input>')
+                        .attr('type', 'text')
+                        .attr('id', sanitizedFieldId)
+                        .attr('name', fieldName)
+                        .attr('class', 'form-control')
+                        .attr('data-default', escapedDefaultState)
+                        .attr('aria-label', 'State');
+                    
                     if (defaultState) {
                         $input.val(defaultState);
                     }
                     stateContainer.html($input);
+                }
+            }).fail(function (jqXHR, textStatus, errorThrown) {
+                window.CRM.notify(i18next.t("Unable to load state list. Please try again later."), { type: "error" });
+                if (window.console && window.console.error) {
+                    window.console.error("State list AJAX error:", textStatus, errorThrown);
                 }
             });
         });

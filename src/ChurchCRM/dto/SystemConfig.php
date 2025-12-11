@@ -158,7 +158,7 @@ class   SystemConfig
             'iMapZoom'                             => new ConfigItem(10001, 'iMapZoom', 'number', '10', gettext('Google Maps Zoom')),
             'iChurchLatitude'                      => new ConfigItem(45, 'iChurchLatitude', 'number', '', gettext('Latitude of the church, used to center the Google map')),
             'iChurchLongitude'                     => new ConfigItem(46, 'iChurchLongitude', 'number', '', gettext('Longitude of the church, used to center the Google map')),
-            'bHidePersonAddress'                   => new ConfigItem(47, 'bHidePersonAddress', 'boolean', '0', gettext('Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.')),
+            'bHidePersonAddress'                   => new ConfigItem(47, 'bHidePersonAddress', 'boolean', '1', gettext('Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor.')),
             'bHideFriendDate'                      => new ConfigItem(48, 'bHideFriendDate', 'boolean', '0', gettext('Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.')),
             'bHideFamilyNewsletter'                => new ConfigItem(49, 'bHideFamilyNewsletter', 'boolean', '0', gettext('Set true to disable management of newsletter subscriptions in the Family Editor.')),
             'bHideWeddingDate'                     => new ConfigItem(50, 'bHideWeddingDate', 'boolean', '0', gettext('Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.')),
