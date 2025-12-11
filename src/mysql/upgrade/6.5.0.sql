@@ -29,6 +29,10 @@ DELETE FROM `config_cfg` WHERE `cfg_id` IN (1044, 1045, 1046);
 
 -- Remove software update check timer configs (runs on admin login instead)
 DELETE FROM `config_cfg` WHERE `cfg_id` IN (2063, 2064);
+
+-- Remove church registration config (registration now via self-service Google Form)
+DELETE FROM `config_cfg` WHERE `cfg_id` = 999;
+
 -- Remove orphaned database tables (created but never fully implemented)
 DROP TABLE IF EXISTS `church_location_person`;
 DROP TABLE IF EXISTS `church_location_role`;

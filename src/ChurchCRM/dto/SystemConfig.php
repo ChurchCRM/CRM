@@ -188,7 +188,6 @@ class   SystemConfig
             'sDatePickerPlaceHolder'               => new ConfigItem(109, 'sDatePickerPlaceHolder', 'text', 'yyyy-mm-dd', gettext('For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example.')),
             'sDatePickerFormat'                    => new ConfigItem(110, 'sDatePickerFormat', 'text', 'Y-m-d', gettext('For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example.')),
             'sFont'                                => new ConfigItem(112, 'sFont', 'text', 'Roboto-Regular.ttf', gettext('Set font to render initials. Upload custom font to fonts directory')),
-            'bRegistered'                          => new ConfigItem(999, 'bRegistered', 'boolean', '0', gettext('ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration.')),
             'leftX'                                => new ConfigItem(1001, 'leftX', 'number', '20', gettext('Left Margin (1 = 1/100th inch)')),
             'incrementY'                           => new ConfigItem(1002, 'incrementY', 'number', '4', gettext('Line Thickness (1 = 1/100th inch')),
             'sChurchName'                          => new ConfigItem(1003, 'sChurchName', 'text', '', gettext('Church Name')),
@@ -324,7 +323,7 @@ class   SystemConfig
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Events')             => ['bEnableExternalCalendarAPI', 'bEventsOnDashboardPresence', 'iEventsOnDashboardPresenceTimeOut'],
             gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword'],
-            gettext('System Settings')    => ['sLogLevel', 'bRegistered', 'bCSVAdminOnly', 'sHeader', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'bAllowPrereleaseUpgrade'],
+            gettext('System Settings')    => ['sLogLevel', 'bCSVAdminOnly', 'sHeader', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'bAllowPrereleaseUpgrade'],
         ];
     }
 
