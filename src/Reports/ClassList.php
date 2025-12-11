@@ -99,14 +99,6 @@ for ($i = 0; $i < $nGrps; $i++) {
         $homePhone = '';
         if (!empty($family)) {
             $homePhone = $family->getHomePhone();
-
-            if (empty($homePhone)) {
-                $homePhone = $family->getCellPhone();
-            }
-
-            if (empty($homePhone)) {
-                $homePhone = $family->getWorkPhone();
-            }
         }
 
         $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();

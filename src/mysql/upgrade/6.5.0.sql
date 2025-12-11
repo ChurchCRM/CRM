@@ -84,3 +84,9 @@ DROP TABLE IF EXISTS `person_permission`;
 DROP TABLE IF EXISTS `person_roles`;
 DROP TABLE IF EXISTS `permissions`;
 DROP TABLE IF EXISTS `roles`;
+
+-- Remove Work Phone and Cell Phone from family table
+-- These fields belong to individuals, not families
+-- Family only keeps: Name, Address (1&2), City, State, Zip, Country, Home Phone, Email
+ALTER TABLE `family_fam` DROP COLUMN IF EXISTS `fam_WorkPhone`;
+ALTER TABLE `family_fam` DROP COLUMN IF EXISTS `fam_CellPhone`;

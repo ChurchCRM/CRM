@@ -94,8 +94,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
-    $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
-    $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
     $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
     $bSendNewsLetter = isset($_POST['SendNewsLetter']);
 
@@ -138,8 +136,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate'] ?? '');
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
-    $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
-    $bNoFormat_CellPhone = isset($_POST['NoFormat_CellPhone']);
 
     //Loop through the Family Member 'quick entry' form fields
     for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
@@ -230,12 +226,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         if (!$bNoFormat_HomePhone) {
             $sHomePhone = CollapsePhoneNumber($sHomePhone, $sCountry);
         }
-        if (!$bNoFormat_WorkPhone) {
-            $sWorkPhone = CollapsePhoneNumber($sWorkPhone, $sCountry);
-        }
-        if (!$bNoFormat_CellPhone) {
-            $sCellPhone = CollapsePhoneNumber($sCellPhone, $sCountry);
-        }
 
         //Write the base SQL depending on the Action
         $bSendNewsLetterString = $bSendNewsLetter ? 'TRUE' : 'FALSE';
@@ -260,8 +250,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setZip($sZip)
             ->setCountry($sCountry)
             ->setHomePhone($sHomePhone)
-            ->setWorkPhone($sWorkPhone)
-            ->setCellPhone($sCellPhone)
             ->setSendNewsletter($bSendNewsLetterString)
             ->setEnvelope($nEnvelope)
             ->setWeddingdate($dWeddingDate)
@@ -449,8 +437,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sZip = $family->getZip();
         $sCountry = $family->getCountry();
         $sHomePhone = $family->getHomePhone();
-        $sWorkPhone = $family->getWorkPhone();
-        $sCellPhone = $family->getCellPhone();
         $sEmail = $family->getEmail();
         $bSendNewsLetter = $family->getSendNewsletter() === 'TRUE';
         $dWeddingDate = $family->getWeddingdate(SystemConfig::getValue("sDatePickerFormat"));
@@ -459,8 +445,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         // Expand the phone number
         $sHomePhone = ExpandPhoneNumber($sHomePhone, $sCountry, $bNoFormat_HomePhone);
-        $sWorkPhone = ExpandPhoneNumber($sWorkPhone, $sCountry, $bNoFormat_WorkPhone);
-        $sCellPhone = ExpandPhoneNumber($sCellPhone, $sCountry, $bNoFormat_CellPhone);
 
         $sSQL = 'SELECT * FROM family_custom WHERE fam_ID = ' . $iFamilyID;
         $rsCustomData = RunQuery($sSQL);
@@ -605,12 +589,18 @@ require_once 'Include/Header.php';
         </div>
     </div>
 
-    <!-- Card 2: Address -->
+    <!-- Card 2: Location & Contact Information -->
     <div class="card card-info clearfix">
         <div class="card-header">
-            <h3 class="card-title"><?= gettext('Address') ?></h3>
+            <h3 class="card-title"><?= gettext('Location & Contact Information') ?></h3>
         </div>
         <div class="card-body">
+            <!-- Location Section -->
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="text-muted mb-3"><?= gettext('Address') ?></h5>
+                </div>
+            </div>
             <div class="row">
                 <div class="form-group col-md-6">
                     <label for="Address1"><?= gettext('Address') ?> 1:</label>
@@ -674,7 +664,7 @@ require_once 'Include/Header.php';
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="Latitude" name="Latitude" value="<?= $nLatitude ?>" maxlength="50">
+                                <input type="text" class="form-control" id="Latitude" name="Latitude" value="<?= $nLatitude && $nLatitude != 0 ? $nLatitude : '' ?>" maxlength="50">
                             </div>
                         </div>
                         <div class="form-group col-md-3">
@@ -683,49 +673,18 @@ require_once 'Include/Header.php';
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
                                 </div>
-                                <input type="text" class="form-control" id="Longitude" name="Longitude" value="<?= $nLongitude ?>" maxlength="50">
+                                <input type="text" class="form-control" id="Longitude" name="Longitude" value="<?= $nLongitude && $nLongitude != 0 ? $nLongitude : '' ?>" maxlength="50">
                             </div>
                         </div>
                     </div>
                     <?php
                 }
             } /* Lat/Lon can be hidden - General Settings */ ?>
-        </div>
-    </div>
 
-    <!-- Card 3: Contact Information -->
-    <div class="card card-info clearfix">
-        <div class="card-header">
-            <h3 class="card-title"><?= gettext('Contact Information') ?></h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="form-group col-md-6">
-                    <label for="Email"><?= gettext('Email') ?>:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
-                        </div>
-                        <input type="email" id="Email" name="Email" class="form-control" value="<?= InputUtils::escapeAttribute($sEmail) ?>" maxlength="100">
-                    </div>
-                    <?php if ($sEmailError) { ?>
-                    <span class="text-danger small"><?= $sEmailError ?></span>
-                    <?php } ?>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="CellPhone"><?= gettext('Mobile Phone') ?>:</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-mobile-screen"></i></span>
-                        </div>
-                        <input type="text" id="CellPhone" name="CellPhone" value="<?= InputUtils::escapeAttribute($sCellPhone) ?>" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <input type="checkbox" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
-                                <label class="mb-0 ml-1 small"><?= gettext('No format') ?></label>
-                            </div>
-                        </div>
-                    </div>
+            <!-- Contact Information Section -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h5 class="text-muted mb-3"><?= gettext('Contact') ?></h5>
                 </div>
             </div>
             <div class="row">
@@ -745,19 +704,16 @@ require_once 'Include/Header.php';
                     </div>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="WorkPhone"><?= gettext('Work Phone') ?>:</label>
+                    <label for="Email"><?= gettext('Email') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-briefcase"></i></span>
+                            <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
                         </div>
-                        <input type="text" id="WorkPhone" name="WorkPhone" value="<?= InputUtils::escapeAttribute($sWorkPhone) ?>" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"' data-mask>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <input type="checkbox" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
-                                <label class="mb-0 ml-1 small"><?= gettext('No format') ?></label>
-                            </div>
-                        </div>
+                        <input type="email" id="Email" name="Email" class="form-control" value="<?= InputUtils::escapeAttribute($sEmail) ?>" maxlength="100">
                     </div>
+                    <?php if ($sEmailError) { ?>
+                    <span class="text-danger small"><?= $sEmailError ?></span>
+                    <?php } ?>
                 </div>
             </div>
             <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
