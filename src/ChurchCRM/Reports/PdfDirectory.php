@@ -396,7 +396,7 @@ class PdfDirectory extends ChurchInfoReport
 
         $sHeadStr .= ' ' . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
-        $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+        $sCountry = $per_Country;
 
         if ($bDirPersonalPhone && strlen($per_HomePhone)) {
             $TempStr = ExpandPhoneNumber($per_HomePhone, $sCountry, $bWeird);
@@ -453,7 +453,7 @@ class PdfDirectory extends ChurchInfoReport
 
         $sMemberStr .= ' ' . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
-        $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+        $sCountry = $per_Country;
 
         if ($bDirPersonalPhone && strlen($per_HomePhone)) {
             $TempStr = ExpandPhoneNumber($per_HomePhone, $sCountry, $bWeird);
