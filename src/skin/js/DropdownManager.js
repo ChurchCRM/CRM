@@ -148,6 +148,19 @@ class DropdownManager {
                     $(`#${config.stateInputDivId}`).removeClass("d-none");
                 }
             }
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            window.CRM.notify(
+                i18next.t("Unable to load state list. Please check your network connection or try again later."),
+                { type: "error", delay: 5000 }
+            );
+            // Optionally, show textbox fallback if config.stateInputDivId is set
+            if (config.stateOptionDivId) {
+                $(`#${config.stateOptionDivId}`).addClass("d-none");
+            }
+            if (config.stateInputDivId) {
+                $(`#${config.stateInputDivId}`).removeClass("d-none");
+            }
         });
     }
 
