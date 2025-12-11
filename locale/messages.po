@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-09 06:55+0000\n"
+"POT-Creation-Date: 2025-12-11 05:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1402,9 +1402,6 @@ msgstr ""
 msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
 msgstr ""
 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr ""
-
 #. Context: queryparameteroptions_qpo
 msgid "City"
 msgstr ""
@@ -2496,9 +2493,6 @@ msgid "Enable Fundraiser menu."
 msgstr ""
 
 msgid "Enable Group Specific Properties"
-msgstr ""
-
-msgid "Enable Integrity Check"
 msgstr ""
 
 msgid "Enable New Kiosk Registration"
@@ -3904,12 +3898,6 @@ msgstr ""
 msgid "Interval in Hours for Automatic Remote Backups"
 msgstr ""
 
-msgid "Interval in Hours for Integrity Check"
-msgstr ""
-
-msgid "Interval in Hours for software update check"
-msgstr ""
-
 msgid "Invalid API key"
 msgstr ""
 
@@ -4017,6 +4005,9 @@ msgstr ""
 msgid "Join our community by registering your family"
 msgstr ""
 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr ""
+
 #. Context: countries
 msgid "Jordan (‫الأردن‬‎)"
 msgstr ""
@@ -4101,9 +4092,6 @@ msgstr ""
 msgid "Last Edited"
 msgstr ""
 
-msgid "Last Integrity Check Timestamp"
-msgstr ""
-
 msgid "Last Login"
 msgstr ""
 
@@ -4111,9 +4099,6 @@ msgid "Last Modified"
 msgstr ""
 
 msgid "Last Name"
-msgstr ""
-
-msgid "Last Software Update Check Timestamp"
 msgstr ""
 
 msgid "Last Sunday"
@@ -4327,9 +4312,6 @@ msgstr ""
 msgid "Longitude of the church, used to center the Google map"
 msgstr ""
 
-msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
-msgstr ""
-
 #. Context: countries
 msgid "Luxembourg"
 msgstr ""
@@ -4516,9 +4498,6 @@ msgid ""
 "Once the maximum has been reached, an administrator must re-enable the account.\n"
 "This feature helps to protect against automated password guessing attacks.\n"
 "Set to zero to disable this feature."
-msgstr ""
-
-msgid "Maximum number of log files to keep"
 msgstr ""
 
 msgid "Maximum number of neighbors:"
@@ -6085,6 +6064,12 @@ msgid "Regen API Key"
 msgstr ""
 
 msgid "Regenerate 2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Register Now"
+msgstr ""
+
+msgid "Register Your Church"
 msgstr ""
 
 msgid "Register a new Family"
@@ -8450,6 +8435,9 @@ msgid "Your password choice is too obvious. Please choose something else."
 msgstr ""
 
 msgid "Your previous session timed out.  Please login again."
+msgstr ""
+
+msgid "Your privacy is important. We never share your information with third parties."
 msgstr ""
 
 msgid "Your verification request is complete"
