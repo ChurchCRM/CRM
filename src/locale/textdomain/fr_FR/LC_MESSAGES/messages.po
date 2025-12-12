@@ -9758,3 +9758,91 @@ msgstr "Paiements totaux"
 msgid "payments(s)?"
 msgstr "paiement(s) ?"
 
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "Tous les fichiers système ont passé avec succès la validation d'intégrité."
+
+#: 
+msgid "Base URL"
+msgstr "URL de base"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "Installation de ChurchCRM"
+
+#: 
+msgid "Copy"
+msgstr "Copier"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "Serveur de base de données"
+
+#: 
+msgid "Database reset failed: "
+msgstr "Échec de la réinitialisation de la base de données:"
+
+#: 
+msgid "Debug Info"
+msgstr "Informations de débogage"
+
+#: 
+msgid "Document Root"
+msgstr "Racine du document"
+
+#: 
+msgid "Email Configuration"
+msgstr "Configuration de la messagerie"
+
+#: 
+msgid "Email Debug Info"
+msgstr "Informations de débogage de la messagerie"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "Autorisations du système de fichiers"
+
+#: 
+msgid "Hostname"
+msgstr "Nom d'hôte"
+
+#: 
+msgid "IP Address"
+msgstr "Adresse IP"
+
+#: 
+msgid "Images Root"
+msgstr "Racine des images"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Importer des données de démonstration"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Inclure les événements et les calendriers"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Inclure les données financières (dons, promesses de dons)"
+
+#: 
+msgid "Invalid API key"
+msgstr "Clé API invalide"
+
+#: 
+msgid "Not configured"
+msgstr "Non configuré"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "Configuration requise pour PHP et le serveur"
+
+#: 
+msgid "PHP Configuration"
+msgstr "Configuration PHP"
+
