@@ -10,7 +10,7 @@
 | Locale | Language | Translations | Percentage | Status |
 |--------|----------|--------------|------------|--------|
 | `es` | Spanish | 2547 | 92.99% | 🟡 Good |
-| `fr` | French | 2323 | 84.81% | 🟡 Good |
+| `fr` | French | 2345 | 85.62% | 🟡 Good |
 | `cs` | Czech | 2228 | 81.34% | 🟡 Good |
 | `nl` | Dutch | 2228 | 81.34% | 🟡 Good |
 | `ta` | Tamil | 2212 | 80.76% | 🟡 Good |
@@ -58,7 +58,7 @@
 
 ### 🟡 Good Locales (80-94%) - 5 total
 - **Spanish** (`es`): 92.99%
-- **French** (`fr`): 84.81%
+- **French** (`fr`): 85.62%
 - **Czech** (`cs`): 81.34%
 - **Dutch** (`nl`): 81.34%
 - **Tamil** (`ta`): 80.76%
