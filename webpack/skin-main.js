@@ -39,6 +39,9 @@ import '../src/skin/js/cart.js';
 // Import avatar loader (for person and family photos with client-side initials/gravatar)
 import './avatar-loader';
 
+// Import photo utilities (lightbox and delete functions for Person/Family views)
+import { showPhotoLightbox, deletePhoto } from './photo-utils';
+
 import '../src/skin/churchcrm.scss';
 
 // Make Quill initialization function available globally
@@ -47,6 +50,11 @@ if (typeof window !== 'undefined') {
     window._quillInitQueue = window._quillInitQueue || [];
     
     window.initializeQuillEditor = initializeQuillEditor;
+    
+    // Make photo utilities available globally
+    window.CRM = window.CRM || {};
+    window.CRM.showPhotoLightbox = showPhotoLightbox;
+    window.CRM.deletePhoto = deletePhoto;
     
     // Process any queued editors
     if (window._quillInitQueue && window._quillInitQueue.length > 0) {

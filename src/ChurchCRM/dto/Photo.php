@@ -321,10 +321,18 @@ class Photo
         }
         
         // Get initials from family name (first two characters)
-        $name = $family->getName();
-        $initials = mb_strtoupper(mb_substr($name, 0, 2));
+        $name = trim($family->getName());
+        // Handle edge cases: empty name, single character, special characters
+        if ($name === '') {
+            $initials = '?';
+        } else {
+            // Take up to 2 characters for better readability
+            $initials = mb_strtoupper(mb_substr($name, 0, min(2, mb_strlen($name))));
+        }
         
         // Try to get email from head of household first
+        // NOTE: getHeadPeople() may trigger additional queries if not eagerly loaded.
+        // For bulk operations, consider optimizing with joinWith() in the query.
         $email = null;
         $heads = $family->getHeadPeople();
         foreach ($heads as $head) {

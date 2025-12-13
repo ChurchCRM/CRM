@@ -56,7 +56,7 @@ $memberCount = count($family->getPeople());
                 </div>
                 <div class="photo-actions">
                     <div class="btn-group" role="group">
-                        <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary hide-if-no-photo d-none" title="<?= gettext("View Photo") ?>">
+                        <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary hide-if-no-photo" title="<?= gettext("View Photo") ?>">
                             <i class="fa-solid fa-search-plus"></i>
                         </a>
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>

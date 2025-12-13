@@ -5,6 +5,6 @@ $(document).ready(function () {
         systemDefault: $("#Country").data("system-default"),
         stateOptionDivId: "stateOptionDiv",
         stateInputDivId: "stateInputDiv",
-        stateTextboxId: "StateTextbox"
+        stateTextboxId: "StateTextbox",
     });
 });

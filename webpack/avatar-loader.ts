@@ -231,8 +231,8 @@ class AvatarLoader {
                 this.updateViewPhotoButton(img, true);
                 this.loadUploadedPhoto(img, config, avatarInfo);
             } else if (isGravatarEnabled() && avatarInfo.email) {
-                // Try Gravatar with initials fallback - show view button
-                this.updateViewPhotoButton(img, true);
+                // Try Gravatar with initials fallback - hide view button (no uploaded photo)
+                this.updateViewPhotoButton(img, false);
                 this.loadWithGravatar(img, avatarInfo, size);
             } else {
                 // Just use initials - hide view button
