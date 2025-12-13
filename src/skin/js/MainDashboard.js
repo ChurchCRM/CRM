@@ -38,30 +38,21 @@ function initializeMainDashboard() {
             searchable: false,
         },
         {
-            width: "3%",
-            sortable: false,
-            title: "",
-            data: "HasPhoto",
-            render: function (data, type, row) {
-                // Only show camera icon if family has photo
-                if (row.HasPhoto) {
-                    return (
-                        '<button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
-                        row.FamilyId +
-                        '" title="' +
-                        i18next.t("View Photo") +
-                        '"><i class="fa-solid fa-camera"></i></button>'
-                    );
-                }
-                return "";
-            },
-            searchable: false,
-        },
-        {
-            width: "32%",
+            width: "35%",
             title: i18next.t("Name"),
             data: "Name",
             render: function (data, type, row) {
+                var photoIcon = "";
+                if (row.HasPhoto) {
+                    photoIcon =
+                        ' <button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
+                        row.FamilyId +
+                        '" title="' +
+                        i18next.t("View Photo") +
+                        '">' +
+                        '<i class="fa-solid fa-camera"></i>' +
+                        "</button>";
+                }
                 return (
                     '<a href="' +
                     window.CRM.root +
@@ -69,7 +60,8 @@ function initializeMainDashboard() {
                     row.FamilyId +
                     '"><strong>' +
                     row.Name +
-                    "</strong></a>"
+                    "</strong></a>" +
+                    photoIcon
                 );
             },
         },
@@ -168,18 +160,6 @@ function initializeMainDashboard() {
                 orderable: false,
                 className: "text-center",
                 render: function (data, type, row) {
-                    // Only show camera icon if person has photo
-                    if (row.HasPhoto) {
-                        return (
-                            '<button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
-                            row.PersonId +
-                            '" title="' +
-                            i18next.t("View Photo") +
-                            '">' +
-                            '<i class="fa-solid fa-camera"></i>' +
-                            "</button>"
-                        );
-                    }
                     return "";
                 },
             },
@@ -188,7 +168,18 @@ function initializeMainDashboard() {
                 title: i18next.t("Name"),
                 data: "FirstName",
                 render: function (data, type, row) {
-                    let ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
+                    var ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
+                    var photoIcon = "";
+                    if (row.HasPhoto) {
+                        photoIcon =
+                            ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
+                            row.PersonId +
+                            '" title="' +
+                            i18next.t("View Photo") +
+                            '">' +
+                            '<i class="fa-solid fa-camera"></i>' +
+                            "</button>";
+                    }
                     return (
                         '<a href="' +
                         window.CRM.root +
@@ -197,6 +188,7 @@ function initializeMainDashboard() {
                         '"><strong>' +
                         row.FormattedName +
                         "</strong></a>" +
+                        photoIcon +
                         ageText
                     );
                 },
@@ -260,30 +252,21 @@ function initializeMainDashboard() {
         },
         columns: [
             {
-                width: "3%",
-                sortable: false,
-                title: "",
-                data: "HasPhoto",
-                render: function (data, type, row) {
-                    // Only show camera icon if family has photo
-                    if (row.HasPhoto) {
-                        return (
-                            '<button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
-                            row.FamilyId +
-                            '" title="' +
-                            i18next.t("View Photo") +
-                            '"><i class="fa-solid fa-camera"></i></button>'
-                        );
-                    }
-                    return "";
-                },
-                searchable: false,
-            },
-            {
-                width: "47%",
+                width: "50%",
                 title: i18next.t("Name"),
                 data: "Name",
                 render: function (data, type, row) {
+                    var photoIcon = "";
+                    if (row.HasPhoto) {
+                        photoIcon =
+                            ' <button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
+                            row.FamilyId +
+                            '" title="' +
+                            i18next.t("View Photo") +
+                            '">' +
+                            '<i class="fa-solid fa-camera"></i>' +
+                            "</button>";
+                    }
                     return (
                         '<a href="' +
                         window.CRM.root +
@@ -291,7 +274,8 @@ function initializeMainDashboard() {
                         row.FamilyId +
                         '"><strong>' +
                         data +
-                        "</strong></a>"
+                        "</strong></a>" +
+                        photoIcon
                     );
                 },
             },
@@ -373,30 +357,21 @@ function initializeMainDashboard() {
             searchable: false,
         },
         {
-            width: "3%",
-            sortable: false,
-            title: "",
-            data: "HasPhoto",
-            render: function (data, type, row) {
-                // Only show camera icon if person has photo
-                if (row.HasPhoto) {
-                    return (
-                        '<button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
-                        row.PersonId +
-                        '" title="' +
-                        i18next.t("View Photo") +
-                        '"><i class="fa-solid fa-camera"></i></button>'
-                    );
-                }
-                return "";
-            },
-            searchable: false,
-        },
-        {
-            width: "22%",
+            width: "25%",
             title: i18next.t("Name"),
             data: "FirstName",
             render: function (data, type, row) {
+                var photoIcon = "";
+                if (row.HasPhoto) {
+                    photoIcon =
+                        ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
+                        row.PersonId +
+                        '" title="' +
+                        i18next.t("View Photo") +
+                        '">' +
+                        '<i class="fa-solid fa-camera"></i>' +
+                        "</button>";
+                }
                 return (
                     '<a href="' +
                     window.CRM.root +
@@ -406,7 +381,8 @@ function initializeMainDashboard() {
                     row.FirstName +
                     " " +
                     row.LastName +
-                    "</strong></a>"
+                    "</strong></a>" +
+                    photoIcon
                 );
             },
         },
