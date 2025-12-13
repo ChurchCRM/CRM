@@ -12,6 +12,13 @@ class LocaleInfo
     private $name;
     private $poLocaleId;
     private $localeConfig;
+    
+    /**
+     * Static cache for translation data from poeditor.json
+     * Loaded once per request/session since file doesn't change
+     * @var array<int, array<string, mixed>>|null
+     */
+    private static $translationDataCache = null;
 
     public function __construct($locale, $userLocale)
     {
@@ -20,8 +27,12 @@ class LocaleInfo
         if (!empty($userLocale)) {
             $this->locale = $userLocale->getValue();
         }
-        $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json');
+        
+        // Load locales.json - throw exception if missing (broken installation)
+        $localesPath = SystemURLs::getDocumentRoot() . '/locale/locales.json';
+        $localesFile = file_get_contents($localesPath);
         $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
+        
         foreach ($locales as $key => $value) {
             if ($value['locale'] == $this->locale) {
                 $this->name = $key;
@@ -29,7 +40,7 @@ class LocaleInfo
                 $this->country = $value['countryCode'];
                 $this->dataTables = $value['dataTables'];
                 $this->poLocaleId = $value['poEditor'];
-                $this->localeConfig = $value;  // Store full config for later use
+                $this->localeConfig = $value;
             }
         }
     }
@@ -156,16 +167,42 @@ class LocaleInfo
             return 100;
         }
 
-        $poLocalesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/poeditor.json');
-        $poLocales = json_decode($poLocalesFile, true, 512, JSON_THROW_ON_ERROR);
+        $translationData = self::loadTranslationData();
 
-        foreach ($poLocales['result']['languages'] as $poLocale) {
+        foreach ($translationData as $poLocale) {
             if (strtolower($this->poLocaleId ?? '') === strtolower($poLocale['code'])) {
                 return (int) $poLocale['percentage'];
             }
         }
 
         return 0;
+    }
+
+    /**
+     * Load translation data from POEditor file with static caching
+     * File is loaded once per request since it doesn't change during execution
+     * Throws exception if file is missing (indicates broken installation)
+     * @return array<int, array<string, mixed>>
+     */
+    private static function loadTranslationData(): array
+    {
+        // Return cached data if already loaded
+        if (self::$translationDataCache !== null) {
+            return self::$translationDataCache;
+        }
+
+        // Load poeditor.json - throw exception if missing (broken installation)
+        $poeditorPath = SystemURLs::getDocumentRoot() . '/locale/poeditor.json';
+        $poLocalesFile = file_get_contents($poeditorPath);
+        $poLocales = json_decode($poLocalesFile, true, 512, JSON_THROW_ON_ERROR);
+
+        if (!isset($poLocales['result']['languages']) || !is_array($poLocales['result']['languages'])) {
+            self::$translationDataCache = [];
+            return [];
+        }
+
+        self::$translationDataCache = $poLocales['result']['languages'];
+        return self::$translationDataCache;
     }
 
     /**
