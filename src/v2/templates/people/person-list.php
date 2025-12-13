@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -85,6 +84,26 @@ $GroupList[] = "Unassigned";
 foreach ($ListItem as $element) {
     $GroupList[] = $element->getName();
 }
+
+// Person list column definitions - defines which columns appear and their data source
+$personListColumns = [
+    (object) ['name' => 'Id', 'displayFunction' => 'getId', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'Family Name', 'displayFunction' => 'getFamilyName', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'Name', 'displayFunction' => 'getFullName', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'Last Name', 'displayFunction' => 'getLastName', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'First Name', 'displayFunction' => 'getFirstName', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'Birth Date', 'displayFunction' => 'getFormattedBirthDate', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'Address', 'displayFunction' => 'getAddress', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'Home Phone', 'displayFunction' => 'getHomePhone', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'Cell Phone', 'displayFunction' => 'getCellPhone', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'Email', 'displayFunction' => 'getEmail', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => 'Gender', 'displayFunction' => 'getGenderName', 'editable' => 'true', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => 'Classification', 'displayFunction' => 'getClassificationName', 'editable' => 'true', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => 'Role', 'displayFunction' => 'getFamilyRoleName', 'editable' => 'true', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => 'Properties', 'displayFunction' => 'getPropertiesString', 'editable' => 'true', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => 'Custom', 'displayFunction' => 'getCustomFields', 'editable' => 'true', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => 'Group', 'displayFunction' => 'getGroups', 'editable' => 'true', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+];
 
 ?>
 
@@ -178,7 +197,7 @@ foreach ($ListItem as $element) {
                     </td>
 
                 <?php
-                $columns = json_decode(SystemConfig::getValue('sPersonListColumns'), null, 512, JSON_THROW_ON_ERROR);
+                $columns = $personListColumns;
                 foreach ($columns as $column) {
                     echo '<td>';
                     if ($column->displayFunction === 'getCustomFields') {
@@ -254,7 +273,7 @@ foreach ($ListItem as $element) {
                 $firstVisibleColumnId = PHP_INT_MAX;
                 $columnId = 0;
                 $columnIdMap = [];
-                $columns = json_decode(SystemConfig::getValue('sPersonListColumns'), null, 512, JSON_THROW_ON_ERROR);
+                $columns = $personListColumns;
                 foreach ($columns as $column) {
                     $columnId++;
                     $columnIdMap[$column->name] = $columnId;
