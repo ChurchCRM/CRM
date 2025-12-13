@@ -3,6 +3,27 @@ function initializeFamilyView() {
         $("#family-deactivated").removeClass("d-none");
     }
 
+    // Check if family has a photo (uploaded or gravatar) and show/hide view button accordingly
+    // Query the avatar info endpoint to see if there's an actual photo to display
+    fetch(window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/avatar")
+        .then((response) => response.json())
+        .then((data) => {
+            // Show view button only if there's an actual uploaded photo (hasPhoto=true)
+            if (data.hasPhoto) {
+                $("#view-larger-image-btn").removeClass("hide-if-no-photo");
+                $("#view-larger-image-btn").removeClass("d-none");
+            } else {
+                // Keep hidden for initials/gravatar only
+                $("#view-larger-image-btn").addClass("hide-if-no-photo");
+                $("#view-larger-image-btn").addClass("d-none");
+            }
+        })
+        .catch((error) => {
+            console.error("Failed to fetch avatar info:", error);
+            $("#view-larger-image-btn").addClass("hide-if-no-photo");
+            $("#view-larger-image-btn").addClass("d-none");
+        });
+
     window.CRM.APIRequest({
         path: `family/${window.CRM.currentFamily}/nav`,
     }).then(function (data) {
@@ -249,15 +270,56 @@ function initializeFamilyView() {
         });
     });
 
-    $("#view-larger-image-btn").on("click", function () {
-        bootbox.alert({
-            title: i18next.t("Family Photo"),
-            message:
-                '<img class="img-rounded img-responsive center-block" src="' +
-                `${window.CRM.root}/api/family/${window.CRM.currentFamily}/photo` +
-                '"/>',
-            backdrop: true,
-        });
+    $("#view-larger-image-btn").on("click", function (e) {
+        e.preventDefault();
+
+        // Get the actual image source - could be a real photo or the canvas-rendered avatar
+        const photoImg = document.querySelector(
+            '[data-image-entity-type="family"][data-image-entity-id="' + window.CRM.currentFamily + '"]',
+        );
+        let imageSrc = "";
+
+        if (photoImg && photoImg.src) {
+            // Use the src from the photo element (already rendered by avatar-loader)
+            imageSrc = photoImg.src;
+        } else {
+            // Fallback to the photo endpoint
+            imageSrc = window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo";
+        }
+
+        // Create lightbox overlay
+        const lightbox = document.createElement("div");
+        lightbox.id = "photo-lightbox";
+        lightbox.style.cssText =
+            "position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:pointer;";
+
+        const closeBtn = document.createElement("button");
+        closeBtn.innerHTML = '<i class="fa-solid fa-times"></i>';
+        closeBtn.style.cssText =
+            "position:absolute;top:20px;right:20px;background:transparent;border:none;color:white;font-size:30px;cursor:pointer;z-index:10000;";
+
+        const img = document.createElement("img");
+        img.src = imageSrc;
+        img.style.cssText =
+            "max-width:90%;max-height:90%;object-fit:contain;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.5);";
+
+        lightbox.appendChild(closeBtn);
+        lightbox.appendChild(img);
+        document.body.appendChild(lightbox);
+
+        // Close on click anywhere or close button
+        const closeLightbox = () => lightbox.remove();
+        lightbox.addEventListener("click", closeLightbox);
+        closeBtn.addEventListener("click", closeLightbox);
+
+        // Close on escape key
+        const escHandler = (e) => {
+            if (e.key === "Escape") {
+                closeLightbox();
+                document.removeEventListener("keydown", escHandler);
+            }
+        };
+        document.addEventListener("keydown", escHandler);
     });
 
     $("#activateDeactivate").on("click", function () {
