@@ -157,6 +157,12 @@ function initializeGroupView() {
         });
     });
 
+    $(document).on("click", ".view-person-photo", function (e) {
+        var personId = $(e.currentTarget).data("person-id");
+        window.CRM.showPhotoLightbox("person", personId);
+        e.stopPropagation();
+    });
+
     $(document).on("click", ".changeMembership", function (e) {
         var PersonID = $(e.currentTarget).data("personid");
         window.CRM.groups.promptSelection(
@@ -197,12 +203,24 @@ function initDataTable() {
                 title: i18next.t("Name"),
                 data: "PersonId",
                 render: function (data, type, full, meta) {
+                    var photoIcon = "";
+                    if (full.Person.HasPhoto) {
+                        photoIcon =
+                            ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
+                            full.PersonId +
+                            '" title="' +
+                            i18next.t("View Photo") +
+                            '">' +
+                            '<i class="fa-solid fa-camera"></i>' +
+                            "</button>";
+                    }
                     return (
                         '<a target="_top" href="PersonView.php?PersonID=' +
                         full.PersonId +
                         '">' +
                         full.Person.FullName +
-                        "</a>"
+                        "</a>" +
+                        photoIcon
                     );
                 },
             },

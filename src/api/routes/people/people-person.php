@@ -31,10 +31,11 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
     
     // Returns avatar info JSON for client-side rendering
+    // No cache middleware - needs to reflect immediate photo upload changes
     $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
         $avatarInfo = Photo::getAvatarInfo('Person', (int)$args['personId']);
         return SlimUtils::renderJSON($response, $avatarInfo);
-    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
+    });
 });
 
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
@@ -67,7 +68,12 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         
         try {
             $person->setImageFromBase64($input['imgBase64']);
-            return SlimUtils::renderSuccessJSON($response);
+            // Refresh photo status and return updated info
+            $person->getPhoto()->refresh();
+            return SlimUtils::renderJSON($response, [
+                'success' => true,
+                'hasPhoto' => $person->getPhoto()->hasUploadedPhoto()
+            ]);
         } catch (\Exception $e) {
             return SlimUtils::renderJSON($response, [
                 'success' => false,

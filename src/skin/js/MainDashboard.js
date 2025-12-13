@@ -38,7 +38,27 @@ function initializeMainDashboard() {
             searchable: false,
         },
         {
-            width: "35%",
+            width: "3%",
+            sortable: false,
+            title: "",
+            data: "HasPhoto",
+            render: function (data, type, row) {
+                // Only show camera icon if family has photo
+                if (row.HasPhoto) {
+                    return (
+                        '<button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
+                        row.FamilyId +
+                        '" title="' +
+                        i18next.t("View Photo") +
+                        '"><i class="fa-solid fa-camera"></i></button>'
+                    );
+                }
+                return "";
+            },
+            searchable: false,
+        },
+        {
+            width: "32%",
             title: i18next.t("Name"),
             data: "Name",
             render: function (data, type, row) {
@@ -84,7 +104,8 @@ function initializeMainDashboard() {
         data: "Created",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
+            // Parse datetime format and calculate relative time
+            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
         },
     });
 
@@ -109,7 +130,8 @@ function initializeMainDashboard() {
         data: "LastEdited",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
+            // Parse datetime format and calculate relative time
+            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
         },
     });
 
@@ -140,17 +162,34 @@ function initializeMainDashboard() {
         },
         columns: [
             {
+                width: "40px",
+                title: "",
+                data: "PersonId",
+                orderable: false,
+                className: "text-center",
+                render: function (data, type, row) {
+                    // Only show camera icon if person has photo
+                    if (row.HasPhoto) {
+                        return (
+                            '<button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
+                            row.PersonId +
+                            '" title="' +
+                            i18next.t("View Photo") +
+                            '">' +
+                            '<i class="fa-solid fa-camera"></i>' +
+                            "</button>"
+                        );
+                    }
+                    return "";
+                },
+            },
+            {
                 width: "60%",
                 title: i18next.t("Name"),
                 data: "FirstName",
                 render: function (data, type, row) {
                     let ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
-                    let photo =
-                        '<img data-image-entity-type="person" data-image-entity-id="' +
-                        row.PersonId +
-                        '" class="photo-tiny rounded-circle mr-2" style="width:30px;height:30px;object-fit:cover;">';
                     return (
-                        photo +
                         '<a href="' +
                         window.CRM.root +
                         "/PersonView.php?PersonID=" +
@@ -221,7 +260,27 @@ function initializeMainDashboard() {
         },
         columns: [
             {
-                width: "50%",
+                width: "3%",
+                sortable: false,
+                title: "",
+                data: "HasPhoto",
+                render: function (data, type, row) {
+                    // Only show camera icon if family has photo
+                    if (row.HasPhoto) {
+                        return (
+                            '<button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
+                            row.FamilyId +
+                            '" title="' +
+                            i18next.t("View Photo") +
+                            '"><i class="fa-solid fa-camera"></i></button>'
+                        );
+                    }
+                    return "";
+                },
+                searchable: false,
+            },
+            {
+                width: "47%",
                 title: i18next.t("Name"),
                 data: "Name",
                 render: function (data, type, row) {
@@ -314,7 +373,27 @@ function initializeMainDashboard() {
             searchable: false,
         },
         {
-            width: "25%",
+            width: "3%",
+            sortable: false,
+            title: "",
+            data: "HasPhoto",
+            render: function (data, type, row) {
+                // Only show camera icon if person has photo
+                if (row.HasPhoto) {
+                    return (
+                        '<button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
+                        row.PersonId +
+                        '" title="' +
+                        i18next.t("View Photo") +
+                        '"><i class="fa-solid fa-camera"></i></button>'
+                    );
+                }
+                return "";
+            },
+            searchable: false,
+        },
+        {
+            width: "22%",
             title: i18next.t("Name"),
             data: "FirstName",
             render: function (data, type, row) {
@@ -351,7 +430,8 @@ function initializeMainDashboard() {
         data: "LastEdited",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
+            // Parse datetime format and calculate relative time
+            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
         },
     });
 
@@ -367,6 +447,10 @@ function initializeMainDashboard() {
     let updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(dataTableConfig);
     updatedPersonTable.on("draw", function () {
         syncCartButtons();
+        // Refresh image loader for dynamically added photos
+        if (window.CRM && window.CRM.peopleImageLoader) {
+            window.CRM.peopleImageLoader.refresh();
+        }
     });
 
     let latestPersonColumns = dataTablePersonColumns.slice();
@@ -376,7 +460,8 @@ function initializeMainDashboard() {
         data: "Created",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
+            // Parse datetime format and calculate relative time
+            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
         },
     });
 
@@ -392,6 +477,10 @@ function initializeMainDashboard() {
     let latestPersonTable = $("#latestPersonDashboardItem").DataTable(dataTableConfig);
     latestPersonTable.on("draw", function () {
         syncCartButtons();
+        // Refresh image loader for dynamically added photos
+        if (window.CRM && window.CRM.peopleImageLoader) {
+            window.CRM.peopleImageLoader.refresh();
+        }
     });
     function syncCartButtons() {
         if (window.CRM && window.CRM.cartManager) {
@@ -470,4 +559,17 @@ function initializeMainDashboard() {
 // Wait for locales to load before initializing
 $(document).ready(function () {
     window.CRM.onLocalesReady(initializeMainDashboard);
+
+    // Photo viewer click handlers
+    $(document).on("click", ".view-person-photo", function (e) {
+        var personId = $(e.currentTarget).data("person-id");
+        window.CRM.showPhotoLightbox("person", personId);
+        e.stopPropagation();
+    });
+
+    $(document).on("click", ".view-family-photo", function (e) {
+        var familyId = $(e.currentTarget).data("family-id");
+        window.CRM.showPhotoLightbox("family", familyId);
+        e.stopPropagation();
+    });
 });

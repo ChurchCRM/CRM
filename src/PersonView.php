@@ -180,11 +180,11 @@ $bOkToEdit = (
     <div class="col-lg-3 col-md-3 col-sm-3">
         <div class="card card-primary">
             <div class="card-header with-border">
-                <h3 class="card-title">
+                <h3 class="card-title" style="font-size: 1.5rem; font-weight: 600;">
                     <?= $person->getFullName() ?>
                 </h3>
                 <div class="card-tools">
-                    <span class="badge badge-light"><?= gettext('ID:') ?> <?= $person->getId() ?></span>
+                    <span class="badge badge-secondary"><?= gettext('ID:') ?> <?= $person->getId() ?></span>
                 </div>
             </div>
             <div class="card-body box-profile">
@@ -486,18 +486,46 @@ $bOkToEdit = (
         </div>
 
         <div class="card">
-            <div class="card-header p-2">
-                <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link active" id="nav-item-family" href="#family" data-toggle="tab"><?= gettext('Family') ?></a></li>
-                    <li class="nav-item"><a class="nav-link" id="nav-item-timeline" href="#timeline" data-toggle="tab"><?= gettext('Timeline') ?></a></li>
+            <div class="card-header">
+                <ul class="nav nav-pills card-header-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="nav-item-family" href="#family" data-toggle="tab">
+                            <i class="fa-solid fa-people-roof mr-1"></i><?= gettext('Family') ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-timeline" href="#timeline" data-toggle="tab">
+                            <i class="fa-solid fa-clock mr-1"></i><?= gettext('Timeline') ?>
+                        </a>
+                    </li>
                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                        <li class="nav-item"><a class="nav-link" id="nav-item-notes" href="#notes" data-toggle="tab"><?= gettext('Notes') ?></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-notes" href="#notes" data-toggle="tab">
+                            <i class="fa-solid fa-sticky-note mr-1"></i><?= gettext('Notes') ?>
+                        </a>
+                    </li>
                     <?php } ?>
-                    <li class="nav-item"><a class="nav-link" id="nav-item-groups" href="#groups" data-toggle="tab"><?= gettext('Assigned Groups') ?></a></li>
-                    <li class="nav-item"><a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-toggle="tab"><?= gettext('Volunteer Opportunities') ?></a></li>
-                    <li class="nav-item"><a class="nav-link" id="nav-item-properties" href="#properties" data-toggle="tab"><?= gettext('Assigned Properties') ?></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-groups" href="#groups" data-toggle="tab">
+                            <i class="fa-solid fa-users mr-1"></i><?= gettext('Groups') ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-toggle="tab">
+                            <i class="fa-solid fa-hands-helping mr-1"></i><?= gettext('Volunteer') ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-properties" href="#properties" data-toggle="tab">
+                            <i class="fa-solid fa-tags mr-1"></i><?= gettext('Properties') ?>
+                        </a>
+                    </li>
                     <?php if ($mailchimp->isActive()) { ?>
-                        <li class="nav-item"><a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-toggle="tab"><?= gettext('Mailchimp') ?></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-toggle="tab">
+                            <i class="fa-brands fa-mailchimp mr-1"></i><?= gettext('Mailchimp') ?>
+                        </a>
+                    </li>
                     <?php } ?>
                 </ul>
             </div>
@@ -537,20 +565,22 @@ $bOkToEdit = (
                                                     <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
                                                 <?php } ?>
                                             </td>
-                                            <td style="width: 20%;">
-                                                <button class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>">
-                                                    <i class="fa-solid fa-cart-plus"></i>
-                                                </button>
-                                                <?php if ($bOkToEdit) {
-                                                ?>
-                                                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>" class="btn btn-sm btn-info" title="<?= gettext('Edit') ?>">
-                                                        <i class="fa-solid fa-pen"></i>
-                                                    </a>
-                                                    <a class="delete-person btn btn-sm btn-danger" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family" title="<?= gettext('Delete') ?>">
-                                                        <i class="fa-solid fa-trash-can"></i>
-                                                    </a>
-                                                <?php
-                                                } ?>
+                                            <td class="text-right">
+                                                <div class="btn-group" role="group">
+                                                    <button class="AddToCart btn btn-sm btn-success" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>">
+                                                        <i class="fa-solid fa-cart-plus"></i>
+                                                    </button>
+                                                    <?php if ($bOkToEdit) {
+                                                    ?>
+                                                        <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
+                                                            <i class="fa-solid fa-pen"></i>
+                                                        </a>
+                                                        <a class="delete-person btn btn-sm btn-danger" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family" title="<?= gettext('Delete') ?>">
+                                                            <i class="fa-solid fa-trash-can"></i>
+                                                        </a>
+                                                    <?php
+                                                    } ?>
+                                                </div>
                                             </td>
                                         </tr>
                                     <?php
@@ -792,65 +822,63 @@ $bOkToEdit = (
                         </div>
                     </div>
                     <div class="tab-pane" id="properties">
-                        <div class="card">
-                            <div class="card-body">
-                                <?php
-                                $sAssignedProperties = ','; ?>
-                                <?php if (mysqli_num_rows($rsAssignedProperties) === 0) : ?>
-                                    <br>
-                                    <div class="alert alert-warning">
-                                        <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
-                                    </div>
-                                <?php else : ?>
-                                    <div class="table-responsive">
-                                        <table class="table table-condensed w-100" id="assigned-properties-table">
-                                            <thead>
-                                                <tr>
-                                                    <th><?= gettext('Type') ?></th>
-                                                    <th><?= gettext('Name') ?></th>
-                                                    <th><?= gettext('Value') ?></th>
-                                                    <?php if ($bOkToEdit) : ?>
-                                                        <th><?= gettext('Remove') ?></th>
-                                                    <?php endif; ?>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                //Loop through the rows
-                                                while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                                                    $pro_Prompt = '';
-                                                    $r2p_Value = '';
-                                                    extract($aRow); ?>
-                                                    <tr>
-                                                        <td><?= $prt_Name ?></td>
-                                                        <td><?= $pro_Name ?></td>
-                                                        <td><?= $r2p_Value ?></td>
-                                                        <?php if ($bOkToEdit) { ?>
-                                                            <td>
-                                                                <a class="btn remove-property-btn" data-property_id="<?= $pro_ID ?>">
-                                                                    <i class="fa-solid fa-trash"></i>
-                                                                </a>
-                                                            </td>
-                                                        <?php } ?>
-                                                    </tr>
-                                                <?php
-                                                    $sAssignedProperties .= $pro_ID . ',';
-                                                } ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                <?php endif; ?>
+                        <?php
+                        $sAssignedProperties = ','; ?>
+                        <?php if (mysqli_num_rows($rsAssignedProperties) === 0) : ?>
+                            <div class="alert alert-warning">
+                                <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
+                            </div>
+                        <?php else : ?>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th><?= gettext('Type') ?></th>
+                                        <th><?= gettext('Property') ?></th>
+                                        <th><?= gettext('Value') ?></th>
+                                        <?php if ($bOkToEdit) : ?>
+                                            <th class="text-right"><?= gettext('Actions') ?></th>
+                                        <?php endif; ?>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                                        $pro_Prompt = '';
+                                        $r2p_Value = '';
+                                        extract($aRow); ?>
+                                        <tr>
+                                            <td><span class="badge badge-info"><?= $prt_Name ?></span></td>
+                                            <td><strong><?= $pro_Name ?></strong></td>
+                                            <td><?= $r2p_Value ?></td>
+                                            <?php if ($bOkToEdit) { ?>
+                                                <td class="text-right">
+                                                    <button class="btn btn-sm btn-danger remove-property-btn" data-property_id="<?= $pro_ID ?>" title="<?= gettext('Remove Property') ?>">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            <?php } ?>
+                                        </tr>
+                                    <?php
+                                        $sAssignedProperties .= $pro_ID . ',';
+                                    } ?>
+                                </tbody>
+                            </table>
+                        <?php endif; ?>
 
-                                <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
-                                    <div class="alert alert-info">
-                                        <div>
-                                            <h4><strong><?= gettext('Assign a New Property') ?>:</strong></h4>
-
-                                            <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
-                                                <div class="row">
-                                                    <div class="form-group col-xs-12 col-md-7">
-                                                        <select name="PropertyId" id="input-person-properties" class="form-control select2 w-100" data-placeholder="Select ...">
-                                                            <option disabled selected> -- <?= gettext('select an option') ?> -- </option>
+                        <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
+                            <div class="card mt-3">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">
+                                        <i class="fa-solid fa-plus-circle mr-2"></i><?= gettext('Assign a New Property') ?>
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="input-person-properties"><?= gettext('Select Property') ?></label>
+                                                <select name="PropertyId" id="input-person-properties" class="form-control select2" data-placeholder="<?= gettext('Choose a property...') ?>">
+                                                    <option value=""></option>
                                                             <?php
                                                             $assignedPropertiesArray = [];
                                                             foreach ($assignedProperties as $assignedProperty) {
@@ -875,108 +903,100 @@ $bOkToEdit = (
                                                                 }
                                                                 echo "<option {$attributes}>{$optionText}</option>";
                                                             } ?>
-                                                        </select>
-                                                    </div>
-                                                    <div id="prompt-box" class="col-xs-12 col-md-7">
-
-                                                    </div>
-                                                    <div class="form-group col-xs-12 col-md-7">
-                                                        <input id="assign-property-btn" type="button" class="btn btn-primary" value="<?= gettext('Assign') ?>" name="Submit">
-                                                    </div>
-                                                </div>
-                                            </form>
+                                                </select>
+                                            </div>
+                                            <div id="prompt-box" class="col-md-6">
+                                            </div>
                                         </div>
-                                    </div>
-                                <?php endif; ?>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button id="assign-property-btn" type="button" class="btn btn-primary">
+                                                    <i class="fa-solid fa-check mr-1"></i><?= gettext('Assign Property') ?>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                     <div class="tab-pane" id="volunteer">
-                        <div class="card">
-                            <div class="card-body">
-                                <?php
-
-                                //Initialize row shading
-                                $sRowClass = 'RowColorA';
-
-                                $sAssignedVolunteerOpps = ',';
-
-                                //Was anything returned?
-                                if (mysqli_num_rows($rsAssignedVolunteerOpps) === 0) {
-                                ?>
-                                    <br>
-                                    <div class="alert alert-warning">
-                                        <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
-                                    </div>
-                                <?php
-                                } else {
-                                    echo '<div class="table-responsive">';
-                                    echo '<table class="table table-condensed w-100" id="assigned-volunteer-opps-table">';
-                                    echo '<thead>';
-                                    echo '<tr>';
-                                    echo '<th>' . gettext('Name') . '</th>';
-                                    echo '<th>' . gettext('Description') . '</th>';
-                                    if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-                                        echo '<th>' . gettext('Remove') . '</th>';
-                                    }
-                                    echo '</tr>';
-                                    echo '</thead>';
-                                    echo '<tbody>';
-
-                                    // Loop through the rows
-                                    while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
-                                        extract($aRow);
-
-                                        // Alternate the row style
-                                        $sRowClass = AlternateRowStyle($sRowClass);
-
-                                        echo '<tr class="' . $sRowClass . '">';
-                                        echo '<td>' . $vol_Name . '</a></td>';
-                                        echo '<td>' . $vol_Description . '</a></td>';
-
-                                        if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-                                            echo '<td><a class="SmallText" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=' . $per_ID . '&RemoveVO=' . $vol_ID . '">' . gettext('Remove') . '</a></td>';
-                                        }
-
-                                        echo '</tr>';
-
-                                        // NOTE: this method is crude.  Need to replace this with use of an array.
-                                        $sAssignedVolunteerOpps .= $vol_ID . ',';
-                                    }
-                                    echo '</tbody>';
-                                    echo '</table>';
-                                    echo '</div>';
-                                } ?>
-
-                                <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() && $rsVolunteerOpps->num_rows) : ?>
-                                    <div class="alert alert-info">
-                                        <div>
-                                            <h4><strong><?= gettext('Assign a New Volunteer Opportunity') ?>:</strong></h4>
-
-                                            <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
-                                                <div class="row">
-                                                    <div class="form-group col-xs-12 col-md-7">
-                                                        <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-control select2 w-100" data-placeholder="Select ...">
-                                                            <?php
-                                                            while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
-                                                                extract($aRow);
-                                                                //If the property doesn't already exist for this Person, write the <OPTION> tag
-                                                                if (strlen(strstr($sAssignedVolunteerOpps, ',' . $vol_ID . ',')) === 0) {
-                                                                    echo '<option value="' . $vol_ID . '">' . $vol_Name . '</option>';
-                                                                }
-                                                            } ?>
-                                                        </select>
-                                                    </div>
-                                                    <div class="form-group col-xs-12 col-md-7">
-                                                        <input type="submit" value="<?= gettext('Assign') ?>" name="VolunteerOpportunityAssign" class="btn btn-primary">
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
+                        <?php
+                        $sAssignedVolunteerOpps = ',';
+                        if (mysqli_num_rows($rsAssignedVolunteerOpps) === 0) {
+                        ?>
+                            <div class="alert alert-warning">
+                                <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
                             </div>
-                        </div>
+                        <?php
+                        } else {
+                            echo '<table class="table table-hover">';
+                            echo '<thead>';
+                            echo '<tr>';
+                            echo '<th>' . gettext('Name') . '</th>';
+                            echo '<th>' . gettext('Description') . '</th>';
+                            if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+                                echo '<th class="text-right">' . gettext('Actions') . '</th>';
+                            }
+                            echo '</tr>';
+                            echo '</thead>';
+                            echo '<tbody>';
+
+                            while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
+                                extract($aRow);
+                                echo '<tr>';
+                                echo '<td><strong>' . htmlspecialchars($vol_Name) . '</strong></td>';
+                                echo '<td>' . htmlspecialchars($vol_Description) . '</td>';
+
+                                if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+                                    echo '<td class="text-right">';
+                                    echo '<a class="btn btn-sm btn-danger" href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $per_ID . '&RemoveVO=' . $vol_ID . '" title="' . gettext('Remove') . '">';
+                                    echo '<i class="fa-solid fa-trash"></i>';
+                                    echo '</a>';
+                                    echo '</td>';
+                                }
+
+                                echo '</tr>';
+                                $sAssignedVolunteerOpps .= $vol_ID . ',';
+                            }
+                            echo '</tbody>';
+                            echo '</table>';
+                        } ?>
+
+                        <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() && $rsVolunteerOpps->num_rows) : ?>
+                            <div class="card mt-3">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">
+                                        <i class="fa-solid fa-plus-circle mr-2"></i><?= gettext('Assign a New Volunteer Opportunity') ?>
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
+                                        <div class="row">
+                                            <div class="form-group col-md-6">
+                                                <label for="input-volunteer-opportunities"><?= gettext('Select Opportunities') ?></label>
+                                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-control select2" data-placeholder="<?= gettext('Choose opportunities...') ?>">
+                                                    <?php
+                                                    while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
+                                                        extract($aRow);
+                                                        if (strlen(strstr($sAssignedVolunteerOpps, ',' . $vol_ID . ',')) === 0) {
+                                                            echo '<option value="' . $vol_ID . '">' . htmlspecialchars($vol_Name) . '</option>';
+                                                        }
+                                                    } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button type="submit" name="VolunteerOpportunityAssign" class="btn btn-primary">
+                                                    <i class="fa-solid fa-check mr-1"></i><?= gettext('Assign Opportunities') ?>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        <?php endif; ?>
                     </div>
                     <div class="tab-pane" id="mailchimp">
                         <table class="table">
@@ -1037,9 +1057,6 @@ $bOkToEdit = (
             $(document).ready(function() {
                 $("#input-volunteer-opportunities").select2();
                 $("#input-person-properties").select2();
-
-                $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
-                $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
 
                 // Attach lightbox click handler to view button
                 // Note: Button visibility is managed by avatar-loader.ts based on hasPhoto status

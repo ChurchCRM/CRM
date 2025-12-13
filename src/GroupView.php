@@ -444,7 +444,6 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentGroup = <?= $iGroupID ?>;
-    window.CRM.iProfilePictureListSize = <?= SystemConfig::getValue('iProfilePictureListSize') ?>;
     var dataT = 0;
     $(document).ready(function() {
         // Wait for locales to load before setting up handlers that use bootbox

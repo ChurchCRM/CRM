@@ -85,9 +85,11 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                 <?php foreach ($aPeopleInCart as $person) { ?>
                                     <tr>
                                         <td>
-                                            <img data-image-entity-type="person"
-                                                 data-image-entity-id="<?= $person->getId() ?>"
-                                                 class="photo-tiny">&nbsp
+                                            <?php if ($person->getPhoto()->hasUploadedPhoto()) { ?>
+                                                <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $person->getId() ?>" title="<?= gettext('View Photo') ?>">
+                                                    <i class="fa-solid fa-camera"></i>
+                                                </button>
+                                            <?php } ?>
                                             <a href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                                 <?= $person->getFullName() ?>
                                             </a>
@@ -169,4 +171,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <?php
 }
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
+
+<?php
 require_once 'Include/Footer.php';

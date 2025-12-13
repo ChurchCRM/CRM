@@ -35,10 +35,11 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
     
     // Returns avatar info JSON for client-side rendering
+    // No cache middleware - needs to reflect immediate photo upload changes
     $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
         $avatarInfo = Photo::getAvatarInfo('Family', (int)$args['familyId']);
         return SlimUtils::renderJSON($response, $avatarInfo);
-    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
+    });
 });
 
 // Routes that require FamilyMiddleware
@@ -50,7 +51,12 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         
         try {
             $family->setImageFromBase64($input['imgBase64']);
-            return SlimUtils::renderSuccessJSON($response);
+            // Refresh photo status and return updated info
+            $family->getPhoto()->refresh();
+            return SlimUtils::renderJSON($response, [
+                'success' => true,
+                'hasPhoto' => $family->getPhoto()->hasUploadedPhoto()
+            ]);
         } catch (\Exception $e) {
             return SlimUtils::renderJSON($response, [
                 'success' => false,

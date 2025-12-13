@@ -262,6 +262,11 @@ class Family extends BaseFamily implements PhotoInterface
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setFamId($this->getId());
         $note->save();
+        
+        // Update family's last edited date and editor
+        $this->setDateLastEdited(new \DateTime());
+        $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+        $this->save();
     }
 
     public function verify(): void
