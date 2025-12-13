@@ -22,6 +22,9 @@ class LocaleInfo
             $this->locale = $userLocale->getValue();
         }
         
+        // Initialize translation data cache
+        $this->translationData = null;
+        
         // Set default values for English - United States as fallback
         $this->name = 'English - United States';
         $this->language = 'en';
