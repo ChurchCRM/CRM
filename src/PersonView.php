@@ -417,8 +417,9 @@ $bOkToEdit = (
                         } elseif ($type_ID == 11) {
                             $custom_Special = $sPhoneCountry;
                             $displayIcon = "fa-solid fa-phone";
-                            // Sanitize phone number for tel: URI - allow only digits, +, -, (, ), spaces, and 'e' for extension
-                            $sanitizedPhone = preg_replace('/[^0-9+\-() e]/', '', $currentData);
+                            // Sanitize phone number for tel: URI - allow only digits, +, -, (, ), and 'e' for extension
+                            // Remove all other characters including spaces to prevent injection
+                            $sanitizedPhone = preg_replace('/[^0-9+\-()e]/', '', $currentData);
                             $displayLink = "tel:" . $sanitizedPhone;
                         }
                         $customFieldsHtml .= '<li class="mb-2">';
