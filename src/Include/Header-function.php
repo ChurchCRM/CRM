@@ -80,6 +80,7 @@ function Header_body_scripts(): void
               sDateTimeFormat: "<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
             },
             iDashboardServiceIntervalTime:"<?= SystemConfig::getValue('iDashboardServiceIntervalTime') ?>",
+            bEnableGravatarPhotos: <?= SystemConfig::getBooleanValue('bEnableGravatarPhotos') ? 'true' : 'false' ?>,
             plugin: {
                 dataTable : {
                     "pageLength": <?= $tableSize ?>,
