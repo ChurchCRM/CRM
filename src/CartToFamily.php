@@ -275,10 +275,11 @@ SQL;
             <tr>
                 <td class="LabelColumn"><?= gettext('State') ?>:</td>
                 <td class="TextColumn">
-                    <select id="State" name="State" class="form-control" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
-                    </select>
-                    <div id="stateTextboxDiv" style="display: none;">
-                        OR
+                    <div id="stateOptionDiv">
+                        <select id="State" name="State" class="form-control" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                        </select>
+                    </div>
+                    <div id="stateInputDiv" style="display: none;">
                         <input type="text" name="StateTextbox" id="StateTextbox" value="" size="20" maxlength="30">
                         <BR><?= gettext('(Enter state/province for countries without predefined states)') ?>
                     </div>
