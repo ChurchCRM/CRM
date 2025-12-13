@@ -12,7 +12,13 @@ class LocaleInfo
     private $name;
     private $poLocaleId;
     private $localeConfig;
-    private $translationData;
+    
+    /**
+     * Static cache for translation data from poeditor.json
+     * Loaded once per request/session since file doesn't change
+     * @var array<int, array<string, mixed>>|null
+     */
+    private static $translationDataCache = null;
 
     public function __construct($locale, $userLocale)
     {
@@ -22,43 +28,11 @@ class LocaleInfo
             $this->locale = $userLocale->getValue();
         }
         
-        // Initialize translation data cache
-        $this->translationData = null;
-        
-        // Set default values for English - United States as fallback
-        $this->name = 'English - United States';
-        $this->language = 'en';
-        $this->country = 'US';
-        $this->dataTables = 'en-GB';
-        $this->poLocaleId = 'en-US';
-        $this->localeConfig = [
-            'poEditor' => 'en-US',
-            'locale' => 'en_US',
-            'languageCode' => 'en',
-            'countryCode' => 'US',
-            'dataTables' => 'en-GB',
-        ];
-        
+        // Load locales.json - throw exception if missing (broken installation)
         $localesPath = SystemURLs::getDocumentRoot() . '/locale/locales.json';
-        $localesFile = @file_get_contents($localesPath);
+        $localesFile = file_get_contents($localesPath);
+        $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
         
-        if ($localesFile === false) {
-            // File missing or unreadable; use defaults set above
-            return;
-        }
-
-        try {
-            $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $e) {
-            // Invalid JSON; use defaults set above
-            return;
-        }
-
-        if (!is_array($locales)) {
-            // Invalid structure; use defaults set above
-            return;
-        }
-
         foreach ($locales as $key => $value) {
             if ($value['locale'] == $this->locale) {
                 $this->name = $key;
@@ -66,7 +40,7 @@ class LocaleInfo
                 $this->country = $value['countryCode'];
                 $this->dataTables = $value['dataTables'];
                 $this->poLocaleId = $value['poEditor'];
-                $this->localeConfig = $value;  // Store full config for later use
+                $this->localeConfig = $value;
             }
         }
     }
@@ -193,13 +167,9 @@ class LocaleInfo
             return 100;
         }
 
-        // Load translation data once and cache it
-        if ($this->translationData === null) {
-            $this->translationData = $this->loadTranslationData();
-        }
+        $translationData = self::loadTranslationData();
 
-        // Return cached percentage
-        foreach ($this->translationData as $poLocale) {
+        foreach ($translationData as $poLocale) {
             if (strtolower($this->poLocaleId ?? '') === strtolower($poLocale['code'])) {
                 return (int) $poLocale['percentage'];
             }
@@ -209,31 +179,30 @@ class LocaleInfo
     }
 
     /**
-     * Load translation data from POEditor file with error handling.
-     * Returns empty array on error to prevent crashes.
+     * Load translation data from POEditor file with static caching
+     * File is loaded once per request since it doesn't change during execution
+     * Throws exception if file is missing (indicates broken installation)
      * @return array<int, array<string, mixed>>
      */
-    private function loadTranslationData(): array
+    private static function loadTranslationData(): array
     {
-        $poeditorPath = SystemURLs::getDocumentRoot() . '/locale/poeditor.json';
-        $poLocalesFile = @file_get_contents($poeditorPath);
-        if ($poLocalesFile === false) {
-            // File missing or unreadable; return empty array
-            return [];
+        // Return cached data if already loaded
+        if (self::$translationDataCache !== null) {
+            return self::$translationDataCache;
         }
 
-        try {
-            $poLocales = json_decode($poLocalesFile, true, 512, JSON_THROW_ON_ERROR);
-        } catch (\JsonException $e) {
-            // Invalid JSON; return empty array
-            return [];
-        }
+        // Load poeditor.json - throw exception if missing (broken installation)
+        $poeditorPath = SystemURLs::getDocumentRoot() . '/locale/poeditor.json';
+        $poLocalesFile = file_get_contents($poeditorPath);
+        $poLocales = json_decode($poLocalesFile, true, 512, JSON_THROW_ON_ERROR);
 
         if (!isset($poLocales['result']['languages']) || !is_array($poLocales['result']['languages'])) {
+            self::$translationDataCache = [];
             return [];
         }
 
-        return $poLocales['result']['languages'];
+        self::$translationDataCache = $poLocales['result']['languages'];
+        return self::$translationDataCache;
     }
 
     /**
