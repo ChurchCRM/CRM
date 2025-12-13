@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\Dashboard\ClassificationDashboardItem;
 use ChurchCRM\Dashboard\DashboardItemInterface;
 use ChurchCRM\Dashboard\EventsMenuItems;
 
@@ -15,7 +14,6 @@ class NewDashboardService
     {
         $DashboardItems = [
             EventsMenuItems::class,
-            ClassificationDashboardItem::class,
         ];
         $ReturnValues = [];
         foreach ($DashboardItems as $DashboardItem) {
