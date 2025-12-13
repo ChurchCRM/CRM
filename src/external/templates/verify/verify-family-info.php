@@ -25,8 +25,6 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
         <i class="fa-solid fa-fw fa-map-marker" title="<?= gettext("Home Address")?>"></i><?= $family->getAddress() ?><br/>
           <?php if (!empty($family->getHomePhone())) { ?>
           <i class="fa-solid fa-fw fa-phone" title="<?= gettext("Home Phone")?>"> </i>(H) <?= $family->getHomePhone() ?><br/>
-          <?php }  if (!empty($family->getEmail())) { ?>
-          <i class="fa-solid fa-fw fa-envelope" title="<?= gettext("Family Email") ?>"></i><?= $family->getEmail() ?><br/>
               <?php
           }
           if ($family->getWeddingDate() !== null) {
