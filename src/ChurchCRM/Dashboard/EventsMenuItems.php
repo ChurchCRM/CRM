@@ -8,13 +8,12 @@ use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-class EventsMenuItems implements DashboardItemInterface
+/**
+ * Provides counts of today's events, birthdays, and anniversaries
+ * for menu badge display
+ */
+class EventsMenuItems
 {
-    public static function getDashboardItemName(): string
-    {
-        return 'EventsCounters';
-    }
-
     public static function getDashboardItemValue(): array
     {
         return [
@@ -24,12 +23,7 @@ class EventsMenuItems implements DashboardItemInterface
         ];
     }
 
-    public static function shouldInclude(string $PageName): bool
-    {
-        return true; // this ID would be found on all pages.
-    }
-
-    private static function getNumberEventsOfToday()
+    private static function getNumberEventsOfToday(): int
     {
         $start_date = date('Y-m-d ') . ' 00:00:00';
         $end_date = date('Y-m-d H:i:s', strtotime($start_date . ' +1 day'));
@@ -40,7 +34,7 @@ class EventsMenuItems implements DashboardItemInterface
             ->count();
     }
 
-    private static function getNumberBirthDates()
+    private static function getNumberBirthDates(): int
     {
         return PersonQuery::create()
             ->filterByBirthMonth(date('m'))
@@ -48,7 +42,7 @@ class EventsMenuItems implements DashboardItemInterface
             ->count();
     }
 
-    private static function getNumberAnniversaries()
+    private static function getNumberAnniversaries(): int
     {
         return $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)

@@ -375,33 +375,18 @@ window.CRM.system = {
 };
 
 window.CRM.dashboard = {
-    renderers: {
-        EventsCounters: function (data) {
-            if (document.getElementById("BirthdateNumber") != null) {
-                document.getElementById("BirthdateNumber").innerText = data.Birthdays;
-                document.getElementById("AnniversaryNumber").innerText = data.Anniversaries;
-                document.getElementById("EventsNumber").innerText = data.Events;
-            }
-        },
-        PageLocale: function (data) {
-            $(".fi").addClass("fi-" + data.countryFlagCode);
-            $("#translationInfo").html(data.name + " [" + window.CRM.locale + "]");
-            if (data.displayPerCompleted && data.poPerComplete < 90) {
-                $("#translationPer").html(data.poPerComplete + "%");
-                $("#localePer").removeClass("hidden");
-            }
-        },
-    },
-    refresh: function () {
+    /**
+     * Load event counters once on page load (birthdays, anniversaries, events today)
+     */
+    loadEventCounters: function () {
         window.CRM.APIRequest({
             method: "GET",
-            path:
-                "background/page?token=" + Math.random() + "&name=" + window.CRM.PageName.replace(window.CRM.root, ""),
+            path: "calendar/events-counters",
             suppressErrorDialog: true,
         }).done(function (data) {
-            for (var key in data) {
-                window["CRM"]["dashboard"]["renderers"][key](data[key]);
-            }
+            document.getElementById("BirthdateNumber").innerText = data.Birthdays;
+            document.getElementById("AnniversaryNumber").innerText = data.Anniversaries;
+            document.getElementById("EventsNumber").innerText = data.Events;
         });
     },
 };

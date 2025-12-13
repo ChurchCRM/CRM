@@ -48,8 +48,8 @@ function initializeApp() {
     // Initialize just-validate for all forms with data-validate attribute
     initializeFormValidation();
 
-    window.CRM.dashboard.refresh();
-    DashboardRefreshTimer = setInterval(window.CRM.dashboard.refresh, window.CRM.iDashboardServiceIntervalTime * 1000);
+    // Load event counters once on page load (no polling needed - values only change at midnight)
+    window.CRM.dashboard.loadEventCounters();
 
     window.CRM.APIRequest({
         path: "system/notification",
