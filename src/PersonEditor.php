@@ -557,8 +557,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyZip = strlen($fam_Zip);
         $bFamilyCountry = strlen($fam_Country);
         $bFamilyHomePhone = strlen($fam_HomePhone);
-        $bFamilyWorkPhone = strlen($fam_WorkPhone);
-        $bFamilyCellPhone = strlen($fam_CellPhone);
         $bFamilyEmail = strlen($fam_Email);
 
         $bFacebook = strlen($per_Facebook);

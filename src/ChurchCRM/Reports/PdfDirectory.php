@@ -328,12 +328,6 @@ class PdfDirectory extends ChurchInfoReport
         if ($bDirFamilyPhone && strlen($fam_HomePhone)) {
             $sFamilyStr .= '   ' . gettext('Phone') . ': ' . ExpandPhoneNumber($fam_HomePhone, $fam_Country, $bWeird) . "\n";
         }
-        if ($bDirFamilyWork && strlen($fam_WorkPhone)) {
-            $sFamilyStr .= '   ' . gettext('Work') . ': ' . ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $bWeird) . "\n";
-        }
-        if ($bDirFamilyCell && strlen($fam_CellPhone)) {
-            $sFamilyStr .= '   ' . gettext('Cell') . ': ' . ExpandPhoneNumber($fam_CellPhone, $fam_Country, $bWeird) . "\n";
-        }
         if ($bDirFamilyEmail && strlen($fam_Email)) {
             $sFamilyStr .= '   ' . gettext('Email') . ': ' . $fam_Email . "\n";
         }
