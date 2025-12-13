@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -9,6 +10,7 @@ use ChurchCRM\Service\TaskService;
 use ChurchCRM\view\MenuRenderer;
 
 $taskService = new TaskService();
+$localeInfo = Bootstrapper::getCurrentLocale();
 
 // Turn ON output buffering
 ob_start();
@@ -80,8 +82,10 @@ $MenuFirst = 1;
             <!-- Locale Dropdown Menu -->
             <li class="nav-item dropdown show">
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
-                    <i class="fi fi-squared"></i>
-                    <span class="badge badge-danger navbar-badge" id="translationPer"></span>
+                    <i class="fi fi-<?= $localeInfo->getCountryFlagCode() ?> fi-squared"></i>
+                    <?php if ($localeInfo->shouldShowTranslationBadge()) { ?>
+                    <span class="badge badge-danger navbar-badge"><?= $localeInfo->getTranslationPercentage() ?>%</span>
+                    <?php } ?>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
                     <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" class="dropdown-item">
@@ -90,7 +94,7 @@ $MenuFirst = 1;
                     <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
                     <div class="dropdown-divider"></div>
                     <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
-                        <i class="fa-solid fa-user-edit"></i> <span id="translationInfo"></span>
+                        <i class="fa-solid fa-user-edit"></i> <?= $localeInfo->getName() ?> [<?= $localeInfo->getLocale() ?>]
                     </a>
                     <?php } ?>
                 </div>

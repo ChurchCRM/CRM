@@ -128,4 +128,51 @@ class LocaleInfo
     {
         return $this->localeConfig ?? [];
     }
+
+    /**
+     * Get lowercase country code for flag icons (e.g., 'us', 'de', 'fr')
+     */
+    public function getCountryFlagCode(): string
+    {
+        return strtolower($this->country ?? 'us');
+    }
+
+    /**
+     * Check if translation completion percentage should be displayed
+     * (only for non-English locales)
+     */
+    public function shouldShowTranslationPercentage(): bool
+    {
+        return !str_starts_with($this->locale ?? 'en', 'en');
+    }
+
+    /**
+     * Get the translation completion percentage from POEditor.
+     * Returns 100 if locale is English or not found.
+     */
+    public function getTranslationPercentage(): int
+    {
+        if (!$this->shouldShowTranslationPercentage()) {
+            return 100;
+        }
+
+        $poLocalesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/poeditor.json');
+        $poLocales = json_decode($poLocalesFile, true, 512, JSON_THROW_ON_ERROR);
+
+        foreach ($poLocales['result']['languages'] as $poLocale) {
+            if (strtolower($this->poLocaleId ?? '') === strtolower($poLocale['code'])) {
+                return (int) $poLocale['percentage'];
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * Check if translation badge should be shown (non-English and < 90% complete)
+     */
+    public function shouldShowTranslationBadge(): bool
+    {
+        return $this->shouldShowTranslationPercentage() && $this->getTranslationPercentage() < 90;
+    }
 }

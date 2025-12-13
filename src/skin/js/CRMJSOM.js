@@ -383,14 +383,6 @@ window.CRM.dashboard = {
                 document.getElementById("EventsNumber").innerText = data.Events;
             }
         },
-        PageLocale: function (data) {
-            $(".fi").addClass("fi-" + data.countryFlagCode);
-            $("#translationInfo").html(data.name + " [" + window.CRM.locale + "]");
-            if (data.displayPerCompleted && data.poPerComplete < 90) {
-                $("#translationPer").html(data.poPerComplete + "%");
-                $("#localePer").removeClass("hidden");
-            }
-        },
     },
     refresh: function () {
         window.CRM.APIRequest({
