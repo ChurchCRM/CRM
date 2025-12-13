@@ -447,10 +447,7 @@ function initializeMainDashboard() {
     let updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(dataTableConfig);
     updatedPersonTable.on("draw", function () {
         syncCartButtons();
-        // Refresh image loader for dynamically added photos
-        if (window.CRM && window.CRM.peopleImageLoader) {
-            window.CRM.peopleImageLoader.refresh();
-        }
+        // No need to refresh image loader; inline photos have been removed
     });
 
     let latestPersonColumns = dataTablePersonColumns.slice();
