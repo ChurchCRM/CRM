@@ -366,8 +366,6 @@ if ($sFormat === 'addtocart') {
         $fam_Zip = '';
         $fam_Country = '';
         $fam_HomePhone = '';
-        $fam_WorkPhone = '';
-        $fam_CellPhone = '';
         $fam_Email = '';
         $fam_WeddingDate = '';
 
