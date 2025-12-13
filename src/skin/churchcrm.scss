@@ -30,8 +30,10 @@
 @include meta.load-css("scss/ui-components");
 
 @include meta.load-css("scss/dropdowns");
+@include meta.load-css("scss/events");
 @include meta.load-css("scss/forms");
 @include meta.load-css("scss/tables");
+@include meta.load-css("scss/financial-reports");
 @include meta.load-css("scss/profileImage");
 @include meta.load-css("scss/shortConfig");
 @include meta.load-css("scss/leftNav");
@@ -47,6 +49,7 @@
 @include meta.load-css("scss/kiosk");
 @include meta.load-css("scss/groups");
 @include meta.load-css("scss/people-lazy-image-loading");
+@include meta.load-css("scss/finance");
 
 html,
 body {

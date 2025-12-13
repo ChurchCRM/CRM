@@ -13,9 +13,7 @@ function ValidateNewPassword() {
     var NewPassword2 = $("#NewPassword2").val();
     if (NewPassword1 !== "" && NewPassword2 !== "") {
         if (NewPassword1 !== NewPassword2) {
-            StatusText = i18next.t(
-                "You must enter the same password in both boxes",
-            );
+            StatusText = i18next.t("You must enter the same password in both boxes");
         }
     }
     $("#NewPasswordError").text(StatusText);

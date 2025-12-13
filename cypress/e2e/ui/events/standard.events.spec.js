@@ -1,39 +1,30 @@
 /// <reference types="cypress" />
 
 describe("Standard User Session", () => {
-    it("Visit Event Attendance", () => {
-        cy.loginStandard("EventAttendance.php");
-        cy.contains("Church Service");
+    beforeEach(() => cy.setupStandardSession());
+
+    it("View Event Checkin via URL", () => {
+        cy.visit("Checkin.php?eventId=3");
+        cy.contains("Event Checkin");
+        cy.contains("Summer Camp");
     });
 
-    it("Visit Church Servers", () => {
-        cy.loginStandard(
-            "EventAttendance.php?Action=List&Event=1&Type=Church%20Service",
-        );
-        cy.contains("Christmas Service");
-        cy.get("#Non-Attending-1").click();
-        cy.contains("Berry, Miss Brianna");
-    });
-
-    it("View Event via URL", () => {
-        cy.loginStandard("EditEventAttendees.php?eventId=3");
-        cy.contains("Attendees for Event : Summer Camp");
-    });
-
-    it("View Event via Bad URL", () => {
-        cy.loginStandard("EditEventAttendees.php", false);
-        cy.contains("Listing All Church Events");
-    });
-
-    it("View Event via invalid URL id", () => {
-        cy.loginStandard("EditEventAttendees.php?eventId=99999", false);
-        cy.contains("Listing All Church Events");
+    it("View Checkin page without event", () => {
+        cy.visit("Checkin.php");
+        cy.contains("Event Checkin");
+        cy.contains("Select event");
     });
 
     it("CheckIn People", () => {
-        cy.loginStandard("Checkin.php");
+        cy.visit("Checkin.php");
         cy.contains("Event Checkin");
-        cy.get("#EventID").select("Summer Camp");
-        cy.contains("Add Attendees for Event:");
+        cy.get("#EventID").select(3);
+        cy.contains("Check In Person");
+    });
+
+    it("Filter events by type", () => {
+        cy.visit("Checkin.php");
+        cy.contains("Event Checkin");
+        cy.get("#EventTypeFilter").should("exist");
     });
 });

@@ -9,7 +9,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 $sReportType = '';
 
@@ -26,9 +26,28 @@ if ($sReportType) {
     $sPageTitle .= ': ' . gettext($sReportType);
 }
 require_once 'Include/Header.php';
+// Preserve submitted dates/datetype for both selection and filters views
+$sDateStart = '';
+$sDateEnd = '';
+$datetype = '';
+if (array_key_exists('DateStart', $_POST)) {
+    $sDateStart = InputUtils::legacyFilterInput($_POST['DateStart'], 'date');
+} elseif (array_key_exists('DateStart', $_GET)) {
+    $sDateStart = InputUtils::legacyFilterInput($_GET['DateStart'], 'date');
+}
+if (array_key_exists('DateEnd', $_POST)) {
+    $sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
+} elseif (array_key_exists('DateEnd', $_GET)) {
+    $sDateEnd = InputUtils::legacyFilterInput($_GET['DateEnd'], 'date');
+}
+if (array_key_exists('datetype', $_POST)) {
+    $datetype = InputUtils::legacyFilterInput($_POST['datetype']);
+} elseif (array_key_exists('datetype', $_GET)) {
+    $datetype = InputUtils::legacyFilterInput($_GET['datetype']);
+}
 ?>
 <div class="card card-body">
-
+<!-- Styles for this page moved into the project's SCSS: `src/skin/scss/_financial-reports.scss` -->
 <?php
 
 // No Records Message if previous report returned no records.
@@ -178,14 +197,18 @@ if ($sReportType == '') {
     // Starting and Ending Dates for Report
     if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report', 'Zero Givers'])) {
         $today = date('Y-m-d');
+        $startVal = $sDateStart ? $sDateStart : $today;
+        $endVal = $sDateEnd ? $sDateEnd : $today;
         echo '<tr><td class=LabelColumn>' . gettext('Report Start Date:') . "</td>
-            <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='$today'></td></tr>";
+            <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='" . InputUtils::escapeHTML($startVal) . "'></td></tr>";
         echo '<tr><td class=LabelColumn>' . gettext('Report End Date:') . "</td>
-            <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='$today'></td></tr>";
+            <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='" . InputUtils::escapeHTML($endVal) . "'></td></tr>";
         if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report'])) {
+            $depChecked = ($datetype !== 'Payment') ? " checked" : "";
+            $payChecked = ($datetype === 'Payment') ? " checked" : "";
             echo '<tr><td class=LabelColumn>' . gettext('Apply Report Dates To:') . '</td>';
-            echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio checked value='Deposit'>" . gettext('Deposit Date (Default)');
-            echo " &nbsp; <input name=datetype type=radio value='Payment'>" . gettext('Payment Date') . '</tr>';
+            echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio value='Deposit' $depChecked>" . gettext('Deposit Date (Default)');
+            echo " &nbsp; <input name=datetype type=radio value='Payment' $payChecked>" . gettext('Payment Date') . '</tr>';
         }
     }
 
@@ -254,8 +277,7 @@ if ($sReportType == '') {
         echo "<option value='CHECK'>" . gettext('Check')
             . "<option value='CASH'>" . gettext('Cash')
             . "<option value='CREDITCARD'>" . gettext('Credit Card')
-            . "<option value='BANKDRAFT'>" . gettext('Bank Draft')
-            . "<option value='EGIVE'>" . gettext('eGive');
+            . "<option value='BANKDRAFT'>" . gettext('Bank Draft');
         echo '</select></td></tr>';
     }
 
@@ -366,6 +388,12 @@ $(document).ready(function() {
   });
   $("#clearAllFunds").click(function () {
         $("#fundsList").val(null).trigger("change");
+  });
+
+  // Handle report download - clear "No Data Found" banner when exporting
+  $(document).on("click", "button[type='submit'], input[type='submit']", function() {
+    // Simply hide the No Data Found alert banner when any submit button is clicked
+    $(".alert-warning").hide();
   });
   }
 );

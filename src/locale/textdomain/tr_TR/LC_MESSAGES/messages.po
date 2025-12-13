@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Veritabanı Yedeği"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Bu araç, ChurchCRM veritabanını manuel olarak yedeklemenize yardımcı olacaktır."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Sistemleriniz için düzenli bir yedekleme prosedürünüz yoksa en az haftada bir manuel yedekleme yapmanız gerekir."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Yedekleme dosyasını indirdikten sonra iki kopya almalısınız. Bunlardan birini sahada yangına dayanıklı bir kasaya, diğerini ise saha dışında güvenli bir yere koyun."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "ChurchCRM veritabanında depolanan verilerin gizliliği konusunda endişeleriniz varsa, yedek verileri başkalarının erişebildiği bir yerde saklanacaksa şifrelemelisiniz."
-
-#: 
-msgid "Select archive type"
-msgstr "Arşiv türünü seçin"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Yedekleme dosyası bir şifre ile şifrelensin mi?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Şifrenizi yeniden yazın"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Harici depolamaya yedekleme oluşturun ve gönderin"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Toplu kazanan girişi"
 
@@ -371,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "Etkinliğe Sepet Ekle"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Sepetinizi eklemek istediğiniz etkinliği seçin"
-
-#: 
 msgid "OR"
 msgstr "VEYA"
 
@@ -480,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "Aileye boş araba"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Etkinliğe boş araba"
-
-#: 
 msgid "Map Cart"
 msgstr "Harita arabası"
 
@@ -540,20 +499,8 @@ msgid "Event Checkin"
 msgstr "Olay kontrolü"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "İnsanları kontrol etmek istediğiniz olayı seçin"
-
-#: 
 msgid "Select Event"
 msgstr "Etkinliği Seçin"
-
-#: 
-msgid "Add Visitor"
-msgstr "Ziyaretçi ekle"
-
-#: 
-msgid "CheckIn"
-msgstr "Giriş"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +525,6 @@ msgstr "Tarafından kontrol edildi"
 #: 
 msgid "Action"
 msgstr "Eylem"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Etkinliğe atanan katılımcı yok"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -613,29 +556,14 @@ msgid "Deposit Slip Number: "
 msgstr "Depozito Kayma Numarası:"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Depozito Detayları:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Depozito fişini kapatın (Kaydet'e basmayı unutmayın)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Depozito Kayma Raporu"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Önemli Not: Depozito kayması kapatıldığında başarısız işlemler kalıcı olarak silinecektir."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Mevduat Özeti:"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Bu depozito fişiyle ilgili ödemeler:"
 
 #: 
 msgid "Import eGive"
@@ -646,7 +574,8 @@ msgid "Add Payment"
 msgstr "Ödeme Ekle"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Yetkili İşlemleri Yükle"
 
 #: 
@@ -912,44 +841,8 @@ msgid "Edit"
 msgstr "Düzenlemek"
 
 #: 
-msgid "Event Attendees"
-msgstr "Etkinlik katılımcıları"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Etkinlik Nonsoles Non"
-
-#: 
-msgid "Event Guests"
-msgstr "Etkinlik Konukları"
-
-#: 
-msgid "There "
-msgstr "Orası"
-
-#: 
 msgid "Event Title"
 msgstr "Olay başlığı"
-
-#: 
-msgid "Event Date"
-msgstr "Etkinlik tarihi"
-
-#: 
-msgid "Attending Members"
-msgstr "Katılan Üyeler"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Katılımsız üyeler"
-
-#: 
-msgid "Guests"
-msgstr "Misafirler"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Bu kategoride olay yok"
 
 #: 
 msgid "Create Event"
@@ -960,20 +853,8 @@ msgid "Create a new Event"
 msgstr "Yeni Bir Etkinlik Oluşturun"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Düzenleme Olay Kimliği:"
-
-#: 
 msgid " errors. Please see below"
 msgstr " hatalar. Lütfen aşağıya bakın"
-
-#: 
-msgid "Items with a "
-msgstr "A ile eşyalar"
-
-#: 
-msgid " are required"
-msgstr " gerekmektedir"
 
 #: 
 msgid "Select your event type"
@@ -984,20 +865,8 @@ msgid "You must pick an event type."
 msgstr "Bir olay türü seçmelisiniz."
 
 #: 
-msgid "Event Desc"
-msgstr "Olay Desc"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Katılım sayısı kaydedilmedi"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Katılım Notları:"
-
-#: 
-msgid "Event Sermon"
-msgstr "Etkinlik Vaaz"
 
 #: 
 msgid "Event Status"
@@ -1006,10 +875,6 @@ msgstr "Olay durumu"
 #: 
 msgid "Return to Events"
 msgstr "Etkinliklere Dön"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "Olay Türü Adı"
 
 #: 
 msgid "Sundays"
@@ -1038,30 +903,6 @@ msgstr "Cuma günleri"
 #: 
 msgid "Saturdays"
 msgstr "Cumartesi günleri"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "Varsayılan başlangıç ​​zamanı"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "Katılım Sayıları"
-
-#: 
-msgid "Optional"
-msgstr "İsteğe bağlı"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Bu etkinliğe dahil etmek istediğiniz katılım sayısının bir listesini girin."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Her sayım_adı bir virgülle ayırın. Örneğin. Üyeler, ziyaretçiler, kampüs, çocuklar"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Her olay türü toplam sayı içerir, eklemeniz gerekmez."
 
 #: 
 msgid "Add Event Type"
@@ -1148,10 +989,6 @@ msgid "Contact Info"
 msgstr "İletişim bilgileri"
 
 #: 
-msgid "Other Info"
-msgstr "Diğer bilgiler"
-
-#: 
 msgid "Envelope Info"
 msgstr "Zarf Bilgisi"
 
@@ -1162,10 +999,6 @@ msgstr "Özel Alanlar"
 #: 
 msgid "Family Members"
 msgstr "Aile üyeleri"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Şimdi aile üyeleri oluşturabilir veya daha sonra ekleyebilirsiniz. Tüm girişler yeni kişi kayıtları olacak."
 
 #: 
 msgid "First"
@@ -1260,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "Zarf numarası"
 
 #: 
-msgid "Verify Info"
-msgstr "Bilgi Doğrula"
-
-#: 
 msgid "Add New Member"
 msgstr "Yeni üye ekle"
-
-#: 
-msgid "Previous Family"
-msgstr "Önceki Aile"
-
-#: 
-msgid "Next Family"
-msgstr "Sonraki Aile"
 
 #: 
 msgid "Upload Photo"
@@ -1362,14 +1183,6 @@ msgstr "Yöntem"
 #: 
 msgid "Comment"
 msgstr "Yorum"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Yeni bir rehin ekle"
-
-#: 
-msgid "Add a new payment"
-msgstr "Yeni bir ödeme ekle"
 
 #: 
 msgid "Close"
@@ -1633,7 +1446,8 @@ msgid "Date End"
 msgstr "Tarih sonu"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Temiz filtreler"
 
 #: 
@@ -2022,36 +1836,12 @@ msgid "Confirm data labels"
 msgstr "Veri etiketlerini onaylayın"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Türü listeleme olayları ="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Tüm kilise etkinliklerini listeleme"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Görüntülemek için olay türlerini seçin"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Yılda Etkinlik Görüntüleyin"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Başlangıç ​​tarihi/saati"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Katılım kaydedilmedi"
-
-#: 
-msgid "Attendees"
-msgstr "Katılımcılar"
-
-#: 
-msgid " Monthly Averages"
-msgstr " Aylık ortalamalar"
 
 #: 
 msgid "Invalid login or password"
@@ -2394,32 +2184,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "İlişkili aile kaydından miras alınan öğeleri gösterir."
 
 #: 
-msgid "Personal Info"
-msgstr "Kişisel bilgi"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Bay, Bayan, Dr., Rev."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Jr., Sr., III"
-
-#: 
 msgid "Birth Month"
 msgstr "Doğum ayı"
 
 #: 
-msgid "Select Month"
-msgstr "Ay seç"
-
-#: 
 msgid "Birth Day"
 msgstr "Doğum günü"
-
-#: 
-msgid "Select Day"
-msgstr "Seçim Günü"
 
 #: 
 msgid "Birth Year"
@@ -2432,10 +2202,6 @@ msgstr "Git yaşı"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Yeni Bir Aile Oluştur (Soyadı Kullanarak)"
-
-#: 
-msgid "Membership Info"
-msgstr "Üyelik Bilgisi"
 
 #: 
 msgid "Friend Date"
@@ -2522,28 +2288,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "'Nakit' ödemesi için geçerli olmayan kontrol numarası"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Rehin editörü"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Ödeme Editörü:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr " Mevduat fişi #"
-
-#: 
 msgid " more entries will fit."
 msgstr " Daha fazla giriş sığacaktır."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Ödeme Editörü - Mevcut ödemeyi değiştirin"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Ödeme Editörü - Yeni Depozito Kayması Oluşturulacak"
 
 #: 
 msgid "Deposit closed"
@@ -2847,10 +2593,6 @@ msgstr "Göndermek"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Rehin Hatırlatma Raporu"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Etkinlik Katılım Raporları"
 
 #: 
 msgid "Restore Database"
@@ -3794,18 +3536,6 @@ msgid "Import Data"
 msgstr "Verileri İçe Aktar"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Bu kişiyi olay kimliğinden silmek istediğinden emin misiniz:"
-
-#: 
-msgid "Date Range"
-msgstr "Tarih aralığı"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Bu olay türünün silinmesi, mevcut olayları veya katılım sayısını silmez. Olay türü kimliğini silmek istediğinizden emin misiniz:"
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Seçilenleri silmek istediğinden emin misiniz"
 
@@ -3834,14 +3564,6 @@ msgid "Deposit Date"
 msgstr "Mevduat tarihi"
 
 #: 
-msgid "Details:"
-msgstr "Detaylar:"
-
-#: 
-msgid "File Missing"
-msgstr "Eksik dosya"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Bu, veritabanındaki aile zarf numaralarının bu sayfada seçilenlerle üzerine yazacaktır. Devam et?"
 
@@ -3856,42 +3578,6 @@ msgstr "en az biriyle:"
 #: 
 msgid "Welcome to"
 msgstr "Hoşgeldiniz"
-
-#: 
-msgid "Select Database Files"
-msgstr "Veritabanı dosyalarını seçin"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Geri yüklemek için bir yedekleme dosyası seçin"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "Dikkat: Bu, mevcut veritabanını tamamen silecek ve yedekleme ile değiştirecektir"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "ChurchInfo'dan veya ChurchCRM'nin önceki bir sürümünden bir yedekleme yüklerseniz, otomatik olarak geçerli veritabanı şemasına yükseltilir"
-
-#: 
-msgid "Upload Files"
-msgstr "Dosyaları yükle"
-
-#: 
-msgid "No Restore Running"
-msgstr "Geri Yükleme Yok"
-
-#: 
-msgid "Restore Complete"
-msgstr "Tamamla Geri Yükle"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Geri yüklenen veritabanına giriş yapın"
-
-#: 
-msgid "Restore Error."
-msgstr "Hatayı geri yükle."
 
 #: 
 msgid "Church Information"
@@ -3994,57 +3680,20 @@ msgid "Enter Name"
 msgstr "İsim giriniz"
 
 #: 
-msgid "Update Church Info"
-msgstr "Kilise Bilgilerini Güncelle"
-
-#: 
-msgid "Set Church Address"
-msgstr "Kilise adresini ayarlayın"
-
-#: 
-msgid "Set Email Settings"
-msgstr "E -posta Ayarlarını Ayarla"
-
-#: 
 msgid "New Release"
 msgstr "Yeni sürüm"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Uygulama bütünlüğü kontrolü başarısız oldu"
 
 #: 
 msgid "Self Registration"
 msgstr "Kendi Kayıt"
 
 #: 
-msgid "Restore Status:"
-msgstr "Geri Yükleme Durumu:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Koordinat bulunamadı"
 
 #: 
-msgid "Backup Status:"
-msgstr "Yedekleme Durumu:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Yedekleme Yok"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonim"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Etkinlik Kimliği için katılımcılar:"
-
-#: 
-msgid "Yearly"
-msgstr "Yıllık"
 
 #: 
 msgid "Registration Complete"
@@ -4091,20 +3740,8 @@ msgid "Signature definition file signature failed validation"
 msgstr "İmza Tanım Dosyası İmza Başarısız Doğrulama"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "İmza Tanım Dosyası Eksik"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Bir veya daha fazla dosya başarısız oldu imza doğrulaması"
-
-#: 
-msgid "Configure HTTPS"
-msgstr "HTTPS'yi yapılandırın"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Dosyalar Dürüstlük Kontrolü Başarısız"
 
 #: 
 msgid "Family:"
@@ -4147,10 +3784,6 @@ msgid "Voting members "
 msgstr "Oy kullanan üyeler"
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Çalışmayı geri yükleyin, lütfen bekleyin."
-
-#: 
 msgid "Family Members:"
 msgstr "Aile üyeleri:"
 
@@ -4175,10 +3808,6 @@ msgid "Fiscal Year:"
 msgstr "Mali yıl:"
 
 #: 
-msgid "Add Attendees for Event"
-msgstr "Etkinlik için katılımcılar ekleyin"
-
-#: 
 msgid "family"
 msgstr "aile"
 
@@ -4195,14 +3824,6 @@ msgid "CSV Import"
 msgstr "CSV İthalat"
 
 #: 
-msgid "Comment:"
-msgstr "Yorum:"
-
-#: 
-msgid "Closed:"
-msgstr "Kapalı:"
-
-#: 
 msgid "Start Date: "
 msgstr "Başlangıç ​​tarihi:"
 
@@ -4213,10 +3834,6 @@ msgstr "Bitiş tarihi:"
 #: 
 msgid "Members:"
 msgstr "Üyeler:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Genel Ayarları Düzenle"
 
 #: 
 msgid "There were "
@@ -5089,46 +4706,6 @@ msgstr "Aylık"
 #: 
 msgid "Yearly on"
 msgstr "Yıllık"
-
-#: 
-msgid "All Events of Type"
-msgstr "Tüm tür olaylar"
-
-#: 
-msgid "There is"
-msgstr "Var"
-
-#: 
-msgid "There are"
-msgstr "Var"
-
-#: 
-msgid "event"
-msgstr "Etkinlik"
-
-#: 
-msgid "events"
-msgstr "Etkinlikler"
-
-#: 
-msgid " in this category."
-msgstr " Bu kategoride."
-
-#: 
-msgid "There currently is"
-msgstr "Şu anda var"
-
-#: 
-msgid "There currently are"
-msgstr "Şu anda var"
-
-#: 
-msgid "custom event type"
-msgstr "Özel Etkinlik Türü"
-
-#: 
-msgid "custom event types"
-msgstr "Özel Etkinlik Türleri"
 
 #: 
 msgid "Family Roles Editor"
@@ -6538,42 +6115,6 @@ msgid "Please verify your family's information"
 msgstr "Lütfen ailenizin bilgilerini doğrulayın"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Kilise adresi ayarlanmadı."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Kilise adı varsayılan değere ayarlanmıştır"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "SMTP sunucu bilgileri boş"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "TLS/SSL sertifikası yükleyerek sisteminiz daha güvenli olabilir."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Eksik sınıflandırma verileri"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Bazı insanlar için eksik sınıflandırma verileri"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Eksik Cinsiyet Verileri"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Bazı insanlar için cinsiyet verileri eksik"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Eksik Rol Verileri"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Doğrulama bilgilerini yükleyemiyor"
 
@@ -6638,20 +6179,8 @@ msgid "Verified In Person"
 msgstr "Şahsen doğrulandı"
 
 #: 
-msgid "None State"
-msgstr "Hiçbir DEĞİL"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Yedek arşivi bir veritabanı içermiyor"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Eksik koordinatlar"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Bazı aileler için aile verileri koordine eder"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6774,28 +6303,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Seçilen dosya, bu sunucuların maksimum yükleme boyutunu aşıyor"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Karşılanmamış uygulama önkoşulları"
-
-#: 
 msgid "Failed"
 msgstr "Arızalı"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Kilise Kontrol Hesap Numarası"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Bazı insanlar için eksik rol verileri"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "PHP Max Dosya Boyutu Çok Küçük"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Mobil fotoğraf yüklemesine izin vermek için PHP yükleme sınırlarını artırın ve yedekleme geri yükleme."
 
 #: 
 msgid "Deactivated the Family"
@@ -6830,7 +6343,8 @@ msgid "Profile Image uploaded"
 msgstr "Profil resmi yüklendi"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "Ödemeler?"
 
 #: 
@@ -6864,10 +6378,6 @@ msgstr "Lütfen bir aile seçin."
 #: 
 msgid "Coordinate data base file name:"
 msgstr "Veri tabanı dosya adını koordine edin:"
-
-#: 
-msgid "Intersect With Cart"
-msgstr "Sepetle kesişmek"
 
 #: 
 msgid "select an option"
@@ -6908,15 +6418,6 @@ msgstr "Tesis tayinsiz olamazdı."
 #: 
 msgid "Select event"
 msgstr "Etkinliği Seçin"
-
-#: 
-msgid "Person's Name"
-msgstr "Kişinin adı"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "(İsteğe bağlı) tarafından check -in yapıldı"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -7025,14 +6526,6 @@ msgstr "atanmış"
 #: 
 msgid "Photo"
 msgstr "Fotoğraf"
-
-#: 
-msgid "Payment Details"
-msgstr "Ödeme detayları"
-
-#: 
-msgid "Fund Split"
-msgstr "Fon Split"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7435,10 +6928,6 @@ msgid "Your Church's X Page"
 msgstr "Kilisenizin X sayfası"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "Yerel resim olmadığında Google'da Kullanıcı Görüntüleri Arama"
-
-#: 
 msgid "Self Register"
 msgstr "Kendi Kayıt Kayıt"
 
@@ -7832,18 +7321,6 @@ msgid "Upgrade Required"
 msgstr "Yükseltme Gerekli"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Mevcut DB sürümü:"
-
-#: 
-msgid "Current Software Version: "
-msgstr "Mevcut Yazılım Sürümü:"
-
-#: 
-msgid "Upgrade database"
-msgstr "Veritabanını Yükselt"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "CRM'nin başlangıcında doğum tarihleri ​​yıldönümlerini gösterin"
 
@@ -7900,14 +7377,6 @@ msgid "Meanwhile, you may"
 msgstr "Bu arada olabilirsin"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Yalnızca veritabanı (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Veritabanı ve Fotoğraflar (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Kullanıcı yönetici olmalı"
 
@@ -7940,10 +7409,6 @@ msgid "return to People Dashboard"
 msgstr "People Dashboard'a Dön"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Kullanıcının MenuOptions iznine sahip olması gerekir"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "SMTP Host kurulum değil, lütfen Ayarlar sayfasını ziyaret edin"
 
@@ -7956,16 +7421,8 @@ msgid "This Family is Deactivated"
 msgstr "Bu aile devre dışı bırakıldı"
 
 #: 
-msgid "Metadata"
-msgstr "Meta veriler"
-
-#: 
 msgid "The database has been cleared."
 msgstr "Veritabanı temizlendi."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Kullanıcının BadDevent izinleri olmalı"
 
 #: 
 msgid "Anniversaries"
@@ -7999,10 +7456,6 @@ msgstr "E -posta olmadan bulunamadı veya kullanıcı"
 #: 
 msgid "UserName not set"
 msgstr "Kullanıcı adı ayarlanmadı"
-
-#: 
-msgid "The people and families has been cleared from the database."
-msgstr "İnsanlar ve aileler veritabanından temizlendi."
 
 #: 
 msgid "Self Registrations"
@@ -8108,10 +7561,6 @@ msgstr "Finans menüsünü etkinleştir"
 #: 
 msgid "Enable Events menu."
 msgstr "Olaylar menüsünü etkinleştir."
-
-#: 
-msgid "Enable Calendar menu."
-msgstr "Takvim menüsünü etkinleştirin."
 
 #: 
 msgid "Enable Fundraiser menu."
@@ -8239,10 +7688,6 @@ msgid "User must have Edit Records permission"
 msgstr "Kullanıcının kayıt iznini düzenlemesi gerekir"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Kullanıcının finans iznine sahip olması gerekir"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Kendini silemiyorum"
 
@@ -8275,20 +7720,8 @@ msgid "is disabled"
 msgstr "devre dışı bırakıldı"
 
 #: 
-msgid "System Information"
-msgstr "Sistem bilgisi"
-
-#: 
 msgid "Software Version"
 msgstr "Yazılım versiyonu"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Geçerli posta sunucusu ayarları"
-
-#: 
-msgid "Database"
-msgstr "Veri tabanı"
 
 #: 
 msgid "Database Version"
@@ -8357,24 +7790,8 @@ msgid "Emptied into Event"
 msgstr "Olay kimliğine boşaltıldı"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "IntegrityCheck.json Dosyası Eksik"
-
-#: 
 msgid "Passed"
 msgstr "Geçti"
-
-#: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "PHP Max Yürütme Süresi Çok Kısa"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Yedeklemeye ve geri yüklemeye izin vermek için PHP yürütme süresi sınırını artırın."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Uygulama Bütünlük Kontrolü"
 
 #: 
 msgid "Focus"
@@ -8409,7 +7826,8 @@ msgid "Unsupported Deposit Types Detected"
 msgstr "Desteklenmemiş depozito türleri tespit edildi"
 
 #: 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+#, fuzzy
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "Egile, kredi kartı ve banka taslak ödemeleri için destek verilmiştir. Mevcut banka dışı raporlar artık gelecekteki sürümlerde erişilemeyebilir."
 
 #. Context: locales
@@ -8418,24 +7836,12 @@ msgid "Estonian"
 msgstr "Estonya"
 
 #: 
-msgid "Error decoding integrity check result file"
-msgstr "Hata Kod çözme Bütünlük Kontrol Sonuç Dosyası"
-
-#: 
 msgid "Error decoding signature definition file"
 msgstr "İmza Tanım Dosyasını Kod Çözme Hata"
 
 #: 
-msgid "Generate Backup"
-msgstr "Yedekleme Oluşturun"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Uzak yedekleme uç noktası. WebDav ise, bu URL kodlanmalıdır."
-
-#: 
-msgid "Password (if any)"
-msgstr "Şifre (varsa)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8545,10 +7951,6 @@ msgid "Verification URL"
 msgstr "Doğrulama URL'si"
 
 #: 
-msgid "Reset System"
-msgstr "Sistemi Sıfırla"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Beklenmedik kişi kimliği"
 
@@ -8585,20 +7987,8 @@ msgstr[0] "%d yıl önce"
 msgstr[1] "%d yıl önce"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Desteklenmemiş PHP sürümü"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Bu PHP sürümü için destek yakında kaldırılacaktır. Mevcut PHP sürümü:"
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "PHP Ziparchive eksik"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "Yükseltmeyi desteklemek için gerekli PHP Ziparchive"
 
 #: 
 msgid "Add Results to Cart"
@@ -8620,18 +8010,6 @@ msgstr "Yükseltme ile devam etmeden önce lütfen bu görevleri inceleyin ve ha
 #: 
 msgid "Database Reset Functions"
 msgstr "Veritabanı Sıfırlama İşlevleri"
-
-#: 
-msgid "Reset Members"
-msgstr "Üyeleri sıfırla"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Bu, tüm üye verileri, kişileri ve aileleri kaldıracak ve geri alınamaz."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Aileleri/insanları sıfırlayın"
 
 #: 
 msgid "Reset Database"
@@ -8665,10 +8043,6 @@ msgstr "Churchcrm"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Authenticator uygulamasında görüntülenecek uygulama adını belirtin"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Config.php'de eksik olan gizli anahtarlar"
 
 #: 
 msgid "Review"
@@ -8826,20 +8200,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Kilisede izleyici değil"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCrm Kurulum Bilgileri"
-
-#: 
-msgid "Database Server Version"
-msgstr "Veritabanı sunucusu sürümü"
-
-#: 
 msgid "Web Server"
 msgstr "Web sunucusu"
-
-#: 
-msgid "Email Information"
-msgstr "E -posta bilgileri"
 
 #: 
 msgid "List maintenance"
@@ -9067,14 +8429,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "Yeni kaydedilen Authenticator uygulamanıza erişimi kaybettiyseniz, hesabınıza erişmek için bir kurtarma kodu kullanmanız gerekir."
 
 #: 
-msgid "Event Attendance"
-msgstr "Etkinlik Katılımı"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Etkinlikler için Katılım Olun ve Katılım Olmayan Raporlar"
-
-#: 
 msgid "Help translate this project"
 msgstr "Bu projeyi tercüme etmeye yardım edin"
 
@@ -9190,8 +8544,4 @@ msgstr "Geçersiz Doğum Tarihi: Ek ay veya gün eksik."
 #: 
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Geçersiz Doğum Tarihi: Aylık ve Gündüz Eksik."
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Yetişkin adı (isteğe bağlı)"
 

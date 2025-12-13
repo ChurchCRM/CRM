@@ -65,39 +65,6 @@ msgid "Backup Database"
 msgstr "बैकअप डेटाबेस"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "यह टूल ChurchCRM डेटाबेस का मैन्युअल रूप से बैकअप लेने में आपकी सहायता करेगा।"
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "आपको सप्ताह में कम से कम एक बार मैन्युअल बैकअप बनाना चाहिए, जब तक कि आपके पास पहले से ही आपके सिस्टम के लिए नियमित बैकअप प्रक्रिया न हो।"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "बैकअप फ़ाइल डाउनलोड करने के बाद, आपको दो प्रतियां बनानी चाहिए। उनमें से एक को साइट पर अग्निरोधक तिजोरी में रखें और दूसरे को साइट से बाहर किसी सुरक्षित स्थान पर रखें।"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "यदि आप चर्चसीआरएम डेटाबेस में संग्रहीत डेटा की गोपनीयता के बारे में चिंतित हैं, तो आपको बैकअप डेटा को एन्क्रिप्ट करना चाहिए यदि इसे किसी ऐसे स्थान पर संग्रहीत किया जाएगा जो संभावित रूप से दूसरों के लिए सुलभ हो।"
-
-#: 
-msgid "Select archive type"
-msgstr "संग्रह प्रकार चुनें"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "बैकअप फ़ाइल को पासवर्ड से एन्क्रिप्ट करें?"
-
-#: 
-msgid "Re-type Password"
-msgstr "पासवर्ड फिर से लिखें"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "बैकअप जेनरेट करें और बाह्य संग्रहण में भेजें"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "बैच विजेता प्रवेश"
 

@@ -76,16 +76,20 @@ class CSRFUtils
         }
 
         $storedData = $_SESSION[self::SESSION_KEY][$formId];
+        $storedToken = $storedData['token'] ?? null;
+        $storedTime = $storedData['timestamp'] ?? null;
+        $currentTime = time();
+        $timeDiff = $currentTime - $storedTime;
         
         // Check if token has expired
-        if (time() - $storedData['timestamp'] > self::TOKEN_LIFETIME) {
+        if ($timeDiff > self::TOKEN_LIFETIME) {
             // Remove expired token
             unset($_SESSION[self::SESSION_KEY][$formId]);
             return false;
         }
 
         // Validate token using timing-safe comparison
-        $isValid = hash_equals($storedData['token'], $token);
+        $isValid = hash_equals($storedToken, $token);
 
         // Optionally consume token after validation
         // By default, tokens are NOT consumed to allow form resubmission on validation errors

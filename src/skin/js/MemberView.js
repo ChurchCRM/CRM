@@ -19,19 +19,15 @@ $(".delete-person").click(function (event) {
     bootbox.confirm({
         title: i18next.t("Delete this person?"),
         message:
-            i18next.t(
-                "Do you want to delete this person?  This cannot be undone.",
-            ) +
+            i18next.t("Do you want to delete this person?  This cannot be undone.") +
             " <b>" +
             thisLink.data("person_name"),
         buttons: {
             cancel: {
-                label:
-                    '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel"),
+                label: '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel"),
             },
             confirm: {
-                label:
-                    '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"),
+                label: '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"),
                 className: "btn-danger",
             },
         },
@@ -39,10 +35,7 @@ $(".delete-person").click(function (event) {
             if (result) {
                 $.ajax({
                     type: "DELETE",
-                    url:
-                        window.CRM.root +
-                        "/api/person/" +
-                        thisLink.data("person_id"),
+                    url: window.CRM.root + "/api/person/" + thisLink.data("person_id"),
                     dataType: "json",
                     success: function (data, status, xmlHttpReq) {
                         if (thisLink.data("view") === "family") {

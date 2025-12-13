@@ -8,12 +8,49 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\PersonService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
 $app->get('/dashboard', 'viewDashboard');
+$app->get('/access-denied', 'viewAccessDenied');
+
+function viewAccessDenied(Request $request, Response $response, array $args): Response
+{
+    $renderer = new PhpRenderer('templates/common/');
+
+    // Allowed role codes that can be displayed on the access-denied page
+    $allowedRoles = [
+        'Admin',
+        'Finance',
+        'ManageGroups',
+        'EditRecords',
+        'DeleteRecords',
+        'AddRecords',
+        'MenuOptions',
+        'Notes',
+        'CreateDirectory',
+        'AddEvent',
+        'CSVExport',
+        'Authentication',
+    ];
+
+    $queryParams = $request->getQueryParams();
+    $missingRole = in_array($queryParams['role'] ?? '', $allowedRoles, true)
+        ? $queryParams['role']
+        : '';
+
+    $pageArgs = [
+        'sRootPath'   => SystemURLs::getRootPath(),
+        'sPageTitle'  => gettext('Access Denied'),
+        'missingRole' => $missingRole,
+    ];
+
+    return $renderer->render($response, 'access-denied.php', $pageArgs);
+}
 
 function viewDashboard(Request $request, Response $response, array $args): Response
 {
@@ -36,6 +73,13 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ->where('Family.DateDeactivated is null')
         ->count();
 
+    // Redirect admin users with no people to the setup dashboard
+    if (AuthenticationManager::getCurrentUser()->isAdmin() && $dashboardCounts['People'] === 1) {
+        return $response
+            ->withStatus(302)
+            ->withHeader('Location', SystemURLs::getRootPath() . '/admin');
+    }
+
     $dashboardCounts['SundaySchool'] = GroupQuery::create()
         ->filterByType(4)
         ->count();
@@ -49,13 +93,26 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         ->find()
         ->count();
 
+    // Data quality checks for people
+    $personService = new PersonService();
+    $genderDataCheckCount = $personService->getMissingGenderDataCount();
+    $roleDataCheckCount = $personService->getMissingRoleDataCount();
+    $classificationDataCheckCount = $personService->getMissingClassificationDataCount();
+
+    $familyService = new FamilyService();
+    $familyCoordinatesCheckCount = $familyService->getMissingCoordinatesCount();
+
     $pageArgs = [
-        'sRootPath'           => SystemURLs::getRootPath(),
-        'sPageTitle'          => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
-        'dashboardCounts'     => $dashboardCounts,
-        'sundaySchoolEnabled' => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
-        'depositEnabled'      => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),
-        'eventsEnabled'       => SystemConfig::getBooleanValue('bEnabledEvents'),
+        'sRootPath'                       => SystemURLs::getRootPath(),
+        'sPageTitle'                      => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
+        'dashboardCounts'                 => $dashboardCounts,
+        'sundaySchoolEnabled'             => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
+        'depositEnabled'                  => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),
+        'eventsEnabled'                   => SystemConfig::getBooleanValue('bEnabledEvents'),
+        'genderDataCheckCount'            => $genderDataCheckCount,
+        'roleDataCheckCount'              => $roleDataCheckCount,
+        'classificationDataCheckCount'    => $classificationDataCheckCount,
+        'familyCoordinatesCheckCount'     => $familyCoordinatesCheckCount,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

@@ -1,21 +1,29 @@
 ---
 name: Question or Support
-about: Ask a question or get help with ChurchCRM
+about: A short, friendly question or help request
 title: 'Question: '
-labels: 'question'
+type: question
 assignees: ''
 
 ---
 
-## What do you need help with?
-<!-- Describe what you're trying to do or what you're confused about -->
+## How can we help?
 
-## What have you tried?
-<!-- Let us know what you've already attempted -->
+Please share briefly:
+- **What you're trying to do**: Your goal or workflow
+- **What you've tried**: Steps or settings you've attempted
+- **Expected behavior**: What you expected to happen
 
-## Environment (if relevant)
-- ChurchCRM version: [e.g. 5.4.3]
-- Setup: [e.g. Self-hosted, Cloud provider, Local development]
+Add environment details only if relevant (version, hosting type, etc.).
 
-## Additional context
-<!-- Any screenshots, error messages, or other details that might help -->
+**Need system info?** If you're an admin:
+
+**Admin → System Maintenance → System Logs** (or click the debug icon). Attach logs or screenshots if helpful — please redact private data.
+
+**Screenshots help**: A quick image can clarify your question.
+
+**Advanced users**: If this is a UI flow you can reproduce, the Cypress Recorder helps. Capture the steps and attach an exported spec.
+
+👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
+
+Short answers are fine — we'll follow up if needed. Thanks! 🙏

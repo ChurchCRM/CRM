@@ -10,7 +10,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups & Roles permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
 
 // Was the form submitted?
 if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SESSION['aPeopleCart']) > 0) {
@@ -57,7 +57,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
               // Create the group select drop-down
                 echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">' . gettext('None') . '</option>';
                 foreach ($ormGroups as $ormGroup) {
-                    echo '<option value="' . $ormGroup->getID() . '">' . $ormGroup->getName() . '</option>';
+                    echo '<option value="' . $ormGroup->getID() . '">' . htmlspecialchars($ormGroup->getName(), ENT_QUOTES, 'UTF-8') . '</option>';
                 }
                 echo '</select>'; ?>
             </td>

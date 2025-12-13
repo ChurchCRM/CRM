@@ -46,9 +46,7 @@ export class CartManager {
             .done((data) => {
                 if (showNotification) {
                     const addedCount = data.added ? data.added.length : 0;
-                    const duplicateCount = data.duplicate
-                        ? data.duplicate.length
-                        : 0;
+                    const duplicateCount = data.duplicate ? data.duplicate.length : 0;
 
                     if (addedCount > 0 && duplicateCount === 0) {
                         const message =
@@ -88,10 +86,7 @@ export class CartManager {
             })
             .fail((error) => {
                 if (showNotification) {
-                    this.showNotification(
-                        "danger",
-                        i18next.t("Failed to add to cart"),
-                    );
+                    this.showNotification("danger", i18next.t("Failed to add to cart"));
                 }
             });
     }
@@ -180,10 +175,7 @@ export class CartManager {
             })
             .fail((error) => {
                 if (showNotification) {
-                    this.showNotification(
-                        "danger",
-                        i18next.t("Failed to remove from cart"),
-                    );
+                    this.showNotification("danger", i18next.t("Failed to remove from cart"));
                 }
             });
     }
@@ -200,9 +192,7 @@ export class CartManager {
             data: JSON.stringify({ Family: familyId }),
         })
             .done((data) => {
-                const duplicateCount = data.duplicate
-                    ? data.duplicate.length
-                    : 0;
+                const duplicateCount = data.duplicate ? data.duplicate.length : 0;
                 const addedCount = data.added ? data.added.length : 0;
 
                 if (duplicateCount > 0 && addedCount > 0) {
@@ -215,15 +205,9 @@ export class CartManager {
                             i18next.t("in cart"),
                     );
                 } else if (duplicateCount > 0) {
-                    this.showNotification(
-                        "warning",
-                        i18next.t("All members already in cart"),
-                    );
+                    this.showNotification("warning", i18next.t("All members already in cart"));
                 } else {
-                    this.showNotification(
-                        "success",
-                        i18next.t("Family added to cart"),
-                    );
+                    this.showNotification("success", i18next.t("Family added to cart"));
                 }
 
                 this.refreshCartCount();
@@ -235,10 +219,7 @@ export class CartManager {
                 }
             })
             .fail((error) => {
-                this.showNotification(
-                    "danger",
-                    i18next.t("Failed to add family to cart"),
-                );
+                this.showNotification("danger", i18next.t("Failed to add family to cart"));
             });
     }
 
@@ -294,10 +275,7 @@ export class CartManager {
         })
             .done((data) => {
                 if (showNotification) {
-                    this.showNotification(
-                        "success",
-                        i18next.t("Family removed from cart"),
-                    );
+                    this.showNotification("success", i18next.t("Family removed from cart"));
                 }
 
                 this.refreshCartCount();
@@ -310,10 +288,7 @@ export class CartManager {
             })
             .fail((error) => {
                 if (showNotification) {
-                    this.showNotification(
-                        "danger",
-                        i18next.t("Failed to remove family from cart"),
-                    );
+                    this.showNotification("danger", i18next.t("Failed to remove family from cart"));
                 }
             });
     }
@@ -330,10 +305,7 @@ export class CartManager {
             data: JSON.stringify({ Group: groupId }),
         })
             .done((data) => {
-                this.showNotification(
-                    "success",
-                    i18next.t("Group added to cart"),
-                );
+                this.showNotification("success", i18next.t("Group added to cart"));
                 this.refreshCartCount();
 
                 this.updateButtonState(groupId, true, "group");
@@ -343,10 +315,7 @@ export class CartManager {
                 }
             })
             .fail((error) => {
-                this.showNotification(
-                    "danger",
-                    i18next.t("Failed to add group to cart"),
-                );
+                this.showNotification("danger", i18next.t("Failed to add group to cart"));
             });
     }
 
@@ -376,10 +345,7 @@ export class CartManager {
                         data: JSON.stringify({ Group: groupId }),
                     })
                         .done((data) => {
-                            this.showNotification(
-                                "success",
-                                i18next.t("Group removed from cart"),
-                            );
+                            this.showNotification("success", i18next.t("Group removed from cart"));
                             this.refreshCartCount();
 
                             this.updateButtonState(groupId, false, "group");
@@ -389,10 +355,7 @@ export class CartManager {
                             }
                         })
                         .fail((error) => {
-                            this.showNotification(
-                                "danger",
-                                i18next.t("Failed to remove group"),
-                            );
+                            this.showNotification("danger", i18next.t("Failed to remove group"));
                         });
                 }
             },
@@ -439,9 +402,7 @@ export class CartManager {
      * @private
      */
     performEmptyCart(options) {
-        const reloadPage =
-            options.reloadPage !== false &&
-            window.location.pathname.includes("/v2/cart");
+        const reloadPage = options.reloadPage !== false && window.location.pathname.includes("/v2/cart");
         const reloadDelay = options.reloadDelay || 1500;
 
         return window.CRM.APIRequest({
@@ -449,10 +410,7 @@ export class CartManager {
             path: "cart/",
         })
             .done((data) => {
-                this.showNotification(
-                    "success",
-                    i18next.t("Cart emptied successfully"),
-                );
+                this.showNotification("success", i18next.t("Cart emptied successfully"));
                 this.refreshCartCount();
 
                 this.resetAllButtons();
@@ -468,19 +426,14 @@ export class CartManager {
                 }
             })
             .fail((error) => {
-                this.showNotification(
-                    "danger",
-                    i18next.t("Failed to empty cart"),
-                );
+                this.showNotification("danger", i18next.t("Failed to empty cart"));
             });
     }
 
     emptyToGroup() {
         window.CRM.groups.promptSelection(
             {
-                Type:
-                    window.CRM.groups.selectTypes.Group |
-                    window.CRM.groups.selectTypes.Role,
+                Type: window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role,
             },
             (selectedRole) => {
                 window.CRM.APIRequest({
@@ -492,18 +445,12 @@ export class CartManager {
                     }),
                 })
                     .done((data) => {
-                        this.showNotification(
-                            "success",
-                            i18next.t("Cart emptied to group successfully"),
-                        );
+                        this.showNotification("success", i18next.t("Cart emptied to group successfully"));
                         this.refreshCartCount();
                         this.resetAllButtons();
                     })
                     .fail((error) => {
-                        this.showNotification(
-                            "danger",
-                            i18next.t("Failed to empty cart to group"),
-                        );
+                        this.showNotification("danger", i18next.t("Failed to empty cart to group"));
                     });
             },
         );
@@ -528,16 +475,12 @@ export class CartManager {
      */
     updateButtonState(cartId, inCart, cartType = "person") {
         // First try to find the container with the data attributes
-        let $element = $(
-            `[data-cart-id="${cartId}"][data-cart-type="${cartType}"]`,
-        );
+        let $element = $(`[data-cart-id="${cartId}"][data-cart-type="${cartType}"]`);
 
         if (!$element.length) return;
 
         // If the element is a div wrapper, find the button inside; otherwise it's the button itself
-        const $button = $element.is("button")
-            ? $element
-            : $element.find("button");
+        const $button = $element.is("button") ? $element : $element.find("button");
 
         if (!$button.length) return;
 
@@ -657,7 +600,7 @@ export class CartManager {
                         <i class="fa-solid fa-users text-info"></i> ${i18next.t("Empty Cart to Family")}
                     </a>
                     <a href="${window.CRM.root}/CartToEvent.php" class="dropdown-item">
-                        <i class="fa-solid fa-clipboard-list text-info"></i> ${i18next.t("Empty Cart to Event")}
+                        <i class="fa-solid fa-clipboard-list text-info"></i> ${i18next.t("Check In to Event")}
                     </a>
                     <a href="${window.CRM.root}/MapUsingGoogle.php?GroupID=0" class="dropdown-item">
                         <i class="fa-solid fa-map-marker text-info"></i> ${i18next.t("Map Cart")}

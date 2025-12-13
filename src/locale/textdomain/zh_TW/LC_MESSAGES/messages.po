@@ -64,43 +64,6 @@ msgid "Backup Database"
 msgstr "資料庫備份"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "這工具將會協助您手動備份ChurchCRM資料庫"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "你應該進行手動備份，每週至少一次，除非你已經有一個的定期備份系統程序。"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "在您下載的備份文件，你應該一式兩份。其中一人在一個防火安全的網站和其他異地在一個安全的位置。"
-
-#: 
-#, fuzzy
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "如果您擔心ChurchCRM資料庫存儲的數據的機密性，那當它被存儲在他人可能訪問的位置時，您應該加密備份數據"
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "選擇封存類型"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "使用密碼加密備份文件？"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "重新輸入密碼"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "生成備份並將其發送到外部存儲"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "批優勝者進入"
 
@@ -392,11 +355,6 @@ msgid "Add Cart to Event"
 msgstr "加入購物車事件"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "選擇事件時，如果你想添加您的購物車"
-
-#: 
 msgid "OR"
 msgstr "或"
 
@@ -506,10 +464,6 @@ msgid "Empty Cart to Family"
 msgstr "清空購物車家庭"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "清空購物車事件"
-
-#: 
 msgid "Map Cart"
 msgstr "地圖購物車"
 
@@ -566,21 +520,8 @@ msgid "Event Checkin"
 msgstr "事件記登"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "選擇事件時，你要檢查的人"
-
-#: 
 msgid "Select Event"
 msgstr "選擇活動"
-
-#: 
-msgid "Add Visitor"
-msgstr "添加訪客"
-
-#: 
-msgid "CheckIn"
-msgstr "登記"
 
 #: 
 msgid "CheckOut"
@@ -605,10 +546,6 @@ msgstr "簽出"
 #: 
 msgid "Action"
 msgstr "行動"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "沒有分配給事件的參加者"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -641,29 +578,14 @@ msgid "Deposit Slip Number: "
 msgstr "存款單號碼："
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "存款詳細資料:␣"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "關閉存款憑條（記得按下保存）"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "存款單報告"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "重要提示：在存款憑條被關閉時，失敗的交易將被刪除permanantly。"
-
-#: 
-msgid "Deposit Summary: "
-msgstr "存款摘要:␣"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "所支付的存款單："
 
 #: 
 msgid "Import eGive"
@@ -674,7 +596,8 @@ msgid "Add Payment"
 msgstr "添加付款"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "加載授權交易"
 
 #: 
@@ -950,44 +873,8 @@ msgid "Edit"
 msgstr "編輯"
 
 #: 
-msgid "Event Attendees"
-msgstr "活動的參與者"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "事件Nonattendees"
-
-#: 
-msgid "Event Guests"
-msgstr "活動訪客"
-
-#: 
-msgid "There "
-msgstr "那裡"
-
-#: 
 msgid "Event Title"
 msgstr "活動名稱"
-
-#: 
-msgid "Event Date"
-msgstr "活動日期"
-
-#: 
-msgid "Attending Members"
-msgstr "出席委員"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "出席委員"
-
-#: 
-msgid "Guests"
-msgstr "賓客"
-
-#: 
-msgid "There are no events in this category"
-msgstr "有沒有在這個類別的事件"
 
 #: 
 msgid "Create Event"
@@ -998,20 +885,8 @@ msgid "Create a new Event"
 msgstr "建立新活動"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "編輯活動ID："
-
-#: 
 msgid " errors. Please see below"
 msgstr "錯誤。請參考下面"
-
-#: 
-msgid "Items with a "
-msgstr "一個項目"
-
-#: 
-msgid " are required"
-msgstr "需要"
 
 #: 
 msgid "Select your event type"
@@ -1022,22 +897,8 @@ msgid "You must pick an event type."
 msgstr "你必須選擇事件類型"
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "活動描述"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "沒有記錄考勤計數"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "出席附註："
-
-#: 
-#, fuzzy
-msgid "Event Sermon"
-msgstr "活動講道"
 
 #: 
 #, fuzzy
@@ -1047,10 +908,6 @@ msgstr "活動狀態"
 #: 
 msgid "Return to Events"
 msgstr "返回至活動"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "活動類型名稱"
 
 #: 
 msgid "Sundays"
@@ -1079,30 +936,6 @@ msgstr "星期五"
 #: 
 msgid "Saturdays"
 msgstr "星期六"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "默認開始時間"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "出席COUNTS"
-
-#: 
-msgid "Optional"
-msgstr "選擇性"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "輸入您要包含在此活動中的出勤計數表。"
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "用逗號分隔每個count_name。 例如 會眾，訪客，成人，兒童"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "每種活動類型都包含一個總計數，您不需要包含它。"
 
 #: 
 msgid "Add Event Type"
@@ -1189,10 +1022,6 @@ msgid "Contact Info"
 msgstr "聯絡人資料"
 
 #: 
-msgid "Other Info"
-msgstr "其他資料"
-
-#: 
 msgid "Envelope Info"
 msgstr "信封資料"
 
@@ -1203,10 +1032,6 @@ msgstr "自定義字段"
 #: 
 msgid "Family Members"
 msgstr "家庭成員"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "現在，您可以創建家庭成員，或將它們添加。所有參賽作品將成為<i>新的</i>個人記錄。"
 
 #: 
 msgid "First"
@@ -1302,20 +1127,8 @@ msgid "Envelope Number"
 msgstr "信封號碼"
 
 #: 
-msgid "Verify Info"
-msgstr "認證資料"
-
-#: 
 msgid "Add New Member"
 msgstr "添加新成員"
-
-#: 
-msgid "Previous Family"
-msgstr "上一頁家庭"
-
-#: 
-msgid "Next Family"
-msgstr "下一個家庭"
 
 #: 
 msgid "Upload Photo"
@@ -1406,14 +1219,6 @@ msgstr "方法"
 #: 
 msgid "Comment"
 msgstr "評論"
-
-#: 
-msgid "Add a new pledge"
-msgstr "添加新的服務承諾"
-
-#: 
-msgid "Add a new payment"
-msgstr "添加一個新的支付"
 
 #: 
 msgid "Close"
@@ -1682,7 +1487,8 @@ msgid "Date End"
 msgstr "日期結束"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "清除過濾器"
 
 #: 
@@ -2088,37 +1894,12 @@ msgid "Confirm data labels"
 msgstr "確認數據標籤"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "列出活動類型="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "列出所有教會活動"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "選擇要顯示的事件類型"
-
-#: 
-msgid "Display Events in Year"
-msgstr "顯示事件在年"
-
-#: 
 msgid "Start Date/Time"
 msgstr "開始日期/時間"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "沒有考勤記錄的"
-
-#: 
-#, fuzzy
-msgid "Attendees"
-msgstr "出席者（"
-
-#: 
-msgid " Monthly Averages"
-msgstr "每月平均"
 
 #: 
 msgid "Invalid login or password"
@@ -2466,32 +2247,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "表示繼承自相關的家庭記錄的項目。"
 
 #: 
-msgid "Personal Info"
-msgstr "個人信息"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "先生，夫人，博士，牧師"
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Jr.，Sr.，III"
-
-#: 
 msgid "Birth Month"
 msgstr "出生月"
 
 #: 
-msgid "Select Month"
-msgstr "選擇月份"
-
-#: 
 msgid "Birth Day"
 msgstr "出生日"
-
-#: 
-msgid "Select Day"
-msgstr "選擇日期"
 
 #: 
 #, fuzzy
@@ -2505,10 +2266,6 @@ msgstr "隱藏年齡"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "創建一個新的家庭（使用姓氏）"
-
-#: 
-msgid "Membership Info"
-msgstr "成員信息"
 
 #: 
 #, fuzzy
@@ -2597,28 +2354,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "檢查數量不適用於“現金”支付"
 
 #: 
-msgid "Pledge Editor"
-msgstr "質押編輯器"
-
-#: 
-msgid "Payment Editor: "
-msgstr "付款責任編輯："
-
-#: 
-msgid " Deposit Slip #"
-msgstr "存款單＃"
-
-#: 
 msgid " more entries will fit."
 msgstr "更多的項目將適合。"
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "付款編輯器 - 修改現有的付款方式"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "付款編輯器 - 將創建新的存款單"
 
 #: 
 msgid "Deposit closed"
@@ -2930,10 +2667,6 @@ msgstr "發送"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "質押提醒報告"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "活動參與者報告"
 
 #: 
 #, fuzzy
@@ -3916,18 +3649,6 @@ msgid "Import Data"
 msgstr "導入數據"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "你確定要從活動ID中刪除此人員嗎？"
-
-#: 
-msgid "Date Range"
-msgstr "日期範圍"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "刪除此活動TYPE不會刪除任何現有的活動或出勤記錄。您確定要刪除活動類型ID："
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "您確定要刪除所選內容嗎？"
 
@@ -3956,14 +3677,6 @@ msgid "Deposit Date"
 msgstr "存款日期"
 
 #: 
-msgid "Details:"
-msgstr "細節："
-
-#: 
-msgid "File Missing"
-msgstr "文件丟失"
-
-#: 
 #, fuzzy
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "這將用此頁面上選擇的系列信封覆蓋資料庫中的系列信封號碼。繼續嗎？"
@@ -3979,45 +3692,6 @@ msgstr "至少有一個："
 #: 
 msgid "Welcome to"
 msgstr "歡迎來到"
-
-#: 
-#, fuzzy
-msgid "Select Database Files"
-msgstr "選擇資料庫檔案"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "選擇要還原的備份文件"
-
-#: 
-#, fuzzy
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "注意：這將完全刪除現有資料庫，並將其替換為備份"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "如果您從ChurchInfo或以前版本的ChurchCRM上載備份，它將自動升級到當前資料庫架構"
-
-#: 
-msgid "Upload Files"
-msgstr "上傳文件"
-
-#: 
-msgid "No Restore Running"
-msgstr "沒有恢復運行"
-
-#: 
-msgid "Restore Complete"
-msgstr "恢復完成"
-
-#: 
-#, fuzzy
-msgid "Login to restored Database"
-msgstr "請登入以還原資料庫"
-
-#: 
-msgid "Restore Error."
-msgstr "恢復錯誤。"
 
 #: 
 msgid "Church Information"
@@ -4121,57 +3795,20 @@ msgid "Enter Name"
 msgstr "輸入名稱"
 
 #: 
-msgid "Update Church Info"
-msgstr "更新教堂信息"
-
-#: 
-msgid "Set Church Address"
-msgstr "設置教堂地址"
-
-#: 
-msgid "Set Email Settings"
-msgstr "郵件設置"
-
-#: 
 msgid "New Release"
 msgstr "新發佈"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "應用完整性檢查失敗"
 
 #: 
 msgid "Self Registration"
 msgstr "自助登記"
 
 #: 
-msgid "Restore Status:"
-msgstr "存儲狀態"
-
-#: 
 msgid "No coordinates found"
 msgstr "找不到坐標"
 
 #: 
-msgid "Backup Status:"
-msgstr "備份狀態"
-
-#: 
-msgid "No Backup Running"
-msgstr "沒有備份在運行"
-
-#: 
 msgid "Anonymous"
 msgstr "匿名"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "活動 的與會者"
-
-#: 
-msgid "Yearly"
-msgstr "每年"
 
 #: 
 msgid "Registration Complete"
@@ -4218,20 +3855,8 @@ msgid "Signature definition file signature failed validation"
 msgstr "簽名定義文件簽字驗證失敗"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "簽名定義文件丟失"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "一個或多個文件簽名驗證失敗"
-
-#: 
-msgid "Configure HTTPS"
-msgstr "配置HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "文件未通過完整性檢查"
 
 #: 
 msgid "Family:"
@@ -4274,10 +3899,6 @@ msgid "Voting members "
 msgstr "投票成員"
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "正在恢復運行，請稍候。"
-
-#: 
 msgid "Family Members:"
 msgstr "家庭成員："
 
@@ -4302,10 +3923,6 @@ msgid "Fiscal Year:"
 msgstr "財政年度："
 
 #: 
-msgid "Add Attendees for Event"
-msgstr "為活動添加參加者"
-
-#: 
 msgid "family"
 msgstr "家庭"
 
@@ -4322,14 +3939,6 @@ msgid "CSV Import"
 msgstr "CSV導入"
 
 #: 
-msgid "Comment:"
-msgstr "評價："
-
-#: 
-msgid "Closed:"
-msgstr "關閉："
-
-#: 
 msgid "Start Date: "
 msgstr "開始日期："
 
@@ -4340,10 +3949,6 @@ msgstr "結束日期："
 #: 
 msgid "Members:"
 msgstr "成員："
-
-#: 
-msgid "Edit General Settings"
-msgstr "編輯常規設置"
 
 #: 
 msgid "There were "
@@ -5235,46 +4840,6 @@ msgstr "每月"
 #: 
 msgid "Yearly on"
 msgstr "每年"
-
-#: 
-msgid "All Events of Type"
-msgstr "所有活動類型"
-
-#: 
-msgid "There is"
-msgstr "這是"
-
-#: 
-msgid "There are"
-msgstr "這些是"
-
-#: 
-msgid "event"
-msgstr "活動"
-
-#: 
-msgid "events"
-msgstr "活動"
-
-#: 
-msgid " in this category."
-msgstr "在本類別中"
-
-#: 
-msgid "There currently is"
-msgstr "目前是"
-
-#: 
-msgid "There currently are"
-msgstr "目前是"
-
-#: 
-msgid "custom event type"
-msgstr "自定義活動類型"
-
-#: 
-msgid "custom event types"
-msgstr "自定義活動類型"
 
 #: 
 msgid "Family Roles Editor"
@@ -6684,42 +6249,6 @@ msgid "Please verify your family's information"
 msgstr "請驗證您的家人的信息"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "未設置教堂地址。"
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "教會名稱設置為默認值"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "SMTP服務器信息為空"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "安裝TLS / SSL證書可以使您的系統更安全。"
-
-#: 
-msgid "Missing Classification Data"
-msgstr "缺少分類數據"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "缺少某些人的分類數據"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "缺少性別數據"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "缺少某些人的性別數據"
-
-#: 
-msgid "Missing Role Data"
-msgstr "缺少角色數據"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "無法加載驗證信息"
 
@@ -6784,21 +6313,9 @@ msgid "Verified In Person"
 msgstr "親自驗證"
 
 #: 
-msgid "None State"
-msgstr "無州"
-
-#: 
 #, fuzzy
 msgid "Backup archive does not contain a database"
 msgstr "備份存檔不包含資料庫"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "缺少坐標"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "一些家庭的家庭坐標數據"
 
 #: 
 #, fuzzy
@@ -6923,28 +6440,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "所選文件超過此服務器的最大上載大小"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "未滿足應用程序的先決條件"
-
-#: 
 msgid "Failed"
 msgstr "失敗"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "教堂檢查帳號"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "缺少某些人的角色數據"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "PHP Max文件太小"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "增加php上傳限制以允許手機的照片上傳和備份恢復。"
 
 #: 
 msgid "Deactivated the Family"
@@ -6979,7 +6480,8 @@ msgid "Profile Image uploaded"
 msgstr "個人資料圖片已上傳"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "付款？"
 
 #: 
@@ -7013,11 +6515,6 @@ msgstr "請選擇一個家庭。"
 #: 
 msgid "Coordinate data base file name:"
 msgstr "協調數據庫文件名："
-
-#: 
-#, fuzzy
-msgid "Intersect With Cart"
-msgstr "與購物車交集"
 
 #: 
 msgid "select an option"
@@ -7058,15 +6555,6 @@ msgstr "屬性無法取消分配。"
 #: 
 msgid "Select event"
 msgstr "選擇活動"
-
-#: 
-msgid "Person's Name"
-msgstr "會員名稱"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "簽到名(可選)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -7177,14 +6665,6 @@ msgstr "已指派"
 #: 
 msgid "Photo"
 msgstr "圖片"
-
-#: 
-msgid "Payment Details"
-msgstr "付款詳情"
-
-#: 
-msgid "Fund Split"
-msgstr "基金拆分"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7589,10 +7069,6 @@ msgid "Your Church's X Page"
 msgstr "您的教會的X頁面"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "當沒有本地圖像時，在谷歌上查找用戶圖像"
-
-#: 
 msgid "Self Register"
 msgstr "自助登記"
 
@@ -7994,18 +7470,6 @@ msgid "Upgrade Required"
 msgstr "要求升級"
 
 #: 
-msgid "Current DB Version: "
-msgstr "現運作資料庫版本"
-
-#: 
-msgid "Current Software Version: "
-msgstr "現運作軟件版本"
-
-#: 
-msgid "Upgrade database"
-msgstr "資料庫升級"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "在啟動CRM時顯示出生日期"
 
@@ -8062,15 +7526,6 @@ msgid "Meanwhile, you may"
 msgstr "同時，你可以"
 
 #: 
-#, fuzzy
-msgid "Database Only (.sql)"
-msgstr "僅資料庫(.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "資料庫和相片(.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "使用者必需是管理員"
 
@@ -8103,10 +7558,6 @@ msgid "return to People Dashboard"
 msgstr "返回人員儀錶盤"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "用戶必須具有MenuOptions權限"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "未設置SMTP主機，請訪問設置頁面"
 
@@ -8120,16 +7571,8 @@ msgid "This Family is Deactivated"
 msgstr "這個家庭已停用"
 
 #: 
-msgid "Metadata"
-msgstr "元數據"
-
-#: 
 msgid "The database has been cleared."
 msgstr "資料庫已被清理"
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "使用者必需有bAddEvent 權限"
 
 #: 
 msgid "Anniversaries"
@@ -8163,11 +7606,6 @@ msgstr "沒有找到或沒有電子郵件的用戶"
 #: 
 msgid "UserName not set"
 msgstr "用戶名未設置"
-
-#: 
-#, fuzzy
-msgid "The people and families has been cleared from the database."
-msgstr "人員和家庭已從資料庫中清除。"
 
 #: 
 msgid "Self Registrations"
@@ -8273,10 +7711,6 @@ msgstr "啟用財務菜單"
 #: 
 msgid "Enable Events menu."
 msgstr "啟用事件菜單"
-
-#: 
-msgid "Enable Calendar menu."
-msgstr "啟用日曆菜單"
 
 #: 
 msgid "Enable Fundraiser menu."
@@ -8405,10 +7839,6 @@ msgid "User must have Edit Records permission"
 msgstr "用戶必須具有編輯記錄權限"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "用戶必須擁有財務許可"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "無法刪除自己"
 
@@ -8441,21 +7871,8 @@ msgid "is disabled"
 msgstr "被禁用"
 
 #: 
-msgid "System Information"
-msgstr "系統信息"
-
-#: 
 msgid "Software Version"
 msgstr "軟件版本"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "有效的郵件服務器設置"
-
-#: 
-#, fuzzy
-msgid "Database"
-msgstr "資料庫"
 
 #: 
 #, fuzzy
@@ -8532,28 +7949,8 @@ msgstr "清空事件代碼"
 
 #: 
 #, fuzzy
-msgid "integrityCheck.json file missing"
-msgstr "無integrityCheck.json檔案"
-
-#: 
-#, fuzzy
 msgid "Passed"
 msgstr "通過"
-
-#: 
-#, fuzzy
-msgid "PHP Max Execution Time is too Short"
-msgstr "PHP最大執行時間太短"
-
-#: 
-#, fuzzy
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "增加PHP執行時間限制以允許備份和還原。"
-
-#: 
-#, fuzzy
-msgid "Application Integrity Check"
-msgstr "程式完整性檢查"
 
 #: 
 #, fuzzy
@@ -8597,7 +7994,7 @@ msgstr "檢測到不支持的存款類型"
 
 #: 
 #, fuzzy
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr "已棄用對eGive，信用卡和銀行匯票付款的支持。在將來的版本中可能無法再訪問現有的非銀行報告。"
 
 #. Context: locales
@@ -8608,28 +8005,13 @@ msgstr "愛沙尼亞語"
 
 #: 
 #, fuzzy
-msgid "Error decoding integrity check result file"
-msgstr "解碼完整性檢查結果文件錯誤"
-
-#: 
-#, fuzzy
 msgid "Error decoding signature definition file"
 msgstr "解碼簽名定義文件錯誤"
 
 #: 
 #, fuzzy
-msgid "Generate Backup"
-msgstr "生成備份"
-
-#: 
-#, fuzzy
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "遠程備份端點。如果是WebDAV，必須是url編碼的。"
-
-#: 
-#, fuzzy
-msgid "Password (if any)"
-msgstr "密碼（如果有的話）"
 
 #: 
 #, fuzzy
@@ -8754,11 +8136,6 @@ msgstr "驗證網址"
 
 #: 
 #, fuzzy
-msgid "Reset System"
-msgstr "系統重置"
-
-#: 
-#, fuzzy
 msgid "Unexpected Person Id"
 msgstr "不預期的人員代碼"
 
@@ -8801,23 +8178,8 @@ msgstr[0] "%d歲大\n"
 
 #: 
 #, fuzzy
-msgid "Unsupported PHP Version"
-msgstr "不支援的PHP版本"
-
-#: 
-#, fuzzy
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "很快將不再支持此PHP版本。當前的PHP版本： "
-
-#: 
-#, fuzzy
 msgid "Missing PHP ZipArchive"
 msgstr "缺少PHP ZipArchive"
-
-#: 
-#, fuzzy
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "需要PHP ZipArchive以支援升級"
 
 #: 
 #, fuzzy
@@ -8843,21 +8205,6 @@ msgstr "在繼續升級之前，請查看並減少以下任務："
 #, fuzzy
 msgid "Database Reset Functions"
 msgstr "資料庫重置功能"
-
-#: 
-#, fuzzy
-msgid "Reset Members"
-msgstr "重置會員"
-
-#: 
-#, fuzzy
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "這將刪除所有會員數據，人員和家庭，並且無法撤消。"
-
-#: 
-#, fuzzy
-msgid "Reset Families/People"
-msgstr "重置家庭/人"
 
 #: 
 #, fuzzy
@@ -8899,11 +8246,6 @@ msgstr "ChurchCRM"
 #, fuzzy
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
-
-#: 
-#, fuzzy
-msgid "Secret Keys missing from Config.php"
-msgstr "Config.php中缺少密鑰"
 
 #: 
 #, fuzzy
@@ -9072,20 +8414,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "ChurchCRM沒有Audience"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM安裝資訊"
-
-#: 
-msgid "Database Server Version"
-msgstr "資料庫伺服器版本"
-
-#: 
 msgid "Web Server"
 msgstr "網頁伺服器"
-
-#: 
-msgid "Email Information"
-msgstr "電子郵件資訊"
 
 #: 
 msgid "List maintenance"
@@ -9358,16 +8688,6 @@ msgstr "如果您失去了對新註冊的身份驗證器應用的訪問權限，
 
 #: 
 #, fuzzy
-msgid "Event Attendance"
-msgstr "活動出席"
-
-#: 
-#, fuzzy
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "生成活動的出席-和非出席報告"
-
-#: 
-#, fuzzy
 msgid "Help translate this project"
 msgstr "幫助翻譯此專案"
 
@@ -9592,8 +8912,4 @@ msgstr "存款總額"
 #, fuzzy
 msgid "Group Cart Status"
 msgstr "群組購物車狀態"
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Adult Name(可選)"
 

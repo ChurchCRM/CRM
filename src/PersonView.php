@@ -9,11 +9,13 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
+$personService = new PersonService();
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
@@ -43,14 +45,14 @@ if (isset($_POST['VolunteerOpportunityAssign']) && AuthenticationManager::getCur
     $volIDs = $_POST['VolunteerOpportunityIDs'];
     if ($volIDs) {
         foreach ($volIDs as $volID) {
-            AddVolunteerOpportunity($iPersonID, $volID);
+            $personService->addVolunteerOpportunity((int)$iPersonID, (int)$volID);
         }
     }
 }
 
 // Service remove-volunteer-opportunity (these links set RemoveVO)
 if ($iRemoveVO > 0 && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-    RemoveVolunteerOpportunity($iPersonID, $iRemoveVO);
+    $personService->removeVolunteerOpportunity((int)$iPersonID, (int)$iRemoveVO);
 }
 
 // Get this person's data
@@ -126,60 +128,38 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 $dBirthDate = $person->getFormattedBirthDate();
 
-$sFamilyInfoBegin = '<span class="text-danger">';
-$sFamilyInfoEnd = '</span>';
-
-// Assign the values locally, after selecting whether to display the family or person information
+// Assign person data only - each person must enter their own information
 
 //Get an unformatted mailing address to pass as a parameter to a google maps search
-SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
-$sCity = SelectWhichInfo($per_City, $fam_City, false);
-$sState = SelectWhichInfo($per_State, $fam_State, false);
-$sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
-$sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+$Address1 = $per_Address1 ?? '';
+$Address2 = $per_Address2 ?? '';
+$sCity = $per_City ?? '';
+$sState = $per_State ?? '';
+$sZip = $per_Zip ?? '';
+$sCountry = $per_Country ?? '';
 $plaintextMailingAddress = $person->getAddress();
 
 //Get a formatted mailing address to use as display to the user.
-SelectWhichAddress($Address1, $Address2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, true);
-$sCity = SelectWhichInfo($per_City, $fam_City, true);
-$sState = SelectWhichInfo($per_State, $fam_State, true);
-$sZip = SelectWhichInfo($per_Zip, $fam_Zip, true);
-$sCountry = SelectWhichInfo($per_Country, $fam_Country, true);
+$Address1 = $per_Address1 ?? '';
+$Address2 = $per_Address2 ?? '';
+$sCity = $per_City ?? '';
+$sState = $per_State ?? '';
+$sZip = $per_Zip ?? '';
+$sCountry = $per_Country ?? '';
 $formattedMailingAddress = $person->getAddress();
 
-$sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-$sHomePhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
-    true
-);
-$sHomePhoneUnformatted = SelectWhichInfo(
-    ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
-    false
-);
-$sWorkPhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
-    true
-);
-$sWorkPhoneUnformatted = SelectWhichInfo(
-    ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
-    false
-);
-$sCellPhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
-    true
-);
-$sCellPhoneUnformatted = SelectWhichInfo(
-    ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
-    false
-);
-$sEmail = SelectWhichInfo($per_Email, $fam_Email, true);
-$sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+$sPhoneCountry = $per_Country ?? '';
+$sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
+$sHomePhoneUnformatted = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
+
+$sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
+$sWorkPhoneUnformatted = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
+
+$sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+$sCellPhoneUnformatted = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+
+$sEmail = $per_Email ?? '';
+$sUnformattedEmail = $per_Email ?? '';
 
 if ($per_Envelope > 0) {
     $sEnvelope = $per_Envelope;
@@ -248,11 +228,6 @@ $bOkToEdit = (
                             } ?>
                         </a>
                     </li>
-
-                    <?php if ($bOkToEdit) { ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $per_ID ?>" class="btn btn-primary btn-block" id="EditPerson"><b><?php echo gettext('Edit'); ?></b></a>
-                    <?php } ?>
-
                 </ul>
             </div>
             <!-- /.box-body -->
@@ -333,19 +308,19 @@ $bOkToEdit = (
 
                     if (strlen($per_Facebook) > 0) {
                     ?>
-                        <li><i class="fa-li fa-brands fa-facebook-official"></i>Facebook: <span><a href="https://www.facebook.com/<?= InputUtils::filterString($per_Facebook) ?> " target="_blank"><?= $per_Facebook ?></a></span></li>
+                        <li><i class="fa-li fa-brands fa-facebook-official"></i>Facebook: <span><a href="https://www.facebook.com/<?= InputUtils::sanitizeText($per_Facebook) ?>" target="_blank"><?= $per_Facebook ?></a></span></li>
                     <?php
                     }
 
                     if (strlen($per_Twitter) > 0) {
                     ?>
-                        <li><i class="fa-li fa-brands fa-x-twitter"></i>X: <span><a href="https://www.twitter.com/<?= InputUtils::filterString($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
+                        <li><i class="fa-li fa-brands fa-x-twitter"></i>X: <span><a href="https://www.twitter.com/<?= InputUtils::sanitizeText($per_Twitter) ?>" target="_blank"><?= $per_Twitter ?></a></span></li>
                     <?php
                     }
 
                     if (strlen($per_LinkedIn) > 0) {
                     ?>
-                        <li><i class="fa-li fa-brands fa-linkedin"></i>LinkedIn: <span><a href="https://www.linkedin.com/in/<?= InputUtils::FiltersTring($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a></span></li>
+                        <li><i class="fa-li fa-brands fa-linkedin"></i>LinkedIn: <span><a href="https://www.linkedin.com/in/<?= InputUtils::sanitizeText($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a></span></li>
                     <?php
                     }
 
@@ -377,9 +352,6 @@ $bOkToEdit = (
                 </ul>
             </div>
         </div>
-        <div class="alert alert-info alert-dismissable">
-            <i class="fa-solid fa-fw fa-tree"></i> <?php echo gettext('indicates items inherited from the associated family record.'); ?>
-        </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
         <div class="row">
@@ -388,7 +360,6 @@ $bOkToEdit = (
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
             ?>
                 <a class="btn btn-app bg-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle fa-3x"></i><br><?= gettext("Edit \"Why Came\" Notes") ?></a>
-                <a class="btn btn-app bg-primary" id="addNote" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sticky-note fa-3x"></i><br><?= gettext("Add a Note") ?></a>
             <?php
             }
             if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
@@ -629,11 +600,6 @@ $bOkToEdit = (
                                         </table>
                                     <?php
                                     } ?>
-                                    <div class="text-center mt-3">
-                                        <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="btn btn-success">
-                                            <i class="fa-solid fa-plus"></i> <?= gettext('Add a Note') ?>
-                                        </a>
-                                    </div>
                                 </div>
                                 <!-- /.main-box-body -->
                             </div>
@@ -1039,5 +1005,26 @@ $bOkToEdit = (
 
             });
         </script>
-        <?php
-        require_once 'Include/Footer.php';
+
+<!-- Person View Floating Action Buttons -->
+<div class="fab-container fab-person-view" id="fab-person-view">
+    <?php if ($bOkToEdit) { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-edit" title="<?= gettext('Edit Person') ?>">
+        <span class="fab-label"><?= gettext('Edit Person') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-pen"></i>
+        </div>
+    </a>
+    <?php } ?>
+    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-note" title="<?= gettext('Add a Note') ?>">
+        <span class="fab-label"><?= gettext('Add a Note') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-sticky-note"></i>
+        </div>
+    </a>
+    <?php } ?>
+</div>
+
+<?php
+require_once 'Include/Footer.php';

@@ -378,6 +378,7 @@ if (isset($_POST['DoImport'])) {
                     // handler for each of the 20 person_per table column possibilities
                     switch ($currentType) {
                         // Address goes with family record if creating families
+                        // Sanitize to prevent XSS - strip HTML tags from input
                         case 8:
                         case 9:
                         case 10:
@@ -385,28 +386,29 @@ if (isset($_POST['DoImport'])) {
                         case 12:
                             // if not making family records, add to person
                             if (!isset($_POST['MakeFamilyRecords'])) {
-                                $sSQLpersonData .= "'" . addslashes($aData[$col]) . "',";
+                                $sSQLpersonData .= "'" . addslashes(strip_tags($aData[$col])) . "',";
                             } else {
                                 switch ($currentType) {
                                     case 8:
-                                        $sAddress1 = addslashes($aData[$col]);
+                                        $sAddress1 = addslashes(strip_tags($aData[$col]));
                                         break;
                                     case 9:
-                                        $sAddress2 = addslashes($aData[$col]);
+                                        $sAddress2 = addslashes(strip_tags($aData[$col]));
                                         break;
                                     case 10:
-                                        $sCity = addslashes($aData[$col]);
+                                        $sCity = addslashes(strip_tags($aData[$col]));
                                         break;
                                     case 11:
-                                        $sState = addslashes($aData[$col]);
+                                        $sState = addslashes(strip_tags($aData[$col]));
                                         break;
                                     case 12:
-                                        $sZip = addslashes($aData[$col]);
+                                        $sZip = addslashes(strip_tags($aData[$col]));
                                 }
                             }
                             break;
 
                         // Simple strings.. no special processing
+                        // Sanitize to prevent XSS - strip HTML tags from input
                         case 1:
                         case 2:
                         case 3:
@@ -414,7 +416,7 @@ if (isset($_POST['DoImport'])) {
                         case 5:
                         case 17:
                         case 18:
-                                        $sSQLpersonData .= "'" . addslashes($aData[$col]) . "',";
+                                        $sSQLpersonData .= "'" . addslashes(strip_tags($aData[$col])) . "',";
                             break;
 
                         // Country.. also set $sCountry for use later!
@@ -692,10 +694,12 @@ if (isset($_POST['DoImport'])) {
                             } elseif ($currentType === 1) {
                                 // If boolean, convert to the expected values for custom field
                                 if (strlen($currentFieldData)) {
-                                    $currentFieldData = ConvertToBoolean($currentFieldData);
+                                    $lowerValue = strtolower($currentFieldData);
+                                    $currentFieldData = in_array($lowerValue, ['1', 'true', 'yes', strtolower(gettext('yes')), 'on'], true) ? 1 : 0;
                                 }
                             } else {
-                                $currentFieldData = addslashes($currentFieldData);
+                                // Sanitize to prevent XSS - strip HTML tags from input
+                                $currentFieldData = addslashes(strip_tags($currentFieldData));
                             }
 
                             // aColumnID is the custom table column name
@@ -745,10 +749,12 @@ if (isset($_POST['DoImport'])) {
                         } elseif ($currentType === 1) {
                             // If boolean, convert to the expected values for custom field
                             if (strlen($currentFieldData)) {
-                                $currentFieldData = ConvertToBoolean($currentFieldData);
+                                $lowerValue = strtolower($currentFieldData);
+                                $currentFieldData = in_array($lowerValue, ['1', 'true', 'yes', strtolower(gettext('yes')), 'on'], true) ? 1 : 0;
                             }
                         } else {
-                            $currentFieldData = addslashes($currentFieldData);
+                            // Sanitize to prevent XSS - strip HTML tags from input
+                            $currentFieldData = addslashes(strip_tags($currentFieldData));
                         }
 
                         // aColumnID is the custom table column name

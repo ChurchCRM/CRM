@@ -3,7 +3,7 @@ import { verifyDownloadTasks } from 'cy-verify-downloads';
 
 export default defineConfig({
   chromeWebSecurity: false,
-  video: true,
+  video: false,
   videosFolder: 'cypress/videos',
   screenshotOnRunFailure: true,
   screenshotsFolder: 'cypress/screenshots',
@@ -16,6 +16,12 @@ export default defineConfig({
   env: {
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
+    'admin.username': 'admin',
+    'admin.password': 'changeme',
+    'standard.username': 'tony.wade@example.com',
+    'standard.password': 'basicjoe',
+    'nofinance.username': 'judith.matthews@example.com',
+    'nofinance.password': 'noMoney$',
   },
   retries: 1,
   numTestsKeptInMemory: 0,

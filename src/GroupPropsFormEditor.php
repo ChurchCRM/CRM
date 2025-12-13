@@ -10,7 +10,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
 
 // Get the Group from the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
@@ -305,14 +305,14 @@ require_once 'Include/Header.php'; ?>
                                 <?= $aPropTypes[$aTypeFields[$row]]; ?>
                             </td>
 
-                            <td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="25" maxlength="40">
+                            <td class="TextColumn"><input type="text" name="<?= $row ?>name" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" size="25" maxlength="40">
                                 <?php
                                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
                                     echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
                                 } ?>
                             </td>
 
-                            <td class="TextColumn"><textarea name="<?= $row ?>desc" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
+                            <td class="TextColumn"><textarea name="<?= $row ?>desc" cols="30" rows="1" onKeyPress="LimitTextSize(this,60)"><?= InputUtils::escapeAttribute($aDescFields[$row]) ?></textarea></td>
 
                             <td class="TextColumn">
                                 <?php

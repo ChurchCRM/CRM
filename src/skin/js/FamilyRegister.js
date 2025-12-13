@@ -67,10 +67,7 @@
                 // Set the label's "for" attribute if this is a checkbox/radio
                 if (element.type === "checkbox" || element.type === "radio") {
                     const label = element.nextElementSibling;
-                    if (
-                        label &&
-                        label.classList.contains("custom-control-label")
-                    ) {
+                    if (label && label.classList.contains("custom-control-label")) {
                         label.setAttribute("for", element.id);
                     }
                 }
@@ -101,9 +98,7 @@
                 // Collapse all others and expand this one
                 collapseAllExcept(memberIndex);
                 cardBody.style.display = "block";
-                toggleBtn
-                    .querySelector("i")
-                    .classList.remove("fa-chevron-down");
+                toggleBtn.querySelector("i").classList.remove("fa-chevron-down");
                 toggleBtn.querySelector("i").classList.add("fa-chevron-up");
             } else {
                 // Collapse this one
@@ -115,10 +110,7 @@
 
         // Add click handler to card header to toggle (accordion style)
         cardHeader.addEventListener("click", function (e) {
-            if (
-                e.target.classList.contains("remove-member-btn") ||
-                e.target.closest(".remove-member-btn")
-            ) {
+            if (e.target.classList.contains("remove-member-btn") || e.target.closest(".remove-member-btn")) {
                 return;
             }
             const isCollapsed = cardBody.style.display === "none";
@@ -126,9 +118,7 @@
                 // Collapse all others and expand this one
                 collapseAllExcept(memberIndex);
                 cardBody.style.display = "block";
-                toggleBtn
-                    .querySelector("i")
-                    .classList.remove("fa-chevron-down");
+                toggleBtn.querySelector("i").classList.remove("fa-chevron-down");
                 toggleBtn.querySelector("i").classList.add("fa-chevron-up");
             } else {
                 // Collapse this one
@@ -155,15 +145,11 @@
         // Add event listeners to update display name
         const firstNameInput = $(`#member-first-name-${memberIndex}`);
         const lastNameInput = $(`#member-last-name-${memberIndex}`);
-        const displayNameSpan = memberCard.querySelector(
-            ".member-display-name",
-        );
+        const displayNameSpan = memberCard.querySelector(".member-display-name");
 
         const updateDisplayName = function () {
             const firstName = firstNameInput.val() || gettext("Member");
-            const lastName = lastNameInput.val()
-                ? ` ${lastNameInput.val()}`
-                : "";
+            const lastName = lastNameInput.val() ? ` ${lastNameInput.val()}` : "";
             displayNameSpan.textContent = `${firstName}${lastName}`;
         };
 
@@ -227,9 +213,7 @@
      */
     function updateMemberCount() {
         const plural = state.currentMemberCount === 1 ? "member" : "members";
-        $("#member-count-display").text(
-            `${state.currentMemberCount} ${i18next.t(plural)}`,
-        );
+        $("#member-count-display").text(`${state.currentMemberCount} ${i18next.t(plural)}`);
     }
 
     // ==================== Data Collection ====================
@@ -288,9 +272,7 @@
 
         // Collect data from all member cards using actual DOM elements to avoid gaps in indices
         document.querySelectorAll(".member-card").forEach((card) => {
-            const memberIndex = parseInt(
-                card.getAttribute("data-member-index"),
-            );
+            const memberIndex = parseInt(card.getAttribute("data-member-index"));
             family.people.push(getMemberDataFromCard(memberIndex));
         });
 
@@ -306,9 +288,7 @@
      */
     function getErrorContainer(fieldId) {
         const field = document.getElementById(fieldId);
-        return field
-            ? field.parentElement.querySelector(".invalid-feedback")
-            : null;
+        return field ? field.parentElement.querySelector(".invalid-feedback") : null;
     }
 
     /**
@@ -348,9 +328,7 @@
                 {
                     rule: "minLength",
                     value: 2,
-                    errorMessage: i18next.t(
-                        "Family name must be at least 2 characters",
-                    ),
+                    errorMessage: i18next.t("Family name must be at least 2 characters"),
                 },
             ],
             familyNameContainer ? { errorsContainer: familyNameContainer } : {},
@@ -407,9 +385,7 @@
                 {
                     rule: "minLength",
                     value: 7,
-                    errorMessage: i18next.t(
-                        "Please enter a valid phone number",
-                    ),
+                    errorMessage: i18next.t("Please enter a valid phone number"),
                 },
             ],
             phoneContainer ? { errorsContainer: phoneContainer } : {},
@@ -430,9 +406,7 @@
             const i = parseInt(card.getAttribute("data-member-index"));
 
             // First Name
-            const firstNameContainer = getErrorContainer(
-                `member-first-name-${i}`,
-            );
+            const firstNameContainer = getErrorContainer(`member-first-name-${i}`);
             validator.addField(
                 `#member-first-name-${i}`,
                 [
@@ -443,20 +417,14 @@
                     {
                         rule: "minLength",
                         value: 2,
-                        errorMessage: i18next.t(
-                            "First name must be at least 2 characters",
-                        ),
+                        errorMessage: i18next.t("First name must be at least 2 characters"),
                     },
                 ],
-                firstNameContainer
-                    ? { errorsContainer: firstNameContainer }
-                    : {},
+                firstNameContainer ? { errorsContainer: firstNameContainer } : {},
             );
 
             // Last Name
-            const lastNameContainer = getErrorContainer(
-                `member-last-name-${i}`,
-            );
+            const lastNameContainer = getErrorContainer(`member-last-name-${i}`);
             validator.addField(
                 `#member-last-name-${i}`,
                 [
@@ -467,9 +435,7 @@
                     {
                         rule: "minLength",
                         value: 2,
-                        errorMessage: i18next.t(
-                            "Last name must be at least 2 characters",
-                        ),
+                        errorMessage: i18next.t("Last name must be at least 2 characters"),
                     },
                 ],
                 lastNameContainer ? { errorsContainer: lastNameContainer } : {},
@@ -482,9 +448,7 @@
                 [
                     {
                         rule: "email",
-                        errorMessage: i18next.t(
-                            "Please enter a valid email address (e.g., name@example.com)",
-                        ),
+                        errorMessage: i18next.t("Please enter a valid email address (e.g., name@example.com)"),
                     },
                 ],
                 emailContainer ? { errorsContainer: emailContainer } : {},
@@ -527,8 +491,7 @@
             $(`#displayFamilyPersonLName${memberNum}`).text(person.lastName);
             $(`#displayFamilyPersonEmail${memberNum}`).text(person.email);
 
-            const displayPhone =
-                person.cellPhone || person.workPhone || person.homePhone || "";
+            const displayPhone = person.cellPhone || person.workPhone || person.homePhone || "";
             $(`#displayFamilyPersonPhone${memberNum}`).text(displayPhone);
             $(`#displayFamilyPersonBDay${memberNum}`).text(person.birthday);
         });
@@ -569,17 +532,13 @@
             .fail(function (xhr) {
                 console.error("Registration failed:", xhr);
 
-                let errorMessage = i18next.t(
-                    "Sorry, we are unable to process your request at this point in time.",
-                );
+                let errorMessage = i18next.t("Sorry, we are unable to process your request at this point in time.");
 
                 if (xhr.responseJSON && xhr.responseJSON.message) {
                     errorMessage = xhr.responseJSON.message;
                 } else if (xhr.responseJSON && xhr.responseJSON.errors) {
                     errorMessage = "<ul class='mb-0'>";
-                    for (const [field, error] of Object.entries(
-                        xhr.responseJSON.errors,
-                    )) {
+                    for (const [field, error] of Object.entries(xhr.responseJSON.errors)) {
                         errorMessage += `<li><strong>${field}:</strong> ${error}</li>`;
                     }
                     errorMessage += "</ul>";
@@ -632,12 +591,10 @@
         initializeMemberValidator();
 
         // Add member button event listener
-        document
-            .getElementById("add-member-btn")
-            .addEventListener("click", function (e) {
-                e.preventDefault();
-                addMember();
-            });
+        document.getElementById("add-member-btn").addEventListener("click", function (e) {
+            e.preventDefault();
+            addMember();
+        });
 
         // Validation on step change - Enhanced event-based validation
         stepperElement.addEventListener("show.bs-stepper", function (event) {
@@ -674,116 +631,96 @@
         });
 
         // Handle form submission
-        document
-            .getElementById("submit-registration")
-            .addEventListener("click", function () {
-                submitRegistration();
-            });
+        document.getElementById("submit-registration").addEventListener("click", function () {
+            submitRegistration();
+        });
 
         // Navigation button event listeners (CSP compliant - no inline onclick)
-        document
-            .getElementById("family-info-next")
-            .addEventListener("click", function (e) {
-                e.preventDefault();
-                if (validators["step-family-info"]) {
-                    validators["step-family-info"]
-                        .revalidate()
-                        .then(function (isValid) {
-                            if (isValid) {
-                                state.validatedNavigation = { from: 0, to: 1 };
-                                registrationStepper.next();
-                            } else {
-                                $.notify(
-                                    {
-                                        icon: "fa fa-exclamation-triangle",
-                                        message: i18next.t(
-                                            "Please fill in all required fields correctly.",
-                                        ),
-                                    },
-                                    {
-                                        type: "warning",
-                                        delay: 4000,
-                                        placement: {
-                                            from: "top",
-                                            align: "right",
-                                        },
-                                    },
-                                );
-                            }
-                        });
-                } else {
-                    registrationStepper.next();
-                }
-            });
-
-        document
-            .getElementById("members-previous")
-            .addEventListener("click", function () {
-                registrationStepper.previous();
-            });
-
-        document
-            .getElementById("members-next")
-            .addEventListener("click", function (e) {
-                e.preventDefault();
-
-                // Validate at least 1 member exists
-                if (state.currentMemberCount === 0) {
-                    $.notify(
-                        {
-                            icon: "fa fa-exclamation-triangle",
-                            message: i18next.t(
-                                "Please add at least one family member.",
-                            ),
-                        },
-                        {
-                            type: "warning",
-                            delay: 4000,
-                            placement: {
-                                from: "top",
-                                align: "right",
+        document.getElementById("family-info-next").addEventListener("click", function (e) {
+            e.preventDefault();
+            if (validators["step-family-info"]) {
+                validators["step-family-info"].revalidate().then(function (isValid) {
+                    if (isValid) {
+                        state.validatedNavigation = { from: 0, to: 1 };
+                        registrationStepper.next();
+                    } else {
+                        $.notify(
+                            {
+                                icon: "fa fa-exclamation-triangle",
+                                message: i18next.t("Please fill in all required fields correctly."),
                             },
+                            {
+                                type: "warning",
+                                delay: 4000,
+                                placement: {
+                                    from: "top",
+                                    align: "right",
+                                },
+                            },
+                        );
+                    }
+                });
+            } else {
+                registrationStepper.next();
+            }
+        });
+
+        document.getElementById("members-previous").addEventListener("click", function () {
+            registrationStepper.previous();
+        });
+
+        document.getElementById("members-next").addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Validate at least 1 member exists
+            if (state.currentMemberCount === 0) {
+                $.notify(
+                    {
+                        icon: "fa fa-exclamation-triangle",
+                        message: i18next.t("Please add at least one family member."),
+                    },
+                    {
+                        type: "warning",
+                        delay: 4000,
+                        placement: {
+                            from: "top",
+                            align: "right",
                         },
-                    );
-                    return;
-                }
+                    },
+                );
+                return;
+            }
 
-                if (validators["step-members"]) {
-                    validators["step-members"]
-                        .revalidate()
-                        .then(function (isValid) {
-                            if (isValid) {
-                                state.validatedNavigation = { from: 1, to: 2 };
-                                registrationStepper.next();
-                            } else {
-                                $.notify(
-                                    {
-                                        icon: "fa fa-exclamation-triangle",
-                                        message: i18next.t(
-                                            "Please fill in all required fields correctly.",
-                                        ),
-                                    },
-                                    {
-                                        type: "warning",
-                                        delay: 4000,
-                                        placement: {
-                                            from: "top",
-                                            align: "right",
-                                        },
-                                    },
-                                );
-                            }
-                        });
-                } else {
-                    registrationStepper.next();
-                }
-            });
+            if (validators["step-members"]) {
+                validators["step-members"].revalidate().then(function (isValid) {
+                    if (isValid) {
+                        state.validatedNavigation = { from: 1, to: 2 };
+                        registrationStepper.next();
+                    } else {
+                        $.notify(
+                            {
+                                icon: "fa fa-exclamation-triangle",
+                                message: i18next.t("Please fill in all required fields correctly."),
+                            },
+                            {
+                                type: "warning",
+                                delay: 4000,
+                                placement: {
+                                    from: "top",
+                                    align: "right",
+                                },
+                            },
+                        );
+                    }
+                });
+            } else {
+                registrationStepper.next();
+            }
+        });
 
-        document
-            .getElementById("review-previous")
-            .addEventListener("click", function () {
-                registrationStepper.previous();
-            });
+        document.getElementById("review-previous").addEventListener("click", function () {
+            registrationStepper.previous();
+        });
 
         // Update member last names when family name changes
         $("#familyName").on("change", function () {
@@ -804,11 +741,8 @@
         }).done(function (data) {
             const familyCountry = $("#familyCountry");
             $.each(data, function (idx, country) {
-                const selected =
-                    familyCountry.data("system-default") === country.name;
-                familyCountry.append(
-                    new Option(country.name, country.code, selected, selected),
-                );
+                const selected = familyCountry.data("system-default") === country.name;
+                familyCountry.append(new Option(country.name, country.code, selected, selected));
             });
             familyCountry.change();
         });
@@ -818,26 +752,17 @@
 
         $("#familyCountry").change(function () {
             const $container = $("#familyStateContainer");
-            const defaultState =
-                $container.find("#familyState").data("default") || "";
+            const defaultState = $container.find("#familyState").data("default") || "";
 
             $.ajax({
                 type: "GET",
-                url:
-                    rootPath +
-                    "/api/public/data/countries/" +
-                    this.value.toLowerCase() +
-                    "/states",
+                url: rootPath + "/api/public/data/countries/" + this.value.toLowerCase() + "/states",
             }).done(function (data) {
                 if (Object.keys(data).length > 0) {
                     // Country has states - replace with dropdown
-                    const $select = $(
-                        '<select id="familyState" name="familyState" class="form-control"></select>',
-                    );
+                    const $select = $('<select id="familyState" name="familyState" class="form-control"></select>');
                     $.each(data, function (code, name) {
-                        const $option = $("<option></option>")
-                            .val(code)
-                            .text(name);
+                        const $option = $("<option></option>").val(code).text(name);
                         if (defaultState == code) {
                             $option.prop("selected", true);
                         }

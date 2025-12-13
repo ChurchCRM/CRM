@@ -30,7 +30,7 @@ function emptyOrUnassignedJSON($stuff): string
 }
 
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 // Classification list
 $ListItem =  ListOptionQuery::create()->select('OptionName')->filterById(1)->find()->toArray();
 $ClassificationList[] = "Unassigned";

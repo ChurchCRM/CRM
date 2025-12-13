@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -12,8 +13,7 @@ use ChurchCRM\Service\FinancialService;
 
 $app->group('/payments', function (RouteCollectorProxy $group): void {
     $group->get('/', function (Request $request, Response $response, array $args): Response {
-        /** @var FinancialService  $financialService */
-        $financialService = $this->get('FinancialService');
+        $financialService = new FinancialService();
 
         return SlimUtils::renderJSON(
             $response,
@@ -23,8 +23,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
 
     $group->post('/', function (Request $request, Response $response, array $args): Response {
         $payment = (object) $request->getParsedBody();
-        /** @var FinancialService  $financialService */
-        $financialService = $this->get('FinancialService');
+        $financialService = new FinancialService();
 
         return SlimUtils::renderJSON(
             $response,
@@ -55,7 +54,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $newRow['Nondeductible'] = $row->getNondeductible();
             $newRow['Schedule'] = $row->getSchedule();
             $newRow['Method'] = $row->getMethod();
-            $newRow['Comment'] = htmlspecialchars($row->getComment() ?? '', ENT_QUOTES, 'UTF-8');
+            $newRow['Comment'] = InputUtils::escapeHTML($row->getComment() ?? '');
             $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
             $newRow['Date'] = $row->getDate('Y-m-d');
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
@@ -69,7 +68,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
 
     $group->delete('/{groupKey}', function (Request $request, Response $response, array $args): Response {
         $groupKey = $args['groupKey'];
-        $financialService = $this->get('FinancialService');
+        $financialService = new FinancialService();
         $financialService->deletePayment($groupKey);
 
         return SlimUtils::renderSuccessJSON($response);

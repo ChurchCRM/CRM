@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\AuthService;
+use ChurchCRM\Utils\Functions;
 use Propel\Runtime\Propel;
 
 class GroupService
@@ -38,33 +39,33 @@ class GroupService
     {
         AuthService::requireUserGroupMembership('bManageGroups');
         $sSQL = 'DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ' . $personID . ' AND p2g2r_grp_ID = ' . $groupID;
-        RunQuery($sSQL);
+        Functions::runQuery($sSQL);
 
         // Check if this group has special properties
         $sSQL = 'SELECT grp_hasSpecialProps FROM group_grp WHERE grp_ID = ' . $groupID;
-        $rsTemp = RunQuery($sSQL);
+        $rsTemp = Functions::runQuery($sSQL);
         $rowTemp = mysqli_fetch_row($rsTemp);
         $bHasProp = $rowTemp[0];
 
         if ($bHasProp == 'true') {
             $sSQL = 'DELETE FROM groupprop_' . $groupID . " WHERE per_ID = '" . $personID . "'";
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
         }
 
         // Reset any group specific property fields of type "Person from Group" with this person assigned
         $sSQL = 'SELECT grp_ID, prop_Field FROM groupprop_master WHERE type_ID = 9 AND prop_Special = ' . $groupID;
-        $result = RunQuery($sSQL);
+        $result = Functions::runQuery($sSQL);
         while ($aRow = mysqli_fetch_array($result)) {
             $sSQL = 'UPDATE groupprop_' . $aRow['grp_ID'] . ' SET ' . $aRow['prop_Field'] . ' = NULL WHERE ' . $aRow['prop_Field'] . ' = ' . $personID;
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
         }
 
         // Reset any custom person fields of type "Person from Group" with this person assigned
         $sSQL = 'SELECT custom_Field FROM person_custom_master WHERE type_ID = 9 AND custom_Special = ' . $groupID;
-        $result = RunQuery($sSQL);
+        $result = Functions::runQuery($sSQL);
         while ($aRow = mysqli_fetch_array($result)) {
             $sSQL = 'UPDATE person_custom SET ' . $aRow['custom_Field'] . ' = NULL WHERE ' . $aRow['custom_Field'] . ' = ' . $personID;
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
         }
     }
 
@@ -114,6 +115,42 @@ class GroupService
         return $this->getGroupMembers($iGroupID, $iPersonID);
     }
 
+
+    /**
+     * Add a user to a group without performing Auth checks. Intended for trusted imports.
+     * Reuses the same internal behavior as addUserToGroup (special props handling).
+     *
+     * @param int $iGroupID
+     * @param int $iPersonID
+     * @param int $iRoleID
+     * @return array
+     */
+    public function addUserToGroupInternal(int $iGroupID, int $iPersonID, int $iRoleID): array
+    {
+        $result = false;
+        try {
+            $person2group2role = new Person2group2roleP2g2r();
+            $person2group2role
+                ->setPersonId($iPersonID)
+                ->setGroupId($iGroupID)
+                ->setRoleId($iRoleID);
+            $person2group2role->save();
+            $result = true;
+        } catch (\Throwable $t) {
+            // do nothing
+        }
+
+        if ($result) {
+            // Check if this group has special properties
+            $group = GroupQuery::create()->findOneById($iGroupID);
+            if ($group && $group->getHasSpecialProps()) {
+                $this->addPersonToGroupProperties($iGroupID, $iPersonID);
+            }
+        }
+
+        return $this->getGroupMembers($iGroupID, $iPersonID);
+    }
+
     /**
      *  getGroupRoles.
      *
@@ -129,7 +166,7 @@ class GroupService
               LEFT JOIN list_lst ON
               list_lst.lst_ID = group_grp.grp_RoleListID
               WHERE group_grp.grp_ID = ' . $groupID;
-        $rsList = RunQuery($sSQL);
+        $rsList = Functions::runQuery($sSQL);
 
         // Validate that this list ID is really for a group roles list. (for security)
         if (mysqli_num_rows($rsList) === 0) {
@@ -152,7 +189,7 @@ class GroupService
                  SET list_lst.lst_OptionSequence = "' . $groupRoleOrder . '"
                  WHERE group_grp.grp_ID = "' . $groupID . '"
                     AND list_lst.lst_OptionID = ' . $groupRoleID;
-        RunQuery($sSQL);
+        Functions::runQuery($sSQL);
     }
 
     public function getGroupRoleOrder(string $groupID, string $groupRoleID)
@@ -163,7 +200,7 @@ class GroupService
                  WHERE group_grp.grp_ID = "' . $groupID . '"
                    AND list_lst.lst_OptionID = ' . $groupRoleID;
 
-        $rsPropList = RunQuery($sSQL);
+        $rsPropList = Functions::runQuery($sSQL);
         $rowOrder = mysqli_fetch_array($rsPropList);
 
         return $rowOrder[0];
@@ -176,7 +213,7 @@ class GroupService
                 INNER JOIN group_grp
                     ON group_grp.grp_RoleListID = list_lst.lst_ID
                  WHERE group_grp.grp_ID = "' . $groupID . '"';
-        $rsPropList = RunQuery($sSQL);
+        $rsPropList = Functions::runQuery($sSQL);
         $numRows = mysqli_num_rows($rsPropList);
         // Make sure we never delete the only option
         if ($numRows > 1) {
@@ -187,22 +224,22 @@ class GroupService
                     WHERE group_grp.grp_ID = "' . $groupID . '"
                     AND lst_OptionID = ' . $groupRoleID;
 
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
 
             //check if we've deleted the old group default role.  If so, reset default to role ID 1
             // Next, if any group members were using the deleted role, reset their role to the group default.
             // Reset if default role was just removed.
             $sSQL = "UPDATE group_grp SET grp_DefaultRole = 1 WHERE grp_ID = $groupID AND grp_DefaultRole = $groupRoleID";
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
 
             // Get the current default role and Group ID (so we can update the p2g2r table)
             // This seems backwards, but grp_RoleListID is unique, having a 1-1 relationship with grp_ID.
             $sSQL = "SELECT grp_ID,grp_DefaultRole FROM group_grp WHERE grp_ID = $groupID";
-            $rsTemp = RunQuery($sSQL);
+            $rsTemp = Functions::runQuery($sSQL);
             $aTemp = mysqli_fetch_array($rsTemp);
 
             $sSQL = "UPDATE person2group2role_p2g2r SET p2g2r_rle_ID = 1 WHERE p2g2r_grp_ID = $groupID AND p2g2r_rle_ID = $groupRoleID";
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
 
             //Shift the remaining rows IDs up by one
 
@@ -213,7 +250,7 @@ class GroupService
                     WHERE group_grp.grp_ID = ' . $groupID . '
                     AND list_lst.lst_OptionID >= ' . $groupRoleID;
 
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
 
             //Shift up the remaining row Sequences by one
 
@@ -226,7 +263,7 @@ class GroupService
 
             //echo $sSQL;
 
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
 
             return $this->getGroupRoles($groupID);
         } else {
@@ -239,45 +276,51 @@ class GroupService
         AuthService::requireUserGroupMembership('bManageGroups');
         if (strlen($groupRoleName) === 0) {
             throw new \Exception('New field name cannot be blank');
-        } else {
-            // Check for a duplicate option name
-            $sSQL = 'SELECT \'\' FROM list_lst
-                INNER JOIN group_grp
-                    ON group_grp.grp_RoleListID = list_lst.lst_ID
-                 WHERE group_grp.grp_ID = "' . $groupID . '" AND
-                 lst_OptionName = "' . $groupRoleName . '"';
-            $rsCount = RunQuery($sSQL);
-            if (mysqli_num_rows($rsCount) > 0) {
-                throw new \Exception('Field ' . $groupRoleName . ' already exists');
-            } else {
-                $sSQL = "SELECT grp_RoleListID FROM group_grp WHERE grp_ID = $groupID";
-                $rsTemp = RunQuery($sSQL);
-                $listIDTemp = mysqli_fetch_array($rsTemp);
-                $listID = $listIDTemp[0];
-                // Get count of the options
-                $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
-                $rsTemp = RunQuery($sSQL);
-                $numRows = mysqli_num_rows($rsTemp);
-                $newOptionSequence = $numRows + 1;
+        }
 
-                // Get the new OptionID
-                $sSQL = "SELECT MAX(lst_OptionID) FROM list_lst WHERE lst_ID = $listID";
-                $rsTemp = RunQuery($sSQL);
-                $aTemp = mysqli_fetch_array($rsTemp);
-                $newOptionID = $aTemp[0] + 1;
+        // Get the group to find its role list ID
+        $group = GroupQuery::create()->findOneById((int)$groupID);
+        if ($group === null) {
+            throw new \Exception('Group not found');
+        }
+        
+        $listID = $group->getRoleListId();
 
-                // Insert into the appropriate options table
-                $listOption = new ListOption();
-                $listOption
-                    ->setId($listID)
-                    ->setOptionId($newOptionID)
-                    ->setOptionName($groupRoleName)
-                    ->setOptionSequence($newOptionSequence);
-                $listOption->save();
+        // Check for duplicate option name using Propel
+        $existingOption = \ChurchCRM\model\ChurchCRM\ListOptionQuery::create()
+            ->filterById($listID)
+            ->filterByOptionName($groupRoleName)
+            ->findOne();
 
-                $iNewNameError = 0;
+        if ($existingOption !== null) {
+            throw new \Exception('Field ' . $groupRoleName . ' already exists');
+        }
+
+        // Get count of options and max option ID
+        $options = \ChurchCRM\model\ChurchCRM\ListOptionQuery::create()
+            ->filterById($listID)
+            ->find();
+
+        $numRows = count($options);
+        $newOptionSequence = $numRows + 1;
+
+        // Find max OptionID
+        $maxOptionID = 0;
+        foreach ($options as $option) {
+            if ($option->getOptionId() > $maxOptionID) {
+                $maxOptionID = $option->getOptionId();
             }
         }
+        $newOptionID = $maxOptionID + 1;
+
+        // Insert into the appropriate options table
+        $listOption = new ListOption();
+        $listOption
+            ->setId($listID)
+            ->setOptionId($newOptionID)
+            ->setOptionName($groupRoleName)
+            ->setOptionSequence($newOptionSequence);
+        $listOption->save();
 
         return [
             'newRole' => [
@@ -293,19 +336,19 @@ class GroupService
         AuthService::requireUserGroupMembership('bManageGroups');
         $sSQL = 'UPDATE group_grp SET grp_hasSpecialProps = true
             WHERE grp_ID = ' . $groupID;
-        RunQuery($sSQL);
+        Functions::runQuery($sSQL);
         $sSQLp = 'CREATE TABLE groupprop_' . $groupID . " (
                         per_ID mediumint(8) unsigned NOT NULL default '0',
                         PRIMARY KEY  (per_ID),
                           UNIQUE KEY per_ID (per_ID)
                         ) ENGINE=InnoDB;";
-        RunQuery($sSQLp);
+        Functions::runQuery($sSQLp);
 
         $groupMembers = $this->getGroupMembers($groupID);
 
         foreach ($groupMembers as $member) {
             $sSQLr = 'INSERT INTO groupprop_' . $groupID . " ( per_ID ) VALUES ( '" . $member['per_ID'] . "' );";
-            RunQuery($sSQLr);
+            Functions::runQuery($sSQLr);
         }
     }
 
@@ -313,16 +356,16 @@ class GroupService
     {
         AuthService::requireUserGroupMembership('bManageGroups');
         $sSQLp = 'DROP TABLE groupprop_' . $groupID;
-        RunQuery($sSQLp);
+        Functions::runQuery($sSQLp);
 
         // need to delete the master index stuff
         $sSQLp = 'DELETE FROM groupprop_master WHERE grp_ID = ' . $groupID;
-        RunQuery($sSQLp);
+        Functions::runQuery($sSQLp);
 
         $sSQL = 'UPDATE group_grp SET grp_hasSpecialProps = false
             WHERE grp_ID = ' . $groupID;
 
-        RunQuery($sSQL);
+        Functions::runQuery($sSQL);
     }
 
     /**

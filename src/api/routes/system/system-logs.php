@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -8,10 +9,16 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/system', function (RouteCollectorProxy $group): void {
-    $group->post('/logs/loglevel', 'setLogsLogLevel');
-    $group->delete('/logs', 'deleteAllLogFiles');
+    // State-changing routes require CSRF protection
+    $group->post('/logs/loglevel', 'setLogsLogLevel')
+        ->add(new CSRFMiddleware('log_level_form'));
+    $group->delete('/logs', 'deleteAllLogFiles')
+        ->add(new CSRFMiddleware('delete_all_logs'));
+    $group->delete('/logs/{filename}', 'deleteLogFile')
+        ->add(new CSRFMiddleware('delete_log_file'));
+    
+    // Read-only routes
     $group->get('/logs/{filename}', 'getLogsFileContent');
-    $group->delete('/logs/{filename}', 'deleteLogFile');
 })->add(AdminRoleAuthMiddleware::class);
 
 function setLogsLogLevel(Request $request, Response $response, array $args): Response

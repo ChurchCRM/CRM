@@ -44,7 +44,7 @@ $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER B
 $rsPropList = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsPropList);
 
-$sPageTitle = gettext('Group View') . ' : ' . $thisGroup->getName();
+$sPageTitle = gettext('Group View') . ' : ' . InputUtils::escapeHTML($thisGroup->getName());
 
 require_once 'Include/Header.php';
 
@@ -68,7 +68,7 @@ $sEmailLink = '';
 $roleEmails = [];
 $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
 while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
-    $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+    $sEmail = $per_Email;
     if ($sEmail) {
         /* if ($sEmailLink) // Don't put delimiter before first email
     $sEmailLink .= $sMailtoDelimiter; */
@@ -104,7 +104,7 @@ $rsPhoneList = RunQuery($sSQL);
 $sPhoneLink = '';
 $sCommaDelimiter = ', ';
 while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
-    $sPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, false);
+    $sPhone = $per_CellPhone;
     if ($sPhone) {
         /* if ($sPhoneLink) // Don't put delimiter before first phone
     $sPhoneLink .= $sCommaDelimiter; */
@@ -119,11 +119,11 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 
 <div class="card card-info card-outline">
     <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= $thisGroup->getName() ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= InputUtils::escapeHTML($thisGroup->getName()) ?></h3>
     </div>
     <div class="card-body">
         <div class="mb-3">
-            <?= htmlspecialchars($thisGroup->getDescription() ?? '', ENT_QUOTES, 'UTF-8') ?>
+            <?= InputUtils::escapeHTML($thisGroup->getDescription() ?? '') ?>
         </div>
         <div class="row mt-3">
             <div class="col-md-4">
@@ -459,7 +459,7 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     bootbox.confirm({
                         title: "<?= gettext("Confirm Delete Group") ?>",
                         message: '<p class="text-danger">' +
-                            "<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>" +
+                            "<?= gettext("Please confirm deletion of this group record") ?>: " + <?= json_encode($thisGroup->getName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> + "</p>" +
                             "<p>" +
                             "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
                             "</p><p>" +

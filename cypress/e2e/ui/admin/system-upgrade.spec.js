@@ -4,7 +4,7 @@ describe('System Upgrade Page', () => {
     });
 
     it('should load and display version information', () => {
-        cy.visit('/v2/admin/upgrade');
+        cy.visit('/admin/system/upgrade');
         
         // Check version information card exists
         cy.contains('Version Information').should('be.visible');
@@ -14,7 +14,7 @@ describe('System Upgrade Page', () => {
         cy.get('.badge.badge-info').should('be.visible').and('not.be.empty');
         
         // Verify available version or up-to-date status
-        cy.contains('Available Version:').should('be.visible');
+        cy.contains('Latest GitHub Version:').should('be.visible');
         
         // Verify pre-release toggle and refresh button exist
         cy.contains('Allow Pre-release Upgrades').should('be.visible');

@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "バックアップデータベース"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "このツールは、手動でChurchCRMデータベースをバックアップする際に役立ちます"
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "すでにシステムの定期的なバックアップ手順がある場合を除き、少なくとも週に1回は手動でバックアップを取る必要があります"
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "バックアップ ファイルをダウンロードしたら、コピーを 2 つ作成する必要があります　そのうちの 1 つをサイト内の耐火金庫に置き、もう 1 つをサイト外の安全な場所に置きます"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "ChurchCRM データベースに保存されているデータの機密性が心配な場合は、他の人がアクセスできる可能性のある場所にバックアップ データを保存する場合は、バックアップ データを暗号化する必要があります"
-
-#: 
-msgid "Select archive type"
-msgstr "アーカイブの種類を選択してください"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "バックアップファイルをパスワードで暗号化しますか?"
-
-#: 
-msgid "Re-type Password"
-msgstr "パスワードを再入力してください"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "バックアップを生成して外部ストレージに送信する"
-
-#: 
 msgid "Price"
 msgstr "価格"
 
@@ -270,10 +237,6 @@ msgid "Data import successful."
 msgstr "データのインポートが成功しました"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "カートに追加したいイベントを選択してください"
-
-#: 
 msgid "Add New Event"
 msgstr "新しいイベントを追加"
 
@@ -432,18 +395,6 @@ msgid "Edit"
 msgstr "編集"
 
 #: 
-msgid "Event Attendees"
-msgstr "イベント参加者"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "イベント不参加者"
-
-#: 
-msgid "Event Guests"
-msgstr "イベントゲスト"
-
-#: 
 msgid "Sundays"
 msgstr "日曜日"
 
@@ -472,10 +423,6 @@ msgid "Saturdays"
 msgstr "土曜日"
 
 #: 
-msgid "Optional"
-msgstr "オプション"
-
-#: 
 msgid "Default Option"
 msgstr "デフォルトオプション"
 
@@ -494,10 +441,6 @@ msgstr "家族情報"
 #: 
 msgid "Contact Info"
 msgstr "連絡先情報"
-
-#: 
-msgid "Other Info"
-msgstr "他の情報"
 
 #: 
 msgid "Custom Fields"
@@ -558,14 +501,6 @@ msgstr "12月"
 #: 
 msgid "Add New Member"
 msgstr "新しいメンバーを追加"
-
-#: 
-msgid "Previous Family"
-msgstr "前の家族"
-
-#: 
-msgid "Next Family"
-msgstr "次の家族"
 
 #: 
 msgid "Upload Photo"
@@ -800,16 +735,8 @@ msgid "Enter new user password. Administratively set passwords are not subject t
 msgstr "新しいユーザーパスワードを入力します　管理者が設定したパスワードには、長さや複雑さの要件は適用されません"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRMのインストール情報"
-
-#: 
 msgid "Web Server"
 msgstr "Webサーバ"
-
-#: 
-msgid "Email Information"
-msgstr "メールアドレス情報"
 
 #: 
 msgid "Passwords"

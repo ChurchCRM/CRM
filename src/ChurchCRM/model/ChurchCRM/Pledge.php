@@ -56,6 +56,9 @@ class Pledge extends BasePledge
                 // expects to see the fully-formatted family string (name, address, state) instead of only family name.
                 // i.e. commit 33b40c973685b7f03cfb3e79241fe53594b83f04 does it incorrectly.
                 $array['FamilyString'] = $family->getFamilyString();
+            } else {
+                // Ensure FamilyString is always present for DataTables compatibility
+                $array['FamilyString'] = null;
             }
         }
 

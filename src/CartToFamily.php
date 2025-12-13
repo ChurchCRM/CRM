@@ -10,7 +10,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have add records permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddRecordsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isAddRecordsEnabled(), 'AddRecords');
 
 // Was the form submitted?
 if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
@@ -34,17 +34,18 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             extract(mysqli_fetch_array($rsPerson));
         }
 
-        SelectWhichAddress($sAddress1, $sAddress2, InputUtils::legacyFilterInput($_POST['Address1']), InputUtils::legacyFilterInput($_POST['Address2']), $per_Address1, $per_Address2, false);
-        $sCity = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['City']), $per_City);
-        $sZip = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Zip']), $per_Zip);
-        $sCountry = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Country']), $per_Country);
+        // Use form input only - each person must enter their own data
+        $sAddress1 = InputUtils::legacyFilterInput($_POST['Address1']);
+        $sAddress2 = InputUtils::legacyFilterInput($_POST['Address2']);
+        $sCity = InputUtils::legacyFilterInput($_POST['City']);
+        $sZip = InputUtils::legacyFilterInput($_POST['Zip']);
+        $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
 
         if ($sCountry == 'United States' || $sCountry == 'Canada') {
             $sState = InputUtils::legacyFilterInput($_POST['State']);
         } else {
             $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
         }
-        $sState = SelectWhichInfo($sState, $per_State);
 
         // Get and format any phone data from the form.
         $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
@@ -60,10 +61,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $sCellPhone = CollapsePhoneNumber($sCellPhone, $sCountry);
         }
 
-        $sHomePhone = SelectWhichInfo($sHomePhone, $per_HomePhone);
-        $sWorkPhone = SelectWhichInfo($sWorkPhone, $per_WorkPhone);
-        $sCellPhone = SelectWhichInfo($sCellPhone, $per_CellPhone);
-        $sEmail = SelectWhichInfo(InputUtils::legacyFilterInput($_POST['Email']), $per_Email);
+        $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
 
         if (strlen($sFamilyName) === 0) {
             $sError = '<p class="alert alert-warning text-danger text-center">' . gettext('No family name entered!') . '</p>';

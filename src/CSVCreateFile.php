@@ -197,7 +197,6 @@ if ($sFormat === 'addtocart') {
         extract($aRow);
         Cart::addPerson($per_ID);
     }
-    //// TODO: do this in API
     RedirectUtils::redirect('v2/cart');
 } else {
     // Build the complete SQL statement
@@ -377,30 +376,33 @@ if ($sFormat === 'addtocart') {
         extract($aRow);
         $person = PersonQuery::create()->findOneById($per_ID);
 
-        // If we are doing a family roll-up, we want to favor available family address / phone numbers over the individual data returned
+        // Use person data only - each person must enter their own information
         if ($sFormat === 'rollup') {
-            $sPhoneCountry = SelectWhichInfo($fam_Country, $per_Country, false);
-            $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), false);
-            $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), false);
-            $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), false);
-            $sCountry = SelectWhichInfo($fam_Country, $per_Country, false);
-            SelectWhichAddress($sAddress1, $sAddress2, $fam_Address1, $fam_Address2, $per_Address1, $per_Address2, false);
-            $sCity = SelectWhichInfo($fam_City, $per_City, false);
-            $sState = SelectWhichInfo($fam_State, $per_State, false);
-            $sZip = SelectWhichInfo($fam_Zip, $per_Zip, false);
-            $sEmail = SelectWhichInfo($fam_Email, $per_Email, false);
+            // Even in rollup format, use person data (no family inheritance)
+            $sPhoneCountry = $per_Country ?? '';
+            $sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
+            $sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
+            $sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+            $sCountry = $per_Country ?? '';
+            $sAddress1 = $per_Address1 ?? '';
+            $sAddress2 = $per_Address2 ?? '';
+            $sCity = $per_City ?? '';
+            $sState = $per_State ?? '';
+            $sZip = $per_Zip ?? '';
+            $sEmail = $per_Email ?? '';
         } else {
-            // Otherwise, the individual data gets precedence over the family data
-            $sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-            $sHomePhone = SelectWhichInfo(ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy), false);
-            $sWorkPhone = SelectWhichInfo(ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy), false);
-            $sCellPhone = SelectWhichInfo(ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy), ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy), false);
-            $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
-            SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
-            $sCity = SelectWhichInfo($per_City, $fam_City, false);
-            $sState = SelectWhichInfo($per_State, $fam_State, false);
-            $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
-            $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+            // Individual data - use person data only
+            $sPhoneCountry = $per_Country ?? '';
+            $sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
+            $sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
+            $sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+            $sCountry = $per_Country ?? '';
+            $sAddress1 = $per_Address1 ?? '';
+            $sAddress2 = $per_Address2 ?? '';
+            $sCity = $per_City ?? '';
+            $sState = $per_State ?? '';
+            $sZip = $per_Zip ?? '';
+            $sEmail = $per_Email ?? '';
         }
 
         // Check if we're filtering out people with incomplete addresses

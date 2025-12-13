@@ -636,11 +636,12 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 $sName = "To the parents of:\n" . $sName;
             }
 
-            SelectWhichAddress($sAddress1, $sAddress2, $aRow['per_Address1'], $aRow['per_Address2'], $aRow['fam_Address1'], $aRow['fam_Address2'], false);
-
-            $sCity = SelectWhichInfo($aRow['per_City'], $aRow['fam_City'], false);
-            $sState = SelectWhichInfo($aRow['per_State'], $aRow['fam_State'], false);
-            $sZip = SelectWhichInfo($aRow['per_Zip'], $aRow['fam_Zip'], false);
+            // Use person data only - each person must enter their own information
+            $sAddress1 = $aRow['per_Address1'] ?? '';
+            $sAddress2 = $aRow['per_Address2'] ?? '';
+            $sCity = $aRow['per_City'] ?? '';
+            $sState = $aRow['per_State'] ?? '';
+            $sZip = $aRow['per_Zip'] ?? '';
 
             $sAddress = $sAddress1;
             if ($sAddress2 != '') {

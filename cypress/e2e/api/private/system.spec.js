@@ -2,7 +2,7 @@
 
 describe("Check Notification API", () => {
     it("Notification API", () => {
-        const result = cy.makePrivateUserAPICall(
+        cy.makePrivateUserAPICall(
             "GET",
             "/api/system/notification",
             "",

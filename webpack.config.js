@@ -12,12 +12,16 @@ module.exports = {
     'setup': './webpack/setup',  // Setup wizard styles
     'family-register': './webpack/family-register',  // Family registration styles and scripts
     'upgrade-wizard': './webpack/upgrade-wizard',  // Upgrade wizard styles and scripts
-    'locale-loader': './webpack/locale-loader'  // Dynamic locale loader
+    'locale-loader': './webpack/locale-loader',  // Dynamic locale loader
+    'backup': './webpack/backup',  // Backup database page
+    'restore': './webpack/restore',  // Restore database page
+    'admin-dashboard': './webpack/admin-dashboard',  // Admin dashboard page styles and scripts
+    'system-settings-panel': './webpack/system-settings-panel'  // Reusable settings panel component
   },
   output: {
     path: path.resolve('./src/skin/v2'),
     filename: '[name].min.js',
-    publicPath: '/skin/v2/'
+    publicPath: 'auto'  // Auto-detect public path based on script location
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],

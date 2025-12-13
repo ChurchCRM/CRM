@@ -64,41 +64,6 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Dette verktøyet vil hjelpe deg med å manuelt ta backup av ChurchCRM"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Du bør foreta en manuell backup minst en gang i uken, med mindre du allerede har en vanlig backup procedule for dine systemer."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Når du har lastet sikkerhetskopifilen, bør du lage to kopier. Sette en av dem i en brannsikker safe på stedet, og den andre på et trygt sted utenfor området."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Hvis backup av ChurchCRM skal lages hvor andre kan komme til den, bør denne krypteres av sikkerhensmessige årsaker."
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Velg arkiv type"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Krypter backup-fil med et passord?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Gjenta passord"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Sikkerhetskopier og eksporter til ekstern lagring"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Batch Vinner Entry"
 
@@ -385,11 +350,6 @@ msgid "Add Cart to Event"
 msgstr "Legg Cart til Event"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Velg hendelsen som du ønsker å legge til i handlekurven"
-
-#: 
 msgid "OR"
 msgstr "ELLER"
 
@@ -498,10 +458,6 @@ msgid "Empty Cart to Family"
 msgstr "Tom Handlekurven til familien"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Tom Handlekurven til Event"
-
-#: 
 msgid "Map Cart"
 msgstr "Kart Cart"
 
@@ -559,21 +515,8 @@ msgid "Event Checkin"
 msgstr "Hendelse Checkin"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Velg hendelsen som du ønsker å kontrollere folk i for"
-
-#: 
 msgid "Select Event"
 msgstr "Velg hendelse"
-
-#: 
-msgid "Add Visitor"
-msgstr "Legg besøkende"
-
-#: 
-msgid "CheckIn"
-msgstr "CheckIn"
 
 #: 
 msgid "CheckOut"
@@ -598,10 +541,6 @@ msgstr "Sjekket ut av"
 #: 
 msgid "Action"
 msgstr "Handling"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Ingen deltakere Assigned til Event"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -633,21 +572,9 @@ msgid "Deposit Slip Number: "
 msgstr "Innskudd Slip Antall:"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Lukk innskudd slip (husk å trykke Save)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Innskudd Slip Rapporter"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Viktig merknad: mislykkede transaksjoner vil bli slettet permanent når innskuddet slip er lukket."
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Betalinger på dette innskuddet slip:"
 
 #: 
 msgid "Import eGive"
@@ -658,7 +585,8 @@ msgid "Add Payment"
 msgstr "Legg Betaling"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Last Autoriserte Transaksjoner"
 
 #: 
@@ -935,44 +863,8 @@ msgid "Edit"
 msgstr "Redigere"
 
 #: 
-msgid "Event Attendees"
-msgstr "Event deltakere"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Event Nonattendees"
-
-#: 
-msgid "Event Guests"
-msgstr "Hendelsesgjester"
-
-#: 
-msgid "There "
-msgstr "Det"
-
-#: 
 msgid "Event Title"
 msgstr "Hendelse Tittel"
-
-#: 
-msgid "Event Date"
-msgstr "Hendelse Dato"
-
-#: 
-msgid "Attending Members"
-msgstr "Møtende medlemmer"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Non-møtende medlemmer"
-
-#: 
-msgid "Guests"
-msgstr "Gjester"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Det er ingen aktiviteter i denne kategorien"
 
 #: 
 msgid "Create Event"
@@ -983,22 +875,8 @@ msgid "Create a new Event"
 msgstr "Oprett nytt arrangement"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Redigerer Event ID:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "feil. Vennligst se nedenfor"
-
-#: 
-#, fuzzy
-msgid "Items with a "
-msgstr "Produkter i handlekurven"
-
-#: 
-#, fuzzy
-msgid " are required"
-msgstr "Denne verdien er nødvendig."
 
 #: 
 msgid "Select your event type"
@@ -1009,22 +887,8 @@ msgid "You must pick an event type."
 msgstr "Du må velge en arrangements type"
 
 #: 
-#, fuzzy
-msgid "Event Desc"
-msgstr "Hendelse Desc"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Ingen Tilskuere teller opp"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Oppmøte Merknader:"
-
-#: 
-#, fuzzy
-msgid "Event Sermon"
-msgstr "Hendelse Sermon"
 
 #: 
 #, fuzzy
@@ -1034,10 +898,6 @@ msgstr "Hendelse Status"
 #: 
 msgid "Return to Events"
 msgstr "Tilbake til Arrangement"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "EVENT TYPE NAME"
 
 #: 
 msgid "Sundays"
@@ -1066,18 +926,6 @@ msgstr "Fredager"
 #: 
 msgid "Saturdays"
 msgstr "Lørdager"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "STANDARD START TID"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "DELTAKELSE TELLER"
-
-#: 
-msgid "Optional"
-msgstr "Valgfritt"
 
 #: 
 msgid "Add Event Type"
@@ -1164,10 +1012,6 @@ msgid "Contact Info"
 msgstr "Kontakt informasjon"
 
 #: 
-msgid "Other Info"
-msgstr "Annen Informasjon"
-
-#: 
 msgid "Envelope Info"
 msgstr "Brev Informasjon"
 
@@ -1178,10 +1022,6 @@ msgstr "Custom Fields"
 #: 
 msgid "Family Members"
 msgstr "Familiemedlemmer"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Du kan opprette familiemedlemmer nå eller legg dem senere. Alle bidrag vil bli <i>nye</i> personer poster."
 
 #: 
 msgid "First"
@@ -1276,20 +1116,8 @@ msgid "Envelope Number"
 msgstr "Konvolutt nummer"
 
 #: 
-msgid "Verify Info"
-msgstr "Verifiser Informasjon"
-
-#: 
 msgid "Add New Member"
 msgstr "Legg til nytt Medlem"
-
-#: 
-msgid "Previous Family"
-msgstr "Forrige Family"
-
-#: 
-msgid "Next Family"
-msgstr "Neste Family"
 
 #: 
 msgid "Upload Photo"
@@ -1379,14 +1207,6 @@ msgstr "Metode"
 #: 
 msgid "Comment"
 msgstr "Kommentar"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Legg til en ny pant"
-
-#: 
-msgid "Add a new payment"
-msgstr "Legg til en ny betaling"
 
 #: 
 msgid "Close"
@@ -1651,7 +1471,8 @@ msgid "Date End"
 msgstr "Dato Slutt"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Tøm filter"
 
 #: 
@@ -2062,29 +1883,8 @@ msgid "Listing All Church Events"
 msgstr "Notering Alle kirkelige handlinger"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Velg hendelse typer Å Vise"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Vise hendelser i år"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Startdato / tid"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Ingen Oppmøte Innspilt"
-
-#: 
-#, fuzzy
-msgid "Attendees"
-msgstr "Deltakere ("
-
-#: 
-msgid " Monthly Averages"
-msgstr "Månedlige gjennomsnitt"
 
 #: 
 msgid "Invalid login or password"
@@ -2417,24 +2217,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "indikerer elementer arvet fra den tilknyttede familien posten."
 
 #: 
-msgid "Personal Info"
-msgstr "Personlig Informasjon"
-
-#: 
 msgid "Birth Month"
 msgstr "Fødselsmåned"
 
 #: 
-msgid "Select Month"
-msgstr "Velg Måned"
-
-#: 
 msgid "Birth Day"
 msgstr "Fødselsdag"
-
-#: 
-msgid "Select Day"
-msgstr "Velg Dag"
 
 #: 
 #, fuzzy
@@ -2448,10 +2236,6 @@ msgstr "Skjul Alder"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Opprett en ny familie (med etternavn)"
-
-#: 
-msgid "Membership Info"
-msgstr "Medlemsinformasjon"
 
 #: 
 #, fuzzy
@@ -2540,29 +2324,9 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Sjekk nummeret ikke gyldig for &#39;Cash&#39; betaling"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Pledge Editor"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Betaling Redaktør:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Innskudd Slip #"
-
-#: 
 #, fuzzy
 msgid " more entries will fit."
 msgstr "flere kontroller vil passe."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Betaling Editor - Endre eksisterende betaling"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Betaling Editor - New Deposit Slip vil bli opprettet"
 
 #: 
 msgid "Deposit closed"

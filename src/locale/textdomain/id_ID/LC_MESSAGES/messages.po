@@ -64,41 +64,6 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Fungsi ini akan menolongmu dalam backup manual database ChurchCRM."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Anda harus buat backup manual setidaknya seminggu sekali kecuali jika Anda sudah memiliki prosedur backup reguler."
-
-#: 
-#, fuzzy
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Setelah unduh file backup, buatlah dua salinan. Letakkan salah satunya ke dalam lokasi yang sangat aman dan yang satu lagi di tempat aman diluar itu."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Jika peduli dengan kerahasiaan data dalam database ChurchCRM, Anda harus enkripsi data backup-nya jika hendak disimpan di tempat yang berpotensi diakses orang lain."
-
-#: 
-msgid "Select archive type"
-msgstr "Pilih Jenis Arsip"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Enkripsi file backup dengan kata sandi?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Ketik Ulang Kata Sandi"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Hasilkan dan Kirim ke Penyimpanan Eksternal"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Masukkan Sekumpulan Pemenang"
 
@@ -373,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "Tambahkan cart di Acara"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Pilih acara yang ingin ditambahkan cart"
-
-#: 
 msgid "OR"
 msgstr "Atau"
 
@@ -482,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "Kosongkan Cart di Keluarga"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Kosongkan Cart di Acara"
-
-#: 
 msgid "Map Cart"
 msgstr "Peta-kan Cart"
 
@@ -542,20 +499,8 @@ msgid "Event Checkin"
 msgstr "Kehadiran di Acara"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Pilih Acara yang akan diisi daftar kehadirannya"
-
-#: 
 msgid "Select Event"
 msgstr "Pilih Acara"
-
-#: 
-msgid "Add Visitor"
-msgstr "Tambahkan pengunjung"
-
-#: 
-msgid "CheckIn"
-msgstr "Hadir"
 
 #: 
 msgid "CheckOut"
@@ -580,10 +525,6 @@ msgstr "Diisi oleh "
 #: 
 msgid "Action"
 msgstr "Aksi"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Tidak ada yang hadir pada acara"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -615,29 +556,14 @@ msgid "Deposit Slip Number: "
 msgstr "Nomor Slip Setoran"
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Rincian Setoran"
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Tutup slip setoran (jangan lupa klik \"Save\")"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Laporan Slip Setoran"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Catatan penting : transaksi yang gagal akan terhapus permanen jika slip setoran di tutup"
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Ringkasan Setoran : "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Pembayaran pada slip setoran ini :"
 
 #: 
 msgid "Import eGive"
@@ -648,7 +574,8 @@ msgid "Add Payment"
 msgstr "Tambah Pembayaran"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Load transaksi yang sudah terotorisasi"
 
 #: 
@@ -914,44 +841,8 @@ msgid "Edit"
 msgstr "sunting"
 
 #: 
-msgid "Event Attendees"
-msgstr "Tamu yang hadir"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Tamu yang tidak hadir"
-
-#: 
-msgid "Event Guests"
-msgstr "Tamu undangan"
-
-#: 
-msgid "There "
-msgstr "Di sana"
-
-#: 
 msgid "Event Title"
 msgstr "Judul kegiatan"
-
-#: 
-msgid "Event Date"
-msgstr "Tanggal kegiatan"
-
-#: 
-msgid "Attending Members"
-msgstr "Jumlah anggota yang hadir"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Jumlah anggota yang tidak hadir"
-
-#: 
-msgid "Guests"
-msgstr "Tamu-tamu"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Tidak ada kegiatan-kegiatan pada kategori ini"
 
 #: 
 msgid "Create Event"
@@ -962,20 +853,8 @@ msgid "Create a new Event"
 msgstr "Ciptakan kegiatan yang baru"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Sunting ID dari kegiatan"
-
-#: 
 msgid " errors. Please see below"
 msgstr "Error. Lihat ke bawah"
-
-#: 
-msgid "Items with a "
-msgstr "Barang dengan suatu"
-
-#: 
-msgid " are required"
-msgstr "diperlukan"
 
 #: 
 msgid "Select your event type"
@@ -986,20 +865,8 @@ msgid "You must pick an event type."
 msgstr "Anda harus memilih sebuat tipe kegiatan"
 
 #: 
-msgid "Event Desc"
-msgstr "Deskripsi kegiatan"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Data kehadiran tidak direkam"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Catatan mengenai kehadiran"
-
-#: 
-msgid "Event Sermon"
-msgstr "Kothbah kegiatan"
 
 #: 
 msgid "Event Status"
@@ -1008,10 +875,6 @@ msgstr "Status kegiatan"
 #: 
 msgid "Return to Events"
 msgstr "Kembali kepada kegiatan-kegiatan"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "Nama tipe kegiatan"
 
 #: 
 msgid "Sundays"
@@ -1040,30 +903,6 @@ msgstr "Jumat"
 #: 
 msgid "Saturdays"
 msgstr "Sabtu"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "Waktu mulai standar"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "Jumlah kehadiran"
-
-#: 
-msgid "Optional"
-msgstr "Opsional"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Masukan sebuah daftar kehadiran yang anda ingin sertakan pada kegiatan ini"
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Pisahkan setiap \"count_name\" dengan tanda \",\" contohnya: Anggota, pengunjung, Kampus, anak-anak"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Setiap tipe kegiatan sudah memiliki perhitungan total, anda tidak perlu menyertakannya kembali"
 
 #: 
 msgid "Add Event Type"
@@ -1150,10 +989,6 @@ msgid "Contact Info"
 msgstr "Data Kontak"
 
 #: 
-msgid "Other Info"
-msgstr "Info lainnya"
-
-#: 
 msgid "Envelope Info"
 msgstr "Keterangan Amplop"
 
@@ -1164,10 +999,6 @@ msgstr "bidang kustom"
 #: 
 msgid "Family Members"
 msgstr "Anggota Keluarga"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Anda dapat membuat anggota keluarga sekarang atau menambahkannya nanti. Semua entri akan menjadi <i>baru</i> catatan orang."
 
 #: 
 msgid "First"
@@ -1262,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "No Surat"
 
 #: 
-msgid "Verify Info"
-msgstr "Verifikasi info"
-
-#: 
 msgid "Add New Member"
 msgstr "Tambahkan anggota baru"
-
-#: 
-msgid "Previous Family"
-msgstr "Keluarga sebelumnya"
-
-#: 
-msgid "Next Family"
-msgstr "Keluarga sesudahnya"
 
 #: 
 msgid "Upload Photo"
@@ -1364,14 +1183,6 @@ msgstr "Cara"
 #: 
 msgid "Comment"
 msgstr "Komentar"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Tambahkan janji baru"
-
-#: 
-msgid "Add a new payment"
-msgstr "Tambahkan pembayaran baru"
 
 #: 
 msgid "Close"
@@ -1636,7 +1447,8 @@ msgid "Date End"
 msgstr "Tanggal berakhir"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Hapus Filter"
 
 #: 
@@ -2025,36 +1837,12 @@ msgid "Confirm data labels"
 msgstr "Konfirmasikan label data"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Cantumkan Acara Tipe = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Daftar Semua Acara Gereja"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Pilih Jenis Acara Untuk Ditampilkan"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Tampilkan Acara dalam Tahun"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Tanggal Mulai / Waktu"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Tidak Ada Kehadiran yang Tercatat"
-
-#: 
-msgid "Attendees"
-msgstr "Hadirin"
-
-#: 
-msgid " Monthly Averages"
-msgstr "Rata-rata Bulanan"
 
 #: 
 msgid "Invalid login or password"
@@ -2397,32 +2185,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "menunjukkan item yang diwarisi dari catatan keluarga terkait."
 
 #: 
-msgid "Personal Info"
-msgstr "Informasi pribadi"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Bpk., Ibu., Sdr., Sdri."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Jr., Sr., III"
-
-#: 
 msgid "Birth Month"
 msgstr "Bulan lahir"
 
 #: 
-msgid "Select Month"
-msgstr "Pilih Bulan"
-
-#: 
 msgid "Birth Day"
 msgstr "Hari kelahiran"
-
-#: 
-msgid "Select Day"
-msgstr "Pilih Hari"
 
 #: 
 msgid "Birth Year"
@@ -2435,10 +2203,6 @@ msgstr "Sembunyikan Umur"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Buat keluarga baru (menggunakan nama belakang)"
-
-#: 
-msgid "Membership Info"
-msgstr "Info Keanggotaan"
 
 #: 
 msgid "Friend Date"
@@ -2525,28 +2289,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Nomor cek tidak valid untuk pembayaran 'CASH'"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Editor Ikrar"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Editor Pembayaran: "
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Slip Setoran #"
-
-#: 
 msgid " more entries will fit."
 msgstr "lebih banyak entri akan cocok."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Editor Pembayaran - Ubah Pembayaran yang Ada"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Editor Pembayaran - Slip Setoran Baru Akan Dibuat"
 
 #: 
 msgid "Deposit closed"
@@ -2850,10 +2594,6 @@ msgstr "Kirim"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Laporan Pengingat Janji"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Laporan Kehadiran Acara"
 
 #: 
 msgid "Restore Database"
@@ -3798,18 +3538,6 @@ msgid "Import Data"
 msgstr "Impor Data"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Apakah Anda yakin ingin HAPUS orang ini dari ID Peristiwa: "
-
-#: 
-msgid "Date Range"
-msgstr "Rentang Tanggal"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Menghapus acara ini JENIS TIDAK akan menghapus Acara atau Jumlah Kehadiran yang ada. Apakah Anda yakin ingin HAPUS ID Jenis Kegiatan:"
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Anda yakin ingin menghapus yang dipilih"
 
@@ -3838,14 +3566,6 @@ msgid "Deposit Date"
 msgstr "Tanggal Penyetoran"
 
 #: 
-msgid "Details:"
-msgstr "Detail:"
-
-#: 
-msgid "File Missing"
-msgstr "File Tidak Ada"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Ini akan menimpa nomor amplop keluarga dalam database dengan yang dipilih pada halaman ini. Terus?"
 
@@ -3860,42 +3580,6 @@ msgstr "dengan setidaknya satu:"
 #: 
 msgid "Welcome to"
 msgstr "Selamat Datang di"
-
-#: 
-msgid "Select Database Files"
-msgstr "Pilih File Database"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Pilih file cadangan untuk dipulihkan"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "PERHATIAN: Ini benar-benar akan menghapus basis data yang ada, dan menggantinya dengan cadangan"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Jika Anda mengunggah cadangan dari ChurchInfo, atau versi ChurchCRM sebelumnya, itu akan secara otomatis ditingkatkan ke skema database saat ini"
-
-#: 
-msgid "Upload Files"
-msgstr "Unggah berkas"
-
-#: 
-msgid "No Restore Running"
-msgstr "Tidak Kembalikan Menjalankan"
-
-#: 
-msgid "Restore Complete"
-msgstr "Pulihkan Lengkap"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Login ke Database yang dipulihkan"
-
-#: 
-msgid "Restore Error."
-msgstr "Pulihkan Kesalahan."
 
 #: 
 msgid "Church Information"
@@ -3999,57 +3683,20 @@ msgid "Enter Name"
 msgstr "Masukkan nama"
 
 #: 
-msgid "Update Church Info"
-msgstr "Perbarui Info Gereja"
-
-#: 
-msgid "Set Church Address"
-msgstr "Tetapkan Alamat Gereja"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Setel Pengaturan Email"
-
-#: 
 msgid "New Release"
 msgstr "Rilis Baru"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Pemeriksaan Integritas Aplikasi Gagal"
 
 #: 
 msgid "Self Registration"
 msgstr "Pendaftaran Mandiri"
 
 #: 
-msgid "Restore Status:"
-msgstr "Pulihkan Status:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Tidak ditemukan koordinat"
 
 #: 
-msgid "Backup Status:"
-msgstr "Status Cadangan:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Tidak Menjalankan Cadangan"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonim"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Peserta untuk Peristiwa"
-
-#: 
-msgid "Yearly"
-msgstr "Tahunan"
 
 #: 
 msgid "Registration Complete"
@@ -4096,20 +3743,8 @@ msgid "Signature definition file signature failed validation"
 msgstr "File definisi tanda tangan tanda tangan gagal validasi"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "File definisi tanda tangan tidak ada"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Satu atau lebih file gagal validasi tanda tangan"
-
-#: 
-msgid "Configure HTTPS"
-msgstr "Konfigurasikan HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "File gagal diperiksa integritasnya"
 
 #: 
 msgid "Family:"
@@ -4152,10 +3787,6 @@ msgid "Voting members "
 msgstr "Member voting "
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Pulihkan Lari, Harap tunggu."
-
-#: 
 msgid "Family Members:"
 msgstr "Anggota keluarga:"
 
@@ -4180,10 +3811,6 @@ msgid "Fiscal Year:"
 msgstr "Tahun fiskal:"
 
 #: 
-msgid "Add Attendees for Event"
-msgstr "Tambahkan Peserta untuk Acara"
-
-#: 
 msgid "family"
 msgstr "keluarga"
 
@@ -4200,14 +3827,6 @@ msgid "CSV Import"
 msgstr "Impor CSV"
 
 #: 
-msgid "Comment:"
-msgstr "Komentar:"
-
-#: 
-msgid "Closed:"
-msgstr "Tutup:"
-
-#: 
 msgid "Start Date: "
 msgstr "Mulai tanggal: "
 
@@ -4218,10 +3837,6 @@ msgstr "Tanggal Berakhir: "
 #: 
 msgid "Members:"
 msgstr "Anggota:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Edit Pengaturan Umum"
 
 #: 
 msgid "There were "
@@ -5094,46 +4709,6 @@ msgstr "Bulanan pada"
 #: 
 msgid "Yearly on"
 msgstr "Setiap tahun"
-
-#: 
-msgid "All Events of Type"
-msgstr "Semua Acara Tipe"
-
-#: 
-msgid "There is"
-msgstr "Ada"
-
-#: 
-msgid "There are"
-msgstr "Ada"
-
-#: 
-msgid "event"
-msgstr "peristiwa"
-
-#: 
-msgid "events"
-msgstr "acara"
-
-#: 
-msgid " in this category."
-msgstr "dalam kategori ini."
-
-#: 
-msgid "There currently is"
-msgstr "Saat ini ada"
-
-#: 
-msgid "There currently are"
-msgstr "Saat ini ada"
-
-#: 
-msgid "custom event type"
-msgstr "jenis acara khusus"
-
-#: 
-msgid "custom event types"
-msgstr "jenis acara khusus"
 
 #: 
 msgid "Family Roles Editor"
@@ -6543,42 +6118,6 @@ msgid "Please verify your family's information"
 msgstr "Harap verifikasi informasi keluarga Anda"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Alamat Gereja tidak Ditetapkan."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Nama Gereja diatur ke nilai default"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "Info Server SMTP kosong"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Sistem Anda bisa lebih aman dengan menginstal TLS / SSL Cert."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Data Klasifikasi Tidak Ada"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Data Klasifikasi Hilang untuk Beberapa Orang"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Data Gender Tidak Ada"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Data Gender Tidak Ada untuk Beberapa Orang"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Data Peran Tidak Ada"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Tidak dapat memuat info verifikasi"
 
@@ -6643,20 +6182,8 @@ msgid "Verified In Person"
 msgstr "Diverifikasi Secara Pribadi"
 
 #: 
-msgid "None State"
-msgstr "Tidak Ada Negara"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Arsip cadangan tidak mengandung basis data"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Koordinat yang Hilang"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Keluarga Mengkoordinasikan Data untuk Beberapa Keluarga"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6779,28 +6306,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "File yang dipilih melebihi ukuran unggahan maksimum server ini"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Prasyarat Aplikasi Tidak Terpenuhi"
-
-#: 
 msgid "Failed"
 msgstr "Gagal"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Nomor Rekening Pengecekan Gereja"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Data Peran Hilang untuk Beberapa Orang"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "Ukuran file PHP Max terlalu kecil"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Tingkatkan batas unggahan php untuk memungkinkan unggahan foto seluler, dan pengembalian cadangan."
 
 #: 
 msgid "Deactivated the Family"
@@ -6835,7 +6346,8 @@ msgid "Profile Image uploaded"
 msgstr "Gambar Profil diunggah"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "pembayaran?"
 
 #: 
@@ -6869,10 +6381,6 @@ msgstr "Silakan pilih Keluarga."
 #: 
 msgid "Coordinate data base file name:"
 msgstr "Mengkoordinasikan nama file basis data:"
-
-#: 
-msgid "Intersect With Cart"
-msgstr "Perpotongan dengan keranjang"
 
 #: 
 msgid "select an option"
@@ -6913,15 +6421,6 @@ msgstr "Properti tidak dapat dibatalkan penetapannya."
 #: 
 msgid "Select event"
 msgstr "Pilih acara"
-
-#: 
-msgid "Person's Name"
-msgstr "Nama orang"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Diperiksa oleh (Opsional)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -7030,14 +6529,6 @@ msgstr "ditugaskan"
 #: 
 msgid "Photo"
 msgstr "Foto"
-
-#: 
-msgid "Payment Details"
-msgstr "Rincian Pembayaran"
-
-#: 
-msgid "Fund Split"
-msgstr "Pembagian Dana"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7440,10 +6931,6 @@ msgid "Your Church's X Page"
 msgstr "Halaman X Gereja Anda"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "mencari gambar pengguna di Google ketika tidak ada gambar lokal"
-
-#: 
 msgid "Self Register"
 msgstr "Daftar Mandiri"
 
@@ -7837,18 +7324,6 @@ msgid "Upgrade Required"
 msgstr "Upgrade Diperlukan"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Versi DB Saat Ini: "
-
-#: 
-msgid "Current Software Version: "
-msgstr "Versi Perangkat Lunak Saat Ini: "
-
-#: 
-msgid "Upgrade database"
-msgstr "Upgrade database"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Perlihatkan Peringatan Tanggal Lahir pada saat memulai CRM"
 
@@ -7905,14 +7380,6 @@ msgid "Meanwhile, you may"
 msgstr "Sementara itu, kamu mungkin"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Hanya Basis Data (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Database dan Foto (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Pengguna harus seorang Admin"
 
@@ -7945,10 +7412,6 @@ msgid "return to People Dashboard"
 msgstr "kembali ke Dasbor Orang"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Pengguna harus memiliki izin MenuOptions"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "Host SMTP belum diatur, silakan kunjungi halaman pengaturan"
 
@@ -7961,16 +7424,8 @@ msgid "This Family is Deactivated"
 msgstr "Keluarga Ini Dinonaktifkan"
 
 #: 
-msgid "Metadata"
-msgstr "Metadata"
-
-#: 
 msgid "The database has been cleared."
 msgstr "Basis data telah dihapus."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Pengguna harus memiliki izin bAddEvent"
 
 #: 
 msgid "Anniversaries"
@@ -8004,10 +7459,6 @@ msgstr "tidak ditemukan atau pengguna tanpa email"
 #: 
 msgid "UserName not set"
 msgstr "UserName tidak disetel"
-
-#: 
-msgid "The people and families has been cleared from the database."
-msgstr "Orang-orang dan keluarga telah dibersihkan dari database."
 
 #: 
 msgid "Self Registrations"
@@ -8113,10 +7564,6 @@ msgstr "Aktifkan menu Keuangan"
 #: 
 msgid "Enable Events menu."
 msgstr "Aktifkan menu Acara."
-
-#: 
-msgid "Enable Calendar menu."
-msgstr "Aktifkan menu Kalender."
 
 #: 
 msgid "Enable Fundraiser menu."
@@ -8244,10 +7691,6 @@ msgid "User must have Edit Records permission"
 msgstr "Pengguna harus memiliki izin Edit Catatan"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Pengguna harus memiliki izin Keuangan"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Tidak bisa menghapus diri sendiri"
 
@@ -8280,20 +7723,8 @@ msgid "is disabled"
 msgstr "dinonaktifkan"
 
 #: 
-msgid "System Information"
-msgstr "Sistem informasi"
-
-#: 
 msgid "Software Version"
 msgstr "Versi perangkat lunak"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Pengaturan Server Email yang Valid"
-
-#: 
-msgid "Database"
-msgstr "Basis data"
 
 #: 
 msgid "Database Version"
@@ -8362,24 +7793,8 @@ msgid "Emptied into Event"
 msgstr "Dikosongkan ke Event"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "file integrityCheck.json hilang"
-
-#: 
 msgid "Passed"
 msgstr "Lolos"
-
-#: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "Waktu Eksekusi \"PHP Max\" terlalu pendek"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Tambah batas waktu eksekusi PHP untuk memungkinkan pencadangan dan pemulihan."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Pemeriksaan Integritas Aplikasi"
 
 #: 
 msgid "Focus"
@@ -8414,8 +7829,9 @@ msgid "Unsupported Deposit Types Detected"
 msgstr "Jenis Deposit Tidak Didukung Terdeteksi"
 
 #: 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Dukungan untuk pembayaran eGive, Kartu Kredit, dan Bank Draft telah ditinggalkan. Laporan non-bank yang ada mungkin tidak lagi dapat diakses di versi mendatang."
+#, fuzzy
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "Dukungan untuk pembayaran Kartu Kredit, dan Bank Draft telah ditinggalkan. Laporan non-bank yang ada mungkin tidak lagi dapat diakses di versi mendatang."
 
 #. Context: locales
 #: 
@@ -8423,24 +7839,12 @@ msgid "Estonian"
 msgstr "Estonia"
 
 #: 
-msgid "Error decoding integrity check result file"
-msgstr "Terjadi kesalahan saat mendekodekan file hasil pemeriksaan integritas"
-
-#: 
 msgid "Error decoding signature definition file"
 msgstr "Terjadi kesalahan saat mendekode file definisi tanda tangan"
 
 #: 
-msgid "Generate Backup"
-msgstr "Hasilkan Cadangan"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote Endpoint Cadangan. Jika WebDAV, ini harus url disandikan."
-
-#: 
-msgid "Password (if any)"
-msgstr "Kata sandi (jika ada)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8541,10 +7945,6 @@ msgid "Verification URL"
 msgstr "URL verifikasi"
 
 #: 
-msgid "Reset System"
-msgstr "Setel Ulang Sistem"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Id Orang Tidak Terduga"
 
@@ -8579,20 +7979,8 @@ msgid_plural "%d years old"
 msgstr[0] "%d tahun"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Versi PHP yang tidak didukung"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Dukungan untuk versi PHP ini akan segera dihapus. Versi PHP saat ini:"
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "ZipArchive PHP yang hilang"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "PHP ZipArchive diperlukan untuk mendukung peningkatan"
 
 #: 
 msgid "Add Results to Cart"
@@ -8614,18 +8002,6 @@ msgstr "Harap tinjau dan kurangi tugas-tugas ini sebelum melanjutkan dengan peni
 #: 
 msgid "Database Reset Functions"
 msgstr "Fungsi Reset Database"
-
-#: 
-msgid "Reset Members"
-msgstr "Atur Ulang Anggota"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Ini akan menghapus semua data anggota, orang, dan keluarga dan tidak dapat dibatalkan."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Atur Ulang Keluarga / Orang"
 
 #: 
 msgid "Reset Database"
@@ -8659,10 +8035,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Tentukan nama aplikasi yang akan ditampilkan di aplikasi authenticator"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Kunci Rahasia hilang dari Config.php"
 
 #: 
 msgid "Review"
@@ -8820,20 +8192,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Peserta tidak ada di ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informasi Instalasi ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Versi Database Server"
-
-#: 
 msgid "Web Server"
 msgstr "Web Server"
-
-#: 
-msgid "Email Information"
-msgstr "Informasi Email"
 
 #: 
 msgid "List maintenance"
@@ -9059,14 +8419,6 @@ msgstr "Mohon simpan kode pemulihan ini di tempat yang aman"
 #: 
 msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
 msgstr "Jika Anda kehilangan akses ke aplikasi autentikator yang baru didaftarkan, Anda akan memerlukan kode pemulihan untuk mengakses akun Anda"
-
-#: 
-msgid "Event Attendance"
-msgstr "Kehadiran Acara"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Buat laporan kehadiran DAN ketidakhadiran acara"
 
 #: 
 msgid "Help translate this project"
@@ -9340,10 +8692,6 @@ msgid "People who are configured to pay by credit card."
 msgstr "Orang-orang yang membayar dengan kartu kredit."
 
 #: 
-msgid "Adult Name (Optional)"
-msgstr "Nama Dewasa (Opsional)"
-
-#: 
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
 msgstr "Sebagai bagian dari pemulihan, cadangan eksternal telah dinonaktifkan. Untuk melanjutkan pencadangan otomatis, Anda harus mengaktifkan kembali setelan bEnableExternalBackupTarget."
 
@@ -9423,14 +8771,6 @@ msgstr "Gunakan Content Security Policy (CSP) untuk membantu melindungi dari XSS
 #: 
 msgid "Maximum number of log files to keep"
 msgstr "Jumlah maksimum log file"
-
-#: 
-msgid "Too Many Log Files"
-msgstr "Log terlalu banyak"
-
-#: 
-msgid "The logs directory contains many log files. Clean up old log files to free up disk space."
-msgstr "Terdapat banyak log file di folder Log. Hapus untuk mengosongkan penyimpanan."
 
 #: 
 msgid "Enter event description..."

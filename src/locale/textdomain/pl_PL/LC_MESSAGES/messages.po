@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "Archiwizuj Bazę Danych"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "To narzędzie pomoże wykonać ręczną kopię bazy danych ChurchCRM."
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Kopia zapasowa powinna być robiona przynajmniej raz w tygodniu, chyba że system robi to za Ciebie."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Po zapisaniu kopii zapasowej, powinny zostać zrobione dwa duplikaty. Jeden zachowany lokalnie oraz jeden przechowywany w bezpiecznej lokalizacji."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "W trosce o poufność danych zawartych w ChurchCRM, kopia bezpieczeństwa powinna być zabezpieczona hasłem (zwłaszcza jeżeli ma być przechowywana w miejscu dostępnym dla osób postronnych)."
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Wybierz rodzaj archiwum"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Zabezpieczyć kopię zapasową hasłem?"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "Ponów hasło"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Wygeneruj i prześlij kopię bezpieczeństwa na zewnętrzny nośnik."
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Wygrany wielu przedmiotów"
 
@@ -389,11 +353,6 @@ msgid "Add Cart to Event"
 msgstr "Dodaj Koszyk do Wydarzenia"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Koszyk"
-
-#: 
 msgid "OR"
 msgstr "LUB"
 
@@ -502,10 +461,6 @@ msgid "Empty Cart to Family"
 msgstr "Opróżnij Koszyk do Rodziny"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Opróżnij Koszyk do Wydarzenia"
-
-#: 
 msgid "Map Cart"
 msgstr "Pokaż Koszyk na mapie"
 
@@ -558,21 +513,8 @@ msgid "Event Checkin"
 msgstr "Zapis do wydarzenia"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to check people in for"
-msgstr "Wybierz Wydarzenie do którego chciałbyś dodać Osoby"
-
-#: 
 msgid "Select Event"
 msgstr "Wybierz Wydarzenie"
-
-#: 
-msgid "Add Visitor"
-msgstr "Dodaj Gościa"
-
-#: 
-msgid "CheckIn"
-msgstr "Wpisz"
 
 #: 
 msgid "CheckOut"
@@ -597,10 +539,6 @@ msgstr "Wypisany przez"
 #: 
 msgid "Action"
 msgstr "Akcja"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Nie przypisano żadnych uczestników dla tego Wydarzenia"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -632,21 +570,9 @@ msgid "Deposit Slip Number: "
 msgstr "Deposit Slip Number: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Zamknij Odcinek Wpłaty (pamiętaj aby nacisnąć &quot;Zapisz&quot;)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Raport Odcinków Wpłaty"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Ważna uwaga: nie udane transakcje będą całkowicie usuniętę gdy Odcinek Wpłaty zostanie zamknięty."
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Płatności na tym Odcinku Wpłaty:"
 
 #: 
 msgid "Import eGive"
@@ -657,7 +583,8 @@ msgid "Add Payment"
 msgstr "Dodaj Płatność"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Załaduj Zaakceptowaną Transakcję"
 
 #: 
@@ -925,44 +852,8 @@ msgid "Edit"
 msgstr "Edytuj"
 
 #: 
-msgid "Event Attendees"
-msgstr "Uczestnicy"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Nieobecni-Nie biorący udziału"
-
-#: 
-msgid "Event Guests"
-msgstr "Goście"
-
-#: 
-msgid "There "
-msgstr "Tam"
-
-#: 
 msgid "Event Title"
 msgstr "Tytuł Wydarzenia"
-
-#: 
-msgid "Event Date"
-msgstr "Data Wydarzenia"
-
-#: 
-msgid "Attending Members"
-msgstr "Członkowie biorący udział"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Członkowie nie biorący udziału"
-
-#: 
-msgid "Guests"
-msgstr "Goście"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Nie ma Wydarzeń w tej Kategorii"
 
 #: 
 msgid "Create Event"
@@ -973,20 +864,8 @@ msgid "Create a new Event"
 msgstr "Utwórz nowe wydarzenie"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Edytuj ID Wydarzenia:"
-
-#: 
 msgid " errors. Please see below"
 msgstr "Błędy. Popatrz poniżej"
-
-#: 
-msgid "Items with a "
-msgstr "Pola z "
-
-#: 
-msgid " are required"
-msgstr "są wymagane"
 
 #: 
 msgid "Select your event type"
@@ -997,21 +876,8 @@ msgid "You must pick an event type."
 msgstr "Musisz wybrać typ wydarzenia"
 
 #: 
-msgid "Event Desc"
-msgstr "Opis Wydarzenia"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Nie odnotowano Uczestników"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Notatki od Uczestników:"
-
-#: 
-#, fuzzy
-msgid "Event Sermon"
-msgstr "Kazanie Okolicznościowe"
 
 #: 
 #, fuzzy
@@ -1021,10 +887,6 @@ msgstr "Status Wydarzenia"
 #: 
 msgid "Return to Events"
 msgstr "Wróć do Wydarzeń"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "RODZAJ WYDARZENIA"
 
 #: 
 msgid "Sundays"
@@ -1053,14 +915,6 @@ msgstr "Piątki"
 #: 
 msgid "Saturdays"
 msgstr "Soboty"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "LICZBA UCZESTNIKÓW"
-
-#: 
-msgid "Optional"
-msgstr "Opcjonalne"
 
 #: 
 msgid "Add Event Type"
@@ -1147,10 +1001,6 @@ msgid "Family Members"
 msgstr "Członkowie Rodziny"
 
 #: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Możesz Utworzyć członków teraz lub dodać ich później. Wszystkie wpisy staną się <i>nowymi</i> Osobami ."
-
-#: 
 msgid "First"
 msgstr "Imię"
 
@@ -1235,14 +1085,6 @@ msgid "Envelope Number"
 msgstr "Nr. Koperty"
 
 #: 
-msgid "Previous Family"
-msgstr "Poprzednia Rodzina"
-
-#: 
-msgid "Next Family"
-msgstr "Następna Rodzina"
-
-#: 
 msgid "Upload Photo"
 msgstr "Załaduj Zdjęcie"
 
@@ -1318,14 +1160,6 @@ msgstr "Sposób"
 #: 
 msgid "Comment"
 msgstr "Komentarz"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Dodaj nowy Datek"
-
-#: 
-msgid "Add a new payment"
-msgstr "Dodaj nową Płatność"
 
 #: 
 msgid "Confirm Delete"
@@ -1577,7 +1411,8 @@ msgid "Date End"
 msgstr "Data Końcowa"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Usuń Sortowanie"
 
 #: 
@@ -1983,37 +1818,12 @@ msgid "Confirm data labels"
 msgstr "Potwierdź data labels"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Lista Wydarzeń w Kategorii = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Lista Wszystkich Wydarzeń Kościelnych"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Zaznacz Typy Wydarzeń do Pokazania"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Pokaż Wydarzenia w Roku"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Data/Czas Rozpoczęcia"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Nie odnotowane obecnych"
-
-#: 
-#, fuzzy
-msgid "Attendees"
-msgstr "Uczestnicy("
-
-#: 
-msgid " Monthly Averages"
-msgstr " Średnia w Miesiącu"
 
 #: 
 msgid "Invalid login or password"
@@ -2355,32 +2165,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "wskazuje pola odziedziczone z ustawień Rodziny."
 
 #: 
-msgid "Personal Info"
-msgstr "Informacje Osobiste"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Pan, Pani, Dr, Ks"
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Mł., St., III"
-
-#: 
 msgid "Birth Month"
 msgstr "Miesiąc Urodzin"
 
 #: 
-msgid "Select Month"
-msgstr "Wybierz Miesiąc"
-
-#: 
 msgid "Birth Day"
 msgstr "Dzień Urodzin"
-
-#: 
-msgid "Select Day"
-msgstr "Wybierz Dzień"
 
 #: 
 #, fuzzy
@@ -2394,10 +2184,6 @@ msgstr "Ukryj Wiek"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Utwórz Nową Rodzinę (używając Nazwiska)"
-
-#: 
-msgid "Membership Info"
-msgstr "Dane Członkostwa"
 
 #: 
 #, fuzzy
@@ -2486,28 +2272,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Pole 'Numer Czeku' nie jest potrzebne dla płatności Gotówką"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Edytor Datków (Pledge)"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Edytor Płatności:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Odcinek Wpłaty #"
-
-#: 
 msgid " more entries will fit."
 msgstr " wpisów może jeszcze zostać dodanych."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Edytor Płatności - Zmodyfikuj Istniejącą Wpłatę"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Edytor Płatności - Nowy Odcinek Wpłaty zostanie utworzony"
 
 #: 
 msgid "Deposit closed"
@@ -2817,10 +2583,6 @@ msgstr "Wyślij"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Raport Przypominający o Datkach"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Raporty Uczestnictwa w Wydarzeniach"
 
 #: 
 msgid "Restore Database"
@@ -3642,10 +3404,6 @@ msgid "Events"
 msgstr "Wydarzenia"
 
 #: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Skasowanie tego typu wydarzenia nie spowoduje usunięcia wszystkich wydarzeń. Czy na pewno usunąć ten typ wydarzenia?"
-
-#: 
 msgid "False"
 msgstr "False"
 
@@ -3672,10 +3430,6 @@ msgstr "Dodaj wszystkie klasy"
 #: 
 msgid "Clear All Classes"
 msgstr "Wyczyść wszystkie klasy"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Dodaj uczestników wydarzenia"
 
 #: 
 msgid "Groups"
@@ -3772,18 +3526,6 @@ msgid "Allow user to add new event"
 msgstr "Zezwól użytkownikom na tworzenie wydarzeń"
 
 #: 
-msgid "All Events of Type"
-msgstr "Wszystkie wydarzenia według typu"
-
-#: 
-msgid "event"
-msgstr "wydarzenie"
-
-#: 
-msgid "events"
-msgstr "wydarzenia"
-
-#: 
 msgid "Person Classification"
 msgstr "Kategoria Osoby"
 
@@ -3794,14 +3536,6 @@ msgstr "Kategorie Osoby"
 #: 
 msgid "Person Classifications Editor"
 msgstr "Edytor Kategorii Osoby"
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Brak Danych Kategorii"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Brak Danych Kategorii dla Niektórych Osób"
 
 #: 
 msgid "Family Registration"
@@ -3973,10 +3707,6 @@ msgid "Enable Events menu."
 msgstr "Pokaż menu Wydarzenia"
 
 #: 
-msgid "Enable Calendar menu."
-msgstr "Pokaż menu Kalendarz"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Pokaż menu Zbiórka Pieniędzy"
 
@@ -4077,10 +3807,6 @@ msgid "User must have Edit Records permission"
 msgstr "Użytkownik musi mieć dostęp do Edycji Rekordów"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Użytkownik musi mieć dostęp do Finansów"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Nie można usunąć siebie"
 
@@ -4113,20 +3839,8 @@ msgid "is disabled"
 msgstr "wyłączone"
 
 #: 
-msgid "System Information"
-msgstr "Informacje o Systemie"
-
-#: 
 msgid "Software Version"
 msgstr "Wersja Oprogramowania"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Poprawne Ustawienia Serwera Poczty"
-
-#: 
-msgid "Database"
-msgstr "Baza Danych"
 
 #: 
 msgid "Database Version"
@@ -4195,24 +3909,8 @@ msgid "Emptied into Event"
 msgstr "Przekształcono na Wydarzenia"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "brak pliku integrityCheck.json"
-
-#: 
 msgid "Passed"
 msgstr "Poprawne"
-
-#: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "Maksymalny Czas Wykonania PHP zbyt krótki"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Wydłuż Czas Wykonania PHP aby zezwolić na archiwizację i przywracanie."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Sprawdzenie Spójności Systemu"
 
 #: 
 msgid "Focus"
@@ -4247,8 +3945,9 @@ msgid "Unsupported Deposit Types Detected"
 msgstr "Wykryto Nieobsługiwany Typ Wpłaty"
 
 #: 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Wsparcie dla eGive, kart płatniczych i wpłat bankowych zostało zakończone. Stare raporty mogą przestać działać w kolejnych wersjach."
+#, fuzzy
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "Wsparcie dla kart płatniczych i wpłat bankowych zostało zakończone. Stare raporty mogą przestać działać w kolejnych wersjach."
 
 #. Context: locales
 #: 
@@ -4256,24 +3955,12 @@ msgid "Estonian"
 msgstr "Estoński"
 
 #: 
-msgid "Error decoding integrity check result file"
-msgstr "Błąd podczas odczytu pliku spójności systemu"
-
-#: 
 msgid "Error decoding signature definition file"
 msgstr "Błąd odczytu pliku podpisów"
 
 #: 
-msgid "Generate Backup"
-msgstr "Wykonaj Kopię Bezpieczeństwa"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Zdalny Punkt Kopii Bezpieczeństwa. Jeżeli jest to WebDAV, URL musi zaeiwrać wszystkie informacje. "
-
-#: 
-msgid "Password (if any)"
-msgstr "Hasło"
 
 #: 
 msgid "All information on this page is correct."
@@ -4383,10 +4070,6 @@ msgid "Verification URL"
 msgstr "Adres URL potwierdzenia"
 
 #: 
-msgid "Reset System"
-msgstr "Zresetuj System"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Niespodziewane Id Osoby"
 
@@ -4411,20 +4094,8 @@ msgid "Maximum number of Calendar Events"
 msgstr "Maksymalna liczba Wydarzeń w kalendarzu"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Nie odbsługiwana wersja PHP"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Wsparcie dla tej wersji PHP wkrótce się skończy. Obecna wersja PHP: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Brak PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "PHP ZipArchive jest wymagane do aktualizacji"
 
 #: 
 msgid "Add Results to Cart"
@@ -4446,18 +4117,6 @@ msgstr "Przejżyj i rozwiąż problemy przed kontynuacją aktualizacji:"
 #: 
 msgid "Database Reset Functions"
 msgstr "Funkcje Resetowania Bazy Danych"
-
-#: 
-msgid "Reset Members"
-msgstr "Zresetuj Członków"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Spowoduje usunięcie danych członków, osób i rodzin; Zmiany są nieodwracalne."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Zresetuj Rodziny/Osoby"
 
 #: 
 msgid "Reset Database"
@@ -4491,10 +4150,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Podaj nazwę wyswietlaną przez aplikację uwierzytelniającą"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Brak Klucza Prywatnego w Config.php"
 
 #: 
 msgid "Review"
@@ -4652,20 +4307,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Uczestnicy z poza ChurchCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Informacje Instalacji ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Wersja Servera Bazy Danych"
-
-#: 
 msgid "Web Server"
 msgstr "Serwer WWW"
-
-#: 
-msgid "Email Information"
-msgstr "Informacje o Email"
 
 #: 
 msgid "List maintenance"

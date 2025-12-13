@@ -10,7 +10,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have property and classification editing permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
 
 $sClassError = '';
 $sNameError = '';
@@ -145,20 +145,20 @@ require_once 'Include/Header.php';
         <div class="row">
             <div class="col-md-6">
                 <label for="Name"><?= gettext('Name') ?>:</label>
-                <input class="form-control input-small" type="text" name="Name" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" size="50">
+                <input class="form-control input-small" type="text" name="Name" value="<?= InputUtils::escapeAttribute($sName) ?>" size="50">
                 <?php echo $sNameError ?>
            </div>
        </div>
        <div class="row">
             <div class="col-md-6">
                 <label for="Description">"<?= gettext('A') ?> <?php echo $sTypeName ?><BR><?= gettext('with this property..') ?>":</label>
-                <textarea class="form-control input-small" name="Description" cols="60" rows="3"><?= htmlentities(stripslashes($sDescription), ENT_NOQUOTES, 'UTF-8') ?></textarea>
+                <textarea class="form-control input-small" name="Description" cols="60" rows="3"><?= InputUtils::escapeAttribute($sDescription) ?></textarea>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <label for="Prompt"><?= gettext('Prompt') ?>:</label>
-                <input class="form-control input-small" type="text" name="Prompt" value="<?php echo htmlentities(stripslashes($sPrompt), ENT_NOQUOTES, 'UTF-8') ?>" size="50">
+                <input class="form-control input-small" type="text" name="Prompt" value="<?php echo InputUtils::escapeAttribute($sPrompt) ?>" size="50">
                 <span class="SmallText"><?= gettext('Entering a Prompt value will allow the association of a free-form value.') ?></span>
             </div>
         </div>

@@ -79,7 +79,6 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $p = $member->getPerson();
             $fam = $p->getFamily();
 
-            // Philippe Logel : this is useful when a person don't have a family : ie not an address
             if (!empty($fam)) {
                 $p->setAddress1($fam->getAddress1());
                 $p->setAddress2($fam->getAddress2());
@@ -116,9 +115,13 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         if ($groupSettings['isSundaySchool'] ?? false) {
             $group->makeSundaySchool();
         }
-        $group->setName($groupSettings['groupName']);
-        $group->setDescription($groupSettings['description'] ?? '');
-        $group->setType($groupSettings['groupType'] ?? 0);
+        $group->setName(strip_tags($groupSettings['groupName']));
+        $group->setDescription(strip_tags($groupSettings['description'] ?? ''));
+        // Only set the explicit group type if it was provided in the request.
+        // This prevents overwriting types set by helper methods like makeSundaySchool().
+        if (isset($groupSettings['groupType'])) {
+            $group->setType($groupSettings['groupType']);
+        }
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });
@@ -127,9 +130,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
-        $group->setName($input['groupName']);
+        $group->setName(strip_tags($input['groupName']));
         $group->setType($input['groupType']);
-        $group->setDescription($input['description'] ?? '');
+        $group->setDescription(strip_tags($input['description'] ?? ''));
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });
@@ -219,7 +222,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $roleID = $args['roleID'];
-        $groupService = $this->get('GroupService');
+        $groupService = new GroupService();
 
         return SlimUtils::renderJSON($response, $groupService->deleteGroupRole($groupID, $roleID));
     });
@@ -227,7 +230,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/{groupID:[0-9]+}/roles', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $roleName = $request->getParsedBody()['roleName'];
-        $groupService = $this->get('GroupService');
+        $groupService = new GroupService();
 
         return SlimUtils::renderJSON($response, $groupService->addGroupRole($groupID, $roleName));
     });
@@ -244,7 +247,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
-        $groupService = $this->get('GroupService');
+        $groupService = new GroupService();
 
         if ($input['GroupSpecificPropertyStatus']) {
             $groupService->enableGroupSpecificProperties($groupID);

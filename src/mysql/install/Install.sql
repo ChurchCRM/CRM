@@ -25,6 +25,8 @@ CREATE TABLE `config_cfg` (
   UNIQUE KEY `cfg_name` (`cfg_name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+-- `src/mysql/upgrade/6.2.0.sql` to delete the deprecated config row.
+
 --
 -- Table structure for table `deposit_dep`
 --
@@ -35,7 +37,7 @@ CREATE TABLE `deposit_dep` (
   `dep_Comment` text,
   `dep_EnteredBy` mediumint(9) unsigned default NULL,
   `dep_Closed` tinyint(1) NOT NULL default '0',
-  `dep_Type` enum('Bank','CreditCard','BankDraft','eGive') NOT NULL default 'Bank',
+  `dep_Type` enum('Bank','CreditCard','BankDraft') NOT NULL default 'Bank',
   PRIMARY KEY  (`dep_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci PACK_KEYS=0 AUTO_INCREMENT=1 ;
 
@@ -618,7 +620,7 @@ CREATE TABLE `pledge_plg` (
   `plg_date` date default NULL,
   `plg_amount` decimal(8,2) default NULL,
   `plg_schedule` enum('Weekly', 'Monthly','Quarterly','Once','Other') default NULL,
-  `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT','EGIVE') default NULL,
+  `plg_method` enum('CREDITCARD','CHECK','CASH','BANKDRAFT') default NULL,
   `plg_comment` text,
   `plg_DateLastEdited` date NOT NULL default '2016-01-01',
   `plg_EditedBy` mediumint(9) NOT NULL default '0',
@@ -1130,15 +1132,6 @@ CREATE TABLE `multibuy_mb` (
   PRIMARY KEY  (`mb_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci AUTO_INCREMENT=1 ;
 
-CREATE TABLE `egive_egv` (
-  `egv_egiveID` varchar(16) character set utf8 NOT NULL,
-  `egv_famID` int(11) NOT NULL,
-  `egv_DateEntered` datetime NOT NULL,
-  `egv_DateLastEdited` datetime NOT NULL,
-  `egv_EnteredBy` smallint(6) NOT NULL default '0',
-  `egv_EditedBy` smallint(6) NOT NULL default '0'
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-
 CREATE TABLE `kioskdevice_kdev` (
   `kdev_ID` mediumint(9) unsigned NOT NULL AUTO_INCREMENT,
   `kdev_GUIDHash` char(64) DEFAULT NULL,
@@ -1185,22 +1178,6 @@ CREATE TABLE `locations` (
   PRIMARY KEY (`location_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
-CREATE TABLE `church_location_person` (
-  `location_id` INT NOT NULL,
-  `person_id` INT NOT NULL,
-  `order` INT NOT NULL,
-  `person_location_role_id` INT NOT NULL,  #This will be referenced to user-defined roles such as clergey, pastor, member, etc for non-denominational use
-  PRIMARY KEY (`location_id`, `person_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-
-CREATE TABLE `church_location_role` (
-  `location_id` INT NOT NULL,
-  `role_id` INT NOT NULL,
-  `role_order` INT NOT NULL,
-  `role_title` INT NOT NULL,
-  PRIMARY KEY (`location_id`, `role_id`)
-) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-
 --
 -- Table structure for table `menu_links`
 --
@@ -1212,123 +1189,5 @@ CREATE TABLE `menu_links` (
   `linkOrder` INT NOT NULL,
   PRIMARY KEY (`linkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Table structure for table `permissions`
---
-
-CREATE TABLE `permissions` (
-  `permission_id` int(11) NOT NULL,
-  `permission_name` varchar(50) NOT NULL,
-  `permission_desc` varchar(250) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `permissions`
---
-
-INSERT INTO `permissions` (`permission_id`, `permission_name`, `permission_desc`) VALUES
-(1, 'addPeople', 'Add People'),
-(3, 'updatePeople', 'Update People'),
-(4, 'deletePeopleRecords', 'Delete People Records'),
-(5, 'curdProperties', 'Manage Properties '),
-(6, 'crudClassifications', 'Manage Classifications'),
-(7, 'crudGroups', 'Manage Groups'),
-(8, 'crudRoles', 'Manage Roles'),
-(9, 'crudDonations', 'Manage Donations'),
-(10, 'curdFinance', 'Manage Finance'),
-(11, 'curdNotes', 'Manage Notes'),
-(13, 'editSelf', 'Edit own family only'),
-(14, 'emailMailto', 'Allow to see Mailto Links'),
-(15, 'createDirectory', 'Create Directories'),
-(16, 'exportCSV', 'Export CSV files'),
-(18, 'crudEvent', 'Manage Events');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `person_permission`
---
-
-CREATE TABLE `person_permission` (
-  `per_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `person_roles`
---
-
-CREATE TABLE `person_roles` (
-  `per_id` int(11) NOT NULL,
-  `role_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `role_id` int(11) NOT NULL,
-  `role_name` varchar(50) NOT NULL,
-  `role_desc` varchar(250) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `roles`
---
-
-INSERT INTO `roles` (`role_id`, `role_name`, `role_desc`) VALUES
-(1, 'Welcome Committee', NULL),
-(2, 'Clergy', NULL);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `permissions`
---
-ALTER TABLE `permissions`
-  ADD PRIMARY KEY (`permission_id`),
-  ADD UNIQUE KEY `permission_name` (`permission_name`);
-
---
--- Indexes for table `person_permission`
---
-ALTER TABLE `person_permission`
-  ADD PRIMARY KEY (`per_id`,`permission_id`);
-
---
--- Indexes for table `person_roles`
---
-ALTER TABLE `person_roles`
-  ADD PRIMARY KEY (`per_id`,`role_id`);
-
---
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`role_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `permissions`
---
-ALTER TABLE `permissions`
-  MODIFY `permission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 update version_ver set ver_update_end = now();

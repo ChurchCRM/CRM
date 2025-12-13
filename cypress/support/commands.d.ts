@@ -40,6 +40,36 @@ declare namespace Cypress {
     buildRandom(prefixString: string): Chainable<string>;
 
     /**
+     * Create or reuse a cached login session
+     * @param sessionName - Unique identifier for the cached session
+     * @param username - Credential username
+     * @param password - Credential password
+     * @param options - Optional flags (forceLogin bypasses cached session)
+     */
+    setupLoginSession(
+      sessionName: string,
+      username: string,
+      password: string,
+      options?: { forceLogin?: boolean }
+    ): Chainable<void>;
+
+    /**
+     * Ensure an admin session is active (optionally forcing a fresh login)
+     */
+    setupAdminSession(options?: { forceLogin?: boolean }): Chainable<void>;
+
+    /**
+     * Ensure a standard session is active (optionally forcing a fresh login)
+     */
+    setupStandardSession(options?: { forceLogin?: boolean }): Chainable<void>;
+
+    /**
+     * Ensure a no-finance user session is active (optionally forcing a fresh login)
+     * Used to test that finance pages correctly deny access to non-finance users
+     */
+    setupNoFinanceSession(options?: { forceLogin?: boolean }): Chainable<void>;
+
+    /**
      * Wait for page to be fully loaded
      */
     waitForPageLoad(): Chainable<void>;

@@ -37,20 +37,97 @@ class InputUtils
         return $resultString;
     }
 
-    public static function filterString($sInput): string
+    /**
+     * Sanitize plain text by removing all HTML tags
+     * Use this for non-HTML values like names, descriptions that should never contain markup
+     * 
+     * @param string $sInput Input text
+     * @return string Plain text with HTML tags removed
+     */
+    public static function sanitizeText($sInput): string
     {
-        // or use htmlspecialchars( stripslashes( ))
         return strip_tags(trim($sInput));
     }
 
-    public static function filterSanitizeString($sInput): string
+    /**
+     * Sanitize plain text and prepare for safe HTML display
+     * Removes HTML tags, whitespace, and escapes remaining special characters
+     * Best for: User-submitted form data that should be plain text
+     * 
+     * @param string $sInput Input text to sanitize and escape
+     * @return string Safe plain text for HTML output
+     */
+    public static function sanitizeAndEscapeText($sInput): string
     {
-        return filter_var(trim($sInput), FILTER_SANITIZE_SPECIAL_CHARS);
+        return htmlspecialchars(strip_tags(trim($sInput)), ENT_QUOTES, 'UTF-8');
     }
 
-    public static function filterHTML($sInput): string
+    /**
+     * Sanitize rich text HTML with XSS protection using HTML Purifier
+     * Use this for user-provided HTML content (e.g., event descriptions from Quill editor)
+     * 
+     * @param string $sInput HTML input to sanitize
+     * @return string Clean HTML with dangerous tags/attributes removed
+     */
+    public static function sanitizeHTML($sInput): string
     {
-        return strip_tags(trim($sInput), self::$AllowedHTMLTags);
+        $sInput = trim($sInput);
+        
+        if (empty($sInput)) {
+            return '';
+        }
+        
+        // Configure HTML Purifier with strict XSS protection
+        $config = \HTMLPurifier_Config::createDefault();
+        
+        // Define allowed HTML tags for safe content (rich text)
+        $config->set('HTML.Allowed', 
+            'a[href],b,i,u,h1,h2,h3,h4,h5,h6,pre,address,img[src|alt|width|height],table,td,tr,ol,li,ul,p,sub,sup,s,hr,span,blockquote,div,small,big,tt,code,kbd,samp,del,ins,cite,q,br,strong,em'
+        );
+        
+        // Block dangerous protocols: only allow safe URLs
+        $config->set('URI.AllowedSchemes', ['http' => true, 'https' => true, 'ftp' => true, 'mailto' => true]);
+        
+        // Disable dangerous elements that could bypass sanitization
+        $config->set('HTML.ForbiddenElements', ['script', 'iframe', 'embed', 'object', 'form', 'style', 'meta']);
+        
+        // Disable automatic paragraph wrapping
+        $config->set('AutoFormat.AutoParagraph', false);
+        
+        // Enable ID attributes for accessibility
+        $config->set('Attr.EnableID', true);
+        
+        $purifier = new \HTMLPurifier($config);
+        
+        return $purifier->purify($sInput);
+    }
+
+    /**
+     * Escape HTML for safe display in HTML context (body content and attributes)
+     * Converts special characters to HTML entities: &, <, >, ", '
+     * Automatically handles stripslashes() for magic quotes compatibility
+     * Use this when outputting user/database values in HTML
+     * 
+     * @param string $sInput Text to escape
+     * @return string HTML-escaped text safe for display
+     */
+    public static function escapeHTML($sInput): string
+    {
+        return htmlspecialchars(stripslashes($sInput), ENT_QUOTES, 'UTF-8');
+    }
+
+    /**
+     * Escape HTML for safe use in HTML attributes
+     * Alias for escapeHTML() - both use ENT_QUOTES for full safety
+     * Automatically handles stripslashes() for magic quotes compatibility
+     * Use this when outputting user/database values in HTML attributes
+     * 
+     * @param string $sInput Text to escape
+     * @return string HTML-escaped text safe for attribute use
+     */
+    public static function escapeAttribute($sInput): string
+    {
+        return htmlspecialchars(stripslashes($sInput), ENT_QUOTES, 'UTF-8');
     }
 
     public static function filterChar($sInput, $size = 1): string
@@ -100,9 +177,9 @@ class InputUtils
         if (strlen($sInput) > 0) {
             switch ($type) {
                 case 'string':
-                    return mysqli_real_escape_string($cnInfoCentral, self::filterString($sInput));
+                    return mysqli_real_escape_string($cnInfoCentral, self::sanitizeText($sInput));
                 case 'htmltext':
-                    return mysqli_real_escape_string($cnInfoCentral, self::filterHTML($sInput));
+                    return mysqli_real_escape_string($cnInfoCentral, self::sanitizeHTML($sInput));
                 case 'char':
                     return mysqli_real_escape_string($cnInfoCentral, self::filterChar($sInput, $size));
                 case 'int':

@@ -1,0 +1,339 @@
+[
+    {
+        "name": "Angels class",
+        "description": "Pre-K Sunday School class for ages 3-5 (preschool).",
+        "isSundaySchool": true,
+        "type": 4,
+        "peopleTypes": ["Teacher", "Student"],
+        "members": [
+            {
+                "email": "carol.williams@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "joseph.scott37@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "daniel.scott2@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "paul.nelson94@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "steven.jones@demo.churchcrm.io",
+                "role": "Student"
+            }
+        ]
+    },
+    {
+        "name": "Class 1-3",
+        "description": "Elementary Sunday School for grades 1-3 (ages 6-8).",
+        "isSundaySchool": true,
+        "type": 4,
+        "peopleTypes": ["Teacher", "Student"],
+        "members": [
+            {
+                "email": "jason.johnson85@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "joseph.scott37@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "daniel.scott2@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "paul.nelson94@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "steven.jones@demo.churchcrm.io",
+                "role": "Student"
+            }
+        ]
+    },
+    {
+        "name": "Class 4-5",
+        "description": "Elementary Sunday School for grades 4-5 (ages 9-10).",
+        "isSundaySchool": true,
+        "type": 4,
+        "peopleTypes": ["Teacher", "Student"],
+        "members": [
+            {
+                "email": "rebecca.garcia@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "joseph.scott37@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "daniel.scott2@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "paul.nelson94@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "steven.jones@demo.churchcrm.io",
+                "role": "Student"
+            }
+        ]
+    },
+    {
+        "name": "Class 6-7",
+        "description": "Upper elementary / middle Sunday School for grades 6-7 (ages 11-12).",
+        "isSundaySchool": true,
+        "type": 4,
+        "peopleTypes": ["Teacher", "Student"],
+        "members": [
+            {
+                "email": "steven.thompson11@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "joseph.scott37@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "daniel.scott2@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "paul.nelson94@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "steven.jones@demo.churchcrm.io",
+                "role": "Student"
+            }
+        ]
+    },
+    {
+        "name": "High School Class",
+        "description": "High school youth class for ages 14-18: Bible study, mentoring, and fellowship.",
+        "isSundaySchool": true,
+        "type": 4,
+        "peopleTypes": ["Teacher", "Student"],
+        "members": [
+            {
+                "email": "andrew.baker@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "william.williams@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "richard.clark87@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "paul.nelson94@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "dorothy.johnson2@demo.churchcrm.io",
+                "role": "Student"
+            }
+        ]
+    },
+    {
+        "name": "Youth Meeting",
+        "description": "Weekly youth meeting for teens (ages 13-18): social and service activities.",
+        "isSundaySchool": true,
+        "type": 4,
+        "peopleTypes": ["Teacher", "Student"],
+        "members": [
+            {
+                "email": "andrew.adams@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "lisa.adams12@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "joseph.scott37@demo.churchcrm.io",
+                "role": "Student"
+            },
+            {
+                "email": "paul.nelson94@demo.churchcrm.io",
+                "role": "Teacher"
+            },
+            {
+                "email": "daniel.scott2@demo.churchcrm.io",
+                "role": "Student"
+            }
+        ]
+    },
+    {
+        "name": "Boys Scouts",
+        "description": "Boys Scouts troop — youth scouting activities. Leaders are adult volunteers.",
+        "isSundaySchool": false,
+        "groupType": 2,
+        "peopleTypes": ["Leader", "Member"],
+        "members": [
+            {
+                "email": "george.clark@demo.churchcrm.io",
+                "role": "Leader"
+            },
+            {
+                "email": "joseph.scott37@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "daniel.scott2@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "george.scott1@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "kenneth.johnson22@demo.churchcrm.io",
+                "role": "Member"
+            }
+        ]
+    },
+    {
+        "name": "Girl Scouts",
+        "description": "Girl Scouts troop — youth scouting activities. Leaders are adult volunteers.",
+        "isSundaySchool": false,
+        "groupType": 2,
+        "peopleTypes": ["Leader", "Member"],
+        "members": [
+            {
+                "email": "cynthia.thompson@demo.churchcrm.io",
+                "role": "Leader"
+            },
+            {
+                "email": "jennifer.thompson@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "mary.williams@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "george.scott1@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "kenneth.johnson22@demo.churchcrm.io",
+                "role": "Member"
+            }
+        ]
+    },
+    {
+        "name": "Church Board",
+        "description": "Church leadership board responsible for governance and major decisions.",
+        "isSundaySchool": false,
+        "groupType": 3,
+        "peopleTypes": ["Member"],
+        "members": [
+            {
+                "email": "richard.scott2@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "stephanie.scott@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "george.scott1@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "kenneth.johnson22@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "joshua.rodriguez@demo.churchcrm.io",
+                "role": "Member"
+            }
+        ]
+    },
+    {
+        "name": "Worship Service",
+        "description": "Worship team and volunteers for Sunday services (musicians, tech, ushers).",
+        "isSundaySchool": false,
+        "groupType": 3,
+        "peopleTypes": ["Leader", "Member"],
+        "members": [
+            {
+                "email": "andrew.baker@demo.churchcrm.io",
+                "role": "Leader"
+            },
+            {
+                "email": "george.clark@demo.churchcrm.io",
+                "role": "Leader"
+            },
+            {
+                "email": "rebecca.garcia@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "john.garcia@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "george.scott1@demo.churchcrm.io",
+                "role": "Member"
+            }
+        ]
+    },
+    {
+        "name": "Clergy",
+        "description": "Clergy and pastoral staff responsible for spiritual leadership and sacraments.",
+        "isSundaySchool": false,
+        "groupType": 3,
+        "peopleTypes": ["Member"],
+        "members": [
+            {
+                "email": "dorothy.johnson@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "andrew.adams@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "george.scott1@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "kenneth.johnson22@demo.churchcrm.io",
+                "role": "Member"
+            },
+            {
+                "email": "joshua.rodriguez@demo.churchcrm.io",
+                "role": "Member"
+            }
+        ]
+    },
+    {
+        "name": "2024 Food drive",
+        "description": "Community food drive for 2024 — volunteer-run collection and distribution.",
+        "isSundaySchool": false,
+        "groupType": 1,
+        "active": false,
+        "peopleTypes": ["Coordinator", "Volunteer"],
+        "members": [
+            {
+                "email": "kenneth.johnson22@demo.churchcrm.io",
+                "role": "Coordinator"
+            },
+            {
+                "email": "joshua.rodriguez@demo.churchcrm.io",
+                "role": "Volunteer"
+            }
+        ]
+    }
+]

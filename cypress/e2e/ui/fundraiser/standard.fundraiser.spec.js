@@ -1,26 +1,27 @@
 /// <reference types="cypress" />
 
 describe("Fund Raiser", () => {
+    beforeEach(() => cy.setupStandardSession());
     
     it("View All ", () => {
-        cy.loginStandard("FundRaiserEditor.php?FundRaiserID=-1");
+        cy.visit("FundRaiserEditor.php?FundRaiserID=-1");
         cy.contains("Create New Fund Raiser");
     });
 
     it("View By Filter Date ", () => {
-        cy.loginStandard("FindFundRaiser.php?DateStart=2015-01-01&DateEnd=2017-01-01");
+        cy.visit("FindFundRaiser.php?DateStart=2015-01-01&DateEnd=2017-01-01");
         cy.contains("Fundraiser Listing");
         cy.contains("2016 Car Wash");
     });
     
     
     it("New Fund Raiser with url param -1 ", () => {
-        cy.loginStandard("FundRaiserEditor.php?FundRaiserID=-1");
+        cy.visit("FundRaiserEditor.php?FundRaiserID=-1");
         cy.contains("Create New Fund Raiser");
     });
 
     it("Create new FundRaiser  ", () => {
-        cy.loginStandard("FundRaiserEditor.php");
+        cy.visit("FundRaiserEditor.php");
         cy.contains("Create New Fund Raiser");
 
         cy.get('#Title').type('Summer Car Wash');

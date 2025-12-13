@@ -128,8 +128,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args): Response {
         $scanString = $args['scanString'];
 
-        /** @var FinancialService $financialService */
-        $financialService = $this->get('FinancialService');
+        $financialService = new FinancialService();
 
         return SlimUtils::renderJSON($response, $financialService->getMemberByScanString($scanString));
     });
@@ -173,11 +172,22 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
 
 function getFamiliesWithAnniversaries(Request $request, Response $response, array $args): Response
 {
+    // Get anniversaries for 14-day range: 7 days before to 7 days after today
+    $today = new \DateTime();
+    $conditions = [];
+
+    for ($i = -7; $i <= 7; $i++) {
+        $date = (clone $today)->modify("{$i} days");
+        $month = (int)$date->format('m');
+        $day = (int)$date->format('d');
+        // Values are safe: cast to int from DateTime::format()
+        $conditions[] = "(MONTH(" . FamilyTableMap::COL_FAM_WEDDINGDATE . ") = {$month} AND DAY(" . FamilyTableMap::COL_FAM_WEDDINGDATE . ") = {$day})";
+    }
+
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
         ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'MONTH(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . date('m'), Criteria::CUSTOM)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'DAY(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . date('d'), Criteria::CUSTOM)
+        ->where(implode(' OR ', $conditions))
         ->orderByWeddingdate('DESC')
         ->find();
 

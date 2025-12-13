@@ -13,4 +13,9 @@ class DeleteRecordRoleAuthMiddleware extends BaseAuthRoleMiddleware
     {
         return gettext('User must have Delete Records permission');
     }
+
+    protected function getRoleName(): string
+    {
+        return 'DeleteRecords';
+    }
 }

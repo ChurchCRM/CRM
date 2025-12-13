@@ -53,7 +53,7 @@ $donationFunds = DonationFundQuery::create()
 if (isset($_POST['SaveChanges'])) {
     for ($iFieldID = 0; $iFieldID < $donationFunds->count(); $iFieldID++) {
         $donation = $donationFunds[$iFieldID];
-        $donation->setName(InputUtils::filterString($_POST[$iFieldID . 'name']));
+        $donation->setName(InputUtils::sanitizeText($_POST[$iFieldID . 'name']));
         $donation->setDescription(InputUtils::legacyFilterInput($_POST[$iFieldID . 'desc']));
         $donation->setActive($_POST[$iFieldID . 'active'] == 1);
         if (strlen($donation->getName()) === 0) {
@@ -146,7 +146,7 @@ if ($donationFunds->count() == 0) {
         <tr>
 
             <td class="TextColumn text-center">
-                <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
+                <input type="text" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" size="20" maxlength="30">
                 <?php
                 if ($aNameErrors[$row]) {
                     echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' .</span>';
@@ -154,7 +154,7 @@ if ($donationFunds->count() == 0) {
             </td>
 
             <td class="TextColumn">
-                <input type="text" Name="<?php echo $row . 'desc' ?>" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="40" maxlength="100">
+                <input type="text" Name="<?php echo $row . 'desc' ?>" value="<?= InputUtils::escapeAttribute($aDescFields[$row]) ?>" size="40" maxlength="100">
             </td>
             <td class="TextColumn text-center text-nowrap">
                 <input type="radio" Name="<?= $row ?>active" value="1" <?php if ($aActiveFields[$row]) {

@@ -64,39 +64,6 @@ msgid "Backup Database"
 msgstr "Rugsteun databasis"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Hierdie hulpmiddel sal u help om 'n back-up te maak van die ChurchCRM-databasis."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "U moet minstens een keer per week 'n handmatige rugsteun maak, tensy u reeds 'n gereelde rugsteunprosedure vir u stelsels het."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Nadat u die rugsteunlêer afgelaai het, moet u twee eksemplare maak. Sit een daarvan in 'n brandwerende kluis op die perseel en die ander op 'n veilige plek buite die perseel."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "As u bekommerd is oor die vertroulikheid van data wat in die ChurchCRM-databasis gestoor word, moet u die rugsteun-data enkripteer as dit êrens gestoor word wat moontlik vir ander toeganklik is."
-
-#: 
-msgid "Select archive type"
-msgstr "Kies tipe argief"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Rugsteunlêer met 'n wagwoord enkripteer?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Hertik wagwoord"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Genereer en stuur rugsteun na eksterne berging"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Inskrywing vir groepwenners"
 
@@ -371,10 +338,6 @@ msgid "Add Cart to Event"
 msgstr "Voeg mandjie by die geleentheid"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Kies die gebeurtenis waaraan u u mandjie wil voeg"
-
-#: 
 msgid "OR"
 msgstr "OF"
 
@@ -480,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "Leë wa aan familie"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Leë wa aan geleentheid"
-
-#: 
 msgid "Map Cart"
 msgstr "Karteer mandtjie"
 
@@ -540,20 +499,8 @@ msgid "Event Checkin"
 msgstr "Geleentheid inklok"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Kies die geleentheid waarby jy mense by wil laat inklok"
-
-#: 
 msgid "Select Event"
 msgstr "Kies geleentheid"
-
-#: 
-msgid "Add Visitor"
-msgstr "Voeg besoeker by"
-
-#: 
-msgid "CheckIn"
-msgstr "Teken in"
 
 #: 
 msgid "CheckOut"
@@ -578,10 +525,6 @@ msgstr "Uitklok teen"
 #: 
 msgid "Action"
 msgstr "Aksie"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Geen bewoners by geleentheid bygevoeg nie"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -613,29 +556,14 @@ msgid "Deposit Slip Number: "
 msgstr "Inbetaling strokie nommer: "
 
 #: 
-msgid "Deposit Details: "
+#, fuzzy
+msgid "Deposit Details"
 msgstr "Inbetaling besonderhede: "
 
 #: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Maak inbetalings strokie toe (onthou om Stoor te druk)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Inbetalingstrokie verslag"
-
-#: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Belangrike kennisgewing: mislukte transaksies sal permanent verwyder word wanneer inbetalings strokie toegemaak word."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Inbetalings opsomming: "
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Betalings op hierdie inbetaling strokie:"
 
 #: 
 msgid "Import eGive"
@@ -646,7 +574,8 @@ msgid "Add Payment"
 msgstr "Voeg betaling by"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Laai goedgekeurde transaksies"
 
 #: 
@@ -912,44 +841,8 @@ msgid "Edit"
 msgstr "Redigeer"
 
 #: 
-msgid "Event Attendees"
-msgstr "Geleentheid bywoners"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Geleentheid afwesig"
-
-#: 
-msgid "Event Guests"
-msgstr "Geleentheid gaste"
-
-#: 
-msgid "There "
-msgstr "Daar"
-
-#: 
 msgid "Event Title"
 msgstr "Gebeurtenis titel"
-
-#: 
-msgid "Event Date"
-msgstr "Gebeurtenis datum"
-
-#: 
-msgid "Attending Members"
-msgstr "Bywonende lidmate"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Afwesige lidmate"
-
-#: 
-msgid "Guests"
-msgstr "Gaste"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Daar is geen geleenthede in hierdie kategorie"
 
 #: 
 msgid "Create Event"
@@ -960,20 +853,8 @@ msgid "Create a new Event"
 msgstr "Skep 'n nuwe geleentheid"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Wysig geleentheids-ID: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " foute. Sien onder Asseblief"
-
-#: 
-msgid "Items with a "
-msgstr "Items met 'n "
-
-#: 
-msgid " are required"
-msgstr " word benodig"
 
 #: 
 msgid "Select your event type"
@@ -984,20 +865,8 @@ msgid "You must pick an event type."
 msgstr "U moet 'n tipe gebeurtenis kies."
 
 #: 
-msgid "Event Desc"
-msgstr "Gebeurtenisbeskrywing"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Geen bywoningsgetalle aangeteken nie"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Bywoningsnotas: "
-
-#: 
-msgid "Event Sermon"
-msgstr "Preek van die gebeurtenis"
 
 #: 
 msgid "Event Status"
@@ -1006,10 +875,6 @@ msgstr "Gebeurtenisstatus"
 #: 
 msgid "Return to Events"
 msgstr "Keer terug na gebeure"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "TYP NAAM VAN GEBEURTENIS"
 
 #: 
 msgid "Sundays"
@@ -1038,30 +903,6 @@ msgstr "Vrydag"
 #: 
 msgid "Saturdays"
 msgstr "Saterdag"
-
-#: 
-msgid "DEFAULT START TIME"
-msgstr "STAALTYD STAAL"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "BYWONINGSTELLINGS"
-
-#: 
-msgid "Optional"
-msgstr "Opsioneel"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Voer 'n lys in van die aantal bywonings wat u by hierdie geleentheid wil insluit."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Skei elke telnaam met 'n komma. bv. Lede, besoekers, kampus, kinders"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Elke tipe gebeurtenis bevat 'n totale telling, u hoef dit nie in te sluit nie."
 
 #: 
 msgid "Add Event Type"
@@ -1148,10 +989,6 @@ msgid "Contact Info"
 msgstr "Kontakbesonderhede"
 
 #: 
-msgid "Other Info"
-msgstr "Ander inligting"
-
-#: 
 msgid "Envelope Info"
 msgstr "Koevertinligting"
 
@@ -1162,10 +999,6 @@ msgstr "Pasgemaakte velde"
 #: 
 msgid "Family Members"
 msgstr "Familielede"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "U kan nou familielede skep of later byvoeg. Alle inskrywings word <i> nuwe </i> persoonrekords."
 
 #: 
 msgid "First"
@@ -1260,20 +1093,8 @@ msgid "Envelope Number"
 msgstr "Koevertnommer"
 
 #: 
-msgid "Verify Info"
-msgstr "Verifieer inligting"
-
-#: 
 msgid "Add New Member"
 msgstr "Voeg nuwe lid by"
-
-#: 
-msgid "Previous Family"
-msgstr "Vorige gesin"
-
-#: 
-msgid "Next Family"
-msgstr "Volgende gesin"
 
 #: 
 msgid "Upload Photo"
@@ -1362,14 +1183,6 @@ msgstr "Metode"
 #: 
 msgid "Comment"
 msgstr "Lewer kommentaar"
-
-#: 
-msgid "Add a new pledge"
-msgstr "Voeg 'n nuwe belofte by"
-
-#: 
-msgid "Add a new payment"
-msgstr "Voeg 'n nuwe betaling by"
 
 #: 
 msgid "Close"
@@ -1633,7 +1446,8 @@ msgid "Date End"
 msgstr "Einde van die datum"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Vee filters uit"
 
 #: 
@@ -2022,36 +1836,12 @@ msgid "Confirm data labels"
 msgstr "Bevestig data-etikette"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Lys van gebeure van tipe = "
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Lys alle kerkgebeurtenisse"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Kies geleentheidstipes om te vertoon"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Vertoon gebeure in die jaar"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Begin datum / tyd"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Geen bywoning aangeteken nie"
-
-#: 
-msgid "Attendees"
-msgstr "Deelnemers"
-
-#: 
-msgid " Monthly Averages"
-msgstr " Maandelikse gemiddeldes"
 
 #: 
 msgid "Invalid login or password"
@@ -2394,32 +2184,12 @@ msgid "indicates items inherited from the associated family record."
 msgstr "dui die items aan wat geërf is uit die gepaardgaande gesinsrekord."
 
 #: 
-msgid "Personal Info"
-msgstr "Persoonlike inligting"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Mnr., Mev., Dr., Eerw."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Jr., Sr., III"
-
-#: 
 msgid "Birth Month"
 msgstr "Geboortemaand"
 
 #: 
-msgid "Select Month"
-msgstr "Kies maand"
-
-#: 
 msgid "Birth Day"
 msgstr "Geboortedag"
-
-#: 
-msgid "Select Day"
-msgstr "Kies Dag"
 
 #: 
 msgid "Birth Year"
@@ -2432,10 +2202,6 @@ msgstr "Versteek ouderdom"
 #: 
 msgid "Create a new family (using last name)"
 msgstr "Skep 'n nuwe gesin (gebruik van van)"
-
-#: 
-msgid "Membership Info"
-msgstr "Lidmaatskapinligting"
 
 #: 
 msgid "Friend Date"
@@ -2522,28 +2288,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Tjeknommer is nie geldig vir 'CASH'-betaling nie"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Belofte-redakteur"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Betalingsredakteur: "
-
-#: 
-msgid " Deposit Slip #"
-msgstr " Deposito strokie #"
-
-#: 
 msgid " more entries will fit."
 msgstr " meer inskrywings sal pas."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Betalingsredakteur - wysig bestaande betaling"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Betalingsredakteur - nuwe depositostrokie sal gemaak word"
 
 #: 
 msgid "Deposit closed"
@@ -2847,10 +2593,6 @@ msgstr "Stuur"
 #: 
 msgid "Pledge Reminder Report"
 msgstr "Verslag oor belofteherinnering"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Verslae oor bywoning van geleenthede"
 
 #: 
 msgid "Restore Database"
@@ -3795,18 +3537,6 @@ msgid "Import Data"
 msgstr "Voer data in"
 
 #: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Is u seker dat u hierdie persoon van die gebeurtenis-ID wil WIS: "
-
-#: 
-msgid "Date Range"
-msgstr "Datum reeks"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Die verwydering van hierdie gebeurtenis TYPE sal NIE enige bestaande gebeurtenisse of bywoningstellings verwyder nie. Is u seker dat u die ID van die gebeurtenis wil VERWYDER: "
-
-#: 
 msgid "Are you sure you want to delete the selected"
 msgstr "Is u seker dat u die geselekteerde wil verwyder?"
 
@@ -3835,14 +3565,6 @@ msgid "Deposit Date"
 msgstr "Deposito Datum"
 
 #: 
-msgid "Details:"
-msgstr "Besonderhede:"
-
-#: 
-msgid "File Missing"
-msgstr "Lêer ontbreek"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Dit sal die familie-koevertnommers in die databasis oorskryf met die wat op hierdie bladsy gekies is. Aanhou?"
 
@@ -3857,42 +3579,6 @@ msgstr "met ten minste een:"
 #: 
 msgid "Welcome to"
 msgstr "Welkom by"
-
-#: 
-msgid "Select Database Files"
-msgstr "Kies databasislêers"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Kies 'n rugsteunlêer om te herstel"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "WAARSKUWING: Dit sal die bestaande databasis heeltemal uitwis en vervang deur die rugsteun"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "As u 'n rugsteun van ChurchInfo of 'n vorige weergawe van ChurchCRM oplaai, sal dit outomaties opgegradeer word na die huidige databasisskema"
-
-#: 
-msgid "Upload Files"
-msgstr "Laai lêers op"
-
-#: 
-msgid "No Restore Running"
-msgstr "Geen herstel loop nie"
-
-#: 
-msgid "Restore Complete"
-msgstr "Herstel voltooi"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Teken in op die herstel databasis"
-
-#: 
-msgid "Restore Error."
-msgstr "Herstel fout."
 
 #: 
 msgid "Church Information"
@@ -3996,58 +3682,20 @@ msgid "Enter Name"
 msgstr "Voer naam in"
 
 #: 
-msgid "Update Church Info"
-msgstr "Update Kerkinligting"
-
-#: 
-msgid "Set Church Address"
-msgstr "Stel kerkadres"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Stel e-posinstellings in"
-
-#: 
 msgid "New Release"
 msgstr "Nuwe vrystelling"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Toepassing se integriteitskontrole het misluk"
 
 #: 
 msgid "Self Registration"
 msgstr "Selfregistrasie"
 
 #: 
-msgid "Restore Status:"
-msgstr "Herstel status:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Geen koördinate gevind nie"
 
 #: 
-msgid "Backup Status:"
-msgstr "Rugsteunstatus:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Geen rugsteun loop nie"
-
-#: 
 msgid "Anonymous"
 msgstr "Anoniem"
-
-#: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Deelnemers aan geleentheid\n"
-""
-
-#: 
-msgid "Yearly"
-msgstr "Jaarliks"
 
 #: 
 msgid "Registration Complete"
@@ -4094,20 +3742,8 @@ msgid "Signature definition file signature failed validation"
 msgstr "Validasie van handtekeningdefinisie-lêerhandtekening het misluk"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Handtekening definisie Lêer ontbreek"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Een of meer lêers kon nie handtekening bekragtig word nie"
-
-#: 
-msgid "Configure HTTPS"
-msgstr "Stel HTTPS op"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Lêers wat die integriteitskontrole misluk"
 
 #: 
 msgid "Family:"
@@ -4150,10 +3786,6 @@ msgid "Voting members "
 msgstr "Stemlede "
 
 #: 
-msgid "Restore Running, Please wait."
-msgstr "Herstel aan die gang, wag asseblief."
-
-#: 
 msgid "Family Members:"
 msgstr "Familielede:"
 
@@ -4178,10 +3810,6 @@ msgid "Fiscal Year:"
 msgstr "Fiskale jaar:"
 
 #: 
-msgid "Add Attendees for Event"
-msgstr "Voeg deelnemers by vir geleentheid"
-
-#: 
 msgid "family"
 msgstr "familie"
 
@@ -4198,14 +3826,6 @@ msgid "CSV Import"
 msgstr "CSV-invoer"
 
 #: 
-msgid "Comment:"
-msgstr "Opmerking:"
-
-#: 
-msgid "Closed:"
-msgstr "Gesluit:"
-
-#: 
 msgid "Start Date: "
 msgstr "Aanvangsdatum: "
 
@@ -4216,10 +3836,6 @@ msgstr "Einddatum: "
 #: 
 msgid "Members:"
 msgstr "Lede:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Wysig algemene instellings"
 
 #: 
 msgid "There were "
@@ -5092,46 +4708,6 @@ msgstr "Maandeliks aan"
 #: 
 msgid "Yearly on"
 msgstr "Jaarliks aan"
-
-#: 
-msgid "All Events of Type"
-msgstr "Alle gebeure van tipe"
-
-#: 
-msgid "There is"
-msgstr "Daar is"
-
-#: 
-msgid "There are"
-msgstr "Daar is"
-
-#: 
-msgid "event"
-msgstr "gebeurtenis"
-
-#: 
-msgid "events"
-msgstr "gebeure"
-
-#: 
-msgid " in this category."
-msgstr " in hierdie kategorie."
-
-#: 
-msgid "There currently is"
-msgstr "Daar is tans"
-
-#: 
-msgid "There currently are"
-msgstr "Daar is tans"
-
-#: 
-msgid "custom event type"
-msgstr "pasgemaakte gebeurtenis tipe"
-
-#: 
-msgid "custom event types"
-msgstr "persoonlike tipes gebeurtenisse"
 
 #: 
 msgid "Family Roles Editor"
@@ -6541,42 +6117,6 @@ msgid "Please verify your family's information"
 msgstr "Verifieer asseblief u gesin se inligting"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Kerkadres is nie vasgestel nie."
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Kerknaam is op standaardwaarde gestel"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "SMTP-bedienerinligting is leeg"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "U stelsel kan veiliger wees deur 'n TLS / SSL Cert te installeer."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Ontbrekende klassifikasiedata"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Ontbrekende klassifikasiedata vir sommige mense"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Geslagsdata ontbreek"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Ontbrekende geslagsdata vir sommige mense"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Roldata ontbreek"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Kan nie verifikasie-inligting laai nie"
 
@@ -6641,20 +6181,8 @@ msgid "Verified In Person"
 msgstr "Persoonlik geverifieer"
 
 #: 
-msgid "None State"
-msgstr "Geen staat nie"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Rugsteun-argief bevat nie 'n databasis nie"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Ontbrekende koördinate"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Gesins koördineer data vir sommige gesinne"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6777,28 +6305,12 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Die geselekteerde lêer oorskry die maksimum oplaaigrootte van hierdie bedieners"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Onvoldoende toepassingsvereistes"
-
-#: 
 msgid "Failed"
 msgstr "Misluk"
 
 #: 
 msgid "Church Checking Account Number"
 msgstr "Kerkrekeningrekeningnommer"
-
-#: 
-msgid "Missing Role Data for Some People"
-msgstr "Roldata vir sommige mense ontbreek"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "PHP maksimum lêergrootte te klein"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Verhoog die limiet vir die oplaai van php om foto's op te laai en rugsteun te herstel."
 
 #: 
 msgid "Deactivated the Family"
@@ -6833,7 +6345,8 @@ msgid "Profile Image uploaded"
 msgstr "Profielprent opgelaai"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "betalings (s)?"
 
 #: 
@@ -6867,10 +6380,6 @@ msgstr "Kies 'n gesin."
 #: 
 msgid "Coordinate data base file name:"
 msgstr "Koördineer databasis lêernaam:"
-
-#: 
-msgid "Intersect With Cart"
-msgstr "Sny Met Kar"
 
 #: 
 msgid "select an option"
@@ -6911,15 +6420,6 @@ msgstr "Die eiendom kon nie onttrek word nie."
 #: 
 msgid "Select event"
 msgstr "Kies gebeurtenis"
-
-#: 
-msgid "Person's Name"
-msgstr "Persoon se naam"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Aangebreek deur (opsioneel)"
 
 #: 
 msgid "Person has been already checked in for this event"
@@ -7028,14 +6528,6 @@ msgstr "toegewys"
 #: 
 msgid "Photo"
 msgstr "Foto"
-
-#: 
-msgid "Payment Details"
-msgstr "Betaling besonderhede"
-
-#: 
-msgid "Fund Split"
-msgstr "Fondsverdeel"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7438,10 +6930,6 @@ msgid "Your Church's X Page"
 msgstr "U Kerk se X-bladsy"
 
 #: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "soek gebruikersfoto's op Google as daar geen plaaslike beeld is nie"
-
-#: 
 msgid "Self Register"
 msgstr "Selfregister"
 
@@ -7835,18 +7323,6 @@ msgid "Upgrade Required"
 msgstr "Opgradering vereis"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Huidige DB-weergawe: "
-
-#: 
-msgid "Current Software Version: "
-msgstr "Huidige sagteware weergawe: "
-
-#: 
-msgid "Upgrade database"
-msgstr "Gradeer databasis op"
-
-#: 
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr "Toon verjaardae herdenkings met die aanvang van die CRM"
 
@@ -7903,14 +7379,6 @@ msgid "Meanwhile, you may"
 msgstr "Intussen mag jy"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Slegs databasis (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Databasis en foto's (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Gebruiker moet 'n administrateur wees"
 
@@ -7943,10 +7411,6 @@ msgid "return to People Dashboard"
 msgstr "keer terug na People Dashboard"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Gebruiker moet MenuOptions toestemming hê"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "SMTP Host is nie opgestel nie, besoek die instellingsbladsy"
 
@@ -7959,16 +7423,8 @@ msgid "This Family is Deactivated"
 msgstr "Hierdie gesin is gedeaktiveer"
 
 #: 
-msgid "Metadata"
-msgstr "Metadata"
-
-#: 
 msgid "The database has been cleared."
 msgstr "Die databasis is skoongemaak."
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Gebruiker moet bAddEvent-toestemmings hê"
 
 #: 
 msgid "Anniversaries"
@@ -8002,10 +7458,6 @@ msgstr "geen gevind of gebruiker sonder 'n e-pos nie"
 #: 
 msgid "UserName not set"
 msgstr "Gebruikersnaam nie gestel nie"
-
-#: 
-msgid "The people and families has been cleared from the database."
-msgstr "Die mense en gesinne is uit die databasis verwyder."
 
 #: 
 msgid "Self Registrations"
@@ -8111,10 +7563,6 @@ msgstr "Aktiveer Finansies-kieslys"
 #: 
 msgid "Enable Events menu."
 msgstr "Aktiveer Gebeurtenis-menu."
-
-#: 
-msgid "Enable Calendar menu."
-msgstr "Aktiveer Kalender-menu."
 
 #: 
 msgid "Enable Fundraiser menu."
@@ -8242,10 +7690,6 @@ msgid "User must have Edit Records permission"
 msgstr "Gebruiker moet toestemming vir wysigingsrekords hê"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Gebruiker moet Finansiële toestemming hê"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Kan nie jouself uitvee nie"
 
@@ -8278,20 +7722,8 @@ msgid "is disabled"
 msgstr "is uitgeskakel"
 
 #: 
-msgid "System Information"
-msgstr "Stelselinligting"
-
-#: 
 msgid "Software Version"
 msgstr "Sagteware weergawe"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Geldige posbedienerinstellings"
-
-#: 
-msgid "Database"
-msgstr "Databasis"
 
 #: 
 msgid "Database Version"
@@ -8360,24 +7792,8 @@ msgid "Emptied into Event"
 msgstr "Leeggestel in gebeurtenis"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "integriteitCheck.json-lêer ontbreek"
-
-#: 
 msgid "Passed"
 msgstr "Geslaag"
-
-#: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "PHP maksimum uitvoeringstyd is te kort"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Verhoog die PHP-uitvoeringstydperk om rugsteun en herstel moontlik te maak."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Toepassing integriteitstoets"
 
 #: 
 msgid "Focus"
@@ -8412,8 +7828,9 @@ msgid "Unsupported Deposit Types Detected"
 msgstr "Nie-ondersteunde deposito-tipes opgespoor"
 
 #: 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Ondersteuning vir eGive-, kredietkaart- en bankwisselbetalings is verswak. Bestaande nie-bankverslae is moontlik nie meer toeganklik in toekomstige weergawes nie."
+#, fuzzy
+msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
+msgstr "Ondersteuning vir kredietkaart- en bankwisselbetalings is verswak. Bestaande nie-bankverslae is moontlik nie meer toeganklik in toekomstige weergawes nie."
 
 #. Context: locales
 #: 
@@ -8421,24 +7838,12 @@ msgid "Estonian"
 msgstr "Esties"
 
 #: 
-msgid "Error decoding integrity check result file"
-msgstr "Kon nie die resultaatlêer vir integriteitskontrole dekodeer nie"
-
-#: 
 msgid "Error decoding signature definition file"
 msgstr "Kon nie die definisie-lêer van handtekeninge dekodeer nie"
 
 #: 
-msgid "Generate Backup"
-msgstr "Genereer rugsteun"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote Backup eindpunt. As WebDAV, moet dit gekodeer word vir url. "
-
-#: 
-msgid "Password (if any)"
-msgstr "Wagwoord (indien enige)"
 
 #: 
 msgid "All information on this page is correct."
@@ -8548,10 +7953,6 @@ msgid "Verification URL"
 msgstr "Verifikasie-URL"
 
 #: 
-msgid "Reset System"
-msgstr "Stel die stelsel terug"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Onverwagte persoon ID"
 
@@ -8588,20 +7989,8 @@ msgstr[0] "%d jaar oud"
 msgstr[1] "%d jare oud"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Nie-ondersteunde PHP-weergawe"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Ondersteuning vir hierdie PHP-weergawe sal binnekort verwyder word. Huidige PHP-weergawe: "
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Ontbreek PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "PHP ZipArchive benodig om opgradering te ondersteun"
 
 #: 
 msgid "Add Results to Cart"
@@ -8623,18 +8012,6 @@ msgstr "Gaan hierdie take na en versag dit voordat u met die opgradering voortga
 #: 
 msgid "Database Reset Functions"
 msgstr "Databasisherstelfunksies"
-
-#: 
-msgid "Reset Members"
-msgstr "Stel lede weer in"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Dit sal al die liddata, mense en gesinne verwyder en kan nie ongedaan gemaak word nie."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Stel gesinne / mense terug"
 
 #: 
 msgid "Reset Database"
@@ -8668,10 +8045,6 @@ msgstr "KerkKDB"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Spesifiseer die toepassingsnaam wat in die verifikasie-app vertoon moet word"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Geheime sleutels ontbreek in Config.php"
 
 #: 
 msgid "Review"
@@ -8829,20 +8202,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Die publiek is nie in die KerkCRM nie"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRM Installasie-inligting"
-
-#: 
-msgid "Database Server Version"
-msgstr "Databasis bediener weergawe"
-
-#: 
 msgid "Web Server"
 msgstr "Web bediener"
-
-#: 
-msgid "Email Information"
-msgstr "Epos informasie"
 
 #: 
 msgid "List maintenance"
@@ -9068,14 +8429,6 @@ msgstr "Stoor hierdie herstelkodes op 'n veilige plek"
 #: 
 msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
 msgstr "As u ooit toegang tot u pas ingeskrewe verifikator-program verloor, moet u 'n herstelkode gebruik om toegang tot u rekening te kry"
-
-#: 
-msgid "Event Attendance"
-msgstr "Bywoning van geleenthede"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Genereer bywoning -EN- nie-bywoningsverslae vir geleenthede"
 
 #: 
 msgid "Help translate this project"
@@ -9313,9 +8666,4 @@ msgstr "Kredietkaartmense"
 #: 
 msgid "People who are configured to pay by credit card."
 msgstr "Mense wat opgestel is om met kredietkaart te betaal."
-
-#: 
-#, fuzzy
-msgid "Adult Name (Optional)"
-msgstr "Volwasse naam (opsioneel)"
 

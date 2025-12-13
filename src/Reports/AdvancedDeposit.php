@@ -13,7 +13,7 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\FinancialService;
 
 // Security
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Filter values
 $sort = InputUtils::legacyFilterInput($_POST['sort']);
@@ -64,7 +64,7 @@ if (!$output) {
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('Admin');
 }
 
 // Normalize date range
@@ -95,7 +95,8 @@ $pledgeObjects = $financialService->getAdvancedDepositReportData(
     $fundIds,
     $familyIds,
     $methods,
-    $classList
+    $classList,
+    $datetype
 );
 
 // Convert Propel objects to array format for backward compatibility with existing PDF/CSV code
@@ -126,7 +127,14 @@ foreach ($pledgeObjects as $pledge) {
 // Exit if no rows returned
 $iCountRows = count($rsReport);
 if ($iCountRows < 1) {
-    header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Advanced%20Deposit%20Report');
+    $params = [
+        'ReturnMessage' => 'NoRows',
+        'ReportType' => 'Advanced Deposit Report',
+        'DateStart' => $sDateStart,
+        'DateEnd'   => $sDateEnd,
+        'datetype'  => $datetype,
+    ];
+    header('Location: ../FinancialReports.php?' . http_build_query($params));
     exit;
 }
 
@@ -456,6 +464,14 @@ $page = 1;
             $fun_Name = isset($aRow['fun_Name']) ? $aRow['fun_Name'] : null;
             $fam_ID = isset($aRow['fam_ID']) ? $aRow['fam_ID'] : null;
             $fam_Name = isset($aRow['fam_Name']) ? $aRow['fam_Name'] : null;
+            $fam_Address1 = isset($aRow['fam_Address1']) ? $aRow['fam_Address1'] : null;
+            $plg_depID = isset($aRow['plg_depID']) ? $aRow['plg_depID'] : null;
+            $plg_amount = isset($aRow['plg_amount']) ? $aRow['plg_amount'] : null;
+            $plg_method = isset($aRow['plg_method']) ? $aRow['plg_method'] : null;
+            $plg_comment = isset($aRow['plg_comment']) ? $aRow['plg_comment'] : null;
+            $plg_CheckNo = isset($aRow['plg_CheckNo']) ? $aRow['plg_CheckNo'] : null;
+            $dep_Date = isset($aRow['dep_Date']) ? $aRow['dep_Date'] : null;
+            
             if (!$fun_ID) {
                 $fun_ID = -1;
                 $fun_Name = 'Undesignated';
@@ -612,6 +628,18 @@ $page = 1;
     } elseif ($sort === 'family') {
         // Sort by Family  Report
         foreach ($rsReport as $aRow) {
+            $fun_ID = isset($aRow['fun_ID']) ? $aRow['fun_ID'] : null;
+            $fun_Name = isset($aRow['fun_Name']) ? $aRow['fun_Name'] : null;
+            $fam_ID = isset($aRow['fam_ID']) ? $aRow['fam_ID'] : null;
+            $fam_Name = isset($aRow['fam_Name']) ? $aRow['fam_Name'] : null;
+            $fam_Address1 = isset($aRow['fam_Address1']) ? $aRow['fam_Address1'] : null;
+            $plg_depID = isset($aRow['plg_depID']) ? $aRow['plg_depID'] : null;
+            $plg_amount = isset($aRow['plg_amount']) ? $aRow['plg_amount'] : null;
+            $plg_method = isset($aRow['plg_method']) ? $aRow['plg_method'] : null;
+            $plg_comment = isset($aRow['plg_comment']) ? $aRow['plg_comment'] : null;
+            $plg_CheckNo = isset($aRow['plg_CheckNo']) ? $aRow['plg_CheckNo'] : null;
+            $dep_Date = isset($aRow['dep_Date']) ? $aRow['dep_Date'] : null;
+            
             if (!$fun_ID) {
                 $fun_ID = -1;
                 $fun_Name = 'Undesignated';
@@ -828,6 +856,13 @@ $page = 1;
         // basename: 'AdvancedDepositReport', includeDateInFilename: true adds today's date, .csv is added automatically
         CsvExporter::create($headers, $rows, 'AdvancedDepositReport', 'UTF-8', true);
     } else {
-        header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Advanced%20Deposit%20Report');
+        $params = [
+            'ReturnMessage' => 'NoRows',
+            'ReportType' => 'Advanced Deposit Report',
+            'DateStart' => $sDateStart,
+            'DateEnd'   => $sDateEnd,
+            'datetype'  => $datetype,
+        ];
+        header('Location: ../FinancialReports.php?' . http_build_query($params));
     }
 }

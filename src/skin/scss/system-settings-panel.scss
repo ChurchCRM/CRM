@@ -1,0 +1,118 @@
+/**
+ * System Settings Panel - Reusable component styles
+ */
+
+@use "sass:color";
+
+.settings-panel-card {
+    margin-bottom: 1rem;
+
+    .card-header {
+        h6 {
+            font-weight: 600;
+
+            i {
+                margin-right: 0.5rem;
+            }
+        }
+    }
+
+    .card-body {
+        padding: 1.25rem;
+    }
+
+    // Form elements styling
+    .form-label {
+        margin-bottom: 0.25rem;
+        color: #495057;
+    }
+
+    .form-control {
+        font-size: 0.875rem;
+    }
+
+    .form-text {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+
+    // Custom switch improvements
+    .custom-switch {
+        padding-left: 2.5rem;
+
+        .custom-control-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+
+            &::before {
+                top: 0.1rem;
+            }
+
+            &::after {
+                top: calc(0.1rem + 2px);
+            }
+        }
+
+        .custom-control-input:checked ~ .custom-control-label::before {
+            background-color: #17a2b8;
+            border-color: #17a2b8;
+        }
+    }
+
+    // Help icons
+    .text-info {
+        &:hover {
+            color: color.adjust(#17a2b8, $lightness: -10%);
+        }
+    }
+
+    // Button row
+    hr {
+        border-color: #e9ecef;
+    }
+
+    .btn-outline-secondary {
+        font-size: 0.875rem;
+    }
+
+    .btn-primary {
+        min-width: 140px;
+    }
+}
+
+// Collapsed state (when used with Bootstrap collapse)
+.settings-panel-card.collapse:not(.show) {
+    display: none;
+}
+
+// Responsive adjustments
+@media (max-width: 767.98px) {
+    .settings-panel-card {
+        .card-body {
+            padding: 1rem;
+        }
+
+        .d-flex.justify-content-between {
+            flex-direction: column;
+            gap: 0.75rem;
+
+            .btn {
+                width: 100%;
+            }
+        }
+    }
+}
+
+// Dark mode support (if needed in future)
+.dark-mode {
+    .settings-panel-card {
+        .form-label {
+            color: #ced4da;
+        }
+
+        .form-text {
+            color: #adb5bd !important;
+        }
+    }
+}

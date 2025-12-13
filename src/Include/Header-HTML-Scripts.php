@@ -5,6 +5,8 @@ use ChurchCRM\dto\SystemURLs;
 ?>
 <title>ChurchCRM: <?= $sPageTitle ?></title>
 
+<link rel="icon" href="<?= SystemURLs::getRootPath() ?>/favicon.ico" type="image/x-icon">
+
 <!-- Custom ChurchCRM styles -->
 <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
 

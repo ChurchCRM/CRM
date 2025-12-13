@@ -48,7 +48,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
 
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
+    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 
     $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
     $rsOpps = RunQuery($sSQL);
@@ -108,7 +108,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
 if ($sAction === 'ConfDelete' && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
-    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
+    AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 
     // get the order value for the record being deleted
     $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
@@ -360,7 +360,7 @@ if (isset($_POST['SaveChanges'])) {
                         echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . "\"> <i class='fa fa-times'></i></a></td>"; ?>
 
                         <td class="TextColumn text-center">
-                            <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="20" maxlength="30">
+                            <input type="text" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" class="form-control" size="20" maxlength="30">
                             <?php
 
                             if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
@@ -369,7 +369,7 @@ if (isset($_POST['SaveChanges'])) {
                         </td>
 
                         <td class="TextColumn">
-                            <input type="text" name="<?= $row ?>desc" value="<?= htmlentities(stripslashes($aDescFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" class="form-control" size="40" maxlength="100">
+                            <input type="text" name="<?= $row ?>desc" value="<?= InputUtils::escapeAttribute($aDescFields[$row]) ?>" class="form-control" size="40" maxlength="100">
                         </td>
 
                         </tr>
