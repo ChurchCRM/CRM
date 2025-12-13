@@ -7,7 +7,9 @@ require_once 'Include/QuillEditorHelper.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventCountNamesQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -56,36 +58,47 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     // event fields...but still allow the user to edit everything
     // except event type since event type is tied to the attendance count fields
 
-    $sSQL = "SELECT * FROM event_types WHERE type_id=$tyid";
-    $rsOpps = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsOpps);
-    $ceRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-    extract($ceRow);
+    // Use Propel ORM instead of raw SQL for type safety and SQL injection prevention (GHSA-wxcc-gvfv-56fg)
+    $eventType = EventTypeQuery::create()->findById((int)$tyid);
+    
+    if ($eventType !== null) {
+        $iTypeID = $eventType->getId();
+        $sTypeName = $eventType->getName();
+        $sDefStartTime = $eventType->getDefStartTime();
+        $iDefRecurDOW = $eventType->getDefRecurDow();
+        $iDefRecurDOM = $eventType->getDefRecurDom();
+        $sDefRecurDOY = $eventType->getDefRecurDoy();
+        $sDefRecurType = $eventType->getDefRecurType();
+    } else {
+        // Handle case where event type is not found
+        $iTypeID = 0;
+        $sTypeName = '';
+        $sDefStartTime = '00:00';
+        $iDefRecurDOW = 0;
+        $iDefRecurDOM = 0;
+        $sDefRecurDOY = '';
+        $sDefRecurType = 'none';
+    }
 
-    $iTypeID = $type_id;
-    $sTypeName = $type_name;
-    $sDefStartTime = $type_defstarttime;
-    $iDefRecurDOW = $type_defrecurDOW;
-    $iDefRecurDOM = $type_defrecurDOM;
-    $sDefRecurDOY = $type_defrecurDOY;
-    $sDefRecurType = $type_defrecurtype;
-
-    $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
-    $sSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$iTypeID' ORDER BY evctnm_countid ASC";
-    $cOpps = RunQuery($sSQL);
-    $iNumCounts = mysqli_num_rows($cOpps);
+    // Use Propel ORM to fetch event count names
+    $eventCountNames = EventCountNamesQuery::create()
+        ->filterByEventTypeId((int)$iTypeID)
+        ->orderByCountId()
+        ->find();
+    
+    $iNumCounts = count($eventCountNames);
 
     $aCountID = [];
     $aCountName = [];
     $aCount = [];
 
-    if ($iNumCounts) {
-        for ($c = 0; $c < $iNumCounts; $c++) {
-            $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
-            extract($cRow);
-            $aCountID[$c] = $evctnm_countid;
-            $aCountName[$c] = $evctnm_countname;
+    if ($iNumCounts > 0) {
+        $c = 0;
+        foreach ($eventCountNames as $countName) {
+            $aCountID[$c] = $countName->getCountId();
+            $aCountName[$c] = $countName->getCountName();
             $aCount[$c] = 0;
+            $c++;
         }
     }
     $nCnts = $iNumCounts;
