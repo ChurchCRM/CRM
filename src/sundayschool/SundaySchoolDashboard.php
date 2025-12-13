@@ -207,12 +207,18 @@ require_once '../Include/Header.php';
                 LoggerUtils::getAppLogger()->error("Failed to retrieve student's age", ['exception' => $ex]);
             }
 
+            $personPhoto = new \ChurchCRM\dto\Photo('person', $kidId);
+            $photoIcon = '';
+            if ($personPhoto->hasUploadedPhoto()) {
+                $photoIcon = ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+            }
+
             $html = <<<HTML
 <tr>
 <td>
   <a href="../PersonView.php?PersonID={$kidId}">
     $firstName
-  </a>
+  </a>$photoIcon
 </td>
 <td>$LastName</td>
 <td>$birthDate</td>
@@ -283,6 +289,7 @@ HTML;
 
     });
   </script>
+  <script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
 
     <?php
 }

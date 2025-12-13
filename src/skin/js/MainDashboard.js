@@ -42,6 +42,17 @@ function initializeMainDashboard() {
             title: i18next.t("Name"),
             data: "Name",
             render: function (data, type, row) {
+                var photoIcon = "";
+                if (row.HasPhoto) {
+                    photoIcon =
+                        ' <button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
+                        row.FamilyId +
+                        '" title="' +
+                        i18next.t("View Photo") +
+                        '">' +
+                        '<i class="fa-solid fa-camera"></i>' +
+                        "</button>";
+                }
                 return (
                     '<a href="' +
                     window.CRM.root +
@@ -49,7 +60,8 @@ function initializeMainDashboard() {
                     row.FamilyId +
                     '"><strong>' +
                     row.Name +
-                    "</strong></a>"
+                    "</strong></a>" +
+                    photoIcon
                 );
             },
         },
@@ -84,7 +96,8 @@ function initializeMainDashboard() {
         data: "Created",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
+            // Parse datetime format and calculate relative time
+            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
         },
     });
 
@@ -109,7 +122,8 @@ function initializeMainDashboard() {
         data: "LastEdited",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
+            // Parse datetime format and calculate relative time
+            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
         },
     });
 
@@ -140,17 +154,33 @@ function initializeMainDashboard() {
         },
         columns: [
             {
+                width: "40px",
+                title: "",
+                data: "PersonId",
+                orderable: false,
+                className: "text-center",
+                render: function (data, type, row) {
+                    return "";
+                },
+            },
+            {
                 width: "60%",
                 title: i18next.t("Name"),
                 data: "FirstName",
                 render: function (data, type, row) {
-                    let ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
-                    let photo =
-                        '<img data-image-entity-type="person" data-image-entity-id="' +
-                        row.PersonId +
-                        '" class="photo-tiny rounded-circle mr-2" style="width:30px;height:30px;object-fit:cover;">';
+                    var ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
+                    var photoIcon = "";
+                    if (row.HasPhoto) {
+                        photoIcon =
+                            ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
+                            row.PersonId +
+                            '" title="' +
+                            i18next.t("View Photo") +
+                            '">' +
+                            '<i class="fa-solid fa-camera"></i>' +
+                            "</button>";
+                    }
                     return (
-                        photo +
                         '<a href="' +
                         window.CRM.root +
                         "/PersonView.php?PersonID=" +
@@ -158,6 +188,7 @@ function initializeMainDashboard() {
                         '"><strong>' +
                         row.FormattedName +
                         "</strong></a>" +
+                        photoIcon +
                         ageText
                     );
                 },
@@ -225,6 +256,17 @@ function initializeMainDashboard() {
                 title: i18next.t("Name"),
                 data: "Name",
                 render: function (data, type, row) {
+                    var photoIcon = "";
+                    if (row.HasPhoto) {
+                        photoIcon =
+                            ' <button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
+                            row.FamilyId +
+                            '" title="' +
+                            i18next.t("View Photo") +
+                            '">' +
+                            '<i class="fa-solid fa-camera"></i>' +
+                            "</button>";
+                    }
                     return (
                         '<a href="' +
                         window.CRM.root +
@@ -232,7 +274,8 @@ function initializeMainDashboard() {
                         row.FamilyId +
                         '"><strong>' +
                         data +
-                        "</strong></a>"
+                        "</strong></a>" +
+                        photoIcon
                     );
                 },
             },
@@ -318,6 +361,17 @@ function initializeMainDashboard() {
             title: i18next.t("Name"),
             data: "FirstName",
             render: function (data, type, row) {
+                var photoIcon = "";
+                if (row.HasPhoto) {
+                    photoIcon =
+                        ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
+                        row.PersonId +
+                        '" title="' +
+                        i18next.t("View Photo") +
+                        '">' +
+                        '<i class="fa-solid fa-camera"></i>' +
+                        "</button>";
+                }
                 return (
                     '<a href="' +
                     window.CRM.root +
@@ -327,7 +381,8 @@ function initializeMainDashboard() {
                     row.FirstName +
                     " " +
                     row.LastName +
-                    "</strong></a>"
+                    "</strong></a>" +
+                    photoIcon
                 );
             },
         },
@@ -351,7 +406,8 @@ function initializeMainDashboard() {
         data: "LastEdited",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
+            // Parse datetime format and calculate relative time
+            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
         },
     });
 
@@ -367,6 +423,7 @@ function initializeMainDashboard() {
     let updatedPersonTable = $("#updatedPersonDashboardItem").DataTable(dataTableConfig);
     updatedPersonTable.on("draw", function () {
         syncCartButtons();
+        // No need to refresh image loader; inline photos have been removed
     });
 
     let latestPersonColumns = dataTablePersonColumns.slice();
@@ -376,7 +433,8 @@ function initializeMainDashboard() {
         data: "Created",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
+            // Parse datetime format and calculate relative time
+            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
         },
     });
 
@@ -392,6 +450,10 @@ function initializeMainDashboard() {
     let latestPersonTable = $("#latestPersonDashboardItem").DataTable(dataTableConfig);
     latestPersonTable.on("draw", function () {
         syncCartButtons();
+        // Refresh image loader for dynamically added photos
+        if (window.CRM && window.CRM.peopleImageLoader) {
+            window.CRM.peopleImageLoader.refresh();
+        }
     });
     function syncCartButtons() {
         if (window.CRM && window.CRM.cartManager) {
@@ -470,4 +532,17 @@ function initializeMainDashboard() {
 // Wait for locales to load before initializing
 $(document).ready(function () {
     window.CRM.onLocalesReady(initializeMainDashboard);
+
+    // Photo viewer click handlers
+    $(document).on("click", ".view-person-photo", function (e) {
+        var personId = $(e.currentTarget).data("person-id");
+        window.CRM.showPhotoLightbox("person", personId);
+        e.stopPropagation();
+    });
+
+    $(document).on("click", ".view-family-photo", function (e) {
+        var familyId = $(e.currentTarget).data("family-id");
+        window.CRM.showPhotoLightbox("family", familyId);
+        e.stopPropagation();
+    });
 });

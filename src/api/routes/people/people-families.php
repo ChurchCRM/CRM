@@ -189,10 +189,11 @@ function buildFormattedFamilies($families, bool $created, bool $edited, bool $we
         $formattedFamily['FamilyId'] = $family->getId();
         $formattedFamily['Name'] = $family->getName();
         $formattedFamily['Address'] = $family->getAddress();
+        $formattedFamily['HasPhoto'] = $family->getPhoto()->hasUploadedPhoto();
         if ($created) {
             $value = null;
             if ($family->getDateEntered()) {
-                $value = date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
+                $value = $family->getDateEntered()->format('c'); // ISO 8601
             }
             $formattedFamily['Created'] = $value;
         }
@@ -200,7 +201,7 @@ function buildFormattedFamilies($families, bool $created, bool $edited, bool $we
         if ($edited) {
             $value = null;
             if ($family->getDateLastEdited()) {
-                $value = date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
+                $value = $family->getDateLastEdited()->format('c'); // ISO 8601
             }
             $formattedFamily['LastEdited'] = $value;
         }
