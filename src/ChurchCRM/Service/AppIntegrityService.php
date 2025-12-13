@@ -194,21 +194,16 @@ class AppIntegrityService
             new Prerequisite('PHP Phar', fn (): bool => class_exists('PharData')),
             new Prerequisite('PHP Session', fn (): bool => function_exists('session_start')),
             new Prerequisite('PHP XML', fn (): bool => class_exists('SimpleXMLElement')),
-            new Prerequisite('PHP EXIF', fn (): bool => function_exists('exif_imagetype')),
             new Prerequisite('PHP iconv', fn (): bool => function_exists('iconv')),
             new Prerequisite('Mod Rewrite or Equivalent', fn (): bool => AppIntegrityService::hasModRewrite()),
             new Prerequisite(
                 'GD Library for image manipulation',
                 fn (): bool =>
                     function_exists('imagecreatetruecolor') &&
-                    function_exists('gd_info') &&
-                    function_exists('imagecolorallocate') &&
-                    function_exists('imagefilledrectangle') &&
-                    function_exists('imageftbbox') &&
-                    function_exists('imagefttext') &&
+                    function_exists('imagecreatefromstring') &&
+                    function_exists('imagecopyresampled') &&
                     function_exists('imagepng')
             ),
-            new Prerequisite('FreeType Library', fn (): bool => function_exists('imagefttext')),
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => function_exists('finfo_open') || function_exists('mime_content_type')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_init')),
             new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
@@ -336,8 +331,85 @@ class AppIntegrityService
             $orphanedFiles = AppIntegrityService::scanDirectoryForOrphans($srcPath, $srcPath, $validFiles);
         }
 
+        // Also scan for legacy avatar files (initials and gravatar-cached images)
+        // These are no longer generated server-side as of 6.6.0 (avatar-initials npm package)
+        $legacyAvatarFiles = AppIntegrityService::getLegacyAvatarFiles();
+        $orphanedFiles = array_merge($orphanedFiles, $legacyAvatarFiles);
+
         $logger->info('Orphan file scan complete', ['count' => count($orphanedFiles)]);
         return $orphanedFiles;
+    }
+
+    /**
+     * Get legacy avatar files that should be cleaned up
+     * 
+     * As of 6.6.0, avatar generation (initials/gravatar) moved to client-side using
+     * the avatar-initials npm package. Server-side generated files are no longer needed.
+     * Also includes legacy thumbnail files from pre-6.0.0 versions.
+     *
+     * @return array List of legacy avatar file paths relative to document root
+     */
+    public static function getLegacyAvatarFiles(): array
+    {
+        $logger = LoggerUtils::getAppLogger();
+        $documentRoot = AppIntegrityService::resolveDocumentRoot();
+        $legacyFiles = [];
+
+        foreach (['Person', 'Family'] as $type) {
+            $typeDir = $documentRoot . '/Images/' . $type;
+            
+            if (!is_dir($typeDir)) {
+                continue;
+            }
+
+            try {
+                $files = @scandir($typeDir);
+                if ($files === false) {
+                    continue;
+                }
+
+                foreach ($files as $file) {
+                    if ($file === '.' || $file === '..') {
+                        continue;
+                    }
+
+                    $fullPath = $typeDir . '/' . $file;
+
+                    // Match legacy initials and remote (gravatar-cached) files
+                    // Pattern: {id}-initials.png or {id}-remote.png
+                    if (preg_match('/^\d+-(initials|remote)\.(png|jpg|jpeg|gif)$/i', $file)) {
+                        $legacyFiles[] = 'Images/' . $type . '/' . $file;
+                    }
+                    
+                    // Also scan legacy thumbnails directory (removed in 6.0.0)
+                    if ($file === 'thumbnails' && is_dir($fullPath)) {
+                        $thumbFiles = @scandir($fullPath);
+                        if ($thumbFiles !== false) {
+                            foreach ($thumbFiles as $thumbFile) {
+                                if ($thumbFile === '.' || $thumbFile === '..' || $thumbFile === '.gitkeep') {
+                                    continue;
+                                }
+                                $thumbFullPath = $fullPath . '/' . $thumbFile;
+                                if (is_file($thumbFullPath)) {
+                                    $legacyFiles[] = 'Images/' . $type . '/thumbnails/' . $thumbFile;
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (\Exception $e) {
+                $logger->warning('Error scanning for legacy avatar files', [
+                    'directory' => $typeDir,
+                    'exception' => $e,
+                ]);
+            }
+        }
+
+        if (count($legacyFiles) > 0) {
+            $logger->info('Found legacy avatar files for cleanup', ['count' => count($legacyFiles)]);
+        }
+
+        return $legacyFiles;
     }
 
     /**
