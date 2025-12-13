@@ -193,16 +193,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $family = null;
 
     // Person data is now authoritative - no family fallback
-    $sCountryTest = $sCountry;
+    // State handling: API determines which countries have states; JS toggles UI visibility
     $sState = '';
-    if ($sCountryTest == 'United States' || $sCountryTest == 'Canada') {
-        if (array_key_exists('State', $_POST)) {
-            $sState = InputUtils::legacyFilterInput($_POST['State']);
-        }
-    } else {
-        if (array_key_exists('StateTextbox', $_POST)) {
-            $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
-        }
+    if (array_key_exists('State', $_POST)) {
+        $sState = InputUtils::legacyFilterInput($_POST['State']);
+    } elseif (array_key_exists('StateTextbox', $_POST)) {
+        $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
     }
 
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
@@ -807,9 +803,7 @@ require_once 'Include/Header.php';
                 <div id="stateInputDiv" class="form-group col-md-3 d-none">
                     <label for="StateTextbox"><?= gettext('State (Other)') ?>:</label>
                     <input type="text" name="StateTextbox" id="StateTextbox"
-                           value="<?php if ($sPhoneCountry != 'United States' && $sPhoneCountry != 'Canada') {
-                                echo InputUtils::escapeAttribute(stripslashes($sState));
-                           } ?>"
+                           value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>"
                            maxlength="30" class="form-control">
                 </div>
                 <div class="form-group col-md-2">
