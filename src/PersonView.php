@@ -12,6 +12,7 @@ use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -25,6 +26,12 @@ $person = PersonQuery::create()->findPk($iPersonID);
 if (empty($person)) {
     header('Location: ' . SystemURLs::getRootPath() . '/v2/person/not-found?id=' . $iPersonID);
     exit;
+}
+
+// GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person
+$currentUser = AuthenticationManager::getCurrentUser();
+if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+    RedirectUtils::securityRedirect('PersonView');
 }
 
 $sPageTitle = gettext('Person Profile');
@@ -852,7 +859,7 @@ $bOkToEdit = (
                                         <tr>
                                             <td><span class="badge badge-info"><?= $prt_Name ?></span></td>
                                             <td><strong><?= $pro_Name ?></strong></td>
-                                            <td><?= $r2p_Value ?></td>
+                                            <td><?= InputUtils::escapeHTML($r2p_Value) ?></td>
                                             <?php if ($bOkToEdit) { ?>
                                                 <td class="text-right">
                                                     <button class="btn btn-sm btn-danger remove-property-btn" data-property_id="<?= $pro_ID ?>" title="<?= gettext('Remove Property') ?>">
