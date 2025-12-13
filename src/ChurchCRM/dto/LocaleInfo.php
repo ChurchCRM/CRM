@@ -21,8 +21,26 @@ class LocaleInfo
         if (!empty($userLocale)) {
             $this->locale = $userLocale->getValue();
         }
-        $localesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json');
-        $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
+        
+        $localesPath = SystemURLs::getDocumentRoot() . '/locale/locales.json';
+        $localesFile = @file_get_contents($localesPath);
+        
+        if ($localesFile === false) {
+            // File missing or unreadable; use defaults
+            return;
+        }
+
+        try {
+            $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            // Invalid JSON; use defaults
+            return;
+        }
+
+        if (!is_array($locales)) {
+            return;
+        }
+
         foreach ($locales as $key => $value) {
             if ($value['locale'] == $this->locale) {
                 $this->name = $key;
@@ -181,7 +199,6 @@ class LocaleInfo
     {
         $poeditorPath = SystemURLs::getDocumentRoot() . '/locale/poeditor.json';
         $poLocalesFile = @file_get_contents($poeditorPath);
-        
         if ($poLocalesFile === false) {
             // File missing or unreadable; return empty array
             return [];
