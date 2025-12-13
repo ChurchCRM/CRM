@@ -152,17 +152,17 @@ describe("API Private Deposit Operations", () => {
     describe("Authorization Tests - Finance Operations", () => {
         it("Non-finance user denied getting pledges", () => {
             // Test that a user without bFinance permission is denied
-            cy.makePrivateUserAPICall(
+            cy.makePrivateNoFinanceAPICall(
                 "GET",
                 `/api/deposits/${depositID}/pledges`,
                 null,
-                [200, 401, 403]
+                [401, 403, 500]
             );
         });
 
         it("Non-finance user denied exporting CSV", () => {
             // Test that a user without bFinance permission is denied
-            cy.makePrivateUserAPICall(
+            cy.makePrivateNoFinanceAPICall(
                 "GET",
                 `/api/deposits/${depositID}/csv`,
                 null,
@@ -172,7 +172,7 @@ describe("API Private Deposit Operations", () => {
 
         it("Non-finance user denied generating PDF", () => {
             // Test that a user without bFinance permission is denied
-            cy.makePrivateUserAPICall(
+            cy.makePrivateNoFinanceAPICall(
                 "GET",
                 `/api/deposits/${depositID}/pdf`,
                 null,
@@ -183,7 +183,7 @@ describe("API Private Deposit Operations", () => {
         it("Non-finance user denied creating deposits", () => {
             // Test that a user without bFinance permission is denied
             const today = new Date().toISOString().split("T")[0];
-            cy.makePrivateUserAPICall(
+            cy.makePrivateNoFinanceAPICall(
                 "POST",
                 `/api/deposits`,
                 {
@@ -191,14 +191,14 @@ describe("API Private Deposit Operations", () => {
                     depositComment: "Unauthorized Deposit",
                     depositDate: today,
                 },
-                [200, 201, 401, 403]
+                [401, 403]
             );
         });
 
         it("Non-finance user denied updating deposits", () => {
             // Test that a user without bFinance permission is denied
             const today = new Date().toISOString().split("T")[0];
-            cy.makePrivateUserAPICall(
+            cy.makePrivateNoFinanceAPICall(
                 "POST",
                 `/api/deposits/${depositID}`,
                 {
@@ -213,11 +213,11 @@ describe("API Private Deposit Operations", () => {
 
         it("Non-finance user denied deleting deposits", () => {
             // Test that a user without bFinance permission is denied
-            cy.makePrivateUserAPICall(
+            cy.makePrivateNoFinanceAPICall(
                 "DELETE",
                 `/api/deposits/${depositID}`,
                 null,
-                [200, 401, 403]
+                [401, 403]
             );
         });
     });

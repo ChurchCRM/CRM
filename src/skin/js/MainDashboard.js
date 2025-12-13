@@ -84,7 +84,7 @@ function initializeMainDashboard() {
         data: "Created",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
+            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
         },
     });
 
@@ -109,7 +109,7 @@ function initializeMainDashboard() {
         data: "LastEdited",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
+            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
         },
     });
 
@@ -351,7 +351,7 @@ function initializeMainDashboard() {
         data: "LastEdited",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
+            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
         },
     });
 
@@ -376,7 +376,7 @@ function initializeMainDashboard() {
         data: "Created",
         render: function (data) {
             if (!data) return "";
-            return '<small class="text-muted">' + moment(data).fromNow() + "</small>";
+            return '<small class="text-muted">' + moment(data, 'M/D/YYYY').fromNow() + "</small>";
         },
     });
 
