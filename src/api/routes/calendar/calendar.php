@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Dashboard\EventsMenuItems;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
 use ChurchCRM\model\ChurchCRM\Calendar;
@@ -14,6 +15,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpBadRequestException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
+
+$app->group('/calendar', function (RouteCollectorProxy $group): void {
+    $group->get('/events-counters', 'getEventsCounters');
+});
 
 $app->group('/calendars', function (RouteCollectorProxy $group): void {
     $group->get('', 'getUserCalendars');
@@ -215,4 +220,13 @@ function deleteUserCalendar(Request $request, Response $response, array $args): 
     $Calendar->delete();
 
     return SlimUtils::renderSuccessJSON($response);
+}
+
+/**
+ * Get today's event counters (birthdays, anniversaries, events)
+ * Called once on page load to populate menu badges
+ */
+function getEventsCounters(Request $request, Response $response, array $args): Response
+{
+    return SlimUtils::renderJSON($response, EventsMenuItems::getDashboardItemValue());
 }
