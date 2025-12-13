@@ -823,6 +823,24 @@ Before committing code changes, verify:
 - Don't ask for permission—implement code changes based on the user's intent
 - If intent is unclear, infer the most useful approach and clarify with the user
 
+### Pull Request Review & Comments
+
+**Always use `gh` CLI for PR details:**
+- `gh pr view <number> --json reviews` - Get review comments and status
+- `gh pr view <number> --json latestReviews` - Get the most recent reviews with full body text
+- `gh pr view <number> --json comments` - Get top-level PR comments
+- `gh pr view <number> --comments` - Human-readable view with all comments
+
+**Example workflow when user asks to review a PR:**
+1. Use `gh pr view 7774 --json latestReviews` to fetch reviewer comments
+2. Check the review state (`COMMENTED`, `APPROVED`, `CHANGES_REQUESTED`)
+3. Parse the review body for any requested changes or issues
+4. If changes are needed, implement them based on feedback
+5. Run tests to verify all changes work
+6. Report back with summary of changes made (or "no changes needed" if already good)
+
+**DO NOT** use `github-pull-request_openPullRequest` or `github-pull-request_issue_fetch` tools for PR comments - these return incomplete comment data. Always use `gh` command for full review content.
+
 ---
 
 ## Security Vulnerability (CVE) Handling
