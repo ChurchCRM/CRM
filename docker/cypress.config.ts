@@ -23,7 +23,7 @@ export default defineConfig({
     'nofinance.username': 'judith.matthews@example.com',
     'nofinance.password': 'noMoney$',
   },
-  retries: 1,
+  retries: 0,
   numTestsKeptInMemory: 0,
   e2e: {
     setupNodeEvents(on, config) {
