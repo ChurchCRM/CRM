@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-11 05:16+0000\n"
+"POT-Creation-Date: 2025-12-13 06:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -129,13 +129,13 @@ msgstr[1] ""
 msgid "(Edit own family only.)"
 msgstr ""
 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr ""
+
 msgid "(Grants all privileges.)"
 msgstr ""
 
 msgid "(No assigned family)"
-msgstr ""
-
-msgid "(Use the textbox for countries other than US and Canada)"
 msgstr ""
 
 msgid "(refresh from GitHub)"
@@ -1578,6 +1578,9 @@ msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr ""
 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr ""
+
+msgid "Contact"
 msgstr ""
 
 msgid "Contact Info"
@@ -4279,6 +4282,9 @@ msgstr ""
 msgid "Location"
 msgstr ""
 
+msgid "Location & Contact Information"
+msgstr ""
+
 msgid "Log File"
 msgstr ""
 
@@ -4896,6 +4902,9 @@ msgstr ""
 
 #. Context: countries
 msgid "New Zealand"
+msgstr ""
+
+msgid "New to"
 msgstr ""
 
 msgid "Newsletter labels"
@@ -6048,9 +6057,6 @@ msgstr ""
 msgid "Recurrence Pattern"
 msgstr ""
 
-msgid "Red text"
-msgstr ""
-
 msgid "Redirecting in"
 msgstr ""
 
@@ -6072,7 +6078,7 @@ msgstr ""
 msgid "Register Your Church"
 msgstr ""
 
-msgid "Register a new Family"
+msgid "Register a New Family"
 msgstr ""
 
 msgid "Register another family!"
@@ -6770,9 +6776,6 @@ msgstr ""
 msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
 msgstr ""
 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr ""
-
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr ""
 
@@ -6782,7 +6785,7 @@ msgstr ""
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
 msgstr ""
 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
+msgid "Set true to disable entering personal addresses for unaffiliated persons in Person Editor. Set false to enable entering addresses for persons without a family assignment."
 msgstr ""
 
 msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
@@ -7677,6 +7680,9 @@ msgstr ""
 msgid "Unable to load locale information"
 msgstr ""
 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr ""
+
 msgid "Unable to load verification info"
 msgstr ""
 
@@ -7687,12 +7693,6 @@ msgid "Unassigned"
 msgstr ""
 
 msgid "Unassigning"
-msgstr ""
-
-msgid ""
-"Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
 msgstr ""
 
 msgid "Unclassified"
@@ -8341,7 +8341,7 @@ msgstr ""
 msgid "You may create family members now or add them later. All entries will become new person records."
 msgstr ""
 
-msgid "You must enter a Last Name if no Family is selected."
+msgid "You must enter a Last Name."
 msgstr ""
 
 msgid "You must enter a name"
@@ -8559,9 +8559,6 @@ msgid "in"
 msgstr ""
 
 msgid "in cart"
-msgstr ""
-
-msgid "indicates items inherited from the associated family record."
 msgstr ""
 
 msgid "invalid calendar pinning"
