@@ -180,28 +180,27 @@ $bOkToEdit = (
     <div class="col-lg-3 col-md-3 col-sm-3">
         <div class="card card-primary">
             <div class="card-body box-profile">
-                <div class="image-container">
-                    <div class="text-center">
-                        <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile">
-                        <p />
-
-                        <?php if ($bOkToEdit) : ?>
-                            <div class="buttons">
-                                <a id="view-larger-image-btn" class="hide" title="<?= gettext("View Photo") ?>">
-                                    <i class="fa-solid fa-search-plus"></i>
-                                </a>&nbsp;
-                                <a id="uploadImageButton" class="" title="<?= gettext("Upload Photo") ?>">
-                                    <i class="fa-solid fa-camera"></i>
-                                </a>&nbsp;
-                                <a data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </div>
-
-                        <?php endif; ?>
+                <div class="image-container text-center">
+                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile mb-2">
+                    <?php if ($bOkToEdit) : ?>
+                    <div class="photo-actions">
+                        <div class="btn-group" role="group">
+                            <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary hide-if-no-photo d-none" title="<?= gettext("View Photo") ?>">
+                                <i class="fa-solid fa-search-plus"></i>
+                            </a>
+                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-info" title="<?= gettext("Upload Photo") ?>">
+                                <i class="fa-solid fa-camera"></i>
+                            </a>
+                            <?php if ($person->getPhoto()->hasUploadedPhoto()) : ?>
+                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                            <?php endif; ?>
+                        </div>
                     </div>
+                    <?php endif; ?>
                 </div>
-                <h3 class="profile-username text-center">
+                <h3 class="profile-username text-center mt-3">
                     <?= $person->getFullName() ?> [<?= $person->getId() ?>]
                 </h3>
                 <ul class="list-group list-group-unbordered mb-3">
@@ -958,19 +957,64 @@ $bOkToEdit = (
                 $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
                 $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
 
-                contentExists(window.CRM.root + "/api/person/" + window.CRM.currentPersonID + "/photo", function(success) {
-                    if (success) {
-                        $("#view-larger-image-btn").removeClass('hide');
+                // Check if person has a photo (uploaded or gravatar) and show/hide view button accordingly
+                // Query the avatar info endpoint to see if there's an actual photo to display
+                fetch(window.CRM.root + "/api/person/" + window.CRM.currentPersonID + "/avatar")
+                    .then(response => response.json())
+                    .then(data => {
+                        // Show view button only if there's an actual uploaded photo (hasPhoto=true)
+                        if (data.hasPhoto) {
+                            $("#view-larger-image-btn").removeClass('hide-if-no-photo');
+                            $("#view-larger-image-btn").removeClass('hide');
+                            $("#view-larger-image-btn").removeClass('d-none');
 
-                        $("#view-larger-image-btn").click(function() {
-                            bootbox.alert({
-                                title: "<?= gettext('Photo') ?>",
-                                message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/person/' + window.CRM.currentPersonID + '/photo" />',
-                                backdrop: true
+                            $("#view-larger-image-btn").click(function() {
+                                // Get the actual image source from the rendered photo
+                                const photoImg = document.querySelector('[data-image-entity-type="person"][data-image-entity-id="' + window.CRM.currentPersonID + '"]');
+                                let imageSrc = photoImg && photoImg.src ? photoImg.src : '<?= SystemURLs::getRootPath() ?>/api/person/' + window.CRM.currentPersonID + '/photo';
+
+                                // Create lightbox overlay
+                                const lightbox = document.createElement('div');
+                                lightbox.id = 'photo-lightbox';
+                                lightbox.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:9999;cursor:pointer;';
+
+                                const closeBtn = document.createElement('button');
+                                closeBtn.innerHTML = '<i class="fa-solid fa-times"></i>';
+                                closeBtn.style.cssText = 'position:absolute;top:20px;right:20px;background:transparent;border:none;color:white;font-size:30px;cursor:pointer;z-index:10000;';
+
+                                const img = document.createElement('img');
+                                img.src = imageSrc;
+                                img.style.cssText = 'max-width:90%;max-height:90%;object-fit:contain;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,0.5);';
+
+                                lightbox.appendChild(closeBtn);
+                                lightbox.appendChild(img);
+                                document.body.appendChild(lightbox);
+
+                                // Close on click anywhere or close button
+                                const closeLightbox = () => lightbox.remove();
+                                lightbox.addEventListener('click', closeLightbox);
+                                closeBtn.addEventListener('click', closeLightbox);
+
+                                // Close on escape key
+                                const escHandler = (e) => {
+                                    if (e.key === 'Escape') {
+                                        closeLightbox();
+                                        document.removeEventListener('keydown', escHandler);
+                                    }
+                                };
+                                document.addEventListener('keydown', escHandler);
                             });
-                        });
-                    }
-                });
+                        } else {
+                            // Keep hidden for initials/gravatar only
+                            $("#view-larger-image-btn").addClass('hide-if-no-photo');
+                            $("#view-larger-image-btn").addClass('d-none');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Failed to fetch avatar info:', error);
+                        $("#view-larger-image-btn").addClass('hide-if-no-photo');
+                        $("#view-larger-image-btn").addClass('d-none');
+                    });
 
                 // Copy photo uploader function from temporary storage to window.CRM
                 if (window._CRM_createPhotoUploader) {
