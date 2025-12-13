@@ -751,7 +751,7 @@ require_once 'Include/Header.php';
     </div>
 
     <!-- Card 2: Address -->
-    <?php if (!SystemConfig::getValue('bHidePersonAddress')) { /* Person Address can be hidden - General Settings */ ?>
+    <?php if (!SystemConfig::getValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Address') ?></h3>
