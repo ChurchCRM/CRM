@@ -180,3 +180,8 @@
 .birthday-filter-hidden {
     display: none;
 }
+
+/* Hide view photo button when there is no uploaded photo or gravatar */
+.hide-if-no-photo {
+    display: none !important;
+}

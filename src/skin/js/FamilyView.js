@@ -3,6 +3,27 @@ function initializeFamilyView() {
         $("#family-deactivated").removeClass("d-none");
     }
 
+    // Check if family has a photo (uploaded or gravatar) and show/hide view button accordingly
+    // Query the avatar info endpoint to see if there's an actual photo to display
+    fetch(window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/avatar")
+        .then((response) => response.json())
+        .then((data) => {
+            // Show view button only if there's an actual uploaded photo (hasPhoto=true)
+            if (data.hasPhoto) {
+                $("#view-larger-image-btn").removeClass("hide-if-no-photo");
+                $("#view-larger-image-btn").removeClass("d-none");
+            } else {
+                // Keep hidden for initials/gravatar only
+                $("#view-larger-image-btn").addClass("hide-if-no-photo");
+                $("#view-larger-image-btn").addClass("d-none");
+            }
+        })
+        .catch((error) => {
+            console.error("Failed to fetch avatar info:", error);
+            $("#view-larger-image-btn").addClass("hide-if-no-photo");
+            $("#view-larger-image-btn").addClass("d-none");
+        });
+
     window.CRM.APIRequest({
         path: `family/${window.CRM.currentFamily}/nav`,
     }).then(function (data) {
@@ -239,25 +260,12 @@ function initializeFamilyView() {
 
     // Photos
     $("#deletePhoto").on("click", function () {
-        $.ajax({
-            type: "DELETE",
-            url: `${window.CRM.root}/api/family/${window.CRM.currentFamily}/photo`,
-            encode: true,
-            dataType: "json",
-        }).then(function () {
-            location.reload();
-        });
+        window.CRM.deletePhoto("family", window.CRM.currentFamily);
     });
 
-    $("#view-larger-image-btn").on("click", function () {
-        bootbox.alert({
-            title: i18next.t("Family Photo"),
-            message:
-                '<img class="img-rounded img-responsive center-block" src="' +
-                `${window.CRM.root}/api/family/${window.CRM.currentFamily}/photo` +
-                '"/>',
-            backdrop: true,
-        });
+    $("#view-larger-image-btn").on("click", function (e) {
+        e.preventDefault();
+        window.CRM.showPhotoLightbox("family", window.CRM.currentFamily);
     });
 
     $("#activateDeactivate").on("click", function () {

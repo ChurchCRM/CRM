@@ -17,15 +17,32 @@ use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
 
+// Photo and avatar routes (no FamilyMiddleware to speed up page loads)
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    // Returns uploaded photo only - 404 if no uploaded photo
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
-        $photo = new Photo('Family', $args['familyId']);
+        $photo = new Photo('Family', (int)$args['familyId']);
+        
+        if (!$photo->hasUploadedPhoto()) {
+            throw new HttpNotFoundException($request, 'No uploaded photo exists for this family');
+        }
+        
         return SlimUtils::renderPhoto($response, $photo);
     })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
+    
+    // Returns avatar info JSON for client-side rendering
+    $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
+        $avatarInfo = Photo::getAvatarInfo('Family', (int)$args['familyId']);
+        return SlimUtils::renderJSON($response, $avatarInfo);
+    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
+});
 
+// Routes that require FamilyMiddleware
+$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->post('/photo', function (Request $request, Response $response): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');

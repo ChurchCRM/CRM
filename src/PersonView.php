@@ -180,28 +180,27 @@ $bOkToEdit = (
     <div class="col-lg-3 col-md-3 col-sm-3">
         <div class="card card-primary">
             <div class="card-body box-profile">
-                <div class="image-container">
-                    <div class="text-center">
-                        <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile">
-                        <p />
-
-                        <?php if ($bOkToEdit) : ?>
-                            <div class="buttons">
-                                <a id="view-larger-image-btn" class="hide" title="<?= gettext("View Photo") ?>">
-                                    <i class="fa-solid fa-search-plus"></i>
-                                </a>&nbsp;
-                                <a id="uploadImageButton" class="" title="<?= gettext("Upload Photo") ?>">
-                                    <i class="fa-solid fa-camera"></i>
-                                </a>&nbsp;
-                                <a data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
-                            </div>
-
-                        <?php endif; ?>
+                <div class="image-container text-center">
+                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile mb-2">
+                    <?php if ($bOkToEdit) : ?>
+                    <div class="photo-actions">
+                        <div class="btn-group" role="group">
+                            <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary hide-if-no-photo d-none" title="<?= gettext("View Photo") ?>">
+                                <i class="fa-solid fa-search-plus"></i>
+                            </a>
+                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-info" title="<?= gettext("Upload Photo") ?>">
+                                <i class="fa-solid fa-camera"></i>
+                            </a>
+                            <?php if ($person->getPhoto()->hasUploadedPhoto()) : ?>
+                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </a>
+                            <?php endif; ?>
+                        </div>
                     </div>
+                    <?php endif; ?>
                 </div>
-                <h3 class="profile-username text-center">
+                <h3 class="profile-username text-center mt-3">
                     <?= $person->getFullName() ?> [<?= $person->getId() ?>]
                 </h3>
                 <ul class="list-group list-group-unbordered mb-3">
@@ -943,12 +942,7 @@ $bOkToEdit = (
             window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
 
             $("#deletePhoto").click(function() {
-                window.CRM.APIRequest({
-                    method: "DELETE",
-                    path: "person/<?= $iPersonID ?>/photo"
-                }).done(function(data) {
-                    location.reload();
-                });
+                window.CRM.deletePhoto("person", window.CRM.currentPersonID);
             });
 
             $(document).ready(function() {
@@ -958,18 +952,10 @@ $bOkToEdit = (
                 $("#assigned-volunteer-opps-table").DataTable(window.CRM.plugin.dataTable);
                 $("#assigned-properties-table").DataTable(window.CRM.plugin.dataTable);
 
-                contentExists(window.CRM.root + "/api/person/" + window.CRM.currentPersonID + "/photo", function(success) {
-                    if (success) {
-                        $("#view-larger-image-btn").removeClass('hide');
-
-                        $("#view-larger-image-btn").click(function() {
-                            bootbox.alert({
-                                title: "<?= gettext('Photo') ?>",
-                                message: '<img class="img-rounded img-responsive center-block" src="<?= SystemURLs::getRootPath() ?>/api/person/' + window.CRM.currentPersonID + '/photo" />',
-                                backdrop: true
-                            });
-                        });
-                    }
+                // Attach lightbox click handler to view button
+                // Note: Button visibility is managed by avatar-loader.ts based on hasPhoto status
+                $("#view-larger-image-btn").click(function() {
+                    window.CRM.showPhotoLightbox("person", window.CRM.currentPersonID);
                 });
 
                 // Copy photo uploader function from temporary storage to window.CRM

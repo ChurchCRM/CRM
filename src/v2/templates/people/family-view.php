@@ -48,25 +48,26 @@ $memberCount = count($family->getPeople());
                 </div>
             </div>
             <div class="card-body text-center">
-                <div class="image-container position-relative d-inline-block">
+                <div class="image-container d-inline-block">
                     <img data-image-entity-type="family" 
                          data-image-entity-id="<?= $family->getId() ?>" 
-                         class="photo-large"/>
-                    <div class="position-absolute w-100 text-center" style="bottom: 10px;">
-                        <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary mr-1" title="<?= gettext("View Photo") ?>">
+                         class="<?= $family->getPhoto()->hasUploadedPhoto() ? 'img-fluid rounded' : 'photo-large' ?> mb-2"
+                         style="<?= $family->getPhoto()->hasUploadedPhoto() ? 'max-width: 100%; max-height: 300px;' : '' ?>"/>
+                </div>
+                <div class="photo-actions">
+                    <div class="btn-group" role="group">
+                        <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary hide-if-no-photo" title="<?= gettext("View Photo") ?>">
                             <i class="fa-solid fa-search-plus"></i>
                         </a>
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
-                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-info mr-1"
-                               title="<?= gettext("Upload Photo") ?>">
-                                <i class="fa-solid fa-camera"></i>
-                            </a>
-                            <?php if (!$family->getPhoto()->isInitials()) : ?>
-                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete-image"
-                               title="<?= gettext("Delete Photo") ?>">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </a>
-                            <?php endif; ?>
+                        <a id="uploadImageButton" href="#" class="btn btn-sm btn-info" title="<?= gettext("Upload Photo") ?>">
+                            <i class="fa-solid fa-camera"></i>
+                        </a>
+                        <?php if ($family->getPhoto()->hasUploadedPhoto()) : ?>
+                        <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </a>
+                        <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 </div>

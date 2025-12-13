@@ -477,13 +477,13 @@ class PdfDirectory extends ChurchInfoReport
         $dirimg = '';
         if ($fid !== null) {
             $family = FamilyQuery::create()->findOneById($fid);
-            if ($family && !$family->getPhoto()->isInitials() && file_exists($family->getPhoto()->getPhotoURI())) {
+            if ($family && $family->getPhoto()->hasUploadedPhoto() && file_exists($family->getPhoto()->getPhotoURI())) {
                 $dirimg = $family->getPhoto()->getPhotoURI();
             }
         }
         if ($pid !== null) {
             $person = PersonQuery::create()->findOneById($pid);
-            if ($person && !$person->getPhoto()->isInitials() && file_exists($person->getPhoto()->getPhotoURI())) {
+            if ($person && $person->getPhoto()->hasUploadedPhoto() && file_exists($person->getPhoto()->getPhotoURI())) {
                 $dirimg = $person->getPhoto()->getPhotoURI();
             }
         }

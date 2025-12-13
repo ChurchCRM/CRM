@@ -16,11 +16,24 @@ use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
 
 // This group does not load the person via middleware (to speed up the page loads)
-// Single photo endpoint - returns Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG image, client handles display sizing via CSS
+// Photo endpoint - returns uploaded photo only (404 if no photo exists)
+// Avatar info endpoint - returns JSON with initials, gravatar info for client-side rendering
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    // Returns uploaded photo only - 404 if no uploaded photo
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
-        $photo = new Photo('Person', $args['personId']);
+        $photo = new Photo('Person', (int)$args['personId']);
+        
+        if (!$photo->hasUploadedPhoto()) {
+            throw new HttpNotFoundException($request, 'No uploaded photo exists for this person');
+        }
+        
         return SlimUtils::renderPhoto($response, $photo);
+    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
+    
+    // Returns avatar info JSON for client-side rendering
+    $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
+        $avatarInfo = Photo::getAvatarInfo('Person', (int)$args['personId']);
+        return SlimUtils::renderJSON($response, $avatarInfo);
     })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
 });
 
