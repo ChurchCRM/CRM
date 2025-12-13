@@ -1,12 +1,10 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Map\TokenTableMap;
-use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -131,42 +129,6 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         $financialService = new FinancialService();
 
         return SlimUtils::renderJSON($response, $financialService->getMemberByScanString($scanString));
-    });
-
-    /**
-     * Update the family status to activated or deactivated with :familyId and :status true/false.
-     * Pass true to activate and false to deactivate.     *.
-     */
-    $group->post('/{familyId:[0-9]+}/activate/{status}', function (Request $request, Response $response, array $args): Response {
-        $familyId = $args['familyId'];
-        $newStatus = $args['status'];
-
-        $family = FamilyQuery::create()->findPk($familyId);
-        $currentStatus = (empty($family->getDateDeactivated()) ? 'true' : 'false');
-
-        //update only if the value is different
-        if ($currentStatus !== $newStatus) {
-            if ($newStatus == 'false') {
-                $family->setDateDeactivated(date('YmdHis'));
-            } elseif ($newStatus == 'true') {
-                $family->setDateDeactivated(null);
-            }
-            $family->save();
-
-            //Create a note to record the status change
-            $note = new Note();
-            $note->setFamId($familyId);
-            if ($newStatus == 'false') {
-                $note->setText(gettext('Deactivated the Family'));
-            } else {
-                $note->setText(gettext('Activated the Family'));
-            }
-            $note->setType('edit');
-            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-            $note->save();
-        }
-
-        return SlimUtils::renderJSON($response, ['success' => true]);
     });
 });
 

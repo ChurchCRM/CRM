@@ -281,7 +281,7 @@ function initializeFamilyView() {
                 if (result) {
                     window.CRM.APIRequest({
                         method: "POST",
-                        path: `families/${window.CRM.currentFamily}/activate/${!window.CRM.currentActive}`,
+                        path: `family/${window.CRM.currentFamily}/activate/${!window.CRM.currentActive}`,
                     }).then(function (data) {
                         if (data.success) {
                             window.location.href = `${window.CRM.root}/v2/family/${window.CRM.currentFamily}`;
