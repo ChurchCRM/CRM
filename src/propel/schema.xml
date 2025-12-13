@@ -144,8 +144,6 @@
         <column name="fam_Zip" phpName="Zip" type="VARCHAR" size="50"/>
         <column name="fam_Country" phpName="Country" type="VARCHAR" size="50"/>
         <column name="fam_HomePhone" phpName="HomePhone" type="VARCHAR" size="30"/>
-        <column name="fam_WorkPhone" phpName="WorkPhone" type="VARCHAR" size="30"/>
-        <column name="fam_CellPhone" phpName="CellPhone" type="VARCHAR" size="30"/>
         <column name="fam_Email" phpName="Email" type="VARCHAR" size="100"/>
         <column name="fam_WeddingDate" phpName="Weddingdate" type="DATE"/>
         <column name="fam_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"/>
