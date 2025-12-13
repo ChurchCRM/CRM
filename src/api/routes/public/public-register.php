@@ -52,8 +52,6 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     $family->setCountry($familyMetadata['Country']);
     $family->setZip($familyMetadata['Zip']);
     $family->setHomePhone($familyMetadata['HomePhone']);
-    $family->setWorkPhone($familyMetadata['WorkPhone']);
-    $family->setCellPhone($familyMetadata['CellPhone']);
     $family->setEmail($familyMetadata['Email']);
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new DateTime());
