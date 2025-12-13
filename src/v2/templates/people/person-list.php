@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -16,7 +15,7 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
  */
 function emptyOrUnassigned($stuff)
 {
-    return empty($stuff) ? 'Unassigned' : $stuff;
+    return empty($stuff) ? gettext('Unassigned') : $stuff;
 }
 
 /**
@@ -85,6 +84,26 @@ $GroupList[] = "Unassigned";
 foreach ($ListItem as $element) {
     $GroupList[] = $element->getName();
 }
+
+// Person list column definitions - defines which columns appear and their data source
+$personListColumns = [
+    (object) ['name' => gettext('Id'), 'displayFunction' => 'getId', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Family Name'), 'displayFunction' => 'getFamilyName', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Name'), 'displayFunction' => 'getFullName', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Last Name'), 'displayFunction' => 'getLastName', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('First Name'), 'displayFunction' => 'getFirstName', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Birth Date'), 'displayFunction' => 'getFormattedBirthDate', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Address'), 'displayFunction' => 'getAddress', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Home Phone'), 'displayFunction' => 'getHomePhone', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Cell Phone'), 'displayFunction' => 'getCellPhone', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Email'), 'displayFunction' => 'getEmail', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Gender'), 'displayFunction' => 'getGenderName', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Classification'), 'displayFunction' => 'getClassificationName', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Role'), 'displayFunction' => 'getFamilyRoleName', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Properties'), 'displayFunction' => 'getPropertiesString', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Custom'), 'displayFunction' => 'getCustomFields', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Group'), 'displayFunction' => 'getGroups', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+];
 
 ?>
 
@@ -178,7 +197,7 @@ foreach ($ListItem as $element) {
                     </td>
 
                 <?php
-                $columns = json_decode(SystemConfig::getValue('sPersonListColumns'), null, 512, JSON_THROW_ON_ERROR);
+                $columns = $personListColumns;
                 foreach ($columns as $column) {
                     echo '<td>';
                     if ($column->displayFunction === 'getCustomFields') {
@@ -254,11 +273,11 @@ foreach ($ListItem as $element) {
                 $firstVisibleColumnId = PHP_INT_MAX;
                 $columnId = 0;
                 $columnIdMap = [];
-                $columns = json_decode(SystemConfig::getValue('sPersonListColumns'), null, 512, JSON_THROW_ON_ERROR);
+                $columns = $personListColumns;
                 foreach ($columns as $column) {
                     $columnId++;
                     $columnIdMap[$column->name] = $columnId;
-                    $columnTitle = ['title' => "i18next.t('{$column->name}')"];
+                    $columnTitle = ['title' => $column->name];
                     if ($column->visible === 'false') {
                         $columnTitle['visible'] = 'false';
                     } else {
@@ -266,7 +285,7 @@ foreach ($ListItem as $element) {
                             $firstVisibleColumnId = $columnId;
                         }
                     }
-                    echo str_replace('"', '', json_encode($columnTitle)) . ",\n";
+                    echo json_encode($columnTitle) . ",\n";
                 }
                 ?>
             ],

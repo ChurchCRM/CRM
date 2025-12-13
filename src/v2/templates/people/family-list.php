@@ -16,10 +16,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <tr>
                     <th><?= gettext('Actions') ?></th>
                     <?php
-                    $columns = json_decode(SystemConfig::getValue('sFamilyListColumns'), null, 512, JSON_THROW_ON_ERROR);
+                    // Family list column definitions - defines which columns appear and their data source
+                    $columns = [
+                        (object) ['name' => gettext('Name'), 'displayFunction' => 'getName', 'visible' => 'true'],
+                        (object) ['name' => gettext('Address'), 'displayFunction' => 'getAddress', 'visible' => 'true'],
+                        (object) ['name' => gettext('Home Phone'), 'displayFunction' => 'getHomePhone', 'visible' => 'true'],
+                        (object) ['name' => gettext('Email'), 'displayFunction' => 'getEmail', 'visible' => 'true'],
+                        (object) ['name' => gettext('Created'), 'displayFunction' => 'getDateEntered', 'visible' => 'true'],
+                        (object) ['name' => gettext('Edited'), 'displayFunction' => 'getDateLastEdited', 'visible' => 'true'],
+                    ];
                     foreach ($columns as $column) {
                         if ($column->visible === 'true') {
-                            echo '<th>' . gettext($column->name) . '</th>';
+                            echo '<th>' . $column->name . '</th>';
                         }
                     }
                     ?>
