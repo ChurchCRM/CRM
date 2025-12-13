@@ -12,6 +12,7 @@ class LocaleInfo
     private $name;
     private $poLocaleId;
     private $localeConfig;
+    private $translationData;
 
     public function __construct($locale, $userLocale)
     {
@@ -156,16 +157,48 @@ class LocaleInfo
             return 100;
         }
 
-        $poLocalesFile = file_get_contents(SystemURLs::getDocumentRoot() . '/locale/poeditor.json');
-        $poLocales = json_decode($poLocalesFile, true, 512, JSON_THROW_ON_ERROR);
+        // Load translation data once and cache it
+        if ($this->translationData === null) {
+            $this->translationData = $this->loadTranslationData();
+        }
 
-        foreach ($poLocales['result']['languages'] as $poLocale) {
+        // Return cached percentage
+        foreach ($this->translationData as $poLocale) {
             if (strtolower($this->poLocaleId ?? '') === strtolower($poLocale['code'])) {
                 return (int) $poLocale['percentage'];
             }
         }
 
         return 0;
+    }
+
+    /**
+     * Load translation data from POEditor file with error handling.
+     * Returns empty array on error to prevent crashes.
+     * @return array<int, array<string, mixed>>
+     */
+    private function loadTranslationData(): array
+    {
+        $poeditorPath = SystemURLs::getDocumentRoot() . '/locale/poeditor.json';
+        $poLocalesFile = @file_get_contents($poeditorPath);
+        
+        if ($poLocalesFile === false) {
+            // File missing or unreadable; return empty array
+            return [];
+        }
+
+        try {
+            $poLocales = json_decode($poLocalesFile, true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException $e) {
+            // Invalid JSON; return empty array
+            return [];
+        }
+
+        if (!isset($poLocales['result']['languages']) || !is_array($poLocales['result']['languages'])) {
+            return [];
+        }
+
+        return $poLocales['result']['languages'];
     }
 
     /**
