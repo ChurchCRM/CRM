@@ -4,16 +4,16 @@ describe("Standard Family Activation", () => {
     beforeEach(() => {
        
 
-        cy.intercept("POST", "/api/families/3/activate/true").as(
+        cy.intercept("POST", "/api/family/3/activate/true").as(
             "updateToActive",
         );
-        cy.intercept("POST", "/api/families/3/activate/false").as(
+        cy.intercept("POST", "/api/family/3/activate/false").as(
             "updateToInActive",
         );
 
         cy.makePrivateUserAPICall(
             "POST",
-            "/api/families/3/activate/true",
+            "/api/family/3/activate/true",
             "",
             200,
         );

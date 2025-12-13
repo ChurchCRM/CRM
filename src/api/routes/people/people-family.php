@@ -1,10 +1,12 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
@@ -135,5 +137,41 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family->verify();
 
         return SlimUtils::renderSuccessJSON($response);
+    });
+
+    /**
+     * Update the family status to activated or deactivated with :familyId and :status true/false.
+     * Pass true to activate and false to deactivate.
+     */
+    $group->post('/activate/{status}', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+        $newStatus = $args['status'];
+
+        $currentStatus = (empty($family->getDateDeactivated()) ? 'true' : 'false');
+
+        //update only if the value is different
+        if ($currentStatus !== $newStatus) {
+            if ($newStatus == 'false') {
+                $family->setDateDeactivated(date('YmdHis'));
+            } elseif ($newStatus == 'true') {
+                $family->setDateDeactivated(null);
+            }
+            $family->save();
+
+            //Create a note to record the status change
+            $note = new Note();
+            $note->setFamId($family->getId());
+            if ($newStatus == 'false') {
+                $note->setText(gettext('Deactivated the Family'));
+            } else {
+                $note->setText(gettext('Activated the Family'));
+            }
+            $note->setType('edit');
+            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
+            $note->save();
+        }
+
+        return SlimUtils::renderJSON($response, ['success' => true]);
     });
 })->add(FamilyMiddleware::class);
