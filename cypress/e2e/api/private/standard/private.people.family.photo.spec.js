@@ -101,16 +101,13 @@ describe("API Private Photo and Avatar - Family", () => {
                 null,
                 200
             ).then((response1) => {
-                const initials1 = response1.body.initials;
-                
                 cy.makePrivateAdminAPICall(
                     "GET",
                     `/api/family/${testFamilyId}/avatar`,
                     null,
                     200
                 ).then((response2) => {
-                    const initials2 = response2.body.initials;
-                    expect(initials1).to.eq(initials2);
+                    expect(response1.body.initials).to.eq(response2.body.initials);
                 });
             });
         });
