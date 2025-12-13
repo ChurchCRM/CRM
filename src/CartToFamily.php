@@ -41,9 +41,11 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         $sZip = InputUtils::legacyFilterInput($_POST['Zip']);
         $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
 
-        if ($sCountry == 'United States' || $sCountry == 'Canada') {
+        // State handling: API determines which countries have states; JS toggles UI visibility
+        $sState = '';
+        if (array_key_exists('State', $_POST)) {
             $sState = InputUtils::legacyFilterInput($_POST['State']);
-        } else {
+        } elseif (array_key_exists('StateTextbox', $_POST)) {
             $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
         }
 
@@ -273,12 +275,14 @@ SQL;
             <tr>
                 <td class="LabelColumn"><?= gettext('State') ?>:</td>
                 <td class="TextColumn">
-                    <?php require_once 'Include/StateDropDown.php'; ?>
-                    OR
-                    <input type="text" name="StateTextbox" value="<?php if ($sCountry != 'United States' && $sCountry != 'Canada') {
-                                                                        echo $sState;
-                                                                    } ?>" size="20" maxlength="30">
-                    <BR><?= gettext('(Use the textbox for countries other than US and Canada)') ?>
+                    <div id="stateOptionDiv">
+                        <select id="State" name="State" class="form-control" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                        </select>
+                    </div>
+                    <div id="stateInputDiv" style="display: none;">
+                        <input type="text" name="StateTextbox" id="StateTextbox" value="" size="20" maxlength="30">
+                        <BR><?= gettext('(Enter state/province for countries without predefined states)') ?>
+                    </div>
                 </td>
             </tr>
 
@@ -293,7 +297,8 @@ SQL;
             <tr>
                 <td class="LabelColumn"><?= gettext('Country') ?>:</td>
                 <td class="TextColumnWithBottomBorder">
-                    <?php require_once 'Include/CountryDropDown.php' ?>
+                    <select id="Country" name="Country" class="form-control" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    </select>
                 </td>
             </tr>
 
@@ -345,12 +350,16 @@ SQL;
         <input type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Add to Family') ?>">
         <BR><BR>
     </p>
-    </form>
+    </div>
 <?php
         } else {
             echo '<p class="alert alert-warning text-center">' . gettext('Your cart is empty!') . '</p>';
         }
 ?>
 </div>
+
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js"></script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/CartToFamily.js"></script>
+
 <?php
 require_once 'Include/Footer.php';

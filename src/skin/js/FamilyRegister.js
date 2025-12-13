@@ -734,57 +734,16 @@
             });
         });
 
-        // Load countries
-        $.ajax({
-            type: "GET",
-            url: rootPath + "/api/public/data/countries",
-        }).done(function (data) {
-            const familyCountry = $("#familyCountry");
-            $.each(data, function (idx, country) {
-                const selected = familyCountry.data("system-default") === country.name;
-                familyCountry.append(new Option(country.name, country.code, selected, selected));
-            });
-            familyCountry.change();
-        });
-
-        // Initialize select2 and country/state handling
-        $("#familyCountry").select2();
-
-        $("#familyCountry").change(function () {
-            const $container = $("#familyStateContainer");
-            const defaultState = $container.find("#familyState").data("default") || "";
-
-            $.ajax({
-                type: "GET",
-                url: rootPath + "/api/public/data/countries/" + this.value.toLowerCase() + "/states",
-            }).done(function (data) {
-                if (Object.keys(data).length > 0) {
-                    // Country has states - replace with dropdown
-                    const $select = $('<select id="familyState" name="familyState" class="form-control"></select>');
-                    $.each(data, function (code, name) {
-                        const $option = $("<option></option>").val(code).text(name);
-                        if (defaultState == code) {
-                            $option.prop("selected", true);
-                        }
-                        $select.append($option);
-                    });
-
-                    $container.html($select);
-                    $("#familyState").select2();
-                } else {
-                    // Country has no states - replace with text input
-                    const stateValue = defaultState || "";
-                    const input = $("<input>")
-                        .attr("id", "familyState")
-                        .attr("name", "familyState")
-                        .addClass("form-control")
-                        .attr("placeholder", i18next.t("State"))
-                        .val(stateValue)
-                        .attr("data-default", stateValue);
-                    $container.html(input);
-                }
-            });
-        });
+        // Load countries and handle state cascading using DropdownManager
+        DropdownManager.initializeFamilyRegisterCountryState(
+            "familyCountry",
+            "familyStateContainer",
+            "familyState",
+            {
+                systemDefault: $("#familyCountry").data("system-default"),
+                stateDefault: $("#familyState").data("default") || ""
+            }
+        );
 
         // Initialize date pickers and input masks
         $(".inputDatePicker").datepicker({
