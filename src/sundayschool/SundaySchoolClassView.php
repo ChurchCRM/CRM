@@ -231,15 +231,19 @@ require_once '../Include/Header.php';
 
         foreach ($thisClassChildren as $child) {
             $hideAge = $child['flags'] == 1 || empty($child['birthYear']);
-            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $child['flags']); ?>
+            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $child['flags']);
+            $childPhoto = new \ChurchCRM\dto\Photo('person', $child['kidId']);
+            ?>
           <tr>
           <td>
             <a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
-              <img data-image-entity-type="person" 
-                   data-image-entity-id="<?= $child['kidId'] ?>"
-                   class="photo-tiny" />
               <?= $child['LastName'] . ', ' . $child['firstName'] ?>
             </a>
+            <?php if ($childPhoto->hasUploadedPhoto()) { ?>
+              <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $child['kidId'] ?>" title="<?= gettext('View Photo') ?>">
+                <i class="fa-solid fa-camera"></i>
+              </button>
+            <?php } ?>
           </td>
           <td><?= $birthDate ?> </td>
           <td><?= MiscUtils::formatAge($child['birthMonth'], $child['birthDay'], $child['birthYear']) ?></td>
@@ -482,5 +486,6 @@ function implodeUnique($array, $withQuotes): string
   }
 
 </script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
 <?php
 require_once '../Include/Footer.php';

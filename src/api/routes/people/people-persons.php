@@ -183,6 +183,7 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
         $formattedPerson['FirstName'] = $person->getFirstName();
         $formattedPerson['LastName'] = $person->getLastName();
         $formattedPerson['FormattedName'] = $person->getFullName();
+        $formattedPerson['HasPhoto'] = $person->getPhoto()->hasUploadedPhoto();
         
         // Calculate days until birthday this year (for sorting)
         $birthMonth = $person->getBirthMonth();
@@ -229,6 +230,7 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
         $formattedPerson['LastName'] = $person->getLastName();
         $formattedPerson['FormattedName'] = $person->getFullName();
         $formattedPerson['Email'] = $person->getEmail();
+        $formattedPerson['HasPhoto'] = $person->getPhoto()->hasUploadedPhoto();
         
         // Add family information
         $family = $person->getFamily();
@@ -241,11 +243,11 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
         }
         
         if ($created && $person->getDateEntered()) {
-            $formattedPerson['Created'] = date_format($person->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedPerson['Created'] = $person->getDateEntered()->format('c'); // ISO 8601
         }
 
         if ($edited && $person->getDateLastEdited()) {
-            $formattedPerson['LastEdited'] = date_format($person->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
+            $formattedPerson['LastEdited'] = $person->getDateLastEdited()->format('c'); // ISO 8601
         }
 
         if ($birthday && $person->getBirthDate()) {

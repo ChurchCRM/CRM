@@ -353,6 +353,11 @@ class Person extends BasePerson implements PhotoInterface
         $this->getPhoto()->setImageFromBase64($base64);
         $note->setPerId($this->getId());
         $note->save();
+        
+        // Update person's last edited date and editor
+        $this->setDateLastEdited(new \DateTime());
+        $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+        $this->save();
     }
 
     /**
@@ -682,6 +687,7 @@ class Person extends BasePerson implements PhotoInterface
         $array = parent::toArray();
         $array['Address'] = $this->getAddress();
         $array['FullName'] = $this->getFullName();
+        $array['HasPhoto'] = $this->getPhoto()->hasUploadedPhoto();
 
         return $array;
     }

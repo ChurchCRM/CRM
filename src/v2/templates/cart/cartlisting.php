@@ -34,9 +34,11 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
               </button>
             </td>
             <td>
-              <img data-image-entity-type="person" 
-                   data-image-entity-id="<?= $Person->getId() ?>" 
-                   class="photo-tiny">&nbsp
+              <?php if ($Person->getPhoto()->hasUploadedPhoto()) { ?>
+                <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $Person->getId() ?>" title="<?= gettext('View Photo') ?>">
+                  <i class="fa-solid fa-camera"></i>
+                </button>
+              <?php } ?>
               <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $Person->getId() ?>"><?= $Person->getFullName() ?></a>
             </td>
             <td><?= $Person->getAddress() ?></td>
@@ -54,6 +56,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
 
 <!-- END CART LISTING -->
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
         // Handle remove from cart button clicks in cart listing

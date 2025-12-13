@@ -424,9 +424,15 @@ if ($EventID > 0) {
                             $sCheckoutby = $checkedOutBy->getFullName();
                         } ?>
                         <tr>
-                            <td><img data-image-entity-type="person"
-                                    data-image-entity-id="<?= $per->getPersonId() ?>"
-                                    class="photo-tiny">&nbsp
+                            <td>
+                                <?php
+                                $personPhoto = new \ChurchCRM\dto\Photo('person', $per->getPersonId());
+                                if ($personPhoto->hasUploadedPhoto()) {
+                                ?>
+                                    <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $per->getPersonId() ?>" title="<?= gettext('View Photo') ?>">
+                                        <i class="fa-solid fa-camera"></i>
+                                    </button>
+                                <?php } ?>
                                 <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a>
                             </td>
                             <td><?= $per->getCheckinDate() ? date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) : '' ?></td>
@@ -471,6 +477,7 @@ function filterByType(typeId) {
     window.location.href = 'Checkin.php?EventTypeID=' + typeId;
 }
 </script>
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::getRootPath() ?>/skin/js/checkin.js"></script>
 
 <?php require_once 'Include/Footer.php';
