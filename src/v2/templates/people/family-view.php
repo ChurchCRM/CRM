@@ -61,10 +61,12 @@ $memberCount = count($family->getPeople());
                                title="<?= gettext("Upload Photo") ?>">
                                 <i class="fa-solid fa-camera"></i>
                             </a>
+                            <?php if ($family->getPhoto()->hasUploadedPhoto()) : ?>
                             <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete-image"
                                title="<?= gettext("Delete Photo") ?>">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -192,20 +194,6 @@ $memberCount = count($family->getPeople());
                         ?>
                         <li><i class="fa-li fa-solid fa-phone"></i><?= gettext("Home Phone") ?>: <span><a
                                     href="tel:<?= $family->getHomePhone() ?>"><?= $family->getHomePhone() ?></a></span>
-                        </li>
-                        <?php
-                    }
-                    if ($family->getWorkPhone() !== "") {
-                        ?>
-                        <li><i class="fa-li fa-solid fa-building"></i><?= gettext("Work Phone") ?>: <span><a
-                                    href="tel:<?= $family->getWorkPhone() ?>"><?= $family->getWorkPhone() ?></a></span>
-                        </li>
-                        <?php
-                    }
-                    if ($family->getCellPhone() !== "") {
-                        ?>
-                        <li><i class="fa-li fa-solid fa-mobile"></i><?= gettext("Mobile Phone") ?>: <span><a
-                                    href="tel:<?= $family->getCellPhone() ?>"><?= $family->getCellPhone() ?></a></span>
                         </li>
                         <?php
                     }

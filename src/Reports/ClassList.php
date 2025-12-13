@@ -229,14 +229,6 @@ for ($i = 0; $i < $nGrps; $i++) {
             $parentsStr = $pdf->makeSalutation($family->getId());
 
             $phone = $family->getHomePhone();
-
-            if (empty($phone)) {
-                $phone = $family->getCellPhone();
-            }
-
-            if (empty($phone)) {
-                $phone = $family->getWorkPhone();
-            }
         }
 
         $pdf->writeAt($parentsX, $y, $parentsStr);
