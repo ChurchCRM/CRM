@@ -38,6 +38,20 @@ Cypress.Commands.add(
 );
 
 Cypress.Commands.add(
+    "makePrivateNoFinanceAPICall",
+    (method, url, body, expectedStatus = 200, timeoutMs) => {
+        return cy.makePrivateAPICall(
+            Cypress.env("nofinance.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
+    },
+);
+
+Cypress.Commands.add(
     "makePrivateAPICall",
     (key, method, url, body, expectedStatus = 200, timeoutMs) => {
         const requestOptions = {
