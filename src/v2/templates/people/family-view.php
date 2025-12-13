@@ -61,7 +61,7 @@ $memberCount = count($family->getPeople());
                                title="<?= gettext("Upload Photo") ?>">
                                 <i class="fa-solid fa-camera"></i>
                             </a>
-                            <?php if ($family->getPhoto()->hasUploadedPhoto()) : ?>
+                            <?php if (!$family->getPhoto()->isInitials()) : ?>
                             <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete-image"
                                title="<?= gettext("Delete Photo") ?>">
                                 <i class="fa-solid fa-trash-can"></i>
