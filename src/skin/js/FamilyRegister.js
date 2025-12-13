@@ -735,15 +735,10 @@
         });
 
         // Load countries and handle state cascading using DropdownManager
-        DropdownManager.initializeFamilyRegisterCountryState(
-            "familyCountry",
-            "familyStateContainer",
-            "familyState",
-            {
-                systemDefault: $("#familyCountry").data("system-default"),
-                stateDefault: $("#familyState").data("default") || ""
-            }
-        );
+        DropdownManager.initializeFamilyRegisterCountryState("familyCountry", "familyStateContainer", "familyState", {
+            systemDefault: $("#familyCountry").data("system-default"),
+            stateDefault: $("#familyState").data("default") || "",
+        });
 
         // Initialize date pickers and input masks
         $(".inputDatePicker").datepicker({
