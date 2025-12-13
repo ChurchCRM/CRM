@@ -5,7 +5,7 @@ $(document).ready(function () {
         systemDefault: $("#Country").data("system-default"),
         cascadeState: true,
         initSelect2: true,
-        onCountryChange: function(countryCode) {
+        onCountryChange: function (countryCode) {
             // Update state type field based on whether states exist
             const stateSelect = $("#State");
             if (stateSelect.find("option").length > 1) {
@@ -13,39 +13,44 @@ $(document).ready(function () {
             } else {
                 $("#stateType").val("input");
             }
-        }
+        },
     });
 
     // Manual initialization of state dropdown on country change
-    $("#Country").off("change").on("change", function() {
-        $.ajax({
-            type: "GET",
-            url: window.CRM.root + "/api/public/data/countries/" + this.value.toLowerCase() + "/states",
-        }).done(function (data) {
-            let stateSelect = $("#State");
-            if (Object.keys(data).length > 0) {
-                stateSelect.empty();
-                $.each(data, function (code, name) {
-                    let selected = false;
-                    if (stateSelect.data("user-selected") == "") {
-                        selected = stateSelect.data("system-default") == name;
-                    } else if (stateSelect.data("user-selected") == name || stateSelect.data("user-selected") == code) {
-                        selected = true;
-                    }
-                    stateSelect.append(new Option(name, code, selected, selected));
-                });
-                stateSelect.change();
-                $("#stateInputDiv").addClass("d-none");
-                $("#StateTextbox").val("");
-                $("#stateType").val("dropDown");
-                $("#stateOptionDiv").removeClass("d-none");
-            } else {
-                $("#stateInputDiv").removeClass("d-none");
-                $("#stateOptionDiv").addClass("d-none");
-                $("#stateType").val("input");
-            }
+    $("#Country")
+        .off("change")
+        .on("change", function () {
+            $.ajax({
+                type: "GET",
+                url: window.CRM.root + "/api/public/data/countries/" + this.value.toLowerCase() + "/states",
+            }).done(function (data) {
+                let stateSelect = $("#State");
+                if (Object.keys(data).length > 0) {
+                    stateSelect.empty();
+                    $.each(data, function (code, name) {
+                        let selected = false;
+                        if (stateSelect.data("user-selected") == "") {
+                            selected = stateSelect.data("system-default") == name;
+                        } else if (
+                            stateSelect.data("user-selected") == name ||
+                            stateSelect.data("user-selected") == code
+                        ) {
+                            selected = true;
+                        }
+                        stateSelect.append(new Option(name, code, selected, selected));
+                    });
+                    stateSelect.change();
+                    $("#stateInputDiv").addClass("d-none");
+                    $("#StateTextbox").val("");
+                    $("#stateType").val("dropDown");
+                    $("#stateOptionDiv").removeClass("d-none");
+                } else {
+                    $("#stateInputDiv").removeClass("d-none");
+                    $("#stateOptionDiv").addClass("d-none");
+                    $("#stateType").val("input");
+                }
+            });
         });
-    });
 
     $("[data-mask]").inputmask();
     $("#Country").select2();

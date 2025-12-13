@@ -51,16 +51,8 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 
         // Get and format any phone data from the form.
         $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
-        $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
-        $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
         if (!isset($_POST['NoFormat_HomePhone'])) {
             $sHomePhone = CollapsePhoneNumber($sHomePhone, $sCountry);
-        }
-        if (!isset($_POST['NoFormat_WorkPhone'])) {
-            $sWorkPhone = CollapsePhoneNumber($sWorkPhone, $sCountry);
-        }
-        if (!isset($_POST['NoFormat_CellPhone'])) {
-            $sCellPhone = CollapsePhoneNumber($sCellPhone, $sCountry);
         }
 
         $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
@@ -78,8 +70,6 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
                 'fam_Zip' => $sZip,
                 'fam_Country' => $sCountry,
                 'fam_HomePhone' => $sHomePhone,
-                'fam_WorkPhone' =>  $sWorkPhone,
-                'fam_CellPhone' => $sCellPhone,
                 'fam_Email' => $sEmail,
                 'fam_WeddingDate' => $dWeddingDate,
                 'fam_DateEntered' => date('YmdHis'),
@@ -311,26 +301,6 @@ SQL;
                 <td class="TextColumn">
                     <input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30">
                     <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
-                                                                                    echo ' checked';
-                                                                                } ?>><?= gettext('Do not auto-format') ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Work Phone') ?>:</td>
-                <td class="TextColumn">
-                    <input type="text" name="WorkPhone" value="<?php echo $sWorkPhone ?>" size="30" maxlength="30">
-                    <input type="checkbox" name="NoFormat_WorkPhone" value="1" <?php if ($bNoFormat_WorkPhone) {
-                                                                                    echo ' checked';
-                                                                                } ?>><?= gettext('Do not auto-format') ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Mobile Phone') ?>:</td>
-                <td class="TextColumn">
-                    <input type="text" name="CellPhone" value="<?php echo $sCellPhone ?>" size="30" maxlength="30">
-                    <input type="checkbox" name="NoFormat_CellPhone" value="1" <?php if ($bNoFormat_CellPhone) {
                                                                                     echo ' checked';
                                                                                 } ?>><?= gettext('Do not auto-format') ?>
                 </td>

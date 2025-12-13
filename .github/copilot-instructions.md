@@ -569,6 +569,33 @@ Test categories required:
 4. Error handling - 401/403 auth, 404 not found, 500 errors
 5. Edge cases - Null values, empty arrays, boundary conditions
 
+### Debugging 500 Errors (CRITICAL)
+
+**NEVER ignore or skip a test that returns HTTP 500.** Always investigate the root cause:
+
+1. **Clear logs before reproducing**: `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
+2. **Run the failing test** to reproduce the error
+3. **Check PHP logs**: `cat src/logs/$(date +%Y-%m-%d)-php.log`
+4. **Check app logs**: `cat src/logs/$(date +%Y-%m-%d)-app.log`
+
+**Common 500 error causes:**
+- `HttpNotFoundException: Not found` - Wrong route path (e.g., `/api/family/` vs `/api/families/`)
+- `PropelException` - ORM query issues, missing columns, type mismatches
+- `TypeError` - Null value passed where object expected
+- Missing middleware or incorrect middleware order
+
+**Example fix workflow:**
+```bash
+# 1. Clear logs
+rm -f src/logs/$(date +%Y-%m-%d)-*.log
+
+# 2. Run failing test
+npx cypress run --spec "cypress/e2e/api/path/to/test.spec.js"
+
+# 3. Check logs for error
+cat src/logs/$(date +%Y-%m-%d)-php.log | tail -50
+```
+
 ### UI Tests
 
 Location: `cypress/e2e/ui/[feature]/`
@@ -686,6 +713,14 @@ cat src/logs/$(date +%Y-%m-%d)-php.log      # PHP errors, ORM errors
 cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 ```
 
+**CRITICAL Testing Workflow for Agents:**
+1. **BEFORE running any test**: Clear logs with `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
+2. **Run the test(s)**
+3. **AFTER test completion (pass OR fail)**: Review logs to ensure no hidden errors
+   - Check PHP log: `cat src/logs/$(date +%Y-%m-%d)-php.log`
+   - Check App log: `cat src/logs/$(date +%Y-%m-%d)-app.log`
+4. **Even if tests pass**: Verify no 500 errors or exceptions were logged silently
+
 ### CI/CD Testing (GitHub Actions)
 - Docker profiles: `dev`, `test`, `ci` in `docker-compose.yaml`
 - CI uses `npm run docker:ci:start` with optimized containers
@@ -751,6 +786,7 @@ Before committing code changes, verify:
 | `cypress/e2e/api/` | API test suites |
 | `cypress/e2e/ui/` | UI test suites |
 | `docker/` | Docker Compose configs |
+| `demo/ChurchCRM-Database.sql` | Demo database dump - **NEVER edit manually** (auto-generated) |
 
 ---
 
@@ -786,6 +822,24 @@ Before committing code changes, verify:
 - Keep explanations brief and focused on what was changed
 - Don't ask for permission—implement code changes based on the user's intent
 - If intent is unclear, infer the most useful approach and clarify with the user
+
+### Pull Request Review & Comments
+
+**Always use `gh` CLI for PR details:**
+- `gh pr view <number> --json reviews` - Get review comments and status
+- `gh pr view <number> --json latestReviews` - Get the most recent reviews with full body text
+- `gh pr view <number> --json comments` - Get top-level PR comments
+- `gh pr view <number> --comments` - Human-readable view with all comments
+
+**Example workflow when user asks to review a PR:**
+1. Use `gh pr view 7774 --json latestReviews` to fetch reviewer comments
+2. Check the review state (`COMMENTED`, `APPROVED`, `CHANGES_REQUESTED`)
+3. Parse the review body for any requested changes or issues
+4. If changes are needed, implement them based on feedback
+5. Run tests to verify all changes work
+6. Report back with summary of changes made (or "no changes needed" if already good)
+
+**DO NOT** use `github-pull-request_openPullRequest` or `github-pull-request_issue_fetch` tools for PR comments - these return incomplete comment data. Always use `gh` command for full review content.
 
 ---
 

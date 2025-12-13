@@ -624,8 +624,6 @@ if (isset($_POST['DoImport'])) {
                         ->setState($sState)
                         ->setZip($sZip)
                         ->setHomePhone($per_HomePhone)
-                        ->setWorkPhone($per_WorkPhone)
-                        ->setCellPhone($per_CellPhone)
                         ->setEmail($per_Email)
                         ->setDateEntered(date('YmdHis'))
                         ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());

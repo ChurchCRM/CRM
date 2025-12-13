@@ -89,11 +89,10 @@ if ($sEmailLink) {
 
 // Group Text Message Comma Delimited - added by RSBC
 // Note: This will provide cell phone numbers for the entire group, even if a specific role is currently selected.
-$sSQL = "SELECT per_CellPhone, fam_CellPhone
+$sSQL = "SELECT per_CellPhone
     FROM person_per
     LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
     LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
-    LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
 WHERE per_ID NOT IN
     (SELECT per_ID
     FROM person_per
@@ -103,7 +102,7 @@ AND p2g2r_grp_ID = " . $iGroupID;
 $rsPhoneList = RunQuery($sSQL);
 $sPhoneLink = '';
 $sCommaDelimiter = ', ';
-while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
+while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     $sPhone = $per_CellPhone;
     if ($sPhone) {
         /* if ($sPhoneLink) // Don't put delimiter before first phone

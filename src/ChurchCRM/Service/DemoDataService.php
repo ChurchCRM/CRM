@@ -218,8 +218,6 @@ class DemoDataService
                 $contact = $famData['contact'] ?? [];
                 $phone = $contact['phone'] ?? [];
                 $family->setHomePhone($phone['home'] ?? null);
-                $family->setWorkPhone($phone['work'] ?? null);
-                $family->setCellPhone($phone['cell'] ?? null);
                 $family->setEmail($contact['email'] ?? null);
 
                 // Override first family's wedding date to today, otherwise use JSON data
