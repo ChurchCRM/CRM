@@ -15,7 +15,7 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
  */
 function emptyOrUnassigned($stuff)
 {
-    return empty($stuff) ? 'Unassigned' : $stuff;
+    return empty($stuff) ? gettext('Unassigned') : $stuff;
 }
 
 /**
@@ -87,22 +87,22 @@ foreach ($ListItem as $element) {
 
 // Person list column definitions - defines which columns appear and their data source
 $personListColumns = [
-    (object) ['name' => 'Id', 'displayFunction' => 'getId', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'Family Name', 'displayFunction' => 'getFamilyName', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'Name', 'displayFunction' => 'getFullName', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'Last Name', 'displayFunction' => 'getLastName', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'First Name', 'displayFunction' => 'getFirstName', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'Birth Date', 'displayFunction' => 'getFormattedBirthDate', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'Address', 'displayFunction' => 'getAddress', 'editable' => 'false', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'Home Phone', 'displayFunction' => 'getHomePhone', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'Cell Phone', 'displayFunction' => 'getCellPhone', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'Email', 'displayFunction' => 'getEmail', 'editable' => 'false', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
-    (object) ['name' => 'Gender', 'displayFunction' => 'getGenderName', 'editable' => 'true', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
-    (object) ['name' => 'Classification', 'displayFunction' => 'getClassificationName', 'editable' => 'true', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
-    (object) ['name' => 'Role', 'displayFunction' => 'getFamilyRoleName', 'editable' => 'true', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
-    (object) ['name' => 'Properties', 'displayFunction' => 'getPropertiesString', 'editable' => 'true', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
-    (object) ['name' => 'Custom', 'displayFunction' => 'getCustomFields', 'editable' => 'true', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
-    (object) ['name' => 'Group', 'displayFunction' => 'getGroups', 'editable' => 'true', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Id'), 'displayFunction' => 'getId', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Family Name'), 'displayFunction' => 'getFamilyName', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Name'), 'displayFunction' => 'getFullName', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Last Name'), 'displayFunction' => 'getLastName', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('First Name'), 'displayFunction' => 'getFirstName', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Birth Date'), 'displayFunction' => 'getFormattedBirthDate', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Address'), 'displayFunction' => 'getAddress', 'visible' => 'false', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Home Phone'), 'displayFunction' => 'getHomePhone', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Cell Phone'), 'displayFunction' => 'getCellPhone', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Email'), 'displayFunction' => 'getEmail', 'visible' => 'true', 'emptyOrUnassigned' => 'false'],
+    (object) ['name' => gettext('Gender'), 'displayFunction' => 'getGenderName', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Classification'), 'displayFunction' => 'getClassificationName', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Role'), 'displayFunction' => 'getFamilyRoleName', 'visible' => 'true', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Properties'), 'displayFunction' => 'getPropertiesString', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Custom'), 'displayFunction' => 'getCustomFields', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
+    (object) ['name' => gettext('Group'), 'displayFunction' => 'getGroups', 'visible' => 'false', 'emptyOrUnassigned' => 'true'],
 ];
 
 ?>
@@ -277,7 +277,7 @@ $personListColumns = [
                 foreach ($columns as $column) {
                     $columnId++;
                     $columnIdMap[$column->name] = $columnId;
-                    $columnTitle = ['title' => "i18next.t('{$column->name}')"];
+                    $columnTitle = ['title' => $column->name];
                     if ($column->visible === 'false') {
                         $columnTitle['visible'] = 'false';
                     } else {
@@ -285,7 +285,7 @@ $personListColumns = [
                             $firstVisibleColumnId = $columnId;
                         }
                     }
-                    echo str_replace('"', '', json_encode($columnTitle)) . ",\n";
+                    echo json_encode($columnTitle) . ",\n";
                 }
                 ?>
             ],

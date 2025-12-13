@@ -18,16 +18,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <?php
                     // Family list column definitions - defines which columns appear and their data source
                     $columns = [
-                        (object) ['name' => 'Name', 'displayFunction' => 'getName', 'visible' => 'true'],
-                        (object) ['name' => 'Address', 'displayFunction' => 'getAddress', 'visible' => 'true'],
-                        (object) ['name' => 'Home Phone', 'displayFunction' => 'getHomePhone', 'visible' => 'true'],
-                        (object) ['name' => 'Email', 'displayFunction' => 'getEmail', 'visible' => 'true'],
-                        (object) ['name' => 'Created', 'displayFunction' => 'getDateEntered', 'visible' => 'true'],
-                        (object) ['name' => 'Edited', 'displayFunction' => 'getDateLastEdited', 'visible' => 'true'],
+                        (object) ['name' => gettext('Name'), 'displayFunction' => 'getName', 'visible' => 'true'],
+                        (object) ['name' => gettext('Address'), 'displayFunction' => 'getAddress', 'visible' => 'true'],
+                        (object) ['name' => gettext('Home Phone'), 'displayFunction' => 'getHomePhone', 'visible' => 'true'],
+                        (object) ['name' => gettext('Email'), 'displayFunction' => 'getEmail', 'visible' => 'true'],
+                        (object) ['name' => gettext('Created'), 'displayFunction' => 'getDateEntered', 'visible' => 'true'],
+                        (object) ['name' => gettext('Edited'), 'displayFunction' => 'getDateLastEdited', 'visible' => 'true'],
                     ];
                     foreach ($columns as $column) {
                         if ($column->visible === 'true') {
-                            echo '<th>' . gettext($column->name) . '</th>';
+                            echo '<th>' . $column->name . '</th>';
                         }
                     }
                     ?>
