@@ -22,22 +22,37 @@ class LocaleInfo
             $this->locale = $userLocale->getValue();
         }
         
+        // Set default values for English - United States as fallback
+        $this->name = 'English - United States';
+        $this->language = 'en';
+        $this->country = 'US';
+        $this->dataTables = 'en-GB';
+        $this->poLocaleId = 'en-US';
+        $this->localeConfig = [
+            'poEditor' => 'en-US',
+            'locale' => 'en_US',
+            'languageCode' => 'en',
+            'countryCode' => 'US',
+            'dataTables' => 'en-GB',
+        ];
+        
         $localesPath = SystemURLs::getDocumentRoot() . '/locale/locales.json';
         $localesFile = @file_get_contents($localesPath);
         
         if ($localesFile === false) {
-            // File missing or unreadable; use defaults
+            // File missing or unreadable; use defaults set above
             return;
         }
 
         try {
             $locales = json_decode($localesFile, true, 512, JSON_THROW_ON_ERROR);
         } catch (\JsonException $e) {
-            // Invalid JSON; use defaults
+            // Invalid JSON; use defaults set above
             return;
         }
 
         if (!is_array($locales)) {
+            // Invalid structure; use defaults set above
             return;
         }
 
