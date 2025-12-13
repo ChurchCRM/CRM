@@ -85,14 +85,14 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                 <?php foreach ($aPeopleInCart as $person) { ?>
                                     <tr>
                                         <td>
+                                            <a href="PersonView.php?PersonID=<?= $person->getId() ?>">
+                                                <?= $person->getFullName() ?>
+                                            </a>
                                             <?php if ($person->getPhoto()->hasUploadedPhoto()) { ?>
                                                 <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $person->getId() ?>" title="<?= gettext('View Photo') ?>">
                                                     <i class="fa-solid fa-camera"></i>
                                                 </button>
                                             <?php } ?>
-                                            <a href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                                <?= $person->getFullName() ?>
-                                            </a>
                                         </td>
                                         <td><?= $person->getClsid() ? $person->getClassification()->getOptionName() : '<em class="text-muted">' . gettext('Unclassified') . '</em>' ?></td>
                                     </tr>

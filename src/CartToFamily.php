@@ -184,9 +184,9 @@ SQL;
                 $personPhoto = new \ChurchCRM\dto\Photo('person', $per_ID);
                 $photoIcon = '';
                 if ($personPhoto->hasUploadedPhoto()) {
-                    $photoIcon = '<button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' . $per_ID . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button> ';
+                    $photoIcon = ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' . $per_ID . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
                 }
-                echo '<td>' . $photoIcon . '<a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a></td>';
+                echo '<td><a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a>' . $photoIcon . '</td>';
 
                 echo '<td class="text-center">';
                 if ($per_fam_ID == 0) {
