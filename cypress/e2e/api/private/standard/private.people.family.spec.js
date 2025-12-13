@@ -159,11 +159,11 @@ describe("API Private Family", () => {
         });
     });
 
-    describe("POST /api/families/{id}/activate/{status} - Activate/Deactivate Family", () => {
+    describe("POST /api/family/{id}/activate/{status} - Activate/Deactivate Family", () => {
         it("Activate endpoint responds without error", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/families/1/activate/true",
+                "/api/family/1/activate/true",
                 null,
                 200,
             ).then((response) => {
