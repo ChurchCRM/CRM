@@ -119,7 +119,6 @@ class   SystemConfig
             'Name'              => new ListColumn('Name', 'getName', 'false', 'true'),
             'Address'           => new ListColumn('Address', 'getAddress', 'false', 'true'),
             'Home Phone'        => new ListColumn('Home Phone', 'getHomePhone', 'false', 'true'),
-            'Cell Phone'        => new ListColumn('Cell Phone', 'getCellPhone', 'false', 'true'),
             'Email'             => new ListColumn('Email', 'getEmail', 'false', 'true'),
             'Created'           => new ListColumn('Created', 'getDateEntered', 'false', 'true'),
             'Edited'            => new ListColumn('Edited', 'getDateLastEdited', 'false', 'true'),
