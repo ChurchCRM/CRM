@@ -417,13 +417,15 @@ $bOkToEdit = (
                         } elseif ($type_ID == 11) {
                             $custom_Special = $sPhoneCountry;
                             $displayIcon = "fa-solid fa-phone";
-                            $displayLink = "tel:" . $currentData;
+                            // Sanitize phone number for tel: URI - allow only digits, +, -, (, ), spaces, and 'e' for extension
+                            $sanitizedPhone = preg_replace('/[^0-9+\-() e]/', '', $currentData);
+                            $displayLink = "tel:" . $sanitizedPhone;
                         }
                         $customFieldsHtml .= '<li class="mb-2">';
                         $customFieldsHtml .= '<i class="' . $displayIcon . ' mr-2 text-muted"></i>';
                         $temp_string = nl2br(displayCustomField($type_ID, $currentData, $custom_Special));
                         if ($displayLink) {
-                            $customFieldsHtml .= '<strong>' . htmlspecialchars($custom_Name) . ':</strong> <a href="' . $displayLink . '">' . $temp_string . '</a>';
+                            $customFieldsHtml .= '<strong>' . htmlspecialchars($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
                         } else {
                             $customFieldsHtml .= '<strong>' . htmlspecialchars($custom_Name) . ':</strong> ' . $temp_string;
                         }
