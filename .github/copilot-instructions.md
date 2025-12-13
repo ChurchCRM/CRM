@@ -962,8 +962,29 @@ This ensures security vulnerabilities are not publicly disclosed and directs rep
 - **Deleting files**: Use `rm` command via `run_in_terminal` for simple deletions
 - Git will track file moves properly when using `git mv`
 
+### Pull Request Descriptions
+- **ALWAYS output PR description in a Markdown code block** when asked to create a PR
+- Format PR descriptions with clear sections:
+  - **Summary**: Brief overview of changes
+  - **Changes**: Bulleted list organized by feature/area
+  - **Why**: Motivation and benefits
+  - **Files Changed**: List of modified/added/deleted files
+- Include all commits in the branch in the description
+- Use imperative mood for change descriptions
+
+### API Test Requirements
+- **ALWAYS add API tests** when creating new API endpoints
+- Test location: `cypress/e2e/api/private/standard/` for standard user endpoints
+- Test location: `cypress/e2e/api/private/admin/` for admin-only endpoints
+- Required test cases for each endpoint:
+  1. **Success case**: Returns expected status code and data structure
+  2. **Data validation**: Response contains expected properties and types
+  3. **Authentication**: Returns 401 when not authenticated
+- Run tests before committing: `npx cypress run --e2e --spec "path/to/test.spec.js"`
+- Clear logs before testing: `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
+
 ---
 
-Last updated: December 1, 2025
+Last updated: December 13, 2025
 
 ```
