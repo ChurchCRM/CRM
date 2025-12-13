@@ -6,6 +6,7 @@ require_once 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -243,8 +244,16 @@ if (isset($_POST['SaveChanges'])) {
         for ($row = 1; $row <= $numRows; $row++) {
             // Update the type's name if it has changed from what was previously stored
             if ($aOldNameFields[$row] != $aNameFields[$row]) {
-                $sSQL = "UPDATE list_lst SET `lst_OptionName` = '" . $aNameFields[$row] . "' WHERE `lst_ID` = '$listID' AND `lst_OptionSequence` = '" . $row . "'";
-                RunQuery($sSQL);
+                // Sanitize input to prevent XSS stored in role names
+                $sanitizedName = InputUtils::sanitizeText($aNameFields[$row]);
+                // Use Propel ORM to update the option name
+                $option = ListOptionQuery::create()
+                    ->filterById((int)$listID)
+                    ->filterByOptionSequence((int)$row)
+                    ->findOne();
+                if ($option !== null) {
+                    $option->setOptionName($sanitizedName)->save();
+                }
             }
         }
     }

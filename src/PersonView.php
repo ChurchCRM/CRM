@@ -760,7 +760,7 @@ $bOkToEdit = (
                                                     <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
                                                     <div class="card-tools pull-right">
-                                                        <div class="label bg-gray"><?= gettext($roleName) ?></div>
+                                                        <div class="label bg-gray"><?= InputUtils::escapeHTML(gettext($roleName)) ?></div>
                                                     </div>
                                                 </div>
                                                 <?php
