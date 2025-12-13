@@ -119,7 +119,8 @@ function ValidateInput()
                     break;
 
                 default:
-                    $vPOST[$qrp_Alias] = $_POST[$qrp_Alias];
+                    // Sanitize input to prevent SQL injection
+                    $vPOST[$qrp_Alias] = InputUtils::sanitizeText($_POST[$qrp_Alias]);
                     break;
             }
         }
@@ -132,6 +133,7 @@ function ProcessSQL()
     global $vPOST;
     global $qry_SQL;
     global $rsParameters;
+    global $cnInfoCentral;
 
     // Loop through the list of parameters
     if (mysqli_num_rows($rsParameters)) {
@@ -144,9 +146,31 @@ function ProcessSQL()
         // echo "--" . $qry_SQL . "<br>--" . "~" . $qrp_Alias . "~" . "<br>--" . $vPOST[$qrp_Alias] . "<p>";
 
         // Replace the placeholder with the parameter value
-        $qrp_Value = is_array($vPOST[$qrp_Alias]) ? implode(',', $vPOST[$qrp_Alias]) : $vPOST[$qrp_Alias];
+        // GHSA-qc2c-qmw4-52fp: Properly escape values before SQL substitution to prevent injection
+        $qrp_Value = escapeQueryParameter($vPOST[$qrp_Alias], $cnInfoCentral);
         $qry_SQL = str_replace('~' . $qrp_Alias . '~', $qrp_Value, $qry_SQL);
     }
+}
+
+// Helper function to safely escape and format query parameters
+function escapeQueryParameter($value, $connection)
+{
+    if (is_array($value)) {
+        // For arrays, escape each element and quote it, then join with commas
+        $escapedValues = array_map(function($val) use ($connection) {
+            return "'" . $connection->real_escape_string((string)$val) . "'";
+        }, $value);
+        return implode(',', $escapedValues);
+    }
+    
+    // For single values, determine if numeric or string
+    if (is_numeric($value)) {
+        // Numeric values don't need quotes
+        return (string)$value;
+    }
+    
+    // String values need quotes and escaping
+    return "'" . $connection->real_escape_string((string)$value) . "'";
 }
 
 // Checks if a count is to be displayed, and displays it if required
