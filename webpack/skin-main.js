@@ -36,8 +36,8 @@ import '../src/skin/js/notifier.js';
 // Import cart management module
 import '../src/skin/js/cart.js';
 
-// Import people image lazy loader (for person and family photos)
-import './people-image-loader';
+// Import avatar loader (for person and family photos with client-side initials/gravatar)
+import './avatar-loader';
 
 import '../src/skin/churchcrm.scss';
 

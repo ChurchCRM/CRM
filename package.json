@@ -70,6 +70,7 @@
         "@uppy/webcam": "^4.3.2",
         "@uppy/xhr-upload": "^4.4.2",
         "admin-lte": "3.2.0",
+        "avatar-initials": "^6.0.0",
         "bootbox": "^6.0.4",
         "bootstrap": "^4.6.2",
         "bootstrap-datepicker": "^1.10.1",
