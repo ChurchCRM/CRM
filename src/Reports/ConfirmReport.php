@@ -155,6 +155,7 @@ if ($_GET['familyId']) {
         if ($family->getWeddingdate()) {
             $col2Y = $addField(gettext('Anniversary Date'), $family->getWeddingdate(SystemConfig::getValue('sDateFormatLong')), $col2X, $col2Y, 85) + 1;
         }
+        $col2Y = $addField(gettext('Family Email'), $family->getEmail(), $col2X, $col2Y, 85) + 1;
 
         // Move cursor to after both columns
         $curY = max($col1Y, $col2Y) + 1;

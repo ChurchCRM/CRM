@@ -569,6 +569,33 @@ Test categories required:
 4. Error handling - 401/403 auth, 404 not found, 500 errors
 5. Edge cases - Null values, empty arrays, boundary conditions
 
+### Debugging 500 Errors (CRITICAL)
+
+**NEVER ignore or skip a test that returns HTTP 500.** Always investigate the root cause:
+
+1. **Clear logs before reproducing**: `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
+2. **Run the failing test** to reproduce the error
+3. **Check PHP logs**: `cat src/logs/$(date +%Y-%m-%d)-php.log`
+4. **Check app logs**: `cat src/logs/$(date +%Y-%m-%d)-app.log`
+
+**Common 500 error causes:**
+- `HttpNotFoundException: Not found` - Wrong route path (e.g., `/api/family/` vs `/api/families/`)
+- `PropelException` - ORM query issues, missing columns, type mismatches
+- `TypeError` - Null value passed where object expected
+- Missing middleware or incorrect middleware order
+
+**Example fix workflow:**
+```bash
+# 1. Clear logs
+rm -f src/logs/$(date +%Y-%m-%d)-*.log
+
+# 2. Run failing test
+npx cypress run --spec "cypress/e2e/api/path/to/test.spec.js"
+
+# 3. Check logs for error
+cat src/logs/$(date +%Y-%m-%d)-php.log | tail -50
+```
+
 ### UI Tests
 
 Location: `cypress/e2e/ui/[feature]/`
@@ -685,6 +712,14 @@ rm -f src/logs/$(date +%Y-%m-%d)-*.log
 cat src/logs/$(date +%Y-%m-%d)-php.log      # PHP errors, ORM errors
 cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 ```
+
+**CRITICAL Testing Workflow for Agents:**
+1. **BEFORE running any test**: Clear logs with `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
+2. **Run the test(s)**
+3. **AFTER test completion (pass OR fail)**: Review logs to ensure no hidden errors
+   - Check PHP log: `cat src/logs/$(date +%Y-%m-%d)-php.log`
+   - Check App log: `cat src/logs/$(date +%Y-%m-%d)-app.log`
+4. **Even if tests pass**: Verify no 500 errors or exceptions were logged silently
 
 ### CI/CD Testing (GitHub Actions)
 - Docker profiles: `dev`, `test`, `ci` in `docker-compose.yaml`

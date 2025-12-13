@@ -143,6 +143,15 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->writeAtCell($dataCol, $curY, $dataWid, FormatDate($fam_WeddingDate));
     $curY += SystemConfig::getValue('incrementY');
 
+    $pdf->SetFont('Times', 'B', 10);
+    $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Family Email'));
+    $pdf->SetFont('Times', '', 10);
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_Email);
+    if (!empty($fam_Email)) {
+        $emaillist[] = $fam_Email;
+    }
+
+    $curY += SystemConfig::getValue('incrementY');
     $curY += SystemConfig::getValue('incrementY');
 
     $sSQL = 'SELECT *, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole FROM person_per
