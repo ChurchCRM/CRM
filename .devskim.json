@@ -19,5 +19,14 @@
   "logFilePath": "",
   "outputFileFormat": "sarif",
   "outputTextFormat": "text",
-  "suppressedIssues": []
+  "suppressedIssues": [],
+  "ignorePatterns": [
+    "**/vendor/**",
+    "**/node_modules/**",
+    "**/temp/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/*.min.js",
+    "**/*.min.css"
+  ]
 }
