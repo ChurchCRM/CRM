@@ -401,10 +401,6 @@ msgid "Only the new data below"
 msgstr "Chỉ có các dữ liệu mới dưới đây"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Sử dụng hộp văn bản cho các quốc gia khác ngoài Mỹ và Canada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Không theo định dạng này"
 
@@ -578,10 +574,6 @@ msgstr "Chi tiết tiền gửi:"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Lưu ý quan trọng: các giao dịch không thành công sẽ bị xóa vĩnh viễn khi đóng phiếu gửi tiền."
-
-#: 
-msgid "Import eGive"
-msgstr "Nhập eGive"
 
 #: 
 msgid "Add Payment"
@@ -1321,10 +1313,6 @@ msgstr "Tiền mặt"
 #: 
 msgid "Bank Draft"
 msgstr "Dự thảo ngân hàng"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2174,10 +2162,6 @@ msgid "Person Editor"
 msgstr "Chỉnh sửa thành viên"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Bạn phải nhập Họ nếu không có Họ nào được chọn."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Không phải là Ngày kết bạn hợp lệ"
 
@@ -2188,14 +2172,6 @@ msgstr "Không phải là ngày thành viên hợp lệ"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Email công việc không hợp lệ"
-
-#: 
-msgid "Red text"
-msgstr "Chữ màu đỏ"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "cho biết các mục này được kế thừa từ bản ghi của gia đình được liên kết."
 
 #: 
 msgid "Birth Month"
@@ -2908,38 +2884,6 @@ msgstr "Bạn có ý kiến đóng góp nào cho chúng tôi không ?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Làm thế nào mà bạn học hỏi được tại Hội Thánh ?"
-
-#: 
-msgid "eGive Import"
-msgstr "Nhập eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Nhập lại vào gia đình đã chọn"
-
-#: 
-msgid "Data import results: "
-msgstr "Kết quả nhập dữ liệu:"
-
-#: 
-msgid " gifts were imported, "
-msgstr "quà tặng đã được nhập khẩu,"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "quà tặng không thay đổi, và"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "quà tặng không được nhập khẩu do có vấn đề"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Quay lại phiếu gửi tiền"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Lỗi nghiêm trọng trong luồng dữ liệu API eGive: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3748,7 +3692,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Phiên truy cập trước đã hết thời gian, vui lòng đăng nhập lại."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Đăng ký một gia đình mới"
 
 #: 
@@ -3766,18 +3711,6 @@ msgstr "Gia đình:"
 #: 
 msgid "item"
 msgstr "mục"
-
-#: 
-msgid "Address 1"
-msgstr "Địa chỉ 1"
-
-#: 
-msgid "Address 2"
-msgstr "Địa chỉ 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Di động"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3838,14 +3771,6 @@ msgstr "Ngày nhập vào:"
 #: 
 msgid "CSV Import"
 msgstr "Nhập vào CSV"
-
-#: 
-msgid "Start Date: "
-msgstr "Ngày bắt đầu:"
-
-#: 
-msgid "End Date: "
-msgstr "Ngày cuối:"
 
 #: 
 msgid "Members:"
@@ -4008,10 +3933,6 @@ msgstr "Vĩ độ của nhà thờ, được sử dụng để căn giữa bản
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Kinh độ của nhà thờ, được sử dụng để căn giữa bản đồ Google"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Đặt true để tắt nhập địa chỉ trong Person Editor. Đặt false để cho phép nhập địa chỉ trong Person Editor."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

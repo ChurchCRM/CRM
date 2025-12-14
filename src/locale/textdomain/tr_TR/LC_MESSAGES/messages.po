@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "Yalnızca aşağıdaki yeni veriler"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Metin Kutusunu ABD ve Kanada dışındaki ülkeler için kullanın)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Otomatik format yapmayın"
 
@@ -564,10 +560,6 @@ msgstr "Depozito Detayları:"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Önemli Not: Depozito kayması kapatıldığında başarısız işlemler kalıcı olarak silinecektir."
-
-#: 
-msgid "Import eGive"
-msgstr "İthal"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "Nakit"
 #: 
 msgid "Bank Draft"
 msgstr "Banka taslağı"
-
-#: 
-msgid "eGive"
-msgstr "kaçamak"
 
 #: 
 #, fuzzy
@@ -2160,10 +2148,6 @@ msgid "Person Editor"
 msgstr "Kişi editör"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Hiçbir aile seçilmezse bir soyadı girmelisiniz."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Geçerli bir arkadaş tarihi değil"
 
@@ -2174,14 +2158,6 @@ msgstr "Geçerli bir üyelik tarihi değil"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "İş e -postası geçerli değil"
-
-#: 
-msgid "Red text"
-msgstr "Kırmızı metin"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "İlişkili aile kaydından miras alınan öğeleri gösterir."
 
 #: 
 msgid "Birth Month"
@@ -2894,38 +2870,6 @@ msgstr "Bizim için herhangi bir öneriniz var mı?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Kiliseyi nasıl öğrendin?"
-
-#: 
-msgid "eGive Import"
-msgstr "Egilt İthalat"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Seçilen aileye yeniden imtiyaz"
-
-#: 
-msgid "Data import results: "
-msgstr "Veri içe aktarma sonuçları:"
-
-#: 
-msgid " gifts were imported, "
-msgstr " Hediyeler ithal edildi,"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " Hediyeler değişmedi ve"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " Sorunlar nedeniyle ithal edilmeyen hediyeler"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Depozito Slip'e geri dön"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "EGIVE API veri akışında ölümcül hata: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3732,7 +3676,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Önceki oturumunuz zaman aşımına uğradı. Lütfen tekrar giriş yapın."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Yeni Bir Aile Kaydolun"
 
 #: 
@@ -3750,18 +3695,6 @@ msgstr "Aile:"
 #: 
 msgid "item"
 msgstr "öğe"
-
-#: 
-msgid "Address 1"
-msgstr "Adres 1"
-
-#: 
-msgid "Address 2"
-msgstr "Adres 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Cep telefonu"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3822,14 +3755,6 @@ msgstr "Girilen tarih:"
 #: 
 msgid "CSV Import"
 msgstr "CSV İthalat"
-
-#: 
-msgid "Start Date: "
-msgstr "Başlangıç ​​tarihi:"
-
-#: 
-msgid "End Date: "
-msgstr "Bitiş tarihi:"
 
 #: 
 msgid "Members:"
@@ -3992,10 +3917,6 @@ msgstr "Google haritasını ortalamak için kullanılan kilisenin enlemi"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Google haritasını ortalamak için kullanılan kilisenin boylamı"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Kişisel editörde adresleri devre dışı bırakmak için true ayarlayın. Kişisel editörde adreslerin girilmesini etkinleştirmek için false ayarlayın."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

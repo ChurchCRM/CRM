@@ -26,10 +26,6 @@ msgid "Based on filters below.."
 msgstr "Based on filters below ..."
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Use the textbox for countries other than the UK)"
-
-#: 
 #, fuzzy
 msgid "Load Authorized"
 msgstr "Load Authorised Transactions"

@@ -30,10 +30,6 @@ msgid "Mobile Phone"
 msgstr "Cellphone"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Use the textbox for countries other than South Africa)"
-
-#: 
 msgid "Select the group to which you would like to add your cart"
 msgstr "Select the group which you would like to add to your cart"
 
@@ -173,10 +169,6 @@ msgstr "Mom Cell"
 #: 
 msgid "To select multiple hold CTL"
 msgstr "To select multiple press Ctrl key"
-
-#: 
-msgid "Cell phone"
-msgstr "Cellphone"
 
 #: 
 msgid "Total $"

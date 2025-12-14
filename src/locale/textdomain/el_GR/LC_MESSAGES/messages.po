@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "Μόνο τα νέα δεδομένα παρακάτω"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Χρησιμοποιήστε το πλαίσιο κειμένου για χώρες εκτός των ΗΠΑ και του Καναδά)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Μην κάνετε αυτόματη διαμόρφωση"
 
@@ -564,10 +560,6 @@ msgstr "Στοιχεία κατάθεσης: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Σημαντική σημείωση: οι αποτυχημένες συναλλαγές θα διαγραφούν οριστικά όταν κλείσει το δελτίο κατάθεσης."
-
-#: 
-msgid "Import eGive"
-msgstr "Εισαγωγή eGive"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "Μετρητά"
 #: 
 msgid "Bank Draft"
 msgstr "Τραπεζική επιταγή"
-
-#: 
-msgid "eGive"
-msgstr "eΔώσε"
 
 #: 
 #, fuzzy
@@ -2160,10 +2148,6 @@ msgid "Person Editor"
 msgstr "Επεξεργαστής Προσώπων"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Πρέπει να εισαγάγετε ένα Επώνυμο εάν δεν έχει επιλεγεί οικογένεια."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Μη έγκυρη ημερομηνία φιλίας"
 
@@ -2174,14 +2158,6 @@ msgstr "Μη έγκυρη Ημερομηνία Συνδρομής"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Το email εργασίας δεν είναι έγκυρο"
-
-#: 
-msgid "Red text"
-msgstr "Κόκκινο κείμενο"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "υποδεικνύει στοιχεία που κληρονομήθηκαν από το συσχετισμένο οικογενειακό αρχείο."
 
 #: 
 msgid "Birth Month"
@@ -2894,38 +2870,6 @@ msgstr "Έχετε κάποιες προτάσεις για εμάς;"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Πώς έμαθες για την εκκλησία;"
-
-#: 
-msgid "eGive Import"
-msgstr "eGive Import"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Επανεισαγωγή σε επιλεγμένη οικογένεια"
-
-#: 
-msgid "Data import results: "
-msgstr "Αποτελέσματα εισαγωγής δεδομένων: "
-
-#: 
-msgid " gifts were imported, "
-msgstr " εισήχθησαν δώρα, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " δώρα αμετάβλητα, και "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " δώρα που δεν εισάγονται λόγω προβλημάτων"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Επιστροφή στο δελτίο κατάθεσης"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Θανατηφόρο σφάλμα στη ροή δεδομένων eGive API: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3732,7 +3676,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Η προηγούμενη συνεδρία σας έληξε. Παρακαλώ συνδεθείτε ξανά."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Εγγραφή νέας οικογένειας"
 
 #: 
@@ -3750,18 +3695,6 @@ msgstr "Οικογένεια:"
 #: 
 msgid "item"
 msgstr "είδος"
-
-#: 
-msgid "Address 1"
-msgstr "Διεύθυνση 1"
-
-#: 
-msgid "Address 2"
-msgstr "Διεύθυνση 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Κινητό τηλέφωνο"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3822,14 +3755,6 @@ msgstr "Ημερομηνία εισαγωγής:"
 #: 
 msgid "CSV Import"
 msgstr "Εισαγωγή CSV"
-
-#: 
-msgid "Start Date: "
-msgstr "Ημερομηνία έναρξης: "
-
-#: 
-msgid "End Date: "
-msgstr "Ημερομηνία λήξης: "
 
 #: 
 msgid "Members:"
@@ -3992,10 +3917,6 @@ msgstr "Γεωγραφικό πλάτος της εκκλησίας, που χρ
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Γεωγραφικό μήκος της εκκλησίας, που χρησιμοποιείται για το κέντρο του χάρτη της Google"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Ορίστε true για να απενεργοποιήσετε την εισαγωγή διευθύνσεων στο Person Editor. Ορίστε το false για να ενεργοποιήσετε την εισαγωγή διευθύνσεων στο Person Editor."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

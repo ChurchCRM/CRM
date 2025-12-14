@@ -389,10 +389,6 @@ msgid "Only the new data below"
 msgstr "Csak az új adatok az alábbi"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Használja a szövegdobozba a más országokban, mint az USA és Kanada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Ne auto-formátum"
 
@@ -559,10 +555,6 @@ msgstr "Fizess Slip száma:"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Fontos megjegyzés: A sikertelen tranzakciók törlésre kerül permanantly, ha a betét slip zárva van."
-
-#: 
-msgid "Import eGive"
-msgstr "Import eGive"
 
 #: 
 msgid "Add Payment"
@@ -1229,10 +1221,6 @@ msgid "Bank Draft"
 msgstr "Bank-tervezet"
 
 #: 
-msgid "eGive"
-msgstr "eGive"
-
-#: 
 #, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Minimum Teljes összeg:"
@@ -1893,10 +1881,6 @@ msgid "Person Editor"
 msgstr "Személy szerkesztő"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Meg kell adnia egy Vezetéknév, ha nincs Család kiválasztva."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Nem érvényes Ismerős Mikortól"
 
@@ -1907,14 +1891,6 @@ msgstr "Nem érvényes tagság Mikortól"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Munkahelyi e-mail nem érvényes"
-
-#: 
-msgid "Red text"
-msgstr "Piros szöveg"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "jelzi elemek örökölt a kapcsolódó családi feljegyzés."
 
 #: 
 #, fuzzy
@@ -2581,34 +2557,6 @@ msgstr "Van valami javaslatod számunkra?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Hogyan tanultál az egyház?"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Re-import a kiválasztott család"
-
-#: 
-msgid "Data import results: "
-msgstr "Adat import eredmények:"
-
-#: 
-msgid " gifts were imported, "
-msgstr "ajándékok importálták,"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "ajándékok változatlan marad, és a"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "ajándékok nem importáltak problémák miatt"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Vissza Befizetés Slip"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Végzetes hiba eGive API Datastream: \""
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."

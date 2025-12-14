@@ -405,10 +405,6 @@ msgid "Only the new data below"
 msgstr "Endast ny information nedan"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Använd textrutan för alla ländar förutom USA och Kanada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Autoformatera inte"
 
@@ -585,10 +581,6 @@ msgstr "Insättningsinformation:"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Viktig: misslyckade verifikationer raderas permanent när insättningsblankett stängas"
-
-#: 
-msgid "Import eGive"
-msgstr "Importera eGive"
 
 #: 
 msgid "Add Payment"
@@ -1343,10 +1335,6 @@ msgstr "Kontant"
 #: 
 msgid "Bank Draft"
 msgstr "Bankcheck"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2235,10 +2223,6 @@ msgid "Person Editor"
 msgstr "Person redigeringsverktyg"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Du måste ange efternamnet om inte en familj är vald. "
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Ogiltig vän datum"
 
@@ -2249,14 +2233,6 @@ msgstr "Ogiltig medelmdatum"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Ogiltig arbets-epost"
-
-#: 
-msgid "Red text"
-msgstr "Röda texter"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "Visar saker ärvda från motsvarande familj post."
 
 #: 
 msgid "Birth Month"
@@ -3008,40 +2984,6 @@ msgstr "Har du några förslag för oss?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Hur fick du reda på kyrkan?"
-
-#: 
-msgid "eGive Import"
-msgstr "eGive Import"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Återimport till utvalda familjen"
-
-#: 
-#, fuzzy
-msgid "Data import results: "
-msgstr "Importering lyckades."
-
-#: 
-msgid " gifts were imported, "
-msgstr "gåvor importerade"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "gåvor oförändrade, och"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "gåvor inte importerats på grund av problem"
-
-#: 
-#, fuzzy
-msgid "Back to Deposit Slip"
-msgstr "Redigera insättningblankett"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Allvarligt fel i eGive API dataström: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3868,7 +3810,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Din tidigare session avslutades. Logga in igen."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Registrera en ny familj"
 
 #: 
@@ -3886,18 +3829,6 @@ msgstr "Familj:"
 #: 
 msgid "item"
 msgstr "Artikel"
-
-#: 
-msgid "Address 1"
-msgstr "Adress 1"
-
-#: 
-msgid "Address 2"
-msgstr "Adress 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Mobiltelefon"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3958,14 +3889,6 @@ msgstr "Datum in:"
 #: 
 msgid "CSV Import"
 msgstr "CSV-import"
-
-#: 
-msgid "Start Date: "
-msgstr "Start datum:"
-
-#: 
-msgid "End Date: "
-msgstr "Slutdatum:"
 
 #: 
 msgid "Members:"
@@ -4128,10 +4051,6 @@ msgstr "Kyrkans bredd, används för att centrera Google-kartan"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Kyrkans longitud, används för att centrera Google-kartan"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Ställ in true för att inaktivera ange adresser i Person Editor. Ställ in falskt för att aktivera att ange adresser i Person Editor."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
