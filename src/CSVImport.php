@@ -697,7 +697,7 @@ if (isset($_POST['DoImport'])) {
                                 }
                             } else {
                                 // Sanitize to prevent XSS - strip HTML tags from input
-                                $currentFieldData = addslashes(strip_tags($currentFieldData));
+                                $currentFieldData = addslashes(InputUtils::sanitizeText($currentFieldData));
                             }
 
                             // aColumnID is the custom table column name
