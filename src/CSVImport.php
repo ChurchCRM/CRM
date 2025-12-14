@@ -386,23 +386,23 @@ if (isset($_POST['DoImport'])) {
                         case 12:
                             // if not making family records, add to person
                             if (!isset($_POST['MakeFamilyRecords'])) {
-                                $sSQLpersonData .= "'" . addslashes(strip_tags($aData[$col])) . "',";
+                                $sSQLpersonData .= "'" . addslashes(InputUtils::sanitizeText($aData[$col])) . "',";
                             } else {
                                 switch ($currentType) {
                                     case 8:
-                                        $sAddress1 = addslashes(strip_tags($aData[$col]));
+                                        $sAddress1 = addslashes(InputUtils::sanitizeText($aData[$col]));
                                         break;
                                     case 9:
-                                        $sAddress2 = addslashes(strip_tags($aData[$col]));
+                                        $sAddress2 = addslashes(InputUtils::sanitizeText($aData[$col]));
                                         break;
                                     case 10:
-                                        $sCity = addslashes(strip_tags($aData[$col]));
+                                        $sCity = addslashes(InputUtils::sanitizeText($aData[$col]));
                                         break;
                                     case 11:
-                                        $sState = addslashes(strip_tags($aData[$col]));
+                                        $sState = addslashes(InputUtils::sanitizeText($aData[$col]));
                                         break;
                                     case 12:
-                                        $sZip = addslashes(strip_tags($aData[$col]));
+                                        $sZip = addslashes(InputUtils::sanitizeText($aData[$col]));
                                 }
                             }
                             break;
@@ -416,7 +416,7 @@ if (isset($_POST['DoImport'])) {
                         case 5:
                         case 17:
                         case 18:
-                                        $sSQLpersonData .= "'" . addslashes(strip_tags($aData[$col])) . "',";
+                                        $sSQLpersonData .= "'" . addslashes(InputUtils::sanitizeText($aData[$col])) . "',";
                             break;
 
                         // Country.. also set $sCountry for use later!
@@ -752,7 +752,7 @@ if (isset($_POST['DoImport'])) {
                             }
                         } else {
                             // Sanitize to prevent XSS - strip HTML tags from input
-                            $currentFieldData = addslashes(strip_tags($currentFieldData));
+                            $currentFieldData = addslashes(InputUtils::sanitizeText($currentFieldData));
                         }
 
                         // aColumnID is the custom table column name
