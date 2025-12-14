@@ -246,9 +246,77 @@ function initializeFamilyView() {
             path: "family/" + window.CRM.currentFamily + "/verify/url",
         }).then(function (data) {
             $("#confirm-verify").modal("hide");
-            bootbox.alert({
-                title: i18next.t("Verification URL"),
-                message: "<a href='" + data.url + "'>" + data.url + "</a>",
+
+            // Create custom modal for verification URL
+            const modalHtml = `
+                <div class="modal fade" id="verifyUrlModal" tabindex="-1" role="dialog" aria-labelledby="verifyUrlLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header bg-info text-white">
+                                <h5 class="modal-title" id="verifyUrlLabel">
+                                    <i class="fa-solid fa-link me-2"></i>${i18next.t("Verification URL")}
+                                </h5>
+                                <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" id="verifyUrlInput" value="${data.url}" readonly>
+                                    <button class="btn btn-info" type="button" id="copyVerifyUrlBtn">
+                                        <i class="fa-solid fa-copy me-2"></i>${i18next.t("Copy")}
+                                    </button>
+                                </div>
+                                <p class="text-muted small">
+                                    <i class="fa-solid fa-info-circle me-2"></i>${i18next.t("Share this URL with family members to verify their information")}
+                                </p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">${i18next.t("Close")}</button>
+                                <a href="${data.url}" target="_blank" class="btn btn-primary">
+                                    <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>${i18next.t("Open in New Tab")}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Remove old modal if exists
+            $("#verifyUrlModal").remove();
+
+            // Add new modal to page
+            $("body").append(modalHtml);
+
+            // Show modal
+            $("#verifyUrlModal").modal("show");
+
+            // Handle copy button
+            $("#copyVerifyUrlBtn").on("click", function () {
+                const urlInput = document.getElementById("verifyUrlInput");
+                navigator.clipboard
+                    .writeText(urlInput.value)
+                    .then(function () {
+                        const btn = document.getElementById("copyVerifyUrlBtn");
+                        const originalHtml = btn.innerHTML;
+
+                        btn.innerHTML = '<i class="fa-solid fa-check me-2"></i>' + i18next.t("Copied!");
+                        btn.classList.add("btn-success");
+                        btn.classList.remove("btn-info");
+
+                        setTimeout(function () {
+                            btn.innerHTML = originalHtml;
+                            btn.classList.remove("btn-success");
+                            btn.classList.add("btn-info");
+                        }, 2000);
+                    })
+                    .catch(function (err) {
+                        console.error("Failed to copy:", err);
+                        window.CRM.notify(i18next.t("Failed to copy URL"), { type: "error" });
+                    });
+            });
+
+            // Cleanup when modal is closed
+            $("#verifyUrlModal").on("hidden.bs.modal", function () {
+                $("#verifyUrlModal").remove();
             });
         });
     });
