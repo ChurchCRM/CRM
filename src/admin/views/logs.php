@@ -1,13 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
-
-// Generate CSRF tokens for state-changing operations
-$csrfTokenLogLevel = CSRFUtils::generateToken('log_level_form');
-$csrfTokenDeleteAll = CSRFUtils::generateToken('delete_all_logs');
-$csrfTokenDeleteFile = CSRFUtils::generateToken('delete_log_file');
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -87,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         </td>
                                         <td>
                                             <i class="fa-solid fa-file-alt"></i> 
-                                            <strong><?= htmlspecialchars($logFile['name']) ?></strong>
+                                            <strong><?= InputUtils::escapeHTML($logFile['name']) ?></strong>
                                         </td>
                                         <td><?= number_format($logFile['size'] / 1024, 2) ?> KB</td>
                                         <td><?= date('Y-m-d H:i:s', $logFile['modified']) ?></td>
@@ -204,20 +198,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         $('#logLoading').show();
         $('#logViewerModal').modal('show');
 
-        $.ajax({
-            url: '<?= SystemURLs::getRootPath() ?>/api/system/logs/' + encodeURIComponent(fileName),
-            method: 'GET',
-            success: function(data) {
-                currentLogContent = data;
-                applyFilter();
-                $('#logLoading').hide();
-                $('#logContent').show();
-            },
-            error: function() {
-                $('#logContent code').text(i18next.t('Error loading log file.'));
-                $('#logLoading').hide();
-                $('#logContent').show();
-            }
+        window.CRM.AdminAPIRequest({
+            path: 'system/logs/' + encodeURIComponent(fileName),
+            method: 'GET'
+        })
+        .done(function(data) {
+            currentLogContent = data;
+            applyFilter();
+            $('#logLoading').hide();
+            $('#logContent').show();
+        })
+        .fail(function() {
+            $('#logContent code').text(i18next.t('Error loading log file.'));
+            $('#logLoading').hide();
+            $('#logContent').show();
         });
     }
 
@@ -241,36 +235,30 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     function deleteLogFile(fileName) {
         if (confirm(i18next.t('Are you sure you want to delete') + ' ' + fileName + '?')) {
-            $.ajax({
-                url: '<?= SystemURLs::getRootPath() ?>/api/system/logs/' + encodeURIComponent(fileName),
-                method: 'DELETE',
-                headers: {
-                    'X-CSRF-Token': '<?= htmlspecialchars($csrfTokenDeleteFile, ENT_QUOTES, 'UTF-8') ?>'
-                },
-                success: function() {
-                    location.reload();
-                },
-                error: function() {
-                    alert(i18next.t('Error deleting log file.'));
-                }
+            window.CRM.AdminAPIRequest({
+                path: 'system/logs/' + encodeURIComponent(fileName),
+                method: 'DELETE'
+            })
+            .done(function() {
+                location.reload();
+            })
+            .fail(function() {
+                window.CRM.notify(i18next.t('Error deleting log file.'), { type: 'error' });
             });
         }
     }
 
     function deleteAllLogs() {
         if (confirm(i18next.t('Are you sure you want to delete ALL log files? This action cannot be undone.'))) {
-            $.ajax({
-                url: '<?= SystemURLs::getRootPath() ?>/api/system/logs',
-                method: 'DELETE',
-                headers: {
-                    'X-CSRF-Token': '<?= htmlspecialchars($csrfTokenDeleteAll, ENT_QUOTES, 'UTF-8') ?>'
-                },
-                success: function() {
-                    location.reload();
-                },
-                error: function() {
-                    alert(i18next.t('Error deleting log files.'));
-                }
+            window.CRM.AdminAPIRequest({
+                path: 'system/logs',
+                method: 'DELETE'
+            })
+            .done(function() {
+                location.reload();
+            })
+            .fail(function() {
+                window.CRM.notify(i18next.t('Error deleting log files.'), { type: 'error' });
             });
         }
     }
@@ -312,23 +300,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     function saveLogLevel() {
         var logLevel = $('#logLevel').val();
-        fetch(window.CRM.root + '/api/system/logs/loglevel', {
+        window.CRM.AdminAPIRequest({
+            path: 'system/logs/loglevel',
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-Token': '<?= htmlspecialchars($csrfTokenLogLevel, ENT_QUOTES, 'UTF-8') ?>'
-            },
-            body: JSON.stringify({ value: logLevel })
+            data: JSON.stringify({ value: logLevel })
         })
-        .then(response => response.json())
-        .then(data => {
+        .done(function() {
             $('#logLevelStatus').html('<span class="text-success"><i class="fa-solid fa-check"></i> ' + i18next.t('Saved - Log level updated immediately') + '</span>');
             setTimeout(function() {
                 $('#logLevelStatus').html('');
             }, 3000);
         })
-        .catch(error => {
-            console.error('Error:', error);
+        .fail(function() {
             $('#logLevelStatus').html('<span class="text-danger"><i class="fa-solid fa-times"></i> ' + i18next.t('Error') + '</span>');
         });
     }
