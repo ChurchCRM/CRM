@@ -4,7 +4,7 @@ describe("Family Verification Modal", () => {
     beforeEach(() => {
         cy.setupStandardSession();
         // Navigate to a family with emails (family ID 48 from demo data)
-        cy.visit("v2/family/42");
+        cy.visit("v2/family/48");
     });
 
     it("should display verify modal with email list", () => {
