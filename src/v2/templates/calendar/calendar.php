@@ -46,7 +46,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_THROW_ON_ERROR) ?>;
 </script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/calendar-event-editor.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Calendar.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/calendar-event-editor.min.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/Calendar.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

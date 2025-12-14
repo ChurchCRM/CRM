@@ -39,8 +39,8 @@ require_once 'Include/Header.php';
 ?>
 
 <!-- Load Uppy Photo Uploader CSS & JS -->
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.css">
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
 
 <?php
 $iRemoveVO = 0;
@@ -1054,8 +1054,8 @@ $bOkToEdit = (
                 </div>
             </div>
         </div>
-        <script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
-        <script src="<?= SystemURLs::getRootPath() ?>/skin/js/PersonView.js"></script>
+        <script src="<?= SystemURLs::assetVersioned('/skin/js/MemberView.js') ?>"></script>
+        <script src="<?= SystemURLs::assetVersioned('/skin/js/PersonView.js') ?>"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM.currentPersonID = <?= $iPersonID ?>;
             window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;

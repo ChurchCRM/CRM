@@ -413,6 +413,6 @@ $families = FamilyQuery::create()
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var listPeople = <?= json_encode($aPersonIDs) ?>;
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/GeoPage.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/GeoPage.js') ?>"></script>
 <?php
 require_once 'Include/Footer.php';

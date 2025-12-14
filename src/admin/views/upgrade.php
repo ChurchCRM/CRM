@@ -539,8 +539,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/upgrade-wizard.min.css">
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/upgrade-wizard.min.js"></script>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.js') ?>"></script>
 
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

@@ -75,6 +75,6 @@ require_once 'Include/Header.php';
   </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/FindDepositSlip.js') ?>"></script>
 <?php
 require_once 'Include/Footer.php';

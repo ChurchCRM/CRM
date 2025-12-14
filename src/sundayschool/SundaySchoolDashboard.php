@@ -289,7 +289,7 @@ HTML;
 
     });
   </script>
-  <script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
+  <script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 
     <?php
 }

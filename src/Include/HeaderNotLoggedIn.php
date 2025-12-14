@@ -14,10 +14,10 @@ require_once 'Header-Security.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Core ChurchCRM bundle (includes jQuery) -->
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.js"></script>
-    <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
+    <script src="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.js') ?>"></script>
+    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.css') ?>">
 
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment.min.js"></script>
+    <script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 

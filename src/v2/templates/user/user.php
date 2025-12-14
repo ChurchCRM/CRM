@@ -107,6 +107,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script>
     window.CRM.viewUserId = <?= $user->getId() ?>;
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/user.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/user.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

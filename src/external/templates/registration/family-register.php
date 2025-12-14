@@ -18,7 +18,7 @@ if (!empty($sHeader)) {
 }
 
 ?>
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/family-register.min.css">
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-register.min.css') ?>">
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = {
         root: "<?= SystemURLs::getRootPath() ?>",
@@ -348,10 +348,10 @@ if (!empty($sHeader)) {
     </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/bs-stepper/bs-stepper.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/family-register.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyRegister.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/bs-stepper/bs-stepper.min.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/family-register.min.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/DropdownManager.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/FamilyRegister.js') ?>"></script>
 
 <?php
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

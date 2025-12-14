@@ -30,7 +30,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 ?>
 
 <!-- Load admin dashboard CSS -->
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/admin-dashboard.min.css">
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/admin-dashboard.min.css') ?>">
 
 <div class="container-fluid">
     <!-- Page Header -->
@@ -418,7 +418,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 </div>
 
 <!-- Load admin dashboard JavaScript -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/admin-dashboard.min.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/importDemoData.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/admin-dashboard.min.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/importDemoData.js') ?>"></script>
 
 <?php include SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

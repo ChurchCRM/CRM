@@ -38,6 +38,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PasswordChange.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/PasswordChange.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

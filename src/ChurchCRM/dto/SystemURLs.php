@@ -123,4 +123,22 @@ class SystemURLs
     {
         return self::$CSPNonce;
     }
+
+    /**
+     * Get versioned asset URL with file modification time for cache-busting.
+     * Appends ?v=<filemtime> to asset URLs to force browser cache refresh after deploys.
+     *
+     * @param string $webPath Asset path relative to document root (e.g., '/skin/v2/churchcrm.min.css')
+     * @return string Versioned URL with modification time, or original URL if file doesn't exist
+     */
+    public static function assetVersioned(string $webPath): string
+    {
+        $rootUrl = self::getRootPath();
+        $docRoot = self::getDocumentRoot();
+        $fullPath = rtrim($docRoot, DIRECTORY_SEPARATOR) . $webPath;
+        if (file_exists($fullPath)) {
+            return $rootUrl . $webPath . '?v=' . filemtime($fullPath);
+        }
+        return $rootUrl . $webPath;
+    }
 }

@@ -342,7 +342,7 @@ function implodeUnique($array, $withQuotes): string
 </div><!-- /.modal -->
 
 <!-- chartjs -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/chart.umd.js"></script>
+<script  src="<?= SystemURLs::assetVersioned('/skin/external/chartjs/chart.umd.js') ?>"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(function () {
@@ -486,6 +486,6 @@ function implodeUnique($array, $withQuotes): string
   }
 
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <?php
 require_once '../Include/Footer.php';

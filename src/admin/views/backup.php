@@ -148,6 +148,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/backup.min.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/backup.min.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

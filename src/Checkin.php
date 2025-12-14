@@ -477,8 +477,8 @@ function filterByType(typeId) {
     window.location.href = 'Checkin.php?EventTypeID=' + typeId;
 }
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::getRootPath() ?>/skin/js/checkin.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/js/checkin.js') ?>"></script>
 
 <?php require_once 'Include/Footer.php';
 

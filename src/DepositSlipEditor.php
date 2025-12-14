@@ -279,7 +279,7 @@ require_once 'Include/Header.php';
   </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DepositSlipEditor.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/DepositSlipEditor.js') ?>"></script>
 <style>
 .card {
     margin-bottom: 1.5rem;

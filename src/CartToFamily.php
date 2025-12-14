@@ -314,9 +314,9 @@ echo $sError;
 ?>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/DropdownManager.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/CartToFamily.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/DropdownManager.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/CartToFamily.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 
 <?php
 require_once 'Include/Footer.php';

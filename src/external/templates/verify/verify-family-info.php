@@ -271,8 +271,8 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
     <?php } ?>
     var token = '<?= $token->getToken()?>';
 </script>
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/family-verify.min.css">
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/family-verify.min.js"></script>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-verify.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/family-verify.min.js') ?>"></script>
 
 <?php
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

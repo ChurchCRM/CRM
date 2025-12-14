@@ -235,6 +235,6 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
     </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MainDashboard.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/MainDashboard.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

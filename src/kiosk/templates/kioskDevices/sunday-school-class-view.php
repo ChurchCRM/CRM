@@ -26,7 +26,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
   <div class="container" id="classMemberContainer"></div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/KioskJSOM.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Kiosk.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/KioskJSOM.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/Kiosk.js') ?>"></script>
 <?php
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

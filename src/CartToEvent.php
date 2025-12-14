@@ -171,7 +171,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     <?php
 }
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 
 <?php
 require_once 'Include/Footer.php';

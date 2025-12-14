@@ -56,7 +56,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
 
 <!-- END CART LISTING -->
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/cart-photo-viewer.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
         // Handle remove from cart button clicks in cart listing

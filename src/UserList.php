@@ -258,6 +258,6 @@ require_once 'Include/Header.php';
 </div>
 <!-- /.box -->
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/users.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/users.js') ?>"></script>
 <?php
 require_once 'Include/Footer.php';

@@ -189,6 +189,6 @@ require_once 'Include/Header.php';
   var roleCount = groupRoleData.length;
   var groupID =<?= $iGroupID ?>;
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupEditor.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/GroupEditor.js') ?>"></script>
 <?php
 require_once 'Include/Footer.php';

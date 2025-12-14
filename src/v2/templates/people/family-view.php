@@ -149,7 +149,7 @@ $familyEmails = $family->getEmails();
                     <script>
                         var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
                     </script>
-                    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/Map.js"></script>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/js/Map.js') ?>"></script>
                     <style>
                         #map1 {
                             height: 200px;
@@ -583,11 +583,11 @@ $familyEmails = $family->getEmails();
 <?php } ?>
 
 <!-- Photo uploader bundle - loaded only on this page -->
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.css">
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/photo-uploader.min.js"></script>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MemberView.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyView.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/MemberView.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/FamilyView.js') ?>"></script>
 
 <!-- Photos start -->
 <div class="modal fade" id="confirm-delete-image" tabindex="-1" role="dialog"

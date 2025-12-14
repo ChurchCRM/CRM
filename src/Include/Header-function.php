@@ -102,6 +102,6 @@ function Header_body_scripts(): void
             moment.locale(window.CRM.shortLocale);
         }
     </script>
-    <script src="<?= SystemURLs::getRootPath() ?>/skin/js/CRMJSOM.js"></script>
+    <script src="<?= SystemURLs::assetVersioned('/skin/js/CRMJSOM.js') ?>"></script>
     <?php
 }

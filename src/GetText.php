@@ -24,7 +24,7 @@ $aEventText = $event->getText();
 <head>
   <meta charset="UTF-8">
   <title><?= InputUtils::escapeHTML($aEventTitle) ?></title>
-  <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
+  <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.css') ?>">
 </head>
 <body>
 <div class="container-fluid p-4">

@@ -484,8 +484,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
 <?php if ($isAdmin): ?>
 <!-- System Settings Panel Component -->
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/system-settings-panel.min.css">
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/system-settings-panel.min.js" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
     // Initialize the settings panel with financial settings

@@ -135,6 +135,6 @@ $maxUploadSize = SystemService::getMaxUploadFileSize();
 }
 </style>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/restore.min.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/restore.min.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
