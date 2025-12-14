@@ -7,7 +7,7 @@ require_once 'Include/QuillEditorHelper.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
-use ChurchCRM\model\ChurchCRM\EventCountNamesQuery;
+use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -82,7 +82,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     }
 
     // Use Propel ORM to fetch event count names
-    $eventCountNames = EventCountNamesQuery::create()
+    $eventCountNames = EventCountNameQuery::create()
         ->filterByEventTypeId((int)$iTypeID)
         ->orderByCountId()
         ->find();
