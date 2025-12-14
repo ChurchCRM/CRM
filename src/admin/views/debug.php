@@ -38,35 +38,35 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                         <td><?= gettext('Root Path') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getRootPath() ?: '(empty - top level)' ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(SystemURLs::getRootPath() ?: '', ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= SystemURLs::getRootPath() ?: '' ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                     <tr>
                         <td><?= gettext('Document Root') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getDocumentRoot() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(SystemURLs::getDocumentRoot(), ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= SystemURLs::getDocumentRoot() ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                     <tr>
                         <td><?= gettext('Base URL') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getURL() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(SystemURLs::getURL(), ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= SystemURLs::getURL() ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                     <tr>
                         <td><?= gettext('Images Root') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getImagesRoot() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(SystemURLs::getImagesRoot(), ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= SystemURLs::getImagesRoot() ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                     <tr>
                         <td><?= gettext('DSN') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= Bootstrapper::getDSN() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= htmlspecialchars(Bootstrapper::getDSN(), ENT_QUOTES) ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= Bootstrapper::getDSN() ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                 </table>

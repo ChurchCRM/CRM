@@ -6,6 +6,7 @@ require_once 'Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -71,12 +72,17 @@ require_once 'Include/Header.php'; ?>
         // If no errors, then update.
         if (!$bErrorFlag) {
             for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-                $sSQL = "UPDATE person_custom_master
-                    SET custom_Name = '" . $aNameFields[$iFieldID] . "',
-                        custom_Special = " . $aSpecialFields[$iFieldID] . ",
-                        custom_FieldSec = " . $aFieldSecurity[$iFieldID] . "
-                    WHERE custom_Field = '" . $aFieldFields[$iFieldID] . "';";
-                RunQuery($sSQL);
+                // Use Propel ORM instead of raw SQL to prevent time-based blind SQL injection (GHSA-47q3-c874-mqvp)
+                $customField = PersonCustomMasterQuery::create()
+                    ->findOneById($aFieldFields[$iFieldID]);
+                
+                if ($customField !== null) {
+                    $customField
+                        ->setName($aNameFields[$iFieldID])
+                        ->setSpecial($aSpecialFields[$iFieldID])
+                        ->setFieldSec((int)$aFieldSecurity[$iFieldID])
+                        ->save();
+                }
             }
         }
     } else {

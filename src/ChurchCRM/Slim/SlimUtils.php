@@ -143,14 +143,17 @@ class SlimUtils
             bool $logErrors,
             bool $logErrorDetails
         ) use ($logger) {
-            // Include HTTP method and path in log context
+            // Log full error details to disk for debugging (includes sensitive info)
+            // This is only visible to administrators, not to users
             $requestContext = [
                 'exception' => $exception,
                 'method' => $request->getMethod(),
                 'path' => $request->getUri()->getPath(),
-                'query' => $request->getUri()->getQuery()
+                'query' => $request->getUri()->getQuery(),
+                'ip' => $request->getServerParams()['REMOTE_ADDR'] ?? 'unknown',
+                'user_agent' => $request->getHeaderLine('User-Agent')
             ];
-            $logger->error($exception->getMessage(), $requestContext);
+            $logger->error('Uncaught exception: ' . $exception->getMessage(), $requestContext);
             
             $response = new Psr7Response();
             
@@ -162,9 +165,12 @@ class SlimUtils
                 $statusCode = 405;
             }
             
+            // Sanitize error message to prevent credential disclosure
+            $sanitizedMessage = self::sanitizeErrorMessage($exception);
+            
             // Include HTTP method and path in error response for debugging
             $errorResponse = [
-                'error' => $exception->getMessage(),
+                'error' => $sanitizedMessage,
                 'code' => $exception->getCode(),
                 'request' => [
                     'method' => $request->getMethod(),
@@ -202,12 +208,40 @@ class SlimUtils
     }
 
     /**
-     * Get an integer query parameter from the request
+     * Sanitize error messages to prevent database credential disclosure
+     * Removes sensitive information like passwords, hosts, and connection strings
+     * 
+     * @param Throwable $exception The exception to sanitize
+     * @return string Sanitized error message safe for user display
      */
-    public static function getUriParamInt(Request $request, string $paramName): int
+    public static function sanitizeErrorMessage(Throwable $exception): string
     {
-        $val = self::getUriParamString($request, $paramName);
-        return intval($val);
+        $message = $exception->getMessage();
+        
+        // For database-related exceptions, return generic message
+        if ($exception instanceof \PDOException || 
+            stripos($exception->getFile(), 'propel') !== false ||
+            stripos($message, 'sql') !== false ||
+            stripos($message, 'database') !== false) {
+            return 'A database error occurred. Please contact your system administrator.';
+        }
+        
+        // For all other exceptions, don't return the actual message in production
+        // Only return message if it doesn't contain sensitive info patterns
+        if (preg_match('/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i', $message)) {
+            return 'An error occurred. Please contact your system administrator.';
+        }
+        
+        return $message;
+    }
+
+    /**
+     * Get an integer query parameter from the request URI
+     */
+    public static function getURIParamInt(Request $request, string $paramName): int
+    {
+        $value = self::getUriParamString($request, $paramName);
+        return $value !== '' ? (int) $value : 0;
     }
 
     /**

@@ -30,6 +30,7 @@ require __DIR__ . '/routes/api/demo.php';
 require __DIR__ . '/routes/api/database.php';
 require __DIR__ . '/routes/api/orphaned-files.php';
 require __DIR__ . '/routes/api/system/system-config.php';
+require __DIR__ . '/routes/api/system/system-logs.php';
 require __DIR__ . '/routes/api/upgrade.php';
 require __DIR__ . '/routes/system.php';
 

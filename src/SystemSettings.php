@@ -227,8 +227,11 @@ require_once 'Include/Header.php';
                         ?>
                       <a href="<?= $setting->getUrl() ?>" target="_blank"><i class="fa-solid fa-fw fa-link"></i></a>
                         <?php
+                    }
+                    // Do not display password defaults for security reasons (GHSA-p98h-5xcj-5c6x)
+                    if ($setting->getType() !== 'password') {
+                        echo InputUtils::escapeHTML($display_default);
                     } ?>
-                    <?= $display_default ?>
                   </td>
                 </tr>
                     <?php

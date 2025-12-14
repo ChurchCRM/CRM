@@ -4,6 +4,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Utils\Functions;
+use ChurchCRM\Utils\InputUtils;
 
 class DepositService {
     /**
@@ -169,7 +170,7 @@ class DepositService {
     {
         $deposit = new Deposit();
         $deposit->setType($depositType);
-        $deposit->setComment(htmlspecialchars($depositComment, ENT_QUOTES, 'UTF-8'));
+        $deposit->setComment(InputUtils::sanitizeAndEscapeText($depositComment));
         $deposit->setDate($depositDate);
         $deposit->save();
         return $deposit;

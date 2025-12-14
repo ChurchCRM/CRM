@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -19,7 +20,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="col-md-6">
                         <div class="mb-3">
                             <strong><?= gettext('Current Version:') ?></strong>
-                            <span class="badge badge-info ml-2" style="font-size: 1em;"><?= htmlspecialchars($currentVersion) ?></span>
+                            <span class="badge badge-info ml-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($currentVersion) ?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -27,10 +28,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <strong><?= gettext('Latest GitHub Version:') ?></strong>
                             <?php if ($latestGitHubVersion !== null): ?>
                                 <?php if ($isUpdateAvailable): ?>
-                                    <span class="badge badge-success ml-2" style="font-size: 1em;"><?= htmlspecialchars($latestGitHubVersion) ?></span>
+                                    <span class="badge badge-success ml-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
                                     <small class="text-success ml-1"><?= gettext('Update Available!') ?></small>
                                 <?php else: ?>
-                                    <span class="badge badge-info ml-2" style="font-size: 1em;"><?= htmlspecialchars($latestGitHubVersion) ?></span>
+                                    <span class="badge badge-info ml-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
                                 <?php endif; ?>
                             <?php else: ?>
                                 <span class="badge badge-secondary ml-2" style="font-size: 1em;"><?= gettext('Unknown') ?></span>
@@ -46,7 +47,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <strong><?= gettext('Allow Pre-release Upgrades') ?>:</strong>
                             <input type="checkbox" id="bAllowPrereleaseUpgrade" data-toggle="toggle" data-size="sm" data-onstyle="success" data-offstyle="secondary"<?= $allowPrereleaseUpgrade ? ' checked' : '' ?>>
                             <small class="form-text text-muted d-inline-block ml-2">
-                                <?= htmlspecialchars($prereleaseConfig->getTooltip()) ?>
+                                <?= InputUtils::escapeHTML($prereleaseConfig->getTooltip()) ?>
                             </small>
                         </div>
                     </div>
@@ -139,7 +140,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <tbody>
                                         <?php foreach ($modifiedFiles as $file): ?>
                                             <tr>
-                                                <td><code><?= htmlspecialchars(is_object($file) ? $file->filename : $file) ?></code></td>
+                                                <td><code><?= InputUtils::escapeHTML(is_object($file) ? $file->filename : $file) ?></code></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -166,7 +167,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <tbody>
                                         <?php foreach ($missingFiles as $file): ?>
                                             <tr>
-                                                <td><code class="text-danger"><?= htmlspecialchars(is_object($file) ? $file->filename : $file) ?></code></td>
+                                                <td><code class="text-danger"><?= InputUtils::escapeHTML(is_object($file) ? $file->filename : $file) ?></code></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -255,7 +256,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <p><?= gettext("Please review and mitigate these tasks before continuing with the upgrade:") ?></p>
                                     <ul class="mb-0">
                                         <?php foreach ($preUpgradeTasks as $task): ?>
-                                            <li><strong><?= htmlspecialchars($task->getTitle()) ?>:</strong> <?= htmlspecialchars($task->getDesc()) ?></li>
+                                            <li><strong><?= InputUtils::escapeHTML($task->getTitle()) ?>:</strong> <?= InputUtils::escapeHTML($task->getDesc()) ?></li>
                                         <?php endforeach; ?>
                                     </ul>
                                 </div>
@@ -272,7 +273,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     </p>
                                     <p><?= gettext("If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete.") ?></p>
                                     
-                                    <p class="mb-0"><strong><?= gettext('Integrity Check Details:') ?></strong> <?= htmlspecialchars($integrityCheckData['message']) ?></p>
+                                    <p class="mb-0"><strong><?= gettext('Integrity Check Details:') ?></strong> <?= InputUtils::escapeHTML($integrityCheckData['message']) ?></p>
                                 </div>
                                 
                                 <?php if (count($integrityCheckData['files']) > 0): ?>
@@ -314,8 +315,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                             <tbody>
                                                                 <?php foreach ($missingFiles as $file): ?>
                                                                     <tr>
-                                                                        <td><code><?= htmlspecialchars($file->filename) ?></code></td>
-                                                                        <td><small><?= htmlspecialchars($file->expectedhash) ?></small></td>
+                                                                        <td><code><?= InputUtils::escapeHTML($file->filename) ?></code></td>
+                                                                        <td><small><?= InputUtils::escapeHTML($file->expectedhash) ?></small></td>
                                                                     </tr>
                                                                 <?php endforeach; ?>
                                                             </tbody>
@@ -352,9 +353,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                             <tbody>
                                                                 <?php foreach ($modifiedFiles as $file): ?>
                                                                     <tr>
-                                                                        <td><code><?= htmlspecialchars($file->filename) ?></code></td>
-                                                                        <td><small><?= htmlspecialchars($file->expectedhash) ?></small></td>
-                                                                        <td><small><?= htmlspecialchars($file->actualhash) ?></small></td>
+                                                                        <td><code><?= InputUtils::escapeHTML($file->filename) ?></code></td>
+                                                                        <td><small><?= InputUtils::escapeHTML($file->expectedhash) ?></small></td>
+                                                                        <td><small><?= InputUtils::escapeHTML($file->actualhash) ?></small></td>
                                                                     </tr>
                                                                 <?php endforeach; ?>
                                                             </tbody>
@@ -400,7 +401,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                     <tbody>
                                                         <?php foreach ($integrityCheckData['orphanedFiles'] as $orphanedFile): ?>
                                                             <tr>
-                                                                <td><code><?= htmlspecialchars($orphanedFile) ?></code></td>
+                                                                <td><code><?= InputUtils::escapeHTML($orphanedFile) ?></code></td>
                                                             </tr>
                                                         <?php endforeach; ?>
                                                     </tbody>

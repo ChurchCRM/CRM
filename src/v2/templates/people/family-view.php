@@ -21,6 +21,9 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 }
 
 $memberCount = count($family->getPeople());
+
+// Get unique family emails for the verification modal
+$familyEmails = $family->getEmails();
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -41,10 +44,9 @@ $memberCount = count($family->getPeople());
         <!-- Family Photo Card -->
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title m-0"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
+                <h3 class="card-title m-0"><?= $family->getName() ?></h3>
                 <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-box-tool edit-family"><i class="fa-solid fa-pen"></i>
-                    </button>
+                    <span class="badge badge-secondary"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
                 </div>
             </div>
             <div class="card-body text-center">
@@ -127,8 +129,6 @@ $memberCount = count($family->getPeople());
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?></h3>
                 <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-box-tool edit-family"><i class="fa-solid fa-pen"></i>
-                    </button>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
                     </button>
                 </div>
@@ -163,11 +163,6 @@ $memberCount = count($family->getPeople());
         <div class="card card-primary mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-address-book"></i> <?= gettext("Contact Info") ?></h3>
-                <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-box-tool edit-family"><i
-                            class="fa-solid fa-pen"></i>
-                    </button>
-                </div>
             </div>
             <div class="card-body">
                 <ul class="fa-ul">
@@ -656,10 +651,6 @@ $memberCount = count($family->getPeople());
             console.error('Photo uploader not initialized!');
         }
     });
-
-    $(document).on('click', '.edit-family', function() {
-        window.location.href = window.CRM.root + '/FamilyEditor.php?FamilyID=' + window.CRM.currentFamily;
-    });
 </script>
 <!-- Photos end -->
 
@@ -695,11 +686,11 @@ $memberCount = count($family->getPeople());
             <div class="modal-body">
                 <b><?= gettext("Select how do you want to request the family information to be verified") ?></b>
                 <p>
-                    <?php if (count($family->getEmails()) > 0) {
+                    <?php if (count($familyEmails) > 0) {
                         ?>
                 <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
                 <ul>
-                        <?php foreach ($family->getEmails() as $tmpEmail) { ?>
+                        <?php foreach ($familyEmails as $tmpEmail) { ?>
                         <li><?= $tmpEmail ?></li>
                         <?php } ?>
                 </ul>
@@ -708,11 +699,15 @@ $memberCount = count($family->getPeople());
                         <?php
                     } ?>
             <div class="modal-footer text-center">
-                <?php if (count($family->getEmails()) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
+                <?php if (count($familyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
                     ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i
                             class="fa-solid fa-envelope"></i> <?= gettext("Online Verification") ?>
+                    </button>
+                    <button type="button" id="verifyEmailPDF"
+                            class="btn btn-warning"><i
+                            class="fa-solid fa-file-pdf"></i> <?= gettext("Email PDF") ?>
                     </button>
                     <?php
                 } ?>

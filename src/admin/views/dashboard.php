@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\AdminService;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
 
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -67,7 +68,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 <div class="mb-3">
                     <h6 class="mb-2"><?= gettext('Current $URL[0] value:') ?></h6>
                     <div class="p-3 bg-dark rounded" style="font-family: 'Courier New', monospace; word-break: break-all;">
-                        <code class="text-warning" style="font-size: 1.1em;"><?= htmlspecialchars($urlError['url']) ?></code>
+                        <code class="text-warning" style="font-size: 1.1em;"><?= InputUtils::escapeHTML($urlError['url']) ?></code>
                     </div>
                 </div>
 

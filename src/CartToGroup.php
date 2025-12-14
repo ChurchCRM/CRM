@@ -57,7 +57,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
               // Create the group select drop-down
                 echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">' . gettext('None') . '</option>';
                 foreach ($ormGroups as $ormGroup) {
-                    echo '<option value="' . $ormGroup->getID() . '">' . htmlspecialchars($ormGroup->getName(), ENT_QUOTES, 'UTF-8') . '</option>';
+                    echo '<option value="' . InputUtils::escapeAttribute($ormGroup->getID()) . '">' . InputUtils::escapeHTML($ormGroup->getName()) . '</option>';
                 }
                 echo '</select>'; ?>
             </td>

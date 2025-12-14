@@ -5,6 +5,7 @@ require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -72,13 +73,17 @@ if (isset($_POST['SaveChanges'])) {
     // If no errors, then update.
     if (!$bErrorFlag) {
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-            $sSQL = "UPDATE family_custom_master
-                    SET `fam_custom_Name` = '" . $aNameFields[$iFieldID] . "',
-                        `fam_custom_Special` = " . $aSpecialFields[$iFieldID] . ",
-                        `fam_custom_FieldSec` = " . $aFieldSecurity[$iFieldID] . "
-                    WHERE `fam_custom_Field` = '" . $aFieldFields[$iFieldID] . "';";
-
-            RunQuery($sSQL);
+            // Use Propel ORM instead of raw SQL to prevent time-based blind SQL injection (GHSA-47q3-c874-mqvp)
+            $customField = FamilyCustomMasterQuery::create()
+                ->findOneById($aFieldFields[$iFieldID]);
+            
+            if ($customField !== null) {
+                $customField
+                    ->setName($aNameFields[$iFieldID])
+                    ->setSpecial($aSpecialFields[$iFieldID])
+                    ->setFieldSec((int)$aFieldSecurity[$iFieldID])
+                    ->save();
+            }
         }
     }
 } else {

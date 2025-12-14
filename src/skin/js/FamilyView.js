@@ -326,6 +326,11 @@ function initializeFamilyView() {
         $("#confirm-verify").modal("hide");
     });
 
+    $("#verifyEmailPDF").on("click", function () {
+        $("#confirm-verify").modal("hide");
+        window.location.href = `${window.CRM.root}/Reports/ConfirmReportEmail.php?familyId=${window.CRM.currentFamily}`;
+    });
+
     // Photos
     $("#deletePhoto").on("click", function () {
         window.CRM.deletePhoto("family", window.CRM.currentFamily);

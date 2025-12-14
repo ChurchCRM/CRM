@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\MenuLink as BaseMenuLink;
+use ChurchCRM\Utils\InputUtils;
 
 /**
  * Skeleton subclass for representing a row from the 'menu_links' table.
@@ -24,9 +25,8 @@ class MenuLink extends BaseMenuLink
     public function setName($v)
     {
         if ($v !== null) {
-            // Strip HTML tags and decode entities to prevent XSS
-            $v = strip_tags($v);
-            $v = html_entity_decode($v, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+            // Sanitize to prevent XSS - remove all HTML tags
+            $v = InputUtils::sanitizeText($v);
         }
         return parent::setName($v);
     }
@@ -40,9 +40,8 @@ class MenuLink extends BaseMenuLink
     public function setUri($v)
     {
         if ($v !== null) {
-            // Strip HTML tags to prevent XSS in URI
-            $v = strip_tags($v);
-            $v = html_entity_decode($v, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+            // Sanitize to prevent XSS - remove all HTML tags
+            $v = InputUtils::sanitizeText($v);
         }
         return parent::setUri($v);
     }

@@ -12,6 +12,7 @@ use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
@@ -25,6 +26,12 @@ $person = PersonQuery::create()->findPk($iPersonID);
 if (empty($person)) {
     header('Location: ' . SystemURLs::getRootPath() . '/v2/person/not-found?id=' . $iPersonID);
     exit;
+}
+
+// GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person
+$currentUser = AuthenticationManager::getCurrentUser();
+if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+    RedirectUtils::securityRedirect('PersonView');
 }
 
 $sPageTitle = gettext('Person Profile');
@@ -426,9 +433,9 @@ $bOkToEdit = (
                         $customFieldsHtml .= '<i class="' . $displayIcon . ' mr-2 text-muted"></i>';
                         $temp_string = nl2br(displayCustomField($type_ID, $currentData, $custom_Special));
                         if ($displayLink) {
-                            $customFieldsHtml .= '<strong>' . htmlspecialchars($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
+                            $customFieldsHtml .= '<strong>' . InputUtils::escapeHTML($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
                         } else {
-                            $customFieldsHtml .= '<strong>' . htmlspecialchars($custom_Name) . ':</strong> ' . $temp_string;
+                            $customFieldsHtml .= '<strong>' . InputUtils::escapeHTML($custom_Name) . ':</strong> ' . $temp_string;
                         }
                         $customFieldsHtml .= '</li>';
                     }
@@ -753,7 +760,7 @@ $bOkToEdit = (
                                                     <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
                                                     <div class="card-tools pull-right">
-                                                        <div class="label bg-gray"><?= gettext($roleName) ?></div>
+                                                        <div class="label bg-gray"><?= InputUtils::escapeHTML(gettext($roleName)) ?></div>
                                                     </div>
                                                 </div>
                                                 <?php
@@ -852,7 +859,7 @@ $bOkToEdit = (
                                         <tr>
                                             <td><span class="badge badge-info"><?= $prt_Name ?></span></td>
                                             <td><strong><?= $pro_Name ?></strong></td>
-                                            <td><?= $r2p_Value ?></td>
+                                            <td><?= InputUtils::escapeHTML($r2p_Value) ?></td>
                                             <?php if ($bOkToEdit) { ?>
                                                 <td class="text-right">
                                                     <button class="btn btn-sm btn-danger remove-property-btn" data-property_id="<?= $pro_ID ?>" title="<?= gettext('Remove Property') ?>">
@@ -948,8 +955,8 @@ $bOkToEdit = (
                             while ($aRow = mysqli_fetch_array($rsAssignedVolunteerOpps)) {
                                 extract($aRow);
                                 echo '<tr>';
-                                echo '<td><strong>' . htmlspecialchars($vol_Name) . '</strong></td>';
-                                echo '<td>' . htmlspecialchars($vol_Description) . '</td>';
+                                echo '<td><strong>' . InputUtils::escapeHTML($vol_Name) . '</strong></td>';
+                                echo '<td>' . InputUtils::escapeHTML($vol_Description) . '</td>';
 
                                 if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
                                     echo '<td class="text-right">';
@@ -983,7 +990,7 @@ $bOkToEdit = (
                                                     while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
                                                         extract($aRow);
                                                         if (strlen(strstr($sAssignedVolunteerOpps, ',' . $vol_ID . ',')) === 0) {
-                                                            echo '<option value="' . $vol_ID . '">' . htmlspecialchars($vol_Name) . '</option>';
+                                                            echo '<option value="' . InputUtils::escapeAttribute($vol_ID) . '">' . InputUtils::escapeHTML($vol_Name) . '</option>';
                                                         }
                                                     } ?>
                                                 </select>

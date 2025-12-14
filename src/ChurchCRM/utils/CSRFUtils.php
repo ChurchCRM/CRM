@@ -149,7 +149,7 @@ class CSRFUtils
     public static function getTokenInputField(string $formId = 'default'): string
     {
         $token = self::generateToken($formId);
-        return '<input type="hidden" name="csrf_token" value="' . htmlspecialchars($token, ENT_QUOTES, 'UTF-8') . '">';
+        return '<input type="hidden" name="csrf_token" value="' . InputUtils::escapeAttribute($token) . '">';
     }
 
     /**

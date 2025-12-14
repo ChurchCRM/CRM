@@ -34,8 +34,9 @@ class RestoreJob extends JobBase
         }
         $rawUploadedFile = $_FILES['restoreFile'];
         
-        // Security: Sanitize the uploaded filename to prevent path traversal and malicious file uploads
+        // Security: Validate file extension and MIME type before processing
         $sanitizedFilename = $this->sanitizeUploadedFilename($rawUploadedFile['name']);
+        $this->validateUploadedFile($rawUploadedFile['tmp_name']);
         
         $this->RestoreFile = new \SplFileInfo(sys_get_temp_dir() . '/' . $sanitizedFilename);
         LoggerUtils::getAppLogger()->debug('Moving ' . $rawUploadedFile['tmp_name'] . ' to ' . $this->RestoreFile);
@@ -58,13 +59,37 @@ class RestoreJob extends JobBase
         // Use basename to strip any path components (prevents path traversal)
         $filename = basename($filename);
         
-        // Validate against allowed backup file patterns
+        // Validate against allowed backup file patterns (strict whitelist)
         if (!preg_match('/^[\w\-\.]+\.(sql|sql\.gz|tar\.gz)$/i', $filename)) {
             LoggerUtils::getAppLogger()->warning('Blocked invalid backup filename: ' . $filename);
             throw new \Exception('Invalid backup file. Only .sql, .sql.gz, .tar.gz files are allowed.', 400);
         }
         
         return $filename;
+    }
+
+    /**
+     * Validate uploaded file MIME type
+     * Files are stored in temp directory and cannot be executed
+     *
+     * @param string $tmpPath Path to temporary uploaded file
+     * @throws \Exception If file MIME type is invalid
+     */
+    private function validateUploadedFile(string $tmpPath): void
+    {
+        // Validate MIME type to prevent web shell uploads
+        if (function_exists('finfo_open')) {
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);
+            $mimeType = finfo_file($finfo, $tmpPath);
+            finfo_close($finfo);
+            
+            // Allow common backup file MIME types
+            $allowedMimeTypes = ['application/gzip', 'application/x-gzip', 'text/plain', 'text/x-sql', 'application/sql', 'application/x-tar'];
+            if (!in_array($mimeType, $allowedMimeTypes)) {
+                LoggerUtils::getAppLogger()->warning('Blocked file with invalid MIME type: ' . $mimeType);
+                throw new \Exception('Invalid file type. The uploaded file does not appear to be a valid backup file.', 400);
+            }
+        }
     }
 
     private function discoverBackupType(): void
