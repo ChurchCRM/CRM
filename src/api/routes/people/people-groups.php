@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -115,8 +116,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         if ($groupSettings['isSundaySchool'] ?? false) {
             $group->makeSundaySchool();
         }
-        $group->setName(strip_tags($groupSettings['groupName']));
-        $group->setDescription(strip_tags($groupSettings['description'] ?? ''));
+        $group->setName(InputUtils::sanitizeText($groupSettings['groupName']));
+        $group->setDescription(InputUtils::sanitizeText($groupSettings['description'] ?? ''));
         // Only set the explicit group type if it was provided in the request.
         // This prevents overwriting types set by helper methods like makeSundaySchool().
         if (isset($groupSettings['groupType'])) {
@@ -130,9 +131,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
-        $group->setName(strip_tags($input['groupName']));
+        $group->setName(InputUtils::sanitizeText($input['groupName']));
         $group->setType($input['groupType']);
-        $group->setDescription(strip_tags($input['description'] ?? ''));
+        $group->setDescription(InputUtils::sanitizeText($input['description'] ?? ''));
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });

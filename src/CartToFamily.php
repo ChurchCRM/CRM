@@ -5,6 +5,9 @@ require_once 'Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -26,13 +29,10 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $dWeddingDate = null;
         }
 
-        $iPersonAddress = InputUtils::legacyFilterInput($_POST['PersonAddress']);
+        $iPersonAddress = InputUtils::legacyFilterInput($_POST['PersonAddress'], 'int');
 
-        if ($iPersonAddress != 0) {
-            $sSQL = 'SELECT * FROM person_per WHERE per_ID = ' . $iPersonAddress;
-            $rsPerson = RunQuery($sSQL);
-            extract(mysqli_fetch_array($rsPerson));
-        }
+        // Note: PersonAddress is used to pre-fill fields, but the code below uses form input only
+        // TODO: Implement address pre-fill from selected person if needed
 
         // Use form input only - each person must enter their own data
         $sAddress1 = InputUtils::legacyFilterInput($_POST['Address1']);
@@ -61,31 +61,23 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $sError = '<p class="alert alert-warning text-danger text-center">' . gettext('No family name entered!') . '</p>';
             $bError = true;
         } else {
-            $familyValues = [
-                'fam_Name' => $sFamilyName,
-                'fam_Address1' => $sAddress1,
-                'fam_Address2' => $sAddress2,
-                'fam_City' => $sCity,
-                'fam_State' => $sState,
-                'fam_Zip' => $sZip,
-                'fam_Country' => $sCountry,
-                'fam_HomePhone' => $sHomePhone,
-                'fam_Email' => $sEmail,
-                'fam_WeddingDate' => $dWeddingDate,
-                'fam_DateEntered' => date('YmdHis'),
-                'fam_EnteredBy' => AuthenticationManager::getCurrentUser()->getId(),
-            ];
-            $familyValues = array_filter($familyValues, fn($var) => !empty($var));
-            $familyValues = array_map(fn($var) => '"' . mysqli_real_escape_string($cnInfoCentral, $var) . '"', $familyValues);
+            // Use Propel ORM to create family
+            $family = new Family();
+            $family->setName($sFamilyName);
+            if (!empty($sAddress1)) $family->setAddress1($sAddress1);
+            if (!empty($sAddress2)) $family->setAddress2($sAddress2);
+            if (!empty($sCity)) $family->setCity($sCity);
+            if (!empty($sState)) $family->setState($sState);
+            if (!empty($sZip)) $family->setZip($sZip);
+            if (!empty($sCountry)) $family->setCountry($sCountry);
+            if (!empty($sHomePhone)) $family->setHomePhone($sHomePhone);
+            if (!empty($sEmail)) $family->setEmail($sEmail);
+            if ($dWeddingDate !== null) $family->setWeddingDate($dWeddingDate);
+            $family->setDateEntered(date('YmdHis'));
+            $family->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
+            $family->save();
 
-            $sSQL = 'INSERT INTO family_fam (' . implode(',', array_keys($familyValues)) . ') VALUES (' . implode(',', array_values($familyValues)) . ')';
-            RunQuery($sSQL);
-
-            //Get the key back
-            $sSQL = 'SELECT MAX(fam_ID) AS iFamilyID FROM family_fam';
-            $rsLastEntry = RunQuery($sSQL);
-            $famIdArray = mysqli_fetch_array($rsLastEntry);
-            $iFamilyID = $famIdArray['iFamilyID'];
+            $iFamilyID = $family->getId();
         }
     }
 
@@ -93,11 +85,12 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
         // Loop through the cart array
         $iCount = 0;
         foreach ($_SESSION['aPeopleCart'] as $element) {
-            $iPersonID = $element;
-            $sSQL = 'SELECT per_fam_ID FROM person_per WHERE per_ID = ' . $iPersonID;
-            $rsPerson = RunQuery($sSQL);
-            $perFamIdArray = mysqli_fetch_array($rsPerson);
-            $per_fam_ID = $perFamIdArray['per_fam_ID'];
+            $iPersonID = (int)$element;
+            $person = PersonQuery::create()->findOneById($iPersonID);
+            if ($person === null) {
+                throw new \Exception(sprintf('person (%d) not found', $iPersonID));
+            }
+            $per_fam_ID = $person->getFamId();
 
             // Make sure they are not already in a family
             if ($per_fam_ID != 0) {
@@ -108,7 +101,6 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
                 throw new \Exception(sprintf('person (%d) does not have role in post body', $iPersonID));
             }
 
-            $person = PersonQuery::create()->findOneById($iPersonID);
             $person
                 ->setFamId($iFamilyID)
                 ->setFmrId($iFamilyRoleID);
@@ -133,38 +125,29 @@ echo $sError;
 
         <?php
         if (count($_SESSION['aPeopleCart']) > 0) {
-            // Get all the families
-            $sSQL = 'SELECT fam_Name, fam_ID FROM family_fam ORDER BY fam_Name';
-            $rsFamilies = RunQuery($sSQL);
+            // Get all the families using ORM
+            $families = FamilyQuery::create()->orderByName()->find();
 
-            // Get the family roles
-            $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-            $rsFamilyRoles = RunQuery($sSQL);
+            // Get the family roles using ORM (lst_ID = 2 is family roles)
+            $familyRoles = ListOptionQuery::create()
+                ->filterByListId(2)
+                ->orderByOptionSequence()
+                ->find();
 
             $sRoleOptionsHTML = '';
-            while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
+            foreach ($familyRoles as $roleOption) {
                 $sRoleOptionsHTML .= sprintf(
                     '<option value="%s">%s</option>',
-                    $aRow['lst_OptionID'],
-                    $aRow['lst_OptionName']
+                    $roleOption->getOptionId(),
+                    $roleOption->getOptionName()
                 );
             }
 
-            $cartString = convertCartToString($_SESSION['aPeopleCart']);
-            $sSQL = <<<SQL
-SELECT
-    per_Title,
-    per_FirstName,
-    per_MiddleName,
-    per_LastName,
-    per_Suffix,
-    per_fam_ID,
-    per_ID
-FROM person_per
-WHERE per_ID IN ($cartString)
-ORDER BY per_LastName
-SQL;
-            $rsCartItems = RunQuery($sSQL);
+            // Get cart items using ORM
+            $cartPersons = PersonQuery::create()
+                ->filterById($_SESSION['aPeopleCart'])
+                ->orderByLastName()
+                ->find();
 
             echo "<table class='table'>";
             echo '<tr>';
@@ -174,23 +157,21 @@ SQL;
 
             $count = 1;
             $sRowClass = 'RowColorA';
-            while ($aRow = mysqli_fetch_array($rsCartItems)) {
+            foreach ($cartPersons as $cartPerson) {
                 $sRowClass = AlternateRowStyle($sRowClass);
-
-                extract($aRow);
 
                 echo '<tr class="' . $sRowClass . '">';
                 echo '<td class="text-center">' . $count++ . '</td>';
-                $personPhoto = new \ChurchCRM\dto\Photo('person', $per_ID);
+                $personPhoto = new \ChurchCRM\dto\Photo('person', $cartPerson->getId());
                 $photoIcon = '';
                 if ($personPhoto->hasUploadedPhoto()) {
-                    $photoIcon = ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' . $per_ID . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+                    $photoIcon = ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' . $cartPerson->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
                 }
-                echo '<td><a href="PersonView.php?PersonID=' . $per_ID . '">' . FormatFullName($per_Title, $per_FirstName, $per_MiddleName, $per_LastName, $per_Suffix, 1) . '</a>' . $photoIcon . '</td>';
+                echo '<td><a href="PersonView.php?PersonID=' . $cartPerson->getId() . '">' . FormatFullName($cartPerson->getTitle(), $cartPerson->getFirstName(), $cartPerson->getMiddleName(), $cartPerson->getLastName(), $cartPerson->getSuffix(), 1) . '</a>' . $photoIcon . '</td>';
 
                 echo '<td class="text-center">';
-                if ($per_fam_ID == 0) {
-                    echo '<select name="role' . $per_ID . '">' . $sRoleOptionsHTML . '</select>';
+                if ($cartPerson->getFamId() == 0) {
+                    echo '<select name="role' . $cartPerson->getId() . '">' . $sRoleOptionsHTML . '</select>';
                 } else {
                     echo gettext('Already in a family');
                 }
@@ -210,8 +191,8 @@ SQL;
                     // Create the family select drop-down
                     echo '<select name="FamilyID">';
                     echo '<option value="0">' . gettext('Create new family') . '</option>';
-                    while ($aRow = mysqli_fetch_array($rsFamilies)) {
-                        echo sprintf('<option value="%s">%s</option>', $aRow['fam_ID'], $aRow['fam_Name']);
+                    foreach ($families as $family) {
+                        echo sprintf('<option value="%s">%s</option>', $family->getId(), $family->getName());
                     }
                     echo '</select>'; ?>
                 </td>

@@ -90,6 +90,37 @@ class User extends BaseUser
     }
 
     /**
+     * Check if the user can edit a specific person's record.
+     * Combines role-based (EditRecords) and object-level (EditSelf + family/own) authorization.
+     *
+     * @param int $personId The ID of the person to potentially edit
+     * @param int $personFamilyId The family ID of the person (0 if no family)
+     * @return bool True if user can edit this person's record
+     */
+    public function canEditPerson(int $personId, int $personFamilyId = 0): bool
+    {
+        // Users with EditRecords permission can edit anyone
+        if ($this->isEditRecordsEnabled()) {
+            return true;
+        }
+
+        // Users with EditSelf permission can edit their own record or family members
+        if ($this->isEditSelfEnabled()) {
+            // Can edit own record
+            if ($personId === $this->getId()) {
+                return true;
+            }
+
+            // Can edit family members (if person has a family)
+            if ($personFamilyId > 0 && $personFamilyId === $this->getPerson()->getFamId()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Update password using secure bcrypt hashing.
      */
     public function updatePassword(string $password): void

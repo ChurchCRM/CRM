@@ -49,6 +49,56 @@ Routing & middleware
     4. add(AuthMiddleware)          // Runs SECOND
     5. add(VersionMiddleware)       // First added, runs LAST
 
+## RedirectUtils (Security & Navigation)
+
+**Use RedirectUtils for all redirects** - Located in `src/ChurchCRM/Utils/RedirectUtils.php`
+
+Three core methods:
+
+1. **`redirect($sRelativeURL)`** - Safe relative redirects (automatically handles root path)
+   - Use for: Normal page navigation, error pages, "not found" pages
+   - Example: `RedirectUtils::redirect('v2/dashboard')` or `RedirectUtils::redirect('v2/person/not-found?id=' . $iPersonID)`
+   - Automatically prepends `SystemURLs::getRootPath()` and handles URL normalization
+
+2. **`securityRedirect($missingRole)`** - Permission-denied redirects (logs warning)
+   - Use for: Access denied due to missing permissions/roles
+   - Example: `RedirectUtils::securityRedirect('PersonView')` when user lacks required permission
+   - Logs warning via `LoggerUtils` and redirects to `v2/access-denied?role=[missingRole]`
+   - Pass a descriptive string indicating what permission was missing
+
+3. **`absoluteRedirect($sTargetURL)`** - Absolute URL redirects (no path manipulation)
+   - Use for: External URLs or already-complete internal URLs
+   - Example: `RedirectUtils::absoluteRedirect('https://example.com')` or `RedirectUtils::absoluteRedirect($completePath)`
+   - Does NOT prepend root path, used as-is
+
+### Authorization Redirect Pattern
+
+For permission checks, use this pattern:
+
+```php
+// Check role-based permission
+if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
+    RedirectUtils::securityRedirect('EditRecords');
+}
+
+// Check object-level permission (use User::canEditPerson for person records)
+$currentUser = AuthenticationManager::getCurrentUser();
+if (!$currentUser->canEditPerson($personId, $personFamilyId)) {
+    RedirectUtils::securityRedirect('PropertyAssign');
+}
+
+// Check if resource exists, redirect to not-found page
+$person = PersonQuery::create()->findOneById($personId);
+if ($person === null) {
+    RedirectUtils::redirect('v2/person/not-found?id=' . $personId);
+}
+```
+
+**DO NOT use:**
+- `header('Location: ...')` directly (bypasses root path handling)
+- `header('Location: ' . SystemURLs::getRootPath() . ...)` (RedirectUtils does this automatically)
+- Unhandled exception throws for access denied (use security redirects)
+
 API & naming
 - Prefer kebab-case endpoints for upgrade/system routes (e.g. `/download-latest-release`).
 - GET for reads, POST for actions that change state.
@@ -162,6 +212,39 @@ $record = PersonCustomMasterQuery::create()
 // @method ChildPersonCustomMaster|null findOneById(string $custom_Field)
 // This tells us custom_Field → Id in phpName
 ```
+
+---
+
+## User Authorization Methods
+
+The `User` class provides permission checking methods located in `src/ChurchCRM/model/ChurchCRM/User.php`
+
+**Role-based methods** (check generic permission type):
+- `isAdmin()` - Super admin access
+- `isEditRecordsEnabled()` - Can edit any person/family record
+- `isEditSelfEnabled()` - Can edit own record and family members
+- `isEditRecords()` / `isDeleteRecords()` / `isAddRecords()` - Specific record permissions
+- `isManageGroupsEnabled()` - Can manage groups
+- `isFinanceEnabled()` - Can access finance module
+- `isNotesEnabled()` - Can add/edit notes
+
+**Object-level method** (check permission for specific person):
+- `canEditPerson(int $personId, int $personFamilyId = 0): bool` - Check if user can edit a specific person
+  - Returns `true` if user has EditRecords permission, OR
+  - Returns `true` if user has EditSelf permission AND it's their own record or a family member
+  - Use this method to prevent privilege escalation (broken access control)
+  - Example:
+    ```php
+    $currentUser = AuthenticationManager::getCurrentUser();
+    if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+        RedirectUtils::securityRedirect('PropertyAssign');
+    }
+    ```
+
+**Pattern for authorization checks**:
+1. First check: General permission (`isEditRecordsEnabled()`, `isManageGroupsEnabled()`, etc.)
+2. Second check: Object-level permission (use `canEditPerson()` for person records)
+3. Third: Redirect with appropriate method (`securityRedirect()` for auth failures, `redirect()` for "not found")
 
 ---
 

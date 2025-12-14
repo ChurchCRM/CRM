@@ -139,7 +139,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     <span class="info-box-icon"><i class="fa-solid fa-user-tag"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text"><?= gettext('Default Role') ?></span>
-                        <span class="info-box-number"><?= $defaultRole !== null ? $defaultRole->getOptionName() : gettext('None') ?></span>
+                        <span class="info-box-number"><?= $defaultRole !== null ? InputUtils::escapeHTML($defaultRole->getOptionName()) : gettext('None') ?></span>
                     </div>
                 </div>
             </div>
