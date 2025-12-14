@@ -23,7 +23,7 @@ When reporting a security vulnerability, include:
 - Any relevant environment and configuration information
 - Proof of concept (if available)
 
-We will acknowledge receipt within 48 hours and provide updates on the fix timeline.
+We will acknowledge receipt within 1 week and provide updates on the fix timeline.
 
 ### When to File a Regular Bug Report
 

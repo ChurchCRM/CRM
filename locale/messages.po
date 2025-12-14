@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-12 23:33-0800\n"
+"POT-Creation-Date: 2025-12-13 23:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,9 +37,6 @@ msgid " Property Assignment"
 msgstr ""
 
 msgid " Property Unassignment"
-msgstr ""
-
-msgid " Since:"
 msgstr ""
 
 msgid " by that name already exists."
@@ -246,9 +243,6 @@ msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
 msgstr ""
 
 msgid "ALERT"
-msgstr ""
-
-msgid "About Me"
 msgstr ""
 
 msgid "Access Denied"
@@ -465,6 +459,9 @@ msgid "Added to cart successfully"
 msgstr ""
 
 msgid "Added to group"
+msgstr ""
+
+msgid "Additional Information"
 msgstr ""
 
 msgid "Address"
@@ -778,6 +775,12 @@ msgid "Assign"
 msgstr ""
 
 msgid "Assign New Group"
+msgstr ""
+
+msgid "Assign Opportunities"
+msgstr ""
+
+msgid "Assign Property"
 msgstr ""
 
 msgid "Assign Role"
@@ -1324,6 +1327,9 @@ msgstr ""
 msgid "Chinese - Taiwan"
 msgstr ""
 
+msgid "Choose a property..."
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Choose a volunteer opportunity"
 msgstr ""
@@ -1333,6 +1339,9 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "Choose customer person field"
+msgstr ""
+
+msgid "Choose opportunities..."
 msgstr ""
 
 #. Context: countries
@@ -1583,6 +1592,9 @@ msgstr ""
 msgid "Contact"
 msgstr ""
 
+msgid "Contact & Personal Info"
+msgstr ""
+
 msgid "Contact Info"
 msgstr ""
 
@@ -1755,6 +1767,9 @@ msgid "Current Version:"
 msgstr ""
 
 msgid "Current fiscal year:"
+msgstr ""
+
+msgid "Custom"
 msgstr ""
 
 msgid "Custom Drop-Down List"
@@ -2378,6 +2393,9 @@ msgstr ""
 msgid "Edit Records"
 msgstr ""
 
+msgid "Edit Role"
+msgstr ""
+
 msgid "Edit Self"
 msgstr ""
 
@@ -2397,6 +2415,9 @@ msgid "Edit this Class"
 msgstr ""
 
 msgid "Edit this Group"
+msgstr ""
+
+msgid "Edited"
 msgstr ""
 
 msgid "Editing"
@@ -2938,9 +2959,6 @@ msgstr ""
 msgid "Family List"
 msgstr ""
 
-msgid "Family List Columns"
-msgstr ""
-
 msgid "Family Map"
 msgstr ""
 
@@ -3011,9 +3029,6 @@ msgid "Family name must be at least 2 characters"
 msgstr ""
 
 msgid "Family removed from cart"
-msgstr ""
-
-msgid "Family:"
 msgstr ""
 
 msgid "FamilyID for Cart must be numeric"
@@ -3738,6 +3753,9 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
+msgid "ID:"
+msgstr ""
+
 msgid "INFO"
 msgstr ""
 
@@ -3746,6 +3764,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Iceland (Ísland)"
+msgstr ""
+
+msgid "Id"
 msgstr ""
 
 msgid "Identify members who have not made any donations within a date range."
@@ -4980,6 +5001,9 @@ msgstr ""
 msgid "No active funds configured."
 msgstr ""
 
+msgid "No assigned family"
+msgstr ""
+
 msgid "No coordinates found"
 msgstr ""
 
@@ -5557,9 +5581,6 @@ msgstr ""
 msgid "Person Editor"
 msgstr ""
 
-msgid "Person List Columns"
-msgstr ""
-
 msgid "Person Name"
 msgstr ""
 
@@ -5594,6 +5615,9 @@ msgid "Person to Make User"
 msgstr ""
 
 msgid "PersonID for Cart must be numeric"
+msgstr ""
+
+msgid "Personal"
 msgstr ""
 
 msgid "Personal Cell Phone"
@@ -6122,6 +6146,9 @@ msgstr ""
 msgid "Remove All from Cart"
 msgstr ""
 
+msgid "Remove Property"
+msgstr ""
+
 msgid "Remove Results From Cart"
 msgstr ""
 
@@ -6593,6 +6620,12 @@ msgstr ""
 msgid "Select Group and Role"
 msgstr ""
 
+msgid "Select Opportunities"
+msgstr ""
+
+msgid "Select Property"
+msgstr ""
+
 msgid "Select Property Type"
 msgstr ""
 
@@ -6767,9 +6800,6 @@ msgstr ""
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr ""
 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr ""
-
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr ""
 
@@ -6867,6 +6897,9 @@ msgid "Signature definition file signature failed validation"
 msgstr ""
 
 msgid "Since"
+msgstr ""
+
+msgid "Since:"
 msgstr ""
 
 #. Context: countries
@@ -7559,6 +7592,9 @@ msgstr ""
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr ""
 
+msgid "Translation incomplete"
+msgstr ""
+
 #. Context: countries
 msgid "Trinidad and Tobago"
 msgstr ""
@@ -8090,6 +8126,9 @@ msgid "View, Add and Edit Notes"
 msgstr ""
 
 msgid "Visit our Site"
+msgstr ""
+
+msgid "Volunteer"
 msgstr ""
 
 msgid "Volunteer Opportunities"
