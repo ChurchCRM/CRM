@@ -60,7 +60,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     // except event type since event type is tied to the attendance count fields
 
     // Use Propel ORM instead of raw SQL for type safety and SQL injection prevention (GHSA-wxcc-gvfv-56fg)
-    $eventType = EventTypeQuery::create()->findById((int)$tyid);
+    $eventType = EventTypeQuery::create()->findOneById((int)$tyid);
     
     if ($eventType !== null) {
         $iTypeID = $eventType->getId();
