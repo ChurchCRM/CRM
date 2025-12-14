@@ -2193,10 +2193,6 @@ msgid "Not assigned"
 msgstr "Не призначено"
 
 #: 
-msgid "About Me"
-msgstr "Про мене"
-
-#: 
 msgid "Printable Page"
 msgstr "Сторінка для друку"
 
@@ -2562,10 +2558,6 @@ msgstr "Знову запустіть запит"
 #: 
 msgid "Execute Query"
 msgstr "Виконати запит"
-
-#: 
-msgid "Send"
-msgstr "Надіслати"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3690,10 +3682,6 @@ msgid "One or more files failed signature validation"
 msgstr "Один або кілька файлів не вдалося перевірити підпис"
 
 #: 
-msgid "Family:"
-msgstr "Сім'я:"
-
-#: 
 msgid "item"
 msgstr "пункт"
 
@@ -3820,10 +3808,6 @@ msgstr "Групи"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Помилка: Ви повинні ввести ім’я"
-
-#: 
-msgid " Since:"
-msgstr " З:"
 
 #: 
 msgid "Total $"
@@ -3968,10 +3952,6 @@ msgid "Set true to enable family self registration."
 msgstr "Встановіть значення true, щоб дозволити самореєстрацію в сім’ї."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM зареєстровано. Команда ChurchCRM використовує реєстраційну інформацію для відстеження використання. Ця інформація зберігається в конфіденційності, ніколи не розголошується та не продається. Якщо це поле відповідає дійсності, параметр реєстрації в меню адміністратора змінюється на оновлення реєстрації."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Лівий край (1 = 1/100 дюйма)"
 
@@ -4078,18 +4058,6 @@ msgstr "Мітка часу останньої резервної копії"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Налаштування квитків на депозит QuickBooks"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Увімкніть перевірку цілісності"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Інтервал у годинах для перевірки доброчесності"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Мітка часу останньої перевірки доброчесності"
 
 #: 
 msgid "List Groups"
@@ -6065,24 +6033,8 @@ msgid "Family Verification"
 msgstr "Перевірка сім’ї"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Члени сім'ї)"
-
-#: 
 msgid "Work Email"
 msgstr "Робоча електронна пошта"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Ваш запит на підтвердження завершено"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Ми виявили помилку під час надсилання даних про підтвердження"
-
-#: 
-msgid "Visit our Site"
-msgstr "Відвідайте наш сайт"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6362,10 +6314,6 @@ msgid "Text before name in emails/reports"
 msgstr "Текст перед назвою в електронних листах / звітах"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Встановіть значення true, щоб дозволити порожнє прізвище в редакторі особи. Встановіть значення false, щоб перевірити прізвище та успадкувати від родини, якщо воно залишається порожнім."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Відображати рахунок рахунку на депозитному листі"
 
@@ -6400,10 +6348,6 @@ msgstr "Частина"
 #: 
 msgid "View Photo"
 msgstr "Переглянути фото"
-
-#: 
-msgid "Family Photo"
-msgstr "Сімейне фото"
 
 #: 
 msgid "Status"
@@ -6444,10 +6388,6 @@ msgstr "Легенда"
 #: 
 msgid "assigned"
 msgstr "призначений"
-
-#: 
-msgid "Photo"
-msgstr "Фото"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7307,10 +7247,6 @@ msgid "No logged in user"
 msgstr "Немає авторизованого користувача"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Встановіть стандартний розмір піктограми зображення профілю в пікселях для використання у списках людей, за замовчуванням - 85 пікселів."
-
-#: 
 msgid "not found"
 msgstr "не знайдено"
 
@@ -7766,14 +7702,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Кінцева точка віддаленого резервного копіювання. Якщо WebDAV, це має бути закодовано за адресою url. "
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Вся інформація на цій сторінці є правильною."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Будь ласка, оновіть інформацію про мою сім’ю наступним чином"
-
-#: 
 msgid "Age Histogram"
 msgstr "Вікова гістограма"
 
@@ -7814,14 +7742,6 @@ msgid "PDF handling mode.\n"
 msgstr "Режим обробки PDF.\n"
 "1 = Діалогове вікно Зберегти файл\n"
 "2 = Відкрити у поточному вікні браузера"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Недоступна інформація про особу, успадкована від призначеної родини для показу?\n"
-"Цей параметр спричиняє певну інформацію із призначеного сімейного запису людини\n"
-"відображається, ЯКЩО відповідна інформація НЕ була введена для цієї особи. "
 
 #: 
 #, fuzzy
@@ -7875,10 +7795,6 @@ msgstr "URL-адреса для підтвердження"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Ідентифікатор несподіваної особи"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Інтервал у годинах для перевірки оновлення програмного забезпечення"
 
 #: 
 msgid "Last Software Update Check Timestamp"

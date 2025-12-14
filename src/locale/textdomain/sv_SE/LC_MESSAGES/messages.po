@@ -2269,10 +2269,6 @@ msgid "Not assigned"
 msgstr "Inte tilldelad"
 
 #: 
-msgid "About Me"
-msgstr "Om mig"
-
-#: 
 msgid "Printable Page"
 msgstr "Utskriftbar sida"
 
@@ -2652,10 +2648,6 @@ msgstr "Kör förfrågan igen"
 #: 
 msgid "Execute Query"
 msgstr "Gör förfrågan"
-
-#: 
-msgid "Send"
-msgstr "Skicka"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3823,10 +3815,6 @@ msgid "One or more files failed signature validation"
 msgstr "En eller flera filer misslyckades signaturvalidering"
 
 #: 
-msgid "Family:"
-msgstr "Familj:"
-
-#: 
 msgid "item"
 msgstr "Artikel"
 
@@ -3953,10 +3941,6 @@ msgstr "Grupper"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Fel: Du måste ange ett namn"
-
-#: 
-msgid " Since:"
-msgstr "Eftersom:"
 
 #: 
 msgid "Total $"
@@ -4101,10 +4085,6 @@ msgid "Set true to enable family self registration."
 msgstr "Ställ in sant för att möjliggöra familjeregistrering."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM har registrerats. ChurchCRM-teamet använder registreringsinformation för att spåra användningen. Denna information hålls konfidentiell och släpps eller säljs aldrig. Om detta fält är sant ändras registreringsalternativet i admin-menyn för att uppdatera registreringen."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Vänster marginal (1 = 1 / 100th inch)"
 
@@ -4211,18 +4191,6 @@ msgstr "Senaste tidsstämpel för säkerhetskopiering"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks Sätt in biljettinställningar"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Aktivera integritetskontroll"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Intervall i timmar för integritetskontroll"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Senaste tidsstämpel för integritet"
 
 #: 
 msgid "List Groups"
@@ -6198,24 +6166,8 @@ msgid "Family Verification"
 msgstr "Familjekontroll"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Familjemedlemmar)"
-
-#: 
 msgid "Work Email"
 msgstr "Arbete e-post"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Din verifieringsbegäran är klar"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Vi stötte på ett felmeddelande med dina verifieringsdata"
-
-#: 
-msgid "Visit our Site"
-msgstr "Besök vår webbplats"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6495,10 +6447,6 @@ msgid "Text before name in emails/reports"
 msgstr "Text före namn i e-postmeddelanden / rapporter"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Ställ in true för att tillåta tomt efternamn i Person Editor. Ställ in falskt för att validera efternamnet och ärva från familjen när det lämnas tomt."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Visa räkningar räknas på insättningsslipp"
 
@@ -6533,10 +6481,6 @@ msgstr "Del"
 #: 
 msgid "View Photo"
 msgstr "Visa Foto"
-
-#: 
-msgid "Family Photo"
-msgstr "Familjefoto"
 
 #: 
 msgid "Status"
@@ -6577,10 +6521,6 @@ msgstr "Legend"
 #: 
 msgid "assigned"
 msgstr "delad"
-
-#: 
-msgid "Photo"
-msgstr "Foto"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7440,10 +7380,6 @@ msgid "No logged in user"
 msgstr "Ingen inloggad användare"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Ställ in standardstorleken för profilbildikonen i pixlar som ska användas i personlistor, standard 85 pixlar."
-
-#: 
 msgid "not found"
 msgstr "hittades inte"
 
@@ -7899,14 +7835,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint Backpoint Endpoint. Om WebDAV måste detta vara url-kodat."
 
 #: 
-msgid "All information on this page is correct."
-msgstr "All information på denna sida är korrekt."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Uppdatera min familjinformation med följande"
-
-#: 
 msgid "Age Histogram"
 msgstr "Åldershistogram"
 
@@ -7947,14 +7875,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF-hanteringsläge.\n"
 "1 = Spara fil-dialog\n"
 "2 = Öppna i det aktuella webbläsarfönstret "
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Otillgänglig personinformation som ärvs från tilldelad familj för visning?\n"
-"Det här alternativet får viss information från en persons tilldelade familjepost\n"
-"visas OM motsvarande info INTE har angetts för den personen."
 
 #: 
 #, fuzzy
@@ -8008,10 +7928,6 @@ msgstr "Verifierings-URL"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Oväntad person-ID"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Intervall i timmar för mjukvaruuppdateringskontroll"
 
 #: 
 msgid "Last Software Update Check Timestamp"

@@ -2648,11 +2648,6 @@ msgstr "Não atribuido"
 
 #: 
 #, fuzzy
-msgid "About Me"
-msgstr "Sobre Mim"
-
-#: 
-#, fuzzy
 msgid "Printable Page"
 msgstr "Página para impressão"
 
@@ -3095,11 +3090,6 @@ msgstr "Executar a consulta novamente"
 #, fuzzy
 msgid "Execute Query"
 msgstr "Executar a consulta"
-
-#: 
-#, fuzzy
-msgid "Send"
-msgstr "Enviar"
 
 #: 
 #, fuzzy
@@ -4450,11 +4440,6 @@ msgstr "Um ou mais arquivos falharam na validação da assinatura"
 
 #: 
 #, fuzzy
-msgid "Family:"
-msgstr "Família:"
-
-#: 
-#, fuzzy
 msgid "item"
 msgstr "item"
 
@@ -4609,11 +4594,6 @@ msgstr "Grupos"
 #, fuzzy
 msgid "Error: You must enter a name"
 msgstr "Erro: Você deve digitar um nome"
-
-#: 
-#, fuzzy
-msgid " Since:"
-msgstr " Desde:"
 
 #: 
 msgid "Total $"
@@ -4790,11 +4770,6 @@ msgstr "Defina verdadeiro para habilitar o auto-registro de família."
 
 #: 
 #, fuzzy
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM foi registrado. A equipe ChurchCRM usa informações de registro para rastrear o uso. Esta informação é mantida confidencial e nunca revelada ou vendida. Se este campo for assinalado verdadeiro a opção de registro no menu administrador muda para atualizar o registro."
-
-#: 
-#, fuzzy
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Margem Esquerda (1 = 1/100 de polegada)"
 
@@ -4927,21 +4902,6 @@ msgstr "Data e hora do último backup"
 #, fuzzy
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Configurações de registros de depósito do QuickBooks"
-
-#: 
-#, fuzzy
-msgid "Enable Integrity Check"
-msgstr "Habilitar verificação de integridade"
-
-#: 
-#, fuzzy
-msgid "Interval in Hours for Integrity Check"
-msgstr "Intervalo em horas para verificação de integridade"
-
-#: 
-#, fuzzy
-msgid "Last Integrity Check Timestamp"
-msgstr "Data e hora da última verificação de integridade"
 
 #: 
 #, fuzzy
@@ -7324,28 +7284,8 @@ msgstr "Verificação da Família"
 
 #: 
 #, fuzzy
-msgid "Family Member(s)"
-msgstr "Membro(s) da Família"
-
-#: 
-#, fuzzy
 msgid "Work Email"
 msgstr "E-mail de Trabalho"
-
-#: 
-#, fuzzy
-msgid "Your verification request is complete"
-msgstr "Seu pedido de verificação está completo"
-
-#: 
-#, fuzzy
-msgid "We encountered an error submitting with your verification data"
-msgstr "Encontramos um erro ao enviar os seus dados de verificação"
-
-#: 
-#, fuzzy
-msgid "Visit our Site"
-msgstr "Visite nosso site"
 
 #: 
 #, fuzzy
@@ -7669,11 +7609,6 @@ msgstr "Texto antes do nome nos e-mails /relatórios"
 
 #: 
 #, fuzzy
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Selecione verdadeiro para permitir o sobrenome vazio no editor de pessoas. Selecione falso para validar o sobrenome e herdar da família quando deixado vazio."
-
-#: 
-#, fuzzy
 msgid "Display bill counts on deposit slip"
 msgstr "Exibir conta (despesa) no comprovante de depósito"
 
@@ -7716,11 +7651,6 @@ msgstr "Parte"
 #, fuzzy
 msgid "View Photo"
 msgstr "Ver foto"
-
-#: 
-#, fuzzy
-msgid "Family Photo"
-msgstr "Foto da Família"
 
 #: 
 #, fuzzy
@@ -7771,11 +7701,6 @@ msgstr "Legenda"
 #, fuzzy
 msgid "assigned"
 msgstr "atribuído"
-
-#: 
-#, fuzzy
-msgid "Photo"
-msgstr "Foto"
 
 #: 
 #, fuzzy
@@ -8845,11 +8770,6 @@ msgstr "Nenhum Usuário Logado"
 
 #: 
 #, fuzzy
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Defina o tamanho do ícone da imagem do perfil padrão em pixels para ser usado nas listas de pessoas. Padrão de 85 pixels."
-
-#: 
-#, fuzzy
 msgid "not found"
 msgstr "não encontrado"
 
@@ -9410,15 +9330,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Ponto de acesso do backup remoto. Se for WebDAV, isso deve ser codificado por url. "
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Todas as informações na página estão corretas."
-
-#: 
-#, fuzzy
-msgid "Please update the my family information with the following"
-msgstr "Por favor, atualize as informações da minha família com o seguinte"
-
-#: 
 #, fuzzy
 msgid "Age Histogram"
 msgstr "Histograma de Idade"
@@ -9467,14 +9378,6 @@ msgid "PDF handling mode.\n"
 msgstr "Modo de manipulação de PDF.\n"
 "1 = Salvar Arquivo\n"
 "2 = Abrir na janela atual do navegador"
-
-#: 
-#, fuzzy
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Informações indisponíveis de uma pessoa de uma família atribuída?\n"
-"Essa opção exibe informações de uma família atribuída a uma pessoa SE a informação correspondente NÃO foi informada para pessoa. "
 
 #: 
 #, fuzzy
@@ -9540,11 +9443,6 @@ msgstr "URL de Verificação"
 #, fuzzy
 msgid "Unexpected Person Id"
 msgstr "ID de Pessoa inesperado"
-
-#: 
-#, fuzzy
-msgid "Interval in Hours for software update check"
-msgstr "Intervalo (em horas) para verificação de atualização do sistema"
 
 #: 
 #, fuzzy

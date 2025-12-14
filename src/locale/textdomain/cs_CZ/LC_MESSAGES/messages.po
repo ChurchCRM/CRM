@@ -2191,10 +2191,6 @@ msgid "Not assigned"
 msgstr "Nepřiřazeno"
 
 #: 
-msgid "About Me"
-msgstr "O mně"
-
-#: 
 msgid "Printable Page"
 msgstr "Strana pro tisk"
 
@@ -2559,10 +2555,6 @@ msgstr "Proveď dotaz znovu"
 #: 
 msgid "Execute Query"
 msgstr "Proveď dotaz"
-
-#: 
-msgid "Send"
-msgstr "Odeslat"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3686,10 +3678,6 @@ msgid "One or more files failed signature validation"
 msgstr "Jeden nebo více souborů neprošlo ověřením podpisu"
 
 #: 
-msgid "Family:"
-msgstr "Rodina:"
-
-#: 
 msgid "item"
 msgstr "položka"
 
@@ -3816,10 +3804,6 @@ msgstr "Skupiny"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Chyba: Musíte zadat jméno"
-
-#: 
-msgid " Since:"
-msgstr " Od:"
 
 #: 
 msgid "Total $"
@@ -3962,10 +3946,6 @@ msgid "Set true to enable family self registration."
 msgstr "Nastavením hodnoty true povolíte vlastní registraci rodiny."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM byl zaregistrován.  Tým ChurchCRM používá informace o registraci ke sledování používání.  Tyto informace jsou důvěrné a nikdy nejsou zveřejňovány ani prodávány.  Pokud je toto pole nastaveno na true, změní se možnost registrace v nabídce správce na aktualizaci registrace."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Levý okraj (1 = 1/100 palce)"
 
@@ -4072,18 +4052,6 @@ msgstr "Časové razítko poslední zálohy"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Nastavení vkladového lístku QuickBooks"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Povolit kontrolu integrity"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Interval v hodinách pro kontrolu integrity"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Časové razítko poslední kontroly integrity"
 
 #: 
 msgid "List Groups"
@@ -6058,24 +6026,8 @@ msgid "Family Verification"
 msgstr "Ověření rodiny"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Členové rodiny"
-
-#: 
 msgid "Work Email"
 msgstr "Pracovní e-mail"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Vaše žádost o ověření je kompletní"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Při odesílání vašich ověřovacích údajů jsme narazili na chybu"
-
-#: 
-msgid "Visit our Site"
-msgstr "Navštivte naši stránku"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6355,10 +6307,6 @@ msgid "Text before name in emails/reports"
 msgstr "Text před jménem v e-mailech/výkazech"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Nastavením true povolíte v Editoru osob prázdné příjmení.  Nastavení na false způsobí, že se příjmení bude ověřovat a dědit z rodiny, pokud zůstane prázdné."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Zobrazení počtu účtů na vkladovém dokladu"
 
@@ -6393,10 +6341,6 @@ msgstr "Část"
 #: 
 msgid "View Photo"
 msgstr "Zobrazit foto"
-
-#: 
-msgid "Family Photo"
-msgstr "Rodinné foto"
 
 #: 
 msgid "Status"
@@ -6437,10 +6381,6 @@ msgstr "Legenda"
 #: 
 msgid "assigned"
 msgstr "přiřazený"
-
-#: 
-msgid "Photo"
-msgstr "Foto"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7298,10 +7238,6 @@ msgid "No logged in user"
 msgstr "Nepřihlášený uživatel"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Nastavení standardní velikosti ikony profilového obrázku v pixelech, která se bude používat v seznamech lidí, výchozí 85 pixelů."
-
-#: 
 msgid "not found"
 msgstr "nenalezena"
 
@@ -7754,14 +7690,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Koncový bod vzdáleného zálohování.  Pokud jde o WebDAV, musí být  zakódováno pomocí url. "
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Všechny informace na této stránce jsou správné."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Aktualizujte prosím informace o mé rodině takto"
-
-#: 
 msgid "Age Histogram"
 msgstr "Věkový histogram"
 
@@ -7802,14 +7730,6 @@ msgid "PDF handling mode.\n"
 msgstr "Režim práce s PDF.\n"
 "1 = dialogové okno Uložit soubor\n"
 "2 = Otevřít v aktuálním okně prohlížeče"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Zobrazit nedostupné informace o osobě zděděné z přiřazené rodiny?\n"
-"Tato možnost způsobí, že se zobrazí určité informace ze záznamu rodiny osoby, \n"
-"POKUD pro danou osobu NEbyly zadány odpovídající informace. "
 
 #: 
 #, fuzzy
@@ -7863,10 +7783,6 @@ msgstr "Adresa URL pro ověření"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Neočekávané ID osoby"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Interval kontroly aktualizace softwaru (v hodinách)"
 
 #: 
 msgid "Last Software Update Check Timestamp"

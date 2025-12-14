@@ -2193,10 +2193,6 @@ msgid "Not assigned"
 msgstr "Tidak ditugaskan"
 
 #: 
-msgid "About Me"
-msgstr "Tentang saya"
-
-#: 
 msgid "Printable Page"
 msgstr "Halaman yang Dapat Dicetak"
 
@@ -2562,10 +2558,6 @@ msgstr "Jalankan Query Lagi"
 #: 
 msgid "Execute Query"
 msgstr "Jalankan Query"
-
-#: 
-msgid "Send"
-msgstr "Kirim"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3692,10 +3684,6 @@ msgid "One or more files failed signature validation"
 msgstr "Satu atau lebih file gagal validasi tanda tangan"
 
 #: 
-msgid "Family:"
-msgstr "Keluarga:"
-
-#: 
 msgid "item"
 msgstr "barang"
 
@@ -3822,10 +3810,6 @@ msgstr "Grup"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Kesalahan: Anda harus memasukkan nama"
-
-#: 
-msgid " Since:"
-msgstr "Sejak:"
 
 #: 
 msgid "Total $"
@@ -3970,10 +3954,6 @@ msgid "Set true to enable family self registration."
 msgstr "Set true untuk mengaktifkan pendaftaran mandiri keluarga."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM telah terdaftar. Tim ChurchCRM menggunakan informasi pendaftaran untuk melacak penggunaan. Informasi ini dirahasiakan dan tidak pernah dirilis atau dijual. Jika bidang ini benar, opsi pendaftaran di menu admin berubah untuk memperbarui pendaftaran."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Margin Kiri (1 = 1/100 inci)"
 
@@ -4080,18 +4060,6 @@ msgstr "Stempel Waktu Cadangan Terakhir"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Pengaturan Tiket Setoran QuickBooks"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Aktifkan Pemeriksaan Integritas"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Interval dalam Jam untuk Pemeriksaan Integritas"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Stempel Waktu Pemeriksaan Integritas Terakhir"
 
 #: 
 msgid "List Groups"
@@ -6067,24 +6035,8 @@ msgid "Family Verification"
 msgstr "Verifikasi Keluarga"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Anggota keluarga)"
-
-#: 
 msgid "Work Email"
 msgstr "Email Kantor"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Permintaan verifikasi Anda selesai"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Kami mengalami kesalahan saat mengirimkan data verifikasi Anda"
-
-#: 
-msgid "Visit our Site"
-msgstr "Kunjungi Situs kami"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6364,10 +6316,6 @@ msgid "Text before name in emails/reports"
 msgstr "Teks sebelum nama di email / laporan"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Set true untuk mengizinkan nama belakang kosong di Person Editor. Set false untuk memvalidasi nama belakang dan mewarisi dari keluarga ketika dibiarkan kosong."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Menampilkan jumlah tagihan pada slip setoran"
 
@@ -6402,10 +6350,6 @@ msgstr "Bagian"
 #: 
 msgid "View Photo"
 msgstr "Lihat Foto"
-
-#: 
-msgid "Family Photo"
-msgstr "Foto keluarga"
 
 #: 
 msgid "Status"
@@ -6446,10 +6390,6 @@ msgstr "Legenda"
 #: 
 msgid "assigned"
 msgstr "ditugaskan"
-
-#: 
-msgid "Photo"
-msgstr "Foto"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7309,10 +7249,6 @@ msgid "No logged in user"
 msgstr "Tidak ada pengguna yang login"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Atur ukuran ikon gambar profil standar dalam piksel untuk digunakan dalam daftar orang, default 85 piksel."
-
-#: 
 msgid "not found"
 msgstr "tidak ditemukan"
 
@@ -7768,14 +7704,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote Endpoint Cadangan. Jika WebDAV, ini harus url disandikan."
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Semua informasi pada halaman ini benar."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Harap perbarui informasi keluarga saya dengan yang berikut ini"
-
-#: 
 msgid "Age Histogram"
 msgstr "Histogram Usia"
 
@@ -7809,12 +7737,6 @@ msgid "PDF handling mode.\n"
 "1 = Save File dialog\n"
 "2 = Open in current browser window"
 msgstr "Mode penanganan PDF. 1 = Simpan dialog File 2 = Buka di jendela browser saat ini"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Info orang yang tidak tersedia diwarisi dari keluarga yang ditugaskan untuk ditampilkan?  Opsi ini menyebabkan info tertentu dari catatan keluarga yang ditugaskan seseorang untuk  ditampilkan JIKA info yang sesuai TIDAK dimasukkan untuk orang itu."
 
 #: 
 #, fuzzy
@@ -7868,10 +7790,6 @@ msgstr "URL verifikasi"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Id Orang Tidak Terduga"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Interval dalam Jam untuk pemeriksaan pembaruan perangkat lunak"
 
 #: 
 msgid "Last Software Update Check Timestamp"

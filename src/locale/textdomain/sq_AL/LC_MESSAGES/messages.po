@@ -2166,10 +2166,6 @@ msgid "Execute Query"
 msgstr "Execute Query"
 
 #: 
-msgid "Send"
-msgstr "Dërgoj"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Zotimi Reminder Raporti"
 
@@ -2812,10 +2808,6 @@ msgstr "Lloji Depozita"
 #: 
 msgid "Report Settings"
 msgstr "Raporti Cilësimet"
-
-#: 
-msgid "Family:"
-msgstr "Familja:"
 
 #: 
 msgid "item"

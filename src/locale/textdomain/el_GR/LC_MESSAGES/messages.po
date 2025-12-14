@@ -2192,10 +2192,6 @@ msgid "Not assigned"
 msgstr "Δεν έχει εκχωρηθεί"
 
 #: 
-msgid "About Me"
-msgstr "Σχετικά με μένα"
-
-#: 
 msgid "Printable Page"
 msgstr "Εκτυπώσιμη σελίδα"
 
@@ -2561,10 +2557,6 @@ msgstr "Εκτελέστε ξανά το ερώτημα"
 #: 
 msgid "Execute Query"
 msgstr "Εκτέλεση ερωτήματος"
-
-#: 
-msgid "Send"
-msgstr "Στείλετε"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3689,10 +3681,6 @@ msgid "One or more files failed signature validation"
 msgstr "Ένα ή περισσότερα αρχεία απέτυχε στην επικύρωση υπογραφής"
 
 #: 
-msgid "Family:"
-msgstr "Οικογένεια:"
-
-#: 
 msgid "item"
 msgstr "είδος"
 
@@ -3819,10 +3807,6 @@ msgstr "Ομάδες"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Σφάλμα: Πρέπει να εισαγάγετε ένα όνομα"
-
-#: 
-msgid " Since:"
-msgstr " Από:"
 
 #: 
 msgid "Total $"
@@ -3967,10 +3951,6 @@ msgid "Set true to enable family self registration."
 msgstr "Ορίστε το true για να ενεργοποιήσετε την οικογενειακή εγγραφή."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "Το ChurchCRM έχει καταχωρηθεί. Η ομάδα ChurchCRM χρησιμοποιεί πληροφορίες εγγραφής για να παρακολουθεί τη χρήση. Αυτές οι πληροφορίες διατηρούνται εμπιστευτικές και δεν δημοσιοποιούνται ή πωλούνται ποτέ. Εάν αυτό το πεδίο είναι αληθές, η επιλογή εγγραφής στο μενού διαχειριστή αλλάζει σε ενημέρωση εγγραφής."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Αριστερό περιθώριο (1 = 1/100η ίντσα)"
 
@@ -4077,18 +4057,6 @@ msgstr "Χρονική σήμανση τελευταίας δημιουργία�
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Ρυθμίσεις εισιτηρίων κατάθεσης QuickBooks"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Ενεργοποιήστε τον Έλεγχο ακεραιότητας"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Διάστημα σε ώρες για έλεγχο ακεραιότητας"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Χρονική σήμανση τελευταίου ελέγχου ακεραιότητας"
 
 #: 
 msgid "List Groups"
@@ -6064,24 +6032,8 @@ msgid "Family Verification"
 msgstr "Οικογενειακή επαλήθευση"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Μέλη της οικογένειας)"
-
-#: 
 msgid "Work Email"
 msgstr "Email εργασίας"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Το αίτημα επαλήθευσης έχει ολοκληρωθεί"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Αντιμετωπίσαμε σφάλμα κατά την υποβολή των δεδομένων επαλήθευσης"
-
-#: 
-msgid "Visit our Site"
-msgstr "Επισκεφθείτε τον Ιστότοπό μας"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6361,10 +6313,6 @@ msgid "Text before name in emails/reports"
 msgstr "Κείμενο πριν από το όνομα στα email/αναφορές"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Ορίστε true για να επιτρέπεται το κενό επώνυμο στον Επεξεργαστή Προσώπων. Ορίστε το false για να επικυρώσετε το επώνυμο και να κληρονομήσετε από την οικογένεια όταν μείνετε κενό."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Εμφάνιση μετρήσεων λογαριασμών στο δελτίο κατάθεσης"
 
@@ -6399,10 +6347,6 @@ msgstr "Μέρος"
 #: 
 msgid "View Photo"
 msgstr "Δες τη φωτογραφία"
-
-#: 
-msgid "Family Photo"
-msgstr "Οικογενειακή φωτογραφία"
 
 #: 
 msgid "Status"
@@ -6443,10 +6387,6 @@ msgstr "Θρύλος"
 #: 
 msgid "assigned"
 msgstr "ανατεθεί"
-
-#: 
-msgid "Photo"
-msgstr "φωτογραφία"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7306,10 +7246,6 @@ msgid "No logged in user"
 msgstr "Κανένας συνδεδεμένος χρήστης"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Ορίστε το τυπικό μέγεθος εικονιδίου εικόνας προφίλ σε pixel που θα χρησιμοποιείται σε λίστες Μελών, προεπιλογή 85 pixel."
-
-#: 
 msgid "not found"
 msgstr "δεν βρέθηκε"
 
@@ -7765,14 +7701,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Τελικό σημείο απομακρυσμένου αντιγράφου ασφαλείας. Εάν το WebDAV, αυτό πρέπει να είναι κωδικοποιημένο με url. "
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Όλες οι πληροφορίες σε αυτή τη σελίδα είναι σωστές."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Ενημερώστε τα στοιχεία της οικογένειάς μου με τα ακόλουθα"
-
-#: 
 msgid "Age Histogram"
 msgstr "Ιστόγραμμα ηλικίας"
 
@@ -7813,14 +7741,6 @@ msgid "PDF handling mode.\n"
 msgstr "Λειτουργία χειρισμού PDF.\n"
 "1 = Διάλογος Αποθήκευση αρχείου\n"
 "2 = Άνοιγμα στο τρέχον παράθυρο του προγράμματος περιήγησης"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Μη διαθέσιμες πληροφορίες Μέλους που κληρονομήθηκαν από την εκχωρημένη οικογένεια για εμφάνιση;\n"
-"Αυτή η επιλογή προκαλεί ορισμένες πληροφορίες από το εκχωρημένο οικογενειακό αρχείο ενός Ωφελούμενου\n"
-"εμφανίζεται ΑΝ ΔΕΝ έχουν εισαχθεί οι αντίστοιχες πληροφορίες για αυτό το άτομο. "
 
 #: 
 #, fuzzy
@@ -7874,10 +7794,6 @@ msgstr "URL επαλήθευσης"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Μη αποδεκτο Αναγνωριστικό Μέλους"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Διάστημα σε ώρες για έλεγχο ενημέρωσης λογισμικού"
 
 #: 
 msgid "Last Software Update Check Timestamp"

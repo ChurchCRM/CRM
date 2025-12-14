@@ -532,7 +532,6 @@
     "This value cannot be less than ": "Kjo vlerë nuk mund të jetë më pak se ",
     "Run Query Again": "Run Query Përsëri",
     "Execute Query": "Execute Query",
-    "Send": "Dërgoj",
     "Pledge Reminder Report": "Zotimi Reminder Raporti",
     "All donations from this family have been moved to another family.": "Të gjitha donacionet nga kjo familje janë zhvendosur në një familje tjetër.",
     "Family Delete Confirmation": "Familja Fshije Konfirmimi",
@@ -693,6 +692,5 @@
     "Fundraiser": "Fondesh",
     "Deposit Type": "Lloji Depozita",
     "Report Settings": "Raporti Cilësimet",
-    "Family:": "Familja:",
     "item": "artikull"
 }

@@ -2191,10 +2191,6 @@ msgid "Not assigned"
 msgstr "Niet gekoppeled"
 
 #: 
-msgid "About Me"
-msgstr "Over mij"
-
-#: 
 msgid "Printable Page"
 msgstr "Afdruk Voorbeeld"
 
@@ -2559,10 +2555,6 @@ msgstr "Draai Query opnieuw"
 #: 
 msgid "Execute Query"
 msgstr "Execute Query"
-
-#: 
-msgid "Send"
-msgstr "Verstuur"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3689,10 +3681,6 @@ msgid "One or more files failed signature validation"
 msgstr "Handtekeningsvalidatie van één of meer bestanden is mislukt "
 
 #: 
-msgid "Family:"
-msgstr "Gezin:"
-
-#: 
 msgid "item"
 msgstr "object"
 
@@ -3819,10 +3807,6 @@ msgstr "Groepen"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Fout: registreer naam"
-
-#: 
-msgid " Since:"
-msgstr "Vanaf"
 
 #: 
 msgid "Total $"
@@ -3968,10 +3952,6 @@ msgid "Set true to enable family self registration."
 msgstr "Instellen op \"aan\" om zelf registratie van een gezin mogelijk te maken."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "Deze applicatie is geregistreerd. Het ChurchCRM-team gebruikt registratie-informatie om het gebruik bij te houden. Deze informatie wordt vertrouwelijk behandeld en nooit vrijgegeven of verkocht. Als dit veld waar is, verandert de registratie-optie in het instellingen menu om de registratie bij te werken."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Linkermarge (1 = 1 / 100ste inch)"
 
@@ -4078,18 +4058,6 @@ msgstr "Laatste back-up tijdstempel"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Instellingen voor QuickBooks-stortingsticket"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Inschakelen Integriteitscheck"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Interval in uren voor integriteitscontrole"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Tijd van laatste integriteitscontrole"
 
 #: 
 msgid "List Groups"
@@ -6066,24 +6034,8 @@ msgid "Family Verification"
 msgstr "Controleer het gezin"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Gezinsleden"
-
-#: 
 msgid "Work Email"
 msgstr "E-mail werk"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Uw verificatieverzoek is voltooid"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Er is een fout opgetreden bij het verzenden met uw verificatiegegevens"
-
-#: 
-msgid "Visit our Site"
-msgstr "Bezoek onze pagina"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6363,10 +6315,6 @@ msgid "Text before name in emails/reports"
 msgstr "Tekst voor naam in e-mails/rapporten"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Stel waar in om een lege achternaam toe te staan in de Persoonseditor. Stel niet waar in om de achternaam te valideren en van familie te erven als deze leeg is."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Toon rekeningtellingen op stortingsbewijs"
 
@@ -6401,10 +6349,6 @@ msgstr "Deel"
 #: 
 msgid "View Photo"
 msgstr "Bekijk foto"
-
-#: 
-msgid "Family Photo"
-msgstr "Gezinsfoto"
 
 #: 
 msgid "Status"
@@ -6445,10 +6389,6 @@ msgstr "Legenda"
 #: 
 msgid "assigned"
 msgstr "Gekoppeld"
-
-#: 
-msgid "Photo"
-msgstr "Foto"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7306,10 +7246,6 @@ msgid "No logged in user"
 msgstr "Geen ingelogde gebruiker"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Geef de standaard grootte voor profielfoto's in pixels op voor het gebruik in personenlijsten, standaard 85 pixels."
-
-#: 
 msgid "not found"
 msgstr "Niet gevonden"
 
@@ -7762,14 +7698,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Remote back-up eindpunt. Met WebDAV, moet dit url-gecodeerd zijn."
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Alle informatie op deze pagina is correct."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Werk de informatie over mijn familie bij met het volgende:"
-
-#: 
 msgid "Age Histogram"
 msgstr "Leeftijd histogram"
 
@@ -7810,14 +7738,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF-verwerkingsmodus.\n"
 "1 = dialoogvenster Bestand opslaan\n"
 "2 = Openen in huidig browservenster"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Niet-beschikbare persoonsgegevens overgenomen van toegewezen familie voor weergave?\n"
-"Deze optie zorgt ervoor dat bepaalde informatie uit het toegewezen familierecord van een persoon\n"
-"weergegeven ALS de corresponderende info NIET is ingevoerd voor die persoon. "
 
 #: 
 #, fuzzy
@@ -7871,10 +7791,6 @@ msgstr "Verificatie-URL"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Onverwachte persoon-ID"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Interval in uren voor controle van software-update"
 
 #: 
 msgid "Last Software Update Check Timestamp"

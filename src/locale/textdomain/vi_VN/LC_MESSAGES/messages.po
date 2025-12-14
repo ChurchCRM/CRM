@@ -2206,10 +2206,6 @@ msgid "Not assigned"
 msgstr "Không được chỉ định"
 
 #: 
-msgid "About Me"
-msgstr "Giới thiệu về tôi"
-
-#: 
 msgid "Printable Page"
 msgstr "In trang này"
 
@@ -2575,10 +2571,6 @@ msgstr "Chạy lại truy vấn"
 #: 
 msgid "Execute Query"
 msgstr "Thực hiện kiểm tra"
-
-#: 
-msgid "Send"
-msgstr "Gửi đi"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3705,10 +3697,6 @@ msgid "One or more files failed signature validation"
 msgstr "Một hoặc nhiều tệp không xác thực được chữ ký"
 
 #: 
-msgid "Family:"
-msgstr "Gia đình:"
-
-#: 
 msgid "item"
 msgstr "mục"
 
@@ -3835,10 +3823,6 @@ msgstr "Ban/Mục vụ"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Lỗi: Bạn phải nhập tên"
-
-#: 
-msgid " Since:"
-msgstr "Từ:"
 
 #: 
 msgid "Total $"
@@ -3983,10 +3967,6 @@ msgid "Set true to enable family self registration."
 msgstr "Đặt true để cho phép tự đăng ký gia đình."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM đã được đăng ký. Nhóm ChurchCRM sử dụng thông tin đăng ký để theo dõi việc sử dụng. Thông tin này được giữ bí mật và không bao giờ tiết lộ hoặc bán. Nếu trường này đúng, tùy chọn đăng ký trong menu quản trị sẽ thay đổi để cập nhật đăng ký."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Lề trái (1 = 1/100 inch)"
 
@@ -4093,18 +4073,6 @@ msgstr "Dấu thời gian sao lưu lần cuối"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Cài đặt vé gửi tiền QuickBooks"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Bật kiểm tra tính toàn vẹn"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Khoảng thời gian trong giờ để kiểm tra tính toàn vẹn"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Dấu thời gian kiểm tra tính toàn vẹn lần cuối"
 
 #: 
 msgid "List Groups"
@@ -6080,24 +6048,8 @@ msgid "Family Verification"
 msgstr "Xác minh gia đình"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Thành viên gia đình"
-
-#: 
 msgid "Work Email"
 msgstr "Email công việc"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Yêu cầu xác minh của bạn đã hoàn tất"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Chúng tôi đã gặp lỗi khi gửi dữ liệu xác minh của bạn"
-
-#: 
-msgid "Visit our Site"
-msgstr "Ghé thăm trang web của chúng tôi"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6377,10 +6329,6 @@ msgid "Text before name in emails/reports"
 msgstr "Văn bản trước tên trong email / báo cáo"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Đặt true để cho phép họ trống trong Person Editor. Đặt false để xác thực họ và kế thừa từ gia đình khi để trống."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Hiển thị số lượng hóa đơn trên phiếu gửi tiền"
 
@@ -6415,10 +6363,6 @@ msgstr "Phần"
 #: 
 msgid "View Photo"
 msgstr "Xem ảnh"
-
-#: 
-msgid "Family Photo"
-msgstr "Hình ảnh gia đình"
 
 #: 
 msgid "Status"
@@ -6459,10 +6403,6 @@ msgstr "Huyền thoại"
 #: 
 msgid "assigned"
 msgstr "giao"
-
-#: 
-msgid "Photo"
-msgstr "hình chụp"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7322,10 +7262,6 @@ msgid "No logged in user"
 msgstr "Không có người dùng đã đăng nhập"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Đặt kích thước biểu tượng ảnh hồ sơ tiêu chuẩn tính bằng pixel sẽ được sử dụng trong danh sách người, mặc định là 85 pixel."
-
-#: 
 msgid "not found"
 msgstr "không tìm thấy"
 
@@ -7781,14 +7717,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Điểm cuối sao lưu từ xa. Nếu WebDAV, điều này phải được mã hóa url."
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Tất cả thông tin trên trang này là chính xác."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Vui lòng cập nhật thông tin gia đình tôi với những điều sau"
-
-#: 
 msgid "Age Histogram"
 msgstr "Biểu đồ tuổi"
 
@@ -7822,12 +7750,6 @@ msgid "PDF handling mode.\n"
 "1 = Save File dialog\n"
 "2 = Open in current browser window"
 msgstr "Thông tin người không có sẵn được kế thừa từ gia đình được chỉ định để hiển thị?"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Tùy chọn này sẽ hiển thị một số thông tin nhất định từ hồ sơ gia đình được chỉ định của một người NẾU KHÔNG nhập thông tin tương ứng cho người đó."
 
 #: 
 #, fuzzy
@@ -7881,10 +7803,6 @@ msgstr "URL xác minh"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Id người không mong muốn"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Khoảng thời gian trong giờ để kiểm tra cập nhật phần mềm"
 
 #: 
 msgid "Last Software Update Check Timestamp"

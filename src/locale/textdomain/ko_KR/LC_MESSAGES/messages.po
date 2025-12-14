@@ -2191,10 +2191,6 @@ msgid "Not assigned"
 msgstr "배정되지 않음"
 
 #: 
-msgid "About Me"
-msgstr "소개"
-
-#: 
 msgid "Printable Page"
 msgstr "인쇄용 페이지"
 
@@ -2559,10 +2555,6 @@ msgstr "쿼리 다시 실행"
 #: 
 msgid "Execute Query"
 msgstr "쿼리 실행"
-
-#: 
-msgid "Send"
-msgstr "전송"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3686,10 +3678,6 @@ msgid "One or more files failed signature validation"
 msgstr "한 개 이상의 파일이 서명 검증에 실패했습니다"
 
 #: 
-msgid "Family:"
-msgstr "가족:"
-
-#: 
 msgid "item"
 msgstr "항목"
 
@@ -3816,10 +3804,6 @@ msgstr "그룹"
 #: 
 msgid "Error: You must enter a name"
 msgstr "오류: 이름을 입력해야 합니다."
-
-#: 
-msgid " Since:"
-msgstr " 기준일:"
 
 #: 
 msgid "Total $"
@@ -3962,10 +3946,6 @@ msgid "Set true to enable family self registration."
 msgstr "True로 설정하면 가족 자가 등록을 허용합니다."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM이 등록되었습니다. 등록 정보는 사용 현황 파악에만 쓰이며 외부에 공개되거나 판매되지 않습니다. True로 설정되면 관리자 메뉴에서 등록 옵션이 ‘등록 정보 수정’으로 바뀝니다."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "왼쪽 여백(1 = 1/100인치)"
 
@@ -4072,18 +4052,6 @@ msgstr "마지막 백업 시각"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks 입금 내역서 설정"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "무결성 검사 활성화"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "무결성 검사 주기(시간)"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "마지막 무결성 검사 시각"
 
 #: 
 msgid "List Groups"
@@ -6058,24 +6026,8 @@ msgid "Family Verification"
 msgstr "가족 정보 확인"
 
 #: 
-msgid "Family Member(s)"
-msgstr "가족 구성원"
-
-#: 
 msgid "Work Email"
 msgstr "직장 이메일"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "정보 확인 요청이 완료되었습니다"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "확인 정보를 제출하는 중 오류가 발생했습니다"
-
-#: 
-msgid "Visit our Site"
-msgstr "웹사이트 방문"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6355,10 +6307,6 @@ msgid "Text before name in emails/reports"
 msgstr "이메일/보고서에서 이름 앞에 붙는 문구"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "True로 설정하면 개인 정보에서 성을 비워둘 수 있습니다. False로 설정하면 성을 필수로 받고 비워두면 가족 정보에서 가져옵니다."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "입금 내역서에 지폐 수량 표시"
 
@@ -6393,10 +6341,6 @@ msgstr "파트"
 #: 
 msgid "View Photo"
 msgstr "사진 보기"
-
-#: 
-msgid "Family Photo"
-msgstr "가족 사진"
 
 #: 
 msgid "Status"
@@ -6437,10 +6381,6 @@ msgstr "범례"
 #: 
 msgid "assigned"
 msgstr "배정됨"
-
-#: 
-msgid "Photo"
-msgstr "사진"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7298,10 +7238,6 @@ msgid "No logged in user"
 msgstr "로그인된 사용자가 없습니다"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "교인 목록에 사용할 기본 프로필 아이콘 크기(픽셀)를 설정합니다. 기본값 85픽셀"
-
-#: 
 msgid "not found"
 msgstr "찾을 수 없음"
 
@@ -7753,14 +7689,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "원격 백업 엔드포인트(WebDAV인 경우 URL 인코딩 필요). "
 
 #: 
-msgid "All information on this page is correct."
-msgstr "이 페이지 정보가 모두 정확합니다."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "아래 내용으로 가족 정보를 업데이트해 주세요"
-
-#: 
 msgid "Age Histogram"
 msgstr "연령 히스토그램"
 
@@ -7801,13 +7729,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF 처리 방식\n"
 "1 = 파일 저장 대화상자\n"
 "2 = 현재 브라우저에서 열기"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "가족 정보에서 개인 정보를 가져와 표시할까요?\n"
-"개인 정보가 비어 있으면 가족 기록의 해당 정보를 표시합니다."
 
 #: 
 #, fuzzy
@@ -7861,10 +7782,6 @@ msgstr "확인 URL"
 #: 
 msgid "Unexpected Person Id"
 msgstr "예상치 못한 Person ID"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "소프트웨어 업데이트 확인 주기(시간)"
 
 #: 
 msgid "Last Software Update Check Timestamp"
