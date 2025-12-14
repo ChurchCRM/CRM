@@ -25,7 +25,9 @@ INNER JOIN family_fam f ON p.per_fam_ID = f.fam_ID
 SET 
   p.per_WorkPhone = IF(p.per_WorkPhone = '' OR p.per_WorkPhone IS NULL, f.fam_WorkPhone, p.per_WorkPhone),
   p.per_CellPhone = IF(p.per_CellPhone = '' OR p.per_CellPhone IS NULL, f.fam_CellPhone, p.per_CellPhone)
-WHERE p.per_fam_ID > 0; (no longer used)
+WHERE p.per_fam_ID > 0;
+
+-- Drop egive table (no longer used)
 DROP TABLE IF EXISTS `egive_egv`;
 
 -- Remove unused iLogFileThreshold config (never implemented)
