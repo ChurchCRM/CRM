@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "فقط البيانات الجديدة أدناه"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(استخدم مربع نص للبلدان عدا الولايات المتحدة وكندا)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "عدم التنسيق التلقائي"
 
@@ -564,10 +560,6 @@ msgstr "تفاصيل الإيداع: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "سيتم حذف فشل المعاملات بيرمانانتلي عند إغلاق قسيمة الإيداع: ملاحظة هامة."
-
-#: 
-msgid "Import eGive"
-msgstr "استيراد eGive"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "نقداً"
 #: 
 msgid "Bank Draft"
 msgstr "حوالة مصرفية"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2160,10 +2148,6 @@ msgid "Person Editor"
 msgstr "محرر شخص"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "يجب إدخال اسم آخر إذا لم يتم تحديد الأسرة."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "ليس صحيحا صديق التسجيل"
 
@@ -2174,14 +2158,6 @@ msgstr "ليس صحيحا العضوية التسجيل"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "ايميل العمل غير صحيح"
-
-#: 
-msgid "Red text"
-msgstr "نص احمر"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "يشير العناصر الموروثة من سجل الأسرة المرتبطة بها."
 
 #: 
 msgid "Birth Month"
@@ -2894,38 +2870,6 @@ msgstr "هل لديك اى اقتراحات لنا؟"
 #: 
 msgid "How did you learn of the church?"
 msgstr "كيف تتعلم من الكنيسة؟"
-
-#: 
-msgid "eGive Import"
-msgstr "eGive استيراد"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "إعادة استيراد لاختيار الأسرة"
-
-#: 
-msgid "Data import results: "
-msgstr "النتائج استيراد البيانات:"
-
-#: 
-msgid " gifts were imported, "
-msgstr "وقد تم استيراد الهدايا،"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "الهدايا دون تغيير، و"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "الهدايا يتم استيراد بسبب مشاكل"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "العودة إلى الإيداع زلة"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "خطأ فادح في داتاستريم API eGive: \""
 
 #: 
 msgid "eMail Dashboard"
@@ -3734,7 +3678,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "انتهت مهلة الجلسة السابقة الخاص بها. الرجاد الدخول على الحساب من جديد."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "تسجيل جديد للأسرة"
 
 #: 
@@ -3752,18 +3697,6 @@ msgstr "عائلة:"
 #: 
 msgid "item"
 msgstr "بند"
-
-#: 
-msgid "Address 1"
-msgstr "العنوان 1"
-
-#: 
-msgid "Address 2"
-msgstr "العنوان 2"
-
-#: 
-msgid "Cell phone"
-msgstr "الهاتف الخلوي"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3824,14 +3757,6 @@ msgstr "تاريخ دخول:"
 #: 
 msgid "CSV Import"
 msgstr "CSV استيراد"
-
-#: 
-msgid "Start Date: "
-msgstr "تاريخ البدء:"
-
-#: 
-msgid "End Date: "
-msgstr "تاريخ الانتهاء:"
 
 #: 
 msgid "Members:"
@@ -3994,10 +3919,6 @@ msgstr "خط العرض الكنيسة، وتستخدم لتوسيط خريطة 
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "خط الطول للكنيسة، وتستخدم لتوسيط خريطة جوجل"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "تعيين وفيا لإدخال العناوين تعطيل في محرر شخص. مجموعة كاذبة لتمكين إدخال عناوين في محرر شخص."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

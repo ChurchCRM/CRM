@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-13 23:22+0000\n"
+"POT-Creation-Date: 2025-12-14 02:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -578,7 +578,7 @@ msgstr ""
 msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
 msgstr ""
 
-msgid "All information on this page is correct."
+msgid "All information is correct"
 msgstr ""
 
 msgid "All members already in cart"
@@ -1572,10 +1572,16 @@ msgstr ""
 msgid "Confirm Enable Group Specific Properties"
 msgstr ""
 
+msgid "Confirm Family Information"
+msgstr ""
+
 msgid "Confirm New Password"
 msgstr ""
 
 msgid "Confirm data labels"
+msgstr ""
+
+msgid "Confirm family information"
 msgstr ""
 
 #. Context: countries
@@ -1624,6 +1630,9 @@ msgid "Cook Islands"
 msgstr ""
 
 msgid "Coordinate data base file name:"
+msgstr ""
+
+msgid "Copied!"
 msgstr ""
 
 msgid "Copy"
@@ -2832,6 +2841,9 @@ msgstr ""
 msgid "Failed to add to cart"
 msgstr ""
 
+msgid "Failed to copy URL"
+msgstr ""
+
 msgid "Failed to create backup."
 msgstr ""
 
@@ -2964,9 +2976,6 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Family Member Count"
-msgstr ""
-
-msgid "Family Member(s)"
 msgstr ""
 
 msgid "Family Members"
@@ -4925,6 +4934,9 @@ msgstr ""
 msgid "New to"
 msgstr ""
 
+msgid "Newsletter"
+msgstr ""
+
 msgid "Newsletter labels"
 msgstr ""
 
@@ -5284,6 +5296,9 @@ msgid "Open"
 msgstr ""
 
 msgid "Open Deposits:"
+msgstr ""
+
+msgid "Open in New Tab"
 msgstr ""
 
 msgid "Open this file in a text editor:"
@@ -5731,6 +5746,9 @@ msgstr ""
 msgid "Please confirm the password reset of this user"
 msgstr ""
 
+msgid "Please confirm your family information:"
+msgstr ""
+
 msgid "Please correct the validation errors before continuing."
 msgstr ""
 
@@ -5823,10 +5841,10 @@ msgstr ""
 msgid "Please store these recovery codes in a safe location"
 msgstr ""
 
-msgid "Please update the MailChimp API key in:"
+msgid "Please update our records with corrections"
 msgstr ""
 
-msgid "Please update the my family information with the following"
+msgid "Please update the MailChimp API key in:"
 msgstr ""
 
 msgid "Please verify your family's information"
@@ -5980,6 +5998,9 @@ msgid "Property Types"
 msgstr ""
 
 msgid "Property successfully assigned."
+msgstr ""
+
+msgid "Provide any corrections or additional information here..."
 msgstr ""
 
 msgid "Public Calendar"
@@ -6724,9 +6745,6 @@ msgstr ""
 msgid "Sell to everyone"
 msgstr ""
 
-msgid "Send"
-msgstr ""
-
 msgid "Send Message"
 msgstr ""
 
@@ -6844,6 +6862,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Seychelles"
+msgstr ""
+
+msgid "Share this URL with family members to verify their information"
 msgstr ""
 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -7076,6 +7097,9 @@ msgstr ""
 msgid "Submit Registration"
 msgstr ""
 
+msgid "Submit Verification"
+msgstr ""
+
 msgid "Submit to GitHub"
 msgstr ""
 
@@ -7279,6 +7303,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Thailand (ไทย)"
+msgstr ""
+
+msgid "Thank You!"
 msgstr ""
 
 msgid "Thank you for registering your ChurchCRM installation."
@@ -8125,7 +8152,7 @@ msgstr ""
 msgid "View, Add and Edit Notes"
 msgstr ""
 
-msgid "Visit our Site"
+msgid "Visit Our Website"
 msgstr ""
 
 msgid "Volunteer"
@@ -8212,7 +8239,7 @@ msgstr ""
 msgid "We could not find the person(s) you were looking for."
 msgstr ""
 
-msgid "We encountered an error submitting with your verification data"
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
 msgstr ""
 
 msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
@@ -8473,7 +8500,7 @@ msgstr ""
 msgid "Your privacy is important. We never share your information with third parties."
 msgstr ""
 
-msgid "Your verification request is complete"
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
 msgstr ""
 
 #. Context: countries

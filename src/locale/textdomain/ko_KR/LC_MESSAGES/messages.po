@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "아래 새 정보만 사용"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(미국·캐나다 외 국가는 텍스트 상자를 사용하세요.)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "자동 서식 적용 안 함"
 
@@ -564,10 +560,6 @@ msgstr "입금 내역: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "중요: 입금 내역서를 닫으면 실패한 거래는 영구적으로 삭제됩니다."
-
-#: 
-msgid "Import eGive"
-msgstr "eGive 가져오기"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "현금"
 #: 
 msgid "Bank Draft"
 msgstr "자동이체"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 msgid "Minimum Total Amount:"
@@ -2159,10 +2147,6 @@ msgid "Person Editor"
 msgstr "개인 정보 편집"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "가족을 선택하지 않았다면 성을 입력해야 합니다."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "교제 등록일이 올바르지 않습니다."
 
@@ -2173,14 +2157,6 @@ msgstr "등록일이 올바르지 않습니다."
 #: 
 msgid "Work Email is Not Valid"
 msgstr "직장 이메일이 올바르지 않습니다."
-
-#: 
-msgid "Red text"
-msgstr "빨간 글씨"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "는 가족 기록에서 가져온 항목을 의미합니다."
 
 #: 
 msgid "Birth Month"
@@ -2891,38 +2867,6 @@ msgstr "교회를 위해 제안하고 싶은 것이 있나요?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "우리 교회를 어떻게 알게 되었나요?"
-
-#: 
-msgid "eGive Import"
-msgstr "eGive 가져오기"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "선택한 가족으로 다시 가져오기"
-
-#: 
-msgid "Data import results: "
-msgstr "데이터 가져오기 결과: "
-
-#: 
-msgid " gifts were imported, "
-msgstr "건이 가져와졌고, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "건은 변경되지 않았으며, "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "건은 문제로 가져오지 못했습니다."
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "입금 내역서로 돌아가기"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "eGive API 데이터 전송에서 치명적인 오류 발생: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3729,7 +3673,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "이전에 로그인했던 세션이 만료되었습니다. 다시 로그인하세요."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "새 가족 등록"
 
 #: 
@@ -3747,18 +3692,6 @@ msgstr "가족:"
 #: 
 msgid "item"
 msgstr "항목"
-
-#: 
-msgid "Address 1"
-msgstr "주소 1"
-
-#: 
-msgid "Address 2"
-msgstr "주소 2"
-
-#: 
-msgid "Cell phone"
-msgstr "휴대전화"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3819,14 +3752,6 @@ msgstr "입력일:"
 #: 
 msgid "CSV Import"
 msgstr "CSV 가져오기"
-
-#: 
-msgid "Start Date: "
-msgstr "시작일: "
-
-#: 
-msgid "End Date: "
-msgstr "종료일: "
 
 #: 
 msgid "Members:"
@@ -3987,10 +3912,6 @@ msgstr "교회의 위도(지도를 중앙에 맞출 때 사용)"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "교회의 경도(지도를 중앙에 맞출 때 사용)"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "True로 설정하면 개인 정보 편집에서 주소 입력을 막습니다. False로 설정하면 입력할 수 있습니다."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

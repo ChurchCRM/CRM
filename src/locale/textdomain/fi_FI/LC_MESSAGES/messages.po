@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "Vain uudet tiedot alle"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Käytä tekstiruutua muille maille kuin Yhdysvalloille ja Kanadalle)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Älä alusta automaattisesti"
 
@@ -564,10 +560,6 @@ msgstr "Talletustiedot:"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Tärkeä huomautus: epäonnistuneet tapahtumat poistetaan pysyvästi, kun talletuskuitti suljetaan."
-
-#: 
-msgid "Import eGive"
-msgstr "Tuo eGive"
 
 #: 
 msgid "Add Payment"

@@ -368,10 +368,6 @@ msgid "Only the new data below"
 msgstr "Vetëm të dhënat e reja më poshtë"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Përdorni textbox për vendet tjetër se në SHBA dhe Kanada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Mos auto-format"
 
@@ -536,10 +532,6 @@ msgstr "Depozita Numri Shqip: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Shënim i rëndësishëm: Transaksionet e dështuara do të fshihen permanantly kur faturën e depozitës është e mbyllur."
-
-#: 
-msgid "Import eGive"
-msgstr "Import eGive"
 
 #: 
 msgid "Add Payment"
@@ -1167,10 +1159,6 @@ msgstr "Para në dorë"
 #: 
 msgid "Bank Draft"
 msgstr "Draft Bank"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -1810,10 +1798,6 @@ msgid "Person Editor"
 msgstr "Person Editor"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Ju duhet të hyjë në një Mbiemri nëse nuk Familja është zgjedhur."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Jo Shoqëri vlefshme Data"
 
@@ -1824,14 +1808,6 @@ msgstr "Jo një të vlefshme Data Anëtarësimit"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Puna Email nuk është i vlefshëm"
-
-#: 
-msgid "Red text"
-msgstr "Teksti i Kuq"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "tregon objekte të trashëguara nga të dhënat lidhur familjare."
 
 #: 
 msgid "Birth Year"
@@ -2453,34 +2429,6 @@ msgstr "A keni ndonjë sugjerim për ne?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Si keni mësuar për kishën?"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Ri-import për familjen e përzgjedhur"
-
-#: 
-msgid "Data import results: "
-msgstr "Rezultatet e importit e të dhënave: "
-
-#: 
-msgid " gifts were imported, "
-msgstr " dhurata janë importuar, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " dhurata pandryshuar, dhe "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " Dhurata nuk e importuara për shkak të problemeve"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Mbrapsht në faturën e depozitës"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Gabim Fatal në Datastream eGive API: '"
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."

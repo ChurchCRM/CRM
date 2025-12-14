@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "Uniquement les nouvelles données ci-dessous"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Utiliser cette zone de texte pour les pays autre que les USA et le Canada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Ne pas utiliser le format automatique"
 
@@ -564,10 +560,6 @@ msgstr "Détails de l&#39;acompte : "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Note importante: quand un bordereau d&#39;acompte est fermé, les transactions non réussies sont définitivement supprimées."
-
-#: 
-msgid "Import eGive"
-msgstr "Importer eGive"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "Espèce"
 #: 
 msgid "Bank Draft"
 msgstr "Chèque"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2160,10 +2148,6 @@ msgid "Person Editor"
 msgstr "Gestionnaire d'individu"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Vous devez entrer un Nom de famille si aucune Famille n'est sélectionnée."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Date d'amitié invalide"
 
@@ -2174,14 +2158,6 @@ msgstr "Date d'Adhésion Invalide"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Email professionnel invalide"
-
-#: 
-msgid "Red text"
-msgstr "Texte Rouge"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "indique les objets hérités de l'enregistrement familiale associé."
 
 #: 
 msgid "Birth Month"
@@ -2894,38 +2870,6 @@ msgstr "Avez-vous des suggestions à nous faire?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Comment avez-vous découvert l&#39;église ? (un membre, le site internet, etc ...)"
-
-#: 
-msgid "eGive Import"
-msgstr "Importer eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Réimporter à la famille sélectionnée"
-
-#: 
-msgid "Data import results: "
-msgstr "Résultats des Données importées :"
-
-#: 
-msgid " gifts were imported, "
-msgstr " des cadeaux ont été importés, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " des cadeaux inchangées, et "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " des cadeaux n'ont pas été importés en raison de problèmes"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Retourner au Bordereau de dépôt"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Erreur fatale dans flux de données API de eGive: &#39;"
 
 #: 
 msgid "eMail Dashboard"
@@ -3733,7 +3677,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Votre session a expiré. Veuillez vous reconnecter."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Inscrire une nouvelle famille"
 
 #: 
@@ -3751,18 +3696,6 @@ msgstr "Famille:"
 #: 
 msgid "item"
 msgstr "article"
-
-#: 
-msgid "Address 1"
-msgstr "Adresse 1"
-
-#: 
-msgid "Address 2"
-msgstr "Adresse 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Téléphone Portable"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3823,14 +3756,6 @@ msgstr "Date entrée:"
 #: 
 msgid "CSV Import"
 msgstr "Importer un fichier CSV"
-
-#: 
-msgid "Start Date: "
-msgstr "À partir de :"
-
-#: 
-msgid "End Date: "
-msgstr "Jusqu&#39;à:"
 
 #: 
 msgid "Members:"
@@ -3993,10 +3918,6 @@ msgstr "Latitude de l&#39;église, utilisé pour centrer Google Map"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Longitude de l&#39;église, utilisé pour centrer Google Map"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Cocher Vrai pour désactiver la saisie de l&#39;adresse dans la partie Gestionnaire d'individu. Cocher Faux pour activer la saisie de l&#39;adresse dans la partie Gestionnaire d'individu."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

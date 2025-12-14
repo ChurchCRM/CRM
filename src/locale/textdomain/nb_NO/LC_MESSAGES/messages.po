@@ -400,10 +400,6 @@ msgid "Only the new data below"
 msgstr "Bare de nye dataene nedenfor"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Bruk tekstboksen for andre land enn USA og Canada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Ikke auto-format"
 
@@ -575,10 +571,6 @@ msgstr "Innskudd Slip Antall:"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Viktig merknad: mislykkede transaksjoner vil bli slettet permanent når innskuddet slip er lukket."
-
-#: 
-msgid "Import eGive"
-msgstr "Importer eGive"
 
 #: 
 msgid "Add Payment"
@@ -1333,10 +1325,6 @@ msgstr "Kontanter"
 #: 
 msgid "Bank Draft"
 msgstr "Bankremisser"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2193,10 +2181,6 @@ msgid "Person Editor"
 msgstr "Person Editor"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Du må angi et etternavn hvis ingen familie er valgt."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Ikke en gyldig Friend Dato"
 
@@ -2207,14 +2191,6 @@ msgstr "Ikke en gyldig medlemskap Dato"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Arbeid post er ikke gyldig"
-
-#: 
-msgid "Red text"
-msgstr "Rød tekst"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "indikerer elementer arvet fra den tilknyttede familien posten."
 
 #: 
 msgid "Birth Month"
@@ -2957,37 +2933,6 @@ msgstr "Har du noen forslag til oss?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Hvordan fikk du vite av kirken?"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Re-import til utvalgte familie"
-
-#: 
-#, fuzzy
-msgid "Data import results: "
-msgstr "Data importerer vellykket."
-
-#: 
-#, fuzzy
-msgid " gifts were imported, "
-msgstr "personer ble importert"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "gaver uendret, og"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "gaver ikke importert på grunn av problemer"
-
-#: 
-#, fuzzy
-msgid "Back to Deposit Slip"
-msgstr "Redigere Deposit Slip"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Fatal feil i eGive API datastrøm: &#39;"
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
