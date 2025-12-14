@@ -114,10 +114,6 @@ msgid "Localization"
 msgstr "Localisation"
 
 #: 
-msgid "Cell phone"
-msgstr "Mobile phone"
-
-#: 
 msgid "Internationalization (I18n) support"
 msgstr "Internationalisation (I18n) support"
 

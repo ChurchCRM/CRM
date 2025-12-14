@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "Тільки нові дані нижче"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Використовуйте текстове поле для країн, крім США та Канади)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Не автоматично форматувати"
 
@@ -565,10 +561,6 @@ msgstr "Деталі депозиту: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Важливе зауваження: невдалі транзакції будуть постійно видалятися, коли депозитний депозит буде закритий."
-
-#: 
-msgid "Import eGive"
-msgstr "Імпортуйте eGive"
 
 #: 
 msgid "Add Payment"
@@ -1308,10 +1300,6 @@ msgstr "Готівкою"
 #: 
 msgid "Bank Draft"
 msgstr "Банківський чек"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2161,10 +2149,6 @@ msgid "Person Editor"
 msgstr "Редактор персон"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Ви не повинні ввести прізвище, якщо не вибрано жодної родини."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Недійсна дата друга"
 
@@ -2175,14 +2159,6 @@ msgstr "Недійсна дата членства"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Робоча електронна адреса недійсна"
-
-#: 
-msgid "Red text"
-msgstr "Червоний текст"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "вказує на елементи, успадковані від пов'язаного сімейного запису."
 
 #: 
 msgid "Birth Month"
@@ -2895,38 +2871,6 @@ msgstr "Чи є у вас пропозиції щодо нас?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Як ти дізнався про церкву?"
-
-#: 
-msgid "eGive Import"
-msgstr "eGive Імпорт"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Повторно імпортувати до вибраної родини"
-
-#: 
-msgid "Data import results: "
-msgstr "Результати імпорту даних: "
-
-#: 
-msgid " gifts were imported, "
-msgstr " подарунки були імпортовані, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " подарунки без змін, і "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " подарунки, не імпортовані через проблеми"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Повернутися до депозитного депозиту"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Фатальна помилка в потоці даних API eGive: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3733,7 +3677,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "У вашого попереднього сеансу минув час. Будь ласка, увійдіть ще раз."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Зареєструйте нову сім'ю"
 
 #: 
@@ -3751,18 +3696,6 @@ msgstr "Сім'я:"
 #: 
 msgid "item"
 msgstr "пункт"
-
-#: 
-msgid "Address 1"
-msgstr "адреса 1"
-
-#: 
-msgid "Address 2"
-msgstr "Адреса 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Мобільний телефон"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3823,14 +3756,6 @@ msgstr "Дата вступу:"
 #: 
 msgid "CSV Import"
 msgstr "Імпорт CSV"
-
-#: 
-msgid "Start Date: "
-msgstr "Дата початку: "
-
-#: 
-msgid "End Date: "
-msgstr "Кінцева дата: "
 
 #: 
 msgid "Members:"
@@ -3993,10 +3918,6 @@ msgstr "Широта церкви, що використовується для 
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Довгота церкви, що використовується для центру мапи Google"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Встановіть значення true, щоб вимкнути введення адрес у редакторі Person. Встановіть значення false, щоб увімкнути введення адрес у редакторі Person."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

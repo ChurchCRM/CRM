@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "దిగువన ఉన్న కొత్త డేటా మాత్రమే"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(US మరియు కెనడా కాకుండా ఇతర దేశాల కోసం టెక్స్ట్‌బాక్స్‌ని ఉపయోగించండి)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "ఆటో-ఫార్మాట్ చేయవద్దు"
 
@@ -564,10 +560,6 @@ msgstr "డిపాజిట్ వివరాలు: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "ముఖ్యమైన గమనిక: డిపాజిట్ స్లిప్ మూసివేయబడినప్పుడు విఫలమైన లావాదేవీలు శాశ్వతంగా తొలగించబడతాయి."
-
-#: 
-msgid "Import eGive"
-msgstr "eGiveని దిగుమతి చేయండి"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "నగదు"
 #: 
 msgid "Bank Draft"
 msgstr "బ్యాంక్ డ్రాఫ్ట్"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 msgid "Minimum Total Amount:"

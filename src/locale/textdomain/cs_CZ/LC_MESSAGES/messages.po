@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "Pouze nové údaje níže"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Pro jiné země než USA a Kanadu použijte textové pole)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Neformátovat automaticky"
 
@@ -564,10 +560,6 @@ msgstr "Podrobnosti o vkladu: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Důležité upozornění: neúspěšné transakce budou po uzavření vkladového listu trvale smazány."
-
-#: 
-msgid "Import eGive"
-msgstr "Importuj eGive"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "Hotovost"
 #: 
 msgid "Bank Draft"
 msgstr "Bankovní převod"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 msgid "Minimum Total Amount:"
@@ -2159,10 +2147,6 @@ msgid "Person Editor"
 msgstr "Editor osob"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Musíte zadat příjmení, pokud není vybrána žádná rodina."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Neplatné datum zpřátelení"
 
@@ -2173,14 +2157,6 @@ msgstr "Neplatné datum členství"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Pracovní e-mail není platný"
-
-#: 
-msgid "Red text"
-msgstr "Červený text"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "označuje položky zděděné ze záznamu přiřazené rodiny."
 
 #: 
 msgid "Birth Month"
@@ -2891,38 +2867,6 @@ msgstr "Máš pro nás nějaká doporučení?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Jak ses o sboru dozvěděl?"
-
-#: 
-msgid "eGive Import"
-msgstr "import eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Opětovný import do vybrané rodiny"
-
-#: 
-msgid "Data import results: "
-msgstr "Výsledky importu dat: "
-
-#: 
-msgid " gifts were imported, "
-msgstr " darů bylo importováno, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " darů beze změny a "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " dary, které nebyly importovány z důvodu problémů"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Zpět na vkladový list"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Fatální chyba v datovém toku rozhraní eGive API: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3729,7 +3673,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Vaše předchozí relace skončila.  Přihlaste se prosím znovu."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Registrovat novou rodinu"
 
 #: 
@@ -3747,18 +3692,6 @@ msgstr "Rodina:"
 #: 
 msgid "item"
 msgstr "položka"
-
-#: 
-msgid "Address 1"
-msgstr "Adresa 1"
-
-#: 
-msgid "Address 2"
-msgstr "Adresa 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Mobil"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3819,14 +3752,6 @@ msgstr "Zadané datum:"
 #: 
 msgid "CSV Import"
 msgstr "CSV Import"
-
-#: 
-msgid "Start Date: "
-msgstr "Počáteční datum: "
-
-#: 
-msgid "End Date: "
-msgstr "Konečné datum: "
 
 #: 
 msgid "Members:"
@@ -3987,10 +3912,6 @@ msgstr "Zeměpisná šířka sboru, je použita k vycentrování mapy Google"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Zeměpisná délka sboru, je použita k vycentrování mapy Google"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Nastavením hodnoty true zakážete zadávání adres v Editoru osob.  Nastavením false povolíte zadávání adres v Editoru osob."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

@@ -401,10 +401,6 @@ msgid "Only the new data below"
 msgstr "Somente as novas informações abaixo"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Use a caixa de texto para paises diferentes de EUA e Canadá)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Não Formatar automáticamente"
 
@@ -581,10 +577,6 @@ msgstr "Detalhes do Depósito: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Nota importante: transações com falha serão excluídos permanentemente quando o comprovante de depósito está fechado."
-
-#: 
-msgid "Import eGive"
-msgstr "Importar eGive"
 
 #: 
 msgid "Add Payment"
@@ -1342,10 +1334,6 @@ msgstr "Dinheiro"
 #: 
 msgid "Bank Draft"
 msgstr "Cheque administrativo"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2236,10 +2224,6 @@ msgid "Person Editor"
 msgstr "Editor de Pessoas"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Você precisa colocar um sobrenome se uma Família não for selecionada."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Não é uma data de ingresso válida"
 
@@ -2250,14 +2234,6 @@ msgstr "Não é uma Data de Associado válida!"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "E-mail não é válido"
-
-#: 
-msgid "Red text"
-msgstr "Texto em Vermelho"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "indica dados herdados da família."
 
 #: 
 #, fuzzy
@@ -3011,41 +2987,6 @@ msgstr "Você tem alguma sugestão para nós?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Como você ficou sabendo da igreja?"
-
-#: 
-msgid "eGive Import"
-msgstr "Importar do eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Re-importação a família selecionada"
-
-#: 
-#, fuzzy
-msgid "Data import results: "
-msgstr "Dados importados com sucesso."
-
-#: 
-#, fuzzy
-msgid " gifts were imported, "
-msgstr " pessoas importadas"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " presentes inalterado, e"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " presentes não importados devido a problemas"
-
-#: 
-#, fuzzy
-msgid "Back to Deposit Slip"
-msgstr "Voltar ao Depósito"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Erro fatal no eGive API datastream: &#39;"
 
 #: 
 msgid "eMail Dashboard"
@@ -3881,7 +3822,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "A sua sessão anterior expirou. Por favor faça o login outra vez."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Registre uma nova família"
 
 #: 
@@ -3899,18 +3841,6 @@ msgstr "Família:"
 #: 
 msgid "item"
 msgstr "item"
-
-#: 
-msgid "Address 1"
-msgstr "Endereço"
-
-#: 
-msgid "Address 2"
-msgstr "Complemento"
-
-#: 
-msgid "Cell phone"
-msgstr "Celular"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3972,16 +3902,6 @@ msgstr "Data de entrada:"
 #: 
 msgid "CSV Import"
 msgstr "Importar CSV"
-
-#: 
-#, fuzzy
-msgid "Start Date: "
-msgstr "Data de início:"
-
-#: 
-#, fuzzy
-msgid "End Date: "
-msgstr "Data de término:"
 
 #: 
 msgid "Members:"
@@ -4148,10 +4068,6 @@ msgstr "Latitude da igreja, usada para centralizar o mapa do Google "
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Longitude da igreja, usada para centralizar o mapa do Google"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Defina verdadeiro para desabilitar a entrada de endereço no Editor Pessoal. Defina falso habilitar a entrada de endereço no Editor Pessoal."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

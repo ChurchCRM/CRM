@@ -403,10 +403,6 @@ msgid "Only the new data below"
 msgstr "Tylko nowe dane poniżej"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Użyj pola tekstowego dla krajów innych niż USA i Kanada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Bez autoformatowania"
 
@@ -573,10 +569,6 @@ msgstr "Deposit Slip Number: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Ważna uwaga: nie udane transakcje będą całkowicie usuniętę gdy Odcinek Wpłaty zostanie zamknięty."
-
-#: 
-msgid "Import eGive"
-msgstr "Importuj eGive"
 
 #: 
 msgid "Add Payment"
@@ -1270,10 +1262,6 @@ msgstr "Gotówka"
 #: 
 msgid "Bank Draft"
 msgstr "Weksel"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2141,10 +2129,6 @@ msgid "Person Editor"
 msgstr "Edytor Osób"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Musisz podać Nazwisko jeżeli nie jest wybrana Rodzina"
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Nie prawidłowa data w polu Przyjaciel"
 
@@ -2155,14 +2139,6 @@ msgstr "Nie prawidłowa data w polu Członkostwo"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Email (Praca) nie jest porawny"
-
-#: 
-msgid "Red text"
-msgstr "Tekst na czerwono"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "wskazuje pola odziedziczone z ustawień Rodziny."
 
 #: 
 msgid "Birth Month"
@@ -2905,38 +2881,6 @@ msgid "How did you learn of the church?"
 msgstr "W jaki sposób dowiedziałeś się o Parafii?"
 
 #: 
-msgid "eGive Import"
-msgstr "Importuj eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Importuj ponownie do zaznaczonej Rodziny"
-
-#: 
-msgid "Data import results: "
-msgstr "Wynik importu danych:"
-
-#: 
-msgid " gifts were imported, "
-msgstr "datki zostały zaimportowane,"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "datki niezmienione, i"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "datki nie zaimportowane z powodu błędów"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Powrót do Odcinków Wpłaty"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Krytyczny problem w systemie eGive:"
-
-#: 
 msgid "eMail Dashboard"
 msgstr "Strona Główna eMail"
 
@@ -3439,10 +3383,6 @@ msgstr "Grupy"
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Pokaż tylko wybrane kategorie w spisie, oddzielone przecinkami"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Ustaw True aby wyłączyć dodawanie adresu w Edytorze Osób. False aby zezwolić."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

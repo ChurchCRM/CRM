@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "Hanya data baru di bawah ini"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Gunakan textbox untuk negara selain US dan Canada"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Jangan lakukan auto-format"
 
@@ -564,10 +560,6 @@ msgstr "Rincian Setoran"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Catatan penting : transaksi yang gagal akan terhapus permanen jika slip setoran di tutup"
-
-#: 
-msgid "Import eGive"
-msgstr "Impor eGive"
 
 #: 
 msgid "Add Payment"
@@ -1308,10 +1300,6 @@ msgstr "Uang"
 #: 
 msgid "Bank Draft"
 msgstr "Draf Bank"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2161,10 +2149,6 @@ msgid "Person Editor"
 msgstr "Editor Orang"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Anda harus memasukkan Nama Belakang jika tidak ada Keluarga yang dipilih."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Bukan Tanggal Teman yang valid"
 
@@ -2175,14 +2159,6 @@ msgstr "Bukan Tanggal Keanggotaan yang valid"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Email Kantor Tidak Valid"
-
-#: 
-msgid "Red text"
-msgstr "Teks merah"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "menunjukkan item yang diwarisi dari catatan keluarga terkait."
 
 #: 
 msgid "Birth Month"
@@ -2895,38 +2871,6 @@ msgstr "Apakah Anda punya saran untuk kami?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Bagaimana Anda belajar tentang gereja?"
-
-#: 
-msgid "eGive Import"
-msgstr "Impor eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Impor ulang ke keluarga yang dipilih"
-
-#: 
-msgid "Data import results: "
-msgstr "Hasil impor data: "
-
-#: 
-msgid " gifts were imported, "
-msgstr "hadiah diimpor, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "hadiah tidak berubah, dan "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "hadiah tidak diimpor karena masalah"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Kembali ke Slip Setoran"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Kesalahan fatal dalam datastream API eGive: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3735,7 +3679,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Sesi Anda sebelumnya habis. Silakan masuk lagi."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Daftarkan Keluarga baru"
 
 #: 
@@ -3753,18 +3698,6 @@ msgstr "Keluarga:"
 #: 
 msgid "item"
 msgstr "barang"
-
-#: 
-msgid "Address 1"
-msgstr "Alamat 1"
-
-#: 
-msgid "Address 2"
-msgstr "alamat 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Telepon selular"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3825,14 +3758,6 @@ msgstr "Tanggal masuk:"
 #: 
 msgid "CSV Import"
 msgstr "Impor CSV"
-
-#: 
-msgid "Start Date: "
-msgstr "Mulai tanggal: "
-
-#: 
-msgid "End Date: "
-msgstr "Tanggal Berakhir: "
 
 #: 
 msgid "Members:"
@@ -3995,10 +3920,6 @@ msgstr "Lintang gereja, digunakan untuk memusatkan peta Google"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Bujur gereja, digunakan untuk memusatkan peta Google"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Set true untuk menonaktifkan memasukkan alamat di Person Editor. Set false untuk mengaktifkan memasukkan alamat di Person Editor."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
