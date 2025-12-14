@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "Slegs die nuwe data hieronder"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Gebruik die teksboks vir lande buiten die VSA en Kanada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Moenie outomaties formateer nie"
 
@@ -564,10 +560,6 @@ msgstr "Inbetaling besonderhede: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Belangrike kennisgewing: mislukte transaksies sal permanent verwyder word wanneer inbetalings strokie toegemaak word."
-
-#: 
-msgid "Import eGive"
-msgstr "eGive invoer"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "Kontant"
 #: 
 msgid "Bank Draft"
 msgstr "Bankkonsep"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2160,10 +2148,6 @@ msgid "Person Editor"
 msgstr "Persoonredakteur"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "U moet 'n van invoer as geen familie gekies word nie."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Nie 'n geldige vrienddatum nie"
 
@@ -2174,14 +2158,6 @@ msgstr "Nie 'n geldige lidmaatskapdatum nie"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Werk-e-posadres is nie geldig nie"
-
-#: 
-msgid "Red text"
-msgstr "Rooi teks"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "dui die items aan wat geërf is uit die gepaardgaande gesinsrekord."
 
 #: 
 msgid "Birth Month"
@@ -2894,38 +2870,6 @@ msgstr "Het u voorstelle vir ons?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Hoe het u van die kerk geleer?"
-
-#: 
-msgid "eGive Import"
-msgstr "eGive Invoer"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Herinvoer na geselekteerde gesin"
-
-#: 
-msgid "Data import results: "
-msgstr "Data-invoer resultate: "
-
-#: 
-msgid " gifts were imported, "
-msgstr " geskenke is ingevoer, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " geskenke onveranderd, en "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " geskenke wat weens probleme nie ingevoer is nie"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Terug na depositostrokie"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Fatale fout in eGive API-datastroom: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3734,7 +3678,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "U vorige sessie is verstreke. Meld asseblief weer aan."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Registreer 'n nuwe gesin"
 
 #: 
@@ -3752,18 +3697,6 @@ msgstr "Gesin:"
 #: 
 msgid "item"
 msgstr "item"
-
-#: 
-msgid "Address 1"
-msgstr "Adres 1"
-
-#: 
-msgid "Address 2"
-msgstr "adres 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Loopfoon"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3824,14 +3757,6 @@ msgstr "Datum ingevoer:"
 #: 
 msgid "CSV Import"
 msgstr "CSV-invoer"
-
-#: 
-msgid "Start Date: "
-msgstr "Aanvangsdatum: "
-
-#: 
-msgid "End Date: "
-msgstr "Einddatum: "
 
 #: 
 msgid "Members:"
@@ -3994,10 +3919,6 @@ msgstr "Breedtegraad van die kerk, gebruik om die Google-kaart te sentreer"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Lengtegraad van die kerk, gebruik om die Google-kaart te sentreer"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Stel waar om die invoer van adresse in Persoonredakteur uit te skakel. Stel vals om die invoer van adresse in Persoonredakteur moontlik te maak."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

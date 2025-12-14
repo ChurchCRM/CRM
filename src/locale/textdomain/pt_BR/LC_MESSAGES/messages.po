@@ -466,11 +466,6 @@ msgstr "Somente as novas informações abaixo"
 
 #: 
 #, fuzzy
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Use a caixa de texto para paises diferentes de EUA e Canadá)"
-
-#: 
-#, fuzzy
 msgid "Do not auto-format"
 msgstr "Não Formatar"
 
@@ -681,11 +676,6 @@ msgstr "Detalhes do Depósito: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Nota importante: transações com falha serão excluídos de forma permanente quando o depósito for fechado."
-
-#: 
-#, fuzzy
-msgid "Import eGive"
-msgstr "Importar eGive"
 
 #: 
 #, fuzzy
@@ -1590,11 +1580,6 @@ msgstr "Dinheiro"
 #, fuzzy
 msgid "Bank Draft"
 msgstr "Cheque administrativo"
-
-#: 
-#, fuzzy
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2612,11 +2597,6 @@ msgstr "Editor de Pessoas"
 
 #: 
 #, fuzzy
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Você precisa colocar um sobrenome se uma Família não for selecionada."
-
-#: 
-#, fuzzy
 msgid "Not a valid Friend Date"
 msgstr "Não é uma data de ingresso válida"
 
@@ -2629,16 +2609,6 @@ msgstr "Não é uma Data de Membresia válida"
 #, fuzzy
 msgid "Work Email is Not Valid"
 msgstr "E-mail não é válido"
-
-#: 
-#, fuzzy
-msgid "Red text"
-msgstr "Texto em Vermelho"
-
-#: 
-#, fuzzy
-msgid "indicates items inherited from the associated family record."
-msgstr "indica dados herdados da família."
 
 #: 
 msgid "Birth Month"
@@ -3485,43 +3455,6 @@ msgstr "Você tem alguma sugestão para nós?"
 #, fuzzy
 msgid "How did you learn of the church?"
 msgstr "Como você ficou sabendo da igreja?"
-
-#: 
-#, fuzzy
-msgid "eGive Import"
-msgstr "Importar do eGive"
-
-#: 
-#, fuzzy
-msgid "Re-import to selected family"
-msgstr "Re-importar a família selecionada"
-
-#: 
-msgid "Data import results: "
-msgstr "Resultados dos dados importados: "
-
-#: 
-msgid " gifts were imported, "
-msgstr " doações importadas, "
-
-#: 
-#, fuzzy
-msgid " gifts unchanged, and "
-msgstr " doações inalteradas e "
-
-#: 
-#, fuzzy
-msgid " gifts not imported due to problems"
-msgstr " doações não importados devido a problemas"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Voltar ao Depósito"
-
-#: 
-#, fuzzy
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Erro fatal na API eGive: '"
 
 #: 
 #, fuzzy
@@ -4502,7 +4435,7 @@ msgstr "A sua sessão expirou. Por favor, faça o login novamente."
 
 #: 
 #, fuzzy
-msgid "Register a new Family"
+msgid "Register a New Family"
 msgstr "Registrar uma nova família"
 
 #: 
@@ -4524,21 +4457,6 @@ msgstr "Família:"
 #, fuzzy
 msgid "item"
 msgstr "item"
-
-#: 
-#, fuzzy
-msgid "Address 1"
-msgstr "Endereço"
-
-#: 
-#, fuzzy
-msgid "Address 2"
-msgstr "Complemento"
-
-#: 
-#, fuzzy
-msgid "Cell phone"
-msgstr "Celular"
 
 #: 
 #, fuzzy
@@ -4613,14 +4531,6 @@ msgstr "Data de entrada:"
 #, fuzzy
 msgid "CSV Import"
 msgstr "Importar CSV"
-
-#: 
-msgid "Start Date: "
-msgstr "Data de início: "
-
-#: 
-msgid "End Date: "
-msgstr "Data de término: "
 
 #: 
 #, fuzzy
@@ -4817,11 +4727,6 @@ msgstr "Latitude da igreja, usada para centralizar o mapa do Google"
 #, fuzzy
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Longitude da igreja, usada para centralizar o mapa do Google"
-
-#: 
-#, fuzzy
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Defina verdadeiro para desabilitar a entrada de endereço no Editor Pessoal. Defina falso habilitar a entrada de endereço no Editor Pessoal."
 
 #: 
 #, fuzzy

@@ -398,10 +398,6 @@ msgid "Only the new data below"
 msgstr "Только новые данные ниже"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Используйте текстовое поле для других стран, чем США и Канады)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Не Авто-формат"
 
@@ -577,10 +573,6 @@ msgstr "Детали депозита: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Важное замечание: не удалось сделки будут удалены них постоянно, когда квитанции закрыт."
-
-#: 
-msgid "Import eGive"
-msgstr "Импорт eGive"
 
 #: 
 msgid "Add Payment"
@@ -1328,10 +1320,6 @@ msgstr "Наличные"
 #: 
 msgid "Bank Draft"
 msgstr "Банковский чек"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2196,10 +2184,6 @@ msgid "Person Editor"
 msgstr "Человек редактор"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Вы должны ввести Фамилия, если не выбран Семья."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Не действует другу Дата"
 
@@ -2210,14 +2194,6 @@ msgstr "Не аккаунтом Дата"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Работа Email не действительны"
-
-#: 
-msgid "Red text"
-msgstr "Красный текст"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "Указывает на элементы, унаследованные от соответствующего семьи записи."
 
 #: 
 msgid "Birth Month"
@@ -2949,39 +2925,6 @@ msgstr "Есть ли у вас какие-либо предложения дл�
 #: 
 msgid "How did you learn of the church?"
 msgstr "Как вы узнали о церкви?"
-
-#: 
-msgid "eGive Import"
-msgstr "\n"
-"eGive Импорт"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Реимпорта к выбранному семьи"
-
-#: 
-msgid "Data import results: "
-msgstr "Результаты импорта данных: "
-
-#: 
-msgid " gifts were imported, "
-msgstr " Подарки были импортированы, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " Подарки неизменным, и "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " Подарки не импортируются из-за проблем"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Вернуться к квитанции"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Фатальная ошибка в eGive API потока данных: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3800,7 +3743,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Истекло время вашего предыдущего сеанса. Пожалуйста, войдите снова."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Зарегистрировать новую семью"
 
 #: 
@@ -3818,18 +3762,6 @@ msgstr "Семья"
 #: 
 msgid "item"
 msgstr "Пункт"
-
-#: 
-msgid "Address 1"
-msgstr "Адрес 1"
-
-#: 
-msgid "Address 2"
-msgstr "Адрес 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Мобильный номер"
 
 #: 
 msgid "Buyer # "
@@ -3886,14 +3818,6 @@ msgstr "Дата вступления:"
 #: 
 msgid "CSV Import"
 msgstr "CSV Импорт"
-
-#: 
-msgid "Start Date: "
-msgstr "Дата начала:"
-
-#: 
-msgid "End Date: "
-msgstr "Дата окончания"
 
 #: 
 msgid "Members:"
@@ -4032,10 +3956,6 @@ msgstr "Широта церкви, используемая для центри�
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Долгота церкви, используемая для центрирования карты Google"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Установите true, чтобы запретить ввод адресов в редакторе субъекта. Установите false, чтобы разрешить ввод адресов в Редакторе субъекта."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "Taarifa mpya tuu hapo chini"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Tumia kisanduku cha maandishi kwa nchi zingine isipokuwa Amerika na Kanada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Usiweke muundo wa kiotomatiki"
 
@@ -564,10 +560,6 @@ msgstr "Maelezo ya Amana: "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Kumbuka muhimu: miamala iliyofeli itafutwa kabisa wakati hati ya amana imefungwa."
-
-#: 
-msgid "Import eGive"
-msgstr "Ingiza eGive"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "Fedha taslimu"
 #: 
 msgid "Bank Draft"
 msgstr "Rasimu ya Benki"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 msgid "Minimum Total Amount:"
@@ -2159,10 +2147,6 @@ msgid "Person Editor"
 msgstr "Mhariri wa Mtu"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Lazima uweke Jina la Mwisho ikiwa hakuna Familia iliyochaguliwa."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Sio Tarehe halali ya Rafiki"
 
@@ -2173,14 +2157,6 @@ msgstr "Sio Tarehe halali ya Uanachama"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "Barua pepe ya Kazini Si Sahihi"
-
-#: 
-msgid "Red text"
-msgstr "Nakala nyekundu"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "huonyesha vipengee vilivyorithiwa kutoka kwa rekodi ya familia husika."
 
 #: 
 msgid "Birth Month"
@@ -2891,38 +2867,6 @@ msgstr "Je, una mapendekezo yoyote kwa ajili yetu?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Ulijifunzaje kuhusu kanisa?"
-
-#: 
-msgid "eGive Import"
-msgstr "eGve Import"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Leta tena kwa familia iliyochaguliwa"
-
-#: 
-msgid "Data import results: "
-msgstr "Matokeo ya uingizaji wa data: "
-
-#: 
-msgid " gifts were imported, "
-msgstr " zawadi ziliagizwa kutoka nje, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " zawadi bila kubadilika, na "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " zawadi hazijaingizwa kwa sababu ya shida"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Rudi kwenye Deposit Slip"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Kosa mbaya katika mkondo wa data wa eGive API: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3729,7 +3673,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Kipindi chako cha awali kimekwisha. Tafadhali ingia tena."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Sajili Familia mpya"
 
 #: 
@@ -3747,18 +3692,6 @@ msgstr "Familia:"
 #: 
 msgid "item"
 msgstr "kipengee"
-
-#: 
-msgid "Address 1"
-msgstr "Anwani 1"
-
-#: 
-msgid "Address 2"
-msgstr "Anwani 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Simu ya mkononi"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3819,14 +3752,6 @@ msgstr "Tarehe Iliyoingizwa:"
 #: 
 msgid "CSV Import"
 msgstr "Ingiza CSV"
-
-#: 
-msgid "Start Date: "
-msgstr "Tarehe ya Kuanza: "
-
-#: 
-msgid "End Date: "
-msgstr "Tarehe ya mwisho: "
 
 #: 
 msgid "Members:"
@@ -3987,10 +3912,6 @@ msgstr "Latitudo ya kanisa, inayotumika kuweka katikati ramani ya Google"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Longitude ya kanisa, inayotumika kuweka katikati ramani ya Google"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Weka kweli ili kuzima anwani za kuingiza katika Kihariri cha Mtu. Weka sivyo ili kuwezesha kuingiza anwani katika Kihariri cha Mtu."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

@@ -403,10 +403,6 @@ msgid "Only the new data below"
 msgstr "Numai datele noi de mai jos"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Utilizați caseta de text în alte scopuri decât SUA și Canada)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "Nu formatați automat"
 
@@ -582,10 +578,6 @@ msgstr "Detalii depozit"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Notă Important: tranzacțiile eșuate vor fi șterse permanent atunci când ordinul de plată este închis."
-
-#: 
-msgid "Import eGive"
-msgstr "Importul eGive"
 
 #: 
 msgid "Add Payment"
@@ -1339,10 +1331,6 @@ msgstr "Numerar"
 #: 
 msgid "Bank Draft"
 msgstr "Ordin de plată bancar"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2214,10 +2202,6 @@ msgid "Person Editor"
 msgstr "Persoana Editor"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Trebuie să introduceți un Nume în cazul în care este selectată o familie."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "Nu este un prieten dată validă"
 
@@ -2228,14 +2212,6 @@ msgstr "Nu este un membru dată validă"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "De lucru E-mail nu este valid"
-
-#: 
-msgid "Red text"
-msgstr "Text roșu"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "Indică elemente moștenite din cazierul familie asociat."
 
 #: 
 msgid "Birth Month"
@@ -2972,38 +2948,6 @@ msgstr "Ai vreo sugestie pentru noi?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Cum ați aflat de biserica?"
-
-#: 
-msgid "eGive Import"
-msgstr "import eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Re-import a familiei selectat"
-
-#: 
-msgid "Data import results: "
-msgstr "Rezultatele import de date:"
-
-#: 
-msgid " gifts were imported, "
-msgstr "Cadouri au fost importate,"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "cadouri neschimbat, și"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "Cadouri nu au fost importate din cauza unor probleme"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Înapoi la formular de depunere"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Eroare fatală în eGive API Datastream: \""
 
 #: 
 msgid "eMail Dashboard"
@@ -3826,7 +3770,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Sesiunea anterioare a expirat. Refă autentificarea"
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Înregistrează o familie nouă"
 
 #: 
@@ -3844,18 +3789,6 @@ msgstr "Familie:"
 #: 
 msgid "item"
 msgstr "element"
-
-#: 
-msgid "Address 1"
-msgstr "Adresă 1"
-
-#: 
-msgid "Address 2"
-msgstr "Adresă 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Mobil"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3916,14 +3849,6 @@ msgstr "Dată activare:"
 #: 
 msgid "CSV Import"
 msgstr "Import CSV"
-
-#: 
-msgid "Start Date: "
-msgstr "Dată start:"
-
-#: 
-msgid "End Date: "
-msgstr "Dată final:"
 
 #: 
 msgid "Members:"
@@ -4086,10 +4011,6 @@ msgstr "Latitudinea bisericii, folosită pentru centrarea hărții"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "Longitudinea bisericii, folosită pentru centrarea hărții"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Setați true pentru a dezactiva introducerea adreselor în Editorul de persoane. Setați false pentru a activa introducerea adreselor în Editorul de persoane."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

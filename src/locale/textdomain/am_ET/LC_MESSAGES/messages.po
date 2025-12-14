@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "ከታች ያለው አዲስ መረጃ ብቻ ነው።"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(ከአሜሪካ እና ካናዳ ውጪ ላሉ አገሮች የጽሑፍ ሳጥኑን ተጠቀም)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "ራስ-ሰር ቅርጸት አታድርጉ"
 
@@ -564,10 +560,6 @@ msgstr "የተቀማጭ ዝርዝሮች፡- "
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "ጠቃሚ ማስታወሻ፡ የተቀማጭ ወረቀቱ ሲዘጋ ያልተሳኩ ግብይቶች እስከመጨረሻው ይሰረዛሉ።"
-
-#: 
-msgid "Import eGive"
-msgstr "eGiveን አስመጣ"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "ጥሬ ገንዘብ"
 #: 
 msgid "Bank Draft"
 msgstr "የባንክ ረቂቅ"
-
-#: 
-msgid "eGive"
-msgstr "መስጠት"
 
 #: 
 #, fuzzy
@@ -2160,10 +2148,6 @@ msgid "Person Editor"
 msgstr "ግላዊ ማረሚያ"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "ቤተሰብ ካልተመረጠ የአባት ስም አስገባ."
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "የሚሰራ የጓደኛ ቀን አይደለም"
 
@@ -2174,14 +2158,6 @@ msgstr "የሚሰራ የአባልነት ቀን አይደለም"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "ኢሜይሉ አይሰራም"
-
-#: 
-msgid "Red text"
-msgstr "ቀይ ጽሁፍ"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "ከተዛማጅ የቤተሰብ መዝገብ የተወረሱ መረጃዎችን ያመለክታል."
 
 #: 
 msgid "Birth Month"
@@ -2894,38 +2870,6 @@ msgstr "ለእኛ የምሰጡት አስተያየት አሉዎት?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "ስለ ቤተ ክርስቲያን እንዴት ተማራችሁ? "
-
-#: 
-msgid "eGive Import"
-msgstr "አስመጣ/አምጣ"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "ለተመረጠው ቤተሰብ እንደገና አስመጣ/አምጣ "
-
-#: 
-msgid "Data import results: "
-msgstr "የውሂብ ማስመጣት ውጤቶች/የመጡ መረጃዎች"
-
-#: 
-msgid " gifts were imported, "
-msgstr "ስጦታዎች ከውጭ/ከሌላ ቦታ  መጡ"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "ስጦታዎች አይቀየሩም"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "በችግሮች ምክንያት ስጦታዎች ከሌላ ቦታ አይገቡም"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "ወደ ተቀማጭ ገንዘብ ደረሰኝ ተመለስ"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "በ eGive API datastream ውስጥ ገዳይ ስህተት"
 
 #: 
 msgid "eMail Dashboard"
@@ -3732,7 +3676,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "ያለፈው ክፍለ ጊዜዎ አልቋል. እባክዎ እንደገና ይግቡ."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "አዲስ ቤተሰብ ይመዝገቡ"
 
 #: 
@@ -3750,18 +3695,6 @@ msgstr "ቤተሰብ:"
 #: 
 msgid "item"
 msgstr "ንጥል "
-
-#: 
-msgid "Address 1"
-msgstr "አድራሻ 1"
-
-#: 
-msgid "Address 2"
-msgstr "አድራሻ 2"
-
-#: 
-msgid "Cell phone"
-msgstr "ስልክ"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3822,14 +3755,6 @@ msgstr "የገባበት ቀን:"
 #: 
 msgid "CSV Import"
 msgstr "CSV ማስመጣት"
-
-#: 
-msgid "Start Date: "
-msgstr "የሚጀመርበት ቀን: "
-
-#: 
-msgid "End Date: "
-msgstr "የመጨረሻ ቀን: "
 
 #: 
 msgid "Members:"
@@ -3992,10 +3917,6 @@ msgstr "የቤተክርስቲያን ኬክሮስ፣ ጎግል ካርታውን �
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "የቤተክርስቲያን ኬንትሮስ፣ ጎግል ካርታን ማዕከል ለማድረግ ያገለግል ነበር"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "በሰው አርታዒ ውስጥ አድራሻዎችን ለማሰናከል  ያዘጋጁ እውነት. በግል አርታዒ ውስጥ አድራሻዎችን ማስገባት ለማንቃት ሐሰት ያዘጋጁ ሐሰት ."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

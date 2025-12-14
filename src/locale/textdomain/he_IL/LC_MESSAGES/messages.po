@@ -387,10 +387,6 @@ msgid "Only the new data below"
 msgstr "רק המידע החדש מטה"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(השתמש בתיבת הטקסט עבור מדינות שאינן ארה\"ב וקנדה)"
-
-#: 
 msgid "Do not auto-format"
 msgstr "אל תבצע עיצוב אוטומטי"
 
@@ -564,10 +560,6 @@ msgstr "פרטי הפקדה"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "הערה חשובה: עסקאות שנכשלו יימחקו לצמיתות כאשר שובר ההפקדה ייסגר"
-
-#: 
-msgid "Import eGive"
-msgstr "ייבוא eGive"
 
 #: 
 msgid "Add Payment"
@@ -1307,10 +1299,6 @@ msgstr "מזומן"
 #: 
 msgid "Bank Draft"
 msgstr "הוראת קבע בנקאית"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 msgid "Minimum Total Amount:"
@@ -2159,10 +2147,6 @@ msgid "Person Editor"
 msgstr "עורך אנשים"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "עליך להזין שם משפחה אם לא נבחרה משפחה"
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "תאריך חבר לא תקין"
 
@@ -2173,14 +2157,6 @@ msgstr "תאריך חברות לא תקין"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "כתובת דואר אלקטרוני של העבודה אינה תקינה"
-
-#: 
-msgid "Red text"
-msgstr "טקסט אדום"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "מציין פריטים שנירשו מרשומת המשפחה המקושרת."
 
 #: 
 msgid "Birth Month"
@@ -2891,38 +2867,6 @@ msgstr "האם יש לך הצעות עבורנו?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "כיצד למדת על המוסד?"
-
-#: 
-msgid "eGive Import"
-msgstr "יבוא eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "יבוא חוזר למשפחה שנבחרה"
-
-#: 
-msgid "Data import results: "
-msgstr "תוצאות יבוא הנתונים: "
-
-#: 
-msgid " gifts were imported, "
-msgstr " תרומות יובאו, "
-
-#: 
-msgid " gifts unchanged, and "
-msgstr " תרומות ללא שינוי, ו- "
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr " תרומות לא יובאו עקב בעיות"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "חזרה לשובר הפקדה"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "שגיאה קריטית בזרם הנתונים של eGive API: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3729,7 +3673,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "הפעילות הקודמת שלך פגה. אנא התחבר שוב."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "רישום משפחה חדשה"
 
 #: 
@@ -3747,18 +3692,6 @@ msgstr "משפחה"
 #: 
 msgid "item"
 msgstr "פריט"
-
-#: 
-msgid "Address 1"
-msgstr "כתובת 1"
-
-#: 
-msgid "Address 2"
-msgstr "כתובת 2"
-
-#: 
-msgid "Cell phone"
-msgstr "טלפון נייד"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3819,14 +3752,6 @@ msgstr "תאריך הכניסה:"
 #: 
 msgid "CSV Import"
 msgstr "ייבוא קובץ CSV"
-
-#: 
-msgid "Start Date: "
-msgstr "תאריך כניסה:"
-
-#: 
-msgid "End Date: "
-msgstr "תאריך עזיבה:"
 
 #: 
 msgid "Members:"
@@ -3987,10 +3912,6 @@ msgstr "קו הרוחב של המוסד, משמש למרכוז מפת Google"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "קו האורך של המוסד, משמש למרכוז מפת Google"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "הגדר כ-true כדי להשבית הזנת כתובות בעורך האיש. הגדר כ-false כדי לאפשר הזנת כתובות בעורך האיש."
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."

@@ -403,10 +403,6 @@ msgid "Only the new data below"
 msgstr "只有以下的新数据"
 
 #: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "（美国和加拿大以外的国家使用的文本框）"
-
-#: 
 msgid "Do not auto-format"
 msgstr "不要自动格式"
 
@@ -582,10 +578,6 @@ msgstr "存款详细资料:␣"
 #, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "重要提示：在存款凭条被关闭时，失败的交易将被删除permanantly。"
-
-#: 
-msgid "Import eGive"
-msgstr "进口eGive"
 
 #: 
 msgid "Add Payment"
@@ -1340,10 +1332,6 @@ msgstr "现金"
 #: 
 msgid "Bank Draft"
 msgstr "银行汇票"
-
-#: 
-msgid "eGive"
-msgstr "eGive"
 
 #: 
 #, fuzzy
@@ -2215,10 +2203,6 @@ msgid "Person Editor"
 msgstr "人编辑器"
 
 #: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "您必须输入姓氏，如果没有家庭选择。"
-
-#: 
 msgid "Not a valid Friend Date"
 msgstr "不是一个有效的好友日期"
 
@@ -2229,14 +2213,6 @@ msgstr "不是一个有效的会员日期"
 #: 
 msgid "Work Email is Not Valid"
 msgstr "工作电子邮件是无效的"
-
-#: 
-msgid "Red text"
-msgstr "红色文字"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "表示继承自相关的家庭记录的项目。"
 
 #: 
 msgid "Birth Month"
@@ -2977,38 +2953,6 @@ msgstr "你对我们有什么建议吗？"
 #: 
 msgid "How did you learn of the church?"
 msgstr "你是怎么学习的教会吗？"
-
-#: 
-msgid "eGive Import"
-msgstr "导入eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "重新导入到选定家庭"
-
-#: 
-msgid "Data import results: "
-msgstr "数据导入结果："
-
-#: 
-msgid " gifts were imported, "
-msgstr "礼物进口，"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "礼物不变，并"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "的礼物没有进口问题"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "回到存款单"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "在eGive API数据流的致命错误："
 
 #: 
 msgid "eMail Dashboard"
@@ -3832,7 +3776,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "您上次会话已超时。请再次登录。"
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "注册新家庭"
 
 #: 
@@ -3850,18 +3795,6 @@ msgstr "家庭："
 #: 
 msgid "item"
 msgstr "项目"
-
-#: 
-msgid "Address 1"
-msgstr "地址1"
-
-#: 
-msgid "Address 2"
-msgstr "地址2"
-
-#: 
-msgid "Cell phone"
-msgstr "手机"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -3922,14 +3855,6 @@ msgstr "输入日期："
 #: 
 msgid "CSV Import"
 msgstr "CSV导入"
-
-#: 
-msgid "Start Date: "
-msgstr "开始日期："
-
-#: 
-msgid "End Date: "
-msgstr "结束日期："
 
 #: 
 msgid "Members:"
@@ -4092,10 +4017,6 @@ msgstr "教堂的纬度，用于居中谷歌地图"
 #: 
 msgid "Longitude of the church, used to center the Google map"
 msgstr "教堂的经度，用于居中谷歌地图"
-
-#: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "设置为true(是)以禁用在Person Editor(人员编辑)中输入地址。设置为false(否)以启用在人物编辑器中输入地址。"
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
