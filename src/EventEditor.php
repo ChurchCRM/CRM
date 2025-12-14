@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\EventCountNamesQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
@@ -241,10 +242,19 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $iTypeID = $type_id;
 } elseif ($sAction = 'Edit' && !empty($sOpp)) {
     $EventExists = 1;
-    $sSQL = "SELECT * FROM events_event as t1, event_types as t2 WHERE t1.event_type = t2.type_id AND t1.event_id ='" . $sOpp . "' LIMIT 1";
-    $rsOpps = RunQuery($sSQL);
-
-    $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
+    // Use Propel ORM instead of raw SQL for SQL injection prevention
+    $iEventID = (int) $sOpp;
+    $event = EventQuery::create()
+        ->joinWithEventType()
+        ->findOneById($iEventID);
+    
+    if ($event === null) {
+        $iErrors++;
+        LoggerUtils::getAppLogger()->warning('Event not found: ' . $iEventID);
+    } else {
+        $aRow = array_merge($event->toArray(), $event->getEventType()->toArray());
+    }
+}
     extract($aRow);
 
     $iEventID = $event_id;
