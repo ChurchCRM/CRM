@@ -214,7 +214,7 @@ foreach ($families as $family) {
         if ($member->getClsId()) {
             $classObj = $member->getClassification();
             if ($classObj) {
-                $sClassName = $classObj->getName();
+                $sClassName = $classObj->getOptionName();
             }
         }
         
@@ -222,7 +222,7 @@ foreach ($families as $family) {
         if ($member->getFmrId()) {
             $roleObj = $member->getFamilyRole();
             if ($roleObj) {
-                $sFamRole = $roleObj->getName();
+                $sFamRole = $roleObj->getOptionName();
             }
         }
         // Make sure the person data will display with adequate room for the trailer and group information
@@ -278,7 +278,7 @@ foreach ($families as $family) {
             foreach ($customFields as $field) {
                 $currentFieldData = '';
                 // Try to access custom field data from the member object
-                $fieldPropertyName = $field->getFieldName();
+                $fieldPropertyName = $field->getId();
                 if (method_exists($member, 'get' . ucfirst($fieldPropertyName))) {
                     $methodName = 'get' . ucfirst($fieldPropertyName);
                     $currentFieldData = trim($member->$methodName() ?? '');
@@ -321,7 +321,7 @@ foreach ($families as $family) {
     
     foreach ($familyMembersForGroups as $aMember) {
         // Get the Groups this Person is assigned to
-        $assignedGroups = $aMember->getPerson2group2roles();
+        $assignedGroups = $aMember->getPerson2group2roleP2g2rs();
         
         if (count($assignedGroups) > 0) {
             $groupStr = 'Assigned groups for ' . $aMember->getFirstName() . ' ' . $aMember->getLastName() . ': ';
@@ -333,7 +333,7 @@ foreach ($families as $family) {
                     if ($groupRole->getRoleId()) {
                         $roleObj = $groupRole->getListOption();
                         if ($roleObj) {
-                            $roleName = $roleObj->getName();
+                            $roleName = $roleObj->getOptionName();
                         }
                     }
                     $groupStr .= $group->getName() . ' (' . $roleName . ') ';

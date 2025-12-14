@@ -705,6 +705,10 @@ $familyEmails = $family->getEmails();
                             class="btn btn-warning warning"><i
                             class="fa-solid fa-envelope"></i> <?= gettext("Online Verification") ?>
                     </button>
+                    <button type="button" id="verifyEmailPDF"
+                            class="btn btn-warning"><i
+                            class="fa-solid fa-file-pdf"></i> <?= gettext("Email PDF") ?>
+                    </button>
                     <?php
                 } ?>
                 <button type="button" id="verifyURL"
