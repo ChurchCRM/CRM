@@ -236,6 +236,15 @@ class SlimUtils
     }
 
     /**
+     * Get an integer query parameter from the request URI
+     */
+    public static function getURIParamInt(Request $request, string $paramName): int
+    {
+        $value = self::getUriParamString($request, $paramName);
+        return $value !== '' ? (int) $value : 0;
+    }
+
+    /**
      * Get a string query parameter from the request
      */
     public static function getUriParamString(Request $request, string $paramName): string
