@@ -2192,10 +2192,6 @@ msgid "Not assigned"
 msgstr "Atanmadı"
 
 #: 
-msgid "About Me"
-msgstr "Benim hakkımda"
-
-#: 
 msgid "Printable Page"
 msgstr "Yazdırılabilir sayfa"
 
@@ -2561,10 +2557,6 @@ msgstr "Sorguyu tekrar çalıştırın"
 #: 
 msgid "Execute Query"
 msgstr "Sorguyu çalıştır"
-
-#: 
-msgid "Send"
-msgstr "Göndermek"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3689,10 +3681,6 @@ msgid "One or more files failed signature validation"
 msgstr "Bir veya daha fazla dosya başarısız oldu imza doğrulaması"
 
 #: 
-msgid "Family:"
-msgstr "Aile:"
-
-#: 
 msgid "item"
 msgstr "öğe"
 
@@ -3819,10 +3807,6 @@ msgstr "Grup"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Hata: Bir isim girmelisin"
-
-#: 
-msgid " Since:"
-msgstr " Dan beri:"
 
 #: 
 msgid "Total $"
@@ -3967,10 +3951,6 @@ msgid "Set true to enable family self registration."
 msgstr "Ailenin kendi kayıtlarını etkinleştirmek için true ayarlayın."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "Churchcrm kayıtlı. ChurchCRM ekibi, kullanımı izlemek için kayıt bilgilerini kullanır. Bu bilgiler gizli tutulur ve asla serbest bırakılır veya satılır. Bu alan doğruysa, yönetici menüsündeki kayıt seçeneği kaydını güncellemek için değişir."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Sol kenar boşluğu (1 = 1/100. İnç)"
 
@@ -4077,18 +4057,6 @@ msgstr "Son yedekleme zaman damgası"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks Depozitet Bilet Ayarları"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Bütünlük Kontrolünü Etkinleştir"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Dürüstlük kontrolü için saat aralık"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Son bütünlük kontrolü zaman damgası"
 
 #: 
 msgid "List Groups"
@@ -6064,24 +6032,8 @@ msgid "Family Verification"
 msgstr "Aile doğrulaması"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Aile üyeleri)"
-
-#: 
 msgid "Work Email"
 msgstr "İş e - postası"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Doğrulama talebiniz tamamlandı"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Doğrulama verilerinizle gönderirken bir hata ile karşılaştık"
-
-#: 
-msgid "Visit our Site"
-msgstr "Sitemizi ziyaret edin"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6361,10 +6313,6 @@ msgid "Text before name in emails/reports"
 msgstr "E -postalarda/raporlarda addan önce metin"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Boş LastName'de şahsen editörde izin vermek için true ayarlayın. Soyadını doğrulamak için false ayarlayın ve boş bırakıldığında aileden miras alın."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Depozito faturasında fatura sayımlarını göster"
 
@@ -6399,10 +6347,6 @@ msgstr "Bölüm"
 #: 
 msgid "View Photo"
 msgstr "Fotoğrafı göster"
-
-#: 
-msgid "Family Photo"
-msgstr "Aile fotoğrafı"
 
 #: 
 msgid "Status"
@@ -6443,10 +6387,6 @@ msgstr "Efsane"
 #: 
 msgid "assigned"
 msgstr "atanmış"
-
-#: 
-msgid "Photo"
-msgstr "Fotoğraf"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7306,10 +7246,6 @@ msgid "No logged in user"
 msgstr "Kullanıcıda oturum açılmış"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Standart profil resim simgesi boyutunu, varsayılan 85 piksel, kullanıcı listelerinde kullanılacak piksel olarak ayarlayın."
-
-#: 
 msgid "not found"
 msgstr "bulunamadı"
 
@@ -7765,14 +7701,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Uzak yedekleme uç noktası. WebDav ise, bu URL kodlanmalıdır."
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Bu sayfadaki tüm bilgiler doğrudur."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Lütfen ailem bilgilerini aşağıdakilerle güncelleyin"
-
-#: 
 msgid "Age Histogram"
 msgstr "Yaş histogramı"
 
@@ -7813,14 +7741,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF kullanım modu.\n"
 "1 = Dosya Dosyayı Kaydet\n"
 "2 = Geçerli tarayıcı penceresinde açın"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Ekran için atanan aileden miras alınan kişi bilgisi?\n"
-"Bu seçenek, bir kişinin atanan aile kaydından belirli bilgilerin\n"
-"O kişi için ilgili bilgi girilmediyse görüntülenir."
 
 #: 
 #, fuzzy
@@ -7874,10 +7794,6 @@ msgstr "Doğrulama URL'si"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Beklenmedik kişi kimliği"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Yazılım güncelleme kontrolü için saat aralık"
 
 #: 
 msgid "Last Software Update Check Timestamp"

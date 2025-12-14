@@ -2191,10 +2191,6 @@ msgid "Not assigned"
 msgstr "Haijakabidhiwa"
 
 #: 
-msgid "About Me"
-msgstr "Kuhusu mimi"
-
-#: 
 msgid "Printable Page"
 msgstr "Ukurasa Unaochapishwa"
 
@@ -2559,10 +2555,6 @@ msgstr "Endesha Swali Tena"
 #: 
 msgid "Execute Query"
 msgstr "Tekeleza Hoja"
-
-#: 
-msgid "Send"
-msgstr "Tuma"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3686,10 +3678,6 @@ msgid "One or more files failed signature validation"
 msgstr "Faili moja au zaidi imeshindwa kuthibitishwa kwa saini"
 
 #: 
-msgid "Family:"
-msgstr "Familia:"
-
-#: 
 msgid "item"
 msgstr "kipengee"
 
@@ -3816,10 +3804,6 @@ msgstr "Vikundi"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Hitilafu: Lazima uweke jina"
-
-#: 
-msgid " Since:"
-msgstr " Kwa kuwa:"
 
 #: 
 msgid "Total $"
@@ -3962,10 +3946,6 @@ msgid "Set true to enable family self registration."
 msgstr "Weka kuwa kweli ili kuwezesha usajili wa familia."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM imesajiliwa. Timu ya ChurchCRM hutumia taarifa za usajili kufuatilia matumizi. Taarifa hizi huwekwa kwa siri na kamwe hazitolewi au kuuzwa. Ikiwa sehemu hii ni kweli chaguo la usajili katika menyu ya msimamizi hubadilika ili kusasisha usajili."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Pambizo la Kushoto (1 = inchi 1/100)"
 
@@ -4072,18 +4052,6 @@ msgstr "Muhuri wa Muda wa Hifadhi Nakala ya Mwisho"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Mipangilio ya Tikiti ya Amana ya QuickBooks"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Washa Ukaguzi wa Uadilifu"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Muda katika Saa za Kukagua Uadilifu"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Muhuri wa Muda wa Kukagua Uadilifu wa Mwisho"
 
 #: 
 msgid "List Groups"
@@ -6058,24 +6026,8 @@ msgid "Family Verification"
 msgstr "Uthibitishaji wa Familia"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Wanafamilia)"
-
-#: 
 msgid "Work Email"
 msgstr "Barua pepe ya Kazi"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Ombi lako la uthibitishaji limekamilika"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Tumekumbana na hitilafu wakati wa kuwasilisha pamoja na data yako ya uthibitishaji"
-
-#: 
-msgid "Visit our Site"
-msgstr "Tembelea Tovuti yetu"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6355,10 +6307,6 @@ msgid "Text before name in emails/reports"
 msgstr "Tuma maandishi kabla ya jina katika barua pepe/ripoti"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Weka kweli ili kuruhusu jina la mwisho tupu katika Kihariri cha Mtu. Weka sivyo ili kuthibitisha jina la mwisho na kurithi kutoka kwa familia wakati ukiachwa tupu."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Onyesha hesabu za bili kwenye hati ya kuhifadhi"
 
@@ -6393,10 +6341,6 @@ msgstr "Sehemu"
 #: 
 msgid "View Photo"
 msgstr "Tazama Picha"
-
-#: 
-msgid "Family Photo"
-msgstr "Picha ya Familia"
 
 #: 
 msgid "Status"
@@ -6437,10 +6381,6 @@ msgstr "Hadithi"
 #: 
 msgid "assigned"
 msgstr "kupewa"
-
-#: 
-msgid "Photo"
-msgstr "Picha"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7299,10 +7239,6 @@ msgid "No logged in user"
 msgstr "Hakuna mtumiaji aliyeingia"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Weka ukubwa wa kawaida wa aikoni ya picha ya wasifu katika pikseli itakayotumika katika orodha za watu, pikseli 85 chaguomsingi."
-
-#: 
 msgid "not found"
 msgstr "haipatikani"
 
@@ -7755,14 +7691,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Sehemu ya Mwisho ya Hifadhi Nakala ya Mbali. Ikiwa WebDAV, hii lazima iwe url iliyosimbwa. "
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Taarifa zote kwenye ukurasa huu ni sahihi."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Tafadhali sasisha maelezo ya familia yangu na yafuatayo"
-
-#: 
 msgid "Age Histogram"
 msgstr "Histogram ya umri"
 
@@ -7803,14 +7731,6 @@ msgid "PDF handling mode.\n"
 msgstr "Hali ya kushughulikia PDF.\n"
 "1 = Hifadhi kidirisha cha faili\n"
 "2 = Fungua katika dirisha la kivinjari la sasa"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Maelezo ya mtu ambayo hayapatikani yaliyorithiwa kutoka kwa familia iliyokabidhiwa ili kuonyeshwa?\n"
-"Chaguo hili husababisha maelezo fulani kutoka kwa rekodi ya familia iliyokabidhiwa kuwa\n"
-"imeonyeshwa IKIWA habari inayolingana HAIJAINGIWA kwa mtu huyo. "
 
 #: 
 #, fuzzy
@@ -7864,10 +7784,6 @@ msgstr "URL ya uthibitishaji"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Kitambulisho cha Mtu Asiyetarajiwa"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Muda katika Saa kwa ukaguzi wa sasisho za programu"
 
 #: 
 msgid "Last Software Update Check Timestamp"

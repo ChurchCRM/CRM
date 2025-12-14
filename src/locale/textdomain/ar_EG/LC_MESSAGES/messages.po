@@ -2192,10 +2192,6 @@ msgid "Not assigned"
 msgstr "غيرمعتمد"
 
 #: 
-msgid "About Me"
-msgstr "عني"
-
-#: 
 msgid "Printable Page"
 msgstr "طباعة الصفحة"
 
@@ -2561,10 +2557,6 @@ msgstr "تشغيل الاستعلام مرة أخرى"
 #: 
 msgid "Execute Query"
 msgstr "تنفيذ الاستعلام"
-
-#: 
-msgid "Send"
-msgstr "ارسال"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3691,10 +3683,6 @@ msgid "One or more files failed signature validation"
 msgstr "فشل واحد أو أكثر من الملفات التحقق من صحة التوقيع"
 
 #: 
-msgid "Family:"
-msgstr "عائلة:"
-
-#: 
 msgid "item"
 msgstr "بند"
 
@@ -3821,10 +3809,6 @@ msgstr "مجموعات"
 #: 
 msgid "Error: You must enter a name"
 msgstr "خطأ: يجب إدخال اسم"
-
-#: 
-msgid " Since:"
-msgstr "منذ:"
 
 #: 
 msgid "Total $"
@@ -3969,10 +3953,6 @@ msgid "Set true to enable family self registration."
 msgstr "تعيين صحيح لتمكين التسجيل الذاتي الأسرة."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "وقد تم تسجيل ChurchCRM. معلومات التسجيل الاستخدامات فريق ChurchCRM لتتبع الاستخدام. يتم الاحتفاظ بسرية هذه المعلومات وعدم إطلاق سراح أو بيعها. إذا كان هذا الحقل هو الصحيح خيار التسجيل في القائمة المشرف يتغير لتسجيل التحديث."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "الهامش الأيسر (1 = 1 / 100th بوصة)"
 
@@ -4079,18 +4059,6 @@ msgstr "نشاط النسخ الاحتياطي الطابع الزمني"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "قراء إعدادات تذكرة الإيداع"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "تمكين التحقق من تكامل"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "الفاصل الزمني في ساعات النزاهة تحقق"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "آخر النزاهة تحقق الطابع الزمني"
 
 #: 
 msgid "List Groups"
@@ -6066,24 +6034,8 @@ msgid "Family Verification"
 msgstr "التأكيد الأسرة"
 
 #: 
-msgid "Family Member(s)"
-msgstr "أفراد الأسرة)"
-
-#: 
 msgid "Work Email"
 msgstr "البريد الإلكتروني العمل"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "طلب التحقق اكتمال"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "واجهنا خطأ أثناء إرسال البيانات مع التحقق"
-
-#: 
-msgid "Visit our Site"
-msgstr "زيارة موقعنا"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6363,10 +6315,6 @@ msgid "Text before name in emails/reports"
 msgstr "النص قبل الاسم في رسائل البريد الإلكتروني / تقارير"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "تعيين صحيح للسماح اللقب فارغة في محرر شخص. مجموعة كاذبة للتحقق من صحة اسم العائلة ويرث من العائلة عندما غادر فارغ."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "التهم عرض مشروع قانون على قسيمة الإيداع"
 
@@ -6401,10 +6349,6 @@ msgstr "جزء"
 #: 
 msgid "View Photo"
 msgstr "عرض صور"
-
-#: 
-msgid "Family Photo"
-msgstr "صورة عائلية"
 
 #: 
 msgid "Status"
@@ -6445,10 +6389,6 @@ msgstr "عنوان تفسيري"
 #: 
 msgid "assigned"
 msgstr "تعيين"
-
-#: 
-msgid "Photo"
-msgstr "صورة فوتوغرافية"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7308,10 +7248,6 @@ msgid "No logged in user"
 msgstr "لا قاموا بتسجيل الدخول"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "تعيين معيار صورة الملف الشخصي حجم الرمز بالبكسل لاستخدامها في قوائم الناس، والتقصير 85 بكسل."
-
-#: 
 msgid "not found"
 msgstr "غير موجود"
 
@@ -7767,14 +7703,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "نقطة النهاية النسخ الاحتياطي عن بعد. إذا WEBDAV، وهذا يجب أن يكون رابط المشفرة."
 
 #: 
-msgid "All information on this page is correct."
-msgstr "جميع المعلومات في هذه الصفحة هي الصحيحة."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "يرجى تحديث المعلومات عائلتي بما يلي"
-
-#: 
 msgid "Age Histogram"
 msgstr "العمر الرسم البياني"
 
@@ -7808,12 +7736,6 @@ msgid "PDF handling mode.\n"
 "1 = Save File dialog\n"
 "2 = Open in current browser window"
 msgstr "PDF وضع معالجة. 1 = حفظ ملف الحوار 2 = فتح في نافذة المتصفح الحالي"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "غير متوفرة شخص معلومات الموروثة من الأسرة المخصصة للعرض؟ يؤدي هذا الخيار معلومات معينة من سجل الأسرة تعيين الشخص للظهور إذا لم يتم إدخال المعلومات المقابلة لهذا الشخص."
 
 #: 
 #, fuzzy
@@ -7867,10 +7789,6 @@ msgstr "URL التحقق"
 #: 
 msgid "Unexpected Person Id"
 msgstr "غير متوقع شخص معرف"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "الفاصل الزمني في ساعات لفحص تحديث البرامج"
 
 #: 
 msgid "Last Software Update Check Timestamp"

@@ -2248,10 +2248,6 @@ msgid "Not assigned"
 msgstr "Nu este alocat"
 
 #: 
-msgid "About Me"
-msgstr "Despre mine"
-
-#: 
 msgid "Printable Page"
 msgstr "Printabilă Page"
 
@@ -2623,10 +2619,6 @@ msgstr "Rulați din nou interogarea"
 #: 
 msgid "Execute Query"
 msgstr "Executa interogări"
-
-#: 
-msgid "Send"
-msgstr "Trimite"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3783,10 +3775,6 @@ msgid "One or more files failed signature validation"
 msgstr "Unul sau mai multe fișiere au semnătura invalidă"
 
 #: 
-msgid "Family:"
-msgstr "Familie:"
-
-#: 
 msgid "item"
 msgstr "element"
 
@@ -3913,10 +3901,6 @@ msgstr "Grupuri"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Eroare: Trebuie să introduceți un nume"
-
-#: 
-msgid " Since:"
-msgstr "De la :"
 
 #: 
 msgid "Total $"
@@ -4061,10 +4045,6 @@ msgid "Set true to enable family self registration."
 msgstr "Setați true pentru a permite auto înregistrarea"
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM a fost înregistrată. Echipa ChurchCRM folosește informații de înregistrare pentru a urmări utilizarea. Aceste informații sunt păstrate confidențial și nu sunt niciodată eliberate sau vândute. Dacă acest câmp este adevărat, opțiunea de înregistrare din meniul admin se modifică pentru a actualiza înregistrarea."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Margine stânga (1 = 1/100th inchi)"
 
@@ -4171,18 +4151,6 @@ msgstr "Data ultimei copii de rezervă"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Setări pentru bilete de depozit QuickBooks"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Activați verificarea de integritate"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Interval orar verificare de integritate"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Data ultimei verificări de integritate"
 
 #: 
 msgid "List Groups"
@@ -6159,24 +6127,8 @@ msgid "Family Verification"
 msgstr "Verificare familie"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Membru(ri) familie"
-
-#: 
 msgid "Work Email"
 msgstr "Email de muncă"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Varificare ta este finalizată"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Am întâmpinat o eroare la trimiterea datelor de verificare"
-
-#: 
-msgid "Visit our Site"
-msgstr "Visitează pagina noastră"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6456,10 +6408,6 @@ msgid "Text before name in emails/reports"
 msgstr "Text înainte de nume în email-uri/rapoarte"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Setați true pentru a permite numele de familie necompletat în Editorul de persoane. Setați false pentru a valida numele de familie și a moșteni de la familie atunci când este necompletat."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Afișarea numărului de facturi pe bonul de depozit"
 
@@ -6494,10 +6442,6 @@ msgstr "Parte"
 #: 
 msgid "View Photo"
 msgstr "Vezi foto"
-
-#: 
-msgid "Family Photo"
-msgstr "Foto familie"
 
 #: 
 msgid "Status"
@@ -6538,10 +6482,6 @@ msgstr "Legendă"
 #: 
 msgid "assigned"
 msgstr "asignat"
-
-#: 
-msgid "Photo"
-msgstr "Foto"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7401,10 +7341,6 @@ msgid "No logged in user"
 msgstr "Nu ești autentificat"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Setează poza standard de profil pentru a apărea în lista cu persoane, implicit la 85px."
-
-#: 
 msgid "not found"
 msgstr "nu găsesc"
 
@@ -7860,14 +7796,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Endpoint de backup la distanță. Dacă este WebDAV, acesta trebuie să fie codificat în URL"
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Toate informațiile de pe pagină sunt corecte."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Vă rugăm să actualizați informațiile despre familia mea cu următoarele"
-
-#: 
 msgid "Age Histogram"
 msgstr "Histograma vârstei"
 
@@ -7905,13 +7833,6 @@ msgid "PDF handling mode.\n"
 msgstr "Mod de gestionare a fișierelor PDF.\n"
 "1 = Dialog pentru Salvare Fișier\n"
 "2 = Deschide în fereastra curentă a browserului"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Informațiile indisponibile ale unei persoane moștenite de la familia asignată pentru afișare?\n"
-"Această opțiune determină afișarea anumitor informații din înregistrarea familiei asignate a unei persoane DACĂ informațiile corespunzătoare NU au fost introduse pentru acea persoană"
 
 #: 
 #, fuzzy
@@ -7965,10 +7886,6 @@ msgstr "URL de verificare"
 #: 
 msgid "Unexpected Person Id"
 msgstr "ID Persoană neașteptat"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Interval in ore pentru verificare actualizare sistem"
 
 #: 
 msgid "Last Software Update Check Timestamp"

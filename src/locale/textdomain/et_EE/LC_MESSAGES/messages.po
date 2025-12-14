@@ -2192,10 +2192,6 @@ msgid "Not assigned"
 msgstr "Pole määratud"
 
 #: 
-msgid "About Me"
-msgstr "Minust"
-
-#: 
 msgid "Printable Page"
 msgstr "Prinditav leht"
 
@@ -2561,10 +2557,6 @@ msgstr "Käivita päring uuesti"
 #: 
 msgid "Execute Query"
 msgstr "Käivita päring"
-
-#: 
-msgid "Send"
-msgstr "Saada"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3691,10 +3683,6 @@ msgid "One or more files failed signature validation"
 msgstr "Ühe või mitme faili allkirja valideerimine nurjus"
 
 #: 
-msgid "Family:"
-msgstr "Perekond:"
-
-#: 
 msgid "item"
 msgstr "kirje"
 
@@ -3821,10 +3809,6 @@ msgstr "Grupid"
 #: 
 msgid "Error: You must enter a name"
 msgstr "Viga: peate sisestama nime"
-
-#: 
-msgid " Since:"
-msgstr " Alates:"
 
 #: 
 msgid "Total $"
@@ -3968,10 +3952,6 @@ msgid "Set true to enable family self registration."
 msgstr "Määrake tõeline, et võimaldada perekonna enese registreerimist."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM on registreeritud. ChurchCRM-i meeskond kasutab registreerimise teavet kasutamise jälgimiseks. Seda teavet hoitakse konfidentsiaalsena ega avaldata ega müüda kunagi. Kui see väli vastab tõele, muutub administraatori menüüs registreerimise suvand registreerimise värskendamiseks."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Vasak varu (1 = 1/100 tolli)"
 
@@ -4078,18 +4058,6 @@ msgstr "Viimane varundamise ajatempel"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooksi sissemakse kviitungi seaded"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "Luba täielik kontrollimine"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Täieliku kontrollimise intervall tundides"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Viimase täieliku kontrollimise ajatempel"
 
 #: 
 msgid "List Groups"
@@ -6065,24 +6033,8 @@ msgid "Family Verification"
 msgstr "Perekonna kinnitamine"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Perekonna liige(liikmed)"
-
-#: 
 msgid "Work Email"
 msgstr "Töö e-kiri"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Teie kinnitustaotlus on lõpule viidud"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Teie kinnitusandmete esitamisel ilmnes viga"
-
-#: 
-msgid "Visit our Site"
-msgstr "Külastage meie veebilehte"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6362,10 +6314,6 @@ msgid "Text before name in emails/reports"
 msgstr "Tekst enne nime e-kirjades/aruannetes"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Isikuredaktoris tühja perekonnanime lubamiseks määrake väärtuseks Tõene. Määra Väär, et kinnitada perekonnanimi ja pärida perekonnalt, kui see on tühi."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "Kuva arvete arv sissemakse sedelil"
 
@@ -6400,10 +6348,6 @@ msgstr "Osa"
 #: 
 msgid "View Photo"
 msgstr "Vaata fotot"
-
-#: 
-msgid "Family Photo"
-msgstr "Perefoto"
 
 #: 
 msgid "Status"
@@ -6444,10 +6388,6 @@ msgstr "Legend"
 #: 
 msgid "assigned"
 msgstr "määratud"
-
-#: 
-msgid "Photo"
-msgstr "Foto"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7307,10 +7247,6 @@ msgid "No logged in user"
 msgstr "Kasutajat pole"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Seadke inimeste loendites kasutatav tavapärane profiilipildi ikooni suurus pikslites, vaikimisi 85 pikslit."
-
-#: 
 msgid "not found"
 msgstr "ei leitud"
 
@@ -7766,14 +7702,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Kaugvarunduse lõpp-punkt. Kui WebDAV, tuleb see URL kodeerida. "
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Kogu teave sellel lehel on õige."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Palun värskendage minu perekonna teavet järgmiselt"
-
-#: 
 msgid "Age Histogram"
 msgstr "Vanuse histogramm"
 
@@ -7814,14 +7742,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF-i käitlemisrežiim.\n"
 "1 = dialoogiboks Salvesta fail\n"
 "2 = Ava praeguses brauseriaknas"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Määratud perekonna kuvamise kohta pole saadaval teavet?\n"
-"See valik põhjustab teatud teabe isiku määratud perekonnakirjest\n"
-"kuvatakse, kui vastavat teavet EI ole selle inimese kohta sisestatud. "
 
 #: 
 #, fuzzy
@@ -7875,10 +7795,6 @@ msgstr "Kinnituse URL"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Ootamatu inimese ID"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Tarkvara värskenduse kontrollimise intervall tundides"
 
 #: 
 msgid "Last Software Update Check Timestamp"

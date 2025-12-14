@@ -2175,10 +2175,6 @@ msgid "Not assigned"
 msgstr "Nie przypisano"
 
 #: 
-msgid "About Me"
-msgstr "O mnie"
-
-#: 
 msgid "Printable Page"
 msgstr "Format do Druku"
 
@@ -2551,10 +2547,6 @@ msgstr "Wyszukaj Ponownie"
 #: 
 msgid "Execute Query"
 msgstr "Wyszukaj"
-
-#: 
-msgid "Send"
-msgstr "Wyślij"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3417,10 +3409,6 @@ msgid "Set true to enable family self registration."
 msgstr "Ustaw True aby włączyć samodzielną rejestrację rodzin."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "Zarejestrowano ChurchCRM. Team ChurchCRM używa tych danych, aby śledzić użycie. Dane te są bezpiecznie przechowywane, nie są udostępniane lub sprzedawane. Jeśli to pole jest ustawione True, opcja rejestracji w menu ustawień zmieni się na Uaktualnij Rejestrację."
-
-#: 
 msgid "List Groups"
 msgstr "Lista grup"
 
@@ -3488,10 +3476,6 @@ msgstr "Pokaż sąsiadów w wybranych kategoriach:"
 #: 
 msgid "Select event"
 msgstr "Wybierz wydarzenie"
-
-#: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Ustaw True aby zezwolić na brak nazwiska w Edytorze Osoby. False spowoduje weryfikację wpisu i ewentualne użycie nazwiska powiązanej rodziny."
 
 #: 
 msgid "Showing students with birthdays in"
@@ -3903,14 +3887,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Zdalny Punkt Kopii Bezpieczeństwa. Jeżeli jest to WebDAV, URL musi zaeiwrać wszystkie informacje. "
 
 #: 
-msgid "All information on this page is correct."
-msgstr "Wszystkie podane na tej stronie informacje są poprawne."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Uaktualnij dane rodziny o brakujące"
-
-#: 
 msgid "Age Histogram"
 msgstr "Wykres Wieku"
 
@@ -3952,13 +3928,6 @@ msgid "PDF handling mode.\n"
 msgstr "Sposób obsługi PDF.\n"
 "1 = 'Zapisz jako'\n"
 "2 = Otwórz w przeglądarce w bierzącym oknie"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Uzupełnij brakujące dane osób informacjami z powiązanej rodziny?\n"
-"Ta opcja używa niektórych informacji zapisanych dla rodziny gdy osoba nie ma wpisanych wszystkich danych. "
 
 #: 
 #, fuzzy
@@ -4012,10 +3981,6 @@ msgstr "Adres URL potwierdzenia"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Niespodziewane Id Osoby"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Czas między sprawdzeniami aktualizacji (w godzinach)"
 
 #: 
 msgid "Last Software Update Check Timestamp"

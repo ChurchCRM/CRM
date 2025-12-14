@@ -2227,10 +2227,6 @@ msgid "Not assigned"
 msgstr "Ikke tildelt"
 
 #: 
-msgid "About Me"
-msgstr "Om Meg"
-
-#: 
 msgid "Printable Page"
 msgstr "Utskriftsvennlig side"
 
@@ -2610,10 +2606,6 @@ msgstr "Kjør spørringen på nytt"
 #: 
 msgid "Execute Query"
 msgstr "Utfør Query"
-
-#: 
-msgid "Send"
-msgstr "Send"
 
 #: 
 msgid "Pledge Reminder Report"

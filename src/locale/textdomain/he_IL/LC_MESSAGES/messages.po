@@ -2191,10 +2191,6 @@ msgid "Not assigned"
 msgstr "לא משויך"
 
 #: 
-msgid "About Me"
-msgstr "אודותי"
-
-#: 
 msgid "Printable Page"
 msgstr "דף להדפסה"
 
@@ -2559,10 +2555,6 @@ msgstr "הרץ שאילתה שוב"
 #: 
 msgid "Execute Query"
 msgstr "הרץ שאילתה"
-
-#: 
-msgid "Send"
-msgstr "שלח"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3686,10 +3678,6 @@ msgid "One or more files failed signature validation"
 msgstr "אימות החתימה נכשל עבור קובץ אחד או יותר"
 
 #: 
-msgid "Family:"
-msgstr "משפחה"
-
-#: 
 msgid "item"
 msgstr "פריט"
 
@@ -3816,10 +3804,6 @@ msgstr "קבוצות"
 #: 
 msgid "Error: You must enter a name"
 msgstr "שגיאה: אנא הזן שם"
-
-#: 
-msgid " Since:"
-msgstr "מאז:"
 
 #: 
 msgid "Total $"
@@ -3962,10 +3946,6 @@ msgid "Set true to enable family self registration."
 msgstr "הפעל כדי לאפשר רישום עצמי של משפחות"
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM נרשם. צוות ChurchCRM משתמש במידע הרישום למעקב אחר השימוש. מידע זה נשמר בסודיות ולעולם לא נמסר או נמכר. אם שדה זה נכון, אפשרות הרישום בתפריט המנהל משתנה לעדכון רישום."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "שוליים שמאליים (1 = 1/100 אינץ')"
 
@@ -4072,18 +4052,6 @@ msgstr "חותמת זמן גיבוי אחרון"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "הגדרות שובר הפקדה של QuickBooks"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "הפעל בדיקת שלמות"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "מרווח זמן בשעות עבור בדיקת שלמות"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "חותמת זמן בדיקת שלמות אחרונה"
 
 #: 
 msgid "List Groups"
@@ -6061,24 +6029,8 @@ msgid "Family Verification"
 msgstr "אימות משפחה"
 
 #: 
-msgid "Family Member(s)"
-msgstr "בני משפחה"
-
-#: 
 msgid "Work Email"
 msgstr "אימייל עבודה"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "בקשת האימות שלך הושלמה"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "נתקלנו בשגיאה בעת שליחת נתוני האימות שלך"
-
-#: 
-msgid "Visit our Site"
-msgstr "בקר באתר שלנו"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6358,10 +6310,6 @@ msgid "Text before name in emails/reports"
 msgstr "טקסט לפני השם באימיילים/דוחות"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "הגדר כ-true כדי לאפשר שם משפחה ריק בעורך האנשים. הגדר כ-false כדי לאמת שם משפחה ולרשת מהמשפחה כשנשאר ריק."
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "הצג ספירת חשבונות בשובר הפקדה"
 
@@ -6396,10 +6344,6 @@ msgstr "חלק"
 #: 
 msgid "View Photo"
 msgstr "הצג תמונה"
-
-#: 
-msgid "Family Photo"
-msgstr "תמונת משפחה"
 
 #: 
 msgid "Status"
@@ -6440,10 +6384,6 @@ msgstr "מקרא"
 #: 
 msgid "assigned"
 msgstr "משויך"
-
-#: 
-msgid "Photo"
-msgstr "תמונה"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7301,10 +7241,6 @@ msgid "No logged in user"
 msgstr "אין משתמש מחובר"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "הגדר את גודל סמל תמונת הפרופיל הסטנדרטי בפיקסלים לשימוש ברשימות אנשים, ברירת מחדל 85 פיקסלים."
-
-#: 
 msgid "not found"
 msgstr "לא נמצא"
 
@@ -7757,14 +7693,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "נקודת קצה לגיבוי מרוחק. אם זה WebDAV, חייב להיות מקודד URL."
 
 #: 
-msgid "All information on this page is correct."
-msgstr "כל המידע, בדף זה, נכון."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "אנא עדכן את פרטי המשפחה שלי עם הפרטים הבאים"
-
-#: 
 msgid "Age Histogram"
 msgstr "היסטוגרמת גילאים"
 
@@ -7805,14 +7733,6 @@ msgid "PDF handling mode.\n"
 msgstr "טיפול בקבצי PDF.\n"
 "1 = שמירת קובץ\n"
 "2 + פתח בחלון הנוכחי"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "האם להציג מידע לא זמין על אדם שהורש מהמשפחה המשויכת?\n"
-"אפשרות זו גורמת למידע מסוים מרשומת המשפחה המשויכת של אדם\n"
-"להיות מוצג אם המידע המתאים לא הוזן עבור אותו אדם."
 
 #: 
 #, fuzzy
@@ -7866,10 +7786,6 @@ msgstr "URL לאישור"
 #: 
 msgid "Unexpected Person Id"
 msgstr "מזהה אדם בלתי צפוי"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "מרווח זמן בשעות לבדיקת עדכוני תוכנה"
 
 #: 
 msgid "Last Software Update Check Timestamp"

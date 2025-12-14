@@ -2192,10 +2192,6 @@ msgid "Not assigned"
 msgstr "አልተመደበም"
 
 #: 
-msgid "About Me"
-msgstr "ስለ እኔ"
-
-#: 
 msgid "Printable Page"
 msgstr "የሚታተም ገጽ"
 
@@ -2561,10 +2557,6 @@ msgstr "መጠይቁን እንደገና አስጀምር"
 #: 
 msgid "Execute Query"
 msgstr "መጠይቁን አስኪድ"
-
-#: 
-msgid "Send"
-msgstr "ላክ"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3689,10 +3681,6 @@ msgid "One or more files failed signature validation"
 msgstr "አንድ ወይም ከዚያ በላይ ፋይሎች የፊርማ ማረጋገጫ አልተሳካም"
 
 #: 
-msgid "Family:"
-msgstr "ቤተሰብ:"
-
-#: 
 msgid "item"
 msgstr "ንጥል "
 
@@ -3819,10 +3807,6 @@ msgstr "ቡድኖች"
 #: 
 msgid "Error: You must enter a name"
 msgstr "ስህተት: ስም ማስገባት አለብህ"
-
-#: 
-msgid " Since:"
-msgstr " ጀምሮ:"
 
 #: 
 msgid "Total $"
@@ -3967,10 +3951,6 @@ msgid "Set true to enable family self registration."
 msgstr "የቤተሰብ ራስን መመዝገብ ለማንቃት እውነት ያዘጋጁ"
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM ተመዝግቧል። የChurchCRM ቡድን አጠቃቀምን ለመከታተል የምዝገባ መረጃ ይጠቀማል። ይህ መረጃ በሚስጥር የተጠበቀ ነው እና በጭራሽ አይለቀቅም ወይም አይሸጥም። ይህ መስክ እውነት ከሆነ በአስተዳዳሪው ምናሌ ውስጥ ያለው የመመዝገቢያ ምርጫ ምዝገባን ለማዘመን ይለወጣል"
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "የግራ ህዳግ (1 = 1/100ኛ ኢንች)"
 
@@ -4077,18 +4057,6 @@ msgstr "የመጨረሻው የመጠባበቂያ ጊዜ ማህተም"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks የተቀማጭ ትኬት ቅንብሮች"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "የታማኝነት ማረጋገጥን አንቃ"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "ለታማኝነት ማረጋገጫ በሰዓታት ውስጥ ያለው የጊዜ ክፍተት"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "የመጨረሻው የአቋም ማረጋገጫ የጊዜ ማህተም"
 
 #: 
 msgid "List Groups"
@@ -6065,24 +6033,8 @@ msgid "Family Verification"
 msgstr "የቤተሰብ ማረጋገጫ"
 
 #: 
-msgid "Family Member(s)"
-msgstr "የቤተሰብ አባላት"
-
-#: 
 msgid "Work Email"
 msgstr "የስራ ኢሜይል"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "የማረጋገጫ ጥያቄዎ ተጠናቅቋል"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "በማረጋገጫ መረጃ ማስገባት ላይ ስህተት አጋጥሞናል"
-
-#: 
-msgid "Visit our Site"
-msgstr "ድህረ ገጻችንን ይጎብኙ"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6362,10 +6314,6 @@ msgid "Text before name in emails/reports"
 msgstr "በኢሜል/ሪፖርቶች ውስጥ ከስም በፊት ይፃፉ"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "በሰው አርታዒ ውስጥ ባዶ የአያት ስም ለመፍቀድ ከፈለጉ እውነትን ይምረጡ። የአያት ስም ለማረጋገጥ እና ባዶ ሲቀር ከቤተሰብ መረጃ ለመውሰድ ሀሰትን ይምረጡ።"
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "የማሳያ ሂሳቡ በተቀማጭ ወረቀት ላይ ይቆጠራል"
 
@@ -6400,10 +6348,6 @@ msgstr "ክፍል"
 #: 
 msgid "View Photo"
 msgstr "ፎቶ ይመልከቱ"
-
-#: 
-msgid "Family Photo"
-msgstr "የቤተሰብ ፎቶ"
 
 #: 
 msgid "Status"
@@ -6444,10 +6388,6 @@ msgstr "መግለጫ"
 #: 
 msgid "assigned"
 msgstr "ተመድቧል"
-
-#: 
-msgid "Photo"
-msgstr "ፎቶ"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7307,10 +7247,6 @@ msgid "No logged in user"
 msgstr "ምንም ተጠቃሚ አልገባም"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "መደበኛውን የመገለጫ ሥዕል መጠን በሰዎች ዝርዝር ውስጥ ለመጠቀም በፒክሰሎች ያቀናብሩ፣ የተለመደው 85 ፒክስል"
-
-#: 
 msgid "not found"
 msgstr "አልተገኘም"
 
@@ -7768,15 +7704,6 @@ msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "የርቀት የምትኩ  መጨረሻ ነጥብ። WebDAV ከሆነ፣ ይህ ዩአርኤል መደበቅ አለበት።"
 
 #: 
-msgid "All information on this page is correct."
-msgstr "በዚህ ገጽ ላይ ያለ መረጃ ሁሉ ትክክል ነዉ "
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "\n"
-"እባክዎን የቤተሰቦን መረጃ በሚከተለው ያዘምኑ"
-
-#: 
 msgid "Age Histogram"
 msgstr "የዕድሜ ሂስቶግራም"
 
@@ -7818,15 +7745,6 @@ msgid "PDF handling mode.\n"
 msgstr " የ PDF አያያዝ ሁነታ፡\n"
 "1 = የፋይል ንግግር አስቀምጥ\n"
 "2 = አሁን ባለው የመፈለጊያ መስኮት ክፈት"
-
-#: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "\n"
-"ለዕይታ ከተመደበ ቤተሰብ የተወረሰ ትክክለኛ ያልሆነ ሰው መረጃ?\n"
-"ይህ አማራጭ ለበአንድ ሰው ከተመደበው የቤተሰብ መዝገብ የተወሰነ መረጃ እንዲኖር ያደርጋል\n"
-"ተጓዳኝ መረጃው ለዚያ ሰው ካልገባ።"
 
 #: 
 #, fuzzy
@@ -7880,10 +7798,6 @@ msgstr "የማረጋገጫ ዩአርኤል"
 #: 
 msgid "Unexpected Person Id"
 msgstr "ያልተጠበቀ ሰው መታወቂያ"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "የሶፍትዌር ማሻሻያ ፍተሻ በሰዓታት ውስጥ"
 
 #: 
 msgid "Last Software Update Check Timestamp"

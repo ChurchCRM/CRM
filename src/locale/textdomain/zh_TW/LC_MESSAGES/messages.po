@@ -2257,10 +2257,6 @@ msgid "Not assigned"
 msgstr "未分配"
 
 #: 
-msgid "About Me"
-msgstr "關於我"
-
-#: 
 msgid "Printable Page"
 msgstr "可打印頁"
 
@@ -2635,10 +2631,6 @@ msgstr "再次運行查詢"
 #: 
 msgid "Execute Query"
 msgstr "執行查詢"
-
-#: 
-msgid "Send"
-msgstr "發送"
 
 #: 
 msgid "Pledge Reminder Report"
@@ -3804,10 +3796,6 @@ msgid "One or more files failed signature validation"
 msgstr "一個或多個文件簽名驗證失敗"
 
 #: 
-msgid "Family:"
-msgstr "家庭："
-
-#: 
 msgid "item"
 msgstr "項目"
 
@@ -3934,10 +3922,6 @@ msgstr "組"
 #: 
 msgid "Error: You must enter a name"
 msgstr "錯誤：您必須輸入名稱"
-
-#: 
-msgid " Since:"
-msgstr "從:"
 
 #: 
 msgid "Total $"
@@ -4082,10 +4066,6 @@ msgid "Set true to enable family self registration."
 msgstr "設置為true(是)以啟用家庭自助註冊。"
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM已經註冊。 ChurchCRM團隊使用註冊信息來跟踪使用情況。信息將得到保密處理，絕不發布或出售。如果此字段為true(是)，則管理菜單中的註冊選項將更改為更新註冊。"
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "左邊距（1 = 1/100英寸）"
 
@@ -4200,18 +4180,6 @@ msgstr "上次備份時間戳"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks存款票設置"
-
-#: 
-msgid "Enable Integrity Check"
-msgstr "啟用完整性檢查"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "完整性檢查的小時間隔"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "最後完整性檢查時間戳"
 
 #: 
 msgid "List Groups"
@@ -6198,24 +6166,8 @@ msgid "Family Verification"
 msgstr "驗證家庭"
 
 #: 
-msgid "Family Member(s)"
-msgstr "家庭成員"
-
-#: 
 msgid "Work Email"
 msgstr "工作電郵"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "您的驗證請求已完成"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "我們在使用您的驗證數據時遇到錯誤"
-
-#: 
-msgid "Visit our Site"
-msgstr "訪問我們的網站"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6499,10 +6451,6 @@ msgid "Text before name in emails/reports"
 msgstr "電子郵件/報告中姓名前的文字"
 
 #: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "設置為是將允許在Person Editor（人員編輯）中允許姓氏為空值。設置為false(否)將驗證姓氏，並在其空值時從家族繼承。"
-
-#: 
 msgid "Display bill counts on deposit slip"
 msgstr "在存款單上顯示賬單計數"
 
@@ -6537,10 +6485,6 @@ msgstr "部分"
 #: 
 msgid "View Photo"
 msgstr "查看照片"
-
-#: 
-msgid "Family Photo"
-msgstr "家庭照片"
 
 #: 
 msgid "Status"
@@ -6582,10 +6526,6 @@ msgstr "圖例"
 #: 
 msgid "assigned"
 msgstr "已指派"
-
-#: 
-msgid "Photo"
-msgstr "圖片"
 
 #: 
 msgid "Showing students with birthdays in"
@@ -7455,10 +7395,6 @@ msgid "No logged in user"
 msgstr "沒有登錄用戶"
 
 #: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "設置要在人員列表中使用的標準配置文件圖片圖標大小（以像素為單位），默認為85像素。"
-
-#: 
 msgid "not found"
 msgstr "找不到"
 
@@ -7936,16 +7872,6 @@ msgstr "遠程備份端點。如果是WebDAV，必須是url編碼的。"
 
 #: 
 #, fuzzy
-msgid "All information on this page is correct."
-msgstr "頁面上的所有信息都是正確的。"
-
-#: 
-#, fuzzy
-msgid "Please update the my family information with the following"
-msgstr "請使用以下內容更新我的家庭信息"
-
-#: 
-#, fuzzy
 msgid "Age Histogram"
 msgstr "年齡直方圖"
 
@@ -7987,13 +7913,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF處理模式。 \n"
 "1 =保存文件對話框 \n"
 "2 =在當前瀏覽器窗口中打開"
-
-#: 
-#, fuzzy
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "從指定的家庭繼承的不可用人員信息是否顯示？如果尚未為該人輸入相應的信息，則此選項會導致顯示某人指定的家庭記錄中的某些信息。"
 
 #: 
 #, fuzzy
@@ -8059,11 +7978,6 @@ msgstr "驗證網址"
 #, fuzzy
 msgid "Unexpected Person Id"
 msgstr "不預期的人員代碼"
-
-#: 
-#, fuzzy
-msgid "Interval in Hours for software update check"
-msgstr "軟件更新檢查的間隔小時"
 
 #: 
 #, fuzzy
