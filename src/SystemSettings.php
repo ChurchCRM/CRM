@@ -230,7 +230,7 @@ require_once 'Include/Header.php';
                     }
                     // Do not display password defaults for security reasons (GHSA-p98h-5xcj-5c6x)
                     if ($setting->getType() !== 'password') {
-                        echo $display_default;
+                        echo InputUtils::escapeHTML($display_default);
                     } ?>
                   </td>
                 </tr>
