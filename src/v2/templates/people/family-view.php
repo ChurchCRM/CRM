@@ -41,10 +41,9 @@ $memberCount = count($family->getPeople());
         <!-- Family Photo Card -->
         <div class="card card-primary">
             <div class="card-header">
-                <h3 class="card-title m-0"><?= $family->getName() ?> [<?= $family->getId() ?>]</h3>
+                <h3 class="card-title m-0"><?= $family->getName() ?></h3>
                 <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-box-tool edit-family"><i class="fa-solid fa-pen"></i>
-                    </button>
+                    <span class="badge badge-secondary"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
                 </div>
             </div>
             <div class="card-body text-center">
@@ -127,8 +126,6 @@ $memberCount = count($family->getPeople());
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?></h3>
                 <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-box-tool edit-family"><i class="fa-solid fa-pen"></i>
-                    </button>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
                     </button>
                 </div>
@@ -163,11 +160,6 @@ $memberCount = count($family->getPeople());
         <div class="card card-primary mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-address-book"></i> <?= gettext("Contact Info") ?></h3>
-                <div class="card-tools pull-right">
-                    <button type="button" class="btn btn-box-tool edit-family"><i
-                            class="fa-solid fa-pen"></i>
-                    </button>
-                </div>
             </div>
             <div class="card-body">
                 <ul class="fa-ul">
@@ -655,10 +647,6 @@ $memberCount = count($family->getPeople());
         } else {
             console.error('Photo uploader not initialized!');
         }
-    });
-
-    $(document).on('click', '.edit-family', function() {
-        window.location.href = window.CRM.root + '/FamilyEditor.php?FamilyID=' + window.CRM.currentFamily;
     });
 </script>
 <!-- Photos end -->
