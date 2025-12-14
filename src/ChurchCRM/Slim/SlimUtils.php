@@ -234,7 +234,6 @@ class SlimUtils
         
         return $message;
     }
-    }
 
     /**
      * Get a string query parameter from the request

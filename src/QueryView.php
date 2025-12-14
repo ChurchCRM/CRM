@@ -254,7 +254,7 @@ function DoQuery()
             } else {
                 // ...otherwise just render the field
                 // Write the actual value of this row
-                echo '<td>' . htmlspecialchars($aRow[$iCount]) . '</td>';
+                echo '<td>' . InputUtils::escapeHTML($aRow[$iCount]) . '</td>';
             }
         }
 
@@ -309,7 +309,7 @@ function DoQuery()
         <div class="card-title">Query</div>
     </div>
     <div class="card-body">
-        <code><?= str_replace(chr(13), '<br>', htmlspecialchars($qry_SQL)); ?></code>
+        <code><?= str_replace(chr(13), '<br>', InputUtils::escapeHTML($qry_SQL)); ?></code>
     </div>
 </div>
     <?php

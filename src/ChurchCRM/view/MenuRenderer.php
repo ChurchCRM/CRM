@@ -4,6 +4,7 @@ namespace ChurchCRM\view;
 
 use ChurchCRM\Config\Menu\Menu;
 use ChurchCRM\Config\Menu\MenuItem;
+use ChurchCRM\Utils\InputUtils;
 
 class MenuRenderer
 {
@@ -25,10 +26,10 @@ class MenuRenderer
     {
         ?>
         <li class="nav-item<?= $menuItem->isActive() ? " active" : ""?>">
-            <a href="<?= htmlspecialchars($menuItem->getURI(), ENT_QUOTES, 'UTF-8') ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?> class="nav-link<?= $menuItem->isActive() ? " active" : ""?>">
+            <a href="<?= InputUtils::escapeAttribute($menuItem->getURI()) ?>" <?= $menuItem->isExternal() ? "target='_blank'" : "" ?> class="nav-link<?= $menuItem->isActive() ? " active" : ""?>">
                 <i class='nav-icon fa <?= $menuItem->getIcon() ?>'></i>
                 <p>
-                    <span><?= htmlspecialchars($menuItem->getName()) ?></span>
+                    <span><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>
                     <span class="right">
                         <?php self::renderMenuCounters($menuItem) ?>
                     </span>
@@ -45,7 +46,7 @@ class MenuRenderer
             <a href="#" class="nav-link<?= $menuItem->openMenu() ? " active" : "" ?>">
                 <i class="nav-icon fa <?= $menuItem->getIcon() ?>"></i>
                 <p>
-                    <span><?= htmlspecialchars($menuItem->getName()) ?></span>
+                    <span><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>
                     <span class="right">
                         <?php self::renderMenuCounters($menuItem) ?>
                         <i class="fa-solid fa-angle-left"></i>

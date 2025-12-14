@@ -91,8 +91,8 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
             <select name="WhichType" id="WhichType" onchange="this.form.submit()" class="form-control">
               <option value="All"><?= gettext('All Types') ?></option>
               <?php foreach ($eventTypes as $type): ?>
-                <option value="<?= $type['type_id'] ?>" <?= ($type['type_id'] == $eType) ? 'selected' : '' ?>>
-                  <?= htmlspecialchars($type['type_name']) ?>
+                <option value="<?= InputUtils::escapeAttribute($type['type_id']) ?>" <?= ($type['type_id'] == $eType) ? 'selected' : '' ?>>
+                  <?= InputUtils::escapeHTML($type['type_name']) ?>
                 </option>
               <?php endforeach; ?>
             </select>
@@ -103,8 +103,8 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
             <label for="WhichYear"><?= gettext('Year') ?></label>
             <select name="WhichYear" id="WhichYear" onchange="this.form.submit()" class="form-control">
               <?php foreach ($availableYears as $year): ?>
-                <option value="<?= $year ?>" <?= ($year == $EventYear) ? 'selected' : '' ?>>
-                  <?= $year ?>
+                <option value="<?= InputUtils::escapeAttribute($year) ?>" <?= ($year == $EventYear) ? 'selected' : '' ?>>
+                  <?= InputUtils::escapeHTML($year) ?>
                 </option>
               <?php endforeach; ?>
             </select>
@@ -163,8 +163,8 @@ foreach ($allMonths as $mVal) {
         $events[] = [
             'id' => $eventId,
             'type_name' => $row['type_name'],
-            'title' => htmlspecialchars(stripslashes($row['event_title']), ENT_QUOTES, 'UTF-8'),
-            'desc' => htmlspecialchars(stripslashes($row['event_desc']), ENT_QUOTES, 'UTF-8'),
+            'title' => InputUtils::sanitizeAndEscapeText($row['event_title']),
+            'desc' => InputUtils::sanitizeAndEscapeText($row['event_desc']),
             'text' => $row['event_text'],
             'start' => $row['event_start'],
             'end' => $row['event_end'],
@@ -200,14 +200,15 @@ foreach ($allMonths as $mVal) {
         </thead>
         <tbody>
           <?php foreach ($events as $event): ?>
+            <?php $eventId = InputUtils::escapeAttribute($event['id']); ?>
             <tr>
               <?php if ($canEditEvents): ?>
                 <td>
-                  <a href="EventEditor.php?EID=<?= $event['id'] ?>" class="btn btn-link text-secondary p-1" title="<?= gettext('Edit') ?>">
+                  <a href="EventEditor.php?EID=<?= $eventId ?>" class="btn btn-link text-secondary p-1" title="<?= gettext('Edit') ?>">
                     <i class="fas fa-pen"></i>
                   </a>
                   <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>');">
-                    <input type="hidden" name="EID" value="<?= $event['id'] ?>">
+                    <input type="hidden" name="EID" value="<?= $eventId ?>">
                     <button type="submit" name="Action" value="Delete" class="btn btn-link text-danger p-1" title="<?= gettext('Delete') ?>">
                       <i class="fas fa-trash"></i>
                     </button>
@@ -215,19 +216,19 @@ foreach ($allMonths as $mVal) {
                 </td>
               <?php endif; ?>
               <td>
-                <strong><?= $event['title'] ?></strong>
+                <strong><?= InputUtils::escapeHTML($event['title']) ?></strong>
                 <?php if (!empty($event['desc'])): ?>
-                  <br><small class="text-muted"><?= $event['desc'] ?></small>
+                  <br><small class="text-muted"><?= InputUtils::escapeHTML($event['desc']) ?></small>
                 <?php endif; ?>
                 <?php if (!empty($event['text'])): ?>
-                  <br><a href="javascript:popUp('GetText.php?EID=<?= $event['id'] ?>')" class="text-primary">
+                  <br><a href="javascript:popUp('GetText.php?EID=<?= $eventId ?>')" class="text-primary">
                     <i class="fas fa-file-alt"></i> <?= gettext('Sermon Text') ?>
                   </a>
                 <?php endif; ?>
               </td>
-              <td><?= htmlspecialchars($event['type_name']) ?></td>
+              <td><?= InputUtils::escapeHTML($event['type_name']) ?></td>
               <td class="text-center">
-                <a href="Checkin.php?EventID=<?= $event['id'] ?>" class="btn btn-sm btn-outline-info" title="<?= gettext('Manage Check-ins') ?>">
+                <a href="Checkin.php?EventID=<?= $eventId ?>" class="btn btn-sm btn-outline-info" title="<?= gettext('Manage Check-ins') ?>">
                   <i class="fas fa-clipboard-check mr-1"></i><?= gettext('Check-in') ?>
                   <?php if ($event['attendee_count'] > 0): ?>
                     <span class="badge badge-info ml-1"><?= $event['attendee_count'] ?></span>
@@ -243,7 +244,7 @@ foreach ($allMonths as $mVal) {
                   foreach ($event['counts'] as $count) {
                       // Only show counts that have a value > 0
                       if ((int) $count['evtcnt_countcount'] > 0) {
-                          $countParts[] = htmlspecialchars($count['evtcnt_countname']) . ': ' . (int) $count['evtcnt_countcount'];
+                          $countParts[] = InputUtils::escapeHTML($count['evtcnt_countname']) . ': ' . (int) $count['evtcnt_countcount'];
                       }
                   }
                   if (!empty($countParts)) {
@@ -289,7 +290,7 @@ foreach ($allMonths as $mVal) {
                 <?php
                 $avgParts = [];
                 foreach ($averages as $avg) {
-                    $avgParts[] = htmlspecialchars($avg['evtcnt_countname']) . ': ' . sprintf('%.1f', $avg['avg_count']);
+                    $avgParts[] = InputUtils::escapeHTML($avg['evtcnt_countname']) . ': ' . sprintf('%.1f', $avg['avg_count']);
                 }
                 echo implode(' &nbsp;|&nbsp; ', $avgParts);
                 ?>

@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -324,7 +325,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                     </td>
                                     <td><?= $deposit->getDate('M j, Y') ?></td>
                                     <td><span class="badge badge-info"><?= $deposit->getType() ?></span></td>
-                                    <td class="text-truncate finance-truncate"><?= htmlspecialchars($deposit->getComment() ?? '') ?></td>
+                                    <td class="text-truncate finance-truncate"><?= InputUtils::escapeHTML($deposit->getComment() ?? '') ?></td>
                                     <td class="text-right font-weight-bold">$<?= number_format($deposit->getVirtualColumn('totalAmount') ?? 0, 2) ?></td>
                                     <td>
                                         <?php if ($deposit->getClosed()): ?>
@@ -454,7 +455,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <ul class="list-group list-group-flush">
                         <?php foreach ($activeFunds as $fund): ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center py-2">
-                            <span><?= htmlspecialchars($fund->getName()) ?></span>
+                            <span><?= InputUtils::escapeHTML($fund->getName()) ?></span>
                             <span class="badge badge-success badge-pill">
                                 <i class="fa-solid fa-check"></i>
                             </span>

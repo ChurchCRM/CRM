@@ -253,42 +253,41 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         LoggerUtils::getAppLogger()->warning('Event not found: ' . $iEventID);
     } else {
         $aRow = array_merge($event->toArray(), $event->getEventType()->toArray());
-    }
-}
-    extract($aRow);
+        extract($aRow);
 
-    $iEventID = $event_id;
-    $iTypeID = $type_id;
-    $sTypeName = $type_name;
-    $sEventTitle = $event_title;
-    $sEventDesc = $event_desc;
-    $sEventText = $event_text;
-    $aStartTokens = explode(' ', $event_start);
-    $sEventStartDate = $aStartTokens[0];
-    $aStartTimeTokens = explode(':', $aStartTokens[1]);
-    $iEventStartHour = $aStartTimeTokens[0];
-    $iEventStartMins = $aStartTimeTokens[1];
-    $aEndTokens = explode(' ', $event_end);
-    $sEventEndDate = $aEndTokens[0];
-    $aEndTimeTokens = explode(':', $aEndTokens[1]);
-    $iEventEndHour = $aEndTimeTokens[0];
-    $iEventEndMins = $aEndTimeTokens[1];
-    $iEventStatus = $inactive;
+        $iEventID = $event_id;
+        $iTypeID = $type_id;
+        $sTypeName = $type_name;
+        $sEventTitle = $event_title;
+        $sEventDesc = $event_desc;
+        $sEventText = $event_text;
+        $aStartTokens = explode(' ', $event_start);
+        $sEventStartDate = $aStartTokens[0];
+        $aStartTimeTokens = explode(':', $aStartTokens[1]);
+        $iEventStartHour = $aStartTimeTokens[0];
+        $iEventStartMins = $aStartTimeTokens[1];
+        $aEndTokens = explode(' ', $event_end);
+        $sEventEndDate = $aEndTokens[0];
+        $aEndTimeTokens = explode(':', $aEndTokens[1]);
+        $iEventEndHour = $aEndTimeTokens[0];
+        $iEventEndMins = $aEndTimeTokens[1];
+        $iEventStatus = $inactive;
 
-    $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
+        $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
 
-    $cvOpps = RunQuery($sSQL);
-    $iNumCounts = mysqli_num_rows($cvOpps);
-    $nCnts = $iNumCounts;
+        $cvOpps = RunQuery($sSQL);
+        $iNumCounts = mysqli_num_rows($cvOpps);
+        $nCnts = $iNumCounts;
 
-    if ($iNumCounts) {
-        for ($c = 0; $c < $iNumCounts; $c++) {
-            $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
-            extract($aRow);
-            $aCountID[$c] = $evtcnt_countid;
-            $aCountName[$c] = $evtcnt_countname;
-            $aCount[$c] = $evtcnt_countcount;
-            $sCountNotes = $evtcnt_notes;
+        if ($iNumCounts) {
+            for ($c = 0; $c < $iNumCounts; $c++) {
+                $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
+                extract($aRow);
+                $aCountID[$c] = $evtcnt_countid;
+                $aCountName[$c] = $evtcnt_countname;
+                $aCount[$c] = $evtcnt_countcount;
+                $sCountNotes = $evtcnt_notes;
+            }
         }
     }
 } elseif (isset($_POST['SaveChanges'])) {

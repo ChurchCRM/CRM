@@ -548,11 +548,11 @@ require_once 'Include/Header.php';
                     if ($ucfg_type == 'text') {
                         echo "<td>
             <input type=\"text\" size=\"30\" maxlength=\"255\" name=\"new_value[$ucfg_id]\"
-            value=\"" . htmlspecialchars($ucfg_value, ENT_QUOTES) . '"></td>';
+            value=\"" . InputUtils::escapeAttribute($ucfg_value) . '\"></td>';
                     } elseif ($ucfg_type == 'textarea') {
                         echo "<td>
             <textarea rows=\"4\" cols=\"30\" name=\"new_value[$ucfg_id]\">"
-                            . htmlspecialchars($ucfg_value, ENT_QUOTES) . '</textarea></td>';
+                            . InputUtils::escapeHTML($ucfg_value) . '</textarea></td>';
                     } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
                         echo '<td><input type="text" size="15"'
                             . " maxlength=\"15\" name=\"new_value[$ucfg_id]\" value=\"$ucfg_value\"></td>";

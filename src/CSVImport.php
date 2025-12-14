@@ -149,7 +149,7 @@ if (isset($_POST['UploadCSV'])) {
 
             echo '<tr>';
             for ($col = 0; $col < $numCol; $col++) {
-                echo '<td>' . htmlspecialchars($aData[$col]) . '&nbsp;</td>';
+                echo '<td>' . InputUtils::escapeHTML($aData[$col]) . '&nbsp;</td>';
             }
             echo '</tr>';
         }
