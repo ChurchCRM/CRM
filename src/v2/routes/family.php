@@ -69,11 +69,11 @@ function viewFamily(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/people/');
 
-    $familyId = $args['id'];
+    $familyId = (int)$args['id'];
     $family = FamilyQuery::create()->findPk($familyId);
 
     if (empty($family)) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/family/not-found?id=' . $args['id']);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/family/not-found?id=' . $familyId);
     }
 
     $timelineService = new TimelineService();
