@@ -21,6 +21,9 @@ if (array_key_exists('idefaultFY', $_SESSION)) {
 }
 
 $memberCount = count($family->getPeople());
+
+// Get unique family emails for the verification modal
+$familyEmails = $family->getEmails();
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -683,11 +686,11 @@ $memberCount = count($family->getPeople());
             <div class="modal-body">
                 <b><?= gettext("Select how do you want to request the family information to be verified") ?></b>
                 <p>
-                    <?php if (count($family->getEmails()) > 0) {
+                    <?php if (count($familyEmails) > 0) {
                         ?>
                 <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
                 <ul>
-                        <?php foreach ($family->getEmails() as $tmpEmail) { ?>
+                        <?php foreach ($familyEmails as $tmpEmail) { ?>
                         <li><?= $tmpEmail ?></li>
                         <?php } ?>
                 </ul>
@@ -696,7 +699,7 @@ $memberCount = count($family->getPeople());
                         <?php
                     } ?>
             <div class="modal-footer text-center">
-                <?php if (count($family->getEmails()) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
+                <?php if (count($familyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
                     ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i

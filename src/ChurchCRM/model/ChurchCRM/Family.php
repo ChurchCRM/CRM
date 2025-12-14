@@ -188,7 +188,7 @@ class Family extends BaseFamily implements PhotoInterface
             }
         }
 
-        return $emails;
+        return array_unique($emails);
     }
 
     public function createTimeLineNote($type): void
