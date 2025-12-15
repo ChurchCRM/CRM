@@ -440,11 +440,12 @@
         "versions": [
             "6.3.0",
             "6.4.0",
-            "6.5.0"
+            "6.5.0",
+            "6.5.1"
         ],
         "scripts": [
             "/mysql/upgrade/6.5.0.sql"
         ],
-        "dbVersion": "6.5.1"
+        "dbVersion": "6.5.2"
     }
 }
