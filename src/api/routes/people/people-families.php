@@ -164,7 +164,7 @@ function getLatestFamilies(Request $request, Response $response, array $args): R
         ->limit(10)
         ->find();
 
-    return SlimUtils::renderJSON($response, buildFormattedFamilies($families, true, false, false));
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }
 
 function getUpdatedFamilies(Request $request, Response $response, array $args): Response
@@ -175,12 +175,10 @@ function getUpdatedFamilies(Request $request, Response $response, array $args): 
         ->limit(10)
         ->find();
 
-    $formattedList = buildFormattedFamilies($families, false, true, false);
-
-    return SlimUtils::renderJSON($response, $formattedList);
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }
 
-function buildFormattedFamilies($families, bool $created, bool $edited, bool $wedding): array
+function buildFormattedFamilies($families): array
 {
     $formattedList = [];
 
@@ -190,29 +188,9 @@ function buildFormattedFamilies($families, bool $created, bool $edited, bool $we
         $formattedFamily['Name'] = $family->getName();
         $formattedFamily['Address'] = $family->getAddress();
         $formattedFamily['HasPhoto'] = $family->getPhoto()->hasUploadedPhoto();
-        if ($created) {
-            $value = null;
-            if ($family->getDateEntered()) {
-                $value = $family->getDateEntered()->format('c'); // ISO 8601
-            }
-            $formattedFamily['Created'] = $value;
-        }
-
-        if ($edited) {
-            $value = null;
-            if ($family->getDateLastEdited()) {
-                $value = $family->getDateLastEdited()->format('c'); // ISO 8601
-            }
-            $formattedFamily['LastEdited'] = $value;
-        }
-
-        if ($wedding) {
-            $value = null;
-            if ($family->getWeddingdate()) {
-                $value = date_format($family->getWeddingdate(), SystemConfig::getValue('sDateFormatLong'));
-            }
-            $formattedFamily['WeddingDate'] = $value;
-        }
+        
+        $formattedFamily['Created'] = $family->getDateEntered() ? $family->getDateEntered()->format('c') : null; // ISO 8601
+        $formattedFamily['LastEdited'] = $family->getDateLastEdited() ? $family->getDateLastEdited()->format('c') : null; // ISO 8601
 
         $formattedList[] = $formattedFamily;
     }
