@@ -22,6 +22,13 @@ class UpgradeService
     public static function upgradeDatabaseVersion(): bool
     {
         $logger = LoggerUtils::getAppLogger();
+        
+        // Clear Composer's version cache before checking versions
+        // This is critical after code deployment to ensure we read the new version
+        if (function_exists('opcache_reset')) {
+            opcache_reset();
+        }
+        
         $db_version = VersionUtils::getDBVersion();
         $installed_version = VersionUtils::getInstalledVersion();
 
