@@ -153,7 +153,7 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
         ->orderByWeddingdate('DESC')
         ->find();
 
-    return SlimUtils::renderJSON($response, buildFormattedFamilies($families, false, false, true));
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }
 
 function getLatestFamilies(Request $request, Response $response, array $args): Response
@@ -191,6 +191,7 @@ function buildFormattedFamilies($families): array
         
         $formattedFamily['Created'] = $family->getDateEntered() ? $family->getDateEntered()->format('c') : null; // ISO 8601
         $formattedFamily['LastEdited'] = $family->getDateLastEdited() ? $family->getDateLastEdited()->format('c') : null; // ISO 8601
+        $formattedFamily['WeddingDate'] = $family->getWeddingdate() ? $family->getWeddingdate()->format('F j, Y') : null;
 
         $formattedList[] = $formattedFamily;
     }

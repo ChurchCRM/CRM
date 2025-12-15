@@ -244,6 +244,7 @@ function buildFormattedPersonList(Collection $people): array
         
         $formattedPerson['Created'] = $person->getDateEntered() ? $person->getDateEntered()->format('c') : null; // ISO 8601
         $formattedPerson['LastEdited'] = $person->getDateLastEdited() ? $person->getDateLastEdited()->format('c') : null; // ISO 8601
+        $formattedPerson['Birthday'] = $person->getBirthDate() ? $person->getBirthDate()->format('F j, Y') : null;
 
         $formattedList[] = $formattedPerson;
     }
