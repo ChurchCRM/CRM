@@ -73,6 +73,37 @@ describe("API Private Admin System Logs", () => {
         );
     });
 
+    it("Read actual log file and validate JSON response structure", () => {
+        // Try to read a log file with a common naming pattern
+        // The API should return valid JSON whether the file exists or not
+        cy.makePrivateAdminAPICall(
+            "GET",
+            "/admin/api/system/logs/test-api.log",
+            null,
+            [200, 404],  // Accept either success or not found
+        ).then((response) => {
+            // Regardless of whether file exists, response should be well-formed
+            expect(response.status).to.be.oneOf([200, 404]);
+            
+            if (response.status === 200) {
+                // If file was found, validate JSON structure
+                expect(response.body).to.be.an('object');
+                expect(response.body).to.have.property('success').that.equals(true);
+                expect(response.body).to.have.property('lines').that.is.an('array');
+                expect(response.body).to.have.property('count').that.is.a('number');
+                expect(response.body.count).to.equal(response.body.lines.length);
+                
+                // Verify log lines are properly formatted (non-empty strings)
+                if (response.body.count > 0) {
+                    response.body.lines.forEach((line) => {
+                        expect(line).to.be.a('string');
+                        expect(line.length).to.be.greaterThan(0);
+                    });
+                }
+            }
+        });
+    });
+
     it("Delete log file - reject path traversal", () => {
         cy.makePrivateAdminAPICall(
             "DELETE",

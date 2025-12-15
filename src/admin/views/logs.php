@@ -203,7 +203,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             method: 'GET'
         })
         .done(function(data) {
-            currentLogContent = data;
+            // API now returns JSON object with {success, lines: [], count}
+            // Handle both old format (raw string) and new format (JSON object)
+            if (typeof data === 'object' && data.success && Array.isArray(data.lines)) {
+                currentLogContent = data.lines;
+            } else if (typeof data === 'string') {
+                // Fallback for old format (raw text)
+                currentLogContent = data.split('\n');
+            } else {
+                // Handle error
+                currentLogContent = [];
+            }
             applyFilter();
             $('#logLoading').hide();
             $('#logContent').show();
@@ -216,7 +226,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
 
     function applyFilter() {
-        var lines = currentLogContent.split('\n');
+        // currentLogContent is now an array of strings (parsed from API)
+        var lines = Array.isArray(currentLogContent) ? currentLogContent : currentLogContent.split('\n');
         var limit = $('#logLinesLimit').val();
         var filteredLines = lines;
 

@@ -86,9 +86,20 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         }
 
         $content = file_get_contents($realLogPath);
-
-        $response->getBody()->write($content);
-        return $response->withHeader('Content-Type', 'text/plain');
+        
+        // Parse log lines and return as JSON array
+        // Split by newline and filter empty lines, then reindex array for proper JSON output
+        $allLines = explode("\n", $content);
+        $lines = [];
+        foreach ($allLines as $line) {
+            $trimmed = trim($line);
+            if (!empty($trimmed)) {
+                $lines[] = $trimmed;
+            }
+        }
+        
+        $response->getBody()->write(json_encode(['success' => true, 'lines' => $lines, 'count' => count($lines)], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+        return $response->withHeader('Content-Type', 'application/json');
     });
 
     // Delete log file
