@@ -242,12 +242,12 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
             $formattedPerson['FamilyName'] = null;
         }
         
-        if ($created && $person->getDateEntered()) {
-            $formattedPerson['Created'] = $person->getDateEntered()->format('c'); // ISO 8601
+        if ($created) {
+            $formattedPerson['Created'] = $person->getDateEntered() ? $person->getDateEntered()->format('c') : null; // ISO 8601
         }
 
-        if ($edited && $person->getDateLastEdited()) {
-            $formattedPerson['LastEdited'] = $person->getDateLastEdited()->format('c'); // ISO 8601
+        if ($edited) {
+            $formattedPerson['LastEdited'] = $person->getDateLastEdited() ? $person->getDateLastEdited()->format('c') : null; // ISO 8601
         }
 
         if ($birthday && $person->getBirthDate()) {
