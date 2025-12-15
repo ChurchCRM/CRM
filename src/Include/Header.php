@@ -42,14 +42,26 @@ $MenuFirst = 1;
 
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" style="flex: 1 1 auto;">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa-solid fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="<?= SystemURLs::getRootPath()?>/" class="nav-link">Home</a>
             </li>
-
+            <li class="nav-item" style="flex: 1 1 auto; min-width: 150px; max-width: 600px; margin-left: 10px;">
+                <form action="#" method="get" class="navbar-form" style="display: flex; align-items: center; width: 100%;">
+                    <div class="input-group" style="width: 100%;">
+                        <select class="form-control multiSearch">
+                        </select>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" style="border-left: 0;">
+                                <i class="fa-solid fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </li>
         </ul>
 
         <!-- Right navbar links -->
@@ -200,15 +212,6 @@ $MenuFirst = 1;
       </a>
     <!-- sidebar: style can be found in sidebar.less -->
     <div class="sidebar">
-
-        <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
-
-        <select class="form-control multiSearch">
-        </select>
-
-      </form>
-      <!-- /.search form -->
       <!-- sidebar menu: : style can be found in sidebar.less -->
 
         <nav class="mt-2">
