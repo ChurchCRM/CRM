@@ -111,7 +111,7 @@ function getLatestPersons(Request $request, Response $response, array $args): Re
         ->limit(10)
         ->find();
 
-    return SlimUtils::renderJSON($response, buildFormattedPersonList($people, true, false, false));
+    return SlimUtils::renderJSON($response, buildFormattedPersonList($people));
 }
 
 function getUpdatedPersons(Request $request, Response $response, array $args): Response
@@ -123,7 +123,7 @@ function getUpdatedPersons(Request $request, Response $response, array $args): R
         ->limit(10)
         ->find();
 
-    return SlimUtils::renderJSON($response, buildFormattedPersonList($people, false, true, false));
+    return SlimUtils::renderJSON($response, buildFormattedPersonList($people));
 }
 
 function getPersonsWithBirthdays(Request $request, Response $response, array $args): Response
@@ -218,7 +218,7 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
     return SlimUtils::renderJSON($response, ['people' => $formattedList]);
 }
 
-function buildFormattedPersonList(Collection $people, bool $created, bool $edited, bool $birthday): array
+function buildFormattedPersonList(Collection $people): array
 {
     $formattedList = [];
 
@@ -242,22 +242,8 @@ function buildFormattedPersonList(Collection $people, bool $created, bool $edite
             $formattedPerson['FamilyName'] = null;
         }
         
-        if ($created) {
-            $formattedPerson['Created'] = $person->getDateEntered() ? $person->getDateEntered()->format('c') : null; // ISO 8601
-        }
-
-        if ($edited) {
-            $formattedPerson['LastEdited'] = $person->getDateLastEdited() ? $person->getDateLastEdited()->format('c') : null; // ISO 8601
-        }
-
-        if ($birthday && $person->getBirthDate()) {
-            $formattedPerson['Birthday'] = date_format(
-                $person->getBirthDate(),
-                $person->hideAge() ?
-                    SystemConfig::getValue('sDateFormatNoYear') :
-                    SystemConfig::getValue('sDateFormatLong')
-            );
-        }
+        $formattedPerson['Created'] = $person->getDateEntered() ? $person->getDateEntered()->format('c') : null; // ISO 8601
+        $formattedPerson['LastEdited'] = $person->getDateLastEdited() ? $person->getDateLastEdited()->format('c') : null; // ISO 8601
 
         $formattedList[] = $formattedPerson;
     }
