@@ -41,6 +41,10 @@ window.CRM.AdminAPIRequest = function (options) {
 
 window.CRM.DisplayErrorMessage = function (endpoint, error) {
     console.trace(error);
+
+    // Handle different error response formats (message, error, msg)
+    var errorText = error.message || error.error || error.msg || i18next.t("Unknown error");
+
     let message =
         "<p>" +
         i18next.t("Error making API Call to") +
@@ -49,7 +53,7 @@ window.CRM.DisplayErrorMessage = function (endpoint, error) {
         "</p><p>" +
         i18next.t("Error text") +
         ": " +
-        error.message;
+        errorText;
     if (error.trace) {
         message += "</p>" + i18next.t("Stack Trace") + ": <pre>" + JSON.stringify(error.trace, undefined, 2) + "</pre>";
     }

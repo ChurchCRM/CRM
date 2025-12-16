@@ -24,7 +24,7 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
             if ($peopleCount !== 1 ) {
                 return SlimUtils::renderJSON($response, [
                     'success' => false,
-                    'error' => 'Demo data import is only available on fresh installations with exactly 1 person'
+                    'message' => 'Demo data import is only available on fresh installations with exactly 1 person'
                 ], 403);
             }
         }
@@ -62,7 +62,7 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
 
             return SlimUtils::renderJSON($response, [
                 'success' => false,
-                'error' => 'An error occurred during demo data import',
+                'message' => 'An error occurred during demo data import',
                 'details' => $e->getMessage()
             ], 500);
         }
