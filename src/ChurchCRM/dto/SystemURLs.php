@@ -22,10 +22,90 @@ class SystemURLs
         if ($rootPath === '/') {
             $rootPath = '';
         }
+        
+        // Auto-detect and validate root path for subdirectory installations
+        $detectedRootPath = self::detectRootPath();
+        
+        // If configured root path doesn't match detected path, log a warning
+        if ($detectedRootPath !== null && $rootPath !== $detectedRootPath) {
+            error_log(sprintf(
+                '[ChurchCRM] WARNING: Configured root path "%s" does not match detected root path "%s". ' .
+                'This may cause issues with API endpoints and assets. ' .
+                'Please update $sRootPath in Include/Config.php to "%s"',
+                $rootPath,
+                $detectedRootPath,
+                $detectedRootPath
+            ));
+            
+            // Auto-correct to detected path to prevent broken functionality
+            // This allows the app to work even with misconfiguration
+            $rootPath = $detectedRootPath;
+        }
+        
         self::$rootPath = $rootPath;
         self::$urls = $urls;
         self::$documentRoot = $documentRoot;
         self::$CSPNonce = base64_encode(random_bytes(16));
+    }
+    
+    /**
+     * Auto-detect the root path from server variables
+     * Returns the detected root path or null if detection fails
+     * 
+     * For example:
+     * - SCRIPT_NAME = /churchcrm/api/index.php -> returns /churchcrm
+     * - SCRIPT_NAME = /api/index.php -> returns ''
+     * - SCRIPT_NAME = /ChurchCRMxyz/PersonView.php -> returns /ChurchCRMxyz
+     */
+    private static function detectRootPath(): ?string
+    {
+        // Try detection from SCRIPT_NAME first
+        $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
+        if ($scriptName !== '') {
+            $scriptName = str_replace('\\', '/', $scriptName);
+            
+            // Remove filename to get directory
+            $scriptDir = dirname($scriptName);
+            
+            // Check if we're in a known subdirectory (src, api, v2, etc.)
+            // and extract the parent path
+            if (preg_match('#^(.*?)/(src|api|v2|admin|finance|setup|kiosk|session)(/|$)#', $scriptDir, $matches)) {
+                $rootPath = $matches[1];
+                if ($rootPath === '') {
+                    return '';
+                }
+                return $rootPath;
+            }
+            
+            // If not in a known subdirectory, assume we're in the root
+            // For example: /churchcrm/PersonView.php -> /churchcrm
+            if ($scriptDir !== '/' && $scriptDir !== '.') {
+                // Check if script is directly in a subdirectory (not nested)
+                $parts = explode('/', trim($scriptDir, '/'));
+                if (count($parts) === 1) {
+                    return '/' . $parts[0];
+                }
+            }
+        }
+        
+        // Fallback: try REQUEST_URI
+        $requestUri = $_SERVER['REQUEST_URI'] ?? '';
+        if ($requestUri !== '') {
+            $requestPath = parse_url($requestUri, PHP_URL_PATH) ?? '';
+            if ($requestPath !== '') {
+                // Look for known patterns in REQUEST_URI
+                if (preg_match('#^(.*?)/(src|api|v2|admin|finance|setup|kiosk|session)/#', $requestPath, $matches)) {
+                    $rootPath = $matches[1];
+                    if ($rootPath === '') {
+                        return '';
+                    }
+                    return $rootPath;
+                }
+            }
+        }
+        
+        // Detection failed - return null to indicate we should use configured value
+        return null;
     }
 
     public static function getRootPath()
