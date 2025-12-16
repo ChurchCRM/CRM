@@ -15,6 +15,9 @@ class SystemURLs
     private static $urls;
     private static $documentRoot;
     private static ?string $CSPNonce = null;
+    
+    // Known application subdirectories used for root path detection
+    private const KNOWN_SUBDIRS = ['src', 'api', 'v2', 'admin', 'finance', 'setup', 'kiosk', 'session'];
 
     public static function init($rootPath, $urls, $documentRoot): void
     {
@@ -31,7 +34,7 @@ class SystemURLs
             error_log(sprintf(
                 '[ChurchCRM] WARNING: Configured root path "%s" does not match detected root path "%s". ' .
                 'This may cause issues with API endpoints and assets. ' .
-                'Please update $sRootPath in Include/Config.php to "%s"',
+                'Please update $sRootPath in Include/Config.php to: "%s"',
                 $rootPath,
                 $detectedRootPath,
                 $detectedRootPath
@@ -60,6 +63,9 @@ class SystemURLs
      */
     private static function detectRootPath(): ?string
     {
+        // Build regex pattern from known subdirectories
+        $subdirPattern = '(' . implode('|', self::KNOWN_SUBDIRS) . ')';
+        
         // Try detection from SCRIPT_NAME first
         $scriptName = $_SERVER['SCRIPT_NAME'] ?? '';
         if ($scriptName !== '') {
@@ -76,7 +82,7 @@ class SystemURLs
             
             // Check if we're in a known subdirectory (src, api, v2, etc.)
             // and extract the parent path
-            if (preg_match('#^(.*?)/(src|api|v2|admin|finance|setup|kiosk|session)(/|$)#', $scriptDir, $matches)) {
+            if (preg_match("#^(.*?)/{$subdirPattern}(/|$)#", $scriptDir, $matches)) {
                 $rootPath = $matches[1];
                 if ($rootPath === '') {
                     return '';
@@ -101,7 +107,7 @@ class SystemURLs
             $requestPath = parse_url($requestUri, PHP_URL_PATH) ?? '';
             if ($requestPath !== '') {
                 // Look for known patterns in REQUEST_URI
-                if (preg_match('#^(.*?)/(src|api|v2|admin|finance|setup|kiosk|session)/#', $requestPath, $matches)) {
+                if (preg_match("#^(.*?)/{$subdirPattern}/#", $requestPath, $matches)) {
                     $rootPath = $matches[1];
                     if ($rootPath === '') {
                         return '';
