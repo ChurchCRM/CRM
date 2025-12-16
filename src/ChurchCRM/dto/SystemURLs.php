@@ -56,6 +56,7 @@ class SystemURLs
      * - SCRIPT_NAME = /churchcrm/api/index.php -> returns /churchcrm
      * - SCRIPT_NAME = /api/index.php -> returns ''
      * - SCRIPT_NAME = /ChurchCRMxyz/PersonView.php -> returns /ChurchCRMxyz
+     * - SCRIPT_NAME = /PersonView.php -> returns '' (root install)
      */
     private static function detectRootPath(): ?string
     {
@@ -67,6 +68,12 @@ class SystemURLs
             // Remove filename to get directory
             $scriptDir = dirname($scriptName);
             
+            // If script is at root level (SCRIPT_NAME = /file.php), scriptDir will be '/'
+            // This means root installation with empty root path
+            if ($scriptDir === '/' || $scriptDir === '.') {
+                return '';
+            }
+            
             // Check if we're in a known subdirectory (src, api, v2, etc.)
             // and extract the parent path
             if (preg_match('#^(.*?)/(src|api|v2|admin|finance|setup|kiosk|session)(/|$)#', $scriptDir, $matches)) {
@@ -77,7 +84,7 @@ class SystemURLs
                 return $rootPath;
             }
             
-            // If not in a known subdirectory, assume we're in the root
+            // If not in a known subdirectory, assume we're in a top-level subdirectory
             // For example: /churchcrm/PersonView.php -> /churchcrm
             if ($scriptDir !== '/' && $scriptDir !== '.') {
                 // Check if script is directly in a subdirectory (not nested)
