@@ -3,187 +3,112 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Get all the User records
-$rsUsers = UserQuery::create()->find();
+// Initialize UserService
+$userService = new UserService();
+
+// Get all users and statistics
+$rsUsers = $userService->getAllUsers();
+$userStats = $userService->getUserStats();
+$userSettingsConfig = $userService->getUserSettingsConfig();
 
 ?>
-<!-- Default box -->
-<div class="card">
-    <div class="card-header">
-        <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php" class="btn btn-app bg-success"><i class="fa-solid fa-user-plus fa-3x"></i><br><?= gettext('New User') ?></a>
-        <a href="<?= SystemURLs::getRootPath() ?>/SettingsUser.php" class="btn btn-app bg-primary"><i class="fa-solid fa-wrench fa-3x"></i><br><?= gettext('User Settings') ?></a>
-    </div>
-</div>
-<div class="card collapsed-card">
-    <div class="card-header">
-        <b class="card-title"><?= _("Global User Settings") ?></b>
-        <div class="card-tools pull-right">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
-        </div>
-        </b>
-    </div>
-    <div class="card-body">
-        <!-- Custom Tabs (migrated from AdminLTE .nav-tabs-custom to Bootstrap 4 markup) -->
-        <div>
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="tab_1-tab" data-toggle="tab" href="#tab_1" role="tab" aria-controls="tab_1" aria-selected="true"><?= _("General") ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="tab_2-tab" data-toggle="tab" href="#tab_2" role="tab" aria-controls="tab_2" aria-selected="false"><?= _("Passwords") ?></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="tab_3-tab" data-toggle="tab" href="#tab_3" role="tab" aria-controls="tab_3" aria-selected="false"><?= _("2FA") ?></a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1-tab">
-                    <table class="table table-hover">
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("iSessionTimeout"); ?>
-                            <td width="350px"><b><?= _("Session Timeout") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" value="<?= $config->getValue() ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("iMaxFailedLogins"); ?>
-                            <td width="350px">
-                                <b><?= _("Max Failed Login") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" value="<?= $config->getValue() ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("bEnableLostPassword"); ?>
-                            <td width="350px"><b><?= _("Enable Password Reset") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
-                            </td>
-                        </tr>
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("bSendUserDeletedEmail"); ?>
-                            <td width="350px"><b><?= _("Send email to Deleted Users") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" <?= $config->getBooleanValue() ? "checked" : "" ?>>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane fade" id="tab_2" role="tabpanel" aria-labelledby="tab_2-tab">
-                    <table class="table table-hover">
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("iMinPasswordLength"); ?>
-                            <td width="350px"><b><?= _("Min Password Length") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" value="<?= $config->getValue() ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("iMinPasswordChange"); ?>
-                            <td>
-                                <b><?= _("Min Password Characters Delta") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" value="<?= $config->getValue() ?>">
-                            </td>
-                        </tr>
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("aDisallowedPasswords"); ?>
-                            <td>
-                                <b><?= _("Disallowed Passwords") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" value="<?= $config->getValue() ?>" width="300px">
-                            </td>
-                        </tr>
-
-                    </table>
-                </div>
-                <!-- /.tab-pane -->
-                <div class="tab-pane fade" id="tab_3" role="tabpanel" aria-labelledby="tab_3-tab">
-                    <table class="table table-hover">
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("bEnable2FA"); ?>
-                            <td width="350px">
-                                <b><?= _("Enable 2FA") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
-                                    </td>
-                        </tr>
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("bRequire2FA"); ?>
-                            <td>
-                                <b><?= _("Require 2FA") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="checkbox" class="system-setting " data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" <?= $config->getBooleanValue() ? "checked" : "" ?>
-                                    </td>
-                        </tr>
-                        <tr>
-                            <?php $config = SystemConfig::getConfigItem("s2FAApplicationName"); ?>
-                            <td>
-                                <b><?= _("2FA Application Name") ?></b>:
-                                <a class="setting-tip" data-tip="<?= $config->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
-                            </td>
-                            <td>
-                                <input disabled type="text" class="system-setting form-control" data-setting="<?= $config->getName() ?>" data-default-value="<?= $config->getDefault() ?>" value="<?= $config->getValue() ?>">
-                            </td>
-                        </tr>
-
-                    </table>
-                </div>
-                <!-- /.tab-pane -->
+<!-- Dashboard Overview -->
+<div class="row">
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3><?= $userStats['total'] ?></h3>
+                <p><?= gettext('Total Users') ?></p>
             </div>
-            <!-- /.tab-content -->
+            <div class="icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
         </div>
-        <!-- nav-tabs (converted from nav-tabs-custom) -->
     </div>
-
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3><?= $userStats['active'] ?></h3>
+                <p><?= gettext('Active Users') ?></p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-user-check"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3><?= $userStats['locked'] ?></h3>
+                <p><?= gettext('Locked Users') ?></p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="small-box bg-primary">
+            <div class="inner">
+                <h3><?= $userStats['twoFactor'] ?></h3>
+                <p><?= gettext('2FA Enabled') ?></p>
+            </div>
+            <div class="icon">
+                <i class="fa-solid fa-shield-alt"></i>
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- Action Buttons -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body text-center">
+                <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php" class="btn btn-success mr-2">
+                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Add New User') ?>
+                </a>
+                <a href="<?= SystemURLs::getRootPath() ?>/SettingsUser.php" class="btn btn-primary">
+                    <i class="fa-solid fa-cog mr-1"></i><?= gettext('User Settings') ?>
+                </a>
+                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#userSettingsPanel" aria-expanded="false">
+                    <i class="fa-solid fa-sliders mr-1"></i><?= gettext('Quick Settings') ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- User Settings Panel -->
+<div class="collapse" id="userSettingsPanel"></div>
+
+<!-- System Settings Panel Component -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 
 <div class="card">
     <div class="card-header">
-        <b class="card-title"><?= _("User Listing") ?></b>
-        <div class="card-tools pull-right">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
+        <h3 class="card-title"><i class="fa-solid fa-list mr-2"></i><?= _('User Management') ?></h3>
+        <div class="card-tools">
+            <span class="badge badge-info"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
         </div>
-        </h3>
     </div>
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover w-100" id="user-listing-table">
                 <thead>
                     <tr>
-                        <th><?= gettext('Actions') ?></th>
                         <th><?= gettext('Name') ?></th>
+                        <th><?= gettext('Login Name') ?></th>
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Total Logins') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
-                        <th class="text-center"><?= gettext('Password') ?></th>
                         <th class="text-center"><?= gettext('Two Factor Status') ?></th>
-
+                        <th class="text-center"><?= gettext('Actions') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -191,20 +116,10 @@ $rsUsers = UserQuery::create()->find();
                     ?>
                         <tr>
                             <td>
-                                <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $user->getId() ?>">
-                                    <i class="fa-solid fa-pen" aria-hidden="true"></i>
-                                </a>&nbsp;&nbsp;
-                                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">
-                                    <i class="fa-solid fa-eye" aria-hidden="true"></i>
-                                </a>&nbsp;&nbsp;
-                                <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>
-                                    <a href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
-                                        <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
-                                    </a>
-                                <?php } ?>
+                                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $user->getId() ?>"> <?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
                             </td>
                             <td>
-                                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $user->getId() ?>"> <?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
+                                <code class="text-muted"><?= InputUtils::escapeHTML($user->getUserName()) ?></code>
                             </td>
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
                             <td class="text-center"><?= $user->getLoginCount() ?></td>
@@ -213,31 +128,50 @@ $rsUsers = UserQuery::create()->find();
                                     <span class="text-red"><?= $user->getFailedLogins() ?></span>
                                 <?php } else {
                                     echo $user->getFailedLogins();
-                                }
-                                if ($user->getFailedLogins() > 0) { ?>
-                                    <a onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
-                                        <i class="fa-solid fa-eraser" aria-hidden="true"></i>
-                                    </a>
-                                <?php } ?>
-                            </td>
-                            <td>
-                                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>/changePassword"><i class="fa-solid fa-wrench"></i></a>&nbsp;&nbsp;
-                                <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) {
-                                ?>
-                                    <a href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
-                                        <i class="fa-solid fa-paper-plane"></i></a>
-                                <?php
                                 } ?>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <?= $user->is2FactorAuthEnabled() ? gettext("Enabled") : gettext("Disabled") ?>
-                                <?php
-                                if ($user->is2FactorAuthEnabled()) {
-                                ?>
-                                    <a onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">Disable</a>
-                                <?php
-                                }
-                                ?>
+                            </td>
+                            <td class="text-center">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $user->getId() ?>">
+                                            <i class="fa-solid fa-pen"></i> <?= gettext('Edit User') ?>
+                                        </a>
+                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">
+                                            <i class="fa-solid fa-eye"></i> <?= gettext('View Details') ?>
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>/changePassword">
+                                            <i class="fa-solid fa-wrench"></i> <?= gettext('Change Password') ?>
+                                        </a>
+                                        <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) { ?>
+                                            <a class="dropdown-item" href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
+                                                <i class="fa-solid fa-paper-plane"></i> <?= gettext('Reset Password via Email') ?>
+                                            </a>
+                                        <?php } ?>
+                                        <?php if ($user->getFailedLogins() > 0) { ?>
+                                            <a class="dropdown-item" onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
+                                                <i class="fa-solid fa-eraser"></i> <?= gettext('Reset Failed Logins') ?>
+                                            </a>
+                                        <?php } ?>
+                                        <?php if ($user->is2FactorAuthEnabled()) { ?>
+                                            <a class="dropdown-item" onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
+                                                <i class="fa-solid fa-shield-alt"></i> <?= gettext('Disable 2FA') ?>
+                                            </a>
+                                        <?php } ?>
+                                        <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item text-danger" href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
+                                                <i class="fa-solid fa-trash-can"></i> <?= gettext('Delete User') ?>
+                                            </a>
+                                        <?php } ?>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php
@@ -251,5 +185,23 @@ $rsUsers = UserQuery::create()->find();
 <!-- /.box -->
 
 <script src="<?= SystemURLs::assetVersioned('/skin/js/users.js') ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function() {
+    // Initialize the user settings panel
+    window.CRM.settingsPanel.init({
+        container: '#userSettingsPanel',
+        title: i18next.t('User Settings'),
+        icon: 'fa-solid fa-user-cog',
+        headerClass: 'bg-primary',
+        settings: <?= json_encode($userSettingsConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        onSave: function() {
+            // Reload page after settings save to reflect changes
+            setTimeout(function() {
+                window.location.reload();
+            }, 1500);
+        }
+    });
+});
+</script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

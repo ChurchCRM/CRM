@@ -270,7 +270,6 @@ class   SystemConfig
     {
         return [
             gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sHomeAreaCode', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite', 'sChurchFB', 'sChurchTwitter'],
-            gettext('User Setup')         => ['iMinPasswordLength', 'iMinPasswordChange', 'iMaxFailedLogins', 'iSessionTimeout', 'aDisallowedPasswords', 'bEnableLostPassword', 'bEnable2FA', 'bRequire2FA', 's2FAApplicationName', 'bSendUserDeletedEmail'],
             gettext('Email Setup')        => ['sSMTPHost', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'iSMTPTimeout', 'sToEmailAddress', 'bPHPMailerAutoTLS', 'sPHPMailerSMTPSecure'],
             gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'bEnableSelfRegistration', 'iPersonNameStyle', 'iPersonInitialStyle', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification'],
             gettext('Enabled Features')   => ['bEnabledFinance', 'bEnabledSundaySchool', 'bEnabledEvents', 'bEnabledFundraiser', 'bEnabledEmail', 'bEnabledMenuLinks'],
@@ -332,6 +331,51 @@ class   SystemConfig
     public static function getConfigItem(string $name)
     {
         return self::$configs[$name];
+    }
+
+    /**
+     * Get settings configuration for a list of setting names
+     * @param array $settingNames Array of setting names
+     * @return array Array of setting configurations
+     */
+    public static function getSettingsConfig(array $settingNames): array
+    {
+        $configurations = [];
+        foreach ($settingNames as $settingName) {
+            $configItem = self::getConfigItem($settingName);
+            if ($configItem) {
+                // Use the first line of tooltip as label, full tooltip as tooltip
+                $tooltip = $configItem->getTooltip();
+                $label = strtok($tooltip, "\n") ?: ucwords(str_replace(['i', 'b', 's', 'a'], '', $settingName));
+                
+                $configurations[] = [
+                    'name' => $settingName,
+                    'type' => self::mapConfigTypeToSettingType($configItem->getType()),
+                    'label' => $label,
+                    'tooltip' => $tooltip
+                ];
+            }
+        }
+
+        return $configurations;
+    }
+
+    /**
+     * Map SystemConfig types to settings panel types
+     * @param string $configType
+     * @return string
+     */
+    private static function mapConfigTypeToSettingType(string $configType): string
+    {
+        switch ($configType) {
+            case 'number':
+                return 'number';
+            case 'boolean':
+                return 'boolean';
+            case 'text':
+            default:
+                return 'text';
+        }
     }
 
     public static function getValue(string $name)
