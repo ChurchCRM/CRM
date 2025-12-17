@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-13 19:47-0800\n"
+"POT-Creation-Date: 2025-12-17 07:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -641,6 +641,9 @@ msgstr ""
 msgid "An error occurred during demo data import"
 msgstr ""
 
+msgid "An error occurred. Please contact your system administrator."
+msgstr ""
+
 msgid "An error occurred: "
 msgstr ""
 
@@ -925,6 +928,9 @@ msgid "Backup completed successfully!"
 msgstr ""
 
 msgid "Backup downloaded. Server copy removed."
+msgstr ""
+
+msgid "Backup failed"
 msgstr ""
 
 msgid "Backup failed. Please try again."
@@ -1233,6 +1239,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr ""
+
+msgid "ChMeetings Export"
 msgstr ""
 
 #. Context: countries
@@ -1910,7 +1919,10 @@ msgstr ""
 msgid "Database name is required"
 msgstr ""
 
-msgid "Database reset failed: "
+msgid "Database reset failed"
+msgstr ""
+
+msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
@@ -2107,7 +2119,16 @@ msgstr ""
 msgid "Demo Data"
 msgstr ""
 
+msgid "Demo data import failed"
+msgstr ""
+
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr ""
+
 msgid "Demo data imported successfully"
+msgstr ""
+
+msgid "Demo data loaded successfully"
 msgstr ""
 
 #. Context: countries
@@ -2305,6 +2326,9 @@ msgid "Download & Apply"
 msgstr ""
 
 msgid "Download and Apply System Update"
+msgstr ""
+
+msgid "Download failed"
 msgstr ""
 
 msgid "Download family letters"
@@ -2802,7 +2826,16 @@ msgstr ""
 msgid "Export Selected Rows (OFX)"
 msgstr ""
 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr ""
+
 msgid "Export to CSV"
+msgstr ""
+
+msgid "Export to ChMeetings CSV"
+msgstr ""
+
+msgid "Exporting..."
 msgstr ""
 
 msgid "Exports database structure and data. Smaller file size."
@@ -2844,6 +2877,9 @@ msgstr ""
 msgid "Failed to add to cart"
 msgstr ""
 
+msgid "Failed to apply upgrade"
+msgstr ""
+
 msgid "Failed to copy URL"
 msgstr ""
 
@@ -2853,7 +2889,13 @@ msgstr ""
 msgid "Failed to create group. Please try again."
 msgstr ""
 
+msgid "Failed to delete orphaned files"
+msgstr ""
+
 msgid "Failed to delete role. Please try again."
+msgstr ""
+
+msgid "Failed to download latest release"
 msgstr ""
 
 msgid "Failed to download update package."
@@ -2872,6 +2914,9 @@ msgid "Failed to load cart status."
 msgstr ""
 
 msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
+msgid "Failed to refresh upgrade information"
 msgstr ""
 
 msgid "Failed to refresh upgrade information from GitHub."
@@ -2905,6 +2950,12 @@ msgid "Failed to update properties. Please try again."
 msgstr ""
 
 msgid "Failed to update role name. Please try again."
+msgstr ""
+
+msgid "Failed to upload family photo"
+msgstr ""
+
+msgid "Failed to upload person photo"
 msgstr ""
 
 #. Context: countries
@@ -6161,6 +6212,9 @@ msgstr ""
 msgid "Remote Backup Username"
 msgstr ""
 
+msgid "Remote backup failed"
+msgstr ""
+
 msgid "Remove"
 msgstr ""
 
@@ -7034,9 +7088,6 @@ msgstr ""
 
 #. Context: countries
 msgid "St. Vincent & Grenadines"
-msgstr ""
-
-msgid "Stack Trace"
 msgstr ""
 
 msgid "Standard Info"
@@ -8252,6 +8303,9 @@ msgid "Web Server"
 msgstr ""
 
 msgid "WebDAV"
+msgstr ""
+
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
 msgstr ""
 
 msgid "Wedding"
