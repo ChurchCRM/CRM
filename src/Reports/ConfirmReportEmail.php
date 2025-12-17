@@ -83,11 +83,8 @@ if ($numCustomFields > 0) {
     }
 }
 
-$sSubQuery = '';
-$familyId = InputUtils::legacyFilterInput($_GET['familyId'], 'int');
-if ($familyId) {
-    $sSubQuery = ' and fam_id in (' . $familyId . ') ';
-}
+// Filter by family ID if provided in the request
+$familyId = InputUtils::legacyFilterInput($_GET['familyId'] ?? null, 'int');
 
 // Get all the families with email-enabled members
 $familyQuery = FamilyQuery::create()
@@ -96,6 +93,7 @@ $familyQuery = FamilyQuery::create()
     ->endUse()
     ->orderByName();
 
+// Apply family ID filter if provided
 if ($familyId) {
     $familyQuery->filterById((int)$familyId);
 }
