@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -25,7 +25,7 @@ $sPageTitle = gettext('Financial Reports');
 if ($sReportType) {
     $sPageTitle .= ': ' . gettext($sReportType);
 }
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 // Preserve submitted dates/datetype for both selection and filters views
 $sDateStart = '';
 $sDateEnd = '';
@@ -401,4 +401,4 @@ $(document).ready(function() {
 </script>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

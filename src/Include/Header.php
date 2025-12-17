@@ -15,8 +15,8 @@ $localeInfo = Bootstrapper::getCurrentLocale();
 // Turn ON output buffering
 ob_start();
 
-require_once 'Header-function.php';
-require_once 'Header-Security.php';
+require_once __DIR__ . '/Header-function.php';
+require_once __DIR__ . '/Header-Security.php';
 
 // Top level menu index counter
 $MenuFirst = 1;
@@ -27,7 +27,7 @@ $MenuFirst = 1;
   <meta charset="UTF-8"/>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <?php require_once 'Header-HTML-Scripts.php'; ?>
+  <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
 </head>
 
 <body class="hold-transition <?= AuthenticationManager::getCurrentUser()->getStyle() ?> sidebar-mini">

@@ -5,8 +5,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemURLs;
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 $eidQueryParam = $_GET['EID'];
 $sanitizedEidQueryParam = InputUtils::filterInt($eidQueryParam);

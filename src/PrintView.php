@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -93,7 +93,7 @@ $sUnformattedEmail = $per_Email ?? '';
 
 $sPageTitle = gettext('Printable View');
 $iTableSpacerWidth = 10;
-require_once 'Include/Header-Short.php';
+require_once __DIR__ . '/Include/Header-Short.php';
 ?>
 
 <table width="200">
@@ -480,4 +480,4 @@ require_once 'Include/Header-Short.php';
         }
     }
 
-    require_once 'Include/Footer-Short.php';
+    require_once __DIR__ . '/Include/Footer-Short.php';

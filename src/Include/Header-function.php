@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Functions.php';
+require_once __DIR__ . '/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;

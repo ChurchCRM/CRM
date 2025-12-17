@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -46,7 +46,7 @@ $numRows = mysqli_num_rows($rsPropList);
 
 $sPageTitle = gettext('Group View') . ' : ' . InputUtils::escapeHTML($thisGroup->getName());
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Store email and phone data for later use in buttons
 // Email Group link
@@ -480,4 +480,4 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 </script>
 <script src="skin/js/GroupView.js"></script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

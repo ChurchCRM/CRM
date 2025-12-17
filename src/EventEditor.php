@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
-require_once 'Include/QuillEditorHelper.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/QuillEditorHelper.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -20,7 +20,7 @@ if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
 
 $sPageTitle = gettext('Church Event Editor');
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 $sAction = 'Create Event';
 
@@ -617,7 +617,7 @@ $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
     });
 </script>
 
-<?php require_once 'Include/Footer.php'; ?>
+<?php require_once __DIR__ . '/Include/Footer.php'; ?>
 
 <?= getQuillEditorInitScript('EventText', 'EventTextInput', gettext("Enter event description...")) ?>
 

@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -14,7 +14,7 @@ if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValu
 }
 
 $sPageTitle = gettext('Tax Report');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['Submit'])) {
@@ -46,4 +46,4 @@ if (isset($_POST['Submit'])) {
     </form>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

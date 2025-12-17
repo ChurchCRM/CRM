@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
@@ -76,7 +76,7 @@ $sPropertyName = $aRow['pro_Name'];
 $sPageTitle = $sTypeName . gettext(' Property Unassignment');
 
 //Include the header
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
@@ -99,4 +99,4 @@ require_once 'Include/Header.php';
     <a class="btn btn-danger" href="PropertyUnassign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID . '&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

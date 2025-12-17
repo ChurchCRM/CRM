@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 
@@ -22,7 +22,7 @@ if ($iFundRaiserID > 0) {
 }
 
 $sPageTitle = gettext('Buyers for this fundraiser:');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 ?>
 <div class="card card-body">
     <?php
@@ -82,4 +82,4 @@ require_once 'Include/Header.php';
 </div>
 </form>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';
