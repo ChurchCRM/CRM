@@ -28,8 +28,8 @@ function deleteUser(userId, userName) {
         callback: function (result) {
             if (result) {
                 window.CRM.AdminAPIRequest({
-                    path: 'user/' + userId + '/',
-                    method: 'DELETE'
+                    path: "user/" + userId + "/",
+                    method: "DELETE",
                 }).done(function () {
                     window.location.href = window.CRM.root + "/admin/system/users";
                 });
@@ -50,8 +50,8 @@ function restUserLoginCount(userId, userName) {
         callback: function (result) {
             if (result) {
                 window.CRM.AdminAPIRequest({
-                    path: 'user/' + userId + '/login/reset',
-                    method: 'POST'
+                    path: "user/" + userId + "/login/reset",
+                    method: "POST",
                 }).done(function (data) {
                     if (data.status === "success") window.location.href = window.CRM.root + "/admin/system/users";
                 });
@@ -72,10 +72,12 @@ function resetUserPassword(userId, userName) {
         callback: function (result) {
             if (result) {
                 window.CRM.AdminAPIRequest({
-                    path: 'user/' + userId + '/password/reset',
-                    method: 'POST'
+                    path: "user/" + userId + "/password/reset",
+                    method: "POST",
                 }).done(function (data) {
-                    window.CRM.notify(i18next.t('<?= gettext("Password reset for") ?>') + ' ' + userName, { type: 'success' });
+                    window.CRM.notify(i18next.t('<?= gettext("Password reset for") ?>') + " " + userName, {
+                        type: "success",
+                    });
                 });
             }
         },
@@ -94,8 +96,8 @@ function disableUserTwoFactorAuth(userId, userName) {
         callback: function (result) {
             if (result) {
                 window.CRM.AdminAPIRequest({
-                    path: 'user/' + userId + '/disableTwoFactor',
-                    method: 'POST'
+                    path: "user/" + userId + "/disableTwoFactor",
+                    method: "POST",
                 }).done(function (data) {
                     window.location.href = window.CRM.root + "/admin/system/users";
                 });
