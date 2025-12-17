@@ -625,6 +625,50 @@ fetch(window.CRM.root + '/admin/api/system/config/settingName', {
 - `window.CRM.APIRequest()` for `/api/` endpoints
 - Native `fetch()` is also acceptable for modern code
 
+## Webpack TypeScript API Utilities
+
+**For all new webpack TypeScript bundles, use the `webpack/api-utils.ts` helper module.** This ensures consistent, safe API URL construction across webpack modules.
+
+**Critical Issue:** Webpack bundles load **before** `window.CRM` is initialized. Therefore:
+- ❌ **DON'T** assign `window.CRM.root` in constructors (too early, undefined)
+- ✅ **DO** use `api-utils.ts` functions which evaluate at runtime
+
+**Available Functions:**
+
+```typescript
+import { buildAPIUrl, buildAdminAPIUrl, fetchAPIJSON } from './api-utils';
+
+// URL construction (safe - evaluated at runtime)
+const url = buildAPIUrl('person/123/avatar');           // → '/api/person/123/avatar'
+const adminUrl = buildAdminAPIUrl('system/config/key'); // → '/admin/api/system/config/key'
+
+// Fetch with automatic error handling
+const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
+
+// With fetch options
+const response = await fetchAPI('person/123/photo', {
+    method: 'DELETE'
+});
+```
+
+**API Functions:**
+- `getRootPath()` - Get `window.CRM.root` dynamically
+- `buildAPIUrl(path)` - Build `/api/` endpoint URL
+- `buildAdminAPIUrl(path)` - Build `/admin/api/` endpoint URL
+- `fetchAPI(path, options)` - Fetch with error logging
+- `fetchAPIJSON<T>(path, options)` - Fetch and parse JSON (recommended)
+- `fetchAdminAPI(path, options)` - Admin API fetch variant
+- `fetchAdminAPIJSON<T>(path, options)` - Admin API JSON variant
+
+**Examples in codebase:**
+- `webpack/avatar-loader.ts` - Uses `buildAPIUrl()` for URL construction
+- `webpack/photo-utils.ts` - Uses `buildAPIUrl()` as fallback
+- See `webpack/API_UTILITIES.md` for full documentation
+
+**Migration from old patterns:**
+- Old: `${(window as any).CRM.root}/api/...` → New: `buildAPIUrl('...')`
+- Old: `window.CRM.APIRequest()` → New: `fetchAPIJSON()` (modern, async/await)
+
 ---
 
 ## Testing
