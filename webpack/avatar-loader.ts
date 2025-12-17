@@ -25,6 +25,7 @@
  */
 
 import Avatar from 'avatar-initials';
+import { buildAPIUrl } from './api-utils';
 
 interface AvatarInfo {
     hasPhoto: boolean;
@@ -63,10 +64,8 @@ function generateRandomAvatarColor(): string {
 
 class AvatarLoader {
     private observer: IntersectionObserver | null = null;
-    private rootPath: string;
     
     constructor() {
-        this.rootPath = (window as any).CRM?.root || '';
         this.initializeObserver();
     }
     
@@ -102,7 +101,7 @@ class AvatarLoader {
      */
     private buildAvatarInfoUrl(config: AvatarConfig): string {
         const { entityType, entityId } = config;
-        return `${this.rootPath}/api/${entityType}/${entityId}/avatar`;
+        return buildAPIUrl(`${entityType}/${entityId}/avatar`);
     }
     
     /**
@@ -110,7 +109,7 @@ class AvatarLoader {
      */
     private buildPhotoUrl(config: AvatarConfig): string {
         const { entityType, entityId } = config;
-        return `${this.rootPath}/api/${entityType}/${entityId}/photo`;
+        return buildAPIUrl(`${entityType}/${entityId}/photo`);
     }
     
     /**

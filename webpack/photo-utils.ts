@@ -3,6 +3,8 @@
  * Handles lightbox display and photo deletion
  */
 
+import { buildAPIUrl } from './api-utils';
+
 /**
  * Show photo in a lightbox modal
  * @param entityType - 'person' or 'family'
@@ -20,7 +22,7 @@ export function showPhotoLightbox(entityType: string, entityId: number | string)
         imageSrc = photoImg.src;
     } else {
         // Fallback to the photo endpoint
-        imageSrc = `${(window as any).CRM.root}/api/${entityType}/${entityId}/photo`;
+        imageSrc = buildAPIUrl(`${entityType}/${entityId}/photo`);
     }
 
     // Create lightbox overlay
