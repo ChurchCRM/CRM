@@ -1,30 +1,22 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\UserQuery;
-use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\InputUtils;
 
-// Security: User must be an Admin to access this page.
-// Otherwise, re-direct them to the main menu.
-AuthenticationManager::redirectHomeIfNotAdmin();
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 // Get all the User records
 $rsUsers = UserQuery::create()->find();
-
-$sPageTitle = gettext('System Users');
-require_once 'Include/Header.php';
 
 ?>
 <!-- Default box -->
 <div class="card">
     <div class="card-header">
-        <a href="UserEditor.php" class="btn btn-app bg-success"><i class="fa-solid fa-user-plus fa-3x"></i><br><?= gettext('New User') ?></a>
-        <a href="SettingsUser.php" class="btn btn-app bg-primary"><i class="fa-solid fa-wrench fa-3x"></i><br><?= gettext('User Settings') ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php" class="btn btn-app bg-success"><i class="fa-solid fa-user-plus fa-3x"></i><br><?= gettext('New User') ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/SettingsUser.php" class="btn btn-app bg-primary"><i class="fa-solid fa-wrench fa-3x"></i><br><?= gettext('User Settings') ?></a>
     </div>
 </div>
 <div class="card collapsed-card">
@@ -199,20 +191,20 @@ require_once 'Include/Header.php';
                     ?>
                         <tr>
                             <td>
-                                <a href="UserEditor.php?PersonID=<?= $user->getId() ?>">
+                                <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $user->getId() ?>">
                                     <i class="fa-solid fa-pen" aria-hidden="true"></i>
                                 </a>&nbsp;&nbsp;
-                                <a href="v2/user/<?= $user->getId() ?>">
+                                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">
                                     <i class="fa-solid fa-eye" aria-hidden="true"></i>
                                 </a>&nbsp;&nbsp;
                                 <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>
-                                    <a href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
+                                    <a href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
                                         <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
                                     </a>
                                 <?php } ?>
                             </td>
                             <td>
-                                <a href="PersonView.php?PersonID=<?= $user->getId() ?>"> <?= $user->getPerson()->getFullName() ?></a>
+                                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $user->getId() ?>"> <?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
                             </td>
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
                             <td class="text-center"><?= $user->getLoginCount() ?></td>
@@ -223,16 +215,16 @@ require_once 'Include/Header.php';
                                     echo $user->getFailedLogins();
                                 }
                                 if ($user->getFailedLogins() > 0) { ?>
-                                    <a onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
+                                    <a onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
                                         <i class="fa-solid fa-eraser" aria-hidden="true"></i>
                                     </a>
                                 <?php } ?>
                             </td>
                             <td>
-                                <a href="v2/user/<?= $user->getId() ?>/changePassword"><i class="fa-solid fa-wrench"></i></a>&nbsp;&nbsp;
+                                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>/changePassword"><i class="fa-solid fa-wrench"></i></a>&nbsp;&nbsp;
                                 <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) {
                                 ?>
-                                    <a href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">
+                                    <a href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
                                         <i class="fa-solid fa-paper-plane"></i></a>
                                 <?php
                                 } ?>
@@ -242,7 +234,7 @@ require_once 'Include/Header.php';
                                 <?php
                                 if ($user->is2FactorAuthEnabled()) {
                                 ?>
-                                    <a onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= $user->getPerson()->getFullName() ?>')">Disable</a>
+                                    <a onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">Disable</a>
                                 <?php
                                 }
                                 ?>
@@ -260,4 +252,4 @@ require_once 'Include/Header.php';
 
 <script src="<?= SystemURLs::assetVersioned('/skin/js/users.js') ?>"></script>
 <?php
-require_once 'Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

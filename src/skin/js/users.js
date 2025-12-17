@@ -31,7 +31,7 @@ function deleteUser(userId, userName) {
                     method: "DELETE",
                     path: "user/" + userId + "/",
                 }).done(function () {
-                    window.location.href = window.CRM.root + "/UserList.php";
+                    window.location.href = window.CRM.root + "/admin/system/users";
                 });
             }
         },
@@ -55,7 +55,7 @@ function restUserLoginCount(userId, userName) {
                     dataType: "json",
                     encode: true,
                 }).done(function (data) {
-                    if (data.status === "success") window.location.href = window.CRM.root + "/UserList.php";
+                    if (data.status === "success") window.location.href = window.CRM.root + "/admin/system/users";
                 });
             }
         },
@@ -102,7 +102,7 @@ function disableUserTwoFactorAuth(userId, userName) {
                     method: "POST",
                     url: window.CRM.root + "/api/user/" + userId + "/disableTwoFactor",
                 }).done(function (data) {
-                    window.location.href = window.CRM.root + "/UserList.php";
+                    window.location.href = window.CRM.root + "/admin/system/users";
                 });
             }
         },
