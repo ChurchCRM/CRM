@@ -27,9 +27,9 @@ function deleteUser(userId, userName) {
             "</b></p>",
         callback: function (result) {
             if (result) {
-                window.CRM.APIRequest({
-                    method: "DELETE",
-                    path: "user/" + userId + "/",
+                window.CRM.AdminAPIRequest({
+                    path: 'user/' + userId + '/',
+                    method: 'DELETE'
                 }).done(function () {
                     window.location.href = window.CRM.root + "/admin/system/users";
                 });
@@ -49,11 +49,9 @@ function restUserLoginCount(userId, userName) {
             "</b></p>",
         callback: function (result) {
             if (result) {
-                $.ajax({
-                    method: "POST",
-                    url: window.CRM.root + "/api/user/" + userId + "/login/reset",
-                    dataType: "json",
-                    encode: true,
+                window.CRM.AdminAPIRequest({
+                    path: 'user/' + userId + '/login/reset',
+                    method: 'POST'
                 }).done(function (data) {
                     if (data.status === "success") window.location.href = window.CRM.root + "/admin/system/users";
                 });
@@ -73,14 +71,11 @@ function resetUserPassword(userId, userName) {
             "</b></p>",
         callback: function (result) {
             if (result) {
-                $.ajax({
-                    method: "POST",
-                    url: window.CRM.root + "/api/user/" + userId + "/password/reset",
-                    dataType: "json",
-                    encode: true,
+                window.CRM.AdminAPIRequest({
+                    path: 'user/' + userId + '/password/reset',
+                    method: 'POST'
                 }).done(function (data) {
-                    if (data.status === "success")
-                        showGlobalMessage('<?= gettext("Password reset for") ?> ' + userName, "success");
+                    window.CRM.notify(i18next.t('<?= gettext("Password reset for") ?>') + ' ' + userName, { type: 'success' });
                 });
             }
         },
@@ -98,9 +93,9 @@ function disableUserTwoFactorAuth(userId, userName) {
             "</b></p>",
         callback: function (result) {
             if (result) {
-                $.ajax({
-                    method: "POST",
-                    url: window.CRM.root + "/api/user/" + userId + "/disableTwoFactor",
+                window.CRM.AdminAPIRequest({
+                    path: 'user/' + userId + '/disableTwoFactor',
+                    method: 'POST'
                 }).done(function (data) {
                     window.location.href = window.CRM.root + "/admin/system/users";
                 });
