@@ -510,6 +510,69 @@ echo $notification?->title ?? 'No Title';
 echo $notification->title;  // TypeError if null
 ```
 
+### API Error Handling (Critical)
+
+**ALWAYS use `SlimUtils::renderErrorJSON()` for API errors** — Located in `src/ChurchCRM/Slim/SlimUtils.php`
+
+Never throw exceptions in route handlers. Wrap operations in try/catch and return sanitized error responses.
+
+**Pattern:**
+```php
+$group->post('/endpoint', function (Request $request, Response $response, array $args): Response {
+    try {
+        // Your operation here
+        $result = doSomething();
+        return SlimUtils::renderJSON($response, ['data' => $result]);
+    } catch (\Throwable $e) {
+        // Determine appropriate status code
+        $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+        // Return sanitized error response with server-side logging
+        return SlimUtils::renderErrorJSON($response, gettext('User-facing error message'), [], $status, $e, $request);
+    }
+});
+```
+
+**`renderErrorJSON` behavior:**
+- Server-side logs: exception class, message, file, line, trace, request method/path/IP/user-agent
+- Client receives: sanitized message only (no traces, file paths, or credentials)
+- Sanitizes messages automatically (detects and masks password/token/host patterns)
+- Status passed as `int $status` parameter (NOT via `response->withStatus(...)`)
+
+**Signature:**
+```php
+SlimUtils::renderErrorJSON(
+    Response $response,                    // Original $response (unmodified)
+    ?string $message = null,               // Localized user-facing message
+    array $extra = [],                     // Additional data to include in response
+    int $status = 500,                     // HTTP status code
+    ?\Throwable $exception = null,         // Exception for server-side logging
+    ?Request $request = null               // Request for context logging
+): Response
+```
+
+**Examples:**
+
+```php
+// Simple error with custom message
+return SlimUtils::renderErrorJSON($response, gettext('Database error'), [], 500);
+
+// Error with exception logging
+return SlimUtils::renderErrorJSON($response, gettext('Upload failed'), [], 400, $e, $request);
+
+// Error with dynamic status code
+$status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+return SlimUtils::renderErrorJSON($response, gettext('Operation failed'), [], $status, $e, $request);
+
+// Error with extra response data
+return SlimUtils::renderErrorJSON($response, gettext('Validation failed'), ['errors' => $errors], 400);
+```
+
+**DO NOT:**
+- ❌ Throw exceptions in API routes (caught by error handler, exposes details to clients)
+- ❌ Use `response->withStatus(500)` with renderErrorJSON (pass status as parameter)
+- ❌ Return raw exception messages (use gettext() for localization and sanitization)
+- ❌ Log exceptions separately in routes (renderErrorJSON handles all logging)
+
 ---
 
 ## HTTP Headers (RFC 7230)
@@ -681,6 +744,50 @@ fetch(window.CRM.root + '/admin/api/system/config/settingName', {
 **For public/private API calls, use:**
 - `window.CRM.APIRequest()` for `/api/` endpoints
 - Native `fetch()` is also acceptable for modern code
+
+## Webpack TypeScript API Utilities
+
+**For all new webpack TypeScript bundles, use the `webpack/api-utils.ts` helper module.** This ensures consistent, safe API URL construction across webpack modules.
+
+**Critical Issue:** Webpack bundles load **before** `window.CRM` is initialized. Therefore:
+- ❌ **DON'T** assign `window.CRM.root` in constructors (too early, undefined)
+- ✅ **DO** use `api-utils.ts` functions which evaluate at runtime
+
+**Available Functions:**
+
+```typescript
+import { buildAPIUrl, buildAdminAPIUrl, fetchAPIJSON } from './api-utils';
+
+// URL construction (safe - evaluated at runtime)
+const url = buildAPIUrl('person/123/avatar');           // → '/api/person/123/avatar'
+const adminUrl = buildAdminAPIUrl('system/config/key'); // → '/admin/api/system/config/key'
+
+// Fetch with automatic error handling
+const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
+
+// With fetch options
+const response = await fetchAPI('person/123/photo', {
+    method: 'DELETE'
+});
+```
+
+**API Functions:**
+- `getRootPath()` - Get `window.CRM.root` dynamically
+- `buildAPIUrl(path)` - Build `/api/` endpoint URL
+- `buildAdminAPIUrl(path)` - Build `/admin/api/` endpoint URL
+- `fetchAPI(path, options)` - Fetch with error logging
+- `fetchAPIJSON<T>(path, options)` - Fetch and parse JSON (recommended)
+- `fetchAdminAPI(path, options)` - Admin API fetch variant
+- `fetchAdminAPIJSON<T>(path, options)` - Admin API JSON variant
+
+**Examples in codebase:**
+- `webpack/avatar-loader.ts` - Uses `buildAPIUrl()` for URL construction
+- `webpack/photo-utils.ts` - Uses `buildAPIUrl()` as fallback
+- See `webpack/API_UTILITIES.md` for full documentation
+
+**Migration from old patterns:**
+- Old: `${(window as any).CRM.root}/api/...` → New: `buildAPIUrl('...')`
+- Old: `window.CRM.APIRequest()` → New: `fetchAPIJSON()` (modern, async/await)
 
 ---
 
