@@ -192,7 +192,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         
                         <!-- Manage Users -->
                         <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/UserList.php" class="quick-start-card">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="quick-start-card">
                                 <div class="quick-start-icon bg-info">
                                     <i class="fa-solid fa-users"></i>
                                 </div>

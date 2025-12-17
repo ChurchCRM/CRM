@@ -97,7 +97,7 @@ describe("Admin Dashboard", () => {
         cy.visit("admin/");
         
         cy.contains("a.quick-start-card", "Manage Users").click();
-        cy.url().should("include", "UserList.php");
+        cy.url().should("include", "admin/system/users");
     });
 
     it("should navigate to Groups from Quick Start", () => {

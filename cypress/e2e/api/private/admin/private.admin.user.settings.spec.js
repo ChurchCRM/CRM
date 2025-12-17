@@ -6,7 +6,7 @@ describe("API Private Admin User", () => {
     it("Reset User failed logins", () => {
         cy.makePrivateAdminAPICall(
             "POST",
-            "/api/user/99/login/reset",
+            "/admin/api/user/99/login/reset",
             null,
             200,
         );
@@ -15,7 +15,7 @@ describe("API Private Admin User", () => {
     it("Reset User Password", () => {
         cy.makePrivateAdminAPICall(
             "POST",
-            "/api/user/99/password/reset",
+            "/admin/api/user/99/password/reset",
             null,
             200,
         );
@@ -24,7 +24,7 @@ describe("API Private Admin User", () => {
     it("DisableTwoFactor", () => {
         cy.makePrivateAdminAPICall(
             "POST",
-            "/api/user/99/disableTwoFactor",
+            "/admin/api/user/99/disableTwoFactor",
             null,
             200,
         );

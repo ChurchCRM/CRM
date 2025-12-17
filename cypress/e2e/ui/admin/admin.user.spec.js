@@ -4,7 +4,7 @@ describe("Admin User Password", () => {
     });
 
     it("List System Users", () => {
-        cy.visit("UserList.php");
+        cy.visit("admin/system/users");
         cy.contains("Church Admin");
     });
 
@@ -20,12 +20,12 @@ describe("Admin User Password", () => {
 
 
     it("Create System Users", () => {
-        cy.visit("UserList.php");
+        cy.visit("admin/system/users");
         // Ensure clean start: if Peyton Ray already exists as a user, remove that user first
         cy.get('body').then(($body) => {
             if ($body.text().includes('Peyton Ray')) {
-                cy.request({ method: 'DELETE', url: '/api/user/25/', failOnStatusCode: false });
-                cy.visit('UserList.php');
+                cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 404]);
+                cy.visit('admin/system/users');
                 cy.get('body').should('not.contain', 'Peyton Ray');
             }
         });
@@ -37,21 +37,16 @@ describe("Admin User Password", () => {
         cy.contains("User Editor");
         cy.get('.TextColumnWithBottomBorder > select').select('skin-yellow');
         cy.get('#SaveButton').click();
-        cy.url().should('contain', 'UserList.php');
-        cy.contains("Peyton Ray");
+        cy.url().should('contain', 'admin/system/users');
+        // Wait for the table to load
+        cy.get('#user-listing-table').should('exist');
+        cy.contains('Peyton Ray');
 
         // Clean up: remove user status for PersonID=25 via API so test can be re-run
-        cy.request({
-            method: 'DELETE',
-            url: '/api/user/25/',
-            failOnStatusCode: false
-        }).then((resp) => {
-            // Expect success (200) or 204; if user wasn't created, that's fine
-            expect([200, 204, 404]).to.include(resp.status);
-        });
+        cy.makePrivateAdminAPICall("DELETE", "/admin/api/user/25", null, [200, 204, 404]);
 
         // Verify user no longer appears in the listing
-        cy.visit('UserList.php');
+        cy.visit('admin/system/users');
         cy.contains('Peyton Ray').should('not.exist');
     });
 });
