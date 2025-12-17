@@ -2519,5 +2519,16 @@
     "You will be logged out and redirected to the login page.": "Se cerrará su sesión y será redirigido a la página de inicio de sesión.",
     "Your ChurchCRM installation is clean. All files on the server match the official release.": "Su instalación de ChurchCRM está limpia. Todos los archivos del servidor coinciden con la versión oficial.",
     "or click to browse": "o haz clic para examinar",
-    "seconds...": "segundos..."
+    "seconds...": "segundos...",
+    " Deposit #": " Depósito #",
+    "%d families missing coordinates": "%d familia sin coordenadas",
+    "%d missing classification": "%d clasificación faltante",
+    "%d missing gender": "%d género faltante",
+    "%d missing role": "%d rol faltante",
+    "A payment is an actual donation received. It will be added to the current deposit.": "Un pago es una donación real recibida. Se añadirá al depósito actual.",
+    "A pledge is a commitment to give. It is not tied to a deposit slip.": "Una promesa es un compromiso de donación. No está vinculada a un comprobante de depósito.",
+    "Add Another Family Member": "Agregar otro miembro de la familia",
+    "Add Member": "Agregar miembro",
+    "Add Pledge": "Añadir promesa",
+    "Admin Dashboard": "Panel de administración"
 }
