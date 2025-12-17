@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-17 07:34+0000\n"
+"POT-Creation-Date: 2025-12-17 07:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -206,13 +206,13 @@ msgstr ""
 msgid "2022/2023"
 msgstr ""
 
-msgid "2FA"
-msgstr ""
-
-msgid "2FA Application Name"
-msgstr ""
-
 msgid "2FA Code"
+msgstr ""
+
+msgid "2FA Enabled"
+msgstr ""
+
+msgid "<?= gettext(\"Password reset for\") ?>"
 msgstr ""
 
 msgid "A"
@@ -279,6 +279,9 @@ msgid "Active"
 msgstr ""
 
 msgid "Active Kiosks"
+msgstr ""
+
+msgid "Active Users"
 msgstr ""
 
 msgid "Actual Hash"
@@ -390,6 +393,9 @@ msgid "Add New Person"
 msgstr ""
 
 msgid "Add New Role"
+msgstr ""
+
+msgid "Add New User"
 msgstr ""
 
 msgid "Add Note"
@@ -1241,6 +1247,9 @@ msgstr ""
 msgid "Ceuta and Melilla (Ceuta y Melilla)"
 msgstr ""
 
+msgid "ChMeetings Export"
+msgstr ""
+
 #. Context: countries
 msgid "Chad (Tchad)"
 msgstr ""
@@ -2072,6 +2081,9 @@ msgstr ""
 msgid "Delete Selected Rows"
 msgstr ""
 
+msgid "Delete User"
+msgstr ""
+
 msgid "Delete records permission"
 msgstr ""
 
@@ -2226,6 +2238,9 @@ msgstr ""
 msgid "Directory reports"
 msgstr ""
 
+msgid "Disable 2FA"
+msgstr ""
+
 msgid "Disable Group Specific Properties"
 msgstr ""
 
@@ -2233,9 +2248,6 @@ msgid "Disabled"
 msgstr ""
 
 msgid "Disabled for this group."
-msgstr ""
-
-msgid "Disallowed Passwords"
 msgstr ""
 
 msgid "Discard"
@@ -2534,9 +2546,6 @@ msgstr ""
 msgid "Empty your entire cart?"
 msgstr ""
 
-msgid "Enable 2FA"
-msgstr ""
-
 msgid "Enable Email menu."
 msgstr ""
 
@@ -2553,9 +2562,6 @@ msgid "Enable Group Specific Properties"
 msgstr ""
 
 msgid "Enable New Kiosk Registration"
-msgstr ""
-
-msgid "Enable Password Reset"
 msgstr ""
 
 msgid "Enable Remote Backups to Cloud Services"
@@ -2823,7 +2829,16 @@ msgstr ""
 msgid "Export Selected Rows (OFX)"
 msgstr ""
 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr ""
+
 msgid "Export to CSV"
+msgstr ""
+
+msgid "Export to ChMeetings CSV"
+msgstr ""
+
+msgid "Exporting..."
 msgstr ""
 
 msgid "Exports database structure and data. Smaller file size."
@@ -3411,9 +3426,6 @@ msgstr ""
 msgid "Gender Demographics"
 msgstr ""
 
-msgid "General"
-msgstr ""
-
 msgid "Generate"
 msgstr ""
 
@@ -3504,9 +3516,6 @@ msgid "Giving Report (Tax Statements)"
 msgstr ""
 
 msgid "Giving funds and categories"
-msgstr ""
-
-msgid "Global User Settings"
 msgstr ""
 
 msgid "Go"
@@ -4354,6 +4363,9 @@ msgstr ""
 msgid "Location & Contact Information"
 msgstr ""
 
+msgid "Locked Users"
+msgstr ""
+
 msgid "Log File"
 msgstr ""
 
@@ -4528,9 +4540,6 @@ msgstr ""
 msgid "Mauritius (Moris)"
 msgstr ""
 
-msgid "Max Failed Login"
-msgstr ""
-
 msgid "Max. 32MB"
 msgstr ""
 
@@ -4670,12 +4679,6 @@ msgid "Middle"
 msgstr ""
 
 msgid "Middle Name"
-msgstr ""
-
-msgid "Min Password Characters Delta"
-msgstr ""
-
-msgid "Min Password Length"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -4964,9 +4967,6 @@ msgid "New Release"
 msgstr ""
 
 msgid "New Role"
-msgstr ""
-
-msgid "New User"
 msgstr ""
 
 #. Context: countries
@@ -5506,9 +5506,6 @@ msgid "Password Reset Successful"
 msgstr ""
 
 msgid "Password reset not available.  Please contact your system administrator"
-msgstr ""
-
-msgid "Passwords"
 msgstr ""
 
 msgid "Passwords do not match"
@@ -6080,6 +6077,9 @@ msgstr ""
 msgid "Quick Search"
 msgstr ""
 
+msgid "Quick Settings"
+msgstr ""
+
 msgid "Quick Start"
 msgstr ""
 
@@ -6296,9 +6296,6 @@ msgstr ""
 msgid "Request Password Reset"
 msgstr ""
 
-msgid "Require 2FA"
-msgstr ""
-
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr ""
 
@@ -6323,7 +6320,13 @@ msgstr ""
 msgid "Reset Database"
 msgstr ""
 
+msgid "Reset Failed Logins"
+msgstr ""
+
 msgid "Reset Password"
+msgstr ""
+
+msgid "Reset Password via Email"
 msgstr ""
 
 msgid "Reset your password"
@@ -6802,9 +6805,6 @@ msgstr ""
 msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
-msgid "Send email to Deleted Users"
-msgstr ""
-
 msgid "Send family email"
 msgstr ""
 
@@ -6838,9 +6838,6 @@ msgid "Server cache time for remote images"
 msgstr ""
 
 msgid "Server error"
-msgstr ""
-
-msgid "Session Timeout"
 msgstr ""
 
 msgid ""
@@ -7642,6 +7639,9 @@ msgstr ""
 msgid "Total Payments"
 msgstr ""
 
+msgid "Total Users"
+msgstr ""
+
 msgid "Total number of rows in the CSV file:"
 msgstr ""
 
@@ -7975,13 +7975,10 @@ msgstr ""
 msgid "User Interface"
 msgstr ""
 
-msgid "User Listing"
+msgid "User Management"
 msgstr ""
 
 msgid "User Settings"
-msgstr ""
-
-msgid "User Setup"
 msgstr ""
 
 msgid "User accounts and roles"
@@ -8153,6 +8150,9 @@ msgid "View Buyers"
 msgstr ""
 
 msgid "View Cart"
+msgstr ""
+
+msgid "View Details"
 msgstr ""
 
 msgid "View Family Page"
@@ -8813,6 +8813,9 @@ msgid "task(s)"
 msgstr ""
 
 msgid "to"
+msgstr ""
+
+msgid "total"
 msgstr ""
 
 msgid "with at least one:"
