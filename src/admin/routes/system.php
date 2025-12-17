@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
@@ -26,6 +27,18 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         ];
         
         return $renderer->render($response, 'backup.php', $pageArgs);
+    });
+
+    // Users page
+    $group->get('/users', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+        
+        $pageArgs = [
+            'sRootPath' => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('System Users'),
+        ];
+        
+        return $renderer->render($response, 'users.php', $pageArgs);
     });
 
     // Restore Database page
