@@ -19,24 +19,29 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
     $group->get('/people/export/chmeetings', 'exportChMeetings');
 
     $group->post('/backup', function (Request $request, Response $response, array $args): Response {
-        $input = $request->getParsedBody();
-        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
-        $BackupType = $input['BackupType'];
-        $Backup = new BackupJob($BaseName, $BackupType);
-        $Backup->execute();
+        try {
+            $input = $request->getParsedBody();
+            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+            $BackupType = $input['BackupType'];
+            $Backup = new BackupJob($BaseName, $BackupType);
+            $Backup->execute();
 
-        return SlimUtils::renderJSON(
-            $response,
-            json_decode(
-                json_encode(
-                    $Backup,
+            return SlimUtils::renderJSON(
+                $response,
+                json_decode(
+                    json_encode(
+                        $Backup,
+                        JSON_THROW_ON_ERROR
+                    ),
+                    (bool) JSON_OBJECT_AS_ARRAY,
+                    512,
                     JSON_THROW_ON_ERROR
-                ),
-                (bool) JSON_OBJECT_AS_ARRAY,
-                512,
-                JSON_THROW_ON_ERROR
-            )
-        );
+                )
+            );
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Backup failed'), [], $status, $e, $request);
+        }
     });
 
     $group->post('/backupRemote', function (Request $request, Response $response, array $args): Response {
@@ -48,17 +53,22 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
                 SystemConfig::getValue('sChurchName')
             ) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
             $BackupType = $input['BackupType'];
-            $Backup = new BackupJob($BaseName, $BackupType);
-            $Backup->execute();
-            $copyStatus = $Backup->copyToWebDAV(
-                SystemConfig::getValue('sExternalBackupEndpoint'),
-                SystemConfig::getValue('sExternalBackupUsername'),
-                SystemConfig::getValue('sExternalBackupPassword')
-            );
+            try {
+                $Backup = new BackupJob($BaseName, $BackupType);
+                $Backup->execute();
+                $copyStatus = $Backup->copyToWebDAV(
+                    SystemConfig::getValue('sExternalBackupEndpoint'),
+                    SystemConfig::getValue('sExternalBackupUsername'),
+                    SystemConfig::getValue('sExternalBackupPassword')
+                );
 
-            return SlimUtils::renderJSON($response, ['copyStatus' => $copyStatus]);
+                return SlimUtils::renderJSON($response, ['copyStatus' => $copyStatus]);
+            } catch (\Throwable $e) {
+                $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+                return SlimUtils::renderErrorJSON($response, gettext('Remote backup failed'), [], $status, $e, $request);
+            }
         } else {
-            throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
+            return SlimUtils::renderErrorJSON($response, gettext('WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set'), [], 500);
         }
     });
 
@@ -79,20 +89,24 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
                     JSON_THROW_ON_ERROR
                 )
             );
-        } catch (\Exception $e) {
-            LoggerUtils::getAppLogger()->error('Restore failed: ' . $e->getMessage());
-            return SlimUtils::renderJSON(
-                $response->withStatus($e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500),
-                ['error' => true, 'message' => $e->getMessage()]
-            );
+        } catch (\Throwable $e) {
+            $logger = LoggerUtils::getAppLogger();
+            $logger->error('Restore failed', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Database restore failed'), [], $status, $e, $request);
         }
     });
 
     $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response {
         $filename = $args['filename'];
-        BackupDownloader::downloadBackup($filename);
-
-        return $response;
+        try {
+            BackupDownloader::downloadBackup($filename);
+            return $response;
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Download failed'), [], $status, $e, $request);
+        }
     });
 })->add(AdminRoleAuthMiddleware::class);
 

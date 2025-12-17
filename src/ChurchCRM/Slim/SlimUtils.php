@@ -24,17 +24,53 @@ class SlimUtils
      */
     public static function renderSuccessJSON(Response $response, int $status = 200): Response
     {
-        return self::renderJson($response, ['success' => true], $status);
+        return self::renderJSON($response, ['success' => true], $status);
     }
 
     /**
-     * Helper to write a JSON string to the response body
+     * Render a standard error JSON response
+     * Ensures a consistent shape for all error responses and sanitizes messages
      */
-    public static function renderStringJson(Response $response, string $json, int $status = 200): Response
+    public static function renderErrorJSON(Response $response, ?string $message = null, array $extra = [], int $status = 500, ?\Throwable $exception = null, ?Request $request = null): Response
     {
-        $response->getBody()->write($json);
-        return $response->withStatus($status)->withHeader('Content-Type', 'application/json');
+        $default = gettext('An error occurred. Please contact your system administrator.');
+        $msg = $message ?: $default;
+
+        // Sanitize the provided message to avoid leaking credentials
+        if (preg_match('/(password|credential|secret|api[_-]?key|token|username|user|host|localhost|127\.0\.0|\d{1,3}\.\d{1,3})/i', $msg)) {
+            $msg = $default;
+        }
+
+        // Centralized logging of the exception and request context when available
+        try {
+            $logger = LoggerUtils::getAppLogger();
+            $logContext = $extra;
+            if ($exception !== null) {
+                $logContext['exception_class'] = get_class($exception);
+                $logContext['error'] = $exception->getMessage();
+                $logContext['file'] = $exception->getFile();
+                $logContext['line'] = $exception->getLine();
+                $logContext['trace'] = $exception->getTraceAsString();
+            }
+            if ($request !== null) {
+                $logContext['method'] = $request->getMethod();
+                $logContext['path'] = $request->getUri()->getPath();
+                $logContext['query'] = $request->getUri()->getQuery();
+                $logContext['ip'] = $request->getServerParams()['REMOTE_ADDR'] ?? 'unknown';
+                $logContext['user_agent'] = $request->getHeaderLine('User-Agent');
+            }
+            $logger->error($msg, $logContext);
+        } catch (\Throwable $logEx) {
+            // If logging fails, do not expose details to the client; fail silently
+        }
+
+        $payload = array_merge(['success' => false, 'message' => $msg], $extra);
+        return self::renderJSON($response, $payload, $status);
     }
+
+    /**
+     * (removed lowercase alias) Use `renderStringJSON` instead
+     */
 
     /**
      * Registers custom error, not found, and not allowed handlers on the Slim container
@@ -42,14 +78,11 @@ class SlimUtils
      */
     public static function registerCustomErrorHandlers($container)
     {
-        // Error handler: returns JSON with error details
+        // Error handler: returns JSON with sanitized error details (Slim3 compatibility)
         $container->set('errorHandler', fn ($container): \Closure => function ($request, $response, $exception) use ($container) {
             $data = [
                 'code'    => $exception->getCode(),
-                'message' => $exception->getMessage(),
-                'file'    => $exception->getFile(),
-                'line'    => $exception->getLine(),
-                'trace'   => explode("\n", $exception->getTraceAsString()),
+                'message' => self::sanitizeErrorMessage($exception),
             ];
             return $container->get('response')->withStatus(500)
                 ->withHeader('Content-Type', 'application/json')
@@ -105,7 +138,7 @@ class SlimUtils
         }
         
         // Get the root path from SystemURLs (configured in Config.php as $sRootPath)
-        // Examples: '' (root install), '/churchcrm', '/crm', etc.
+        
         try {
             $rootPath = SystemURLs::getRootPath();
             
@@ -126,8 +159,16 @@ class SlimUtils
      */
     public static function getErrorMiddlewareConfig(): array
     {
-        // Placeholder for future config logic
         return [];
+    }
+
+    /**
+     * Helper to write a JSON string to the response body
+     */
+    public static function renderStringJSON(Response $response, string $json, int $status = 200): Response
+    {
+        $response->getBody()->write($json);
+        return $response->withStatus($status)->withHeader('Content-Type', 'application/json');
     }
 
     /**
@@ -178,11 +219,7 @@ class SlimUtils
                 ]
             ];
             
-            // Include file/line details if error details should be displayed
-            if ($displayErrorDetails) {
-                $errorResponse['file'] = $exception->getFile();
-                $errorResponse['line'] = $exception->getLine();
-            }
+            // Do NOT include file/line/trace in responses to avoid leaking internals
             
             $response->getBody()->write(json_encode($errorResponse));
             return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
@@ -192,9 +229,12 @@ class SlimUtils
     /**
      * Render an array as JSON response
      */
-    public static function renderJson(Response $response, array $obj, int $status = 200): Response
+    /**
+     * Render an array as JSON response (canonical camel-case)
+     */
+    public static function renderJSON(Response $response, array $obj, int $status = 200): Response
     {
-        return self::renderStringJson($response, json_encode($obj, JSON_THROW_ON_ERROR), $status);
+        return self::renderStringJSON($response, json_encode($obj, JSON_THROW_ON_ERROR), $status);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 use ChurchCRM\Service\UpgradeAPIService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -18,10 +19,8 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
         try {
             $upgradeFile = UpgradeAPIService::downloadLatestRelease();
             return SlimUtils::renderJSON($response, $upgradeFile);
-        } catch (\Exception $e) {
-            return SlimUtils::renderJSON($response, [
-                'message' => $e->getMessage()
-            ], 400);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to download latest release'), [], 400, $e, $request);
         }
     });
 
@@ -41,10 +40,8 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
             $input = $request->getParsedBody();
             UpgradeAPIService::doUpgrade($input['fullPath'], $input['sha1']);
             return SlimUtils::renderSuccessJSON($response);
-        } catch (\Exception $e) {
-            return SlimUtils::renderJSON($response, [
-                'message' => $e->getMessage()
-            ], 500);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to apply upgrade'), [], 500, $e, $request);
         }
     });
 
@@ -65,10 +62,8 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
                 'data' => $updateData,
                 'message' => gettext('Upgrade information refreshed successfully')
             ]);
-        } catch (\Exception $e) {
-            return SlimUtils::renderJSON($response, [
-                'message' => $e->getMessage()
-            ], 500);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to refresh upgrade information'), [], 500, $e, $request);
         }
     });
 });

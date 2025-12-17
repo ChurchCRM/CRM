@@ -2,6 +2,7 @@
 
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -34,14 +35,8 @@ $app->group('/api/orphaned-files', function (RouteCollectorProxy $group): void {
                     count($result['failed'])
                 ),
             ]);
-        } catch (\Exception $e) {
-            return SlimUtils::renderJSON($response, [
-                'success' => false,
-                'message' => $e->getMessage(),
-                'deleted' => [],
-                'failed' => [],
-                'errors' => [$e->getMessage()],
-            ], 500);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to delete orphaned files'), ['deleted' => [], 'failed' => [], 'errors' => []], 500, $e, $request);
         }
     });
 

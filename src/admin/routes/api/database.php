@@ -68,20 +68,8 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
                     'defaultPassword' => 'changeme'
                 ]
             );
-        } catch (\Exception $e) {
-            $logger->error('Database reset failed', [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
-            ]);
-            
-            return SlimUtils::renderJSON(
-                $response,
-                [
-                    'success' => false,
-                    'msg' => gettext('Database reset failed: ') . $e->getMessage()
-                ],
-                500
-            );
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Database reset failed'), [], 500, $e, $request);
         }
     });
 

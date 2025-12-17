@@ -91,11 +91,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
         ]
     ];
     
-    if ($displayErrorDetails) {
-        $errorData['file'] = $exception->getFile();
-        $errorData['line'] = $exception->getLine();
-        $errorData['trace'] = $exception->getTraceAsString();
-    }
+    // Never include file/line/trace in setup responses to avoid leaking internals
     
     $response->getBody()->write(json_encode($errorData, JSON_PRETTY_PRINT));
     return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
