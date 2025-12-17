@@ -10522,3 +10522,47 @@ msgstr "o haz clic para examinar"
 msgid "seconds..."
 msgstr "segundos..."
 
+#: 
+msgid " Deposit #"
+msgstr " Depósito #"
+
+#: 
+msgid "%d families missing coordinates"
+msgstr "%d familia sin coordenadas"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d clasificación faltante"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d género faltante"
+
+#: 
+msgid "%d missing role"
+msgstr "%d rol faltante"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "Un pago es una donación real recibida. Se añadirá al depósito actual."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "Una promesa es un compromiso de donación. No está vinculada a un comprobante de depósito."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Agregar otro miembro de la familia"
+
+#: 
+msgid "Add Member"
+msgstr "Agregar miembro"
+
+#: 
+msgid "Add Pledge"
+msgstr "Añadir promesa"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Panel de administración"
+
