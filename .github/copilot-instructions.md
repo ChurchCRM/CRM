@@ -516,6 +516,46 @@ return SlimUtils::renderErrorJSON($response, gettext('Validation failed'), ['err
 - ❌ Return raw exception messages (use gettext() for localization and sanitization)
 - ❌ Log exceptions separately in routes (renderErrorJSON handles all logging)
 
+### API Response Standardization
+
+**Maintain consistent error response format across all APIs** to prevent client-side errors like "undefined" values.
+
+**Key Pattern:**
+- **Success responses** should use consistent structure: `{'success': true, 'data': ...}` or `{'success': true, 'message': ...}`
+- **Error responses** should ALWAYS use `message` field (not `error`, `msg`, or other variations)
+- **Security**: Return generic error messages to users, not specific validation details
+
+**Example - Standardized Error Response:**
+```php
+// WRONG - Uses 'error' field which client may not expect
+return SlimUtils::renderErrorJSON($response, 'Invalid image format', [], 400, $e, $request);
+// Client receives: {success: false, error: "Invalid image format"}
+
+// CORRECT - Uses 'message' field consistently
+return SlimUtils::renderErrorJSON($response, gettext('Upload failed'), [], 400, $e, $request);
+// Client receives: {success: false, message: "Upload failed"}
+```
+
+**Client-side Error Handler Resilience:**
+When handling API errors in JavaScript, check multiple possible error field names for backward compatibility:
+```javascript
+// Handle message, error, or msg field names
+var errorText = error.message || error.error || error.msg || i18next.t("Unknown error");
+```
+
+**Real Example: Photo Upload Validation**
+```php
+// API returns generic error for security (don't expose validation details)
+catch (\Throwable $e) {
+    return SlimUtils::renderErrorJSON($response, gettext('Failed to upload photo'), [], 400, $e, $request);
+}
+```
+
+```javascript
+// Client gets: {success: false, message: "Failed to upload photo"}
+// Server logs full exception details for debugging
+```
+
 ---
 
 ## HTTP Headers (RFC 7230)
