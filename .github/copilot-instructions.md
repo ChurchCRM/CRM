@@ -453,6 +453,69 @@ echo $notification?->title ?? 'No Title';
 echo $notification->title;  // TypeError if null
 ```
 
+### API Error Handling (Critical)
+
+**ALWAYS use `SlimUtils::renderErrorJSON()` for API errors** — Located in `src/ChurchCRM/Slim/SlimUtils.php`
+
+Never throw exceptions in route handlers. Wrap operations in try/catch and return sanitized error responses.
+
+**Pattern:**
+```php
+$group->post('/endpoint', function (Request $request, Response $response, array $args): Response {
+    try {
+        // Your operation here
+        $result = doSomething();
+        return SlimUtils::renderJSON($response, ['data' => $result]);
+    } catch (\Throwable $e) {
+        // Determine appropriate status code
+        $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+        // Return sanitized error response with server-side logging
+        return SlimUtils::renderErrorJSON($response, gettext('User-facing error message'), [], $status, $e, $request);
+    }
+});
+```
+
+**`renderErrorJSON` behavior:**
+- Server-side logs: exception class, message, file, line, trace, request method/path/IP/user-agent
+- Client receives: sanitized message only (no traces, file paths, or credentials)
+- Sanitizes messages automatically (detects and masks password/token/host patterns)
+- Status passed as `int $status` parameter (NOT via `response->withStatus(...)`)
+
+**Signature:**
+```php
+SlimUtils::renderErrorJSON(
+    Response $response,                    // Original $response (unmodified)
+    ?string $message = null,               // Localized user-facing message
+    array $extra = [],                     // Additional data to include in response
+    int $status = 500,                     // HTTP status code
+    ?\Throwable $exception = null,         // Exception for server-side logging
+    ?Request $request = null               // Request for context logging
+): Response
+```
+
+**Examples:**
+
+```php
+// Simple error with custom message
+return SlimUtils::renderErrorJSON($response, gettext('Database error'), [], 500);
+
+// Error with exception logging
+return SlimUtils::renderErrorJSON($response, gettext('Upload failed'), [], 400, $e, $request);
+
+// Error with dynamic status code
+$status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+return SlimUtils::renderErrorJSON($response, gettext('Operation failed'), [], $status, $e, $request);
+
+// Error with extra response data
+return SlimUtils::renderErrorJSON($response, gettext('Validation failed'), ['errors' => $errors], 400);
+```
+
+**DO NOT:**
+- ❌ Throw exceptions in API routes (caught by error handler, exposes details to clients)
+- ❌ Use `response->withStatus(500)` with renderErrorJSON (pass status as parameter)
+- ❌ Return raw exception messages (use gettext() for localization and sanitization)
+- ❌ Log exceptions separately in routes (renderErrorJSON handles all logging)
+
 ---
 
 ## HTTP Headers (RFC 7230)
