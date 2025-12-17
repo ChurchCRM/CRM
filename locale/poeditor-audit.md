@@ -10,11 +10,11 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `es` | Spanish | 2507 | 90.08% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 2518 | 90.48% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 2305 | 82.82% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 2199 | 79.02% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 2188 | 78.62% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 2188 | 78.62% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2172 | 78.05% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 2068 | 74.31% | 🟡 Good | ✅ Yes |
 | `he` | Hebrew | 2035 | 73.12% | 🟡 Good | ✅ Yes |
 | `ko` | Korean | 2035 | 73.12% | 🟡 Good | ✅ Yes |

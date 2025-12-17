@@ -9151,3 +9151,99 @@ msgstr "அஞ்சல் குறியீடு (பின் கோட்) 
 msgid "denotes required fields"
 msgstr "தேவையான புலங்களைக் குறிக்கிறது"
 
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "ஒரு புதிய கடவுச்சொல் உருவாக்கப்பட்டு உங்கள் மின்னஞ்சல் முகவரிக்கு அனுப்பப்பட்டுள்ளது."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "ChurchCRM இன் புதிய பதிப்பு நிறுவலுக்குக் கிடைக்கிறது."
+
+#: 
+msgid "Actual Hash"
+msgstr "உண்மையான ஹாஷ்"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "அனைத்து முன்-மேம்படுத்தல் சோதனைகளும் கடந்துவிட்டன. நீங்கள் மேம்படுத்தலைத் தொடரலாம்."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "முன்-வெளியீட்டு மேம்படுத்தல்களை அனுமதிக்கவும்"
+
+#: 
+msgid "Apply Update Now"
+msgstr "புதுப்பிப்பை இப்போது பயன்படுத்தவும்"
+
+#: 
+msgid "Applying System Update..."
+msgstr "கணினி புதுப்பிப்பைப் பயன்படுத்தவும்..."
+
+#: 
+msgid "Back to Login"
+msgstr "உள்நுழைவுக்குத் திரும்பவும்"
+
+#: 
+msgid "Back to login"
+msgstr "உள்நுழைவுக்குத் திரும்பவும்"
+
+#: 
+msgid "Backup Skipped"
+msgstr "காப்புப்பிரதி தவிர்க்கப்பட்டது"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "சமீபத்திய வெளியீட்டுத் தகவலுக்கு GitHub ஐச் சரிபார்க்கவும்"
+
+#: 
+msgid "Complete"
+msgstr "முழுமைப்படுத்தவும்"
+
+#: 
+msgid "Continue to Backup"
+msgstr "காப்புப்பிரதியைத் தொடரவும்"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "பதிவிறக்கி விண்ணப்பிக்கவும்"
+
+#: 
+msgid "Create Backup"
+msgstr "காப்புப்பிரதியை உருவாக்கவும்"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "புதுப்பிப்பைப் பயன்படுத்துவதற்கு முன் உங்கள் தரவுத்தளத்தின் காப்புப்பிரதியை உருவாக்கவும்."
+
+#: 
+msgid "Current Version:"
+msgstr "தற்போதைய பதிப்பு:"
+
+#: 
+msgid "Database Backup"
+msgstr "தரவுத்தள காப்புப்பிரதி"
+
+#: 
+msgid "Download & Apply"
+msgstr "பதிவிறக்கி விண்ணப்பிக்கவும்"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "கணினி புதுப்பிப்பைப் பதிவிறக்கி விண்ணப்பிக்கவும்"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "உங்கள் தற்காலிக கடவுச்சொல்லுக்கு உங்கள் மின்னஞ்சலை (ஸ்பேம்/குப்பை கோப்புறை உட்பட) சரிபார்க்கவும்."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "இந்த சாளரத்தை (வின்டோவை)  மூடவோ அல்லது பக்கத்தைப் புதுப்பிக்கவோ வேண்டாம்."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "மேம்படுத்தலுக்கு முந்தைய பணிகள் முடிந்தது "
+
+#: 
+msgid "Pre-Upgrade Tasks Detected"
+msgstr "மேம்படுத்தலுக்கு முந்தைய பணிகள் கண்டறியப்பட்டன"
+
