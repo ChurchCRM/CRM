@@ -258,6 +258,7 @@ Key Services:
 - `FinancialService` - Payments, pledges, funds
 - `DepositService` - Deposit slip handling
 - `SystemService` - System-wide operations
+- `UserService` - User management with optimized database operations
 
 Example Usage:
 ```php
@@ -265,6 +266,62 @@ $service = $container->get('FinancialService');
 $result = $service->addPayment($fam_id, $method, $amount, $date, $funds);
 return $response->withJson(['data' => $result]);
 ```
+
+### Service Layer Performance Best Practices
+
+When creating services, optimize database operations:
+- **Selective field loading**: Use `->select(['field1', 'field2'])` to fetch only required columns
+- **Single query philosophy**: Group related data retrieval in one query, then process in PHP memory
+- **Avoid N+1 queries**: Pre-fetch related data instead of looping with individual queries
+- **Example**: UserService `getUserStats()` fetches all users' `failedLogins` and `twoFactorAuthSecret` in one query, then processes statistics in memory
+
+---
+
+## Admin MVC Module Migration Patterns
+
+When migrating legacy pages to the Admin MVC structure:
+
+### File Organization
+- **Views**: `src/admin/views/[feature].php` - Use PhpRenderer for clean separation
+- **Routes**: `src/admin/routes/[feature].php` - Define route endpoints
+- **APIs**: `src/admin/routes/api/[feature-api].php` - Admin API endpoints
+- **Services**: `src/ChurchCRM/Service/[Feature]Service.php` - Business logic (shared with APIs)
+
+### Key Migration Steps
+1. **Extract business logic** from the legacy PHP file into a Service class
+2. **Create views** in `src/admin/views/` to render the UI with initial state server-side
+3. **Create routes** in `src/admin/routes/` that call the Service and pass data to views
+4. **Create APIs** in `src/admin/routes/api/` if UI needs dynamic updates (optional)
+5. **Update menu** entries in `src/ChurchCRM/Config/Menu/Menu.php` to point to new route
+
+### SystemConfig for UI Settings Panels
+
+For admin pages that display system settings:
+- **Call `SystemConfig::getSettingsConfig($settingKeys)`** to get structured configuration for a settings panel
+- Provide an array of setting keys you want in the panel
+- Service method example:
+  ```php
+  public function getUserSettingsConfig(): array {
+      $userSettings = [
+          'iSessionTimeout',
+          'iMaxFailedLogins',
+          'bEnableLostPassword'
+      ];
+      return SystemConfig::getSettingsConfig($userSettings);
+  }
+  ```
+- This returns array with `category`, `name`, `value`, `type`, `options` for each setting
+- Frontend can render collapsed setting panels using this structured data
+- Avoid hardcoding settings or creating separate SystemConfig lookups - use the service method
+
+### Example: User Management Module
+- Legacy: `src/UserList.php` (mixed concerns, hardcoded settings)
+- Modern:
+  - `src/ChurchCRM/Service/UserService.php` - Statistics + settings config
+  - `src/admin/views/users.php` - Dashboard with stats cards and user table
+  - `src/admin/routes/api/user-admin.php` - User operations (reset password, delete, 2FA)
+  - Dashboard statistics use efficient single-query approach
+  - Settings panel rendered from dynamic `SystemConfig::getSettingsConfig()` output
 
 ---
 

@@ -9,10 +9,6 @@ use Propel\Runtime\Collection\ObjectCollection;
 
 class UserService
 {
-    private static $statsCache = null;
-    private static $statsCacheTime = null;
-    private const CACHE_DURATION = 300; // 5 minutes cache
-    
     /**
      * Get all users
      * @return User[]|ObjectCollection
@@ -23,20 +19,11 @@ class UserService
     }
 
     /**
-     * Get user dashboard statistics efficiently with minimal DB queries and caching
-     * @param bool $forceRefresh Force refresh of cached data
+     * Get user dashboard statistics efficiently with minimal DB queries
      * @return array
      */
-    public function getUserStats(bool $forceRefresh = false): array
+    public function getUserStats(): array
     {
-        // Return cached data if still valid
-        if (!$forceRefresh && 
-            self::$statsCache !== null && 
-            self::$statsCacheTime !== null && 
-            (time() - self::$statsCacheTime) < self::CACHE_DURATION) {
-            return self::$statsCache;
-        }
-        
         // Get total count and all failed login counts in one query
         $users = UserQuery::create()
             ->select(['failedLogins', 'twoFactorAuthSecret'])
@@ -61,18 +48,12 @@ class UserService
             }
         }
 
-        $stats = [
+        return [
             'total' => $totalUsers,
             'active' => $activeUsers,
             'locked' => $lockedUsers,
             'twoFactor' => $usersWithTwoFactor
         ];
-        
-        // Cache the results
-        self::$statsCache = $stats;
-        self::$statsCacheTime = time();
-        
-        return $stats;
     }
 
     /**
