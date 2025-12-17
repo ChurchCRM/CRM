@@ -9,7 +9,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\LoggerUtils;
 use Monolog\Logger;
 
 if (!isset($_GET['CurrentFundraiser'])) {

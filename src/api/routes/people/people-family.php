@@ -13,7 +13,6 @@ use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
-use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -57,11 +56,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 'success' => true,
                 'hasPhoto' => $family->getPhoto()->hasUploadedPhoto()
             ]);
-        } catch (\Exception $e) {
-            return SlimUtils::renderJSON($response, [
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 400);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to upload family photo'), [], 400, $e, $request);
         }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
@@ -128,13 +124,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             $family->sendVerifyEmail();
 
             return SlimUtils::renderSuccessJSON($response);
-        } catch (Exception $e) {
-            LoggerUtils::getAppLogger()->error($e->getMessage());
-
-            return SlimUtils::renderJSON($response, [
-                'message' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
-                'trace' => $e->getMessage(),
-            ], 500);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Error sending email(s)') , [], 500, $e, $request);
         }
     });
 

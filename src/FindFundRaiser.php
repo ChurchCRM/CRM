@@ -7,7 +7,6 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $sPageTitle = gettext('Fundraiser Listing');
