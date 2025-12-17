@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Utils\Functions;
+use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\Propel;
 
 class GroupService
@@ -277,6 +278,9 @@ class GroupService
         if (strlen($groupRoleName) === 0) {
             throw new \Exception('New field name cannot be blank');
         }
+
+        // Sanitize role name to prevent XSS
+        $groupRoleName = InputUtils::sanitizeText($groupRoleName);
 
         // Get the group to find its role list ID
         $group = GroupQuery::create()->findOneById((int)$groupID);
