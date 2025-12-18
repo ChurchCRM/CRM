@@ -10,56 +10,56 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `es` | Spanish | 2518 | 90.48% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 2305 | 82.82% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2199 | 79.02% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 2188 | 78.62% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 2188 | 78.62% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 2068 | 74.31% | 🟡 Good | ✅ Yes |
-| `he` | Hebrew | 2035 | 73.12% | 🟡 Good | ✅ Yes |
-| `ko` | Korean | 2035 | 73.12% | 🟡 Good | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 2030 | 72.94% | 🟡 Good | ✅ Yes |
-| `de` | German | 2028 | 72.87% | 🟡 Good | ✅ Yes |
-| `it` | Italian | 2023 | 72.69% | 🟡 Good | ✅ Yes |
-| `et` | Estonian | 2020 | 72.58% | 🟡 Good | ✅ Yes |
-| `vi` | Vietnamese | 2020 | 72.58% | 🟡 Good | ✅ Yes |
-| `sw` | Swahili | 2018 | 72.51% | 🟡 Good | ✅ Yes |
-| `af` | Afrikaans | 2013 | 72.33% | 🟡 Good | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 2001 | 71.9% | 🟡 Good | ✅ Yes |
-| `ro` | Romanian | 2001 | 71.9% | 🟡 Good | ✅ Yes |
-| `ar` | Arabic | 1989 | 71.47% | 🟡 Good | ✅ Yes |
-| `am` | Amharic | 1986 | 71.36% | 🟡 Good | ✅ Yes |
-| `tr` | Turkish | 1986 | 71.36% | 🟡 Good | ✅ Yes |
-| `uk` | Ukrainian | 1986 | 71.36% | 🟡 Good | ✅ Yes |
-| `el` | Greek | 1984 | 71.29% | 🟡 Good | ✅ Yes |
-| `zh-cn` | Chinese | 1982 | 71.22% | 🟡 Good | ✅ Yes |
-| `sv` | Swedish | 1969 | 70.75% | 🟡 Good | ✅ Yes |
-| `pt` | Portuguese | 1914 | 68.77% | 🟡 Good | ✅ Yes |
-| `ru` | Russian | 1270 | 45.63% | 🟠 Needs Work | ✅ Yes |
-| `pl` | Polish | 1044 | 37.51% | 🟠 Needs Work | ✅ Yes |
-| `nb` | Norwegian Bokmål | 836 | 30.04% | 🟠 Needs Work | ✅ Yes |
-| `hu` | Hungarian | 704 | 25.3% | 🟠 Needs Work | ✅ Yes |
-| `sq` | Albanian | 694 | 24.94% | 🟠 Needs Work | ✅ Yes |
-| `te` | Telugu | 345 | 12.4% | 🟠 Needs Work | ✅ Yes |
-| `ja` | Japanese | 206 | 7.4% | 🟠 Needs Work | ✅ Yes |
-| `fi` | Finnish | 146 | 5.25% | 🟠 Needs Work | ✅ Yes |
-| `es-co` | Spanish (CO) | 97 | 3.49% | 🟠 Needs Work | ❌ No |
-| `es-mx` | Spanish (MX) | 97 | 3.49% | 🟠 Needs Work | ❌ No |
-| `sl` | Slovenian | 84 | 3.02% | 🟠 Needs Work | ❌ No |
-| `my` | Burmese | 83 | 2.98% | 🟠 Needs Work | ❌ No |
-| `en-za` | English (ZA) | 83 | 2.98% | N/A | ✅ Yes |
-| `hi` | Hindi | 79 | 2.84% | 🟠 Needs Work | ✅ Yes |
-| `sr-cyrl` | Serbian (Cyrillic) | 76 | 2.73% | 🟠 Needs Work | ❌ No |
-| `th` | Thai | 57 | 2.05% | 🟠 Needs Work | ✅ Yes |
-| `es-ar` | Spanish (AR) | 52 | 1.87% | 🟠 Needs Work | ❌ No |
-| `lv` | Latvian | 47 | 1.69% | 🟠 Needs Work | ❌ No |
+| `es` | Spanish | 2511 | 89.94% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 2298 | 82.31% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 2285 | 81.84% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 2183 | 78.19% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 2182 | 78.15% | 🟢 Complete | ✅ Yes |
+| `id` | Indonesian | 2062 | 73.85% | 🟡 Good | ✅ Yes |
+| `he` | Hebrew | 2031 | 72.74% | 🟡 Good | ✅ Yes |
+| `ko` | Korean | 2031 | 72.74% | 🟡 Good | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 2028 | 72.64% | 🟡 Good | ✅ Yes |
+| `de` | German | 2026 | 72.56% | 🟡 Good | ✅ Yes |
+| `it` | Italian | 2019 | 72.31% | 🟡 Good | ✅ Yes |
+| `et` | Estonian | 2018 | 72.28% | 🟡 Good | ✅ Yes |
+| `sw` | Swahili | 2016 | 72.21% | 🟡 Good | ✅ Yes |
+| `vi` | Vietnamese | 2016 | 72.21% | 🟡 Good | ✅ Yes |
+| `af` | Afrikaans | 2011 | 72.03% | 🟡 Good | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 1999 | 71.6% | 🟡 Good | ✅ Yes |
+| `ro` | Romanian | 1999 | 71.6% | 🟡 Good | ✅ Yes |
+| `ar` | Arabic | 1987 | 71.17% | 🟡 Good | ✅ Yes |
+| `am` | Amharic | 1984 | 71.06% | 🟡 Good | ✅ Yes |
+| `tr` | Turkish | 1984 | 71.06% | 🟡 Good | ✅ Yes |
+| `uk` | Ukrainian | 1984 | 71.06% | 🟡 Good | ✅ Yes |
+| `el` | Greek | 1982 | 70.99% | 🟡 Good | ✅ Yes |
+| `zh-cn` | Chinese | 1980 | 70.92% | 🟡 Good | ✅ Yes |
+| `sv` | Swedish | 1967 | 70.45% | 🟡 Good | ✅ Yes |
+| `pt` | Portuguese | 1912 | 68.48% | 🟡 Good | ✅ Yes |
+| `ru` | Russian | 1269 | 45.45% | 🟠 Needs Work | ✅ Yes |
+| `pl` | Polish | 1043 | 37.36% | 🟠 Needs Work | ✅ Yes |
+| `nb` | Norwegian Bokmål | 836 | 29.94% | 🟠 Needs Work | ✅ Yes |
+| `hu` | Hungarian | 704 | 25.21% | 🟠 Needs Work | ✅ Yes |
+| `sq` | Albanian | 694 | 24.86% | 🟠 Needs Work | ✅ Yes |
+| `te` | Telugu | 345 | 12.36% | 🟠 Needs Work | ✅ Yes |
+| `ja` | Japanese | 206 | 7.38% | 🟠 Needs Work | ✅ Yes |
+| `fi` | Finnish | 146 | 5.23% | 🟠 Needs Work | ✅ Yes |
+| `es-co` | Spanish (CO) | 97 | 3.47% | 🟠 Needs Work | ❌ No |
+| `es-mx` | Spanish (MX) | 97 | 3.47% | 🟠 Needs Work | ❌ No |
+| `sl` | Slovenian | 84 | 3.01% | 🟠 Needs Work | ❌ No |
+| `my` | Burmese | 83 | 2.97% | 🟠 Needs Work | ❌ No |
+| `en-za` | English (ZA) | 83 | 2.97% | N/A | ✅ Yes |
+| `hi` | Hindi | 79 | 2.83% | 🟠 Needs Work | ✅ Yes |
+| `sr-cyrl` | Serbian (Cyrillic) | 76 | 2.72% | 🟠 Needs Work | ❌ No |
+| `th` | Thai | 57 | 2.04% | 🟠 Needs Work | ✅ Yes |
+| `es-ar` | Spanish (AR) | 52 | 1.86% | 🟠 Needs Work | ❌ No |
+| `lv` | Latvian | 47 | 1.68% | 🟠 Needs Work | ❌ No |
 | `en-au` | English (AU) | 32 | 1.15% | N/A | ✅ Yes |
 | `hr` | Croatian | 31 | 1.11% | 🟠 Needs Work | ❌ No |
 | `es-sv` | Spanish (SV) | 29 | 1.04% | 🟠 Needs Work | ❌ No |
 | `en` | English | 19 | 0.68% | N/A | ✅ Yes |
 | `ml` | Malayalam | 17 | 0.61% | 🟠 Needs Work | ❌ No |
 | `en-ca` | English (CA) | 17 | 0.61% | N/A | ✅ Yes |
-| `en-jm` | English (JM) | 6 | 0.22% | N/A | ✅ Yes |
+| `en-jm` | English (JM) | 6 | 0.21% | N/A | ✅ Yes |
 | `en-us` | English (US) | 0 | 0% | N/A | ✅ Yes |
 
 ## Status Summary
@@ -76,13 +76,13 @@ These locales have translations but are not yet in locales.json:
 
 | Language | Code | Translations | Percentage | Status |
 |----------|------|--------------|------------|--------|
-| Spanish (CO) | `es-co` | 97 | 3.49% | 📝 Monitor |
-| Spanish (MX) | `es-mx` | 97 | 3.49% | 📝 Monitor |
-| Slovenian | `sl` | 84 | 3.02% | 📝 Monitor |
-| Burmese | `my` | 83 | 2.98% | 📝 Monitor |
-| Serbian (Cyrillic) | `sr-cyrl` | 76 | 2.73% | 📝 Monitor |
-| Spanish (AR) | `es-ar` | 52 | 1.87% | 📝 Monitor |
-| Latvian | `lv` | 47 | 1.69% | 📝 Monitor |
+| Spanish (CO) | `es-co` | 97 | 3.47% | 📝 Monitor |
+| Spanish (MX) | `es-mx` | 97 | 3.47% | 📝 Monitor |
+| Slovenian | `sl` | 84 | 3.01% | 📝 Monitor |
+| Burmese | `my` | 83 | 2.97% | 📝 Monitor |
+| Serbian (Cyrillic) | `sr-cyrl` | 76 | 2.72% | 📝 Monitor |
+| Spanish (AR) | `es-ar` | 52 | 1.86% | 📝 Monitor |
+| Latvian | `lv` | 47 | 1.68% | 📝 Monitor |
 | Croatian | `hr` | 31 | 1.11% | 📝 Monitor |
 | Spanish (SV) | `es-sv` | 29 | 1.04% | 📝 Monitor |
 | Malayalam | `ml` | 17 | 0.61% | 📝 Monitor |

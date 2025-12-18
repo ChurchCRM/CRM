@@ -6692,10 +6692,6 @@ msgid "Activate"
 msgstr "نشط"
 
 #: 
-msgid "Stack Trace"
-msgstr "تتبع المكدس"
-
-#: 
 msgid "Check Number"
 msgstr "رقم الشيك"
 
@@ -7789,10 +7785,6 @@ msgstr "URL التحقق"
 #: 
 msgid "Unexpected Person Id"
 msgstr "غير متوقع شخص معرف"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "برنامج آخر تحديث تحقق الطابع الزمني"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

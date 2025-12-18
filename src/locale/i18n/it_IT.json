@@ -1571,7 +1571,6 @@
     "Self Verification": "Auto verifica",
     "Deactivate": "Disattivare",
     "Activate": "Attivare",
-    "Stack Trace": "Stack Trace",
     "Check Number": "Numero di controllo",
     "Details": "Dettagli",
     "Verification email sent": "Verifica email inviata",
@@ -1841,7 +1840,6 @@
     "Please check logs for more information": "Si prega di controllare i registri per ulteriori informazioni",
     "Verification URL": "URL di verifica",
     "Unexpected Person Id": "ID persona inaspettato",
-    "Last Software Update Check Timestamp": "Data e ora dell'ultimo aggiornamento del software",
     "Allow system upgrades to release marked as 'pre release' on GitHub": "Consenti il rilascio degli aggiornamenti di sistema contrassegnati come 'pre-release' su GitHub",
     "Search Calendar Events": "Cerca Calendario Eventi",
     "Maximum number of Calendar Events": "Numero massimo di eventi del calendario",
@@ -2025,7 +2023,5 @@
     "Please update the MailChimp API key in:": "Aggiorna la chiave API MailChimp in:",
     "One character from FirstName and one character from LastName": "Un carattere da FirstName e un carattere da LastName",
     "Two characters from FirstName": "Due caratteri da FirstName",
-    "Set font to render initials. Upload custom font to fonts directory": "Imposta il carattere per il rendering delle iniziali. Carica il carattere personalizzato nella directory dei caratteri",
-    "Person List Columns": "Colonne dell'elenco delle persone",
-    "Family List Columns": "Colonne dell'elenco delle famiglie"
+    "Set font to render initials. Upload custom font to fonts directory": "Imposta il carattere per il rendering delle iniziali. Carica il carattere personalizzato nella directory dei caratteri"
 }

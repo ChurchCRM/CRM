@@ -6691,10 +6691,6 @@ msgid "Activate"
 msgstr "Активувати"
 
 #: 
-msgid "Stack Trace"
-msgstr "Трасування стека"
-
-#: 
 msgid "Check Number"
 msgstr "Номер чека"
 
@@ -7795,10 +7791,6 @@ msgstr "URL-адреса для підтвердження"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Ідентифікатор несподіваної особи"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Мітка часу перевірки останнього оновлення програмного забезпечення"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

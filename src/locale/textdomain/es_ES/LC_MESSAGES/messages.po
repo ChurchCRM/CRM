@@ -6712,10 +6712,6 @@ msgid "Activate"
 msgstr "Activar"
 
 #: 
-msgid "Stack Trace"
-msgstr "Seguimiento de Pila"
-
-#: 
 msgid "Check Number"
 msgstr "Número de Verificación"
 
@@ -7821,10 +7817,6 @@ msgid "Unexpected Person Id"
 msgstr "Id de persona Inesperado"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Marca de Tiempo de Última Comprobación de actualización de Software"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Permitir actualizaciones de sistema marcadas como 'pre-release' en GitHub"
 
@@ -8611,14 +8603,6 @@ msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Establezca la fuente para representar las iniciales. Cargue la fuente personalizada en el directorio de fuentes"
 
 #: 
-msgid "Person List Columns"
-msgstr "Columnas de la lista de personas"
-
-#: 
-msgid "Family List Columns"
-msgstr "Columnas de la lista familiar"
-
-#: 
 msgid "Church Email not set, please visit the settings page"
 msgstr "Email de iglesia no establecido, por favor, visite la página de configuración"
 
@@ -8639,10 +8623,6 @@ msgstr "Registros de Sistema"
 #: 
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
 msgstr "Implemente la Política de Seguridad de Contenido (CSP) para protegerse contra ataques de scripts entre sitios. Al deshabilitarla, solo se reportan las infracciones de la CSP."
-
-#: 
-msgid "Maximum number of log files to keep"
-msgstr "Número máximo de archivos de registro a mantener"
 
 #: 
 msgid "Enter event description..."
@@ -8675,10 +8655,6 @@ msgstr "Nivel de registro:"
 #: 
 msgid "Save Log Level"
 msgstr "Guardar nivel de registro"
-
-#: 
-msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
-msgstr "Números más bajos registran más detalles. Números más altos solo registran eventos severos. Los cambios se aplican a los nuevos registros de inmediato"
 
 #: 
 msgid "View application logs. Click on a log file to view its contents."
@@ -9644,10 +9620,6 @@ msgstr "DSN"
 #: 
 msgid "Database Server"
 msgstr "Servidor de base de datos"
-
-#: 
-msgid "Database reset failed: "
-msgstr "Error al restablecer la base de datos:␣"
 
 #: 
 msgid "Debug Info"

@@ -6861,10 +6861,6 @@ msgid "Activate"
 msgstr "Ativar"
 
 #: 
-msgid "Stack Trace"
-msgstr "Rastreamento de pilha"
-
-#: 
 msgid "Check Number"
 msgstr "Verificar número"
 
@@ -7968,10 +7964,6 @@ msgstr "Verificar o URL"
 #: 
 msgid "Unexpected Person Id"
 msgstr "ID inesperado da pessoa"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Data e hora da última actualização"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

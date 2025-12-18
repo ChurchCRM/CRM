@@ -6691,10 +6691,6 @@ msgid "Activate"
 msgstr "ማንቃት"
 
 #: 
-msgid "Stack Trace"
-msgstr "ቁልል ዱካ"
-
-#: 
 msgid "Check Number"
 msgstr "የፍተሻ ቁጥር"
 
@@ -7798,10 +7794,6 @@ msgstr "የማረጋገጫ ዩአርኤል"
 #: 
 msgid "Unexpected Person Id"
 msgstr "ያልተጠበቀ ሰው መታወቂያ"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "የመጨረሻው የሶፍትዌር ማሻሻያ የጊዜ ማህተምን ያረጋግጡ"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

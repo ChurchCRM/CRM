@@ -6785,10 +6785,6 @@ msgid "Activate"
 msgstr "Activare"
 
 #: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Număr verificare"
 
@@ -7886,10 +7882,6 @@ msgstr "URL de verificare"
 #: 
 msgid "Unexpected Person Id"
 msgstr "ID Persoană neașteptat"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Marcajul de timp al ultimei verificări a actualizării software"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

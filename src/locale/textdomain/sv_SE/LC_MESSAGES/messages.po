@@ -6824,10 +6824,6 @@ msgid "Activate"
 msgstr "Aktivera"
 
 #: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Kolla numret"
 
@@ -7928,10 +7924,6 @@ msgstr "Verifierings-URL"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Oväntad person-ID"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Den senaste mjukvaruuppdateringen kontrollera tidsstämpel"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

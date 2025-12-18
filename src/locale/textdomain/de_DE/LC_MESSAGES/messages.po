@@ -6808,10 +6808,6 @@ msgid "Activate"
 msgstr "Aktivieren"
 
 #: 
-msgid "Stack Trace"
-msgstr "Stacktrace"
-
-#: 
 msgid "Check Number"
 msgstr "Schecknummer"
 
@@ -7912,10 +7908,6 @@ msgstr "Verifizierungs-URL"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Unerwartete Personen-ID"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Zeitstempel der letzten Software-Update-Prüfung"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
