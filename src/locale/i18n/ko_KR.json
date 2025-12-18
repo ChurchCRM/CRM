@@ -1571,7 +1571,6 @@
     "Self Verification": "자가 확인",
     "Deactivate": "비활성화",
     "Activate": "활성화",
-    "Stack Trace": "스택 추적",
     "Check Number": "수표 번호",
     "Details": "상세",
     "Verification email sent": "확인 이메일이 전송되었습니다",
@@ -1841,7 +1840,6 @@
     "Please check logs for more information": "자세한 내용은 로그를 확인하세요",
     "Verification URL": "확인 URL",
     "Unexpected Person Id": "예상치 못한 Person ID",
-    "Last Software Update Check Timestamp": "마지막 소프트웨어 업데이트 확인 시각",
     "Allow system upgrades to release marked as 'pre release' on GitHub": "GitHub에서 '사전 릴리스'로 표시된 버전으로 시스템 업그레이드를 허용",
     "Search Calendar Events": "캘린더 행사 검색",
     "Maximum number of Calendar Events": "캘린더 행사 최대 개수",
@@ -2034,8 +2032,6 @@
     "One character from FirstName and one character from LastName": "이름에서 1글자, 성에서 1글자 사용",
     "Two characters from FirstName": "이름에서 2글자 사용",
     "Set font to render initials. Upload custom font to fonts directory": "이니셜에 사용할 글꼴을 지정하세요. 사용자 글꼴은 fonts 디렉터리에 업로드합니다",
-    "Person List Columns": "개인 목록 열",
-    "Family List Columns": "가족 목록 열",
     "Church Email not set, please visit the settings page": "교회 이메일이 설정되지 않았습니다. 설정 페이지에서 구성하세요",
     "Telugu - India": "텔루구어 - 인도"
 }

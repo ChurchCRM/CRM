@@ -6690,10 +6690,6 @@ msgid "Activate"
 msgstr "Θέτω εις ενέργειαν"
 
 #: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Ελέγξτε τον αριθμό"
 
@@ -7794,10 +7790,6 @@ msgstr "URL επαλήθευσης"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Μη αποδεκτο Αναγνωριστικό Μέλους"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Έλεγχος χρονοσήμανσης τελευταίας ενημέρωσης λογισμικού"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

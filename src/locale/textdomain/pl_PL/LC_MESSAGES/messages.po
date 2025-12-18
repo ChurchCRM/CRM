@@ -3983,10 +3983,6 @@ msgid "Unexpected Person Id"
 msgstr "Niespodziewane Id Osoby"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Ostatnie Sprawdzenie Aktualizacji"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Zazwalaj na aktualizację systemu do wersji oznaczonej 'pre release' na GitHub"
 

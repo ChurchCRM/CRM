@@ -6693,10 +6693,6 @@ msgid "Activate"
 msgstr "Mengaktifkan"
 
 #: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Periksa Nomor"
 
@@ -7792,10 +7788,6 @@ msgid "Unexpected Person Id"
 msgstr "Id Orang Tidak Terduga"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Pembaruan Waktu Pemeriksaan Perangkat Lunak Terakhir"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Izinkan pembaruan sistem untuk dirilis ditandai sebagai 'pra rilis' di GitHub"
 
@@ -8578,14 +8570,6 @@ msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Tentukan font untuk inisial. Unggah custom fonts ke direktori fonts"
 
 #: 
-msgid "Person List Columns"
-msgstr "Kolom Senarai Orang"
-
-#: 
-msgid "Family List Columns"
-msgstr "Kolom Senarai Keluarga"
-
-#: 
 msgid "Church Email not set, please visit the settings page"
 msgstr "Email Gereja belum diatur, buka halaman pengaturan"
 
@@ -8606,10 +8590,6 @@ msgstr "Log Sistem"
 #: 
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
 msgstr "Gunakan Content Security Policy (CSP) untuk membantu melindungi dari XSS Scripting. Jika non-aktif, masalah CSP hanya dicatat."
-
-#: 
-msgid "Maximum number of log files to keep"
-msgstr "Jumlah maksimum log file"
 
 #: 
 msgid "Enter event description..."
@@ -8642,10 +8622,6 @@ msgstr "Level Log:"
 #: 
 msgid "Save Log Level"
 msgstr "Simpan Level Log"
-
-#: 
-msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
-msgstr "Angka rendah memuat log lebih detail, angka lebih tinggi hanya mencatat beberapa log. Berlaku di log selanjutnya.."
 
 #: 
 msgid "View application logs. Click on a log file to view its contents."

@@ -6713,10 +6713,6 @@ msgid "Activate"
 msgstr "Attivare"
 
 #: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Numero di controllo"
 
@@ -7819,10 +7815,6 @@ msgid "Unexpected Person Id"
 msgstr "ID persona inaspettato"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Data e ora dell'ultimo aggiornamento del software"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Consenti il rilascio degli aggiornamenti di sistema contrassegnati come 'pre-release' su GitHub"
 
@@ -8555,12 +8547,4 @@ msgstr "Due caratteri da FirstName"
 #: 
 msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Imposta il carattere per il rendering delle iniziali. Carica il carattere personalizzato nella directory dei caratteri"
-
-#: 
-msgid "Person List Columns"
-msgstr "Colonne dell'elenco delle persone"
-
-#: 
-msgid "Family List Columns"
-msgstr "Colonne dell'elenco delle famiglie"
 

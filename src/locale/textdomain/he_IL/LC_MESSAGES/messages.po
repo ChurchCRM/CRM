@@ -6686,10 +6686,6 @@ msgid "Activate"
 msgstr "הפעל"
 
 #: 
-msgid "Stack Trace"
-msgstr "מעקב מחסנית"
-
-#: 
 msgid "Check Number"
 msgstr "בדוק מספר"
 
@@ -7788,10 +7784,6 @@ msgid "Unexpected Person Id"
 msgstr "מזהה אדם בלתי צפוי"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "חותמת זמן אחרונה לבדיקת עדכוני תוכנה"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "אפשר שדרוגי מערכת לגרסאות המסומנות כ'קדם-הפצה' ב-GitHub"
 
@@ -8571,14 +8563,6 @@ msgstr "שני תווים מ-FirstName"
 #: 
 msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "הגדר גופן להצגת ראשי תיבות. העלה גופן מותאם אישית לתיקיית הגופנים"
-
-#: 
-msgid "Person List Columns"
-msgstr "עמודות רשימת אנשים"
-
-#: 
-msgid "Family List Columns"
-msgstr "עמודות רשימת משפחות"
 
 #: 
 msgid "Church Email not set, please visit the settings page"

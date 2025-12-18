@@ -6831,10 +6831,6 @@ msgid "Activate"
 msgstr "啟用"
 
 #: 
-msgid "Stack Trace"
-msgstr "堆棧跟踪"
-
-#: 
 msgid "Check Number"
 msgstr "檢查號碼"
 
@@ -7978,11 +7974,6 @@ msgstr "驗證網址"
 #, fuzzy
 msgid "Unexpected Person Id"
 msgstr "不預期的人員代碼"
-
-#: 
-#, fuzzy
-msgid "Last Software Update Check Timestamp"
-msgstr "上次軟件更新檢查時間戳"
 
 #: 
 #, fuzzy

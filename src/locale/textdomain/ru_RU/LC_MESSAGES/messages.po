@@ -4986,10 +4986,6 @@ msgid "Unexpected Person Id"
 msgstr "Непредусмотренный ID человека"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Отметка времени проверки последнего обновления программного обеспечения"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Поиск событий календаря"
 

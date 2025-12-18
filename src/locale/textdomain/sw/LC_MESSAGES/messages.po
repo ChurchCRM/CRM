@@ -6684,10 +6684,6 @@ msgid "Activate"
 msgstr "Amilisha"
 
 #: 
-msgid "Stack Trace"
-msgstr "Ufuatiliaji wa Stack"
-
-#: 
 msgid "Check Number"
 msgstr "Nambari ya Cheki"
 
@@ -7784,10 +7780,6 @@ msgstr "URL ya uthibitishaji"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Kitambulisho cha Mtu Asiyetarajiwa"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Sasisho la Mwisho la Programu Angalia Muhuri wa Muda"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

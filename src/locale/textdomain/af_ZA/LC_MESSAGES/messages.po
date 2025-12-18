@@ -6692,10 +6692,6 @@ msgid "Activate"
 msgstr "Aktiveer"
 
 #: 
-msgid "Stack Trace"
-msgstr "Stapelspoor"
-
-#: 
 msgid "Check Number"
 msgstr "Kontroleer nommer"
 
@@ -7796,10 +7792,6 @@ msgstr "Verifikasie-URL"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Onverwagte persoon ID"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Laaste sagteware-opdatering Gaan tydstempel na"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
