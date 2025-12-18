@@ -6683,10 +6683,6 @@ msgid "Activate"
 msgstr "Aktivovat"
 
 #: 
-msgid "Stack Trace"
-msgstr "Sledování zásobníku"
-
-#: 
 msgid "Check Number"
 msgstr "Kontrolní číslo"
 
@@ -7785,10 +7781,6 @@ msgid "Unexpected Person Id"
 msgstr "Neočekávané ID osoby"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Časové razítko poslední kontroly aktualizace softwaru"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Povolení aktualizace systému na verzi označenou jako 'pre release' na GitHubu"
 
@@ -8572,14 +8564,6 @@ msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Zadejte font pro renderování iniciál. Nahrajte vlastní font do složky fontů."
 
 #: 
-msgid "Person List Columns"
-msgstr "Sloupce seznamu osob"
-
-#: 
-msgid "Family List Columns"
-msgstr "Sloupce seznamu rodin"
-
-#: 
 msgid "Church Email not set, please visit the settings page"
 msgstr "Sborový e-mail není zadán, přejděte do Nastavení"
 
@@ -8596,10 +8580,6 @@ msgstr "Korejsky"
 #: 
 msgid "System Logs"
 msgstr "Systémové logy"
-
-#: 
-msgid "Maximum number of log files to keep"
-msgstr "Maximální počet uložených logů"
 
 #: 
 msgid "Enter event description..."

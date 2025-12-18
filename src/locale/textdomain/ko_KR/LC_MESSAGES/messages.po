@@ -6683,10 +6683,6 @@ msgid "Activate"
 msgstr "활성화"
 
 #: 
-msgid "Stack Trace"
-msgstr "스택 추적"
-
-#: 
 msgid "Check Number"
 msgstr "수표 번호"
 
@@ -7784,10 +7780,6 @@ msgid "Unexpected Person Id"
 msgstr "예상치 못한 Person ID"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "마지막 소프트웨어 업데이트 확인 시각"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "GitHub에서 '사전 릴리스'로 표시된 버전으로 시스템 업그레이드를 허용"
 
@@ -8565,14 +8557,6 @@ msgstr "이름에서 2글자 사용"
 #: 
 msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "이니셜에 사용할 글꼴을 지정하세요. 사용자 글꼴은 fonts 디렉터리에 업로드합니다"
-
-#: 
-msgid "Person List Columns"
-msgstr "개인 목록 열"
-
-#: 
-msgid "Family List Columns"
-msgstr "가족 목록 열"
 
 #: 
 msgid "Church Email not set, please visit the settings page"

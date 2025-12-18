@@ -6790,10 +6790,6 @@ msgid "Activate"
 msgstr "启用"
 
 #: 
-msgid "Stack Trace"
-msgstr "堆栈跟踪"
-
-#: 
 msgid "Check Number"
 msgstr "检查号码"
 
@@ -7892,10 +7888,6 @@ msgstr "验证网址"
 #: 
 msgid "Unexpected Person Id"
 msgstr "意外的人ID"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "上次软件更新检查时间戳记"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

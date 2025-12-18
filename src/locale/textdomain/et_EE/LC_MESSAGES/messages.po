@@ -6691,10 +6691,6 @@ msgid "Activate"
 msgstr "Aktiveeri"
 
 #: 
-msgid "Stack Trace"
-msgstr "Virna jälg"
-
-#: 
 msgid "Check Number"
 msgstr "Kontrolli numbrit"
 
@@ -7795,10 +7791,6 @@ msgstr "Kinnituse URL"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Ootamatu inimese ID"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Viimane tarkvaravärskendus Kontrolli ajatemplit"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"

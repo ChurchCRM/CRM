@@ -8079,11 +8079,6 @@ msgstr "Ativar"
 
 #: 
 #, fuzzy
-msgid "Stack Trace"
-msgstr "Rastreamento de pilha"
-
-#: 
-#, fuzzy
 msgid "Check Number"
 msgstr "Verificar número"
 
@@ -9443,11 +9438,6 @@ msgstr "URL de Verificação"
 #, fuzzy
 msgid "Unexpected Person Id"
 msgstr "ID de Pessoa inesperado"
-
-#: 
-#, fuzzy
-msgid "Last Software Update Check Timestamp"
-msgstr "Data e hora da última atualização"
 
 #: 
 #, fuzzy

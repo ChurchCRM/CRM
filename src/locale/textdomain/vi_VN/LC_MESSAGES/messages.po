@@ -6706,10 +6706,6 @@ msgid "Activate"
 msgstr "Kích hoạt"
 
 #: 
-msgid "Stack Trace"
-msgstr "Dấu vết ngăn xếp"
-
-#: 
 msgid "Check Number"
 msgstr "Số kiểm tra"
 
@@ -7805,10 +7801,6 @@ msgid "Unexpected Person Id"
 msgstr "Id người không mong muốn"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Dấu thời gian kiểm tra cập nhật phần mềm lần cuối"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Cho phép phát hành các bản nâng cấp hệ thống được đánh dấu là 'bản phát hành trước' trên GitHub"
 
@@ -8525,12 +8517,4 @@ msgstr "Hai ký tự từ Tên"
 #: 
 msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Chọn phông chữ để hiển thị chữ cái đầu. Tải phông chữ tùy chỉnh lên thư mục phông chữ"
-
-#: 
-msgid "Person List Columns"
-msgstr "Cột Danh sách cá nhân"
-
-#: 
-msgid "Family List Columns"
-msgstr "Cột Danh sách gia đình"
 

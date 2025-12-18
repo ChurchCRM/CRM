@@ -6691,10 +6691,6 @@ msgid "Activate"
 msgstr "Activeren"
 
 #: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Controleer het nummer"
 
@@ -7793,10 +7789,6 @@ msgid "Unexpected Person Id"
 msgstr "Onverwachte persoon-ID"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Laatste controle op updates"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Toestaan dat systeemupgrades die op GitHub als 'pre-release' zijn gemarkeerd geïnstalleerd worden."
 
@@ -8578,14 +8570,6 @@ msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Kies een lettertype voor de initialen. Upload een eigen lettertype naar de lettertypen map."
 
 #: 
-msgid "Person List Columns"
-msgstr "Kolommen voor de lijst met personen"
-
-#: 
-msgid "Family List Columns"
-msgstr "Kolommen voor de lijst met families"
-
-#: 
 msgid "Church Email not set, please visit the settings page"
 msgstr "Kerk e-mail is niet ingesteld. Ga naar \"Instellingen\"."
 
@@ -8606,10 +8590,6 @@ msgstr "Systeem logbestanden"
 #: 
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
 msgstr "Dwing Content Security Policy (CSP) af, als bescherming tegen cross-site scripting. Als dit uitgeschakeld is, worden CSP-overtredingen nog wel gerapporteerd."
-
-#: 
-msgid "Maximum number of log files to keep"
-msgstr "Maximum aantal logbestanden dat bewaard mag worden"
 
 #: 
 msgid "Enter event description..."
@@ -8642,10 +8622,6 @@ msgstr "Log niveau:"
 #: 
 msgid "Save Log Level"
 msgstr "Bewaar Log niveau"
-
-#: 
-msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
-msgstr "Een lager getal, betekent dat er meer details worden gelogged. Een hoger getal geeft aan dat alleen ernstige issues worden gelogged. Veranderingen worden per direct gebruikt voor nieuwe log-gebeurtenissen."
 
 #: 
 msgid "View application logs. Click on a log file to view its contents."

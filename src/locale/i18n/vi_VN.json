@@ -1571,7 +1571,6 @@
     "Self Verification": "Tự xác minh",
     "Deactivate": "Hủy kích hoạt",
     "Activate": "Kích hoạt",
-    "Stack Trace": "Dấu vết ngăn xếp",
     "Check Number": "Số kiểm tra",
     "Details": "Chi tiết",
     "Verification email sent": "Gửi email xác minh",
@@ -1841,7 +1840,6 @@
     "Please check logs for more information": "Vui lòng kiểm tra nhật ký để biết thêm thông tin",
     "Verification URL": "URL xác minh",
     "Unexpected Person Id": "Id người không mong muốn",
-    "Last Software Update Check Timestamp": "Dấu thời gian kiểm tra cập nhật phần mềm lần cuối",
     "Allow system upgrades to release marked as 'pre release' on GitHub": "Cho phép phát hành các bản nâng cấp hệ thống được đánh dấu là 'bản phát hành trước' trên GitHub",
     "Search Calendar Events": "Tìm kiếm sự kiện trên lịch",
     "Maximum number of Calendar Events": "Số sự kiện lịch tối đa",
@@ -2020,7 +2018,5 @@
     "English - Jamaica": "Tiếng Anh - Jamaica",
     "One character from FirstName and one character from LastName": "Một ký tự từ Tên và một ký tự từ Họ",
     "Two characters from FirstName": "Hai ký tự từ Tên",
-    "Set font to render initials. Upload custom font to fonts directory": "Chọn phông chữ để hiển thị chữ cái đầu. Tải phông chữ tùy chỉnh lên thư mục phông chữ",
-    "Person List Columns": "Cột Danh sách cá nhân",
-    "Family List Columns": "Cột Danh sách gia đình"
+    "Set font to render initials. Upload custom font to fonts directory": "Chọn phông chữ để hiển thị chữ cái đầu. Tải phông chữ tùy chỉnh lên thư mục phông chữ"
 }

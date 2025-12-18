@@ -1571,7 +1571,6 @@
     "Self Verification": "אימות עצמי",
     "Deactivate": "בטל",
     "Activate": "הפעל",
-    "Stack Trace": "מעקב מחסנית",
     "Check Number": "בדוק מספר",
     "Details": "פרטים",
     "Verification email sent": "דואר אלקטרוני לאימות נשלח",
@@ -1841,7 +1840,6 @@
     "Please check logs for more information": "לקבלת מידע נוסף - אנא בדוק רישומי מערכת",
     "Verification URL": "URL לאישור",
     "Unexpected Person Id": "מזהה אדם בלתי צפוי",
-    "Last Software Update Check Timestamp": "חותמת זמן אחרונה לבדיקת עדכוני תוכנה",
     "Allow system upgrades to release marked as 'pre release' on GitHub": "אפשר שדרוגי מערכת לגרסאות המסומנות כ'קדם-הפצה' ב-GitHub",
     "Search Calendar Events": "חיפוש אירועי לוח שנה",
     "Maximum number of Calendar Events": "מספר מקסימלי של אירועי לוח שנה",
@@ -2036,8 +2034,6 @@
     "One character from FirstName and one character from LastName": "תו אחד מ-FirstName ותו אחד מ-LastName",
     "Two characters from FirstName": "שני תווים מ-FirstName",
     "Set font to render initials. Upload custom font to fonts directory": "הגדר גופן להצגת ראשי תיבות. העלה גופן מותאם אישית לתיקיית הגופנים",
-    "Person List Columns": "עמודות רשימת אנשים",
-    "Family List Columns": "עמודות רשימת משפחות",
     "Church Email not set, please visit the settings page": "דוא\"ל המוסד לא הוגדר, אנא בקר בדף ההגדרות",
     "Telugu - India": "טלוגו - הודו"
 }
