@@ -3,11 +3,11 @@
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 $sPageTitle = gettext('Update Latitude & Longitude');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 echo '<div class="card card-body">';
 
@@ -49,4 +49,4 @@ if ($families->count() > 0) {
 <?php
 }
 
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

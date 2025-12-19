@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -27,7 +27,7 @@ if ($grp_hasSpecialProps == false) {
 
 $sPageTitle = gettext('Group-Specific Properties Form Editor:') . '  ' . $grp_Name;
 
-require_once 'Include/Header.php'; ?>
+require_once __DIR__ . '/Include/Header.php'; ?>
 
 <div class="card card-body">
 
@@ -425,4 +425,4 @@ require_once 'Include/Header.php'; ?>
     </form>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

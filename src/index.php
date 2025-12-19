@@ -30,7 +30,7 @@ if (version_compare($phpVersion, $requiredPhp, '<')) {
 header('CRM: would redirect');
 
 if (file_exists('Include/Config.php')) {
-    require_once 'Include/Config.php';
+    require_once __DIR__ . '/Include/Config.php';
 } else {
     header('Location: setup');
     exit;

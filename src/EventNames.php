@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -14,7 +14,7 @@ if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
 
 $sPageTitle = gettext('Edit Event Types');
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 if (isset($_POST['Action'])) {
     switch (InputUtils::legacyFilterInput($_POST['Action'])) {
@@ -332,4 +332,4 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
   });
 </script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

@@ -41,14 +41,26 @@ window.CRM.AdminAPIRequest = function (options) {
 
 window.CRM.DisplayErrorMessage = function (endpoint, error) {
     // Handle different error response formats (message, error, msg)
-    var errorText = error && (error.message || error.error || error.msg) ? (error.message || error.error || error.msg) : i18next.t("Unknown error");
+    var errorText =
+        error && (error.message || error.error || error.msg)
+            ? error.message || error.error || error.msg
+            : i18next.t("Unknown error");
 
-    var message = '<p>' + i18next.t('Error making API Call to') + ': ' + endpoint + '</p>' +
-        '<p>' + i18next.t('Error text') + ': ' + errorText + '</p>';
+    var message =
+        "<p>" +
+        i18next.t("Error making API Call to") +
+        ": " +
+        endpoint +
+        "</p>" +
+        "<p>" +
+        i18next.t("Error text") +
+        ": " +
+        errorText +
+        "</p>";
 
     // Never include server side traces in the UI
     bootbox.alert({
-        title: i18next.t('ERROR'),
+        title: i18next.t("ERROR"),
         message: message,
     });
 };

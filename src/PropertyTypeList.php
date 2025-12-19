@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\RedirectUtils;
@@ -16,7 +16,7 @@ $sPageTitle = gettext('Property Type List');
 $sSQL = 'SELECT prt_ID, prt_Class, prt_Name, COUNT(pro_ID) AS Properties FROM propertytype_prt LEFT JOIN property_pro ON pro_prt_ID = prt_ID GROUP BY prt_ID, prt_Class, prt_Name';
 $rsPropertyTypes = RunQuery($sSQL);
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 ?>
 <div class="card card-body">
     <div class="table-responsive">
@@ -74,4 +74,4 @@ while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
 
 echo '</table></div></div>';
 
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

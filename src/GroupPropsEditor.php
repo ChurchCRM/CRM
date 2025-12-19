@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
@@ -93,7 +93,7 @@ if (isset($_POST['GroupPropSubmit'])) {
     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 if (mysqli_num_rows($rsPropList) === 0) {
 ?>
@@ -155,4 +155,4 @@ if (mysqli_num_rows($rsPropList) === 0) {
     </div>
 <?php
 }
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

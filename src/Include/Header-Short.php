@@ -2,8 +2,8 @@
 
 use ChurchCRM\dto\SystemConfig;
 
-require_once 'Header-function.php';
-require_once 'Header-Security.php';
+require_once __DIR__ . '/Header-function.php';
+require_once __DIR__ . '/Header-Security.php';
 
 // Turn ON output buffering
 ob_start();
@@ -14,7 +14,7 @@ ob_start();
 <html>
 
 <head>
-  <?php require_once 'Header-HTML-Scripts.php'; ?>
+  <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
 </head>
 
 <body>
