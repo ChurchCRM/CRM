@@ -188,7 +188,14 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
                         <i className="fa fa-hourglass-start"></i>
                       </span>
                     )}
-                    <span className="sr-only">{currentTwoFAPinStatus}</span>
+                    <span className="sr-only">
+                      {currentTwoFAPinStatus === "pending" &&
+                        window.i18next.t("Validation pending")}
+                      {currentTwoFAPinStatus === "invalid" &&
+                        window.i18next.t("Code is invalid")}
+                      {currentTwoFAPinStatus === "incomplete" &&
+                        window.i18next.t("Code incomplete")}
+                    </span>
                   </div>
                 </div>
               </div>
