@@ -6,16 +6,14 @@ describe("template spec", () => {
     it("filter-by-classification", () => {
         // Test that we can filter people by classifications
         cy.visit("v2/people?familyActiveStatus=all");
-        cy.wait(1500); // Wait for page to load
         
-        // Verify table has data
+        // Verify table has data before filtering
         cy.get("#members tbody tr").should("have.length.greaterThan", 0);
         
         // Test filtering by email
         cy.get("#members_filter input").type("tony.wade@example.com");
-        cy.wait(1500); // Wait for auto-submit filter to apply
         
-        // Should find matching record or show no results  
+        // Wait for filter results to update (either shows record or "No matching records")
         cy.get("#members tbody").then(($tbody) => {
             // Either we find the person or get "No matching records found"
             const hasRecord = $tbody.text().includes("tony.wade@example.com");
@@ -26,9 +24,8 @@ describe("template spec", () => {
             }
         });
         
-        // Clear and try another filter
+        // Clear filter and verify table reloads
         cy.get("#members_filter input").clear();
-        cy.wait(1500);
         cy.get("#members tbody tr").should("have.length.greaterThan", 0);
     });
 });

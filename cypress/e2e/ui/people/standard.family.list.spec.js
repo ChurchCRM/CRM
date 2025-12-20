@@ -5,7 +5,6 @@ describe("Standard Family List", () => {
 
     it("Listing all families shows correct columns", () => {
         cy.visit("v2/family");
-        cy.wait(500);
         
         // Verify the table headers are present
         cy.get("#families thead th").should("have.length.at.least", 6);
@@ -20,7 +19,6 @@ describe("Standard Family List", () => {
 
     it("Family list displays family data", () => {
         cy.visit("v2/family");
-        cy.wait(500);
         
         // Verify there are rows in the table
         cy.get("#families tbody tr").should("have.length.at.least", 1);
@@ -32,7 +30,6 @@ describe("Standard Family List", () => {
 
     it("Family list search works", () => {
         cy.visit("v2/family");
-        cy.wait(500);
         
         // Get the first family name from the table and search for it
         cy.get("#families tbody tr:first td:nth-child(1)").invoke("text").then((familyName) => {
