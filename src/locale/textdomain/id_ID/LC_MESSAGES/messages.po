@@ -3053,14 +3053,6 @@ msgid "Change Password"
 msgstr "Ganti kata sandi"
 
 #: 
-msgid "You have"
-msgstr "Kamu punya"
-
-#: 
-msgid "task(s)"
-msgstr "tugas"
-
-#: 
 msgid "Home"
 msgstr "Rumah"
 
@@ -6997,10 +6989,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Waktu cache server untuk gambar jarak jauh"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Metode Penamaan Penerima"
 
@@ -7640,15 +7628,6 @@ msgstr "Jika Anda ingin mempertahankan perubahan pada file-file ini, silakan amb
 msgid "Integrity Check Details:"
 msgstr "Detail Pemeriksaan Integritas:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Jenis Deposit Tidak Didukung Terdeteksi"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Dukungan untuk pembayaran Kartu Kredit, dan Bank Draft telah ditinggalkan. Laporan non-bank yang ada mungkin tidak lagi dapat diakses di versi mendatang."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7785,15 +7764,6 @@ msgid "Remove Results from Cart"
 msgstr "Hapus Hasil dari Keranjang"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Beberapa kondisi telah diidentifikasi yang dapat mencegah pembaruan yang berhasil"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Harap tinjau dan kurangi tugas-tugas ini sebelum melanjutkan dengan peningkatan:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Fungsi Reset Database"
 
@@ -7907,10 +7877,6 @@ msgid "Must be set to 'true'"
 msgstr "Harus disetel ke 'benar'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Sertakan / Config.php harus menetapkan kunci enkripsi untuk menyimpan kunci rahasia 2FA dalam database dengan menetapkan nilai"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Kunci API Google Maps digunakan untuk alamat Geocoding"
 
@@ -8013,26 +7979,6 @@ msgstr "Buka Kurs"
 #: 
 msgid "Not Subscribed "
 msgstr "Tidak Berlangganan"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Min Karakter Delta Kata Sandi"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Larang Kata Sandi"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Aktifkan 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Diperlukan 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA Nama Aplikasi"
 
 #: 
 msgid "Login Info"
@@ -8202,14 +8148,6 @@ msgstr "Pelepasan Properti Keluarga"
 #: 
 msgid "Do you want to remove"
 msgstr "Apa Anda ingin menghapus"
-
-#: 
-msgid "View Active People"
-msgstr "Lihat Orang Aktif"
-
-#: 
-msgid "View Inactive People"
-msgstr "Lihat Orang Inaktif"
 
 #: 
 msgid "Today's Birthdays"
@@ -8491,10 +8429,6 @@ msgstr "Satu karakter dari FirstName dan satu karakter dari LastName"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Dua karakter dari FirstName"
-
-#: 
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr "Tentukan font untuk inisial. Unggah custom fonts ke direktori fonts"
 
 #: 
 msgid "Church Email not set, please visit the settings page"

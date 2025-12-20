@@ -3052,14 +3052,6 @@ msgid "Change Password"
 msgstr "Muuda salasõna"
 
 #: 
-msgid "You have"
-msgstr "Teil on"
-
-#: 
-msgid "task(s)"
-msgstr "ülesanne (ed)"
-
-#: 
 msgid "Home"
 msgstr "Kodu"
 
@@ -6995,10 +6987,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Serveri vahemälu aeg kaugpiltide jaoks"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Kviitungi Saaja nimetamise meetod"
 
@@ -7638,15 +7626,6 @@ msgstr "Kui soovite säilitada nende failide muudatused, võtke enne nende versi
 msgid "Integrity Check Details:"
 msgstr "Terviklikkuse kontrollimise üksikasjad:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Tuvastatud toetamata sissemakse tüübid"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "EGive'i, krediitkaardi- ja pangaveebimaksete tugi on aegunud. Olemasolevatele pangavälistele aruannetele ei pruugi tulevastes versioonides enam juurdepääs olla."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7792,15 +7771,6 @@ msgid "Remove Results from Cart"
 msgstr "Eemalda tulemused korvist"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "On kindlaks tehtud mõned tingimused, mis võivad takistada edukat täiendamist"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Enne täiendamise jätkamist vaadake need ülesanded üle ja täiendage neid:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Andmebaasi lähtestamise funktsioonid"
 
@@ -7914,10 +7884,6 @@ msgid "Must be set to 'true'"
 msgstr "Peab olema seatud väärtusele „tõene”"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include / Config.php peab määratlema krüpteerimisvõtme 2FA salajaste võtmete hoidmiseks andmebaasis, määrates väärtuse"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Aadresside geokoodeerimiseks kasutatav Google Mapsi API-võti"
 
@@ -8020,26 +7986,6 @@ msgstr "avatud määr"
 #: 
 msgid "Not Subscribed "
 msgstr "Pole tellitud"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Minim parooli tähemärgid Delta"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Keelatud paroolid"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Luba 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Nõua 2FA-d"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA rakenduse nimi"
 
 #: 
 msgid "Login Info"
@@ -8209,14 +8155,6 @@ msgstr "Perekonna omaduse määramise tühistamine"
 #: 
 msgid "Do you want to remove"
 msgstr "Kas soovite eemaldada"
-
-#: 
-msgid "View Active People"
-msgstr "Vaadake aktiivseid inimesi"
-
-#: 
-msgid "View Inactive People"
-msgstr "Vaadake mitteaktiivseid inimesi"
 
 #: 
 msgid "Today's Birthdays"

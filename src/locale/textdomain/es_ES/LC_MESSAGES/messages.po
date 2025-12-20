@@ -3052,14 +3052,6 @@ msgid "Change Password"
 msgstr "Cambiar contraseña"
 
 #: 
-msgid "You have"
-msgstr "Tiene"
-
-#: 
-msgid "task(s)"
-msgstr "tarea(s)"
-
-#: 
 msgid "Home"
 msgstr "Hogar"
 
@@ -7020,10 +7012,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Tiempo de caché de servidor para imágenes remotas"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Método para Nombrar Recipientes"
 
@@ -7664,15 +7652,6 @@ msgstr "Si desea mantener sus cambios a estos archivos, por favor haga un respal
 msgid "Integrity Check Details:"
 msgstr "Detalles de Comprobación de Integridad:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Se han detectado tipos de depósito no soportados"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Se ha abandonado el soporte para pagos en Tarjetas de Crédito y Giros Bancarios. Reportes no bancarios podrían no estar accesibles en futuras versiones."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7818,15 +7797,6 @@ msgid "Remove Results from Cart"
 msgstr "Eliminar resultados del carrito"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Algunas condiciones han sido identificadas, las que pueden evitar una actualización satisfactoria."
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Por favor revise estas tareas antes de continuar con la actualización:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Funciones de restablecimiento de base de datos"
 
@@ -7940,10 +7910,6 @@ msgid "Must be set to 'true'"
 msgstr "Debe estar ajustado a 'true'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include/Config.php debe definir una llave de encriptación para almacenar las llaves secretas de 2FA en la base de datos"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "API Key de Google Maps usada para georeferenciar direcciones"
 
@@ -8046,26 +8012,6 @@ msgstr "tasa de apertura"
 #: 
 msgid "Not Subscribed "
 msgstr "No Suscrito"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Margen mínimo de Caracteres en Constaseña"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Contraseñas no Permitidas"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Activar 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Requiere 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Nombre de la aplicación 2FA"
 
 #: 
 msgid "Login Info"
@@ -8235,16 +8181,6 @@ msgstr "Desasignación de propiedad de familia"
 #: 
 msgid "Do you want to remove"
 msgstr "¿Desea eliminar"
-
-#: 
-#, fuzzy
-msgid "View Active People"
-msgstr "Ver personas activas"
-
-#: 
-#, fuzzy
-msgid "View Inactive People"
-msgstr "Ver personas inactivas"
 
 #: 
 msgid "Today's Birthdays"
@@ -8526,10 +8462,6 @@ msgstr "1 caracter para el nombre y un caracter para el apellido"
 #: 
 msgid "Two characters from FirstName"
 msgstr "2 caracteres para el nombre"
-
-#: 
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr "Establezca la fuente para representar las iniciales. Cargue la fuente personalizada en el directorio de fuentes"
 
 #: 
 msgid "Church Email not set, please visit the settings page"
@@ -9255,10 +9187,6 @@ msgid "Pre-Upgrade Tasks Complete"
 msgstr "Tareas previas a la actualización completadas"
 
 #: 
-msgid "Pre-Upgrade Tasks Detected"
-msgstr "Tareas previas a la actualización detectadas"
-
-#: 
 msgid "Pre-Upgrade Warnings"
 msgstr "Advertencias previas a la actualización"
 
@@ -9277,10 +9205,6 @@ msgstr "Solicitar restablecimiento de contraseña"
 #: 
 msgid "Retry Download"
 msgstr "Reintentar descarga"
-
-#: 
-msgid "Return to Dashboard"
-msgstr "Regresar al panel de control"
 
 #: 
 msgid "SHA1 Hash:"
@@ -10426,10 +10350,6 @@ msgstr "segundos..."
 #: 
 msgid " Deposit #"
 msgstr " Depósito #"
-
-#: 
-msgid "%d families missing coordinates"
-msgstr "%d familia sin coordenadas"
 
 #: 
 msgid "%d missing classification"

@@ -3672,16 +3672,6 @@ msgstr "Mudar senha"
 
 #: 
 #, fuzzy
-msgid "You have"
-msgstr "Você tem"
-
-#: 
-#, fuzzy
-msgid "task(s)"
-msgstr "tarefa(s)"
-
-#: 
-#, fuzzy
 msgid "Home"
 msgstr "Home"
 
@@ -8454,11 +8444,6 @@ msgstr "SSE"
 
 #: 
 #, fuzzy
-msgid "Server cache time for remote images"
-msgstr "Tempo de cache do servidor para imagens remotas"
-
-#: 
-#, fuzzy
 msgid "Recipient Naming Method"
 msgstr "Método de nomeação do destinatário"
 
@@ -9247,16 +9232,6 @@ msgstr "Se você deseja manter suas alterações nesses arquivos, faça um backu
 msgid "Integrity Check Details:"
 msgstr "Detalhes da verificação de integridade:"
 
-#: 
-#, fuzzy
-msgid "Unsupported Deposit Types Detected"
-msgstr "Tipos de depósito não suportados detectado"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "O suporte para pagamentos de cartão de crédito e emissão de notas bancárias foi descontinuado. Os relatórios não bancários existentes podem não estar mais acessíveis em versões futuras."
-
 #. Context: locales
 #: 
 #, fuzzy
@@ -9434,16 +9409,6 @@ msgstr "Remover resultados do carrinho"
 
 #: 
 #, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Foram identificadas algumas condições que podem impedir uma atualização bem-sucedida"
-
-#: 
-#, fuzzy
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Por favor, revise e conclua estas tarefas antes de continuar com a atualização:"
-
-#: 
-#, fuzzy
 msgid "Database Reset Functions"
 msgstr "Funções de redefinição da base de dados"
 
@@ -9585,11 +9550,6 @@ msgstr "Defina como 'true'"
 
 #: 
 #, fuzzy
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include/Config.php deve definir uma chave de criptografia para armazenar chaves secretas da autenticação de 2 fatores no banco de dados, definindo um valor para"
-
-#: 
-#, fuzzy
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Chave de API do Google Maps usado para geocódigos de endereços"
 
@@ -9714,31 +9674,6 @@ msgstr "Taxa livre"
 #, fuzzy
 msgid "Not Subscribed "
 msgstr "Não inscrito "
-
-#: 
-#, fuzzy
-msgid "Min Password Characters Delta"
-msgstr "Quantidade mínima da diferença de caracteres"
-
-#: 
-#, fuzzy
-msgid "Disallowed Passwords"
-msgstr "Desativar senhas"
-
-#: 
-#, fuzzy
-msgid "Enable 2FA"
-msgstr "Ativar autenticação de 2 fatores"
-
-#: 
-#, fuzzy
-msgid "Require 2FA"
-msgstr "Requer autenticação de 2 fatores"
-
-#: 
-#, fuzzy
-msgid "2FA Application Name"
-msgstr "Aplicativo de autenticação de 2 fatores"
 
 #: 
 #, fuzzy
@@ -9950,16 +9885,6 @@ msgstr "Remoção de atribuição de propriedade familiar"
 #, fuzzy
 msgid "Do you want to remove"
 msgstr "Você quer remover"
-
-#: 
-#, fuzzy
-msgid "View Active People"
-msgstr "Ver Pessoas Ativadas"
-
-#: 
-#, fuzzy
-msgid "View Inactive People"
-msgstr "Ver Pessoas Desativadas"
 
 #: 
 #, fuzzy

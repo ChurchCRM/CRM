@@ -3107,14 +3107,6 @@ msgid "Change Password"
 msgstr "Изменить пароль"
 
 #: 
-msgid "You have"
-msgstr "У Вас есть"
-
-#: 
-msgid "task(s)"
-msgstr "Задача (и)"
-
-#: 
 msgid "Home"
 msgstr "Главная"
 
@@ -4991,15 +4983,6 @@ msgid "Remove Results from Cart"
 msgstr "Удалить результаты из корзины"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Обнаружены некоторые условия, которые могут помешать успешному обновлению"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Пожалуйста, просмотрите и завершите эти задачи, прежде чем продолжить обновление:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Функции сброса базы данных"
 
@@ -5185,27 +5168,6 @@ msgstr "Иврит"
 #: 
 msgid "Not Subscribed "
 msgstr "Не подписаны␣"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Минимальная дельта символов пароля"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Запрещенные пароли"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Включить 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Требуется 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Название запроса 2FA\n"
-""
 
 #: 
 msgid "Login Info"

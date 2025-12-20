@@ -3087,14 +3087,6 @@ msgid " Bold"
 msgstr "Fet"
 
 #: 
-msgid "You have"
-msgstr "Du har"
-
-#: 
-msgid "task(s)"
-msgstr "Oppgave(r)"
-
-#: 
 msgid "Home"
 msgstr "Hjem"
 

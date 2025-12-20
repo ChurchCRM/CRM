@@ -3052,14 +3052,6 @@ msgid "Change Password"
 msgstr "የሚስጥር ቁልፍ ይቀይሩ"
 
 #: 
-msgid "You have"
-msgstr "አለህ"
-
-#: 
-msgid "task(s)"
-msgstr "ተግባር(ዎች)"
-
-#: 
 msgid "Home"
 msgstr "ቤት"
 
@@ -6997,10 +6989,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "ለርቀት ምስሎች የአገልጋይ መሸጎጫ ጊዜ "
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "የተቀባይ ስም አሰጣጥ ዘዴ "
 
@@ -7642,15 +7630,6 @@ msgstr "በእነዚህ ፋይሎች ላይ ያደረጓቸውን ለውጦች �
 msgid "Integrity Check Details:"
 msgstr "የታማኝነት ማረጋገጫ ዝርዝሮች "
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "የማይደግፉ የተቀማጭ ገንዘብ ዓይነቶች ተገኝተዋል "
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "የኢጊቭ፣ የክሬዲት ካርድ እና የባንክ ረቂቅ ክፍያዎች ድጋፍ ተቋርጧል። አሁን ያሉት የባንክ ያልሆኑ ሪፖርቶች ለወደፊት ስሪቶች ተደራሽ ላይሆኑ ይችላሉ።"
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7797,15 +7776,6 @@ msgid "Remove Results from Cart"
 msgstr "ውጤቶችን ከጋሪ አስወግድ "
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "ስኬታማ የሆነ ማሻሻልን የሚከለክሉ አንዳንድ ሁኔታዎች ተለይተዋል። "
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "በማሻሻያው ከመቀጠልዎ በፊት እባክዎ እነዚህን ተግባራት ይገምግሙ እና ይቀንሱ"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "\n"
 "የውሂብ ጎታ ዳግም ማስጀመር ተግባራት"
@@ -7922,11 +7892,6 @@ msgid "Must be set to 'true'"
 msgstr "ወደ እውነት መዋቀር አለበት"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "\n"
-"ማካተት/Config.php እሴት በማዘጋጀት 2FA ሚስጥራዊ ቁልፎችን በመረጃ ቋቱ ውስጥ ለማከማቸት የኢንክሪፕሽን ቁልፍ መግለፅ አለበት"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "\n"
 "Google ካርታዎች ኤፒአይ ቁልፍ ለጂኦኮዲንግ አድራሻዎች ጥቅም ላይ ይውላል"
@@ -8034,26 +7999,6 @@ msgstr "የመክፍት ፍጥነት"
 #: 
 msgid "Not Subscribed "
 msgstr "አልተመዘገበም።"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "ዝቅተኛ የይለፍ ቃል ምልክቶች ዴልታ"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "የተከለከሉ የይለፍ ቃላት"
-
-#: 
-msgid "Enable 2FA"
-msgstr "2FA አስጀምር"
-
-#: 
-msgid "Require 2FA"
-msgstr "2 ኤፍኤ ያስፈልጋል"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA የመተግበሪያ ስም"
 
 #: 
 msgid "Login Info"
@@ -8228,14 +8173,6 @@ msgstr "የቤተሰብ ንብረት አለመመደብ"
 #: 
 msgid "Do you want to remove"
 msgstr "ማስወገድ ይፈልጋሉ?"
-
-#: 
-msgid "View Active People"
-msgstr "ንቁ ሰዎችን ይመልከቱ"
-
-#: 
-msgid "View Inactive People"
-msgstr "ንቁ ያልሆኑ ሰዎችን ይመልከቱ"
 
 #: 
 msgid "Today's Birthdays"

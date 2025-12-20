@@ -3130,14 +3130,6 @@ msgid "Change Password"
 msgstr "Schimbă parola"
 
 #: 
-msgid "You have"
-msgstr "Tu ai"
-
-#: 
-msgid "task(s)"
-msgstr "activitate(ăți)"
-
-#: 
 msgid "Home"
 msgstr "Acasă"
 
@@ -7088,10 +7080,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Timp cache de server pentru imagini la distanță"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Metoda de denumire a destinatarilor"
 
@@ -7731,15 +7719,6 @@ msgstr "Dacă doriți să păstrați modificările aduse acestor fișiere, face�
 msgid "Integrity Check Details:"
 msgstr "Detalii de verificare a integrității"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Au fost detectate tipuri de depozit neacceptate"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Asistența pentru plățile card de credit și debit bancar a fost retrasă. Rapoartele existente care nu țin de bancă să nu mai fie accesibile în versiunile viitoare"
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7884,14 +7863,6 @@ msgid "Remove Results from Cart"
 msgstr "Șterge rezultatele din coș"
 
 #: 
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "S-au identificat unele condiții care ar putea împiedica o actualizare de succes"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Vă rugăm să revizuiți și să soluționați aceste sarcini înainte de a continua cu actualizarea"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Funcții de resetare a Bazei de Date"
 
@@ -8005,10 +7976,6 @@ msgid "Must be set to 'true'"
 msgstr "Trebuie setat pe true"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include/Config.php trebuie să definească o cheie de criptare pentru stocarea cheilor secrete 2FA în baza de date prin stabilirea unei valori pentru"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Cheia API Google Maps utilizată pentru geocodificarea adreselor"
 
@@ -8110,26 +8077,6 @@ msgstr "Rata de deschidere"
 #: 
 msgid "Not Subscribed "
 msgstr "Nu s-au abonat"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Min Password Characters Delta"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Parole Interzise"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Activați 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Necesita 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Numele aplicație 2FA"
 
 #: 
 msgid "Login Info"
@@ -8299,14 +8246,6 @@ msgstr "Anulare Atribuire Proprietate Familie"
 #: 
 msgid "Do you want to remove"
 msgstr "Doriți să ștergeti"
-
-#: 
-msgid "View Active People"
-msgstr "Vizualizare persoane active"
-
-#: 
-msgid "View Inactive People"
-msgstr "Vizualizare persoane inactive"
 
 #: 
 msgid "Today's Birthdays"

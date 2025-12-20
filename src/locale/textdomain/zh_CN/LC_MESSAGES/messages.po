@@ -3135,14 +3135,6 @@ msgid "Change Password"
 msgstr "更改密码"
 
 #: 
-msgid "You have"
-msgstr "你有"
-
-#: 
-msgid "task(s)"
-msgstr "任务"
-
-#: 
 msgid "Home"
 msgstr "主页"
 
@@ -7089,10 +7081,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "远程图片的服务器缓存时间"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "收件人命名方法"
 
@@ -7734,15 +7722,6 @@ msgstr "如果您希望保留对这些文件的更改，请在进行此升级之
 msgid "Integrity Check Details:"
 msgstr "完整性检查详细信息："
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "检测到不支持的存款类型"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "已不再支持eGive，信用卡和银行汇票付款。现有的非银行报告在以后的版本中可能不再可用。"
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7886,15 +7865,6 @@ msgid "Remove Results from Cart"
 msgstr "从购物车中删除结果"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "已确定某些情况，可能会阻止成功升级"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "在继续升级之前，请检查并减轻以下任务："
-
-#: 
 msgid "Database Reset Functions"
 msgstr "数据库重置功能"
 
@@ -8008,10 +7978,6 @@ msgid "Must be set to 'true'"
 msgstr "必须设置为“ true”"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include / Config.php必须通过为以下项设置值来定义用于在数据库中存储2FA秘密密钥的加密密钥："
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "用于地址编码的Google Maps API密钥"
 
@@ -8114,26 +8080,6 @@ msgstr "开放率"
 #: 
 msgid "Not Subscribed "
 msgstr "未订阅 "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "最小密码字符增量"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "不允许的密码"
-
-#: 
-msgid "Enable 2FA"
-msgstr "启用2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "需要2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA申请名称"
 
 #: 
 msgid "Login Info"
@@ -8303,14 +8249,6 @@ msgstr "家庭财产分配"
 #: 
 msgid "Do you want to remove"
 msgstr "您要删除吗"
-
-#: 
-msgid "View Active People"
-msgstr "查看活跃的人"
-
-#: 
-msgid "View Inactive People"
-msgstr "查看不活跃的人"
 
 #: 
 msgid "Today's Birthdays"
