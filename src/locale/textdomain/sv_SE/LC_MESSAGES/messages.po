@@ -3166,14 +3166,6 @@ msgid "Change Password"
 msgstr "Ändra lösenord"
 
 #: 
-msgid "You have"
-msgstr "Du har"
-
-#: 
-msgid "task(s)"
-msgstr "uppgift (er)"
-
-#: 
 msgid "Home"
 msgstr "Hem"
 
@@ -7127,10 +7119,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Servercache-tid för fjärrbilder"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Mottagarens namngivning"
 
@@ -7770,15 +7758,6 @@ msgstr "Om du vill behålla dina ändringar av dessa filer, ta en manuell säker
 msgid "Integrity Check Details:"
 msgstr "Detaljer för integritetskontroll:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Ostödda insättningstyper har upptäckts"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Stöd för betalningar för kreditkort och bankutkast har skrivits ut. Befintliga rapporter utanför banken kanske inte längre är tillgängliga i framtida versioner."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7924,15 +7903,6 @@ msgid "Remove Results from Cart"
 msgstr "Ta bort resultat från kundvagnen"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Vissa förhållanden har identifierats som kan förhindra en framgångsrik uppgradering"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Granska och fixa dessa uppgifter innan du fortsätter med uppgraderingen:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Funktioner för återställning av databaser"
 
@@ -8046,10 +8016,6 @@ msgid "Must be set to 'true'"
 msgstr "Måste vara inställd på \"sant\""
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include/Config.php måste definiera en krypteringsnyckel för att lagra 2FA hemliga nycklar i databasen genom att ställa in ett värde för"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Google Maps API-nyckel som används för geokodningsadresser"
 
@@ -8152,26 +8118,6 @@ msgstr "öppen kostnad"
 #: 
 msgid "Not Subscribed "
 msgstr "Inte prenumererad "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Minimal lösenordstecken Delta"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Otillåtna lösenord"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Aktivera 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Kräva 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA-applikationsnamn"
 
 #: 
 msgid "Login Info"
@@ -8341,16 +8287,6 @@ msgstr "Familjeegendom av-tilldelning"
 #: 
 msgid "Do you want to remove"
 msgstr "Vill du ta bort"
-
-#: 
-#, fuzzy
-msgid "View Active People"
-msgstr "Visa aktiva personer"
-
-#: 
-#, fuzzy
-msgid "View Inactive People"
-msgstr "Visa inaktiva personer"
 
 #: 
 msgid "Today's Birthdays"

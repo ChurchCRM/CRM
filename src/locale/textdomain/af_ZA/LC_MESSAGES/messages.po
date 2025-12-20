@@ -3052,14 +3052,6 @@ msgid "Change Password"
 msgstr "Verander wagwoord"
 
 #: 
-msgid "You have"
-msgstr "Jy het"
-
-#: 
-msgid "task(s)"
-msgstr "taak (s)"
-
-#: 
 msgid "Home"
 msgstr "Tuis"
 
@@ -6996,10 +6988,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Bedienerskyfie tyd vir afgeleë beelde"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Ontvanger Benoemingsmetode"
 
@@ -7639,15 +7627,6 @@ msgstr "As u u wysigings aan hierdie lêers wil handhaaf, moet u hierdie lêers 
 msgid "Integrity Check Details:"
 msgstr "Inligting oor integriteitstoets:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Nie-ondersteunde deposito-tipes opgespoor"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Ondersteuning vir kredietkaart- en bankwisselbetalings is verswak. Bestaande nie-bankverslae is moontlik nie meer toeganklik in toekomstige weergawes nie."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7793,15 +7772,6 @@ msgid "Remove Results from Cart"
 msgstr "Verwyder die resultate uit die mandjie"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Sommige toestande is geïdentifiseer wat 'n suksesvolle opgradering kan voorkom"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Gaan hierdie take na en versag dit voordat u met die opgradering voortgaan:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Databasisherstelfunksies"
 
@@ -7915,10 +7885,6 @@ msgid "Must be set to 'true'"
 msgstr "Moet ingestel wees op 'waar'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include / Config.php moet 'n koderingsleutel definieer vir die stoor van 2FA geheime sleutels in die databasis deur 'n waarde in te stel vir"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Google Maps API-sleutel wat vir geokodering van adresse gebruik word"
 
@@ -8021,26 +7987,6 @@ msgstr "oop tarief"
 #: 
 msgid "Not Subscribed "
 msgstr "Nie ingeteken nie "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Min wagwoord karakters Delta"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Wagwoorde wat nie toegelaat is nie"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Aktiveer 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Vereis 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA Aansoeknaam"
 
 #: 
 msgid "Login Info"
@@ -8210,14 +8156,6 @@ msgstr "Gesins eiendom ontoegeken"
 #: 
 msgid "Do you want to remove"
 msgstr "Is jy seker jy wil dit verwyder"
-
-#: 
-msgid "View Active People"
-msgstr "Sien aktiewe mense"
-
-#: 
-msgid "View Inactive People"
-msgstr "Sien onaktiewe mense"
 
 #: 
 msgid "Today's Birthdays"

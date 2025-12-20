@@ -3053,14 +3053,6 @@ msgid "Change Password"
 msgstr "Змінити пароль"
 
 #: 
-msgid "You have"
-msgstr "Ти маєш"
-
-#: 
-msgid "task(s)"
-msgstr "завдання"
-
-#: 
 msgid "Home"
 msgstr "Додому"
 
@@ -6997,10 +6989,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Час кешування сервера для віддалених зображень"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Метод іменування одержувачів"
 
@@ -7640,15 +7628,6 @@ msgstr "Якщо ви хочете зберегти зміни до цих фа�
 msgid "Integrity Check Details:"
 msgstr "Подробиці перевірки цілісності:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Виявлено непідтримувані типи депозитів"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Підтримка платежів кредитних карток та банківських векселів застаріла. Існуючі небанківські звіти можуть бути недоступними в наступних версіях."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7782,15 +7761,6 @@ msgid "Remove Results from Cart"
 msgstr "Видаліть результати з кошика"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Виявлено деякі умови, які можуть перешкодити успішному оновленню"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Перш ніж продовжувати оновлення, перегляньте та пом’якшіть ці завдання:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Функції скидання бази даних"
 
@@ -7904,10 +7874,6 @@ msgid "Must be set to 'true'"
 msgstr "Потрібно встановити значення `` true ''"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include / Config.php повинен визначити ключ шифрування для зберігання секретних ключів 2FA у базі даних, встановивши значення для"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Ключ API Google Maps, що використовується для геокодування адрес"
 
@@ -8010,26 +7976,6 @@ msgstr "відкрита ставка"
 #: 
 msgid "Not Subscribed "
 msgstr "Не передплачено "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Мінімальний пароль символів Дельта"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Заборонені паролі"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Увімкніть 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Вимагають 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Назва програми 2FA"
 
 #: 
 msgid "Login Info"
@@ -8199,14 +8145,6 @@ msgstr "Видалення сімейного майна"
 #: 
 msgid "Do you want to remove"
 msgstr "Видалити"
-
-#: 
-msgid "View Active People"
-msgstr "Перегляд активних людей"
-
-#: 
-msgid "View Inactive People"
-msgstr "Перегляд неактивних людей"
 
 #: 
 msgid "Today's Birthdays"

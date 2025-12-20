@@ -3175,14 +3175,6 @@ msgid "Change Password"
 msgstr "Mudar senha"
 
 #: 
-msgid "You have"
-msgstr "Você tem"
-
-#: 
-msgid "task(s)"
-msgstr "tarefa(s)"
-
-#: 
 msgid "Home"
 msgstr "Home"
 
@@ -7165,10 +7157,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Tempo de cache do servidor para imagens remotas"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Método de nomeação do destinatário"
 
@@ -7809,15 +7797,6 @@ msgstr "Se você deseja manter suas alterações nesses ficheiros, faça um back
 msgid "Integrity Check Details:"
 msgstr "Detalhes da verificação de integridade:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Tipos de depósito não suportados"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "O suporte para pagamentos de cartão de crédito e emissão de notas bancárias foi descontinuado. Os relatórios não bancários existentes podem não estar mais acessíveis em versões futuras."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7963,15 +7942,6 @@ msgid "Remove Results from Cart"
 msgstr "Remover resultados do carrinho"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Foram identificadas algumas condições que podem impedir uma atualização bem-sucedida"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Rever estas tarefas antes de continuar com a atualização:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Funções de redefinição da base de dados"
 
@@ -8083,10 +8053,6 @@ msgstr "Configuração do sistema "
 #: 
 msgid "Must be set to 'true'"
 msgstr "Deve ser definido como 'verdadeiro'"
-
-#: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include / Config.php deve definir uma chave de criptografia para armazenar chaves secretas 2FA na base de dados, definindo um valor para"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"

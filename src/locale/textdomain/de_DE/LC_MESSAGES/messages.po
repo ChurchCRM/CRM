@@ -3148,14 +3148,6 @@ msgid "Change Password"
 msgstr "Passwort ändern"
 
 #: 
-msgid "You have"
-msgstr "Sie haben"
-
-#: 
-msgid "task(s)"
-msgstr "Aufgabe(n)"
-
-#: 
 msgid "Home"
 msgstr "Home"
 
@@ -7111,10 +7103,6 @@ msgid "SSE"
 msgstr "SSO"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Server-Cache-Zeit für entfernte Bilder"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Empfänger-Benennungsmethode"
 
@@ -7754,15 +7742,6 @@ msgstr "Wenn Sie Ihre Änderungen an diesen Dateien beibehalten möchten, machen
 msgid "Integrity Check Details:"
 msgstr "Integritäts-Check-Details:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Nicht unterstützte Einzahlungstypen entdeckt"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Die Unterstützung für eGive-, Kreditkarten- und Bankscheck-Zahlungen ist veraltet.  Bestehende Nicht-Bankberichte sind in zukünftigen Versionen möglicherweise nicht mehr zugänglich."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7908,15 +7887,6 @@ msgid "Remove Results from Cart"
 msgstr "Ergebnisse aus dem Warenkorb entfernen"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Es wurden einige Bedingungen festgestellt, die ein erfolgreiches Upgrade verhindern können"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Bitte überprüfen und entschärfen Sie diese Aufgaben, bevor Sie mit dem Upgrade fortfahren:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Datenbank-Rücksetzfunktionen"
 
@@ -8030,10 +8000,6 @@ msgid "Must be set to 'true'"
 msgstr "Muss auf 'wahr' gesetzt werden"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "In der Include/Config.php muss ein Schlüssel für die Speicherung von geheimen 2FA-Schlüsseln in der Datenbank angegeben werden"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Für die Geokodierung von Adressen verwendeter Google Maps API-Schlüssel"
 
@@ -8136,26 +8102,6 @@ msgstr "offener Tarif"
 #: 
 msgid "Not Subscribed "
 msgstr "Nicht abonniert "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Min Unterschied der Passwortzeichen"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Unzulässige Kennwörter"
-
-#: 
-msgid "Enable 2FA"
-msgstr "2FA aktivieren"
-
-#: 
-msgid "Require 2FA"
-msgstr "Erfordert 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA Anwendungsname Name"
 
 #: 
 msgid "Login Info"
@@ -8325,14 +8271,6 @@ msgstr "Rückübertragung von Familieneigentum"
 #: 
 msgid "Do you want to remove"
 msgstr "Wollen Sie entfernen"
-
-#: 
-msgid "View Active People"
-msgstr "Aktive Personen anzeigen"
-
-#: 
-msgid "View Inactive People"
-msgstr "Inaktive Personen anzeigen"
 
 #: 
 msgid "Today's Birthdays"

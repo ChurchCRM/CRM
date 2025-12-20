@@ -3061,14 +3061,6 @@ msgid "Change Password"
 msgstr "Cambia Password"
 
 #: 
-msgid "You have"
-msgstr "Hai"
-
-#: 
-msgid "task(s)"
-msgstr "compito(i)"
-
-#: 
 msgid "Home"
 msgstr "Casa"
 
@@ -7018,10 +7010,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Tempo di cache del server per le immagini remote"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Metodo di denominazione del destinatario"
 
@@ -7661,15 +7649,6 @@ msgstr "Se si desidera mantenere le modifiche a questi file, esegui un backup ma
 msgid "Integrity Check Details:"
 msgstr "Dettagli del controllo di integrità:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Rilevati tipi di deposito non supportati"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Il supporto per i pagamenti di carta di credito e assegno circolare è stato dichiarato obsoleto. I rapporti non bancari esistenti potrebbero non essere più accessibili nelle versioni future."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7815,15 +7794,6 @@ msgid "Remove Results from Cart"
 msgstr "Rimuovi risultati dal carrello"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Sono state identificate alcune condizioni che potrebbero impedire un aggiornamento riuscito"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Si prega di rivedere e mitigare queste attività prima di continuare con l'aggiornamento:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Funzioni di ripristino del database"
 
@@ -7937,10 +7907,6 @@ msgid "Must be set to 'true'"
 msgstr "Deve essere impostato su 'vero'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include/Config.php deve definire una chiave di crittografia per memorizzare le chiavi segrete 2FA nel database impostando un valore per"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Chiave API di Google Maps utilizzata per gli indirizzi di geocodifica"
 
@@ -8043,26 +8009,6 @@ msgstr "tasso di apertura"
 #: 
 msgid "Not Subscribed "
 msgstr "Non Iscritto "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Numero minimo di caratteri diversi per la Password"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Password non consentite"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Abilita 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Richiedi 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Nome Applicazione 2FA"
 
 #: 
 msgid "Login Info"
@@ -8232,14 +8178,6 @@ msgstr "Annullamento dell'assegnazione della proprietà familiare"
 #: 
 msgid "Do you want to remove"
 msgstr "Vuoi rimuovere"
-
-#: 
-msgid "View Active People"
-msgstr "Visualizza persone attive"
-
-#: 
-msgid "View Inactive People"
-msgstr "Visualizza persone inattive"
 
 #: 
 msgid "Today's Birthdays"
@@ -8471,8 +8409,4 @@ msgstr "Un carattere da FirstName e un carattere da LastName"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Due caratteri da FirstName"
-
-#: 
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr "Imposta il carattere per il rendering delle iniziali. Carica il carattere personalizzato nella directory dei caratteri"
 

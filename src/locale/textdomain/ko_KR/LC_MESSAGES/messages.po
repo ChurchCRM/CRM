@@ -3049,14 +3049,6 @@ msgid "Change Password"
 msgstr "비밀번호 변경"
 
 #: 
-msgid "You have"
-msgstr "현재"
-
-#: 
-msgid "task(s)"
-msgstr "개의 할 일이 있습니다."
-
-#: 
 msgid "Home"
 msgstr "홈"
 
@@ -6988,10 +6980,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "원격 이미지 서버 캐시 시간"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "수신자 이름 형식"
 
@@ -7627,15 +7615,6 @@ msgstr "수정 사항을 유지하려면 업그레이드 전에 해당 파일을
 msgid "Integrity Check Details:"
 msgstr "무결성 검사 상세 정보:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "지원되지 않는 입금 유형이 감지되었습니다"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "eGive, 신용카드, 자동이체 입금은 더 이상 지원되지 않습니다. 향후 버전에서는 관련 보고서를 볼 수 없을 수 있습니다."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7779,14 +7758,6 @@ msgid "Remove Results from Cart"
 msgstr "결과를 카트에서 제거"
 
 #: 
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "업그레이드를 방해할 수 있는 조건이 확인되었습니다"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "업그레이드를 진행하기 전에 아래 작업을 해결하세요:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "데이터베이스 초기화 기능"
 
@@ -7900,10 +7871,6 @@ msgid "Must be set to 'true'"
 msgstr "'true'로 설정해야 합니다"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include/Config.php에서 2FA 비밀 키를 DB에 저장할 암호화 키를 지정해야 합니다:"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "주소 지오코딩에 사용되는 Google Maps API 키"
 
@@ -8004,26 +7971,6 @@ msgstr "오픈율"
 #: 
 msgid "Not Subscribed "
 msgstr "구독 안 함 "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "비밀번호 최소 변화 문자 수"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "사용 금지 비밀번호"
-
-#: 
-msgid "Enable 2FA"
-msgstr "2단계 인증 활성화"
-
-#: 
-msgid "Require 2FA"
-msgstr "2단계 인증 강제"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA 앱 이름"
 
 #: 
 msgid "Login Info"
@@ -8193,14 +8140,6 @@ msgstr "가족 속성 해제"
 #: 
 msgid "Do you want to remove"
 msgstr "다음을 제거하시겠습니까"
-
-#: 
-msgid "View Active People"
-msgstr "활성 개인 보기"
-
-#: 
-msgid "View Inactive People"
-msgstr "비활성 개인 보기"
 
 #: 
 msgid "Today's Birthdays"
@@ -8482,10 +8421,6 @@ msgstr "이름에서 1글자, 성에서 1글자 사용"
 #: 
 msgid "Two characters from FirstName"
 msgstr "이름에서 2글자 사용"
-
-#: 
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr "이니셜에 사용할 글꼴을 지정하세요. 사용자 글꼴은 fonts 디렉터리에 업로드합니다"
 
 #: 
 msgid "Church Email not set, please visit the settings page"
@@ -9211,10 +9146,6 @@ msgid "Pre-Upgrade Tasks Complete"
 msgstr "업그레이드 전 작업 완료"
 
 #: 
-msgid "Pre-Upgrade Tasks Detected"
-msgstr "업그레이드 전 작업 감지됨"
-
-#: 
 msgid "Pre-Upgrade Warnings"
 msgstr "업그레이드 전 경고"
 
@@ -9233,10 +9164,6 @@ msgstr "비밀번호 재설정 요청"
 #: 
 msgid "Retry Download"
 msgstr "다운로드 재시도"
-
-#: 
-msgid "Return to Dashboard"
-msgstr "대시보드로 돌아가기"
 
 #: 
 msgid "SHA1 Hash:"
@@ -10381,10 +10308,6 @@ msgid " Deposit #"
 msgstr " 입금 #"
 
 #: 
-msgid "%d families missing coordinates"
-msgstr "%d개 가족의 좌표 누락"
-
-#: 
 msgid "%d missing classification"
 msgstr "%d개 분류 누락"
 
@@ -11035,10 +10958,6 @@ msgstr "유형:"
 #: 
 msgid "Unmet Prerequisites"
 msgstr "충족되지 않은 전제 조건"
-
-#: 
-msgid "Upcoming Anniversaries"
-msgstr "다가오는 기념일"
 
 #: 
 msgid "Upcoming Birthdays"

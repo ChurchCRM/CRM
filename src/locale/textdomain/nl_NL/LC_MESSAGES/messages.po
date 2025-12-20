@@ -3049,14 +3049,6 @@ msgid "Change Password"
 msgstr "Wijzig password"
 
 #: 
-msgid "You have"
-msgstr "Je hebt"
-
-#: 
-msgid "task(s)"
-msgstr "Taak of taken"
-
-#: 
 msgid "Home"
 msgstr "Thuis"
 
@@ -6996,10 +6988,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Servercachetijd voor externe afbeeldingen"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Naamgevingsmethode ontvanger"
 
@@ -7636,15 +7624,6 @@ msgstr "Als u de wijzigingen van deze bestanden wilt bijhouden, maak dan aub een
 msgid "Integrity Check Details:"
 msgstr "Details van de integriteit controle"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Niet-ondersteunde Deposit Types gedetecteerd."
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Ondersteuning voor Credit Card, en Bank Draft betalingen is verouderd. Bestaande niet-bancaire verslagen kunnen niet meer toegankelijk in toekomstige versies zijn."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7790,14 +7769,6 @@ msgid "Remove Results from Cart"
 msgstr "Resultaten uit werkbestand verwijderen"
 
 #: 
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Er zijn enkele omstandigheden geïdentificeerd die een succesvolle upgrade kunnen verhinderen"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Bekijk en verklein deze taken voordat u doorgaat met de upgrade:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Functies voor het resetten van de database"
 
@@ -7911,10 +7882,6 @@ msgid "Must be set to 'true'"
 msgstr "Moet zijn ingesteld op 'waar'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Inclusief/Config.php moet een coderingssleutel bevatten voor het opslaan van 2FA-geheime sleutels in de database door een waarde in te stellen voor:"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Google Maps API-sleutel gebruikt voor geocodering van adressen"
 
@@ -8015,26 +7982,6 @@ msgstr "open ratio"
 #: 
 msgid "Not Subscribed "
 msgstr "Niet geabonneerd "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Minimale wachtwoordtekens Delta"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Niet-toegestane wachtwoorden"
-
-#: 
-msgid "Enable 2FA"
-msgstr "2FA inschakelen"
-
-#: 
-msgid "Require 2FA"
-msgstr "2FA vereist"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA-toepassingsnaam"
 
 #: 
 msgid "Login Info"
@@ -8204,14 +8151,6 @@ msgstr "Gezinseigendom intrekken"
 #: 
 msgid "Do you want to remove"
 msgstr "Wil je het verwijderen?"
-
-#: 
-msgid "View Active People"
-msgstr "Bekijk actieve mensen"
-
-#: 
-msgid "View Inactive People"
-msgstr "Inactieve mensen bekijken"
 
 #: 
 msgid "Today's Birthdays"
@@ -8493,10 +8432,6 @@ msgstr "Een letter van de Voornaam en een letter van de Achternaam"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Twee letters van de Voornaam"
-
-#: 
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr "Kies een lettertype voor de initialen. Upload een eigen lettertype naar de lettertypen map."
 
 #: 
 msgid "Church Email not set, please visit the settings page"
@@ -9060,10 +8995,6 @@ msgstr "Dit scherm niet afsluiten of verversen."
 #: 
 msgid "Pre-Upgrade Tasks Complete"
 msgstr "Pre-Upgrade taken zijn voltooid"
-
-#: 
-msgid "Pre-Upgrade Tasks Detected"
-msgstr "Pre-Upgrade taken gedetecteerd"
 
 #: 
 msgid "Pre-Upgrade Warnings"

@@ -3857,15 +3857,6 @@ msgstr "Jeżeli chcesz zachować wprowadzone zmiany, zrób ręczną kopię bezpi
 msgid "Integrity Check Details:"
 msgstr "Informacje Spójności Systemu:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Wykryto Nieobsługiwany Typ Wpłaty"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Wsparcie dla kart płatniczych i wpłat bankowych zostało zakończone. Stare raporty mogą przestać działać w kolejnych wersjach."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -4000,15 +3991,6 @@ msgid "Remove Results from Cart"
 msgstr "Usuń Wyniki z Koszyka"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Znaleziono problemy mogące przeszkodzić w aktualizacji"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Przejżyj i rozwiąż problemy przed kontynuacją aktualizacji:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Funkcje Resetowania Bazy Danych"
 
@@ -4122,10 +4104,6 @@ msgid "Must be set to 'true'"
 msgstr "Musi być ustawiony na 'True'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Plik 'Include/Config.php' musi posiadać klucz szyfrowania dla kluczy 2FA z bazydanych"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Klucz Map Google API używany dla wyszukiwania adresów"
 
@@ -4224,26 +4202,6 @@ msgstr "Hebrajski"
 #: 
 msgid "Not Subscribed "
 msgstr "Nie Zapisany"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Minimalna Delta Znaków Hasła"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Hasła Niedozwolone"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Uruchom 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Wymagaj 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Nazwa Aplikacji 2FA"
 
 #: 
 msgid "Login Info"

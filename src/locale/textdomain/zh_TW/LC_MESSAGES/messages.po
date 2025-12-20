@@ -3144,14 +3144,6 @@ msgid "Change Password"
 msgstr "更改密碼"
 
 #: 
-msgid "You have"
-msgstr "你有"
-
-#: 
-msgid "task(s)"
-msgstr "任務"
-
-#: 
 msgid "Home"
 msgstr "主頁"
 
@@ -7134,10 +7126,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "遠程圖片的服務器緩存時間"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "收件人命名方法"
 
@@ -7800,16 +7788,6 @@ msgstr "如果您希望保留對這些文件的更改，請在繼續此升級之
 msgid "Integrity Check Details:"
 msgstr "完整性檢查詳細信息："
 
-#: 
-#, fuzzy
-msgid "Unsupported Deposit Types Detected"
-msgstr "檢測到不支持的存款類型"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "已棄用對eGive，信用卡和銀行匯票付款的支持。在將來的版本中可能無法再訪問現有的非銀行報告。"
-
 #. Context: locales
 #: 
 #, fuzzy
@@ -7979,16 +7957,6 @@ msgstr "從購物車中刪除結果"
 
 #: 
 #, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "已確定某些情況，可能會阻止成功升級"
-
-#: 
-#, fuzzy
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "在繼續升級之前，請查看並減少以下任務："
-
-#: 
-#, fuzzy
 msgid "Database Reset Functions"
 msgstr "資料庫重置功能"
 
@@ -8114,10 +8082,6 @@ msgid "Must be set to 'true'"
 msgstr "必須設置為'true'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include / Config.php必須通過為以下項設置值來定義用於在數據庫中存儲雙重認證秘密密鑰的加密密鑰"
-
-#: 
 #, fuzzy
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "用於地址解析的Google Maps API密鑰"
@@ -8228,31 +8192,6 @@ msgstr "開放率"
 #, fuzzy
 msgid "Not Subscribed "
 msgstr "未訂閱 "
-
-#: 
-#, fuzzy
-msgid "Min Password Characters Delta"
-msgstr "最小密碼字符增量"
-
-#: 
-#, fuzzy
-msgid "Disallowed Passwords"
-msgstr "不允許的密碼"
-
-#: 
-#, fuzzy
-msgid "Enable 2FA"
-msgstr "啟用雙重認證"
-
-#: 
-#, fuzzy
-msgid "Require 2FA"
-msgstr "需要雙重認證"
-
-#: 
-#, fuzzy
-msgid "2FA Application Name"
-msgstr "雙重認證應用程式名稱"
 
 #: 
 #, fuzzy
@@ -8457,16 +8396,6 @@ msgstr "未分配的家庭財產"
 #, fuzzy
 msgid "Do you want to remove"
 msgstr "您要刪除嗎"
-
-#: 
-#, fuzzy
-msgid "View Active People"
-msgstr "查看活躍的人"
-
-#: 
-#, fuzzy
-msgid "View Inactive People"
-msgstr "查看不活躍的人"
 
 #: 
 #, fuzzy

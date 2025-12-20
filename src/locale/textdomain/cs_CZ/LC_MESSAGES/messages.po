@@ -3049,14 +3049,6 @@ msgid "Change Password"
 msgstr "Změnit heslo"
 
 #: 
-msgid "You have"
-msgstr "Máte"
-
-#: 
-msgid "task(s)"
-msgstr "úkol(ů)"
-
-#: 
 msgid "Home"
 msgstr "Domů"
 
@@ -6988,10 +6980,6 @@ msgid "SSE"
 msgstr "JJV"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Doba mezipaměti serveru pro vzdálené obrázky"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Metoda pojmenování příjemce"
 
@@ -7628,15 +7616,6 @@ msgstr "Pokud si přejete zachovat změny v těchto souborech, proveďte před p
 msgid "Integrity Check Details:"
 msgstr "Podrobnosti o kontrole integrity:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Byly zjištěny nepodporované typy vkladů"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Podpora plateb kreditní kartou a bankovním převodem byla zrušena.  Stávající nebankovní zprávy již nemusí být v budoucích verzích přístupné."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7784,14 +7763,6 @@ msgid "Remove Results from Cart"
 msgstr "Odstranit výsledky z košíku"
 
 #: 
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Byly zjištěny některé podmínky, které mohou zabránit úspěšné aktualizaci"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Než budete pokračovat v aktualizaci, zkontrolujte a vyřešte tyto úkoly:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Funkce obnovení databáze"
 
@@ -7905,10 +7876,6 @@ msgid "Must be set to 'true'"
 msgstr "Musí být nastaveno na 'true'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include/Config.php musí definovat šifrovací klíč pro ukládání tajných klíčů 2FA do databáze nastavením hodnoty pro"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Klíč Google Maps API používaný pro geokódování adres"
 
@@ -8009,26 +7976,6 @@ msgstr "míra otevření"
 #: 
 msgid "Not Subscribed "
 msgstr "Nepřihlášený "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Minimální delta znaků hesla"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Zakázáná hesla"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Povolit 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Požadovat 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Název aplikace 2FA"
 
 #: 
 msgid "Login Info"
@@ -8198,14 +8145,6 @@ msgstr "Zrušení přidělení vlastnosti rodině"
 #: 
 msgid "Do you want to remove"
 msgstr "Chcete odstranit"
-
-#: 
-msgid "View Active People"
-msgstr "Zobrazit aktivní osoby"
-
-#: 
-msgid "View Inactive People"
-msgstr "Zobrazit neaktivní osoby"
 
 #: 
 msgid "Today's Birthdays"
@@ -8487,10 +8426,6 @@ msgstr "Jedno písmeno z KřestníhoJména a jedno z Příjmení"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Dvě písmena z KřestníhoJména"
-
-#: 
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr "Zadejte font pro renderování iniciál. Nahrajte vlastní font do složky fontů."
 
 #: 
 msgid "Church Email not set, please visit the settings page"

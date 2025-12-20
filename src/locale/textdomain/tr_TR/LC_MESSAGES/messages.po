@@ -3052,14 +3052,6 @@ msgid "Change Password"
 msgstr "Şifre değiştir"
 
 #: 
-msgid "You have"
-msgstr "Var"
-
-#: 
-msgid "task(s)"
-msgstr "görevler)"
-
-#: 
 msgid "Home"
 msgstr "Ev"
 
@@ -6996,10 +6988,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Uzaktan resimler için sunucu önbellek süresi"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Alıcı adlandırma yöntemi"
 
@@ -7639,15 +7627,6 @@ msgstr "Bu dosyalardaki değişikliklerinizi korumak istiyorsanız, lütfen bu y
 msgid "Integrity Check Details:"
 msgstr "Dürüstlük Kontrol Detayları:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Desteklenmemiş depozito türleri tespit edildi"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Egile, kredi kartı ve banka taslak ödemeleri için destek verilmiştir. Mevcut banka dışı raporlar artık gelecekteki sürümlerde erişilemeyebilir."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7793,15 +7772,6 @@ msgid "Remove Results from Cart"
 msgstr "Sepetin sonuçlarını kaldırın"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Başarılı bir yükseltmeyi önleyebilecek bazı koşullar tespit edildi"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Yükseltme ile devam etmeden önce lütfen bu görevleri inceleyin ve hafifletin:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Veritabanı Sıfırlama İşlevleri"
 
@@ -7915,10 +7885,6 @@ msgid "Must be set to 'true'"
 msgstr "'True' olarak ayarlanmalı"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Incown/config.php, 2FA gizli anahtarlarını veritabanında depolamak için bir şifreleme anahtarı tanımlamalıdır."
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Coğrafi kodlama adresleri için kullanılan Google Haritalar API Anahtarı"
 
@@ -8021,26 +7987,6 @@ msgstr "açık oran"
 #: 
 msgid "Not Subscribed "
 msgstr "Abone olunmamış"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Min şifre karakterleri delta"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "İzin verilmeyen şifreler"
-
-#: 
-msgid "Enable 2FA"
-msgstr "2FA'yı etkinleştir"
-
-#: 
-msgid "Require 2FA"
-msgstr "2FA gerektirir"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA Uygulama Adı"
 
 #: 
 msgid "Login Info"
@@ -8210,14 +8156,6 @@ msgstr "Aile Mülkiyeti Tahsilat"
 #: 
 msgid "Do you want to remove"
 msgstr "Kaldırmak ister misin"
-
-#: 
-msgid "View Active People"
-msgstr "Aktif insanları görüntüleyin"
-
-#: 
-msgid "View Inactive People"
-msgstr "Aktif insanları görüntüleyin"
 
 #: 
 msgid "Today's Birthdays"

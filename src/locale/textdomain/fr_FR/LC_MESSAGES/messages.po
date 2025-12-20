@@ -3052,14 +3052,6 @@ msgid "Change Password"
 msgstr "Modifier Mot de Passe"
 
 #: 
-msgid "You have"
-msgstr "Vous avez"
-
-#: 
-msgid "task(s)"
-msgstr "Tâche(s)"
-
-#: 
 msgid "Home"
 msgstr "Accueil"
 
@@ -6996,10 +6988,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Temps de cache serveur pour les images à distance"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Méthode pour les noms des déstinateurs"
 
@@ -7639,15 +7627,6 @@ msgstr "Si vous voulez conserver vos modifications sur ces fichiers, effectuez u
 msgid "Integrity Check Details:"
 msgstr "Détails de la vérification de l'intégrité"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Types de dépôts incorrects"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "La prise en charge des paiements par par carte de crédit et par traite bancaire a été abandonnée. Désolé, mais les rapports non bancaires existants pourraient ne plus être accessibles dans les futures versions."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7792,15 +7771,6 @@ msgid "Remove Results from Cart"
 msgstr "Enlever les résultats du panier"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Certaines conditions qui ont été identifiées peuvent empêcher la réussite de la mise à niveau"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Veuillez passer en revue et réduire ces tâches avant de poursuivre la mise à niveau :"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Fonctions de réinitialisation de la base de données"
 
@@ -7914,10 +7884,6 @@ msgid "Must be set to 'true'"
 msgstr "Doit être défini sur \"vrai\""
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Include/Config.php doit définir une clé de chiffrement pour stocker les clés secrètes 2FA dans la base de données en définissant une valeur pour"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Clé API Google Maps utilisée pour le géocodage des adresses"
 
@@ -8020,26 +7986,6 @@ msgstr "taux d'ouverture"
 #: 
 msgid "Not Subscribed "
 msgstr "Non abonné "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Nombre minimal de caractères du mot de passe"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Mots de passe non autorisés"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Activer 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Exiger 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Nom de l'application 2FA"
 
 #: 
 msgid "Login Info"
@@ -8209,14 +8155,6 @@ msgstr "Désaffectation des biens familiaux"
 #: 
 msgid "Do you want to remove"
 msgstr "Voulez-vous supprimer"
-
-#: 
-msgid "View Active People"
-msgstr "Voir les personnes actives"
-
-#: 
-msgid "View Inactive People"
-msgstr "Voir les personnes inactives"
 
 #: 
 msgid "Today's Birthdays"
@@ -8499,10 +8437,6 @@ msgstr "Un caractère du prénom et un caractère du nom"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Deux caractères du prénom"
-
-#: 
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr "Définir la police d'écriture pour les initiales. Téléverser la police personnalisée dans le répertoire des polices"
 
 #: 
 msgid "Church Email not set, please visit the settings page"
@@ -9228,10 +9162,6 @@ msgid "Pre-Upgrade Tasks Complete"
 msgstr "Tâches préalables à la mise à niveau terminées"
 
 #: 
-msgid "Pre-Upgrade Tasks Detected"
-msgstr "Tâches préalables à la mise à niveau détectées"
-
-#: 
 msgid "Pre-Upgrade Warnings"
 msgstr "Avertissements préalables à la mise à niveau"
 
@@ -9250,10 +9180,6 @@ msgstr "Demander la réinitialisation du mot de passe"
 #: 
 msgid "Retry Download"
 msgstr "Réessayer de télécharger"
-
-#: 
-msgid "Return to Dashboard"
-msgstr "Retour au tableau de bord"
 
 #: 
 msgid "SHA1 Hash:"

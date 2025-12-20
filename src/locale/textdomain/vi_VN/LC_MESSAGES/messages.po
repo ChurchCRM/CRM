@@ -3066,14 +3066,6 @@ msgid "Change Password"
 msgstr "Thay đổi mật khẩu"
 
 #: 
-msgid "You have"
-msgstr "Bạn có"
-
-#: 
-msgid "task(s)"
-msgstr "yêu cầu"
-
-#: 
 msgid "Home"
 msgstr "Trang chủ"
 
@@ -7010,10 +7002,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Thời gian bộ nhớ cache của máy chủ cho hình ảnh từ xa"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Phương pháp đặt tên người nhận"
 
@@ -7653,15 +7641,6 @@ msgstr "Nếu bạn muốn duy trì các thay đổi của mình đối với c�
 msgid "Integrity Check Details:"
 msgstr "Chi tiết Kiểm tra Tính toàn vẹn:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Đã phát hiện các loại tiền gửi không được hỗ trợ"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Hỗ trợ cho thanh toán eGive, Thẻ tín dụng và Hối phiếu Ngân hàng đã không còn được dùng nữa. Các báo cáo phi ngân hàng hiện tại có thể không còn truy cập được trong các phiên bản trong tương lai."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7798,15 +7777,6 @@ msgid "Remove Results from Cart"
 msgstr "Xóa kết quả khỏi giỏ hàng"
 
 #: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Một số điều kiện đã được xác định có thể ngăn cản việc nâng cấp thành công"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Vui lòng xem xét và giảm thiểu các tác vụ này trước khi tiếp tục nâng cấp:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Các chức năng thiết lập lại cơ sở dữ liệu"
 
@@ -7920,10 +7890,6 @@ msgid "Must be set to 'true'"
 msgstr "Phải được đặt thành 'true'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Bao gồm / Config.php phải xác định khóa mã hóa để lưu trữ khóa bí mật 2FA trong cơ sở dữ liệu bằng cách đặt giá trị cho"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Khóa API của Google Maps được sử dụng cho các địa chỉ Mã hóa địa lý"
 
@@ -8026,26 +7992,6 @@ msgstr "tỉ lệ mở"
 #: 
 msgid "Not Subscribed "
 msgstr "Chưa đăng ký"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Ký tự mật khẩu tối thiểu Delta"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Mật khẩu không được phép"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Bật 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Yêu cầu 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Tên ứng dụng 2FA"
 
 #: 
 msgid "Login Info"
@@ -8215,14 +8161,6 @@ msgstr "Chuyển nhượng tài sản gia đình"
 #: 
 msgid "Do you want to remove"
 msgstr "Bạn có muốn loại bỏ"
-
-#: 
-msgid "View Active People"
-msgstr "Xem những người đang hoạt động"
-
-#: 
-msgid "View Inactive People"
-msgstr "Xem những người không hoạt động"
 
 #: 
 msgid "Today's Birthdays"
@@ -8440,8 +8378,4 @@ msgstr "Một ký tự từ Tên và một ký tự từ Họ"
 #: 
 msgid "Two characters from FirstName"
 msgstr "Hai ký tự từ Tên"
-
-#: 
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr "Chọn phông chữ để hiển thị chữ cái đầu. Tải phông chữ tùy chỉnh lên thư mục phông chữ"
 

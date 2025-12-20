@@ -3049,14 +3049,6 @@ msgid "Change Password"
 msgstr "Badilisha neno la siri"
 
 #: 
-msgid "You have"
-msgstr "Unayo"
-
-#: 
-msgid "task(s)"
-msgstr "kazi"
-
-#: 
 msgid "Home"
 msgstr "Nyumbani"
 
@@ -6989,10 +6981,6 @@ msgid "SSE"
 msgstr "SSE"
 
 #: 
-msgid "Server cache time for remote images"
-msgstr "Muda wa akiba ya seva kwa picha za mbali"
-
-#: 
 msgid "Recipient Naming Method"
 msgstr "Mbinu ya Kutaja kwa Mpokeaji"
 
@@ -7629,15 +7617,6 @@ msgstr "Iwapo ungependa kudumisha mabadiliko yako kwenye faili hizi, tafadhali c
 msgid "Integrity Check Details:"
 msgstr "Maelezo ya Kukagua Uadilifu:"
 
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Aina za Amana zisizotumika zimegunduliwa"
-
-#: 
-#, fuzzy
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Usaidizi wa malipo ya Kadi ya Mkopo na Rasimu ya Benki umeacha kutumika. Ripoti zilizopo zisizo za benki huenda zisiweze kufikiwa tena katika matoleo yajayo."
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7771,14 +7750,6 @@ msgid "Remove Results from Cart"
 msgstr "Ondoa Matokeo kutoka kwa Cart"
 
 #: 
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Baadhi ya masharti yametambuliwa ambayo yanaweza kuzuia uboreshaji uliofanikiwa"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Tafadhali kagua na upunguze kazi hizi kabla ya kuendelea na uboreshaji:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Kazi za Kuweka upya Hifadhidata"
 
@@ -7892,10 +7863,6 @@ msgid "Must be set to 'true'"
 msgstr "Lazima iwekwe kuwa 'kweli'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Ni pamoja na/Config.php lazima ifafanue ufunguo wa usimbaji fiche kwa ajili ya kuhifadhi vitufe vya siri vya 2FA kwenye hifadhidata kwa kuweka thamani ya"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Ufunguo wa API ya Ramani za Google hutumiwa kwa anwani za Geocoding"
 
@@ -7997,26 +7964,6 @@ msgstr "kiwango cha wazi"
 #: 
 msgid "Not Subscribed "
 msgstr "Hujasajiliwa "
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Delta ya herufi ndogo za Nenosiri"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Nenosiri Zilizokatazwa"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Washa 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Inahitaji 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "2FA Jina la Maombi"
 
 #: 
 msgid "Login Info"
@@ -8186,14 +8133,6 @@ msgstr "Uteuzi wa Mali ya Familia"
 #: 
 msgid "Do you want to remove"
 msgstr "Je, unataka kuondoa"
-
-#: 
-msgid "View Active People"
-msgstr "Tazama Watu Wanaofanya Kazi"
-
-#: 
-msgid "View Inactive People"
-msgstr "Tazama Watu Wasiofanya Kazi"
 
 #: 
 msgid "Today's Birthdays"
