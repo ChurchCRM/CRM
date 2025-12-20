@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Include/LoadConfig.php';
+require_once __DIR__ . '/../Include/LoadConfig.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;

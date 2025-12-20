@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Dati importati con successo."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "persone che sono state importate"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Il tuo carrello contiene"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "persone da"
 
 #: 
@@ -1074,10 +1076,6 @@ msgstr "Dicembre"
 #: 
 msgid "Unk"
 msgstr "N/D"
-
-#: 
-msgid "Family List"
-msgstr "Lista Famiglie"
 
 #: 
 msgid "Created"
@@ -1687,7 +1685,8 @@ msgid "No Role Selected"
 msgstr "Nessun Ruolo Selezionato"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Solo le persone del carrello?"
 
 #: 
@@ -2071,7 +2070,8 @@ msgid "Option"
 msgstr "Opzione"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Attenzione: Rimozione resetta tutte le assegnazioni per tutte le persone con l&#39;incarico!"
 
 #: 
@@ -2755,15 +2755,6 @@ msgstr "Stile"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Imposta l'autorizzazione Vero per consentire a questo utente di modificare il valore corrente."
-
-#: 
-msgid "User Listing"
-msgstr "Lista utenti"
-
-#: 
-msgid "New User"
-msgstr "Nuovo utente\n"
-""
 
 #: 
 msgid "User Settings"
@@ -3454,10 +3445,6 @@ msgid "Add New Person"
 msgstr "Aggiungi Persona"
 
 #: 
-msgid "View All People"
-msgstr "Visualizza tutte le Persone"
-
-#: 
 msgid "Add New Family"
 msgstr "Nuova Famiglia"
 
@@ -3529,10 +3516,6 @@ msgstr "Benvenuto a"
 #: 
 msgid "Church Information"
 msgstr "Informazioni sulla Chiesa"
-
-#: 
-msgid "User Setup"
-msgstr "Configurazione dell'utente"
 
 #: 
 msgid "Email Setup"
@@ -6207,11 +6190,13 @@ msgid "Church Checking Account Number"
 msgstr "Numero di conto corrente della Chiesa"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Disattivato la famiglia"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Attivato la famiglia"
 
 #: 
@@ -6426,14 +6411,6 @@ msgstr "Conferma d'azione"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Conferma il reset del conteggio degli accessi fallito"
-
-#: 
-msgid "View Active Families"
-msgstr "Visualizza famiglie attive"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Visualizza famiglie inattive"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6705,18 +6682,6 @@ msgid "Self Verification"
 msgstr "Auto verifica"
 
 #: 
-msgid "Deactivate"
-msgstr "Disattivare"
-
-#: 
-msgid "Activate"
-msgstr "Attivare"
-
-#: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Numero di controllo"
 
@@ -6831,10 +6796,6 @@ msgstr "Auto Verifica"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonesiano - Indonesia"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST al carrello richiede un array Persone, FamilyID o GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6955,10 +6916,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "persone"
 
 #: 
 msgid "Search Family"
@@ -7297,7 +7254,8 @@ msgid "Debug Email Connection"
 msgstr "Debug e-mail di connessione"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Questa famiglia è disattivata"
 
 #: 
@@ -7544,11 +7502,13 @@ msgid "HTML URL"
 msgstr "URL HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Ultime Persone"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Persone Aggiornate"
 
 #: 
@@ -7819,10 +7779,6 @@ msgid "Unexpected Person Id"
 msgstr "ID persona inaspettato"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Data e ora dell'ultimo aggiornamento del software"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Consenti il rilascio degli aggiornamenti di sistema contrassegnati come 'pre-release' su GitHub"
 
@@ -8087,42 +8043,6 @@ msgstr "tasso di apertura"
 #: 
 msgid "Not Subscribed "
 msgstr "Non Iscritto "
-
-#: 
-msgid "Global User Settings"
-msgstr "Impostazioni Utente Globali"
-
-#: 
-msgid "General"
-msgstr "Generale"
-
-#: 
-msgid "Passwords"
-msgstr "Parole d’ordine (Passwords)"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Pausa Sessione"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Numero Massimo Accessi falliti"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Abilita reimpostazione Password"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Invia email agli Utenti Eliminati"
-
-#: 
-msgid "Min Password Length"
-msgstr "Lunghezza minima Password"
 
 #: 
 msgid "Min Password Characters Delta"
@@ -8555,12 +8475,4 @@ msgstr "Due caratteri da FirstName"
 #: 
 msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Imposta il carattere per il rendering delle iniziali. Carica il carattere personalizzato nella directory dei caratteri"
-
-#: 
-msgid "Person List Columns"
-msgstr "Colonne dell'elenco delle persone"
-
-#: 
-msgid "Family List Columns"
-msgstr "Colonne dell'elenco delle famiglie"
 

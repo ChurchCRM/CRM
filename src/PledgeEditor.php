@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -520,7 +520,7 @@ if ($iFamily) {
     }
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
@@ -825,4 +825,4 @@ require_once 'Include/Header.php';
     }
 </script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

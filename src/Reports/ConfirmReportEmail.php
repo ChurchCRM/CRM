@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -83,11 +83,8 @@ if ($numCustomFields > 0) {
     }
 }
 
-$sSubQuery = '';
-$familyId = InputUtils::legacyFilterInput($_GET['familyId'], 'int');
-if ($familyId) {
-    $sSubQuery = ' and fam_id in (' . $familyId . ') ';
-}
+// Filter by family ID if provided in the request
+$familyId = InputUtils::legacyFilterInput($_GET['familyId'] ?? null, 'int');
 
 // Get all the families with email-enabled members
 $familyQuery = FamilyQuery::create()
@@ -96,6 +93,7 @@ $familyQuery = FamilyQuery::create()
     ->endUse()
     ->orderByName();
 
+// Apply family ID filter if provided
 if ($familyId) {
     $familyQuery->filterById((int)$familyId);
 }
@@ -279,9 +277,12 @@ foreach ($families as $family) {
                 $currentFieldData = '';
                 // Try to access custom field data from the member object
                 $fieldPropertyName = $field->getId();
-                if (method_exists($member, 'get' . ucfirst($fieldPropertyName))) {
+                try {
                     $methodName = 'get' . ucfirst($fieldPropertyName);
                     $currentFieldData = trim($member->$methodName() ?? '');
+                } catch (Exception $e) {
+                    // Custom field getter does not exist or threw an exception
+                    $currentFieldData = '';
                 }
 
                 $OutStr = $field->getName() . ' : ' . $currentFieldData . '    ';

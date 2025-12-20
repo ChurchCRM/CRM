@@ -246,22 +246,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Pre-Upgrade Warnings') ?>
                             </h4>
 
-                            <?php if ($hasPreUpgradeTasks): ?>
-                                <div class="alert alert-danger">
-                                    <h5 class="alert-heading">
-                                        <i class="fa fa-bomb mr-2"></i><?= gettext('Pre-Upgrade Tasks Detected') ?>
-                                    </h5>
-                                    <hr>
-                                    <p><?= gettext("Some conditions have been identified which may prevent a successful upgrade") ?></p>
-                                    <p><?= gettext("Please review and mitigate these tasks before continuing with the upgrade:") ?></p>
-                                    <ul class="mb-0">
-                                        <?php foreach ($preUpgradeTasks as $task): ?>
-                                            <li><strong><?= InputUtils::escapeHTML($task->getTitle()) ?>:</strong> <?= InputUtils::escapeHTML($task->getDesc()) ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                            <?php endif; ?>
-
                             <?php if ($integrityCheckFailed): ?>
                                 <div class="alert alert-warning">
                                     <h5 class="alert-heading">
@@ -515,10 +499,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <li><?= gettext('Orphaned files from previous versions cleaned up') ?></li>
                                     </ul>
                                 </div>
-                                <div class="mt-5">
-                                    <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-primary btn-lg">
-                                        <i class="fa fa-home mr-2"></i><?= gettext('Return to Dashboard') ?>
-                                    </a>
+                                <p class="text-muted mb-2 mt-3"><?= gettext('You will be logged out and redirected to the login page.') ?></p>
+                                <div class="mt-4">
+                                    <div class="spinner-border spinner-border-sm text-primary mr-2" role="status">
+                                        <span class="sr-only"><?= gettext('Loading...') ?></span>
+                                    </div>
+                                    <span id="upgradeRedirectCountdown"><?= gettext('Redirecting in') ?> <strong>5</strong> <?= gettext('seconds...') ?></span>
                                 </div>
                             </div>
                         </div>

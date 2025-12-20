@@ -199,7 +199,7 @@ describe("API Private Photo and Avatar - Family", () => {
                 400
             ).then((response) => {
                 expect(response.body.success).to.eq(false);
-                expect(response.body.message).to.include("image");
+                expect(response.body.message).to.include("Failed to upload family photo");
             });
         });
 

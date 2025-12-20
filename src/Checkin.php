@@ -2,9 +2,9 @@
 
 $sPageTitle = gettext('Event Checkin');
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/Header.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -480,7 +480,7 @@ function filterByType(typeId) {
 <script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/js/checkin.js') ?>"></script>
 
-<?php require_once 'Include/Footer.php';
+<?php require_once __DIR__ . '/Include/Footer.php';
 
 function loadPerson($iPersonID)
 {

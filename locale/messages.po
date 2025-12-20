@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-13 19:47-0800\n"
+"POT-Creation-Date: 2025-12-20 11:33-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,10 +78,6 @@ msgid "%d event in %s"
 msgid_plural "%d events in %s"
 msgstr[0] ""
 msgstr[1] ""
-
-#, php-format
-msgid "%d families missing coordinates"
-msgstr ""
 
 #, php-format
 msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
@@ -206,13 +202,13 @@ msgstr ""
 msgid "2022/2023"
 msgstr ""
 
-msgid "2FA"
-msgstr ""
-
-msgid "2FA Application Name"
-msgstr ""
-
 msgid "2FA Code"
+msgstr ""
+
+msgid "2FA Enabled"
+msgstr ""
+
+msgid "<?= gettext(\"Password reset for\") ?>"
 msgstr ""
 
 msgid "A"
@@ -266,19 +262,16 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-msgid "Activate"
-msgstr ""
-
 msgid "Activate the boxed layout"
-msgstr ""
-
-msgid "Activated the Family"
 msgstr ""
 
 msgid "Active"
 msgstr ""
 
 msgid "Active Kiosks"
+msgstr ""
+
+msgid "Active Users"
 msgstr ""
 
 msgid "Actual Hash"
@@ -390,6 +383,9 @@ msgid "Add New Person"
 msgstr ""
 
 msgid "Add New Role"
+msgstr ""
+
+msgid "Add New User"
 msgstr ""
 
 msgid "Add Note"
@@ -639,6 +635,9 @@ msgid "Amount paid: ________________"
 msgstr ""
 
 msgid "An error occurred during demo data import"
+msgstr ""
+
+msgid "An error occurred. Please contact your system administrator."
 msgstr ""
 
 msgid "An error occurred: "
@@ -925,6 +924,9 @@ msgid "Backup completed successfully!"
 msgstr ""
 
 msgid "Backup downloaded. Server copy removed."
+msgstr ""
+
+msgid "Backup failed"
 msgstr ""
 
 msgid "Backup failed. Please try again."
@@ -1233,6 +1235,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr ""
+
+msgid "ChMeetings Export"
 msgstr ""
 
 #. Context: countries
@@ -1778,9 +1783,6 @@ msgstr ""
 msgid "Current fiscal year:"
 msgstr ""
 
-msgid "Custom"
-msgstr ""
-
 msgid "Custom Drop-Down List"
 msgstr ""
 
@@ -1910,7 +1912,10 @@ msgstr ""
 msgid "Database name is required"
 msgstr ""
 
-msgid "Database reset failed: "
+msgid "Database reset failed"
+msgstr ""
+
+msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
@@ -1953,12 +1958,6 @@ msgid "Date:"
 msgstr ""
 
 msgid "Day"
-msgstr ""
-
-msgid "Deactivate"
-msgstr ""
-
-msgid "Deactivated the Family"
 msgstr ""
 
 msgid "Dear Friend"
@@ -2063,6 +2062,9 @@ msgstr ""
 msgid "Delete Selected Rows"
 msgstr ""
 
+msgid "Delete User"
+msgstr ""
+
 msgid "Delete records permission"
 msgstr ""
 
@@ -2107,7 +2109,16 @@ msgstr ""
 msgid "Demo Data"
 msgstr ""
 
+msgid "Demo data import failed"
+msgstr ""
+
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr ""
+
 msgid "Demo data imported successfully"
+msgstr ""
+
+msgid "Demo data loaded successfully"
 msgstr ""
 
 #. Context: countries
@@ -2208,6 +2219,9 @@ msgstr ""
 msgid "Directory reports"
 msgstr ""
 
+msgid "Disable 2FA"
+msgstr ""
+
 msgid "Disable Group Specific Properties"
 msgstr ""
 
@@ -2215,9 +2229,6 @@ msgid "Disabled"
 msgstr ""
 
 msgid "Disabled for this group."
-msgstr ""
-
-msgid "Disallowed Passwords"
 msgstr ""
 
 msgid "Discard"
@@ -2305,6 +2316,9 @@ msgid "Download & Apply"
 msgstr ""
 
 msgid "Download and Apply System Update"
+msgstr ""
+
+msgid "Download failed"
 msgstr ""
 
 msgid "Download family letters"
@@ -2513,9 +2527,6 @@ msgstr ""
 msgid "Empty your entire cart?"
 msgstr ""
 
-msgid "Enable 2FA"
-msgstr ""
-
 msgid "Enable Email menu."
 msgstr ""
 
@@ -2532,9 +2543,6 @@ msgid "Enable Group Specific Properties"
 msgstr ""
 
 msgid "Enable New Kiosk Registration"
-msgstr ""
-
-msgid "Enable Password Reset"
 msgstr ""
 
 msgid "Enable Remote Backups to Cloud Services"
@@ -2802,7 +2810,16 @@ msgstr ""
 msgid "Export Selected Rows (OFX)"
 msgstr ""
 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr ""
+
 msgid "Export to CSV"
+msgstr ""
+
+msgid "Export to ChMeetings CSV"
+msgstr ""
+
+msgid "Exporting..."
 msgstr ""
 
 msgid "Exports database structure and data. Smaller file size."
@@ -2844,6 +2861,9 @@ msgstr ""
 msgid "Failed to add to cart"
 msgstr ""
 
+msgid "Failed to apply upgrade"
+msgstr ""
+
 msgid "Failed to copy URL"
 msgstr ""
 
@@ -2853,7 +2873,13 @@ msgstr ""
 msgid "Failed to create group. Please try again."
 msgstr ""
 
+msgid "Failed to delete orphaned files"
+msgstr ""
+
 msgid "Failed to delete role. Please try again."
+msgstr ""
+
+msgid "Failed to download latest release"
 msgstr ""
 
 msgid "Failed to download update package."
@@ -2872,6 +2898,9 @@ msgid "Failed to load cart status."
 msgstr ""
 
 msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
+msgid "Failed to refresh upgrade information"
 msgstr ""
 
 msgid "Failed to refresh upgrade information from GitHub."
@@ -2905,6 +2934,12 @@ msgid "Failed to update properties. Please try again."
 msgstr ""
 
 msgid "Failed to update role name. Please try again."
+msgstr ""
+
+msgid "Failed to upload family photo"
+msgstr ""
+
+msgid "Failed to upload person photo"
 msgstr ""
 
 #. Context: countries
@@ -2971,7 +3006,7 @@ msgstr ""
 msgid "Family Information"
 msgstr ""
 
-msgid "Family List"
+msgid "Family Listing"
 msgstr ""
 
 msgid "Family Map"
@@ -3372,9 +3407,6 @@ msgstr ""
 msgid "Gender Demographics"
 msgstr ""
 
-msgid "General"
-msgstr ""
-
 msgid "Generate"
 msgstr ""
 
@@ -3465,9 +3497,6 @@ msgid "Giving Report (Tax Statements)"
 msgstr ""
 
 msgid "Giving funds and categories"
-msgstr ""
-
-msgid "Global User Settings"
 msgstr ""
 
 msgid "Go"
@@ -3778,9 +3807,6 @@ msgstr ""
 msgid "Iceland (Ísland)"
 msgstr ""
 
-msgid "Id"
-msgstr ""
-
 msgid "Identify members who have not made any donations within a date range."
 msgstr ""
 
@@ -3973,7 +3999,13 @@ msgstr ""
 msgid "Invalid login or password"
 msgstr ""
 
+msgid "Invalid request data"
+msgstr ""
+
 msgid "Invalid request: Missing calendar id"
+msgstr ""
+
+msgid "Invalid status"
 msgstr ""
 
 #. Context: countries
@@ -4170,7 +4202,7 @@ msgstr ""
 msgid "Latest Note"
 msgstr ""
 
-msgid "Latest Persons"
+msgid "Latest People"
 msgstr ""
 
 msgid "Latitude"
@@ -4313,6 +4345,9 @@ msgid "Location"
 msgstr ""
 
 msgid "Location & Contact Information"
+msgstr ""
+
+msgid "Locked Users"
 msgstr ""
 
 msgid "Log File"
@@ -4463,6 +4498,12 @@ msgstr ""
 msgid "March"
 msgstr ""
 
+msgid "Marked the Family as Active"
+msgstr ""
+
+msgid "Marked the Family as Inactive"
+msgstr ""
+
 #. Context: countries
 msgid "Marshall Islands"
 msgstr ""
@@ -4487,9 +4528,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Mauritius (Moris)"
-msgstr ""
-
-msgid "Max Failed Login"
 msgstr ""
 
 msgid "Max. 32MB"
@@ -4631,12 +4669,6 @@ msgid "Middle"
 msgstr ""
 
 msgid "Middle Name"
-msgstr ""
-
-msgid "Min Password Characters Delta"
-msgstr ""
-
-msgid "Min Password Length"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -4925,9 +4957,6 @@ msgid "New Release"
 msgstr ""
 
 msgid "New Role"
-msgstr ""
-
-msgid "New User"
 msgstr ""
 
 #. Context: countries
@@ -5283,7 +5312,7 @@ msgstr ""
 msgid "Only Payments with Pledges"
 msgstr ""
 
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr ""
 
 msgid "Only the new data below"
@@ -5394,9 +5423,6 @@ msgstr ""
 msgid "PHP Configuration"
 msgstr ""
 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr ""
-
 msgid "Paddle"
 msgstr ""
 
@@ -5467,9 +5493,6 @@ msgid "Password Reset Successful"
 msgstr ""
 
 msgid "Password reset not available.  Please contact your system administrator"
-msgstr ""
-
-msgid "Passwords"
 msgstr ""
 
 msgid "Passwords do not match"
@@ -5599,6 +5622,9 @@ msgstr ""
 msgid "Person Editor"
 msgstr ""
 
+msgid "Person Listing"
+msgstr ""
+
 msgid "Person Name"
 msgstr ""
 
@@ -5632,6 +5658,9 @@ msgstr ""
 msgid "Person to Make User"
 msgstr ""
 
+msgid "Person(s) removed from cart"
+msgstr ""
+
 msgid "PersonID for Cart must be numeric"
 msgstr ""
 
@@ -5651,9 +5680,6 @@ msgid "Personal Work Phone"
 msgstr ""
 
 msgid "Personal Work/Other Email"
-msgstr ""
-
-msgid "Persons"
 msgstr ""
 
 #. Context: countries
@@ -6041,6 +6067,9 @@ msgstr ""
 msgid "Quick Search"
 msgstr ""
 
+msgid "Quick Settings"
+msgstr ""
+
 msgid "Quick Start"
 msgstr ""
 
@@ -6161,6 +6190,9 @@ msgstr ""
 msgid "Remote Backup Username"
 msgstr ""
 
+msgid "Remote backup failed"
+msgstr ""
+
 msgid "Remove"
 msgstr ""
 
@@ -6254,9 +6286,6 @@ msgstr ""
 msgid "Request Password Reset"
 msgstr ""
 
-msgid "Require 2FA"
-msgstr ""
-
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr ""
 
@@ -6281,7 +6310,13 @@ msgstr ""
 msgid "Reset Database"
 msgstr ""
 
+msgid "Reset Failed Logins"
+msgstr ""
+
 msgid "Reset Password"
+msgstr ""
+
+msgid "Reset Password via Email"
 msgstr ""
 
 msgid "Reset your password"
@@ -6760,9 +6795,6 @@ msgstr ""
 msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
-msgid "Send email to Deleted Users"
-msgstr ""
-
 msgid "Send family email"
 msgstr ""
 
@@ -6798,12 +6830,15 @@ msgstr ""
 msgid "Server error"
 msgstr ""
 
-msgid "Session Timeout"
-msgstr ""
-
 msgid ""
 "Session timeout length in seconds\n"
 "Set to zero to disable session timeouts."
+msgstr ""
+
+msgid "Set Active"
+msgstr ""
+
+msgid "Set Inactive"
 msgstr ""
 
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
@@ -6830,7 +6865,7 @@ msgstr ""
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
 msgstr ""
 
-msgid "Set true to disable entering personal addresses for unaffiliated persons in Person Editor. Set false to enable entering addresses for persons without a family assignment."
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
 msgstr ""
 
 msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
@@ -6873,6 +6908,9 @@ msgstr ""
 msgid "Should only administrators have access to the CSV export system and directory report?"
 msgstr ""
 
+msgid "Show"
+msgstr ""
+
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr ""
 
@@ -6898,6 +6936,9 @@ msgid "Show neighbors with these classifications:"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+msgid "Showing"
 msgstr ""
 
 msgid "Showing students with birthdays in"
@@ -7034,9 +7075,6 @@ msgstr ""
 
 #. Context: countries
 msgid "St. Vincent & Grenadines"
-msgstr ""
-
-msgid "Stack Trace"
 msgstr ""
 
 msgid "Standard Info"
@@ -7424,7 +7462,7 @@ msgstr ""
 msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
 msgstr ""
 
-msgid "This Family is Deactivated"
+msgid "This Family is Inactive"
 msgstr ""
 
 msgid "This action CANNOT be undone, and may have legal implications!"
@@ -7601,6 +7639,9 @@ msgid "Total Members"
 msgstr ""
 
 msgid "Total Payments"
+msgstr ""
+
+msgid "Total Users"
 msgstr ""
 
 msgid "Total number of rows in the CSV file:"
@@ -7815,12 +7856,6 @@ msgstr ""
 msgid "Unsupported Two Factor Authentication Configuration"
 msgstr ""
 
-msgid "Upcoming Anniversaries"
-msgstr ""
-
-msgid "Upcoming Birthdays"
-msgstr ""
-
 msgid "Update"
 msgstr ""
 
@@ -7863,7 +7898,7 @@ msgstr ""
 msgid "Updated Families"
 msgstr ""
 
-msgid "Updated Persons"
+msgid "Updated People"
 msgstr ""
 
 msgid "Updated via Family"
@@ -7936,13 +7971,10 @@ msgstr ""
 msgid "User Interface"
 msgstr ""
 
-msgid "User Listing"
+msgid "User Management"
 msgstr ""
 
 msgid "User Settings"
-msgstr ""
-
-msgid "User Setup"
 msgstr ""
 
 msgid "User accounts and roles"
@@ -8095,19 +8127,10 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-msgid "View Active Families"
-msgstr ""
-
-msgid "View Active People"
-msgstr ""
-
 msgid "View All Deposits"
 msgstr ""
 
 msgid "View All Fundraisers"
-msgstr ""
-
-msgid "View All People"
 msgstr ""
 
 msgid "View Buyers"
@@ -8116,16 +8139,13 @@ msgstr ""
 msgid "View Cart"
 msgstr ""
 
+msgid "View Details"
+msgstr ""
+
 msgid "View Family Page"
 msgstr ""
 
 msgid "View Group"
-msgstr ""
-
-msgid "View Inactive Families"
-msgstr ""
-
-msgid "View Inactive People"
 msgstr ""
 
 msgid "View Logs"
@@ -8230,7 +8250,7 @@ msgstr ""
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
 msgstr ""
 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr ""
 
 msgid "Warning: Signature mismatch"
@@ -8252,6 +8272,9 @@ msgid "Web Server"
 msgstr ""
 
 msgid "WebDAV"
+msgstr ""
+
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
 msgstr ""
 
 msgid "Wedding"
@@ -8597,6 +8620,9 @@ msgstr ""
 msgid "eMail Dashboard"
 msgstr ""
 
+msgid "entries"
+msgstr ""
+
 msgid "families"
 msgstr ""
 
@@ -8681,6 +8707,9 @@ msgstr ""
 msgid "not found or user without an email"
 msgstr ""
 
+msgid "of"
+msgstr ""
+
 msgid "of People"
 msgstr ""
 
@@ -8708,22 +8737,22 @@ msgstr ""
 msgid "people already in cart"
 msgstr ""
 
+msgid "people from"
+msgstr ""
+
 msgid "people from cart"
 msgstr ""
 
 msgid "people removed from cart"
 msgstr ""
 
+msgid "people were imported"
+msgstr ""
+
 msgid "person"
 msgid_plural "people"
 msgstr[0] ""
 msgstr[1] ""
-
-msgid "persons from"
-msgstr ""
-
-msgid "persons were imported"
-msgstr ""
 
 msgid "property"
 msgstr ""
@@ -8771,6 +8800,9 @@ msgid "task(s)"
 msgstr ""
 
 msgid "to"
+msgstr ""
+
+msgid "total"
 msgstr ""
 
 msgid "with at least one:"

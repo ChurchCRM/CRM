@@ -13,7 +13,6 @@ use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
-use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -57,11 +56,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 'success' => true,
                 'hasPhoto' => $family->getPhoto()->hasUploadedPhoto()
             ]);
-        } catch (\Exception $e) {
-            return SlimUtils::renderJSON($response, [
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 400);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to upload family photo'), [], 400, $e, $request);
         }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
@@ -128,13 +124,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             $family->sendVerifyEmail();
 
             return SlimUtils::renderSuccessJSON($response);
-        } catch (Exception $e) {
-            LoggerUtils::getAppLogger()->error($e->getMessage());
-
-            return SlimUtils::renderJSON($response, [
-                'message' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
-                'trace' => $e->getMessage(),
-            ], 500);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Error sending email(s)') , [], 500, $e, $request);
         }
     });
 
@@ -169,30 +160,40 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/activate/{status}', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
-        $newStatus = $args['status'];
 
-        $currentStatus = (empty($family->getDateDeactivated()) ? 'true' : 'false');
+        // Normalize incoming status to boolean for clarity (true = activate, false = deactivate)
+        $newStatus = filter_var($args['status'], FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+        if ($newStatus === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid status'), [], 400);
+        }
 
-        //update only if the value is different
+        $currentStatus = $family->isActive();
+
+        // update only if the value is different
         if ($currentStatus !== $newStatus) {
-            if ($newStatus == 'false') {
-                $family->setDateDeactivated(date('YmdHis'));
-            } elseif ($newStatus == 'true') {
+            $currentUserId = AuthenticationManager::getCurrentUser()->getId();
+            $currentDate = new \DateTime();
+            if ($newStatus === false) {
+                // Deactivating: set DateDeactivated to now
+                $family->setDateDeactivated($currentDate);
+            } else {
+                // Activating: clear DateDeactivated
                 $family->setDateDeactivated(null);
             }
-            $family->save();
 
-            //Create a note to record the status change
+
+            // Create a note to record the status change
             $note = new Note();
             $note->setFamId($family->getId());
-            if ($newStatus == 'false') {
-                $note->setText(gettext('Deactivated the Family'));
-            } else {
-                $note->setText(gettext('Activated the Family'));
-            }
+            $note->setText($newStatus === false ? gettext('Marked the Family as Inactive') : gettext('Marked the Family as Active'));
             $note->setType('edit');
-            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
+            $note->setEntered($currentUserId);
             $note->save();
+
+            // Update last edited metadata
+            $family->setDateLastEdited($currentDate);
+            $family->setEditedBy($currentUserId);
+            $family->save();
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);

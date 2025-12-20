@@ -1,6 +1,6 @@
 <?php
 
-require_once '../Include/LoadConfig.php';
+require_once __DIR__ . '/../Include/LoadConfig.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
@@ -60,7 +60,6 @@ require __DIR__ . '/routes/kiosks.php';
 require __DIR__ . '/routes/email/mailchimp.php';
 require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/users/user.php';
-require __DIR__ . '/routes/users/user-admin.php';
 require __DIR__ . '/routes/users/user-current.php';
 require __DIR__ . '/routes/users/user-settings.php';
 

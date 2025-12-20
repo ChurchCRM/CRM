@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "ייבוא המידע הושלם בהצלחה"
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "האנשים יובאו בהצלחה"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "הסל שלך מכיל"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "אנשים מ:"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "דצמבר"
 #: 
 msgid "Unk"
 msgstr "לא ידוע"
-
-#: 
-msgid "Family List"
-msgstr "רשימת משפחות"
 
 #: 
 msgid "Created"
@@ -1682,7 +1680,8 @@ msgid "No Role Selected"
 msgstr "לא נבחר תפקיד"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "רק אנשים בעגלה?"
 
 #: 
@@ -2063,7 +2062,8 @@ msgid "Option"
 msgstr "אפשרות"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "אזהרה: הסרה תאפס את כל השיוכים עבור כל האנשים עם השיוך!"
 
 #: 
@@ -2743,14 +2743,6 @@ msgstr "סגנון"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "הגדר הרשאה כ'אמת' כדי לאפשר למשתמש זה לשנות את הערך הנוכחי שלו."
-
-#: 
-msgid "User Listing"
-msgstr "רשימת משתמשים"
-
-#: 
-msgid "New User"
-msgstr "משתמש חדש"
 
 #: 
 msgid "User Settings"
@@ -3441,10 +3433,6 @@ msgid "Add New Person"
 msgstr "הוסף אדם חדש"
 
 #: 
-msgid "View All People"
-msgstr "הצג את כל האנשים"
-
-#: 
 msgid "Add New Family"
 msgstr "הוסף משפחה חדשה"
 
@@ -3515,10 +3503,6 @@ msgstr "ברוך הבא ל"
 #: 
 msgid "Church Information"
 msgstr "מידע מוסד"
-
-#: 
-msgid "User Setup"
-msgstr "הגדרות משתמש"
 
 #: 
 msgid "Email Setup"
@@ -6181,11 +6165,13 @@ msgid "Church Checking Account Number"
 msgstr "מספר חשבון בנק של המוסד"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "המשפחה הושבתה"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "המשפחה הופעלה"
 
 #: 
@@ -6400,14 +6386,6 @@ msgstr "אישור פעולה"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "אנא אשר איפוס ספירת התחברויות שנכשלו"
-
-#: 
-msgid "View Active Families"
-msgstr "הצג משפחות פעילות"
-
-#: 
-msgid "View Inactive Families"
-msgstr "הצג משפחות לא פעילות"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6678,18 +6656,6 @@ msgid "Self Verification"
 msgstr "אימות עצמי"
 
 #: 
-msgid "Deactivate"
-msgstr "בטל"
-
-#: 
-msgid "Activate"
-msgstr "הפעל"
-
-#: 
-msgid "Stack Trace"
-msgstr "מעקב מחסנית"
-
-#: 
 msgid "Check Number"
 msgstr "בדוק מספר"
 
@@ -6803,10 +6769,6 @@ msgstr "אימות עצמי"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonesian - Indonesia"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST לעגלה דורש מערך אנשים, FamilyID, או GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6927,10 +6889,6 @@ msgstr "מערב-צפון-מערב"
 #: 
 msgid "WSW"
 msgstr "מערב-דרום-מערב"
-
-#: 
-msgid "Persons"
-msgstr "אנשים"
 
 #: 
 msgid "Search Family"
@@ -7269,7 +7227,8 @@ msgid "Debug Email Connection"
 msgstr "ניפוי באגים בחיבור דוא\"ל"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "משפחה זו מושבתת"
 
 #: 
@@ -7514,11 +7473,13 @@ msgid "HTML URL"
 msgstr "כתובת URL של HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "אנשים אחרונים"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "אנשים מעודכנים"
 
 #: 
@@ -7788,10 +7749,6 @@ msgid "Unexpected Person Id"
 msgstr "מזהה אדם בלתי צפוי"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "חותמת זמן אחרונה לבדיקת עדכוני תוכנה"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "אפשר שדרוגי מערכת לגרסאות המסומנות כ'קדם-הפצה' ב-GitHub"
 
@@ -8053,42 +8010,6 @@ msgstr "שיעור פתיחה"
 #: 
 msgid "Not Subscribed "
 msgstr "לא מנוי"
-
-#: 
-msgid "Global User Settings"
-msgstr "הגדרות משתמש גלובליות"
-
-#: 
-msgid "General"
-msgstr "כללי"
-
-#: 
-msgid "Passwords"
-msgstr "סיסמאות"
-
-#: 
-msgid "2FA"
-msgstr "אימות דו-שלבי"
-
-#: 
-msgid "Session Timeout"
-msgstr "תפוגת זמן הפעלה"
-
-#: 
-msgid "Max Failed Login"
-msgstr "מקסימום ניסיונות התחברות כושלים"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "אפשר איפוס סיסמה"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "שלח דוא\"ל למשתמשים שנמחקו"
-
-#: 
-msgid "Min Password Length"
-msgstr "אורך סיסמה מינימלי"
 
 #: 
 msgid "Min Password Characters Delta"
@@ -8571,14 +8492,6 @@ msgstr "שני תווים מ-FirstName"
 #: 
 msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "הגדר גופן להצגת ראשי תיבות. העלה גופן מותאם אישית לתיקיית הגופנים"
-
-#: 
-msgid "Person List Columns"
-msgstr "עמודות רשימת אנשים"
-
-#: 
-msgid "Family List Columns"
-msgstr "עמודות רשימת משפחות"
 
 #: 
 msgid "Church Email not set, please visit the settings page"

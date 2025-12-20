@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Impor data berhasil"
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "Data telah diimpor"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Daftar Pesanan"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "orang dari"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "Desember"
 #: 
 msgid "Unk"
 msgstr "Lepaskan"
-
-#: 
-msgid "Family List"
-msgstr "Daftar Keluarga"
 
 #: 
 msgid "Created"
@@ -1684,7 +1682,8 @@ msgid "No Role Selected"
 msgstr "Tidak Ada Peran Dipilih"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Hanya orang kereta?"
 
 #: 
@@ -2065,7 +2064,8 @@ msgid "Option"
 msgstr "Pilihan"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Peringatan: Menghapus akan mengatur ulang semua tugas untuk semua orang dengan tugas itu!"
 
 #: 
@@ -2747,14 +2747,6 @@ msgstr "Gaya"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Tetapkan Izin Benar untuk memberi pengguna ini kemampuan untuk mengubah nilai mereka saat ini."
-
-#: 
-msgid "User Listing"
-msgstr "Daftar Pengguna"
-
-#: 
-msgid "New User"
-msgstr "Pengguna baru"
 
 #: 
 msgid "User Settings"
@@ -3445,11 +3437,6 @@ msgid "Add New Person"
 msgstr "Tambahkan Orang Baru"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "Lihat semua Orang"
-
-#: 
 msgid "Add New Family"
 msgstr "Tambahkan Keluarga Baru"
 
@@ -3520,11 +3507,6 @@ msgstr "Selamat Datang di"
 #: 
 msgid "Church Information"
 msgstr "Informasi Gereja"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "Pengaturan pengguna"
 
 #: 
 msgid "Email Setup"
@@ -6187,11 +6169,13 @@ msgid "Church Checking Account Number"
 msgstr "Nomor Rekening Pengecekan Gereja"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Menonaktifkan Keluarga"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Mengaktifkan Keluarga"
 
 #: 
@@ -6406,14 +6390,6 @@ msgstr "Konfirmasi Tindakan"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Harap konfirmasi atur ulang jumlah login gagal"
-
-#: 
-msgid "View Active Families"
-msgstr "Lihat Keluarga Aktif"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Lihat Keluarga Tidak Aktif"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6685,18 +6661,6 @@ msgid "Self Verification"
 msgstr "Verifikasi diri"
 
 #: 
-msgid "Deactivate"
-msgstr "Menonaktifkan"
-
-#: 
-msgid "Activate"
-msgstr "Mengaktifkan"
-
-#: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Periksa Nomor"
 
@@ -6811,10 +6775,6 @@ msgstr "Verifikasi diri"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonesia - Indonesia"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST ke troli membutuhkan array Orang, FamilyID, atau GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6935,10 +6895,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Orang"
 
 #: 
 msgid "Search Family"
@@ -7277,7 +7233,8 @@ msgid "Debug Email Connection"
 msgstr "Koneksi Email Debug"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Keluarga Ini Dinonaktifkan"
 
 #: 
@@ -7524,11 +7481,13 @@ msgid "HTML URL"
 msgstr "HTML URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Orang terbaru"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Orang yang Diperbarui"
 
 #: 
@@ -7790,10 +7749,6 @@ msgstr "URL verifikasi"
 #: 
 msgid "Unexpected Person Id"
 msgstr "Id Orang Tidak Terduga"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Pembaruan Waktu Pemeriksaan Perangkat Lunak Terakhir"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
@@ -8058,42 +8013,6 @@ msgstr "Buka Kurs"
 #: 
 msgid "Not Subscribed "
 msgstr "Tidak Berlangganan"
-
-#: 
-msgid "Global User Settings"
-msgstr "Pengaturan Pengguna Global"
-
-#: 
-msgid "General"
-msgstr "Umum"
-
-#: 
-msgid "Passwords"
-msgstr "Kata Sandi"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Waktu sesi habis"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Maks Gagal Masuk"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Aktifkan Reset Kata Sandi"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Kirim email untuk menghapus pengguna"
-
-#: 
-msgid "Min Password Length"
-msgstr "Min Panjang Kata Sandi"
 
 #: 
 msgid "Min Password Characters Delta"
@@ -8578,14 +8497,6 @@ msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Tentukan font untuk inisial. Unggah custom fonts ke direktori fonts"
 
 #: 
-msgid "Person List Columns"
-msgstr "Kolom Senarai Orang"
-
-#: 
-msgid "Family List Columns"
-msgstr "Kolom Senarai Keluarga"
-
-#: 
 msgid "Church Email not set, please visit the settings page"
 msgstr "Email Gereja belum diatur, buka halaman pengaturan"
 
@@ -8606,10 +8517,6 @@ msgstr "Log Sistem"
 #: 
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
 msgstr "Gunakan Content Security Policy (CSP) untuk membantu melindungi dari XSS Scripting. Jika non-aktif, masalah CSP hanya dicatat."
-
-#: 
-msgid "Maximum number of log files to keep"
-msgstr "Jumlah maksimum log file"
 
 #: 
 msgid "Enter event description..."
@@ -8642,10 +8549,6 @@ msgstr "Level Log:"
 #: 
 msgid "Save Log Level"
 msgstr "Simpan Level Log"
-
-#: 
-msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
-msgstr "Angka rendah memuat log lebih detail, angka lebih tinggi hanya mencatat beberapa log. Berlaku di log selanjutnya.."
 
 #: 
 msgid "View application logs. Click on a log file to view its contents."

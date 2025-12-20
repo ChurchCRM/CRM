@@ -20,11 +20,11 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
         $force = isset($body['force']) ? (bool)$body['force'] : false;
 
         if (!$force) {
-        $peopleCount = PersonQuery::create()->count();        
+            $peopleCount = PersonQuery::create()->count();
             if ($peopleCount !== 1 ) {
                 return SlimUtils::renderJSON($response, [
                     'success' => false,
-                    'error' => 'Demo data import is only available on fresh installations with exactly 1 person'
+                    'message' => gettext('Demo data import is only available on fresh installations with exactly 1 person')
                 ], 403);
             }
         }
@@ -39,7 +39,7 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
 
             $responseData = [
                 'success' => $result['success'],
-                'message' => $result['success'] ? 'Demo data loaded successfully' : 'Demo data import failed',
+                'message' => $result['success'] ? gettext('Demo data loaded successfully') : gettext('Demo data import failed'),
                 'imported' => $result['imported'],
                 'warnings' => $result['warnings'],
                 'errors' => $result['errors'],
@@ -54,17 +54,8 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
             
             return SlimUtils::renderJSON($response, $responseData, $statusCode);
 
-        } catch (Exception $e) {
-            $logger->error('Demo data import exception', [
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString()
-            ]);
-
-            return SlimUtils::renderJSON($response, [
-                'success' => false,
-                'error' => 'An error occurred during demo data import',
-                'details' => $e->getMessage()
-            ], 500);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('An error occurred during demo data import'), [], 500, $e, $request);
         }
     });
 

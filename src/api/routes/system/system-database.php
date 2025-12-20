@@ -5,7 +5,6 @@ use ChurchCRM\Backup\BackupDownloader;
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\RestoreJob;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -16,27 +15,30 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/database', function (RouteCollectorProxy $group): void {
 
-    $group->get('/people/export/chmeetings', 'exportChMeetings');
-
     $group->post('/backup', function (Request $request, Response $response, array $args): Response {
-        $input = $request->getParsedBody();
-        $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
-        $BackupType = $input['BackupType'];
-        $Backup = new BackupJob($BaseName, $BackupType);
-        $Backup->execute();
+        try {
+            $input = $request->getParsedBody();
+            $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
+            $BackupType = $input['BackupType'];
+            $Backup = new BackupJob($BaseName, $BackupType);
+            $Backup->execute();
 
-        return SlimUtils::renderJSON(
-            $response,
-            json_decode(
-                json_encode(
-                    $Backup,
+            return SlimUtils::renderJSON(
+                $response,
+                json_decode(
+                    json_encode(
+                        $Backup,
+                        JSON_THROW_ON_ERROR
+                    ),
+                    (bool) JSON_OBJECT_AS_ARRAY,
+                    512,
                     JSON_THROW_ON_ERROR
-                ),
-                (bool) JSON_OBJECT_AS_ARRAY,
-                512,
-                JSON_THROW_ON_ERROR
-            )
-        );
+                )
+            );
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Backup failed'), [], $status, $e, $request);
+        }
     });
 
     $group->post('/backupRemote', function (Request $request, Response $response, array $args): Response {
@@ -48,17 +50,22 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
                 SystemConfig::getValue('sChurchName')
             ) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
             $BackupType = $input['BackupType'];
-            $Backup = new BackupJob($BaseName, $BackupType);
-            $Backup->execute();
-            $copyStatus = $Backup->copyToWebDAV(
-                SystemConfig::getValue('sExternalBackupEndpoint'),
-                SystemConfig::getValue('sExternalBackupUsername'),
-                SystemConfig::getValue('sExternalBackupPassword')
-            );
+            try {
+                $Backup = new BackupJob($BaseName, $BackupType);
+                $Backup->execute();
+                $copyStatus = $Backup->copyToWebDAV(
+                    SystemConfig::getValue('sExternalBackupEndpoint'),
+                    SystemConfig::getValue('sExternalBackupUsername'),
+                    SystemConfig::getValue('sExternalBackupPassword')
+                );
 
-            return SlimUtils::renderJSON($response, ['copyStatus' => $copyStatus]);
+                return SlimUtils::renderJSON($response, ['copyStatus' => $copyStatus]);
+            } catch (\Throwable $e) {
+                $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+                return SlimUtils::renderErrorJSON($response, gettext('Remote backup failed'), [], $status, $e, $request);
+            }
         } else {
-            throw new \Exception('WebDAV backups are not correctly configured.  Please ensure endpoint, username, and password are set', 500);
+            return SlimUtils::renderErrorJSON($response, gettext('WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set'), [], 500);
         }
     });
 
@@ -79,115 +86,23 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
                     JSON_THROW_ON_ERROR
                 )
             );
-        } catch (\Exception $e) {
-            LoggerUtils::getAppLogger()->error('Restore failed: ' . $e->getMessage());
-            return SlimUtils::renderJSON(
-                $response->withStatus($e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500),
-                ['error' => true, 'message' => $e->getMessage()]
-            );
+        } catch (\Throwable $e) {
+            $logger = LoggerUtils::getAppLogger();
+            $logger->error('Restore failed', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
+
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Database restore failed'), [], $status, $e, $request);
         }
     });
 
     $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response {
         $filename = $args['filename'];
-        BackupDownloader::downloadBackup($filename);
-
-        return $response;
+        try {
+            BackupDownloader::downloadBackup($filename);
+            return $response;
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Download failed'), [], $status, $e, $request);
+        }
     });
 })->add(AdminRoleAuthMiddleware::class);
-
-function exportChMeetings(Request $request, Response $response, array $args): Response
-{
-    $header_data = [
-        'First Name',
-        'Last Name',
-        'Middle Name',
-        'Gender',
-        'Marital Status',
-        'Anniversary',
-        'Engagement Date',
-        'Birthdate',
-        'Mobile Phone',
-        'Home Phone',
-        'Email',
-        'Facebook',
-        'School',
-        'Grade',
-        'Employer',
-        'Job Title',
-        'Talents And Hobbies',
-        'Address Line',
-        'Address Line 2',
-        'City',
-        'State',
-        'ZIP Code',
-        'Notes',
-        'Join Date',
-        'Family Id',
-        'Family Role',
-        'Baptism Date',
-        'Baptism Location',
-        'Nickname',
-    ];
-    $people = PersonQuery::create()->find();
-    $list = [];
-    foreach ($people as $person) {
-        $family = $person->getFamily();
-        $anniversary = ($family ? $family->getWeddingdate(SystemConfig::getValue('sDateFormatLong')) : '');
-        $familyRole = $person->getFamilyRoleName();
-        if ($familyRole === 'Head of Household') {
-            $familyRole = 'Primary';
-        }
-
-        $chPerson = [
-            $person->getFirstName(),
-            $person->getLastName(),
-            $person->getMiddleName(),
-            $person->getGenderName(),
-            '',
-            $anniversary,
-            '',
-            $person->getFormattedBirthDate(),
-            $person->getCellPhone(),
-            $person->getHomePhone(),
-            $person->getEmail(),
-            $person->getFacebook(),
-            '',
-            '',
-            '',
-            '',
-            '',
-            $person->getAddress1(),
-            $person->getAddress2(),
-            $person->getCity(),
-            $person->getState(),
-            $person->getZip(),
-            '',
-            $person->getMembershipDate(SystemConfig::getValue('sDateFormatLong')),
-            $family ? $family->getId() : '',
-            $familyRole,
-            '',
-            '',
-            ''
-        ];
-        $list[] = $chPerson;
-    }
-
-    $out = fopen('php://temp', 'w+');
-    fputcsv($out, $header_data);
-    foreach ($list as $fields) {
-        fputcsv($out, $fields, ',');
-    }
-    rewind($out);
-    $csvData = stream_get_contents($out);
-    fclose($out);
-
-    $response = $response->withHeader('Content-Type', 'text/csv');
-    $response = $response->withHeader(
-        'Content-Disposition',
-        'attachment; filename="ChMeetings-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv"'
-    );
-    $response->getBody()->write($csvData);
-
-    return $response;
-}

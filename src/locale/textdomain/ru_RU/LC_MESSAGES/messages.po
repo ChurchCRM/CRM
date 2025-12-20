@@ -340,7 +340,8 @@ msgid "Data import successful."
 msgstr "Импорт данных успешно."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "люди были импортированы"
 
 #: 
@@ -484,7 +485,8 @@ msgid "Your cart contains"
 msgstr "Ваша корзина содержит"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "человек из"
 
 #: 
@@ -1087,10 +1089,6 @@ msgstr "Декабрь"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Family List"
-msgstr "Семейный список"
 
 #: 
 msgid "Created"
@@ -1711,7 +1709,7 @@ msgstr "Роль не выбрана"
 
 #: 
 #, fuzzy
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr "Только корзина лиц ?"
 
 #: 
@@ -2100,7 +2098,8 @@ msgid "Option"
 msgstr "Опции"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Внимание: удаление сбросит все задания для всех лиц с присвоением!"
 
 #: 
@@ -2797,14 +2796,6 @@ msgstr "Стиль"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Установите Permission True, чтобы дать этому пользователю возможность изменять свое текущее значение."
-
-#: 
-msgid "User Listing"
-msgstr "Список пользователей"
-
-#: 
-msgid "New User"
-msgstr "Новый пользователь"
 
 #: 
 msgid "User Settings"
@@ -3513,11 +3504,6 @@ msgid "Add New Person"
 msgstr "Добавить нового человека"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "Просмотреть всех людей"
-
-#: 
 msgid "Add New Family"
 msgstr "Добавить носую семью"
 
@@ -3583,11 +3569,6 @@ msgstr "Добро пожаловать в"
 
 #: 
 msgid "Church Information"
-msgstr "Информация о церкви"
-
-#: 
-#, fuzzy
-msgid "User Setup"
 msgstr "Информация о церкви"
 
 #: 
@@ -4986,10 +4967,6 @@ msgid "Unexpected Person Id"
 msgstr "Непредусмотренный ID человека"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Отметка времени проверки последнего обновления программного обеспечения"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Поиск событий календаря"
 
@@ -5208,43 +5185,6 @@ msgstr "Иврит"
 #: 
 msgid "Not Subscribed "
 msgstr "Не подписаны␣"
-
-#: 
-msgid "Global User Settings"
-msgstr "Глобальные настройки пользователя"
-
-#: 
-msgid "General"
-msgstr "Общие"
-
-#: 
-msgid "Passwords"
-msgstr "Пароли"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-#, fuzzy
-msgid "Session Timeout"
-msgstr "лимит времени сеанса"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Максимальное число неудачных попыток входа в систему"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "включение процедуры сброса пароля"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Отправить эл.письмо удаленным пользователям"
-
-#: 
-msgid "Min Password Length"
-msgstr "Минимальная длина пароля"
 
 #: 
 msgid "Min Password Characters Delta"

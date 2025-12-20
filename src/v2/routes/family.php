@@ -27,26 +27,74 @@ function listFamilies(Request $request, Response $response, array $args): Respon
 {
     $renderer = new PhpRenderer('templates/people/');
     $sMode = 'Active';
-    // Filter received user input as needed
-    if (isset($_GET['mode'])) {
-        $sMode = InputUtils::legacyFilterInput($_GET['mode']);
+
+    // Read filters from query parameters (support both legacy $_GET and PSR-7)
+    $queryParams = $request->getQueryParams();
+
+    // Family active status - support `familyActiveStatus=active|inactive|all` or `active=1|0`
+    $familyActiveStatus = 'active';
+    // Backwards compatibility: support legacy `mode` query param (e.g., ?mode=inactive)
+    if (!empty($queryParams['mode'])) {
+        $modeVal = strtolower(InputUtils::legacyFilterInput($queryParams['mode']));
+        if ($modeVal === 'inactive') {
+            $familyActiveStatus = 'inactive';
+        } elseif ($modeVal === 'all') {
+            $familyActiveStatus = 'all';
+        } else {
+            $familyActiveStatus = 'active';
+        }
     }
-    if (strtolower($sMode) === 'inactive') {
-        $families = FamilyQuery::create()
-            ->filterByDateDeactivated(null, Criteria::ISNOTNULL)
-            ->orderByName()
-            ->find();
-    } else {
+    if (isset($queryParams['familyActiveStatus'])) {
+        $familyActiveStatus = strtolower(InputUtils::legacyFilterInput($queryParams['familyActiveStatus']));
+    } elseif (isset($queryParams['active'])) {
+        // backward compatible: active=1 -> active, active=0 -> inactive
+        $familyActiveStatus = ($queryParams['active'] === '0' || $queryParams['active'] === 'false') ? 'inactive' : 'active';
+    }
+
+    // City / State filters (optional free-text)
+    $filterCity = '';
+    if (!empty($queryParams['City'])) {
+        $filterCity = InputUtils::legacyFilterInput($queryParams['City']);
+    }
+
+    $filterState = '';
+    if (!empty($queryParams['State'])) {
+        $filterState = InputUtils::legacyFilterInput($queryParams['State']);
+    }
+
+    // Build the base query and apply filters
+    $familiesQuery = FamilyQuery::create()->orderByName();
+
+    if ($familyActiveStatus === 'active') {
+        $familiesQuery->filterByDateDeactivated(null);
         $sMode = 'Active';
-        $families = FamilyQuery::create()
-            ->filterByDateDeactivated(null)
-            ->orderByName()
-            ->find();
+    } elseif ($familyActiveStatus === 'inactive') {
+        $familiesQuery->filterByDateDeactivated(null, Criteria::ISNOTNULL);
+        $sMode = 'Inactive';
+    } else {
+        // 'all' - no active/inactive filtering
+        $sMode = 'All';
     }
+
+    if ($filterCity !== '') {
+        // use LIKE for partial matches
+        $familiesQuery->filterByCity('%' . $filterCity . '%', Criteria::LIKE);
+        $sMode = $sMode . ' - ' . $filterCity;
+    }
+
+    if ($filterState !== '') {
+        $familiesQuery->filterByState('%' . $filterState . '%', Criteria::LIKE);
+        $sMode = $sMode . ' - ' . $filterState;
+    }
+
+    $families = $familiesQuery->find();
     $pageArgs = [
         'sMode' => $sMode,
         'sRootPath' => SystemURLs::getRootPath(),
         'families' => $families,
+        'filterCity' => $filterCity,
+        'filterState' => $filterState,
+        'familyActiveStatus' => $familyActiveStatus,
     ];
 
     return $renderer->render($response, 'family-list.php', $pageArgs);

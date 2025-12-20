@@ -347,7 +347,8 @@ msgid "Data import successful."
 msgstr "Importering lyckades."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "personer importerade"
 
 #: 
@@ -492,7 +493,8 @@ msgid "Your cart contains"
 msgstr "Korgen innehåller"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "personer ifrån"
 
 #: 
@@ -1104,10 +1106,6 @@ msgstr "December"
 #: 
 msgid "Unk"
 msgstr "Okänd"
-
-#: 
-msgid "Family List"
-msgstr "Familjelista"
 
 #: 
 msgid "Created"
@@ -1736,7 +1734,7 @@ msgstr "Ingen roll vald"
 
 #: 
 #, fuzzy
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr "Endast korg personer?"
 
 #: 
@@ -2133,7 +2131,8 @@ msgid "Option"
 msgstr "Valmöjligheter"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Varning: Att radera detta ställar om alla arbetsuppgifter för alla personer med denna arbetsuppgift!"
 
 #: 
@@ -2855,14 +2854,6 @@ msgid "Set Permission True to give this user the ability to change their current
 msgstr "Ställ tillåtelse sant för att ge den här användaren möjlighet att ändra sitt nuvarande värde."
 
 #: 
-msgid "User Listing"
-msgstr "Användare lista"
-
-#: 
-msgid "New User"
-msgstr "Ny användare"
-
-#: 
 msgid "User Settings"
 msgstr "Användarinställningar"
 
@@ -3576,11 +3567,6 @@ msgid "Add New Person"
 msgstr "Lägg till ny person"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "Visa alla personer"
-
-#: 
 msgid "Add New Family"
 msgstr "Lägg till ny familj"
 
@@ -3651,11 +3637,6 @@ msgstr "Välkommen till"
 #: 
 msgid "Church Information"
 msgstr "Kyrklig information"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "Användarinställning"
 
 #: 
 msgid "Email Setup"
@@ -6318,11 +6299,13 @@ msgid "Church Checking Account Number"
 msgstr "Kyrkan kontrollerar kontonummer"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Deaktiverade familjen"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Aktiverade familjen"
 
 #: 
@@ -6537,14 +6520,6 @@ msgstr "Bekräftelse av åtgärd"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Bekräfta återställningen av inloggningsantalet"
-
-#: 
-msgid "View Active Families"
-msgstr "Visa aktiva familjer"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Visa inaktiva familjer"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6816,18 +6791,6 @@ msgid "Self Verification"
 msgstr "Självverifiering"
 
 #: 
-msgid "Deactivate"
-msgstr "Avaktivera"
-
-#: 
-msgid "Activate"
-msgstr "Aktivera"
-
-#: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Kolla numret"
 
@@ -6942,10 +6905,6 @@ msgstr "Självverifiera"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonesiska - Indonesien"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST till kundvagn kräver en personuppsättning, FamilyID eller GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -7066,10 +7025,6 @@ msgstr "VNV"
 #: 
 msgid "WSW"
 msgstr "VSV"
-
-#: 
-msgid "Persons"
-msgstr "personer"
 
 #: 
 msgid "Search Family"
@@ -7408,7 +7363,8 @@ msgid "Debug Email Connection"
 msgstr "Felsöka e-postanslutning"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Denna familj är deaktiverad"
 
 #: 
@@ -7655,11 +7611,13 @@ msgid "HTML URL"
 msgstr "HTML-URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Senaste personer"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Uppdaterade personer"
 
 #: 
@@ -7930,10 +7888,6 @@ msgid "Unexpected Person Id"
 msgstr "Oväntad person-ID"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Den senaste mjukvaruuppdateringen kontrollera tidsstämpel"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Låt systemuppgraderingar släppas markerade som 'pre release' på GitHub"
 
@@ -8198,42 +8152,6 @@ msgstr "öppen kostnad"
 #: 
 msgid "Not Subscribed "
 msgstr "Inte prenumererad "
-
-#: 
-msgid "Global User Settings"
-msgstr "Globala användarinställningar"
-
-#: 
-msgid "General"
-msgstr "Allmän"
-
-#: 
-msgid "Passwords"
-msgstr "Lösenord"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Sessionen tidsgräns"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Maximal misslyckad inloggningar"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Aktivera återställning av lösenord"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Skicka e-post till borttagna användare"
-
-#: 
-msgid "Min Password Length"
-msgstr "Minimal lösenordslängd"
 
 #: 
 msgid "Min Password Characters Delta"

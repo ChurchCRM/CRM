@@ -123,7 +123,7 @@ class   SystemConfig
             'iMapZoom'                             => new ConfigItem(10001, 'iMapZoom', 'number', '10', gettext('Google Maps Zoom')),
             'iChurchLatitude'                      => new ConfigItem(45, 'iChurchLatitude', 'number', '', gettext('Latitude of the church, used to center the Google map')),
             'iChurchLongitude'                     => new ConfigItem(46, 'iChurchLongitude', 'number', '', gettext('Longitude of the church, used to center the Google map')),
-            'bHidePersonAddress'                   => new ConfigItem(47, 'bHidePersonAddress', 'boolean', '1', gettext('Set true to disable entering personal addresses for unaffiliated persons in Person Editor. Set false to enable entering addresses for persons without a family assignment.')),
+            'bHidePersonAddress'                   => new ConfigItem(47, 'bHidePersonAddress', 'boolean', '1', gettext('Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment.')),
             'bHideFriendDate'                      => new ConfigItem(48, 'bHideFriendDate', 'boolean', '0', gettext('Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.')),
             'bHideFamilyNewsletter'                => new ConfigItem(49, 'bHideFamilyNewsletter', 'boolean', '0', gettext('Set true to disable management of newsletter subscriptions in the Family Editor.')),
             'bHideWeddingDate'                     => new ConfigItem(50, 'bHideWeddingDate', 'boolean', '0', gettext('Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.')),
@@ -268,7 +268,6 @@ class   SystemConfig
     {
         return [
             gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sHomeAreaCode', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite', 'sChurchFB', 'sChurchTwitter'],
-            gettext('User Setup')         => ['iMinPasswordLength', 'iMinPasswordChange', 'iMaxFailedLogins', 'iSessionTimeout', 'aDisallowedPasswords', 'bEnableLostPassword', 'bEnable2FA', 'bRequire2FA', 's2FAApplicationName', 'bSendUserDeletedEmail'],
             gettext('Email Setup')        => ['sSMTPHost', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'iSMTPTimeout', 'sToEmailAddress', 'bPHPMailerAutoTLS', 'sPHPMailerSMTPSecure'],
             gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'bEnableSelfRegistration', 'iPersonNameStyle', 'iPersonInitialStyle', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification'],
             gettext('Enabled Features')   => ['bEnabledFinance', 'bEnabledSundaySchool', 'bEnabledEvents', 'bEnabledFundraiser', 'bEnabledEmail', 'bEnabledMenuLinks'],
@@ -330,6 +329,51 @@ class   SystemConfig
     public static function getConfigItem(string $name)
     {
         return self::$configs[$name];
+    }
+
+    /**
+     * Get settings configuration for a list of setting names
+     * @param array $settingNames Array of setting names
+     * @return array Array of setting configurations
+     */
+    public static function getSettingsConfig(array $settingNames): array
+    {
+        $configurations = [];
+        foreach ($settingNames as $settingName) {
+            $configItem = self::getConfigItem($settingName);
+            if ($configItem) {
+                // Use the first line of tooltip as label, full tooltip as tooltip
+                $tooltip = $configItem->getTooltip();
+                $label = strtok($tooltip, "\n") ?: ucwords(str_replace(['i', 'b', 's', 'a'], '', $settingName));
+                
+                $configurations[] = [
+                    'name' => $settingName,
+                    'type' => self::mapConfigTypeToSettingType($configItem->getType()),
+                    'label' => $label,
+                    'tooltip' => $tooltip
+                ];
+            }
+        }
+
+        return $configurations;
+    }
+
+    /**
+     * Map SystemConfig types to settings panel types
+     * @param string $configType
+     * @return string
+     */
+    private static function mapConfigTypeToSettingType(string $configType): string
+    {
+        switch ($configType) {
+            case 'number':
+                return 'number';
+            case 'boolean':
+                return 'boolean';
+            case 'text':
+            default:
+                return 'text';
+        }
     }
 
     public static function getValue(string $name)

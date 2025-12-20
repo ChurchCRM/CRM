@@ -1,10 +1,10 @@
 <?php
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 $sPageTitle = gettext('Self Registrations');
-require_once '../Include/Header.php';
+require_once __DIR__ . '/../Include/Header.php';
 
 use ChurchCRM\dto\SystemURLs;
 
@@ -31,7 +31,7 @@ use ChurchCRM\dto\SystemURLs;
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title"><?= _("Persons") ?></h3>
+                <h3 class="card-title"><?= _("People") ?></h3>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -138,4 +138,4 @@ use ChurchCRM\dto\SystemURLs;
     });
 </script>
 <?php
-require_once '../Include/Footer.php';
+require_once __DIR__ . '/../Include/Footer.php';

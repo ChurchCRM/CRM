@@ -8,7 +8,6 @@ describe("Admin Settings", () => {
     it("View system settings", () => {
         cy.visit("SystemSettings.php");
         cy.contains("Church Information");
-        cy.contains("User Setup");
         cy.contains("Email Setup");
         cy.contains("People Setup");
         cy.contains("System Settings");

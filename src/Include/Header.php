@@ -6,17 +6,15 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\TaskService;
 use ChurchCRM\view\MenuRenderer;
 
-$taskService = new TaskService();
 $localeInfo = Bootstrapper::getCurrentLocale();
 
 // Turn ON output buffering
 ob_start();
 
-require_once 'Header-function.php';
-require_once 'Header-Security.php';
+require_once __DIR__ . '/Header-function.php';
+require_once __DIR__ . '/Header-Security.php';
 
 // Top level menu index counter
 $MenuFirst = 1;
@@ -27,7 +25,7 @@ $MenuFirst = 1;
   <meta charset="UTF-8"/>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <?php require_once 'Header-HTML-Scripts.php'; ?>
+  <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
 </head>
 
 <body class="hold-transition <?= AuthenticationManager::getCurrentUser()->getStyle() ?> sidebar-mini">
@@ -146,18 +144,6 @@ $MenuFirst = 1;
                         <i class="fab fa-github"></i> <?= gettext('Contributing') ?>
                     </a>
                 </div>
-            </li>
-
-            <?php
-            $tasks = $taskService->getCurrentUserTasks();
-            $taskSize = count($tasks);
-
-            ?>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fa-regular fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge"><?= $taskSize ?></span>
-                </a>
             </li>
 
             <!-- Support Dropdown Menu -->

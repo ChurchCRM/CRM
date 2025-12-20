@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Data sukselvol ingevoer"
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "persone was ingevoer"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "U mandjie bevat"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "persone vanaf"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "Desember"
 #: 
 msgid "Unk"
 msgstr "Onk"
-
-#: 
-msgid "Family List"
-msgstr "Gesinslys"
 
 #: 
 msgid "Created"
@@ -1683,7 +1681,8 @@ msgid "No Role Selected"
 msgstr "Geen rol gekies nie"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Slegs karretjiepersone?"
 
 #: 
@@ -2064,7 +2063,8 @@ msgid "Option"
 msgstr "Opsie"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Waarskuwing: As u verwyder, sal alle opdragte vir alle persone met die opdrag herstel word!"
 
 #: 
@@ -2746,14 +2746,6 @@ msgstr "Styl"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Stel toestemming waar om hierdie gebruiker die moontlikheid te gee om hul huidige waarde te verander."
-
-#: 
-msgid "User Listing"
-msgstr "Gebruikerslys"
-
-#: 
-msgid "New User"
-msgstr "Nuwe gebruiker"
 
 #: 
 msgid "User Settings"
@@ -3444,11 +3436,6 @@ msgid "Add New Person"
 msgstr "Voeg nuwe persoon by"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "Sien alle persone"
-
-#: 
 msgid "Add New Family"
 msgstr "Voeg nuwe gesin by"
 
@@ -3519,11 +3506,6 @@ msgstr "Welkom by"
 #: 
 msgid "Church Information"
 msgstr "Kerklike Inligting"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "Gebruikersinstelling"
 
 #: 
 msgid "Email Setup"
@@ -6186,11 +6168,13 @@ msgid "Church Checking Account Number"
 msgstr "Kerkrekeningrekeningnommer"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Die gesin gedeaktiveer"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Die gesin geaktiveer"
 
 #: 
@@ -6405,14 +6389,6 @@ msgstr "Handelingbevestiging"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Bevestig asseblief die herstel van die mislukking van die aanmelding"
-
-#: 
-msgid "View Active Families"
-msgstr "Bekyk aktiewe gesinne"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Bekyk onaktiewe gesinne"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6684,18 +6660,6 @@ msgid "Self Verification"
 msgstr "Selfverifiëring"
 
 #: 
-msgid "Deactivate"
-msgstr "Deaktiveer"
-
-#: 
-msgid "Activate"
-msgstr "Aktiveer"
-
-#: 
-msgid "Stack Trace"
-msgstr "Stapelspoor"
-
-#: 
 msgid "Check Number"
 msgstr "Kontroleer nommer"
 
@@ -6810,10 +6774,6 @@ msgstr "Selfverifieer"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonesies - Indonesië"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST to cart vereis 'n Persons-skikking, FamilyID of GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6934,10 +6894,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Persone"
 
 #: 
 msgid "Search Family"
@@ -7276,7 +7232,8 @@ msgid "Debug Email Connection"
 msgstr "Ontfout e-posverbinding"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Hierdie gesin is gedeaktiveer"
 
 #: 
@@ -7523,11 +7480,13 @@ msgid "HTML URL"
 msgstr "HTML-URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Laaste persone"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Opgedateerde persone"
 
 #: 
@@ -7798,10 +7757,6 @@ msgid "Unexpected Person Id"
 msgstr "Onverwagte persoon ID"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Laaste sagteware-opdatering Gaan tydstempel na"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Laat toe dat stelselopgraderings vrygestel word, gemerk as 'pre release' op GitHub"
 
@@ -8066,42 +8021,6 @@ msgstr "oop tarief"
 #: 
 msgid "Not Subscribed "
 msgstr "Nie ingeteken nie "
-
-#: 
-msgid "Global User Settings"
-msgstr "Globale gebruikersinstellings"
-
-#: 
-msgid "General"
-msgstr "Algemeen"
-
-#: 
-msgid "Passwords"
-msgstr "Wagwoord"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Sessie-time-out"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Maks mislukte aanmelding"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Aktiveer wagwoordterugstelling"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Stuur e-pos aan gebruikers wat verwyder is"
-
-#: 
-msgid "Min Password Length"
-msgstr "Min wagwoordlengte"
 
 #: 
 msgid "Min Password Characters Delta"

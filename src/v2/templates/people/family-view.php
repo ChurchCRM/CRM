@@ -35,7 +35,7 @@ $familyEmails = $family->getEmails();
 </script>
 
 <div id="family-deactivated" class="alert alert-warning d-none">
-    <strong><?= gettext("This Family is Deactivated") ?> </strong>
+    <strong><?= gettext("This Family is Inactive") ?> </strong>
 </div>
 
 <div class="row">
@@ -109,7 +109,7 @@ $familyEmails = $family->getEmails();
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <div class="col-6 mb-2">
                         <a class="btn btn-warning btn-block" id="activateDeactivate">
-                            <i class="fa-solid fa-power-off"></i><br><?= ($family->isActive() ? gettext('Deactivate') : gettext('Activate')) ?>
+                            <i class="fa-solid fa-power-off"></i><br><?= ($family->isActive() ? gettext('Set Inactive') : gettext('Set Active')) ?>
                         </a>
                     </div>
                     <?php } ?>

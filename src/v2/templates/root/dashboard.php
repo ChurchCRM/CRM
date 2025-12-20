@@ -5,9 +5,6 @@ use ChurchCRM\dto\SystemURLs;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Calculate data quality status
-$hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
-                        $classificationDataCheckCount > 0 || $familyCoordinatesCheckCount > 0;
 ?>
 
 <!-- Small boxes (Stat box) -->
@@ -117,54 +114,17 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
     } ?>
 </div><!-- /.row -->
 
-<?php if ($hasDataQualityIssues): ?>
-<!-- Row 2: Data Quality Alert -->
-<div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
-    <div class="d-flex align-items-center">
-        <div class="mr-3">
-            <i class="fa-solid fa-clipboard-check fa-2x"></i>
-        </div>
-        <div class="flex-grow-1">
-            <strong><?= gettext('Data Quality:') ?></strong>
-            <?php 
-            $issues = [];
-            if ($genderDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Gender=0" class="alert-link">' . 
-                            sprintf(gettext('%d missing gender'), $genderDataCheckCount) . '</a>';
-            }
-            if ($roleDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?FamilyRole=0" class="alert-link">' . 
-                            sprintf(gettext('%d missing role'), $roleDataCheckCount) . '</a>';
-            }
-            if ($classificationDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Classification=0" class="alert-link">' . 
-                            sprintf(gettext('%d missing classification'), $classificationDataCheckCount) . '</a>';
-            }
-            if ($familyCoordinatesCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/GeoPage.php" class="alert-link">' . 
-                            sprintf(gettext('%d families missing coordinates'), $familyCoordinatesCheckCount) . '</a>';
-            }
-            echo implode(' · ', $issues);
-            ?>
-        </div>
-    </div>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<?php endif; ?>
-
 <div class="row">
     <div class="card col-md-6" id="birthdayCard">
         <div class="card-body">
-            <h3><i class="fa-solid fa-cake-candles mr-2"></i><?= gettext('Upcoming Birthdays') ?></h3>
+            <h3><i class="fa-solid fa-cake-candles mr-2"></i><?= gettext('Birthdays') ?></h3>
             <p class="text-muted small mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
             <table class="table table-striped table-hover" width="100%" id="PersonBirthdayDashboardItem"></table>
         </div>
     </div>
     <div class="card col-md-6" id="anniversaryCard">
         <div class="card-body">
-            <h3><i class="fa-solid fa-heart mr-2"></i><?= gettext('Upcoming Anniversaries') ?></h3>
+            <h3><i class="fa-solid fa-heart mr-2"></i><?= gettext('Anniversaries') ?></h3>
             <p class="text-muted small mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
             <table class="table table-striped table-hover" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
         </div>
@@ -207,12 +167,12 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="latest-ppl-tab" data-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="latest-ppl-pane" aria-selected="false">
-                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest Persons') ?>
+                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest People') ?>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="updated-ppl-tab" data-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
-                    <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated Persons') ?>
+                    <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated People') ?>
                 </a>
             </li>
         </ul>

@@ -74,11 +74,8 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
                 'success' => true,
                 'hasPhoto' => $person->getPhoto()->hasUploadedPhoto()
             ]);
-        } catch (\Exception $e) {
-            return SlimUtils::renderJSON($response, [
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 400);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to upload person photo'), [], 400, $e, $request);
         }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
@@ -108,6 +105,6 @@ function setPersonRoleAPI(Request $request, Response $response, array $args): Re
     if ($person->save()) {
         return SlimUtils::renderJSON($response, ['success' => true, 'msg' => gettext('The role is successfully assigned.')]);
     } else {
-        throw new Exception(gettext('The role could not be assigned.'));
+        return SlimUtils::renderErrorJSON($response, gettext('The role could not be assigned.'), [], 500);
     }
 }

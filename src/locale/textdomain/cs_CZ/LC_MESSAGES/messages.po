@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Import dat proběhl úspěšně."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "osoby byly importovány"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Váš košík obsahuje"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "osob z"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "Prosinec"
 #: 
 msgid "Unk"
 msgstr "Nez"
-
-#: 
-msgid "Family List"
-msgstr "Seznam rodin"
 
 #: 
 msgid "Created"
@@ -1682,7 +1680,8 @@ msgid "No Role Selected"
 msgstr "Nebyla vybrána role"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Pouze osoby v košíku?"
 
 #: 
@@ -2063,7 +2062,8 @@ msgid "Option"
 msgstr "Možnost"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Varování: Odstraněním se zruší všechna přiřazení pro všechny osoby s přiřazením!"
 
 #: 
@@ -2743,14 +2743,6 @@ msgstr "Styl"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Nastavte oprávnění na True, abyste tomuto uživateli umožnili změnit jejich aktuální hodnotu."
-
-#: 
-msgid "User Listing"
-msgstr "Výpis uživatelů"
-
-#: 
-msgid "New User"
-msgstr "Nový uživatel"
 
 #: 
 msgid "User Settings"
@@ -3441,10 +3433,6 @@ msgid "Add New Person"
 msgstr "Přidat novou osobu"
 
 #: 
-msgid "View All People"
-msgstr "Zobrazit všechny osoby"
-
-#: 
 msgid "Add New Family"
 msgstr "Přidat novou rodinu"
 
@@ -3515,10 +3503,6 @@ msgstr "Vítá Vás"
 #: 
 msgid "Church Information"
 msgstr "Informace o sboru"
-
-#: 
-msgid "User Setup"
-msgstr "Nastavení uživatele"
 
 #: 
 msgid "Email Setup"
@@ -6178,11 +6162,13 @@ msgid "Church Checking Account Number"
 msgstr "Číslo účtu sboru"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Rodina deaktivována"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Rodina aktivována"
 
 #: 
@@ -6397,14 +6383,6 @@ msgstr "Potvrzení akce"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Potvrďte obnovení počtu neúspěšných přihlášení"
-
-#: 
-msgid "View Active Families"
-msgstr "Zobrazit aktivní rodiny"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Zobrazit neaktivní rodiny"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6675,18 +6653,6 @@ msgid "Self Verification"
 msgstr "Vlastní ověření"
 
 #: 
-msgid "Deactivate"
-msgstr "Deaktivovat"
-
-#: 
-msgid "Activate"
-msgstr "Aktivovat"
-
-#: 
-msgid "Stack Trace"
-msgstr "Sledování zásobníku"
-
-#: 
 msgid "Check Number"
 msgstr "Kontrolní číslo"
 
@@ -6800,10 +6766,6 @@ msgstr "Vlastní ověření"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonéština - Indonésie"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST do košíku vyžaduje pole Persons, FamilyID nebo GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6924,10 +6886,6 @@ msgstr "ZSZ"
 #: 
 msgid "WSW"
 msgstr "ZJZ"
-
-#: 
-msgid "Persons"
-msgstr "Osoby"
 
 #: 
 msgid "Search Family"
@@ -7266,7 +7224,8 @@ msgid "Debug Email Connection"
 msgstr "Debug e-mailového připojení"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Tato rodina je deaktivována"
 
 #: 
@@ -7511,11 +7470,13 @@ msgid "HTML URL"
 msgstr "HTML URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Poslední osoby"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Aktualizované osoby"
 
 #: 
@@ -7785,10 +7746,6 @@ msgid "Unexpected Person Id"
 msgstr "Neočekávané ID osoby"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Časové razítko poslední kontroly aktualizace softwaru"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Povolení aktualizace systému na verzi označenou jako 'pre release' na GitHubu"
 
@@ -8052,42 +8009,6 @@ msgstr "míra otevření"
 #: 
 msgid "Not Subscribed "
 msgstr "Nepřihlášený "
-
-#: 
-msgid "Global User Settings"
-msgstr "Globální nastavení uživatele"
-
-#: 
-msgid "General"
-msgstr "Obecné"
-
-#: 
-msgid "Passwords"
-msgstr "Hesla"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Časový limit relace"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Max neúspěšných přihlášení"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Povolit obnovu hesla"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Poslat e-mail smazaným uživatelům"
-
-#: 
-msgid "Min Password Length"
-msgstr "Minimální délka hesla"
 
 #: 
 msgid "Min Password Characters Delta"
@@ -8572,14 +8493,6 @@ msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Zadejte font pro renderování iniciál. Nahrajte vlastní font do složky fontů."
 
 #: 
-msgid "Person List Columns"
-msgstr "Sloupce seznamu osob"
-
-#: 
-msgid "Family List Columns"
-msgstr "Sloupce seznamu rodin"
-
-#: 
 msgid "Church Email not set, please visit the settings page"
 msgstr "Sborový e-mail není zadán, přejděte do Nastavení"
 
@@ -8596,10 +8509,6 @@ msgstr "Korejsky"
 #: 
 msgid "System Logs"
 msgstr "Systémové logy"
-
-#: 
-msgid "Maximum number of log files to keep"
-msgstr "Maximální počet uložených logů"
 
 #: 
 msgid "Enter event description..."

@@ -371,7 +371,7 @@
                     // Enable force import mode on failure
                     forceImportMode = true;
 
-                    var errorMsg = data && data.error ? data.error : i18next.t("Unknown error");
+                    var errorMsg = data && data.message ? data.message : i18next.t("Unknown error");
 
                     // Update button to Force Import and show overlay again with error
                     setForceImportButton(errorMsg);
@@ -390,8 +390,8 @@
                 forceImportMode = true;
 
                 var errorMessage = i18next.t("An error occurred during demo data import");
-                if (xhr && xhr.responseJSON && xhr.responseJSON.error) {
-                    errorMessage = xhr.responseJSON.error;
+                if (xhr && xhr.responseJSON && xhr.responseJSON.message) {
+                    errorMessage = xhr.responseJSON.message;
                 } else if (xhr && xhr.status) {
                     errorMessage = i18next.t("Server error") + " (" + xhr.status + ")";
                 }

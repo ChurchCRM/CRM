@@ -77,5 +77,5 @@
     "ERROR: the uploaded CSV file no longer exists!": "त्रुटि: अपलोड की गई CSV फ़ाइल अब मौजूद नहीं है!",
     "Upload CSV File": "सीएसवी फ़ाइल अपलोड करें",
     "Data import successful.": "डेटा आयात सफल.",
-    "persons were imported": "व्यक्तियों का आयात किया गया"
+    "people were imported": "व्यक्तियों का आयात किया गया"
 }

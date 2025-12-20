@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
@@ -35,7 +35,7 @@ $sPageTitle = $sTypeName . ' ' . gettext('Property List');
 $sSQL = "SELECT * FROM property_pro, propertytype_prt WHERE prt_ID = pro_prt_ID AND pro_Class = '" . $sType . "' ORDER BY prt_Name,pro_Name";
 $rsProperties = RunQuery($sSQL);
 
-require_once 'Include/Header.php'; ?>
+require_once __DIR__ . '/Include/Header.php'; ?>
 
 <div class="card card-body">
 
@@ -102,4 +102,4 @@ while ($aRow = mysqli_fetch_array($rsProperties)) {
 
 echo '</table></div>';
 
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

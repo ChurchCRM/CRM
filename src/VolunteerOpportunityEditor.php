@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
@@ -56,7 +56,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
     extract($aRow);
 
     $sPageTitle = gettext('Volunteer Opportunity Delete Confirmation');
-    require_once 'Include/Header.php';
+    require_once __DIR__ . '/Include/Header.php';
 ?>
     <div class="card card-body">
         <div class="alert alert-danger"><?= gettext('Please confirm deletion of') ?>:</div>
@@ -101,7 +101,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
     echo "\n<a href=\"VolunteerOpportunityEditor.php\" class='btn btn-secondary'> ";
     echo gettext('No, cancel this deletion') . ' </a>';
     echo '</div>';
-    require_once 'Include/Footer.php';
+    require_once __DIR__ . '/Include/Footer.php';
     exit;
 }
 
@@ -178,7 +178,7 @@ if ($iRowNum === 0) {
 
 $sPageTitle = gettext('Volunteer Opportunity Editor');
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Does the user want to save changes to text fields?
 if (isset($_POST['SaveChanges'])) {
@@ -430,4 +430,4 @@ if (isset($_POST['SaveChanges'])) {
         </form>
     </div>
     <?php
-    require_once 'Include/Footer.php';
+    require_once __DIR__ . '/Include/Footer.php';

@@ -21,7 +21,7 @@ describe("People Tools", () => {
     it("self-register", () => {
         cy.visit("members/self-register.php");
         cy.contains("Self Registrations");
-        cy.contains("Persons");
+        cy.contains("People");
         cy.contains("Families");
     });
 

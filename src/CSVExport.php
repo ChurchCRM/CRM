@@ -1,9 +1,10 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
 
 // If user does not have CSV Export permission, redirect to the menu.
@@ -41,7 +42,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 $sPageTitle = gettext('CSV Export');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 ?>
 <form method="post" action="CSVCreateFile.php">
   <div class="row">
@@ -446,6 +447,79 @@ require_once 'Include/Header.php';
     </div>
   </div>
 
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header with-border">
+          <h3 class="card-title"><?= gettext('ChMeetings Export') ?></h3>
+        </div>
+        <div class="card-body">
+          <p><?= gettext('Export all people data in ChMeetings format for import into external systems.') ?></p>
+          <button type="button" class="btn btn-primary" id="exportChMeetingsBtn">
+            <i class="fa-solid fa-download"></i> <?= gettext('Export to ChMeetings CSV') ?>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </form>
+
+<script>
+document.getElementById('exportChMeetingsBtn').addEventListener('click', function() {
+    var btn = this;
+    var originalText = btn.innerHTML;
+    
+    // Show loading state
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <?= gettext("Exporting...") ?>';
+    
+    var downloadUrl = window.CRM.root + '/admin/api/database/people/export/chmeetings';
+    
+    fetch(downloadUrl)
+        .then(function(response) {
+            if (!response.ok) {
+                throw new Error(response.statusText);
+            }
+            return response.blob();
+        })
+        .then(function(blob) {
+            // Trigger file download
+            var blobUrl = window.URL.createObjectURL(blob);
+            var link = document.createElement('a');
+            link.href = blobUrl;
+            link.download = 'ChMeetings-' + new Date().toISOString().split('T')[0] + '.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(blobUrl);
+            
+            // Restore button state
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+            
+            // Show success notification
+            window.CRM.notify(i18next.t('ChMeetings export completed successfully'), {
+                type: 'success',
+                delay: 3000
+            });
+        })
+        .catch(function(error) {
+            console.error('Export failed:', error);
+            
+            // Restore button state
+            btn.disabled = false;
+            btn.innerHTML = originalText;
+            
+            // Show error notification
+            window.CRM.notify(i18next.t('Failed to export ChMeetings CSV'), {
+                type: 'error',
+                delay: 3000
+            });
+        });
+});
+</script>
+
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

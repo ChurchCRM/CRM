@@ -2,7 +2,7 @@
 
 ## 🌟 **Welcome to ChurchCRM!** 🌟
 
-Thank you for visiting our GitHub repository! We’re excited to have you as part of the ChurchCRM community!
+Thank you for visiting our GitHub repository! Visit our homepage at https://churchcrm.io. We’re excited to have you as part of the ChurchCRM community!
 
 ## ⛪️ About ChurchCRM
 
@@ -20,7 +20,10 @@ You'll find step-by-step instructions for all installation methods (Softaculous,
 
 For detailed technical documentation, see our [GitHub Wiki](https://github.com/ChurchCRM/CRM/wiki).
 
-To test the demo, visit our [Demo System via Softaculous](https://softaculous.com/demos/churchcrm).
+To test the demo, you can use either our public sandbox or the Softaculous demo:
+
+- Public sandbox: [https://demo.churchcrm.io](https://demo.churchcrm.io) — NOTE: this is a shared, read-write demo that may be reset regularly and contains only sample data; do not use it for any sensitive or production data.
+- Softaculous demo: [Demo System via Softaculous](https://softaculous.com/demos/churchcrm)
 
 ## 🌐 Localization Support
 
@@ -29,6 +32,8 @@ ChurchCRM proudly supports localization in **40+ languages**, ensuring accessibi
 Whether you speak English, Spanish, French, or another supported language, you can use ChurchCRM in a familiar way.
 
 Join our [localization team on poeditor.com](https://poeditor.com/join/project/RABdnDSqAt) to contribute to your language’s support.
+
+See the latest translation status and audit report: [locale/poeditor-audit.md](locale/poeditor-audit.md).
 
 ## 💡 How to Contribute
 

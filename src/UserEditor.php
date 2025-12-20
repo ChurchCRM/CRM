@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -148,7 +148,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     $email = new NewAccountEmail($newUser, $rawPassword);
                     $email->send();
 
-                    RedirectUtils::redirect('UserList.php');
+                    RedirectUtils::redirect('admin/system/users');
                 } else {
                     // Set the error text for duplicate when new user
                     RedirectUtils::redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
@@ -332,11 +332,11 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
         next($type);
     }
 
-    RedirectUtils::redirect('UserList.php');
+    RedirectUtils::redirect('admin/system/users');
 }
 
 $sPageTitle = gettext('User Editor');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <!-- Default box -->
@@ -467,7 +467,7 @@ require_once 'Include/Header.php';
                         <td colspan="2" class="text-center">
                             <input type="submit" class="btn btn-primary" id="SaveButton" value="<?= gettext('Save') ?>" name="save">&nbsp;<input
                                 type="button" class="btn btn-secondary" id="CancelButton" name="Cancel" value="<?= gettext('Cancel') ?>"
-                                onclick="javascript:document.location='UserList.php';">
+                                onclick="javascript:document.location='<?= SystemURLs::getRootPath() ?>/admin/system/users';">
                         </td>
                     </tr>
                 </table>
@@ -601,4 +601,4 @@ require_once 'Include/Header.php';
     });
 </script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

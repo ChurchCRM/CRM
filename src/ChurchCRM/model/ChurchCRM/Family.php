@@ -294,6 +294,44 @@ class Family extends BaseFamily implements PhotoInterface
         }
     }
 
+    /**
+     * Return the family's status as text ('Active' or 'Inactive').
+     * Presentation (HTML badges) should be handled by the view or client.
+     */
+    public function getStatusText(): string
+    {
+        return $this->isActive() ? gettext('Active') : gettext('Inactive');
+    }
+
+    /**
+     * Return an HTML link for the family name, optionally including the photo button.
+     */
+    public function getLinkHtml(bool $includePhoto = true, bool $strong = true): string
+    {
+        $name = $strong ? '<strong>' . htmlspecialchars($this->getName()) . '</strong>' : htmlspecialchars($this->getName());
+        $html = '<a href="' . $this->getViewURI() . '">' . $name . '</a>';
+
+        if ($includePhoto && $this->getPhoto() && $this->getPhoto()->hasUploadedPhoto()) {
+            $html .= ' <button class="btn btn-xs btn-outline-secondary view-family-photo ml-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+        }
+
+        return $html;
+    }
+
+    /**
+     * Return a compact City/State string, truncated to a maximum length.
+     */
+    public function getCityStateShort(int $maxLen = 30): string
+    {
+        $city = $this->getCity();
+        $state = $this->getState();
+        $s = trim($city . ($city && $state ? ', ' : '') . $state);
+        if (mb_strlen($s) > $maxLen) {
+            $s = mb_substr($s, 0, $maxLen) . '...';
+        }
+        return htmlspecialchars($s);
+    }
+
     public function hasLatitudeAndLongitude(): bool
     {
         return !empty($this->getLatitude()) && !empty($this->getLongitude());

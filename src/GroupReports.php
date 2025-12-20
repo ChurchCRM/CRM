@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 
@@ -10,7 +10,7 @@ $sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
 $rsGroups = RunQuery($sSQL);
 
 $sPageTitle = gettext('Group reports');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 ?>
 
 <script src="skin/js/GroupRoles.js"></script>
@@ -49,7 +49,7 @@ require_once 'Include/Header.php';
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <label for="OnlyCart"><?= gettext('Only cart persons?') ?>:</label>
+                            <label for="OnlyCart"><?= gettext('Only cart people?') ?>:</label>
                             <input type="checkbox" Name="OnlyCart" value="1">
                         </div>
                     </div>
@@ -143,4 +143,4 @@ require_once 'Include/Header.php';
     </div>
     <?php
 }
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

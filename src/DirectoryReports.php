@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -11,7 +11,7 @@ use ChurchCRM\Utils\RedirectUtils;
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(), 'CreateDirectory');
 
 $sPageTitle = gettext('Directory reports');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <div class="card card-body">
@@ -270,4 +270,4 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 </form>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

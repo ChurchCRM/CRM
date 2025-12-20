@@ -74,7 +74,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $id = (int) $args['id'];
     $deposit = DepositQuery::create()->findOneById($id);
     if ($deposit === null) {
-        return SlimUtils::renderJson($response->withStatus(404), ['message' => 'Deposit not found']);
+        return SlimUtils::renderJSON($response->withStatus(404), ['message' => 'Deposit not found']);
     }
     $OFX = $deposit->getOFX();
     header($OFX->header);
@@ -92,12 +92,12 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
                 return $response->withStatus(404);
             }
 
-            return SlimUtils::renderJson($response->withStatus(404), ['message' => 'No Payments on this Deposit']);
+            return SlimUtils::renderJSON($response->withStatus(404), ['message' => 'No Payments on this Deposit']);
         }
 
         $deposit = DepositQuery::create()->findOneById($id);
         if ($deposit === null) {
-            return SlimUtils::renderJson($response->withStatus(404), ['message' => 'Deposit not found']);
+            return SlimUtils::renderJSON($response->withStatus(404), ['message' => 'Deposit not found']);
         }
         $deposit->getPDF();
         return SlimUtils::renderSuccessJSON($response);

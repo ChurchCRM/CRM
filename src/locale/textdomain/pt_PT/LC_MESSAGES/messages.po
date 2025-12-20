@@ -343,7 +343,8 @@ msgid "Data import successful."
 msgstr "Dados importados com sucesso."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "pessoas importadas"
 
 #: 
@@ -488,7 +489,8 @@ msgid "Your cart contains"
 msgstr "Seu Carrinho contém"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "pessoas de"
 
 #: 
@@ -1100,11 +1102,6 @@ msgstr "Dezembro"
 #: 
 msgid "Unk"
 msgstr "Desconhecido"
-
-#: 
-#, fuzzy
-msgid "Family List"
-msgstr "Lista de Famílias"
 
 #: 
 msgid "Created"
@@ -1736,7 +1733,7 @@ msgstr "Nenhuma Função Selecionada"
 
 #: 
 #, fuzzy
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr "Somente pessoas no Carrinho?"
 
 #: 
@@ -2135,7 +2132,8 @@ msgid "Option"
 msgstr "Opção"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "AVISO! Ao remover uma atribuição, ela será excluída do perfil de todas as pessoas a quem foi atribuída.  "
 
 #: 
@@ -2856,14 +2854,6 @@ msgstr "Estilo"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Definir permissão verdadeira para dar novos utilizadores a capacidade de alterar o seu valor atual."
-
-#: 
-msgid "User Listing"
-msgstr "Lista de Utilizadores"
-
-#: 
-msgid "New User"
-msgstr "Novo Utilizador"
 
 #: 
 msgid "User Settings"
@@ -3587,11 +3577,6 @@ msgid "Add New Person"
 msgstr "Nova Pessoa"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "Ver Pessoas"
-
-#: 
 msgid "Add New Family"
 msgstr "Nova Família"
 
@@ -3663,11 +3648,6 @@ msgstr "Bem-vindo a "
 #: 
 msgid "Church Information"
 msgstr "Informações da Igreja"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "Utilizadores"
 
 #: 
 msgid "Email Setup"
@@ -6355,11 +6335,13 @@ msgid "Church Checking Account Number"
 msgstr "Número da Conta de Verificação da Igreja"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Família desativada"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Família ativa"
 
 #: 
@@ -6574,14 +6556,6 @@ msgstr "Ação de confirmação"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Confirme a contagem de login com falha de reset"
-
-#: 
-msgid "View Active Families"
-msgstr "Famílias Ativas"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Famílias Inativas"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6853,18 +6827,6 @@ msgid "Self Verification"
 msgstr "Autoverificação"
 
 #: 
-msgid "Deactivate"
-msgstr "Desativar"
-
-#: 
-msgid "Activate"
-msgstr "Ativar"
-
-#: 
-msgid "Stack Trace"
-msgstr "Rastreamento de pilha"
-
-#: 
 msgid "Check Number"
 msgstr "Verificar número"
 
@@ -6981,10 +6943,6 @@ msgstr "Verificação automática"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonésio - Indonésia"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "Colocar no carriho requer um array de Pessoas, ID de Famílias ou ID de Grupos"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -7105,10 +7063,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Pessoas"
 
 #: 
 msgid "Search Family"
@@ -7447,7 +7401,8 @@ msgid "Debug Email Connection"
 msgstr "Depuração de conexão de E-mail"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Esta Família está Desativada"
 
 #: 
@@ -7694,11 +7649,13 @@ msgid "HTML URL"
 msgstr "URL de HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Últimas Pessoas"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Pessoas Atualizadas"
 
 #: 
@@ -7970,10 +7927,6 @@ msgid "Unexpected Person Id"
 msgstr "ID inesperado da pessoa"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Data e hora da última actualização"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Permitir actualizações de pré-lançamento' no GitHub"
 
@@ -8196,30 +8149,6 @@ msgstr "Lista não encontrada"
 #: 
 msgid "Hebrew"
 msgstr "Hebreu"
-
-#: 
-msgid "Passwords"
-msgstr "Palavras pass"
-
-#: 
-msgid "2FA"
-msgstr "Autenticação de dois fatores"
-
-#: 
-msgid "Session Timeout"
-msgstr "Sessão expirada"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Máximo de tentativas erradas de autenticação"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Ativar o reset da palavra passe"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Enviar email a utilizadores apagados"
 
 #: 
 msgid "Loading"

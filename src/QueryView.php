@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -19,7 +19,7 @@ if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array($iQ
     RedirectUtils::redirect('v2/dashboard');
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Get the query information
 $sSQL = 'SELECT * FROM query_qry WHERE qry_ID = ' . $iQueryID;
@@ -443,4 +443,4 @@ function DisplayParameterForm()
     <?php
 }
 
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

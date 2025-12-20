@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Importación de datos exitosa."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "personas fueron importadas"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Su carrito contiene"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "personas de"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "Diciembre"
 #: 
 msgid "Unk"
 msgstr "UNK"
-
-#: 
-msgid "Family List"
-msgstr "Lista de familia"
 
 #: 
 msgid "Created"
@@ -1683,7 +1681,8 @@ msgid "No Role Selected"
 msgstr "No hay un rol seleccionado"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "¿Sólo personas del carrito?"
 
 #: 
@@ -2064,7 +2063,8 @@ msgid "Option"
 msgstr "Opción"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Cuidado: Eliminar restablecerá todas las asignaciónes para todas las personas con la asignación."
 
 #: 
@@ -2746,14 +2746,6 @@ msgstr "Estilo"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Fijar Permiso a Verdadero para dar a nuevos usuarios la capacidad de cambiar su valor actual. <BR>"
-
-#: 
-msgid "User Listing"
-msgstr "Listado de usuarios"
-
-#: 
-msgid "New User"
-msgstr "Nuevo usuario"
 
 #: 
 msgid "User Settings"
@@ -3444,10 +3436,6 @@ msgid "Add New Person"
 msgstr "Añadir nueva persona"
 
 #: 
-msgid "View All People"
-msgstr "Ver Todas las Personas"
-
-#: 
 msgid "Add New Family"
 msgstr "Añadir nueva familia"
 
@@ -3518,10 +3506,6 @@ msgstr "Bienvenido a"
 #: 
 msgid "Church Information"
 msgstr "Información de iglesia"
-
-#: 
-msgid "User Setup"
-msgstr "Configuración de usuario"
 
 #: 
 msgid "Email Setup"
@@ -6206,11 +6190,13 @@ msgid "Church Checking Account Number"
 msgstr "Número de cuenta Corriente de iglesia"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Familia Desactivada"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Familia activada"
 
 #: 
@@ -6425,14 +6411,6 @@ msgstr "Confirmación de Acción"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Por favor confirme restablecer la cuenta de ingresos fallidos"
-
-#: 
-msgid "View Active Families"
-msgstr "Ver familias activas"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Ver familias Inactivas"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6704,18 +6682,6 @@ msgid "Self Verification"
 msgstr "Autoverificación"
 
 #: 
-msgid "Deactivate"
-msgstr "Desactivar"
-
-#: 
-msgid "Activate"
-msgstr "Activar"
-
-#: 
-msgid "Stack Trace"
-msgstr "Seguimiento de Pila"
-
-#: 
 msgid "Check Number"
 msgstr "Número de Verificación"
 
@@ -6832,10 +6798,6 @@ msgstr "Auto Verificar"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonesio - Indonesia"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "AGREGAR al carrito requiere un arreglo de personas, ID de familia o ID de grupo"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6956,10 +6918,6 @@ msgstr "ONO"
 #: 
 msgid "WSW"
 msgstr "OSO"
-
-#: 
-msgid "Persons"
-msgstr "Personas"
 
 #: 
 msgid "Search Family"
@@ -7298,7 +7256,8 @@ msgid "Debug Email Connection"
 msgstr "Depurar Conexión de correo electrónico"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Esta familia está Desactivada"
 
 #: 
@@ -7545,11 +7504,13 @@ msgid "HTML URL"
 msgstr "URL de HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Últimas Personas"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Personas Actualizadas"
 
 #: 
@@ -7821,10 +7782,6 @@ msgid "Unexpected Person Id"
 msgstr "Id de persona Inesperado"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Marca de Tiempo de Última Comprobación de actualización de Software"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Permitir actualizaciones de sistema marcadas como 'pre-release' en GitHub"
 
@@ -8089,42 +8046,6 @@ msgstr "tasa de apertura"
 #: 
 msgid "Not Subscribed "
 msgstr "No Suscrito"
-
-#: 
-msgid "Global User Settings"
-msgstr "Configuración global de usuario"
-
-#: 
-msgid "General"
-msgstr "General"
-
-#: 
-msgid "Passwords"
-msgstr "Contraseñas"
-
-#: 
-msgid "2FA"
-msgstr "A2F"
-
-#: 
-msgid "Session Timeout"
-msgstr "Tiempo de sesión expirado"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Máximo de ingresos fallidos"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Habilitar restablecer contraseña"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Enviar correo electrónico a usuarios eliminados"
-
-#: 
-msgid "Min Password Length"
-msgstr "Longitud mínima de la contraseña"
 
 #: 
 msgid "Min Password Characters Delta"
@@ -8611,14 +8532,6 @@ msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr "Establezca la fuente para representar las iniciales. Cargue la fuente personalizada en el directorio de fuentes"
 
 #: 
-msgid "Person List Columns"
-msgstr "Columnas de la lista de personas"
-
-#: 
-msgid "Family List Columns"
-msgstr "Columnas de la lista familiar"
-
-#: 
 msgid "Church Email not set, please visit the settings page"
 msgstr "Email de iglesia no establecido, por favor, visite la página de configuración"
 
@@ -8639,10 +8552,6 @@ msgstr "Registros de Sistema"
 #: 
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
 msgstr "Implemente la Política de Seguridad de Contenido (CSP) para protegerse contra ataques de scripts entre sitios. Al deshabilitarla, solo se reportan las infracciones de la CSP."
-
-#: 
-msgid "Maximum number of log files to keep"
-msgstr "Número máximo de archivos de registro a mantener"
 
 #: 
 msgid "Enter event description..."
@@ -8675,10 +8584,6 @@ msgstr "Nivel de registro:"
 #: 
 msgid "Save Log Level"
 msgstr "Guardar nivel de registro"
-
-#: 
-msgid "Lower numbers log more details. Higher numbers log only severe issues. Changes apply to new log entries immediately."
-msgstr "Números más bajos registran más detalles. Números más altos solo registran eventos severos. Los cambios se aplican a los nuevos registros de inmediato"
 
 #: 
 msgid "View application logs. Click on a log file to view its contents."
@@ -9644,10 +9549,6 @@ msgstr "DSN"
 #: 
 msgid "Database Server"
 msgstr "Servidor de base de datos"
-
-#: 
-msgid "Database reset failed: "
-msgstr "Error al restablecer la base de datos:␣"
 
 #: 
 msgid "Debug Info"

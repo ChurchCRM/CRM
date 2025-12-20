@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Επιτυχής εισαγωγή δεδομένων."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "εισήχθησαν άτομα"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Το καλάθι σας περιέχει"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "άτομα από"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "Δεκέμβριος"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Family List"
-msgstr "Οικογενειακή λίστα"
 
 #: 
 msgid "Created"
@@ -1683,7 +1681,8 @@ msgid "No Role Selected"
 msgstr "Δεν έχει επιλεγεί ρόλος"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Μόνο άτομα στο καλάθι;"
 
 #: 
@@ -2064,7 +2063,8 @@ msgid "Option"
 msgstr "Επιλογή"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Προειδοποίηση: Η κατάργηση θα επαναφέρει όλες τις αναθέσεις για όλα τα άτομα με την ανάθεση!"
 
 #: 
@@ -2746,14 +2746,6 @@ msgstr "Στυλ"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Ορίστε το Permission True για να δώσετε σε αυτόν τον χρήστη τη δυνατότητα να αλλάξει την τρέχουσα τιμή του."
-
-#: 
-msgid "User Listing"
-msgstr "Καταχώριση χρήστη"
-
-#: 
-msgid "New User"
-msgstr "Νέος χρήστης"
 
 #: 
 msgid "User Settings"
@@ -3444,10 +3436,6 @@ msgid "Add New Person"
 msgstr "Προσθήκη νέου Μέλους"
 
 #: 
-msgid "View All People"
-msgstr "Προβολή όλων των Μελών"
-
-#: 
 msgid "Add New Family"
 msgstr "Προσθήκη νέας οικογένειας"
 
@@ -3518,10 +3506,6 @@ msgstr "Καλωσόρισες στο"
 #: 
 msgid "Church Information"
 msgstr "Πληροφορίες Εκκλησίας"
-
-#: 
-msgid "User Setup"
-msgstr "Ρύθμιση χρήστη"
 
 #: 
 msgid "Email Setup"
@@ -6184,11 +6168,13 @@ msgid "Church Checking Account Number"
 msgstr "Αριθμός λογαριασμού ελέγχου Εκκλησίας"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Απενεργοποιήθηκε η οικογένεια"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Ενεργοποίησε την Οικογένεια"
 
 #: 
@@ -6403,14 +6389,6 @@ msgstr "Επιβεβαίωση Ενέργειας"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Επιβεβαιώστε την επαναφορά του αριθμού εισόδου που απέτυχε"
-
-#: 
-msgid "View Active Families"
-msgstr "Προβολή ενεργών οικογενειών"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Προβολή ανενεργών οικογενειών"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6682,18 +6660,6 @@ msgid "Self Verification"
 msgstr "Αυτοεπαλήθευση"
 
 #: 
-msgid "Deactivate"
-msgstr "Απενεργοποίηση"
-
-#: 
-msgid "Activate"
-msgstr "Θέτω εις ενέργειαν"
-
-#: 
-msgid "Stack Trace"
-msgstr "Stack Trace"
-
-#: 
 msgid "Check Number"
 msgstr "Ελέγξτε τον αριθμό"
 
@@ -6808,10 +6774,6 @@ msgstr "Αυτοεπαλήθευση"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Ινδονησιακά - Ινδονησία"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "Η δημοσίευση στο καλάθι απαιτεί πίνακα Προσώπων, FamilyID ή GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6932,10 +6894,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Πρόσωπα"
 
 #: 
 msgid "Search Family"
@@ -7274,7 +7232,8 @@ msgid "Debug Email Connection"
 msgstr "Εντοπισμός σφαλμάτων σύνδεσης email"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Αυτή η οικογένεια είναι απενεργοποιημένη"
 
 #: 
@@ -7521,11 +7480,13 @@ msgid "HTML URL"
 msgstr "URL HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Τελευταία Πρόσωπα"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Ενημερωμένα Πρόσωπα"
 
 #: 
@@ -7796,10 +7757,6 @@ msgid "Unexpected Person Id"
 msgstr "Μη αποδεκτο Αναγνωριστικό Μέλους"
 
 #: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Έλεγχος χρονοσήμανσης τελευταίας ενημέρωσης λογισμικού"
-
-#: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr "Επιτρέψτε στις αναβαθμίσεις συστήματος να κυκλοφορούν με την επισήμανση \"προέκδοσης\" στο GitHub"
 
@@ -8052,42 +8009,6 @@ msgstr "ανοικτό ποσοστό"
 #: 
 msgid "Not Subscribed "
 msgstr "Μη εγγεγραμμένος "
-
-#: 
-msgid "Global User Settings"
-msgstr "Καθολικές ρυθμίσεις χρήστη"
-
-#: 
-msgid "General"
-msgstr "Γενικός"
-
-#: 
-msgid "Passwords"
-msgstr "Κωδικοί πρόσβασης"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Χρονικό όριο περιόδου λειτουργίας"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Max Failed Login"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Ενεργοποίηση επαναφοράς κωδικού πρόσβασης"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Στείλτε email σε Διαγραμμένους Χρήστες"
-
-#: 
-msgid "Min Password Length"
-msgstr "Ελάχιστο μήκος κωδικού πρόσβασης"
 
 #: 
 msgid "Min Password Characters Delta"

@@ -739,14 +739,6 @@ msgid "Web Server"
 msgstr "Webサーバ"
 
 #: 
-msgid "Passwords"
-msgstr "パスワード"
-
-#: 
-msgid "2FA"
-msgstr "2FA - 2要素認証"
-
-#: 
 msgid "Login Info"
 msgstr "ログイン情報"
 
