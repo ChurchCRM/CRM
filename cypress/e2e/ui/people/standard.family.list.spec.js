@@ -35,9 +35,9 @@ describe("Standard Family List", () => {
         cy.wait(500);
         
         // Get the first family name from the table and search for it
-        cy.get("#families tbody tr:first td:nth-child(2)").invoke("text").then((familyName) => {
+        cy.get("#families tbody tr:first td:nth-child(1)").invoke("text").then((familyName) => {
             const searchTerm = familyName.trim().split(" ")[0]; // Get first word of family name
-            cy.get("#families_filter input[type='search']").type(searchTerm);
+            cy.get("#families_filter input, #families input[type='search'], .dataTables_filter input").first().type(searchTerm);
             cy.get("#families tbody").contains(searchTerm).should("exist");
         });
     });

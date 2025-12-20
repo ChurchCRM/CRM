@@ -58,7 +58,12 @@ function initializeMainDashboard() {
                 // Render status badge only for inactive families
                 let statusHtml = "";
                 if (row.StatusText && row.IsActive === false) {
-                    statusHtml = ' <span class="badge badge-danger">' + row.StatusText + "</span>";
+                    statusHtml =
+                        ' <span class="badge badge-secondary" title="' +
+                        i18next.t("Inactive") +
+                        '"><i class="fa-solid fa-power-off"></i> ' +
+                        i18next.t("Inactive") +
+                        "</span>";
                 }
 
                 return (
@@ -438,10 +443,12 @@ function initializeMainDashboard() {
                     (row.FamilyStatusText && row.FamilyIsActive === false) ||
                     (row.StatusText && row.IsActive === false)
                 ) {
-                    let text = row.FamilyStatusText || row.StatusText || "";
-                    if (text) {
-                        statusHtml = ' <span class="badge badge-danger">' + text + "</span>";
-                    }
+                    statusHtml =
+                        ' <span class="badge badge-secondary" title="' +
+                        i18next.t("Inactive") +
+                        '"><i class="fa-solid fa-power-off"></i> ' +
+                        i18next.t("Inactive") +
+                        "</span>";
                 }
                 return (
                     '<a href="' +

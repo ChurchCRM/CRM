@@ -7,31 +7,39 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 /* @var $families ObjectCollection */
 ?>
 
-<div class="card">
+<div class="card card-primary mb-3">
     <div class="card-header">
         <h3 class="card-title"><i class="fa-solid fa-filter"></i> <?= gettext('Filters') ?></h3>
     </div>
     <div class="card-body">
         <form id="family-filters" method="get" action="<?= SystemURLs::getRootPath() ?>/v2/family/">
             <div class="row">
-                <div class="col-md-3 mb-3">
-                    <label for="filterCity" class="small text-muted"><?= gettext('City') ?></label>
-                    <input type="text" class="form-control" id="filterCity" name="City" value="<?= htmlspecialchars($filterCity ?? '') ?>" placeholder="<?= gettext('City') ?>">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="filterCity"><?= gettext('City') ?></label>
+                        <input type="text" class="form-control family-filter-field" id="filterCity" name="City" value="<?= htmlspecialchars($filterCity ?? '') ?>" placeholder="<?= gettext('City') ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="familyActiveStatus"><?= gettext('Status') ?></label>
+                        <select id="familyActiveStatus" name="familyActiveStatus" class="form-control family-filter-field">
+                            <option value="all" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'all') ? 'selected' : '' ?>><?= gettext('All') ?></option>
+                            <option value="active" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'active') ? 'selected' : '' ?>><?= gettext('Active') ?></option>
+                            <option value="inactive" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'inactive') ? 'selected' : '' ?>><?= gettext('Inactive') ?></option>
+                        </select>
+                    </div>
                 </div>
-                <div class="col-md-3 mb-3">
-                    <label for="filterState" class="small text-muted"><?= gettext('State') ?></label>
-                    <input type="text" class="form-control" id="filterState" name="State" value="<?= htmlspecialchars($filterState ?? '') ?>" placeholder="<?= gettext('State') ?>">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label for="filterState"><?= gettext('State') ?></label>
+                        <input type="text" class="form-control family-filter-field" id="filterState" name="State" value="<?= htmlspecialchars($filterState ?? '') ?>" placeholder="<?= gettext('State') ?>">
+                    </div>
                 </div>
-                <div class="col-md-3 mb-3">
-                    <label for="familyActiveStatus" class="small text-muted"><?= gettext('Status') ?></label>
-                    <select id="familyActiveStatus" name="familyActiveStatus" class="form-control">
-                        <option value="active" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'active') ? 'selected' : '' ?>><?= gettext('Active') ?></option>
-                        <option value="inactive" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'inactive') ? 'selected' : '' ?>><?= gettext('Inactive') ?></option>
-                        <option value="all" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'all') ? 'selected' : '' ?>><?= gettext('All') ?></option>
-                    </select>
-                </div>
-                <div class="col-md-3 mb-3 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary mr-2"><?= gettext('Apply') ?></button>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <button id="ClearFamilyFilter" type="button" class="btn btn-secondary btn-block">
+                        <i class="fa-solid fa-times"></i> <?= gettext('Clear Filter') ?>
+                    </button>
                 </div>
             </div>
         </form>
@@ -40,9 +48,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title"><?= gettext('Families') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-home"></i> <?= gettext('Families') ?></h3>
     </div>
-    <div class="card-body p-0">
+    <div class="card-body p-2">
         <table class="table table-striped table-hover mb-0" id="families">
             <thead>
                 <tr>
@@ -78,6 +86,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     
                     <td>
                         <?= $family->getLinkHtml(true, true) ?>
+                        <?php if (!$family->isActive()) { ?>
+                            <span class="badge badge-secondary ml-2" title="<?= gettext('Inactive') ?>">
+                                <i class="fa-solid fa-power-off"></i> <?= gettext('Inactive') ?>
+                            </span>
+                        <?php } ?>
                     </td>
                     <td>
                         <?= htmlspecialchars($family->getAddress1()) ?>
@@ -114,6 +127,61 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </table>
     </div>
 </div>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function() {
+    let oTable;
+    
+    // Initialize DataTable with pagination and search
+    if ($.fn.DataTable) {
+        let dataTableConfig = {
+            // Enable pagination
+            "paging": true,
+            "pageLength": 10,
+            "lengthChange": true,
+            "searching": true,
+            // Column definitions
+            "columnDefs": [
+                {
+                    "targets": -1, // Last column (Actions)
+                    "orderable": false,
+                    "searchable": false
+                }
+            ],
+            "language": {
+                "search": "<?= gettext('Search') ?>:",
+                "paginate": {
+                    "first": "<?= gettext('First') ?>",
+                    "last": "<?= gettext('Last') ?>",
+                    "next": "<?= gettext('Next') ?>",
+                    "previous": "<?= gettext('Previous') ?>"
+                },
+                "lengthMenu": "<?= gettext('Show') ?> _MENU_ <?= gettext('entries') ?>",
+                "info": "<?= gettext('Showing') ?> _START_ <?= gettext('to') ?> _END_ <?= gettext('of') ?> _TOTAL_ <?= gettext('entries') ?>"
+            }
+        };
+        
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+        oTable = $('#families').DataTable(dataTableConfig);
+    }
+    
+    // Auto-submit filters when any field changes
+    $('.family-filter-field').on('change', function() {
+        $('#family-filters').submit();
+    });
+    
+    // Clear filter button handler
+    $('#ClearFamilyFilter').on('click', function(e) {
+        e.preventDefault();
+        // Reset all filter fields
+        $('#filterCity').val('');
+        $('#filterState').val('');
+        $('#familyActiveStatus').val('all');
+        // Submit the form to clear filters
+        $('#family-filters').submit();
+    });
+});
+</script>
 
 <?php
 // Load compiled webpack asset for family list interactions

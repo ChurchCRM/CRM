@@ -16,7 +16,7 @@ describe("template spec", () => {
         
         cy.visit("v2/people?familyActiveStatus=all");
         cy.get("#members_filter input").clear().type("edwin.adams@example.com");
-        cy.contains("(564)-714-4633");
+        cy.get("#members tbody").contains("edwin.adams@example.com");
 
         // Enable inactive4 and test
         cy.visit("OptionManager.php?mode=classes");
@@ -32,7 +32,7 @@ describe("template spec", () => {
         
         cy.visit("v2/people?familyActiveStatus=inactive");
         cy.get("#members_filter input").type("edwin.adams@example.com");
-        cy.contains("(564)-714-4633");
+        cy.get("#members tbody").contains("edwin.adams@example.com");
 
         cy.visit("v2/people");
         cy.get("#members_filter input").clear().type("edwin.adams@example.com");

@@ -1,11 +1,6 @@
 import $ from 'jquery';
 
 $(document).ready(function() {
-  // Initialize DataTable for families list
-  if ($.fn.DataTable) {
-    $('#families').DataTable(window.CRM.plugin.dataTable);
-  }
-
   // Handle photo viewing
   $(document).on('click', '.view-family-photo', function(e) {
     e.preventDefault();

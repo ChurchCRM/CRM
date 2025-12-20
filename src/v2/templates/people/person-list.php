@@ -207,16 +207,6 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 <div class="card">
     <div class="card-header">
         <h3 class="card-title"><i class="fa-solid fa-users"></i> <span id="people-title"></span></h3>
-        <div class="card-tools">
-            <div class="btn-group btn-group-sm" role="group">
-                <a id="AddAllToCart" class="btn btn-success">
-                    <i class="fa-solid fa-cart-plus"></i> <span id="add-all-cart-text"></span>
-                </a>
-                <a id="RemoveAllFromCart" class="btn btn-danger">
-                    <i class="fa-solid fa-minus-circle"></i> <span id="remove-all-cart-text"></span>
-                </a>
-            </div>
-        </div>
     </div>
     <div class="card-body p-2">
         <table id="members" class="table table-striped table-hover data-table mb-0 w-100">
@@ -284,7 +274,9 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             // Check if family is inactive using Family::isActive()
                             $family = $person->getFamily();
                             if ($family && !$family->isActive()) {
-                                echo $familyLink . ' <span class="badge badge-danger">' . htmlspecialchars($family->getStatusText()) . '</span>';
+                                echo $familyLink . ' <span class="badge badge-secondary" title="' . gettext('Inactive') . '">';
+                                echo '<i class="fa-solid fa-power-off"></i> ' . gettext('Inactive');
+                                echo '</span>';
                             } else {
                                 echo $familyLink;
                             }
