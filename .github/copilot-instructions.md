@@ -19,6 +19,19 @@ Key conventions (must follow)
 - Asset paths: use `SystemURLs::getRootPath()` for css/img/src references.
 - For notifications, use `window.CRM.notify()` (i18n via i18next.t) — do not use alert().
 
+Terminology & i18n conventions (project-standard)
+- Use a single canonical UI term where possible to reduce translation surface: prefer "Family Listing" for family list menus and headers.
+- Use `People` (not `Persons`) for all UI/display gettext strings. Do NOT rename API routes (`/api/persons`) or internal keys/array fields (e.g., `cartPayload['Persons']`) without explicit coordination — change only user-facing `gettext()`/PO entries and templates.
+- For family lifecycle/status use **Active / Inactive** (avoid "Deactivated"). Use action labels like `Set Active` / `Set Inactive` and banners like `This Family is Inactive`.
+- When recording status-change notes prefer phrasing like `Marked the Family as Inactive` / `Marked the Family as Active`.
+- Add new canonical UI terms (for example `Apply`) to `locale/messages.po` before wiring them into templates; leave translations empty for translators to fill.
+
+API error handling
+- For API route errors, return standardized JSON errors with `SlimUtils::renderErrorJSON(...)` instead of throwing `Http*Exception` directly from route handlers. This ensures consistent logging and sanitized client messages.
+
+Locale rebuild reminder
+- After changing msgids or UI gettext strings, run `npm run locale:build` and `npm run build` to regenerate frontend translation assets and ensure all i18n bundles include the new keys.
+
 Routing & middleware
 - Put API routes in `src/api/routes/` and legacy pages in `src/*.php`.
 - **Admin System Pages** (consolidated at `/admin/system/`):
