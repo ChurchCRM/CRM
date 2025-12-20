@@ -277,9 +277,12 @@ foreach ($families as $family) {
                 $currentFieldData = '';
                 // Try to access custom field data from the member object
                 $fieldPropertyName = $field->getId();
-                if (method_exists($member, 'get' . ucfirst($fieldPropertyName))) {
+                try {
                     $methodName = 'get' . ucfirst($fieldPropertyName);
                     $currentFieldData = trim($member->$methodName() ?? '');
+                } catch (Exception $e) {
+                    // Custom field getter does not exist or threw an exception
+                    $currentFieldData = '';
                 }
 
                 $OutStr = $field->getName() . ' : ' . $currentFieldData . '    ';

@@ -326,11 +326,10 @@ class Family extends BaseFamily implements PhotoInterface
         $city = $this->getCity();
         $state = $this->getState();
         $s = trim($city . ($city && $state ? ', ' : '') . $state);
-        $sEsc = htmlspecialchars($s);
         if (mb_strlen($s) > $maxLen) {
-            return mb_substr($sEsc, 0, $maxLen) . '...';
+            $s = mb_substr($s, 0, $maxLen) . '...';
         }
-        return $sEsc;
+        return htmlspecialchars($s);
     }
 
     public function hasLatitudeAndLongitude(): bool

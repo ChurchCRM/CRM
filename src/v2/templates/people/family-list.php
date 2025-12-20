@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext('Family Listing');
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -17,7 +18,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="filterCity"><?= gettext('City') ?></label>
-                        <input type="text" class="form-control family-filter-field" id="filterCity" name="City" value="<?= htmlspecialchars($filterCity ?? '') ?>" placeholder="<?= gettext('City') ?>">
+                        <input type="text" class="form-control family-filter-field" id="filterCity" name="City" value="<?= InputUtils::escapeAttribute($filterCity ?? '') ?>" placeholder="<?= gettext('City') ?>">
                     </div>
                     <div class="form-group">
                         <label for="familyActiveStatus"><?= gettext('Status') ?></label>
@@ -31,7 +32,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="col-lg-6">
                     <div class="form-group">
                         <label for="filterState"><?= gettext('State') ?></label>
-                        <input type="text" class="form-control family-filter-field" id="filterState" name="State" value="<?= htmlspecialchars($filterState ?? '') ?>" placeholder="<?= gettext('State') ?>">
+                        <input type="text" class="form-control family-filter-field" id="filterState" name="State" value="<?= InputUtils::escapeAttribute($filterState ?? '') ?>" placeholder="<?= gettext('State') ?>">
                     </div>
                 </div>
             </div>
@@ -93,14 +94,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?php } ?>
                     </td>
                     <td>
-                        <?= htmlspecialchars($family->getAddress1()) ?>
+                        <?= InputUtils::escapeHTML($family->getAddress1()) ?>
                         <?php if ($family->getAddress2()): ?>
-                            <br><?= htmlspecialchars($family->getAddress2()) ?>
+                            <br><?= InputUtils::escapeHTML($family->getAddress2()) ?>
                         <?php endif; ?>
-                        <br><?= htmlspecialchars(method_exists($family, 'getCityStateShort') ? $family->getCityStateShort() : ($family->getCity() . ' ' . $family->getState())) ?>
+                        <br><?= $family->getCityStateShort() ?>
                     </td>
-                    <td><?= htmlspecialchars($family->getHomePhone()) ?></td>
-                    <td><?php if ($family->getEmail()): ?><a href="mailto:<?= htmlspecialchars($family->getEmail()) ?>"><?= htmlspecialchars($family->getEmail()) ?></a><?php endif; ?></td>
+                    <td><?= InputUtils::escapeHTML($family->getHomePhone()) ?></td>
+                    <td><?php if ($family->getEmail()): ?><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>"><?= InputUtils::escapeHTML($family->getEmail()) ?></a><?php endif; ?></td>
                     <td><?php if ($family->getDateEntered() !== null) { echo $family->getDateEntered()->format('Y-m-d'); } ?></td>
                     <td><?php if ($family->getDateLastEdited() !== null) { echo $family->getDateLastEdited()->format('Y-m-d'); } ?></td>
                     <td class="text-right">

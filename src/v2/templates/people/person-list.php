@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\Utils\InputUtils;
 
 /**
  * This will avoid to call the db twice one to check if empty the other one to return the value
@@ -25,7 +26,7 @@ function emptyOrUnassigned($stuff)
  */
 function emptyOrUnassignedJSON($stuff): string
 {
-    return empty($stuff) ? 'Unassigned' : json_encode($stuff, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+    return empty($stuff) ? 'Unassigned' : InputUtils::escapeHTML(json_encode($stuff, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
 }
 
 $sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Listing');
@@ -239,12 +240,12 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         $cellPhone = $person->getCellPhone();
                         $hasPhone = false;
                         if (!empty($homePhone)) {
-                            echo '<i class="fa-solid fa-house text-muted mr-1" title="' . gettext('Home') . '"></i>' . htmlspecialchars($homePhone);
+                            echo '<i class="fa-solid fa-house text-muted mr-1" title="' . gettext('Home') . '"></i>' . InputUtils::escapeHTML($homePhone);
                             $hasPhone = true;
                         }
                         if (!empty($cellPhone)) {
                             if ($hasPhone) echo '<br>';
-                            echo '<i class="fa-solid fa-mobile-screen text-muted mr-1" title="' . gettext('Cell') . '"></i>' . htmlspecialchars($cellPhone);
+                            echo '<i class="fa-solid fa-mobile-screen text-muted mr-1" title="' . gettext('Cell') . '"></i>' . InputUtils::escapeHTML($cellPhone);
                             $hasPhone = true;
                         }
                         if (!$hasPhone) {
@@ -270,7 +271,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         
                         // Make family name clickable to family view
                         if ($column->displayFunction === 'getFamilyName') {
-                            $familyLink = '<a href="' . SystemURLs::getRootPath() . '/v2/family/' . $person->getFamId() . '">' . htmlspecialchars($columnData) . '</a>';
+                            $familyLink = '<a href="' . SystemURLs::getRootPath() . '/v2/family/' . $person->getFamId() . '">' . InputUtils::escapeHTML($columnData) . '</a>';
                             // Check if family is inactive using Family::isActive()
                             $family = $person->getFamily();
                             if ($family && !$family->isActive()) {
@@ -284,18 +285,18 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         // Make email clickable with mailto link
                         elseif ($column->displayFunction === 'getEmail') {
                             if (!empty($columnData)) {
-                                echo '<a href="mailto:' . htmlspecialchars($columnData) . '">' . htmlspecialchars($columnData) . '</a>';
+                                echo '<a href="mailto:' . InputUtils::escapeAttribute($columnData) . '">' . InputUtils::escapeHTML($columnData) . '</a>';
                             } else {
                                 echo '<span class="text-muted">—</span>';
                             }
                         }
                         // Make person name clickable and add gender icon, role, and photo icon
                         elseif (in_array($column->displayFunction, ['getFullName', 'getFirstName', 'getLastName'], true)) {
-                            echo '<a href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId() . '" class="font-weight-bold">' . htmlspecialchars($columnData) . '</a>';
+                            echo '<a href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId() . '" class="font-weight-bold">' . InputUtils::escapeHTML($columnData) . '</a>';
                             // Add role in parentheses
                             $role = $person->getFamilyRoleName();
                             if (!empty($role) && $role !== 'Unassigned') {
-                                echo ' <span class="text-muted small">(' . htmlspecialchars($role) . ')</span>';
+                                echo ' <span class="text-muted small">(' . InputUtils::escapeHTML($role) . ')</span>';
                             }
                             // Add gender icon
                             $gender = $person->getGender();
@@ -316,10 +317,10 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if (is_array($columnData) && !empty($columnData)) {
                                 // Always render badges for display
                                 foreach ($columnData as $group) {
-                                    echo '<span class="badge badge-info mr-1">' . htmlspecialchars($group) . '</span>';
+                                    echo '<span class="badge badge-info mr-1">' . InputUtils::escapeHTML($group) . '</span>';
                                 }
                                 // Add hidden span with JSON for DataTables filtering
-                                echo '<span style="display:none;">' . json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR) . '</span>';
+                                echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR)) . '</span>';
                             } else {
                                 echo '<span class="text-muted">—</span>';
                             }
@@ -327,7 +328,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         // Handle Family Status column (hidden for filter)
                         elseif (isset($column->isFamilyStatus) && $column->isFamilyStatus === true) {
                             $family = $person->getFamily();
-                            echo ($family) ? htmlspecialchars($family->getStatusText()) : htmlspecialchars(gettext('Active'));
+                            echo ($family) ? InputUtils::escapeHTML($family->getStatusText()) : InputUtils::escapeHTML(gettext('Active'));
                         }
                         // Handle Gender column (hidden for filter) 
                         elseif ($column->displayFunction === 'getGenderName') {
@@ -347,8 +348,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         // Handle Properties column (hidden for filter)
                         elseif ($column->displayFunction === 'getPropertiesString') {
                             if (is_array($columnData) && !empty($columnData)) {
-                                // Output as JSON for quote-based filter matching
-                                echo json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+                                // Output as JSON for quote-based filter matching (HTML-escaped to prevent XSS)
+                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
                             } else {
                                 echo 'Unassigned';
                             }
@@ -356,8 +357,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         // Handle Custom column (hidden for filter)
                         elseif ($column->displayFunction === 'getCustomFields') {
                             if (is_array($columnData) && !empty($columnData)) {
-                                // Output as JSON for quote-based filter matching
-                                echo json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
+                                // Output as JSON for quote-based filter matching (HTML-escaped to prevent XSS)
+                                echo InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR));
                             } else {
                                 echo 'Unassigned';
                             }
@@ -584,10 +585,10 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             GroupList: <?= json_encode($GroupList, JSON_THROW_ON_ERROR) ?>,
             ClassificationList: <?= json_encode($ClassificationList, JSON_THROW_ON_ERROR) ?>,
             FamilyStatusList: <?= json_encode([gettext('Active'), gettext('Inactive')], JSON_THROW_ON_ERROR) ?>,
-            filterByGender: '<?= isset($_GET['filterByGender']) ? $_GET['filterByGender'] : '' ?>',
-            filterByClsId: '<?= isset($_GET['filterByClsId']) ? $_GET['filterByClsId'] : '' ?>',
-            filterByFmrId: '<?= isset($_GET['filterByFmrId']) ? $_GET['filterByFmrId'] : '' ?>',
-            familyActiveStatus: '<?= isset($_GET['familyActiveStatus']) ? $_GET['familyActiveStatus'] : '' ?>'
+            filterByGender: <?= json_encode(isset($_GET['filterByGender']) ? $_GET['filterByGender'] : '', JSON_THROW_ON_ERROR) ?>,
+            filterByClsId: <?= json_encode(isset($_GET['filterByClsId']) ? $_GET['filterByClsId'] : '', JSON_THROW_ON_ERROR) ?>,
+            filterByFmrId: <?= json_encode(isset($_GET['filterByFmrId']) ? $_GET['filterByFmrId'] : '', JSON_THROW_ON_ERROR) ?>,
+            familyActiveStatus: <?= json_encode(isset($_GET['familyActiveStatus']) ? $_GET['familyActiveStatus'] : '', JSON_THROW_ON_ERROR) ?>
         };
         if (window.initializePeopleListFromServer) {
             window.initializePeopleListFromServer(serverVars);
