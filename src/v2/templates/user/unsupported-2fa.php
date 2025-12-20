@@ -15,7 +15,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <p><?= gettext("Two factor authentication requires ChurchCRM administrators to configure a few parameters") . ":" ?></p>
         <ul>
             <li><?= gettext("System configuration ") . " bEnable2FA " . gettext("Must be set to 'true'") ?></li>
-            <li><?= gettext("Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for") ?>: $TwoFASecretKey</li>
+            <li><?= gettext("System Settings") . " → " . gettext("Two-Factor Authentication") . " → sTwoFASecretKey " . gettext("must be configured with an encryption key") ?></li>
         </ul>
     </div>
 </div>
