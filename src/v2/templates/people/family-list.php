@@ -101,8 +101,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </td>
                     <td><?= htmlspecialchars($family->getHomePhone()) ?></td>
                     <td><?php if ($family->getEmail()): ?><a href="mailto:<?= htmlspecialchars($family->getEmail()) ?>"><?= htmlspecialchars($family->getEmail()) ?></a><?php endif; ?></td>
-                    <td><?php if (method_exists($family, 'getDateEntered') && $family->getDateEntered() !== null) { echo $family->getDateEntered()->format('Y-m-d'); } ?></td>
-                    <td><?php if (method_exists($family, 'getDateLastEdited') && $family->getDateLastEdited() !== null) { echo $family->getDateLastEdited()->format('Y-m-d'); } ?></td>
+                    <td><?php if ($family->getDateEntered() !== null) { echo $family->getDateEntered()->format('Y-m-d'); } ?></td>
+                    <td><?php if ($family->getDateLastEdited() !== null) { echo $family->getDateLastEdited()->format('Y-m-d'); } ?></td>
                     <td class="text-right">
                         <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>' class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>">
                             <i class="fa-solid fa-pen"></i>
