@@ -6,10 +6,8 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\TaskService;
 use ChurchCRM\view\MenuRenderer;
 
-$taskService = new TaskService();
 $localeInfo = Bootstrapper::getCurrentLocale();
 
 // Turn ON output buffering
@@ -146,18 +144,6 @@ $MenuFirst = 1;
                         <i class="fab fa-github"></i> <?= gettext('Contributing') ?>
                     </a>
                 </div>
-            </li>
-
-            <?php
-            $tasks = $taskService->getCurrentUserTasks();
-            $taskSize = count($tasks);
-
-            ?>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fa-regular fa-bell"></i>
-                    <span class="badge badge-warning navbar-badge"><?= $taskSize ?></span>
-                </a>
             </li>
 
             <!-- Support Dropdown Menu -->

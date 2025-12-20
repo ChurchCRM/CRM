@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\Notification\UiNotification;
 use ChurchCRM\Service\NotificationService;
-use ChurchCRM\Service\TaskService;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -32,7 +31,5 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
         $notifications[] = $uiNotification;
     }
 
-    $taskSrv = new TaskService();
-    $notifications = array_merge($notifications, $taskSrv->getTaskNotifications());
     return SlimUtils::renderJSON($response, ['notifications' => $notifications]);
 }

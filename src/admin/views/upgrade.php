@@ -246,22 +246,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Pre-Upgrade Warnings') ?>
                             </h4>
 
-                            <?php if ($hasPreUpgradeTasks): ?>
-                                <div class="alert alert-danger">
-                                    <h5 class="alert-heading">
-                                        <i class="fa fa-bomb mr-2"></i><?= gettext('Pre-Upgrade Tasks Detected') ?>
-                                    </h5>
-                                    <hr>
-                                    <p><?= gettext("Some conditions have been identified which may prevent a successful upgrade") ?></p>
-                                    <p><?= gettext("Please review and mitigate these tasks before continuing with the upgrade:") ?></p>
-                                    <ul class="mb-0">
-                                        <?php foreach ($preUpgradeTasks as $task): ?>
-                                            <li><strong><?= InputUtils::escapeHTML($task->getTitle()) ?>:</strong> <?= InputUtils::escapeHTML($task->getDesc()) ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                            <?php endif; ?>
-
                             <?php if ($integrityCheckFailed): ?>
                                 <div class="alert alert-warning">
                                     <h5 class="alert-heading">
