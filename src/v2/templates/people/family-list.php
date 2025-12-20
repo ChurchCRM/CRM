@@ -1,98 +1,124 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\Family;
 
-$sPageTitle = gettext(ucfirst($sMode)) . ' ' . gettext('Family List');
+$sPageTitle = gettext('Family Listing');
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 /* @var $families ObjectCollection */
 ?>
 
 <div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-filter"></i> <?= gettext('Filters') ?></h3>
+    </div>
     <div class="card-body">
-        <table id="families" class="table table-striped table-bordered data-table w-100">
+        <form id="family-filters" method="get" action="<?= SystemURLs::getRootPath() ?>/v2/family/">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <label for="filterCity" class="small text-muted"><?= gettext('City') ?></label>
+                    <input type="text" class="form-control" id="filterCity" name="City" value="<?= htmlspecialchars($filterCity ?? '') ?>" placeholder="<?= gettext('City') ?>">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="filterState" class="small text-muted"><?= gettext('State') ?></label>
+                    <input type="text" class="form-control" id="filterState" name="State" value="<?= htmlspecialchars($filterState ?? '') ?>" placeholder="<?= gettext('State') ?>">
+                </div>
+                <div class="col-md-3 mb-3">
+                    <label for="familyActiveStatus" class="small text-muted"><?= gettext('Status') ?></label>
+                    <select id="familyActiveStatus" name="familyActiveStatus" class="form-control">
+                        <option value="active" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'active') ? 'selected' : '' ?>><?= gettext('Active') ?></option>
+                        <option value="inactive" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'inactive') ? 'selected' : '' ?>><?= gettext('Inactive') ?></option>
+                        <option value="all" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'all') ? 'selected' : '' ?>><?= gettext('All') ?></option>
+                    </select>
+                </div>
+                <div class="col-md-3 mb-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary mr-2"><?= gettext('Apply') ?></button>
+                    <a id="clear-filters" class="btn btn-secondary" href="#"><?= gettext('Clear') ?></a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?= gettext('Families') ?></h3>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-striped table-hover mb-0" id="families">
             <thead>
                 <tr>
-                    <th><?= gettext('Actions') ?></th>
-                    <?php
-                    // Family list column definitions - defines which columns appear and their data source
-                    $columns = [
-                        (object) ['name' => gettext('Name'), 'displayFunction' => 'getName', 'visible' => 'true'],
-                        (object) ['name' => gettext('Address'), 'displayFunction' => 'getAddress', 'visible' => 'true'],
-                        (object) ['name' => gettext('Home Phone'), 'displayFunction' => 'getHomePhone', 'visible' => 'true'],
-                        (object) ['name' => gettext('Email'), 'displayFunction' => 'getEmail', 'visible' => 'true'],
-                        (object) ['name' => gettext('Created'), 'displayFunction' => 'getDateEntered', 'visible' => 'true'],
-                        (object) ['name' => gettext('Edited'), 'displayFunction' => 'getDateLastEdited', 'visible' => 'true'],
-                    ];
-                    foreach ($columns as $column) {
-                        if ($column->visible === 'true') {
-                            echo '<th>' . $column->name . '</th>';
-                        }
-                    }
-                    ?>
+                    <th><?= gettext('Family Name') ?></th>
+                    <th><?= gettext('Contact') ?></th>
+                    <th><?= gettext('City/State') ?></th>
+                    <th><?= gettext('Members') ?></th>
+                    <th><?= gettext('Active') ?></th>
+                    <th class="text-right" width="150"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
-                <!--Populate the table with family details -->
                 <?php foreach ($families as $family) {
                     /* @var Family $family */
-                    ?>
-                    <tr>
-                        <td>
-                            <a href='<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>'>
-                                <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
-                            </a>
-                            <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>'>
-                                <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
-                            </a>
-                            <?php 
-                                // Check if all family members are in cart
-                                $isInCart = false;
-                                if (isset($_SESSION['aPeopleCart'])) {
-                                    $familyMembers = $family->getPeople();
-                                    if (count($familyMembers) > 0) {
-                                        $allInCart = true;
-                                        foreach ($familyMembers as $member) {
-                                            if (!in_array($member->getId(), $_SESSION['aPeopleCart'], false)) {
-                                                $allInCart = false;
-                                                break;
-                                            }
-                                        }
-                                        $isInCart = $allInCart;
-                                    }
-                                }
-                            ?>
-                            <?php if (!$isInCart) { ?>
-                                <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus fa-sm"></i></button>
-                            <?php } else { ?>
-                                <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-times fa-sm"></i></button>
-                            <?php } ?>
-                        </td>
-
-                        <?php
-                        foreach ($columns as $column) {
-                            if ($column->visible === 'true') {
-                                if (str_starts_with($column->displayFunction, 'getDate')) {
-                                    $columnData = [$family, $column->displayFunction](SystemConfig::getValue('sDateFormatLong'));
-                                } else {
-                                    $columnData = [$family, $column->displayFunction]();
-                                }
-                                echo '<td>' . $columnData . '</td>';
+                    $familyMembers = $family->getPeople();
+                    $memberCount = count($familyMembers);
+                    
+                    // Check if all family members are in cart
+                    $isInCart = false;
+                    if (isset($_SESSION['aPeopleCart']) && $memberCount > 0) {
+                        $allInCart = true;
+                        foreach ($familyMembers as $member) {
+                            if (!in_array($member->getId(), $_SESSION['aPeopleCart'], false)) {
+                                $allInCart = false;
+                                break;
                             }
                         }
-                        ?>
-                    </tr>
+                        $isInCart = $allInCart;
+                    }
+                ?>
+                <tr>
+                    <td>
+                        <?= $family->getLinkHtml(true, true) ?>
+                    </td>
+                    <td>
+                        <?php if ($family->getEmail()): ?>
+                            <a href="mailto:<?= htmlspecialchars($family->getEmail()) ?>"><?= htmlspecialchars($family->getEmail()) ?></a>
+                        <?php endif; ?>
+                        <?php if ($family->getHomePhone()): ?>
+                            <br><?= htmlspecialchars($family->getHomePhone()) ?>
+                        <?php endif; ?>
+                    </td>
+                    <td><?= $family->getCityStateShort() ?></td>
+                    <td><?= $memberCount ?></td>
+                    <td>
+                            <?php if (!$family->isActive()): ?>
+                                <span class="badge badge-danger"><?= gettext('Inactive') ?></span>
+                            <?php else: ?>
+                                <span class="badge badge-success"><?= gettext('Active') ?></span>
+                            <?php endif; ?>
+                    </td>
+                    <td class="text-right">
+                        <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>' class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>">
+                            <i class="fa-solid fa-pen"></i>
+                        </a>
+                        <?php if (!$isInCart && $memberCount > 0) { ?>
+                            <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Add to Cart') ?>">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        <?php } elseif ($isInCart && $memberCount > 0) { ?>
+                            <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Remove from Cart') ?>">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        <?php } ?>
+                    </td>
+                </tr>
                 <?php } ?>
             </tbody>
         </table>
     </div>
 </div>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function() {
-        $('#families').DataTable(window.CRM.plugin.dataTable);
-    });
-</script>
+<?php
+// Load compiled webpack asset for family list interactions
+echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-family-list.min.js"></script>';
+?>
 <?php
 require SystemURLs::getDocumentRoot() .  '/Include/Footer.php';

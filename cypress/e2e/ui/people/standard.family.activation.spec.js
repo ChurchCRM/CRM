@@ -23,10 +23,9 @@ describe("Standard Family Activation", () => {
 
     it("Family activation flow", () => {
         cy.visit("v2/family");
-        cy.contains("Active Family List");
+        cy.contains("Family Listing");
 
         cy.visit("v2/family?mode=inactive");
-        cy.contains("Inactive Family List").should("be.visible");
         cy.contains("Lewis").should("not.exist");
 
         cy.visit("v2/family/3");
