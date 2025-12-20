@@ -311,7 +311,7 @@ function setupApplyStep() {
                         
                         if (countdown <= 0) {
                             clearInterval(countdownInterval);
-                            window.location.href = window.CRM.root + '/session/begin';
+                            window.location.href = window.CRM.root + '/';
                         }
                     }, 1000);
                 }, 1000);
