@@ -25,9 +25,9 @@ describe("Standard Family List", () => {
         // Verify there are rows in the table
         cy.get("#families tbody tr").should("have.length.at.least", 1);
         
-        // Verify action buttons exist
-        cy.get("#families tbody tr:first .btn-info").should("exist"); // View button
+        // Verify action buttons exist (Edit button and Cart button)
         cy.get("#families tbody tr:first .btn-warning").should("exist"); // Edit button
+        cy.get("#families tbody tr:first .AddToCart, #families tbody tr:first .RemoveFromCart").should("exist"); // Cart button
     });
 
     it("Family list search works", () => {
