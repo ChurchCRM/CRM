@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "தகவல்கள் இறக்குமதி வெற்றிகரமாக உள்ளது"
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "நபர்கள் இறக்குமதி செய்யப்பட்டனர்"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "உங்கள் மென்வண்டி கொண்டுள்ளது"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "இந்த நபர்களிள் இருந்து"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "டிசம்பர்"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Family List"
-msgstr "குடும்பப் பட்டியல்"
 
 #: 
 msgid "Created"
@@ -1682,7 +1680,8 @@ msgid "No Role Selected"
 msgstr "எந்தப் வேலையும் /பாத்திரமும் தேர்ந்தெடுக்கப்படவில்லை"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "மென்வண்டி ஆட்கள் மட்டுமா?"
 
 #: 
@@ -2063,7 +2062,8 @@ msgid "Option"
 msgstr "தேர்வு விருப்பம்"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "எச்சரிக்கை: அகற்றுவது, பணியமர்த்தப்பட்ட அனைவருக்குமான அனைத்துப் பணிகளையும் மீட்டமைக்கும்!"
 
 #: 
@@ -2743,14 +2743,6 @@ msgstr "உடை"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "இந்தப் பயனரின் தற்போதைய மதிப்பை மாற்றுவதற்கான திறனை வழங்க, அனுமதி சரி என்பதை அமைக்கவும்."
-
-#: 
-msgid "User Listing"
-msgstr "பயனர் பட்டியல்"
-
-#: 
-msgid "New User"
-msgstr "புதிய பயனர்"
 
 #: 
 msgid "User Settings"
@@ -3441,10 +3433,6 @@ msgid "Add New Person"
 msgstr "புதிய நபரைச் சேர்க்கவும்"
 
 #: 
-msgid "View All People"
-msgstr "அனைத்து மக்களையும் பார்க்கவும்"
-
-#: 
 msgid "Add New Family"
 msgstr "புதிய குடும்பத்தைச் சேர்க்கவும்"
 
@@ -3515,10 +3503,6 @@ msgstr "வரவேற்கிறோம்"
 #: 
 msgid "Church Information"
 msgstr "தேவாலய தகவல்"
-
-#: 
-msgid "User Setup"
-msgstr "பயனர் அமைப்பு"
 
 #: 
 msgid "Email Setup"
@@ -6178,11 +6162,13 @@ msgid "Church Checking Account Number"
 msgstr "சர்ச் சரிபார்ப்பு கணக்கு எண்"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "குடும்பத்தை செயலிழக்கச் செய்தது"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "குடும்பத்தை செயல்படுத்தியது"
 
 #: 
@@ -6397,14 +6383,6 @@ msgstr "செயல் உறுதிப்படுத்தல்"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "தோல்வியுற்ற உள்நுழைவு எண்ணிக்கையை மீட்டமைப்பதை உறுதிப்படுத்தவும்"
-
-#: 
-msgid "View Active Families"
-msgstr "செயலில் உள்ள குடும்பங்களைக் காண்க (இல்லையெனில், நீங்கள் அதை மெனுவில் பார்க்க முடியாது)"
-
-#: 
-msgid "View Inactive Families"
-msgstr "செயலற்ற குடும்பங்களைக் காண்க"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6675,14 +6653,6 @@ msgid "Self Verification"
 msgstr "சுய சரிபார்ப்பு"
 
 #: 
-msgid "Deactivate"
-msgstr "செயலிழக்கச் செய்"
-
-#: 
-msgid "Activate"
-msgstr "செயல்படுத்து"
-
-#: 
 msgid "Check Number"
 msgstr "எண் சரிபார்க்கவும்"
 
@@ -6796,10 +6766,6 @@ msgstr "சுய சரிபார்ப்பு"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "இந்தோனேசிய - இந்தோனேசியா"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "மென்வண்டிக்கு (கார்ட்டிற்கு) POST க்கு நபர்கள் வரிசை, குடும்ப ஐடி (FamilyID) அல்லது குழு ஐடி (GroupID) தேவை"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6920,10 +6886,6 @@ msgstr "டபிள்யூ என் டபிள்யூ (WNW)"
 #: 
 msgid "WSW"
 msgstr "டபிள்யூ எஸ் டபிள்யூ (WSM)"
-
-#: 
-msgid "Persons"
-msgstr "நபர்கள்"
 
 #: 
 msgid "Search Family"
@@ -7262,7 +7224,8 @@ msgid "Debug Email Connection"
 msgstr "பிழைத்திருத்த மின்னஞ்சல் இணைப்பு"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "இந்த குடும்பம் செயலிழக்கப்பட்டது"
 
 #: 
@@ -7507,11 +7470,13 @@ msgid "HTML URL"
 msgstr "எச்டிஎம்எல் (HTML) URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "சமீபத்திய நபர்கள்"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "புதுப்பிக்கப்பட்ட நபர்கள்"
 
 #: 
@@ -8046,42 +8011,6 @@ msgstr "திறந்த விகிதம்"
 #: 
 msgid "Not Subscribed "
 msgstr "குழுசேரவில்லை"
-
-#: 
-msgid "Global User Settings"
-msgstr "உலகளாவிய பயனர் அமைப்புகள்"
-
-#: 
-msgid "General"
-msgstr "பொது"
-
-#: 
-msgid "Passwords"
-msgstr "கடவுச்சொற்கள்"
-
-#: 
-msgid "2FA"
-msgstr "2எஃப் ஏ (2FA)"
-
-#: 
-msgid "Session Timeout"
-msgstr "அமர்வு நேரம் முடிந்தது"
-
-#: 
-msgid "Max Failed Login"
-msgstr "அதிகபட்ச உள்நுழைவு தோல்வி"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "கடவுச்சொல் மீட்டமைப்பை இயக்கு"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "நீக்கப்பட்ட பயனர்களுக்கு மின்னஞ்சல் அனுப்பவும்"
-
-#: 
-msgid "Min Password Length"
-msgstr "குறைந்தபட்ச கடவுச்சொல் நீளம்"
 
 #: 
 msgid "Min Password Characters Delta"
@@ -11343,7 +11272,8 @@ msgid "Save the file and refresh this page"
 msgstr "கோப்பைச் சேமித்து இந்தப் பக்கத்தைப் புதுப்பிக்கவும்"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated persons in Person Editor. Set false to enable entering addresses for persons without a family assignment."
+#, fuzzy
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
 msgstr "நபர்கள் திருத்தியில் தொடர்பில்லாத நபர்களுக்கான தனிப்பட்ட முகவரிகளை உள்ளிடுவதைத் முடக்க true என அமைக்கவும். குடும்ப ஒதுக்கீடு இல்லாத நபர்களுக்கான முகவரிகளை உள்ளிடுவதை இயக்க false என அமைக்கவும்."
 
 #: 

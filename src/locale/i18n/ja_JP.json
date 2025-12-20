@@ -179,8 +179,6 @@
     "Password reset not available.  Please contact your system administrator": "パスワードのリセットができません　システム管理者にお問い合わせください",
     "Enter new user password. Administratively set passwords are not subject to length or complexity requirements": "新しいユーザーパスワードを入力します　管理者が設定したパスワードには、長さや複雑さの要件は適用されません",
     "Web Server": "Webサーバ",
-    "Passwords": "パスワード",
-    "2FA": "2FA - 2要素認証",
     "Login Info": "ログイン情報",
     "Failed Login": "ログインに失敗",
     "Start Date": "開始日",

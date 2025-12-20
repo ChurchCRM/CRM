@@ -343,7 +343,8 @@ msgid "Data import successful."
 msgstr "Nhập dữ liệu thành công"
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "thành viên đã được nhập vào"
 
 #: 
@@ -485,7 +486,8 @@ msgid "Your cart contains"
 msgstr "Giỏ hàng của bạn chứa"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "thành viên từ"
 
 #: 
@@ -1085,10 +1087,6 @@ msgstr "Tháng 12"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Family List"
-msgstr "Danh sách gia đình"
 
 #: 
 msgid "Created"
@@ -1697,7 +1695,8 @@ msgid "No Role Selected"
 msgstr "Không có vai trò đã lựa chọn"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Chỉ những thành viên trong giỏ ?"
 
 #: 
@@ -2078,7 +2077,8 @@ msgid "Option"
 msgstr "Tùy chọn"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Cảnh báo: Việc xóa bỏ các thuộc tính này sẽ xóa bỏ đi các thuộc tính đã được ghép cho các thành viên khác."
 
 #: 
@@ -2760,14 +2760,6 @@ msgstr "Phong cách"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Thiết lập quyền đúng sẽ cho phép thành viên mới có khả năng thay đổi giá trị hiện tại của họ."
-
-#: 
-msgid "User Listing"
-msgstr "Danh sách thành viên"
-
-#: 
-msgid "New User"
-msgstr "Thêm thành viên"
 
 #: 
 msgid "User Settings"
@@ -3458,11 +3450,6 @@ msgid "Add New Person"
 msgstr "Thêm thành viên mới"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "Danh sách Thành viên"
-
-#: 
 msgid "Add New Family"
 msgstr "Thêm gia đình mới"
 
@@ -3533,11 +3520,6 @@ msgstr "Chào mừng bạn đến với"
 #: 
 msgid "Church Information"
 msgstr "Hội Thánh"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "Thành viên"
 
 #: 
 msgid "Email Setup"
@@ -6200,11 +6182,13 @@ msgid "Church Checking Account Number"
 msgstr "Số tài khoản kiểm tra nhà thờ"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Đã hủy kích hoạt gia đình này"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Đã kích hoạt Gia đình"
 
 #: 
@@ -6419,14 +6403,6 @@ msgstr "Xác nhận hành động"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Vui lòng xác nhận đặt lại số lần đăng nhập không thành công"
-
-#: 
-msgid "View Active Families"
-msgstr "Danh sách Gia đình"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Không hoạt động"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6698,14 +6674,6 @@ msgid "Self Verification"
 msgstr "Tự xác minh"
 
 #: 
-msgid "Deactivate"
-msgstr "Hủy kích hoạt"
-
-#: 
-msgid "Activate"
-msgstr "Kích hoạt"
-
-#: 
 msgid "Check Number"
 msgstr "Số kiểm tra"
 
@@ -6820,10 +6788,6 @@ msgstr "Tự xác nhận"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonesia - Indonesia"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "ĐĂNG vào giỏ hàng yêu cầu mảng Người, FamilyID hoặc GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6944,10 +6908,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Thành viên"
 
 #: 
 msgid "Search Family"
@@ -7286,7 +7246,8 @@ msgid "Debug Email Connection"
 msgstr "Gỡ lỗi kết nối email"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Gia đình này đã bị hủy kích hoạt"
 
 #: 
@@ -7533,11 +7494,13 @@ msgid "HTML URL"
 msgstr "URL HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Thành viên mới được thêm"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Thành viên vừa cập nhật"
 
 #: 
@@ -8063,42 +8026,6 @@ msgstr "tỉ lệ mở"
 #: 
 msgid "Not Subscribed "
 msgstr "Chưa đăng ký"
-
-#: 
-msgid "Global User Settings"
-msgstr "Cài đặt Người dùng Toàn cầu"
-
-#: 
-msgid "General"
-msgstr "Chung"
-
-#: 
-msgid "Passwords"
-msgstr "Mật khẩu"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Thời gian chờ của phiên"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Đăng nhập không thành công tối đa"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Bật Đặt lại mật khẩu"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Gửi email đến Người dùng đã Xóa"
-
-#: 
-msgid "Min Password Length"
-msgstr "Độ dài mật khẩu tối thiểu"
 
 #: 
 msgid "Min Password Characters Delta"

@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Uingizaji wa Data Umefanikiwa."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "Watu waliingizwa"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Rukwama yako ina"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "Watu kutoka"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "Disemba"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Family List"
-msgstr "Orodha ya Familia"
 
 #: 
 msgid "Created"
@@ -1682,7 +1680,8 @@ msgid "No Role Selected"
 msgstr "Hakuna Jukumu Lililochaguliwa"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Watu wa mikokoteni tu?"
 
 #: 
@@ -2063,7 +2062,8 @@ msgid "Option"
 msgstr "Chaguo"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Onyo: Kuondoa kutaweka upya kazi zote kwa watu wote walio na kazi iliyokabidhiwa!"
 
 #: 
@@ -2743,14 +2743,6 @@ msgstr "Mtindo"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Weka Ruhusa kuwa Kweli ili kumpa mtumiaji huyu uwezo wa kubadilisha thamani yake ya sasa."
-
-#: 
-msgid "User Listing"
-msgstr "Orodha ya Watumiaji"
-
-#: 
-msgid "New User"
-msgstr "Mtumiaji Mpya"
 
 #: 
 msgid "User Settings"
@@ -3441,10 +3433,6 @@ msgid "Add New Person"
 msgstr "Ongeza Mtu Mpya"
 
 #: 
-msgid "View All People"
-msgstr "Tazama Watu Wote"
-
-#: 
 msgid "Add New Family"
 msgstr "Ongeza Familia Mpya"
 
@@ -3515,10 +3503,6 @@ msgstr "Karibu"
 #: 
 msgid "Church Information"
 msgstr "Habari za Kanisa"
-
-#: 
-msgid "User Setup"
-msgstr "Mpangilio wa Mtumiaji"
 
 #: 
 msgid "Email Setup"
@@ -6178,11 +6162,13 @@ msgid "Church Checking Account Number"
 msgstr "Nambari ya Akaunti ya Ukaguzi wa Kanisa"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Imezima Familia"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Imewasha Familia"
 
 #: 
@@ -6397,14 +6383,6 @@ msgstr "Uthibitisho wa Kitendo"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Tafadhali thibitisha kuweka upya idadi ya kuingia iliyoshindwa"
-
-#: 
-msgid "View Active Families"
-msgstr "Tazama Familia Zinazoshiriki"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Tazama Familia Zisizotumika"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6676,14 +6654,6 @@ msgid "Self Verification"
 msgstr "Kujithibitisha"
 
 #: 
-msgid "Deactivate"
-msgstr "Zima"
-
-#: 
-msgid "Activate"
-msgstr "Amilisha"
-
-#: 
 msgid "Check Number"
 msgstr "Nambari ya Cheki"
 
@@ -6797,10 +6767,6 @@ msgstr "Jithibitishe"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Kiindonesia - Indonesia"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST kwenye rukwama inahitaji safu ya Watu, Kitambulisho cha Familia, au Kitambulisho cha Kikundi"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6921,10 +6887,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Watu"
 
 #: 
 msgid "Search Family"
@@ -7263,7 +7225,8 @@ msgid "Debug Email Connection"
 msgstr "Tatua Muunganisho wa Barua Pepe"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Familia Hii Imezimwa"
 
 #: 
@@ -7508,11 +7471,13 @@ msgid "HTML URL"
 msgstr "URL ya HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Watu Karibuni"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Watu Waliosasishwa"
 
 #: 
@@ -8032,42 +7997,6 @@ msgstr "kiwango cha wazi"
 #: 
 msgid "Not Subscribed "
 msgstr "Hujasajiliwa "
-
-#: 
-msgid "Global User Settings"
-msgstr "Mipangilio ya Watumiaji Ulimwenguni"
-
-#: 
-msgid "General"
-msgstr "Mkuu"
-
-#: 
-msgid "Passwords"
-msgstr "Nywila"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Muda wa Kikao umekwisha"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Kuingia kwa Kiwango cha Juu"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Washa Uwekaji Upya Nenosiri"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Tuma barua pepe kwa Watumiaji Waliofutwa"
-
-#: 
-msgid "Min Password Length"
-msgstr "Urefu mdogo wa Nenosiri"
 
 #: 
 msgid "Min Password Characters Delta"

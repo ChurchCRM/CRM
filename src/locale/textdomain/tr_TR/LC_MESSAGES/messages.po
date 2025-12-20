@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Veri içe aktarma başarılı."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "Kişiler ithal edildi"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Sepetiniz içeriyor"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "Kişiler"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "Aralık"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Family List"
-msgstr "Aile listesi"
 
 #: 
 msgid "Created"
@@ -1683,7 +1681,8 @@ msgid "No Role Selected"
 msgstr "Rol seçilmedi"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Sadece araba kişileri mi?"
 
 #: 
@@ -2064,7 +2063,8 @@ msgid "Option"
 msgstr "Seçenek"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Uyarı: Çıkarma, ödevi olan tüm kişiler için tüm ödevleri sıfırlar!"
 
 #: 
@@ -2746,14 +2746,6 @@ msgstr "Stil"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Bu kullanıcıya geçerli değerlerini değiştirme yeteneği vermek için izni doğru ayarlayın."
-
-#: 
-msgid "User Listing"
-msgstr "Kullanıcı listesi"
-
-#: 
-msgid "New User"
-msgstr "Yeni kullanıcı"
 
 #: 
 msgid "User Settings"
@@ -3444,10 +3436,6 @@ msgid "Add New Person"
 msgstr "Yeni Kişi Ekle"
 
 #: 
-msgid "View All People"
-msgstr "Tüm İnsanları Görüntüle"
-
-#: 
 msgid "Add New Family"
 msgstr "Yeni Aile Ekle"
 
@@ -3518,10 +3506,6 @@ msgstr "Hoşgeldiniz"
 #: 
 msgid "Church Information"
 msgstr "Kilise bilgileri"
-
-#: 
-msgid "User Setup"
-msgstr "Kullanıcı kurulumu"
 
 #: 
 msgid "Email Setup"
@@ -6184,11 +6168,13 @@ msgid "Church Checking Account Number"
 msgstr "Kilise Kontrol Hesap Numarası"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Aileyi devre dışı bıraktı"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Aileyi etkinleştirdi"
 
 #: 
@@ -6403,14 +6389,6 @@ msgstr "Eylem Onayı"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Lütfen başarısız giriş sayısını sıfırla onaylayın"
-
-#: 
-msgid "View Active Families"
-msgstr "Aktif Aileleri Görüntüle"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Aktif olmayan aileleri görüntüle"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6682,14 +6660,6 @@ msgid "Self Verification"
 msgstr "Kendini doğrulama"
 
 #: 
-msgid "Deactivate"
-msgstr "Devre dışı bırakmak"
-
-#: 
-msgid "Activate"
-msgstr "Etkinleştirmek"
-
-#: 
 msgid "Check Number"
 msgstr "Numaraya bak"
 
@@ -6804,10 +6774,6 @@ msgstr "Kendini doğrulamak"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Endonezya - Endonezya"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "Sepete gönderin, bir kişi dizisi, aile kimliği veya groupId gerektirir"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6928,10 +6894,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Kişiler"
 
 #: 
 msgid "Search Family"
@@ -7270,7 +7232,8 @@ msgid "Debug Email Connection"
 msgstr "E -posta bağlantısı hata ayıklama"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Bu aile devre dışı bırakıldı"
 
 #: 
@@ -7517,11 +7480,13 @@ msgid "HTML URL"
 msgstr "HTML URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Son Kişiler"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Güncellenmiş kişiler"
 
 #: 
@@ -8056,42 +8021,6 @@ msgstr "açık oran"
 #: 
 msgid "Not Subscribed "
 msgstr "Abone olunmamış"
-
-#: 
-msgid "Global User Settings"
-msgstr "Global Kullanıcı Ayarları"
-
-#: 
-msgid "General"
-msgstr "Genel"
-
-#: 
-msgid "Passwords"
-msgstr "Şifreler"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Oturum zaman aşımına uğradı"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Max başarısız giriş"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Parola sıfırlamasını etkinleştir"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Silinen kullanıcılara e -posta gönderin"
-
-#: 
-msgid "Min Password Length"
-msgstr "Min şifre uzunluğu"
 
 #: 
 msgid "Min Password Characters Delta"

@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "డేటా దిగుమతి విజయవంతమైంది."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "డేటా దిగుమతి విజయవంతమైంది"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "మీ కార్ట్ కలిగి ఉంది"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "వ్యక్తులు నుండి"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "డిసెంబర్"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Family List"
-msgstr "కుటుంబ జాబితా"
 
 #: 
 msgid "Created"

@@ -331,6 +331,7 @@ msgid "Data import successful."
 msgstr "डेटा आयात सफल."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "व्यक्तियों का आयात किया गया"
 

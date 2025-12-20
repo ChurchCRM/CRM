@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "የውሂብ ማስመጣት ተሳክቷል።"
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "ሰዎች ከውጭ ገቡ"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "ጋሪዎ ይዟል"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "ሰዎች ከ"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "ታህሳስ"
 #: 
 msgid "Unk"
 msgstr "ዩ"
-
-#: 
-msgid "Family List"
-msgstr "የቤተሰብ ዝርዝር"
 
 #: 
 msgid "Created"
@@ -1683,7 +1681,8 @@ msgid "No Role Selected"
 msgstr "ምንም ሚና አልተመረጠም።"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "የካርት ሰዎች ብቻ?"
 
 #: 
@@ -2064,7 +2063,8 @@ msgid "Option"
 msgstr "ምርጫዎች"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "ማስጠንቀቂያ: ይህን መቀነስ ሁሉንም መረጃዎች ይቀይራል!"
 
 #: 
@@ -2746,14 +2746,6 @@ msgstr "ዘይቤ"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "ለዚህ ተጠቃሚ የአሁኑን ዋጋ የመቀየር ችሎታ ለመስጠት ፈቃድ እውነት ያዘጋጁ። "
-
-#: 
-msgid "User Listing"
-msgstr "የተጠቃሚ ዝርዝር"
-
-#: 
-msgid "New User"
-msgstr "አድስ ተጠቃሚ"
 
 #: 
 msgid "User Settings"
@@ -3444,10 +3436,6 @@ msgid "Add New Person"
 msgstr "አዲስ ሰው ጨምር"
 
 #: 
-msgid "View All People"
-msgstr "ሁሉንም ሰዎች ይመልከቱ"
-
-#: 
 msgid "Add New Family"
 msgstr "አዲስ ቤተሰብ ጨምር"
 
@@ -3518,10 +3506,6 @@ msgstr "እንኳን ደህናመጡ"
 #: 
 msgid "Church Information"
 msgstr "የቤተክርስቲያን መረጃ"
-
-#: 
-msgid "User Setup"
-msgstr "የተጠቃሚ ማዋቀር"
 
 #: 
 msgid "Email Setup"
@@ -6185,11 +6169,13 @@ msgid "Church Checking Account Number"
 msgstr "የቤተ ክርስቲያን ማረጋገጫ መለያ ቁጥር"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "ቤተሰቡን አቁም"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "ቤተሰቡን አስጀምር"
 
 #: 
@@ -6404,14 +6390,6 @@ msgstr "የእርምጃ ማረጋገጫ"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "እባክዎ ያልተሳካውን የመግቢያ ብዛት ዳግም ማስጀመሩን ያረጋግጡ"
-
-#: 
-msgid "View Active Families"
-msgstr "የተጀመሩ (ንቁ) ቤተሰቦችን ይመልከቱ"
-
-#: 
-msgid "View Inactive Families"
-msgstr "የቆሙ (ንቁ ያልሆኑ) ቤተሰቦችን ይመልከቱ"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6683,14 +6661,6 @@ msgid "Self Verification"
 msgstr "ራስን መገምገም"
 
 #: 
-msgid "Deactivate"
-msgstr "አለመንቃት(አቦዝን)"
-
-#: 
-msgid "Activate"
-msgstr "ማንቃት"
-
-#: 
 msgid "Check Number"
 msgstr "የፍተሻ ቁጥር"
 
@@ -6805,10 +6775,6 @@ msgstr "ራስን ማረጋገጥ"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "ኢንዶኔዥያ - ኢንዶኔዥያ"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST ወደ ጋሪው የሰዎች ድርድር፣ FamilyID ወይም GroupID ያስፈልገዋል"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6929,10 +6895,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "ሰዎች "
 
 #: 
 msgid "Search Family"
@@ -7271,7 +7233,8 @@ msgid "Debug Email Connection"
 msgstr "የኢሜል ግንኙነትን ያርሙ"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "ይህ ቤተሰብ "
 
 #: 
@@ -7519,11 +7482,13 @@ msgid "HTML URL"
 msgstr "HTML URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "የቅርብ ጊዜ ሰዎች "
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "የዘመኑ ሰዎች "
 
 #: 
@@ -8069,43 +8034,6 @@ msgstr "የመክፍት ፍጥነት"
 #: 
 msgid "Not Subscribed "
 msgstr "አልተመዘገበም።"
-
-#: 
-msgid "Global User Settings"
-msgstr "ዓለም አቀፍ የተጠቃሚ ቅንብሮች"
-
-#: 
-msgid "General"
-msgstr "\n"
-"አጠቃላይ"
-
-#: 
-msgid "Passwords"
-msgstr "የይለፍ ቃል"
-
-#: 
-msgid "2FA"
-msgstr "2ኤፍኤ"
-
-#: 
-msgid "Session Timeout"
-msgstr "ክፍለ ጊዜው አልቋል"
-
-#: 
-msgid "Max Failed Login"
-msgstr "ከፍተኛው ያልተሳካ መግቢያ"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "የይለፍ ቃል ዳግም  ማስተካከያን አስጀምር "
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "ለተሰረዙ ተጠቃሚዎች ኢሜይል ይላኩ።"
-
-#: 
-msgid "Min Password Length"
-msgstr "አነስተኛው የይለፍ ቃል ርዝመት"
 
 #: 
 msgid "Min Password Characters Delta"
