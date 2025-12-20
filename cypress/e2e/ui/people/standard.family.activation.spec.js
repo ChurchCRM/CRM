@@ -29,7 +29,7 @@ describe("Standard Family Activation", () => {
         cy.contains("Lewis").should("not.exist");
 
         cy.visit("v2/family/3");
-        cy.contains("This Family is Deactivated").should("not.be.visible");
+        cy.contains("This Family is Inactive").should("not.be.visible");
         cy.get("#activateDeactivate").click();
         cy.get(".bootbox-accept").should("be.visible").click();
         cy.wait("@updateToInActive");
@@ -38,7 +38,7 @@ describe("Standard Family Activation", () => {
         cy.contains("Lewis");
 
         cy.visit("v2/family/3");
-        cy.contains("This Family is Deactivated").should("be.visible");
+        cy.contains("This Family is Inactive").should("be.visible");
         cy.get("#activateDeactivate").click();
         cy.get(".bootbox-accept").should("be.visible").click();
         cy.wait("@updateToActive");
