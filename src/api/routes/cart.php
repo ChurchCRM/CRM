@@ -24,7 +24,7 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
         } elseif (isset($cartPayload['Group'])) {
             Cart::addGroup($cartPayload['Group']);
         } else {
-            throw new HttpBadRequestException($request, gettext('POST to cart requires a Persons array, FamilyID, or GroupID'));
+            return SlimUtils::renderErrorJSON($response, gettext('POST to cart requires a People array, FamilyID, or GroupID'), [], 400, null, $request);
         }
         
         // Return result with added/duplicate information if available
