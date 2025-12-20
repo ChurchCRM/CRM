@@ -6,8 +6,8 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
 }> = ({ nextButtonEventHandler }) => {
   return (
     <div className="col-lg-12">
-        <div className="box" id="TwoFAEnrollmentSteps">
-          <div className="box-body">
+        <div className="box card" id="TwoFAEnrollmentSteps">
+          <div className="box-body card-body">
             <p>
               {window.i18next.t(
                 "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account.",
@@ -19,39 +19,47 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
               )}
             </p>
             <hr />
-            <div className="col-lg-4">
-              <i className="fa fa-id-card"></i>
-              <p>
-                {window.i18next.t(
-                  "When you sign in to ChurchCRM, you'll still enter your username and password like normal",
-                )}
-              </p>
-            </div>
-            <div className="col-lg-4">
-              <i className="fa fa-key"></i>
-              <p>
-                {window.i18next.t(
-                  "However, you'll also need to supply a one-time code from your authenticator device to complete your login",
-                )}
-              </p>
-            </div>
-            <div className="col-lg-4">
-              <i className="fa fa-square-check"></i>
-              <p>
-                {window.i18next.t(
-                  "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal",
-                )}
-              </p>
+            <div className="row text-center" style={{ marginBottom: "1rem" }}>
+              <div className="col-lg-4">
+                <i className="fa fa-id-card fa-5x mb-3" aria-hidden="true"></i>
+                <p>
+                  {window.i18next.t(
+                    "When you sign in to ChurchCRM, you'll still enter your username and password like normal",
+                  )}
+                </p>
+              </div>
+              <div className="col-lg-4">
+                <i className="fa fa-key fa-5x mb-3" aria-hidden="true"></i>
+                <p>
+                  {window.i18next.t(
+                    "However, you'll also need to supply a one-time code from your authenticator device to complete your login",
+                  )}
+                </p>
+              </div>
+              <div className="col-lg-4">
+                <i className="fa fa-square-check fa-5x mb-3" aria-hidden="true"></i>
+                <p>
+                  {window.i18next.t(
+                    "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal",
+                  )}
+                </p>
+              </div>
             </div>
             <div className="clearfix"></div>
-            <div className="callout callout-warning">
-              <p>
-                {window.i18next.t(
-                  "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin",
-                )}
-              </p>
+            <div className="alert alert-warning d-flex" role="alert">
+              <div className="mr-3">
+                <i className="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
+              </div>
+              <div>
+                <strong className="mr-1">{window.i18next.t("Warning:")}</strong>
+                <div>
+                  {window.i18next.t(
+                    "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin",
+                  )}
+                </div>
+              </div>
             </div>
-            <ul>
+            <ul className="mb-4">
               <li>
                 {window.i18next.t(
                   "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes.",
@@ -85,15 +93,19 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
             </ul>
 
             <div className="clearfix"></div>
-            <button
-              id="begin2faEnrollment"
-              className="btn btn-success"
-              onClick={() => {
-                nextButtonEventHandler();
-              }}
-            >
-              {window.i18next.t("Begin Two Factor Authentication Enrollment")}
-            </button>
+            <div className="row">
+              <div className="col-lg-6 offset-lg-3 text-center">
+                <button
+                  id="begin2faEnrollment"
+                  className="btn btn-success btn-lg btn-block"
+                  onClick={() => {
+                    nextButtonEventHandler();
+                  }}
+                >
+                  {window.i18next.t("Begin Two Factor Authentication Enrollment")}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -162,7 +174,22 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
                       autoFocus
                     />
                   </label>
-                  <p>{currentTwoFAPinStatus}</p>
+                  <div className="twofa-status" aria-live="polite">
+                    {currentTwoFAPinStatus === "pending" && (
+                      <span className="fa fa-spinner fa-spin" aria-hidden="true"></span>
+                    )}
+                    {currentTwoFAPinStatus === "invalid" && (
+                      <span className="text-danger" aria-hidden="true">
+                        <i className="fa fa-times"></i>
+                      </span>
+                    )}
+                    {currentTwoFAPinStatus === "incomplete" && (
+                      <span className="text-muted" aria-hidden="true">
+                        <i className="fa fa-hourglass-start"></i>
+                      </span>
+                    )}
+                    <span className="sr-only">{currentTwoFAPinStatus}</span>
+                  </div>
                 </div>
               </div>
             </div>
