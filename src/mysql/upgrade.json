@@ -455,7 +455,8 @@
             "6.5.4"
         ],
         "scripts": [
-            "/mysql/upgrade/6.6.0.php"
+            "/mysql/upgrade/6.6.0.php",
+            "/mysql/upgrade/6.6.0.sql"
         ],
         "dbVersion": "6.6.0"
     }
