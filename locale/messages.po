@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-20 10:19-0800\n"
+"POT-Creation-Date: 2025-12-20 10:31-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5312,7 +5312,7 @@ msgstr ""
 msgid "Only Payments with Pledges"
 msgstr ""
 
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr ""
 
 msgid "Only the new data below"
@@ -5423,7 +5423,7 @@ msgstr ""
 msgid "PHP Configuration"
 msgstr ""
 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
+msgid "POST to cart requires a People array, FamilyID, or GroupID"
 msgstr ""
 
 msgid "Paddle"
@@ -6865,7 +6865,7 @@ msgstr ""
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
 msgstr ""
 
-msgid "Set true to disable entering personal addresses for unaffiliated persons in Person Editor. Set false to enable entering addresses for persons without a family assignment."
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
 msgstr ""
 
 msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
@@ -8244,7 +8244,7 @@ msgstr ""
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
 msgstr ""
 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr ""
 
 msgid "Warning: Signature mismatch"
@@ -8734,13 +8734,13 @@ msgstr ""
 msgid "people removed from cart"
 msgstr ""
 
+msgid "people were imported"
+msgstr ""
+
 msgid "person"
 msgid_plural "people"
 msgstr[0] ""
 msgstr[1] ""
-
-msgid "people were imported"
-msgstr ""
 
 msgid "property"
 msgstr ""

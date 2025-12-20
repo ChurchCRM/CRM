@@ -294,7 +294,7 @@ if ($embedded) {
     <div class="card-body">
         <form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
-            <div class="alert alert-warning"><?= gettext('Warning: Removing will reset all assignments for all persons with the assignment!') ?></div>
+            <div class="alert alert-warning"><?= gettext('Warning: Removing will reset all assignments for all people with the assignment!') ?></div>
 
             <?php
 
