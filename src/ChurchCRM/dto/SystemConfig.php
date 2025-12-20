@@ -257,6 +257,7 @@ class   SystemConfig
             'bEnable2FA'                           => new ConfigItem(2068, 'bEnable2FA', 'boolean', '1', gettext('Allow users to self-enroll in 2 factor authentication')),
             'bRequire2FA'                          => new ConfigItem(2069, 'bRequire2FA', 'boolean', '0', gettext('Requires users to self-enroll in 2 factor authentication')),
             's2FAApplicationName'                  => new ConfigItem(2070, 's2FAApplicationName', 'text', gettext('ChurchCRM'), gettext('Specify the application name to be displayed in authenticator app')),
+            'sTwoFASecretKey'                      => new ConfigItem(2075, 'sTwoFASecretKey', 'password', '', gettext('Encryption key for storing 2FA secret keys in the database')),
             'bSendUserDeletedEmail'                => new ConfigItem(2071, 'bSendUserDeletedEmail', 'boolean', '0', gettext('Send an email notifying users when their account has been deleted')),
             'sGoogleMapsRenderKey'                 => new ConfigItem(2072, 'sGoogleMapsRenderKey', 'text', '', gettext('Google Maps API Key used for rendering maps in browser'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'),
             'sInactiveClassification'              => new ConfigItem(2073, 'sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
@@ -280,6 +281,7 @@ class   SystemConfig
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Events')             => ['bEnableExternalCalendarAPI', 'bEventsOnDashboardPresence', 'iEventsOnDashboardPresenceTimeOut'],
             gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword'],
+            gettext('Two-Factor Authentication') => ['bEnable2FA', 'bRequire2FA', 's2FAApplicationName', 'sTwoFASecretKey'],
             gettext('System Settings')    => ['sLogLevel', 'bCSVAdminOnly', 'sHeader', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'bAllowPrereleaseUpgrade'],
         ];
     }
