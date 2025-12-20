@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-20 11:33-0800\n"
+"POT-Creation-Date: 2025-12-20 23:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1508,6 +1508,12 @@ msgstr ""
 msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
 msgstr ""
 
+msgid "Code incomplete"
+msgstr ""
+
+msgid "Code is invalid"
+msgstr ""
+
 #. Context: countries
 msgid "Colombia"
 msgstr ""
@@ -2561,6 +2567,9 @@ msgid "Enabled Features"
 msgstr ""
 
 msgid "Encryption"
+msgstr ""
+
+msgid "Encryption key for storing 2FA secret keys in the database"
 msgstr ""
 
 msgid "End Date"
@@ -3895,9 +3904,6 @@ msgid "Include financial data (donation funds, pledges)"
 msgstr ""
 
 msgid "Include only these classifications in the directory, comma separated"
-msgstr ""
-
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr ""
 
 msgid "Include:"
@@ -5839,9 +5845,6 @@ msgstr ""
 msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
 msgstr ""
 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr ""
-
 msgid "Please select a Family."
 msgstr ""
 
@@ -5942,9 +5945,6 @@ msgid "Portuguese - Portugal"
 msgstr ""
 
 msgid "Pre-Upgrade Tasks Complete"
-msgstr ""
-
-msgid "Pre-Upgrade Tasks Detected"
 msgstr ""
 
 msgid "Pre-Upgrade Warnings"
@@ -6347,9 +6347,6 @@ msgid "Restore in progress, please wait..."
 msgstr ""
 
 msgid "Retry Download"
-msgstr ""
-
-msgid "Return to Dashboard"
 msgstr ""
 
 msgid "Return to Event Types"
@@ -6824,9 +6821,6 @@ msgstr ""
 msgid "Server Information"
 msgstr ""
 
-msgid "Server cache time for remote images"
-msgstr ""
-
 msgid "Server error"
 msgstr ""
 
@@ -6848,9 +6842,6 @@ msgid "Set Permission True to give this user the ability to change their current
 msgstr ""
 
 msgid "Set default check account number for family"
-msgstr ""
-
-msgid "Set font to render initials. Upload custom font to fonts directory"
 msgstr ""
 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
@@ -7018,9 +7009,6 @@ msgstr ""
 msgid "Some application prerequisites are not met"
 msgstr ""
 
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr ""
-
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
 msgstr ""
 
@@ -7185,9 +7173,6 @@ msgid "Sunday School group can't be modified, only in this two cases :"
 msgstr ""
 
 msgid "Sundays"
-msgstr ""
-
-msgid "Support for Credit Card and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
 msgstr ""
 
 msgid "Supported formats:"
@@ -7716,6 +7701,9 @@ msgstr ""
 msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
 msgstr ""
 
+msgid "Two-Factor Authentication"
+msgstr ""
+
 msgid "Type"
 msgstr ""
 
@@ -7848,9 +7836,6 @@ msgid "Unsubscribed count:"
 msgstr ""
 
 msgid "Unsuccessful API Key authentication attempt"
-msgstr ""
-
-msgid "Unsupported Deposit Types Detected"
 msgstr ""
 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -8036,6 +8021,9 @@ msgid "Valid Settings"
 msgstr ""
 
 msgid "Validation Error"
+msgstr ""
+
+msgid "Validation pending"
 msgstr ""
 
 msgid "Value"
@@ -8415,9 +8403,6 @@ msgstr ""
 msgid "You don't have access to this page"
 msgstr ""
 
-msgid "You have"
-msgstr ""
-
 msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
 msgstr ""
 
@@ -8701,6 +8686,9 @@ msgstr ""
 msgid "miles"
 msgstr ""
 
+msgid "must be configured with an encryption key"
+msgstr ""
+
 msgid "not found"
 msgstr ""
 
@@ -8794,9 +8782,6 @@ msgid "system user password reset"
 msgstr ""
 
 msgid "system user updated"
-msgstr ""
-
-msgid "task(s)"
 msgstr ""
 
 msgid "to"
