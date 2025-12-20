@@ -396,7 +396,7 @@ msgstr "Dados importados com sucesso."
 
 #: 
 #, fuzzy
-msgid "persons were imported"
+msgid "people were imported"
 msgstr "pessoas foram importadas"
 
 #: 
@@ -568,7 +568,7 @@ msgstr "Seu Carrinho contém"
 
 #: 
 #, fuzzy
-msgid "persons from"
+msgid "people from"
 msgstr "pessoas de"
 
 #: 
@@ -1301,10 +1301,6 @@ msgstr "Dezembro"
 #, fuzzy
 msgid "Unk"
 msgstr "Desconhecido"
-
-#: 
-msgid "Family List"
-msgstr "Lista de Famílias"
 
 #: 
 #, fuzzy
@@ -2040,7 +2036,8 @@ msgid "No Role Selected"
 msgstr "Nenhum Papel Selecionada"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Somente pessoas no Carrinho?"
 
 #: 
@@ -2497,7 +2494,7 @@ msgstr "Opção"
 
 #: 
 #, fuzzy
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "AVISO! Ao remover uma atribuição, ela será excluída do perfil de todas as pessoas à que foi atribuída."
 
 #: 
@@ -3307,16 +3304,6 @@ msgstr "Estilo"
 #, fuzzy
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Definir permissão verdadeira para dar novos usuários a capacidade de alterar o seu valor atual."
-
-#: 
-#, fuzzy
-msgid "User Listing"
-msgstr "Lista de Usuários"
-
-#: 
-#, fuzzy
-msgid "New User"
-msgstr "Novo Usuário"
 
 #: 
 #, fuzzy
@@ -4147,10 +4134,6 @@ msgid "Add New Person"
 msgstr "Nova Pessoa"
 
 #: 
-msgid "View All People"
-msgstr "Ver Pessoas"
-
-#: 
 #, fuzzy
 msgid "Add New Family"
 msgstr "Nova Família"
@@ -4238,10 +4221,6 @@ msgstr "Bem-vindo(a) à"
 #, fuzzy
 msgid "Church Information"
 msgstr "Informações da Igreja"
-
-#: 
-msgid "User Setup"
-msgstr "Configuração de Usuários"
 
 #: 
 #, fuzzy
@@ -7449,12 +7428,12 @@ msgstr "Número da Conta Corrente da Igreja"
 
 #: 
 #, fuzzy
-msgid "Deactivated the Family"
+msgid "Marked the Family as Inactive"
 msgstr "Família desativada"
 
 #: 
 #, fuzzy
-msgid "Activated the Family"
+msgid "Marked the Family as Active"
 msgstr "Família ativa"
 
 #: 
@@ -7721,16 +7700,6 @@ msgstr "Ação de confirmação"
 #, fuzzy
 msgid "Please confirm reset failed login count"
 msgstr "Confirme a contagem de login com falha de reset"
-
-#: 
-#, fuzzy
-msgid "View Active Families"
-msgstr "Famílias Ativas"
-
-#: 
-#, fuzzy
-msgid "View Inactive Families"
-msgstr "Famílias Inativas"
 
 #: 
 #, fuzzy
@@ -8069,16 +8038,6 @@ msgstr "Autoverificação"
 
 #: 
 #, fuzzy
-msgid "Deactivate"
-msgstr "Desativar"
-
-#: 
-#, fuzzy
-msgid "Activate"
-msgstr "Ativar"
-
-#: 
-#, fuzzy
 msgid "Check Number"
 msgstr "Verificar número"
 
@@ -8217,11 +8176,6 @@ msgstr "Verificação automática"
 #, fuzzy
 msgid "Indonesian - Indonesia"
 msgstr "Indonésio - Indonésia"
-
-#: 
-#, fuzzy
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "Colocar no carrinho requer um array de Pessoas, ID de Famílias ou ID de Grupos"
 
 #: 
 #, fuzzy
@@ -8372,11 +8326,6 @@ msgstr "ONO"
 #, fuzzy
 msgid "WSW"
 msgstr "OSO"
-
-#: 
-#, fuzzy
-msgid "Persons"
-msgstr "Pessoas"
 
 #: 
 #, fuzzy
@@ -8800,7 +8749,7 @@ msgstr "Depuração de conexão de E-mail"
 
 #: 
 #, fuzzy
-msgid "This Family is Deactivated"
+msgid "This Family is Inactive"
 msgstr "Esta Família está Desativada"
 
 #: 
@@ -9105,12 +9054,12 @@ msgstr "URL de HTML"
 
 #: 
 #, fuzzy
-msgid "Latest Persons"
+msgid "Latest People"
 msgstr "Últimas Pessoas"
 
 #: 
 #, fuzzy
-msgid "Updated Persons"
+msgid "Updated People"
 msgstr "Pessoas Atualizadas"
 
 #: 
@@ -9765,51 +9714,6 @@ msgstr "Taxa livre"
 #, fuzzy
 msgid "Not Subscribed "
 msgstr "Não inscrito "
-
-#: 
-#, fuzzy
-msgid "Global User Settings"
-msgstr "Configurações gerais de usuário"
-
-#: 
-#, fuzzy
-msgid "General"
-msgstr "Geral"
-
-#: 
-#, fuzzy
-msgid "Passwords"
-msgstr "Senhas"
-
-#: 
-#, fuzzy
-msgid "2FA"
-msgstr "Autenticação de 2 fatores"
-
-#: 
-#, fuzzy
-msgid "Session Timeout"
-msgstr "Sessão com tempo esgotado"
-
-#: 
-#, fuzzy
-msgid "Max Failed Login"
-msgstr "Máximo de Logins com falha"
-
-#: 
-#, fuzzy
-msgid "Enable Password Reset"
-msgstr "Ativar Redefinição de Senha"
-
-#: 
-#, fuzzy
-msgid "Send email to Deleted Users"
-msgstr "Enviar e-mail para usuários excluídos"
-
-#: 
-#, fuzzy
-msgid "Min Password Length"
-msgstr "Tamanho mínimo de senha"
 
 #: 
 #, fuzzy

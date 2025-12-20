@@ -342,7 +342,8 @@ msgid "Data import successful."
 msgstr "Data importerer vellykket."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "personer ble importert"
 
 #: 
@@ -487,7 +488,8 @@ msgid "Your cart contains"
 msgstr "Handlekurven inneholder"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "personer fra"
 
 #: 
@@ -1094,10 +1096,6 @@ msgstr "Desember"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Family List"
-msgstr "Familie Liste"
 
 #: 
 msgid "Created"
@@ -1722,7 +1720,7 @@ msgstr "Ingen Rolle Valgt"
 
 #: 
 #, fuzzy
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr "Kun cart personer?"
 
 #: 
@@ -2091,7 +2089,8 @@ msgid "Option"
 msgstr "Alternativet"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Advarsel: Fjerne vil tilbakestille alle oppdrag for alle personer med oppdraget!"
 
 #: 
@@ -2804,14 +2803,6 @@ msgid "Style"
 msgstr "Stil"
 
 #: 
-msgid "User Listing"
-msgstr "Bruker Liste"
-
-#: 
-msgid "New User"
-msgstr "Ny Bruker"
-
-#: 
 msgid "User Settings"
 msgstr "Bruker Innstillinger"
 
@@ -3483,10 +3474,6 @@ msgstr "Medlemmer"
 #: 
 msgid "Add New Person"
 msgstr "Legg til nye person"
-
-#: 
-msgid "View All People"
-msgstr "Vis alle personer"
 
 #: 
 msgid "Add New Family"

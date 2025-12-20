@@ -345,7 +345,8 @@ msgid "Data import successful."
 msgstr "Import de date cu succes."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "au fost importate persoane"
 
 #: 
@@ -489,7 +490,8 @@ msgid "Your cart contains"
 msgstr "Cosul de cumparaturi contine"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "persoane din"
 
 #: 
@@ -1100,10 +1102,6 @@ msgstr "Decembrie"
 #: 
 msgid "Unk"
 msgstr "UNK"
-
-#: 
-msgid "Family List"
-msgstr "Listă familie"
 
 #: 
 msgid "Created"
@@ -1726,7 +1724,7 @@ msgstr "Nici un rol selectat"
 
 #: 
 #, fuzzy
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr "Cosul numai de persoanele?"
 
 #: 
@@ -2118,7 +2116,8 @@ msgid "Option"
 msgstr "Opțiune"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Avertisment: Demontarea va reseta toate sarcinile pentru toate persoanele cu atribuire!"
 
 #: 
@@ -2821,14 +2820,6 @@ msgstr "Stil"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Alege permisiuni DA pentru a permite acestui utilizatori să schimbe valoarea curentă"
-
-#: 
-msgid "User Listing"
-msgstr "Listarea utilizator"
-
-#: 
-msgid "New User"
-msgstr "Utilizator nou"
 
 #: 
 msgid "User Settings"
@@ -3536,11 +3527,6 @@ msgid "Add New Person"
 msgstr "Adaguă membru nou"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "Vezi toți membri"
-
-#: 
 msgid "Add New Family"
 msgstr "Adaugă familie nouă"
 
@@ -3611,11 +3597,6 @@ msgstr "Bun venit la:"
 #: 
 msgid "Church Information"
 msgstr "Informații biserică"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "Setări utilizatori"
 
 #: 
 msgid "Email Setup"
@@ -6279,11 +6260,13 @@ msgid "Church Checking Account Number"
 msgstr "Numărul contului de verificare al Bisericii"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Dezactivează familia"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Activează familia"
 
 #: 
@@ -6498,14 +6481,6 @@ msgstr "Confirmare acțiune"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Vă rugăm să confirmați resetarea numărului de conectări eșuat"
-
-#: 
-msgid "View Active Families"
-msgstr "Vizualizați familiile active"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Vizualizați familii inactive"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6777,14 +6752,6 @@ msgid "Self Verification"
 msgstr "Auto verificare"
 
 #: 
-msgid "Deactivate"
-msgstr "Dezactivare"
-
-#: 
-msgid "Activate"
-msgstr "Activare"
-
-#: 
 msgid "Check Number"
 msgstr "Număr verificare"
 
@@ -6899,10 +6866,6 @@ msgstr "Auto verificare"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonezia"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST în coș necesită o matrice Persons, FamilyID sau GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -7023,10 +6986,6 @@ msgstr "VNV"
 #: 
 msgid "WSW"
 msgstr "VSV"
-
-#: 
-msgid "Persons"
-msgstr "Oameni"
 
 #: 
 msgid "Search Family"
@@ -7365,7 +7324,8 @@ msgid "Debug Email Connection"
 msgstr "Depanare conectare Email"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Această familie este dezactivată"
 
 #: 
@@ -7612,11 +7572,13 @@ msgid "HTML URL"
 msgstr "HTML URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Persoane recente"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Persoane actualizate"
 
 #: 
@@ -8148,42 +8110,6 @@ msgstr "Rata de deschidere"
 #: 
 msgid "Not Subscribed "
 msgstr "Nu s-au abonat"
-
-#: 
-msgid "Global User Settings"
-msgstr "Setăril globale ale utilizatorului"
-
-#: 
-msgid "General"
-msgstr "General"
-
-#: 
-msgid "Passwords"
-msgstr "Parola"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Expirarea sesiunii"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Numărul maxim de autentificări eșuate"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Activează resetarea parolei"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Trimite email către utilizatorii șterși"
-
-#: 
-msgid "Min Password Length"
-msgstr "Lungimea minimă a parolei"
 
 #: 
 msgid "Min Password Characters Delta"

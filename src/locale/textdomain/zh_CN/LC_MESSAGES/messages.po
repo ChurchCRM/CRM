@@ -345,7 +345,8 @@ msgid "Data import successful."
 msgstr "数据导入成功。"
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "人进口"
 
 #: 
@@ -489,7 +490,8 @@ msgid "Your cart contains"
 msgstr "您的购物车中包含"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "人从"
 
 #: 
@@ -1100,10 +1102,6 @@ msgstr "十二月"
 #: 
 msgid "Unk"
 msgstr "安克"
-
-#: 
-msgid "Family List"
-msgstr "家家列表"
 
 #: 
 msgid "Created"
@@ -1727,7 +1725,7 @@ msgstr "无角色选取"
 
 #: 
 #, fuzzy
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr "只有车的人吗？"
 
 #: 
@@ -2119,7 +2117,8 @@ msgid "Option"
 msgstr "选项"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "除警告：将重置所有分配的分配与所有的人！"
 
 #: 
@@ -2825,14 +2824,6 @@ msgstr "风格"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "设置Permission True以使该用户能够更改其当前值。"
-
-#: 
-msgid "User Listing"
-msgstr "用户列表"
-
-#: 
-msgid "New User"
-msgstr "新用户"
 
 #: 
 msgid "User Settings"
@@ -3542,11 +3533,6 @@ msgid "Add New Person"
 msgstr "添加新成员"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "查看所有成员"
-
-#: 
 msgid "Add New Family"
 msgstr "添加新家庭"
 
@@ -3617,11 +3603,6 @@ msgstr "欢迎来到"
 #: 
 msgid "Church Information"
 msgstr "教会信息"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "用户设置"
 
 #: 
 msgid "Email Setup"
@@ -6284,11 +6265,13 @@ msgid "Church Checking Account Number"
 msgstr "教堂检查账号"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "停止的家庭"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "激活的家庭"
 
 #: 
@@ -6503,14 +6486,6 @@ msgstr "确认操作"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "请确认重置登录失败次数"
-
-#: 
-msgid "View Active Families"
-msgstr "查看活跃家庭"
-
-#: 
-msgid "View Inactive Families"
-msgstr "查看非活跃家庭"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6782,14 +6757,6 @@ msgid "Self Verification"
 msgstr "自助验证"
 
 #: 
-msgid "Deactivate"
-msgstr "停用"
-
-#: 
-msgid "Activate"
-msgstr "启用"
-
-#: 
 msgid "Check Number"
 msgstr "检查号码"
 
@@ -6899,10 +6866,6 @@ msgstr "自助验证"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "印尼语 - 印尼"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "过账到购物车需要Persons array，家庭ID或组ID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -7024,10 +6987,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "人员"
 
 #: 
 msgid "Search Family"
@@ -7368,7 +7327,8 @@ msgid "Debug Email Connection"
 msgstr "Debug邮件连接"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "这个家庭已停用"
 
 #: 
@@ -7615,11 +7575,13 @@ msgid "HTML URL"
 msgstr "HTML URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "最新人员"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "更新人员"
 
 #: 
@@ -8152,42 +8114,6 @@ msgstr "开放率"
 #: 
 msgid "Not Subscribed "
 msgstr "未订阅 "
-
-#: 
-msgid "Global User Settings"
-msgstr "全局用户设置"
-
-#: 
-msgid "General"
-msgstr "一般的"
-
-#: 
-msgid "Passwords"
-msgstr "密码输入"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "会话超时"
-
-#: 
-msgid "Max Failed Login"
-msgstr "最大登录失败"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "启用密码重置"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "发送电子邮件给已删除的用户"
-
-#: 
-msgid "Min Password Length"
-msgstr "最小密码长度"
 
 #: 
 msgid "Min Password Characters Delta"

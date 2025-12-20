@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "데이터 가져오기에 성공했습니다."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "명이 가져와졌습니다."
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "카트에는 총"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "명이 있으며"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "12월"
 #: 
 msgid "Unk"
 msgstr "미상"
-
-#: 
-msgid "Family List"
-msgstr "가족 목록"
 
 #: 
 msgid "Created"
@@ -1682,7 +1680,8 @@ msgid "No Role Selected"
 msgstr "선택된 역할 없음"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "카트에 담긴 사람만?"
 
 #: 
@@ -2063,7 +2062,8 @@ msgid "Option"
 msgstr "옵션"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "경고: 삭제하면 해당 배정이 걸린 모든 사람의 설정이 초기화됩니다!"
 
 #: 
@@ -2743,14 +2743,6 @@ msgstr "스타일"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "허용을 선택하면 이 사용자가 해당 값을 수정할 수 있습니다."
-
-#: 
-msgid "User Listing"
-msgstr "사용자 목록"
-
-#: 
-msgid "New User"
-msgstr "새 사용자"
 
 #: 
 msgid "User Settings"
@@ -3441,10 +3433,6 @@ msgid "Add New Person"
 msgstr "새 개인 추가"
 
 #: 
-msgid "View All People"
-msgstr "전체 개인 보기"
-
-#: 
 msgid "Add New Family"
 msgstr "새 가족 추가"
 
@@ -3515,10 +3503,6 @@ msgstr "환영합니다:"
 #: 
 msgid "Church Information"
 msgstr "교회 정보"
-
-#: 
-msgid "User Setup"
-msgstr "사용자 설정"
 
 #: 
 msgid "Email Setup"
@@ -6178,11 +6162,13 @@ msgid "Church Checking Account Number"
 msgstr "교회 당좌 계좌 번호"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "가족을 비활성화했습니다"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "가족을 활성화했습니다"
 
 #: 
@@ -6397,14 +6383,6 @@ msgstr "작업 확인"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "실패한 로그인 횟수를 초기화할지 확인하세요"
-
-#: 
-msgid "View Active Families"
-msgstr "활성 가족 보기"
-
-#: 
-msgid "View Inactive Families"
-msgstr "비활성 가족 보기"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6675,14 +6653,6 @@ msgid "Self Verification"
 msgstr "자가 확인"
 
 #: 
-msgid "Deactivate"
-msgstr "비활성화"
-
-#: 
-msgid "Activate"
-msgstr "활성화"
-
-#: 
 msgid "Check Number"
 msgstr "수표 번호"
 
@@ -6796,10 +6766,6 @@ msgstr "자가 확인"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "인도네시아어 - 인도네시아"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "카트로 POST하려면 Persons 배열, FamilyID, 또는 GroupID가 필요합니다"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6920,10 +6886,6 @@ msgstr "서북서"
 #: 
 msgid "WSW"
 msgstr "서남서"
-
-#: 
-msgid "Persons"
-msgstr "개인"
 
 #: 
 msgid "Search Family"
@@ -7262,7 +7224,8 @@ msgid "Debug Email Connection"
 msgstr "이메일 연결 디버그"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "이 가족은 비활성 상태입니다"
 
 #: 
@@ -7506,11 +7469,13 @@ msgid "HTML URL"
 msgstr "HTML URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "최근 등록된 개인"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "최근 수정된 개인"
 
 #: 
@@ -8039,42 +8004,6 @@ msgstr "오픈율"
 #: 
 msgid "Not Subscribed "
 msgstr "구독 안 함 "
-
-#: 
-msgid "Global User Settings"
-msgstr "전체 사용자 설정"
-
-#: 
-msgid "General"
-msgstr "일반"
-
-#: 
-msgid "Passwords"
-msgstr "비밀번호"
-
-#: 
-msgid "2FA"
-msgstr "2단계 인증"
-
-#: 
-msgid "Session Timeout"
-msgstr "세션 타임아웃"
-
-#: 
-msgid "Max Failed Login"
-msgstr "로그인 실패 허용 횟수"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "비밀번호 재설정 허용"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "삭제된 사용자에게 이메일 발송"
-
-#: 
-msgid "Min Password Length"
-msgstr "최소 비밀번호 길이"
 
 #: 
 msgid "Min Password Characters Delta"
@@ -11328,7 +11257,8 @@ msgid "Save the file and refresh this page"
 msgstr "파일을 저장하고 이 페이지를 새로고침하세요"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated persons in Person Editor. Set false to enable entering addresses for persons without a family assignment."
+#, fuzzy
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
 msgstr "Person Editor에서 소속되지 않은 사람의 개인 주소 입력을 비활성화하려면 true로 설정하세요. 가족 할당이 없는 사람의 주소 입력을 활성화하려면 false로 설정하세요."
 
 #: 

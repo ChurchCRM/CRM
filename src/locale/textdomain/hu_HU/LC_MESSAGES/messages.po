@@ -331,7 +331,8 @@ msgid "Data import successful."
 msgstr "Adatok importálása sikeres."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "személy importálta"
 
 #: 
@@ -475,7 +476,8 @@ msgid "Your cart contains"
 msgstr "Kosarában"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "személyek"
 
 #: 
@@ -1549,7 +1551,7 @@ msgstr "Válassza ki a csoportot szeretne jelenteni"
 
 #: 
 #, fuzzy
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr "Csak cart személyek?"
 
 #: 
@@ -1797,7 +1799,8 @@ msgid "Option"
 msgstr "Opció"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Figyelmeztetés: eltávolítása visszaállítja az összes feladatot minden személy számára a feladat!"
 
 #: 
@@ -2441,10 +2444,6 @@ msgstr "(Ad minden jogosultságokat.)"
 #, fuzzy
 msgid "Style"
 msgstr "Stílus"
-
-#: 
-msgid "User Listing"
-msgstr "Felhasználó Listing"
 
 #: 
 msgid "Last Login"

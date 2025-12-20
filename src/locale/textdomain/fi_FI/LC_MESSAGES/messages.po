@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Tietojen tuonti onnistui."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "henkilöitä tuotiin"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Korisi sisältää"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "henkilöt alkaen"
 
 #: 

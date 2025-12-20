@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Data import compleet."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "Personen werden geïmporteerd"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Uw werkbestand bevat"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "personen van"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "december"
 #: 
 msgid "Unk"
 msgstr "Onb"
-
-#: 
-msgid "Family List"
-msgstr "Gezinnen"
 
 #: 
 msgid "Created"
@@ -1682,7 +1680,8 @@ msgid "No Role Selected"
 msgstr "Geen rol geselecteerd"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Alleen personen in uw werkbestand?"
 
 #: 
@@ -2063,7 +2062,8 @@ msgid "Option"
 msgstr "Optie"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Waarschuwing: Verwijdering betekent het resetten van de koppelingen van alle personen met deze koppeling!"
 
 #: 
@@ -2743,14 +2743,6 @@ msgstr "Stijl"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Geef deze gebruiker de mogelijkheid te geven om zijn huidige gegevens te wijzigen."
-
-#: 
-msgid "User Listing"
-msgstr "Overzicht gebruikers"
-
-#: 
-msgid "New User"
-msgstr "Nieuwe gebruiker"
 
 #: 
 msgid "User Settings"
@@ -3441,10 +3433,6 @@ msgid "Add New Person"
 msgstr "Personen toevoegen"
 
 #: 
-msgid "View All People"
-msgstr "Personen overzicht"
-
-#: 
 msgid "Add New Family"
 msgstr "Nieuw gezin\n"
 ""
@@ -3518,10 +3506,6 @@ msgstr "Welkom bij"
 #: 
 msgid "Church Information"
 msgstr "Over de gemeente"
-
-#: 
-msgid "User Setup"
-msgstr "Instellingen"
 
 #: 
 msgid "Email Setup"
@@ -6186,11 +6170,13 @@ msgid "Church Checking Account Number"
 msgstr "Kerk rekeningnummer controleren"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Gezin gedeactiveerd"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "De familie geactiveerd"
 
 #: 
@@ -6405,14 +6391,6 @@ msgstr "Goedkeuren acties"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Bevestig het aantal mislukte inlogpogingen opnieuw instellen"
-
-#: 
-msgid "View Active Families"
-msgstr "Actieve gezinnen"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Niet actieve gezinnen"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6683,14 +6661,6 @@ msgid "Self Verification"
 msgstr "Zelfverificatie"
 
 #: 
-msgid "Deactivate"
-msgstr "Deactiveren"
-
-#: 
-msgid "Activate"
-msgstr "Activeren"
-
-#: 
 msgid "Check Number"
 msgstr "Controleer het nummer"
 
@@ -6804,10 +6774,6 @@ msgstr "Zelf verifiëren"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonesisch - Indonesië"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST naar werkbestand vereist een Person-array, FamilyID of GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6928,10 +6894,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Personen"
 
 #: 
 msgid "Search Family"
@@ -7270,7 +7232,8 @@ msgid "Debug Email Connection"
 msgstr "Info e-mail connectie"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Dit gezin is gedeactiveerd"
 
 #: 
@@ -7515,11 +7478,13 @@ msgid "HTML URL"
 msgstr "HTML URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Nieuwste personen"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Aantal gewijzigde personen"
 
 #: 
@@ -8050,42 +8015,6 @@ msgstr "open ratio"
 #: 
 msgid "Not Subscribed "
 msgstr "Niet geabonneerd "
-
-#: 
-msgid "Global User Settings"
-msgstr "Algemene gebruikersinstellingen"
-
-#: 
-msgid "General"
-msgstr "Algemeen"
-
-#: 
-msgid "Passwords"
-msgstr "Wachtwoorden"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Time-out voor 2FA-sessie"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Max. mislukte aanmelding"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Wachtwoord opnieuw instellen inschakelen"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "E-mail verzenden naar verwijderde gebruikers"
-
-#: 
-msgid "Min Password Length"
-msgstr "Minimale wachtwoordlengte"
 
 #: 
 msgid "Min Password Characters Delta"

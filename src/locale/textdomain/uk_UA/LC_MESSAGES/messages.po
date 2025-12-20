@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Імпорт даних успішно завершено."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "персон імпортовано"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Кошик містить"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "особи з"
 
 #: 
@@ -1072,10 +1074,6 @@ msgstr "Грудень"
 #: 
 msgid "Unk"
 msgstr "Дядько"
-
-#: 
-msgid "Family List"
-msgstr "Сімейний список"
 
 #: 
 msgid "Created"
@@ -1684,7 +1682,8 @@ msgid "No Role Selected"
 msgstr "Роль не вибрано"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Тільки вози?"
 
 #: 
@@ -2065,7 +2064,8 @@ msgid "Option"
 msgstr "Варіант"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Попередження: Видалення призведе до скидання всіх завдань для всіх осіб, які мають це призначення!"
 
 #: 
@@ -2747,14 +2747,6 @@ msgstr "Стиль"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Встановіть Permission True, щоб надати цьому користувачеві можливість змінювати своє поточне значення."
-
-#: 
-msgid "User Listing"
-msgstr "Список користувачів"
-
-#: 
-msgid "New User"
-msgstr "Новий користувач"
 
 #: 
 msgid "User Settings"
@@ -3445,10 +3437,6 @@ msgid "Add New Person"
 msgstr "Додати нову особу"
 
 #: 
-msgid "View All People"
-msgstr "Переглянути всіх людей"
-
-#: 
 msgid "Add New Family"
 msgstr "Додати нову сім’ю"
 
@@ -3519,10 +3507,6 @@ msgstr "Ласкаво просимо до"
 #: 
 msgid "Church Information"
 msgstr "Церковна інформація"
-
-#: 
-msgid "User Setup"
-msgstr "Налаштування користувача"
 
 #: 
 msgid "Email Setup"
@@ -6185,11 +6169,13 @@ msgid "Church Checking Account Number"
 msgstr "Номер церковного чекового рахунку"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Деактивував сім’ю"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Активізував сім’ю"
 
 #: 
@@ -6404,14 +6390,6 @@ msgstr "Підтвердження дії"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Будь ласка, підтвердьте скидання кількості помилок входу"
-
-#: 
-msgid "View Active Families"
-msgstr "Перегляд активних сімей"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Переглянути неактивні сім’ї"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6683,14 +6661,6 @@ msgid "Self Verification"
 msgstr "Самоперевірка"
 
 #: 
-msgid "Deactivate"
-msgstr "Вимкнути"
-
-#: 
-msgid "Activate"
-msgstr "Активувати"
-
-#: 
 msgid "Check Number"
 msgstr "Номер чека"
 
@@ -6805,10 +6775,6 @@ msgstr "Самоперевірка"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Індонезійська - Індонезія"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST для кошика вимагає масиву Persons, FamilyID або GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6929,10 +6895,6 @@ msgstr "ПнЗ"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Особи"
 
 #: 
 msgid "Search Family"
@@ -7271,7 +7233,8 @@ msgid "Debug Email Connection"
 msgstr "Налагодження підключення електронної пошти"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Ця родина деактивована"
 
 #: 
@@ -7518,11 +7481,13 @@ msgid "HTML URL"
 msgstr "URL-адреса HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Останні особи"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Оновлені особи"
 
 #: 
@@ -8045,42 +8010,6 @@ msgstr "відкрита ставка"
 #: 
 msgid "Not Subscribed "
 msgstr "Не передплачено "
-
-#: 
-msgid "Global User Settings"
-msgstr "Загальні налаштування користувача"
-
-#: 
-msgid "General"
-msgstr "Загальні"
-
-#: 
-msgid "Passwords"
-msgstr "Паролі"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Час очікування сеансу"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Макс. Невдалий вхід"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Увімкнути скидання пароля"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Надіслати електронне повідомлення видаленим користувачам"
-
-#: 
-msgid "Min Password Length"
-msgstr "Мінімальна довжина пароля"
 
 #: 
 msgid "Min Password Characters Delta"

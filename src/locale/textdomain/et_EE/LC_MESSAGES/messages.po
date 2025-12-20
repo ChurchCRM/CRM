@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "Andmete import õnnestus."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "inimest imporditi"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "Teie korv sisaldab"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "isikud alates"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "Detsember"
 #: 
 msgid "Unk"
 msgstr "Meie"
-
-#: 
-msgid "Family List"
-msgstr "Perekonna nimekiri"
 
 #: 
 msgid "Created"
@@ -1683,7 +1681,8 @@ msgid "No Role Selected"
 msgstr "Ühtegi rolli pole valitud"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Ainult korvi isikud?"
 
 #: 
@@ -2064,7 +2063,8 @@ msgid "Option"
 msgstr "Võimalus"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Hoiatus: eemaldamine lähtestab kõik ülesanded kõigile määratud isikutele!"
 
 #: 
@@ -2746,14 +2746,6 @@ msgstr "Stiil"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Määrake luba True, et anda sellele kasutajale võimalus muuta oma praegust väärtust."
-
-#: 
-msgid "User Listing"
-msgstr "Kasutajate nimekiri"
-
-#: 
-msgid "New User"
-msgstr "Uus kasutaja"
 
 #: 
 msgid "User Settings"
@@ -3444,11 +3436,6 @@ msgid "Add New Person"
 msgstr "Lisage uus inimene"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "Kuva kõik isikud"
-
-#: 
 msgid "Add New Family"
 msgstr "Lisage uus pere"
 
@@ -3519,11 +3506,6 @@ msgstr "Teretulemast"
 #: 
 msgid "Church Information"
 msgstr "Koguduse teave"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "Kasutaja seadistamine"
 
 #: 
 msgid "Email Setup"
@@ -6185,11 +6167,13 @@ msgid "Church Checking Account Number"
 msgstr "Koguduse arvelduskonto number"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Perekond deaktiveeritud"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Perekond aktiveeritud"
 
 #: 
@@ -6404,14 +6388,6 @@ msgstr "Toimingu kinnitus"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Palun kinnitage nurjunud sisselogimiste arvu lähtestamine"
-
-#: 
-msgid "View Active Families"
-msgstr "Vaadake aktiivseid perekondi"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Vaadake mitteaktiivseid perekondi"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6683,14 +6659,6 @@ msgid "Self Verification"
 msgstr "Automaatne kinitus"
 
 #: 
-msgid "Deactivate"
-msgstr "Deaktiveeri"
-
-#: 
-msgid "Activate"
-msgstr "Aktiveeri"
-
-#: 
 msgid "Check Number"
 msgstr "Kontrolli numbrit"
 
@@ -6805,10 +6773,6 @@ msgstr "Automaatne kinnitus"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "indoneesia keel – Indoneesia"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "valikukorvi postitamiseks on vaja Isikute massiivi, FamilyID või GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6929,10 +6893,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Isikud"
 
 #: 
 msgid "Search Family"
@@ -7271,7 +7231,8 @@ msgid "Debug Email Connection"
 msgstr "Siluri e-posti ühendus"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "See perekond on mitteaktiivne (välja lülitatud)"
 
 #: 
@@ -7518,11 +7479,13 @@ msgid "HTML URL"
 msgstr "HTML-i URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Viimased isikud"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Uuendatud isikud"
 
 #: 
@@ -8057,42 +8020,6 @@ msgstr "avatud määr"
 #: 
 msgid "Not Subscribed "
 msgstr "Pole tellitud"
-
-#: 
-msgid "Global User Settings"
-msgstr "Globaalsed kasutaja seaded"
-
-#: 
-msgid "General"
-msgstr "Üldine"
-
-#: 
-msgid "Passwords"
-msgstr "Paroolid"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Seansi aegumine"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Maksimaalselt ebaõnnestunud sisselogimisi"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Luba parooli lähtestamine"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Saada kustutatud kasutajatele e-kiri"
-
-#: 
-msgid "Min Password Length"
-msgstr "Minimaalne parooli pikkus"
 
 #: 
 msgid "Min Password Characters Delta"

@@ -330,7 +330,8 @@ msgid "Data import successful."
 msgstr "تم إستيراد البيانات بنجاح"
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "تم إستيراد بيانات الشخص"
 
 #: 
@@ -471,7 +472,8 @@ msgid "Your cart contains"
 msgstr "تحتوي سلة التسوق على"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "الأشخاص من"
 
 #: 
@@ -1071,10 +1073,6 @@ msgstr "ديسمبر"
 #: 
 msgid "Unk"
 msgstr "UNK"
-
-#: 
-msgid "Family List"
-msgstr "قائمة العائلة"
 
 #: 
 msgid "Created"
@@ -1683,7 +1681,8 @@ msgid "No Role Selected"
 msgstr "لم يتم تحديد دور"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "العربة الأشخاص فقط؟"
 
 #: 
@@ -2064,7 +2063,8 @@ msgid "Option"
 msgstr "اختيار"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "تحذير: إزالة وإعادة تعيين كافة المهام لجميع الأشخاص ذوي المهمة!"
 
 #: 
@@ -2746,14 +2746,6 @@ msgstr "أسلوب"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "تعيين إذن صحيح لإعطاء هذا المستخدم القدرة على تغيير قيمتها الحالية."
-
-#: 
-msgid "User Listing"
-msgstr "قائمة المستخدم"
-
-#: 
-msgid "New User"
-msgstr "مستخدم جديد"
 
 #: 
 msgid "User Settings"
@@ -3444,11 +3436,6 @@ msgid "Add New Person"
 msgstr "إضافة شخص جديد"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "عرض جميع الاشخاص"
-
-#: 
 msgid "Add New Family"
 msgstr "اضافة عائلة جديدة"
 
@@ -3519,11 +3506,6 @@ msgstr "مرحبا بك في"
 #: 
 msgid "Church Information"
 msgstr "معلومات كنيسة"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "إعداد المستخدم"
 
 #: 
 msgid "Email Setup"
@@ -6186,11 +6168,13 @@ msgid "Church Checking Account Number"
 msgstr "الكنيسة التحقق من رقم الحساب"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "إلغاء تنشيط الأسرة"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "تنشيط الأسرة"
 
 #: 
@@ -6405,14 +6389,6 @@ msgstr "تأكيد العمل"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "يرجى فشلت إعادة تأكيد تسجيل الدخول العد"
-
-#: 
-msgid "View Active Families"
-msgstr "عرض عائلات النشطة"
-
-#: 
-msgid "View Inactive Families"
-msgstr "عائلات مشاهدة غير فعال"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6684,14 +6660,6 @@ msgid "Self Verification"
 msgstr "التأكيد الذاتي"
 
 #: 
-msgid "Deactivate"
-msgstr "غير نشط"
-
-#: 
-msgid "Activate"
-msgstr "نشط"
-
-#: 
 msgid "Check Number"
 msgstr "رقم الشيك"
 
@@ -6806,10 +6774,6 @@ msgstr "تحقق الذات"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "الأندونيسية - اندونيسيا"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST إلى العربة يتطلب مجموعة أشخاص، FamilyID، أو GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -6930,10 +6894,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "الأشخاص"
 
 #: 
 msgid "Search Family"
@@ -7272,7 +7232,8 @@ msgid "Debug Email Connection"
 msgstr "التصحيح البريد الإلكتروني اتصال"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "هذه الأسرة هي المعطلة"
 
 #: 
@@ -7519,11 +7480,13 @@ msgid "HTML URL"
 msgstr "URL HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "أحدث الأشخاص"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "تحديث الاشخاص"
 
 #: 
@@ -8059,42 +8022,6 @@ msgstr "معدل مفتوح"
 #: 
 msgid "Not Subscribed "
 msgstr "غير مشترك "
-
-#: 
-msgid "Global User Settings"
-msgstr "إعدادات المستخدم العامة"
-
-#: 
-msgid "General"
-msgstr "عام"
-
-#: 
-msgid "Passwords"
-msgstr "كلمات السر"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "مهلة جلسة"
-
-#: 
-msgid "Max Failed Login"
-msgstr "ماكس فشل تسجيل الدخول"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "تفعيل اعاده تعيين كلمه المرور"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "أرسل بريدًا إلكترونيًا إلى المستخدمين المحذوفين"
-
-#: 
-msgid "Min Password Length"
-msgstr "الحد الأدنى لطول كلمة المرور"
 
 #: 
 msgid "Min Password Characters Delta"

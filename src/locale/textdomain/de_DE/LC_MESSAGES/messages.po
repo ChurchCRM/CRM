@@ -348,7 +348,8 @@ msgid "Data import successful."
 msgstr "Datenimport war erfolgreich."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "Personen wurden importiert"
 
 #: 
@@ -493,7 +494,8 @@ msgid "Your cart contains"
 msgstr "Ihr Korb enthält"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "Person aus"
 
 #: 
@@ -1104,10 +1106,6 @@ msgstr "Dezember"
 #: 
 msgid "Unk"
 msgstr "Unk"
-
-#: 
-msgid "Family List"
-msgstr "Familienliste"
 
 #: 
 msgid "Created"
@@ -1736,7 +1734,7 @@ msgstr "Keine Rolle ausgewählt"
 
 #: 
 #, fuzzy
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr "Nur Personen aus dem Korb?"
 
 #: 
@@ -2128,7 +2126,8 @@ msgid "Option"
 msgstr "Option"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Achtung! Das Löschen setzt die Zuordnungen für alle Personen mit dieser Zuordnung zurück."
 
 #: 
@@ -2835,14 +2834,6 @@ msgstr "Darstellung der Datenfelder"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Setzen Sie die Berechtigungen, um diesem Benutzer die Möglichkeit zu geben, seinen aktuellen Wert zu ändern."
-
-#: 
-msgid "User Listing"
-msgstr "Benutzer Auflistung"
-
-#: 
-msgid "New User"
-msgstr "Neuer Benutzer"
 
 #: 
 msgid "User Settings"
@@ -3560,11 +3551,6 @@ msgid "Add New Person"
 msgstr "Neue Person hinzufügen"
 
 #: 
-#, fuzzy
-msgid "View All People"
-msgstr "Alle Personen anzeigen"
-
-#: 
 msgid "Add New Family"
 msgstr "Neue Familie hinzufügen"
 
@@ -3635,11 +3621,6 @@ msgstr "Willkommen zu"
 #: 
 msgid "Church Information"
 msgstr "Informationen über die Gemeinde"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "Benutzereinstellungen"
 
 #: 
 msgid "Email Setup"
@@ -6302,11 +6283,13 @@ msgid "Church Checking Account Number"
 msgstr "Girokontonummer der Kirche"
 
 #: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Familie deaktiviert"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Aktiviert die Familie"
 
 #: 
@@ -6521,14 +6504,6 @@ msgstr "Bestätigung der Aktion"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Bitte bestätigen Sie die Anzahl der zurückgesetzten fehlgeschlagenen Anmeldungen"
-
-#: 
-msgid "View Active Families"
-msgstr "Aktive Familien anzeigen"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Inaktive Familien anzeigen"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -6800,14 +6775,6 @@ msgid "Self Verification"
 msgstr "Selbstüberprüfung"
 
 #: 
-msgid "Deactivate"
-msgstr "Deaktivieren"
-
-#: 
-msgid "Activate"
-msgstr "Aktivieren"
-
-#: 
 msgid "Check Number"
 msgstr "Schecknummer"
 
@@ -6922,10 +6889,6 @@ msgstr "Selbstüberprüfung"
 #: 
 msgid "Indonesian - Indonesia"
 msgstr "Indonesisch - Indonesien"
-
-#: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "POST to cart erfordert ein Personen-Array, eine FamilyID oder eine GroupID"
 
 #: 
 msgid "records(s) successfully added to selected Group."
@@ -7046,10 +7009,6 @@ msgstr "WNW"
 #: 
 msgid "WSW"
 msgstr "WSW"
-
-#: 
-msgid "Persons"
-msgstr "Personen"
 
 #: 
 msgid "Search Family"
@@ -7388,7 +7347,8 @@ msgid "Debug Email Connection"
 msgstr "E-Mail-Verbindung debuggen"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Diese Familie ist deaktiviert"
 
 #: 
@@ -7635,11 +7595,13 @@ msgid "HTML URL"
 msgstr "HTML-URL"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Neuste Personen"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Kürzlich aktualisierte Personen"
 
 #: 
@@ -8174,42 +8136,6 @@ msgstr "offener Tarif"
 #: 
 msgid "Not Subscribed "
 msgstr "Nicht abonniert "
-
-#: 
-msgid "Global User Settings"
-msgstr "Globale Benutzereinstellungen"
-
-#: 
-msgid "General"
-msgstr "Allgemein"
-
-#: 
-msgid "Passwords"
-msgstr "Kennwörter"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Sitzungs-Timeout"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Max Anzahl der fehlgeschlagen Anmeldungen"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Passwort-Rücksetzung aktivieren"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "E-Mail an gelöschte Benutzer senden"
-
-#: 
-msgid "Min Password Length"
-msgstr "Min. Länge des Passworts"
 
 #: 
 msgid "Min Password Characters Delta"

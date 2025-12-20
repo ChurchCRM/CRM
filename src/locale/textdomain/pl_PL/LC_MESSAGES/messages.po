@@ -345,7 +345,8 @@ msgid "Data import successful."
 msgstr "Import zakończony powidzeniem."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "osób zostało zaimportowanych"
 
 #: 
@@ -489,7 +490,8 @@ msgid "Your cart contains"
 msgstr "Koszyk zawiera"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "osób z"
 
 #: 
@@ -1657,7 +1659,7 @@ msgstr "Nie Zaznaczono Roli"
 
 #: 
 #, fuzzy
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr "Czy chcesz dodać tylko Osoby z Koszyka?"
 
 #: 
@@ -2045,7 +2047,8 @@ msgid "Option"
 msgstr "Opcje"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Uwaga: Usunięcie spowoduje wymazanie wszystkich przypisań dla wszystkich osób z tym przypisaniem!"
 
 #: 
@@ -2753,14 +2756,6 @@ msgid "Set Permission True to give this user the ability to change their current
 msgstr "Ustaw True aby zezwolić użytkownikowi na zmianę wartości danego pola."
 
 #: 
-msgid "User Listing"
-msgstr "Lista Użytkowników"
-
-#: 
-msgid "New User"
-msgstr "Nowy Użytkownik"
-
-#: 
 msgid "User Settings"
 msgstr "Ustawienia Użytkownika"
 
@@ -3332,10 +3327,6 @@ msgid "Calendar"
 msgstr "Kalendarz"
 
 #: 
-msgid "View All People"
-msgstr "Widok wszystkich osób"
-
-#: 
 msgid "Events"
 msgstr "Wydarzenia"
 
@@ -3711,11 +3702,13 @@ msgid "Duplicate Emails"
 msgstr "Duplikaty Email"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Ostatnie Osoby"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Zaktualizowane Osoby"
 
 #: 
@@ -4231,42 +4224,6 @@ msgstr "Hebrajski"
 #: 
 msgid "Not Subscribed "
 msgstr "Nie Zapisany"
-
-#: 
-msgid "Global User Settings"
-msgstr "Ogólne Ustawienia Użytkownika"
-
-#: 
-msgid "General"
-msgstr "Ogólne"
-
-#: 
-msgid "Passwords"
-msgstr "Hasła"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Sesja Wygasła"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Maksymalne Błędne Logowanie"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Zezwól na zmianę hasła"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Wyślij email do Usuniętych Użytkowników"
-
-#: 
-msgid "Min Password Length"
-msgstr "Minimalna Długość Hasła"
 
 #: 
 msgid "Min Password Characters Delta"

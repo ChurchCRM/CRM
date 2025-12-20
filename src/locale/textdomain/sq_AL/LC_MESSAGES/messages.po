@@ -311,7 +311,8 @@ msgid "Data import successful."
 msgstr "Të dhënat e importit të suksesshme."
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "persona janë importuar"
 
 #: 
@@ -452,7 +453,8 @@ msgid "Your cart contains"
 msgstr "Shporta juaj përmban"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "persona nga"
 
 #: 
@@ -1714,7 +1716,8 @@ msgid "Option"
 msgstr "Alternativë"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+#, fuzzy
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr "Warning: Heqja do të rivendosur të gjitha detyrat për të gjithë personat me të detyrës!"
 
 #: 
@@ -2323,10 +2326,6 @@ msgid "Style"
 msgstr "Stili"
 
 #: 
-msgid "User Listing"
-msgstr "User Listing"
-
-#: 
 msgid "Last Login"
 msgstr "Kycja e fundit"
 
@@ -2783,11 +2782,6 @@ msgstr "Anëtarët"
 #: 
 msgid "Add New Person"
 msgstr "Shto person i ri"
-
-#: 
-#, fuzzy
-msgid "View All People"
-msgstr "Shiko të gjitha Persona"
 
 #: 
 msgid "Add New Family"
