@@ -1,7 +1,5 @@
 <?php
 
-use ChurchCRM\dto\MenuEventsCount;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Map\TokenTableMap;
@@ -159,7 +157,6 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
 function getLatestFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
-        ->filterByDateDeactivated(null)
         ->orderByDateEntered('DESC')
         ->limit(10)
         ->find();
@@ -170,7 +167,6 @@ function getLatestFamilies(Request $request, Response $response, array $args): R
 function getUpdatedFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
-        ->filterByDateDeactivated(null)
         ->orderByDateLastEdited('DESC')
         ->limit(10)
         ->find();
@@ -188,6 +184,8 @@ function buildFormattedFamilies($families): array
         $formattedFamily['Name'] = $family->getName();
         $formattedFamily['Address'] = $family->getAddress();
         $formattedFamily['HasPhoto'] = $family->getPhoto()->hasUploadedPhoto();
+        $formattedFamily['IsActive'] = $family->isActive();
+        $formattedFamily['StatusText'] = $family->getStatusText();
         
         $formattedFamily['Created'] = $family->getDateEntered() ? $family->getDateEntered()->format('c') : null; // ISO 8601
         $formattedFamily['LastEdited'] = $family->getDateLastEdited() ? $family->getDateLastEdited()->format('c') : null; // ISO 8601

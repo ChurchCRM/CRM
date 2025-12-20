@@ -3,7 +3,6 @@
 namespace ChurchCRM\Config\Menu;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Config;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -68,12 +67,9 @@ class Menu
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-user');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'PeopleDashboard.php', true, 'fa-tachometer-alt'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Person'), 'PersonEditor.php', $isAddRecordsEnabled, 'fa-user-plus'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('View Active People'), 'v2/people', true, 'fa-users'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('View Inactive People'), 'v2/people?familyActiveStatus=inactive', true, 'fa-user-slash'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('View All People'), 'v2/people?familyActiveStatus=all', true, 'fa-list'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Person Listing'), 'v2/people', true, 'fa-list'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-user-friends'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('View Active Families'), 'v2/family', true, 'fa-home'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('View Inactive Families'), 'v2/family?mode=inactive', true, 'fa-user-slash'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'v2/family', true, 'fa-home'));
 
         if ($isAdmin) {
             $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);

@@ -106,7 +106,6 @@ function getLatestPersons(Request $request, Response $response, array $args): Re
 {
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
-        ->where('Family.DateDeactivated is null')
         ->orderByDateEntered('DESC')
         ->limit(10)
         ->find();
@@ -118,7 +117,6 @@ function getUpdatedPersons(Request $request, Response $response, array $args): R
 {
     $people = PersonQuery::create()
         ->leftJoinWithFamily()
-        ->where('Family.DateDeactivated is null')
         ->orderByDateLastEdited('DESC')
         ->limit(10)
         ->find();
@@ -237,6 +235,9 @@ function buildFormattedPersonList(Collection $people): array
         if ($family !== null) {
             $formattedPerson['FamilyId'] = $family->getId();
             $formattedPerson['FamilyName'] = $family->getName();
+            // Include family status so dashboard can render inactive badges next to family links
+            $formattedPerson['FamilyIsActive'] = $family->isActive();
+            $formattedPerson['FamilyStatusText'] = $family->getStatusText();
         } else {
             $formattedPerson['FamilyId'] = null;
             $formattedPerson['FamilyName'] = null;

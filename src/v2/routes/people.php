@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -77,11 +78,9 @@ function listPeople(Request $request, Response $response, array $args): Response
 
     $sInactiveClasses = implode(',', $aInactiveClasses);
 
-    if ($familyActiveStatus === 'active') {
-        $members->leftJoinFamily()->where('(family_fam.fam_DateDeactivated is null) and (per_cls_id not in (' . $sInactiveClasses . ') )');
-    } elseif ($familyActiveStatus === 'inactive') {
-        $members->leftJoinFamily()->where('(family_fam.fam_DateDeactivated is not null) or (per_cls_id in (' . $sInactiveClasses . ') )');
-    }
+    // Always retrieve all families - filtering will be done client-side by the Family Status filter
+    // Family Status column will show Active or Inactive, allowing client-side filtering like other filters
+    $members->leftJoinFamily();
 
     $members->find();
 
@@ -132,13 +131,17 @@ function listPeople(Request $request, Response $response, array $args): Response
         }
     }
 
+    // Family status is computed on-demand in templates via Family::isActive()
+
     $pageArgs = [
-        'sMode'          => $sMode,
-        'sRootPath'      => SystemURLs::getRootPath(),
-        'members'        => $members,
-        'filterByClsId'  => $filterByClsId,
-        'filterByFmrId'  => $filterByFmrId,
-        'filterByGender' => $filterByGender,
+        'sMode'                           => $sMode,
+        'sRootPath'                       => SystemURLs::getRootPath(),
+        'members'                         => $members,
+        'filterByClsId'                   => $filterByClsId,
+        'filterByFmrId'                   => $filterByFmrId,
+        'filterByGender'                  => $filterByGender,
+        'familyActiveStatus'              => $familyActiveStatus,
+        // no precomputed familyStatusMap: templates will call Family::isActive()
     ];
 
     return $renderer->render($response, 'person-list.php', $pageArgs);

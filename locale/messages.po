@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-17 07:55+0000\n"
+"POT-Creation-Date: 2025-12-20 11:33-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,10 +78,6 @@ msgid "%d event in %s"
 msgid_plural "%d events in %s"
 msgstr[0] ""
 msgstr[1] ""
-
-#, php-format
-msgid "%d families missing coordinates"
-msgstr ""
 
 #, php-format
 msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
@@ -266,13 +262,7 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-msgid "Activate"
-msgstr ""
-
 msgid "Activate the boxed layout"
-msgstr ""
-
-msgid "Activated the Family"
 msgstr ""
 
 msgid "Active"
@@ -1793,9 +1783,6 @@ msgstr ""
 msgid "Current fiscal year:"
 msgstr ""
 
-msgid "Custom"
-msgstr ""
-
 msgid "Custom Drop-Down List"
 msgstr ""
 
@@ -1971,12 +1958,6 @@ msgid "Date:"
 msgstr ""
 
 msgid "Day"
-msgstr ""
-
-msgid "Deactivate"
-msgstr ""
-
-msgid "Deactivated the Family"
 msgstr ""
 
 msgid "Dear Friend"
@@ -3025,7 +3006,7 @@ msgstr ""
 msgid "Family Information"
 msgstr ""
 
-msgid "Family List"
+msgid "Family Listing"
 msgstr ""
 
 msgid "Family Map"
@@ -3826,9 +3807,6 @@ msgstr ""
 msgid "Iceland (Ísland)"
 msgstr ""
 
-msgid "Id"
-msgstr ""
-
 msgid "Identify members who have not made any donations within a date range."
 msgstr ""
 
@@ -4021,7 +3999,13 @@ msgstr ""
 msgid "Invalid login or password"
 msgstr ""
 
+msgid "Invalid request data"
+msgstr ""
+
 msgid "Invalid request: Missing calendar id"
+msgstr ""
+
+msgid "Invalid status"
 msgstr ""
 
 #. Context: countries
@@ -4218,7 +4202,7 @@ msgstr ""
 msgid "Latest Note"
 msgstr ""
 
-msgid "Latest Persons"
+msgid "Latest People"
 msgstr ""
 
 msgid "Latitude"
@@ -4512,6 +4496,12 @@ msgid "Mar"
 msgstr ""
 
 msgid "March"
+msgstr ""
+
+msgid "Marked the Family as Active"
+msgstr ""
+
+msgid "Marked the Family as Inactive"
 msgstr ""
 
 #. Context: countries
@@ -5322,7 +5312,7 @@ msgstr ""
 msgid "Only Payments with Pledges"
 msgstr ""
 
-msgid "Only cart persons?"
+msgid "Only cart people?"
 msgstr ""
 
 msgid "Only the new data below"
@@ -5431,9 +5421,6 @@ msgid "PHP & Server Requirements"
 msgstr ""
 
 msgid "PHP Configuration"
-msgstr ""
-
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
 msgstr ""
 
 msgid "Paddle"
@@ -5635,6 +5622,9 @@ msgstr ""
 msgid "Person Editor"
 msgstr ""
 
+msgid "Person Listing"
+msgstr ""
+
 msgid "Person Name"
 msgstr ""
 
@@ -5668,6 +5658,9 @@ msgstr ""
 msgid "Person to Make User"
 msgstr ""
 
+msgid "Person(s) removed from cart"
+msgstr ""
+
 msgid "PersonID for Cart must be numeric"
 msgstr ""
 
@@ -5687,9 +5680,6 @@ msgid "Personal Work Phone"
 msgstr ""
 
 msgid "Personal Work/Other Email"
-msgstr ""
-
-msgid "Persons"
 msgstr ""
 
 #. Context: countries
@@ -6845,6 +6835,12 @@ msgid ""
 "Set to zero to disable session timeouts."
 msgstr ""
 
+msgid "Set Active"
+msgstr ""
+
+msgid "Set Inactive"
+msgstr ""
+
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr ""
 
@@ -6869,7 +6865,7 @@ msgstr ""
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
 msgstr ""
 
-msgid "Set true to disable entering personal addresses for unaffiliated persons in Person Editor. Set false to enable entering addresses for persons without a family assignment."
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
 msgstr ""
 
 msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
@@ -6912,6 +6908,9 @@ msgstr ""
 msgid "Should only administrators have access to the CSV export system and directory report?"
 msgstr ""
 
+msgid "Show"
+msgstr ""
+
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr ""
 
@@ -6937,6 +6936,9 @@ msgid "Show neighbors with these classifications:"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+msgid "Showing"
 msgstr ""
 
 msgid "Showing students with birthdays in"
@@ -7460,7 +7462,7 @@ msgstr ""
 msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
 msgstr ""
 
-msgid "This Family is Deactivated"
+msgid "This Family is Inactive"
 msgstr ""
 
 msgid "This action CANNOT be undone, and may have legal implications!"
@@ -7854,12 +7856,6 @@ msgstr ""
 msgid "Unsupported Two Factor Authentication Configuration"
 msgstr ""
 
-msgid "Upcoming Anniversaries"
-msgstr ""
-
-msgid "Upcoming Birthdays"
-msgstr ""
-
 msgid "Update"
 msgstr ""
 
@@ -7902,7 +7898,7 @@ msgstr ""
 msgid "Updated Families"
 msgstr ""
 
-msgid "Updated Persons"
+msgid "Updated People"
 msgstr ""
 
 msgid "Updated via Family"
@@ -8131,19 +8127,10 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-msgid "View Active Families"
-msgstr ""
-
-msgid "View Active People"
-msgstr ""
-
 msgid "View All Deposits"
 msgstr ""
 
 msgid "View All Fundraisers"
-msgstr ""
-
-msgid "View All People"
 msgstr ""
 
 msgid "View Buyers"
@@ -8159,12 +8146,6 @@ msgid "View Family Page"
 msgstr ""
 
 msgid "View Group"
-msgstr ""
-
-msgid "View Inactive Families"
-msgstr ""
-
-msgid "View Inactive People"
 msgstr ""
 
 msgid "View Logs"
@@ -8269,7 +8250,7 @@ msgstr ""
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
 msgstr ""
 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
+msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr ""
 
 msgid "Warning: Signature mismatch"
@@ -8639,6 +8620,9 @@ msgstr ""
 msgid "eMail Dashboard"
 msgstr ""
 
+msgid "entries"
+msgstr ""
+
 msgid "families"
 msgstr ""
 
@@ -8723,6 +8707,9 @@ msgstr ""
 msgid "not found or user without an email"
 msgstr ""
 
+msgid "of"
+msgstr ""
+
 msgid "of People"
 msgstr ""
 
@@ -8750,22 +8737,22 @@ msgstr ""
 msgid "people already in cart"
 msgstr ""
 
+msgid "people from"
+msgstr ""
+
 msgid "people from cart"
 msgstr ""
 
 msgid "people removed from cart"
 msgstr ""
 
+msgid "people were imported"
+msgstr ""
+
 msgid "person"
 msgid_plural "people"
 msgstr[0] ""
 msgstr[1] ""
-
-msgid "persons from"
-msgstr ""
-
-msgid "persons were imported"
-msgstr ""
 
 msgid "property"
 msgstr ""

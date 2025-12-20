@@ -49,7 +49,7 @@ require_once __DIR__ . '/Include/Header.php';
                     </div>
                     <div class="row">
                         <div class="col-xs-6">
-                            <label for="OnlyCart"><?= gettext('Only cart persons?') ?>:</label>
+                            <label for="OnlyCart"><?= gettext('Only cart people?') ?>:</label>
                             <input type="checkbox" Name="OnlyCart" value="1">
                         </div>
                     </div>
