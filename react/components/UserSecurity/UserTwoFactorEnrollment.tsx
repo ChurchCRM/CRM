@@ -51,7 +51,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
                 <i className="fa fa-exclamation-triangle fa-2x" aria-hidden="true"></i>
               </div>
               <div>
-                <strong className="mr-1">{window.i18next.t("Warning:")}</strong>
+                <strong className="mr-1">{window.i18next.t("Warning")}:</strong>
                 <div>
                   {window.i18next.t(
                     "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin",
