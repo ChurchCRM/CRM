@@ -515,10 +515,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <li><?= gettext('Orphaned files from previous versions cleaned up') ?></li>
                                     </ul>
                                 </div>
-                                <div class="mt-5">
-                                    <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-primary btn-lg">
-                                        <i class="fa fa-home mr-2"></i><?= gettext('Return to Dashboard') ?>
-                                    </a>
+                                <p class="text-muted mb-2 mt-3"><?= gettext('You will be logged out and redirected to the login page.') ?></p>
+                                <div class="mt-4">
+                                    <div class="spinner-border spinner-border-sm text-primary mr-2" role="status">
+                                        <span class="sr-only"><?= gettext('Loading...') ?></span>
+                                    </div>
+                                    <span id="upgradeRedirectCountdown"><?= gettext('Redirecting in') ?> <strong>5</strong> <?= gettext('seconds...') ?></span>
                                 </div>
                             </div>
                         </div>
