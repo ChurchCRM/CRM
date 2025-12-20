@@ -69,7 +69,7 @@ class Menu
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Person'), 'PersonEditor.php', $isAddRecordsEnabled, 'fa-user-plus'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Person Listing'), 'v2/people', true, 'fa-list'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-user-friends'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Families Listing'), 'v2/family', true, 'fa-home'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'v2/family', true, 'fa-home'));
 
         if ($isAdmin) {
             $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);

@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-$ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' . gettext('persons from') . ' ' . $iNumFamilies . ' ' . gettext('families');
+$ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' . gettext('people from') . ' ' . $iNumFamilies . ' ' . gettext('families');
 ?>
 <!-- BEGIN CART LISTING -->
 <div class="card card-primary">

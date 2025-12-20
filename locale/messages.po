@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-17 07:55+0000\n"
+"POT-Creation-Date: 2025-12-20 10:19-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -78,10 +78,6 @@ msgid "%d event in %s"
 msgid_plural "%d events in %s"
 msgstr[0] ""
 msgstr[1] ""
-
-#, php-format
-msgid "%d families missing coordinates"
-msgstr ""
 
 #, php-format
 msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
@@ -266,13 +262,7 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-msgid "Activate"
-msgstr ""
-
 msgid "Activate the boxed layout"
-msgstr ""
-
-msgid "Activated the Family"
 msgstr ""
 
 msgid "Active"
@@ -707,6 +697,9 @@ msgid "Application Prerequisites"
 msgstr ""
 
 msgid "Application files updated to latest version"
+msgstr ""
+
+msgid "Apply"
 msgstr ""
 
 msgid "Apply Filters"
@@ -1436,6 +1429,9 @@ msgstr ""
 msgid "City, State, Zip"
 msgstr ""
 
+msgid "City/State"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Class"
 msgstr ""
@@ -1793,9 +1789,6 @@ msgstr ""
 msgid "Current fiscal year:"
 msgstr ""
 
-msgid "Custom"
-msgstr ""
-
 msgid "Custom Drop-Down List"
 msgstr ""
 
@@ -1971,12 +1964,6 @@ msgid "Date:"
 msgstr ""
 
 msgid "Day"
-msgstr ""
-
-msgid "Deactivate"
-msgstr ""
-
-msgid "Deactivated the Family"
 msgstr ""
 
 msgid "Dear Friend"
@@ -2457,9 +2444,6 @@ msgid "Edit this Class"
 msgstr ""
 
 msgid "Edit this Group"
-msgstr ""
-
-msgid "Edited"
 msgstr ""
 
 msgid "Editing"
@@ -3025,7 +3009,7 @@ msgstr ""
 msgid "Family Information"
 msgstr ""
 
-msgid "Family List"
+msgid "Family Listing"
 msgstr ""
 
 msgid "Family Map"
@@ -3826,9 +3810,6 @@ msgstr ""
 msgid "Iceland (Ísland)"
 msgstr ""
 
-msgid "Id"
-msgstr ""
-
 msgid "Identify members who have not made any donations within a date range."
 msgstr ""
 
@@ -4022,6 +4003,9 @@ msgid "Invalid login or password"
 msgstr ""
 
 msgid "Invalid request: Missing calendar id"
+msgstr ""
+
+msgid "Invalid status"
 msgstr ""
 
 #. Context: countries
@@ -4218,7 +4202,7 @@ msgstr ""
 msgid "Latest Note"
 msgstr ""
 
-msgid "Latest Persons"
+msgid "Latest People"
 msgstr ""
 
 msgid "Latitude"
@@ -4512,6 +4496,12 @@ msgid "Mar"
 msgstr ""
 
 msgid "March"
+msgstr ""
+
+msgid "Marked the Family as Active"
+msgstr ""
+
+msgid "Marked the Family as Inactive"
 msgstr ""
 
 #. Context: countries
@@ -5635,6 +5625,9 @@ msgstr ""
 msgid "Person Editor"
 msgstr ""
 
+msgid "Person Listing"
+msgstr ""
+
 msgid "Person Name"
 msgstr ""
 
@@ -5687,9 +5680,6 @@ msgid "Personal Work Phone"
 msgstr ""
 
 msgid "Personal Work/Other Email"
-msgstr ""
-
-msgid "Persons"
 msgstr ""
 
 #. Context: countries
@@ -6845,6 +6835,12 @@ msgid ""
 "Set to zero to disable session timeouts."
 msgstr ""
 
+msgid "Set Active"
+msgstr ""
+
+msgid "Set Inactive"
+msgstr ""
+
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr ""
 
@@ -7460,7 +7456,7 @@ msgstr ""
 msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
 msgstr ""
 
-msgid "This Family is Deactivated"
+msgid "This Family is Inactive"
 msgstr ""
 
 msgid "This action CANNOT be undone, and may have legal implications!"
@@ -7854,12 +7850,6 @@ msgstr ""
 msgid "Unsupported Two Factor Authentication Configuration"
 msgstr ""
 
-msgid "Upcoming Anniversaries"
-msgstr ""
-
-msgid "Upcoming Birthdays"
-msgstr ""
-
 msgid "Update"
 msgstr ""
 
@@ -7902,7 +7892,7 @@ msgstr ""
 msgid "Updated Families"
 msgstr ""
 
-msgid "Updated Persons"
+msgid "Updated People"
 msgstr ""
 
 msgid "Updated via Family"
@@ -8131,19 +8121,10 @@ msgstr ""
 msgid "View"
 msgstr ""
 
-msgid "View Active Families"
-msgstr ""
-
-msgid "View Active People"
-msgstr ""
-
 msgid "View All Deposits"
 msgstr ""
 
 msgid "View All Fundraisers"
-msgstr ""
-
-msgid "View All People"
 msgstr ""
 
 msgid "View Buyers"
@@ -8159,12 +8140,6 @@ msgid "View Family Page"
 msgstr ""
 
 msgid "View Group"
-msgstr ""
-
-msgid "View Inactive Families"
-msgstr ""
-
-msgid "View Inactive People"
 msgstr ""
 
 msgid "View Logs"
@@ -8750,6 +8725,9 @@ msgstr ""
 msgid "people already in cart"
 msgstr ""
 
+msgid "people from"
+msgstr ""
+
 msgid "people from cart"
 msgstr ""
 
@@ -8760,9 +8738,6 @@ msgid "person"
 msgid_plural "people"
 msgstr[0] ""
 msgstr[1] ""
-
-msgid "persons from"
-msgstr ""
 
 msgid "persons were imported"
 msgstr ""

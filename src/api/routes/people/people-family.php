@@ -185,7 +185,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             // Create a note to record the status change
             $note = new Note();
             $note->setFamId($family->getId());
-            $note->setText($newStatus === false ? gettext('Deactivated the Family') : gettext('Activated the Family'));
+            $note->setText($newStatus === false ? gettext('Marked the Family as Inactive') : gettext('Marked the Family as Active'));
             $note->setType('edit');
             $note->setEntered($currentUserId);
             $note->save();
