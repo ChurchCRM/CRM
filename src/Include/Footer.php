@@ -20,27 +20,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     | <a href="https://twitter.com/church_crm" target="_blank"><?= gettext("Follow us on") ?> <i class="fa-brands fa-x-twitter"></i></a>
 </footer>
 
-<!-- The Right Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-    <div class="tab-content">
-        <div class="tab-pane active" id="control-sidebar-tasks-tab">
-            <?= gettext('You have') ?> <span class="badge badge-warning"><?= $taskSize ?></span> <?= gettext('task(s)') ?>
-            <br/><br/>
-                <?php foreach ($tasks as $task) { ?>
-                    <!-- Task item -->
-                    <div class="mb-1">
-                        <a target="blank" href="<?= $task['link'] ?>">
-                            <i class="menu-icon fa-solid fa-fw <?= $task['admin'] ? 'fa-lock' : 'fa-info' ?>"></i> <?= $task['title'] ?>
-                        </a>
-                    </div>
-                    <!-- end task item -->
-                <?php } ?>
-            <!-- /.control-sidebar-menu -->
-        </div>
-        <!-- /.tab-pane -->
-    </div>
-</aside>
-
 <!-- Floating Action Buttons -->
 <div class="fab-container" id="fab-container">
     <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php" class="fab-button fab-person">

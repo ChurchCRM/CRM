@@ -7,7 +7,6 @@ use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\TaskService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -170,16 +169,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
         $_SESSION['systemLatestVersion'] = $updateInfo['latestVersion'];
         
-        // Get pre-upgrade tasks
-        $taskService = new TaskService();
-        $preUpgradeTasks = $taskService->getActivePreUpgradeTasks();
-        
-        // Check for warnings: either pre-upgrade tasks OR integrity check failures OR orphaned files
-        $hasPreUpgradeTasks = count($preUpgradeTasks) > 0;
         $integrityCheckFailed = AppIntegrityService::getIntegrityCheckStatus() === gettext("Failed");
         $orphanedFiles = AppIntegrityService::getOrphanedFiles();
         $hasOrphanedFiles = count($orphanedFiles) > 0;
-        $hasWarnings = $hasPreUpgradeTasks || $integrityCheckFailed || $hasOrphanedFiles;
+        $hasWarnings = $integrityCheckFailed || $hasOrphanedFiles;
         
         // Get integrity check data if failed or orphaned files exist
         $integrityCheckData = [];
@@ -218,9 +211,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath'             => SystemURLs::getRootPath(),
             'sPageTitle'            => gettext('System Upgrade'),
-            'preUpgradeTasks'       => $preUpgradeTasks,
             'hasWarnings'           => $hasWarnings,
-            'hasPreUpgradeTasks'    => $hasPreUpgradeTasks,
             'integrityCheckFailed'  => $integrityCheckFailed,
             'integrityCheckData'    => $integrityCheckData,
             'hasOrphanedFiles'      => $hasOrphanedFiles,
