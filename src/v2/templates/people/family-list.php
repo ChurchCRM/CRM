@@ -32,7 +32,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
                 <div class="col-md-3 mb-3 d-flex align-items-end">
                     <button type="submit" class="btn btn-primary mr-2"><?= gettext('Apply') ?></button>
-                    <a id="clear-filters" class="btn btn-secondary" href="#"><?= gettext('Clear') ?></a>
                 </div>
             </div>
         </form>
@@ -47,11 +46,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <table class="table table-striped table-hover mb-0" id="families">
             <thead>
                 <tr>
-                    <th><?= gettext('Family Name') ?></th>
-                    <th><?= gettext('Contact') ?></th>
-                    <th><?= gettext('City/State') ?></th>
-                    <th><?= gettext('Members') ?></th>
-                    <th><?= gettext('Active') ?></th>
+                    <th><?= gettext('Name') ?></th>
+                    <th><?= gettext('Address') ?></th>
+                    <th><?= gettext('Home Phone') ?></th>
+                    <th><?= gettext('Email') ?></th>
+                    <th><?= gettext('Created') ?></th>
+                    <th><?= gettext('Edited') ?></th>
                     <th class="text-right" width="150"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
@@ -75,38 +75,37 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     }
                 ?>
                 <tr>
+                    
                     <td>
                         <?= $family->getLinkHtml(true, true) ?>
                     </td>
                     <td>
-                        <?php if ($family->getEmail()): ?>
-                            <a href="mailto:<?= htmlspecialchars($family->getEmail()) ?>"><?= htmlspecialchars($family->getEmail()) ?></a>
+                        <?= htmlspecialchars($family->getAddress1()) ?>
+                        <?php if ($family->getAddress2()): ?>
+                            <br><?= htmlspecialchars($family->getAddress2()) ?>
                         <?php endif; ?>
-                        <?php if ($family->getHomePhone()): ?>
-                            <br><?= htmlspecialchars($family->getHomePhone()) ?>
-                        <?php endif; ?>
+                        <br><?= htmlspecialchars(method_exists($family, 'getCityStateShort') ? $family->getCityStateShort() : ($family->getCity() . ' ' . $family->getState())) ?>
                     </td>
-                    <td><?= $family->getCityStateShort() ?></td>
-                    <td><?= $memberCount ?></td>
-                    <td>
-                            <?php if (!$family->isActive()): ?>
-                                <span class="badge badge-danger"><?= gettext('Inactive') ?></span>
-                            <?php else: ?>
-                                <span class="badge badge-success"><?= gettext('Active') ?></span>
-                            <?php endif; ?>
-                    </td>
+                    <td><?= htmlspecialchars($family->getHomePhone()) ?></td>
+                    <td><?php if ($family->getEmail()): ?><a href="mailto:<?= htmlspecialchars($family->getEmail()) ?>"><?= htmlspecialchars($family->getEmail()) ?></a><?php endif; ?></td>
+                    <td><?php if (method_exists($family, 'getDateEntered') && $family->getDateEntered() !== null) { echo $family->getDateEntered()->format('Y-m-d'); } ?></td>
+                    <td><?php if (method_exists($family, 'getDateLastEdited') && $family->getDateLastEdited() !== null) { echo $family->getDateLastEdited()->format('Y-m-d'); } ?></td>
                     <td class="text-right">
                         <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>' class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>">
                             <i class="fa-solid fa-pen"></i>
                         </a>
-                        <?php if (!$isInCart && $memberCount > 0) { ?>
-                            <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Add to Cart') ?>">
-                                <i class="fa-solid fa-cart-plus"></i>
-                            </button>
-                        <?php } elseif ($isInCart && $memberCount > 0) { ?>
-                            <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $family->getId() ?>" data-cart-type="family" title="<?= gettext('Remove from Cart') ?>">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
+                        <?php if ($isInCart) { ?>
+                            <span class="RemoveFromCart ml-1" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                                <button type="button" class="btn btn-sm btn-danger" title="<?= gettext('Remove from Cart') ?>">
+                                    <i class="fa-solid fa-shopping-cart fa-sm"></i>
+                                </button>
+                            </span>
+                        <?php } else { ?>
+                            <span class="AddToCart ml-1" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                                <button type="button" class="btn btn-sm btn-primary" title="<?= gettext('Add to Cart') ?>">
+                                    <i class="fa-solid fa-cart-plus fa-sm"></i>
+                                </button>
+                            </span>
                         <?php } ?>
                     </td>
                 </tr>
