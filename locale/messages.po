@@ -8739,7 +8739,7 @@ msgid_plural "people"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "persons were imported"
+msgid "people were imported"
 msgstr ""
 
 msgid "property"
