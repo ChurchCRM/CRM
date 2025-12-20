@@ -293,9 +293,27 @@ function setupApplyStep() {
                 <i class="fa-solid fa-check-circle mr-2"></i><strong>${i18next.t('System upgrade completed successfully!')}</strong>
             </div>`);
 
-                // Auto-advance to final step
+                // Auto-advance to final step and logout after a brief delay
                 setTimeout(function () {
                     upgradeStepper.next();
+                    
+                    // Log out the user
+                    $.ajax({
+                        url: window.CRM.root + '/session/end',
+                        type: 'GET'
+                    });
+                    
+                    // Start countdown and redirect to login
+                    var countdown = 5;
+                    var countdownInterval = setInterval(function() {
+                        countdown--;
+                        $('#upgradeRedirectCountdown strong').text(countdown);
+                        
+                        if (countdown <= 0) {
+                            clearInterval(countdownInterval);
+                            window.location.href = window.CRM.root + '/session/begin';
+                        }
+                    }, 1000);
                 }, 1000);
             })
             .fail(function (xhr, status, error) {
