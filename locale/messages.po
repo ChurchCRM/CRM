@@ -2569,6 +2569,9 @@ msgstr ""
 msgid "Encryption"
 msgstr ""
 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr ""
+
 msgid "End Date"
 msgstr ""
 
@@ -3901,9 +3904,6 @@ msgid "Include financial data (donation funds, pledges)"
 msgstr ""
 
 msgid "Include only these classifications in the directory, comma separated"
-msgstr ""
-
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
 msgstr ""
 
 msgid "Include:"
@@ -7701,6 +7701,9 @@ msgstr ""
 msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
 msgstr ""
 
+msgid "Two-Factor Authentication"
+msgstr ""
+
 msgid "Type"
 msgstr ""
 
@@ -8681,6 +8684,9 @@ msgid "members. Already had"
 msgstr ""
 
 msgid "miles"
+msgstr ""
+
+msgid "must be configured with an encryption key"
 msgstr ""
 
 msgid "not found"
