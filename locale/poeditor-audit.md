@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 41
-**Complete Locales (≥75%):** 5
-**Good Locales (51-74%):** 20
+**Complete Locales (≥75%):** 6
+**Good Locales (51-74%):** 19
 **Needs Work (<51%):** 16
 **WIP Candidates (>5%, not yet added):** 10
 
@@ -10,14 +10,14 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `ko` | Korean | 2792 | 100% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 2792 | 100% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2511 | 89.94% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 2298 | 82.31% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2285 | 81.84% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 2183 | 78.19% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 2182 | 78.15% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 2062 | 73.85% | 🟡 Good | ✅ Yes |
 | `he` | Hebrew | 2031 | 72.74% | 🟡 Good | ✅ Yes |
-| `ko` | Korean | 2031 | 72.74% | 🟡 Good | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 2028 | 72.64% | 🟡 Good | ✅ Yes |
 | `de` | German | 2026 | 72.56% | 🟡 Good | ✅ Yes |
 | `it` | Italian | 2019 | 72.31% | 🟡 Good | ✅ Yes |
@@ -64,8 +64,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 5 locales ready for production
-- **🟡 Good (51-74%):** 20 locales with solid translation coverage
+- **🟢 Complete (≥75%):** 6 locales ready for production
+- **🟡 Good (51-74%):** 19 locales with solid translation coverage
 - **🟠 Needs Work (<51%):** 10 locales requiring translator attention
 - **🔴 Incomplete:** 2 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
