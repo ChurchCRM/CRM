@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-20 10:31-0800\n"
+"POT-Creation-Date: 2025-12-20 11:33-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -697,9 +697,6 @@ msgid "Application Prerequisites"
 msgstr ""
 
 msgid "Application files updated to latest version"
-msgstr ""
-
-msgid "Apply"
 msgstr ""
 
 msgid "Apply Filters"
@@ -1427,9 +1424,6 @@ msgid "City is required"
 msgstr ""
 
 msgid "City, State, Zip"
-msgstr ""
-
-msgid "City/State"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -2444,6 +2438,9 @@ msgid "Edit this Class"
 msgstr ""
 
 msgid "Edit this Group"
+msgstr ""
+
+msgid "Edited"
 msgstr ""
 
 msgid "Editing"
@@ -4002,6 +3999,9 @@ msgstr ""
 msgid "Invalid login or password"
 msgstr ""
 
+msgid "Invalid request data"
+msgstr ""
+
 msgid "Invalid request: Missing calendar id"
 msgstr ""
 
@@ -5423,9 +5423,6 @@ msgstr ""
 msgid "PHP Configuration"
 msgstr ""
 
-msgid "POST to cart requires a People array, FamilyID, or GroupID"
-msgstr ""
-
 msgid "Paddle"
 msgstr ""
 
@@ -5659,6 +5656,9 @@ msgid "Person has been already checked in for this event"
 msgstr ""
 
 msgid "Person to Make User"
+msgstr ""
+
+msgid "Person(s) removed from cart"
 msgstr ""
 
 msgid "PersonID for Cart must be numeric"
@@ -6908,6 +6908,9 @@ msgstr ""
 msgid "Should only administrators have access to the CSV export system and directory report?"
 msgstr ""
 
+msgid "Show"
+msgstr ""
+
 msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr ""
 
@@ -6933,6 +6936,9 @@ msgid "Show neighbors with these classifications:"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+msgid "Showing"
 msgstr ""
 
 msgid "Showing students with birthdays in"
@@ -8614,6 +8620,9 @@ msgstr ""
 msgid "eMail Dashboard"
 msgstr ""
 
+msgid "entries"
+msgstr ""
+
 msgid "families"
 msgstr ""
 
@@ -8696,6 +8705,9 @@ msgid "not found"
 msgstr ""
 
 msgid "not found or user without an email"
+msgstr ""
+
+msgid "of"
 msgstr ""
 
 msgid "of People"
