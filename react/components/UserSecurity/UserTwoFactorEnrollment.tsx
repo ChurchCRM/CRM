@@ -19,7 +19,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
               )}
             </p>
             <hr />
-            <div className="row text-center" style={{ marginBottom: "1rem" }}>
+            <div className="row text-center mb-3">
               <div className="col-lg-4">
                 <i className="fa fa-id-card fa-5x mb-3" aria-hidden="true"></i>
                 <p>
