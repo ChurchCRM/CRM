@@ -311,7 +311,7 @@ foreach ($allMonths as $mVal) {
 <div class="text-center mt-4 mb-3">
   <a href="EventEditor.php" class="btn btn-primary">
     <i class="fas fa-plus mr-1"></i>
-    <?= gettext('Add New Event') ?>
+    <?= gettext('Add New') . ' ' . gettext('Event') ?>
   </a>
 </div>
 

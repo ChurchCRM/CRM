@@ -412,7 +412,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     &nbsp;
                                 </td>
                                 <td>
-                                    <input type="submit" class="btn btn-secondary" value="<?= gettext('Add New Field') ?>" Name="AddField">
+                                    <input type="submit" class="btn btn-secondary" value="<?= gettext('Add New') . ' ' . gettext('Field') ?>" Name="AddField">
                                 </td>
                                 <td width="15%"></td>
                             </tr>

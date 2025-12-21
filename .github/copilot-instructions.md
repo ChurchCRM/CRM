@@ -742,6 +742,63 @@ window.CRM.notify(i18next.t('Operation completed'), {
 });
 ```
 
+### i18n Term Consolidation Patterns (Reduce Localization Burden)
+
+To reduce translator burden across 45+ languages, **consolidate compound terms into reusable components**.
+
+**Delete Confirmation Pattern:**
+- ❌ WRONG: `gettext('Family Delete Confirmation')`, `gettext('Note Delete Confirmation')`, etc. (7+ variants = 7 translations per language)
+- ✅ CORRECT: `gettext('Delete Confirmation') . ': ' . gettext('Family')`
+- **Reduces**: 7 variants → 1 term + type names (reduces translator workload)
+- **Usage**: In deletion confirmation pages (NoteDelete.php, PropertyDelete.php, etc.)
+- **Example**:
+  ```php
+  $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Note');
+  ```
+
+**Add New Pattern:**
+- ❌ WRONG: `gettext('Add New Field')`, `gettext('Add New Fund')`, `gettext('Add New User')`, etc. (16+ variants per language)
+- ✅ CORRECT: `gettext('Add New') . ' ' . gettext('Field')`
+- **Reduces**: 16+ variants → 1 "Add New" term + reuse type names (significant translator workload reduction)
+- **Usage**: Button labels, page titles, form headers
+- **Examples**:
+  ```php
+  // Button value
+  <input type="submit" value="<?= gettext('Add New') . ' ' . gettext('Fund') ?>" />
+  
+  // Page title
+  <h3><?= gettext('Add New') . ' ' . gettext('Group') ?></h3>
+  
+  // Card header
+  <?= gettext('Add New') . ' ' . gettext('Field') ?>
+  ```
+
+**Exception**: Menu items with consistent patterns (e.g., "Add New Person", "Add New Family") may stay unified for clarity.
+
+**General Consolidation Principles:**
+1. **Identify compound terms**: Look for "[Action] [Type]" or "[Type] [Action]" patterns
+2. **Split into components**: Translate action/type separately when repeated 2+ times
+3. **Reuse type names**: If "Person", "Family", "Group" are standalone translation terms, reuse them
+4. **Test rebuilds**: Always run `npm run locale:build` to verify consolidation
+5. **Reduce total terms**: Every term consolidated = 45 fewer translations needed (45 languages)
+
+**When NOT to Consolidate:**
+- Unique terms with only 1 usage → Keep as-is
+- Idiomatic phrases that don't split naturally → Keep as-is
+- Menu items with consistent naming → May keep unified for UX consistency
+
+**Before Adding New Terms:**
+- Check `locale/messages.po` for similar existing terms
+- Look for opportunities to reuse existing terms instead of creating new ones
+- Example: Instead of `"Add New Sponsor"`, use `gettext('Add New') . ' ' . gettext('Sponsor')`
+
+**Locale Rebuild Workflow:**
+After consolidating terms:
+```bash
+npm run locale:build   # Regenerate messages.po and .json files
+npm run build          # Rebuild frontend bundles with new terms
+```
+
 ---
 
 ## Admin API Calls (JavaScript)

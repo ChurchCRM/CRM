@@ -48,7 +48,7 @@ require_once __DIR__ . '/Include/Header.php';
       <p>
       <div class="row">
         <div class="col-xs-3">
-          <button type="button" class="btn btn-primary" id="addNewDeposit"><?= gettext('Add New Deposit') ?></button>
+          <button type="button" class="btn btn-primary" id="addNewDeposit"><?= gettext('Add New') . ' ' . gettext('Deposit') ?></button>
         </div>
       </div>
     </form>

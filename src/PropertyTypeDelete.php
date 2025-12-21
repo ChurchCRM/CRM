@@ -10,7 +10,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security: User must have property and classification editing permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
 
-$sPageTitle = gettext('Property Type Delete Confirmation');
+$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Property Type');
 
 // Get the PersonID from the querystring
 $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');

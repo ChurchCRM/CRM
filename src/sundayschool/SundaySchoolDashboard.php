@@ -108,7 +108,7 @@ require_once __DIR__ . '/../Include/Header.php';
                     ?>
                   <button class="btn btn-app bg-success" data-toggle="modal" data-target="#add-class">
                       <i class="fa-solid fa-plus-square fa-3x"></i><br>
-                      <?= gettext('Add New Class') ?>
+                      <?= gettext('Add New') . ' ' . gettext('Class') ?>
                   </button>
                     <?php
                 } ?>

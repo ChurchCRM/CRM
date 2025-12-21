@@ -73,3 +73,58 @@ WHERE cfg_name = 'sCSVExportCharset'
 DELETE FROM config_cfg
 WHERE cfg_name = 'sCSVExportDelimiter'
 	OR cfg_id = 107;
+
+-- Also remove the "Total By Gender" query (functionality moved to People Dashboard)
+--   qry_ID: 6
+--   qry_Name: Total By Gender
+--   Description: This query is now available directly on the People Dashboard's Gender Demographics chart
+DELETE FROM query_qry
+WHERE qry_ID = 6
+	OR qry_Name = 'Total By Gender';
+
+-- Also remove the "Person by Age" query (functionality moved to People Dashboard)
+--   qry_ID: 4
+--   qry_Name: Person by Age
+--   Description: Age histogram is now available directly on the People Dashboard
+DELETE FROM query_qry
+WHERE qry_ID = 4
+	OR qry_Name = 'Person by Age';
+
+-- Also remove the "Person by Role and Gender" query (filtering now available in People list page)
+--   qry_ID: 7
+--   qry_Name: Person by Role and Gender
+--   Description: People list page supports filtering by role and gender directly
+DELETE FROM query_qry
+WHERE qry_ID = 7
+	OR qry_Name = 'Person by Role and Gender';
+
+-- Also remove the "Family Member Count" query (count available in Family list page)
+--   qry_ID: 3
+--   qry_Name: Family Member Count
+--   Description: Family list page displays member count for each family directly
+DELETE FROM query_qry
+WHERE qry_ID = 3
+	OR qry_Name = 'Family Member Count';
+
+-- Also remove the "Select all members" query (filtering by class available in People list page)
+--   qry_ID: 24
+--   qry_Name: Select all members
+--   Description: People list page supports filtering by membership class directly
+DELETE FROM query_qry
+WHERE qry_ID = 24
+	OR qry_Name = 'Select all members';
+-- Also remove the "Advanced Search" query (searching available in People list page)
+--   qry_ID: 15
+--   qry_Name: Advanced Search
+--   Description: People list page supports comprehensive searching directly
+DELETE FROM query_qry
+WHERE qry_ID = 15
+	OR qry_Name = 'Advanced Search';
+
+-- Also remove the "Select database users" query (admin user management available elsewhere)
+--   qry_ID: 23
+--   qry_Name: Select database users
+--   Description: User management is handled through admin user management interface
+DELETE FROM query_qry
+WHERE qry_ID = 23
+	OR qry_Name = 'Select database users';

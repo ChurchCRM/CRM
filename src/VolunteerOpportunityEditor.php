@@ -56,7 +56,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
     $aRow = mysqli_fetch_array($rsOpps);
     extract($aRow);
 
-    $sPageTitle = gettext('Volunteer Opportunity Delete Confirmation');
+    $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Volunteer Opportunity');
     require_once __DIR__ . '/Include/Header.php';
 ?>
     <div class="container-fluid mt-5">
@@ -302,7 +302,7 @@ if (isset($_POST['SaveChanges'])) {
                     <div class="card-header bg-success text-white">
                         <h5 class="mb-0">
                             <i class="fa-solid fa-plus"></i>
-                            <?= gettext('Add New Volunteer Opportunity') ?>
+                            <?= gettext('Add New') . ' ' . gettext('Volunteer Opportunity') ?>
                         </h5>
                     </div>
                     <div class="card-body">
@@ -326,7 +326,7 @@ if (isset($_POST['SaveChanges'])) {
                         <div class="text-center">
                             <button type="submit" class="btn btn-success" name="AddField">
                                 <i class="fa-solid fa-plus"></i>
-                                <?= gettext('Add New Opportunity') ?>
+                                <?= gettext('Add New') . ' ' . gettext('Opportunity') ?>
                             </button>
                         </div>
                     </div>

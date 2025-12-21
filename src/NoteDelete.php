@@ -12,7 +12,7 @@ use ChurchCRM\Utils\RedirectUtils;
 // Otherwise, re-direct them to the main menu.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isNotesEnabled(), 'Notes');
 
-$sPageTitle = gettext('Note Delete Confirmation');
+$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Note');
 
 // Get the NoteID from the querystring
 $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');

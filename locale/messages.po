@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-21 03:35+0000\n"
+"POT-Creation-Date: 2025-12-20 21:22-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -232,6 +232,9 @@ msgstr ""
 msgid "A"
 msgstr ""
 
+msgid "A "
+msgstr ""
+
 msgid "A Calendar access token has been generated and saved."
 msgstr ""
 
@@ -254,6 +257,9 @@ msgid "A payment is an actual donation received. It will be added to the current
 msgstr ""
 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr ""
+
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
 msgstr ""
 
 msgid "ALERT"
@@ -364,46 +370,16 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-msgid "Add New Class"
-msgstr ""
-
 msgid "Add New Deposit"
 msgstr ""
 
 msgid "Add New Deposit: "
 msgstr ""
 
-msgid "Add New Event"
-msgstr ""
-
-msgid "Add New Event Type"
-msgstr ""
-
 msgid "Add New Family"
 msgstr ""
 
-msgid "Add New Field"
-msgstr ""
-
-msgid "Add New Fund"
-msgstr ""
-
-msgid "Add New Group"
-msgstr ""
-
-msgid "Add New Member"
-msgstr ""
-
-msgid "Add New Opportunity"
-msgstr ""
-
 msgid "Add New Person"
-msgstr ""
-
-msgid "Add New Role"
-msgstr ""
-
-msgid "Add New User"
 msgstr ""
 
 msgid "Add Note"
@@ -503,10 +479,6 @@ msgid "Advanced Deposit Report"
 msgstr ""
 
 msgid "Advanced Operations"
-msgstr ""
-
-#. Context: query_qry
-msgid "Advanced Search"
 msgstr ""
 
 #. Context: countries
@@ -742,6 +714,9 @@ msgstr ""
 msgid "Are you sure you want to change the end time for "
 msgstr ""
 
+msgid "Are you sure you want to delete"
+msgstr ""
+
 msgid "Are you sure you want to delete all orphaned files?"
 msgstr ""
 
@@ -775,6 +750,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Armenia (Հայաստան)"
+msgstr ""
+
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
 msgstr ""
 
 #. Context: countries
@@ -1138,6 +1116,12 @@ msgstr ""
 msgid "Buyers for this fundraiser:"
 msgstr ""
 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr ""
+
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr ""
+
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr ""
 
@@ -1281,6 +1265,9 @@ msgid "Change the initial page length (number of rows per page)"
 msgstr ""
 
 msgid "Change this in System Settings."
+msgstr ""
+
+msgid "Changes not saved! Please correct and try again!"
 msgstr ""
 
 msgid "Check"
@@ -1458,9 +1445,6 @@ msgstr ""
 msgid "Classification"
 msgstr ""
 
-msgid "Classifications Manager"
-msgstr ""
-
 msgid "Clean Up Files"
 msgstr ""
 
@@ -1605,6 +1589,12 @@ msgid "Confirm Family Information"
 msgstr ""
 
 msgid "Confirm New Password"
+msgstr ""
+
+msgid "Confirm Property Deletion"
+msgstr ""
+
+msgid "Confirm Volunteer Opportunity Deletion"
 msgstr ""
 
 msgid "Confirm data labels"
@@ -2060,6 +2050,9 @@ msgid "Delete Calendar"
 msgstr ""
 
 msgid "Delete Checkin in Entry"
+msgstr ""
+
+msgid "Delete Confirmation"
 msgstr ""
 
 msgid "Delete Event"
@@ -2732,16 +2725,10 @@ msgstr ""
 msgid "Error:"
 msgstr ""
 
-msgid "Error: A "
-msgstr ""
-
 msgid "Error: Duplicate"
 msgstr ""
 
 msgid "Error: Invalid Editor ID!"
-msgstr ""
-
-msgid "Error: You must enter a name"
 msgstr ""
 
 msgid "Estimated Price"
@@ -2814,6 +2801,18 @@ msgid "Execute Query"
 msgstr ""
 
 msgid "Execute SQL"
+msgstr ""
+
+msgid "Existing"
+msgstr ""
+
+msgid "Existing Custom Family Fields"
+msgstr ""
+
+msgid "Existing Custom Person Fields"
+msgstr ""
+
+msgid "Existing Volunteer Opportunities"
 msgstr ""
 
 msgid "Exit"
@@ -3009,9 +3008,6 @@ msgstr ""
 msgid "Family Data Verified"
 msgstr ""
 
-msgid "Family Delete Confirmation"
-msgstr ""
-
 msgid "Family Editor"
 msgstr ""
 
@@ -3037,10 +3033,6 @@ msgid "Family Listing"
 msgstr ""
 
 msgid "Family Map"
-msgstr ""
-
-#. Context: query_qry
-msgid "Family Member Count"
 msgstr ""
 
 msgid "Family Members"
@@ -3127,6 +3119,9 @@ msgid "Field"
 msgstr ""
 
 msgid "Field Selection"
+msgstr ""
+
+msgid "Field deleted successfully"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -3772,9 +3767,6 @@ msgstr ""
 msgid "Home Phone"
 msgstr ""
 
-msgid "Home area code of the church"
-msgstr ""
-
 msgid "Home phone is required"
 msgstr ""
 
@@ -3993,6 +3985,9 @@ msgstr ""
 msgid "Invalid Birth Date: Missing birth month or day."
 msgstr ""
 
+msgid "Invalid CSRF token"
+msgstr ""
+
 msgid "Invalid Editor ID!"
 msgstr ""
 
@@ -4012,6 +4007,9 @@ msgid "Invalid Year"
 msgstr ""
 
 msgid "Invalid country name supplied"
+msgstr ""
+
+msgid "Invalid fields or selections."
 msgstr ""
 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -4066,7 +4064,7 @@ msgstr ""
 msgid "Item"
 msgstr ""
 
-msgid "JSON URL"
+msgid "Item deleted successfully"
 msgstr ""
 
 #. Context: countries
@@ -4666,9 +4664,6 @@ msgstr ""
 msgid "Membership anniversaries"
 msgstr ""
 
-msgid "Men"
-msgstr ""
-
 msgid "Menu Name"
 msgstr ""
 
@@ -4833,6 +4828,12 @@ msgstr ""
 msgid "Move Selected Members to Group"
 msgstr ""
 
+msgid "Move down"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
 #. Context: countries
 msgid "Mozambique (Moçambique)"
 msgstr ""
@@ -4888,9 +4889,6 @@ msgid "NNE"
 msgstr ""
 
 msgid "NNW"
-msgstr ""
-
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
 msgstr ""
 
 msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
@@ -5132,9 +5130,6 @@ msgstr ""
 msgid "No properties have been added yet"
 msgstr ""
 
-msgid "No property assignments"
-msgstr ""
-
 msgid "No property assignments."
 msgstr ""
 
@@ -5238,9 +5233,6 @@ msgstr ""
 msgid "Note"
 msgstr ""
 
-msgid "Note Delete Confirmation"
-msgstr ""
-
 msgid "Note Editor"
 msgstr ""
 
@@ -5285,9 +5277,6 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "Number of months since becoming a friend"
-msgstr ""
-
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
 msgstr ""
 
 msgid "Number too large. Must be between -2147483648 and 2147483647"
@@ -5369,6 +5358,9 @@ msgstr ""
 msgid "OpenLP Username"
 msgstr ""
 
+msgid "Opportunity"
+msgstr ""
+
 msgid "Option"
 msgstr ""
 
@@ -5382,6 +5374,9 @@ msgid "Optional Data to Include"
 msgstr ""
 
 msgid "Optional notes about attendance..."
+msgstr ""
+
+msgid "Order"
 msgstr ""
 
 msgid "Organization, timezone, email"
@@ -5565,9 +5560,6 @@ msgstr ""
 msgid "People Functions"
 msgstr ""
 
-msgid "People Properties"
-msgstr ""
-
 msgid "People Reports"
 msgstr ""
 
@@ -5594,15 +5586,10 @@ msgid "People who are configured to pay by credit card."
 msgstr ""
 
 #. Context: query_qry
-msgid "People who are members"
-msgstr ""
-
-#. Context: query_qry
-msgid "People who are registered as database users"
-msgstr ""
-
-#. Context: query_qry
 msgid "People with birthdays in a particular month"
+msgstr ""
+
+msgid "Percentage"
 msgstr ""
 
 msgid "Perform Import"
@@ -5656,6 +5643,9 @@ msgstr ""
 msgid "Person Profile"
 msgstr ""
 
+msgid "Person Properties"
+msgstr ""
+
 msgid "Person View"
 msgstr ""
 
@@ -5663,15 +5653,7 @@ msgid "Person already in cart"
 msgstr ""
 
 #. Context: query_qry
-msgid "Person by Age"
-msgstr ""
-
-#. Context: query_qry
 msgid "Person by Property"
-msgstr ""
-
-#. Context: query_qry
-msgid "Person by Role and Gender"
 msgstr ""
 
 msgid "Person from Group"
@@ -5777,9 +5759,6 @@ msgid "Please confirm deletion of this group record"
 msgstr ""
 
 msgid "Please confirm deletion of this note"
-msgstr ""
-
-msgid "Please confirm deletion of this property"
 msgstr ""
 
 msgid "Please confirm disabling 2 Factor Auth for this user"
@@ -6021,16 +6000,13 @@ msgstr ""
 msgid "Property"
 msgstr ""
 
-msgid "Property Delete Confirmation"
-msgstr ""
-
 msgid "Property Editor"
 msgstr ""
 
 msgid "Property List"
 msgstr ""
 
-msgid "Property Type Delete Confirmation"
+msgid "Property Type"
 msgstr ""
 
 msgid "Property Type Editor"
@@ -6043,6 +6019,9 @@ msgid "Property Types"
 msgstr ""
 
 msgid "Property successfully assigned."
+msgstr ""
+
+msgid "Property to Delete"
 msgstr ""
 
 msgid "Provide any corrections or additional information here..."
@@ -6381,14 +6360,6 @@ msgid "Return to Query Menu"
 msgstr ""
 
 #. Context: query_qry
-msgid "Returns any person records with ages between two given ages."
-msgstr ""
-
-#. Context: query_qry
-msgid "Returns each family and the total number of people assigned to them."
-msgstr ""
-
-#. Context: query_qry
 msgid "Returns person records which are assigned the given property."
 msgstr ""
 
@@ -6607,10 +6578,6 @@ msgstr ""
 msgid "Search People"
 msgstr ""
 
-#. Context: query_qry
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr ""
-
 msgid "Search by name or email..."
 msgstr ""
 
@@ -6722,15 +6689,7 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#. Context: query_qry
-msgid "Select all members"
-msgstr ""
-
 msgid "Select classifications to include"
-msgstr ""
-
-#. Context: query_qry
-msgid "Select database users"
 msgstr ""
 
 msgid "Select date"
@@ -6772,10 +6731,6 @@ msgid "Select your event type"
 msgstr ""
 
 msgid "Selected record successfully removed from the Cart."
-msgstr ""
-
-#. Context: query_qry
-msgid "Selects person records with the family role and gender specified."
 msgstr ""
 
 msgid "Self Register"
@@ -6916,9 +6871,6 @@ msgid "Should only administrators have access to the CSV export system and direc
 msgstr ""
 
 msgid "Show"
-msgstr ""
-
-msgid "Show Birthdates Anniversaries on start up of the CRM"
 msgstr ""
 
 msgid "Show Family Head of House Names"
@@ -7436,7 +7388,7 @@ msgstr ""
 msgid "The sunday school class for which you would like records returned."
 msgstr ""
 
-msgid "There are people assigned to this Volunteer Opportunity."
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr ""
 
 msgid "There was a problem retrieving the requested object"
@@ -7529,6 +7481,9 @@ msgstr ""
 msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
 msgstr ""
 
+msgid "This will remove it from all people currently assigned to it."
+msgstr ""
+
 msgid "This will reset the system data and will restart the system as a new install."
 msgstr ""
 
@@ -7564,6 +7519,9 @@ msgid "Title page"
 msgstr ""
 
 msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr ""
+
+msgid "To export to another For european CharSet use ;"
 msgstr ""
 
 msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
@@ -7620,10 +7578,6 @@ msgstr ""
 msgid "Total Amount"
 msgstr ""
 
-#. Context: query_qry
-msgid "Total By Gender"
-msgstr ""
-
 msgid "Total Deposit"
 msgstr ""
 
@@ -7646,10 +7600,6 @@ msgid "Total number of rows in the CSV file:"
 msgstr ""
 
 msgid "Total of all purchases: $"
-msgstr ""
-
-#. Context: query_qry
-msgid "Total of records matching a given gender."
 msgstr ""
 
 msgid "Total purchases: $"
@@ -8185,13 +8135,10 @@ msgstr ""
 msgid "Volunteer Opportunities"
 msgstr ""
 
-msgid "Volunteer Opportunity Delete Confirmation"
+msgid "Volunteer Opportunity"
 msgstr ""
 
 msgid "Volunteer Opportunity Editor"
-msgstr ""
-
-msgid "Volunteer Opportunity will be unassigned for the following people."
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -8236,22 +8183,13 @@ msgstr ""
 msgid "Warning"
 msgstr ""
 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr ""
-
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr ""
-
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgid "Warning:"
 msgstr ""
 
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
 msgstr ""
 
 msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
-msgstr ""
-
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
 msgstr ""
 
 msgid "Warning: Signature mismatch"
@@ -8339,9 +8277,6 @@ msgstr ""
 msgid "With Photos"
 msgstr ""
 
-msgid "Women"
-msgstr ""
-
 msgid "Work"
 msgstr ""
 
@@ -8389,7 +8324,7 @@ msgstr ""
 msgid "Yes, Remove"
 msgstr ""
 
-msgid "Yes, delete this Volunteer Opportunity"
+msgid "Yes, delete this Opportunity"
 msgstr ""
 
 msgid "Yes, delete this record"
@@ -8455,13 +8390,7 @@ msgstr ""
 msgid "Your Cart is Empty"
 msgstr ""
 
-msgid "Your Church's Facebook Page"
-msgstr ""
-
 msgid "Your Church's Website"
-msgstr ""
-
-msgid "Your Church's X Page"
 msgstr ""
 
 msgid "Your ChurchCRM Account was Deleted."
@@ -8803,10 +8732,7 @@ msgstr ""
 msgid "with at least one:"
 msgstr ""
 
-msgid "with this Property..."
-msgstr ""
-
-msgid "with this property.."
+msgid "with this property..."
 msgstr ""
 
 msgid "years"
