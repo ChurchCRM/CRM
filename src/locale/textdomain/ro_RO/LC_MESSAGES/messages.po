@@ -358,10 +358,6 @@ msgid "OR"
 msgstr "SAU"
 
 #: 
-msgid "Add New Event"
-msgstr "Adaugă eveniment nou"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Cosul dvs. este gol!"
 
@@ -784,10 +780,6 @@ msgid "Save Changes"
 msgstr "Salvați modificările"
 
 #: 
-msgid "Add New Fund"
-msgstr "Adăugați un nou fond"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Editor de evenimente bisericești"
 
@@ -940,14 +932,6 @@ msgid "Default Option"
 msgstr "Opțiunea implicită"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Avertisment: Prin ștergerea acest domeniu, veți pierde irevocabil toate datele familiei alocate pentru acest câmp!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Avertisment: Butoanele săgeată și ștergere au efect imediat. Modificările numelor câmpurilor se vor pierde dacă nu „Salvați modificările” înainte de a utiliza butonul sus, jos, șterge sau „adăugați nou”!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Nu au fost adăugate încă câmpuri personalizate pentru Familie"
 
@@ -978,10 +962,6 @@ msgstr "Trebuie să introduceți un nume"
 #: 
 msgid "That field name already exists."
 msgstr "Numele de câmp există deja."
-
-#: 
-msgid "Add New Field"
-msgstr "Adăugare câmp nou"
 
 #: 
 msgid "Family Editor"
@@ -1110,10 +1090,6 @@ msgstr "Creată"
 #: 
 msgid "Envelope Number"
 msgstr "Numărul de plic"
-
-#: 
-msgid "Add New Member"
-msgstr "Adaugă membru nou"
 
 #: 
 msgid "Upload Photo"
@@ -1658,16 +1634,8 @@ msgid "New Role"
 msgstr "Rol nou"
 
 #: 
-msgid "Add New Role"
-msgstr "Adaugă rol nou"
-
-#: 
 msgid "Group Listing"
 msgstr "Listă de Grupuri"
-
-#: 
-msgid "Add New Group"
-msgstr "Adaugă grup nou"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1959,10 +1927,6 @@ msgid "All People"
 msgstr "Toți oamenii"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Gestionarul de Clasificări"
-
-#: 
 msgid "Email All"
 msgstr "Trimite email la toți"
 
@@ -2039,14 +2003,6 @@ msgid "Gender Demographics"
 msgstr "Date demografice"
 
 #: 
-msgid "Men"
-msgstr "Bărbat"
-
-#: 
-msgid "Women"
-msgstr "Femeie"
-
-#: 
 msgid "Boys"
 msgstr "Băieți"
 
@@ -2077,10 +2033,6 @@ msgstr "Familii actualizate"
 #: 
 msgid "Updated"
 msgstr "Actualizat"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Notă Ștergerea Confirmare"
 
 #: 
 #, fuzzy
@@ -2116,11 +2068,6 @@ msgid "Option"
 msgstr "Opțiune"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Avertisment: Demontarea va reseta toate sarcinile pentru toate persoanele cu atribuire!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Eroare: Duplicate"
 
@@ -2143,10 +2090,6 @@ msgstr "Ieșire"
 #: 
 msgid "Add New"
 msgstr "Adăugați noi"
-
-#: 
-msgid "Error: A "
-msgstr "Eroare: A"
 
 #: 
 msgid " by that name already exists."
@@ -2187,10 +2130,6 @@ msgstr "Selecta"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Câmpurile Persoana personalizate Editor"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Atenție: Prin ștergerea acest domeniu, veți pierde irrevokably toate datele persoana desemnata pentru acest domeniu!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2422,15 +2361,6 @@ msgid "Assigning"
 msgstr "Atribuire"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Proprietate Ștergere Confirmarea"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this property"
-msgstr "Vă rugăm să confirmați ștergerea această proprietate"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Ștergerea aceasta proprietate va șterge, de asemenea toate sarcinile de această proprietate orice popor, familie, sau înregistrări Group."
 
@@ -2475,10 +2405,6 @@ msgstr "Proprietate"
 #: 
 msgid "Prompt"
 msgstr "Prompt"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Tipul de proprietate Ștergere Confirmarea"
 
 #: 
 msgid "Warning"
@@ -2630,10 +2556,6 @@ msgstr "Restaurează bază de date"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Toate donațiile din această familie au fost mutate la o altă familie."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Familie Ștergere Confirmarea"
 
 #: 
 #, fuzzy
@@ -2881,36 +2803,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Vă rugăm să confirmați resetare a parolei de acest utilizator"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Voluntari Ștergere Confirmarea oportunitate"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Există oameni atribuite la aceasta oportunitate de Voluntariat."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Oportunitate de voluntariat vor fi neatribuit pentru urmatoarele categorii de persoane."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Da, șterge această oportunitate de Voluntariat"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Voluntari oportunitate Editor"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nu oportunitățile de voluntariat au fost încă adăugate"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "NOTĂ: adăugați, ștergeți, iar schimbările de comandă sunt imediate. Modificările la numele sau câmpuri Desc trebuie să fie salvate prin apăsarea \"Salvați modificările\""
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Adauga oportunitate nou"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2997,10 +2895,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Mulțumim că ați înregistrat instalarea ce ChurchCRM"
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF-urile au fost trimite cu success"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF-ul a fost trimis cu succes către membrii familiei"
 
@@ -3036,10 +2930,6 @@ msgstr "Înregistrarea selectată eliminat cu succes din Cart."
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Cosul tau a fost golit cu succes"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "produs (e) adăugat în coș."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3667,10 +3557,6 @@ msgid "Functions"
 msgstr "Funcții"
 
 #: 
-msgid "Add New Class"
-msgstr "Adaugă clasă nouă"
-
-#: 
 msgid "Export to CSV"
 msgstr "Exportă către CSV"
 
@@ -3872,20 +3758,13 @@ msgid "Groups"
 msgstr "Grupuri"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Eroare: Trebuie să introduceți un nume"
-
-#: 
 msgid "Total $"
 msgstr "Total Lei"
 
 #: 
-msgid "with this property.."
-msgstr "cu această proprietate.."
-
-#: 
-msgid "with this Property..."
-msgstr "cu această Proprietate.."
+#, fuzzy
+msgid "with this property..."
+msgstr "cu această proprietate..."
 
 #: 
 msgid "Church Email"
@@ -4042,10 +3921,6 @@ msgid "Church Phone"
 msgstr "Telefon biserică"
 
 #: 
-msgid "Home area code of the church"
-msgstr "Cod telefonic biserică"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbalizare pentru prima linie a raportului fiscal. Datele vor fi anexate la sfârșitul acestei linii."
 
@@ -4188,10 +4063,6 @@ msgstr "Meniu întrebări"
 #: 
 msgid "CSV Export Records"
 msgstr "Înregistrări eport CSV"
-
-#: 
-msgid "People Properties"
-msgstr "Proprietăți oameni"
 
 #: 
 msgid "Family Properties"
@@ -4450,33 +4321,8 @@ msgstr "Potriviți câmpul personalizat cu această valoare"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Numărul membrilor familiei"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Persoane pe vârste"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Total pe gen"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Persoană după rol și gen"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Persoană după proprietate"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "Căutare avansată"
 
 #. Context: query_qry
 #: 
@@ -4487,16 +4333,6 @@ msgstr "Zile de naștere"
 #: 
 msgid "Membership anniversaries"
 msgstr "Aniversări membri"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Selectează utilizatori bază de date"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Selectează toți membrii"
 
 #. Context: query_qry
 #: 
@@ -4527,16 +4363,6 @@ msgstr "Gajul familiei pe anul fiscal"
 #: 
 msgid "CustomSearch"
 msgstr "Căutare personalizată"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Returnează fiecare familie și numărul de persoane alocate ei"
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Returnează membrii cu vârsta între limitele de ani"
 
 #. Context: query_qry
 #: 
@@ -6433,10 +6259,6 @@ msgstr "Include"
 #: 
 msgid "Exclude"
 msgstr "Exclude"
-
-#: 
-msgid "No property assignments"
-msgstr "Fără alocări de proprietăți"
 
 #: 
 msgid "View Cart"

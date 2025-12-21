@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "OPPURE"
 
 #: 
-msgid "Add New Event"
-msgstr "Aggiungi Nuovo Evento"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Il carrello è vuoto!"
 
@@ -759,10 +755,6 @@ msgid "Save Changes"
 msgstr "Salva le modifiche"
 
 #: 
-msgid "Add New Fund"
-msgstr "Aggiungi un nuovo fondo"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Editor Eventi Chiesa"
 
@@ -914,14 +906,6 @@ msgid "Default Option"
 msgstr "Opzione predefinita"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Attenzione: eliminando questo campo, perderai irrevocabilmente tutti i dati della famiglia assegnati per questo campo!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Attenzione: i pulsanti Freccia e Elimina hanno effetto immediato. Le modifiche al nome del campo andranno perse se non si \"Salva modifiche\" prima di utilizzare un pulsante su, giù, elimina o \"aggiungi nuovo\"!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Nessun campo Famiglia personalizzato è stato ancora aggiunto"
 
@@ -952,10 +936,6 @@ msgstr "Devi inserire un nome"
 #: 
 msgid "That field name already exists."
 msgstr "Questo nome di campo esiste già."
-
-#: 
-msgid "Add New Field"
-msgstr "Aggiungi nuovo campo"
 
 #: 
 msgid "Family Editor"
@@ -1084,10 +1064,6 @@ msgstr "Creata"
 #: 
 msgid "Envelope Number"
 msgstr "Busta Numero"
-
-#: 
-msgid "Add New Member"
-msgstr "Aggiungi Nuovo Membro"
 
 #: 
 msgid "Upload Photo"
@@ -1621,16 +1597,8 @@ msgid "New Role"
 msgstr "Nuovo Ruolo"
 
 #: 
-msgid "Add New Role"
-msgstr "Aggiungi Nuovo Ruolo"
-
-#: 
 msgid "Group Listing"
 msgstr "Lista gruppi"
-
-#: 
-msgid "Add New Group"
-msgstr "Aggiungi Nuovo Gruppo"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1912,10 +1880,6 @@ msgstr "Tutte le persone\n"
 ""
 
 #: 
-msgid "Classifications Manager"
-msgstr "Responsabile delle classificazioni"
-
-#: 
 msgid "Email All"
 msgstr "Invia email a tutti"
 
@@ -1994,14 +1958,6 @@ msgid "Gender Demographics"
 msgstr "Demografia di genere"
 
 #: 
-msgid "Men"
-msgstr "Uomo"
-
-#: 
-msgid "Women"
-msgstr "Donna"
-
-#: 
 msgid "Boys"
 msgstr "Ragazzi"
 
@@ -2032,10 +1988,6 @@ msgstr "Famiglie aggiornate"
 #: 
 msgid "Updated"
 msgstr "Aggiornato"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Conferma eliminazione nota"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2070,11 +2022,6 @@ msgid "Option"
 msgstr "Opzione"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Attenzione: Rimozione resetta tutte le assegnazioni per tutte le persone con l&#39;incarico!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Errore: Duplicato"
 
@@ -2097,10 +2044,6 @@ msgstr "Esci"
 #: 
 msgid "Add New"
 msgstr "Aggiungi nuovo"
-
-#: 
-msgid "Error: A "
-msgstr "Errore: Un"
 
 #: 
 msgid " by that name already exists."
@@ -2141,10 +2084,6 @@ msgstr "Selezionare"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Modifica campi personalizzati"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Attenzione:  Eliminando questo campo, perderai irrevocabilmente tutti i dati personali assegnati a questo campo!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2373,14 +2312,6 @@ msgid "Assigning"
 msgstr "Assegnazione"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Conferma eliminazione proprietà"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "Si prega di confermare la cancellazione di questa proprietà"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Eliminando questa proprietà perderai anche tutti i valori assegnati a qualunque persona, famiglia o gruppo."
 
@@ -2424,10 +2355,6 @@ msgstr "Proprietà"
 #: 
 msgid "Prompt"
 msgstr "Domanda"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Conferma eliminazione tipo di proprietà"
 
 #: 
 msgid "Warning"
@@ -2578,10 +2505,6 @@ msgstr "Ripristina database"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Tutte le donazioni di questa famiglia sono stati spostati in un&#39;altra famiglia."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Conferma eliminazione famiglia"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2813,36 +2736,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Per favore, conferma l'azzeramento della password per questo utente"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Conferma cancellazione opportunità volontarie"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Ci sono persone assegnate a questa opportunità di volontariato."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Opportunità di volontariato sarà assegnato per le seguenti persone."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Sì, elimina questa opportunità di volontariato"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Volontariato Editor Opportunità"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Non sono state ancora aggiunte opportunità di volontariato"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "NOTA: aggiungere, eliminare, e le modifiche di ordinazione sono immediati. Modifiche a Nome o campi decrescente deve essere salvato premendo &#39;Salva modifiche&#39;"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Aggiungi una nuova opportunità"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2929,10 +2828,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Grazie per aver registrato la tua installazione ChurchCRM."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF inviati con successo"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF inviato con successo ai membri della famiglia."
 
@@ -2967,10 +2862,6 @@ msgstr "Scheda selezionata rimossa con successo dal contenitore."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "Il tuo carrello è stato svuotato con successo"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "componenti aggiunti al contenitore."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3586,10 +3477,6 @@ msgid "Functions"
 msgstr "Funzioni"
 
 #: 
-msgid "Add New Class"
-msgstr "Aggiungi nuova Classe"
-
-#: 
 msgid "Export to CSV"
 msgstr "Esporta in CSV"
 
@@ -3794,19 +3681,12 @@ msgid "Groups"
 msgstr "Gruppi"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Errore: devi inserire un nome"
-
-#: 
 msgid "Total $"
 msgstr "Totale $"
 
 #: 
-msgid "with this property.."
-msgstr "con questa proprietà .."
-
-#: 
-msgid "with this Property..."
+#, fuzzy
+msgid "with this property..."
 msgstr "con questa proprietà ..."
 
 #: 
@@ -3964,10 +3844,6 @@ msgid "Church Phone"
 msgstr "Telefono della Chiesa"
 
 #: 
-msgid "Home area code of the church"
-msgstr "Codice della zona abitativa della chiesa"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage per la linea superiore del rapporto fiscale. Le date verranno aggiunte alla fine di questa riga."
 
@@ -4110,10 +3986,6 @@ msgstr "Menu di query"
 #: 
 msgid "CSV Export Records"
 msgstr "Esportazione CSV"
-
-#: 
-msgid "People Properties"
-msgstr "Proprietà delle persone"
 
 #: 
 msgid "Family Properties"
@@ -4372,33 +4244,8 @@ msgstr "Abbina il campo personalizzato a questo valore"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Conte dei membri della famiglia"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Persona per età"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Totale per sesso"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Persona per ruolo e genere"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Persona per proprietà"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "Ricerca Avanzata"
 
 #. Context: query_qry
 #: 
@@ -4409,16 +4256,6 @@ msgstr "Compleanni"
 #: 
 msgid "Membership anniversaries"
 msgstr "Anniversari di appartenenza"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Seleziona gli utenti del database"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Seleziona tutti i membri"
 
 #. Context: query_qry
 #: 
@@ -4449,16 +4286,6 @@ msgstr "Family Pledge per Anno Fiscale"
 #: 
 msgid "CustomSearch"
 msgstr "CustomSearch"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Restituisce ogni famiglia e il numero totale di persone assegnate a loro."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Restituisce qualsiasi record personale con età comprese tra due date."
 
 #. Context: query_qry
 #: 
@@ -6363,10 +6190,6 @@ msgstr "Includere"
 #: 
 msgid "Exclude"
 msgstr "Escludere"
-
-#: 
-msgid "No property assignments"
-msgstr "Nessun incarico di proprietà"
 
 #: 
 msgid "View Cart"

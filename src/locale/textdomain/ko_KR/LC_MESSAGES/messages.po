@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "또는"
 
 #: 
-msgid "Add New Event"
-msgstr "새 행사 추가"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "카트가 비어 있습니다!"
 
@@ -757,10 +753,6 @@ msgid "Save Changes"
 msgstr "변경 사항 저장"
 
 #: 
-msgid "Add New Fund"
-msgstr "새 헌금 항목 추가"
-
-#: 
 msgid "Church Event Editor"
 msgstr "교회 행사 편집"
 
@@ -911,14 +903,6 @@ msgid "Default Option"
 msgstr "기본 옵션"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "경고: 이 필드를 삭제하면 여기에 입력된 모든 가족 데이터가 영구히 사라집니다!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "경고: 화살표와 삭제 버튼은 즉시 적용됩니다. 위/아래/삭제 또는 '새로 추가' 버튼을 누르기 전에 '변경 사항 저장'을 하지 않으면 수정 내용이 사라집니다!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "추가된 사용자 정의 가족 필드가 없습니다."
 
@@ -949,10 +933,6 @@ msgstr "이름을 입력해야 합니다."
 #: 
 msgid "That field name already exists."
 msgstr "이미 존재하는 필드 이름입니다."
-
-#: 
-msgid "Add New Field"
-msgstr "새 필드 추가"
 
 #: 
 msgid "Family Editor"
@@ -1081,10 +1061,6 @@ msgstr "등록일"
 #: 
 msgid "Envelope Number"
 msgstr "헌금봉투 번호"
-
-#: 
-msgid "Add New Member"
-msgstr "새 구성원 추가"
 
 #: 
 msgid "Upload Photo"
@@ -1616,16 +1592,8 @@ msgid "New Role"
 msgstr "새 역할"
 
 #: 
-msgid "Add New Role"
-msgstr "새 역할 추가"
-
-#: 
 msgid "Group Listing"
 msgstr "그룹 목록"
-
-#: 
-msgid "Add New Group"
-msgstr "새 그룹 추가"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1906,10 +1874,6 @@ msgid "All People"
 msgstr "전체 성도"
 
 #: 
-msgid "Classifications Manager"
-msgstr "분류 관리"
-
-#: 
 msgid "Email All"
 msgstr "전체 메일 발송"
 
@@ -1986,14 +1950,6 @@ msgid "Gender Demographics"
 msgstr "성별 통계"
 
 #: 
-msgid "Men"
-msgstr "남성"
-
-#: 
-msgid "Women"
-msgstr "여성"
-
-#: 
 msgid "Boys"
 msgstr "소년"
 
@@ -2024,10 +1980,6 @@ msgstr "최근 수정 가족"
 #: 
 msgid "Updated"
 msgstr "수정일"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "메모 삭제 확인"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2062,11 +2014,6 @@ msgid "Option"
 msgstr "옵션"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "경고: 삭제하면 해당 배정이 걸린 모든 사람의 설정이 초기화됩니다!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "오류: 중복"
 
@@ -2089,10 +2036,6 @@ msgstr "나가기"
 #: 
 msgid "Add New"
 msgstr "새로 추가"
-
-#: 
-msgid "Error: A "
-msgstr "오류: "
 
 #: 
 msgid " by that name already exists."
@@ -2133,10 +2076,6 @@ msgstr "선택"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "개인 사용자 정의 필드 편집"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "경고: 이 필드를 삭제하면 여기에 입력된 모든 개인 데이터가 영구히 사라집니다!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2363,14 +2302,6 @@ msgid "Assigning"
 msgstr "배정 중"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "속성 삭제 확인"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "이 속성을 삭제할지 확인하세요."
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "이 속성을 삭제하면 사람, 가족, 그룹에 배정된 관련 정보도 모두 삭제됩니다."
 
@@ -2414,10 +2345,6 @@ msgstr "속성"
 #: 
 msgid "Prompt"
 msgstr "프롬프트"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "속성 유형 삭제 확인"
 
 #: 
 msgid "Warning"
@@ -2567,10 +2494,6 @@ msgstr "데이터베이스 복원"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "이 가족의 헌금은 모두 다른 가족으로 이전되었습니다."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "가족 삭제 확인"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2801,36 +2724,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "이 사용자의 비밀번호를 초기화할지 확인하세요."
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "사역 삭제 확인"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "이 사역에 배정된 인원이 있습니다."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "다음 인원에 대한 사역 배정이 해제됩니다."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "예, 이 사역을 삭제합니다"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "사역 편집"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "등록된 사역이 없습니다."
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "참고: 추가·삭제·정렬 변경은 즉시 적용됩니다. 이름이나 설명을 수정한 경우 '변경 사항 저장'을 눌러야 저장됩니다."
-
-#: 
-msgid "Add New Opportunity"
-msgstr "새 사역 추가"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2917,10 +2816,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "ChurchCRM을 등록해 주셔서 감사합니다."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF가 정상적으로 이메일 발송되었습니다 "
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "가족 구성원에게 PDF가 정상 발송되었습니다."
 
@@ -2955,10 +2850,6 @@ msgstr "선택한 항목이 카트에서 제거되었습니다."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "카트를 모두 비웠습니다."
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "개의 항목이 카트에 추가되었습니다."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3573,10 +3464,6 @@ msgid "Functions"
 msgstr "기능"
 
 #: 
-msgid "Add New Class"
-msgstr "새 반 추가"
-
-#: 
 msgid "Export to CSV"
 msgstr "CSV로 내보내기"
 
@@ -3778,19 +3665,12 @@ msgid "Groups"
 msgstr "그룹"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "오류: 이름을 입력해야 합니다."
-
-#: 
 msgid "Total $"
 msgstr "총액 $"
 
 #: 
-msgid "with this property.."
-msgstr "이 속성을 가진..."
-
-#: 
-msgid "with this Property..."
+#, fuzzy
+msgid "with this property..."
 msgstr "이 속성을 가진..."
 
 #: 
@@ -3946,10 +3826,6 @@ msgid "Church Phone"
 msgstr "교회 전화번호"
 
 #: 
-msgid "Home area code of the church"
-msgstr "교회 지역번호"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "세금 보고서 상단 문구(끝에 날짜가 붙습니다)"
 
@@ -4092,10 +3968,6 @@ msgstr "쿼리 메뉴"
 #: 
 msgid "CSV Export Records"
 msgstr "CSV 내보내기 기록"
-
-#: 
-msgid "People Properties"
-msgstr "개인 속성"
 
 #: 
 msgid "Family Properties"
@@ -4353,33 +4225,8 @@ msgstr "사용자 정의 필드의 비교 값"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "가족별 인원수"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "연령별 개인"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "성별 총계"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "역할·성별별 개인"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "속성별 개인"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "고급 검색"
 
 #. Context: query_qry
 #: 
@@ -4390,16 +4237,6 @@ msgstr "생일"
 #: 
 msgid "Membership anniversaries"
 msgstr "등록 기념일"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "DB 사용자 선택"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "모든 회원 선택"
 
 #. Context: query_qry
 #: 
@@ -4430,16 +4267,6 @@ msgstr "회계 연도별 가족 서약"
 #: 
 msgid "CustomSearch"
 msgstr "사용자 정의 검색"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "각 가족과 그 가족에 속한 총 인원을 보여줍니다."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "지정한 두 나이 사이에 해당하는 개인을 반환합니다."
 
 #. Context: query_qry
 #: 
@@ -6335,10 +6162,6 @@ msgstr "포함"
 #: 
 msgid "Exclude"
 msgstr "제외"
-
-#: 
-msgid "No property assignments"
-msgstr "배정된 속성이 없습니다"
 
 #: 
 msgid "View Cart"

@@ -355,10 +355,6 @@ msgid "OR"
 msgstr "ELLER"
 
 #: 
-msgid "Add New Event"
-msgstr "Legg til ny begivenhet"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Handlekurven er tom!"
 
@@ -778,10 +774,6 @@ msgid "Save Changes"
 msgstr "Lagre endringer"
 
 #: 
-msgid "Add New Fund"
-msgstr "Legg til ny Fund"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Kirke begivenhet Editor"
 
@@ -934,14 +926,6 @@ msgid "Default Option"
 msgstr "Standard Option"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Advarsel: Ved å slette dette feltet, vil du irrevokably miste alle familiens data tilordnet dette feltet!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Advarsel: Arrow og Slett trer i kraft umiddelbart. Feltnavn endringer vil gå tapt hvis du ikke \"Lagre endringer\" før du bruker opp, ned, slette eller &#39;Legg til ny&#39; knappen!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Ingen egendefinerte Familie felt er lagt til ennå"
 
@@ -972,10 +956,6 @@ msgstr "Du må angi et navn"
 #: 
 msgid "That field name already exists."
 msgstr "Dette feltet navnet finnes allerede."
-
-#: 
-msgid "Add New Field"
-msgstr "Legg til nytt felt"
 
 #: 
 msgid "Family Editor"
@@ -1104,10 +1084,6 @@ msgstr "Opprettet"
 #: 
 msgid "Envelope Number"
 msgstr "Konvolutt nummer"
-
-#: 
-msgid "Add New Member"
-msgstr "Legg til nytt Medlem"
 
 #: 
 msgid "Upload Photo"
@@ -1654,16 +1630,8 @@ msgid "New Role"
 msgstr "Ny rolle"
 
 #: 
-msgid "Add New Role"
-msgstr "Legg til Ny Rolle"
-
-#: 
 msgid "Group Listing"
 msgstr "Gruppe Listing"
-
-#: 
-msgid "Add New Group"
-msgstr "Legg til ny Gruppe"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -2016,14 +1984,6 @@ msgid "Gender Demographics"
 msgstr "Kjønnsdemografi"
 
 #: 
-msgid "Men"
-msgstr "Man"
-
-#: 
-msgid "Women"
-msgstr "Kvinne"
-
-#: 
 msgid "Boys"
 msgstr "Gutter"
 
@@ -2050,10 +2010,6 @@ msgstr "Oppdaterte Familier"
 #: 
 msgid "Updated"
 msgstr "Oppdatert"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Merk Slett Bekreftelse"
 
 #: 
 #, fuzzy
@@ -2089,11 +2045,6 @@ msgid "Option"
 msgstr "Alternativet"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Advarsel: Fjerne vil tilbakestille alle oppdrag for alle personer med oppdraget!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Feil: Duplikat"
 
@@ -2116,10 +2067,6 @@ msgstr "Utgang"
 #: 
 msgid "Add New"
 msgstr "Legg til ny"
-
-#: 
-msgid "Error: A "
-msgstr "Feil: A"
 
 #: 
 msgid " by that name already exists."
@@ -2166,10 +2113,6 @@ msgstr "Velg Rolle"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Custom Person Fields Editor"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Advarsel: Ved å slette dette feltet, vil du irrevokably miste alle personer data tilordnet dette feltet!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2408,15 +2351,6 @@ msgid "Assigning"
 msgstr "Tilordning"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Eiendom Slett Bekreftelse"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this property"
-msgstr "Vennligst bekreft sletting av denne eiendommen"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Slette dette Property vil også slette alle oppdrag for denne egenskapen til noen folk, familie eller gruppe poster."
 
@@ -2461,10 +2395,6 @@ msgstr "Eiendom"
 #: 
 msgid "Prompt"
 msgstr "Spør"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Eiendomstype Slett Bekreftelse"
 
 #: 
 msgid "Warning"
@@ -2617,10 +2547,6 @@ msgstr "Gjenopprett Database"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Alle donasjoner fra denne familien har blitt flyttet til en annen familie."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Familie Slett Bekreftelse"
 
 #: 
 #, fuzzy
@@ -2863,39 +2789,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Vennligst bekreft passordet reset av denne brukeren"
 
 #: 
-#, fuzzy
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Frivillig Opportunity Editor"
-
-#: 
-#, fuzzy
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Tildele en ny frivillig Opportunity:"
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Frivillig Opportunity vil bli tilordnet for følgende personer."
-
-#: 
-#, fuzzy
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Tildele en ny frivillig Opportunity:"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Frivillig Opportunity Editor"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Ingen frivillige muligheter er lagt til ennå"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "MERK: Legg til, slett og Bestilling endringene er umiddelbar. Endringer i Navn eller Desc felt må lagres ved å trykke \"Lagre endringer\""
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Legg til ny Opportunity"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2978,10 +2877,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Takk for at du registrerte ChurchCRM "
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF sending vellykket"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF sending til familie vellykket"
 
@@ -3017,10 +2912,6 @@ msgstr "Valgte posten slettet fra Cart."
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Handlekurven har blitt tømt"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "element (er) lagt i handlevognen."
 
 #: 
 msgid "Select Fiscal Year"

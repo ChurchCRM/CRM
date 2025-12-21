@@ -359,10 +359,6 @@ msgid "OR"
 msgstr "或"
 
 #: 
-msgid "Add New Event"
-msgstr "添加新活動"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "您的購物車是空的！"
 
@@ -787,10 +783,6 @@ msgid "Save Changes"
 msgstr "保存更改"
 
 #: 
-msgid "Add New Fund"
-msgstr "添加新基金"
-
-#: 
 msgid "Church Event Editor"
 msgstr "教會活動編輯器"
 
@@ -943,14 +935,6 @@ msgid "Default Option"
 msgstr "預設選項"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "警告：通過刪除此領域，，你會irrevokably失去所有的家庭數據分配給該領域的！"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "警告：箭頭鍵和刪除按鈕將立即生效。字段名稱的更改將丟失，如果你不“保存更改”使用前，向下，刪除或“添加新的按鈕！"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "尚未添加任何自定義家庭領域的"
 
@@ -981,10 +965,6 @@ msgstr "您必須輸入一個名稱"
 #: 
 msgid "That field name already exists."
 msgstr "該字段名稱已經存在。"
-
-#: 
-msgid "Add New Field"
-msgstr "添加新字段"
 
 #: 
 msgid "Family Editor"
@@ -1113,10 +1093,6 @@ msgstr "已建立"
 #: 
 msgid "Envelope Number"
 msgstr "信封號碼"
-
-#: 
-msgid "Add New Member"
-msgstr "添加新成員"
 
 #: 
 msgid "Upload Photo"
@@ -1663,16 +1639,8 @@ msgid "New Role"
 msgstr "新角色"
 
 #: 
-msgid "Add New Role"
-msgstr "添加新角色"
-
-#: 
 msgid "Group Listing"
 msgstr "群組列表"
-
-#: 
-msgid "Add New Group"
-msgstr "添加新群組"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1964,10 +1932,6 @@ msgid "All People"
 msgstr "所有人"
 
 #: 
-msgid "Classifications Manager"
-msgstr "分類管理器"
-
-#: 
 msgid "Email All"
 msgstr "電郵所有人"
 
@@ -2046,14 +2010,6 @@ msgid "Gender Demographics"
 msgstr "性別統計"
 
 #: 
-msgid "Men"
-msgstr "男"
-
-#: 
-msgid "Women"
-msgstr "女"
-
-#: 
 msgid "Boys"
 msgstr "男孩"
 
@@ -2084,10 +2040,6 @@ msgstr "更新家庭"
 #: 
 msgid "Updated"
 msgstr "更新"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "注意：刪除確認"
 
 #: 
 #, fuzzy
@@ -2123,11 +2075,6 @@ msgid "Option"
 msgstr "選項"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "除警告：將重置所有分配的分配與所有的人！"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "錯誤：重複"
 
@@ -2150,10 +2097,6 @@ msgstr "出口"
 #: 
 msgid "Add New"
 msgstr "添加新"
-
-#: 
-msgid "Error: A "
-msgstr "錯誤："
 
 #: 
 msgid " by that name already exists."
@@ -2194,10 +2137,6 @@ msgstr "選擇"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "自定義聯繫人字段編輯器"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "警告：通過刪除此領域，，你會irrevokably失去所有的個人數據分配給這個領域！"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2430,15 +2369,6 @@ msgid "Assigning"
 msgstr "分配"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "物業刪除確認"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this property"
-msgstr "請確認刪除該屬性"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "刪除這個屬性，這個屬性也會刪除所有作業的任何人來說，家庭，集團錄得。"
 
@@ -2484,10 +2414,6 @@ msgstr "屬性"
 #: 
 msgid "Prompt"
 msgstr "提示"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "物業類型刪除確認"
 
 #: 
 msgid "Warning"
@@ -2641,10 +2567,6 @@ msgstr "還原資料庫"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "從這個家庭的所有捐款已被移動到另一個家庭。"
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "家庭刪除確認"
 
 #: 
 #, fuzzy
@@ -2894,36 +2816,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "請確認該用戶的密碼重置"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "義工機會刪除確認"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "還有人分配給該義工機會。"
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "下面的人將不會被賦值為義工機會。"
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "是的，刪除這個義工機會"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "義工機會編輯器"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "尚未添加任何志願服務機會"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "注意：添加，刪除，訂貨變化是立竿見影的。必須保存更改名稱或描述字段，按“保存更改”"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "添加新機遇"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -3011,10 +2909,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "謝謝您登記安裝ChurchRam"
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF已成功通過郵件發送"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF已成功通過郵件發送給家庭成員。"
 
@@ -3050,10 +2944,6 @@ msgstr "成功地從購物車中刪除選定的記錄。"
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "您的購物車已成功清空。"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "（S）項添加到購物車。"
 
 #: 
 msgid "Select Fiscal Year"
@@ -3686,10 +3576,6 @@ msgid "Functions"
 msgstr "功能"
 
 #: 
-msgid "Add New Class"
-msgstr "添加新課室"
-
-#: 
 msgid "Export to CSV"
 msgstr "導出到CSV"
 
@@ -3891,19 +3777,12 @@ msgid "Groups"
 msgstr "組"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "錯誤：您必須輸入名稱"
-
-#: 
 msgid "Total $"
 msgstr "總共$"
 
 #: 
-msgid "with this property.."
-msgstr "有這個屬性.."
-
-#: 
-msgid "with this Property..."
+#, fuzzy
+msgid "with this property..."
 msgstr "有這個屬性.."
 
 #: 
@@ -4061,10 +3940,6 @@ msgid "Church Phone"
 msgstr "教會電話"
 
 #: 
-msgid "Home area code of the church"
-msgstr "教會的區號"
-
-#: 
 #, fuzzy
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "用於稅務報告頂線的用語。日期將附加到此行的末尾。"
@@ -4215,10 +4090,6 @@ msgstr "查詢菜單"
 #: 
 msgid "CSV Export Records"
 msgstr "CSV匯出記錄"
-
-#: 
-msgid "People Properties"
-msgstr "人物屬性"
 
 #: 
 #, fuzzy
@@ -4483,34 +4354,9 @@ msgstr "將自定義字段與此值匹配"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "家庭成員計數"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "按年齡劃分的人員"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "按性別劃分的總數"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "按角色和性別劃分的人員"
-
-#. Context: query_qry
-#: 
 #, fuzzy
 msgid "Person by Property"
 msgstr "按屬性劃分的人員"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "高級搜索"
 
 #. Context: query_qry
 #: 
@@ -4521,17 +4367,6 @@ msgstr "生日"
 #: 
 msgid "Membership anniversaries"
 msgstr "會員紀念日"
-
-#. Context: query_qry
-#: 
-#, fuzzy
-msgid "Select database users"
-msgstr "選擇資料庫用戶"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "選擇所有成員"
 
 #. Context: query_qry
 #: 
@@ -4562,16 +4397,6 @@ msgstr "財政年度的家庭承諾"
 #: 
 msgid "CustomSearch"
 msgstr "定制搜索"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "返回每個家庭以及分配給他們的總人數。"
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "返回年齡介於兩個給定年齡之間的所有人員記錄。"
 
 #. Context: query_qry
 #: 
@@ -6474,11 +6299,6 @@ msgstr "包括"
 #: 
 msgid "Exclude"
 msgstr "排除"
-
-#: 
-#, fuzzy
-msgid "No property assignments"
-msgstr "沒有屬性分配"
 
 #: 
 msgid "View Cart"

@@ -344,10 +344,6 @@ msgid "OR"
 msgstr "VAGY"
 
 #: 
-msgid "Add New Event"
-msgstr "Új esemény hozzáadása"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Az Ön kosara üres!"
 
@@ -753,10 +749,6 @@ msgid "Save Changes"
 msgstr "Változtatások mentése"
 
 #: 
-msgid "Add New Fund"
-msgstr "Új alap"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Church Esemény szerkesztő"
 
@@ -880,14 +872,6 @@ msgid "Default Option"
 msgstr "Alapértelmezett beállítás"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Figyelmeztetés: A törlés ezen a területen, akkor irrevokably elveszíti minden családi adatok rendelt ezt a mezőt!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Figyelmeztetés: A nyíl és delete gomb azonnal életbe lépnek. Mezőnév változtatások elvesznek, ha nem a \"Változtatások mentése\" használata előtt fel, le, törölheti vagy &#39;Új&#39; gombra!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Nincs egyéni Family mezők kerültek még"
 
@@ -918,10 +902,6 @@ msgstr "Meg kell adnia egy nevet"
 #: 
 msgid "That field name already exists."
 msgstr "Ez a mező már létezik."
-
-#: 
-msgid "Add New Field"
-msgstr "Új mező hozzáadása"
 
 #: 
 msgid "Family Editor"
@@ -1762,10 +1742,6 @@ msgid "Family Name"
 msgstr "Családi név"
 
 #: 
-msgid "Note Delete Confirmation"
-msgstr "Megjegyzés: A Törlés megerősítése"
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of this note"
 msgstr "Kérjük, erősítse meg törlését e feljegyzés"
@@ -1799,11 +1775,6 @@ msgid "Option"
 msgstr "Opció"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Figyelmeztetés: eltávolítása visszaállítja az összes feladatot minden személy számára a feladat!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Hiba: Ismétlődő"
 
@@ -1826,10 +1797,6 @@ msgstr "Kijárat"
 #: 
 msgid "Add New"
 msgstr "Új"
-
-#: 
-msgid "Error: A "
-msgstr "Hiba: A"
 
 #: 
 msgid " by that name already exists."
@@ -1870,10 +1837,6 @@ msgstr "Választ"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Egyéni Személy Fields Editor"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Figyelmeztetés: A törlés ezen a területen, akkor irrevokably elveszíti minden személy adatait rendelt ezt a mezőt!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2073,15 +2036,6 @@ msgid "Assigning"
 msgstr "Hozzárendelése"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Property Törlés megerősítése"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this property"
-msgstr "Kérjük, erősítse meg törlését az ingatlan"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Törlése ez az ingatlan is törli az összes átengedése ez az ingatlan bármely személy, család, vagy csoport rekordokat."
 
@@ -2126,10 +2080,6 @@ msgstr "Ingatlan"
 #: 
 msgid "Prompt"
 msgstr "Gyors"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Ingatlan típusa Törlés megerősítése"
 
 #: 
 msgid "Warning"
@@ -2278,10 +2228,6 @@ msgstr "Pledge Emlékeztető Jelentés"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Minden adományt ennek a családnak már átkerült egy másik család."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Family Törlés megerősítése"
 
 #: 
 #, fuzzy
@@ -2502,36 +2448,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Kérjük, erősítse meg a jelszó-visszaállítási ennek a felhasználónak"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Önkéntes Opportunity Törlés megerősítése"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Vannak emberek, akik rendelt e Önkéntes Opportunity."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Önkéntes Opportunity lesz kiosztva a következő emberek."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Igen, törlöm ezt Önkéntes Opportunity"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Önkéntes Opportunity szerkesztő"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nem önkéntes lehetőségeket adtak még"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "MEGJEGYZÉS: ADD, Törlés és rendelési változások azonnali. Változások a név vagy Desc mezőket kell menteni megnyomásával \"Változtatások mentése\""
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Új Opportunity"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2613,10 +2535,6 @@ msgstr "A kiválasztott rekord sikeresen eltávolították a kosárba."
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Ön kosara sikeresen kiürült"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "tétel (ek) adunk a kosárba."
 
 #: 
 msgid "Select Fiscal Year"

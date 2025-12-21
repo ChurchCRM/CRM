@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "AU"
 
 #: 
-msgid "Add New Event"
-msgstr "Ongeza tukio jipya"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Rukwama yako haina kitu!"
 
@@ -757,10 +753,6 @@ msgid "Save Changes"
 msgstr "Hifadhi"
 
 #: 
-msgid "Add New Fund"
-msgstr "Mfuko mpya"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Mhariri wa Tukio la Kanisa"
 
@@ -911,14 +903,6 @@ msgid "Default Option"
 msgstr "Chaguo la Msingi"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Onyo: Kwa kufuta kipengele hiki, utapoteza taarifa yote ya familia iliyopewa kwa kipengele hiki bila uwezekano wa kurudisha nyuma!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Onyo: Vifungo vya mshale na kufuta vitatumika mara moja. Mabadiliko ya jina la sehemu yatapotea ikiwa huta 'Hifadhi Mabadiliko' kabla ya kutumia kitufe cha juu, chini, kufuta au 'ongeza mpya'!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Bado hakuna sehemu maalum za Familia ambazo zimeongezwa"
 
@@ -949,10 +933,6 @@ msgstr "Jina linahitajika"
 #: 
 msgid "That field name already exists."
 msgstr "Tayari ipo"
-
-#: 
-msgid "Add New Field"
-msgstr "Ongeza Sehemu Mpya"
 
 #: 
 msgid "Family Editor"
@@ -1081,10 +1061,6 @@ msgstr "Imetengenezwa"
 #: 
 msgid "Envelope Number"
 msgstr "Namba ya bahasha"
-
-#: 
-msgid "Add New Member"
-msgstr "Ongeza mwanachama"
 
 #: 
 msgid "Upload Photo"
@@ -1616,16 +1592,8 @@ msgid "New Role"
 msgstr "Jukumu Jipya"
 
 #: 
-msgid "Add New Role"
-msgstr "Ongeza Jukumu Jipya"
-
-#: 
 msgid "Group Listing"
 msgstr "Uorodheshaji wa Kikundi"
-
-#: 
-msgid "Add New Group"
-msgstr "Ongeza Kikundi Kipya"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1906,10 +1874,6 @@ msgid "All People"
 msgstr "Watu wote"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Meneja wa Uainishaji"
-
-#: 
 msgid "Email All"
 msgstr "Tuma barua pepe kwa Wote"
 
@@ -1986,14 +1950,6 @@ msgid "Gender Demographics"
 msgstr "Demografia ya Jinsia"
 
 #: 
-msgid "Men"
-msgstr "Wanaume"
-
-#: 
-msgid "Women"
-msgstr "Wanawake"
-
-#: 
 msgid "Boys"
 msgstr "Wavulana"
 
@@ -2024,10 +1980,6 @@ msgstr "Familia Zilizosasishwa"
 #: 
 msgid "Updated"
 msgstr "Imesasishwa"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Kumbuka Futa Uthibitishaji"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2062,11 +2014,6 @@ msgid "Option"
 msgstr "Chaguo"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Onyo: Kuondoa kutaweka upya kazi zote kwa watu wote walio na kazi iliyokabidhiwa!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Hitilafu: Nakala"
 
@@ -2089,10 +2036,6 @@ msgstr "Utgång"
 #: 
 msgid "Add New"
 msgstr "Ongeza Mpya"
-
-#: 
-msgid "Error: A "
-msgstr "Hitilafu: A "
 
 #: 
 msgid " by that name already exists."
@@ -2133,10 +2076,6 @@ msgstr "Chagua"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Mhariri wa Sehemu za Mtu Maalum"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Onyo: Kwa kufuta sehemu hii, utapoteza data yote ya mtu iliyokabidhiwa kwa sehemu hii bila kubatilishwa!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2363,14 +2302,6 @@ msgid "Assigning"
 msgstr "Kukabidhi"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Uthibitishaji wa Kufuta Mali"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "Tafadhali thibitisha kufutwa kwa mali hii"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Kufuta Sifa hii pia kutafuta kazi zote za Mali hii kwa rekodi zozote za Watu, Familia au Kikundi."
 
@@ -2414,10 +2345,6 @@ msgstr "Mali"
 #: 
 msgid "Prompt"
 msgstr "Haraka"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Uthibitishaji wa Kufuta Aina ya Mali"
 
 #: 
 msgid "Warning"
@@ -2567,10 +2494,6 @@ msgstr "Rejesha Hifadhidata"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Michango yote kutoka kwa familia hii imehamishiwa kwa familia nyingine."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Uthibitisho wa Kufuta Familia"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2801,36 +2724,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Tafadhali thibitisha uwekaji upya nenosiri la mtumiaji huyu"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Fursa ya Kujitolea Futa Uthibitishaji"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Kuna watu wamepewa Fursa hii ya Kujitolea."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Fursa ya Kujitolea haitakabidhiwa kwa watu wafuatao."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Ndiyo, futa Fursa hii ya Kujitolea"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Mhariri wa Fursa ya Kujitolea"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Hakuna fursa za kujitolea ambazo zimeongezwa bado"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "KUMBUKA: Mabadiliko ya ADD, Futa, na Kuagiza ni ya haraka. Mabadiliko kwenye sehemu za Jina au Desc lazima zihifadhiwe kwa kubofya 'Hifadhi Mabadiliko'"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Ongeza Fursa Mpya"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2917,10 +2816,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Asante kwa kusajili usakinishaji wako wa ChurchCRM."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF zimetumwa kwa barua pepe "
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF imetumwa kwa barua pepe kwa wanafamilia."
 
@@ -2955,10 +2850,6 @@ msgstr "Rekodi iliyochaguliwa imeondolewa kwa ufanisi kutoka kwa Rukwama."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "Rukwama yako imeondolewa"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "bidhaa/vipengee vilivyoongezwa kwenye Rukwama."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3573,10 +3464,6 @@ msgid "Functions"
 msgstr "Kazi"
 
 #: 
-msgid "Add New Class"
-msgstr "Ongeza Darasa Jipya"
-
-#: 
 msgid "Export to CSV"
 msgstr "Hamisha kwa CSV"
 
@@ -3778,20 +3665,13 @@ msgid "Groups"
 msgstr "Vikundi"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Hitilafu: Lazima uweke jina"
-
-#: 
 msgid "Total $"
 msgstr "Jumla ya $"
 
 #: 
-msgid "with this property.."
+#, fuzzy
+msgid "with this property..."
 msgstr "na mali hii.."
-
-#: 
-msgid "with this Property..."
-msgstr "na Mali hii ..."
 
 #: 
 msgid "Church Email"
@@ -3946,10 +3826,6 @@ msgid "Church Phone"
 msgstr "Simu ya Kanisa"
 
 #: 
-msgid "Home area code of the church"
-msgstr "Msimbo wa eneo la nyumbani la kanisa"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage kwa mstari wa juu wa ripoti ya ushuru. Tarehe zitaongezwa hadi mwisho wa mstari huu."
 
@@ -4092,10 +3968,6 @@ msgstr "Menyu ya Maswali"
 #: 
 msgid "CSV Export Records"
 msgstr "Rekodi za Usafirishaji wa CSV"
-
-#: 
-msgid "People Properties"
-msgstr "Mali za Watu"
 
 #: 
 msgid "Family Properties"
@@ -4353,33 +4225,8 @@ msgstr "Linganisha uga maalum na thamani hii"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Idadi ya Wanafamilia"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Mtu kwa Umri"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Jumla Kwa Jinsia"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Mtu kwa Wajibu na Jinsia"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Mtu kwa Mali"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "Utafutaji wa Juu"
 
 #. Context: query_qry
 #: 
@@ -4390,16 +4237,6 @@ msgstr "Siku za kuzaliwa"
 #: 
 msgid "Membership anniversaries"
 msgstr "Maadhimisho ya uanachama"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Chagua watumiaji wa hifadhidata"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Chagua wanachama wote"
 
 #. Context: query_qry
 #: 
@@ -4430,16 +4267,6 @@ msgstr "Ahadi ya Familia kabla ya Mwaka wa Fedha"
 #: 
 msgid "CustomSearch"
 msgstr "Utafutaji Maalum"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Hurejesha kila familia na jumla ya idadi ya watu waliokabidhiwa."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Hurejesha rekodi za mtu yeyote zilizo na umri kati ya miaka miwili iliyotolewa."
 
 #. Context: query_qry
 #: 
@@ -6335,10 +6162,6 @@ msgstr "Jumuisha"
 #: 
 msgid "Exclude"
 msgstr "Ondoa"
-
-#: 
-msgid "No property assignments"
-msgstr "Hakuna kazi za mali"
 
 #: 
 msgid "View Cart"

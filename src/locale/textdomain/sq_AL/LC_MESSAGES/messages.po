@@ -324,10 +324,6 @@ msgid "OR"
 msgstr "OSE"
 
 #: 
-msgid "Add New Event"
-msgstr "Shto ngjarje te re"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Shporta juaj është bosh!"
 
@@ -709,10 +705,6 @@ msgid "Save Changes"
 msgstr "Ruaj Ndryshimet"
 
 #: 
-msgid "Add New Fund"
-msgstr "Shto fond të ri"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Kisha Event Editor"
 
@@ -831,14 +823,6 @@ msgid "Default Option"
 msgstr "Default Option"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Warning: Duke fshirjes këtë fushë, ju irrevokably do të humbasin të gjitha të dhënat e familjes e përcaktuara për këtë fushë!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Warning: Arrow dhe fshini butonat të hyjë në fuqi menjëherë. Ndryshimet emrin në terren do të humbasin nëse ju nuk e 'Ruaj ndryshimet' para se të përdorni një lart, poshtë, fshini ose 'të shtuar të reja' button!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Nuk fusha familjare me porosi janë shtuar ende"
 
@@ -869,10 +853,6 @@ msgstr "Ju duhet të shkruani një emër"
 #: 
 msgid "That field name already exists."
 msgstr "Se emri fushë tashmë ekziston."
-
-#: 
-msgid "Add New Field"
-msgstr "Shto fushë të re"
 
 #: 
 msgid "Family Editor"
@@ -1680,10 +1660,6 @@ msgid "Family Name"
 msgstr "Emri Family"
 
 #: 
-msgid "Note Delete Confirmation"
-msgstr "Shënim Fshije Konfirmimi"
-
-#: 
 msgid "Please confirm deletion of this note"
 msgstr "Ju lutem konfirmoni fshirjen e këtij shënim"
 
@@ -1716,11 +1692,6 @@ msgid "Option"
 msgstr "Alternativë"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Warning: Heqja do të rivendosur të gjitha detyrat për të gjithë personat me të detyrës!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Error: Duplicate"
 
@@ -1743,10 +1714,6 @@ msgstr "Dalje"
 #: 
 msgid "Add New"
 msgstr "Shto të re"
-
-#: 
-msgid "Error: A "
-msgstr "Gabim: Një "
 
 #: 
 msgid " by that name already exists."
@@ -1787,10 +1754,6 @@ msgstr "Zgjidh"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Person Custom Fields Editor"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Warning: Duke fshirjes këtë fushë, ju irrevokably do të humbasin të gjitha të dhënat person i caktuar për këtë fushë!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -1977,14 +1940,6 @@ msgid "Assigning"
 msgstr "Caktimi"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Pronës Konfirmimi Delete"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "Ju lutem konfirmoni fshirjen e këtë pronë"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Fshirja kjo pronë do të fshijë të gjitha detyrat e kësaj Pronave për çdo Popullit, Familjen, apo dokumentet e grupit."
 
@@ -2029,10 +1984,6 @@ msgstr "Tipari (property)"
 #: 
 msgid "Prompt"
 msgstr "I shpejtë"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Tipi i Pronës Konfirmimi Delete"
 
 #: 
 msgid "Warning"
@@ -2175,10 +2126,6 @@ msgstr "Zotimi Reminder Raporti"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Të gjitha donacionet nga kjo familje janë zhvendosur në një familje tjetër."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Familja Fshije Konfirmimi"
 
 #: 
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
@@ -2378,36 +2325,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Ju lutem konfirmoni ricaktim fjalëkalimi për këtë përdorues"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Volunteer Opportunity Fshije Konfirmimi"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Ka njerëz të caktuar në këtë Vullnetare Opportunity."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Volunteer Opportunity do të pacaktuara për popullin e mëposhtme."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Po, fshini këtë Vullnetare Opportunity"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Volunteer Opportunity Editor"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nuk ka mundësi vullnetare janë shtuar ende"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "SHËNIM: ADD, Delete, dhe Renditja ndryshimet janë të menjëhershme. Ndryshimet Emri ose Përshkrimi fusha duhet të ruhen duke shtypur 'Ruaj ndryshimet'"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Shto mundësi e re"
 
 #: 
 msgid "Why did you come to the church?"
@@ -2485,10 +2408,6 @@ msgstr "Të dhënat e zgjedhur është larguar me sukses nga Cart."
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Shporta juaj ka qenë i zbrazur me sukses"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "pika (s) shtuar në karrocë."
 
 #: 
 msgid "Select Fiscal Year"
