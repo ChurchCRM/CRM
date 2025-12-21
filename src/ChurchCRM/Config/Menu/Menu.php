@@ -72,11 +72,11 @@ class Menu
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'v2/family', true, 'fa-home'));
 
         if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Classifications Manager'), 'OptionManager.php?mode=classes', $isAdmin, 'fa-tags'));
+            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);   
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'OptionManager.php?mode=famroles', $isAdmin, 'fa-id-badge'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), 'PropertyList.php?Type=f', $isAdmin, 'fa-th-list'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Custom Fields'), 'FamilyCustomFieldsEditor.php', $isAdmin, 'fa-sliders-h'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Classifications'), 'OptionManager.php?mode=classes', $isAdmin, 'fa-tags'));
             $adminMenu->addSubMenu(new MenuItem(gettext('People Properties'), 'PropertyList.php?Type=p', $isAdmin, 'fa-list-alt'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin, 'fa-sliders-h'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin, 'fa-hands-helping'));
