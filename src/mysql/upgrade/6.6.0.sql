@@ -27,3 +27,11 @@ WHERE cfg_name = 'sFont'
 DELETE FROM config_cfg
 WHERE cfg_name = 'sCSVExportCharset'
 	OR cfg_id = 108;
+
+-- Also remove CSV export delimiter setting (not used; CsvExporter hardcodes RFC 4180 comma)
+--   cfg_id: 107
+--   cfg_name: sCSVExportDelimiter
+--   Description: Unused setting; RFC 4180 standard requires comma delimiter
+DELETE FROM config_cfg
+WHERE cfg_name = 'sCSVExportDelimiter'
+	OR cfg_id = 107;
