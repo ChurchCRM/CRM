@@ -97,3 +97,11 @@ WHERE qry_ID = 4
 DELETE FROM query_qry
 WHERE qry_ID = 7
 	OR qry_Name = 'Person by Role and Gender';
+
+-- Also remove the "Family Member Count" query (count available in Family list page)
+--   qry_ID: 3
+--   qry_Name: Family Member Count
+--   Description: Family list page displays member count for each family directly
+DELETE FROM query_qry
+WHERE qry_ID = 3
+	OR qry_Name = 'Family Member Count';
