@@ -294,21 +294,49 @@ if ($embedded) {
     <div class="card-body">
         <form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
-            <div class="alert alert-warning"><?= gettext('Warning: Removing will reset all assignments for all people with the assignment!') ?></div>
+            <div class="alert alert-warning" role="alert">
+                <i class="fa-solid fa-exclamation-triangle"></i>
+                <strong><?= gettext('Warning:') ?></strong>
+                <?= gettext('Removing will reset all assignments for all people with the assignment!') ?>
+            </div>
 
             <?php
 
             if ($bErrorFlag) {
-                echo '<span class="MediumLargeText text-danger">';
-                if ($bDuplicateFound) {
-                    echo '<br>' . gettext('Error: Duplicate') . ' ' . $adjplusnameplural . ' ' . gettext('are not allowed.');
-                }
-                echo '<br>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span><br><br>';
+                ?>
+                <div class="alert alert-danger" role="alert">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <strong><?= gettext('Error:') ?></strong>
+                    <?php
+                    if ($bDuplicateFound) {
+                        echo gettext('Error: Duplicate') . ' ' . $adjplusnameplural . ' ' . gettext('are not allowed.');
+                    } else {
+                        echo gettext('Invalid fields or selections. Changes not saved! Please correct and try again!');
+                    }
+                    ?>
+                </div>
+                <?php
             }
             ?>
 
-            <br>
-            <table cellpadding="3" width="30%" class="mx-auto">
+            <div class="table-responsive">
+                <table class="table table-hover table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th><?= gettext('Order') ?></th>
+                            <th class="text-center"><?= gettext('Actions') ?></th>
+                            <th><?= gettext('Name') ?></th>
+                            <?php
+                            if ($mode == 'grproles') {
+                                echo '<th>' . gettext('Default') . '</th>';
+                            }
+                            if ($mode === 'classes') {
+                                echo '<th>' . gettext('Inactive') . '</th>';
+                            }
+                            ?>
+                        </tr>
+                    </thead>
+                    <tbody>
 
                 <?php
                 $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
@@ -320,95 +348,114 @@ if ($embedded) {
 
                 for ($row = 1; $row <= $numRows; $row++) {
                 ?>
-                    <tr class="text-center">
-                        <td class="LabelColumn">
-                            <b>
+                        <tr>
+                            <td>
+                                <span class="badge badge-secondary">
+                                    <?php
+                                    if ($mode == 'grproles' && $aIDs[$row] == $iDefaultRole) {
+                                        echo '<span class="badge badge-info">' . gettext('Default') . '</span> ';
+                                    }
+                                    echo $row;
+                                    ?>
+                                </span>
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <?php
+                                    if ($row != 1) {
+                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
+                                    }
+                                    if ($row < $numRows) {
+                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
+                                    }
+                                    if ($numRows > 0) {
+                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=delete" class="btn btn-danger" title="' . gettext('Delete') . '"><i class="fa-solid fa-trash"></i></a>';
+                                    }
+                                    ?>
+                                </div>
+                            </td>
+                            <td>
+                                <input class="form-control form-control-sm" type="text" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" maxlength="40">
                                 <?php
-                                if ($mode == 'grproles' && $aIDs[$row] == $iDefaultRole) {
-                                    echo gettext('Default') . ' ';
-                                }
-                                echo $row; ?>
-                            </b>
-                        </td>
 
-                        <td class="TextColumn text-nowrap">
-
+                                if ($aNameErrors[$row] == 1) {
+                                    echo '<small class="text-danger d-block mt-1">' . gettext('You must enter a name') . '</small>';
+                                } elseif ($aNameErrors[$row] == 2) {
+                                    echo '<small class="text-danger d-block mt-1">' . gettext('Duplicate name found.') . '</small>';
+                                } ?>
+                            </td>
                             <?php
-                            if ($row != 1) {
-                                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=up"><i class="fa-solid fa-arrow-up"></i></a>';
+                            if ($mode == 'grproles') {
+                                echo '<td><button type="button" class="btn btn-sm btn-outline-primary" onclick="document.location=\'OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=makedefault\';">' . gettext('Make Default') . '</button></td>';
                             }
-                            if ($row < $numRows) {
-                                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=down"><i class="fa-solid fa-arrow-down"></i></a>';
+                            if ($mode === 'classes') {
+                                echo '<td>';
+                                $check = in_array($aIDs[$row], $aInactiveClasses) ? "checked" : "";
+                                echo '<input id="inactive' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '" type="checkbox" onclick="$.get(\'OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=Inactive\')" ' . $check . '> ';
+                                echo gettext('Inactive');
+                                echo '</td>';
                             }
-                            if ($numRows > 0) {
-                                echo "<a href=\"OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . '&Action=delete"><i class="fa-solid fa-times"></i></a>';
-                            } ?>
+                            ?>
+                        </tr>
+                    <?php
+                    } ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex gap-2 mt-3 justify-content-center">
+                <button type="submit" class="btn btn-primary" name="SaveChanges">
+                    <i class="fa-solid fa-save"></i>
+                    <?= gettext('Save Changes') ?>
+                </button>
 
-                        </td>
-                        <td class="TextColumn">
-                            <span class="SmallText">
-                                <input class="input-small" type="text" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" size="30" maxlength="40">
-                            </span>
-                            <?php
-
-                            if ($aNameErrors[$row] == 1) {
-                                echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
-                            } elseif ($aNameErrors[$row] == 2) {
-                                echo '<span class="text-danger"><BR>' . gettext('Duplicate name found.') . ' </span>';
-                            } ?>
-                        </td>
-                        <?php
-                        if ($mode == 'grproles') {
-                            echo '<td class="TextColumn"><input class="form-control input-small" type="button" class="btn btn-secondary" value="' . gettext('Make Default') . "\" Name=\"default\" onclick=\"javascript:document.location='OptionManagerRowOps.php?mode=" . $mode . '&ListID=' . $listID . '&ID=' . $aIDs[$row] . "&Action=makedefault';\" ></td>";
-                        }
-                        if ($mode === 'classes') {
-                            echo "<td>";
-                            $check = in_array($aIDs[$row], $aInactiveClasses) ? "checked" : "";
-                            echo "<input id='inactive$aIDs[$row]' type=\"checkbox\" onclick=\"$.get('OptionManagerRowOps.php?mode=$mode&Order=$aSeqs[$row]&ListID=$listID&ID=" . $aIDs[$row] . "&Action=Inactive')\" $check >";
-                            echo gettext("Inactive");
-                            echo "</td>";
-                        } ?>
-
-                    </tr>
+                <?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
+                ?>
+                    <button type="button" class="btn btn-secondary" name="Exit" onclick="javascript:window.close();">
+                        <i class="fa-solid fa-ban"></i>
+                        <?= gettext('Exit') ?>
+                    </button>
+                <?php
+                } elseif ($mode != 'grproles') {
+                ?>
+                    <button type="button" class="btn btn-secondary" name="Exit" onclick="javascript:document.location='v2/dashboard';">
+                        <i class="fa-solid fa-ban"></i>
+                        <?= gettext('Exit') ?>
+                    </button>
                 <?php
                 } ?>
-
-            </table>
-            <br />
-            <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
-
-            <?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
-            ?>
-                <input type="button" class="btn btn-secondary" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:window.close();">
-            <?php
-            } elseif ($mode != 'grproles') {
-            ?>
-                <input type="button" class="btn btn-secondary" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='<?php
-                                                                                                                                                    echo 'v2/dashboard'; ?>';">
-            <?php
-            } ?>
+            </div>
     </div>
 </div>
 
-<div class="card card-primary">
+<div class="card mt-4">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">
+            <i class="fa-solid fa-plus"></i>
+            <?= gettext('Add New') . ' ' . $adjplusname ?>
+        </h5>
+    </div>
     <div class="card-body">
-        <?= gettext('Name for New') . ' ' . $noun ?>:&nbsp;
-        <span class="SmallText">
-            <input class="form-control input-small" type="text" name="newFieldName" size="30" maxlength="40">
-        </span>
-        <p> </p>
-        <input type="submit" class="btn btn-secondary" value="<?= gettext('Add New') . ' ' . $adjplusname ?>" Name="AddField">
-        <?php
-        if ($iNewNameError > 0) {
-            echo '<div><span class="text-danger"><BR>';
-            if ($iNewNameError == 1) {
-                echo gettext('Error: You must enter a name');
-            } else {
-                echo gettext('Error: A ') . $noun . gettext(' by that name already exists.');
-            }
-            echo '</span></div>';
-        }
-        ?>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="newFieldName" class="form-label"><?= gettext('Name for New') . ' ' . $noun ?>:</label>
+                <input class="form-control" type="text" id="newFieldName" name="newFieldName" maxlength="40">
+                <?php
+                if ($iNewNameError > 0) {
+                    echo '<div class="alert alert-danger mt-2" role="alert">';
+                    if ($iNewNameError == 1) {
+                        echo gettext('Error: You must enter a name');
+                    } else {
+                        echo gettext('Error: A ') . $noun . gettext(' by that name already exists.');
+                    }
+                    echo '</div>';
+                }
+                ?>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success mt-3" name="AddField">
+            <i class="fa-solid fa-plus"></i>
+            <?= gettext('Add New') . ' ' . $adjplusname ?>
+        </button>
         </center>
         </form>
     </div>

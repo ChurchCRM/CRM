@@ -37,69 +37,94 @@ $rsProperties = RunQuery($sSQL);
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card card-body">
-
-<?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    //Display the new property link
-    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyEditor.php?Type=" . $sType . '">' . gettext('Add a New') . ' ' . $sTypeName . ' ' . gettext('Property') . '</a></p>';
-}
-
-// Start the table
-echo "<table class='table'>";
-echo '<tr>';
-echo '<th class="align-top">' . gettext('Name') . '</th>';
-echo '<th class="align-top">' . gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this Property...') . '</b></th>';
-echo '<th class="align-top">' . gettext('Prompt') . '</th>';
-if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    echo '<td class="align-top"><b>' . gettext('Edit') . '</b></td>';
-    echo '<td class="align-top"><b>' . gettext('Delete') . '</b></td>';
-}
-echo '</tr>';
-
-echo '<tr><td>&nbsp;</td></tr>';
-
-// Initialize the row shading
-$sRowClass = 'RowColorA';
-$iPreviousPropertyType = -1;
-$sBlankLine = '';
-
-// Loop through the records
-while ($aRow = mysqli_fetch_array($rsProperties)) {
-    $pro_Prompt = '';
-    $pro_Description = '';
-    extract($aRow);
-
-    // Did the Type change?
-    if ($iPreviousPropertyType != $prt_ID) {
-        //Write the header row
-        echo $sBlankLine;
-        echo '<tr class="RowColorA"><td colspan="5"><b>' . $prt_Name . '</b></td></tr>';
-        $sBlankLine = '<tr><td>&nbsp;</td></tr>';
-
-        //Reset the row color
-        $sRowClass = 'RowColorA';
+<div class="container-fluid mt-4">
+    <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+        //Display the new property link
+        echo '<div class="mb-3"><a class="btn btn-primary" href="PropertyEditor.php?Type=' . InputUtils::escapeAttribute($sType) . '"><i class="fa-solid fa-plus"></i> ' . gettext('Add a New') . ' ' . $sTypeName . ' ' . gettext('Property') . '</a></div>';
     }
+    ?>
 
-    $sRowClass = AlternateRowStyle($sRowClass);
+    <div class="table-responsive">
+        <table class="table table-hover table-sm">
+            <thead class="table-light">
+                <tr>
+                    <th><?= gettext('Name') ?></th>
+                    <th><?= gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this Property...') ?></th>
+                    <th><?= gettext('Prompt') ?></th>
+                    <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+                        echo '<th class="text-center">' . gettext('Actions') . '</th>';
+                    }
+                    ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // Initialize the row shading
+                $iPreviousPropertyType = -1;
+                $bIsFirstPropertyType = true;
 
-    echo '<tr class="' . $sRowClass . '">';
-    echo '<td class="align-top">' . $pro_Name . '&nbsp;</td>';
-    echo '<td class="align-top">';
-    if (strlen($pro_Description) > 0) {
-        echo '...' . $pro_Description;
-    }
-    echo '&nbsp;</td>';
-    echo '<td class="align-top">' . $pro_Prompt . '&nbsp;</td>';
-    if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-        echo "<td class=\"align-top\"><a class='btn btn-primary' href=\"PropertyEditor.php?PropertyID=" . $pro_ID . '&Type=' . $sType . '">' . gettext('Edit') . '</a></td>';
-        echo "<td class=\"align-top\"><a class='btn btn-danger' href=\"PropertyDelete.php?PropertyID=" . $pro_ID . '&Type=' . $sType . '">' . gettext('Delete') . '</a></td>';
-    }
-    echo '</tr>';
+                // Loop through the records
+                while ($aRow = mysqli_fetch_array($rsProperties)) {
+                    $pro_Prompt = '';
+                    $pro_Description = '';
+                    extract($aRow);
 
-    // Store the PropertyType
-    $iPreviousPropertyType = $prt_ID;
-}
+                    // Did the Type change?
+                    if ($iPreviousPropertyType != $prt_ID) {
+                        //Write the header row
+                        if (!$bIsFirstPropertyType) {
+                            echo '</tbody></table></div>';
+                        }
+                        $bIsFirstPropertyType = false;
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="alert alert-info mt-3 mb-2">
+                    <strong><?= InputUtils::escapeHTML($prt_Name) ?></strong>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-sm">
+                        <thead class="table-light">
+                            <tr>
+                                <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this Property...') ?></th>
+                                <th><?= gettext('Prompt') ?></th>
+                                <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+                                    echo '<th class="text-center">' . gettext('Actions') . '</th>';
+                                }
+                                ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                    }
 
-echo '</table></div>';
+                    echo '<tr>';
+                    echo '<td>' . InputUtils::escapeHTML($pro_Name) . '</td>';
+                    echo '<td>';
+                    if (strlen($pro_Description) > 0) {
+                        echo '...' . InputUtils::escapeHTML($pro_Description);
+                    }
+                    echo '</td>';
+                    echo '<td>' . InputUtils::escapeHTML($pro_Prompt) . '</td>';
+                    if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+                        echo '<td class="text-center"><div class="btn-group btn-group-sm" role="group">';
+                        echo '<a class="btn btn-primary" href="PropertyEditor.php?PropertyID=' . InputUtils::escapeAttribute($pro_ID) . '&Type=' . InputUtils::escapeAttribute($sType) . '" title="' . gettext('Edit') . '"><i class="fa-solid fa-edit"></i></a>';
+                        echo '<a class="btn btn-danger" href="PropertyDelete.php?PropertyID=' . InputUtils::escapeAttribute($pro_ID) . '&Type=' . InputUtils::escapeAttribute($sType) . '" title="' . gettext('Delete') . '"><i class="fa-solid fa-trash"></i></a>';
+                        echo '</div></td>';
+                    }
+                    echo '</tr>';
 
+                    // Store the PropertyType
+                    $iPreviousPropertyType = $prt_ID;
+                }
+
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php
 require_once __DIR__ . '/Include/Footer.php';
