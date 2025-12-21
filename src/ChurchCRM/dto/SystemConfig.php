@@ -160,7 +160,7 @@ class   SystemConfig
             'sChurchZip'                           => new ConfigItem(1007, 'sChurchZip', 'text', '', gettext('Church Zip')),
             'sChurchPhone'                         => new ConfigItem(1008, 'sChurchPhone', 'text', '', gettext('Church Phone')),
             'sChurchEmail'                         => new ConfigItem(1009, 'sChurchEmail', 'text', '', gettext('Church Email')),
-            'sHomeAreaCode'                        => new ConfigItem(1010, 'sHomeAreaCode', 'text', '', gettext('Home area code of the church')),
+            
             'sTaxReport1'                          => new ConfigItem(1011, 'sTaxReport1', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.')),
             'sTaxReport2'                          => new ConfigItem(1012, 'sTaxReport2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.')),
             'sTaxReport3'                          => new ConfigItem(1013, 'sTaxReport3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.')),
@@ -264,7 +264,7 @@ class   SystemConfig
     private static function buildCategories(): array
     {
         return [
-            gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sHomeAreaCode', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite'],
+            gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite'],
             gettext('Email Setup')        => ['sSMTPHost', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'iSMTPTimeout', 'sToEmailAddress', 'bPHPMailerAutoTLS', 'sPHPMailerSMTPSecure'],
             gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'bEnableSelfRegistration', 'iPersonNameStyle', 'iPersonInitialStyle', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification'],
             gettext('Enabled Features')   => ['bEnabledFinance', 'bEnabledSundaySchool', 'bEnabledEvents', 'bEnabledFundraiser', 'bEnabledEmail', 'bEnabledMenuLinks', 'bEnableExternalCalendarAPI'],

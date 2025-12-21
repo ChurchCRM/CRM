@@ -21,25 +21,6 @@ class ChurchInfoReport extends FPDF
 
     public string $paperFormat = 'Letter';
 
-    public function stripPhone($phone)
-    {
-        if (mb_substr($phone, 0, 3) == SystemConfig::getValue('sHomeAreaCode')) {
-            $phone = mb_substr($phone, 3, strlen($phone) - 3);
-        }
-        if (mb_substr($phone, 0, 5) == ('(' . SystemConfig::getValue('sHomeAreaCode') . ')')) {
-            $phone = mb_substr($phone, 5, strlen($phone) - 5);
-        }
-        if (mb_substr($phone, 0, 1) == '-') {
-            $phone = mb_substr($phone, 1, strlen($phone) - 1);
-        }
-        if (strlen($phone) === 7) {
-            // Fix the missing -
-            $phone = mb_substr($phone, 0, 3) . '-' . mb_substr($phone, 3, 4);
-        }
-
-        return $phone;
-    }
-
     public function printRightJustified($x, $y, $str): void
     {
         $strconv = iconv('UTF-8', 'ISO-8859-1', $str);

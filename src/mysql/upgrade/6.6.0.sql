@@ -44,3 +44,10 @@ WHERE cfg_name = 'sChurchFB'
 	OR cfg_id = 2014
 	OR cfg_name = 'sChurchTwitter'
 	OR cfg_id = 2015;
+
+-- Also remove home area code setting (no longer used; phones displayed as-is)
+--   cfg_id: 1010
+--   cfg_name: sHomeAreaCode
+DELETE FROM config_cfg
+WHERE cfg_name = 'sHomeAreaCode'
+	OR cfg_id = 1010;
