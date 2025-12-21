@@ -141,11 +141,11 @@ require_once __DIR__ . '/Include/Header.php';
                                 while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
                                     extract($aRow);
 
-                                    echo '<option value="' . htmlspecialchars($prt_ID, ENT_QUOTES, 'UTF-8') . '"';
+                                    echo '<option value="' . InputUtils::escapeAttribute($prt_ID) . '"';
                                     if ($iType == $prt_ID) {
                                         echo ' selected';
                                     }
-                                    echo '>' . htmlspecialchars($prt_Name, ENT_QUOTES, 'UTF-8') . '</option>';
+                                    echo '>' . InputUtils::escapeHTML($prt_Name) . '</option>';
                                 }
                                 ?>
                             </select>
@@ -157,7 +157,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <?php echo $sNameError ?>
                         </div>
                         <div class="mb-3">
-                            <label for="Description" class="form-label"><?= gettext('A') ?> <?= htmlspecialchars($sTypeName, ENT_QUOTES, 'UTF-8') ?> <?= gettext('with this property...') ?>:</label>
+                            <label for="Description" class="form-label"><?= gettext('A') ?> <?= InputUtils::escapeHTML($sTypeName) ?> <?= gettext('with this property...') ?>:</label>
                             <textarea class="form-control" name="Description" rows="3"><?= InputUtils::escapeAttribute($sDescription) ?></textarea>
                         </div>
                         <div class="mb-3">
@@ -165,8 +165,8 @@ require_once __DIR__ . '/Include/Header.php';
                             <input class="form-control" type="text" name="Prompt" value="<?= InputUtils::escapeAttribute($sPrompt) ?>" maxlength="50">
                             <small class="form-text text-muted d-block mt-1"><?= gettext('Entering a Prompt value will allow the association of a free-form value.') ?></small>
                         </div>
-                        <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-success" name="Submit">
+                        <div class="d-flex">
+                            <button type="submit" class="btn btn-success mr-2" name="Submit">
                                 <i class="fa-solid fa-save"></i>
                                 <?= gettext('Save') ?>
                             </button>

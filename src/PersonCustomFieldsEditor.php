@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -266,7 +267,31 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location.href = 'PersonCustomFieldsRowOps.php?Field=' + encodeURIComponent(fieldId) + '&Action=delete';
+                        // Submit deletion as a POST request with CSRF protection
+                        var form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = 'PersonCustomFieldsRowOps.php';
+
+                        var fieldInput = document.createElement('input');
+                        fieldInput.type = 'hidden';
+                        fieldInput.name = 'Field';
+                        fieldInput.value = fieldId;
+                        form.appendChild(fieldInput);
+
+                        var actionInput = document.createElement('input');
+                        actionInput.type = 'hidden';
+                        actionInput.name = 'Action';
+                        actionInput.value = 'delete';
+                        form.appendChild(actionInput);
+
+                        var csrfInput = document.createElement('input');
+                        csrfInput.type = 'hidden';
+                        csrfInput.name = 'csrf_token';
+                        csrfInput.value = <?= json_encode(CSRFUtils::generateToken('deletePersonCustomField')) ?>;
+                        form.appendChild(csrfInput);
+
+                        document.body.appendChild(form);
+                        form.submit();
                     }
                 }
             });
@@ -275,10 +300,10 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
         <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
         $(document).ready(function() {
-            window.CRM.notify({
-                message: <?= json_encode(gettext('Field deleted successfully')) ?>,
-                type: 'success'
-            });
+            window.CRM.notify(
+                <?= json_encode(gettext('Field deleted successfully')) ?>,
+                { type: 'success' }
+            );
         });
         <?php endif; ?>
     </script>
@@ -298,7 +323,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         <select id="newFieldType" name="newFieldType" class="form-control">
                             <?php
                             for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                                echo '<option value="' . htmlspecialchars($iOptionID, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($aPropTypes[$iOptionID], ENT_QUOTES, 'UTF-8') . '</option>';
+                                echo '<option value="' . InputUtils::escapeAttribute($iOptionID) . '">' . InputUtils::escapeHTML($aPropTypes[$iOptionID]) . '</option>';
                             }
                             ?>
                         </select>

@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -273,7 +274,31 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
             },
             callback: function(result) {
                 if (result) {
-                    window.location.href = 'FamilyCustomFieldsRowOps.php?Field=' + encodeURIComponent(fieldId) + '&Action=delete';
+                    // Submit deletion as a POST request with CSRF protection
+                    var form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = 'FamilyCustomFieldsRowOps.php';
+
+                    var fieldInput = document.createElement('input');
+                    fieldInput.type = 'hidden';
+                    fieldInput.name = 'Field';
+                    fieldInput.value = fieldId;
+                    form.appendChild(fieldInput);
+
+                    var actionInput = document.createElement('input');
+                    actionInput.type = 'hidden';
+                    actionInput.name = 'Action';
+                    actionInput.value = 'delete';
+                    form.appendChild(actionInput);
+
+                    var csrfInput = document.createElement('input');
+                    csrfInput.type = 'hidden';
+                    csrfInput.name = 'csrf_token';
+                    csrfInput.value = <?= json_encode(CSRFUtils::generateToken('deleteFamilyCustomField')) ?>;
+                    form.appendChild(csrfInput);
+
+                    document.body.appendChild(form);
+                    form.submit();
                 }
             }
         });
@@ -282,10 +307,10 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 
     <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
     $(document).ready(function() {
-        window.CRM.notify({
-            message: <?= json_encode(gettext('Field deleted successfully')) ?>,
-            type: 'success'
-        });
+        window.CRM.notify(
+            <?= json_encode(gettext('Field deleted successfully')) ?>,
+            { type: 'success' }
+        );
     });
     <?php endif; ?>
 </script>
@@ -305,7 +330,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                     <select id="newFieldType" name="newFieldType" class="form-control">
                         <?php
                         for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                            echo '<option value="' . htmlspecialchars($iOptionID, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($aPropTypes[$iOptionID], ENT_QUOTES, 'UTF-8') . '</option>';
+                            echo '<option value="' . InputUtils::escapeAttribute($iOptionID) . '">' . InputUtils::escapeHTML($aPropTypes[$iOptionID]) . '</option>';
                         }
                         ?>
                     </select>
@@ -438,7 +463,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                             echo GetSecurityList($aSecurityGrp, $row . 'FieldSec');
                         } ?>
                     </td>
-                    <td nowrap>
+                    <td class="text-nowrap">
                         <div class="btn-group btn-group-sm" role="group">
                             <?php
                             $fieldNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');

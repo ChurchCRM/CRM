@@ -56,8 +56,8 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
                     </div>
 
-                    <div class="d-flex flex-column gap-2">
-                        <a href="PropertyDelete.php?Confirmed=Yes&PropertyID=<?= InputUtils::escapeAttribute($iPropertyID) ?>&Type=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-danger">
+                    <div class="d-flex flex-column">
+                        <a href="PropertyDelete.php?Confirmed=Yes&PropertyID=<?= InputUtils::escapeAttribute($iPropertyID) ?>&Type=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-danger mb-2">
                             <i class="fa-solid fa-trash"></i>
                             <?= gettext('Yes, delete this record') ?>
                         </a>

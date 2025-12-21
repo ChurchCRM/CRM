@@ -5,17 +5,19 @@ require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-// Get the Order, ID, Mode, and Action from the querystring
-if (array_key_exists('Order', $_GET)) {
-    $iOrder = InputUtils::legacyFilterInput($_GET['Order'], 'int');
+// Get the Order, ID, Mode, and Action from the querystring or POST
+if (array_key_exists('Order', $_GET) || array_key_exists('Order', $_POST)) {
+    $iOrder = InputUtils::legacyFilterInput($_GET['Order'] ?? $_POST['Order'] ?? null, 'int');
 }  // the option Sequence
-$sAction = $_GET['Action'];
-$iID = InputUtils::legacyFilterInput($_GET['ID'], 'int');  // the option ID
-$mode = trim($_GET['mode']);
+$sAction = $_GET['Action'] ?? $_POST['Action'] ?? '';
+$iID = InputUtils::legacyFilterInput($_GET['ID'] ?? $_POST['ID'] ?? null, 'int');  // the option ID
+$mode = trim($_GET['mode'] ?? $_POST['mode'] ?? '');
+$listID = $_GET['ListID'] ?? $_POST['ListID'] ?? null;
 
 // Check security for the mode selected.
 switch ($mode) {
@@ -95,6 +97,14 @@ switch ($sAction) {
 
         // Delete a field from the form
     case 'delete':
+        // Verify CSRF token for POST requests
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!CSRFUtils::verifyRequest($_POST, 'deleteOptionManagerItem')) {
+                http_response_code(403);
+                die(gettext('Invalid CSRF token'));
+            }
+        }
+        
         $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
         $rsPropList = RunQuery($sSQL);
         $numRows = mysqli_num_rows($rsPropList);
