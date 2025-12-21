@@ -29,11 +29,13 @@ class Menu
     {
         $currentUser = AuthenticationManager::getCurrentUser();
         $isAdmin = $currentUser->isAdmin();
+        $isMenuOptions = $currentUser->isMenuOptionsEnabled();
+        $isManageGroups = $currentUser->isManageGroupsEnabled();
         $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-tachometer-alt'),
             'Calendar'     => self::getCalendarMenu(),
-            'People'       => self::getPeopleMenu($isAdmin, $currentUser->isAddRecordsEnabled()),
-            'Groups'       => self::getGroupMenu($isAdmin),
+            'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
+            'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu(),
             'Email'        => new MenuItem(gettext('Email'), 'v2/email/dashboard', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope'),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled()),
@@ -62,7 +64,7 @@ class Menu
         return $calendarMenu;
     }
 
-    private static function getPeopleMenu(bool $isAdmin, bool $isAddRecordsEnabled): MenuItem
+    private static function getPeopleMenu(bool $isAdmin, bool $isMenuOptions, bool $isAddRecordsEnabled): MenuItem
     {
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-user');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'PeopleDashboard.php', true, 'fa-tachometer-alt'));
@@ -71,13 +73,13 @@ class Menu
         $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-user-friends'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'v2/family', true, 'fa-home'));
 
-        if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Classifications Manager'), 'OptionManager.php?mode=classes', $isAdmin, 'fa-tags'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'OptionManager.php?mode=famroles', $isAdmin, 'fa-id-badge'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), 'PropertyList.php?Type=f', $isAdmin, 'fa-th-list'));
+        if ($isAdmin || $isMenuOptions) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Family Roles'), 'OptionManager.php?mode=famroles', $isMenuOptions, 'fa-id-badge'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Family Properties'), 'PropertyList.php?Type=f', $isMenuOptions, 'fa-th-list'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Family Custom Fields'), 'FamilyCustomFieldsEditor.php', $isAdmin, 'fa-sliders-h'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('People Properties'), 'PropertyList.php?Type=p', $isAdmin, 'fa-list-alt'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Person Classifications'), 'OptionManager.php?mode=classes', $isMenuOptions, 'fa-tags'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Person Properties'), 'PropertyList.php?Type=p', $isMenuOptions, 'fa-list-alt'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin, 'fa-sliders-h'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin, 'fa-hands-helping'));
     
@@ -87,7 +89,7 @@ class Menu
         return $peopleMenu;
     }
 
-    private static function getGroupMenu(bool $isAdmin): MenuItem
+    private static function getGroupMenu(bool $isAdmin, bool $isMenuOptions, bool $isManageGroups): MenuItem
     {
         $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
         $groupMenu->addSubMenu(new MenuItem(gettext('List Groups'), 'GroupList.php', true, 'fa-list'));
@@ -139,10 +141,11 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
-        if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isAdmin, 'fa-th-list'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'OptionManager.php?mode=grptypes', $isAdmin, 'fa-tags'));
+        $canSeeGroupAdmin = $isAdmin || $isMenuOptions || $isManageGroups;
+        if ($canSeeGroupAdmin) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-th-list'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'OptionManager.php?mode=grptypes', true, 'fa-tags'));
 
             $groupMenu->addSubMenu($adminMenu);
         }
