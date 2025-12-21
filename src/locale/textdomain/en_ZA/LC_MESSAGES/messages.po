@@ -51,10 +51,6 @@ msgid "Personal Work/Other Email"
 msgstr "Personal Work / Other Email"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Warning:  By deleting this field, you will irrevocably lose all family data assigned for this field!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "No custom family fields have been added yet"
 
@@ -97,10 +93,6 @@ msgstr "Show Neighbours"
 #: 
 msgid "GroupRole"
 msgstr "Group Role"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Warning:  By deleting this field, you will irrevocably lose all person data assigned for this field!"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -175,7 +167,8 @@ msgid "Total $"
 msgstr "Total R"
 
 #: 
-msgid "with this property.."
+#, fuzzy
+msgid "with this property..."
 msgstr "with this property..."
 
 #: 

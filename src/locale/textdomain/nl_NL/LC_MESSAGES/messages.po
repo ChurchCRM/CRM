@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "OF"
 
 #: 
-msgid "Add New Event"
-msgstr "Activiteit toevoegen"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Uw werkbestand is leeg."
 
@@ -757,10 +753,6 @@ msgid "Save Changes"
 msgstr "Wijziging opslaan"
 
 #: 
-msgid "Add New Fund"
-msgstr "Nieuw fonds"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Activiteiten"
 
@@ -911,14 +903,6 @@ msgid "Default Option"
 msgstr "Standaard optie"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Waarschuwing: Door het verwijderen van dit veld, wordt alle hieraan gekoppelde  gezinsgegevens vernietigd!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Waarschuwing: Pijltjes en delete toetsen worden meteen toegepast. Veld naam wijzigingen zullen verdwijnen als u niet 'Opslaat' voor het gebruik van een van deze toetsen!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Aanpasbare persoons-velden zijn nog niet toegevoegd"
 
@@ -949,10 +933,6 @@ msgstr "U moet een naam invoeren"
 #: 
 msgid "That field name already exists."
 msgstr "De naam van dit veld bestaat al."
-
-#: 
-msgid "Add New Field"
-msgstr "Nieuw veld toevoegen"
 
 #: 
 msgid "Family Editor"
@@ -1081,10 +1061,6 @@ msgstr "Aangemaakt"
 #: 
 msgid "Envelope Number"
 msgstr "Envelop Nummer"
-
-#: 
-msgid "Add New Member"
-msgstr "Nieuw lid toevoegen"
 
 #: 
 msgid "Upload Photo"
@@ -1616,16 +1592,8 @@ msgid "New Role"
 msgstr "Nieuwe Rol"
 
 #: 
-msgid "Add New Role"
-msgstr "Rol toevoegen"
-
-#: 
 msgid "Group Listing"
 msgstr "Groepen"
-
-#: 
-msgid "Add New Group"
-msgstr "Groep toevoegen"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1906,10 +1874,6 @@ msgid "All People"
 msgstr "Alle personen"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Kenmerken beheer"
-
-#: 
 msgid "Email All"
 msgstr "Email allen"
 
@@ -1986,14 +1950,6 @@ msgid "Gender Demographics"
 msgstr "Overzicht per geslacht"
 
 #: 
-msgid "Men"
-msgstr "Mannen"
-
-#: 
-msgid "Women"
-msgstr "Vrouwen"
-
-#: 
 msgid "Boys"
 msgstr "Jongens "
 
@@ -2024,10 +1980,6 @@ msgstr "Bijgewerkte gezinnen"
 #: 
 msgid "Updated"
 msgstr "Bijgewerkt"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Let op Verwijder Bevestiging"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2062,11 +2014,6 @@ msgid "Option"
 msgstr "Optie"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Waarschuwing: Verwijdering betekent het resetten van de koppelingen van alle personen met deze koppeling!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Error: Duplicaat"
 
@@ -2089,10 +2036,6 @@ msgstr "Annuleer"
 #: 
 msgid "Add New"
 msgstr "Nieuw - "
-
-#: 
-msgid "Error: A "
-msgstr "Fout: Een "
 
 #: 
 msgid " by that name already exists."
@@ -2133,10 +2076,6 @@ msgstr "Selecteer "
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Aanpasbare persoonsvelden"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Waarschuwing: Door het verwijderen van dit veld, wordt alle persoons data hieraan gekoppeld vernietigd!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2363,14 +2302,6 @@ msgid "Assigning"
 msgstr "Toewijzing"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Bevestig verwijdering eigenschap"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "Bevestiging aub verwijderen van deze eigenschap"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Het verwijderen van deze eigenschap zal ook alle koppelingen van deze eigenschap verwijderen van alle personen, Familie, of Groepen."
 
@@ -2414,10 +2345,6 @@ msgstr "Eigenschap"
 #: 
 msgid "Prompt"
 msgstr "Aanwijzing"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Bevestiging verwijdering van het kenmerk soort"
 
 #: 
 msgid "Warning"
@@ -2567,10 +2494,6 @@ msgstr "Herstel de database"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Alle donaties van deze familie zijn verplaatst naar een andere familie."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Bevestiging van Verwijdering Familie"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2801,36 +2724,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Bevestig aub de reset van het wachtwoord van deze gebruiker"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Vrijwilligerswerk"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Er zijn personen gekoppeld aan dit vrijwilligerswerk:"
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Vrijwilliger Opportunity zal worden toegewezen voor de volgende personen."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Ja, verwijder dit vrijwilligerswerk"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Beheer vrijwilligerswerk"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Er zijn nog geen vrijwilligers mogelijkheden toegevoegd"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "OPMERKING: veranderingen zoals toevoegen, verwijderen en bestellen worden direct doorgevoerd. Wijzigingen  van velden zoals naam of  omschrijving worden opgeslagen door op \"Wijzigingen opslaan\" te klikken."
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Vrijwilligerswerk toevoegen"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2917,10 +2816,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Bedankt voor het registreren van uw installatie"
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "Het is gelukt om de pdf te e-mailen"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF succesvol verstuurd naar familieleden."
 
@@ -2955,10 +2850,6 @@ msgstr "Geselecteerde records zijn met success verwijderd uit het werkbestand."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "Uw werkbestand is met succes geleegd"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "Object(en) toegevoegd aan werkbestand."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3576,10 +3467,6 @@ msgid "Functions"
 msgstr "Functies"
 
 #: 
-msgid "Add New Class"
-msgstr "Catechisatiegroep toevoegen"
-
-#: 
 msgid "Export to CSV"
 msgstr "Exporteer naar CSV"
 
@@ -3781,20 +3668,13 @@ msgid "Groups"
 msgstr "Groepen"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Fout: registreer naam"
-
-#: 
 msgid "Total $"
 msgstr "Totaal"
 
 #: 
-msgid "with this property.."
-msgstr "Met dit kenmerk.."
-
-#: 
-msgid "with this Property..."
-msgstr "Met dit kenmerk.."
+#, fuzzy
+msgid "with this property..."
+msgstr "Met dit kenmerk...."
 
 #: 
 msgid "Church Email"
@@ -3952,10 +3832,6 @@ msgid "Church Phone"
 msgstr "Telefoonnummer kerk"
 
 #: 
-msgid "Home area code of the church"
-msgstr "streekcode kerk"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Kopie van tekst voor de bovenste regel van fiscale verslag. Data wordt toegevoegd aan het einde van deze lijn."
 
@@ -4098,10 +3974,6 @@ msgstr "Rapporten"
 #: 
 msgid "CSV Export Records"
 msgstr "CSV Export Records"
-
-#: 
-msgid "People Properties"
-msgstr "Persoonseigenschappen"
 
 #: 
 msgid "Family Properties"
@@ -4360,33 +4232,8 @@ msgstr "Pas aangepast veld aan deze waarde aan"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Aantal gezinsleden"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Personen per leeftijd"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Totaal op geslacht"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Persoon gesorteerd op rol en geslacht"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Persoon gesorteerd op eigenschap"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "Geavanceerd zoeken"
 
 #. Context: query_qry
 #: 
@@ -4398,16 +4245,6 @@ msgstr "Verjaardagen"
 msgid "Membership anniversaries"
 msgstr "Jubilea van leden\n"
 ""
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Selecteer de database gebruikers"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Selecteer alle leden"
 
 #. Context: query_qry
 #: 
@@ -4438,16 +4275,6 @@ msgstr "Toezeggingen gezinnen per fiscaal jaar"
 #: 
 msgid "CustomSearch"
 msgstr "Aangepaste zoekopdracht"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Retourneert elk gezin en het totale aantal mensen dat eraan is toegewezen."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Retourneert alle persoonsrecords met leeftijden tussen twee opgegeven leeftijden."
 
 #. Context: query_qry
 #: 
@@ -6343,10 +6170,6 @@ msgstr "Inclusief"
 #: 
 msgid "Exclude"
 msgstr "Exclusief"
-
-#: 
-msgid "No property assignments"
-msgstr "Geen eigendomstoewijzingen"
 
 #: 
 msgid "View Cart"

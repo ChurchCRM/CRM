@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "Atau"
 
 #: 
-msgid "Add New Event"
-msgstr "Tambah Event Baru"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Cart kosong !"
 
@@ -757,10 +753,6 @@ msgid "Save Changes"
 msgstr "Simpan perubahan"
 
 #: 
-msgid "Add New Fund"
-msgstr "Tambahkan dana baru"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Sunting Daftar kegiatan gereja"
 
@@ -911,14 +903,6 @@ msgid "Default Option"
 msgstr "Opsi standar"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Perhatian: Dengan menghapus field ini, anda akan menghilangkan segala informasi mengenai keluarga yang sudah ditulis pada field ini"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Perhatian: Tombol tanda panah dah hapus langsung memberikan dampak. Nama Field akan segera hilang apabila anda tidak \"simpan perubahan\" sebelum menggunakan tombol atas, bawah, hapus atau \"tambah baru!\""
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Tidak ada field keluarga khusus yang telah ditambahkan"
 
@@ -949,10 +933,6 @@ msgstr "Anda harus memasukan sebuah nama"
 #: 
 msgid "That field name already exists."
 msgstr "Nama field itu sudah digunakan"
-
-#: 
-msgid "Add New Field"
-msgstr "Tambahkan field baru"
 
 #: 
 msgid "Family Editor"
@@ -1081,10 +1061,6 @@ msgstr "Diciptakan"
 #: 
 msgid "Envelope Number"
 msgstr "No Surat"
-
-#: 
-msgid "Add New Member"
-msgstr "Tambahkan anggota baru"
 
 #: 
 msgid "Upload Photo"
@@ -1618,16 +1594,8 @@ msgid "New Role"
 msgstr "Peran baru"
 
 #: 
-msgid "Add New Role"
-msgstr "Tambahkan Peran Baru"
-
-#: 
 msgid "Group Listing"
 msgstr "Daftar Grup"
-
-#: 
-msgid "Add New Group"
-msgstr "Tambahkan Grup Baru"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1908,10 +1876,6 @@ msgid "All People"
 msgstr "Semua orang"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Manajer Klasifikasi"
-
-#: 
 msgid "Email All"
 msgstr "Email Semua"
 
@@ -1988,14 +1952,6 @@ msgid "Gender Demographics"
 msgstr "Demografi Gender"
 
 #: 
-msgid "Men"
-msgstr "Laki-laki"
-
-#: 
-msgid "Women"
-msgstr "Perempuan"
-
-#: 
 msgid "Boys"
 msgstr "Anak laki-laki"
 
@@ -2026,10 +1982,6 @@ msgstr "Keluarga yang Diperbarui"
 #: 
 msgid "Updated"
 msgstr "Diperbarui"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Catatan Hapus Konfirmasi"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2064,11 +2016,6 @@ msgid "Option"
 msgstr "Pilihan"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Peringatan: Menghapus akan mengatur ulang semua tugas untuk semua orang dengan tugas itu!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Kesalahan: Duplikat"
 
@@ -2091,10 +2038,6 @@ msgstr "Keluar"
 #: 
 msgid "Add New"
 msgstr "Tambah baru"
-
-#: 
-msgid "Error: A "
-msgstr "Kesalahan: A "
 
 #: 
 msgid " by that name already exists."
@@ -2135,10 +2078,6 @@ msgstr "Pilih"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Editor Bidang Orang Kustom"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Peringatan: Dengan menghapus bidang ini, Anda akan kehilangan semua data orang yang ditugaskan untuk bidang ini tanpa dapat dibatalkan!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2365,14 +2304,6 @@ msgid "Assigning"
 msgstr "Menugaskan"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Konfirmasi Penghapusan Properti"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "Harap konfirmasi penghapusan properti ini"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Menghapus Properti ini juga akan menghapus semua penugasan Properti ini ke catatan Orang, Keluarga, atau Grup."
 
@@ -2416,10 +2347,6 @@ msgstr "Properti"
 #: 
 msgid "Prompt"
 msgstr "Cepat"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Konfirmasi Jenis Properti Hapus"
 
 #: 
 msgid "Warning"
@@ -2570,10 +2497,6 @@ msgstr "Pulihkan Database"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Semua sumbangan dari keluarga ini telah dipindahkan ke keluarga lain."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Konfirmasi Penghapusan Keluarga"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2805,36 +2728,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Harap konfirmasi pengaturan ulang kata sandi pengguna ini"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Konfirmasi Penghapusan Peluang Relawan"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Ada orang yang ditugaskan untuk Peluang Relawan ini."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Peluang Sukarelawan akan ditugaskan untuk orang-orang berikut."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Ya, hapus Peluang Relawan ini"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Editor Peluang Sukarelawan"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Belum ada peluang sukarela yang ditambahkan"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "CATATAN: TAMBAH, Hapus, dan Pesan perubahan segera. Perubahan ke bidang Nama atau Gambar harus disimpan dengan menekan 'Simpan Perubahan'"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Tambahkan Peluang Baru"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2921,10 +2820,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Terima kasih telah mendaftarkan instalasi ChurchCRM Anda."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF berhasil diemail "
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF berhasil diemail ke anggota keluarga."
 
@@ -2959,10 +2854,6 @@ msgstr "Catatan yang dipilih berhasil dihapus dari Keranjang."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "Keranjang Anda telah berhasil dikosongkan"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "item ditambahkan ke Troli."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3577,10 +3468,6 @@ msgid "Functions"
 msgstr "Fungsi"
 
 #: 
-msgid "Add New Class"
-msgstr "Tambahkan Kelas Baru"
-
-#: 
 msgid "Export to CSV"
 msgstr "Ekspor ke CSV"
 
@@ -3782,20 +3669,13 @@ msgid "Groups"
 msgstr "Grup"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Kesalahan: Anda harus memasukkan nama"
-
-#: 
 msgid "Total $"
 msgstr "Total $"
 
 #: 
-msgid "with this property.."
-msgstr "dengan properti ini .."
-
-#: 
-msgid "with this Property..."
-msgstr "dengan Properti ini ..."
+#, fuzzy
+msgid "with this property..."
+msgstr "dengan properti ini ..."
 
 #: 
 msgid "Church Email"
@@ -3952,10 +3832,6 @@ msgid "Church Phone"
 msgstr "Telepon Gereja"
 
 #: 
-msgid "Home area code of the church"
-msgstr "Kode area  gereja"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage untuk baris atas laporan pajak. Tanggal akan ditambahkan ke akhir baris ini."
 
@@ -4098,10 +3974,6 @@ msgstr "Menu Permintaan"
 #: 
 msgid "CSV Export Records"
 msgstr "Catatan Ekspor CSV"
-
-#: 
-msgid "People Properties"
-msgstr "Properti Orang"
 
 #: 
 msgid "Family Properties"
@@ -4360,33 +4232,8 @@ msgstr "Cocokkan bidang khusus dengan nilai ini"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Hitungan Anggota Keluarga"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Orang berdasarkan Usia"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Total Berdasarkan Jenis Kelamin"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Orang berdasarkan Peran dan Gender"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Orang berdasarkan Properti"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "Pencarian Lanjutan"
 
 #. Context: query_qry
 #: 
@@ -4397,16 +4244,6 @@ msgstr "Ulang tahun"
 #: 
 msgid "Membership anniversaries"
 msgstr "Peringatan keanggotaan"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Pilih pengguna basis data"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Pilih semua anggota"
 
 #. Context: query_qry
 #: 
@@ -4437,16 +4274,6 @@ msgstr "Janji Keluarga menurut Tahun Anggaran"
 #: 
 msgid "CustomSearch"
 msgstr "CustomSearch"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Mengembalikan setiap keluarga dan jumlah total orang yang ditugaskan kepada mereka."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Mengembalikan catatan orang mana pun dengan usia antara dua usia yang diberikan."
 
 #. Context: query_qry
 #: 
@@ -6342,10 +6169,6 @@ msgstr "Termasuk"
 #: 
 msgid "Exclude"
 msgstr "Mengecualikan"
-
-#: 
-msgid "No property assignments"
-msgstr "Tidak ada tugas properti"
 
 #: 
 msgid "View Cart"

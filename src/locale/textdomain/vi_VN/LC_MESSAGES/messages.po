@@ -356,10 +356,6 @@ msgid "OR"
 msgstr "HOẶC"
 
 #: 
-msgid "Add New Event"
-msgstr "Thêm sự kiện mới"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Giỏ của bạn đang trống!"
 
@@ -771,10 +767,6 @@ msgid "Save Changes"
 msgstr "Lưu thay đổi"
 
 #: 
-msgid "Add New Fund"
-msgstr "Thêm quỹ mới"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Chỉnh sửa sự kiện Hội Thánh"
 
@@ -925,14 +917,6 @@ msgid "Default Option"
 msgstr "Tùy chọn mặc định"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Cảnh báo: Bằng cách xóa trường này, bạn sẽ mất tất cả dữ liệu gia đình được chỉ định cho trường này không thể thay đổi được!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Cảnh báo: Mũi tên và nút xóa sẽ có hiệu lực ngay lập tức. Thay đổi tên trường sẽ bị mất nếu bạn không nhấn nút \"Lưu thay đổi\" trước khi sử dụng lên, xuống, xóa hoặc thêm trường mới !"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Không có trường gia đình tùy chỉnh được thêm vào"
 
@@ -963,10 +947,6 @@ msgstr "Bạn cần nhập tên vào"
 #: 
 msgid "That field name already exists."
 msgstr "Tên trường này đã tồn tại"
-
-#: 
-msgid "Add New Field"
-msgstr "Thêm trường mới"
 
 #: 
 msgid "Family Editor"
@@ -1095,10 +1075,6 @@ msgstr "Đã tạo"
 #: 
 msgid "Envelope Number"
 msgstr "Số phong bì"
-
-#: 
-msgid "Add New Member"
-msgstr "Thêm thành viên mới"
 
 #: 
 msgid "Upload Photo"
@@ -1631,16 +1607,8 @@ msgid "New Role"
 msgstr "Vai trò mới"
 
 #: 
-msgid "Add New Role"
-msgstr "Thêm vai trò mới"
-
-#: 
 msgid "Group Listing"
 msgstr "Danh sách Ban/Mục vụ"
-
-#: 
-msgid "Add New Group"
-msgstr "Thêm Ban/Mục vụ mới"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1921,10 +1889,6 @@ msgid "All People"
 msgstr "Tất cả thành viên"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Quản lý phân loại"
-
-#: 
 msgid "Email All"
 msgstr "Email cho tất cả"
 
@@ -2001,14 +1965,6 @@ msgid "Gender Demographics"
 msgstr "Bản đồ các giới tính"
 
 #: 
-msgid "Men"
-msgstr "Đàn ông"
-
-#: 
-msgid "Women"
-msgstr "Phụ nữ"
-
-#: 
 msgid "Boys"
 msgstr "Con trai"
 
@@ -2039,10 +1995,6 @@ msgstr "Gia đình vừa cập nhật"
 #: 
 msgid "Updated"
 msgstr "Đã cập nhật"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Ghi chú Xóa xác nhận"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2077,11 +2029,6 @@ msgid "Option"
 msgstr "Tùy chọn"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Cảnh báo: Việc xóa bỏ các thuộc tính này sẽ xóa bỏ đi các thuộc tính đã được ghép cho các thành viên khác."
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Lỗi: trùng lặp"
 
@@ -2104,10 +2051,6 @@ msgstr "Thoát khỏi"
 #: 
 msgid "Add New"
 msgstr "Thêm mới"
-
-#: 
-msgid "Error: A "
-msgstr "Lỗi: "
 
 #: 
 msgid " by that name already exists."
@@ -2148,10 +2091,6 @@ msgstr "Lựa chọn"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Chỉnh sửa trường tùy chọn"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Cảnh báo: Bằng cách xóa trường này, bạn sẽ mất tất cả dữ liệu người được chỉ định cho trường này một cách không thể thay đổi được!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2378,14 +2317,6 @@ msgid "Assigning"
 msgstr "Phân công"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Xác nhận xóa thuộc tính"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "Vui lòng xác nhận xóa bỏ thuộc tính"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Xóa Thuộc tính này cũng sẽ xóa tất cả các nhiệm vụ của Thuộc tính này cho mọi bản ghi Người, Gia đình hoặc Nhóm."
 
@@ -2429,10 +2360,6 @@ msgstr "Thuộc tính"
 #: 
 msgid "Prompt"
 msgstr "Lời nhắc"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Xác nhận xóa bỏ loại thuộc tính"
 
 #: 
 msgid "Warning"
@@ -2583,10 +2510,6 @@ msgstr "Khôi phục dữ liệu"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Tất cả tiền dâng hiến của gia đình này đã được chuyển sang gia đình khác"
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Xác nhận Xóa gia đình"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2818,36 +2741,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Vui lòng xác nhận việc đặt lại mật khẩu của người dùng này"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Xác nhận xóa ra khỏi Mục vụ"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Họ là những thành viên đã được thêm vào Mục vụ"
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Người này sẽ bị gỡ khỏi Mục vụ đã tham gia"
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Vâng, hãy xóa đi"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Mục vụ đã tham gia của Thành viên"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Không có Nhân sự nào được thêm vào đây"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "LƯU Ý: THÊM, Xóa, và thay đổi thứ tự diễn ra ngay lập tức. Khi thay đổi tên hoặc mô tả bạn sẽ cần phải nhấn vào nút 'Lưu thay đổi'"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Thêm mới"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2934,10 +2833,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Cảm ơn bạn đã đăng ký cài đặt ChurchCRM của mình."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "Các tệp PDF đã được gửi qua email thành công"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF đã được gửi thành công qua email cho các thành viên trong gia đình."
 
@@ -2972,10 +2867,6 @@ msgstr "Đã xóa thành công bản ghi đã chọn khỏi Giỏ hàng."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "Giỏ hàng của bạn đã được làm trống thành công"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "(các) mặt hàng được thêm vào Giỏ hàng."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3590,10 +3481,6 @@ msgid "Functions"
 msgstr "Các tính năng"
 
 #: 
-msgid "Add New Class"
-msgstr "Thêm lớp mới"
-
-#: 
 msgid "Export to CSV"
 msgstr "Xuất ra CSV"
 
@@ -3795,20 +3682,13 @@ msgid "Groups"
 msgstr "Ban/Mục vụ"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Lỗi: Bạn phải nhập tên"
-
-#: 
 msgid "Total $"
 msgstr "Tổng $"
 
 #: 
-msgid "with this property.."
+#, fuzzy
+msgid "with this property..."
 msgstr "với tài sản này .."
-
-#: 
-msgid "with this Property..."
-msgstr "với thuộc tính này..."
 
 #: 
 msgid "Church Email"
@@ -3965,10 +3845,6 @@ msgid "Church Phone"
 msgstr "Điện thoại nhà thờ"
 
 #: 
-msgid "Home area code of the church"
-msgstr "Mã vùng nhà của nhà thờ"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Rác cho dòng trên cùng của báo cáo thuế. Ngày sẽ được thêm vào cuối dòng này."
 
@@ -4111,10 +3987,6 @@ msgstr "Menu truy vấn"
 #: 
 msgid "CSV Export Records"
 msgstr "Xuất CSV"
-
-#: 
-msgid "People Properties"
-msgstr "Thuộc tính thành viên"
 
 #: 
 msgid "Family Properties"
@@ -4373,33 +4245,8 @@ msgstr "Khớp trường tùy chỉnh với giá trị này"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Số lượng thành viên gia đình"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Người theo độ tuổi"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Tổng theo giới tính"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Người theo vai trò và giới tính"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Người theo tài sản"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "tìm kiếm nâng cao"
 
 #. Context: query_qry
 #: 
@@ -4410,16 +4257,6 @@ msgstr "Ngày sinh nhật"
 #: 
 msgid "Membership anniversaries"
 msgstr "Ngày kỷ niệm thành viên"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Chọn người dùng cơ sở dữ liệu"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Lựa chọn tất cả thành viên"
 
 #. Context: query_qry
 #: 
@@ -4450,16 +4287,6 @@ msgstr "Cam kết gia đình theo năm tài chính"
 #: 
 msgid "CustomSearch"
 msgstr "Tìm kiếm tuỳ chỉnh"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Trả về từng gia đình và tổng số người được chỉ định cho họ."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Trả về bất kỳ bản ghi người nào có độ tuổi giữa hai độ tuổi nhất định."
 
 #. Context: query_qry
 #: 
@@ -6355,10 +6182,6 @@ msgstr "Bao gồm"
 #: 
 msgid "Exclude"
 msgstr "Loại trừ"
-
-#: 
-msgid "No property assignments"
-msgstr "Không có thuộc tính nào được thêm vào đây"
 
 #: 
 msgid "View Cart"

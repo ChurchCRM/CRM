@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "VEYA"
 
 #: 
-msgid "Add New Event"
-msgstr "Yeni Etkinlik Ekle"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Sepetiniz boş!"
 
@@ -757,10 +753,6 @@ msgid "Save Changes"
 msgstr "Değişiklikleri Kaydet"
 
 #: 
-msgid "Add New Fund"
-msgstr "Yeni Fon Ekle"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Kilise Etkinlik Editörü"
 
@@ -911,14 +903,6 @@ msgid "Default Option"
 msgstr "Varsayılan seçenek"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "UYARI: Bu alanı silerek, bu alan için atanan tüm aile verilerini geri çekilemez bir şekilde kaybedeceksiniz!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Uyarı: Ok ve Sil düğmeleri hemen yürürlüğe girer. Yukarı, Aşağı, Sil veya 'Yeni Ekle' düğmesini kullanmadan önce 'Değişiklikleri Kaydet' olmazsanız alan adı değişiklikleri kaybolur!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Henüz özel bir aile alanı eklenmedi"
 
@@ -949,10 +933,6 @@ msgstr "Bir isim girmelisin"
 #: 
 msgid "That field name already exists."
 msgstr "Bu alan adı zaten var."
-
-#: 
-msgid "Add New Field"
-msgstr "Yeni Alan Ekle"
 
 #: 
 msgid "Family Editor"
@@ -1081,10 +1061,6 @@ msgstr "Yaratılmış"
 #: 
 msgid "Envelope Number"
 msgstr "Zarf numarası"
-
-#: 
-msgid "Add New Member"
-msgstr "Yeni üye ekle"
 
 #: 
 msgid "Upload Photo"
@@ -1617,16 +1593,8 @@ msgid "New Role"
 msgstr "Yeni rol"
 
 #: 
-msgid "Add New Role"
-msgstr "Yeni rol ekle"
-
-#: 
 msgid "Group Listing"
 msgstr "Grup listesi"
-
-#: 
-msgid "Add New Group"
-msgstr "Yeni Grup Ekle"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1907,10 +1875,6 @@ msgid "All People"
 msgstr "Tüm insanlar"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Sınıflandırma Yöneticisi"
-
-#: 
 msgid "Email All"
 msgstr "Hepsini e -posta ile gönder"
 
@@ -1987,14 +1951,6 @@ msgid "Gender Demographics"
 msgstr "Cinsiyet demografisi"
 
 #: 
-msgid "Men"
-msgstr "Erkekler"
-
-#: 
-msgid "Women"
-msgstr "Kadın"
-
-#: 
 msgid "Boys"
 msgstr "Erkekler"
 
@@ -2025,10 +1981,6 @@ msgstr "Güncellenmiş aileler"
 #: 
 msgid "Updated"
 msgstr "Güncellenmiş"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Not Onay Sil"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2063,11 +2015,6 @@ msgid "Option"
 msgstr "Seçenek"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Uyarı: Çıkarma, ödevi olan tüm kişiler için tüm ödevleri sıfırlar!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Hata: kopya"
 
@@ -2090,10 +2037,6 @@ msgstr "çıkış"
 #: 
 msgid "Add New"
 msgstr "Yeni ekle"
-
-#: 
-msgid "Error: A "
-msgstr "Hata: A"
 
 #: 
 msgid " by that name already exists."
@@ -2134,10 +2077,6 @@ msgstr "Seçme"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Özel Kişi Fields Editor"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Uyarı: Bu alanı silerek, bu alan için atanan tüm kişi verilerini geri çekilemez bir şekilde kaybedeceksiniz!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2364,14 +2303,6 @@ msgid "Assigning"
 msgstr "Atama"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Mülkiyet Onay Sil"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "Lütfen bu mülkün silinmesini onaylayın"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Bu mülkün silinmesi, bu mülkün tüm ödevlerini herhangi bir kişiye, aileye veya grup kayıtlarına da siler."
 
@@ -2415,10 +2346,6 @@ msgstr "Mülk"
 #: 
 msgid "Prompt"
 msgstr "Çabuk"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Mülk Türü Sil Onayı"
 
 #: 
 msgid "Warning"
@@ -2569,10 +2496,6 @@ msgstr "Veritabanını geri yükle"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Bu aileden gelen tüm bağışlar başka bir aileye taşındı."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Aile Sil Onayı"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2804,36 +2727,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Lütfen bu kullanıcının şifre sıfırlamasını onaylayın"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Gönüllü Fırsat Onayını Sil"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Bu gönüllü fırsata atanan insanlar var."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Gönüllü fırsatı aşağıdaki insanlar için atanacak."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Evet, bu gönüllü fırsatı sil"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Gönüllü Fırsat Editörü"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Henüz gönüllü fırsatı eklenmedi"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "Not: Ekle, sil ve sipariş değişiklikleri hemen. Ad veya DESC alanlarındaki değişiklikler 'değişiklikleri kaydet' tuşuna basarak kaydedilmelidir"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Yeni Fırsat Ekle"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2920,10 +2819,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "ChurchCRM kurulumunuzu kaydettiğiniz için teşekkür ederiz."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDFS başarıyla e -postayla gönderildi"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF, aile üyelerine başarıyla e -posta gönderdi."
 
@@ -2958,10 +2853,6 @@ msgstr "Seçilen kayıt, arabadan başarıyla kaldırıldı."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "Sepetiniz başarıyla boşaltıldı"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "Madde (ler) arabaya eklendi."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3576,10 +3467,6 @@ msgid "Functions"
 msgstr "İşlevler"
 
 #: 
-msgid "Add New Class"
-msgstr "Yeni Sınıf Ekle"
-
-#: 
 msgid "Export to CSV"
 msgstr "CSV'ye dışa aktarma"
 
@@ -3781,20 +3668,13 @@ msgid "Groups"
 msgstr "Grup"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Hata: Bir isim girmelisin"
-
-#: 
 msgid "Total $"
 msgstr "Toplam $"
 
 #: 
-msgid "with this property.."
+#, fuzzy
+msgid "with this property..."
 msgstr "Bu mülkle .."
-
-#: 
-msgid "with this Property..."
-msgstr "Bu mülkle ..."
 
 #: 
 msgid "Church Email"
@@ -3951,10 +3831,6 @@ msgid "Church Phone"
 msgstr "Kilise telefonu"
 
 #: 
-msgid "Home area code of the church"
-msgstr "Kilisenin Ev Alan Kodu"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Vergi raporunun üst satırı için söz konusu. Tarihler bu çizginin sonuna eklenecektir."
 
@@ -4097,10 +3973,6 @@ msgstr "Sorgu Menüsü"
 #: 
 msgid "CSV Export Records"
 msgstr "CSV Dışa Aktarma Kayıtları"
-
-#: 
-msgid "People Properties"
-msgstr "İnsan Mülkleri"
 
 #: 
 msgid "Family Properties"
@@ -4359,33 +4231,8 @@ msgstr "Özel alanı bu değerle eşleştirin"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Aile Üyesi Sayısı"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Yaşa göre kişi"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Toplam cinsiyete göre"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Rol ve cinsiyete göre kişi"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Mülkiyete göre kişi"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "gelişmiş Arama"
 
 #. Context: query_qry
 #: 
@@ -4396,16 +4243,6 @@ msgstr "Doğum günleri"
 #: 
 msgid "Membership anniversaries"
 msgstr "Üyelik Yıldönümleri"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Veritabanı kullanıcılarını seçin"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Tüm üyeleri seçin"
 
 #. Context: query_qry
 #: 
@@ -4436,16 +4273,6 @@ msgstr "Mali yıla kadar aile sözü"
 #: 
 msgid "CustomSearch"
 msgstr "Özel arama"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Her aileyi ve kendilerine atanan toplam kişi sayısını iade eder."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Verilen iki yaş arasında herhangi bir kişi kaydını döndürür."
 
 #. Context: query_qry
 #: 
@@ -6341,10 +6168,6 @@ msgstr "Katmak"
 #: 
 msgid "Exclude"
 msgstr "Hariç tutmak"
-
-#: 
-msgid "No property assignments"
-msgstr "Mülk ödevi yok"
 
 #: 
 msgid "View Cart"

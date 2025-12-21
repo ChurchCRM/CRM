@@ -358,10 +358,6 @@ msgid "OR"
 msgstr "LUB"
 
 #: 
-msgid "Add New Event"
-msgstr "Dodaj Nowe Wydarzenie"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Twój Koszyk jest pusty!"
 
@@ -771,10 +767,6 @@ msgid "Save Changes"
 msgstr "Zapisz Zmiany"
 
 #: 
-msgid "Add New Fund"
-msgstr "Dodaj Nowy Cel (Fund)"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Edytuj Wydarzenia"
 
@@ -923,14 +915,6 @@ msgid "Default Option"
 msgstr "Opcje Domyślne"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Uwaga: Usuwając to pole, nieodwracalnie utracisz wszystkie dane Rodziny powiązane z tym polem!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Uwaga: Przycisk Strzałęk i Usuń działają natychmiastowo. Wszelkie zmiany zostaną utracone jeżeli nie będą zapisane - 'Zapisz Zmiany' !"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Nie ustawiono żadnych dodatkowych pól dla Rodziny"
 
@@ -961,10 +945,6 @@ msgstr "Musisz podać Nazwę"
 #: 
 msgid "That field name already exists."
 msgstr "Tak nazwane Pole już istnieje."
-
-#: 
-msgid "Add New Field"
-msgstr "Dodaj Nowe Pole"
 
 #: 
 msgid "Family Editor"
@@ -1593,16 +1573,8 @@ msgid "New Role"
 msgstr "Nowa Rola"
 
 #: 
-msgid "Add New Role"
-msgstr "Dodaj Nową Rolę"
-
-#: 
 msgid "Group Listing"
 msgstr "Lista Grup"
-
-#: 
-msgid "Add New Group"
-msgstr "Dodaj Nową Grupę"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1894,10 +1866,6 @@ msgid "All People"
 msgstr "Wszystkie Osoby"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Zarządzanie Kategoriami"
-
-#: 
 msgid "Email All"
 msgstr "Email do Wszystkich"
 
@@ -1970,14 +1938,6 @@ msgid "Gender Demographics"
 msgstr "Demografia wg. Płci"
 
 #: 
-msgid "Men"
-msgstr "Męszczyźni"
-
-#: 
-msgid "Women"
-msgstr "Kobiety"
-
-#: 
 msgid "Boys"
 msgstr "Chłopcy"
 
@@ -2008,10 +1968,6 @@ msgstr "Zaktualizowane Rodziny"
 #: 
 msgid "Updated"
 msgstr "Zaktualizowane"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Potwierdzenie Usunięcia Notatki"
 
 #: 
 #, fuzzy
@@ -2047,11 +2003,6 @@ msgid "Option"
 msgstr "Opcje"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Uwaga: Usunięcie spowoduje wymazanie wszystkich przypisań dla wszystkich osób z tym przypisaniem!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Błąd: Istnieje Duplikat"
 
@@ -2074,10 +2025,6 @@ msgstr "Wyjdź"
 #: 
 msgid "Add New"
 msgstr "Dodaj Nowe"
-
-#: 
-msgid "Error: A "
-msgstr "Błąd: "
 
 #: 
 msgid " by that name already exists."
@@ -2118,10 +2065,6 @@ msgstr "Zaznacz"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Edytor Pól Dodatkowych (Osoba)"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Uwaga: Usuwając to pole, nie odwracalnie utracisz wszystkie dane przypisane do tego pola!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2353,15 +2296,6 @@ msgid "Assigning"
 msgstr "Przypisz"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Potwierdzenie Usunięcia Właściwośći"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this property"
-msgstr "Proszę potwierdzić usunięcie właściwości"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Usunięcie tej Właściwości spowoduje również usunięcie wszystkich jej powiązań do Osób, Rodzin lub Grup."
 
@@ -2406,10 +2340,6 @@ msgstr "Ustawienia"
 #: 
 msgid "Prompt"
 msgstr "Zapytaj"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Potwierdzenie Usunięcia Typu Właściwości"
 
 #: 
 msgid "Warning"
@@ -2562,10 +2492,6 @@ msgstr "Przywróć Bazę Danych"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Wszystkie datki od tej rodziny zostały przeniesione do innej rodziny."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Potwierdzenie Usunięcia Rodziny"
 
 #: 
 #, fuzzy
@@ -2816,36 +2742,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Proszę potwierdzić zmianę hasła użytkownika"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Skasuj Zadanie dla Wolonatariusza "
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Są przypisane Osoby do tego Zadania"
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Zadanie zostanie usunięte od następujących Osób."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Tak, USUŃ Zadanie Wolontariusza"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Edytor Zadań dla Wolontariuszy"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Nie dodano jeszcze żadnych Zadań dla Wolonatariuszy"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "Pamiętaj: Zmiany Dodaj, Usuń i Porządkuj są natychmiastowe. Aby zmienić Nazwę lub Opis musisz kliknąć 'Zapisz Zmiany'"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Dodaj Nowe Zadanie"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2932,10 +2834,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Dziękujemy za zarejestrowanie tej instalacji ChurchCRM."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF pomyślnie przesłany emialem "
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF pomyślnie przesłany do członków rodziny."
 
@@ -2971,10 +2869,6 @@ msgstr "Wybrany/e wpis/y pomyślnie usunięte z Koszyka"
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Koszyk pomyślnie wyczyszczony"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "wpis/ów dodanych do Koszyka"
 
 #: 
 msgid "Select Fiscal Year"
@@ -3339,10 +3233,6 @@ msgid "True"
 msgstr "True"
 
 #: 
-msgid "Add New Class"
-msgstr "Dodaj nową klasę"
-
-#: 
 msgid "Self Registration"
 msgstr "Samodzielna Rejestracja"
 
@@ -3414,10 +3304,6 @@ msgstr "Dodaj wydarzenie kościoła"
 #: 
 msgid "List Event Types"
 msgstr "Typy wydarzeń"
-
-#: 
-msgid "People Properties"
-msgstr "Osoby - właściwości"
 
 #. Context: queryparameteroptions_qpo
 #: 

@@ -353,10 +353,6 @@ msgid "OR"
 msgstr "ИЛИ"
 
 #: 
-msgid "Add New Event"
-msgstr "Добавить событие"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Ваша корзина пуста!"
 
@@ -775,10 +771,6 @@ msgid "Save Changes"
 msgstr "Сохранить изменения"
 
 #: 
-msgid "Add New Fund"
-msgstr "Добавить новый фонд"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Церковь редакторе событий"
 
@@ -931,14 +923,6 @@ msgid "Default Option"
 msgstr "По умолчанию Параметр"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Внимание: При удалении этого поля, вы безвозвратно потеряете все связанные данные, определенные для этого места!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Внимание: Кнопки со стрелками и кнопки удаления вступают в силу немедленно. Изменения имени поля будут потеряны, если вы не нажмете кнопку «Сохранить изменения» перед использованием кнопки «вверх», «вниз», «удалить» или «добавить новый»!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Нет таможенных Семейные поля не были добавлены еще"
 
@@ -969,10 +953,6 @@ msgstr "Введите имя"
 #: 
 msgid "That field name already exists."
 msgstr "Это имя поля уже существует."
-
-#: 
-msgid "Add New Field"
-msgstr "Добавить новое поле"
 
 #: 
 msgid "Family Editor"
@@ -1097,10 +1077,6 @@ msgstr "Создано "
 #: 
 msgid "Envelope Number"
 msgstr "Конверт Количество"
-
-#: 
-msgid "Add New Member"
-msgstr "Добавить нового участника"
 
 #: 
 msgid "Upload Photo"
@@ -1643,16 +1619,8 @@ msgid "New Role"
 msgstr "Новый образец"
 
 #: 
-msgid "Add New Role"
-msgstr "Добавить новый образец"
-
-#: 
 msgid "Group Listing"
 msgstr "Группа Листинг"
-
-#: 
-msgid "Add New Group"
-msgstr "Добавить новую группу"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1944,10 +1912,6 @@ msgid "All People"
 msgstr "Все люди"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Менеджер по классификациям"
-
-#: 
 msgid "Email All"
 msgstr "Отправить всем по электронной почте"
 
@@ -2021,14 +1985,6 @@ msgid "Gender Demographics"
 msgstr "Гендерная демография"
 
 #: 
-msgid "Men"
-msgstr "Мужчины"
-
-#: 
-msgid "Women"
-msgstr "Женщины"
-
-#: 
 msgid "Boys"
 msgstr "Мальчики"
 
@@ -2059,10 +2015,6 @@ msgstr "Обновленные семьи "
 #: 
 msgid "Updated"
 msgstr "Обновлено"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Примечание Подтверждение удаления"
 
 #: 
 #, fuzzy
@@ -2098,11 +2050,6 @@ msgid "Option"
 msgstr "Опции"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Внимание: удаление сбросит все задания для всех лиц с присвоением!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Ошибка: Duplicate"
 
@@ -2125,10 +2072,6 @@ msgstr "Выход"
 #: 
 msgid "Add New"
 msgstr "Добавить"
-
-#: 
-msgid "Error: A "
-msgstr "Ошибка: "
 
 #: 
 msgid " by that name already exists."
@@ -2169,10 +2112,6 @@ msgstr "Выбрать"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Пользовательские лицо Fields Editor"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Внимание: При удалении этого поля, вы irrevokably потерять все данные лицо, назначенное для этой области!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2400,15 +2339,6 @@ msgid "Assigning"
 msgstr "Назначение"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Недвижимость подтверждения удаления"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this property"
-msgstr "Пожалуйста, подтвердите удаление этой недвижимости"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Удаление Это свойство также удалить все задания этого свойства для любого народа, семьи или записей группы."
 
@@ -2453,10 +2383,6 @@ msgstr "Объявление"
 #: 
 msgid "Prompt"
 msgstr "Запрос"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Тип недвижимости запросом на подтверждение удаления"
 
 #: 
 msgid "Warning"
@@ -2609,10 +2535,6 @@ msgstr "Восстановить базу данных"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Все пожертвования от этой семьи были перемещены в другой семье."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Семья подтверждения удаления"
 
 #: 
 #, fuzzy
@@ -2858,36 +2780,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Пожалуйста, подтвердите сброс пароля этого пользователя"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Волонтер Возможность Подтверждение удаления"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Есть люди, назначенные для этого возможностей добровольцев."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Волонтер возможность будет не присвоены для следующих людей."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Да, удалить эту возможность Добровольческую"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Волонтер Возможность редактор"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Нет волонтеров не было добавлено еще"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "ПРИМЕЧАНИЕ. Изменения «ДОБАВИТЬ», «Удалить» и «Порядок» внесены немедленно. Изменения в полях Имя или Описание необходимо сохранить, нажав кнопку «Сохранить изменения»."
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Добавить новую возможность"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2974,10 +2872,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Спасибо за регистрацию установки ChurchCRM."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF-файлы успешно отправлены по электронной почте"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF-файл успешно отправлен членам семьи."
 
@@ -3013,10 +2907,6 @@ msgstr "Выбранная запись успешно удалена из ко�
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Ваша корзина успешно очищена"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "товар (ов) добавлен в корзину."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3640,10 +3530,6 @@ msgid "Functions"
 msgstr "Функции"
 
 #: 
-msgid "Add New Class"
-msgstr "Добавить новый класс"
-
-#: 
 msgid "Export to CSV"
 msgstr "Экспорт в CSV"
 
@@ -3837,10 +3723,6 @@ msgid "Groups"
 msgstr "Группы"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "ОШИБКА: Вы должны ввести имя"
-
-#: 
 msgid "Total $"
 msgstr "Итого $"
 
@@ -3961,10 +3843,6 @@ msgstr "Почтовый индекс"
 #: 
 msgid "Church Phone"
 msgstr "Номер телеофна церкви"
-
-#: 
-msgid "Home area code of the church"
-msgstr "Домашний код города церкви"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -4105,10 +3983,6 @@ msgstr "Меню запросов"
 #: 
 msgid "CSV Export Records"
 msgstr "CSV экспортные записи"
-
-#: 
-msgid "People Properties"
-msgstr "Свойства людей"
 
 #: 
 msgid "Family Properties"
@@ -4332,31 +4206,6 @@ msgstr "Соответствие настраиваемого поля этом�
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Количество членов семьи"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Человек по возрасту"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Всего по полу"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Человек по ролям и полу"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "Расширенный поиск"
-
-#. Context: query_qry
-#: 
 msgid "Birthdays"
 msgstr "Дни рождения"
 
@@ -4364,16 +4213,6 @@ msgstr "Дни рождения"
 #: 
 msgid "Membership anniversaries"
 msgstr "Годовщины членства"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Выберите пользователей базы данных"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Выберите всех участников"
 
 #. Context: query_qry
 #: 
@@ -4394,16 +4233,6 @@ msgstr "Недостающие залоги"
 #: 
 msgid "CustomSearch"
 msgstr "Пользовательский поиск"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Возвращает каждую семью и общее количество назначенных ей людей."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Возвращает записи любого человека с возрастом между двумя заданными возрастами."
 
 #. Context: query_qry
 #: 

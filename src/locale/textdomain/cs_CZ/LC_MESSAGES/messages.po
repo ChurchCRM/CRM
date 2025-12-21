@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "NEBO"
 
 #: 
-msgid "Add New Event"
-msgstr "Přidej novou událost"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Váš košík je prázdný!"
 
@@ -757,10 +753,6 @@ msgid "Save Changes"
 msgstr "Uložit změny"
 
 #: 
-msgid "Add New Fund"
-msgstr "Přidat nový"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Editor sborových událostí"
 
@@ -911,14 +903,6 @@ msgid "Default Option"
 msgstr "Výchozí možnost"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Varování: Vymazáním tohoto pole nenávratně ztratíte veškeré údaje přiřazené k tomuto poli!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Varování: Tlačítka šipek a mazání se projeví okamžitě. Pokud před použitím tlačítka nahoru, dolů, odstranění nebo 'přidat nové' nepoužijete tlačítko 'Uložit změny', budou změny názvů polí ztraceny!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Zatím nebyla přidána žádná vlastní pole rodiny."
 
@@ -949,10 +933,6 @@ msgstr "Musíte zadat název"
 #: 
 msgid "That field name already exists."
 msgstr "Pole s tímto názvem již existuje."
-
-#: 
-msgid "Add New Field"
-msgstr "Přidat nové pole"
 
 #: 
 msgid "Family Editor"
@@ -1081,10 +1061,6 @@ msgstr "Vytvořeno"
 #: 
 msgid "Envelope Number"
 msgstr "Číslo obálky"
-
-#: 
-msgid "Add New Member"
-msgstr "Přidat člena"
 
 #: 
 msgid "Upload Photo"
@@ -1616,16 +1592,8 @@ msgid "New Role"
 msgstr "Nová role"
 
 #: 
-msgid "Add New Role"
-msgstr "Přidat novou roli"
-
-#: 
 msgid "Group Listing"
 msgstr "Výpis skupin"
-
-#: 
-msgid "Add New Group"
-msgstr "Přidat novou skupinu"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1906,10 +1874,6 @@ msgid "All People"
 msgstr "Všechny osoby"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Správce klasifikací"
-
-#: 
 msgid "Email All"
 msgstr "E-mail všem"
 
@@ -1986,14 +1950,6 @@ msgid "Gender Demographics"
 msgstr "Demografie pohlaví"
 
 #: 
-msgid "Men"
-msgstr "Muži"
-
-#: 
-msgid "Women"
-msgstr "Ženy"
-
-#: 
 msgid "Boys"
 msgstr "Chlapci"
 
@@ -2024,10 +1980,6 @@ msgstr "Aktualizované rodiny"
 #: 
 msgid "Updated"
 msgstr "Aktualizováno"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Potvrzení smazání poznámky"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2062,11 +2014,6 @@ msgid "Option"
 msgstr "Možnost"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Varování: Odstraněním se zruší všechna přiřazení pro všechny osoby s přiřazením!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Chyba: duplikát"
 
@@ -2089,10 +2036,6 @@ msgstr "Exit"
 #: 
 msgid "Add New"
 msgstr "Přidat nový"
-
-#: 
-msgid "Error: A "
-msgstr "Chyba: "
 
 #: 
 msgid " by that name already exists."
@@ -2133,10 +2076,6 @@ msgstr "Vybrat"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Editor vlastních polí osoby"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Varování: Vymazáním tohoto pole nenávratně ztratíte všechny údaje o osobách přiřazené k tomuto poli!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2363,14 +2302,6 @@ msgid "Assigning"
 msgstr "Přiřazuji"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Potvrzení smazání vlastnosti"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "Potvrďte smazání této vlasnosti"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Smazáním této vlastnosti se odstraní také všechna přiřazení této vlastnosti k záznamům osob, rodin nebo skupin."
 
@@ -2414,10 +2345,6 @@ msgstr "Vlastnost"
 #: 
 msgid "Prompt"
 msgstr "Výzva"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Potvrzení smazání typu vlastnosti"
 
 #: 
 msgid "Warning"
@@ -2567,10 +2494,6 @@ msgstr "Obnovit databázi"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Všechny příspěvky od této rodiny byly přesunuty do jiné rodiny."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Potvrzení smazání rodiny"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2801,36 +2724,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Potvrďte obnovení hesla pro tohoto uživatele"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Potvrzení smazání dobrovolnické příležitosti"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "K této dobrovolnické příležitosti jsou přiřazeny osoby."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "U následujících osob bude zrušeno přiřazení dobrovolnické příležitosti."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Ano, smazat tuto dobrovolnickou příležitost"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Editor dobrovolnických příležitostí"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Zatím nebyly přidány žádné dobrovolnické příležitosti"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "POZNÁMKA: Přidání, smazání a třídění jsou okamžité.  Změny v polích Název nebo Popis je třeba uložit stisknutím tlačítka 'Uložit změny'"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Přidat novou příležitost"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2917,10 +2816,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Děkujeme vám za registraci vaší instalace systému ChurchCRM."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "Soubory PDF úspěšně poslány "
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "Soubor PDF úspěšně odeslán členům rodiny."
 
@@ -2955,10 +2850,6 @@ msgstr "Vybraný záznam úspěšně odstraněn z košíku."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "Košík byl úspěšně vyprázdněn"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "položek přidáno do košíku."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3573,10 +3464,6 @@ msgid "Functions"
 msgstr "Funkce"
 
 #: 
-msgid "Add New Class"
-msgstr "Přidat novou třídu"
-
-#: 
 msgid "Export to CSV"
 msgstr "Exportovat do CSV"
 
@@ -3778,19 +3665,12 @@ msgid "Groups"
 msgstr "Skupiny"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Chyba: Musíte zadat jméno"
-
-#: 
 msgid "Total $"
 msgstr "Celkem $"
 
 #: 
-msgid "with this property.."
-msgstr "s touto vlastností.."
-
-#: 
-msgid "with this Property..."
+#, fuzzy
+msgid "with this property..."
 msgstr "s touto vlastností..."
 
 #: 
@@ -3946,10 +3826,6 @@ msgid "Church Phone"
 msgstr "Telefon sboru"
 
 #: 
-msgid "Home area code of the church"
-msgstr "Kód domovské oblasti sboru"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Slovní spojení pro horní řádek daňového hlášení. Na konec tohoto řádku se připojí data."
 
@@ -4092,10 +3968,6 @@ msgstr "Nabídka dotazů"
 #: 
 msgid "CSV Export Records"
 msgstr "Export do CSV"
-
-#: 
-msgid "People Properties"
-msgstr "Vlastnosti osob"
 
 #: 
 msgid "Family Properties"
@@ -4353,33 +4225,8 @@ msgstr "Porovnat vlastní pole k této hodně"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Počet členů rodiny"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Osoba podle věku"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Celkem podle pohlaví"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Osoba podle role a pohlaví"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Osoba podle vlastností"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "Rozšířené hledání"
 
 #. Context: query_qry
 #: 
@@ -4390,16 +4237,6 @@ msgstr "Narozeniny"
 #: 
 msgid "Membership anniversaries"
 msgstr "Výročí členství"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Vyberte uživatele databáze"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Vyberte všechny členy"
 
 #. Context: query_qry
 #: 
@@ -4430,16 +4267,6 @@ msgstr "Příspěvky rodiny podle fiskálního roku"
 #: 
 msgid "CustomSearch"
 msgstr "Hledání podle vlastních polí"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Vrátí každou rodinu a celkový počet osob k ní přiřazených."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Vrátí všechny záznamy osob ve věku mezi dvěma zadanými věky."
 
 #. Context: query_qry
 #: 
@@ -6335,10 +6162,6 @@ msgstr "Zařadit"
 #: 
 msgid "Exclude"
 msgstr "Nezařazovat"
-
-#: 
-msgid "No property assignments"
-msgstr "Žádné přiřazení vlastnosti"
 
 #: 
 msgid "View Cart"

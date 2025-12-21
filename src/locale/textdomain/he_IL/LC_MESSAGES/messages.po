@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "או"
 
 #: 
-msgid "Add New Event"
-msgstr "הוסף אירוע חדש"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "הסל שלך ריק!"
 
@@ -757,10 +753,6 @@ msgid "Save Changes"
 msgstr "שמור שינויים"
 
 #: 
-msgid "Add New Fund"
-msgstr "הוסף קרן חדשה"
-
-#: 
 msgid "Church Event Editor"
 msgstr "עורך אירועי מוסד"
 
@@ -911,14 +903,6 @@ msgid "Default Option"
 msgstr "אפשרות ברירת מחדל"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "אזהרה: מחיקת שדה זה תגרום לאובדן בלתי הפיך של כל נתוני המשפחה המשויכים לשדה זה!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "אזהרה: כפתורי החצים והמחיקה נכנסים לתוקף מיד. שינויי שם השדה יאבדו אם לא תלחץ על 'שמור שינויים' לפני השימוש בכפתורי למעלה, למטה, מחיקה או 'הוסף חדש'!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "עדיין לא נוספו שדות משפחה מותאמים אישית"
 
@@ -949,10 +933,6 @@ msgstr "עליך להזין שם"
 #: 
 msgid "That field name already exists."
 msgstr "שם השדה הזה כבר קיים."
-
-#: 
-msgid "Add New Field"
-msgstr "הוסף שדה חדש"
 
 #: 
 msgid "Family Editor"
@@ -1081,10 +1061,6 @@ msgstr "נוצר"
 #: 
 msgid "Envelope Number"
 msgstr "מספר מעטפה"
-
-#: 
-msgid "Add New Member"
-msgstr "הוסף חבר חדש"
 
 #: 
 msgid "Upload Photo"
@@ -1616,16 +1592,8 @@ msgid "New Role"
 msgstr "תפקיד חדש"
 
 #: 
-msgid "Add New Role"
-msgstr "הוסף תפקיד חדש"
-
-#: 
 msgid "Group Listing"
 msgstr "רשימת קבוצות"
-
-#: 
-msgid "Add New Group"
-msgstr "הוסף קבוצה חדשה"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1906,10 +1874,6 @@ msgid "All People"
 msgstr "כל האנשים"
 
 #: 
-msgid "Classifications Manager"
-msgstr "מנהל סיווגים"
-
-#: 
 msgid "Email All"
 msgstr "שלח אימייל לכולם"
 
@@ -1986,14 +1950,6 @@ msgid "Gender Demographics"
 msgstr "דמוגרפיה מגדרית"
 
 #: 
-msgid "Men"
-msgstr "גברים"
-
-#: 
-msgid "Women"
-msgstr "נשים"
-
-#: 
 msgid "Boys"
 msgstr "בנים"
 
@@ -2024,10 +1980,6 @@ msgstr "משפחות מעודכנות"
 #: 
 msgid "Updated"
 msgstr "עודכן"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "אישור מחיקת הערה"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2062,11 +2014,6 @@ msgid "Option"
 msgstr "אפשרות"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "אזהרה: הסרה תאפס את כל השיוכים עבור כל האנשים עם השיוך!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "שגיאה: כפילות"
 
@@ -2089,10 +2036,6 @@ msgstr "יציאה"
 #: 
 msgid "Add New"
 msgstr "הוסף חדש"
-
-#: 
-msgid "Error: A "
-msgstr "שגיאה: "
 
 #: 
 msgid " by that name already exists."
@@ -2133,10 +2076,6 @@ msgstr "בחר"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "עורך שדות אדם מותאמים אישית"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "אזהרה: על ידי מחיקת שדה זה, אתה תאבד לצמיתות את כל נתוני האדם המשויכים לשדה זה!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2363,14 +2302,6 @@ msgid "Assigning"
 msgstr "מקצה"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "אישור מחיקת מאפיין"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "אנא אשר את מחיקת המאפיין הזה"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "מחיקת מאפיין זה תמחק גם את כל ההקצאות של מאפיין זה לכל רשומות האנשים, המשפחות או הקבוצות."
 
@@ -2414,10 +2345,6 @@ msgstr "מאפיין"
 #: 
 msgid "Prompt"
 msgstr "הנחיה"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "אישור מחיקת סוג מאפיין"
 
 #: 
 msgid "Warning"
@@ -2567,10 +2494,6 @@ msgstr "שחזר מסד נתונים"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "כל התרומות ממשפחה זו הועברו למשפחה אחרת."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "אישור מחיקת משפחה"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2801,36 +2724,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "אנא אשר את איפוס הסיסמה של משתמש זה"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "אישור מחיקת הזדמנות התנדבות"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "יש אנשים שמשויכים להזדמנות התנדבות זו"
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "הזדמנות ההתנדבות תבוטל עבור האנשים הבאים"
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "כן, מחק הזדמנות התנדבות זו"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "עורך הזדמנויות התנדבות"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "טרם נוספו הזדמנויות התנדבות"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "הערה: הוספה, מחיקה ושינויי סדר מתבצעים מיידית. שינויים בשדות שם או תיאור חייבים להישמר על ידי לחיצה על 'שמור שינויים'"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "הוסף הזדמנות חדשה"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2917,10 +2816,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "תודה שנרשמת להתקנת ChurchCRM."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "קבצי PDF נשלחו בהצלחה בדואר אלקטרוני"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "קובץ PDF נשלח בהצלחה בדואר אלקטרוני לבני המשפחה"
 
@@ -2955,10 +2850,6 @@ msgstr "הרשומה שנבחרה הוסרה בהצלחה מהעגלה."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "העגלה שלך רוקנה בהצלחה"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "פריט(ים) נוספו לעגלה."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3573,10 +3464,6 @@ msgid "Functions"
 msgstr "פונקציות"
 
 #: 
-msgid "Add New Class"
-msgstr "הוסף כיתה חדשה"
-
-#: 
 msgid "Export to CSV"
 msgstr "ייצא ל-CSV"
 
@@ -3778,20 +3665,13 @@ msgid "Groups"
 msgstr "קבוצות"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "שגיאה: אנא הזן שם"
-
-#: 
 msgid "Total $"
 msgstr "סה\"כ $"
 
 #: 
-msgid "with this property.."
+#, fuzzy
+msgid "with this property..."
 msgstr "עם מאפיין זה.."
-
-#: 
-msgid "with this Property..."
-msgstr "עם מאפיין זה..."
 
 #: 
 msgid "Church Email"
@@ -3946,10 +3826,6 @@ msgid "Church Phone"
 msgstr "טלפון המוסד"
 
 #: 
-msgid "Home area code of the church"
-msgstr "קידומת אזור המגורים של המוסד"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "טקסט עבור השורה העליונה של דוח המס. תאריכים יתווספו בסוף שורה זו."
 
@@ -4092,10 +3968,6 @@ msgstr "תפריט שאילתות"
 #: 
 msgid "CSV Export Records"
 msgstr "רשומות ייצוא CSV"
-
-#: 
-msgid "People Properties"
-msgstr "מאפייני אדם"
 
 #: 
 msgid "Family Properties"
@@ -4353,33 +4225,8 @@ msgstr "התאם שדה מותאם לערך זה"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "ספירת בני משפחה"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "אנשים לפי גיל"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "סה\"כ לפי מין"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "אנשים לפי תפקיד ומגדר"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "אנשים לפי מאפיינים"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "חיפוש מתקדם"
 
 #. Context: query_qry
 #: 
@@ -4390,16 +4237,6 @@ msgstr "ימי הולדת"
 #: 
 msgid "Membership anniversaries"
 msgstr "יום השנה לחברות"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "בחר משתמשי מסד נתונים"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "בחר את כל החברים"
 
 #. Context: query_qry
 #: 
@@ -4430,16 +4267,6 @@ msgstr "התחייבות משפחה לפי שנת כספים"
 #: 
 msgid "CustomSearch"
 msgstr "חיפוש מותאם אישית"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "מחזיר כל משפחה ואת המספר הכולל של האנשים המשויכים אליה."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "מחזיר כל רשומות האנשים עם גילים בין שני הגילאים שניתנו."
 
 #. Context: query_qry
 #: 
@@ -6338,10 +6165,6 @@ msgstr "כלול"
 #: 
 msgid "Exclude"
 msgstr "החרג"
-
-#: 
-msgid "No property assignments"
-msgstr "אין שיוכי מאפיינים"
 
 #: 
 msgid "View Cart"

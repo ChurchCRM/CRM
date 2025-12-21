@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "TAI"
 
 #: 
-msgid "Add New Event"
-msgstr "Lisää uusi tapahtuma"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Sinun korisi on tyhjä!"
 

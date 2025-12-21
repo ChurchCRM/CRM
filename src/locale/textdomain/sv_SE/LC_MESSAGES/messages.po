@@ -360,10 +360,6 @@ msgid "OR"
 msgstr "ELLER"
 
 #: 
-msgid "Add New Event"
-msgstr "Lägg till ny evenemang"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "Korgen är tom!"
 
@@ -788,10 +784,6 @@ msgid "Save Changes"
 msgstr "Spara ändringar"
 
 #: 
-msgid "Add New Fund"
-msgstr "Lägg till ny fond"
-
-#: 
 msgid "Church Event Editor"
 msgstr "Kyrkans evenemang redigeringsverktyg"
 
@@ -944,14 +936,6 @@ msgid "Default Option"
 msgstr "Standard val"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Varning: Om du radera denna fält, förlorar du alla information i fältet!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Varning: Pil och radera knapper fungerar omedelbart.  Fältnamn ändringar förloras om du inte 'Spara ändringar' innan du använder pilup, pilner, radera eller 'lägg till' knappen!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "Inga fritt anpassade familj fält tillagd än"
 
@@ -982,10 +966,6 @@ msgstr "Du måste ange ett namn"
 #: 
 msgid "That field name already exists."
 msgstr "Denna fält namn finns redan."
-
-#: 
-msgid "Add New Field"
-msgstr "Lägg till ny fält"
 
 #: 
 msgid "Family Editor"
@@ -1114,10 +1094,6 @@ msgstr "Skapad"
 #: 
 msgid "Envelope Number"
 msgstr "Kuvertnummer"
-
-#: 
-msgid "Add New Member"
-msgstr "Lägg till ny medlem"
 
 #: 
 msgid "Upload Photo"
@@ -1668,16 +1644,8 @@ msgid "New Role"
 msgstr "Ny roll"
 
 #: 
-msgid "Add New Role"
-msgstr "Lägg till ny roll"
-
-#: 
 msgid "Group Listing"
 msgstr "Grupp lista"
-
-#: 
-msgid "Add New Group"
-msgstr "Lägg till ny grupp"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1974,10 +1942,6 @@ msgid "All People"
 msgstr "Alla personer"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Klassificerings redaktör"
-
-#: 
 msgid "Email All"
 msgstr "Skicka e-post till alla"
 
@@ -2054,14 +2018,6 @@ msgid "Gender Demographics"
 msgstr "Könsdemografi"
 
 #: 
-msgid "Men"
-msgstr "Män"
-
-#: 
-msgid "Women"
-msgstr "Kvinnor"
-
-#: 
 msgid "Boys"
 msgstr "Pojkar"
 
@@ -2092,10 +2048,6 @@ msgstr "Uppdaterade familjer"
 #: 
 msgid "Updated"
 msgstr "Uppdaterad"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Bekräfta radera anteckningen"
 
 #: 
 #, fuzzy
@@ -2131,11 +2083,6 @@ msgid "Option"
 msgstr "Valmöjligheter"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "Varning: Att radera detta ställar om alla arbetsuppgifter för alla personer med denna arbetsuppgift!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Fel: Inte unik"
 
@@ -2158,10 +2105,6 @@ msgstr "Avsluta"
 #: 
 msgid "Add New"
 msgstr "Lägg till ny"
-
-#: 
-msgid "Error: A "
-msgstr "Fel: A"
 
 #: 
 msgid " by that name already exists."
@@ -2208,10 +2151,6 @@ msgstr "Välj roll"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "Fritt anpassade person fält redigeringsverktyg"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Varning: Att radera detta fält raderar alla person information angivenför denna fält!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2450,15 +2389,6 @@ msgid "Assigning"
 msgstr "Tilldelning"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "Bekräfta radera egenskap"
-
-#: 
-#, fuzzy
-msgid "Please confirm deletion of this property"
-msgstr "Var snäll och bekräfta att du vill radera denna egenskap"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "Varning: Att radera denna egenskap raderar alla tilldelningar till denna egenskap av personer, familjer och grupper"
 
@@ -2503,10 +2433,6 @@ msgstr "Egenskap"
 #: 
 msgid "Prompt"
 msgstr "Framkalla"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Bekräfta radera egenskapstyp"
 
 #: 
 msgid "Warning"
@@ -2659,10 +2585,6 @@ msgstr "Återställ databasen"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Alla bidrag från denna familj flytades till en annan familj"
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Bekräfta radera familj"
 
 #: 
 #, fuzzy
@@ -2914,39 +2836,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Bekräfta omställningen av lösenordet för denna användare"
 
 #: 
-#, fuzzy
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Frivilliga möjligheter radera konfirmation"
-
-#: 
-#, fuzzy
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Tilldela en ny frivillig möjlighet:"
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Volontär möjlighet kommer att lediga för följande personer."
-
-#: 
-#, fuzzy
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Ja, radera denna frivillig möjlighet:"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Frivilliga möjligheter redigeringsverktyg"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Inga frivilliga möjligheter tillagd än"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "OBS: lägga till, radera och Beställning förändringar är omedelbara. Förändringar Namn eller DESC fält måste sparas genom att trycka på 'Spara ändringar'"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Lägg till ny möjlighet"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -3033,10 +2928,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Tack för att du registrerade din ChurchCRM-installation."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "PDF-filer e-postmeddelanden lyckades"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF mailades framgångsrikt till familjemedlemmar."
 
@@ -3072,10 +2963,6 @@ msgstr "Vald post bortagen från korgen."
 #, fuzzy
 msgid "Your cart has been successfully emptied"
 msgstr "Korgen tömdes"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "poster lades till korgen"
 
 #: 
 msgid "Select Fiscal Year"
@@ -3707,10 +3594,6 @@ msgid "Functions"
 msgstr "Funktioner"
 
 #: 
-msgid "Add New Class"
-msgstr "Lägg till ny klass"
-
-#: 
 msgid "Export to CSV"
 msgstr "Exportera till CSV"
 
@@ -3912,20 +3795,13 @@ msgid "Groups"
 msgstr "Grupper"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Fel: Du måste ange ett namn"
-
-#: 
 msgid "Total $"
 msgstr "Totalt $"
 
 #: 
-msgid "with this property.."
-msgstr "med den här egenskapen .."
-
-#: 
-msgid "with this Property..."
-msgstr "med den här fastigheten ..."
+#, fuzzy
+msgid "with this property..."
+msgstr "med den här egenskapen ..."
 
 #: 
 msgid "Church Email"
@@ -4082,10 +3958,6 @@ msgid "Church Phone"
 msgstr "Kyrktelefon"
 
 #: 
-msgid "Home area code of the church"
-msgstr "Kyrkans hemnummer"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage för översta raden i skatterapporten. Datum läggs till i slutet av den här raden."
 
@@ -4228,10 +4100,6 @@ msgstr "Fråga-meny"
 #: 
 msgid "CSV Export Records"
 msgstr "CSV Exportera data"
-
-#: 
-msgid "People Properties"
-msgstr "Personegenskapar"
 
 #: 
 msgid "Family Properties"
@@ -4490,33 +4358,8 @@ msgstr "Matcha anpassat fält till detta värde"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Familjemedlemmaräge"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Person efter ålder"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Totalt efter kön"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Person efter roll och kön"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Person efter fastighet"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "avancerad sökning"
 
 #. Context: query_qry
 #: 
@@ -4527,16 +4370,6 @@ msgstr "Födelsedagar"
 #: 
 msgid "Membership anniversaries"
 msgstr "Medlemskapsjubileum"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Välj databasanvändare"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Välj alla medlemmar"
 
 #. Context: query_qry
 #: 
@@ -4567,16 +4400,6 @@ msgstr "Familjelöfte efter räkenskapsåret"
 #: 
 msgid "CustomSearch"
 msgstr "CustomSearch"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Returnerar varje familj och det totala antalet personer som tilldelats dem."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Returnerar alla personregister med åldrar mellan två givna åldrar."
 
 #. Context: query_qry
 #: 
@@ -6472,10 +6295,6 @@ msgstr "Inkludera"
 #: 
 msgid "Exclude"
 msgstr "Utesluta"
-
-#: 
-msgid "No property assignments"
-msgstr "Inga fastighetsuppdrag"
 
 #: 
 msgid "View Cart"

@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "أو"
 
 #: 
-msgid "Add New Event"
-msgstr "إضافة حدث جديد"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "عربة التسوق الخاصة بك فارغ!"
 
@@ -757,10 +753,6 @@ msgid "Save Changes"
 msgstr "حفظ التغييرات"
 
 #: 
-msgid "Add New Fund"
-msgstr "إضافة صندوق جديد"
-
-#: 
 msgid "Church Event Editor"
 msgstr "محرر حدث الكنيسة"
 
@@ -911,14 +903,6 @@ msgid "Default Option"
 msgstr "الخيار الافتراضي"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "تحذير: تم حذف هذا المجال، سوف تفقد جميع البيانات irrevokably الأسرة المخصصة لهذا المجال!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "تحذير: الأسهم والأزرار حذف نافذة المفعول فورا. سيتم فقدان التغييرات اسم الحقل إذا كنت لا \"حفظ التغييرات\" قبل استخدام أعلى والأسفل وحذف أو \"إضافة جديدة 'زر!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "لم يتم إضافة أي مخصص الحقول الأسرة بعد"
 
@@ -949,10 +933,6 @@ msgstr "يجب ادخال اسم"
 #: 
 msgid "That field name already exists."
 msgstr "حقل الاسم موجود بالفعل"
-
-#: 
-msgid "Add New Field"
-msgstr "إضافة حقل جديد"
 
 #: 
 msgid "Family Editor"
@@ -1081,10 +1061,6 @@ msgstr "انشاء"
 #: 
 msgid "Envelope Number"
 msgstr "رقم المظروف"
-
-#: 
-msgid "Add New Member"
-msgstr "اضافة عضو جديد"
 
 #: 
 msgid "Upload Photo"
@@ -1617,16 +1593,8 @@ msgid "New Role"
 msgstr "دور جديد"
 
 #: 
-msgid "Add New Role"
-msgstr "إضافة دور جديد"
-
-#: 
 msgid "Group Listing"
 msgstr "قائمة المجموعة"
-
-#: 
-msgid "Add New Group"
-msgstr "أضف مجموعة جديدة"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1907,10 +1875,6 @@ msgid "All People"
 msgstr "كل الناس"
 
 #: 
-msgid "Classifications Manager"
-msgstr "مدير التصنيفات"
-
-#: 
 msgid "Email All"
 msgstr "أرسل جميع"
 
@@ -1987,14 +1951,6 @@ msgid "Gender Demographics"
 msgstr "التركيبة السكانية الجنس"
 
 #: 
-msgid "Men"
-msgstr "الرجال"
-
-#: 
-msgid "Women"
-msgstr "السيدات"
-
-#: 
 msgid "Boys"
 msgstr "الاولاد"
 
@@ -2025,10 +1981,6 @@ msgstr "تحديث العائلات"
 #: 
 msgid "Updated"
 msgstr "تم التحديث"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "ملاحظة تأكيد حذف"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2063,11 +2015,6 @@ msgid "Option"
 msgstr "اختيار"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "تحذير: إزالة وإعادة تعيين كافة المهام لجميع الأشخاص ذوي المهمة!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "الخطأ: تكرار"
 
@@ -2090,10 +2037,6 @@ msgstr "اغلاق"
 #: 
 msgid "Add New"
 msgstr "اضافة جديد"
-
-#: 
-msgid "Error: A "
-msgstr "خطأ: A"
 
 #: 
 msgid " by that name already exists."
@@ -2134,10 +2077,6 @@ msgstr "اختيار"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "عرف الشخص الحقول محرر"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "تحذير: تم حذف هذا المجال، سوف تفقد جميع البيانات irrevokably الشخص المعين لهذا الحقل!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2364,14 +2303,6 @@ msgid "Assigning"
 msgstr "تعيين"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "الملكية تأكيد حذف"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "حذف تأكيد الرجاء لهذه المنشأة"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "سوف حذف هذا العقار أيضا حذف جميع المهام من هذا العقار إلى أي سجلات الناس، الأسرة، أو مجموعة."
 
@@ -2415,10 +2346,6 @@ msgstr "خاصية"
 #: 
 msgid "Prompt"
 msgstr "مستعجل"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "نوع العقار تأكيد حذف"
 
 #: 
 msgid "Warning"
@@ -2569,10 +2496,6 @@ msgstr "استعادة قاعدة البيانات"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "تم نقل جميع التبرعات من هذه العائلة إلى أسرة أخرى."
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "تاكيد مسح العائلة"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2804,36 +2727,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "الرجاء التأكد من إعادة تعيين كلمة المرور من هذا المستخدم"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "المتطوعين فرصة تأكيد حذف"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "هناك أناس المخصصة لهذا التطوعية فرصة."
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "سوف المتطوعين فرصة تكون غير مخصص للشعب التالية."
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "نعم ، احذف فرصة التطوع هذه"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "المتطوعين فرصة محرر"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "لم يتم إضافة أي فرص التطوع بعد"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "ملاحظة: إضافة أو حذف، والتغيرات الترتيب هي فورية. تغييرات على اسم أو تفاصيل الحقول يجب حفظ عن طريق الضغط على \"حفظ التغييرات\""
-
-#: 
-msgid "Add New Opportunity"
-msgstr "إضافة الفرص جديد"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2920,10 +2819,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "شكرا لتسجيلك تركيب ChurchCRM الخاص بك."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "ملفات PDF عبر البريد الالكتروني بنجاح"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF بالبريد الالكتروني بنجاح لأفراد الأسرة."
 
@@ -2958,10 +2853,6 @@ msgstr "سجل المحدد إزالة بنجاح من العربة."
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "تم إفراغ سلة التسوق الخاصة بك بنجاح"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "البند (ق) تضاف الى العربة."
 
 #: 
 msgid "Select Fiscal Year"
@@ -3576,10 +3467,6 @@ msgid "Functions"
 msgstr "المهام"
 
 #: 
-msgid "Add New Class"
-msgstr "إضافة فئة جديدة"
-
-#: 
 msgid "Export to CSV"
 msgstr "تصدير إلى CSV"
 
@@ -3781,20 +3668,13 @@ msgid "Groups"
 msgstr "مجموعات"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "خطأ: يجب إدخال اسم"
-
-#: 
 msgid "Total $"
 msgstr "مجموع $"
 
 #: 
-msgid "with this property.."
-msgstr "مع هذه الخاصية .."
-
-#: 
-msgid "with this Property..."
-msgstr "مع هذا العقار ..."
+#, fuzzy
+msgid "with this property..."
+msgstr "مع هذه الخاصية ..."
 
 #: 
 msgid "Church Email"
@@ -3951,10 +3831,6 @@ msgid "Church Phone"
 msgstr "الكنيسة الهاتف"
 
 #: 
-msgid "Home area code of the church"
-msgstr "رمز المنطقة الرئيسية للكنيسة"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage لخط العلوي من تقرير الضريبة. سيتم إلحاق مواعيد لنهاية هذا الخط."
 
@@ -4097,10 +3973,6 @@ msgstr "القائمة الاستعلام"
 #: 
 msgid "CSV Export Records"
 msgstr "CSV تصدير السجلات"
-
-#: 
-msgid "People Properties"
-msgstr "خصائص الناس"
 
 #: 
 msgid "Family Properties"
@@ -4359,33 +4231,8 @@ msgstr "تطابق الحقل المخصص لهذه القيمة"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "عدد أفراد العائلة"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "شخص حسب العمر"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "إجمالي حسب الجنس"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "شخص من دور والجنس"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "شخص عن طريق الملكية"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "البحث المتقدم"
 
 #. Context: query_qry
 #: 
@@ -4396,16 +4243,6 @@ msgstr "أعياد الميلاد"
 #: 
 msgid "Membership anniversaries"
 msgstr "الذكرى السنوية العضوية"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "مستخدمي قاعدة البيانات حدد"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "تحديد كافة أعضاء"
 
 #. Context: query_qry
 #: 
@@ -4436,16 +4273,6 @@ msgstr "تعهد الأسرة السنة المالية"
 #: 
 msgid "CustomSearch"
 msgstr "بحث مخصص"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "يعود لكل عائلة والعدد الإجمالي للأشخاص المسندة إليهم."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "يعود أي سجلات الشخص مع أعمارهم بين سن معينة."
 
 #. Context: query_qry
 #: 
@@ -6341,10 +6168,6 @@ msgstr "تتضمن"
 #: 
 msgid "Exclude"
 msgstr "استبعد"
-
-#: 
-msgid "No property assignments"
-msgstr "لا تعيينات الخصائص"
 
 #: 
 msgid "View Cart"

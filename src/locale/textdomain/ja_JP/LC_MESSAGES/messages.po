@@ -237,10 +237,6 @@ msgid "Data import successful."
 msgstr "データのインポートが成功しました"
 
 #: 
-msgid "Add New Event"
-msgstr "新しいイベントを追加"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "あなたのカートは空です！"
 
@@ -431,10 +427,6 @@ msgid "You must enter a name"
 msgstr "名前を入力する必要があります"
 
 #: 
-msgid "Add New Field"
-msgstr "新しいフィールドを追加する"
-
-#: 
 msgid "Family Info"
 msgstr "家族情報"
 
@@ -497,10 +489,6 @@ msgstr "11月"
 #: 
 msgid "December"
 msgstr "12月"
-
-#: 
-msgid "Add New Member"
-msgstr "新しいメンバーを追加"
 
 #: 
 msgid "Upload Photo"
@@ -627,10 +615,6 @@ msgid "New Role"
 msgstr "新しいロール"
 
 #: 
-msgid "Add New Role"
-msgstr "新しいロールを追加"
-
-#: 
 msgid "Editing"
 msgstr "編集中"
 
@@ -693,14 +677,6 @@ msgstr "現在のロール"
 #: 
 msgid "All People"
 msgstr "全員"
-
-#: 
-msgid "Men"
-msgstr "男性"
-
-#: 
-msgid "Women"
-msgstr "女性"
 
 #: 
 msgid "Boys"

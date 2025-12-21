@@ -343,10 +343,6 @@ msgid "OR"
 msgstr "ወይም"
 
 #: 
-msgid "Add New Event"
-msgstr "አዲስ ክስተት ያክሉ"
-
-#: 
 msgid "Your cart is empty!"
 msgstr "ጋሪዎ ባዶ ነው!"
 
@@ -757,10 +753,6 @@ msgid "Save Changes"
 msgstr "ለውጦችን አስቀምጥ"
 
 #: 
-msgid "Add New Fund"
-msgstr "አዲስ ፈንድ አክል"
-
-#: 
 msgid "Church Event Editor"
 msgstr "የቤተ ክርስቲያን ዝግጅት አዘጋጅ"
 
@@ -911,14 +903,6 @@ msgid "Default Option"
 msgstr "ነባሪ አማራጭ"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "ማስጠንቀቂያ፡ ይህን መስክ በመሰረዝ ለዚህ መስክ የተመደበውን ሁሉንም የቤተሰብ ውሂብ በማይሻር ሁኔታ ታጣለህ!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "ማስጠንቀቂያ፡ ቀስት እና ሰርዝ ቁልፎች ወዲያውኑ ተግባራዊ ይሆናሉ። ወደ ላይ፣ ወደ ታች፣ ሰርዝ ወይም 'አዲስ አክል' የሚለውን ቁልፍ ከመጠቀምዎ በፊት 'ለውጦችን ካላስቀመጡ' የመስክ ስም ለውጦች ይጠፋሉ!"
-
-#: 
 msgid "No custom Family fields have been added yet"
 msgstr "እስካሁን ምንም ብጁ የቤተሰብ መስኮች አልተጨመሩም።"
 
@@ -949,10 +933,6 @@ msgstr "ስም ማስገባት አለብህ"
 #: 
 msgid "That field name already exists."
 msgstr "ያ የመስክ ስም አስቀድሞ አለ።"
-
-#: 
-msgid "Add New Field"
-msgstr "አዲስ መስክ ጨምር"
 
 #: 
 msgid "Family Editor"
@@ -1081,10 +1061,6 @@ msgstr "ተፈጥሯል"
 #: 
 msgid "Envelope Number"
 msgstr "የፖስታ ቁጥር"
-
-#: 
-msgid "Add New Member"
-msgstr "አዲስ አባል ጨምር"
 
 #: 
 msgid "Upload Photo"
@@ -1617,16 +1593,8 @@ msgid "New Role"
 msgstr "አዲስ ሚና"
 
 #: 
-msgid "Add New Role"
-msgstr "አዲስ ሚና ጨምር"
-
-#: 
 msgid "Group Listing"
 msgstr "የቡድን ዝርዝር"
-
-#: 
-msgid "Add New Group"
-msgstr "አዲስ ቡድን ያክሉ"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1907,10 +1875,6 @@ msgid "All People"
 msgstr "ሁሉም ሰዎች"
 
 #: 
-msgid "Classifications Manager"
-msgstr "ምደባ አስተዳዳሪ"
-
-#: 
 msgid "Email All"
 msgstr "ሁሉንም ኢሜይል ያድርጉ"
 
@@ -1987,14 +1951,6 @@ msgid "Gender Demographics"
 msgstr "የስርዓተ-ፆታ ስነ-ሕዝብ"
 
 #: 
-msgid "Men"
-msgstr "ወንዶች"
-
-#: 
-msgid "Women"
-msgstr "ሴቶች"
-
-#: 
 msgid "Boys"
 msgstr "ወንድ ልጆች"
 
@@ -2025,10 +1981,6 @@ msgstr "የተዘመኑ ቤተሰቦች"
 #: 
 msgid "Updated"
 msgstr "ተዘምኗል"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "ጽሁፉ እንዲጠፋ ወስን"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2063,11 +2015,6 @@ msgid "Option"
 msgstr "ምርጫዎች"
 
 #: 
-#, fuzzy
-msgid "Warning: Removing will reset all assignments for all people with the assignment!"
-msgstr "ማስጠንቀቂያ: ይህን መቀነስ ሁሉንም መረጃዎች ይቀይራል!"
-
-#: 
 msgid "Error: Duplicate"
 msgstr "ስህተት: ተባዝቱዋል"
 
@@ -2090,10 +2037,6 @@ msgstr "ውጣ"
 #: 
 msgid "Add New"
 msgstr "አዲስ አስገባ"
-
-#: 
-msgid "Error: A "
-msgstr "ስህተት: "
 
 #: 
 msgid " by that name already exists."
@@ -2134,10 +2077,6 @@ msgstr "ምረጥ"
 #: 
 msgid "Custom Person Fields Editor"
 msgstr "የግለሰብ ጽሁፍ ማረሚያ"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "ማስጠንቀቂያ: ይህን መረጃ ስታጠፋ, ከግለሰቡ ጋር የተያያዙ ሙሉ መረጃዎችን ታጣለህ!"
 
 #: 
 msgid "No custom person fields have been added yet"
@@ -2364,14 +2303,6 @@ msgid "Assigning"
 msgstr "መመደብ"
 
 #: 
-msgid "Property Delete Confirmation"
-msgstr "ንብረቱ እንዲሰረዝ ይፈልጋሉ"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "እባክዎ የንብረቱን መሰረዝ ያረጋግጡ"
-
-#: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
 msgstr "ንብረቱን መሰረዝ ይህ ንብረት የተመደበባቸውን ሰዎች ቤተሰቦች ወይ ቡድኖች ሁሉ መረጃ ይሰርዛል።"
 
@@ -2415,10 +2346,6 @@ msgstr "ንብረት"
 #: 
 msgid "Prompt"
 msgstr "ጥያቄ"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "የንብረት አይነት ስረዛን አረጋግጥ"
 
 #: 
 msgid "Warning"
@@ -2569,10 +2496,6 @@ msgstr "መረጃውን ወደቀደመው መልስ"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "ሁሉም የዚህ ቤተሰብ ልገሳ ወደ ሌላ ቤተሰብ ተወስዷል።"
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "ይህ ቤተሰብ መሰረዙ ማረጋገጫ"
 
 #: 
 msgid "Please confirm deletion of"
@@ -2804,36 +2727,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "እባክዎ የዚህን ተጠቃሚ የይለፍ ቃል ዳግም ማስጀመር ያረጋግጡ "
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "የበጎ ፈቃደኞች ዕድል ማረጋገጫ ሰርዝ"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "ለዚህ የበጎ ፈቃደኞች ዕድል የተመደቡ ሰዎች አሉ"
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "የበጎ ፈቃደኝነት እድል ለሚከተሉት ሰዎች ያልተመደበ ይሆናል"
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "አዎ፣ ይህን የበጎ ፈቃደኝነት እድል ሰርዝ "
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "የበጎ ፈቃደኞች ዕድል አስተካካይ"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "እስካሁን ምንም የበጎ ፈቃድ እድሎች አልተጨመሩም"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "ማሳሰቢያ፡ ለውጦቹ አክል፣ ሰርዝ እና ማዘዝ ወዲያውኑ ናቸው። በስም ወይም በዲስክ መስኮች ላይ የተደረጉ ለውጦች 'ለውጦችን አስቀምጥ' የሚለውን በመጫን መቀመጥ አለባቸው. "
-
-#: 
-msgid "Add New Opportunity"
-msgstr "አዲስ ዕድል ጨምር "
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -2920,10 +2819,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "የChurchCRM ጭነትዎን ስላስመዘገቡ እናመሰግናለን"
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "ፒዲኤፎች በተሳካ ሁኔታ ኢሜይል ተልኳል"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "ፒዲኤፍ በተሳካ ሁኔታ ለቤተሰብ አባላት ኢሜይል ተልኳል"
 
@@ -2958,10 +2853,6 @@ msgstr "የተመረጠው መረጃ በተሳካ ሁኔታ ከመዝገብዎ �
 #: 
 msgid "Your cart has been successfully emptied"
 msgstr "መዝገብዎ በተሳካ ሁኔታ ባዶ ሆኗል"
-
-#: 
-msgid "item(s) added to the Cart."
-msgstr "ወደ መዝገብዎ የተጨመረው ንጥል(ቶች)"
 
 #: 
 msgid "Select Fiscal Year"
@@ -3576,10 +3467,6 @@ msgid "Functions"
 msgstr "ተግባራት"
 
 #: 
-msgid "Add New Class"
-msgstr "አዲስ ክፍል ያክሉ"
-
-#: 
 msgid "Export to CSV"
 msgstr "ወደ CSV ላክ"
 
@@ -3781,20 +3668,13 @@ msgid "Groups"
 msgstr "ቡድኖች"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "ስህተት: ስም ማስገባት አለብህ"
-
-#: 
 msgid "Total $"
 msgstr "ጠቅላላ ብር"
 
 #: 
-msgid "with this property.."
-msgstr "ከዚህ ንብረት ጋር.."
-
-#: 
-msgid "with this Property..."
-msgstr "ከዚህ ንብረት ጋር…"
+#, fuzzy
+msgid "with this property..."
+msgstr "ከዚህ ንብረት ጋር..."
 
 #: 
 msgid "Church Email"
@@ -3951,10 +3831,6 @@ msgid "Church Phone"
 msgstr "የቤተ ክርስቲያን ስልክ"
 
 #: 
-msgid "Home area code of the church"
-msgstr "የቤተክርስቲያኑ የቤት አካባቢ ኮድ"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "የግብር ሪፖርት ከፍተኛ መስመር። ቀኖች በዚህ መስመር መጨረሻ ላይ ይታከላሉ።"
 
@@ -4098,10 +3974,6 @@ msgstr "የጥያቄ ምናሌ"
 #: 
 msgid "CSV Export Records"
 msgstr "CSV ወደ ውጪ መላክ መዝገቦች"
-
-#: 
-msgid "People Properties"
-msgstr "የሰዎች ንብረቶች"
 
 #: 
 msgid "Family Properties"
@@ -4360,33 +4232,8 @@ msgstr "ሚመች ቦታ ከዚህ ዋጋ ጋር አዛምድ"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "የቤተሰብ አባላት ብዛት"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "ሰው በእድሜ"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "አጠቃላይ በጾታ"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "ሰው በስራ እና በፆታ"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "ሰው በንብረት"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "የላቀ ፍለጋ"
 
 #. Context: query_qry
 #: 
@@ -4397,16 +4244,6 @@ msgstr "የልደት ቀናት"
 #: 
 msgid "Membership anniversaries"
 msgstr "የአባልነት ክብረ በዓላት"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "የውሂብ ጎታ ተጠቃሚዎችን ይምረጡ"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "ሁሉንም አባላት ይምረጡ"
 
 #. Context: query_qry
 #: 
@@ -4437,16 +4274,6 @@ msgstr "የቤተሰብ ቃል ኪዳን በበጀት ዓመት"
 #: 
 msgid "CustomSearch"
 msgstr "ብጁ ፍለጋ"
-
-#. Context: query_qry
-#: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "እያንዳንዱ ቤተሰብ እና የተመደበላቸው ሰዎች ጠቅላላ ቁጥር ይመልሳል።"
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "ማንኛዉም ሰው በሁለት የተሰጡ እድሜዎች መካከል ይመዘግባል"
 
 #. Context: query_qry
 #: 
@@ -6342,10 +6169,6 @@ msgstr "ያካትቱ"
 #: 
 msgid "Exclude"
 msgstr "አያካቱ"
-
-#: 
-msgid "No property assignments"
-msgstr "ምንም የንብረት ምደባ የለም"
 
 #: 
 msgid "View Cart"
