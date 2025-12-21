@@ -28,13 +28,13 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
     ];
 
     if ($request->getQueryParams()['EmailsError']) {
-        $errorArgs = ['sGlobalMessage' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'), 'sGlobalMessageClass' => 'danger'];
+        $errorArgs = ['sGlobalMessage' => gettext('Error sending email(s) - Please check logs for more information'), 'sGlobalMessageClass' => 'danger'];
         $pageArgs = array_merge($pageArgs, $errorArgs);
     }
 
     $queryParam = $request->getQueryParams()['AllPDFsEmailed'];
     if ($queryParam) {
-        $headerArgs = ['sGlobalMessage' => gettext('PDFs successfully emailed ') . $queryParam . ' ' . gettext('families') . '.',
+        $headerArgs = ['sGlobalMessage' => sprintf(gettext('PDFs successfully emailed to %s families.'), $queryParam),
             'sGlobalMessageClass'       => 'success'];
         $pageArgs = array_merge($pageArgs, $headerArgs);
     }
