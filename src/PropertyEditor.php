@@ -47,6 +47,8 @@ $sPageTitle = $sTypeName . ' ' . gettext('Property Editor');
 
 $bError = false;
 $iType = 0;
+$sNameError = '';
+$sClassError = '';
 
 // Was the form submitted?
 if (isset($_POST['Submit'])) {
@@ -57,13 +59,13 @@ if (isset($_POST['Submit'])) {
 
     // Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<br><span class="text-error">' . gettext('You must enter a name') . '</span>';
+        $sNameError = '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ' . gettext('You must enter a name') . '</small>';
         $bError = true;
     }
 
     // Did they select a Type
     if (strlen($iClass) < 1) {
-        $sClassError = '<br><span class="text-error">' . gettext('You must select a type') . '</span>';
+        $sClassError = '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ' . gettext('You must select a type') . '</small>';
         $bError = true;
     }
 
@@ -119,7 +121,7 @@ $rsPropertyTypes = RunQuery($sSQL);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="container mt-4">
+<div class="container-fluid mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -164,7 +166,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <small class="form-text text-muted d-block mt-1"><?= gettext('Entering a Prompt value will allow the association of a free-form value.') ?></small>
                         </div>
                         <div class="d-flex gap-2">
-                            <button type="submit" class="btn btn-primary" name="Submit">
+                            <button type="submit" class="btn btn-success" name="Submit">
                                 <i class="fa-solid fa-save"></i>
                                 <?= gettext('Save') ?>
                             </button>
