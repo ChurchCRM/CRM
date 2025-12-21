@@ -127,6 +127,7 @@ if (isset($_POST['BulkAddToCart'])) {
             Cart::addPerson(str_replace(',', '', $aItemsToProcess[$iCount]));
         }
         $sGlobalMessage = sprintf(ngettext('%d Person added to the Cart.', '%d People added to the Cart.', $iCount), $iCount);
+        $sGlobalMessageClass = 'success';
     }
 }
 
