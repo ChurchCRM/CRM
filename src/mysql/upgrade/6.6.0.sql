@@ -81,3 +81,11 @@ WHERE cfg_name = 'sCSVExportDelimiter'
 DELETE FROM query_qry
 WHERE qry_ID = 6
 	OR qry_Name = 'Total By Gender';
+
+-- Also remove the "Person by Age" query (functionality moved to People Dashboard)
+--   qry_ID: 4
+--   qry_Name: Person by Age
+--   Description: Age histogram is now available directly on the People Dashboard
+DELETE FROM query_qry
+WHERE qry_ID = 4
+	OR qry_Name = 'Person by Age';
