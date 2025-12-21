@@ -33,3 +33,14 @@ WHERE cfg_name = 'iEventsOnDashboardPresenceTimeOut'
 DELETE FROM config_cfg
 WHERE cfg_name = 'bEventsOnDashboardPresence'
 	OR cfg_id = 2042;
+
+-- Also remove social link config items no longer used
+--   cfg_id: 2014
+--   cfg_name: sChurchFB
+--   cfg_id: 2015
+--   cfg_name: sChurchTwitter
+DELETE FROM config_cfg
+WHERE cfg_name = 'sChurchFB'
+	OR cfg_id = 2014
+	OR cfg_name = 'sChurchTwitter'
+	OR cfg_id = 2015;
