@@ -17,9 +17,17 @@ $sPageTitle = gettext('Property Delete Confirmation');
 $sType = InputUtils::legacyFilterInput($_GET['Type']);
 $iPropertyID = InputUtils::legacyFilterInput($_GET['PropertyID'], 'int');
 
+// Get the property record in question
+$property = PropertyQuery::create()->findOneByProId($iPropertyID);
+
+// Handle property not found
+if ($property === null) {
+    RedirectUtils::redirect('PropertyList.php?Type=' . $sType);
+}
+
 // Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
-    PropertyQuery::create()->findOneByProId($iPropertyID)->delete();
+    $property->delete();
 
     $records = RecordPropertyQuery::create()->findByPropertyId($iPropertyID);
     $records->delete();
@@ -27,29 +35,44 @@ if (isset($_GET['Confirmed'])) {
     RedirectUtils::redirect('PropertyList.php?Type=' . $sType);
 }
 
-// Get the family record in question
-$property = PropertyQuery::create()->findOneByProId($iPropertyID);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
-<p>
-    <?= gettext('Please confirm deletion of this property') ?>:
-</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0"><?= gettext('Delete Property') ?></h4>
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">
+                        <?= gettext('Please confirm deletion of this property:') ?>
+                    </p>
 
-<p class="card card-body">
-    <?= $property->getProName() ?>
-</p>
+                    <div class="alert alert-light border border-danger mb-4">
+                        <strong><?= InputUtils::escapeHTML($property->getProName()) ?></strong>
+                    </div>
 
-<p>
-    <?= gettext('Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records.') ?>
-</p>
+                    <div class="alert alert-warning">
+                        <strong><?= gettext('Warning:') ?></strong>
+                        <?= gettext('Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records. This action cannot be undone.') ?>
+                    </div>
 
-<p class="text-center">
-    <a href="PropertyDelete.php?Confirmed=Yes&PropertyID=<?php echo $iPropertyID ?>&Type=<?= $sType ?>"><?= gettext('Yes, delete this record') ?></a> <?= gettext('(this action cannot be undone)') ?>
-    |
-    <a href="PropertyList.php?Type=<?= $sType ?>"><?= gettext('No, cancel this deletion') ?></a>
-</p>
+                    <div class="d-flex gap-2">
+                        <a href="PropertyDelete.php?Confirmed=Yes&PropertyID=<?= $iPropertyID ?>&Type=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-danger flex-fill">
+                            <i class="fa fa-trash"></i> <?= gettext('Yes, delete this property') ?>
+                        </a>
+                        <a href="PropertyList.php?Type=<?= InputUtils::escapeAttribute($sType) ?>" class="btn btn-secondary flex-fill">
+                            <?= gettext('Cancel') ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 </p>
 <?php
