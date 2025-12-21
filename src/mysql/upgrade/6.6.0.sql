@@ -113,3 +113,10 @@ WHERE qry_ID = 3
 DELETE FROM query_qry
 WHERE qry_ID = 24
 	OR qry_Name = 'Select all members';
+-- Also remove the "Advanced Search" query (searching available in People list page)
+--   qry_ID: 15
+--   qry_Name: Advanced Search
+--   Description: People list page supports comprehensive searching directly
+DELETE FROM query_qry
+WHERE qry_ID = 15
+	OR qry_Name = 'Advanced Search';
