@@ -35,7 +35,7 @@ class Menu
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-tachometer-alt'),
             'Calendar'     => self::getCalendarMenu(),
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
-            'Groups'       => self::getGroupMenu($isAdmin),
+            'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu(),
             'Email'        => new MenuItem(gettext('Email'), 'v2/email/dashboard', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope'),
             'Events'       => self::getEventsMenu($currentUser->isAddEventEnabled()),
@@ -89,7 +89,7 @@ class Menu
         return $peopleMenu;
     }
 
-    private static function getGroupMenu(bool $isAdmin): MenuItem
+    private static function getGroupMenu(bool $isAdmin, bool $isMenuOptions, bool $isManageGroups): MenuItem
     {
         $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
         $groupMenu->addSubMenu(new MenuItem(gettext('List Groups'), 'GroupList.php', true, 'fa-list'));
@@ -141,10 +141,11 @@ class Menu
             $groupMenu->addSubMenu($tmpMenu);
         }
 
-        if ($isAdmin) {
-            $adminMenu = new MenuItem(gettext('Admin'), '', $isAdmin);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', $isAdmin, 'fa-th-list'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'OptionManager.php?mode=grptypes', $isAdmin, 'fa-tags'));
+        $canSeeGroupAdmin = $isAdmin || $isMenuOptions || $isManageGroups;
+        if ($canSeeGroupAdmin) {
+            $adminMenu = new MenuItem(gettext('Admin'), '', true);
+            $adminMenu->addSubMenu(new MenuItem(gettext('Group Properties'), 'PropertyList.php?Type=g', true, 'fa-th-list'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Group Types'), 'OptionManager.php?mode=grptypes', true, 'fa-tags'));
 
             $groupMenu->addSubMenu($adminMenu);
         }
