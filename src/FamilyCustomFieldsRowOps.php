@@ -34,12 +34,22 @@ switch ($sAction) {
 
         // Delete a field from the form
     case 'delete':
-        // Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
-        $sSQL = "SELECT type_ID,fam_custom_Special FROM family_custom_master WHERE fam_custom_Field = '" . $sField . "'";
+        // Get the order ID for this field first (needed for reordering after delete)
+        $sSQL = "SELECT fam_custom_Order, type_ID, fam_custom_Special FROM family_custom_master WHERE fam_custom_Field = '" . $sField . "'";
         $rsTemp = RunQuery($sSQL);
         $aTemp = mysqli_fetch_array($rsTemp);
-        if ($aTemp[0] == 12) {
-            $sSQL = "DELETE FROM list_lst WHERE lst_ID = $aTemp[1]";
+        
+        if ($aTemp === null) {
+            // Field doesn't exist, redirect back
+            RedirectUtils::redirect('FamilyCustomFieldsEditor.php');
+            break;
+        }
+        
+        $iOrderID = (int)$aTemp['fam_custom_Order'];
+        
+        // Check if this field is a custom list type. If so, the list needs to be deleted from list_lst.
+        if ($aTemp['type_ID'] == 12) {
+            $sSQL = "DELETE FROM list_lst WHERE lst_ID = " . (int)$aTemp['fam_custom_Special'];
             RunQuery($sSQL);
         }
 
@@ -69,4 +79,8 @@ switch ($sAction) {
 }
 
 // Reload the Form Editor page
-RedirectUtils::redirect('FamilyCustomFieldsEditor.php');
+$redirectUrl = 'FamilyCustomFieldsEditor.php';
+if ($sAction === 'delete') {
+    $redirectUrl .= '?deleted=1';
+}
+RedirectUtils::redirect($redirectUrl);

@@ -260,15 +260,34 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    function confirmDeleteField(Field) {
-        var answer = confirm(<?= "'" . gettext('Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!') . "'" ?>)
-        if (answer) {
-            window.location = "FamilyCustomFieldsRowOps.php?Field=" + Field + "&Action=delete";
-            return true;
-        }
-        event.preventDefault ? event.preventDefault() : event.returnValue = false;
+    function confirmDeleteField(fieldName, fieldId) {
+        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + fieldName + '"?';
+        msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
+        msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all family data assigned for this field!')) ?>;
+        bootbox.confirm({
+            title: <?= json_encode(gettext('Delete Confirmation')) ?>,
+            message: msg,
+            buttons: {
+                cancel: { label: <?= json_encode(gettext('Cancel')) ?>, className: 'btn-secondary' },
+                confirm: { label: <?= json_encode(gettext('Delete')) ?>, className: 'btn-danger' }
+            },
+            callback: function(result) {
+                if (result) {
+                    window.location.href = 'FamilyCustomFieldsRowOps.php?Field=' + encodeURIComponent(fieldId) + '&Action=delete';
+                }
+            }
+        });
         return false;
     }
+
+    <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
+    $(document).ready(function() {
+        window.CRM.notify({
+            message: <?= json_encode(gettext('Field deleted successfully')) ?>,
+            type: 'success'
+        });
+    });
+    <?php endif; ?>
 </script>
 
 <div class="alert alert-warning" role="alert">
@@ -367,7 +386,11 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                     </td>
                     <td nowrap>
                         <div class="btn-group btn-group-sm" role="group">
-                            <button type="button" class="btn btn-sm btn-danger" onclick="return confirmDeleteField('<?= htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') ?>');">
+                            <?php
+                            $fieldNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
+                            $fieldIdJs = htmlspecialchars(json_encode($aFieldFields[$row]), ENT_QUOTES, 'UTF-8');
+                            ?>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $fieldIdJs ?>)">
                                 <i class="fa-solid fa-trash"></i>
                                 <?= gettext('Delete') ?>
                             </button>
