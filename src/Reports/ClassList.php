@@ -112,7 +112,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         $lst_OptionName = $groupRole->getOptionName();
 
         if ($lst_OptionName === 'Teacher') {
-            $phone = $pdf->stripPhone($homePhone);
+            $phone = $homePhone;
             if ($teacherCount >= $teachersThatFit) {
                 if (!$bFirstTeacher2) {
                     $teacherString2 .= ', ';
@@ -233,7 +233,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
         $pdf->writeAt($parentsX, $y, $parentsStr);
 
-        $pdf->writeAt($phoneX, $y, $pdf->stripPhone($phone));
+        $pdf->writeAt($phoneX, $y, $phone);
         $y += $yIncrement;
 
         $addrStr = '';

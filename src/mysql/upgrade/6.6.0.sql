@@ -20,6 +20,44 @@ WHERE cfg_name = 'sFont'
 -- Note: Deleting by both name and id makes this safe whether the cfg_name was renamed
 -- or the numeric id was previously used in older dumps.
 
+-- Also remove the configuration item for dashboard event timeout (no longer used)
+--   cfg_id: 2043
+--   cfg_name: iEventsOnDashboardPresenceTimeOut
+DELETE FROM config_cfg
+WHERE cfg_name = 'iEventsOnDashboardPresenceTimeOut'
+	OR cfg_id = 2043;
+
+-- Also remove the feature flag for showing events on dashboard (no longer used)
+--   cfg_id: 2042
+--   cfg_name: bEventsOnDashboardPresence
+DELETE FROM config_cfg
+WHERE cfg_name = 'bEventsOnDashboardPresence'
+	OR cfg_id = 2042;
+
+-- Also remove social link config items no longer used
+--   cfg_id: 2014
+--   cfg_name: sChurchFB
+--   cfg_id: 2015
+--   cfg_name: sChurchTwitter
+DELETE FROM config_cfg
+WHERE cfg_name = 'sChurchFB'
+	OR cfg_id = 2014
+	OR cfg_name = 'sChurchTwitter'
+	OR cfg_id = 2015;
+
+-- Also remove home area code setting (no longer used; phones displayed as-is)
+--   cfg_id: 1010
+--   cfg_name: sHomeAreaCode
+DELETE FROM config_cfg
+WHERE cfg_name = 'sHomeAreaCode'
+	OR cfg_id = 1010;
+
+-- Also remove unused short date format setting (not actively used in codebase)
+--   cfg_id: 104
+--   cfg_name: sDateFormatShort
+DELETE FROM config_cfg
+WHERE cfg_name = 'sDateFormatShort'
+	OR cfg_id = 104;
 -- Also remove CSV export charset setting (standardize on UTF-8 for all CSV exports)
 --   cfg_id: 108
 --   cfg_name: sCSVExportCharset
