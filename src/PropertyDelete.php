@@ -46,7 +46,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="card-body">
                     <div class="alert alert-warning" role="alert">
                         <i class="fa-solid fa-triangle-exclamation"></i>
-                        <?= gettext('Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records. This action cannot be undone.') ?>
+                        <?= gettext('Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records.') ?>
                     </div>
 
                     <div class="mb-3">
