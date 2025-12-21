@@ -58,3 +58,10 @@ WHERE cfg_name = 'sHomeAreaCode'
 DELETE FROM config_cfg
 WHERE cfg_name = 'sDatePickerPlaceHolder'
 	OR cfg_id = 109;
+
+-- Also remove unused short date format setting (not actively used in codebase)
+--   cfg_id: 104
+--   cfg_name: sDateFormatShort
+DELETE FROM config_cfg
+WHERE cfg_name = 'sDateFormatShort'
+	OR cfg_id = 104;
