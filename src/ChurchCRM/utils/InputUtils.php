@@ -23,18 +23,8 @@ class InputUtils
             return '';
         }
 
-        if (SystemConfig::getValue('sCSVExportCharset') === 'UTF-8') {
-            return gettext($string);
-        }
-
-        $resultString = iconv(
-            'UTF-8',
-            SystemConfig::getValue('sCSVExportCharset'),
-            gettext($string)
-        );
-        MiscUtils::throwIfFailed($resultString);
-
-        return $resultString;
+        // CSV exports now standardize on UTF-8 charset
+        return gettext($string);
     }
 
     /**

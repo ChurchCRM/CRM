@@ -19,3 +19,11 @@ WHERE cfg_name = 'sFont'
 
 -- Note: Deleting by both name and id makes this safe whether the cfg_name was renamed
 -- or the numeric id was previously used in older dumps.
+
+-- Also remove CSV export charset setting (standardize on UTF-8 for all CSV exports)
+--   cfg_id: 108
+--   cfg_name: sCSVExportCharset
+--   Description: Charset conversion no longer needed; all CSV exports use UTF-8
+DELETE FROM config_cfg
+WHERE cfg_name = 'sCSVExportCharset'
+	OR cfg_id = 108;
