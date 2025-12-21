@@ -109,7 +109,8 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $iCount++;
         }
 
-        $sGlobalMessage = $iCount . ' records(s) successfully added to selected Family.';
+        $_SESSION['sGlobalMessage'] = $iCount . ' record(s) successfully added to selected Family.';
+        $_SESSION['sGlobalMessageClass'] = 'success';
 
         RedirectUtils::redirect('v2/family/' . $iFamilyID . '&Action=EmptyCart');
     }

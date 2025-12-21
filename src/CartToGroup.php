@@ -29,7 +29,8 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
 
     Cart::emptyToGroup($iGroupID, $iGroupRole);
 
-    $sGlobalMessage = $iCount . ' records(s) successfully added to selected Group.';
+    $_SESSION['sGlobalMessage'] = $iCount . ' record(s) successfully added to selected Group.';
+    $_SESSION['sGlobalMessageClass'] = 'success';
 
     RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID . '&Action=EmptyCart');
 }
