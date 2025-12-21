@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -290,15 +291,40 @@ if ($embedded) {
 }
 
 ?>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    function confirmDelete(itemName, deleteUrl) {
+        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + itemName + '"?';
+        msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
+        msg += <?= json_encode(gettext('This will remove it from all people currently assigned to it.')) ?>;
+        bootbox.confirm({
+            title: <?= json_encode(gettext('Delete Confirmation')) ?>,
+            message: msg,
+            buttons: {
+                cancel: { label: <?= json_encode(gettext('Cancel')) ?>, className: 'btn-secondary' },
+                confirm: { label: <?= json_encode(gettext('Delete')) ?>, className: 'btn-danger' }
+            },
+            callback: function(result) {
+                if (result) {
+                    window.location.href = deleteUrl;
+                }
+            }
+        });
+        return false;
+    }
+
+    <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
+    $(document).ready(function() {
+        window.CRM.notify({
+            message: <?= json_encode(gettext('Item deleted successfully')) ?>,
+            type: 'success'
+        });
+    });
+    <?php endif; ?>
+</script>
+
 <div class="card">
     <div class="card-body">
         <form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
-
-            <div class="alert alert-warning" role="alert">
-                <i class="fa-solid fa-exclamation-triangle"></i>
-                <strong><?= gettext('Warning:') ?></strong>
-                <?= gettext('Removing will reset all assignments for all people with the assignment!') ?>
-            </div>
 
             <?php
 
@@ -319,24 +345,66 @@ if ($embedded) {
             }
             ?>
 
-            <div class="table-responsive">
-                <table class="table table-hover table-sm">
-                    <thead class="table-light">
-                        <tr>
-                            <th><?= gettext('Order') ?></th>
-                            <th><?= gettext('Name') ?></th>
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-plus"></i>
+                        <?= gettext('Add New') . ' ' . $adjplusname ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="newFieldName" class="form-label"><?= gettext('Name for New') . ' ' . $noun ?>:</label>
+                            <input class="form-control" type="text" id="newFieldName" name="newFieldName" maxlength="40">
                             <?php
-                            if ($mode == 'grproles') {
-                                echo '<th>' . gettext('Default') . '</th>';
-                            }
-                            if ($mode === 'classes') {
-                                echo '<th>' . gettext('Inactive') . '</th>';
+                            if ($iNewNameError > 0) {
+                                echo '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ';
+                                if ($iNewNameError == 1) {
+                                    echo gettext('You must enter a name');
+                                } else {
+                                    echo gettext('A ') . $noun . gettext(' by that name already exists.');
+                                }
+                                echo '</small>';
                             }
                             ?>
-                            <th class="text-center"><?= gettext('Actions') ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-success" name="AddField">
+                            <i class="fa-solid fa-plus"></i>
+                            <?= gettext('Add New') . ' ' . $adjplusname ?>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-list"></i>
+                        <?= gettext('Existing') . ' ' . $adjplusnameplural ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-sm mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th style="width: 80px;"><?= gettext('Order') ?></th>
+                                    <th><?= gettext('Name') ?></th>
+                                    <?php
+                                    if ($mode == 'grproles') {
+                                        echo '<th style="width: 120px;">' . gettext('Default') . '</th>';
+                                    }
+                                    if ($mode === 'classes') {
+                                        echo '<th style="width: 100px;">' . gettext('Inactive') . '</th>';
+                                    }
+                                    ?>
+                                    <th class="text-center" style="width: 200px;"><?= gettext('Actions') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
                 <?php
                 $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
@@ -384,7 +452,10 @@ if ($embedded) {
                                 <div class="btn-group btn-group-sm" role="group">
                                     <?php
                                     if ($numRows > 0) {
-                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=delete" class="btn btn-danger"><i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</a>';
+                                        $deleteUrl = 'OptionManagerRowOps.php?mode=' . urlencode($mode) . '&Order=' . urlencode($aSeqs[$row]) . '&ListID=' . urlencode($listID) . '&ID=' . urlencode($aIDs[$row]) . '&Action=delete';
+                                        $itemNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
+                                        $deleteUrlJs = htmlspecialchars(json_encode($deleteUrl), ENT_QUOTES, 'UTF-8');
+                                        echo '<button type="button" class="btn btn-danger" onclick="confirmDelete(' . $itemNameJs . ', ' . $deleteUrlJs . ')"><i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</button>';
                                     }
                                     if ($row != 1) {
                                         echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
@@ -401,11 +472,14 @@ if ($embedded) {
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex gap-2 mt-3 justify-content-center">
-                <button type="submit" class="btn btn-primary" name="SaveChanges">
-                    <i class="fa-solid fa-save"></i>
-                    <?= gettext('Save Changes') ?>
-                </button>
+        </div>
+    </div>
+
+    <div class="d-flex gap-2 mt-3 justify-content-center">
+        <button type="submit" class="btn btn-primary" name="SaveChanges">
+            <i class="fa-solid fa-save"></i>
+            <?= gettext('Save Changes') ?>
+        </button>
 
                 <?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
                 ?>
@@ -425,40 +499,7 @@ if ($embedded) {
             </div>
     </div>
 </div>
-
-<div class="card mt-4">
-    <div class="card-header bg-primary text-white">
-        <h5 class="mb-0">
-            <i class="fa-solid fa-plus"></i>
-            <?= gettext('Add New') . ' ' . $adjplusname ?>
-        </h5>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-6">
-                <label for="newFieldName" class="form-label"><?= gettext('Name for New') . ' ' . $noun ?>:</label>
-                <input class="form-control" type="text" id="newFieldName" name="newFieldName" maxlength="40">
-                <?php
-                if ($iNewNameError > 0) {
-                    echo '<div class="alert alert-danger mt-2" role="alert">';
-                    if ($iNewNameError == 1) {
-                        echo gettext('Error: You must enter a name');
-                    } else {
-                        echo gettext('Error: A ') . $noun . gettext(' by that name already exists.');
-                    }
-                    echo '</div>';
-                }
-                ?>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-success mt-3" name="AddField">
-            <i class="fa-solid fa-plus"></i>
-            <?= gettext('Add New') . ' ' . $adjplusname ?>
-        </button>
-        </center>
-        </form>
-    </div>
-</div>
+</form>
 <?php
 if ($embedded) {
     echo '</body></html>';

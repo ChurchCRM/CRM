@@ -166,4 +166,8 @@ switch ($sAction) {
 }
 
 // Reload the option manager page
-RedirectUtils::redirect("OptionManager.php?mode=$mode&ListID=$listID");
+$redirectParams = "mode=$mode&ListID=$listID";
+if ($sAction === 'delete') {
+    $redirectParams .= '&deleted=1';
+}
+RedirectUtils::redirect("OptionManager.php?$redirectParams");
