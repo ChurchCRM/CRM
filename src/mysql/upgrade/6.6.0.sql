@@ -73,3 +73,11 @@ WHERE cfg_name = 'sCSVExportCharset'
 DELETE FROM config_cfg
 WHERE cfg_name = 'sCSVExportDelimiter'
 	OR cfg_id = 107;
+
+-- Also remove the "Total By Gender" query (functionality moved to People Dashboard)
+--   qry_ID: 6
+--   qry_Name: Total By Gender
+--   Description: This query is now available directly on the People Dashboard's Gender Demographics chart
+DELETE FROM query_qry
+WHERE qry_ID = 6
+	OR qry_Name = 'Total By Gender';
