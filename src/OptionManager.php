@@ -11,7 +11,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-$mode = trim($_GET['mode']);
+$mode = InputUtils::legacyFilterInput($_GET['mode']);
 
 // Check security for the mode selected.
 switch ($mode) {
@@ -324,7 +324,6 @@ if ($embedded) {
                     <thead class="table-light">
                         <tr>
                             <th><?= gettext('Order') ?></th>
-                            <th class="text-center"><?= gettext('Actions') ?></th>
                             <th><?= gettext('Name') ?></th>
                             <?php
                             if ($mode == 'grproles') {
@@ -334,6 +333,7 @@ if ($embedded) {
                                 echo '<th>' . gettext('Inactive') . '</th>';
                             }
                             ?>
+                            <th class="text-center"><?= gettext('Actions') ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -360,21 +360,6 @@ if ($embedded) {
                                 </span>
                             </td>
                             <td>
-                                <div class="btn-group btn-group-sm" role="group">
-                                    <?php
-                                    if ($row != 1) {
-                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
-                                    }
-                                    if ($row < $numRows) {
-                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
-                                    }
-                                    if ($numRows > 0) {
-                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=delete" class="btn btn-danger" title="' . gettext('Delete') . '"><i class="fa-solid fa-trash"></i></a>';
-                                    }
-                                    ?>
-                                </div>
-                            </td>
-                            <td>
                                 <input class="form-control form-control-sm" type="text" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" maxlength="40">
                                 <?php
 
@@ -391,11 +376,25 @@ if ($embedded) {
                             if ($mode === 'classes') {
                                 echo '<td>';
                                 $check = in_array($aIDs[$row], $aInactiveClasses) ? "checked" : "";
-                                echo '<input id="inactive' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '" type="checkbox" onclick="$.get(\'OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=Inactive\')" ' . $check . '> ';
-                                echo gettext('Inactive');
+                                echo '<div class="form-check"><input id="inactive' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '" type="checkbox" class="form-check-input" onclick="$.get(\'OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=Inactive\')" ' . $check . '><label class="form-check-label" for="inactive' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '">' . gettext('Inactive') . '</label></div>';
                                 echo '</td>';
                             }
                             ?>
+                            <td>
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <?php
+                                    if ($numRows > 0) {
+                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=delete" class="btn btn-danger"><i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</a>';
+                                    }
+                                    if ($row != 1) {
+                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
+                                    }
+                                    if ($row < $numRows) {
+                                        echo '<a href="OptionManagerRowOps.php?mode=' . htmlspecialchars($mode, ENT_QUOTES, 'UTF-8') . '&Order=' . htmlspecialchars($aSeqs[$row], ENT_QUOTES, 'UTF-8') . '&ListID=' . htmlspecialchars($listID, ENT_QUOTES, 'UTF-8') . '&ID=' . htmlspecialchars($aIDs[$row], ENT_QUOTES, 'UTF-8') . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
+                                    }
+                                    ?>
+                                </div>
+                            </td>
                         </tr>
                     <?php
                     } ?>

@@ -232,7 +232,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     }
     function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     {
-        $sOptList = '<select name="' . $fld_name . '">';
+        $sOptList = '<select name="' . $fld_name . '" class="form-control form-control-sm">';
         $grp_Count = count($aSecGrp);
 
         for ($i = 0; $i < $grp_Count; $i++) {
@@ -359,19 +359,17 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 } ?>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-danger" name="delete" onclick="return confirmDeleteField(<?= "'" . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . "'" ?>);">
-                                    <i class="fa-solid fa-trash"></i>
-                                    <?= gettext('Delete') ?>
-                                </button>
-                            </td>
-                            <td class="text-center text-nowrap">
                                 <div class="btn-group btn-group-sm" role="group">
+                                    <button type="button" class="btn btn-sm btn-danger" onclick="return confirmDeleteField(<?= "'" . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . "'" ?>);">
+                                        <i class="fa-solid fa-trash"></i>
+                                        <?= gettext('Delete') ?>
+                                    </button>
                                     <?php
                                     if ($row != 1) {
-                                        echo '<a href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-up"></i></a>';
+                                        echo '<a href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
                                     }
                                     if ($row < $numRows) {
-                                        echo '<a href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down" class="btn btn-outline-secondary"><i class="fa-solid fa-arrow-down"></i></a>';
+                                        echo '<a href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
                                     } ?>
                                 </div>
                             </td>

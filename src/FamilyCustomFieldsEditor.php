@@ -240,7 +240,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 {
-    $sOptList = '<select name="' . $fld_name . '">';
+    $sOptList = '<select name="' . $fld_name . '" class="form-control form-control-sm">';
     $grp_Count = count($aSecGrp);
 
     for ($i = 0; $i < $grp_Count; $i++) {
@@ -367,8 +367,9 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                     </td>
                     <td nowrap>
                         <div class="btn-group btn-group-sm" role="group">
-                            <button type="button" class="btn btn-danger" onclick="return confirmDeleteField('<?= htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') ?>');" title="<?= gettext('Delete this field') ?>">
+                            <button type="button" class="btn btn-sm btn-danger" onclick="return confirmDeleteField('<?= htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') ?>');">
                                 <i class="fa-solid fa-trash"></i>
+                                <?= gettext('Delete') ?>
                             </button>
                             <?php
                             if ($row > 1) {
