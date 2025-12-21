@@ -52,15 +52,26 @@ $aPropTypes = [
 
 $sGlobalMessageClass = 'success';
 
-if (isset($_GET['Registered'])) {
+// Handle session-based messages (from redirects)
+if (isset($_SESSION['sGlobalMessage'])) {
+    $sGlobalMessage = $_SESSION['sGlobalMessage'];
+    $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
+    unset($_SESSION['sGlobalMessage']);
+    unset($_SESSION['sGlobalMessageClass']);
+}
+// Handle query parameter messages (for same-page operations, legacy pattern)
+elseif (isset($_GET['Registered'])) {
     $sGlobalMessage = gettext('Thank you for registering your ChurchCRM installation.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_GET['PDFEmailed'])) {
     if ($_GET['PDFEmailed'] == 1) {
         $sGlobalMessage = gettext('PDF successfully emailed to family members.');
+        $sGlobalMessageClass = 'success';
     } else {
         $sGlobalMessage = gettext('Failed to email PDF to family members.');
+        $sGlobalMessageClass = 'danger';
     }
 }
 
@@ -68,20 +79,24 @@ if (isset($_GET['PDFEmailed'])) {
 if (isset($_GET['AddGroupToPeopleCart'])) {
     AddGroupToPeopleCart(InputUtils::legacyFilterInput($_GET['AddGroupToPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully added to the Cart.');
+    $sGlobalMessageClass = 'success';
 }
 
 // Are they removing an entire group from the Cart?
 if (isset($_GET['RemoveGroupFromPeopleCart'])) {
     RemoveGroupFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveGroupFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully removed from the Cart.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_GET['ProfileImageDeleted'])) {
     $sGlobalMessage = gettext('Profile Image successfully removed.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_GET['ProfileImageUploaded'])) {
     $sGlobalMessage = gettext('Profile Image successfully updated.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_GET['ProfileImageUploadedError'])) {
@@ -93,6 +108,7 @@ if (isset($_GET['ProfileImageUploadedError'])) {
 if (isset($_GET['RemoveFromPeopleCart'])) {
     RemoveFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Selected record successfully removed from the Cart.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_POST['BulkAddToCart'])) {
@@ -110,7 +126,8 @@ if (isset($_POST['BulkAddToCart'])) {
         for ($iCount = 0; $iCount < count($aItemsToProcess); $iCount++) {
             Cart::addPerson(str_replace(',', '', $aItemsToProcess[$iCount]));
         }
-        $sGlobalMessage = $iCount . ' ' . gettext('item(s) added to the Cart.');
+        $sGlobalMessage = sprintf(ngettext('%d Person added to the Cart.', '%d People added to the Cart.', $iCount), $iCount);
+        $sGlobalMessageClass = 'success';
     }
 }
 

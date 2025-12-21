@@ -15,4 +15,5 @@
                     ob_end_flush();
 
 // Reset the Global Message
-                    $_SESSION['sGlobalMessage'] = '';
+                    unset($_SESSION['sGlobalMessage']);
+                    unset($_SESSION['sGlobalMessageClass']);
