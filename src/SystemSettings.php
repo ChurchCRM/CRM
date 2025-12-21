@@ -71,11 +71,16 @@ if (isset($_POST['save'])) {
         SystemConfig::setValueById($id, $value);
         next($type);
     }
-    RedirectUtils::redirect("SystemSettings.php?saved=true");
+    $_SESSION['sGlobalMessage'] = gettext('Setting saved');
+    $_SESSION['sGlobalMessageClass'] = 'success';
+    RedirectUtils::redirect("SystemSettings.php");
 }
 
-if (isset($_GET['saved'])) {
-    $sGlobalMessage = gettext('Setting saved');
+if (isset($_SESSION['sGlobalMessage'])) {
+    $sGlobalMessage = $_SESSION['sGlobalMessage'];
+    $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
+    unset($_SESSION['sGlobalMessage']);
+    unset($_SESSION['sGlobalMessageClass']);
 }
 
 require_once __DIR__ . '/Include/Header.php';

@@ -125,10 +125,6 @@ if ($EventID > 0) {
                     <h3 class="card-title"><?= gettext('Select Event for Check-In') ?></h3>
                 </div>
                 <div class="card-body">
-                    <?php if ($sGlobalMessage) : ?>
-                        <p><?= $sGlobalMessage ?></p>
-                    <?php endif; ?>
-
                     <div class="row">
                         <!-- Event Type Filter -->
                         <div class="col-md-4">
