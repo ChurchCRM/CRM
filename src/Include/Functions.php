@@ -62,6 +62,7 @@ if (isset($_SESSION['sGlobalMessage'])) {
 // Handle query parameter messages (for same-page operations, legacy pattern)
 elseif (isset($_GET['Registered'])) {
     $sGlobalMessage = gettext('Thank you for registering your ChurchCRM installation.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_GET['PDFEmailed'])) {
