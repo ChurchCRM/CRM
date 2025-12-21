@@ -275,10 +275,10 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
         <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
         $(document).ready(function() {
-            window.CRM.notify({
-                message: <?= json_encode(gettext('Field deleted successfully')) ?>,
-                type: 'success'
-            });
+            window.CRM.notify(
+                <?= json_encode(gettext('Field deleted successfully')) ?>,
+                { type: 'success' }
+            );
         });
         <?php endif; ?>
     </script>
@@ -298,7 +298,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         <select id="newFieldType" name="newFieldType" class="form-control">
                             <?php
                             for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                                echo '<option value="' . htmlspecialchars($iOptionID, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($aPropTypes[$iOptionID], ENT_QUOTES, 'UTF-8') . '</option>';
+                                echo '<option value="' . InputUtils::escapeAttribute($iOptionID) . '">' . InputUtils::escapeHTML($aPropTypes[$iOptionID]) . '</option>';
                             }
                             ?>
                         </select>

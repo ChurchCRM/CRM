@@ -106,8 +106,8 @@ if ($sAction === 'delete' && $iOpp > 0) {
                             echo "</div>";
                         }
                         ?>
-                        <div class="d-flex gap-2 justify-content-center mt-4">
-                            <a class="btn btn-danger" href="VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=<?= $iOpp ?>">
+                        <div class="d-flex justify-content-center mt-4">
+                            <a class="btn btn-danger mr-2" href="VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=<?= $iOpp ?>">
                                 <i class="fa-solid fa-trash"></i>
                                 <?= gettext('Yes, delete this Opportunity') ?>
                             </a>
@@ -440,8 +440,8 @@ if (isset($_POST['SaveChanges'])) {
                     </div>
                 </div>
 
-                <div class="d-flex gap-2 mt-3 justify-content-center">
-                    <button type="submit" class="btn btn-primary" name="SaveChanges">
+                <div class="d-flex mt-3 justify-content-center">
+                    <button type="submit" class="btn btn-primary mr-2" name="SaveChanges">
                         <i class="fa-solid fa-save"></i>
                         <?= gettext('Save Changes') ?>
                     </button>
