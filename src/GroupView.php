@@ -300,7 +300,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     //Was anything returned?
                     if (mysqli_num_rows($rsAssignedProperties) === 0) {
                         // No, indicate nothing returned
-                        echo '<p>' . gettext('No property assignments') . '.</p>';
+                        echo '<p>' . gettext('No property assignments.') . '</p>';
                     } else {
                         // Display table of properties
                         ?>
