@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-20 21:00-0800\n"
+"POT-Creation-Date: 2025-12-20 21:22-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -479,10 +479,6 @@ msgid "Advanced Deposit Report"
 msgstr ""
 
 msgid "Advanced Operations"
-msgstr ""
-
-#. Context: query_qry
-msgid "Advanced Search"
 msgstr ""
 
 #. Context: countries
@@ -3039,10 +3035,6 @@ msgstr ""
 msgid "Family Map"
 msgstr ""
 
-#. Context: query_qry
-msgid "Family Member Count"
-msgstr ""
-
 msgid "Family Members"
 msgstr ""
 
@@ -5594,14 +5586,6 @@ msgid "People who are configured to pay by credit card."
 msgstr ""
 
 #. Context: query_qry
-msgid "People who are members"
-msgstr ""
-
-#. Context: query_qry
-msgid "People who are registered as database users"
-msgstr ""
-
-#. Context: query_qry
 msgid "People with birthdays in a particular month"
 msgstr ""
 
@@ -5669,15 +5653,7 @@ msgid "Person already in cart"
 msgstr ""
 
 #. Context: query_qry
-msgid "Person by Age"
-msgstr ""
-
-#. Context: query_qry
 msgid "Person by Property"
-msgstr ""
-
-#. Context: query_qry
-msgid "Person by Role and Gender"
 msgstr ""
 
 msgid "Person from Group"
@@ -6384,14 +6360,6 @@ msgid "Return to Query Menu"
 msgstr ""
 
 #. Context: query_qry
-msgid "Returns any person records with ages between two given ages."
-msgstr ""
-
-#. Context: query_qry
-msgid "Returns each family and the total number of people assigned to them."
-msgstr ""
-
-#. Context: query_qry
 msgid "Returns person records which are assigned the given property."
 msgstr ""
 
@@ -6610,10 +6578,6 @@ msgstr ""
 msgid "Search People"
 msgstr ""
 
-#. Context: query_qry
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr ""
-
 msgid "Search by name or email..."
 msgstr ""
 
@@ -6725,15 +6689,7 @@ msgstr ""
 msgid "Select all"
 msgstr ""
 
-#. Context: query_qry
-msgid "Select all members"
-msgstr ""
-
 msgid "Select classifications to include"
-msgstr ""
-
-#. Context: query_qry
-msgid "Select database users"
 msgstr ""
 
 msgid "Select date"
@@ -6775,10 +6731,6 @@ msgid "Select your event type"
 msgstr ""
 
 msgid "Selected record successfully removed from the Cart."
-msgstr ""
-
-#. Context: query_qry
-msgid "Selects person records with the family role and gender specified."
 msgstr ""
 
 msgid "Self Register"
@@ -7626,10 +7578,6 @@ msgstr ""
 msgid "Total Amount"
 msgstr ""
 
-#. Context: query_qry
-msgid "Total By Gender"
-msgstr ""
-
 msgid "Total Deposit"
 msgstr ""
 
@@ -7652,10 +7600,6 @@ msgid "Total number of rows in the CSV file:"
 msgstr ""
 
 msgid "Total of all purchases: $"
-msgstr ""
-
-#. Context: query_qry
-msgid "Total of records matching a given gender."
 msgstr ""
 
 msgid "Total purchases: $"
