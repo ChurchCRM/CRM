@@ -89,3 +89,11 @@ WHERE qry_ID = 6
 DELETE FROM query_qry
 WHERE qry_ID = 4
 	OR qry_Name = 'Person by Age';
+
+-- Also remove the "Person by Role and Gender" query (filtering now available in People list page)
+--   qry_ID: 7
+--   qry_Name: Person by Role and Gender
+--   Description: People list page supports filtering by role and gender directly
+DELETE FROM query_qry
+WHERE qry_ID = 7
+	OR qry_Name = 'Person by Role and Gender';
