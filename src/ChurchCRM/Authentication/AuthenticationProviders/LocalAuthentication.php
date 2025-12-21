@@ -101,8 +101,7 @@ class LocalAuthentication implements IAuthenticationProvider
 
         // Create the variable for the Global Message
         $_SESSION['sGlobalMessage'] = '';
-
-        // Initialize the last operation time
+        $_SESSION['sGlobalMessageClass'] = 'success';
         $this->tLastOperationTimestamp = time();
 
         $_SESSION['bHasMagicQuotes'] = 0;
