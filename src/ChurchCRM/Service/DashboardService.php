@@ -38,6 +38,14 @@ class DashboardService
         $ageStats = [];
         $classificationStats = [];
         $genderStats = [GENDER_STATS_UNASSIGNED => 0, GENDER_STATS_MAN => 0, GENDER_STATS_WOMAN => 0, GENDER_STATS_BOY => 0, GENDER_STATS_GIRL => 0];
+        $simpleGenderStats = ['Male' => 0, 'Female' => 0, 'Unassigned' => 0];
+        $genderAgeRanges = [
+            GENDER_STATS_MAN => ['min' => PHP_INT_MAX, 'max' => 0],
+            GENDER_STATS_WOMAN => ['min' => PHP_INT_MAX, 'max' => 0],
+            GENDER_STATS_BOY => ['min' => PHP_INT_MAX, 'max' => 0],
+            GENDER_STATS_GIRL => ['min' => PHP_INT_MAX, 'max' => 0],
+            GENDER_STATS_UNASSIGNED => ['min' => PHP_INT_MAX, 'max' => 0]
+        ];
         $familyRoleStats = [];
 
         $people = PersonQuery::Create('per')
@@ -56,6 +64,16 @@ class DashboardService
             }
             $classificationStats[$classification]['count']++;
 
+            // Track raw gender (independent of age/role)
+            $rawGender = $person->getGender();
+            if ($rawGender === GENDER_STATS_MAN || $rawGender === GENDER_STATS_BOY) {
+                $simpleGenderStats['Male']++;
+            } elseif ($rawGender === GENDER_STATS_WOMAN || $rawGender === GENDER_STATS_GIRL) {
+                $simpleGenderStats['Female']++;
+            } else {
+                $simpleGenderStats['Unassigned']++;
+            }
+
             $gender = $person->getGender();
             if ($gender !== GENDER_STATS_UNASSIGNED && in_array($person->getFmrId(), $aDirRoleChild)) {
                 $gender = $gender + 2;
@@ -68,6 +86,14 @@ class DashboardService
                     $ageStats[$numericAge] = 0;
                 }
                 $ageStats[$numericAge]++;
+                
+                // Track age ranges for each gender
+                if ($numericAge < $genderAgeRanges[$gender]['min']) {
+                    $genderAgeRanges[$gender]['min'] = $numericAge;
+                }
+                if ($numericAge > $genderAgeRanges[$gender]['max']) {
+                    $genderAgeRanges[$gender]['max'] = $numericAge;
+                }
             }
 
             $familyRoleGender = $person->getFamilyRoleName() . ' - ' . $person->getGenderName();
@@ -93,7 +119,46 @@ class DashboardService
             $familyRoleStats
         );
 
-        return ['personCount' => $personCount, 'classificationStats' => $classificationStats, 'genderStats' => $genderStats, 'ageStats' => $ageStats, 'familyRoleStats' => $familyRoleStats];
+        // Create age groups for the histogram (in addition to individual ages)
+        $ageGroupStats = $this->getAgeGroupStats($ageStats);
+
+        return ['personCount' => $personCount, 'classificationStats' => $classificationStats, 'genderStats' => $genderStats, 'simpleGenderStats' => $simpleGenderStats, 'ageStats' => $ageStats, 'ageGroupStats' => $ageGroupStats, 'familyRoleStats' => $familyRoleStats];
+    }
+
+    /**
+     * Group ages into 10-year bands for better histogram visualization
+     * while preserving individual age data for line overlay.
+     */
+    private function getAgeGroupStats(array $ageStats): array
+    {
+        $ageGroups = [];
+        $bands = [
+            '0-10' => [0, 10],
+            '11-20' => [11, 20],
+            '21-30' => [21, 30],
+            '31-40' => [31, 40],
+            '41-50' => [41, 50],
+            '51-60' => [51, 60],
+            '61-70' => [61, 70],
+            '71-80' => [71, 80],
+            '81+' => [81, 999]
+        ];
+
+        foreach ($bands as $label => $range) {
+            $ageGroups[$label] = 0;
+            foreach ($ageStats as $age => $count) {
+                if ($age >= $range[0] && $age <= $range[1]) {
+                    $ageGroups[$label] += $count;
+                }
+            }
+        }
+
+        // Remove empty groups
+        $ageGroups = array_filter($ageGroups, function ($count) {
+            return $count > 0;
+        });
+
+        return $ageGroups;
     }
 
     public function getGroupStats(): array
