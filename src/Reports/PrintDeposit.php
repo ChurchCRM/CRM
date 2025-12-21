@@ -53,7 +53,7 @@ if ($output === 'pdf') {
     if ($paymentsCount === 0) {
         // Set a global session message and redirect back to the referring page (or deposit editor)
         $_SESSION['sGlobalMessage'] = gettext('No Payments on this Deposit');
-        $_SESSION['sGlobalMessageClass'] = 'warning';
+        $_SESSION['sGlobalMessageClass'] = 'info';
 
         if (array_key_exists('HTTP_REFERER', $_SERVER) && !empty($_SERVER['HTTP_REFERER'])) {
             $referer = $_SERVER['HTTP_REFERER'];
