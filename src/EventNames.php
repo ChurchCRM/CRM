@@ -142,7 +142,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
   <div class='card card-primary mb-4'>
     <div class='card-header'>
-      <h3 class="card-title mb-0"><i class="fas fa-plus mr-2"></i><?= gettext('Add New Event Type') ?></h3>
+      <h3 class="card-title mb-0"><i class="fas fa-plus mr-2"></i><?= gettext('Add New') . ' ' . gettext('Event Type') ?></h3>
     </div>
     <div class='card-body'>
       <form name="UpdateEventNames" action="EventNames.php" method="POST">

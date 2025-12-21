@@ -71,7 +71,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
         <div class="card">
             <div class="card-body text-center">
                 <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php" class="btn btn-success mr-2">
-                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Add New User') ?>
+                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Add New') . ' ' . gettext('User') ?>
                 </a>
                 <a href="<?= SystemURLs::getRootPath() ?>/SettingsUser.php" class="btn btn-primary">
                     <i class="fa-solid fa-cog mr-1"></i><?= gettext('User Settings') ?>

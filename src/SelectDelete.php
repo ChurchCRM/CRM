@@ -48,7 +48,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['
 }
 
 //Set the Page Title
-$sPageTitle = gettext('Family Delete Confirmation');
+$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Family');
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {

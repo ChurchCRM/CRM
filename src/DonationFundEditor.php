@@ -208,7 +208,7 @@ if ($donationFunds->count() == 0) {
                         &nbsp;
                     </td>
                     <td>
-                        <input type="submit" class="btn btn-primary" value="<?= gettext('Add New Fund') ?>" Name="AddField">
+                        <input type="submit" class="btn btn-primary" value="<?= gettext('Add New') . ' ' . gettext('Fund') ?>" Name="AddField">
                     </td>
                     <td width="15%"></td>
                 </tr>

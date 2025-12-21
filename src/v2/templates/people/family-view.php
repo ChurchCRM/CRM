@@ -433,7 +433,7 @@ $familyEmails = $family->getEmails();
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof"></i> <?= gettext("Family Members") ?></h3>
                 <div class="card-tools d-flex align-items-center">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                        <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New Member') ?>">
+                        <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Member') ?>">
                             <i class="fa-solid fa-user-plus"></i> <?= gettext('Add Member') ?>
                         </a>
                     <?php } ?>

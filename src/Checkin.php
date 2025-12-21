@@ -160,7 +160,7 @@ if ($EventID > 0) {
                     <div class="row">
                         <div class="col-12 text-right">
                             <a class="btn btn-primary" href="EventEditor.php">
-                                <i class="fa-solid fa-plus mr-1"></i><?= gettext('Add New Event'); ?>
+                                <i class="fa-solid fa-plus mr-1"></i><?= gettext('Add New') . ' ' . gettext('Event'); ?>
                             </a>
                         </div>
                     </div>

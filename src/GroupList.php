@@ -15,7 +15,7 @@ if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
     ?>
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title"><?= gettext('Add New Group') ?></h3>
+        <h3 class="card-title"><?= gettext('Add New') . ' ' . gettext('Group') ?></h3>
     </div>
     <div class="card-body">
         <form action="#" method="get" class="form-inline">

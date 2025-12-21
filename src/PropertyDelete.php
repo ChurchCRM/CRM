@@ -11,7 +11,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
 
-$sPageTitle = gettext('Property Delete Confirmation');
+$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Property');
 
 // Get the Type and Property
 $sType = InputUtils::legacyFilterInput($_GET['Type']);
