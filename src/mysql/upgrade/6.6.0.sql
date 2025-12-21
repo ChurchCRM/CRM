@@ -52,13 +52,6 @@ DELETE FROM config_cfg
 WHERE cfg_name = 'sHomeAreaCode'
 	OR cfg_id = 1010;
 
--- Also remove redundant date picker placeholder setting (use sDatePickerFormat instead)
---   cfg_id: 109
---   cfg_name: sDatePickerPlaceHolder
-DELETE FROM config_cfg
-WHERE cfg_name = 'sDatePickerPlaceHolder'
-	OR cfg_id = 109;
-
 -- Also remove unused short date format setting (not actively used in codebase)
 --   cfg_id: 104
 --   cfg_name: sDateFormatShort

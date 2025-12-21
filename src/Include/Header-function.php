@@ -74,7 +74,7 @@ function Header_body_scripts(): void
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
             maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= SystemService::getMaxUploadFileSize(false) ?>",
-            datePickerformat:"<?= SystemConfig::getValue('sDatePickerFormat') ?>",
+            datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
             churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>",
             systemConfigs: {
               sDateTimeFormat: "<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",

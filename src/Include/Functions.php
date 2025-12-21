@@ -561,7 +561,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>' .
             '</div>' .
-            '<input class="form-control date-picker" type="text" id="' . $fieldname . '" name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerFormat") . '"> ' .
+            '<input class="form-control date-picker" type="text" id="' . $fieldname . '" name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
             '</div>';
             break;
 
