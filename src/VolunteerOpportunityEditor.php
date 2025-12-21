@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -31,11 +32,11 @@ $bErrorFlag = false;
 $aNameErrors = [];
 $bNewNameError = false;
 
-if (array_key_exists('act', $_GET)) {
-    $sAction = InputUtils::legacyFilterInput($_GET['act']);
+if (array_key_exists('act', $_GET) || array_key_exists('act', $_POST)) {
+    $sAction = InputUtils::legacyFilterInput($_GET['act'] ?? $_POST['act'] ?? '');
 }
-if (array_key_exists('Opp', $_GET)) {
-    $iOpp = InputUtils::filterInt($_GET['Opp']);
+if (array_key_exists('Opp', $_GET) || array_key_exists('Opp', $_POST)) {
+    $iOpp = InputUtils::filterInt($_GET['Opp'] ?? $_POST['Opp'] ?? -1);
 }
 if (array_key_exists('row_num', $_GET)) {
     $iRowNum = InputUtils::filterInt($_GET['row_num']);
@@ -58,49 +59,75 @@ if ($sAction === 'delete' && $iOpp > 0) {
     $sPageTitle = gettext('Volunteer Opportunity Delete Confirmation');
     require_once __DIR__ . '/Include/Header.php';
 ?>
-    <div class="card card-body">
-        <div class="alert alert-danger"><?= gettext('Please confirm deletion of') ?>:</div>
-        <table class="table">
-            <tr>
-                <th>&nbsp;</th>
-                <th><?= gettext('Name') ?></th>
-                <th><?= gettext('Description') ?></th>
-            </tr>
-            <tr>
-                <td><b><?= $vol_Order ?></b></td>
-                <td><?= $vol_Name ?></td>
-                <td><?= $vol_Description ?></td>
-            </tr>
-        </table>
-
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card border-danger">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="mb-0">
+                            <i class="fa-solid fa-exclamation-triangle"></i>
+                            <?= gettext('Confirm Volunteer Opportunity Deletion') ?>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-warning" role="alert">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <?= gettext('Please confirm deletion of') ?>:
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <tr>
+                                    <th><?= gettext('Order') ?></th>
+                                    <th><?= gettext('Name') ?></th>
+                                    <th><?= gettext('Description') ?></th>
+                                </tr>
+                                <tr>
+                                    <td><span class="badge badge-secondary"><?= $vol_Order ?></span></td>
+                                    <td><?= InputUtils::escapeHTML($vol_Name) ?></td>
+                                    <td><?= InputUtils::escapeHTML($vol_Description) ?></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <?php
+                        $sSQL = 'SELECT `per_FirstName`, `per_LastName` FROM `person_per` ';
+                        $sSQL .= 'LEFT JOIN `person2volunteeropp_p2vo` ';
+                        $sSQL .= 'ON `p2vo_per_ID`=`per_ID` ';
+                        $sSQL .= "WHERE `p2vo_vol_ID` = '" . $iOpp . "' ";
+                        $sSQL .= 'ORDER BY `per_LastName`, `per_FirstName` ';
+                        $rsPeople = RunQuery($sSQL);
+                        $numRows = mysqli_num_rows($rsPeople);
+                        if ($numRows > 0) {
+                            echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-exclamation-circle'></i> <strong>" . gettext('Warning') . "!</strong> " . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') . "</div>";
+                            echo "<div class='ms-3 mb-3'>";
+                            for ($i = 0; $i < $numRows; $i++) {
+                                $aRow = mysqli_fetch_array($rsPeople);
+                                extract($aRow);
+                                echo "<div><i class='fa-solid fa-person'></i> " . InputUtils::escapeHTML($per_FirstName) . " " . InputUtils::escapeHTML($per_LastName) . "</div>";
+                            }
+                            echo "</div>";
+                        }
+                        ?>
+                        <div class="d-flex justify-content-center mt-4">
+                            <form method="POST" action="VolunteerOpportunityEditor.php" class="d-inline mr-2">
+                                <input type="hidden" name="act" value="ConfDelete">
+                                <input type="hidden" name="Opp" value="<?= $iOpp ?>">
+                                <?= CSRFUtils::getTokenInputField('deleteVolunteerOpportunity') ?>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <?= gettext('Yes, delete this Opportunity') ?>
+                                </button>
+                            </form>
+                            <a href="VolunteerOpportunityEditor.php" class="btn btn-secondary">
+                                <i class="fa-solid fa-ban"></i>
+                                <?= gettext('No, cancel this deletion') ?>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <?php
-    // Do some error checking before deleting this Opportunity.
-    // Notify user if there are currently people assigned to this
-    // Volunteer Opportunity.
-
-    $sSQL = 'SELECT `per_FirstName`, `per_LastName` FROM `person_per` ';
-    $sSQL .= 'LEFT JOIN `person2volunteeropp_p2vo` ';
-    $sSQL .= 'ON `p2vo_per_ID`=`per_ID` ';
-    $sSQL .= "WHERE `p2vo_vol_ID` = '" . $iOpp . "' ";
-    $sSQL .= 'ORDER BY `per_LastName`, `per_FirstName` ';
-    $rsPeople = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsPeople);
-    if ($numRows > 0) {
-        echo "\n<br><h3>" . gettext('Warning') . '!</h3>';
-        echo "\n<h3>" . gettext('There are people assigned to this Volunteer Opportunity.') . '</h3>';
-        echo "\n<br>" . gettext('Volunteer Opportunity will be unassigned for the following people.');
-        echo "\n<br>";
-        for ($i = 0; $i < $numRows; $i++) {
-            $aRow = mysqli_fetch_array($rsPeople);
-            extract($aRow);
-            echo "\n<br><b> $per_FirstName $per_LastName</b>";
-        }
-    }
-    echo "\n<br><a class='btn btn-danger' href=\"VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=" . $iOpp . '"> ';
-    echo gettext('Yes, delete this Volunteer Opportunity') . ' </a>';
-    echo "\n<a href=\"VolunteerOpportunityEditor.php\" class='btn btn-secondary'> ";
-    echo gettext('No, cancel this deletion') . ' </a>';
-    echo '</div>';
     require_once __DIR__ . '/Include/Footer.php';
     exit;
 }
@@ -109,6 +136,14 @@ if ($sAction === 'ConfDelete' && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
     AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
+
+    // Verify CSRF token for POST requests
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (!CSRFUtils::verifyRequest($_POST, 'deleteVolunteerOpportunity')) {
+            http_response_code(403);
+            die(gettext('Invalid CSRF token'));
+        }
+    }
 
     // get the order value for the record being deleted
     $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
@@ -260,17 +295,53 @@ if (isset($_POST['SaveChanges'])) {
 
 // Construct the form
     ?>
-    <div class="card card-body">
+    <div class="container-fluid mt-4">
         <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
-            <table class="table">
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fa-solid fa-plus"></i>
+                            <?= gettext('Add New Volunteer Opportunity') ?>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="newFieldName"><?= gettext('Name') ?></label>
+                                    <input type="text" id="newFieldName" name="newFieldName" maxlength="30" class="form-control form-control-sm">
+                                    <?php if ($bNewNameError) {
+                                        echo '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ' . gettext('You must enter a name') . '</small>';
+                                    } ?>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="newFieldDesc"><?= gettext('Description') ?></label>
+                                    <input type="text" id="newFieldDesc" name="newFieldDesc" maxlength="100" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success" name="AddField">
+                                <i class="fa-solid fa-plus"></i>
+                                <?= gettext('Add New Opportunity') ?>
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 <?php
                 if ($numRows == 0) {
                 ?>
-                    <div class="alert alert-warning"><?= gettext('No volunteer opportunities have been added yet') ?></div>
+                    <div class="alert alert-info" role="alert">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <?= gettext('No volunteer opportunities have been added yet') ?>
+                    </div>
                 <?php
-                } else { // if an 'action' (up/down arrow clicked, or order was input)
+                } else {
+                    // if an 'action' (up/down arrow clicked, or order was input)
                     if ($iRowNum && $sAction != '') {
                         // cast as int and couple with switch for sql injection prevention for $row_num
                         $swapRow = $iRowNum;
@@ -310,123 +381,90 @@ if (isset($_POST['SaveChanges'])) {
                             $aDescFields[$swapRow] = $aDescFields[$newRow];
                         }
                     }
+                ?>
+
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa-solid fa-exclamation-triangle"></i>
+                    <strong><?= gettext('Warning:') ?></strong>
+                    <?= gettext("ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.") ?>
+                </div>
+
+                <?php
+                if ($bErrorFlag) {
+                    echo '<div class="alert alert-danger" role="alert"><i class="fa-solid fa-circle-exclamation"></i> <strong>' . gettext('Error') . ':</strong> ' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</div>';
+                }
+                if (strlen($sDeleteError) > 0) {
+                    echo '<div class="alert alert-danger" role="alert"><i class="fa-solid fa-circle-exclamation"></i> <strong>' . gettext('Error') . ':</strong> ' . $sDeleteError . '</div>';
                 }
                 ?>
-                <tr>
-                    <td colspan="5">
-                        <div class="alert alert-info"><?= gettext("NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'") ?></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5">
+
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fa-solid fa-list"></i>
+                            <?= gettext('Existing Volunteer Opportunities') ?>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-sm">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th><?= gettext('Order') ?></th>
+                                        <th><?= gettext('Name') ?></th>
+                                        <th><?= gettext('Description') ?></th>
+                                        <th class="text-center"><?= gettext('Actions') ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
                         <?php
-                        if ($bErrorFlag) {
-                            echo '<div class="alert alert-danger">';
-                            echo gettext('Invalid fields or selections. Changes not saved! Please correct and try again!');
-                            echo '</div>';
-                        }
-                        if (strlen($sDeleteError) > 0) {
-                            echo ' <div class="alert alert-danger">';
-                            echo $sDeleteError;
-                            echo '</div>';
+                        for ($row = 1; $row <= $numRows; $row++) {
+                            if (array_key_exists($row, $aNameFields)) {
+                                echo '<tr>';
+                                echo '<td><span class="badge badge-secondary">' . $row . '</span></td>';
+                                echo '<td>';
+                                echo '<input type="text" name="' . $row . 'name" value="' . InputUtils::escapeAttribute($aNameFields[$row]) . '" class="form-control form-control-sm" maxlength="30">';
+                                if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
+                                    echo '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ' . gettext('You must enter a name') . '</small>';
+                                }
+                                echo '</td>';
+                                echo '<td>';
+                                echo '<input type="text" name="' . $row . 'desc" value="' . InputUtils::escapeAttribute($aDescFields[$row]) . '" class="form-control form-control-sm" maxlength="100">';
+                                echo '</td>';
+                                echo '<td>';
+                                echo '<div class="btn-group btn-group-sm" role="group">';
+                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="btn btn-danger" title="' . gettext('Delete') . '"><i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</a>';
+                                if ($row !== 1) {
+                                    echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
+                                }
+                                if ($row != $numRows) {
+                                    echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
+                                }
+                                echo '</div>';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
                         }
                         ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <th></th>
-                    <th><?= gettext('Name') ?></th>
-                    <th><?= gettext('Description') ?></th>
-                </tr>
 
-                <?php
-                for ($row = 1; $row <= $numRows; $row++) {
-                    if (array_key_exists($row, $aNameFields)) {
-                        echo '<tr>';
-                        echo '<td class="LabelColumn"><b>' . $row . '</b></td>';
-                        echo '<td class="TextColumn">';
-                        if ($row === 1) {
-                            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num=' . $row . "\"><i class='fa fa-fw'></i></a>";
-                        } else {
-                            echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . "\"> <i class='fa fa-arrow-up'></i></a> ";
-                        }
-                        if ($row != $numRows) {
-                            echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . "\"> <i class='fa fa-arrow-down'></i></a> ";
-                        } else {
-                            echo '<a href="VolunteerOpportunityEditor.php?act=na&amp;row_num=' . $row . "\"> <i class='fa fa-fw'></i></a> ";
-                        }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-                        echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . "\"> <i class='fa fa-times'></i></a></td>"; ?>
-
-                        <td class="TextColumn text-center">
-                            <input type="text" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" class="form-control" size="20" maxlength="30">
-                            <?php
-
-                            if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
-                                echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
-                            } ?>
-                        </td>
-
-                        <td class="TextColumn">
-                            <input type="text" name="<?= $row ?>desc" value="<?= InputUtils::escapeAttribute($aDescFields[$row]) ?>" class="form-control" size="40" maxlength="100">
-                        </td>
-
-                        </tr>
-                <?php
-                    }
-                }
-                ?>
-
-                <tr>
-                    <td colspan="5">
-                        <table width="100%">
-                            <tr>
-                                <td width="30%"></td>
-                                <td width="40%" class="text-center align-bottom">
-                                    <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
-                                    &nbsp;
-                                    <input type="button" class="btn btn-secondary" value="<?= gettext('Exit') ?>" Name="Exit" onclick="javascript:document.location='v2/dashboard'">
-                                </td>
-                                <td width="30%"></td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                </tr>
-
-                <tr>
-                    <td colspan="5">
-                        <hr>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="5">
-                        <table width="100%">
-                            <tr>
-                                <td width="15%"></td>
-                                <td class="align-top">
-                                    <div><?= gettext('Name') ?>:</div>
-                                    <input type="text" name="newFieldName" size="30" maxlength="30" class="form-control">
-                                    <?php if ($bNewNameError) {
-                                        echo '<div><span class="text-danger"><BR>' . gettext('You must enter a name') . '</span></div>';
-                                    } ?>
-                                    &nbsp;
-                                </td>
-                                <td class="align-top">
-                                    <div><?= gettext('Description') ?>:</div>
-                                    <input type="text" name="newFieldDesc" size="40" maxlength="100" class="form-control">
-                                    &nbsp;
-                                </td>
-                                <td>
-                                    <input type="submit" class="btn btn-primary" value="<?= gettext('Add New Opportunity') ?>" name="AddField">
-                                </td>
-                                <td width="15%"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
+                <div class="d-flex mt-3 justify-content-center">
+                    <button type="submit" class="btn btn-primary mr-2" name="SaveChanges">
+                        <i class="fa-solid fa-save"></i>
+                        <?= gettext('Save Changes') ?>
+                    </button>
+                    <button type="button" class="btn btn-secondary" name="Exit" onclick="document.location='v2/dashboard'">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <?= gettext('Exit') ?>
+                    </button>
+                </div>
+        <?php } ?>
         </form>
     </div>
     <?php
