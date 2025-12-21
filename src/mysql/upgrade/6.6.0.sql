@@ -120,3 +120,11 @@ WHERE qry_ID = 24
 DELETE FROM query_qry
 WHERE qry_ID = 15
 	OR qry_Name = 'Advanced Search';
+
+-- Also remove the "Select database users" query (admin user management available elsewhere)
+--   qry_ID: 23
+--   qry_Name: Select database users
+--   Description: User management is handled through admin user management interface
+DELETE FROM query_qry
+WHERE qry_ID = 23
+	OR qry_Name = 'Select database users';
