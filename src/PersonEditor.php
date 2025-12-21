@@ -1059,7 +1059,7 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
                                value="<?= change_date_for_place_holder($dMembershipDate) ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
+                               placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
                         <span class="text-danger small"><?= $sMembershipDateError ?></span>
@@ -1074,7 +1074,7 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
                                value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
+                               placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sFriendDateError) { ?>
                         <span class="text-danger small"><?= $sFriendDateError ?></span>

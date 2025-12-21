@@ -578,7 +578,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa-solid fa-heart"></i></span>
                         </div>
-                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
+                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sWeddingDateError) { ?>
                     <span class="text-danger small"><?= $sWeddingDateError ?></span>
