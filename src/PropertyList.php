@@ -52,7 +52,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <thead class="table-light">
                 <tr>
                     <th><?= gettext('Name') ?></th>
-                    <th><?= gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this Property...') ?></th>
+                    <th><?= gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this property...') ?></th>
                     <th><?= gettext('Prompt') ?></th>
                     <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
                         echo '<th class="text-center">' . gettext('Actions') . '</th>';

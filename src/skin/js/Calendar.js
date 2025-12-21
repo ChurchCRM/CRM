@@ -151,7 +151,7 @@ window.calendarPropertiesModal = {
             "</tr>" +
             "<tr>" +
             "<td class='LabelColumn'>" +
-            i18next.t("JSON URL") +
+            "JSON URL" +
             ":</td>" +
             '<td colspan="3">' +
             '<span ><a href="' +

@@ -60,7 +60,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 
                 <div class="card border-0 mb-3">
                     <div class="card-body bg-white">
-                        <h6 class="text-danger mb-2"><strong><?= gettext('Error:') ?></strong></h6>
+                        <h6 class="text-danger mb-2"><strong><?= gettext('Error') ?>:</strong></h6>
                         <p class="mb-0 text-dark"><strong><?= $urlError['message'] ?></strong></p>
                     </div>
                 </div>
