@@ -290,13 +290,54 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     <?php endif; ?>
 </script>
 
-<div class="alert alert-warning" role="alert">
-    <i class="fa-solid fa-exclamation-triangle"></i>
-    <strong><?= gettext('Warning:') ?></strong>
-    <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
-</div>
-
 <form method="post" action="FamilyCustomFieldsEditor.php" name="FamilyCustomFieldsEditor">
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">
+                <i class="fa-solid fa-plus"></i>
+                <?= gettext('Add New Field') ?>
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="newFieldType" class="form-label"><?= gettext('Type') ?>:</label>
+                    <select id="newFieldType" name="newFieldType" class="form-control">
+                        <?php
+                        for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
+                            echo '<option value="' . htmlspecialchars($iOptionID, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($aPropTypes[$iOptionID], ENT_QUOTES, 'UTF-8') . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="newFieldName" class="form-label"><?= gettext('Name') ?>:</label>
+                    <input type="text" id="newFieldName" class="form-control" name="newFieldName" maxlength="40">
+                    <?php
+                    if ($bNewNameError) {
+                        echo '<small class="text-danger d-block mt-1">' . gettext('You must enter a name') . '</small>';
+                    }
+                    if ($bDuplicateNameError) {
+                        echo '<small class="text-danger d-block mt-1">' . gettext('That field name already exists.') . '</small>';
+                    }
+                    ?>
+                </div>
+                <div class="col-md-3">
+                    <label for="newFieldSec" class="form-label"><?= gettext('Security Option') ?></label>
+                    <div id="newFieldSec">
+                        <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-success w-100" name="AddField">
+                        <i class="fa-solid fa-plus"></i>
+                        <?= gettext('Add New Field') ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php
     if ($numRows == 0) {
     ?>
@@ -307,6 +348,11 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     <?php
     } else {
     ?>
+        <div class="alert alert-warning" role="alert">
+            <i class="fa-solid fa-exclamation-triangle"></i>
+            <strong><?= gettext('Warning:') ?></strong>
+            <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+        </div>
         <?php
         if ($bErrorFlag) {
         ?>
@@ -318,18 +364,26 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         <?php
         }
         ?>
-        <div class="table-responsive">
-            <table class="table table-hover table-sm">
-                <thead class="table-light">
-                    <tr>
-                        <th><?= gettext('Type') ?></th>
-                        <th><?= gettext('Name') ?></th>
-                        <th><?= gettext('Special option') ?></th>
-                        <th><?= gettext('Security Option') ?></th>
-                        <th><?= gettext('Actions') ?></th>
-                    </tr>
-                </thead>
-                <tbody>
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="fa-solid fa-list"></i>
+                    <?= gettext('Existing Custom Family Fields') ?>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-sm">
+                        <thead class="table-light">
+                            <tr>
+                                <th><?= gettext('Type') ?></th>
+                                <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('Special option') ?></th>
+                                <th><?= gettext('Security Option') ?></th>
+                                <th><?= gettext('Actions') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
             <?php
 
             for ($row = 1; $row <= $numRows; $row++) {
@@ -409,8 +463,10 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                 <?php
     } ?>
 
-        </tbody>
-            </table>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="d-flex justify-content-center my-3">
             <button type="submit" class="btn btn-primary" name="SaveChanges">
@@ -420,51 +476,6 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         </div>
     <?php
     } ?>
-
-    <div class="card mt-4">
-        <div class="card-header bg-primary text-white">
-            <h5 class="mb-0"><?= gettext('Add New Field') ?></h5>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3">
-                    <label for="newFieldType" class="form-label"><?= gettext('Type') ?>:</label>
-                    <select id="newFieldType" name="newFieldType" class="form-control">
-                        <?php
-                        for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                            echo '<option value="' . htmlspecialchars($iOptionID, ENT_QUOTES, 'UTF-8') . '">' . htmlspecialchars($aPropTypes[$iOptionID], ENT_QUOTES, 'UTF-8') . '</option>';
-                        }
-                        ?>
-                    </select>
-                    <small class="d-block mt-2"><a href="<?= SystemURLs::getSupportURL() ?>" target="_blank"><?= gettext('Help on types...') ?></a></small>
-                </div>
-                <div class="col-md-3">
-                    <label for="newFieldName" class="form-label"><?= gettext('Name') ?>:</label>
-                    <input type="text" id="newFieldName" class="form-control" name="newFieldName" maxlength="40">
-                    <?php
-                    if ($bNewNameError) {
-                        echo '<small class="text-danger d-block mt-1">' . gettext('You must enter a name') . '</small>';
-                    }
-                    if ($bDuplicateNameError) {
-                        echo '<small class="text-danger d-block mt-1">' . gettext('That field name already exists.') . '</small>';
-                    }
-                    ?>
-                </div>
-                <div class="col-md-3">
-                    <label for="newFieldSec" class="form-label"><?= gettext('Security Option') ?></label>
-                    <div id="newFieldSec">
-                        <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
-                    </div>
-                </div>
-                <div class="col-md-3 d-flex align-items-end">
-                    <button type="submit" class="btn btn-success w-100" name="AddField">
-                        <i class="fa-solid fa-plus"></i>
-                        <?= gettext('Add New Field') ?>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
     </form>
 </div>
 <?php

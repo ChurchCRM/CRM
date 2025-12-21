@@ -284,15 +284,50 @@ if (isset($_POST['SaveChanges'])) {
     <div class="container-fluid mt-4">
         <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">
+                            <i class="fa-solid fa-plus"></i>
+                            <?= gettext('Add New Volunteer Opportunity') ?>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="newFieldName"><?= gettext('Name') ?></label>
+                                    <input type="text" id="newFieldName" name="newFieldName" maxlength="30" class="form-control form-control-sm">
+                                    <?php if ($bNewNameError) {
+                                        echo '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ' . gettext('You must enter a name') . '</small>';
+                                    } ?>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label" for="newFieldDesc"><?= gettext('Description') ?></label>
+                                    <input type="text" id="newFieldDesc" name="newFieldDesc" maxlength="100" class="form-control form-control-sm">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success" name="AddField">
+                                <i class="fa-solid fa-plus"></i>
+                                <?= gettext('Add New Opportunity') ?>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
                 <?php
                 if ($numRows == 0) {
                 ?>
-                    <div class="alert alert-warning" role="alert">
+                    <div class="alert alert-info" role="alert">
                         <i class="fa-solid fa-circle-info"></i>
                         <?= gettext('No volunteer opportunities have been added yet') ?>
                     </div>
                 <?php
-                } else { // if an 'action' (up/down arrow clicked, or order was input)
+                } else {
+                    // if an 'action' (up/down arrow clicked, or order was input)
                     if ($iRowNum && $sAction != '') {
                         // cast as int and couple with switch for sql injection prevention for $row_num
                         $swapRow = $iRowNum;
@@ -332,11 +367,11 @@ if (isset($_POST['SaveChanges'])) {
                             $aDescFields[$swapRow] = $aDescFields[$newRow];
                         }
                     }
-                }
                 ?>
 
-                <div class="alert alert-info" role="alert">
-                    <i class="fa-solid fa-circle-info"></i>
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa-solid fa-exclamation-triangle"></i>
+                    <strong><?= gettext('Warning:') ?></strong>
                     <?= gettext("ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.") ?>
                 </div>
 
@@ -349,17 +384,25 @@ if (isset($_POST['SaveChanges'])) {
                 }
                 ?>
 
-                <div class="table-responsive">
-                    <table class="table table-hover table-sm">
-                        <thead class="table-light">
-                            <tr>
-                                <th><?= gettext('Order') ?></th>
-                                <th><?= gettext('Name') ?></th>
-                                <th><?= gettext('Description') ?></th>
-                                <th class="text-center"><?= gettext('Actions') ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fa-solid fa-list"></i>
+                            <?= gettext('Existing Volunteer Opportunities') ?>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-sm">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th><?= gettext('Order') ?></th>
+                                        <th><?= gettext('Name') ?></th>
+                                        <th><?= gettext('Description') ?></th>
+                                        <th class="text-center"><?= gettext('Actions') ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
                         <?php
                         for ($row = 1; $row <= $numRows; $row++) {
@@ -391,8 +434,10 @@ if (isset($_POST['SaveChanges'])) {
                         }
                         ?>
 
-                        </tbody>
-                    </table>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="d-flex gap-2 mt-3 justify-content-center">
@@ -405,40 +450,7 @@ if (isset($_POST['SaveChanges'])) {
                         <?= gettext('Exit') ?>
                     </button>
                 </div>
-
-                <div class="card mt-4">
-                    <div class="card-header bg-success text-white">
-                        <h5 class="mb-0">
-                            <i class="fa-solid fa-plus"></i>
-                            <?= gettext('Add New Volunteer Opportunity') ?>
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="newFieldName"><?= gettext('Name') ?></label>
-                                    <input type="text" id="newFieldName" name="newFieldName" maxlength="30" class="form-control form-control-sm">
-                                    <?php if ($bNewNameError) {
-                                        echo '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ' . gettext('You must enter a name') . '</small>';
-                                    } ?>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="mb-3">
-                                    <label class="form-label" for="newFieldDesc"><?= gettext('Description') ?></label>
-                                    <input type="text" id="newFieldDesc" name="newFieldDesc" maxlength="100" class="form-control form-control-sm">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-success" name="AddField">
-                                <i class="fa-solid fa-plus"></i>
-                                <?= gettext('Add New Opportunity') ?>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        <?php } ?>
         </form>
     </div>
     <?php

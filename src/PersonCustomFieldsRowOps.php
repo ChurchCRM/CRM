@@ -40,19 +40,26 @@ switch ($sAction) {
         $customField = PersonCustomMasterQuery::create()
             ->findOneById($sField);
 
-        if ($customField !== null) {
-            // Check if this field is a custom list type (type_ID = 12).  If so, delete the list from list_lst
-            if ($customField->getTypeId() == 12) {
-                $listOption = ListOptionQuery::create()
-                    ->findOneById((int)$customField->getSpecial());
-                if ($listOption !== null) {
-                    $listOption->delete();
-                }
-            }
-
-            // Delete the custom field record
-            $customField->delete();
+        if ($customField === null) {
+            // Field doesn't exist, redirect back
+            RedirectUtils::redirect('PersonCustomFieldsEditor.php');
+            break;
         }
+
+        // Get the order ID for reordering after delete
+        $iOrderID = (int)$customField->getOrder();
+
+        // Check if this field is a custom list type (type_ID = 12).  If so, delete the list from list_lst
+        if ($customField->getTypeId() == 12) {
+            $listOption = ListOptionQuery::create()
+                ->findOneById((int)$customField->getSpecial());
+            if ($listOption !== null) {
+                $listOption->delete();
+            }
+        }
+
+        // Delete the custom field record
+        $customField->delete();
 
         $sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '` ;';
         RunQuery($sSQL);
@@ -84,4 +91,8 @@ switch ($sAction) {
 }
 
 // Reload the Form Editor page
-RedirectUtils::redirect('PersonCustomFieldsEditor.php');
+$redirectUrl = 'PersonCustomFieldsEditor.php';
+if ($sAction === 'delete') {
+    $redirectUrl .= '?deleted=1';
+}
+RedirectUtils::redirect($redirectUrl);
