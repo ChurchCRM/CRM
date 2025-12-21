@@ -4,16 +4,17 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be administrator to use this page.
 AuthenticationManager::redirectHomeIfNotAdmin();
 
-// Get the Group, Property, and Action from the querystring
-$iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'], 'int');
-$sField = InputUtils::legacyFilterInput($_GET['Field']);
-$sAction = $_GET['Action'];
+// Get the Group, Property, and Action from the querystring or POST
+$iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'] ?? $_POST['OrderID'] ?? null, 'int');
+$sField = InputUtils::legacyFilterInput($_GET['Field'] ?? $_POST['Field'] ?? '');
+$sAction = $_GET['Action'] ?? $_POST['Action'] ?? '';
 
 switch ($sAction) {
     // Move a field up: Swap the fam_custom_Order (ordering) of the selected row and the one above it
@@ -34,6 +35,14 @@ switch ($sAction) {
 
         // Delete a field from the form
     case 'delete':
+        // Verify CSRF token for POST requests
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (!CSRFUtils::verifyRequest($_POST, 'deleteFamilyCustomField')) {
+                http_response_code(403);
+                die(gettext('Invalid CSRF token'));
+            }
+        }
+        
         // Get the order ID for this field first (needed for reordering after delete)
         $sSQL = "SELECT fam_custom_Order, type_ID, fam_custom_Special FROM family_custom_master WHERE fam_custom_Field = '" . $sField . "'";
         $rsTemp = RunQuery($sSQL);

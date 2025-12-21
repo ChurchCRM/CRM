@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -305,7 +306,33 @@ if ($embedded) {
             },
             callback: function(result) {
                 if (result) {
-                    window.location.href = deleteUrl;
+                    // Submit deletion as a POST request with CSRF protection
+                    var form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = 'OptionManagerRowOps.php';
+                    
+                    // Parse the deleteUrl to extract parameters
+                    var url = new URL(deleteUrl, window.location.origin + window.location.pathname);
+                    var params = new URLSearchParams(url.search);
+                    
+                    // Add all URL parameters as hidden inputs
+                    params.forEach(function(value, key) {
+                        var input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = value;
+                        form.appendChild(input);
+                    });
+                    
+                    // Add CSRF token
+                    var csrfInput = document.createElement('input');
+                    csrfInput.type = 'hidden';
+                    csrfInput.name = 'csrf_token';
+                    csrfInput.value = <?= json_encode(CSRFUtils::generateToken('deleteOptionManagerItem')) ?>;
+                    form.appendChild(csrfInput);
+                    
+                    document.body.appendChild(form);
+                    form.submit();
                 }
             }
         });

@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -266,7 +267,31 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location.href = 'PersonCustomFieldsRowOps.php?Field=' + encodeURIComponent(fieldId) + '&Action=delete';
+                        // Submit deletion as a POST request with CSRF protection
+                        var form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = 'PersonCustomFieldsRowOps.php';
+
+                        var fieldInput = document.createElement('input');
+                        fieldInput.type = 'hidden';
+                        fieldInput.name = 'Field';
+                        fieldInput.value = fieldId;
+                        form.appendChild(fieldInput);
+
+                        var actionInput = document.createElement('input');
+                        actionInput.type = 'hidden';
+                        actionInput.name = 'Action';
+                        actionInput.value = 'delete';
+                        form.appendChild(actionInput);
+
+                        var csrfInput = document.createElement('input');
+                        csrfInput.type = 'hidden';
+                        csrfInput.name = 'csrf_token';
+                        csrfInput.value = <?= json_encode(CSRFUtils::generateToken('deletePersonCustomField')) ?>;
+                        form.appendChild(csrfInput);
+
+                        document.body.appendChild(form);
+                        form.submit();
                     }
                 }
             });

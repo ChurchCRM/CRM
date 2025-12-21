@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -31,11 +32,11 @@ $bErrorFlag = false;
 $aNameErrors = [];
 $bNewNameError = false;
 
-if (array_key_exists('act', $_GET)) {
-    $sAction = InputUtils::legacyFilterInput($_GET['act']);
+if (array_key_exists('act', $_GET) || array_key_exists('act', $_POST)) {
+    $sAction = InputUtils::legacyFilterInput($_GET['act'] ?? $_POST['act'] ?? '');
 }
-if (array_key_exists('Opp', $_GET)) {
-    $iOpp = InputUtils::filterInt($_GET['Opp']);
+if (array_key_exists('Opp', $_GET) || array_key_exists('Opp', $_POST)) {
+    $iOpp = InputUtils::filterInt($_GET['Opp'] ?? $_POST['Opp'] ?? -1);
 }
 if (array_key_exists('row_num', $_GET)) {
     $iRowNum = InputUtils::filterInt($_GET['row_num']);
@@ -107,10 +108,15 @@ if ($sAction === 'delete' && $iOpp > 0) {
                         }
                         ?>
                         <div class="d-flex justify-content-center mt-4">
-                            <a class="btn btn-danger mr-2" href="VolunteerOpportunityEditor.php?act=ConfDelete&amp;Opp=<?= $iOpp ?>">
-                                <i class="fa-solid fa-trash"></i>
-                                <?= gettext('Yes, delete this Opportunity') ?>
-                            </a>
+                            <form method="POST" action="VolunteerOpportunityEditor.php" class="d-inline mr-2">
+                                <input type="hidden" name="act" value="ConfDelete">
+                                <input type="hidden" name="Opp" value="<?= $iOpp ?>">
+                                <?= CSRFUtils::getTokenInputField('deleteVolunteerOpportunity') ?>
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <?= gettext('Yes, delete this Opportunity') ?>
+                                </button>
+                            </form>
                             <a href="VolunteerOpportunityEditor.php" class="btn btn-secondary">
                                 <i class="fa-solid fa-ban"></i>
                                 <?= gettext('No, cancel this deletion') ?>
@@ -130,6 +136,14 @@ if ($sAction === 'ConfDelete' && $iOpp > 0) {
     // Security: User must have Delete records permission
     // Otherwise, redirect to the main menu
     AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
+
+    // Verify CSRF token for POST requests
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (!CSRFUtils::verifyRequest($_POST, 'deleteVolunteerOpportunity')) {
+            http_response_code(403);
+            die(gettext('Invalid CSRF token'));
+        }
+    }
 
     // get the order value for the record being deleted
     $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
