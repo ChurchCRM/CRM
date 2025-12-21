@@ -105,3 +105,11 @@ WHERE qry_ID = 7
 DELETE FROM query_qry
 WHERE qry_ID = 3
 	OR qry_Name = 'Family Member Count';
+
+-- Also remove the "Select all members" query (filtering by class available in People list page)
+--   qry_ID: 24
+--   qry_Name: Select all members
+--   Description: People list page supports filtering by membership class directly
+DELETE FROM query_qry
+WHERE qry_ID = 24
+	OR qry_Name = 'Select all members';
