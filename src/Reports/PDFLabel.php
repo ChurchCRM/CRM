@@ -816,8 +816,8 @@ if ($sFileType === 'PDF') {
         }
     }
 
-    // Use CsvExporter for output with proper charset handling
-    CsvExporter::create($headers, $rows, 'Labels', SystemConfig::getValue('sCSVExportCharset'), true);
+    // Use CsvExporter for RFC 4180 compliance and formula injection prevention
+    CsvExporter::create($headers, $rows, 'Labels', 'UTF-8', true);
 }
 
 exit;

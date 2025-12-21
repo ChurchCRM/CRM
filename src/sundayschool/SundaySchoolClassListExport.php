@@ -14,14 +14,13 @@ use ChurchCRM\Utils\CsvExporter;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 // Set headers BEFORE any output is sent (required for file download)
-$charset = SystemConfig::getValue('sCSVExportCharset');
 $filename = 'SundaySchool-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
 
 header('Pragma: no-cache');
 header('Expires: 0');
 header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Content-Description: File Transfer');
-header('Content-Type: text/csv;charset=' . $charset);
+header('Content-Type: text/csv;charset=UTF-8');
 header('Content-Disposition: attachment; filename=' . $filename);
 header('Content-Transfer-Encoding: binary');
 

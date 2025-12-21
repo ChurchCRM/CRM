@@ -162,7 +162,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
         $header_data,
         $list,
         'ChMeetings',
-        SystemConfig::getValue('sCSVExportCharset'),
+        'UTF-8',
         true
     );
 
