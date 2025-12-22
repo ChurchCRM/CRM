@@ -35,7 +35,7 @@
 | `zh-cn` | Chinese | 1903 | 68.43% | 🟡 Good | ✅ Yes |
 | `sv` | Swedish | 1890 | 67.96% | 🟡 Good | ✅ Yes |
 | `pt` | Portuguese | 1845 | 66.34% | 🟡 Good | ✅ Yes |
-| `ru` | Russian | 1206 | 43.37% | 🟠 Needs Work | ✅ Yes |
+| `ru` | Russian | 1218 | 43.8% | 🟠 Needs Work | ✅ Yes |
 | `pl` | Polish | 993 | 35.71% | 🟠 Needs Work | ✅ Yes |
 | `nb` | Norwegian Bokmål | 804 | 28.91% | 🟠 Needs Work | ✅ Yes |
 | `hu` | Hungarian | 683 | 24.56% | 🟠 Needs Work | ✅ Yes |
