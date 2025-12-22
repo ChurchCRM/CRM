@@ -100,7 +100,6 @@ msgid "First Name"
 msgstr "Имя"
 
 #: 
-#, fuzzy
 msgid "Middle Name"
 msgstr "Второе имя"
 
@@ -731,6 +730,10 @@ msgid "Final Price"
 msgstr "Окончательная цена"
 
 #: 
+msgid "Replicate item"
+msgstr "Скопировать элемент"
+
+#: 
 msgid "Go"
 msgstr "Дальше"
 
@@ -981,6 +984,10 @@ msgstr "Информация о семье "
 #: 
 msgid "Contact Info"
 msgstr "Контактная информация"
+
+#: 
+msgid "Envelope Info"
+msgstr "Информация об конверте"
 
 #: 
 msgid "Custom Fields"
@@ -1371,6 +1378,10 @@ msgstr "Умеренный Деталь"
 #: 
 msgid "Summary Data"
 msgstr "Данные о"
+
+#: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+msgstr "Члены, имеющие право голоса, должны сделать<br> пожертвование в течение этого количества лет<br> (0, чтобы не требовать пожертвования)"
 
 #: 
 msgid "CSV"
@@ -1973,6 +1984,10 @@ msgid "Generate letters and mailing labels."
 msgstr "Создание письма и почтовые наклейки."
 
 #: 
+msgid "Role / Gender"
+msgstr "Роль / Пол"
+
+#: 
 msgid "Count"
 msgstr "Подсчет"
 
@@ -2194,6 +2209,10 @@ msgstr "Список участников"
 #: 
 msgid "No group assignments."
 msgstr "Нет Группа заданий."
+
+#: 
+msgid "Change Role"
+msgstr "Изменить роль"
 
 #: 
 msgid "Update Properties"
@@ -2705,6 +2724,10 @@ msgstr "Изменить себя"
 #: 
 msgid "(Edit own family only.)"
 msgstr "(Edit собственную семью только.)"
+
+#: 
+msgid "Admin"
+msgstr "Администратор"
 
 #: 
 msgid "(Grants all privileges.)"
@@ -3438,6 +3461,10 @@ msgid "Deposit Date"
 msgstr "Дата депозита"
 
 #: 
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr "Это перезапишет номера семейных конвертов в базе данных на те, которые выбраны на этой странице. Продолжить?"
+
+#: 
 msgid "Family Select"
 msgstr "Семейный выбор"
 
@@ -3611,6 +3638,10 @@ msgid "item"
 msgstr "Пункт"
 
 #: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
+
+#: 
 msgid "Buyer # "
 msgstr "Покупатель №"
 
@@ -3707,6 +3738,10 @@ msgid "Group Properties"
 msgstr "Свойства группы"
 
 #: 
+msgid "Assign a New Property:"
+msgstr "Назначить новое свойство:"
+
+#: 
 msgid "There was a problem retrieving the requested object"
 msgstr "При получении запрошенного объекта возникла проблема"
 
@@ -3727,6 +3762,10 @@ msgid "Total $"
 msgstr "Итого $"
 
 #: 
+msgid "with this property..."
+msgstr "с этой собственностью..."
+
+#: 
 msgid "Church Email"
 msgstr "Электронная почта церкви"
 
@@ -3734,6 +3773,14 @@ msgstr "Электронная почта церкви"
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включать в каталог только эти классификации, разделенные запятыми."
+
+#: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "Это номера ролей семьи, назначенные главой домохозяйства."
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "Это номера ролей в семье, обозначенные как супруг."
 
 #: 
 msgid "Queries for which user must have finance permissions to use:"
