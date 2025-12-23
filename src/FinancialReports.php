@@ -63,7 +63,7 @@ if ($sReportType == '') {
     // First Pass - Choose report type
     echo "<form method=post id='FinancialReports' action='FinancialReports.php'>";
     echo '<table cellpadding=3 align=left>';
-    echo '<tr><td class=LabelColumn>' . gettext('Report Type:') . '</td>';
+    echo '<tr><td class=LabelColumn>' . gettext('Report Type') . ':</td>';
     echo '<td class=TextColumn><select name=ReportType id=FinancialReportTypes>';
     echo '<option selected="selected" disabled value="0">' . gettext('Select Report Type') . '</option>';
     echo "<option value='Pledge Summary'>" . gettext('Pledge Summary') . '</option>';
@@ -199,14 +199,14 @@ if ($sReportType == '') {
         $today = date('Y-m-d');
         $startVal = $sDateStart ? $sDateStart : $today;
         $endVal = $sDateEnd ? $sDateEnd : $today;
-        echo '<tr><td class=LabelColumn>' . gettext('Report Start Date:') . "</td>
+        echo '<tr><td class=LabelColumn>' . gettext('Report Start Date') . "</td>
             <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='" . InputUtils::escapeHTML($startVal) . "'></td></tr>";
-        echo '<tr><td class=LabelColumn>' . gettext('Report End Date:') . "</td>
+        echo '<tr><td class=LabelColumn>' . gettext('Report End Date') . "</td>
             <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='" . InputUtils::escapeHTML($endVal) . "'></td></tr>";
         if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report'])) {
             $depChecked = ($datetype !== 'Payment') ? " checked" : "";
             $payChecked = ($datetype === 'Payment') ? " checked" : "";
-            echo '<tr><td class=LabelColumn>' . gettext('Apply Report Dates To:') . '</td>';
+            echo '<tr><td class=LabelColumn>' . gettext('Apply Report Dates To') . ':</td>';
             echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio value='Deposit' $depChecked>" . gettext('Deposit Date (Default)');
             echo " &nbsp; <input name=datetype type=radio value='Payment' $payChecked>" . gettext('Payment Date') . '</tr>';
         }
@@ -214,7 +214,7 @@ if ($sReportType == '') {
 
     // Fiscal Year
     if (in_array($sReportType, ['Pledge Summary', 'Pledge Reminders', 'Pledge Family Summary', 'Voting Members'])) {
-        echo '<tr><td class=LabelColumn>' . gettext('Fiscal Year:') . '</td>';
+        echo '<tr><td class=LabelColumn>' . gettext('Fiscal Year') . ':</td>';
         echo '<td class=TextColumn>';
         PrintFYIDSelect('FYID', $iFYID);
         echo '</td></tr>';

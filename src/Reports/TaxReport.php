@@ -151,7 +151,7 @@ if ($output === 'pdf') {
             global $letterhead, $sDateStart, $sDateEnd, $iDepID;
             $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
             if (SystemConfig::getValue('bUseDonationEnvelopes')) {
-                $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope:') . $fam_envelope);
+                $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope') . ': ' . $fam_envelope);
                 $curY += SystemConfig::getValue('incrementY');
             }
             $curY += 2 * SystemConfig::getValue('incrementY');
@@ -194,7 +194,7 @@ if ($output === 'pdf') {
                 $curY += (1.5 * SystemConfig::getValue('incrementY'));
                 $church_mailing = gettext('Please mail you next gift to ') . SystemConfig::getValue('sChurchName') . ', '
                     . SystemConfig::getValue('sChurchAddress') . ', ' . SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  '
-                    . SystemConfig::getValue('sChurchZip') . gettext(', Phone: ') . SystemConfig::getValue('sChurchPhone');
+                    . SystemConfig::getValue('sChurchZip') . ', ' . gettext('Phone') . ': ' . SystemConfig::getValue('sChurchPhone');
                 $this->SetFont('Times', 'I', 10);
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, $church_mailing);
                 $this->SetFont('Times', '', 10);
@@ -231,10 +231,10 @@ if ($output === 'pdf') {
                 }
                 $curX = 100;
                 $curY = 215;
-                $this->writeAt($curX, $curY, gettext('Gift Amount:'));
+                $this->writeAt($curX, $curY, gettext('Gift Amount') . ':');
                 $this->writeAt($curX + 25, $curY, '_______________________________');
                 $curY += (2 * SystemConfig::getValue('incrementY'));
-                $this->writeAt($curX, $curY, gettext('Gift Designation:'));
+                $this->writeAt($curX, $curY, gettext('Gift Designation') . ':');
                 $this->writeAt($curX + 25, $curY, '_______________________________');
                 $curY = 200 + (11 * SystemConfig::getValue('incrementY'));
             }

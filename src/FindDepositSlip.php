@@ -21,7 +21,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="card">
   <div class="card-header with-border">
-    <h3 class="card-title"><?php echo gettext('Add New Deposit: '); ?></h3>
+    <h3 class="card-title"><?php echo gettext('Add New Deposit') . ': '; ?></h3>
   </div>
   <div class="card-body">
     <form action="#" method="get" class="form">
@@ -57,7 +57,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 <div class="card">
   <div class="card-header with-border">
-    <h3 class="card-title"><?php echo gettext('Deposits: '); ?></h3>
+    <h3 class="card-title"><?php echo gettext('Deposits') . ': '; ?></h3>
   </div>
   <div class="card-body">
     <div class="container-fluid">

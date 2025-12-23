@@ -386,7 +386,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                         if (!empty($availableProperties)) {
                             echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
                             echo '<p>';
-                            echo '<span>' . gettext('Assign a New Property:') . '</span>';
+                            echo '<span>' . gettext('Assign a New Property') . ':' . '</span>';
                             echo '<select name="PropertyID">';
 
                             foreach ($availableProperties as $prop) {
@@ -414,7 +414,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     </div>
     <div class="card-body">
         <form action="#" method="get" class="mb-3">
-            <label for="addGroupMember"><?= gettext('Add Group Member: ') ?></label>
+            <label for="addGroupMember"><?= gettext('Add Group Member') . ': ' ?></label>
             <select id="addGroupMember" class="form-control personSearch" name="addGroupMember" style="width: 300px;">
             </select>
         </form>

@@ -65,7 +65,7 @@ function ExportQueryResults(string $sSQL, &$rsQueryResults)
     $rsQueryResults = RunQuery($sSQL);
 
     if (mysqli_error($cnInfoCentral) != '') {
-        $sCSVstring = gettext('An error occurred: ') . mysqli_errno($cnInfoCentral) . '--' . mysqli_error($cnInfoCentral);
+        $sCSVstring = gettext('An error occurred') . ': ' . mysqli_errno($cnInfoCentral) . '--' . mysqli_error($cnInfoCentral);
     } else {
         //Loop through the fields and write the header row
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
@@ -112,7 +112,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
     $rsQueryResults = RunQuery($sSQL);
 
     if (mysqli_error($cnInfoCentral) != '') {
-        echo gettext('An error occurred: ') . mysqli_errno($cnInfoCentral) . '--' . mysqli_error($cnInfoCentral);
+        echo gettext('An error occurred') . ': ' . mysqli_errno($cnInfoCentral) . '--' . mysqli_error($cnInfoCentral);
     } else {
         $sRowClass = 'RowColorA';
 

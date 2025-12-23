@@ -466,13 +466,13 @@ require_once __DIR__ . '/Include/Header-Short.php';
     }
 
     if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
-        echo '<p><b>' . gettext('Notes:') . '</b></p>';
+        echo '<p><b>' . gettext('Notes') . ':' . '</b></p>';
 
         // Loop through all the notes
         while ($aRow = mysqli_fetch_array($rsNotes)) {
             extract($aRow);
             echo '<p class="card card-body")>' . $nte_Text . '</p>';
-            echo '<span class="SmallText">' . gettext('Entered:') . FormatDate($nte_DateEntered, true) . '</span><br>';
+            echo '<span class="SmallText">' . gettext('Entered') . ': ' . FormatDate($nte_DateEntered, true) . '</span><br>';
 
             if (strlen($nte_DateLastEdited)) {
                 echo '<span class="SmallText">' . gettext('Last Edited') . FormatDate($nte_DateLastEdited, true) . ' ' . gettext('by') . ' ' . $EditedFirstName . ' ' . $EditedLastName . '</span><br>';

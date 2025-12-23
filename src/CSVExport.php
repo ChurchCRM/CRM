@@ -364,9 +364,9 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="card-body no-padding">
-                <?= gettext('From:') ?>&nbsp;</b></td><td><input id="MembershipDate1" class="date-picker" type="text" name="MembershipDate1" size="11" maxlength="10">
-                  <?= gettext('To:') ?>&nbsp;</b></td><td><input id="MembershipDate2" class="date-picker" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo date('Y-m-d'); ?>">
+                <div class="card-body no-padding">
+                <?= gettext('From') ?>:&nbsp;</b></td><td><input id="MembershipDate1" class="date-picker" type="text" name="MembershipDate1" size="11" maxlength="10">
+                  <?= gettext('To') ?>:&nbsp;</b></td><td><input id="MembershipDate2" class="date-picker" type="text" name="MembershipDate2" size="11" maxlength="10" value="<?php echo date('Y-m-d'); ?>">
               </div>
             </div>
           </div>
@@ -381,9 +381,9 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="card-body no-padding">
-                <b><?= gettext('From:') ?>&nbsp;</b><input type="text" name="BirthDate1" class="date-picker" size="11" maxlength="10" id="BirthdayDate1">
-                <b><?= gettext('To:') ?>&nbsp;</b><input type="text" name="BirthDate2" class="date-picker" size="11" maxlength="10" value="<?= date('Y-m-d') ?>"  id="BirthdayDate2">
+                <div class="card-body no-padding">
+                <b><?= gettext('From') ?>:&nbsp;</b><input type="text" name="BirthDate1" class="date-picker" size="11" maxlength="10" id="BirthdayDate1">
+                <b><?= gettext('To') ?>:&nbsp;</b><input type="text" name="BirthDate2" class="date-picker" size="11" maxlength="10" value="<?= date('Y-m-d') ?>"  id="BirthdayDate2">
               </div>
             </div>
           </div>
@@ -391,16 +391,16 @@ require_once __DIR__ . '/Include/Header.php';
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
-                <h3 class="card-title"><?= gettext('Anniversary Date:') ?></h3>
+                <h3 class="card-title"><?= gettext('Anniversary Date') ?>:</h3>
                 <div class="card-tools pull-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="card-body no-padding">
-                <?= gettext('From:') ?>&nbsp;</b></td><td><input type="text" class="date-picker" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
-                  <?= gettext('To:') ?>&nbsp;</b></td><td><input type="text" class="date-picker" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo date('Y-m-d'); ?>" id="AnniversaryDate2">
+                <div class="card-body no-padding">
+                <?= gettext('From') ?>:&nbsp;</b></td><td><input type="text" class="date-picker" name="AnniversaryDate1" size="11" maxlength="10" id="AnniversaryDate1">
+                  <?= gettext('To') ?>:&nbsp;</b></td><td><input type="text" class="date-picker" name="AnniversaryDate2" size="11" maxlength="10" value="<?php echo date('Y-m-d'); ?>" id="AnniversaryDate2">
               </div>
             </div>
           </div>
@@ -408,16 +408,16 @@ require_once __DIR__ . '/Include/Header.php';
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
-                <h3 class="card-title"><?= gettext('Date Entered:') ?></h3>
+                <h3 class="card-title"><?= gettext('Date Entered') ?>:</h3>
                 <div class="card-tools pull-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
               </div>
               <!-- /.box-header -->
-              <div class="card-body no-padding">
-                <?= gettext('From:') ?>&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10" class="date-picker">
-                  <?= gettext('To:') ?>&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo date('Y-m-d'); ?>" class="date-picker">
+                <div class="card-body no-padding">
+                <?= gettext('From') ?>:&nbsp;</b></td><td><input id="EnterDate1" type="text" name="EnterDate1" size="11" maxlength="10" class="date-picker">
+                  <?= gettext('To') ?>:&nbsp;</b></td><td><input id="EnterDate2" type="text" name="EnterDate2" size="11" maxlength="10" value="<?php echo date('Y-m-d'); ?>" class="date-picker">
               </div>
             </div>
           </div>

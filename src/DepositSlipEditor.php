@@ -42,7 +42,7 @@ if ($noDeposit) {
     RedirectUtils::redirect('FindDepositSlip.php');
 }
 
-$sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number: ') . $iDepositSlipID;
+$sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number') . ': ' . $iDepositSlipID;
 
 // Get previous and next deposits for navigation
 $prevDeposit = Deposit::getPreviousDeposit($iDepositSlipID);

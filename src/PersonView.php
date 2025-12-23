@@ -191,7 +191,7 @@ $bOkToEdit = (
                     <?= $person->getFullName() ?>
                 </h3>
                 <div class="card-tools">
-                    <span class="badge badge-secondary"><?= gettext('ID:') ?> <?= $person->getId() ?></span>
+                    <span class="badge badge-secondary"><?= gettext('ID') ?>: <?= $person->getId() ?></span>
                 </div>
             </div>
             <div class="card-body box-profile">
@@ -256,7 +256,7 @@ $bOkToEdit = (
                         </div>
                         <?php if ($per_MembershipDate) : ?>
                         <small class="text-muted d-block mt-1">
-                            <i class="fa-solid fa-calendar-check mr-1"></i><?= gettext('Since:') ?> <?= FormatDate($per_MembershipDate, false) ?>
+                            <i class="fa-solid fa-calendar-check mr-1"></i><?= gettext('Since') ?>: <?= FormatDate($per_MembershipDate, false) ?>
                         </small>
                         <?php endif; ?>
                     </li>
