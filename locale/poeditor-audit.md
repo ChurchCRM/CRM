@@ -13,8 +13,8 @@
 | `ko` | Korean | 2710 | 97.45% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 2710 | 97.45% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2430 | 87.38% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 2402 | 86.37% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 2218 | 79.76% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 2105 | 75.69% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 2103 | 75.62% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 1984 | 71.34% | 🟡 Good | ✅ Yes |
 | `he` | Hebrew | 1953 | 70.23% | 🟡 Good | ✅ Yes |
