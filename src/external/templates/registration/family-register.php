@@ -122,7 +122,7 @@ if (!empty($sHeader)) {
                         </div>
 
                         <div class="alert alert-info mt-3" role="alert">
-                            <small><span class="text-danger">*</span> <?= gettext('denotes required fields') ?></small>
+                            <small><span class="text-danger">*</span> <?= gettext('Required fields') ?></small>
                         </div>
 
                         <div class="form-group mt-4 mb-0">
@@ -257,7 +257,7 @@ if (!empty($sHeader)) {
                         </div>
 
                         <div class="alert alert-info" role="alert">
-                            <small><span class="text-danger">*</span> <?= gettext('denotes required fields') ?></small>
+                            <small><span class="text-danger">*</span> <?= gettext('Required fields') ?></small>
                         </div>
 
                         <div class="form-group mt-4 mb-0">
