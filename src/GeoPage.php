@@ -284,7 +284,7 @@ $families = FamilyQuery::create()
                 </div>
                 <div class="form-group">
                     <label for="CoordFileFamilies"
-                        class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Include families in coordinate file') ?>:</label>
+                        class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Include families in the coordinate file') ?>:</label>
                     <div class="col-xs-12 col-sm-9">
                         <label class="radio-inline">
                             <input type="radio" name="CoordFileFamilies"
