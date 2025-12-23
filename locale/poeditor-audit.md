@@ -12,8 +12,8 @@
 |--------|----------|--------------|------------|--------|----------|
 | `ko` | Korean | 2710 | 97.45% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 2710 | 97.45% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 2505 | 90.08% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2430 | 87.38% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 2402 | 86.37% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 2218 | 79.76% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 2103 | 75.62% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 1984 | 71.34% | 🟡 Good | ✅ Yes |
@@ -27,7 +27,7 @@
 | `af` | Afrikaans | 1934 | 69.54% | 🟡 Good | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 1922 | 69.11% | 🟡 Good | ✅ Yes |
 | `ro` | Romanian | 1922 | 69.11% | 🟡 Good | ✅ Yes |
-| `ar` | Arabic | 1910 | 68.68% | 🟡 Good | ✅ Yes |
+| `ar` | Arabic | 1917 | 68.93% | 🟡 Good | ✅ Yes |
 | `am` | Amharic | 1907 | 68.57% | 🟡 Good | ✅ Yes |
 | `tr` | Turkish | 1907 | 68.57% | 🟡 Good | ✅ Yes |
 | `uk` | Ukrainian | 1907 | 68.57% | 🟡 Good | ✅ Yes |

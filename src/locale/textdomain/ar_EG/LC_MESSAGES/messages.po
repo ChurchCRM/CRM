@@ -8070,10 +8070,38 @@ msgid "System"
 msgstr "النظام"
 
 #: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "عند النقر على \"إرسال إلى GitHub\" سيتم توجيهك إلى صفحة مشكلات GitHub مع ملء معلومات نظامك مسبقاً."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "قدّم إلى GitHub"
+
+#: 
 msgid "Change role"
 msgstr "تغير الدور"
 
 #: 
 msgid "Delete this person?"
 msgstr "حذف الشخص"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "إذا لم يفلح ذلك، انسخ والصق الرابط التالي في متصفحك"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "لقد تلقيت هذا البريد الإلكتروني لأننا تلقينا طلبًا لنشاط على حسابك. إذا لم تكن قد طلبت هذا، يمكنك حذف هذا البريد الإلكتروني بأمان."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "لإيقاف تلقي رسائل البريد الإلكتروني هذه، يمكنك إرسال بريد إلكتروني"
+
+#: 
+msgid "property"
+msgstr "مِلكِيَّة"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "تطبيق سياسة أمان المحتوى (CSP) للمساعدة في الحماية ضد البرمجة النصية عبر المواقع. عند التعطيل، يتم الإبلاغ عن انتهاكات CSP فقط."
 

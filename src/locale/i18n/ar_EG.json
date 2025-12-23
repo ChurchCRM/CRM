@@ -1921,6 +1921,13 @@
     "Invalid Birth Date: Missing birth month or day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح.",
     "Invalid Birth Date: Missing birth month and day.": "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غير صحيح.",
     "System": "النظام",
+    "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled.": "عند النقر على \"إرسال إلى GitHub\" سيتم توجيهك إلى صفحة مشكلات GitHub مع ملء معلومات نظامك مسبقاً.",
+    "Submit to GitHub": "قدّم إلى GitHub",
     "Change role": "تغير الدور",
-    "Delete this person?": "حذف الشخص"
+    "Delete this person?": "حذف الشخص",
+    "If that doesn't work, copy and paste the following link in your browser": "إذا لم يفلح ذلك، انسخ والصق الرابط التالي في متصفحك",
+    "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email.": "لقد تلقيت هذا البريد الإلكتروني لأننا تلقينا طلبًا لنشاط على حسابك. إذا لم تكن قد طلبت هذا، يمكنك حذف هذا البريد الإلكتروني بأمان.",
+    "To stop receiving these emails, you can email": "لإيقاف تلقي رسائل البريد الإلكتروني هذه، يمكنك إرسال بريد إلكتروني",
+    "property": "مِلكِيَّة",
+    "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "تطبيق سياسة أمان المحتوى (CSP) للمساعدة في الحماية ضد البرمجة النصية عبر المواقع. عند التعطيل، يتم الإبلاغ عن انتهاكات CSP فقط."
 }
