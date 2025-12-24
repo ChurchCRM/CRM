@@ -657,8 +657,8 @@ $familyEmails = $family->getEmails();
 <!-- FAB Container for Family View -->
 <div id="fab-family-view" class="fab-container fab-family-view">
     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" class="fab-button fab-note" aria-label="<?= gettext('Add a Note') ?>">
-        <span class="fab-label"><?= gettext('Add a Note') ?></span>
+    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" class="fab-button fab-note" aria-label="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
+        <span class="fab-label"><?= gettext('Add New') . ' ' . gettext('Note') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-sticky-note"></i>
         </div>

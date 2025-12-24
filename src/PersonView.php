@@ -1119,8 +1119,8 @@ $bOkToEdit = (
     </a>
     <?php } ?>
     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-note" title="<?= gettext('Add a Note') ?>">
-        <span class="fab-label"><?= gettext('Add a Note') ?></span>
+                    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-note" title="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
+        <span class="fab-label"><?= gettext('Add New') . ' ' . gettext('Note') ?></span>
         <div class="fab-icon">
             <i class="fa-solid fa-sticky-note"></i>
         </div>

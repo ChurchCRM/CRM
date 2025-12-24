@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 17:43-0800\n"
+"POT-Creation-Date: 2025-12-23 17:52-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -339,15 +339,6 @@ msgid "Add Selected Members to Group"
 msgstr ""
 
 msgid "Add Students"
-msgstr ""
-
-msgid "Add a New"
-msgstr ""
-
-msgid "Add a New Property Type"
-msgstr ""
-
-msgid "Add a Note"
 msgstr ""
 
 msgid "Add any additional notes about this deposit"
@@ -1888,9 +1879,6 @@ msgstr ""
 msgid "Date Updated"
 msgstr ""
 
-msgid "Date:"
-msgstr ""
-
 msgid "Day"
 msgstr ""
 
@@ -2063,9 +2051,6 @@ msgid "Depends whether using person or family output method"
 msgstr ""
 
 msgid "Deposit"
-msgstr ""
-
-msgid "Deposit #:"
 msgstr ""
 
 msgid "Deposit Comment"

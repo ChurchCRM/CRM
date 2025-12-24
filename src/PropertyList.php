@@ -43,7 +43,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 <div class="container-fluid mt-4">
     <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
         //Display the new property link
-        echo '<div class="mb-3"><a class="btn btn-primary" href="PropertyEditor.php?Type=' . InputUtils::escapeAttribute($sType) . '"><i class="fa-solid fa-plus"></i> ' . gettext('Add a New') . ' ' . $sTypeName . ' ' . gettext('Property') . '</a></div>';
+        echo '<div class="mb-3"><a class="btn btn-primary" href="PropertyEditor.php?Type=' . InputUtils::escapeAttribute($sType) . '"><i class="fa-solid fa-plus"></i> ' . gettext('Add New') . ' ' . $sTypeName . ' ' . gettext('Property') . '</a></div>';
     }
     ?>
 

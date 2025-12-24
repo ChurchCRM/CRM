@@ -364,11 +364,11 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-muted"><?= gettext('Deposit #:') ?></span>
+                        <span class="text-muted"><?= gettext('Deposit') ?> #:</span>
                         <strong><?= $currentDeposit->getId() ?></strong>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-muted"><?= gettext('Date:') ?></span>
+                        <span class="text-muted"><?= gettext('Date') ?>:</span>
                         <span><?= $currentDeposit->getDate('M j, Y') ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
