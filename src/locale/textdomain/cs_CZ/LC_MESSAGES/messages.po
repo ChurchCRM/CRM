@@ -8971,6 +8971,10 @@ msgid "Amount exceeds maximum allowed value (999999.99)."
 msgstr "Částka přesahuje maximální povolenou hodnotu (999999.99)."
 
 #: 
+msgid "Checks"
+msgstr "Šeky"
+
+#: 
 msgid "Clear Filters"
 msgstr "Vymazat filtry"
 
@@ -8985,6 +8989,34 @@ msgstr "Odstranit vybrané"
 #: 
 msgid "Deposit saved successfully"
 msgstr "Vklad úspěšně uložen"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Chyba při odstraňování plateb"
+
+#: 
+msgid "Error loading payments"
+msgstr "Chyba při načítání plateb"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Chyba při ukládání vkladu"
+
+#: 
+msgid "Funds"
+msgstr "Fondy"
+
+#: 
+msgid "Generate Report"
+msgstr "Generovat zprávu"
+
+#: 
+msgid "No Cash"
+msgstr "Bez hotovosti"
+
+#: 
+msgid "No Checks"
+msgstr "Bez šeků"
 
 #: 
 msgid "No payments yet. Click \"Add Payment\" to get started."
@@ -9019,12 +9051,60 @@ msgid "This action cannot be undone."
 msgstr "Tuto akci nelze vrátit zpět."
 
 #: 
+msgid "Total Deposit"
+msgstr "Celkový vklad"
+
+#: 
+msgid "Total Payments"
+msgstr "Celkové platby"
+
+#: 
+msgid "payments(s)?"
+msgstr "platby?"
+
+#: 
 msgid "All system files have passed integrity validation."
 msgstr "Všechny systémové soubory prošly ověřením integrity."
 
 #: 
+msgid "Base URL"
+msgstr "Základní URL"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "Instalace ChurchCRM"
+
+#: 
 msgid "Copy"
 msgstr "Kopírovat"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "Server databáze"
+
+#: 
+msgid "Debug Info"
+msgstr "Informace o ladění"
+
+#: 
+msgid "Document Root"
+msgstr "Kořen dokumentu"
+
+#: 
+msgid "Email Configuration"
+msgstr "Konfigurace e-mailu"
+
+#: 
+msgid "Email Debug Info"
+msgstr "Informace o ladění e-mailu"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "Oprávnění systému souborů"
 
 #: 
 msgid "Hostname"
@@ -9033,6 +9113,10 @@ msgstr "Název hostitele"
 #: 
 msgid "IP Address"
 msgstr "IP adresa"
+
+#: 
+msgid "Images Root"
+msgstr "Kořen obrázků"
 
 #: 
 msgid "Import Demo Data"
@@ -9059,8 +9143,16 @@ msgid "PHP & Server Requirements"
 msgstr "Požadavky na PHP a server"
 
 #: 
+msgid "PHP Configuration"
+msgstr "Konfigurace PHP"
+
+#: 
 msgid "Platform"
 msgstr "Platforma"
+
+#: 
+msgid "Root Path"
+msgstr "Kořenová cesta"
 
 #: 
 msgid "SMTP Host"
@@ -9115,6 +9207,14 @@ msgid "Optional Data to Include"
 msgstr "Zahrnout volitelná data"
 
 #: 
+msgid "Skipped"
+msgstr "Přeskočeno"
+
+#: 
+msgid "Unknown error"
+msgstr "Neznámá chyba"
+
+#: 
 msgid "deposit(s) with no payments"
 msgstr "vklad(y) bez plateb"
 
@@ -9142,8 +9242,32 @@ msgid "Attendance Count Categories"
 msgstr "Kategorie počítání docházky"
 
 #: 
+msgid "Attendance Notes"
+msgstr "Poznámky o účasti"
+
+#: 
 msgid "Change Event"
 msgstr "Změnit událost"
+
+#: 
+msgid "Check In"
+msgstr "Registrovat se"
+
+#: 
+msgid "Check In Person"
+msgstr "Registrovat osobu"
+
+#: 
+msgid "Check In to Event"
+msgstr "Registrovat se na akci"
+
+#: 
+msgid "Check-in"
+msgstr "Check-in"
+
+#: 
+msgid "Choose an event..."
+msgstr "Zvolte akci..."
 
 #: 
 msgid "Clear"
@@ -9154,8 +9278,16 @@ msgid "Create"
 msgstr "Vytvořit"
 
 #: 
+msgid "Create New Event"
+msgstr "Vytvořit novou akci"
+
+#: 
 msgid "Create an event type to get started."
 msgstr "Vytvořte typ události a můžete začít."
+
+#: 
+msgid "Current DB Version"
+msgstr "Aktuální verze databáze"
 
 #: 
 msgid "Current Software Version"
@@ -9168,6 +9300,10 @@ msgstr "Aktualizace databáze byla úspěšně dokončena. Budete přesměrován
 #: 
 msgid "Date & Time"
 msgstr "Datum a čas"
+
+#: 
+msgid "Default Start Time"
+msgstr "Výchozí čas zahájení"
 
 #: 
 msgid "Delete Event"
@@ -9190,24 +9326,72 @@ msgid "Edit Event"
 msgstr "Upravit událost"
 
 #: 
+msgid "Editing Event"
+msgstr "Úprava akce"
+
+#: 
 msgid "Enter comma-separated count categories. \"Total\" is automatically included."
 msgstr "Zadejte kategorie počtu oddělené čárkami. „Celkem“ je zahrnuto automaticky."
+
+#: 
+msgid "Enter event title..."
+msgstr "Zadejte název akce..."
 
 #: 
 msgid "Event"
 msgstr "Událost"
 
 #: 
+msgid "Event Type Name"
+msgstr "Název typu akce"
+
+#: 
+msgid "Event Types"
+msgstr "Typy akcí"
+
+#: 
+msgid "Filter Events"
+msgstr "Filtrovat akce"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "Filtrovat podle typu akce"
+
+#: 
+msgid "Filter by Type"
+msgstr "Filtrovat podle typu"
+
+#: 
+msgid "Head Count"
+msgstr "Počet osob"
+
+#: 
 msgid "Listing Events of Type"
 msgstr "Seznam událostí typu"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "Spravovat check-iny"
 
 #: 
 msgid "Members, Visitors, Children"
 msgstr "Členové, návštěvníci, děti"
 
 #: 
+msgid "Monthly Averages"
+msgstr "Měsíční průměry"
+
+#: 
+msgid "Monthly on the"
+msgstr "Měsíčně v"
+
+#: 
 msgid "No event types defined yet."
 msgstr "Zatím nejsou definovány žádné typy událostí."
+
+#: 
+msgid "None (one-time event)"
+msgstr "Žádné (jednorázová akce)"
 
 #: 
 msgid "Optional - Add sermon notes or additional event details"
@@ -9222,8 +9406,48 @@ msgid "Optional notes about attendance..."
 msgstr "Volitelné poznámky k docházce..."
 
 #: 
+msgid "People Checked In"
+msgstr "Lidé registrovaní"
+
+#: 
+msgid "People in Cart"
+msgstr "Lidé v košíku"
+
+#: 
+msgid "Person Checking In"
+msgstr "Osoba se registrující"
+
+#: 
+msgid "Recurrence"
+msgstr "Opakování"
+
+#: 
+msgid "Required fields"
+msgstr "Požadovaná pole"
+
+#: 
+msgid "Save Event Type"
+msgstr "Uložit typ akce"
+
+#: 
 msgid "Search by name or email..."
 msgstr "Hledat podle jména nebo e-mailu..."
+
+#: 
+msgid "Search for adult..."
+msgstr "Hledat dospělého..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "Hledat nadřízeného..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "Vyberte akci pro check-in"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "Vyberte počáteční a koncový datum/čas"
 
 #: 
 msgid "Select the event to check in your cart members"
@@ -9234,6 +9458,10 @@ msgid "Sermon / Event Text"
 msgstr "Text kázání / události"
 
 #: 
+msgid "Unclassified"
+msgstr "Neklasifikováno"
+
+#: 
 msgid "Upgrade database now"
 msgstr "Aktualizovat databázi"
 
@@ -9242,8 +9470,16 @@ msgid "Your ChurchCRM installation needs a database upgrade to match the install
 msgstr "Vaše instalace ChurchCRM vyžaduje aktualizaci databáze, aby odpovídala nainstalované verzi softwaru. Tato operace bude zahrnovat migraci schématu a dat. Před pokračováním se ujistěte, že máte aktuální zálohu."
 
 #: 
+msgid "added to this event"
+msgstr "přidáno k této akci"
+
+#: 
 msgid "e.g., Sunday School, Bible Study..."
 msgstr "např. nedělní škola, biblická..."
+
+#: 
+msgid "optional"
+msgstr "volitelně"
 
 #: 
 msgid "person"
@@ -9281,12 +9517,32 @@ msgid "(refresh from GitHub)"
 msgstr "(aktualizovat z GitHubu)"
 
 #: 
+msgid "Access Denied"
+msgstr "Přístup zamítnut"
+
+#: 
 msgid "Add event permission"
 msgstr "Přidat oprávnění k události"
 
 #: 
+msgid "Add records permission"
+msgstr "Oprávnění k přidávání záznamů"
+
+#: 
+msgid "Administrator privileges"
+msgstr "Práva administrátora"
+
+#: 
+msgid "All Files Verified"
+msgstr "Všechny soubory ověřeny"
+
+#: 
 msgid "All system files match their expected signatures."
 msgstr "Všechny systémové soubory odpovídají očekávaným podpisům."
+
+#: 
+msgid "Application Integrity"
+msgstr "Integrita aplikace"
 
 #: 
 msgid "Application files updated to latest version"
@@ -9295,6 +9551,22 @@ msgstr "Soubory aplikace aktualizovány na nejnovější verzi"
 #: 
 msgid "Are you sure you want to delete all orphaned files?"
 msgstr "Opravdu chcete smazat všechny osamocené soubory?"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "Zpět na Informace o ladění"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "Nejlepší praktiky zálohování"
+
+#: 
+msgid "Backup Status"
+msgstr "Stav zálohy"
+
+#: 
+msgid "Backup Type"
+msgstr "Typ zálohy"
 
 #: 
 msgid "Backup complete! Click below to download."
@@ -9333,20 +9605,80 @@ msgid "CSV export permission"
 msgstr "Oprávnění k exportu CSV"
 
 #: 
+msgid "Close & Refresh"
+msgstr "Zavřít a obnovit"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "Potvrdit smazaní"
+
+#: 
+msgid "Create a backup first"
+msgstr "Nejdříve vytvořte zálohu"
+
+#: 
+msgid "Create directory permission"
+msgstr "Oprávnění k vytváření adresáře"
+
+#: 
+msgid "Database Only"
+msgstr "Pouze databáze"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "Databáze byla úspěšně obnovena!"
+
+#: 
 msgid "Database schema upgraded automatically"
 msgstr "Databázové schéma bylo automaticky aktualizováno"
+
+#: 
+msgid "Delete All Files"
+msgstr "Smazat všechny soubory"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "Smazat všechny opuštěné soubory"
+
+#: 
+msgid "Delete records permission"
+msgstr "Oprávnění k odstraňování záznamů"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "Smazáno %d souborů, %d selhalo"
+
+#: 
+msgid "Deletion Results"
+msgstr "Výsledky smazaní"
 
 #: 
 msgid "Drag and drop your backup file here"
 msgstr "Přetáhněte sem svůj záložní soubor"
 
 #: 
+msgid "Edit records permission"
+msgstr "Oprávnění k úpravě záznamů"
+
+#: 
+msgid "Encryption"
+msgstr "Šifrování"
+
+#: 
 msgid "Exports database structure and data. Smaller file size."
 msgstr "Exportuje strukturu databáze a data. Menší velikost souboru."
 
 #: 
+msgid "File Integrity Check"
+msgstr "Kontrola integrity souboru"
+
+#: 
 msgid "File Integrity Issues Detected"
 msgstr "Zjištěny problémy s integritou souborů"
+
+#: 
+msgid "File Path"
+msgstr "Cesta k souboru"
 
 #: 
 msgid "File signatures match the official release."
@@ -9355,6 +9687,14 @@ msgstr "Podpisy souborů odpovídají oficiální verzi."
 #: 
 msgid "Files may be modified or missing. Consider re-deploying from an official release."
 msgstr "Soubory mohou být změněny nebo mohou chybět. Zvažte jejich nahrání z oficiální verze."
+
+#: 
+msgid "Finance access"
+msgstr "Přístup k finančím"
+
+#: 
+msgid "Force Re-install"
+msgstr "Vynútit přeinstalování"
 
 #: 
 msgid "Force re-install initiated. Please backup your database before applying."
@@ -9371,6 +9711,10 @@ msgstr "Vytvořit a stáhnout zálohu"
 #: 
 msgid "Go to Dashboard"
 msgstr "Přejít na nástěnku"
+
+#: 
+msgid "Group management access"
+msgstr "Přístup ke správě skupin"
 
 #: 
 msgid "If you need access to this feature, please contact your church administrator."
@@ -9393,8 +9737,52 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Jednu kopii uchovávejte v ohnivzdorném trezoru na místě a druhou externě."
 
 #: 
+msgid "Latest GitHub Version:"
+msgstr "Nejnovější verze GitHub:"
+
+#: 
+msgid "Loading..."
+msgstr "Načítání..."
+
+#: 
 msgid "Make a backup at least once a week unless you have automated backups."
 msgstr "Pokud nemáte nastaveno automatické zálohování, provádějte zálohu alespoň jednou týdně."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "Spravovat opuštěné soubory"
+
+#: 
+msgid "Menu options access"
+msgstr "Přístup k možnostem menu"
+
+#: 
+msgid "Missing Files"
+msgstr "Chybějící soubory"
+
+#: 
+msgid "Modified Files"
+msgstr "Změněné soubory"
+
+#: 
+msgid "Multiple Copies"
+msgstr "Více kopií"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "Nenašly se žádné opuštěné soubory"
+
+#: 
+msgid "Notes access"
+msgstr "Přístup k poznámkám"
+
+#: 
+msgid "Orphaned Files"
+msgstr "Opuštěné soubory"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "Správa opuštěných souborů"
 
 #: 
 msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
@@ -9403,6 +9791,10 @@ msgstr "Osamocené soubory jsou soubory PHP nebo JavaScript, které existují na
 #: 
 msgid "Orphaned files from previous versions cleaned up"
 msgstr "Osamocené soubory z předchozích verzí byly vyčištěny"
+
+#: 
+msgid "Permission Required"
+msgstr "Vyžadováno oprávnění"
 
 #: 
 msgid "Please check the backup file and try again."
@@ -9429,12 +9821,56 @@ msgid "Recommendation: Review and delete these files before or after the upgrade
 msgstr "Doporučení: Před nebo po aktualizaci tyto soubory zkontrolujte a odstraňte."
 
 #: 
+msgid "Redirecting in"
+msgstr "Přesměrování v"
+
+#: 
+msgid "Refresh List"
+msgstr "Obnovit seznam"
+
+#: 
+msgid "Regular Backups"
+msgstr "Pravidelné zálohy"
+
+#: 
+msgid "Required Permission"
+msgstr "Vyžadované oprávnění"
+
+#: 
+msgid "Required permission"
+msgstr "Vyžadované oprávnění"
+
+#: 
+msgid "Restore Status"
+msgstr "Stav obnovení"
+
+#: 
+msgid "Restore failed."
+msgstr "Obnovení se nezdařilo."
+
+#: 
 msgid "Restore failed. Please check the backup file and try again."
 msgstr "Obnovení se nezdařilo. Zkontrolujte záložní soubor a zkuste to znovu."
 
 #: 
+msgid "Restore in progress, please wait..."
+msgstr "Obnovení probíhá, čekané..."
+
+#: 
 msgid "Review the files below and delete them to improve security."
 msgstr "Prohlédněte si níže uvedené soubory a odstraňte je, abyste zvýšili bezpečnost."
+
+#: 
+msgid "Security Recommendation"
+msgstr "Doporugení zabezpečení"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "Varování zabezpečení: Zjištěny opuštěné soubory"
+
+#: 
+msgid "Select Backup File"
+msgstr "Vyberte soubor zálohy"
 
 #: 
 msgid "Supported formats:"
@@ -9477,6 +9913,10 @@ msgid "This will re-download and re-apply the current version. This can fix corr
 msgstr "Aktuální verze se znovu stáhne a nainstaluje. Tím lze opravit poškozené nebo upravené soubory. Pokračovat?"
 
 #: 
+msgid "Upgrade Summary"
+msgstr "Souhrn upgradu"
+
+#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Před uložením mimo pracoviště zašifrujte zálohy pomocí externích nástrojů (GPG, 7-Zip)."
 
@@ -9489,8 +9929,48 @@ msgid "User must have Add Event permission"
 msgstr "Uživatel musí mít oprávnění Add Event"
 
 #: 
+msgid "User must have Menu Options permission"
+msgstr "Uživatel musí mít oprávnění Možnosti menu"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "Co jsou opuštěné soubory?"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "Nemáte přístup na tuto stránku"
+
+#: 
 msgid "You will be logged out and redirected to the login page."
 msgstr "Budete odhlášeni a přesměrováni na přihlašovací stránku."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "Vaše instalace ChurchCRM je čistá. Všechny soubory na serveru se shodují s oficiálním vydáním."
+
+#: 
+msgid "or click to browse"
+msgstr "nebo kliknutím procházet"
+
+#: 
+msgid "seconds..."
+msgstr "sekund..."
+
+#: 
+msgid " Deposit #"
+msgstr " Vklad #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d chybějící klasifikace"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d chybějící pohlaví"
+
+#: 
+msgid "%d missing role"
+msgstr "%d chybějící role"
 
 #: 
 msgid "A payment is an actual donation received. It will be added to the current deposit."
@@ -9503,6 +9983,10 @@ msgstr "Příslib je závazek darovat. Není vázán na vkladový lístek."
 #: 
 msgid "Add Another Family Member"
 msgstr "Přidat dalšího člena rodiny"
+
+#: 
+msgid "Add Pledge"
+msgstr "Přidat sálib"
 
 #: 
 msgid "Admin Dashboard"
@@ -9549,12 +10033,44 @@ msgid "Cart"
 msgstr "Košík"
 
 #: 
+msgid "Change this in System Settings."
+msgstr "Změněte to v Nastavení systému."
+
+#: 
 msgid "Church Membership"
 msgstr "Členství ve sboru"
 
 #: 
+msgid "Church name is set to default value"
+msgstr "Název kostela je nastaven na výchozí hodnotu"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "Třídy a zápisy"
+
+#: 
+msgid "Clean Up Files"
+msgstr "Vyimpovat soubory"
+
+#: 
 msgid "Clear all data and start fresh. Cannot be undone."
 msgstr "Vymazat všechna data a začít znovu. Nelze vrátit zpět."
+
+#: 
+msgid "Close All Deposits"
+msgstr "Uzavřít všechny vklady"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "Uzavřené vklady:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "Uzavřené vs Celkově"
+
+#: 
+msgid "Coming soon"
+msgstr "Bude brzy"
 
 #: 
 msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
@@ -9579,6 +10095,30 @@ msgstr "Nastavit e-mail"
 #: 
 msgid "Contact Information"
 msgstr "Informace o kontaktu"
+
+#: 
+msgid "Create Deposit"
+msgstr "Vytvořit vklad"
+
+#: 
+msgid "Create First Deposit"
+msgstr "Vytvořit první vklad"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "Nejdříve vytvořte nebo otevřete vklad"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "Vytvořte nebo vyberte vklad, abyste začali."
+
+#: 
+msgid "Current Deposit"
+msgstr "Aktuální vklad"
+
+#: 
+msgid "Current fiscal year"
+msgstr "Aktuální finanční rok"
 
 #: 
 msgid "Customizable report with filtering by date, fund, family, and payment method."
@@ -9609,6 +10149,14 @@ msgid "Demo Data"
 msgstr "Ukázková data"
 
 #: 
+msgid "Deposit Navigation"
+msgstr "Navigace vkladu"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "Statistika vkladu"
+
+#: 
 msgid "Detailed breakdown of a single deposit slip."
 msgstr "Podrobný rozpis jednoho vkladového lístku."
 
@@ -9619,6 +10167,14 @@ msgstr "Podrobný rozpis slibů a plateb podle rodiny."
 #: 
 msgid "Documentation"
 msgstr "Dokumentace"
+
+#: 
+msgid "Donor Families"
+msgstr "Rodině dārců"
+
+#: 
+msgid "Edit Deposit"
+msgstr "Úpravit vklad"
 
 #: 
 msgid "Edit Family"
@@ -9637,6 +10193,10 @@ msgid "Ensure all deposits for the tax year are closed before generating stateme
 msgstr "Před vygenerováním výpisů se ujistěte, že jsou všechny vklady za dané daňové období uzavřeny."
 
 #: 
+msgid "Export Options"
+msgstr "Možnosti exportu"
+
+#: 
 msgid "F"
 msgstr "Ž"
 
@@ -9653,8 +10213,20 @@ msgid "Feb"
 msgstr "úno"
 
 #: 
+msgid "File Integrity:"
+msgstr "Integrita souboru:"
+
+#: 
+msgid "Filtering"
+msgstr "Filtrování"
+
+#: 
 msgid "Finance"
 msgstr "Finance"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "Finanční prostřed"
 
 #: 
 msgid "Force Import"
@@ -9665,12 +10237,20 @@ msgid "Force Import will retry and may create duplicate data."
 msgstr "Funkce Force Import (Vynutit import) se pokusí o opakování a může vytvořit duplicitní data."
 
 #: 
+msgid "Fund Allocation"
+msgstr "Alokace fondů"
+
+#: 
 msgid "Generate"
 msgstr "Generovat"
 
 #: 
 msgid "Generate Reports"
 msgstr "Generovat výkazy"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Generovat danƮgení výkazy"
 
 #: 
 msgid "Generate annual giving statements for donors and identify giving patterns."
@@ -9697,8 +10277,24 @@ msgid "Giving funds and categories"
 msgstr "Poskytování finančních prostředků a kategorie"
 
 #: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS není nakonfigurováno"
+
+#: 
+msgid "ID"
+msgstr "ID"
+
+#: 
 msgid "Identify members who have not made any donations within a date range."
 msgstr "Identifikovat členy, kteří v daném časovém období neposkytli žádné dary."
+
+#: 
+msgid "Import failed"
+msgstr "Import se nezdanil"
+
+#: 
+msgid "Import from CSV files"
+msgstr "Importovat ze souborů CSV"
 
 #: 
 msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
@@ -9745,12 +10341,24 @@ msgid "M"
 msgstr "M"
 
 #: 
+msgid "Manage Funds"
+msgstr "Spravovat fondy"
+
+#: 
 msgid "Manage Users"
 msgstr "Spravovat uživatele"
 
 #: 
 msgid "Mar"
 msgstr "bře"
+
+#: 
+msgid "Membership Reports"
+msgstr "Zprávy o členství"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "Chybějící tajné klíče"
 
 #: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
@@ -9773,8 +10381,28 @@ msgid "New Payment"
 msgstr "Nová platba"
 
 #: 
+msgid "New Pledge"
+msgstr "Nový sálib"
+
+#: 
 msgid "Next 7 days and past 7 days"
 msgstr "Následujících 7 dní a posledních 7 dní"
+
+#: 
+msgid "No Active Deposit"
+msgstr "Aktivní vklad"
+
+#: 
+msgid "No active funds configured."
+msgstr "Není nakonfigurován žádný aktivní fond."
+
+#: 
+msgid "No deposits found."
+msgstr "Nenalezeny žádné vklady."
+
+#: 
+msgid "No format"
+msgstr "Bez formátu"
 
 #: 
 msgid "Nov"
@@ -9789,12 +10417,60 @@ msgid "Open"
 msgstr "Otevřít"
 
 #: 
+msgid "Open Deposits:"
+msgstr "Otevřené vklady:"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "Organizace, časové pásmo, e-mail"
+
+#: 
+msgid "Organizational structure"
+msgstr "Organizační struktura"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "Opuštěné soubory:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
 msgid "Payment"
 msgstr "Platba"
 
 #: 
+msgid "Pledge Reports"
+msgstr "Zprávy o sálibě"
+
+#: 
 msgid "Print or email annual giving statements to all donors."
 msgstr "Vytiskněte nebo zašlete e-mailem výroční výkazy darů všem dárcům."
+
+#: 
+msgid "Quick Actions"
+msgstr "Rychlé akce"
+
+#: 
+msgid "Quick Start"
+msgstr "Rychlý start"
+
+#: 
+msgid "Recent Deposits"
+msgstr "Nedávné vklady"
+
+#: 
+msgid "Recording a Payment"
+msgstr "Záznam platby"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "Záznam sálibu"
+
+#: 
+msgid "Report Tips"
+msgstr "Tipy zprávy"
 
 #: 
 msgid "Reports related to member voting eligibility and organization governance."
@@ -9811,6 +10487,10 @@ msgstr "Obnovit"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Obnovit ze souboru zálohy. Smaže stávající data."
+
+#: 
+msgid "Review Donation Funds"
+msgstr "Zkontrolovat finanČní prostředky darů"
 
 #: 
 msgid "SMTP server settings are not configured"
@@ -9841,12 +10521,20 @@ msgid "Settings saved successfully"
 msgstr "Nastavení úspěšně uloženo"
 
 #: 
+msgid "Setup Tasks:"
+msgstr "Setupové úkoly:"
+
+#: 
 msgid "Social Media"
 msgstr "Sociální sítě"
 
 #: 
 msgid "Some application prerequisites are not met"
 msgstr "Některé požadavky aplikace nejsou splněny"
+
+#: 
+msgid "State (Other)"
+msgstr "Stát (Jiný)"
 
 #: 
 msgid "Status:"
@@ -9869,6 +10557,22 @@ msgid "System Info"
 msgstr "Informace o systému"
 
 #: 
+msgid "Tax & Giving Reports"
+msgstr "Daně a zprávy o dárcové"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "Slovní zpráva o daních"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "Danění výkazy (Zpráva o dárcové)"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "Kontrolní seznam zprávy daněního roku"
+
+#: 
 msgid "Today"
 msgstr "Dnes"
 
@@ -9877,12 +10581,28 @@ msgid "Total"
 msgstr "Celkem"
 
 #: 
+msgid "Total Amount"
+msgstr "Celková částka"
+
+#: 
+msgid "Total Deposits:"
+msgstr "Celkové vklady:"
+
+#: 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
 msgstr "Sledovat sliby a průběh plateb pro kampaně a rozpočtování fiskálního roku."
 
 #: 
 msgid "Type:"
 msgstr "Typ:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "Nesplěné předpoklady"
+
+#: 
+msgid "Update Church Name"
+msgstr "Aktualizovat název kostela"
 
 #: 
 msgid "Upgrade"
@@ -9915,6 +10635,14 @@ msgstr "Verze:"
 #: 
 msgid "Welcome to ChurchCRM"
 msgstr "Vítejte v ChurchCRM"
+
+#: 
+msgid "YTD Payments"
+msgstr "YTD platby"
+
+#: 
+msgid "YTD Pledges"
+msgstr "YTD sáliby"
 
 #: 
 msgid "You may create family members now or add them later. All entries will become new person records."
@@ -9977,6 +10705,10 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Zadejte stát/provincii pro země bez předdefinovaných států)"
 
 #: 
+msgid "Available"
+msgstr "Dostupné"
+
+#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurace základní URL adresy je neplatná. Zkontrolujte prosím soubor Config.php."
 
@@ -9993,6 +10725,22 @@ msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr "Připojte se k serveru přes SSH, FTP nebo ovládací panel hostingu"
 
 #: 
+msgid "Contact"
+msgstr "Kontakt"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "Kritická chyba konfigurace"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "Aktuální hodnota $URL[0]:"
+
+#: 
+msgid "Custom port:"
+msgstr "Vlastní port:"
+
+#: 
 msgid "Ends with a <strong>trailing slash</strong> (/)"
 msgstr "Končí <strong>závěrečným lomítkem</strong> (/)"
 
@@ -10001,12 +10749,68 @@ msgid "Error:"
 msgstr "Chyba:"
 
 #: 
+msgid "Find the line:"
+msgstr "Najít řádek:"
+
+#: 
+msgid "Group Memberships"
+msgstr "Členství skupiny"
+
+#: 
+msgid "How to Fix:"
+msgstr "Jak opravit:"
+
+#: 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
 msgstr "Připojte se ke komunitě ChurchCRM a pomozte nám zlepšovat naše služby sdílením svých informací. Zabere to méně než minutu!"
 
 #: 
+msgid "Language"
+msgstr "Jazyk"
+
+#: 
+msgid "Local development:"
+msgstr "Lokální vývoj:"
+
+#: 
+msgid "Locale Support"
+msgstr "Podpora loálí"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "Poloha a kontaktní informace"
+
+#: 
 msgid "Navigate to your ChurchCRM installation directory"
 msgstr "Přejděte do instalačního adresáře ChurchCRM"
+
+#: 
+msgid "New to"
+msgstr "Nový v"
+
+#: 
+msgid "No locales configured"
+msgstr "Není nakonfigurováno žádné loálí"
+
+#: 
+msgid "Not Available"
+msgstr "Není dostupné"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "Otevříte tento soubor v textovém editoru:"
+
+#: 
+msgid "Register Now"
+msgstr "Zaregistrujte se"
+
+#: 
+msgid "Register Your Church"
+msgstr "Zaregistrujte svou kostel"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "Uložte soubor a obnovte tuto stránku"
 
 #: 
 msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
@@ -10017,8 +10821,28 @@ msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Začíná na <strong>http://</strong> nebo <strong>https://</strong>"
 
 #: 
+msgid "Subdirectory installation:"
+msgstr "Instalace podadrŠáře:"
+
+#: 
+msgid "System Locale Support"
+msgstr "Podpora loálí systému"
+
+#: 
+msgid "System Support"
+msgstr "Podpora systému"
+
+#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL neobsahuje platný název hostitele"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "Název hostitele URL není platný"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URL není v platném formátu"
 
 #: 
 msgid "URL must end with a trailing slash (/)"
@@ -10027,6 +10851,10 @@ msgstr "URL musí končit lomítkem (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL musí začínat http:// nebo https://"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "Nelze detekovat loálí systému"
 
 #: 
 msgid "Unable to determine available locales"
@@ -10045,8 +10873,44 @@ msgid "Update it to a valid URL that:"
 msgstr "Aktualizujte na platnou adresu URL, která:"
 
 #: 
+msgid "Valid Examples:"
+msgstr "Platné příklady:"
+
+#: 
+msgid "View Logs"
+msgstr "Zobrazit protokoly"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "Zobrazte a spravujte soubory systémových protokolů pro ladění."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "Musíte zadat příjmení."
+
+#: 
 msgid "Your privacy is important. We never share your information with third parties."
 msgstr "Vaše soukromí je pro nás důležité. Vaše údaje nikdy nesdílíme s třetími stranami."
+
+#: 
+msgid "Additional Information"
+msgstr "Další informace"
+
+#: 
+msgid "All information is correct"
+msgstr "Všechny informace jsou správné"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "Přiřadit přílĕitosti"
+
+#: 
+msgid "Assign Property"
+msgstr "Přiřadit vlastnost"
+
+#: 
+msgid "Choose a property..."
+msgstr "Vyberte vlastnost..."
 
 #: 
 msgid "Choose opportunities..."
@@ -10069,8 +10933,20 @@ msgid "Copied!"
 msgstr "Zkopírováno!"
 
 #: 
+msgid "Edit Role"
+msgstr "Úpravit roli"
+
+#: 
 msgid "Edited"
 msgstr "Upraveno"
+
+#: 
+msgid "Email PDF"
+msgstr "E-mail PDF"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "Ne podstoupilo se zkopité URL"
 
 #: 
 msgid "ID:"
@@ -10079,6 +10955,10 @@ msgstr "ID:"
 #: 
 msgid "Newsletter"
 msgstr "Zprávy ze sboru"
+
+#: 
+msgid "No assigned family"
+msgstr "Není přiřazená rodina"
 
 #: 
 msgid "Open in New Tab"
@@ -10101,8 +10981,40 @@ msgid "Provide any corrections or additional information here..."
 msgstr "Zde uveďte případné opravy nebo doplňující informace..."
 
 #: 
+msgid "Remove Property"
+msgstr "Odebrat vlastnost"
+
+#: 
+msgid "Select Opportunities"
+msgstr "Vyberte přílĕitosti"
+
+#: 
+msgid "Select Property"
+msgstr "Vyberte vlastnost"
+
+#: 
 msgid "Share this URL with family members to verify their information"
 msgstr "Sdílejte tuto URL adresu s členy rodiny, abyste ověřili jejich údaje."
+
+#: 
+msgid "Submit Verification"
+msgstr "Odeslat ovęření"
+
+#: 
+msgid "Thank You!"
+msgstr "Děkuji!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "Překlad nekomplitní"
+
+#: 
+msgid "Visit Our Website"
+msgstr "Navštěvte náš web"
+
+#: 
+msgid "Volunteer"
+msgstr "Dobrovolník"
 
 #: 
 msgid "We encountered an error processing your verification. Please try again or contact us directly."
@@ -10117,12 +11029,32 @@ msgid "An error occurred. Please contact your system administrator."
 msgstr "Došlo k chybě. Obraťte se na správce systému."
 
 #: 
+msgid "Backup failed"
+msgstr "Záloha se nezdařila"
+
+#: 
+msgid "Database reset failed"
+msgstr "Reset databáze se nezdařil"
+
+#: 
+msgid "Database restore failed"
+msgstr "Obnovení databáze se nezdařilo"
+
+#: 
+msgid "Demo data import failed"
+msgstr "Import demo dat se nezdařil"
+
+#: 
 msgid "Demo data import is only available on fresh installations with exactly 1 person"
 msgstr "Import ukázkových dat je k dispozici pouze u nových instalací s přesně 1 osobou."
 
 #: 
 msgid "Demo data loaded successfully"
 msgstr "Ukázková data byla úspěšně načtena"
+
+#: 
+msgid "Download failed"
+msgstr "Stažení se nezdařilo"
 
 #: 
 msgid "Failed to apply upgrade"
@@ -10157,8 +11089,80 @@ msgid "WebDAV backups are not correctly configured. Please ensure endpoint, user
 msgstr "Zálohy WebDAV nejsou správně nakonfigurovány. Ujistěte se, že je nastaven koncový bod, uživatelské jméno a heslo."
 
 #: 
+msgid "2FA Enabled"
+msgstr "2FA povoleno"
+
+#: 
+msgid "Active Users"
+msgstr "Aktivní uživatelé"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "ChMeetings Export"
+
+#: 
+msgid "Delete User"
+msgstr "Smazat uživatele"
+
+#: 
+msgid "Disable 2FA"
+msgstr "Zakázat 2FA"
+
+#: 
 msgid "Export all people data in ChMeetings format for import into external systems."
 msgstr "Exportujte všechna data o osobách ve formátu ChMeetings pro import do externích systémů."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "Exportovat do ChMeetings CSV"
+
+#: 
+msgid "Exporting..."
+msgstr "Exportování..."
+
+#: 
+msgid "Family Listing"
+msgstr "Seznam rodin"
+
+#: 
+msgid "Invalid request data"
+msgstr "Neplatná data požadavku"
+
+#: 
+msgid "Invalid status"
+msgstr "Neplatný stav"
+
+#: 
+msgid "Locked Users"
+msgstr "Zamčení uživatelé"
+
+#: 
+msgid "Person Listing"
+msgstr "Seznam osob"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "Osoba(y) odebrána z košíku"
+
+#: 
+msgid "Quick Settings"
+msgstr "Rychlé nastavení"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "Resetovat selhávající přihlašování"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "Resetovat heslo pomocí e-mailu"
+
+#: 
+msgid "Set Active"
+msgstr "Nastavit aktivní"
+
+#: 
+msgid "Set Inactive"
+msgstr "Nastavit neaktivní"
 
 #: 
 msgid "Show"
@@ -10270,8 +11274,80 @@ msgid "Confirm Property Deletion"
 msgstr "Potvrďte odstranění vlastnosti"
 
 #: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "Potvrdit smazaní dobrovolnícke přílĕitosti"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "Potvrzení smazaní"
+
+#: 
+msgid "Existing"
+msgstr "Existující"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "Existující vlastní pole rodiny"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "Existující vlastní pole osob"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "Existující dobrovolnícké přílĕitosti"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "Pole bylo úspěšně smazáno"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Neplatný token CSRF"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "Neplatná pole nebo výběry."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Položka byla úspěšně smazána"
+
+#: 
+msgid "Move down"
+msgstr "Posunout dolů"
+
+#: 
+msgid "Move up"
+msgstr "Posunout nahoru"
+
+#: 
+msgid "Opportunity"
+msgstr "Přílĕitost"
+
+#: 
+msgid "Order"
+msgstr "Pořadí"
+
+#: 
 msgid "PDFs successfully emailed to %s families."
 msgstr "PDF soubory byly úspěšně odeslány e-mailem %s rodinám."
+
+#: 
+msgid "Percentage"
+msgstr "Procento"
+
+#: 
+msgid "Person Properties"
+msgstr "Vlastnosti osob"
+
+#: 
+msgid "Property Type"
+msgstr "Typ vlastnosti"
+
+#: 
+msgid "Property to Delete"
+msgstr "Vlastnost k smazaní"
 
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
@@ -10282,6 +11358,26 @@ msgid "This will remove it from all people currently assigned to it."
 msgstr "Tím se odstraní od všech osob, kterým je v současné době přiřazeno."
 
 #: 
+msgid "Volunteer Opportunity"
+msgstr "Dobrovolnícka přílĕitost"
+
+#: 
+msgid "Warning:"
+msgstr "Varování:"
+
+#: 
 msgid "Yes, delete this Opportunity"
 msgstr "Ano, odstranit tuto příležitost"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "Dotazy, pro které musí mít uživatel oprávnění finančích"
+
+#: 
+msgid "Fund(s)"
+msgstr "Fond(y)"
+
+#: 
+msgid "Password reset for"
+msgstr "Resetování hesla pro"
 
