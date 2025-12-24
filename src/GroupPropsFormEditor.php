@@ -259,7 +259,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     ?>
                     <tr>
                         <td colspan="7">
-                            <div class="text-center"><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!") ?></b></div>
+                            <div class="text-center"><b><?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!") ?></b></div>
                         </td>
                     </tr>
 
