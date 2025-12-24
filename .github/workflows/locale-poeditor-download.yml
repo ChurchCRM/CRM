@@ -260,6 +260,30 @@ jobs:
           echo "ℹ️  No base term updates generated"
         fi
 
+    - name: Generate missing terms for all locales
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "📋 Generating missing translation terms for all locales..."
+        npm run locale:missing
+        echo "✅ Missing terms files generated"
+
+    - name: Commit missing terms for POEditor
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        if [ -d "locale/missing-terms" ] && [ -n "$(find locale/missing-terms -name 'poeditor-*.json' -type f 2>/dev/null)" ]; then
+          echo "📝 Committing missing terms files..."
+          git add locale/missing-terms/poeditor-*.json
+          # Check if there are staged changes to commit
+          if ! git diff --cached --quiet; then
+            git commit -m "📊 Missing translation terms: Updated for all locales from master list"
+            echo "✅ Missing terms files committed"
+          else
+            echo "ℹ️  No new missing terms to commit"
+          fi
+        else
+          echo "ℹ️  No missing terms files generated"
+        fi
+
     - name: Create Pull Request
       if: inputs.operation_mode != 'audit-only' && (steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch')
       uses: peter-evans/create-pull-request@v6
@@ -280,7 +304,7 @@ jobs:
         body: |
           ## 🌍 Automatic Locale Update
           
-          This PR contains updated translations downloaded from POEditor and any generated base term updates for locale variants.
+          This PR contains updated translations downloaded from POEditor, base term updates for locale variants, and missing term reports for all locales.
           
           **Details:**
           - 📅 **Date**: ${{ steps.date.outputs.date }}
@@ -291,10 +315,14 @@ jobs:
           - Updated translation files from POEditor
           - Generated locale JSON files
           - 📋 Base term updates for locale variants (in `locale/base-term-updates/`)
+          - 📊 Missing terms for all locales (in `locale/missing-terms/poeditor-*.json`)
           - Locale audit results
           
           **Base Term Updates:**
-          If base term update files are included, they contain missing translations from base locales that should be added to locale variants via POEditor. These files can be imported to help translators fill in gaps.
+          Syncs missing translations from base locales (Portuguese, Spanish) to their variants via POEditor.
+          
+          **Missing Terms Reports:**
+          For each incomplete locale, a `poeditor-{locale}.json` file contains all missing/untranslated terms from the master English list. These can be imported into POEditor to help translators complete the translations.
           
           This PR was automatically created by the POEditor workflow.
           
@@ -317,6 +345,7 @@ jobs:
         echo "- **Download validation**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
         echo "- **Regression check**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
         echo "- **Base term updates**: Generated and committed"
+        echo "- **Missing terms report**: Generated for all locales"
         echo "- **Changes detected**: ${{ inputs.operation_mode == 'audit-only' && 'N/A (audit-only)' || steps.changes.outputs.has_changes }}"
         echo "- **PR created**: ${{ inputs.operation_mode == 'audit-only' && 'No (audit-only)' || ((steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch') && 'Yes' || 'No') }}"
         echo "- **Branch**: ${{ inputs.operation_mode == 'audit-only' && 'N/A' || format('locale/{0}', steps.package-version.outputs.current-version) }}"

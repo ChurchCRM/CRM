@@ -55,6 +55,7 @@
         "locale:build": "node locale/scripts/locale-term-extract.js",
         "locale:download": "node locale/scripts/poeditor-downloader.js && npm run locale:audit",
         "locale:variants": "node locale/scripts/locale-populate-variants.js",
+        "locale:missing": "node locale/scripts/locale-missing-terms.js",
         "locale:lint": "node scripts/locale-check.js",
         "package": "npm run deploy && node scripts/package-release.js",
         "changelog": "node scripts/generate-changelog.js",
