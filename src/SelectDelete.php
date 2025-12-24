@@ -44,7 +44,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['
         . "' WHERE plg_FamID='$iFamilyID'";
     RunQuery($sSQL);
 
-    $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
+            $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
 }
 
 //Set the Page Title

@@ -466,7 +466,7 @@ require_once __DIR__ . '/Include/Header-Short.php';
     }
 
     if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
-        echo '<p><b>' . gettext('Notes') . ':' . '</b></p>';
+        echo '<p><b>' . gettext('Notes:') . '</b></p>';
 
         // Loop through all the notes
         while ($aRow = mysqli_fetch_array($rsNotes)) {

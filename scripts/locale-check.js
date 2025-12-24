@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const root = process.cwd();
-const IGNORE_DIRS = ['node_modules', '.git', 'vendor', 'src/vendor', 'src/locale/vendor', 'dist', 'build', 'src/locale/i18n', 'src/locale/textdomain', 'locale/locales'];
+const IGNORE_DIRS = ['node_modules', '.git', 'vendor', 'src/vendor', 'src/locale/vendor', 'dist', 'build', 'src/locale/i18n', 'src/locale/textdomain', 'locale/locales', 'locale/messages.po'];
 const FILE_EXTS = ['.php', '.js', '.jsx', '.ts', '.tsx', '.vue', '.po', '.json', '.html', '.phtml'];
 
 const patterns = [

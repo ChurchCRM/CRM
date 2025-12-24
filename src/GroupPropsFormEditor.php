@@ -25,7 +25,7 @@ if ($grp_hasSpecialProps == false) {
     RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
 }
 
-$sPageTitle = gettext('Group-Specific Properties Form Editor') . ':' . '  ' . $grp_Name;
+$sPageTitle = gettext('Group-Specific Properties Form Editor:') . '  ' . $grp_Name;
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 

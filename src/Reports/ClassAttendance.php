@@ -137,7 +137,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                 // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
                 $aStudentsIMG[$iStudentCnt++] = $person->getPhoto()->getPhotoURI();
             } elseif ($lst_OptionName == gettext('Liaison')) {
-                $liaisonString .= gettext('Liaison') . ':' . $person->getFullName() . ' ' . $homePhone . ' ';
+                $liaisonString .= gettext('Liaison:') . $person->getFullName() . ' ' . $homePhone . ' ';
             }
         }
 

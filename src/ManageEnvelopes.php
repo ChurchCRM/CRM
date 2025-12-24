@@ -140,7 +140,7 @@ if (isset($_POST['PrintReport'])) {
 <thead>
 <tr>
     <th>
-    <b><?= gettext('Family Select')?></b> <?= gettext('with at least one') . ':'; ?>
+    <b><?= gettext('Family Select')?></b> <?= gettext('with at least one:') ?>
         <select name="Classification">
         <option value="0"><?= gettext('All') ?></option>
         <?php
