@@ -98,7 +98,8 @@
         "fullCalendarLocale": "en-au",
         "datePicker": false,
         "select2": false,
-        "momentLocale": "en-au"
+        "momentLocale": "en-au",
+        "skip_audit": true
     },
     "English - Canada": {
         "poEditor": "en-ca",
@@ -109,7 +110,8 @@
         "fullCalendar": false,
         "datePicker": false,
         "select2": false,
-        "momentLocale": "en-ca"
+        "momentLocale": "en-ca",
+        "skip_audit": true
     },
     "English - Great Britain": {
         "poEditor": "en",
@@ -121,7 +123,8 @@
         "fullCalendarLocale": "en-gb",
         "datePicker": false,
         "select2": false,
-        "momentLocale": "en-gb"
+        "momentLocale": "en-gb",
+        "skip_audit": true
     },
     "English - Jamaica": {
         "poEditor": "en-jm",
@@ -132,7 +135,8 @@
         "fullCalendar": false,
         "datePicker": false,
         "select2": false,
-        "momentLocale": "en"
+        "momentLocale": "en",
+        "skip_audit": true
     },
     "English - South Africa": {
         "poEditor": "en-za",
@@ -143,7 +147,8 @@
         "fullCalendar": false,
         "datePicker": false,
         "select2": false,
-        "momentLocale": "en"
+        "momentLocale": "en",
+        "skip_audit": true
     },
     "English - United States": {
         "poEditor": "en-US",
@@ -154,7 +159,9 @@
         "fullCalendar": false,
         "datePicker": false,
         "select2": false,
-        "momentLocale": "en"
+        "momentLocale": "en",
+        "skip_audit": true,
+        "super_base": true
     },
     "Estonian": {
         "poEditor": "et",

@@ -186,17 +186,30 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
 }
 
 /**
- * Download English master list JSON file to /locale directory
+ * Download super base language master list JSON file to /locale directory
  * This serves as a simplified master term list for locale variant syncing
  */
 async function downloadEnglishMasterList() {
-    console.log('\n📝 Downloading English master term list...');
+    console.log('\n📝 Downloading master term list...');
+    
+    // Find the super_base locale configuration
+    const superBaseLocale = Object.entries(localesConfig).find(
+        ([name, config]) => config.super_base === true
+    );
+    
+    if (!superBaseLocale) {
+        console.error('  ❌ No super_base locale found in locales.json');
+        throw new Error('super_base locale not configured');
+    }
+    
+    const [superBaseName, superBaseConfig] = superBaseLocale;
+    const poEditorCode = superBaseConfig.poEditor;
     
     try {
         const postData = new URLSearchParams({
             api_token: apiToken,
             id: projectId,
-            language: 'en',
+            language: poEditorCode,
             type: 'key_value_json',
             filters: 'all', // Download all terms, including untranslated (for master list)
         }).toString();
@@ -221,7 +234,7 @@ async function downloadEnglishMasterList() {
                         }
                         fs.writeFileSync(outputPath, fileData);
                         const fileSize = fileData.length;
-                        console.log(`  ✅ English master list: ${fileSize} bytes → ${outputPath}`);
+                        console.log(`  ✅ Master term list (${superBaseName}): ${fileSize} bytes → ${outputPath}`);
                         resolve();
                     });
                 }).on('error', reject);
@@ -267,24 +280,21 @@ async function main() {
     let totalAttempts = 0;
     let skippedCount = 0;
     
-    // Base English languages that have no translations (POEditor doesn't translate to English)
-    const baseEnglishLocales = ['en_US'];
-    
-    // Calculate total locales to download (excluding base English)
+    // Calculate total locales to download
     const totalLocales = Object.keys(localesConfig).length;
     const downloadableLocales = Object.values(localesConfig)
-        .filter(config => !baseEnglishLocales.includes(config.locale));
+        .filter(config => config.super_base !== true);
     const totalToDownload = downloadableLocales.length;
     
-    console.log(`📋 Total locales: ${totalLocales} (${totalToDownload} to download, ${totalLocales - totalToDownload} base English)\n`);
+    console.log(`📋 Total locales: ${totalLocales} (${totalToDownload} to download, ${skippedCount} skipped)\n`);
 
     for (const [key, localeConfig] of Object.entries(localesConfig)) {
         const locale = localeConfig.locale;
         const poEditorLocale = localeConfig.poEditor;
 
-        // Skip base English languages - they have no translations and will download empty
-        if (baseEnglishLocales.includes(locale)) {
-            console.log(`  ⏭️  Skipping ${locale} (base English language - no translations)`);
+        // Skip super_base locales - they are the source language, not translation targets
+        if (localeConfig.super_base === true) {
+            console.log(`  ⏭️  Skipping ${locale} (super base language - source)`);
             skippedCount++;
             continue;
         }
@@ -312,7 +322,7 @@ async function main() {
         console.error('⚠️  English master list download failed (non-critical)');
     }
 
-    console.log(`\n📊 Summary: ${successCount}/${totalToDownload} languages downloaded (${skippedCount} English variants skipped)`);
+    console.log(`\n📊 Summary: ${successCount}/${totalToDownload} languages downloaded (${skippedCount} super base skipped)`);
 
     if (failedLanguages.length > 0 && failedLanguages.length < totalToDownload) {
         console.warn(`\n⚠️  Partial failures: ${failedLanguages.slice(0, 5).join(', ')}${failedLanguages.length > 5 ? '...' : ''}`);
