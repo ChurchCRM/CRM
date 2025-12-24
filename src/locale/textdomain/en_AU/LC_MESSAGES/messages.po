@@ -131,11 +131,6 @@ msgstr "Postcode"
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Enter any part of the following: Name, City, State, Postcode, Home Phone, Email, or Work Email."
 
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Search by any part of Name, City, State, Postcode, Home Phone, Email, or Work Email."
-
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Make user-entered postcodes UPPERCASE when saving to the database."

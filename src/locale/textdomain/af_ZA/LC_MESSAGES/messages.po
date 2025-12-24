@@ -120,10 +120,6 @@ msgid "Membership Date"
 msgstr "Lidmaatskap datum"
 
 #: 
-msgid "Birth / Anniversary Date"
-msgstr "Geboorte / Herdenkingsdatum"
-
-#: 
 msgid "Age / Years Married"
 msgstr "Ouderdom / Jare getroud"
 
@@ -187,16 +183,14 @@ msgid "Group Membership"
 msgstr "Groep lidmaatskap"
 
 #: 
-msgid "From:"
-msgstr "Van:"
+#, fuzzy
+msgid "From"
+msgstr "Van"
 
 #: 
-msgid "To:"
-msgstr "Aan:"
-
-#: 
-msgid "Birthday Date"
-msgstr "Geboortedatum"
+#, fuzzy
+msgid "To"
+msgstr "Aan"
 
 #: 
 msgid "Anniversary Date"
@@ -231,7 +225,8 @@ msgid "No file selected for upload."
 msgstr "Geen leêr was gekies vir die oplaai nie"
 
 #: 
-msgid "Total number of rows in the CSV file:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
 msgstr "Totale aantal rye in die CVS leêr"
 
 #: 
@@ -546,8 +541,9 @@ msgid "Convert All"
 msgstr "Skakel almal om"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Inbetaling strokie nommer: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Inbetaling strokie nommer"
 
 #: 
 #, fuzzy
@@ -731,10 +727,6 @@ msgstr "Donasie Fondsredakteur"
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Is u seker dat u hierdie fonds wil verwyder?"
-
-#: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Waarskuwing: Veldveranderinge sal verlore gaan indien jy nie 'Stoor Veranderinge' druk voor jy iets uitvee of die 'voeg nuwe' knoppie by druk nie"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -1071,10 +1063,6 @@ msgid "Delete Photo"
 msgstr "Vee foto uit"
 
 #: 
-msgid "Add a Note"
-msgstr "Voeg 'n nota by"
-
-#: 
 msgid "Timeline"
 msgstr "Tydlyn"
 
@@ -1175,8 +1163,9 @@ msgid "Financial Reports"
 msgstr "Finansiële verslae"
 
 #: 
-msgid "Report Type:"
-msgstr "Verslagtipe:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Verslagtipe"
 
 #: 
 msgid "Select Report Type"
@@ -1223,16 +1212,19 @@ msgid "Filter by Family"
 msgstr "Filtreer volgens gesin"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Aanvangsdatum van verslag:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Aanvangsdatum van verslag"
 
 #: 
-msgid "Report End Date:"
-msgstr "Einddatum van verslag:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Einddatum van verslag"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Pas verslagdatums toe op:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Pas verslagdatums toe op"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,8 +1235,9 @@ msgid "Payment Date"
 msgstr "Betaaldatum"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Filtreer volgens deposito:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Filtreer volgens deposito"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1255,8 +1248,9 @@ msgid "All deposits within date range"
 msgstr "Alle deposito's binne datumbereik"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Filtreer volgens betalingstipe:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Filtreer volgens betalingstipe"
 
 #: 
 msgid "All Methods"
@@ -1288,20 +1282,12 @@ msgid "Other Settings"
 msgstr "Ander instellings"
 
 #: 
-msgid "Include:"
-msgstr "Insluit:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Slegs betalings met beloftes"
 
 #: 
 msgid "All Payments"
 msgstr "Alle betalings"
-
-#: 
-msgid "Generate:"
-msgstr "Genereer:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1352,8 +1338,9 @@ msgid "Summary Data"
 msgstr "Opsommingsdata"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Stemlede moet binne soveel jare 'n donasie gemaak het <br> (0 om geen donasie te benodig nie):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Stemlede moet binne soveel jare 'n donasie gemaak het <br> (0 om geen donasie te benodig nie)"
 
 #: 
 msgid "CSV"
@@ -1372,12 +1359,9 @@ msgid "Deposit Listing"
 msgstr "Deposito-lys"
 
 #: 
-msgid "Add New Deposit"
-msgstr "Voeg nuwe deposito by"
-
-#: 
-msgid "Deposits: "
-msgstr "Deposito's: "
+#, fuzzy
+msgid "Deposits"
+msgstr "Deposito's"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1465,20 +1449,23 @@ msgid "Family Geographic Utilities"
 msgstr "Geografiese hulpmiddels vir gesinne"
 
 #: 
-msgid "Select Family:"
-msgstr "Kies gesin:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Kies gesin"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Maksimum aantal bure:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Maksimum aantal bure"
 
 #: 
 msgid "Maximum distance"
 msgstr "Maksimum afstand"
 
 #: 
-msgid "Data file format:"
-msgstr "Data lêer formaat:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Data lêer formaat"
 
 #: 
 msgid "GPS Visualizer"
@@ -1489,8 +1476,9 @@ msgid "Street Atlas USA"
 msgstr "Straat Atlas VSA"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Sluit gesinne in die koördinaatlêer in:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Sluit gesinne in die koördinaatlêer in"
 
 #: 
 msgid "Neighbor Families"
@@ -1561,8 +1549,9 @@ msgid "Select a group"
 msgstr "Kies 'n groep"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Groepspesifieke eienskappe: "
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Groepspesifieke eienskappe"
 
 #: 
 msgid "Enabled"
@@ -1617,15 +1606,17 @@ msgid "data for member"
 msgstr "data vir lid"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Groepspesifieke eienskappe Vormredakteur:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Groepspesifieke eienskappe Vormredakteur"
 
 #: 
 msgid "No properties have been added yet"
 msgstr "Geen eiendomme is nog bygevoeg nie"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "Waarskuwing: Veldveranderings sal verlore gaan as u nie 'Verander veranderinge' doen voordat u 'n op, af, uitvee of 'voeg' by nie!"
 
 #: 
@@ -1775,8 +1766,9 @@ msgid "Move Selected Members to Group"
 msgstr "Skuif geselekteerde lede na die groep"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Voeg groeplid by: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Voeg groeplid by"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2279,12 +2271,9 @@ msgid "Group Name"
 msgstr "Groepnaam"
 
 #: 
-msgid "Notes:"
-msgstr "Notas:"
-
-#: 
-msgid "Entered:"
-msgstr "Ingeskryf:"
+#, fuzzy
+msgid "Entered"
+msgstr "Ingeskryf"
 
 #: 
 msgid "by"
@@ -2334,10 +2323,6 @@ msgstr "As u 'n vinnige waarde invoer, kan 'n vryvormwaarde gekoppel word."
 msgid "Property List"
 msgstr "Eiendomslys"
 
-#: 
-msgid "Add a New"
-msgstr "Voeg 'n nuwe by"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2374,10 +2359,6 @@ msgstr "Eiendomstipe redakteur"
 #: 
 msgid "Property Type List"
 msgstr "Eiendomstipe lys"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Voeg 'n nuwe tipe eiendom by"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2426,8 +2407,8 @@ msgstr "Voer SQL uit"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "N Fout het voorgekom: "
+msgid "An error occurred"
+msgstr "N Fout het voorgekom"
 
 #: 
 msgid " record(s) returned"
@@ -3071,12 +3052,14 @@ msgid "for funds "
 msgstr "vir fondse "
 
 #: 
-msgid "Donated Items:"
-msgstr "Skenkingsitems:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Skenkingsitems"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Gekoopte items:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Gekoopte items"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3135,12 +3118,14 @@ msgid "Please mail you next gift to "
 msgstr "Stuur u volgende geskenk aan "
 
 #: 
-msgid "Gift Amount:"
-msgstr "Geskenkbedrag:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Geskenkbedrag"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Geskenkaanwysing:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Geskenkaanwysing"
 
 #: 
 msgid "Sunday School"
@@ -3313,14 +3298,6 @@ msgstr "Kalender"
 #: 
 msgid "Members"
 msgstr "Lede"
-
-#: 
-msgid "Add New Person"
-msgstr "Voeg nuwe persoon by"
-
-#: 
-msgid "Add New Family"
-msgstr "Voeg nuwe gesin by"
 
 #: 
 msgid "Events"
@@ -3556,18 +3533,6 @@ msgid "Buyer # "
 msgstr "Koper # "
 
 #: 
-msgid "Envelope:"
-msgstr "Koevert:"
-
-#: 
-msgid ", Phone: "
-msgstr ", Foon: "
-
-#: 
-msgid "Voting members "
-msgstr "Stemlede "
-
-#: 
 msgid "Family Members:"
 msgstr "Familielede:"
 
@@ -3588,20 +3553,13 @@ msgid "File Name:"
 msgstr "Lêernaam:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Fiskale jaar:"
-
-#: 
 msgid "family"
 msgstr "familie"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Verjaarsdag:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Datum ingevoer:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Datum ingevoer"
 
 #: 
 msgid "CSV Import"
@@ -3628,10 +3586,6 @@ msgid "Filter by Fund"
 msgstr "Filtreer volgens fonds"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Voeg nuwe deposito by: "
-
-#: 
 msgid "Estimated value"
 msgstr "Geskatte waarde"
 
@@ -3646,10 +3600,6 @@ msgstr "Teksgroep"
 #: 
 msgid "Group Properties"
 msgstr "Groepseiendomme"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Ken 'n nuwe eiendom toe:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3696,10 +3646,6 @@ msgstr "Dit is die gesinsrolnommers wat as eggenoot aangewys word"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Dit is die gesinsrolnommers wat as kind aangewys word"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Navrae waarvoor die gebruiker finansies moet hê om te gebruik:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3989,26 +3935,6 @@ msgstr "Poskode"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "WerkE-pos"
 
@@ -4276,23 +4202,8 @@ msgstr "CustomSearch"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Totale rekords wat ooreenstem met 'n gegewe geslag."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Kies persoonrekords met die gesinsrol en geslag gespesifiseer."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Wys persoonrekords waaraan die gegewe eiendom toegeken word."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Soek op enige deel van die naam, stad, staat, zip, huistelefoon, e-pos of werk-e-pos."
 
 #. Context: query_qry
 #: 
@@ -4308,16 +4219,6 @@ msgstr "Vind geregistreerde studente"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Lede wat oor 'n spesifieke maand aangesluit het"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Mense wat as databasisgebruikers geregistreer is"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Mense wat lede is"
 
 #. Context: query_qry
 #: 
@@ -6046,16 +5947,18 @@ msgid "Please confirm activation of family"
 msgstr "Bevestig asseblief die aktivering van die gesin"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Wys bure met hierdie klassifikasies:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Wys bure met hierdie klassifikasies"
 
 #: 
 msgid "Please select a Family."
 msgstr "Kies 'n gesin."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Koördineer databasis lêernaam:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Koördineer databasis lêernaam"
 
 #: 
 msgid "select an option"
@@ -6561,15 +6464,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "U Kerk se Facebook-bladsy"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "U Kerk se X-bladsy"
-
-#: 
 msgid "Self Register"
 msgstr "Selfregister"
 
@@ -6597,10 +6491,6 @@ msgstr "rekords (s) suksesvol by die geselekteerde groep gevoeg."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Om na 'n ander uit te voer Vir Europese CharSet-gebruik;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Standaard is UTF-8, gebruik die Europese CharSet Windows-1252, byvoorbeeld vir die Franse taal."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6951,14 +6841,6 @@ msgid "Upgrade Required"
 msgstr "Opgradering vereis"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Toon verjaardae herdenkings met die aanvang van die CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Aantal sekondes nadat die bladsy gelaai is totdat die banier verdwyn, standaard 10 sekondes"
-
-#: 
 msgid "Help & Manual"
 msgstr "Hulp & Handleiding"
 
@@ -7131,10 +7013,6 @@ msgstr "Verwyder toegangstoken"
 #: 
 msgid "ICS URL"
 msgstr "ICS-URL"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON-URL"
 
 #: 
 msgid "Foreground Color"

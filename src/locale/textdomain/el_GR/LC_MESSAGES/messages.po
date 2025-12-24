@@ -120,10 +120,6 @@ msgid "Membership Date"
 msgstr "Ημερομηνία μέλους"
 
 #: 
-msgid "Birth / Anniversary Date"
-msgstr "Ημερομηνία γέννησης / επετείου"
-
-#: 
 msgid "Age / Years Married"
 msgstr "Ηλικία / Έτη Έγγαμου"
 
@@ -187,16 +183,14 @@ msgid "Group Membership"
 msgstr "Μέλη ομάδας"
 
 #: 
-msgid "From:"
-msgstr "Από:"
+#, fuzzy
+msgid "From"
+msgstr "Από"
 
 #: 
-msgid "To:"
-msgstr "Προς την:"
-
-#: 
-msgid "Birthday Date"
-msgstr "Ημερομηνία γενεθλίων"
+#, fuzzy
+msgid "To"
+msgstr "Προς την"
 
 #: 
 msgid "Anniversary Date"
@@ -231,8 +225,9 @@ msgid "No file selected for upload."
 msgstr "Δεν έχει επιλεγεί αρχείο για μεταφόρτωση."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Συνολικός αριθμός σειρών στο αρχείο CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Συνολικός αριθμός σειρών στο αρχείο CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +541,9 @@ msgid "Convert All"
 msgstr "Μετατροπή όλων"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Αριθμός δελτίου κατάθεσης: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Αριθμός δελτίου κατάθεσης"
 
 #: 
 #, fuzzy
@@ -731,10 +727,6 @@ msgstr "Συντάκτης Ταμείου Δωρεών"
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το ταμείο;"
-
-#: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Προειδοποίηση: Οι αλλαγές πεδίων θα χαθούν εάν δεν κάνετε «Αποθήκευση αλλαγών» πριν χρησιμοποιήσετε το κουμπί διαγραφής ή «προσθήκη νέου»!"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -1071,10 +1063,6 @@ msgid "Delete Photo"
 msgstr "Διαγραφή φωτογραφίας"
 
 #: 
-msgid "Add a Note"
-msgstr "Προσθέστε μια Σημείωση"
-
-#: 
 msgid "Timeline"
 msgstr "Χρονοδιάγραμμα"
 
@@ -1175,8 +1163,9 @@ msgid "Financial Reports"
 msgstr "Οικονομικές Εκθέσεις"
 
 #: 
-msgid "Report Type:"
-msgstr "Τύπος αναφοράς:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Τύπος αναφοράς"
 
 #: 
 msgid "Select Report Type"
@@ -1223,16 +1212,19 @@ msgid "Filter by Family"
 msgstr "Φιλτράρισμα κατά οικογένεια"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Ημερομηνία έναρξης αναφοράς:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Ημερομηνία έναρξης αναφοράς"
 
 #: 
-msgid "Report End Date:"
-msgstr "Ημερομηνία λήξης αναφοράς:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Ημερομηνία λήξης αναφοράς"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Εφαρμογή ημερομηνιών αναφοράς σε:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Εφαρμογή ημερομηνιών αναφοράς σε"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,8 +1235,9 @@ msgid "Payment Date"
 msgstr "Ημερομηνία πληρωμής"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Φιλτράρισμα κατά κατάθεση:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Φιλτράρισμα κατά κατάθεση"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1255,8 +1248,9 @@ msgid "All deposits within date range"
 msgstr "Όλες οι καταθέσεις εντός του εύρους ημερομηνιών"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Φιλτράρισμα κατά τύπο πληρωμής:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Φιλτράρισμα κατά τύπο πληρωμής"
 
 #: 
 msgid "All Methods"
@@ -1288,20 +1282,12 @@ msgid "Other Settings"
 msgstr "Αλλες ρυθμίσεις"
 
 #: 
-msgid "Include:"
-msgstr "Περιλαμβάνω:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Μόνο πληρωμές με ενέχυρα"
 
 #: 
 msgid "All Payments"
 msgstr "Όλες οι πληρωμές"
-
-#: 
-msgid "Generate:"
-msgstr "Παράγω:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1352,8 +1338,9 @@ msgid "Summary Data"
 msgstr "Συνοπτικά Δεδομένα"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Τα μέλη που ψηφίζουν πρέπει να έχουν κάνει<br> μια δωρεά μέσα σε τόσα χρόνια<br> (0 για να μην απαιτείται δωρεά):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Τα μέλη που ψηφίζουν πρέπει να έχουν κάνει<br> μια δωρεά μέσα σε τόσα χρόνια<br> (0 για να μην απαιτείται δωρεά)"
 
 #: 
 msgid "CSV"
@@ -1372,12 +1359,9 @@ msgid "Deposit Listing"
 msgstr "Καταχώρηση Καταθέσεων"
 
 #: 
-msgid "Add New Deposit"
-msgstr "Προσθήκη νέας κατάθεσης"
-
-#: 
-msgid "Deposits: "
-msgstr "Καταθέσεις: "
+#, fuzzy
+msgid "Deposits"
+msgstr "Καταθέσεις"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1465,20 +1449,23 @@ msgid "Family Geographic Utilities"
 msgstr "Family Geographic Utilities"
 
 #: 
-msgid "Select Family:"
-msgstr "Επιλέξτε Οικογένεια:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Επιλέξτε Οικογένεια"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Μέγιστος αριθμός γειτόνων:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Μέγιστος αριθμός γειτόνων"
 
 #: 
 msgid "Maximum distance"
 msgstr "Μέγιστη απόσταση"
 
 #: 
-msgid "Data file format:"
-msgstr "Μορφή αρχείου δεδομένων:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Μορφή αρχείου δεδομένων"
 
 #: 
 msgid "GPS Visualizer"
@@ -1489,8 +1476,9 @@ msgid "Street Atlas USA"
 msgstr "Street Atlas ΗΠΑ"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Συμπεριλάβετε οικογένειες στο αρχείο συντεταγμένων:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Συμπεριλάβετε οικογένειες στο αρχείο συντεταγμένων"
 
 #: 
 msgid "Neighbor Families"
@@ -1561,8 +1549,9 @@ msgid "Select a group"
 msgstr "Επιλέξτε μια ομάδα"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Ειδικές ιδιότητες ομάδας: "
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Ειδικές ιδιότητες ομάδας"
 
 #: 
 msgid "Enabled"
@@ -1617,15 +1606,17 @@ msgid "data for member"
 msgstr "δεδομένα για μέλος"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Επεξεργαστής φόρμας ιδιοτήτων για συγκεκριμένες ομάδες:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Επεξεργαστής φόρμας ιδιοτήτων για συγκεκριμένες ομάδες"
 
 #: 
 msgid "No properties have been added yet"
 msgstr "Δεν έχουν προστεθεί ακόμη ιδιότητες"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "Προειδοποίηση: Οι αλλαγές πεδίων θα χαθούν εάν δεν «Αποθήκευση αλλαγών» πριν χρησιμοποιήσετε ένα κουμπί πάνω, κάτω, διαγραφή ή «προσθήκη νέου»!"
 
 #: 
@@ -1775,8 +1766,9 @@ msgid "Move Selected Members to Group"
 msgstr "Μετακίνηση επιλεγμένων μελών στην ομάδα"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Προσθήκη μέλους ομάδας: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Προσθήκη μέλους ομάδας"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2279,12 +2271,9 @@ msgid "Group Name"
 msgstr "Ονομα ομάδας"
 
 #: 
-msgid "Notes:"
-msgstr "Σημειώσεις:"
-
-#: 
-msgid "Entered:"
-msgstr "Καταχωρήθηκε:"
+#, fuzzy
+msgid "Entered"
+msgstr "Καταχωρήθηκε"
 
 #: 
 msgid "by"
@@ -2334,10 +2323,6 @@ msgstr "Η εισαγωγή μιας τιμής Prompt θα επιτρέψει �
 msgid "Property List"
 msgstr "Κατάλογος ακινήτων"
 
-#: 
-msgid "Add a New"
-msgstr "Προσθήκη νέου"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2374,10 +2359,6 @@ msgstr "Επεξεργαστής τύπου ιδιότητας"
 #: 
 msgid "Property Type List"
 msgstr "Λίστα τύπων ιδιότητας"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Προσθήκη νέου τύπου ιδιότητας"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2426,8 +2407,8 @@ msgstr "Εκτελέστε SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "Προέκυψε ένα σφάλμα: "
+msgid "An error occurred"
+msgstr "Προέκυψε ένα σφάλμα"
 
 #: 
 msgid " record(s) returned"
@@ -3071,12 +3052,14 @@ msgid "for funds "
 msgstr "για κεφάλαια "
 
 #: 
-msgid "Donated Items:"
-msgstr "Δωρεά είδη:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Δωρεά είδη"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Αγορασμένα αντικείμενα:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Αγορασμένα αντικείμενα"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3135,12 +3118,14 @@ msgid "Please mail you next gift to "
 msgstr "Παρακαλώ στείλτε σας το επόμενο δώρο στο "
 
 #: 
-msgid "Gift Amount:"
-msgstr "Ποσό δώρου:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Ποσό δώρου"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Ονομασία δώρου:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Ονομασία δώρου"
 
 #: 
 msgid "Sunday School"
@@ -3313,14 +3298,6 @@ msgstr "Ημερολόγιο"
 #: 
 msgid "Members"
 msgstr "Μέλη"
-
-#: 
-msgid "Add New Person"
-msgstr "Προσθήκη νέου Μέλους"
-
-#: 
-msgid "Add New Family"
-msgstr "Προσθήκη νέας οικογένειας"
 
 #: 
 msgid "Events"
@@ -3556,18 +3533,6 @@ msgid "Buyer # "
 msgstr "Αγοραστής # "
 
 #: 
-msgid "Envelope:"
-msgstr "Φάκελος:"
-
-#: 
-msgid ", Phone: "
-msgstr ", Τηλέφωνο: "
-
-#: 
-msgid "Voting members "
-msgstr "Μέλη που ψηφίζουν "
-
-#: 
 msgid "Family Members:"
 msgstr "Μέλη της οικογένειας:"
 
@@ -3588,20 +3553,13 @@ msgid "File Name:"
 msgstr "Ονομα αρχείου:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Οικονομικό έτος:"
-
-#: 
 msgid "family"
 msgstr "οικογένεια"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Ημερομηνία επετείου:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Ημερομηνία εισαγωγής:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Ημερομηνία εισαγωγής"
 
 #: 
 msgid "CSV Import"
@@ -3628,10 +3586,6 @@ msgid "Filter by Fund"
 msgstr "Φιλτράρισμα κατά Ταμείο"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Προσθήκη νέας κατάθεσης: "
-
-#: 
 msgid "Estimated value"
 msgstr "Εκτιμώμενη Τιμή"
 
@@ -3646,10 +3600,6 @@ msgstr "Ομάδα κειμένου"
 #: 
 msgid "Group Properties"
 msgstr "Ιδιότητες ομάδας"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Εκχώρηση νέας ιδιοκτησίας:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3696,10 +3646,6 @@ msgstr "Αυτοί είναι οι αριθμοί οικογενειακών ρ�
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Αυτοί είναι οι αριθμοί ρόλων της οικογένειας που ορίζονται ως παιδί"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Ερωτήματα για τα οποία ο χρήστης πρέπει να έχει οικονομικές άδειες για χρήση:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3989,26 +3935,6 @@ msgstr "Ταχυδρομικός κώδικας"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "WorkEmail"
 
@@ -4276,23 +4202,8 @@ msgstr "Προσαρμοσμένη Αναζήτηση"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Σύνολο εγγραφών που αντιστοιχούν σε ένα δεδομένο φύλο."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Επιλέγει αρχεία Μελών με καθορισμένο τον οικογενειακό ρόλο και το φύλο."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Επιστρέφει αρχεία Μελώνω στα οποία έχει εκχωρηθεί η δεδομένη ιδιότητα."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Αναζήτηση με οποιοδήποτε μέρος του ονόματος, της πόλης, της πολιτείας, του Ταχυδρομείου, του τηλεφώνου του σπιτιού, του email ή του email εργασίας."
 
 #. Context: query_qry
 #: 
@@ -4308,16 +4219,6 @@ msgstr "Βρείτε εγγεγραμμένους μαθητές"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Μέλη που εντάχθηκαν σε έναν συγκεκριμένο μήνα"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Άτομα που είναι εγγεγραμμένα ως χρήστες βάσης δεδομένων"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Άτομα που είναι μέλη"
 
 #. Context: query_qry
 #: 
@@ -6046,16 +5947,18 @@ msgid "Please confirm activation of family"
 msgstr "Επιβεβαιώστε την ενεργοποίηση της οικογένειας"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Εμφάνιση γειτόνων με αυτές τις ταξινομήσεις:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Εμφάνιση γειτόνων με αυτές τις ταξινομήσεις"
 
 #: 
 msgid "Please select a Family."
 msgstr "Επιλέξτε μια οικογένεια."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Όνομα αρχείου βάσης δεδομένων συντεταγμένων:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Όνομα αρχείου βάσης δεδομένων συντεταγμένων"
 
 #: 
 msgid "select an option"
@@ -6561,15 +6464,6 @@ msgid "Thai"
 msgstr "Ταϊλανδός"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "Η σελίδα της Εκκλησίας σας στο Facebook"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "Η σελίδα της Εκκλησίας σας στο X"
-
-#: 
 msgid "Self Register"
 msgstr "Αυτοεγγραφή"
 
@@ -6597,10 +6491,6 @@ msgstr "οι εγγραφές προστέθηκαν με επιτυχία στ�
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Για εξαγωγή σε άλλο Για χρήση σε ευρωπαϊκό CharSet."
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Η προεπιλογή είναι UTF-8, Για το ευρωπαϊκό CharSet χρησιμοποιήστε τα Windows-1252 για παράδειγμα για τη γαλλική γλώσσα."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6951,14 +6841,6 @@ msgid "Upgrade Required"
 msgstr "Απαιτείται αναβάθμιση"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Εμφάνιση επετείων γενεθλίων κατά την εκκίνηση του CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Αριθμός δευτερολέπτων μετά τη φόρτωση της σελίδας μέχρι να εξαφανιστεί το banner, προεπιλογή 10 δευτερόλεπτα"
-
-#: 
 msgid "Help & Manual"
 msgstr "Βοήθεια & Εγχειρίδιο"
 
@@ -7131,10 +7013,6 @@ msgstr "Διαγραφή Access Token"
 #: 
 msgid "ICS URL"
 msgstr "URL ICS"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL"
 
 #: 
 msgid "Foreground Color"

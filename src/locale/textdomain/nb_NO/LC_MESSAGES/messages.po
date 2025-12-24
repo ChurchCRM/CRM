@@ -129,11 +129,6 @@ msgstr "Medlemskap Dato"
 
 #: 
 #, fuzzy
-msgid "Birth / Anniversary Date"
-msgstr "Fødsel / Anniversary Dato"
-
-#: 
-#, fuzzy
 msgid "Age / Years Married"
 msgstr "Alder / år Gift"
 
@@ -197,17 +192,14 @@ msgid "Group Membership"
 msgstr "Gruppe Medlemskap"
 
 #: 
-msgid "From:"
-msgstr "Fra:"
-
-#: 
-msgid "To:"
-msgstr "Til:"
+#, fuzzy
+msgid "From"
+msgstr "Fra"
 
 #: 
 #, fuzzy
-msgid "Birthday Date"
-msgstr "Bursdags Dato"
+msgid "To"
+msgstr "Til"
 
 #: 
 #, fuzzy
@@ -243,8 +235,9 @@ msgid "No file selected for upload."
 msgstr "Ingen fil valgt for opplasting."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Totalt antall rader i CSV-filen:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Totalt antall rader i CSV-filen"
 
 #: 
 msgid "Ignore this Field"
@@ -562,8 +555,9 @@ msgid "Convert All"
 msgstr "Konverter alle"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Innskudd Slip Antall:"
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Innskudd Slip Antall"
 
 #: 
 #, fuzzy
@@ -752,10 +746,6 @@ msgstr "Donasjon Fund Editor"
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Er du sikker på at du vil slette dette fondet?"
-
-#: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Advarsel: Felt endringer vil gå tapt hvis du ikke \"Lagre endringer\" før du bruker en sletting eller &#39;Legg til ny&#39; knappen!"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -1094,10 +1084,6 @@ msgid "Delete Photo"
 msgstr "Slett bilde"
 
 #: 
-msgid "Add a Note"
-msgstr "Legg til Notat"
-
-#: 
 msgid "Timeline"
 msgstr "Tidslinje"
 
@@ -1199,8 +1185,9 @@ msgid "Financial Reports"
 msgstr "Finansielle rapporter"
 
 #: 
-msgid "Report Type:"
-msgstr "Rapport Type:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Rapport Type"
 
 #: 
 msgid "Select Report Type"
@@ -1249,16 +1236,19 @@ msgid "Filter by Family"
 msgstr "Filtrer etter Familie"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Rapport Startdato:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Rapport Startdato"
 
 #: 
-msgid "Report End Date:"
-msgstr "Rapport Sluttdato:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Rapport Sluttdato"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Påfør Rapport datoer:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Påfør Rapport datoer"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1269,8 +1259,9 @@ msgid "Payment Date"
 msgstr "Betalingsdato"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Filtrer etter Depositum:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Filtrer etter Depositum"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1281,8 +1272,9 @@ msgid "All deposits within date range"
 msgstr "Alle innskudd innen datointervall"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Filtrer etter betaling Type:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Filtrer etter betaling Type"
 
 #: 
 msgid "All Methods"
@@ -1314,20 +1306,12 @@ msgid "Other Settings"
 msgstr "Andre innstillinger"
 
 #: 
-msgid "Include:"
-msgstr "Inkluder:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Bare betalinger med Pantstillelser"
 
 #: 
 msgid "All Payments"
 msgstr "Alle betalinger"
-
-#: 
-msgid "Generate:"
-msgstr "Generere:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1394,11 +1378,8 @@ msgid "Deposit Listing"
 msgstr "Innskudd Listing"
 
 #: 
-msgid "Add New Deposit"
-msgstr "Legg til nytt innskudd"
-
-#: 
-msgid "Deposits: "
+#, fuzzy
+msgid "Deposits"
 msgstr "Inskudd"
 
 #: 
@@ -1496,20 +1477,23 @@ msgid "Family Geographic Utilities"
 msgstr "Familie Geographic Utilities"
 
 #: 
-msgid "Select Family:"
+#, fuzzy
+msgid "Select Family"
 msgstr "Velg Familie:"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Maksimalt antall naboer:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Maksimalt antall naboer"
 
 #: 
 msgid "Maximum distance"
 msgstr "Maksimal avstand"
 
 #: 
-msgid "Data file format:"
-msgstr "Data filformat:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Data filformat"
 
 #: 
 msgid "GPS Visualizer"
@@ -1520,8 +1504,9 @@ msgid "Street Atlas USA"
 msgstr "Street Atlas USA"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Inkludere familier i koordinatsystem fil:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Inkludere familier i koordinatsystem fil"
 
 #: 
 msgid "Neighbor Families"
@@ -1596,8 +1581,9 @@ msgid "Select a group"
 msgstr "Velg en gruppe"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Gruppe Spesifikke Egenskaper:"
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Gruppe Spesifikke Egenskaper"
 
 #: 
 msgid "Enabled"
@@ -1654,15 +1640,17 @@ msgid "data for member"
 msgstr "data for medlem"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Gruppe-spesifikke egenskaper Form Redaktør:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Gruppe-spesifikke egenskaper Form Redaktør"
 
 #: 
 msgid "No properties have been added yet"
 msgstr "Ingen egenskaper er ennå ikke lagt"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "Advarsel: Felt endringer vil gå tapt hvis du ikke \"Lagre endringer\" før du bruker opp, ned, slette eller &#39;Legg til ny&#39; knappen!"
 
 #: 
@@ -1817,7 +1805,8 @@ msgid "Move Selected Members to Group"
 msgstr "Flytt Valgte Medlemmer til Gruppe:"
 
 #: 
-msgid "Add Group Member: "
+#, fuzzy
+msgid "Add Group Member"
 msgstr "Legg til Gruppemedlem"
 
 #: 
@@ -2326,12 +2315,9 @@ msgid "Group Name"
 msgstr "Gruppenavn"
 
 #: 
-msgid "Notes:"
-msgstr "Merknader:"
-
-#: 
-msgid "Entered:"
-msgstr "Angitt:"
+#, fuzzy
+msgid "Entered"
+msgstr "Angitt"
 
 #: 
 msgid "by"
@@ -2383,10 +2369,6 @@ msgstr "Legge inn en Prompt verdi vil tillate sammenslutning av en fri form verd
 msgid "Property List"
 msgstr "Eiendom Liste"
 
-#: 
-msgid "Add a New"
-msgstr "Legg til en ny"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2424,10 +2406,6 @@ msgstr "Eiendomstype Editor"
 #: 
 msgid "Property Type List"
 msgstr "Eiendomstype List"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Legg til en ny Eiendomstype"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2477,8 +2455,8 @@ msgstr "Utføre SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "Det oppstod en feil:"
+msgid "An error occurred"
+msgstr "Det oppstod en feil"
 
 #: 
 msgid " record(s) returned"
@@ -3116,12 +3094,14 @@ msgid "for funds "
 msgstr "om midler"
 
 #: 
-msgid "Donated Items:"
-msgstr "Donert elementer:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Donert elementer"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Kjøpte elementer:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Kjøpte elementer"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3180,12 +3160,14 @@ msgid "Please mail you next gift to "
 msgstr "Vennligst send deg neste gave til"
 
 #: 
-msgid "Gift Amount:"
-msgstr "Gave Beløp:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Gave Beløp"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Gave Betegnelse:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Gave Betegnelse"
 
 #: 
 msgid "Sunday School"
@@ -3353,14 +3335,6 @@ msgstr "Kalender"
 #: 
 msgid "Members"
 msgstr "Medlemmer"
-
-#: 
-msgid "Add New Person"
-msgstr "Legg til nye person"
-
-#: 
-msgid "Add New Family"
-msgstr "Legg til ny familie"
 
 #: 
 msgid "Events"

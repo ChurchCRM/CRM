@@ -121,10 +121,6 @@ msgid "Membership Date"
 msgstr "सदस्यता तिथि"
 
 #: 
-msgid "Birth / Anniversary Date"
-msgstr "जन्म/वर्षगांठ तिथि"
-
-#: 
 msgid "Age / Years Married"
 msgstr "विवाह की आयु/वर्ष"
 
@@ -188,16 +184,14 @@ msgid "Group Membership"
 msgstr "समूह सदस्यता"
 
 #: 
-msgid "From:"
-msgstr "जारीकर्ता या से:"
+#, fuzzy
+msgid "From"
+msgstr "जारीकर्ता या से"
 
 #: 
-msgid "To:"
-msgstr "को:"
-
-#: 
-msgid "Birthday Date"
-msgstr "जन्मदिन की तारीख"
+#, fuzzy
+msgid "To"
+msgstr "को"
 
 #: 
 msgid "Anniversary Date"
@@ -232,8 +226,9 @@ msgid "No file selected for upload."
 msgstr "अपलोड के लिए कोई फ़ाइल चयनित नहीं है."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "CSV फ़ाइल में पंक्तियों की कुल संख्या:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "CSV फ़ाइल में पंक्तियों की कुल संख्या"
 
 #: 
 msgid "Ignore this Field"

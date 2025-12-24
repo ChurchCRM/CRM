@@ -104,10 +104,6 @@ msgid "Membership Date"
 msgstr "会員登録日"
 
 #: 
-msgid "Birth / Anniversary Date"
-msgstr "生年月日 / 記念日"
-
-#: 
 msgid "Age / Years Married"
 msgstr "年齢 / 結婚年数"
 
@@ -159,10 +155,6 @@ msgid "Female"
 msgstr "女性"
 
 #: 
-msgid "Birthday Date"
-msgstr "生年月日"
-
-#: 
 msgid "Skip records with incomplete mail address"
 msgstr "メールアドレスが不完全なレコードをスキップする"
 
@@ -175,7 +167,8 @@ msgid "No file selected for upload."
 msgstr "アップロードするファイルが選択されていません"
 
 #: 
-msgid "Total number of rows in the CSV file:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
 msgstr "CSV ファイルの合計行数"
 
 #: 
