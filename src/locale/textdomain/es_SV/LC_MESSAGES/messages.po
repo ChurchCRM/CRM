@@ -1,0 +1,126 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: es-sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "No se puede ejecutar la consulta."
+
+#: 
+msgid "Delete"
+msgstr "Borrar"
+
+#: 
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: 
+msgid "Save"
+msgstr "Guardar"
+
+#: 
+msgid "Unassigned"
+msgstr "Sin asignar"
+
+#: 
+msgid "None"
+msgstr "Ninguno"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "City"
+msgstr "Ciudad"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "State"
+msgstr "Estado"
+
+#: 
+msgid "Country"
+msgstr "País"
+
+#: 
+msgid "Phone"
+msgstr "Teléfono"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Email"
+msgstr "Email"
+
+#: 
+msgid "Credit Card"
+msgstr "Tarjeta de crédito"
+
+#: 
+msgid "Backup Database"
+msgstr "Hacer copia de respaldo"
+
+#: 
+msgid "Winner"
+msgstr "Ganador"
+
+#: 
+msgid "Price"
+msgstr "Precio"
+
+#: 
+msgid "Enter Winners"
+msgstr "Ingrese Ganadores"
+
+#: 
+msgid "CSV Export"
+msgstr "Exportar CSV"
+
+#: 
+msgid "Field Selection"
+msgstr "Selección de campo"
+
+#: 
+msgid "Last Name"
+msgstr "Apellido"
+
+#: 
+msgid "Required"
+msgstr "Requerido"
+
+#: 
+msgid "First Name"
+msgstr "Primer nombre"
+
+#: 
+msgid "Middle Name"
+msgstr "Segundo nombre"
+
+#: 
+msgid "Zip"
+msgstr "Zip"
+
+#: 
+msgid "Envelope"
+msgstr "Sobre"
+
+#: 
+msgid "Work/Other Email"
+msgstr "Trabajo/Otro email"
+
+#: 
+msgid "Membership Date"
+msgstr "Fecha de membresía"
+
+#: 
+msgid "Age / Years Married"
+msgstr "Edad / Años de casados"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Family Role"
+msgstr "Rol familiar"
+

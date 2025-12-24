@@ -1,0 +1,359 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: es-mx\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "No se pudo ejecutar la consulta."
+
+#: 
+msgid "Delete"
+msgstr "Eliminar"
+
+#: 
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: 
+msgid "Save"
+msgstr "Guardar"
+
+#: 
+msgid "Unassigned"
+msgstr "Sin asignar"
+
+#: 
+msgid "None"
+msgstr "Ninguno"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "City"
+msgstr "Ciudad"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "State"
+msgstr "Estado"
+
+#: 
+msgid "Country"
+msgstr "País"
+
+#: 
+msgid "Phone"
+msgstr "Telefono"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Email"
+msgstr "Correo"
+
+#: 
+msgid "Credit Card"
+msgstr "Tarjeta de Crédito"
+
+#: 
+msgid "Backup Database"
+msgstr "Respaldo de la base de datos"
+
+#: 
+msgid "Winner"
+msgstr "Ganador"
+
+#: 
+msgid "Price"
+msgstr "Precio"
+
+#: 
+msgid "Enter Winners"
+msgstr "Ingresa los Ganadores"
+
+#: 
+msgid "CSV Export"
+msgstr "Exporta en CSV"
+
+#: 
+msgid "Field Selection"
+msgstr "Selecciona un campo"
+
+#: 
+msgid "Last Name"
+msgstr "Apellido"
+
+#: 
+msgid "Required"
+msgstr "Requerido"
+
+#: 
+msgid "First Name"
+msgstr "Nombre"
+
+#: 
+msgid "Middle Name"
+msgstr "Segundo nombre"
+
+#: 
+msgid "Zip"
+msgstr "Zip"
+
+#: 
+msgid "Envelope"
+msgstr "Sobre"
+
+#: 
+msgid "Work/Other Email"
+msgstr "Trabajo/Otro email"
+
+#: 
+msgid "Membership Date"
+msgstr "Fecha de membresía"
+
+#: 
+msgid "Age / Years Married"
+msgstr "Años de casados"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Family Role"
+msgstr "Rol familiar"
+
+#: 
+msgid "Filters"
+msgstr "Filtros"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Male"
+msgstr "Hombre"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Female"
+msgstr "Mujer"
+
+#: 
+#, fuzzy
+msgid "From"
+msgstr "De"
+
+#: 
+#, fuzzy
+msgid "To"
+msgstr "Para"
+
+#: 
+msgid "Anniversary Date"
+msgstr "Fecha de aniversario"
+
+#: 
+msgid "Output Method:"
+msgstr "Método de Salida"
+
+#: 
+msgid "Create File"
+msgstr "Crear archivo"
+
+#: 
+msgid "No file selected for upload."
+msgstr "No se ha seleccionado archivo para subir."
+
+#: 
+msgid "Title"
+msgstr "Titulo"
+
+#: 
+msgid "Suffix"
+msgstr "Sufijo"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Gender"
+msgstr "Genero"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Home Phone"
+msgstr "Telefono de casa"
+
+#: 
+msgid "Work Phone"
+msgstr "Teléfono del trabajo"
+
+#: 
+msgid "Mobile Phone"
+msgstr "Teléfono Celular"
+
+#: 
+msgid "Work / Other Email"
+msgstr "Correo trabajo / otro"
+
+#: 
+msgid "Birth Date"
+msgstr "Fecha de nacimiento"
+
+#: 
+msgid "Wedding Date"
+msgstr "Aniversario de bodas"
+
+#: 
+msgid "Ignore first CSV row (to exclude a header)"
+msgstr "Ignorar la primera fila CSV (para excluir un encabezado)"
+
+#: 
+msgid "Patriarch"
+msgstr "Patriarcado"
+
+#: 
+msgid "Matriarch"
+msgstr "Matriarcado"
+
+#: 
+msgid "Upload CSV File"
+msgstr "Subir CSV"
+
+#: 
+msgid "Data import successful."
+msgstr "Datos importados con exito"
+
+#: 
+msgid "OR"
+msgstr "O"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "Añadir familia al carrito"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Name"
+msgstr "Nombre"
+
+#: 
+msgid "Assign Role"
+msgstr "Asignar Rol"
+
+#: 
+msgid "Create new family"
+msgstr "Crear nueva Familia"
+
+#: 
+msgid "Add to Family"
+msgstr "Agregar a la familia"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "Agregar grupo al carrito"
+
+#: 
+msgid "Select Group"
+msgstr "Seleccionar Grupo"
+
+#: 
+msgid "No Group Selected"
+msgstr "Ningún grupo seleccionado"
+
+#: 
+msgid "Add to Group"
+msgstr "Añadir al grupo"
+
+#: 
+msgid "Action"
+msgstr "Accion"
+
+#: 
+msgid "Address"
+msgstr "Dirección"
+
+#: 
+msgid "Active"
+msgstr "Activo"
+
+#: 
+msgid "Add counter"
+msgstr "Añadir contador"
+
+#: 
+msgid "Assign"
+msgstr "Asignar"
+
+#: 
+msgid "All Methods"
+msgstr "Todos los métodos"
+
+#: 
+msgid "All Payments"
+msgstr "Todos los pagos"
+
+#: 
+msgid "Age"
+msgstr "Edad"
+
+#: 
+msgid "A"
+msgstr "un"
+
+#: 
+msgid "Admin"
+msgstr "Admin"
+
+#: 
+msgid "Adult/Child"
+msgstr "Adulto/Pequeño"
+
+#: 
+msgid "Add"
+msgstr "Añadir"
+
+#: 
+msgid "Anonymous"
+msgstr "Anonimo"
+
+#: 
+msgid "Add Church Event"
+msgstr "Añadir Evento de la iglesia"
+
+#. Context: countries
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Afganistán"
+
+#. Context: countries
+#: 
+msgid "Argentina"
+msgstr "Argentina"
+
+#: 
+msgid "Add Students"
+msgstr "Añadir estudiante"
+
+#: 
+msgid "All Members"
+msgstr "Todos los miembros"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Añadir un nombre de grupo"
+
+#: 
+msgid "Added to group"
+msgstr "Agregado al grupo"
+
+#: 
+msgid "Anniversaries"
+msgstr "Aniversarios"
+
+#: 
+msgid "Add Menu"
+msgstr "Añadir Menu"
+
+#: 
+msgid "2FA Code"
+msgstr "Codigo 2FA"
+

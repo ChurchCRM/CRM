@@ -333,7 +333,8 @@
         "fullCalendarLocale": "pt",
         "datePicker": true,
         "select2": true,
-        "momentLocale": "pt"
+        "momentLocale": "pt",
+        "base": true
     },
     "Romanian - Romania": {
         "poEditor": "ro",
@@ -373,6 +374,51 @@
         "locale": "es_ES",
         "languageCode": "es",
         "countryCode": "ES",
+        "dataTables": "es-ES",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true,
+        "momentLocale": "es",
+        "base": true
+    },
+    "Spanish - Mexico": {
+        "poEditor": "es-MX",
+        "locale": "es_MX",
+        "languageCode": "es",
+        "countryCode": "MX",
+        "dataTables": "es-ES",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true,
+        "momentLocale": "es"
+    },
+    "Spanish - Argentina": {
+        "poEditor": "es-AR",
+        "locale": "es_AR",
+        "languageCode": "es",
+        "countryCode": "AR",
+        "dataTables": "es-ES",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true,
+        "momentLocale": "es"
+    },
+    "Spanish - Colombia": {
+        "poEditor": "es-CO",
+        "locale": "es_CO",
+        "languageCode": "es",
+        "countryCode": "CO",
+        "dataTables": "es-ES",
+        "fullCalendar": true,
+        "datePicker": true,
+        "select2": true,
+        "momentLocale": "es"
+    },
+    "Spanish - El Salvador": {
+        "poEditor": "es-SV",
+        "locale": "es_SV",
+        "languageCode": "es",
+        "countryCode": "SV",
         "dataTables": "es-ES",
         "fullCalendar": true,
         "datePicker": true,

@@ -1,0 +1,218 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: es-ar\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 
+msgid "Cannot execute query."
+msgstr "No se puede ejecutar la consulta."
+
+#: 
+msgid "Delete"
+msgstr "Borrar"
+
+#: 
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: 
+msgid "Save"
+msgstr "Guardar"
+
+#: 
+msgid "Unassigned"
+msgstr "No Asignado"
+
+#: 
+msgid "None"
+msgstr "Ninguna"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "City"
+msgstr "Ciudad"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "State"
+msgstr "Provincia"
+
+#: 
+msgid "Country"
+msgstr "Pais"
+
+#: 
+msgid "Phone"
+msgstr "Telefono"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Email"
+msgstr "Email"
+
+#: 
+msgid "Credit Card"
+msgstr "Tarjeta de Crédito"
+
+#: 
+msgid "Backup Database"
+msgstr "Resguardar Base de Datos"
+
+#: 
+msgid "Batch Winner Entry"
+msgstr "Entrada del ganador del lote"
+
+#: 
+msgid "Winner"
+msgstr "Ganador"
+
+#: 
+msgid "Price"
+msgstr "Precio"
+
+#: 
+msgid "Enter Winners"
+msgstr "Ingresa Ganadores"
+
+#: 
+msgid "CSV Export"
+msgstr "Exportar CVS"
+
+#: 
+msgid "Field Selection"
+msgstr "Selección de campo"
+
+#: 
+msgid "Last Name"
+msgstr "Apellido"
+
+#: 
+msgid "Required"
+msgstr "Requerido"
+
+#: 
+msgid "First Name"
+msgstr "Primer Nombre"
+
+#: 
+msgid "Middle Name"
+msgstr "Nombre del Medio"
+
+#: 
+msgid "Zip"
+msgstr "Cierre"
+
+#: 
+msgid "Envelope"
+msgstr "Envoltorio"
+
+#: 
+msgid "Work/Other Email"
+msgstr "Trabajo/Otro correo electrónico"
+
+#: 
+msgid "Membership Date"
+msgstr "Fecha de membresía"
+
+#: 
+msgid "Age / Years Married"
+msgstr "Edad / Años de matrimonio"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Family Role"
+msgstr "Rol Familiar"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "Depende de si se utiliza el método de salida personal o familiar."
+
+#: 
+msgid "Custom Field Selection"
+msgstr "Selección de campo personalizado"
+
+#: 
+msgid "Custom Person Fields"
+msgstr "Campos de persona personalizados"
+
+#: 
+msgid "Custom Family Fields"
+msgstr "Campos de Familia personalizados"
+
+#: 
+msgid "Filters"
+msgstr "Filtros"
+
+#: 
+msgid "Records to export"
+msgstr "Registros para exportar"
+
+#: 
+msgid "Based on filters below.."
+msgstr "Basado en los filtros a continuación."
+
+#: 
+msgid "People in Cart (filters ignored)"
+msgstr "Personas en el carrito (filtros ignorados)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "Utilice la tecla Ctrl para seleccionar varios"
+
+#: 
+msgid "Don't Filter"
+msgstr "No Filtrar"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Male"
+msgstr "Masculino"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Female"
+msgstr "Femenino"
+
+#: 
+msgid "Group Membership"
+msgstr "Miembro del Grupo"
+
+#: 
+#, fuzzy
+msgid "From"
+msgstr "Desde"
+
+#: 
+#, fuzzy
+msgid "To"
+msgstr "Hasta"
+
+#: 
+msgid "Anniversary Date"
+msgstr "Fecha del Cumpleaños"
+
+#: 
+msgid "Output Method:"
+msgstr "Metodo de Salida:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "Registros individuales CSV"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV Combine Families"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "Añadir personas al carrito"
+
+#: 
+msgid "Skip records with incomplete mail address"
+msgstr "Omitir registros con dirección de correo incompleta"
+
