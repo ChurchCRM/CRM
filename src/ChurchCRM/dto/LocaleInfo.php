@@ -150,11 +150,16 @@ class LocaleInfo
 
     /**
      * Check if translation completion percentage should be displayed
-     * (only for non-English locales)
+     * (only for locales not marked with skip_audit)
      */
     public function shouldShowTranslationPercentage(): bool
     {
-        return !str_starts_with($this->locale ?? 'en', 'en');
+        // Don't show for locales marked with skip_audit flag (non-translation locales)
+        if ($this->localeConfig && isset($this->localeConfig['skip_audit']) && $this->localeConfig['skip_audit'] === true) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
