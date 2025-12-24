@@ -1,9 +1,9 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥75%):** 6
+**Complete Locales (≥75%):** 10
 **Good Locales (51-74%):** 19
-**Needs Work (<51%):** 20
+**Needs Work (<51%):** 16
 **WIP Candidates (>5%, not yet added):** 6
 
 ## Locale Completeness Overview
@@ -14,6 +14,10 @@
 | `ta` | Tamil | 2658 | 97.4% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 2455 | 89.96% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2384 | 87.36% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 2383 | 87.32% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 2383 | 87.32% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 2383 | 87.32% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 2379 | 87.17% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 2174 | 79.66% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 2060 | 75.49% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 1942 | 71.16% | 🟡 Good | ✅ Yes |
@@ -43,19 +47,15 @@
 | `te` | Telugu | 331 | 12.13% | 🟠 Needs Work | ✅ Yes |
 | `ja` | Japanese | 196 | 7.18% | 🟠 Needs Work | ✅ Yes |
 | `fi` | Finnish | 143 | 5.24% | 🟠 Needs Work | ✅ Yes |
-| `es-co` | Spanish (CO) | 84 | 3.08% | 🟠 Needs Work | ✅ Yes |
-| `es-mx` | Spanish (MX) | 84 | 3.08% | 🟠 Needs Work | ✅ Yes |
 | `sl` | Slovenian | 82 | 3% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 80 | 2.93% | 🟠 Needs Work | ❌ No |
 | `en-za` | English (ZA) | 80 | 2.93% | N/A | ✅ Yes |
 | `hi` | Hindi | 77 | 2.82% | 🟠 Needs Work | ✅ Yes |
 | `sr-cyrl` | Serbian (Cyrillic) | 74 | 2.71% | 🟠 Needs Work | ❌ No |
 | `th` | Thai | 55 | 2.02% | 🟠 Needs Work | ✅ Yes |
-| `es-ar` | Spanish (AR) | 50 | 1.83% | 🟠 Needs Work | ✅ Yes |
 | `lv` | Latvian | 46 | 1.69% | 🟠 Needs Work | ❌ No |
 | `en-au` | English (AU) | 31 | 1.14% | N/A | ✅ Yes |
 | `hr` | Croatian | 30 | 1.1% | 🟠 Needs Work | ❌ No |
-| `es-sv` | Spanish (SV) | 28 | 1.03% | 🟠 Needs Work | ✅ Yes |
 | `en` | English | 18 | 0.66% | N/A | ✅ Yes |
 | `ml` | Malayalam | 17 | 0.62% | 🟠 Needs Work | ❌ No |
 | `en-ca` | English (CA) | 16 | 0.59% | N/A | ✅ Yes |
@@ -64,10 +64,10 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 6 locales ready for production
+- **🟢 Complete (≥75%):** 10 locales ready for production
 - **🟡 Good (51-74%):** 19 locales with solid translation coverage
-- **🟠 Needs Work (<51%):** 14 locales requiring translator attention
-- **🔴 Incomplete:** 6 locales (requiring translator attention)
+- **🟠 Needs Work (<51%):** 10 locales requiring translator attention
+- **🔴 Incomplete:** 2 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
 
 ## WIP Candidates (not yet in system)
