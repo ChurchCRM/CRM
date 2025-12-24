@@ -319,8 +319,8 @@ function initializeFAB() {
     }
 
     // Set localized labels
-    fabPersonLabel.text(i18next.t("Add New Person"));
-    fabFamilyLabel.text(i18next.t("Add New Family"));
+    fabPersonLabel.text(i18next.t("Add New") + " " + i18next.t("Person"));
+    fabFamilyLabel.text(i18next.t("Add New") + " " + i18next.t("Family"));
 
     // Auto-hide FAB after 5 seconds
     setTimeout(function () {

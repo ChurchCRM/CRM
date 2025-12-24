@@ -108,8 +108,8 @@ if ( answer )
 <form method="post" action="DonationFundEditor.php" name="FundsEditor">
 
 <div class="alert alert-warning">
-        <i class="fa-solid fa-ban"></i>
-        <?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!") ?>
+    <i class="fa-solid fa-ban"></i>
+    <?= gettext("Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!") ?>
 
 </div>
 

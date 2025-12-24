@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-20 21:22-0800\n"
+"POT-Creation-Date: 2025-12-23 17:52-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,9 +155,6 @@ msgstr ""
 msgid "(this action cannot be undone)"
 msgstr ""
 
-msgid ", Phone: "
-msgstr ""
-
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
 msgstr ""
 
@@ -176,57 +173,10 @@ msgstr ""
 msgid "2-50 characters"
 msgstr ""
 
-#. Context: queryparameteroptions_qpo
-msgid "2012/2013"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2013/2014"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2014/2015"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2015/2016"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2016/2017"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2017/2018"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2018/2019"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2019/2020"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2020/2021"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2021/2022"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2022/2023"
-msgstr ""
-
 msgid "2FA Code"
 msgstr ""
 
 msgid "2FA Enabled"
-msgstr ""
-
-msgid "<?= gettext(\"Password reset for\") ?>"
 msgstr ""
 
 msgid "A"
@@ -352,7 +302,7 @@ msgstr ""
 msgid "Add Group"
 msgstr ""
 
-msgid "Add Group Member: "
+msgid "Add Group Member"
 msgstr ""
 
 msgid "Add Group Members to Cart"
@@ -361,28 +311,10 @@ msgstr ""
 msgid "Add Individuals to Cart"
 msgstr ""
 
-msgid "Add Member"
-msgstr ""
-
 msgid "Add Menu"
 msgstr ""
 
 msgid "Add New"
-msgstr ""
-
-msgid "Add New Deposit"
-msgstr ""
-
-msgid "Add New Deposit: "
-msgstr ""
-
-msgid "Add New Family"
-msgstr ""
-
-msgid "Add New Person"
-msgstr ""
-
-msgid "Add Note"
 msgstr ""
 
 msgid "Add Payment"
@@ -407,15 +339,6 @@ msgid "Add Selected Members to Group"
 msgstr ""
 
 msgid "Add Students"
-msgstr ""
-
-msgid "Add a New"
-msgstr ""
-
-msgid "Add a New Property Type"
-msgstr ""
-
-msgid "Add a Note"
 msgstr ""
 
 msgid "Add any additional notes about this deposit"
@@ -624,13 +547,13 @@ msgstr ""
 msgid "Amount paid: ________________"
 msgstr ""
 
+msgid "An error occurred"
+msgstr ""
+
 msgid "An error occurred during demo data import"
 msgstr ""
 
 msgid "An error occurred. Please contact your system administrator."
-msgstr ""
-
-msgid "An error occurred: "
 msgstr ""
 
 msgid "An invalid configuration id has been requested"
@@ -663,9 +586,6 @@ msgstr ""
 msgid "Anniversary Date"
 msgstr ""
 
-msgid "Anniversary Date:"
-msgstr ""
-
 msgid "Anonymous"
 msgstr ""
 
@@ -692,7 +612,7 @@ msgstr ""
 msgid "Apply Filters"
 msgstr ""
 
-msgid "Apply Report Dates To:"
+msgid "Apply Report Dates To"
 msgstr ""
 
 msgid "Apply Update Now"
@@ -782,9 +702,6 @@ msgid "Assign Role"
 msgstr ""
 
 msgid "Assign a New Property"
-msgstr ""
-
-msgid "Assign a New Property:"
 msgstr ""
 
 msgid "Assign a New Volunteer Opportunity"
@@ -1020,9 +937,6 @@ msgstr ""
 msgid "Birth & Family"
 msgstr ""
 
-msgid "Birth / Anniversary Date"
-msgstr ""
-
 msgid "Birth Date"
 msgstr ""
 
@@ -1036,9 +950,6 @@ msgid "Birth Year"
 msgstr ""
 
 msgid "Birthday"
-msgstr ""
-
-msgid "Birthday Date"
 msgstr ""
 
 #. Context: query_qry
@@ -1648,7 +1559,7 @@ msgstr ""
 msgid "Cook Islands"
 msgstr ""
 
-msgid "Coordinate data base file name:"
+msgid "Coordinate database file name"
 msgstr ""
 
 msgid "Copied!"
@@ -1794,7 +1705,7 @@ msgstr ""
 msgid "Current Version:"
 msgstr ""
 
-msgid "Current fiscal year:"
+msgid "Current fiscal year"
 msgstr ""
 
 msgid "Custom Drop-Down List"
@@ -1893,7 +1804,7 @@ msgstr ""
 msgid "Data Quality:"
 msgstr ""
 
-msgid "Data file format:"
+msgid "Data file format"
 msgstr ""
 
 msgid "Data import successful."
@@ -1959,16 +1870,13 @@ msgstr ""
 msgid "Date End"
 msgstr ""
 
-msgid "Date Entered:"
+msgid "Date Entered"
 msgstr ""
 
 msgid "Date Start"
 msgstr ""
 
 msgid "Date Updated"
-msgstr ""
-
-msgid "Date:"
 msgstr ""
 
 msgid "Day"
@@ -2145,9 +2053,6 @@ msgstr ""
 msgid "Deposit"
 msgstr ""
 
-msgid "Deposit #:"
-msgstr ""
-
 msgid "Deposit Comment"
 msgstr ""
 
@@ -2172,7 +2077,7 @@ msgstr ""
 msgid "Deposit Reports"
 msgstr ""
 
-msgid "Deposit Slip Number: "
+msgid "Deposit Slip Number"
 msgstr ""
 
 msgid "Deposit Statistics"
@@ -2199,7 +2104,7 @@ msgstr ""
 msgid "Deposit(s)"
 msgstr ""
 
-msgid "Deposits: "
+msgid "Deposits"
 msgstr ""
 
 msgid "Description"
@@ -2299,7 +2204,7 @@ msgstr ""
 msgid "Donated Item Editor"
 msgstr ""
 
-msgid "Donated Items:"
+msgid "Donated Items"
 msgstr ""
 
 msgid "Donated by "
@@ -2666,7 +2571,7 @@ msgstr ""
 msgid "Enter your login name and we will email you a link to reset your password."
 msgstr ""
 
-msgid "Entered:"
+msgid "Entered"
 msgstr ""
 
 msgid "Entering a Prompt value will allow the association of a free-form value."
@@ -2682,9 +2587,6 @@ msgid "Envelope Manager"
 msgstr ""
 
 msgid "Envelope Number"
-msgstr ""
-
-msgid "Envelope:"
 msgstr ""
 
 #. Context: countries
@@ -2714,9 +2616,6 @@ msgid "Error saving deposit"
 msgstr ""
 
 msgid "Error sending email(s)"
-msgstr ""
-
-msgid "Error sending email(s) - Please check logs for more information"
 msgstr ""
 
 msgid "Error text"
@@ -3180,7 +3079,7 @@ msgstr ""
 msgid "Filter Events"
 msgstr ""
 
-msgid "Filter by Deposit:"
+msgid "Filter by Deposit"
 msgstr ""
 
 msgid "Filter by Event Type"
@@ -3192,7 +3091,7 @@ msgstr ""
 msgid "Filter by Fund"
 msgstr ""
 
-msgid "Filter by Payment Type:"
+msgid "Filter by Payment Type"
 msgstr ""
 
 msgid "Filter by Type"
@@ -3309,9 +3208,6 @@ msgstr ""
 msgid "Fiscal Year."
 msgstr ""
 
-msgid "Fiscal Year:"
-msgstr ""
-
 msgid "Focus"
 msgstr ""
 
@@ -3381,7 +3277,7 @@ msgstr ""
 msgid "Friends who signed up in previous months"
 msgstr ""
 
-msgid "From:"
+msgid "From"
 msgstr ""
 
 msgid "Full Backup"
@@ -3400,6 +3296,9 @@ msgid "Fund Allocation"
 msgstr ""
 
 msgid "Fund Name"
+msgstr ""
+
+msgid "Fund(s)"
 msgstr ""
 
 msgid "Fundraiser"
@@ -3483,9 +3382,6 @@ msgstr ""
 msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
 msgstr ""
 
-msgid "Generate:"
-msgstr ""
-
 #. Context: countries
 msgid "Georgia (საქართველო)"
 msgstr ""
@@ -3506,10 +3402,10 @@ msgstr ""
 msgid "Gibraltar"
 msgstr ""
 
-msgid "Gift Amount:"
+msgid "Gift Amount"
 msgstr ""
 
-msgid "Gift Designation:"
+msgid "Gift Designation"
 msgstr ""
 
 msgid "Girls"
@@ -3615,7 +3511,7 @@ msgstr ""
 msgid "Group Settings"
 msgstr ""
 
-msgid "Group Specific Properties: "
+msgid "Group Specific Properties"
 msgstr ""
 
 msgid "Group Type"
@@ -3658,7 +3554,7 @@ msgstr ""
 msgid "Group-Specific Properties"
 msgstr ""
 
-msgid "Group-Specific Properties Form Editor:"
+msgid "Group-Specific Properties Form Editor"
 msgstr ""
 
 msgid "Group-Specific Property Fields"
@@ -3904,7 +3800,7 @@ msgstr ""
 msgid "Include events and calendars"
 msgstr ""
 
-msgid "Include families in coordinate file:"
+msgid "Include families in the coordinate file"
 msgstr ""
 
 msgid "Include family custom properties in global search."
@@ -3914,9 +3810,6 @@ msgid "Include financial data (donation funds, pledges)"
 msgstr ""
 
 msgid "Include only these classifications in the directory, comma separated"
-msgstr ""
-
-msgid "Include:"
 msgstr ""
 
 msgid "Includes database and all uploaded photos. Larger file size."
@@ -4596,7 +4489,7 @@ msgid ""
 "Set to zero to disable this feature."
 msgstr ""
 
-msgid "Maximum number of neighbors:"
+msgid "Maximum number of neighbors"
 msgstr ""
 
 msgid "Maximum upload size"
@@ -5248,9 +5141,6 @@ msgstr ""
 msgid "Notes access"
 msgstr ""
 
-msgid "Notes:"
-msgstr ""
-
 msgid "Notification"
 msgstr ""
 
@@ -5512,6 +5402,9 @@ msgstr ""
 msgid "Password Reset Successful"
 msgstr ""
 
+msgid "Password reset for"
+msgstr ""
+
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
@@ -5732,6 +5625,9 @@ msgid "Please Login"
 msgstr ""
 
 msgid "Please add at least one family member."
+msgstr ""
+
+msgid "Please check logs for more information"
 msgstr ""
 
 msgid "Please check the backup file and try again."
@@ -6034,7 +5930,7 @@ msgstr ""
 msgid "Puerto Rico"
 msgstr ""
 
-msgid "Purchased Items:"
+msgid "Purchased Items"
 msgstr ""
 
 #. Context: countries
@@ -6044,7 +5940,7 @@ msgstr ""
 msgid "Quarterly"
 msgstr ""
 
-msgid "Queries for which user must have finance permissions to use:"
+msgid "Queries for which user must have finance permissions to use"
 msgstr ""
 
 msgid "Query Listing"
@@ -6233,7 +6129,7 @@ msgstr ""
 msgid "Report Details"
 msgstr ""
 
-msgid "Report End Date:"
+msgid "Report End Date"
 msgstr ""
 
 msgid "Report Heading:"
@@ -6245,13 +6141,13 @@ msgstr ""
 msgid "Report Settings"
 msgstr ""
 
-msgid "Report Start Date:"
+msgid "Report Start Date"
 msgstr ""
 
 msgid "Report Tips"
 msgstr ""
 
-msgid "Report Type:"
+msgid "Report Type"
 msgstr ""
 
 msgid "Report an issue"
@@ -6641,7 +6537,7 @@ msgstr ""
 msgid "Select Event for Check-In"
 msgstr ""
 
-msgid "Select Family:"
+msgid "Select Family"
 msgstr ""
 
 msgid "Select Fiscal Year"
@@ -6891,7 +6787,7 @@ msgstr ""
 msgid "Show in"
 msgstr ""
 
-msgid "Show neighbors with these classifications:"
+msgid "Show neighbors with these classifications"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
@@ -6921,9 +6817,6 @@ msgid "Signature definition file signature failed validation"
 msgstr ""
 
 msgid "Since"
-msgstr ""
-
-msgid "Since:"
 msgstr ""
 
 #. Context: countries
@@ -7518,6 +7411,9 @@ msgstr ""
 msgid "Title page"
 msgstr ""
 
+msgid "To"
+msgstr ""
+
 msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
 msgstr ""
 
@@ -7534,9 +7430,6 @@ msgid "To stop receiving these emails, you can email"
 msgstr ""
 
 msgid "To the parents of"
-msgstr ""
-
-msgid "To:"
 msgstr ""
 
 msgid "Today"
@@ -7596,7 +7489,7 @@ msgstr ""
 msgid "Total Users"
 msgstr ""
 
-msgid "Total number of rows in the CSV file:"
+msgid "Total number of rows in the CSV file"
 msgstr ""
 
 msgid "Total of all purchases: $"
@@ -8152,10 +8045,7 @@ msgstr ""
 msgid "Voting Members"
 msgstr ""
 
-msgid "Voting members "
-msgstr ""
-
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
 msgstr ""
 
 msgid "W"
@@ -8186,10 +8076,7 @@ msgstr ""
 msgid "Warning:"
 msgstr ""
 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr ""
-
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr ""
 
 msgid "Warning: Signature mismatch"
@@ -8533,9 +8420,6 @@ msgid "day"
 msgstr ""
 
 msgid "days"
-msgstr ""
-
-msgid "denotes required fields"
 msgstr ""
 
 msgid "deposit(s) with no payments"

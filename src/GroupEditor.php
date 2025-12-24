@@ -135,7 +135,7 @@ require_once __DIR__ . '/Include/Header.php';
         <br>
         <div class="row">
           <div class="col-sm-6">
-            <label for="UseGroupProps"><?= gettext('Group Specific Properties: ') ?></label>
+            <label for="UseGroupProps"><?= gettext('Group Specific Properties') . ': ' ?></label>
 
             <?php
             if ($thisGroup->getHasSpecialProps()) {

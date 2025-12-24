@@ -138,7 +138,7 @@ if (isset($_POST['UploadCSV'])) {
         <form method="post" action="CSVImport.php">
 
         <?php
-        echo gettext('Total number of rows in the CSV file:') . $iNumRows;
+        echo gettext('Total number of rows in the CSV file') . ': ' . $iNumRows;
         echo '<br><br>';
         echo '<table class="table horizontal-scroll" id="importTable">';
 

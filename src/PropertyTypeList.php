@@ -22,7 +22,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="table-responsive">
 <?php //Display the new property link
 if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">" . gettext('Add a New Property Type') . '</a></p>';
+    echo "<p align=\"center\"><a class='btn btn-primary' href=\"PropertyTypeEditor.php\">" . gettext('Add New') . ' ' . gettext('Property Type') . '</a></p>';
 }
 
 // Start the table

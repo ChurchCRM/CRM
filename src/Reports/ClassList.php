@@ -127,8 +127,8 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $bFirstTeacher1 = false;
             }
             $teacherCount++;
-        } elseif ($lst_OptionName == gettext('Liaison')) {
-            $liaisonString .= gettext('Liaison') . ':' . $person->getFullName() . ' ' . $phone . ' ';
+            } elseif ($lst_OptionName == gettext('Liaison')) {
+                $liaisonString .= gettext('Liaison') . ': ' . $person->getFullName() . ' ' . $phone . ' ';
         } elseif ($lst_OptionName === 'Student') {
             $elt = ['perID' => $groupRoleMembership->getPersonId()];
 

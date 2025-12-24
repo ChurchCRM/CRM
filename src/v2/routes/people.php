@@ -28,7 +28,10 @@ function viewPeopleVerify(Request $request, Response $response, array $args): Re
     ];
 
     if ($request->getQueryParams()['EmailsError']) {
-        $errorArgs = ['sGlobalMessage' => gettext('Error sending email(s) - Please check logs for more information'), 'sGlobalMessageClass' => 'danger'];
+        $errorArgs = [
+            'sGlobalMessage' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
+            'sGlobalMessageClass' => 'danger'
+        ];
         $pageArgs = array_merge($pageArgs, $errorArgs);
     }
 

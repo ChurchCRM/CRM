@@ -41,7 +41,7 @@ $curY = $topY;
 $pdf->writeAt(
     SystemConfig::getValue('leftX'),
     $curY,
-    gettext('Voting members ') . MakeFYString($iFYID)
+    gettext('Voting Members') . ' ' . MakeFYString($iFYID)
 );
 $curY += 10;
 

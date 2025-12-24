@@ -53,6 +53,7 @@
         "format:web": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,html,json}\" --ignore-path .prettierignore",
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-term-extract.js",
+        "locale:lint": "node scripts/locale-check.js",
         "locale:download": "node locale/scripts/poeditor-downloader.js && npm run locale:audit",
         "package": "npm run deploy && node scripts/package-release.js",
         "changelog": "node scripts/generate-changelog.js",

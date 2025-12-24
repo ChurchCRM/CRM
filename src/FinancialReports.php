@@ -63,7 +63,7 @@ if ($sReportType == '') {
     // First Pass - Choose report type
     echo "<form method=post id='FinancialReports' action='FinancialReports.php'>";
     echo '<table cellpadding=3 align=left>';
-    echo '<tr><td class=LabelColumn>' . gettext('Report Type:') . '</td>';
+    echo '<tr><td class=LabelColumn>' . gettext('Report Type') . ':</td>';
     echo '<td class=TextColumn><select name=ReportType id=FinancialReportTypes>';
     echo '<option selected="selected" disabled value="0">' . gettext('Select Report Type') . '</option>';
     echo "<option value='Pledge Summary'>" . gettext('Pledge Summary') . '</option>';
@@ -199,14 +199,14 @@ if ($sReportType == '') {
         $today = date('Y-m-d');
         $startVal = $sDateStart ? $sDateStart : $today;
         $endVal = $sDateEnd ? $sDateEnd : $today;
-        echo '<tr><td class=LabelColumn>' . gettext('Report Start Date:') . "</td>
+        echo '<tr><td class=LabelColumn>' . gettext('Report Start Date') . "</td>
             <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='" . InputUtils::escapeHTML($startVal) . "'></td></tr>";
-        echo '<tr><td class=LabelColumn>' . gettext('Report End Date:') . "</td>
+        echo '<tr><td class=LabelColumn>' . gettext('Report End Date') . "</td>
             <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='" . InputUtils::escapeHTML($endVal) . "'></td></tr>";
         if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report'])) {
             $depChecked = ($datetype !== 'Payment') ? " checked" : "";
             $payChecked = ($datetype === 'Payment') ? " checked" : "";
-            echo '<tr><td class=LabelColumn>' . gettext('Apply Report Dates To:') . '</td>';
+            echo '<tr><td class=LabelColumn>' . gettext('Apply Report Dates To') . ':</td>';
             echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio value='Deposit' $depChecked>" . gettext('Deposit Date (Default)');
             echo " &nbsp; <input name=datetype type=radio value='Payment' $payChecked>" . gettext('Payment Date') . '</tr>';
         }
@@ -214,7 +214,7 @@ if ($sReportType == '') {
 
     // Fiscal Year
     if (in_array($sReportType, ['Pledge Summary', 'Pledge Reminders', 'Pledge Family Summary', 'Voting Members'])) {
-        echo '<tr><td class=LabelColumn>' . gettext('Fiscal Year:') . '</td>';
+        echo '<tr><td class=LabelColumn>' . gettext('Fiscal Year') . ':</td>';
         echo '<td class=TextColumn>';
         PrintFYIDSelect('FYID', $iFYID);
         echo '</td></tr>';
@@ -224,7 +224,7 @@ if ($sReportType == '') {
     if (in_array($sReportType, ['Giving Report', 'Individual Deposit Report', 'Advanced Deposit Report'])) {
         $sSQL = 'SELECT dep_ID, dep_Date, dep_Type FROM deposit_dep ORDER BY dep_ID DESC LIMIT 0,200';
         $rsDeposits = RunQuery($sSQL);
-        echo '<tr><td class=LabelColumn>' . gettext('Filter by Deposit:') . '<br></td>';
+        echo '<tr><td class=LabelColumn>' . gettext('Filter by Deposit') . ':' . '<br></td>';
         echo '<td class=TextColumnWithBottomBorder><div class=SmallText>';
         if ($sReportType != 'Individual Deposit Report') {
             echo gettext('If deposit is selected, date criteria will be ignored.');
@@ -269,7 +269,7 @@ if ($sReportType == '') {
 
     // Filter by Payment Method
     if ($sReportType === 'Advanced Deposit Report') {
-        echo '<tr><td class=LabelColumn>' . gettext('Filter by Payment Type:') . '<br></td>';
+        echo '<tr><td class=LabelColumn>' . gettext('Filter by Payment Type') . ':' . '<br></td>';
         echo '<td class=TextColumnWithBottomBorder><div class=SmallText>'
             . gettext('Use Ctrl Key to select multiple');
         echo '</div><select name=method[] size=5 multiple>';
@@ -282,7 +282,7 @@ if ($sReportType == '') {
     }
 
     if ($sReportType === 'Giving Report') {
-        echo '<tr><td class=LabelColumn>' . gettext('Minimum Total Amount:') . '</td>'
+            echo '<tr><td class=LabelColumn>' . gettext('Minimum Total Amount:') . '</td>'
             . '<td class=TextColumnWithBottomBorder><div class=SmallText>'
             . gettext('0 - No Minimum') . '</div>'
             . "<input name=minimum type=text value='0' size=8></td></tr>";
@@ -292,10 +292,10 @@ if ($sReportType == '') {
     echo '<tr><td><h3>' . gettext('Other Settings') . '</h3></td></tr>';
 
     if ($sReportType === 'Pledge Reminders') {
-        echo '<tr><td class=LabelColumn>' . gettext('Include:') . '</td>'
+        echo '<tr><td class=LabelColumn>' . gettext('Include') . ':</td>'
             . "<td class=TextColumnWithBottomBorder><input name=pledge_filter type=radio value='pledge' checked>" . gettext('Only Payments with Pledges')
             . " &nbsp; <input name=pledge_filter type=radio value='all'>" . gettext('All Payments') . '</td></tr>';
-        echo '<tr><td class=LabelColumn>' . gettext('Generate:') . '</td>'
+        echo '<tr><td class=LabelColumn>' . gettext('Generate') . ':</td>'
             . "<td class=TextColumnWithBottomBorder><input name=only_owe type=radio value='yes' checked>" . gettext('Only Families with unpaid pledges')
             . " &nbsp; <input name=only_owe type=radio value='no'>" . gettext('All Families') . '</td></tr>';
     }
@@ -315,14 +315,14 @@ if ($sReportType == '') {
             . "<td class=TextColumnWithBottomBorder><input name=sort type=radio value='deposit' checked>" . gettext('Deposit')
             . " &nbsp;<input name=sort type=radio value='fund'>" . gettext('Fund')
             . " &nbsp;<input name=sort type=radio value='family'>" . gettext('Family') . '</td></tr>';
-        echo '<tr><td class=LabelColumn>' . gettext('Report Type:') . '</td>'
+        echo '<tr><td class=LabelColumn>' . gettext('Report Type') . ':</td>'
             . "<td class=TextColumnWithBottomBorder><input name=detail_level type=radio value='detail' checked>" . gettext('All Data')
             . " <input name=detail_level type=radio value='medium'>" . gettext('Moderate Detail')
             . " <input name=detail_level type=radio value='summary'>" . gettext('Summary Data') . '</td></tr>';
     }
 
     if ($sReportType === 'Voting Members') {
-        echo '<tr><td class=LabelColumn>' . gettext('Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):') . '</td>';
+        echo '<tr><td class=LabelColumn>' . gettext('Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)') . ':' . '</td>';
         echo '<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>';
     }
 
