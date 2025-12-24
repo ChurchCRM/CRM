@@ -359,8 +359,8 @@ $familyEmails = $family->getEmails();
                 <div class="card-header">
                     <h3 class="card-title m-0"><i class="fa-solid fa-sticky-note"></i> <?= gettext("Notes") ?></h3>
                     <div class="card-tools d-flex align-items-center">
-                        <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add a Note') ?>">
-                            <i class="fa-solid fa-plus"></i> <?= gettext('Add Note') ?>
+                        <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
+                            <i class="fa-solid fa-plus"></i> <?= gettext('Add New') . ' ' . gettext('Note') ?>
                         </a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                         </button>
@@ -434,7 +434,7 @@ $familyEmails = $family->getEmails();
                 <div class="card-tools d-flex align-items-center">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                         <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Member') ?>">
-                            <i class="fa-solid fa-user-plus"></i> <?= gettext('Add Member') ?>
+                            <i class="fa-solid fa-user-plus"></i> <?= gettext('Add New') . ' ' . gettext('Member') ?>
                         </a>
                     <?php } ?>
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
