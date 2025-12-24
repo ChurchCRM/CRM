@@ -9,7 +9,7 @@
  * 3. Compares to find untranslated terms
  * 4. Creates JSON files with missing terms for POEditor import
  * 
- * Output: /locale/missing-terms/poeditor-{locale}.json
+ * Output: /locale/missing-terms/{locale}.json
  * 
  * Usage: node locale-missing-terms.js
  */
@@ -49,7 +49,7 @@ function saveMissingTermsFile(poEditorCode, missingTerms) {
         fs.mkdirSync(OUTPUT_DIR, { recursive: true });
     }
     
-    const filename = path.join(OUTPUT_DIR, `poeditor-${poEditorCode}.json`);
+    const filename = path.join(OUTPUT_DIR, `${poEditorCode}.json`);
     fs.writeFileSync(filename, JSON.stringify(missingTerms, null, 2));
     return filename;
 }
