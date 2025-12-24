@@ -75,7 +75,7 @@ function resetUserPassword(userId, userName) {
                     path: "user/" + userId + "/password/reset",
                     method: "POST",
                 }).done(function (data) {
-                    window.CRM.notify(i18next.t('<?= gettext("Password reset for") ?>') + " " + userName, {
+                    window.CRM.notify(i18next.t('Password reset for') + " " + userName, {
                         type: "success",
                     });
                 });

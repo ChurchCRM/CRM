@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 17:18-0800\n"
+"POT-Creation-Date: 2025-12-23 17:26-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -177,9 +177,6 @@ msgid "2FA Code"
 msgstr ""
 
 msgid "2FA Enabled"
-msgstr ""
-
-msgid "<?= gettext(\"Password reset for\") ?>"
 msgstr ""
 
 msgid "A"
@@ -5439,6 +5436,9 @@ msgid "Password Reset Link"
 msgstr ""
 
 msgid "Password Reset Successful"
+msgstr ""
+
+msgid "Password reset for"
 msgstr ""
 
 msgid "Password reset not available.  Please contact your system administrator"
