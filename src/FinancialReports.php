@@ -224,7 +224,7 @@ if ($sReportType == '') {
     if (in_array($sReportType, ['Giving Report', 'Individual Deposit Report', 'Advanced Deposit Report'])) {
         $sSQL = 'SELECT dep_ID, dep_Date, dep_Type FROM deposit_dep ORDER BY dep_ID DESC LIMIT 0,200';
         $rsDeposits = RunQuery($sSQL);
-        echo '<tr><td class=LabelColumn>' . gettext('Filter by Deposit:') . '<br></td>';
+        echo '<tr><td class=LabelColumn>' . gettext('Filter by Deposit') . ':' . '<br></td>';
         echo '<td class=TextColumnWithBottomBorder><div class=SmallText>';
         if ($sReportType != 'Individual Deposit Report') {
             echo gettext('If deposit is selected, date criteria will be ignored.');
