@@ -210,6 +210,17 @@ jobs:
         echo ""
         echo "Git status after download:"
         git status --porcelain src/locale/i18n/
+        
+        # Check if base term updates exist
+        if [ -d "locale/base-term-updates" ]; then
+          base_updates_count=$(find locale/base-term-updates -name "*.json" -type f 2>/dev/null | wc -l)
+          if [ "$base_updates_count" -gt 0 ]; then
+            echo ""
+            echo "📋 Base Term Updates:"
+            echo "Generated files: $base_updates_count"
+            find locale/base-term-updates -name "*.json" -type f -exec ls -lh {} \;
+          fi
+        fi
 
     - name: Check for changes
       if: inputs.operation_mode != 'audit-only'
@@ -223,6 +234,30 @@ jobs:
           echo "has_changes=true" >> $GITHUB_OUTPUT
           echo "Changed files:"
           git diff --name-only
+        fi
+
+    - name: Generate base term updates for variants
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "🔄 Generating base term updates for locale variants..."
+        node locale/scripts/locale-populate-variants.js
+        echo "✅ Base term updates generated"
+
+    - name: Commit base term updates
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        if [ -d "locale/base-term-updates" ] && [ -n "$(find locale/base-term-updates -name '*.json' -type f 2>/dev/null)" ]; then
+          echo "📝 Committing base term updates..."
+          git add locale/base-term-updates/
+          # Check if there are staged changes to commit
+          if ! git diff --cached --quiet; then
+            git commit -m "📋 Base term updates: Add missing translation terms for locale variants"
+            echo "✅ Base term updates committed"
+          else
+            echo "ℹ️  No new base term updates to commit"
+          fi
+        else
+          echo "ℹ️  No base term updates generated"
         fi
 
     - name: Create Pull Request
@@ -245,7 +280,7 @@ jobs:
         body: |
           ## 🌍 Automatic Locale Update
           
-          This PR contains updated translations downloaded from POEditor.
+          This PR contains updated translations downloaded from POEditor and any generated base term updates for locale variants.
           
           **Details:**
           - 📅 **Date**: ${{ steps.date.outputs.date }}
@@ -255,7 +290,11 @@ jobs:
           **What's included:**
           - Updated translation files from POEditor
           - Generated locale JSON files
+          - 📋 Base term updates for locale variants (in `locale/base-term-updates/`)
           - Locale audit results
+          
+          **Base Term Updates:**
+          If base term update files are included, they contain missing translations from base locales that should be added to locale variants via POEditor. These files can be imported to help translators fill in gaps.
           
           This PR was automatically created by the POEditor workflow.
           
@@ -277,6 +316,7 @@ jobs:
         echo "- **Operation mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
         echo "- **Download validation**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
         echo "- **Regression check**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
+        echo "- **Base term updates**: Generated and committed"
         echo "- **Changes detected**: ${{ inputs.operation_mode == 'audit-only' && 'N/A (audit-only)' || steps.changes.outputs.has_changes }}"
         echo "- **PR created**: ${{ inputs.operation_mode == 'audit-only' && 'No (audit-only)' || ((steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch') && 'Yes' || 'No') }}"
         echo "- **Branch**: ${{ inputs.operation_mode == 'audit-only' && 'N/A' || format('locale/{0}', steps.package-version.outputs.current-version) }}"
