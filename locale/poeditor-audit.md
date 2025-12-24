@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥75%):** 12
-**Good Locales (51-74%):** 17
+**Complete Locales (≥75%):** 15
+**Good Locales (51-74%):** 14
 **Needs Work (<51%):** 16
 **WIP Candidates (>5%, not yet added):** 6
 
@@ -14,21 +14,21 @@
 | `ko` | Korean | 2729 | 99.85% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2729 | 99.85% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 2729 | 99.85% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
 | `de` | German | 2726 | 99.74% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 2724 | 99.67% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 2721 | 99.56% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 2713 | 99.27% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 2383 | 87.19% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 2383 | 87.19% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 2383 | 87.19% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 2379 | 87.05% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 2060 | 75.38% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 2713 | 99.27% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 2205 | 80.68% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 1942 | 71.06% | 🟡 Good | ✅ Yes |
 | `he` | Hebrew | 1911 | 69.92% | 🟡 Good | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 1909 | 69.85% | 🟡 Good | ✅ Yes |
-| `it` | Italian | 1906 | 69.74% | 🟡 Good | ✅ Yes |
 | `vi` | Vietnamese | 1903 | 69.63% | 🟡 Good | ✅ Yes |
 | `af` | Afrikaans | 1899 | 69.48% | 🟡 Good | ✅ Yes |
-| `et` | Estonian | 1899 | 69.48% | 🟡 Good | ✅ Yes |
 | `sw` | Swahili | 1897 | 69.41% | 🟡 Good | ✅ Yes |
 | `ar` | Arabic | 1891 | 69.19% | 🟡 Good | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 1887 | 69.05% | 🟡 Good | ✅ Yes |
@@ -64,8 +64,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 12 locales ready for production
-- **🟡 Good (51-74%):** 17 locales with solid translation coverage
+- **🟢 Complete (≥75%):** 15 locales ready for production
+- **🟡 Good (51-74%):** 14 locales with solid translation coverage
 - **🟠 Needs Work (<51%):** 10 locales requiring translator attention
 - **🔴 Incomplete:** 2 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
