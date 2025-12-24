@@ -8205,3 +8205,3291 @@ msgstr "Englisch - Jamaika"
 msgid "Swahili"
 msgstr "Suaheli"
 
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "Ein Buchstabe vom Vornamen und ein Buchstabe vom Nachnamen"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "Zwei Buchstaben vom Vornamen"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "Kirchen-E-Mail nicht eingestellt, bitte besuchen Sie die Einstellungsseite"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "Telugu - Indien"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Koreanisch"
+
+#: 
+msgid "System Logs"
+msgstr "Systemprotokolle"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Content Security Policy (CSP) erzwingen, um vor böswilligen Skripten zu schützen. Wenn deaktiviert, werden CSP-Verstöße nur gemeldet."
+
+#: 
+msgid "Enter event description..."
+msgstr "Ereignisbeschreibung eingeben..."
+
+#: 
+msgid "Event ID"
+msgstr "Ereignis-ID"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Notiztext hier eingeben..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "Für diese Person wurden noch keine Notizen hinzugefügt."
+
+#: 
+msgid "Note"
+msgstr "Notiz"
+
+#: 
+msgid "Log Settings"
+msgstr "Protokolleinstellungen"
+
+#: 
+msgid "Log Level:"
+msgstr "Protokollebene:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Protokollebene speichern"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Anwendungsprotokolle anzeigen. Klicken Sie auf eine Protokolldatei, um ihren Inhalt anzuzeigen."
+
+#: 
+msgid "Delete All Logs"
+msgstr "Alle Protokolle löschen"
+
+#: 
+msgid "No log files found."
+msgstr "Keine Protokolldateien gefunden."
+
+#: 
+msgid "Log File"
+msgstr "Protokolldatei"
+
+#: 
+msgid "Size"
+msgstr "Größe"
+
+#: 
+msgid "Last Modified"
+msgstr "Zuletzt geändert"
+
+#: 
+msgid "View"
+msgstr "Anzeigen"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Protokoll-Betrachter"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Nach Protokollebene filtern:"
+
+#: 
+msgid "Error"
+msgstr "Fehler"
+
+#: 
+msgid "Info"
+msgstr "Information"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Anzahl der anzuzeigenden Zeilen:"
+
+#: 
+msgid "Loading log file..."
+msgstr "Protokolldatei wird geladen..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Für diese Familie wurden noch keine Notizen hinzugefügt."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Ein Kalender-Zugangstoken wurde generiert und gespeichert."
+
+#: 
+msgid "added"
+msgstr "hinzugefügt"
+
+#: 
+msgid "Added"
+msgstr "Hinzugefügt"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Erfolgreich zum Warenkorb hinzugefügt"
+
+#: 
+msgid "All members already in cart"
+msgstr "Alle Mitglieder bereits im Warenkorb"
+
+#: 
+msgid "already in cart"
+msgstr "bereits im Warenkorb"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Kalendereigenschaften konnten nicht geladen werden. Dieser Kalender fehlt möglicherweise ein Zugangstoken oder ist nicht korrekt konfiguriert."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Warenkorb erfolgreich geleert"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Warenkorb erfolgreich zur Gruppe geleert"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Gesamten Warenkorb leeren?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Familie konnte nicht zum Warenkorb hinzugefügt werden"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Gruppe konnte nicht zum Warenkorb hinzugefügt werden"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Konnte nicht zum Warenkorb hinzugefügt werden"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Warenkorb konnte nicht geleert werden"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Warenkorb konnte nicht zur Gruppe geleert werden"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Familie konnte nicht aus dem Warenkorb entfernt werden"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Konnte nicht aus dem Warenkorb entfernt werden"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Gruppe konnte nicht entfernt werden"
+
+#: 
+msgid "Family added to cart"
+msgstr "Familie zum Warenkorb hinzugefügt"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Familie aus dem Warenkorb entfernt"
+
+#: 
+msgid "Group added to cart"
+msgstr "Gruppe zum Warenkorb hinzugefügt"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Gruppe aus dem Warenkorb entfernt"
+
+#: 
+msgid "in cart"
+msgstr "im Warenkorb"
+
+#: 
+msgid "members. Already had"
+msgstr "Mitglieder. Bereits hatten"
+
+#: 
+msgid "people added to cart"
+msgstr "Personen zum Warenkorb hinzugefügt"
+
+#: 
+msgid "people already in cart"
+msgstr "Personen bereits im Warenkorb"
+
+#: 
+msgid "people from cart"
+msgstr "Personen aus dem Warenkorb"
+
+#: 
+msgid "people removed from cart"
+msgstr "Personen aus dem Warenkorb entfernt"
+
+#: 
+msgid "Person already in cart"
+msgstr "Person bereits im Warenkorb"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Diese Familie aus dem Warenkorb entfernen?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Diese Gruppe aus dem Warenkorb entfernen?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Diese Person aus dem Warenkorb entfernen?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Erfolgreich aus dem Warenkorb entfernt"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Ja, Warenkorb leeren"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Ja, Entfernen"
+
+#: 
+msgid "Add Group"
+msgstr "Gruppe hinzufügen"
+
+#: 
+msgid "Back to Group List"
+msgstr "Zurück zur Gruppenliste"
+
+#: 
+msgid "Default role updated."
+msgstr "Standardrolle aktualisiert."
+
+#: 
+msgid "Edit Group"
+msgstr "Gruppe bearbeiten"
+
+#: 
+msgid "Enter group name"
+msgstr "Gruppennamen eingeben"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "Rolle konnte nicht hinzugefügt werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Gruppe konnte nicht erstellt werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "Rolle konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Warenkorbstatus konnte nicht geladen werden."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Gruppen konnten nicht geladen werden. Bitte aktualisieren Sie die Seite."
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "Standardrolle konnte nicht festgelegt werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "Gruppe konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "Eigenschaften konnten nicht aktualisiert werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "Rollenname konnte nicht aktualisiert werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "Lassen Sie das Feld leer, um das vorhandene Passwort beizubehalten"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Bitte geben Sie einen Gruppennamen ein."
+
+#: 
+msgid "Role added successfully."
+msgstr "Rolle erfolgreich hinzugefügt."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Rolle erfolgreich gelöscht."
+
+#: 
+msgid "Role name updated."
+msgstr "Rollenname aktualisiert."
+
+#: 
+msgid "View Group"
+msgstr "Gruppe anzeigen"
+
+#: 
+msgid "Events Today"
+msgstr "Ereignisse heute"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Sonntagsschule - Übersicht"
+
+#: 
+msgid "Add Family Member"
+msgstr "Familienmitglied hinzufügen"
+
+#: 
+msgid "Address is required"
+msgstr "Adresse ist erforderlich"
+
+#: 
+msgid "Base URL is required"
+msgstr "Basis-URL erforderlich"
+
+#: 
+msgid "City is required"
+msgstr "Stadt ist erforderlich"
+
+#: 
+msgid "Database name is required"
+msgstr "Datenbankname erforderlich"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "Datenbankserver-Hostname oder IP-Adresse erforderlich (z.B. localhost oder 127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "Datenbankserver-Port erforderlich (z.B. 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "Datenbankbenutzer erforderlich"
+
+#: 
+msgid "Email Address"
+msgstr "E-Mail-Adresse"
+
+#: 
+msgid "Email address"
+msgstr "E-Mail-Adresse"
+
+#: 
+msgid "Enter family name"
+msgstr "Familiennamen eingeben"
+
+#: 
+msgid "Family Information"
+msgstr "Familieninformation"
+
+#: 
+msgid "Family name is required"
+msgstr "Familienname erforderlich"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "Familienname muss mindestens 2 Zeichen lang sein"
+
+#: 
+msgid "First name"
+msgstr "Vorname"
+
+#: 
+msgid "First name is required"
+msgstr "Vorname erforderlich"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "Vorname muss mindestens 2 Zeichen lang sein"
+
+#: 
+msgid "Home phone is required"
+msgstr "Telefon zu Hause erforderlich"
+
+#: 
+msgid "Home phone number"
+msgstr "Telefon zu Hause"
+
+#: 
+msgid "Invalid format"
+msgstr "Ungültiges Format"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "Treten Sie unserer Gemeinde bei, indem Sie Ihre Familie anmelden"
+
+#: 
+msgid "Last name"
+msgstr "Nachname"
+
+#: 
+msgid "Last name is required"
+msgstr "Nachname erforderlich"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "Nachname muss mindestens 2 Zeichen lang sein"
+
+#: 
+msgid "Maximum length is"
+msgstr "Maximale Länge ist"
+
+#: 
+msgid "Minimum length is"
+msgstr "Minimale Länge ist"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "Muss eine gültige URL sein, die mit http:// oder https:// beginnt"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "Muss eine gültige URL sein, die mit http:// oder https:// beginnt (z.B. http://localhost oder https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "Muss eine gültige Portnummer sein (z.B. 3306)"
+
+#: 
+msgid "Next Member"
+msgstr "Nächstes Mitglied"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Passwörter stimmen nicht überein"
+
+#: 
+msgid "Phone Type"
+msgstr "Telefontyp"
+
+#: 
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Bitte fügen Sie mindestens ein Familienmitglied hinzu."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Bitte beheben Sie die Validierungsfehler, bevor Sie fortfahren."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Bitte geben Sie eine gültige URL ein"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Bitte geben Sie eine gültige Nummer ein"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Bitte geben Sie eine gültige Telefonnummer ein"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Bitte füllen Sie alle erforderlichen Felder korrekt aus."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "Bitte überprüfen Sie alle Informationen sorgfältig, bevor Sie sie einreichen. Sie können zurückgehen, um Änderungen vorzunehmen, falls nötig."
+
+#: 
+msgid "Previous"
+msgstr "Vorherige"
+
+#: 
+msgid "Registration Error"
+msgstr "Registrierungsfehler"
+
+#: 
+msgid "Review & Submit"
+msgstr "Überprüfen & Einreichen"
+
+#: 
+msgid "Role in Family"
+msgstr "Rolle in der Familie"
+
+#: 
+msgid "Select date"
+msgstr "Datum wählen"
+
+#: 
+msgid "Street address"
+msgstr "Straßenadresse"
+
+#: 
+msgid "Submit Registration"
+msgstr "Registrierung einreichen"
+
+#: 
+msgid "Zip code is required"
+msgstr "Postleitzahl erforderlich"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "Ein neues Passwort wurde generiert und an Ihre E-Mail-Adresse gesendet."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "Eine neue Version von ChurchCRM ist zur Installation verfügbar."
+
+#: 
+msgid "Actual Hash"
+msgstr "Tatsächlicher Hash"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "Alle Vor-Upgrade-Prüfungen sind bestanden. Sie können mit dem Upgrade fortfahren."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Pre-Release-Upgrades zulassen"
+
+#: 
+msgid "Apply Update Now"
+msgstr "Update jetzt anwenden"
+
+#: 
+msgid "Applying System Update..."
+msgstr "System-Update wird angewendet..."
+
+#: 
+msgid "Back to Login"
+msgstr "Zurück zur Anmeldung"
+
+#: 
+msgid "Back to login"
+msgstr "Zurück zur Anmeldung"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Sicherung übersprungen"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "Überprüfen Sie GitHub auf die neuesten Release-Informationen"
+
+#: 
+msgid "Complete"
+msgstr "Abschließen"
+
+#: 
+msgid "Continue to Backup"
+msgstr "Zur Sicherung fortfahren"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "Zum Download & Anwenden fortfahren"
+
+#: 
+msgid "Create Backup"
+msgstr "Sicherung erstellen"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "Erstellen Sie eine Sicherung Ihrer Datenbank, bevor Sie das Update anwenden."
+
+#: 
+msgid "Current Version:"
+msgstr "Aktuelle Version:"
+
+#: 
+msgid "Database Backup"
+msgstr "Datenbank-Sicherung"
+
+#: 
+msgid "Download & Apply"
+msgstr "Herunterladen & Anwenden"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "System-Update herunterladen & anwenden"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "Laden Sie die neueste Version herunter und wenden Sie sie auf Ihre ChurchCRM-Installation an."
+
+#: 
+msgid "Downloaded"
+msgstr "Heruntergeladen"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "Neueste Version wird von GitHub heruntergeladen..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "Geben Sie Ihren Anmeldenamen ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts."
+
+#: 
+msgid "Expected Hash"
+msgstr "Erwarteter Hash"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Sicherung konnte nicht erstellt werden."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Update-Paket konnte nicht heruntergeladen werden."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Upgrade-Informationen konnten nicht von GitHub aktualisiert werden."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "Upgrade-Informationen konnten nicht aktualisiert werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "Einstellung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "File Name"
+msgstr "Dateiname"
+
+#: 
+msgid "Files Missing"
+msgstr "Dateien fehlen"
+
+#: 
+msgid "Files Modified"
+msgstr "Dateien geändert"
+
+#: 
+msgid "Go to Login"
+msgstr "Zur Anmeldung gehen"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "Ich verstehe - Fortfahren"
+
+#: 
+msgid "Language updated to"
+msgstr "Sprache aktualisiert auf"
+
+#: 
+msgid "Login Name is required"
+msgstr "Anmeldename erforderlich"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "Sobald Sie die E-Mail erhalten, können Sie sich mit Ihrem temporären Passwort anmelden und es in ein anderes ändern."
+
+#: 
+msgid "Password Reset Error"
+msgstr "Fehler beim Zurücksetzen des Passworts"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "Passwort erfolgreich zurückgesetzt"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "Überprüfen Sie Ihre E-Mail (einschließlich Spam-/Junk-Ordner) auf Ihr temporäres Passwort."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "Bitte schließen Sie dieses Fenster nicht und aktualisieren Sie die Seite nicht."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "Vor-Upgrade-Aufgaben abgeschlossen"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "Vor-Upgrade-Warnungen"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "Von GitHub aktualisieren"
+
+#: 
+msgid "Release Notes:"
+msgstr "Versionshinweise:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "Passwort-Zurücksetzen anfordern"
+
+#: 
+msgid "Retry Download"
+msgstr "Download wiederholen"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "SHA1-Hash:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "Zurücksetzen-E-Mail senden"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "Einstellung gespeichert. Seite wird neu geladen..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Einstellung erfolgreich aktualisiert"
+
+#: 
+msgid "Skip Backup"
+msgstr "Sicherung überspringen"
+
+#: 
+msgid "System Up to Date"
+msgstr "System ist aktuell"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "System-Upgrade-Assistent"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "System-Upgrade erfolgreich abgeschlossen!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "Dies kann mehrere Minuten dauern."
+
+#: 
+msgid "Update Available!"
+msgstr "Update verfügbar!"
+
+#: 
+msgid "Update Package Details"
+msgstr "Update-Paket-Details"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Update-Paket erfolgreich heruntergeladen."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "Upgrade abgeschlossen!"
+
+#: 
+msgid "Upgrade failed."
+msgstr "Upgrade fehlgeschlagen."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "Upgrade fehlgeschlagen. Bitte überprüfen Sie die Protokolle."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "Upgrade-Informationen erfolgreich aktualisiert"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Upgrade-Informationen aktualisiert. Seite wird neu geladen..."
+
+#: 
+msgid "Version Information"
+msgstr "Versionsinformation"
+
+#: 
+msgid "Warnings"
+msgstr "Warnungen"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "Wir konnten Ihre Anfrage zum Zurücksetzen des Passworts nicht verarbeiten. Bitte fordern Sie einen neuen Link zum Zurücksetzen des Passworts an."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "Sie haben sich entschieden, die Sicherung zu überspringen. Es wird dringend empfohlen, vor dem Upgrade eine Sicherung zu haben."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "Ihre ChurchCRM-Installation wurde erfolgreich aktualisiert."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "Ihre ChurchCRM-Installation wird in der neuesten Version ausgeführt."
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 Zeichen"
+
+#: 
+msgid "Dear Friend"
+msgstr "Lieber Freund"
+
+#: 
+msgid "No Data Found"
+msgstr "Keine Daten gefunden"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "Es wurden keine Datensätze aus dem vorherigen Bericht zurückgegeben. Bitte passen Sie Ihre Filter oder Ihren Datumsbereich an und versuchen Sie es erneut."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "Bitte geben Sie einen Menünamen ein (2-50 Zeichen)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "Bitte geben Sie eine gültige URL ein, die mit http:// oder https:// beginnt"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "Alle Systemdateisignaturen stimmen mit den erwarteten Werten überein."
+
+#: 
+msgid "Files with issues"
+msgstr "Dateien mit Problemen"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Integritätsprüfung fehlgeschlagen"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Integritätsprüfung bestanden"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "Signaturdefinitionsdatei existiert, ist aber nicht lesbar. Überprüfen Sie die Dateiberechtigungen."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "Signaturdefinitionsdatei fehlt bei %s. Führen Sie die Verpackungsaufgabe aus oder stellen Sie eine offizielle Version bereit, um die Signaturen neu zu generieren."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "Integritäts-Endpunkt konnte nicht kontaktiert werden. Überprüfen Sie die Fehlerprotokolle des Webservers."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "Fügen Sie Notizen zu dieser Einzahlung hinzu"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "Der Betrag übersteigt den maximal zulässigen Wert (999999,99)."
+
+#: 
+msgid "Checks"
+msgstr "Schecks"
+
+#: 
+msgid "Clear Filters"
+msgstr "Filter löschen"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "Klicken Sie auf einen Balken, um Zahlungen zu filtern"
+
+#: 
+msgid "Delete Selected"
+msgstr "Ausgewählte löschen"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Einzahlung erfolgreich gespeichert"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Fehler beim Löschen von Zahlungen"
+
+#: 
+msgid "Error loading payments"
+msgstr "Fehler beim Laden von Zahlungen"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Fehler beim Speichern der Einzahlung"
+
+#: 
+msgid "Funds"
+msgstr "Geldmittel"
+
+#: 
+msgid "Generate Report"
+msgstr "Bericht generieren"
+
+#: 
+msgid "No Cash"
+msgstr "Kein Bargeld"
+
+#: 
+msgid "No Checks"
+msgstr "Keine Schecks"
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "Der nicht abzugsfähige Betrag übersteigt den maximal zulässigen Wert (999999,99)."
+
+#: 
+msgid "Payments"
+msgstr "Zahlungen"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Zahlungen erfolgreich gelöscht"
+
+#: 
+msgid "Please select a date"
+msgstr "Bitte wählen Sie ein Datum"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Bitte wählen Sie Zeilen zum Löschen"
+
+#: 
+msgid "Saving..."
+msgstr "Wird gespeichert..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "Diese Aktion kann nicht rückgängig gemacht werden."
+
+#: 
+msgid "Total Deposit"
+msgstr "Gesamteinzahlung"
+
+#: 
+msgid "Total Payments"
+msgstr "Gesamtzahlungen"
+
+#: 
+msgid "payments(s)?"
+msgstr "Zahlungen(n)?"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "Alle Systemdateien haben die Integritätsvalidierung bestanden."
+
+#: 
+msgid "Base URL"
+msgstr "Basis-URL"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "ChurchCRM-Installation"
+
+#: 
+msgid "Copy"
+msgstr "Kopieren"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "Datenbankserver"
+
+#: 
+msgid "Debug Info"
+msgstr "Debug-Informationen"
+
+#: 
+msgid "Document Root"
+msgstr "Dokumentwurzel"
+
+#: 
+msgid "Email Configuration"
+msgstr "E-Mail-Konfiguration"
+
+#: 
+msgid "Email Debug Info"
+msgstr "E-Mail-Debug-Informationen"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "Dateisystemberechtigungen"
+
+#: 
+msgid "Hostname"
+msgstr "Hostname"
+
+#: 
+msgid "IP Address"
+msgstr "IP-Adresse"
+
+#: 
+msgid "Images Root"
+msgstr "Bilderreihe"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Demodaten importieren"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Ereignisse und Kalender einschließen"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Finanzdaten einschließen (Spendenfonds, Zusagen)"
+
+#: 
+msgid "Invalid API key"
+msgstr "Ungültiger API-Schlüssel"
+
+#: 
+msgid "Not configured"
+msgstr "Nicht konfiguriert"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "PHP- & Serveranforderungen"
+
+#: 
+msgid "PHP Configuration"
+msgstr "PHP-Konfiguration"
+
+#: 
+msgid "Platform"
+msgstr "Plattform"
+
+#: 
+msgid "Root Path"
+msgstr "Stammpfad"
+
+#: 
+msgid "SMTP Host"
+msgstr "SMTP-Host"
+
+#: 
+msgid "Server Information"
+msgstr "Serverinformation"
+
+#: 
+msgid "Software"
+msgstr "Software"
+
+#: 
+msgid "System & Configuration"
+msgstr "System & Konfiguration"
+
+#: 
+msgid "Tip:"
+msgstr "Tipp:"
+
+#: 
+msgid "Valid Settings"
+msgstr "Gültige Einstellungen"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "Während des Imports von Demodaten ist ein Fehler aufgetreten"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "Demodaten erfolgreich importiert"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "Sonntagsschulkurse und Anmeldungen einschließen"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "Müssen Sie diese Daten später entfernen?"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "Keine Zahlungen zu dieser Einzahlung"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "Keine Zahlungen zu dieser Einzahlung"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "Optionale Daten zum Einschließen"
+
+#: 
+msgid "Skipped"
+msgstr "Übersprungen"
+
+#: 
+msgid "Unknown error"
+msgstr "Unbekannter Fehler"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "Einzahlung(en) ohne Zahlungen"
+
+#: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d Ereignis in %s"
+msgstr[1] "%d Ereignisse in %s"
+
+#: 
+msgid "All Event Types"
+msgstr "Alle Ereignistypen"
+
+#: 
+msgid "All Types"
+msgstr "Alle Typen"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "Sind Sie sicher, dass Sie diesen Check-in-Datensatz löschen möchten?"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "Anwesenheits-Zählkategorien"
+
+#: 
+msgid "Attendance Notes"
+msgstr "Anwesenheitsnotizen"
+
+#: 
+msgid "Change Event"
+msgstr "Ereignis ändern"
+
+#: 
+msgid "Check In"
+msgstr "Einchecken"
+
+#: 
+msgid "Check In Person"
+msgstr "Person einchecken"
+
+#: 
+msgid "Check In to Event"
+msgstr "Bei Ereignis einchecken"
+
+#: 
+msgid "Check-in"
+msgstr "Einchecken"
+
+#: 
+msgid "Choose an event..."
+msgstr "Wählen Sie ein Ereignis..."
+
+#: 
+msgid "Clear"
+msgstr "Löschen"
+
+#: 
+msgid "Create"
+msgstr "Erstellen"
+
+#: 
+msgid "Create New Event"
+msgstr "Neues Ereignis erstellen"
+
+#: 
+msgid "Create an event type to get started."
+msgstr "Erstellen Sie einen Ereignistyp, um zu beginnen."
+
+#: 
+msgid "Current DB Version"
+msgstr "Aktuelle DB-Version"
+
+#: 
+msgid "Current Software Version"
+msgstr "Aktuelle Softwareversion"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "Datenbankupgrade erfolgreich abgeschlossen. Leitet zum Dashboard weiter..."
+
+#: 
+msgid "Date & Time"
+msgstr "Datum & Zeit"
+
+#: 
+msgid "Default Start Time"
+msgstr "Standardstartzeit"
+
+#: 
+msgid "Delete Event"
+msgstr "Ereignis löschen"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "Das Löschen eines Ereignisses löscht auch alle Anwesenheitszählungen. Dieses Ereignis löschen?"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Das Löschen dieses Ereignistyps löscht KEINE vorhandenen Ereignisse. Sind Sie sicher?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "Das Löschen dieses Ereignisses löscht auch alle Anwesenheitsdatensätze. Sind Sie sicher?"
+
+#: 
+msgid "Edit Event"
+msgstr "Ereignis bearbeiten"
+
+#: 
+msgid "Editing Event"
+msgstr "Ereignis wird bearbeitet"
+
+#: 
+msgid "Enter event title..."
+msgstr "Ereignistitel eingeben..."
+
+#: 
+msgid "Event"
+msgstr "Ereignis"
+
+#: 
+msgid "Event Type Name"
+msgstr "Ereignistypname"
+
+#: 
+msgid "Event Types"
+msgstr "Ereignistypen"
+
+#: 
+msgid "Filter Events"
+msgstr "Ereignisse filtern"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "Nach Ereignistyp filtern"
+
+#: 
+msgid "Filter by Type"
+msgstr "Nach Typ filtern"
+
+#: 
+msgid "Head Count"
+msgstr "Kopfzahl"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "Ereignisse des Typs auflisten"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "Check-ins verwalten"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "Mitglieder, Besucher, Kinder"
+
+#: 
+msgid "Monthly Averages"
+msgstr "Monatliche Durchschnittswerte"
+
+#: 
+msgid "Monthly on the"
+msgstr "Monatlich am"
+
+#: 
+msgid "No event types defined yet."
+msgstr "Es sind noch keine Ereignistypen definiert."
+
+#: 
+msgid "None (one-time event)"
+msgstr "Keine (einmaliges Ereignis)"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "Optional - Predigt-Notizen oder zusätzliche Ereignisdetails hinzufügen"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "Optional - Leerzeichen lassen, wenn nicht verfolgt"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "Optionale Notizen zur Anwesenheit..."
+
+#: 
+msgid "People Checked In"
+msgstr "Personen eingecheckt"
+
+#: 
+msgid "People in Cart"
+msgstr "Personen im Warenkorb"
+
+#: 
+msgid "Person Checking In"
+msgstr "Person checkt ein"
+
+#: 
+msgid "Recurrence"
+msgstr "Wiederholung"
+
+#: 
+msgid "Required fields"
+msgstr "Erforderliche Felder"
+
+#: 
+msgid "Save Event Type"
+msgstr "Ereignistyp speichern"
+
+#: 
+msgid "Search by name or email..."
+msgstr "Nach Name oder E-Mail suchen..."
+
+#: 
+msgid "Search for adult..."
+msgstr "Nach Erwachsenem suchen..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "Nach Supervisor suchen..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "Ereignis zum Einchecken auswählen"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "Wählen Sie Start- und Enddatum/Uhrzeit"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "Wählen Sie das Ereignis, um Ihre Warenkorbmitglieder einzuchecken"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "Predigt / Ereignistext"
+
+#: 
+msgid "Unclassified"
+msgstr "Nicht klassifiziert"
+
+#: 
+msgid "Upgrade database now"
+msgstr "Datenbank jetzt aktualisieren"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "Ihre ChurchCRM-Installation benötigt ein Datenbankupgrade, um der installierten Softwareversion zu entsprechen. Dieser Vorgang wendet Schema- und Datenmigration an. Stellen Sie sicher, dass Sie eine aktuelle Sicherung haben, bevor Sie fortfahren."
+
+#: 
+msgid "added to this event"
+msgstr "zu diesem Ereignis hinzugefügt"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "z.B. Sonntagsschule, Bibelstudium..."
+
+#: 
+msgid "optional"
+msgstr "optional"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "Person"
+msgstr[1] "Personen"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ Auschecken"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "%d verwaiste Dateien erkannt"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d Dateien wurden geändert oder fehlen. Verwenden Sie Neuinstallation erzwingen, um offizielle Versionen wiederherzustellen."
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d Dateien haben die Integritätsvalidierung nicht bestanden."
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d Dateien werden dauerhaft gelöscht."
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "%d verwaiste Dateien wurden auf Ihrem Server erkannt."
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(von GitHub aktualisieren)"
+
+#: 
+msgid "Access Denied"
+msgstr "Zugriff verweigert"
+
+#: 
+msgid "Add event permission"
+msgstr "Ereignisberechtigung hinzufügen"
+
+#: 
+msgid "Add records permission"
+msgstr "Datensatzberechtigung hinzufügen"
+
+#: 
+msgid "Administrator privileges"
+msgstr "Administratorrechte"
+
+#: 
+msgid "All Files Verified"
+msgstr "Alle Dateien überprüft"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "Alle Systemdateien stimmen mit ihren erwarteten Signaturen überein."
+
+#: 
+msgid "Application Integrity"
+msgstr "Anwendungsintegrität"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "Anwendungsdateien auf die neueste Version aktualisiert"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "Sind Sie sicher, dass Sie alle verwaisten Dateien löschen möchten?"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "Zurück zu Debug-Informationen"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "Backup-Best Practices"
+
+#: 
+msgid "Backup Status"
+msgstr "Backup-Status"
+
+#: 
+msgid "Backup Type"
+msgstr "Backup-Typ"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "Sicherung abgeschlossen! Klicken Sie unten, um herunterzuladen."
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "Sicherung erfolgreich abgeschlossen!"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "Sicherung heruntergeladen. Serverkopie entfernt."
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "Sicherung fehlgeschlagen. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "Sicherung generiert und auf Remote-Server kopiert"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "Sicherung läuft, bitte warten..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "Sicherung auf externem Speicher"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "WARNUNG: Das Wiederherstellen einer Sicherung löscht die vorhandene Datenbank vollständig und ersetzt sie durch die Sicherungsdaten."
+
+#: 
+msgid "CSV export permission"
+msgstr "CSV-Exportberechtigung"
+
+#: 
+msgid "Close & Refresh"
+msgstr "Schließen & Aktualisieren"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "Löschen bestätigen"
+
+#: 
+msgid "Create a backup first"
+msgstr "Erstellen Sie zuerst eine Sicherung"
+
+#: 
+msgid "Create directory permission"
+msgstr "Verzeichniserstellungsberechtigung"
+
+#: 
+msgid "Database Only"
+msgstr "Nur Datenbank"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "Datenbank erfolgreich wiederhergestellt!"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "Datenbankschema wurde automatisch aktualisiert"
+
+#: 
+msgid "Delete All Files"
+msgstr "Alle Dateien löschen"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "Alle verwaisten Dateien löschen"
+
+#: 
+msgid "Delete records permission"
+msgstr "Datensatzlöschberechtigung"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "%d Dateien gelöscht, %d fehlgeschlagen"
+
+#: 
+msgid "Deletion Results"
+msgstr "Löschergebnisse"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "Ziehen Sie Ihre Sicherungsdatei hier ab"
+
+#: 
+msgid "Edit records permission"
+msgstr "Datensatzberechtigung bearbeiten"
+
+#: 
+msgid "Encryption"
+msgstr "Verschlüsselung"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "Exportiert Datenbankstruktur und Daten. Kleinere Dateigröße."
+
+#: 
+msgid "File Integrity Check"
+msgstr "Dateiintegritätsprüfung"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "Dateiintegritätsprobleme erkannt"
+
+#: 
+msgid "File Path"
+msgstr "Dateipfad"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "Dateisignaturen stimmen mit der offiziellen Version überein."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "Dateien können geändert oder fehlend sein. Erwägen Sie eine erneute Bereitstellung aus einer offiziellen Version."
+
+#: 
+msgid "Finance access"
+msgstr "Finanzberechtigter Zugriff"
+
+#: 
+msgid "Force Re-install"
+msgstr "Neuinstallation erzwingen"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Neuinstallation erzwungen eingeleitet. Bitte sichern Sie Ihre Datenbank, bevor Sie sie anwenden."
+
+#: 
+msgid "Full Backup"
+msgstr "Vollständiges Backup"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "Backup generieren & herunterladen"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "Zum Dashboard gehen"
+
+#: 
+msgid "Group management access"
+msgstr "Gruppenverwaltungszugriff"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "Wenn Sie Zugriff auf diese Funktion benötigen, wenden Sie sich bitte an Ihren Kirchenadministrator."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "Wenn Sie eine Sicherung aus ChurchInfo oder einer früheren Version von ChurchCRM hochladen, wird sie automatisch auf das aktuelle Datenbankschema aktualisiert."
+
+#: 
+msgid "Important Warning"
+msgstr "Wichtige Warnung"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "Enthält Datenbank und alle hochgeladenen Fotos. Größere Dateigröße."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "Bewahren Sie eine Kopie in einem feuerfesten Safe vor Ort und eine weitere extern auf."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "Neueste GitHub-Version:"
+
+#: 
+msgid "Loading..."
+msgstr "Wird geladen..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "Erstellen Sie mindestens einmal pro Woche eine Sicherung, sofern Sie keine automatisierten Sicherungen haben."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "Verwaiste Dateien verwalten"
+
+#: 
+msgid "Menu options access"
+msgstr "Menüoptionszugriff"
+
+#: 
+msgid "Missing Files"
+msgstr "Fehlende Dateien"
+
+#: 
+msgid "Modified Files"
+msgstr "Geänderte Dateien"
+
+#: 
+msgid "Multiple Copies"
+msgstr "Mehrere Kopien"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "Keine verwaisten Dateien gefunden"
+
+#: 
+msgid "Notes access"
+msgstr "Notizberechtigung"
+
+#: 
+msgid "Orphaned Files"
+msgstr "Verwaiste Dateien"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "Verwaisete Dateiverwaltung"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "Verwaiste Dateien sind PHP- oder JavaScript-Dateien, die auf Ihrem Server vorhanden sind, aber nicht Teil der offiziellen ChurchCRM-Version sind. Diese Dateien können Überbleibsel aus früheren Versionen sein und Sicherheitsrisiken darstellen, wenn sie veralteten Code mit Sicherheitslücken enthalten."
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "Verwaiste Dateien aus früheren Versionen bereinigt"
+
+#: 
+msgid "Permission Required"
+msgstr "Berechtigung erforderlich"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "Überprüfen Sie die Sicherungsdatei und versuchen Sie es erneut."
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "Bitte wählen Sie eine Sicherungsdatei zum Wiederherstellen"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "Laden Sie die aktuelle Version erneut herunter und wenden Sie sie an, um alle Dateien in ihren offiziellen Status wiederherzustellen"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "Bereit, eine Sicherung zu erstellen. Wählen Sie Ihre Optionen oben aus und klicken Sie auf eine Schaltfläche zum Sichern."
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "Bereit wiederherzustellen. Wählen Sie eine Sicherungsdatei und klicken Sie auf Datenbank wiederherstellen."
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "Empfehlung: Überprüfen und löschen Sie diese Dateien vor oder nach dem Upgrade."
+
+#: 
+msgid "Redirecting in"
+msgstr "Umleitung in"
+
+#: 
+msgid "Refresh List"
+msgstr "Liste aktualisieren"
+
+#: 
+msgid "Regular Backups"
+msgstr "Regelmäßige Sicherungen"
+
+#: 
+msgid "Required Permission"
+msgstr "Erforderliche Berechtigung"
+
+#: 
+msgid "Required permission"
+msgstr "Erforderliche Berechtigung"
+
+#: 
+msgid "Restore Status"
+msgstr "Wiederherstellungsstatus"
+
+#: 
+msgid "Restore failed."
+msgstr "Wiederherstellung fehlgeschlagen."
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "Wiederherstellung fehlgeschlagen. Überprüfen Sie die Sicherungsdatei und versuchen Sie es erneut."
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "Wiederherstellung läuft, bitte warten..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "Überprüfen Sie die Dateien unten und löschen Sie sie, um die Sicherheit zu verbessern."
+
+#: 
+msgid "Security Recommendation"
+msgstr "Sicherheitsempfehlung"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "Sicherheitswarnung: Verwaiste Dateien erkannt"
+
+#: 
+msgid "Select Backup File"
+msgstr "Sicherungsdatei auswählen"
+
+#: 
+msgid "Supported formats:"
+msgstr "Unterstützte Formate:"
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "Die folgenden Dateien existieren auf Ihrem Server, sind aber NICHT Teil der offiziellen ChurchCRM-Version. Dies können Überbleibsel aus früheren Versionen sein und Sicherheitsrisiken darstellen."
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "Die Seite, die Sie besuchen möchten, erfordert spezielle Berechtigungen, die Ihr Konto derzeit nicht hat."
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "Diese Dateien sind nicht Teil der offiziellen Version und können Sicherheitsrisiken darstellen."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "Diese Dateien waren wahrscheinlich Teil einer älteren ChurchCRM-Version und wurden bei einem früheren Upgrade nicht bereinigt. Das Löschen verbessert die Sicherheit Ihres Systems."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "Diese Dateien waren wahrscheinlich Teil einer älteren ChurchCRM-Version und wurden bei einem früheren Upgrade nicht bereinigt. Sie können veralteten Code mit Sicherheitslücken enthalten."
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "Diese Aktion kann nicht rückgängig gemacht werden. Stellen Sie sicher, dass Sie bei Bedarf eine Sicherung der aktuellen Daten haben."
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "Dies kann bei großen Datenbanken einige Minuten dauern."
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "Dies kann bei großen Datenbanken mehrere Minuten dauern. Schließen Sie diese Seite nicht."
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "Dies lädt die aktuelle Version erneut herunter und wendet sie an. Dies kann beschädigte oder geänderte Dateien beheben. Fortfahren?"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "Upgrade-Zusammenfassung"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "Verwenden Sie externe Tools (GPG, 7-Zip), um Sicherungen vor dem Speichern extern zu verschlüsseln."
+
+#: 
+msgid "User authentication"
+msgstr "Benutzerauthentifizierung"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "Benutzer muss die Berechtigung zum Hinzufügen von Ereignissen haben"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "Benutzer muss die Menüoptionsberechtigung haben"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "Was sind verwaiste Dateien?"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "Sie haben keinen Zugriff auf diese Seite"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "Sie werden abgemeldet und zur Anmeldeseite weitergeleitet."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "Ihre ChurchCRM-Installation ist sauber. Alle Dateien auf dem Server stimmen mit der offiziellen Version überein."
+
+#: 
+msgid "or click to browse"
+msgstr "oder klicken Sie zum Durchsuchen"
+
+#: 
+msgid "seconds..."
+msgstr "Sekunden..."
+
+#: 
+msgid " Deposit #"
+msgstr " Einzahlung #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d fehlende Klassifikation"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d fehlende Geschlecht"
+
+#: 
+msgid "%d missing role"
+msgstr "%d fehlende Rolle"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "Eine Zahlung ist eine tatsächlich erhaltene Spende. Sie wird zur aktuellen Einzahlung hinzugefügt."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "Ein Versprechen ist eine Verpflichtung zu geben. Es ist nicht an einen Einzahlungsschein gebunden."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Weiteres Familienmitglied hinzufügen"
+
+#: 
+msgid "Add Pledge"
+msgstr "Zusage hinzufügen"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Verwaltungs-Dashboard"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Erweiterte Operationen"
+
+#: 
+msgid "All System Settings"
+msgstr "Alle Systemeinstellungen"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "Ein unerwarteter Fehler ist aufgetreten. Bitte wenden Sie sich an Ihren Administrator."
+
+#: 
+msgid "Apr"
+msgstr "April"
+
+#: 
+msgid "Aug"
+msgstr "August"
+
+#: 
+msgid "Back to Deposits"
+msgstr "Zurück zu Einzahlungen"
+
+#: 
+msgid "Back to Families"
+msgstr "Zurück zu Familien"
+
+#: 
+msgid "Birth & Family"
+msgstr "Geburt & Familie"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "CSV-Export ist auf Administratoren beschränkt."
+
+#: 
+msgid "Cart"
+msgstr "Warenkorb"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "Ändern Sie dies in Systemeinstellungen."
+
+#: 
+msgid "Church Membership"
+msgstr "Kirchenmitgliedschaft"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "Kirchenname ist auf Standardwert eingestellt"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "Kurse und Anmeldungen"
+
+#: 
+msgid "Clean Up Files"
+msgstr "Dateien bereinigen"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "Löschen Sie alle Daten und starten Sie neu. Kann nicht rückgängig gemacht werden."
+
+#: 
+msgid "Close All Deposits"
+msgstr "Alle Einzahlungen schließen"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "Geschlossene Einzahlungen:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "Geschlossen vs. Summe"
+
+#: 
+msgid "Coming soon"
+msgstr "Kommt in Kürze"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "Schließen Sie diese wesentlichen Setupaufgaben ab, um ChurchCRM reibungslos auszuführen:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "Schließen Sie diese in beliebiger Reihenfolge ab. Verwenden Sie Demodaten, um mit Beispieldatensätzen zu erkunden."
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "Führen Sie diese Aufgaben aus, um genaue Jahresendsteuerberichte für Ihre Spender sicherzustellen."
+
+#: 
+msgid "Configuration:"
+msgstr "Konfiguration:"
+
+#: 
+msgid "Configure Email"
+msgstr "E-Mail konfigurieren"
+
+#: 
+msgid "Contact Information"
+msgstr "Kontaktinformation"
+
+#: 
+msgid "Create Deposit"
+msgstr "Einzahlung erstellen"
+
+#: 
+msgid "Create First Deposit"
+msgstr "Erste Einzahlung erstellen"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "Erstellen oder öffnen Sie zuerst eine Einzahlung"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "Erstellen oder wählen Sie eine Einzahlung zum Starten."
+
+#: 
+msgid "Current Deposit"
+msgstr "Aktuelle Einzahlung"
+
+#: 
+msgid "Current fiscal year"
+msgstr "Aktuelles Geschäftsjahr"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Anpassbarer Bericht mit Filterung nach Datum, Fonds, Familie und Zahlungsmethode."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Passen Sie den Text an, der in Steuererklärungen angezeigt wird (sTaxReport1, sTaxReport2, usw.)."
+
+#: 
+msgid "Data Quality:"
+msgstr "Datenqualität:"
+
+#: 
+msgid "Database:"
+msgstr "Datenbank:"
+
+#: 
+msgid "Day"
+msgstr "Tag"
+
+#: 
+msgid "Dec"
+msgstr "Dezember"
+
+#: 
+msgid "Demo Data"
+msgstr "Demodaten"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "Einzahlungsnavigation"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "Einzahlungsstatistiken"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "Detaillierte Aufschlüsselung einer einzelnen Einzahlungsschein."
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "Detaillierte Aufschlüsselung von Zusagen und Zahlungen nach Familie."
+
+#: 
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: 
+msgid "Donor Families"
+msgstr "Spenderfamilien"
+
+#: 
+msgid "Edit Deposit"
+msgstr "Einzahlung bearbeiten"
+
+#: 
+msgid "Edit Family"
+msgstr "Familie bearbeiten"
+
+#: 
+msgid "Edit Payment"
+msgstr "Zahlung bearbeiten"
+
+#: 
+msgid "Edit Person"
+msgstr "Person bearbeiten"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "Stellen Sie sicher, dass alle Einzahlungen für das Steuerjahr geschlossen sind, bevor Sie Kontoauszüge generieren."
+
+#: 
+msgid "Export Options"
+msgstr "Exportoptionen"
+
+#: 
+msgid "F"
+msgstr "Fr"
+
+#: 
+msgid "Failed to save settings"
+msgstr "Einstellungen konnten nicht gespeichert werden"
+
+#: 
+msgid "Family Navigation"
+msgstr "Familiennavigation"
+
+#: 
+msgid "Feb"
+msgstr "Februar"
+
+#: 
+msgid "File Integrity:"
+msgstr "Dateiintegrität:"
+
+#: 
+msgid "Filtering"
+msgstr "Filterung"
+
+#: 
+msgid "Finance"
+msgstr "Finanzen"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "Finanz-Dashboard"
+
+#: 
+msgid "Force Import"
+msgstr "Import erzwingen"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "Force Import wird es erneut versuchen und kann doppelte Daten erstellen."
+
+#: 
+msgid "Fund Allocation"
+msgstr "Mittelzuordnung"
+
+#: 
+msgid "Generate"
+msgstr "Generieren"
+
+#: 
+msgid "Generate Reports"
+msgstr "Berichte generieren"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Steuererklärungen generieren"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "Generieren Sie jährliche Spendenerklärungen für Spender und ermitteln Sie Spendenmuster."
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "Generieren Sie jährliche steuerabzugsfähige Spendenerklärungen für Spender. Kann gedruckt oder per E-Mail versendet werden."
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "Generieren Sie detaillierte Berichte für einzelne Einzahlungen oder Datumsbereiche."
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "Generieren Sie Erinnerungsschreiben für Familien mit ausstehenden Zusagen."
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "Generieren Sie Berichte für Steuererklärungen, Zusagen-Verfolgung und Finanzanalyse."
+
+#: 
+msgid "Giving funds and categories"
+msgstr "Spendenfonds und -kategorien"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS nicht konfiguriert"
+
+#: 
+msgid "ID"
+msgstr "ID"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "Identifizieren Sie Mitglieder, die innerhalb eines Datumsbereichs keine Spenden geleistet haben."
+
+#: 
+msgid "Import failed"
+msgstr "Import fehlgeschlagen"
+
+#: 
+msgid "Import from CSV files"
+msgstr "Aus CSV-Dateien importieren"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "Importieren Sie Beispielfamilien, Menschen und Gruppen, um ChurchCRM mit realistischen Daten zu erkunden."
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "Installieren Sie ein TLS/SSL-Zertifikat für bessere Sicherheit"
+
+#: 
+msgid "Jan"
+msgstr "Januar"
+
+#: 
+msgid "Jr., Sr."
+msgstr "Jr., Sr."
+
+#: 
+msgid "Jul"
+msgstr "Juli"
+
+#: 
+msgid "Jun"
+msgstr "Juni"
+
+#: 
+msgid "Latest Note"
+msgstr "Letzte Notiz"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "Lassen Sie uns Ihr System einrichten und bereit machen"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "Listen Sie Mitglieder auf, die auf Grundlage der Spendenhistorie und Mitgliedschaftskriterien wahlberechtigt sind."
+
+#: 
+msgid "Location"
+msgstr "Ort"
+
+#: 
+msgid "M"
+msgstr "Mo"
+
+#: 
+msgid "Manage Funds"
+msgstr "Geldmittel verwalten"
+
+#: 
+msgid "Manage Users"
+msgstr "Benutzer verwalten"
+
+#: 
+msgid "Mar"
+msgstr "März"
+
+#: 
+msgid "Membership Reports"
+msgstr "Mitgliedschaftsberichte"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "Fehlende Geheimschlüssel"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "Die meisten Berichte können als PDF zum Drucken oder CSV zur Tabellenkalkulationsanalyse exportiert werden."
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "Herr, Frau, Dr."
+
+#: 
+msgid "Name & Identity"
+msgstr "Name & Identität"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "Neue Einzahlung wird erstellt"
+
+#: 
+msgid "New Payment"
+msgstr "Neue Zahlung"
+
+#: 
+msgid "New Pledge"
+msgstr "Neue Zusage"
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "Nächste 7 Tage und letzte 7 Tage"
+
+#: 
+msgid "No Active Deposit"
+msgstr "Keine aktive Einzahlung"
+
+#: 
+msgid "No active funds configured."
+msgstr "Keine aktiven Geldmittel konfiguriert."
+
+#: 
+msgid "No deposits found."
+msgstr "Keine Einzahlungen gefunden."
+
+#: 
+msgid "No format"
+msgstr "Kein Format"
+
+#: 
+msgid "Nov"
+msgstr "November"
+
+#: 
+msgid "Oct"
+msgstr "Oktober"
+
+#: 
+msgid "Open"
+msgstr "Offen"
+
+#: 
+msgid "Open Deposits:"
+msgstr "Offene Einzahlungen:"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "Organisation, Zeitzone, E-Mail"
+
+#: 
+msgid "Organizational structure"
+msgstr "Organisationsstruktur"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "Verwaiste Dateien:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
+msgid "Payment"
+msgstr "Zahlung"
+
+#: 
+msgid "Pledge Reports"
+msgstr "Zusage-Berichte"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "Drucken Sie jährliche Spendenerklärungen oder mailen Sie diese an alle Spender."
+
+#: 
+msgid "Quick Actions"
+msgstr "Schnelle Aktionen"
+
+#: 
+msgid "Quick Start"
+msgstr "Schnelleinstieg"
+
+#: 
+msgid "Recent Deposits"
+msgstr "Letzte Einzahlungen"
+
+#: 
+msgid "Recording a Payment"
+msgstr "Eine Zahlung aufzeichnen"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "Eine Zusage aufzeichnen"
+
+#: 
+msgid "Report Tips"
+msgstr "Berichtstipps"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "Berichte zur Wahlberechtigung von Mitgliedern und Unternehmensführung."
+
+#: 
+msgid "Reset"
+msgstr "Zurücksetzen"
+
+#: 
+msgid "Restore"
+msgstr "Wiederherstellen"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "Aus einer Sicherungsdatei wiederherstellen. Löscht vorhandene Daten."
+
+#: 
+msgid "Review Donation Funds"
+msgstr "Überprüfen Sie Spendenfonds"
+
+#: 
+msgid "SMTP server settings are not configured"
+msgstr "SMTP-Servereinstellungen sind nicht konfiguriert"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "Speichern und neue Familie hinzufügen"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Geheimschlüssel fehlen in Config.php"
+
+#: 
+msgid "Sep"
+msgstr "September"
+
+#: 
+msgid "Server error"
+msgstr "Serverfehler"
+
+#: 
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "Einstellungen erfolgreich gespeichert"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "Setup-Aufgaben:"
+
+#: 
+msgid "Social Media"
+msgstr "Soziale Medien"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "Einige Anwendungsvoraussetzungen sind nicht erfüllt"
+
+#: 
+msgid "State (Other)"
+msgstr "Status (Sonstiges)"
+
+#: 
+msgid "Status:"
+msgstr "Status:"
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "Zusammenfassung von Zusagen vs. Zahlungen nach Fonds für das Geschäftsjahr."
+
+#: 
+msgid "System Configuration:"
+msgstr "Systemkonfiguration:"
+
+#: 
+msgid "System Health"
+msgstr "Systemzustand"
+
+#: 
+msgid "System Info"
+msgstr "Systeminfo"
+
+#: 
+msgid "Tax & Giving Reports"
+msgstr "Steuern & Spendenberichte"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "Steuerberichtstext"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "Steuererklärungen (Spendenbericht)"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "Jahressteuerbericht-Checkliste"
+
+#: 
+msgid "Today"
+msgstr "Heute"
+
+#: 
+msgid "Total"
+msgstr "Summe"
+
+#: 
+msgid "Total Amount"
+msgstr "Gesamtbetrag"
+
+#: 
+msgid "Total Deposits:"
+msgstr "Gesamteinzahlungen:"
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "Verfolgen Sie Zusagen und Zahlungsfortschritt für Kampagnen und Geschäftsjahrsbudgetierung."
+
+#: 
+msgid "Type:"
+msgstr "Typ:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "Nicht erfüllte Voraussetzungen"
+
+#: 
+msgid "Update Church Name"
+msgstr "Kirchennamen aktualisieren"
+
+#: 
+msgid "Upgrade"
+msgstr "Upgrade"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "Verwenden Sie Klassifikations- und Familienfilter, um Berichte für bestimmte Spendergruppen zu generieren."
+
+#: 
+msgid "User accounts and roles"
+msgstr "Benutzerkonten und -rollen"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "Benutzer muss ein Administrator sein oder Finanzberechtigung haben"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Überprüfen Sie, ob Kirchenname, Adresse und Kontaktinformationen auf Steuererklärungen angezeigt werden."
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "Überprüfen Sie, ob Fondnamen und Beschreibungen für Kontoauszüge korrekt sind."
+
+#: 
+msgid "Version:"
+msgstr "Version:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "Willkommen bei ChurchCRM"
+
+#: 
+msgid "YTD Payments"
+msgstr "YTD-Zahlungen"
+
+#: 
+msgid "YTD Pledges"
+msgstr "YTD-Zusagen"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "Sie können Familienmitglieder jetzt erstellen oder später hinzufügen. Alle Einträge werden zu neuen Personendatensätzen."
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "Ihr Geschäftsjahr beginnt im Monat"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Postleitzahl"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "ZipArchive-Erweiterung erforderlich für Upgrades"
+
+#: 
+msgid "active"
+msgstr "aktiv"
+
+#: 
+msgid "ago"
+msgstr "vor"
+
+#: 
+msgid "day"
+msgstr "Tag"
+
+#: 
+msgid "days"
+msgstr "Tage"
+
+#: 
+msgid "found"
+msgstr "gefunden"
+
+#: 
+msgid "in"
+msgstr "in"
+
+#: 
+msgid "issues"
+msgstr "Themen"
+
+#: 
+msgid "open"
+msgstr "offen"
+
+#: 
+msgid "years"
+msgstr "Jahre"
+
+#: 
+msgid "yes"
+msgstr "ja"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(Geben Sie Staat/Provinz für Länder ohne vordefinierte Staaten ein)"
+
+#: 
+msgid "Available"
+msgstr "Verfügbar"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "Basis-URL-Konfiguration ist ungültig. Bitte überprüfen Sie Ihre Config.php-Datei."
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "Basis-URL ist in Config.php nicht konfiguriert"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "ChurchCRM unterstützte Locales"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "Verbinden Sie sich über SSH, FTP oder Ihr Hosting-Kontrollpanel mit Ihrem Server"
+
+#: 
+msgid "Contact"
+msgstr "Kontakt"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "Kritischer Konfigurationsfehler"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "Aktueller $URL[0]-Wert:"
+
+#: 
+msgid "Custom port:"
+msgstr "Benutzerdefinierter Port:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "Endet mit <strong>Schrägstrich</strong> (/)"
+
+#: 
+msgid "Error:"
+msgstr "Fehler:"
+
+#: 
+msgid "Find the line:"
+msgstr "Finden Sie die Zeile:"
+
+#: 
+msgid "Group Memberships"
+msgstr "Gruppenmitgliedschaften"
+
+#: 
+msgid "How to Fix:"
+msgstr "Wie zu beheben:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "Treten Sie der ChurchCRM-Gemeinde bei und helfen Sie uns, indem Sie Ihre Informationen weitergeben. Es dauert weniger als eine Minute!"
+
+#: 
+msgid "Language"
+msgstr "Sprache"
+
+#: 
+msgid "Local development:"
+msgstr "Lokale Entwicklung:"
+
+#: 
+msgid "Locale Support"
+msgstr "Locale-Unterstützung"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "Ort & Kontaktinformation"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "Navigieren Sie zu Ihrem ChurchCRM-Installationsverzeichnis"
+
+#: 
+msgid "New to"
+msgstr "Neu bei"
+
+#: 
+msgid "No locales configured"
+msgstr "Keine Locales konfiguriert"
+
+#: 
+msgid "Not Available"
+msgstr "Nicht verfügbar"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "Öffnen Sie diese Datei in einem Texteditor:"
+
+#: 
+msgid "Register Now"
+msgstr "Jetzt registrieren"
+
+#: 
+msgid "Register Your Church"
+msgstr "Registrieren Sie Ihre Kirche"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "Speichern Sie die Datei und aktualisieren Sie diese Seite"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "Legen Sie true fest, um die Eingabe persönlicher Adressen für nicht verbundene Personen im Person Editor zu deaktivieren. Legen Sie false fest, um die Eingabe von Adressen für Personen ohne Familienzuordnung zu aktivieren."
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "Beginnt mit <strong>http://</strong> oder <strong>https://</strong>"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "Unterverzeichnisinstallation:"
+
+#: 
+msgid "System Locale Support"
+msgstr "Systemgebietsschema-Unterstützung"
+
+#: 
+msgid "System Support"
+msgstr "Systemunterstützung"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URL enthält keinen gültigen Hostname"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "URL-Hostname ist ungültig"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URL hat kein gültiges Format"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URL muss mit Schrägstrich (/) enden"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URL muss mit http:// oder https:// beginnen"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "Systemgebietsschemas können nicht erkannt werden"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "Verfügbare Gebietsschemas können nicht ermittelt werden"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "Gebietsschemainformationen können nicht geladen werden"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "Zustandsliste kann nicht geladen werden. Überprüfen Sie Ihre Internetverbindung oder versuchen Sie es später erneut."
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "Aktualisieren Sie es auf eine gültige URL, die:"
+
+#: 
+msgid "Valid Examples:"
+msgstr "Gültige Beispiele:"
+
+#: 
+msgid "View Logs"
+msgstr "Protokolle anzeigen"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "Zeigen Sie Systemprotokolldateien an und verwalten Sie sie zum Debuggen."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "Sie müssen einen Nachnamen eingeben."
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "Ihre Privatsphäre ist uns wichtig. Wir geben Ihre Informationen niemals an Dritte weiter."
+
+#: 
+msgid "Additional Information"
+msgstr "Zusätzliche Informationen"
+
+#: 
+msgid "All information is correct"
+msgstr "Alle Informationen sind korrekt"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "Chancen zuweisen"
+
+#: 
+msgid "Assign Property"
+msgstr "Eigenschaft zuweisen"
+
+#: 
+msgid "Choose a property..."
+msgstr "Wählen Sie eine Eigenschaft..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "Wählen Sie Chancen..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "Familieninformation bestätigen"
+
+#: 
+msgid "Confirm family information"
+msgstr "Familieninformation bestätigen"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "Kontakt- & Personalinfo"
+
+#: 
+msgid "Copied!"
+msgstr "Kopiert!"
+
+#: 
+msgid "Edit Role"
+msgstr "Rolle bearbeiten"
+
+#: 
+msgid "Edited"
+msgstr "Bearbeitet"
+
+#: 
+msgid "Email PDF"
+msgstr "PDF per E-Mail"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "URL konnte nicht kopiert werden"
+
+#: 
+msgid "ID:"
+msgstr "ID:"
+
+#: 
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: 
+msgid "No assigned family"
+msgstr "Keine zugewiesene Familie"
+
+#: 
+msgid "Open in New Tab"
+msgstr "In neuem Tab öffnen"
+
+#: 
+msgid "Personal"
+msgstr "Persönlich"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "Bitte bestätigen Sie Ihre Familieninformation:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "Bitte aktualisieren Sie unsere Daten mit Korrektionen"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "Geben Sie Korrektionen oder zusätzliche Informationen hier an..."
+
+#: 
+msgid "Remove Property"
+msgstr "Eigenschaft entfernen"
+
+#: 
+msgid "Select Opportunities"
+msgstr "Chancen auswählen"
+
+#: 
+msgid "Select Property"
+msgstr "Eigenschaft auswählen"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Teilen Sie diese URL mit Familienmitgliedern, um ihre Informationen zu überprüfen"
+
+#: 
+msgid "Submit Verification"
+msgstr "Überprüfung absenden"
+
+#: 
+msgid "Thank You!"
+msgstr "Danke dir!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "Übersetzung unvollständig"
+
+#: 
+msgid "Visit Our Website"
+msgstr "Besuchen Sie unsere Website"
+
+#: 
+msgid "Volunteer"
+msgstr "Freiwilliger"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "Bei der Verarbeitung Ihrer Überprüfung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt."
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "Ihre Überprüfungsanfrage wurde empfangen. Vielen Dank, dass Sie Ihre Informationen auf dem neuesten Stand halten."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "Ein Fehler ist aufgetreten. Bitte wenden Sie sich an Ihren Systemadministrator."
+
+#: 
+msgid "Backup failed"
+msgstr "Sicherung fehlgeschlagen"
+
+#: 
+msgid "Database reset failed"
+msgstr "Datenbank-Zurücksetzen fehlgeschlagen"
+
+#: 
+msgid "Database restore failed"
+msgstr "Datenbankwiederherstellung fehlgeschlagen"
+
+#: 
+msgid "Demo data import failed"
+msgstr "Demodaten-Import fehlgeschlagen"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "Demodaten-Import ist nur bei neuen Installationen mit genau 1 Person verfügbar"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "Demodaten erfolgreich geladen"
+
+#: 
+msgid "Download failed"
+msgstr "Download fehlgeschlagen"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "Upgrade konnte nicht angewendet werden"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "Verwaiste Dateien konnten nicht gelöscht werden"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "Neueste Version konnte nicht heruntergeladen werden"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "Upgrade-Informationen konnten nicht aktualisiert werden"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "Familienfoto konnte nicht hochgeladen werden"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "Personenfoto konnte nicht hochgeladen werden"
+
+#: 
+msgid "Remote backup failed"
+msgstr "Remote-Sicherung fehlgeschlagen"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "WebDAV-Sicherungen sind nicht richtig konfiguriert. Stellen Sie sicher, dass Endpunkt, Benutzername und Passwort eingestellt sind"
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA aktiviert"
+
+#: 
+msgid "Active Users"
+msgstr "Aktive Benutzer"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "ChMeetings-Export"
+
+#: 
+msgid "Delete User"
+msgstr "Benutzer löschen"
+
+#: 
+msgid "Disable 2FA"
+msgstr "2FA deaktivieren"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "Exportieren Sie alle Personendaten im ChMeetings-Format zur Importierung in externe Systeme."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "In ChMeetings CSV exportieren"
+
+#: 
+msgid "Exporting..."
+msgstr "Wird exportiert..."
+
+#: 
+msgid "Family Listing"
+msgstr "Familienliste"
+
+#: 
+msgid "Invalid request data"
+msgstr "Ungültige Anfragedaten"
+
+#: 
+msgid "Invalid status"
+msgstr "Ungültiger Status"
+
+#: 
+msgid "Locked Users"
+msgstr "Gesperrte Benutzer"
+
+#: 
+msgid "Person Listing"
+msgstr "Personenliste"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "Person(en) aus dem Warenkorb entfernt"
+
+#: 
+msgid "Quick Settings"
+msgstr "Schnelleinstellungen"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "Fehlgeschlagene Anmeldungen zurücksetzen"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "Passwort per E-Mail zurücksetzen"
+
+#: 
+msgid "Set Active"
+msgstr "Als aktiv einstellen"
+
+#: 
+msgid "Set Inactive"
+msgstr "Als inaktiv einstellen"
+
+#: 
+msgid "Show"
+msgstr "Anzeigen"
+
+#: 
+msgid "Showing"
+msgstr "Zeigt"
+
+#: 
+msgid "Total Users"
+msgstr "Gesamtbenutzer"
+
+#: 
+msgid "User Management"
+msgstr "Benutzerverwaltung"
+
+#: 
+msgid "View Details"
+msgstr "Details anzeigen"
+
+#: 
+msgid "entries"
+msgstr "Einträge"
+
+#: 
+msgid "of"
+msgstr "von"
+
+#: 
+msgid "total"
+msgstr "insgesamt"
+
+#: 
+msgid "Code incomplete"
+msgstr "Code unvollständig"
+
+#: 
+msgid "Code is invalid"
+msgstr "Code ist ungültig"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "Verschlüsselungsschlüssel zum Speichern von 2FA-Geheimschlüsseln in der Datenbank"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "Zwei-Faktor-Authentifizierung"
+
+#: 
+msgid "Validation pending"
+msgstr "Bestätigung ausstehend"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "muss mit einem Verschlüsselungsschlüssel konfiguriert werden"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d Person zum Warenkorb hinzugefügt."
+msgstr[1] "%d Personen zum Warenkorb hinzugefügt."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d Person erfolgreich zur ausgewählten Familie hinzugefügt."
+msgstr[1] "%d Personen erfolgreich zur ausgewählten Familie hinzugefügt."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d Person erfolgreich zur ausgewählten Gruppe hinzugefügt."
+msgstr[1] "%d Personen erfolgreich zur ausgewählten Gruppe hinzugefügt."
+
+#: 
+msgid "A "
+msgstr "Ein "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "Änderungen bei Hinzufügen, Löschen und Sortieren sind sofort. Änderungen des Namens und der Beschreibung müssen durch Klicken auf 'Änderungen speichern' gespeichert werden."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "Sind Sie sicher, dass Sie löschen möchten"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Pfeil- und Schaltflächen zum Löschen treten sofort in Kraft. Feldnamenänderungen gehen verloren, wenn Sie vor Verwendung einer Schaltfläche zum Hochfahren, Herunterfahren, Löschen oder 'Neu hinzufügen' nicht auf 'Änderungen speichern' klicken!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "Durch das Löschen dieses Felds verlieren Sie dauerhaft alle Familiendaten, die diesem Feld zugeordnet sind!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "Durch das Löschen dieses Felds verlieren Sie dauerhaft alle Personendaten, die diesem Feld zugeordnet sind!"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "Änderungen nicht gespeichert! Bitte korrigieren Sie und versuchen Sie es erneut!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "Löschung der Eigenschaft bestätigen"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "Löschen der Freiwilligenchance bestätigen"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "Löschen bestätigen"
+
+#: 
+msgid "Existing"
+msgstr "Bestehend"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "Vorhandene benutzerdefinierte Familienfelder"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "Vorhandene benutzerdefinierte Personenfelder"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "Vorhandene Freiwilligenchancen"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "Feld erfolgreich gelöscht"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Ungültiges CSRF-Token"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "Ungültige Felder oder Auswahl."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Element erfolgreich gelöscht"
+
+#: 
+msgid "Move down"
+msgstr "Nach unten verschieben"
+
+#: 
+msgid "Move up"
+msgstr "Nach oben verschieben"
+
+#: 
+msgid "Opportunity"
+msgstr "Chance"
+
+#: 
+msgid "Order"
+msgstr "Auftrag"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "PDFs erfolgreich an %s Familien per E-Mail versendet."
+
+#: 
+msgid "Percentage"
+msgstr "Prozentsatz"
+
+#: 
+msgid "Person Properties"
+msgstr "Personeneigenschaften"
+
+#: 
+msgid "Property Type"
+msgstr "Eigenschaftstyp"
+
+#: 
+msgid "Property to Delete"
+msgstr "Zu löschende Eigenschaft"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "Es gibt Personen, die dieser Freiwilligenchance zugeordnet sind. Das Löschen hebt die Zuordnung auf:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "Dies entfernt es aus allen Personen, denen es derzeit zugeordnet ist."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Freiwilligenchance"
+
+#: 
+msgid "Warning:"
+msgstr "Warnung:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "Ja, diese Chance löschen"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "Abfragen, für die der Benutzer Finanzberechtigung haben muss, um sie zu verwenden"
+
+#: 
+msgid "Fund(s)"
+msgstr "Geldmittel"
+
+#: 
+msgid "Password reset for"
+msgstr "Passwort-Zurücksetzen für"
+
