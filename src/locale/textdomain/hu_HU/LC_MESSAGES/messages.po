@@ -118,11 +118,6 @@ msgstr "Tagsági Date"
 
 #: 
 #, fuzzy
-msgid "Birth / Anniversary Date"
-msgstr "Születési / Anniversary Dátum"
-
-#: 
-#, fuzzy
 msgid "Age / Years Married"
 msgstr "Életkor / Évek Házas"
 
@@ -186,17 +181,14 @@ msgid "Group Membership"
 msgstr "Csoport tagság"
 
 #: 
-msgid "From:"
-msgstr "Feladó:"
-
-#: 
-msgid "To:"
-msgstr "Címzett:"
+#, fuzzy
+msgid "From"
+msgstr "Feladó"
 
 #: 
 #, fuzzy
-msgid "Birthday Date"
-msgstr "Születési dátuma"
+msgid "To"
+msgstr "Címzett"
 
 #: 
 #, fuzzy
@@ -232,8 +224,9 @@ msgid "No file selected for upload."
 msgstr "Nincs fájl kiválasztva upload."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Teljes sorok száma a CSV-fájlban:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Teljes sorok száma a CSV-fájlban"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +539,9 @@ msgid "Convert All"
 msgstr "Convert All"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Fizess Slip száma:"
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Fizess Slip száma"
 
 #: 
 #, fuzzy
@@ -727,10 +721,6 @@ msgstr "Adomány Alap szerkesztő"
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Biztos benne, hogy törölni szeretné ezt az alapot?"
-
-#: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Figyelmeztetés: Field változtatások elvesznek, ha nem a \"Változtatások mentése\" mielőtt a delete vagy &#39;Új&#39; gombra!"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -1101,8 +1091,9 @@ msgid "Financial Reports"
 msgstr "Pénzügyi jelentések"
 
 #: 
-msgid "Report Type:"
-msgstr "Jelentés típusa:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Jelentés típusa"
 
 #: 
 msgid "Select Report Type"
@@ -1151,16 +1142,19 @@ msgid "Filter by Family"
 msgstr "Szűrés a Család"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Jelentés Kezdés dátuma:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Jelentés Kezdés dátuma"
 
 #: 
-msgid "Report End Date:"
-msgstr "Jelentés End Date:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Jelentés End Date"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Alkalmazás Jelentés Dátumok To:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Alkalmazás Jelentés Dátumok To"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1171,8 +1165,9 @@ msgid "Payment Date"
 msgstr "Kifizetés dátuma"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Szűrés szerint Kaució:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Szűrés szerint Kaució"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1183,8 +1178,9 @@ msgid "All deposits within date range"
 msgstr "Minden betétek dátumtartományban"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Szűrés Fizetés típusa:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Szűrés Fizetés típusa"
 
 #: 
 msgid "All Methods"
@@ -1216,20 +1212,12 @@ msgid "Other Settings"
 msgstr "Egyéb beállítások"
 
 #: 
-msgid "Include:"
-msgstr "Beleértve:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Csak a kifizetések az vállalja"
 
 #: 
 msgid "All Payments"
 msgstr "Minden kifizetések"
-
-#: 
-msgid "Generate:"
-msgstr "Generálása:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1367,20 +1355,23 @@ msgid "Family Geographic Utilities"
 msgstr "Family Geographic Utilities"
 
 #: 
-msgid "Select Family:"
-msgstr "Válassza Család:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Válassza Család"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Maximális száma szomszédok:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Maximális száma szomszédok"
 
 #: 
 msgid "Maximum distance"
 msgstr "Maximális távolság"
 
 #: 
-msgid "Data file format:"
-msgstr "Adat formátum:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Adat formátum"
 
 #: 
 msgid "GPS Visualizer"
@@ -1391,8 +1382,9 @@ msgid "Street Atlas USA"
 msgstr "Street Atlas USA"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Beleértve a családok koordináta fájlban:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Beleértve a családok koordináta fájlban"
 
 #: 
 msgid "Neighbor Families"
@@ -1501,15 +1493,17 @@ msgid "data for member"
 msgstr "adatok member"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Group-specifikus tulajdonságai Form Editor:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Group-specifikus tulajdonságai Form Editor"
 
 #: 
 msgid "No properties have been added yet"
 msgstr "Nincs tulajdonságokat adtak még"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "Figyelmeztetés: Field változtatások elvesznek, ha nem a \"Változtatások mentése\" használata előtt fel, le, törölheti, vagy \"új\" gombra!"
 
 #: 
@@ -2011,12 +2005,9 @@ msgid "Group Name"
 msgstr "Csoport neve"
 
 #: 
-msgid "Notes:"
-msgstr "Megjegyzések:"
-
-#: 
-msgid "Entered:"
-msgstr "Bejegyezte:"
+#, fuzzy
+msgid "Entered"
+msgstr "Bejegyezte"
 
 #: 
 msgid "by"
@@ -2068,10 +2059,6 @@ msgstr "Megadása Prompt érték lehetővé teszi, hogy az egyesület egy szabad
 msgid "Property List"
 msgstr "Property List"
 
-#: 
-msgid "Add a New"
-msgstr "Hozzáadása Új"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2109,10 +2096,6 @@ msgstr "Ingatlan típusa szerkesztő"
 #: 
 msgid "Property Type List"
 msgstr "Ingatlan típusa List"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Hozzáadása Új Ingatlan típusa"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2162,8 +2145,8 @@ msgstr "Execute SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "Hiba történt:"
+msgid "An error occurred"
+msgstr "Hiba történt"
 
 #: 
 msgid " record(s) returned"
@@ -2733,12 +2716,14 @@ msgid "for funds "
 msgstr "az alapok"
 
 #: 
-msgid "Donated Items:"
-msgstr "Adományozott tárgyak:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Adományozott tárgyak"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Vásárolt elemek:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Vásárolt elemek"
 
 #: 
 msgid "Total of all purchases: $"
@@ -2797,12 +2782,14 @@ msgid "Please mail you next gift to "
 msgstr "Légyszíves írj legközelebb ajándékot"
 
 #: 
-msgid "Gift Amount:"
-msgstr "Ajándék Mennyiség:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Ajándék Mennyiség"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Ajándék Megnevezés:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Ajándék Megnevezés"
 
 #: 
 msgid "Sunday School Reports"

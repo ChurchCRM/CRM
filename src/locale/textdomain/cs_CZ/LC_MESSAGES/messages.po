@@ -120,10 +120,6 @@ msgid "Membership Date"
 msgstr "Členství od"
 
 #: 
-msgid "Birth / Anniversary Date"
-msgstr "Datum narození/výročí"
-
-#: 
 msgid "Age / Years Married"
 msgstr "Období v manželství"
 
@@ -187,16 +183,14 @@ msgid "Group Membership"
 msgstr "Členství skupiny"
 
 #: 
-msgid "From:"
-msgstr "Od:"
+#, fuzzy
+msgid "From"
+msgstr "Od"
 
 #: 
-msgid "To:"
-msgstr "Komu:"
-
-#: 
-msgid "Birthday Date"
-msgstr "Datum narození"
+#, fuzzy
+msgid "To"
+msgstr "Komu"
 
 #: 
 msgid "Anniversary Date"
@@ -231,8 +225,9 @@ msgid "No file selected for upload."
 msgstr "Nebyl vybrán soubor k nahrání."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Celkový počet řádků v souboru CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Celkový počet řádků v souboru CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +541,9 @@ msgid "Convert All"
 msgstr "Převeď vše"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Číslo vkladového listu: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Číslo vkladového listu"
 
 #: 
 #, fuzzy
@@ -731,10 +727,6 @@ msgstr "Editor příspěvkových fondů"
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Opravdu chcete smazat tento fond?"
-
-#: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Varování: Pokud před použitím tlačítka smazat nebo 'přidat nový' nepoužijete tlačítko 'Uložit změny', budou změny polí ztraceny!"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -1071,10 +1063,6 @@ msgid "Delete Photo"
 msgstr "Smazat foto"
 
 #: 
-msgid "Add a Note"
-msgstr "Přidat poznámku"
-
-#: 
 msgid "Timeline"
 msgstr "Časová osa"
 
@@ -1175,8 +1163,9 @@ msgid "Financial Reports"
 msgstr "Finanční sestavy"
 
 #: 
-msgid "Report Type:"
-msgstr "Typ sestavy:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Typ sestavy"
 
 #: 
 msgid "Select Report Type"
@@ -1223,16 +1212,19 @@ msgid "Filter by Family"
 msgstr "Filtrovat podle rodiny"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Datum začátku sestavy:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Datum začátku sestavy"
 
 #: 
-msgid "Report End Date:"
-msgstr "Datum konce sestavy:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Datum konce sestavy"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Použít data hlášení na:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Použít data hlášení na"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,8 +1235,9 @@ msgid "Payment Date"
 msgstr "Datum platby"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Filtrovat podle vkladu:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Filtrovat podle vkladu"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1255,8 +1248,9 @@ msgid "All deposits within date range"
 msgstr "Všechny vklady v rozmezí dat"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Filtrovat podle typu platby:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Filtrovat podle typu platby"
 
 #: 
 msgid "All Methods"
@@ -1287,20 +1281,12 @@ msgid "Other Settings"
 msgstr "Ostatní nastavení"
 
 #: 
-msgid "Include:"
-msgstr "Zahrnout:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Pouze platby s přísliby"
 
 #: 
 msgid "All Payments"
 msgstr "Všechny platby"
-
-#: 
-msgid "Generate:"
-msgstr "Generovat:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1351,8 +1337,9 @@ msgid "Summary Data"
 msgstr "Souhrn"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Hlasovní členové musí přispět<br> během kolika let<br> (0 - příspěvek není vyžadován):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Hlasovní členové musí přispět<br> během kolika let<br> (0 - příspěvek není vyžadován)"
 
 #: 
 msgid "CSV"
@@ -1371,12 +1358,9 @@ msgid "Deposit Listing"
 msgstr "Výpis vkladů"
 
 #: 
-msgid "Add New Deposit"
-msgstr "Přidat nový vklad"
-
-#: 
-msgid "Deposits: "
-msgstr "Vklady: "
+#, fuzzy
+msgid "Deposits"
+msgstr "Vklady"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1464,20 +1448,23 @@ msgid "Family Geographic Utilities"
 msgstr "Rodinné geografické nástroje"
 
 #: 
-msgid "Select Family:"
-msgstr "Vyberte rodinu:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Vyberte rodinu"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Maximální počet sousedů:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Maximální počet sousedů"
 
 #: 
 msgid "Maximum distance"
 msgstr "Maximální vzdálenost"
 
 #: 
-msgid "Data file format:"
-msgstr "Formát datového souboru:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Formát datového souboru"
 
 #: 
 msgid "GPS Visualizer"
@@ -1488,8 +1475,9 @@ msgid "Street Atlas USA"
 msgstr "Atlas ulic USA"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Zahrnout rodiny do souboru souřadnic:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Zahrnout rodiny do souboru souřadnic"
 
 #: 
 msgid "Neighbor Families"
@@ -1560,8 +1548,9 @@ msgid "Select a group"
 msgstr "Vyberte skupinu"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Specifické vlastnosti skupiny: "
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Specifické vlastnosti skupiny"
 
 #: 
 msgid "Enabled"
@@ -1616,15 +1605,17 @@ msgid "data for member"
 msgstr "data člena"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Editor formuláře pro specifické vlastnosti skupiny:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Editor formuláře pro specifické vlastnosti skupiny"
 
 #: 
 msgid "No properties have been added yet"
 msgstr "Zatím nebyly přidány žádné vlastnosti"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "Varování: Pokud před použitím tlačítek nahoru, dolů, smazat nebo 'přidat nový' nepoužijete tlačítko 'Uložit změny', budou změny polí ztraceny!"
 
 #: 
@@ -1772,8 +1763,9 @@ msgid "Move Selected Members to Group"
 msgstr "Přesunout vybrané členy do skupiny"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Přidat člena skupiny: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Přidat člena skupiny"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2276,12 +2268,9 @@ msgid "Group Name"
 msgstr "Název skupiny"
 
 #: 
-msgid "Notes:"
-msgstr "Poznámky:"
-
-#: 
-msgid "Entered:"
-msgstr "Vloženo:"
+#, fuzzy
+msgid "Entered"
+msgstr "Vloženo"
 
 #: 
 msgid "by"
@@ -2331,10 +2320,6 @@ msgstr "Zadání hodnoty Výzva umožní přiřadit hodnotu volného tvaru."
 msgid "Property List"
 msgstr "Seznam vlastností"
 
-#: 
-msgid "Add a New"
-msgstr "Přidat novou"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2371,10 +2356,6 @@ msgstr "Editor typů vlastností"
 #: 
 msgid "Property Type List"
 msgstr "Seznam typů vlastností"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Přidat nový typ vlastností"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2422,8 +2403,9 @@ msgid "Execute SQL"
 msgstr "Proveď SQL"
 
 #: 
-msgid "An error occurred: "
-msgstr "Objevila se chyba: "
+#, fuzzy
+msgid "An error occurred"
+msgstr "Objevila se chyba"
 
 #: 
 msgid " record(s) returned"
@@ -3066,12 +3048,14 @@ msgid "for funds "
 msgstr "pro fondy "
 
 #: 
-msgid "Donated Items:"
-msgstr "Darované předměty:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Darované předměty"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Zakoupené položky:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Zakoupené položky"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3130,12 +3114,14 @@ msgid "Please mail you next gift to "
 msgstr "Příští dar zašlete na adresu "
 
 #: 
-msgid "Gift Amount:"
-msgstr "Výše daru:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Výše daru"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Označení daru:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Označení daru"
 
 #: 
 msgid "Sunday School"
@@ -3308,14 +3294,6 @@ msgstr "Kalendář"
 #: 
 msgid "Members"
 msgstr "Členové"
-
-#: 
-msgid "Add New Person"
-msgstr "Přidat novou osobu"
-
-#: 
-msgid "Add New Family"
-msgstr "Přidat novou rodinu"
 
 #: 
 msgid "Events"
@@ -3550,18 +3528,6 @@ msgid "Buyer # "
 msgstr "Kupující # "
 
 #: 
-msgid "Envelope:"
-msgstr "Obálka:"
-
-#: 
-msgid ", Phone: "
-msgstr ", Telefon: "
-
-#: 
-msgid "Voting members "
-msgstr "Hlasovní členové "
-
-#: 
 msgid "Family Members:"
 msgstr "Členové rodiny:"
 
@@ -3582,20 +3548,13 @@ msgid "File Name:"
 msgstr "Název souboru:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Fiskální rok:"
-
-#: 
 msgid "family"
 msgstr "rodina"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Datum výročí:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Zadané datum:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Zadané datum"
 
 #: 
 msgid "CSV Import"
@@ -3622,10 +3581,6 @@ msgid "Filter by Fund"
 msgstr "Filtrovat podle fondu"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Přidat nový vklad: "
-
-#: 
 msgid "Estimated value"
 msgstr "Odhadovaná hodnota"
 
@@ -3640,10 +3595,6 @@ msgstr "Poslat SMS skupině"
 #: 
 msgid "Group Properties"
 msgstr "Vlastnosti skupiny"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Přiřaďte novou vlastnost:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3688,10 +3639,6 @@ msgstr "Toto jsou čísla rodinných rolí, určená jako partner/ka"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Toto jsou čísla rodinných rolí, určená jako dítě"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Dotazy, pro jejichž použití musí mít uživatel oprávnění Finance:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3980,26 +3927,6 @@ msgstr "PSČ"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "Pracovní e-mail"
 
@@ -4266,23 +4193,8 @@ msgstr "Hledání podle vlastních polí"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Celkový počet záznamů odpovídajících danému pohlaví."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Vybere záznamy osob se zadanou rodinnou rolí a pohlavím."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Vrátí záznamy osob, kterým je přiřazena daná vlastnost."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Hledat podle libovolné části jména, města, státu, PSČ, domácího telefonu, e-mailu nebo pracovního e-mailu."
 
 #. Context: query_qry
 #: 
@@ -4298,16 +4210,6 @@ msgstr "Najít registrované žáky"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Členové, kteří se připojili v určitém měsíci"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Osoby registrované jako uživatelé databáze"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Osoby, které jsou členy"
 
 #. Context: query_qry
 #: 
@@ -6033,16 +5935,18 @@ msgid "Please confirm activation of family"
 msgstr "Potvrďte aktivaci rodiny"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Ukažte sousedy s těmito klasifikacemi:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Ukažte sousedy s těmito klasifikacemi"
 
 #: 
 msgid "Please select a Family."
 msgstr "Vyberte rodinu."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Název souboru databáze souřadnic:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Název souboru databáze souřadnic"
 
 #: 
 msgid "select an option"
@@ -6547,14 +6451,6 @@ msgid "Thai"
 msgstr "Thajština"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "FB stránka sboru"
-
-#: 
-msgid "Your Church's X Page"
-msgstr "Stránka sboru na platformě X"
-
-#: 
 msgid "Self Register"
 msgstr "Vlastní registrace"
 
@@ -6582,10 +6478,6 @@ msgstr "záznamy úspěšně přidány do vybrané skupiny."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Export do jiného Pro evropskou znakovou sadu použijte ;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Výchozí je UTF-8, pro evropskou sadu znaků použijte Windows-1252, například pro francouzštinu."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6936,14 +6828,6 @@ msgid "Upgrade Required"
 msgstr "Vyžadován upgrade"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Zobrazovat narozeniny při spuštění CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Počet sekund od načtení stránky do zmizení banneru, výchozí 10 sekund"
-
-#: 
 msgid "Help & Manual"
 msgstr "Help & Návod"
 
@@ -7114,10 +6998,6 @@ msgstr "Smazat přístupový token"
 #: 
 msgid "ICS URL"
 msgstr "ICS URL"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL"
 
 #: 
 msgid "Foreground Color"
@@ -8119,41 +7999,6 @@ msgstr "Tento e-mail jste obdrželi, protože jsme obdrželi žádost o aktivitu
 msgid "To stop receiving these emails, you can email"
 msgstr "Chcete-li přestat dostávat tyto e-maily, můžete napsat e-mail na adresu"
 
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2016/2017"
-msgstr "2016/2017"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2017/2018"
-msgstr "2017/2018"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2018/2019"
-msgstr "2018/2019"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2019/2020"
-msgstr "2019/2020"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2020/2021"
-msgstr "2020/2021"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2021/2022"
-msgstr "2021/2022"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2022/2023"
-msgstr "2022/2023"
-
 #: 
 msgid "invalid group request"
 msgstr "neplatný skupinový požadavek"
@@ -8569,10 +8414,6 @@ msgid "View Group"
 msgstr "Zobrazit skupinu"
 
 #: 
-msgid "Add Note"
-msgstr "Přidat poznámku"
-
-#: 
 msgid "Events Today"
 msgstr "Dnešní události"
 
@@ -8784,10 +8625,6 @@ msgstr "Odeslat registraci"
 #: 
 msgid "Zip code is required"
 msgstr "Je vyžadováno PSČ"
-
-#: 
-msgid "denotes required fields"
-msgstr "označuje povinná pole"
 
 #: 
 msgid "A new password has been generated and sent to your email address."
@@ -9289,10 +9126,6 @@ msgstr[1] "%d události v %s"
 msgstr[2] "%d událostí v %s"
 
 #: 
-msgid "Add New Event Type"
-msgstr "Přidat nový typ události"
-
-#: 
 msgid "All Event Types"
 msgstr "Všechny typy událostí"
 
@@ -9672,10 +9505,6 @@ msgid "Add Another Family Member"
 msgstr "Přidat dalšího člena rodiny"
 
 #: 
-msgid "Add Member"
-msgstr "Přidat člena"
-
-#: 
 msgid "Admin Dashboard"
 msgstr "Nástěnka správce"
 
@@ -9766,10 +9595,6 @@ msgstr "Kvalita dat:"
 #: 
 msgid "Database:"
 msgstr "Databáze:"
-
-#: 
-msgid "Date:"
-msgstr "Datum:"
 
 #: 
 msgid "Day"
@@ -10244,20 +10069,12 @@ msgid "Copied!"
 msgstr "Zkopírováno!"
 
 #: 
-msgid "Custom"
-msgstr "Vlastní"
-
-#: 
 msgid "Edited"
 msgstr "Upraveno"
 
 #: 
 msgid "ID:"
 msgstr "ID:"
-
-#: 
-msgid "Id"
-msgstr "id"
 
 #: 
 msgid "Newsletter"
@@ -10451,10 +10268,6 @@ msgstr "Změny nebyly uloženy! Proveďte opravu a zkuste to znovu!"
 #: 
 msgid "Confirm Property Deletion"
 msgstr "Potvrďte odstranění vlastnosti"
-
-#: 
-msgid "Error sending email(s) - Please check logs for more information"
-msgstr "Chyba při odesílání e-mailů – další informace najdete v protokolech"
 
 #: 
 msgid "PDFs successfully emailed to %s families."

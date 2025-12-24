@@ -130,11 +130,6 @@ msgstr "Medemsdatumet"
 
 #: 
 #, fuzzy
-msgid "Birth / Anniversary Date"
-msgstr "Födelse- / Bröllops -datumet"
-
-#: 
-#, fuzzy
 msgid "Age / Years Married"
 msgstr "Ålder / År gifte"
 
@@ -202,17 +197,14 @@ msgid "Group Membership"
 msgstr "Gruppmedlemskap"
 
 #: 
-msgid "From:"
-msgstr "Från:"
-
-#: 
-msgid "To:"
-msgstr "Till:"
+#, fuzzy
+msgid "From"
+msgstr "Från"
 
 #: 
 #, fuzzy
-msgid "Birthday Date"
-msgstr "Födelsedatum"
+msgid "To"
+msgstr "Till"
 
 #: 
 #, fuzzy
@@ -248,8 +240,9 @@ msgid "No file selected for upload."
 msgstr "Inga fil valde för uppladdning."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Antal rader i CSV fil:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Antal rader i CSV fil"
 
 #: 
 msgid "Ignore this Field"
@@ -567,8 +560,9 @@ msgid "Convert All"
 msgstr "Konvertera alla"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Insättningsblankett nummer:"
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Insättningsblankett nummer"
 
 #: 
 #, fuzzy
@@ -762,10 +756,6 @@ msgstr "Insamlingsfond redigerare"
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Är du säker på att du vill radera denna Insamlingsfond"
-
-#: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Varning: Fält ändringar förbigås om du inte 'Spara ändringar' innan du radera eller 'Lägg till' knappen!"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -1104,10 +1094,6 @@ msgid "Delete Photo"
 msgstr "Radera foto"
 
 #: 
-msgid "Add a Note"
-msgstr "Lägg till en anteckning"
-
-#: 
 msgid "Timeline"
 msgstr "tidslinje"
 
@@ -1209,8 +1195,9 @@ msgid "Financial Reports"
 msgstr "Financiellarapporter"
 
 #: 
-msgid "Report Type:"
-msgstr "Rapporttyp:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Rapporttyp"
 
 #: 
 msgid "Select Report Type"
@@ -1259,16 +1246,19 @@ msgid "Filter by Family"
 msgstr "Filtrera enligt familj"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Rapport startdatum:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Rapport startdatum"
 
 #: 
-msgid "Report End Date:"
+#, fuzzy
+msgid "Report End Date"
 msgstr "Rapport slutdatum"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Använda rapport datumen till:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Använda rapport datumen till"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1279,8 +1269,9 @@ msgid "Payment Date"
 msgstr "Betalningsdatum"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Filtrera enligt insättning:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Filtrera enligt insättning"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1291,8 +1282,9 @@ msgid "All deposits within date range"
 msgstr "Alla insättningar inom datum omfång"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Filtrera enligt betalningstyp:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Filtrera enligt betalningstyp"
 
 #: 
 msgid "All Methods"
@@ -1324,20 +1316,12 @@ msgid "Other Settings"
 msgstr "Övriga inställningar"
 
 #: 
-msgid "Include:"
-msgstr "Inkludera:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Endast löft om betalningar"
 
 #: 
 msgid "All Payments"
 msgstr "Alla betalningar"
-
-#: 
-msgid "Generate:"
-msgstr "Skapa:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1388,8 +1372,9 @@ msgid "Summary Data"
 msgstr "Sammanfattning information"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Rösta medlemmarna måste ha gjort <br> en donation inom många år <br> (0 för att inte kräva en donation):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Rösta medlemmarna måste ha gjort <br> en donation inom många år <br> (0 för att inte kräva en donation)"
 
 #: 
 msgid "CSV"
@@ -1408,12 +1393,9 @@ msgid "Deposit Listing"
 msgstr "Insättningslista"
 
 #: 
-msgid "Add New Deposit"
-msgstr "Lägg till ny insättning"
-
-#: 
-msgid "Deposits: "
-msgstr "insättningar:"
+#, fuzzy
+msgid "Deposits"
+msgstr "insättningar"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1510,11 +1492,13 @@ msgid "Family Geographic Utilities"
 msgstr "Familj geografisk verktyg"
 
 #: 
-msgid "Select Family:"
+#, fuzzy
+msgid "Select Family"
 msgstr "Välj familj:"
 
 #: 
-msgid "Maximum number of neighbors:"
+#, fuzzy
+msgid "Maximum number of neighbors"
 msgstr "Maximum antal grannar"
 
 #: 
@@ -1522,8 +1506,9 @@ msgid "Maximum distance"
 msgstr "Maximal distans"
 
 #: 
-msgid "Data file format:"
-msgstr "Filformat:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Filformat"
 
 #: 
 msgid "GPS Visualizer"
@@ -1534,8 +1519,9 @@ msgid "Street Atlas USA"
 msgstr "Gata karta av USA"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Inkludera familjer i koordinat fil:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Inkludera familjer i koordinat fil"
 
 #: 
 msgid "Neighbor Families"
@@ -1610,8 +1596,9 @@ msgid "Select a group"
 msgstr "Välj en grupp"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Gruppspecifika egenskaper:"
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Gruppspecifika egenskaper"
 
 #: 
 msgid "Enabled"
@@ -1668,15 +1655,17 @@ msgid "data for member"
 msgstr "information för medlemmar"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Grupp specifik egenskapar formulär redigeringsverktyg:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Grupp specifik egenskapar formulär redigeringsverktyg"
 
 #: 
 msgid "No properties have been added yet"
 msgstr "Inga egenskapar tillägd än"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "Varning:  Fält ändringar förloras om du inte 'spara ändringar' innan du använder pil up, ner, radera, eller 'lägg till' knappen!"
 
 #: 
@@ -1835,8 +1824,9 @@ msgid "Move Selected Members to Group"
 msgstr "Flytta utvalda medlemmar till grupp"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Lägg till gruppmedlem:"
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Lägg till gruppmedlem"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2364,12 +2354,9 @@ msgid "Group Name"
 msgstr "Grupp namn"
 
 #: 
-msgid "Notes:"
-msgstr "Anteckningar:"
-
-#: 
-msgid "Entered:"
-msgstr "Angiven:"
+#, fuzzy
+msgid "Entered"
+msgstr "Angiven"
 
 #: 
 msgid "by"
@@ -2421,10 +2408,6 @@ msgstr "Att mata in en framkallning värd tillåter tilldelning av en fritt anpa
 msgid "Property List"
 msgstr "Egenskap lista"
 
-#: 
-msgid "Add a New"
-msgstr "Lägg till en ny"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2462,10 +2445,6 @@ msgstr "Egenskapstyp redigeringsverktyg"
 #: 
 msgid "Property Type List"
 msgstr "Egenskapstyp lista"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Lägg till en ny egenskapstyp"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2515,7 +2494,7 @@ msgstr "Gör SQL förfrågan"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
+msgid "An error occurred"
 msgstr "Ett fel inträffade"
 
 #: 
@@ -3191,11 +3170,13 @@ msgid "for funds "
 msgstr "för fonder "
 
 #: 
-msgid "Donated Items:"
-msgstr "Donerade Artiklar:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Donerade Artiklar"
 
 #: 
-msgid "Purchased Items:"
+#, fuzzy
+msgid "Purchased Items"
 msgstr "Köpta artiklar:"
 
 #: 
@@ -3255,12 +3236,14 @@ msgid "Please mail you next gift to "
 msgstr "Var snäll och posta din nästa bidrag till "
 
 #: 
-msgid "Gift Amount:"
+#, fuzzy
+msgid "Gift Amount"
 msgstr "Bidragssumma"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Bidrag till:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Bidrag till"
 
 #: 
 msgid "Sunday School"
@@ -3440,14 +3423,6 @@ msgstr "Kalender"
 #: 
 msgid "Members"
 msgstr "Medlemmar"
-
-#: 
-msgid "Add New Person"
-msgstr "Lägg till ny person"
-
-#: 
-msgid "Add New Family"
-msgstr "Lägg till ny familj"
 
 #: 
 msgid "Events"
@@ -3683,18 +3658,6 @@ msgid "Buyer # "
 msgstr "Köpare #"
 
 #: 
-msgid "Envelope:"
-msgstr "Kuvert:"
-
-#: 
-msgid ", Phone: "
-msgstr ", Telefon:"
-
-#: 
-msgid "Voting members "
-msgstr "Rösta medlemmar"
-
-#: 
 msgid "Family Members:"
 msgstr "Familjemedlemmar:"
 
@@ -3715,20 +3678,13 @@ msgid "File Name:"
 msgstr "Filnamn:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Räkenskapsår:"
-
-#: 
 msgid "family"
 msgstr "familj"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Årsdag:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Datum in:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Datum in"
 
 #: 
 msgid "CSV Import"
@@ -3755,10 +3711,6 @@ msgid "Filter by Fund"
 msgstr "Filtrera efter fond"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Lägg till ny insättning:"
-
-#: 
 msgid "Estimated value"
 msgstr "Uppskattat värde"
 
@@ -3773,10 +3725,6 @@ msgstr "Textgrupp"
 #: 
 msgid "Group Properties"
 msgstr "Gruppegenskaper"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Tilldela en ny egendom:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3823,10 +3771,6 @@ msgstr "Det här är familjens rollnummer som utses till make"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Det här är familjens rollnummer som utses till barn"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Frågor för vilka användare måste ha finansieringsbehörigheter att använda:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -4116,26 +4060,6 @@ msgstr "Postnummer"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "WorkEmail"
 
@@ -4403,23 +4327,8 @@ msgstr "CustomSearch"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Totalt antal poster som matchar ett givet kön."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Väljer personregister med den specifika familjerollen och könet."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Returnerar personposter som tilldelas den givna egenskapen."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Sök efter någon del av namn, stad, stat, zip, hemtelefon, e-post eller arbetsmail."
 
 #. Context: query_qry
 #: 
@@ -4435,16 +4344,6 @@ msgstr "Hitta registrerade studenter"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Medlemmar som gick med i en viss månad"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Personer som är registrerade som databasanvändare"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Personer som är medlemmar"
 
 #. Context: query_qry
 #: 
@@ -6173,16 +6072,18 @@ msgid "Please confirm activation of family"
 msgstr "Bekräfta aktiveringen av familjen"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Visa grannar med dessa klassificeringar:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Visa grannar med dessa klassificeringar"
 
 #: 
 msgid "Please select a Family."
 msgstr "Välj en familj."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Koordinera databasfilnamn:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Koordinera databasfilnamn"
 
 #: 
 msgid "select an option"
@@ -6688,15 +6589,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "Din kyrkas Facebook-sida"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "Din kyrkas X-sida"
-
-#: 
 msgid "Self Register"
 msgstr "Självregister"
 
@@ -6724,10 +6616,6 @@ msgstr "poster har lagts till den valda gruppen."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "För att exportera till en annan För europeisk CharSet-användning;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Standard är UTF-8. För europeiska CharSet använd Windows-1252 till exempel för franska."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -7078,14 +6966,6 @@ msgid "Upgrade Required"
 msgstr "Uppgradering krävs"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Visa födelsedatum årsdagar vid start av CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Antal sekunder efter sidladdning tills bannern försvinner, standard 10 sekunder"
-
-#: 
 msgid "Help & Manual"
 msgstr "Hjälp och manual"
 
@@ -7258,10 +7138,6 @@ msgstr "Radera åtkomsttoken"
 #: 
 msgid "ICS URL"
 msgstr "ICS URL"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL"
 
 #: 
 msgid "Foreground Color"

@@ -79,8 +79,9 @@ msgid "Generate Catalog"
 msgstr "Generate Catalogue"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Maximum number of neighbours:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Maximum number of neighbours"
 
 #: 
 msgid "Neighbor Families"
@@ -215,11 +216,6 @@ msgstr "Enter any part of the following: Name, City, Province, Postcode, Home Ph
 msgid "CustomSearch"
 msgstr "Custom Search"
 
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Search by any part of Name, City, Province, Postcode, Home Phone, Email, or Work Email."
-
 #: 
 msgid "Page not fond"
 msgstr "Page not found"
@@ -233,8 +229,9 @@ msgid "Church Checking Account Number"
 msgstr "Church Chequeing Account Number"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Show neighbours with these classifications:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Show neighbours with these classifications"
 
 #: 
 msgid "KioskVisibilityTimestamp"

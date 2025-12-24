@@ -121,10 +121,6 @@ msgid "Membership Date"
 msgstr "Дата вступления"
 
 #: 
-msgid "Birth / Anniversary Date"
-msgstr "Дата рождения / годовщина"
-
-#: 
 msgid "Age / Years Married"
 msgstr "Возраст / лет в браке"
 
@@ -193,16 +189,14 @@ msgid "Group Membership"
 msgstr "Членство в группах"
 
 #: 
-msgid "From:"
-msgstr "От кого:"
+#, fuzzy
+msgid "From"
+msgstr "От кого"
 
 #: 
-msgid "To:"
-msgstr "Кому:"
-
-#: 
-msgid "Birthday Date"
-msgstr "Дата рождения"
+#, fuzzy
+msgid "To"
+msgstr "Кому"
 
 #: 
 #, fuzzy
@@ -240,8 +234,9 @@ msgid "No file selected for upload."
 msgstr "Не выбран файл для загрузки."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Общее количество строк в файле CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Общее количество строк в файле CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -558,8 +553,9 @@ msgid "Convert All"
 msgstr "Конвертировать все"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Депозит номер накладной: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Депозит номер накладной"
 
 #: 
 #, fuzzy
@@ -752,10 +748,6 @@ msgstr "Пожертвование Фонд редактор"
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Вы уверены, что хотите удалить этот фонд?"
-
-#: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Предупреждение: изменения поля не будут сохранены, если вы не нажмете 'Сохранить изменения' перед нажатием кнопки \"Удалить\" или \"Добавить\"!"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -1094,10 +1086,6 @@ msgid "Delete Photo"
 msgstr "Удалить фотографию"
 
 #: 
-msgid "Add a Note"
-msgstr "Добавить примечание "
-
-#: 
 msgid "Timeline"
 msgstr "Лента новостей"
 
@@ -1201,8 +1189,9 @@ msgid "Financial Reports"
 msgstr "Финансовые отчеты"
 
 #: 
-msgid "Report Type:"
-msgstr "Тип отчета:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Тип отчета"
 
 #: 
 msgid "Select Report Type"
@@ -1251,16 +1240,19 @@ msgid "Filter by Family"
 msgstr "Фильтр по СЕМЬЯ"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Сообщить Дата начала:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Сообщить Дата начала"
 
 #: 
-msgid "Report End Date:"
-msgstr "Сообщить Дата окончания:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Сообщить Дата окончания"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Применить Сообщить даты, чтобы:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Применить Сообщить даты, чтобы"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1271,8 +1263,9 @@ msgid "Payment Date"
 msgstr "Дата выплаты"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Фильтр по Залог:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Фильтр по Залог"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1283,8 +1276,9 @@ msgid "All deposits within date range"
 msgstr "Все вклады в пределах диапазона дат"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Фильтр по Тип компенсации:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Фильтр по Тип компенсации"
 
 #: 
 msgid "All Methods"
@@ -1316,20 +1310,12 @@ msgid "Other Settings"
 msgstr "Другие настройки"
 
 #: 
-msgid "Include:"
-msgstr "Включить:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Оплата производится только залогами"
 
 #: 
 msgid "All Payments"
 msgstr "Все платежи"
-
-#: 
-msgid "Generate:"
-msgstr "Создание:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1380,7 +1366,8 @@ msgid "Summary Data"
 msgstr "Данные о"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
 msgstr "Члены, имеющие право голоса, должны сделать<br> пожертвование в течение этого количества лет<br> (0, чтобы не требовать пожертвования)"
 
 #: 
@@ -1400,11 +1387,8 @@ msgid "Deposit Listing"
 msgstr "Депозит Листинг"
 
 #: 
-msgid "Add New Deposit"
-msgstr "Добавить новый депозит"
-
-#: 
-msgid "Deposits: "
+#, fuzzy
+msgid "Deposits"
 msgstr "Депозиты"
 
 #: 
@@ -1496,20 +1480,23 @@ msgid "Family Geographic Utilities"
 msgstr "Семейные Географические Утилиты"
 
 #: 
-msgid "Select Family:"
-msgstr "Выберите Семья:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Выберите Семья"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Максимальное количество соседей:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Максимальное количество соседей"
 
 #: 
 msgid "Maximum distance"
 msgstr "Максимальное расстояние"
 
 #: 
-msgid "Data file format:"
-msgstr "Формат файла данных:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Формат файла данных"
 
 #: 
 msgid "GPS Visualizer"
@@ -1520,8 +1507,9 @@ msgid "Street Atlas USA"
 msgstr "Улица Atlas США"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Включить семьи, в координации файл:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Включить семьи, в координации файл"
 
 #: 
 msgid "Neighbor Families"
@@ -1596,8 +1584,9 @@ msgid "Select a group"
 msgstr "Выбор группы"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Особые свойства группы:"
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Особые свойства группы"
 
 #: 
 msgid "Enabled"
@@ -1654,15 +1643,17 @@ msgid "data for member"
 msgstr "Данные для членов"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Группа-специфических свойств Редактор форм:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Группа-специфических свойств Редактор форм"
 
 #: 
 msgid "No properties have been added yet"
 msgstr "Нет свойства, которые были добавлены еще"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "Предупреждение: изменения полей будут потеряны, если вы не нажмете кнопку «Сохранить изменения» перед использованием кнопки «вверх», «вниз», «удалить» или «добавить новый»!"
 
 #: 
@@ -1821,7 +1812,8 @@ msgid "Move Selected Members to Group"
 msgstr "Переместить выбранных участников в группу"
 
 #: 
-msgid "Add Group Member: "
+#, fuzzy
+msgid "Add Group Member"
 msgstr "Добавить участника группы"
 
 #: 
@@ -2333,12 +2325,9 @@ msgid "Group Name"
 msgstr "Имя Группы"
 
 #: 
-msgid "Notes:"
-msgstr "Примечание:"
-
-#: 
-msgid "Entered:"
-msgstr "Вступил:"
+#, fuzzy
+msgid "Entered"
+msgstr "Вступил"
 
 #: 
 msgid "by"
@@ -2390,10 +2379,6 @@ msgstr "Ввод строки значение позволит ассоциац
 msgid "Property List"
 msgstr "Список недвижимости"
 
-#: 
-msgid "Add a New"
-msgstr "Добавить новые"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2431,10 +2416,6 @@ msgstr "Тип недвижимости редактор"
 #: 
 msgid "Property Type List"
 msgstr "Тип недвижимости Список"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Добавить Новый тип недвижимости"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2484,8 +2465,8 @@ msgstr "Выполнить SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "Произошла ошибка: "
+msgid "An error occurred"
+msgstr "Произошла ошибка"
 
 #: 
 msgid " record(s) returned"
@@ -3156,12 +3137,14 @@ msgid "for funds "
 msgstr "для фондов "
 
 #: 
-msgid "Donated Items:"
-msgstr "Предоставленной продукции:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Предоставленной продукции"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Приобретенные товары:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Приобретенные товары"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3220,12 +3203,14 @@ msgid "Please mail you next gift to "
 msgstr "Пожалуйста, напишите Вас в следующий подарок "
 
 #: 
-msgid "Gift Amount:"
-msgstr "Подарок Сумма:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Подарок Сумма"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Подарок Обозначение:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Подарок Обозначение"
 
 #: 
 msgid "Sunday School"
@@ -3403,14 +3388,6 @@ msgstr "Календарь"
 #: 
 msgid "Members"
 msgstr "Участники"
-
-#: 
-msgid "Add New Person"
-msgstr "Добавить нового человека"
-
-#: 
-msgid "Add New Family"
-msgstr "Добавить носую семью"
 
 #: 
 msgid "Events"
@@ -3646,18 +3623,6 @@ msgid "Buyer # "
 msgstr "Покупатель №"
 
 #: 
-msgid "Envelope:"
-msgstr "Оболочка"
-
-#: 
-msgid ", Phone: "
-msgstr "Телефон"
-
-#: 
-msgid "Voting members "
-msgstr "Голосующие члены"
-
-#: 
 msgid "Family Members:"
 msgstr "Члены семьи "
 
@@ -3678,20 +3643,13 @@ msgid "File Name:"
 msgstr "Имя файла"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Финансовый год:"
-
-#: 
 msgid "family"
 msgstr "семья"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Дата годовщины"
-
-#: 
-msgid "Date Entered:"
-msgstr "Дата вступления:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Дата вступления"
 
 #: 
 msgid "CSV Import"
@@ -3718,10 +3676,6 @@ msgid "Filter by Fund"
 msgstr "Фильтр по фонду"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Добавить новый депозит"
-
-#: 
 msgid "Estimated value"
 msgstr "Расчетная стоимость"
 
@@ -3736,10 +3690,6 @@ msgstr "Текстовая группа"
 #: 
 msgid "Group Properties"
 msgstr "Свойства группы"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Назначить новое свойство:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3781,10 +3731,6 @@ msgstr "Это номера ролей семьи, назначенные гла
 #: 
 msgid "These are the family role numbers designated as spouse"
 msgstr "Это номера ролей в семье, обозначенные как супруг."
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Запросы, для использования которых у пользователя должны быть финансовые разрешения:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -4283,23 +4229,8 @@ msgstr "Пользовательский поиск"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Общее количество записей, соответствующих данному полу."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Выберите записи о людях с указанием семейной роли и пола."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Возвращает записи о людях, которым присвоено данное свойство."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Поиск по любой части имени, города, области, почтового индекса, домашнего телефона, электронной или рабочей электронной почты."
 
 #. Context: query_qry
 #: 
@@ -4315,16 +4246,6 @@ msgstr "Найти зарегистрированных студентов"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Участники, которые присоединились в конкретный месяц"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Люди, которые зарегистрированы как пользователи базы данных"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Люди, которые являются участниками"
 
 #. Context: query_qry
 #: 

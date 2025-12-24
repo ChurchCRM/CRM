@@ -167,16 +167,14 @@ msgid "Group Membership"
 msgstr "Anëtarësia Grupi"
 
 #: 
-msgid "From:"
-msgstr "Nga:"
+#, fuzzy
+msgid "From"
+msgstr "Nga"
 
 #: 
-msgid "To:"
-msgstr "Në:"
-
-#: 
-msgid "Birthday Date"
-msgstr "Ditëlindja Date"
+#, fuzzy
+msgid "To"
+msgstr "Në"
 
 #: 
 #, fuzzy
@@ -212,8 +210,9 @@ msgid "No file selected for upload."
 msgstr "Nuk ka fotografi zgjedhur për upload."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Numri i përgjithshëm i rreshtave në skedar CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Numri i përgjithshëm i rreshtave në skedar CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -523,8 +522,9 @@ msgid "Convert All"
 msgstr "Të kthyer të gjitha"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Depozita Numri Shqip: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Depozita Numri Shqip"
 
 #: 
 #, fuzzy
@@ -1051,8 +1051,9 @@ msgid "Financial Reports"
 msgstr "Raportet financiare"
 
 #: 
-msgid "Report Type:"
-msgstr "Raporti Type:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Raporti Type"
 
 #: 
 msgid "Select Report Type"
@@ -1091,16 +1092,19 @@ msgid "Next"
 msgstr "Tjetra"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Raporti Data e fillimit:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Raporti Data e fillimit"
 
 #: 
-msgid "Report End Date:"
-msgstr "Njoftoni End Date:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Njoftoni End Date"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Aplikoni Raporti Datat Për:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Aplikoni Raporti Datat Për"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1111,8 +1115,9 @@ msgid "Payment Date"
 msgstr "Data e pagesës"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Filter by Depozitave:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Filter by Depozitave"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1123,8 +1128,9 @@ msgid "All deposits within date range"
 msgstr "Të gjitha depozitat brenda datës varg"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Filter sipas llojit të pagesave:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Filter sipas llojit të pagesave"
 
 #: 
 msgid "All Methods"
@@ -1156,20 +1162,12 @@ msgid "Other Settings"
 msgstr "Cilësimet tjera"
 
 #: 
-msgid "Include:"
-msgstr "Përfshijnë:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Vetëm Pagesat me Pengun"
 
 #: 
 msgid "All Payments"
 msgstr "Të gjitha Pagesat"
-
-#: 
-msgid "Generate:"
-msgstr "Generate:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1309,20 +1307,23 @@ msgid "Family Geographic Utilities"
 msgstr "Familjare gjeografike Utilities"
 
 #: 
-msgid "Select Family:"
-msgstr "Zgjidh Family:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Zgjidh Family"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Numri maksimal i fqinjëve:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Numri maksimal i fqinjëve"
 
 #: 
 msgid "Maximum distance"
 msgstr "Distanca maksimale"
 
 #: 
-msgid "Data file format:"
-msgstr "File format e të dhënave:"
+#, fuzzy
+msgid "Data file format"
+msgstr "File format e të dhënave"
 
 #: 
 msgid "GPS Visualizer"
@@ -1333,8 +1334,9 @@ msgid "Street Atlas USA"
 msgstr "Street Atlas USA"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Përfshijnë familjet në koordinojnë skedë:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Përfshijnë familjet në koordinojnë skedë"
 
 #: 
 msgid "Neighbor Families"
@@ -1437,8 +1439,9 @@ msgid "data for member"
 msgstr "dhënat për anëtar"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Prona Grupi-specifike Form Editor:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Prona Grupi-specifike Form Editor"
 
 #: 
 msgid "No properties have been added yet"
@@ -1916,12 +1919,9 @@ msgid "Group Name"
 msgstr "Emri i Grupit"
 
 #: 
-msgid "Notes:"
-msgstr "Shënime:"
-
-#: 
-msgid "Entered:"
-msgstr "Regjistruar:"
+#, fuzzy
+msgid "Entered"
+msgstr "Regjistruar"
 
 #: 
 msgid "by"
@@ -1972,10 +1972,6 @@ msgstr "Hyrja një vlerë Prompt do të lejojë shoqata e një vlerë të lirë-
 msgid "Property List"
 msgstr "Lista e Pronës"
 
-#: 
-msgid "Add a New"
-msgstr "Shto Një i ri"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2012,10 +2008,6 @@ msgstr "Tipi i Pronës Editor"
 #: 
 msgid "Property Type List"
 msgstr "Lista Tipi i Pronës"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Shto një re Tipi i Pronës"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2060,8 +2052,8 @@ msgstr "Execute SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "Ka ndodhur një gabim: "
+msgid "An error occurred"
+msgstr "Ka ndodhur një gabim"
 
 #: 
 msgid " record(s) returned"
@@ -2591,12 +2583,14 @@ msgid "for funds "
 msgstr "për fonde "
 
 #: 
-msgid "Donated Items:"
-msgstr "Items dhuruara:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Items dhuruara"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Items blerë:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Items blerë"
 
 #: 
 msgid "Total of all purchases: $"
@@ -2655,12 +2649,14 @@ msgid "Please mail you next gift to "
 msgstr "Ju lutem mail ju dhuratë tjetër për "
 
 #: 
-msgid "Gift Amount:"
-msgstr "Shuma Dhuratë:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Shuma Dhuratë"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Përcaktimi Dhuratë:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Përcaktimi Dhuratë"
 
 #: 
 msgid "Sunday School Reports"
@@ -2697,14 +2693,6 @@ msgstr "Krijo Pjesëmarrja Sheet"
 #: 
 msgid "Members"
 msgstr "Anëtarët"
-
-#: 
-msgid "Add New Person"
-msgstr "Shto person i ri"
-
-#: 
-msgid "Add New Family"
-msgstr "Shto Family re"
 
 #: 
 msgid "Events"

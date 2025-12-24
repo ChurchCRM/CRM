@@ -22,8 +22,9 @@ msgid "Check"
 msgstr "Cheque"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Maximum number of neighbours:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Maximum number of neighbours"
 
 #: 
 msgid "Neighbor Families"
@@ -63,14 +64,10 @@ msgstr "Postal Code"
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Enter any part of the following: Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
 
-#. Context: query_qry
 #: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Search by any part of Name, City, Province, Postal Code, Home Phone, Email, or Work Email."
-
-#: 
-msgid "Show neighbors with these classifications:"
-msgstr "Show neighbours with these classifications:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Show neighbours with these classifications"
 
 #: 
 msgid "Foreground Color"

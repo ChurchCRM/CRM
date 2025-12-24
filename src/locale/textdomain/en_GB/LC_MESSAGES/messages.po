@@ -76,11 +76,6 @@ msgstr "Post Code"
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Enter any part of the following: Name, City, Post Code, Home Phone, Email, or Work Email."
 
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Search by any part of Name, City, Post Code, Home Phone, Email, or Work Email."
-
 #: 
 msgid "Foreground Color"
 msgstr "Foreground Colour"

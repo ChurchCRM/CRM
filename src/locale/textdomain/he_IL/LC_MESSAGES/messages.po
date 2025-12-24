@@ -120,10 +120,6 @@ msgid "Membership Date"
 msgstr "תאריך חברות"
 
 #: 
-msgid "Birth / Anniversary Date"
-msgstr "יום הולדת\\יום שנה"
-
-#: 
 msgid "Age / Years Married"
 msgstr "גיל\\שנות נישואין"
 
@@ -187,16 +183,14 @@ msgid "Group Membership"
 msgstr "חברות בקבוצה"
 
 #: 
-msgid "From:"
-msgstr "מאת:"
+#, fuzzy
+msgid "From"
+msgstr "מאת"
 
 #: 
-msgid "To:"
-msgstr "אל:"
-
-#: 
-msgid "Birthday Date"
-msgstr "תאריך לידה"
+#, fuzzy
+msgid "To"
+msgstr "אל"
 
 #: 
 msgid "Anniversary Date"
@@ -231,8 +225,9 @@ msgid "No file selected for upload."
 msgstr "לא נבחר קובץ להעלאה"
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "מספר שורות כולל בקובץ CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "מספר שורות כולל בקובץ CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -546,7 +541,8 @@ msgid "Convert All"
 msgstr "המר את כולם"
 
 #: 
-msgid "Deposit Slip Number: "
+#, fuzzy
+msgid "Deposit Slip Number"
 msgstr "מספר אישור הפקדה"
 
 #: 
@@ -731,10 +727,6 @@ msgstr "עורך קרן תרומות"
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "האם אתה בטוח במחיקת תרומה זאת?"
-
-#: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "אזהרה: שינויי השדה יאבדו אם לא תלחץ על 'שמור שינויים' לפני השימוש בכפתור מחיקה או 'הוסף חדש'!"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -1071,10 +1063,6 @@ msgid "Delete Photo"
 msgstr "מחק תמונה"
 
 #: 
-msgid "Add a Note"
-msgstr "הוסף הערה"
-
-#: 
 msgid "Timeline"
 msgstr "ציר זמן"
 
@@ -1175,7 +1163,8 @@ msgid "Financial Reports"
 msgstr "דוחות כספיים"
 
 #: 
-msgid "Report Type:"
+#, fuzzy
+msgid "Report Type"
 msgstr "סוג דוח:"
 
 #: 
@@ -1223,16 +1212,19 @@ msgid "Filter by Family"
 msgstr "סנן לפי משפחה"
 
 #: 
-msgid "Report Start Date:"
+#, fuzzy
+msgid "Report Start Date"
 msgstr "תאריך התחלת דוח:"
 
 #: 
-msgid "Report End Date:"
-msgstr "תאריך סיום דוח:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "תאריך סיום דוח"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "החל תאריכי דוח על:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "החל תאריכי דוח על"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,8 +1235,9 @@ msgid "Payment Date"
 msgstr "תאריך תשלום"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "סנן לפי הפקדה:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "סנן לפי הפקדה"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1255,8 +1248,9 @@ msgid "All deposits within date range"
 msgstr "כל ההפקדות בטווח התאריכים"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "סנן לפי סוג תשלום:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "סנן לפי סוג תשלום"
 
 #: 
 msgid "All Methods"
@@ -1287,20 +1281,12 @@ msgid "Other Settings"
 msgstr "הגדרות אחרות"
 
 #: 
-msgid "Include:"
-msgstr "כלול"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "רק תשלומים עם התחייבויות"
 
 #: 
 msgid "All Payments"
 msgstr "כל התשלומים"
-
-#: 
-msgid "Generate:"
-msgstr "צור:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1351,8 +1337,9 @@ msgid "Summary Data"
 msgstr "נתוני סיכום"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "חברים בעלי זכות הצבעה חייבים היו לבצע<br> תרומה בשנים האחרונות<br> (0 כדי לא לדרוש תרומה):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "חברים בעלי זכות הצבעה חייבים היו לבצע<br> תרומה בשנים האחרונות<br> (0 כדי לא לדרוש תרומה)"
 
 #: 
 msgid "CSV"
@@ -1371,11 +1358,8 @@ msgid "Deposit Listing"
 msgstr "רשימת הפקדות"
 
 #: 
-msgid "Add New Deposit"
-msgstr "הוסף הפקדה חדשה"
-
-#: 
-msgid "Deposits: "
+#, fuzzy
+msgid "Deposits"
 msgstr "הפקדות: "
 
 #: 
@@ -1464,11 +1448,13 @@ msgid "Family Geographic Utilities"
 msgstr "כלי עזר גאוגרפיים למשפחה"
 
 #: 
-msgid "Select Family:"
-msgstr "בחר משפחה:"
+#, fuzzy
+msgid "Select Family"
+msgstr "בחר משפחה"
 
 #: 
-msgid "Maximum number of neighbors:"
+#, fuzzy
+msgid "Maximum number of neighbors"
 msgstr "מספר שכנים מקסימלי:"
 
 #: 
@@ -1476,8 +1462,9 @@ msgid "Maximum distance"
 msgstr "מרחק מקסימלי"
 
 #: 
-msgid "Data file format:"
-msgstr "פורמט קובץ נתונים:"
+#, fuzzy
+msgid "Data file format"
+msgstr "פורמט קובץ נתונים"
 
 #: 
 msgid "GPS Visualizer"
@@ -1488,8 +1475,9 @@ msgid "Street Atlas USA"
 msgstr "אטלס רחובות ארה\"ב"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "כלול משפחות בקובץ קואורדינטות:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "כלול משפחות בקובץ קואורדינטות"
 
 #: 
 msgid "Neighbor Families"
@@ -1560,8 +1548,9 @@ msgid "Select a group"
 msgstr "בחר קבוצה"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "מאפיינים ספציפיים לקבוצה: "
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "מאפיינים ספציפיים לקבוצה"
 
 #: 
 msgid "Enabled"
@@ -1616,15 +1605,17 @@ msgid "data for member"
 msgstr "נתונים עבור חבר"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "עורך טופס מאפיינים ספציפיים לקבוצה:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "עורך טופס מאפיינים ספציפיים לקבוצה"
 
 #: 
 msgid "No properties have been added yet"
 msgstr "עדיין לא נוספו מאפיינים"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "אזהרה: שינויי השדה יאבדו אם לא תלחץ על 'שמור שינויים' לפני שימוש בכפתורי למעלה, למטה, מחק או 'הוסף חדש'!"
 
 #: 
@@ -1774,8 +1765,9 @@ msgid "Move Selected Members to Group"
 msgstr "העבר חברים נבחרים לקבוצה"
 
 #: 
-msgid "Add Group Member: "
-msgstr "הוסף חבר קבוצה: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "הוסף חבר קבוצה"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2278,12 +2270,9 @@ msgid "Group Name"
 msgstr "שם הקבוצה"
 
 #: 
-msgid "Notes:"
-msgstr "הערות:"
-
-#: 
-msgid "Entered:"
-msgstr "הוזן:"
+#, fuzzy
+msgid "Entered"
+msgstr "הוזן"
 
 #: 
 msgid "by"
@@ -2333,10 +2322,6 @@ msgstr "הזנת ערך הנחיה תאפשר שיוך של ערך בפורמט 
 msgid "Property List"
 msgstr "רשימת מאפיינים"
 
-#: 
-msgid "Add a New"
-msgstr "הוסף חדש"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2373,10 +2358,6 @@ msgstr "עורך סוגי מאפיינים"
 #: 
 msgid "Property Type List"
 msgstr "רשימת סוגי מאפיינים"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "הוסף סוג מאפיין חדש"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2424,8 +2405,9 @@ msgid "Execute SQL"
 msgstr "הרץ SQL"
 
 #: 
-msgid "An error occurred: "
-msgstr "אירעה שגיאה: "
+#, fuzzy
+msgid "An error occurred"
+msgstr "אירעה שגיאה"
 
 #: 
 msgid " record(s) returned"
@@ -3068,12 +3050,14 @@ msgid "for funds "
 msgstr "לקרנות "
 
 #: 
-msgid "Donated Items:"
-msgstr "פריטים שנתרמו:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "פריטים שנתרמו"
 
 #: 
-msgid "Purchased Items:"
-msgstr "פריטים שנרכשו:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "פריטים שנרכשו"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3132,12 +3116,14 @@ msgid "Please mail you next gift to "
 msgstr "אנא שלח את התרומה הבאה שלך ל "
 
 #: 
-msgid "Gift Amount:"
-msgstr "סכום התרומה:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "סכום התרומה"
 
 #: 
-msgid "Gift Designation:"
-msgstr "ייעוד התרומה:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "ייעוד התרומה"
 
 #: 
 msgid "Sunday School"
@@ -3310,14 +3296,6 @@ msgstr "לוח שנה"
 #: 
 msgid "Members"
 msgstr "חברים"
-
-#: 
-msgid "Add New Person"
-msgstr "הוסף אדם חדש"
-
-#: 
-msgid "Add New Family"
-msgstr "הוסף משפחה חדשה"
 
 #: 
 msgid "Events"
@@ -3553,18 +3531,6 @@ msgid "Buyer # "
 msgstr "קונה # "
 
 #: 
-msgid "Envelope:"
-msgstr "מעטפה:"
-
-#: 
-msgid ", Phone: "
-msgstr "טלפון:"
-
-#: 
-msgid "Voting members "
-msgstr "חברים בעלי זכות הצבעה"
-
-#: 
 msgid "Family Members:"
 msgstr "בני משפחה"
 
@@ -3585,19 +3551,12 @@ msgid "File Name:"
 msgstr "שם הקובץ:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "שנת כספים:"
-
-#: 
 msgid "family"
 msgstr "משפחה"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "תאריך יום הנישואין:"
-
-#: 
-msgid "Date Entered:"
+#, fuzzy
+msgid "Date Entered"
 msgstr "תאריך הכניסה:"
 
 #: 
@@ -3625,10 +3584,6 @@ msgid "Filter by Fund"
 msgstr "סנן לפי קרן"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "הוסף הפקדה חדשה: "
-
-#: 
 msgid "Estimated value"
 msgstr "ערך משוער"
 
@@ -3643,10 +3598,6 @@ msgstr "קבוצת טקסט"
 #: 
 msgid "Group Properties"
 msgstr "מאפייני קבוצה"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "הקצה מאפיין חדש:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3692,10 +3643,6 @@ msgstr "אלה מספרי תפקידי המשפחה המוגדרים כבן/בת
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "אלה מספרי תפקידי המשפחה המוגדרים כילד"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "שאילתות שלמשתמש חייבות להיות הרשאות כספים כדי להשתמש בהן:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3984,26 +3931,6 @@ msgstr "מיקוד"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "אימייל של העבודה"
 
@@ -4270,23 +4197,8 @@ msgstr "חיפוש מותאם אישית"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "סך הרשומות המתאימות למגדר שניתן."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "בוחר רשומות אנשים עם תפקיד משפחתי ומגדר שצוינו."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "מחזיר רשומות אנשים שהוקצה להם המאפיין הנתון."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "חפש לפי חלק מהשם, עיר, מדינה, מיקוד, טלפון בית, אימייל, או אימייל עבודה."
 
 #. Context: query_qry
 #: 
@@ -4302,16 +4214,6 @@ msgstr "מצא תלמידים רשומים"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "חברים שהצטרפו בחודש מסוים"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "אנשים הרשומים כמשתמשי מסד הנתונים"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "אנשים שהם חברים"
 
 #. Context: query_qry
 #: 
@@ -6043,16 +5945,18 @@ msgid "Please confirm activation of family"
 msgstr "אנא אשר הפעלת משפחה"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "הצג שכנים עם סיווגים אלה:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "הצג שכנים עם סיווגים אלה"
 
 #: 
 msgid "Please select a Family."
 msgstr "אנא בחר משפחה."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "שם קובץ מסד נתוני קואורדינטות:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "שם קובץ מסד נתוני קואורדינטות"
 
 #: 
 msgid "select an option"
@@ -6557,14 +6461,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "דף הפייסבוק של המוסד שלך"
-
-#: 
-msgid "Your Church's X Page"
-msgstr "דף ה-X של המוסד שלך"
-
-#: 
 msgid "Self Register"
 msgstr "הרשמה עצמית"
 
@@ -6592,10 +6488,6 @@ msgstr "הרשומה(ות) נוספה בהצלחה לקבוצה הנבחרת."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "לייצוא לאחר עבור קידוד אירופאי השתמש ב-;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "ברירת המחדל היא UTF-8, עבור קידוד אירופאי השתמש ב-Windows-1252 לדוגמה עבור צרפתית."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6946,14 +6838,6 @@ msgid "Upgrade Required"
 msgstr "נדרש שדרוג"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "הצג תאריכי לידה וימי נישואין בעת ​​הפעלת מערכת ה-CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "מספר השניות לאחר טעינת הדף עד שהבאנר נעלם, ברירת מחדל 10 שניות"
-
-#: 
 msgid "Help & Manual"
 msgstr "עזרה ומדריך"
 
@@ -7126,10 +7010,6 @@ msgstr "מחק אסימון גישה"
 #: 
 msgid "ICS URL"
 msgstr "כתובת ICS"
-
-#: 
-msgid "JSON URL"
-msgstr "כתובת JSON"
 
 #: 
 msgid "Foreground Color"
@@ -8131,41 +8011,6 @@ msgstr "קיבלת את הדוא\"ל הזה כיוון שקיבלנו בקשה �
 #: 
 msgid "To stop receiving these emails, you can email"
 msgstr "כדי להפסיק לקבל דוא\"לים אלו, אתה יכול לשלוח דוא\"ל ל"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2016/2017"
-msgstr "2016/2017"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2017/2018"
-msgstr "2017/2018"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2018/2019"
-msgstr "2018/2019"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2019/2020"
-msgstr "2019/2020"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2020/2021"
-msgstr "2020/2021"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2021/2022"
-msgstr "2021/2022"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2022/2023"
-msgstr "2022/2023"
 
 #: 
 msgid "invalid group request"

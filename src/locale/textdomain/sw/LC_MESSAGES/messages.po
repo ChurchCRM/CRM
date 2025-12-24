@@ -120,10 +120,6 @@ msgid "Membership Date"
 msgstr "Tarehe ya Kujiunga"
 
 #: 
-msgid "Birth / Anniversary Date"
-msgstr "Tarehe ya kuadhimisha kumbukumbu"
-
-#: 
 msgid "Age / Years Married"
 msgstr "Miaka ya ndoa"
 
@@ -187,16 +183,14 @@ msgid "Group Membership"
 msgstr "Uanachama wa Kikundi"
 
 #: 
-msgid "From:"
-msgstr "Kutoka:"
+#, fuzzy
+msgid "From"
+msgstr "Kutoka"
 
 #: 
-msgid "To:"
-msgstr "Kwenda:"
-
-#: 
-msgid "Birthday Date"
-msgstr "Tarehe ya kuzaliwa"
+#, fuzzy
+msgid "To"
+msgstr "Kwenda"
 
 #: 
 msgid "Anniversary Date"
@@ -231,8 +225,9 @@ msgid "No file selected for upload."
 msgstr "Hakuna faili."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Jumla ya idadi ya safu katika faili ya CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Jumla ya idadi ya safu katika faili ya CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +541,9 @@ msgid "Convert All"
 msgstr "Geuza wote"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Nambari ya Malipo ya Amana: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Nambari ya Malipo ya Amana"
 
 #: 
 #, fuzzy
@@ -731,10 +727,6 @@ msgstr "Mhariri wa Mfuko wa Michango"
 #: 
 msgid "Are you sure you want to delete this fund?"
 msgstr "Je, una uhakika unataka kufuta hazina hii?"
-
-#: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Onyo: Mabadiliko ya sehemu yatapotea ikiwa huta 'Hifadhi Mabadiliko' kabla ya kutumia kitufe cha kufuta au 'ongeza mpya'!"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
@@ -1071,10 +1063,6 @@ msgid "Delete Photo"
 msgstr "Futa picha"
 
 #: 
-msgid "Add a Note"
-msgstr "Ongeza Dokezo"
-
-#: 
 msgid "Timeline"
 msgstr "Rekodi ya matukio"
 
@@ -1175,8 +1163,9 @@ msgid "Financial Reports"
 msgstr "Ripoti za Fedha"
 
 #: 
-msgid "Report Type:"
-msgstr "Aina ya Ripoti:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Aina ya Ripoti"
 
 #: 
 msgid "Select Report Type"
@@ -1223,16 +1212,19 @@ msgid "Filter by Family"
 msgstr "Chuja kulingana na Familia"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Ripoti Tarehe ya Kuanza:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Ripoti Tarehe ya Kuanza"
 
 #: 
-msgid "Report End Date:"
-msgstr "Tarehe ya Mwisho ya Ripoti:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Tarehe ya Mwisho ya Ripoti"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Tekeleza Tarehe za Ripoti Kwa:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Tekeleza Tarehe za Ripoti Kwa"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,8 +1235,9 @@ msgid "Payment Date"
 msgstr "Siku ya malipo"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Chuja kwa Amana:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Chuja kwa Amana"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1255,8 +1248,9 @@ msgid "All deposits within date range"
 msgstr "Amana zote ndani ya kipindi cha tarehe"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Chuja kwa Aina ya Malipo:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Chuja kwa Aina ya Malipo"
 
 #: 
 msgid "All Methods"
@@ -1287,20 +1281,12 @@ msgid "Other Settings"
 msgstr "Mipangilio Mingine"
 
 #: 
-msgid "Include:"
-msgstr "Jumuisha:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Malipo yenye Ahadi pekee"
 
 #: 
 msgid "All Payments"
 msgstr "Malipo Yote"
-
-#: 
-msgid "Generate:"
-msgstr "Tengeneza:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1351,8 +1337,9 @@ msgid "Summary Data"
 msgstr "Data ya Muhtasari"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Wanachama wanaopiga kura lazima wawe wametoa<br> mchango ndani ya miaka hii mingi<br> (0 bila kuhitaji mchango):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Wanachama wanaopiga kura lazima wawe wametoa<br> mchango ndani ya miaka hii mingi<br> (0 bila kuhitaji mchango)"
 
 #: 
 msgid "CSV"
@@ -1371,12 +1358,9 @@ msgid "Deposit Listing"
 msgstr "Orodha ya Amana"
 
 #: 
-msgid "Add New Deposit"
-msgstr "Ongeza Amana Mpya"
-
-#: 
-msgid "Deposits: "
-msgstr "Amana: "
+#, fuzzy
+msgid "Deposits"
+msgstr "Amana"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1464,20 +1448,23 @@ msgid "Family Geographic Utilities"
 msgstr "Huduma za Kijiografia za Familia"
 
 #: 
-msgid "Select Family:"
-msgstr "Chagua Familia:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Chagua Familia"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Idadi ya juu zaidi ya majirani:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Idadi ya juu zaidi ya majirani"
 
 #: 
 msgid "Maximum distance"
 msgstr "Umbali wa juu zaidi"
 
 #: 
-msgid "Data file format:"
-msgstr "Umbizo la faili ya data:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Umbizo la faili ya data"
 
 #: 
 msgid "GPS Visualizer"
@@ -1488,8 +1475,9 @@ msgid "Street Atlas USA"
 msgstr "Atlasi ya Mtaa Marekani"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Jumuisha familia katika faili ya kuratibu:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Jumuisha familia katika faili ya kuratibu"
 
 #: 
 msgid "Neighbor Families"
@@ -1560,8 +1548,9 @@ msgid "Select a group"
 msgstr "Chagua kikundi"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Sifa Maalum za Kikundi: "
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Sifa Maalum za Kikundi"
 
 #: 
 msgid "Enabled"
@@ -1616,15 +1605,17 @@ msgid "data for member"
 msgstr "data kwa mwanachama"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Kihariri cha Fomu ya Sifa Maalum za Kikundi:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Kihariri cha Fomu ya Sifa Maalum za Kikundi"
 
 #: 
 msgid "No properties have been added yet"
 msgstr "Bado hakuna sifa zilizoongezwa"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "Onyo: Mabadiliko ya sehemu yatapotea ikiwa huta 'Hifadhi Mabadiliko' kabla ya kutumia kitufe cha juu, chini, kufuta au 'ongeza kipya'!"
 
 #: 
@@ -1774,8 +1765,9 @@ msgid "Move Selected Members to Group"
 msgstr "Hamisha Wanachama Uliochaguliwa kwenye Kikundi"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Ongeza Mwanachama wa Kikundi: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Ongeza Mwanachama wa Kikundi"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2278,12 +2270,9 @@ msgid "Group Name"
 msgstr "Jina la Kikundi"
 
 #: 
-msgid "Notes:"
-msgstr "Vidokezo:"
-
-#: 
-msgid "Entered:"
-msgstr "Imeingia:"
+#, fuzzy
+msgid "Entered"
+msgstr "Imeingia"
 
 #: 
 msgid "by"
@@ -2333,10 +2322,6 @@ msgstr "Kuweka thamani ya Prompt itaruhusu muunganisho wa thamani ya fomu isiyol
 msgid "Property List"
 msgstr "Orodha ya Mali"
 
-#: 
-msgid "Add a New"
-msgstr "Ongeza Mpya"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2373,10 +2358,6 @@ msgstr "Mhariri wa Aina ya Mali"
 #: 
 msgid "Property Type List"
 msgstr "Orodha ya Aina ya Mali"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Ongeza Aina Mpya ya Mali"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2424,8 +2405,9 @@ msgid "Execute SQL"
 msgstr "Tekeleza SQL"
 
 #: 
-msgid "An error occurred: "
-msgstr "Hitilafu imetokea: "
+#, fuzzy
+msgid "An error occurred"
+msgstr "Hitilafu imetokea"
 
 #: 
 msgid " record(s) returned"
@@ -3068,12 +3050,14 @@ msgid "for funds "
 msgstr "kwa fedha "
 
 #: 
-msgid "Donated Items:"
-msgstr "Vipengee Vilivyotolewa:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Vipengee Vilivyotolewa"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Bidhaa Zilizonunuliwa:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Bidhaa Zilizonunuliwa"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3132,12 +3116,14 @@ msgid "Please mail you next gift to "
 msgstr "Tafadhali tuma zawadi inayofuata kwa "
 
 #: 
-msgid "Gift Amount:"
-msgstr "Kiasi cha Zawadi:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Kiasi cha Zawadi"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Wajibu wa Zawadi:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Wajibu wa Zawadi"
 
 #: 
 msgid "Sunday School"
@@ -3310,14 +3296,6 @@ msgstr "Kalenda"
 #: 
 msgid "Members"
 msgstr "Wanachama"
-
-#: 
-msgid "Add New Person"
-msgstr "Ongeza Mtu Mpya"
-
-#: 
-msgid "Add New Family"
-msgstr "Ongeza Familia Mpya"
 
 #: 
 msgid "Events"
@@ -3553,18 +3531,6 @@ msgid "Buyer # "
 msgstr "Mnunuzi # "
 
 #: 
-msgid "Envelope:"
-msgstr "Bahasha:"
-
-#: 
-msgid ", Phone: "
-msgstr ", Simu: "
-
-#: 
-msgid "Voting members "
-msgstr "Wajumbe wa kupiga kura "
-
-#: 
 msgid "Family Members:"
 msgstr "Wanafamilia:"
 
@@ -3585,20 +3551,13 @@ msgid "File Name:"
 msgstr "Jina la faili:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Mwaka wa fedha:"
-
-#: 
 msgid "family"
 msgstr "familia"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Tarehe ya Maadhimisho:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Tarehe Iliyoingizwa:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Tarehe Iliyoingizwa"
 
 #: 
 msgid "CSV Import"
@@ -3625,10 +3584,6 @@ msgid "Filter by Fund"
 msgstr "Chuja kulingana na Hazina"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Ongeza Amana Mpya: "
-
-#: 
 msgid "Estimated value"
 msgstr "Thamani iliyokadiriwa"
 
@@ -3643,10 +3598,6 @@ msgstr "Kikundi cha maandishi"
 #: 
 msgid "Group Properties"
 msgstr "Mali ya Kikundi"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Kabidhi Mali Mpya:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3692,10 +3643,6 @@ msgstr "Hizi ndizo nambari za jukumu la familia zilizoteuliwa kama mwenzi"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Hizi ndizo nambari za jukumu la familia zilizoteuliwa kama mtoto"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Maswali ambayo mtumiaji lazima awe na ruhusa za kifedha ili kutumia:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3984,26 +3931,6 @@ msgstr "Namba ya Posta"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "Barua pepe ya Kazi"
 
@@ -4270,23 +4197,8 @@ msgstr "Utafutaji Maalum"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Jumla ya rekodi zinazolingana na jinsia fulani."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Huchagua rekodi za mtu zilizo na jukumu la familia na jinsia iliyobainishwa."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Hurejesha rekodi za mtu ambazo zimepewa mali iliyotolewa."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Tafuta kwa sehemu yoyote ya Jina, Jiji, Jimbo, Zip, Simu ya Nyumbani, Barua pepe, au Barua pepe ya Kazini."
 
 #. Context: query_qry
 #: 
@@ -4302,16 +4214,6 @@ msgstr "Tafuta Wanafunzi Waliosajiliwa"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Wanachama waliojiunga katika mwezi mahususi"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Watu ambao wamesajiliwa kama watumiaji wa hifadhidata"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Watu ambao ni wanachama"
 
 #. Context: query_qry
 #: 
@@ -6040,16 +5942,18 @@ msgid "Please confirm activation of family"
 msgstr "Tafadhali thibitisha kuwezesha familia"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Onyesha majirani na uainishaji huu:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Onyesha majirani na uainishaji huu"
 
 #: 
 msgid "Please select a Family."
 msgstr "Tafadhali chagua Familia."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Kuratibu jina la faili la msingi wa data:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Kuratibu jina la faili la msingi wa data"
 
 #: 
 msgid "select an option"
@@ -6555,14 +6459,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "Ukurasa wa Facebook wa Kanisa lako"
-
-#: 
-msgid "Your Church's X Page"
-msgstr "Ukurasa wa X wa Kanisa lako"
-
-#: 
 msgid "Self Register"
 msgstr "Kujiandikisha"
 
@@ -6590,10 +6486,6 @@ msgstr "rekodi zimeongezwa kwa Kikundi kilichochaguliwa."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Kusafirisha kwenda nyingine Kwa matumizi ya CharSet ya ulaya;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Chaguomsingi ni UTF-8, Kwa CharSet ya ulaya tumia Windows-1252 kwa mfano kwa lugha ya Kifaransa."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6944,14 +6836,6 @@ msgid "Upgrade Required"
 msgstr "Uboreshaji Unahitajika"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Onyesha Maadhimisho ya Tarehe za Kuzaliwa wakati CRM inaanza"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Idadi ya sekunde baada ya upakiaji wa ukurasa hadi bango litoweke, sekunde 10 chaguomsingi"
-
-#: 
 msgid "Help & Manual"
 msgstr "Msaada & Mwongozo"
 
@@ -7124,10 +7008,6 @@ msgstr "Futa Tokeni ya Ufikiaji"
 #: 
 msgid "ICS URL"
 msgstr "URL ya ICS"
-
-#: 
-msgid "JSON URL"
-msgstr "URL ya JSON"
 
 #: 
 msgid "Foreground Color"
@@ -8118,41 +7998,6 @@ msgstr "Umepokea barua pepe hii kwa sababu tulipokea ombi la shughuli kwenye aka
 #: 
 msgid "To stop receiving these emails, you can email"
 msgstr "Ili kuacha kupokea barua pepe hizi, unaweza kutuma barua pepe"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2016/2017"
-msgstr "2016/2017"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2017/2018"
-msgstr "2017/2018"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2018/2019"
-msgstr "2018/2019"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2019/2020"
-msgstr "2019/2020"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2020/2021"
-msgstr "2020/2021"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2021/2022"
-msgstr "2021/2022"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2022/2023"
-msgstr "2022/2023"
 
 #: 
 msgid "invalid group request"
