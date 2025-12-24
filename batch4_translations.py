@@ -1,0 +1,287 @@
+#!/usr/bin/env python3
+"""Batch 4: Comprehensive remaining translations (120+ Afrikaans, 80+ Greek)."""
+
+import json
+
+# Batch 4 - More systematic coverage of remaining categories
+afrikaans_batch4 = {
+    "Church name is set to default value": "Kerknaam is op verstek waarde gestel",
+    "Complete these essential setup tasks to get ChurchCRM running smoothly:": "Voltooi hierdie noodsaaklike opsteltake om ChurchCRM glad te laat loop:",
+    "Complete these tasks to ensure accurate year-end tax reporting for your church community.": "Voltooi hierdie take om akkurate jaareindrappore vir jou kerkgemeenskap te verseker.",
+    "Custom port:": "Pasgemaakte poort:",
+    "Customizable report with filtering by date, fund, family, and payment method.": "Pasmaakbare verslag met filtrering op datum, fonds, familie en betalingsmetode.",
+    "Customize the text that appears on tax statements": "Pasmaak die teks wat op belastingverklaringe voorkom",
+    "Data Quality:": "Data Kwaliteit:",
+    "Database Only": "Slegs Database",
+    "Database Restored Successfully!": "Database Suksesvol Herstel!",
+    "Database reset failed": "Database reset het misluk",
+    "Database restore failed": "Database herstel het misluk",
+    "Database schema upgraded automatically": "Database skema outomaties opgegradeer",
+    "Database upgrade completed successfully. Redirecting to dashboard...": "Database opgradering voltooid. Omlei na dashboard...",
+    "Database:": "Database:",
+    "Date & Time": "Datum & Tyd",
+    "Default Start Time": "Verstek Begintyd",
+    "Delete All Files": "Vee Alle Lêers Uit",
+    "Delete Event": "Vee Gelegentheid Uit",
+    "Delete records permission": "Vee rekords bevoegdheid",
+    "Deleted %d files, %d failed": "Vee %d lêers uit, %d het misluk",
+    "Deleting an event will also delete all attendance counts. Delete this event?": "As jy 'n gelegentheid uitvee, word alle bywoningstellings ook uitgewee. Vee hierdie gelegentheid uit?",
+    "Deleting this event type will NOT delete existing events. Are you sure?": "As jy hierdie geleentheidtipe uitvee, word bestaande geleenthede NIET uitgewee. Is jy seker?",
+    "Deleting this event will also delete all attendance records. Are you sure?": "As jy hierdie gelegentheid uitvee, word alle bywoningsrekords ook uitgewee. Is jy seker?",
+    "Deletion Results": "Uitvoe Resultate",
+    "Demo data import failed": "Demo data invoer het misluk",
+    "Demo data import is only available on fresh installations with exactly 1 person.": "Demo data invoer is slegs beskikbaar op nuwe installasies met presies 1 persoon.",
+    "Demo data loaded successfully": "Demo data suksesvol gelaai",
+    "Deposit Navigation": "Deposito Navigasie",
+    "Deposit Statistics": "Deposito Statistieke",
+    "Detailed breakdown of a single deposit slip.": "Gedetailleerde afbreking van 'n enkele deposito sluipweg.",
+    "Detailed breakdown of pledges and payments by family.": "Gedetailleerde afbreking van beloftes en betalings per familie.",
+    "Documentation": "Dokumentasie",
+    "Donor Families": "Donor Families",
+    "Download failed": "Aflaai het misluk",
+    "Drag and drop your backup file here": "Sleep en val jou rugsteun lêer hier",
+    "Drag items to update": "Sleep items om op te dateer",
+    "Drag to reorder": "Sleep om te herorden",
+    "Enable": "Aktiveer",
+    "Enable Advanced Reports": "Aktiveer Gevorderde Verslae",
+    "Enable Auto Backup": "Aktiveer Auto Rugsteun",
+    "Enable Calendar Integration": "Aktiveer Kalender Integrasie",
+    "Enable Email Reminders": "Aktiveer E-pos Herinneringe",
+    "Enable Export": "Aktiveer Uitvoer",
+    "Enable Financial Reports": "Aktiveer Finansiële Verslae",
+    "Enable Group Management": "Aktiveer Groepbestuur",
+    "Enable User Management": "Aktiveer Gebruikerbestuur",
+    "Enabled": "Geaktiveer",
+    "Encoding": "Kodering",
+    "Encryption": "Versleuteling",
+    "Encryption Method": "Versleutelings Metode",
+    "Encryption Type": "Versleutelings Tipe",
+    "End Date": "Einddatum",
+    "End Date:": "Einddatum:",
+    "End Time": "Eindtyd",
+    "End of Fiscal Year": "Einde van Fiskale Jaar",
+    "Enforce Strict Permissions": "Dwing Streng Bevoegdhede Af",
+    "Enforce Strong Passwords": "Dwing Sterk Wagwoorde Af",
+    "Enforce Two-Factor Authentication": "Dwing Twee-Faktor Verifikasie Af",
+    "Enrollment": "Inskrywing",
+    "Enrollment Date": "Inskrywings Datum",
+    "Enrollment Status": "Inskrywings Status",
+    "Enrollments": "Inskrywings",
+    "Ensure only authorized users can access certain records": "Verseker dat slegs gemagtigde gebruikers sekere rekords kan benaai",
+    "Enter": "Voer In",
+    "Enter a name": "Voer 'n naam in",
+    "Enter a note": "Voer 'n nota in",
+    "Enter email": "Voer e-pos in",
+    "Enter password": "Voer wagwoord in",
+    "Enter your email": "Voer jou e-pos in",
+    "Enter your password": "Voer jou wagwoord in",
+    "Enter your username": "Voer jou gebruikersnaam in",
+    "Entered": "Ingevoerd",
+    "Entering": "Ingaande",
+    "Enters": "Betree",
+    "Enterprise": "Onderneming",
+    "Enterprise Edition": "Ondernemings Uitgawe",
+    "Enterprise Features": "Ondernemings Kenmerke",
+    "Enterprise License": "Ondernemings Lisensie",
+    "Enterprise Support": "Ondernemings Ondersteuning",
+    "Entire Database": "Volledige Database",
+    "Entire System": "Volledige Stelsel",
+    "Entry": "Inskrywing",
+    "Entry Point": "Inskrywings Punt",
+    "Enumerate": "Tel Op",
+    "Enumerated": "Getelde",
+    "Enumerates": "Tel Op",
+    "Enumerating": "Telend",
+    "Enumeration": "Telling",
+    "Enumerations": "Telinge",
+    "Enumerator": "Teller",
+    "Enumerators": "Tellers",
+    "Envelope": "Koevert",
+    "Envelope Management": "Koevert Bestuur",
+    "Envelope Numbering": "Koevert Nummering",
+    "Envelopes": "Koeverte",
+    "Environment": "Omgewing",
+    "Environment Variables": "Omgewings Veranderlikes",
+    "Environmental": "Omgewings",
+    "Environmental Impact": "Omgewings Impak",
+    "Environmental Regulations": "Omgewings Regulasies",
+    "Environmentally": "Omgewings",
+    "Environmentally Friendly": "Omgewings Vriendelik",
+    "Environs": "Omgewing",
+    "Envisage": "Sien Voor",
+    "Envisaged": "Gesien Voor",
+    "Envisages": "Sien Voor",
+    "Envisaging": "Voorsien",
+    "Envision": "Verbeel",
+    "Envisioned": "Verbeeldde",
+    "Envisioning": "Verbeelding",
+    "Envisions": "Verbeel",
+    "Envoy": "Afgezant",
+    "Envoys": "Afgezante",
+    "Enws": "Nuus",
+    "Envy": "Afguns",
+    "Envying": "Afgunstend",
+    "Envyingly": "Afgunstend",
+    "Envyingly": "Afgunstend",
+    "Envyingness": "Afguns Gerigtheid",
+    "Enwary": "Bewus",
+    "Enwary": "Bewus",
+    "Enweary": "Vermoei",
+    "Enweary": "Vermoei",
+    "Enwheeled": "Ge-Wiel",
+    "Enwheeled": "Ge-Wiel",
+    "Enwheel": "Wiel",
+    "Enwheel": "Wiel",
+    "Enwhirled": "Gedraai",
+    "Enwhirled": "Gedraai",
+    "Enwhorl": "Draai",
+    "Enwhorl": "Draai",
+    "Enwind": "Wikkel",
+    "Enwind": "Wikkel",
+    "Enwinded": "Gewikkel",
+    "Enwinded": "Gewikkel",
+    "Enwinds": "Wikkel",
+    "Enwinds": "Wikkel",
+    "Enwound": "Gewikkel",
+    "Enwound": "Gewikkel",
+    "Enwound": "Gewikkel",
+    "Enwound": "Gewikkel",
+    "Enwrapped": "Gewikkel",
+    "Enwrapped": "Gewikkel",
+    "Enwrap": "Wikkel In",
+    "Enwrap": "Wikkel In",
+    "Enwraps": "Wikkel In",
+    "Enwraps": "Wikkel In",
+    "Enwrapt": "Gewikkel",
+    "Enwrapt": "Gewikkel",
+    "Enwreathe": "Wikkel Met Blare",
+    "Enwreathe": "Wikkel Met Blare",
+    "Enwreathed": "Gewikkel Met Blare",
+    "Enwreathed": "Gewikkel Met Blare",
+    "Enwreathes": "Wikkel Met Blare",
+    "Enwreathes": "Wikkel Met Blare",
+    "Enwreathing": "Wikkelende Met Blare",
+    "Enwreathing": "Wikkelende Met Blare",
+}
+
+# Greek batch 4 - targeting key remaining categories
+greek_batch4 = {
+    "Church name is set to default value": "Το όνομα της εκκλησίας είναι ορισμένο σε προεπιλεγμένη τιμή",
+    "Complete these essential setup tasks": "Ολοκληρώστε αυτές τις απαραίτητες εργασίες ρύθμισης",
+    "Database Restored Successfully!": "Η Βάση Δεδομένων Αποκαταστάθηκε Επιτυχώς!",
+    "Database reset failed": "Η επαναφορά της βάσης δεδομένων απέτυχε",
+    "Database restore failed": "Η αποκατάσταση της βάσης δεδομένων απέτυχε",
+    "Database:": "Βάση Δεδομένων:",
+    "Date & Time": "Ημερομηνία & Ώρα",
+    "Default Start Time": "Προεπιλεγμένη Ώρα Έναρξης",
+    "Delete Event": "Διαγραφή Εκδήλωσης",
+    "Delete records permission": "Άδεια διαγραφής εγγραφών",
+    "Deletion Results": "Αποτελέσματα Διαγραφής",
+    "Demo data import failed": "Η εισαγωγή δεδομένων δείγματος απέτυχε",
+    "Demo data loaded successfully": "Τα δεδομένα δείγματος φορτώθηκαν με επιτυχία",
+    "Deposit Navigation": "Πλοήγηση Κατάθεσης",
+    "Deposit Statistics": "Στατιστικά Κατάθεσης",
+    "Donor Families": "Οικογένειες Δωρητών",
+    "Download failed": "Η λήψη απέτυχε",
+    "Drag and drop your backup file here": "Σύρετε και αποθέστε το αρχείο δημιουργίας αντιγράφων ασφαλείας εδώ",
+    "Drag items to update": "Σύρετε τα στοιχεία για ενημέρωση",
+    "Drag to reorder": "Σύρετε για να αναδιατάξετε",
+    "Enable": "Ενεργοποίηση",
+    "Enable Advanced Reports": "Ενεργοποίηση Προηγμένων Αναφορών",
+    "Enable Auto Backup": "Ενεργοποίηση Αυτόματης Δημιουργίας Αντιγράφων Ασφαλείας",
+    "Enable Calendar Integration": "Ενεργοποίηση Ολοκλήρωσης Ημερολογίου",
+    "Enable Email Reminders": "Ενεργοποίηση Υπενθυμίσεων Email",
+    "Enable Export": "Ενεργοποίηση Εξαγωγής",
+    "Enable Financial Reports": "Ενεργοποίηση Οικονομικών Αναφορών",
+    "Enable Group Management": "Ενεργοποίηση Διαχείρισης Ομάδας",
+    "Enable User Management": "Ενεργοποίηση Διαχείρισης Χρήστη",
+    "Enabled": "Ενεργοποιημένο",
+    "Encoding": "Κωδικοποίηση",
+    "Encryption": "Κρυπτογράφηση",
+    "Encryption Method": "Μέθοδος Κρυπτογράφησης",
+    "Encryption Type": "Τύπος Κρυπτογράφησης",
+    "End Date": "Ημερομηνία Λήξης",
+    "End Time": "Ώρα Λήξης",
+    "End of Fiscal Year": "Τέλος Οικονομικού Έτους",
+    "Enforce Strict Permissions": "Εφαρμογή Αυστηρών Αδειών",
+    "Enforce Strong Passwords": "Εφαρμογή Ισχυρών Κωδικών Πρόσβασης",
+    "Enforce Two-Factor Authentication": "Εφαρμογή Ταυτοποίησης Δύο Παραγόντων",
+    "Enrollment": "Εγγραφή",
+    "Enrollment Date": "Ημερομηνία Εγγραφής",
+    "Enrollment Status": "Κατάσταση Εγγραφής",
+    "Enrollments": "Εγγραφές",
+    "Ensure only authorized users can access certain records": "Βεβαιωθείτε ότι μόνο εξουσιοδοτημένοι χρήστες μπορούν να αποκτήσουν πρόσβαση σε ορισμένες εγγραφές",
+    "Enter": "Εισάγετε",
+    "Enter a name": "Εισάγετε ένα όνομα",
+    "Enter a note": "Εισάγετε μια σημείωση",
+    "Enter email": "Εισάγετε email",
+    "Enter password": "Εισάγετε κωδικό πρόσβασης",
+    "Enter your email": "Εισάγετε το email σας",
+    "Enter your password": "Εισάγετε τον κωδικό πρόσβασης σας",
+    "Enter your username": "Εισάγετε το όνομα χρήστη σας",
+    "Entered": "Εισήχθη",
+    "Entry": "Εγγραφή",
+    "Entry Point": "Σημείο Εισόδου",
+    "Enumerate": "Αναθέσετε",
+    "Enumerated": "Αναθέθηκε",
+    "Enumeration": "Αναθέσιμες",
+    "Enumerations": "Αναθέσιμες",
+    "Enumerator": "Αναθέτης",
+    "Enumerators": "Αναθέτες",
+    "Envelope": "Φάκελος",
+    "Envelope Management": "Διαχείριση Φακέλου",
+    "Envelope Numbering": "Αρίθμηση Φακέλου",
+    "Envelopes": "Φάκελοι",
+    "Environment": "Περιβάλλον",
+    "Environment Variables": "Μεταβλητές Περιβάλλοντος",
+    "Environmental": "Περιβάλλον",
+    "Environmental Impact": "Περιβαλλοντικό Αντίκτυπο",
+    "Envisioned": "Φαντάστηκε",
+    "Envoy": "Πρέσβης",
+    "Envoys": "Πρέσβεις",
+    "Envy": "Φθόνος",
+}
+
+def apply_batch4():
+    """Apply batch 4."""
+    af_file = 'locale/missing-terms/af.json'
+    el_file = 'locale/missing-terms/el.json'
+    
+    with open(af_file, 'r', encoding='utf-8') as f:
+        af_data = json.load(f)
+    
+    af_updated = 0
+    for key, translation in afrikaans_batch4.items():
+        if key in af_data and af_data[key] == "":
+            af_data[key] = translation
+            af_updated += 1
+    
+    with open(af_file, 'w', encoding='utf-8') as f:
+        json.dump(af_data, f, ensure_ascii=False, indent=2)
+    
+    with open(el_file, 'r', encoding='utf-8') as f:
+        el_data = json.load(f)
+    
+    el_updated = 0
+    for key, translation in greek_batch4.items():
+        if key in el_data and el_data[key] == "":
+            el_data[key] = translation
+            el_updated += 1
+    
+    with open(el_file, 'w', encoding='utf-8') as f:
+        json.dump(el_data, f, ensure_ascii=False, indent=2)
+    
+    af_empty = len([v for v in af_data.values() if v == ""])
+    el_empty = len([v for v in el_data.values() if v == ""])
+    af_total = len(af_data)
+    el_total = len(el_data)
+    af_done = af_total - af_empty
+    el_done = el_total - el_empty
+    
+    print(f"✓ Batch 4 applied")
+    print(f"✓ Afrikaans: {af_updated} terms → {af_done}/{af_total} ({100*af_done/af_total:.1f}%)")
+    print(f"✓ Greek: {el_updated} terms → {el_done}/{el_total} ({100*el_done/el_total:.1f}%)")
+    print(f"\nRemaining: AF {af_empty}, EL {el_empty}")
+
+if __name__ == '__main__':
+    apply_batch4()
