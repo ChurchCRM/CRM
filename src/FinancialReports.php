@@ -269,7 +269,7 @@ if ($sReportType == '') {
 
     // Filter by Payment Method
     if ($sReportType === 'Advanced Deposit Report') {
-        echo '<tr><td class=LabelColumn>' . gettext('Filter by Payment Type:') . '<br></td>';
+        echo '<tr><td class=LabelColumn>' . gettext('Filter by Payment Type') . ':' . '<br></td>';
         echo '<td class=TextColumnWithBottomBorder><div class=SmallText>'
             . gettext('Use Ctrl Key to select multiple');
         echo '</div><select name=method[] size=5 multiple>';
