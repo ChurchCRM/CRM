@@ -243,6 +243,12 @@ jobs:
         node locale/scripts/locale-populate-variants.js
         echo "✅ Base term updates generated"
 
+    - name: Configure Git
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
     - name: Commit base term updates
       if: inputs.operation_mode != 'audit-only'
       run: |
