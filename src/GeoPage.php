@@ -300,7 +300,7 @@ $families = FamilyQuery::create()
                 </div>
                 <div class="form-group">
                     <label for="CoordFileName"
-                        class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Coordinate data base file name') ?>:</label>
+                        class="control-label col-xs-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Coordinate database file name') ?>:</label>
                     <div class="col-xs-12 col-sm-9">
                         <input type="text" class="form-control" name="CoordFileName" value="<?= $sCoordFileName ?>">
                     </div>

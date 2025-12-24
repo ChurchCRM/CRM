@@ -292,10 +292,10 @@ if ($sReportType == '') {
     echo '<tr><td><h3>' . gettext('Other Settings') . '</h3></td></tr>';
 
     if ($sReportType === 'Pledge Reminders') {
-        echo '<tr><td class=LabelColumn>' . gettext('Include:') . '</td>'
+        echo '<tr><td class=LabelColumn>' . gettext('Include') . ':</td>'
             . "<td class=TextColumnWithBottomBorder><input name=pledge_filter type=radio value='pledge' checked>" . gettext('Only Payments with Pledges')
             . " &nbsp; <input name=pledge_filter type=radio value='all'>" . gettext('All Payments') . '</td></tr>';
-        echo '<tr><td class=LabelColumn>' . gettext('Generate:') . '</td>'
+        echo '<tr><td class=LabelColumn>' . gettext('Generate') . ':</td>'
             . "<td class=TextColumnWithBottomBorder><input name=only_owe type=radio value='yes' checked>" . gettext('Only Families with unpaid pledges')
             . " &nbsp; <input name=only_owe type=radio value='no'>" . gettext('All Families') . '</td></tr>';
     }
@@ -315,7 +315,7 @@ if ($sReportType == '') {
             . "<td class=TextColumnWithBottomBorder><input name=sort type=radio value='deposit' checked>" . gettext('Deposit')
             . " &nbsp;<input name=sort type=radio value='fund'>" . gettext('Fund')
             . " &nbsp;<input name=sort type=radio value='family'>" . gettext('Family') . '</td></tr>';
-        echo '<tr><td class=LabelColumn>' . gettext('Report Type:') . '</td>'
+        echo '<tr><td class=LabelColumn>' . gettext('Report Type') . ':</td>'
             . "<td class=TextColumnWithBottomBorder><input name=detail_level type=radio value='detail' checked>" . gettext('All Data')
             . " <input name=detail_level type=radio value='medium'>" . gettext('Moderate Detail')
             . " <input name=detail_level type=radio value='summary'>" . gettext('Summary Data') . '</td></tr>';

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 14:39-0800\n"
+"POT-Creation-Date: 2025-12-23 16:09-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2287,7 +2287,7 @@ msgstr ""
 msgid "Donated Item Editor"
 msgstr ""
 
-msgid "Donated Items"
+msgid "Donated Items:"
 msgstr ""
 
 msgid "Donated by "
@@ -3165,7 +3165,7 @@ msgstr ""
 msgid "Filter Events"
 msgstr ""
 
-msgid "Filter by Deposit"
+msgid "Filter by Deposit:"
 msgstr ""
 
 msgid "Filter by Event Type"
@@ -3177,7 +3177,7 @@ msgstr ""
 msgid "Filter by Fund"
 msgstr ""
 
-msgid "Filter by Payment Type"
+msgid "Filter by Payment Type:"
 msgstr ""
 
 msgid "Filter by Type"
@@ -3485,10 +3485,10 @@ msgstr ""
 msgid "Gibraltar"
 msgstr ""
 
-msgid "Gift Amount"
+msgid "Gift Amount:"
 msgstr ""
 
-msgid "Gift Designation"
+msgid "Gift Designation:"
 msgstr ""
 
 msgid "Girls"
@@ -3637,7 +3637,7 @@ msgstr ""
 msgid "Group-Specific Properties"
 msgstr ""
 
-msgid "Group-Specific Properties Form Editor"
+msgid "Group-Specific Properties Form Editor:"
 msgstr ""
 
 msgid "Group-Specific Property Fields"
@@ -3883,7 +3883,7 @@ msgstr ""
 msgid "Include events and calendars"
 msgstr ""
 
-msgid "Include families in coordinate file"
+msgid "Include families in the coordinate file"
 msgstr ""
 
 msgid "Include family custom properties in global search."
@@ -4673,7 +4673,7 @@ msgstr ""
 msgid "Minimum Price"
 msgstr ""
 
-msgid "Minimum Total Amount"
+msgid "Minimum Total Amount:"
 msgstr ""
 
 msgid ""
@@ -5382,7 +5382,7 @@ msgstr ""
 msgid "Other Settings"
 msgstr ""
 
-msgid "Output Method"
+msgid "Output Method:"
 msgstr ""
 
 msgid "Override system locale"
@@ -6007,7 +6007,7 @@ msgstr ""
 msgid "Puerto Rico"
 msgstr ""
 
-msgid "Purchased Items"
+msgid "Purchased Items:"
 msgstr ""
 
 #. Context: countries
@@ -6146,7 +6146,7 @@ msgstr ""
 msgid "Release Notes:"
 msgstr ""
 
-msgid "Remittance Slip"
+msgid "Remittance Slip:"
 msgstr ""
 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
@@ -6209,7 +6209,7 @@ msgstr ""
 msgid "Report End Date"
 msgstr ""
 
-msgid "Report Heading"
+msgid "Report Heading:"
 msgstr ""
 
 msgid "Report Model"
@@ -6953,7 +6953,7 @@ msgstr ""
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr ""
 
-msgid "Sort Data by"
+msgid "Sort Data by:"
 msgstr ""
 
 msgid "Sort by"
@@ -7358,7 +7358,7 @@ msgstr ""
 msgid "The sunday school class for which you would like records returned."
 msgstr ""
 
-msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr ""
 
 msgid "There was a problem retrieving the requested object"
@@ -8696,7 +8696,7 @@ msgstr ""
 msgid "total"
 msgstr ""
 
-msgid "with at least one"
+msgid "with at least one:"
 msgstr ""
 
 msgid "with this property..."

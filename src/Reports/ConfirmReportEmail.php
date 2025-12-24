@@ -257,7 +257,7 @@ foreach ($families as $family) {
         $curY += SystemConfig::getValue('incrementY');
         // Missing the following information for the personal record: ? Is this the place to put this data ?
         // Work Phone
-        $pdf->writeAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone:') . $member->getWorkPhone());
+        $pdf->writeAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone') . ': ' . $member->getWorkPhone());
         $curY += SystemConfig::getValue('incrementY');
         $curY += SystemConfig::getValue('incrementY');
 

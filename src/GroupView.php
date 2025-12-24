@@ -386,7 +386,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                         if (!empty($availableProperties)) {
                             echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
                             echo '<p>';
-                            echo '<span>' . gettext('Assign a New Property:') . '</span>';
+                            echo '<span>' . gettext('Assign a New Property') . ': </span>';
                             echo '<select name="PropertyID">';
 
                             foreach ($availableProperties as $prop) {
