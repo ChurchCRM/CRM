@@ -11093,3 +11093,290 @@ msgstr "원격 백업 실패"
 msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
 msgstr "WebDAV 백업이 올바르게 구성되지 않았습니다. 엔드포인트, 사용자명 및 비밀번호가 설정되어 있는지 확인하세요"
 
+#: 
+msgid "2FA Enabled"
+msgstr "2FA 활성화됨"
+
+#: 
+msgid "Active Users"
+msgstr "활성 사용자"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "ChMeetings 내보내기"
+
+#: 
+msgid "Delete User"
+msgstr "사용자 삭제"
+
+#: 
+msgid "Disable 2FA"
+msgstr "2FA 비활성화"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "모든 사람 데이터를 ChMeetings 형식으로 내보내서 외부 시스템으로 가져옵니다."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "ChMeetings CSV로 내보내기"
+
+#: 
+msgid "Exporting..."
+msgstr "내보내는 중..."
+
+#: 
+msgid "Family Listing"
+msgstr "가족 목록"
+
+#: 
+msgid "Invalid request data"
+msgstr "유효하지 않은 요청 데이터"
+
+#: 
+msgid "Invalid status"
+msgstr "유효하지 않은 상태"
+
+#: 
+msgid "Locked Users"
+msgstr "잠긴 사용자"
+
+#: 
+msgid "Person Listing"
+msgstr "사람 목록"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "카트에서 사람 제거됨"
+
+#: 
+msgid "Quick Settings"
+msgstr "빠른 설정"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "실패한 로그인 재설정"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "이메일을 통해 암호 재설정"
+
+#: 
+msgid "Set Active"
+msgstr "활성으로 설정"
+
+#: 
+msgid "Set Inactive"
+msgstr "비활성으로 설정"
+
+#: 
+msgid "Show"
+msgstr "표시"
+
+#: 
+msgid "Showing"
+msgstr "표시 중"
+
+#: 
+msgid "Total Users"
+msgstr "총 사용자"
+
+#: 
+msgid "User Management"
+msgstr "사용자 관리"
+
+#: 
+msgid "View Details"
+msgstr "세부 정보 보기"
+
+#: 
+msgid "entries"
+msgstr "항목"
+
+#: 
+msgid "of"
+msgstr "의"
+
+#: 
+msgid "total"
+msgstr "합계"
+
+#: 
+msgid "Code incomplete"
+msgstr "코드 미완성"
+
+#: 
+msgid "Code is invalid"
+msgstr "코드가 유효하지 않음"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "데이터베이스에 2FA 비밀 키를 저장하기 위한 암호화 키"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "이중 인증"
+
+#: 
+msgid "Validation pending"
+msgstr "검증 대기 중"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "암호화 키로 구성되어야 함"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d명이 카트에 추가됨."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d명이 선택된 가족에 성공적으로 추가됨."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d명이 선택된 그룹에 성공적으로 추가됨."
+
+#: 
+msgid "A "
+msgstr "하나 "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "추가, 삭제 및 정렬 변경 사항은 즉시 적용됩니다. 이름 및 설명 변경 사항은 '변경 사항 저장'을 클릭하여 저장해야 합니다."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "정말로 삭제하시겠습니까?"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "화살표 및 삭제 버튼은 즉시 적용됩니다. 위, 아래, 삭제 또는 '새로 추가' 버튼을 사용하기 전에 '변경 사항 저장'을 하지 않으면 필드 이름 변경 사항이 손실됩니다!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 가족 데이터를 되돌릴 수 없게 손실됩니다!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 사람 데이터를 되돌릴 수 없게 손실됩니다!"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "변경 사항이 저장되지 않았습니다! 수정 후 다시 시도하세요!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "속성 삭제 확인"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "자원봉사 기회 삭제 확인"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "삭제 확인"
+
+#: 
+msgid "Existing"
+msgstr "기존"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "기존 사용자 정의 가족 필드"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "기존 사용자 정의 사람 필드"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "기존 자원봉사 기회"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "필드가 성공적으로 삭제됨"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "유효하지 않은 CSRF 토큰"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "유효하지 않은 필드 또는 선택 항목입니다."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "항목이 성공적으로 삭제됨"
+
+#: 
+msgid "Move down"
+msgstr "아래로 이동"
+
+#: 
+msgid "Move up"
+msgstr "위로 이동"
+
+#: 
+msgid "Opportunity"
+msgstr "기회"
+
+#: 
+msgid "Order"
+msgstr "순서"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "PDF가 %s 가족에 성공적으로 이메일로 전송되었습니다."
+
+#: 
+msgid "Percentage"
+msgstr "백분율"
+
+#: 
+msgid "Person Properties"
+msgstr "사람 속성"
+
+#: 
+msgid "Property Type"
+msgstr "속성 유형"
+
+#: 
+msgid "Property to Delete"
+msgstr "삭제할 속성"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "이 자원봉사 기회에 할당된 사람들이 있습니다. 삭제하면 할당이 해제됩니다:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "이것은 현재 할당된 모든 사람에게서 제거됩니다."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "자원봉사 기회"
+
+#: 
+msgid "Warning:"
+msgstr "경고:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "예, 이 기회 삭제"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "사용자가 사용하기 위해 재무 권한이 있어야 하는 쿼리"
+
+#: 
+msgid "Fund(s)"
+msgstr "펀드"
+
+#: 
+msgid "Password reset for"
+msgstr "암호 재설정 대상"
+
