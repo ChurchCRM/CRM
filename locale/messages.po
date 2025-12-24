@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 16:09-0800\n"
+"POT-Creation-Date: 2025-12-23 16:35-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,50 +171,6 @@ msgid "2 Factor Authentication enrollment"
 msgstr ""
 
 msgid "2-50 characters"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2012/2013"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2013/2014"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2014/2015"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2015/2016"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2016/2017"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2017/2018"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2018/2019"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2019/2020"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2020/2021"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2021/2022"
-msgstr ""
-
-#. Context: queryparameteroptions_qpo
-msgid "2022/2023"
 msgstr ""
 
 msgid "2FA Code"
@@ -1636,7 +1592,7 @@ msgstr ""
 msgid "Cook Islands"
 msgstr ""
 
-msgid "Coordinate data base file name"
+msgid "Coordinate database file name"
 msgstr ""
 
 msgid "Copied!"
