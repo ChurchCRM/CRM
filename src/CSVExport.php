@@ -143,7 +143,7 @@ require_once __DIR__ . '/Include/Header.php';
           </div>
 
           <div class="col-md-4">
-            <label>* <?= gettext('Birth / Anniversary Date') ?>:</label>
+            <label>* <?= gettext('Birth Date') . ' / ' . gettext('Anniversary Date') ?>:</label>
             <input type="checkbox" name="BirthdayDate" value="1">
           </div>
 
@@ -374,7 +374,7 @@ require_once __DIR__ . '/Include/Header.php';
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
               <div class="card-header with-border">
-                <h3 class="card-title"><?= gettext('Birthday Date') ?>:</h3>
+                <h3 class="card-title"><?= gettext('Birth Date') ?>:</h3>
                 <div class="card-tools pull-right">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>

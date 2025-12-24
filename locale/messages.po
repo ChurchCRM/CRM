@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 17:31-0800\n"
+"POT-Creation-Date: 2025-12-23 17:43-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -311,16 +311,10 @@ msgstr ""
 msgid "Add Individuals to Cart"
 msgstr ""
 
-msgid "Add Member"
-msgstr ""
-
 msgid "Add Menu"
 msgstr ""
 
 msgid "Add New"
-msgstr ""
-
-msgid "Add Note"
 msgstr ""
 
 msgid "Add Payment"
@@ -952,9 +946,6 @@ msgstr ""
 msgid "Birth & Family"
 msgstr ""
 
-msgid "Birth / Anniversary Date"
-msgstr ""
-
 msgid "Birth Date"
 msgstr ""
 
@@ -968,9 +959,6 @@ msgid "Birth Year"
 msgstr ""
 
 msgid "Birthday"
-msgstr ""
-
-msgid "Birthday Date"
 msgstr ""
 
 #. Context: query_qry
@@ -8103,10 +8091,7 @@ msgstr ""
 msgid "Warning:"
 msgstr ""
 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr ""
-
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr ""
 
 msgid "Warning: Signature mismatch"

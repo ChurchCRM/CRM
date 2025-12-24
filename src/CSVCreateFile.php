@@ -293,7 +293,7 @@ if ($sFormat === 'addtocart') {
             $headers[] = 'Gender';
         }
     } else {
-        if (!empty($_POST['Birthday Date'])) {
+        if (!empty($_POST['BirthdayDate'])) {
             $headers[] = 'AnnivDate';
         }
         if (!empty($_POST['Age'])) {
