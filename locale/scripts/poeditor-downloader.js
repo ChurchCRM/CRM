@@ -21,6 +21,7 @@ const CONFIG_FILE = path.join(__dirname, '../../BuildConfig.json');
 const CONFIG_EXAMPLE_FILE = path.join(__dirname, '../../BuildConfig.json.example');
 const LOCALES_FILE = path.join(__dirname, '../../src/locale/locales.json');
 const JSON_OUTPUT_DIR = path.join(__dirname, '../../src/locale/i18n');
+const MASTER_LIST_DIR = path.join(__dirname, '../'); // /locale directory for master English list
 // PO/MO files historically live under src/locale/textdomain so other scripts
 // (and gettext lookups) find them there. Match the previous layout.
 const TEXTDOMAIN_OUTPUT_DIR = path.join(__dirname, '../../src/locale/textdomain');
@@ -185,6 +186,56 @@ async function downloadLanguageFormat(locale, poEditorLocale, format) {
 }
 
 /**
+ * Download English master list JSON file to /locale directory
+ * This serves as a simplified master term list for locale variant syncing
+ */
+async function downloadEnglishMasterList() {
+    console.log('\n📝 Downloading English master term list...');
+    
+    try {
+        const postData = new URLSearchParams({
+            api_token: apiToken,
+            id: projectId,
+            language: 'en',
+            type: 'key_value_json',
+            filters: 'all', // Download all terms, including untranslated (for master list)
+        }).toString();
+
+        const response = await makeRequest(POEDITOR_API, postData);
+        const result = JSON.parse(response.data);
+
+        if (result.response.status === 'success') {
+            const downloadUrl = result.result.url;
+            const outputPath = path.join(MASTER_LIST_DIR, 'messages.json');
+            
+            return new Promise((resolve, reject) => {
+                https.get(downloadUrl, (res) => {
+                    let fileData = Buffer.alloc(0);
+                    res.on('data', (chunk) => {
+                        fileData = Buffer.concat([fileData, chunk]);
+                    });
+                    res.on('end', () => {
+                        // Ensure JSON ends with newline
+                        if (fileData[fileData.length - 1] !== 0x0A) {
+                            fileData = Buffer.concat([fileData, Buffer.from('\n')]);
+                        }
+                        fs.writeFileSync(outputPath, fileData);
+                        const fileSize = fileData.length;
+                        console.log(`  ✅ English master list: ${fileSize} bytes → ${outputPath}`);
+                        resolve();
+                    });
+                }).on('error', reject);
+            });
+        } else {
+            throw new Error(result.response.message || 'Unknown POEditor error');
+        }
+    } catch (error) {
+        console.error(`  ❌ Failed to download English master list: ${error.message}`);
+        throw error;
+    }
+}
+
+/**
  * Download translation file from POEditor for all formats
  */
 async function downloadLanguage(locale, poEditorLocale, current, total) {
@@ -252,6 +303,13 @@ async function main() {
             console.error(`  ❌ ${locale}: ${error.message}`);
             failedLanguages.push(locale);
         }
+    }
+
+    // Download English master list as simplified reference for variant syncing
+    try {
+        await downloadEnglishMasterList();
+    } catch (error) {
+        console.error('⚠️  English master list download failed (non-critical)');
     }
 
     console.log(`\n📊 Summary: ${successCount}/${totalToDownload} languages downloaded (${skippedCount} English variants skipped)`);
