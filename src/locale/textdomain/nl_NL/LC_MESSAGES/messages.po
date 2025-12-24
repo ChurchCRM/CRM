@@ -8327,6 +8327,86 @@ msgid "Person already in cart"
 msgstr "Persoon reeds in verzamelmap"
 
 #: 
+msgid "Remove this family from cart?"
+msgstr "Deze familie uit het winkelwagen verwijderen?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Deze groep uit het winkelwagen verwijderen?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Deze persoon uit het winkelwagen verwijderen?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Succesvol uit het winkelwagen verwijderd"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Ja, leeg de winkelwagen"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Ja, verwijder"
+
+#: 
+msgid "Add Group"
+msgstr "Groep toevoegen"
+
+#: 
+msgid "Back to Group List"
+msgstr "Terug naar groepslijst"
+
+#: 
+msgid "Default role updated."
+msgstr "Standaardrol bijgewerkt."
+
+#: 
+msgid "Edit Group"
+msgstr "Groep bewerken"
+
+#: 
+msgid "Enter group name"
+msgstr "Voer groepsnaam in"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "Kan rol niet toevoegen. Probeer het opnieuw."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Kan groep niet maken. Probeer het opnieuw."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "Kan rol niet verwijderen. Probeer het opnieuw."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Kan winkelwagen status niet laden."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Kan groepen niet laden. Vernieuw de pagina."
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "Kan standaardrol niet instellen. Probeer het opnieuw."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "Kan groep niet bijwerken. Probeer het opnieuw."
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "Kan eigenschappen niet bijwerken. Probeer het opnieuw."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "Kan rolnaam niet bijwerken. Probeer het opnieuw."
+
+#: 
 msgid "Leave blank to keep existing password"
 msgstr "Laat leeg om bestaande wachtwoord te houden"
 
@@ -8560,6 +8640,78 @@ msgid "Zip code is required"
 msgstr "Postcode is verplicht"
 
 #: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "Er is een nieuw wachtwoord gegenereerd en naar uw e-mailadres verzonden."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "Er is een nieuwe versie van ChurchCRM beschikbaar voor installatie."
+
+#: 
+msgid "Actual Hash"
+msgstr "Werkelijke hash"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "Alle pre-upgrade controles zijn geslaagd. U kunt doorgaan met de upgrade."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Pre-release upgrades toestaan"
+
+#: 
+msgid "Apply Update Now"
+msgstr "Update nu toepassen"
+
+#: 
+msgid "Applying System Update..."
+msgstr "Systeemupdate toepassen..."
+
+#: 
+msgid "Back to Login"
+msgstr "Terug naar inloggen"
+
+#: 
+msgid "Back to login"
+msgstr "Terug naar inloggen"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Back-up overgeslagen"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "Controleer GitHub voor de nieuwste release-informatie"
+
+#: 
+msgid "Complete"
+msgstr "Voltooid"
+
+#: 
+msgid "Continue to Backup"
+msgstr "Doorgaan naar back-up"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "Doorgaan met downloaden en toepassen"
+
+#: 
+msgid "Create Backup"
+msgstr "Back-up maken"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "Maak een back-up van uw database voordat u de update toepast."
+
+#: 
+msgid "Current Version:"
+msgstr "Huidige versie:"
+
+#: 
+msgid "Database Backup"
+msgstr "Databaseback-up"
+
+#: 
 msgid "Download & Apply"
 msgstr "Download en pas toe"
 
@@ -8672,6 +8824,82 @@ msgid "Release Notes:"
 msgstr "Release Notes:"
 
 #: 
+msgid "Request Password Reset"
+msgstr "Wachtwoord reset aanvragen"
+
+#: 
+msgid "Retry Download"
+msgstr "Download opnieuw proberen"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "SHA1 hash:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "Reset-e-mail verzenden"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "Instelling opgeslagen. Pagina herladen..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Instelling succesvol bijgewerkt"
+
+#: 
+msgid "Skip Backup"
+msgstr "Back-up overslaan"
+
+#: 
+msgid "System Up to Date"
+msgstr "Systeem is bijgewerkt"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "Wizard voor systeemupgrade"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "Systeemupgrade succesvol voltooid!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "Dit kan enkele minuten duren."
+
+#: 
+msgid "Update Available!"
+msgstr "Update beschikbaar!"
+
+#: 
+msgid "Update Package Details"
+msgstr "Updatepakketdetails"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Updatepakket succesvol gedownload."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "Upgrade voltooid!"
+
+#: 
+msgid "Upgrade failed."
+msgstr "Upgrade mislukt."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "Upgrade mislukt. Controleer de logboeken."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "Upgrade-informatie succesvol vernieuwd"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Upgrade-informatie vernieuwd. Pagina herladen..."
+
+#: 
 msgid "Version Information"
 msgstr "Versie Informatie"
 
@@ -8706,4 +8934,358 @@ msgstr "Beste Vriend"
 #: 
 msgid "No Data Found"
 msgstr "Geen gegevens gevonden"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "Geen records geretourneerd uit het vorige rapport. Pas uw filters of datumbereik aan en probeer het opnieuw."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "Voer een menunaam in (2-50 tekens)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "Voer een geldige URL in die begint met http:// of https://"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "Alle systeembestandshandtekeningen komen overeen met de verwachte waarden."
+
+#: 
+msgid "Files with issues"
+msgstr "Bestanden met problemen"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Integriteitscontrole mislukt"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Integriteitscontrole geslaagd"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "Handtekeningdefinitiebestand bestaat maar is niet leesbaar. Controleer bestandsmachtigingen."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "Handtekeningdefinitiebestand ontbreekt op %s. Voer de verpakkingstaak uit of implementeer een officiële release om handtekeningen opnieuw te genereren."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "Kan integriteitsendpunt niet bereiken. Controleer webserver-foutlogboeken."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "Voeg aanvullende opmerkingen over deze storting toe"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "Bedrag overschrijdt de maximaal toegestane waarde (999999.99)."
+
+#: 
+msgid "Checks"
+msgstr "Controles"
+
+#: 
+msgid "Clear Filters"
+msgstr "Filters wissen"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "Klik op een balk om betalingen te filteren"
+
+#: 
+msgid "Delete Selected"
+msgstr "Geselecteerde verwijderen"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Storting succesvol opgeslagen"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Fout bij het verwijderen van betalingen"
+
+#: 
+msgid "Error loading payments"
+msgstr "Fout bij het laden van betalingen"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Fout bij het opslaan van storting"
+
+#: 
+msgid "Funds"
+msgstr "Fondsen"
+
+#: 
+msgid "Generate Report"
+msgstr "Rapport genereren"
+
+#: 
+msgid "No Cash"
+msgstr "Geen contanten"
+
+#: 
+msgid "No Checks"
+msgstr "Geen cheques"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Nog geen betalingen. Klik op \"Betaling toevoegen\" om te beginnen."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "Niet-aftrekbaar bedrag overschrijdt de maximaal toegestane waarde (999999.99)."
+
+#: 
+msgid "Payments"
+msgstr "Betalingen"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Betalingen succesvol verwijderd"
+
+#: 
+msgid "Please select a date"
+msgstr "Selecteer een datum"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Selecteer rijen om te verwijderen"
+
+#: 
+msgid "Saving..."
+msgstr "Opslaan..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "Deze actie kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Total Deposit"
+msgstr "Totale storting"
+
+#: 
+msgid "Total Payments"
+msgstr "Totale betalingen"
+
+#: 
+msgid "payments(s)?"
+msgstr "betaling(en)?"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "Alle systeembestanden hebben integriteitsvalidatie doorstaan."
+
+#: 
+msgid "Base URL"
+msgstr "Basis-URL"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "ChurchCRM-installatie"
+
+#: 
+msgid "Copy"
+msgstr "Kopiëren"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "Databaseserver"
+
+#: 
+msgid "Debug Info"
+msgstr "Debug-informatie"
+
+#: 
+msgid "Document Root"
+msgstr "Documentroot"
+
+#: 
+msgid "Email Configuration"
+msgstr "E-mailconfiguratie"
+
+#: 
+msgid "Email Debug Info"
+msgstr "E-mail debug-informatie"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "Bestandssysteem-machtigingen"
+
+#: 
+msgid "Hostname"
+msgstr "Hostnaam"
+
+#: 
+msgid "IP Address"
+msgstr "IP-adres"
+
+#: 
+msgid "Images Root"
+msgstr "Afbeeldingsroot"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Demogegevens importeren"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Voeg gebeurtenissen en agenda's in"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Voeg financiële gegevens in (donatiefondsen, beloften)"
+
+#: 
+msgid "Invalid API key"
+msgstr "Ongeldige API-sleutel"
+
+#: 
+msgid "Not configured"
+msgstr "Niet geconfigureerd"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "PHP- en serververeisten"
+
+#: 
+msgid "PHP Configuration"
+msgstr "PHP-configuratie"
+
+#: 
+msgid "Platform"
+msgstr "Platform"
+
+#: 
+msgid "Root Path"
+msgstr "Rootpad"
+
+#: 
+msgid "SMTP Host"
+msgstr "SMTP-host"
+
+#: 
+msgid "Server Information"
+msgstr "Serverinformatie"
+
+#: 
+msgid "Software"
+msgstr "Software"
+
+#: 
+msgid "System & Configuration"
+msgstr "Systeem en configuratie"
+
+#: 
+msgid "Tip:"
+msgstr "Tip:"
+
+#: 
+msgid "Valid Settings"
+msgstr "Geldige instellingen"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "Er is een fout opgetreden tijdens het importeren van demogegevens"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "Demogegevens succesvol geïmporteerd"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "Voeg zondagsschoollessen en inschrijvingen in"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "Moet u deze gegevens later verwijderen?"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "Geen betalingen bij deze storting"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "Geen betalingen bij deze storting"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "Optionele gegevens om op te nemen"
+
+#: 
+msgid "Skipped"
+msgstr "Overgeslagen"
+
+#: 
+msgid "Unknown error"
+msgstr "Onbekende fout"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "storting(en) zonder betalingen"
+
+#: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d gebeurtenis in %s"
+msgstr[1] "%d gebeurtenissen in %s"
+
+#: 
+msgid "All Event Types"
+msgstr "Alle gebeurtenistypes"
+
+#: 
+msgid "All Types"
+msgstr "Alle typen"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "Weet u zeker dat u dit incheckverslag wilt verwijderen?"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "Aanwezigheidstellincategorieën"
+
+#: 
+msgid "Attendance Notes"
+msgstr "Aanwezigheidsnotities"
+
+#: 
+msgid "Change Event"
+msgstr "Gebeurtenis wijzigen"
+
+#: 
+msgid "Check In"
+msgstr "Inchecken"
+
+#: 
+msgid "Check In Person"
+msgstr "Persoon inchecken"
+
+#: 
+msgid "Check In to Event"
+msgstr "Bij gebeurtenis inchecken"
+
+#: 
+msgid "Check-in"
+msgstr "Inchecken"
+
+#: 
+msgid "Choose an event..."
+msgstr "Kies een gebeurtenis..."
+
+#: 
+msgid "Clear"
+msgstr "Wissen"
+
+#: 
+msgid "Create"
+msgstr "Maken"
 
