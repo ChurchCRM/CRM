@@ -11398,3 +11398,23 @@ msgstr "நிதி"
 msgid "Password reset for"
 msgstr "கடவுச்சொல் மீட்டமை"
 
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "ஸ்பெயின் - அர்ஜென்டினா"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "ஸ்பெயின் - கொலம்பியா"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "ஸ்பெயின் - எல் சால்வடோர்"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "ஸ்பெயின் - மெக்சிகோ"
+

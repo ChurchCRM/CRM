@@ -11381,3 +11381,23 @@ msgstr "Fond(y)"
 msgid "Password reset for"
 msgstr "Resetování hesla pro"
 
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Španělština - Argentina"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Španělština - Kolumbie"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Španělština - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Španělština - Mexiko"
+

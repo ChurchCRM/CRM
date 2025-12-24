@@ -9289,3 +9289,2123 @@ msgstr "Wissen"
 msgid "Create"
 msgstr "Maken"
 
+#: 
+msgid "Create New Event"
+msgstr "Nieuw Evenement Maken"
+
+#: 
+msgid "Create an event type to get started."
+msgstr "Maak een evenementtype om te beginnen."
+
+#: 
+msgid "Current DB Version"
+msgstr "Huidige Databaseversie"
+
+#: 
+msgid "Current Software Version"
+msgstr "Huidige Softwareversie"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "Database-upgrade met succes voltooid. Doorsturen naar dashboard..."
+
+#: 
+msgid "Date & Time"
+msgstr "Datum en Tijd"
+
+#: 
+msgid "Default Start Time"
+msgstr "Standaard Starttijd"
+
+#: 
+msgid "Delete Event"
+msgstr "Evenement Verwijderen"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "Het verwijderen van een evenement verwijdert ook alle aanwezigheidstellingen. Dit evenement verwijderen?"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Het verwijderen van dit evenementtype verwijdert NIET de bestaande evenementen. Weet je het zeker?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "Het verwijderen van dit evenement verwijdert ook alle aanwezigheidsrecords. Weet je het zeker?"
+
+#: 
+msgid "Edit Event"
+msgstr "Evenement Bewerken"
+
+#: 
+msgid "Editing Event"
+msgstr "Evenement aan het bewerken"
+
+#: 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr "Voer met komma's gescheiden teltcategorieën in. \"Totaal\" is automatisch inbegrepen."
+
+#: 
+msgid "Enter event title..."
+msgstr "Voer evenementtitel in..."
+
+#: 
+msgid "Event"
+msgstr "Evenement"
+
+#: 
+msgid "Event Type Name"
+msgstr "Naam Evenementtype"
+
+#: 
+msgid "Event Types"
+msgstr "Evenementtypen"
+
+#: 
+msgid "Filter Events"
+msgstr "Evenementen Filteren"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "Filteren op Evenementtype"
+
+#: 
+msgid "Filter by Type"
+msgstr "Filteren op Type"
+
+#: 
+msgid "Head Count"
+msgstr "Aantal Aanwezigen"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "Lijst met Evenementen van Type"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "Inchecks Beheren"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "Leden, Bezoekers, Kinderen"
+
+#: 
+msgid "Monthly Averages"
+msgstr "Maandelijkse Gemiddelden"
+
+#: 
+msgid "Monthly on the"
+msgstr "Maandelijks op de"
+
+#: 
+msgid "No event types defined yet."
+msgstr "Nog geen evenementtypen gedefinieerd."
+
+#: 
+msgid "None (one-time event)"
+msgstr "Geen (eenmalig evenement)"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "Optioneel - Voeg preeknotities of aanvullende evenementdetails toe"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "Optioneel - laat leeg als je niet bijhoudt"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "Optionele notities over aanwezigheid..."
+
+#: 
+msgid "People Checked In"
+msgstr "Mensen Ingecheckt"
+
+#: 
+msgid "People in Cart"
+msgstr "Mensen in Winkelwagen"
+
+#: 
+msgid "Person Checking In"
+msgstr "Persoon aan het Inchecken"
+
+#: 
+msgid "Recurrence"
+msgstr "Terugkeer"
+
+#: 
+msgid "Required fields"
+msgstr "Verplichte velden"
+
+#: 
+msgid "Save Event Type"
+msgstr "Evenementtype Opslaan"
+
+#: 
+msgid "Search by name or email..."
+msgstr "Zoeken op naam of e-mail..."
+
+#: 
+msgid "Search for adult..."
+msgstr "Zoeken naar volwassene..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "Zoeken naar toezichthouder..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "Selecteer Evenement voor Inchecken"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "Selecteer start- en einddatum/tijd"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "Selecteer het evenement om uw winkelwagenbezoekers in te checken"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "Preek / Evenementtekst"
+
+#: 
+msgid "Unclassified"
+msgstr "Niet geclassificeerd"
+
+#: 
+msgid "Upgrade database now"
+msgstr "Database nu upgraden"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "Uw ChurchCRM-installatie moet een database-upgrade uitvoeren om overeen te stemmen met de geïnstalleerde softwareversie. Deze bewerking past schema's en gegevensmigraties toe. Zorg ervoor dat je een recente back-up hebt voordat je doorgaat."
+
+#: 
+msgid "added to this event"
+msgstr "toegevoegd aan dit evenement"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "bijv. Zondagsschool, Bijbelstudie..."
+
+#: 
+msgid "optional"
+msgstr "optioneel"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "persoon"
+msgstr[1] "personen"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ Afrekenen"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "%d Verweesde Bestanden Gedetecteerd"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d bestanden zijn gewijzigd of ontbreken. Gebruik Force Herinstallatie om officiële versies herstellen."
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d bestanden zijn niet in integriteitvalidatie."
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d bestanden worden permanent verwijderd."
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "%d verweesde bestanden zijn op uw server gedetecteerd."
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(vernieuwen vanaf GitHub)"
+
+#: 
+msgid "Access Denied"
+msgstr "Toegang Geweigerd"
+
+#: 
+msgid "Add event permission"
+msgstr "Toestemming Evenement Toevoegen"
+
+#: 
+msgid "Add records permission"
+msgstr "Toestemming Records Toevoegen"
+
+#: 
+msgid "Administrator privileges"
+msgstr "Beheerdersrechten"
+
+#: 
+msgid "All Files Verified"
+msgstr "Alle Bestanden Geverifieerd"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "Alle systeembestanden komen overeen met hun verwachte handtekeningen."
+
+#: 
+msgid "Application Integrity"
+msgstr "Toepassingsintegriteit"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "Toepassingsbestanden bijgewerkt naar nieuwste versie"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "Weet je zeker dat je alle verweesde bestanden wilt verwijderen?"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "Terug naar Debug-Info"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "Back-up Best Practices"
+
+#: 
+msgid "Backup Status"
+msgstr "Back-up Status"
+
+#: 
+msgid "Backup Type"
+msgstr "Back-up Type"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "Back-up voltooid! Klik hieronder om te downloaden."
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "Back-up met succes voltooid!"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "Back-up gedownload. Serverkopie verwijderd."
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "Back-up mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "Back-up gegenereerd en gekopieerd naar externe server"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "Back-up in uitvoering, alstublieft wachten..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "Back-up naar Externe Opslag"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "VOORZICHTIG: Het herstellen van een back-up verwijdert de bestaande database volledig en vervangt deze door de back-upgegevens."
+
+#: 
+msgid "CSV export permission"
+msgstr "Toestemming CSV-export"
+
+#: 
+msgid "Close & Refresh"
+msgstr "Sluiten en Vernieuwen"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "Verwijdering Bevestigen"
+
+#: 
+msgid "Create a backup first"
+msgstr "Maak eerst een back-up"
+
+#: 
+msgid "Create directory permission"
+msgstr "Toestemming Directory Maken"
+
+#: 
+msgid "Database Only"
+msgstr "Alleen Database"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "Database Succesvol Hersteld!"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "Database schema automatisch bijgewerkt"
+
+#: 
+msgid "Delete All Files"
+msgstr "Alle Bestanden Verwijderen"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "Verwijder Alle Verweesde Bestanden"
+
+#: 
+msgid "Delete records permission"
+msgstr "Toestemming Records Verwijderen"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "%d bestanden verwijderd, %d mislukt"
+
+#: 
+msgid "Deletion Results"
+msgstr "Verwijderingsresultaten"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "Sleep uw back-upbestand hier heen"
+
+#: 
+msgid "Edit records permission"
+msgstr "Toestemming Records Bewerken"
+
+#: 
+msgid "Encryption"
+msgstr "Encryptie"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "Exporteert databasestructuur en gegevens. Kleinere bestandsgrootte."
+
+#: 
+msgid "File Integrity Check"
+msgstr "Bestands Integriteit Check"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "Integriteit Problemen Gedetecteerd"
+
+#: 
+msgid "File Path"
+msgstr "Bestandspad"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "Bestandshandtekeningen komen overeen met de officiële release."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "Bestanden kunnen gewijzigd of ontbreken. Overweeg opnieuw in te zetten vanaf een officiële release."
+
+#: 
+msgid "Finance access"
+msgstr "Financieel Toegang"
+
+#: 
+msgid "Force Re-install"
+msgstr "Force Herinstallatie"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Force herinstallatie gestart. Zorg voor een back-up van uw database voordat u toepast."
+
+#: 
+msgid "Full Backup"
+msgstr "Volledige Back-up"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "Back-up Genereren & Downloaden"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "Ga naar Dashboard"
+
+#: 
+msgid "Group management access"
+msgstr "Groepsbeheer Toegang"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "Als u toegang tot deze functie nodig hebt, neem dan contact op met uw kerkbeheerder."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "Als u een back-up van ChurchInfo of een eerdere versie van ChurchCRM uploadt, wordt deze automatisch bijgewerkt naar het huidige databaseschema."
+
+#: 
+msgid "Important Warning"
+msgstr "Belangrijke Waarschuwing"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "Omvat database en alle geüploade foto's. Grotere bestandsgrootte."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "Bewaar één kopie in een brandwerend kluis ter plaatse en één ander locatie."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "Nieuwste GitHub-versie:"
+
+#: 
+msgid "Loading..."
+msgstr "Laden..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "Maak minstens één keer per week een back-up, tenzij u geautomatiseerde back-ups hebt."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "Verweesde Bestanden Beheren"
+
+#: 
+msgid "Menu options access"
+msgstr "Menuit opties Toegang"
+
+#: 
+msgid "Missing Files"
+msgstr "Ontbrekende Bestanden"
+
+#: 
+msgid "Modified Files"
+msgstr "Gewijzigde Bestanden"
+
+#: 
+msgid "Multiple Copies"
+msgstr "Meerdere Kopieën"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "Geen Verweesde Bestanden Gevonden"
+
+#: 
+msgid "Notes access"
+msgstr "Opmerkingen Toegang"
+
+#: 
+msgid "Orphaned Files"
+msgstr "Verweesde Bestanden"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "Verweesde Bestanden Beheer"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "Verweesde bestanden zijn PHP- of JavaScript-bestanden die op uw server bestaan maar niet deel uitmaken van de officiële ChurchCRM-release. Deze bestanden kunnen overblijfselen van eerdere versies zijn en kunnen beveiligingsrisico's vormen als ze verouderde code met kwetsbaarheden bevatten."
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "Verweesde bestanden uit eerdere versies opgeruimd"
+
+#: 
+msgid "Permission Required"
+msgstr "Toestemming Vereist"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "Controleer het back-upbestand en probeer het opnieuw."
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "Selecteer een back-upbestand om herstellen"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "Download en pas de huidige versie opnieuw toe om alle bestanden naar hun officiële staat terug te zetten"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "Klaar om een back-up te maken. Selecteer uw opties hierboven en klik op een back-upknop."
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "Klaar om herstellen. Selecteer een back-upbestand en klik op Database Herstellen."
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "Aanbeveling: Beoordeel en verwijder deze bestanden voor of na de upgrade."
+
+#: 
+msgid "Redirecting in"
+msgstr "Doorsturen naar"
+
+#: 
+msgid "Refresh List"
+msgstr "Lijst Vernieuwen"
+
+#: 
+msgid "Regular Backups"
+msgstr "Regelmatige Back-ups"
+
+#: 
+msgid "Required Permission"
+msgstr "Vereiste Toestemming"
+
+#: 
+msgid "Required permission"
+msgstr "Vereiste toestemming"
+
+#: 
+msgid "Restore Status"
+msgstr "Herstel Status"
+
+#: 
+msgid "Restore failed."
+msgstr "Herstel mislukt."
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "Herstel mislukt. Controleer het back-upbestand en probeer het opnieuw."
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "Herstel in uitvoering, alstublieft wachten..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "Beoordeel de onderstaande bestanden en verwijder ze om de veiligheid te verbeteren."
+
+#: 
+msgid "Security Recommendation"
+msgstr "Beveiligingsaanbeveling"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "Beveiligingswaarschuwing: Verweesde Bestanden Gedetecteerd"
+
+#: 
+msgid "Select Backup File"
+msgstr "Selecteer Back-upbestand"
+
+#: 
+msgid "Supported formats:"
+msgstr "Ondersteunde indelingen:"
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "De volgende bestanden bestaan op uw server maar maken NIET deel uit van de officiële ChurchCRM-release. Dit kunnen overblijfselen van eerdere versies zijn die veiligheidrisico's kunnen vormen."
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "De pagina die u probeerde te bezoeken vereist speciale machtigingen die uw account momenteel niet heeft."
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "Deze bestanden maken geen deel uit van de officiële release en kunnen veiligheidsrisico's vormen."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "Deze bestanden waren waarschijnlijk onderdeel van een oudere ChurchCRM-versie en zijn niet opgeruimd tijdens een eerdere upgrade. Verwijdering verbetert uw systeembeveiliging."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "Deze bestanden waren waarschijnlijk onderdeel van een oudere ChurchCRM-versie en zijn niet opgeruimd tijdens een eerdere upgrade. Ze kunnen verouderde code met beveiligingslekken bevatten."
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "Deze actie kan niet ongedaan worden gemaakt. Zorg ervoor dat u een back-up hebt van de huidige gegevens."
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "Dit kan enkele minuten duren voor grote databases."
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "Dit kan enkele minuten duren voor grote databases. Sluit deze pagina niet."
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "Hiermee wordt de huidge versie opnieuw gedownload en toegepast. Dit kan beschadigde of gewijzigde bestanden repareren. Doorgaan?"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "Samenvatting van Upgrade"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "Gebruik externe tools (GPG, 7-Zip) om back-ups te versleutelen voordat u deze offsite opslaat."
+
+#: 
+msgid "User authentication"
+msgstr "Gebruikersverificatie"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "Gebruiker moet toestemming voor Evenement Toevoegen hebben"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "Gebruiker moet toestemming voor Menu-opties hebben"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "Wat zijn Verweesde Bestanden?"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "U hebt geen toegang tot deze pagina"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "U wordt afgemeld en omgeleid naar de aanmeldingspagina."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "Uw ChurchCRM-installatie is schoon. Alle bestanden op de server komen overeen met de officiële release."
+
+#: 
+msgid "or click to browse"
+msgstr "of klik om te bladeren"
+
+#: 
+msgid "seconds..."
+msgstr "seconden..."
+
+#: 
+msgid " Deposit #"
+msgstr " Storting #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d ontbrekende classificatie"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d ontbrekend geslacht"
+
+#: 
+msgid "%d missing role"
+msgstr "%d ontbrekende rol"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "Een betaling is een daadwerkelijke donatie. Het wordt toegevoegd aan de huidge storting."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "Een belofte is een toezegging geven. Het is niet gekoppeld aan een stortingsbon."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Voeg nog een familieledemid toe"
+
+#: 
+msgid "Add Pledge"
+msgstr "Belofte Toevoegen"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Beheerdashboard"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Geavanceerde Bewerkingen"
+
+#: 
+msgid "All System Settings"
+msgstr "Alle Systeeminstellingen"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "Er is een onverwachte fout opgetreden. Neem contact op met uw beheerder."
+
+#: 
+msgid "Apr"
+msgstr "Apr"
+
+#: 
+msgid "Aug"
+msgstr "Aug"
+
+#: 
+msgid "Back to Deposits"
+msgstr "Terug naar Stortingen"
+
+#: 
+msgid "Back to Families"
+msgstr "Terug naar Families"
+
+#: 
+msgid "Birth & Family"
+msgstr "Geboorte en Familie"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "CSV-export is beperkt tot beheerders."
+
+#: 
+msgid "Cart"
+msgstr "Winkelwagen"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "Wijzig dit in Systeeminstellingen."
+
+#: 
+msgid "Church Membership"
+msgstr "Kerklid"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "Kerknaam is ingesteld op standaardwaarde"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "Klassen en inschrijvingen"
+
+#: 
+msgid "Clean Up Files"
+msgstr "Bestanden Opruimen"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "Wis alle gegevens en begin opnieuw. Kan niet ongedaan worden gemaakt."
+
+#: 
+msgid "Close All Deposits"
+msgstr "Sluit Alle Stortingen"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "Gesloten Stortingen:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "Gesloten vs Totaal"
+
+#: 
+msgid "Coming soon"
+msgstr "Binnenkort beschikbaar"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "Voltooi deze essentiële instellingstaken om ChurchCRM soepel te laten draaien:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "Voltooi deze in willekeurige volgorde. Gebruik Demogegevens om met voorbeeldrecords te verkennen."
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "Voltooi deze taken om nauwkeurige belastingrapportage aan het einde van het jaar voor uw donateurs te garanderen."
+
+#: 
+msgid "Configuration:"
+msgstr "Configuratie:"
+
+#: 
+msgid "Configure Email"
+msgstr "E-mail Configureren"
+
+#: 
+msgid "Contact Information"
+msgstr "Contactgegevens"
+
+#: 
+msgid "Create Deposit"
+msgstr "Storting Maken"
+
+#: 
+msgid "Create First Deposit"
+msgstr "Eerste Storting Maken"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "Maak of open eerst een storting"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "Maak of selecteer een storting om te beginnen."
+
+#: 
+msgid "Current Deposit"
+msgstr "Huidge Storting"
+
+#: 
+msgid "Current fiscal year"
+msgstr "Huidig fiscaal jaar"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Aanpasbaar rapport met filteren op datum, fonds, familie en betalingsmethode."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Pas de tekst aan die op belastingafschriften verschijnt (sTaxReport1, sTaxReport2, enz.)."
+
+#: 
+msgid "Data Quality:"
+msgstr "Gegevenskwaliteit:"
+
+#: 
+msgid "Database:"
+msgstr "Database:"
+
+#: 
+msgid "Day"
+msgstr "Dag"
+
+#: 
+msgid "Dec"
+msgstr "Dec"
+
+#: 
+msgid "Demo Data"
+msgstr "Demogegevens"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "Stortingsnavigatie"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "Stortingsstatistieken"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "Gedetailleerde uitsplitsing van een enkel stortingsbon."
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "Gedetailleerde uitsplitsing van toezeggingen en betalingen per familie."
+
+#: 
+msgid "Documentation"
+msgstr "Documentatie"
+
+#: 
+msgid "Donor Families"
+msgstr "Donateur-families"
+
+#: 
+msgid "Edit Deposit"
+msgstr "Storting Bewerken"
+
+#: 
+msgid "Edit Family"
+msgstr "Familie Bewerken"
+
+#: 
+msgid "Edit Payment"
+msgstr "Betaling Bewerken"
+
+#: 
+msgid "Edit Person"
+msgstr "Persoon Bewerken"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "Zorg ervoor dat alle stortingen voor het belastingjaar zijn gesloten voordat u afschriften genereert."
+
+#: 
+msgid "Export Options"
+msgstr "Exportopties"
+
+#: 
+msgid "F"
+msgstr "V"
+
+#: 
+msgid "Failed to save settings"
+msgstr "Instellingen opslaan mislukt"
+
+#: 
+msgid "Family Navigation"
+msgstr "Familienavigatie"
+
+#: 
+msgid "Feb"
+msgstr "Feb"
+
+#: 
+msgid "File Integrity:"
+msgstr "Bestandsintegriteit:"
+
+#: 
+msgid "Filtering"
+msgstr "Filteren"
+
+#: 
+msgid "Finance"
+msgstr "Financiën"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "Financieel Dashboard"
+
+#: 
+msgid "Force Import"
+msgstr "Dwingend Importeren"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "Force Import probeert opnieuw en kan gedupliceerde gegevens maken."
+
+#: 
+msgid "Fund Allocation"
+msgstr "Fondstoewijzing"
+
+#: 
+msgid "Generate"
+msgstr "Genereren"
+
+#: 
+msgid "Generate Reports"
+msgstr "Rapporten Genereren"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Belastingafschriften Genereren"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "Genereer jaarlijkse giftafschriften voor donateurs en identificeer giftpatronen."
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "Genereer jaarlijkse aftrekbare giftafschriften voor donateurs. Kan worden afgedrukt of per e-mail verzonden."
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "Genereer gedetailleerde rapporten voor individuele stortingen of datumbereiken."
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "Genereer herinnerbrieven voor families met openstaande toezeggingen."
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "Genereer rapporten voor belastingafschriften, toezeggingsvolgesporing en financiële analyse."
+
+#: 
+msgid "Giving funds and categories"
+msgstr "Giftverzendingen en categorieën"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS niet geconfigureerd"
+
+#: 
+msgid "ID"
+msgstr "ID"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "Identificeer leden die geen donaties hebben gedaan binnen een bepaald bereik."
+
+#: 
+msgid "Import failed"
+msgstr "Importeren mislukt"
+
+#: 
+msgid "Import from CSV files"
+msgstr "Importeren uit CSV-bestanden"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "Importeer voorbeeldfamilies, mensen en groepen om ChurchCRM met realistische gegevens te verkennen."
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "Installeer TLS/SSL-certificaat voor betere beveiliging"
+
+#: 
+msgid "Jan"
+msgstr "Jan"
+
+#: 
+msgid "Jr., Sr."
+msgstr "Jr., Sr."
+
+#: 
+msgid "Jul"
+msgstr "Jul"
+
+#: 
+msgid "Jun"
+msgstr "Jun"
+
+#: 
+msgid "Latest Note"
+msgstr "Recentste Notitie"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "Laten we uw systeem instellen en gebruiksklaar maken"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "Vermeld leden die gerechtigd zijn om te stemmen op basis van giftgeschiedenis en ledencriteria."
+
+#: 
+msgid "Location"
+msgstr "Locatie"
+
+#: 
+msgid "M"
+msgstr "M"
+
+#: 
+msgid "Manage Funds"
+msgstr "Fondsen Beheren"
+
+#: 
+msgid "Manage Users"
+msgstr "Gebruikers Beheren"
+
+#: 
+msgid "Mar"
+msgstr "Mar"
+
+#: 
+msgid "Membership Reports"
+msgstr "Lidmaatschapsrapporten"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "Ontbrekende Geheime Sleutels"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "De meeste rapporten kunnen als PDF voor afdrukken of CSV voor spreadsheetanalyse worden geëxporteerd."
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "Dhr., Mevr., Dr."
+
+#: 
+msgid "Name & Identity"
+msgstr "Naam en Identiteit"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "Nieuwe Storting wordt gemaakt"
+
+#: 
+msgid "New Payment"
+msgstr "Nieuwe Betaling"
+
+#: 
+msgid "New Pledge"
+msgstr "Nieuwe Belofte"
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "Volgende 7 dagen en afgelopen 7 dagen"
+
+#: 
+msgid "No Active Deposit"
+msgstr "Geen Actieve Storting"
+
+#: 
+msgid "No active funds configured."
+msgstr "Geen actieve fondsen geconfigureerd."
+
+#: 
+msgid "No deposits found."
+msgstr "Geen stortingen gevonden."
+
+#: 
+msgid "No format"
+msgstr "Geen formaat"
+
+#: 
+msgid "Nov"
+msgstr "Nov"
+
+#: 
+msgid "Oct"
+msgstr "Oct"
+
+#: 
+msgid "Open"
+msgstr "Open"
+
+#: 
+msgid "Open Deposits:"
+msgstr "Open Stortingen:"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "Organisatie, tijdzone, e-mail"
+
+#: 
+msgid "Organizational structure"
+msgstr "Organisatiestructuur"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "Verweesde Bestanden:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
+msgid "Payment"
+msgstr "Betaling"
+
+#: 
+msgid "Pledge Reports"
+msgstr "Toezeggingsrapporten"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "Druk of e-mail jaarlijkse giftafschriften naar alle donateurs."
+
+#: 
+msgid "Quick Actions"
+msgstr "Snelle Acties"
+
+#: 
+msgid "Quick Start"
+msgstr "Snel Starten"
+
+#: 
+msgid "Recent Deposits"
+msgstr "Recente Stortingen"
+
+#: 
+msgid "Recording a Payment"
+msgstr "Een betaling registreren"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "Een belofte registreren"
+
+#: 
+msgid "Report Tips"
+msgstr "Rapporttips"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "Rapporten met betrekking tot stemgerechtigheid van leden en organisatiebeheer."
+
+#: 
+msgid "Reset"
+msgstr "Resetten"
+
+#: 
+msgid "Restore"
+msgstr "Herstellen"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "Herstellen uit een back-upbestand. Wist bestaande gegevens."
+
+#: 
+msgid "Review Donation Funds"
+msgstr "Controleer Donatiefondsen"
+
+#: 
+msgid "SMTP server settings are not configured"
+msgstr "SMTP-serverinstellingen zijn niet geconfigureerd"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "Opslaan en Nieuwe Familie Toevoegen"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Geheime sleutels ontbreken in Config.php"
+
+#: 
+msgid "Sep"
+msgstr "Sep"
+
+#: 
+msgid "Server error"
+msgstr "Serverfout"
+
+#: 
+msgid "Settings"
+msgstr "Instellingen"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "Instellingen succesvol opgeslagen"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "Installatietaken:"
+
+#: 
+msgid "Social Media"
+msgstr "Sociale Media"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "Sommige toepassingsvereisten zijn niet gehaald"
+
+#: 
+msgid "State (Other)"
+msgstr "Staat (Ander)"
+
+#: 
+msgid "Status:"
+msgstr "Status:"
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "Samenvatting van toezeggingen versus betalingen per fonds voor het fiscale jaar."
+
+#: 
+msgid "System Configuration:"
+msgstr "Systeemconfiguratie:"
+
+#: 
+msgid "System Health"
+msgstr "Systeemgezondheid"
+
+#: 
+msgid "System Info"
+msgstr "Systeeminformatie"
+
+#: 
+msgid "Tax & Giving Reports"
+msgstr "Belasting- en Giftingraporten"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "Belastingrapportformulering"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "Belastingafschriften (Giftrapport)"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "Controlelijst voor belastingjaarrapportage"
+
+#: 
+msgid "Today"
+msgstr "Vandaag"
+
+#: 
+msgid "Total"
+msgstr "Totaal"
+
+#: 
+msgid "Total Amount"
+msgstr "Totaalbedrag"
+
+#: 
+msgid "Total Deposits:"
+msgstr "Totale Stortingen:"
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "Volg toezeggingen en betalingsvoortgang voor campagnes en budgettering van fiscale jaren."
+
+#: 
+msgid "Type:"
+msgstr "Type:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "Niet-voldane Vereisten"
+
+#: 
+msgid "Update Church Name"
+msgstr "Kerknaam Bijwerken"
+
+#: 
+msgid "Upgrade"
+msgstr "Upgrade"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "Gebruik classificatie- en familiefilters om rapporten voor specifieke groepen donateurs te genereren."
+
+#: 
+msgid "User accounts and roles"
+msgstr "Gebruikersaccounts en rollen"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "Gebruiker moet een beheerder zijn of financiële toestemming hebben"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Controleer of kerknaam, adres en contactgegevens op belastingafschriften staan."
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "Controleer of fondsnamen en beschrijvingen nauwkeurig zijn voor afschriften."
+
+#: 
+msgid "Version:"
+msgstr "Versie:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "Welkom bij ChurchCRM"
+
+#: 
+msgid "YTD Payments"
+msgstr "JTD-betalingen"
+
+#: 
+msgid "YTD Pledges"
+msgstr "JTD-toezeggingen"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "U kunt familieleden nu toevoegen of later toevoegen. Alle vermeldingen worden nieuwe persoonrecords."
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "Uw fiscale jaar begint in maand"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Postcode"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "ZipArchive-uitbreiding vereist voor upgrades"
+
+#: 
+msgid "active"
+msgstr "actief"
+
+#: 
+msgid "ago"
+msgstr "geleden"
+
+#: 
+msgid "day"
+msgstr "dag"
+
+#: 
+msgid "days"
+msgstr "dagen"
+
+#: 
+msgid "found"
+msgstr "gevonden"
+
+#: 
+msgid "in"
+msgstr "in"
+
+#: 
+msgid "issues"
+msgstr "problemen"
+
+#: 
+msgid "open"
+msgstr "open"
+
+#: 
+msgid "years"
+msgstr "jaren"
+
+#: 
+msgid "yes"
+msgstr "ja"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(Voer staat/provincie in voor landen zonder vooraf bepaalde staten)"
+
+#: 
+msgid "Available"
+msgstr "Beschikbaar"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "Base URL-configuratie is ongeldig. Controleer uw Config.php-bestand."
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "Base URL is niet geconfigureerd in Config.php"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "ChurchCRM Ondersteunde Talen"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "Maak verbinding met uw server via SSH, FTP of uw hostingcontrolpanel"
+
+#: 
+msgid "Contact"
+msgstr "Contact"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "Kritieke Configuratiefout"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "Huiges $URL[0] waarde:"
+
+#: 
+msgid "Custom port:"
+msgstr "Aangepaste poort:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "Eindigt met een <strong>trailing slash</strong> (/)"
+
+#: 
+msgid "Error:"
+msgstr "Fout:"
+
+#: 
+msgid "Find the line:"
+msgstr "Vind de regel:"
+
+#: 
+msgid "Group Memberships"
+msgstr "Groepslidmaatschappen"
+
+#: 
+msgid "How to Fix:"
+msgstr "Hoe te herstellen:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "Sluit u aan bij de ChurchCRM-gemeenschap en help ons verbeteren door uw informatie te delen. Het duurt minder dan een minuut!"
+
+#: 
+msgid "Language"
+msgstr "Taal"
+
+#: 
+msgid "Local development:"
+msgstr "Lokale ontwikkeling:"
+
+#: 
+msgid "Locale Support"
+msgstr "Taalondersteuning"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "Locatie en Contactgegevens"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "Navigeer naar uw ChurchCRM-installatiedirectory"
+
+#: 
+msgid "New to"
+msgstr "Nieuw voor"
+
+#: 
+msgid "No locales configured"
+msgstr "Geen talen geconfigureerd"
+
+#: 
+msgid "Not Available"
+msgstr "Niet beschikbaar"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "Open dit bestand in een teksteditor:"
+
+#: 
+msgid "Register Now"
+msgstr "Registreer nu"
+
+#: 
+msgid "Register Your Church"
+msgstr "Registreer Uw Kerk"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "Sla het bestand op en vernieuw deze pagina"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "Stel in op true om het invoeren van persoonlijke adressen voor niet-gelieerde personen in Persooneditor uit te schakelen. Stel in op false om het invoeren van adressen voor personen zonder familietoewijzing in te schakelen."
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "Begint met <strong>http://</strong> of <strong>https://</strong>"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "Subdirectory-installatie:"
+
+#: 
+msgid "System Locale Support"
+msgstr "Systeem Taalondersteuning"
+
+#: 
+msgid "System Support"
+msgstr "Systeemondersteuning"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URL bevat geen geldige hostnaam"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "URL-hostnaam is niet geldig"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URL is niet in geldig formaat"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URL moet eindigen met een trailing slash (/)"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URL moet beginnen met http:// of https://"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "Kan systeemtalen niet detecteren"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "Kan beschikbare talen niet bepalen"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "Kan taalinformatie niet laden"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "Kan staatlijst niet laden. Controleer uw netwerkverbinding of probeer het later opnieuw."
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "Werk het bij naar een geldig URL dat:"
+
+#: 
+msgid "Valid Examples:"
+msgstr "Geldige Voorbeelden:"
+
+#: 
+msgid "View Logs"
+msgstr "Weergave Logs"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "Weergave en beheer van systeemlogbestanden voor foutopsporing."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "U moet een achternaam invoeren."
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "Uw privacy is belangrijk. We delen uw informatie nooit met derden."
+
+#: 
+msgid "Additional Information"
+msgstr "Aanvullende Informatie"
+
+#: 
+msgid "All information is correct"
+msgstr "Alle informatie is correct"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "Mogelijkheden Toewijzen"
+
+#: 
+msgid "Assign Property"
+msgstr "Eigenschap Toewijzen"
+
+#: 
+msgid "Choose a property..."
+msgstr "Kies een eigenschap..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "Kies mogelijkheden..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "Bevestig Familiegegevens"
+
+#: 
+msgid "Confirm family information"
+msgstr "Bevestig familiegegevens"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "Contact en Persoonlijke Gegevens"
+
+#: 
+msgid "Copied!"
+msgstr "Gekopieerd!"
+
+#: 
+msgid "Edit Role"
+msgstr "Rol Bewerken"
+
+#: 
+msgid "Edited"
+msgstr "Bewerkt"
+
+#: 
+msgid "Email PDF"
+msgstr "E-mail PDF"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "Fout bij het kopiëren van URL"
+
+#: 
+msgid "ID:"
+msgstr "ID:"
+
+#: 
+msgid "Newsletter"
+msgstr "Nieuwsbrief"
+
+#: 
+msgid "No assigned family"
+msgstr "Geen toegewezen familie"
+
+#: 
+msgid "Open in New Tab"
+msgstr "Open in Nieuw Tabblad"
+
+#: 
+msgid "Personal"
+msgstr "Persoonlijk"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "Bevestig alstublieft uw familiegegevens:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "Werk alstublieft onze records bij met correcties"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "Geef hier aanvullende informatie..."
+
+#: 
+msgid "Remove Property"
+msgstr "Eigenschap Verwijderen"
+
+#: 
+msgid "Select Opportunities"
+msgstr "Selecteer Mogelijkheden"
+
+#: 
+msgid "Select Property"
+msgstr "Selecteer Eigenschap"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Deel deze URL met familieleden om hun informatie te verifiëren"
+
+#: 
+msgid "Submit Verification"
+msgstr "Verificatie Verzenden"
+
+#: 
+msgid "Thank You!"
+msgstr "Dank u!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "Vertaling onvolledig"
+
+#: 
+msgid "Visit Our Website"
+msgstr "Bezoek Onze Website"
+
+#: 
+msgid "Volunteer"
+msgstr "Vrijwilliger"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "Er is een fout opgetreden bij het verwerken van uw verificatie. Probeer opnieuw of neem rechtstreeks contact met ons op."
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "Uw verificatieverzoek is ontvangen. Dank u dat u uw informatie actueel houdt."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "Er is een fout opgetreden. Neem contact op met uw systeembeheerder."
+
+#: 
+msgid "Backup failed"
+msgstr "Back-up mislukt"
+
+#: 
+msgid "Database reset failed"
+msgstr "Database opnieuw instellen mislukt"
+
+#: 
+msgid "Database restore failed"
+msgstr "Database herstellen mislukt"
+
+#: 
+msgid "Demo data import failed"
+msgstr "Demogegevens importeren mislukt"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "Demogegevens importeren is alleen beschikbaar bij nieuwe installaties met exactement 1 persoon"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "Demogegevens succesvol geladen"
+
+#: 
+msgid "Download failed"
+msgstr "Download mislukt"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "Upgrade toepassen mislukt"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "Verweesde bestanden verwijderen mislukt"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "Nieuwste release downloaden mislukt"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "Upgrade-informatie vernieuwen mislukt"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "Familie foto uploaden mislukt"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "Persoon foto uploaden mislukt"
+
+#: 
+msgid "Remote backup failed"
+msgstr "Externe back-up mislukt"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "WebDAV back-ups zijn niet correct geconfigureerd. Zorg ervoor dat eindpunt, gebruikersnaam en wachtwoord zijn ingesteld"
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA Ingeschakeld"
+
+#: 
+msgid "Active Users"
+msgstr "Actieve Gebruikers"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "ChMeetings Export"
+
+#: 
+msgid "Delete User"
+msgstr "Gebruiker Verwijderen"
+
+#: 
+msgid "Disable 2FA"
+msgstr "2FA Uitschakelen"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "Exporteer alle persoongegevens in ChMeetings-indeling voor import in externe systemen."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "Exporteer naar ChMeetings CSV"
+
+#: 
+msgid "Exporting..."
+msgstr "Aan het exporteren..."
+
+#: 
+msgid "Family Listing"
+msgstr "Familielijst"
+
+#: 
+msgid "Invalid request data"
+msgstr "Ongeldige aanvraaggegevens"
+
+#: 
+msgid "Invalid status"
+msgstr "Ongeldige status"
+
+#: 
+msgid "Locked Users"
+msgstr "Vergrendelde Gebruikers"
+
+#: 
+msgid "Person Listing"
+msgstr "Persoonlijst"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "Persoon(en) verwijderd uit winkelwagen"
+
+#: 
+msgid "Quick Settings"
+msgstr "Snelle Instellingen"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "Mislukte Aanmeldingen Opnieuw Instellen"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "Wachtwoord Resetten via E-mail"
+
+#: 
+msgid "Set Active"
+msgstr "Stel Actief In"
+
+#: 
+msgid "Set Inactive"
+msgstr "Stel Inactief In"
+
+#: 
+msgid "Show"
+msgstr "Weergave"
+
+#: 
+msgid "Showing"
+msgstr "Weergeven"
+
+#: 
+msgid "Total Users"
+msgstr "Totale Gebruikers"
+
+#: 
+msgid "User Management"
+msgstr "Gebruikersbeheer"
+
+#: 
+msgid "View Details"
+msgstr "Weergave Details"
+
+#: 
+msgid "entries"
+msgstr "vermeldingen"
+
+#: 
+msgid "of"
+msgstr "van"
+
+#: 
+msgid "total"
+msgstr "totaal"
+
+#: 
+msgid "Code incomplete"
+msgstr "Code onvolledig"
+
+#: 
+msgid "Code is invalid"
+msgstr "Code is ongeldig"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "Versleutelingssleutel voor het opslaan van 2FA-geheime sleutels in de database"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "Twee-Factor-Authenticatie"
+
+#: 
+msgid "Validation pending"
+msgstr "Validatie in behandeling"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "moet worden geconfigureerd met een versleutelingssleutel"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d persoon aan winkelwagen toegevoegd."
+msgstr[1] "%d personen aan winkelwagen toegevoegd."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde familie."
+msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde familie."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde groep."
+msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde groep."
+
+#: 
+msgid "A "
+msgstr "Een "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "TOEVOEGEN, Verwijderen en volgorde wijzigingen zijn onmiddellijk. Naam en Beschrijving wijzigingen moeten worden opgeslagen door op 'Wijzigingen Opslaan' te klikken."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "Weet je zeker dat je wilt verwijderen"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Pijl- en verwijderknoppen hebben onmiddellijk effect. Veldnaamwijzigingen gaan verloren als u niet op 'Wijzigingen Opslaan' klikt voordat u een omhoog, omlaag, verwijder of 'nieuw toevoegen'-knop gebruikt!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "Door dit veld te verwijderen, verliest u voor altijd alle familiegegevens die voor dit veld zijn toegewezen!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "Door dit veld te verwijderen, verliest u voor altijd alle persoongegevens die voor dit veld zijn toegewezen!"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "Wijzigingen niet opgeslagen! Corrigeer en probeer het opnieuw!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "Bevestig Verwijdering van Eigenschap"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "Bevestig Verwijdering van Vrijwilligersmogelijkheid"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "Verwijdering Bevestigen"
+
+#: 
+msgid "Existing"
+msgstr "Bestaande"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "Bestaande Aangepaste Familievelden"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "Bestaande Aangepaste Persoonsvelden"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "Bestaande Vrijwilligersmogelijkheden"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "Veld succesvol verwijderd"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Ongeldig CSRF-token"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "Ongeldige velden of selecties."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Item succesvol verwijderd"
+
+#: 
+msgid "Move down"
+msgstr "Omlaag verplaatsen"
+
+#: 
+msgid "Move up"
+msgstr "Omhoog verplaatsen"
+
+#: 
+msgid "Opportunity"
+msgstr "Mogelijkheid"
+
+#: 
+msgid "Order"
+msgstr "Volgorde"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "PDF's succesvol per e-mail verzonden naar %s families."
+
+#: 
+msgid "Percentage"
+msgstr "Percentage"
+
+#: 
+msgid "Person Properties"
+msgstr "Persoonseigenschappen"
+
+#: 
+msgid "Property Type"
+msgstr "Eigendomstype"
+
+#: 
+msgid "Property to Delete"
+msgstr "Eigenschap te Verwijderen"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "Er zijn personen toegewezen aan deze Vrijwilligersmogelijkheid. Verwijdering zal unassign:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "Dit zal het verwijderen uit alle personen die er momenteel aan zijn toegewezen."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Vrijwilligersmogelijkheid"
+
+#: 
+msgid "Warning:"
+msgstr "Waarschuwing:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "Ja, verwijder deze Mogelijkheid"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "Query's waarvoor de gebruiker financiële machtigingen moet hebben om te gebruiken"
+
+#: 
+msgid "Fund(s)"
+msgstr "Fonds(en)"
+
+#: 
+msgid "Password reset for"
+msgstr "Wachtwoord opnieuw instellen voor"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Spaans - Argentinië"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Spaans - Colombia"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Spaans - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Spaans - Mexico"
+

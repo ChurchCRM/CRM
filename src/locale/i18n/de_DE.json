@@ -2146,6 +2146,7 @@
     "Generate Report": "Bericht generieren",
     "No Cash": "Kein Bargeld",
     "No Checks": "Keine Schecks",
+    "No payments yet. Click \"Add Payment\" to get started.": "Noch keine Zahlungen. Klicken Sie auf \"Zahlung hinzufügen\", um zu beginnen.",
     "NonDeductible amount exceeds maximum allowed value (999999.99).": "Der nicht abzugsfähige Betrag übersteigt den maximal zulässigen Wert (999999,99).",
     "Payments": "Zahlungen",
     "Payments deleted successfully": "Zahlungen erfolgreich gelöscht",
@@ -2225,6 +2226,7 @@
     "Deleting this event will also delete all attendance records. Are you sure?": "Das Löschen dieses Ereignisses löscht auch alle Anwesenheitsdatensätze. Sind Sie sicher?",
     "Edit Event": "Ereignis bearbeiten",
     "Editing Event": "Ereignis wird bearbeitet",
+    "Enter comma-separated count categories. \"Total\" is automatically included.": "Geben Sie durch Kommas getrennte Zählkategorien ein. \"Summe\" wird automatisch einbezogen.",
     "Enter event title...": "Ereignistitel eingeben...",
     "Event": "Ereignis",
     "Event Type Name": "Ereignistypname",
@@ -2745,5 +2747,9 @@
     "Yes, delete this Opportunity": "Ja, diese Chance löschen",
     "Queries for which user must have finance permissions to use": "Abfragen, für die der Benutzer Finanzberechtigung haben muss, um sie zu verwenden",
     "Fund(s)": "Geldmittel",
-    "Password reset for": "Passwort-Zurücksetzen für"
+    "Password reset for": "Passwort-Zurücksetzen für",
+    "Spanish - Argentina": "Spanisch - Argentinien",
+    "Spanish - Colombia": "Spanisch - Kolumbien",
+    "Spanish - El Salvador": "Spanisch - El Salvador",
+    "Spanish - Mexico": "Spanisch - Mexiko"
 }

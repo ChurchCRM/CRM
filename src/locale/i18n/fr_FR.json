@@ -2199,6 +2199,10 @@
     "Skipped": "Ignoré",
     "Unknown error": "Erreur inconnue",
     "deposit(s) with no payments": "versement(s) sans offrande",
+    "%d event in %s": {
+        "one": "%d événement dans %s",
+        "other": "%d événements dans %s"
+    },
     "All Event Types": "Tous les types d'événements",
     "All Types": "Tous les types",
     "Are you sure you want to delete this check-in record?": "Êtes-vous sûr de vouloir supprimer cet enregistrement de présence ?",
@@ -2263,6 +2267,10 @@
     "added to this event": "ajouté à cet événement",
     "e.g., Sunday School, Bible Study...": "Par exemple, École du dimanche, Étude biblique...",
     "optional": "optionnel",
+    "person": {
+        "one": "personne",
+        "other": "personnes"
+    },
     "✓ CheckOut": "✓ Enregistrement de sortie",
     "%d Orphaned Files Detected": "%d fichiers orphelins détectés",
     "%d files have been modified or are missing. Use Force Re-install to restore official versions.": "%d fichiers ont été modifiés ou manquent. Utilisez Réinstallation forcée pour restaurer les versions officielles.",
@@ -2696,6 +2704,18 @@
     "Two-Factor Authentication": "Authentification à deux facteurs",
     "Validation pending": "Validation en attente",
     "must be configured with an encryption key": "doit être configuré avec une clé de chiffrement",
+    "%d Person added to the Cart.": {
+        "one": "%d personne ajoutée au panier.",
+        "other": "%d personnes ajoutées au panier."
+    },
+    "%d Person successfully added to selected Family.": {
+        "one": "%d personne ajoutée avec succès à la famille sélectionnée.",
+        "other": "%d personnes ajoutées avec succès à la famille sélectionnée."
+    },
+    "%d Person successfully added to selected Group.": {
+        "one": "%d personne ajoutée avec succès au groupe sélectionné.",
+        "other": "%d personnes ajoutées avec succès au groupe sélectionné."
+    },
     "A ": "A ",
     "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.": "Les modifications D'AJOUT, de suppression et de classement sont immédiates. Les modifications de nom et de description doivent être enregistrées en cliquant sur \"Enregistrer les modifications\".",
     "Are you sure you want to delete": "Êtes-vous sûr de vouloir supprimer",
@@ -2730,5 +2750,9 @@
     "Yes, delete this Opportunity": "Oui, supprimez cette opportunité",
     "Queries for which user must have finance permissions to use": "Les requêtes pour lesquelles l'utilisateur doit avoir les autorisations de finances pour utiliser",
     "Fund(s)": "Fonds",
-    "Password reset for": "Réinitialisation du mot de passe pour"
+    "Password reset for": "Réinitialisation du mot de passe pour",
+    "Spanish - Argentina": "Espagnol - Argentine",
+    "Spanish - Colombia": "Espagnol - Colombie",
+    "Spanish - El Salvador": "Espagnol - El Salvador",
+    "Spanish - Mexico": "Espagnol - Mexique"
 }

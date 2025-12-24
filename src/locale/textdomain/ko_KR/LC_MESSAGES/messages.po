@@ -11380,3 +11380,23 @@ msgstr "펀드"
 msgid "Password reset for"
 msgstr "암호 재설정 대상"
 
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "스페인어 - 아르헨티나"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "스페인어 - 콜롬비아"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "스페인어 - 엘살바도르"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "스페인어 - 멕시코"
+

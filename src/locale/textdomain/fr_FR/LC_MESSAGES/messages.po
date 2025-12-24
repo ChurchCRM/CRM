@@ -9240,6 +9240,12 @@ msgid "deposit(s) with no payments"
 msgstr "versement(s) sans offrande"
 
 #: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d événement dans %s"
+msgstr[1] "%d événements dans %s"
+
+#: 
 msgid "All Event Types"
 msgstr "Tous les types d'événements"
 
@@ -9494,6 +9500,12 @@ msgstr "Par exemple, École du dimanche, Étude biblique..."
 #: 
 msgid "optional"
 msgstr "optionnel"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "personne"
+msgstr[1] "personnes"
 
 #: 
 msgid "✓ CheckOut"
@@ -11228,6 +11240,24 @@ msgid "must be configured with an encryption key"
 msgstr "doit être configuré avec une clé de chiffrement"
 
 #: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d personne ajoutée au panier."
+msgstr[1] "%d personnes ajoutées au panier."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d personne ajoutée avec succès à la famille sélectionnée."
+msgstr[1] "%d personnes ajoutées avec succès à la famille sélectionnée."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d personne ajoutée avec succès au groupe sélectionné."
+msgstr[1] "%d personnes ajoutées avec succès au groupe sélectionné."
+
+#: 
 msgid "A "
 msgstr "A "
 
@@ -11366,4 +11396,24 @@ msgstr "Fonds"
 #: 
 msgid "Password reset for"
 msgstr "Réinitialisation du mot de passe pour"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Espagnol - Argentine"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Espagnol - Colombie"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Espagnol - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Espagnol - Mexique"
 

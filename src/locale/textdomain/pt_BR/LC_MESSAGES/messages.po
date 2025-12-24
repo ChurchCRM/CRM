@@ -12986,3 +12986,83 @@ msgstr "Mover para baixo"
 msgid "Move up"
 msgstr "Mover para cima"
 
+#: 
+msgid "Opportunity"
+msgstr "Oportunidade"
+
+#: 
+msgid "Order"
+msgstr "Pedido"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "PDFs enviados com sucesso para %s famílias."
+
+#: 
+msgid "Percentage"
+msgstr "Percentual"
+
+#: 
+msgid "Person Properties"
+msgstr "Propriedades da Pessoa"
+
+#: 
+msgid "Property Type"
+msgstr "Tipo de Propriedade"
+
+#: 
+msgid "Property to Delete"
+msgstr "Propriedade a Excluir"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "Há pessoas atribuídas a esta Oportunidade de Voluntário. A exclusão desatribuirá:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "Isso o removerá de todas as pessoas atualmente atribuídas a ele."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Oportunidade de Voluntário"
+
+#: 
+msgid "Warning:"
+msgstr "Aviso:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "Sim, excluir esta Oportunidade"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "Consultas para as quais o usuário deve ter permissões de finanças para usar"
+
+#: 
+msgid "Fund(s)"
+msgstr "Fundo(s)"
+
+#: 
+msgid "Password reset for"
+msgstr "Redefinição de senha para"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Espanhol - Argentina"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Espanhol - Colômbia"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Espanhol - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Espanhol - México"
+

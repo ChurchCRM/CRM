@@ -11391,3 +11391,23 @@ msgstr "Vahend(id)"
 msgid "Password reset for"
 msgstr "Parooli lähtestamine"
 
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Hispaania - Argentiina"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Hispaania - Kolumbia"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Hispaania - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Hispaania - Mehhiko"
+

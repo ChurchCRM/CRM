@@ -11335,3 +11335,23 @@ msgstr "Fondo(s)"
 msgid "Password reset for"
 msgstr "Reinicio de contraseña para"
 
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Español - Argentina"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Español - Colombia"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Español - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Español - México"
+

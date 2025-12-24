@@ -11414,3 +11414,23 @@ msgstr "Fondo/i"
 msgid "Password reset for"
 msgstr "Ripristino password per"
 
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Spagnolo - Argentina"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Spagnolo - Colombia"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Spagnolo - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Spagnolo - Messico"
+

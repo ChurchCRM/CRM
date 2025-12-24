@@ -10,21 +10,21 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `cs` | Czech | 2729 | 99.85% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 2729 | 99.85% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 2729 | 99.85% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2729 | 99.85% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
-| `de` | German | 2726 | 99.74% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 2724 | 99.67% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 2721 | 99.56% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 2713 | 99.27% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 2713 | 99.27% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 2205 | 80.68% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 2733 | 100% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 2733 | 100% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 2733 | 100% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 2733 | 100% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 2733 | 100% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `de` | German | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 1942 | 71.06% | 🟡 Good | ✅ Yes |
 | `he` | Hebrew | 1911 | 69.92% | 🟡 Good | ✅ Yes |
 | `vi` | Vietnamese | 1903 | 69.63% | 🟡 Good | ✅ Yes |

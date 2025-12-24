@@ -9144,6 +9144,10 @@ msgid "No Checks"
 msgstr "Keine Schecks"
 
 #: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Noch keine Zahlungen. Klicken Sie auf \"Zahlung hinzufügen\", um zu beginnen."
+
+#: 
 msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
 msgstr "Der nicht abzugsfähige Betrag übersteigt den maximal zulässigen Wert (999999,99)."
 
@@ -9448,6 +9452,10 @@ msgstr "Ereignis bearbeiten"
 #: 
 msgid "Editing Event"
 msgstr "Ereignis wird bearbeitet"
+
+#: 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr "Geben Sie durch Kommas getrennte Zählkategorien ein. \"Summe\" wird automatisch einbezogen."
 
 #: 
 msgid "Enter event title..."
@@ -11492,4 +11500,24 @@ msgstr "Geldmittel"
 #: 
 msgid "Password reset for"
 msgstr "Passwort-Zurücksetzen für"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Spanisch - Argentinien"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Spanisch - Kolumbien"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Spanisch - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Spanisch - Mexiko"
 
