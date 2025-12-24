@@ -202,19 +202,19 @@ function initDepositSlipEditor() {
         return (
             '<table cellpadding="5" cellspacing="0" style="padding-left:50px;">' +
             "<tr>" +
-            "<td>Date:</td>" +
+            "<td>" + i18next.t("Date") + ":</td>" +
             "<td>" +
             moment(d.Date).format("MM-DD-YYYY") +
             "</td>" +
             "</tr>" +
             "<tr>" +
-            "<td>Fiscal Year:</td>" +
+            "<td>" + i18next.t("Fiscal Year") + ":</td>" +
             "<td>" +
             d.FyId +
             "</td>" +
             "</tr>" +
             "<tr>" +
-            "<td>Fund(s):</td>" +
+            "<td>" + i18next.t("Fund(s)") + ":</td>" +
             "<td>" +
             d.DonationFundName +
             "</td>" +

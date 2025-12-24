@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 16:35-0800\n"
+"POT-Creation-Date: 2025-12-23 17:10-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1738,7 +1738,7 @@ msgstr ""
 msgid "Current Version:"
 msgstr ""
 
-msgid "Current fiscal year:"
+msgid "Current fiscal year"
 msgstr ""
 
 msgid "Custom Drop-Down List"
@@ -2243,7 +2243,7 @@ msgstr ""
 msgid "Donated Item Editor"
 msgstr ""
 
-msgid "Donated Items:"
+msgid "Donated Items"
 msgstr ""
 
 msgid "Donated by "
@@ -3121,7 +3121,7 @@ msgstr ""
 msgid "Filter Events"
 msgstr ""
 
-msgid "Filter by Deposit:"
+msgid "Filter by Deposit"
 msgstr ""
 
 msgid "Filter by Event Type"
@@ -3133,7 +3133,7 @@ msgstr ""
 msgid "Filter by Fund"
 msgstr ""
 
-msgid "Filter by Payment Type:"
+msgid "Filter by Payment Type"
 msgstr ""
 
 msgid "Filter by Type"
@@ -3340,6 +3340,9 @@ msgstr ""
 msgid "Fund Name"
 msgstr ""
 
+msgid "Fund(s)"
+msgstr ""
+
 msgid "Fundraiser"
 msgstr ""
 
@@ -3441,10 +3444,10 @@ msgstr ""
 msgid "Gibraltar"
 msgstr ""
 
-msgid "Gift Amount:"
+msgid "Gift Amount"
 msgstr ""
 
-msgid "Gift Designation:"
+msgid "Gift Designation"
 msgstr ""
 
 msgid "Girls"
@@ -3593,7 +3596,7 @@ msgstr ""
 msgid "Group-Specific Properties"
 msgstr ""
 
-msgid "Group-Specific Properties Form Editor:"
+msgid "Group-Specific Properties Form Editor"
 msgstr ""
 
 msgid "Group-Specific Property Fields"
@@ -5963,7 +5966,7 @@ msgstr ""
 msgid "Puerto Rico"
 msgstr ""
 
-msgid "Purchased Items:"
+msgid "Purchased Items"
 msgstr ""
 
 #. Context: countries
@@ -8076,9 +8079,6 @@ msgid "Volunteers"
 msgstr ""
 
 msgid "Voting Members"
-msgstr ""
-
-msgid "Voting members "
 msgstr ""
 
 msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"

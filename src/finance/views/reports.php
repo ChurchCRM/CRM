@@ -236,8 +236,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <div class="col-md-4">
                             <h6><i class="fa-solid fa-calendar-check text-primary"></i> <?= gettext('Fiscal Year') ?></h6>
                             <p class="small text-muted">
-                                <?= gettext('Your fiscal year starts in month') ?> <strong><?= $iFYMonth ?></strong>. 
-                                <?= gettext('Current fiscal year:') ?> <strong><?= $fyLabel ?></strong>.
+                                <?= gettext('Your fiscal year starts in month') ?> <strong><?= $iFYMonth ?></strong>.
+                                <?= gettext('Current fiscal year') ?>: <strong><?= $fyLabel ?></strong>.
                                 <?= gettext('Change this in System Settings.') ?>
                             </p>
                         </div>

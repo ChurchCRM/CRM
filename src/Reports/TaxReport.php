@@ -231,10 +231,10 @@ if ($output === 'pdf') {
                 }
                 $curX = 100;
                 $curY = 215;
-                $this->writeAt($curX, $curY, gettext('Gift Amount:'));
+                $this->writeAt($curX, $curY, gettext('Gift Amount') . ':');
                 $this->writeAt($curX + 25, $curY, '_______________________________');
                 $curY += (2 * SystemConfig::getValue('incrementY'));
-                $this->writeAt($curX, $curY, gettext('Gift Designation:'));
+                $this->writeAt($curX, $curY, gettext('Gift Designation') . ':');
                 $this->writeAt($curX + 25, $curY, '_______________________________');
                 $curY = 200 + (11 * SystemConfig::getValue('incrementY'));
             }
