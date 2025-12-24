@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-23 17:52-0800\n"
+"POT-Creation-Date: 2025-12-24 10:59-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -6900,6 +6900,22 @@ msgstr ""
 
 #. Context: countries
 msgid "Spain (España)"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Argentina"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Colombia"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - El Salvador"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Mexico"
 msgstr ""
 
 #. Context: locales
