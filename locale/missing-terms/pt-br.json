@@ -29,24 +29,5 @@
   "%d Person successfully added to selected Group.": {
     "one": "",
     "other": ""
-  },
-  "Opportunity": "",
-  "Order": "",
-  "PDFs successfully emailed to %s families.": "",
-  "Percentage": "",
-  "Person Properties": "",
-  "Property Type": "",
-  "Property to Delete": "",
-  "There are people assigned to this Volunteer Opportunity. Deletion will unassign:": "",
-  "This will remove it from all people currently assigned to it.": "",
-  "Volunteer Opportunity": "",
-  "Warning:": "",
-  "Yes, delete this Opportunity": "",
-  "Queries for which user must have finance permissions to use": "",
-  "Fund(s)": "",
-  "Password reset for": "",
-  "Spanish - Argentina": "",
-  "Spanish - Colombia": "",
-  "Spanish - El Salvador": "",
-  "Spanish - Mexico": ""
+  }
 }

@@ -10,12 +10,10 @@
   ", -, ., / allowed.": {
     "Must start with / if not empty, no trailing slash. Only letters, numbers, ": ""
   },
-  "No payments yet. Click \"Add Payment\" to get started.": "",
   "%d event in %s": {
     "one": "",
     "other": ""
   },
-  "Enter comma-separated count categories. \"Total\" is automatically included.": "",
   "person": {
     "one": "",
     "other": ""
@@ -31,9 +29,5 @@
   "%d Person successfully added to selected Group.": {
     "one": "",
     "other": ""
-  },
-  "Spanish - Argentina": "",
-  "Spanish - Colombia": "",
-  "Spanish - El Salvador": "",
-  "Spanish - Mexico": ""
+  }
 }
