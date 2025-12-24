@@ -129,6 +129,64 @@ class TermExtractor {
     }
 
     /**
+     * Remove PO entries whose msgid is only numeric characters
+     */
+    filterOutNumericOnlyTerms(filePath) {
+        try {
+            if (!this.fileExists(filePath)) {
+                return;
+            }
+
+            let content = fs.readFileSync(filePath, 'utf8');
+
+            // Split into blocks separated by one or more blank lines
+            const blocks = content.split(/\n{2,}/);
+            const kept = [];
+
+            for (const block of blocks) {
+                // Find the first msgid and collect any continued string lines
+                const lines = block.split(/\n/);
+                let msgid = null;
+
+                for (let i = 0; i < lines.length; i++) {
+                    const m = lines[i].match(/^msgid\s*"([^"]*)"/);
+                    if (m) {
+                        let s = m[1];
+                        let j = i + 1;
+                        while (j < lines.length && lines[j].match(/^"([^"]*)"/)) {
+                            const m2 = lines[j].match(/^"([^"]*)"/);
+                            s += m2 ? m2[1] : '';
+                            j++;
+                        }
+                        msgid = s;
+                        break;
+                    }
+                }
+
+                // If no msgid found, keep the block (e.g., comments)
+                if (msgid === null) {
+                    kept.push(block);
+                    continue;
+                }
+
+                // If msgid is purely numeric or numeric ranges like 2012/2013 or 2020-2021, skip it
+                // Matches digits optionally separated by '/' or '-' (e.g., 2012, 2012/2013, 2020-2021)
+                if (/^\s*\d+(?:[\/\-]\d+)*\s*$/.test(msgid)) {
+                    this.log('🧾', `Removing numeric-only term msgid="${msgid}"`);
+                    continue;
+                }
+
+                kept.push(block);
+            }
+
+            const out = kept.join('\n\n') + '\n';
+            fs.writeFileSync(filePath, out, 'utf8');
+        } catch (error) {
+            console.error('Failed to filter numeric-only terms:', error.message);
+        }
+    }
+
+    /**
      * Extract database terms
      */
     async extractDatabaseTerms() {
@@ -254,6 +312,9 @@ class TermExtractor {
 
             // 7. Final sort to ensure consistent ordering
             this.log('�', 'Sorting messages.po for consistent ordering...');
+            // Remove numeric-only msgids before final sort
+            this.filterOutNumericOnlyTerms(this.messagesFile);
+
             this.exec(`msgcat --no-wrap --sort-output "${this.messagesFile}" -o "${this.messagesFile}.tmp"`);
             this.exec(`mv "${this.messagesFile}.tmp" "${this.messagesFile}"`);
 
