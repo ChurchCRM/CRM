@@ -187,12 +187,14 @@ msgid "Group Membership"
 msgstr "የቡድን አባልነት"
 
 #: 
-msgid "From:"
-msgstr "ከ:"
+#, fuzzy
+msgid "From"
+msgstr "ከ"
 
 #: 
-msgid "To:"
-msgstr "እስከ:"
+#, fuzzy
+msgid "To"
+msgstr "እስከ"
 
 #: 
 msgid "Birthday Date"
@@ -231,8 +233,9 @@ msgid "No file selected for upload."
 msgstr "ለአፕሎድ የተመረጠ ፋይል የለም."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "በCSV ፋይል ውስጥ ያሉት የረድፎች ጠቅላላ ብዛት፡-"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "በCSV ፋይል ውስጥ ያሉት የረድፎች ጠቅላላ ብዛት"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +549,9 @@ msgid "Convert All"
 msgstr "ሁሉንም ቀይር"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "የተቀማጭ ወረቀት ቁጥር፡- "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "የተቀማጭ ወረቀት ቁጥር"
 
 #: 
 #, fuzzy
@@ -1175,7 +1179,8 @@ msgid "Financial Reports"
 msgstr "የፋይናንስ ሪፖርቶች"
 
 #: 
-msgid "Report Type:"
+#, fuzzy
+msgid "Report Type"
 msgstr "የሪፖርት አይነት"
 
 #: 
@@ -1223,16 +1228,19 @@ msgid "Filter by Family"
 msgstr "በቤተሰብ አጣራ"
 
 #: 
-msgid "Report Start Date:"
-msgstr "የተጀመረበትን ቀን ሪፖርት አድርግ፡"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "የተጀመረበትን ቀን ሪፖርት አድርግ"
 
 #: 
-msgid "Report End Date:"
-msgstr "ያለቀበትን ቀን ሪፖርት አድርግ፡"
+#, fuzzy
+msgid "Report End Date"
+msgstr "ያለቀበትን ቀን ሪፖርት አድርግ"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "የሪፖርት ቀኖችን አመልክት፡-"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "የሪፖርት ቀኖችን አመልክት"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,8 +1251,9 @@ msgid "Payment Date"
 msgstr "የክፍያ ቀን"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "በተቀማጭ ገንዘብ አጣራ፡"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "በተቀማጭ ገንዘብ አጣራ"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1255,8 +1264,9 @@ msgid "All deposits within date range"
 msgstr "በተወሰነ ቀን  ውስጥ ያለ ሁሉም ተቀማጭ ገንዘብ"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "በክፍያ አይነት አጣራ፡"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "በክፍያ አይነት አጣራ"
 
 #: 
 msgid "All Methods"
@@ -1288,20 +1298,12 @@ msgid "Other Settings"
 msgstr "ሌሎች ቅንብሮች"
 
 #: 
-msgid "Include:"
-msgstr "ያካትቱ፡"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "ቃል የተገቡ ክፍያዎች ብቻ"
 
 #: 
 msgid "All Payments"
 msgstr "ሁሉም ክፍያዎች"
-
-#: 
-msgid "Generate:"
-msgstr "አመንጭ"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1352,8 +1354,9 @@ msgid "Summary Data"
 msgstr "ማጠቃለያ መረጃ"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "ድምጽ ሰጪ አባላት በዚህ ብዙ ዓመታት ውስጥ<br> መዋጮ አድርገዋል<br> (ልገሳ የማይፈልግ 0)፡-"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "ድምጽ ሰጪ አባላት በዚህ ብዙ ዓመታት ውስጥ<br> መዋጮ አድርገዋል<br> (ልገሳ የማይፈልግ 0)"
 
 #: 
 msgid "CSV"
@@ -1376,8 +1379,9 @@ msgid "Add New Deposit"
 msgstr "አዲስ ተቀማጭ ጨምር"
 
 #: 
-msgid "Deposits: "
-msgstr "ተቀማጭ ገንዘብ "
+#, fuzzy
+msgid "Deposits"
+msgstr "ተቀማጭ ገንዘብ"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1465,20 +1469,23 @@ msgid "Family Geographic Utilities"
 msgstr "የቤተሰብ ጂኦግራፊያዊ መገልገያዎች"
 
 #: 
-msgid "Select Family:"
-msgstr "ቤተሰብ ይምረጡ፡-"
+#, fuzzy
+msgid "Select Family"
+msgstr "ቤተሰብ ይምረጡ"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "ከፍተኛው የጎረቤቶች ብዛት፡-"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "ከፍተኛው የጎረቤቶች ብዛት"
 
 #: 
 msgid "Maximum distance"
 msgstr "ከፍተኛው ርቀት"
 
 #: 
-msgid "Data file format:"
-msgstr "የውሂብ ፋይል ቅርጸት፡-"
+#, fuzzy
+msgid "Data file format"
+msgstr "የውሂብ ፋይል ቅርጸት"
 
 #: 
 msgid "GPS Visualizer"
@@ -1489,8 +1496,9 @@ msgid "Street Atlas USA"
 msgstr "ጎዳና አትላስ አሜሪካ"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "ቤተሰቦችን በተቀናጀ ፋይል ውስጥ ያካትቱ፡"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "ቤተሰቦችን በተቀናጀ ፋይል ውስጥ ያካትቱ"
 
 #: 
 msgid "Neighbor Families"
@@ -1561,8 +1569,9 @@ msgid "Select a group"
 msgstr "ቡድን ይምረጡ"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "የቡድን ልዩ ባህሪያት፡- "
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "የቡድን ልዩ ባህሪያት"
 
 #: 
 msgid "Enabled"
@@ -1617,8 +1626,9 @@ msgid "data for member"
 msgstr "ለአባል ውሂብ"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "ቡድን-ተኮር ንብረቶች ቅጽ አርታዒ፡-"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "ቡድን-ተኮር ንብረቶች ቅጽ አርታዒ"
 
 #: 
 msgid "No properties have been added yet"
@@ -1775,8 +1785,9 @@ msgid "Move Selected Members to Group"
 msgstr "የተመረጡ አባላትን ወደ ቡድን ያንቀሳቅሱ"
 
 #: 
-msgid "Add Group Member: "
-msgstr "የቡድን አባል አክል፡ "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "የቡድን አባል አክል"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2279,12 +2290,9 @@ msgid "Group Name"
 msgstr "የቡድን ስም"
 
 #: 
-msgid "Notes:"
-msgstr "አጭር ጽሁፍ:"
-
-#: 
-msgid "Entered:"
-msgstr "የገባ:"
+#, fuzzy
+msgid "Entered"
+msgstr "የገባ"
 
 #: 
 msgid "by"
@@ -2426,8 +2434,8 @@ msgstr "SQLን ተግብር"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "ስህተት ተፈጥሯል: "
+msgid "An error occurred"
+msgstr "ስህተት ተፈጥሯል"
 
 #: 
 msgid " record(s) returned"
@@ -3071,12 +3079,14 @@ msgid "for funds "
 msgstr "ለገንዘብ"
 
 #: 
-msgid "Donated Items:"
-msgstr "የተለገሱ ዕቃዎች፡"
+#, fuzzy
+msgid "Donated Items"
+msgstr "የተለገሱ ዕቃዎች"
 
 #: 
-msgid "Purchased Items:"
-msgstr "የተገዙ ዕቃዎች፡"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "የተገዙ ዕቃዎች"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3135,12 +3145,14 @@ msgid "Please mail you next gift to "
 msgstr "እባክዎን ቀጣዩን ስጦታ በፖስታ ይላኩ"
 
 #: 
-msgid "Gift Amount:"
+#, fuzzy
+msgid "Gift Amount"
 msgstr "የስጦታ መጠን"
 
 #: 
-msgid "Gift Designation:"
-msgstr "የስጦታ ስያሜ፡"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "የስጦታ ስያሜ"
 
 #: 
 msgid "Sunday School"
@@ -3556,18 +3568,6 @@ msgid "Buyer # "
 msgstr "ገዢ #"
 
 #: 
-msgid "Envelope:"
-msgstr "ፖስታ:"
-
-#: 
-msgid ", Phone: "
-msgstr ", ስልክ: "
-
-#: 
-msgid "Voting members "
-msgstr "ድምጽ መስጠት አባላት "
-
-#: 
 msgid "Family Members:"
 msgstr "የቤተሰብ አባላት:"
 
@@ -3588,20 +3588,13 @@ msgid "File Name:"
 msgstr "የመዝገብ ስም:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "የበጀት ዓመት:"
-
-#: 
 msgid "family"
 msgstr "ቤተሰብ"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "የክብረበአል ቀን:"
-
-#: 
-msgid "Date Entered:"
-msgstr "የገባበት ቀን:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "የገባበት ቀን"
 
 #: 
 msgid "CSV Import"
@@ -3628,10 +3621,6 @@ msgid "Filter by Fund"
 msgstr "በፈንድ አጣራ"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "አዲስ ተቀማጭ ገንዘብ ይጨምሩ: "
-
-#: 
 msgid "Estimated value"
 msgstr "የሚገመተው ዋጋ"
 
@@ -3646,10 +3635,6 @@ msgstr "የጽሑፍ ቡድን"
 #: 
 msgid "Group Properties"
 msgstr "የቡድን ባህሪያት"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "አዲስ ንብረት መድብ:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3696,10 +3681,6 @@ msgstr "እነዚህ እንደ የትዳር ጓደኛ የተሰየሙ የቤተ�
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "እነዚህ እንደ ልጅ የተሰየሙ የቤተሰብ ሚና ቁጥሮች ናቸው"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "የትኛው ተጠቃሚ ለመጠቀም የፋይናንስ ፍቃድ ሊኖረው ይገባል የሚሉ ጥያቄዎች:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3990,26 +3971,6 @@ msgstr "አካባቢያዊ መለያ ቁጥር"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2005"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2006"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2007"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2008"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "የስራ ኢሜይል"
 
@@ -4277,23 +4238,8 @@ msgstr "ብጁ ፍለጋ"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "ከተሰጠው ጾታ ጋር የሚዛመዱ አጠቃላይ መዝገቦች።"
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "ተጠቀሰው የቤተሰብ ሚና እና ጾታ ጋር የሰው መዝገቦችን ይመርጣል።"
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "የተሰጠው ንብረት የተመደበውን የሰው መዝገቦችን ይመልሳል።"
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "በማንኛውም የስም ክፍል፣ ከተማ፣ ግዛት፣ ዚፕ፣ የቤት ስልክ፣ ኢሜይል ወይም የስራ ኢሜይል ይፈልጉ።"
 
 #. Context: query_qry
 #: 
@@ -4309,16 +4255,6 @@ msgstr "የተመዘገቡ ተማሪዎችን ያግኙ"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "በአንድ የተወሰነ ወር ውስጥ የተቀላቀሉ አባላት"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "እንደ የውሂብ ጎታ ተጠቃሚዎች የተመዘገቡ ሰዎች"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "አባላት የሆኑ ሰዎች"
 
 #. Context: query_qry
 #: 
@@ -6047,7 +5983,8 @@ msgid "Please confirm activation of family"
 msgstr "እባክዎ የቤተሰብን ማስጀመር  መፈለጎትን ያረጋግጡ"
 
 #: 
-msgid "Show neighbors with these classifications:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
 msgstr "በእነዚህ ምደባዎች ጎረቤቶችን አሳይ"
 
 #: 
@@ -6055,7 +5992,8 @@ msgid "Please select a Family."
 msgstr "እባክዎ ቤተሰብ ይምረጡ"
 
 #: 
-msgid "Coordinate data base file name:"
+#, fuzzy
+msgid "Coordinate database file name"
 msgstr "የዳታ መሠረት ፋይል ስም አስተባባሪ"
 
 #: 
@@ -6562,15 +6500,6 @@ msgid "Thai"
 msgstr "ታይ"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "የቤተክርስቲያንህ የፌስቡክ ገጽ"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "የቤተክርስቲያንህ ትዊተር ገጽ"
-
-#: 
 msgid "Self Register"
 msgstr "ራስን መመዝገብ"
 
@@ -6598,10 +6527,6 @@ msgstr "መዝገቦች(ዎች) በተሳካ ሁኔታ ወደተመረጠው ቡ
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "ወደ ሌላ ለመላክ ለአውሮፓ CharSet አጠቃቀም;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "ነባሪው UTF-8 ነው፣ ለአውሮፓ ቻርሴት ዊንዶውስ-1252ን ለምሳሌ ለፈረንሳይኛ ይጠቀሙ."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6952,14 +6877,6 @@ msgid "Upgrade Required"
 msgstr "ማዘመን አለብዎት"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "በCRM መጀመሪያ ላይ የልደት ቀኖችን አሳይ"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "ባነር እስኪጠፋ ድረስ ከገጽ ጭነት በኋላ ያለው የሰከንዶች ብዛት፣ በተለምዶ 10 ሰከንድ"
-
-#: 
 msgid "Help & Manual"
 msgstr "እገዛ እና መመሪያ"
 
@@ -7132,10 +7049,6 @@ msgstr "ማግኛ ምልክቱን ሰርዝ"
 #: 
 msgid "ICS URL"
 msgstr "ICS URL(ICS አድራሻ)"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL (JSON አድራሻ)"
 
 #: 
 msgid "Foreground Color"

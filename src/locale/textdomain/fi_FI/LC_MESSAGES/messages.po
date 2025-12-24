@@ -187,12 +187,14 @@ msgid "Group Membership"
 msgstr "Ryhmän jäsen"
 
 #: 
-msgid "From:"
-msgstr "Mistä:"
+#, fuzzy
+msgid "From"
+msgstr "Mistä"
 
 #: 
-msgid "To:"
-msgstr "Minne:"
+#, fuzzy
+msgid "To"
+msgstr "Minne"
 
 #: 
 msgid "Birthday Date"
@@ -231,8 +233,9 @@ msgid "No file selected for upload."
 msgstr "Tiedostoa ei ole valittu ladattavaksi."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "CSV-tiedoston rivien kokonaismäärä:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "CSV-tiedoston rivien kokonaismäärä"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +549,9 @@ msgid "Convert All"
 msgstr "Muunnan kaikki"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Talletuksen kuittinumero:"
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Talletuksen kuittinumero"
 
 #: 
 #, fuzzy

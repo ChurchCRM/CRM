@@ -173,11 +173,13 @@ msgid "Group Membership"
 msgstr "สมาชิกกลุ่ม"
 
 #: 
-msgid "From:"
+#, fuzzy
+msgid "From"
 msgstr "จาก"
 
 #: 
-msgid "To:"
+#, fuzzy
+msgid "To"
 msgstr "เรียน"
 
 #: 

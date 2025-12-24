@@ -187,12 +187,14 @@ msgid "Group Membership"
 msgstr "Keanggotaan Kelompok"
 
 #: 
-msgid "From:"
-msgstr "Dari:"
+#, fuzzy
+msgid "From"
+msgstr "Dari"
 
 #: 
-msgid "To:"
-msgstr "Ke:"
+#, fuzzy
+msgid "To"
+msgstr "Ke"
 
 #: 
 msgid "Birthday Date"
@@ -231,8 +233,9 @@ msgid "No file selected for upload."
 msgstr "Tidak ada file yang dipilih untuk diunggah."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Total Baris dalam File CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Total Baris dalam File CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -546,7 +549,8 @@ msgid "Convert All"
 msgstr "Konversi semuanya"
 
 #: 
-msgid "Deposit Slip Number: "
+#, fuzzy
+msgid "Deposit Slip Number"
 msgstr "Nomor Slip Setoran"
 
 #: 
@@ -1176,7 +1180,8 @@ msgid "Financial Reports"
 msgstr "Laporan keuangan"
 
 #: 
-msgid "Report Type:"
+#, fuzzy
+msgid "Report Type"
 msgstr "Tipe laporan"
 
 #: 
@@ -1224,15 +1229,18 @@ msgid "Filter by Family"
 msgstr "sortir berdasarkan keluarga"
 
 #: 
-msgid "Report Start Date:"
+#, fuzzy
+msgid "Report Start Date"
 msgstr "Laporan dimulai pda tanggal"
 
 #: 
-msgid "Report End Date:"
+#, fuzzy
+msgid "Report End Date"
 msgstr "Laporan diakhiri pada tanggal"
 
 #: 
-msgid "Apply Report Dates To:"
+#, fuzzy
+msgid "Apply Report Dates To"
 msgstr "Setujui tanggal pelaporan pada tanggal"
 
 #: 
@@ -1244,7 +1252,8 @@ msgid "Payment Date"
 msgstr "Tanggal pembayaran"
 
 #: 
-msgid "Filter by Deposit:"
+#, fuzzy
+msgid "Filter by Deposit"
 msgstr "Sortir berdasarkan simpanan"
 
 #: 
@@ -1256,7 +1265,8 @@ msgid "All deposits within date range"
 msgstr "Semua simpanan di dalam range data"
 
 #: 
-msgid "Filter by Payment Type:"
+#, fuzzy
+msgid "Filter by Payment Type"
 msgstr "Sortir dengan tipe pembayaran"
 
 #: 
@@ -1289,20 +1299,12 @@ msgid "Other Settings"
 msgstr "Pengaturan lain"
 
 #: 
-msgid "Include:"
-msgstr "Termasuk"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Hanya pembayaran dengan persembahan"
 
 #: 
 msgid "All Payments"
 msgstr "Seluruh pembayaran"
-
-#: 
-msgid "Generate:"
-msgstr "Hasilkan"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1353,8 +1355,9 @@ msgid "Summary Data"
 msgstr "Data Ringkasan"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Anggota yang memberikan suara pasti telah membuat <br>donasi dalam beberapa tahun ini<br> (0 hingga tidak memerlukan donasi):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Anggota yang memberikan suara pasti telah membuat <br>donasi dalam beberapa tahun ini<br> (0 hingga tidak memerlukan donasi)"
 
 #: 
 msgid "CSV"
@@ -1377,8 +1380,9 @@ msgid "Add New Deposit"
 msgstr "Tambahkan Deposit Baru"
 
 #: 
-msgid "Deposits: "
-msgstr "Simpanan:␣"
+#, fuzzy
+msgid "Deposits"
+msgstr "Simpanan"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1466,20 +1470,23 @@ msgid "Family Geographic Utilities"
 msgstr "Utilitas Geografis Keluarga"
 
 #: 
-msgid "Select Family:"
-msgstr "Pilih Keluarga:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Pilih Keluarga"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Jumlah tetangga maksimum:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Jumlah tetangga maksimum"
 
 #: 
 msgid "Maximum distance"
 msgstr "Jarak maksimum"
 
 #: 
-msgid "Data file format:"
-msgstr "Format file data:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Format file data"
 
 #: 
 msgid "GPS Visualizer"
@@ -1490,8 +1497,9 @@ msgid "Street Atlas USA"
 msgstr "Atlas Jalan USA"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Sertakan keluarga dalam file koordinat:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Sertakan keluarga dalam file koordinat"
 
 #: 
 msgid "Neighbor Families"
@@ -1562,8 +1570,9 @@ msgid "Select a group"
 msgstr "Pilih grup"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Properti Spesifik Kelompok: "
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Properti Spesifik Kelompok"
 
 #: 
 msgid "Enabled"
@@ -1618,8 +1627,9 @@ msgid "data for member"
 msgstr "data untuk anggota"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Editor Formulir Properti Spesifik Kelompok:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Editor Formulir Properti Spesifik Kelompok"
 
 #: 
 msgid "No properties have been added yet"
@@ -1776,8 +1786,9 @@ msgid "Move Selected Members to Group"
 msgstr "Pindahkan Anggota yang Dipilih ke Grup"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Tambahkan Anggota Grup: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Tambahkan Anggota Grup"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2280,12 +2291,9 @@ msgid "Group Name"
 msgstr "Nama grup"
 
 #: 
-msgid "Notes:"
-msgstr "Catatan:"
-
-#: 
-msgid "Entered:"
-msgstr "Dimasukkan:"
+#, fuzzy
+msgid "Entered"
+msgstr "Dimasukkan"
 
 #: 
 msgid "by"
@@ -2427,8 +2435,8 @@ msgstr "Jalankan SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "Kesalahan terjadi: "
+msgid "An error occurred"
+msgstr "Kesalahan terjadi"
 
 #: 
 msgid " record(s) returned"
@@ -3072,12 +3080,14 @@ msgid "for funds "
 msgstr "untuk dana "
 
 #: 
-msgid "Donated Items:"
-msgstr "Item yang disumbangkan:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Item yang disumbangkan"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Barang yang dibeli:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Barang yang dibeli"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3136,12 +3146,14 @@ msgid "Please mail you next gift to "
 msgstr "Silakan kirimkan hadiah selanjutnya kepada Anda "
 
 #: 
-msgid "Gift Amount:"
-msgstr "Jumlah Hadiah:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Jumlah Hadiah"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Penunjukan Hadiah:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Penunjukan Hadiah"
 
 #: 
 msgid "Sunday School"
@@ -3557,18 +3569,6 @@ msgid "Buyer # "
 msgstr "Pembeli # "
 
 #: 
-msgid "Envelope:"
-msgstr "Amplop:"
-
-#: 
-msgid ", Phone: "
-msgstr ", Telepon: "
-
-#: 
-msgid "Voting members "
-msgstr "Member voting "
-
-#: 
 msgid "Family Members:"
 msgstr "Anggota keluarga:"
 
@@ -3589,20 +3589,13 @@ msgid "File Name:"
 msgstr "Nama file:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Tahun fiskal:"
-
-#: 
 msgid "family"
 msgstr "keluarga"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Tanggal ulang tahun:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Tanggal masuk:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Tanggal masuk"
 
 #: 
 msgid "CSV Import"
@@ -3629,10 +3622,6 @@ msgid "Filter by Fund"
 msgstr "Saring berdasarkan Dana"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Tambahkan Setoran Baru: "
-
-#: 
 msgid "Estimated value"
 msgstr "Nilai perkiraan"
 
@@ -3647,10 +3636,6 @@ msgstr "Grup Teks"
 #: 
 msgid "Group Properties"
 msgstr "Properti Grup"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Tetapkan Properti Baru:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3697,10 +3682,6 @@ msgstr "Ini adalah nomor peran keluarga yang ditetapkan sebagai pasangan"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Ini adalah nomor peran keluarga yang ditetapkan sebagai anak"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Kueri yang pengguna harus memiliki izin keuangan untuk digunakan:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3990,26 +3971,6 @@ msgstr "Kode Pos"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "Surel Kantor"
 
@@ -4277,23 +4238,8 @@ msgstr "CustomSearch"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Total catatan yang cocok dengan jenis kelamin yang diberikan."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Memilih catatan orang dengan peran keluarga dan jenis kelamin yang ditentukan."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Mengembalikan catatan orang yang diberikan properti yang diberikan."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Cari berdasarkan bagian Nama, Kota, Negara Bagian, Zip, Telepon Rumah, Email, atau Email Kantor."
 
 #. Context: query_qry
 #: 
@@ -4309,16 +4255,6 @@ msgstr "Temukan siswa terdaftar"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Anggota yang bergabung pada bulan tertentu"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Orang-orang yang terdaftar sebagai pengguna basis data"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Orang yang menjadi anggota"
 
 #. Context: query_qry
 #: 
@@ -6047,16 +5983,18 @@ msgid "Please confirm activation of family"
 msgstr "Harap konfirmasi aktivasi keluarga"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Tunjukkan tetangga dengan klasifikasi ini:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Tunjukkan tetangga dengan klasifikasi ini"
 
 #: 
 msgid "Please select a Family."
 msgstr "Silakan pilih Keluarga."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Mengkoordinasikan nama file basis data:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Mengkoordinasikan nama file basis data"
 
 #: 
 msgid "select an option"
@@ -6562,15 +6500,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "Halaman Facebook Gereja Anda"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "Halaman X Gereja Anda"
-
-#: 
 msgid "Self Register"
 msgstr "Daftar Mandiri"
 
@@ -6598,10 +6527,6 @@ msgstr "catatan berhasil ditambahkan ke Grup yang dipilih."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Untuk mengekspor ke yang lain Untuk penggunaan CharSet Eropa;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Standarnya adalah UTF-8, Untuk CharSet Eropa gunakan Windows-1252 misalnya untuk bahasa Prancis."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6952,14 +6877,6 @@ msgid "Upgrade Required"
 msgstr "Upgrade Diperlukan"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Perlihatkan Peringatan Tanggal Lahir pada saat memulai CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Jumlah detik setelah pemuatan halaman hingga spanduk menghilang, default 10 detik"
-
-#: 
 msgid "Help & Manual"
 msgstr "Bantuan & Manual"
 
@@ -7132,10 +7049,6 @@ msgstr "Hapus Token Akses"
 #: 
 msgid "ICS URL"
 msgstr "URL ICS"
-
-#: 
-msgid "JSON URL"
-msgstr "URL JSON"
 
 #: 
 msgid "Foreground Color"
@@ -8133,41 +8046,6 @@ msgstr "Anda menerima surel ini karena kami menerima permintaan aktivitas atas a
 #: 
 msgid "To stop receiving these emails, you can email"
 msgstr "Untuk berhenti menerima surel ini, silahkan kirim surel ke"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2016/2017"
-msgstr "2016/2017"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2017/2018"
-msgstr "2017/2018"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2018/2019"
-msgstr "2018/2019"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2019/2020"
-msgstr "2019/2020"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2020/2021"
-msgstr "2020/2021"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2021/2022"
-msgstr "2021/2022"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2022/2023"
-msgstr "2022/2023"
 
 #: 
 msgid "invalid group request"

@@ -187,12 +187,14 @@ msgid "Group Membership"
 msgstr "గుంపు సభ్యత్వం"
 
 #: 
-msgid "From:"
-msgstr "నుండి:"
+#, fuzzy
+msgid "From"
+msgstr "నుండి"
 
 #: 
-msgid "To:"
-msgstr "వీరికి:"
+#, fuzzy
+msgid "To"
+msgstr "వీరికి"
 
 #: 
 msgid "Birthday Date"
@@ -231,8 +233,9 @@ msgid "No file selected for upload."
 msgstr "అప్‌లోడ్ చేయడానికి ఫైల్ ఏదీ ఎంచుకోబడలేదు."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "CSV ఫైల్‌లోని మొత్తం అడ్డు వరుసల సంఖ్య:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "CSV ఫైల్‌లోని మొత్తం అడ్డు వరుసల సంఖ్య"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +549,9 @@ msgid "Convert All"
 msgstr "అన్నింటినీ మార్చండి"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "డిపాజిట్ స్లిప్ నంబర్: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "డిపాజిట్ స్లిప్ నంబర్"
 
 #: 
 #, fuzzy
@@ -1175,8 +1179,9 @@ msgid "Financial Reports"
 msgstr "ఆర్థిక నివేదికలు"
 
 #: 
-msgid "Report Type:"
-msgstr "నివేదిక రకం:"
+#, fuzzy
+msgid "Report Type"
+msgstr "నివేదిక రకం"
 
 #: 
 msgid "Select Report Type"
@@ -1223,16 +1228,19 @@ msgid "Filter by Family"
 msgstr "కుటుంబం వారీగా ఫిల్టర్ చేయండి"
 
 #: 
-msgid "Report Start Date:"
-msgstr "నివేదిక ప్రారంభ తేదీ:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "నివేదిక ప్రారంభ తేదీ"
 
 #: 
-msgid "Report End Date:"
-msgstr "నివేదిక ముగింపు తేదీ:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "నివేదిక ముగింపు తేదీ"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "రిపోర్ట్ తేదీలను దీనికి వర్తింపజేయండి:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "రిపోర్ట్ తేదీలను దీనికి వర్తింపజేయండి"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,7 +1251,8 @@ msgid "Payment Date"
 msgstr "చెల్లింపు తేదీ"
 
 #: 
-msgid "Filter by Deposit:"
+#, fuzzy
+msgid "Filter by Deposit"
 msgstr "డిపాజిట్ ద్వారా ఫిల్టర్ చేయండి:"
 
 #: 
@@ -1255,8 +1264,9 @@ msgid "All deposits within date range"
 msgstr "తేదీ పరిధిలో అన్ని డిపాజిట్లు"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "చెల్లింపు రకం ద్వారా ఫిల్టర్ చేయండి:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "చెల్లింపు రకం ద్వారా ఫిల్టర్ చేయండి"
 
 #: 
 msgid "All Methods"
@@ -1287,20 +1297,12 @@ msgid "Other Settings"
 msgstr "ఇతర సెట్టింగ్‌లు"
 
 #: 
-msgid "Include:"
-msgstr "చేర్చండి:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "ప్రతిజ్ఞలతో మాత్రమే చెల్లింపులు"
 
 #: 
 msgid "All Payments"
 msgstr "అన్ని చెల్లింపులు"
-
-#: 
-msgid "Generate:"
-msgstr "రూపొందించు:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1351,8 +1353,9 @@ msgid "Summary Data"
 msgstr "సారాంశం డేటా"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "ఓటింగ్ సభ్యులు తప్పనిసరిగా <br> ఈ అనేక సంవత్సరాలలోపు విరాళం అందించి ఉండాలి<br> (0 విరాళం అవసరం లేదు):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "ఓటింగ్ సభ్యులు తప్పనిసరిగా <br> ఈ అనేక సంవత్సరాలలోపు విరాళం అందించి ఉండాలి<br> (0 విరాళం అవసరం లేదు)"
 
 #: 
 msgid "CSV"
@@ -1375,6 +1378,7 @@ msgid "Add New Deposit"
 msgstr "కొత్త డిపాజిట్ జోడించండి"
 
 #: 
-msgid "Deposits: "
-msgstr "డిపాజిట్లు: "
+#, fuzzy
+msgid "Deposits"
+msgstr "డిపాజిట్లు"
 

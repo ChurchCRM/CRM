@@ -175,7 +175,8 @@ msgid "No file selected for upload."
 msgstr "アップロードするファイルが選択されていません"
 
 #: 
-msgid "Total number of rows in the CSV file:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
 msgstr "CSV ファイルの合計行数"
 
 #: 

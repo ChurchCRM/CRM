@@ -198,12 +198,14 @@ msgid "Group Membership"
 msgstr "Thành viên trong nhóm"
 
 #: 
-msgid "From:"
-msgstr "Gửi từ:"
+#, fuzzy
+msgid "From"
+msgstr "Gửi từ"
 
 #: 
-msgid "To:"
-msgstr "Gửi đến:"
+#, fuzzy
+msgid "To"
+msgstr "Gửi đến"
 
 #: 
 #, fuzzy
@@ -244,8 +246,9 @@ msgid "No file selected for upload."
 msgstr "Không có tập tin được lựa chọn để tải lên."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Tổng số hàng trong tập tin CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Tổng số hàng trong tập tin CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -560,8 +563,9 @@ msgid "Convert All"
 msgstr "Chuyển đổi tất cả"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Số phiếu gửi tiền:"
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Số phiếu gửi tiền"
 
 #: 
 #, fuzzy
@@ -1189,8 +1193,9 @@ msgid "Financial Reports"
 msgstr "Báo cáo tài chính"
 
 #: 
-msgid "Report Type:"
-msgstr "Loại báo cáo:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Loại báo cáo"
 
 #: 
 msgid "Select Report Type"
@@ -1237,16 +1242,19 @@ msgid "Filter by Family"
 msgstr "Lọc theo gia đình"
 
 #: 
-msgid "Report Start Date:"
+#, fuzzy
+msgid "Report Start Date"
 msgstr "Ngày bắt đầu báo cáo"
 
 #: 
-msgid "Report End Date:"
+#, fuzzy
+msgid "Report End Date"
 msgstr "Ngày kết thúc báo cáo"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Áp dụng Ngày Báo cáo Cho:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Áp dụng Ngày Báo cáo Cho"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1257,8 +1265,9 @@ msgid "Payment Date"
 msgstr "Ngày thanh toán"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Lọc theo tiền gửi:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Lọc theo tiền gửi"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1269,8 +1278,9 @@ msgid "All deposits within date range"
 msgstr "Tất cả các khoản tiền gửi trong phạm vi ngày"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Lọc theo Hình thức Thanh toán:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Lọc theo Hình thức Thanh toán"
 
 #: 
 msgid "All Methods"
@@ -1302,20 +1312,12 @@ msgid "Other Settings"
 msgstr "Các thiết lập khác"
 
 #: 
-msgid "Include:"
-msgstr "Bao gồm:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Chỉ thanh toán có cầm cố"
 
 #: 
 msgid "All Payments"
 msgstr "Tất cả các khoản thanh toán"
-
-#: 
-msgid "Generate:"
-msgstr "Tạo:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1366,8 +1368,9 @@ msgid "Summary Data"
 msgstr "Dữ liệu tóm tắt"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Các thành viên bỏ phiếu phải đã đóng góp <br> trong vòng nhiều năm này <br> (0 để không yêu cầu đóng góp):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Các thành viên bỏ phiếu phải đã đóng góp <br> trong vòng nhiều năm này <br> (0 để không yêu cầu đóng góp)"
 
 #: 
 msgid "CSV"
@@ -1390,8 +1393,9 @@ msgid "Add New Deposit"
 msgstr "Thêm khoản thu mới"
 
 #: 
-msgid "Deposits: "
-msgstr "Tiền dâng hiến: "
+#, fuzzy
+msgid "Deposits"
+msgstr "Tiền dâng hiến"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1479,11 +1483,13 @@ msgid "Family Geographic Utilities"
 msgstr "Tìm kiếm các tín hữu ở gần nhau"
 
 #: 
-msgid "Select Family:"
-msgstr "Lựa chọn Gia đình:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Lựa chọn Gia đình"
 
 #: 
-msgid "Maximum number of neighbors:"
+#, fuzzy
+msgid "Maximum number of neighbors"
 msgstr "Hiển thị tối đa các tín hữu ở gần nhau"
 
 #: 
@@ -1491,8 +1497,9 @@ msgid "Maximum distance"
 msgstr "Khoảng cách tối đa"
 
 #: 
-msgid "Data file format:"
-msgstr "Định dạng tệp dữ liệu:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Định dạng tệp dữ liệu"
 
 #: 
 msgid "GPS Visualizer"
@@ -1503,8 +1510,9 @@ msgid "Street Atlas USA"
 msgstr "Bản đồ đường phố Hoa Kỳ"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Bao gồm các họ trong tệp tọa độ:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Bao gồm các họ trong tệp tọa độ"
 
 #: 
 msgid "Neighbor Families"
@@ -1575,7 +1583,8 @@ msgid "Select a group"
 msgstr "Lựa chọn Ban/Mục vụ"
 
 #: 
-msgid "Group Specific Properties: "
+#, fuzzy
+msgid "Group Specific Properties"
 msgstr "Thuộc tính Ban/Mục vụ đặc biệt"
 
 #: 
@@ -1631,7 +1640,8 @@ msgid "data for member"
 msgstr "dữ liệu cho thành viên"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
 msgstr "Chỉnh sửa mẫu thuộc tính cho Ban/Mục vụ đặc biệt"
 
 #: 
@@ -1789,8 +1799,9 @@ msgid "Move Selected Members to Group"
 msgstr "Di chuyển thành viên đã lựa chọn đến Ban/Mục vụ"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Thêm thành viên vào Ban/Mục vụ: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Thêm thành viên vào Ban/Mục vụ"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2293,12 +2304,9 @@ msgid "Group Name"
 msgstr "Tên Ban/Mục vụ"
 
 #: 
-msgid "Notes:"
-msgstr "Ghi chú:"
-
-#: 
-msgid "Entered:"
-msgstr "Đã nhập:"
+#, fuzzy
+msgid "Entered"
+msgstr "Đã nhập"
 
 #: 
 msgid "by"
@@ -2440,8 +2448,8 @@ msgstr "Thực thi SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "Đã xảy ra lỗi:"
+msgid "An error occurred"
+msgstr "Đã xảy ra lỗi"
 
 #: 
 msgid " record(s) returned"
@@ -3085,12 +3093,14 @@ msgid "for funds "
 msgstr "cho quỹ"
 
 #: 
-msgid "Donated Items:"
-msgstr "Các mặt hàng được tặng:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Các mặt hàng được tặng"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Các mặt hàng đã mua:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Các mặt hàng đã mua"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3149,12 +3159,14 @@ msgid "Please mail you next gift to "
 msgstr "Xin vui lòng gửi cho bạn món quà tiếp theo qua thư"
 
 #: 
-msgid "Gift Amount:"
-msgstr "Số tiền quà tặng:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Số tiền quà tặng"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Chỉ định quà tặng:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Chỉ định quà tặng"
 
 #: 
 msgid "Sunday School"
@@ -3570,18 +3582,6 @@ msgid "Buyer # "
 msgstr "Người mua #"
 
 #: 
-msgid "Envelope:"
-msgstr "Phong bì:"
-
-#: 
-msgid ", Phone: "
-msgstr ", Điện thoại:"
-
-#: 
-msgid "Voting members "
-msgstr "Bầu chọn thành viên"
-
-#: 
 msgid "Family Members:"
 msgstr "Thành viên trong gia đình:"
 
@@ -3602,20 +3602,13 @@ msgid "File Name:"
 msgstr "Tên tệp:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Năm tài chính:"
-
-#: 
 msgid "family"
 msgstr "gia đình"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Kỷ niệm ngày cưới:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Ngày nhập vào:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Ngày nhập vào"
 
 #: 
 msgid "CSV Import"
@@ -3642,10 +3635,6 @@ msgid "Filter by Fund"
 msgstr "Lọc theo quỹ"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Thêm khoản thu mới: "
-
-#: 
 msgid "Estimated value"
 msgstr "Giá trị ước tính"
 
@@ -3660,10 +3649,6 @@ msgstr "Nhóm văn bản"
 #: 
 msgid "Group Properties"
 msgstr "Thuộc tính Ban/Mục vụ"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Thêm vào thuộc tính mới"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3710,10 +3695,6 @@ msgstr "Đây là những con số vai trò trong gia đình được chỉ đ�
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Đây là các số vai trò gia đình được chỉ định khi còn nhỏ"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Các truy vấn mà người dùng phải có quyền tài chính để sử dụng:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -4003,26 +3984,6 @@ msgstr "Mã bưu chính"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "Làm việc bằng email"
 
@@ -4290,23 +4251,8 @@ msgstr "Tìm kiếm tuỳ chỉnh"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Tổng số bản ghi phù hợp với một giới tính nhất định."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Chọn hồ sơ cá nhân với vai trò gia đình và giới tính được chỉ định."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Trả về các bản ghi người được gán thuộc tính đã cho."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Tìm kiếm theo bất kỳ phần nào của Tên, Thành phố, Tiểu bang, Mã zip, Điện thoại nhà riêng, Email hoặc Email cơ quan."
 
 #. Context: query_qry
 #: 
@@ -4322,16 +4268,6 @@ msgstr "Tìm sinh viên đã đăng ký"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Các thành viên đã tham gia vào một tháng cụ thể"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Những người đã đăng ký làm người dùng cơ sở dữ liệu"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Những người là thành viên"
 
 #. Context: query_qry
 #: 
@@ -6060,7 +5996,8 @@ msgid "Please confirm activation of family"
 msgstr "Vui lòng xác nhận kích hoạt gia đình"
 
 #: 
-msgid "Show neighbors with these classifications:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
 msgstr "Hiển thị tín hữu với các phân loại này"
 
 #: 
@@ -6068,8 +6005,9 @@ msgid "Please select a Family."
 msgstr "Vui lòng lựa chọn gia đình."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Tên tệp cơ sở dữ liệu tọa độ:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Tên tệp cơ sở dữ liệu tọa độ"
 
 #: 
 msgid "select an option"
@@ -6575,15 +6513,6 @@ msgid "Thai"
 msgstr "Thái"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "Trang Facebook của Giáo hội của bạn"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "Trang X của Giáo hội của bạn"
-
-#: 
 msgid "Self Register"
 msgstr "Tự đăng ký"
 
@@ -6611,10 +6540,6 @@ msgstr "(các) bản ghi được thêm thành công vào Nhóm đã chọn."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Để xuất sang người khác Để sử dụng CharSet châu Âu;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Mặc định là UTF-8, Đối với CharSet châu Âu, hãy sử dụng Windows-1252 chẳng hạn cho ngôn ngữ Pháp."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6965,14 +6890,6 @@ msgid "Upgrade Required"
 msgstr "Yêu cầu nâng cấp"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Hiển thị Ngày kỷ niệm ngày sinh khi khởi động CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Số giây sau khi tải trang cho đến khi biểu ngữ biến mất, mặc định là 10 giây"
-
-#: 
 msgid "Help & Manual"
 msgstr "Trợ giúp & Hướng dẫn sử dụng"
 
@@ -7145,10 +7062,6 @@ msgstr "Xóa mã thông báo truy cập"
 #: 
 msgid "ICS URL"
 msgstr "URL ICS"
-
-#: 
-msgid "JSON URL"
-msgstr "URL JSON"
 
 #: 
 msgid "Foreground Color"

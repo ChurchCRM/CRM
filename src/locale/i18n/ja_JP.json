@@ -39,7 +39,7 @@
     "Skip records with incomplete mail address": "メールアドレスが不完全なレコードをスキップする",
     "Create File": "ファイルを作成",
     "No file selected for upload.": "アップロードするファイルが選択されていません",
-    "Total number of rows in the CSV file:": "CSV ファイルの合計行数",
+    "Total number of rows in the CSV file": "CSV ファイルの合計行数",
     "Ignore this Field": "このフィールドを無視します",
     "Title": "タイトル",
     "Gender": "性別",

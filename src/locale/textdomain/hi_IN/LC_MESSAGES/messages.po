@@ -188,12 +188,14 @@ msgid "Group Membership"
 msgstr "समूह सदस्यता"
 
 #: 
-msgid "From:"
-msgstr "जारीकर्ता या से:"
+#, fuzzy
+msgid "From"
+msgstr "जारीकर्ता या से"
 
 #: 
-msgid "To:"
-msgstr "को:"
+#, fuzzy
+msgid "To"
+msgstr "को"
 
 #: 
 msgid "Birthday Date"
@@ -232,8 +234,9 @@ msgid "No file selected for upload."
 msgstr "अपलोड के लिए कोई फ़ाइल चयनित नहीं है."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "CSV फ़ाइल में पंक्तियों की कुल संख्या:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "CSV फ़ाइल में पंक्तियों की कुल संख्या"
 
 #: 
 msgid "Ignore this Field"

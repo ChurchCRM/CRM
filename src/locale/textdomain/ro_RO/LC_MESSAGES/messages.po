@@ -200,12 +200,14 @@ msgid "Group Membership"
 msgstr "Apartenența la un grup"
 
 #: 
-msgid "From:"
-msgstr "De la:"
+#, fuzzy
+msgid "From"
+msgstr "De la"
 
 #: 
-msgid "To:"
-msgstr "Pentru:"
+#, fuzzy
+msgid "To"
+msgstr "Pentru"
 
 #: 
 #, fuzzy
@@ -246,8 +248,9 @@ msgid "No file selected for upload."
 msgstr "Nici un fișier selectat pentru upload."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Numărul total de rânduri din fișierul CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Numărul total de rânduri din fișierul CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -564,8 +567,9 @@ msgid "Convert All"
 msgstr "Converti toate"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Numărul bonului de depozit:␣"
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Numărul bonului de depozit"
 
 #: 
 #, fuzzy
@@ -1205,8 +1209,9 @@ msgid "Financial Reports"
 msgstr "Rapoarte financiare"
 
 #: 
-msgid "Report Type:"
-msgstr "Tip de raport:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Tip de raport"
 
 #: 
 msgid "Select Report Type"
@@ -1255,15 +1260,18 @@ msgid "Filter by Family"
 msgstr "Filtrare dupa Familie"
 
 #: 
-msgid "Report Start Date:"
+#, fuzzy
+msgid "Report Start Date"
 msgstr "Data de începere a raportului"
 
 #: 
-msgid "Report End Date:"
+#, fuzzy
+msgid "Report End Date"
 msgstr "Data de încheiere a raportului"
 
 #: 
-msgid "Apply Report Dates To:"
+#, fuzzy
+msgid "Apply Report Dates To"
 msgstr "Aplică Datele Raportului La"
 
 #: 
@@ -1275,7 +1283,8 @@ msgid "Payment Date"
 msgstr "Data de Plata"
 
 #: 
-msgid "Filter by Deposit:"
+#, fuzzy
+msgid "Filter by Deposit"
 msgstr "Filtrare dupa deposit"
 
 #: 
@@ -1287,7 +1296,8 @@ msgid "All deposits within date range"
 msgstr "Toate depozitele în intervalul de date"
 
 #: 
-msgid "Filter by Payment Type:"
+#, fuzzy
+msgid "Filter by Payment Type"
 msgstr "Filtrare după Tipul Plății"
 
 #: 
@@ -1320,20 +1330,12 @@ msgid "Other Settings"
 msgstr "Alte setări"
 
 #: 
-msgid "Include:"
-msgstr "Includ:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Doar plati cu angajamente"
 
 #: 
 msgid "All Payments"
 msgstr "Toate plățile"
-
-#: 
-msgid "Generate:"
-msgstr "Generare:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1384,7 +1386,8 @@ msgid "Summary Data"
 msgstr "Date sumare"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
 msgstr "Membrii cu drept de vot trebuie să fi efectuat o donație în ultimii ani (0 pentru a nu solicita o donație)"
 
 #: 
@@ -1408,7 +1411,8 @@ msgid "Add New Deposit"
 msgstr "Adaugă depozit nou"
 
 #: 
-msgid "Deposits: "
+#, fuzzy
+msgid "Deposits"
 msgstr "Depozite"
 
 #: 
@@ -1500,19 +1504,22 @@ msgid "Family Geographic Utilities"
 msgstr "Utilități Geografice ale Familiilor"
 
 #: 
-msgid "Select Family:"
-msgstr "Selectați familia:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Selectați familia"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Numărul maxim de vecini:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Numărul maxim de vecini"
 
 #: 
 msgid "Maximum distance"
 msgstr "Distanța maximă"
 
 #: 
-msgid "Data file format:"
+#, fuzzy
+msgid "Data file format"
 msgstr "Formatul fișierului de date"
 
 #: 
@@ -1524,7 +1531,8 @@ msgid "Street Atlas USA"
 msgstr "Street Atlas USA"
 
 #: 
-msgid "Include families in coordinate file:"
+#, fuzzy
+msgid "Include families in the coordinate file"
 msgstr "Includeți familiile în fișierul de coordonate"
 
 #: 
@@ -1600,8 +1608,9 @@ msgid "Select a group"
 msgstr "Selectați un grup"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Proprietăți specifice grupului :"
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Proprietăți specifice grupului"
 
 #: 
 msgid "Enabled"
@@ -1658,7 +1667,8 @@ msgid "data for member"
 msgstr "date pentru membru"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
 msgstr "Editorul Formularului de Proprietăți Specifice Grupului"
 
 #: 
@@ -1825,7 +1835,8 @@ msgid "Move Selected Members to Group"
 msgstr "Mută membrii selectați în grup"
 
 #: 
-msgid "Add Group Member: "
+#, fuzzy
+msgid "Add Group Member"
 msgstr "Adaugă membru în grup"
 
 #: 
@@ -2336,12 +2347,9 @@ msgid "Group Name"
 msgstr "Numele grupului"
 
 #: 
-msgid "Notes:"
-msgstr "Note:"
-
-#: 
-msgid "Entered:"
-msgstr "Au intrat:"
+#, fuzzy
+msgid "Entered"
+msgstr "Au intrat"
 
 #: 
 msgid "by"
@@ -2486,8 +2494,8 @@ msgstr "Executa SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "A apărut o eroare:"
+msgid "An error occurred"
+msgstr "A apărut o eroare"
 
 #: 
 msgid " record(s) returned"
@@ -3155,12 +3163,14 @@ msgid "for funds "
 msgstr "pentru fondurile"
 
 #: 
-msgid "Donated Items:"
-msgstr "Articole donate:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Articole donate"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Produsele achiziționate:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Produsele achiziționate"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3219,12 +3229,14 @@ msgid "Please mail you next gift to "
 msgstr "Vă rugăm să expedia cadou lângă"
 
 #: 
-msgid "Gift Amount:"
-msgstr "Cadou Suma:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Cadou Suma"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Cadou Denumire:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Cadou Denumire"
 
 #: 
 msgid "Sunday School"
@@ -3646,18 +3658,6 @@ msgid "Buyer # "
 msgstr "Cumpărător #"
 
 #: 
-msgid "Envelope:"
-msgstr "Plic:"
-
-#: 
-msgid ", Phone: "
-msgstr "Telefon:"
-
-#: 
-msgid "Voting members "
-msgstr "Membri votanți:"
-
-#: 
 msgid "Family Members:"
 msgstr "Membri familie:"
 
@@ -3678,20 +3678,13 @@ msgid "File Name:"
 msgstr "Nume fișier:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "An fiscal:"
-
-#: 
 msgid "family"
 msgstr "familie"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Dată aniversare:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Dată activare:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Dată activare"
 
 #: 
 msgid "CSV Import"
@@ -3718,10 +3711,6 @@ msgid "Filter by Fund"
 msgstr "Filtrare după fond"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Adăugă depozit nou"
-
-#: 
 msgid "Estimated value"
 msgstr "Valoare estimată"
 
@@ -3736,10 +3725,6 @@ msgstr "Grup text"
 #: 
 msgid "Group Properties"
 msgstr "Proprietăți grup"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Adaugă proprietate nouă"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3786,10 +3771,6 @@ msgstr "Acestea sunt numerele de rol familial desemnate ca soție"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Acestea sunt numerele de rol familial desemnate șef copil"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Întrebările pentru care utilizatorul trebuie să aibă permisiuni de finanțare pentru a utiliza:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -4079,26 +4060,6 @@ msgstr "Cod postal"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "Email serviciu"
 
@@ -4366,23 +4327,8 @@ msgstr "Căutare personalizată"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Numărul de înregistrări care corespund unui gen"
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Selectează înregistrările persoanei cu rolul familiei și genul specificat."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Returnează înregistrările persoanei cărora li se atribuie proprietatea dată."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Căutați prin orice parte din:  nume, oraș, județ, cod poștal, telefon fix, e-mail sau e-mail de serviciu."
 
 #. Context: query_qry
 #: 
@@ -4398,16 +4344,6 @@ msgstr "Caută studenți înregistrați"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Membri care au aderat într-o anumită lună"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Persoane care sunt înregistrați ca utilizatori de bază de date"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Persoane care sunt membri"
 
 #. Context: query_qry
 #: 
@@ -6137,7 +6073,8 @@ msgid "Please confirm activation of family"
 msgstr "Confirmați activarea familiei"
 
 #: 
-msgid "Show neighbors with these classifications:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
 msgstr "Afișați vecini cu aceste clasificări"
 
 #: 
@@ -6145,7 +6082,8 @@ msgid "Please select a Family."
 msgstr "Alegeți o familie."
 
 #: 
-msgid "Coordinate data base file name:"
+#, fuzzy
+msgid "Coordinate database file name"
 msgstr "Nume fișiere coordonate în baza de date"
 
 #: 
@@ -6652,15 +6590,6 @@ msgid "Thai"
 msgstr "Tailandez"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "Pargina de Facebook a bisericii"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "Pargina de X a bisericii"
-
-#: 
 msgid "Self Register"
 msgstr "Autoînregistrare"
 
@@ -6688,10 +6617,6 @@ msgstr "înregistrări adăugate cu succes grupului selectat."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Pentru a exporta în altul Pentru utilizare CharSet european;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Implicit este UTF-8, pentru CharSet european folosiți Windows-1252 de exemplu pentru limba franceză."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -7042,14 +6967,6 @@ msgid "Upgrade Required"
 msgstr "Actualizare necesară"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Arată aniversări la pornirea CRM-ului"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Număr de secunde pentru ascunderea banneru-ului la încărcarea paginii (prestabilit 10s)"
-
-#: 
 msgid "Help & Manual"
 msgstr "Ajutor și manual"
 
@@ -7222,10 +7139,6 @@ msgstr "Șterge tokenul de accces"
 #: 
 msgid "ICS URL"
 msgstr "ICS URL"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL"
 
 #: 
 msgid "Foreground Color"

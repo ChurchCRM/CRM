@@ -187,12 +187,14 @@ msgid "Group Membership"
 msgstr "عضوية في المجموعة"
 
 #: 
-msgid "From:"
-msgstr "من:"
+#, fuzzy
+msgid "From"
+msgstr "من"
 
 #: 
-msgid "To:"
-msgstr "إلي:"
+#, fuzzy
+msgid "To"
+msgstr "إلي"
 
 #: 
 msgid "Birthday Date"
@@ -231,7 +233,8 @@ msgid "No file selected for upload."
 msgstr "لم يتم تحديد ملف للتحميل."
 
 #: 
-msgid "Total number of rows in the CSV file:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
 msgstr "عدد الصفوف في ملف CSV"
 
 #: 
@@ -546,8 +549,9 @@ msgid "Convert All"
 msgstr "تحويل الكل"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "رقم قسيمة الإيداع: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "رقم قسيمة الإيداع"
 
 #: 
 #, fuzzy
@@ -1175,7 +1179,8 @@ msgid "Financial Reports"
 msgstr "تقارير مالية"
 
 #: 
-msgid "Report Type:"
+#, fuzzy
+msgid "Report Type"
 msgstr "نوع التقرير"
 
 #: 
@@ -1223,16 +1228,19 @@ msgid "Filter by Family"
 msgstr "فلتر بالأسرة"
 
 #: 
-msgid "Report Start Date:"
-msgstr "تاريخ بدء التقرير:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "تاريخ بدء التقرير"
 
 #: 
-msgid "Report End Date:"
-msgstr "تاريخ انتهاء التقرير:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "تاريخ انتهاء التقرير"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "تطبيق تواريخ تقرير إلى:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "تطبيق تواريخ تقرير إلى"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,8 +1251,9 @@ msgid "Payment Date"
 msgstr "تاريخ الدفع"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "تصفية حسب الإيداع:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "تصفية حسب الإيداع"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1255,8 +1264,9 @@ msgid "All deposits within date range"
 msgstr "جميع الودائع في نطاق التاريخ"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "فلتر حسب نوع الدفع:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "فلتر حسب نوع الدفع"
 
 #: 
 msgid "All Methods"
@@ -1288,20 +1298,12 @@ msgid "Other Settings"
 msgstr "اعدادات اخرى"
 
 #: 
-msgid "Include:"
-msgstr "يتضمن:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "المدفوعات الوحيدة مع التعهدات"
 
 #: 
 msgid "All Payments"
 msgstr "كل المدفوعات"
-
-#: 
-msgid "Generate:"
-msgstr "انشاء:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1352,8 +1354,9 @@ msgid "Summary Data"
 msgstr "ملخص البيانات"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "يجب أن يكون أدلى أعضاء التصويت <br> تبرع في هذا سنوات عديدة <br> (0 إلى لا تتطلب هبة):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "يجب أن يكون أدلى أعضاء التصويت <br> تبرع في هذا سنوات عديدة <br> (0 إلى لا تتطلب هبة)"
 
 #: 
 msgid "CSV"
@@ -1376,8 +1379,9 @@ msgid "Add New Deposit"
 msgstr "إضافة الإيداع الجديدة"
 
 #: 
-msgid "Deposits: "
-msgstr "الودائع:"
+#, fuzzy
+msgid "Deposits"
+msgstr "الودائع"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1465,20 +1469,23 @@ msgid "Family Geographic Utilities"
 msgstr "عائلة الجغرافية المرافق"
 
 #: 
-msgid "Select Family:"
-msgstr "اختر أسرة:"
+#, fuzzy
+msgid "Select Family"
+msgstr "اختر أسرة"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "الحد الأقصى لعدد الجيران:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "الحد الأقصى لعدد الجيران"
 
 #: 
 msgid "Maximum distance"
 msgstr "المسافة القصوي"
 
 #: 
-msgid "Data file format:"
-msgstr "تنسيق ملف البيانات:"
+#, fuzzy
+msgid "Data file format"
+msgstr "تنسيق ملف البيانات"
 
 #: 
 msgid "GPS Visualizer"
@@ -1489,8 +1496,9 @@ msgid "Street Atlas USA"
 msgstr "شارع أطلس الولايات المتحدة الأمريكية"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "تشمل الأسر في تنسيق ملف:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "تشمل الأسر في تنسيق ملف"
 
 #: 
 msgid "Neighbor Families"
@@ -1561,8 +1569,9 @@ msgid "Select a group"
 msgstr "اختيار مجموعه"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "خصائص محددة المجموعة:"
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "خصائص محددة المجموعة"
 
 #: 
 msgid "Enabled"
@@ -1617,8 +1626,9 @@ msgid "data for member"
 msgstr "بيانات لعضو"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "جماعة محددة خصائص النموذج المحرر:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "جماعة محددة خصائص النموذج المحرر"
 
 #: 
 msgid "No properties have been added yet"
@@ -1775,8 +1785,9 @@ msgid "Move Selected Members to Group"
 msgstr "نقل الأعضاء المختارين إلى المجموعة"
 
 #: 
-msgid "Add Group Member: "
-msgstr "إضافة عضو المجموعة:"
+#, fuzzy
+msgid "Add Group Member"
+msgstr "إضافة عضو المجموعة"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2279,12 +2290,9 @@ msgid "Group Name"
 msgstr "أسم المجموعة"
 
 #: 
-msgid "Notes:"
-msgstr "ملاحظات"
-
-#: 
-msgid "Entered:"
-msgstr "دخلت:"
+#, fuzzy
+msgid "Entered"
+msgstr "دخلت"
 
 #: 
 msgid "by"
@@ -2426,8 +2434,8 @@ msgstr "تنفيذ SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "حدث خطأ:"
+msgid "An error occurred"
+msgstr "حدث خطأ"
 
 #: 
 msgid " record(s) returned"
@@ -3071,11 +3079,13 @@ msgid "for funds "
 msgstr "للحصول على أموال"
 
 #: 
-msgid "Donated Items:"
-msgstr "عناصر تبرعت:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "عناصر تبرعت"
 
 #: 
-msgid "Purchased Items:"
+#, fuzzy
+msgid "Purchased Items"
 msgstr "قائمة المشتريات"
 
 #: 
@@ -3135,12 +3145,14 @@ msgid "Please mail you next gift to "
 msgstr "يرجى نرسل لك هدية المقبلة ل"
 
 #: 
-msgid "Gift Amount:"
+#, fuzzy
+msgid "Gift Amount"
 msgstr "قيمة الهدية"
 
 #: 
-msgid "Gift Designation:"
-msgstr "هدية تعيين:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "هدية تعيين"
 
 #: 
 msgid "Sunday School"
@@ -3556,18 +3568,6 @@ msgid "Buyer # "
 msgstr "مشتر #"
 
 #: 
-msgid "Envelope:"
-msgstr "ظرف:"
-
-#: 
-msgid ", Phone: "
-msgstr "، هاتف:"
-
-#: 
-msgid "Voting members "
-msgstr "أعضاء التصويت"
-
-#: 
 msgid "Family Members:"
 msgstr "أفراد الأسرة:"
 
@@ -3588,20 +3588,13 @@ msgid "File Name:"
 msgstr "اسم الملف:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "السنة المالية:"
-
-#: 
 msgid "family"
 msgstr "عائلة"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "تاريخ الذكرى:"
-
-#: 
-msgid "Date Entered:"
-msgstr "تاريخ دخول:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "تاريخ دخول"
 
 #: 
 msgid "CSV Import"
@@ -3628,10 +3621,6 @@ msgid "Filter by Fund"
 msgstr "مرشح من قبل صندوق"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "إضافة الإيداع الجديد:"
-
-#: 
 msgid "Estimated value"
 msgstr "القيمة المقدرة"
 
@@ -3646,10 +3635,6 @@ msgstr "المجموعة النص"
 #: 
 msgid "Group Properties"
 msgstr "خصائص المجموعة"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "تعيين خاصية جديدة:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3696,10 +3681,6 @@ msgstr "هذه هي الأرقام دور الأسرة تسمى الزوج"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "هذه هي الأرقام دور الأسرة تسمى الطفل"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "الاستعلامات التي المستخدم يجب أن يكون لديك أذونات التمويل للاستخدام:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3989,26 +3970,6 @@ msgstr "الرمز البريدي"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "البريد الإلكتروني العمل"
 
@@ -4276,23 +4237,8 @@ msgstr "بحث مخصص"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "إجمالي السجلات مطابقة جنس معين."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "حددت يختار سجلات الشخص مع دور الأسرة والمساواة بين الجنسين."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "يعود سجلات الشخص الذي يتم تعيين خاصية معينة."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "البحث بواسطة أي جزء من الاسم، المدينة، الدولة، الرمز البريدي، هاتف المنزل، البريد الإلكتروني، أو العمل البريد الإلكتروني."
 
 #. Context: query_qry
 #: 
@@ -4308,16 +4254,6 @@ msgstr "البحث الطلبة مسجل"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "الأعضاء الذين انضموا في شهر معين"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "الناس الذين هم مسجلون في قاعدة بيانات المستخدمين"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "الناس الذين هم أعضاء"
 
 #. Context: query_qry
 #: 
@@ -6046,16 +5982,18 @@ msgid "Please confirm activation of family"
 msgstr "الرجاء تفعيل تأكيد الأسرة"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "تظهر الجيران مع هذه التصنيفات:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "تظهر الجيران مع هذه التصنيفات"
 
 #: 
 msgid "Please select a Family."
 msgstr "الرجاء اختيار الأسرة."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "تنسيق البيانات اسم ملف قاعدة:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "تنسيق البيانات اسم ملف قاعدة"
 
 #: 
 msgid "select an option"
@@ -6561,15 +6499,6 @@ msgid "Thai"
 msgstr "التايلاندية"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "الكنيسة لديك صفحة الفيسبوك"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "كنيستك التغريد الصفحة"
-
-#: 
 msgid "Self Register"
 msgstr "التسجيل الذاتي"
 
@@ -6597,10 +6526,6 @@ msgstr "سجلات (ق) وأضاف بنجاح لاختيار المجموعة."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "للتصدير إلى آخر للاستخدام محارف الأوروبي."
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "الافتراضي هو UTF-8، للاستخدام محارف الأوروبي ويندوز 1252 على سبيل المثال للغة الفرنسية."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6951,14 +6876,6 @@ msgid "Upgrade Required"
 msgstr "مطلوب ترقية"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "أظهار تواريخ ميلاد والمناسبات السنوية على البدء من CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "عدد الثواني بعد تحميل الصفحة حتى يختفي لافتة، الافتراضي 10 ثانية"
-
-#: 
 msgid "Help & Manual"
 msgstr "المساعدة ودليل"
 
@@ -7131,10 +7048,6 @@ msgstr "حذف الوصول رمز"
 #: 
 msgid "ICS URL"
 msgstr "ICS URL"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL"
 
 #: 
 msgid "Foreground Color"
@@ -8098,10 +8011,46 @@ msgid "To stop receiving these emails, you can email"
 msgstr "لإيقاف تلقي رسائل البريد الإلكتروني هذه، يمكنك إرسال بريد إلكتروني"
 
 #: 
+msgid "invalid group request"
+msgstr "طلب مجموعة غير صالح"
+
+#: 
 msgid "property"
 msgstr "مِلكِيَّة"
 
 #: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "كجزء من عملية الاستعادة، تم تعطيل النسخ الاحتياطية الخارجية. إذا كنت ترغب في متابعة النسخ الاحتياطي التلقائي، يجب عليك إعادة تمكين إعداد bEnableExternalBackupTarget يدويًا."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "لقد نجح فحص التكامل السابق. تتطابق جميع تجزئات ملفات النظام مع القيم المتوقعة."
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "حرف واحد من الاسم الأول وحرف واحد من الاسم الأخير"
+
+#: 
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
 msgstr "تطبيق سياسة أمان المحتوى (CSP) للمساعدة في الحماية ضد البرمجة النصية عبر المواقع. عند التعطيل، يتم الإبلاغ عن انتهاكات CSP فقط."
+
+#: 
+msgid "Error"
+msgstr "خطأ"
+
+#: 
+msgid "Info"
+msgstr "معلومات"
+
+#: 
+msgid "Passwords do not match"
+msgstr "كلمات المرور غير متطابقة"
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "إصدار جديد من ChurchCRM متاح للتثبيت."
+
+#: 
+msgid "Apply Update Now"
+msgstr "طبّق التحديث الآن"
 

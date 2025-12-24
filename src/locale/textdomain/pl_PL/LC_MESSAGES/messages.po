@@ -200,12 +200,14 @@ msgid "Group Membership"
 msgstr "Przynależność do Grupy"
 
 #: 
-msgid "From:"
-msgstr "Od:"
+#, fuzzy
+msgid "From"
+msgstr "Od"
 
 #: 
-msgid "To:"
-msgstr "Do:"
+#, fuzzy
+msgid "To"
+msgstr "Do"
 
 #: 
 #, fuzzy
@@ -246,8 +248,9 @@ msgid "No file selected for upload."
 msgstr "Nie wybrano żadnego pliku do załadowania."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Ogólna liczba wierszy w pliku CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Ogólna liczba wierszy w pliku CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -560,8 +563,9 @@ msgid "Convert All"
 msgstr "Przekształć wszystkie"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Deposit Slip Number: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Deposit Slip Number"
 
 #: 
 #, fuzzy
@@ -1144,8 +1148,9 @@ msgid "Financial Reports"
 msgstr "Raporty Finansowe"
 
 #: 
-msgid "Report Type:"
-msgstr "Typ Raportu:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Typ Raportu"
 
 #: 
 msgid "Select Report Type"
@@ -1194,16 +1199,19 @@ msgid "Filter by Family"
 msgstr "Sortuj wg Rodziny"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Data Rozpoczęcia Raportu:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Data Rozpoczęcia Raportu"
 
 #: 
-msgid "Report End Date:"
-msgstr "Data Końca Raportu:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Data Końca Raportu"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Przypisz Daty Raportu do:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Przypisz Daty Raportu do"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1214,8 +1222,9 @@ msgid "Payment Date"
 msgstr "Data Płatności:"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Sortuj wg Deposit:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Sortuj wg Deposit"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1226,8 +1235,9 @@ msgid "All deposits within date range"
 msgstr "Wszystkie deposits w przedziale czasowym"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Sortuj wg. Sposobu Płatności:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Sortuj wg. Sposobu Płatności"
 
 #: 
 msgid "All Methods"
@@ -1259,20 +1269,12 @@ msgid "Other Settings"
 msgstr "Inne Ustawienia"
 
 #: 
-msgid "Include:"
-msgstr "Wliczając (include):"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Tylko Płatności z Datkami (Pledges)"
 
 #: 
 msgid "All Payments"
 msgstr "Wszystkie płatności"
-
-#: 
-msgid "Generate:"
-msgstr "Wygeneruj:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1323,7 +1325,8 @@ msgid "Summary Data"
 msgstr "Dane Podsumowujące"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
 msgstr "Głosujący członkowie powinni<br> wpłacić datek w ostatnich latach<br> (0 nie wymagaj datku)"
 
 #: 
@@ -1347,8 +1350,9 @@ msgid "Add New Deposit"
 msgstr "Dodaj Nowy Depozyt"
 
 #: 
-msgid "Deposits: "
-msgstr "Depozyty: "
+#, fuzzy
+msgid "Deposits"
+msgstr "Depozyty"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1439,20 +1443,23 @@ msgid "Family Geographic Utilities"
 msgstr "Narzędzia Geo dla Rodziny"
 
 #: 
-msgid "Select Family:"
-msgstr "Wybierz Rodzinę:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Wybierz Rodzinę"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Maksymalna liczba Sąsiadów:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Maksymalna liczba Sąsiadów"
 
 #: 
 msgid "Maximum distance"
 msgstr "Maksymalna odległość"
 
 #: 
-msgid "Data file format:"
-msgstr "Format danych:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Format danych"
 
 #: 
 msgid "GPS Visualizer"
@@ -1463,8 +1470,9 @@ msgid "Street Atlas USA"
 msgstr "Atlas Ulica USA"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Dołącz rodziny z pliku ze współżędnymi "
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Dołącz rodziny z pliku ze współżędnymi"
 
 #: 
 msgid "Neighbor Families"
@@ -1539,8 +1547,9 @@ msgid "Select a group"
 msgstr "Wybierz grupę"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Właściwości Specjalnie dla Grup:"
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Właściwości Specjalnie dla Grup"
 
 #: 
 msgid "Enabled"
@@ -1597,8 +1606,9 @@ msgid "data for member"
 msgstr "dla"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Edytor Ustawień Dodatkowych dla Grupy:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Edytor Ustawień Dodatkowych dla Grupy"
 
 #: 
 msgid "No properties have been added yet"
@@ -1764,8 +1774,9 @@ msgid "Move Selected Members to Group"
 msgstr "Przenieś Wybranych Członków do Grupy"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Dodaj Członka Grupy: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Dodaj Członka Grupy"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2271,12 +2282,9 @@ msgid "Group Name"
 msgstr "Nazwa Grupy"
 
 #: 
-msgid "Notes:"
-msgstr "Notatki:"
-
-#: 
-msgid "Entered:"
-msgstr "Wpisane:"
+#, fuzzy
+msgid "Entered"
+msgstr "Wpisane"
 
 #: 
 msgid "by"
@@ -2422,7 +2430,7 @@ msgstr "Wyślij Zapytanie SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
+msgid "An error occurred"
 msgstr "Wystąpił błąd:"
 
 #: 
@@ -3071,11 +3079,13 @@ msgid "for funds "
 msgstr "dla celów"
 
 #: 
-msgid "Donated Items:"
-msgstr "Przedmioty Darowane:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Przedmioty Darowane"
 
 #: 
-msgid "Purchased Items:"
+#, fuzzy
+msgid "Purchased Items"
 msgstr "Przedmioty Kupione"
 
 #: 
@@ -3135,11 +3145,13 @@ msgid "Please mail you next gift to "
 msgstr "Prosimy przesłać kolejny datek do"
 
 #: 
-msgid "Gift Amount:"
-msgstr "Kwota Datku:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Kwota Datku"
 
 #: 
-msgid "Gift Designation:"
+#, fuzzy
+msgid "Gift Designation"
 msgstr "Cel Datku:"
 
 #: 
@@ -3320,11 +3332,6 @@ msgstr "Członkowie, sympatycy itp."
 msgid "People with birthdays in a particular month"
 msgstr "Osoby urodzone w danym miesiącu"
 
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Osoby będące członkami"
-
 #. Context: userconfig_ucfg
 #: 
 msgid "Allow user to add new event"
@@ -3347,8 +3354,9 @@ msgid "Family Registration"
 msgstr "Rejestracja Rodziny"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Pokaż sąsiadów w wybranych kategoriach:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Pokaż sąsiadów w wybranych kategoriach"
 
 #: 
 msgid "Select event"
@@ -3449,10 +3457,6 @@ msgstr "Usuń Token Dostępu"
 #: 
 msgid "ICS URL"
 msgstr "ICS URL"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL"
 
 #: 
 msgid "Foreground Color"

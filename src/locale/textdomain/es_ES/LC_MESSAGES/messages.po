@@ -187,12 +187,14 @@ msgid "Group Membership"
 msgstr "Membresía de grupo"
 
 #: 
-msgid "From:"
-msgstr "De:"
+#, fuzzy
+msgid "From"
+msgstr "De"
 
 #: 
-msgid "To:"
-msgstr "Para:"
+#, fuzzy
+msgid "To"
+msgstr "Para"
 
 #: 
 msgid "Birthday Date"
@@ -231,8 +233,9 @@ msgid "No file selected for upload."
 msgstr "No existe el archivo seleccionado para cargar."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Número total de filas en el archivo CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Número total de filas en el archivo CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +549,9 @@ msgid "Convert All"
 msgstr "Convertir todo"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Número de ficha de depósitos: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Número de ficha de depósitos"
 
 #: 
 #, fuzzy
@@ -1175,8 +1179,9 @@ msgid "Financial Reports"
 msgstr "Reportes financieros"
 
 #: 
-msgid "Report Type:"
-msgstr "Tipo de reporte:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Tipo de reporte"
 
 #: 
 msgid "Select Report Type"
@@ -1223,16 +1228,19 @@ msgid "Filter by Family"
 msgstr "Filtrar por familia"
 
 #: 
-msgid "Report Start Date:"
+#, fuzzy
+msgid "Report Start Date"
 msgstr "Fecha de inicio del reporte"
 
 #: 
-msgid "Report End Date:"
+#, fuzzy
+msgid "Report End Date"
 msgstr "Fecha de término del reporte"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Aplicar las fechas del reporte a:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Aplicar las fechas del reporte a"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,7 +1251,8 @@ msgid "Payment Date"
 msgstr "Fecha de Pago"
 
 #: 
-msgid "Filter by Deposit:"
+#, fuzzy
+msgid "Filter by Deposit"
 msgstr "Filtrar por depósito"
 
 #: 
@@ -1255,7 +1264,8 @@ msgid "All deposits within date range"
 msgstr "Todos los depósitos dentro de un rango de tiempo"
 
 #: 
-msgid "Filter by Payment Type:"
+#, fuzzy
+msgid "Filter by Payment Type"
 msgstr "Filtrar pot tipo de pago"
 
 #: 
@@ -1288,20 +1298,12 @@ msgid "Other Settings"
 msgstr "Otros ajustes"
 
 #: 
-msgid "Include:"
-msgstr "Incluir:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Solo pagos con promesas"
 
 #: 
 msgid "All Payments"
 msgstr "Todos los pagos"
-
-#: 
-msgid "Generate:"
-msgstr "Generar:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1352,8 +1354,9 @@ msgid "Summary Data"
 msgstr "Resumen de datos"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Los miembros que han votado deben haber donado<br> dentro de esta cantidad de años<br> (0 para no requerir una donación):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Los miembros que han votado deben haber donado<br> dentro de esta cantidad de años<br> (0 para no requerir una donación)"
 
 #: 
 msgid "CSV"
@@ -1376,8 +1379,9 @@ msgid "Add New Deposit"
 msgstr "Agregar nuevo depósito"
 
 #: 
-msgid "Deposits: "
-msgstr "Depósitos: "
+#, fuzzy
+msgid "Deposits"
+msgstr "Depósitos"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1465,11 +1469,13 @@ msgid "Family Geographic Utilities"
 msgstr "Utilidades Geográficas de familias"
 
 #: 
-msgid "Select Family:"
+#, fuzzy
+msgid "Select Family"
 msgstr "Seleccionar familia"
 
 #: 
-msgid "Maximum number of neighbors:"
+#, fuzzy
+msgid "Maximum number of neighbors"
 msgstr "Número Máximo de vecinos"
 
 #: 
@@ -1477,7 +1483,8 @@ msgid "Maximum distance"
 msgstr "Distancia Máxima"
 
 #: 
-msgid "Data file format:"
+#, fuzzy
+msgid "Data file format"
 msgstr "Formato de archivo de datos"
 
 #: 
@@ -1489,7 +1496,8 @@ msgid "Street Atlas USA"
 msgstr "Street Atlas USA"
 
 #: 
-msgid "Include families in coordinate file:"
+#, fuzzy
+msgid "Include families in the coordinate file"
 msgstr "Incluir familias en archivo de coordenadas"
 
 #: 
@@ -1561,7 +1569,8 @@ msgid "Select a group"
 msgstr "Seleccione un grupo"
 
 #: 
-msgid "Group Specific Properties: "
+#, fuzzy
+msgid "Group Specific Properties"
 msgstr "Propiedades específicas de grupo"
 
 #: 
@@ -1617,7 +1626,8 @@ msgid "data for member"
 msgstr "dato para miembro"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
 msgstr "formato de edición de propiedades específicas de grupo"
 
 #: 
@@ -1775,8 +1785,9 @@ msgid "Move Selected Members to Group"
 msgstr "Mover miembros seleccionados al grupo"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Agregar miembro de grupo: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Agregar miembro de grupo"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2279,12 +2290,9 @@ msgid "Group Name"
 msgstr "Nombre de grupo"
 
 #: 
-msgid "Notes:"
-msgstr "Notas:"
-
-#: 
-msgid "Entered:"
-msgstr "Ingresado:"
+#, fuzzy
+msgid "Entered"
+msgstr "Ingresado"
 
 #: 
 msgid "by"
@@ -2426,8 +2434,8 @@ msgstr "Ejecutar SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "A Ocurrido un Error: "
+msgid "An error occurred"
+msgstr "A Ocurrido un Error"
 
 #: 
 msgid " record(s) returned"
@@ -3071,12 +3079,14 @@ msgid "for funds "
 msgstr " para los fondos"
 
 #: 
-msgid "Donated Items:"
-msgstr "Los artículos donados:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Los artículos donados"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Los productos comprados:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Los productos comprados"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3135,12 +3145,14 @@ msgid "Please mail you next gift to "
 msgstr "Por favor, envíe su próxima donación a"
 
 #: 
-msgid "Gift Amount:"
-msgstr "Monto de Donación:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Monto de Donación"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Designación de Donación:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Designación de Donación"
 
 #: 
 msgid "Sunday School"
@@ -3556,18 +3568,6 @@ msgid "Buyer # "
 msgstr "Comprador #"
 
 #: 
-msgid "Envelope:"
-msgstr "Sobre"
-
-#: 
-msgid ", Phone: "
-msgstr ", Teléfono:"
-
-#: 
-msgid "Voting members "
-msgstr "Los miembros votantes"
-
-#: 
 msgid "Family Members:"
 msgstr "Miembros"
 
@@ -3588,20 +3588,13 @@ msgid "File Name:"
 msgstr "Nombre de Archivo:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Año Fiscal:"
-
-#: 
 msgid "family"
 msgstr "familia"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Fecha de Aniversario:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Fecha de entrada:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Fecha de entrada"
 
 #: 
 msgid "CSV Import"
@@ -3628,10 +3621,6 @@ msgid "Filter by Fund"
 msgstr "Filtrar por fondo"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Agregar nuevo depósito: "
-
-#: 
 msgid "Estimated value"
 msgstr "Valor estimado"
 
@@ -3646,10 +3635,6 @@ msgstr "Grupo de Texto"
 #: 
 msgid "Group Properties"
 msgstr "Propiedades de grupos"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Asignar una nueva propiedad"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3696,10 +3681,6 @@ msgstr "Estos son los números de rol familiar designados como cónyuge"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Estos son los números de rol de familia designados como niño"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Consultas para las cuales el usuario debe tener permisos financieros:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3990,26 +3971,6 @@ msgstr "Código Postal"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "Email de Trabajo"
 
@@ -4277,23 +4238,8 @@ msgstr "BúsquedaPersonalizada"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Total de registros que coinciden con un género determinado."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Selecciona los registros de personas con el rol familiar y el género específico."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Retorna los registros de persona que están asignados a la propiedad dada."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Busque por cualquier parte del nombre, ciudad, estado, código postal, teléfono de casa, correo electrónico o correo electrónico de trabajo."
 
 #. Context: query_qry
 #: 
@@ -4309,16 +4255,6 @@ msgstr "Buscar estudiantes registrados"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Miembros que se unieron en un mes en particular"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Personas que están registradas como usuarios de bases de datos"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Personas que son miembros"
 
 #. Context: query_qry
 #: 
@@ -6068,16 +6004,18 @@ msgid "Please confirm activation of family"
 msgstr "Por favor confirme desactivación de familia"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Mostrar vecinos con estas clasificaciones:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Mostrar vecinos con estas clasificaciones"
 
 #: 
 msgid "Please select a Family."
 msgstr "Por favor selecciona una familia."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Coordinar nombre de archivo base de datos:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Coordinar nombre de archivo base de datos"
 
 #: 
 msgid "select an option"
@@ -6585,15 +6523,6 @@ msgid "Thai"
 msgstr "Tailandés"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "Página de Facebook de Su iglesia"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "Página de X de Su iglesia"
-
-#: 
 msgid "Self Register"
 msgstr "Auto-registrar"
 
@@ -6621,10 +6550,6 @@ msgstr "registro(s) agregados exitosamente al grupo seleccionado"
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Para exportar hacia otro Para caracteres europeos use ;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "UTF-8 por defecto, Para caracteres euripeos use Windows-1252 por ejemplo para Francés"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6975,14 +6900,6 @@ msgid "Upgrade Required"
 msgstr "Actualización requerida"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Mostrar Cumpleaños cuando al iniciar el CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Número de segundos después de la carga del sitio en que el anuncio desaparecerá, 10 segundos por defecto"
-
-#: 
 msgid "Help & Manual"
 msgstr "Ayuda y Guía"
 
@@ -7155,10 +7072,6 @@ msgstr "Borrar Token de Acceso"
 #: 
 msgid "ICS URL"
 msgstr "URL de ICS"
-
-#: 
-msgid "JSON URL"
-msgstr "URL de JSON"
 
 #: 
 msgid "Foreground Color"
@@ -8167,41 +8080,6 @@ msgstr "Recibió este correo electrónico porque recibimos una solicitud de acti
 msgid "To stop receiving these emails, you can email"
 msgstr "Para dejar de recibir estos correos, puede contactar a"
 
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2016/2017"
-msgstr "2016/2017"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2017/2018"
-msgstr "2017/2018"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2018/2019"
-msgstr "2018/2019"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2019/2020"
-msgstr "2019/2020"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2020/2021"
-msgstr "2020/2021"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2021/2022"
-msgstr "2021/2022"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2022/2023"
-msgstr "2022/2023"
-
 #: 
 msgid "invalid group request"
 msgstr "Solicitud de grupo inválida"
@@ -8834,10 +8712,6 @@ msgid "Zip code is required"
 msgstr "Se requiere el código postal"
 
 #: 
-msgid "denotes required fields"
-msgstr "denota campos obligatorios"
-
-#: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Se ha generado una nueva contraseña y se ha enviado a su dirección de correo electrónico."
 
@@ -9435,10 +9309,6 @@ msgid "%d event in %s"
 msgid_plural "%d events in %s"
 msgstr[0] "%d evento en %s"
 msgstr[1] "%d eventos en %s"
-
-#: 
-msgid "Add New Event Type"
-msgstr "Agregar nuevo tipo de evento"
 
 #: 
 msgid "All Event Types"

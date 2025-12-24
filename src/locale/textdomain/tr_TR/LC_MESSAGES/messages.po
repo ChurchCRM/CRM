@@ -187,11 +187,13 @@ msgid "Group Membership"
 msgstr "Grup üyeliği"
 
 #: 
-msgid "From:"
-msgstr "İtibaren:"
+#, fuzzy
+msgid "From"
+msgstr "İtibaren"
 
 #: 
-msgid "To:"
+#, fuzzy
+msgid "To"
 msgstr "İle:"
 
 #: 
@@ -231,8 +233,9 @@ msgid "No file selected for upload."
 msgstr "Yükleme için dosya seçilmedi."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "CSV dosyasındaki toplam satır sayısı:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "CSV dosyasındaki toplam satır sayısı"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +549,9 @@ msgid "Convert All"
 msgstr "Hepsini dönüştür"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Depozito Kayma Numarası:"
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Depozito Kayma Numarası"
 
 #: 
 #, fuzzy
@@ -1175,8 +1179,9 @@ msgid "Financial Reports"
 msgstr "Finansal raporlar"
 
 #: 
-msgid "Report Type:"
-msgstr "Rapor türü:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Rapor türü"
 
 #: 
 msgid "Select Report Type"
@@ -1223,16 +1228,19 @@ msgid "Filter by Family"
 msgstr "Ailenin filtresi"
 
 #: 
-msgid "Report Start Date:"
-msgstr "Rapor Başlangıç ​​Tarihi:"
+#, fuzzy
+msgid "Report Start Date"
+msgstr "Rapor Başlangıç ​​Tarihi"
 
 #: 
-msgid "Report End Date:"
-msgstr "Rapor Bitiş Tarihi:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "Rapor Bitiş Tarihi"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Rapor tarihlerini uygulayın:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Rapor tarihlerini uygulayın"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,8 +1251,9 @@ msgid "Payment Date"
 msgstr "Ödeme tarihi"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Depozitiyle filtre:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Depozitiyle filtre"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1255,8 +1264,9 @@ msgid "All deposits within date range"
 msgstr "Tarih aralığı içindeki tüm depozitolar"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Ödeme Türüne Göre Filtre:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Ödeme Türüne Göre Filtre"
 
 #: 
 msgid "All Methods"
@@ -1288,20 +1298,12 @@ msgid "Other Settings"
 msgstr "Diğer ayarlar"
 
 #: 
-msgid "Include:"
-msgstr "Katmak:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Yalnızca Revedges ile Ödemeler"
 
 #: 
 msgid "All Payments"
 msgstr "Tüm ödemeler"
-
-#: 
-msgid "Generate:"
-msgstr "Oluşturun:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1352,8 +1354,9 @@ msgid "Summary Data"
 msgstr "Özet veriler"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Oylama üyeleri bu yıllar içinde <br> bağış yapmış olmalı <br> (0 bağış gerektirmemek için):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Oylama üyeleri bu yıllar içinde <br> bağış yapmış olmalı <br> (0 bağış gerektirmemek için)"
 
 #: 
 msgid "CSV"
@@ -1376,8 +1379,9 @@ msgid "Add New Deposit"
 msgstr "Yeni Depozito Ekle"
 
 #: 
-msgid "Deposits: "
-msgstr "Mevduat:"
+#, fuzzy
+msgid "Deposits"
+msgstr "Mevduat"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1465,20 +1469,23 @@ msgid "Family Geographic Utilities"
 msgstr "Aile Coğrafi Kamu Hizmetleri"
 
 #: 
-msgid "Select Family:"
+#, fuzzy
+msgid "Select Family"
 msgstr "Aile seçin:"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "Maksimum komşu sayısı:"
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "Maksimum komşu sayısı"
 
 #: 
 msgid "Maximum distance"
 msgstr "Maksimum mesafe"
 
 #: 
-msgid "Data file format:"
-msgstr "Veri Dosyası Biçimi:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Veri Dosyası Biçimi"
 
 #: 
 msgid "GPS Visualizer"
@@ -1489,8 +1496,9 @@ msgid "Street Atlas USA"
 msgstr "Street Atlas ABD"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Aileleri koordinat dosyasına ekleyin:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Aileleri koordinat dosyasına ekleyin"
 
 #: 
 msgid "Neighbor Families"
@@ -1561,8 +1569,9 @@ msgid "Select a group"
 msgstr "Bir Grup Seçin"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "Grupa özgü özellikler:"
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "Grupa özgü özellikler"
 
 #: 
 msgid "Enabled"
@@ -1617,8 +1626,9 @@ msgid "data for member"
 msgstr "Üye için veriler"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "Gruba özgü özellikler form düzenleyicisi:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "Gruba özgü özellikler form düzenleyicisi"
 
 #: 
 msgid "No properties have been added yet"
@@ -1775,7 +1785,8 @@ msgid "Move Selected Members to Group"
 msgstr "Seçilen üyeleri gruba taşıyın"
 
 #: 
-msgid "Add Group Member: "
+#, fuzzy
+msgid "Add Group Member"
 msgstr "Grup Üyesi Ekle:"
 
 #: 
@@ -2279,12 +2290,9 @@ msgid "Group Name"
 msgstr "Grup ismi"
 
 #: 
-msgid "Notes:"
-msgstr "Notlar:"
-
-#: 
-msgid "Entered:"
-msgstr "Girdi:"
+#, fuzzy
+msgid "Entered"
+msgstr "Girdi"
 
 #: 
 msgid "by"
@@ -2426,8 +2434,8 @@ msgstr "SQL'i yürütmek"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "Bir hata oluştu:"
+msgid "An error occurred"
+msgstr "Bir hata oluştu"
 
 #: 
 msgid " record(s) returned"
@@ -3071,12 +3079,14 @@ msgid "for funds "
 msgstr "fon için"
 
 #: 
-msgid "Donated Items:"
-msgstr "Bağışlanan Ürünler:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Bağışlanan Ürünler"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Satın alınan ürünler:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Satın alınan ürünler"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3135,12 +3145,14 @@ msgid "Please mail you next gift to "
 msgstr "Lütfen size bir sonraki hediyeyi postalayın"
 
 #: 
-msgid "Gift Amount:"
-msgstr "Hediye Miktarı:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Hediye Miktarı"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Hediye Ataması:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Hediye Ataması"
 
 #: 
 msgid "Sunday School"
@@ -3556,18 +3568,6 @@ msgid "Buyer # "
 msgstr "Alıcı #"
 
 #: 
-msgid "Envelope:"
-msgstr "Mektup:"
-
-#: 
-msgid ", Phone: "
-msgstr ", Telefon:"
-
-#: 
-msgid "Voting members "
-msgstr "Oy kullanan üyeler"
-
-#: 
 msgid "Family Members:"
 msgstr "Aile üyeleri:"
 
@@ -3588,20 +3588,13 @@ msgid "File Name:"
 msgstr "Dosya adı:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Mali yıl:"
-
-#: 
 msgid "family"
 msgstr "aile"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Yıldönümü Tarihi:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Girilen tarih:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Girilen tarih"
 
 #: 
 msgid "CSV Import"
@@ -3628,10 +3621,6 @@ msgid "Filter by Fund"
 msgstr "Fonla Filtre"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Yeni depozito ekleyin:"
-
-#: 
 msgid "Estimated value"
 msgstr "Tahmini değer"
 
@@ -3646,10 +3635,6 @@ msgstr "Metin grubu"
 #: 
 msgid "Group Properties"
 msgstr "Grup Özellikleri"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Yeni bir mülk atayın:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3696,10 +3681,6 @@ msgstr "Bunlar eş olarak belirlenen aile rolü numaraları"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Bunlar çocuk olarak belirlenen aile rol numaralarıdır"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Kullanıcının kullanılması için hangi kullanıcının kullanılması gereken sorgular:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3989,26 +3970,6 @@ msgstr "Posta kodu"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "İş e - postası"
 
@@ -4276,23 +4237,8 @@ msgstr "Özel arama"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "Belirli bir cinsiyetle eşleşen toplam kayıt."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Aile rolü ve cinsiyet belirtilen kişi kayıtlarını seçer."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Verilen mülke atanan kişi kayıtlarını döndürür."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "İsim, şehir, eyalet, zip, ev telefonu, e -posta veya çalışma e -postasının herhangi bir bölümüne göre arayın."
 
 #. Context: query_qry
 #: 
@@ -4308,16 +4254,6 @@ msgstr "Kayıtlı Öğrencileri Bulun"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Belirli bir ayda katılan üyeler"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Veritabanı kullanıcısı olarak kayıtlı kişiler"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Üye olan insanlar"
 
 #. Context: query_qry
 #: 
@@ -6046,16 +5982,18 @@ msgid "Please confirm activation of family"
 msgstr "Lütfen ailenin aktivasyonunu onaylayın"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "Komşuları bu sınıflandırmalarla gösterin:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "Komşuları bu sınıflandırmalarla gösterin"
 
 #: 
 msgid "Please select a Family."
 msgstr "Lütfen bir aile seçin."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Veri tabanı dosya adını koordine edin:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Veri tabanı dosya adını koordine edin"
 
 #: 
 msgid "select an option"
@@ -6561,15 +6499,6 @@ msgid "Thai"
 msgstr "Tayland"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "Kilisenizin Facebook Sayfası"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "Kilisenizin X sayfası"
-
-#: 
 msgid "Self Register"
 msgstr "Kendi Kayıt Kayıt"
 
@@ -6597,10 +6526,6 @@ msgstr "Kayıtlar seçilen gruba başarıyla eklendi."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Avrupa kömürü kullanımı için bir başkasına ihraç etmek;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Varsayılan UTF-8'dir."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6951,14 +6876,6 @@ msgid "Upgrade Required"
 msgstr "Yükseltme Gerekli"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "CRM'nin başlangıcında doğum tarihleri ​​yıldönümlerini gösterin"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Banner kaybolana kadar sayfa yükünden sonra saniye sayısı, varsayılan 10 saniye"
-
-#: 
 msgid "Help & Manual"
 msgstr "Yardım ve Manuel"
 
@@ -7131,10 +7048,6 @@ msgstr "Erişim belirtecini sil"
 #: 
 msgid "ICS URL"
 msgstr "ICS URL"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL'si"
 
 #: 
 msgid "Foreground Color"

@@ -187,12 +187,14 @@ msgid "Group Membership"
 msgstr "그룹 소속"
 
 #: 
-msgid "From:"
-msgstr "시작:"
+#, fuzzy
+msgid "From"
+msgstr "시작"
 
 #: 
-msgid "To:"
-msgstr "종료:"
+#, fuzzy
+msgid "To"
+msgstr "종료"
 
 #: 
 msgid "Birthday Date"
@@ -231,8 +233,9 @@ msgid "No file selected for upload."
 msgstr "업로드할 파일이 선택되지 않았습니다."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "CSV 파일 총 행 수:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "CSV 파일 총 행 수"
 
 #: 
 msgid "Ignore this Field"
@@ -546,8 +549,9 @@ msgid "Convert All"
 msgstr "모두 변환"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "입금 내역서 번호: "
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "입금 내역서 번호"
 
 #: 
 #, fuzzy
@@ -1175,8 +1179,9 @@ msgid "Financial Reports"
 msgstr "재정 보고"
 
 #: 
-msgid "Report Type:"
-msgstr "보고서 유형:"
+#, fuzzy
+msgid "Report Type"
+msgstr "보고서 유형"
 
 #: 
 msgid "Select Report Type"
@@ -1223,16 +1228,19 @@ msgid "Filter by Family"
 msgstr "가족별 필터"
 
 #: 
-msgid "Report Start Date:"
+#, fuzzy
+msgid "Report Start Date"
 msgstr "보고 시작일:"
 
 #: 
-msgid "Report End Date:"
-msgstr "보고 종료일:"
+#, fuzzy
+msgid "Report End Date"
+msgstr "보고 종료일"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "보고 기간 적용 대상:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "보고 기간 적용 대상"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1243,8 +1251,9 @@ msgid "Payment Date"
 msgstr "헌금일"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "입금 내역서 필터:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "입금 내역서 필터"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1255,8 +1264,9 @@ msgid "All deposits within date range"
 msgstr "기간 내 모든 입금 내역서"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "헌금 방식 필터:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "헌금 방식 필터"
 
 #: 
 msgid "All Methods"
@@ -1287,20 +1297,12 @@ msgid "Other Settings"
 msgstr "기타 설정"
 
 #: 
-msgid "Include:"
-msgstr "포함 대상:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "서약이 있는 헌금만"
 
 #: 
 msgid "All Payments"
 msgstr "모든 헌금"
-
-#: 
-msgid "Generate:"
-msgstr "대상 생성:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1351,8 +1353,9 @@ msgid "Summary Data"
 msgstr "요약 데이터"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "투표권을 갖기 위해서는 최근 몇 년 안에 헌금한 기록이 있어야 합니다<br>(0이면 헌금 기록 불필요):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "투표권을 갖기 위해서는 최근 몇 년 안에 헌금한 기록이 있어야 합니다<br>(0이면 헌금 기록 불필요)"
 
 #: 
 msgid "CSV"
@@ -1375,8 +1378,9 @@ msgid "Add New Deposit"
 msgstr "새 입금 내역서 추가"
 
 #: 
-msgid "Deposits: "
-msgstr "입금 내역서: "
+#, fuzzy
+msgid "Deposits"
+msgstr "입금 내역서"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1464,11 +1468,13 @@ msgid "Family Geographic Utilities"
 msgstr "가족 위치 도구"
 
 #: 
-msgid "Select Family:"
+#, fuzzy
+msgid "Select Family"
 msgstr "가족 선택:"
 
 #: 
-msgid "Maximum number of neighbors:"
+#, fuzzy
+msgid "Maximum number of neighbors"
 msgstr "최대 이웃 수:"
 
 #: 
@@ -1476,8 +1482,9 @@ msgid "Maximum distance"
 msgstr "최대 거리"
 
 #: 
-msgid "Data file format:"
-msgstr "데이터 파일 형식:"
+#, fuzzy
+msgid "Data file format"
+msgstr "데이터 파일 형식"
 
 #: 
 msgid "GPS Visualizer"
@@ -1488,8 +1495,9 @@ msgid "Street Atlas USA"
 msgstr "Street Atlas USA"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "좌표 파일에 포함할 가족:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "좌표 파일에 포함할 가족"
 
 #: 
 msgid "Neighbor Families"
@@ -1560,8 +1568,9 @@ msgid "Select a group"
 msgstr "그룹 선택"
 
 #: 
-msgid "Group Specific Properties: "
-msgstr "그룹 전용 속성: "
+#, fuzzy
+msgid "Group Specific Properties"
+msgstr "그룹 전용 속성"
 
 #: 
 msgid "Enabled"
@@ -1616,8 +1625,9 @@ msgid "data for member"
 msgstr "구성원 데이터"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "그룹 전용 속성 양식 편집:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "그룹 전용 속성 양식 편집"
 
 #: 
 msgid "No properties have been added yet"
@@ -1774,8 +1784,9 @@ msgid "Move Selected Members to Group"
 msgstr "선택한 구성원을 다른 그룹으로 이동"
 
 #: 
-msgid "Add Group Member: "
-msgstr "그룹 구성원 추가: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "그룹 구성원 추가"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2278,12 +2289,9 @@ msgid "Group Name"
 msgstr "그룹 이름"
 
 #: 
-msgid "Notes:"
-msgstr "메모:"
-
-#: 
-msgid "Entered:"
-msgstr "등록:"
+#, fuzzy
+msgid "Entered"
+msgstr "등록"
 
 #: 
 msgid "by"
@@ -2424,8 +2432,9 @@ msgid "Execute SQL"
 msgstr "SQL 실행"
 
 #: 
-msgid "An error occurred: "
-msgstr "오류가 발생했습니다: "
+#, fuzzy
+msgid "An error occurred"
+msgstr "오류가 발생했습니다"
 
 #: 
 msgid " record(s) returned"
@@ -3068,12 +3077,14 @@ msgid "for funds "
 msgstr "헌금 항목 "
 
 #: 
-msgid "Donated Items:"
-msgstr "기증 물품:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "기증 물품"
 
 #: 
-msgid "Purchased Items:"
-msgstr "구매 품목:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "구매 품목"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3132,11 +3143,13 @@ msgid "Please mail you next gift to "
 msgstr "다음 헌금은 아래 주소로 보내주세요: "
 
 #: 
-msgid "Gift Amount:"
-msgstr "헌금 금액:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "헌금 금액"
 
 #: 
-msgid "Gift Designation:"
+#, fuzzy
+msgid "Gift Designation"
 msgstr "헌금 용도:"
 
 #: 
@@ -3553,18 +3566,6 @@ msgid "Buyer # "
 msgstr "구매자 번호 "
 
 #: 
-msgid "Envelope:"
-msgstr "헌금봉투:"
-
-#: 
-msgid ", Phone: "
-msgstr ", 전화: "
-
-#: 
-msgid "Voting members "
-msgstr "투표 회원 "
-
-#: 
 msgid "Family Members:"
 msgstr "가족 구성원:"
 
@@ -3585,19 +3586,12 @@ msgid "File Name:"
 msgstr "파일명:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "회계 연도:"
-
-#: 
 msgid "family"
 msgstr "가족"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "결혼기념일:"
-
-#: 
-msgid "Date Entered:"
+#, fuzzy
+msgid "Date Entered"
 msgstr "입력일:"
 
 #: 
@@ -3625,10 +3619,6 @@ msgid "Filter by Fund"
 msgstr "헌금 항목 필터"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "새 입금 내역서 추가: "
-
-#: 
 msgid "Estimated value"
 msgstr "예상 가치"
 
@@ -3643,10 +3633,6 @@ msgstr "문자 그룹"
 #: 
 msgid "Group Properties"
 msgstr "그룹 속성"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "새 속성 배정:"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3692,10 +3678,6 @@ msgstr "배우자로 지정된 가족 역할 번호"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "자녀로 지정된 가족 역할 번호"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "재정 권한이 있어야 사용할 수 있는 쿼리:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -3984,26 +3966,6 @@ msgstr "우편번호"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "직장 이메일"
 
@@ -4270,23 +4232,8 @@ msgstr "사용자 정의 검색"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "지정한 성별에 해당하는 기록 수를 집계합니다."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "선택한 가족 역할과 성별을 가진 개인을 조회합니다."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "해당 속성이 배정된 개인을 조회합니다."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "이름, 도시, 주/도, 우편번호, 집 전화, 이메일, 직장 이메일의 일부로 검색합니다."
 
 #. Context: query_qry
 #: 
@@ -4302,16 +4249,6 @@ msgstr "등록된 학생 찾기"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "특정 월에 등록한 성도"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "DB 사용자로 등록된 사람들"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "회원으로 등록된 사람들"
 
 #. Context: query_qry
 #: 
@@ -6040,16 +5977,18 @@ msgid "Please confirm activation of family"
 msgstr "이 가족을 활성화할지 확인하세요"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "다음 분류의 이웃을 표시:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "다음 분류의 이웃을 표시"
 
 #: 
 msgid "Please select a Family."
 msgstr "가족을 선택하세요."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "좌표 데이터베이스 파일 이름:"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "좌표 데이터베이스 파일 이름"
 
 #: 
 msgid "select an option"
@@ -6554,14 +6493,6 @@ msgid "Thai"
 msgstr "태국어"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "교회의 페이스북 페이지"
-
-#: 
-msgid "Your Church's X Page"
-msgstr "교회의 X(트위터) 페이지"
-
-#: 
 msgid "Self Register"
 msgstr "자가 등록"
 
@@ -6589,10 +6520,6 @@ msgstr "건이 선택한 그룹에 추가되었습니다."
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "유럽 문자셋으로 내보내려면 구분자로 세미콜론(;)을 사용하세요"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "기본은 UTF-8입니다. 프랑스어처럼 유럽 문자셋이 필요하면 Windows-1252를 사용하세요."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6943,14 +6870,6 @@ msgid "Upgrade Required"
 msgstr "업그레이드 필요"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "CRM 시작 시 생일·기념일 배너 표시"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "페이지 로드 후 배너가 사라질 때까지의 시간(초). 기본값 10초"
-
-#: 
 msgid "Help & Manual"
 msgstr "도움말 및 매뉴얼"
 
@@ -7122,10 +7041,6 @@ msgstr "액세스 토큰 삭제"
 #: 
 msgid "ICS URL"
 msgstr "ICS URL"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL"
 
 #: 
 msgid "Foreground Color"
@@ -8126,41 +8041,6 @@ msgstr "계정 활동 요청이 접수되어 이 이메일을 발송했습니다
 msgid "To stop receiving these emails, you can email"
 msgstr "이런 이메일을 받지 않으려면 다음 주소로 메일을 보내주세요:"
 
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2016/2017"
-msgstr "2016/2017"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2017/2018"
-msgstr "2017/2018"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2018/2019"
-msgstr "2018/2019"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2019/2020"
-msgstr "2019/2020"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2020/2021"
-msgstr "2020/2021"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2021/2022"
-msgstr "2021/2022"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2022/2023"
-msgstr "2022/2023"
-
 #: 
 msgid "invalid group request"
 msgstr "잘못된 그룹 요청"
@@ -8793,10 +8673,6 @@ msgid "Zip code is required"
 msgstr "우편번호는 필수입니다"
 
 #: 
-msgid "denotes required fields"
-msgstr "필수 항목을 나타냅니다"
-
-#: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "새 비밀번호가 생성되어 이메일 주소로 전송되었습니다."
 
@@ -9392,10 +9268,6 @@ msgstr "건의 결제가 없는 입금"
 msgid "%d event in %s"
 msgid_plural "%d events in %s"
 msgstr[0] "%s 동안 발생한 %d개의 이벤트"
-
-#: 
-msgid "Add New Event Type"
-msgstr "새 행사 유형 추가"
 
 #: 
 msgid "All Event Types"
@@ -10291,7 +10163,8 @@ msgid "Current Deposit"
 msgstr "현재 입금"
 
 #: 
-msgid "Current fiscal year:"
+#, fuzzy
+msgid "Current fiscal year"
 msgstr "현재 회계연도:"
 
 #: 
@@ -10783,10 +10656,6 @@ msgid "Unmet Prerequisites"
 msgstr "충족되지 않은 전제 조건"
 
 #: 
-msgid "Upcoming Birthdays"
-msgstr "다가오는 생일"
-
-#: 
 msgid "Update Church Name"
 msgstr "교회 이름 업데이트"
 
@@ -11120,10 +10989,6 @@ msgid "Copied!"
 msgstr "복사됨!"
 
 #: 
-msgid "Custom"
-msgstr "사용자 정의"
-
-#: 
 msgid "Edit Role"
 msgstr "역할 편집"
 
@@ -11142,10 +11007,6 @@ msgstr "URL 복사 실패"
 #: 
 msgid "ID:"
 msgstr "ID:"
-
-#: 
-msgid "Id"
-msgstr "ID"
 
 #: 
 msgid "Newsletter"
@@ -11190,10 +11051,6 @@ msgstr "속성 선택"
 #: 
 msgid "Share this URL with family members to verify their information"
 msgstr "가족 구성원과 이 URL을 공유하여 정보를 확인하세요"
-
-#: 
-msgid "Since:"
-msgstr "이후:"
 
 #: 
 msgid "Submit Verification"

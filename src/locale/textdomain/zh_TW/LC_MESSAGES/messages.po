@@ -200,12 +200,14 @@ msgid "Group Membership"
 msgstr "群組成員"
 
 #: 
-msgid "From:"
-msgstr "來自："
+#, fuzzy
+msgid "From"
+msgstr "來自"
 
 #: 
-msgid "To:"
-msgstr "至："
+#, fuzzy
+msgid "To"
+msgstr "至"
 
 #: 
 #, fuzzy
@@ -246,8 +248,9 @@ msgid "No file selected for upload."
 msgstr "沒有選擇上傳的文件。"
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "CSV文件中的行的總數："
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "CSV文件中的行的總數"
 
 #: 
 msgid "Ignore this Field"
@@ -567,8 +570,9 @@ msgid "Convert All"
 msgstr "轉換所有"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "存款單號碼："
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "存款單號碼"
 
 #: 
 #, fuzzy
@@ -1210,8 +1214,9 @@ msgid "Financial Reports"
 msgstr "財務報告"
 
 #: 
-msgid "Report Type:"
-msgstr "報告類型："
+#, fuzzy
+msgid "Report Type"
+msgstr "報告類型"
 
 #: 
 msgid "Select Report Type"
@@ -1260,16 +1265,19 @@ msgid "Filter by Family"
 msgstr "由家庭篩選"
 
 #: 
-msgid "Report Start Date:"
-msgstr "報告開始日期："
+#, fuzzy
+msgid "Report Start Date"
+msgstr "報告開始日期"
 
 #: 
-msgid "Report End Date:"
-msgstr "報告完結日期："
+#, fuzzy
+msgid "Report End Date"
+msgstr "報告完結日期"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "應用報告日期："
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "應用報告日期"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1280,8 +1288,9 @@ msgid "Payment Date"
 msgstr "付款日期"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "由存款篩選："
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "由存款篩選"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1292,8 +1301,9 @@ msgid "All deposits within date range"
 msgstr "日期範圍內的所有存款"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "過濾器的付款方式："
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "過濾器的付款方式"
 
 #: 
 msgid "All Methods"
@@ -1325,20 +1335,12 @@ msgid "Other Settings"
 msgstr "其他設置"
 
 #: 
-msgid "Include:"
-msgstr "包括："
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "只有同服務承諾的付款"
 
 #: 
 msgid "All Payments"
 msgstr "所有付款"
-
-#: 
-msgid "Generate:"
-msgstr "生成："
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1389,8 +1391,9 @@ msgid "Summary Data"
 msgstr "摘要數據"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "投票成員必須在這么多年內捐過款（0到不要求捐款）："
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "投票成員必須在這么多年內捐過款（0到不要求捐款）"
 
 #: 
 msgid "CSV"
@@ -1413,7 +1416,8 @@ msgid "Add New Deposit"
 msgstr "添加新存款"
 
 #: 
-msgid "Deposits: "
+#, fuzzy
+msgid "Deposits"
 msgstr "存款"
 
 #: 
@@ -1505,20 +1509,23 @@ msgid "Family Geographic Utilities"
 msgstr "家庭地理公用事業"
 
 #: 
-msgid "Select Family:"
-msgstr "選擇家庭："
+#, fuzzy
+msgid "Select Family"
+msgstr "選擇家庭"
 
 #: 
-msgid "Maximum number of neighbors:"
-msgstr "鄰居的最大數量："
+#, fuzzy
+msgid "Maximum number of neighbors"
+msgstr "鄰居的最大數量"
 
 #: 
 msgid "Maximum distance"
 msgstr "最大距離"
 
 #: 
-msgid "Data file format:"
-msgstr "數據文件格式："
+#, fuzzy
+msgid "Data file format"
+msgstr "數據文件格式"
 
 #: 
 msgid "GPS Visualizer"
@@ -1529,8 +1536,9 @@ msgid "Street Atlas USA"
 msgstr "街道地圖集美國"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "包括家庭中的坐標文件："
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "包括家庭中的坐標文件"
 
 #: 
 msgid "Neighbor Families"
@@ -1605,7 +1613,8 @@ msgid "Select a group"
 msgstr "選擇群組"
 
 #: 
-msgid "Group Specific Properties: "
+#, fuzzy
+msgid "Group Specific Properties"
 msgstr "群組特定屬性"
 
 #: 
@@ -1663,8 +1672,9 @@ msgid "data for member"
 msgstr "數據成員"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
-msgstr "組特定的屬性表編輯器："
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
+msgstr "組特定的屬性表編輯器"
 
 #: 
 msgid "No properties have been added yet"
@@ -1830,8 +1840,9 @@ msgid "Move Selected Members to Group"
 msgstr "將已選擇的會員移動到群組"
 
 #: 
-msgid "Add Group Member: "
-msgstr "添加群組成員:␣"
+#, fuzzy
+msgid "Add Group Member"
+msgstr "添加群組成員"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2343,12 +2354,9 @@ msgid "Group Name"
 msgstr "組名"
 
 #: 
-msgid "Notes:"
-msgstr "注："
-
-#: 
-msgid "Entered:"
-msgstr "輸入："
+#, fuzzy
+msgid "Entered"
+msgstr "輸入"
 
 #: 
 msgid "by"
@@ -2496,8 +2504,8 @@ msgstr "執行SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "發生錯誤："
+msgid "An error occurred"
+msgstr "發生錯誤"
 
 #: 
 msgid " record(s) returned"
@@ -3170,12 +3178,14 @@ msgid "for funds "
 msgstr "資金"
 
 #: 
-msgid "Donated Items:"
-msgstr "捐贈的物品："
+#, fuzzy
+msgid "Donated Items"
+msgstr "捐贈的物品"
 
 #: 
-msgid "Purchased Items:"
-msgstr "購買的物品："
+#, fuzzy
+msgid "Purchased Items"
+msgstr "購買的物品"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3234,12 +3244,14 @@ msgid "Please mail you next gift to "
 msgstr "請郵寄給您的禮物"
 
 #: 
-msgid "Gift Amount:"
-msgstr "禮品金額："
+#, fuzzy
+msgid "Gift Amount"
+msgstr "禮品金額"
 
 #: 
-msgid "Gift Designation:"
-msgstr "商品名稱："
+#, fuzzy
+msgid "Gift Designation"
+msgstr "商品名稱"
 
 #: 
 msgid "Sunday School"
@@ -3665,18 +3677,6 @@ msgid "Buyer # "
 msgstr "買家＃"
 
 #: 
-msgid "Envelope:"
-msgstr "信封："
-
-#: 
-msgid ", Phone: "
-msgstr "， 電話："
-
-#: 
-msgid "Voting members "
-msgstr "投票成員"
-
-#: 
 msgid "Family Members:"
 msgstr "家庭成員："
 
@@ -3697,20 +3697,13 @@ msgid "File Name:"
 msgstr "文件名："
 
 #: 
-msgid "Fiscal Year:"
-msgstr "財政年度："
-
-#: 
 msgid "family"
 msgstr "家庭"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "週年日期："
-
-#: 
-msgid "Date Entered:"
-msgstr "輸入日期："
+#, fuzzy
+msgid "Date Entered"
+msgstr "輸入日期"
 
 #: 
 msgid "CSV Import"
@@ -3737,10 +3730,6 @@ msgid "Filter by Fund"
 msgstr "按基金刪選"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "添加新存款"
-
-#: 
 msgid "Estimated value"
 msgstr "估計的價值"
 
@@ -3755,10 +3744,6 @@ msgstr "文字組"
 #: 
 msgid "Group Properties"
 msgstr "組屬性"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "分配新屬性："
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -3805,10 +3790,6 @@ msgstr "這些是指定為配偶的家庭角色的編號"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "這些是指定為孩子的家庭角色的編號"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "用戶必須具有財務權限才能使用的查詢："
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -4108,26 +4089,6 @@ msgstr "郵政編碼"
 
 #. Context: queryparameteroptions_qpo
 #: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
-
-#. Context: queryparameteroptions_qpo
-#: 
 msgid "WorkEmail"
 msgstr "工作電郵"
 
@@ -4400,23 +4361,8 @@ msgstr "定制搜索"
 
 #. Context: query_qry
 #: 
-msgid "Total of records matching a given gender."
-msgstr "與給定性別匹配的記錄總數。"
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "選擇具有指定的系列角色和性別的人員記錄。"
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "返回分配制定屬性的人員記錄。"
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "按名稱，城市，州，郵編，家庭電話，電子郵件或工作電子郵件的任意進行搜索。"
 
 #. Context: query_qry
 #: 
@@ -4432,17 +4378,6 @@ msgstr "找到註冊學生"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "在特定月份加入的會員"
-
-#. Context: query_qry
-#: 
-#, fuzzy
-msgid "People who are registered as database users"
-msgstr "註冊為資料庫用戶的人員"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "成為會員的人"
 
 #. Context: query_qry
 #: 
@@ -6176,16 +6111,18 @@ msgid "Please confirm activation of family"
 msgstr "請確認激活家庭"
 
 #: 
-msgid "Show neighbors with these classifications:"
-msgstr "顯示具有以下類別的鄰居："
+#, fuzzy
+msgid "Show neighbors with these classifications"
+msgstr "顯示具有以下類別的鄰居"
 
 #: 
 msgid "Please select a Family."
 msgstr "請選擇一個家庭。"
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "協調數據庫文件名："
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "協調數據庫文件名"
 
 #: 
 msgid "select an option"
@@ -6694,15 +6631,6 @@ msgid "Thai"
 msgstr "泰語"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "您的教會的Facebook頁面"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "您的教會的X頁面"
-
-#: 
 msgid "Self Register"
 msgstr "自助登記"
 
@@ -6730,10 +6658,6 @@ msgstr "記錄已成功添加到選定的組。"
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "導出到另一個用於歐洲的CharSet使用;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "默認值為UTF-8，對於歐洲CharSet，請使用Windows-1252例如法國。"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -7092,14 +7016,6 @@ msgid "Upgrade Required"
 msgstr "要求升級"
 
 #: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "在啟動CRM時顯示出生日期"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "從頁面加載到橫幅消失的秒數，默認為10秒"
-
-#: 
 msgid "Help & Manual"
 msgstr "幫助&手冊"
 
@@ -7273,10 +7189,6 @@ msgstr "刪除訪問令牌"
 #: 
 msgid "ICS URL"
 msgstr "ICS URL"
-
-#: 
-msgid "JSON URL"
-msgstr "JSON URL"
 
 #: 
 msgid "Foreground Color"
