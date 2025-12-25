@@ -7449,6 +7449,18 @@ msgid "Maximum number of Calendar Events"
 msgstr "Μέγιστος αριθμός συμβάντων ημερολογίου"
 
 #: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d μηνών"
+msgstr[1] "%d μηνών"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d ετών"
+msgstr[1] "%d ετών"
+
+#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Λείπει το PHP ZipArchive"
 
@@ -8795,16 +8807,176 @@ msgid "Please check your email (including spam/junk folder) for your temporary p
 msgstr "Παρακαλώ ελέγξτε το email σας (συμπεριλαμβανομένου του φακέλου spam/junk) για τον προσωρινό κωδικό πρόσβασης."
 
 #: 
+msgid "Please do not close this window or refresh the page."
+msgstr "Παρακαλούμε μην κλείσετε αυτό το παράθυρο και μην ανανεώσετε τη σελίδα."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "Οι προπαρασκευαστικές εργασίες αναβάθμισης ολοκληρώθηκαν"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "Προειδοποιήσεις πριν την αναβάθμιση"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "Ανανέωση από το GitHub"
+
+#: 
+msgid "Release Notes:"
+msgstr "Σημειώσεις έκδοσης:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "Αίτημα επαναφοράς κωδικού πρόσβασης"
+
+#: 
+msgid "Retry Download"
+msgstr "Δοκιμάστε ξανά τη λήψη"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "SHA1 Hash:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "Αποστολή email επαναφοράς"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "Η ρύθμιση αποθηκεύτηκε. Γίνεται αναφόρτωση της σελίδας..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Η ρύθμιση ενημερώθηκε επιτυχώς"
+
+#: 
+msgid "Skip Backup"
+msgstr "Παράλειψη αντιγράφου ασφαλείας"
+
+#: 
+msgid "System Up to Date"
+msgstr "Το σύστημα είναι ενημερωμένο"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "Οδηγός αναβάθμισης συστήματος"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "Η αναβάθμιση του συστήματος ολοκληρώθηκε επιτυχώς!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "Αυτό μπορεί να διαρκέσει αρκετά λεπτά."
+
+#: 
+msgid "Update Available!"
+msgstr "Διαθέσιμη ενημέρωση!"
+
+#: 
+msgid "Update Package Details"
+msgstr "Λεπτομέρειες πακέτου ενημέρωσης"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Το πακέτο ενημέρωσης λήφθηκε επιτυχώς."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "Η αναβάθμιση ολοκληρώθηκε!"
+
+#: 
+msgid "Upgrade failed."
+msgstr "Η αναβάθμιση απέτυχε."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "Η αναβάθμιση απέτυχε. Παρακαλούμε ελέγξτε τα αρχεία καταγραφής."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "Οι πληροφορίες αναβάθμισης ανανεώθηκαν επιτυχώς"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Οι πληροφορίες αναβάθμισης ανανεώθηκαν. Γίνεται αναφόρτωση της σελίδας..."
+
+#: 
+msgid "Version Information"
+msgstr "Πληροφορίες έκδοσης"
+
+#: 
 msgid "Warnings"
 msgstr "Προειδοποιήσεις"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "Δεν ήταν δυνατή η επεξεργασία του αιτήματος επαναφοράς κωδικού. Παρακαλούμε ζητήστε νέο σύνδεσμο."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "Επιλέξατε να παραλείψετε το αντίγραφο ασφαλείας. Συνιστάται θερμά να δημιουργήσετε ένα πριν προχωρήσετε."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "Η εγκατάσταση του ChurchCRM αναβαθμίστηκε επιτυχώς."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "Η εγκατάσταση του ChurchCRM διαθέτει την τελευταία έκδοση."
 
 #: 
 msgid "2-50 characters"
 msgstr "2-50 χαρακτήρες"
 
 #: 
+msgid "Dear Friend"
+msgstr "Αγαπητέ φίλε / Αγαπητή φίλη"
+
+#: 
+msgid "No Data Found"
+msgstr "Δεν βρέθηκαν δεδομένα"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "Δεν βρέθηκαν εγγραφές για την αναφορά. Παρακαλούμε αλλάξτε τα φίλτρα ή το ημερομηνιακό εύρος."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "Παρακαλούμε εισάγετε ένα όνομα μενού (2-50 χαρακτήρες)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "Παρακαλούμε εισάγετε ένα έγκυρο URL που ξεκινά με http:// ή https://"
+
+#: 
 msgid "All system file signatures match the expected values."
 msgstr "Όλες οι υπογραφές αρχείων συστήματος ταιριάζουν με τις αναμενόμενες τιμές."
+
+#: 
+msgid "Files with issues"
+msgstr "Αρχεία με προβλήματα"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Ο έλεγχος ακεραιότητας απέτυχε"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Ο έλεγχος ακεραιότητας ολοκληρώθηκε επιτυχώς"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "Το αρχείο ορισμού υπογραφής υπάρχει αλλά δεν είναι αναγνώσιμο. Ελέγξτε τα δικαιώματα αρχείων."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "Το αρχείο ορισμού υπογραφής λείπει από το %s. Εκτελέστε την εργασία συσκευασίας για αναδημιουργία υπογραφών."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "Αδυναμία επικοινωνίας με το σημείο ελέγχου ακεραιότητας. Ελέγξτε τα αρχεία καταγραφής του διακομιστή."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -8819,6 +8991,22 @@ msgid "Checks"
 msgstr "Έλεγχοι"
 
 #: 
+msgid "Clear Filters"
+msgstr "Καθαρισμός φίλτρων"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "Κάντε κλικ σε μια ράβδο για να φιλτράρετε τις πληρωμές"
+
+#: 
+msgid "Delete Selected"
+msgstr "Διαγραφή επιλεγμένων"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Η κατάθεση αποθηκεύτηκε επιτυχώς"
+
+#: 
 msgid "Error deleting payments"
 msgstr "Σφάλμα deleting payments"
 
@@ -8831,6 +9019,66 @@ msgid "Error saving deposit"
 msgstr "Σφάλμα saving deposit"
 
 #: 
+msgid "Funds"
+msgstr "Ταμεία / Πόροι"
+
+#: 
+msgid "Generate Report"
+msgstr "Δημιουργία αναφοράς"
+
+#: 
+msgid "No Cash"
+msgstr "Χωρίς μετρητά"
+
+#: 
+msgid "No Checks"
+msgstr "Χωρίς επιταγές"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Δεν υπάρχουν πληρωμές ακόμα. Κάντε κλικ στο \"Προσθήκη Πληρωμής\" για να ξεκινήσετε."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "Το μη εκπιπτόμενο ποσό υπερβαίνει τη μέγιστη επιτρεπόμενη τιμή."
+
+#: 
+msgid "Payments"
+msgstr "Πληρωμές"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Οι πληρωμές διαγράφηκαν επιτυχώς"
+
+#: 
+msgid "Please select a date"
+msgstr "Παρακαλούμε επιλέξτε ημερομηνία"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Παρακαλούμε επιλέξτε σειρές για διαγραφή"
+
+#: 
+msgid "Saving..."
+msgstr "Αποθήκευση..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
+
+#: 
+msgid "Total Deposit"
+msgstr "Συνολική κατάθεση"
+
+#: 
+msgid "Total Payments"
+msgstr "Σύνολο πληρωμών"
+
+#: 
+msgid "payments(s)?"
+msgstr "πληρωμή(ές)"
+
+#: 
 msgid "All system files have passed integrity validation."
 msgstr "Όλα τα αρχεία συστήματος έχουν περάσει τον έλεγχο ακεραιότητας."
 
@@ -8839,12 +9087,158 @@ msgid "Base URL"
 msgstr "Βάση URL"
 
 #: 
+msgid "ChurchCRM Installation"
+msgstr "Εγκατάσταση ChurchCRM"
+
+#: 
 msgid "Copy"
 msgstr "Αντιγραφή"
 
 #: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "Διακομιστής βάσης δεδομένων"
+
+#: 
+msgid "Debug Info"
+msgstr "Πληροφορίες αποσφαλμάτωσης"
+
+#: 
+msgid "Document Root"
+msgstr "Document Root"
+
+#: 
+msgid "Email Configuration"
+msgstr "Ρύθμιση Email"
+
+#: 
+msgid "Email Debug Info"
+msgstr "Πληροφορίες αποσφαλμάτωσης Email"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "Δικαιώματα συστήματος αρχείων"
+
+#: 
+msgid "Hostname"
+msgstr "Όνομα κεντρικού υπολογιστή (Hostname)"
+
+#: 
+msgid "IP Address"
+msgstr "Διεύθυνση IP"
+
+#: 
+msgid "Images Root"
+msgstr "Ρίζα εικόνων"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Εισαγωγή δεδομένων επίδειξης"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Συμπερίληψη συμβάντων και ημερολογίων"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Συμπερίληψη οικονομικών δεδομένων (δωρεές, υποσχέσεις)"
+
+#: 
+msgid "Invalid API key"
+msgstr "Μη έγκυρο κλειδί API"
+
+#: 
+msgid "Not configured"
+msgstr "Δεν έχει ρυθμιστεί"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "Απαιτήσεις PHP & Διακομιστή"
+
+#: 
+msgid "PHP Configuration"
+msgstr "Ρύθμιση PHP"
+
+#: 
+msgid "Platform"
+msgstr "Πλατφόρμα"
+
+#: 
+msgid "Root Path"
+msgstr "Διαδρομή ρίζας"
+
+#: 
+msgid "SMTP Host"
+msgstr "Διακομιστής SMTP"
+
+#: 
+msgid "Server Information"
+msgstr "Πληροφορίες διακομιστή"
+
+#: 
+msgid "Software"
+msgstr "Λογισμικό"
+
+#: 
+msgid "System & Configuration"
+msgstr "Σύστημα & Ρυθμίσεις"
+
+#: 
+msgid "Tip:"
+msgstr "Συμβουλή:"
+
+#: 
+msgid "Valid Settings"
+msgstr "Έγκυρες ρυθμίσεις"
+
+#: 
 msgid "An error occurred during demo data import"
 msgstr "Παρουσιάστηκε σφάλμα κατά την εισαγωγή δεδομένων δείγματος"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "Τα δεδομένα επίδειξης εισήχθησαν επιτυχώς"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "Συμπερίληψη τμημάτων Κατηχητικού και εγγραφών"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "Χρειάζεται να αφαιρέσετε αυτά τα δεδομένα αργότερα;"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "Δεν υπάρχουν πληρωμές σε αυτήν την κατάθεση"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "δεν υπάρχουν πληρωμές σε αυτήν την κατάθεση"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "Προαιρετικά δεδομένα προς συμπερίληψη"
+
+#: 
+msgid "Skipped"
+msgstr "Παραλείφθηκε"
+
+#: 
+msgid "Unknown error"
+msgstr "Άγνωστο σφάλμα"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "κατάθεση(εις) χωρίς πληρωμές"
+
+#: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d συμβάν στο %s"
+msgstr[1] "%d συμβάντα στο %s"
 
 #: 
 msgid "All Event Types"
@@ -8903,6 +9297,22 @@ msgid "Create New Event"
 msgstr "Create New Εκδήλωση"
 
 #: 
+msgid "Create an event type to get started."
+msgstr "Δημιουργήστε έναν τύπο συμβάντος για να ξεκινήσετε."
+
+#: 
+msgid "Current DB Version"
+msgstr "Τρέχουσα έκδοση βάσης δεδομένων"
+
+#: 
+msgid "Current Software Version"
+msgstr "Τρέχουσα έκδοση λογισμικού"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "Η αναβάθμιση της βάσης δεδομένων ολοκληρώθηκε επιτυχώς. Γίνεται ανακατεύθυνση στο ταμπλό..."
+
+#: 
 msgid "Date & Time"
 msgstr "Ημερομηνία & Ώρα"
 
@@ -8915,12 +9325,32 @@ msgid "Delete Event"
 msgstr "Διαγραφή Εκδήλωσης"
 
 #: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "Η διαγραφή ενός συμβάντος θα διαγράψει και όλες τις καταμετρήσεις παρουσιών. Διαγραφή συμβάντος;"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Η διαγραφή αυτού του τύπου συμβάντος ΔΕΝ θα διαγράψει τα υπάρχοντα συμβάντα. Είστε βέβαιοι;"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "Η διαγραφή αυτού του συμβάντος θα διαγράψει και όλες τις εγγραφές παρουσιολογίου. Είστε βέβαιοι;"
+
+#: 
 msgid "Edit Event"
 msgstr "Επεξεργασία Event"
 
 #: 
 msgid "Editing Event"
 msgstr "Επεξεργασίαing Event"
+
+#: 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr "Εισάγετε κατηγορίες καταμέτρησης χωρισμένες με κόμμα. Το \"Σύνολο\" περιλαμβάνεται αυτόματα."
+
+#: 
+msgid "Enter event title..."
+msgstr "Εισάγετε τίτλο συμβάντος..."
 
 #: 
 msgid "Event"
@@ -9035,6 +9465,10 @@ msgid "Select start and end date/time"
 msgstr "Επιλέξτε ημερομηνία / ώρα έναρξης και λήξης"
 
 #: 
+msgid "Select the event to check in your cart members"
+msgstr "Επιλέξτε το συμβάν για να καταγράψετε την παρουσία των μελών του καλαθιού σας"
+
+#: 
 msgid "Sermon / Event Text"
 msgstr "Sermon / Εκδήλωση Text"
 
@@ -9045,6 +9479,32 @@ msgstr "Ανταξιόλογο"
 #: 
 msgid "Upgrade database now"
 msgstr "Αναβάθμιση βάσης δεδομένων τώρα"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "Η εγκατάσταση του ChurchCRM χρειάζεται αναβάθμιση της βάσης δεδομένων. Αυτή η διαδικασία θα εφαρμόσει αλλαγές στο σχήμα και τα δεδομένα. Βεβαιωθείτε ότι έχετε πρόσφατο αντίγραφο ασφαλείας."
+
+#: 
+msgid "added to this event"
+msgstr "προστέθηκαν σε αυτό το συμβάν"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "π.χ. Κατηχητικό, Μελέτη Αγίας Γραφής..."
+
+#: 
+msgid "optional"
+msgstr "προαιρετικό"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "άτομο"
+msgstr[1] "άτομα"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ Έξοδος (CheckOut)"
 
 #: 
 msgid "%d Orphaned Files Detected"
@@ -9151,16 +9611,56 @@ msgid "Backup to External Storage"
 msgstr "Αντίγραφο σε Εξωτερική Αποθήκευση"
 
 #: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "ΠΡΟΣΟΧΗ: Η επαναφορά αντιγράφου ασφαλείας θα διαγράψει πλήρως την υπάρχουσα βάση δεδομένων και θα την αντικαταστήσει με τα δεδομένα του αντιγράφου."
+
+#: 
 msgid "CSV export permission"
 msgstr "Άδεια εξαγωγής CSV"
+
+#: 
+msgid "Close & Refresh"
+msgstr "Κλείσιμο & Ανανέωση"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "Επιβεβαίωση διαγραφής"
+
+#: 
+msgid "Create a backup first"
+msgstr "Δημιουργήστε πρώτα ένα αντίγραφο ασφαλείας"
+
+#: 
+msgid "Create directory permission"
+msgstr "Δικαίωμα δημιουργίας καταλόγου"
+
+#: 
+msgid "Database Only"
+msgstr "Μόνο βάση δεδομένων"
 
 #: 
 msgid "Database Restored Successfully!"
 msgstr "Η Βάση Δεδομένων Αποκαταστάθηκε Επιτυχώς!"
 
 #: 
+msgid "Database schema upgraded automatically"
+msgstr "Το σχήμα της βάσης δεδομένων αναβαθμίστηκε αυτόματα"
+
+#: 
+msgid "Delete All Files"
+msgstr "Διαγραφή όλων των αρχείων"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "Διαγραφή όλων των ορφανών αρχείων"
+
+#: 
 msgid "Delete records permission"
 msgstr "Άδεια διαγραφής εγγραφών"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "Διαγράφηκαν %d αρχεία, %d απέτυχαν"
 
 #: 
 msgid "Deletion Results"
@@ -9183,6 +9683,46 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Εξαγωγήs database structure and data. Smaller file size."
 
 #: 
+msgid "File Integrity Check"
+msgstr "Έλεγχος ακεραιότητας αρχείων"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "Εντοπίστηκαν προβλήματα ακεραιότητας αρχείων"
+
+#: 
+msgid "File Path"
+msgstr "Διαδρομή αρχείου"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "Οι υπογραφές αρχείων ταυτίζονται με την επίσημη έκδοση."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "Αρχεία μπορεί να έχουν τροποποιηθεί ή να λείπουν. Εξετάστε την επανατοποθέτηση από μια επίσημη έκδοση."
+
+#: 
+msgid "Finance access"
+msgstr "Πρόσβαση στα οικονομικά"
+
+#: 
+msgid "Force Re-install"
+msgstr "Εξαναγκασμός επανεγκατάστασης"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Ξεκίνησε εξαναγκασμένη επανεγκατάσταση. Παρακαλούμε δημιουργήστε αντίγραφο ασφαλείας της βάσης πριν την εφαρμογή."
+
+#: 
+msgid "Full Backup"
+msgstr "Πλήρες αντίγραφο ασφαλείας"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "Δημιουργία & Λήψη αντιγράφου ασφαλείας"
+
+#: 
 msgid "Go to Dashboard"
 msgstr "Πηγαίνετε στο Ταμπλό"
 
@@ -9191,12 +9731,40 @@ msgid "Group management access"
 msgstr "Πρόσβαση διαχείρισης ομάδας"
 
 #: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "Εάν χρειάζεστε πρόσβαση σε αυτή τη λειτουργία, επικοινωνήστε με τον διαχειριστή της εκκλησίας."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "Εάν ανεβάσετε αντίγραφο από το ChurchInfo ή παλαιότερη έκδοση του ChurchCRM, θα αναβαθμιστεί αυτόματα στο τρέχον σχήμα."
+
+#: 
 msgid "Important Warning"
 msgstr "Σημαντική Προειδοποίηση"
 
 #: 
 msgid "Includes database and all uploaded photos. Larger file size."
 msgstr "Περιλαμβάνει βάση δεδομένων και όλες τις φωτογραφίες που ανέβηκαν."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "Κρατήστε ένα αντίγραφο σε πυρασφαλές χρηματοκιβώτιο στον χώρο σας και ένα άλλο εκτός χώρου."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "Τελευταία έκδοση στο GitHub:"
+
+#: 
+msgid "Loading..."
+msgstr "Φόρτωση..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "Δημιουργείτε αντίγραφο ασφαλείας τουλάχιστον μία φορά την εβδομάδα, εκτός αν έχετε αυτοματοποιημένα αντίγραφα."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "Διαχείριση ορφανών αρχείων"
 
 #: 
 msgid "Menu options access"
@@ -9231,8 +9799,40 @@ msgid "Orphaned Files Management"
 msgstr "Διαχείριση Ορφανών Αρχείων"
 
 #: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "Τα ορφανά αρχεία είναι αρχεία PHP ή JavaScript που υπάρχουν στον διακομιστή σας αλλά δεν αποτελούν μέρος της επίσημης έκδοσης. Μπορεί να αποτελούν κίνδυνο ασφαλείας."
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "Τα ορφανά αρχεία από προηγούμενες εκδόσεις εκκαθαρίστηκαν"
+
+#: 
+msgid "Permission Required"
+msgstr "Απαιτείται άδεια"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "Παρακαλούμε ελέγξτε το αρχείο αντιγράφου ασφαλείας και δοκιμάστε ξανά."
+
+#: 
 msgid "Please select a backup file to restore"
 msgstr "Επιλέξτε αρχείο αντιγράφου ασφαλείας για επαναφορά"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "Επαναφόρτωση και επανεφαρμογή της τρέχουσας έκδοσης για επαναφορά όλων των αρχείων στην επίσημη κατάσταση"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "Έτοιμο για δημιουργία αντιγράφου. Επιλέξτε τις ρυθμίσεις σας και πατήστε το κουμπί δημιουργίας."
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "Έτοιμο για επαναφορά. Επιλέξτε αρχείο και πατήστε Επαναφορά Βάσης Δεδομένων."
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "Σύσταση: Ελέγξτε και διαγράψτε αυτά τα αρχεία πριν ή μετά την αναβάθμιση."
 
 #: 
 msgid "Redirecting in"
@@ -9263,12 +9863,20 @@ msgid "Restore failed."
 msgstr "Η επαναφορά απέτυχε."
 
 #: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "Η επαναφορά απέτυχε. Ελέγξτε το αρχείο και δοκιμάστε ξανά."
+
+#: 
 msgid "Restore in progress, please wait..."
 msgstr "Η επαναφορά είναι σε εξέλιξη, παρακαλώ περιμένετε..."
 
 #: 
 msgid "Review the files below and delete them to improve security."
 msgstr "Ανασκοπήστε τα αρχεία παρακάτω και διαγράψτε τα για καλύτερη ασφάλεια."
+
+#: 
+msgid "Security Recommendation"
+msgstr "Σύσταση ασφαλείας"
 
 #: 
 msgid "Security Warning: Orphaned Files Detected"
@@ -9281,6 +9889,42 @@ msgstr "Επιλέξτε Αρχείο Αντιγράφου"
 #: 
 msgid "Supported formats:"
 msgstr "Υποστηριζόμενες μορφές:"
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "Τα ακόλουθα αρχεία υπάρχουν στον διακομιστή σας αλλά ΔΕΝ ανήκουν στην επίσημη έκδοση. Μπορεί να αποτελούν κίνδυνο ασφαλείας."
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "Η σελίδα που προσπαθήσατε να επισκεφθείτε απαιτεί ειδικά δικαιώματα που ο λογαριασμός σας δεν διαθέτει."
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "Αυτά τα αρχεία δεν ανήκουν στην επίσημη έκδοση και μπορεί να αποτελούν κίνδυνο ασφαλείας."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "Αυτά τα αρχεία πιθανότατα ανήκαν σε παλαιότερη έκδοση. Η διαγραφή τους θα βελτιώσει την ασφάλεια του συστήματος."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "Αυτά τα αρχεία μπορεί να περιέχουν παρωχημένο κώδικα με κενά ασφαλείας."
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "Αυτή η ενέργεια δεν αναιρείται. Βεβαιωθείτε ότι έχετε αντίγραφο ασφαλείας αν χρειαστεί."
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "Αυτό μπορεί να διαρκέσει λίγα λεπτά για μεγάλες βάσεις δεδομένων."
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "Μην κλείσετε αυτή τη σελίδα. Μπορεί να διαρκέσει αρκετά λεπτά."
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "Αυτό θα κατεβάσει ξανά την τρέχουσα έκδοση. Μπορεί να διορθώσει κατεστραμμένα αρχεία. Συνέχεια;"
 
 #: 
 msgid "Upgrade Summary"
@@ -9307,12 +9951,24 @@ msgid "What are Orphaned Files?"
 msgstr "Τι είναι τα Ορφανά Αρχεία;"
 
 #: 
+msgid "You don't have access to this page"
+msgstr "Δεν έχετε πρόσβαση σε αυτή τη σελίδα"
+
+#: 
 msgid "You will be logged out and redirected to the login page."
 msgstr "Θα αποσυνδεθείτε και θα ανακατευθυνθείτε στη σελίδα σύνδεσης."
 
 #: 
 msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
 msgstr "Η εγκατάστασή σας ChurchCRM είναι καθαρή. Όλα τα αρχεία στον διακομιστή ταιριάζουν με την επίσημη έκδοση."
+
+#: 
+msgid "or click to browse"
+msgstr "ή κάντε κλικ για περιήγηση"
+
+#: 
+msgid "seconds..."
+msgstr "δευτερόλεπτα..."
 
 #: 
 msgid " Deposit #"
@@ -9395,12 +10051,100 @@ msgid "Change this in System Settings."
 msgstr "Αλλάξτε αυτό στις Ρυθμίσεις Συστήματος."
 
 #: 
+msgid "Church Membership"
+msgstr "Μέλη Εκκλησίας"
+
+#: 
 msgid "Church name is set to default value"
 msgstr "Το όνομα της εκκλησίας είναι ορισμένο σε προεπιλεγμένη τιμή"
 
 #: 
+msgid "Classes and enrollments"
+msgstr "Τμήματα και εγγραφές"
+
+#: 
+msgid "Clean Up Files"
+msgstr "Εκκαθάριση αρχείων"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "Εκκαθάριση όλων των δεδομένων και νέα αρχή. Δεν αναιρείται."
+
+#: 
+msgid "Close All Deposits"
+msgstr "Κλείσιμο όλων των καταθέσεων"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "Κλειστές καταθέσεις:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "Κλειστές έναντι Συνόλου"
+
+#: 
+msgid "Coming soon"
+msgstr "Σύντομα διαθέσιμο"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "Ολοκληρώστε αυτές τις βασικές εργασίες για την ομαλή λειτουργία του ChurchCRM:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "Ολοκληρώστε τα με οποιαδήποτε σειρά. Χρησιμοποιήστε δεδομένα επίδειξης για δοκιμή."
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "Ολοκληρώστε αυτές τις εργασίες για ακριβή ετήσια φορολογική αναφορά των δωρητών."
+
+#: 
+msgid "Configuration:"
+msgstr "Ρυθμίσεις:"
+
+#: 
+msgid "Configure Email"
+msgstr "Ρύθμιση Email"
+
+#: 
 msgid "Contact Information"
 msgstr "Πληροφορίες Επαφής"
+
+#: 
+msgid "Create Deposit"
+msgstr "Δημιουργία κατάθεσης"
+
+#: 
+msgid "Create First Deposit"
+msgstr "Δημιουργία πρώτης κατάθεσης"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "Δημιουργήστε ή ανοίξτε πρώτα μια κατάθεση"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "Δημιουργήστε ή επιλέξτε μια κατάθεση για να ξεκινήσετε."
+
+#: 
+msgid "Current Deposit"
+msgstr "Τρέχουσα κατάθεση"
+
+#: 
+msgid "Current fiscal year"
+msgstr "Τρέχον οικονομικό έτος"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Προσαρμόσιμη αναφορά με φιλτράρισμα ανά ημερομηνία, ταμείο, οικογένεια και τρόπο πληρωμής."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Προσαρμόστε το κείμενο που εμφανίζεται στις φορολογικές βεβαιώσεις."
+
+#: 
+msgid "Data Quality:"
+msgstr "Ποιότητα δεδομένων:"
 
 #: 
 msgid "Database:"
@@ -9415,12 +10159,28 @@ msgid "Dec"
 msgstr "Δεκ"
 
 #: 
+msgid "Demo Data"
+msgstr "Δεδομένα επίδειξης"
+
+#: 
 msgid "Deposit Navigation"
 msgstr "Πλοήγηση Κατάθεσης"
 
 #: 
 msgid "Deposit Statistics"
 msgstr "Στατιστικά Κατάθεσης"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "Λεπτομερής ανάλυση ενός μεμονωμένου παραστατικού κατάθεσης."
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "Λεπτομερής ανάλυση υποσχέσεων και πληρωμών ανά οικογένεια."
+
+#: 
+msgid "Documentation"
+msgstr "Τεκμηρίωση"
 
 #: 
 msgid "Donor Families"
@@ -9443,16 +10203,104 @@ msgid "Edit Person"
 msgstr "Επεξεργασία Person"
 
 #: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "Βεβαιωθείτε ότι όλες οι καταθέσεις του έτους έχουν κλείσει πριν τη δημιουργία βεβαιώσεων."
+
+#: 
 msgid "Export Options"
 msgstr "Εξαγωγή Options"
+
+#: 
+msgid "F"
+msgstr "Θ"
+
+#: 
+msgid "Failed to save settings"
+msgstr "Αποτυχία αποθήκευσης ρυθμίσεων"
+
+#: 
+msgid "Family Navigation"
+msgstr "Πλοήγηση οικογένειας"
 
 #: 
 msgid "Feb"
 msgstr "Φεβ"
 
 #: 
+msgid "File Integrity:"
+msgstr "Ακεραιότητα αρχείων:"
+
+#: 
 msgid "Filtering"
 msgstr "Φιλτράρισμα"
+
+#: 
+msgid "Finance"
+msgstr "Οικονομικά"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "Οικονομικό ταμπλό"
+
+#: 
+msgid "Force Import"
+msgstr "Εξαναγκασμός εισαγωγής"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "Ο εξαναγκασμός εισαγωγής μπορεί να δημιουργήσει διπλότυπα δεδομένα."
+
+#: 
+msgid "Fund Allocation"
+msgstr "Κατανομή πόρων"
+
+#: 
+msgid "Generate"
+msgstr "Δημιουργία"
+
+#: 
+msgid "Generate Reports"
+msgstr "Δημιουργία αναφορών"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Δημιουργία φορολογικών βεβαιώσεων"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "Δημιουργία ετήσιων βεβαιώσεων δωρεών και αναγνώριση προτύπων προσφοράς."
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "Δημιουργία ετήσιων φορολογικών βεβαιώσεων δωρεών. Μπορούν να εκτυπωθούν ή να σταλούν με email."
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "Δημιουργία λεπτομερών αναφορών για μεμονωμένες καταθέσεις ή ημερομηνιακά εύρη."
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "Δημιουργία υπενθυμίσεων για οικογένειες με εκκρεμείς υποσχέσεις προσφοράς."
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "Δημιουργία αναφορών για φορολογικές βεβαιώσεις, παρακολούθηση υποσχέσεων και οικονομική ανάλυση."
+
+#: 
+msgid "Giving funds and categories"
+msgstr "Ταμεία και κατηγορίες προσφορών"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "Το HTTPS δεν έχει ρυθμιστεί"
+
+#: 
+msgid "ID"
+msgstr "ID"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "Εντοπισμός μελών που δεν έχουν πραγματοποιήσει δωρεές σε ένα ημερομηνιακό εύρος."
 
 #: 
 msgid "Import failed"
@@ -9463,12 +10311,56 @@ msgid "Import from CSV files"
 msgstr "Εισαγωγή από Αρχεία CSV"
 
 #: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "Εισαγωγή δειγμάτων οικογενειών και ομάδων για δοκιμή του συστήματος με ρεαλιστικά δεδομένα."
+
+#: 
 msgid "Install TLS/SSL certificate for better security"
 msgstr "Εγκαταστήστε πιστοποιητικό TLS/SSL"
 
 #: 
+msgid "Jan"
+msgstr "Ιαν"
+
+#: 
+msgid "Jr., Sr."
+msgstr "Νεώτ., Πρεσβ."
+
+#: 
+msgid "Jul"
+msgstr "Ιουλ"
+
+#: 
+msgid "Jun"
+msgstr "Ιουν"
+
+#: 
+msgid "Latest Note"
+msgstr "Τελευταία σημείωση"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "Ας ρυθμίσουμε το σύστημά σας για χρήση"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "Λίστα μελών με δικαίωμα ψήφου βάσει ιστορικού προσφορών και κριτηρίων μέλους."
+
+#: 
 msgid "Location"
 msgstr "Τοποθεσία"
+
+#: 
+msgid "M"
+msgstr "Α"
+
+#: 
+msgid "Manage Funds"
+msgstr "Διαχείριση ταμείων"
+
+#: 
+msgid "Manage Users"
+msgstr "Διαχείριση χρηστών"
 
 #: 
 msgid "Mar"
@@ -9483,8 +10375,28 @@ msgid "Missing Secret Keys"
 msgstr "Ελλιπή Μυστικά Κλειδιά"
 
 #: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "Οι περισσότερες αναφορές εξάγονται ως PDF ή CSV."
+
+#: 
 msgid "Mr., Mrs., Dr."
 msgstr "Κ., Δα., Δρ."
+
+#: 
+msgid "Name & Identity"
+msgstr "Όνομα & Ταυτότητα"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "Θα δημιουργηθεί νέα κατάθεση"
+
+#: 
+msgid "New Payment"
+msgstr "Νέα πληρωμή"
+
+#: 
+msgid "New Pledge"
+msgstr "Νέα υπόσχεση προσφοράς"
 
 #: 
 msgid "Next 7 days and past 7 days"
@@ -9511,8 +10423,16 @@ msgid "Nov"
 msgstr "Νοε"
 
 #: 
+msgid "Oct"
+msgstr "Οκτ"
+
+#: 
 msgid "Open"
 msgstr "Ανοίγω"
+
+#: 
+msgid "Open Deposits:"
+msgstr "Ανοιχτές καταθέσεις:"
 
 #: 
 msgid "Organization, timezone, email"
@@ -9521,6 +10441,14 @@ msgstr "Οργάνωση, ζώνη ώρας, email"
 #: 
 msgid "Organizational structure"
 msgstr "Οργανωτική δομή"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "Ορφανά αρχεία:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
 
 #: 
 msgid "Payment"
@@ -9535,6 +10463,18 @@ msgid "Print or email annual giving statements to all donors."
 msgstr "Τυπώστε ή στείλε ετήσιες δηλώσεις δωρεάς σε όλους τους δότες."
 
 #: 
+msgid "Quick Actions"
+msgstr "Γρήγορες ενέργειες"
+
+#: 
+msgid "Quick Start"
+msgstr "Γρήγορη εκκίνηση"
+
+#: 
+msgid "Recent Deposits"
+msgstr "Πρόσφατες καταθέσεις"
+
+#: 
 msgid "Recording a Payment"
 msgstr "Καταγραφή Πληρωμής"
 
@@ -9545,6 +10485,10 @@ msgstr "Καταγραφή Υπόσχεσης"
 #: 
 msgid "Report Tips"
 msgstr "Συμβουλές Αναφοράς"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "Αναφορές για δικαίωμα ψήφου και διακυβέρνηση του οργανισμού."
 
 #: 
 msgid "Reset"
@@ -9563,8 +10507,16 @@ msgid "Review Donation Funds"
 msgstr "Ανασκόπηση Κεφαλαίων Δωρεάς"
 
 #: 
+msgid "SMTP server settings are not configured"
+msgstr "Οι ρυθμίσεις διακομιστή SMTP δεν έχουν οριστεί"
+
+#: 
 msgid "Save and Add New Family"
 msgstr "Αποθήκευση και Προσθήκη Νέας Οικογένειας"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Λείπουν τα κρυφά κλειδιά από το Config.php"
 
 #: 
 msgid "Sep"
@@ -9591,6 +10543,14 @@ msgid "Social Media"
 msgstr "Μέσα Κοινωνικής Δικτύωσης"
 
 #: 
+msgid "Some application prerequisites are not met"
+msgstr "Ορισμένες προϋποθέσεις της εφαρμογής δεν πληρούνται"
+
+#: 
+msgid "State (Other)"
+msgstr "Περιφέρεια (Άλλη)"
+
+#: 
 msgid "Status:"
 msgstr "Κατάσταση:"
 
@@ -9611,6 +10571,22 @@ msgid "System Info"
 msgstr "Πληροφορίες Συστήματος"
 
 #: 
+msgid "Tax & Giving Reports"
+msgstr "Αναφορές Φόρων & Προσφορών"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "Κείμενο φορολογικής αναφοράς"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "Φορολογικές βεβαιώσεις (Αναφορά προσφορών)"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "Λίστα ελέγχου αναφορών φορολογικού έτους"
+
+#: 
 msgid "Today"
 msgstr "Σήμερα"
 
@@ -9619,8 +10595,20 @@ msgid "Total"
 msgstr "Σύνολο"
 
 #: 
+msgid "Total Amount"
+msgstr "Συνολικό ποσό"
+
+#: 
 msgid "Total Deposits:"
 msgstr "Σύνολο Καταθέσεων:"
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "Παρακολούθηση υποσχέσεων και πληρωμών για εκστρατείες και προϋπολογισμό."
+
+#: 
+msgid "Type:"
+msgstr "Τύπος:"
 
 #: 
 msgid "Unmet Prerequisites"
@@ -9647,8 +10635,84 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Ο χρήστης πρέπει να είναι Admin ή να έχει άδεια Finance"
 
 #: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Επαληθεύστε ότι το όνομα και η διεύθυνση της εκκλησίας εμφανίζονται στις βεβαιώσεις."
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "Επαληθεύστε ότι τα ονόματα των ταμείων είναι ακριβή για τις βεβαιώσεις."
+
+#: 
+msgid "Version:"
+msgstr "Έκδοση:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "Καλώς ήλθατε στο ChurchCRM"
+
+#: 
+msgid "YTD Payments"
+msgstr "Πληρωμές έτους έως σήμερα (YTD)"
+
+#: 
+msgid "YTD Pledges"
+msgstr "Υποσχέσεις έτους έως σήμερα (YTD)"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "Μπορείτε να δημιουργήσετε μέλη οικογένειας τώρα ή αργότερα."
+
+#: 
 msgid "Your fiscal year starts in month"
 msgstr "Το οικονομικό σας έτος ξεκινά σε μήνα"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Τ.Κ. / Ταχυδρομικός Κώδικας"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "Απαιτείται η επέκταση ZipArchive για αναβαθμίσεις"
+
+#: 
+msgid "active"
+msgstr "ενεργός"
+
+#: 
+msgid "ago"
+msgstr "πριν"
+
+#: 
+msgid "day"
+msgstr "ημέρα"
+
+#: 
+msgid "days"
+msgstr "ημέρες"
+
+#: 
+msgid "found"
+msgstr "βρέθηκαν"
+
+#: 
+msgid "in"
+msgstr "σε"
+
+#: 
+msgid "issues"
+msgstr "προβλήματα"
+
+#: 
+msgid "open"
+msgstr "ανοιχτό"
+
+#: 
+msgid "years"
+msgstr "έτη"
+
+#: 
+msgid "yes"
+msgstr "ναι"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -9667,6 +10731,14 @@ msgid "Base URL is not configured in Config.php"
 msgstr "Η βάση URL δεν έχει ρυθμιστεί στο Config.php"
 
 #: 
+msgid "ChurchCRM Supported Locales"
+msgstr "Υποστηριζόμενες τοπικές ρυθμίσεις ChurchCRM"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "Συνδεθείτε στον διακομιστή σας μέσω SSH, FTP ή του πίνακα ελέγχου φιλοξενίας"
+
+#: 
 msgid "Contact"
 msgstr "Επαφή"
 
@@ -9675,12 +10747,36 @@ msgid "Critical Configuration Error"
 msgstr "Critical Configuration Σφάλμα"
 
 #: 
+msgid "Current $URL[0] value:"
+msgstr "Τρέχουσα τιμή $URL[0]:"
+
+#: 
+msgid "Custom port:"
+msgstr "Προσαρμοσμένη θύρα:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "Τελειώνει με <strong>τελική κάθετο</strong> (/)"
+
+#: 
 msgid "Error:"
 msgstr "Σφάλμα:"
 
 #: 
+msgid "Find the line:"
+msgstr "Βρείτε τη γραμμή:"
+
+#: 
 msgid "Group Memberships"
 msgstr "Ομαδικά Μέλη"
+
+#: 
+msgid "How to Fix:"
+msgstr "Πώς να το διορθώσετε:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "Γίνετε μέλος της κοινότητας ChurchCRM και βοηθήστε μας να βελτιωθούμε."
 
 #: 
 msgid "Language"
@@ -9699,6 +10795,10 @@ msgid "Location & Contact Information"
 msgstr "Τοποθεσία & Πληροφορίες Επαφής"
 
 #: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "Μεταβείτε στον κατάλογο εγκατάστασης του ChurchCRM"
+
+#: 
 msgid "New to"
 msgstr "Νέα στο"
 
@@ -9711,6 +10811,10 @@ msgid "Not Available"
 msgstr "Δεν Διατίθεται"
 
 #: 
+msgid "Open this file in a text editor:"
+msgstr "Ανοίξτε αυτό το αρχείο σε έναν επεξεργαστή κειμένου:"
+
+#: 
 msgid "Register Now"
 msgstr "Εγγραφή Τώρα"
 
@@ -9719,16 +10823,48 @@ msgid "Register Your Church"
 msgstr "Εγγραφή της Εκκλησίας σας"
 
 #: 
+msgid "Save the file and refresh this page"
+msgstr "Αποθηκεύστε το αρχείο και ανανεώστε τη σελίδα"
+
+#: 
 msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
 msgstr "Set true to disable entering personal addresses for unaffiliated people in Person Επεξεργασίαor. Set false to enable entering addresses for people without a family assignment."
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "Ξεκινά με <strong>http://</strong> ή <strong>https://</strong>"
 
 #: 
 msgid "Subdirectory installation:"
 msgstr "Εγκατάσταση υποκατεύθυνσης:"
 
 #: 
+msgid "System Locale Support"
+msgstr "Υποστήριξη τοπικών ρυθμίσεων συστήματος"
+
+#: 
 msgid "System Support"
 msgstr "Υποστήριξη Συστήματος"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "Το URL δεν περιέχει έγκυρο όνομα κεντρικού υπολογιστή"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "Το όνομα κεντρικού υπολογιστή του URL δεν είναι έγκυρο"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "Το URL δεν είναι σε έγκυρη μορφή"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "Το URL πρέπει να τελειώνει με τελική κάθετο (/)"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "Το URL πρέπει να ξεκινά με http:// ή https://"
 
 #: 
 msgid "Unable to detect system locales"
@@ -9749,6 +10885,10 @@ msgstr "Δεν είναι δυνατή η φόρτωση της λίστας κ�
 #: 
 msgid "Update it to a valid URL that:"
 msgstr "Ενημερώστε το σε ένα έγκυρο URL που:"
+
+#: 
+msgid "Valid Examples:"
+msgstr "Έγκυρα παραδείγματα:"
 
 #: 
 msgid "View Logs"
@@ -9791,12 +10931,40 @@ msgid "Choose opportunities..."
 msgstr "Επιλέξτε ευκαιρίες..."
 
 #: 
+msgid "Confirm Family Information"
+msgstr "Επιβεβαίωση στοιχείων οικογένειας"
+
+#: 
+msgid "Confirm family information"
+msgstr "Επιβεβαιώστε τα στοιχεία της οικογένειας"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "Στοιχεία επικοινωνίας & προσωπικά στοιχεία"
+
+#: 
+msgid "Copied!"
+msgstr "Αντιγράφηκε!"
+
+#: 
 msgid "Edit Role"
 msgstr "Επεξεργασία Role"
 
 #: 
 msgid "Edited"
 msgstr "Επεξεργασμένο"
+
+#: 
+msgid "Email PDF"
+msgstr "Αποστολή PDF με Email"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "Αποτυχία αντιγραφής URL"
+
+#: 
+msgid "ID:"
+msgstr "ID:"
 
 #: 
 msgid "Newsletter"
@@ -9807,12 +10975,24 @@ msgid "No assigned family"
 msgstr "Κανένα εκχωρημένο πρόσωπο"
 
 #: 
+msgid "Open in New Tab"
+msgstr "Άνοιγμα σε νέα καρτέλα"
+
+#: 
 msgid "Personal"
 msgstr "Προσωπικός"
 
 #: 
 msgid "Please confirm your family information:"
 msgstr "Παρακαλώ επιβεβαιώστε τις πληροφορίες της οικογένειάς σας:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "Παρακαλούμε ενημερώστε τα αρχεία μας με διορθώσεις"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "Παρέχετε τυχόν διορθώσεις ή επιπλέον πληροφορίες εδώ..."
 
 #: 
 msgid "Remove Property"
@@ -9827,8 +11007,16 @@ msgid "Select Property"
 msgstr "Επιλέξτε Περιουσία"
 
 #: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Μοιραστείτε αυτό το URL με μέλη της οικογένειας για επαλήθευση των στοιχείων τους"
+
+#: 
 msgid "Submit Verification"
 msgstr "Υποβολή Επαλήθευσης"
+
+#: 
+msgid "Thank You!"
+msgstr "Ευχαριστούμε!"
 
 #: 
 msgid "Translation incomplete"
@@ -9841,6 +11029,10 @@ msgstr "Επισκεφθείτε τον Ιστότοπό μας"
 #: 
 msgid "Volunteer"
 msgstr "Εθελοντής"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "Προέκυψε σφάλμα κατά την επεξεργασία της επαλήθευσης."
 
 #: 
 msgid "Your verification request has been received. Thank you for keeping your information up to date."
@@ -9867,6 +11059,10 @@ msgid "Demo data import failed"
 msgstr "Η εισαγωγή δεδομένων δείγματος απέτυχε"
 
 #: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "Η εισαγωγή δεδομένων επίδειξης είναι διαθέσιμη μόνο σε νέες εγκαταστάσεις με ακριβώς 1 άτομο"
+
+#: 
 msgid "Demo data loaded successfully"
 msgstr "Τα δεδομένα δείγματος φορτώθηκαν με επιτυχία"
 
@@ -9875,8 +11071,36 @@ msgid "Download failed"
 msgstr "Η λήψη απέτυχε"
 
 #: 
+msgid "Failed to apply upgrade"
+msgstr "Αποτυχία εφαρμογής αναβάθμισης"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "Αποτυχία διαγραφής ορφανών αρχείων"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "Αποτυχία λήψης της τελευταίας έκδοσης"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "Αποτυχία ανανέωσης πληροφοριών αναβάθμισης"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "Αποτυχία μεταφόρτωσης φωτογραφίας οικογένειας"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "Αποτυχία μεταφόρτωσης φωτογραφίας ατόμου"
+
+#: 
 msgid "Remote backup failed"
 msgstr "Το αντίγραφο ασφαλείας απομακρυσμένου χώρου απέτυχε"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "Τα αντίγραφα WebDAV δεν έχουν ρυθμιστεί σωστά."
 
 #: 
 msgid "2FA Enabled"
@@ -9895,6 +11119,10 @@ msgid "Delete User"
 msgstr "Διαγραφή Χρήστης"
 
 #: 
+msgid "Disable 2FA"
+msgstr "Απενεργοποίηση 2FA"
+
+#: 
 msgid "Export all people data in ChMeetings format for import into external systems."
 msgstr "Εξαγωγή all people data in ChMeetings format for import into external systems."
 
@@ -9907,6 +11135,10 @@ msgid "Exporting..."
 msgstr "Εξαγωγήing..."
 
 #: 
+msgid "Family Listing"
+msgstr "Λίστα οικογενειών"
+
+#: 
 msgid "Invalid request data"
 msgstr "Μη έγκυρα δεδομένα αιτήματος"
 
@@ -9915,8 +11147,80 @@ msgid "Invalid status"
 msgstr "Μη έγκυρη κατάσταση"
 
 #: 
+msgid "Locked Users"
+msgstr "Κλειδωμένοι χρήστες"
+
+#: 
+msgid "Person Listing"
+msgstr "Λίστα ατόμων"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "Άτομο(α) αφαιρέθηκαν από το καλάθι"
+
+#: 
+msgid "Quick Settings"
+msgstr "Γρήγορες ρυθμίσεις"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "Επαναφορά αποτυχημένων συνδέσεων"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "Επαναφορά κωδικού μέσω Email"
+
+#: 
+msgid "Set Active"
+msgstr "Ορισμός ως ενεργός"
+
+#: 
+msgid "Set Inactive"
+msgstr "Ορισμός ως ανενεργός"
+
+#: 
 msgid "Show"
 msgstr "Εμφάνιση"
+
+#: 
+msgid "Showing"
+msgstr "Εμφάνιση"
+
+#: 
+msgid "Total Users"
+msgstr "Συνολικοί χρήστες"
+
+#: 
+msgid "User Management"
+msgstr "Διαχείριση χρηστών"
+
+#: 
+msgid "View Details"
+msgstr "Προβολή λεπτομερειών"
+
+#: 
+msgid "entries"
+msgstr "εγγραφές"
+
+#: 
+msgid "of"
+msgstr "από"
+
+#: 
+msgid "total"
+msgstr "σύνολο"
+
+#: 
+msgid "Code incomplete"
+msgstr "Ο κώδικας είναι ελλιπής"
+
+#: 
+msgid "Code is invalid"
+msgstr "Ο κώδικας είναι άκυρος"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "Κλειδί κρυπτογράφησης για την αποθήκευση των κλειδιών 2FA στη βάση δεδομένων"
 
 #: 
 msgid "Two-Factor Authentication"
@@ -9925,6 +11229,28 @@ msgstr "Δύο Παράγοντες Ελέγχου Ταυτότητας"
 #: 
 msgid "Validation pending"
 msgstr "Επαλήθευση σε Αναμονή"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "πρέπει να ρυθμιστεί με ένα κλειδί κρυπτογράφησης"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d άτομο προστέθηκε στο καλάθι."
+msgstr[1] "%d άτομα προστέθηκαν στο καλάθι."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d άτομο προστέθηκε επιτυχώς στην επιλεγμένη οικογένεια."
+msgstr[1] "%d άτομα προστέθηκαν επιτυχώς στην επιλεγμένη οικογένεια."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d άτομο προστέθηκε επιτυχώς στην επιλεγμένη ομάδα."
+msgstr[1] "%d άτομα προστέθηκαν επιτυχώς στην επιλεγμένη ομάδα."
 
 #: 
 msgid "A "
@@ -9939,8 +11265,28 @@ msgid "Are you sure you want to delete"
 msgstr "Είστε σίγουρος ότι θέλετε να διαγράψετε"
 
 #: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Τα κουμπιά βέλους και διαγραφής ισχύουν αμέσως. Οι αλλαγές ονομάτων πεδίων θα χαθούν αν δεν πατήσετε 'Αποθήκευση Αλλαγών'!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "Διαγράφοντας αυτό το πεδίο, θα χάσετε οριστικά όλα τα δεδομένα οικογένειας που σχετίζονται με αυτό!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "Διαγράφοντας αυτό το πεδίο, θα χάσετε οριστικά όλα τα δεδομένα ατόμων που σχετίζονται με αυτό!"
+
+#: 
 msgid "Changes not saved! Please correct and try again!"
 msgstr "Οι αλλαγές δεν αποθηκεύτηκαν! Παρακαλώ διορθώστε και δοκιμάστε ξανά!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "Επιβεβαίωση διαγραφής ιδιότητας"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "Επιβεβαίωση διαγραφής ευκαιρίας εθελοντισμού"
 
 #: 
 msgid "Delete Confirmation"
@@ -9963,6 +11309,10 @@ msgid "Existing Volunteer Opportunities"
 msgstr "Υπάρχον Volunteer Opportunities"
 
 #: 
+msgid "Field deleted successfully"
+msgstr "Το πεδίο διαγράφηκε επιτυχώς"
+
+#: 
 msgid "Invalid CSRF token"
 msgstr "Μη έγκυρο διακριτικό CSRF"
 
@@ -9983,8 +11333,16 @@ msgid "Move up"
 msgstr "Μετακίνηση Πάνω"
 
 #: 
+msgid "Opportunity"
+msgstr "Ευκαιρία"
+
+#: 
 msgid "Order"
 msgstr "Παραγγελία"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "Τα PDF στάλθηκαν επιτυχώς με email σε %s οικογένειες."
 
 #: 
 msgid "Percentage"
@@ -9997,6 +11355,42 @@ msgstr "Ιδιότητες Προσώπου"
 #: 
 msgid "Property Type"
 msgstr "Τύπος Περιουσίας"
+
+#: 
+msgid "Property to Delete"
+msgstr "Ιδιότητα προς διαγραφή"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "Υπάρχουν άτομα ανατεθειμένα σε αυτή την ευκαιρία εθελοντισμού. Η διαγραφή θα τα αποδεσμεύσει:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "Αυτό θα την αφαιρέσει από όλα τα άτομα στα οποία είναι ανατεθειμένη."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Ευκαιρία εθελοντισμού"
+
+#: 
+msgid "Warning:"
+msgstr "Προειδοποίηση:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "Ναι, διαγράψτε αυτή την ευκαιρία"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "Ερωτήματα για τα οποία ο χρήστης πρέπει να έχει οικονομικά δικαιώματα για χρήση"
+
+#: 
+msgid "Fund(s)"
+msgstr "Ταμείο(α)"
+
+#: 
+msgid "Password reset for"
+msgstr "Επαναφορά κωδικού για"
 
 #. Context: locales
 #: 

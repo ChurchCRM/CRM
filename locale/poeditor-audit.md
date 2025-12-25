@@ -1,9 +1,9 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥75%):** 21
-**Good Locales (51-74%):** 8
-**Needs Work (<51%):** 16
+**Complete Locales (≥75%):** 28
+**Good Locales (51-74%):** 3
+**Needs Work (<51%):** 14
 **WIP Candidates (>5%, not yet added):** 6
 
 ## Locale Completeness Overview
@@ -15,10 +15,12 @@
 | `ko` | Korean | 2733 | 100% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2733 | 100% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 2733 | 100% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `de` | German | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `el` | Greek | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
@@ -26,24 +28,22 @@
 | `es-ar` | Spanish (AR) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `es-mx` | Spanish (MX) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `es-sv` | Spanish (SV) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 2731 | 99.93% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 2726 | 99.74% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 2364 | 86.5% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 2083 | 76.22% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 1897 | 69.41% | 🟡 Good | ✅ Yes |
+| `uk` | Ukrainian | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 2215 | 81.05% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 1887 | 69.05% | 🟡 Good | ✅ Yes |
-| `ro` | Romanian | 1887 | 69.05% | 🟡 Good | ✅ Yes |
-| `am` | Amharic | 1872 | 68.5% | 🟡 Good | ✅ Yes |
-| `tr` | Turkish | 1872 | 68.5% | 🟡 Good | ✅ Yes |
-| `uk` | Ukrainian | 1872 | 68.5% | 🟡 Good | ✅ Yes |
 | `zh-cn` | Chinese | 1869 | 68.39% | 🟡 Good | ✅ Yes |
 | `sv` | Swedish | 1855 | 67.87% | 🟡 Good | ✅ Yes |
-| `ru` | Russian | 1193 | 43.65% | 🟠 Needs Work | ✅ Yes |
-| `pl` | Polish | 982 | 35.93% | 🟠 Needs Work | ✅ Yes |
+| `sq` | Albanian | 842 | 30.81% | 🟠 Needs Work | ✅ Yes |
 | `nb` | Norwegian Bokmål | 792 | 28.98% | 🟠 Needs Work | ✅ Yes |
 | `hu` | Hungarian | 675 | 24.7% | 🟠 Needs Work | ✅ Yes |
-| `sq` | Albanian | 664 | 24.3% | 🟠 Needs Work | ✅ Yes |
 | `te` | Telugu | 331 | 12.11% | 🟠 Needs Work | ✅ Yes |
 | `ja` | Japanese | 196 | 7.17% | 🟠 Needs Work | ✅ Yes |
 | `fi` | Finnish | 143 | 5.23% | 🟠 Needs Work | ✅ Yes |
@@ -64,9 +64,9 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 21 locales ready for production
-- **🟡 Good (51-74%):** 8 locales with solid translation coverage
-- **🟠 Needs Work (<51%):** 10 locales requiring translator attention
+- **🟢 Complete (≥75%):** 28 locales ready for production
+- **🟡 Good (51-74%):** 3 locales with solid translation coverage
+- **🟠 Needs Work (<51%):** 8 locales requiring translator attention
 - **🔴 Incomplete:** 2 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
 

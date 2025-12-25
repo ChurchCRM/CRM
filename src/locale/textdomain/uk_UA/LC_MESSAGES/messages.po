@@ -7932,10 +7932,3442 @@ msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Недійсна дата народження: відсутні місяць і день народження."
 
 #: 
+msgid "System"
+msgstr "Система"
+
+#. Context: locales
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Амхарська - Ефіопія"
+
+#. Context: locales
+#: 
+msgid "Czech"
+msgstr "Чеська"
+
+#. Context: locales
+#: 
+msgid "Finnish"
+msgstr "Фінська"
+
+#. Context: locales
+#: 
+msgid "Greek"
+msgstr "Грецька"
+
+#. Context: locales
+#: 
+msgid "Turkish"
+msgstr "Турецька"
+
+#. Context: locales
+#: 
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Коли ви натиснете «Надіслати до GitHub», вас буде спрямовано на сторінку проблем GitHub із попередньо заповненою інформацією про вашу систему."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Надіслати до GitHub"
+
+#: 
+msgid "Change role"
+msgstr "Змінити роль"
+
+#: 
+msgid "Closed"
+msgstr "Закрито"
+
+#: 
+msgid "Delete this person?"
+msgstr "Видалити цю особу?"
+
+#: 
+msgid "Deposit ID"
+msgstr "ID депозиту"
+
+#: 
+msgid "Deposit Total"
+msgstr "Загальна сума внесків"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Статус кошика групи"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "Якщо це не спрацює, скопіюйте та вставте наступне посилання у свій браузер"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "Ви отримали цей електронний лист, тому що ми отримали запит на активність у вашому обліковому записі. Якщо ви цього не запитували, ви можете безпечно видалити цей лист."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Щоб припинити отримання цих листів, ви можете написати на електронну пошту"
+
+#: 
+msgid "invalid group request"
+msgstr "недійсний запит групи"
+
+#. Context: locales
+#: 
+msgid "Hindi - India"
+msgstr "Гінді - Індія"
+
+#. Context: locales
+#: 
+msgid "Japanese"
+msgstr "Японська"
+
+#. Context: locales
+#: 
+msgid "Tamil - India"
+msgstr "Тамільська - Індія"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Не підписаний"
+
+#: 
+msgid "property"
+msgstr "властивість"
+
+#: 
+msgid "Default Zip"
+msgstr "Поштовий індекс за замовчуванням"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Особи з оплатою карткою"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Парафіяни, які налаштовані на оплату кредитною карткою."
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "У рамках відновлення зовнішнє резервне копіювання було вимкнено. Якщо ви бажаєте продовжити автоматичне резервне копіювання, необхідно вручну повторно ввімкнути параметр bEnableExternalBackupTarget."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "Попередня перевірка цілісності пройшла успішно. Усі хеш-суми системних файлів відповідають очікуваним значенням."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "Список класифікацій, розділених комами, які мають відображатися як неактивні"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp не налаштовано"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "Будь ласка, оновіть ключ API MailChimp у:"
+
+#. Context: locales
+#: 
+msgid "English - South Africa"
+msgstr "Англійська - ПАР"
+
+#. Context: locales
+#: 
+msgid "English - Jamaica"
+msgstr "Англійська - Ямайка"
+
+#. Context: locales
+#: 
+msgid "Swahili"
+msgstr "Суахілі"
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "Один символ з імені та один символ із прізвища"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "Два символи з імені"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "Електронна пошта церкви не встановлена, будь ласка, відвідайте сторінку налаштувань"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "Телугу - Індія"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Корейська"
+
+#: 
+msgid "System Logs"
+msgstr "Системні журнали"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Застосовувати політику безпеки вмісту (CSP) для захисту від міжсайтового скриптингу. Якщо вимкнено, про порушення CSP лише повідомляється."
+
+#: 
+msgid "Enter event description..."
+msgstr "Введіть опис події..."
+
+#: 
+msgid "Event ID"
+msgstr "ID події"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Введіть текст нотатки тут..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "Для цієї особи не додано жодних нотаток."
+
+#: 
+msgid "Note"
+msgstr "Нотатка"
+
+#: 
+msgid "Log Settings"
+msgstr "Налаштування журналу"
+
+#: 
+msgid "Log Level:"
+msgstr "Рівень журналювання:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Зберегти рівень журналювання"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Перегляд журналів програми. Натисніть на файл журналу, щоб переглянути його вміст."
+
+#: 
+msgid "Delete All Logs"
+msgstr "Видалити всі журнали"
+
+#: 
+msgid "No log files found."
+msgstr "Файлів журналів не знайдено."
+
+#: 
+msgid "Log File"
+msgstr "Файл журналу"
+
+#: 
+msgid "Size"
+msgstr "Розмір"
+
+#: 
+msgid "Last Modified"
+msgstr "Останні зміни"
+
+#: 
+msgid "View"
+msgstr "Переглянути"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Переглядач файлів журналу"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Фільтрувати за рівнем:"
+
+#: 
+msgid "Error"
+msgstr "Помилка"
+
+#: 
+msgid "Info"
+msgstr "Інфо"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Кількість рядків для відображення:"
+
+#: 
+msgid "Loading log file..."
+msgstr "Завантаження файлу журналу..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Для цієї сім'ї не додано жодних нотаток."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Токен доступу до календаря створено та збережено."
+
+#: 
+msgid "added"
+msgstr "додано"
+
+#: 
+msgid "Added"
+msgstr "Додано"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Успішно додано до кошика"
+
+#: 
+msgid "All members already in cart"
+msgstr "Усі учасники вже в кошику"
+
+#: 
+msgid "already in cart"
+msgstr "вже в кошику"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Не вдалося завантажити властивості календаря. Можливо, у цього календаря відсутній токен доступу або він неправильно налаштований."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Кошик успішно очищено"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Кошик успішно перенесено в групу"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Очистити весь кошик?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Не вдалося додати сім'ю до кошика"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Не вдалося додати групу до кошика"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Не вдалося додати до кошика"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Не вдалося очистити кошик"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Не вдалося перенести кошик у групу"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Не вдалося видалити сім'ю з кошика"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Не вдалося видалити з кошика"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Не вдалося видалити групу"
+
+#: 
+msgid "Family added to cart"
+msgstr "Сім'ю додано до кошика"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Сім'ю видалено з кошика"
+
+#: 
+msgid "Group added to cart"
+msgstr "Групу додано до кошика"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Групу видалено з кошика"
+
+#: 
+msgid "in cart"
+msgstr "у кошику"
+
+#: 
+msgid "members. Already had"
+msgstr "учасників. Вже було"
+
+#: 
+msgid "people added to cart"
+msgstr "осіб додано до кошика"
+
+#: 
+msgid "people already in cart"
+msgstr "осіб уже в кошику"
+
+#: 
+msgid "people from cart"
+msgstr "осіб із кошика"
+
+#: 
+msgid "people removed from cart"
+msgstr "осіб видалено з кошика"
+
+#: 
+msgid "Person already in cart"
+msgstr "Особа вже в кошику"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Видалити цю сім'ю з кошика?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Видалити цю групу з кошика?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Видалити цю особу з кошика?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Успішно видалено з кошика"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Так, очистити кошик"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Так, видалити"
+
+#: 
+msgid "Add Group"
+msgstr "Додати групу"
+
+#: 
+msgid "Back to Group List"
+msgstr "Назад до списку груп"
+
+#: 
+msgid "Default role updated."
+msgstr "Роль за замовчуванням оновлена."
+
+#: 
+msgid "Edit Group"
+msgstr "Редагувати групу"
+
+#: 
+msgid "Enter group name"
+msgstr "Введіть назву групи"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "Не вдалося додати роль. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Не вдалося створити групу. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "Не вдалося видалити роль. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Не вдалося завантажити статус кошика."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Не вдалося завантажити групи. Будь ласка, оновіть сторінку."
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "Не вдалося встановити роль за замовчуванням. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "Не вдалося оновити групу. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "Не вдалося оновити властивості. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "Не вдалося оновити назву ролі. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "Залиште порожнім, щоб зберегти існуючий пароль"
+
+#: 
 msgid "Please enter a group name."
 msgstr "Введіть назву групи"
 
 #: 
 msgid "Role added successfully."
 msgstr "Роль успішно додано"
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Роль успішно видалена."
+
+#: 
+msgid "Role name updated."
+msgstr "Назву ролі оновлено."
+
+#: 
+msgid "View Group"
+msgstr "Переглянути групу"
+
+#: 
+msgid "Events Today"
+msgstr "Події на сьогодні"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Огляд Недільної школи"
+
+#: 
+msgid "Add Family Member"
+msgstr "Додати члена сім'ї"
+
+#: 
+msgid "Address is required"
+msgstr "Адреса обов'язкова"
+
+#: 
+msgid "Base URL is required"
+msgstr "Базова URL-адреса обов'язкова"
+
+#: 
+msgid "City is required"
+msgstr "Місто обов'язкове"
+
+#: 
+msgid "Database name is required"
+msgstr "Назва бази даних обов'язкова"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "Потрібне ім'я хоста або IP-адреса сервера бази даних (наприклад, localhost або 127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "Порт сервера бази даних обов'язковий (наприклад, 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "Ім'я користувача бази даних обов'язкове"
+
+#: 
+msgid "Email Address"
+msgstr "Адреса електронної пошти"
+
+#: 
+msgid "Email address"
+msgstr "Електронна пошта"
+
+#: 
+msgid "Enter family name"
+msgstr "Введіть прізвище сім'ї"
+
+#: 
+msgid "Family Information"
+msgstr "Інформація про сім'ю"
+
+#: 
+msgid "Family name is required"
+msgstr "Прізвище сім'ї обов'язкове"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "Прізвище сім'ї має містити принаймні 2 символи"
+
+#: 
+msgid "First name"
+msgstr "Ім'я"
+
+#: 
+msgid "First name is required"
+msgstr "Ім'я обов'язкове"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "Ім'я має містити принаймні 2 символи"
+
+#: 
+msgid "Home phone is required"
+msgstr "Домашній телефон обов'язковий"
+
+#: 
+msgid "Home phone number"
+msgstr "Номер домашнього телефону"
+
+#: 
+msgid "Invalid format"
+msgstr "Неправильний формат"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "Приєднуйтесь до нашої парафіяльної громади, зареєструвавши свою сім'ю"
+
+#: 
+msgid "Last name"
+msgstr "Прізвище"
+
+#: 
+msgid "Last name is required"
+msgstr "Прізвище обов'язкове"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "Прізвище має містити принаймні 2 символи"
+
+#: 
+msgid "Maximum length is"
+msgstr "Максимальна довжина —"
+
+#: 
+msgid "Minimum length is"
+msgstr "Мінімальна довжина —"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "Має бути дійсною URL-адресою, що починається з http:// або https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "Має бути дійсною URL-адресою, що починається з http:// або https:// (наприклад, http://localhost або https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "Має бути дійсним номером порту (наприклад, 3306)"
+
+#: 
+msgid "Next Member"
+msgstr "Наступний член сім'ї"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Паролі не збігаються"
+
+#: 
+msgid "Phone Type"
+msgstr "Тип телефону"
+
+#: 
+msgid "Phone number"
+msgstr "Номер телефону"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Будь ласка, додайте принаймні одного члена сім'ї."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Будь ласка, виправте помилки валідації перед продовженням."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Будь ласка, введіть дійсну URL-адресу"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Будь ласка, введіть дійсну адресу електронної пошти"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Будь ласка, введіть дійсну адресу електронної пошти (наприклад, name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Будь ласка, введіть дійсне число"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Будь ласка, введіть дійсний номер телефону"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Будь ласка, правильно заповніть усі обов'язкові поля."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "Будь ласка, уважно перевірте всю інформацію перед надсиланням. Ви можете повернутися назад, щоб внести зміни, якщо це необхідно."
+
+#: 
+msgid "Previous"
+msgstr "Попередній"
+
+#: 
+msgid "Registration Error"
+msgstr "Помилка реєстрації"
+
+#: 
+msgid "Review & Submit"
+msgstr "Перевірити та надіслати"
+
+#: 
+msgid "Role in Family"
+msgstr "Роль у сім'ї"
+
+#: 
+msgid "Select date"
+msgstr "Виберіть дату"
+
+#: 
+msgid "Street address"
+msgstr "Адреса (вулиця)"
+
+#: 
+msgid "Submit Registration"
+msgstr "Надіслати реєстрацію"
+
+#: 
+msgid "Zip code is required"
+msgstr "Поштовий індекс обов'язковий"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "Новий пароль створено та надіслано на вашу адресу електронної пошти."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "Доступна нова версія ChurchCRM для встановлення."
+
+#: 
+msgid "Actual Hash"
+msgstr "Фактичний хеш"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "Усі попередні перевірки пройшли успішно. Ви можете продовжити оновлення."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Дозволити попередні версії оновлень (Pre-release)"
+
+#: 
+msgid "Apply Update Now"
+msgstr "Застосувати оновлення зараз"
+
+#: 
+msgid "Applying System Update..."
+msgstr "Застосування оновлення системи..."
+
+#: 
+msgid "Back to Login"
+msgstr "Назад до входу"
+
+#: 
+msgid "Back to login"
+msgstr "Назад до входу"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Резервне копіювання пропущено"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "Перевірте GitHub для отримання останньої інформації про реліз"
+
+#: 
+msgid "Complete"
+msgstr "Завершено"
+
+#: 
+msgid "Continue to Backup"
+msgstr "Продовжити до резервного копіювання"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "Продовжити до завантаження та застосування"
+
+#: 
+msgid "Create Backup"
+msgstr "Створити резервну копію"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "Створіть резервну копію бази даних перед застосуванням оновлення."
+
+#: 
+msgid "Current Version:"
+msgstr "Поточна версія:"
+
+#: 
+msgid "Database Backup"
+msgstr "Резервна копія бази даних"
+
+#: 
+msgid "Download & Apply"
+msgstr "Завантажити та застосувати"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "Завантажити та застосувати оновлення системи"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "Завантажте останній реліз та застосуйте його до вашої інсталяції ChurchCRM."
+
+#: 
+msgid "Downloaded"
+msgstr "Завантажено"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "Завантаження останнього релізу з GitHub..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "Введіть ваше ім'я користувача, і ми надішлемо вам посилання для скидання пароля."
+
+#: 
+msgid "Expected Hash"
+msgstr "Очікуваний хеш"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Не вдалося створити резервну копію."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Не вдалося завантажити пакет оновлення."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Не вдалося оновити інформацію про оновлення з GitHub."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "Не вдалося оновити інформацію про оновлення. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "Не вдалося зберегти налаштування. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "File Name"
+msgstr "Ім'я файлу"
+
+#: 
+msgid "Files Missing"
+msgstr "Файли відсутні"
+
+#: 
+msgid "Files Modified"
+msgstr "Файли змінено"
+
+#: 
+msgid "Go to Login"
+msgstr "Перейти до входу"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "Я розумію — продовжити"
+
+#: 
+msgid "Language updated to"
+msgstr "Мову оновлено на"
+
+#: 
+msgid "Login Name is required"
+msgstr "Ім'я користувача обов'язкове"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "Отримавши електронний лист, ви зможете увійти за допомогою тимчасового пароля та змінити його на зручний для вас."
+
+#: 
+msgid "Password Reset Error"
+msgstr "Помилка скидання пароля"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "Скидання пароля успішне"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "Будь ласка, перевірте свою електронну пошту (включаючи папку спам), щоб знайти тимчасовий пароль."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "Будь ласка, не закривайте це вікно та не оновлюйте сторінку."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "Попередні завдання оновлення завершені"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "Попередження перед оновленням"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "Оновити з GitHub"
+
+#: 
+msgid "Release Notes:"
+msgstr "Примітки до релізу:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "Запитувати скидання пароля"
+
+#: 
+msgid "Retry Download"
+msgstr "Повторити завантаження"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "Хеш SHA1:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "Надіслати лист для скидання"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "Налаштування збережено. Перезавантаження сторінки..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Налаштування успішно оновлено"
+
+#: 
+msgid "Skip Backup"
+msgstr "Пропустити резервне копіювання"
+
+#: 
+msgid "System Up to Date"
+msgstr "Система оновлена"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "Майстер оновлення системи"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "Оновлення системи успішно завершено!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "Це може зайняти кілька хвилин."
+
+#: 
+msgid "Update Available!"
+msgstr "Доступне оновлення!"
+
+#: 
+msgid "Update Package Details"
+msgstr "Деталі пакета оновлення"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Пакет оновлення успішно завантажено."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "Оновлення завершено!"
+
+#: 
+msgid "Upgrade failed."
+msgstr "Помилка оновлення."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "Помилка оновлення. Будь ласка, перевірте журнали."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "Інформацію про оновлення успішно оновлено"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Інформацію про оновлення оновлено. Перезавантаження сторінки..."
+
+#: 
+msgid "Version Information"
+msgstr "Інформація про версію"
+
+#: 
+msgid "Warnings"
+msgstr "Попередження"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "Ми не змогли обробити ваш запит на скидання пароля. Будь ласка, спробуйте надіслати новий запит."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "Ви вирішили пропустити резервне копіювання. Наполегливо рекомендується мати резервну копію перед продовженням оновлення."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "Вашу інсталяцію ChurchCRM успішно оновлено."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "Ваша інсталяція ChurchCRM використовує останню версію."
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 символів"
+
+#: 
+msgid "Dear Friend"
+msgstr "Дорогий друже"
+
+#: 
+msgid "No Data Found"
+msgstr "Даних не знайдено"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "Попередній звіт не повернув жодних записів. Будь ласка, налаштуйте фільтри або діапазон дат і спробуйте ще раз."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "Будь ласка, введіть назву меню (2-50 символів)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "Будь ласка, введіть дійсну URL-адресу, що починається з http:// або https://"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "Усі підписи системних файлів відповідають очікуваним значенням."
+
+#: 
+msgid "Files with issues"
+msgstr "Файли з проблемами"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Перевірка цілісності не вдалася"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Перевірка цілісності пройдена"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "Файл визначення підписів існує, але недоступний для читання. Перевірте права доступу до файлу."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "Файл визначення підписів відсутній за шляхом %s. Запустіть завдання пакування або розгорніть офіційний реліз, щоб повторно створити підписи."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "Не вдалося зв'язатися з кінцевою точкою цілісності. Перевірте журнали помилок веб-сервера."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "Додайте будь-які додаткові примітки до цього внеску"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "Сума перевищує максимально допустиме значення (999999.99)."
+
+#: 
+msgid "Checks"
+msgstr "Чеки"
+
+#: 
+msgid "Clear Filters"
+msgstr "Очистити фільтри"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "Натисніть на стовпчик, щоб відфільтрувати платежі"
+
+#: 
+msgid "Delete Selected"
+msgstr "Видалити вибране"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Депозит успішно збережено"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Помилка під час видалення платежів"
+
+#: 
+msgid "Error loading payments"
+msgstr "Помилка під час завантаження платежів"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Помилка під час збереження депозиту"
+
+#: 
+msgid "Funds"
+msgstr "Фонди"
+
+#: 
+msgid "Generate Report"
+msgstr "Згенерувати звіт"
+
+#: 
+msgid "No Cash"
+msgstr "Без готівки"
+
+#: 
+msgid "No Checks"
+msgstr "Без чеків"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Платежів ще немає. Натисніть «Додати платіж», щоб почати."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "Сума, що не підлягає оподаткуванню, перевищує максимально допустиме значення (999999.99)."
+
+#: 
+msgid "Payments"
+msgstr "Платежі"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Платежі успішно видалено"
+
+#: 
+msgid "Please select a date"
+msgstr "Будь ласка, виберіть дату"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Будь ласка, виберіть рядки для видалення"
+
+#: 
+msgid "Saving..."
+msgstr "Збереження..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "Цю дію неможливо скасувати."
+
+#: 
+msgid "Total Deposit"
+msgstr "Загальна сума внеску"
+
+#: 
+msgid "Total Payments"
+msgstr "Усього платежів"
+
+#: 
+msgid "payments(s)?"
+msgstr "платежі(ів)?"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "Усі системні файли пройшли перевірку цілісності."
+
+#: 
+msgid "Base URL"
+msgstr "Базова URL-адреса"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "Інсталяція ChurchCRM"
+
+#: 
+msgid "Copy"
+msgstr "Копіювати"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "Сервер бази даних"
+
+#: 
+msgid "Debug Info"
+msgstr "Налагоджувальна інформація"
+
+#: 
+msgid "Document Root"
+msgstr "Коренева папка документів"
+
+#: 
+msgid "Email Configuration"
+msgstr "Налаштування електронної пошти"
+
+#: 
+msgid "Email Debug Info"
+msgstr "Налагоджувальна інформація пошти"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "Права доступу до файлової системи"
+
+#: 
+msgid "Hostname"
+msgstr "Ім'я хоста"
+
+#: 
+msgid "IP Address"
+msgstr "IP-адреса"
+
+#: 
+msgid "Images Root"
+msgstr "Коренева папка зображень"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Імпортувати демо-дані"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Включити події та календарі"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Включити фінансові дані (фонди пожертвувань, обіцяні внески)"
+
+#: 
+msgid "Invalid API key"
+msgstr "Недійсний ключ API"
+
+#: 
+msgid "Not configured"
+msgstr "Не налаштовано"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "Вимоги до PHP та сервера"
+
+#: 
+msgid "PHP Configuration"
+msgstr "Налаштування PHP"
+
+#: 
+msgid "Platform"
+msgstr "Платформа"
+
+#: 
+msgid "Root Path"
+msgstr "Кореневий шлях"
+
+#: 
+msgid "SMTP Host"
+msgstr "SMTP-хост"
+
+#: 
+msgid "Server Information"
+msgstr "Інформація про сервер"
+
+#: 
+msgid "Software"
+msgstr "Програмне забезпечення"
+
+#: 
+msgid "System & Configuration"
+msgstr "Система та конфігурація"
+
+#: 
+msgid "Tip:"
+msgstr "Порада:"
+
+#: 
+msgid "Valid Settings"
+msgstr "Дійсні налаштування"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "Сталася помилка під час імпорту демо-даних"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "Демо-дані успішно імпортовано"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "Включити класи Недільної школи та реєстрації"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "Потрібно буде видалити ці дані пізніше?"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "Немає платежів у цьому депозиті"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "Немає платежів у цьому депозиті"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "Додаткові дані для включення"
+
+#: 
+msgid "Skipped"
+msgstr "Пропущено"
+
+#: 
+msgid "Unknown error"
+msgstr "Невідома помилка"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "депозит(и) без платежів"
+
+#: 
+msgid "All Event Types"
+msgstr "Усі типи подій"
+
+#: 
+msgid "All Types"
+msgstr "Усі типи"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "Ви впевнені, що хочете видалити цей запис про реєстрацію?"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "Категорії підрахунку відвідуваності"
+
+#: 
+msgid "Attendance Notes"
+msgstr "Примітки до відвідуваності"
+
+#: 
+msgid "Change Event"
+msgstr "Змінити подію"
+
+#: 
+msgid "Check In"
+msgstr "Зареєструвати"
+
+#: 
+msgid "Check In Person"
+msgstr "Зареєструвати особу"
+
+#: 
+msgid "Check In to Event"
+msgstr "Зареєструвати на подію"
+
+#: 
+msgid "Check-in"
+msgstr "Реєстрація"
+
+#: 
+msgid "Choose an event..."
+msgstr "Виберіть подію..."
+
+#: 
+msgid "Clear"
+msgstr "Очистити"
+
+#: 
+msgid "Create"
+msgstr "Створити"
+
+#: 
+msgid "Create New Event"
+msgstr "Створити нову подію"
+
+#: 
+msgid "Create an event type to get started."
+msgstr "Створіть тип події, щоб почати."
+
+#: 
+msgid "Current DB Version"
+msgstr "Поточна версія БД"
+
+#: 
+msgid "Current Software Version"
+msgstr "Поточна версія ПЗ"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "Оновлення бази даних завершено успішно. Перенаправлення на панель керування..."
+
+#: 
+msgid "Date & Time"
+msgstr "Дата та час"
+
+#: 
+msgid "Default Start Time"
+msgstr "Час початку за замовчуванням"
+
+#: 
+msgid "Delete Event"
+msgstr "Видалити подію"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "Видалення події також видалить усі підрахунки відвідуваності. Видалити цю подію?"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Видалення цього типу події НЕ видалить існуючі події. Ви впевнені?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "Видалення цієї події також видалить усі записи про відвідуваність. Ви впевнені?"
+
+#: 
+msgid "Edit Event"
+msgstr "Редагувати подію"
+
+#: 
+msgid "Editing Event"
+msgstr "Редагування події"
+
+#: 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr "Введіть категорії підрахунку через кому. «Усього» додається автоматично."
+
+#: 
+msgid "Enter event title..."
+msgstr "Введіть назву події..."
+
+#: 
+msgid "Event"
+msgstr "Подія"
+
+#: 
+msgid "Event Type Name"
+msgstr "Назва типу події"
+
+#: 
+msgid "Event Types"
+msgstr "Типи подій"
+
+#: 
+msgid "Filter Events"
+msgstr "Фільтрувати події"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "Фільтрувати за типом події"
+
+#: 
+msgid "Filter by Type"
+msgstr "Фільтрувати за типом"
+
+#: 
+msgid "Head Count"
+msgstr "Підрахунок присутніх"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "Список подій типу"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "Керування реєстраціями"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "Парафіяни, Гості, Діти"
+
+#: 
+msgid "Monthly Averages"
+msgstr "Середньомісячні показники"
+
+#: 
+msgid "Monthly on the"
+msgstr "Щомісяця в"
+
+#: 
+msgid "No event types defined yet."
+msgstr "Типи подій ще не визначені."
+
+#: 
+msgid "None (one-time event)"
+msgstr "Немає (одноразова подія)"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "Додатково — додайте нотатки проповіді або додаткові деталі події"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "Додатково — залиште порожнім, якщо не відстежуєте"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "Додаткові нотатки про відвідуваність..."
+
+#: 
+msgid "People Checked In"
+msgstr "Осіб зареєстровано"
+
+#: 
+msgid "People in Cart"
+msgstr "Особи в кошику"
+
+#: 
+msgid "Person Checking In"
+msgstr "Особа, що реєструється"
+
+#: 
+msgid "Recurrence"
+msgstr "Повторюваність"
+
+#: 
+msgid "Required fields"
+msgstr "Обов'язкові поля"
+
+#: 
+msgid "Save Event Type"
+msgstr "Зберегти тип події"
+
+#: 
+msgid "Search by name or email..."
+msgstr "Пошук за іменем або поштою..."
+
+#: 
+msgid "Search for adult..."
+msgstr "Пошук дорослого..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "Пошук керівника/відповідального..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "Виберіть подію для реєстрації"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "Виберіть дату та час початку й закінчення"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "Виберіть подію, щоб зареєструвати учасників із вашого кошика"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "Текст проповіді / події"
+
+#: 
+msgid "Unclassified"
+msgstr "Без класифікації"
+
+#: 
+msgid "Upgrade database now"
+msgstr "Оновити базу даних зараз"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "Ваша інсталяція ChurchCRM потребує оновлення бази даних для відповідності встановленій версії ПЗ. Ця операція застосує міграції схеми та даних. Будь ласка, переконайтеся, що у вас є свіжа резервна копія перед продовженням."
+
+#: 
+msgid "added to this event"
+msgstr "додано до цієї події"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "наприклад, Недільна школа, біблійні заняття..."
+
+#: 
+msgid "optional"
+msgstr "необов'язково"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ Виписати"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "Виявлено %d застарілих файлів (сиріт)"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d файлів були змінені або відсутні. Використовуйте примусову переінсталяцію, щоб відновити офіційні версії."
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d файлів не пройшли перевірку цілісності."
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d файлів будуть видалені назавжди."
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "На вашому сервері виявлено %d застарілих файлів."
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(оновити з GitHub)"
+
+#: 
+msgid "Access Denied"
+msgstr "Доступ заборонено"
+
+#: 
+msgid "Add event permission"
+msgstr "Дозвіл на додавання подій"
+
+#: 
+msgid "Add records permission"
+msgstr "Дозвіл на додавання записів"
+
+#: 
+msgid "Administrator privileges"
+msgstr "Привілеї адміністратора"
+
+#: 
+msgid "All Files Verified"
+msgstr "Усі файли перевірено"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "Усі системні файли відповідають очікуваним підписам."
+
+#: 
+msgid "Application Integrity"
+msgstr "Цілісність програми"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "Файли програми оновлено до останньої версії"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "Ви впевнені, що хочете видалити всі застарілі файли?"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "Назад до налагоджувальної інформації"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "Найкращі практики резервного копіювання"
+
+#: 
+msgid "Backup Status"
+msgstr "Статус резервного копіювання"
+
+#: 
+msgid "Backup Type"
+msgstr "Тип резервного копіювання"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "Резервне копіювання завершено! Натисніть нижче, щоб завантажити."
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "Резервне копіювання завершено успішно!"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "Резервну копію завантажено. Копію на сервері видалено."
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "Помилка резервного копіювання. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "Резервну копію створено та скопійовано на віддалений сервер"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "Триває резервне копіювання, зачекайте..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "Резервне копіювання на зовнішнє сховище"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "УВАГА: Відновлення з резервної копії повністю видалить існуючу базу даних і замінить її даними з копії."
+
+#: 
+msgid "CSV export permission"
+msgstr "Дозвіл на експорт CSV"
+
+#: 
+msgid "Close & Refresh"
+msgstr "Закрити та оновити"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "Підтвердити видалення"
+
+#: 
+msgid "Create a backup first"
+msgstr "Спочатку створіть резервну копію"
+
+#: 
+msgid "Create directory permission"
+msgstr "Дозвіл на створення директорій"
+
+#: 
+msgid "Database Only"
+msgstr "Тільки база даних"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "Базу даних успішно відновлено!"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "Схему бази даних оновлено автоматично"
+
+#: 
+msgid "Delete All Files"
+msgstr "Видалити всі файли"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "Видалити всі застарілі файли"
+
+#: 
+msgid "Delete records permission"
+msgstr "Дозвіл на видалення записів"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "Видалено %d файлів, %d не вдалося"
+
+#: 
+msgid "Deletion Results"
+msgstr "Результати видалення"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "Перетягніть файл резервної копії сюди"
+
+#: 
+msgid "Edit records permission"
+msgstr "Дозвіл на редагування записів"
+
+#: 
+msgid "Encryption"
+msgstr "Шифрування"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "Експортує структуру та дані бази даних. Менший розмір файлу."
+
+#: 
+msgid "File Integrity Check"
+msgstr "Перевірка цілісності файлів"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "Виявлено проблеми з цілісністю файлів"
+
+#: 
+msgid "File Path"
+msgstr "Шлях до файлу"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "Підписи файлів відповідають офіційному релізу."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "Файли можуть бути змінені або відсутні. Розгляньте можливість повторного розгортання з офіційного релізу."
+
+#: 
+msgid "Finance access"
+msgstr "Доступ до фінансів"
+
+#: 
+msgid "Force Re-install"
+msgstr "Примусова переінсталяція"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Примусову переінсталяцію розпочато. Будь ласка, зробіть резервну копію бази даних перед застосуванням."
+
+#: 
+msgid "Full Backup"
+msgstr "Повна резервна копія"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "Згенерувати та завантажити резервну копію"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "Перейти до панелі керування"
+
+#: 
+msgid "Group management access"
+msgstr "Доступ до керування групами"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "Якщо вам потрібен доступ до цієї функції, зверніться до адміністратора церкви."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "Якщо ви завантажите резервну копію з ChurchInfo або попередньої версії ChurchCRM, вона буде автоматично оновлена до поточної схеми бази даних."
+
+#: 
+msgid "Important Warning"
+msgstr "Важливе попередження"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "Включає базу даних та всі завантажені фотографії. Більший розмір файлу."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "Зберігайте одну копію у вогнетривкому сейфі на місці, а іншу — за межами приміщення."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "Остання версія на GitHub:"
+
+#: 
+msgid "Loading..."
+msgstr "Завантаження..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "Робіть резервну копію принаймні раз на тиждень, якщо у вас немає автоматичного копіювання."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "Керування застарілими файлами"
+
+#: 
+msgid "Menu options access"
+msgstr "Доступ до опцій меню"
+
+#: 
+msgid "Missing Files"
+msgstr "Відсутні файли"
+
+#: 
+msgid "Modified Files"
+msgstr "Змінені файли"
+
+#: 
+msgid "Multiple Copies"
+msgstr "Кілька копій"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "Застарілих файлів не знайдено"
+
+#: 
+msgid "Notes access"
+msgstr "Доступ до нотаток"
+
+#: 
+msgid "Orphaned Files"
+msgstr "Застарілі файли (сироти)"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "Керування застарілими файлами"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "Застарілі файли — це файли PHP або JavaScript, які існують на вашому сервері, але не є частиною офіційного релізу ChurchCRM. Ці файли можуть залишитися від попередніх версій і створювати загрозу безпеці, якщо вони містять застарілий код із вразливостями."
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "Застарілі файли попередніх версій очищено"
+
+#: 
+msgid "Permission Required"
+msgstr "Потрібен дозвіл"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "Будь ласка, перевірте файл резервної копії та спробуйте ще раз."
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "Будь ласка, виберіть файл резервної копії для відновлення"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "Завантажте знову та застосуйте поточну версію, щоб відновити всі файли до їхнього офіційного стану"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "Готово до створення резервної копії. Виберіть параметри вище та натисніть кнопку резервного копіювання."
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "Готово до відновлення. Виберіть файл резервної копії та натисніть «Відновити базу даних»."
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "Рекомендація: перевірте та видаліть ці файли до або після оновлення."
+
+#: 
+msgid "Redirecting in"
+msgstr "Перенаправлення через"
+
+#: 
+msgid "Refresh List"
+msgstr "Оновити список"
+
+#: 
+msgid "Regular Backups"
+msgstr "Регулярні резервні копії"
+
+#: 
+msgid "Required Permission"
+msgstr "Необхідний дозвіл"
+
+#: 
+msgid "Required permission"
+msgstr "Необхідний дозвіл"
+
+#: 
+msgid "Restore Status"
+msgstr "Статус відновлення"
+
+#: 
+msgid "Restore failed."
+msgstr "Відновлення не вдалося."
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "Відновлення не вдалося. Будь ласка, перевірте файл резервної копії та спробуйте ще раз."
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "Триває відновлення, зачекайте..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "Перегляньте файли нижче та видаліть їх для покращення безпеки."
+
+#: 
+msgid "Security Recommendation"
+msgstr "Рекомендація з безпеки"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "Попередження про безпеку: виявлено застарілі файли"
+
+#: 
+msgid "Select Backup File"
+msgstr "Вибрати файл резервної копії"
+
+#: 
+msgid "Supported formats:"
+msgstr "Підтримувані формати:"
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "Наступні файли існують на вашому сервері, але НЕ є частиною офіційного релізу ChurchCRM. Вони могли залишитися від попередніх версій і створювати загрозу безпеці."
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "Сторінка, яку ви намагалися відвідати, потребує спеціальних дозволів, яких у вашого облікового запису зараз немає."
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "Ці файли не є частиною офіційного релізу та можуть створювати загрозу безпеці."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "Ці файли, ймовірно, були частиною старої версії ChurchCRM і не були видалені під час попереднього оновлення. Їх видалення покращить безпеку вашої системи."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "Ці файли, ймовірно, були частиною старої версії ChurchCRM і не були видалені під час попереднього оновлення. Вони можуть містити застарілий код із вразливостями безпеки."
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "Цю дію неможливо скасувати. Переконайтеся, що у вас є резервна копія поточних даних, якщо це необхідно."
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "Для великих баз даних це може зайняти кілька хвилин."
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "Для великих баз даних це може зайняти кілька хвилин. Не закривайте цю сторінку."
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "Це дозволить повторно завантажити та застосувати поточну версію. Це може виправити пошкоджені або змінені файли. Продовжити?"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "Підсумок оновлення"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "Використовуйте зовнішні інструменти (GPG, 7-Zip) для шифрування резервних копій перед зберіганням за межами приміщення."
+
+#: 
+msgid "User authentication"
+msgstr "Автентифікація користувача"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "Користувач повинен мати дозвіл на додавання подій"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "Користувач повинен мати дозвіл на параметри меню"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "Що таке застарілі файли (сироти)?"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "У вас немає доступу до цієї сторінки"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "Ви вийдете із системи та будете перенаправлені на сторінку входу."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "Ваша інсталяція ChurchCRM чиста. Усі файли на сервері відповідають офіційному релізу."
+
+#: 
+msgid "or click to browse"
+msgstr "або натисніть, щоб вибрати"
+
+#: 
+msgid "seconds..."
+msgstr "секунд..."
+
+#: 
+msgid " Deposit #"
+msgstr " Внесок №"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d відсутня класифікація"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d відсутня стать"
+
+#: 
+msgid "%d missing role"
+msgstr "%d відсутня роль"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "Платіж — це фактично отримана пожертва. Вона буде додана до поточного депозиту."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "Обіцяний внесок (pledge) — це зобов'язання дати кошти. Він не прив'язаний до депозитного квитанції."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Додати ще одного члена сім'ї"
+
+#: 
+msgid "Add Pledge"
+msgstr "Додати обіцяний внесок"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Панель адміністратора"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Розширені операції"
+
+#: 
+msgid "All System Settings"
+msgstr "Усі налаштування системи"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "Сталася непередбачена помилка. Зверніться до адміністратора."
+
+#: 
+msgid "Apr"
+msgstr "Квіт"
+
+#: 
+msgid "Aug"
+msgstr "Серп"
+
+#: 
+msgid "Back to Deposits"
+msgstr "Назад до депозитів"
+
+#: 
+msgid "Back to Families"
+msgstr "Назад до сімей"
+
+#: 
+msgid "Birth & Family"
+msgstr "Народження та сім'я"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "Експорт CSV дозволено лише адміністраторам."
+
+#: 
+msgid "Cart"
+msgstr "Кошик"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "Змініть це в налаштуваннях системи."
+
+#: 
+msgid "Church Membership"
+msgstr "Членство в церкві"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "Назва церкви встановлена за замовчуванням"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "Класи та реєстрації"
+
+#: 
+msgid "Clean Up Files"
+msgstr "Очистити файли"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "Очистити всі дані та почати спочатку. Неможливо скасувати."
+
+#: 
+msgid "Close All Deposits"
+msgstr "Закрити всі депозити"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "Закриті депозити:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "Закриті порівняно з загальною кількістю"
+
+#: 
+msgid "Coming soon"
+msgstr "Незабаром"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "Виконайте ці основні завдання, щоб система працювала злагоджено:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "Виконуйте їх у будь-якому порядку. Використовуйте демо-дані для ознайомлення."
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "Виконайте ці завдання для точної податкової звітності в кінці року."
+
+#: 
+msgid "Configuration:"
+msgstr "Конфігурація:"
+
+#: 
+msgid "Configure Email"
+msgstr "Налаштувати Email"
+
+#: 
+msgid "Contact Information"
+msgstr "Контактна інформація"
+
+#: 
+msgid "Create Deposit"
+msgstr "Створити депозит"
+
+#: 
+msgid "Create First Deposit"
+msgstr "Створити перший депозит"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "Спочатку створіть або відкрийте депозит"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "Створіть або виберіть депозит, щоб почати."
+
+#: 
+msgid "Current Deposit"
+msgstr "Поточний депозит"
+
+#: 
+msgid "Current fiscal year"
+msgstr "Поточний фінансовий рік"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Настроюваний звіт із фільтрацією за датою, фондом, сім'єю та способом оплати."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Налаштуйте текст для податкових виписок."
+
+#: 
+msgid "Data Quality:"
+msgstr "Якість даних:"
+
+#: 
+msgid "Database:"
+msgstr "База даних:"
+
+#: 
+msgid "Day"
+msgstr "День"
+
+#: 
+msgid "Dec"
+msgstr "Груд"
+
+#: 
+msgid "Demo Data"
+msgstr "Демо-дані"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "Навігація депозитами"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "Статистика депозитів"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "Детальна розшифровка однієї депозитної квитанції."
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "Детальна розшифровка обіцянок та платежів по сім'ях."
+
+#: 
+msgid "Documentation"
+msgstr "Документація"
+
+#: 
+msgid "Donor Families"
+msgstr "Сім'ї-донори"
+
+#: 
+msgid "Edit Deposit"
+msgstr "Редагувати депозит"
+
+#: 
+msgid "Edit Family"
+msgstr "Редагувати сім'ю"
+
+#: 
+msgid "Edit Payment"
+msgstr "Редагувати платіж"
+
+#: 
+msgid "Edit Person"
+msgstr "Редагувати особу"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "Переконайтеся, що всі депозити за податковий рік закриті."
+
+#: 
+msgid "Export Options"
+msgstr "Параметри експорту"
+
+#: 
+msgid "F"
+msgstr "Ж"
+
+#: 
+msgid "Failed to save settings"
+msgstr "Не вдалося зберегти налаштування"
+
+#: 
+msgid "Family Navigation"
+msgstr "Навігація сім'ями"
+
+#: 
+msgid "Feb"
+msgstr "Лют"
+
+#: 
+msgid "File Integrity:"
+msgstr "Цілісність файлів:"
+
+#: 
+msgid "Filtering"
+msgstr "Фільтрація"
+
+#: 
+msgid "Finance"
+msgstr "Фінанси"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "Фінансова панель"
+
+#: 
+msgid "Force Import"
+msgstr "Примусовий імпорт"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "Примусовий імпорт може призвести до дублювання даних."
+
+#: 
+msgid "Fund Allocation"
+msgstr "Розподіл по фондах"
+
+#: 
+msgid "Generate"
+msgstr "Згенерувати"
+
+#: 
+msgid "Generate Reports"
+msgstr "Генерувати звіти"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Генерувати податкові виписки"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "Створюйте щорічні виписки про пожертви для донорів."
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "Створюйте податкові виписки. Можна друкувати або надсилати поштою."
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "Генеруйте детальні звіти за депозитами або датами."
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "Генеруйте нагадування для сімей із заборгованістю за обіцянками."
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "Звіти для податкових виписок, відстеження обіцянок та аналізу."
+
+#: 
+msgid "Giving funds and categories"
+msgstr "Фонди пожертв та категорії"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS не налаштовано"
+
+#: 
+msgid "ID"
+msgstr "ID"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "Визначте членів, які не робили пожертв у вказаний період."
+
+#: 
+msgid "Import failed"
+msgstr "Імпорт не вдався"
+
+#: 
+msgid "Import from CSV files"
+msgstr "Імпортувати з CSV-файлів"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "Імпортуйте зразки даних для ознайомлення з системою."
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "Встановіть сертифікат TLS/SSL для кращої безпеки"
+
+#: 
+msgid "Jan"
+msgstr "Січ"
+
+#: 
+msgid "Jr., Sr."
+msgstr "мол., ст."
+
+#: 
+msgid "Jul"
+msgstr "Лип"
+
+#: 
+msgid "Jun"
+msgstr "Черв"
+
+#: 
+msgid "Latest Note"
+msgstr "Остання нотатка"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "Давайте налаштуємо вашу систему до роботи"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "Список членів, які мають право голосу."
+
+#: 
+msgid "Location"
+msgstr "Місцезнаходження"
+
+#: 
+msgid "M"
+msgstr "Ч"
+
+#: 
+msgid "Manage Funds"
+msgstr "Керування фондами"
+
+#: 
+msgid "Manage Users"
+msgstr "Керування користувачами"
+
+#: 
+msgid "Mar"
+msgstr "Бер"
+
+#: 
+msgid "Membership Reports"
+msgstr "Звіти про членство"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "Відсутні секретні ключі"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "Більшість звітів можна експортувати в PDF або CSV."
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "п., пані, д-р"
+
+#: 
+msgid "Name & Identity"
+msgstr "Ім'я та ідентифікація"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "Буде створено новий депозит"
+
+#: 
+msgid "New Payment"
+msgstr "Новий платіж"
+
+#: 
+msgid "New Pledge"
+msgstr "Новий обіцяний внесок"
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "Наступні 7 днів та минулі 7 днів"
+
+#: 
+msgid "No Active Deposit"
+msgstr "Немає активного депозиту"
+
+#: 
+msgid "No active funds configured."
+msgstr "Не налаштовано жодного активного фонду."
+
+#: 
+msgid "No deposits found."
+msgstr "Депозитів не знайдено."
+
+#: 
+msgid "No format"
+msgstr "Без формату"
+
+#: 
+msgid "Nov"
+msgstr "Лист"
+
+#: 
+msgid "Oct"
+msgstr "Жовт"
+
+#: 
+msgid "Open"
+msgstr "Відкрити"
+
+#: 
+msgid "Open Deposits:"
+msgstr "Відкриті депозити:"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "Організація, часовий пояс, email"
+
+#: 
+msgid "Organizational structure"
+msgstr "Організаційна структура"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "Застарілі файли:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
+msgid "Payment"
+msgstr "Платіж"
+
+#: 
+msgid "Pledge Reports"
+msgstr "Звіти за обіцянками"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "Друк або надсилання річних виписок усім донорам."
+
+#: 
+msgid "Quick Actions"
+msgstr "Швидкі дії"
+
+#: 
+msgid "Quick Start"
+msgstr "Швидкий старт"
+
+#: 
+msgid "Recent Deposits"
+msgstr "Останні депозити"
+
+#: 
+msgid "Recording a Payment"
+msgstr "Реєстрація платежу"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "Реєстрація обіцяного внеску"
+
+#: 
+msgid "Report Tips"
+msgstr "Поради щодо звітів"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "Звіти про право голосу та управління."
+
+#: 
+msgid "Reset"
+msgstr "Скинути"
+
+#: 
+msgid "Restore"
+msgstr "Відновлення"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "Відновити з файлу. Стире існуючі дані."
+
+#: 
+msgid "Review Donation Funds"
+msgstr "Перевірити фонди пожертв"
+
+#: 
+msgid "SMTP server settings are not configured"
+msgstr "Параметри SMTP-сервера не налаштовані"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "Зберегти та додати нову сім'ю"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Секретні ключі відсутні у Config.php"
+
+#: 
+msgid "Sep"
+msgstr "Вер"
+
+#: 
+msgid "Server error"
+msgstr "Помилка сервера"
+
+#: 
+msgid "Settings"
+msgstr "Налаштування"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "Налаштування успішно збережено"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "Завдання налаштування:"
+
+#: 
+msgid "Social Media"
+msgstr "Соціальні мережі"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "Деякі вимоги до програми не виконані"
+
+#: 
+msgid "State (Other)"
+msgstr "Область/Регіон"
+
+#: 
+msgid "Status:"
+msgstr "Статус:"
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "Підсумок обіцянок та платежів по фондах."
+
+#: 
+msgid "System Configuration:"
+msgstr "Конфігурація системи:"
+
+#: 
+msgid "System Health"
+msgstr "Стан системи"
+
+#: 
+msgid "System Info"
+msgstr "Інформація про систему"
+
+#: 
+msgid "Tax & Giving Reports"
+msgstr "Податкові звіти та звіти про пожертви"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "Текст податкового звіту"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "Податкові виписки (Звіт про пожертви)"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "Контрольний список податкової звітності"
+
+#: 
+msgid "Today"
+msgstr "Сьогодні"
+
+#: 
+msgid "Total"
+msgstr "Усього"
+
+#: 
+msgid "Total Amount"
+msgstr "Загальна сума"
+
+#: 
+msgid "Total Deposits:"
+msgstr "Усього депозитів:"
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "Відстежуйте обіцянки для бюджетування."
+
+#: 
+msgid "Type:"
+msgstr "Тип:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "Невиконані вимоги"
+
+#: 
+msgid "Update Church Name"
+msgstr "Оновити назву церкви"
+
+#: 
+msgid "Upgrade"
+msgstr "Оновити"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "Використовуйте фільтри для генерації звітів."
+
+#: 
+msgid "User accounts and roles"
+msgstr "Облікові записи та ролі"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "Користувач має бути адміном або мати доступ до фінансів"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Перевірте дані церкви у податкових виписках."
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "Перевірте назви фондів для виписок."
+
+#: 
+msgid "Version:"
+msgstr "Версія:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "Ласкаво просимо до ChurchCRM"
+
+#: 
+msgid "YTD Payments"
+msgstr "Платежі з поч. року"
+
+#: 
+msgid "YTD Pledges"
+msgstr "Обіцянки з поч. року"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "Ви можете додати членів сім'ї зараз або пізніше."
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "Ваш фінансовий рік починається у місяці"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Поштовий індекс"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "Розширення ZipArchive необхідне для оновлень"
+
+#: 
+msgid "active"
+msgstr "активний"
+
+#: 
+msgid "ago"
+msgstr "тому"
+
+#: 
+msgid "day"
+msgstr "день"
+
+#: 
+msgid "days"
+msgstr "днів"
+
+#: 
+msgid "found"
+msgstr "знайдено"
+
+#: 
+msgid "in"
+msgstr "в"
+
+#: 
+msgid "issues"
+msgstr "проблеми"
+
+#: 
+msgid "open"
+msgstr "відкрито"
+
+#: 
+msgid "years"
+msgstr "років"
+
+#: 
+msgid "yes"
+msgstr "так"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(Введіть область/регіон для країн без попередньо визначених штатів)"
+
+#: 
+msgid "Available"
+msgstr "Доступно"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "Конфігурація базової URL-адреси недійсна. Перевірте Config.php."
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "Базову URL-адресу не налаштовано в Config.php"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "Підтримувані мови ChurchCRM"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "Підключіться до сервера через SSH, FTP або панель керування"
+
+#: 
+msgid "Contact"
+msgstr "Контакт"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "Критична помилка конфігурації"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "Поточне значення $URL[0]:"
+
+#: 
+msgid "Custom port:"
+msgstr "Власний порт:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "Закінчується на <strong>косу риску</strong> (/)"
+
+#: 
+msgid "Error:"
+msgstr "Помилка:"
+
+#: 
+msgid "Find the line:"
+msgstr "Знайдіть рядок:"
+
+#: 
+msgid "Group Memberships"
+msgstr "Членство в групах"
+
+#: 
+msgid "How to Fix:"
+msgstr "Як виправити:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "Приєднуйтеся до спільноти ChurchCRM!"
+
+#: 
+msgid "Language"
+msgstr "Мова"
+
+#: 
+msgid "Local development:"
+msgstr "Локальна розробка:"
+
+#: 
+msgid "Locale Support"
+msgstr "Підтримка локалізації"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "Місцезнаходження та контакти"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "Перейдіть до каталогу інсталяції ChurchCRM"
+
+#: 
+msgid "New to"
+msgstr "Новий у"
+
+#: 
+msgid "No locales configured"
+msgstr "Мови не налаштовані"
+
+#: 
+msgid "Not Available"
+msgstr "Недоступно"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "Відкрийте цей файл у текстовому редакторі:"
+
+#: 
+msgid "Register Now"
+msgstr "Зареєструватися зараз"
+
+#: 
+msgid "Register Your Church"
+msgstr "Зареєструвати вашу церкву"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "Збережіть файл та оновіть цю сторінку"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "Налаштування введення адрес для осіб без сім'ї."
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "Починається з <strong>http://</strong> або <strong>https://</strong>"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "Встановлення у підкаталог:"
+
+#: 
+msgid "System Locale Support"
+msgstr "Підтримка системних локалей"
+
+#: 
+msgid "System Support"
+msgstr "Системна підтримка"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URL не містить дійсного хостнейму"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "Хостнейм URL недійсний"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URL має невірний формат"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URL має закінчуватися косою рискою (/)"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URL має починатися з http:// або https://"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "Не вдалося виявити системні локалі"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "Не вдалося визначити доступні мови"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "Не вдалося завантажити інформацію про мову"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "Не вдалося завантажити список регіонів."
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "Оновіть її на дійсну URL-адресу, яка:"
+
+#: 
+msgid "Valid Examples:"
+msgstr "Дійсні приклади:"
+
+#: 
+msgid "View Logs"
+msgstr "Переглянути журнали"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "Керуйте журналами для налагодження."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "Ви повинні ввести прізвище."
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "Ваша конфіденційність важлива для нас."
+
+#: 
+msgid "Additional Information"
+msgstr "Додаткова інформація"
+
+#: 
+msgid "All information is correct"
+msgstr "Уся інформація вірна"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "Призначити можливості служіння"
+
+#: 
+msgid "Assign Property"
+msgstr "Призначити властивість"
+
+#: 
+msgid "Choose a property..."
+msgstr "Виберіть властивість..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "Виберіть можливості..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "Підтвердити інформацію про сім'ю"
+
+#: 
+msgid "Confirm family information"
+msgstr "Підтвердити інформацію про сім'ю"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "Контакти та особиста інформація"
+
+#: 
+msgid "Copied!"
+msgstr "Скопійовано!"
+
+#: 
+msgid "Edit Role"
+msgstr "Редагувати роль"
+
+#: 
+msgid "Edited"
+msgstr "Відредаговано"
+
+#: 
+msgid "Email PDF"
+msgstr "Надіслати PDF поштою"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "Не вдалося скопіювати URL"
+
+#: 
+msgid "ID:"
+msgstr "ID:"
+
+#: 
+msgid "Newsletter"
+msgstr "Інформаційний бюлетень"
+
+#: 
+msgid "No assigned family"
+msgstr "Сім'я не призначена"
+
+#: 
+msgid "Open in New Tab"
+msgstr "Відкрити в новій вкладці"
+
+#: 
+msgid "Personal"
+msgstr "Особисте"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "Будь ласка, підтвердьте інформацію про сім'ю:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "Будь ласка, оновіть наші записи з виправленнями"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "Надайте будь-які виправлення або додаткову інформацію..."
+
+#: 
+msgid "Remove Property"
+msgstr "Видалити властивість"
+
+#: 
+msgid "Select Opportunities"
+msgstr "Вибрати можливості служіння"
+
+#: 
+msgid "Select Property"
+msgstr "Вибрати властивість"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Поділіться цим URL для перевірки інформації"
+
+#: 
+msgid "Submit Verification"
+msgstr "Надіслати підтвердження"
+
+#: 
+msgid "Thank You!"
+msgstr "Дякуємо!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "Переклад неповний"
+
+#: 
+msgid "Visit Our Website"
+msgstr "Відвідайте наш сайт"
+
+#: 
+msgid "Volunteer"
+msgstr "Волонтер/Служитель"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "Помилка при обробці підтвердження."
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "Ваш запит на підтвердження отримано."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "Сталася помилка. Зверніться до системного адміністратора."
+
+#: 
+msgid "Backup failed"
+msgstr "Резервне копіювання не вдалося"
+
+#: 
+msgid "Database reset failed"
+msgstr "Скидання бази даних не вдалося"
+
+#: 
+msgid "Database restore failed"
+msgstr "Відновлення бази даних не вдалося"
+
+#: 
+msgid "Demo data import failed"
+msgstr "Імпорт демо-даних не вдався"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "Імпорт демо-даних доступний лише на нових інсталяціях."
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "Демо-дані успішно завантажено"
+
+#: 
+msgid "Download failed"
+msgstr "Завантаження не вдалося"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "Не вдалося застосувати оновлення"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "Не вдалося видалити застарілі файли"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "Не вдалося завантажити останній реліз"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "Не вдалося оновити інформацію про оновлення"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "Не вдалося завантажити фото сім'ї"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "Не вдалося завантажити фото особи"
+
+#: 
+msgid "Remote backup failed"
+msgstr "Віддалене резервне копіювання не вдалося"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "Backups WebDAV не налаштовані."
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA увімкнено"
+
+#: 
+msgid "Active Users"
+msgstr "Активні користувачі"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "Експорт ChMeetings"
+
+#: 
+msgid "Delete User"
+msgstr "Видалити користувача"
+
+#: 
+msgid "Disable 2FA"
+msgstr "Вимкнути 2FA"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "Експорт даних у форматі ChMeetings."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "Експортувати в ChMeetings CSV"
+
+#: 
+msgid "Exporting..."
+msgstr "Експортування..."
+
+#: 
+msgid "Family Listing"
+msgstr "Список сімей"
+
+#: 
+msgid "Invalid request data"
+msgstr "Недійсні дані запиту"
+
+#: 
+msgid "Invalid status"
+msgstr "Недійсний статус"
+
+#: 
+msgid "Locked Users"
+msgstr "Заблоковані користувачі"
+
+#: 
+msgid "Person Listing"
+msgstr "Список осіб"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "Особу(и) видалено з кошика"
+
+#: 
+msgid "Quick Settings"
+msgstr "Швидкі налаштування"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "Скинути невдалі спроби входу"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "Скинути пароль через email"
+
+#: 
+msgid "Set Active"
+msgstr "Зробити активним"
+
+#: 
+msgid "Set Inactive"
+msgstr "Зробити неактивним"
+
+#: 
+msgid "Show"
+msgstr "Показати"
+
+#: 
+msgid "Showing"
+msgstr "Показано"
+
+#: 
+msgid "Total Users"
+msgstr "Усього користувачів"
+
+#: 
+msgid "User Management"
+msgstr "Керування користувачами"
+
+#: 
+msgid "View Details"
+msgstr "Переглянути деталі"
+
+#: 
+msgid "entries"
+msgstr "записів"
+
+#: 
+msgid "of"
+msgstr "з"
+
+#: 
+msgid "total"
+msgstr "разом"
+
+#: 
+msgid "Code incomplete"
+msgstr "Код неповний"
+
+#: 
+msgid "Code is invalid"
+msgstr "Код недійсний"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "Ключ шифрування для 2FA"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "Двофакторна автентифікація"
+
+#: 
+msgid "Validation pending"
+msgstr "Очікується підтвердження"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "має бути налаштовано з ключем шифрування"
+
+#: 
+msgid "A "
+msgstr "A "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "Додавання, видалення та зміна порядку відбуваються негайно. Зміни назви та опису потрібно зберігати кнопкою."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "Ви впевнені, що хочете видалити"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Кнопки стрілок та видалення діють негайно."
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "Видаливши це поле, ви назавжди втратите всі дані сімей, пов'язані з ним!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "Видаливши це поле, ви назавжди втратите всі дані осіб, пов'язані з ним!"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "Зміни не збережено! Виправте помилки та спробуйте знову!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "Підтвердити видалення властивості"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "Підтвердити видалення можливості служіння"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "Підтвердження видалення"
+
+#: 
+msgid "Existing"
+msgstr "Існуючі"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "Існуючі спеціальні поля сімей"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "Існуючі спеціальні поля осіб"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "Існуючі можливості служіння"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "Поле успішно видалено"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Недійсний токен CSRF"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "Недійсні поля або вибір."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Елемент успішно видалено"
+
+#: 
+msgid "Move down"
+msgstr "Перемістити вниз"
+
+#: 
+msgid "Move up"
+msgstr "Перемістити вгору"
+
+#: 
+msgid "Opportunity"
+msgstr "Можливість"
+
+#: 
+msgid "Order"
+msgstr "Замовлення"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "PDF успішно надіслано %s сім'ям."
+
+#: 
+msgid "Percentage"
+msgstr "Відсоток"
+
+#: 
+msgid "Person Properties"
+msgstr "Властивості особи"
+
+#: 
+msgid "Property Type"
+msgstr "Тип властивості"
+
+#: 
+msgid "Property to Delete"
+msgstr "Властивість для видалення"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "На цю можливість призначені люди. Видалення скасує їх призначення:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "Це видалить властивість у всіх людей, кому вона призначена."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Служіння / Волонтерство"
+
+#: 
+msgid "Warning:"
+msgstr "Попередження:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "Так, видалити цю можливість"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "Запити, для яких потрібні фінансові дозволи"
+
+#: 
+msgid "Fund(s)"
+msgstr "Фонд(и)"
+
+#: 
+msgid "Password reset for"
+msgstr "Скидання пароля для"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Іспанська - Аргентина"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Іспанська - Колумбія"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Іспанська - Сальвадор"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Іспанська - Мексика"
 
