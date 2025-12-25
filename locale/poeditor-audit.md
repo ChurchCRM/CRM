@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥75%):** 28
-**Good Locales (51-74%):** 3
+**Complete Locales (≥75%):** 30
+**Good Locales (51-74%):** 1
 **Needs Work (<51%):** 14
 **WIP Candidates (>5%, not yet added):** 6
 
@@ -28,22 +28,22 @@
 | `es-ar` | Spanish (AR) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `es-mx` | Spanish (MX) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `es-sv` | Spanish (SV) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `vi` | Vietnamese | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 2731 | 99.93% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 2726 | 99.74% | 🟢 Complete | ✅ Yes |
 | `pl` | Polish | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 2215 | 81.05% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 2277 | 83.32% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 1887 | 69.05% | 🟡 Good | ✅ Yes |
-| `zh-cn` | Chinese | 1869 | 68.39% | 🟡 Good | ✅ Yes |
-| `sv` | Swedish | 1855 | 67.87% | 🟡 Good | ✅ Yes |
-| `sq` | Albanian | 842 | 30.81% | 🟠 Needs Work | ✅ Yes |
+| `sq` | Albanian | 1102 | 40.32% | 🟠 Needs Work | ✅ Yes |
+| `hu` | Hungarian | 1073 | 39.26% | 🟠 Needs Work | ✅ Yes |
 | `nb` | Norwegian Bokmål | 792 | 28.98% | 🟠 Needs Work | ✅ Yes |
-| `hu` | Hungarian | 675 | 24.7% | 🟠 Needs Work | ✅ Yes |
 | `te` | Telugu | 331 | 12.11% | 🟠 Needs Work | ✅ Yes |
 | `ja` | Japanese | 196 | 7.17% | 🟠 Needs Work | ✅ Yes |
 | `fi` | Finnish | 143 | 5.23% | 🟠 Needs Work | ✅ Yes |
@@ -64,8 +64,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 28 locales ready for production
-- **🟡 Good (51-74%):** 3 locales with solid translation coverage
+- **🟢 Complete (≥75%):** 30 locales ready for production
+- **🟡 Good (51-74%):** 1 locales with solid translation coverage
 - **🟠 Needs Work (<51%):** 8 locales requiring translator attention
 - **🔴 Incomplete:** 2 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
