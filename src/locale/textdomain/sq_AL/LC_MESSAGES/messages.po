@@ -84,6 +84,10 @@ msgid "CSV Export"
 msgstr "CSV Export"
 
 #: 
+msgid "Field Selection"
+msgstr "Zgjedhja e fushës"
+
+#: 
 msgid "Last Name"
 msgstr "Mbiemër"
 
@@ -115,10 +119,22 @@ msgstr "Puna / tjera Email"
 msgid "Membership Date"
 msgstr "Anëtarësia Data"
 
+#: 
+msgid "Age / Years Married"
+msgstr "Mosha / Vite martesë"
+
 #. Context: queryparameters_qrp
 #: 
 msgid "Family Role"
 msgstr "Roli i familjes"
+
+#: 
+msgid "Depends whether using person or family output method"
+msgstr "Varet nëse përdoret metoda e nxjerrjes për person apo familje"
+
+#: 
+msgid "Custom Field Selection"
+msgstr "Zgjedhja e fushave të personalizuara"
 
 #: 
 msgid "Custom Person Fields"
@@ -465,6 +481,10 @@ msgid "No"
 msgstr "Jo"
 
 #: 
+msgid "Developer Chat"
+msgstr "Bisedë me zhvilluesit"
+
+#: 
 msgid "Event Checkin"
 msgstr "Checkin Event"
 
@@ -525,6 +545,10 @@ msgstr "Të kthyer të gjitha"
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Depozita Numri Shqip"
+
+#: 
+msgid "Deposit Details"
+msgstr "Detajet e depozitës"
 
 #: 
 #, fuzzy
@@ -621,6 +645,14 @@ msgid "Number of Columns"
 msgstr "Numri i Columns"
 
 #: 
+msgid "Paper Size"
+msgstr "Madhësia e letrës"
+
+#: 
+msgid "Font Size"
+msgstr "Madhësia e shkrimit"
+
+#: 
 msgid "Title page"
 msgstr "Faqja Titulli"
 
@@ -673,12 +705,20 @@ msgid "Final Price"
 msgstr "Final Çmimi"
 
 #: 
+msgid "Replicate item"
+msgstr "Kopjo artikullin"
+
+#: 
 msgid "Go"
 msgstr "Shkoj"
 
 #: 
 msgid "Description"
 msgstr "Përshkri"
+
+#: 
+msgid "Picture URL"
+msgstr "URL e fotos"
 
 #: 
 msgid "Donation Fund Editor"
@@ -725,8 +765,20 @@ msgid "Save Name"
 msgstr "Ruaj Emri"
 
 #: 
+msgid "Recurrence Pattern"
+msgstr "Modeli i përsëritjes"
+
+#: 
 msgid "Attendance Counts"
 msgstr "Pikat Pjesëmarrja"
+
+#: 
+msgid "Add counter"
+msgstr "Shto numërues"
+
+#: 
+msgid "Return to Event Types"
+msgstr "Kthehu te llojet e ngjarjeve"
 
 #: 
 msgid "Family"
@@ -771,8 +823,24 @@ msgid "Event Title"
 msgstr "Titulli i evenimentit"
 
 #: 
+msgid "Create Event"
+msgstr "Krijo ngjarje"
+
+#: 
+msgid "Create a new Event"
+msgstr "Krijo një ngjarje të re"
+
+#: 
 msgid " errors. Please see below"
 msgstr " gabime. Ju lutemi shihni më poshtë"
+
+#: 
+msgid "Select your event type"
+msgstr "Zgjidhni llojin e ngjarjes"
+
+#: 
+msgid "You must pick an event type."
+msgstr "Duhet të zgjidhni një lloj ngjarjeje."
 
 #: 
 msgid "No Attendance counts recorded"
@@ -781,6 +849,10 @@ msgstr "Nuk ka akuza Pjesëmarrja e regjistruara"
 #: 
 msgid "Event Status"
 msgstr "Statusi Event"
+
+#: 
+msgid "Return to Events"
+msgstr "Kthehu te ngjarjet"
 
 #: 
 msgid "Sundays"
@@ -875,6 +947,18 @@ msgid "Email is Not Valid"
 msgstr "Email nuk është i vlefshëm"
 
 #: 
+msgid "Family Info"
+msgstr "Info e familjes"
+
+#: 
+msgid "Contact Info"
+msgstr "Info e kontaktit"
+
+#: 
+msgid "Envelope Info"
+msgstr "Info e zarfit"
+
+#: 
 msgid "Custom Fields"
 msgstr "Fushat Custom"
 
@@ -963,6 +1047,10 @@ msgid "Unk"
 msgstr "Unk"
 
 #: 
+msgid "Created"
+msgstr "Krijuar"
+
+#: 
 msgid "Envelope Number"
 msgstr "Zarf Numri"
 
@@ -973,6 +1061,10 @@ msgstr "Ngarko Foto"
 #: 
 msgid "Delete Photo"
 msgstr "Fshij Foto"
+
+#: 
+msgid "Timeline"
+msgstr "Linja kohore"
 
 #: 
 msgid "Pledges and Payments"
@@ -1015,6 +1107,10 @@ msgid "Show Payments"
 msgstr "Shfaq Pagesat"
 
 #: 
+msgid "Since"
+msgstr "Që nga"
+
+#: 
 msgid "Update"
 msgstr "Përmirso"
 
@@ -1043,8 +1139,24 @@ msgid "Comment"
 msgstr "Komento"
 
 #: 
+msgid "Close"
+msgstr "Mbyll"
+
+#: 
 msgid "Confirm Delete"
 msgstr "Konfirmo Fshij"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "Jeni duke fshirë foton e profilit, kjo procedurë është e pakthyeshme."
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "Dëshironi të vazhdoni?"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "Jeni gati të dërgoni me email kopjen e informacionit familjar në email-et e mëposhtme"
 
 #: 
 msgid "Financial Reports"
@@ -1062,6 +1174,10 @@ msgstr "Zgjidh Lloji Raporti"
 #: 
 msgid "Pledge Summary"
 msgstr "Zotimi Përmbledhje"
+
+#: 
+msgid "Pledge Family Summary"
+msgstr "Përmbledhja e zotimeve familjare"
 
 #: 
 msgid "Pledge Reminders"
@@ -1090,6 +1206,10 @@ msgstr "Avancuar Raporti Depozita"
 #: 
 msgid "Next"
 msgstr "Tjetra"
+
+#: 
+msgid "Filter by Family"
+msgstr "Filtro sipas familjes"
 
 #: 
 #, fuzzy
@@ -1232,6 +1352,22 @@ msgstr "Krijo Raport"
 #: 
 msgid "Deposit Listing"
 msgstr "Depozita Listing"
+
+#: 
+msgid "Deposits"
+msgstr "Depozitat"
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "Fshi rreshtat e përzgjedhur"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "Eksporto rreshtat e përzgjedhur (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "Eksporto rreshtat e përzgjedhur (CSV)"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1383,6 +1519,10 @@ msgid "Group Editor"
 msgstr "Grupi Editor"
 
 #: 
+msgid "Group Settings"
+msgstr "Cilësimet e grupit"
+
+#: 
 msgid "Type of Group"
 msgstr "Lloji i Grupit"
 
@@ -1403,8 +1543,20 @@ msgid "Select a group"
 msgstr "Zgjidhni një grup"
 
 #: 
+msgid "Group Specific Properties"
+msgstr "Karakteristikat specifike të grupit"
+
+#: 
+msgid "Enabled"
+msgstr "Aktivizuar"
+
+#: 
 msgid "Edit Group-Specific Properties Form"
 msgstr "Edit Group-specifik Prona Form"
+
+#: 
+msgid "Disabled"
+msgstr "Çaktivizuar"
 
 #: 
 msgid "Group Roles"
@@ -1464,6 +1616,10 @@ msgid "Select the group you would like to report"
 msgstr "Zgjidhni grupin që ju do të donte për të raportuar"
 
 #: 
+msgid "No Role Selected"
+msgstr "Asnjë rol i përzgjedhur"
+
+#: 
 msgid "Report Model"
 msgstr "Raporti Model"
 
@@ -1512,6 +1668,10 @@ msgid "Delete this Group"
 msgstr "Fshije këtë Group"
 
 #: 
+msgid "Confirm Delete Group"
+msgstr "Konfirmo fshirjen e grupit"
+
+#: 
 msgid "Please confirm deletion of this group record"
 msgstr "Ju lutem konfirmoni fshirjen e këtij rekord grupit"
 
@@ -1530,6 +1690,10 @@ msgstr "Hartë këtë grup"
 #: 
 msgid "Email Group"
 msgstr "Email Group"
+
+#: 
+msgid "Total Members"
+msgstr "Gjithsej anëtarë"
 
 #: 
 #, fuzzy
@@ -1553,6 +1717,18 @@ msgstr "Prona të caktuar"
 #, fuzzy
 msgid "Group Members"
 msgstr "Anëtarët e grupit"
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "Hiq anëtarët e përzgjedhur nga grupi"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "Shto anëtarët e përzgjedhur në shportë"
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "Shto anëtarët e përzgjedhur në grup"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -1585,6 +1761,10 @@ msgstr "Shumë hyrje të dështuara: llogaria juaj ka qenë e mbyllur. Ju lutem 
 #: 
 msgid "Please Login"
 msgstr "Ju lutem Identifikohu"
+
+#: 
+msgid "Email/Username"
+msgstr "Email/Emri i përdoruesit"
 
 #: 
 msgid "Password"
@@ -1631,6 +1811,18 @@ msgid "Current Role"
 msgstr "Roli aktual"
 
 #: 
+msgid "All People"
+msgstr "Të gjithë njerëzit"
+
+#: 
+msgid "Email All"
+msgstr "Dërgo email të gjithëve"
+
+#: 
+msgid "Family Roles"
+msgstr "Rolet familjare"
+
+#: 
 msgid "Update All Family Coordinates"
 msgstr "Update të gjitha koordinatat Family"
 
@@ -1643,8 +1835,20 @@ msgid "Families"
 msgstr "Familjet"
 
 #: 
+msgid "See all Families"
+msgstr "Shih të gjitha familjet"
+
+#: 
 msgid "People"
 msgstr "Njerëz"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "Fëmijët e shkollës së diel"
+
+#: 
+msgid "More info"
+msgstr "Më shumë info"
 
 #: 
 msgid "Reports on groups and roles"
@@ -1659,8 +1863,32 @@ msgid "Generate letters and mailing labels."
 msgstr "Generate letra dhe etiketat e postimeve."
 
 #: 
+msgid "Count"
+msgstr "Numri"
+
+#: 
+msgid "Boys"
+msgstr "Djem"
+
+#: 
+msgid "Girls"
+msgstr "Vajza"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "Klasat e shkollës së diel"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "Ndjekja e depozitave"
+
+#: 
 msgid "Family Name"
 msgstr "Emri Family"
+
+#: 
+msgid "Updated"
+msgstr "Përditësuar"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -1779,6 +2007,14 @@ msgid "Work Email is Not Valid"
 msgstr "Puna Email nuk është i vlefshëm"
 
 #: 
+msgid "Birth Month"
+msgstr "Muaji i lindjes"
+
+#: 
+msgid "Birth Day"
+msgstr "Dita e lindjes"
+
+#: 
 msgid "Birth Year"
 msgstr "Viti i lindjes"
 
@@ -1793,6 +2029,10 @@ msgstr "Krijo një familje të re (duke përdorur emrin e kaluar)"
 #: 
 msgid "Friend Date"
 msgstr "Mik Data"
+
+#: 
+msgid "Person Profile"
+msgstr "Profili i personit"
 
 #: 
 msgid "Not assigned"
@@ -1815,8 +2055,24 @@ msgid "Edit User"
 msgstr "Edit User"
 
 #: 
+msgid "List Members"
+msgstr "Listo anëtarët"
+
+#: 
 msgid "No group assignments."
 msgstr "Asnjë grup detyra."
+
+#: 
+msgid "Change Role"
+msgstr "Ndrysho rolin"
+
+#: 
+msgid "Update Properties"
+msgstr "Përditëso karakteristikat"
+
+#: 
+msgid "Assign New Group"
+msgstr "Cakto grup të ri"
 
 #: 
 msgid "No volunteer opportunity assignments."
@@ -1845,6 +2101,10 @@ msgstr "Specifiko jo-zero numër kontrolloni"
 #: 
 msgid " more entries will fit."
 msgstr " më shumë të hyra do të përshtaten."
+
+#: 
+msgid "Deposit closed"
+msgstr "Depozita u mbyll"
 
 #: 
 msgid "Find family->"
@@ -2116,6 +2376,10 @@ msgid "Pledge Reminder Report"
 msgstr "Zotimi Reminder Raporti"
 
 #: 
+msgid "Restore Database"
+msgstr "Rikthe bazën e të dhënave"
+
+#: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Të gjitha donacionet nga kjo familje janë zhvendosur në një familje tjetër."
 
@@ -2160,6 +2424,10 @@ msgid "Delete Family Record AND Family Members"
 msgstr "Fshij Record familjare dhe anëtarët e familjes"
 
 #: 
+msgid "Listing"
+msgstr "Listimi"
+
+#: 
 msgid "My User Settings"
 msgstr "Mia User Settings"
 
@@ -2186,6 +2454,10 @@ msgstr "Set leje True për të dhënë përdoruesve të reja aftësinë për të
 #: 
 msgid "Permission"
 msgstr "Leje"
+
+#: 
+msgid "System Settings"
+msgstr "Cilësimet e sistemit"
 
 #: 
 msgid "Tax Report"
@@ -2225,8 +2497,16 @@ msgid "Login Name"
 msgstr "Identifikohu Emri"
 
 #: 
+msgid "Add Records"
+msgstr "Shto regjistrime"
+
+#: 
 msgid "Edit Records"
 msgstr "Edit shenime"
+
+#: 
+msgid "Delete Records"
+msgstr "Fshi regjistrime"
 
 #: 
 msgid "Manage Properties and Classifications"
@@ -2263,6 +2543,10 @@ msgstr "(Grantet gjitha privilegjet.)"
 #: 
 msgid "Style"
 msgstr "Stili"
+
+#: 
+msgid "User Settings"
+msgstr "Cilësimet e përdoruesit"
 
 #: 
 msgid "Last Login"
@@ -2347,6 +2631,18 @@ msgstr "Caktuar numrat zarf për të gjitha familjet me të paktën një anëtar
 #: 
 msgid "Assigned envelope numbers to all families."
 msgstr "Caktuar numrat zarf për të gjitha familjet."
+
+#: 
+msgid "Version"
+msgstr "Versioni"
+
+#: 
+msgid "Copyright"
+msgstr "Të drejtat e autorit"
+
+#: 
+msgid "All rights reserved"
+msgstr "Të gjitha të drejtat e rezervuara"
 
 #: 
 msgid "True / False"
@@ -2464,6 +2760,22 @@ msgstr " Kursiv"
 #: 
 msgid " Bold"
 msgstr " Guximtar"
+
+#: 
+msgid "Dashboard"
+msgstr "Paneli i kontrollit"
+
+#: 
+msgid "Change Password"
+msgstr "Ndrysho fjalëkalimin"
+
+#: 
+msgid "Home"
+msgstr "Kreu"
+
+#: 
+msgid "Font"
+msgstr "Shkrimi"
 
 #: 
 msgid "Label Grouping"
@@ -2659,6 +2971,58 @@ msgid "Gift Designation"
 msgstr "Përcaktimi Dhuratë"
 
 #: 
+msgid "Sunday School"
+msgstr "Shkolla e diel"
+
+#: 
+msgid "Teachers"
+msgstr "Mësuesit"
+
+#: 
+msgid "Send Message"
+msgstr "Dërgo mesazh"
+
+#: 
+msgid "Quick Status"
+msgstr "Statusi i shpejtë"
+
+#: 
+msgid "Students"
+msgstr "Studentët"
+
+#: 
+msgid "Mobile"
+msgstr "Celulari"
+
+#: 
+msgid "Home Address"
+msgstr "Adresa e shtëpisë"
+
+#: 
+msgid "Dad Name"
+msgstr "Emri i babait"
+
+#: 
+msgid "Mom Name"
+msgstr "Emri i nënës"
+
+#: 
+msgid "Compose New Message"
+msgstr "Shkruaj mesazh të ri"
+
+#: 
+msgid "Attachment"
+msgstr "Bashkëngjitje"
+
+#: 
+msgid "Discard"
+msgstr "Hidhe"
+
+#: 
+msgid "Classes"
+msgstr "Klasat"
+
+#: 
 msgid "Sunday School Reports"
 msgstr "Raportet e diela Shkolla"
 
@@ -2669,6 +3033,14 @@ msgstr "Generate listat klasës dhe fletët e frekuentimit"
 #: 
 msgid "At least one group must be selected to make class lists or attendance sheets."
 msgstr "Të paktën një grup duhet të zgjidhen për të bërë listat e klasit ose fletë frekuentimit."
+
+#: 
+msgid "Report Details"
+msgstr "Detajet e raportit"
+
+#: 
+msgid "First Sunday"
+msgstr "E diela e parë"
 
 #: 
 msgid "Last Sunday"
@@ -2691,6 +3063,14 @@ msgid "Create Attendance Sheet"
 msgstr "Krijo Pjesëmarrja Sheet"
 
 #: 
+msgid "System Users"
+msgstr "Përdoruesit e sistemit"
+
+#: 
+msgid "Calendar"
+msgstr "Kalendari"
+
+#: 
 msgid "Members"
 msgstr "Anëtarët"
 
@@ -2703,14 +3083,361 @@ msgid "Fundraiser"
 msgstr "Fondesh"
 
 #: 
+msgid "List"
+msgstr "Lista"
+
+#: 
+msgid "Import Data"
+msgstr "Importo të dhëna"
+
+#: 
 msgid "Deposit Type"
 msgstr "Lloji Depozita"
+
+#: 
+msgid "Deposit Date"
+msgstr "Data e depozitës"
+
+#: 
+msgid "Family Select"
+msgstr "Zgjidh familjen"
+
+#: 
+msgid "Welcome to"
+msgstr "Mirë se vini në"
+
+#: 
+msgid "Church Information"
+msgstr "Informacioni i kishës"
+
+#: 
+msgid "Email Setup"
+msgstr "Konfigurimi i email-it"
+
+#: 
+msgid "Map Settings"
+msgstr "Cilësimet e hartës"
 
 #: 
 msgid "Report Settings"
 msgstr "Raporti Cilësimet"
 
 #: 
+msgid "Localization"
+msgstr "Lokalizimi"
+
+#: 
+msgid "Setting saved"
+msgstr "Cilësimi u ruajt"
+
+#: 
+msgid "Default Value"
+msgstr "Vlera e paracaktuar"
+
+#: 
+msgid "False"
+msgstr "Gabim (False)"
+
+#: 
+msgid "True"
+msgstr "Vërtetë (True)"
+
+#: 
+msgid "Edit Settings"
+msgstr "Ndrysho cilësimet"
+
+#: 
+msgid "Functions"
+msgstr "Funksionet"
+
+#: 
+msgid "Export to CSV"
+msgstr "Eksporto në CSV"
+
+#: 
+msgid "Add"
+msgstr "Shto"
+
+#: 
+msgid "Enter Name"
+msgstr "Shkruaj emrin"
+
+#: 
+msgid "New Release"
+msgstr "Version i ri"
+
+#: 
+msgid "Self Registration"
+msgstr "Vetë-regjistrim"
+
+#: 
+msgid "Anonymous"
+msgstr "Anonim"
+
+#: 
+msgid "Registration Complete"
+msgstr "Regjistrimi përfundoi"
+
+#: 
 msgid "item"
 msgstr "artikull"
+
+#: 
+msgid "Anniversary"
+msgstr "Përvjetori"
+
+#: 
+msgid "Notes"
+msgstr "Shënime"
+
+#: 
+msgid "Reports"
+msgstr "Raportet"
+
+#: 
+msgid "family"
+msgstr "familja"
+
+#: 
+msgid "Inactive"
+msgstr "Joaktiv"
+
+#: 
+msgid "Start Time"
+msgstr "Koha e nisjes"
+
+#: 
+msgid "All"
+msgstr "Të gjitha"
+
+#: 
+msgid "Groups"
+msgstr "Grupet"
+
+#: 
+msgid "Church Email"
+msgstr "Email-i i kishës"
+
+#: 
+msgid "Default City"
+msgstr "Qyteti i paracaktuar"
+
+#: 
+msgid "SMTP Username"
+msgstr "Emri i përdoruesit SMTP"
+
+#: 
+msgid "SMTP Password"
+msgstr "Fjalëkalimi SMTP"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Zip Code"
+msgstr "Kodi postar"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "I ftuar"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Mosha minimale"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Mosha maksimale"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Data e fillimit"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Data e përfundimit"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Kërko"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field"
+msgstr "Fusha"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Muajt"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Fushë e personalizuar"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays"
+msgstr "Ditëlindjet"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Vullnetarët"
+
+#: 
+msgid "Last Edited"
+msgstr "Edituar së fundmi"
+
+#: 
+msgid "Weekly on"
+msgstr "Çdo javë të"
+
+#: 
+msgid "Monthly on"
+msgstr "Çdo muaj të"
+
+#: 
+msgid "Yearly on"
+msgstr "Çdo vit të"
+
+#: 
+msgid "Group Type"
+msgstr "Lloji i grupit"
+
+#: 
+msgid "Security Group"
+msgstr "Grupi i sigurisë"
+
+#: 
+msgid "miles"
+msgstr "milje"
+
+#: 
+msgid "kilometers"
+msgstr "kilometra"
+
+#. Context: countries
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Shqipëri"
+
+#. Context: countries
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "Kosovë"
+
+#: 
+msgid "No Changes"
+msgstr "Asnjë ndryshim"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "Oops! Faqja nuk u gjend."
+
+#: 
+msgid "Family Verification"
+msgstr "Verifikimi i familjes"
+
+#: 
+msgid "Work Email"
+msgstr "Email-i i punës"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "Kërko verifikimin e informacionit familjar"
+
+#: 
+msgid "Online Verification"
+msgstr "Verifikim online"
+
+#: 
+msgid "Verified In Person"
+msgstr "Verifikuar personalisht"
+
+#. Context: locales
+#: 
+msgid "Albanian"
+msgstr "Shqip"
+
+#: 
+msgid "Maximum upload size"
+msgstr "Madhësia maksimale e ngarkimit"
+
+#: 
+msgid "Failed"
+msgstr "Dështoi"
+
+#: 
+msgid "Account Locked"
+msgstr "Llogaria u bllokua"
+
+#: 
+msgid "Password Reset"
+msgstr "Rivendosja e fjalëkalimit"
+
+#: 
+msgid "View Photo"
+msgstr "Shih foton"
+
+#: 
+msgid "Status"
+msgstr "Statusi"
+
+#: 
+msgid "View Cart"
+msgstr "Shih shportën"
+
+#: 
+msgid "View on Map"
+msgstr "Shih në hartë"
+
+#: 
+msgid "Legend"
+msgstr "Legjenda"
+
+#: 
+msgid "Actions"
+msgstr "Veprimet"
+
+#: 
+msgid "Time zone"
+msgstr "Zona kohore"
+
+#: 
+msgid "Backup"
+msgstr "Rezerva (Backup)"
+
+#: 
+msgid "Integration"
+msgstr "Integrimi"
+
+#: 
+msgid "Notification"
+msgstr "Njoftim"
+
+#: 
+msgid "Reset Password"
+msgstr "Rivendos fjalëkalimin"
+
+#: 
+msgid "I forgot my password"
+msgstr "Harrova fjalëkalimin tim"
+
+#: 
+msgid "Check Number"
+msgstr "Numri i çekut"
+
+#: 
+msgid "Details"
+msgstr "Detajet"
+
+#: 
+msgid "Self Register"
+msgstr "Vetë-regjistrohu"
 
