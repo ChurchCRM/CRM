@@ -2973,6 +2973,10 @@ msgid "Member/Friend"
 msgstr "会員/友人"
 
 #: 
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr "このオプションにはMySQL 3.22以上が必要です!ブラウザの戻るボタンを押してChurchCRMに戻ってください。"
+
+#: 
 msgid "Work"
 msgstr "職場"
 
@@ -3035,6 +3039,14 @@ msgstr "購入合計: $"
 #: 
 msgid "Amount paid: ________________"
 msgstr "支払額: ________________"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "支払い方法: (  ) 現金  (  ) チェック  (  ) クレジットカード __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  有効期限 __ / __"
+
+#: 
+msgid "                                        Signature ________________________________________________________________"
+msgstr "署名 ________________________________________________________________"
 
 #: 
 msgid "Totals"
@@ -3301,6 +3313,10 @@ msgid "Deposit Date"
 msgstr "入金日"
 
 #: 
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr "これにより、データベース内の家族エンベロープ番号がこのページで選択したものに上書きされます。続行しますか?"
+
+#: 
 msgid "Family Select"
 msgstr "世帯選択"
 
@@ -3453,6 +3469,10 @@ msgid "Deposit Comment"
 msgstr "入金コメント"
 
 #: 
+msgid "Your previous session timed out.  Please login again."
+msgstr "前回のセッションがタイムアウトしました。もう一度ログインしてください。"
+
+#: 
 msgid "Register a New Family"
 msgstr "新しい世帯を登録"
 
@@ -3469,6 +3489,10 @@ msgid "item"
 msgstr "アイテム"
 
 #: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
+
+#: 
 msgid "Buyer # "
 msgstr "購入者番号 # "
 
@@ -3479,6 +3503,2515 @@ msgstr "世帯メンバー:"
 #: 
 msgid "Anniversary"
 msgstr "記念日"
+
+#: 
+msgid "Notes"
+msgstr "メモ"
+
+#: 
+msgid "Reports"
+msgstr "レポート"
+
+#: 
+msgid "File Name:"
+msgstr "ファイル名:"
+
+#: 
+msgid "family"
+msgstr "家族"
+
+#: 
+msgid "Date Entered"
+msgstr "入力日"
+
+#: 
+msgid "CSV Import"
+msgstr "CSVインポート"
+
+#: 
+msgid "Members:"
+msgstr "メンバー:"
+
+#: 
+msgid "There were "
+msgstr "ありました "
+
+#: 
+msgid "Inactive"
+msgstr "非アクティブ"
+
+#: 
+msgid "Start Time"
+msgstr "開始時刻"
+
+#: 
+msgid "Filter by Fund"
+msgstr "資金でフィルター"
+
+#: 
+msgid "Estimated value"
+msgstr "推定値"
+
+#: 
+msgid "Disable Group Specific Properties"
+msgstr "グループ固有のプロパティを無効にする"
+
+#: 
+msgid "Text Group"
+msgstr "テキストグループ"
+
+#: 
+msgid "Group Properties"
+msgstr "グループプロパティ"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "要求されたオブジェクトを取得する際に問題が発生しました"
+
+#: 
+msgid "All"
+msgstr "すべて"
+
+#: 
+msgid "Family Map"
+msgstr "家族マップ"
+
+#: 
+msgid "Groups"
+msgstr "グループ"
+
+#: 
+msgid "Total $"
+msgstr "合計 $"
+
+#: 
+msgid "with this property..."
+msgstr "このプロパティで..."
+
+#: 
+msgid "Church Email"
+msgstr "教会メール"
+
+#: 
+msgid "Include only these classifications in the directory, comma separated"
+msgstr "ディレクトリにこれらの分類のみを含める(カンマ区切り)"
+
+#: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "これらは家族の頭として指定された役割番号です"
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "これらは配偶者として指定された役割番号です"
+
+#: 
+msgid "These are the family role numbers designated as child"
+msgstr "これらは子供として指定された役割番号です"
+
+#: 
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr "管理者のみがCSVエクスポートシステムとディレクトリレポートにアクセスできるようにしますか?"
+
+#: 
+msgid "Minimum length a user may set their password to"
+msgstr "ユーザーがパスワードに設定できる最小長"
+
+#: 
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr "許可されていない(明らかすぎる)パスワードのカンマ区切りリスト。"
+
+#: 
+msgid "Default City"
+msgstr "デフォルト市区町村"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "デフォルト都道府県 - 2文字の略語である必要があります!"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "すべてのメールのコピーを受け取るデフォルトアカウント"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "SMTPサーバーアドレス (mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "SMTPサーバーは認証(ユーザー名/パスワード)が必要ですか?"
+
+#: 
+msgid "SMTP Username"
+msgstr "SMTPユーザー名"
+
+#: 
+msgid "SMTP Password"
+msgstr "SMTPパスワード"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "国際化(I18n)サポート"
+
+#: 
+msgid "First month of the fiscal year"
+msgstr "会計年度の最初の月"
+
+#: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "教会の緯度(Googleマップの中心に使用)"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "教会の経度(Googleマップの中心に使用)"
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "人物エディタで友人日付の入力を無効にするには、trueを設定します。人物エディタで友人日付の入力を有効にするには、falseを設定します。"
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "ファミリーエディタのニュースレター購読の管理を無効にするにはtrueを設定します。"
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "ファミリーエディタで結婚日の入力を無効にするにはtrueを設定します。ファミリーエディタで結婚日の入力を有効にするにはfalseを設定します。"
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "ファミリーエディタで緯度と経度の入力を無効にするにはtrueを設定します。ファミリーエディタで緯度と経度の入力を有効にするにはfalseを設定します。ルックアップは実行されますが、表示されません。"
+
+#: 
+msgid "Set true to enable use of donation envelopes"
+msgstr "寄付エンベロープの使用を有効にするにはtrueを設定します"
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "各ページの上部にヘッダーとして表示されるHTMLコードを入力します。タグを閉じてください!注:新しいヘッダーを表示するには、ブラウザを2回更新する必要があります。"
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "預金伝票レポートのチェック数"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "スキャンされたチェックの使用を有効にするにはtrueを設定します"
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "距離を測定するために使用される単位(マイルまたはkm)"
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "分類順のGoogleマップのマーカーの名前"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "控除不可能な支払いを有効にします"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "家族のセルフ登録を有効にするにはtrueを設定します。"
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "左マージン (1 = 1/100インチ)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "線の太さ (1 = 1/100インチ)"
+
+#: 
+msgid "Church City"
+msgstr "教会市区町村"
+
+#: 
+msgid "Church State"
+msgstr "教会都道府県"
+
+#: 
+msgid "Church Zip"
+msgstr "教会郵便番号"
+
+#: 
+msgid "Church Phone"
+msgstr "教会電話"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "税務報告書の最上行の文言。日付はこの行の最後に追加されます。"
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "税務報告書の下部行の文言。"
+
+#: 
+msgid "Tax Report signer"
+msgstr "税務報告書署名者"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "誓約リマインダーレポートの文言"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "誓約リマインダー署名者"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "誓約リマインダーレポートの文言 - 誓約の記録がない"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "誓約リマインダーレポートの文言 - 支払い記録がない"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "データベース情報確認・修正レポートの文言"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "データベース情報確認・修正レポート署名者"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "誓約サマリーレポートの文言"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "ディレクトリレポートの文言"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "教会レターヘッドパスとファイル"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "ローカル画像がない場合、Gravatarでユーザー画像を検索します"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "クラウドサービスへのリモートバックアップを有効にする"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "クラウドサービスタイプ (サポート値: WebDAV、Local)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "リモートバックアップユーザー名"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "リモートバックアップパスワード"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "自動リモートバックアップの間隔(時間)"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "最後のバックアップタイムスタンプ"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "QuickBooks預金チケット設定"
+
+#: 
+msgid "List Groups"
+msgstr "グループを一覧表示"
+
+#: 
+msgid "List Church Events"
+msgstr "教会イベントを一覧表示"
+
+#: 
+msgid "Add Church Event"
+msgstr "教会イベントを追加"
+
+#: 
+msgid "List Event Types"
+msgstr "イベントタイプを一覧表示"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "チェックインとチェックアウト"
+
+#: 
+msgid "View All Deposits"
+msgstr "すべての預金を表示"
+
+#: 
+msgid "Deposit Reports"
+msgstr "預金レポート"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "預金伝票を編集"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "すべての募金活動を表示"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "新しい募金活動を作成"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "募金活動を編集"
+
+#: 
+msgid "View Buyers"
+msgstr "購入者を表示"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "寄付者を購入者リストに追加"
+
+#: 
+msgid "Data/Reports"
+msgstr "データ/レポート"
+
+#: 
+msgid "Query Menu"
+msgstr "クエリメニュー"
+
+#: 
+msgid "CSV Export Records"
+msgstr "CSVレコードをエクスポート"
+
+#: 
+msgid "Family Properties"
+msgstr "家族のプロパティ"
+
+#: 
+msgid "Property Types"
+msgstr "プロパティタイプ"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Zip Code"
+msgstr "郵便番号"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "仕事用メール"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "定期的な参加者"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "ゲスト"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "非参加者"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "非参加者 (スタッフ)"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "最小年齢"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "最大年齢"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "開始日"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "終了日"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "検索"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field"
+msgstr "フィールド"
+
+#. Context: query_qry
+#. Context: queryparameters_qrp
+#: 
+msgid "Registered students"
+msgstr "登録済み学生"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "ボランティア機会"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "月"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "最初の会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "第2会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "カスタムフィールド"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "フィールド値"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "レコードを返すための最小年齢。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "レコードを返すための最大年齢。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "データベースを検索する目的の性別。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "目的の家族の役割を選択してください。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "レコードを返す目的の性別。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "人物レコードを返す目的のプロパティ。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "各メンバーの総貢献を計算するための開始日を選択してください (例: YYYY-MM-DD)。注:寄付を含む日付のみを選択できます。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "各メンバーの総貢献を計算するための最後の日付を入力してください (例: YYYY-MM-DD)。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "次のいずれかの一部を入力してください:名前、市区町村、都道府県、郵便番号、自宅電話、メール、または仕事用メール。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "検索するフィールドを選択してください。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "レコードを返す目的の誕生月。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "レコードを返す目的の日曜学校のクラス。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "登録済み学生のグループ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "レコードを返す目的のメンバーシップ記念月。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "ボランティア機会を選択してください"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "友人になってからの月数"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "比較用の最初の会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "比較用の第2会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "今年誓約"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "ただし今年ではない"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "会計年度。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "メンバー、定期的な参加者など"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "最初のボランティア機会の選択肢"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "第2のボランティア機会の選択肢"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "顧客人物フィールドを選択"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "カスタムフィールドをこの値に一致させます"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "プロパティ別の人物"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays"
+msgstr "誕生日"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "メンバーシップ記念日"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "ボランティア"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "最近の友人"
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "誓約比較"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "誓約が不足しています"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "会計年度別の家族誓約"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "カスタム検索"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "指定されたプロパティが割り当てられている人物レコードを返します。"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "特定の月に誕生日を持つ人物"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "登録済み学生を検索"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "特定の月に参加したメンバー"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "特定の機会のボランティアを検索"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "前の月に登録した友人"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "2つの会計年度間で誓約を比較"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "1年誓約した人を検索しますが、別の年は誓約していません"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "選択した会計年度の各資金について、家族名別の誓約サマリー"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "2つの特定の機会コードに一致するボランティアを検索"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "カスタムフィールド値を持つ人を検索"
+
+#: 
+msgid "Last Edited"
+msgstr "最後に編集"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "mailtoリンク経由でメールを送信するユーザー権限"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "mailtoリンクでメールを分離するデリミタ"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "ディレクトリを作成するユーザー権限"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "CSVファイルをエクスポートするユーザー権限"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "ユーザーが新しいイベントを追加することを許可します"
+
+#: 
+msgid "Weekly on"
+msgstr "毎週"
+
+#: 
+msgid "Monthly on"
+msgstr "毎月"
+
+#: 
+msgid "Yearly on"
+msgstr "毎年"
+
+#: 
+msgid "Family Roles Editor"
+msgstr "家族の役割エディタ"
+
+#: 
+msgid "Person Classification"
+msgstr "人物分類"
+
+#: 
+msgid "Person Classifications"
+msgstr "人物分類"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "人物分類エディタ"
+
+#: 
+msgid "Group Type"
+msgstr "グループタイプ"
+
+#: 
+msgid "Group Types"
+msgstr "グループタイプ"
+
+#: 
+msgid "Group Types Editor"
+msgstr "グループタイプエディタ"
+
+#: 
+msgid "Security Group"
+msgstr "セキュリティグループ"
+
+#: 
+msgid "Security Groups"
+msgstr "セキュリティグループ"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "セキュリティグループエディタ"
+
+#: 
+msgid "Group Member Role"
+msgstr "グループメンバーの役割"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "グループメンバーの役割エディタ"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "人物カスタムリストオプション"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "人物カスタムリストオプション"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "人物カスタムリストオプションエディタ"
+
+#: 
+msgid "Custom List Option"
+msgstr "カスタムリストオプション"
+
+#: 
+msgid "Custom List Options"
+msgstr "カスタムリストオプション"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "カスタムリストオプションエディタ"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "家族カスタムリストオプション"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "家族カスタムリストオプション"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "家族カスタムリストオプションエディタ"
+
+#: 
+msgid "are not allowed."
+msgstr "は許可されていません。"
+
+#: 
+msgid "Name for New"
+msgstr "新規の名前"
+
+#: 
+msgid "Imported"
+msgstr "インポート済み"
+
+#: 
+msgid "Created via Family"
+msgstr "ファミリー経由で作成"
+
+#: 
+msgid "Updated via Family"
+msgstr "ファミリー経由で更新"
+
+#: 
+msgid "Family Data Verified"
+msgstr "ファミリーデータを確認"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "プロフィール画像を削除"
+
+#: 
+msgid "miles"
+msgstr "マイル"
+
+#: 
+msgid "kilometers"
+msgstr "キロメートル"
+
+#: 
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: 
+msgid "Local"
+msgstr "ローカル"
+
+#. Context: countries
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "アフガニスタン (‫افغانستان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "オーランド諸島 (Åland)"
+
+#. Context: countries
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "アルバニア (Shqipëri)"
+
+#. Context: countries
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "アルジェリア (‫الجزائر‬‎)"
+
+#. Context: countries
+#: 
+msgid "American Samoa"
+msgstr "アメリカンサモア"
+
+#. Context: countries
+#: 
+msgid "Andorra"
+msgstr "アンドラ"
+
+#. Context: countries
+#: 
+msgid "Angola"
+msgstr "アンゴラ"
+
+#. Context: countries
+#: 
+msgid "Anguilla"
+msgstr "アンギラ"
+
+#. Context: countries
+#: 
+msgid "Antarctica"
+msgstr "南極大陸"
+
+#. Context: countries
+#: 
+msgid "Antigua and Barbuda"
+msgstr "アンティグアバーブーダ"
+
+#. Context: countries
+#: 
+msgid "Argentina"
+msgstr "アルゼンチン"
+
+#. Context: countries
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "アルメニア (Հայաստան)"
+
+#. Context: countries
+#: 
+msgid "Aruba"
+msgstr "アルバ"
+
+#. Context: countries
+#: 
+msgid "Ascension Island"
+msgstr "アセンション島"
+
+#. Context: countries
+#: 
+msgid "Australia"
+msgstr "オーストラリア"
+
+#. Context: countries
+#: 
+msgid "Austria (Österreich)"
+msgstr "オーストリア (Österreich)"
+
+#. Context: countries
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "アゼルバイジャン (Azərbaycan)"
+
+#. Context: countries
+#: 
+msgid "Bahamas"
+msgstr "バハマ"
+
+#. Context: countries
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "バーレーン (‫البحرين‬‎)"
+
+#. Context: countries
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "バングラデシュ (বাংলাদেশ)"
+
+#. Context: countries
+#: 
+msgid "Barbados"
+msgstr "バルバドス"
+
+#. Context: countries
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "ベラルーシ (Беларусь)"
+
+#. Context: countries
+#: 
+msgid "Belgium (België)"
+msgstr "ベルギー (België)"
+
+#. Context: countries
+#: 
+msgid "Belize"
+msgstr "ベリーズ"
+
+#. Context: countries
+#: 
+msgid "Benin (Bénin)"
+msgstr "ベナン (Bénin)"
+
+#. Context: countries
+#: 
+msgid "Bermuda"
+msgstr "バミューダ"
+
+#. Context: countries
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "ブータン (འབྲུག)"
+
+#. Context: countries
+#: 
+msgid "Bolivia"
+msgstr "ボリビア"
+
+#. Context: countries
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "ボスニアヘルツェゴビナ (Босна и Херцеговина)"
+
+#. Context: countries
+#: 
+msgid "Botswana"
+msgstr "ボツワナ"
+
+#. Context: countries
+#: 
+msgid "Bouvet Island"
+msgstr "ブーベ島"
+
+#. Context: countries
+#: 
+msgid "Brazil (Brasil)"
+msgstr "ブラジル (Brasil)"
+
+#. Context: countries
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "イギリス領インド洋領土"
+
+#. Context: countries
+#: 
+msgid "British Virgin Islands"
+msgstr "イギリス領ヴァージン諸島"
+
+#. Context: countries
+#: 
+msgid "Brunei"
+msgstr "ブルネイ"
+
+#. Context: countries
+#: 
+msgid "Bulgaria (България)"
+msgstr "ブルガリア (България)"
+
+#. Context: countries
+#: 
+msgid "Burkina Faso"
+msgstr "ブルキナファソ"
+
+#. Context: countries
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "ブルンジ (Uburundi)"
+
+#. Context: countries
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "カンボジア (កម្ពុជា)"
+
+#. Context: countries
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "カメルーン (Cameroun)"
+
+#. Context: countries
+#: 
+msgid "Canada"
+msgstr "カナダ"
+
+#. Context: countries
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "カナリア諸島 (islas Canarias)"
+
+#. Context: countries
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "カーボベルデ (Kabu Verdi)"
+
+#. Context: countries
+#: 
+msgid "Caribbean Netherlands"
+msgstr "カリブ海オランダ領"
+
+#. Context: countries
+#: 
+msgid "Cayman Islands"
+msgstr "ケイマン諸島"
+
+#. Context: countries
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "中央アフリカ共和国 (République centrafricaine)"
+
+#. Context: countries
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "セウタ・メリリャ (Ceuta y Melilla)"
+
+#. Context: countries
+#: 
+msgid "Chad (Tchad)"
+msgstr "チャド (Tchad)"
+
+#. Context: countries
+#: 
+msgid "Chile"
+msgstr "チリ"
+
+#. Context: countries
+#: 
+msgid "China (中国)"
+msgstr "中国 (中国)"
+
+#. Context: countries
+#: 
+msgid "Christmas Island"
+msgstr "クリスマス島"
+
+#. Context: countries
+#: 
+msgid "Clipperton Island"
+msgstr "クリッパートン島"
+
+#. Context: countries
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "ココス(キーリング)諸島 (Kepulauan Cocos (Keeling))"
+
+#. Context: countries
+#: 
+msgid "Colombia"
+msgstr "コロンビア"
+
+#. Context: countries
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "コモロ (‫جزر القمر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "コンゴ(DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+
+#. Context: countries
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "コンゴ(共和国) (Congo-Brazzaville)"
+
+#. Context: countries
+#: 
+msgid "Cook Islands"
+msgstr "クック諸島"
+
+#. Context: countries
+#: 
+msgid "Costa Rica"
+msgstr "コスタリカ"
+
+#. Context: countries
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "クロアチア (Hrvatska)"
+
+#. Context: countries
+#: 
+msgid "Cuba"
+msgstr "キューバ"
+
+#. Context: countries
+#: 
+msgid "Curaçao"
+msgstr "キュラソー"
+
+#. Context: countries
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "キプロス (Κύπρος)"
+
+#. Context: countries
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "チェコ共和国 (Česká republika)"
+
+#. Context: countries
+#: 
+msgid "Denmark (Danmark)"
+msgstr "デンマーク (Danmark)"
+
+#. Context: countries
+#: 
+msgid "Diego Garcia"
+msgstr "ディエゴガルシア"
+
+#. Context: countries
+#: 
+msgid "Djibouti"
+msgstr "ジブチ"
+
+#. Context: countries
+#: 
+msgid "Dominica"
+msgstr "ドミニカ"
+
+#. Context: countries
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "ドミニカ共和国 (República Dominicana)"
+
+#. Context: countries
+#: 
+msgid "Ecuador"
+msgstr "エクアドル"
+
+#. Context: countries
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "エジプト (‫مصر‬‎)"
+
+#. Context: countries
+#: 
+msgid "El Salvador"
+msgstr "エルサルバドル"
+
+#. Context: countries
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "赤道ギニア (Guinea Ecuatorial)"
+
+#. Context: countries
+#: 
+msgid "Eritrea"
+msgstr "エリトリア"
+
+#. Context: countries
+#: 
+msgid "Estonia (Eesti)"
+msgstr "エストニア (Eesti)"
+
+#. Context: countries
+#: 
+msgid "Ethiopia"
+msgstr "エチオピア"
+
+#. Context: countries
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "フォークランド諸島 (Islas Malvinas)"
+
+#. Context: countries
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "フェロー諸島 (Føroyar)"
+
+#. Context: countries
+#: 
+msgid "Fiji"
+msgstr "フィジー"
+
+#. Context: countries
+#: 
+msgid "Finland (Suomi)"
+msgstr "フィンランド (Suomi)"
+
+#. Context: countries
+#: 
+msgid "France"
+msgstr "フランス"
+
+#. Context: countries
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "フランス領ギアナ (Guyane française)"
+
+#. Context: countries
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "フランス領ポリネシア (Polynésie française)"
+
+#. Context: countries
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "フランス領南方・南極地域 (Terres australes françaises)"
+
+#. Context: countries
+#: 
+msgid "Gabon"
+msgstr "ガボン"
+
+#. Context: countries
+#: 
+msgid "Gambia"
+msgstr "ガンビア"
+
+#. Context: countries
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "ジョージア (საქართველო)"
+
+#. Context: countries
+#: 
+msgid "Germany (Deutschland)"
+msgstr "ドイツ (Deutschland)"
+
+#. Context: countries
+#: 
+msgid "Ghana (Gaana)"
+msgstr "ガーナ (Gaana)"
+
+#. Context: countries
+#: 
+msgid "Gibraltar"
+msgstr "ジブラルタル"
+
+#. Context: countries
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "ギリシャ (Ελλάδα)"
+
+#. Context: countries
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "グリーンランド (Kalaallit Nunaat)"
+
+#. Context: countries
+#: 
+msgid "Grenada"
+msgstr "グレナダ"
+
+#. Context: countries
+#: 
+msgid "Guadeloupe"
+msgstr "グアドループ"
+
+#. Context: countries
+#: 
+msgid "Guam"
+msgstr "グアム"
+
+#. Context: countries
+#: 
+msgid "Guatemala"
+msgstr "グアテマラ"
+
+#. Context: countries
+#: 
+msgid "Guernsey"
+msgstr "ガーンジー"
+
+#. Context: countries
+#: 
+msgid "Guinea (Guinée)"
+msgstr "ギニア (Guinée)"
+
+#. Context: countries
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "ギニアビサウ (Guiné Bissau)"
+
+#. Context: countries
+#: 
+msgid "Guyana"
+msgstr "ガイアナ"
+
+#. Context: countries
+#: 
+msgid "Haiti"
+msgstr "ハイチ"
+
+#. Context: countries
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "ハード・マクドナルド諸島"
+
+#. Context: countries
+#: 
+msgid "Honduras"
+msgstr "ホンジュラス"
+
+#. Context: countries
+#: 
+msgid "Hong Kong (香港)"
+msgstr "香港 (香港)"
+
+#. Context: countries
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "ハンガリー (Magyarország)"
+
+#. Context: countries
+#: 
+msgid "Iceland (Ísland)"
+msgstr "アイスランド (Ísland)"
+
+#. Context: countries
+#: 
+msgid "India (भारत)"
+msgstr "インド (भारत)"
+
+#. Context: countries
+#: 
+msgid "Indonesia"
+msgstr "インドネシア"
+
+#. Context: countries
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "イラン (‫ایران‬‎)"
+
+#. Context: countries
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "イラク (‫العراق‬‎)"
+
+#. Context: countries
+#: 
+msgid "Ireland"
+msgstr "アイルランド"
+
+#. Context: countries
+#: 
+msgid "Isle of Man"
+msgstr "マン島"
+
+#. Context: countries
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "イスラエル (‫ישראל‬‎)"
+
+#. Context: countries
+#: 
+msgid "Italy (Italia)"
+msgstr "イタリア (Italia)"
+
+#. Context: countries
+#: 
+msgid "Jamaica"
+msgstr "ジャマイカ"
+
+#. Context: countries
+#: 
+msgid "Japan (日本)"
+msgstr "日本 (日本)"
+
+#. Context: countries
+#: 
+msgid "Jersey"
+msgstr "ジャージー"
+
+#. Context: countries
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "ヨルダン (‫الأردن‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "カザフスタン (Казахстан)"
+
+#. Context: countries
+#: 
+msgid "Kenya"
+msgstr "ケニア"
+
+#. Context: countries
+#: 
+msgid "Kiribati"
+msgstr "キリバス"
+
+#. Context: countries
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "コソボ (Kosovë)"
+
+#. Context: countries
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "クウェート (‫الكويت‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "キルギスタン (Кыргызстан)"
+
+#. Context: countries
+#: 
+msgid "Laos (ລາວ)"
+msgstr "ラオス (ລາວ)"
+
+#. Context: countries
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "レバノン (‫لبنان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Lesotho"
+msgstr "レソト"
+
+#. Context: countries
+#: 
+msgid "Liberia"
+msgstr "リベリア"
+
+#. Context: countries
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "リビア (‫ليبيا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Liechtenstein"
+msgstr "リヒテンシュタイン"
+
+#. Context: countries
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "リトアニア (Lietuva)"
+
+#. Context: countries
+#: 
+msgid "Luxembourg"
+msgstr "ルクセンブルク"
+
+#. Context: countries
+#: 
+msgid "Macau (澳門)"
+msgstr "マカオ (澳門)"
+
+#. Context: countries
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "マケドニア (FYROM) (Македонија)"
+
+#. Context: countries
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "マダガスカル (Madagasikara)"
+
+#. Context: countries
+#: 
+msgid "Malawi"
+msgstr "マラウイ"
+
+#. Context: countries
+#: 
+msgid "Malaysia"
+msgstr "マレーシア"
+
+#. Context: countries
+#: 
+msgid "Maldives"
+msgstr "モルディブ"
+
+#. Context: countries
+#: 
+msgid "Mali"
+msgstr "マリ"
+
+#. Context: countries
+#: 
+msgid "Malta"
+msgstr "マルタ"
+
+#. Context: countries
+#: 
+msgid "Marshall Islands"
+msgstr "マーシャル諸島"
+
+#. Context: countries
+#: 
+msgid "Martinique"
+msgstr "マルティニーク"
+
+#. Context: countries
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "モーリタニア (‫موريتانيا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mauritius (Moris)"
+msgstr "モーリシャス (Moris)"
+
+#. Context: countries
+#: 
+msgid "Mayotte"
+msgstr "マヨット"
+
+#. Context: countries
+#: 
+msgid "Mexico (México)"
+msgstr "メキシコ (México)"
+
+#. Context: countries
+#: 
+msgid "Micronesia"
+msgstr "ミクロネシア"
+
+#. Context: countries
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "モルドバ (Republica Moldova)"
+
+#. Context: countries
+#: 
+msgid "Monaco"
+msgstr "モナコ"
+
+#. Context: countries
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "モンゴル (Монгол)"
+
+#. Context: countries
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "モンテネグロ (Crna Gora)"
+
+#. Context: countries
+#: 
+msgid "Montserrat"
+msgstr "モントセラト"
+
+#. Context: countries
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "モロッコ (‫المغرب‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "モザンビーク (Moçambique)"
+
+#. Context: countries
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "ミャンマー (Burma) (မြန်မာ)"
+
+#. Context: countries
+#: 
+msgid "Namibia (Namibië)"
+msgstr "ナミビア (Namibië)"
+
+#. Context: countries
+#: 
+msgid "Nauru"
+msgstr "ナウル"
+
+#. Context: countries
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "ネパール (नेपाल)"
+
+#. Context: countries
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "オランダ (Nederland)"
+
+#. Context: countries
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "ニューカレドニア (Nouvelle-Calédonie)"
+
+#. Context: countries
+#: 
+msgid "New Zealand"
+msgstr "ニュージーランド"
+
+#. Context: countries
+#: 
+msgid "Nicaragua"
+msgstr "ニカラグア"
+
+#. Context: countries
+#: 
+msgid "Niger (Nijar)"
+msgstr "ニジェール (Nijar)"
+
+#. Context: countries
+#: 
+msgid "Nigeria"
+msgstr "ナイジェリア"
+
+#. Context: countries
+#: 
+msgid "Niue"
+msgstr "ニウエ"
+
+#. Context: countries
+#: 
+msgid "Norfolk Island"
+msgstr "ノーフォーク島"
+
+#. Context: countries
+#: 
+msgid "Northern Mariana Islands"
+msgstr "北マリアナ諸島"
+
+#. Context: countries
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "北朝鮮 (조선 민주주의 인민 공화국)"
+
+#. Context: countries
+#: 
+msgid "Norway (Norge)"
+msgstr "ノルウェー (Norge)"
+
+#. Context: countries
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "オマーン (‫عُمان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "パキスタン (‫پاکستان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Palau"
+msgstr "パラオ"
+
+#. Context: countries
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "パレスチナ (‫فلسطين‬‎)"
+
+#. Context: countries
+#: 
+msgid "Panama (Panamá)"
+msgstr "パナマ (Panamá)"
+
+#. Context: countries
+#: 
+msgid "Papua New Guinea"
+msgstr "パプアニューギニア"
+
+#. Context: countries
+#: 
+msgid "Paraguay"
+msgstr "パラグアイ"
+
+#. Context: countries
+#: 
+msgid "Peru (Perú)"
+msgstr "ペルー (Perú)"
+
+#. Context: countries
+#: 
+msgid "Philippines"
+msgstr "フィリピン"
+
+#. Context: countries
+#: 
+msgid "Pitcairn Islands"
+msgstr "ピトケアン諸島"
+
+#. Context: countries
+#: 
+msgid "Poland (Polska)"
+msgstr "ポーランド (Polska)"
+
+#. Context: countries
+#: 
+msgid "Portugal"
+msgstr "ポルトガル"
+
+#. Context: countries
+#: 
+msgid "Puerto Rico"
+msgstr "プエルトリコ"
+
+#. Context: countries
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "カタール (‫قطر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "レユニオン (La Réunion)"
+
+#. Context: countries
+#: 
+msgid "Romania (România)"
+msgstr "ルーマニア (România)"
+
+#. Context: countries
+#: 
+msgid "Russia (Россия)"
+msgstr "ロシア (Россия)"
+
+#. Context: countries
+#: 
+msgid "Rwanda"
+msgstr "ルワンダ"
+
+#. Context: countries
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "サン・バルテルミー (Saint-Barthélemy)"
+
+#. Context: countries
+#: 
+msgid "Saint Helena"
+msgstr "セントヘレナ"
+
+#. Context: countries
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "セントクリストファー・ネイビス"
+
+#. Context: countries
+#: 
+msgid "Saint Lucia"
+msgstr "セントルシア"
+
+#. Context: countries
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "サン・マルタン (Saint-Martin (partie française))"
+
+#. Context: countries
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "サンピエール・ミクロン (Saint-Pierre-et-Miquelon)"
+
+#. Context: countries
+#: 
+msgid "Samoa"
+msgstr "サモア"
+
+#. Context: countries
+#: 
+msgid "San Marino"
+msgstr "サンマリノ"
+
+#. Context: countries
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "サントメ・プリンシペ (São Tomé e Príncipe)"
+
+#. Context: countries
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "サウジアラビア (‫المملكة العربية السعودية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "セネガル (Sénégal)"
+
+#. Context: countries
+#: 
+msgid "Serbia (Србија)"
+msgstr "セルビア (Србија)"
+
+#. Context: countries
+#: 
+msgid "Seychelles"
+msgstr "セーシェル"
+
+#. Context: countries
+#: 
+msgid "Sierra Leone"
+msgstr "シエラレオネ"
+
+#. Context: countries
+#: 
+msgid "Singapore"
+msgstr "シンガポール"
+
+#. Context: countries
+#: 
+msgid "Sint Maarten"
+msgstr "シント・マールテン"
+
+#. Context: countries
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "スロバキア (Slovensko)"
+
+#. Context: countries
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "スロベニア (Slovenija)"
+
+#. Context: countries
+#: 
+msgid "Solomon Islands"
+msgstr "ソロモン諸島"
+
+#. Context: countries
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "ソマリア (Soomaaliya)"
+
+#. Context: countries
+#: 
+msgid "South Africa"
+msgstr "南アフリカ"
+
+#. Context: countries
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "南ジョージア・南サンドウィッチ諸島"
+
+#. Context: countries
+#: 
+msgid "South Korea (대한민국)"
+msgstr "韓国 (대한민국)"
+
+#. Context: countries
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "南スーダン (‫جنوب السودان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Spain (España)"
+msgstr "スペイン (España)"
+
+#. Context: countries
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "スリランカ (ශ්‍රී ලංකාව)"
+
+#. Context: countries
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "セントビンセント・グレナディーン"
+
+#. Context: countries
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "スーダン (‫السودان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Suriname"
+msgstr "スリナム"
+
+#. Context: countries
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "スヴァールバル・ヤンマイエン (Svalbard og Jan Mayen)"
+
+#. Context: countries
+#: 
+msgid "Swaziland"
+msgstr "エスワティニ"
+
+#. Context: countries
+#: 
+msgid "Sweden (Sverige)"
+msgstr "スウェーデン (Sverige)"
+
+#. Context: countries
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "スイス (Schweiz)"
+
+#. Context: countries
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "シリア (‫سوريا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Taiwan (台灣)"
+msgstr "台湾 (台灣)"
+
+#. Context: countries
+#: 
+msgid "Tajikistan"
+msgstr "タジキスタン"
+
+#. Context: countries
+#: 
+msgid "Tanzania"
+msgstr "タンザニア"
+
+#. Context: countries
+#: 
+msgid "Thailand (ไทย)"
+msgstr "タイ (ไทย)"
+
+#. Context: countries
+#: 
+msgid "Timor-Leste"
+msgstr "東ティモール"
+
+#. Context: countries
+#: 
+msgid "Togo"
+msgstr "トーゴ"
+
+#. Context: countries
+#: 
+msgid "Tokelau"
+msgstr "トケラウ"
+
+#. Context: countries
+#: 
+msgid "Tonga"
+msgstr "トンガ"
+
+#. Context: countries
+#: 
+msgid "Trinidad and Tobago"
+msgstr "トリニダード・トバゴ"
+
+#. Context: countries
+#: 
+msgid "Tristan da Cunha"
+msgstr "トリスタン・ダ・クーニャ"
+
+#. Context: countries
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "チュニジア (‫تونس‬‎)"
+
+#. Context: countries
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "トルコ (Türkiye)"
+
+#. Context: countries
+#: 
+msgid "Turkmenistan"
+msgstr "トルクメニスタン"
+
+#. Context: countries
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "タークス・カイコス諸島"
+
+#. Context: countries
+#: 
+msgid "Tuvalu"
+msgstr "ツバル"
+
+#. Context: countries
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "合衆国領有離島"
+
+#. Context: countries
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "米国領ヴァージン諸島"
+
+#. Context: countries
+#: 
+msgid "Uganda"
+msgstr "ウガンダ"
+
+#. Context: countries
+#: 
+msgid "Ukraine (Україна)"
+msgstr "ウクライナ (Україна)"
+
+#. Context: countries
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "アラブ首長国連邦 (‫الإمارات العربية المتحدة‬‎)"
+
+#. Context: countries
+#: 
+msgid "United Kingdom"
+msgstr "イギリス"
+
+#. Context: countries
+#: 
+msgid "United States"
+msgstr "アメリカ合衆国"
+
+#. Context: countries
+#: 
+msgid "Uruguay"
+msgstr "ウルグアイ"
+
+#. Context: countries
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "ウズベキスタン (Oʻzbekiston)"
+
+#. Context: countries
+#: 
+msgid "Vanuatu"
+msgstr "バヌアツ"
+
+#. Context: countries
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "バチカン市国 (Città del Vaticano)"
+
+#. Context: countries
+#: 
+msgid "Venezuela"
+msgstr "ベネズエラ"
+
+#. Context: countries
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "ベトナム (Việt Nam)"
+
+#. Context: countries
+#: 
+msgid "Wallis and Futuna"
+msgstr "ウォリス・フツナ"
+
+#. Context: countries
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "西サハラ (‫الصحراء الغربية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "イエメン (‫اليمن‬‎)"
+
+#. Context: countries
+#: 
+msgid "Zambia"
+msgstr "ザンビア"
+
+#. Context: countries
+#: 
+msgid "Zimbabwe"
+msgstr "ジンバブエ"
+
+#: 
+msgid "Please verify your family's information"
+msgstr "ご家族の情報をご確認ください"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "確認情報を読み込むことができません"
+
+#: 
+msgid "No Changes"
+msgstr "変更なし"
+
+#: 
+msgid "Page not fond"
+msgstr "ページが見つかりません"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "エラー!ページが見つかりません。"
+
+#: 
+msgid "Family Registration"
+msgstr "ファミリー登録"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "ご家族の確認を開始するために以下を入力してください"
+
+#: 
+msgid "Family Verification"
+msgstr "ファミリー確認"
+
+#: 
+msgid "Work Email"
+msgstr "仕事用メール"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "ファミリー情報確認をリクエスト"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "ファミリー情報をどのように確認してもらいたいかを選択してください"
+
+#: 
+msgid "Online Verification"
+msgstr "オンライン確認"
+
+#: 
+msgid "Verified In Person"
+msgstr "対面で確認済み"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "バックアップアーカイブにはデータベースが含まれていません"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "ユーザーが入力した郵便番号をデータベースに保存するときに大文字にします。"
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "署名者の前に手紙を終了するために使用されます"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "Googleアナリティクストラッキングコード"
+
+#. Context: locales
+#: 
+msgid "English - United States"
+msgstr "英語 - アメリカ合衆国"
+
+#. Context: locales
+#: 
+msgid "English - Canada"
+msgstr "英語 - カナダ"
+
+#. Context: locales
+#: 
+msgid "English - Australia"
+msgstr "英語 - オーストラリア"
+
+#. Context: locales
+#: 
+msgid "English - Great Britain"
+msgstr "英語 - グレートブリテン"
+
+#. Context: locales
+#: 
+msgid "German - Germany"
+msgstr "ドイツ語 - ドイツ"
+
+#. Context: locales
+#: 
+msgid "Spanish - Spain"
+msgstr "スペイン語 - スペイン"
+
+#. Context: locales
+#: 
+msgid "French - France"
+msgstr "フランス語 - フランス"
+
+#. Context: locales
+#: 
+msgid "Hungarian"
+msgstr "ハンガリー語"
+
+#. Context: locales
+#: 
+msgid "Italian - Italy"
+msgstr "イタリア語 - イタリア"
+
+#. Context: locales
+#: 
+msgid "Norwegian"
+msgstr "ノルウェー語"
+
+#. Context: locales
+#: 
+msgid "Dutch - Netherlands"
+msgstr "オランダ語 - オランダ"
+
+#. Context: locales
+#: 
+msgid "Polish"
+msgstr "ポーランド語"
+
+#. Context: locales
+#: 
+msgid "Portuguese - Brazil"
+msgstr "ポルトガル語 - ブラジル"
+
+#. Context: locales
+#: 
+msgid "Romanian - Romania"
+msgstr "ルーマニア語 - ルーマニア"
+
+#. Context: locales
+#: 
+msgid "Russian"
+msgstr "ロシア語"
+
+#. Context: locales
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "サーミ語 (北部) (スウェーデン)"
+
+#. Context: locales
+#: 
+msgid "Albanian"
+msgstr "アルバニア語"
+
+#. Context: locales
+#: 
+msgid "Vietnamese"
+msgstr "ベトナム語"
+
+#. Context: locales
+#: 
+msgid "Chinese - China"
+msgstr "中国語 - 中国"
+
+#. Context: locales
+#: 
+msgid "Chinese - Taiwan"
+msgstr "中国語 - 台湾"
+
+#: 
+msgid "Maximum upload size"
+msgstr "最大アップロードサイズ"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "選択したファイルがこのサーバーの最大アップロードサイズを超えています"
+
+#: 
+msgid "Failed"
+msgstr "失敗しました"
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "教会普通預金口座番号"
+
+#: 
+msgid "Marked the Family as Inactive"
+msgstr "ファミリーを非アクティブとしてマーク"
+
+#: 
+msgid "Marked the Family as Active"
+msgstr "ファミリーをアクティブとしてマーク"
+
+#: 
+msgid "families"
+msgstr "家族"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "預金チケットタイプ。QBDT - Quickbooks"
+
+#: 
+msgid "Financial Settings"
+msgstr "財務設定"
+
+#: 
+msgid "An invalid configuration name has been requested"
+msgstr "無効な構成名がリクエストされました"
+
+#: 
+msgid "An invalid configuration id has been requested"
+msgstr "無効な構成IDがリクエストされました"
+
+#: 
+msgid "Profile Image uploaded"
+msgstr "プロフィール画像をアップロード"
+
+#: 
+msgid "payment(s)?"
+msgstr "支払い?"
+
+#: 
+msgid "Please ensure this what you want to do.</p>"
+msgstr "これが本当にしたいことであることを確認してください。"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "非アクティブ化を確認"
+
+#: 
+msgid "Confirm Activation"
+msgstr "アクティブ化を確認"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "ファミリーの非アクティブ化を確認してください"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "ファミリーのアクティブ化を確認してください"
+
+#: 
+msgid "Show neighbors with these classifications"
+msgstr "これらの分類を持つ隣人を表示"
+
+#: 
+msgid "Please select a Family."
+msgstr "ファミリーを選択してください。"
+
+#: 
+msgid "Coordinate database file name"
+msgstr "座標データベースファイル名"
+
+#: 
+msgid "select an option"
+msgstr "オプションを選択"
+
+#: 
+msgid "Direct me"
+msgstr "案内してください"
+
+#: 
+msgid "Your cart is empty"
+msgstr "カートは空です"
+
+#: 
+msgid "The record could not be found."
+msgstr "レコードが見つかりませんでした。"
+
+#: 
+msgid "The property is already assigned."
+msgstr "プロパティは既に割り当てられています。"
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "プロパティが正常に割り当てられました。"
+
+#: 
+msgid "The property could not be assigned."
+msgstr "プロパティを割り当てることができませんでした。"
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "プロパティが正常に割り当て解除されました。"
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "プロパティの割り当てを解除できませんでした。"
+
+#: 
+msgid "Select event"
+msgstr "イベントを選択"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "この人物は既にこのイベントにチェックインされています"
+
+#: 
+msgid "CheckOut Person"
+msgstr "チェックアウト人物"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "チェックイン入力を削除"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "チェックアウト大人"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "メール/レポート内の名前の前のテキスト"
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "預金伝票に請求数を表示"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "アカウントが削除されました"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "ChurchCRMアカウントが削除されました。"
+
+#: 
+msgid "Account Locked"
+msgstr "アカウントがロック"
+
+#: 
+msgid "Your New Account"
+msgstr "新しいアカウント"
+
+#: 
+msgid "Password Reset"
+msgstr "パスワードリセット"
+
+#: 
+msgid "Account Unlocked"
+msgstr "アカウントがロック解除"
+
+#: 
+msgid "Part"
+msgstr "部分"
+
+#: 
+msgid "View Photo"
+msgstr "写真を表示"
+
+#: 
+msgid "Status"
+msgstr "ステータス"
+
+#: 
+msgid "Email export"
+msgstr "メール エクスポート"
+
+#: 
+msgid "Include"
+msgstr "含める"
 
 #: 
 msgid "LastName, FirstName MiddleName"

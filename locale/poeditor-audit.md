@@ -2,8 +2,8 @@
 
 **Total Supported Locales:** 45
 **Complete Locales (≥75%):** 32
-**Good Locales (51-74%):** 1
-**Needs Work (<51%):** 12
+**Good Locales (51-74%):** 3
+**Needs Work (<51%):** 10
 **WIP Candidates (>5%, not yet added):** 6
 
 ## Locale Completeness Overview
@@ -42,11 +42,11 @@
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `fi` | Finnish | 2326 | 85.11% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 1893 | 69.26% | 🟡 Good | ✅ Yes |
+| `hu` | Hungarian | 1934 | 70.76% | 🟡 Good | ✅ Yes |
+| `sq` | Albanian | 1600 | 58.54% | 🟡 Good | ✅ Yes |
+| `ja` | Japanese | 1499 | 54.85% | 🟡 Good | ✅ Yes |
 | `nb` | Norwegian Bokmål | 1327 | 48.55% | 🟠 Needs Work | ✅ Yes |
-| `sq` | Albanian | 1321 | 48.34% | 🟠 Needs Work | ✅ Yes |
-| `ja` | Japanese | 931 | 34.07% | 🟠 Needs Work | ✅ Yes |
-| `hi` | Hindi | 535 | 19.58% | 🟠 Needs Work | ✅ Yes |
+| `hi` | Hindi | 848 | 31.03% | 🟠 Needs Work | ✅ Yes |
 | `te` | Telugu | 331 | 12.11% | 🟠 Needs Work | ✅ Yes |
 | `sl` | Slovenian | 82 | 3% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 80 | 2.93% | 🟠 Needs Work | ❌ No |
@@ -65,8 +65,8 @@
 ## Status Summary
 
 - **🟢 Complete (≥75%):** 32 locales ready for production
-- **🟡 Good (51-74%):** 1 locales with solid translation coverage
-- **🟠 Needs Work (<51%):** 6 locales requiring translator attention
+- **🟡 Good (51-74%):** 3 locales with solid translation coverage
+- **🟠 Needs Work (<51%):** 4 locales requiring translator attention
 - **🔴 Incomplete:** 1 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
 
