@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥75%):** 15
-**Good Locales (51-74%):** 14
+**Complete Locales (≥75%):** 17
+**Good Locales (51-74%):** 12
 **Needs Work (<51%):** 16
 **WIP Candidates (>5%, not yet added):** 6
 
@@ -24,13 +24,13 @@
 | `es-ar` | Spanish (AR) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `es-mx` | Spanish (MX) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `es-sv` | Spanish (SV) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `af` | Afrikaans | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 1942 | 71.06% | 🟡 Good | ✅ Yes |
 | `he` | Hebrew | 1911 | 69.92% | 🟡 Good | ✅ Yes |
 | `vi` | Vietnamese | 1903 | 69.63% | 🟡 Good | ✅ Yes |
-| `af` | Afrikaans | 1899 | 69.48% | 🟡 Good | ✅ Yes |
 | `sw` | Swahili | 1897 | 69.41% | 🟡 Good | ✅ Yes |
-| `ar` | Arabic | 1891 | 69.19% | 🟡 Good | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 1887 | 69.05% | 🟡 Good | ✅ Yes |
 | `ro` | Romanian | 1887 | 69.05% | 🟡 Good | ✅ Yes |
 | `am` | Amharic | 1872 | 68.5% | 🟡 Good | ✅ Yes |
@@ -64,8 +64,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 15 locales ready for production
-- **🟡 Good (51-74%):** 14 locales with solid translation coverage
+- **🟢 Complete (≥75%):** 17 locales ready for production
+- **🟡 Good (51-74%):** 12 locales with solid translation coverage
 - **🟠 Needs Work (<51%):** 10 locales requiring translator attention
 - **🔴 Incomplete:** 2 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
