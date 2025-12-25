@@ -2166,3 +2166,1266 @@ msgstr "गैर-शून्य चेक संख्या निर्द�
 msgid "Check number not valid for 'CASH' payment"
 msgstr "'नकद' भुगतान के लिए चेक संख्या मान्य नहीं है"
 
+#: 
+msgid "Sunday School Reports"
+msgstr "संडे स्कूल रिपोर्ट"
+
+#: 
+msgid "Generate class lists and attendance sheets"
+msgstr "कक्षा सूची और उपस्थिति पत्रक तैयार करें"
+
+#: 
+msgid "Export All Classes, Kids, and Parent to CSV file"
+msgstr "सभी कक्षाओं, बच्चों और माता-पिता को CSV फ़ाइल में निर्यात करें"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "छात्र जो संडे स्कूल कक्षा में नहीं हैं"
+
+#: 
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr "कक्षा सूची या उपस्थिति पत्रक बनाने के लिए कम से कम एक समूह का चयन किया जाना चाहिए।"
+
+#: 
+msgid "Report Details"
+msgstr "रिपोर्ट विवरण"
+
+#: 
+msgid "To select multiple hold CTL"
+msgstr "एकाधिक चयन करने के लिए CTL दबाकर रखें"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups<br>"
+msgstr "एकाधिक समूहों के बीच पेज ब्रेक होगा<br>"
+
+#: 
+msgid "List all Roles (unchecked will list Teacher/Student roles only)"
+msgstr "सभी भूमिकाओं को सूचीबद्ध करें (अनचेक करने पर केवल शिक्षक/छात्र भूमिकाएं सूचीबद्ध होंगी)"
+
+#: 
+msgid "First Sunday"
+msgstr "पहला रविवार"
+
+#: 
+msgid "Last Sunday"
+msgstr "अंतिम रविवार"
+
+#: 
+msgid "No Sunday School"
+msgstr "कोई संडे स्कूल नहीं"
+
+#: 
+msgid "Extra Students"
+msgstr "अतिरिक्त छात्र"
+
+#: 
+msgid "Extra Teachers"
+msgstr "अतिरिक्त शिक्षक"
+
+#: 
+msgid "Create Class List"
+msgstr "कक्षा सूची बनाएँ"
+
+#: 
+msgid "Create Attendance Sheet"
+msgstr "उपस्थिति पत्रक बनाएँ"
+
+#: 
+msgid "System Users"
+msgstr "सिस्टम उपयोगकर्ता"
+
+#: 
+msgid "Calendar"
+msgstr "कैलेंडर"
+
+#: 
+msgid "Members"
+msgstr "सदस्य"
+
+#: 
+msgid "Events"
+msgstr "कार्यक्रम"
+
+#: 
+msgid "Fundraiser"
+msgstr "धन उगाहने वाला"
+
+#: 
+msgid "Email Export"
+msgstr "ईमेल निर्यात"
+
+#: 
+msgid "List"
+msgstr "सूची"
+
+#: 
+msgid "Import Data"
+msgstr "डेटा आयात करें"
+
+#: 
+msgid "Are you sure you want to delete the selected"
+msgstr "क्या आप वाकई चयनित को हटाना चाहते हैं?"
+
+#: 
+msgid "Deposit(s)"
+msgstr "जमा (डिपाजिट)"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "यह इस जमा से जुड़े सभी भुगतानों को भी हटा देगा"
+
+#: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "यह क्रिया पूर्ववत नहीं की जा सकती, और इसके कानूनी निहितार्थ हो सकते हैं!"
+
+#: 
+msgid "Please ensure this what you want to do."
+msgstr "कृपया सुनिश्चित करें कि आप यही करना चाहते हैं।"
+
+#: 
+msgid "Deposit Type"
+msgstr "जमा प्रकार"
+
+#: 
+msgid "Deposit Date"
+msgstr "जमा तिथि"
+
+#: 
+msgid "Family Select"
+msgstr "परिवार चयन"
+
+#: 
+msgid "with at least one:"
+msgstr "कम से कम एक के साथ:"
+
+#: 
+msgid "Welcome to"
+msgstr "स्वागत है"
+
+#: 
+msgid "Church Information"
+msgstr "चर्च की जानकारी"
+
+#: 
+msgid "Email Setup"
+msgstr "ईमेल सेटअप"
+
+#: 
+msgid "Map Settings"
+msgstr "नक्शा सेटिंग्स"
+
+#: 
+msgid "Report Settings"
+msgstr "रिपोर्ट सेटिंग्स"
+
+#: 
+msgid "True"
+msgstr "सत्य"
+
+#: 
+msgid "Edit Settings"
+msgstr "सेटिंग्स संपादित करें"
+
+#: 
+msgid "Full Path:"
+msgstr "पूर्ण पथ:"
+
+#: 
+msgid "Backup Complete, Ready for Download."
+msgstr "बैकअप पूरा हुआ, डाउनलोड के लिए तैयार है।"
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "बैकअप डाउनलोड किया गया, सर्वर पर मौजूद प्रतिलिपि हटा दी गई"
+
+#: 
+msgid "Campaigns:"
+msgstr "अभियान:"
+
+#: 
+msgid "Unsubscribed count:"
+msgstr "सदस्यता समाप्त करने वालों की संख्या:"
+
+#: 
+msgid "Unsubscribed count since last send:"
+msgstr "पिछली बार भेजने के बाद से सदस्यता समाप्त करने वालों की संख्या:"
+
+#: 
+msgid "Cleaned count:"
+msgstr "साफ की गई संख्या:"
+
+#: 
+msgid "Cleaned count since last send:"
+msgstr "पिछली बार भेजने के बाद से साफ की गई संख्या:"
+
+#: 
+msgid "Functions"
+msgstr "फ़ंक्शन"
+
+#: 
+msgid "Export to CSV"
+msgstr "CSV में निर्यात करें"
+
+#: 
+msgid "Add"
+msgstr "जोड़ें"
+
+#: 
+msgid "Enter Name"
+msgstr "नाम दर्ज करें"
+
+#: 
+msgid "New Release"
+msgstr "नई रिलीज़"
+
+#: 
+msgid "Self Registration"
+msgstr "स्व-पंजीकरण"
+
+#: 
+msgid "No coordinates found"
+msgstr "कोई निर्देशांक नहीं मिले"
+
+#: 
+msgid "Anonymous"
+msgstr "अनाम"
+
+#: 
+msgid "Registration Complete"
+msgstr "पंजीकरण पूर्ण"
+
+#: 
+msgid "Add All Classes"
+msgstr "सभी कक्षाएं जोड़ें"
+
+#: 
+msgid "Clear All Classes"
+msgstr "सभी कक्षाएं साफ करें"
+
+#: 
+msgid "Add All Families"
+msgstr "सभी परिवार जोड़ें"
+
+#: 
+msgid "Clear All Families"
+msgstr "सभी परिवार साफ करें"
+
+#: 
+msgid "Add All Funds"
+msgstr "सभी फंड जोड़ें"
+
+#: 
+msgid "Clear All Funds"
+msgstr "सभी फंड साफ करें"
+
+#: 
+msgid "Deposit Comment"
+msgstr "जमा टिप्पणी"
+
+#: 
+msgid "Register a New Family"
+msgstr "एक नया परिवार पंजीकृत करें"
+
+#: 
+msgid "Signature definition file signature failed validation"
+msgstr "हस्ताक्षर परिभाषा फ़ाइल हस्ताक्षर सत्यापन विफल रहा"
+
+#: 
+msgid "One or more files failed signature validation"
+msgstr "एक या अधिक फ़ाइलें हस्ताक्षर सत्यापन में विफल रहीं"
+
+#: 
+msgid "item"
+msgstr "वस्तु"
+
+#: 
+msgid "family"
+msgstr "परिवार"
+
+#: 
+msgid "Date Entered"
+msgstr "दर्ज की गई तिथि"
+
+#: 
+msgid "CSV Import"
+msgstr "CSV आयात"
+
+#: 
+msgid "Members:"
+msgstr "सदस्य:"
+
+#: 
+msgid "Inactive"
+msgstr "निष्क्रिय"
+
+#: 
+msgid "Start Time"
+msgstr "प्रारंभ समय"
+
+#: 
+msgid "Filter by Fund"
+msgstr "फंड द्वारा फ़िल्टर करें"
+
+#: 
+msgid "Estimated value"
+msgstr "अनुमानित मूल्य"
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "विशेषता सफलतापूर्वक सौंपी गई।"
+
+#: 
+msgid "The property could not be assigned."
+msgstr "विशेषता सौंपी नहीं जा सकी।"
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "विशेषता सफलतापूर्वक हटा दी गई।"
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "विशेषता हटाई नहीं जा सकी।"
+
+#: 
+msgid "Select event"
+msgstr "कार्यक्रम चुनें"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "व्यक्ति पहले ही इस कार्यक्रम के लिए चेक-इन कर चुका है"
+
+#: 
+msgid "CheckOut Person"
+msgstr "व्यक्ति को चेक-आउट करें"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "चेक-इन प्रविष्टि हटाएं"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "व्यक्ति को चेक-आउट करने वाला वयस्क"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "ईमेल/रिपोर्ट में नाम से पहले का टेक्स्ट"
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "जमा पर्ची पर बिल गणना प्रदर्शित करें"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "आपका खाता हटा दिया गया था"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "आपका ChurchCRM खाता हटा दिया गया था।"
+
+#: 
+msgid "Account Locked"
+msgstr "खाता लॉक किया गया"
+
+#: 
+msgid "Your New Account"
+msgstr "आपका नया खाता"
+
+#: 
+msgid "Password Reset"
+msgstr "पासवर्ड रीसेट"
+
+#: 
+msgid "Account Unlocked"
+msgstr "खाता अनलॉक किया गया"
+
+#: 
+msgid "View Photo"
+msgstr "फोटो देखें"
+
+#: 
+msgid "Status"
+msgstr "स्थिति"
+
+#: 
+msgid "Email export"
+msgstr "ईमेल निर्यात"
+
+#: 
+msgid "Include"
+msgstr "शामिल करें"
+
+#: 
+msgid "Exclude"
+msgstr "बाहर रखें"
+
+#: 
+msgid "View Cart"
+msgstr "कार्ट देखें"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "आपकी कार्ट खाली है"
+
+#: 
+msgid "View on Map"
+msgstr "नक्शे पर देखें"
+
+#: 
+msgid "Legend"
+msgstr "संकेत-चिह्न (लीजेंड)"
+
+#: 
+msgid "assigned"
+msgstr "सौंपा गया"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "उन छात्रों को दिखाया जा रहा है जिनका जन्मदिन इसमें है:"
+
+#: 
+msgid "Action Confirmation"
+msgstr "कार्रवाई की पुष्टि"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "कृपया विफल लॉगिन गणना को रीसेट करने की पुष्टि करें"
+
+#: 
+msgid "SMTP Server timeout in sec"
+msgstr "SMTP सर्वर टाइमआउट (सेकंड में)"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "निष्क्रिय परिवारों को बाहर रखें"
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "भूमिका सफलतापूर्वक सौंपी गई।"
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "बिंग मैप API के लिए एक अद्वितीय कुंजी की आवश्यकता होती है"
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "गूगल मैप्स ज़ूम"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "GeoCoder प्रदाता चुनें"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "आपका ChurchCRM खाता लॉक कर दिया गया था।"
+
+#: 
+msgid "system user created"
+msgstr "सिस्टम उपयोगकर्ता बनाया गया"
+
+#: 
+msgid "system user updated"
+msgstr "सिस्टम उपयोगकर्ता अपडेट किया गया"
+
+#: 
+msgid "system user deleted"
+msgstr "सिस्टम उपयोगकर्ता हटा दिया गया"
+
+#: 
+msgid "system user password reset"
+msgstr "सिस्टम उपयोगकर्ता पासवर्ड रीसेट"
+
+#: 
+msgid "system user changed password"
+msgstr "सिस्टम उपयोगकर्ता ने पासवर्ड बदला"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "एडमिन द्वारा सिस्टम उपयोगकर्ता का पासवर्ड बदला गया"
+
+#: 
+msgid "system user login reset"
+msgstr "सिस्टम उपयोगकर्ता लॉगिन रीसेट"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "परिवार नहीं मिल रहे? अभी परिवार के अक्षांश या देशांतर अपडेट करें।"
+
+#: 
+msgid "Families without Geo Info"
+msgstr "भौगोलिक जानकारी के बिना परिवार"
+
+#: 
+msgid "Notification for"
+msgstr "इसके लिए अधिसूचना"
+
+#: 
+msgid "DEBUG"
+msgstr "डीबग (DEBUG)"
+
+#: 
+msgid "INFO"
+msgstr "सूचना (INFO)"
+
+#: 
+msgid "NOTICE"
+msgstr "ध्यान दें (NOTICE)"
+
+#: 
+msgid "WARNING"
+msgstr "चेतावनी (WARNING)"
+
+#: 
+msgid "ERROR"
+msgstr "त्रुटि (ERROR)"
+
+#: 
+msgid "CRITICAL"
+msgstr "गंभीर (CRITICAL)"
+
+#: 
+msgid "ALERT"
+msgstr "सतर्कता (ALERT)"
+
+#: 
+msgid "EMERGENCY"
+msgstr "आपातकालीन (EMERGENCY)"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "लिखने के लिए इवेंट लॉग की गंभीरता, ORM और ऐप लॉग द्वारा उपयोग की जाती है"
+
+#: 
+msgid "Time zone"
+msgstr "समय क्षेत्र"
+
+#: 
+msgid "Nexmo SMS API Key"
+msgstr "Nexmo SMS API कुंजी"
+
+#: 
+msgid "Nexmo SMS API Secret"
+msgstr "Nexmo SMS API सीक्रेट"
+
+#: 
+msgid "Nexmo SMS From Number"
+msgstr "Nexmo SMS प्रेषक नंबर"
+
+#: 
+msgid "OpenLP URL"
+msgstr "OpenLP URL"
+
+#: 
+msgid "OpenLP Username"
+msgstr "OpenLP उपयोगकर्ता नाम"
+
+#: 
+msgid "OpenLP Password"
+msgstr "OpenLP पासवर्ड"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "लॉगिन स्क्रीन पर 'पासवर्ड भूल गए' लिंक दिखाएं/छिपाएं"
+
+#: 
+msgid "Backup"
+msgstr "बैकअप"
+
+#: 
+msgid "Integration"
+msgstr "एकीकरण (इंटीग्रेशन)"
+
+#: 
+msgid "Notification"
+msgstr "अधिसूचना"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "इनके अभिभावक"
+
+#: 
+msgid "A notification was triggered by the classroom teacher at"
+msgstr "कक्षा शिक्षक द्वारा इस समय एक अधिसूचना ट्रिगर की गई थी:"
+
+#: 
+msgid "Please go to this location"
+msgstr "कृपया इस स्थान पर जाएं"
+
+#: 
+msgid "Your ChurchCRM password has been changed"
+msgstr "आपका ChurchCRM पासवर्ड बदल दिया गया है"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "सेकंड में सत्र टाइमआउट अवधि\n"
+"सत्र टाइमआउट को अक्षम करने के लिए शून्य पर सेट करें।"
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "PDF हैंडलिंग मोड।\n"
+"1 = फ़ाइल सहेजें संवाद\n"
+"2 = वर्तमान ब्राउज़र विंडो में खोलें"
+
+#: 
+msgid "Press CTRL + C to copy all group members' phone numbers"
+msgstr "सभी समूह सदस्यों के फोन नंबर कॉपी करने के लिए CTRL + C दबाएं"
+
+#: 
+msgid "Verify People"
+msgstr "लोगों को सत्यापित करें"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "लोग सत्यापन डैशबोर्ड"
+
+#: 
+msgid "Download family letters"
+msgstr "पारिवारिक पत्र डाउनलोड करें"
+
+#: 
+msgid "Send family email"
+msgstr "पारिवारिक ईमेल भेजें"
+
+#: 
+msgid "Verification recorded"
+msgstr "सत्यापन दर्ज किया गया"
+
+#: 
+msgid "Verification URL created"
+msgstr "सत्यापन URL बनाया गया"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "ईमेल भेजने में त्रुटि"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "अधिक जानकारी के लिए कृपया लॉग देखें"
+
+#: 
+msgid "Verification URL"
+msgstr "सत्यापन URL"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "अप्रत्याशित व्यक्ति आईडी"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "GitHub पर 'प्री-रिलीज़' के रूप में चिह्नित रिलीज़ के लिए सिस्टम अपग्रेड की अनुमति दें"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "कैलेंडर ईवेंट खोजें"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "कैलेंडर ईवेंट की अधिकतम संख्या"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d महीना पुराना"
+msgstr[1] "%d महीने पुराना"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d वर्ष पुराना"
+msgstr[1] "%d वर्ष पुराना"
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "PHP ZipArchive अनुपलब्ध है"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "परिणामों को कार्ट में जोड़ें"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "परिणामों को कार्ट से हटाएं"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "डेटाबेस रीसेट फ़ंक्शन"
+
+#: 
+msgid "Reset Database"
+msgstr "डेटाबेस रीसेट करें"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "यह सिस्टम डेटा को रीसेट कर देगा और सिस्टम को नए इंस्टाल के रूप में पुनरारंभ करेगा।"
+
+#. Context: locales
+#: 
+msgid "Portuguese - Portugal"
+msgstr "पुर्तगाली - पुर्तगाल"
+
+#: 
+msgid "Holiday"
+msgstr "छुट्टी"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "उपयोगकर्ताओं को 2-कारक प्रमाणीकरण (2FA) में स्वयं नामांकित होने की अनुमति दें"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "उपयोगकर्ताओं को 2-कारक प्रमाणीकरण में स्वयं नामांकित होने की आवश्यकता है"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "प्रमाणीकरण ऐप में प्रदर्शित होने वाला एप्लिकेशन नाम निर्दिष्ट करें"
+
+#: 
+msgid "Review"
+msgstr "समीक्षा"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "अपने परिवार को पंजीकृत करने के लिए धन्यवाद"
+
+#: 
+msgid "Register another family!"
+msgstr "एक और परिवार पंजीकृत करें!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "हो गया, मुझे होमपेज दिखाएं!"
+
+#: 
+msgid "User authenticated via API Key: "
+msgstr "API कुंजी के माध्यम से उपयोगकर्ता प्रमाणित: "
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "कृपया सबमिट करने से पहले सभी जानकारी की सावधानीपूर्वक समीक्षा करें। यदि आवश्यक हो तो आप परिवर्तन करने के लिए वापस जा सकते हैं।"
+
+#: 
+msgid "Previous"
+msgstr "पिछला"
+
+#: 
+msgid "Registration Error"
+msgstr "पंजीकरण त्रुटि"
+
+#: 
+msgid "Review & Submit"
+msgstr "समीक्षा करें और सबमिट करें"
+
+#: 
+msgid "Role in Family"
+msgstr "परिवार में भूमिका"
+
+#: 
+msgid "Select date"
+msgstr "तारीख चुनें"
+
+#: 
+msgid "Street address"
+msgstr "सड़क का पता"
+
+#: 
+msgid "Submit Registration"
+msgstr "पंजीकरण सबमिट करें"
+
+#: 
+msgid "Zip code is required"
+msgstr "ज़िप कोड आवश्यक है"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "एक नया पासवर्ड तैयार किया गया है और आपके ईमेल पते पर भेज दिया गया है।"
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "ChurchCRM का एक नया संस्करण स्थापना के लिए उपलब्ध है।"
+
+#: 
+msgid "Actual Hash"
+msgstr "वास्तविक हैश"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "सभी प्री-अपग्रेड जांचें सफल रहीं। आप अपग्रेड के साथ आगे बढ़ सकते हैं।"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "प्री-रिलीज़ अपग्रेड की अनुमति दें"
+
+#: 
+msgid "Apply Update Now"
+msgstr "अभी अपडेट लागू करें"
+
+#: 
+msgid "Applying System Update..."
+msgstr "सिस्टम अपडेट लागू किया जा रहा है..."
+
+#: 
+msgid "Back to Login"
+msgstr "लॉगिन पर वापस जाएं"
+
+#: 
+msgid "Backup Skipped"
+msgstr "बैकअप छोड़ दिया गया"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "नवीनतम रिलीज़ जानकारी के लिए GitHub देखें"
+
+#: 
+msgid "Complete"
+msgstr "पूर्ण"
+
+#: 
+msgid "Continue to Backup"
+msgstr "बैकअप के लिए जारी रखें"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "डाउनलोड और लागू करने के लिए जारी रखें"
+
+#: 
+msgid "Create Backup"
+msgstr "बैकअप बनाएँ"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "अपडेट लागू करने से पहले अपने डेटाबेस का बैकअप बनाएँ।"
+
+#: 
+msgid "Current Version:"
+msgstr "वर्तमान संस्करण:"
+
+#: 
+msgid "Database Backup"
+msgstr "डेटाबेस बैकअप"
+
+#: 
+msgid "Download & Apply"
+msgstr "डाउनलोड करें और लागू करें"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "सिस्टम अपडेट डाउनलोड और लागू करें"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "नवीनतम रिलीज़ डाउनलोड करें और इसे अपने ChurchCRM इंस्टॉलेशन पर लागू करें।"
+
+#: 
+msgid "Downloaded"
+msgstr "डाउनलोड किया गया"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "GitHub से नवीनतम रिलीज़ डाउनलोड की जा रही है..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "अपना लॉगिन नाम दर्ज करें और हम आपको अपना पासवर्ड रीसेट करने के लिए एक लिंक ईमेल करेंगे।"
+
+#: 
+msgid "Expected Hash"
+msgstr "अपेक्षित हैश"
+
+#: 
+msgid "Failed to create backup."
+msgstr "बैकअप बनाने में विफल।"
+
+#: 
+msgid "Failed to download update package."
+msgstr "अपडेट पैकेज डाउनलोड करने में विफल।"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "अनाथ फाइलें (Orphaned files) वे PHP या जावास्क्रिप्ट फाइलें हैं जो आपके सर्वर पर मौजूद हैं लेकिन आधिकारिक ChurchCRM रिलीज़ का हिस्सा नहीं हैं। ये फ़ाइलें पिछले संस्करणों से बची हुई हो सकती हैं और यदि उनमें कमजोरियों वाला पुराना कोड है तो सुरक्षा जोखिम पैदा कर सकती हैं।"
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "पिछले संस्करणों की अनाथ फाइलों को साफ किया गया"
+
+#: 
+msgid "Permission Required"
+msgstr "अनुमति आवश्यक"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "कृपया बैकअप फ़ाइल की जाँच करें और पुन: प्रयास करें।"
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "कृपया पुनर्स्थापित (restore) करने के लिए एक बैकअप फ़ाइल चुनें"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "सभी फाइलों को उनकी आधिकारिक स्थिति में बहाल करने के लिए वर्तमान संस्करण को फिर से डाउनलोड करें और फिर से लागू करें"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "बैकअप बनाने के लिए तैयार। ऊपर अपने विकल्प चुनें और बैकअप बटन पर क्लिक करें।"
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "पुनर्स्थापित करने के लिए तैयार। एक बैकअप फ़ाइल चुनें और डेटाबेस पुनर्स्थापित करें पर क्लिक करें।"
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "सिफारिश: अपग्रेड से पहले या बाद में इन फाइलों की समीक्षा करें और उन्हें हटा दें।"
+
+#: 
+msgid "Redirecting in"
+msgstr "इसमें रीडायरेक्ट किया जा रहा है:"
+
+#: 
+msgid "Refresh List"
+msgstr "सूची ताज़ा करें"
+
+#: 
+msgid "Regular Backups"
+msgstr "नियमित बैकअप"
+
+#: 
+msgid "Required Permission"
+msgstr "आवश्यक अनुमति"
+
+#: 
+msgid "Restore Status"
+msgstr "पुनर्स्थापना स्थिति"
+
+#: 
+msgid "Restore failed."
+msgstr "पुनर्स्थापना विफल रही।"
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "पुनर्स्थापना जारी है, कृपया प्रतीक्षा करें..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "सुरक्षा में सुधार के लिए नीचे दी गई फाइलों की समीक्षा करें और उन्हें हटा दें।"
+
+#: 
+msgid "Security Recommendation"
+msgstr "सुरक्षा अनुशंसा"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "सुरक्षा चेतावनी: अनाथ फाइलों का पता चला"
+
+#: 
+msgid "Select Backup File"
+msgstr "बैकअप फ़ाइल चुनें"
+
+#: 
+msgid "Supported formats:"
+msgstr "समर्थित प्रारूप:"
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "जिस पृष्ठ पर आप जाने का प्रयास कर रहे हैं उसके लिए विशेष अनुमति की आवश्यकता है जो वर्तमान में आपके खाते में नहीं है।"
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "ये फ़ाइलें आधिकारिक रिलीज़ का हिस्सा नहीं हैं और सुरक्षा जोखिम पैदा कर सकती हैं।"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URL में मान्य होस्टनाम नहीं है"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "URL होस्टनाम मान्य नहीं है"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URL मान्य प्रारूप में नहीं है"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URL का अंत स्लैश (/) के साथ होना चाहिए"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URL http:// या https:// से शुरू होना चाहिए"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "सिस्टम लोकेल का पता लगाने में असमर्थ"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "उपलब्ध लोकेल निर्धारित करने में असमर्थ"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "लोकेल जानकारी लोड करने में असमर्थ"
+
+#: 
+msgid "View Logs"
+msgstr "लॉग देखें"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "डीबगिंग के लिए सिस्टम लॉग फाइलें देखें और प्रबंधित करें।"
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "आपको अंतिम नाम दर्ज करना होगा।"
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "आपकी गोपनीयता महत्वपूर्ण है। हम आपकी जानकारी कभी भी तीसरे पक्ष के साथ साझा नहीं करते हैं।"
+
+#: 
+msgid "Additional Information"
+msgstr "अतिरिक्त जानकारी"
+
+#: 
+msgid "All information is correct"
+msgstr "सभी जानकारी सही है"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "अवसर सौंपें"
+
+#: 
+msgid "Assign Property"
+msgstr "विशेषता सौंपें"
+
+#: 
+msgid "Choose a property..."
+msgstr "एक विशेषता चुनें..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "पारिवारिक जानकारी की पुष्टि करें"
+
+#: 
+msgid "Email PDF"
+msgstr "PDF ईमेल करें"
+
+#: 
+msgid "Newsletter"
+msgstr "न्यूज़लेटर"
+
+#: 
+msgid "Personal"
+msgstr "व्यक्तिगत"
+
+#: 
+msgid "Submit Verification"
+msgstr "सत्यापन सबमिट करें"
+
+#: 
+msgid "Thank You!"
+msgstr "धन्यवाद!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "अनुवाद अपूर्ण"
+
+#: 
+msgid "Visit Our Website"
+msgstr "हमारी वेबसाइट पर जाएँ"
+
+#: 
+msgid "Volunteer"
+msgstr "स्वयंसेवक"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "आपका सत्यापन संसाधित करने में हमें एक त्रुटि का सामना करना पड़ा। कृपया पुन: प्रयास करें या सीधे हमसे संपर्क करें।"
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "आपका सत्यापन अनुरोध प्राप्त हो गया है। अपनी जानकारी अद्यतित रखने के लिए धन्यवाद।"
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "एक त्रुटि हुई। कृपया अपने सिस्टम प्रशासक से संपर्क करें।"
+
+#: 
+msgid "Backup failed"
+msgstr "बैकअप विफल रहा"
+
+#: 
+msgid "Database reset failed"
+msgstr "डेटाबेस रीसेट विफल रहा"
+
+#: 
+msgid "Database restore failed"
+msgstr "डेटाबेस पुनर्स्थापना विफल रही"
+
+#: 
+msgid "Demo data import failed"
+msgstr "डेमो डेटा आयात विफल रहा"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "डेमो डेटा आयात केवल ठीक 1 व्यक्ति वाले नए इंस्टॉलेशन पर उपलब्ध है"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "डेमो डेटा सफलतापूर्वक लोड किया गया"
+
+#: 
+msgid "Download failed"
+msgstr "डाउनलोड विफल रहा"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "अपग्रेड लागू करने में विफल"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "अनाथ फाइलों को हटाने में विफल"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "नवीनतम रिलीज़ डाउनलोड करने में विफल"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "अपग्रेड जानकारी रीफ्रेश करने में विफल"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "परिवार की फोटो अपलोड करने में विफल"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "व्यक्ति की फोटो अपलोड करने में विफल"
+
+#: 
+msgid "Remote backup failed"
+msgstr "रिमोट बैकअप विफल रहा"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "WebDAV बैकअप सही ढंग से कॉन्फ़िगर नहीं किए गए हैं। कृपया सुनिश्चित करें कि एंडपॉइंट, उपयोगकर्ता नाम और पासवर्ड सेट हैं"
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA सक्षम"
+
+#: 
+msgid "Active Users"
+msgstr "सक्रिय उपयोगकर्ता"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "ChMeetings निर्यात"
+
+#: 
+msgid "Delete User"
+msgstr "उपयोगकर्ता हटाएं"
+
+#: 
+msgid "Disable 2FA"
+msgstr "2FA अक्षम करें"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "बाहरी प्रणालियों में आयात के लिए सभी लोगों के डेटा को ChMeetings प्रारूप में निर्यात करें।"
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "ChMeetings CSV में निर्यात करें"
+
+#: 
+msgid "Exporting..."
+msgstr "निर्यात किया जा रहा है..."
+
+#: 
+msgid "Family Listing"
+msgstr "परिवार सूची"
+
+#: 
+msgid "Invalid request data"
+msgstr "अमान्य अनुरोध डेटा"
+
+#: 
+msgid "Invalid status"
+msgstr "अमान्य स्थिति"
+
+#: 
+msgid "Locked Users"
+msgstr "लॉक किए गए उपयोगकर्ता"
+
+#: 
+msgid "Person Listing"
+msgstr "व्यक्ति सूची"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "व्यक्ति(यों) को कार्ट से हटा दिया गया"
+
+#: 
+msgid "Quick Settings"
+msgstr "त्वरित सेटिंग्स"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "विफल लॉगिन रीसेट करें"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "ईमेल के माध्यम से पासवर्ड रीसेट करें"
+
+#: 
+msgid "Set Active"
+msgstr "सक्रिय के रूप में सेट करें"
+
+#: 
+msgid "Set Inactive"
+msgstr "निष्क्रिय के रूप में सेट करें"
+
+#: 
+msgid "Show"
+msgstr "दिखाएँ"
+
+#: 
+msgid "Showing"
+msgstr "दिखाया जा रहा है"
+
+#: 
+msgid "Total Users"
+msgstr "कुल उपयोगकर्ता"
+
+#: 
+msgid "User Management"
+msgstr "उपयोगकर्ता प्रबंधन"
+
+#: 
+msgid "View Details"
+msgstr "विवरण देखें"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "इस क्षेत्र को हटाने से, आप इस क्षेत्र के लिए निर्धारित सभी पारिवारिक डेटा स्थायी रूप से खो देंगे!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "इस क्षेत्र को हटाने से, आप इस क्षेत्र के लिए निर्धारित सभी व्यक्ति डेटा स्थायी रूप से खो देंगे!"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "क्षेत्र सफलतापूर्वक हटा दिया गया"
+
