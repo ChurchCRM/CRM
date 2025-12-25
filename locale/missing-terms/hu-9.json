@@ -1,42 +1,4 @@
 {
-  "Choose opportunities...": "",
-  "Confirm Family Information": "",
-  "Confirm family information": "",
-  "Contact & Personal Info": "",
-  "Copied!": "",
-  "Edit Role": "",
-  "Edited": "",
-  "Email PDF": "",
-  "Failed to copy URL": "",
-  "ID:": "",
-  "Newsletter": "",
-  "No assigned family": "",
-  "Open in New Tab": "",
-  "Personal": "",
-  "Please confirm your family information:": "",
-  "Please update our records with corrections": "",
-  "Provide any corrections or additional information here...": "",
-  "Remove Property": "",
-  "Select Opportunities": "",
-  "Select Property": "",
-  "Share this URL with family members to verify their information": "",
-  "Submit Verification": "",
-  "Thank You!": "",
-  "Translation incomplete": "",
-  "Visit Our Website": "",
-  "Volunteer": "",
-  "We encountered an error processing your verification. Please try again or contact us directly.": "",
-  "Your verification request has been received. Thank you for keeping your information up to date.": "",
-  "An error occurred. Please contact your system administrator.": "",
-  "Backup failed": "",
-  "Database reset failed": "",
-  "Database restore failed": "",
-  "Demo data import failed": "",
-  "Demo data import is only available on fresh installations with exactly 1 person": "",
-  "Demo data loaded successfully": "",
-  "Download failed": "",
-  "Failed to apply upgrade": "",
-  "Failed to delete orphaned files": "",
   "%d Person added to the Cart.": {
     "one": "",
     "other": ""
@@ -48,6 +10,5 @@
   "%d Person successfully added to selected Group.": {
     "one": "",
     "other": ""
-  },
-  "A ": ""
+  }
 }
