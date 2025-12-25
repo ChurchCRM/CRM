@@ -8078,3 +8078,724 @@ msgstr "Một ký tự từ Tên và một ký tự từ Họ"
 msgid "Two characters from FirstName"
 msgstr "Hai ký tự từ Tên"
 
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Tiếng Hàn"
+
+#: 
+msgid "System Logs"
+msgstr "Nhật ký hệ thống"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Áp dụng Chính sách Bảo mật Nội dung (CSP) để bảo vệ khỏi tấn công XSS. Khi tắt, các vi phạm chỉ được ghi nhận lại."
+
+#: 
+msgid "Enter event description..."
+msgstr "Nhập mô tả sự kiện..."
+
+#: 
+msgid "Event ID"
+msgstr "Mã sự kiện"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Nhập nội dung ghi chú tại đây..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "Chưa có ghi chú nào cho thành viên này."
+
+#: 
+msgid "Note"
+msgstr "Ghi chú"
+
+#: 
+msgid "Log Settings"
+msgstr "Cấu hình nhật ký"
+
+#: 
+msgid "Log Level:"
+msgstr "Mức độ nhật ký:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Lưu mức độ nhật ký"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Xem nhật ký ứng dụng. Nhấn vào tệp để xem nội dung."
+
+#: 
+msgid "Delete All Logs"
+msgstr "Xóa tất cả nhật ký"
+
+#: 
+msgid "No log files found."
+msgstr "Không tìm thấy tệp nhật ký nào."
+
+#: 
+msgid "Log File"
+msgstr "Tệp nhật ký"
+
+#: 
+msgid "Size"
+msgstr "Kích thước"
+
+#: 
+msgid "Last Modified"
+msgstr "Cập nhật lần cuối"
+
+#: 
+msgid "View"
+msgstr "Xem"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Trình xem nhật ký"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Lọc theo mức độ:"
+
+#: 
+msgid "Error"
+msgstr "Lỗi"
+
+#: 
+msgid "Info"
+msgstr "Thông tin"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Số dòng hiển thị:"
+
+#: 
+msgid "Loading log file..."
+msgstr "Đang tải tệp nhật ký..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Chưa có ghi chú nào cho gia đình này."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Mã truy cập lịch đã được tạo và lưu."
+
+#: 
+msgid "added"
+msgstr "đã thêm"
+
+#: 
+msgid "Added"
+msgstr "Đã thêm"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Đã thêm vào danh sách chọn"
+
+#: 
+msgid "All members already in cart"
+msgstr "Tất cả thành viên đã có trong danh sách"
+
+#: 
+msgid "already in cart"
+msgstr "đã có trong danh sách"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Không thể tải lịch. Vui lòng kiểm tra mã truy cập hoặc cấu hình."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Đã làm trống danh sách chọn"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Đã chuyển danh sách vào nhóm thành công"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Xóa toàn bộ danh sách đang chọn?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Không thể thêm hộ gia đình vào danh sách"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Không thể thêm nhóm vào danh sách"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Thêm vào danh sách thất bại"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Xóa danh sách thất bại"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Chuyển danh sách vào nhóm thất bại"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Không thể xóa hộ gia đình khỏi danh sách"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Xóa khỏi danh sách thất bại"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Xóa nhóm thất bại"
+
+#: 
+msgid "Family added to cart"
+msgstr "Đã thêm hộ gia đình vào danh sách"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Đã xóa hộ gia đình khỏi danh sách"
+
+#: 
+msgid "Group added to cart"
+msgstr "Đã thêm nhóm vào danh sách"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Đã xóa nhóm khỏi danh sách"
+
+#: 
+msgid "in cart"
+msgstr "trong danh sách"
+
+#: 
+msgid "members. Already had"
+msgstr "thành viên. Đã có sẵn"
+
+#: 
+msgid "people added to cart"
+msgstr "người đã được thêm vào danh sách"
+
+#: 
+msgid "people already in cart"
+msgstr "người đã có sẵn trong danh sách"
+
+#: 
+msgid "people from cart"
+msgstr "người từ danh sách"
+
+#: 
+msgid "people removed from cart"
+msgstr "người đã được xóa khỏi danh sách"
+
+#: 
+msgid "Person already in cart"
+msgstr "Người này đã có trong danh sách"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Xóa hộ gia đình này khỏi danh sách?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Xóa nhóm này khỏi danh sách?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Xóa người này khỏi danh sách?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Đã xóa khỏi danh sách thành công"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Có, xóa hết"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Có, xóa bỏ"
+
+#: 
+msgid "Add Group"
+msgstr "Thêm nhóm"
+
+#: 
+msgid "Back to Group List"
+msgstr "Quay lại danh sách nhóm"
+
+#: 
+msgid "Default role updated."
+msgstr "Đã cập nhật vai trò mặc định."
+
+#: 
+msgid "Edit Group"
+msgstr "Chỉnh sửa nhóm"
+
+#: 
+msgid "Enter group name"
+msgstr "Nhập tên nhóm"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "Lỗi thêm vai trò. Vui lòng thử lại."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Lỗi tạo nhóm. Vui lòng thử lại."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Lỗi tải trạng thái danh sách chọn."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Lỗi tải nhóm. Vui lòng tải lại trang."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "Để trống nếu không muốn đổi mật khẩu"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Vui lòng nhập tên nhóm."
+
+#: 
+msgid "Role added successfully."
+msgstr "Đã thêm vai trò thành công."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Đã xóa vai trò thành công."
+
+#: 
+msgid "Role name updated."
+msgstr "Đã cập nhật tên vai trò."
+
+#: 
+msgid "View Group"
+msgstr "Xem nhóm"
+
+#: 
+msgid "Events Today"
+msgstr "Sự kiện hôm nay"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Tổng quan Trường Chúa Nhật"
+
+#: 
+msgid "Add Family Member"
+msgstr "Thêm thành viên gia đình"
+
+#: 
+msgid "Address is required"
+msgstr "Yêu cầu nhập địa chỉ"
+
+#: 
+msgid "Email Address"
+msgstr "Địa chỉ Email"
+
+#: 
+msgid "Family Information"
+msgstr "Thông tin hộ gia đình"
+
+#: 
+msgid "Family name is required"
+msgstr "Yêu cầu nhập tên hộ gia đình (tộc họ)"
+
+#: 
+msgid "First name"
+msgstr "Tên"
+
+#: 
+msgid "Home phone number"
+msgstr "Số điện thoại nhà"
+
+#: 
+msgid "Invalid format"
+msgstr "Định dạng không hợp lệ"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "Ghi danh hộ gia đình để tham gia cộng đoàn chúng tôi"
+
+#: 
+msgid "Last name"
+msgstr "Họ và tên đệm"
+
+#: 
+msgid "Next Member"
+msgstr "Thành viên tiếp theo"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Mật khẩu không khớp"
+
+#: 
+msgid "Phone number"
+msgstr "Số điện thoại"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Vui lòng điền đúng các thông tin bắt buộc."
+
+#: 
+msgid "Previous"
+msgstr "Quay lại"
+
+#: 
+msgid "Registration Error"
+msgstr "Lỗi đăng ký"
+
+#: 
+msgid "Review & Submit"
+msgstr "Kiểm tra & Gửi"
+
+#: 
+msgid "Role in Family"
+msgstr "Vai trò trong gia đình"
+
+#: 
+msgid "Select date"
+msgstr "Chọn ngày"
+
+#: 
+msgid "Submit Registration"
+msgstr "Gửi đăng ký"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "Mật khẩu mới đã được tạo và gửi vào email của bạn."
+
+#: 
+msgid "Apply Update Now"
+msgstr "Cập nhật ngay"
+
+#: 
+msgid "Back to Login"
+msgstr "Quay lại đăng nhập"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Đã bỏ qua sao lưu"
+
+#: 
+msgid "Complete"
+msgstr "Hoàn tất"
+
+#: 
+msgid "Current Version:"
+msgstr "Phiên bản hiện tại:"
+
+#: 
+msgid "Database Backup"
+msgstr "Sao lưu cơ sở dữ liệu"
+
+#: 
+msgid "Download & Apply"
+msgstr "Tải về & Áp dụng"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "Tôi đã hiểu - Tiếp tục"
+
+#: 
+msgid "Release Notes:"
+msgstr "Ghi chú phiên bản:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "Yêu cầu cấp lại mật khẩu"
+
+#: 
+msgid "System Up to Date"
+msgstr "Hệ thống đã mới nhất"
+
+#: 
+msgid "Update Available!"
+msgstr "Có phiên bản cập nhật!"
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "Cập nhật thành công!"
+
+#: 
+msgid "Warnings"
+msgstr "Cảnh báo"
+
+#: 
+msgid "No Data Found"
+msgstr "Không có dữ liệu"
+
+#: 
+msgid "Checks"
+msgstr "Chi phiếu"
+
+#: 
+msgid "Clear Filters"
+msgstr "Xóa bộ lọc"
+
+#: 
+msgid "Delete Selected"
+msgstr "Xóa mục đã chọn"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Đã lưu khoản đóng góp thành công"
+
+#: 
+msgid "Funds"
+msgstr "Các quỹ"
+
+#: 
+msgid "Generate Report"
+msgstr "Xuất báo cáo"
+
+#: 
+msgid "Payments"
+msgstr "Các khoản đóng góp"
+
+#: 
+msgid "Saving..."
+msgstr "Đang lưu..."
+
+#: 
+msgid "Total Deposit"
+msgstr "Tổng nộp"
+
+#: 
+msgid "Total Payments"
+msgstr "Tổng khoản thu"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "Cài đặt ChurchCRM"
+
+#: 
+msgid "Copy"
+msgstr "Sao chép"
+
+#: 
+msgid "Debug Info"
+msgstr "Thông tin gỡ lỗi"
+
+#: 
+msgid "Email Configuration"
+msgstr "Cấu hình Email"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Nhập dữ liệu mẫu"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Bao gồm sự kiện và lịch"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Bao gồm dữ liệu tài chính (quỹ dâng hiến, hứa dâng)"
+
+#: 
+msgid "Server Information"
+msgstr "Thông tin máy chủ"
+
+#: 
+msgid "Attendance Notes"
+msgstr "Ghi chú hiện diện"
+
+#: 
+msgid "Check In"
+msgstr "Điểm danh"
+
+#: 
+msgid "Check-in"
+msgstr "Ghi danh"
+
+#: 
+msgid "Create New Event"
+msgstr "Tạo sự kiện mới"
+
+#: 
+msgid "Event Types"
+msgstr "Loại sự kiện"
+
+#: 
+msgid "Head Count"
+msgstr "Số người tham dự"
+
+#: 
+msgid "Recurrence"
+msgstr "Lặp lại"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Bảng điều khiển quản trị"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Thao tác nâng cao"
+
+#: 
+msgid "Birth & Family"
+msgstr "Ngày sinh & Gia đình"
+
+#: 
+msgid "Cart"
+msgstr "Giỏ chọn"
+
+#: 
+msgid "Church Membership"
+msgstr "Thành viên Giáo hội"
+
+#: 
+msgid "Coming soon"
+msgstr "Sắp ra mắt"
+
+#: 
+msgid "Contact Information"
+msgstr "Thông tin liên lạc"
+
+#: 
+msgid "Create Deposit"
+msgstr "Tạo đợt đóng góp"
+
+#: 
+msgid "Current Deposit"
+msgstr "Đợt đóng góp hiện tại"
+
+#: 
+msgid "Finance"
+msgstr "Tài chính"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "Bảng quản lý tài chính"
+
+#: 
+msgid "Manage Funds"
+msgstr "Quản lý các quỹ"
+
+#: 
+msgid "Manage Users"
+msgstr "Quản lý người dùng"
+
+#: 
+msgid "Quick Actions"
+msgstr "Thao tác nhanh"
+
+#: 
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: 
+msgid "Social Media"
+msgstr "Mạng xã hội"
+
+#: 
+msgid "Today"
+msgstr "Hôm nay"
+
+#: 
+msgid "Total"
+msgstr "Tổng cộng"
+
+#: 
+msgid "active"
+msgstr "đang hoạt động"
+
+#: 
+msgid "ago"
+msgstr "trước"
+
+#: 
+msgid "day"
+msgstr "ngày"
+
+#: 
+msgid "days"
+msgstr "ngày"
+
+#: 
+msgid "open"
+msgstr "đang mở"
+
+#: 
+msgid "years"
+msgstr "năm"
+
+#: 
+msgid "yes"
+msgstr "có"
+
+#: 
+msgid "Additional Information"
+msgstr "Thông tin bổ sung"
+
+#: 
+msgid "All information is correct"
+msgstr "Mọi thông tin đã chính xác"
+
+#: 
+msgid "Copied!"
+msgstr "Đã sao chép!"
+
+#: 
+msgid "Email PDF"
+msgstr "Gửi PDF qua email"
+
+#: 
+msgid "Newsletter"
+msgstr "Bản tin/Thông báo"
+
+#: 
+msgid "Personal"
+msgstr "Cá nhân"
+
+#: 
+msgid "Submit Verification"
+msgstr "Gửi xác nhận"
+
+#: 
+msgid "Thank You!"
+msgstr "Xin cảm ơn!"
+
+#: 
+msgid "Volunteer"
+msgstr "Tình nguyện viên/Người phục vụ"
+
+#: 
+msgid "Active Users"
+msgstr "Người dùng đang hoạt động"
+
+#: 
+msgid "Delete User"
+msgstr "Xóa người dùng"
+
+#: 
+msgid "User Management"
+msgstr "Quản lý thành viên"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "Xác thực 2 lớp (2FA)"
+
+#: 
+msgid "Order"
+msgstr "Thứ tự"
+
+#: 
+msgid "Percentage"
+msgstr "Tỷ lệ phần trăm"
+
+#: 
+msgid "Warning:"
+msgstr "Cảnh báo:"
+
+#: 
+msgid "Fund(s)"
+msgstr "Quỹ"
+
