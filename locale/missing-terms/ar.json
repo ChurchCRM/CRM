@@ -1,33 +1,33 @@
 {
   "%d month old": {
-    "one": "شهر واحد",
-    "other": "%d أشهر"
+    "one": "",
+    "other": ""
   },
   "%d year old": {
-    "one": "سنة واحدة",
-    "other": "%d سنوات"
+    "one": "",
+    "other": ""
   },
   ", -, ., / allowed.": {
     "Must start with / if not empty, no trailing slash. Only letters, numbers, ": ""
   },
   "%d event in %s": {
-    "one": "حدث واحد في %s",
-    "other": "%d أحداث في %s"
+    "one": "",
+    "other": ""
   },
   "person": {
     "one": "",
     "other": ""
   },
   "%d Person added to the Cart.": {
-    "one": "تم إضافة شخص واحد إلى السلة.",
-    "other": "تم إضافة %d شخص إلى السلة."
+    "one": "",
+    "other": ""
   },
   "%d Person successfully added to selected Family.": {
-    "one": "تم إضافة شخص واحد بنجاح إلى العائلة المحددة.",
-    "other": "تم إضافة %d شخص بنجاح إلى العائلة المحددة."
+    "one": "",
+    "other": ""
   },
   "%d Person successfully added to selected Group.": {
-    "one": "تم إضافة شخص واحد بنجاح إلى المجموعة المحددة.",
-    "other": "تم إضافة %d شخص بنجاح إلى المجموعة المحددة."
+    "one": "",
+    "other": ""
   }
 }
