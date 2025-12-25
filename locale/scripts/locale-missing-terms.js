@@ -49,7 +49,7 @@ function saveMissingTermsFileBatched(poEditorCode, missingTerms) {
         fs.mkdirSync(OUTPUT_DIR, { recursive: true });
     }
     
-    const TERMS_PER_FILE = 400;
+    const TERMS_PER_FILE = 100;
     const entries = Object.entries(missingTerms);
     const files = [];
     let batchNumber = 1;
