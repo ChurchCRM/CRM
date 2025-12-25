@@ -2,8 +2,8 @@
 
 **Total Supported Locales:** 45
 **Complete Locales (≥75%):** 31
-**Good Locales (51-74%):** 0
-**Needs Work (<51%):** 14
+**Good Locales (51-74%):** 1
+**Needs Work (<51%):** 13
 **WIP Candidates (>5%, not yet added):** 6
 
 ## Locale Completeness Overview
@@ -15,7 +15,10 @@
 | `ko` | Korean | 2733 | 100% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2733 | 100% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 2733 | 100% | 🟢 Complete | ✅ Yes |
+| `af` | Afrikaans | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `de` | German | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
@@ -32,25 +35,22 @@
 | `tr` | Turkish | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `vi` | Vietnamese | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 2731 | 99.93% | 🟢 Complete | ✅ Yes |
-| `af` | Afrikaans | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 2726 | 99.74% | 🟢 Complete | ✅ Yes |
 | `pl` | Polish | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 2312 | 84.6% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 2312 | 84.6% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 1496 | 54.74% | 🟡 Good | ✅ Yes |
+| `nb` | Norwegian Bokmål | 1327 | 48.55% | 🟠 Needs Work | ✅ Yes |
 | `sq` | Albanian | 1102 | 40.32% | 🟠 Needs Work | ✅ Yes |
-| `hu` | Hungarian | 1073 | 39.26% | 🟠 Needs Work | ✅ Yes |
-| `nb` | Norwegian Bokmål | 792 | 28.98% | 🟠 Needs Work | ✅ Yes |
+| `ja` | Japanese | 931 | 34.07% | 🟠 Needs Work | ✅ Yes |
+| `fi` | Finnish | 672 | 24.59% | 🟠 Needs Work | ✅ Yes |
+| `hi` | Hindi | 535 | 19.58% | 🟠 Needs Work | ✅ Yes |
 | `te` | Telugu | 331 | 12.11% | 🟠 Needs Work | ✅ Yes |
-| `ja` | Japanese | 196 | 7.17% | 🟠 Needs Work | ✅ Yes |
-| `fi` | Finnish | 143 | 5.23% | 🟠 Needs Work | ✅ Yes |
 | `sl` | Slovenian | 82 | 3% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 80 | 2.93% | 🟠 Needs Work | ❌ No |
 | `en-za` | English (ZA) | 80 | 2.93% | N/A | ✅ Yes |
-| `hi` | Hindi | 77 | 2.82% | 🟠 Needs Work | ✅ Yes |
 | `sr-cyrl` | Serbian (Cyrillic) | 74 | 2.71% | 🟠 Needs Work | ❌ No |
 | `th` | Thai | 55 | 2.01% | 🟠 Needs Work | ✅ Yes |
 | `lv` | Latvian | 46 | 1.68% | 🟠 Needs Work | ❌ No |
@@ -65,9 +65,9 @@
 ## Status Summary
 
 - **🟢 Complete (≥75%):** 31 locales ready for production
-- **🟡 Good (51-74%):** 0 locales with solid translation coverage
-- **🟠 Needs Work (<51%):** 8 locales requiring translator attention
-- **🔴 Incomplete:** 2 locales (requiring translator attention)
+- **🟡 Good (51-74%):** 1 locales with solid translation coverage
+- **🟠 Needs Work (<51%):** 7 locales requiring translator attention
+- **🔴 Incomplete:** 1 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
 
 ## WIP Candidates (not yet in system)

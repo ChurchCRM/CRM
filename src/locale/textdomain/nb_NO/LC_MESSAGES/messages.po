@@ -144,6 +144,10 @@ msgid "Depends whether using person or family output method"
 msgstr "Avhengig enten du bruker person eller familie utskriftsmetode"
 
 #: 
+msgid "Custom Field Selection"
+msgstr "Valg av egendefinerte felt"
+
+#: 
 msgid "Custom Person Fields"
 msgstr "Egendefinerte Person Felt"
 
@@ -558,6 +562,10 @@ msgstr "Konverter alle"
 #, fuzzy
 msgid "Deposit Slip Number"
 msgstr "Innskudd Slip Antall"
+
+#: 
+msgid "Deposit Details"
+msgstr "Innskuddsdetaljer"
 
 #: 
 #, fuzzy
@@ -1362,6 +1370,10 @@ msgid "Summary Data"
 msgstr "Oppsummeringsdata"
 
 #: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Stemmeberettigede medlemmer må ha gitt<br> en donasjon i løpet av de siste årene<br> (0 for å ikke kreve donasjon)"
+
+#: 
 msgid "CSV"
 msgstr "CSV"
 
@@ -1744,6 +1756,10 @@ msgid "This will also delete all Roles and Group-Specific Property data associat
 msgstr "Dette vil også slette alle Roller og Gruppe-spesifikk egenskap data knyttet til denne gruppen posten."
 
 #: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "Alle gruppemedlemskap og egenskaper vil bli slettet. Selve gruppemedlemmene vil ikke bli endret."
+
+#: 
 msgid "Please select target group for members"
 msgstr "Velg målgruppe for Medlemmer"
 
@@ -1887,6 +1903,14 @@ msgid "Assign starting at #"
 msgstr "Tilordning:"
 
 #: 
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr "Kan ikke vise kartet fordi kirkens breddegrad eller lengdegrad mangler. Vennligst oppdater kirkens adresse i innstillingsmenyen."
+
+#: 
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
+msgstr "Google Map API-nøkkel er ikke angitt. Kartet vil fungere for et mindre antall lokasjoner. Vennligst opprett en nøkkel under kartseksjonen i innstillingsmenyen."
+
+#: 
 msgid "Member Role Change"
 msgstr "Medlem Rolle Endre"
 
@@ -1923,6 +1947,10 @@ msgstr "Familie geografi"
 #: 
 msgid "Update All Family Coordinates"
 msgstr "Oppdater alle Family Koordinater"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "Muligheter for frivillige"
 
 #: 
 msgid "Families"
@@ -1969,6 +1997,10 @@ msgid "Count"
 msgstr "Telle"
 
 #: 
+msgid "People Classification"
+msgstr "Klassifisering av personer"
+
+#: 
 msgid "Gender Demographics"
 msgstr "Kjønnsdemografi"
 
@@ -1983,6 +2015,10 @@ msgstr "Jenter"
 #: 
 msgid "Sunday School Classes"
 msgstr "Søndagsskoleklasse"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "Sporing av innskudd"
 
 #: 
 msgid "Latest Families"
@@ -2660,6 +2696,10 @@ msgid "Add Records"
 msgstr "Legg Records"
 
 #: 
+msgid "Edit Records"
+msgstr "Rediger poster"
+
+#: 
 #, fuzzy
 msgid "Delete Records"
 msgstr "Slett Records"
@@ -2705,6 +2745,10 @@ msgstr "(Grants alle privilegier.)"
 #, fuzzy
 msgid "Style"
 msgstr "Stil"
+
+#: 
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr "Sett tillatelse til 'Sann' for å gi denne brukeren muligheten til å endre sin gjeldende verdi."
 
 #: 
 msgid "User Settings"
@@ -2793,6 +2837,10 @@ msgstr "Har du noen forslag til oss?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Hvordan fikk du vite av kirken?"
+
+#: 
+msgid "eMail Dashboard"
+msgstr "E-post dashbord"
 
 #: 
 msgid "Assigned envelope numbers to all families with at least one member."
@@ -2954,6 +3002,30 @@ msgstr "Kursiv"
 #: 
 msgid " Bold"
 msgstr "Fet"
+
+#: 
+msgid "Error making API Call to"
+msgstr "Feil ved API-kall til"
+
+#: 
+msgid "Error text"
+msgstr "Feiltekst"
+
+#: 
+msgid "Issue Report!"
+msgstr "Feilrapport!"
+
+#: 
+msgid "No personally identifiable information will be submitted unless you purposefully include it."
+msgstr "Ingen personlig identifiserbar informasjon vil bli sendt med mindre du bevisst inkluderer det."
+
+#: 
+msgid "Dashboard"
+msgstr "Dashbord"
+
+#: 
+msgid "Change Password"
+msgstr "Bytt passord"
 
 #: 
 msgid "Home"
@@ -3258,6 +3330,10 @@ msgid "Discard"
 msgstr "Forkast"
 
 #: 
+msgid "Sunday School Dashboard"
+msgstr "Søndagsskole dashbord"
+
+#: 
 msgid "Classes"
 msgstr "Klasser"
 
@@ -3290,6 +3366,14 @@ msgstr "Raportdetaljer"
 #, fuzzy
 msgid "To select multiple hold CTL"
 msgstr "Slik velger du flere hold CTL"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups<br>"
+msgstr "Flere grupper vil ha sideskift mellom gruppene<br>"
+
+#: 
+msgid "List all Roles (unchecked will list Teacher/Student roles only)"
+msgstr "List alle roller (hvis ikke krysset av, vises kun lærer/elev-roller)"
 
 #: 
 #, fuzzy
@@ -3347,4 +3431,2382 @@ msgstr "Fundrasier"
 #: 
 msgid "Email Export"
 msgstr "Eksporte"
+
+#: 
+msgid "List"
+msgstr "Liste"
+
+#: 
+msgid "Import Data"
+msgstr "Importer data"
+
+#: 
+msgid "Are you sure you want to delete the selected"
+msgstr "Er du sikker på at du vil slette de valgte"
+
+#: 
+msgid "Deposit(s)"
+msgstr "Innskudd"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "Dette vil også slette alle betalinger tilknyttet dette innskuddet"
+
+#: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "Denne handlingen kan IKKE angres, og kan ha juridiske konsekvenser!"
+
+#: 
+msgid "Please ensure this what you want to do."
+msgstr "Vennligst forsikre deg om at dette er det du ønsker å gjøre."
+
+#: 
+msgid "Deposit Type"
+msgstr "Innskuddstype"
+
+#: 
+msgid "Deposit Date"
+msgstr "Innskuddsdato"
+
+#: 
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr "Dette vil overskrive familiens konvoluttnummer i databasen med de som er valgt på denne siden. Fortsette?"
+
+#: 
+msgid "Family Select"
+msgstr "Velg familie"
+
+#: 
+msgid "with at least one:"
+msgstr "med minst én:"
+
+#: 
+msgid "Welcome to"
+msgstr "Velkommen til"
+
+#: 
+msgid "Church Information"
+msgstr "Kirkeinformasjon"
+
+#: 
+msgid "Email Setup"
+msgstr "E-postoppsett"
+
+#: 
+msgid "Map Settings"
+msgstr "Kartinnstillinger"
+
+#: 
+msgid "Report Settings"
+msgstr "Rapportinnstillinger"
+
+#: 
+msgid "Localization"
+msgstr "Lokalisering"
+
+#: 
+msgid "Setting saved"
+msgstr "Innstilling lagret"
+
+#: 
+msgid "Edit JSON Settings"
+msgstr "Rediger JSON-innstillinger"
+
+#: 
+msgid "Default Value"
+msgstr "Standardverdi"
+
+#: 
+msgid "False"
+msgstr "Usann"
+
+#: 
+msgid "True"
+msgstr "Sann"
+
+#: 
+msgid "Edit Settings"
+msgstr "Rediger innstillinger"
+
+#: 
+msgid "Full Path:"
+msgstr "Full sti:"
+
+#: 
+msgid "Backup Complete, Ready for Download."
+msgstr "Sikkerhetskopiering fullført, klar for nedlasting."
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "Sikkerhetskopi lastet ned, kopi på server er slettet"
+
+#: 
+msgid "Campaigns:"
+msgstr "Kampanjer:"
+
+#: 
+msgid "Unsubscribed count:"
+msgstr "Antall avmeldte:"
+
+#: 
+msgid "Unsubscribed count since last send:"
+msgstr "Antall avmeldte siden forrige utsending:"
+
+#: 
+msgid "Cleaned count:"
+msgstr "Antall rensede (feilaktige e-poster):"
+
+#: 
+msgid "Cleaned count since last send:"
+msgstr "Antall rensede siden forrige utsending:"
+
+#: 
+msgid "Functions"
+msgstr "Funksjoner"
+
+#: 
+msgid "Export to CSV"
+msgstr "Eksporter til CSV"
+
+#: 
+msgid "Add"
+msgstr "Legg til"
+
+#: 
+msgid "Enter Name"
+msgstr "Oppgi navn"
+
+#: 
+msgid "New Release"
+msgstr "Ny utgave"
+
+#: 
+msgid "Self Registration"
+msgstr "Selvregistrering"
+
+#: 
+msgid "No coordinates found"
+msgstr "Ingen koordinater funnet"
+
+#: 
+msgid "Anonymous"
+msgstr "Anonym"
+
+#: 
+msgid "Registration Complete"
+msgstr "Registrering fullført"
+
+#: 
+msgid "Add All Classes"
+msgstr "Legg til alle klasser"
+
+#: 
+msgid "Clear All Classes"
+msgstr "Tøm alle klasser"
+
+#: 
+msgid "Add All Families"
+msgstr "Legg til alle familier"
+
+#: 
+msgid "Clear All Families"
+msgstr "Tøm alle familier"
+
+#: 
+msgid "Add All Funds"
+msgstr "Legg til alle fond"
+
+#: 
+msgid "Clear All Funds"
+msgstr "Tøm alle fond"
+
+#: 
+msgid "Deposit Comment"
+msgstr "Kommentar til innskudd"
+
+#: 
+msgid "Your previous session timed out.  Please login again."
+msgstr "Din forrige økt utløp. Vennligst logg inn på nytt."
+
+#: 
+msgid "Register a New Family"
+msgstr "Registrer en ny familie"
+
+#: 
+msgid "Signature definition file signature failed validation"
+msgstr "Signaturdefinisjonsfilens signatur validerte ikke"
+
+#: 
+msgid "One or more files failed signature validation"
+msgstr "Én eller flere filer feilet ved signaturvalidering"
+
+#: 
+msgid "item"
+msgstr "element"
+
+#: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
+
+#: 
+msgid "Buyer # "
+msgstr "Kjøpernr. "
+
+#: 
+msgid "Family Members:"
+msgstr "Familiemedlemmer:"
+
+#: 
+msgid "Anniversary"
+msgstr "Jubileum"
+
+#: 
+msgid "Notes"
+msgstr "Notater"
+
+#: 
+msgid "Reports"
+msgstr "Rapporter"
+
+#: 
+msgid "File Name:"
+msgstr "Filnavn:"
+
+#: 
+msgid "family"
+msgstr "familie"
+
+#: 
+msgid "Date Entered"
+msgstr "Dato lagt inn"
+
+#: 
+msgid "CSV Import"
+msgstr "CSV-import"
+
+#: 
+msgid "Members:"
+msgstr "Medlemmer:"
+
+#: 
+msgid "There were "
+msgstr "Det var "
+
+#: 
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: 
+msgid "Start Time"
+msgstr "Starttid"
+
+#: 
+msgid "Filter by Fund"
+msgstr "Filtrer på fond"
+
+#: 
+msgid "Estimated value"
+msgstr "Anslått verdi"
+
+#: 
+msgid "Disable Group Specific Properties"
+msgstr "Deaktiver gruppespesifikke egenskaper"
+
+#: 
+msgid "Text Group"
+msgstr "Tekstgruppe"
+
+#: 
+msgid "Group Properties"
+msgstr "Gruppeegenskaper"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "Det oppsto et problem ved henting av det forespurte objektet"
+
+#: 
+msgid "All"
+msgstr "Alle"
+
+#: 
+msgid "Family Map"
+msgstr "Familiekart"
+
+#: 
+msgid "Groups"
+msgstr "Grupper"
+
+#: 
+msgid "Total $"
+msgstr "Total sum"
+
+#: 
+msgid "with this property..."
+msgstr "med denne egenskapen..."
+
+#: 
+msgid "Church Email"
+msgstr "Kirkens e-post"
+
+#: 
+msgid "Include only these classifications in the directory, comma separated"
+msgstr "Inkluder kun disse klassifiseringene i katalogen, kommaseparert"
+
+#: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "Dette er tallene for familieroller som er utpekt som overhode for husstanden"
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "Dette er tallene for familieroller som er utpekt som ektefelle"
+
+#: 
+msgid "These are the family role numbers designated as child"
+msgstr "Dette er tallene for familieroller som er utpekt som barn"
+
+#: 
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr "Skal kun administratorer ha tilgang til CSV-eksportsystemet og katalograpporten?"
+
+#: 
+msgid "Minimum length a user may set their password to"
+msgstr "Minimumslengde en bruker kan sette passordet sitt til"
+
+#: 
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr "En kommaseparert liste over ulovlige (for åpenbare) passord."
+
+#: 
+msgid "Default City"
+msgstr "Standard by"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "Standard fylke/stat - må være forkortelse på to bokstaver!"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "Standardkonto for mottak av en kopi av alle e-poster"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "SMTP-serveradresse (mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "Krever SMTP-serveren din autentisering (brukernavn/passord)?"
+
+#: 
+msgid "SMTP Username"
+msgstr "SMTP-brukernavn"
+
+#: 
+msgid "SMTP Password"
+msgstr "SMTP-passord"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "Støtte for internasjonalisering (I18n)"
+
+#: 
+msgid "First month of the fiscal year"
+msgstr "Første måned i regnskapsåret"
+
+#: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "Kirkens breddegrad, brukt til å sentrere Google-kartet"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "Kirkens lengdegrad, brukt til å sentrere Google-kartet"
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "Sett til 'Sann' for å deaktivere inntasting av venneskapsdato i personredigering. Sett til 'Usann' for å aktivere."
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "Sett til 'Sann' for å deaktivere administrasjon av nyhetsbrevabonnement i familieredigering."
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "Sett til 'Sann' for å deaktivere inntasting av bryllupsdato i familieredigering. Sett til 'Usann' for å aktivere."
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "Sett til 'Sann' for å deaktivere inntasting av koordinater i familieredigering. Oppslag gjøres fortsatt, men vises ikke."
+
+#: 
+msgid "Set true to enable use of donation envelopes"
+msgstr "Sett til 'Sann' for å aktivere bruk av donasjonskonvolutter"
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "Skriv inn HTML-kode som skal vises som overskrift øverst på hver side. Husk å lukke taggene!"
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Antall sjekker for innskuddsblankett-rapport"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "Sett til 'Sann' for å aktivere bruk av skannede sjekker"
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "Enhet brukt for avstand, miles eller km."
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "Navn på markører for Google Maps i rekkefølge etter klassifisering"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "Aktiver ikke-fradragsberettigede betalinger"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "Sett til 'Sann' for å aktivere selvregistrering for familier."
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "Venstremargin (1 = 1/100 tomme)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "Linjetykkelse (1 = 1/100 tomme)"
+
+#: 
+msgid "Church City"
+msgstr "Kirkens by"
+
+#: 
+msgid "Church State"
+msgstr "Kirkens fylke/stat"
+
+#: 
+msgid "Church Zip"
+msgstr "Kirkens postnummer"
+
+#: 
+msgid "Church Phone"
+msgstr "Kirkens telefonnummer"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "Tekst for øverste linje i skatterapporten. Datoer vil bli lagt til i slutten av denne linjen."
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "Tekst for nederste linje i skatterapporten."
+
+#: 
+msgid "Tax Report signer"
+msgstr "Undertegner av skatterapport"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "Tekst for rapport om påminnelse for lovnader"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "Undertegner av påminnelse for lovnader"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "Tekst for påminnelse om lovnad - ingen registrert lovnad"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "Tekst for påminnelse om lovnad - ingen registrerte betalinger"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "Tekst for rapport om bekreftelse og korrigering av databaseinformasjon"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "Undertegner av rapport om bekreftelse og korrigering av databaseinformasjon"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "Tekst for rapport om lovnadssammendrag"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "Tekst for katalograpporten"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "Sti og fil for kirkens brevhodepapir"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "Slå opp brukerbilder på Gravatar når lokalt bilde ikke finnes"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "Aktiver ekstern sikkerhetskopiering til skytjenester"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "Skytjenestetype (Støttede verdier: WebDAV, Lokal)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "Brukernavn for ekstern sikkerhetskopiering"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "Passord for ekstern sikkerhetskopiering"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "Intervall i timer for automatisk ekstern sikkerhetskopiering"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "Tidspunkt for siste sikkerhetskopiering"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "Innstillinger for QuickBooks innskuddsseddel"
+
+#: 
+msgid "List Groups"
+msgstr "List grupper"
+
+#: 
+msgid "List Church Events"
+msgstr "List kirkehendelser"
+
+#: 
+msgid "Add Church Event"
+msgstr "Legg til kirkehendelse"
+
+#: 
+msgid "List Event Types"
+msgstr "List hendelsestyper"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "Innsjekking og utsjekking"
+
+#: 
+msgid "View All Deposits"
+msgstr "Vis alle innskudd"
+
+#: 
+msgid "Deposit Reports"
+msgstr "Innskuddsrapporter"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "Rediger innskuddsblankett"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "Vis alle innsamlingsaksjoner"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "Opprett ny innsamlingsaksjon"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "Rediger innsamlingsaksjon"
+
+#: 
+msgid "View Buyers"
+msgstr "Vis kjøpere"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "Legg til donorer i kjøperlisten"
+
+#: 
+msgid "Data/Reports"
+msgstr "Data/Rapporter"
+
+#: 
+msgid "Query Menu"
+msgstr "Spørringsmeny"
+
+#: 
+msgid "CSV Export Records"
+msgstr "CSV-eksport av poster"
+
+#: 
+msgid "Family Properties"
+msgstr "Familieegenskaper"
+
+#: 
+msgid "Property Types"
+msgstr "Egenskapstyper"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Zip Code"
+msgstr "Postnummer"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Arbeid e-post"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Fast gjenger"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Gjest"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "Ikke-gjenger"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Ikke-gjenger (stab)"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Minimum alder"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Maksimum alder"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Startdato"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Sluttdato"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Søk"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field"
+msgstr "Felt"
+
+#. Context: query_qry
+#. Context: queryparameters_qrp
+#: 
+msgid "Registered students"
+msgstr "Registrerte elever"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Muligheter for frivillige"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Måneder"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "Første regnskapsår"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Andre regnskapsår"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Egendefinert felt"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "Feltverdi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Den laveste alderen du ønsker resultater for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Den høyeste alderen du ønsker resultater for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Kjønnet du ønsker å søke etter i databasen."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Velg ønsket familierolle."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Kjønnet du ønsker resultater for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Egenskapen du ønsker personposter for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Vennligst velg startdato for å beregne totale bidrag per medlem (f.eks. ÅÅÅÅ-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Vennligst oppgi sluttdato for å beregne totale bidrag per medlem (f.eks. ÅÅÅÅ-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Skriv inn deler av: Navn, By, Fylke, Postnr, Hjemmetelefon eller E-post."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Velg felt å søke i."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Fødselsmåneden du ønsker resultater for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Søndagsskoleklassen du ønsker resultater for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Gruppe med registrerte elever"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Måneden for medlemsjubileum du ønsker resultater for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Velg en mulighet for frivillige"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Antall måneder siden registrert som venn"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Første regnskapsår for sammenligning"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Andre regnskapsår for sammenligning"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Gitt lovnad i år"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "men ikke i år"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Regnskapsår."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Medlem, fast gjenger, osv."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Førstevalg for frivilligarbeid"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Andrevalg for frivilligarbeid"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "Velg egendefinert personfelt"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Søk etter denne verdien i det egendefinerte feltet"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Person etter egenskap"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays"
+msgstr "Bursdager"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Medlemsjubileer"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Frivillige"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Nye venner"
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "Sammenligning av lovnader"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Manglende lovnader"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Familielovnader etter regnskapsår"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "EgendefinertSøk"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Returnerer personposter som er tildelt den angitte egenskapen."
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Personer med bursdag i en bestemt måned"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Finn registrerte elever"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Medlemmer som ble med i en bestemt måned"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Finn frivillige for en bestemt oppgave"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Venner som registrerte seg i tidligere måneder"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Sammenlign lovnader mellom to regnskapsår"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Finn personer som ga lovnad ett år, men ikke et annet"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Lovnadssammendrag etter familienavn for hvert fond i valgt regnskapsår"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Finn frivillige som passer to spesifikke oppgavekoder"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Finn personer med en bestemt verdi i et egendefinert felt"
+
+#: 
+msgid "Last Edited"
+msgstr "Sist redigert"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Brukertillatelse til å sende e-post via mailto-lenker"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Skilletegn for e-postadresser i mailto-lenker"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Brukertillatelse til å opprette kataloger"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Brukertillatelse til å eksportere CSV-filer"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "Tillat bruker å legge til ny hendelse"
+
+#: 
+msgid "Weekly on"
+msgstr "Ukentlig på"
+
+#: 
+msgid "s"
+msgstr "s"
+
+#: 
+msgid "Monthly on"
+msgstr "Månedlig på"
+
+#: 
+msgid "Yearly on"
+msgstr "Årlig på"
+
+#: 
+msgid "Family Roles Editor"
+msgstr "Redigering av familieroller"
+
+#: 
+msgid "Person Classification"
+msgstr "Personklassifisering"
+
+#: 
+msgid "Person Classifications"
+msgstr "Personklassifiseringer"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "Redigering av personklassifiseringer"
+
+#: 
+msgid "Group Type"
+msgstr "Gruppetype"
+
+#: 
+msgid "Group Types"
+msgstr "Gruppetyper"
+
+#: 
+msgid "Group Types Editor"
+msgstr "Redigering av gruppetyper"
+
+#: 
+msgid "Security Group"
+msgstr "Sikkerhetsgruppe"
+
+#: 
+msgid "Security Groups"
+msgstr "Sikkerhetsgrupper"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "Redigering av sikkerhetsgrupper"
+
+#: 
+msgid "Group Member Role"
+msgstr "Rolle for gruppemedlem"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "Redigering av roller for gruppemedlemmer"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "Alternativ for egendefinert personliste"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "Alternativer for egendefinert personliste"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "Redigering av alternativer for egendefinert personliste"
+
+#: 
+msgid "Custom List Option"
+msgstr "Alternativ for egendefinert liste"
+
+#: 
+msgid "Custom List Options"
+msgstr "Alternativer for egendefinert liste"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "Redigering av alternativer for egendefinert liste"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "Alternativ for egendefinert familieliste"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "Alternativer for egendefinert familieliste"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "Redigering av alternativer for egendefinert familieliste"
+
+#: 
+msgid "are not allowed."
+msgstr "er ikke tillatt."
+
+#: 
+msgid "Name for New"
+msgstr "Navn på ny"
+
+#: 
+msgid "Imported"
+msgstr "Importert"
+
+#: 
+msgid "Created via Family"
+msgstr "Opprettet via familie"
+
+#: 
+msgid "Updated via Family"
+msgstr "Oppdatert via familie"
+
+#: 
+msgid "Family Data Verified"
+msgstr "Familiedata bekreftet"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "Profilbilde slettet"
+
+#: 
+msgid "miles"
+msgstr "miles"
+
+#: 
+msgid "kilometers"
+msgstr "kilometer"
+
+#: 
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: 
+msgid "Local"
+msgstr "Lokal"
+
+#. Context: countries
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Afghanistan"
+
+#. Context: countries
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "Åland"
+
+#. Context: countries
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Albania"
+
+#. Context: countries
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "Algerie"
+
+#. Context: countries
+#: 
+msgid "American Samoa"
+msgstr "Amerikansk Samoa"
+
+#. Context: countries
+#: 
+msgid "Andorra"
+msgstr "Andorra"
+
+#. Context: countries
+#: 
+msgid "Angola"
+msgstr "Angola"
+
+#. Context: countries
+#: 
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#. Context: countries
+#: 
+msgid "Antarctica"
+msgstr "Antarktis"
+
+#. Context: countries
+#: 
+msgid "Antigua and Barbuda"
+msgstr "Antigua og Barbuda"
+
+#. Context: countries
+#: 
+msgid "Argentina"
+msgstr "Argentina"
+
+#. Context: countries
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "Armenia"
+
+#. Context: countries
+#: 
+msgid "Aruba"
+msgstr "Aruba"
+
+#. Context: countries
+#: 
+msgid "Ascension Island"
+msgstr "Ascension"
+
+#. Context: countries
+#: 
+msgid "Australia"
+msgstr "Australia"
+
+#. Context: countries
+#: 
+msgid "Austria (Österreich)"
+msgstr "Østerrike"
+
+#. Context: countries
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "Aserbajdsjan"
+
+#. Context: countries
+#: 
+msgid "Bahamas"
+msgstr "Bahamas"
+
+#. Context: countries
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "Bahrain"
+
+#. Context: countries
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "Bangladesh"
+
+#. Context: countries
+#: 
+msgid "Barbados"
+msgstr "Barbados"
+
+#. Context: countries
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "Hviterussland"
+
+#. Context: countries
+#: 
+msgid "Belgium (België)"
+msgstr "Belgia"
+
+#. Context: countries
+#: 
+msgid "Belize"
+msgstr "Belize"
+
+#. Context: countries
+#: 
+msgid "Benin (Bénin)"
+msgstr "Benin"
+
+#. Context: countries
+#: 
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#. Context: countries
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "Bhutan"
+
+#. Context: countries
+#: 
+msgid "Bolivia"
+msgstr "Bolivia"
+
+#. Context: countries
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "Bosnia-Hercegovina"
+
+#. Context: countries
+#: 
+msgid "Botswana"
+msgstr "Botswana"
+
+#. Context: countries
+#: 
+msgid "Bouvet Island"
+msgstr "Bouvetøya"
+
+#. Context: countries
+#: 
+msgid "Brazil (Brasil)"
+msgstr "Brasil"
+
+#. Context: countries
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "Det britiske territoriet i Indiahavet"
+
+#. Context: countries
+#: 
+msgid "British Virgin Islands"
+msgstr "De britiske Jomfruøyer"
+
+#. Context: countries
+#: 
+msgid "Brunei"
+msgstr "Brunei"
+
+#. Context: countries
+#: 
+msgid "Bulgaria (България)"
+msgstr "Bulgaria"
+
+#. Context: countries
+#: 
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#. Context: countries
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "Burundi"
+
+#. Context: countries
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "Kamerun"
+
+#. Context: countries
+#: 
+msgid "Canada"
+msgstr "Canada"
+
+#. Context: countries
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "Kanariøyene"
+
+#. Context: countries
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "Kapp Verde"
+
+#. Context: countries
+#: 
+msgid "Caribbean Netherlands"
+msgstr "Karibisk Nederland"
+
+#. Context: countries
+#: 
+msgid "Cayman Islands"
+msgstr "Caymanøyene"
+
+#. Context: countries
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "Sentralafrikanske republikk"
+
+#. Context: countries
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "Ceuta og Melilla"
+
+#. Context: countries
+#: 
+msgid "Chad (Tchad)"
+msgstr "Tsjad"
+
+#. Context: countries
+#: 
+msgid "Chile"
+msgstr "Chile"
+
+#. Context: countries
+#: 
+msgid "China (中国)"
+msgstr "Kina"
+
+#. Context: countries
+#: 
+msgid "Christmas Island"
+msgstr "Juleøya"
+
+#. Context: countries
+#: 
+msgid "Clipperton Island"
+msgstr "Clippertonøya"
+
+#. Context: countries
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "Kokosøyene"
+
+#. Context: countries
+#: 
+msgid "Colombia"
+msgstr "Colombia"
+
+#. Context: countries
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "Komorene"
+
+#. Context: countries
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "Kongo-Kinshasa"
+
+#. Context: countries
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "Kongo-Brazzaville"
+
+#. Context: countries
+#: 
+msgid "Cook Islands"
+msgstr "Cookøyene"
+
+#. Context: countries
+#: 
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#. Context: countries
+#: 
+msgid "Côte d’Ivoire"
+msgstr "Elfenbenskysten"
+
+#. Context: countries
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "Kroatia"
+
+#. Context: countries
+#: 
+msgid "Cuba"
+msgstr "Cuba"
+
+#. Context: countries
+#: 
+msgid "Curaçao"
+msgstr "Curaçao"
+
+#. Context: countries
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "Kypros"
+
+#. Context: countries
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "Tsjekkia"
+
+#. Context: countries
+#: 
+msgid "Denmark (Danmark)"
+msgstr "Danmark"
+
+#. Context: countries
+#: 
+msgid "Diego Garcia"
+msgstr "Diego Garcia"
+
+#. Context: countries
+#: 
+msgid "Djibouti"
+msgstr "Djibouti"
+
+#. Context: countries
+#: 
+msgid "Dominica"
+msgstr "Dominica"
+
+#. Context: countries
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "Den dominikanske republikk"
+
+#. Context: countries
+#: 
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#. Context: countries
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "Egypt"
+
+#. Context: countries
+#: 
+msgid "El Salvador"
+msgstr "El Salvador"
+
+#. Context: countries
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "Ekvatorial-Guinea"
+
+#. Context: countries
+#: 
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#. Context: countries
+#: 
+msgid "Estonia (Eesti)"
+msgstr "Estland"
+
+#. Context: countries
+#: 
+msgid "Ethiopia"
+msgstr "Etiopia"
+
+#. Context: countries
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "Falklandsøyene"
+
+#. Context: countries
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "Færøyene"
+
+#. Context: countries
+#: 
+msgid "Fiji"
+msgstr "Fiji"
+
+#. Context: countries
+#: 
+msgid "Finland (Suomi)"
+msgstr "Finland"
+
+#. Context: countries
+#: 
+msgid "France"
+msgstr "Frankrike"
+
+#. Context: countries
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "Fransk Guyana"
+
+#. Context: countries
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "Fransk Polynesia"
+
+#. Context: countries
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "Franske sørlige territorier"
+
+#. Context: countries
+#: 
+msgid "Gabon"
+msgstr "Gabon"
+
+#. Context: countries
+#: 
+msgid "Gambia"
+msgstr "Gambia"
+
+#. Context: countries
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "Georgia"
+
+#. Context: countries
+#: 
+msgid "Germany (Deutschland)"
+msgstr "Tyskland"
+
+#. Context: countries
+#: 
+msgid "Ghana (Gaana)"
+msgstr "Ghana"
+
+#. Context: countries
+#: 
+msgid "Gibraltar"
+msgstr "Gibraltar"
+
+#. Context: countries
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "Hellas"
+
+#. Context: countries
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "Grønland"
+
+#. Context: countries
+#: 
+msgid "Grenada"
+msgstr "Grenada"
+
+#. Context: countries
+#: 
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#. Context: countries
+#: 
+msgid "Guam"
+msgstr "Guam"
+
+#. Context: countries
+#: 
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#. Context: countries
+#: 
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#. Context: countries
+#: 
+msgid "Guinea (Guinée)"
+msgstr "Guinea"
+
+#. Context: countries
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "Guinea-Bissau"
+
+#. Context: countries
+#: 
+msgid "Guyana"
+msgstr "Guyana"
+
+#. Context: countries
+#: 
+msgid "Haiti"
+msgstr "Haiti"
+
+#. Context: countries
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "Heard- og McDonaldøyene"
+
+#. Context: countries
+#: 
+msgid "Honduras"
+msgstr "Honduras"
+
+#. Context: countries
+#: 
+msgid "Hong Kong (香港)"
+msgstr "Hong Kong"
+
+#. Context: countries
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "Ungarn"
+
+#. Context: countries
+#: 
+msgid "Iceland (Ísland)"
+msgstr "Island"
+
+#. Context: countries
+#: 
+msgid "India (भारत)"
+msgstr "India"
+
+#. Context: countries
+#: 
+msgid "Indonesia"
+msgstr "Indonesia"
+
+#. Context: countries
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "Iran"
+
+#. Context: countries
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "Irak"
+
+#. Context: countries
+#: 
+msgid "Ireland"
+msgstr "Irland"
+
+#. Context: countries
+#: 
+msgid "Isle of Man"
+msgstr "Isle of Man"
+
+#. Context: countries
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "Israel"
+
+#. Context: countries
+#: 
+msgid "Italy (Italia)"
+msgstr "Italia"
+
+#. Context: countries
+#: 
+msgid "Jamaica"
+msgstr "Jamaica"
+
+#. Context: countries
+#: 
+msgid "Japan (日本)"
+msgstr "Japan"
+
+#. Context: countries
+#: 
+msgid "Jersey"
+msgstr "Jersey"
+
+#. Context: countries
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "Jordan"
+
+#. Context: countries
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "Kasakhstan"
+
+#. Context: countries
+#: 
+msgid "Kenya"
+msgstr "Kenya"
+
+#. Context: countries
+#: 
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#. Context: countries
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "Kosovo"
+
+#. Context: countries
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "Kuwait"
+
+#. Context: countries
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "Kirgisistan"
+
+#. Context: countries
+#: 
+msgid "Laos (ລາວ)"
+msgstr "Laos"
+
+#. Context: countries
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "Libanon"
+
+#. Context: countries
+#: 
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#. Context: countries
+#: 
+msgid "Liberia"
+msgstr "Liberia"
+
+#. Context: countries
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "Libya"
+
+#. Context: countries
+#: 
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#. Context: countries
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "Litauen"
+
+#. Context: countries
+#: 
+msgid "Luxembourg"
+msgstr "Luxembourg"
+
+#. Context: countries
+#: 
+msgid "Macau (澳門)"
+msgstr "Macao"
+
+#. Context: countries
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "Nord-Makedonia"
+
+#. Context: countries
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "Madagaskar"
+
+#. Context: countries
+#: 
+msgid "Malawi"
+msgstr "Malawi"
+
+#. Context: countries
+#: 
+msgid "Malaysia"
+msgstr "Malaysia"
+
+#. Context: countries
+#: 
+msgid "Maldives"
+msgstr "Maldivene"
+
+#. Context: countries
+#: 
+msgid "Mali"
+msgstr "Mali"
+
+#. Context: countries
+#: 
+msgid "Malta"
+msgstr "Malta"
+
+#. Context: countries
+#: 
+msgid "Marshall Islands"
+msgstr "Marshalløyene"
+
+#. Context: countries
+#: 
+msgid "Martinique"
+msgstr "Martinique"
+
+#. Context: countries
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "Mauritania"
+
+#. Context: countries
+#: 
+msgid "Mauritius (Moris)"
+msgstr "Mauritius"
+
+#. Context: countries
+#: 
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#. Context: countries
+#: 
+msgid "Mexico (México)"
+msgstr "Mexico"
+
+#. Context: countries
+#: 
+msgid "Micronesia"
+msgstr "Mikronesiaføderasjonen"
+
+#. Context: countries
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "Moldova"
+
+#. Context: countries
+#: 
+msgid "Monaco"
+msgstr "Monaco"
+
+#. Context: countries
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "Mongolia"
+
+#. Context: countries
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "Montenegro"
+
+#. Context: countries
+#: 
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#. Context: countries
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "Marokko"
+
+#. Context: countries
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "Mosambik"
+
+#. Context: countries
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "Myanmar"
+
+#. Context: countries
+#: 
+msgid "Namibia (Namibië)"
+msgstr "Namibia"
+
+#. Context: countries
+#: 
+msgid "Nauru"
+msgstr "Nauru"
+
+#. Context: countries
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "Nepal"
+
+#. Context: countries
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "Nederland"
+
+#. Context: countries
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "Ny-Caledonia"
+
+#. Context: countries
+#: 
+msgid "New Zealand"
+msgstr "New Zealand"
+
+#. Context: countries
+#: 
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#. Context: countries
+#: 
+msgid "Niger (Nijar)"
+msgstr "Niger"
+
+#. Context: countries
+#: 
+msgid "Nigeria"
+msgstr "Nigeria"
+
+#. Context: countries
+#: 
+msgid "Niue"
+msgstr "Niue"
+
+#. Context: countries
+#: 
+msgid "Norfolk Island"
+msgstr "Norfolkøya"
+
+#. Context: countries
+#: 
+msgid "Northern Mariana Islands"
+msgstr "Nord-Marianene"
+
+#. Context: countries
+#: 
+msgid "Norway (Norge)"
+msgstr "Norge"
+
+#. Context: countries
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "Oman"
+
+#. Context: countries
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "Pakistan"
+
+#. Context: countries
+#: 
+msgid "Palau"
+msgstr "Palau"
+
+#. Context: countries
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "Palestina"
+
+#. Context: countries
+#: 
+msgid "Panama (Panamá)"
+msgstr "Panama"
+
+#. Context: countries
+#: 
+msgid "Papua New Guinea"
+msgstr "Papua Ny-Guinea"
+
+#. Context: countries
+#: 
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#. Context: countries
+#: 
+msgid "Peru (Perú)"
+msgstr "Peru"
+
+#. Context: countries
+#: 
+msgid "Philippines"
+msgstr "Filippinene"
+
+#. Context: countries
+#: 
+msgid "Pitcairn Islands"
+msgstr "Pitcairnøyene"
+
+#. Context: countries
+#: 
+msgid "Poland (Polska)"
+msgstr "Polen"
+
+#. Context: countries
+#: 
+msgid "Portugal"
+msgstr "Portugal"
+
+#. Context: countries
+#: 
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#. Context: countries
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "Qatar"
+
+#. Context: countries
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "Réunion"
+
+#. Context: countries
+#: 
+msgid "Romania (România)"
+msgstr "Romania"
+
+#. Context: countries
+#: 
+msgid "Russia (Россия)"
+msgstr "Russland"
+
+#. Context: countries
+#: 
+msgid "Rwanda"
+msgstr "Rwanda"
+
+#. Context: countries
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "Saint-Barthélemy"
+
+#. Context: countries
+#: 
+msgid "Saint Helena"
+msgstr "Saint Helena"
+
+#. Context: countries
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "Saint Kitts og Nevis"
+
+#. Context: countries
+#: 
+msgid "Saint Lucia"
+msgstr "Saint Lucia"
+
+#. Context: countries
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "Saint-Martin"
+
+#. Context: countries
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "Saint-Pierre-et-Miquelon"
+
+#. Context: countries
+#: 
+msgid "Samoa"
+msgstr "Samoa"
+
+#. Context: countries
+#: 
+msgid "San Marino"
+msgstr "San Marino"
+
+#. Context: countries
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "São Tomé og Príncipe"
+
+#. Context: countries
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "Saudi-Arabia"
+
+#. Context: countries
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "Senegal"
+
+#. Context: countries
+#: 
+msgid "Serbia (Србија)"
+msgstr "Serbia"
+
+#. Context: countries
+#: 
+msgid "Seychelles"
+msgstr "Seychellene"
+
+#. Context: countries
+#: 
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#. Context: countries
+#: 
+msgid "Singapore"
+msgstr "Singapore"
+
+#. Context: countries
+#: 
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
+#. Context: countries
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "Slovakia"
+
+#. Context: countries
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "Slovenia"
+
+#. Context: countries
+#: 
+msgid "Solomon Islands"
+msgstr "Salomonøyene"
+
+#. Context: countries
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "Somalia"
+
+#. Context: countries
+#: 
+msgid "South Africa"
+msgstr "Sør-Afrika"
+
+#. Context: countries
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "Sør-Georgia og de sørlige Sandwichøyene"
+
+#. Context: countries
+#: 
+msgid "South Korea (대한민국)"
+msgstr "Sør-Korea"
+
+#. Context: countries
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "Sør-Sudan"
+
+#. Context: countries
+#: 
+msgid "Spain (España)"
+msgstr "Spania"
+
+#. Context: countries
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "Sri Lanka"
+
+#. Context: countries
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "St. Vincent og Grenadinene"
+
+#. Context: countries
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "Sudan"
+
+#. Context: countries
+#: 
+msgid "Suriname"
+msgstr "Suriname"
+
+#. Context: countries
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "Svalbard og Jan Mayen"
+
+#. Context: countries
+#: 
+msgid "Swaziland"
+msgstr "Eswatini"
+
+#. Context: countries
+#: 
+msgid "Sweden (Sverige)"
+msgstr "Sverige"
+
+#. Context: countries
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "Sveits"
+
+#. Context: countries
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "Syria"
+
+#. Context: countries
+#: 
+msgid "Taiwan (台灣)"
+msgstr "Taiwan"
+
+#. Context: countries
+#: 
+msgid "Tajikistan"
+msgstr "Tadsjikistan"
+
+#. Context: countries
+#: 
+msgid "Tanzania"
+msgstr "Tanzania"
+
+#. Context: countries
+#: 
+msgid "Thailand (ไทย)"
+msgstr "Thailand"
+
+#. Context: countries
+#: 
+msgid "Timor-Leste"
+msgstr "Øst-Timor"
+
+#. Context: countries
+#: 
+msgid "Togo"
+msgstr "Togo"
+
+#. Context: countries
+#: 
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#. Context: countries
+#: 
+msgid "Tonga"
+msgstr "Tonga"
+
+#. Context: countries
+#: 
+msgid "Trinidad and Tobago"
+msgstr "Trinidad og Tobago"
+
+#. Context: countries
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "Tunisia"
+
+#. Context: countries
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "Tyrkia"
+
+#. Context: countries
+#: 
+msgid "Turkmenistan"
+msgstr "Turkmenistan"
+
+#. Context: countries
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "Turks- og Caicosøyene"
+
+#. Context: countries
+#: 
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#. Context: countries
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "De amerikanske Jomfruøyer"
+
+#. Context: countries
+#: 
+msgid "Uganda"
+msgstr "Uganda"
+
+#. Context: countries
+#: 
+msgid "Ukraine (Україна)"
+msgstr "Ukraina"
+
+#. Context: countries
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "De forente arabiske emirater"
+
+#. Context: countries
+#: 
+msgid "United Kingdom"
+msgstr "Storbritannia"
+
+#. Context: countries
+#: 
+msgid "United States"
+msgstr "USA"
+
+#. Context: countries
+#: 
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#. Context: countries
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "Usbekistan"
+
+#. Context: countries
+#: 
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#. Context: countries
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "Vatikanstaten"
+
+#. Context: countries
+#: 
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#. Context: countries
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "Vietnam"
+
+#. Context: countries
+#: 
+msgid "Wallis and Futuna"
+msgstr "Wallis- og Futunaøyene"
+
+#. Context: countries
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "Vest-Sahara"
+
+#. Context: countries
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "Jemen"
+
+#. Context: countries
+#: 
+msgid "Zambia"
+msgstr "Zambia"
+
+#. Context: countries
+#: 
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Pil- og sletteknapper trer i kraft umiddelbart. Endringer i feltnavn vil gå tapt hvis du ikke trykker 'Lagre endringer' før du bruker knappene for opp, ned, slett eller 'legg til ny'!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "Ved å slette dette feltet vil du ugjenkallelig miste alle familiedata tildelt dette feltet!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "Ved å slette dette feltet vil du ugjenkallelig miste alle persondata tildelt dette feltet!"
 

@@ -9236,6 +9236,12 @@ msgid "deposit(s) with no payments"
 msgstr "deposito(s) sonder betalings"
 
 #: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d geleentheid in %s"
+msgstr[1] "%d geleenthede in %s"
+
+#: 
 msgid "All Event Types"
 msgstr "Alle Gebeure Tipes"
 
@@ -9490,6 +9496,12 @@ msgstr "bv. Sondagskool, Bybelstudies..."
 #: 
 msgid "optional"
 msgstr "opsioneel"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "persoon"
+msgstr[1] "persone"
 
 #: 
 msgid "✓ CheckOut"
@@ -11222,6 +11234,24 @@ msgstr "Validasie in aantog"
 #: 
 msgid "must be configured with an encryption key"
 msgstr "moet opgestel word met 'n enkripsietoetsl"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d persoon by die mandjie gevoeg."
+msgstr[1] "%d persone by die mandjie gevoeg."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d persoon suksesvol by die gekose Familie gevoeg."
+msgstr[1] "%d persone suksesvol by die gekose Familie gevoeg."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d persoon suksesvol by die gekose Groep gevoeg."
+msgstr[1] "%d persone suksesvol by die gekose Groep gevoeg."
 
 #: 
 msgid "A "
