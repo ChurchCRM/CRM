@@ -1,9 +1,9 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥75%):** 31
+**Complete Locales (≥75%):** 32
 **Good Locales (51-74%):** 1
-**Needs Work (<51%):** 13
+**Needs Work (<51%):** 12
 **WIP Candidates (>5%, not yet added):** 6
 
 ## Locale Completeness Overview
@@ -41,11 +41,11 @@
 | `pl` | Polish | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 1496 | 54.74% | 🟡 Good | ✅ Yes |
+| `fi` | Finnish | 2326 | 85.11% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 1893 | 69.26% | 🟡 Good | ✅ Yes |
 | `nb` | Norwegian Bokmål | 1327 | 48.55% | 🟠 Needs Work | ✅ Yes |
-| `sq` | Albanian | 1102 | 40.32% | 🟠 Needs Work | ✅ Yes |
+| `sq` | Albanian | 1321 | 48.34% | 🟠 Needs Work | ✅ Yes |
 | `ja` | Japanese | 931 | 34.07% | 🟠 Needs Work | ✅ Yes |
-| `fi` | Finnish | 672 | 24.59% | 🟠 Needs Work | ✅ Yes |
 | `hi` | Hindi | 535 | 19.58% | 🟠 Needs Work | ✅ Yes |
 | `te` | Telugu | 331 | 12.11% | 🟠 Needs Work | ✅ Yes |
 | `sl` | Slovenian | 82 | 3% | 🟠 Needs Work | ❌ No |
@@ -64,9 +64,9 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 31 locales ready for production
+- **🟢 Complete (≥75%):** 32 locales ready for production
 - **🟡 Good (51-74%):** 1 locales with solid translation coverage
-- **🟠 Needs Work (<51%):** 7 locales requiring translator attention
+- **🟠 Needs Work (<51%):** 6 locales requiring translator attention
 - **🔴 Incomplete:** 1 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
 
