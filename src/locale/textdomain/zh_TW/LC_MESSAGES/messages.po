@@ -9851,6 +9851,1689 @@ msgid "Backup Type"
 msgstr "備份類型"
 
 #: 
+msgid "Backup complete! Click below to download."
+msgstr "備份完成！點擊下方下載。"
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "備份成功完成！"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "備份已下載。伺服器副本已移除。"
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "備份失敗。請再試一次。"
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "備份已生成並複製到遠端伺服器"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "正在備份中，請稍候..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "備份至外部儲存空間"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "注意：還原備份將完全擦除現有資料庫，並將其替換為備份數據。"
+
+#: 
+msgid "CSV export permission"
+msgstr "CSV 匯出權限"
+
+#: 
+msgid "Close & Refresh"
+msgstr "關閉並重新整理"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "確認刪除"
+
+#: 
+msgid "Create a backup first"
+msgstr "請先建立備份"
+
+#: 
+msgid "Create directory permission"
+msgstr "建立目錄權限"
+
+#: 
+msgid "Database Only"
+msgstr "僅資料庫"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "資料庫還原成功！"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "資料庫架構已自動升級"
+
+#: 
+msgid "Delete All Files"
+msgstr "刪除所有檔案"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "刪除所有孤立檔案"
+
+#: 
+msgid "Delete records permission"
+msgstr "刪除記錄權限"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "已刪除 %d 個檔案，%d 個失敗"
+
+#: 
+msgid "Deletion Results"
+msgstr "刪除結果"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "將備份檔案拖放到此處"
+
+#: 
+msgid "Edit records permission"
+msgstr "編輯記錄權限"
+
+#: 
+msgid "Encryption"
+msgstr "加密"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "匯出資料庫結構和數據。檔案體積較小。"
+
+#: 
+msgid "File Integrity Check"
+msgstr "檔案完整性檢查"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "偵測到檔案完整性問題"
+
+#: 
+msgid "File Path"
+msgstr "檔案路徑"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "檔案簽章與官方發佈版本一致。"
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "檔案可能已被修改或遺失。請考慮從官方版本重新部署。"
+
+#: 
+msgid "Finance access"
+msgstr "財務存取權限"
+
+#: 
+msgid "Force Re-install"
+msgstr "強制重新安裝"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "已啟動強制重新安裝。在執行前請先備份您的資料庫。"
+
+#: 
+msgid "Full Backup"
+msgstr "完整備份"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "生成並下載備份"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "前往控制台"
+
+#: 
+msgid "Group management access"
+msgstr "群組管理權限"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "如果您需要使用此功能，請聯繫您的教會管理員。"
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "如果您從 ChurchInfo 或舊版本的 ChurchCRM 上傳備份，它將自動升級到當前的資料庫架構。"
+
+#: 
+msgid "Important Warning"
+msgstr "重要警告"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "包括資料庫和所有上傳的照片。檔案體積較大。"
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "現場保留一份防火保險箱副本，另一份保留在異地。"
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "最新的 GitHub 版本："
+
+#: 
+msgid "Loading..."
+msgstr "載入中..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "除非您有自動備份，否則請至少每週建立一次備份。"
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "管理孤立檔案"
+
+#: 
+msgid "Menu options access"
+msgstr "選單選項權限"
+
+#: 
+msgid "Missing Files"
+msgstr "缺失檔案"
+
+#: 
+msgid "Modified Files"
+msgstr "已修改的檔案"
+
+#: 
+msgid "Multiple Copies"
+msgstr "多份副本"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "未發現孤立檔案"
+
+#: 
+msgid "Notes access"
+msgstr "筆記存取權限"
+
+#: 
+msgid "Orphaned Files"
+msgstr "孤立檔案"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "孤立檔案管理"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "孤立檔案是存在於您的伺服器上但不屬於官方 ChurchCRM 發佈版本的 PHP 或 JavaScript 檔案。這些檔案可能是舊版本殘留的，如果包含帶有漏洞的過時代碼，可能會帶來安全風險。"
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "已清理舊版本的孤立檔案"
+
+#: 
+msgid "Permission Required"
+msgstr "需要權限"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "請檢查備份檔案並再試一次。"
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "請選擇要還原的備份檔案"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "重新下載並重新套用當前版本，以將所有檔案恢復到官方狀態"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "準備建立備份。請在上方選擇您的選項並點擊備份按鈕。"
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "準備還原。請選擇一個備份檔案並點擊還原資料庫。"
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "建議：在升級前或升級後檢查並刪除這些檔案。"
+
+#: 
+msgid "Redirecting in"
+msgstr "重新導向於"
+
+#: 
+msgid "Refresh List"
+msgstr "重新整理列表"
+
+#: 
+msgid "Regular Backups"
+msgstr "定期備份"
+
+#: 
+msgid "Required Permission"
+msgstr "必要權限"
+
+#: 
+msgid "Required permission"
+msgstr "必要權限"
+
+#: 
+msgid "Restore Status"
+msgstr "還原狀態"
+
+#: 
+msgid "Restore failed."
+msgstr "還原失敗。"
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "還原失敗。請檢查備份檔案並再試一次。"
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "還原進行中，請稍候..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "請查看下方的檔案並刪除它們以提高安全性。"
+
+#: 
+msgid "Security Recommendation"
+msgstr "安全建議"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "安全警告：偵測到孤立檔案"
+
+#: 
+msgid "Select Backup File"
+msgstr "選擇備份檔案"
+
+#: 
+msgid "Supported formats:"
+msgstr "支援的格式："
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "以下檔案存在於您的伺服器上，但不屬於官方 ChurchCRM 發佈版本。這些可能是舊版本的殘留，可能會帶來安全風險。"
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "您嘗試訪問的頁面需要特殊權限，但您的帳戶目前不具備。"
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "這些檔案不屬於官方發佈版本，可能會帶來安全風險。"
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "這些檔案可能是舊版 ChurchCRM 的一部分，在之前的升級中未被清理。刪除它們將提高您的系統安全性。"
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "這些檔案可能是舊版 ChurchCRM 的一部分，在之前的升級中未被清理。它們可能包含帶有安全漏洞的過時代碼。"
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "此操作無法復原。如果需要，請確保您有當前數據的備份。"
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "對於大型資料庫，這可能需要幾分鐘時間。"
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "對於大型資料庫，這可能需要幾分鐘時間。請勿關閉此頁面。"
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "這將重新下載並重新套用當前版本。這可以修復損壞或被修改的檔案。是否繼續？"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "升級摘要"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "在異地存儲之前，使用外部工具（如 GPG, 7-Zip）加密備份。"
+
+#: 
+msgid "User authentication"
+msgstr "使用者驗證"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "使用者必須具有新增活動權限"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "使用者必須具有選單選項權限"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "什麼是孤立檔案？"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "您沒有訪問此頁面的權限"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "您將被登出並重新導向到登入頁面。"
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "您的 ChurchCRM 安裝是乾淨的。伺服器上的所有檔案都與官方發佈版本一致。"
+
+#: 
+msgid "or click to browse"
+msgstr "或點擊瀏覽"
+
+#: 
+msgid "seconds..."
+msgstr "秒..."
+
+#: 
+msgid " Deposit #"
+msgstr " 存款編號 #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d 個缺失的分類"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d 個缺失的性別"
+
+#: 
+msgid "%d missing role"
+msgstr "%d 個缺失的角色"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "付款是實際收到的捐款。它將被添加到當前存款中。"
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "認獻是給予的承諾。它不與存款單綁定。"
+
+#: 
+msgid "Add Another Family Member"
+msgstr "新增另一名家庭成員"
+
+#: 
+msgid "Add Pledge"
+msgstr "新增認獻"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "管理控制台"
+
+#: 
+msgid "Advanced Operations"
+msgstr "進階操作"
+
+#: 
+msgid "All System Settings"
+msgstr "所有系統設定"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "發生非預期錯誤。請聯繫您的管理員。"
+
+#: 
+msgid "Apr"
+msgstr "四月"
+
+#: 
+msgid "Aug"
+msgstr "八月"
+
+#: 
+msgid "Back to Deposits"
+msgstr "返回存款列表"
+
+#: 
+msgid "Back to Families"
+msgstr "返回家庭列表"
+
+#: 
+msgid "Birth & Family"
+msgstr "出生與家庭"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "CSV 匯出僅限管理員使用。"
+
+#: 
+msgid "Cart"
+msgstr "購物車/清單"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "在系統設定中更改此項。"
+
+#: 
+msgid "Church Membership"
+msgstr "教會成員身分"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "教會名稱已設置為預設值"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "班級與註冊"
+
+#: 
+msgid "Clean Up Files"
+msgstr "清理檔案"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "清除所有數據並重新開始。操作無法復原。"
+
+#: 
+msgid "Close All Deposits"
+msgstr "關閉所有存款"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "已關閉的存款："
+
+#: 
+msgid "Closed vs Total"
+msgstr "已關閉與總計"
+
+#: 
+msgid "Coming soon"
+msgstr "即將推出"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "完成這些必要的設置任務，讓 ChurchCRM 順暢運行："
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "可以按任何順序完成。使用演示數據來探索示例記錄。"
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "完成這些任務，以確保為您的捐贈者提供準確的年終稅務報告。"
+
+#: 
+msgid "Configuration:"
+msgstr "配置："
+
+#: 
+msgid "Configure Email"
+msgstr "配置電子郵件"
+
+#: 
+msgid "Contact Information"
+msgstr "聯絡資訊"
+
+#: 
+msgid "Create Deposit"
+msgstr "建立存款"
+
+#: 
+msgid "Create First Deposit"
+msgstr "建立第一筆存款"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "請先建立或打開一筆存款"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "建立或選擇一筆存款以開始。"
+
+#: 
+msgid "Current Deposit"
+msgstr "當前存款"
+
+#: 
+msgid "Current fiscal year"
+msgstr "當前財政年度"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "可自定義報告，可按日期、基金、家庭和付款方式過濾。"
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "自定義出現在稅務聲明上的文本。"
+
+#: 
+msgid "Data Quality:"
+msgstr "數據品質："
+
+#: 
+msgid "Database:"
+msgstr "資料庫："
+
+#: 
+msgid "Day"
+msgstr "日"
+
+#: 
+msgid "Dec"
+msgstr "十二月"
+
+#: 
+msgid "Demo Data"
+msgstr "演示數據"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "存款導覽"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "存款統計"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "單個存款單的詳細明細。"
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "按家庭劃分的認獻和付款詳細明細。"
+
+#: 
+msgid "Documentation"
+msgstr "說明文件"
+
+#: 
+msgid "Donor Families"
+msgstr "捐贈者家庭"
+
+#: 
+msgid "Edit Deposit"
+msgstr "編輯存款"
+
+#: 
+msgid "Edit Family"
+msgstr "編輯家庭"
+
+#: 
+msgid "Edit Payment"
+msgstr "編輯付款"
+
+#: 
+msgid "Edit Person"
+msgstr "編輯個人"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "在生成聲明之前，確保稅務年度的所有存款都已關閉。"
+
+#: 
+msgid "Export Options"
+msgstr "匯出選項"
+
+#: 
+msgid "F"
+msgstr "女"
+
+#: 
+msgid "Failed to save settings"
+msgstr "儲存設定失敗"
+
+#: 
+msgid "Family Navigation"
+msgstr "家庭導覽"
+
+#: 
+msgid "Feb"
+msgstr "二月"
+
+#: 
+msgid "File Integrity:"
+msgstr "檔案完整性："
+
+#: 
+msgid "Filtering"
+msgstr "過濾"
+
+#: 
+msgid "Finance"
+msgstr "財務"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "財務控制台"
+
+#: 
+msgid "Force Import"
+msgstr "強制匯入"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "強制匯入將重試，並可能建立重複數據。"
+
+#: 
+msgid "Fund Allocation"
+msgstr "基金分配"
+
+#: 
+msgid "Generate"
+msgstr "生成"
+
+#: 
+msgid "Generate Reports"
+msgstr "生成報告"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "生成稅務聲明"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "為捐贈者生成年度奉獻聲明並識別奉獻模式。"
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "為捐贈者生成年度免稅奉獻聲明。可以列印或發送電子郵件。"
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "為個人存款或日期範圍生成詳細報告。"
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "為有未完成認獻的家庭生成提醒信函。"
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "生成稅務聲明、認獻追踪和財務分析報告。"
+
+#: 
+msgid "Giving funds and categories"
+msgstr "奉獻基金與類別"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS 未配置"
+
+#: 
+msgid "ID"
+msgstr "編號"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "識別在特定日期範圍內未進行任何捐贈的成員。"
+
+#: 
+msgid "Import failed"
+msgstr "匯入失敗"
+
+#: 
+msgid "Import from CSV files"
+msgstr "從 CSV 檔案匯入"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "匯入示例家庭、人員和群組，以真實數據探索 ChurchCRM。"
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "安裝 TLS/SSL 憑證以提高安全性"
+
+#: 
+msgid "Jan"
+msgstr "一月"
+
+#: 
+msgid "Jr., Sr."
+msgstr "小、老"
+
+#: 
+msgid "Jul"
+msgstr "七月"
+
+#: 
+msgid "Jun"
+msgstr "六月"
+
+#: 
+msgid "Latest Note"
+msgstr "最新筆記"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "讓我們設置好您的系統並準備就緒"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "根據捐贈歷史和成員標準列出有投票資格的成員。"
+
+#: 
+msgid "Location"
+msgstr "地點"
+
+#: 
+msgid "M"
+msgstr "男"
+
+#: 
+msgid "Manage Funds"
+msgstr "管理基金"
+
+#: 
+msgid "Manage Users"
+msgstr "管理使用者"
+
+#: 
+msgid "Mar"
+msgstr "三月"
+
+#: 
+msgid "Membership Reports"
+msgstr "成員報告"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "缺少密鑰"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "大多數報告可以匯出為 PDF 供列印，或匯出為 CSV 供電子表格分析。"
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "先生、女士、醫生/博士"
+
+#: 
+msgid "Name & Identity"
+msgstr "姓名與身分"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "將建立新存款"
+
+#: 
+msgid "New Payment"
+msgstr "新付款"
+
+#: 
+msgid "New Pledge"
+msgstr "新認獻"
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "未來 7 天和過去 7 天"
+
+#: 
+msgid "No Active Deposit"
+msgstr "無活動中的存款"
+
+#: 
+msgid "No active funds configured."
+msgstr "未配置活動基金。"
+
+#: 
+msgid "No deposits found."
+msgstr "未找到存款。"
+
+#: 
+msgid "No format"
+msgstr "無格式"
+
+#: 
+msgid "Nov"
+msgstr "十一月"
+
+#: 
+msgid "Oct"
+msgstr "十月"
+
+#: 
+msgid "Open"
+msgstr "開啟"
+
+#: 
+msgid "Open Deposits:"
+msgstr "開啟中的存款："
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "機構、時區、電子郵件"
+
+#: 
+msgid "Organizational structure"
+msgstr "組織架構"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "孤立檔案："
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
+msgid "Payment"
+msgstr "付款"
+
+#: 
+msgid "Pledge Reports"
+msgstr "認獻報告"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "為所有捐贈者列印或發送年度奉獻聲明。"
+
+#: 
+msgid "Quick Actions"
+msgstr "快速操作"
+
+#: 
+msgid "Quick Start"
+msgstr "快速開始"
+
+#: 
+msgid "Recent Deposits"
+msgstr "最近存款"
+
+#: 
+msgid "Recording a Payment"
+msgstr "記錄付款"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "記錄認獻"
+
+#: 
+msgid "Report Tips"
+msgstr "報告提示"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "與成員投票資格和組織管理相關的報告。"
+
+#: 
+msgid "Reset"
+msgstr "重設"
+
+#: 
+msgid "Restore"
+msgstr "還原"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "從備份檔案還原。將擦除現有數據。"
+
+#: 
+msgid "Review Donation Funds"
+msgstr "審查捐款基金"
+
+#: 
+msgid "SMTP server settings are not configured"
+msgstr "SMTP 伺服器設定未配置"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "儲存並新增家庭"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Config.php 中缺少密鑰"
+
+#: 
+msgid "Sep"
+msgstr "九月"
+
+#: 
+msgid "Server error"
+msgstr "伺服器錯誤"
+
+#: 
+msgid "Settings"
+msgstr "設定"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "設定儲存成功"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "設置任務："
+
+#: 
+msgid "Social Media"
+msgstr "社群媒體"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "未滿足某些應用程式先決條件"
+
+#: 
+msgid "State (Other)"
+msgstr "州/省（其他）"
+
+#: 
+msgid "Status:"
+msgstr "狀態："
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "財政年度各基金的認獻與付款摘要。"
+
+#: 
+msgid "System Configuration:"
+msgstr "系統配置："
+
+#: 
+msgid "System Health"
+msgstr "系統健康狀況"
+
+#: 
+msgid "System Info"
+msgstr "系統資訊"
+
+#: 
+msgid "Tax & Giving Reports"
+msgstr "稅務與奉獻報告"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "稅務報告用詞"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "稅務聲明（奉獻報告）"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "稅務年度報告檢查清單"
+
+#: 
+msgid "Today"
+msgstr "今天"
+
+#: 
+msgid "Total"
+msgstr "總計"
+
+#: 
+msgid "Total Amount"
+msgstr "總金額"
+
+#: 
+msgid "Total Deposits:"
+msgstr "總存款："
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "追踪運動和財政年度預算的認獻和付款進度。"
+
+#: 
+msgid "Type:"
+msgstr "類型："
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "未滿足的先決條件"
+
+#: 
+msgid "Update Church Name"
+msgstr "更新教會名稱"
+
+#: 
+msgid "Upgrade"
+msgstr "升級"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "使用分類和家庭過濾器為特定的捐贈者群體生成報告。"
+
+#: 
+msgid "User accounts and roles"
+msgstr "使用者帳戶與角色"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "使用者必須是管理員或具有財務權限"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "核實教會名稱、地址和聯絡資訊出現在稅務聲明上。"
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "核實聲明中的基金名稱和描述是否準確。"
+
+#: 
+msgid "Version:"
+msgstr "版本："
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "歡迎來到 ChurchCRM"
+
+#: 
+msgid "YTD Payments"
+msgstr "今年以來付款"
+
+#: 
+msgid "YTD Pledges"
+msgstr "今年以來認獻"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "您可以現在建立家庭成員，也可以稍後添加。所有條目都將成為新的個人記錄。"
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "您的財政年度開始月份為"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "郵遞區號"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "升級需要 ZipArchive 擴充功能"
+
+#: 
+msgid "active"
+msgstr "活動中"
+
+#: 
+msgid "ago"
+msgstr "前"
+
+#: 
+msgid "day"
+msgstr "天"
+
+#: 
+msgid "days"
+msgstr "天"
+
+#: 
+msgid "found"
+msgstr "找到"
+
+#: 
+msgid "in"
+msgstr "在"
+
+#: 
+msgid "issues"
+msgstr "問題"
+
+#: 
+msgid "open"
+msgstr "開啟"
+
+#: 
+msgid "years"
+msgstr "年"
+
+#: 
+msgid "yes"
+msgstr "是"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "（為沒有預定義州/省的國家輸入州/省）"
+
+#: 
+msgid "Available"
+msgstr "可用"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "基礎 URL 配置無效。請檢查您的 Config.php 檔案。"
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "Config.php 中未配置基礎 URL"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "ChurchCRM 支援的語言環境"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "通過 SSH、FTP 或您的主機控制台連接到您的伺服器"
+
+#: 
+msgid "Contact"
+msgstr "聯絡方式"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "關鍵配置錯誤"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "當前 $URL[0] 的值："
+
+#: 
+msgid "Custom port:"
+msgstr "自定義連接埠："
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "以<strong>結尾斜槓</strong> (/) 結束"
+
+#: 
+msgid "Error:"
+msgstr "錯誤："
+
+#: 
+msgid "Find the line:"
+msgstr "找到這一行："
+
+#: 
+msgid "Group Memberships"
+msgstr "群組成員身分"
+
+#: 
+msgid "How to Fix:"
+msgstr "如何修復："
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "加入 ChurchCRM 社群，透過分享您的資訊幫助我們改進。只需不到一分鐘！"
+
+#: 
+msgid "Language"
+msgstr "語言"
+
+#: 
+msgid "Local development:"
+msgstr "本地開發："
+
+#: 
+msgid "Locale Support"
+msgstr "語言環境支援"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "地點與聯絡資訊"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "導覽至您的 ChurchCRM 安裝目錄"
+
+#: 
+msgid "New to"
+msgstr "新加入"
+
+#: 
+msgid "No locales configured"
+msgstr "未配置語言環境"
+
+#: 
+msgid "Not Available"
+msgstr "不可用"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "在文本編輯器中打開此檔案："
+
+#: 
+msgid "Register Now"
+msgstr "現在註冊"
+
+#: 
+msgid "Register Your Church"
+msgstr "註冊您的教會"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "儲存檔案並重新整理此頁面"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "設定為 true 可在個人編輯器中禁用無隸屬關係人員的個人地址輸入。設定為 false 可啟用無家庭分配人員的地址輸入。"
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "以 <strong>http://</strong> 或 <strong>https://</strong> 開始"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "子目錄安裝："
+
+#: 
+msgid "System Locale Support"
+msgstr "系統語言環境支援"
+
+#: 
+msgid "System Support"
+msgstr "系統支援"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URL 不包含有效的主機名"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "URL 主機名無效"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URL 格式無效"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URL 必須以結尾斜槓 (/) 結束"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URL 必須以 http:// 或 https:// 開始"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "無法偵測系統語言環境"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "無法確定可用的語言環境"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "無法載入語言環境資訊"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "無法載入州/省列表。請檢查您的網路連接或稍後再試。"
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "將其更新為有效的 URL，該 URL："
+
+#: 
+msgid "Valid Examples:"
+msgstr "有效示例："
+
+#: 
+msgid "View Logs"
+msgstr "查看日誌"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "查看並管理用於偵錯的系統日誌檔案。"
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "您必須輸入姓氏。"
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "您的隱私很重要。我們絕不會與第三方分享您的資訊。"
+
+#: 
+msgid "Additional Information"
+msgstr "附加資訊"
+
+#: 
+msgid "All information is correct"
+msgstr "所有資訊均正確"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "分配機會"
+
+#: 
+msgid "Assign Property"
+msgstr "分配屬性"
+
+#: 
+msgid "Choose a property..."
+msgstr "選擇一個屬性..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "選擇機會..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "確認家庭資訊"
+
+#: 
+msgid "Confirm family information"
+msgstr "確認家庭資訊"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "聯絡與個人資訊"
+
+#: 
+msgid "Copied!"
+msgstr "已複製！"
+
+#: 
+msgid "Edit Role"
+msgstr "編輯角色"
+
+#: 
+msgid "Edited"
+msgstr "已編輯"
+
+#: 
+msgid "Email PDF"
+msgstr "發送 PDF 電子郵件"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "複製 URL 失敗"
+
+#: 
+msgid "ID:"
+msgstr "編號："
+
+#: 
+msgid "Newsletter"
+msgstr "通訊報"
+
+#: 
+msgid "No assigned family"
+msgstr "未分配家庭"
+
+#: 
+msgid "Open in New Tab"
+msgstr "在新分頁中打開"
+
+#: 
+msgid "Personal"
+msgstr "個人"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "請確認您的家庭資訊："
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "請用更正後的資訊更新我們的記錄"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "在此處提供任何更正或附加資訊..."
+
+#: 
+msgid "Remove Property"
+msgstr "移除屬性"
+
+#: 
+msgid "Select Opportunities"
+msgstr "選擇機會"
+
+#: 
+msgid "Select Property"
+msgstr "選擇屬性"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "將此 URL 分享給家庭成員以核實他們的資訊"
+
+#: 
+msgid "Submit Verification"
+msgstr "提交核實"
+
+#: 
+msgid "Thank You!"
+msgstr "謝謝！"
+
+#: 
+msgid "Translation incomplete"
+msgstr "翻譯不完整"
+
+#: 
+msgid "Visit Our Website"
+msgstr "訪問我們的網站"
+
+#: 
+msgid "Volunteer"
+msgstr "志工"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "我們在處理您的核實時遇到錯誤。請再試一次或直接與我們聯繫。"
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "您的核實請求已收到。感謝您保持資訊更新。"
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "發生錯誤。請聯繫您的系統管理員。"
+
+#: 
+msgid "Backup failed"
+msgstr "備份失敗"
+
+#: 
+msgid "Database reset failed"
+msgstr "資料庫重置失敗"
+
+#: 
+msgid "Database restore failed"
+msgstr "資料庫還原失敗"
+
+#: 
+msgid "Demo data import failed"
+msgstr "演示數據匯入失敗"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "演示數據匯入僅適用於只有 1 個人的全新安裝"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "演示數據載入成功"
+
+#: 
+msgid "Download failed"
+msgstr "下載失敗"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "套用升級失敗"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "刪除孤立檔案失敗"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "下載最新發佈版本失敗"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "更新升級資訊失敗"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "上傳家庭照片失敗"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "上傳個人照片失敗"
+
+#: 
+msgid "Remote backup failed"
+msgstr "遠端備份失敗"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "WebDAV 備份配置不正確。請確保已設置終端點、使用者名稱和密碼"
+
+#: 
+msgid "2FA Enabled"
+msgstr "已啟用二階段驗證 (2FA)"
+
+#: 
+msgid "Active Users"
+msgstr "活動中的使用者"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "ChMeetings 匯出"
+
+#: 
+msgid "Delete User"
+msgstr "刪除使用者"
+
+#: 
+msgid "Disable 2FA"
+msgstr "禁用 2FA"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "以 ChMeetings 格式匯出所有人員數據，以便匯入外部系統。"
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "匯出為 ChMeetings CSV"
+
+#: 
+msgid "Exporting..."
+msgstr "匯出中..."
+
+#: 
+msgid "Family Listing"
+msgstr "家庭列表"
+
+#: 
+msgid "Invalid request data"
+msgstr "無效的請求數據"
+
+#: 
+msgid "Invalid status"
+msgstr "無效的狀態"
+
+#: 
+msgid "Locked Users"
+msgstr "已鎖定的使用者"
+
+#: 
+msgid "Person Listing"
+msgstr "個人列表"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "人員已從清單中移除"
+
+#: 
+msgid "Quick Settings"
+msgstr "快速設定"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "重置失敗的登入次數"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "透過電子郵件重設密碼"
+
+#: 
+msgid "Set Active"
+msgstr "設為活動"
+
+#: 
+msgid "Set Inactive"
+msgstr "設為不活動"
+
+#: 
+msgid "Show"
+msgstr "顯示"
+
+#: 
+msgid "Showing"
+msgstr "顯示中"
+
+#: 
+msgid "Total Users"
+msgstr "總使用者數"
+
+#: 
+msgid "User Management"
+msgstr "使用者管理"
+
+#: 
+msgid "View Details"
+msgstr "查看詳情"
+
+#: 
+msgid "entries"
+msgstr "條目"
+
+#: 
+msgid "of"
+msgstr "之於"
+
+#: 
+msgid "total"
+msgstr "總計"
+
+#: 
+msgid "Code incomplete"
+msgstr "驗證碼不完整"
+
+#: 
+msgid "Code is invalid"
+msgstr "驗證碼無效"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "用於在資料庫中存儲 2FA 密鑰的加密密鑰"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "二階段驗證 (2FA)"
+
+#: 
+msgid "Validation pending"
+msgstr "等待驗證"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "必須配置加密密鑰"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d 人已加入清單。"
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d 人已成功加入選定的家庭。"
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d 人已成功加入選定的群組。"
+
+#: 
+msgid "A "
+msgstr "一個 "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "新增、刪除和順序更改是立即生效的。名稱和描述更改必須通過點擊「儲存更改」來儲存。"
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "您確定要刪除嗎"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "箭頭和刪除按鈕立即生效。如果您在使用向上、向下、刪除或「新增」按鈕之前不「儲存更改」，則欄位名稱更改將遺失！"
+
+#: 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
 msgstr "刪除此欄位後，您將不可撤銷地丟失分配給該欄位的所有家庭數據！"
 
