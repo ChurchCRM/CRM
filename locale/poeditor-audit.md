@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥75%):** 19
-**Good Locales (51-74%):** 10
+**Complete Locales (≥75%):** 21
+**Good Locales (51-74%):** 8
 **Needs Work (<51%):** 16
 **WIP Candidates (>5%, not yet added):** 6
 
@@ -18,6 +18,7 @@
 | `nl` | Dutch | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `de` | German | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
@@ -28,9 +29,8 @@
 | `af` | Afrikaans | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 2387 | 87.34% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 1911 | 69.92% | 🟡 Good | ✅ Yes |
-| `vi` | Vietnamese | 1903 | 69.63% | 🟡 Good | ✅ Yes |
+| `he` | Hebrew | 2364 | 86.5% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 2083 | 76.22% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 1897 | 69.41% | 🟡 Good | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 1887 | 69.05% | 🟡 Good | ✅ Yes |
 | `ro` | Romanian | 1887 | 69.05% | 🟡 Good | ✅ Yes |
@@ -64,8 +64,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 19 locales ready for production
-- **🟡 Good (51-74%):** 10 locales with solid translation coverage
+- **🟢 Complete (≥75%):** 21 locales ready for production
+- **🟡 Good (51-74%):** 8 locales with solid translation coverage
 - **🟠 Needs Work (<51%):** 10 locales requiring translator attention
 - **🔴 Incomplete:** 2 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)

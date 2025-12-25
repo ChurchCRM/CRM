@@ -8105,3 +8105,1818 @@ msgstr "דוא\"ל המוסד לא הוגדר, אנא בקר בדף ההגדרו
 msgid "Telugu - India"
 msgstr "טלוגו - הודו"
 
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "קוריאנית"
+
+#: 
+msgid "System Logs"
+msgstr "יומני מערכת"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "אכיפת מדיניות אבטחת תוכן (CSP) כדי לסייע בהגנה מפני התקפות XSS. כאשר האפשרות מושבתת, הפרות CSP מדווחות בלבד."
+
+#: 
+msgid "Enter event description..."
+msgstr "הזן תיאור אירוע..."
+
+#: 
+msgid "Event ID"
+msgstr "מזהה אירוע"
+
+#: 
+msgid "Enter note text here..."
+msgstr "הזן את הטקסט להערה כאן..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "לא נוספו הערות עבור אדם זה."
+
+#: 
+msgid "Note"
+msgstr "הערה"
+
+#: 
+msgid "Log Settings"
+msgstr "הגדרות יומן"
+
+#: 
+msgid "Log Level:"
+msgstr "רמת יומן:"
+
+#: 
+msgid "Save Log Level"
+msgstr "שמור רמת יומן"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "צפה ביומני היישום. לחץ על קובץ יומן כדי לצפות בתוכנו."
+
+#: 
+msgid "Delete All Logs"
+msgstr "מחק את כל היומנים"
+
+#: 
+msgid "No log files found."
+msgstr "לא נמצאו קבצי יומן."
+
+#: 
+msgid "Log File"
+msgstr "קובץ יומן"
+
+#: 
+msgid "Size"
+msgstr "גודל"
+
+#: 
+msgid "Last Modified"
+msgstr "שונה לאחרונה"
+
+#: 
+msgid "View"
+msgstr "תצוגה"
+
+#: 
+msgid "Log File Viewer"
+msgstr "צופה קבצי יומן"
+
+#: 
+msgid "Filter by log level:"
+msgstr "סנן לפי רמת יומן:"
+
+#: 
+msgid "Error"
+msgstr "שגיאה"
+
+#: 
+msgid "Info"
+msgstr "מידע"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "מספר שורות להצגה:"
+
+#: 
+msgid "Loading log file..."
+msgstr "טוען קובץ יומן..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "לא נוספו הערות עבור משפחה זו."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "אסימון גישה ליומן נוצר ונשמר."
+
+#: 
+msgid "added"
+msgstr "נוסף"
+
+#: 
+msgid "Added"
+msgstr "נוסף"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "נוסף לסל בהצלחה"
+
+#: 
+msgid "All members already in cart"
+msgstr "כל החברים כבר נמצאים בסל"
+
+#: 
+msgid "already in cart"
+msgstr "כבר נמצא בסל"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "לא ניתן לטעון את מאפייני היומן. ייתכן שחסר אסימון גישה או שהיומן אינו מוגדר כהלכה."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "הסל רוקן בהצלחה"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "הסל רוקן לקבוצה בהצלחה"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "האם לרוקן את כל הסל שלך?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "הוספת המשפחה לסל נכשלה"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "הוספת הקבוצה לסל נכשלה"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "הוספת הפריט לסל נכשלה"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "ריקון הסל נכשל"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "ריקון הסל לקבוצה נכשל"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "הסרת המשפחה מהסל נכשלה"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "הסרת הפריט מהסל נכשלה"
+
+#: 
+msgid "Failed to remove group"
+msgstr "הסרת הקבוצה נכשלה"
+
+#: 
+msgid "Family added to cart"
+msgstr "המשפחה נוספה לסל"
+
+#: 
+msgid "Family removed from cart"
+msgstr "המשפחה הוסרה מהסל"
+
+#: 
+msgid "Group added to cart"
+msgstr "הקבוצה נוספה לסל"
+
+#: 
+msgid "Group removed from cart"
+msgstr "הקבוצה הוסרה מהסל"
+
+#: 
+msgid "in cart"
+msgstr "בסל"
+
+#: 
+msgid "members. Already had"
+msgstr "חברים. כבר היו"
+
+#: 
+msgid "people added to cart"
+msgstr "אנשים נוספו לסל"
+
+#: 
+msgid "people already in cart"
+msgstr "אנשים כבר נמצאים בסל"
+
+#: 
+msgid "people from cart"
+msgstr "אנשים מהסל"
+
+#: 
+msgid "people removed from cart"
+msgstr "אנשים הוסרו מהסל"
+
+#: 
+msgid "Person already in cart"
+msgstr "האדם כבר נמצא בסל"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "להסיר משפחה זו מהסל?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "להסיר קבוצה זו מהסל?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "להסיר אדם זה מהסל?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "הוסר מהסל בהצלחה"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "כן, רוקן סל"
+
+#: 
+msgid "Yes, Remove"
+msgstr "כן, הסר"
+
+#: 
+msgid "Add Group"
+msgstr "הוסף קבוצה"
+
+#: 
+msgid "Back to Group List"
+msgstr "חזרה לרשימת הקבוצות"
+
+#: 
+msgid "Default role updated."
+msgstr "תפקיד ברירת המחדל עודכן."
+
+#: 
+msgid "Edit Group"
+msgstr "ערוך קבוצה"
+
+#: 
+msgid "Enter group name"
+msgstr "הזן שם קבוצה"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "הוספת התפקיד נכשלה. נסה שנית."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "יצירת הקבוצה נכשלה. נסה שנית."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "מחיקת התפקיד נכשלה. נסה שנית."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "טעינת מצב הסל נכשלה."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "טעינת הקבוצות נכשלה. רענן את הדף."
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "הגדרת תפקיד ברירת המחדל נכשלה. נסה שנית."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "עדכון הקבוצה נכשל. נסה שנית."
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "עדכון המאפיינים נכשל. נסה שנית."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "עדכון שם התפקיד נכשל. נסה שנית."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "השאר ריק כדי לשמור על הסיסמה הקיימת"
+
+#: 
+msgid "Please enter a group name."
+msgstr "אנא הזן שם קבוצה."
+
+#: 
+msgid "Role added successfully."
+msgstr "התפקיד נוסף בהצלחה."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "התפקיד נמחק בהצלחה."
+
+#: 
+msgid "Role name updated."
+msgstr "שם התפקיד עודכן."
+
+#: 
+msgid "View Group"
+msgstr "צפה בקבוצה"
+
+#: 
+msgid "Events Today"
+msgstr "אירועים היום"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "סקירת בית ספר של יום ראשון"
+
+#: 
+msgid "Add Family Member"
+msgstr "הוסף בן משפחה"
+
+#: 
+msgid "Address is required"
+msgstr "כתובת היא שדה חובה"
+
+#: 
+msgid "Base URL is required"
+msgstr "כתובת URL בסיסית היא שדה חובה"
+
+#: 
+msgid "City is required"
+msgstr "עיר היא שדה חובה"
+
+#: 
+msgid "Database name is required"
+msgstr "שם מסד הנתונים הוא שדה חובה"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "שם שרת מסד הנתונים או כתובת ה-IP נדרשים (למשל, localhost או 127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "פורט שרת מסד הנתונים נדרש (למשל, 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "שם המשתמש למסד הנתונים הוא שדה חובה"
+
+#: 
+msgid "Email Address"
+msgstr "כתובת אימייל"
+
+#: 
+msgid "Email address"
+msgstr "כתובת אימייל"
+
+#: 
+msgid "Enter family name"
+msgstr "הזן שם משפחה"
+
+#: 
+msgid "Family Information"
+msgstr "מידע משפחתי"
+
+#: 
+msgid "Family name is required"
+msgstr "שם משפחה הוא שדה חובה"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "שם המשפחה חייב להכיל לפחות 2 תווים"
+
+#: 
+msgid "First name"
+msgstr "שם פרטי"
+
+#: 
+msgid "First name is required"
+msgstr "שם פרטי הוא שדה חובה"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "השם הפרטי חייב להכיל לפחות 2 תווים"
+
+#: 
+msgid "Home phone is required"
+msgstr "טלפון בבית הוא שדה חובה"
+
+#: 
+msgid "Home phone number"
+msgstr "מספר טלפון בבית"
+
+#: 
+msgid "Invalid format"
+msgstr "פורמט לא תקין"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "הצטרפו לקהילה שלנו על ידי רישום משפחתכם"
+
+#: 
+msgid "Last name"
+msgstr "שם משפחה"
+
+#: 
+msgid "Last name is required"
+msgstr "שם משפחה הוא שדה חובה"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "שם המשפחה חייב להכיל לפחות 2 תווים"
+
+#: 
+msgid "Maximum length is"
+msgstr "האורך המקסימלי הוא"
+
+#: 
+msgid "Minimum length is"
+msgstr "האורך המינימלי הוא"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "חייב להיות כתובת URL תקינה המתחילה ב-http:// או https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "חייב להיות כתובת URL תקינה (למשל, http://localhost)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "חייב להיות מספר פורט תקין (למשל, 3306)"
+
+#: 
+msgid "Next Member"
+msgstr "החבר הבא"
+
+#: 
+msgid "Passwords do not match"
+msgstr "הסיסמאות אינן תואמות"
+
+#: 
+msgid "Phone Type"
+msgstr "סוג טלפון"
+
+#: 
+msgid "Phone number"
+msgstr "מספר טלפון"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "אנא הוסף לפחות בן משפחה אחד."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "אנא תקן את שגיאות האימות לפני שתמשיך."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "אנא הזן כתובת URL תקינה"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "אנא הזן כתובת אימייל תקינה"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "אנא הזן כתובת אימייל תקינה (למשל name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "אנא הזן מספר תקין"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "אנא הזן מספר טלפון תקין"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "אנא מלא את כל שדות החובה בצורה נכונה."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "אנא בדוק את כל המידע בקפידה לפני השליחה."
+
+#: 
+msgid "Previous"
+msgstr "הקודם"
+
+#: 
+msgid "Registration Error"
+msgstr "שגיאת רישום"
+
+#: 
+msgid "Review & Submit"
+msgstr "סקירה ושליחה"
+
+#: 
+msgid "Role in Family"
+msgstr "תפקיד במשפחה"
+
+#: 
+msgid "Select date"
+msgstr "בחר תאריך"
+
+#: 
+msgid "Street address"
+msgstr "כתובת רחוב"
+
+#: 
+msgid "Submit Registration"
+msgstr "שלח רישום"
+
+#: 
+msgid "Zip code is required"
+msgstr "מיקוד הוא שדה חובה"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "סיסמה חדשה נוצרה ונשלחה לכתובת האימייל שלך."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "גרסה חדשה של ChurchCRM זמינה להתקנה."
+
+#: 
+msgid "Actual Hash"
+msgstr "Hash בפועל"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "כל הבדיקות המקדימות עברו. ניתן להמשיך בשדרוג."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "אפשר שדרוגי טרום-הפצה"
+
+#: 
+msgid "Apply Update Now"
+msgstr "החל עדכון כעת"
+
+#: 
+msgid "Applying System Update..."
+msgstr "מחיל עדכון מערכת..."
+
+#: 
+msgid "Back to Login"
+msgstr "חזרה להתחברות"
+
+#: 
+msgid "Back to login"
+msgstr "חזרה להתחברות"
+
+#: 
+msgid "Backup Skipped"
+msgstr "דילוג על גיבוי"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "בדוק ב-GitHub לקבלת מידע על הגרסה האחרונה"
+
+#: 
+msgid "Complete"
+msgstr "הושלם"
+
+#: 
+msgid "Continue to Backup"
+msgstr "המשך לגיבוי"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "המשך להורדה והחלה"
+
+#: 
+msgid "Create Backup"
+msgstr "צור גיבוי"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "צור גיבוי של מסד הנתונים לפני החלת העדכון."
+
+#: 
+msgid "Current Version:"
+msgstr "גרסה נוכחית:"
+
+#: 
+msgid "Database Backup"
+msgstr "גיבוי מסד נתונים"
+
+#: 
+msgid "Download & Apply"
+msgstr "הורד והחל"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "הורד והחל עדכון מערכת"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "הורד את הגרסה האחרונה והחל אותה על התקנת ה-ChurchCRM שלך."
+
+#: 
+msgid "Downloaded"
+msgstr "הורד"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "מוריד את הגרסה האחרונה מ-GitHub..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "הזן את שם המשתמש שלך ונשלח לך קישור לאיפוס סיסמה."
+
+#: 
+msgid "Expected Hash"
+msgstr "Hash צפוי"
+
+#: 
+msgid "Failed to create backup."
+msgstr "יצירת הגיבוי נכשלה."
+
+#: 
+msgid "Failed to download update package."
+msgstr "הורדת חבילת העדכון נכשלה."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "רענון מידע השדרוג מ-GitHub נכשל."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "רענון מידע השדרוג נכשל. נסה שנית."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "שמירת ההגדרה נכשלה. נסה שנית."
+
+#: 
+msgid "File Name"
+msgstr "שם הקובץ"
+
+#: 
+msgid "Files Missing"
+msgstr "קבצים חסרים"
+
+#: 
+msgid "Files Modified"
+msgstr "קבצים ששונו"
+
+#: 
+msgid "Go to Login"
+msgstr "עבור להתחברות"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "אני מבין - המשך"
+
+#: 
+msgid "Language updated to"
+msgstr "השפה עודכנה ל-"
+
+#: 
+msgid "Login Name is required"
+msgstr "שם משתמש הוא שדה חובה"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "לאחר שתקבל את האימייל, תוכל להתחבר עם הסיסמה הזמנית ולשנות אותה."
+
+#: 
+msgid "Password Reset Error"
+msgstr "שגיאה באיפוס סיסמה"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "איפוס הסיסמה הצליח"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "אנא בדוק את תיבת האימייל שלך עבור הסיסמה הזמנית."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "אנא אל תסגור חלון זה ואל תרענן את הדף."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "המשימות המקדימות לשדרוג הושלמו"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "אזהרות לפני שדרוג"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "רענן מ-GitHub"
+
+#: 
+msgid "Release Notes:"
+msgstr "הערות גרסה:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "בקש איפוס סיסמה"
+
+#: 
+msgid "Retry Download"
+msgstr "נסה הורדה שנית"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "SHA1 Hash:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "שלח אימייל לאיפוס"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "ההגדרה נשמרה. טוען את הדף מחדש..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "ההגדרה עודכנה בהצלחה"
+
+#: 
+msgid "Skip Backup"
+msgstr "דלג על גיבוי"
+
+#: 
+msgid "System Up to Date"
+msgstr "המערכת מעודכנת"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "אשף שדרוג המערכת"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "שדרוג המערכת הושלם בהצלחה!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "זה עשוי לקחת מספר דקות."
+
+#: 
+msgid "Update Available!"
+msgstr "עדכון זמין!"
+
+#: 
+msgid "Update Package Details"
+msgstr "פרטי חבילת העדכון"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "חבילת העדכון הורדה בהצלחה."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "השדרוג הושלם!"
+
+#: 
+msgid "Upgrade failed."
+msgstr "השדרוג נכשל."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "השדרוג נכשל. אנא בדוק את היומנים."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "מידע השדרוג רוענן בהצלחה"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "מידע השדרוג רוענן. טוען את הדף מחדש..."
+
+#: 
+msgid "Version Information"
+msgstr "מידע על הגרסה"
+
+#: 
+msgid "Warnings"
+msgstr "אזהרות"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "לא הצלחנו לעבד את הבקשה לאיפוס סיסמה."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "בחרת לדלג על הגיבוי. מומלץ מאוד לגבות לפני המשך השדרוג."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "התקנת ה-ChurchCRM שלך שודרגה בהצלחה."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "התקנת ה-ChurchCRM שלך מריצה את הגרסה האחרונה."
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 תווים"
+
+#: 
+msgid "Dear Friend"
+msgstr "חבר יקר"
+
+#: 
+msgid "No Data Found"
+msgstr "לא נמצא נתונים"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "לא הוחזרו רשומות מהדוח הקודם."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "אנא הזן שם תפריט (2-50 תווים)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "אנא הזן כתובת URL תקינה המתחילה ב-http:// או https://"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "כל חתימות קבצי המערכת תואמות לערכים הצפויים."
+
+#: 
+msgid "Files with issues"
+msgstr "קבצים עם בעיות"
+
+#: 
+msgid "Integrity check failed"
+msgstr "בדיקת תקינות נכשלה"
+
+#: 
+msgid "Integrity check passed"
+msgstr "בדיקת תקינות עברה"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "קובץ הגדרת החתימה קיים אך אינו קריא. בדוק הרשאות קבצים."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "קובץ הגדרת החתימה חסר ב-%s."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "לא ניתן ליצור קשר עם נקודת הקצה של התקינות."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "הוסף הערות נוספות על הפקדה זו"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "הסכום חורג מהערך המקסימלי המותר."
+
+#: 
+msgid "Checks"
+msgstr "המחאות"
+
+#: 
+msgid "Clear Filters"
+msgstr "נקה מסננים"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "לחץ על עמודה כדי לסנן תשלומים"
+
+#: 
+msgid "Delete Selected"
+msgstr "מחק בחירה"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "ההפקדה נשמרה בהצלחה"
+
+#: 
+msgid "Error deleting payments"
+msgstr "שגיאה במחיקת תשלומים"
+
+#: 
+msgid "Error loading payments"
+msgstr "שגיאה בטעינת תשלומים"
+
+#: 
+msgid "Error saving deposit"
+msgstr "שגיאה בשמירת הפקדה"
+
+#: 
+msgid "Funds"
+msgstr "קרנות"
+
+#: 
+msgid "Generate Report"
+msgstr "הפק דוח"
+
+#: 
+msgid "No Cash"
+msgstr "ללא מזומן"
+
+#: 
+msgid "No Checks"
+msgstr "ללא המחאות"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "אין עדיין תשלומים. לחץ על \"הוסף תשלום\" כדי להתחיל."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "הסכום שאינו מוכר לניכוי חורג מהערך המותר."
+
+#: 
+msgid "Payments"
+msgstr "תשלומים"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "התשלומים נמחקו בהצלחה"
+
+#: 
+msgid "Please select a date"
+msgstr "אנא בחר תאריך"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "אנא בחר שורות למחיקה"
+
+#: 
+msgid "Saving..."
+msgstr "שומר..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "לא ניתן לבטל פעולה זו."
+
+#: 
+msgid "Total Deposit"
+msgstr "סה\"כ הפקדה"
+
+#: 
+msgid "Total Payments"
+msgstr "סה\"כ תשלומים"
+
+#: 
+msgid "payments(s)?"
+msgstr "תשלומים"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "כל קבצי המערכת עברו את אימות התקינות."
+
+#: 
+msgid "Base URL"
+msgstr "כתובת URL בסיסית"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "התקנת ChurchCRM"
+
+#: 
+msgid "Copy"
+msgstr "העתק"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "שרת מסד נתונים"
+
+#: 
+msgid "Debug Info"
+msgstr "מידע ניפוי שגיאות"
+
+#: 
+msgid "Document Root"
+msgstr "שורש המסמכים"
+
+#: 
+msgid "Email Configuration"
+msgstr "הגדרות אימייל"
+
+#: 
+msgid "Email Debug Info"
+msgstr "מידע ניפוי שגיאות אימייל"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "הרשאות מערכת קבצים"
+
+#: 
+msgid "Hostname"
+msgstr "שם מארח"
+
+#: 
+msgid "IP Address"
+msgstr "כתובת IP"
+
+#: 
+msgid "Images Root"
+msgstr "שורש תמונות"
+
+#: 
+msgid "Import Demo Data"
+msgstr "ייבא נתוני דוגמה"
+
+#: 
+msgid "Include events and calendars"
+msgstr "כלול אירועים ולוחות שנה"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "כלול נתונים פיננסיים (קרנות תרומה, התחייבויות)"
+
+#: 
+msgid "Invalid API key"
+msgstr "מפתח API לא תקין"
+
+#: 
+msgid "Not configured"
+msgstr "לא מוגדר"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "דרישות PHP ושרת"
+
+#: 
+msgid "PHP Configuration"
+msgstr "הגדרות PHP"
+
+#: 
+msgid "Platform"
+msgstr "פלטפורמה"
+
+#: 
+msgid "Root Path"
+msgstr "נתיב שורש"
+
+#: 
+msgid "SMTP Host"
+msgstr "מארח SMTP"
+
+#: 
+msgid "Server Information"
+msgstr "מידע על השרת"
+
+#: 
+msgid "Software"
+msgstr "תוכנה"
+
+#: 
+msgid "System & Configuration"
+msgstr "מערכת והגדרות"
+
+#: 
+msgid "Tip:"
+msgstr "טיפ:"
+
+#: 
+msgid "Valid Settings"
+msgstr "הגדרות תקינות"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "אירעה שגיאה במהלך ייבוא נתוני דוגמה"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "נתוני הדוגמה יובאו בהצלחה"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "כלול כיתות ורישומי בית ספר של יום ראשון"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "צריך להסיר את הנתונים האלו מאוחר יותר?"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "אין תשלומים בהפקדה זו"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "אין תשלומים בהפקדה זו"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "נתונים אופציונליים להכללה"
+
+#: 
+msgid "Skipped"
+msgstr "דולג"
+
+#: 
+msgid "Unknown error"
+msgstr "שגיאה לא ידועה"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "הפקדות ללא תשלומים"
+
+#: 
+msgid "All Event Types"
+msgstr "כל סוגי האירועים"
+
+#: 
+msgid "All Types"
+msgstr "כל הסוגים"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "האם אתה בטוח שברצונך למחוק רשומת צ'ק-אין זו?"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "קטגוריות ספירת נוכחות"
+
+#: 
+msgid "Attendance Notes"
+msgstr "הערות נוכחות"
+
+#: 
+msgid "Change Event"
+msgstr "שנה אירוע"
+
+#: 
+msgid "Check In"
+msgstr "צ'ק-אין"
+
+#: 
+msgid "Check In Person"
+msgstr "בצע צ'ק-אין לאדם"
+
+#: 
+msgid "Check In to Event"
+msgstr "צ'ק-אין לאירוע"
+
+#: 
+msgid "Check-in"
+msgstr "צ'ק-אין"
+
+#: 
+msgid "Choose an event..."
+msgstr "בחר אירוע..."
+
+#: 
+msgid "Clear"
+msgstr "נקה"
+
+#: 
+msgid "Create"
+msgstr "צור"
+
+#: 
+msgid "Create New Event"
+msgstr "צור אירוע חדש"
+
+#: 
+msgid "Create an event type to get started."
+msgstr "צור סוג אירוע כדי להתחיל."
+
+#: 
+msgid "Current DB Version"
+msgstr "גרסת מסד נתונים נוכחית"
+
+#: 
+msgid "Current Software Version"
+msgstr "גרסת תוכנה נוכחית"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "שדרוג מסד הנתונים הושלם בהצלחה. מעביר ללוח הבקרה..."
+
+#: 
+msgid "Date & Time"
+msgstr "תאריך ושעה"
+
+#: 
+msgid "Default Start Time"
+msgstr "שעת התחלה כברירת מחדל"
+
+#: 
+msgid "Delete Event"
+msgstr "מחק אירוע"
+
+#: 
+msgid "Edit Event"
+msgstr "ערוך אירוע"
+
+#: 
+msgid "Editing Event"
+msgstr "עורך אירוע"
+
+#: 
+msgid "Event"
+msgstr "אירוע"
+
+#: 
+msgid "Event Type Name"
+msgstr "שם סוג האירוע"
+
+#: 
+msgid "Event Types"
+msgstr "סוגי אירועים"
+
+#: 
+msgid "Filter Events"
+msgstr "סנן אירועים"
+
+#: 
+msgid "Head Count"
+msgstr "ספירת ראשים"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "נהל צ'ק-אין"
+
+#: 
+msgid "People Checked In"
+msgstr "אנשים שביצעו צ'ק-אין"
+
+#: 
+msgid "People in Cart"
+msgstr "אנשים בסל"
+
+#: 
+msgid "Person Checking In"
+msgstr "אדם שמבצע צ'ק-אין"
+
+#: 
+msgid "Recurrence"
+msgstr "מחזוריות"
+
+#: 
+msgid "Required fields"
+msgstr "שדות חובה"
+
+#: 
+msgid "Save Event Type"
+msgstr "שמור סוג אירוע"
+
+#: 
+msgid "Search by name or email..."
+msgstr "חפש לפי שם או אימייל..."
+
+#: 
+msgid "Unclassified"
+msgstr "לא מסווג"
+
+#: 
+msgid "Upgrade database now"
+msgstr "שדרג מסד נתונים כעת"
+
+#: 
+msgid "added to this event"
+msgstr "נוספו לאירוע זה"
+
+#: 
+msgid "optional"
+msgstr "אופציונלי"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "אדם"
+msgstr[1] "אנשים"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ צ'ק-אאוט"
+
+#: 
+msgid "Access Denied"
+msgstr "גישה נדחתה"
+
+#: 
+msgid "Administrator privileges"
+msgstr "הרשאות מנהל"
+
+#: 
+msgid "All Files Verified"
+msgstr "כל הקבצים אומתו"
+
+#: 
+msgid "Application Integrity"
+msgstr "תקינות היישום"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "חזרה למידע ניפוי שגיאות"
+
+#: 
+msgid "Backup Status"
+msgstr "מצב גיבוי"
+
+#: 
+msgid "Backup Type"
+msgstr "סוג גיבוי"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "הגיבוי הושלם! לחץ למטה להורדה."
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "הגיבוי הושלם בהצלחה!"
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "הגיבוי נכשל. נסה שנית."
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "גיבוי בתהליך, אנא המתן..."
+
+#: 
+msgid "Confirm Deletion"
+msgstr "אשר מחיקה"
+
+#: 
+msgid "Database Only"
+msgstr "מסד נתונים בלבד"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "מסד הנתונים שוחזר בהצלחה!"
+
+#: 
+msgid "Delete All Files"
+msgstr "מחק את כל הקבצים"
+
+#: 
+msgid "Encryption"
+msgstr "הצפנה"
+
+#: 
+msgid "File Path"
+msgstr "נתיב קובץ"
+
+#: 
+msgid "Full Backup"
+msgstr "גיבוי מלא"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "עבור ללוח הבקרה"
+
+#: 
+msgid "Loading..."
+msgstr "טוען..."
+
+#: 
+msgid "Missing Files"
+msgstr "קבצים חסרים"
+
+#: 
+msgid "Modified Files"
+msgstr "קבצים ששונו"
+
+#: 
+msgid "Orphaned Files"
+msgstr "קבצים יתומים"
+
+#: 
+msgid "Permission Required"
+msgstr "נדרשת הרשאה"
+
+#: 
+msgid "Refresh List"
+msgstr "רענן רשימה"
+
+#: 
+msgid "Required Permission"
+msgstr "הרשאה נדרשת"
+
+#: 
+msgid "Restore Status"
+msgstr "מצב שחזור"
+
+#: 
+msgid "Restore failed."
+msgstr "השחזור נכשל."
+
+#: 
+msgid "Select Backup File"
+msgstr "בחר קובץ גיבוי"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "סיכום שדרוג"
+
+#: 
+msgid "User authentication"
+msgstr "אימות משתמש"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "לוח בקרה למנהל"
+
+#: 
+msgid "Advanced Operations"
+msgstr "פעולות מתקדמות"
+
+#: 
+msgid "All System Settings"
+msgstr "כל הגדרות המערכת"
+
+#: 
+msgid "Apr"
+msgstr "אפר'"
+
+#: 
+msgid "Aug"
+msgstr "אוג'"
+
+#: 
+msgid "Back to Deposits"
+msgstr "חזרה להפקדות"
+
+#: 
+msgid "Back to Families"
+msgstr "חזרה למשפחות"
+
+#: 
+msgid "Birth & Family"
+msgstr "לידה ומשפחה"
+
+#: 
+msgid "Cart"
+msgstr "סל"
+
+#: 
+msgid "Church Membership"
+msgstr "חברות בכנסייה"
+
+#: 
+msgid "Coming soon"
+msgstr "בקרוב"
+
+#: 
+msgid "Configuration:"
+msgstr "הגדרות:"
+
+#: 
+msgid "Configure Email"
+msgstr "הגדר אימייל"
+
+#: 
+msgid "Contact Information"
+msgstr "מידע ליצירת קשר"
+
+#: 
+msgid "Create Deposit"
+msgstr "צור הפקדה"
+
+#: 
+msgid "Current Deposit"
+msgstr "הפקדה נוכחית"
+
+#: 
+msgid "Day"
+msgstr "יום"
+
+#: 
+msgid "Dec"
+msgstr "דצמ'"
+
+#: 
+msgid "Demo Data"
+msgstr "נתוני דוגמה"
+
+#: 
+msgid "Documentation"
+msgstr "תיעוד"
+
+#: 
+msgid "Edit Deposit"
+msgstr "ערוך הפקדה"
+
+#: 
+msgid "Edit Family"
+msgstr "ערוך משפחה"
+
+#: 
+msgid "Edit Payment"
+msgstr "ערוך תשלום"
+
+#: 
+msgid "Edit Person"
+msgstr "ערוך אדם"
+
+#: 
+msgid "F"
+msgstr "נ"
+
+#: 
+msgid "Feb"
+msgstr "פבר'"
+
+#: 
+msgid "Finance"
+msgstr "כספים"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "לוח בקרה כספי"
+
+#: 
+msgid "Generate"
+msgstr "הפק"
+
+#: 
+msgid "Generate Reports"
+msgstr "הפק דוחות"
+
+#: 
+msgid "ID"
+msgstr "מזהה"
+
+#: 
+msgid "Jan"
+msgstr "ינו'"
+
+#: 
+msgid "Jul"
+msgstr "יולי"
+
+#: 
+msgid "Jun"
+msgstr "יוני"
+
+#: 
+msgid "Latest Note"
+msgstr "הערה אחרונה"
+
+#: 
+msgid "Location"
+msgstr "מיקום"
+
+#: 
+msgid "M"
+msgstr "ז"
+
+#: 
+msgid "Manage Funds"
+msgstr "נהל קרנות"
+
+#: 
+msgid "Manage Users"
+msgstr "נהל משתמשים"
+
+#: 
+msgid "Mar"
+msgstr "מרץ"
+
+#: 
+msgid "Nov"
+msgstr "נוב'"
+
+#: 
+msgid "Oct"
+msgstr "אוק'"
+
+#: 
+msgid "Open"
+msgstr "פתוח"
+
+#: 
+msgid "Payment"
+msgstr "תשלום"
+
+#: 
+msgid "Quick Actions"
+msgstr "פעולות מהירות"
+
+#: 
+msgid "Reset"
+msgstr "איפוס"
+
+#: 
+msgid "Restore"
+msgstr "שחזור"
+
+#: 
+msgid "Sep"
+msgstr "ספט'"
+
+#: 
+msgid "Settings"
+msgstr "הגדרות"
+
+#: 
+msgid "Social Media"
+msgstr "מדיה חברתית"
+
+#: 
+msgid "Today"
+msgstr "היום"
+
+#: 
+msgid "Total"
+msgstr "סה\"כ"
+
+#: 
+msgid "Total Amount"
+msgstr "סכום כולל"
+
+#: 
+msgid "Upgrade"
+msgstr "שדרוג"
+
+#: 
+msgid "active"
+msgstr "פעיל"
+
+#: 
+msgid "ago"
+msgstr "לפני"
+
+#: 
+msgid "day"
+msgstr "יום"
+
+#: 
+msgid "days"
+msgstr "ימים"
+
+#: 
+msgid "found"
+msgstr "נמצא"
+
+#: 
+msgid "in"
+msgstr "ב-"
+
+#: 
+msgid "issues"
+msgstr "בעיות"
+
+#: 
+msgid "open"
+msgstr "פתוח"
+
+#: 
+msgid "years"
+msgstr "שנים"
+
+#: 
+msgid "yes"
+msgstr "כן"
+
+#: 
+msgid "Available"
+msgstr "זמין"
+
+#: 
+msgid "Contact"
+msgstr "צור קשר"
+
+#: 
+msgid "Error:"
+msgstr "שגיאה:"
+
+#: 
+msgid "Language"
+msgstr "שפה"
+
+#: 
+msgid "Not Available"
+msgstr "לא זמין"
+
+#: 
+msgid "View Logs"
+msgstr "צפה ביומנים"
+
+#: 
+msgid "Additional Information"
+msgstr "מידע נוסף"
+
+#: 
+msgid "All information is correct"
+msgstr "כל המידע נכון"
+
+#: 
+msgid "Assign Property"
+msgstr "שייך מאפיין"
+
+#: 
+msgid "Copied!"
+msgstr "הועתק!"
+
+#: 
+msgid "Edit Role"
+msgstr "ערוך תפקיד"
+
+#: 
+msgid "Edited"
+msgstr "נערך"
+
+#: 
+msgid "Email PDF"
+msgstr "שלח PDF באימייל"
+
+#: 
+msgid "Newsletter"
+msgstr "ניוזלטר"
+
+#: 
+msgid "Open in New Tab"
+msgstr "פתח בלשונית חדשה"
+
+#: 
+msgid "Personal"
+msgstr "אישי"
+
+#: 
+msgid "Remove Property"
+msgstr "הסר מאפיין"
+
+#: 
+msgid "Select Property"
+msgstr "בחר מאפיין"
+
+#: 
+msgid "Submit Verification"
+msgstr "שלח אימות"
+
+#: 
+msgid "Thank You!"
+msgstr "תודה לך!"
+
+#: 
+msgid "Volunteer"
+msgstr "מתנדב"
+
+#: 
+msgid "Active Users"
+msgstr "משתמשים פעילים"
+
+#: 
+msgid "Delete User"
+msgstr "מחק משתמש"
+
+#: 
+msgid "Locked Users"
+msgstr "משתמשים נעולים"
+
+#: 
+msgid "Quick Settings"
+msgstr "הגדרות מהירות"
+
+#: 
+msgid "Total Users"
+msgstr "סה\"כ משתמשים"
+
+#: 
+msgid "User Management"
+msgstr "ניהול משתמשים"
+
+#: 
+msgid "View Details"
+msgstr "צפה בפרטים"
+
+#: 
+msgid "entries"
+msgstr "רשומות"
+
+#: 
+msgid "of"
+msgstr "מתוך"
+
+#: 
+msgid "total"
+msgstr "סה\"כ"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "אימות דו-שלבי"
+
+#: 
+msgid "Order"
+msgstr "סדר"
+
+#: 
+msgid "Percentage"
+msgstr "אחוז"
+
+#: 
+msgid "Warning:"
+msgstr "אזהרה:"
+
+#: 
+msgid "Fund(s)"
+msgstr "קרנות"
+
