@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥75%):** 30
-**Good Locales (51-74%):** 1
+**Complete Locales (≥75%):** 31
+**Good Locales (51-74%):** 0
 **Needs Work (<51%):** 14
 **WIP Candidates (>5%, not yet added):** 6
 
@@ -39,8 +39,8 @@
 | `pl` | Polish | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 2277 | 83.32% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 1887 | 69.05% | 🟡 Good | ✅ Yes |
+| `zh-cn` | Chinese | 2312 | 84.6% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 2312 | 84.6% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 1102 | 40.32% | 🟠 Needs Work | ✅ Yes |
 | `hu` | Hungarian | 1073 | 39.26% | 🟠 Needs Work | ✅ Yes |
 | `nb` | Norwegian Bokmål | 792 | 28.98% | 🟠 Needs Work | ✅ Yes |
@@ -64,8 +64,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 30 locales ready for production
-- **🟡 Good (51-74%):** 1 locales with solid translation coverage
+- **🟢 Complete (≥75%):** 31 locales ready for production
+- **🟡 Good (51-74%):** 0 locales with solid translation coverage
 - **🟠 Needs Work (<51%):** 8 locales requiring translator attention
 - **🔴 Incomplete:** 2 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)

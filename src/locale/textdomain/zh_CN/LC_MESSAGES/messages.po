@@ -8025,3 +8025,1797 @@ msgstr "区域设置"
 msgid "Override system locale"
 msgstr "覆盖系统区域设置"
 
+#: 
+msgid "Deleted"
+msgstr "已删除"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "无效的出生日期：缺少出生月份或日期。"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "无效的出生日期：缺少出生月份和日期。"
+
+#: 
+msgid "System"
+msgstr "系统"
+
+#. Context: locales
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "阿姆哈拉语 - 埃塞俄比亚"
+
+#. Context: locales
+#: 
+msgid "Czech"
+msgstr "捷克语"
+
+#. Context: locales
+#: 
+msgid "Finnish"
+msgstr "芬兰语"
+
+#. Context: locales
+#: 
+msgid "Greek"
+msgstr "希腊语"
+
+#. Context: locales
+#: 
+msgid "Turkish"
+msgstr "土耳其语"
+
+#. Context: locales
+#: 
+msgid "Ukrainian"
+msgstr "乌克兰语"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "当您点击“提交到 GitHub”时，您将被定向到 GitHub 问题页面，并预填您的系统信息。"
+
+#: 
+msgid "Submit to GitHub"
+msgstr "提交到 GitHub"
+
+#: 
+msgid "Change role"
+msgstr "更改角色"
+
+#: 
+msgid "Closed"
+msgstr "已关闭"
+
+#: 
+msgid "Delete this person?"
+msgstr "删除此人？"
+
+#: 
+msgid "Deposit ID"
+msgstr "存款 ID"
+
+#: 
+msgid "Deposit Total"
+msgstr "存款总额"
+
+#: 
+msgid "Group Cart Status"
+msgstr "团体购物车状态"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "如果不起作用，请将以下链接复制并粘贴到您的浏览器中"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "您收到此邮件是因为我们收到了针对您账户的操作请求。如果您没有发起此请求，可以安全地删除此邮件。"
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "要停止接收这些电子邮件，您可以发送电子邮件至"
+
+#: 
+msgid "invalid group request"
+msgstr "无效的团体请求"
+
+#. Context: locales
+#: 
+msgid "Hindi - India"
+msgstr "印地语 - 印度"
+
+#. Context: locales
+#: 
+msgid "Japanese"
+msgstr "日语"
+
+#. Context: locales
+#: 
+msgid "Tamil - India"
+msgstr "泰米尔语 - 印度"
+
+#: 
+msgid "Not Subscribed"
+msgstr "未订阅"
+
+#: 
+msgid "property"
+msgstr "属性"
+
+#: 
+msgid "Default Zip"
+msgstr "默认邮编"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "信用卡支付人员"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "配置为通过信用卡支付的人员。"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "作为恢复的一部分，外部备份已禁用。如果您希望继续自动备份，必须手动重新启用 bEnableExternalBackupTarget 设置。"
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "之前的完整性检查已通过。所有系统文件哈希值均符合预期值。"
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "应显示为非活动状态的分类列表（以逗号分隔）"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp 未配置"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "请更新 MailChimp API 密钥，位置如下："
+
+#. Context: locales
+#: 
+msgid "English - South Africa"
+msgstr "英语 - 南非"
+
+#. Context: locales
+#: 
+msgid "English - Jamaica"
+msgstr "英语 - 牙买加"
+
+#. Context: locales
+#: 
+msgid "Swahili"
+msgstr "斯瓦希里语"
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "名字的一个字符和姓氏的一个字符"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "名字的两个字符"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "未设置教会电子邮件，请访问设置页面"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "泰卢固语 - 印度"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "韩语"
+
+#: 
+msgid "System Logs"
+msgstr "系统日志"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "强制执行内容安全策略 (CSP) 以帮助防止跨站脚本攻击。禁用时，仅报告 CSP 违规情况。"
+
+#: 
+msgid "Enter event description..."
+msgstr "输入活动描述..."
+
+#: 
+msgid "Event ID"
+msgstr "活动 ID"
+
+#: 
+msgid "Enter note text here..."
+msgstr "在此处输入笔记文本..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "尚未为此人添加笔记。"
+
+#: 
+msgid "Note"
+msgstr "笔记"
+
+#: 
+msgid "Log Settings"
+msgstr "日志设置"
+
+#: 
+msgid "Log Level:"
+msgstr "日志级别："
+
+#: 
+msgid "Save Log Level"
+msgstr "保存日志级别"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "查看应用程序日志。点击日志文件查看其内容。"
+
+#: 
+msgid "Delete All Logs"
+msgstr "删除所有日志"
+
+#: 
+msgid "No log files found."
+msgstr "未找到日志文件。"
+
+#: 
+msgid "Log File"
+msgstr "日志文件"
+
+#: 
+msgid "Size"
+msgstr "大小"
+
+#: 
+msgid "Last Modified"
+msgstr "最后修改"
+
+#: 
+msgid "View"
+msgstr "查看"
+
+#: 
+msgid "Log File Viewer"
+msgstr "日志文件查看器"
+
+#: 
+msgid "Filter by log level:"
+msgstr "按日志级别筛选："
+
+#: 
+msgid "Error"
+msgstr "错误"
+
+#: 
+msgid "Info"
+msgstr "信息"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "显示行数："
+
+#: 
+msgid "Loading log file..."
+msgstr "正在加载日志文件..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "尚未为此家庭添加笔记。"
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "已生成并保存日历访问令牌。"
+
+#: 
+msgid "added"
+msgstr "已添加"
+
+#: 
+msgid "Added"
+msgstr "添加日期"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "成功添加到购物车"
+
+#: 
+msgid "All members already in cart"
+msgstr "所有成员均已在购物车中"
+
+#: 
+msgid "already in cart"
+msgstr "已在购物车中"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "无法加载日历属性。此日历可能缺少访问令牌或配置不正确。"
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "成功清空购物车"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "购物车成功清空到团体"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "清空整个购物车？"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "未能将家庭添加到购物车"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "未能将团体添加到购物车"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "未能添加到购物车"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "清空购物车失败"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "清空购物车到团体失败"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "未能从购物车中移除家庭"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "未能从购物车中移除"
+
+#: 
+msgid "Failed to remove group"
+msgstr "未能移除团体"
+
+#: 
+msgid "Family added to cart"
+msgstr "家庭已添加到购物车"
+
+#: 
+msgid "Family removed from cart"
+msgstr "家庭已从购物车移除"
+
+#: 
+msgid "Group added to cart"
+msgstr "团体已添加到购物车"
+
+#: 
+msgid "Group removed from cart"
+msgstr "团体已从购物车移除"
+
+#: 
+msgid "in cart"
+msgstr "在购物车中"
+
+#: 
+msgid "members. Already had"
+msgstr "成员。已有"
+
+#: 
+msgid "people added to cart"
+msgstr "人已添加到购物车"
+
+#: 
+msgid "people already in cart"
+msgstr "人已在购物车中"
+
+#: 
+msgid "people from cart"
+msgstr "人来自购物车"
+
+#: 
+msgid "people removed from cart"
+msgstr "人已从购物车移除"
+
+#: 
+msgid "Person already in cart"
+msgstr "此人已在购物车中"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "从购物车移除此家庭？"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "从购物车移除此团体？"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "从购物车移除此人？"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "成功从购物车移除"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "是，清空购物车"
+
+#: 
+msgid "Yes, Remove"
+msgstr "是，移除"
+
+#: 
+msgid "Add Group"
+msgstr "添加团体"
+
+#: 
+msgid "Back to Group List"
+msgstr "返回团体列表"
+
+#: 
+msgid "Default role updated."
+msgstr "默认角色已更新。"
+
+#: 
+msgid "Edit Group"
+msgstr "编辑团体"
+
+#: 
+msgid "Enter group name"
+msgstr "输入团体名称"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "添加角色失败。请重试。"
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "创建团体失败。请重试。"
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "删除角色失败。请重试。"
+
+#: 
+msgid "Failed to load cart status."
+msgstr "加载购物车状态失败。"
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "加载团体失败。请刷新页面。"
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "设置默认角色失败。请重试。"
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "更新团体失败。请重试。"
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "更新属性失败。请重试。"
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "更新角色名称失败。请重试。"
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "留空以保留现有密码"
+
+#: 
+msgid "Please enter a group name."
+msgstr "请输入团体名称。"
+
+#: 
+msgid "Role added successfully."
+msgstr "角色添加成功。"
+
+#: 
+msgid "Role deleted successfully."
+msgstr "角色删除成功。"
+
+#: 
+msgid "Role name updated."
+msgstr "角色名称已更新。"
+
+#: 
+msgid "View Group"
+msgstr "查看团体"
+
+#: 
+msgid "Events Today"
+msgstr "今日活动"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "主日学概览"
+
+#: 
+msgid "Add Family Member"
+msgstr "添加家庭成员"
+
+#: 
+msgid "Address is required"
+msgstr "地址是必填项"
+
+#: 
+msgid "Base URL is required"
+msgstr "基本 URL 是必填项"
+
+#: 
+msgid "City is required"
+msgstr "城市是必填项"
+
+#: 
+msgid "Database name is required"
+msgstr "数据库名称是必填项"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "数据库服务器主机名或 IP 地址是必填项（例如：localhost 或 127.0.0.1）"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "数据库服务器端口是必填项（例如：3306）"
+
+#: 
+msgid "Database username is required"
+msgstr "数据库用户名是必填项"
+
+#: 
+msgid "Email Address"
+msgstr "电子邮件地址"
+
+#: 
+msgid "Email address"
+msgstr "电子邮件地址"
+
+#: 
+msgid "Enter family name"
+msgstr "输入家庭姓氏"
+
+#: 
+msgid "Family Information"
+msgstr "家庭信息"
+
+#: 
+msgid "Family name is required"
+msgstr "家庭姓氏是必填项"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "家庭姓氏必须至少包含 2 个字符"
+
+#: 
+msgid "First name"
+msgstr "名"
+
+#: 
+msgid "First name is required"
+msgstr "名字是必填项"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "名字必须至少包含 2 个字符"
+
+#: 
+msgid "Home phone is required"
+msgstr "家庭电话是必填项"
+
+#: 
+msgid "Home phone number"
+msgstr "家庭电话号码"
+
+#: 
+msgid "Invalid format"
+msgstr "格式无效"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "通过注册您的家庭加入我们的社区"
+
+#: 
+msgid "Last name"
+msgstr "姓"
+
+#: 
+msgid "Last name is required"
+msgstr "姓氏是必填项"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "姓氏必须至少包含 2 个字符"
+
+#: 
+msgid "Maximum length is"
+msgstr "最大长度为"
+
+#: 
+msgid "Minimum length is"
+msgstr "最小长度为"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "必须是以 http:// 或 https:// 开头的有效 URL"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "必须是以 http:// 或 https:// 开头的有效 URL（例如：http://localhost 或 https://domain.com）"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "必须是有效的端口号（例如：3306）"
+
+#: 
+msgid "Next Member"
+msgstr "下一位成员"
+
+#: 
+msgid "Passwords do not match"
+msgstr "密码不匹配"
+
+#: 
+msgid "Phone Type"
+msgstr "电话类型"
+
+#: 
+msgid "Phone number"
+msgstr "电话号码"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "请至少添加一名家庭成员。"
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "请在继续之前纠正验证错误。"
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "请输入有效的 URL"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "请输入有效的电子邮件地址"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "请输入有效的电子邮件地址（例如：name@example.com）"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "请输入有效的数字"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "请输入有效的电话号码"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "请正确填写所有必填字段。"
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "请在提交前仔细检查所有信息。如果需要，您可以返回进行更改。"
+
+#: 
+msgid "Previous"
+msgstr "上一步"
+
+#: 
+msgid "Registration Error"
+msgstr "注册错误"
+
+#: 
+msgid "Review & Submit"
+msgstr "检查并提交"
+
+#: 
+msgid "Role in Family"
+msgstr "家庭角色"
+
+#: 
+msgid "Select date"
+msgstr "选择日期"
+
+#: 
+msgid "Street address"
+msgstr "街道地址"
+
+#: 
+msgid "Submit Registration"
+msgstr "提交注册"
+
+#: 
+msgid "Zip code is required"
+msgstr "邮政编码是必填项"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "新密码已生成并发送至您的电子邮件地址。"
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "有新版本的 ChurchCRM 可供安装。"
+
+#: 
+msgid "Actual Hash"
+msgstr "实际哈希"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "所有升级前检查均已通过。您可以继续升级。"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "允许预发布版本升级"
+
+#: 
+msgid "Apply Update Now"
+msgstr "立即应用更新"
+
+#: 
+msgid "Applying System Update..."
+msgstr "正在应用系统更新..."
+
+#: 
+msgid "Back to Login"
+msgstr "返回登录"
+
+#: 
+msgid "Back to login"
+msgstr "返回登录"
+
+#: 
+msgid "Backup Skipped"
+msgstr "备份已跳过"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "在 GitHub 上查看最新的发布信息"
+
+#: 
+msgid "Complete"
+msgstr "完成"
+
+#: 
+msgid "Continue to Backup"
+msgstr "继续备份"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "继续下载并应用"
+
+#: 
+msgid "Create Backup"
+msgstr "创建备份"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "在应用更新之前，为您的数据库创建备份。"
+
+#: 
+msgid "Current Version:"
+msgstr "当前版本："
+
+#: 
+msgid "Database Backup"
+msgstr "数据库备份"
+
+#: 
+msgid "Download & Apply"
+msgstr "下载并应用"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "下载并应用系统更新"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "下载最新版本并应用到您的 ChurchCRM 安装中。"
+
+#: 
+msgid "Downloaded"
+msgstr "已下载"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "正在从 GitHub 下载最新版本..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "输入您的登录名，我们将通过电子邮件向您发送重置密码的链接。"
+
+#: 
+msgid "Expected Hash"
+msgstr "预期哈希"
+
+#: 
+msgid "Failed to create backup."
+msgstr "创建备份失败。"
+
+#: 
+msgid "Failed to download update package."
+msgstr "下载更新包失败。"
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "无法从 GitHub 刷新升级信息。"
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "刷新升级信息失败。请重试。"
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "保存设置失败。请重试。"
+
+#: 
+msgid "File Name"
+msgstr "文件名"
+
+#: 
+msgid "Files Missing"
+msgstr "文件丢失"
+
+#: 
+msgid "Files Modified"
+msgstr "文件已修改"
+
+#: 
+msgid "Go to Login"
+msgstr "前往登录"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "我明白 - 继续"
+
+#: 
+msgid "Language updated to"
+msgstr "语言已更新为"
+
+#: 
+msgid "Login Name is required"
+msgstr "登录名是必填项"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "收到电子邮件后，您可以使用临时密码登录，并将其更改为您喜欢的密码。"
+
+#: 
+msgid "Password Reset Error"
+msgstr "密码重置错误"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "密码重置成功"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "请检查您的电子邮件（包括垃圾邮件文件夹）以获取临时密码。"
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "请不要关闭此窗口或刷新页面。"
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "升级前任务已完成"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "升级前警告"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "从 GitHub 刷新"
+
+#: 
+msgid "Release Notes:"
+msgstr "发布说明："
+
+#: 
+msgid "Request Password Reset"
+msgstr "请求重置密码"
+
+#: 
+msgid "Retry Download"
+msgstr "重试下载"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "SHA1 哈希："
+
+#: 
+msgid "Send Reset Email"
+msgstr "发送重置邮件"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "设置已保存。正在重新加载页面..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "设置更新成功"
+
+#: 
+msgid "Skip Backup"
+msgstr "跳过备份"
+
+#: 
+msgid "System Up to Date"
+msgstr "系统已是最新"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "系统升级向导"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "系统升级成功完成！"
+
+#: 
+msgid "This may take several minutes."
+msgstr "这可能需要几分钟。"
+
+#: 
+msgid "Update Available!"
+msgstr "有可用更新！"
+
+#: 
+msgid "Update Package Details"
+msgstr "更新包详情"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "更新包下载成功。"
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "升级完成！"
+
+#: 
+msgid "Upgrade failed."
+msgstr "升级失败。"
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "升级失败。请检查日志。"
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "升级信息刷新成功"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "升级信息已刷新。正在重新加载页面..."
+
+#: 
+msgid "Version Information"
+msgstr "版本信息"
+
+#: 
+msgid "Warnings"
+msgstr "警告"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "我们无法处理您的密码重置请求。请尝试请求新的密码重置链接。"
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "您选择了跳过备份。强烈建议在继续升级之前进行备份。"
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "您的 ChurchCRM 安装已成功升级。"
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "您的 ChurchCRM 安装正在运行最新版本。"
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 个字符"
+
+#: 
+msgid "Dear Friend"
+msgstr "亲爱的朋友"
+
+#: 
+msgid "No Data Found"
+msgstr "未找到数据"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "之前的报告未返回任何记录。请调整您的过滤器或日期范围，然后重试。"
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "请输入菜单名称（2-50 个字符）"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "请输入以 http:// 或 https:// 开头的有效 URL"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "所有系统文件签名均符合预期值。"
+
+#: 
+msgid "Files with issues"
+msgstr "有问题的文件"
+
+#: 
+msgid "Integrity check failed"
+msgstr "完整性检查失败"
+
+#: 
+msgid "Integrity check passed"
+msgstr "完整性检查通过"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "签名定义文件存在但不可读。检查文件权限。"
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "位于 %s 的签名定义文件丢失。请运行打包任务或部署官方版本以重新生成签名。"
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "无法联系完整性端点。请检查 Web 服务器错误日志。"
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "添加有关此存款的任何额外笔记"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "金额超过允许的最大值 (999999.99)。"
+
+#: 
+msgid "Checks"
+msgstr "支票"
+
+#: 
+msgid "Clear Filters"
+msgstr "清除过滤器"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "点击条形图以过滤付款"
+
+#: 
+msgid "Delete Selected"
+msgstr "删除选中项"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "存款保存成功"
+
+#: 
+msgid "Error deleting payments"
+msgstr "删除付款时出错"
+
+#: 
+msgid "Error loading payments"
+msgstr "加载付款时出错"
+
+#: 
+msgid "Error saving deposit"
+msgstr "保存存款时出错"
+
+#: 
+msgid "Funds"
+msgstr "基金"
+
+#: 
+msgid "Generate Report"
+msgstr "生成报告"
+
+#: 
+msgid "No Cash"
+msgstr "无现金"
+
+#: 
+msgid "No Checks"
+msgstr "无支票"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "尚无付款。点击“添加付款”开始。"
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "不可扣除金额超过允许的最大值 (999999.99)。"
+
+#: 
+msgid "Payments"
+msgstr "付款"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "付款已成功删除"
+
+#: 
+msgid "Please select a date"
+msgstr "请选择日期"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "请选择要删除的行"
+
+#: 
+msgid "Saving..."
+msgstr "正在保存..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "此操作无法撤销。"
+
+#: 
+msgid "Total Deposit"
+msgstr "总存款"
+
+#: 
+msgid "Total Payments"
+msgstr "总付款"
+
+#: 
+msgid "payments(s)?"
+msgstr "付款记录"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "所有系统文件均已通过完整性验证。"
+
+#: 
+msgid "Base URL"
+msgstr "基本 URL"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "ChurchCRM 安装"
+
+#: 
+msgid "Copy"
+msgstr "复制"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "数据库服务器"
+
+#: 
+msgid "Debug Info"
+msgstr "调试信息"
+
+#: 
+msgid "Document Root"
+msgstr "文档根目录"
+
+#: 
+msgid "Email Configuration"
+msgstr "电子邮件配置"
+
+#: 
+msgid "Email Debug Info"
+msgstr "电子邮件调试信息"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "文件系统权限"
+
+#: 
+msgid "Hostname"
+msgstr "主机名"
+
+#: 
+msgid "IP Address"
+msgstr "IP 地址"
+
+#: 
+msgid "Images Root"
+msgstr "图像根目录"
+
+#: 
+msgid "Import Demo Data"
+msgstr "导入演示数据"
+
+#: 
+msgid "Include events and calendars"
+msgstr "包含活动和日历"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "包含财务数据（捐赠基金、认献）"
+
+#: 
+msgid "Invalid API key"
+msgstr "无效的 API 密钥"
+
+#: 
+msgid "Not configured"
+msgstr "未配置"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "PHP 及服务器要求"
+
+#: 
+msgid "PHP Configuration"
+msgstr "PHP 配置"
+
+#: 
+msgid "Platform"
+msgstr "平台"
+
+#: 
+msgid "Root Path"
+msgstr "根路径"
+
+#: 
+msgid "SMTP Host"
+msgstr "SMTP 主机"
+
+#: 
+msgid "Server Information"
+msgstr "服务器信息"
+
+#: 
+msgid "Software"
+msgstr "软件"
+
+#: 
+msgid "System & Configuration"
+msgstr "系统与配置"
+
+#: 
+msgid "Tip:"
+msgstr "提示："
+
+#: 
+msgid "Valid Settings"
+msgstr "有效设置"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "导入演示数据时出错"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "演示数据成功导入"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "包含主日学班级和报名"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "以后需要删除这些数据吗？"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "此存款项下无付款"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "此存款项下无付款"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "可选包含的数据"
+
+#: 
+msgid "Skipped"
+msgstr "已跳过"
+
+#: 
+msgid "Unknown error"
+msgstr "未知错误"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "无付款的存款"
+
+#: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%s 中的 %d 个活动"
+
+#: 
+msgid "All Event Types"
+msgstr "所有活动类型"
+
+#: 
+msgid "All Types"
+msgstr "所有类型"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "您确定要删除此签到记录吗？"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "考勤统计类别"
+
+#: 
+msgid "Attendance Notes"
+msgstr "考勤笔记"
+
+#: 
+msgid "Change Event"
+msgstr "更改活动"
+
+#: 
+msgid "Check In"
+msgstr "签到"
+
+#: 
+msgid "Check In Person"
+msgstr "签到人员"
+
+#: 
+msgid "Check In to Event"
+msgstr "活动签到"
+
+#: 
+msgid "Check-in"
+msgstr "签到"
+
+#: 
+msgid "Choose an event..."
+msgstr "选择一个活动..."
+
+#: 
+msgid "Clear"
+msgstr "清除"
+
+#: 
+msgid "Create"
+msgstr "创建"
+
+#: 
+msgid "Create New Event"
+msgstr "创建新活动"
+
+#: 
+msgid "Create an event type to get started."
+msgstr "创建一个活动类型以开始。"
+
+#: 
+msgid "Current DB Version"
+msgstr "当前数据库版本"
+
+#: 
+msgid "Current Software Version"
+msgstr "当前软件版本"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "数据库升级成功完成。正在重定向到仪表板..."
+
+#: 
+msgid "Date & Time"
+msgstr "日期与时间"
+
+#: 
+msgid "Default Start Time"
+msgstr "默认开始时间"
+
+#: 
+msgid "Delete Event"
+msgstr "删除活动"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "删除活动也将删除所有考勤统计。删除此活动吗？"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "删除此活动类型不会删除现有活动。确定吗？"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "删除此活动也将删除所有考勤记录。确定吗？"
+
+#: 
+msgid "Edit Event"
+msgstr "编辑活动"
+
+#: 
+msgid "Editing Event"
+msgstr "正在编辑活动"
+
+#: 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr "输入以逗号分隔的统计类别。“总计”将自动包含。"
+
+#: 
+msgid "Enter event title..."
+msgstr "输入活动标题..."
+
+#: 
+msgid "Event"
+msgstr "活动"
+
+#: 
+msgid "Event Type Name"
+msgstr "活动类型名称"
+
+#: 
+msgid "Event Types"
+msgstr "活动类型"
+
+#: 
+msgid "Filter Events"
+msgstr "活动筛选"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "按活动类型筛选"
+
+#: 
+msgid "Filter by Type"
+msgstr "按类型筛选"
+
+#: 
+msgid "Head Count"
+msgstr "人数统计"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "列出此类型的活动："
+
+#: 
+msgid "Manage Check-ins"
+msgstr "管理签到"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "成员、访客、儿童"
+
+#: 
+msgid "Monthly Averages"
+msgstr "每月平均值"
+
+#: 
+msgid "Monthly on the"
+msgstr "每月在第"
+
+#: 
+msgid "No event types defined yet."
+msgstr "尚未定义活动类型。"
+
+#: 
+msgid "None (one-time event)"
+msgstr "无（一次性活动）"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "可选 - 添加讲道笔记或额外的活动详情"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "可选 - 如果不跟踪则留空"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "有关考勤的可选笔记..."
+
+#: 
+msgid "People Checked In"
+msgstr "已签到人员"
+
+#: 
+msgid "People in Cart"
+msgstr "购物车中的人员"
+
+#: 
+msgid "Person Checking In"
+msgstr "正在签到的人员"
+
+#: 
+msgid "Recurrence"
+msgstr "重复"
+
+#: 
+msgid "Required fields"
+msgstr "必填字段"
+
+#: 
+msgid "Save Event Type"
+msgstr "保存活动类型"
+
+#: 
+msgid "Search by name or email..."
+msgstr "按姓名或电子邮件搜索..."
+
+#: 
+msgid "Search for adult..."
+msgstr "搜索成年人..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "搜索主管..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "选择签到活动"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "选择开始和结束日期/时间"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "选择要为购物车成员签到的活动"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "讲道/活动文本"
+
+#: 
+msgid "Unclassified"
+msgstr "未分类"
+
+#: 
+msgid "Upgrade database now"
+msgstr "立即升级数据库"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "您的 ChurchCRM 安装需要升级数据库以匹配已安装的软件版本。此操作将应用架构和数据迁移。在继续之前，请确保您已有最近的备份。"
+
+#: 
+msgid "added to this event"
+msgstr "已添加到此活动"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "例如：主日学、圣经研读..."
+
+#: 
+msgid "optional"
+msgstr "可选"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "个人"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ 签退"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "检测到 %d 个孤立文件"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d 个文件已被修改或丢失。使用强制重新安装以恢复官方版本。"
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d 个文件完整性验证失败。"
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d 个文件将被永久删除。"
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "在您的服务器上检测到 %d 个孤立文件。"
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "（从 GitHub 刷新）"
+
+#: 
+msgid "Access Denied"
+msgstr "拒绝访问"
+
+#: 
+msgid "Add event permission"
+msgstr "添加活动权限"
+
+#: 
+msgid "Add records permission"
+msgstr "添加记录权限"
+
+#: 
+msgid "Administrator privileges"
+msgstr "管理员权限"
+
+#: 
+msgid "All Files Verified"
+msgstr "所有文件已验证"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "所有系统文件均符合预期签名。"
+
+#: 
+msgid "Application Integrity"
+msgstr "应用程序完整性"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "应用程序文件已更新至最新版本"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "您确定要删除所有孤立文件吗？"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "返回调试信息"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "备份最佳实践"
+
+#: 
+msgid "Backup Status"
+msgstr "备份状态"
+
+#: 
+msgid "Backup Type"
+msgstr "备份类型"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "删除此字段后，您将不可撤销地丢失分配给该字段的所有家庭数据！"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "删除此字段后，您将不可撤销地丢失分配给该字段的所有个人数据！"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "更改未保存！请纠正并重试！"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "确认属性删除"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "确认志愿服务机会删除"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "删除确认"
+
+#: 
+msgid "Existing"
+msgstr "现有"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "现有自定义家庭字段"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "现有自定义个人字段"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "现有志愿服务机会"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "字段删除成功"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "无效的 CSRF 令牌"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "无效的字段或选择。"
+
+#: 
+msgid "Item deleted successfully"
+msgstr "项目删除成功"
+
+#: 
+msgid "Move down"
+msgstr "下移"
+
+#: 
+msgid "Move up"
+msgstr "上移"
+
+#: 
+msgid "Opportunity"
+msgstr "机会"
+
+#: 
+msgid "Order"
+msgstr "顺序"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "PDF 已成功发送至 %s 个家庭。"
+
+#: 
+msgid "Percentage"
+msgstr "百分比"
+
+#: 
+msgid "Person Properties"
+msgstr "个人属性"
+
+#: 
+msgid "Property Type"
+msgstr "属性类型"
+
+#: 
+msgid "Property to Delete"
+msgstr "要删除的属性"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "有人被分配到此志愿服务机会。删除将取消分配："
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "这将从当前分配的所有人员中移除它。"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "志愿服务机会"
+
+#: 
+msgid "Warning:"
+msgstr "警告："
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "是，删除此机会"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "用户必须具备财务权限才能使用的查询"
+
+#: 
+msgid "Fund(s)"
+msgstr "基金"
+
+#: 
+msgid "Password reset for"
+msgstr "密码重置适用于"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "西班牙语 - 阿根廷"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "西班牙语 - 哥伦比亚"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "西班牙语 - 萨尔瓦多"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "西班牙语 - 墨西哥"
+
