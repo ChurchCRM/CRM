@@ -54,8 +54,24 @@ function saveMissingTermsFile(poEditorCode, missingTerms) {
     return filename;
 }
 
+function cleanupMissingTermsDir() {
+    if (fs.existsSync(OUTPUT_DIR)) {
+        const files = fs.readdirSync(OUTPUT_DIR);
+        files.forEach(file => {
+            const filePath = path.join(OUTPUT_DIR, file);
+            if (fs.statSync(filePath).isFile()) {
+                fs.unlinkSync(filePath);
+            }
+        });
+        console.log(`🧹 Cleaned up existing missing-terms files\n`);
+    }
+}
+
 function main() {
     console.log(`📋 Analyzing missing translations for all locales...\n`);
+    
+    // Clean up existing missing-terms files
+    cleanupMissingTermsDir();
     
     // Load master English terms
     const masterTerms = loadJSON(MESSAGES_JSON);
@@ -127,7 +143,20 @@ function main() {
             });
             return;
         }
-        
+
+        // Skip writing file if fewer than 10 missing terms
+        if (missingKeys.length < 10) {
+            console.log(`⏭️  ${localeName} (${poEditorCode}) - skipped (only ${missingKeys.length} missing terms, minimum 10 required)`);
+            results.push({
+                locale: localeName,
+                code: poEditorCode,
+                missing: missingKeys.length,
+                total: localeTermCount,
+                skipped: true
+            });
+            return;
+        }
+
         // Generate missing terms file
         const missingFile = saveMissingTermsFile(poEditorCode, missingTerms);
         filesGenerated++;
