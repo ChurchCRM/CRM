@@ -44,14 +44,25 @@ function loadLocalesConfig() {
     }
 }
 
-function saveMissingTermsFile(poEditorCode, missingTerms) {
+function saveMissingTermsFileBatched(poEditorCode, missingTerms) {
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR, { recursive: true });
     }
     
-    const filename = path.join(OUTPUT_DIR, `${poEditorCode}.json`);
-    fs.writeFileSync(filename, JSON.stringify(missingTerms, null, 2));
-    return filename;
+    const TERMS_PER_FILE = 100;
+    const entries = Object.entries(missingTerms);
+    const files = [];
+    let batchNumber = 1;
+    
+    for (let i = 0; i < entries.length; i += TERMS_PER_FILE) {
+        const batch = Object.fromEntries(entries.slice(i, i + TERMS_PER_FILE));
+        const filename = path.join(OUTPUT_DIR, `${poEditorCode}-${batchNumber}.json`);
+        fs.writeFileSync(filename, JSON.stringify(batch, null, 2));
+        files.push({ number: batchNumber, filename, count: Object.keys(batch).length });
+        batchNumber++;
+    }
+    
+    return files;
 }
 
 function cleanupMissingTermsDir() {
@@ -157,21 +168,25 @@ function main() {
             return;
         }
 
-        // Generate missing terms file
-        const missingFile = saveMissingTermsFile(poEditorCode, missingTerms);
-        filesGenerated++;
+        // Generate missing terms files (batched into 300 terms per file)
+        const missingFiles = saveMissingTermsFileBatched(poEditorCode, missingTerms);
+        filesGenerated += missingFiles.length;
         totalMissing += missingKeys.length;
         
         const missingPercent = Math.round((missingKeys.length / masterTermCount) * 100);
         console.log(`📄 ${localeName} (${poEditorCode})`);
         console.log(`   → Missing: ${missingKeys.length}/${masterTermCount} terms (${missingPercent}%)`);
-        console.log(`   → File: ${path.relative(process.cwd(), missingFile)}\n`);
+        missingFiles.forEach(file => {
+            console.log(`   → File: ${path.relative(process.cwd(), file.filename)} (${file.count} terms)`);
+        });
+        console.log();
         
         results.push({
             locale: localeName,
             code: poEditorCode,
             missing: missingKeys.length,
-            total: localeTermCount
+            total: localeTermCount,
+            batches: missingFiles.length
         });
     });
     
