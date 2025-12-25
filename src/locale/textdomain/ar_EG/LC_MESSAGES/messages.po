@@ -7947,6 +7947,36 @@ msgstr "تاريخ ميلاد خطأ ، شهر الميلاد او اليوم غ
 msgid "System"
 msgstr "النظام"
 
+#. Context: locales
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "الأمهرية - إثيوبيا"
+
+#. Context: locales
+#: 
+msgid "Czech"
+msgstr "التشيكية"
+
+#. Context: locales
+#: 
+msgid "Finnish"
+msgstr "الفنلندية"
+
+#. Context: locales
+#: 
+msgid "Greek"
+msgstr "اليونانية"
+
+#. Context: locales
+#: 
+msgid "Turkish"
+msgstr "التركية"
+
+#. Context: locales
+#: 
+msgid "Ukrainian"
+msgstr "الأوكرانية"
+
 #: 
 msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
 msgstr "عند النقر على \"إرسال إلى GitHub\" سيتم توجيهك إلى صفحة مشكلات GitHub مع ملء معلومات نظامك مسبقاً."
@@ -7960,8 +7990,24 @@ msgid "Change role"
 msgstr "تغير الدور"
 
 #: 
+msgid "Closed"
+msgstr "مغلق"
+
+#: 
 msgid "Delete this person?"
 msgstr "حذف الشخص"
+
+#: 
+msgid "Deposit ID"
+msgstr "معرف الإيداع"
+
+#: 
+msgid "Deposit Total"
+msgstr "إجمالي الإيداع"
+
+#: 
+msgid "Group Cart Status"
+msgstr "حالة سلة المجموعة"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -7979,9 +8025,42 @@ msgstr "لإيقاف تلقي رسائل البريد الإلكتروني هذ�
 msgid "invalid group request"
 msgstr "طلب مجموعة غير صالح"
 
+#. Context: locales
+#: 
+msgid "Hindi - India"
+msgstr "الهندية - الهند"
+
+#. Context: locales
+#: 
+msgid "Japanese"
+msgstr "اليابانية"
+
+#. Context: locales
+#: 
+msgid "Tamil - India"
+msgstr "التاميل - الهند"
+
+#: 
+msgid "Not Subscribed"
+msgstr "غير مشترك"
+
 #: 
 msgid "property"
 msgstr "مِلكِيَّة"
+
+#: 
+msgid "Default Zip"
+msgstr "الرمز البريدي الافتراضي"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "الأشخاص الذين يدفعون ببطاقة"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "الأشخاص المكونون للدفع ببطاقة الائتمان."
 
 #: 
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
@@ -7992,12 +8071,129 @@ msgid "The previous integrity check passed. All system file hashes match the exp
 msgstr "لقد نجح فحص التكامل السابق. تتطابق جميع تجزئات ملفات النظام مع القيم المتوقعة."
 
 #: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "قائمة مفصولة بفواصل من التصنيفات التي يجب أن تظهر كغير نشطة"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp غير مكون"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "يرجى تحديث مفتاح واجهة برمجة تطبيقات MailChimp في:"
+
+#. Context: locales
+#: 
+msgid "English - South Africa"
+msgstr "الإنجليزية - جنوب أفريقيا"
+
+#. Context: locales
+#: 
+msgid "English - Jamaica"
+msgstr "الإنجليزية - جامايكا"
+
+#. Context: locales
+#: 
+msgid "Swahili"
+msgstr "السواحيلية"
+
+#: 
 msgid "One character from FirstName and one character from LastName"
 msgstr "حرف واحد من الاسم الأول وحرف واحد من الاسم الأخير"
 
 #: 
+msgid "Two characters from FirstName"
+msgstr "حرفان من الاسم الأول"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "بريد الكنيسة الإلكتروني غير معين، يرجى زيارة صفحة الإعدادات"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "التيلجو - الهند"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "الكورية"
+
+#: 
+msgid "System Logs"
+msgstr "سجلات النظام"
+
+#: 
 msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
 msgstr "تطبيق سياسة أمان المحتوى (CSP) للمساعدة في الحماية ضد البرمجة النصية عبر المواقع. عند التعطيل، يتم الإبلاغ عن انتهاكات CSP فقط."
+
+#: 
+msgid "Enter event description..."
+msgstr "أدخل وصف الحدث..."
+
+#: 
+msgid "Event ID"
+msgstr "معرف الحدث"
+
+#: 
+msgid "Enter note text here..."
+msgstr "أدخل نص الملاحظة هنا..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "لم تتم إضافة ملاحظات لهذا الشخص."
+
+#: 
+msgid "Note"
+msgstr "ملاحظة"
+
+#: 
+msgid "Log Settings"
+msgstr "إعدادات السجل"
+
+#: 
+msgid "Log Level:"
+msgstr "مستوى السجل:"
+
+#: 
+msgid "Save Log Level"
+msgstr "احفظ مستوى السجل"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "اعرض سجلات التطبيق. انقر على ملف السجل لعرض محتوياته."
+
+#: 
+msgid "Delete All Logs"
+msgstr "حذف جميع السجلات"
+
+#: 
+msgid "No log files found."
+msgstr "لم يتم العثور على ملفات السجل."
+
+#: 
+msgid "Log File"
+msgstr "ملف السجل"
+
+#: 
+msgid "Size"
+msgstr "الحجم"
+
+#: 
+msgid "Last Modified"
+msgstr "آخر تعديل"
+
+#: 
+msgid "View"
+msgstr "اعرض"
+
+#: 
+msgid "Log File Viewer"
+msgstr "عارض ملف السجل"
+
+#: 
+msgid "Filter by log level:"
+msgstr "تصفية حسب مستوى السجل:"
 
 #: 
 msgid "Error"
@@ -8008,14 +8204,3182 @@ msgid "Info"
 msgstr "معلومات"
 
 #: 
+msgid "Number of lines to display:"
+msgstr "عدد الأسطر المراد عرضها:"
+
+#: 
+msgid "Loading log file..."
+msgstr "جاري تحميل ملف السجل..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "لم تتم إضافة ملاحظات لهذه العائلة."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "تم إنشاء وحفظ رمز الوصول للتقويم."
+
+#: 
+msgid "added"
+msgstr "مضاف"
+
+#: 
+msgid "Added"
+msgstr "تم إضافة"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "تمت الإضافة إلى السلة بنجاح"
+
+#: 
+msgid "All members already in cart"
+msgstr "جميع الأعضاء موجودون بالفعل في السلة"
+
+#: 
+msgid "already in cart"
+msgstr "موجود بالفعل في السلة"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "لم يتمكن من تحميل خصائص التقويم. قد يكون هذا التقويم مفقودا لرمز الوصول أو لم يتم تكوينه بشكل صحيح."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "تم تفريغ السلة بنجاح"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "تم تفريغ السلة للمجموعة بنجاح"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "هل تريد تفريغ السلة بالكامل؟"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "فشل في إضافة العائلة إلى السلة"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "فشل في إضافة المجموعة إلى السلة"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "فشل في الإضافة إلى السلة"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "فشل في تفريغ السلة"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "فشل في تفريغ السلة للمجموعة"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "فشل في إزالة العائلة من السلة"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "فشل في الإزالة من السلة"
+
+#: 
+msgid "Failed to remove group"
+msgstr "فشل في إزالة المجموعة"
+
+#: 
+msgid "Family added to cart"
+msgstr "تمت إضافة العائلة إلى السلة"
+
+#: 
+msgid "Family removed from cart"
+msgstr "تمت إزالة العائلة من السلة"
+
+#: 
+msgid "Group added to cart"
+msgstr "تمت إضافة المجموعة إلى السلة"
+
+#: 
+msgid "Group removed from cart"
+msgstr "تمت إزالة المجموعة من السلة"
+
+#: 
+msgid "in cart"
+msgstr "في السلة"
+
+#: 
+msgid "members. Already had"
+msgstr "أعضاء. كان لدينا بالفعل"
+
+#: 
+msgid "people added to cart"
+msgstr "أشخاص تمت إضافتهم إلى السلة"
+
+#: 
+msgid "people already in cart"
+msgstr "أشخاص موجودون بالفعل في السلة"
+
+#: 
+msgid "people from cart"
+msgstr "أشخاص من السلة"
+
+#: 
+msgid "people removed from cart"
+msgstr "أشخاص تمت إزالتهم من السلة"
+
+#: 
+msgid "Person already in cart"
+msgstr "الشخص موجود بالفعل في السلة"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "إزالة هذه العائلة من السلة؟"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "إزالة هذه المجموعة من السلة؟"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "إزالة هذا الشخص من السلة؟"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "تمت الإزالة من السلة بنجاح"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "نعم، فرغ السلة"
+
+#: 
+msgid "Yes, Remove"
+msgstr "نعم، أزل"
+
+#: 
+msgid "Add Group"
+msgstr "إضافة مجموعة"
+
+#: 
+msgid "Back to Group List"
+msgstr "العودة إلى قائمة المجموعات"
+
+#: 
+msgid "Default role updated."
+msgstr "تم تحديث الدور الافتراضي."
+
+#: 
+msgid "Edit Group"
+msgstr "تحرير المجموعة"
+
+#: 
+msgid "Enter group name"
+msgstr "أدخل اسم المجموعة"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "فشل في إضافة الدور. يرجى المحاولة مجددا."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "فشل في إنشاء المجموعة. يرجى المحاولة مجددا."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "فشل في حذف الدور. يرجى المحاولة مجددا."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "فشل في تحميل حالة السلة."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "فشل في تحميل المجموعات. يرجى تحديث الصفحة."
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "فشل في تعيين الدور الافتراضي. يرجى المحاولة مجددا."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "فشل في تحديث المجموعة. يرجى المحاولة مجددا."
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "فشل في تحديث الخصائص. يرجى المحاولة مجددا."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "فشل في تحديث اسم الدور. يرجى المحاولة مجددا."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "اترك حقلا فارغا للاحتفاظ بكلمة المرور الحالية"
+
+#: 
+msgid "Please enter a group name."
+msgstr "يرجى إدخال اسم المجموعة."
+
+#: 
+msgid "Role added successfully."
+msgstr "تمت إضافة الدور بنجاح."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "تم حذف الدور بنجاح."
+
+#: 
+msgid "Role name updated."
+msgstr "تم تحديث اسم الدور."
+
+#: 
+msgid "View Group"
+msgstr "عرض المجموعة"
+
+#: 
+msgid "Events Today"
+msgstr "الأحداث اليوم"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "نظرة عامة على مدرسة الأحد"
+
+#: 
+msgid "Add Family Member"
+msgstr "إضافة عضو عائلة"
+
+#: 
+msgid "Address is required"
+msgstr "العنوان مطلوب"
+
+#: 
+msgid "Base URL is required"
+msgstr "عنوان URL الأساسي مطلوب"
+
+#: 
+msgid "City is required"
+msgstr "المدينة مطلوبة"
+
+#: 
+msgid "Database name is required"
+msgstr "اسم قاعدة البيانات مطلوب"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "اسم مضيف خادم قاعدة البيانات أو عنوان IP مطلوب (على سبيل المثال، localhost أو 127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "منفذ خادم قاعدة البيانات مطلوب (على سبيل المثال، 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "اسم مستخدم قاعدة البيانات مطلوب"
+
+#: 
+msgid "Email Address"
+msgstr "عنوان البريد الإلكتروني"
+
+#: 
+msgid "Email address"
+msgstr "عنوان البريد الإلكتروني"
+
+#: 
+msgid "Enter family name"
+msgstr "أدخل اسم العائلة"
+
+#: 
+msgid "Family Information"
+msgstr "معلومات العائلة"
+
+#: 
+msgid "Family name is required"
+msgstr "اسم العائلة مطلوب"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "يجب أن يتكون اسم العائلة من حرفين على الأقل"
+
+#: 
+msgid "First name"
+msgstr "الاسم الأول"
+
+#: 
+msgid "First name is required"
+msgstr "الاسم الأول مطلوب"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "يجب أن يتكون الاسم الأول من حرفين على الأقل"
+
+#: 
+msgid "Home phone is required"
+msgstr "رقم هاتف المنزل مطلوب"
+
+#: 
+msgid "Home phone number"
+msgstr "رقم هاتف المنزل"
+
+#: 
+msgid "Invalid format"
+msgstr "تنسيق غير صحيح"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "انضم إلى مجتمعنا بتسجيل عائلتك"
+
+#: 
+msgid "Last name"
+msgstr "اسم العائلة"
+
+#: 
+msgid "Last name is required"
+msgstr "اسم العائلة مطلوب"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "يجب أن يتكون اسم العائلة من حرفين على الأقل"
+
+#: 
+msgid "Maximum length is"
+msgstr "الحد الأقصى للطول هو"
+
+#: 
+msgid "Minimum length is"
+msgstr "الحد الأدنى للطول هو"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "يجب أن يكون عنوان URL صحيحا يبدأ بـ http:// أو https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "يجب أن يكون عنوان URL صحيحا يبدأ بـ http:// أو https:// (على سبيل المثال، http://localhost أو https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "يجب أن يكون رقم المنفذ صحيحا (على سبيل المثال، 3306)"
+
+#: 
+msgid "Next Member"
+msgstr "العضو التالي"
+
+#: 
 msgid "Passwords do not match"
 msgstr "كلمات المرور غير متطابقة"
+
+#: 
+msgid "Phone Type"
+msgstr "نوع الهاتف"
+
+#: 
+msgid "Phone number"
+msgstr "رقم الهاتف"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "يرجى إضافة عضو عائلة واحد على الأقل."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "يرجى تصحيح أخطاء التحقق قبل المتابعة."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "يرجى إدخال عنوان URL صحيح"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "يرجى إدخال عنوان بريد إلكتروني صحيح"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "يرجى إدخال عنوان بريد إلكتروني صحيح (على سبيل المثال، name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "يرجى إدخال رقم صحيح"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "يرجى إدخال رقم هاتف صحيح"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "يرجى ملء جميع الحقول المطلوبة بشكل صحيح."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "يرجى مراجعة جميع المعلومات بعناية قبل الإرسال. يمكنك العودة لإجراء تغييرات إذا لزم الأمر."
+
+#: 
+msgid "Previous"
+msgstr "السابق"
+
+#: 
+msgid "Registration Error"
+msgstr "خطأ في التسجيل"
+
+#: 
+msgid "Review & Submit"
+msgstr "مراجعة والإرسال"
+
+#: 
+msgid "Role in Family"
+msgstr "الدور في العائلة"
+
+#: 
+msgid "Select date"
+msgstr "اختر التاريخ"
+
+#: 
+msgid "Street address"
+msgstr "عنوان الشارع"
+
+#: 
+msgid "Submit Registration"
+msgstr "إرسال التسجيل"
+
+#: 
+msgid "Zip code is required"
+msgstr "الرمز البريدي مطلوب"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "تم إنشاء كلمة مرور جديدة وإرسالها إلى عنوان بريدك الإلكتروني."
 
 #: 
 msgid "A new version of ChurchCRM is available for installation."
 msgstr "إصدار جديد من ChurchCRM متاح للتثبيت."
 
 #: 
+msgid "Actual Hash"
+msgstr "بصمة فعلية"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "اجتازت جميع فحوصات قبل الترقية. يمكنك المتابعة مع الترقية."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "السماح بترقيات الإصدار التجريبي"
+
+#: 
 msgid "Apply Update Now"
 msgstr "طبّق التحديث الآن"
+
+#: 
+msgid "Applying System Update..."
+msgstr "جاري تطبيق تحديث النظام..."
+
+#: 
+msgid "Back to Login"
+msgstr "العودة إلى تسجيل الدخول"
+
+#: 
+msgid "Back to login"
+msgstr "العودة إلى تسجيل الدخول"
+
+#: 
+msgid "Backup Skipped"
+msgstr "تم تخطي النسخة الاحتياطية"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "تحقق من GitHub للحصول على أحدث معلومات الإصدار"
+
+#: 
+msgid "Complete"
+msgstr "اكتمل"
+
+#: 
+msgid "Continue to Backup"
+msgstr "متابعة إلى النسخة الاحتياطية"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "متابعة التنزيل والتطبيق"
+
+#: 
+msgid "Create Backup"
+msgstr "إنشاء نسخة احتياطية"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "أنشئ نسخة احتياطية من قاعدة البيانات الخاصة بك قبل تطبيق التحديث."
+
+#: 
+msgid "Current Version:"
+msgstr "الإصدار الحالي:"
+
+#: 
+msgid "Database Backup"
+msgstr "نسخة احتياطية من قاعدة البيانات"
+
+#: 
+msgid "Download & Apply"
+msgstr "التنزيل والتطبيق"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "تنزيل وتطبيق تحديث النظام"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "قم بتنزيل أحدث إصدار وتطبيقه على تثبيت ChurchCRM الخاص بك."
+
+#: 
+msgid "Downloaded"
+msgstr "تم التنزيل"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "جاري تنزيل أحدث إصدار من GitHub..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "أدخل اسم تسجيل دخولك وسنرسل لك بريدا إلكترونيا برابط لإعادة تعيين كلمة المرور الخاصة بك."
+
+#: 
+msgid "Expected Hash"
+msgstr "البصمة المتوقعة"
+
+#: 
+msgid "Failed to create backup."
+msgstr "فشل إنشاء النسخة الاحتياطية."
+
+#: 
+msgid "Failed to download update package."
+msgstr "فشل تنزيل حزمة التحديث."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "فشل تحديث معلومات الترقية من GitHub."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "فشل تحديث معلومات الترقية. يرجى المحاولة مجددا."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "فشل حفظ الإعداد. يرجى المحاولة مجددا."
+
+#: 
+msgid "File Name"
+msgstr "اسم الملف"
+
+#: 
+msgid "Files Missing"
+msgstr "ملفات مفقودة"
+
+#: 
+msgid "Files Modified"
+msgstr "ملفات معدلة"
+
+#: 
+msgid "Go to Login"
+msgstr "الذهاب إلى تسجيل الدخول"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "أنا أفهم - متابعة"
+
+#: 
+msgid "Language updated to"
+msgstr "تم تحديث اللغة إلى"
+
+#: 
+msgid "Login Name is required"
+msgstr "اسم تسجيل الدخول مطلوب"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "بمجرد استقبال البريد الإلكتروني، يمكنك تسجيل الدخول باستخدام كلمة المرور المؤقتة وتغييرها إلى ما تفضله."
+
+#: 
+msgid "Password Reset Error"
+msgstr "خطأ في إعادة تعيين كلمة المرور"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "نجحت إعادة تعيين كلمة المرور"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "يرجى التحقق من بريدك الإلكتروني (بما في ذلك مجلد البريد العشوائي) للحصول على كلمة المرور المؤقتة."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "يرجى عدم إغلاق هذه النافذة أو تحديث الصفحة."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "اكتملت مهام قبل الترقية"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "تحذيرات قبل الترقية"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "تحديث من GitHub"
+
+#: 
+msgid "Release Notes:"
+msgstr "ملاحظات الإصدار:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "طلب إعادة تعيين كلمة المرور"
+
+#: 
+msgid "Retry Download"
+msgstr "إعادة محاولة التنزيل"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "بصمة SHA1:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "إرسال بريد إعادة التعيين"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "تم حفظ الإعداد. جاري إعادة تحميل الصفحة..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "تم تحديث الإعداد بنجاح"
+
+#: 
+msgid "Skip Backup"
+msgstr "تخطي النسخة الاحتياطية"
+
+#: 
+msgid "System Up to Date"
+msgstr "النظام محدث"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "معالج ترقية النظام"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "اكتملت ترقية النظام بنجاح!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "قد يستغرق هذا عدة دقائق."
+
+#: 
+msgid "Update Available!"
+msgstr "تحديث متاح!"
+
+#: 
+msgid "Update Package Details"
+msgstr "تفاصيل حزمة التحديث"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "تم تنزيل حزمة التحديث بنجاح."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "اكتملت الترقية!"
+
+#: 
+msgid "Upgrade failed."
+msgstr "فشلت الترقية."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "فشلت الترقية. يرجى التحقق من السجلات."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "تم تحديث معلومات الترقية بنجاح"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "تم تحديث معلومات الترقية. جاري إعادة تحميل الصفحة..."
+
+#: 
+msgid "Version Information"
+msgstr "معلومات الإصدار"
+
+#: 
+msgid "Warnings"
+msgstr "تحذيرات"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "لم نتمكن من معالجة طلب إعادة تعيين كلمة المرور. يرجى محاولة طلب رابط إعادة تعيين كلمة مرور جديد."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "لقد اخترت تخطي النسخة الاحتياطية. يوصى بشدة بإنشاء نسخة احتياطية قبل المتابعة مع الترقية."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "تم ترقية تثبيت ChurchCRM الخاص بك بنجاح."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "يعمل تثبيت ChurchCRM الخاص بك على أحدث إصدار."
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 حرفا"
+
+#: 
+msgid "Dear Friend"
+msgstr "صديقي العزيز"
+
+#: 
+msgid "No Data Found"
+msgstr "لم يتم العثور على بيانات"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "لم يتم إرجاع أي سجلات من التقرير السابق. يرجى تعديل المرشحات أو نطاق التاريخ والمحاولة مجددا."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "يرجى إدخال اسم القائمة (2-50 حرفا)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "يرجى إدخال عنوان URL صحيح يبدأ بـ http:// أو https://"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "جميع توقيعات ملفات النظام تطابق القيم المتوقعة."
+
+#: 
+msgid "Files with issues"
+msgstr "الملفات التي تحتوي على مشاكل"
+
+#: 
+msgid "Integrity check failed"
+msgstr "فشل فحص السلامة"
+
+#: 
+msgid "Integrity check passed"
+msgstr "نجح فحص السلامة"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "ملف تعريف التوقيع موجود ولكنه غير قابل للقراءة. تحقق من أذونات الملف."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "ملف تعريف التوقيع مفقود في %s. قم بتشغيل مهمة التعبئة أو نشر إصدار رسمي لإعادة إنشاء التوقيعات."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "لا يمكن الاتصال بنقطة نهاية السلامة. تحقق من سجلات أخطاء خادم الويب."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "أضف أي ملاحظات إضافية حول هذا الإيداع"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "المبلغ يتجاوز الحد الأقصى المسموح به (999999.99)."
+
+#: 
+msgid "Checks"
+msgstr "شيكات"
+
+#: 
+msgid "Clear Filters"
+msgstr "مسح المرشحات"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "انقر على شريط لتصفية المدفوعات"
+
+#: 
+msgid "Delete Selected"
+msgstr "حذف المحدد"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "تم حفظ الإيداع بنجاح"
+
+#: 
+msgid "Error deleting payments"
+msgstr "خطأ في حذف المدفوعات"
+
+#: 
+msgid "Error loading payments"
+msgstr "خطأ في تحميل المدفوعات"
+
+#: 
+msgid "Error saving deposit"
+msgstr "خطأ في حفظ الإيداع"
+
+#: 
+msgid "Funds"
+msgstr "الصناديق"
+
+#: 
+msgid "Generate Report"
+msgstr "إنشاء تقرير"
+
+#: 
+msgid "No Cash"
+msgstr "لا يوجد نقد"
+
+#: 
+msgid "No Checks"
+msgstr "لا توجد شيكات"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "لا توجد مدفوعات بعد. انقر على \"إضافة دفع\" للبدء."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "مبلغ غير قابل للخصم يتجاوز الحد الأقصى المسموح به (999999.99)."
+
+#: 
+msgid "Payments"
+msgstr "المدفوعات"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "تم حذف المدفوعات بنجاح"
+
+#: 
+msgid "Please select a date"
+msgstr "يرجى اختيار تاريخ"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "يرجى اختيار الصفوف المراد حذفها"
+
+#: 
+msgid "Saving..."
+msgstr "جاري الحفظ..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "لا يمكن التراجع عن هذا الإجراء."
+
+#: 
+msgid "Total Deposit"
+msgstr "الإجمالي الإيداع"
+
+#: 
+msgid "Total Payments"
+msgstr "إجمالي المدفوعات"
+
+#: 
+msgid "payments(s)?"
+msgstr "المدفوعات (ات)؟"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "جميع ملفات النظام اجتازت التحقق من السلامة."
+
+#: 
+msgid "Base URL"
+msgstr "عنوان URL الأساسي"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "تثبيت ChurchCRM"
+
+#: 
+msgid "Copy"
+msgstr "نسخ"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "خادم قاعدة البيانات"
+
+#: 
+msgid "Debug Info"
+msgstr "معلومات التصحيح"
+
+#: 
+msgid "Document Root"
+msgstr "جذر المستند"
+
+#: 
+msgid "Email Configuration"
+msgstr "تكوين البريد الإلكتروني"
+
+#: 
+msgid "Email Debug Info"
+msgstr "معلومات تصحيح البريد الإلكتروني"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "أذونات نظام الملفات"
+
+#: 
+msgid "Hostname"
+msgstr "اسم المضيف"
+
+#: 
+msgid "IP Address"
+msgstr "عنوان IP"
+
+#: 
+msgid "Images Root"
+msgstr "جذر الصور"
+
+#: 
+msgid "Import Demo Data"
+msgstr "استيراد بيانات العرض التوضيحي"
+
+#: 
+msgid "Include events and calendars"
+msgstr "تضمين الأحداث والتقاويم"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "تضمين البيانات المالية (صناديق التبرعات والتعهدات)"
+
+#: 
+msgid "Invalid API key"
+msgstr "مفتاح واجهة برمجة تطبيقات غير صحيح"
+
+#: 
+msgid "Not configured"
+msgstr "غير مكون"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "متطلبات PHP وخادم الويب"
+
+#: 
+msgid "PHP Configuration"
+msgstr "تكوين PHP"
+
+#: 
+msgid "Platform"
+msgstr "المنصة"
+
+#: 
+msgid "Root Path"
+msgstr "مسار جذر التطبيق"
+
+#: 
+msgid "SMTP Host"
+msgstr "خادم البريد الإلكتروني"
+
+#: 
+msgid "Server Information"
+msgstr "معلومات الخادم"
+
+#: 
+msgid "Software"
+msgstr "البرنامج"
+
+#: 
+msgid "System & Configuration"
+msgstr "النظام والتكوين"
+
+#: 
+msgid "Tip:"
+msgstr "نصيحة:"
+
+#: 
+msgid "Valid Settings"
+msgstr "الإعدادات الصحيحة"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "حدث خطأ أثناء استيراد بيانات العرض التوضيحي"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "تم استيراد بيانات العرض التوضيحي بنجاح"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "تضمين فصول مدرسة الأحد والتسجيلات"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "هل تحتاج إلى إزالة هذه البيانات لاحقا؟"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "لا توجد مدفوعات في هذه الإيداع"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "لا توجد مدفوعات في هذه الإيداع"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "بيانات اختيارية للتضمين"
+
+#: 
+msgid "Skipped"
+msgstr "تم التخطي"
+
+#: 
+msgid "Unknown error"
+msgstr "خطأ غير معروف"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "إيداع (ات) بدون مدفوعات"
+
+#: 
+msgid "All Event Types"
+msgstr "جميع أنواع الأحداث"
+
+#: 
+msgid "All Types"
+msgstr "جميع الأنواع"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "هل أنت متأكد من أنك تريد حذف سجل تسجيل الدخول هذا؟"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "فئات عد الحضور"
+
+#: 
+msgid "Attendance Notes"
+msgstr "ملاحظات الحضور"
+
+#: 
+msgid "Change Event"
+msgstr "تغيير الحدث"
+
+#: 
+msgid "Check In"
+msgstr "تسجيل الدخول"
+
+#: 
+msgid "Check In Person"
+msgstr "تسجيل دخول الشخص"
+
+#: 
+msgid "Check In to Event"
+msgstr "تسجيل الدخول للحدث"
+
+#: 
+msgid "Check-in"
+msgstr "تسجيل الدخول"
+
+#: 
+msgid "Choose an event..."
+msgstr "اختر حدثا..."
+
+#: 
+msgid "Clear"
+msgstr "مسح"
+
+#: 
+msgid "Create"
+msgstr "إنشاء"
+
+#: 
+msgid "Create New Event"
+msgstr "إنشاء حدث جديد"
+
+#: 
+msgid "Create an event type to get started."
+msgstr "أنشئ نوع حدث للبدء."
+
+#: 
+msgid "Current DB Version"
+msgstr "إصدار قاعدة البيانات الحالية"
+
+#: 
+msgid "Current Software Version"
+msgstr "إصدار البرنامج الحالي"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "اكتمل ترقية قاعدة البيانات بنجاح. إعادة التوجيه إلى لوحة التحكم..."
+
+#: 
+msgid "Date & Time"
+msgstr "التاريخ والوقت"
+
+#: 
+msgid "Default Start Time"
+msgstr "وقت البداية الافتراضي"
+
+#: 
+msgid "Delete Event"
+msgstr "حذف الحدث"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "سيؤدي حذف الحدث إلى حذف جميع سجلات الحضور. هل تريد حذف هذا الحدث؟"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "حذف نوع الحدث هذا لن يحذف الأحداث الموجودة. هل أنت متأكد؟"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "سيؤدي حذف هذا الحدث إلى حذف جميع سجلات الحضور. هل أنت متأكد؟"
+
+#: 
+msgid "Edit Event"
+msgstr "تحرير الحدث"
+
+#: 
+msgid "Editing Event"
+msgstr "تحرير الحدث"
+
+#: 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr "أدخل فئات الحساب مفصولة بفواصل. يتم تضمين \"الإجمالي\" تلقائيا."
+
+#: 
+msgid "Enter event title..."
+msgstr "أدخل عنوان الحدث..."
+
+#: 
+msgid "Event"
+msgstr "الحدث"
+
+#: 
+msgid "Event Type Name"
+msgstr "اسم نوع الحدث"
+
+#: 
+msgid "Event Types"
+msgstr "أنواع الأحداث"
+
+#: 
+msgid "Filter Events"
+msgstr "تصفية الأحداث"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "التصفية حسب نوع الحدث"
+
+#: 
+msgid "Filter by Type"
+msgstr "التصفية حسب النوع"
+
+#: 
+msgid "Head Count"
+msgstr "العدد الإجمالي"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "قائمة الأحداث من النوع"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "إدارة تسجيل الدخول"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "الأعضاء والزوار والأطفال"
+
+#: 
+msgid "Monthly Averages"
+msgstr "المتوسطات الشهرية"
+
+#: 
+msgid "Monthly on the"
+msgstr "شهريا في"
+
+#: 
+msgid "No event types defined yet."
+msgstr "لم يتم تعريف أنواع أحداث بعد."
+
+#: 
+msgid "None (one-time event)"
+msgstr "بدون (حدث لمرة واحدة)"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "اختياري - أضف ملاحظات الخطبة أو تفاصيل الحدث الإضافية"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "اختياري - اترك فارغا إذا لم تكن تتتبع"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "ملاحظات اختيارية حول الحضور..."
+
+#: 
+msgid "People Checked In"
+msgstr "الأشخاص المسجلون للدخول"
+
+#: 
+msgid "People in Cart"
+msgstr "الأشخاص في السلة"
+
+#: 
+msgid "Person Checking In"
+msgstr "الشخص الذي يسجل الدخول"
+
+#: 
+msgid "Recurrence"
+msgstr "التكرار"
+
+#: 
+msgid "Required fields"
+msgstr "الحقول المطلوبة"
+
+#: 
+msgid "Save Event Type"
+msgstr "حفظ نوع الحدث"
+
+#: 
+msgid "Search by name or email..."
+msgstr "ابحث بالاسم أو البريد الإلكتروني..."
+
+#: 
+msgid "Search for adult..."
+msgstr "ابحث عن بالغ..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "ابحث عن مشرف..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "حدد الحدث لتسجيل الدخول"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "حدد تاريخ/وقت البداية والنهاية"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "حدد الحدث لتسجيل دخول أعضاء سلتك"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "الخطبة / نص الحدث"
+
+#: 
+msgid "Unclassified"
+msgstr "غير مصنف"
+
+#: 
+msgid "Upgrade database now"
+msgstr "ترقية قاعدة البيانات الآن"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "يحتاج تثبيت ChurchCRM الخاص بك إلى ترقية قاعدة البيانات لمطابقة إصدار البرنامج المثبت. ستطبق هذه العملية هجرات المخطط والبيانات. يرجى التأكد من وجود نسخة احتياطية حديثة قبل المتابعة."
+
+#: 
+msgid "added to this event"
+msgstr "تمت الإضافة إلى هذا الحدث"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "على سبيل المثال، مدرسة الأحد، درس الكتاب المقدس..."
+
+#: 
+msgid "optional"
+msgstr "اختياري"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ تسجيل المغادرة"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "تم اكتشاف %d ملفات يتيمة"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "تم تعديل أو فقدان %d ملف. استخدم إعادة التثبيت القسرية لاستعادة الإصدارات الرسمية."
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "فشل %d ملفات في التحقق من السلامة."
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "سيتم حذف %d ملفات بشكل دائم."
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "تم اكتشاف %d ملفات يتيمة على الخادم الخاص بك."
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(تحديث من GitHub)"
+
+#: 
+msgid "Access Denied"
+msgstr "تم الرفض"
+
+#: 
+msgid "Add event permission"
+msgstr "إضافة إذن الحدث"
+
+#: 
+msgid "Add records permission"
+msgstr "إضافة إذن السجلات"
+
+#: 
+msgid "Administrator privileges"
+msgstr "امتيازات المسؤول"
+
+#: 
+msgid "All Files Verified"
+msgstr "تم التحقق من جميع الملفات"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "جميع ملفات النظام تطابق التوقيعات المتوقعة."
+
+#: 
+msgid "Application Integrity"
+msgstr "سلامة التطبيق"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "تم تحديث ملفات التطبيق إلى أحدث إصدار"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "هل أنت متأكد من رغبتك في حذف جميع الملفات اليتيمة؟"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "العودة إلى معلومات التصحيح"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "أفضل ممارسات النسخ الاحتياطي"
+
+#: 
+msgid "Backup Status"
+msgstr "حالة النسخة الاحتياطية"
+
+#: 
+msgid "Backup Type"
+msgstr "نوع النسخة الاحتياطية"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "اكتملت النسخة الاحتياطية! انقر أدناه للتنزيل."
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "تم إكمال النسخة الاحتياطية بنجاح!"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "تم تنزيل النسخة الاحتياطية. تم إزالة نسخة الخادم."
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "فشلت النسخة الاحتياطية. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "تم إنشاء نسخة احتياطية ونسخها إلى الخادم البعيد"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "جاري إنشاء نسخة احتياطية، يرجى الانتظار..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "نسخة احتياطية للتخزين الخارجي"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "تحذير: استعادة النسخة الاحتياطية ستمحو قاعدة البيانات الموجودة تماما واستبدالها ببيانات النسخة الاحتياطية."
+
+#: 
+msgid "CSV export permission"
+msgstr "إذن تصدير CSV"
+
+#: 
+msgid "Close & Refresh"
+msgstr "إغلاق وتحديث"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "تأكيد الحذف"
+
+#: 
+msgid "Create a backup first"
+msgstr "إنشاء نسخة احتياطية أولا"
+
+#: 
+msgid "Create directory permission"
+msgstr "إذن إنشاء المجلد"
+
+#: 
+msgid "Database Only"
+msgstr "قاعدة البيانات فقط"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "تمت استعادة قاعدة البيانات بنجاح!"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "تم ترقية مخطط قاعدة البيانات تلقائيا"
+
+#: 
+msgid "Delete All Files"
+msgstr "حذف جميع الملفات"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "حذف جميع الملفات اليتيمة"
+
+#: 
+msgid "Delete records permission"
+msgstr "إذن حذف السجلات"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "تم حذف %d ملفات، %d فشلت"
+
+#: 
+msgid "Deletion Results"
+msgstr "نتائج الحذف"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "اسحب وأفلت ملف النسخة الاحتياطية هنا"
+
+#: 
+msgid "Edit records permission"
+msgstr "إذن تحرير السجلات"
+
+#: 
+msgid "Encryption"
+msgstr "التشفير"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "تصدير هيكل قاعدة البيانات والبيانات. حجم ملف أصغر."
+
+#: 
+msgid "File Integrity Check"
+msgstr "فحص سلامة الملف"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "تم اكتشاف مشاكل سلامة الملف"
+
+#: 
+msgid "File Path"
+msgstr "مسار الملف"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "توقيعات الملف تتطابق مع الإصدار الرسمي."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "قد يتم تعديل الملفات أو حذفها. فكر في إعادة النشر من إصدار رسمي."
+
+#: 
+msgid "Finance access"
+msgstr "الوصول للمالية"
+
+#: 
+msgid "Force Re-install"
+msgstr "فرض إعادة التثبيت"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "تم بدء فرض إعادة التثبيت. يرجى عمل نسخة احتياطية من قاعدة البيانات قبل التطبيق."
+
+#: 
+msgid "Full Backup"
+msgstr "نسخة احتياطية كاملة"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "إنشاء وتحميل النسخة الاحتياطية"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "انتقل إلى لوحة التحكم"
+
+#: 
+msgid "Group management access"
+msgstr "الوصول لإدارة المجموعات"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "إذا كنت بحاجة إلى الوصول إلى هذه الميزة، يرجى الاتصال بمسؤول كنيستك."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "إذا قمت بتحميل نسخة احتياطية من ChurchInfo أو إصدار سابق من ChurchCRM، سيتم ترقيتها تلقائيا لمخطط قاعدة البيانات الحالية."
+
+#: 
+msgid "Important Warning"
+msgstr "تحذير مهم"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "يشمل قاعدة البيانات وجميع الصور المرفوعة. حجم ملف أكبر."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "احتفظ بنسخة واحدة في خزانة مقاومة للحريق في الموقع وأخرى خارج الموقع."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "أحدث إصدار GitHub:"
+
+#: 
+msgid "Loading..."
+msgstr "جاري التحميل..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "قم بإنشاء نسخة احتياطية مرة واحدة على الأقل في الأسبوع ما لم يكن لديك نسخ احتياطية آلية."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "إدارة الملفات اليتيمة"
+
+#: 
+msgid "Menu options access"
+msgstr "الوصول لخيارات القائمة"
+
+#: 
+msgid "Missing Files"
+msgstr "الملفات المفقودة"
+
+#: 
+msgid "Modified Files"
+msgstr "الملفات المعدلة"
+
+#: 
+msgid "Multiple Copies"
+msgstr "نسخ متعددة"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "لم يتم العثور على ملفات يتيمة"
+
+#: 
+msgid "Notes access"
+msgstr "الوصول للملاحظات"
+
+#: 
+msgid "Orphaned Files"
+msgstr "الملفات اليتيمة"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "إدارة الملفات اليتيمة"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "الملفات اليتيمة هي ملفات PHP أو JavaScript موجودة على الخادم الخاص بك ولكنها ليست جزءا من إصدار ChurchCRM الرسمي. قد تكون هذه الملفات بقايا من الإصدارات السابقة وقد تشكل مخاطر أمنية إذا كانت تحتوي على رمز قديم به ثغرات."
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "تم تنظيف الملفات اليتيمة من الإصدارات السابقة"
+
+#: 
+msgid "Permission Required"
+msgstr "الإذن مطلوب"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "يرجى التحقق من ملف النسخة الاحتياطية والمحاولة مرة أخرى."
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "يرجى تحديد ملف نسخة احتياطية لاستعادته"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "أعد تنزيل وإعادة تطبيق الإصدار الحالي لاستعادة جميع الملفات إلى حالتها الرسمية"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "جاهز لإنشاء نسخة احتياطية. حدد الخيارات أعلاه وانقر على زر النسخة الاحتياطية."
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "جاهز للاستعادة. حدد ملف نسخة احتياطية وانقر على استعادة قاعدة البيانات."
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "التوصية: قم بمراجعة وحذف هذه الملفات قبل الترقية أو بعدها."
+
+#: 
+msgid "Redirecting in"
+msgstr "إعادة التوجيه في"
+
+#: 
+msgid "Refresh List"
+msgstr "تحديث القائمة"
+
+#: 
+msgid "Regular Backups"
+msgstr "النسخ الاحتياطية المنتظمة"
+
+#: 
+msgid "Required Permission"
+msgstr "الإذن المطلوب"
+
+#: 
+msgid "Required permission"
+msgstr "الإذن المطلوب"
+
+#: 
+msgid "Restore Status"
+msgstr "حالة الاستعادة"
+
+#: 
+msgid "Restore failed."
+msgstr "فشلت الاستعادة."
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "فشلت الاستعادة. يرجى التحقق من ملف النسخة الاحتياطية والمحاولة مرة أخرى."
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "جاري الاستعادة، يرجى الانتظار..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "راجع الملفات أدناه وحذفها لتحسين الأمان."
+
+#: 
+msgid "Security Recommendation"
+msgstr "توصية أمان"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "تحذير أمان: تم اكتشاف ملفات يتيمة"
+
+#: 
+msgid "Select Backup File"
+msgstr "حدد ملف النسخة الاحتياطية"
+
+#: 
+msgid "Supported formats:"
+msgstr "الصيغ المدعومة:"
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "الملفات التالية موجودة على الخادم الخاص بك ولكنها ليست جزءا من إصدار ChurchCRM الرسمي. قد تكون بقايا من الإصدارات السابقة وقد تشكل مخاطر أمنية."
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "الصفحة التي حاولت زيارتها تتطلب أذونات خاصة لا يمتلكها حسابك حاليا."
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "هذه الملفات ليست جزءا من الإصدار الرسمي وقد تشكل مخاطر أمنية."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "من المحتمل أن تكون هذه الملفات جزءا من إصدار ChurchCRM الأقدم ولم يتم تنظيفها أثناء ترقية سابقة. سيحسن حذفها أمان النظام الخاص بك."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "من المحتمل أن تكون هذه الملفات جزءا من إصدار ChurchCRM الأقدم ولم يتم تنظيفها أثناء ترقية سابقة. قد تحتوي على رمز قديم به ثغرات أمنية."
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "لا يمكن التراجع عن هذا الإجراء. تأكد من وجود نسخة احتياطية من البيانات الحالية إذا لزم الأمر."
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "قد يستغرق هذا بضع دقائق لقواعد البيانات الكبيرة."
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "قد يستغرق هذا عدة دقائق لقواعس البيانات الكبيرة. لا تغلق هذه الصفحة."
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "سيقوم هذا بإعادة تنزيل وإعادة تطبيق الإصدار الحالي. يمكن أن يؤدي هذا إلى إصلاح الملفات التالفة أو المعدلة. هل تريد المتابعة؟"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "ملخص الترقية"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "استخدم أدوات خارجية (GPG و7-Zip) لتشفير النسخ الاحتياطية قبل تخزينها خارج الموقع."
+
+#: 
+msgid "User authentication"
+msgstr "مصادقة المستخدم"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "يجب أن يكون للمستخدم إذن إضافة الحدث"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "يجب أن يكون للمستخدم إذن خيارات القائمة"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "ما هي الملفات اليتيمة؟"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "ليس لديك حق الوصول إلى هذه الصفحة"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "سيتم تسجيل خروجك وإعادة توجيهك إلى صفحة تسجيل الدخول."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "تثبيت ChurchCRM نظيف. جميع الملفات على الخادم تتطابق مع الإصدار الرسمي."
+
+#: 
+msgid "or click to browse"
+msgstr "أو انقر للاستعراض"
+
+#: 
+msgid "seconds..."
+msgstr "ثوان..."
+
+#: 
+msgid " Deposit #"
+msgstr " رقم الإيداع #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d تصنيف مفقود"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d جنس مفقود"
+
+#: 
+msgid "%d missing role"
+msgstr "%d دور مفقود"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "الدفع هو تبرع فعلي تم استلامه. سيتم إضافته إلى الإيداع الحالي."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "التعهد هو التزام بالإعطاء. لا يرتبط بقسيمة إيداع."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "إضافة عضو عائلة آخر"
+
+#: 
+msgid "Add Pledge"
+msgstr "إضافة تعهد"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "لوحة تحكم المسؤول"
+
+#: 
+msgid "Advanced Operations"
+msgstr "العمليات المتقدمة"
+
+#: 
+msgid "All System Settings"
+msgstr "جميع إعدادات النظام"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "حدث خطأ غير متوقع. يرجى الاتصال بالمسؤول."
+
+#: 
+msgid "Apr"
+msgstr "أبريل"
+
+#: 
+msgid "Aug"
+msgstr "أغسطس"
+
+#: 
+msgid "Back to Deposits"
+msgstr "العودة إلى الودائع"
+
+#: 
+msgid "Back to Families"
+msgstr "العودة إلى العائلات"
+
+#: 
+msgid "Birth & Family"
+msgstr "الميلاد والعائلة"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "تصدير CSV مقيد بالمسؤولين."
+
+#: 
+msgid "Cart"
+msgstr "سلة"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "غيّر هذا في إعدادات النظام."
+
+#: 
+msgid "Church Membership"
+msgstr "عضوية الكنيسة"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "اسم الكنيسة معين إلى القيمة الافتراضية"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "الفصول والتسجيلات"
+
+#: 
+msgid "Clean Up Files"
+msgstr "تنظيف الملفات"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "امسح جميع البيانات وابدأ من جديد. لا يمكن التراجع."
+
+#: 
+msgid "Close All Deposits"
+msgstr "إغلاق جميع الودائع"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "الودائع المغلقة:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "المغلق مقابل الإجمالي"
+
+#: 
+msgid "Coming soon"
+msgstr "قريبا"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "أكمل هذه المهام الأساسية للإعداد لتشغيل ChurchCRM بسلاسة:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "أكملها بأي ترتيب. استخدم بيانات العرض التوضيحي للاستكشاف ببيانات العينة."
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "أكمل هذه المهام لضمان إعداد تقارير ضريبية دقيقة في نهاية السنة للمانحين."
+
+#: 
+msgid "Configuration:"
+msgstr "التكوين:"
+
+#: 
+msgid "Configure Email"
+msgstr "تكوين البريد الإلكتروني"
+
+#: 
+msgid "Contact Information"
+msgstr "معلومات الاتصال"
+
+#: 
+msgid "Create Deposit"
+msgstr "إنشاء إيداع"
+
+#: 
+msgid "Create First Deposit"
+msgstr "إنشاء الإيداع الأول"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "أنشئ أو افتح إيداع أولا"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "أنشئ أو حدد إيداع للبدء."
+
+#: 
+msgid "Current Deposit"
+msgstr "الإيداع الحالي"
+
+#: 
+msgid "Current fiscal year"
+msgstr "السنة المالية الحالية"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "تقرير قابل للتخصيص مع التصفية حسب التاريخ والصندوق والعائلة وطريقة الدفع."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "خصص النص الذي يظهر على كشوف الضرائب (sTaxReport1, sTaxReport2, وما إلى ذلك)."
+
+#: 
+msgid "Data Quality:"
+msgstr "جودة البيانات:"
+
+#: 
+msgid "Database:"
+msgstr "قاعدة البيانات:"
+
+#: 
+msgid "Day"
+msgstr "اليوم"
+
+#: 
+msgid "Dec"
+msgstr "ديسمبر"
+
+#: 
+msgid "Demo Data"
+msgstr "بيانات العرض التوضيحي"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "الملاحة للإيداع"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "إحصائيات الإيداع"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "تفصيل تفصيلي لقسيمة إيداع واحدة."
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "تفصيل تفصيلي للتعهدات والمدفوعات حسب العائلة."
+
+#: 
+msgid "Documentation"
+msgstr "التوثيق"
+
+#: 
+msgid "Donor Families"
+msgstr "عائلات المانحين"
+
+#: 
+msgid "Edit Deposit"
+msgstr "تحرير الإيداع"
+
+#: 
+msgid "Edit Family"
+msgstr "تحرير العائلة"
+
+#: 
+msgid "Edit Payment"
+msgstr "تحرير الدفع"
+
+#: 
+msgid "Edit Person"
+msgstr "تحرير الشخص"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "تأكد من إغلاق جميع الودائع للسنة الضريبية قبل إنشاء البيانات."
+
+#: 
+msgid "Export Options"
+msgstr "خيارات التصدير"
+
+#: 
+msgid "F"
+msgstr "ف"
+
+#: 
+msgid "Failed to save settings"
+msgstr "فشل حفظ الإعدادات"
+
+#: 
+msgid "Family Navigation"
+msgstr "الملاحة للعائلة"
+
+#: 
+msgid "Feb"
+msgstr "فبراير"
+
+#: 
+msgid "File Integrity:"
+msgstr "سلامة الملف:"
+
+#: 
+msgid "Filtering"
+msgstr "التصفية"
+
+#: 
+msgid "Finance"
+msgstr "التمويل"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "لوحة تحكم التمويل"
+
+#: 
+msgid "Force Import"
+msgstr "فرض الاستيراد"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "سيعيد محاولة فرض الاستيراد وقد ينشئ بيانات مكررة."
+
+#: 
+msgid "Fund Allocation"
+msgstr "توزيع الأموال"
+
+#: 
+msgid "Generate"
+msgstr "إنشاء"
+
+#: 
+msgid "Generate Reports"
+msgstr "إنشاء التقارير"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "إنشاء بيانات الضرائب"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "أنشئ بيانات الإعطاء السنوية للمانحين وحدد أنماط الإعطاء."
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "أنشئ بيانات الإعطاء المعفاة من الضرائب سنويا للمانحين. يمكن طباعتها أو إرسالها بالبريد الإلكتروني."
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "أنشئ تقارير مفصلة للودائع الفردية أو نطاقات التواريخ."
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "أنشئ رسائل تذكير للعائلات التي لديها تعهدات معلقة."
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "أنشئ تقارير لبيانات الضرائب وتتبع التعهدات والتحليل المالي."
+
+#: 
+msgid "Giving funds and categories"
+msgstr "صناديق الإعطاء والفئات"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS غير مكون"
+
+#: 
+msgid "ID"
+msgstr "المعرف"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "تحديد الأعضاء الذين لم يقدموا أي تبرعات ضمن نطاق تاريخ."
+
+#: 
+msgid "Import failed"
+msgstr "فشل الاستيراد"
+
+#: 
+msgid "Import from CSV files"
+msgstr "الاستيراد من ملفات CSV"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "استيراد عائلات وأشخاص ومجموعات عينة لاستكشاف ChurchCRM ببيانات واقعية."
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "قم بتثبيت شهادة TLS/SSL لأمان أفضل"
+
+#: 
+msgid "Jan"
+msgstr "يناير"
+
+#: 
+msgid "Jr., Sr."
+msgstr "جونيور، سينيور"
+
+#: 
+msgid "Jul"
+msgstr "يوليو"
+
+#: 
+msgid "Jun"
+msgstr "يونيو"
+
+#: 
+msgid "Latest Note"
+msgstr "أحدث ملاحظة"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "دعنا نعد نظامك وجاهز للاستخدام"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "قائمة الأعضاء الذين يحق لهم التصويت بناء على تاريخ الإعطاء ومعايير العضوية."
+
+#: 
+msgid "Location"
+msgstr "الموقع"
+
+#: 
+msgid "M"
+msgstr "م"
+
+#: 
+msgid "Manage Funds"
+msgstr "إدارة الصناديق"
+
+#: 
+msgid "Manage Users"
+msgstr "إدارة المستخدمين"
+
+#: 
+msgid "Mar"
+msgstr "مارس"
+
+#: 
+msgid "Membership Reports"
+msgstr "تقارير العضوية"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "مفاتيح سرية مفقودة"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "يمكن تصدير معظم التقارير بصيغة PDF للطباعة أو CSV للتحليل في جدول البيانات."
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "السيد، السيدة، الدكتور"
+
+#: 
+msgid "Name & Identity"
+msgstr "الاسم والهوية"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "سيتم إنشاء إيداع جديد"
+
+#: 
+msgid "New Payment"
+msgstr "دفع جديد"
+
+#: 
+msgid "New Pledge"
+msgstr "تعهد جديد"
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "آخر 7 أيام و7 أيام السابقة"
+
+#: 
+msgid "No Active Deposit"
+msgstr "لا يوجد إيداع نشط"
+
+#: 
+msgid "No active funds configured."
+msgstr "لم يتم تكوين صناديق نشطة."
+
+#: 
+msgid "No deposits found."
+msgstr "لم يتم العثور على ودائع."
+
+#: 
+msgid "No format"
+msgstr "بدون صيغة"
+
+#: 
+msgid "Nov"
+msgstr "نوفمبر"
+
+#: 
+msgid "Oct"
+msgstr "أكتوبر"
+
+#: 
+msgid "Open"
+msgstr "مفتوح"
+
+#: 
+msgid "Open Deposits:"
+msgstr "الودائع المفتوحة:"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "المنظمة والمنطقة الزمنية والبريد الإلكتروني"
+
+#: 
+msgid "Organizational structure"
+msgstr "الهيكل التنظيمي"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "الملفات اليتيمة:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
+msgid "Payment"
+msgstr "الدفع"
+
+#: 
+msgid "Pledge Reports"
+msgstr "تقارير التعهدات"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "اطبع أو أرسل بالبريد الإلكتروني بيانات الإعطاء السنوية لجميع المانحين."
+
+#: 
+msgid "Quick Actions"
+msgstr "الإجراءات السريعة"
+
+#: 
+msgid "Quick Start"
+msgstr "البدء السريع"
+
+#: 
+msgid "Recent Deposits"
+msgstr "الودائع الأخيرة"
+
+#: 
+msgid "Recording a Payment"
+msgstr "تسجيل دفع"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "تسجيل تعهد"
+
+#: 
+msgid "Report Tips"
+msgstr "نصائح التقرير"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "تقارير متعلقة بأهلية التصويت للأعضاء وحكم المنظمة."
+
+#: 
+msgid "Reset"
+msgstr "إعادة تعيين"
+
+#: 
+msgid "Restore"
+msgstr "استعادة"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "استعادة من ملف نسخة احتياطية. يمسح البيانات الموجودة."
+
+#: 
+msgid "Review Donation Funds"
+msgstr "مراجعة صناديق التبرعات"
+
+#: 
+msgid "SMTP server settings are not configured"
+msgstr "إعدادات خادم SMTP غير مكونة"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "حفظ وإضافة عائلة جديدة"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "مفاتيح سرية مفقودة من Config.php"
+
+#: 
+msgid "Sep"
+msgstr "سبتمبر"
+
+#: 
+msgid "Server error"
+msgstr "خطأ في الخادم"
+
+#: 
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "تم حفظ الإعدادات بنجاح"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "مهام الإعداد:"
+
+#: 
+msgid "Social Media"
+msgstr "وسائل التواصل الاجتماعي"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "لم يتم استيفاء بعض متطلبات التطبيق"
+
+#: 
+msgid "State (Other)"
+msgstr "الولاية (أخرى)"
+
+#: 
+msgid "Status:"
+msgstr "الحالة:"
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "ملخص التعهدات مقابل المدفوعات حسب الصندوق للسنة المالية."
+
+#: 
+msgid "System Configuration:"
+msgstr "تكوين النظام:"
+
+#: 
+msgid "System Health"
+msgstr "صحة النظام"
+
+#: 
+msgid "System Info"
+msgstr "معلومات النظام"
+
+#: 
+msgid "Tax & Giving Reports"
+msgstr "تقارير الضرائب والإعطاء"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "صياغة تقرير الضريبة"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "بيانات الضرائب (تقرير الإعطاء)"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "قائمة تحقق من تقارير السنة الضريبية"
+
+#: 
+msgid "Today"
+msgstr "اليوم"
+
+#: 
+msgid "Total"
+msgstr "الإجمالي"
+
+#: 
+msgid "Total Amount"
+msgstr "المبلغ الإجمالي"
+
+#: 
+msgid "Total Deposits:"
+msgstr "إجمالي الودائع:"
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "تتبع تقدم التعهدات والمدفوعات للحملات وميزانية السنة المالية."
+
+#: 
+msgid "Type:"
+msgstr "النوع:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "المتطلبات غير المستوفاة"
+
+#: 
+msgid "Update Church Name"
+msgstr "تحديث اسم الكنيسة"
+
+#: 
+msgid "Upgrade"
+msgstr "ترقية"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "استخدم تصفية التصنيف والعائلة لإنشاء تقارير لمجموعات معينة من المانحين."
+
+#: 
+msgid "User accounts and roles"
+msgstr "حسابات وأدوار المستخدمين"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "يجب أن يكون المستخدم مسؤولا أو لديه إذن مالي"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "تحقق من ظهور اسم الكنيسة والعنوان ومعلومات الاتصال على بيانات الضرائب."
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "تحقق من أن أسماء الصناديق والأوصاف دقيقة للبيانات."
+
+#: 
+msgid "Version:"
+msgstr "الإصدار:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "أهلا بك في ChurchCRM"
+
+#: 
+msgid "YTD Payments"
+msgstr "المدفوعات من بداية السنة"
+
+#: 
+msgid "YTD Pledges"
+msgstr "التعهدات من بداية السنة"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "يمكنك إنشاء أفراد العائلة الآن أو إضافتهم لاحقا. ستصبح جميع الإدخالات سجلات شخص جديدة."
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "تبدأ السنة المالية الخاصة بك في الشهر"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "الرمز البريدي"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "ملحق ZipArchive مطلوب للترقيات"
+
+#: 
+msgid "active"
+msgstr "نشط"
+
+#: 
+msgid "ago"
+msgstr "منذ"
+
+#: 
+msgid "day"
+msgstr "يوم"
+
+#: 
+msgid "days"
+msgstr "أيام"
+
+#: 
+msgid "found"
+msgstr "وجدت"
+
+#: 
+msgid "in"
+msgstr "في"
+
+#: 
+msgid "issues"
+msgstr "المشاكل"
+
+#: 
+msgid "open"
+msgstr "مفتوح"
+
+#: 
+msgid "years"
+msgstr "سنوات"
+
+#: 
+msgid "yes"
+msgstr "نعم"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(أدخل الولاية/المقاطعة للدول بدون ولايات معرفة مسبقا)"
+
+#: 
+msgid "Available"
+msgstr "متاح"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "تكوين عنوان URL الأساسي غير صحيح. يرجى التحقق من ملف Config.php الخاص بك."
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "لم يتم تكوين عنوان URL الأساسي في Config.php"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "اللغات المدعومة في ChurchCRM"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "اتصل بخادمك عبر SSH أو FTP أو لوحة التحكم الخاصة بالاستضافة"
+
+#: 
+msgid "Contact"
+msgstr "اتصال"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "خطأ حرج في التكوين"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "قيمة $URL[0] الحالية:"
+
+#: 
+msgid "Custom port:"
+msgstr "المنفذ المخصص:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "ينتهي بـ <strong>شرطة زائدة</strong> (/)"
+
+#: 
+msgid "Error:"
+msgstr "خطأ:"
+
+#: 
+msgid "Find the line:"
+msgstr "ابحث عن السطر:"
+
+#: 
+msgid "Group Memberships"
+msgstr "عضويات المجموعة"
+
+#: 
+msgid "How to Fix:"
+msgstr "كيفية الإصلاح:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "انضم إلى مجتمع ChurchCRM وساعدنا على التحسن بمشاركة معلوماتك. الأمر يستغرق أقل من دقيقة!"
+
+#: 
+msgid "Language"
+msgstr "اللغة"
+
+#: 
+msgid "Local development:"
+msgstr "التطوير المحلي:"
+
+#: 
+msgid "Locale Support"
+msgstr "دعم اللغات المحلية"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "الموقع ومعلومات الاتصال"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "انتقل إلى دليل تثبيت ChurchCRM الخاص بك"
+
+#: 
+msgid "New to"
+msgstr "جديد لـ"
+
+#: 
+msgid "No locales configured"
+msgstr "لم يتم تكوين لغات محلية"
+
+#: 
+msgid "Not Available"
+msgstr "غير متاح"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "افتح هذا الملف في محرر نصوص:"
+
+#: 
+msgid "Register Now"
+msgstr "قم بالتسجيل الآن"
+
+#: 
+msgid "Register Your Church"
+msgstr "قم بتسجيل كنيستك"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "احفظ الملف وحدث هذه الصفحة"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "عيّن true لتعطيل إدخال عناوين شخصية للأشخاص غير المرتبطين في محرر الأشخاص. عيّن false لتفعيل إدخال العناوين للأشخاص بدون تكليف عائلة."
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "يبدأ بـ <strong>http://</strong> أو <strong>https://</strong>"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "تثبيت المجلد الفرعي:"
+
+#: 
+msgid "System Locale Support"
+msgstr "دعم اللغات المحلية للنظام"
+
+#: 
+msgid "System Support"
+msgstr "دعم النظام"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "عنوان URL لا يحتوي على اسم مضيف صحيح"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "اسم مضيف عنوان URL غير صحيح"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "عنوان URL ليس بصيغة صحيحة"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "يجب أن ينتهي عنوان URL بشرطة زائدة (/)"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "يجب أن يبدأ عنوان URL بـ http:// أو https://"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "لا يمكن الكشف عن لغات النظام المحلية"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "لا يمكن تحديد اللغات المحلية المتاحة"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "لا يمكن تحميل معلومات اللغة المحلية"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "لا يمكن تحميل قائمة الولايات. يرجى التحقق من اتصال الشبكة الخاص بك أو حاول لاحقا."
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "حدثه إلى عنوان URL صحيح يقدم:"
+
+#: 
+msgid "Valid Examples:"
+msgstr "أمثلة صحيحة:"
+
+#: 
+msgid "View Logs"
+msgstr "عرض السجلات"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "اعرض وأدر ملفات سجل النظام للتصحيح."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "يجب عليك إدخال اسم العائلة."
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "خصوصيتك مهمة. لا نشارك أبدا معلوماتك مع أطراف ثالثة."
+
+#: 
+msgid "Additional Information"
+msgstr "معلومات إضافية"
+
+#: 
+msgid "All information is correct"
+msgstr "جميع المعلومات صحيحة"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "تعيين الفرص"
+
+#: 
+msgid "Assign Property"
+msgstr "تعيين الملكية"
+
+#: 
+msgid "Choose a property..."
+msgstr "اختر ملكية..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "اختر فرصا..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "تأكيد معلومات العائلة"
+
+#: 
+msgid "Confirm family information"
+msgstr "تأكيد معلومات العائلة"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "معلومات الاتصال والمعلومات الشخصية"
+
+#: 
+msgid "Copied!"
+msgstr "تم النسخ!"
+
+#: 
+msgid "Edit Role"
+msgstr "تحرير الدور"
+
+#: 
+msgid "Edited"
+msgstr "تم التعديل"
+
+#: 
+msgid "Email PDF"
+msgstr "إرسال PDF عبر البريد الإلكتروني"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "فشل نسخ عنوان URL"
+
+#: 
+msgid "ID:"
+msgstr "المعرف:"
+
+#: 
+msgid "Newsletter"
+msgstr "النشرة الإخبارية"
+
+#: 
+msgid "No assigned family"
+msgstr "لا توجد عائلة مكلفة"
+
+#: 
+msgid "Open in New Tab"
+msgstr "فتح في علامة تبويب جديدة"
+
+#: 
+msgid "Personal"
+msgstr "شخصي"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "يرجى تأكيد معلومات عائلتك:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "يرجى تحديث سجلاتنا بالتصحيحات"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "قدم أي تصحيحات أو معلومات إضافية هنا..."
+
+#: 
+msgid "Remove Property"
+msgstr "إزالة الملكية"
+
+#: 
+msgid "Select Opportunities"
+msgstr "حدد الفرص"
+
+#: 
+msgid "Select Property"
+msgstr "حدد الملكية"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "شارك عنوان URL هذا مع أفراد العائلة للتحقق من معلوماتهم"
+
+#: 
+msgid "Submit Verification"
+msgstr "تقديم التحقق"
+
+#: 
+msgid "Thank You!"
+msgstr "شكرا لك!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "الترجمة غير مكتملة"
+
+#: 
+msgid "Visit Our Website"
+msgstr "قم بزيارة موقعنا على الويب"
+
+#: 
+msgid "Volunteer"
+msgstr "متطوع"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "واجهنا خطأ عند معالجة التحقق الخاص بك. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة."
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "تم استلام طلب التحقق الخاص بك. شكرا لك لإبقاء معلوماتك محدثة."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "حدث خطأ. يرجى الاتصال بمسؤول النظام الخاص بك."
+
+#: 
+msgid "Backup failed"
+msgstr "فشلت النسخة الاحتياطية"
+
+#: 
+msgid "Database reset failed"
+msgstr "فشل إعادة تعيين قاعدة البيانات"
+
+#: 
+msgid "Database restore failed"
+msgstr "فشلت استعادة قاعدة البيانات"
+
+#: 
+msgid "Demo data import failed"
+msgstr "فشل استيراد بيانات العرض التوضيحي"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "استيراد بيانات العرض التوضيحي متاح فقط على التثبيتات الجديدة التي تحتوي على شخص واحد فقط"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "تم تحميل بيانات العرض التوضيحي بنجاح"
+
+#: 
+msgid "Download failed"
+msgstr "فشل التحميل"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "فشل تطبيق الترقية"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "فشل حذف الملفات اليتيمة"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "فشل تحميل أحدث إصدار"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "فشل تحديث معلومات الترقية"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "فشل تحميل صورة العائلة"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "فشل تحميل صورة الشخص"
+
+#: 
+msgid "Remote backup failed"
+msgstr "فشلت النسخة الاحتياطية البعيدة"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "لم يتم تكوين نسخ WebDAV احتياطية بشكل صحيح. يرجى التأكد من تعيين نقطة النهاية واسم المستخدم وكلمة المرور"
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA مفعل"
+
+#: 
+msgid "Active Users"
+msgstr "المستخدمون النشطون"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "تصدير ChMeetings"
+
+#: 
+msgid "Delete User"
+msgstr "حذف المستخدم"
+
+#: 
+msgid "Disable 2FA"
+msgstr "تعطيل 2FA"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "تصدير جميع بيانات الأشخاص بصيغة ChMeetings للاستيراد في الأنظمة الخارجية."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "تصدير إلى CSV ChMeetings"
+
+#: 
+msgid "Exporting..."
+msgstr "جاري التصدير..."
+
+#: 
+msgid "Family Listing"
+msgstr "قائمة العائلات"
+
+#: 
+msgid "Invalid request data"
+msgstr "بيانات طلب غير صحيحة"
+
+#: 
+msgid "Invalid status"
+msgstr "حالة غير صحيحة"
+
+#: 
+msgid "Locked Users"
+msgstr "المستخدمون المقفولون"
+
+#: 
+msgid "Person Listing"
+msgstr "قائمة الأشخاص"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "تم إزالة الشخص (الأشخاص) من السلة"
+
+#: 
+msgid "Quick Settings"
+msgstr "الإعدادات السريعة"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "إعادة تعيين محاولات تسجيل الدخول الفاشلة"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "إعادة تعيين كلمة المرور عبر البريد الإلكتروني"
+
+#: 
+msgid "Set Active"
+msgstr "تعيين نشط"
+
+#: 
+msgid "Set Inactive"
+msgstr "تعيين غير نشط"
+
+#: 
+msgid "Show"
+msgstr "عرض"
+
+#: 
+msgid "Showing"
+msgstr "عرض"
+
+#: 
+msgid "Total Users"
+msgstr "إجمالي المستخدمين"
+
+#: 
+msgid "User Management"
+msgstr "إدارة المستخدمين"
+
+#: 
+msgid "View Details"
+msgstr "عرض التفاصيل"
+
+#: 
+msgid "entries"
+msgstr "الإدخالات"
+
+#: 
+msgid "of"
+msgstr "من"
+
+#: 
+msgid "total"
+msgstr "الإجمالي"
+
+#: 
+msgid "Code incomplete"
+msgstr "الرمز غير مكتمل"
+
+#: 
+msgid "Code is invalid"
+msgstr "الرمز غير صحيح"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "مفتاح التشفير لتخزين مفاتيح سر 2FA في قاعدة البيانات"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "المصادقة الثنائية"
+
+#: 
+msgid "Validation pending"
+msgstr "التحقق قيد الانتظار"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "يجب تكوينه بمفتاح تشفير"
+
+#: 
+msgid "A "
+msgstr "أ"
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "التغييرات على الإضافة والحذف والترتيب فورية. يجب حفظ تغييرات الاسم والوصف بالنقر على 'حفظ التغييرات'."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "هل أنت متأكد من رغبتك في الحذف"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "أزرار الأسهم والحذف تأخذ التأثير فورا. سيتم فقدان تغييرات اسم الحقل إذا لم تنقر على 'حفظ التغييرات' قبل استخدام زر العلوي أو السفلي أو الحذف أو 'إضافة جديد'!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "بحذف هذا الحقل، ستفقد بشكل لا رجعة فيه جميع بيانات الأسرة المخصصة لهذا الحقل!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "بحذف هذا الحقل، ستفقد بشكل لا رجعة فيه جميع بيانات الشخص المخصصة لهذا الحقل!"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "لم يتم حفظ التغييرات! يرجى التصحيح والمحاولة مرة أخرى!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "تأكيد حذف الخاصية"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "تأكيد حذف فرصة التطوع"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "تأكيد الحذف"
+
+#: 
+msgid "Existing"
+msgstr "موجود"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "حقول الأسرة المخصصة الموجودة"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "حقول الشخص المخصصة الموجودة"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "فرص التطوع الموجودة"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "تم حذف الحقل بنجاح"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "رمز CSRF غير صالح"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "حقول أو تحديدات غير صالحة."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "تم حذف العنصر بنجاح"
+
+#: 
+msgid "Move down"
+msgstr "نقل للأسفل"
+
+#: 
+msgid "Move up"
+msgstr "نقل للأعلى"
+
+#: 
+msgid "Opportunity"
+msgstr "الفرصة"
+
+#: 
+msgid "Order"
+msgstr "الترتيب"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "تم إرسال ملفات PDF بنجاح إلى %s أسرة."
+
+#: 
+msgid "Percentage"
+msgstr "النسبة المئوية"
+
+#: 
+msgid "Person Properties"
+msgstr "خصائص الشخص"
+
+#: 
+msgid "Property Type"
+msgstr "نوع الخاصية"
+
+#: 
+msgid "Property to Delete"
+msgstr "الخاصية المراد حذفها"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "هناك أشخاص مخصصون لهذه فرصة التطوع. سيؤدي الحذف إلى إلغاء التعيين:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "سيؤدي هذا إلى إزالته من جميع الأشخاص المخصصين له حاليا."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "فرصة التطوع"
+
+#: 
+msgid "Warning:"
+msgstr "تحذير:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "نعم، احذف هذه الفرصة"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "الاستعلامات التي يجب أن يكون للمستخدم أذونات مالية لاستخدامها"
+
+#: 
+msgid "Fund(s)"
+msgstr "صندوق (أصناديق)"
+
+#: 
+msgid "Password reset for"
+msgstr "إعادة تعيين كلمة المرور لـ"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "الإسبانية - الأرجنتين"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "الإسبانية - كولومبيا"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "الإسبانية - السلفادور"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "الإسبانية - المكسيك"
 
