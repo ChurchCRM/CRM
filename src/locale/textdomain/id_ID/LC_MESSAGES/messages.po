@@ -8230,3 +8230,3172 @@ msgstr "Semua anggota sudah di keranjang"
 msgid "already in cart"
 msgstr "sudah di keranjang"
 
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Properti kalender tidak dapat dimuat. Akses token mungkin hilang atau konfigurasi salah."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Keranjang berhasil dikosongkan"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Keranjang berhasil dipindahkan ke grup"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Kosongkan seluruh keranjang?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Gagal menambahkan keluarga ke keranjang"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Gagal menambahkan grup ke keranjang"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Gagal menambahkan ke keranjang"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Gagal mengosongkan keranjang"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Gagal memindahkan isi keranjang ke grup"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Gagal menghapus keluarga dari keranjang"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Gagal menghapus dari keranjang"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Gagal menghapus grup"
+
+#: 
+msgid "Family added to cart"
+msgstr "Keluarga ditambahkan ke keranjang"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Keluarga dihapus dari keranjang"
+
+#: 
+msgid "Group added to cart"
+msgstr "Grup ditambahkan ke keranjang"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Grup dihapus dari keranjang"
+
+#: 
+msgid "in cart"
+msgstr "di keranjang"
+
+#: 
+msgid "members. Already had"
+msgstr "anggota. Sudah ada"
+
+#: 
+msgid "people added to cart"
+msgstr "orang ditambahkan ke keranjang"
+
+#: 
+msgid "people already in cart"
+msgstr "orang sudah ada di keranjang"
+
+#: 
+msgid "people from cart"
+msgstr "orang dari keranjang"
+
+#: 
+msgid "people removed from cart"
+msgstr "orang dihapus dari keranjang"
+
+#: 
+msgid "Person already in cart"
+msgstr "Orang tersebut sudah ada di keranjang"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Hapus keluarga ini dari keranjang?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Hapus grup ini dari keranjang?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Hapus orang ini dari keranjang?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Berhasil dihapus dari keranjang"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Ya, Kosongkan Keranjang"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Ya, Hapus"
+
+#: 
+msgid "Add Group"
+msgstr "Tambah Grup"
+
+#: 
+msgid "Back to Group List"
+msgstr "Kembali ke Daftar Grup"
+
+#: 
+msgid "Default role updated."
+msgstr "Peran standar berhasil diperbarui."
+
+#: 
+msgid "Edit Group"
+msgstr "Ubah Grup"
+
+#: 
+msgid "Enter group name"
+msgstr "Masukkan nama grup"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "Gagal menambah peran. Silakan coba lagi."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Gagal membuat grup. Silakan coba lagi."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "Gagal menghapus peran. Silakan coba lagi."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Gagal memuat status keranjang."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Gagal memuat grup. Silakan segarkan halaman."
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "Gagal mengatur peran standar. Silakan coba lagi."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "Gagal memperbarui grup. Silakan coba lagi."
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "Gagal memperbarui properti. Silakan coba lagi."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "Gagal memperbarui nama peran. Silakan coba lagi."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "Kosongkan jika tidak ingin mengubah kata sandi"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Harap masukkan nama grup."
+
+#: 
+msgid "Role added successfully."
+msgstr "Peran berhasil ditambahkan."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Peran berhasil dihapus."
+
+#: 
+msgid "Role name updated."
+msgstr "Nama peran berhasil diperbarui."
+
+#: 
+msgid "View Group"
+msgstr "Lihat Grup"
+
+#: 
+msgid "Events Today"
+msgstr "Kegiatan Hari Ini"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Ringkasan Sekolah Minggu"
+
+#: 
+msgid "Add Family Member"
+msgstr "Tambah Anggota Keluarga"
+
+#: 
+msgid "Address is required"
+msgstr "Alamat wajib diisi"
+
+#: 
+msgid "Base URL is required"
+msgstr "URL Dasar wajib diisi"
+
+#: 
+msgid "City is required"
+msgstr "Kota wajib diisi"
+
+#: 
+msgid "Database name is required"
+msgstr "Nama database wajib diisi"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "Hostname atau IP server wajib diisi"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "Port server wajib diisi"
+
+#: 
+msgid "Database username is required"
+msgstr "Username database wajib diisi"
+
+#: 
+msgid "Email Address"
+msgstr "Alamat Email"
+
+#: 
+msgid "Email address"
+msgstr "Alamat email"
+
+#: 
+msgid "Enter family name"
+msgstr "Masukkan nama keluarga"
+
+#: 
+msgid "Family Information"
+msgstr "Informasi Keluarga"
+
+#: 
+msgid "Family name is required"
+msgstr "Nama keluarga wajib diisi"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "Nama keluarga minimal 2 karakter"
+
+#: 
+msgid "First name"
+msgstr "Nama depan"
+
+#: 
+msgid "First name is required"
+msgstr "Nama depan wajib diisi"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "Nama depan minimal 2 karakter"
+
+#: 
+msgid "Home phone is required"
+msgstr "Telepon rumah wajib diisi"
+
+#: 
+msgid "Home phone number"
+msgstr "Nomor telepon rumah"
+
+#: 
+msgid "Invalid format"
+msgstr "Format tidak valid"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "Mari bergabung dengan komunitas kami dengan mendaftarkan keluarga Anda"
+
+#: 
+msgid "Last name"
+msgstr "Nama belakang"
+
+#: 
+msgid "Last name is required"
+msgstr "Nama belakang wajib diisi"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "Nama belakang minimal 2 karakter"
+
+#: 
+msgid "Maximum length is"
+msgstr "Panjang maksimal adalah"
+
+#: 
+msgid "Minimum length is"
+msgstr "Panjang minimal adalah"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "Harus URL valid (diawali http:// atau https://)"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "Harus URL valid (misal: https://gereja.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "Harus nomor port yang valid"
+
+#: 
+msgid "Next Member"
+msgstr "Anggota Selanjutnya"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Kata sandi tidak cocok"
+
+#: 
+msgid "Phone Type"
+msgstr "Tipe Telepon"
+
+#: 
+msgid "Phone number"
+msgstr "Nomor telepon"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Harap tambahkan setidaknya satu anggota keluarga."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Harap perbaiki kesalahan sebelum melanjutkan."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Harap masukkan URL yang valid"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Harap masukkan alamat email yang valid"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Harap masukkan email yang valid (contoh: nama@email.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Harap masukkan angka yang valid"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Harap masukkan nomor telepon yang valid"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Harap isi semua kolom wajib dengan benar."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "Harap periksa kembali semua informasi. Anda dapat kembali untuk mengubah data jika perlu."
+
+#: 
+msgid "Previous"
+msgstr "Sebelumnya"
+
+#: 
+msgid "Registration Error"
+msgstr "Kesalahan Pendaftaran"
+
+#: 
+msgid "Review & Submit"
+msgstr "Tinjau & Kirim"
+
+#: 
+msgid "Role in Family"
+msgstr "Peran dalam Keluarga"
+
+#: 
+msgid "Select date"
+msgstr "Pilih tanggal"
+
+#: 
+msgid "Street address"
+msgstr "Alamat jalan"
+
+#: 
+msgid "Submit Registration"
+msgstr "Kirim Pendaftaran"
+
+#: 
+msgid "Zip code is required"
+msgstr "Kode pos wajib diisi"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "Kata sandi baru telah dibuat dan dikirim ke email Anda."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "Versi terbaru ChurchCRM tersedia untuk diinstal."
+
+#: 
+msgid "Actual Hash"
+msgstr "Hash Aktual"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "Semua pengecekan pra-pembaruan berhasil. Anda dapat melanjutkan pembaruan."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Izinkan Pembaruan Pre-release"
+
+#: 
+msgid "Apply Update Now"
+msgstr "Terapkan Pembaruan Sekarang"
+
+#: 
+msgid "Applying System Update..."
+msgstr "Menerapkan Pembaruan Sistem..."
+
+#: 
+msgid "Back to Login"
+msgstr "Kembali ke Login"
+
+#: 
+msgid "Back to login"
+msgstr "Kembali ke login"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Pencadangan Dilewati"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "Cek GitHub untuk info rilis terbaru"
+
+#: 
+msgid "Complete"
+msgstr "Selesai"
+
+#: 
+msgid "Continue to Backup"
+msgstr "Lanjutkan ke Pencadangan"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "Lanjutkan Unduh & Terapkan"
+
+#: 
+msgid "Create Backup"
+msgstr "Buat Cadangan"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "Buat cadangan database sebelum menerapkan pembaruan."
+
+#: 
+msgid "Current Version:"
+msgstr "Versi Saat Ini:"
+
+#: 
+msgid "Database Backup"
+msgstr "Cadangan Database"
+
+#: 
+msgid "Download & Apply"
+msgstr "Unduh & Terapkan"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "Unduh dan Terapkan Pembaruan Sistem"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "Unduh rilis terbaru dan terapkan pada instalasi ChurchCRM Anda."
+
+#: 
+msgid "Downloaded"
+msgstr "Telah Diunduh"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "Mengunduh rilis terbaru dari GitHub..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "Masukkan nama login Anda dan kami akan mengirimkan tautan atur ulang kata sandi."
+
+#: 
+msgid "Expected Hash"
+msgstr "Hash yang Diharapkan"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Gagal membuat cadangan."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Gagal mengunduh paket pembaruan."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Gagal memuat info pembaruan dari GitHub."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "Gagal memuat info pembaruan. Silakan coba lagi."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "Gagal menyimpan pengaturan. Silakan coba lagi."
+
+#: 
+msgid "File Name"
+msgstr "Nama File"
+
+#: 
+msgid "Files Missing"
+msgstr "File Hilang"
+
+#: 
+msgid "Files Modified"
+msgstr "File Diubah"
+
+#: 
+msgid "Go to Login"
+msgstr "Ke Halaman Login"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "Saya Mengerti - Lanjutkan"
+
+#: 
+msgid "Language updated to"
+msgstr "Bahasa diperbarui ke"
+
+#: 
+msgid "Login Name is required"
+msgstr "Nama Login wajib diisi"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "Setelah menerima email, Anda dapat login dengan kata sandi sementara lalu mengubahnya."
+
+#: 
+msgid "Password Reset Error"
+msgstr "Gagal Atur Ulang Kata Sandi"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "Atur Ulang Kata Sandi Berhasil"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "Silakan cek email Anda (termasuk folder spam) untuk kata sandi sementara."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "Harap jangan tutup jendela ini atau menyegarkan halaman."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "Tugas Pra-Pembaruan Selesai"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "Peringatan Pra-Pembaruan"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "Segarkan dari GitHub"
+
+#: 
+msgid "Release Notes:"
+msgstr "Catatan Rilis:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "Minta Atur Ulang Kata Sandi"
+
+#: 
+msgid "Retry Download"
+msgstr "Coba Unduh Lagi"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "Hash SHA1:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "Kirim Email Atur Ulang"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "Pengaturan disimpan. Memuat ulang halaman..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Pengaturan berhasil diperbarui"
+
+#: 
+msgid "Skip Backup"
+msgstr "Lewati Pencadangan"
+
+#: 
+msgid "System Up to Date"
+msgstr "Sistem Sudah Terbaru"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "Panduan Pembaruan Sistem"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "Pembaruan sistem berhasil diselesaikan!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "Ini mungkin memakan waktu beberapa menit."
+
+#: 
+msgid "Update Available!"
+msgstr "Pembaruan Tersedia!"
+
+#: 
+msgid "Update Package Details"
+msgstr "Detail Paket Pembaruan"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Paket pembaruan berhasil diunduh."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "Pembaruan Selesai!"
+
+#: 
+msgid "Upgrade failed."
+msgstr "Pembaruan gagal."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "Pembaruan gagal. Silakan periksa catatan log."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "Info pembaruan berhasil diperbarui"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Info pembaruan diperbarui. Memuat ulang halaman..."
+
+#: 
+msgid "Version Information"
+msgstr "Informasi Versi"
+
+#: 
+msgid "Warnings"
+msgstr "Peringatan"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "Gagal memproses permintaan atur ulang kata sandi. Silakan minta tautan baru."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "Anda memilih melewati pencadangan. Sangat disarankan untuk memiliki cadangan sebelum memperbarui."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "Instalasi ChurchCRM Anda telah berhasil diperbarui."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "ChurchCRM Anda sudah menggunakan versi terbaru."
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 karakter"
+
+#: 
+msgid "Dear Friend"
+msgstr "Saudara yang Terkasih"
+
+#: 
+msgid "No Data Found"
+msgstr "Data Tidak Ditemukan"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "Tidak ada data pada laporan sebelumnya. Harap sesuaikan filter atau rentang tanggal."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "Harap masukkan nama menu (2-50 karakter)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "Harap masukkan URL valid yang diawali http:// atau https://"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "Semua tanda tangan file sistem sesuai."
+
+#: 
+msgid "Files with issues"
+msgstr "File bermasalah"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Pemeriksaan integritas gagal"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Pemeriksaan integritas berhasil"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "File definisi tanda tangan ada namun tidak dapat dibaca. Cek izin file."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "File definisi tanda tangan hilang di %s."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "Tidak dapat menghubungi endpoint integritas. Periksa log error server."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "Tambah catatan tambahan tentang setoran ini"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "Jumlah melebihi batas maksimal."
+
+#: 
+msgid "Checks"
+msgstr "Cek"
+
+#: 
+msgid "Clear Filters"
+msgstr "Hapus Filter"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "Klik batang grafik untuk memfilter pembayaran"
+
+#: 
+msgid "Delete Selected"
+msgstr "Hapus yang Dipilih"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Setoran berhasil disimpan"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Gagal menghapus pembayaran"
+
+#: 
+msgid "Error loading payments"
+msgstr "Gagal memuat pembayaran"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Gagal menyimpan setoran"
+
+#: 
+msgid "Funds"
+msgstr "Dana/Pos Kas"
+
+#: 
+msgid "Generate Report"
+msgstr "Buat Laporan"
+
+#: 
+msgid "No Cash"
+msgstr "Tanpa Tunai"
+
+#: 
+msgid "No Checks"
+msgstr "Tanpa Cek"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Belum ada pembayaran. Klik \"Tambah Pembayaran\" untuk memulai."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "Jumlah non-deductible melebihi batas maksimal."
+
+#: 
+msgid "Payments"
+msgstr "Pembayaran"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Pembayaran berhasil dihapus"
+
+#: 
+msgid "Please select a date"
+msgstr "Harap pilih tanggal"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Harap pilih baris yang akan dihapus"
+
+#: 
+msgid "Saving..."
+msgstr "Menyimpan..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "Tindakan ini tidak dapat dibatalkan."
+
+#: 
+msgid "Total Deposit"
+msgstr "Total Setoran"
+
+#: 
+msgid "Total Payments"
+msgstr "Total Pembayaran"
+
+#: 
+msgid "payments(s)?"
+msgstr "pembayaran"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "Semua file sistem lulus validasi integritas."
+
+#: 
+msgid "Base URL"
+msgstr "URL Dasar"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "Instalasi ChurchCRM"
+
+#: 
+msgid "Copy"
+msgstr "Salin"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "Server Database"
+
+#: 
+msgid "Debug Info"
+msgstr "Info Debug"
+
+#: 
+msgid "Document Root"
+msgstr "Root Dokumen"
+
+#: 
+msgid "Email Configuration"
+msgstr "Konfigurasi Email"
+
+#: 
+msgid "Email Debug Info"
+msgstr "Info Debug Email"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "Izin Sistem File"
+
+#: 
+msgid "Hostname"
+msgstr "Nama Host"
+
+#: 
+msgid "IP Address"
+msgstr "Alamat IP"
+
+#: 
+msgid "Images Root"
+msgstr "Root Gambar"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Impor Data Demo"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Sertakan kegiatan dan kalender"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Sertakan data keuangan (dana donasi, janji iman)"
+
+#: 
+msgid "Invalid API key"
+msgstr "Kunci API tidak valid"
+
+#: 
+msgid "Not configured"
+msgstr "Belum dikonfigurasi"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "Persyaratan PHP & Server"
+
+#: 
+msgid "PHP Configuration"
+msgstr "Konfigurasi PHP"
+
+#: 
+msgid "Platform"
+msgstr "Platform"
+
+#: 
+msgid "Root Path"
+msgstr "Path Root"
+
+#: 
+msgid "SMTP Host"
+msgstr "Host SMTP"
+
+#: 
+msgid "Server Information"
+msgstr "Informasi Server"
+
+#: 
+msgid "Software"
+msgstr "Perangkat Lunak"
+
+#: 
+msgid "System & Configuration"
+msgstr "Sistem & Konfigurasi"
+
+#: 
+msgid "Tip:"
+msgstr "Tip:"
+
+#: 
+msgid "Valid Settings"
+msgstr "Pengaturan Valid"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "Terjadi kesalahan saat impor data demo"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "Data demo berhasil diimpor"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "Sertakan kelas Sekolah Minggu dan pendaftaran"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "Perlu menghapus data ini nanti?"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "Tidak ada pembayaran pada setoran ini"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "tidak ada pembayaran pada setoran ini"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "Data Opsional untuk Disertakan"
+
+#: 
+msgid "Skipped"
+msgstr "Dilewati"
+
+#: 
+msgid "Unknown error"
+msgstr "Kesalahan tidak dikenal"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "setoran tanpa pembayaran"
+
+#: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d kegiatan di %s"
+
+#: 
+msgid "All Event Types"
+msgstr "Semua Tipe Kegiatan"
+
+#: 
+msgid "All Types"
+msgstr "Semua Tipe"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "Apakah Anda yakin ingin menghapus catatan kehadiran ini?"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "Kategori Hitung Kehadiran"
+
+#: 
+msgid "Attendance Notes"
+msgstr "Catatan Kehadiran"
+
+#: 
+msgid "Change Event"
+msgstr "Ubah Kegiatan"
+
+#: 
+msgid "Check In"
+msgstr "Masuk (Check In)"
+
+#: 
+msgid "Check In Person"
+msgstr "Catat Kehadiran Orang"
+
+#: 
+msgid "Check In to Event"
+msgstr "Masuk ke Kegiatan"
+
+#: 
+msgid "Check-in"
+msgstr "Kehadiran"
+
+#: 
+msgid "Choose an event..."
+msgstr "Pilih kegiatan..."
+
+#: 
+msgid "Clear"
+msgstr "Bersihkan"
+
+#: 
+msgid "Create"
+msgstr "Buat"
+
+#: 
+msgid "Create New Event"
+msgstr "Buat Kegiatan Baru"
+
+#: 
+msgid "Create an event type to get started."
+msgstr "Buat tipe kegiatan untuk memulai."
+
+#: 
+msgid "Current DB Version"
+msgstr "Versi DB Saat Ini"
+
+#: 
+msgid "Current Software Version"
+msgstr "Versi Software Saat Ini"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "Pembaruan database berhasil. Mengalihkan ke dasbor..."
+
+#: 
+msgid "Date & Time"
+msgstr "Tanggal & Waktu"
+
+#: 
+msgid "Default Start Time"
+msgstr "Waktu Mulai Standar"
+
+#: 
+msgid "Delete Event"
+msgstr "Hapus Kegiatan"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "Menghapus kegiatan juga akan menghapus semua hitungan kehadiran. Hapus?"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Menghapus tipe kegiatan ini TIDAK akan menghapus kegiatan yang sudah ada. Yakin?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "Menghapus kegiatan ini akan menghapus semua catatan kehadiran. Yakin?"
+
+#: 
+msgid "Edit Event"
+msgstr "Ubah Kegiatan"
+
+#: 
+msgid "Editing Event"
+msgstr "Mengubah Kegiatan"
+
+#: 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr "Masukkan kategori hitungan dipisahkan koma. \"Total\" otomatis disertakan."
+
+#: 
+msgid "Enter event title..."
+msgstr "Masukkan judul kegiatan..."
+
+#: 
+msgid "Event"
+msgstr "Kegiatan"
+
+#: 
+msgid "Event Type Name"
+msgstr "Nama Tipe Kegiatan"
+
+#: 
+msgid "Event Types"
+msgstr "Tipe Kegiatan"
+
+#: 
+msgid "Filter Events"
+msgstr "Filter Kegiatan"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "Filter menurut Tipe Kegiatan"
+
+#: 
+msgid "Filter by Type"
+msgstr "Filter menurut Tipe"
+
+#: 
+msgid "Head Count"
+msgstr "Hitung Kepala"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "Daftar Kegiatan Tipe"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "Kelola Kehadiran"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "Anggota, Pengunjung, Anak-anak"
+
+#: 
+msgid "Monthly Averages"
+msgstr "Rata-rata Bulanan"
+
+#: 
+msgid "Monthly on the"
+msgstr "Bulanan pada"
+
+#: 
+msgid "No event types defined yet."
+msgstr "Belum ada tipe kegiatan yang ditentukan."
+
+#: 
+msgid "None (one-time event)"
+msgstr "Tidak ada (kegiatan sekali jalan)"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "Opsional - Tambahkan catatan khotbah atau detail kegiatan"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "Opsional - kosongkan jika tidak dilacak"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "Catatan opsional tentang kehadiran..."
+
+#: 
+msgid "People Checked In"
+msgstr "Orang yang Hadir"
+
+#: 
+msgid "People in Cart"
+msgstr "Orang di Keranjang"
+
+#: 
+msgid "Person Checking In"
+msgstr "Orang yang Mencatat Kehadiran"
+
+#: 
+msgid "Recurrence"
+msgstr "Pengulangan"
+
+#: 
+msgid "Required fields"
+msgstr "Kolom wajib diisi"
+
+#: 
+msgid "Save Event Type"
+msgstr "Simpan Tipe Kegiatan"
+
+#: 
+msgid "Search by name or email..."
+msgstr "Cari berdasarkan nama atau email..."
+
+#: 
+msgid "Search for adult..."
+msgstr "Cari orang dewasa..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "Cari pengawas..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "Pilih Kegiatan untuk Presensi"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "Pilih tanggal/waktu mulai dan selesai"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "Pilih kegiatan untuk mencatat kehadiran anggota keranjang"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "Teks Khotbah / Kegiatan"
+
+#: 
+msgid "Unclassified"
+msgstr "Tanpa Klasifikasi"
+
+#: 
+msgid "Upgrade database now"
+msgstr "Perbarui database sekarang"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "ChurchCRM memerlukan pembaruan database. Operasi ini akan menerapkan migrasi data. Pastikan Anda memiliki cadangan terbaru sebelum melanjutkan."
+
+#: 
+msgid "added to this event"
+msgstr "ditambahkan ke kegiatan ini"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "misal: Sekolah Minggu, Pemahaman Alkitab..."
+
+#: 
+msgid "optional"
+msgstr "opsional"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "orang"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ Selesai/Keluar"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "%d File Yatim Terdeteksi"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d file telah diubah atau hilang. Gunakan Paksa Instal Ulang untuk memulihkan."
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d file gagal validasi integritas."
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d file akan dihapus secara permanen."
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "%d file yatim terdeteksi di server Anda."
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(segarkan dari GitHub)"
+
+#: 
+msgid "Access Denied"
+msgstr "Akses Ditolak"
+
+#: 
+msgid "Add event permission"
+msgstr "Izin menambah kegiatan"
+
+#: 
+msgid "Add records permission"
+msgstr "Izin menambah catatan"
+
+#: 
+msgid "Administrator privileges"
+msgstr "Hak istimewa Administrator"
+
+#: 
+msgid "All Files Verified"
+msgstr "Semua File Terverifikasi"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "Semua file sistem sesuai dengan tanda tangan resminya."
+
+#: 
+msgid "Application Integrity"
+msgstr "Integritas Aplikasi"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "File aplikasi diperbarui ke versi terbaru"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "Yakin ingin menghapus semua file yatim?"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "Kembali ke Info Debug"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "Praktik Terbaik Pencadangan"
+
+#: 
+msgid "Backup Status"
+msgstr "Status Cadangan"
+
+#: 
+msgid "Backup Type"
+msgstr "Tipe Cadangan"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "Pencadangan selesai! Klik di bawah untuk mengunduh."
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "Pencadangan berhasil diselesaikan!"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "Cadangan diunduh. Salinan di server dihapus."
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "Pencadangan gagal. Silakan coba lagi."
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "Cadangan dibuat dan disalin ke server jarak jauh"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "Sedang mencadangkan, harap tunggu..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "Cadangkan ke Penyimpanan Eksternal"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "PERHATIAN: Mengembalikan cadangan akan menghapus database saat ini dan menggantinya dengan data cadangan."
+
+#: 
+msgid "CSV export permission"
+msgstr "Izin ekspor CSV"
+
+#: 
+msgid "Close & Refresh"
+msgstr "Tutup & Segarkan"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "Konfirmasi Penghapusan"
+
+#: 
+msgid "Create a backup first"
+msgstr "Buat cadangan terlebih dahulu"
+
+#: 
+msgid "Create directory permission"
+msgstr "Izin membuat direktori"
+
+#: 
+msgid "Database Only"
+msgstr "Hanya Database"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "Database Berhasil Dipulihkan!"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "Skema database diperbarui secara otomatis"
+
+#: 
+msgid "Delete All Files"
+msgstr "Hapus Semua File"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "Hapus Semua File Yatim"
+
+#: 
+msgid "Delete records permission"
+msgstr "Izin menghapus catatan"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "Berhasil menghapus %d file, %d gagal"
+
+#: 
+msgid "Deletion Results"
+msgstr "Hasil Penghapusan"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "Tarik dan lepaskan file cadangan Anda di sini"
+
+#: 
+msgid "Edit records permission"
+msgstr "Izin mengubah catatan"
+
+#: 
+msgid "Encryption"
+msgstr "Enkripsi"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "Ekspor struktur dan data database. Ukuran file lebih kecil."
+
+#: 
+msgid "File Integrity Check"
+msgstr "Cek Integritas File"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "Masalah Integritas File Terdeteksi"
+
+#: 
+msgid "File Path"
+msgstr "Path File"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "Tanda tangan file sesuai dengan rilis resmi."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "File mungkin diubah atau hilang. Pertimbangkan instal ulang dari rilis resmi."
+
+#: 
+msgid "Finance access"
+msgstr "Akses Keuangan"
+
+#: 
+msgid "Force Re-install"
+msgstr "Paksa Instal Ulang"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Instal ulang dipaksa dimulai. Harap cadangkan database Anda terlebih dahulu."
+
+#: 
+msgid "Full Backup"
+msgstr "Cadangan Lengkap"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "Buat & Unduh Cadangan"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "Ke Dasbor"
+
+#: 
+msgid "Group management access"
+msgstr "Akses manajemen grup"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "Jika Anda butuh akses ke fitur ini, hubungi administrator gereja."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "Jika Anda mengunggah cadangan dari ChurchInfo atau versi lama, data akan ditingkatkan secara otomatis."
+
+#: 
+msgid "Important Warning"
+msgstr "Peringatan Penting"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "Termasuk database dan semua foto. Ukuran file lebih besar."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "Simpan satu salinan di tempat aman di lokasi, dan satu lagi di tempat lain."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "Versi GitHub Terbaru:"
+
+#: 
+msgid "Loading..."
+msgstr "Memuat..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "Buat cadangan setidaknya seminggu sekali jika tidak ada pencadangan otomatis."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "Kelola File Yatim"
+
+#: 
+msgid "Menu options access"
+msgstr "Akses opsi menu"
+
+#: 
+msgid "Missing Files"
+msgstr "File Hilang"
+
+#: 
+msgid "Modified Files"
+msgstr "File Diubah"
+
+#: 
+msgid "Multiple Copies"
+msgstr "Beberapa Salinan"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "Tidak Ada File Yatim Ditemukan"
+
+#: 
+msgid "Notes access"
+msgstr "Akses catatan"
+
+#: 
+msgid "Orphaned Files"
+msgstr "File Yatim"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "Manajemen File Yatim"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "File yatim adalah file PHP/JS yang ada di server namun bukan bagian dari rilis resmi. Ini bisa jadi sisa versi lama dan berisiko bagi keamanan."
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "File yatim dari versi lama telah dibersihkan"
+
+#: 
+msgid "Permission Required"
+msgstr "Izin Diperlukan"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "Harap periksa file cadangan dan coba lagi."
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "Harap pilih file cadangan untuk dipulihkan"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "Unduh ulang versi saat ini untuk memulihkan semua file ke kondisi resmi"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "Siap membuat cadangan. Pilih opsi di atas dan klik tombol cadangkan."
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "Siap memulihkan. Pilih file cadangan dan klik Pulihkan Database."
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "Rekomendasi: Tinjau dan hapus file ini sebelum atau sesudah pembaruan."
+
+#: 
+msgid "Redirecting in"
+msgstr "Mengalihkan dalam"
+
+#: 
+msgid "Refresh List"
+msgstr "Segarkan Daftar"
+
+#: 
+msgid "Regular Backups"
+msgstr "Cadangan Rutin"
+
+#: 
+msgid "Required Permission"
+msgstr "Izin yang Dibutuhkan"
+
+#: 
+msgid "Required permission"
+msgstr "Izin yang dibutuhkan"
+
+#: 
+msgid "Restore Status"
+msgstr "Status Pemulihan"
+
+#: 
+msgid "Restore failed."
+msgstr "Pemulihan gagal."
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "Pemulihan gagal. Periksa file cadangan dan coba lagi."
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "Pemulihan sedang berlangsung, harap tunggu..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "Tinjau file di bawah dan hapus untuk meningkatkan keamanan."
+
+#: 
+msgid "Security Recommendation"
+msgstr "Rekomendasi Keamanan"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "Peringatan Keamanan: File Yatim Terdeteksi"
+
+#: 
+msgid "Select Backup File"
+msgstr "Pilih File Cadangan"
+
+#: 
+msgid "Supported formats:"
+msgstr "Format yang didukung:"
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "File berikut ada di server namun BUKAN bagian dari rilis resmi ChurchCRM."
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "Halaman yang Anda kunjungi memerlukan izin khusus yang tidak dimiliki akun Anda."
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "File ini bukan bagian dari rilis resmi dan mungkin berisiko keamanan."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "File ini kemungkinan sisa versi lama. Menghapusnya akan meningkatkan keamanan sistem."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "File ini mungkin sisa versi lama dan mengandung kode yang tidak aman."
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "Tindakan ini tidak dapat dibatalkan. Pastikan Anda memiliki cadangan data saat ini."
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "Ini mungkin memakan waktu beberapa menit untuk database besar."
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "Ini mungkin memakan waktu beberapa menit. Jangan tutup halaman ini."
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "Ini akan mengunduh dan menerapkan ulang versi saat ini. Lanjutkan?"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "Ringkasan Pembaruan"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "Gunakan alat eksternal untuk mengenkripsi cadangan sebelum disimpan di luar lokasi."
+
+#: 
+msgid "User authentication"
+msgstr "Autentikasi pengguna"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "Pengguna harus memiliki izin Tambah Kegiatan"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "Pengguna harus memiliki izin Opsi Menu"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "Apa itu File Yatim?"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "Anda tidak memiliki akses ke halaman ini"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "Anda akan keluar dan dialihkan ke halaman login."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "Instalasi ChurchCRM Anda bersih. Semua file sesuai dengan rilis resmi."
+
+#: 
+msgid "or click to browse"
+msgstr "atau klik untuk mencari"
+
+#: 
+msgid "seconds..."
+msgstr "detik..."
+
+#: 
+msgid " Deposit #"
+msgstr " Setoran #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d klasifikasi hilang"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d jenis kelamin hilang"
+
+#: 
+msgid "%d missing role"
+msgstr "%d peran hilang"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "Pembayaran adalah donasi aktual yang diterima. Akan ditambahkan ke setoran saat ini."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "Janji iman adalah komitmen untuk memberi. Tidak terikat pada slip setoran."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Tambah Anggota Keluarga Lain"
+
+#: 
+msgid "Add Pledge"
+msgstr "Tambah Janji Iman"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Dasbor Admin"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Operasi Lanjutan"
+
+#: 
+msgid "All System Settings"
+msgstr "Semua Pengaturan Sistem"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "Terjadi kesalahan tak terduga. Hubungi administrator."
+
+#: 
+msgid "Apr"
+msgstr "Apr"
+
+#: 
+msgid "Aug"
+msgstr "Agu"
+
+#: 
+msgid "Back to Deposits"
+msgstr "Kembali ke Setoran"
+
+#: 
+msgid "Back to Families"
+msgstr "Kembali ke Keluarga"
+
+#: 
+msgid "Birth & Family"
+msgstr "Kelahiran & Keluarga"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "Ekspor CSV dibatasi hanya untuk administrator."
+
+#: 
+msgid "Cart"
+msgstr "Keranjang"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "Ubah ini di Pengaturan Sistem."
+
+#: 
+msgid "Church Membership"
+msgstr "Keanggotaan Gereja"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "Nama gereja diatur ke nilai standar"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "Kelas dan pendaftaran"
+
+#: 
+msgid "Clean Up Files"
+msgstr "Bersihkan File"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "Hapus semua data dan mulai baru. Tidak dapat dibatalkan."
+
+#: 
+msgid "Close All Deposits"
+msgstr "Tutup Semua Setoran"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "Setoran Ditutup:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "Ditutup vs Total"
+
+#: 
+msgid "Coming soon"
+msgstr "Segera hadir"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "Selesaikan tugas pengaturan penting agar ChurchCRM berjalan lancar:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "Selesaikan ini dalam urutan apa pun. Gunakan Data Demo untuk mencoba."
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "Selesaikan tugas ini untuk memastikan pelaporan donasi akhir tahun yang akurat."
+
+#: 
+msgid "Configuration:"
+msgstr "Konfigurasi:"
+
+#: 
+msgid "Configure Email"
+msgstr "Konfigurasi Email"
+
+#: 
+msgid "Contact Information"
+msgstr "Informasi Kontak"
+
+#: 
+msgid "Create Deposit"
+msgstr "Buat Setoran"
+
+#: 
+msgid "Create First Deposit"
+msgstr "Buat Setoran Pertama"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "Buat atau buka setoran terlebih dahulu"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "Buat atau pilih setoran untuk memulai."
+
+#: 
+msgid "Current Deposit"
+msgstr "Setoran Saat Ini"
+
+#: 
+msgid "Current fiscal year"
+msgstr "Tahun fiskal saat ini"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Laporan yang dapat disesuaikan dengan filter tanggal, dana, keluarga, dan metode pembayaran."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Sesuaikan teks pada laporan pajak/donasi."
+
+#: 
+msgid "Data Quality:"
+msgstr "Kualitas Data:"
+
+#: 
+msgid "Database:"
+msgstr "Database:"
+
+#: 
+msgid "Day"
+msgstr "Hari"
+
+#: 
+msgid "Dec"
+msgstr "Des"
+
+#: 
+msgid "Demo Data"
+msgstr "Data Demo"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "Navigasi Setoran"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "Statistik Setoran"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "Rincian detail dari satu slip setoran."
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "Rincian detail janji iman dan pembayaran per keluarga."
+
+#: 
+msgid "Documentation"
+msgstr "Dokumentasi"
+
+#: 
+msgid "Donor Families"
+msgstr "Keluarga Donatur"
+
+#: 
+msgid "Edit Deposit"
+msgstr "Ubah Setoran"
+
+#: 
+msgid "Edit Family"
+msgstr "Ubah Keluarga"
+
+#: 
+msgid "Edit Payment"
+msgstr "Ubah Pembayaran"
+
+#: 
+msgid "Edit Person"
+msgstr "Ubah Jemaat"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "Pastikan semua setoran tahun tersebut telah ditutup sebelum membuat laporan."
+
+#: 
+msgid "Export Options"
+msgstr "Opsi Ekspor"
+
+#: 
+msgid "F"
+msgstr "P"
+
+#: 
+msgid "Failed to save settings"
+msgstr "Gagal menyimpan pengaturan"
+
+#: 
+msgid "Family Navigation"
+msgstr "Navigasi Keluarga"
+
+#: 
+msgid "Feb"
+msgstr "Feb"
+
+#: 
+msgid "File Integrity:"
+msgstr "Integritas File:"
+
+#: 
+msgid "Filtering"
+msgstr "Pemfilteran"
+
+#: 
+msgid "Finance"
+msgstr "Keuangan"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "Dasbor Keuangan"
+
+#: 
+msgid "Force Import"
+msgstr "Paksa Impor"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "Paksa Impor akan mencoba lagi dan mungkin membuat data duplikat."
+
+#: 
+msgid "Fund Allocation"
+msgstr "Alokasi Dana"
+
+#: 
+msgid "Generate"
+msgstr "Buat"
+
+#: 
+msgid "Generate Reports"
+msgstr "Buat Laporan"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Buat Laporan Donasi"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "Buat laporan donasi tahunan dan identifikasi pola pemberian."
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "Buat laporan donasi tahunan. Dapat dicetak atau dikirim email."
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "Buat laporan detail untuk setoran tertentu atau rentang tanggal."
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "Buat surat pengingat untuk keluarga dengan janji iman yang belum tuntas."
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "Buat laporan donasi, pelacakan janji iman, dan analisis keuangan."
+
+#: 
+msgid "Giving funds and categories"
+msgstr "Dana pemberian dan kategori"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS Belum Dikonfigurasi"
+
+#: 
+msgid "ID"
+msgstr "ID"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "Identifikasi jemaat yang belum memberikan donasi dalam periode tertentu."
+
+#: 
+msgid "Import failed"
+msgstr "Impor gagal"
+
+#: 
+msgid "Import from CSV files"
+msgstr "Impor dari file CSV"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "Impor data contoh keluarga dan jemaat untuk mencoba sistem."
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "Instal sertifikat TLS/SSL untuk keamanan yang lebih baik"
+
+#: 
+msgid "Jan"
+msgstr "Jan"
+
+#: 
+msgid "Jr., Sr."
+msgstr "Jr., Sr."
+
+#: 
+msgid "Jul"
+msgstr "Jul"
+
+#: 
+msgid "Jun"
+msgstr "Jun"
+
+#: 
+msgid "Latest Note"
+msgstr "Catatan Terakhir"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "Mari siapkan sistem Anda agar siap digunakan"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "Daftar jemaat yang berhak memberikan suara berdasarkan kriteria."
+
+#: 
+msgid "Location"
+msgstr "Lokasi"
+
+#: 
+msgid "M"
+msgstr "L"
+
+#: 
+msgid "Manage Funds"
+msgstr "Kelola Dana"
+
+#: 
+msgid "Manage Users"
+msgstr "Kelola Pengguna"
+
+#: 
+msgid "Mar"
+msgstr "Mar"
+
+#: 
+msgid "Membership Reports"
+msgstr "Laporan Keanggotaan"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "Kunci Rahasia Hilang"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "Hampir semua laporan dapat diekspor ke PDF atau CSV."
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "Bpk., Ibu., Dr."
+
+#: 
+msgid "Name & Identity"
+msgstr "Nama & Identitas"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "Setoran Baru Akan Dibuat"
+
+#: 
+msgid "New Payment"
+msgstr "Pembayaran Baru"
+
+#: 
+msgid "New Pledge"
+msgstr "Janji Iman Baru"
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "7 hari ke depan dan 7 hari lalu"
+
+#: 
+msgid "No Active Deposit"
+msgstr "Tidak Ada Setoran Aktif"
+
+#: 
+msgid "No active funds configured."
+msgstr "Tidak ada dana aktif yang dikonfigurasi."
+
+#: 
+msgid "No deposits found."
+msgstr "Setoran tidak ditemukan."
+
+#: 
+msgid "No format"
+msgstr "Tanpa format"
+
+#: 
+msgid "Nov"
+msgstr "Nov"
+
+#: 
+msgid "Oct"
+msgstr "Okt"
+
+#: 
+msgid "Open"
+msgstr "Buka"
+
+#: 
+msgid "Open Deposits:"
+msgstr "Setoran Terbuka:"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "Organisasi, zona waktu, email"
+
+#: 
+msgid "Organizational structure"
+msgstr "Struktur organisasi"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "File Yatim:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
+msgid "Payment"
+msgstr "Pembayaran"
+
+#: 
+msgid "Pledge Reports"
+msgstr "Laporan Janji Iman"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "Cetak atau kirim email laporan donasi tahunan ke donatur."
+
+#: 
+msgid "Quick Actions"
+msgstr "Tindakan Cepat"
+
+#: 
+msgid "Quick Start"
+msgstr "Mulai Cepat"
+
+#: 
+msgid "Recent Deposits"
+msgstr "Setoran Terakhir"
+
+#: 
+msgid "Recording a Payment"
+msgstr "Mencatat Pembayaran"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "Mencatat Janji Iman"
+
+#: 
+msgid "Report Tips"
+msgstr "Tips Laporan"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "Laporan terkait hak suara jemaat dan tata kelola gereja."
+
+#: 
+msgid "Reset"
+msgstr "Atur Ulang"
+
+#: 
+msgid "Restore"
+msgstr "Pulihkan"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "Pulihkan dari cadangan. Menghapus data saat ini."
+
+#: 
+msgid "Review Donation Funds"
+msgstr "Tinjau Dana Donasi"
+
+#: 
+msgid "SMTP server settings are not configured"
+msgstr "Pengaturan server SMTP belum dikonfigurasi"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "Simpan dan Tambah Keluarga Baru"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Kunci rahasia hilang dari Config.php"
+
+#: 
+msgid "Sep"
+msgstr "Sep"
+
+#: 
+msgid "Server error"
+msgstr "Kesalahan server"
+
+#: 
+msgid "Settings"
+msgstr "Pengaturan"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "Pengaturan berhasil disimpan"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "Tugas Pengaturan:"
+
+#: 
+msgid "Social Media"
+msgstr "Media Sosial"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "Beberapa prasyarat aplikasi belum terpenuhi"
+
+#: 
+msgid "State (Other)"
+msgstr "Provinsi (Lainnya)"
+
+#: 
+msgid "Status:"
+msgstr "Status:"
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "Ringkasan janji iman vs pembayaran per dana untuk tahun fiskal."
+
+#: 
+msgid "System Configuration:"
+msgstr "Konfigurasi Sistem:"
+
+#: 
+msgid "System Health"
+msgstr "Kesehatan Sistem"
+
+#: 
+msgid "System Info"
+msgstr "Info Sistem"
+
+#: 
+msgid "Tax & Giving Reports"
+msgstr "Laporan Donasi"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "Redaksi Laporan Donasi"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "Laporan Donasi"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "Daftar Periksa Laporan Tahun Pajak"
+
+#: 
+msgid "Today"
+msgstr "Hari Ini"
+
+#: 
+msgid "Total"
+msgstr "Total"
+
+#: 
+msgid "Total Amount"
+msgstr "Jumlah Total"
+
+#: 
+msgid "Total Deposits:"
+msgstr "Total Setoran:"
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "Pantau progres janji iman dan pembayaran untuk kampanye atau anggaran."
+
+#: 
+msgid "Type:"
+msgstr "Tipe:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "Prasyarat Tidak Terpenuhi"
+
+#: 
+msgid "Update Church Name"
+msgstr "Perbarui Nama Gereja"
+
+#: 
+msgid "Upgrade"
+msgstr "Pembaruan"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "Gunakan filter untuk membuat laporan bagi grup donatur tertentu."
+
+#: 
+msgid "User accounts and roles"
+msgstr "Akun pengguna dan peran"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "Pengguna harus Admin atau memiliki izin Keuangan"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Pastikan nama gereja dan alamat muncul di laporan donasi."
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "Pastikan nama dana dan deskripsi sudah akurat."
+
+#: 
+msgid "Version:"
+msgstr "Versi:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "Selamat Datang di ChurchCRM"
+
+#: 
+msgid "YTD Payments"
+msgstr "Pembayaran Tahun Berjalan"
+
+#: 
+msgid "YTD Pledges"
+msgstr "Janji Iman Tahun Berjalan"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "Anda dapat menambah anggota keluarga sekarang atau nanti."
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "Tahun fiskal Anda dimulai pada bulan"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Kode Pos"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "Ekstensi ZipArchive diperlukan untuk pembaruan"
+
+#: 
+msgid "active"
+msgstr "aktif"
+
+#: 
+msgid "ago"
+msgstr "yang lalu"
+
+#: 
+msgid "day"
+msgstr "hari"
+
+#: 
+msgid "days"
+msgstr "hari"
+
+#: 
+msgid "found"
+msgstr "ditemukan"
+
+#: 
+msgid "in"
+msgstr "dalam"
+
+#: 
+msgid "issues"
+msgstr "masalah"
+
+#: 
+msgid "open"
+msgstr "terbuka"
+
+#: 
+msgid "years"
+msgstr "tahun"
+
+#: 
+msgid "yes"
+msgstr "ya"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(Masukkan provinsi jika tidak ada dalam daftar)"
+
+#: 
+msgid "Available"
+msgstr "Tersedia"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "Konfigurasi URL Dasar tidak valid. Periksa file Config.php."
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "URL Dasar belum dikonfigurasi di Config.php"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "Bahasa yang Didukung ChurchCRM"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "Hubungkan ke server via SSH, FTP, atau panel hosting"
+
+#: 
+msgid "Contact"
+msgstr "Kontak"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "Kesalahan Konfigurasi Kritis"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "Nilai $URL[0] saat ini:"
+
+#: 
+msgid "Custom port:"
+msgstr "Port khusus:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "Berakhir dengan <strong>garis miring</strong> (/)"
+
+#: 
+msgid "Error:"
+msgstr "Kesalahan:"
+
+#: 
+msgid "Find the line:"
+msgstr "Temukan baris:"
+
+#: 
+msgid "Group Memberships"
+msgstr "Keanggotaan Grup"
+
+#: 
+msgid "How to Fix:"
+msgstr "Cara Memperbaiki:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "Bergabunglah dengan komunitas ChurchCRM untuk membantu kami berkembang!"
+
+#: 
+msgid "Language"
+msgstr "Bahasa"
+
+#: 
+msgid "Local development:"
+msgstr "Pengembangan lokal:"
+
+#: 
+msgid "Locale Support"
+msgstr "Dukungan Bahasa"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "Informasi Lokasi & Kontak"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "Buka direktori instalasi ChurchCRM Anda"
+
+#: 
+msgid "New to"
+msgstr "Baru di"
+
+#: 
+msgid "No locales configured"
+msgstr "Bahasa tidak dikonfigurasi"
+
+#: 
+msgid "Not Available"
+msgstr "Tidak Tersedia"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "Buka file ini di editor teks:"
+
+#: 
+msgid "Register Now"
+msgstr "Daftar Sekarang"
+
+#: 
+msgid "Register Your Church"
+msgstr "Daftarkan Gereja Anda"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "Simpan file dan segarkan halaman ini"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "Atur true untuk menonaktifkan alamat bagi orang tanpa keluarga."
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "Dimulai dengan <strong>http://</strong> atau <strong>https://</strong>"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "Instalasi subdirektori:"
+
+#: 
+msgid "System Locale Support"
+msgstr "Dukungan Bahasa Sistem"
+
+#: 
+msgid "System Support"
+msgstr "Dukungan Sistem"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URL tidak berisi nama host yang valid"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "Nama host URL tidak valid"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "Format URL tidak valid"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URL harus diakhiri garis miring (/)"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URL harus diawali http:// atau https://"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "Gagal mendeteksi bahasa sistem"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "Gagal menentukan bahasa yang tersedia"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "Gagal memuat informasi bahasa"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "Gagal memuat daftar provinsi. Cek koneksi Anda."
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "Perbarui ke URL valid yang:"
+
+#: 
+msgid "Valid Examples:"
+msgstr "Contoh Valid:"
+
+#: 
+msgid "View Logs"
+msgstr "Lihat Log"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "Lihat dan kelola file log sistem untuk debug."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "Anda harus memasukkan Nama Belakang."
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "Privasi Anda penting. Kami tidak membagikan data Anda kepada pihak ketiga."
+
+#: 
+msgid "Additional Information"
+msgstr "Informasi Tambahan"
+
+#: 
+msgid "All information is correct"
+msgstr "Semua informasi sudah benar"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "Tugaskan Pelayanan"
+
+#: 
+msgid "Assign Property"
+msgstr "Tugaskan Properti"
+
+#: 
+msgid "Choose a property..."
+msgstr "Pilih properti..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "Pilih bidang pelayanan..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "Konfirmasi Informasi Keluarga"
+
+#: 
+msgid "Confirm family information"
+msgstr "Konfirmasi informasi keluarga"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "Kontak & Info Pribadi"
+
+#: 
+msgid "Copied!"
+msgstr "Tersalin!"
+
+#: 
+msgid "Edit Role"
+msgstr "Ubah Peran"
+
+#: 
+msgid "Edited"
+msgstr "Telah Diubah"
+
+#: 
+msgid "Email PDF"
+msgstr "Kirim PDF via Email"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "Gagal menyalin URL"
+
+#: 
+msgid "ID:"
+msgstr "ID:"
+
+#: 
+msgid "Newsletter"
+msgstr "Warta Jemaat"
+
+#: 
+msgid "No assigned family"
+msgstr "Belum ada keluarga"
+
+#: 
+msgid "Open in New Tab"
+msgstr "Buka di Tab Baru"
+
+#: 
+msgid "Personal"
+msgstr "Pribadi"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "Mohon konfirmasi informasi keluarga Anda:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "Mohon perbarui catatan kami jika ada koreksi"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "Berikan koreksi atau info tambahan di sini..."
+
+#: 
+msgid "Remove Property"
+msgstr "Hapus Properti"
+
+#: 
+msgid "Select Opportunities"
+msgstr "Pilih Bidang Pelayanan"
+
+#: 
+msgid "Select Property"
+msgstr "Pilih Properti"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Bagikan URL ini agar anggota keluarga bisa memverifikasi data mereka"
+
+#: 
+msgid "Submit Verification"
+msgstr "Kirim Verifikasi"
+
+#: 
+msgid "Thank You!"
+msgstr "Terima Kasih!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "Terjemahan belum lengkap"
+
+#: 
+msgid "Visit Our Website"
+msgstr "Kunjungi Website Kami"
+
+#: 
+msgid "Volunteer"
+msgstr "Relawan/Pelayan"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "Terjadi kesalahan. Silakan coba lagi atau hubungi kami."
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "Permintaan verifikasi telah diterima. Terima kasih telah memperbarui data Anda."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "Terjadi kesalahan. Hubungi administrator sistem."
+
+#: 
+msgid "Backup failed"
+msgstr "Pencadangan gagal"
+
+#: 
+msgid "Database reset failed"
+msgstr "Reset database gagal"
+
+#: 
+msgid "Database restore failed"
+msgstr "Pemulihan database gagal"
+
+#: 
+msgid "Demo data import failed"
+msgstr "Impor data demo gagal"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "Impor data demo hanya bisa dilakukan pada instalasi baru."
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "Data demo berhasil dimuat"
+
+#: 
+msgid "Download failed"
+msgstr "Gagal mengunduh"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "Gagal menerapkan pembaruan"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "Gagal menghapus file yatim"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "Gagal mengunduh rilis terbaru"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "Gagal memuat info pembaruan"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "Gagal mengunggah foto keluarga"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "Gagal mengunggah foto jemaat"
+
+#: 
+msgid "Remote backup failed"
+msgstr "Pencadangan jarak jauh gagal"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "Cadangan WebDAV tidak dikonfigurasi dengan benar."
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA Aktif"
+
+#: 
+msgid "Active Users"
+msgstr "Pengguna Aktif"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "Ekspor ChMeetings"
+
+#: 
+msgid "Delete User"
+msgstr "Hapus Pengguna"
+
+#: 
+msgid "Disable 2FA"
+msgstr "Nonaktifkan 2FA"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "Ekspor semua data jemaat ke format ChMeetings."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "Ekspor ke CSV ChMeetings"
+
+#: 
+msgid "Exporting..."
+msgstr "Mengekspor..."
+
+#: 
+msgid "Family Listing"
+msgstr "Daftar Keluarga"
+
+#: 
+msgid "Invalid request data"
+msgstr "Data permintaan tidak valid"
+
+#: 
+msgid "Invalid status"
+msgstr "Status tidak valid"
+
+#: 
+msgid "Locked Users"
+msgstr "Pengguna Terkunci"
+
+#: 
+msgid "Person Listing"
+msgstr "Daftar Jemaat"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "Orang telah dihapus dari keranjang"
+
+#: 
+msgid "Quick Settings"
+msgstr "Pengaturan Cepat"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "Atur Ulang Gagal Login"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "Atur Ulang Sandi via Email"
+
+#: 
+msgid "Set Active"
+msgstr "Aktifkan"
+
+#: 
+msgid "Set Inactive"
+msgstr "Nonaktifkan"
+
+#: 
+msgid "Show"
+msgstr "Tampilkan"
+
+#: 
+msgid "Showing"
+msgstr "Menampilkan"
+
+#: 
+msgid "Total Users"
+msgstr "Total Pengguna"
+
+#: 
+msgid "User Management"
+msgstr "Manajemen Pengguna"
+
+#: 
+msgid "View Details"
+msgstr "Lihat Detail"
+
+#: 
+msgid "entries"
+msgstr "data"
+
+#: 
+msgid "of"
+msgstr "dari"
+
+#: 
+msgid "total"
+msgstr "total"
+
+#: 
+msgid "Code incomplete"
+msgstr "Kode tidak lengkap"
+
+#: 
+msgid "Code is invalid"
+msgstr "Kode tidak valid"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "Kunci enkripsi untuk menyimpan kunci rahasia 2FA"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "Autentikasi Dua Faktor (2FA)"
+
+#: 
+msgid "Validation pending"
+msgstr "Menunggu validasi"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "harus dikonfigurasi dengan kunci enkripsi"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d Orang ditambahkan ke Keranjang."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d Orang berhasil ditambahkan ke Keluarga yang dipilih."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d Orang berhasil ditambahkan ke Grup yang dipilih."
+
+#: 
+msgid "A "
+msgstr "Sebuah "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "Tambah, Hapus, dan Urutan bersifat instan. Perubahan Nama/Deskripsi harus klik 'Simpan Perubahan'."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "Apakah Anda yakin ingin menghapus"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Tombol panah dan hapus langsung bereaksi. Simpan perubahan sebelum pindah ke bidang lain."
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "Menghapus kolom ini akan menghapus semua data keluarga terkait secara permanen!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "Menghapus kolom ini akan menghapus semua data jemaat terkait secara permanen!"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "Perubahan tidak tersimpan! Harap perbaiki dan coba lagi!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "Konfirmasi Penghapusan Properti"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "Konfirmasi Penghapusan Pelayanan"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "Konfirmasi Penghapusan"
+
+#: 
+msgid "Existing"
+msgstr "Yang Ada"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "Kolom Kustom Keluarga Saat Ini"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "Kolom Kustom Jemaat Saat Ini"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "Daftar Bidang Pelayanan"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "Kolom berhasil dihapus"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Token CSRF tidak valid"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "Kolom atau pilihan tidak valid."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Item berhasil dihapus"
+
+#: 
+msgid "Move down"
+msgstr "Turunkan"
+
+#: 
+msgid "Move up"
+msgstr "Naikkan"
+
+#: 
+msgid "Opportunity"
+msgstr "Kesempatan Pelayanan"
+
+#: 
+msgid "Order"
+msgstr "Urutan"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "PDF berhasil dikirim ke %s keluarga."
+
+#: 
+msgid "Percentage"
+msgstr "Persentase"
+
+#: 
+msgid "Person Properties"
+msgstr "Properti Jemaat"
+
+#: 
+msgid "Property Type"
+msgstr "Tipe Properti"
+
+#: 
+msgid "Property to Delete"
+msgstr "Properti yang Akan Dihapus"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "Ada jemaat di bidang pelayanan ini. Penghapusan akan melepas tugas mereka:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "Ini akan menghapus penugasan dari semua jemaat terkait."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Bidang Pelayanan"
+
+#: 
+msgid "Warning:"
+msgstr "Peringatan:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "Ya, hapus Pelayanan ini"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "Permintaan yang memerlukan izin keuangan untuk digunakan"
+
+#: 
+msgid "Fund(s)"
+msgstr "Dana"
+
+#: 
+msgid "Password reset for"
+msgstr "Atur ulang kata sandi untuk"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Spanyol - Argentina"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Spanyol - Kolombia"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Spanyol - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Spanyol - Meksiko"
+
