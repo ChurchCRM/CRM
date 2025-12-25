@@ -1362,3 +1362,1494 @@ msgstr "డిపాజిట్ జాబితా"
 msgid "Deposits"
 msgstr "డిపాజిట్లు"
 
+#: 
+msgid "Delete Selected Rows"
+msgstr "ఎంచుకున్న వరుసలను తొలగించు"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "ఎంచుకున్న వరుసలను ఎగుమతి చేయి (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "ఎంచుకున్న వరుసలను ఎగుమతి చేయి (CSV)"
+
+#: 
+msgid "Fundraiser Listing"
+msgstr "నిధుల సేకరణ జాబితా"
+
+#: 
+msgid "Date Start"
+msgstr "ప్రారంభ తేదీ"
+
+#: 
+msgid "Apply Filters"
+msgstr "ఫిల్టర్లను వర్తింపజేయి"
+
+#: 
+msgid "Date End"
+msgstr "ముగింపు తేదీ"
+
+#: 
+msgid "Clear Filter"
+msgstr "ఫిల్టర్ క్లియర్ చేయి"
+
+#: 
+msgid "Number"
+msgstr "సంఖ్య"
+
+#: 
+msgid "Create New Fund Raiser"
+msgstr "కొత్త నిధుల సేకరణను సృష్టించు"
+
+#: 
+msgid "Add Donated Item"
+msgstr "విరాళంగా ఇచ్చిన వస్తువును జోడించు"
+
+#: 
+msgid "Generate Catalog"
+msgstr "కాటలాగ్ రూపొందించు"
+
+#: 
+msgid "Generate Bid Sheets"
+msgstr "బిడ్ షీట్లను రూపొందించు"
+
+#: 
+msgid "Generate Certificates"
+msgstr "ధృవీకరణ పత్రాలను రూపొందించు"
+
+#: 
+msgid "Donated items for this fundraiser"
+msgstr "ఈ నిధుల సేకరణ కోసం విరాళంగా ఇచ్చిన వస్తువులు"
+
+#: 
+msgid "Donor"
+msgstr "దాత"
+
+#: 
+msgid "Buyer"
+msgstr "కొనుగోలుదారు"
+
+#: 
+msgid "Sale Price"
+msgstr "అమ్మకపు ధర"
+
+#: 
+msgid "Material Value"
+msgstr "వస్తువు విలువ"
+
+#: 
+msgid "Minimum Price"
+msgstr "కనీస ధర"
+
+#: 
+msgid "Family Geographic Utilities"
+msgstr "కుటుంబ భౌగోళిక యుటిలిటీస్"
+
+#: 
+msgid "Select Family"
+msgstr "కుటుంబాన్ని ఎంచుకోండి"
+
+#: 
+msgid "Maximum number of neighbors"
+msgstr "గరిష్ట పొరుగువారి సంఖ్య"
+
+#: 
+msgid "Maximum distance"
+msgstr "గరిష్ట దూరం"
+
+#: 
+msgid "Data file format"
+msgstr "డేటా ఫైల్ ఫార్మాట్"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "GPS విజువలైజర్"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "స్ట్రీట్ అట్లాస్ USA"
+
+#: 
+msgid "Include families in the coordinate file"
+msgstr "కోఆర్డినేట్ ఫైల్‌లో కుటుంబాలను చేర్చు"
+
+#: 
+msgid "Neighbor Families"
+msgstr "పొరుగు కుటుంబాలు"
+
+#: 
+msgid "Make Data File"
+msgstr "డేటా ఫైల్ తయారుచేయి"
+
+#: 
+msgid "Show Neighbors"
+msgstr "పొరుగువారిని చూపించు"
+
+#: 
+msgid "Distance"
+msgstr "దూరం"
+
+#: 
+msgid "Direction"
+msgstr "దిశ"
+
+#: 
+msgid "Latitude"
+msgstr "అక్షాంశం"
+
+#: 
+msgid "Longitude"
+msgstr "రేఖాంశం"
+
+#: 
+msgid "Add to Cart"
+msgstr "కార్ట్‌కు జోడించు"
+
+#: 
+msgid "Intersect with Cart"
+msgstr "కార్ట్‌తో ఖండించు"
+
+#: 
+msgid "Remove from Cart"
+msgstr "కార్ట్ నుండి తొలగించు"
+
+#: 
+msgid "Group Editor"
+msgstr "సమూహ ఎడిటర్"
+
+#: 
+msgid "Group Settings"
+msgstr "సమూహ సెట్టింగులు"
+
+#: 
+msgid "Type of Group"
+msgstr "సమూహం రకం"
+
+#: 
+msgid "Group Member Roles"
+msgstr "సమూహ సభ్యుల పాత్రలు"
+
+#: 
+msgid "Clone roles"
+msgstr "పాత్రలను క్లోన్ చేయి"
+
+#: 
+msgid "from group"
+msgstr "సమూహం నుండి"
+
+#: 
+msgid "Select a group"
+msgstr "సమూహాన్ని ఎంచుకోండి"
+
+#: 
+msgid "Group Specific Properties"
+msgstr "సమూహ నిర్దిష్ట లక్షణాలు"
+
+#: 
+msgid "Enabled"
+msgstr "ప్రారంభించబడింది"
+
+#: 
+msgid "Edit Group-Specific Properties Form"
+msgstr "సమూహ-నిర్దిష్ట లక్షణాల ఫారమ్‌ను సవరించు"
+
+#: 
+msgid "Disabled"
+msgstr "నిలిపివేయబడింది"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "సమూహ నిర్దిష్ట లక్షణాలను ప్రారంభించు"
+
+#: 
+msgid "Group Roles"
+msgstr "సమూహ పాత్రలు"
+
+#: 
+msgid "Group Listing"
+msgstr "సమూహ జాబితా"
+
+#: 
+msgid "Return to Person Record"
+msgstr "వ్యక్తి రికార్డుకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Editing"
+msgstr "సవరిస్తోంది"
+
+#: 
+msgid "Newsletter labels"
+msgstr "వార్తాలేఖ లేబుల్స్"
+
+#: 
+msgid "Confirm data labels"
+msgstr "డేటా లేబుళ్లను ధృవీకరించు"
+
+#: 
+msgid "Listing All Church Events"
+msgstr "అన్ని చర్చి ఈవెంట్‌ల జాబితా"
+
+#: 
+msgid "Start Date/Time"
+msgstr "ప్రారంభ తేదీ/సమయం"
+
+#: 
+msgid "Invalid login or password"
+msgstr "చెల్లని లాగిన్ లేదా పాస్‌వర్డ్"
+
+#: 
+msgid "Please Login"
+msgstr "దయచేసి లాగిన్ అవ్వండి"
+
+#: 
+msgid "Email/Username"
+msgstr "ఇమెయిల్/వినియోగదారు పేరు"
+
+#: 
+msgid "Password"
+msgstr "పాస్‌వర్డ్"
+
+#: 
+msgid "Login"
+msgstr "లాగిన్"
+
+#: 
+msgid "Envelope Manager"
+msgstr "ఎన్వలప్ మేనేజర్"
+
+#: 
+msgid "Update Family Records"
+msgstr "కుటుంబ రికార్డులను నవీకరించు"
+
+#: 
+msgid "Confirm"
+msgstr "ధృవీకరించు"
+
+#: 
+msgid "Sort by"
+msgstr "దీని ప్రకారం క్రమబద్ధీకరించు"
+
+#: 
+msgid "Zero"
+msgstr "సున్నా"
+
+#: 
+msgid "Member's Name"
+msgstr "సభ్యుని పేరు"
+
+#: 
+msgid "Current Role"
+msgstr "ప్రస్తుత పాత్ర"
+
+#: 
+msgid "All People"
+msgstr "ప్రజలందరూ"
+
+#: 
+msgid "Email All"
+msgstr "అందరికీ ఇమెయిల్ చేయి"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "వాలంటీర్ అవకాశాలు"
+
+#: 
+msgid "Families"
+msgstr "కుటుంబాలు"
+
+#: 
+msgid "See all Families"
+msgstr "అన్ని కుటుంబాలను చూడండి"
+
+#: 
+msgid "People"
+msgstr "ప్రజలు"
+
+#: 
+msgid "See All People"
+msgstr "ప్రజలందరినీ చూడండి"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "సండే స్కూల్ పిల్లలు"
+
+#: 
+msgid "More info"
+msgstr "మరింత సమాచారం"
+
+#: 
+msgid "Reports on groups and roles"
+msgstr "సమూహాలు మరియు పాత్రలపై నివేదికలు"
+
+#: 
+msgid "Count"
+msgstr "లెక్క"
+
+#: 
+msgid "Boys"
+msgstr "బాలురు"
+
+#: 
+msgid "Girls"
+msgstr "బాలికలు"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "సండే స్కూల్ తరగతులు"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "డిపాజిట్ ట్రాకింగ్"
+
+#: 
+msgid "Latest Families"
+msgstr "తాజా కుటుంబాలు"
+
+#: 
+msgid "Family Name"
+msgstr "కుటుంబం పేరు"
+
+#: 
+msgid "Updated Families"
+msgstr "నవీకరించబడిన కుటుంబాలు"
+
+#: 
+msgid "Updated"
+msgstr "నవీకరించబడింది"
+
+#: 
+msgid "Note Editor"
+msgstr "నోట్ ఎడిటర్"
+
+#: 
+msgid "Private"
+msgstr "ప్రైవేట్"
+
+#: 
+msgid "Person"
+msgstr "వ్యక్తి"
+
+#: 
+msgid "Group"
+msgstr "సమూహం"
+
+#: 
+msgid "Option"
+msgstr "ఎంపిక"
+
+#: 
+msgid "Default"
+msgstr "డిఫాల్ట్"
+
+#: 
+msgid "Exit"
+msgstr "నిష్క్రమించు"
+
+#: 
+msgid "Add New"
+msgstr "కొత్తది జోడించు"
+
+#: 
+msgid "Generate Statement"
+msgstr "స్టేట్‌మెంట్ రూపొందించు"
+
+#: 
+msgid "Select all"
+msgstr "అన్నీ ఎంచుకో"
+
+#: 
+msgid "Select none"
+msgstr "ఏదీ వద్దు"
+
+#: 
+msgid "Add Buyer"
+msgstr "కొనుగోలుదారుని జోడించు"
+
+#: 
+msgid "Select"
+msgstr "ఎంచుకోండి"
+
+#: 
+msgid "Person Editor"
+msgstr "వ్యక్తి ఎడిటర్"
+
+#: 
+msgid "Birth Month"
+msgstr "పుట్టిన నెల"
+
+#: 
+msgid "Birth Day"
+msgstr "పుట్టిన రోజు"
+
+#: 
+msgid "Birth Year"
+msgstr "పుట్టిన సంవత్సరం"
+
+#: 
+msgid "Hide Age"
+msgstr "వయస్సును దాచు"
+
+#: 
+msgid "Friend Date"
+msgstr "స్నేహితుని తేదీ"
+
+#: 
+msgid "Person Profile"
+msgstr "వ్యక్తి ప్రొఫైల్"
+
+#: 
+msgid "Not assigned"
+msgstr "కేటాయించబడలేదు"
+
+#: 
+msgid "Printable Page"
+msgstr "ముద్రించదగిన పేజీ"
+
+#: 
+msgid "Make User"
+msgstr "వినియోగదారునిగా చేయి"
+
+#: 
+msgid "Edit User"
+msgstr "వినియోగదారుని సవరించు"
+
+#: 
+msgid "Weekly"
+msgstr "వారానికొకసారి"
+
+#: 
+msgid "Monthly"
+msgstr "నెలవారీ"
+
+#: 
+msgid "Quarterly"
+msgstr "త్రైమాసిక"
+
+#: 
+msgid "Once"
+msgstr "ఒకసారి"
+
+#: 
+msgid "Other"
+msgstr "ఇతర"
+
+#: 
+msgid "Payment by"
+msgstr "చెల్లింపు విధానం"
+
+#: 
+msgid "Scan check"
+msgstr "చెక్కును స్కాన్ చేయి"
+
+#: 
+msgid "Fund Name"
+msgstr "నిధి పేరు"
+
+#: 
+msgid "Non-deductible amount"
+msgstr "మినహాయింపు లేని మొత్తం"
+
+#: 
+msgid "Printable View"
+msgstr "ముద్రించదగిన వీక్షణ"
+
+#: 
+msgid "Age"
+msgstr "వయస్సు"
+
+#: 
+msgid "Assigned Groups"
+msgstr "కేటాయించిన సమూహాలు"
+
+#: 
+msgid "Group Name"
+msgstr "సమూహం పేరు"
+
+#: 
+msgid "Entered"
+msgstr "నమోదు చేయబడింది"
+
+#: 
+msgid "by"
+msgstr "ద్వారా"
+
+#: 
+msgid "Property Editor"
+msgstr "లక్షణాల ఎడిటర్"
+
+#: 
+msgid "Select Property Type"
+msgstr "లక్షణ రకాన్ని ఎంచుకోండి"
+
+#: 
+msgid "A"
+msgstr "A"
+
+#: 
+msgid "Property List"
+msgstr "లక్షణాల జాబితా"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "లక్షణం"
+
+#: 
+msgid "Prompt"
+msgstr "ప్రాంప్ట్"
+
+#: 
+msgid "Warning"
+msgstr "హెచ్చరిక"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Class"
+msgstr "తరగతి"
+
+#: 
+msgid "Properties"
+msgstr "లక్షణాలు"
+
+#: 
+msgid "Query Listing"
+msgstr "క్వరీ జాబితా"
+
+#: 
+msgid "Execute SQL"
+msgstr "SQL అమలు చేయి"
+
+#: 
+msgid "Run Query Again"
+msgstr "క్వరీని మళ్ళీ అమలు చేయి"
+
+#: 
+msgid "Execute Query"
+msgstr "క్వరీని అమలు చేయి"
+
+#: 
+msgid "Restore Database"
+msgstr "డేటాబేస్ పునరుద్ధరించు"
+
+#: 
+msgid "Return to Family View"
+msgstr "కుటుంబ వీక్షణకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Listing"
+msgstr "జాబితా"
+
+#: 
+msgid "My User Settings"
+msgstr "నా వినియోగదారు సెట్టింగులు"
+
+#: 
+msgid "Variable name"
+msgstr "వేరియబుల్ పేరు"
+
+#: 
+msgid "Current Value"
+msgstr "ప్రస్తుత విలువ"
+
+#: 
+msgid "Save Settings"
+msgstr "సెట్టింగులను సేవ్ చేయి"
+
+#: 
+msgid "Default User Settings"
+msgstr "డిఫాల్ట్ వినియోగదారు సెట్టింగులు"
+
+#: 
+msgid "Permission"
+msgstr "అనుమతి"
+
+#: 
+msgid "System Settings"
+msgstr "సిస్టమ్ సెట్టింగులు"
+
+#: 
+msgid "Tax Report"
+msgstr "పన్ను నివేదిక"
+
+#: 
+msgid "Calendar Year"
+msgstr "క్యాలెండర్ సంవత్సరం"
+
+#: 
+msgid "User Editor"
+msgstr "వినియోగదారు ఎడిటర్"
+
+#: 
+msgid "User"
+msgstr "వినియోగదారు"
+
+#: 
+msgid "Login Name"
+msgstr "లాగిన్ పేరు"
+
+#: 
+msgid "Add Records"
+msgstr "రికార్డులను జోడించు"
+
+#: 
+msgid "Edit Records"
+msgstr "రికార్డులను సవరించు"
+
+#: 
+msgid "Delete Records"
+msgstr "రికార్డులను తొలగించు"
+
+#: 
+msgid "Admin"
+msgstr "అడ్మిన్"
+
+#: 
+msgid "Style"
+msgstr "శైలి"
+
+#: 
+msgid "User Settings"
+msgstr "వినియోగదారు సెట్టింగులు"
+
+#: 
+msgid "Last Login"
+msgstr "చివరి లాగిన్"
+
+#: 
+msgid "Total Logins"
+msgstr "మొత్తం లాగిన్‌లు"
+
+#: 
+msgid "Failed Logins"
+msgstr "విఫలమైన లాగిన్‌లు"
+
+#: 
+msgid "characters"
+msgstr "అక్షరాలు"
+
+#: 
+msgid "Old Password"
+msgstr "పాత పాస్‌వర్డ్"
+
+#: 
+msgid "New Password"
+msgstr "కొత్త పాస్‌వర్డ్"
+
+#: 
+msgid "Confirm New Password"
+msgstr "కొత్త పాస్‌వర్డ్‌ను ధృవీకరించు"
+
+#: 
+msgid "Version"
+msgstr "వెర్షన్"
+
+#: 
+msgid "Copyright"
+msgstr "కాపీరైట్"
+
+#: 
+msgid "All rights reserved"
+msgstr "అన్ని హక్కులు ప్రత్యేకించబడ్డాయి"
+
+#: 
+msgid "True / False"
+msgstr "నిజం / అబద్ధం"
+
+#: 
+msgid "Season"
+msgstr "సీజన్"
+
+#: 
+msgid "Money"
+msgstr "డబ్బు"
+
+#: 
+msgid "Phone Number"
+msgstr "ఫోన్ సంఖ్య"
+
+#: 
+msgid "Dashboard"
+msgstr "డ్యాష్‌బోర్డ్"
+
+#: 
+msgid "Change Password"
+msgstr "పాస్‌వర్డ్ మార్చు"
+
+#: 
+msgid "Home"
+msgstr "హోమ్"
+
+#: 
+msgid "Font"
+msgstr "ఫాంట్"
+
+#: 
+msgid "Label Type"
+msgstr "లేబుల్ రకం"
+
+#: 
+msgid "City, State, Zip"
+msgstr "నగరం, రాష్ట్రం, పిన్ కోడ్"
+
+#: 
+msgid "Send Newsletter"
+msgstr "వార్తాలేఖ పంపండి"
+
+#: 
+msgid "Member Name"
+msgstr "సభ్యుని పేరు"
+
+#: 
+msgid "Adult/Child"
+msgstr "వయోజన/పిల్లలు"
+
+#: 
+msgid "Cell Phone"
+msgstr "సెల్ ఫోన్"
+
+#: 
+msgid "Work"
+msgstr "పని"
+
+#: 
+msgid "Cell"
+msgstr "సెల్"
+
+#: 
+msgid "Paddle"
+msgstr "పాడిల్"
+
+#: 
+msgid "Bid"
+msgstr "బిడ్"
+
+#: 
+msgid "All Funds"
+msgstr "అన్ని నిధులు"
+
+#: 
+msgid "Donated Items"
+msgstr "విరాళంగా ఇచ్చిన వస్తువులు"
+
+#: 
+msgid "Purchased Items"
+msgstr "కొనుగోలు చేసిన వస్తువులు"
+
+#: 
+msgid "Totals"
+msgstr "మొత్తం"
+
+#: 
+msgid "Directory"
+msgstr "డైరెక్టరీ"
+
+#: 
+msgid "Page"
+msgstr "పేజీ"
+
+#: 
+msgid "Wedding"
+msgstr "వివాహం"
+
+#: 
+msgid "and"
+msgstr "మరియు"
+
+#: 
+msgid "Group Directory"
+msgstr "సమూహ డైరెక్టరీ"
+
+#: 
+msgid "Gift Amount"
+msgstr "కానుక మొత్తం"
+
+#: 
+msgid "Sunday School"
+msgstr "సండే స్కూల్"
+
+#: 
+msgid "Teachers"
+msgstr "ఉపాధ్యాయులు"
+
+#: 
+msgid "Send Message"
+msgstr "సందేశం పంపండి"
+
+#: 
+msgid "Quick Status"
+msgstr "త్వరిత స్థితి"
+
+#: 
+msgid "Students"
+msgstr "విద్యార్థులు"
+
+#: 
+msgid "Mobile"
+msgstr "మొబైల్"
+
+#: 
+msgid "Home Address"
+msgstr "ఇంటి చిరునామా"
+
+#: 
+msgid "Attachment"
+msgstr "అటాచ్‌మెంట్"
+
+#: 
+msgid "Discard"
+msgstr "విస్మరించు"
+
+#: 
+msgid "Sunday School Dashboard"
+msgstr "సండే స్కూల్ డ్యాష్‌బోర్డ్"
+
+#: 
+msgid "Classes"
+msgstr "తరగతులు"
+
+#: 
+msgid "Sunday School Reports"
+msgstr "సండే స్కూల్ నివేదికలు"
+
+#: 
+msgid "First Sunday"
+msgstr "మొదటి ఆదివారం"
+
+#: 
+msgid "Last Sunday"
+msgstr "చివరి ఆదివారం"
+
+#: 
+msgid "System Users"
+msgstr "సిస్టమ్ వినియోగదారులు"
+
+#: 
+msgid "Calendar"
+msgstr "క్యాలెండర్"
+
+#: 
+msgid "Members"
+msgstr "సభ్యులు"
+
+#: 
+msgid "Events"
+msgstr "ఈవెంట్‌లు"
+
+#: 
+msgid "Fundraiser"
+msgstr "నిధుల సేకరణ"
+
+#: 
+msgid "Email Export"
+msgstr "ఇమెయిల్ ఎగుమతి"
+
+#: 
+msgid "List"
+msgstr "జాబితా"
+
+#: 
+msgid "Import Data"
+msgstr "డేటాను దిగుమతి చేయి"
+
+#: 
+msgid "Deposit Type"
+msgstr "డిపాజిట్ రకం"
+
+#: 
+msgid "Deposit Date"
+msgstr "డిపాజిట్ తేదీ"
+
+#: 
+msgid "Welcome to"
+msgstr "స్వాగతం"
+
+#: 
+msgid "Setting saved"
+msgstr "సెట్టింగ్ సేవ్ చేయబడింది"
+
+#: 
+msgid "Default Value"
+msgstr "డిఫాల్ట్ విలువ"
+
+#: 
+msgid "False"
+msgstr "అబద్ధం"
+
+#: 
+msgid "True"
+msgstr "నిజం"
+
+#: 
+msgid "Edit Settings"
+msgstr "సెట్టింగులను సవరించు"
+
+#: 
+msgid "Functions"
+msgstr "విధులు"
+
+#: 
+msgid "Export to CSV"
+msgstr "CSVకి ఎగుమతి చేయి"
+
+#: 
+msgid "Add"
+msgstr "జోడించు"
+
+#: 
+msgid "Enter Name"
+msgstr "పేరు నమోదు చేయండి"
+
+#: 
+msgid "New Release"
+msgstr "కొత్త విడుదల"
+
+#: 
+msgid "Self Registration"
+msgstr "స్వయం నమోదు"
+
+#: 
+msgid "Anonymous"
+msgstr "అజ్ఞాత"
+
+#: 
+msgid "Registration Complete"
+msgstr "నమోదు పూర్తయింది"
+
+#: 
+msgid "item"
+msgstr "వస్తువు"
+
+#: 
+msgid "Anniversary"
+msgstr "వార్షికోత్సవం"
+
+#: 
+msgid "Notes"
+msgstr "గమనికలు"
+
+#: 
+msgid "Reports"
+msgstr "నివేదికలు"
+
+#: 
+msgid "family"
+msgstr "కుటుంబం"
+
+#: 
+msgid "Date Entered"
+msgstr "నమోదు చేసిన తేదీ"
+
+#: 
+msgid "CSV Import"
+msgstr "CSV దిగుమతి"
+
+#: 
+msgid "Inactive"
+msgstr "నిష్క్రియ"
+
+#: 
+msgid "Start Time"
+msgstr "ప్రారంభ సమయం"
+
+#: 
+msgid "Estimated value"
+msgstr "అంచనా విలువ"
+
+#: 
+msgid "Text Group"
+msgstr "టెక్స్ట్ సమూహం"
+
+#: 
+msgid "Group Properties"
+msgstr "సమూహ లక్షణాలు"
+
+#: 
+msgid "All"
+msgstr "అన్నీ"
+
+#: 
+msgid "Family Map"
+msgstr "కుటుంబ పటం"
+
+#: 
+msgid "Groups"
+msgstr "సమూహాలు"
+
+#: 
+msgid "Church Email"
+msgstr "చర్చి ఇమెయిల్"
+
+#: 
+msgid "Default City"
+msgstr "డిఫాల్ట్ నగరం"
+
+#: 
+msgid "List Groups"
+msgstr "సమూహాల జాబితా"
+
+#: 
+msgid "List Church Events"
+msgstr "చర్చి ఈవెంట్‌ల జాబితా"
+
+#: 
+msgid "Add Church Event"
+msgstr "చర్చి ఈవెంట్‌ను జోడించు"
+
+#: 
+msgid "List Event Types"
+msgstr "ఈవెంట్ రకాల జాబితా"
+
+#: 
+msgid "View All Deposits"
+msgstr "అన్ని డిపాజిట్లను చూడండి"
+
+#: 
+msgid "Deposit Reports"
+msgstr "డిపాజిట్ నివేదికలు"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "డిపాజిట్ స్లిప్‌ను సవరించు"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "అన్ని నిధుల సేకరణలను చూడండి"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "కొత్త నిధుల సేకరణను సృష్టించు"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "నిధుల సేకరణను సవరించు"
+
+#: 
+msgid "View Buyers"
+msgstr "కొనుగోలుదారులను చూడండి"
+
+#: 
+msgid "Data/Reports"
+msgstr "డేటా/నివేదికలు"
+
+#: 
+msgid "Query Menu"
+msgstr "క్వరీ మెనూ"
+
+#: 
+msgid "CSV Export Records"
+msgstr "CSV ఎగుమతి రికార్డులు"
+
+#: 
+msgid "Family Properties"
+msgstr "కుటుంబ లక్షణాలు"
+
+#: 
+msgid "Property Types"
+msgstr "లక్షణ రకాలు"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Zip Code"
+msgstr "పిన్ కోడ్"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "రెగ్యులర్ గా వచ్చేవారు"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "అతిథి"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "కనీస వయస్సు"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "గరిష్ట వయస్సు"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "ప్రారంభ తేదీ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "ముగింపు తేదీ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "వెతుకు"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field"
+msgstr "ఫీల్డ్"
+
+#. Context: query_qry
+#. Context: queryparameters_qrp
+#: 
+msgid "Registered students"
+msgstr "నమోదైన విద్యార్థులు"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "నెలలు"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "మొదటి ఆర్థిక సంవత్సరం"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "రెండవ ఆర్థిక సంవత్సరం"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "అనుకూల ఫీల్డ్"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "ఫీల్డ్ విలువ"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays"
+msgstr "పుట్టినరోజులు"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "వాలంటీర్లు"
+
+#: 
+msgid "Last Edited"
+msgstr "చివరిగా సవరించబడింది"
+
+#: 
+msgid "Weekly on"
+msgstr "వారానికొకసారి"
+
+#: 
+msgid "Monthly on"
+msgstr "నెలవారీగా"
+
+#: 
+msgid "Yearly on"
+msgstr "ఏడాదికి ఒకసారి"
+
+#: 
+msgid "Group Type"
+msgstr "సమూహం రకం"
+
+#: 
+msgid "Group Types"
+msgstr "సమూహం రకాలు"
+
+#: 
+msgid "Security Group"
+msgstr "సెక్యూరిటీ సమూహం"
+
+#: 
+msgid "Security Groups"
+msgstr "సెక్యూరిటీ సమూహాలు"
+
+#: 
+msgid "Imported"
+msgstr "దిగుమతి చేయబడింది"
+
+#: 
+msgid "miles"
+msgstr "మైళ్ళు"
+
+#: 
+msgid "kilometers"
+msgstr "కిలోమీటర్లు"
+
+#: 
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: 
+msgid "Local"
+msgstr "స్థానిక"
+
+#. Context: countries
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "ఆఫ్ఘనిస్తాన్"
+
+#. Context: countries
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "అల్బేనియా"
+
+#. Context: countries
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "అల్జీరియా"
+
+#. Context: countries
+#: 
+msgid "Argentina"
+msgstr "అర్జెంటీనా"
+
+#. Context: countries
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "ఆర్మేనియా"
+
+#. Context: countries
+#: 
+msgid "Australia"
+msgstr "ఆస్ట్రేలియా"
+
+#. Context: countries
+#: 
+msgid "Austria (Österreich)"
+msgstr "ఆస్ట్రియా"
+
+#. Context: countries
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "అజర్బైజాన్"
+
+#. Context: countries
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "బంగ్లాదేశ్"
+
+#. Context: countries
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "బెలారస్"
+
+#. Context: countries
+#: 
+msgid "Belgium (België)"
+msgstr "బెల్జియం"
+
+#. Context: countries
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "భూటాన్"
+
+#. Context: countries
+#: 
+msgid "Brazil (Brasil)"
+msgstr "బ్రెజిల్"
+
+#. Context: countries
+#: 
+msgid "Bulgaria (България)"
+msgstr "బల్గేరియా"
+
+#. Context: countries
+#: 
+msgid "Canada"
+msgstr "కెనడా"
+
+#. Context: countries
+#: 
+msgid "China (中国)"
+msgstr "చైనా"
+
+#. Context: countries
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "ఈజిప్ట్"
+
+#. Context: countries
+#: 
+msgid "France"
+msgstr "ఫ్రాన్స్"
+
+#. Context: countries
+#: 
+msgid "Germany (Deutschland)"
+msgstr "జర్మనీ"
+
+#. Context: countries
+#: 
+msgid "India (भारत)"
+msgstr "భారతదేశం"
+
+#. Context: countries
+#: 
+msgid "Indonesia"
+msgstr "ఇండోనేషియా"
+
+#. Context: countries
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "ఇజ్రాయెల్"
+
+#. Context: countries
+#: 
+msgid "Italy (Italia)"
+msgstr "ఇటలీ"
+
+#. Context: countries
+#: 
+msgid "Japan (日本)"
+msgstr "జపాన్"
+
+#. Context: countries
+#: 
+msgid "Malaysia"
+msgstr "మలేషియా"
+
+#. Context: countries
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "నేపాల్"
+
+#. Context: countries
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "నెదర్లాండ్స్"
+
+#. Context: countries
+#: 
+msgid "New Zealand"
+msgstr "న్యూజిలాండ్"
+
+#. Context: countries
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "పాకిస్తాన్"
+
+#. Context: countries
+#: 
+msgid "Russia (Россия)"
+msgstr "రష్యా"
+
+#. Context: countries
+#: 
+msgid "Singapore"
+msgstr "సింగపూర్"
+
+#. Context: countries
+#: 
+msgid "South Africa"
+msgstr "దక్షిణ ఆఫ్రికా"
+
+#. Context: countries
+#: 
+msgid "South Korea (대한민국)"
+msgstr "దక్షిణ కొరియా"
+
+#. Context: countries
+#: 
+msgid "Spain (España)"
+msgstr "స్పెయిన్"
+
+#. Context: countries
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "స్విట్జర్లాండ్"
+
+#. Context: countries
+#: 
+msgid "Thailand (ไทย)"
+msgstr "థాయిలాండ్"
+
+#. Context: countries
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "టర్కీ"
+
+#. Context: countries
+#: 
+msgid "United Kingdom"
+msgstr "యునైటెడ్ కింగ్‌డమ్"
+
+#. Context: countries
+#: 
+msgid "United States"
+msgstr "యునైటెడ్ స్టేట్స్"
+
+#: 
+msgid "E"
+msgstr "తూర్పు"
+
+#: 
+msgid "N"
+msgstr "ఉత్తరం"
+
+#: 
+msgid "S"
+msgstr "దక్షిణం"
+
+#: 
+msgid "W"
+msgstr "పశ్చిమం"
+
+#: 
+msgid "OK"
+msgstr "సరే"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "View"
+msgstr "వీక్షణ"
+
+#: 
+msgid "Apr"
+msgstr "ఏప్రిల్"
+
+#: 
+msgid "Aug"
+msgstr "ఆగస్టు"
+
+#: 
+msgid "Dec"
+msgstr "డిసెంబర్"
+
+#: 
+msgid "Feb"
+msgstr "ఫిబ్రవరి"
+
+#: 
+msgid "Jan"
+msgstr "జనవరి"
+
+#: 
+msgid "Jul"
+msgstr "జూలై"
+
+#: 
+msgid "Jun"
+msgstr "జూన్"
+
+#: 
+msgid "Mar"
+msgstr "మార్చి"
+
+#: 
+msgid "Nov"
+msgstr "నవంబర్"
+
+#: 
+msgid "Oct"
+msgstr "అక్టోబర్"
+
+#: 
+msgid "Sep"
+msgstr "సెప్టెంబర్"
+

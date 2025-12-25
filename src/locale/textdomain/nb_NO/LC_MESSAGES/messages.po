@@ -4735,6 +4735,11 @@ msgstr "Burundi"
 
 #. Context: countries
 #: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "Kambodsja (កម្ពុជា)"
+
+#. Context: countries
+#: 
 msgid "Cameroon (Cameroun)"
 msgstr "Kamerun"
 
@@ -5380,6 +5385,11 @@ msgstr "Nord-Marianene"
 
 #. Context: countries
 #: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "Nord-Korea (조선 민주주의 인민 공화국)"
+
+#. Context: countries
+#: 
 msgid "Norway (Norge)"
 msgstr "Norge"
 
@@ -5690,6 +5700,11 @@ msgstr "Trinidad og Tobago"
 
 #. Context: countries
 #: 
+msgid "Tristan da Cunha"
+msgstr "Tristan da Cunha"
+
+#. Context: countries
+#: 
 msgid "Tunisia (‫تونس‬‎)"
 msgstr "Tunisia"
 
@@ -5712,6 +5727,11 @@ msgstr "Turks- og Caicosøyene"
 #: 
 msgid "Tuvalu"
 msgstr "Tuvalu"
+
+#. Context: countries
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "USAs ytre småøyer"
 
 #. Context: countries
 #: 
@@ -5797,6 +5817,2692 @@ msgstr "Zambia"
 #: 
 msgid "Zimbabwe"
 msgstr "Zimbabwe"
+
+#: 
+msgid "Please verify your family's information"
+msgstr "Vennligst bekreft familiens informasjon"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "Kunne ikke laste inn verifiseringsinformasjon"
+
+#: 
+msgid "No Changes"
+msgstr "Ingen endringer"
+
+#: 
+msgid "Page not fond"
+msgstr "Siden ble ikke funnet"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "Oops! Siden ble ikke funnet."
+
+#: 
+msgid "Family Registration"
+msgstr "Familieregistrering"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "Vennligst oppgi følgende for å starte familiens verifisering"
+
+#: 
+msgid "Family Verification"
+msgstr "Familieverifisering"
+
+#: 
+msgid "Work Email"
+msgstr "E-post jobb"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "Be om verifisering av familieinformasjon"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "Velg hvordan du vil be om at familieinformasjonen skal verifiseres"
+
+#: 
+msgid "Online Verification"
+msgstr "Nettbasert verifisering"
+
+#: 
+msgid "Verified In Person"
+msgstr "Verifisert personlig"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "Sikkerhetskopien inneholder ingen database"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "Lagre brukerinndatate postnumre med STORE BOKSTAVER i databasen."
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "Brukt til å avslutte et brev før signatur"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "Google Analytics-sporingskode"
+
+#. Context: locales
+#: 
+msgid "English - United States"
+msgstr "Engelsk - USA"
+
+#. Context: locales
+#: 
+msgid "English - Canada"
+msgstr "Engelsk - Canada"
+
+#. Context: locales
+#: 
+msgid "English - Australia"
+msgstr "Engelsk - Australia"
+
+#. Context: locales
+#: 
+msgid "English - Great Britain"
+msgstr "Engelsk - Storbritannia"
+
+#. Context: locales
+#: 
+msgid "German - Germany"
+msgstr "Tysk - Tyskland"
+
+#. Context: locales
+#: 
+msgid "Spanish - Spain"
+msgstr "Spansk - Spania"
+
+#. Context: locales
+#: 
+msgid "French - France"
+msgstr "Fransk - Frankrike"
+
+#. Context: locales
+#: 
+msgid "Hungarian"
+msgstr "Ungarsk"
+
+#. Context: locales
+#: 
+msgid "Italian - Italy"
+msgstr "Italiensk - Italia"
+
+#. Context: locales
+#: 
+msgid "Norwegian"
+msgstr "Norsk"
+
+#. Context: locales
+#: 
+msgid "Dutch - Netherlands"
+msgstr "Nederlandsk - Nederland"
+
+#. Context: locales
+#: 
+msgid "Polish"
+msgstr "Polsk"
+
+#. Context: locales
+#: 
+msgid "Portuguese - Brazil"
+msgstr "Portugisisk - Brasil"
+
+#. Context: locales
+#: 
+msgid "Romanian - Romania"
+msgstr "Rumensk - Romania"
+
+#. Context: locales
+#: 
+msgid "Russian"
+msgstr "Russisk"
+
+#. Context: locales
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "Nordsamisk (Sverige)"
+
+#. Context: locales
+#: 
+msgid "Albanian"
+msgstr "Albansk"
+
+#. Context: locales
+#: 
+msgid "Vietnamese"
+msgstr "Vietnamesisk"
+
+#. Context: locales
+#: 
+msgid "Chinese - China"
+msgstr "Kinesisk - Kina"
+
+#. Context: locales
+#: 
+msgid "Chinese - Taiwan"
+msgstr "Kinesisk - Taiwan"
+
+#: 
+msgid "Maximum upload size"
+msgstr "Maksimal opplastingsstørrelse"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "Den valgte filen overskrider serverens maksimale opplastingsstørrelse på"
+
+#: 
+msgid "Failed"
+msgstr "Mislyktes"
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "Kirkens kontonummer"
+
+#: 
+msgid "Marked the Family as Inactive"
+msgstr "Markerte familien som inaktiv"
+
+#: 
+msgid "Marked the Family as Active"
+msgstr "Markerte familien som aktiv"
+
+#: 
+msgid "families"
+msgstr "familier"
+
+#: 
+msgid "Please ensure this what you want to do.</p>"
+msgstr "Vennligst bekreft at dette er hva du vil gjøre.</p>"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "Bekreft deaktivering"
+
+#: 
+msgid "Confirm Activation"
+msgstr "Bekreft aktivering"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "Vennligst bekreft deaktivering av familie"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "Vennligst bekreft aktivering av familie"
+
+#: 
+msgid "Show neighbors with these classifications"
+msgstr "Vis naboer med disse klassifiseringene"
+
+#: 
+msgid "Please select a Family."
+msgstr "Vennligst velg en familie."
+
+#: 
+msgid "Coordinate database file name"
+msgstr "Filnavn for koordinatdatabase"
+
+#: 
+msgid "select an option"
+msgstr "velg et alternativ"
+
+#: 
+msgid "Direct me"
+msgstr "Led meg"
+
+#: 
+msgid "Your cart is empty"
+msgstr "Handlekurven din er tom"
+
+#: 
+msgid "The record could not be found."
+msgstr "Oppføringen ble ikke funnet."
+
+#: 
+msgid "The property is already assigned."
+msgstr "Egenskapen er allerede tildelt."
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "Egenskapen ble tildelt."
+
+#: 
+msgid "The property could not be assigned."
+msgstr "Egenskapen kunne ikke tildeles."
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "Egenskapen ble fjernet."
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "Egenskapen kunne ikke fjernes."
+
+#: 
+msgid "Select event"
+msgstr "Velg hendelse"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "Personen er allerede sjekket inn på denne hendelsen"
+
+#: 
+msgid "CheckOut Person"
+msgstr "Sjekk ut person"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "Slett innsjekkingsføring"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "Voksen som sjekker ut person"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "Tekst før navn i e-poster/rapporter"
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "Vis telling av sedler på innskuddsseddel"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "Kontoen din ble slettet"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "Din ChurchCRM-konto ble slettet."
+
+#: 
+msgid "Account Locked"
+msgstr "Konto låst"
+
+#: 
+msgid "Your New Account"
+msgstr "Din nye konto"
+
+#: 
+msgid "Password Reset"
+msgstr "Tilbakestilling av passord"
+
+#: 
+msgid "Account Unlocked"
+msgstr "Konto låst opp"
+
+#: 
+msgid "Part"
+msgstr "Del"
+
+#: 
+msgid "View Photo"
+msgstr "Vis bilde"
+
+#: 
+msgid "Status"
+msgstr "Status"
+
+#: 
+msgid "Email export"
+msgstr "E-posteksport"
+
+#: 
+msgid "Include"
+msgstr "Inkluder"
+
+#: 
+msgid "Exclude"
+msgstr "Ekskluder"
+
+#: 
+msgid "View Cart"
+msgstr "Vis handlekurv"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "Handlekurven din er tom"
+
+#: 
+msgid "View on Map"
+msgstr "Vis på kart"
+
+#: 
+msgid "Legend"
+msgstr "Tegnforklaring"
+
+#: 
+msgid "assigned"
+msgstr "tildelt"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "Viser elever med bursdag i"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "Ekskluder inaktive familier"
+
+#: 
+msgid "The role is already assigned."
+msgstr "Rollen er allerede tildelt."
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "Rollen er tildelt."
+
+#: 
+msgid "The role could not be assigned."
+msgstr "Rollen kunne ikke tildeles."
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "Bing map API krever en unik nøkkel"
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "Google Maps Zoom"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "Velg GeoCoder-leverandør"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "Din ChurchCRM-konto ble låst."
+
+#: 
+msgid "A ChurchCRM account was created for you"
+msgstr "En ChurchCRM-konto har blitt opprettet for deg"
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "Du kan tilbakestille ditt ChurchCRM-passord ved å klikke på denne lenken"
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "Din ChurchCRM-konto ble låst opp."
+
+#: 
+msgid "system user created"
+msgstr "systembruker opprettet"
+
+#: 
+msgid "system user updated"
+msgstr "systembruker oppdatert"
+
+#: 
+msgid "system user deleted"
+msgstr "systembruker slettet"
+
+#: 
+msgid "system user password reset"
+msgstr "passord for systembruker tilbakestilt"
+
+#: 
+msgid "system user changed password"
+msgstr "systembruker endret passord"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "systembrukerens passord ble endret av administrator"
+
+#: 
+msgid "system user login reset"
+msgstr "innlogging for systembruker tilbakestilt"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "Mangler du familier? Oppdater familiens bredde- eller lengdegrad nå."
+
+#: 
+msgid "Families without Geo Info"
+msgstr "Familier uten geografisk info"
+
+#: 
+msgid "Notification for"
+msgstr "Varsel for"
+
+#: 
+msgid "DEBUG"
+msgstr "FEILSØK"
+
+#: 
+msgid "INFO"
+msgstr "INFO"
+
+#: 
+msgid "NOTICE"
+msgstr "VARSEL"
+
+#: 
+msgid "WARNING"
+msgstr "ADVARSEL"
+
+#: 
+msgid "ERROR"
+msgstr "FEIL"
+
+#: 
+msgid "CRITICAL"
+msgstr "KRITISK"
+
+#: 
+msgid "ALERT"
+msgstr "ALARM"
+
+#: 
+msgid "EMERGENCY"
+msgstr "NØDSITUASJON"
+
+#: 
+msgid "Title FirstName MiddleName LastName"
+msgstr "Tittel Fornavn Mellomnavn Etternavn"
+
+#: 
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr "Tittel Fornavn Mellominitial Etternavn"
+
+#: 
+msgid "LastName, Title FirstName MiddleName"
+msgstr "Etternavn, Tittel Fornavn Mellomnavn"
+
+#: 
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr "Etternavn, Tittel Fornavn Mellominitial"
+
+#: 
+msgid "FirstName MiddleName LastName"
+msgstr "Fornavn Mellomnavn Etternavn"
+
+#: 
+msgid "Title FirstName LastName"
+msgstr "Tittel Fornavn Etternavn"
+
+#: 
+msgid "LastName, Title FirstName"
+msgstr "Etternavn, Tittel Fornavn"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "Hendelsesloggens alvorlighetsgrad for skriving, brukt av ORM og app-logger"
+
+#: 
+msgid "Time zone"
+msgstr "Tidssone"
+
+#: 
+msgid "Nexmo SMS API Key"
+msgstr "Nexmo SMS API-nøkkel"
+
+#: 
+msgid "Nexmo SMS API Secret"
+msgstr "Nexmo SMS API-hemmelighet"
+
+#: 
+msgid "Nexmo SMS From Number"
+msgstr "Nexmo SMS fra-nummer"
+
+#: 
+msgid "OpenLP URL"
+msgstr "OpenLP URL"
+
+#: 
+msgid "OpenLP Username"
+msgstr "OpenLP brukernavn"
+
+#: 
+msgid "OpenLP Password"
+msgstr "OpenLP passord"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "KioskVisibilityTimestamp"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "Vis/skjul lenke for glemt passord på innloggingsskjermen"
+
+#: 
+msgid "Backup"
+msgstr "Sikkerhetskopi"
+
+#: 
+msgid "Integration"
+msgstr "Integrasjon"
+
+#: 
+msgid "Notification"
+msgstr "Varsling"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "Foresatte for"
+
+#: 
+msgid "A notification was triggered by the classroom teacher at"
+msgstr "Et varsel ble utløst av læreren kl."
+
+#: 
+msgid "Please go to this location"
+msgstr "Vennligst gå til dette stedet"
+
+#: 
+msgid "Your ChurchCRM password has been changed"
+msgstr "Ditt ChurchCRM-passord har blitt endret"
+
+#: 
+msgid "Password Reset Link"
+msgstr "Lenke for tilbakestilling av passord"
+
+#: 
+msgid "Reset Password"
+msgstr "Tilbakestill passord"
+
+#: 
+msgid "Reset your password"
+msgstr "Tilbakestill ditt passord"
+
+#: 
+msgid "Role Name"
+msgstr "Rollenavn"
+
+#: 
+msgid "Sequence"
+msgstr "Sekvens"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "Sjekker status for handlekurv"
+
+#: 
+msgid "All members of this group are in the cart"
+msgstr "Alle medlemmer i denne gruppen er i handlekurven"
+
+#: 
+msgid "Remove all"
+msgstr "Fjern alle"
+
+#: 
+msgid "Not all members of this group are in the cart"
+msgstr "Ikke alle medlemmer i denne gruppen er i handlekurven"
+
+#: 
+msgid "Are you sure you want to remove the selected group members?"
+msgstr "Er du sikker på at du vil fjerne de valgte gruppemedlemmene?"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "Vil du slette denne personen? Dette kan ikke angres."
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "Er du sikker på at du vil fjerne denne egenskapen?"
+
+#: 
+msgid "Select a family"
+msgstr "Velg en familie"
+
+#: 
+msgid "Release Notes"
+msgstr "Versjonsnotater"
+
+#: 
+msgid "Move"
+msgstr "Flytt"
+
+#. Context: locales
+#: 
+msgid "Arabic - Egypt"
+msgstr "Arabisk - Egypt"
+
+#. Context: locales
+#: 
+msgid "Thai"
+msgstr "Thai"
+
+#: 
+msgid "Self Register"
+msgstr "Selvregistrering"
+
+#: 
+msgid "List families that were created via self registration."
+msgstr "List opp familier som ble opprettet via selvregistrering."
+
+#: 
+msgid "Pending Self Verify"
+msgstr "Venter på selvverifisering"
+
+#: 
+msgid "Self Verify"
+msgstr "Selvverifiser"
+
+#. Context: locales
+#: 
+msgid "Indonesian - Indonesia"
+msgstr "Indonesisk - Indonesia"
+
+#: 
+msgid "records(s) successfully added to selected Group."
+msgstr "oppføring(er) lagt til i valgt gruppe."
+
+#: 
+msgid "To export to another For european CharSet use ;"
+msgstr "For eksport til annet europeisk tegnsett, bruk ;"
+
+#: 
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr "For å definere dato i datovelgeren, standard: åååå-mm-dd, f.eks. dd/mm/åååå."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr "For å definere dato i datovelgeren, standard: Y-m-d, f.eks. d/m/Y."
+
+#: 
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr "Kommaseparert liste over PersonID-er for personer som skal varsles når en ny familie eller person legges til"
+
+#: 
+msgid "Church Greeter"
+msgstr "Kirkevert"
+
+#: 
+msgid "External Calendar API is disabled"
+msgstr "Eksternt kalender-API er deaktivert"
+
+#: 
+msgid "Special Group Settings : Sunday School Type"
+msgstr "Spesielle gruppeinnstillinger: Søndagsskole-type"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases :"
+msgstr "Søndagsskole-gruppe kan ikke endres, unntatt i disse to tilfellene:"
+
+#: 
+msgid "You can create/delete sunday school group. "
+msgstr "Du kan opprette/slette søndagsskole-gruppe."
+
+#: 
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr "Legg til nye roller, men ikke endre eller gi nytt navn til elev- og lærerrollene."
+
+#: 
+msgid "E"
+msgstr "Ø"
+
+#: 
+msgid "ENE"
+msgstr "ØNØ"
+
+#: 
+msgid "ESE"
+msgstr "ØSØ"
+
+#: 
+msgid "N"
+msgstr "N"
+
+#: 
+msgid "NE"
+msgstr "NØ"
+
+#: 
+msgid "NNE"
+msgstr "NNØ"
+
+#: 
+msgid "NNW"
+msgstr "NNV"
+
+#: 
+msgid "NW"
+msgstr "NV"
+
+#: 
+msgid "S"
+msgstr "S"
+
+#: 
+msgid "SE"
+msgstr "SØ"
+
+#: 
+msgid "SSW"
+msgstr "SSV"
+
+#: 
+msgid "SW"
+msgstr "SV"
+
+#: 
+msgid "W"
+msgstr "V"
+
+#: 
+msgid "WNW"
+msgstr "VNV"
+
+#: 
+msgid "WSW"
+msgstr "VSV"
+
+#: 
+msgid "Search Family"
+msgstr "Søk etter familie"
+
+#: 
+msgid "Show Family Head of House Names"
+msgstr "Vis navn på familiens overhode"
+
+#: 
+msgid "Search Groups"
+msgstr "Søk etter grupper"
+
+#: 
+msgid "Search Deposits"
+msgstr "Søk etter innskudd"
+
+#: 
+msgid "Search Payments"
+msgstr "Søk etter betalinger"
+
+#: 
+msgid "Quick Search"
+msgstr "Hurtigsøk"
+
+#: 
+msgid "Search Addresses"
+msgstr "Søk etter adresser"
+
+#: 
+msgid "Maximum number of Families"
+msgstr "Maksimalt antall familier"
+
+#: 
+msgid "Maximum number of Family H.O.H Names"
+msgstr "Maksimalt antall navn på familieoverhoder"
+
+#: 
+msgid "Maximum number of Groups"
+msgstr "Maksimalt antall grupper"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "Maksimalt antall innskudd"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "Maksimalt antall betalinger"
+
+#: 
+msgid "Maximum number of Addresses"
+msgstr "Maksimalt antall adresser"
+
+#: 
+msgid "Add Students"
+msgstr "Legg til elever"
+
+#: 
+msgid "Edit this Class"
+msgstr "Rediger denne klassen"
+
+#: 
+msgid "OK"
+msgstr "OK"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "Vennligst velg målrolle for medlemmer"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "GroupID kreves for valg av rolle"
+
+#: 
+msgid "Select Group and Role"
+msgstr "Velg gruppe og rolle"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "Er du sikker på at du vil fjerne denne personens medlemskap fra"
+
+#: 
+msgid "All Members"
+msgstr "Alle medlemmer"
+
+#: 
+msgid "PhotoBook"
+msgstr "Bildebok"
+
+#: 
+msgid "With Photos"
+msgstr "Med bilder"
+
+#: 
+msgid "Create PhotoBook"
+msgstr "Opprett bildebok"
+
+#: 
+msgid "SSE"
+msgstr "SØS"
+
+#: 
+msgid "Recipient Naming Method"
+msgstr "Navnemetode for mottaker"
+
+#: 
+msgid "Salutation Utility"
+msgstr "Hilsen-verktøy"
+
+#: 
+msgid "Add A Group Name"
+msgstr "Legg til et gruppenavn"
+
+#: 
+msgid "Default Name Group"
+msgstr "Standard gruppenavn"
+
+#: 
+msgid "Group Role"
+msgstr "Grupperolle"
+
+#: 
+msgid "Members from group"
+msgstr "Medlemmer fra gruppe"
+
+#: 
+msgid "Members to another group"
+msgstr "Medlemmer til en annen gruppe"
+
+#: 
+msgid "Members to cart"
+msgstr "Medlemmer til handlekurv"
+
+#: 
+msgid "Change Settings"
+msgstr "Endre innstillinger"
+
+#: 
+msgid "Unknown Type"
+msgstr "Ukjent type"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "PersonID for handlekurv må være numerisk"
+
+#: 
+msgid "GroupID for Cart must be numeric"
+msgstr "GroupID for handlekurv må være numerisk"
+
+#: 
+msgid "FamilyID for Cart must be numeric"
+msgstr "FamilyID for handlekurv må være numerisk"
+
+#: 
+msgid "Search People"
+msgstr "Søk etter personer"
+
+#: 
+msgid "Maximum number of People"
+msgstr "Maksimalt antall personer"
+
+#: 
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "Feltet hvor skriftefar er oppført må være en person av gruppetype"
+
+#: 
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "Feltet hvor forrige skriftemål lagres må være en datotype"
+
+#: 
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "Krev at denne ChurchCRM-databasen aksesseres over HTTPS"
+
+#: 
+msgid "People Setup"
+msgstr "Oppsett av personer"
+
+#: 
+msgid "Church Services"
+msgstr "Kirketjenester"
+
+#: 
+msgid "People Reports"
+msgstr "Personrapporter"
+
+#: 
+msgid "People Dashboard"
+msgstr "Person-oversikt"
+
+#: 
+msgid "People Functions"
+msgstr "Person-funksjoner"
+
+#: 
+msgid "People Directory"
+msgstr "Personkatalog"
+
+#: 
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "Utskriftsvennlig katalog over alle personer, gruppert etter familie der de er tildelt"
+
+#: 
+msgid "of People"
+msgstr "av personer"
+
+#: 
+msgid "System Upgrade"
+msgstr "Systemoppgradering"
+
+#: 
+msgid "Upgrade Required"
+msgstr "Oppgradering kreves"
+
+#: 
+msgid "Help & Manual"
+msgstr "Hjelp og manual"
+
+#: 
+msgid "Contributing"
+msgstr "Bidra"
+
+#: 
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr "Aktiver SMTP-kryptering automatisk hvis det tilbys av serveren."
+
+#: 
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr "Angi krypteringssystem - ssl (foreldet) eller tls"
+
+#: 
+msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr "Intervall for asynkron oppdatering av oversiktstjenesten, standard 60 sekunder"
+
+#: 
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr "Generer innskuddsseddel for valgte rader (PDF)"
+
+#: 
+msgid "Add All to Cart"
+msgstr "Legg alle i handlekurven"
+
+#: 
+msgid "Remove All from Cart"
+msgstr "Fjern alle fra handlekurven"
+
+#: 
+msgid "records(s) successfully deleted from the selected Group."
+msgstr "oppføring(er) slettet fra valgt gruppe."
+
+#: 
+msgid "Not Found"
+msgstr "Ikke funnet"
+
+#: 
+msgid "Oops!"
+msgstr "Oops!"
+
+#: 
+msgid "Meanwhile, you may"
+msgstr "I mellomtiden kan du"
+
+#: 
+msgid "User must be an Admin"
+msgstr "Brukeren må være administrator"
+
+#: 
+msgid "No logged in user"
+msgstr "Ingen pålogget bruker"
+
+#: 
+msgid "not found"
+msgstr "ikke funnet"
+
+#: 
+msgid "Deleted from group"
+msgstr "Slettet fra gruppe"
+
+#: 
+msgid "Added to group"
+msgstr "Lagt til i gruppe"
+
+#: 
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "SMTP-tjener er ikke satt opp, vennligst gå til innstillingssiden"
+
+#: 
+msgid "Debug Email Connection"
+msgstr "Feilsøk e-postforbindelse"
+
+#: 
+msgid "This Family is Inactive"
+msgstr "Denne familien er inaktiv"
+
+#: 
+msgid "The database has been cleared."
+msgstr "Databasen er tømt."
+
+#: 
+msgid "Anniversaries"
+msgstr "Jubileer"
+
+#: 
+msgid "New Family Notification Email Error"
+msgstr "Feil ved varslingse-post for ny familie"
+
+#: 
+msgid "New Person Notification Email Error"
+msgstr "Feil ved varslingse-post for ny person"
+
+#: 
+msgid "View User"
+msgstr "Vis bruker"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "Ugyldig forespørsel: Mangler kalender-ID"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "Ikke funnet: Ukjent kalender-ID"
+
+#: 
+msgid "not found or user without an email"
+msgstr "ikke funnet eller bruker uten e-post"
+
+#: 
+msgid "UserName not set"
+msgstr "Brukernavn ikke satt"
+
+#: 
+msgid "Self Registrations"
+msgstr "Selvregistreringer"
+
+#: 
+msgid "Public Calendar"
+msgstr "Offentlig kalender"
+
+#: 
+msgid "Private Calendar"
+msgstr "Privat kalender"
+
+#: 
+msgid "Username"
+msgstr "Brukernavn"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "Er du sikker på at du vil flytte"
+
+#: 
+msgid "from"
+msgstr "fra"
+
+#: 
+msgid "to"
+msgstr "til"
+
+#: 
+msgid "Are you sure you want to change the end time for "
+msgstr "Er du sikker på at du vil endre sluttiden for "
+
+#: 
+msgid "Access Token"
+msgstr "Tilgangstoken"
+
+#: 
+msgid "New Access Token"
+msgstr "Nytt tilgangstoken"
+
+#: 
+msgid "Delete Access Token"
+msgstr "Slett tilgangstoken"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS-URL"
+
+#: 
+msgid "Foreground Color"
+msgstr "Forgrunnsfarge"
+
+#: 
+msgid "Background Color"
+msgstr "Bakgrunnsfarge"
+
+#: 
+msgid "Delete Calendar"
+msgstr "Slett kalender"
+
+#: 
+msgid "Invalid Entry"
+msgstr "Ugyldig oppføring"
+
+#: 
+msgid "Calendar Name"
+msgstr "Kalendernavn"
+
+#: 
+msgid "New Calendar"
+msgstr "Ny kalender"
+
+#: 
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI er deaktivert, men noen kalendere har tilgangstokens"
+
+#: 
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr "For at kalendere skal kunne deles, må innstillingen bEnableExternalCalendarAPI være aktivert, i tillegg til at kalenderen har et spesifikt tilgangstoken"
+
+#: 
+msgid "Links"
+msgstr "Lenker"
+
+#: 
+msgid "Show custom links on the left menu."
+msgstr "Vis egendefinerte lenker i venstremenyen."
+
+#: 
+msgid "Enable Sunday School left menu."
+msgstr "Aktiver venstremeny for søndagsskole."
+
+#: 
+msgid "Enable Finance menu"
+msgstr "Aktiver meny for økonomi"
+
+#: 
+msgid "Enable Events menu."
+msgstr "Aktiver meny for hendelser."
+
+#: 
+msgid "Enable Fundraiser menu."
+msgstr "Aktiver meny for innsamlinger."
+
+#: 
+msgid "Enable Email menu."
+msgstr "Aktiver meny for e-post."
+
+#: 
+msgid "Enabled Features"
+msgstr "Aktiverte funksjoner"
+
+#: 
+msgid "Validation Error"
+msgstr "Valideringsfeil"
+
+#: 
+msgid "Link Not found"
+msgstr "Lenke ikke funnet"
+
+#: 
+msgid "Email Functions"
+msgstr "E-postfunksjoner"
+
+#: 
+msgid "Debug"
+msgstr "Feilsøk"
+
+#: 
+msgid "Family Custom Fields"
+msgstr "Egendefinerte felt for familie"
+
+#: 
+msgid "Person Custom Fields"
+msgstr "Egendefinerte felt for person"
+
+#: 
+msgid "Donation Funds"
+msgstr "Donasjonsfond"
+
+#: 
+msgid "Unable to open file"
+msgstr "Kunne ikke åpne fil"
+
+#: 
+msgid "Missing calendar access token"
+msgstr "Mangler tilgangstoken for kalender"
+
+#: 
+msgid "Calendar access token not found"
+msgstr "Tilgangstoken for kalender ble ikke funnet"
+
+#: 
+msgid "User must have Delete Records permission"
+msgstr "Brukeren må ha tillatelse til å slette oppføringer"
+
+#: 
+msgid "ChurchCRM Central Notifications URL"
+msgstr "URL for sentrale varsler i ChurchCRM"
+
+#: 
+msgid "User must have Manage Groups permission"
+msgstr "Brukeren må ha tillatelse til å administrere grupper"
+
+#: 
+msgid "Missing"
+msgstr "Mangler"
+
+#: 
+msgid "User must have Edit Records permission"
+msgstr "Brukeren må ha tillatelse til å redigere oppføringer"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "Du kan ikke slette deg selv"
+
+#: 
+msgid "The role could not be found."
+msgstr "Rollen ble ikke funnet."
+
+#: 
+msgid "Add Menu"
+msgstr "Legg til meny"
+
+#: 
+msgid "Menu Name"
+msgstr "Menynavn"
+
+#: 
+msgid "Link Address"
+msgstr "Lenkeadresse"
+
+#: 
+msgid "Start with http:// or https://"
+msgstr "Start med http:// eller https://"
+
+#: 
+msgid "Menus"
+msgstr "Menyer"
+
+#: 
+msgid "is disabled"
+msgstr "er deaktivert"
+
+#: 
+msgid "Software Version"
+msgstr "Programvareversjon"
+
+#: 
+msgid "Database Version"
+msgstr "Databaseversjon"
+
+#: 
+msgid "Application Prerequisites"
+msgstr "Forutsetninger for applikasjonen"
+
+#: 
+msgid "Invalid country name supplied"
+msgstr "Ugyldig landnavn oppgitt"
+
+#: 
+msgid "LastName FirstName"
+msgstr "Etternavn Fornavn"
+
+#: 
+msgid "Holidays"
+msgstr "Helligdager"
+
+#: 
+msgid "Person Name"
+msgstr "Personens navn"
+
+#: 
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "Egendefinert melding for kirkevert-e-post 1, maks 255 tegn"
+
+#: 
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "Egendefinert melding for kirkevert-e-post 2, maks 255 tegn"
+
+#: 
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "Inkluder kontakt- og demografiske data i varselet om nytt medlem"
+
+#: 
+msgid "Include family custom properties in global search."
+msgstr "Inkluder egendefinerte familieegenskaper i globalt søk."
+
+#. Context: countries
+#: 
+msgid "Latvia (Latvija)"
+msgstr "Latvia (Latvija)"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "Du er i ferd med å legge til et nytt innskudd uten kommentar"
+
+#: 
+msgid "Families Without Emails"
+msgstr "Familier uten e-post"
+
+#: 
+msgid "Record"
+msgstr "Oppføring"
+
+#: 
+msgid "Records"
+msgstr "Oppføringer"
+
+#: 
+msgid "Emptied into Event"
+msgstr "Tømt inn i hendelse"
+
+#: 
+msgid "Passed"
+msgstr "Bestått"
+
+#: 
+msgid "Focus"
+msgstr "Fokus"
+
+#: 
+msgid "Unfocus"
+msgstr "Fjern fokus"
+
+#: 
+msgid "Warning: Signature mismatch"
+msgstr "Advarsel: Signatur samsvarer ikke"
+
+#: 
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "Noen ChurchCRM-systemfiler kan ha blitt endret siden forrige installasjon."
+
+#: 
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "Denne oppgraderingen vil fullstendig fjerne alle tilpasninger gjort i følgende filer ved å tilbakestille dem til den offisielle versjonen."
+
+#: 
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "Hvis du vil beholde endringene i disse filene, vennligst ta en manuell sikkerhetskopi før du fortsetter, og gjenopprett dem manuelt etter at oppgraderingen er fullført."
+
+#: 
+msgid "Integrity Check Details:"
+msgstr "Detaljer om integritetssjekk:"
+
+#. Context: locales
+#: 
+msgid "Estonian"
+msgstr "Estisk"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "Feil ved dekoding av signaturdefinisjonsfil"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "Endepunkt for ekstern sikkerhetskopi. Hvis WebDAV, må denne være URL-kodet."
+
+#: 
+msgid "Age Histogram"
+msgstr "Aldershistogram"
+
+#: 
+msgid "Missing event id"
+msgstr "Hendelses-ID mangler"
+
+#: 
+msgid "Event not found"
+msgstr "Hendelse ikke funnet"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "Lengde på tidsavbrudd for økt i sekunder. Sett til null for å deaktivere."
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "Minimumsantall tegn et nytt passord må avvike fra det gamle. Sett til null for å deaktivere."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maksimalt antall feilede innlogginger før kontoen låses. Administrator må da låse den opp igjen. Sett til null for å deaktivere."
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "PDF-håndtering.\n"
+"1 = Lagre fil-dialog\n"
+"2 = Åpne i gjeldende nettleservindu"
+
+#: 
+msgid "Press CTRL + C to copy all group members' phone numbers"
+msgstr "Trykk CTRL + C for å kopiere telefonnumrene til alle gruppemedlemmer"
+
+#: 
+msgid "Verify People"
+msgstr "Verifiser personer"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "Oversikt for personverifisering"
+
+#: 
+msgid "Download family letters"
+msgstr "Last ned familiebrev"
+
+#: 
+msgid "Send family email"
+msgstr "Send e-post til familie"
+
+#: 
+msgid "Verification recorded"
+msgstr "Verifisering registrert"
+
+#: 
+msgid "Verification URL created"
+msgstr "Verifiserings-URL opprettet"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "Feil ved sending av e-post"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "Vennligst sjekk loggene for mer informasjon"
+
+#: 
+msgid "Verification URL"
+msgstr "Verifiserings-URL"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "Uventet person-ID"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "Tillat systemoppgraderinger til versjoner merket som 'pre-release' på GitHub"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "Søk i kalenderhendelser"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "Maksimalt antall kalenderhendelser"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d måned gammel"
+msgstr[1] "%d måneder gammel"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d år gammel"
+msgstr[1] "%d år gammel"
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "Mangler PHP ZipArchive"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "Legg resultatene i handlekurven"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "Fjern resultatene fra handlekurven"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "Funksjoner for tilbakestilling av database"
+
+#: 
+msgid "Reset Database"
+msgstr "Tilbakestill database"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "Dette vil tilbakestille systemdataene og starte systemet på nytt som en ny installasjon."
+
+#. Context: locales
+#: 
+msgid "Portuguese - Portugal"
+msgstr "Portugisisk - Portugal"
+
+#: 
+msgid "Holiday"
+msgstr "Helligdag"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "Tillat brukere å melde seg på tofaktorautentisering selv"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "Krever at brukere melder seg på tofaktorautentisering selv"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "Angi applikasjonsnavnet som skal vises i autentiseringsappen"
+
+#: 
+msgid "Review"
+msgstr "Se over"
+
+#: 
+msgid "Event Description"
+msgstr "Hendelsesbeskrivelse"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "Ved å aktivere tofaktorautentisering på din ChurchCRM-konto får du et ekstra lag med beskyttelse mot uvedkommende."
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "ChurchCRM støtter alle TOTP-apper, slik som Microsoft Authenticator, Google Authenticator, Authy, LastPass med flere."
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "Når du logger inn, skriver du fortsatt brukernavn og passord som vanlig."
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "I tillegg må du oppgi en engangskode fra autentiseringsenheten din for å fullføre innloggingen."
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "Når begge deler er tastet inn riktig, blir du logget inn som normalt."
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "For å unngå å bli låst ute, vennligst sørg for at du er klar til å fullføre oppsettet før du klikker på start."
+
+#: 
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr "Oppstart av ny registrering vil deaktivere alle tidligere enheter og gjenopprettingskoder."
+
+#: 
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr "Når du klikker på neste, blir du bedt om å skanne en QR-kode med appen din."
+
+#: 
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr "For å bekrefte registreringen må du skrive inn koden generert av appen."
+
+#: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "Etter bekreftelse vil engangskoder for gjenoppretting bli generert og vist."
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "Gjenopprettingskoder kan brukes hvis du ikke har tilgang til appen."
+
+#: 
+msgid "Store these in a secure location"
+msgstr "Lagre disse på et sikkert sted."
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "Start registrering for tofaktorautentisering"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "Hemmelighet for tofaktorautentisering"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "Regenerer hemmelighet for tofaktorautentisering"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "Fjern hemmelighet for tofaktorautentisering"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "Skriv inn TOTP-kode for å bekrefte registrering"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "Registrering for tofaktorautentisering var vellykket"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "Vennligst lagre disse gjenopprettingskodene på et trygt sted"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "Hvis du mister tilgangen til appen, må du bruke en gjenopprettingskode for å få tilgang til kontoen din."
+
+#: 
+msgid "Help translate this project"
+msgstr "Hjelp til med å oversette dette prosjektet"
+
+#. Context: locales
+#: 
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: 
+msgid " has a type mismatch"
+msgstr " har en type-uoverensstemmelse"
+
+#: 
+msgid "Loading"
+msgstr "Laster"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "Fjerning av familieegenskap"
+
+#: 
+msgid "Do you want to remove"
+msgstr "Vil du fjerne"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "Fødselsdager i dag"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "Bryllupsdager i dag"
+
+#: 
+msgid "Api Key"
+msgstr "API-nøkkel"
+
+#: 
+msgid "Regen API Key"
+msgstr "Regenerer API-nøkkel"
+
+#: 
+msgid "View Family Page"
+msgstr "Vis familieside"
+
+#: 
+msgid "View Person Page"
+msgstr "Vis personside"
+
+#: 
+msgid "Verify"
+msgstr "Verifiser"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "Familien har ingen e-postadresser"
+
+#: 
+msgid "Boxed Layout"
+msgstr "Boksoppsett"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "Aktiver boksoppsett"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "Veksle sidefelt"
+
+#: 
+msgid "No log files found."
+msgstr "Ingen loggfiler funnet."
+
+#: 
+msgid "Log File"
+msgstr "Loggfil"
+
+#: 
+msgid "Size"
+msgstr "Størrelse"
+
+#: 
+msgid "Last Modified"
+msgstr "Sist endret"
+
+#: 
+msgid "View"
+msgstr "Vis"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Visning av loggfil"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Filtrer etter loggnivå:"
+
+#: 
+msgid "Error"
+msgstr "Feil"
+
+#: 
+msgid "Info"
+msgstr "Info"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Antall linjer som skal vises:"
+
+#: 
+msgid "Loading log file..."
+msgstr "Laster loggfil..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Ingen notater er lagt til for denne familien."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Et tilgangstoken for kalender er generert og lagret."
+
+#: 
+msgid "added"
+msgstr "lagt til"
+
+#: 
+msgid "Added"
+msgstr "Lagt til"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Lagt til i handlekurven"
+
+#: 
+msgid "All members already in cart"
+msgstr "Alle medlemmer er allerede i handlekurven"
+
+#: 
+msgid "already in cart"
+msgstr "allerede i handlekurven"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Egenskaper for kalenderen kunne ikke lastes. Den kan mangle et tilgangstoken eller være feil konfigurert."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Handlekurven ble tømt"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Handlekurven ble tømt til gruppe"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Tømme hele handlekurven?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Kunne ikke legge familien i handlekurven"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Kunne ikke legge gruppen i handlekurven"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Kunne ikke legge i handlekurven"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Kunne ikke tømme handlekurven"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Kunne ikke tømme handlekurven til gruppe"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Kunne ikke fjerne familien fra handlekurven"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Kunne ikke fjerne fra handlekurven"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Kunne ikke fjerne gruppen"
+
+#: 
+msgid "Family added to cart"
+msgstr "Familie lagt til i handlekurven"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Familie fjernet fra handlekurven"
+
+#: 
+msgid "Group added to cart"
+msgstr "Gruppe lagt til i handlekurven"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Gruppe fjernet fra handlekurven"
+
+#: 
+msgid "in cart"
+msgstr "i handlekurven"
+
+#: 
+msgid "members. Already had"
+msgstr "medlemmer. Hadde allerede"
+
+#: 
+msgid "people added to cart"
+msgstr "personer lagt til i handlekurven"
+
+#: 
+msgid "people already in cart"
+msgstr "personer allerede i handlekurven"
+
+#: 
+msgid "people from cart"
+msgstr "personer fra handlekurven"
+
+#: 
+msgid "people removed from cart"
+msgstr "personer fjernet fra handlekurven"
+
+#: 
+msgid "Person already in cart"
+msgstr "Personen er allerede i handlekurven"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Fjerne denne familien fra handlekurven?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Fjerne denne gruppen fra handlekurven?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Fjerne denne personen fra handlekurven?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Fjernet fra handlekurven"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Ja, tøm handlekurven"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Ja, fjern"
+
+#: 
+msgid "Add Group"
+msgstr "Legg til gruppe"
+
+#: 
+msgid "Back to Group List"
+msgstr "Tilbake til gruppeliste"
+
+#: 
+msgid "Default role updated."
+msgstr "Standardrolle oppdatert."
+
+#: 
+msgid "Edit Group"
+msgstr "Rediger gruppe"
+
+#: 
+msgid "Enter group name"
+msgstr "Skriv inn gruppenavn"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "Kunne ikke legge til rolle. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Kunne ikke opprette gruppe. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "Kunne ikke slette rolle. Vennligst prøv igjen."
+
+#: 
+msgid "Passwords do not match"
+msgstr "Passordene samsvarer ikke"
+
+#: 
+msgid "Phone Type"
+msgstr "Telefontype"
+
+#: 
+msgid "Phone number"
+msgstr "Telefonnummer"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Vennligst legg til minst ett familiemedlem."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Vennligst rett valideringsfeilene før du fortsetter."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Vennligst oppgi en gyldig URL"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Vennligst oppgi en gyldig e-postadresse"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Vennligst oppgi en gyldig e-postadresse (f.eks. navn@eksempel.no)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Vennligst oppgi et gyldig tall"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Vennligst oppgi et gyldig telefonnummer"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Vennligst fyll ut alle obligatoriske felt korrekt."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "Vennligst se over all informasjon nøye før du sender inn. Du kan gå tilbake for å gjøre endringer."
+
+#: 
+msgid "Previous"
+msgstr "Forrige"
+
+#: 
+msgid "Registration Error"
+msgstr "Registreringsfeil"
+
+#: 
+msgid "Review & Submit"
+msgstr "Se over og send inn"
+
+#: 
+msgid "Role in Family"
+msgstr "Rolle i familien"
+
+#: 
+msgid "Select date"
+msgstr "Velg dato"
+
+#: 
+msgid "Street address"
+msgstr "Gateadresse"
+
+#: 
+msgid "Submit Registration"
+msgstr "Send inn registrering"
+
+#: 
+msgid "Zip code is required"
+msgstr "Postnummer er obligatorisk"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "Et nytt passord er generert og sendt til din e-postadresse."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "En ny versjon av ChurchCRM er tilgjengelig for installasjon."
+
+#: 
+msgid "Actual Hash"
+msgstr "Faktisk hash"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "Alle sjekker før oppgradering er bestått. Du kan fortsette med oppgraderingen."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Tillat pre-release-oppgraderinger"
+
+#: 
+msgid "Apply Update Now"
+msgstr "Utfør oppdatering nå"
+
+#: 
+msgid "Applying System Update..."
+msgstr "Oppdaterer systemet..."
+
+#: 
+msgid "Back to Login"
+msgstr "Tilbake til innlogging"
+
+#: 
+msgid "Back to login"
+msgstr "Tilbake til innlogging"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Sikkerhetskopiering hoppet over"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "Sjekk GitHub for siste informasjon om utgivelser"
+
+#: 
+msgid "Complete"
+msgstr "Fullført"
+
+#: 
+msgid "Continue to Backup"
+msgstr "Fortsett til sikkerhetskopiering"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "Fortsett til nedlasting og installering"
+
+#: 
+msgid "Create Backup"
+msgstr "Opprett sikkerhetskopi"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "Opprett en sikkerhetskopi av databasen før du installerer oppdateringen."
+
+#: 
+msgid "Current Version:"
+msgstr "Gjeldende versjon:"
+
+#: 
+msgid "Database Backup"
+msgstr "Sikkerhetskopi av database"
+
+#: 
+msgid "Download & Apply"
+msgstr "Last ned og installer"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "Last ned og installer systemoppdatering"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "Last ned den siste utgivelsen og installer den på din ChurchCRM-installasjon."
+
+#: 
+msgid "Downloaded"
+msgstr "Nedlastet"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "Laster ned siste utgivelse fra GitHub..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "Oppgi brukernavnet ditt, så sender vi deg en lenke for å tilbakestille passordet."
+
+#: 
+msgid "Expected Hash"
+msgstr "Forventet hash"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Kunne ikke opprette sikkerhetskopi."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Kunne ikke laste ned oppdateringspakken."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Kunne ikke oppdatere oppgraderingsinformasjon fra GitHub."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "Kunne ikke oppdatere oppgraderingsinformasjon. Vennligst prøv igjen."
+
+#: 
+msgid "Integrity check passed"
+msgstr "Integritetssjekk bestått"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "Signaturdefinisjonsfilen eksisterer, men er ikke lesbar. Sjekk filrettigheter."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "Signaturdefinisjonsfilen mangler på %s. Kjør pakkeverktøyet eller bruk en offisiell utgivelse for å regenerere signaturer."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "Kunne ikke kontakte endepunkt for integritetssjekk. Sjekk feillogger for webserver."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "Legg til eventuelle notater om dette innskuddet"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "Beløpet overskrider maksimalt tillatt verdi (999999.99)."
+
+#: 
+msgid "Checks"
+msgstr "Sjekker"
+
+#: 
+msgid "Clear Filters"
+msgstr "Tøm filtre"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "Klikk på en stolpe for å filtrere betalinger"
+
+#: 
+msgid "Delete Selected"
+msgstr "Slett valgte"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Innskudd lagret"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Feil ved sletting av betalinger"
+
+#: 
+msgid "Error loading payments"
+msgstr "Feil ved lasting av betalinger"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Feil ved lagring av innskudd"
+
+#: 
+msgid "Funds"
+msgstr "Fond"
+
+#: 
+msgid "Generate Report"
+msgstr "Generer rapport"
+
+#: 
+msgid "No Cash"
+msgstr "Ingen kontanter"
+
+#: 
+msgid "No Checks"
+msgstr "Ingen sjekker"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Ingen betalinger ennå. Klikk på \"Legg til betaling\" for å starte."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "Ikke-fradragsberettiget beløp overskrider maksimalt tillatt verdi (999999.99)."
+
+#: 
+msgid "Payments"
+msgstr "Betalinger"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Betalinger slettet"
+
+#: 
+msgid "Please select a date"
+msgstr "Vennligst velg en dato"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Vennligst velg rader som skal slettes"
+
+#: 
+msgid "Saving..."
+msgstr "Lagrer..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "Denne handlingen kan ikke angres."
+
+#: 
+msgid "Total Deposit"
+msgstr "Totalt innskudd"
+
+#: 
+msgid "Total Payments"
+msgstr "Totale betalinger"
+
+#: 
+msgid "payments(s)?"
+msgstr "betaling(er)?"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "Alle systemfiler har bestått integritetsvalidering."
+
+#: 
+msgid "Base URL"
+msgstr "Base-URL"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "ChurchCRM-installasjon"
+
+#: 
+msgid "Copy"
+msgstr "Kopier"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "Databaseserver"
+
+#: 
+msgid "Debug Info"
+msgstr "Feilsøkingsinfo"
+
+#: 
+msgid "Document Root"
+msgstr "Dokumentrot"
+
+#: 
+msgid "Email Configuration"
+msgstr "E-postkonfigurasjon"
+
+#: 
+msgid "Email Debug Info"
+msgstr "Feilsøkingsinfo for e-post"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "Rettigheter i filsystemet"
+
+#: 
+msgid "Hostname"
+msgstr "Vertsnavn"
+
+#: 
+msgid "IP Address"
+msgstr "IP-adresse"
+
+#: 
+msgid "Images Root"
+msgstr "Bildrot"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Importer demodata"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Inkluder hendelser og kalendere"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Inkluder økonomiske data (fond, løfter)"
+
+#: 
+msgid "Invalid API key"
+msgstr "Ugyldig API-nøkkel"
+
+#: 
+msgid "Not configured"
+msgstr "Ikke konfigurert"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "PHP- og serverkrav"
+
+#: 
+msgid "PHP Configuration"
+msgstr "PHP-konfigurasjon"
+
+#: 
+msgid "Filter Events"
+msgstr "Filtrer hendelser"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "Filtrer etter hendelsestype"
+
+#: 
+msgid "Filter by Type"
+msgstr "Filtrer etter type"
+
+#: 
+msgid "Head Count"
+msgstr "Antall personer"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "Lister hendelser av type"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "Administrer innsjekkinger"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "Medlemmer, besøkende, barn"
+
+#: 
+msgid "Monthly Averages"
+msgstr "Månedlig gjennomsnitt"
+
+#: 
+msgid "Monthly on the"
+msgstr "Månedlig den"
+
+#: 
+msgid "No event types defined yet."
+msgstr "Ingen hendelsestyper er definert ennå."
+
+#: 
+msgid "None (one-time event)"
+msgstr "Ingen (engangshendelse)"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "Valgfritt - Legg til notater fra preken eller andre detaljer"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "Valgfritt - la stå tomt hvis det ikke spores"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "Valgfrie notater om oppmøte..."
+
+#: 
+msgid "People Checked In"
+msgstr "Personer sjekket inn"
+
+#: 
+msgid "People in Cart"
+msgstr "Personer i handlekurven"
+
+#: 
+msgid "Person Checking In"
+msgstr "Person som sjekker inn"
+
+#: 
+msgid "Recurrence"
+msgstr "Gjentakelse"
+
+#: 
+msgid "Required fields"
+msgstr "Obligatoriske felt"
+
+#: 
+msgid "Save Event Type"
+msgstr "Lagre hendelsestype"
+
+#: 
+msgid "Search by name or email..."
+msgstr "Søk etter navn eller e-post..."
+
+#: 
+msgid "Search for adult..."
+msgstr "Søk etter voksen..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "Søk etter veileder..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "Velg hendelse for innsjekk"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "Velg start- og sluttdato/tid"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "Velg hendelsen for å sjekke inn medlemmene i handlekurven"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "Tekst for preken / hendelse"
+
+#: 
+msgid "Unclassified"
+msgstr "Uklassifisert"
+
+#: 
+msgid "Upgrade database now"
+msgstr "Oppgrader database nå"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "Din ChurchCRM-installasjon trenger en databaseoppgradering. Dette vil utføre overføring av skjema og data. Vennligst sørg for at du har en nylig sikkerhetskopi før du fortsetter."
+
+#: 
+msgid "added to this event"
+msgstr "lagt til i denne hendelsen"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "f.eks. søndagsskole, bibelstudie..."
+
+#: 
+msgid "optional"
+msgstr "valgfritt"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "person"
+msgstr[1] "personer"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ Sjekk ut"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "%d foreldreløse filer funnet"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d filer har blitt endret eller mangler. Bruk 'Tving reinstallasjon' for å gjenopprette offisielle versjoner."
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d filer feilet integritetsvalideringen."
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d filer vil bli permanent slettet."
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "%d foreldreløse filer ble funnet på serveren din."
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(oppdater fra GitHub)"
+
+#: 
+msgid "Access Denied"
+msgstr "Tilgang nektet"
+
+#: 
+msgid "Add event permission"
+msgstr "Tillatelse til å legge til hendelse"
+
+#: 
+msgid "Add records permission"
+msgstr "Tillatelse til å legge til oppføringer"
+
+#: 
+msgid "Administrator privileges"
+msgstr "Administratorrettigheter"
+
+#: 
+msgid "All Files Verified"
+msgstr "Alle filer er verifisert"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "Alle systemfiler samsvarer med forventede signaturer."
+
+#: 
+msgid "Application Integrity"
+msgstr "Applikasjonsintegritet"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "Applikasjonsfiler oppdatert til siste versjon"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "Er du sikker på at du vil slette alle foreldreløse filer?"
+
+#: 
+msgid "Database Only"
+msgstr "Kun database"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "Databasen ble gjenopprettet!"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "Databaseskjema oppdatert automatisk"
+
+#: 
+msgid "Delete All Files"
+msgstr "Slett alle filer"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "Slett alle foreldreløse filer"
+
+#: 
+msgid "Delete records permission"
+msgstr "Tillatelse til å slette oppføringer"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "Slettet %d filer, %d mislyktes"
+
+#: 
+msgid "Deletion Results"
+msgstr "Resultater av sletting"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "Dra og slipp sikkerhetskopien her"
+
+#: 
+msgid "Edit records permission"
+msgstr "Tillatelse til å redigere oppføringer"
+
+#: 
+msgid "Encryption"
+msgstr "Kryptering"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "Eksporterer databasestruktur og data. Mindre filstørrelse."
+
+#: 
+msgid "File Integrity Check"
+msgstr "Integritetssjekk av filer"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "Problemer med filintegritet funnet"
+
+#: 
+msgid "File Path"
+msgstr "Filsti"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "Filsignaturer samsvarer med offisiell utgivelse."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "Filer kan være endret eller mangle. Vurder å installere på nytt fra en offisiell utgivelse."
+
+#: 
+msgid "Finance access"
+msgstr "Tilgang til økonomi"
+
+#: 
+msgid "Force Re-install"
+msgstr "Tving reinstallasjon"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Tvinget reinstallasjon startet. Vennligst ta sikkerhetskopi av databasen før du fortsetter."
+
+#: 
+msgid "Full Backup"
+msgstr "Full sikkerhetskopi"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "Generer og last ned sikkerhetskopi"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "Gå til oversikten"
+
+#: 
+msgid "Group management access"
+msgstr "Tilgang til gruppeadministrasjon"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "Hvis du trenger tilgang til denne funksjonen, vennligst kontakt kirkens administrator."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "Hvis du laster opp en sikkerhetskopi fra ChurchInfo eller en eldre versjon av ChurchCRM, vil den automatisk bli oppgradert til gjeldende skjema."
+
+#: 
+msgid "Important Warning"
+msgstr "Viktig advarsel"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "Inkluderer database og alle opplastede bilder. Større filstørrelse."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "Oppbevar én kopi i en brannsikker safe på stedet og en annen et annet sted."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "Siste versjon på GitHub:"
+
+#: 
+msgid "Loading..."
+msgstr "Laster..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "Ta en sikkerhetskopi minst én gang i uken med mindre du har automatiske løsninger."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "Administrer foreldreløse filer"
 
 #: 
 msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
