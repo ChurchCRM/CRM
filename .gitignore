@@ -48,6 +48,8 @@ src/logs/*.log
 
 error.log
 
+# Temporary Python helper scripts (translation batching, etc.)
+*.py
 nbproject/*
 src/skin/v2/
 .DS_Store
