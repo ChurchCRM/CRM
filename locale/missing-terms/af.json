@@ -1,11 +1,11 @@
 {
   "%d month old": {
-    "one": "een maand oud",
-    "other": "%d maande oud"
+    "one": "",
+    "other": ""
   },
   "%d year old": {
-    "one": "een jaar oud",
-    "other": "%d jare oud"
+    "one": "",
+    "other": ""
   },
   ", -, ., / allowed.": {
     "Must start with / if not empty, no trailing slash. Only letters, numbers, ": ""
