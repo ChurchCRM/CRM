@@ -1,9 +1,4 @@
 {
-  "Last name is required": "",
-  "Last name must be at least 2 characters": "",
-  "Maximum length is": "",
-  "Minimum length is": "",
-  "Must be a valid URL starting with http:// or https://": "",
   "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "",
   "Must be a valid port number (e.g., 3306)": "",
   ", -, ., / allowed.": {
@@ -100,5 +95,10 @@
   "No Data Found": "",
   "No records were returned from the previous report. Please adjust your filters or date range and try again.": "",
   "Please enter a menu name (2-50 characters)": "",
-  "Please enter a valid URL starting with http:// or https://": ""
+  "Please enter a valid URL starting with http:// or https://": "",
+  "All system file signatures match the expected values.": "",
+  "Files with issues": "",
+  "Integrity check failed": "",
+  "Integrity check passed": "",
+  "Signature definition file exists but is not readable. Check file permissions.": ""
 }

@@ -1,9 +1,4 @@
 {
-  "Two characters from FirstName": "",
-  "Church Email not set, please visit the settings page": "",
-  "Telugu - India": "",
-  "Korean": "",
-  "System Logs": "",
   "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.": "",
   "Enter event description...": "",
   "Event ID": "",
@@ -98,5 +93,10 @@
   "Home phone number": "",
   "Invalid format": "",
   "Join our community by registering your family": "",
-  "Last name": ""
+  "Last name": "",
+  "Last name is required": "",
+  "Last name must be at least 2 characters": "",
+  "Maximum length is": "",
+  "Minimum length is": "",
+  "Must be a valid URL starting with http:// or https://": ""
 }

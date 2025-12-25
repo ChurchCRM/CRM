@@ -1,9 +1,4 @@
 {
-  "Re-download and re-apply the current version to restore all files to their official state": "",
-  "Ready to create a backup. Select your options above and click a backup button.": "",
-  "Ready to restore. Select a backup file and click Restore Database.": "",
-  "Recommendation: Review and delete these files before or after the upgrade.": "",
-  "Redirecting in": "",
   "Refresh List": "",
   "Regular Backups": "",
   "Required Permission": "",
@@ -49,8 +44,6 @@
   "Advanced Operations": "",
   "All System Settings": "",
   "An unexpected error occurred. Please contact your administrator.": "",
-  "Apr": "",
-  "Aug": "",
   "Back to Deposits": "",
   "Back to Families": "",
   "Birth & Family": "",
@@ -83,7 +76,6 @@
   "Data Quality:": "",
   "Database:": "",
   "Day": "",
-  "Dec": "",
   "Demo Data": "",
   "Deposit Navigation": "",
   "Deposit Statistics": "",
@@ -98,5 +90,13 @@
   "Ensure all deposits for the tax year are closed before generating statements.": "",
   "Export Options": "",
   "F": "",
-  "Failed to save settings": ""
+  "Failed to save settings": "",
+  "Family Navigation": "",
+  "File Integrity:": "",
+  "Filtering": "",
+  "Finance": "",
+  "Finance Dashboard": "",
+  "Force Import": "",
+  "Force Import will retry and may create duplicate data.": "",
+  "Fund Allocation": ""
 }

@@ -1,8 +1,4 @@
 {
-  "Foreground Color": "",
-  "Background Color": "",
-  "Delete Calendar": "",
-  "Invalid Entry": "",
   "Calendar Name": "",
   "New Calendar": "",
   "bEnableExternalCalendarAPI disabled, but some calendars have access tokens": "",
@@ -76,7 +72,6 @@
   "Send family email": "",
   "Verification recorded": "",
   "Verification URL created": "",
-  "URL": "",
   "PDF": "",
   "Error sending email(s)": "",
   "Please check logs for more information": "",
@@ -104,5 +99,10 @@
   "Allow users to self-enroll in 2 factor authentication": "",
   "Requires users to self-enroll in 2 factor authentication": "",
   "ChurchCRM": "",
-  "User authenticated via API Key: ": ""
+  "User authenticated via API Key: ": "",
+  "Unsuccessful API Key authentication attempt": "",
+  "Unpinned Events": "",
+  "Manage 2 Factor Authentication": "",
+  "Two Factor Status": "",
+  "Please confirm disabling 2 Factor Auth for this user": ""
 }

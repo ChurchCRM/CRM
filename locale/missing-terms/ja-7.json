@@ -1,9 +1,4 @@
 {
-  "All system file signatures match the expected values.": "",
-  "Files with issues": "",
-  "Integrity check failed": "",
-  "Integrity check passed": "",
-  "Signature definition file exists but is not readable. Check file permissions.": "",
   "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures.": "",
   "Unable to contact integrity endpoint. Check web server error logs.": "",
   "Add any additional notes about this deposit": "",
@@ -101,5 +96,10 @@
   "Head Count": "",
   "Listing Events of Type": "",
   "Manage Check-ins": "",
-  "Members, Visitors, Children": ""
+  "Members, Visitors, Children": "",
+  "Monthly Averages": "",
+  "Monthly on the": "",
+  "No event types defined yet.": "",
+  "None (one-time event)": "",
+  "Optional - Add sermon notes or additional event details": ""
 }

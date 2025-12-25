@@ -1,9 +1,4 @@
 {
-  "Monthly Averages": "",
-  "Monthly on the": "",
-  "No event types defined yet.": "",
-  "None (one-time event)": "",
-  "Optional - Add sermon notes or additional event details": "",
   "Optional - leave blank if not tracking": "",
   "Optional notes about attendance...": "",
   "People Checked In": "",
@@ -101,5 +96,10 @@
   "Orphaned files from previous versions cleaned up": "",
   "Permission Required": "",
   "Please check the backup file and try again.": "",
-  "Please select a backup file to restore": ""
+  "Please select a backup file to restore": "",
+  "Re-download and re-apply the current version to restore all files to their official state": "",
+  "Ready to create a backup. Select your options above and click a backup button.": "",
+  "Ready to restore. Select a backup file and click Restore Database.": "",
+  "Recommendation: Review and delete these files before or after the upgrade.": "",
+  "Redirecting in": ""
 }

@@ -1,8 +1,4 @@
 {
-  "SW": "",
-  "W": "",
-  "WNW": "",
-  "WSW": "",
   "Search Family": "",
   "Show Family Head of House Names": "",
   "Search Groups": "",
@@ -98,5 +94,9 @@
   "Access Token": "",
   "New Access Token": "",
   "Delete Access Token": "",
-  "ICS URL": ""
+  "ICS URL": "",
+  "Foreground Color": "",
+  "Background Color": "",
+  "Delete Calendar": "",
+  "Invalid Entry": ""
 }

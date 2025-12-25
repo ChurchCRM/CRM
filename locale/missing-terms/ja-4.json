@@ -1,9 +1,4 @@
 {
-  "Unsuccessful API Key authentication attempt": "",
-  "Unpinned Events": "",
-  "Manage 2 Factor Authentication": "",
-  "Two Factor Status": "",
-  "Please confirm disabling 2 Factor Auth for this user": "",
   "2 Factor Authentication enrollment": "",
   "Unsupported Two Factor Authentication Configuration": "",
   "Unable To Begin Two Factor Authentication Enrollment": "",
@@ -98,5 +93,10 @@
   "English - South Africa": "",
   "English - Jamaica": "",
   "Swahili": "",
-  "One character from FirstName and one character from LastName": ""
+  "One character from FirstName and one character from LastName": "",
+  "Two characters from FirstName": "",
+  "Church Email not set, please visit the settings page": "",
+  "Telugu - India": "",
+  "Korean": "",
+  "System Logs": ""
 }

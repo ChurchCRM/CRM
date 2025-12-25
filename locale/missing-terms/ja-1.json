@@ -88,15 +88,15 @@
   "Sunday School group can't be modified, only in this two cases :": "",
   "You can create/delete sunday school group. ": "",
   "Add new roles, but not modify or rename the Student and the Teacher roles.": "",
-  "E": "",
   "ENE": "",
   "ESE": "",
-  "N": "",
   "NE": "",
   "NNE": "",
   "NNW": "",
   "NW": "",
-  "S": "",
   "SE": "",
-  "SSW": ""
+  "SSW": "",
+  "SW": "",
+  "WNW": "",
+  "WSW": ""
 }
