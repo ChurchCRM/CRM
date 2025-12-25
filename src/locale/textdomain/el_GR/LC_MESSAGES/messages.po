@@ -7930,3 +7930,2091 @@ msgstr "Μη έγκυρη ημερομηνία γέννησης: Λείπει ο
 msgid "Invalid Birth Date: Missing birth month and day."
 msgstr "Μη έγκυρη ημερομηνία γέννησης: Λείπει ο μήνας και η ημέρα γέννησης."
 
+#: 
+msgid "System"
+msgstr "Σύστημα"
+
+#. Context: locales
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "Αμχαρικά - Αιθιοπία"
+
+#. Context: locales
+#: 
+msgid "Czech"
+msgstr "Τσεχικά"
+
+#. Context: locales
+#: 
+msgid "Finnish"
+msgstr "Φινλανδικά"
+
+#. Context: locales
+#: 
+msgid "Greek"
+msgstr "Ελληνικά"
+
+#. Context: locales
+#: 
+msgid "Turkish"
+msgstr "Τουρκικά"
+
+#. Context: locales
+#: 
+msgid "Ukrainian"
+msgstr "Ουκρανικά"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "Όταν κάνετε κλικ στο \"Υποβολή στο GitHub\" θα κατευθυνθείτε στη σελίδα ζητημάτων GitHub με τις πληροφορίες του συστήματος που θα συμπληρωθούν."
+
+#: 
+msgid "Submit to GitHub"
+msgstr "Υποβολή στο GitHub"
+
+#: 
+msgid "Change role"
+msgstr "Αλλαγή ρόλου"
+
+#: 
+msgid "Closed"
+msgstr "Κλειστό"
+
+#: 
+msgid "Delete this person?"
+msgstr "Διαgrafe αυτό το πρόσωπο;"
+
+#: 
+msgid "Deposit ID"
+msgstr "Αναγνωριστικό Κατάθεσης"
+
+#: 
+msgid "Deposit Total"
+msgstr "Σύνολο Κατάθεσης"
+
+#: 
+msgid "Group Cart Status"
+msgstr "Κατάσταση Καλαθιού Ομάδας"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "Εάν αυτό δεν λειτουργεί, αντιγράψτε και επικολλήστε τον ακόλουθο σύνδεσμο στο πρόγραμμα περιήγησής σας"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "Λάβατε αυτό το email γιατί λάβαμε αίτημα δραστηριότητας στο λογαριασμό σας. Εάν δεν ζητήσατε αυτό μπορείτε να διαγράψετε με ασφάλεια αυτό το email."
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "Για να σταματήσετε να λαμβάνετε αυτά τα email, μπορείτε να στείλετε"
+
+#: 
+msgid "invalid group request"
+msgstr "Μη έγκυρη αίτηση ομάδας"
+
+#. Context: locales
+#: 
+msgid "Hindi - India"
+msgstr "Χίντι - Ινδία"
+
+#. Context: locales
+#: 
+msgid "Japanese"
+msgstr "Ιαπωνικά"
+
+#. Context: locales
+#: 
+msgid "Tamil - India"
+msgstr "Τάμιλ - Ινδία"
+
+#: 
+msgid "Not Subscribed"
+msgstr "Δεν Εγγράφηκε"
+
+#: 
+msgid "property"
+msgstr "περιουσία"
+
+#: 
+msgid "Default Zip"
+msgstr "Προεπιλογή Ταχυδρομικού"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Ανθρώποι Πιστωτικής Κάρτας"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Άτομα που έχουν ρυθμιστεί να πληρώνουν με πιστωτική κάρτα."
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "Ως μέρος της επαναφοράς, τα εξωτερικά αντίγραφα έχουν απενεργοποιηθεί. Εάν θέλετε να συνεχίσετε τα αυτόματα αντίγραφα, πρέπει να ενεργοποιήσετε ξανά χειροκίνητα τη ρύθμιση bEnableExternalBackupTarget."
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "Ο προηγούμενος έλεγχος ακεραιότητας πέρασε. Όλα τα hashes αρχείων συστήματος ταιριάζουν με τις αναμενόμενες τιμές."
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "Λίστα διαχωρισμένη με κόμματα κατάταξης που θα εμφανίζεται ως ανενεργη"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "Το MailChimp δεν έχει ρυθμιστεί"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "Παρακαλώ ενημερώστε το κλειδί MailChimp API σε:"
+
+#. Context: locales
+#: 
+msgid "English - South Africa"
+msgstr "Αγγλικά - Νότια Αφρική"
+
+#. Context: locales
+#: 
+msgid "English - Jamaica"
+msgstr "Αγγλικά - Τζαμάϊκα"
+
+#. Context: locales
+#: 
+msgid "Swahili"
+msgstr "Σουαχίλι"
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "Ένας χαρακτήρας από FirstName και ένας χαρακτήρας από LastName"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "Δύο χαρακτήρες από FirstName"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "Το email της εκκλησίας δεν έχει οριστεί, επισκεφθείτε τη σελίδα ρυθμίσεων"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "Τελούγκου - Ινδία"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Κορεατικά"
+
+#: 
+msgid "System Logs"
+msgstr "Σημειώματα Συστήματος"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Εφαρμόστε πολιτική ασφάλειας περιεχομένου (CSP) για προστασία από cross-site scripting. Όταν απενεργοποιηθεί, οι παραβιάσεις CSP αναφέρονται μόνο."
+
+#: 
+msgid "Enter event description..."
+msgstr "Εισαγάγετε περιγραφή εκδήλωσης..."
+
+#: 
+msgid "Event ID"
+msgstr "Εκδήλωση ID"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Εισαγάγετε κείμενο σημείωσης εδώ..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "Δεν έχουν προστεθεί σημειώσεις για αυτό το πρόσωπο."
+
+#: 
+msgid "Note"
+msgstr "Σημείωση"
+
+#: 
+msgid "Log Settings"
+msgstr "Ρυθμίσεις Καταγραφής"
+
+#: 
+msgid "Log Level:"
+msgstr "Επίπεδο Καταγραφής:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Αποθήκευση Επιπέδου Καταγραφής"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Προβολή αρχείων καταγραφής εφαρμογής. Κάντε κλικ σε ένα αρχείο καταγραφής για προβολή του περιεχομένου του."
+
+#: 
+msgid "Delete All Logs"
+msgstr "Διαγραφή Όλων των Αρχείων Καταγραφής"
+
+#: 
+msgid "No log files found."
+msgstr "Δεν βρέθηκαν αρχεία καταγραφής."
+
+#: 
+msgid "Log File"
+msgstr "Αρχείο Καταγραφής"
+
+#: 
+msgid "Size"
+msgstr "Μέγεθος"
+
+#: 
+msgid "Last Modified"
+msgstr "Τελευταία Τροποποίηση"
+
+#: 
+msgid "View"
+msgstr "Προβολή"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Προβολέας Αρχείου Καταγραφής"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Φίλτρο κατά επίπεδο καταγραφής:"
+
+#: 
+msgid "Error"
+msgstr "Σφάλμα"
+
+#: 
+msgid "Info"
+msgstr "Πληροφορία"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Αριθμός γραμμών προς εμφάνιση:"
+
+#: 
+msgid "Loading log file..."
+msgstr "Φόρτωση αρχείου καταγραφής..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Δεν έχουν προστεθεί σημειώσεις για αυτήν την οικογένεια."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Δημιουργήθηκε και αποθηκεύτηκε ένα διακριτικό πρόσβασης ημερολογίου."
+
+#: 
+msgid "added"
+msgstr "προστέθηκε"
+
+#: 
+msgid "Added"
+msgstr "Προστέθηκε"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Προστέθηκε με επιτυχία στο καλάθι"
+
+#: 
+msgid "All members already in cart"
+msgstr "Όλα τα μέλη είναι ήδη στο καλάθι"
+
+#: 
+msgid "already in cart"
+msgstr "ήδη στο καλάθι"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Οι ιδιότητες ημερολογίου δεν μπορούσαν να φορτωθούν. Αυτό το ημερολόγιο ενδέχεται να λείπει ένα διακριτικό πρόσβασης ή δεν έχει ρυθμιστεί σωστά."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Το καλάθι αδειάστηκε με επιτυχία"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Το καλάθι αδειάστηκε σε ομάδα με επιτυχία"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Αδειάστε ολόκληρο το καλάθι σας;"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Αποτυχία προσθήκης οικογένειας στο καλάθι"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Αποτυχία προσθήκης ομάδας στο καλάθι"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Αποτυχία προσθήκης στο καλάθι"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Αποτυχία αδείασης καλαθιού"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Αποτυχία αδείασης καλαθιού σε ομάδα"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Αποτυχία αφαίρεσης οικογένειας από το καλάθι"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Αποτυχία αφαίρεσης από το καλάθι"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Αποτυχία αφαίρεσης ομάδας"
+
+#: 
+msgid "Family added to cart"
+msgstr "Οικογένεια προστέθηκε στο καλάθι"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Οικογένεια αφαιρέθηκε από το καλάθι"
+
+#: 
+msgid "Group added to cart"
+msgstr "Ομάδα προστέθηκε στο καλάθι"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Ομάδα αφαιρέθηκε από το καλάθι"
+
+#: 
+msgid "in cart"
+msgstr "στο καλάθι"
+
+#: 
+msgid "members. Already had"
+msgstr "μέλη. Ήδη είχε"
+
+#: 
+msgid "people added to cart"
+msgstr "άνθρωποι προστέθηκαν στο καλάθι"
+
+#: 
+msgid "people already in cart"
+msgstr "άνθρωποι ήδη στο καλάθι"
+
+#: 
+msgid "people from cart"
+msgstr "άνθρωποι από το καλάθι"
+
+#: 
+msgid "people removed from cart"
+msgstr "άνθρωποι αφαιρέθηκαν από το καλάθι"
+
+#: 
+msgid "Person already in cart"
+msgstr "Πρόσωπο ήδη στο καλάθι"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Αφαιρέστε αυτήν την οικογένεια από το καλάθι;"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Αφαιρέστε αυτήν την ομάδα από το καλάθι;"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Αφαιρέστε αυτό το πρόσωπο από το καλάθι;"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Αφαιρέθηκε από το καλάθι με επιτυχία"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Ναι, Αδείασε Καλάθι"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Ναι, Αφαιρέστε"
+
+#: 
+msgid "Add Group"
+msgstr "Προσθήκη Ομάδας"
+
+#: 
+msgid "Back to Group List"
+msgstr "Επιστροφή σε Λίστα Ομάδων"
+
+#: 
+msgid "Default role updated."
+msgstr "Ο προεπιλεγμένος ρόλος ενημερώθηκε."
+
+#: 
+msgid "Edit Group"
+msgstr "Επεξεργασία Group"
+
+#: 
+msgid "Enter group name"
+msgstr "Εισάγετε όνομα ομάδας"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "Αποτυχία προσθήκης ρόλου. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Αποτυχία δημιουργίας ομάδας. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "Αποτυχία διαγραφής ρόλου. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Αποτυχία φόρτωσης κατάστασης καλαθιού."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Αποτυχία φόρτωσης ομάδων. Παρακαλώ ανανεώστε τη σελίδα."
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "Αποτυχία ορισμού προεπιλεγμένου ρόλου. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "Αποτυχία ενημέρωσης ομάδας. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "Αποτυχία ενημέρωσης ιδιοτήτων. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "Αποτυχία ενημέρωσης ονόματος ρόλου. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "Αφήστε κενό για να διατηρήσετε τον υπάρχοντα κωδικό πρόσβασης"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Παρακαλώ εισάγετε όνομα ομάδας."
+
+#: 
+msgid "Role added successfully."
+msgstr "Ρόλος προστέθηκε με επιτυχία."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Ρόλος διαγράφηκε με επιτυχία."
+
+#: 
+msgid "Role name updated."
+msgstr "Το όνομα του ρόλου ενημερώθηκε."
+
+#: 
+msgid "View Group"
+msgstr "Προβολή Ομάδας"
+
+#: 
+msgid "Events Today"
+msgstr "Εκδήλωσηs Today"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Επισκόπηση Σχολής Κυριακής"
+
+#: 
+msgid "Add Family Member"
+msgstr "Προσθήκη Μέλους Οικογένειας"
+
+#: 
+msgid "Address is required"
+msgstr "Η διεύθυνση είναι απαραίτητη"
+
+#: 
+msgid "Base URL is required"
+msgstr "Η βάση URL απαιτείται"
+
+#: 
+msgid "City is required"
+msgstr "Η πόλη είναι απαραίτητη"
+
+#: 
+msgid "Database name is required"
+msgstr "Το όνομα της βάσης δεδομένων είναι απαραίτητο"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "Το όνομα διακομιστή βάσης δεδομένων ή η διεύθυνση IP είναι απαραίτητη (π.χ. localhost ή 127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "Η θύρα διακομιστή βάσης δεδομένων είναι απαραίτητη (π.χ. 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "Το όνομα χρήστη της βάσης δεδομένων είναι απαραίτητο"
+
+#: 
+msgid "Email Address"
+msgstr "Διεύθυνση Email"
+
+#: 
+msgid "Email address"
+msgstr "Διεύθυνση email"
+
+#: 
+msgid "Enter family name"
+msgstr "Εισάγετε όνομα οικογένειας"
+
+#: 
+msgid "Family Information"
+msgstr "Πληροφορίες Οικογένειας"
+
+#: 
+msgid "Family name is required"
+msgstr "Το όνομα της οικογένειας είναι απαραίτητο"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "Το όνομα της οικογένειας πρέπει να έχει τουλάχιστον 2 χαρακτήρες"
+
+#: 
+msgid "First name"
+msgstr "Όνομα"
+
+#: 
+msgid "First name is required"
+msgstr "Το όνομα είναι απαραίτητο"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "Το όνομα πρέπει να έχει τουλάχιστον 2 χαρακτήρες"
+
+#: 
+msgid "Home phone is required"
+msgstr "Το τηλέφωνο του σπιτιού είναι απαραίτητο"
+
+#: 
+msgid "Home phone number"
+msgstr "Αριθμός τηλεφώνου του σπιτιού"
+
+#: 
+msgid "Invalid format"
+msgstr "Μη έγκυρη μορφή"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "Συμμετέχετε στην κοινότητά μας εγγράφοντας την οικογένειά σας"
+
+#: 
+msgid "Last name"
+msgstr "Επώνυμο"
+
+#: 
+msgid "Last name is required"
+msgstr "Το επώνυμο είναι απαραίτητο"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "Το επώνυμο πρέπει να έχει τουλάχιστον 2 χαρακτήρες"
+
+#: 
+msgid "Maximum length is"
+msgstr "Η μέγιστη διάρκεια είναι"
+
+#: 
+msgid "Minimum length is"
+msgstr "Η ελάχιστη διάρκεια είναι"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "Πρέπει να είναι έγκυρη διεύθυνση URL που ξεκινά με http:// ή https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "Πρέπει να είναι έγκυρη διεύθυνση URL που ξεκινά με http:// ή https:// (π.χ. http://localhost ή https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "Πρέπει να είναι έγκυρος αριθμός θύρας (π.χ. 3306)"
+
+#: 
+msgid "Next Member"
+msgstr "Επόμενο Μέλος"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Οι κωδικοί πρόσβασης δεν ταιριάζουν"
+
+#: 
+msgid "Phone Type"
+msgstr "Τύπος Τηλεφώνου"
+
+#: 
+msgid "Phone number"
+msgstr "Αριθμός τηλεφώνου"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Παρακαλώ προσθέστε τουλάχιστον ένα μέλος της οικογένειας."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Παρακαλώ διορθώστε τα σφάλματα επικύρωσης πριν συνεχίσετε."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Παρακαλώ εισάγετε έγκυρη διεύθυνση URL"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Παρακαλώ εισάγετε έγκυρη διεύθυνση email"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Παρακαλώ εισάγετε έγκυρη διεύθυνση email (π.χ. name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Παρακαλώ εισάγετε έγκυρο αριθμό"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Παρακαλώ εισάγετε έγκυρο αριθμό τηλεφώνου"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Παρακαλώ συμπληρώστε όλα τα υποχρεωτικά πεδία σωστά."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "Παρακαλώ ελέγξτε όλες τις πληροφορίες προσεκτικά πριν υποβάλετε. Μπορείτε να επιστρέψετε για να κάνετε αλλαγές εάν χρειάζεται."
+
+#: 
+msgid "Previous"
+msgstr "Προηγούμενο"
+
+#: 
+msgid "Registration Error"
+msgstr "Registration Σφάλμα"
+
+#: 
+msgid "Review & Submit"
+msgstr "Ανασκόπηση & Υποβολή"
+
+#: 
+msgid "Role in Family"
+msgstr "Ρόλος στην Οικογένεια"
+
+#: 
+msgid "Select date"
+msgstr "Επιλέξτε ημερομηνία"
+
+#: 
+msgid "Street address"
+msgstr "Διεύθυνση δρόμου"
+
+#: 
+msgid "Submit Registration"
+msgstr "Υποβολή Εγγραφής"
+
+#: 
+msgid "Zip code is required"
+msgstr "Ο ταχυδρομικός κώδικας είναι απαραίτητος"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "Ένας νέος κωδικός πρόσβασης έχει δημιουργηθεί και αποστολεί στη διεύθυνση email σας."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "Μια νέα έκδοση του ChurchCRM είναι διαθέσιμη για εγκατάσταση."
+
+#: 
+msgid "Actual Hash"
+msgstr "Πραγματικό Hash"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "Όλες οι προ-ενημέρωσης ελέγχους έχουν περάσει. Μπορείτε να προχωρήσετε με την ενημέρωση."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Επιτρέψτε Προ-κυκλοφορίες"
+
+#: 
+msgid "Apply Update Now"
+msgstr "Εφαρμόστε Ενημέρωση Τώρα"
+
+#: 
+msgid "Applying System Update..."
+msgstr "Εφαρμογή Ενημέρωσης Συστήματος..."
+
+#: 
+msgid "Back to Login"
+msgstr "Επιστροφή σε Σύνδεση"
+
+#: 
+msgid "Back to login"
+msgstr "Επιστροφή σε σύνδεση"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Αντίγραφο Παραλείφθηκε"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "Ελέγξτε το GitHub για τις τελευταίες πληροφορίες έκδοσης"
+
+#: 
+msgid "Complete"
+msgstr "Ολοκληρωμένο"
+
+#: 
+msgid "Continue to Backup"
+msgstr "Συνέχεια σε Αντίγραφο"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "Συνέχεια σε Λήψη & Εφαρμογή"
+
+#: 
+msgid "Create Backup"
+msgstr "Δημιουργία Αντιγράφου"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "Δημιουργήστε ένα αντίγραφο της βάσης δεδομένων σας πριν εφαρμόσετε την ενημέρωση."
+
+#: 
+msgid "Current Version:"
+msgstr "Τρέχουσα Έκδοση:"
+
+#: 
+msgid "Database Backup"
+msgstr "Αντίγραφο Βάσης Δεδομένων"
+
+#: 
+msgid "Download & Apply"
+msgstr "Λήψη & Εφαρμογή"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "Λήψη και Εφαρμογή Ενημέρωσης Συστήματος"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "Λήψη της τελευταίας έκδοσης και εφαρμογή της στην εγκατάσταση ChurchCRM σας."
+
+#: 
+msgid "Downloaded"
+msgstr "Λήφθηκε"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "Λήψη τελευταίας έκδοσης από GitHub..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "Εισάγετε το όνομα σύνδεσής σας και θα σας στείλουμε ένα email με σύνδεσμο για επαναφορά του κωδικού πρόσβασης."
+
+#: 
+msgid "Expected Hash"
+msgstr "Αναμονήed Hash"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Αποτυχία δημιουργίας αντιγράφου."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Αποτυχία λήψης πακέτου ενημέρωσης."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Αποτυχία ανανέωσης πληροφοριών αναβάθμισης από GitHub."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "Αποτυχία ανανέωσης πληροφοριών αναβάθμισης. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "Αποτυχία αποθήκευσης ρύθμισης. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "File Name"
+msgstr "Όνομα Αρχείου"
+
+#: 
+msgid "Files Missing"
+msgstr "Αρχεία που λείπουν"
+
+#: 
+msgid "Files Modified"
+msgstr "Αρχεία Τροποποιημένα"
+
+#: 
+msgid "Go to Login"
+msgstr "Μεταβείτε σε Σύνδεση"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "Καταλαβαίνω - Συνέχεια"
+
+#: 
+msgid "Language updated to"
+msgstr "Γλώσσα ενημερώθηκε σε"
+
+#: 
+msgid "Login Name is required"
+msgstr "Το όνομα σύνδεσης είναι απαραίτητο"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "Αφού λάβετε το email, μπορείτε να συνδεθείτε με τον προσωρινό κωδικό πρόσβασης και να τον αλλάξετε σε κάτι που προτιμάτε."
+
+#: 
+msgid "Password Reset Error"
+msgstr "Password Reset Σφάλμα"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "Η Επαναφορά Κωδικού Πρόσβασης Ήταν Επιτυχής"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "Παρακαλώ ελέγξτε το email σας (συμπεριλαμβανομένου του φακέλου spam/junk) για τον προσωρινό κωδικό πρόσβασης."
+
+#: 
+msgid "Warnings"
+msgstr "Προειδοποιήσεις"
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 χαρακτήρες"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "Όλες οι υπογραφές αρχείων συστήματος ταιριάζουν με τις αναμενόμενες τιμές."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "Προσθέστε οποιαδήποτε πρόσθετη σημείωση σχετικά με αυτή την κατάθεση"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "Το ποσό υπερβαίνει τη μέγιστη επιτρεπόμενη τιμή (999999.99)."
+
+#: 
+msgid "Checks"
+msgstr "Έλεγχοι"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Σφάλμα deleting payments"
+
+#: 
+msgid "Error loading payments"
+msgstr "Σφάλμα loading payments"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Σφάλμα saving deposit"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "Όλα τα αρχεία συστήματος έχουν περάσει τον έλεγχο ακεραιότητας."
+
+#: 
+msgid "Base URL"
+msgstr "Βάση URL"
+
+#: 
+msgid "Copy"
+msgstr "Αντιγραφή"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "Παρουσιάστηκε σφάλμα κατά την εισαγωγή δεδομένων δείγματος"
+
+#: 
+msgid "All Event Types"
+msgstr "All Εκδήλωση Types"
+
+#: 
+msgid "All Types"
+msgstr "Όλοι οι τύποι"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "Είστε σίγουρος ότι θέλετε να διαγράψετε αυτό το αρχείο εισόδου;"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "Κατηγορίες Μέτρησης Παρουσίας"
+
+#: 
+msgid "Attendance Notes"
+msgstr "Σημειώσεις Παρουσίας"
+
+#: 
+msgid "Change Event"
+msgstr "Change Εκδήλωση"
+
+#: 
+msgid "Check In"
+msgstr "Έλεγχος Εισόδου"
+
+#: 
+msgid "Check In Person"
+msgstr "Έλεγχος Προσώπου Εισόδου"
+
+#: 
+msgid "Check In to Event"
+msgstr "Check In to Εκδήλωση"
+
+#: 
+msgid "Check-in"
+msgstr "Ημερολόγιο εισόδου"
+
+#: 
+msgid "Choose an event..."
+msgstr "Επιλέξτε ένα εκδήλωση..."
+
+#: 
+msgid "Clear"
+msgstr "Καθαρισμός"
+
+#: 
+msgid "Create"
+msgstr "Δημιουργία"
+
+#: 
+msgid "Create New Event"
+msgstr "Create New Εκδήλωση"
+
+#: 
+msgid "Date & Time"
+msgstr "Ημερομηνία & Ώρα"
+
+#: 
+msgid "Default Start Time"
+msgstr "Προεπιλεγμένη Ώρα Έναρξης"
+
+#: 
+msgid "Delete Event"
+msgstr "Διαγραφή Εκδήλωσης"
+
+#: 
+msgid "Edit Event"
+msgstr "Επεξεργασία Event"
+
+#: 
+msgid "Editing Event"
+msgstr "Επεξεργασίαing Event"
+
+#: 
+msgid "Event"
+msgstr "Εκδήλωση"
+
+#: 
+msgid "Event Type Name"
+msgstr "Εκδήλωση Type Name"
+
+#: 
+msgid "Event Types"
+msgstr "Εκδήλωση Types"
+
+#: 
+msgid "Filter Events"
+msgstr "Filter Εκδήλωσηs"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "Filter by Εκδήλωση Type"
+
+#: 
+msgid "Filter by Type"
+msgstr "Φίλτρο κατά τύπο"
+
+#: 
+msgid "Head Count"
+msgstr "Σύνολο ατόμων"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "Listing Εκδήλωσηs of Type"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "Διαχείριση Εισόδων"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "Μέλη, Επισκέπτες, Παιδιά"
+
+#: 
+msgid "Monthly Averages"
+msgstr "Μηνιαία Μέσα"
+
+#: 
+msgid "Monthly on the"
+msgstr "Μηνιαία στο"
+
+#: 
+msgid "No event types defined yet."
+msgstr "Δεν έχουν οριστεί τύποι εκδήλωσης ακόμη."
+
+#: 
+msgid "None (one-time event)"
+msgstr "Κανένα (εκδήλωση μιας φοράς)"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "Προαιρετικό - Προσθέστε σημειώσεις κηρύγματος ή πρόσθετες λεπτομέρειες εκδήλωσης"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "Προαιρετικό - αφήστε κενό εάν δεν παρακολουθείτε"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "Προαιρετικές σημειώσεις σχετικά με τη συμμετοχή..."
+
+#: 
+msgid "People Checked In"
+msgstr "Άτομα που Κάνουν Είσοδο"
+
+#: 
+msgid "People in Cart"
+msgstr "Άτομα στο Καλάθι"
+
+#: 
+msgid "Person Checking In"
+msgstr "Άτομο Κάνει Είσοδο"
+
+#: 
+msgid "Recurrence"
+msgstr "Επανάληψη"
+
+#: 
+msgid "Required fields"
+msgstr "Απαιτούμενα πεδία"
+
+#: 
+msgid "Save Event Type"
+msgstr "Save Εκδήλωση Type"
+
+#: 
+msgid "Search by name or email..."
+msgstr "Αναζήτηση κατά όνομα ή ηλ. ταχυδρομείο..."
+
+#: 
+msgid "Search for adult..."
+msgstr "Αναζητήστε για ενήλικο..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "Αναζητήστε για επόπτη..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "Select Εκδήλωση for Check-In"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "Επιλέξτε ημερομηνία / ώρα έναρξης και λήξης"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "Sermon / Εκδήλωση Text"
+
+#: 
+msgid "Unclassified"
+msgstr "Ανταξιόλογο"
+
+#: 
+msgid "Upgrade database now"
+msgstr "Αναβάθμιση βάσης δεδομένων τώρα"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "%d Αποξενωμένα Αρχεία Ανιχνεύθησαν"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d αρχεία έχουν τροποποιηθεί ή λείπουν. Χρησιμοποιήστε Force Re-install για να επαναφέρετε τις επίσημες εκδόσεις."
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d αρχεία έχουν αποτύχει της επαλήθευσης της ακεραιότητας."
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d αρχεία θα διαγραφούν μόνιμα."
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "%d αποξενωμένα αρχεία ανιχνεύθησαν στον διακομιστή σας."
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(ανανέωση από το GitHub)"
+
+#: 
+msgid "Access Denied"
+msgstr "Πρόσβαση Απορρίφθη"
+
+#: 
+msgid "Add event permission"
+msgstr "Προσθήκη άδειας εκδήλωσης"
+
+#: 
+msgid "Add records permission"
+msgstr "Προσθήκη άδειας εγγραφών"
+
+#: 
+msgid "Administrator privileges"
+msgstr "Προνόμια διαχειριστή"
+
+#: 
+msgid "All Files Verified"
+msgstr "Όλα τα αρχεία επαληθεύθηκαν"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "Όλα τα αρχεία συστήματος ταιριάζουν με τις αναμενόμενες υπογραφές τους."
+
+#: 
+msgid "Application Integrity"
+msgstr "Ακεραιότητα Εφαρμογής"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "Τα αρχεία εφαρμογής ενημερώθηκαν στην τελευταία έκδοση"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "Είστε σίγουρος ότι θέλετε να διαγράψετε όλα τα ορφανά αρχεία;"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "Επιστροφή σε Πληροφορίες Αποσφαλμάτωσης"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "Βέλτιστες Πρακτικές Αντιγράφου"
+
+#: 
+msgid "Backup Status"
+msgstr "Κατάσταση Αντιγράφου"
+
+#: 
+msgid "Backup Type"
+msgstr "Τύπος Αντιγράφου"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "Αντίγραφο ολοκληρώθηκε! Κάντε κλικ παρακάτω για λήψη."
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "Το αντίγραφο ολοκληρώθηκε με επιτυχία!"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "Αντίγραφο λήφθηκε. Το αντίγραφο διακομιστή αφαιρέθηκε."
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "Το αντίγραφο απέτυχε. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "Αντίγραφο δημιουργήθηκε και αντιγράφηκε σε απομακρυσμένο διακομιστή"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "Αντίγραφο σε εξέλιξη, παρακαλώ περιμένετε..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "Αντίγραφο σε Εξωτερική Αποθήκευση"
+
+#: 
+msgid "CSV export permission"
+msgstr "Άδεια εξαγωγής CSV"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "Η Βάση Δεδομένων Αποκαταστάθηκε Επιτυχώς!"
+
+#: 
+msgid "Delete records permission"
+msgstr "Άδεια διαγραφής εγγραφών"
+
+#: 
+msgid "Deletion Results"
+msgstr "Αποτελέσματα Διαγραφής"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "Σύρετε και αποθέστε το αρχείο δημιουργίας αντιγράφων ασφαλείας εδώ"
+
+#: 
+msgid "Edit records permission"
+msgstr "Επεξεργασία records permission"
+
+#: 
+msgid "Encryption"
+msgstr "Κρυπτογράφηση"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "Εξαγωγήs database structure and data. Smaller file size."
+
+#: 
+msgid "Go to Dashboard"
+msgstr "Πηγαίνετε στο Ταμπλό"
+
+#: 
+msgid "Group management access"
+msgstr "Πρόσβαση διαχείρισης ομάδας"
+
+#: 
+msgid "Important Warning"
+msgstr "Σημαντική Προειδοποίηση"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "Περιλαμβάνει βάση δεδομένων και όλες τις φωτογραφίες που ανέβηκαν."
+
+#: 
+msgid "Menu options access"
+msgstr "Πρόσβαση στις επιλογές μενού"
+
+#: 
+msgid "Missing Files"
+msgstr "Ελλιπή Αρχεία"
+
+#: 
+msgid "Modified Files"
+msgstr "Τροποποιημένα Αρχεία"
+
+#: 
+msgid "Multiple Copies"
+msgstr "Πολλαπλά Αντίγραφα"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "Δεν Βρέθηκαν Ορφανά Αρχεία"
+
+#: 
+msgid "Notes access"
+msgstr "Πρόσβαση σημειώσεων"
+
+#: 
+msgid "Orphaned Files"
+msgstr "Ορφανά Αρχεία"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "Διαχείριση Ορφανών Αρχείων"
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "Επιλέξτε αρχείο αντιγράφου ασφαλείας για επαναφορά"
+
+#: 
+msgid "Redirecting in"
+msgstr "Ανακατεύθυνση σε"
+
+#: 
+msgid "Refresh List"
+msgstr "Ανανέωση Λίστας"
+
+#: 
+msgid "Regular Backups"
+msgstr "Κανονικά Αντίγραφα Ασφαλείας"
+
+#: 
+msgid "Required Permission"
+msgstr "Απαιτούμενη Άδεια"
+
+#: 
+msgid "Required permission"
+msgstr "Απαιτούμενη άδεια"
+
+#: 
+msgid "Restore Status"
+msgstr "Κατάσταση Επαναφοράς"
+
+#: 
+msgid "Restore failed."
+msgstr "Η επαναφορά απέτυχε."
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "Η επαναφορά είναι σε εξέλιξη, παρακαλώ περιμένετε..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "Ανασκοπήστε τα αρχεία παρακάτω και διαγράψτε τα για καλύτερη ασφάλεια."
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "Προειδοποίηση Ασφάλειας: Ανιχνεύθηκαν Ορφανά Αρχεία"
+
+#: 
+msgid "Select Backup File"
+msgstr "Επιλέξτε Αρχείο Αντιγράφου"
+
+#: 
+msgid "Supported formats:"
+msgstr "Υποστηριζόμενες μορφές:"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "Περίληψη Αναβάθμισης"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "Χρησιμοποιήστε εξωτερικά εργαλεία (GPG, 7-Zip) για κρυπτογραφία αντιγράφων ασφαλείας."
+
+#: 
+msgid "User authentication"
+msgstr "Ταυτοποίηση Χρήστη"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "User must have Add Εκδήλωση permission"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "Ο χρήστης πρέπει να έχει άδεια Menu Options"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "Τι είναι τα Ορφανά Αρχεία;"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "Θα αποσυνδεθείτε και θα ανακατευθυνθείτε στη σελίδα σύνδεσης."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "Η εγκατάστασή σας ChurchCRM είναι καθαρή. Όλα τα αρχεία στον διακομιστή ταιριάζουν με την επίσημη έκδοση."
+
+#: 
+msgid " Deposit #"
+msgstr " Κατάθεση #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d ελλείπουσα ταξινόμηση"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d ελλείπον φύλο"
+
+#: 
+msgid "%d missing role"
+msgstr "%d ελλείπουσα ρόλο"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "Μια πληρωμή είναι μια πραγματική δωρεά που λήφθηκε. Θα προστεθεί στην τρέχουσα κατάθεση."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "Μια υπόσχεση είναι μια δέσμευση να δώσει. Δεν συνδέεται με ένα δελτίο κατάθεσης."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Προσθήκη Άλλου Μέλους Οικογένειας"
+
+#: 
+msgid "Add Pledge"
+msgstr "Προσθήκη Υπόσχεσης"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Πίνακας Ελέγχου Διαχειριστή"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Προηγμένες Λειτουργίες"
+
+#: 
+msgid "All System Settings"
+msgstr "Όλες οι Ρυθμίσεις Συστήματος"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "Παρουσιάστηκε απροσδόκητο σφάλμα. Επικοινωνήστε με το διαχειριστή σας."
+
+#: 
+msgid "Apr"
+msgstr "Απρ"
+
+#: 
+msgid "Aug"
+msgstr "Αυγ"
+
+#: 
+msgid "Back to Deposits"
+msgstr "Επιστροφή σε Καταθέσεις"
+
+#: 
+msgid "Back to Families"
+msgstr "Επιστροφή σε Οικογένειες"
+
+#: 
+msgid "Birth & Family"
+msgstr "Γέννηση & Οικογένεια"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "Η εξαγωγή CSV περιορίζεται στους διαχειριστές."
+
+#: 
+msgid "Cart"
+msgstr "Καλάθι"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "Αλλάξτε αυτό στις Ρυθμίσεις Συστήματος."
+
+#: 
+msgid "Church name is set to default value"
+msgstr "Το όνομα της εκκλησίας είναι ορισμένο σε προεπιλεγμένη τιμή"
+
+#: 
+msgid "Contact Information"
+msgstr "Πληροφορίες Επαφής"
+
+#: 
+msgid "Database:"
+msgstr "Βάση Δεδομένων:"
+
+#: 
+msgid "Day"
+msgstr "Ημέρα"
+
+#: 
+msgid "Dec"
+msgstr "Δεκ"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "Πλοήγηση Κατάθεσης"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "Στατιστικά Κατάθεσης"
+
+#: 
+msgid "Donor Families"
+msgstr "Οικογένειες Δωρητών"
+
+#: 
+msgid "Edit Deposit"
+msgstr "Επεξεργασία Deposit"
+
+#: 
+msgid "Edit Family"
+msgstr "Επεξεργασία Family"
+
+#: 
+msgid "Edit Payment"
+msgstr "Επεξεργασία Payment"
+
+#: 
+msgid "Edit Person"
+msgstr "Επεξεργασία Person"
+
+#: 
+msgid "Export Options"
+msgstr "Εξαγωγή Options"
+
+#: 
+msgid "Feb"
+msgstr "Φεβ"
+
+#: 
+msgid "Filtering"
+msgstr "Φιλτράρισμα"
+
+#: 
+msgid "Import failed"
+msgstr "Εισαγωγή Απέτυχε"
+
+#: 
+msgid "Import from CSV files"
+msgstr "Εισαγωγή από Αρχεία CSV"
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "Εγκαταστήστε πιστοποιητικό TLS/SSL"
+
+#: 
+msgid "Location"
+msgstr "Τοποθεσία"
+
+#: 
+msgid "Mar"
+msgstr "Μαρ"
+
+#: 
+msgid "Membership Reports"
+msgstr "Αναφορές Ιδιοκτησίας"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "Ελλιπή Μυστικά Κλειδιά"
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "Κ., Δα., Δρ."
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "Επόμενες 7 ημέρες και περασμένες 7 ημέρες"
+
+#: 
+msgid "No Active Deposit"
+msgstr "Κανένα Ενεργό Ημερολόγιο"
+
+#: 
+msgid "No active funds configured."
+msgstr "Δεν έχει ρυθμιστεί ενεργό κεφάλαιο."
+
+#: 
+msgid "No deposits found."
+msgstr "Δεν βρέθηκαν καταθέσεις."
+
+#: 
+msgid "No format"
+msgstr "Κανένα Φορμάτ"
+
+#: 
+msgid "Nov"
+msgstr "Νοε"
+
+#: 
+msgid "Open"
+msgstr "Ανοίγω"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "Οργάνωση, ζώνη ώρας, email"
+
+#: 
+msgid "Organizational structure"
+msgstr "Οργανωτική δομή"
+
+#: 
+msgid "Payment"
+msgstr "Πληρωμή"
+
+#: 
+msgid "Pledge Reports"
+msgstr "Αναφορές Υπόσχεσης"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "Τυπώστε ή στείλε ετήσιες δηλώσεις δωρεάς σε όλους τους δότες."
+
+#: 
+msgid "Recording a Payment"
+msgstr "Καταγραφή Πληρωμής"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "Καταγραφή Υπόσχεσης"
+
+#: 
+msgid "Report Tips"
+msgstr "Συμβουλές Αναφοράς"
+
+#: 
+msgid "Reset"
+msgstr "Επαναφορά"
+
+#: 
+msgid "Restore"
+msgstr "Επαναφορά"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "Επαναφορά από αρχείο αντιγράφου ασφαλείας. Διαγράφει τα υπάρχοντα δεδομένα."
+
+#: 
+msgid "Review Donation Funds"
+msgstr "Ανασκόπηση Κεφαλαίων Δωρεάς"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "Αποθήκευση και Προσθήκη Νέας Οικογένειας"
+
+#: 
+msgid "Sep"
+msgstr "Σεπ"
+
+#: 
+msgid "Server error"
+msgstr "Σφάλμα Διακομιστή"
+
+#: 
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "Οι ρυθμίσεις αποθηκεύτηκαν με επιτυχία"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "Εργασίες Ρύθμισης:"
+
+#: 
+msgid "Social Media"
+msgstr "Μέσα Κοινωνικής Δικτύωσης"
+
+#: 
+msgid "Status:"
+msgstr "Κατάσταση:"
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "Περίληψη των υποσχέσεων και πληρωμών ανά κεφάλαιο για το οικονομικό έτος."
+
+#: 
+msgid "System Configuration:"
+msgstr "Διαμόρφωση Συστήματος:"
+
+#: 
+msgid "System Health"
+msgstr "Υγεία Συστήματος"
+
+#: 
+msgid "System Info"
+msgstr "Πληροφορίες Συστήματος"
+
+#: 
+msgid "Today"
+msgstr "Σήμερα"
+
+#: 
+msgid "Total"
+msgstr "Σύνολο"
+
+#: 
+msgid "Total Deposits:"
+msgstr "Σύνολο Καταθέσεων:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "Ανικανοποίητες Προϋποθέσεις"
+
+#: 
+msgid "Update Church Name"
+msgstr "Ενημέρωση Ονόματος Εκκλησίας"
+
+#: 
+msgid "Upgrade"
+msgstr "Αναβάθμιση"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "Χρησιμοποιήστε φίλτρα ταξινόμησης και οικογένειας για δημιουργία αναφορών για συγκεκριμένες ομάδες δοτών."
+
+#: 
+msgid "User accounts and roles"
+msgstr "Λογαριασμοί χρήστη και ρόλοι"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "Ο χρήστης πρέπει να είναι Admin ή να έχει άδεια Finance"
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "Το οικονομικό σας έτος ξεκινά σε μήνα"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(Εισάγετε πολιτεία / περιοχή για χώρες χωρίς προκαθορισμένες πολιτείες)"
+
+#: 
+msgid "Available"
+msgstr "Διαθέσιμο"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "Η διαμόρφωση βάσης URL είναι μη έγκυρη. Παρακαλώ ελέγξτε το αρχείο Config.php σας."
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "Η βάση URL δεν έχει ρυθμιστεί στο Config.php"
+
+#: 
+msgid "Contact"
+msgstr "Επαφή"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "Critical Configuration Σφάλμα"
+
+#: 
+msgid "Error:"
+msgstr "Σφάλμα:"
+
+#: 
+msgid "Group Memberships"
+msgstr "Ομαδικά Μέλη"
+
+#: 
+msgid "Language"
+msgstr "Γλώσσα"
+
+#: 
+msgid "Local development:"
+msgstr "Τοπική ανάπτυξη:"
+
+#: 
+msgid "Locale Support"
+msgstr "Υποστήριξη Τοπικών Ρυθμίσεων"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "Τοποθεσία & Πληροφορίες Επαφής"
+
+#: 
+msgid "New to"
+msgstr "Νέα στο"
+
+#: 
+msgid "No locales configured"
+msgstr "Δεν έχει ρυθμιστεί τοπική ρύθμιση"
+
+#: 
+msgid "Not Available"
+msgstr "Δεν Διατίθεται"
+
+#: 
+msgid "Register Now"
+msgstr "Εγγραφή Τώρα"
+
+#: 
+msgid "Register Your Church"
+msgstr "Εγγραφή της Εκκλησίας σας"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "Set true to disable entering personal addresses for unaffiliated people in Person Επεξεργασίαor. Set false to enable entering addresses for people without a family assignment."
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "Εγκατάσταση υποκατεύθυνσης:"
+
+#: 
+msgid "System Support"
+msgstr "Υποστήριξη Συστήματος"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "Δεν είναι δυνατή η ανίχνευση τοπικών ρυθμίσεων συστήματος"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "Δεν είναι δυνατή η καθορισμός διαθέσιμων τοπικών ρυθμίσεων"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "Δεν είναι δυνατή η φόρτωση πληροφοριών τοπικής ρύθμισης"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "Δεν είναι δυνατή η φόρτωση της λίστας κατάστασης. Παρακαλώ ελέγξτε τη σύνδεσή σας στο δίκτυο."
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "Ενημερώστε το σε ένα έγκυρο URL που:"
+
+#: 
+msgid "View Logs"
+msgstr "Προβολή Σημειωμάτων"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "Προβολή και διαχείριση αρχείων καταγραφής συστήματος για αποσφαλμάτωση."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "Πρέπει να εισαγάγετε ένα Επίθετο."
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "Η ιδιωτικότητά σας είναι σημαντική. Δεν κοινοποιούμε ποτέ τις πληροφορίες σας σε τρίτα μέρη."
+
+#: 
+msgid "Additional Information"
+msgstr "Πρόσθετες Πληροφορίες"
+
+#: 
+msgid "All information is correct"
+msgstr "Όλες οι πληροφορίες είναι σωστές"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "Εκχώρηση Ευκαιριών"
+
+#: 
+msgid "Assign Property"
+msgstr "Εκχώρηση Περιουσίας"
+
+#: 
+msgid "Choose a property..."
+msgstr "Επιλέξτε μια περιουσία..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "Επιλέξτε ευκαιρίες..."
+
+#: 
+msgid "Edit Role"
+msgstr "Επεξεργασία Role"
+
+#: 
+msgid "Edited"
+msgstr "Επεξεργασμένο"
+
+#: 
+msgid "Newsletter"
+msgstr "Ενημέρωση"
+
+#: 
+msgid "No assigned family"
+msgstr "Κανένα εκχωρημένο πρόσωπο"
+
+#: 
+msgid "Personal"
+msgstr "Προσωπικός"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "Παρακαλώ επιβεβαιώστε τις πληροφορίες της οικογένειάς σας:"
+
+#: 
+msgid "Remove Property"
+msgstr "Αφαίρεση Περιουσίας"
+
+#: 
+msgid "Select Opportunities"
+msgstr "Επιλέξτε Ευκαιρίες"
+
+#: 
+msgid "Select Property"
+msgstr "Επιλέξτε Περιουσία"
+
+#: 
+msgid "Submit Verification"
+msgstr "Υποβολή Επαλήθευσης"
+
+#: 
+msgid "Translation incomplete"
+msgstr "Μετάφραση Ημιτελής"
+
+#: 
+msgid "Visit Our Website"
+msgstr "Επισκεφθείτε τον Ιστότοπό μας"
+
+#: 
+msgid "Volunteer"
+msgstr "Εθελοντής"
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "Η αίτημά σας για επαλήθευση έχει λάβει. Ευχαριστούμε που διατηρείτε τις πληροφορίες σας ενημερωμένες."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "Παρουσιάστηκε σφάλμα. Επικοινωνήστε με το διαχειριστή του συστήματός σας."
+
+#: 
+msgid "Backup failed"
+msgstr "Η δημιουργία αντιγράφου ασφαλείας απέτυχε"
+
+#: 
+msgid "Database reset failed"
+msgstr "Η επαναφορά της βάσης δεδομένων απέτυχε"
+
+#: 
+msgid "Database restore failed"
+msgstr "Η αποκατάσταση της βάσης δεδομένων απέτυχε"
+
+#: 
+msgid "Demo data import failed"
+msgstr "Η εισαγωγή δεδομένων δείγματος απέτυχε"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "Τα δεδομένα δείγματος φορτώθηκαν με επιτυχία"
+
+#: 
+msgid "Download failed"
+msgstr "Η λήψη απέτυχε"
+
+#: 
+msgid "Remote backup failed"
+msgstr "Το αντίγραφο ασφαλείας απομακρυσμένου χώρου απέτυχε"
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA Ενεργοποιημένο"
+
+#: 
+msgid "Active Users"
+msgstr "Ενεργοί Χρήστες"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "ChMeetings Εξαγωγή"
+
+#: 
+msgid "Delete User"
+msgstr "Διαγραφή Χρήστης"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "Εξαγωγή all people data in ChMeetings format for import into external systems."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "Εξαγωγή to ChMeetings CSV"
+
+#: 
+msgid "Exporting..."
+msgstr "Εξαγωγήing..."
+
+#: 
+msgid "Invalid request data"
+msgstr "Μη έγκυρα δεδομένα αιτήματος"
+
+#: 
+msgid "Invalid status"
+msgstr "Μη έγκυρη κατάσταση"
+
+#: 
+msgid "Show"
+msgstr "Εμφάνιση"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "Δύο Παράγοντες Ελέγχου Ταυτότητας"
+
+#: 
+msgid "Validation pending"
+msgstr "Επαλήθευση σε Αναμονή"
+
+#: 
+msgid "A "
+msgstr "Ένα "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "Το ADD, Delete και οι αλλαγές σειράς είναι άμεσες. Οι αλλαγές στο όνομα και την περιγραφή πρέπει να αποθηκευτούν κάνοντας κλικ στο 'Αποθήκευση αλλαγών'."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "Είστε σίγουρος ότι θέλετε να διαγράψετε"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "Οι αλλαγές δεν αποθηκεύτηκαν! Παρακαλώ διορθώστε και δοκιμάστε ξανά!"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "Επιβεβαίωση Διαγραφής"
+
+#: 
+msgid "Existing"
+msgstr "Υπάρχον"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "Υπάρχον Custom Family Fields"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "Υπάρχον Custom Person Fields"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "Υπάρχον Volunteer Opportunities"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Μη έγκυρο διακριτικό CSRF"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "Μη έγκυρα πεδία ή επιλογές."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Το στοιχείο διαγράφηκε με επιτυχία"
+
+#: 
+msgid "Move down"
+msgstr "Μετακίνηση Κάτω"
+
+#: 
+msgid "Move up"
+msgstr "Μετακίνηση Πάνω"
+
+#: 
+msgid "Order"
+msgstr "Παραγγελία"
+
+#: 
+msgid "Percentage"
+msgstr "Ποσοστό"
+
+#: 
+msgid "Person Properties"
+msgstr "Ιδιότητες Προσώπου"
+
+#: 
+msgid "Property Type"
+msgstr "Τύπος Περιουσίας"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Ισπανικά - Αργεντινή"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Ισπανικά - Κολομβία"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Ισπανικά - Ελ Σαλβαδόρ"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Ισπανικά - Μεξικό"
+
