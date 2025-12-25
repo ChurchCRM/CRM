@@ -330,3 +330,1839 @@ msgstr "डेटा आयात सफल."
 msgid "people were imported"
 msgstr "व्यक्तियों का आयात किया गया"
 
+#: 
+msgid "Add Cart to Event"
+msgstr "कार्ट को इवेंट में जोड़ें"
+
+#: 
+msgid "OR"
+msgstr "या"
+
+#: 
+msgid "Your cart is empty!"
+msgstr "आपका कार्ट खाली है!"
+
+#: 
+msgid "No family name entered!"
+msgstr "कोई परिवार का नाम नहीं डाला गया!"
+
+#: 
+msgid "Add Cart to Family"
+msgstr "कार्ट को परिवार में जोड़ें"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Name"
+msgstr "नाम"
+
+#: 
+msgid "Assign Role"
+msgstr "भूमिका सौंपें"
+
+#: 
+msgid "Already in a family"
+msgstr "पहले से ही एक परिवार में"
+
+#: 
+msgid "Create new family"
+msgstr "नया परिवार बनाएं"
+
+#: 
+msgid "If adding a new family, enter data below."
+msgstr "यदि नया परिवार जोड़ रहे हैं, तो नीचे डेटा दर्ज करें।"
+
+#: 
+msgid "Use address/contact data from"
+msgstr "पता/संपर्क डेटा का उपयोग यहाँ से करें"
+
+#: 
+msgid "Only the new data below"
+msgstr "केवल नीचे दिया गया नया डेटा"
+
+#: 
+msgid "Do not auto-format"
+msgstr "ऑटो-फॉर्मेट न करें"
+
+#: 
+msgid "Add to Family"
+msgstr "परिवार में जोड़ें"
+
+#: 
+msgid "Add Cart to Group"
+msgstr "कार्ट को समूह में जोड़ें"
+
+#: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "उस समूह का चयन करें जिसमें आप अपना कार्ट जोड़ना चाहते हैं"
+
+#: 
+msgid "Select Group"
+msgstr "समूह चुनें"
+
+#: 
+msgid "No Group Selected"
+msgstr "कोई समूह नहीं चुना गया"
+
+#: 
+msgid "Add to Group"
+msgstr "समूह में जोड़ें"
+
+#: 
+msgid "View Your Cart"
+msgstr "अपना कार्ट देखें"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "आपके कार्ट में कोई आइटम नहीं है।"
+
+#: 
+msgid "Back to Menu"
+msgstr "मेनू पर वापस जाएं"
+
+#: 
+msgid "Empty Cart"
+msgstr "कार्ट खाली करें"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "समूह के लिए कार्ट खाली करें"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "परिवार के लिए कार्ट खाली करें"
+
+#: 
+msgid "Map Cart"
+msgstr "मानचित्र कार्ट"
+
+#: 
+msgid "Name Tags"
+msgstr "नाम टैग"
+
+#: 
+msgid "Email Cart"
+msgstr "ईमेल कार्ट"
+
+#: 
+msgid "Email (BCC)"
+msgstr "ईमेल (BCC)"
+
+#: 
+msgid "Create Directory From Cart"
+msgstr "कार्ट से निर्देशिका बनाएं"
+
+#: 
+msgid "Bulk Mail Presort"
+msgstr "थोक मेल प्रीसॉर्ट"
+
+#: 
+msgid "Quiet Presort"
+msgstr "शांत प्रीसॉर्ट"
+
+#: 
+msgid "Your cart contains"
+msgstr "आपके कार्ट में है"
+
+#: 
+msgid "people from"
+msgstr "लोग यहाँ से"
+
+#: 
+msgid "Remove"
+msgstr "हटाएं"
+
+#: 
+msgid "Yes"
+msgstr "हाँ"
+
+#: 
+msgid "No"
+msgstr "नहीं"
+
+#: 
+msgid "Developer Chat"
+msgstr "डेवलपर चैट"
+
+#: 
+msgid "Event Checkin"
+msgstr "इवेंट चेकइन"
+
+#: 
+msgid "Select Event"
+msgstr "इवेंट चुनें"
+
+#: 
+msgid "CheckOut"
+msgstr "चेकआउट"
+
+#: 
+msgid "Checked In Time"
+msgstr "चेकइन का समय"
+
+#: 
+msgid "Checked In By"
+msgstr "चेकइन इनके द्वारा"
+
+#: 
+msgid "Checked Out Time"
+msgstr "चेकआउट का समय"
+
+#: 
+msgid "Checked Out By"
+msgstr "चेकआउट इनके द्वारा"
+
+#: 
+msgid "Action"
+msgstr "कार्रवाई"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Member"
+msgstr "सदस्य"
+
+#: 
+msgid " of the"
+msgstr " का"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(कोई सौंपा गया परिवार नहीं)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "व्यक्तियों को परिवारों में बदलें"
+
+#: 
+msgid "Convert Next"
+msgstr "अगला बदलें"
+
+#: 
+msgid "Convert All"
+msgstr "सभी बदलें"
+
+#: 
+msgid "Deposit Slip Number"
+msgstr "जमा पर्ची संख्या"
+
+#: 
+msgid "Deposit Details"
+msgstr "जमा विवरण"
+
+#: 
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
+msgstr "महत्वपूर्ण: जमा पर्ची बंद होने पर विफल लेनदेन स्थायी रूप से हटा दिए जाएंगे।"
+
+#: 
+msgid "Add Payment"
+msgstr "भुगतान जोड़ें"
+
+#: 
+msgid "Load Authorized"
+msgstr "अधिकृत लोड करें"
+
+#: 
+msgid "Run Transactions"
+msgstr "लेनदेन चलाएँ"
+
+#: 
+msgid "Directory reports"
+msgstr "निर्देशिका रिपोर्ट"
+
+#: 
+msgid "Select classifications to include"
+msgstr "शामिल करने के लिए वर्गीकरण चुनें"
+
+#: 
+msgid "Which role is the head of household?"
+msgstr "घर का मुखिया कौन सी भूमिका है?"
+
+#: 
+msgid "Which role is the spouse?"
+msgstr "जीवनसाथी कौन सी भूमिका है?"
+
+#: 
+msgid "Which role is a child?"
+msgstr "बच्चा कौन सी भूमिका है?"
+
+#: 
+msgid "Information to Include"
+msgstr "शामिल करने के लिए जानकारी"
+
+#: 
+msgid "Address"
+msgstr "पता"
+
+#: 
+msgid "Birthday"
+msgstr "जन्मदिन"
+
+#: 
+msgid "Family Home Phone"
+msgstr "परिवार का घर का फोन"
+
+#: 
+msgid "Family Work Phone"
+msgstr "परिवार का कार्यस्थल का फोन"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "परिवार का सेल फोन"
+
+#: 
+msgid "Family Email"
+msgstr "परिवार का ईमेल"
+
+#: 
+msgid "Personal Home Phone"
+msgstr "व्यक्तिगत घर का फोन"
+
+#: 
+msgid "Personal Work Phone"
+msgstr "व्यक्तिगत कार्यस्थल का फोन"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "व्यक्तिगत सेल फोन"
+
+#: 
+msgid "Personal Email"
+msgstr "व्यक्तिगत ईमेल"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "व्यक्तिगत कार्य/अन्य ईमेल"
+
+#: 
+msgid "Photos"
+msgstr "तस्वीरें"
+
+#: 
+msgid "Number of Columns"
+msgstr "स्तंभों की संख्या"
+
+#: 
+msgid "Paper Size"
+msgstr "कागज का आकार"
+
+#: 
+msgid "Font Size"
+msgstr "फ़ॉन्ट आकार"
+
+#: 
+msgid "Title page"
+msgstr "शीर्षक पृष्ठ"
+
+#: 
+msgid "Use Title Page"
+msgstr "शीर्षक पृष्ठ का उपयोग करें"
+
+#: 
+msgid "Church Name"
+msgstr "चर्च का नाम"
+
+#: 
+msgid "Disclaimer"
+msgstr "अस्वीकरण"
+
+#: 
+msgid "Create Directory"
+msgstr "निर्देशिका बनाएँ"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "दान की गई वस्तु संपादक"
+
+#: 
+msgid "Save and Add"
+msgstr "सहेजें और जोड़ें"
+
+#: 
+msgid "Item"
+msgstr "वस्तु"
+
+#: 
+msgid "Multiple items"
+msgstr "एकाधिक वस्तुएं"
+
+#: 
+msgid "Sell to everyone"
+msgstr "सभी को बेचें"
+
+#: 
+msgid "Estimated Price"
+msgstr "अनुमानित मूल्य"
+
+#: 
+msgid "Multiple"
+msgstr "एकाधिक"
+
+#: 
+msgid "Final Price"
+msgstr "अंतिम मूल्य"
+
+#: 
+msgid "Replicate item"
+msgstr "वस्तु की प्रतिलिपि बनाएँ"
+
+#: 
+msgid "Go"
+msgstr "जाएं"
+
+#: 
+msgid "Description"
+msgstr "विवरण"
+
+#: 
+msgid "Picture URL"
+msgstr "चित्र URL"
+
+#: 
+msgid "Donation Fund Editor"
+msgstr "दान निधि संपादक"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "क्या आप वाकई इस निधि को हटाना चाहते हैं?"
+
+#: 
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "अमान्य फ़ील्ड या चयन। परिवर्तन सहेजे नहीं गए! कृपया सुधारें और पुनः प्रयास करें!"
+
+#: 
+msgid "No funds have been added yet"
+msgstr "अभी तक कोई निधि नहीं जोड़ी गई है"
+
+#: 
+msgid "Active"
+msgstr "सक्रिय"
+
+#: 
+msgid "Save Changes"
+msgstr "परिवर्तन सहेजें"
+
+#: 
+msgid "Church Event Editor"
+msgstr "चर्च इवेंट संपादक"
+
+#: 
+msgid "Edit Event Types"
+msgstr "इवेंट प्रकार संपादित करें"
+
+#: 
+msgid "Edit Event Type"
+msgstr "इवेंट प्रकार संपादित करें"
+
+#: 
+msgid "Event Type"
+msgstr "इवेंट प्रकार"
+
+#: 
+msgid "Save Name"
+msgstr "नाम सहेजें"
+
+#: 
+msgid "Recurrence Pattern"
+msgstr "पुनरावृत्ति पैटर्न"
+
+#: 
+msgid "Attendance Counts"
+msgstr "उपस्थिति गणना"
+
+#: 
+msgid "Add counter"
+msgstr "काउंटर जोड़ें"
+
+#: 
+msgid "Return to Event Types"
+msgstr "इवेंट प्रकारों पर वापस जाएं"
+
+#: 
+msgid "Family"
+msgstr "परिवार"
+
+#: 
+msgid "Type"
+msgstr "प्रकार"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year"
+msgstr "वित्तीय वर्ष"
+
+#: 
+msgid "Amount"
+msgstr "राशि"
+
+#: 
+msgid "Fund"
+msgstr "निधि"
+
+#: 
+msgid "Bank"
+msgstr "बैंक"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "महीना"
+
+#: 
+msgid "Year"
+msgstr "वर्ष"
+
+#: 
+msgid "Edit"
+msgstr "संपादित करें"
+
+#: 
+msgid "Event Title"
+msgstr "इवेंट का शीर्षक"
+
+#: 
+msgid "Create Event"
+msgstr "इवेंट बनाएँ"
+
+#: 
+msgid "Create a new Event"
+msgstr "एक नया इवेंट बनाएँ"
+
+#: 
+msgid " errors. Please see below"
+msgstr " त्रुटियाँ। कृपया नीचे देखें"
+
+#: 
+msgid "Select your event type"
+msgstr "अपना इवेंट प्रकार चुनें"
+
+#: 
+msgid "You must pick an event type."
+msgstr "आपको एक इवेंट प्रकार चुनना होगा।"
+
+#: 
+msgid "No Attendance counts recorded"
+msgstr "कोई उपस्थिति गणना दर्ज नहीं की गई"
+
+#: 
+msgid "Event Status"
+msgstr "इवेंट की स्थिति"
+
+#: 
+msgid "Return to Events"
+msgstr "इवेंट्स पर वापस जाएं"
+
+#: 
+msgid "Sundays"
+msgstr "रविवार"
+
+#: 
+msgid "Mondays"
+msgstr "सोमवार"
+
+#: 
+msgid "Tuesdays"
+msgstr "मंगलवार"
+
+#: 
+msgid "Wednesdays"
+msgstr "बुधवार"
+
+#: 
+msgid "Thursdays"
+msgstr "गुरुवार"
+
+#: 
+msgid "Fridays"
+msgstr "शुक्रवार"
+
+#: 
+msgid "Saturdays"
+msgstr "शनिवार"
+
+#: 
+msgid "Add Event Type"
+msgstr "इवेंट प्रकार जोड़ें"
+
+#: 
+msgid "Custom Family Fields Editor"
+msgstr "कस्टम परिवार फ़ील्ड संपादक"
+
+#: 
+msgid "Default Option"
+msgstr "डिफ़ॉल्ट विकल्प"
+
+#: 
+msgid "No custom Family fields have been added yet"
+msgstr "अभी तक कोई कस्टम परिवार फ़ील्ड नहीं जोड़ी गई है"
+
+#: 
+msgid "Special option"
+msgstr "विशेष विकल्प"
+
+#: 
+msgid "Security Option"
+msgstr "सुरक्षा विकल्प"
+
+#: 
+msgid "You must select a group."
+msgstr "आपको एक समूह चुनना होगा।"
+
+#: 
+msgid "Edit List Options"
+msgstr "सूची विकल्प संपादित करें"
+
+#: 
+msgid "Help on types.."
+msgstr "प्रकारों पर सहायता.."
+
+#: 
+msgid "You must enter a name"
+msgstr "आपको एक नाम दर्ज करना होगा"
+
+#: 
+msgid "That field name already exists."
+msgstr "वह फ़ील्ड नाम पहले से मौजूद है।"
+
+#: 
+msgid "Family Editor"
+msgstr "परिवार संपादक"
+
+#: 
+msgid "First name must be entered"
+msgstr "प्रथम नाम दर्ज करना आवश्यक है"
+
+#: 
+msgid "Invalid Birth Date."
+msgstr "अमान्य जन्म तिथि।"
+
+#: 
+msgid "Not a valid Wedding Date"
+msgstr "मान्य विवाह तिथि नहीं है"
+
+#: 
+msgid "Email is Not Valid"
+msgstr "ईमेल मान्य नहीं है"
+
+#: 
+msgid "Family Info"
+msgstr "परिवार की जानकारी"
+
+#: 
+msgid "Contact Info"
+msgstr "संपर्क जानकारी"
+
+#: 
+msgid "Envelope Info"
+msgstr "लिफाफा जानकारी"
+
+#: 
+msgid "Custom Fields"
+msgstr "कस्टम फ़ील्ड"
+
+#: 
+msgid "Family Members"
+msgstr "परिवार के सदस्य"
+
+#: 
+msgid "First"
+msgstr "प्रथम"
+
+#: 
+msgid "Middle"
+msgstr "मध्य"
+
+#: 
+msgid "Last"
+msgstr "अंतिम"
+
+#: 
+msgid "Role"
+msgstr "भूमिका"
+
+#: 
+msgid "Select Gender"
+msgstr "लिंग चुनें"
+
+#: 
+msgid "Select Role"
+msgstr "भूमिका चुनें"
+
+#: 
+msgid "Unknown"
+msgstr "अज्ञात"
+
+#: 
+msgid "January"
+msgstr "जनवरी"
+
+#: 
+msgid "February"
+msgstr "फरवरी"
+
+#: 
+msgid "March"
+msgstr "मार्च"
+
+#: 
+msgid "April"
+msgstr "अप्रैल"
+
+#: 
+msgid "May"
+msgstr "मई"
+
+#: 
+msgid "June"
+msgstr "जून"
+
+#: 
+msgid "July"
+msgstr "जुलाई"
+
+#: 
+msgid "August"
+msgstr "अगस्त"
+
+#: 
+msgid "September"
+msgstr "सितंबर"
+
+#: 
+msgid "October"
+msgstr "अक्टूबर"
+
+#: 
+msgid "November"
+msgstr "नवंबर"
+
+#: 
+msgid "December"
+msgstr "दिसंबर"
+
+#: 
+msgid "Unk"
+msgstr "अज्ञात"
+
+#: 
+msgid "Created"
+msgstr "बनाया गया"
+
+#: 
+msgid "Envelope Number"
+msgstr "लिफाफा संख्या"
+
+#: 
+msgid "Upload Photo"
+msgstr "फोटो अपलोड करें"
+
+#: 
+msgid "Delete Photo"
+msgstr "फोटो हटाएं"
+
+#: 
+msgid "Timeline"
+msgstr "समयरेखा"
+
+#: 
+msgid "Pledges and Payments"
+msgstr "प्रतिज्ञाएं और भुगतान"
+
+#: 
+msgid "No property assignments."
+msgstr "कोई संपत्ति असाइनमेंट नहीं।"
+
+#: 
+msgid "Value"
+msgstr "मान"
+
+#: 
+msgid "Edit Value"
+msgstr "मान संपादित करें"
+
+#: 
+msgid "Assign a New Property"
+msgstr "एक नई संपत्ति सौंपें"
+
+#: 
+msgid "Assign"
+msgstr "सौंपें"
+
+#: 
+msgid "Date Updated"
+msgstr "तिथि अपडेट की गई"
+
+#: 
+msgid "Updated By"
+msgstr "इनके द्वारा अपडेट किया गया"
+
+#: 
+msgid "Show Pledges"
+msgstr "प्रतिज्ञाएं दिखाएं"
+
+#: 
+msgid "Show Payments"
+msgstr "भुगतान दिखाएं"
+
+#: 
+msgid "Since"
+msgstr "से"
+
+#: 
+msgid "Update"
+msgstr "अपडेट करें"
+
+#: 
+msgid "Pledge or Payment"
+msgstr "प्रतिज्ञा या भुगतान"
+
+#: 
+msgid "Date"
+msgstr "तिथि"
+
+#: 
+msgid "NonDeductible"
+msgstr "गैर-कटौती योग्य"
+
+#: 
+msgid "Schedule"
+msgstr "अनुसूची"
+
+#: 
+msgid "Method"
+msgstr "विधि"
+
+#: 
+msgid "Comment"
+msgstr "टिप्पणी"
+
+#: 
+msgid "Close"
+msgstr "बंद करें"
+
+#: 
+msgid "Confirm Delete"
+msgstr "हटाने की पुष्टि करें"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "आप प्रोफ़ाइल फ़ोटो हटाने वाले हैं, यह प्रक्रिया अपरिवर्तनीय है।"
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "क्या आप आगे बढ़ना चाहते हैं?"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "आप परिवार की जानकारी की प्रति निम्नलिखित ईमेल पर भेजने वाले हैं"
+
+#: 
+msgid "Financial Reports"
+msgstr "वित्तीय रिपोर्ट"
+
+#: 
+msgid "Report Type"
+msgstr "रिपोर्ट का प्रकार"
+
+#: 
+msgid "Select Report Type"
+msgstr "रिपोर्ट प्रकार चुनें"
+
+#: 
+msgid "Pledge Summary"
+msgstr "प्रतिज्ञा सारांश"
+
+#: 
+msgid "Pledge Family Summary"
+msgstr "प्रतिज्ञा परिवार सारांश"
+
+#: 
+msgid "Pledge Reminders"
+msgstr "प्रतिज्ञा अनुस्मारक"
+
+#: 
+msgid "Voting Members"
+msgstr "मतदान सदस्य"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "दान रिपोर्ट (टैक्स विवरण)"
+
+#: 
+msgid "Zero Givers"
+msgstr "शून्य दानदाता"
+
+#: 
+msgid "Individual Deposit Report"
+msgstr "व्यक्तिगत जमा रिपोर्ट"
+
+#: 
+msgid "Advanced Deposit Report"
+msgstr "उन्नत जमा रिपोर्ट"
+
+#: 
+msgid "Next"
+msgstr "अगला"
+
+#: 
+msgid "Filter by Family"
+msgstr "परिवार द्वारा फ़िल्टर करें"
+
+#: 
+msgid "Report Start Date"
+msgstr "रिपोर्ट प्रारंभ तिथि"
+
+#: 
+msgid "Report End Date"
+msgstr "रिपोर्ट समाप्ति तिथि"
+
+#: 
+msgid "Apply Report Dates To"
+msgstr "रिपोर्ट तिथियां इन पर लागू करें"
+
+#: 
+msgid "Deposit Date (Default)"
+msgstr "जमा तिथि (डिफ़ॉल्ट)"
+
+#: 
+msgid "Payment Date"
+msgstr "भुगतान तिथि"
+
+#: 
+msgid "Filter by Deposit"
+msgstr "जमा द्वारा फ़िल्टर करें"
+
+#: 
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "यदि जमा चुना जाता है, तो तिथि मानदंडों को अनदेखा कर दिया जाएगा।"
+
+#: 
+msgid "All deposits within date range"
+msgstr "तिथि सीमा के भीतर सभी जमा"
+
+#: 
+msgid "Filter by Payment Type"
+msgstr "भुगतान प्रकार द्वारा फ़िल्टर करें"
+
+#: 
+msgid "All Methods"
+msgstr "सभी विधियां"
+
+#: 
+msgid "Check"
+msgstr "चेक"
+
+#: 
+msgid "Cash"
+msgstr "नकद"
+
+#: 
+msgid "Bank Draft"
+msgstr "बैंक ड्राफ्ट"
+
+#: 
+msgid "Minimum Total Amount:"
+msgstr "न्यूनतम कुल राशि:"
+
+#: 
+msgid "0 - No Minimum"
+msgstr "0 - कोई न्यूनतम नहीं"
+
+#: 
+msgid "Other Settings"
+msgstr "अन्य सेटिंग्स"
+
+#: 
+msgid "Only Payments with Pledges"
+msgstr "केवल प्रतिज्ञाओं के साथ भुगतान"
+
+#: 
+msgid "All Payments"
+msgstr "सभी भुगतान"
+
+#: 
+msgid "Only Families with unpaid pledges"
+msgstr "केवल वे परिवार जिनकी प्रतिज्ञाएं बकाया हैं"
+
+#: 
+msgid "All Families"
+msgstr "सभी परिवार"
+
+#: 
+msgid "Report Heading:"
+msgstr "रिपोर्ट का शीर्षक:"
+
+#: 
+msgid "Graphic"
+msgstr "ग्राफिक"
+
+#: 
+msgid "Church Address"
+msgstr "चर्च का पता"
+
+#: 
+msgid "Blank"
+msgstr "खाली"
+
+#: 
+msgid "Remittance Slip:"
+msgstr "प्रेषण पर्ची:"
+
+#: 
+msgid "Sort Data by:"
+msgstr "डेटा को इसके द्वारा क्रमबद्ध करें:"
+
+#: 
+msgid "Deposit"
+msgstr "जमा"
+
+#: 
+msgid "All Data"
+msgstr "सारा डेटा"
+
+#: 
+msgid "Moderate Detail"
+msgstr "मध्यम विवरण"
+
+#: 
+msgid "Summary Data"
+msgstr "सारांश डेटा"
+
+#: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "मतदान करने वाले सदस्यों ने इतने वर्षों के भीतर<br> दान दिया होना चाहिए<br> (दान की आवश्यकता न होने के लिए 0)"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
+msgid "Back"
+msgstr "पीछे"
+
+#: 
+msgid "Create Report"
+msgstr "रिपोर्ट बनाएँ"
+
+#: 
+msgid "Deposit Listing"
+msgstr "जमा सूची"
+
+#: 
+msgid "Deposits"
+msgstr "जमा"
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "चयनित पंक्तियाँ हटाएँ"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "चयनित पंक्तियाँ निर्यात करें (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "चयनित पंक्तियाँ निर्यात करें (CSV)"
+
+#: 
+msgid "Fundraiser Listing"
+msgstr "फंडरेज़र सूची"
+
+#: 
+msgid "Date Start"
+msgstr "प्रारंभ तिथि"
+
+#: 
+msgid "Apply Filters"
+msgstr "फ़िल्टर लागू करें"
+
+#: 
+msgid "Date End"
+msgstr "समाप्ति तिथि"
+
+#: 
+msgid "Clear Filter"
+msgstr "फ़िल्टर साफ़ करें"
+
+#: 
+msgid "Number"
+msgstr "संख्या"
+
+#: 
+msgid "Create New Fund Raiser"
+msgstr "नया फंडरेज़र बनाएँ"
+
+#: 
+msgid "Add Donated Item"
+msgstr "दान की गई वस्तु जोड़ें"
+
+#: 
+msgid "Generate Catalog"
+msgstr "कैटलॉग तैयार करें"
+
+#: 
+msgid "Generate Bid Sheets"
+msgstr "बिड शीट तैयार करें"
+
+#: 
+msgid "Generate Certificates"
+msgstr "प्रमाण पत्र तैयार करें"
+
+#: 
+msgid "Donated items for this fundraiser"
+msgstr "इस फंडरेज़र के लिए दान की गई वस्तुएं"
+
+#: 
+msgid "Donor"
+msgstr "दाता"
+
+#: 
+msgid "Buyer"
+msgstr "खरीदार"
+
+#: 
+msgid "Sale Price"
+msgstr "बिक्री मूल्य"
+
+#: 
+msgid "Material Value"
+msgstr "भौतिक मूल्य"
+
+#: 
+msgid "Minimum Price"
+msgstr "न्यूनतम मूल्य"
+
+#: 
+msgid "Family Geographic Utilities"
+msgstr "पारिवारिक भौगोलिक उपयोगिताएँ"
+
+#: 
+msgid "Select Family"
+msgstr "परिवार चुनें"
+
+#: 
+msgid "Maximum number of neighbors"
+msgstr "पड़ोसियों की अधिकतम संख्या"
+
+#: 
+msgid "Maximum distance"
+msgstr "अधिकतम दूरी"
+
+#: 
+msgid "Data file format"
+msgstr "डेटा फ़ाइल स्वरूप"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "GPS विज़ुअलाइज़र"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "स्ट्रीट एटलस USA"
+
+#: 
+msgid "Include families in the coordinate file"
+msgstr "निर्देशांक फ़ाइल में परिवारों को शामिल करें"
+
+#: 
+msgid "Neighbor Families"
+msgstr "पड़ोसी परिवार"
+
+#: 
+msgid "Make Data File"
+msgstr "डेटा फ़ाइल बनाएँ"
+
+#: 
+msgid "Show Neighbors"
+msgstr "पड़ोसी दिखाएं"
+
+#: 
+msgid "Distance"
+msgstr "दूरी"
+
+#: 
+msgid "Direction"
+msgstr "दिशा"
+
+#: 
+msgid "Latitude"
+msgstr "अक्षांश"
+
+#: 
+msgid "Longitude"
+msgstr "देशांतर"
+
+#: 
+msgid "Add to Cart"
+msgstr "कार्ट में जोड़ें"
+
+#: 
+msgid "Intersect with Cart"
+msgstr "कार्ट के साथ इंटरसेक्ट करें"
+
+#: 
+msgid "Remove from Cart"
+msgstr "कार्ट से हटाएँ"
+
+#: 
+msgid "Group Editor"
+msgstr "समूह संपादक"
+
+#: 
+msgid "Group Settings"
+msgstr "समूह सेटिंग्स"
+
+#: 
+msgid "Type of Group"
+msgstr "समूह का प्रकार"
+
+#: 
+msgid "Group Member Roles"
+msgstr "समूह सदस्य की भूमिकाएँ"
+
+#: 
+msgid "Clone roles"
+msgstr "भूमिकाओं की नकल करें"
+
+#: 
+msgid "from group"
+msgstr "समूह से"
+
+#: 
+msgid "Select a group"
+msgstr "एक समूह चुनें"
+
+#: 
+msgid "Group Specific Properties"
+msgstr "समूह विशिष्ट गुण"
+
+#: 
+msgid "Enabled"
+msgstr "सक्षम"
+
+#: 
+msgid "Edit Group-Specific Properties Form"
+msgstr "समूह-विशिष्ट गुण फ़ॉर्म संपादित करें"
+
+#: 
+msgid "Disabled"
+msgstr "अक्षम"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "समूह विशिष्ट गुणों को सक्षम करें"
+
+#: 
+msgid "Group Roles"
+msgstr "समूह की भूमिकाएँ"
+
+#: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "जैसे ही बॉक्स फोकस खोता है, समूह की भूमिका के नाम में परिवर्तन सहेज लिए जाते हैं"
+
+#: 
+msgid "New Role"
+msgstr "नई भूमिका"
+
+#: 
+msgid "Group Listing"
+msgstr "समूह सूची"
+
+#: 
+msgid "Group Member Properties Editor"
+msgstr "समूह सदस्य गुण संपादक"
+
+#: 
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr "इस समूह में वर्तमान में कोई गुण नहीं है! आप उन्हें समूह संपादक में जोड़ सकते हैं।"
+
+#: 
+msgid "Return to Person Record"
+msgstr "व्यक्ति के रिकॉर्ड पर वापस जाएं"
+
+#: 
+msgid "Editing"
+msgstr "संपादन"
+
+#: 
+msgid "data for member"
+msgstr "सदस्य के लिए डेटा"
+
+#: 
+msgid "Group-Specific Properties Form Editor"
+msgstr "समूह-विशिष्ट गुण फ़ॉर्म संपादक"
+
+#: 
+msgid "No properties have been added yet"
+msgstr "अभी तक कोई गुण नहीं जोड़ा गया है"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
+msgstr "चेतावनी: यदि आप ऊपर, नीचे, हटाने या 'नया जोड़ें' बटन का उपयोग करने से पहले 'परिवर्तन सहेजें' पर क्लिक नहीं करते हैं, तो फ़ील्ड परिवर्तन खो जाएंगे!"
+
+#: 
+msgid "Show in"
+msgstr "इसमें दिखाएं"
+
+#: 
+msgid "Person View"
+msgstr "व्यक्ति दृश्य"
+
+#: 
+msgid "Group reports"
+msgstr "समूह रिपोर्ट"
+
+#: 
+msgid "Select the group you would like to report"
+msgstr "उस समूह का चयन करें जिसकी आप रिपोर्ट करना चाहते हैं"
+
+#: 
+msgid "No Role Selected"
+msgstr "कोई भूमिका नहीं चुनी गई"
+
+#: 
+msgid "Only cart people?"
+msgstr "केवल कार्ट वाले लोग?"
+
+#: 
+msgid "Report Model"
+msgstr "रिपोर्ट मॉडल"
+
+#: 
+msgid "Report for group and role selected"
+msgstr "चयनित समूह और भूमिका के लिए रिपोर्ट"
+
+#: 
+msgid "Report for any role in group selected"
+msgstr "चयनित समूह में किसी भी भूमिका के लिए रिपोर्ट"
+
+#: 
+msgid "Select which information you want to include"
+msgstr "चुनें कि आप कौन सी जानकारी शामिल करना चाहते हैं"
+
+#: 
+msgid "Standard Info"
+msgstr "मानक जानकारी"
+
+#: 
+msgid "Other Email"
+msgstr "अन्य ईमेल"
+
+#: 
+msgid "GroupRole"
+msgstr "समूह भूमिका"
+
+#: 
+msgid "Group-Specific Property Fields"
+msgstr "समूह-विशिष्ट गुण फ़ील्ड"
+
+#: 
+msgid "Undefined"
+msgstr "अपरिभाषित"
+
+#: 
+msgid "Group View"
+msgstr "समूह दृश्य"
+
+#: 
+msgid "Edit this Group"
+msgstr "इस समूह को संपादित करें"
+
+#: 
+msgid "Delete this Group"
+msgstr "इस समूह को हटाएँ"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "समूह हटाने की पुष्टि करें"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "कृपया इस समूह रिकॉर्ड को हटाने की पुष्टि करें"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "यह इस समूह रिकॉर्ड से जुड़े सभी भूमिकाओं और समूह-विशिष्ट गुण डेटा को भी हटा देगा।"
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "समूह की सभी सदस्यता और गुण नष्ट कर दिए जाएंगे। समूह के सदस्यों में कोई बदलाव नहीं होगा।"
+
+#: 
+msgid "Please select target group for members"
+msgstr "कृपया सदस्यों के लिए लक्ष्य समूह चुनें"
+
+#: 
+msgid "Add Group Members to Cart"
+msgstr "समूह के सदस्यों को कार्ट में जोड़ें"
+
+#: 
+msgid "Map this group"
+msgstr "इस समूह को मैप करें"
+
+#: 
+msgid "Email Group"
+msgstr "समूह को ईमेल करें"
+
+#: 
+msgid "Total Members"
+msgstr "कुल सदस्य"
+
+#: 
+msgid "Default Role"
+msgstr "डिफ़ॉल्ट भूमिका"
+
+#: 
+msgid "Group-Specific Properties"
+msgstr "समूह-विशिष्ट गुण"
+
+#: 
+msgid "Disabled for this group."
+msgstr "इस समूह के लिए अक्षम है।"
+
+#: 
+msgid "Assigned Properties"
+msgstr "सौंपे गए गुण"
+
+#: 
+msgid "Group Members"
+msgstr "समूह के सदस्य"
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "चयनित सदस्यों को समूह से हटाएँ"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "चयनित सदस्यों को कार्ट में जोड़ें"
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "चयनित सदस्यों को समूह में जोड़ें"
+
+#: 
+msgid "Move Selected Members to Group"
+msgstr "चयनित सदस्यों को समूह में ले जाएँ"
+
+#: 
+msgid "Add Group Member"
+msgstr "समूह सदस्य जोड़ें"
+
+#: 
+msgid "Letters and Mailing Labels"
+msgstr "पत्र और मेलिंग लेबल"
+
+#: 
+msgid "Newsletter labels"
+msgstr "न्यूज़लेटर लेबल"
+
+#: 
+msgid "Confirm data labels"
+msgstr "डेटा लेबल की पुष्टि करें"
+
+#: 
+msgid "Listing All Church Events"
+msgstr "सभी चर्च इवेंट्स की सूची"
+
+#: 
+msgid "Start Date/Time"
+msgstr "प्रारंभ तिथि/समय"
+
+#: 
+msgid "Invalid login or password"
+msgstr "अमान्य लॉगिन या पासवर्ड"
+
+#: 
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr "बहुत अधिक विफल लॉगिन: आपका खाता लॉक कर दिया गया है। कृपया व्यवस्थापक से संपर्क करें।"
+
+#: 
+msgid "Please Login"
+msgstr "कृपया लॉगिन करें"
+
+#: 
+msgid "Email/Username"
+msgstr "ईमेल/उपयोगकर्ता नाम"
+
+#: 
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: 
+msgid "Login"
+msgstr "लॉगिन"
+
+#: 
+msgid "Envelope Manager"
+msgstr "लिफाफा प्रबंधक"
+
+#: 
+msgid "Update Family Records"
+msgstr "परिवार के रिकॉर्ड अपडेट करें"
+
+#: 
+msgid "Update Envelopes"
+msgstr "लिफाफे अपडेट करें"
+
+#: 
+msgid "Confirm"
+msgstr "पुष्टि करें"
+
+#: 
+msgid "Sort by"
+msgstr "इसके द्वारा क्रमबद्ध करें"
+
+#: 
+msgid "Zero"
+msgstr "शून्य"
+
+#: 
+msgid "Assign starting at #"
+msgstr "# से शुरू करते हुए असाइन करें"
+
+#: 
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr "चर्च अक्षांश या देशांतर की कमी के कारण मानचित्र प्रदर्शित करने में असमर्थ। कृपया सेटिंग मेनू में चर्च का पता अपडेट करें।"
+
+#: 
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
+msgstr "Google मैप API कुंजी सेट नहीं है। मानचित्र स्थानों के छोटे सेट के लिए काम करेगा। कृपया सेटिंग मेनू के मानचित्र अनुभाग में एक कुंजी बनाएँ।"
+
+#: 
+msgid "Member Role Change"
+msgstr "सदस्य भूमिका परिवर्तन"
+
+#: 
+msgid "Member's Name"
+msgstr "सदस्य का नाम"
+
+#: 
+msgid "Current Role"
+msgstr "वर्तमान भूमिका"
+
+#: 
+msgid "All People"
+msgstr "सभी लोग"
+
+#: 
+msgid "Email All"
+msgstr "सभी को ईमेल करें"
+
+#: 
+msgid "Email All (BCC)"
+msgstr "सभी को ईमेल करें (BCC)"
+
+#: 
+msgid "Family Roles"
+msgstr "पारिवारिक भूमिकाएँ"
+
+#: 
+msgid "Family Geographic"
+msgstr "पारिवारिक भौगोलिक"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "सभी पारिवारिक निर्देशांक अपडेट करें"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "स्वयंसेवी अवसर"
+
+#: 
+msgid "Families"
+msgstr "परिवार"
+
+#: 
+msgid "See all Families"
+msgstr "सभी परिवार देखें"
+
+#: 
+msgid "People"
+msgstr "लोग"
+
+#: 
+msgid "See All People"
+msgstr "सभी लोग देखें"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "संडे स्कूल के बच्चे"
+
+#: 
+msgid "More info"
+msgstr "अधिक जानकारी"
+
+#: 
+msgid "Reports on groups and roles"
+msgstr "समूहों और भूमिकाओं पर रिपोर्ट"
+
+#: 
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "चयनित समूह और भूमिकाओं पर रिपोर्ट (यह एक बहु-पृष्ठ PDF हो सकता है)।"
+
+#: 
+msgid "Generate letters and mailing labels."
+msgstr "पत्र और मेलिंग लेबल तैयार करें।"
+
+#: 
+msgid "Role / Gender"
+msgstr "भूमिका / लिंग"
+
+#: 
+msgid "Count"
+msgstr "गणना"
+
+#: 
+msgid "People Classification"
+msgstr "लोगों का वर्गीकरण"
+
+#: 
+msgid "Gender Demographics"
+msgstr "लिंग जनसांख्यिकी"
+
+#: 
+msgid "Boys"
+msgstr "लड़के"
+
+#: 
+msgid "Girls"
+msgstr "लड़कियां"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "संडे स्कूल की कक्षाएं"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "जमा ट्रैकिंग"
+
+#: 
+msgid "Latest Families"
+msgstr "नवीनतम परिवार"
+
+#: 
+msgid "Family Name"
+msgstr "परिवार का नाम"
+
+#: 
+msgid "Updated Families"
+msgstr "अपडेट किए गए परिवार"
+
+#: 
+msgid "Updated"
+msgstr "अपडेट किया गया"
+
+#: 
+msgid "Please confirm deletion of this note"
+msgstr "कृपया इस नोट को हटाने की पुष्टि करें"
+
+#: 
+msgid "Yes, delete this record"
+msgstr "हाँ, इस रिकॉर्ड को हटाएँ"
+
+#: 
+msgid "(this action cannot be undone)"
+msgstr "(यह कार्रवाई वापस नहीं ली जा सकती)"
+
+#: 
+msgid "Note Editor"
+msgstr "नोट संपादक"
+
+#: 
+msgid "Private"
+msgstr "निजी"
+
+#: 
+msgid "Person"
+msgstr "व्यक्ति"
+
+#: 
+msgid "Group"
+msgstr "समूह"
+
+#: 
+msgid "Option"
+msgstr "विकल्प"
+
+#: 
+msgid "Error: Duplicate"
+msgstr "त्रुटि: डुप्लिकेट"
+
+#: 
+msgid "Default"
+msgstr "डिफ़ॉल्ट"
+
+#: 
+msgid "Duplicate name found."
+msgstr "डुप्लिकेट नाम मिला।"
+
+#: 
+msgid "Make Default"
+msgstr "डिफ़ॉल्ट बनाएँ"
+
+#: 
+msgid "Exit"
+msgstr "बाहर निकलें"
+
+#: 
+msgid "Add New"
+msgstr "नया जोड़ें"
+
+#: 
+msgid " by that name already exists."
+msgstr " उस नाम से पहले से मौजूद है।"
+
+#: 
+msgid "Buyer Number Editor"
+msgstr "खरीदार संख्या संपादक"
+
+#: 
+msgid "Generate Statement"
+msgstr "विवरण तैयार करें"
+
+#: 
+msgid "Buyers for this fundraiser:"
+msgstr "इस फंडरेज़र के लिए खरीदार:"
+
+#: 
+msgid "Select all"
+msgstr "सभी चुनें"
+
+#: 
+msgid "Select none"
+msgstr "कोई न चुनें"
+
+#: 
+msgid "Add Buyer"
+msgstr "खरीदार जोड़ें"
+
+#: 
+msgid "Generate Statements for Selected"
+msgstr "चयनित के लिए विवरण तैयार करें"
+
+#: 
+msgid "Select"
+msgstr "चुनें"
+
+#: 
+msgid "Custom Person Fields Editor"
+msgstr "कस्टम व्यक्ति फ़ील्ड संपादक"
+
+#: 
+msgid "No custom person fields have been added yet"
+msgstr "अभी तक कोई कस्टम व्यक्ति फ़ील्ड नहीं जोड़ी गई है"
+
+#: 
+msgid "Person Editor"
+msgstr "व्यक्ति संपादक"
+
+#: 
+msgid "Not a valid Friend Date"
+msgstr "मान्य मित्र तिथि नहीं है"
+
+#: 
+msgid "Not a valid Membership Date"
+msgstr "मान्य सदस्यता तिथि नहीं है"
+
+#: 
+msgid "Work Email is Not Valid"
+msgstr "कार्य ईमेल मान्य नहीं है"
+
+#: 
+msgid "Birth Month"
+msgstr "जन्म का महीना"
+
+#: 
+msgid "Birth Day"
+msgstr "जन्म का दिन"
+
+#: 
+msgid "Birth Year"
+msgstr "जन्म का वर्ष"
+
+#: 
+msgid "Hide Age"
+msgstr "उम्र छुपाएं"
+
+#: 
+msgid "Create a new family (using last name)"
+msgstr "एक नया परिवार बनाएँ (अंतिम नाम का उपयोग करके)"
+
+#: 
+msgid "Friend Date"
+msgstr "मित्र तिथि"
+
+#: 
+msgid "Person Profile"
+msgstr "व्यक्ति प्रोफ़ाइल"
+
+#: 
+msgid "Not assigned"
+msgstr "सौंपा नहीं गया"
+
+#: 
+msgid "Printable Page"
+msgstr "मुद्रण योग्य पृष्ठ"
+
+#: 
+msgid "Edit \"Why Came\" Notes"
+msgstr "संपादित करें \"क्यों आए\" नोट्स"
+
+#: 
+msgid "Delete this Record"
+msgstr "इस रिकॉर्ड को हटाएँ"
+
+#: 
+msgid "Make User"
+msgstr "उपयोगकर्ता बनाएँ"
+
+#: 
+msgid "Edit User"
+msgstr "उपयोगकर्ता को संपादित करें"
+
+#: 
+msgid "List Members"
+msgstr "सदस्यों की सूची"
+
+#: 
+msgid "No group assignments."
+msgstr "कोई समूह असाइनमेंट नहीं।"
+
+#: 
+msgid "Change Role"
+msgstr "भूमिका बदलें"
+
+#: 
+msgid "Update Properties"
+msgstr "गुण अपडेट करें"
+
+#: 
+msgid "Assign New Group"
+msgstr "नया समूह सौंपें"
+
+#: 
+msgid "No volunteer opportunity assignments."
+msgstr "कोई स्वयंसेवक अवसर असाइनमेंट नहीं।"
+
+#: 
+msgid "Assign a New Volunteer Opportunity"
+msgstr "एक नया स्वयंसेवक अवसर सौंपें"
+
+#: 
+msgid "Electronic Transaction Details"
+msgstr "इलेक्ट्रॉनिक लेनदेन विवरण"
+
+#: 
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "गैर-कटौती योग्य राशि कुल राशि से अधिक नहीं हो सकती।"
+
+#: 
+msgid "At least one fund must have a non-zero amount."
+msgstr "कम से कम एक निधि में गैर-शून्य राशि होनी चाहिए।"
+
+#: 
+msgid "Must specify non-zero check number"
+msgstr "गैर-शून्य चेक संख्या निर्दिष्ट करना आवश्यक है"
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "'नकद' भुगतान के लिए चेक संख्या मान्य नहीं है"
+

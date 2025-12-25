@@ -600,3 +600,2123 @@ msgstr "Osoite"
 msgid "Birthday"
 msgstr "Syntymäpäivä"
 
+#: 
+msgid "Family Home Phone"
+msgstr "Perheen kotipuhelin"
+
+#: 
+msgid "Family Work Phone"
+msgstr "Perheen työpuhelin"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "Perheen matkapuhelin"
+
+#: 
+msgid "Family Email"
+msgstr "Perheen sähköposti"
+
+#: 
+msgid "Personal Home Phone"
+msgstr "Henkilökohtainen kotipuhelin"
+
+#: 
+msgid "Personal Work Phone"
+msgstr "Henkilökohtainen työpuhelin"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "Henkilökohtainen matkapuhelin"
+
+#: 
+msgid "Personal Email"
+msgstr "Henkilökohtainen sähköposti"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "Henkilökohtainen työ/muu sähköposti"
+
+#: 
+msgid "Photos"
+msgstr "Valokuvat"
+
+#: 
+msgid "Number of Columns"
+msgstr "Sarakkeiden määrä"
+
+#: 
+msgid "Paper Size"
+msgstr "Paperikoko"
+
+#: 
+msgid "Font Size"
+msgstr "Fonttikoko"
+
+#: 
+msgid "Title page"
+msgstr "Otsikkosivu"
+
+#: 
+msgid "Use Title Page"
+msgstr "Käytä otsikkosivua"
+
+#: 
+msgid "Church Name"
+msgstr "Kirkon nimi"
+
+#: 
+msgid "Disclaimer"
+msgstr "Vastuuvapauslauseke"
+
+#: 
+msgid "Create Directory"
+msgstr "Luo hakemisto"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "Lahjoitettujen tuotteiden muokkaus"
+
+#: 
+msgid "Save and Add"
+msgstr "Tallenna ja lisää"
+
+#: 
+msgid "Item"
+msgstr "Tuote"
+
+#: 
+msgid "Multiple items"
+msgstr "Useita tuotteita"
+
+#: 
+msgid "Sell to everyone"
+msgstr "Myy kaikille"
+
+#: 
+msgid "Estimated Price"
+msgstr "Arvioitu hinta"
+
+#: 
+msgid "Multiple"
+msgstr "Useita"
+
+#: 
+msgid "Final Price"
+msgstr "Lopullinen hinta"
+
+#: 
+msgid "Replicate item"
+msgstr "Kopioi tuote"
+
+#: 
+msgid "Go"
+msgstr "Siirry"
+
+#: 
+msgid "Description"
+msgstr "Kuvaus"
+
+#: 
+msgid "Picture URL"
+msgstr "Kuvan URL-osoite"
+
+#: 
+msgid "Donation Fund Editor"
+msgstr "Lahjoitusrahastojen muokkaus"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "Oletko varma, että haluat poistaa tämän rahaston?"
+
+#: 
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "Virheellisiä kenttiä tai valintoja. Muutoksia ei tallennettu! Korjaa tiedot ja yritä uudelleen!"
+
+#: 
+msgid "No funds have been added yet"
+msgstr "Rahastoja ei ole vielä lisätty"
+
+#: 
+msgid "Active"
+msgstr "Aktiivinen"
+
+#: 
+msgid "Save Changes"
+msgstr "Tallenna muutokset"
+
+#: 
+msgid "Church Event Editor"
+msgstr "Kirkon tapahtumien muokkaus"
+
+#: 
+msgid "Edit Event Types"
+msgstr "Muokkaa tapahtumatyyppejä"
+
+#: 
+msgid "Edit Event Type"
+msgstr "Muokkaa tapahtumatyyppiä"
+
+#: 
+msgid "Event Type"
+msgstr "Tapahtumatyyppi"
+
+#: 
+msgid "Save Name"
+msgstr "Tallenna nimi"
+
+#: 
+msgid "Recurrence Pattern"
+msgstr "Toistuvuussääntö"
+
+#: 
+msgid "Attendance Counts"
+msgstr "Osallistujamäärät"
+
+#: 
+msgid "Add counter"
+msgstr "Lisää laskuri"
+
+#: 
+msgid "Return to Event Types"
+msgstr "Palaa tapahtumatyyppeihin"
+
+#: 
+msgid "Family"
+msgstr "Perhe"
+
+#: 
+msgid "Type"
+msgstr "Tyyppi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year"
+msgstr "Tilivuosi"
+
+#: 
+msgid "Amount"
+msgstr "Määrä"
+
+#: 
+msgid "Fund"
+msgstr "Rahasto"
+
+#: 
+msgid "Bank"
+msgstr "Pankki"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Kuukausi"
+
+#: 
+msgid "Year"
+msgstr "Vuosi"
+
+#: 
+msgid "Edit"
+msgstr "Muokkaa"
+
+#: 
+msgid "Event Title"
+msgstr "Tapahtuman nimi"
+
+#: 
+msgid "Create Event"
+msgstr "Luo tapahtuma"
+
+#: 
+msgid "Create a new Event"
+msgstr "Luo uusi tapahtuma"
+
+#: 
+msgid " errors. Please see below"
+msgstr " virhettä. Katso alta"
+
+#: 
+msgid "Select your event type"
+msgstr "Valitse tapahtumatyyppi"
+
+#: 
+msgid "You must pick an event type."
+msgstr "Sinun on valittava tapahtumatyyppi."
+
+#: 
+msgid "No Attendance counts recorded"
+msgstr "Osallistujamääriä ei ole kirjattu"
+
+#: 
+msgid "Event Status"
+msgstr "Tapahtuman tila"
+
+#: 
+msgid "Return to Events"
+msgstr "Palaa tapahtumiin"
+
+#: 
+msgid "Sundays"
+msgstr "Sunnuntait"
+
+#: 
+msgid "Mondays"
+msgstr "Maanantait"
+
+#: 
+msgid "Tuesdays"
+msgstr "Tiistait"
+
+#: 
+msgid "Wednesdays"
+msgstr "Keskiviikot"
+
+#: 
+msgid "Thursdays"
+msgstr "Torstait"
+
+#: 
+msgid "Fridays"
+msgstr "Perjantait"
+
+#: 
+msgid "Saturdays"
+msgstr "Lauantait"
+
+#: 
+msgid "Add Event Type"
+msgstr "Lisää tapahtumatyyppi"
+
+#: 
+msgid "Custom Family Fields Editor"
+msgstr "Perheen omien kenttien muokkaus"
+
+#: 
+msgid "Default Option"
+msgstr "Oletusvaihtoehto"
+
+#: 
+msgid "No custom Family fields have been added yet"
+msgstr "Perheen omia kenttiä ei ole vielä lisätty"
+
+#: 
+msgid "Special option"
+msgstr "Erikoisvaihtoehto"
+
+#: 
+msgid "Security Option"
+msgstr "Turvallisuusvaihtoehto"
+
+#: 
+msgid "You must select a group."
+msgstr "Sinun on valittava ryhmä."
+
+#: 
+msgid "Edit List Options"
+msgstr "Muokkaa luettelon vaihtoehtoja"
+
+#: 
+msgid "Help on types.."
+msgstr "Apua tyyppeihin liittyen..."
+
+#: 
+msgid "You must enter a name"
+msgstr "Sinun on annettava nimi"
+
+#: 
+msgid "That field name already exists."
+msgstr "Tämä kentän nimi on jo käytössä."
+
+#: 
+msgid "Family Editor"
+msgstr "Perheen muokkaus"
+
+#: 
+msgid "First name must be entered"
+msgstr "Etunimi on annettava"
+
+#: 
+msgid "Invalid Birth Date."
+msgstr "Virheellinen syntymäaika."
+
+#: 
+msgid "Not a valid Wedding Date"
+msgstr "Virheellinen hääpäivä"
+
+#: 
+msgid "Email is Not Valid"
+msgstr "Sähköpostiosoite ei ole kelvollinen"
+
+#: 
+msgid "Family Info"
+msgstr "Perheen tiedot"
+
+#: 
+msgid "Contact Info"
+msgstr "Yhteystiedot"
+
+#: 
+msgid "Envelope Info"
+msgstr "Kirjekuoren tiedot"
+
+#: 
+msgid "Custom Fields"
+msgstr "Omat kentät"
+
+#: 
+msgid "Family Members"
+msgstr "Perheenjäsenet"
+
+#: 
+msgid "First"
+msgstr "Etunimi"
+
+#: 
+msgid "Middle"
+msgstr "Toinen nimi"
+
+#: 
+msgid "Last"
+msgstr "Sukunimi"
+
+#: 
+msgid "Role"
+msgstr "Rooli"
+
+#: 
+msgid "Select Gender"
+msgstr "Valitse sukupuoli"
+
+#: 
+msgid "Select Role"
+msgstr "Valitse rooli"
+
+#: 
+msgid "Unknown"
+msgstr "Tuntematon"
+
+#: 
+msgid "January"
+msgstr "Tammikuu"
+
+#: 
+msgid "February"
+msgstr "Helmikuu"
+
+#: 
+msgid "March"
+msgstr "Maaliskuu"
+
+#: 
+msgid "April"
+msgstr "Huhtikuu"
+
+#: 
+msgid "May"
+msgstr "Toukokuu"
+
+#: 
+msgid "June"
+msgstr "Kesäkuu"
+
+#: 
+msgid "July"
+msgstr "Heinäkuu"
+
+#: 
+msgid "August"
+msgstr "Elokuu"
+
+#: 
+msgid "September"
+msgstr "Syyskuu"
+
+#: 
+msgid "October"
+msgstr "Lokakuu"
+
+#: 
+msgid "November"
+msgstr "Marraskuu"
+
+#: 
+msgid "December"
+msgstr "Joulukuu"
+
+#: 
+msgid "Unk"
+msgstr "Tunt."
+
+#: 
+msgid "Created"
+msgstr "Luotu"
+
+#: 
+msgid "Envelope Number"
+msgstr "Kirjekuoren numero"
+
+#: 
+msgid "Upload Photo"
+msgstr "Lataa kuva"
+
+#: 
+msgid "Delete Photo"
+msgstr "Poista kuva"
+
+#: 
+msgid "Timeline"
+msgstr "Aikajana"
+
+#: 
+msgid "Pledges and Payments"
+msgstr "Sitoumukset ja maksut"
+
+#: 
+msgid "No property assignments."
+msgstr "Ei määritettyjä ominaisuuksia."
+
+#: 
+msgid "Value"
+msgstr "Arvo"
+
+#: 
+msgid "Edit Value"
+msgstr "Muokkaa arvoa"
+
+#: 
+msgid "Assign a New Property"
+msgstr "Määritä uusi ominaisuus"
+
+#: 
+msgid "Assign"
+msgstr "Määritä"
+
+#: 
+msgid "Date Updated"
+msgstr "Päivitetty"
+
+#: 
+msgid "Updated By"
+msgstr "Päivittäjä"
+
+#: 
+msgid "Show Pledges"
+msgstr "Näytä sitoumukset"
+
+#: 
+msgid "Show Payments"
+msgstr "Näytä maksut"
+
+#: 
+msgid "Since"
+msgstr "Alkaen"
+
+#: 
+msgid "Update"
+msgstr "Päivitä"
+
+#: 
+msgid "Pledge or Payment"
+msgstr "Sitoumus tai maksu"
+
+#: 
+msgid "Date"
+msgstr "Päivämäärä"
+
+#: 
+msgid "NonDeductible"
+msgstr "Vähennyskelvoton"
+
+#: 
+msgid "Schedule"
+msgstr "Aikataulu"
+
+#: 
+msgid "Method"
+msgstr "Maksutapa"
+
+#: 
+msgid "Comment"
+msgstr "Kommentti"
+
+#: 
+msgid "Close"
+msgstr "Sulje"
+
+#: 
+msgid "Confirm Delete"
+msgstr "Vahvista poisto"
+
+#: 
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr "Olet poistamassa profiilikuvaa, tätä toimintoa ei voi peruuttaa."
+
+#: 
+msgid "Do you want to proceed?"
+msgstr "Haluatko jatkaa?"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "Olet lähettämässä sähköpostitse kopion perheen tiedoista seuraaviin osoitteisiin"
+
+#: 
+msgid "Financial Reports"
+msgstr "Talousraportit"
+
+#: 
+msgid "Report Type"
+msgstr "Raporttityyppi"
+
+#: 
+msgid "Select Report Type"
+msgstr "Valitse raporttityyppi"
+
+#: 
+msgid "Pledge Summary"
+msgstr "Sitoumusyhteenveto"
+
+#: 
+msgid "Pledge Family Summary"
+msgstr "Perheen sitoumusyhteenveto"
+
+#: 
+msgid "Pledge Reminders"
+msgstr "Sitoumusmuistutukset"
+
+#: 
+msgid "Voting Members"
+msgstr "Äänestävät jäsenet"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Lahjoitusraportti (verotusta varten)"
+
+#: 
+msgid "Zero Givers"
+msgstr "Ei-lahjoittajat"
+
+#: 
+msgid "Individual Deposit Report"
+msgstr "Yksittäinen talletusraportti"
+
+#: 
+msgid "Advanced Deposit Report"
+msgstr "Tarkennettu talletusraportti"
+
+#: 
+msgid "Next"
+msgstr "Seuraava"
+
+#: 
+msgid "Filter by Family"
+msgstr "Suodata perheen mukaan"
+
+#: 
+msgid "Report Start Date"
+msgstr "Raportin alkupäivä"
+
+#: 
+msgid "Report End Date"
+msgstr "Raportin loppupäivä"
+
+#: 
+msgid "Apply Report Dates To"
+msgstr "Käytä raportin päivämääriä kohteeseen"
+
+#: 
+msgid "Deposit Date (Default)"
+msgstr "Talletuspäivä (oletus)"
+
+#: 
+msgid "Payment Date"
+msgstr "Maksupäivä"
+
+#: 
+msgid "Filter by Deposit"
+msgstr "Suodata talletuksen mukaan"
+
+#: 
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "Jos talletus valitaan, päivämääräkriteerejä ei huomioida."
+
+#: 
+msgid "All deposits within date range"
+msgstr "Kaikki talletukset aikavälillä"
+
+#: 
+msgid "Filter by Payment Type"
+msgstr "Suodata maksutavan mukaan"
+
+#: 
+msgid "All Methods"
+msgstr "Kaikki maksutavat"
+
+#: 
+msgid "Check"
+msgstr "Shekki"
+
+#: 
+msgid "Cash"
+msgstr "Käteinen"
+
+#: 
+msgid "Bank Draft"
+msgstr "Pankkivekseli"
+
+#: 
+msgid "Minimum Total Amount:"
+msgstr "Vähimmäissumma yhteensä:"
+
+#: 
+msgid "0 - No Minimum"
+msgstr "0 - Ei vähimmäismäärää"
+
+#: 
+msgid "Other Settings"
+msgstr "Muut asetukset"
+
+#: 
+msgid "Only Payments with Pledges"
+msgstr "Vain maksut, joihin liittyy sitoumus"
+
+#: 
+msgid "All Payments"
+msgstr "Kaikki maksut"
+
+#: 
+msgid "Only Families with unpaid pledges"
+msgstr "Vain perheet, joilla on maksamattomia sitoumuksia"
+
+#: 
+msgid "All Families"
+msgstr "Kaikki perheet"
+
+#: 
+msgid "Report Heading:"
+msgstr "Raportin otsikko:"
+
+#: 
+msgid "Graphic"
+msgstr "Grafiikka"
+
+#: 
+msgid "Church Address"
+msgstr "Kirkon osoite"
+
+#: 
+msgid "Blank"
+msgstr "Tyhjä"
+
+#: 
+msgid "Remittance Slip:"
+msgstr "Tilityslomake:"
+
+#: 
+msgid "Sort Data by:"
+msgstr "Lajittele tiedot:"
+
+#: 
+msgid "Deposit"
+msgstr "Talletus"
+
+#: 
+msgid "All Data"
+msgstr "Kaikki tiedot"
+
+#: 
+msgid "Moderate Detail"
+msgstr "Keskitason yksityiskohdat"
+
+#: 
+msgid "Summary Data"
+msgstr "Yhteenvetotiedot"
+
+#: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Äänestävien jäsenten on täytynyt tehdä<br> lahjoitus näiden vuosien sisällä<br> (0 = ei lahjoitusvaatimusta)"
+
+#: 
+msgid "CSV"
+msgstr "CSV"
+
+#: 
+msgid "Back"
+msgstr "Takaisin"
+
+#: 
+msgid "Create Report"
+msgstr "Luo raportti"
+
+#: 
+msgid "Deposit Listing"
+msgstr "Talletusluettelo"
+
+#: 
+msgid "Deposits"
+msgstr "Talletukset"
+
+#: 
+msgid "Delete Selected Rows"
+msgstr "Poista valitut rivit"
+
+#: 
+msgid "Export Selected Rows (OFX)"
+msgstr "Vie valitut rivit (OFX)"
+
+#: 
+msgid "Export Selected Rows (CSV)"
+msgstr "Vie valitut rivit (CSV)"
+
+#: 
+msgid "Fundraiser Listing"
+msgstr "Varainkeruuluettelo"
+
+#: 
+msgid "Date Start"
+msgstr "Alkupäivä"
+
+#: 
+msgid "Apply Filters"
+msgstr "Käytä suodattimia"
+
+#: 
+msgid "Date End"
+msgstr "Loppupäivä"
+
+#: 
+msgid "Clear Filter"
+msgstr "Tyhjennä suodatin"
+
+#: 
+msgid "Number"
+msgstr "Numero"
+
+#: 
+msgid "Create New Fund Raiser"
+msgstr "Luo uusi varainkeruu"
+
+#: 
+msgid "Add Donated Item"
+msgstr "Lisää lahjoitettu tuote"
+
+#: 
+msgid "Generate Catalog"
+msgstr "Luo luettelo"
+
+#: 
+msgid "Generate Bid Sheets"
+msgstr "Luo tarjouslomakkeet"
+
+#: 
+msgid "Generate Certificates"
+msgstr "Luo todistukset"
+
+#: 
+msgid "Donated items for this fundraiser"
+msgstr "Varainkeruun lahjoitetut tuotteet"
+
+#: 
+msgid "Donor"
+msgstr "Lahjoittaja"
+
+#: 
+msgid "Buyer"
+msgstr "Ostaja"
+
+#: 
+msgid "Sale Price"
+msgstr "Myyntihinta"
+
+#: 
+msgid "Material Value"
+msgstr "Materiaalin arvo"
+
+#: 
+msgid "Minimum Price"
+msgstr "Vähimmäishinta"
+
+#: 
+msgid "Family Geographic Utilities"
+msgstr "Perheiden maantieteelliset työkalut"
+
+#: 
+msgid "Select Family"
+msgstr "Valitse perhe"
+
+#: 
+msgid "Maximum number of neighbors"
+msgstr "Naapureiden enimmäismäärä"
+
+#: 
+msgid "Maximum distance"
+msgstr "Enimmäisetäisyys"
+
+#: 
+msgid "Data file format"
+msgstr "Tiedostomuoto"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "GPS-visualisoija"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "Street Atlas USA"
+
+#: 
+msgid "Include families in the coordinate file"
+msgstr "Sisällytä perheet koordinaattitiedostoon"
+
+#: 
+msgid "Neighbor Families"
+msgstr "Naapuriperheet"
+
+#: 
+msgid "Make Data File"
+msgstr "Luo tiedosto"
+
+#: 
+msgid "Show Neighbors"
+msgstr "Näytä naapurit"
+
+#: 
+msgid "Distance"
+msgstr "Etäisyys"
+
+#: 
+msgid "Direction"
+msgstr "Suunta"
+
+#: 
+msgid "Latitude"
+msgstr "Leveysaste"
+
+#: 
+msgid "Longitude"
+msgstr "Pituusaste"
+
+#: 
+msgid "Add to Cart"
+msgstr "Lisää ostoskoriin"
+
+#: 
+msgid "Intersect with Cart"
+msgstr "Risteä ostoskorin kanssa"
+
+#: 
+msgid "Remove from Cart"
+msgstr "Poista ostoskorista"
+
+#: 
+msgid "Group Editor"
+msgstr "Ryhmän muokkaus"
+
+#: 
+msgid "Group Settings"
+msgstr "Ryhmän asetukset"
+
+#: 
+msgid "Type of Group"
+msgstr "Ryhmän tyyppi"
+
+#: 
+msgid "Group Member Roles"
+msgstr "Ryhmän jäsenten roolit"
+
+#: 
+msgid "Clone roles"
+msgstr "Kloonaa roolit"
+
+#: 
+msgid "from group"
+msgstr "ryhmästä"
+
+#: 
+msgid "Select a group"
+msgstr "Valitse ryhmä"
+
+#: 
+msgid "Group Specific Properties"
+msgstr "Ryhmäkohtaiset ominaisuudet"
+
+#: 
+msgid "Enabled"
+msgstr "Käytössä"
+
+#: 
+msgid "Edit Group-Specific Properties Form"
+msgstr "Muokkaa ryhmäkohtaisten ominaisuuksien lomaketta"
+
+#: 
+msgid "Disabled"
+msgstr "Ei käytössä"
+
+#: 
+msgid "Enable Group Specific Properties"
+msgstr "Ota ryhmäkohtaiset ominaisuudet käyttöön"
+
+#: 
+msgid "Group Roles"
+msgstr "Ryhmän roolit"
+
+#: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "Ryhmäroolin nimen muutokset tallennetaan heti, kun valinta poistuu kentästä"
+
+#: 
+msgid "New Role"
+msgstr "Uusi rooli"
+
+#: 
+msgid "Group Listing"
+msgstr "Ryhmäluettelo"
+
+#: 
+msgid "Group Member Properties Editor"
+msgstr "Ryhmän jäsenen ominaisuuksien muokkaus"
+
+#: 
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr "Tällä ryhmällä ei ole tällä hetkellä ominaisuuksia! Voit lisätä niitä ryhmän muokkauksessa."
+
+#: 
+msgid "Return to Person Record"
+msgstr "Palaa henkilön tietoihin"
+
+#: 
+msgid "Editing"
+msgstr "Muokataan"
+
+#: 
+msgid "data for member"
+msgstr "jäsenen tietoja"
+
+#: 
+msgid "Group-Specific Properties Form Editor"
+msgstr "Ryhmäkohtaisten ominaisuuksien lomakkeen muokkaus"
+
+#: 
+msgid "No properties have been added yet"
+msgstr "Ominaisuuksia ei ole vielä lisätty"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
+msgstr "Varoitus: Kenttien muutokset menetetään, jos et paina 'Tallenna muutokset' ennen kuin käytät ylös, alas, poista tai 'Lisää uusi' -painikkeita!"
+
+#: 
+msgid "Show in"
+msgstr "Näytä kohteessa"
+
+#: 
+msgid "Person View"
+msgstr "Henkilönäkymä"
+
+#: 
+msgid "Group reports"
+msgstr "Ryhmäraportit"
+
+#: 
+msgid "Select the group you would like to report"
+msgstr "Valitse ryhmä raporttia varten"
+
+#: 
+msgid "No Role Selected"
+msgstr "Ei valittua roolia"
+
+#: 
+msgid "Only cart people?"
+msgstr "Vain ostoskorissa olevat henkilöt?"
+
+#: 
+msgid "Report Model"
+msgstr "Raporttimalli"
+
+#: 
+msgid "Report for group and role selected"
+msgstr "Raportti valitulle ryhmälle ja roolille"
+
+#: 
+msgid "Report for any role in group selected"
+msgstr "Raportti mille tahansa roolille valitussa ryhmässä"
+
+#: 
+msgid "Select which information you want to include"
+msgstr "Valitse sisällytettävät tiedot"
+
+#: 
+msgid "Standard Info"
+msgstr "Vakiotiedot"
+
+#: 
+msgid "Other Email"
+msgstr "Muu sähköposti"
+
+#: 
+msgid "GroupRole"
+msgstr "Ryhmärooli"
+
+#: 
+msgid "Group-Specific Property Fields"
+msgstr "Ryhmäkohtaiset ominaisuuskentät"
+
+#: 
+msgid "Undefined"
+msgstr "Määrittelemätön"
+
+#: 
+msgid "Group View"
+msgstr "Ryhmänäkymä"
+
+#: 
+msgid "Edit this Group"
+msgstr "Muokkaa tätä ryhmää"
+
+#: 
+msgid "Delete this Group"
+msgstr "Poista tämä ryhmä"
+
+#: 
+msgid "Confirm Delete Group"
+msgstr "Vahvista ryhmän poistaminen"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "Vahvista tämän ryhmän tietojen poistaminen"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "Tämä poistaa myös kaikki tähän ryhmään liittyvät roolit ja ryhmäkohtaiset ominaisuustiedot."
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "Kaikki ryhmän jäsenyydet ja ominaisuudet tuhotaan. Itse ryhmän jäseniä ei muuteta."
+
+#: 
+msgid "Please select target group for members"
+msgstr "Valitse jäsenten kohderyhmä"
+
+#: 
+msgid "Add Group Members to Cart"
+msgstr "Lisää ryhmän jäsenet ostoskoriin"
+
+#: 
+msgid "Map this group"
+msgstr "Kartoita tämä ryhmä"
+
+#: 
+msgid "Email Group"
+msgstr "Lähetä sähköpostia ryhmälle"
+
+#: 
+msgid "Total Members"
+msgstr "Jäseniä yhteensä"
+
+#: 
+msgid "Default Role"
+msgstr "Oletusrooli"
+
+#: 
+msgid "Group-Specific Properties"
+msgstr "Ryhmäkohtaiset ominaisuudet"
+
+#: 
+msgid "Disabled for this group."
+msgstr "Ei käytössä tälle ryhmälle."
+
+#: 
+msgid "Assigned Properties"
+msgstr "Määritetyt ominaisuudet"
+
+#: 
+msgid "Group Members"
+msgstr "Ryhmän jäsenet"
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "Poista valitut jäsenet ryhmästä"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "Lisää valitut jäsenet ostoskoriin"
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "Lisää valitut jäsenet ryhmään"
+
+#: 
+msgid "Move Selected Members to Group"
+msgstr "Siirrä valitut jäsenet ryhmään"
+
+#: 
+msgid "Add Group Member"
+msgstr "Lisää ryhmän jäsen"
+
+#: 
+msgid "Letters and Mailing Labels"
+msgstr "Kirjeet ja osoitetarrat"
+
+#: 
+msgid "Newsletter labels"
+msgstr "Uutiskirjeen tarrat"
+
+#: 
+msgid "Confirm data labels"
+msgstr "Vahvista tietotarrat"
+
+#: 
+msgid "Listing All Church Events"
+msgstr "Luettelo kirkon kaikista tapahtumista"
+
+#: 
+msgid "Start Date/Time"
+msgstr "Alkamisaika"
+
+#: 
+msgid "Invalid login or password"
+msgstr "Virheellinen käyttäjätunnus tai salasana"
+
+#: 
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr "Liian monta epäonnistunutta kirjautumista: tilisi on lukittu. Ota yhteyttä ylläpitäjään."
+
+#: 
+msgid "Please Login"
+msgstr "Kirjaudu sisään"
+
+#: 
+msgid "Email/Username"
+msgstr "Sähköposti/Käyttäjätunnus"
+
+#: 
+msgid "Password"
+msgstr "Salasana"
+
+#: 
+msgid "Login"
+msgstr "Kirjaudu"
+
+#: 
+msgid "Envelope Manager"
+msgstr "Kirjekuorten hallinta"
+
+#: 
+msgid "Update Family Records"
+msgstr "Päivitä perheen tiedot"
+
+#: 
+msgid "Update Envelopes"
+msgstr "Päivitä kirjekuoret"
+
+#: 
+msgid "Confirm"
+msgstr "Vahvista"
+
+#: 
+msgid "Sort by"
+msgstr "Lajitteluperuste"
+
+#: 
+msgid "Zero"
+msgstr "Nolla"
+
+#: 
+msgid "Assign starting at #"
+msgstr "Määritä alkaen numerosta #"
+
+#: 
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr "Karttaa ei voida näyttää, koska kirkon koordinaatit puuttuvat. Päivitä kirkon osoite asetusvalikossa."
+
+#: 
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
+msgstr "Google Map API -avainta ei ole asetettu. Kartta toimii vain rajoitetulla määrällä kohteita. Luo avain asetusvalikon karttaosiossa."
+
+#: 
+msgid "Member Role Change"
+msgstr "Jäsenen roolin muutos"
+
+#: 
+msgid "Member's Name"
+msgstr "Jäsenen nimi"
+
+#: 
+msgid "Current Role"
+msgstr "Nykyinen rooli"
+
+#: 
+msgid "All People"
+msgstr "Kaikki henkilöt"
+
+#: 
+msgid "Email All"
+msgstr "Sähköpostia kaikille"
+
+#: 
+msgid "Email All (BCC)"
+msgstr "Sähköpostia kaikille (piilokopio)"
+
+#: 
+msgid "Family Roles"
+msgstr "Perheroolit"
+
+#: 
+msgid "Family Geographic"
+msgstr "Perheiden maantiede"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "Päivitä kaikkien perheiden koordinaatit"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "Vapaaehtoistyömahdollisuudet"
+
+#: 
+msgid "Families"
+msgstr "Perheet"
+
+#: 
+msgid "See all Families"
+msgstr "Näytä kaikki perheet"
+
+#: 
+msgid "People"
+msgstr "Henkilöt"
+
+#: 
+msgid "See All People"
+msgstr "Näytä kaikki henkilöt"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "Pyhäkoulun lapset"
+
+#: 
+msgid "More info"
+msgstr "Lisätietoja"
+
+#: 
+msgid "Reports on groups and roles"
+msgstr "Raportit ryhmistä ja rooleista"
+
+#: 
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "Raportti valitusta ryhmästä ja rooleista (voi olla monisivuinen PDF)."
+
+#: 
+msgid "Generate letters and mailing labels."
+msgstr "Luo kirjeet ja osoitetarrat."
+
+#: 
+msgid "Role / Gender"
+msgstr "Rooli / Sukupuoli"
+
+#: 
+msgid "Count"
+msgstr "Määrä"
+
+#: 
+msgid "People Classification"
+msgstr "Henkilöiden luokittelu"
+
+#: 
+msgid "Gender Demographics"
+msgstr "Sukupuolijakauma"
+
+#: 
+msgid "Boys"
+msgstr "Pojat"
+
+#: 
+msgid "Girls"
+msgstr "Tytöt"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "Pyhäkoululuokat"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "Talletusten seuranta"
+
+#: 
+msgid "Latest Families"
+msgstr "Uusimmat perheet"
+
+#: 
+msgid "Family Name"
+msgstr "Perheen nimi"
+
+#: 
+msgid "Updated Families"
+msgstr "Päivitetyt perheet"
+
+#: 
+msgid "Updated"
+msgstr "Päivitetty"
+
+#: 
+msgid "Please confirm deletion of this note"
+msgstr "Vahvista tämän huomautuksen poistaminen"
+
+#: 
+msgid "Yes, delete this record"
+msgstr "Kyllä, poista nämä tiedot"
+
+#: 
+msgid "(this action cannot be undone)"
+msgstr "(tätä toimintoa ei voi peruuttaa)"
+
+#: 
+msgid "Note Editor"
+msgstr "Huomautusten muokkaus"
+
+#: 
+msgid "Private"
+msgstr "Yksityinen"
+
+#: 
+msgid "Person"
+msgstr "Henkilö"
+
+#: 
+msgid "Group"
+msgstr "Ryhmä"
+
+#: 
+msgid "Option"
+msgstr "Vaihtoehto"
+
+#: 
+msgid "Error: Duplicate"
+msgstr "Virhe: Kaksoiskappale"
+
+#: 
+msgid "Default"
+msgstr "Oletus"
+
+#: 
+msgid "Duplicate name found."
+msgstr "Löytyi duplikaatti nimi."
+
+#: 
+msgid "Make Default"
+msgstr "Aseta oletukseksi"
+
+#: 
+msgid "Exit"
+msgstr "Poistu"
+
+#: 
+msgid "Add New"
+msgstr "Lisää uusi"
+
+#: 
+msgid " by that name already exists."
+msgstr " tällä nimellä on jo olemassa."
+
+#: 
+msgid "Buyer Number Editor"
+msgstr "Ostajanumeroiden muokkaus"
+
+#: 
+msgid "Generate Statement"
+msgstr "Luo tiliote"
+
+#: 
+msgid "Buyers for this fundraiser:"
+msgstr "Tämän varainkeruun ostajat:"
+
+#: 
+msgid "Select all"
+msgstr "Valitse kaikki"
+
+#: 
+msgid "Select none"
+msgstr "Poista valinnat"
+
+#: 
+msgid "Add Buyer"
+msgstr "Lisää ostaja"
+
+#: 
+msgid "Generate Statements for Selected"
+msgstr "Luo tiliotteet valituille"
+
+#: 
+msgid "Select"
+msgstr "Valitse"
+
+#: 
+msgid "Custom Person Fields Editor"
+msgstr "Henkilön omien kenttien muokkaus"
+
+#: 
+msgid "No custom person fields have been added yet"
+msgstr "Henkilön omia kenttiä ei ole vielä lisätty"
+
+#: 
+msgid "Person Editor"
+msgstr "Henkilön muokkaus"
+
+#: 
+msgid "Not a valid Friend Date"
+msgstr "Virheellinen ystävyyspäivä"
+
+#: 
+msgid "Not a valid Membership Date"
+msgstr "Virheellinen jäsenyyspäivä"
+
+#: 
+msgid "Work Email is Not Valid"
+msgstr "Työsähköposti ei ole kelvollinen"
+
+#: 
+msgid "Birth Month"
+msgstr "Syntymäkuukausi"
+
+#: 
+msgid "Birth Day"
+msgstr "Syntymäpäivä"
+
+#: 
+msgid "Birth Year"
+msgstr "Syntymävuosi"
+
+#: 
+msgid "Hide Age"
+msgstr "Piilota ikä"
+
+#: 
+msgid "Create a new family (using last name)"
+msgstr "Luo uusi perhe (sukunimen mukaan)"
+
+#: 
+msgid "Friend Date"
+msgstr "Ystävyyspäivä"
+
+#: 
+msgid "Person Profile"
+msgstr "Henkilöprofiili"
+
+#: 
+msgid "Not assigned"
+msgstr "Ei määritetty"
+
+#: 
+msgid "Printable Page"
+msgstr "Tulostettava sivu"
+
+#: 
+msgid "Edit \"Why Came\" Notes"
+msgstr "Muokkaa \"Miksi tuli\" -huomautuksia"
+
+#: 
+msgid "Delete this Record"
+msgstr "Poista nämä tiedot"
+
+#: 
+msgid "Make User"
+msgstr "Luo käyttäjä"
+
+#: 
+msgid "Edit User"
+msgstr "Muokkaa käyttäjää"
+
+#: 
+msgid "List Members"
+msgstr "Listaa jäsenet"
+
+#: 
+msgid "No group assignments."
+msgstr "Ei ryhmämäärityksiä."
+
+#: 
+msgid "Change Role"
+msgstr "Vaihda rooli"
+
+#: 
+msgid "Update Properties"
+msgstr "Päivitä ominaisuudet"
+
+#: 
+msgid "Assign New Group"
+msgstr "Määritä uusi ryhmä"
+
+#: 
+msgid "No volunteer opportunity assignments."
+msgstr "Ei vapaaehtoistyömäärityksiä."
+
+#: 
+msgid "Assign a New Volunteer Opportunity"
+msgstr "Määritä uusi vapaaehtoistyömahdollisuus"
+
+#: 
+msgid "Electronic Transaction Details"
+msgstr "Sähköisen tapahtuman tiedot"
+
+#: 
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "Vähennyskelvoton summa ei voi olla suurempi kuin kokonaissumma."
+
+#: 
+msgid "At least one fund must have a non-zero amount."
+msgstr "Vähintään yhdellä rahastolla on oltava nollaa suurempi summa."
+
+#: 
+msgid "Must specify non-zero check number"
+msgstr "On annettava shekin numero"
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "Shekin numero ei kelpaa käteismaksuun"
+
+#: 
+msgid " more entries will fit."
+msgstr " merkintää mahtuu vielä."
+
+#: 
+msgid "Deposit closed"
+msgstr "Talletus suljettu"
+
+#: 
+msgid "Find family->"
+msgstr "Etsi perhe ->"
+
+#: 
+msgid "Payment Schedule"
+msgstr "Maksusuunnitelma"
+
+#: 
+msgid "Select Schedule"
+msgstr "Valitse aikataulu"
+
+#: 
+msgid "Weekly"
+msgstr "Viikoittain"
+
+#: 
+msgid "Monthly"
+msgstr "Kuukausittain"
+
+#: 
+msgid "Quarterly"
+msgstr "Neljännesvuosittain"
+
+#: 
+msgid "Once"
+msgstr "Kerran"
+
+#: 
+msgid "Other"
+msgstr "Muu"
+
+#: 
+msgid "Payment by"
+msgstr "Maksaja"
+
+#: 
+msgid "Scan check"
+msgstr "Skannaa shekki"
+
+#: 
+msgid "find family from check account #"
+msgstr "etsi perhe shekkitilin numerolla #"
+
+#: 
+msgid "Set default check account number for family"
+msgstr "Aseta perheen oletusshekkitilin numero"
+
+#: 
+msgid "Fund Name"
+msgstr "Rahaston nimi"
+
+#: 
+msgid "Non-deductible amount"
+msgstr "Vähennyskelvoton osuus"
+
+#: 
+msgid "Printable View"
+msgstr "Tulostettava näkymä"
+
+#: 
+msgid "Age"
+msgstr "Ikä"
+
+#: 
+msgid "Assigned Groups"
+msgstr "Määritetyt ryhmät"
+
+#: 
+msgid "Group Name"
+msgstr "Ryhmän nimi"
+
+#: 
+msgid "Entered"
+msgstr "Kirjattu"
+
+#: 
+msgid "by"
+msgstr "tekijä"
+
+#: 
+msgid "Property successfully assigned."
+msgstr "Ominaisuus määritetty onnistuneesti."
+
+#: 
+msgid " Property Assignment"
+msgstr " Ominaisuuden määritys"
+
+#: 
+msgid "Assigning"
+msgstr "Määritetään"
+
+#: 
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgstr "Tämän ominaisuuden poistaminen poistaa myös kaikki sen määritykset henkilöiltä, perheiltä ja ryhmiltä."
+
+#: 
+msgid "No, cancel this deletion"
+msgstr "Ei, peruuta poisto"
+
+#: 
+msgid "Property Editor"
+msgstr "Ominaisuuksien muokkaus"
+
+#: 
+msgid "You must select a type"
+msgstr "Sinun on valittava tyyppi"
+
+#: 
+msgid "Select Property Type"
+msgstr "Valitse ominaisuustyyppi"
+
+#: 
+msgid "A"
+msgstr "A"
+
+#: 
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr "Kehotearvon syöttäminen mahdollistaa vapaamuotoisen arvon liittämisen."
+
+#: 
+msgid "Property List"
+msgstr "Ominaisuusluettelo"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Ominaisuus"
+
+#: 
+msgid "Prompt"
+msgstr "Kehete"
+
+#: 
+msgid "Warning"
+msgstr "Varoitus"
+
+#: 
+msgid "This property type is still being used by at least one property."
+msgstr "Tämä ominaisuustyyppi on vielä käytössä vähintään yhdessä ominaisuudessa."
+
+#: 
+msgid "If you delete this type, you will also remove all properties using"
+msgstr "Jos poistat tämän tyypin, poistat myös kaikki ominaisuudet, jotka käyttävät"
+
+#: 
+msgid "it and lose any corresponding property assignments."
+msgstr "sitä, ja menetät kaikki vastaavat ominaisuusmääritykset."
+
+#: 
+msgid "Please confirm deletion of this Property Type"
+msgstr "Vahvista tämän ominaisuustyypin poistaminen"
+
+#: 
+msgid "Property Type Editor"
+msgstr "Ominaisuustyyppien muokkaus"
+
+#: 
+msgid "Property Type List"
+msgstr "Ominaisuustyyppiluettelo"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Class"
+msgstr "Luokka"
+
+#: 
+msgid "Properties"
+msgstr "Ominaisuudet"
+
+#: 
+msgid " Property Unassignment"
+msgstr " Ominaisuuden poistaminen"
+
+#: 
+msgid "Please confirm removal of this property from this"
+msgstr "Vahvista tämän ominaisuuden poistaminen tästä kohteesta"
+
+#: 
+msgid "Unassigning"
+msgstr "Poistetaan määritys"
+
+#: 
+msgid "Yes, unassign this Property"
+msgstr "Kyllä, poista tämä ominaisuus"
+
+#: 
+msgid "No, retain this assignment"
+msgstr "Ei, säilytä määritys"
+
+#: 
+msgid "Query Listing"
+msgstr "Kyselyluettelo"
+
+#: 
+msgid "Free-Text Query"
+msgstr "Vapaatekstikysely"
+
+#: 
+msgid "Export Results to CSV file"
+msgstr "Vie tulokset CSV-tiedostoon"
+
+#: 
+msgid "Execute SQL"
+msgstr "Suorita SQL"
+
+#: 
+msgid "An error occurred"
+msgstr "Tapahtui virhe"
+
+#: 
+msgid " record(s) returned"
+msgstr " tietuetta palautettiin"
+
+#: 
+msgid "Add Results To Cart"
+msgstr "Lisää tulokset ostoskoriin"
+
+#: 
+msgid "Intersect Results With Cart"
+msgstr "Risteä tulokset ostoskorin kanssa"
+
+#: 
+msgid "Remove Results From Cart"
+msgstr "Poista tulokset ostoskorista"
+
+#: 
+msgid "Return to Query Menu"
+msgstr "Palaa kyselyvalikkoon"
+
+#: 
+msgid "Query View"
+msgstr "Kyselynäkymä"
+
+#: 
+msgid "This value is required."
+msgstr "Tämä arvo on pakollinen."
+
+#: 
+msgid "This value must be numeric."
+msgstr "Tämän arvon on oltava numeerinen."
+
+#: 
+msgid "This value must be at least "
+msgstr "Tämän arvon on oltava vähintään "
+
+#: 
+msgid "This value cannot be more than "
+msgstr "Tämä arvo ei voi olla suurempi kuin "
+
+#: 
+msgid " characters long"
+msgstr " merkkiä pitkä"
+
+#: 
+msgid "This value cannot be less than "
+msgstr "Tämä arvo ei voi olla pienempi kuin "
+
+#: 
+msgid "Run Query Again"
+msgstr "Suorita kysely uudelleen"
+
+#: 
+msgid "Execute Query"
+msgstr "Suorita kysely"
+
+#: 
+msgid "Pledge Reminder Report"
+msgstr "Sitoumusmuistutusraportti"
+
+#: 
+msgid "Restore Database"
+msgstr "Palauta tietokanta"
+
+#: 
+msgid "All donations from this family have been moved to another family."
+msgstr "Kaikki tämän perheen lahjoitukset on siirretty toiselle perheelle."
+
+#: 
+msgid "Please confirm deletion of"
+msgstr "Vahvista poisto"
+
+#: 
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
+msgstr "Valitettavasti tästä perheestä on lahjoitustietoja. Perhettä ei voida poistaa."
+
+#: 
+msgid "Return to Family View"
+msgstr "Palaa perhenäkymään"
+
+#: 
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
+msgstr "VAROITUS: Tällä perheellä on lahjoitustietoja, eikä sitä voida poistaa ennen kuin lahjoitukset on liitetty toiseen perheeseen."
+
+#: 
+msgid "Please select another family with whom to associate these donations:"
+msgstr "Valitse toinen perhe, johon nämä lahjoitukset liitetään:"
+
+#: 
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr "VAROITUS: Tätä toimintoa ei voi peruuttaa ja sillä voi olla oikeudellisia seuraamuksia!"
+
+#: 
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr "NYKYINEN PERHE, JOLLA ON LAHJOITUKSIA"
+
+#: 
+msgid "Please confirm deletion of this family record:"
+msgstr "Vahvista tämän perheen tietojen poistaminen:"
+
+#: 
+msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr "Huomautus: Tämä poistaa myös kaikki perheeseen liittyvät huomautukset."
+
+#: 
+msgid "Delete Family Record ONLY"
+msgstr "Poista VAIN perheen tiedot"
+
+#: 
+msgid "Delete Family Record AND Family Members"
+msgstr "Poista perheen tiedot JA perheenjäsenet"
+
+#: 
+msgid "Listing"
+msgstr "Luettelo"
+
+#: 
+msgid "My User Settings"
+msgstr "Omat käyttäjäasetukset"
+
+#: 
+msgid "Variable name"
+msgstr "Muuttujan nimi"
+
+#: 
+msgid "Current Value"
+msgstr "Nykyinen arvo"
+
+#: 
+msgid "Save Settings"
+msgstr "Tallenna asetukset"
+
+#: 
+msgid "Default User Settings"
+msgstr "Käyttäjän oletusasetukset"
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
+msgstr "Aseta luvaksi 'Tosi', jotta uudet käyttäjät voivat muuttaa nykyistä arvoaan.<BR>"
+
+#: 
+msgid "Permission"
+msgstr "Lupa"
+
+#: 
+msgid "System Settings"
+msgstr "Järjestelmäasetukset"
+
+#: 
+msgid "Tax Report"
+msgstr "Veroraportti"
+
+#: 
+msgid "Calendar Year"
+msgstr "Kalenterivuosi"
+
+#: 
+msgid "Update Latitude & Longitude"
+msgstr "Päivitä koordinaatit"
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "Käyttäjän poiston vahvistus"
+
+#: 
+msgid "Please confirm removal of user status from"
+msgstr "Vahvista käyttäjäoikeuksien poistaminen kohteelta"
+
+#: 
+msgid "User Editor"
+msgstr "Käyttäjien muokkaus"
+
+#: 
+msgid "Note: Changes will not take effect until next logon."
+msgstr "Huom: Muutokset tulevat voimaan vasta seuraavalla kirjautumisella."
+
+#: 
+msgid "Person to Make User"
+msgstr "Henkilö, josta luodaan käyttäjä"
+
+#: 
+msgid "User"
+msgstr "Käyttäjä"
+
+#: 
+msgid "Login Name"
+msgstr "Kirjautumistunnus"
+
+#: 
+msgid "Add Records"
+msgstr "Lisää tietoja"
+
+#: 
+msgid "Edit Records"
+msgstr "Muokkaa tietoja"
+
+#: 
+msgid "Delete Records"
+msgstr "Poista tietoja"
+
+#: 
+msgid "Manage Properties and Classifications"
+msgstr "Hallitse ominaisuuksia ja luokitteluja"
+
+#: 
+msgid "Manage Groups and Roles"
+msgstr "Hallitse ryhmiä ja rooleja"
+
+#: 
+msgid "Manage Donations and Finance"
+msgstr "Hallitse lahjoituksia ja taloutta"
+
+#: 
+msgid "View, Add and Edit Notes"
+msgstr "Näytä, lisää ja muokkaa huomautuksia"
+
+#: 
+msgid "Edit Self"
+msgstr "Muokkaa itseään"
+
+#: 
+msgid "(Edit own family only.)"
+msgstr "(Muokkaa vain omaa perhettään.)"
+
+#: 
+msgid "Admin"
+msgstr "Ylläpitäjä"
+
+#: 
+msgid "(Grants all privileges.)"
+msgstr "(Myöntää kaikki oikeudet.)"
+
+#: 
+msgid "Style"
+msgstr "Tyyli"
+
+#: 
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr "Aseta luvaksi 'Tosi', jotta käyttäjä voi muuttaa nykyistä arvoaan."
+
+#: 
+msgid "User Settings"
+msgstr "Käyttäjäasetukset"
+
+#: 
+msgid "Last Login"
+msgstr "Viimeisin kirjautuminen"
+
+#: 
+msgid "Total Logins"
+msgstr "Kirjautumisia yhteensä"
+
+#: 
+msgid "Failed Logins"
+msgstr "Epäonnistuneita kirjautumisia"
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "Sinun on syötettävä sama salasana molempiin kenttiin"
+
+#: 
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "Salasana on liian helppo. Valitse jokin muu."
+
+#: 
+msgid "Your new password must be at least"
+msgstr "Uuden salasanan on oltava vähintään"
+
+#: 
+msgid "characters"
+msgstr "merkkiä"
+
+#: 
+msgid "characters in length."
+msgstr "merkkiä pitkä."
+
+#: 
+msgid "Old Password"
+msgstr "Vanha salasana"
+
+#: 
+msgid "New Password"
+msgstr "Uusi salasana"
+
+#: 
+msgid "Confirm New Password"
+msgstr "Vahvista uusi salasana"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "Vahvista tämän käyttäjän salasanan nollaus"
+
+#: 
+msgid "Volunteer Opportunity Editor"
+msgstr "Vapaaehtoistyömahdollisuuksien muokkaus"
+
+#: 
+msgid "No volunteer opportunities have been added yet"
+msgstr "Vapaaehtoistyömahdollisuuksia ei ole vielä lisätty"
+
+#: 
+msgid "\"Why Came\" notes for "
+msgstr "\"Miksi tuli\" -huomautukset kohteelle "
+
+#: 
+msgid "Why did you come to the church?"
+msgstr "Miksi tulit kirkkoon?"
+
+#: 
+msgid "Why do you keep coming?"
+msgstr "Miksi jatkat käymistä?"
+
+#: 
+msgid "Do you have any suggestions for us?"
+msgstr "Onko sinulla ehdotuksia meille?"
+
+#: 
+msgid "How did you learn of the church?"
+msgstr "Miten kuulit kirkosta?"
+
+#: 
+msgid "eMail Dashboard"
+msgstr "Sähköpostin hallintapaneeli"
+
+#: 
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr "Määritetty kirjekuoren numerot kaikille perheille, joissa on vähintään yksi jäsen."
+
+#: 
+msgid "Assigned envelope numbers to all families."
+msgstr "Määritetty kirjekuoren numerot kaikille perheille."
+
