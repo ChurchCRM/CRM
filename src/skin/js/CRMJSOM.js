@@ -237,6 +237,7 @@ window.CRM.groups = {
                 window.CRM.groups.getRoles(selectOptions.GroupID).done(function (rdata) {
                     let rolesList = rdata.map(function (item) {
                         return {
+                            // i18next-disable-next-line
                             text: i18next.t(item.OptionName), // to translate the Teacher and Student in localize text
                             id: item.OptionId,
                         };
@@ -281,6 +282,7 @@ window.CRM.groups = {
                 window.CRM.groups.getRoles(targetGroupId).done(function (rdata) {
                     rolesList = rdata.map(function (item) {
                         return {
+                            // i18next-disable-next-line
                             text: i18next.t(item.OptionName), // this is for the Teacher and Student role
                             id: item.OptionId,
                         };

@@ -251,6 +251,7 @@ function initializeGroupEditor() {
                 render: (data, type, full, meta) => {
                     if (type === "display") {
                         const isReadOnly = data === "Student" || data === "Teacher";
+                        // i18next-disable-next-line
                         const displayValue = isReadOnly ? i18next.t(data) : data;
                         const readOnlyAttr = isReadOnly ? " readonly" : "";
                         return `<input type="text" class="roleName" id="roleName-${full.lst_OptionID}" value="${displayValue}"${readOnlyAttr}>`;

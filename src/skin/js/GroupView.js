@@ -9,6 +9,7 @@ function initializeGroupView() {
             data: window.CRM.groupRoles.map((groupRole) => {
                 return {
                     id: groupRole.OptionId,
+                    // i18next-disable-next-line
                     text: i18next.t(groupRole.OptionName),
                 };
             }),
@@ -234,8 +235,10 @@ function initDataTable() {
                     })[0];
                     return (
                         '<span class="d-inline-block text-truncate" style="max-width: 150px;" title="' +
+                        // i18next-disable-next-line
                         i18next.t(thisRole?.OptionName) +
                         '">' +
+                        // i18next-disable-next-line
                         i18next.t(thisRole?.OptionName) +
                         "</span> " +
                         '<button class="btn btn-xs changeMembership" data-personid=' +

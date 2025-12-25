@@ -213,6 +213,7 @@
      */
     function updateMemberCount() {
         const plural = state.currentMemberCount === 1 ? "member" : "members";
+        // i18next-disable-next-line
         $("#member-count-display").text(`${state.currentMemberCount} ${i18next.t(plural)}`);
     }
 
