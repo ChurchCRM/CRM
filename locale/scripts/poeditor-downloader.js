@@ -4,7 +4,11 @@
  * POEditor Translation Downloader
  * Replaces grunt-poeditor-gd with native Node.js HTTPS (zero external dependencies)
  * 
- * Usage: node locale/scripts/poeditor-downloader.js
+ * Usage:
+ *   node locale/scripts/poeditor-downloader.js              # Download all locales
+ *   node locale/scripts/poeditor-downloader.js fi           # Download Finnish only
+ *   npm run locale:download                                 # Download all locales
+ *   npm run locale:download -- --locale fi                  # Download Finnish only
  * 
  * Requires:
  * - BuildConfig.json (or BuildConfig.json.example) with POEditor.id and POEditor.token
@@ -267,9 +271,70 @@ async function downloadLanguage(locale, poEditorLocale, current, total) {
 }
 
 /**
+ * Parse command-line arguments for locale parameter
+ */
+function parseArguments() {
+    const args = process.argv.slice(2);
+    let targetLocale = null;
+
+    // Handle both formats: node script.js fi  and npm script -- --locale fi
+    for (let i = 0; i < args.length; i++) {
+        if (args[i] === '--locale' && args[i + 1]) {
+            targetLocale = args[i + 1].toLowerCase();
+            break;
+        } else if (!args[i].startsWith('-') && !targetLocale) {
+            // First non-flag argument is the locale
+            targetLocale = args[i].toLowerCase();
+            break;
+        }
+    }
+
+    return targetLocale;
+}
+
+/**
+ * Validate locale exists in configuration
+ */
+function validateLocale(localeKey) {
+    const lowerKey = localeKey.toLowerCase();
+    
+    // First try exact match
+    let matching = Object.entries(localesConfig).find(
+        ([key, config]) => 
+            config.locale.toLowerCase() === lowerKey || 
+            key.toLowerCase() === lowerKey
+    );
+    
+    // If no exact match, try language code prefix (e.g., "fi" matches "fi_FI")
+    if (!matching) {
+        matching = Object.entries(localesConfig).find(
+            ([key, config]) => 
+                config.locale.toLowerCase().startsWith(lowerKey + '_') ||
+                key.toLowerCase().startsWith(lowerKey + '_')
+        );
+    }
+    
+    if (!matching) {
+        const availableLocales = Object.values(localesConfig)
+            .filter(config => !config.super_base)
+            .map(config => config.locale)
+            .sort();
+        
+        console.error(`\n❌ Locale "${localeKey}" not found in configuration`);
+        console.error(`\nAvailable locales:\n  ${availableLocales.join('\n  ')}`);
+        console.error(`\nTip: You can use language code (e.g., "fi") or full locale (e.g., "fi_FI")`);
+        process.exit(1);
+    }
+    
+    return matching;
+}
+
+/**
  * Main execution
  */
 async function main() {
+    const targetLocale = parseArguments();
+    
     console.log('🌐 POEditor Translation Downloader\n');
     console.log(`Project ID: ${projectId}`);
     console.log(`Formats: ${FILE_FORMATS.map(f => f.ext.toUpperCase()).join(', ')}`);
@@ -284,11 +349,20 @@ async function main() {
     const totalLocales = Object.keys(localesConfig).length;
     const downloadableLocales = Object.values(localesConfig)
         .filter(config => config.super_base !== true);
-    const totalToDownload = downloadableLocales.length;
+    let totalToDownload = downloadableLocales.length;
+    let localestoProcess = localesConfig;
+
+    // If a specific locale is requested, validate and filter to just that locale
+    if (targetLocale) {
+        const [matchKey, matchConfig] = validateLocale(targetLocale);
+        console.log(`🎯 Single locale mode: ${matchConfig.locale}\n`);
+        localestoProcess = { [matchKey]: matchConfig };
+        totalToDownload = 1;
+    }
     
     console.log(`📋 Total locales: ${totalLocales} (${totalToDownload} to download, ${skippedCount} skipped)\n`);
 
-    for (const [key, localeConfig] of Object.entries(localesConfig)) {
+    for (const [key, localeConfig] of Object.entries(localestoProcess)) {
         const locale = localeConfig.locale;
         const poEditorLocale = localeConfig.poEditor;
 
@@ -316,10 +390,13 @@ async function main() {
     }
 
     // Download English master list as simplified reference for variant syncing
-    try {
-        await downloadEnglishMasterList();
-    } catch (error) {
-        console.error('⚠️  English master list download failed (non-critical)');
+    // (only when downloading all locales, not in single locale mode)
+    if (!targetLocale) {
+        try {
+            await downloadEnglishMasterList();
+        } catch (error) {
+            console.error('⚠️  English master list download failed (non-critical)');
+        }
     }
 
     console.log(`\n📊 Summary: ${successCount}/${totalToDownload} languages downloaded (${skippedCount} super base skipped)`);
@@ -329,6 +406,17 @@ async function main() {
     }
 
     console.log('✨ Download complete!');
+    
+    // Only run audit for full downloads (not single locale mode)
+    if (!targetLocale) {
+        console.log('\n🔍 Running locale audit...');
+        const { execSync } = require('child_process');
+        try {
+            execSync('npm run locale:audit', { stdio: 'inherit' });
+        } catch (error) {
+            console.error('⚠️  Locale audit failed');
+        }
+    }
 }
 
 main().catch((error) => {
