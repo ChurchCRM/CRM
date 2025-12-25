@@ -5237,6 +5237,11 @@ msgstr "Pohjois-Mariaanit"
 
 #. Context: countries
 #: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "Pohjois-Korea"
+
+#. Context: countries
+#: 
 msgid "Norway (Norge)"
 msgstr "Norja"
 
@@ -9266,8 +9271,32 @@ msgid "Delete Event"
 msgstr "Poista tapahtuma"
 
 #: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "Tapahtuman poistaminen poistaa myös kaikki osallistumisen laskurit. Poistetaanko tapahtuma?"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Tämän tapahtumatyypin poistaminen EI poista olemassa olevia tapahtumia. Oletko varma?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "Tapahtuman poistaminen poistaa myös kaikki osallistumisen tietueet. Oletko varma?"
+
+#: 
 msgid "Edit Event"
 msgstr "Muokkaa tapahtumaa"
+
+#: 
+msgid "Editing Event"
+msgstr "Tapahtuman muokkaaminen"
+
+#: 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr "Syötä pilkuilla erotetut laskentakategoriat. \"Yhteensä\" sisältyy automaattisesti."
+
+#: 
+msgid "Enter event title..."
+msgstr "Syötä tapahtuman otsikko..."
 
 #: 
 msgid "Event"
@@ -9276,6 +9305,862 @@ msgstr "Tapahtuma"
 #: 
 msgid "Event Type Name"
 msgstr "Tapahtumatyypin nimi"
+
+#: 
+msgid "Event Types"
+msgstr "Tapahtumatyypit"
+
+#: 
+msgid "Filter Events"
+msgstr "Suodata tapahtumat"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "Suodata tapahtumatyypillä"
+
+#: 
+msgid "Filter by Type"
+msgstr "Suodata tyypillä"
+
+#: 
+msgid "Head Count"
+msgstr "Henkilölukumäärä"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "Tapahtumatyypin tapahtumat"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "Hallitse sisäänkirjauksia"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "Jäsenet, vieraat, lapset"
+
+#: 
+msgid "Monthly Averages"
+msgstr "Kuukauden keskiarvot"
+
+#: 
+msgid "Monthly on the"
+msgstr "Kuukausittain"
+
+#: 
+msgid "No event types defined yet."
+msgstr "Yhtään tapahtumatyyppiä ei ole määritetty."
+
+#: 
+msgid "None (one-time event)"
+msgstr "Ei mitään (kertatapahtuma)"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "Valinnainen - Lisää saarnakatsaus tai muita tapahtumatietoja"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "Valinnainen - jätä tyhjäksi, jos et seurata"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "Valinnaisia muistiinpanoja osallistumisesta..."
+
+#: 
+msgid "People Checked In"
+msgstr "Sisäänkirjautuneet ihmiset"
+
+#: 
+msgid "People in Cart"
+msgstr "Ihmiset ostoskorissa"
+
+#: 
+msgid "Person Checking In"
+msgstr "Henkilö, joka kirjautuu sisään"
+
+#: 
+msgid "Recurrence"
+msgstr "Toistuminen"
+
+#: 
+msgid "Required fields"
+msgstr "Pakolliset kentät"
+
+#: 
+msgid "Save Event Type"
+msgstr "Tallenna tapahtumatyyppi"
+
+#: 
+msgid "Search by name or email..."
+msgstr "Hae nimen tai sähköpostin mukaan..."
+
+#: 
+msgid "Search for adult..."
+msgstr "Hae aikuista..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "Hae valvojaa..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "Valitse tapahtuma sisäänkirjausta varten"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "Valitse alkamis- ja päättymispäivämäärä/-aika"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "Valitse tapahtuma ostoskorisi jäsenten sisäänkirjaamista varten"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "Saarna / Tapahtuman teksti"
+
+#: 
+msgid "Unclassified"
+msgstr "Luokittelematon"
+
+#: 
+msgid "Upgrade database now"
+msgstr "Päivitä tietokanta nyt"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "ChurchCRM-asennuksesi vaatii tietokannan päivityksen vastaamaan asennettua ohjelmistoversion. Tämä toiminto soveltaa skeeman ja tietojen siirtoja. Varmista, että sinulla on viimeaikainen varmuuskopio ennen jatkamista."
+
+#: 
+msgid "added to this event"
+msgstr "lisätty tälle tapahtumalle"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "esim. Sunnuntaikoulu, Raamatun opiskelu..."
+
+#: 
+msgid "optional"
+msgstr "valinnainen"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ Uloskirjaus"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "%d jäänyttä tiedostoa havaittu"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d tiedostoa on muutettu tai puuttuu. Käytä Pakota uudelleenasennus virallisten versioiden palauttamiseksi."
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d tiedostoa epäonnistui eheyden vahvistuksessa."
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d tiedostoa poistetaan pysyvästi."
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "palvelimellasi havaittiin %d jäänyttä tiedostoa."
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(päivitä GitHubista)"
+
+#: 
+msgid "Access Denied"
+msgstr "Pääsy evätty"
+
+#: 
+msgid "Add event permission"
+msgstr "Lisää tapahtuman käyttöoikeus"
+
+#: 
+msgid "Add records permission"
+msgstr "Lisää tietueiden käyttöoikeus"
+
+#: 
+msgid "Administrator privileges"
+msgstr "Järjestelmänvalvojan oikeudet"
+
+#: 
+msgid "All Files Verified"
+msgstr "Kaikki tiedostot vahvistettu"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "Kaikki järjestelmätiedostot vastaavat niiden odotettuja allekirjoituksia."
+
+#: 
+msgid "Application Integrity"
+msgstr "Sovelluksen eheys"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "Sovellustiedostot päivitetty uusimpaan versioon"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "Oletko varma, että haluat poistaa kaikki jääneet tiedostot?"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "Takaisin virheenpoisto tietoihin"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "Varmuuskopioinnin parhaat käytännöt"
+
+#: 
+msgid "Backup Status"
+msgstr "Varmuuskopioinnin tila"
+
+#: 
+msgid "Backup Type"
+msgstr "Varmuuskopioinnin tyyppi"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "Varmuuskopiointi valmis! Napsauta alla lataaksesi."
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "Varmuuskopiointi onnistui!"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "Varmuuskopiointi ladattu. Palvelimen kopio poistettu."
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "Varmuuskopiointi epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "Varmuuskopiointi luotu ja kopioitu etäpalvelimelle"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "Varmuuskopiointi on käynnissä, odota..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "Varmuuskopiointi ulkoiseen tallennukseen"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "VAROITUS: Varmuuskopion palauttaminen poistaa olemassa olevan tietokannan kokonaan ja korvaa sen varmuuskopion tiedoilla."
+
+#: 
+msgid "CSV export permission"
+msgstr "CSV-viennin käyttöoikeus"
+
+#: 
+msgid "Close & Refresh"
+msgstr "Sulje ja päivitä"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "Vahvista poistaminen"
+
+#: 
+msgid "Create a backup first"
+msgstr "Luo ensin varmuuskopiointi"
+
+#: 
+msgid "Create directory permission"
+msgstr "Luo hakemiston käyttöoikeus"
+
+#: 
+msgid "Database Only"
+msgstr "Vain tietokanta"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "Tietokanta palautettu onnistuneesti!"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "Tietokannan rakenne päivitetty automaattisesti"
+
+#: 
+msgid "Delete All Files"
+msgstr "Poista kaikki tiedostot"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "Poista kaikki jääneet tiedostot"
+
+#: 
+msgid "Delete records permission"
+msgstr "Poista tietueiden käyttöoikeus"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "Poistettu %d tiedostoa, %d epäonnistui"
+
+#: 
+msgid "Deletion Results"
+msgstr "Poiston tulokset"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "Vedä ja pudota varmuuskopiotiedostosi tänne"
+
+#: 
+msgid "Edit records permission"
+msgstr "Muokkaa tietueiden käyttöoikeutta"
+
+#: 
+msgid "Encryption"
+msgstr "Salaus"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "Vie tietokannan rakenne ja tiedot. Pienempi tiedoston koko."
+
+#: 
+msgid "File Integrity Check"
+msgstr "Tiedoston eheyden tarkistus"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "Tiedoston eheysongelmat havaittu"
+
+#: 
+msgid "File Path"
+msgstr "Tiedoston polku"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "Tiedoston allekirjoitukset vastaavat virallista versiota."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "Tiedostot voivat olla muutettu tai puuttua. Harkitse uudelleenkäyttöönottoa virallisesta versiosta."
+
+#: 
+msgid "Finance access"
+msgstr "Rahoituskäyttöoikeus"
+
+#: 
+msgid "Force Re-install"
+msgstr "Pakota uudelleenasennus"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Pakota uudelleenasennus käynnistetty. Varmuuskopioi tietokantasi ennen soveltamista."
+
+#: 
+msgid "Full Backup"
+msgstr "Täydellinen varmuuskopiointi"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "Luo ja lataa varmuuskopiointi"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "Siirry koontinäyttöön"
+
+#: 
+msgid "Group management access"
+msgstr "Ryhmien hallintakäyttöoikeus"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "Jos tarvitset pääsyn tähän ominaisuuteen, ota yhteyttä kirkon järjestelmänvalvojaan."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "Jos lataat varmuuskopion ChurchInfo:stä tai ChurchCRM:n edellisestä versiosta, se päivitetään automaattisesti nykyiseen tietokantakaavioon."
+
+#: 
+msgid "Important Warning"
+msgstr "Tärkeä varoitus"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "Sisältää tietokannan ja kaikki ladatut valokuvat. Suurempi tiedoston koko."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "Pidä yksi kopio paloturvallisessa kassakaapissa paikan päällä ja toinen poissa paikalleen."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "Uusin GitHub-versio:"
+
+#: 
+msgid "Loading..."
+msgstr "Ladataan..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "Tee varmuuskopiointi vähintään kerran viikossa, ellei sinulla ole automatisoituja varmuuskopioita."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "Hallitse jääneitä tiedostoja"
+
+#: 
+msgid "Menu options access"
+msgstr "Valikon vaihtoehtojen käyttöoikeus"
+
+#: 
+msgid "Missing Files"
+msgstr "Puuttuvat tiedostot"
+
+#: 
+msgid "Modified Files"
+msgstr "Muutetut tiedostot"
+
+#: 
+msgid "Multiple Copies"
+msgstr "Useita kopioita"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "Yhtään jäänyttä tiedostoa ei löytynyt"
+
+#: 
+msgid "Notes access"
+msgstr "Muistiinpanojen käyttöoikeus"
+
+#: 
+msgid "Orphaned Files"
+msgstr "Jääneet tiedostot"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "Jääneiden tiedostojen hallinta"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "Jääneet tiedostot ovat PHP- tai JavaScript-tiedostoja, jotka ovat palvelimellasi mutta eivät kuulu viralliseen ChurchCRM-julkaisuun. Nämä tiedostot voivat olla jääneitä edellisistä versioista ja voivat muodostaa tietoturvariskin, jos ne sisältävät vanhentunutta koodia, jossa on haavoittuvuuksia."
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "Jääneet tiedostot edellisistä versioista poistettu"
+
+#: 
+msgid "Permission Required"
+msgstr "Vaadittava käyttöoikeus"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "Tarkista varmuuskopiotiedosto ja yritä uudelleen."
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "Valitse varmuuskopiotiedosto palautettavaksi"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "Lataa nykyinen versio uudelleen ja käytä sitä palauttaaksesi kaikki tiedostot viralliseen tilaan"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "Valmis luomaan varmuuskopion. Valitse vaihtoehdot yllä ja napsauta varmuuskopiopainiketta."
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "Valmis palauttamaan. Valitse varmuuskopiotiedosto ja napsauta Palauta tietokanta."
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "Suositus: Tarkista ja poista nämä tiedostot ennen tai jälkeen päivityksen."
+
+#: 
+msgid "Redirecting in"
+msgstr "Uudelleenohjaus"
+
+#: 
+msgid "Refresh List"
+msgstr "Päivitä luettelo"
+
+#: 
+msgid "Regular Backups"
+msgstr "Säännölliset varmuuskopiot"
+
+#: 
+msgid "Required Permission"
+msgstr "Vaadittava käyttöoikeus"
+
+#: 
+msgid "Required permission"
+msgstr "Vaadittava käyttöoikeus"
+
+#: 
+msgid "Restore Status"
+msgstr "Palautuksen tila"
+
+#: 
+msgid "Restore failed."
+msgstr "Palautus epäonnistui."
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "Palautus epäonnistui. Tarkista varmuuskopiotiedosto ja yritä uudelleen."
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "Palautus on käynnissä, odota..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "Tarkista alla olevat tiedostot ja poista ne tietoturvan parantamiseksi."
+
+#: 
+msgid "Security Recommendation"
+msgstr "Tietoturvasuositus"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "Tietoturvavaroitus: Jääneet tiedostot havaittu"
+
+#: 
+msgid "Select Backup File"
+msgstr "Valitse varmuuskopiotiedosto"
+
+#: 
+msgid "Supported formats:"
+msgstr "Tuetut muodot:"
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "Seuraavat tiedostot ovat palvelimellasi mutta EIVÄT kuulu viralliseen ChurchCRM-julkaisuun. Nämä voivat olla jääneitä edellisistä versioista ja voivat muodostaa tietoturvariskin."
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "Sivu, jota yrität käydä, vaatii erityisiä käyttöoikeuksia, jotka tilillä ei tällä hetkellä ole."
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "Nämä tiedostot eivät kuulu viralliseen julkaisuun ja voivat muodostaa tietoturvariskin."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "Nämä tiedostot olivat todennäköisesti osa vanhempaa ChurchCRM-versiota eivätkä puhdistettu aiemmassa päivityksessä. Niiden poistaminen parantaa järjestelmän tietoturvaa."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "Nämä tiedostot olivat todennäköisesti osa vanhempaa ChurchCRM-versiota eivätkä puhdistettu aiemmassa päivityksessä. Ne voivat sisältää vanhentunutta koodia, jossa on tietoturvaongelmia."
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "Tätä toimintoa ei voi kumota. Varmista, että sinulla on varmuuskopioita nykyisistä tiedoista tarvittaessa."
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "Tämä voi kestää muutaman minuutin suurille tietokannoille."
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "Tämä voi kestää useita minuutteja suurille tietokannoille. Älä sulje tätä sivua."
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "Tämä lataa ja ottaa käyttöön nykyisen version uudelleen. Tämä voi korjata vioittuneita tai muutettuja tiedostoja. Jatketaanko?"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "Päivityksen yhteenveto"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "Käytä ulkoisia työkaluja (GPG, 7-Zip) varmuuskopioiden salaamiseen ennen kuin tallennat ne poissa paikalleen."
+
+#: 
+msgid "User authentication"
+msgstr "Käyttäjän todennus"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "Käyttäjällä on oltava Lisää tapahtuma -käyttöoikeus"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "Käyttäjällä on oltava Valikkovaihtoehdot -käyttöoikeus"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "Mitä ovat jääneet tiedostot?"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "Sinulla ei ole pääsyä tälle sivulle"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "Sinut kirjataan ulos ja ohjataan kirjautumissivulle."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "ChurchCRM-asennuksesi on puhdas. Kaikki palvelimen tiedostot vastaavat virallista versiota."
+
+#: 
+msgid "or click to browse"
+msgstr "tai napsauta selaamaan"
+
+#: 
+msgid "seconds..."
+msgstr "sekuntia..."
+
+#: 
+msgid " Deposit #"
+msgstr " Talletusliuska #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d puuttuvaa luokitusta"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d puuttuvaa sukupuolta"
+
+#: 
+msgid "%d missing role"
+msgstr "%d puuttuvaa roolia"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "Maksu on vastaanotettu lahjoitus. Se lisätään nykyiseen talletusliuskaan."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "Sitoumus on antamissitoumusta. Se ei ole sidottu talletusliuskaan."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Lisää toinen perheen jäsen"
+
+#: 
+msgid "Add Pledge"
+msgstr "Lisää sitoumus"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Järjestelmänvalvojan koontinäyttö"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Edistyneet toiminnot"
+
+#: 
+msgid "All System Settings"
+msgstr "Kaikki järjestelmän asetukset"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "Tapahtui odottamaton virhe. Ota yhteyttä järjestelmänvalvojaan."
+
+#: 
+msgid "Apr"
+msgstr "Huht"
+
+#: 
+msgid "Aug"
+msgstr "Elo"
+
+#: 
+msgid "Back to Deposits"
+msgstr "Takaisin talletusliuskoihin"
+
+#: 
+msgid "Back to Families"
+msgstr "Takaisin perheisiin"
+
+#: 
+msgid "Birth & Family"
+msgstr "Syntymä ja perhe"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "CSV-vienti on rajoitettu järjestelmänvalvojille."
+
+#: 
+msgid "Cart"
+msgstr "Ostoskori"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "Muuta tämä järjestelmän asetuksissa."
+
+#: 
+msgid "Church Membership"
+msgstr "Kirkon jäsenyys"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "Kirkon nimi on asetettu oletusarvoon"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "Luokat ja ilmoittautumiset"
+
+#: 
+msgid "Clean Up Files"
+msgstr "Puhdista tiedostot"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "Tyhjennä kaikki tiedot ja aloita alusta. Ei voi kumota."
+
+#: 
+msgid "Close All Deposits"
+msgstr "Sulje kaikki talletusliuskat"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "Suljetut talletusliuskat:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "Suljettu vs yhteensä"
+
+#: 
+msgid "Coming soon"
+msgstr "Tulossa pian"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "Täydennä nämä olennaiset asennustehtävät ChurchCRM:n toimintaan:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "Täydennä nämä missä tahansa järjestyksessä. Käytä demotietoja esimerkkitietueilla tutkimiseen."
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "Täydennä nämä tehtävät varmistaaksesi tarkan vuoden lopun veroraportoinnin lahjoittajillesi."
+
+#: 
+msgid "Configuration:"
+msgstr "Määritys:"
+
+#: 
+msgid "Configure Email"
+msgstr "Määritä sähköposti"
+
+#: 
+msgid "Contact Information"
+msgstr "Yhteystiedot"
+
+#: 
+msgid "Create Deposit"
+msgstr "Luo talletusliuska"
+
+#: 
+msgid "Create First Deposit"
+msgstr "Luo ensimmäinen talletusliuska"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "Luo tai avaa talletusliuskan ensin"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "Luo tai valitse talletusliuska aloittaaksesi."
+
+#: 
+msgid "Current Deposit"
+msgstr "Nykyinen talletusliuska"
+
+#: 
+msgid "Current fiscal year"
+msgstr "Nykyinen tilivuosi"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Muokattava raportti, jonka voit suodattaa päivämäärän, rahaston, perheen ja maksutavan mukaan."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Mukauta verohallinnon lausunnoissa näkyvää tekstiä (sTaxReport1, sTaxReport2, jne)."
+
+#: 
+msgid "Data Quality:"
+msgstr "Tietojen laatu:"
+
+#: 
+msgid "Database:"
+msgstr "Tietokanta:"
+
+#: 
+msgid "Day"
+msgstr "Päivä"
+
+#: 
+msgid "Dec"
+msgstr "Joulu"
+
+#: 
+msgid "Demo Data"
+msgstr "Demotiedot"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "Talletusliuskan navigointi"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "Talletusliuskan tilastot"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "Yksittäisen talletusliuskan yksityiskohtainen erittely."
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "Sitoumuksien ja maksujen yksityiskohtainen erittely perheen mukaan."
+
+#: 
+msgid "Documentation"
+msgstr "Dokumentaatio"
+
+#: 
+msgid "Donor Families"
+msgstr "Lahjoittajaperheiden"
+
+#: 
+msgid "Edit Deposit"
+msgstr "Muokkaa talletusliuskaa"
+
+#: 
+msgid "Edit Family"
+msgstr "Muokkaa perhettä"
+
+#: 
+msgid "Edit Payment"
+msgstr "Muokkaa maksua"
+
+#: 
+msgid "Edit Person"
+msgstr "Muokkaa henkilöä"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "Varmista, että kaikki tilivuoden talletusliuskat on suljettu ennen kuin luot lausuntoja."
+
+#: 
+msgid "Export Options"
+msgstr "Vientivaihtoehdot"
+
+#: 
+msgid "F"
+msgstr "F"
+
+#: 
+msgid "Failed to save settings"
+msgstr "Asetusten tallentaminen epäonnistui"
+
+#: 
+msgid "Family Navigation"
+msgstr "Perheen navigointi"
 
 #: 
 msgid "Feb"
@@ -9404,6 +10289,14 @@ msgstr "Listaa jäsenet, jotka ovat äänioikeutettuja lahjoitushistorian ja jä
 #: 
 msgid "Location"
 msgstr "Sijainti"
+
+#: 
+msgid "M"
+msgstr "M"
+
+#: 
+msgid "Manage Funds"
+msgstr "Hallitse rahastoja"
 
 #: 
 msgid "Manage Users"
@@ -9718,6 +10611,726 @@ msgid "Zip / Postal Code"
 msgstr "Postinumero"
 
 #: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "Zip-arkistolaajennos vaaditaan päivityksille"
+
+#: 
+msgid "active"
+msgstr "aktiivinen"
+
+#: 
+msgid "ago"
+msgstr "sitten"
+
+#: 
+msgid "day"
+msgstr "päivä"
+
+#: 
+msgid "days"
+msgstr "päivää"
+
+#: 
+msgid "found"
+msgstr "löytyi"
+
+#: 
+msgid "in"
+msgstr "sisällä"
+
+#: 
+msgid "issues"
+msgstr "ongelmat"
+
+#: 
+msgid "open"
+msgstr "avoin"
+
+#: 
+msgid "years"
+msgstr "vuotta"
+
+#: 
+msgid "yes"
+msgstr "kyllä"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(Syötä osavaltio/maakunta maihin, joilla ei ole ennalta määritettyjä osavaltioita)"
+
+#: 
+msgid "Available"
+msgstr "Käytettävissä"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "Base URL -määritys on virheellinen. Tarkista Config.php-tiedosto."
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "Base URL ei ole määritetty Config.php:ssä"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "ChurchCRM:n tuetut kieliasetukset"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "Muodosta yhteys palvelimeesi SSH:n, FTP:n tai hosting-ohjauspaneelin kautta"
+
+#: 
+msgid "Contact"
+msgstr "Yhteyshenkilö"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "Kriittinen määritysvirhe"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "Nykyinen $URL[0] arvo:"
+
+#: 
+msgid "Custom port:"
+msgstr "Mukautettu portti:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "Päättyy <strong>perässä olevaan vinoviivoihin</strong> (/)"
+
+#: 
+msgid "Error:"
+msgstr "Virhe:"
+
+#: 
+msgid "Find the line:"
+msgstr "Etsi rivi:"
+
+#: 
+msgid "Group Memberships"
+msgstr "Ryhmän jäsenyys"
+
+#: 
+msgid "How to Fix:"
+msgstr "Kuinka korjata:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "Liity ChurchCRM-yhteisöön ja auta meitä parantamaan jakamalla tietojasi. Se kestää alle minuutin!"
+
+#: 
+msgid "Language"
+msgstr "Kieli"
+
+#: 
+msgid "Local development:"
+msgstr "Paikallinen kehitys:"
+
+#: 
+msgid "Locale Support"
+msgstr "Kieliasetuksen tuki"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "Sijainti ja yhteystiedot"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "Siirry ChurchCRM-asennuksen hakemistoon"
+
+#: 
+msgid "New to"
+msgstr "Uusi"
+
+#: 
+msgid "No locales configured"
+msgstr "Yhtään kieliasetusta ei ole määritetty"
+
+#: 
+msgid "Not Available"
+msgstr "Ei saatavilla"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "Avaa tämä tiedosto tekstieditorissa:"
+
+#: 
+msgid "Register Now"
+msgstr "Rekisteröidy nyt"
+
+#: 
+msgid "Register Your Church"
+msgstr "Rekisteröi kirkko"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "Tallenna tiedosto ja päivitä tämä sivu"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "Aseta true poistamaan henkilöisyyden väliaikaisten osoitteiden kirjoittaminen henkilöeditorissa. Aseta false ottamaan käyttöön osoitteiden kirjoittaminen ihmisille ilman perheen määritystä."
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "Alkaa <strong>http://</strong> tai <strong>https://</strong> kanssa"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "Alihakemiston asennus:"
+
+#: 
+msgid "System Locale Support"
+msgstr "Järjestelmän kieliasetuksen tuki"
+
+#: 
+msgid "System Support"
+msgstr "Järjestelmän tuki"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URL-osoite ei sisällä kelvollista isäntänimeä"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "URL-osoitteen isäntänimi ei ole kelvollinen"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URL-osoite ei ole kelvollisessa muodossa"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URL-osoitteen on päädyttävä perässä olevaan vinoviivoihin (/)"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URL-osoitteen on alkava http:// tai https:// kanssa"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "Järjestelmän kieliasetuksia ei voi havaita"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "Käytettävissä olevia kieliasetuksia ei voi määrittää"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "Kieliasetuksen tietoja ei voi ladata"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "Osavaltioiden luetteloa ei voi ladata. Tarkista verkkoyhteytesi tai yritä myöhemmin."
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "Päivitä se kelvolliseksi URL-osoitteeksi, joka:"
+
+#: 
+msgid "Valid Examples:"
+msgstr "Kelvolliset esimerkit:"
+
+#: 
+msgid "View Logs"
+msgstr "Näytä lokitiedostot"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "Näytä ja hallitse järjestelmän lokitiedostoja virheenpoistoa varten."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "Sinun on syötettävä sukunimi."
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "Yksityisyytesi on meille tärkeä. Emme koskaan jaa tietojasi kolmansille osapuolille."
+
+#: 
+msgid "Additional Information"
+msgstr "Lisätiedot"
+
+#: 
+msgid "All information is correct"
+msgstr "Kaikki tiedot ovat oikein"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "Määritä mahdollisuudet"
+
+#: 
+msgid "Assign Property"
+msgstr "Määritä ominaisuus"
+
+#: 
+msgid "Choose a property..."
+msgstr "Valitse ominaisuus..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "Valitse mahdollisuudet..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "Vahvista perheen tiedot"
+
+#: 
+msgid "Confirm family information"
+msgstr "Vahvista perheen tiedot"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "Yhteystiedot ja henkilötiedot"
+
+#: 
+msgid "Copied!"
+msgstr "Kopioitu!"
+
+#: 
+msgid "Edit Role"
+msgstr "Muokkaa roolia"
+
+#: 
+msgid "Edited"
+msgstr "Muokattu"
+
+#: 
+msgid "Email PDF"
+msgstr "Lähetä sähköpostilla PDF"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "URL-osoitteen kopiointi epäonnistui"
+
+#: 
+msgid "ID:"
+msgstr "ID:"
+
+#: 
+msgid "Newsletter"
+msgstr "Uutiskirje"
+
+#: 
+msgid "No assigned family"
+msgstr "Ei määritettyä perhettä"
+
+#: 
+msgid "Open in New Tab"
+msgstr "Avaa uudessa välilehdessä"
+
+#: 
+msgid "Personal"
+msgstr "Henkilökohtainen"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "Vahvista perheesi tiedot:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "Päivitä tietueitamme korjauksilla"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "Anna tässä mahdolliset korjaukset tai lisätiedot..."
+
+#: 
+msgid "Remove Property"
+msgstr "Poista ominaisuus"
+
+#: 
+msgid "Select Opportunities"
+msgstr "Valitse mahdollisuudet"
+
+#: 
+msgid "Select Property"
+msgstr "Valitse ominaisuus"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Jaa tämä URL-osoite perheenjäsenille heidän tietojensa vahvistamiseksi"
+
+#: 
+msgid "Submit Verification"
+msgstr "Lähetä vahvistus"
+
+#: 
+msgid "Thank You!"
+msgstr "Kiitos!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "Käännös epätäydellinen"
+
+#: 
+msgid "Visit Our Website"
+msgstr "Vieraile verkkosivuiltamme"
+
+#: 
+msgid "Volunteer"
+msgstr "Vapaaehtoinen"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "Vahvistuksesi käsittelyssä tapahtui virhe. Yritä uudelleen tai ota meihin yhteyttä suoraan."
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "Vahvistuspyyntösi on vastaanotettu. Kiitos tietojesi pitämisestä ajan tasalla."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "Tapahtui virhe. Ota yhteyttä järjestelmänvalvojaan."
+
+#: 
+msgid "Backup failed"
+msgstr "Varmuuskopiointi epäonnistui"
+
+#: 
+msgid "Database reset failed"
+msgstr "Tietokannan nollausta epäonnistui"
+
+#: 
+msgid "Database restore failed"
+msgstr "Tietokannan palautus epäonnistui"
+
+#: 
+msgid "Demo data import failed"
+msgstr "Demotietojen tuonti epäonnistui"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "Demotietojen tuonti on käytettävissä vain uusissa asennuksissa, joissa on tarkalleen 1 henkilö"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "Demotiedot ladattu onnistuneesti"
+
+#: 
+msgid "Download failed"
+msgstr "Lataus epäonnistui"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "Päivityksen soveltaminen epäonnistui"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "Jääneiden tiedostojen poistaminen epäonnistui"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "Uusimman version lataaminen epäonnistui"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "Päivitystietojen päivittäminen epäonnistui"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "Perheen valokuvan lataaminen epäonnistui"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "Henkilön valokuvan lataaminen epäonnistui"
+
+#: 
+msgid "Remote backup failed"
+msgstr "Etävarmuuskopiointi epäonnistui"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "WebDAV-varmuuskopioita ei ole määritetty oikein. Varmista, että päätepiste, käyttäjänimi ja salasana on asetettu"
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA käytössä"
+
+#: 
+msgid "Active Users"
+msgstr "Aktiiviset käyttäjät"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "ChMeetings-vienti"
+
+#: 
+msgid "Delete User"
+msgstr "Poista käyttäjä"
+
+#: 
+msgid "Disable 2FA"
+msgstr "Poista 2FA käytöstä"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "Vie kaikki henkilötiedot ChMeetings-muodossa ulkoisten järjestelmien tuontia varten."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "Vie ChMeetings CSV:ksi"
+
+#: 
+msgid "Exporting..."
+msgstr "Viedään..."
+
+#: 
 msgid "Family Listing"
 msgstr "Perheluettelo"
+
+#: 
+msgid "Invalid request data"
+msgstr "Virheelliset pyyntötiedot"
+
+#: 
+msgid "Invalid status"
+msgstr "Virheellinen tila"
+
+#: 
+msgid "Locked Users"
+msgstr "Lukitut käyttäjät"
+
+#: 
+msgid "Person Listing"
+msgstr "Henkilöluettelo"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "Henkilö(t) poistettu ostoskorista"
+
+#: 
+msgid "Quick Settings"
+msgstr "Pika-asetukset"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "Nollaa epäonnistuneet kirjautumiset"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "Palauta salasana sähköpostilla"
+
+#: 
+msgid "Set Active"
+msgstr "Aseta aktiiviseksi"
+
+#: 
+msgid "Set Inactive"
+msgstr "Aseta passiiviseksi"
+
+#: 
+msgid "Show"
+msgstr "Näytä"
+
+#: 
+msgid "Showing"
+msgstr "Näyttää"
+
+#: 
+msgid "Total Users"
+msgstr "Kokonaiskäyttäjät"
+
+#: 
+msgid "User Management"
+msgstr "Käyttäjänhallinta"
+
+#: 
+msgid "View Details"
+msgstr "Näytä tiedot"
+
+#: 
+msgid "entries"
+msgstr "merkinnät"
+
+#: 
+msgid "of"
+msgstr "/ "
+
+#: 
+msgid "total"
+msgstr "yhteensä"
+
+#: 
+msgid "Code incomplete"
+msgstr "Koodi epätäydellinen"
+
+#: 
+msgid "Code is invalid"
+msgstr "Koodi on virheellinen"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "Salausavain 2FA-salaisavainten tallentamiseksi tietokantaan"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "Kaksivaiheinen todentaminen"
+
+#: 
+msgid "Validation pending"
+msgstr "Validointi odottaa"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "on määritettävä salausavaimella"
+
+#: 
+msgid "A "
+msgstr "A "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "LISÄÄ-, Poista- ja järjestysmuutokset ovat välittömiä. Nimen ja kuvauksen muutokset on tallennettava napsauttamalla 'Tallenna muutokset'."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "Oletko varma, että haluat poistaa"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Nuoli- ja poistopainikkeet tulevat voimaan välittömästi. Kentän nimen muutokset menetetään, ellei 'Tallenna muutokset' klikkaa ennen kuin käytät ylös-, alas-, poista- tai 'lisää uusi' -painiketta!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "Poistamalla tämän kentän, menetät peruuttamattomasti kaikki tähän kenttään määritetyt perheen tiedot!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "Poistamalla tämän kentän, menetät peruuttamattomasti kaikki tähän kenttään määritetyt henkilötiedot!"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "Muutoksia ei tallennettu! Korjaa ja yritä uudelleen!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "Vahvista ominaisuuden poistaminen"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "Vahvista vapaaehtoistyön mahdollisuuden poistaminen"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "Poiston vahvistus"
+
+#: 
+msgid "Existing"
+msgstr "Olemassa oleva"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "Olemassa olevat mukautetut perheen kentät"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "Olemassa olevat mukautetut henkilön kentät"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "Olemassa olevat vapaaehtoistyön mahdollisuudet"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "Kenttä poistettu onnistuneesti"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Virheellinen CSRF-tunnus"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "Virheelliset kentät tai valinnat."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Kohde poistettu onnistuneesti"
+
+#: 
+msgid "Move down"
+msgstr "Siirrä alas"
+
+#: 
+msgid "Move up"
+msgstr "Siirrä ylös"
+
+#: 
+msgid "Opportunity"
+msgstr "Mahdollisuus"
+
+#: 
+msgid "Order"
+msgstr "Järjestys"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "PDF:t lähetetty onnistuneesti sähköpostilla %s perheelle."
+
+#: 
+msgid "Percentage"
+msgstr "Prosenttiosuus"
+
+#: 
+msgid "Person Properties"
+msgstr "Henkilön ominaisuudet"
+
+#: 
+msgid "Property Type"
+msgstr "Ominaisuustyyppi"
+
+#: 
+msgid "Property to Delete"
+msgstr "Poistettava ominaisuus"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "Tälle vapaaehtoistyön mahdollisuudelle on määritetty ihmisiä. Poistaminen poistaa määritykset:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "Tämä poistaa sen kaikista sille määritetyistä ihmisistä."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Vapaaehtoistyön mahdollisuus"
+
+#: 
+msgid "Warning:"
+msgstr "Varoitus:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "Kyllä, poista tämä mahdollisuus"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "Kyselyt, joiden käyttöön käyttäjällä on oltava rahoituskäyttöoikeus"
+
+#: 
+msgid "Fund(s)"
+msgstr "Rahasto(t)"
+
+#: 
+msgid "Password reset for"
+msgstr "Salasanan nollaus"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Espanja - Argentiina"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Espanja - Kolumbia"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Espanja - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Espanja - Meksiko"
 

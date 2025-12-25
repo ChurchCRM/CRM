@@ -7753,6 +7753,158 @@ msgid "Zip / Postal Code"
 msgstr "Irányítószám"
 
 #: 
+msgid "Choose opportunities..."
+msgstr "Válasszon lehetőségeket..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "Családi információk megerősítése"
+
+#: 
+msgid "Confirm family information"
+msgstr "Családi információk megerősítése"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "Kapcsolat és személyes információ"
+
+#: 
+msgid "Copied!"
+msgstr "Másolva!"
+
+#: 
+msgid "Edit Role"
+msgstr "Szerep szerkesztése"
+
+#: 
+msgid "Edited"
+msgstr "Szerkesztve"
+
+#: 
+msgid "Email PDF"
+msgstr "E-mail PDF"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "Az URL másolása nem sikerült"
+
+#: 
+msgid "ID:"
+msgstr "Azonosító:"
+
+#: 
+msgid "Newsletter"
+msgstr "Hírlevelezés"
+
+#: 
+msgid "No assigned family"
+msgstr "Nincs hozzárendelt család"
+
+#: 
+msgid "Open in New Tab"
+msgstr "Megnyitás új lapon"
+
+#: 
+msgid "Personal"
+msgstr "Személyes"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "Kérjük, erősítse meg családi adatait:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "Kérjük, frissítse az adatainkat a módosításokkal"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "Adjon meg javításokat vagy további információkat itt..."
+
+#: 
+msgid "Remove Property"
+msgstr "Tulajdonság eltávolítása"
+
+#: 
+msgid "Select Opportunities"
+msgstr "Válasszon lehetőségeket"
+
+#: 
+msgid "Select Property"
+msgstr "Válasszon tulajdonságot"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Ossza meg ezt az URL-t családtagjaival az adataik ellenőrzéséhez"
+
+#: 
+msgid "Submit Verification"
+msgstr "Ellenőrzés beküldése"
+
+#: 
+msgid "Thank You!"
+msgstr "Köszönjük!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "Fordítás hiányos"
+
+#: 
+msgid "Visit Our Website"
+msgstr "Látogassa meg webhelyünket"
+
+#: 
+msgid "Volunteer"
+msgstr "Önkéntes"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "Hiba történt az Ön ellenőrzésének feldolgozása során. Kérjük, próbálkozzon újra vagy lépjen kapcsolatba velünk közvetlenül."
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "Az Ön ellenőrzési kérelmét megkaptuk. Köszönjük, hogy naprakészen tartja adatait."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "Hiba történt. Kérjük, lépjen kapcsolatba a rendszergazdával."
+
+#: 
+msgid "Backup failed"
+msgstr "A biztonsági mentés nem sikerült"
+
+#: 
+msgid "Database reset failed"
+msgstr "Az adatbázis alaphelyzetbe állítása nem sikerült"
+
+#: 
+msgid "Database restore failed"
+msgstr "Az adatbázis helyreállítása nem sikerült"
+
+#: 
+msgid "Demo data import failed"
+msgstr "A bemutató adatok importálása nem sikerült"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "A bemutató adatok importálása csak olyan friss telepítéseken érhető el, amelyeken pontosan 1 személy található"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "A bemutató adatok sikeresen betöltve"
+
+#: 
+msgid "Download failed"
+msgstr "A letöltés nem sikerült"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "A frissítés alkalmazása nem sikerült"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "Az árva fájlok törlése nem sikerült"
+
+#: 
 msgid "Failed to download latest release"
 msgstr "A legújabb kiadás letöltése sikertelen"
 
@@ -7913,6 +8065,22 @@ msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d személy hozzáadva a kosárhoz."
 msgstr[1] "%d személy hozzáadva a kosárhoz."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
+msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
+msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
+
+#: 
+msgid "A "
+msgstr "A "
 
 #: 
 msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
