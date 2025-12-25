@@ -4502,6 +4502,1972 @@ msgstr "Helyi"
 
 #. Context: countries
 #: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "Afganisztán"
+
+#. Context: countries
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "Åland-szigetek"
+
+#. Context: countries
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "Albánia"
+
+#. Context: countries
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "Algéria"
+
+#. Context: countries
+#: 
+msgid "American Samoa"
+msgstr "Amerikai Szamoa"
+
+#. Context: countries
+#: 
+msgid "Andorra"
+msgstr "Andorra"
+
+#. Context: countries
+#: 
+msgid "Angola"
+msgstr "Angola"
+
+#. Context: countries
+#: 
+msgid "Anguilla"
+msgstr "Anguilla"
+
+#. Context: countries
+#: 
+msgid "Antarctica"
+msgstr "Antarktisz"
+
+#. Context: countries
+#: 
+msgid "Antigua and Barbuda"
+msgstr "Antigua és Barbuda"
+
+#. Context: countries
+#: 
+msgid "Argentina"
+msgstr "Argentína"
+
+#. Context: countries
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "Örményország"
+
+#. Context: countries
+#: 
+msgid "Aruba"
+msgstr "Aruba"
+
+#. Context: countries
+#: 
+msgid "Ascension Island"
+msgstr "Ascension-sziget"
+
+#. Context: countries
+#: 
+msgid "Australia"
+msgstr "Ausztrália"
+
+#. Context: countries
+#: 
+msgid "Austria (Österreich)"
+msgstr "Ausztria"
+
+#. Context: countries
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "Azerbajdzsán"
+
+#. Context: countries
+#: 
+msgid "Bahamas"
+msgstr "Bahama-szigetek"
+
+#. Context: countries
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "Bahrein"
+
+#. Context: countries
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "Banglades"
+
+#. Context: countries
+#: 
+msgid "Barbados"
+msgstr "Barbados"
+
+#. Context: countries
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "Fehéroroszország"
+
+#. Context: countries
+#: 
+msgid "Belgium (België)"
+msgstr "Belgium"
+
+#. Context: countries
+#: 
+msgid "Belize"
+msgstr "Belize"
+
+#. Context: countries
+#: 
+msgid "Benin (Bénin)"
+msgstr "Benin"
+
+#. Context: countries
+#: 
+msgid "Bermuda"
+msgstr "Bermuda"
+
+#. Context: countries
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "Bhután"
+
+#. Context: countries
+#: 
+msgid "Bolivia"
+msgstr "Bolívia"
+
+#. Context: countries
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "Bosznia-Hercegovina"
+
+#. Context: countries
+#: 
+msgid "Botswana"
+msgstr "Botswana"
+
+#. Context: countries
+#: 
+msgid "Bouvet Island"
+msgstr "Bouvet-sziget"
+
+#. Context: countries
+#: 
+msgid "Brazil (Brasil)"
+msgstr "Brazília"
+
+#. Context: countries
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "Brit Indiai-óceáni Terület"
+
+#. Context: countries
+#: 
+msgid "British Virgin Islands"
+msgstr "Brit Virgin-szigetek"
+
+#. Context: countries
+#: 
+msgid "Brunei"
+msgstr "Brunei"
+
+#. Context: countries
+#: 
+msgid "Bulgaria (България)"
+msgstr "Bulgária"
+
+#. Context: countries
+#: 
+msgid "Burkina Faso"
+msgstr "Burkina Faso"
+
+#. Context: countries
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "Burundi"
+
+#. Context: countries
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "Kambodzsa"
+
+#. Context: countries
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "Kamerun"
+
+#. Context: countries
+#: 
+msgid "Canada"
+msgstr "Kanada"
+
+#. Context: countries
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "Kanári-szigetek"
+
+#. Context: countries
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "Zöld-foki Köztársaság"
+
+#. Context: countries
+#: 
+msgid "Caribbean Netherlands"
+msgstr "Karibi Hollandia"
+
+#. Context: countries
+#: 
+msgid "Cayman Islands"
+msgstr "Kajmán-szigetek"
+
+#. Context: countries
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "Közép-afrikai Köztársaság"
+
+#. Context: countries
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "Ceuta és Melilla"
+
+#. Context: countries
+#: 
+msgid "Chad (Tchad)"
+msgstr "Csád"
+
+#. Context: countries
+#: 
+msgid "Chile"
+msgstr "Chile"
+
+#. Context: countries
+#: 
+msgid "China (中国)"
+msgstr "Kína"
+
+#. Context: countries
+#: 
+msgid "Christmas Island"
+msgstr "Karácsony-sziget"
+
+#. Context: countries
+#: 
+msgid "Clipperton Island"
+msgstr "Clipperton-sziget"
+
+#. Context: countries
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "Kókusz (Keeling)-szigetek"
+
+#. Context: countries
+#: 
+msgid "Colombia"
+msgstr "Kolumbia"
+
+#. Context: countries
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "Comore-szigetek"
+
+#. Context: countries
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "Kongói Demokratikus Köztársaság"
+
+#. Context: countries
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "Kongói Köztársaság"
+
+#. Context: countries
+#: 
+msgid "Cook Islands"
+msgstr "Cook-szigetek"
+
+#. Context: countries
+#: 
+msgid "Costa Rica"
+msgstr "Costa Rica"
+
+#. Context: countries
+#: 
+msgid "Côte d’Ivoire"
+msgstr "Elefántcsontpart"
+
+#. Context: countries
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "Horvátország"
+
+#. Context: countries
+#: 
+msgid "Cuba"
+msgstr "Kuba"
+
+#. Context: countries
+#: 
+msgid "Curaçao"
+msgstr "Curaçao"
+
+#. Context: countries
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "Ciprus"
+
+#. Context: countries
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "Csehország"
+
+#. Context: countries
+#: 
+msgid "Denmark (Danmark)"
+msgstr "Dánia"
+
+#. Context: countries
+#: 
+msgid "Diego Garcia"
+msgstr "Diego Garcia"
+
+#. Context: countries
+#: 
+msgid "Djibouti"
+msgstr "Dzsibuti"
+
+#. Context: countries
+#: 
+msgid "Dominica"
+msgstr "Dominika"
+
+#. Context: countries
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "Dominikai Köztársaság"
+
+#. Context: countries
+#: 
+msgid "Ecuador"
+msgstr "Ecuador"
+
+#. Context: countries
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "Egyiptom"
+
+#. Context: countries
+#: 
+msgid "El Salvador"
+msgstr "Salvador"
+
+#. Context: countries
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "Egyenlítői-Gínea"
+
+#. Context: countries
+#: 
+msgid "Eritrea"
+msgstr "Eritrea"
+
+#. Context: countries
+#: 
+msgid "Estonia (Eesti)"
+msgstr "Észtország"
+
+#. Context: countries
+#: 
+msgid "Ethiopia"
+msgstr "Etiópia"
+
+#. Context: countries
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "Falkland-szigetek"
+
+#. Context: countries
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "Feröer-szigetek"
+
+#. Context: countries
+#: 
+msgid "Fiji"
+msgstr "Fidzsi-szigetek"
+
+#. Context: countries
+#: 
+msgid "Finland (Suomi)"
+msgstr "Finnország"
+
+#. Context: countries
+#: 
+msgid "France"
+msgstr "Franciaország"
+
+#. Context: countries
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "Francia Guyana"
+
+#. Context: countries
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "Francia Polinézia"
+
+#. Context: countries
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "Francia Déli Területek"
+
+#. Context: countries
+#: 
+msgid "Gabon"
+msgstr "Gabon"
+
+#. Context: countries
+#: 
+msgid "Gambia"
+msgstr "Gambia"
+
+#. Context: countries
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "Grúzia"
+
+#. Context: countries
+#: 
+msgid "Germany (Deutschland)"
+msgstr "Németország"
+
+#. Context: countries
+#: 
+msgid "Ghana (Gaana)"
+msgstr "Ghána"
+
+#. Context: countries
+#: 
+msgid "Gibraltar"
+msgstr "Gibraltár"
+
+#. Context: countries
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "Görögország"
+
+#. Context: countries
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "Grönland"
+
+#. Context: countries
+#: 
+msgid "Grenada"
+msgstr "Grenada"
+
+#. Context: countries
+#: 
+msgid "Guadeloupe"
+msgstr "Guadeloupe"
+
+#. Context: countries
+#: 
+msgid "Guam"
+msgstr "Guam"
+
+#. Context: countries
+#: 
+msgid "Guatemala"
+msgstr "Guatemala"
+
+#. Context: countries
+#: 
+msgid "Guernsey"
+msgstr "Guernsey"
+
+#. Context: countries
+#: 
+msgid "Guinea (Guinée)"
+msgstr "Guinea"
+
+#. Context: countries
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "Bissau-Guinea"
+
+#. Context: countries
+#: 
+msgid "Guyana"
+msgstr "Guyana"
+
+#. Context: countries
+#: 
+msgid "Haiti"
+msgstr "Haiti"
+
+#. Context: countries
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "Heard-sziget és McDonald-szigetek"
+
+#. Context: countries
+#: 
+msgid "Honduras"
+msgstr "Honduras"
+
+#. Context: countries
+#: 
+msgid "Hong Kong (香港)"
+msgstr "Hongkong"
+
+#. Context: countries
+#: 
 msgid "Hungary (Magyarország)"
 msgstr "Magyarország"
+
+#. Context: countries
+#: 
+msgid "Iceland (Ísland)"
+msgstr "Izland"
+
+#. Context: countries
+#: 
+msgid "India (भारत)"
+msgstr "India"
+
+#. Context: countries
+#: 
+msgid "Indonesia"
+msgstr "Indonézia"
+
+#. Context: countries
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "Irán"
+
+#. Context: countries
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "Irak"
+
+#. Context: countries
+#: 
+msgid "Ireland"
+msgstr "Írország"
+
+#. Context: countries
+#: 
+msgid "Isle of Man"
+msgstr "Man-sziget"
+
+#. Context: countries
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "Izrael"
+
+#. Context: countries
+#: 
+msgid "Italy (Italia)"
+msgstr "Olaszország"
+
+#. Context: countries
+#: 
+msgid "Jamaica"
+msgstr "Jamaica"
+
+#. Context: countries
+#: 
+msgid "Japan (日本)"
+msgstr "Japán"
+
+#. Context: countries
+#: 
+msgid "Jersey"
+msgstr "Jersey"
+
+#. Context: countries
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "Jordánia"
+
+#. Context: countries
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "Kazahsztán"
+
+#. Context: countries
+#: 
+msgid "Kenya"
+msgstr "Kenya"
+
+#. Context: countries
+#: 
+msgid "Kiribati"
+msgstr "Kiribati"
+
+#. Context: countries
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "Koszovó"
+
+#. Context: countries
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "Kuvait"
+
+#. Context: countries
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "Kirgizisztán"
+
+#. Context: countries
+#: 
+msgid "Laos (ລາວ)"
+msgstr "Laosz"
+
+#. Context: countries
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "Libanon"
+
+#. Context: countries
+#: 
+msgid "Lesotho"
+msgstr "Lesotho"
+
+#. Context: countries
+#: 
+msgid "Liberia"
+msgstr "Libéria"
+
+#. Context: countries
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "Líbia"
+
+#. Context: countries
+#: 
+msgid "Liechtenstein"
+msgstr "Liechtenstein"
+
+#. Context: countries
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "Litvánia"
+
+#. Context: countries
+#: 
+msgid "Luxembourg"
+msgstr "Luxemburg"
+
+#. Context: countries
+#: 
+msgid "Macau (澳門)"
+msgstr "Makaó"
+
+#. Context: countries
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "Észak-Macedónia"
+
+#. Context: countries
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "Madagaszkár"
+
+#. Context: countries
+#: 
+msgid "Malawi"
+msgstr "Malawi"
+
+#. Context: countries
+#: 
+msgid "Malaysia"
+msgstr "Malajzia"
+
+#. Context: countries
+#: 
+msgid "Maldives"
+msgstr "Maldív-szigetek"
+
+#. Context: countries
+#: 
+msgid "Mali"
+msgstr "Mali"
+
+#. Context: countries
+#: 
+msgid "Malta"
+msgstr "Málta"
+
+#. Context: countries
+#: 
+msgid "Marshall Islands"
+msgstr "Marshall-szigetek"
+
+#. Context: countries
+#: 
+msgid "Martinique"
+msgstr "Martinique"
+
+#. Context: countries
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "Mauritánia"
+
+#. Context: countries
+#: 
+msgid "Mauritius (Moris)"
+msgstr "Mauritius"
+
+#. Context: countries
+#: 
+msgid "Mayotte"
+msgstr "Mayotte"
+
+#. Context: countries
+#: 
+msgid "Mexico (México)"
+msgstr "Mexikó"
+
+#. Context: countries
+#: 
+msgid "Micronesia"
+msgstr "Mikronézia"
+
+#. Context: countries
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "Moldova"
+
+#. Context: countries
+#: 
+msgid "Monaco"
+msgstr "Monaco"
+
+#. Context: countries
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "Mongólia"
+
+#. Context: countries
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "Montenegró"
+
+#. Context: countries
+#: 
+msgid "Montserrat"
+msgstr "Montserrat"
+
+#. Context: countries
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "Marokkó"
+
+#. Context: countries
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "Mozambik"
+
+#. Context: countries
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "Mianmar"
+
+#. Context: countries
+#: 
+msgid "Namibia (Namibië)"
+msgstr "Namíbia"
+
+#. Context: countries
+#: 
+msgid "Nauru"
+msgstr "Nauru"
+
+#. Context: countries
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "Nepál"
+
+#. Context: countries
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "Hollandia"
+
+#. Context: countries
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "Új-Kaledónia"
+
+#. Context: countries
+#: 
+msgid "New Zealand"
+msgstr "Új-Zéland"
+
+#. Context: countries
+#: 
+msgid "Nicaragua"
+msgstr "Nicaragua"
+
+#. Context: countries
+#: 
+msgid "Niger (Nijar)"
+msgstr "Niger"
+
+#. Context: countries
+#: 
+msgid "Nigeria"
+msgstr "Nigéria"
+
+#. Context: countries
+#: 
+msgid "Niue"
+msgstr "Niue"
+
+#. Context: countries
+#: 
+msgid "Norfolk Island"
+msgstr "Norfolk-sziget"
+
+#. Context: countries
+#: 
+msgid "Northern Mariana Islands"
+msgstr "Északi-Mariana-szigetek"
+
+#. Context: countries
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "Észak-Korea"
+
+#. Context: countries
+#: 
+msgid "Norway (Norge)"
+msgstr "Norvégia"
+
+#. Context: countries
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "Omán"
+
+#. Context: countries
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "Pakisztán"
+
+#. Context: countries
+#: 
+msgid "Palau"
+msgstr "Palau"
+
+#. Context: countries
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "Palesztina"
+
+#. Context: countries
+#: 
+msgid "Panama (Panamá)"
+msgstr "Panama"
+
+#. Context: countries
+#: 
+msgid "Papua New Guinea"
+msgstr "Pápua Új-Guinea"
+
+#. Context: countries
+#: 
+msgid "Paraguay"
+msgstr "Paraguay"
+
+#. Context: countries
+#: 
+msgid "Peru (Perú)"
+msgstr "Peru"
+
+#. Context: countries
+#: 
+msgid "Philippines"
+msgstr "Fülöp-szigetek"
+
+#. Context: countries
+#: 
+msgid "Pitcairn Islands"
+msgstr "Pitcairn-szigetek"
+
+#. Context: countries
+#: 
+msgid "Poland (Polska)"
+msgstr "Lengyelország"
+
+#. Context: countries
+#: 
+msgid "Portugal"
+msgstr "Portugália"
+
+#. Context: countries
+#: 
+msgid "Puerto Rico"
+msgstr "Puerto Rico"
+
+#. Context: countries
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "Katar"
+
+#. Context: countries
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "Réunion"
+
+#. Context: countries
+#: 
+msgid "Romania (România)"
+msgstr "Románia"
+
+#. Context: countries
+#: 
+msgid "Russia (Россия)"
+msgstr "Oroszország"
+
+#. Context: countries
+#: 
+msgid "Rwanda"
+msgstr "Ruanda"
+
+#. Context: countries
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "Saint-Barthélemy"
+
+#. Context: countries
+#: 
+msgid "Saint Helena"
+msgstr "Szent Ilona"
+
+#. Context: countries
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "Saint Kitts és Nevis"
+
+#. Context: countries
+#: 
+msgid "Saint Lucia"
+msgstr "Saint Lucia"
+
+#. Context: countries
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "Szent Márton-sziget"
+
+#. Context: countries
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "Saint-Pierre és Miquelon"
+
+#. Context: countries
+#: 
+msgid "Samoa"
+msgstr "Szamoa"
+
+#. Context: countries
+#: 
+msgid "San Marino"
+msgstr "San Marino"
+
+#. Context: countries
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "São Tomé és Príncipe"
+
+#. Context: countries
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "Szaúd-Arábia"
+
+#. Context: countries
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "Szenegál"
+
+#. Context: countries
+#: 
+msgid "Serbia (Србија)"
+msgstr "Szerbia"
+
+#. Context: countries
+#: 
+msgid "Seychelles"
+msgstr "Seychelle-szigetek"
+
+#. Context: countries
+#: 
+msgid "Sierra Leone"
+msgstr "Sierra Leone"
+
+#. Context: countries
+#: 
+msgid "Singapore"
+msgstr "Szingapúr"
+
+#. Context: countries
+#: 
+msgid "Sint Maarten"
+msgstr "Sint Maarten"
+
+#. Context: countries
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "Szlovákia"
+
+#. Context: countries
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "Szlovénia"
+
+#. Context: countries
+#: 
+msgid "Solomon Islands"
+msgstr "Salamon-szigetek"
+
+#. Context: countries
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "Szomália"
+
+#. Context: countries
+#: 
+msgid "South Africa"
+msgstr "Dél-afrikai Köztársaság"
+
+#. Context: countries
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "Déli-Georgia és Déli-Sandwich-szigetek"
+
+#. Context: countries
+#: 
+msgid "South Korea (대한민국)"
+msgstr "Dél-Korea"
+
+#. Context: countries
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "Dél-Szudán"
+
+#. Context: countries
+#: 
+msgid "Spain (España)"
+msgstr "Spanyolország"
+
+#. Context: countries
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "Srí Lanka"
+
+#. Context: countries
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "Saint Vincent és a Grenadine-szigetek"
+
+#. Context: countries
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "Szudán"
+
+#. Context: countries
+#: 
+msgid "Suriname"
+msgstr "Suriname"
+
+#. Context: countries
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "Svalbard és Jan Mayen"
+
+#. Context: countries
+#: 
+msgid "Swaziland"
+msgstr "Szváziföld"
+
+#. Context: countries
+#: 
+msgid "Sweden (Sverige)"
+msgstr "Svédország"
+
+#. Context: countries
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "Svájc"
+
+#. Context: countries
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "Szíria"
+
+#. Context: countries
+#: 
+msgid "Taiwan (台灣)"
+msgstr "Tajvan"
+
+#. Context: countries
+#: 
+msgid "Tajikistan"
+msgstr "Tádzsikisztán"
+
+#. Context: countries
+#: 
+msgid "Tanzania"
+msgstr "Tanzánia"
+
+#. Context: countries
+#: 
+msgid "Thailand (ไทย)"
+msgstr "Thaiföld"
+
+#. Context: countries
+#: 
+msgid "Timor-Leste"
+msgstr "Kelet-Timor"
+
+#. Context: countries
+#: 
+msgid "Togo"
+msgstr "Togo"
+
+#. Context: countries
+#: 
+msgid "Tokelau"
+msgstr "Tokelau"
+
+#. Context: countries
+#: 
+msgid "Tonga"
+msgstr "Tonga"
+
+#. Context: countries
+#: 
+msgid "Trinidad and Tobago"
+msgstr "Trinidad és Tobago"
+
+#. Context: countries
+#: 
+msgid "Tristan da Cunha"
+msgstr "Tristan da Cunha"
+
+#. Context: countries
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "Tunézia"
+
+#. Context: countries
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "Törökország"
+
+#. Context: countries
+#: 
+msgid "Turkmenistan"
+msgstr "Türkmenisztán"
+
+#. Context: countries
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "Turks- és Caicos-szigetek"
+
+#. Context: countries
+#: 
+msgid "Tuvalu"
+msgstr "Tuvalu"
+
+#. Context: countries
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "Az USA lakatlan külbirtokai"
+
+#. Context: countries
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "Amerikai Virgin-szigetek"
+
+#. Context: countries
+#: 
+msgid "Uganda"
+msgstr "Uganda"
+
+#. Context: countries
+#: 
+msgid "Ukraine (Україна)"
+msgstr "Ukrajna"
+
+#. Context: countries
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "Egyesült Arab Emírségek"
+
+#. Context: countries
+#: 
+msgid "United Kingdom"
+msgstr "Egyesült Királyság"
+
+#. Context: countries
+#: 
+msgid "United States"
+msgstr "Egyesült Államok"
+
+#. Context: countries
+#: 
+msgid "Uruguay"
+msgstr "Uruguay"
+
+#. Context: countries
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "Üzbegisztán"
+
+#. Context: countries
+#: 
+msgid "Vanuatu"
+msgstr "Vanuatu"
+
+#. Context: countries
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "Vatikán"
+
+#. Context: countries
+#: 
+msgid "Venezuela"
+msgstr "Venezuela"
+
+#. Context: countries
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "Vietnám"
+
+#. Context: countries
+#: 
+msgid "Wallis and Futuna"
+msgstr "Wallis és Futuna"
+
+#. Context: countries
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "Nyugat-Szahara"
+
+#. Context: countries
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "Jemen"
+
+#. Context: countries
+#: 
+msgid "Zambia"
+msgstr "Zambia"
+
+#. Context: countries
+#: 
+msgid "Zimbabwe"
+msgstr "Zimbabwe"
+
+#: 
+msgid "Please verify your family's information"
+msgstr "Kérjük, ellenőrizze családja adatait"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "Nem sikerült betölteni az ellenőrző adatokat"
+
+#: 
+msgid "No Changes"
+msgstr "Nincs változás"
+
+#: 
+msgid "Page not fond"
+msgstr "Az oldal nem található"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "Hoppá! Az oldal nem található."
+
+#: 
+msgid "Family Registration"
+msgstr "Családi regisztráció"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "Kérjük, adja meg a következőket a család ellenőrzésének megkezdéséhez"
+
+#: 
+msgid "Family Verification"
+msgstr "Családi ellenőrzés"
+
+#: 
+msgid "Work Email"
+msgstr "Munkahelyi e-mail"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "Családi adatok ellenőrzésének kérése"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "Válassza ki, hogyan szeretné kérni a családi adatok ellenőrzését"
+
+#: 
+msgid "Online Verification"
+msgstr "Online ellenőrzés"
+
+#: 
+msgid "Verified In Person"
+msgstr "Személyesen ellenőrizve"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "A biztonsági mentési archívum nem tartalmaz adatbázist"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "A felhasználó által megadott irányítószámokat alakítsa NAGYBETŰSSÉ az adatbázisba mentéskor."
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "A levél végén, az aláíró előtt használatos"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "Google Analytics követőkód"
+
+#. Context: locales
+#: 
+msgid "English - United States"
+msgstr "Angol - Egyesült Államok"
+
+#. Context: locales
+#: 
+msgid "English - Canada"
+msgstr "Angol - Kanada"
+
+#. Context: locales
+#: 
+msgid "English - Australia"
+msgstr "Angol - Ausztrália"
+
+#. Context: locales
+#: 
+msgid "English - Great Britain"
+msgstr "Angol - Nagy-Britannia"
+
+#. Context: locales
+#: 
+msgid "German - Germany"
+msgstr "Német - Németország"
+
+#. Context: locales
+#: 
+msgid "Spanish - Spain"
+msgstr "Spanyol - Spanyolország"
+
+#. Context: locales
+#: 
+msgid "French - France"
+msgstr "Francia - Franciaország"
+
+#. Context: locales
+#: 
+msgid "Hungarian"
+msgstr "Magyar"
+
+#. Context: locales
+#: 
+msgid "Italian - Italy"
+msgstr "Olasz - Olaszország"
+
+#. Context: locales
+#: 
+msgid "Norwegian"
+msgstr "Norvég"
+
+#. Context: locales
+#: 
+msgid "Dutch - Netherlands"
+msgstr "Holland - Hollandia"
+
+#. Context: locales
+#: 
+msgid "Polish"
+msgstr "Lengyel"
+
+#. Context: locales
+#: 
+msgid "Portuguese - Brazil"
+msgstr "Portugál - Brazília"
+
+#. Context: locales
+#: 
+msgid "Romanian - Romania"
+msgstr "Román - Románia"
+
+#. Context: locales
+#: 
+msgid "Russian"
+msgstr "Orosz"
+
+#. Context: locales
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "Számi (északi) (Svédország)"
+
+#. Context: locales
+#: 
+msgid "Albanian"
+msgstr "Albán"
+
+#. Context: locales
+#: 
+msgid "Vietnamese"
+msgstr "Vietnámi"
+
+#. Context: locales
+#: 
+msgid "Chinese - China"
+msgstr "Kínai - Kína"
+
+#. Context: locales
+#: 
+msgid "Chinese - Taiwan"
+msgstr "Kínai - Tajvan"
+
+#: 
+msgid "Maximum upload size"
+msgstr "Maximális feltöltési méret"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "A kiválasztott fájl meghaladja a szerver maximális feltöltési korlátját:"
+
+#: 
+msgid "Failed"
+msgstr "Sikertelen"
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "Egyházi folyószámla száma"
+
+#: 
+msgid "Marked the Family as Inactive"
+msgstr "A család inaktívnak jelölve"
+
+#: 
+msgid "Marked the Family as Active"
+msgstr "A család aktívnak jelölve"
+
+#: 
+msgid "families"
+msgstr "családok"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "Befizetési bizonylat típusa. QBDT - Quickbooks"
+
+#: 
+msgid "Financial Settings"
+msgstr "Pénzügyi beállítások"
+
+#: 
+msgid "An invalid configuration name has been requested"
+msgstr "Érvénytelen konfigurációs név lett lekérve"
+
+#: 
+msgid "An invalid configuration id has been requested"
+msgstr "Érvénytelen konfigurációs azonosító lett lekérve"
+
+#: 
+msgid "Profile Image uploaded"
+msgstr "Profilkép feltöltve"
+
+#: 
+msgid "payment(s)?"
+msgstr "fizetés(ek)?"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "Deaktiválás megerősítése"
+
+#: 
+msgid "Confirm Activation"
+msgstr "Aktiválás megerősítése"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "Kérjük, erősítse meg a család deaktiválását"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "Kérjük, erősítse meg a család aktiválását"
+
+#: 
+msgid "Show neighbors with these classifications"
+msgstr "Szomszédok mutatása ezekkel a besorolásokkal"
+
+#: 
+msgid "Please select a Family."
+msgstr "Kérjük, válasszon egy családot."
+
+#: 
+msgid "Coordinate database file name"
+msgstr "Koordináta adatbázis fájlneve"
+
+#: 
+msgid "select an option"
+msgstr "válasszon egy opciót"
+
+#: 
+msgid "Direct me"
+msgstr "Irányítson"
+
+#: 
+msgid "Your cart is empty"
+msgstr "A kosara üres"
+
+#: 
+msgid "The record could not be found."
+msgstr "A rekord nem található."
+
+#: 
+msgid "The property is already assigned."
+msgstr "A tulajdonság már hozzá van rendelve."
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "A tulajdonság sikeresen hozzárendelve."
+
+#: 
+msgid "The property could not be assigned."
+msgstr "A tulajdonságot nem sikerült hozzárendelni."
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "A tulajdonság hozzárendelése sikeresen törölve."
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "A tulajdonság hozzárendelését nem sikerült törölni."
+
+#: 
+msgid "Select event"
+msgstr "Válasszon eseményt"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "A személy már bejelentkezett erre az eseményre"
+
+#: 
+msgid "CheckOut Person"
+msgstr "Személy kijelentkezése"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "Bejelentkezési bejegyzés törlése"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "Felnőtt, aki kijelentkezteti a személyt"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "Név előtti szöveg e-mailekben/jelentésekben"
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "Címletek számának megjelenítése a befizetési bizonylaton"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "Fiókját törölték"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "Az Ön ChurchCRM fiókját törölték."
+
+#: 
+msgid "Account Locked"
+msgstr "Fiók zárolva"
+
+#: 
+msgid "Your New Account"
+msgstr "Az Ön új fiókja"
+
+#: 
+msgid "Password Reset"
+msgstr "Jelszó visszaállítása"
+
+#: 
+msgid "Account Unlocked"
+msgstr "Fiók feloldva"
+
+#: 
+msgid "Part"
+msgstr "Rész"
+
+#: 
+msgid "View Photo"
+msgstr "Fotó megtekintése"
+
+#: 
+msgid "Status"
+msgstr "Állapot"
+
+#: 
+msgid "Email export"
+msgstr "E-mail exportálás"
+
+#: 
+msgid "Include"
+msgstr "Tartalmazza"
+
+#: 
+msgid "Exclude"
+msgstr "Zárja ki"
+
+#: 
+msgid "View Cart"
+msgstr "Kosár megtekintése"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "A kosara üres"
+
+#: 
+msgid "View on Map"
+msgstr "Megtekintés térképen"
+
+#: 
+msgid "Legend"
+msgstr "Jelmagyarázat"
+
+#: 
+msgid "assigned"
+msgstr "hozzárendelve"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "Születésnapos diákok mutatása ebben a hónapban:"
+
+#: 
+msgid "Actions"
+msgstr "Műveletek"
+
+#: 
+msgid "Action Confirmation"
+msgstr "Művelet megerősítése"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "Kérjük, erősítse meg a sikertelen bejelentkezések számának visszaállítását"
+
+#: 
+msgid "SMTP Server timeout in sec"
+msgstr "SMTP szerver időtúllépés másodpercben"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "Inaktív családok kizárása"
+
+#: 
+msgid "The role is already assigned."
+msgstr "A szerepkör már hozzá van rendelve."
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "A szerepkör sikeresen hozzárendelve."
+
+#: 
+msgid "The role could not be assigned."
+msgstr "A szerepkört nem sikerült hozzárendelni."
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "A Bing térkép API-hoz egyedi kulcs szükséges"
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "Google Térkép nagyítás"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "Válasszon GeoCoder szolgáltatót"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "Az Ön ChurchCRM fiókját zárolták."
+
+#: 
+msgid "A ChurchCRM account was created for you"
+msgstr "ChurchCRM fiókot hoztak létre Önnek"
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "A ChurchCRM jelszavát erre a linkre kattintva állíthatja vissza"
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "Az Ön ChurchCRM fiókját feloldották."
+
+#: 
+msgid "system user created"
+msgstr "rendszerfelhasználó létrehozva"
+
+#: 
+msgid "system user updated"
+msgstr "rendszerfelhasználó frissítve"
+
+#: 
+msgid "system user deleted"
+msgstr "rendszerfelhasználó törölve"
+
+#: 
+msgid "system user password reset"
+msgstr "rendszerfelhasználó jelszava visszaállítva"
+
+#: 
+msgid "system user changed password"
+msgstr "rendszerfelhasználó jelszót változtatott"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "rendszerfelhasználó jelszavát az adminisztrátor megváltoztatta"
+
+#: 
+msgid "system user login reset"
+msgstr "rendszerfelhasználó bejelentkezése visszaállítva"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "Hiányzó családok? Frissítse a család szélességi vagy hosszúsági koordinátáit most."
+
+#: 
+msgid "Families without Geo Info"
+msgstr "Földrajzi adatok nélküli családok"
+
+#: 
+msgid "Notification for"
+msgstr "Értesítés:"
+
+#: 
+msgid "DEBUG"
+msgstr "HIBAKERESÉS"
+
+#: 
+msgid "INFO"
+msgstr "INFÓ"
+
+#: 
+msgid "NOTICE"
+msgstr "ÉRTESÍTÉS"
+
+#: 
+msgid "WARNING"
+msgstr "FIGYELMEZTETÉS"
+
+#: 
+msgid "ERROR"
+msgstr "HIBA"
+
+#: 
+msgid "CRITICAL"
+msgstr "KRITIKUS"
+
+#: 
+msgid "ALERT"
+msgstr "RIASZTÁS"
+
+#: 
+msgid "EMERGENCY"
+msgstr "VÉSZHELYZET"
+
+#: 
+msgid "Title FirstName MiddleName LastName"
+msgstr "Megszólítás Keresztnév Középső név Vezetéknév"
+
+#: 
+msgid "FirstName MiddleName LastName"
+msgstr "Keresztnév Középső név Vezetéknév"
+
+#: 
+msgid "Title FirstName LastName"
+msgstr "Megszólítás Keresztnév Vezetéknév"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "Eseménynapló írandó súlyossága, az ORM és az alkalmazásnaplók használják"
+
+#: 
+msgid "Time zone"
+msgstr "Időzóna"
+
+#: 
+msgid "Nexmo SMS API Key"
+msgstr "Nexmo SMS API kulcs"
+
+#: 
+msgid "Nexmo SMS API Secret"
+msgstr "Nexmo SMS API titkos kulcs"
+
+#: 
+msgid "Nexmo SMS From Number"
+msgstr "Nexmo SMS küldő száma"
+
+#: 
+msgid "OpenLP URL"
+msgstr "OpenLP URL"
+
+#: 
+msgid "OpenLP Username"
+msgstr "OpenLP felhasználónév"
+
+#: 
+msgid "OpenLP Password"
+msgstr "OpenLP jelszó"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "Kioszk láthatósági időbélyeg"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "Elfelejtett jelszó link megjelenítése/elrejtése a bejelentkezési képernyőn"
+
+#: 
+msgid "Backup"
+msgstr "Biztonsági mentés"
+
+#: 
+msgid "Integration"
+msgstr "Integráció"
+
+#: 
+msgid "Notification"
+msgstr "Értesítés"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "Gondviselője:"
+
+#: 
+msgid "A notification was triggered by the classroom teacher at"
+msgstr "Egy értesítést váltott ki a tanár ekkor:"
+
+#: 
+msgid "Please go to this location"
+msgstr "Kérjük, menjen erre a helyszínre"
+
+#: 
+msgid "Your ChurchCRM password has been changed"
+msgstr "Az Ön ChurchCRM jelszava megváltozott"
+
+#: 
+msgid "Password Reset Link"
+msgstr "Jelszó-visszaállító link"
+
+#: 
+msgid "Reset Password"
+msgstr "Jelszó visszaállítása"
+
+#: 
+msgid "Reset your password"
+msgstr "Állítsa vissza jelszavát"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "Sajnáljuk, jelenleg nem tudjuk feldolgozni a kérését."
+
+#: 
+msgid "Kiosk Manager"
+msgstr "Kioszk kezelő"
+
+#: 
+msgid "Report an issue"
+msgstr "Hiba bejelentése"
+
+#: 
+msgid "Enable New Kiosk Registration"
+msgstr "Új kioszk regisztráció engedélyezése"
+
+#: 
+msgid "Active Kiosks"
+msgstr "Aktív kioszkok"
+
+#: 
+msgid "I forgot my password"
+msgstr "Elfelejtettem a jelszavam"
+
+#: 
+msgid "Attendees Checked In"
+msgstr "Bejelentkezett résztvevők"
+
+#: 
+msgid "Text Cart"
+msgstr "Szöveges kosár"
+
+#: 
+msgid "Your Church's Website"
+msgstr "Az Ön egyházának weboldala"
+
+#: 
+msgid "Self Verification"
+msgstr "Önellenőrzés"
+
+#: 
+msgid "Check Number"
+msgstr "Csekkszám"
+
+#: 
+msgid "Details"
+msgstr "Részletek"
+
+#: 
+msgid "Verification email sent"
+msgstr "Ellenőrző e-mail elküldve"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "Csoportspecifikus tulajdonságok engedélyezésének megerősítése"
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "Csoportspecifikus tulajdonságok letiltásának megerősítése"
+
+#: 
+msgid "Role Name"
+msgstr "Szerepkör neve"
+
+#: 
+msgid "Sequence"
+msgstr "Sorrend"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "Kosár állapotának ellenőrzése"
+
+#: 
+msgid "All members of this group are in the cart"
+msgstr "A csoport minden tagja a kosárban van"
+
+#: 
+msgid "Remove all"
+msgstr "Összes eltávolítása"
+
+#: 
+msgid "Not all members of this group are in the cart"
+msgstr "Nem minden csapattag van a kosárban"
+
+#: 
+msgid "Are you sure you want to remove the selected group members?"
+msgstr "Biztosan el akarja távolítani a kiválasztott csoporttagokat?"
 
