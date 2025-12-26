@@ -1,0 +1,45 @@
+{
+  "Delete User": "",
+  "Disable 2FA": "",
+  "Export all people data in ChMeetings format for import into external systems.": "",
+  "Export to ChMeetings CSV": "",
+  "Exporting...": "",
+  "Family Listing": "",
+  "Invalid request data": "",
+  "Invalid status": "",
+  "Locked Users": "",
+  "Person Listing": "",
+  "Person(s) removed from cart": "",
+  "Quick Settings": "",
+  "Reset Failed Logins": "",
+  "Reset Password via Email": "",
+  "Set Active": "",
+  "Set Inactive": "",
+  "Show": "",
+  "Showing": "",
+  "Total Users": "",
+  "User Management": "",
+  "View Details": "",
+  "entries": "",
+  "of": "",
+  "total": "",
+  "Code incomplete": "",
+  "Code is invalid": "",
+  "Encryption key for storing 2FA secret keys in the database": "",
+  "Two-Factor Authentication": "",
+  "Validation pending": "",
+  "must be configured with an encryption key": "",
+  "%d Person added to the Cart.": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person successfully added to selected Family.": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person successfully added to selected Group.": {
+    "one": "",
+    "other": ""
+  },
+  "A ": ""
+}
