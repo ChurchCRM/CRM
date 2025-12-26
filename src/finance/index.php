@@ -54,7 +54,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
     
     // Log full error details server-side for debugging
     $logger->error('Finance error', [
-        'exception' => get_class($exception),
+        'exception' => $exception::class,
         'message' => $exception->getMessage(),
         'file' => $exception->getFile(),
         'line' => $exception->getLine(),

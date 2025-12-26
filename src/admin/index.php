@@ -60,7 +60,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
     }
     
     $logger->error('Admin error', [
-        'exception' => get_class($exception),
+        'exception' => $exception::class,
         'message' => $exception->getMessage()
     ]);
     
