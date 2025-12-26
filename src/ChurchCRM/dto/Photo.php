@@ -181,7 +181,6 @@ class Photo
         // Create resized image at standard dimensions
         $resizedImage = imagecreatetruecolor(self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
         if ($resizedImage === false) {
-            imagedestroy($sourceImage);
             throw new \Exception('Failed to create resized image');
         }
         
@@ -199,8 +198,6 @@ class Photo
             $sourceWidth,
             $sourceHeight
         )) {
-            imagedestroy($sourceImage);
-            imagedestroy($resizedImage);
             throw new \Exception('Failed to resize image');
         }
         
@@ -211,14 +208,8 @@ class Photo
         $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
         
         if (!imagepng($resizedImage, $fileName)) {
-            imagedestroy($sourceImage);
-            imagedestroy($resizedImage);
             throw new \Exception('Failed to save resized image');
         }
-        
-        // Clean up
-        imagedestroy($sourceImage);
-        imagedestroy($resizedImage);
         
         // Update state
         $this->photoURI = $fileName;
