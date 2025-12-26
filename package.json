@@ -32,6 +32,7 @@
         "deploy": "run-s build build:signatures",
         "deploy:clean": "run-s preinstall deploy",
         "build:signatures": "node scripts/generate-signatures-node.js",
+        "build:php:validate": "node scripts/validate-php-syntax.js",
         "docker:ci:down": "docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci down -v",
         "docker:ci:start": "cp docker/Config.php src/Include/Config.php && docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci up -d --build",
         "docker:dev:login:db": "docker compose -f docker/docker-compose.yaml --profile dev exec database bash",

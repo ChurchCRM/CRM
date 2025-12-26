@@ -83,6 +83,11 @@ jobs:
       run: |
         npm run package
 
+    - name: Validate PHP Syntax
+      run: |
+        echo "🔍 Validating PHP syntax for all files in signatures..."
+        npm run build:php:validate
+
     - name: Run Docker
       run: npm run docker:ci:start
 
