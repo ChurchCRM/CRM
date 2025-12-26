@@ -4707,6 +4707,11 @@ msgstr "Burundi"
 
 #. Context: countries
 #: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "Kambodża (កម្ពុជា)"
+
+#. Context: countries
+#: 
 msgid "Cameroon (Cameroun)"
 msgstr "Kamerun"
 
@@ -5139,6 +5144,11 @@ msgstr "Kirgistan"
 #: 
 msgid "Laos (ລາວ)"
 msgstr "Laos"
+
+#. Context: countries
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "Liban (‫لبنان‬‎)"
 
 #. Context: countries
 #: 
