@@ -45,7 +45,7 @@ class AuthenticationManager
         try {
             $currentUser = self::getAuthenticationProvider()->getCurrentUser();
             if (!$currentUser instanceof User) {
-                throw new \Exception('No current user provided by current authentication provider: ' . get_class(self::getAuthenticationProvider()));
+                throw new \Exception('No current user provided by current authentication provider: ' . self::getAuthenticationProvider()::class);
             }
 
             return $currentUser;
@@ -102,7 +102,7 @@ class AuthenticationManager
     public static function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
     {
         $logger = LoggerUtils::getAppLogger();
-        switch (get_class($AuthenticationRequest)) {
+        switch ($AuthenticationRequest::class) {
             case APITokenAuthenticationRequest::class:
                 $AuthenticationProvider = new APITokenAuthentication();
                 self::setAuthenticationProvider($AuthenticationProvider);
@@ -122,7 +122,7 @@ class AuthenticationManager
                 }
                 break;
             default:
-                $logger->critical('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => get_class($AuthenticationRequest)]);
+                $logger->critical('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => $AuthenticationRequest::class]);
                 break;
         }
 

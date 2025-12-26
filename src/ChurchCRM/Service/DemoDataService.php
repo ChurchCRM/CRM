@@ -361,7 +361,7 @@ class DemoDataService
                 $this->addWarning("Family '{$familyName}' import failed: {$errorMsg}", [
                     'family_name' => $familyName,
                     'error' => $errorMsg,
-                    'exception_class' => get_class($e),
+                    'exception_class' => $e::class,
                     'trace' => $e->getTraceAsString()
                 ]);
             }

@@ -46,7 +46,7 @@ class SlimUtils
             $logger = LoggerUtils::getAppLogger();
             $logContext = $extra;
             if ($exception !== null) {
-                $logContext['exception_class'] = get_class($exception);
+                $logContext['exception_class'] = $exception::class;
                 $logContext['error'] = $exception->getMessage();
                 $logContext['file'] = $exception->getFile();
                 $logContext['line'] = $exception->getLine();
