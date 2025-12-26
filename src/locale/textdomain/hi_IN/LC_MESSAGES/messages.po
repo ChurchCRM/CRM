@@ -7697,6 +7697,10 @@ msgid "Event Description"
 msgstr "घटना का विवरण"
 
 #: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "अपने ChurchCRM उपयोगकर्ता खाते को टू-फैक्टर प्रमाणीकरण में नामांकित करने से आपके खाते तक पहुँचने की कोशिश करने वाले दुर्भावनापूर्ण लोगों के खिलाफ एक अतिरिक्त सुरक्षा परत मिलती है।"
+
+#: 
 msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
 msgstr "ChurchCRM दो-कारक किसी भी TOTP प्रमाणीकरण ऐप का समर्थन करता है, इसलिए आप Microsoft Authenticator, Google Authenticator, Authy, LastPass और अन्य के बीच चयन करने के लिए स्वतंत्र हैं।"
 
@@ -7765,25 +7769,165 @@ msgid "2 Factor Authentication Enrollment Success"
 msgstr "टू-फैक्टर ऑथेंटिकेशन नामांकन सफल"
 
 #: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "कृपया इन पुनर्प्राप्ति कोड्स को सुरक्षित स्थान पर रखें"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "यदि आप कभी भी अपने नए नामांकित प्रमाणीकरण ऐप तक पहुँच खो देते हैं, तो आपको अपने खाते तक पहुँचने के लिए पुनर्प्राप्ति कोड का उपयोग करना होगा।"
+
+#: 
 msgid "Help translate this project"
 msgstr "इस प्रोजेक्ट के अनुवाद में सहायता करें"
+
+#. Context: locales
+#: 
+msgid "Afrikaans"
+msgstr "अफ्रीकांस"
+
+#: 
+msgid " has a type mismatch"
+msgstr " में प्रकार मेल नहीं खाता है"
 
 #: 
 msgid "Loading"
 msgstr "लोड हो रहा है"
 
 #: 
+msgid "Family Property Unassignment"
+msgstr "परिवार संपत्ति असाइनमेंट हटाना"
+
+#: 
+msgid "Do you want to remove"
+msgstr "क्या आप हटाना चाहते हैं"
+
+#: 
 msgid "Today's Birthdays"
 msgstr "आज के जन्मदिन"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "आज की शादी की सालगिरहें"
+
+#: 
+msgid "Api Key"
+msgstr "एपीआई कुंजी"
+
+#: 
+msgid "Regen API Key"
+msgstr "एपीआई कुंजी पुनः उत्पन्न करें"
+
+#: 
+msgid "View Family Page"
+msgstr "परिवार पृष्ठ देखें"
+
+#: 
+msgid "View Person Page"
+msgstr "व्यक्ति पृष्ठ देखें"
+
+#: 
+msgid "Verify"
+msgstr "सत्यापित करें"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "परिवार के पास उपयोग के लिए कोई ईमेल नहीं है"
+
+#: 
+msgid "Boxed Layout"
+msgstr "बॉक्स्ड लेआउट"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "बॉक्स्ड लेआउट सक्रिय करें"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "साइडबार टॉगल करें"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "बाएँ साइडबार की स्थिति टॉगल करें (खोलें या संक्षिप्त करें)"
+
+#: 
+msgid "Tables Settings"
+msgstr "तालिका सेटिंग्स"
+
+#: 
+msgid "Page length"
+msgstr "पृष्ठ लंबाई"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "प्रारंभिक पृष्ठ लंबाई बदलें (प्रति पृष्ठ पंक्तियों की संख्या)"
+
+#: 
+msgid "Deleted"
+msgstr "हटा दिया गया"
+
+#. Context: locales
+#: 
+msgid "Czech"
+msgstr "चेक"
+
+#. Context: locales
+#: 
+msgid "Finnish"
+msgstr "फिनिश"
+
+#. Context: locales
+#: 
+msgid "Greek"
+msgstr "यूनानी"
+
+#. Context: locales
+#: 
+msgid "Turkish"
+msgstr "तुर्की"
+
+#. Context: locales
+#: 
+msgid "Ukrainian"
+msgstr "यूक्रेनी"
 
 #. Context: locales
 #: 
 msgid "Hindi - India"
 msgstr "हिंदी - भारत"
 
+#. Context: locales
+#: 
+msgid "Japanese"
+msgstr "जापानी"
+
+#. Context: locales
+#: 
+msgid "Tamil - India"
+msgstr "तमिल - भारत"
+
 #: 
 msgid "Not Subscribed"
 msgstr "सदस्यता नहीं ली गई"
+
+#. Context: locales
+#: 
+msgid "English - South Africa"
+msgstr "अंग्रेज़ी - दक्षिण अफ्रीका"
+
+#. Context: locales
+#: 
+msgid "English - Jamaica"
+msgstr "अंग्रेज़ी - जमैका"
+
+#. Context: locales
+#: 
+msgid "Swahili"
+msgstr "स्वाहिली"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "तेलुगु - भारत"
 
 #: 
 msgid "System Logs"

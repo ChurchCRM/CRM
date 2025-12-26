@@ -6034,6 +6034,26 @@ msgid "Legend"
 msgstr "凡例"
 
 #: 
+msgid "Actions"
+msgstr "操作"
+
+#: 
+msgid "Action Confirmation"
+msgstr "操作の確認"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "非アクティブな家族を除外"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "ChurchCRMアカウントがロックされました。"
+
+#: 
+msgid "system user updated"
+msgstr "システムユーザーが更新されました。"
+
+#: 
 msgid "Nexmo SMS From Number"
 msgstr "Nexmo SMSの送信元番号"
 
@@ -6150,6 +6170,22 @@ msgid "W"
 msgstr "西"
 
 #: 
+msgid "Search Family"
+msgstr "家族を検索"
+
+#: 
+msgid "Quick Search"
+msgstr "クイック検索"
+
+#: 
+msgid "Add Students"
+msgstr "生徒を追加"
+
+#: 
+msgid "Edit this Class"
+msgstr "このクラスを編集"
+
+#: 
 msgid "OK"
 msgstr "了解"
 
@@ -6174,8 +6210,36 @@ msgid "Create PhotoBook"
 msgstr "フォトブックを作成"
 
 #: 
+msgid "Group Role"
+msgstr "グループ内役割"
+
+#: 
+msgid "Members to cart"
+msgstr "メンバーをカートに追加"
+
+#: 
 msgid "Profile"
 msgstr "プロフィール"
+
+#: 
+msgid "Sign out"
+msgstr "サインアウト"
+
+#: 
+msgid "Sermon Text"
+msgstr "説教テキスト"
+
+#: 
+msgid "People Dashboard"
+msgstr "人物ダッシュボード"
+
+#: 
+msgid "Calendar Name"
+msgstr "カレンダー名"
+
+#: 
+msgid "New Calendar"
+msgstr "新規カレンダー"
 
 #: 
 msgid "Validation Error"
@@ -6238,8 +6302,20 @@ msgid "invalid calendar pinning"
 msgstr "無効なカレンダーピニング"
 
 #: 
+msgid "Duplicate Emails"
+msgstr "重複したメールアドレス"
+
+#: 
+msgid "Latest People"
+msgstr "最近追加された人物"
+
+#: 
 msgid "Missing"
 msgstr "見つかりません"
+
+#: 
+msgid "Software Version"
+msgstr "ソフトウェア・バージョン"
 
 #: 
 msgid "Records"
@@ -6282,6 +6358,10 @@ msgid "2FA Code"
 msgstr "2FAコード"
 
 #: 
+msgid "2 Factor Authentication enrollment"
+msgstr "2要素認証の登録"
+
+#: 
 msgid "Your new password is too similar to your old one."
 msgstr "新しいパスワードが以前のパスワードと似すぎています"
 
@@ -6302,6 +6382,10 @@ msgid "Login Info"
 msgstr "ログイン情報"
 
 #: 
+msgid "Login Count"
+msgstr "ログイン回数"
+
+#: 
 msgid "Failed Login"
 msgstr "ログインに失敗"
 
@@ -6310,12 +6394,32 @@ msgid "Permissions"
 msgstr "権限"
 
 #: 
+msgid "Manage Notes"
+msgstr "メモの管理"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "家族別献金約束（プレッジ）概要"
+
+#: 
+msgid "Paid"
+msgstr "支払い済み"
+
+#: 
+msgid "Owe"
+msgstr "未払額"
+
+#: 
 msgid "Start Date"
 msgstr "開始日"
 
 #: 
 msgid "End Date"
 msgstr "終了日"
+
+#: 
+msgid "This field is required"
+msgstr "この項目は必須です"
 
 #: 
 msgid "Text"
@@ -6429,12 +6533,28 @@ msgid "People who are configured to pay by credit card."
 msgstr "クレジットカードで支払うように設定されている人物。"
 
 #: 
+msgid "Log Settings"
+msgstr "ログ設定"
+
+#: 
 msgid "View"
 msgstr "表示"
 
 #: 
 msgid "Error"
 msgstr "エラー"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "カートへの追加が完了しました"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "カートをすべて空にしますか？"
+
+#: 
+msgid "Family added to cart"
+msgstr "家族がカートに追加されました"
 
 #: 
 msgid "Base URL is required"
@@ -6457,8 +6577,28 @@ msgid "Database server port is required (e.g., 3306)"
 msgstr "データベースサーバーポートが必要です (例: 3306)"
 
 #: 
+msgid "Passwords do not match"
+msgstr "パスワードが一致しません"
+
+#: 
+msgid "Phone number"
+msgstr "電話番号"
+
+#: 
 msgid "Previous"
 msgstr "前"
+
+#: 
+msgid "Street address"
+msgstr "住所（番地）"
+
+#: 
+msgid "Zip code is required"
+msgstr "郵便番号は必須です"
+
+#: 
+msgid "Database Backup"
+msgstr "データベースのバックアップ"
 
 #: 
 msgid "Setting updated successfully"
@@ -6485,6 +6625,10 @@ msgid "Checks"
 msgstr "チェック"
 
 #: 
+msgid "Deposit saved successfully"
+msgstr "入金情報が正常に保存されました"
+
+#: 
 msgid "Funds"
 msgstr "資金"
 
@@ -6493,8 +6637,20 @@ msgid "Payments"
 msgstr "支払い"
 
 #: 
+msgid "Total Deposit"
+msgstr "入金総額"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "ChurchCRMのインストール"
+
+#: 
 msgid "Copy"
 msgstr "コピー"
+
+#: 
+msgid "Server Information"
+msgstr "サーバー情報"
 
 #: 
 msgid "Are you sure you want to delete this check-in record?"
@@ -6521,6 +6677,22 @@ msgid "Clear"
 msgstr "クリア"
 
 #: 
+msgid "People Checked In"
+msgstr "チェックイン済みの人物"
+
+#: 
+msgid "Search by name or email..."
+msgstr "名前またはメールで検索..."
+
+#: 
+msgid "Access Denied"
+msgstr "アクセスが拒否されました"
+
+#: 
+msgid "Administrator privileges"
+msgstr "管理者権限"
+
+#: 
 msgid "Delete All Orphaned Files"
 msgstr "すべての孤立ファイルを削除"
 
@@ -6545,6 +6717,10 @@ msgid "Loading..."
 msgstr "読み込み中..."
 
 #: 
+msgid "Security Recommendation"
+msgstr "セキュリティに関する推奨事項"
+
+#: 
 msgid "Apr"
 msgstr "4月"
 
@@ -6559,6 +6735,14 @@ msgstr "12月"
 #: 
 msgid "Feb"
 msgstr "2月"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "税務報告書（寄付証明書）の作成"
+
+#: 
+msgid "Giving funds and categories"
+msgstr "献金基金およびカテゴリー"
 
 #: 
 msgid "ID"
@@ -6581,8 +6765,24 @@ msgid "M"
 msgstr "男"
 
 #: 
+msgid "Manage Users"
+msgstr "ユーザー管理"
+
+#: 
 msgid "Mar"
 msgstr "3月"
+
+#: 
+msgid "Membership Reports"
+msgstr "会員レポート"
+
+#: 
+msgid "New Payment"
+msgstr "新規支払い"
+
+#: 
+msgid "New Pledge"
+msgstr "新規献金約束（プレッジ）"
 
 #: 
 msgid "Nov"
@@ -6595,6 +6795,14 @@ msgstr "10月"
 #: 
 msgid "Sep"
 msgstr "9月"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "ChurchCRMへようこそ"
+
+#: 
+msgid "YTD Payments"
+msgstr "本年累計支払額"
 
 #: 
 msgid "yes"
