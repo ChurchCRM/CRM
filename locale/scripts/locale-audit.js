@@ -186,9 +186,9 @@ class LocaleAuditor {
                 wipCandidates,
                 summary: {
                     total: localeData.length,
-                    complete: localeData.filter(l => l.percentage >= 75).length,
-                    good: localeData.filter(l => l.percentage >= 51 && l.percentage < 75).length,
-                    needsWork: localeData.filter(l => l.percentage < 51).length,
+                    complete: localeData.filter(l => l.percentage >= 90).length,
+                    good: localeData.filter(l => l.percentage >= 75 && l.percentage < 90).length,
+                    needsWork: localeData.filter(l => l.percentage < 75).length,
                     wipCandidates: wipCandidates.length
                 }
             };
@@ -204,9 +204,9 @@ class LocaleAuditor {
     generateMarkdownReport(localeData, wipCandidates) {
         let markdown = `# ChurchCRM Locale Audit Report\n\n`;
         markdown += `**Total Supported Locales:** ${localeData.length}\n`;
-        markdown += `**Complete Locales (≥75%):** ${localeData.filter(l => l.percentage >= 75).length}\n`;
-        markdown += `**Good Locales (51-74%):** ${localeData.filter(l => l.percentage >= 51 && l.percentage < 75).length}\n`;
-        markdown += `**Needs Work (<51%):** ${localeData.filter(l => l.percentage < 51).length}\n`;
+        markdown += `**Complete Locales (≥90%):** ${localeData.filter(l => l.percentage >= 90).length}\n`;
+        markdown += `**Good Locales (75-89%):** ${localeData.filter(l => l.percentage >= 75 && l.percentage < 90).length}\n`;
+        markdown += `**Needs Work (<75%):** ${localeData.filter(l => l.percentage < 75).length}\n`;
         markdown += `**WIP Candidates (>5%, not yet added):** ${wipCandidates.length}\n\n`;
 
         // Single unified locale completeness table
@@ -230,30 +230,29 @@ class LocaleAuditor {
             let status;
             if (locale.code.startsWith('en')) {
                 status = 'N/A';
-            } else if (locale.percentage >= 75) {
+            } else if (locale.percentage >= 90) {
                 status = '🟢 Complete';
-            } else if (locale.percentage >= 51) {
+            } else if (locale.percentage >= 75) {
                 status = '🟡 Good';
             } else if (locale.percentage > 0) {
                 status = '🟠 Needs Work';
             } else {
                 status = '⚪ No translations';
             }
-            
             const isSupported = localeData.some(l => l.code === locale.code) ? '✅ Yes' : '❌ No';
             markdown += `| \`${locale.code}\` | ${locale.name} | ${locale.translations} | ${locale.percentage}% | ${status} | ${isSupported} |\n`;
         });
 
         // Status summary
-        const complete = localeData.filter(l => l.percentage >= 75);
-        const good = localeData.filter(l => l.percentage >= 51 && l.percentage < 75);
-        const needsWork = localeData.filter(l => l.percentage < 51 && !l.code.startsWith('en'));
-        const incomplete = localeData.filter(l => l.percentage < 51 && l.code.startsWith('en'));
+        const complete = localeData.filter(l => l.percentage >= 90);
+        const good = localeData.filter(l => l.percentage >= 75 && l.percentage < 90);
+        const needsWork = localeData.filter(l => l.percentage < 75 && !l.code.startsWith('en'));
+        const incomplete = localeData.filter(l => l.percentage < 75 && l.code.startsWith('en'));
 
         markdown += `\n## Status Summary\n\n`;
-        markdown += `- **🟢 Complete (≥75%):** ${complete.length} locales ready for production\n`;
-        markdown += `- **🟡 Good (51-74%):** ${good.length} locales with solid translation coverage\n`;
-        markdown += `- **🟠 Needs Work (<51%):** ${needsWork.length} locales requiring translator attention\n`;
+        markdown += `- **🟢 Complete (≥90%):** ${complete.length} locales ready for production\n`;
+        markdown += `- **🟡 Good (75-89%):** ${good.length} locales with solid translation coverage\n`;
+        markdown += `- **🟠 Needs Work (<75%):** ${needsWork.length} locales requiring translator attention\n`;
         markdown += `- **🔴 Incomplete:** ${needsWork.filter(l => l.percentage < 5).length} locales (requiring translator attention)\n`;
         markdown += `- **N/A:** ${incomplete.length} locales (English variants - English is the default language)\n`;
         
@@ -317,22 +316,22 @@ class LocaleAuditor {
         console.log('|--------|----------|--------------|------------|');
         
         localeData.forEach(locale => {
-            const status = locale.percentage >= 75 ? '🟢' : 
-                          locale.percentage >= 51 ? '🟡' : '🟠';
+            const status = locale.percentage >= 90 ? '🟢' : 
+                          locale.percentage >= 75 ? '🟡' : '🟠';
             console.log(`| ${locale.code} | ${locale.name} ${status} | ${locale.translations} | ${locale.percentage}% |`);
         });
 
         // Summary statistics
         const totalLocales = localeData.length;
-        const completeLocales = localeData.filter(l => l.percentage >= 75).length;
-        const goodLocales = localeData.filter(l => l.percentage >= 51 && l.percentage < 75).length;
-        const needsWorkLocales = localeData.filter(l => l.percentage < 51).length;
+        const completeLocales = localeData.filter(l => l.percentage >= 90).length;
+        const goodLocales = localeData.filter(l => l.percentage >= 75 && l.percentage < 90).length;
+        const needsWorkLocales = localeData.filter(l => l.percentage < 75).length;
         
         console.log('\n📈 **Summary:**');
         console.log(`- **Total supported locales:** ${totalLocales}`);
-        console.log(`- **Complete locales (≥75%):** ${completeLocales}`);
-        console.log(`- **Good locales (51-74%):** ${goodLocales}`);
-        console.log(`- **Needs work locales (<51%):** ${needsWorkLocales}`);
+        console.log(`- **Complete locales (≥90%):** ${completeLocales}`);
+        console.log(`- **Good locales (75-89%):** ${goodLocales}`);
+        console.log(`- **Needs work locales (<75%):** ${needsWorkLocales}`);
         console.log(`- **WIP candidates (>5%, not yet added):** ${wipCandidates.length}`);
 
         if (wipCandidates.length > 0) {

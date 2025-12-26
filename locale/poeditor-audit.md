@@ -1,9 +1,9 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥75%):** 35
-**Good Locales (51-74%):** 2
-**Needs Work (<51%):** 8
+**Complete Locales (≥90%):** 34
+**Good Locales (75-89%):** 1
+**Needs Work (<75%):** 10
 **WIP Candidates (>5%, not yet added):** 6
 
 ## Locale Completeness Overview
@@ -44,9 +44,9 @@
 | `ru` | Russian | 2726 | 99.74% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 2276 | 83.28% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 1646 | 60.23% | 🟡 Good | ✅ Yes |
-| `sq` | Albanian | 1600 | 58.54% | 🟡 Good | ✅ Yes |
+| `hi` | Hindi | 2276 | 83.28% | 🟡 Good | ✅ Yes |
+| `ja` | Japanese | 1646 | 60.23% | 🟠 Needs Work | ✅ Yes |
+| `sq` | Albanian | 1600 | 58.54% | 🟠 Needs Work | ✅ Yes |
 | `te` | Telugu | 689 | 25.21% | 🟠 Needs Work | ✅ Yes |
 | `sl` | Slovenian | 82 | 3% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 80 | 2.93% | 🟠 Needs Work | ❌ No |
@@ -64,9 +64,9 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥75%):** 35 locales ready for production
-- **🟡 Good (51-74%):** 2 locales with solid translation coverage
-- **🟠 Needs Work (<51%):** 2 locales requiring translator attention
+- **🟢 Complete (≥90%):** 34 locales ready for production
+- **🟡 Good (75-89%):** 1 locales with solid translation coverage
+- **🟠 Needs Work (<75%):** 4 locales requiring translator attention
 - **🔴 Incomplete:** 1 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
 
