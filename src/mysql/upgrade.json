@@ -452,12 +452,13 @@
             "6.5.1",
             "6.5.2",
             "6.5.3",
-            "6.5.4"
+            "6.5.4",
+            "6.6.0"
         ],
         "scripts": [
             "/mysql/upgrade/6.6.0.php",
             "/mysql/upgrade/6.6.0.sql"
         ],
-        "dbVersion": "6.6.0"
+        "dbVersion": "6.6.1"
     }
 }
