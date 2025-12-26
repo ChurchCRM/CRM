@@ -39,9 +39,9 @@
 | `vi` | Vietnamese | 2732 | 99.96% | 🟢 Complete | ✅ Yes |
 | `fi` | Finnish | 2728 | 99.82% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 2727 | 99.78% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 2726 | 99.74% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2725 | 99.71% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 2276 | 83.28% | 🟢 Complete | ✅ Yes |
