@@ -276,7 +276,6 @@ class AppIntegrityService
             curl_setopt($ch, CURLOPT_NOBODY, true);
 
             $result = curl_exec($ch);
-            curl_close($ch);
 
             $isEnabled = preg_match('/^CRM:\s*(.*)$/mi', $result, $matches) === 1;
 

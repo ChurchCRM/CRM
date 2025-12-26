@@ -81,7 +81,6 @@ class RestoreJob extends JobBase
         if (function_exists('finfo_open')) {
             $finfo = finfo_open(FILEINFO_MIME_TYPE);
             $mimeType = finfo_file($finfo, $tmpPath);
-            finfo_close($finfo);
             
             // Allow common backup file MIME types
             $allowedMimeTypes = ['application/gzip', 'application/x-gzip', 'text/plain', 'text/x-sql', 'application/sql', 'application/x-tar'];

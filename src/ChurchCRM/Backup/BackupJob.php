@@ -52,7 +52,6 @@ class BackupJob extends JobBase
             if (curl_error($ch)) {
                 $error_msg = curl_error($ch);
             }
-            curl_close($ch);
             fclose($fh);
 
             if (isset($error_msg)) {
