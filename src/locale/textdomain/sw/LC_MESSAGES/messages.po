@@ -9618,6 +9618,10 @@ msgid "Confirm Deletion"
 msgstr "Thibitisha Ufutaji"
 
 #: 
+msgid "Create a backup first"
+msgstr "Tengeneza nakala rudufu kwanza"
+
+#: 
 msgid "Create directory permission"
 msgstr "Ruhusa ya kuunda saraka"
 
