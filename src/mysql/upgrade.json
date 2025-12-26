@@ -446,18 +446,26 @@
         ],
         "dbVersion": "6.5.0"
     },
-    "current": {
+     "pre-6.6.0": {
         "versions": [
             "6.5.0",
             "6.5.1",
             "6.5.2",
             "6.5.3",
-            "6.5.4",
-            "6.6.0"
+            "6.5.4"
         ],
         "scripts": [
             "/mysql/upgrade/6.6.0.php",
             "/mysql/upgrade/6.6.0.sql"
+        ],
+        "dbVersion": "6.6.0"
+    },
+    "current": {
+        "versions": [
+            "6.6.0"
+        ],
+        "scripts": [
+            
         ],
         "dbVersion": "6.6.1"
     }
