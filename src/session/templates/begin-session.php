@@ -14,7 +14,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     <!-- /.login-logo -->
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
-            <a href="<?= SystemURLs::getRootPath() ?>" class="h1">Church<b>CRM</b></a>
+            <a href="<?= SystemURLs::getRootPath() ?>" class="h1"><img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-400.jpg" alt="ChurchCRM" class="mb-2" style="max-width:320px; height:auto;" /></a>
         </div>
         <div class="card-body">
             <p class="login-box-msg"> <b><?= ChurchMetaData::getChurchName() ?></b><br />
