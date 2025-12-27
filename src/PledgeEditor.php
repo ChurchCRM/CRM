@@ -42,6 +42,7 @@ $checkHash = [];
 // Get the list of funds
 $sSQL = 'SELECT fun_ID,fun_Name,fun_Active FROM donationfund_fun';
 $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
+$sSQL .= ' ORDER BY fun_Order';
 
 $rsFunds = RunQuery($sSQL);
 mysqli_data_seek($rsFunds, 0);
@@ -469,7 +470,7 @@ if ($PledgeOrPayment === 'Pledge') {
     $formTypeLabel = gettext('Pledge');
 } elseif ($iCurrentDeposit) {
     $dep_DateFormatted = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
-    $sPageTitle = '<i class="fa-solid fa-hand-holding-dollar text-primary mr-2"></i>' . gettext('New Payment') . ' - ' . $dep_Type . gettext(' Deposit #') . $iCurrentDeposit . " ($dep_DateFormatted)";
+    $sPageTitle = gettext('New Payment') . ' - ' . $dep_Type . gettext(' Deposit #') . $iCurrentDeposit . " ($dep_DateFormatted)";
     $cardHeaderClass = 'bg-primary';
     $cardHeaderTextClass = 'text-white';
     $formTypeLabel = gettext('Payment');
@@ -498,9 +499,9 @@ if ($PledgeOrPayment === 'Pledge') {
     }
 } else { // not a pledge and a current deposit hasn't been created yet
     if ($sGroupKey) {
-        $sPageTitle = '<i class="fa-solid fa-pen-to-square text-info mr-2"></i>' . gettext('Edit Payment');
+        $sPageTitle = gettext('Edit Payment');
     } else {
-        $sPageTitle = '<i class="fa-solid fa-hand-holding-dollar text-primary mr-2"></i>' . gettext('New Payment') . ' - ' . gettext('New Deposit Will Be Created');
+        $sPageTitle = gettext('New Payment') . ' - ' . gettext('New Deposit Will Be Created');
     }
     $cardHeaderClass = 'bg-primary';
     $cardHeaderTextClass = 'text-white';

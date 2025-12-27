@@ -684,7 +684,7 @@ class FinancialService
     {
         return DonationFundQuery::create()
             ->filterByActive('true')
-            ->orderByName()
+            ->orderByOrder()
             ->find();
     }
 

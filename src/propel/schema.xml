@@ -352,6 +352,7 @@
                 defaultValue="true"/>
         <column name="fun_Name" phpName="Name" type="VARCHAR" size="30"/>
         <column name="fun_Description" phpName="Description" type="VARCHAR" size="100"/>
+        <column name="fun_Order" phpName="Order" type="INTEGER" required="true" defaultValue="0"/>
         <unique name="fun_ID">
             <unique-column name="fun_ID"/>
         </unique>
