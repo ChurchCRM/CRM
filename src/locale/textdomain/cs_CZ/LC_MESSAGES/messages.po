@@ -9638,7 +9638,7 @@ msgstr "Smazat všechny soubory"
 
 #: 
 msgid "Delete All Orphaned Files"
-msgstr "Smazat všechny opuštěné soubory"
+msgstr "Smazat všechny osamocené soubory"
 
 #: 
 msgid "Delete records permission"
@@ -9750,7 +9750,7 @@ msgstr "Pokud nemáte nastaveno automatické zálohování, provádějte zálohu
 
 #: 
 msgid "Manage Orphaned Files"
-msgstr "Spravovat opuštěné soubory"
+msgstr "Spravovat osamocené soubory"
 
 #: 
 msgid "Menu options access"
@@ -9770,7 +9770,7 @@ msgstr "Více kopií"
 
 #: 
 msgid "No Orphaned Files Found"
-msgstr "Nenašly se žádné opuštěné soubory"
+msgstr "Nenašly se žádné osamocené soubory"
 
 #: 
 msgid "Notes access"
@@ -9778,11 +9778,11 @@ msgstr "Přístup k poznámkám"
 
 #: 
 msgid "Orphaned Files"
-msgstr "Opuštěné soubory"
+msgstr "Osamocené soubory"
 
 #: 
 msgid "Orphaned Files Management"
-msgstr "Správa opuštěných souborů"
+msgstr "Správa osamocených souborů"
 
 #: 
 msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
@@ -9854,7 +9854,7 @@ msgstr "Obnovení se nezdařilo. Zkontrolujte záložní soubor a zkuste to znov
 
 #: 
 msgid "Restore in progress, please wait..."
-msgstr "Obnovení probíhá, čekané..."
+msgstr "Obnovení probíhá, čekejte..."
 
 #: 
 msgid "Review the files below and delete them to improve security."
@@ -9862,11 +9862,11 @@ msgstr "Prohlédněte si níže uvedené soubory a odstraňte je, abyste zvýši
 
 #: 
 msgid "Security Recommendation"
-msgstr "Doporugení zabezpečení"
+msgstr "Doporučení zabezpečení"
 
 #: 
 msgid "Security Warning: Orphaned Files Detected"
-msgstr "Varování zabezpečení: Zjištěny opuštěné soubory"
+msgstr "Varování zabezpečení: Zjištěny osamocené soubory"
 
 #: 
 msgid "Select Backup File"
@@ -9934,7 +9934,7 @@ msgstr "Uživatel musí mít oprávnění Možnosti menu"
 
 #: 
 msgid "What are Orphaned Files?"
-msgstr "Co jsou opuštěné soubory?"
+msgstr "Co jsou osamocené soubory?"
 
 #: 
 msgid "You don't have access to this page"
@@ -10430,7 +10430,7 @@ msgstr "Organizační struktura"
 
 #: 
 msgid "Orphaned Files:"
-msgstr "Opuštěné soubory:"
+msgstr "Osamocené soubory:"
 
 #: 
 msgid "PDF/CSV"
