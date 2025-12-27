@@ -255,7 +255,6 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-cog'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', $isAdmin, 'fa-file-import'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', $isAdmin, 'fa-file-export'));
-        $menu->addSubMenu(new MenuItem(gettext('Property Types'), 'PropertyTypeList.php', $isAdmin, 'fa-th-list'));
         $menu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'KioskManager.php', $isAdmin, 'fa-desktop'));
         $menu->addSubMenu(new MenuItem(gettext('Custom Menus'), 'admin/system/menus', $isAdmin, 'fa-list-ul'));
         return $menu;
