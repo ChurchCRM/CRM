@@ -341,7 +341,7 @@ class GroupService
         $sSQL = 'UPDATE group_grp SET grp_hasSpecialProps = true
             WHERE grp_ID = ' . $groupID;
         Functions::runQuery($sSQL);
-        $sSQLp = 'CREATE TABLE groupprop_' . $groupID . " (
+        $sSQLp = 'CREATE TABLE IF NOT EXISTS groupprop_' . $groupID . " (
                         per_ID mediumint(8) unsigned NOT NULL default '0',
                         PRIMARY KEY  (per_ID),
                           UNIQUE KEY per_ID (per_ID)
@@ -403,6 +403,7 @@ class GroupService
                 $dbPerson = PersonQuery::create()->findPk($row['p2g2r_per_ID']);
 
                 if ($dbPerson instanceof Person) {
+                    $person['per_ID'] = $row['p2g2r_per_ID'];
                     $person['displayName'] = $dbPerson->getFullName();
                     $person['groupRole'] = $row['lst_OptionName'];
                     $members[] = $person;
