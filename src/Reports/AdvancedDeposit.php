@@ -100,17 +100,18 @@ $pledgeObjects = $financialService->getAdvancedDepositReportData(
 );
 
 // Convert Propel objects to array format for backward compatibility with existing PDF/CSV code
+// Using withColumn() fields (FamilyName, FamilyAddress1, etc.) added by PledgeQuery
 $rsReport = [];
 foreach ($pledgeObjects as $pledge) {
     $row = [
         'fam_ID' => $pledge['FamId'],
-        'fam_Name' => $pledge['Family']['Name'] ?? 'Unassigned',
-        'fam_Address1' => $pledge['Family']['Address1'] ?? '',
-        'fam_Address2' => $pledge['Family']['Address2'] ?? '',
-        'fam_City' => $pledge['Family']['City'] ?? '',
-        'fam_State' => $pledge['Family']['State'] ?? '',
-        'fam_Zip' => $pledge['Family']['Zip'] ?? '',
-        'fam_Country' => $pledge['Family']['Country'] ?? '',
+        'fam_Name' => $pledge['FamilyName'] ?? 'Unassigned',
+        'fam_Address1' => $pledge['FamilyAddress1'] ?? '',
+        'fam_Address2' => $pledge['FamilyAddress2'] ?? '',
+        'fam_City' => $pledge['FamilyCity'] ?? '',
+        'fam_State' => $pledge['FamilyState'] ?? '',
+        'fam_Zip' => $pledge['FamilyZip'] ?? '',
+        'fam_Country' => $pledge['FamilyCountry'] ?? '',
         'plg_date' => $pledge['Date'],
         'plg_amount' => $pledge['Amount'],
         'plg_method' => $pledge['Method'],
@@ -118,8 +119,8 @@ foreach ($pledgeObjects as $pledge) {
         'plg_depID' => $pledge['DepId'],
         'plg_CheckNo' => $pledge['CheckNo'] ?? '',
         'fun_ID' => $pledge['FundId'],
-        'fun_Name' => $pledge['DonationFund']['Name'] ?? 'Undesignated',
-        'dep_Date' => $pledge['Deposit']['Date'] ?? '',
+        'fun_Name' => $pledge['FundName'] ?? 'Undesignated',
+        'dep_Date' => $pledge['DepositDate'] ?? '',
     ];
     $rsReport[] = $row;
 }
