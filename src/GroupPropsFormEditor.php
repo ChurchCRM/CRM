@@ -376,7 +376,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 } ?>
                             </td>
                             <td>
-                                <textarea name="<?= $row ?>desc" class="form-control form-control-sm" rows="1" maxlength="60"><?= InputUtils::escapeAttribute($aDescFields[$row]) ?></textarea>
+                                <textarea name="<?= $row ?>desc" class="form-control form-control-sm" rows="1" maxlength="60"><?= InputUtils::escapeHTML($aDescFields[$row]) ?></textarea>
                             </td>
                             <td>
                                 <?php
