@@ -16,5 +16,6 @@
     "sChurchEmail": "demo@churchcrm.io",
     "sTaxSigner": "Elder Joe Smith",
     "sReminderSigner": "Elder Joe Smith",
-    "sConfirmSigner": "Elder Joe Smith"
+    "sConfirmSigner": "Elder Joe Smith",
+    "bEnabledMenuLinks": "1"
 }

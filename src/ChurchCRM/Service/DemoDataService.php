@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\MenuLink;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
@@ -58,6 +59,9 @@ class DemoDataService
 
             // Load demo system configuration (if present) before importing data
             $this->importSystemConfig($includeSundaySchool, $includeFinancial);
+
+            // Import menu links if enabled in config
+            $this->importMenuLinks();
 
             $emailMap = $this->importCongregation();
 
@@ -680,5 +684,54 @@ class DemoDataService
             $this->importResult['errors'][] = "JSON parse error in file {$filename}: {$e->getMessage()}";
             return null;
         }
+    }
+
+    /**
+     * Import menu links from menu.json if bEnabledMenuLinks is set
+     */
+    private function importMenuLinks(): void
+    {
+        // Check if menu links are enabled
+        if (!SystemConfig::getBooleanValue('bEnabledMenuLinks')) {
+            $this->logger->info('Menu links import skipped: bEnabledMenuLinks disabled');
+            return;
+        }
+
+        $data = $this->loadJsonFile('menu.json');
+        if (!$data) {
+            $this->logger->warning('Menu links import skipped: menu.json missing or invalid', ['file' => 'menu.json']);
+            return;
+        }
+
+        if (!is_array($data)) {
+            $this->logger->warning('Menu links data is not an array', ['type' => gettype($data)]);
+            return;
+        }
+
+        $order = 0;
+        foreach ($data as $linkData) {
+            try {
+                // Validate required fields
+                if (empty($linkData['name']) || empty($linkData['url'])) {
+                    $this->addWarning('Menu link missing name or url', ['linkData' => $linkData]);
+                    continue;
+                }
+
+                // Create menu link with order
+                $menuLink = new MenuLink();
+                $menuLink
+                    ->setName($linkData['name'])
+                    ->setUri($linkData['url'])
+                    ->setOrder($order++);
+                $menuLink->save();
+
+                $this->logger->debug('Menu link imported', ['name' => $linkData['name'], 'url' => $linkData['url']]);
+            } catch (Exception $e) {
+                $this->addWarning("Failed to import menu link: {$e->getMessage()}", ['linkData' => $linkData]);
+                $this->logger->error('Failed to import menu link', ['linkData' => $linkData, 'error' => $e->getMessage()]);
+            }
+        }
+
+        $this->logger->info('Menu links import complete', ['count' => $order]);
     }
 }

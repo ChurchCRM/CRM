@@ -323,6 +323,7 @@
         window.CRM.AdminAPIRequest({
             path: "demo/load",
             method: "POST",
+            suppressErrorDialog: true,  // Don't show automatic error dialog - we'll handle it in .fail()
             data: JSON.stringify({
                 includeFinancial: includeFinancial,
                 includeEvents: includeEvents,

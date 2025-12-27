@@ -25,6 +25,14 @@ CREATE TABLE `config_cfg` (
   UNIQUE KEY `cfg_name` (`cfg_name`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
+--
+-- Dumping data for table `config_cfg`
+--
+
+-- Enable menu links feature by default - allows churches to add custom links to the left menu navigation
+INSERT INTO `config_cfg` (`cfg_id`, `cfg_name`, `cfg_value`) VALUES
+  (2050, 'bEnabledMenuLinks', '1');
+
 -- `src/mysql/upgrade/6.2.0.sql` to delete the deprecated config row.
 
 --
@@ -1180,5 +1188,12 @@ CREATE TABLE `menu_links` (
   `linkOrder` INT NOT NULL,
   PRIMARY KEY (`linkId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `menu_links`
+--
+
+INSERT INTO `menu_links` (`linkName`, `linkUri`, `linkOrder`) VALUES
+  ('Register Now', 'https://forms.gle/F1xgoBaWUD1Fy7Bn9', 1);
 
 update version_ver set ver_update_end = now();
