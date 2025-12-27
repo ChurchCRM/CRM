@@ -229,11 +229,16 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     });
 
     $group->post('/{groupID:[0-9]+}/roles', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $roleName = $request->getParsedBody()['roleName'];
-        $groupService = new GroupService();
+        try {
+            $groupID = $args['groupID'];
+            $roleName = $request->getParsedBody()['roleName'];
+            $groupService = new GroupService();
 
-        return SlimUtils::renderJSON($response, $groupService->addGroupRole($groupID, $roleName));
+            return SlimUtils::renderJSON($response, $groupService->addGroupRole($groupID, $roleName));
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to add role. Please try again.'), [], $status, $e, $request);
+        }
     });
 
     $group->post('/{groupID:[0-9]+}/defaultRole', function (Request $request, Response $response, array $args): Response {
@@ -246,16 +251,21 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     });
 
     $group->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $input = $request->getParsedBody();
-        $groupService = new GroupService();
+        try {
+            $groupID = $args['groupID'];
+            $input = $request->getParsedBody();
+            $groupService = new GroupService();
 
-        if ($input['GroupSpecificPropertyStatus']) {
-            $groupService->enableGroupSpecificProperties($groupID);
-            return SlimUtils::renderJSON($response, ['status' => 'group specific properties enabled']);
-        } else {
-            $groupService->disableGroupSpecificProperties($groupID);
-            return SlimUtils::renderJSON($response, ['status' => 'group specific properties disabled']);
+            if ($input['GroupSpecificPropertyStatus']) {
+                $groupService->enableGroupSpecificProperties($groupID);
+                return SlimUtils::renderJSON($response, ['status' => 'group specific properties enabled']);
+            } else {
+                $groupService->disableGroupSpecificProperties($groupID);
+                return SlimUtils::renderJSON($response, ['status' => 'group specific properties disabled']);
+            }
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to update properties. Please try again.'), [], $status, $e, $request);
         }
     });
 
