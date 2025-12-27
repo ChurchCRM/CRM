@@ -76,8 +76,8 @@ class AdminService
             ];
         }
 
-        // Secrets configuration check
-        if (!KeyManager::getAreAllSecretsDefined()) {
+        // Secrets configuration check - only show if 2FA is enabled
+        if (SystemConfig::getBooleanValue('bEnable2FA') && !KeyManager::getAreAllSecretsDefined()) {
             $warnings[] = [
                 'title' => gettext('Missing Secret Keys'),
                 'desc' => gettext('Secret keys missing from Config.php'),
