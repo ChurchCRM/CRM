@@ -304,7 +304,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         <input type="text" id="newFieldDesc" class="form-control" name="newFieldDesc" maxlength="60">
                     </div>
                     <div class="col-md-1 d-flex align-items-end">
-                        <button type="submit" class="btn btn-success w-100" name="AddField">
+                        <button type="submit" class="btn btn-success btn-block" name="AddField">
                             <i class="fa-solid fa-plus"></i>
                             <?= gettext('Add') ?>
                         </button>
