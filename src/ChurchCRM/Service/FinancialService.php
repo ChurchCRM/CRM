@@ -489,8 +489,8 @@ class FinancialService
             $query->filterByDepId($depositId);
         }
 
-        // Get results and convert to array WITHOUT foreign objects to avoid circular references
-        // The Pledge::toArray() method handles adding FamilyString when $includeForeignObjects is false
+        // Get results and convert to array WITHOUT foreign objects
+        // Using withColumn() in the query provides Family and Fund names directly
         $collection = $query->find();
         $results = [];
         foreach ($collection as $pledge) {
