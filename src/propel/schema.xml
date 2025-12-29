@@ -429,13 +429,10 @@
         </vendor>
     </table>
     <table name="eventcountnames_evctnm" idMethod="native" phpName="EventCountName">
-        <column name="evctnm_countid" phpName="Id" type="INTEGER" size="5" autoIncrement="true" required="true"/>
+        <column name="evctnm_countid" phpName="Id" type="INTEGER" size="5" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="evctnm_eventtypeid" phpName="TypeId" type="SMALLINT" size="5" required="true" defaultValue="0"/>
         <column name="evctnm_countname" phpName="Name" type="VARCHAR" size="20" required="true" defaultValue=""/>
         <column name="evctnm_notes" phpName="Notes" type="VARCHAR" size="20" required="true" defaultValue=""/>
-        <unique name="evctnm_countid">
-            <unique-column name="evctnm_countid"/>
-        </unique>
         <unique name="evctnm_eventtypeid">
             <unique-column name="evctnm_eventtypeid"/>
             <unique-column name="evctnm_countname"/>

@@ -123,12 +123,10 @@ CREATE TABLE `eventcountnames_evctnm` (
 --
 
 INSERT INTO `eventcountnames_evctnm` (`evctnm_countid`, `evctnm_eventtypeid`, `evctnm_countname`, `evctnm_notes`) VALUES
-  (1, 1, 'Total', ''),
-  (2, 1, 'Members', ''),
-  (3, 1, 'Visitors', ''),
-  (4, 2, 'Total', ''),
-  (5, 2, 'Members', ''),
-  (6, 2, 'Visitors', '');
+  (1, 1, 'Members', ''),
+  (2, 1, 'Visitors', ''),
+  (3, 2, 'Members', ''),
+  (4, 2, 'Visitors', '');
 
 -- --------------------------------------------------------
 

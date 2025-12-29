@@ -95,7 +95,15 @@ for ($row = 1; $row <= $numRows; $row++) {
 
     $aTypeID[$row] = $type_id;
     $aTypeName[$row] = $type_name;
-    $aDefStartTime[$row] = $type_defstarttime;
+    
+    // Convert 24-hour time to 12-hour AM/PM format for display
+    if ($type_defstarttime) {
+        $dateTime = \DateTime::createFromFormat('H:i:s', $type_defstarttime);
+        $aDefStartTime[$row] = $dateTime ? $dateTime->format('g:i A') : $type_defstarttime;
+    } else {
+        $aDefStartTime[$row] = '';
+    }
+    
     $aDefRecurDOW[$row] = $type_defrecurDOW;
     $aDefRecurDOM[$row] = $type_defrecurDOM;
     $aDefRecurDOY[$row] = $type_defrecurDOY;

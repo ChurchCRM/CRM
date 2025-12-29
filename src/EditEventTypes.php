@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventCountName;
@@ -57,6 +58,13 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $editing = 'FALSE';
             $eTime = $_POST['newEvtStartTime'];
             $theID = $_POST['EN_tyid'];
+            
+            // Convert time from 12-hour format (h:mm A) to 24-hour format (HH:mm:ss)
+            $dateTime = \DateTime::createFromFormat('h:i A', $eTime);
+            if ($dateTime) {
+                $eTime = $dateTime->format('H:i:s');
+            }
+            
             $eventType = EventTypeQuery::create()->findOneById(InputUtils::legacyFilterInput($theID));
             $eventType->setDefStartTime(InputUtils::legacyFilterInput($eTime));
             $eventType->save();
@@ -77,14 +85,16 @@ if ($eventType) {
   $aDefRecurDOY = $eventType->getDefRecurDoy();
   $aDefRecurType = $eventType->getDefRecurType();
   if ($aDefStartTime) {
-    // Convert DateTime to string format if necessary
+    // Convert DateTime to 12-hour format for display (h:mm A)
     $timeString = is_object($aDefStartTime) ? $aDefStartTime->format('H:i:s') : $aDefStartTime;
-    $aStartTimeTokens = explode(':', $timeString);
-    $aEventStartHour = $aStartTimeTokens[0];
-    $aEventStartMins = $aStartTimeTokens[1];
+    $dateTime = \DateTime::createFromFormat('H:i:s', $timeString);
+    $aEventStartTime = $dateTime ? $dateTime->format('g:i A') : '9:00 AM';
+  } else {
+    $aEventStartTime = '9:00 AM';
   }
 } else {
   $aTypeID = $aTypeName = $aDefStartTime = $aDefRecurDOW = $aDefRecurDOM = $aDefRecurDOY = $aDefRecurType = null;
+  $aEventStartTime = '9:00 AM';
 }
 switch ($aDefRecurType) {
     case 'none':
@@ -125,7 +135,6 @@ if ($numCounts) {
 
   <form method="POST" action="EditEventTypes.php" name="EventTypeEditForm">
   <input type="hidden" name="EN_tyid" value="<?= $aTypeID ?>">
-  <input type="hidden" name="EN_ctid" value="<?= $cCountID[$c] ?>">
 
 <table class='table'>
   <tr>
@@ -147,10 +156,30 @@ if ($numCounts) {
       <?= $recur ?>
     </td>
     <td class="TextColumn" width="50%">
-      <select class='form-control' name="newEvtStartTime" size="1" onchange="javascript:$('#newEvtStartTimeSubmit').click()">
-        <?php createTimeDropdown(7, 18, 15, $aEventStartHour, $aEventStartMins); ?>
-      </select>
-      <button class='hidden' type="submit" name="Action" value="TIME" id="newEvtStartTimeSubmit"></button>
+      <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
+        <select class="form-control" id="EventHour" name="EventHour" style="width: 70px;">
+          <?php
+          for ($h = 1; $h <= 12; $h++) {
+              echo '<option value="' . $h . '">' . $h . '</option>';
+          }
+          ?>
+        </select>
+        <span>:</span>
+        <select class="form-control" id="EventMinute" name="EventMinute" style="width: 70px;">
+          <?php
+          for ($m = 0; $m < 60; $m += 15) {
+              $min = str_pad($m, 2, '0', STR_PAD_LEFT);
+              echo '<option value="' . $min . '">' . $min . '</option>';
+          }
+          ?>
+        </select>
+        <select class="form-control" id="EventPeriod" name="EventPeriod" style="width: 70px;">
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+      </div>
+      <input type="hidden" name="newEvtStartTime" id="newEvtStartTime" value="<?= $aEventStartTime ?>">
+      <input type="hidden" name="Action" value="TIME">
     </td>
   </tr>
 
@@ -189,6 +218,38 @@ if ($numCounts) {
 </table>
 </form>
 </div>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function() {
+    // Parse the current time value
+    var currentTime = '<?= $aEventStartTime ?>';
+    var timePattern = /^(\d{1,2}):(\d{2})\s?(AM|PM)$/i;
+    var match = currentTime.match(timePattern);
+    
+    if (match) {
+        $('#EventHour').val(parseInt(match[1]));
+        $('#EventMinute').val(match[2]);
+        $('#EventPeriod').val(match[3].toUpperCase());
+    }
+    
+    // Update hidden field and submit on change
+    function updateTimeAndSubmit() {
+        var hour = $('#EventHour').val();
+        var minute = $('#EventMinute').val();
+        var period = $('#EventPeriod').val();
+        var timeString = hour + ':' + minute + ' ' + period;
+        
+        $('#newEvtStartTime').val(timeString);
+        
+        // Only submit if the time actually changed
+        if (timeString !== currentTime) {
+            $('form[name="EventTypeEditForm"]').submit();
+        }
+    }
+    
+    $('#EventHour, #EventMinute, #EventPeriod').on('change', updateTimeAndSubmit);
+});
+</script>
 
 <div>
   <a href="EventNames.php" class='btn btn-secondary'>
