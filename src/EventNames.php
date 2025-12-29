@@ -22,9 +22,9 @@ if (isset($_POST['Action'])) {
             $eName = $_POST['newEvtName'];
             $eTime = $_POST['newEvtStartTime'];
             
-            // Convert time from 12-hour format (h:mm A) to 24-hour format (HH:mm:ss)
+            // Convert time from 12-hour format (g:mm A) to 24-hour format (HH:mm:ss)
             if (!empty($eTime)) {
-                $dateTime = \DateTime::createFromFormat('h:i A', $eTime);
+                $dateTime = \DateTime::createFromFormat('g:i A', $eTime);
                 if ($dateTime) {
                     $eTime = $dateTime->format('H:i:s');
                 }

@@ -59,8 +59,8 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $eTime = $_POST['newEvtStartTime'];
             $theID = $_POST['EN_tyid'];
             
-            // Convert time from 12-hour format (h:mm A) to 24-hour format (HH:mm:ss)
-            $dateTime = \DateTime::createFromFormat('h:i A', $eTime);
+            // Convert time from 12-hour format (g:mm A) to 24-hour format (HH:mm:ss)
+            $dateTime = \DateTime::createFromFormat('g:i A', $eTime);
             if ($dateTime) {
                 $eTime = $dateTime->format('H:i:s');
             }
@@ -141,7 +141,7 @@ if ($numCounts) {
         <label for="newEvtName" class="font-weight-bold"><?= gettext('Event Type Name') ?></label>
         <div class="row">
           <div class="col-md-8">
-            <input type="text" class="form-control" name="newEvtName" id="newEvtName" value="<?= $aTypeName ?>" maxlength="35" autofocus />
+            <input type="text" class="form-control" name="newEvtName" id="newEvtName" value="<?= InputUtils::escapeAttribute($aTypeName) ?>" maxlength="35" autofocus />
           </div>
           <div class="col-md-4">
             <button type="submit" name="Action" value="NAME" class="btn btn-primary">

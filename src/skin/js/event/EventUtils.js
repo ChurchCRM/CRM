@@ -44,7 +44,7 @@ window.CRM.EventUtils.populateTimeDropdown = function(selectId, defaultHour = 9,
  * @param {string} periodSelectId - ID of period (AM/PM) select element
  */
 window.CRM.EventUtils.initializeTimePicker = function(timeString, hourSelectId, minuteSelectId, periodSelectId) {
-    const timePattern = /^(\d{1,2}):(\d{2})\s?(AM|PM)$/i;
+    const timePattern = /^(\d{1,2}):(\d{2}) (AM|PM)$/i;
     const match = timeString.match(timePattern);
     
     if (match) {
