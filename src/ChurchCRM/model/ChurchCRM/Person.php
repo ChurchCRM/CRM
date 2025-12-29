@@ -31,7 +31,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getFullName(): string
     {
-        return $this->getFormattedName(SystemConfig::getValue('iPersonNameStyle'));
+        return $this->getFormattedName(SystemConfig::getIntValue('iPersonNameStyle'));
     }
 
     public function isMale(): bool

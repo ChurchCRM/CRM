@@ -259,7 +259,7 @@ for ($i = 0; $i < $nGrps; $i++) {
     $pdf->writeAt($phoneX - 7, $y + 5, FormatDate(date('Y-m-d')));
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('ClassList' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

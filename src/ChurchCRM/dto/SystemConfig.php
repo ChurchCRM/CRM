@@ -389,6 +389,15 @@ class   SystemConfig
         return self::$configs[$name]->getBooleanValue();
     }
 
+    public static function getIntValue(string $name): int
+    {
+        if (!isset(self::$configs[$name])) {
+            throw new \Exception(gettext('An invalid configuration name has been requested') . ': ' . $name);
+        }
+
+        return (int) self::$configs[$name]->getValue();
+    }
+
     public static function setValue(string $name, $value): void
     {
         if (!isset(self::$configs[$name])) {

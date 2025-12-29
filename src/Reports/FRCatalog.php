@@ -104,7 +104,7 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
     $pdf->Write(6, "\n");
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('FRCatalog' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

@@ -139,7 +139,7 @@ if ($output === 'pdf') {
         $pdf->finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     }
 
-    if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+    if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
         $pdf->Output('ZeroGivers' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {
         $pdf->Output();

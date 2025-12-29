@@ -420,7 +420,7 @@ if ($output === 'pdf') {
         );
     }
 
-    if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+    if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
         $pdf->Output('TaxReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {
         $pdf->Output();

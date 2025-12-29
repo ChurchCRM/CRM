@@ -49,7 +49,7 @@ foreach ($families as $family) {
     $pdf->addPdfLabel($labelText);
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('ConfirmDataLabels' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

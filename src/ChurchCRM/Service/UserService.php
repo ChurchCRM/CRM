@@ -29,7 +29,7 @@ class UserService
             ->select(['failedLogins', 'twoFactorAuthSecret'])
             ->find();
         
-        $maxFailedLogins = SystemConfig::getValue('iMaxFailedLogins');
+        $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
         $totalUsers = $users->count();
         $activeUsers = 0;
         $lockedUsers = 0;
@@ -73,7 +73,7 @@ class UserService
      */
     public function isUserLocked(User $user): bool
     {
-        $maxFailedLogins = SystemConfig::getValue('iMaxFailedLogins');
+        $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
         return $maxFailedLogins > 0 && $user->getFailedLogins() >= $maxFailedLogins;
     }
 
@@ -83,7 +83,7 @@ class UserService
      */
     public function getLockedUsers()
     {
-        $maxFailedLogins = SystemConfig::getValue('iMaxFailedLogins');
+        $maxFailedLogins = SystemConfig::getIntValue('iMaxFailedLogins');
         return UserQuery::create()
             ->filterByFailedLogins(['min' => $maxFailedLogins])
             ->find();

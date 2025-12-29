@@ -258,7 +258,7 @@ if ($output === 'pdf') {
         $curY += SystemConfig::getValue('incrementY');
     }
 
-    if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+    if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
         $pdf->Output('PledgeSummaryReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {
         $pdf->Output();
