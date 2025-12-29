@@ -28,6 +28,7 @@ $sDeleteError = '';
 $bErrorFlag = false;
 $aNameErrors = [];
 $bNewNameError = false;
+$bDuplicateNameError = false;
 
 if ($sAction = 'delete' && strlen($sFund) > 0) {
     DonationFundQuery::create()
@@ -79,9 +80,16 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 if ($checkExisting !== null) {
                     $bDuplicateNameError = true;
                 } else {
+                    // Get the next available order number
+                    $maxOrderFund = DonationFundQuery::create()
+                        ->orderByOrder('desc')
+                        ->findOne();
+                    $nextOrder = $maxOrderFund !== null ? $maxOrderFund->getOrder() + 1 : 1;
+                    
                     $donation = new DonationFund();
                     $donation->setName($newFieldName);
                     $donation->setDescription($newFieldDesc);
+                    $donation->setOrder($nextOrder);
                     $donation->save();
                     $donationFunds = DonationFundQuery::create()
                         ->orderByOrder()
@@ -229,7 +237,6 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 </tr>
                             </thead>
                             <tbody>
-                            <tbody>
                                 <?php
                                 for ($row = 0; $row < $donationFunds->count(); $row++) {
                                     ?>
@@ -268,7 +275,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                                 <?= gettext('Delete') ?>
                                             </button>
                                             <?php
-                                            if ($row != 0) {
+                                            if ($row !== 0) {
                                                 echo '<a href="DonationFundRowOps.php?FundID=' . $aIDFields[$row] . '&Action=up" class="btn btn-sm btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
                                             }
                                             if ($row < $donationFunds->count() - 1) {

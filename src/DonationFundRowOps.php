@@ -18,7 +18,6 @@ if ($action === 'delete') {
     // Delete the fund
     $fund = DonationFundQuery::create()->findOneById($fundId);
     if ($fund !== null) {
-        $deletedOrder = $fund->getOrder();
         $fund->delete();
         
         // Renumber the remaining funds
