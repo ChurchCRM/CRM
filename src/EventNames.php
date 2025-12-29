@@ -21,18 +21,21 @@ if (isset($_POST['Action'])) {
         case 'CREATE':
             $eName = $_POST['newEvtName'];
             $eTime = $_POST['newEvtStartTime'];
+            
+            // Convert time from 12-hour format (h:mm A) to 24-hour format (HH:mm:ss)
+            if (!empty($eTime)) {
+                $dateTime = \DateTime::createFromFormat('h:i A', $eTime);
+                if ($dateTime) {
+                    $eTime = $dateTime->format('H:i:s');
+                }
+            }
+            
             $eDOM = $_POST['newEvtRecurDOM'];
             $eDOW = $_POST['newEvtRecurDOW'];
             $eDOY = $_POST['newEvtRecurDOY'];
             $eRecur = $_POST['newEvtTypeRecur'];
             $eCntLst = $_POST['newEvtTypeCntLst'];
             $eCntArray = array_filter(array_map('trim', explode(',', $eCntLst)));
-            // Normally, the order should not matter. The problem arises if the
-            // subscript already exists among others. Here, keeping it at the
-            // head of the array would be needed in some (or most) PHP versions
-            // especially if it is used in loops that take a total value without
-            // being part of the rest of the array.
-            array_unshift($eCntArray, 'Total');
             $eCntNum = count($eCntArray);
             $theID = $_POST['theID'];
 
@@ -166,9 +169,31 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
           <div class="col-md-6">
             <div class="form-group">
               <label for="newEvtStartTime" class="font-weight-bold"><?= gettext('Default Start Time') ?></label>
-              <select class="form-control" name="newEvtStartTime" id="newEvtStartTime">
-                <?php createTimeDropdown(7, 22, 15, '', ''); ?>
-              </select>
+              <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
+                <select class="form-control" id="newEvtHour" name="newEvtHour" style="width: 70px;">
+                  <?php
+                  for ($h = 1; $h <= 12; $h++) {
+                      $selected = ($h == 9) ? 'selected' : '';
+                      echo '<option value="' . $h . '" ' . $selected . '>' . $h . '</option>';
+                  }
+                  ?>
+                </select>
+                <span>:</span>
+                <select class="form-control" id="newEvtMinute" name="newEvtMinute" style="width: 70px;">
+                  <?php
+                  for ($m = 0; $m < 60; $m += 15) {
+                      $min = str_pad($m, 2, '0', STR_PAD_LEFT);
+                      $selected = ($m == 0) ? 'selected' : '';
+                      echo '<option value="' . $min . '" ' . $selected . '>' . $min . '</option>';
+                  }
+                  ?>
+                </select>
+                <select class="form-control" id="newEvtPeriod" name="newEvtPeriod" style="width: 70px;">
+                  <option value="AM" selected>AM</option>
+                  <option value="PM">PM</option>
+                </select>
+              </div>
+              <input type="hidden" name="newEvtStartTime" id="newEvtStartTime" value="9:00 AM">
             </div>
           </div>
         </div>
@@ -215,7 +240,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
           <label for="newEvtTypeCntLst" class="font-weight-bold"><?= gettext('Attendance Count Categories') ?></label>
           <input class="form-control" type="text" name="newEvtTypeCntLst" id="newEvtTypeCntLst" value="" maxlength="50" placeholder="<?= gettext('Members, Visitors, Children') ?>">
           <small class="form-text text-muted">
-            <?= gettext('Enter comma-separated count categories. "Total" is automatically included.') ?>
+            <?= gettext('Enter comma-separated count categories (e.g., Members, Visitors, Children).') ?>
           </small>
         </div>
 
@@ -262,7 +287,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             <th><?= gettext('Recurrence') ?></th>
             <th><?= gettext('Start Time') ?></th>
             <th><?= gettext('Attendance Counts') ?></th>
-            <th style="width: 200px;"><?= gettext('Actions') ?></th>
+            <th class="text-nowrap"><?= gettext('Actions') ?></th>
           </tr>
         </thead>
         <tbody>
@@ -280,7 +305,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                   <span class="text-muted">—</span>
                 <?php endif; ?>
               </td>
-              <td>
+              <td class="text-nowrap">
                 <form name="CreateEvent" action="EventEditor.php" method="POST" class="d-inline">
                   <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
                   <button type="submit" name="Action" value="<?= gettext('Create Event') ?>" class="btn btn-success btn-sm" title="<?= gettext('Create Event') ?>">
@@ -320,22 +345,28 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
 }
 ?>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/event/EventUtils.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
   $(document).ready(function () {
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);
 
+    // Update hidden time field before form submission
+    $('form[name="UpdateEventNames"]').on('submit', function() {
+      const hour = $('#newEvtHour').val();
+      const minute = $('#newEvtMinute').val();
+      const period = $('#newEvtPeriod').val();
+      if (hour && minute && period) {
+        $('#newEvtStartTime').val(window.CRM.EventUtils.formatTime12Hour(hour, minute, period));
+      }
+    });
+
     // Event recurrence pattern form handling
     $(".event-recurrence-patterns input[type=radio]").change(function () {
-        let $el = $(this);
-        let $container = $el.closest(".row");
-        let $input = $container
-            .find("select, input[type=text]")
-            .prop({ disabled: false });
-        $container
-            .parent()
-            .find("select, input[type=text]")
-            .not($input)
-            .prop({ disabled: true });
+        // Disable all recurrence inputs first
+        $(".event-recurrence-patterns select, .event-recurrence-patterns input[type=text]").prop("disabled", true);
+        
+        // Enable only the input in the same form-check div as the selected radio
+        $(this).closest(".form-check").find("select, input[type=text]").prop("disabled", false);
     });
   });
 </script>

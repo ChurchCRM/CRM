@@ -1121,62 +1121,6 @@ function FontFromName(string $fontname)
     }
 }
 
-// Added for AddEvent.php
-function createTimeDropdown($start, $stop, $mininc, $hoursel, $minsel): void
-{
-    for ($hour = $start; $hour <= $stop; $hour++) {
-        if ($hour == '0') {
-            $disphour = '12';
-            $ampm = 'AM';
-        } elseif ($hour == '12') {
-            $disphour = '12';
-            $ampm = 'PM';
-        } elseif ($hour >= '13' && $hour <= '21') {
-            $test = $hour - 12;
-            $disphour = ' ' . $test;
-            $ampm = 'PM';
-        } elseif ($hour >= '22' && $hour <= '23') {
-            $disphour = $hour - 12;
-            $ampm = 'PM';
-        } else {
-            $disphour = $hour;
-            $ampm = 'AM';
-        }
-
-        for ($min = 0; $min <= 59; $min += $mininc) {
-            if ($hour >= '1' && $hour <= '9') {
-                if ($min >= '0' && $min <= '9') {
-                    if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="0' . $hour . ':0' . $min . ':00" selected> ' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
-                    } else {
-                        echo '<option value="0' . $hour . ':0' . $min . ':00"> ' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
-                    }
-                } else {
-                    if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="0' . $hour . ':' . $min . ':00" selected> ' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
-                    } else {
-                        echo '<option value="0' . $hour . ':' . $min . ':00"> ' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
-                    }
-                }
-            } else {
-                if ($min >= '0' && $min <= '9') {
-                    if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="' . $hour . ':0' . $min . ':00" selected>' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
-                    } else {
-                        echo '<option value="' . $hour . ':0' . $min . ':00">' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
-                    }
-                } else {
-                    if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="' . $hour . ':' . $min . ':00" selected>' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
-                    } else {
-                        echo '<option value="' . $hour . ':' . $min . ':00">' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
-                    }
-                }
-            }
-        }
-    }
-}
-
 // Figure out the class ID for "Member", should be one (1) unless they have been playing with the
 // classification manager.
 function FindMemberClassID()

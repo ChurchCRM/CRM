@@ -128,133 +128,138 @@ if ($numCounts) {
 
 // Construct the form
 ?>
-<div class='card'>
+<div class='card card-primary'>
   <div class='card-header'>
-    <h3 class='card-title'><?= gettext('Edit Event Type') ?></h3>
+    <h3 class='card-title mb-0'><i class="fas fa-edit mr-2"></i><?= gettext('Edit Event Type') ?></h3>
   </div>
 
-  <form method="POST" action="EditEventTypes.php" name="EventTypeEditForm">
-  <input type="hidden" name="EN_tyid" value="<?= $aTypeID ?>">
+  <div class='card-body'>
+    <form method="POST" action="EditEventTypes.php" name="EventTypeEditForm">
+      <input type="hidden" name="EN_tyid" value="<?= $aTypeID ?>">
 
-<table class='table'>
-  <tr>
-    <td class="LabelColumn" width="15%">
-      <strong><?= gettext('Event Type') . ':' . $aTypeID ?></strong>
-    </td>
-    <td class="TextColumn" width="35%">
-      <input type="text" class="form-control" name="newEvtName" value="<?= $aTypeName ?>" size="30" maxlength="35" autofocus />
-    </td>
-    <td class="TextColumn" width="50%">
-      <button type="submit" Name="Action" value="NAME" class="btn btn-secondary"><?= gettext('Save Name') ?></button>
-    </td>
-  </tr>
-  <tr>
-    <td class="LabelColumn" width="15%">
-      <strong><?= gettext('Recurrence Pattern') ?></strong>
-    </td>
-    <td class="TextColumn" width="35%">
-      <?= $recur ?>
-    </td>
-    <td class="TextColumn" width="50%">
-      <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
-        <select class="form-control" id="EventHour" name="EventHour" style="width: 70px;">
-          <?php
-          for ($h = 1; $h <= 12; $h++) {
-              echo '<option value="' . $h . '">' . $h . '</option>';
-          }
-          ?>
-        </select>
-        <span>:</span>
-        <select class="form-control" id="EventMinute" name="EventMinute" style="width: 70px;">
-          <?php
-          for ($m = 0; $m < 60; $m += 15) {
-              $min = str_pad($m, 2, '0', STR_PAD_LEFT);
-              echo '<option value="' . $min . '">' . $min . '</option>';
-          }
-          ?>
-        </select>
-        <select class="form-control" id="EventPeriod" name="EventPeriod" style="width: 70px;">
-          <option value="AM">AM</option>
-          <option value="PM">PM</option>
-        </select>
+      <div class="form-group">
+        <label for="newEvtName" class="font-weight-bold"><?= gettext('Event Type Name') ?></label>
+        <div class="row">
+          <div class="col-md-8">
+            <input type="text" class="form-control" name="newEvtName" id="newEvtName" value="<?= $aTypeName ?>" maxlength="35" autofocus />
+          </div>
+          <div class="col-md-4">
+            <button type="submit" name="Action" value="NAME" class="btn btn-primary">
+              <i class="fas fa-save mr-1"></i><?= gettext('Save Name') ?>
+            </button>
+          </div>
+        </div>
       </div>
-      <input type="hidden" name="newEvtStartTime" id="newEvtStartTime" value="<?= $aEventStartTime ?>">
-      <input type="hidden" name="Action" value="TIME">
-    </td>
-  </tr>
 
-   <tr>
-      <td class="LabelColumn" width="15%" rowspan="<?= $nr ?>" colspan="1">
-        <strong><?= gettext('Attendance Counts') ?></strong>
-      </td>
-    </tr>
-    <?php
-    for ($c = 1; $c <= $numCounts; $c++) {
-        ?>
-      <tr data-cy="attendance-count-row">
-        <td class="TextColumn" width="35%"><?= $cCountName[$c] ?></td>
-        <td class="TextColumn" width="50%">
-          <button type="submit" name="Action" value="DELETE_<?= $cCountID[$c] ?>"
-                  class="btn btn-secondary" data-cy="remove-attendance-count">
-            <?= gettext('Remove') ?>
-          </button>
-        </td>
-      </tr>
-        <?php
-    }
-    ?>
-    <tr>
-      <td class="TextColumn" width="35%">
-        <input class="form-control" type="text" name="newCountName" length="20"
-               placeholder="New Attendance Count" data-cy="attendance-count-input" />
-      </td>
-      <td class="TextColumn" width="50%">
-        <button type="submit" name="Action" value="ADD" class="btn btn-secondary"
-                data-cy="add-attendance-count">
-          <?= gettext('Add counter') ?>
-        </button>
-      </td>
-    </tr>
-</table>
-</form>
+      <div class="form-group">
+        <label class="font-weight-bold"><?= gettext('Recurrence Pattern') ?></label>
+        <div class="border rounded p-3 bg-light">
+          <?= $recur ?>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="font-weight-bold"><?= gettext('Default Start Time') ?></label>
+        <div class="row">
+          <div class="col-md-8">
+            <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
+              <select class="form-control" id="EventHour" name="EventHour" style="width: 70px;">
+                <?php
+                for ($h = 1; $h <= 12; $h++) {
+                    echo '<option value="' . $h . '">' . $h . '</option>';
+                }
+                ?>
+              </select>
+              <span>:</span>
+              <select class="form-control" id="EventMinute" name="EventMinute" style="width: 70px;">
+                <?php
+                for ($m = 0; $m < 60; $m += 15) {
+                    $min = str_pad($m, 2, '0', STR_PAD_LEFT);
+                    echo '<option value="' . $min . '">' . $min . '</option>';
+                }
+                ?>
+              </select>
+              <select class="form-control" id="EventPeriod" name="EventPeriod" style="width: 70px;">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+            <input type="hidden" name="newEvtStartTime" id="newEvtStartTime" value="<?= $aEventStartTime ?>">
+            <input type="hidden" name="Action" value="TIME">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="font-weight-bold"><?= gettext('Attendance Count Categories') ?></label>
+        <div class="table-responsive">
+          <table class="table table-sm table-bordered">
+            <thead class="thead-light">
+              <tr>
+                <th><?= gettext('Category Name') ?></th>
+                <th style="width: 120px;"><?= gettext('Actions') ?></th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              for ($c = 1; $c <= $numCounts; $c++) {
+                  ?>
+                <tr data-cy="attendance-count-row">
+                  <td><?= InputUtils::escapeHTML($cCountName[$c]) ?></td>
+                  <td class="text-center">
+                    <button type="submit" name="Action" value="DELETE_<?= $cCountID[$c] ?>"
+                            class="btn btn-outline-danger btn-sm" data-cy="remove-attendance-count"
+                            onclick="return confirm('<?= gettext('Remove this attendance count?') ?>');">
+                      <i class="fas fa-trash mr-1"></i><?= gettext('Remove') ?>
+                    </button>
+                  </td>
+                </tr>
+                  <?php
+              }
+              ?>
+              <tr>
+                <td>
+                  <input class="form-control form-control-sm" type="text" name="newCountName" maxlength="20"
+                         placeholder="<?= gettext('e.g., Visitors, Children') ?>" data-cy="attendance-count-input" />
+                </td>
+                <td class="text-center">
+                  <button type="submit" name="Action" value="ADD" class="btn btn-primary btn-sm"
+                          data-cy="add-attendance-count">
+                    <i class="fas fa-plus mr-1"></i><?= gettext('Add') ?>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
+<script src="<?= SystemURLs::getRootPath() ?>/skin/js/event/EventUtils.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
-    // Parse the current time value
     var currentTime = '<?= $aEventStartTime ?>';
-    var timePattern = /^(\d{1,2}):(\d{2})\s?(AM|PM)$/i;
-    var match = currentTime.match(timePattern);
     
-    if (match) {
-        $('#EventHour').val(parseInt(match[1]));
-        $('#EventMinute').val(match[2]);
-        $('#EventPeriod').val(match[3].toUpperCase());
-    }
+    // Initialize time picker dropdowns with current time
+    window.CRM.EventUtils.initializeTimePicker(currentTime, 'EventHour', 'EventMinute', 'EventPeriod');
     
-    // Update hidden field and submit on change
-    function updateTimeAndSubmit() {
-        var hour = $('#EventHour').val();
-        var minute = $('#EventMinute').val();
-        var period = $('#EventPeriod').val();
-        var timeString = hour + ':' + minute + ' ' + period;
-        
-        $('#newEvtStartTime').val(timeString);
-        
-        // Only submit if the time actually changed
-        if (timeString !== currentTime) {
-            $('form[name="EventTypeEditForm"]').submit();
-        }
-    }
-    
-    $('#EventHour, #EventMinute, #EventPeriod').on('change', updateTimeAndSubmit);
+    // Setup auto-submit on time picker change
+    window.CRM.EventUtils.setupTimePickerAutoSubmit(
+        'form[name="EventTypeEditForm"]',
+        'EventHour',
+        'EventMinute',
+        'EventPeriod',
+        'newEvtStartTime',
+        currentTime
+    );
 });
 </script>
 
-<div>
-  <a href="EventNames.php" class='btn btn-secondary'>
-    <i class='fa fa-chevron-left'></i>
-    <?= gettext('Return to Event Types') ?>
+<div class="mb-4">
+  <a href="EventNames.php" class='btn btn-outline-secondary'>
+    <i class='fas fa-chevron-left mr-1'></i><?= gettext('Return to Event Types') ?>
   </a>
 </div>
 <?php
