@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\VersionUtils;
@@ -36,6 +37,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
             $logger->info('Starting database upgrade...');
             UpgradeService::upgradeDatabaseVersion();
             $logger->info('Database upgrade completed successfully');
+            
+            // Clear integrity check cache to force re-verification after upgrade
+            AppIntegrityService::clearIntegrityCache();
+            
             // Render the same template with a success message so the user sees progress/outcome.
             $pageArgs = $buildPageArgs(null, gettext('Database upgrade completed successfully. Redirecting to dashboard...'));
             // Render success page (the template will perform a client-side redirect after a short delay)
