@@ -15,8 +15,6 @@ use Slim\Factory\AppFactory;
 use Slim\Views\PhpRenderer;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 // Get base path by combining $sRootPath from Config.php with /session endpoint
 // Examples: '' + '/session' = '/session' (root install)
 //           '/churchcrm' + '/session' = '/churchcrm/session' (subdirectory install)
