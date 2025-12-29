@@ -359,33 +359,6 @@
             <parameter name="Engine" value="InnoDB"/>
         </vendor>
     </table>
-    <table name="email_message_pending_emp" idMethod="native" phpName="EmailMessagePending">
-        <column name="emp_usr_id" phpName="UsrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
-                required="true" defaultValue="0"/>
-        <column name="emp_to_send" phpName="ToSend" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
-                required="true" defaultValue="0"/>
-        <column name="emp_subject" phpName="Subject" type="VARCHAR" size="128" required="true"/>
-        <column name="emp_message" phpName="Message" type="LONGVARCHAR" required="true"/>
-        <column name="emp_attach_name" phpName="AttachName" type="LONGVARCHAR"/>
-        <column name="emp_attach" phpName="Attach" type="BOOLEAN" size="1"/>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
-    <table name="email_recipient_pending_erp" idMethod="native" phpName="EmailRecipientPending">
-        <column name="erp_id" phpName="Id" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" required="true"
-                defaultValue="0"/>
-        <column name="erp_usr_id" phpName="UsrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"
-                required="true" defaultValue="0"/>
-        <column name="erp_num_attempt" phpName="NumAttempt" type="SMALLINT" size="5" sqlType="smallint(5) unsigned"
-                required="true" defaultValue="0"/>
-        <column name="erp_failed_time" phpName="FailedTime" type="TIMESTAMP"/>
-        <column name="erp_email_address" phpName="EmailAddress" type="VARCHAR" size="50" required="true"
-                defaultValue=""/>
-        <vendor type="mysql">
-            <parameter name="Engine" value="InnoDB"/>
-        </vendor>
-    </table>
     <table name="event_attend" idMethod="native" phpName="EventAttend" description="this indicates which people attended which events">
         <column name="attend_id" phpName="AttendId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
         <column name="event_id" phpName="EventId" type="INTEGER" required="true" defaultValue="0"/>
