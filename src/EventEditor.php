@@ -49,6 +49,7 @@ if (isset($_GET['calendarAction'])) {
 
 $EventExists = 0;
 $iEventID = 0;
+$iTypeID = 0;
 $iErrors = 0;
 
 if ($sAction === 'Create Event' && !empty($tyid)) {
@@ -239,8 +240,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $sEventDesc = '';
     $sEventText = '';
     $iEventStatus = 0;
-    $iTypeID = $type_id;
-} elseif ($sAction = 'Edit' && !empty($sOpp)) {
+} elseif ($sAction === 'Edit' && !empty($sOpp)) {
     $EventExists = 1;
     // Use Propel ORM instead of raw SQL for SQL injection prevention
     $iEventID = (int) $sOpp;
