@@ -306,7 +306,6 @@ $page = 1;
             
             if (!$fun_ID) {
                 $fun_ID = -1;
-                $fun_Name = 'Undesignated';
             }
             if (!$fam_ID) {
                 $fam_ID = -1;
@@ -475,7 +474,6 @@ $page = 1;
             
             if (!$fun_ID) {
                 $fun_ID = -1;
-                $fun_Name = 'Undesignated';
             }
             if (!$fam_ID) {
                 $fam_ID = -1;
@@ -643,7 +641,6 @@ $page = 1;
             
             if (!$fun_ID) {
                 $fun_ID = -1;
-                $fun_Name = 'Undesignated';
             }
             if (!$fam_ID) {
                 $fam_ID = -1;
