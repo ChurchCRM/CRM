@@ -42,8 +42,11 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
 <div class="container-fluid mt-4">
     <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-        //Display the new property link
-        echo '<div class="mb-3"><a class="btn btn-primary" href="PropertyEditor.php?Type=' . InputUtils::escapeAttribute($sType) . '"><i class="fa-solid fa-plus"></i> ' . gettext('Add New') . ' ' . $sTypeName . ' ' . gettext('Property') . '</a></div>';
+        //Display the new property link and property types link
+        echo '<div class="mb-3">';
+        echo '<a class="btn btn-primary" href="PropertyEditor.php?Type=' . InputUtils::escapeAttribute($sType) . '"><i class="fa-solid fa-plus"></i> ' . gettext('Add New') . ' ' . $sTypeName . ' ' . gettext('Property') . '</a> ';
+        echo '<a class="btn btn-outline-secondary" href="PropertyTypeList.php?class=' . InputUtils::escapeAttribute($sType) . '"><i class="fa-solid fa-tags"></i> ' . gettext('Manage') . ' ' . $sTypeName . ' ' . gettext('Property Types') . '</a>';
+        echo '</div>';
     }
     ?>
 
