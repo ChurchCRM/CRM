@@ -65,7 +65,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     if ($eventType !== null) {
         $iTypeID = $eventType->getId();
         $sTypeName = $eventType->getName();
-        $sDefStartTime = $eventType->getDefStartTime();
+        $sDefStartTime = $eventType->getDefStartTime() ? $eventType->getDefStartTime()->format('H:i:s') : '00:00:00';
         $iDefRecurDOW = $eventType->getDefRecurDow();
         $iDefRecurDOM = $eventType->getDefRecurDom();
         $sDefRecurDOY = $eventType->getDefRecurDoy();
@@ -83,8 +83,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
     // Use Propel ORM to fetch event count names
     $eventCountNames = EventCountNameQuery::create()
-        ->filterByEventTypeId((int)$iTypeID)
-        ->orderByCountId()
+        ->filterByTypeId((int)$iTypeID)
+        ->orderById()
         ->find();
     
     $iNumCounts = count($eventCountNames);
@@ -96,8 +96,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     if ($iNumCounts > 0) {
         $c = 0;
         foreach ($eventCountNames as $countName) {
-            $aCountID[$c] = $countName->getCountId();
-            $aCountName[$c] = $countName->getCountName();
+            $aCountID[$c] = $countName->getId();
+            $aCountName[$c] = $countName->getName();
             $aCount[$c] = 0;
             $c++;
         }
