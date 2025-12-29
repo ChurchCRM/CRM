@@ -144,7 +144,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
     $pdf->addRecord($pdf->sFamily, $OutStr, $numlines);
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('GroupDirectory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

@@ -325,7 +325,7 @@ if ($mysqlversion == 3 && $mysqlsubversion >= 22) {
     mysqli_query($cnInfoCentral, $sSQL);
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('Directory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

@@ -7,7 +7,7 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 // Get fiscal year info for display
-$iFYMonth = (int) SystemConfig::getValue('iFYMonth');
+$iFYMonth = SystemConfig::getIntValue('iFYMonth');
 $currentYear = (int) date('Y');
 
 if ($iFYMonth === 1) {

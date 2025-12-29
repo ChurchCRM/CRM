@@ -288,7 +288,7 @@ class Photo
             ];
         }
         
-        $style = (int)SystemConfig::getValue('iPersonInitialStyle');
+        $style = SystemConfig::getIntValue('iPersonInitialStyle');
         $email = $person->getEmail();
         
         return [
