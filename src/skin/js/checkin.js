@@ -172,16 +172,11 @@ function displayPersonDetails(element, person) {
     }
 
     if (person && person.objid) {
-        var photoUrl = window.CRM.root + "/api/person/" + person.objid + "/photo";
         var personViewUrl = "PersonView.php?PersonID=" + person.objid;
 
-        // Compact inline display with photo and name
+        // Compact inline display with name and check icon
         var html =
             '<div class="d-inline-flex align-items-center p-2 border border-success rounded" style="background-color: #d4edda;">' +
-            '<img src="' +
-            photoUrl +
-            '" class="rounded-circle mr-2" ' +
-            'style="width: 36px; height: 36px; object-fit: cover;">' +
             '<i class="fa-solid fa-check-circle text-success mr-2"></i>' +
             '<a href="' +
             personViewUrl +
