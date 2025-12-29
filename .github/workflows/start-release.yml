@@ -52,7 +52,7 @@ jobs:
       - name: Push branch
         run: |
           BRANCH_NAME="build/${{ inputs.version }}"
-          git push origin "$BRANCH_NAME"
+          git push -f origin "$BRANCH_NAME"
       
       - name: Create Pull Request
         env:
