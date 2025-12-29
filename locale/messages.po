@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-24 10:59-0800\n"
+"POT-Creation-Date: 2025-12-29 18:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -323,6 +323,9 @@ msgstr ""
 msgid "Add Pledge"
 msgstr ""
 
+msgid "Add Property Type"
+msgstr ""
+
 msgid "Add Records"
 msgstr ""
 
@@ -339,6 +342,9 @@ msgid "Add Selected Members to Group"
 msgstr ""
 
 msgid "Add Students"
+msgstr ""
+
+msgid "Add Your First Property Type"
 msgstr ""
 
 msgid "Add any additional notes about this deposit"
@@ -1028,6 +1034,9 @@ msgid "Buyers for this fundraiser:"
 msgstr ""
 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr ""
+
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
 msgstr ""
 
 msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
@@ -1942,6 +1951,9 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
+msgid "Delete (will delete all associated records)"
+msgstr ""
+
 msgid "Delete Access Token"
 msgstr ""
 
@@ -2332,6 +2344,9 @@ msgstr ""
 msgid "Edit Person"
 msgstr ""
 
+msgid "Edit Property Type"
+msgstr ""
+
 msgid "Edit Records"
 msgstr ""
 
@@ -2711,6 +2726,9 @@ msgstr ""
 msgid "Existing Custom Person Fields"
 msgstr ""
 
+msgid "Existing Group Properties"
+msgstr ""
+
 msgid "Existing Volunteer Opportunities"
 msgstr ""
 
@@ -2859,6 +2877,9 @@ msgid "Failed to update properties. Please try again."
 msgstr ""
 
 msgid "Failed to update role name. Please try again."
+msgstr ""
+
+msgid "Failed to update role. Please try again."
 msgstr ""
 
 msgid "Failed to upload family photo"
@@ -3077,6 +3098,9 @@ msgid "Filesystem Permissions"
 msgstr ""
 
 msgid "Filter Events"
+msgstr ""
+
+msgid "Filter by Class"
 msgstr ""
 
 msgid "Filter by Deposit"
@@ -3785,6 +3809,9 @@ msgstr ""
 msgid "Imported"
 msgstr ""
 
+msgid "In Use"
+msgstr ""
+
 msgid "Inactive"
 msgstr ""
 
@@ -4369,6 +4396,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Malta"
+msgstr ""
+
+msgid "Manage"
 msgstr ""
 
 msgid "Manage 2 Factor Authentication"
@@ -5026,6 +5056,9 @@ msgstr ""
 msgid "No property assignments."
 msgstr ""
 
+msgid "No property types found"
+msgstr ""
+
 msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
 msgstr ""
 
@@ -5169,6 +5202,9 @@ msgstr ""
 msgid "Number of months since becoming a friend"
 msgstr ""
 
+msgid "Number of records using this property type"
+msgstr ""
+
 msgid "Number too large. Must be between -2147483648 and 2147483647"
 msgstr ""
 
@@ -5261,6 +5297,9 @@ msgid "Optional - leave blank if not tracking"
 msgstr ""
 
 msgid "Optional Data to Include"
+msgstr ""
+
+msgid "Optional detailed description of this property type"
 msgstr ""
 
 msgid "Optional notes about attendance..."
@@ -5675,6 +5714,9 @@ msgstr ""
 msgid "Please confirm your family information:"
 msgstr ""
 
+msgid "Please correct the errors below."
+msgstr ""
+
 msgid "Please correct the validation errors before continuing."
 msgstr ""
 
@@ -5903,9 +5945,6 @@ msgid "Property List"
 msgstr ""
 
 msgid "Property Type"
-msgstr ""
-
-msgid "Property Type Editor"
 msgstr ""
 
 msgid "Property Type List"
@@ -6618,6 +6657,9 @@ msgid "Select the group to which you would like to add your cart"
 msgstr ""
 
 msgid "Select the group you would like to report"
+msgstr ""
+
+msgid "Select the type of record this property applies to"
 msgstr ""
 
 msgid "Select which information you want to include"
@@ -8017,6 +8059,9 @@ msgstr ""
 msgid "View Photo"
 msgstr ""
 
+msgid "View Properties"
+msgstr ""
+
 msgid "View User"
 msgstr ""
 
@@ -8582,6 +8627,9 @@ msgstr[0] ""
 msgstr[1] ""
 
 msgid "property"
+msgstr ""
+
+msgid "records"
 msgstr ""
 
 msgid "records(s) successfully added to selected Group."
