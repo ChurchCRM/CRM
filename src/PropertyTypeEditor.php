@@ -94,13 +94,13 @@ require_once __DIR__ . '/Include/Header.php';
                         </label>
                         <select class="form-control" id="class" name="Class" required>
                             <option value="p" <?= ($sClass == 'p' ? 'selected' : '') ?>>
-                                <i class="fa-solid fa-user"></i> <?= gettext('Person') ?>
+                                <?= gettext('Person') ?>
                             </option>
                             <option value="f" <?= ($sClass == 'f' ? 'selected' : '') ?>>
-                                <i class="fa-solid fa-users"></i> <?= gettext('Family') ?>
+                                <?= gettext('Family') ?>
                             </option>
                             <option value="g" <?= ($sClass == 'g' ? 'selected' : '') ?>>
-                                <i class="fa-solid fa-user-group"></i> <?= gettext('Group') ?>
+                                <?= gettext('Group') ?>
                             </option>
                         </select>
                         <small class="form-text text-muted">

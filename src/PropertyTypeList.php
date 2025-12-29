@@ -101,7 +101,10 @@ require_once __DIR__ . '/Include/Header.php';
                     $hasRows = false;
                     while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
                         $hasRows = true;
-                        extract($aRow);
+                        $prt_ID = $aRow['prt_ID'];
+                        $prt_Name = $aRow['prt_Name'];
+                        $prt_Class = $aRow['prt_Class'];
+                        $Properties = $aRow['Properties'];
                         ?>
                         <tr>
                             <td>
@@ -172,6 +175,12 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
     </div>
 </div>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
 
 <?php
 require_once __DIR__ . '/Include/Footer.php';
