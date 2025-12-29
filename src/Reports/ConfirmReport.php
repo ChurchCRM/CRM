@@ -323,7 +323,7 @@ if ($_GET['familyId']) {
         $pdf->finishPage($curY);
     }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output($filename, 'D');
 } else {
     $pdf->Output();

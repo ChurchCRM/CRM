@@ -463,7 +463,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->finishPage($curY);
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('ReminderReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

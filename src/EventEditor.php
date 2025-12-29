@@ -49,6 +49,7 @@ if (isset($_GET['calendarAction'])) {
 
 $EventExists = 0;
 $iEventID = 0;
+$iTypeID = 0;
 $iErrors = 0;
 
 if ($sAction === 'Create Event' && !empty($tyid)) {
@@ -65,7 +66,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     if ($eventType !== null) {
         $iTypeID = $eventType->getId();
         $sTypeName = $eventType->getName();
-        $sDefStartTime = $eventType->getDefStartTime();
+        $sDefStartTime = $eventType->getDefStartTime() ? $eventType->getDefStartTime()->format('H:i:s') : '00:00:00';
         $iDefRecurDOW = $eventType->getDefRecurDow();
         $iDefRecurDOM = $eventType->getDefRecurDom();
         $sDefRecurDOY = $eventType->getDefRecurDoy();
@@ -83,8 +84,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
     // Use Propel ORM to fetch event count names
     $eventCountNames = EventCountNameQuery::create()
-        ->filterByEventTypeId((int)$iTypeID)
-        ->orderByCountId()
+        ->filterByTypeId((int)$iTypeID)
+        ->orderById()
         ->find();
     
     $iNumCounts = count($eventCountNames);
@@ -96,8 +97,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     if ($iNumCounts > 0) {
         $c = 0;
         foreach ($eventCountNames as $countName) {
-            $aCountID[$c] = $countName->getCountId();
-            $aCountName[$c] = $countName->getCountName();
+            $aCountID[$c] = $countName->getId();
+            $aCountName[$c] = $countName->getName();
             $aCount[$c] = 0;
             $c++;
         }
@@ -239,8 +240,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $sEventDesc = '';
     $sEventText = '';
     $iEventStatus = 0;
-    $iTypeID = $type_id;
-} elseif ($sAction = 'Edit' && !empty($sOpp)) {
+} elseif ($sAction === 'Edit' && !empty($sOpp)) {
     $EventExists = 1;
     // Use Propel ORM instead of raw SQL for SQL injection prevention
     $iEventID = (int) $sOpp;
@@ -499,7 +499,20 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><?= gettext('Attendance Counts') ?></td>
+                    <td class="LabelColumn">
+                        <div><?= gettext('Attendance Counts') ?></div>
+                        <?php if ($nCnts > 0) { ?>
+                        <div class="mt-2">
+                            <input type="number" 
+                                   id="RealTotal" 
+                                   class="form-control" 
+                                   readonly 
+                                   value="0" 
+                                   style="background-color: #e9ecef; font-weight: bold; max-width: 200px;">
+                            <small class="form-text text-muted"><?= gettext('Auto-calculated from counts above') ?></small>
+                        </div>
+                        <?php } ?>
+                    </td>
                     <td class="TextColumn" colspan="3">
                         <input type="hidden" name="NumAttendCounts" value="<?= $nCnts ?>">
                         <?php
@@ -511,17 +524,15 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                                 <?php
                                 for ($c = 0; $c < $nCnts; $c++) {
                                     $countName = $aCountName[$c];
-                                    $isTotal = (strtolower($countName) === 'total');
                                     $inputId = 'EventCount_' . $c;
                                     ?>
-                                    <div class="col-md-3 col-sm-6 mb-2">
+                                    <div class="col-md-4 col-sm-6 mb-2">
                                         <label for="<?= $inputId ?>" class="font-weight-bold"><?= gettext($countName) ?></label>
                                         <input type="number" 
                                                id="<?= $inputId ?>" 
                                                name="EventCount[]" 
                                                value="<?= (int) $aCount[$c] ?>" 
-                                               class="form-control attendance-count <?= $isTotal ? 'total-count' : 'addend-count' ?>"
-                                               <?= $isTotal ? 'readonly' : '' ?>
+                                               class="form-control attendance-count"
                                                min="0"
                                                data-count-name="<?= InputUtils::escapeHTML($countName) ?>">
                                         <input type="hidden" name="EventCountID[]" value="<?= $aCountID[$c] ?>">
@@ -581,6 +592,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 $eventStart = $sEventStartDate . ' ' . $iEventStartHour . ':' . $iEventStartMins;
 $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
 ?>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $( document ).ready(function() {
         var startDate = moment("<?= $eventStart?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
@@ -599,25 +611,31 @@ $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
             endDate: endDate
         });
 
-        // Auto-calculate Total from other attendance counts
-        function updateTotalCount() {
+        // Auto-calculate Real Total from all attendance counts
+        function updateRealTotal() {
             var total = 0;
-            $('.addend-count').each(function() {
+            $('.attendance-count').each(function() {
                 var val = parseInt($(this).val()) || 0;
                 total += val;
             });
-            $('.total-count').val(total);
+            $('#RealTotal').val(total);
         }
 
-        // Bind change event to all non-total count fields
-        $('.addend-count').on('input change', updateTotalCount);
+        // Bind change event to all attendance count fields
+        $('.attendance-count').on('input change', updateRealTotal);
 
         // Calculate initial total on page load
-        updateTotalCount();
+        updateRealTotal();
     });
+
+    (function() {
+        <?= getQuillEditorInitScript('EventDesc', 'EventDescInput', gettext("Enter event description..."), false) ?>
+    })();
+
+    (function() {
+        <?= getQuillEditorInitScript('EventText', 'EventTextInput', gettext("Enter sermon notes or event text..."), false) ?>
+    })();
 </script>
 
 <?php require_once __DIR__ . '/Include/Footer.php'; ?>
-
-<?= getQuillEditorInitScript('EventText', 'EventTextInput', gettext("Enter event description...")) ?>
 

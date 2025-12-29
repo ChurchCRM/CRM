@@ -152,6 +152,18 @@ foreach ($allMonths as $mVal) {
         $attendRow = mysqli_fetch_assoc($attendResult);
         $attendeeCount = $attendRow ? (int) $attendRow['cnt'] : 0;
 
+        // Get checked in count (people who checked in but haven't checked out)
+        $checkedInSQL = 'SELECT COUNT(*) as cnt FROM event_attend WHERE event_id=' . $eventId . ' AND checkout_date IS NULL';
+        $checkedInResult = RunQuery($checkedInSQL);
+        $checkedInRow = mysqli_fetch_assoc($checkedInResult);
+        $checkedInCount = $checkedInRow ? (int) $checkedInRow['cnt'] : 0;
+
+        // Get checked out count (people who have checked out)
+        $checkedOutSQL = 'SELECT COUNT(*) as cnt FROM event_attend WHERE event_id=' . $eventId . ' AND checkout_date IS NOT NULL';
+        $checkedOutResult = RunQuery($checkedOutSQL);
+        $checkedOutRow = mysqli_fetch_assoc($checkedOutResult);
+        $checkedOutCount = $checkedOutRow ? (int) $checkedOutRow['cnt'] : 0;
+
         // Get event counts
         $countSQL = 'SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid=' . $eventId . ' ORDER BY evtcnt_countid ASC';
         $countResult = RunQuery($countSQL);
@@ -170,6 +182,8 @@ foreach ($allMonths as $mVal) {
             'end' => $row['event_end'],
             'inactive' => (int) $row['inactive'],
             'attendee_count' => $attendeeCount,
+            'checked_in_count' => $checkedInCount,
+            'checked_out_count' => $checkedOutCount,
             'counts' => $eventCounts,
         ];
     }
@@ -193,6 +207,8 @@ foreach ($allMonths as $mVal) {
             <th><?= gettext('Description') ?></th>
             <th><?= gettext('Event Type') ?></th>
             <th style="width: 120px;" class="text-center"><?= gettext('Check-in') ?></th>
+            <th class="text-center" style="width: 90px;"><?= gettext('Checked In') ?></th>
+            <th class="text-center" style="width: 90px;"><?= gettext('Checked Out') ?></th>
             <th><?= gettext('Head Count') ?></th>
             <th><?= gettext('Start Date/Time') ?></th>
             <th style="width: 70px;"><?= gettext('Active') ?></th>
@@ -234,6 +250,20 @@ foreach ($allMonths as $mVal) {
                     <span class="badge badge-info ml-1"><?= $event['attendee_count'] ?></span>
                   <?php endif; ?>
                 </a>
+              </td>
+              <td class="text-center">
+                <?php if ($event['checked_in_count'] > 0): ?>
+                  <span class="badge badge-success"><?= $event['checked_in_count'] ?></span>
+                <?php else: ?>
+                  <span class="text-muted">—</span>
+                <?php endif; ?>
+              </td>
+              <td class="text-center">
+                <?php if ($event['checked_out_count'] > 0): ?>
+                  <span class="badge badge-secondary"><?= $event['checked_out_count'] ?></span>
+                <?php else: ?>
+                  <span class="text-muted">—</span>
+                <?php endif; ?>
               </td>
               <td>
                 <?php if (empty($event['counts'])): ?>
@@ -286,6 +316,7 @@ foreach ($allMonths as $mVal) {
             <tr class="table-secondary">
               <?php if ($canEditEvents): ?><td></td><?php endif; ?>
               <td colspan="3"><strong><?= gettext('Monthly Averages') ?></strong></td>
+              <td colspan="2"></td>
               <td>
                 <?php
                 $avgParts = [];

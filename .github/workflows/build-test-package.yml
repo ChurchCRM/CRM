@@ -288,8 +288,6 @@ jobs:
           echo "2. Go to [Releases](https://github.com/ChurchCRM/CRM/releases) and create a new release" >> $GITHUB_STEP_SUMMARY
           echo "3. Use tag: \`${{ steps.package-version.outputs.current-version }}\` (no 'v' prefix)" >> $GITHUB_STEP_SUMMARY
           echo "4. Upload the ChurchCRM-${{ steps.package-version.outputs.current-version }}.zip file" >> $GITHUB_STEP_SUMMARY
-          echo "5. Add release notes from CHANGELOG.md" >> $GITHUB_STEP_SUMMARY
-          echo "6. Publish the release (this will trigger changelog PR creation)" >> $GITHUB_STEP_SUMMARY
         else
           artifact_name="${{ github.ref == 'refs/heads/master' && 
                              format('ChurchCRM-{0}', steps.package-version.outputs.current-version) ||

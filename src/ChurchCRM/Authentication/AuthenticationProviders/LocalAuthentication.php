@@ -215,8 +215,8 @@ class LocalAuthentication implements IAuthenticationProvider
         }
 
         // Next, check for login timeout.  If login has expired, redirect to login page
-        if (SystemConfig::getValue('iSessionTimeout') > 0) {
-            if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getValue('iSessionTimeout')) {
+        if (SystemConfig::getIntValue('iSessionTimeout') > 0) {
+            if ((time() - $this->tLastOperationTimestamp) > SystemConfig::getIntValue('iSessionTimeout')) {
                 LoggerUtils::getAuthLogger()->debug('User session timed out', $logCtx);
                 $authenticationResult->isAuthenticated = false;
 

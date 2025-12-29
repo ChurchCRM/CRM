@@ -132,6 +132,17 @@ class PledgeQuery extends BasePledgeQuery
             ->leftJoinWithDonationFund()
             ->leftJoinWithPerson();
 
+        // Add columns from joined tables to avoid needing foreign objects in toArray()
+        $this->withColumn('Family.Name', 'FamilyName')
+            ->withColumn('Family.Address1', 'FamilyAddress1')
+            ->withColumn('Family.Address2', 'FamilyAddress2')
+            ->withColumn('Family.City', 'FamilyCity')
+            ->withColumn('Family.State', 'FamilyState')
+            ->withColumn('Family.Zip', 'FamilyZip')
+            ->withColumn('Family.Country', 'FamilyCountry')
+            ->withColumn('DonationFund.Name', 'FundName')
+            ->withColumn('Deposit.Date', 'DepositDate');
+
         // Apply sorting
         if ($sort === 'fund') {
             $this->orderByFundId()

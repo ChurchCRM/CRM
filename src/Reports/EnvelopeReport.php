@@ -117,7 +117,7 @@ foreach ($families as $family) {
     $pdf->addRecord($OutStr, $numlines);
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('EnvelopeAssignments-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

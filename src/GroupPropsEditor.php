@@ -85,11 +85,22 @@ if (isset($_POST['GroupPropSubmit'])) {
     }
 } else {
     // First Pass
-    // we are always editing, because the record for a group member was created when they were added to the group
-
     // Get the existing data for this group member
     $sSQL = 'SELECT * FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID;
     $rsPersonProps = RunQuery($sSQL);
+    
+    // Check if a record exists for this person in the group properties table
+    if (mysqli_num_rows($rsPersonProps) === 0) {
+        // No record exists - insert one with just the per_ID
+        // This handles cases where the person was added before properties were enabled
+        $sSQL = 'INSERT INTO groupprop_' . $iGroupID . ' (per_ID) VALUES (' . $iPersonID . ')';
+        RunQuery($sSQL);
+        
+        // Now fetch the newly created record
+        $sSQL = 'SELECT * FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID;
+        $rsPersonProps = RunQuery($sSQL);
+    }
+    
     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 }
 

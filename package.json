@@ -1,6 +1,6 @@
 {
     "name": "churchcrm",
-    "version": "6.6.1",
+    "version": "6.7.0",
     "description": "Free Church CRM Software",
     "repository": {
         "type": "git",
@@ -59,7 +59,6 @@
         "locale:missing": "node locale/scripts/locale-missing-terms.js",
         "locale:lint": "node scripts/locale-check.js",
         "package": "npm run deploy && node scripts/package-release.js",
-        "changelog": "node scripts/generate-changelog.js",
         "test": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e",
         "test:ui": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress open --e2e --browser chrome",
         "test:fast": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e --browser chrome --headed --no-exit",

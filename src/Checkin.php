@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 require_once __DIR__ . '/Include/Header.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventAttend;
@@ -46,6 +47,14 @@ if (isset($_POST['child-id'])) {
 }
 if (isset($_POST['adult-id'])) {
     $iAdultID = InputUtils::legacyFilterInput($_POST['adult-id'], 'int');
+}
+
+// Default to current user if no adult ID provided
+if (empty($iAdultID) && (isset($_POST['CheckIn']) || isset($_POST['CheckOut']))) {
+    $currentUser = AuthenticationManager::getCurrentUser();
+    if ($currentUser) {
+        $iAdultID = $currentUser->getPersonId();
+    }
 }
 
 // Event type filter (only apply when not accessing event directly)
@@ -500,8 +509,15 @@ function loadPerson($iPersonID)
     $html = '<div class="text-center">' .
         '<a target="_top" href="PersonView.php?PersonID=' . $iPersonID . '"><h4>' . $person->getTitle() . ' ' . $person->getFullName() . '</h4></a>' .
         '<div class="">' . $familyRole . '</div>' .
-        '<div class="text-center">' . $person->getAddress() . '</div>' .
-        '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/photo" class="photo-medium"> </div>';
+        '<div class="text-center">' . $person->getAddress() . '</div>';
+    
+    // Only show photo if person has uploaded one
+    $personPhoto = new \ChurchCRM\dto\Photo('person', $iPersonID);
+    if ($personPhoto->hasUploadedPhoto()) {
+        $html .= '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/photo" alt="' . htmlspecialchars($person->getFullName()) . '" class="photo-medium">';
+    }
+    
+    $html .= '</div>';
     echo $html;
 }
 ?>

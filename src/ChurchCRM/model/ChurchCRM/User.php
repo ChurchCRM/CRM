@@ -212,7 +212,7 @@ class User extends BaseUser
 
     public function isLocked(): bool
     {
-        return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
+        return SystemConfig::getIntValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getIntValue('iMaxFailedLogins');
     }
 
     public function resetPasswordToRandom(): string
@@ -230,7 +230,7 @@ class User extends BaseUser
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $pass = []; //remember to declare $pass as an array
         $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-        for ($i = 0; $i < SystemConfig::getValue('iMinPasswordLength'); $i++) {
+        for ($i = 0; $i < SystemConfig::getIntValue('iMinPasswordLength'); $i++) {
             $n = random_int(0, $alphaLength);
             $pass[] = $alphabet[$n];
         }
@@ -527,15 +527,15 @@ class User extends BaseUser
             throw new PasswordChangeException('New', gettext('Your password choice is too obvious. Please choose something else.'));
         }
 
-        if (strlen($newPassword) < SystemConfig::getValue('iMinPasswordLength')) {
-            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters'));
+        if (strlen($newPassword) < SystemConfig::getIntValue('iMinPasswordLength')) {
+            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getIntValue('iMinPasswordLength') . ' ' . gettext('characters'));
         }
 
         if ($newPassword == $oldPassword) {
             throw new PasswordChangeException('New', gettext('Your new password must not match your old one.'));
         }
 
-        if (levenshtein(strtolower($newPassword), strtolower($oldPassword)) < SystemConfig::getValue('iMinPasswordChange')) {
+        if (levenshtein(strtolower($newPassword), strtolower($oldPassword)) < SystemConfig::getIntValue('iMinPasswordChange')) {
             throw new PasswordChangeException('New', gettext('Your new password is too similar to your old one.'));
         }
 
