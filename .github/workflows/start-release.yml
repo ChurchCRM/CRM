@@ -68,6 +68,6 @@ jobs:
           - Updated demo database with new version entry
 
           ## Next Steps
-          - Review and merge this PR to begin the ${{ inputs.version }} release cycle \
+          - Review and merge this PR to begin the ${{ inputs.version }} release cycle" \
             --base master \
             --head "build/${{ inputs.version }}"
