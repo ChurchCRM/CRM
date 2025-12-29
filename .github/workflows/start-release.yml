@@ -68,8 +68,6 @@ jobs:
           - Updated demo database with new version entry
 
           ## Next Steps
-          - Review and merge this PR to begin the ${{ inputs.version }} release cycle
-          - Add new features and bug fixes to this branch
-          - Create changelog entries as needed" \
+          - Review and merge this PR to begin the ${{ inputs.version }} release cycle \
             --base master \
             --head "build/${{ inputs.version }}"
