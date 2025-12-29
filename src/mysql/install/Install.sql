@@ -56,6 +56,7 @@ CREATE TABLE `donationfund_fun` (
   `fun_Active` enum('true','false') NOT NULL default 'true',
   `fun_Name` varchar(30) default NULL,
   `fun_Description` varchar(100) default NULL,
+  `fun_Order` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY  (`fun_ID`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=2 ;
 
@@ -63,8 +64,8 @@ CREATE TABLE `donationfund_fun` (
 -- Dumping data for table `donationfund_fun`
 --
 
-INSERT INTO `donationfund_fun` (`fun_ID`, `fun_Active`, `fun_Name`, `fun_Description`) VALUES
-  (1, 'true', 'Pledges', 'Pledge income for the operating budget');
+INSERT INTO `donationfund_fun` (`fun_ID`, `fun_Active`, `fun_Name`, `fun_Description`, `fun_Order`) VALUES
+  (1, 'true', 'Pledges', 'Pledge income for the operating budget', 1);
 
 -- --------------------------------------------------------
 
