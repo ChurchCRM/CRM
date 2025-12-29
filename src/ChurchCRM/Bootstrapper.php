@@ -106,7 +106,13 @@ class Bootstrapper
             self::installChurchCRMSchema();
         }
         self::initSession();
-        SystemConfig::init(ConfigQuery::create()->find());
+        
+        // Initialize SystemConfig with database values only once during bootstrap
+        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters
+        if (!SystemConfig::isInitialized()) {
+            SystemConfig::init(ConfigQuery::create()->find());
+        }
+        
         self::configureLogging();
         self::configureUserEnvironment();
         self::configureLocale();
