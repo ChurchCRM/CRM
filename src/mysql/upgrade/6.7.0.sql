@@ -6,3 +6,6 @@ SET @row_number = 0;
 UPDATE donationfund_fun
 SET fun_Order = (@row_number:=@row_number + 1)
 ORDER BY fun_ID;
+
+-- Remove unused evctnm_notes column from eventcountnames_evctnm table
+ALTER TABLE eventcountnames_evctnm DROP COLUMN evctnm_notes;
