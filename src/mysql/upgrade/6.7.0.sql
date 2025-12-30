@@ -7,6 +7,9 @@ UPDATE donationfund_fun
 SET fun_Order = (@row_number:=@row_number + 1)
 ORDER BY fun_ID;
 
+-- Remove unused evctnm_notes column from eventcountnames_evctnm table
+ALTER TABLE eventcountnames_evctnm DROP COLUMN evctnm_notes;
+
 -- Remove obsolete pending email tables that were never fully implemented
 DROP TABLE IF EXISTS `email_recipient_pending_erp`;
 DROP TABLE IF EXISTS `email_message_pending_emp`;

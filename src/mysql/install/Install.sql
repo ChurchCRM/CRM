@@ -77,7 +77,6 @@ CREATE TABLE `eventcountnames_evctnm` (
   `evctnm_countid` int(5) NOT NULL auto_increment,
   `evctnm_eventtypeid` smallint(5) NOT NULL default '0',
   `evctnm_countname` varchar(20) NOT NULL default '',
-  `evctnm_notes` varchar(20) NOT NULL default '',
   UNIQUE KEY `evctnm_countid` (`evctnm_countid`),
   UNIQUE KEY `evctnm_eventtypeid` (`evctnm_eventtypeid`,`evctnm_countname`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_unicode_ci  AUTO_INCREMENT=7 ;
@@ -86,11 +85,11 @@ CREATE TABLE `eventcountnames_evctnm` (
 -- Dumping data for table `eventcountnames_evctnm`
 --
 
-INSERT INTO `eventcountnames_evctnm` (`evctnm_countid`, `evctnm_eventtypeid`, `evctnm_countname`, `evctnm_notes`) VALUES
-  (1, 1, 'Members', ''),
-  (2, 1, 'Visitors', ''),
-  (3, 2, 'Members', ''),
-  (4, 2, 'Visitors', '');
+INSERT INTO `eventcountnames_evctnm` (`evctnm_countid`, `evctnm_eventtypeid`, `evctnm_countname`) VALUES
+  (1, 1, 'Members'),
+  (2, 1, 'Visitors'),
+  (3, 2, 'Members'),
+  (4, 2, 'Visitors');
 
 -- --------------------------------------------------------
 
