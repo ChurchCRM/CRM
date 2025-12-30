@@ -41,11 +41,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="row mb-4">
         <!-- Total Pledges -->
         <div class="col-xl-3 col-md-6 mb-3">
-            <div class="card border-left-success shadow h-100">
+            <div class="card border-left-primary shadow h-100">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 <?= gettext('Total Pledges') ?>
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
@@ -63,21 +63,55 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
 
+        <!-- Total Payments -->
+        <div class="col-xl-3 col-md-6 mb-3">
+            <div class="card border-left-success shadow h-100">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                <?= gettext('Total Payments') ?>
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                $<?= number_format($totalPayments, 2) ?>
+                            </div>
+                            <?php 
+                            $overallPercent = $totalPledges > 0 ? ($totalPayments / $totalPledges) * 100 : 0;
+                            ?>
+                            <div class="text-xs text-muted mt-1">
+                                <?= number_format($overallPercent, 1) ?>% <?= gettext('of pledges') ?>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fa-solid fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Fund Summary Cards -->
         <?php if (!empty($fundTotals)): ?>
             <?php foreach ($fundTotals as $fundTotal): ?>
                 <div class="col-xl-3 col-md-6 mb-3">
-                    <div class="card border-left-primary shadow h-100">
+                    <div class="card border-left-info shadow h-100">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                         <?= htmlspecialchars($fundTotal['fund_name']) ?>
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        $<?= number_format($fundTotal['total_amount'], 2) ?>
+                                        $<?= number_format($fundTotal['total_paid'], 2) ?>
                                     </div>
                                     <div class="text-xs text-muted mt-1">
+                                        <?= gettext('of') ?> $<?= number_format($fundTotal['total_pledged'], 2) ?> 
+                                        (<?php 
+                                        $fundPercent = $fundTotal['total_pledged'] > 0 ? ($fundTotal['total_paid'] / $fundTotal['total_pledged']) * 100 : 0;
+                                        echo number_format($fundPercent, 0);
+                                        ?>%)
+                                    </div>
+                                    <div class="text-xs text-muted">
                                         <?= $fundTotal['family_count'] ?> <?= $fundTotal['family_count'] == 1 ? gettext('Family') : gettext('Families') ?>
                                     </div>
                                 </div>
@@ -123,6 +157,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <?php endif; ?>
                                         <th><?= gettext('Fund Name') ?></th>
                                         <th class="text-right"><?= gettext('Pledge Amount') ?></th>
+                                        <th class="text-right"><?= gettext('Payments') ?></th>
+                                        <th class="text-right"><?= gettext('Remaining') ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -150,6 +186,27 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <td><?= htmlspecialchars($pledge['fund_name']) ?></td>
                                                 <td class="text-right font-weight-bold">
                                                     $<?= number_format($pledge['pledge_amount'], 2) ?>
+                                                </td>
+                                                <td class="text-right">
+                                                    $<?= number_format($pledge['payment_amount'], 2) ?>
+                                                </td>
+                                                <?php 
+                                                $remaining = $pledge['pledge_amount'] - $pledge['payment_amount'];
+                                                $percentComplete = $pledge['pledge_amount'] > 0 ? ($pledge['payment_amount'] / $pledge['pledge_amount']) * 100 : 0;
+                                                $statusClass = '';
+                                                if ($percentComplete >= 100) {
+                                                    $statusClass = 'text-success font-weight-bold';
+                                                } elseif ($percentComplete >= 75) {
+                                                    $statusClass = 'text-info';
+                                                } elseif ($percentComplete >= 50) {
+                                                    $statusClass = 'text-warning';
+                                                } else {
+                                                    $statusClass = 'text-danger';
+                                                }
+                                                ?>
+                                                <td class="text-right <?= $statusClass ?>">
+                                                    $<?= number_format($remaining, 2) ?>
+                                                    <small class="d-block text-muted"><?= number_format($percentComplete, 0) ?>%</small>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

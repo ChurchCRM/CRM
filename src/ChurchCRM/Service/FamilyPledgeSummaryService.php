@@ -29,6 +29,39 @@ class FamilyPledgeSummaryService
             ->orderByFamId()
             ->find();
 
+        // Get all payments for the fiscal year to compare with pledges
+        $payments = PledgeQuery::create()
+            ->filterByFyId($fyid)
+            ->filterByPledgeOrPayment('Payment')
+            ->filterByAmount(0, Criteria::GREATER_THAN)
+            ->joinWith('Pledge.Family')
+            ->joinWith('Pledge.DonationFund', Criteria::LEFT_JOIN)
+            ->orderByFamId()
+            ->find();
+
+        // Organize payments by family and fund for lookup
+        $familyPayments = [];
+        foreach ($payments as $payment) {
+            $famId = $payment->getFamId();
+            $rawFundId = $payment->getFundId();
+            
+            $fund = $payment->getDonationFund();
+            if (!$fund && $rawFundId) {
+                $fund = DonationFundQuery::create()->findOneById($rawFundId);
+            }
+            
+            $fundId = $fund ? (int) $fund->getId() : ($rawFundId ?: -1);
+            
+            if (!isset($familyPayments[$famId])) {
+                $familyPayments[$famId] = [];
+            }
+            if (!isset($familyPayments[$famId][$fundId])) {
+                $familyPayments[$famId][$fundId] = 0.0;
+            }
+            
+            $familyPayments[$famId][$fundId] += (float) $payment->getAmount();
+        }
+
         // Organize data by family and aggregate by fund
         $familiesPledges = [];
         
@@ -65,10 +98,14 @@ class FamilyPledgeSummaryService
             
             // Aggregate pledges by fund (sum amounts for same family-fund combination)
             if (!isset($familiesPledges[$famId]['pledges'][$fundId])) {
+                // Get payment amount for this family/fund combination
+                $paymentAmount = isset($familyPayments[$famId][$fundId]) ? $familyPayments[$famId][$fundId] : 0.0;
+                
                 $familiesPledges[$famId]['pledges'][$fundId] = [
                     'fund_id' => $fundId,
                     'fund_name' => $fundName,
                     'pledge_amount' => 0.0,
+                    'payment_amount' => $paymentAmount,
                     'group_key' => $pledge->getGroupKey(),
                     'pledge_type' => $pledge->getPledgeOrPayment(),
                 ];
@@ -91,6 +128,7 @@ class FamilyPledgeSummaryService
         // Calculate fund totals from the families collection BEFORE sorting families
         $fundTotals = [];
         $totalPledgesAmount = 0.0;
+        $totalPaymentsAmount = 0.0;
         
         foreach ($familiesPledges as $family) {
             foreach ($family['pledges'] as $pledge) {
@@ -101,15 +139,18 @@ class FamilyPledgeSummaryService
                     $fundTotals[$fundId] = [
                         'fund_id' => $fundId,
                         'fund_name' => $pledge['fund_name'],
-                        'total_amount' => 0.0,
+                        'total_pledged' => 0.0,
+                        'total_paid' => 0.0,
                         'family_count' => 0,
                         'families' => [],
                     ];
                 }
                 
-                // Add pledge amount to fund total
-                $fundTotals[$fundId]['total_amount'] += $pledge['pledge_amount'];
+                // Add pledge and payment amounts to fund total
+                $fundTotals[$fundId]['total_pledged'] += $pledge['pledge_amount'];
+                $fundTotals[$fundId]['total_paid'] += $pledge['payment_amount'];
                 $totalPledgesAmount += $pledge['pledge_amount'];
+                $totalPaymentsAmount += $pledge['payment_amount'];
                 
                 // Track unique families per fund
                 if (!in_array($family['family_id'], $fundTotals[$fundId]['families'])) {
@@ -134,6 +175,7 @@ class FamilyPledgeSummaryService
             'families' => array_values($familiesPledges),
             'fund_totals' => array_values($fundTotals),
             'total_pledges' => $totalPledgesAmount,
+            'total_payments' => $totalPaymentsAmount,
         ];
     }
 
