@@ -82,9 +82,8 @@ function beginSession(Request $request, Response $response, array $args): Respon
     $redirectPath = isset($queryParams['location']) ? urldecode($queryParams['location']) : null;
     
     // Check for explicit username in query params (e.g., from password reset)
-    $prefilledUserName = InputUtils::sanitizeText($queryParams['username'] ?? '') ??
-        InputUtils::sanitizeText($request->getServerParams()['username'] ?? '') ??
-        '';
+    $rawUserName = $queryParams['username'] ?? $request->getServerParams()['username'] ?? '';
+    $prefilledUserName = InputUtils::sanitizeText($rawUserName);
     
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),
