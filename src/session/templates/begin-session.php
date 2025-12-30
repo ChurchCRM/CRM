@@ -3,6 +3,7 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext('Login');
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
@@ -47,16 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                     <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext('Password') ?>" required autofocus>
                 </div>
                 <div class="row">
-                    <div class="col-8">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="remember">
-                            <label class="custom-control-label" for="remember">
-                                Remember Me
-                            </label>
-                        </div>
-                    </div>
-                    <!-- /.col -->
-                    <div class="col-4">
+                    <div class="col-12">
                         <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                     </div>
                     <!-- /.col -->
