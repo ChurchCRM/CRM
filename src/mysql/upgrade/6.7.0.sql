@@ -21,4 +21,4 @@ DELETE FROM queryparameters_qrp WHERE qrp_qry_ID = 32;
 DELETE FROM query_qry WHERE qry_ID = 32;
 
 -- Update aFinanceQueries config to remove Query ID 32
-UPDATE config_cfg SET cfg_value = '28,30,31' WHERE cfg_name = 'aFinanceQueries' AND cfg_value LIKE '%32%';
+UPDATE config_cfg SET cfg_value = '28,30' WHERE cfg_name = 'aFinanceQueries' AND cfg_value LIKE '%32%';
