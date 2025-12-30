@@ -138,14 +138,7 @@ if (isset($_POST['BulkAddToCart'])) {
 // Returns the current fiscal year
 function CurrentFY(): int
 {
-    $yearNow = (int) date('Y');
-    $monthNow = (int) date('m');
-    $FYID = $yearNow - 1996;
-    if ($monthNow >= SystemConfig::getValue('iFYMonth') && SystemConfig::getValue('iFYMonth') > 1) {
-        $FYID += 1;
-    }
-
-    return $FYID;
+    return \ChurchCRM\Utils\FiscalYearUtils::getCurrentFiscalYearId();
 }
 
 // PrintFYIDSelect: make a fiscal year selection menu.
