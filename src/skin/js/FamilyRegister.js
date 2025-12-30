@@ -182,8 +182,14 @@
         // Initialize state on page load
         updateHideAgeState();
 
-        // Initialize input mask on new phone field
-        $(`#member-phone-${memberIndex}`).inputmask();
+        // Initialize input mask on new phone field (safe)
+        if ($.fn && $.fn.inputmask) {
+            try {
+                $(`#member-phone-${memberIndex}`).inputmask();
+            } catch (e) {
+                console.warn("Failed to initialize inputmask for member phone", e);
+            }
+        }
 
         // Update display
         updateMemberCount();
@@ -474,27 +480,76 @@
         $("#displayFamilyAddress").text(familyAddress);
         $("#displayFamilyPhone").text(family.HomePhone);
 
-        // Clear all member rows first (template shows rows 1-8)
+        // Clear all member rows/cards first (template shows slots 1-8)
         for (let i = 1; i <= 8; i++) {
-            $(`#displayFamilyPerson${i}`).hide();
+            $(`#displayFamilyPerson${i}`).addClass("d-none");
+            $(`#displayFamilyPersonCard${i}`).addClass("d-none");
             $(`#displayFamilyPersonFName${i}`).text("");
             $(`#displayFamilyPersonLName${i}`).text("");
             $(`#displayFamilyPersonEmail${i}`).text("");
             $(`#displayFamilyPersonPhone${i}`).text("");
             $(`#displayFamilyPersonBDay${i}`).text("");
+            $(`#displayFamilyPersonCardFName${i}`).text("");
+            $(`#displayFamilyPersonCardLName${i}`).text("");
+            $(`#displayFamilyPersonCardEmail${i}`).text("");
+            $(`#displayFamilyPersonCardPhone${i}`).text("");
+            $(`#displayFamilyPersonCardBDay${i}`).text("");
+            $(`#displayFamilyPersonCardEmailBlock${i}`).addClass("d-none");
+            $(`#displayFamilyPersonCardPhoneBlock${i}`).addClass("d-none");
+            $(`#displayFamilyPersonCardBDayBlock${i}`).addClass("d-none");
         }
 
         // Display member details
         family.people.forEach((person, index) => {
             const memberNum = index + 1;
-            $(`#displayFamilyPerson${memberNum}`).show();
+            const displayPhone = person.cellPhone || person.workPhone || person.homePhone || "";
+
+            // Show and populate table row (desktop)
+            $(`#displayFamilyPerson${memberNum}`).removeClass("d-none");
             $(`#displayFamilyPersonFName${memberNum}`).text(person.firstName);
             $(`#displayFamilyPersonLName${memberNum}`).text(person.lastName);
             $(`#displayFamilyPersonEmail${memberNum}`).text(person.email);
-
-            const displayPhone = person.cellPhone || person.workPhone || person.homePhone || "";
             $(`#displayFamilyPersonPhone${memberNum}`).text(displayPhone);
             $(`#displayFamilyPersonBDay${memberNum}`).text(person.birthday);
+
+            // Show and populate card (mobile)
+            $(`#displayFamilyPersonCard${memberNum}`).removeClass("d-none");
+            $(`#displayFamilyPersonCardFName${memberNum}`).text(person.firstName);
+            $(`#displayFamilyPersonCardLName${memberNum}`).text(person.lastName);
+
+            // Set gender icon on mobile card (1 = Male, 2 = Female)
+            try {
+                const $genderIcon = $(`#displayFamilyPersonCardGenderIcon${memberNum}`);
+                if ($genderIcon && $genderIcon.length) {
+                    if (String(person.gender) === "2") {
+                        $genderIcon.attr("class", "fa-solid fa-venus text-danger mr-2");
+                    } else if (String(person.gender) === "1") {
+                        $genderIcon.attr("class", "fa-solid fa-mars text-primary mr-2");
+                    } else {
+                        $genderIcon.attr("class", "fa-solid fa-user text-secondary mr-2");
+                    }
+                }
+            } catch (e) {
+                // ignore
+            }
+
+            // Show email field only if email exists
+            if (person.email && person.email.trim() !== "") {
+                $(`#displayFamilyPersonCardEmail${memberNum}`).text(person.email);
+                $(`#displayFamilyPersonCardEmailBlock${memberNum}`).removeClass("d-none");
+            }
+
+            // Show phone field only if phone exists
+            if (displayPhone && displayPhone.trim() !== "") {
+                $(`#displayFamilyPersonCardPhone${memberNum}`).text(displayPhone);
+                $(`#displayFamilyPersonCardPhoneBlock${memberNum}`).removeClass("d-none");
+            }
+
+            // Show birthday field only if birthday exists
+            if (person.birthday && person.birthday.trim() !== "") {
+                $(`#displayFamilyPersonCardBDay${memberNum}`).text(person.birthday);
+                $(`#displayFamilyPersonCardBDayBlock${memberNum}`).removeClass("d-none");
+            }
         });
     }
 
@@ -645,20 +700,10 @@
                         state.validatedNavigation = { from: 0, to: 1 };
                         registrationStepper.next();
                     } else {
-                        $.notify(
-                            {
-                                icon: "fa fa-exclamation-triangle",
-                                message: i18next.t("Please fill in all required fields correctly."),
-                            },
-                            {
-                                type: "warning",
-                                delay: 4000,
-                                placement: {
-                                    from: "top",
-                                    align: "right",
-                                },
-                            },
-                        );
+                        window.CRM.notify(i18next.t("Please fill in all required fields correctly."), {
+                            type: "warning",
+                            delay: 4000,
+                        });
                     }
                 });
             } else {
@@ -675,20 +720,10 @@
 
             // Validate at least 1 member exists
             if (state.currentMemberCount === 0) {
-                $.notify(
-                    {
-                        icon: "fa fa-exclamation-triangle",
-                        message: i18next.t("Please add at least one family member."),
-                    },
-                    {
-                        type: "warning",
-                        delay: 4000,
-                        placement: {
-                            from: "top",
-                            align: "right",
-                        },
-                    },
-                );
+                window.CRM.notify(i18next.t("Please add at least one family member."), {
+                    type: "warning",
+                    delay: 4000,
+                });
                 return;
             }
 
@@ -698,20 +733,10 @@
                         state.validatedNavigation = { from: 1, to: 2 };
                         registrationStepper.next();
                     } else {
-                        $.notify(
-                            {
-                                icon: "fa fa-exclamation-triangle",
-                                message: i18next.t("Please fill in all required fields correctly."),
-                            },
-                            {
-                                type: "warning",
-                                delay: 4000,
-                                placement: {
-                                    from: "top",
-                                    align: "right",
-                                },
-                            },
-                        );
+                        window.CRM.notify(i18next.t("Please fill in all required fields correctly."), {
+                            type: "warning",
+                            delay: 4000,
+                        });
                     }
                 });
             } else {

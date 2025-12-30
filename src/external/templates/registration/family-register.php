@@ -301,7 +301,8 @@ if (!empty($sHeader)) {
                                 <h5 class="mb-0"><i class="fa-solid fa-users mr-2"></i><?= gettext("Family Members") ?></h5>
                             </div>
                             <div class="card-body p-0">
-                                <div class="table-responsive">
+                                <!-- Desktop/table view (md and up) -->
+                                <div class="table-responsive d-none d-md-block">
                                     <table class="table table-striped table-hover mb-0">
                                         <thead class="thead-light">
                                             <tr>
@@ -314,7 +315,7 @@ if (!empty($sHeader)) {
                                         </thead>
                                         <tbody>
                                             <?php for ($x = 1; $x <= 8; $x++) { ?>
-                                                <tr id="displayFamilyPerson<?= $x ?>">
+                                                <tr id="displayFamilyPerson<?= $x ?>" class="d-none">
                                                     <td><span id="displayFamilyPersonFName<?= $x ?>"></span></td>
                                                     <td><span id="displayFamilyPersonLName<?= $x ?>"></span></td>
                                                     <td><span id="displayFamilyPersonEmail<?= $x ?>"></span></td>
@@ -324,6 +325,38 @@ if (!empty($sHeader)) {
                                             <?php } ?>
                                         </tbody>
                                     </table>
+                                </div>
+
+                                <!-- Mobile/card view (small screens) -->
+                                <div class="d-block d-md-none">
+                                    <?php for ($x = 1; $x <= 8; $x++) { ?>
+                                        <div id="displayFamilyPersonCard<?= $x ?>" class="card mb-3 d-none border-0 shadow-none">
+                                            <div class="card-body bg-white p-3">
+                                                <div class="d-flex align-items-center mb-2">
+                                                    <i id="displayFamilyPersonCardGenderIcon<?= $x ?>" class="fa-solid fa-user text-primary mr-2"></i>
+                                                    <h6 class="card-title mb-0">
+                                                        <span id="displayFamilyPersonCardFName<?= $x ?>"></span>
+                                                        <span id="displayFamilyPersonCardLName<?= $x ?>"></span>
+                                                    </h6>
+                                                </div>
+                                                <div id="displayFamilyPersonCardEmailBlock<?= $x ?>" class="mb-2 d-none">
+                                                    <i class="fa-solid fa-envelope text-muted mr-2"></i>
+                                                    <strong><?= gettext('Email') ?>:</strong>
+                                                    <div class="ml-4"><span id="displayFamilyPersonCardEmail<?= $x ?>"></span></div>
+                                                </div>
+                                                <div id="displayFamilyPersonCardPhoneBlock<?= $x ?>" class="mb-2 d-none">
+                                                    <i class="fa-solid fa-phone text-muted mr-2"></i>
+                                                    <strong><?= gettext('Phone') ?>:</strong>
+                                                    <div class="ml-4"><span id="displayFamilyPersonCardPhone<?= $x ?>"></span></div>
+                                                </div>
+                                                <div id="displayFamilyPersonCardBDayBlock<?= $x ?>" class="mb-0 d-none">
+                                                    <i class="fa-solid fa-birthday-cake text-muted mr-2"></i>
+                                                    <strong><?= gettext('Birthday') ?>:</strong>
+                                                    <div class="ml-4"><span id="displayFamilyPersonCardBDay<?= $x ?>"></span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
