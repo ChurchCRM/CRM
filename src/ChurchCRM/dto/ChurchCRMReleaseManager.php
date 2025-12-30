@@ -375,6 +375,9 @@ class ChurchCRMReleaseManager
                 UpgradeService::upgradeDatabaseVersion();
                 $logger->info('Automatic database upgrade completed successfully');
                 
+                // Clear integrity check cache after upgrade
+                AppIntegrityService::clearIntegrityCache();
+                
                 // After successful database upgrade, clean up orphaned files
                 $logger->info('Beginning automatic orphaned file cleanup');
                 $cleanupResult = AppIntegrityService::deleteOrphanedFiles();
