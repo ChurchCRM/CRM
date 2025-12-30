@@ -2,9 +2,9 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
-use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\FiscalYearUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -21,7 +21,6 @@ class FamilyPledgeSummaryService
     public function getFamilyPledgesByFiscalYear(int $fyid): array
     {
         // Get all pledges for the fiscal year (only actual pledges, not payments)
-        // Use join to ensure fund data is loaded
         $pledges = PledgeQuery::create()
             ->filterByFyId($fyid)
             ->filterByPledgeOrPayment('Pledge')
@@ -33,20 +32,25 @@ class FamilyPledgeSummaryService
 
         // Organize data by family and aggregate by fund
         $familiesPledges = [];
-        $fundTotals = []; // Track fund totals: family count and total amount
         
         foreach ($pledges as $pledge) {
             $family = $pledge->getFamily();
             $famId = $family->getId();
+            $rawFundId = $pledge->getFundId();
+            
+            // Try to get the fund - use direct query if join didn't work
             $fund = $pledge->getDonationFund();
+            if (!$fund && $rawFundId) {
+                $fund = DonationFundQuery::create()->findOneById($rawFundId);
+            }
             
             // Determine fund ID and name
             if ($fund) {
                 $fundId = (int) $fund->getId();
                 $fundName = $fund->getName();
             } else {
-                // No valid fund - use "Other" bucket
-                $fundId = -1;
+                // No valid fund - use fund ID as key or "Other" bucket
+                $fundId = $rawFundId ?: -1;
                 $fundName = gettext('Other');
             }
             
@@ -60,38 +64,20 @@ class FamilyPledgeSummaryService
                 ];
             }
             
-            // Initialize fund totals if not exists
-            if (!isset($fundTotals[$fundId])) {
-                $fundTotals[$fundId] = [
-                    'fund_id' => $fundId,
-                    'fund_name' => $fundName,
-                    'total_amount' => 0.0,
-                    'family_count' => 0,
-                    'families' => [], // Track unique families
-                ];
-            }
-            
             // Aggregate pledges by fund (sum amounts for same family-fund combination)
             if (!isset($familiesPledges[$famId]['pledges'][$fundId])) {
                 $familiesPledges[$famId]['pledges'][$fundId] = [
                     'fund_id' => $fundId,
                     'fund_name' => $fundName,
                     'pledge_amount' => 0.0,
-                    'group_key' => $pledge->getGroupKey(), // Keep first group key for edit link
+                    'group_key' => $pledge->getGroupKey(),
                     'pledge_type' => $pledge->getPledgeOrPayment(),
                 ];
-                
-                // Track unique families per fund
-                if (!in_array($famId, $fundTotals[$fundId]['families'])) {
-                    $fundTotals[$fundId]['families'][] = $famId;
-                    $fundTotals[$fundId]['family_count']++;
-                }
             }
             
             // Add this pledge amount to the fund total
             $pledgeAmount = (float) $pledge->getAmount();
             $familiesPledges[$famId]['pledges'][$fundId]['pledge_amount'] += $pledgeAmount;
-            $fundTotals[$fundId]['total_amount'] += $pledgeAmount;
         }
 
         // Convert pledges associative array to indexed array and sort by fund name
@@ -101,27 +87,49 @@ class FamilyPledgeSummaryService
                 return strcasecmp($a['fund_name'], $b['fund_name']);
             });
         }
+        unset($family); // Break reference
 
-        // Sort by family name
-        usort($familiesPledges, function ($a, $b) {
-            return strcasecmp($a['family_name'], $b['family_name']);
-        });
+        // Calculate fund totals from the families collection BEFORE sorting families
+        $fundTotals = [];
+        $totalPledgesAmount = 0.0;
+        
+        foreach ($familiesPledges as $family) {
+            foreach ($family['pledges'] as $pledge) {
+                $fundId = $pledge['fund_id'];
+                
+                // Initialize fund total if not exists
+                if (!isset($fundTotals[$fundId])) {
+                    $fundTotals[$fundId] = [
+                        'fund_id' => $fundId,
+                        'fund_name' => $pledge['fund_name'],
+                        'total_amount' => 0.0,
+                        'family_count' => 0,
+                        'families' => [],
+                    ];
+                }
+                
+                // Add pledge amount to fund total
+                $fundTotals[$fundId]['total_amount'] += $pledge['pledge_amount'];
+                $totalPledgesAmount += $pledge['pledge_amount'];
+                
+                // Track unique families per fund
+                if (!in_array($family['family_id'], $fundTotals[$fundId]['families'])) {
+                    $fundTotals[$fundId]['families'][] = $family['family_id'];
+                    $fundTotals[$fundId]['family_count']++;
+                }
+            }
+        }
         
         // Clean up fund totals (remove internal tracking array)
         foreach ($fundTotals as &$fundTotal) {
             unset($fundTotal['families']);
         }
-        
-        // Sort fund totals by fund name
-        usort($fundTotals, function ($a, $b) {
-            return strcasecmp($a['fund_name'], $b['fund_name']);
-        });
+        unset($fundTotal); // Break reference
 
-        // Calculate total pledges for the year
-        $totalPledgesAmount = 0.0;
-        foreach ($fundTotals as $fundTotal) {
-            $totalPledgesAmount += $fundTotal['total_amount'];
-        }
+        // Sort by family name
+        usort($familiesPledges, function ($a, $b) {
+            return strcasecmp($a['family_name'], $b['family_name']);
+        });
 
         return [
             'families' => array_values($familiesPledges),
