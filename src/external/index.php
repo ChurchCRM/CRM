@@ -1,7 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../Include/LoadConfig.php';
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;

@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../Include/LoadConfig.php';
+require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
@@ -14,8 +14,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Slim\Views\PhpRenderer;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-
-require_once __DIR__ . '/../vendor/autoload.php';
 
 // Get base path by combining $sRootPath from Config.php with /session endpoint
 // Examples: '' + '/session' = '/session' (root install)
