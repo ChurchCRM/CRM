@@ -3,7 +3,6 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext('Login');
 require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
