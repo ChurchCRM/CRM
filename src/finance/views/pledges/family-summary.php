@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -29,7 +30,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <option value="">-- <?= gettext('select an option') ?> --</option>
                             <?php foreach ($availableYears as $year): ?>
                                 <option value="<?= $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
-                                    <?= htmlspecialchars($year['label']) ?>
+                                    <?= InputUtils::escapeHTML($year['label']) ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -75,16 +76,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <tr>
                                                 <?php if ($isFirstRow): ?>
                                                     <td rowspan="<?= count($family['pledges']) ?>" class="align-middle font-weight-bold">
-                                                        <?= htmlspecialchars($family['family_name']) ?>
+                                                        <?= InputUtils::escapeHTML($family['family_name']) ?>
                                                     </td>
                                                     <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                                     <td rowspan="<?= count($family['pledges']) ?>" class="align-middle">
-                                                        <?= htmlspecialchars($family['envelope'] ?? '') ?>
+                                                        <?= InputUtils::escapeHTML($family['envelope'] ?? '') ?>
                                                     </td>
                                                     <?php endif; ?>
                                                     <?php $isFirstRow = false; ?>
                                                 <?php endif; ?>
-                                                <td><?= htmlspecialchars($pledge['fund_name']) ?></td>
+                                                <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
                                                 <td class="text-right">
                                                     <?= number_format($pledge['pledge_amount'], 2) ?>
                                                 </td>

@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -18,7 +19,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <select name="fyid" id="fyid" class="form-control d-inline-block" style="width: auto;" onchange="this.form.submit();">
                         <?php foreach ($availableYears as $year): ?>
                             <option value="<?= $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
-                                <?= htmlspecialchars($year['label']) ?>
+                                <?= InputUtils::escapeHTML($year['label']) ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -99,7 +100,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                        <?= htmlspecialchars($fundTotal['fund_name']) ?>
+                                        <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
                                         $<?= number_format($fundTotal['total_paid'], 2) ?>
@@ -172,7 +173,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <td class="<?= $idx === 0 ? 'font-weight-bold' : 'text-muted small pl-4' ?>">
                                                     <?php if ($idx === 0): ?>
                                                         <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family['family_id'] ?>">
-                                                            <?= htmlspecialchars($family['family_name']) ?>
+                                                            <?= InputUtils::escapeHTML($family['family_name']) ?>
                                                         </a>
                                                     <?php else: ?>
                                                         <span class="text-muted">↳</span>
@@ -180,10 +181,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 </td>
                                                 <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                                 <td class="text-muted small">
-                                                    <?= $idx === 0 ? htmlspecialchars($family['envelope'] ?? '') : '' ?>
+                                                    <?= $idx === 0 ? InputUtils::escapeHTML($family['envelope'] ?? '') : '' ?>
                                                 </td>
                                                 <?php endif; ?>
-                                                <td><?= htmlspecialchars($pledge['fund_name']) ?></td>
+                                                <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
                                                 <td class="text-right font-weight-bold">
                                                     $<?= number_format($pledge['pledge_amount'], 2) ?>
                                                 </td>
