@@ -67,6 +67,7 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
 function endSession(Request $request, Response $response, array $args): Response
 {
     AuthenticationManager::endSession(true);
+    
     $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
     $response = $response->withHeader('Location', $redirectUrl)->withStatus(302);
     $response->getBody()->write('');
@@ -77,25 +78,31 @@ function beginSession(Request $request, Response $response, array $args): Respon
 {
     $queryParams = $request->getQueryParams();
     $redirectPath = isset($queryParams['location']) ? urldecode($queryParams['location']) : null;
+    
+    // Check for explicit username in query params (e.g., from password reset)
+    $rawUserName = $queryParams['username'] ?? $request->getServerParams()['username'] ?? '';
+    $prefilledUserName = InputUtils::sanitizeText($rawUserName);
+    
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),
         'localAuthNextStepURL' => AuthenticationManager::getSessionBeginURL($redirectPath),
         'forgotPasswordURL'    => AuthenticationManager::getForgotPasswordURL(),
+        'prefilledUserName'    => $prefilledUserName,
     ];
 
     if ($request->getMethod() === 'POST') {
         $loginRequestBody = $request->getParsedBody();
-        $userPassRequest = new LocalUsernamePasswordRequest($loginRequestBody['User'], $loginRequestBody['Password'], $redirectPath);
+        
+        $userPassRequest = new LocalUsernamePasswordRequest(
+            $loginRequestBody['User'],
+            $loginRequestBody['Password'],
+            $redirectPath
+        );
         $authenticationResult = AuthenticationManager::authenticate($userPassRequest);
         $pageArgs['sErrorText'] = $authenticationResult->message;
     }
 
     $renderer = new PhpRenderer('templates/');
-
-    // Determine if appropriate to pre-fill the username field
-    $pageArgs['prefilledUserName'] = InputUtils::sanitizeText($request->getQueryParams()['username']) ??
-    InputUtils::sanitizeText($request->getServerParams()['username']) ??
-        '';
 
     return $renderer->render($response, 'begin-session.php', $pageArgs);
 }
