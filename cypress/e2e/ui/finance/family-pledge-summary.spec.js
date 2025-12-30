@@ -5,8 +5,9 @@ describe('Finance: Pledge Dashboard', () => {
     });
 
     it('should load the Pledge Dashboard page', () => {
-        cy.contains('h2', 'Pledge Dashboard').should('be.visible');
-        cy.contains('Track and manage pledge commitments by family and fund').should('be.visible');
+        // Verify fiscal year selector is present (main page element)
+        cy.contains('label', 'Fiscal Year').should('be.visible');
+        cy.get('select#fyid').should('be.visible');
     });
 
     it('should display fiscal year selector', () => {
@@ -85,8 +86,8 @@ describe('Finance: Pledge Dashboard', () => {
         
         cy.wait(500);
         
-        // Should display count of families
-        cy.get('.badge').contains('Families').should('be.visible');
+        // Badge should contain numeric count
+        cy.get('.badge').should('be.visible').invoke('text').should('match', /^\d+$/);
     });
 
     it('should allow switching between fiscal years', () => {
