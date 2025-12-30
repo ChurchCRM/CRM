@@ -530,7 +530,9 @@
                     }
                 }
             } catch (e) {
-                // ignore
+                if (window.console && typeof window.console.error === "function") {
+                    window.console.error("FamilyRegister: failed to set gender icon for member", memberNum, e);
+                }
             }
 
             // Show email field only if email exists
