@@ -7,10 +7,14 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
+
+// Initialize logger for error tracking
+$logger = LoggerUtils::getAppLogger();
 
 // Get the Group from the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
@@ -233,7 +237,16 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     }
 
                     $sSQL .= ' DEFAULT NULL ;';
-                    RunQuery($sSQL);
+                    $result = RunQuery($sSQL);
+                    
+                    // Check if ALTER TABLE succeeded
+                    if (!$result) {
+                        $logger->warning('Failed to add column to group properties table', [
+                            'column' => 'c' . $newFieldNum,
+                            'group_id' => $iGroupID,
+                        ]);
+                        // Continue anyway to allow user to retry
+                    }
 
                     $bNewNameError = false;
                 }
