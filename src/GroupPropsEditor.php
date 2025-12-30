@@ -5,10 +5,14 @@ require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(), 'EditRecords');
+
+// Initialize logger for error tracking
+$logger = LoggerUtils::getAppLogger();
 
 $sPageTitle = gettext('Group Member Properties Editor');
 
@@ -78,13 +82,40 @@ if (isset($_POST['GroupPropSubmit'])) {
         $sSQL .= ' WHERE per_ID = ' . $iPersonID;
 
         //Execute the SQL
-        RunQuery($sSQL);
-
-        // Return to the Person View
-        RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
+        $updateResult = RunQuery($sSQL);
+        
+        if (!$updateResult) {
+            $logger->error('Failed to update group properties', [
+                'person_id' => $iPersonID,
+                'group_id' => $iGroupID,
+            ]);
+            $bErrorFlag = true;
+        } else {
+            // Return to the Person View
+            RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
+        }
     }
 } else {
     // First Pass
+    // Verify that the groupprop_X table exists
+    $checkTableSQL = 'SHOW TABLES LIKE "groupprop_' . $iGroupID . '"';
+    $tableCheckResult = RunQuery($checkTableSQL);
+    
+    if (mysqli_num_rows($tableCheckResult) === 0) {
+        // Table does not exist - create it with initial per_ID column
+        $createTableSQL = 'CREATE TABLE IF NOT EXISTS groupprop_' . $iGroupID . ' (
+            per_ID mediumint(8) unsigned NOT NULL default "0",
+            PRIMARY KEY (per_ID),
+            UNIQUE KEY per_ID (per_ID)
+        ) ENGINE=InnoDB';
+        $createResult = RunQuery($createTableSQL);
+        
+        if (!$createResult) {
+            $logger->error('Failed to create group properties table', ['group_id' => $iGroupID]);
+            $bErrorFlag = true;
+        }
+    }
+    
     // Get the existing data for this group member
     $sSQL = 'SELECT * FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID;
     $rsPersonProps = RunQuery($sSQL);
