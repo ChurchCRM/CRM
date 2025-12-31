@@ -12,10 +12,10 @@ export function togglePhoneMask(checkboxName, inputName) {
     var input = $('input[name="' + inputName + '"]');
 
     function updateMask() {
+        var currentVal = input.val();
+
         if (checkbox.is(":checked")) {
             // Remove input mask to allow free-form entry
-            // Preserve the current value to avoid inputmask clearing it on remove
-            var currentVal = input.val();
             try {
                 input.inputmask("remove");
             } catch (e) {
@@ -23,50 +23,28 @@ export function togglePhoneMask(checkboxName, inputName) {
             }
             input.val(currentVal);
         } else {
-            // Re-apply input mask only if the current value is compatible with the configured mask
-            var rawVal = input.val();
-            var maskAttr = input.attr("data-inputmask") || input.data("inputmask");
-            var maskString = null;
-            if (maskAttr) {
-                // maskAttr is usually a JSON-ish string like '"mask": "(999) 999-9999"'
-                var m = maskAttr.match(/mask\"?\s*:\s*\"([^\"]+)\"/);
-                if (m && m[1]) {
-                    maskString = m[1];
-                } else if (typeof maskAttr === "string" && maskAttr.indexOf("mask") === -1) {
-                    // Some inputs may have plain mask string
-                    maskString = maskAttr;
-                }
+            // Reapply the mask by reinitializing from data-inputmask attribute
+            try {
+                // Remove any existing mask first
+                input.inputmask("remove");
+            } catch (e) {
+                // ignore
             }
 
-            var shouldApplyMask = true;
-            if (maskString) {
-                var expectedDigitsMatch = maskString.match(/9|0/g);
-                var expectedDigits = expectedDigitsMatch ? expectedDigitsMatch.length : 0;
-                var digitsCount = (rawVal || "").replace(/\D/g, "").length;
-                var hasPlusOrLetters = /\+|[A-Za-z]/.test(rawVal || "");
-                if (expectedDigits > 0 && (digitsCount !== expectedDigits || hasPlusOrLetters)) {
-                    // Value is not compatible with mask -> do not apply mask to avoid trimming
-                    shouldApplyMask = false;
-                }
+            // Ensure data-mask attribute is present so inputmask() will initialize
+            if (!input.is("[data-mask]")) {
+                input.attr("data-mask", "");
             }
 
-            if (shouldApplyMask) {
-                try {
-                    input.inputmask();
-                } catch (e) {
-                    // ignore if inputmask not available
-                }
-                // Restore the raw value so the mask can format it
-                input.val(rawVal);
-            } else {
-                // Ensure any existing mask is removed to preserve full raw value
-                try {
-                    input.inputmask("remove");
-                } catch (e) {
-                    // ignore
-                }
-                input.val(rawVal);
+            // Reinitialize from data-inputmask attribute
+            try {
+                input.inputmask();
+            } catch (e) {
+                console.error("Error reapplying mask:", e);
             }
+
+            // Restore value to trigger mask formatting
+            input.val(currentVal);
         }
     }
 

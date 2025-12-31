@@ -56,6 +56,11 @@ $(document).ready(function () {
     $("#Country").select2();
     $("#State").select2();
 
+    // Initialize phone mask toggles using auto-discovery for all phone fields (including custom)
+    if (window.CRM.formUtils && window.CRM.formUtils.initializeAllPhoneMaskToggles) {
+        window.CRM.formUtils.initializeAllPhoneMaskToggles();
+    }
+
     // Add Family Member Row functionality
     if (window.CRM.initialFamilyMemberCount !== undefined) {
         let rowCount = window.CRM.initialFamilyMemberCount;
@@ -120,11 +125,4 @@ $(document).ready(function () {
             $("input[name='FamCount']").val(rowCount);
         });
     }
-
-    // Initialize phone mask toggles
-    var phoneFields = [{ checkboxName: "NoFormat_HomePhone", inputName: "HomePhone" }];
-    if (window.CRM.customPhoneFields && window.CRM.customPhoneFields.length > 0) {
-        phoneFields = phoneFields.concat(window.CRM.customPhoneFields);
-    }
-    window.CRM.formUtils.initializePhoneMaskToggles(phoneFields);
 });
