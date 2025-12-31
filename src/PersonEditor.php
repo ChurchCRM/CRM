@@ -548,34 +548,12 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $sWorkPhone = $per_WorkPhone ?? '';
         $sCellPhone = $per_CellPhone ?? '';
 
-        // Default the "No format" checkboxes when stored phone values do not match the configured mask
-        // Only run on first-pass (no POST), POST handling will override these when submitted
-        $homeMask = SystemConfig::getValue('sPhoneFormat');
-        $cellMask = SystemConfig::getValue('sPhoneFormatCell');
-        $workMask = SystemConfig::getValue('sPhoneFormatWithExt');
-
-        $homeDigits = strlen(preg_replace('/\D/', '', $sHomePhone));
-        $cellDigits = strlen(preg_replace('/\D/', '', $sCellPhone));
-        $workDigits = strlen(preg_replace('/\D/', '', $sWorkPhone));
-
-        $expectedHome = preg_match_all('/9|0/', $homeMask);
-        $expectedCell = preg_match_all('/9|0/', $cellMask);
-        $expectedWork = preg_match_all('/9|0/', $workMask);
-
-        // If stored value contains a plus sign or non-digit characters (extensions aside), prefer NoFormat
-        $homeHasPlusOrLetters = preg_match('/\+|[A-Za-z]/', $sHomePhone);
-        $cellHasPlusOrLetters = preg_match('/\+|[A-Za-z]/', $sCellPhone);
-        $workHasPlusOrLetters = preg_match('/\+|[A-Za-z]/', $sWorkPhone);
-
-        if ($expectedHome > 0 && ($homeDigits !== $expectedHome || $homeHasPlusOrLetters)) {
-            $bNoFormat_HomePhone = true;
-        }
-        if ($expectedCell > 0 && ($cellDigits !== $expectedCell || $cellHasPlusOrLetters)) {
-            $bNoFormat_CellPhone = true;
-        }
-        if ($expectedWork > 0 && ($workDigits !== $expectedWork || $workHasPlusOrLetters)) {
-            $bNoFormat_WorkPhone = true;
-        }
+        // Set "No format" checkboxes based on whether fields have data
+        // If field has data: checkbox checked, no mask
+        // If field is empty: checkbox unchecked, mask applied
+        $bNoFormat_HomePhone = !empty($sHomePhone);
+        $bNoFormat_CellPhone = !empty($sCellPhone);
+        $bNoFormat_WorkPhone = !empty($sWorkPhone);
 
         //The following values are True booleans if the family record has a value for the
         //indicated field.  These are used to highlight field headers in red.
@@ -892,7 +870,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="tel" name="HomePhone" id="HomePhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
                                    maxlength="30" class="form-control"
-                                   data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+                                   data-phone-mask='{"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <div class="custom-control custom-checkbox mb-0">
@@ -920,7 +898,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="tel" name="CellPhone" id="CellPhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
                                    maxlength="30" class="form-control"
-                                   data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
+                                   data-phone-mask='{"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"}'>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <div class="custom-control custom-checkbox mb-0">
@@ -948,7 +926,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="tel" name="WorkPhone" id="WorkPhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
                                    maxlength="30" class="form-control"
-                                   data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"' data-mask>
+                                   data-phone-mask='{"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"}'>
                             <div class="input-group-append">
                                 <div class="input-group-text">
                                     <div class="custom-control custom-checkbox mb-0">
@@ -1194,11 +1172,8 @@ require_once __DIR__ . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(function() {
-        // Initialize input masks
-        $("[data-mask]").inputmask();
-        $("#familyId").select2();
-        
-        // Apply phone mask toggles to all phone fields
+        // Initialize phone mask toggles FIRST, before applying masks globally
+        // This ensures phone fields with "No format" checked don't get masked
         var phoneFields = [
             { checkboxName: 'NoFormat_HomePhone', inputName: 'HomePhone' },
             { checkboxName: 'NoFormat_WorkPhone', inputName: 'WorkPhone' },
@@ -1208,6 +1183,11 @@ require_once __DIR__ . '/Include/Header.php';
         phoneFields = phoneFields.concat(<?= json_encode($customPhoneFields) ?>);
         <?php } ?>
         window.CRM.formUtils.initializePhoneMaskToggles(phoneFields);
+
+        // Apply inputmask to non-phone fields (fields with data-mask but no "No format" checkbox)
+        $("[data-mask]").inputmask();
+        
+        $("#familyId").select2();
     });
 </script>
 

@@ -445,6 +445,11 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         // No display formatting — keep stored value as-is
 
+        // Set "No format" checkbox based on whether field has data
+        // If field has data: checkbox checked, no mask
+        // If field is empty: checkbox unchecked, mask applied
+        $bNoFormat_HomePhone = !empty($sHomePhone);
+
         $sSQL = 'SELECT * FROM family_custom WHERE fam_ID = ' . $iFamilyID;
         $rsCustomData = RunQuery($sSQL);
         $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
@@ -693,7 +698,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
                         </div>
-                        <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+                        <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-phone-mask='{"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <input type="checkbox" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
@@ -766,12 +771,6 @@ require_once __DIR__ . '/Include/Header.php';
                             <div class="form-group col-md-6">
                                 <label for="<?= $fam_custom_Field ?>"><?= $fam_custom_Name ?></label>
                         <?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
-
-                        if ($type_ID == 11) {
-                            $fam_custom_Special = $sCountry;
-                            // Track custom phone fields for JS initialization
-                            $customPhoneFields[] = ['checkboxName' => $fam_custom_Field . 'noformat', 'inputName' => $fam_custom_Field];
-                        }
 
                         formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
                         if (!empty($aCustomErrors[$fam_custom_Field])) {

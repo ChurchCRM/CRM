@@ -4,6 +4,11 @@
 
 /**
  * Toggle input mask based on checkbox state for phone number fields
+ *
+ * Logic:
+ * - "No format" CHECKED: No mask applied, user can enter any format
+ * - "No format" UNCHECKED: Mask is applied using the format from data-phone-mask attribute
+ *
  * @param {string} checkboxName - Name of the checkbox input
  * @param {string} inputName - Name of the phone input field
  */
@@ -11,44 +16,43 @@ export function togglePhoneMask(checkboxName, inputName) {
     var checkbox = $('input[name="' + checkboxName + '"]');
     var input = $('input[name="' + inputName + '"]');
 
+    if (input.length === 0 || checkbox.length === 0) {
+        return;
+    }
+
     function updateMask() {
         var currentVal = input.val();
 
+        // Always remove any existing mask first
+        try {
+            input.inputmask("remove");
+        } catch (e) {
+            // ignore if no mask was initialized
+        }
+
         if (checkbox.is(":checked")) {
-            // Remove input mask to allow free-form entry
-            try {
-                input.inputmask("remove");
-            } catch (e) {
-                // ignore if no mask initialized
-            }
+            // "No format" is checked - leave field without mask
+            // Just restore the value
             input.val(currentVal);
         } else {
-            // Reapply the mask by reinitializing from data-inputmask attribute
-            try {
-                // Remove any existing mask first
-                input.inputmask("remove");
-            } catch (e) {
-                // ignore
+            // "No format" is unchecked - apply the mask
+            // Get mask format from data-phone-mask attribute (NOT data-inputmask to avoid auto-init)
+            var maskConfig = input.attr("data-phone-mask");
+            if (maskConfig) {
+                try {
+                    // Parse the JSON config - it's already valid JSON like {"mask": "(999) 999-9999"}
+                    var config = JSON.parse(maskConfig);
+                    input.inputmask(config);
+                } catch (e) {
+                    console.error("Error parsing mask config:", e, maskConfig);
+                }
             }
-
-            // Ensure data-mask attribute is present so inputmask() will initialize
-            if (!input.is("[data-mask]")) {
-                input.attr("data-mask", "");
-            }
-
-            // Reinitialize from data-inputmask attribute
-            try {
-                input.inputmask();
-            } catch (e) {
-                console.error("Error reapplying mask:", e);
-            }
-
             // Restore value to trigger mask formatting
             input.val(currentVal);
         }
     }
 
-    // Set initial state
+    // Set initial state on page load
     updateMask();
 
     // Listen for checkbox changes
@@ -67,35 +71,30 @@ export function initializePhoneMaskToggles(phoneFields) {
 
 /**
  * Automatically initialize all phone mask toggles on the page
- * Looks for checkboxes with names ending in 'noformat' and their corresponding input fields
+ * Looks for checkboxes with names starting with 'NoFormat_' or ending with 'noformat'
+ * and their corresponding input fields
  */
 export function initializeAllPhoneMaskToggles() {
-    // Find all potential phone 'no format' checkboxes.
-    // Support both old suffix pattern (e.g. myfieldnoformat) and prefix pattern (e.g. NoFormat_MyField)
+    // Find all potential phone 'no format' checkboxes
     $('input[type="checkbox"][name^="NoFormat_"], input[type="checkbox"][name$="noformat"]').each(function () {
         var checkbox = $(this);
         var checkboxName = checkbox.attr("name");
-
         var inputName = null;
 
-        // If checkbox name starts with NoFormat_ (common server-side naming), strip that prefix
+        // Determine input field name based on checkbox naming convention
         if (/^NoFormat_/i.test(checkboxName)) {
+            // NoFormat_HomePhone -> HomePhone
             inputName = checkboxName.replace(/^NoFormat_/i, "");
         } else {
-            // Fallback: if the name ends with 'noformat' (case-insensitive), strip that suffix
+            // c1noformat -> c1
             inputName = checkboxName.replace(/noformat$/i, "");
         }
 
-        // Trim any leading/trailing underscores that may remain
+        // Clean up any extra underscores
         inputName = inputName.replace(/^_+|_+$/g, "");
 
-        // Check if the corresponding input field exists (try both name and lower-cased variants)
+        // Find the corresponding input field
         var input = $('input[name="' + inputName + '"]');
-        if (input.length === 0) {
-            // Try common casing variant (lower-first) e.g., familyHomePhone vs FamilyHomePhone
-            var altName = inputName.charAt(0).toLowerCase() + inputName.slice(1);
-            input = $('input[name="' + altName + '"]');
-        }
 
         if (input.length > 0) {
             togglePhoneMask(checkboxName, inputName);

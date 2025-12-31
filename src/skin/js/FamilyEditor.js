@@ -52,14 +52,17 @@ $(document).ready(function () {
             });
         });
 
-    $("[data-mask]").inputmask();
-    $("#Country").select2();
-    $("#State").select2();
-
-    // Initialize phone mask toggles using auto-discovery for all phone fields (including custom)
+    // Initialize phone mask toggles FIRST, before applying masks globally
+    // This ensures phone fields with "No format" checked don't get masked
     if (window.CRM.formUtils && window.CRM.formUtils.initializeAllPhoneMaskToggles) {
         window.CRM.formUtils.initializeAllPhoneMaskToggles();
     }
+
+    // Apply inputmask to non-phone fields (fields without a "No format" checkbox)
+    $("[data-mask]").inputmask();
+
+    $("#Country").select2();
+    $("#State").select2();
 
     // Add Family Member Row functionality
     if (window.CRM.initialFamilyMemberCount !== undefined) {

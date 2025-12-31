@@ -650,23 +650,26 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
           // This is silly. Perhaps ExpandPhoneNumber before this function is called!
           // this business of overloading the special field is really troublesome when trying to follow the code.
                         // No expansion/formatting on display; keep raw stored value in $data
+            
+            // Determine checkbox state:
+            // - If field has data: check "No format" (preserve stored value)
+            // - If field is empty: uncheck "No format" (allow mask for new entry)
             $checked = '';
             if (isset($_POST[$fieldname . 'noformat'])) {
                 // POST takes precedence (user just submitted the form)
                 $checked = ' checked';
-            } elseif ($special === 'NOFORMAT') {
-                // Check if database has stored NOFORMAT preference (for edit mode)
-                $checked = ' checked';
-            } elseif ($bFirstPassFlag && !empty($data) && !preg_match('/[\(\)\-\s]/', $data)) {
-                // Only use heuristic on first pass (new entries) if no preference stored
+            } elseif (!empty($data)) {
+                // Field has data - check "No format" to preserve it
                 $checked = ' checked';
             }
+            // If field is empty, leave unchecked so mask can be applied
 
             echo '<div class="input-group">';
             echo '<div class="input-group-prepend">';
             echo '<span class="input-group-text"><i class="fa-solid fa-phone"></i></span>';
             echo '</div>';
-            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
+            // Note: using data-phone-mask instead of data-inputmask to prevent auto-initialization
+            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"}\'>'; 
             echo '<div class="input-group-append">';
             echo '<div class="input-group-text">';
             echo '<div class="custom-control custom-checkbox mb-0">';
