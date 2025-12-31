@@ -14,10 +14,59 @@ export function togglePhoneMask(checkboxName, inputName) {
     function updateMask() {
         if (checkbox.is(":checked")) {
             // Remove input mask to allow free-form entry
-            input.inputmask("remove");
+            // Preserve the current value to avoid inputmask clearing it on remove
+            var currentVal = input.val();
+            try {
+                input.inputmask("remove");
+            } catch (e) {
+                // ignore if no mask initialized
+            }
+            input.val(currentVal);
         } else {
-            // Re-apply input mask
-            input.inputmask();
+            // Re-apply input mask only if the current value is compatible with the configured mask
+            var rawVal = input.val();
+            var maskAttr = input.attr("data-inputmask") || input.data("inputmask");
+            var maskString = null;
+            if (maskAttr) {
+                // maskAttr is usually a JSON-ish string like '"mask": "(999) 999-9999"'
+                var m = maskAttr.match(/mask\"?\s*:\s*\"([^\"]+)\"/);
+                if (m && m[1]) {
+                    maskString = m[1];
+                } else if (typeof maskAttr === "string" && maskAttr.indexOf("mask") === -1) {
+                    // Some inputs may have plain mask string
+                    maskString = maskAttr;
+                }
+            }
+
+            var shouldApplyMask = true;
+            if (maskString) {
+                var expectedDigitsMatch = maskString.match(/9|0/g);
+                var expectedDigits = expectedDigitsMatch ? expectedDigitsMatch.length : 0;
+                var digitsCount = (rawVal || "").replace(/\D/g, "").length;
+                var hasPlusOrLetters = /\+|[A-Za-z]/.test(rawVal || "");
+                if (expectedDigits > 0 && (digitsCount !== expectedDigits || hasPlusOrLetters)) {
+                    // Value is not compatible with mask -> do not apply mask to avoid trimming
+                    shouldApplyMask = false;
+                }
+            }
+
+            if (shouldApplyMask) {
+                try {
+                    input.inputmask();
+                } catch (e) {
+                    // ignore if inputmask not available
+                }
+                // Restore the raw value so the mask can format it
+                input.val(rawVal);
+            } else {
+                // Ensure any existing mask is removed to preserve full raw value
+                try {
+                    input.inputmask("remove");
+                } catch (e) {
+                    // ignore
+                }
+                input.val(rawVal);
+            }
         }
     }
 
@@ -53,14 +102,14 @@ export function initializeAllPhoneMaskToggles() {
 
         // If checkbox name starts with NoFormat_ (common server-side naming), strip that prefix
         if (/^NoFormat_/i.test(checkboxName)) {
-            inputName = checkboxName.replace(/^NoFormat_/i, '');
+            inputName = checkboxName.replace(/^NoFormat_/i, "");
         } else {
             // Fallback: if the name ends with 'noformat' (case-insensitive), strip that suffix
-            inputName = checkboxName.replace(/noformat$/i, '');
+            inputName = checkboxName.replace(/noformat$/i, "");
         }
 
         // Trim any leading/trailing underscores that may remain
-        inputName = inputName.replace(/^_+|_+$/g, '');
+        inputName = inputName.replace(/^_+|_+$/g, "");
 
         // Check if the corresponding input field exists (try both name and lower-cased variants)
         var input = $('input[name="' + inputName + '"]');

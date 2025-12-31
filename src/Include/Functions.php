@@ -312,50 +312,7 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
     return $sCollapsedPhoneNumber;
 }
 
-//
-// Expands a collapsed phone number into the proper format for a known country.
-//
-// If, during expansion, an unknown format is found, the original will be returned
-// and the boolean flag $bWeird will be set.  Unfortunately, because PHP does not
-// allow for pass-by-reference in conjunction with a variable-length argument list,
-// a dummy variable will have to be passed even if this functionality is unneeded.
-//
-// Need to add other countries besides the US...
-//
-function ExpandPhoneNumber(?string $sPhoneNumber = null, ?string $sPhoneCountry = null, &$bWeird): string
-{
-    $sPhoneNumber ??= '';
-    $sPhoneCountry ??= '';
 
-    $bWeird = false;
-    $length = strlen($sPhoneNumber);
-
-    switch ($sPhoneCountry) {
-        case 'United States' || 'Canada':
-            if ($length === 0) {
-                return '';
-            } elseif (mb_substr($sPhoneNumber, 7, 1) === 'e') {
-                // 7 digit phone # with extension
-                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 4) . ' Ext.' . mb_substr($sPhoneNumber, 8, 6);
-            } elseif (mb_substr($sPhoneNumber, 10, 1) === 'e') {
-                // 10 digit phone # with extension
-                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 3) . '-' . mb_substr($sPhoneNumber, 6, 4) . ' Ext.' . mb_substr($sPhoneNumber, 11, 6);
-            } elseif ($length === 7) {
-                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 4);
-            } elseif ($length === 10) {
-                return mb_substr($sPhoneNumber, 0, 3) . '-' . mb_substr($sPhoneNumber, 3, 3) . '-' . mb_substr($sPhoneNumber, 6, 4);
-            } else {
-                // Otherwise, there is something weird stored, so just leave it untouched and set the flag
-                $bWeird = true;
-
-                return $sPhoneNumber;
-            }
-
-        // If the country is unknown, we don't know how to format it, so leave it untouched
-        default:
-            return $sPhoneNumber;
-    }
-}
 
 // Returns a string of a person's full name, formatted as specified by $Style
 // $Style = 0  :  "Title FirstName MiddleName LastName, Suffix"
@@ -512,7 +469,8 @@ function displayCustomField($type, ?string $data, $special)
 
     // Handler for phone numbers
         case 11:
-            return ExpandPhoneNumber($data, $special, $dummy);
+            // Display raw stored phone value (no formatting)
+            return $data;
 
     // Handler for custom lists
         case 12:
@@ -691,12 +649,17 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
         case 11:
           // This is silly. Perhaps ExpandPhoneNumber before this function is called!
           // this business of overloading the special field is really troublesome when trying to follow the code.
-            if ($bFirstPassFlag) {
-              // in this case, $special is the phone country
-                $data = ExpandPhoneNumber($data, $special, $bNoFormat_Phone);
-            }
+                        // No expansion/formatting on display; keep raw stored value in $data
+            $checked = '';
             if (isset($_POST[$fieldname . 'noformat'])) {
-                $bNoFormat_Phone = true;
+                // POST takes precedence (user just submitted the form)
+                $checked = ' checked';
+            } elseif ($special === 'NOFORMAT') {
+                // Check if database has stored NOFORMAT preference (for edit mode)
+                $checked = ' checked';
+            } elseif ($bFirstPassFlag && !empty($data) && !preg_match('/[\(\)\-\s]/', $data)) {
+                // Only use heuristic on first pass (new entries) if no preference stored
+                $checked = ' checked';
             }
 
             echo '<div class="input-group">';
@@ -708,9 +671,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             echo '<div class="input-group-text">';
             echo '<div class="custom-control custom-checkbox mb-0">';
             echo '<input type="checkbox" class="custom-control-input" id="' . $fieldname . 'noformat" name="' . $fieldname . 'noformat" value="1"';
-            if ($bNoFormat_Phone) {
-                echo ' checked';
-            }
+            echo $checked;
             echo '>';
             echo '<label class="custom-control-label" for="' . $fieldname . 'noformat">' . gettext('No format') . '</label>';
             echo '</div></div></div></div>';

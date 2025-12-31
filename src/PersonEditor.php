@@ -544,9 +544,38 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
         $sPhoneCountry = $sCountry;
 
-        $sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $bNoFormat_HomePhone);
-        $sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $bNoFormat_WorkPhone);
-        $sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $bNoFormat_CellPhone);
+        $sHomePhone = $per_HomePhone ?? '';
+        $sWorkPhone = $per_WorkPhone ?? '';
+        $sCellPhone = $per_CellPhone ?? '';
+
+        // Default the "No format" checkboxes when stored phone values do not match the configured mask
+        // Only run on first-pass (no POST), POST handling will override these when submitted
+        $homeMask = SystemConfig::getValue('sPhoneFormat');
+        $cellMask = SystemConfig::getValue('sPhoneFormatCell');
+        $workMask = SystemConfig::getValue('sPhoneFormatWithExt');
+
+        $homeDigits = strlen(preg_replace('/\D/', '', $sHomePhone));
+        $cellDigits = strlen(preg_replace('/\D/', '', $sCellPhone));
+        $workDigits = strlen(preg_replace('/\D/', '', $sWorkPhone));
+
+        $expectedHome = preg_match_all('/9|0/', $homeMask);
+        $expectedCell = preg_match_all('/9|0/', $cellMask);
+        $expectedWork = preg_match_all('/9|0/', $workMask);
+
+        // If stored value contains a plus sign or non-digit characters (extensions aside), prefer NoFormat
+        $homeHasPlusOrLetters = preg_match('/\+|[A-Za-z]/', $sHomePhone);
+        $cellHasPlusOrLetters = preg_match('/\+|[A-Za-z]/', $sCellPhone);
+        $workHasPlusOrLetters = preg_match('/\+|[A-Za-z]/', $sWorkPhone);
+
+        if ($expectedHome > 0 && ($homeDigits !== $expectedHome || $homeHasPlusOrLetters)) {
+            $bNoFormat_HomePhone = true;
+        }
+        if ($expectedCell > 0 && ($cellDigits !== $expectedCell || $cellHasPlusOrLetters)) {
+            $bNoFormat_CellPhone = true;
+        }
+        if ($expectedWork > 0 && ($workDigits !== $expectedWork || $workHasPlusOrLetters)) {
+            $bNoFormat_WorkPhone = true;
+        }
 
         //The following values are True booleans if the family record has a value for the
         //indicated field.  These are used to highlight field headers in red.
@@ -1091,6 +1120,7 @@ require_once __DIR__ . '/Include/Header.php';
             </div><!-- /.box-header -->
             <div class="card-body">
                 <?php
+                    $customPhoneFields = [];
                     mysqli_data_seek($rsCustomFields, 0);
                     while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                         extract($rowCustomField);
@@ -1104,7 +1134,8 @@ require_once __DIR__ . '/Include/Header.php';
                             }
 
                             if ($type_ID == 11) {
-                                $custom_Special = $sPhoneCountry;
+                                $custom_Special = null;
+                                $customPhoneFields[] = ['checkboxName' => $custom_Field . 'noformat', 'inputName' => $custom_Field];
                             }
 
                             formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
@@ -1167,12 +1198,16 @@ require_once __DIR__ . '/Include/Header.php';
         $("[data-mask]").inputmask();
         $("#familyId").select2();
         
-        // Apply phone mask toggles to all three phone fields
-        window.CRM.formUtils.initializePhoneMaskToggles([
+        // Apply phone mask toggles to all phone fields
+        var phoneFields = [
             { checkboxName: 'NoFormat_HomePhone', inputName: 'HomePhone' },
             { checkboxName: 'NoFormat_WorkPhone', inputName: 'WorkPhone' },
             { checkboxName: 'NoFormat_CellPhone', inputName: 'CellPhone' }
-        ]);
+        ];
+        <?php if (!empty($customPhoneFields)) { ?>
+        phoneFields = phoneFields.concat(<?= json_encode($customPhoneFields) ?>);
+        <?php } ?>
+        window.CRM.formUtils.initializePhoneMaskToggles(phoneFields);
     });
 </script>
 

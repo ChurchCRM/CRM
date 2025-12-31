@@ -270,15 +270,15 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             }
         }
         if (($bDirFamilyPhone || $bDirPersonalPhone) && strlen($sHomePhone)) {
-            $TempStr = ExpandPhoneNumber($sHomePhone, SystemConfig::getValue('sDefaultCountry'), $bWeird);
+            $TempStr = $sHomePhone;
             $OutStr .= '   ' . gettext('Phone') . ': ' . $TempStr . "\n";
         }
         if (($bDirFamilyWork || $bDirPersonalWork) && strlen($sWorkPhone)) {
-            $TempStr = ExpandPhoneNumber($sWorkPhone, SystemConfig::getValue('sDefaultCountry'), $bWeird);
+            $TempStr = $sWorkPhone;
             $OutStr .= '   ' . gettext('Work') . ': ' . $TempStr . "\n";
         }
         if (($bDirFamilyCell || $bDirPersonalCell) && strlen($sCellPhone)) {
-            $TempStr = ExpandPhoneNumber($sCellPhone, SystemConfig::getValue('sDefaultCountry'), $bWeird);
+            $TempStr = $sCellPhone;
             $OutStr .= '   ' . gettext('Cell') . ': ' . $TempStr . "\n";
         }
         if (($bDirFamilyEmail || $bDirPersonalEmail) && strlen($sEmail)) {

@@ -377,10 +377,9 @@ if ($sFormat === 'addtocart') {
         // Use person data only - each person must enter their own information
         if ($sFormat === 'rollup') {
             // Even in rollup format, use person data (no family inheritance)
-            $sPhoneCountry = $per_Country ?? '';
-            $sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
-            $sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
-            $sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+            $sHomePhone = $per_HomePhone ?? '';
+            $sWorkPhone = $per_WorkPhone ?? '';
+            $sCellPhone = $per_CellPhone ?? '';
             $sCountry = $per_Country ?? '';
             $sAddress1 = $per_Address1 ?? '';
             $sAddress2 = $per_Address2 ?? '';
@@ -390,10 +389,9 @@ if ($sFormat === 'addtocart') {
             $sEmail = $per_Email ?? '';
         } else {
             // Individual data - use person data only
-            $sPhoneCountry = $per_Country ?? '';
-            $sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
-            $sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
-            $sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+            $sHomePhone = $per_HomePhone ?? '';
+            $sWorkPhone = $per_WorkPhone ?? '';
+            $sCellPhone = $per_CellPhone ?? '';
             $sCountry = $per_Country ?? '';
             $sAddress1 = $per_Address1 ?? '';
             $sAddress2 = $per_Address2 ?? '';

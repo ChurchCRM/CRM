@@ -170,7 +170,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
                                 $currentFieldData = trim($aPersonProps[$prop_Field]);
 
                                 if ($type_ID == 11) {
-                                    $prop_Special = $sPhoneCountry;
+                                    $prop_Special = null;
                                 }  // ugh.. an argument with special cases!
 
                                 formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));

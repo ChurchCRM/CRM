@@ -326,7 +326,7 @@ class PdfDirectory extends ChurchInfoReport
         }
 
         if ($bDirFamilyPhone && strlen($fam_HomePhone)) {
-            $sFamilyStr .= '   ' . gettext('Phone') . ': ' . ExpandPhoneNumber($fam_HomePhone, $fam_Country, $bWeird) . "\n";
+            $sFamilyStr .= '   ' . gettext('Phone') . ': ' . $fam_HomePhone . "\n";
         }
         if ($bDirFamilyEmail && strlen($fam_Email)) {
             $sFamilyStr .= '   ' . gettext('Email') . ': ' . $fam_Email . "\n";
@@ -393,15 +393,15 @@ class PdfDirectory extends ChurchInfoReport
         $sCountry = $per_Country;
 
         if ($bDirPersonalPhone && strlen($per_HomePhone)) {
-            $TempStr = ExpandPhoneNumber($per_HomePhone, $sCountry, $bWeird);
+            $TempStr = $per_HomePhone;
             $sHeadStr .= '   ' . gettext('Phone') . ': ' . $TempStr .= "\n";
         }
         if ($bDirPersonalWork && strlen($per_WorkPhone)) {
-            $TempStr = ExpandPhoneNumber($per_WorkPhone, $sCountry, $bWeird);
+            $TempStr = $per_WorkPhone;
             $sHeadStr .= '   ' . gettext('Work') . ': ' . $TempStr .= "\n";
         }
         if ($bDirPersonalCell && strlen($per_CellPhone)) {
-            $TempStr = ExpandPhoneNumber($per_CellPhone, $sCountry, $bWeird);
+            $TempStr = $per_CellPhone;
             $sHeadStr .= '   ' . gettext('Cell') . ': ' . $TempStr .= "\n";
         }
         if ($bDirPersonalEmail && strlen($per_Email)) {
@@ -450,15 +450,15 @@ class PdfDirectory extends ChurchInfoReport
         $sCountry = $per_Country;
 
         if ($bDirPersonalPhone && strlen($per_HomePhone)) {
-            $TempStr = ExpandPhoneNumber($per_HomePhone, $sCountry, $bWeird);
+            $TempStr = $per_HomePhone;
             $sMemberStr .= '   ' . gettext('Phone') . ': ' . $TempStr .= "\n";
         }
         if ($bDirPersonalWork && strlen($per_WorkPhone)) {
-            $TempStr = ExpandPhoneNumber($per_WorkPhone, $sCountry, $bWeird);
+            $TempStr = $per_WorkPhone;
             $sMemberStr .= '   ' . gettext('Work') . ': ' . $TempStr .= "\n";
         }
         if ($bDirPersonalCell && strlen($per_CellPhone)) {
-            $TempStr = ExpandPhoneNumber($per_CellPhone, $sCountry, $bWeird);
+            $TempStr = $per_CellPhone;
             $sMemberStr .= '   ' . gettext('Cell') . ': ' . $TempStr .= "\n";
         }
         if ($bDirPersonalEmail && strlen($per_Email)) {

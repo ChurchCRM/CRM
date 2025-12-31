@@ -85,9 +85,9 @@ $sState = $per_State ?? '';
 $sZip = $per_Zip ?? '';
 $sCountry = $per_Country ?? '';
 
-$sHomePhone = ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy);
-$sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sCountry, $dummy);
-$sCellPhone = ExpandPhoneNumber($per_CellPhone, $sCountry, $dummy);
+$sHomePhone = $per_HomePhone ?? '';
+$sWorkPhone = $per_WorkPhone ?? '';
+$sCellPhone = $per_CellPhone ?? '';
 
 $sUnformattedEmail = $per_Email ?? '';
 
