@@ -99,9 +99,7 @@ class LocalAuthentication implements IAuthenticationProvider
         // Create the Cart
         $_SESSION['aPeopleCart'] = [];
 
-        // Create the variable for the Global Message
-        $_SESSION['sGlobalMessage'] = '';
-        $_SESSION['sGlobalMessageClass'] = 'success';
+        // Initialize session variables (global message will be set only when needed)
         $this->tLastOperationTimestamp = time();
 
         $_SESSION['bHasMagicQuotes'] = 0;

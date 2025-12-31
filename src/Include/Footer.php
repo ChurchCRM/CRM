@@ -90,7 +90,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
         }
     })();
 </script>
-<?php if (isset($sGlobalMessage)) {
+<?php if (isset($sGlobalMessage) && !empty($sGlobalMessage)) {
     ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $("document").ready(function () {
