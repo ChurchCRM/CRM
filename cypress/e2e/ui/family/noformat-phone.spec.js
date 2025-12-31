@@ -12,8 +12,8 @@ describe('Family phone No Format behavior', () => {
     cy.get('input[name="NoFormat_HomePhone"]').check();
     // Wait for the form to be ready (Envelope field is conditional), use FamilyName as reliable anchor
     cy.get('#FamilyName').then(() => {
-      // Save
-      cy.get('input[name="FamilySubmit"]').click();
+      // Save - click the visible FamilySubmit button
+      cy.get('input[name="FamilySubmit"]').filter(':visible').first().click();
     });
 
     // After save, we should be redirected to PersonView or family list. Find the family and open editor.
@@ -33,7 +33,7 @@ describe('Family phone No Format behavior', () => {
     const newRaw = '+44 7700 900999';
     cy.get('#HomePhone').clear().type(newRaw);
     cy.get('input[name="NoFormat_HomePhone"]').should('be.checked');
-    cy.get('input[name="FamilySubmit"]').click();
+    cy.get('input[name="FamilySubmit"]').filter(':visible').first().click();
 
     // Re-open editor to verify saved value
     cy.visit('/v2/family');
