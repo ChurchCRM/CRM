@@ -38,6 +38,44 @@ export function initializePhoneMaskToggles(phoneFields) {
     });
 }
 
+/**
+ * Automatically initialize all phone mask toggles on the page
+ * Looks for checkboxes with names ending in 'noformat' and their corresponding input fields
+ */
+export function initializeAllPhoneMaskToggles() {
+    // Find all potential phone 'no format' checkboxes.
+    // Support both old suffix pattern (e.g. myfieldnoformat) and prefix pattern (e.g. NoFormat_MyField)
+    $('input[type="checkbox"][name^="NoFormat_"], input[type="checkbox"][name$="noformat"]').each(function () {
+        var checkbox = $(this);
+        var checkboxName = checkbox.attr("name");
+
+        var inputName = null;
+
+        // If checkbox name starts with NoFormat_ (common server-side naming), strip that prefix
+        if (/^NoFormat_/i.test(checkboxName)) {
+            inputName = checkboxName.replace(/^NoFormat_/i, '');
+        } else {
+            // Fallback: if the name ends with 'noformat' (case-insensitive), strip that suffix
+            inputName = checkboxName.replace(/noformat$/i, '');
+        }
+
+        // Trim any leading/trailing underscores that may remain
+        inputName = inputName.replace(/^_+|_+$/g, '');
+
+        // Check if the corresponding input field exists (try both name and lower-cased variants)
+        var input = $('input[name="' + inputName + '"]');
+        if (input.length === 0) {
+            // Try common casing variant (lower-first) e.g., familyHomePhone vs FamilyHomePhone
+            var altName = inputName.charAt(0).toLowerCase() + inputName.slice(1);
+            input = $('input[name="' + altName + '"]');
+        }
+
+        if (input.length > 0) {
+            togglePhoneMask(checkboxName, inputName);
+        }
+    });
+}
+
 // Attach to window.CRM for legacy script access
 if (typeof window !== "undefined") {
     if (!window.CRM) {
@@ -48,4 +86,5 @@ if (typeof window !== "undefined") {
     }
     window.CRM.formUtils.togglePhoneMask = togglePhoneMask;
     window.CRM.formUtils.initializePhoneMaskToggles = initializePhoneMaskToggles;
+    window.CRM.formUtils.initializeAllPhoneMaskToggles = initializeAllPhoneMaskToggles;
 }

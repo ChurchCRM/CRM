@@ -197,4 +197,17 @@ if (mysqli_num_rows($rsPropList) === 0) {
     </div>
 <?php
 }
-require_once __DIR__ . '/Include/Footer.php';
+<script>
+    // Initialize all phone mask toggles for custom fields (guarded)
+    document.addEventListener('DOMContentLoaded', function() {
+        if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.initializeAllPhoneMaskToggles === 'function') {
+            try {
+                window.CRM.formUtils.initializeAllPhoneMaskToggles();
+            } catch (e) {
+                // silent
+            }
+        }
+    });
+</script>
+<?php
+require_once __DIR__ . '/Include/Footer.php';?>
