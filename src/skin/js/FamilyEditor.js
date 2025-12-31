@@ -122,5 +122,9 @@ $(document).ready(function () {
     }
 
     // Initialize phone mask toggles
-    window.CRM.formUtils.initializePhoneMaskToggles([{ checkboxName: "NoFormat_HomePhone", inputName: "HomePhone" }]);
+    var phoneFields = [{ checkboxName: "NoFormat_HomePhone", inputName: "HomePhone" }];
+    if (window.CRM.customPhoneFields && window.CRM.customPhoneFields.length > 0) {
+        phoneFields = phoneFields.concat(window.CRM.customPhoneFields);
+    }
+    window.CRM.formUtils.initializePhoneMaskToggles(phoneFields);
 });

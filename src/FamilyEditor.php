@@ -443,8 +443,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $nLatitude = $family->getLatitude();
         $nLongitude = $family->getLongitude();
 
-        // Expand the phone number
-        $sHomePhone = ExpandPhoneNumber($sHomePhone, $sCountry, $bNoFormat_HomePhone);
+        // No display formatting — keep stored value as-is
 
         $sSQL = 'SELECT * FROM family_custom WHERE fam_ID = ' . $iFamilyID;
         $rsCustomData = RunQuery($sSQL);
@@ -756,7 +755,9 @@ require_once __DIR__ . '/Include/Header.php';
                 <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
             </div><!-- /.box-header -->
             <div class="card-body">
-                <?php mysqli_data_seek($rsCustomFields, 0);
+                <?php 
+                $customPhoneFields = [];
+                mysqli_data_seek($rsCustomFields, 0);
                 while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                     extract($rowCustomField);
                     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
@@ -768,6 +769,8 @@ require_once __DIR__ . '/Include/Header.php';
 
                         if ($type_ID == 11) {
                             $fam_custom_Special = $sCountry;
+                            // Track custom phone fields for JS initialization
+                            $customPhoneFields[] = ['checkboxName' => $fam_custom_Field . 'noformat', 'inputName' => $fam_custom_Field];
                         }
 
                         formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
@@ -1010,6 +1013,7 @@ require_once __DIR__ . '/Include/Header.php';
 <script>
     window.CRM.familyRoles = <?= json_encode($familyRolesJS) ?>;
     window.CRM.classifications = <?= json_encode($classificationsJS) ?>;
+    window.CRM.customPhoneFields = <?= json_encode($customPhoneFields ?? []) ?>;
     window.CRM.initialFamilyMemberCount = <?= $iFamilyMemberRows ?>;
     window.CRM.i18n = {
         selectGender: <?= json_encode(gettext('Select Gender')) ?>,
