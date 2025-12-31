@@ -59,4 +59,17 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
         }
     });
 
+    // Endpoint to copy demo photos for already-imported people and families
+    $group->post('/import-photos', function (Request $request, Response $response): Response {
+        try {
+            $demoService = new DemoDataService();
+            $result = $demoService->importDemoPhotosForExistingEntries();
+
+            $status = $result['success'] ? 200 : 500;
+            return SlimUtils::renderJSON($response, $result, $status);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to import demo photos'), [], 500, $e, $request);
+        }
+    });
+
 });

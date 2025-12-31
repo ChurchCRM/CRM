@@ -11,6 +11,10 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FileSystemUtils;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use DateTime;
 use Exception;
 use JsonException;
@@ -259,6 +263,16 @@ class DemoDataService
                 $this->familyMap[$family->getId()] = $family;
                 $this->importResult['imported']['families']++;
 
+                // Import demo photo for family (if provided)
+                if (!empty($famData['photo'])) {
+                    $basename = basename($famData['photo']);
+                    $src = self::DATA_PATH . '/images/families/' . $basename;
+
+                    if (!$this->importDemoPhotoForEntity($src, $family, 'family')) {
+                        $this->addWarning("Failed to import family photo for family '{$family->getName()}'", ['src' => $src, 'family_id' => $family->getId()]);
+                    }
+                }
+
                 // members
                 $members = $famData['members'] ?? [];
                 foreach ($members as $m) {
@@ -303,28 +317,8 @@ class DemoDataService
                             $basename = basename($m['photo']);
                             $src = self::DATA_PATH . '/images/people/' . $basename;
 
-                            if (file_exists($src) && is_file($src)) {
-                                try {
-                                    $fileData = file_get_contents($src);
-                                    if ($fileData !== false) {
-                                        $finfo = new \finfo(FILEINFO_MIME_TYPE);
-                                        $mime = $finfo->file($src);
-                                        $dataUrl = 'data:' . $mime . ';base64,' . base64_encode($fileData);
-
-                                        try {
-                                            $person->getPhoto()->setImageFromBase64($dataUrl);
-                                            $person->getPhoto()->refresh();
-                                        } catch (Exception $e) {
-                                            $this->addWarning("Failed to set photo for person {$person->getId()}: {$e->getMessage()}", ['src' => $src]);
-                                        }
-                                    } else {
-                                        $this->addWarning("Failed to read demo photo file: {$src}");
-                                    }
-                                } catch (\Throwable $e) {
-                                    $this->addWarning("Failed to import demo photo for person: {$e->getMessage()}", ['src' => $src]);
-                                }
-                            } else {
-                                $this->addWarning("Demo photo file not found at expected location: {$src}");
+                            if (!$this->importDemoPhotoForEntity($src, $person, 'person')) {
+                                $this->addWarning("Failed to import person photo for {$person->getFirstName()} {$person->getLastName()}", ['src' => $src, 'person_id' => $person->getId()]);
                             }
                         }
 
@@ -709,6 +703,135 @@ class DemoDataService
         } catch (JsonException $e) {
             $this->importResult['errors'][] = "JSON parse error in file {$filename}: {$e->getMessage()}";
             return null;
+        }
+    }
+
+    /**
+     * Import demo photos for already-imported people and families by matching emails or names.
+     * Returns array with counts and warnings.
+     */
+    public function importDemoPhotosForExistingEntries(): array
+    {
+        $result = ['success' => true, 'copied' => 0, 'warnings' => []];
+
+        $data = $this->loadJsonFile('people.json');
+        if (!$data) {
+            $result['success'] = false;
+            $result['warnings'][] = 'people.json missing or invalid';
+            return $result;
+        }
+
+        $families = $data['families'] ?? [];
+
+        foreach ($families as $fam) {
+            // family-level photo
+            if (!empty($fam['photo'])) {
+                $basename = basename($fam['photo']);
+                $src = self::DATA_PATH . '/images/families/' . $basename;
+                if (file_exists($src) && is_file($src)) {
+                    // try match by contact email first
+                    $email = $fam['contact']['email'] ?? null;
+                    $familyObj = null;
+                    if (!empty($email)) {
+                        $familyObj = FamilyQuery::create()->findOneByEmail($email);
+                    }
+                    // fallback: try by family name
+                    if ($familyObj === null && !empty($fam['name'])) {
+                        $familyObj = FamilyQuery::create()->findOneByName($fam['name']);
+                    }
+
+                    if ($familyObj !== null) {
+                        if ($this->importDemoPhotoForEntity($src, $familyObj, 'family')) {
+                            $result['copied']++;
+                        } else {
+                            $result['warnings'][] = "Failed to copy family photo for family id {$familyObj->getId()}";
+                        }
+                    } else {
+                        $result['warnings'][] = 'No matching family found for photo ' . $basename;
+                    }
+                } else {
+                    $result['warnings'][] = 'Family demo photo not found: ' . $basename;
+                }
+            }
+
+            // member photos
+            $members = $fam['members'] ?? [];
+            foreach ($members as $m) {
+                $email = strtolower(trim($m['email'] ?? ''));
+
+                // Determine basename: prefer explicit 'photo' field, otherwise try matching by email local part
+                $basename = null;
+                if (!empty($m['photo'])) {
+                    $basename = basename($m['photo']);
+                } elseif (!empty($email)) {
+                    $local = explode('@', $email)[0];
+                    $candidates = glob(self::DATA_PATH . '/images/people/' . $local . '.*');
+                    if (!empty($candidates)) {
+                        // pick first matching candidate
+                        $basename = basename($candidates[0]);
+                    }
+                }
+
+                if (empty($basename) || empty($email)) {
+                    if (empty($basename) && !empty($email)) {
+                        $result['warnings'][] = 'Person demo photo not found for member with email: ' . $email;
+                    }
+                    continue;
+                }
+
+                $src = self::DATA_PATH . '/images/people/' . $basename;
+                if (!file_exists($src) || !is_file($src)) {
+                    $result['warnings'][] = 'Person demo photo not found: ' . $basename;
+                    continue;
+                }
+
+                $personObj = PersonQuery::create()->findOneByEmail($email);
+                if ($personObj === null) {
+                    $result['warnings'][] = 'No person found with email ' . $email;
+                    continue;
+                }
+
+                if ($this->importDemoPhotoForEntity($src, $personObj, 'person')) {
+                    $result['copied']++;
+                } else {
+                    $result['warnings'][] = 'Failed to copy photo for ' . $email;
+                }
+            }
+        }
+
+        return $result;
+    }
+
+    /**
+     * Copy demo photo file to an entity (person|family) Images folder and refresh photo state.
+     * Returns true on success, false otherwise.
+     */
+    private function importDemoPhotoForEntity(string $src, $entity, string $entityType): bool
+    {
+        if (!file_exists($src) || !is_file($src)) {
+            return false;
+        }
+
+        try {
+            $ext = pathinfo($src, PATHINFO_EXTENSION);
+            $dst = SystemURLs::getImagesRoot() . '/' . $entityType . '/' . $entity->getId() . '.' . $ext;
+
+            if (!FileSystemUtils::copyFile($src, $dst)) {
+                return false;
+            }
+
+            // Refresh photo state
+            try {
+                $entity->getPhoto()->refresh();
+            } catch (\Throwable $e) {
+                // log but consider copy successful
+                $this->addWarning("Photo copied but failed to refresh photo state for {$entityType} id {$entity->getId()}: {$e->getMessage()}");
+            }
+
+            return true;
+        } catch (\Throwable $e) {
+            $this->addWarning("Exception during photo import for {$entityType} id {$entity->getId()}: {$e->getMessage()}");
+            return false;
         }
     }
 }

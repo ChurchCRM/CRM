@@ -81,4 +81,34 @@ class FileSystemUtils
 
         return rmdir($src);
     }
+
+    /**
+     * Copy a single file, creating destination directory if needed.
+     * Returns true on success, false on failure (logs details).
+     */
+    public static function copyFile(string $src, string $dst): bool
+    {
+        $logger = LoggerUtils::getAppLogger();
+
+        if (!is_file($src)) {
+            $logger->warning('copyFile: source file not found', ['src' => $src]);
+            return false;
+        }
+
+        $dstDir = dirname($dst);
+        if (!is_dir($dstDir)) {
+            if (!mkdir($dstDir, 0755, true)) {
+                $logger->error('copyFile: failed to create destination directory', ['dir' => $dstDir]);
+                return false;
+            }
+        }
+
+        if (!copy($src, $dst)) {
+            $logger->error('copyFile: failed to copy file', ['src' => $src, 'dst' => $dst]);
+            return false;
+        }
+
+        $logger->info('copyFile: copied file', ['src' => $src, 'dst' => $dst]);
+        return true;
+    }
 }
