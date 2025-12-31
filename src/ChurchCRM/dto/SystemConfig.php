@@ -100,7 +100,7 @@ class   SystemConfig
             'sDirRoleSpouse'                       => new ConfigItem(7, 'sDirRoleSpouse', 'choice', '2', gettext('These are the family role numbers designated as spouse'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
             'sDirRoleChild'                        => new ConfigItem(8, 'sDirRoleChild', 'choice', '3', gettext('These are the family role numbers designated as child'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
             'iSessionTimeout'                      => new ConfigItem(9, 'iSessionTimeout', 'number', '3600', gettext("Session timeout length in seconds\nSet to zero to disable session timeouts.")),
-            'aFinanceQueries'                      => new ConfigItem(10, 'aFinanceQueries', 'text', '30,31,32', gettext('Queries for which user must have finance permissions to use') . ':'),
+            'aFinanceQueries'                      => new ConfigItem(10, 'aFinanceQueries', 'text', '28,30', gettext('Queries for which user must have finance permissions to use') . ':'),
             'bCSVAdminOnly'                        => new ConfigItem(11, 'bCSVAdminOnly', 'boolean', '1', gettext('Should only administrators have access to the CSV export system and directory report?')),
             'iMinPasswordLength'                   => new ConfigItem(13, 'iMinPasswordLength', 'number', '6', gettext('Minimum length a user may set their password to')),
             'iMinPasswordChange'                   => new ConfigItem(14, 'iMinPasswordChange', 'number', '4', gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\nSet to zero to disable this feature")),

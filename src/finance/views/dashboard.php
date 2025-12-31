@@ -172,6 +172,14 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <?= gettext('Generate Reports') ?>
                             </a>
                         </div>
+
+                        <!-- Pledge Dashboard -->
+                        <div class="col-md-3 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/finance/pledge/dashboard" class="btn btn-lg btn-outline-primary btn-block py-3">
+                                <i class="fa-solid fa-handshake fa-2x mb-2 d-block"></i>
+                                <?= gettext('Pledge Dashboard') ?>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
