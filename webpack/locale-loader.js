@@ -76,7 +76,6 @@ async function loadLocaleFiles(localeConfig) {
         } else if (localeConfig.momentLocale === 'en' && typeof moment !== 'undefined') {
             // Set to 'en' without loading (built-in default)
             moment.locale('en');
-            console.log(`Using built-in moment locale: en`);
         }
 
         // Load Bootstrap DatePicker locale if configured
@@ -132,7 +131,6 @@ async function loadLocaleFiles(localeConfig) {
                 translation: window.CRM.i18keys
             };
             i18next.init(i18nextOpt);
-            console.log('i18next initialized with locale keys');
             
             // Dispatch event to signal that locales are ready
             window.dispatchEvent(new Event('CRM.localesReady'));
