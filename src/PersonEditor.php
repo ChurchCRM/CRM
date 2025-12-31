@@ -1167,32 +1167,12 @@ require_once __DIR__ . '/Include/Header.php';
         $("[data-mask]").inputmask();
         $("#familyId").select2();
         
-        // Function to toggle input mask based on checkbox state
-        function togglePhoneMask(checkboxName, inputName) {
-            var checkbox = $('input[name="' + checkboxName + '"]');
-            var input = $('input[name="' + inputName + '"]');
-            
-            function updateMask() {
-                if (checkbox.is(':checked')) {
-                    // Remove input mask to allow free-form entry
-                    input.inputmask('remove');
-                } else {
-                    // Re-apply input mask
-                    input.inputmask();
-                }
-            }
-            
-            // Set initial state
-            updateMask();
-            
-            // Listen for checkbox changes
-            checkbox.change(updateMask);
-        }
-        
-        // Apply to all three phone fields
-        togglePhoneMask('NoFormat_HomePhone', 'HomePhone');
-        togglePhoneMask('NoFormat_WorkPhone', 'WorkPhone');
-        togglePhoneMask('NoFormat_CellPhone', 'CellPhone');
+        // Apply phone mask toggles to all three phone fields
+        window.CRM.formUtils.initializePhoneMaskToggles([
+            { checkboxName: 'NoFormat_HomePhone', inputName: 'HomePhone' },
+            { checkboxName: 'NoFormat_WorkPhone', inputName: 'WorkPhone' },
+            { checkboxName: 'NoFormat_CellPhone', inputName: 'CellPhone' }
+        ]);
     });
 </script>
 

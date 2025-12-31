@@ -7,4 +7,7 @@ $(document).ready(function () {
         stateInputDivId: "stateInputDiv",
         stateTextboxId: "StateTextbox",
     });
+
+    // Initialize phone mask toggles
+    window.CRM.formUtils.initializePhoneMaskToggles([{ checkboxName: "NoFormat_HomePhone", inputName: "HomePhone" }]);
 });

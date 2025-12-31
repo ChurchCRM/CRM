@@ -22,7 +22,12 @@ if (!empty($sHeader)) {
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = {
         root: "<?= SystemURLs::getRootPath() ?>",
-        churchWebSite: "<?= SystemURLs::getRootPath() ?>/"
+        churchWebSite: "<?= SystemURLs::getRootPath() ?>/",
+        phoneFormats: {
+            home: "<?= SystemConfig::getValue('sPhoneFormat') ?>",
+            cell: "<?= SystemConfig::getValue('sPhoneFormatCell') ?>",
+            work: "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"
+        }
     };
 </script>
 <div class="register-box" style="width: 90%; max-width: 900px;">
@@ -117,6 +122,14 @@ if (!empty($sHeader)) {
                                     <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                 </div>
                                 <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask required>
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <div class="custom-control custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input" id="NoFormat_familyHomePhone" name="NoFormat_familyHomePhone" value="1">
+                                            <label class="custom-control-label" for="NoFormat_familyHomePhone"><?= gettext('No format') ?></label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="invalid-feedback"></div>
                         </div>
@@ -211,7 +224,15 @@ if (!empty($sHeader)) {
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                                 </div>
-                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>">
+                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>" data-phone-format-home="<?= SystemConfig::getValue('sPhoneFormat') ?>" data-phone-format-cell="<?= SystemConfig::getValue('sPhoneFormatCell') ?>">
+                                                <div class="input-group-append">
+                                                    <div class="input-group-text">
+                                                        <div class="custom-control custom-checkbox mb-0">
+                                                            <input type="checkbox" class="custom-control-input member-phone-noformat" name="member-phone-noformat" value="1">
+                                                            <label class="custom-control-label member-phone-noformat-label"><?= gettext('No format') ?></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="invalid-feedback"></div>
                                         </div>
@@ -220,7 +241,6 @@ if (!empty($sHeader)) {
                                             <select class="form-control member-phone-type">
                                                 <option value="mobile"><?= gettext('Mobile') ?></option>
                                                 <option value="home"><?= gettext('Home') ?></option>
-                                                <option value="work"><?= gettext('Work') ?></option>
                                             </select>
                                         </div>
                                     </div>

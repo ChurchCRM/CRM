@@ -120,4 +120,7 @@ $(document).ready(function () {
             $("input[name='FamCount']").val(rowCount);
         });
     }
+
+    // Initialize phone mask toggles
+    window.CRM.formUtils.initializePhoneMaskToggles([{ checkboxName: "NoFormat_HomePhone", inputName: "HomePhone" }]);
 });
