@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Property;
@@ -10,7 +10,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have property and classification editing permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
 
 $sClassError = '';
 $sNameError = '';
@@ -47,6 +47,8 @@ $sPageTitle = $sTypeName . ' ' . gettext('Property Editor');
 
 $bError = false;
 $iType = 0;
+$sNameError = '';
+$sClassError = '';
 
 // Was the form submitted?
 if (isset($_POST['Submit'])) {
@@ -57,13 +59,13 @@ if (isset($_POST['Submit'])) {
 
     // Did they enter a name?
     if (strlen($sName) < 1) {
-        $sNameError = '<br><span class="text-error">' . gettext('You must enter a name') . '</span>';
+        $sNameError = '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ' . gettext('You must enter a name') . '</small>';
         $bError = true;
     }
 
     // Did they select a Type
     if (strlen($iClass) < 1) {
-        $sClassError = '<br><span class="text-error">' . gettext('You must select a type') . '</span>';
+        $sClassError = '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ' . gettext('You must select a type') . '</small>';
         $bError = true;
     }
 
@@ -116,59 +118,68 @@ if (isset($_POST['Submit'])) {
 $sSQL = "SELECT * FROM propertytype_prt WHERE prt_Class = '" . $sType . "' ORDER BY prt_Name";
 $rsPropertyTypes = RunQuery($sSQL);
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-body">
-  <form method="post" action="PropertyEditor.php?PropertyID=<?= $iPropertyID ?>&Type=<?= $sType ?>">
-    <div class="form-group">
-        <div class="row">
-            <div class="col-md-6">
-                <label for="Class"><?= gettext('Type') ?>:</label>
-                <select  class="form-control input-small" name="Class">
-                    <option value=""><?= gettext('Select Property Type') ?></option>
-                    <?php
-                    while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
-                        extract($aRow);
+<div class="container-fluid mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-edit"></i>
+                        <?= gettext('Property Editor') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="PropertyEditor.php?PropertyID=<?= InputUtils::escapeAttribute($iPropertyID) ?>&Type=<?= InputUtils::escapeAttribute($sType) ?>">
+                        <div class="mb-3">
+                            <label for="Class" class="form-label"><?= gettext('Type') ?>:</label>
+                            <select class="form-control" name="Class">
+                                <option value=""><?= gettext('Select Property Type') ?></option>
+                                <?php
+                                while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
+                                    extract($aRow);
 
-                        echo '<option value="' . $prt_ID . '"';
-                        if ($iType == $prt_ID) {
-                            echo 'selected';
-                        }
-                        echo '>' . $prt_Name . '</option>';
-                    }
-                    ?>
-                </select>
-                <?= $sClassError ?>
+                                    echo '<option value="' . InputUtils::escapeAttribute($prt_ID) . '"';
+                                    if ($iType == $prt_ID) {
+                                        echo ' selected';
+                                    }
+                                    echo '>' . InputUtils::escapeHTML($prt_Name) . '</option>';
+                                }
+                                ?>
+                            </select>
+                            <?= $sClassError ?>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Name" class="form-label"><?= gettext('Name') ?>:</label>
+                            <input class="form-control" type="text" name="Name" value="<?= InputUtils::escapeAttribute($sName) ?>" maxlength="100">
+                            <?php echo $sNameError ?>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Description" class="form-label"><?= gettext('A') ?> <?= InputUtils::escapeHTML($sTypeName) ?> <?= gettext('with this property...') ?>:</label>
+                            <textarea class="form-control" name="Description" rows="3"><?= InputUtils::escapeAttribute($sDescription) ?></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Prompt" class="form-label"><?= gettext('Prompt') ?>:</label>
+                            <input class="form-control" type="text" name="Prompt" value="<?= InputUtils::escapeAttribute($sPrompt) ?>" maxlength="50">
+                            <small class="form-text text-muted d-block mt-1"><?= gettext('Entering a Prompt value will allow the association of a free-form value.') ?></small>
+                        </div>
+                        <div class="d-flex">
+                            <button type="submit" class="btn btn-success mr-2" name="Submit">
+                                <i class="fa-solid fa-save"></i>
+                                <?= gettext('Save') ?>
+                            </button>
+                            <button type="button" class="btn btn-secondary" name="Cancel" onclick="document.location='PropertyList.php?Type=<?= InputUtils::escapeAttribute($sType) ?>';">
+                                <i class="fa-solid fa-ban"></i>
+                                <?= gettext('Cancel') ?>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <label for="Name"><?= gettext('Name') ?>:</label>
-                <input class="form-control input-small" type="text" name="Name" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" size="50">
-                <?php echo $sNameError ?>
-           </div>
-       </div>
-       <div class="row">
-            <div class="col-md-6">
-                <label for="Description">"<?= gettext('A') ?> <?php echo $sTypeName ?><BR><?= gettext('with this property..') ?>":</label>
-                <textarea class="form-control input-small" name="Description" cols="60" rows="3"><?= htmlentities(stripslashes($sDescription), ENT_NOQUOTES, 'UTF-8') ?></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <label for="Prompt"><?= gettext('Prompt') ?>:</label>
-                <input class="form-control input-small" type="text" name="Prompt" value="<?php echo htmlentities(stripslashes($sPrompt), ENT_NOQUOTES, 'UTF-8') ?>" size="50">
-                <span class="SmallText"><?= gettext('Entering a Prompt value will allow the association of a free-form value.') ?></span>
-            </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <input type="submit" class="btn btn-primary" id="save" name="Submit" value="<?= gettext('Save') ?>">&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="document.location='PropertyList.php?Type=<?= $sType ?>';">
-        </div>
         </div>
     </div>
-</form>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

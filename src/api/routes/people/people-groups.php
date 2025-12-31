@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -64,7 +65,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         '/{groupID:[0-9]+}/cartStatus',
         fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
             $response,
-            GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart()
+            ['isInCart' => GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart()]
         )
     );
 
@@ -79,7 +80,6 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $p = $member->getPerson();
             $fam = $p->getFamily();
 
-            // Philippe Logel : this is useful when a person don't have a family : ie not an address
             if (!empty($fam)) {
                 $p->setAddress1($fam->getAddress1());
                 $p->setAddress2($fam->getAddress2());
@@ -113,10 +113,16 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/', function (Request $request, Response $response, array $args): Response {
         $groupSettings = $request->getParsedBody();
         $group = new Group();
-        if ($groupSettings['isSundaySchool']) {
+        if ($groupSettings['isSundaySchool'] ?? false) {
             $group->makeSundaySchool();
         }
-        $group->setName($groupSettings['groupName']);
+        $group->setName(InputUtils::sanitizeText($groupSettings['groupName']));
+        $group->setDescription(InputUtils::sanitizeText($groupSettings['description'] ?? ''));
+        // Only set the explicit group type if it was provided in the request.
+        // This prevents overwriting types set by helper methods like makeSundaySchool().
+        if (isset($groupSettings['groupType'])) {
+            $group->setType($groupSettings['groupType']);
+        }
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });
@@ -125,9 +131,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $groupID = $args['groupID'];
         $input = $request->getParsedBody();
         $group = GroupQuery::create()->findOneById($groupID);
-        $group->setName($input['groupName']);
+        $group->setName(InputUtils::sanitizeText($input['groupName']));
         $group->setType($input['groupType']);
-    $group->setDescription(htmlspecialchars($input['description'] ?? '', ENT_QUOTES, 'UTF-8'));
+        $group->setDescription(InputUtils::sanitizeText($input['description'] ?? ''));
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
     });
@@ -194,40 +200,55 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     });
 
     $group->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $roleID = $args['roleID'];
-        $input = $request->getParsedBody();
-        $group = GroupQuery::create()->findOneById($groupID);
-        if (isset($input['groupRoleName'])) {
-            $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
-            $groupRole->setOptionName($input['groupRoleName']);
-            $groupRole->save();
+        try {
+            $groupID = $args['groupID'];
+            $roleID = $args['roleID'];
+            $input = $request->getParsedBody();
+            $group = GroupQuery::create()->findOneById($groupID);
+            if (isset($input['groupRoleName'])) {
+                $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+                $groupRole->setOptionName($input['groupRoleName']);
+                $groupRole->save();
 
-            return SlimUtils::renderSuccessJSON($response);
-        } elseif (isset($input['groupRoleOrder'])) {
-            $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
-            $groupRole->setOptionSequence($input['groupRoleOrder']);
-            $groupRole->save();
+                return SlimUtils::renderSuccessJSON($response);
+            } elseif (isset($input['groupRoleOrder'])) {
+                $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
+                $groupRole->setOptionSequence($input['groupRoleOrder']);
+                $groupRole->save();
 
-            return SlimUtils::renderSuccessJSON($response);
+                return SlimUtils::renderSuccessJSON($response);
+            }
+            throw new \Exception(gettext('invalid group request'));
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to update role. Please try again.'), [], $status, $e, $request);
         }
-        throw new \Exception(gettext('invalid group request'));
     });
 
     $group->delete('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $roleID = $args['roleID'];
-        $groupService = $this->get('GroupService');
+        try {
+            $groupID = $args['groupID'];
+            $roleID = $args['roleID'];
+            $groupService = new GroupService();
 
-        return SlimUtils::renderJSON($response, $groupService->deleteGroupRole($groupID, $roleID));
+            return SlimUtils::renderJSON($response, $groupService->deleteGroupRole($groupID, $roleID));
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to delete role. Please try again.'), [], $status, $e, $request);
+        }
     });
 
     $group->post('/{groupID:[0-9]+}/roles', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $roleName = $request->getParsedBody()['roleName'];
-        $groupService = $this->get('GroupService');
+        try {
+            $groupID = $args['groupID'];
+            $roleName = $request->getParsedBody()['roleName'];
+            $groupService = new GroupService();
 
-        return SlimUtils::renderJSON($response, $groupService->addGroupRole($groupID, $roleName));
+            return SlimUtils::renderJSON($response, $groupService->addGroupRole($groupID, $roleName));
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to add role. Please try again.'), [], $status, $e, $request);
+        }
     });
 
     $group->post('/{groupID:[0-9]+}/defaultRole', function (Request $request, Response $response, array $args): Response {
@@ -240,16 +261,21 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     });
 
     $group->post('/{groupID:[0-9]+}/setGroupSpecificPropertyStatus', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $input = $request->getParsedBody();
-        $groupService = $this->get('GroupService');
+        try {
+            $groupID = $args['groupID'];
+            $input = $request->getParsedBody();
+            $groupService = new GroupService();
 
-        if ($input['GroupSpecificPropertyStatus']) {
-            $groupService->enableGroupSpecificProperties($groupID);
-            return SlimUtils::renderJSON($response, ['status' => 'group specific properties enabled']);
-        } else {
-            $groupService->disableGroupSpecificProperties($groupID);
-            return SlimUtils::renderJSON($response, ['status' => 'group specific properties disabled']);
+            if ($input['GroupSpecificPropertyStatus']) {
+                $groupService->enableGroupSpecificProperties($groupID);
+                return SlimUtils::renderJSON($response, ['status' => 'group specific properties enabled']);
+            } else {
+                $groupService->disableGroupSpecificProperties($groupID);
+                return SlimUtils::renderJSON($response, ['status' => 'group specific properties disabled']);
+            }
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to update properties. Please try again.'), [], $status, $e, $request);
         }
     });
 

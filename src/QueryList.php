@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 
@@ -12,17 +12,12 @@ $rsQueries = RunQuery($sSQL);
 
 $aFinanceQueries = explode(',', $aFinanceQueries);
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <div class="card card-primary">
     <div class="card-body">
         <p class="text-right">
-            <?php
-            if (AuthenticationManager::getCurrentUser()->isAdmin()) {
-                echo '<a href="QuerySQL.php" class="text-red">' . gettext('Run a Free-Text Query') . '</a>';
-            }
-            ?>
         </p>
 
         <ul>
@@ -48,4 +43,4 @@ require_once 'Include/Header.php';
 
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

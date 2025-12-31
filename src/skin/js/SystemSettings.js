@@ -18,9 +18,7 @@ var cfgid = 0;
 $(".jsonSettingsEdit").on("click", function (event) {
     event.preventDefault();
     cfgid = $(this).data("cfgid");
-    var cfgvalue = jQuery.parseJSON(
-        $("input[name='new_value[" + cfgid + "]']").val(),
-    );
+    var cfgvalue = jQuery.parseJSON($("input[name='new_value[" + cfgid + "]']").val());
     $("#JSONSettingsDiv").html("");
     $.each(cfgvalue, function (key, value) {
         $("#JSONSettingsDiv").append(getRender(key, value, 0));
@@ -52,12 +50,7 @@ function updateDropDrownFromAjax(selectObj) {
     }).done(function (data) {
         $.each(data, function (index, config) {
             var optSelected = config.id == selectObj.data("value");
-            var opt = new Option(
-                config.value,
-                config.id,
-                optSelected,
-                optSelected,
-            );
+            var opt = new Option(config.value, config.id, optSelected, optSelected);
             selectObj.append(opt);
         });
     });

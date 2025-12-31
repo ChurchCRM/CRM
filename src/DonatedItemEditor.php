@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -173,7 +173,7 @@ $sPaddleSQL = 'SELECT pn_ID, pn_Num, pn_per_ID,
                       LEFT JOIN person_per a on a.per_ID=pn_per_ID
                       WHERE pn_fr_ID=' . $iCurrentFundraiser . ' ORDER BY pn_Num';
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 ?>
 
 <form method="post" action="DonatedItemEditor.php?<?= 'CurrentFundraiser=' . $iCurrentFundraiser . '&DonatedItemID=' . $iDonatedItemID . '&linkBack=' . $linkBack; ?>" name="DonatedItemEditor">
@@ -220,7 +220,7 @@ require_once 'Include/Header.php';
 
                         <div class="form-group">
                             <label><?= gettext('Title') ?>:</label>
-                            <input type="text" name="Title" id="Title" value="<?= htmlentities($sTitle) ?>" class="form-control" />
+                            <input type="text" name="Title" id="Title" value="<?= InputUtils::escapeAttribute($sTitle) ?>" class="form-control" />
                         </div>
 
                         <div class="form-group">
@@ -285,16 +285,16 @@ require_once 'Include/Header.php';
                     <div class="col-md-6 col-md-offset-2 col-xs-12">
                         <div class="form-group">
                             <label><?= gettext('Description') ?>:</label>
-                            <textarea name="Description" rows="5" cols="90" class="form-control"><?= htmlentities($sDescription) ?></textarea>
+                            <textarea name="Description" rows="5" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sDescription) ?></textarea>
                         </div>
 
                         <div class="form-group">
                             <label><?= gettext('Picture URL') ?>:</label>
-                            <textarea name="PictureURL" rows="1" cols="90" class="form-control"><?= htmlentities($sPictureURL) ?></textarea>
+                            <textarea name="PictureURL" rows="1" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sPictureURL) ?></textarea>
                         </div>
 
                         <?php if ($sPictureURL != '') : ?>
-                            <div class="form-group"><img src="<?= htmlentities($sPictureURL) ?>" /></div>
+                            <div class="form-group"><img src="<?= InputUtils::escapeAttribute($sPictureURL) ?>" /></div>
                         <?php endif; ?>
 
                     </div>
@@ -307,11 +307,11 @@ require_once 'Include/Header.php';
                 <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) : ?>
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
                 <?php endif; ?>
-                <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel" onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'v2/dashboard'; ?>';">
+                <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel" onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'v2/dashboard'; ?>';">
             </div>
 
         </div>
     </div>
 </form>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

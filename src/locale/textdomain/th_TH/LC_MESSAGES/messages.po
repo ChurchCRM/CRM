@@ -64,14 +64,6 @@ msgid "Backup Database"
 msgstr "ฐานข้อมูลสำรอง"
 
 #: 
-msgid "Select archive type"
-msgstr "เลือกประเภทเก็บ"
-
-#: 
-msgid "Re-type Password"
-msgstr "พิมพ์รหัสผ่านอีกครั้ง"
-
-#: 
 msgid "Winner"
 msgstr "ผู้ชนะ"
 
@@ -131,11 +123,6 @@ msgid "Membership Date"
 msgstr "วันที่เป็นสมาชิก"
 
 #: 
-#, fuzzy
-msgid "Birth / Anniversary Date"
-msgstr "วันเกิด / วันครอบรอบแต่งงาน"
-
-#: 
 msgid "Age / Years Married"
 msgstr "อายุ / แต่งงานกี่ปีแล้ว"
 
@@ -181,17 +168,14 @@ msgid "Group Membership"
 msgstr "สมาชิกกลุ่ม"
 
 #: 
-msgid "From:"
+#, fuzzy
+msgid "From"
 msgstr "จาก"
 
 #: 
-msgid "To:"
-msgstr "เรียน"
-
-#: 
 #, fuzzy
-msgid "Birthday Date"
-msgstr "วันเกิด"
+msgid "To"
+msgstr "เรียน"
 
 #: 
 #, fuzzy

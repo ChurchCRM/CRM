@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 
 $sPageTitle = gettext("Change Password") . ": " . $user->getFullName();
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="row">
@@ -43,6 +43,6 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/PasswordChange.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/PasswordChange.js') ?>"></script>
 <?php
-include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

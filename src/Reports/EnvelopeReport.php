@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -13,7 +13,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('Admin');
 }
 
 class PdfEnvelopeReport extends ChurchInfoReport
@@ -117,7 +117,7 @@ foreach ($families as $family) {
     $pdf->addRecord($OutStr, $numlines);
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('EnvelopeAssignments-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

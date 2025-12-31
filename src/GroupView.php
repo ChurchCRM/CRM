@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -44,9 +44,9 @@ $sSQL = 'SELECT * FROM groupprop_master WHERE grp_ID = ' . $iGroupID . ' ORDER B
 $rsPropList = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsPropList);
 
-$sPageTitle = gettext('Group View') . ' : ' . $thisGroup->getName();
+$sPageTitle = gettext('Group View') . ' : ' . InputUtils::escapeHTML($thisGroup->getName());
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Store email and phone data for later use in buttons
 // Email Group link
@@ -68,7 +68,7 @@ $sEmailLink = '';
 $roleEmails = [];
 $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
 while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
-    $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+    $sEmail = $per_Email;
     if ($sEmail) {
         /* if ($sEmailLink) // Don't put delimiter before first email
     $sEmailLink .= $sMailtoDelimiter; */
@@ -89,11 +89,10 @@ if ($sEmailLink) {
 
 // Group Text Message Comma Delimited - added by RSBC
 // Note: This will provide cell phone numbers for the entire group, even if a specific role is currently selected.
-$sSQL = "SELECT per_CellPhone, fam_CellPhone
+$sSQL = "SELECT per_CellPhone
     FROM person_per
     LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
     LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
-    LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
 WHERE per_ID NOT IN
     (SELECT per_ID
     FROM person_per
@@ -103,8 +102,8 @@ AND p2g2r_grp_ID = " . $iGroupID;
 $rsPhoneList = RunQuery($sSQL);
 $sPhoneLink = '';
 $sCommaDelimiter = ', ';
-while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
-    $sPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, false);
+while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
+    $sPhone = $per_CellPhone;
     if ($sPhone) {
         /* if ($sPhoneLink) // Don't put delimiter before first phone
     $sPhoneLink .= $sCommaDelimiter; */
@@ -119,11 +118,11 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 
 <div class="card card-info card-outline">
     <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= $thisGroup->getName() ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= InputUtils::escapeHTML($thisGroup->getName()) ?></h3>
     </div>
     <div class="card-body">
         <div class="mb-3">
-            <?= $thisGroup->getDescription() ?>
+            <?= InputUtils::escapeHTML($thisGroup->getDescription() ?? '') ?>
         </div>
         <div class="row mt-3">
             <div class="col-md-4">
@@ -140,7 +139,7 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     <span class="info-box-icon"><i class="fa-solid fa-user-tag"></i></span>
                     <div class="info-box-content">
                         <span class="info-box-text"><?= gettext('Default Role') ?></span>
-                        <span class="info-box-number"><?= $defaultRole !== null ? $defaultRole->getOptionName() : gettext('None') ?></span>
+                        <span class="info-box-number"><?= $defaultRole !== null ? InputUtils::escapeHTML($defaultRole->getOptionName()) : gettext('None') ?></span>
                     </div>
                 </div>
             </div>
@@ -185,31 +184,25 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                 <?php
                 // Email buttons
                 if ($sEmailLink && AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
-                    <div class="btn-group">
-                        <a class="btn btn-app bg-teal" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>">
+                    <div class="dropdown d-inline-block">
+                        <button class="btn btn-app bg-teal dropdown-toggle" type="button" id="emailGroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa-solid fa-paper-plane fa-3x"></i><br>
                             <?= gettext('Email Group') ?>
-                        </a>
-                        <button type="button" class="btn btn-app bg-teal dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <ul class="dropdown-menu" role="menu">
+                        <div class="dropdown-menu" aria-labelledby="emailGroupDropdown">
+                            <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
                             <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
-                        </ul>
+                        </div>
                     </div>
-                    <div class="btn-group">
-                        <a class="btn btn-app bg-navy" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>">
-                            <i class="fa-regular fa-paper-plane fa-3x"></i><br>
+                    <div class="dropdown d-inline-block">
+                        <button class="btn btn-app bg-navy dropdown-toggle" type="button" id="emailGroupBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa-solid fa-user-secret fa-3x"></i><br>
                             <?= gettext('Email (BCC)') ?>
-                        </a>
-                        <button type="button" class="btn btn-app bg-navy dropdown-toggle" data-toggle="dropdown">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <ul class="dropdown-menu" role="menu">
+                        <div class="dropdown-menu" aria-labelledby="emailGroupBccDropdown">
+                            <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
                             <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
-                        </ul>
+                        </div>
                     </div>
                 <?php }
                 // Text button
@@ -307,7 +300,7 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     //Was anything returned?
                     if (mysqli_num_rows($rsAssignedProperties) === 0) {
                         // No, indicate nothing returned
-                        echo '<p>' . gettext('No property assignments') . '.</p>';
+                        echo '<p>' . gettext('No property assignments.') . '</p>';
                     } else {
                         // Display table of properties
                         ?>
@@ -393,7 +386,7 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                         if (!empty($availableProperties)) {
                             echo '<form method="post" action="PropertyAssign.php?GroupID=' . $iGroupID . '">';
                             echo '<p>';
-                            echo '<span>' . gettext('Assign a New Property:') . '</span>';
+                            echo '<span>' . gettext('Assign a New Property') . ': </span>';
                             echo '<select name="PropertyID">';
 
                             foreach ($availableProperties as $prop) {
@@ -421,7 +414,7 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     </div>
     <div class="card-body">
         <form action="#" method="get" class="mb-3">
-            <label for="addGroupMember"><?= gettext('Add Group Member: ') ?></label>
+            <label for="addGroupMember"><?= gettext('Add Group Member') . ': ' ?></label>
             <select id="addGroupMember" class="form-control personSearch" name="addGroupMember" style="width: 300px;">
             </select>
         </form>
@@ -451,38 +444,40 @@ while (list($per_CellPhone, $fam_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentGroup = <?= $iGroupID ?>;
-    window.CRM.iProfilePictureListSize = <?= SystemConfig::getValue('iProfilePictureListSize') ?>;
     var dataT = 0;
     $(document).ready(function() {
-        $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ? 'true' : 'false' ?>).change();
-        $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>).change();
-        $("#deleteGroupButton").click(function() {
-            bootbox.setDefaults({
-                    locale: window.CRM.shortLocale
-                }),
-                bootbox.confirm({
-                    title: "<?= gettext("Confirm Delete Group") ?>",
-                    message: '<p class="text-danger">' +
-                        "<?= gettext("Please confirm deletion of this group record") ?>: <?= $thisGroup->getName() ?></p>" +
-                        "<p>" +
-                        "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
-                        "</p><p>" +
-                        "<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
-                    callback: function(result) {
-                        if (result) {
-                            window.CRM.APIRequest({
-                                method: "DELETE",
-                                path: "groups/" + window.CRM.currentGroup,
-                            }).done(function(data) {
-                                if (data.status == "success")
-                                    window.location.href = window.CRM.root + "/GroupList.php";
-                            });
+        // Wait for locales to load before setting up handlers that use bootbox
+        window.CRM.onLocalesReady(function() {
+            $('#isGroupActive').prop('checked', <?= $thisGroup->isActive() ? 'true' : 'false' ?>).change();
+            $('#isGroupEmailExport').prop('checked', <?= $thisGroup->isIncludeInEmailExport() ? 'true' : 'false' ?>).change();
+            $("#deleteGroupButton").click(function() {
+                bootbox.setDefaults({
+                        locale: window.CRM.shortLocale
+                    }),
+                    bootbox.confirm({
+                        title: "<?= gettext("Confirm Delete Group") ?>",
+                        message: '<p class="text-danger">' +
+                            "<?= gettext("Please confirm deletion of this group record") ?>: " + <?= json_encode($thisGroup->getName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> + "</p>" +
+                            "<p>" +
+                            "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
+                            "</p><p>" +
+                            "<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
+                        callback: function(result) {
+                            if (result) {
+                                window.CRM.APIRequest({
+                                    method: "DELETE",
+                                    path: "groups/" + window.CRM.currentGroup,
+                                }).done(function(data) {
+                                    if (data.status == "success")
+                                        window.location.href = window.CRM.root + "/GroupList.php";
+                                });
+                            }
                         }
-                    }
-                });
+                    });
+            });
         });
     });
 </script>
 <script src="skin/js/GroupView.js"></script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

@@ -1,9 +1,10 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -27,16 +28,25 @@ if (isset($_POST['PropertyID'])) {
 if (isset($_GET['PersonID']) && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
     // Is there a PersonID in the querystring?
     $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
+    
+    // GHSA-fcw7-mmfh-7vjm: Add object-level authorization check to prevent privilege escalation
+    $personToEdit = PersonQuery::create()->findOneById($iPersonID);
+    if ($personToEdit === null) {
+        RedirectUtils::redirect('v2/person/not-found?id=' . $iPersonID);
+    }
+    
+    $currentUser = AuthenticationManager::getCurrentUser();
+    if (!$currentUser->canEditPerson($iPersonID, $personToEdit->getFamId())) {
+        RedirectUtils::securityRedirect('PropertyAssign');
+    }
+    
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID=' . $iPersonID;
     $sTypeName = gettext('Person');
     $sBackPage = 'PersonView.php?PersonID=' . $iPersonID;
 
-    // Get the name of the person
-    $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = ' . $iPersonID;
-    $rsName = RunQuery($sSQL);
-    $aRow = mysqli_fetch_array($rsName);
-    $sName = $aRow['per_LastName'] . ', ' . $aRow['per_FirstName'];
+    // Get the name of the person from the already-retrieved object
+    $sName = $personToEdit->getFullName();
 } elseif (isset($_GET['GroupID']) && AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
     // Is there a GroupID in the querystring?
     $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
@@ -97,8 +107,10 @@ if (isset($_POST['SecondPass'])) {
     // Get the action (this will overwrite the value set at the top of the page, which is fine)
     $sAction = $_POST['Action'];
 
-    // Get the value
-    $sValue = InputUtils::legacyFilterInput($_POST['Value']);
+    // Get the value - use sanitizeText to prevent XSS with event handlers (GHSA-fcw7-mmfh-7vjm)
+    // strip_tags() only removes tags but allows event handlers like onerror=
+    // sanitizeText removes all HTML including event handlers
+    $sValue = InputUtils::sanitizeText($_POST['Value']);
 
     // Update the property
     UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction);
@@ -137,7 +149,7 @@ if ($sAction === 'edit') {
 }
 
 $sPageTitle = $sTypeName . ' : ' . gettext(' Property Assignment');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 ?>
 
 <form method="post" action="PropertyAssign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID ?>">
@@ -177,4 +189,4 @@ require_once 'Include/Header.php';
 
 </form>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

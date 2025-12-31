@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -12,7 +12,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
 
 $sPageTitle = gettext('Group Editor');
 $groupService = new GroupService();
@@ -27,7 +27,7 @@ if (array_key_exists('GroupID', $_GET)) {
 $thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.
 $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();     // Get Group Types for the drop-down
 $rsGroupRoleSeed = GroupQuery::create()->filterByRoleListId(['min' => 0], $comparison)->find();     //Group Group Role List
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 ?>
 <!-- GROUP SPECIFIC PROPERTIES MODAL-->
 <div class="modal fade" id="groupSpecificPropertiesModal" tabindex="-1" role="dialog" aria-labelledby="deleteGroup" aria-hidden="true">
@@ -41,7 +41,7 @@ require_once 'Include/Header.php';
         <span class="text-danger"></span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Close')?></button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Close')?></button>
         <button name="setgroupSpecificProperties" id="setgroupSpecificProperties" type="button" class="btn btn-danger"></button>
       </div>
     </div>
@@ -59,13 +59,13 @@ require_once 'Include/Header.php';
         <div class="row">
           <div class="col-sm-4">
             <label for="Name"><?= gettext('Name') ?>:</label>
-            <input class="form-control" type="text" Name="Name" value="<?= htmlentities(stripslashes($thisGroup->getName()), ENT_NOQUOTES, 'UTF-8') ?>">
+            <input class="form-control" type="text" Name="Name" value="<?= InputUtils::escapeAttribute($thisGroup->getName()) ?>">
           </div>
         </div>
         <div class="row">
           <div class="col-sm-4">
             <label for="Description"><?= gettext('Description') ?>:</label>
-            <textarea  class="form-control" name="Description" cols="40" rows="5"><?= htmlentities(stripslashes($thisGroup->getDescription()), ENT_NOQUOTES, 'UTF-8') ?></textarea></td>
+            <textarea  class="form-control" name="Description" cols="40" rows="5"><?= InputUtils::escapeAttribute($thisGroup->getDescription()) ?></textarea></td>
           </div>
         </div>
         <div class="row">
@@ -135,7 +135,7 @@ require_once 'Include/Header.php';
         <br>
         <div class="row">
           <div class="col-sm-6">
-            <label for="UseGroupProps"><?= gettext('Group Specific Properties: ') ?></label>
+            <label for="UseGroupProps"><?= gettext('Group Specific Properties') . ': ' ?></label>
 
             <?php
             if ($thisGroup->getHasSpecialProps()) {
@@ -178,7 +178,7 @@ require_once 'Include/Header.php';
       </div>
     <label for="newRole"><?= gettext('New Role')?>: </label><input type="text" class="form-control" id="newRole" name="newRole">
     <br>
-    <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext('Add New Role')?></button>
+    <button type="button" id="addNewRole" class="btn btn-primary"><?= gettext('Add New') . ' ' . gettext('Role')?></button>
   </div>
 </div>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -189,6 +189,6 @@ require_once 'Include/Header.php';
   var roleCount = groupRoleData.length;
   var groupID =<?= $iGroupID ?>;
 </script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupEditor.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/GroupEditor.js') ?>"></script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

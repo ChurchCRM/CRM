@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\UserConfig;
@@ -81,7 +81,7 @@ if (isset($_POST['save'])) {
 }
 
 $sPageTitle = gettext('My User Settings');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Get settings
 $sSQL = 'SELECT * FROM userconfig_ucfg WHERE ucfg_per_id=' . $iPersonID
@@ -123,11 +123,11 @@ $rsConfigs = RunQuery($sSQL);
                     if ($ucfg_type == 'text') {
                         echo "<td class=TextColumnWithBottomBorder>
             <input type=text size=30 maxlength=255 name='new_value[$ucfg_id]'
-            value='" . htmlspecialchars($ucfg_value, ENT_QUOTES) . "'></td>";
+            value=\"" . InputUtils::escapeHTML($ucfg_value) . "\"></td>";
                     } elseif ($ucfg_type == 'textarea') {
                         echo "<td class=TextColumnWithBottomBorder>
             <textarea rows=4 cols=30 name='new_value[$ucfg_id]'>"
-                            . htmlspecialchars($ucfg_value, ENT_QUOTES) . '</textarea></td>';
+                            . InputUtils::escapeHTML($ucfg_value) . '</textarea></td>';
                     } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
                         echo '<td class=TextColumnWithBottomBorder><input type=text size=15 maxlength=15 name='
                             . "'new_value[$ucfg_id]' value='$ucfg_value'></td>";
@@ -163,4 +163,4 @@ $rsConfigs = RunQuery($sSQL);
     </form>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

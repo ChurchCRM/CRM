@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("API Private Admin Person Initial Setting", () => {
-    it("Delete Person Image / Generate Initial Image", () => {
+    it("Delete Person Image / Avatar info available for client-side rendering", () => {
         cy.makePrivateAdminAPICall(
             "DELETE",
             "/api/person/2/photo",
@@ -9,38 +9,43 @@ describe("API Private Admin Person Initial Setting", () => {
             200,
         );
 
-        cy.request({
-            method: "GET",
-            url: "/api/person/2/photo",
-            headers: {
-                "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
-            },
-        }).then((resp) => {
-            expect(resp.status).to.eq(200);
+        // After deleting photo, /photo endpoint returns 404 (no uploaded photo)
+        cy.makePrivateAdminAPICall(
+            "GET",
+            "/api/person/2/photo",
+            null,
+            404,
+        );
+
+        // Avatar info endpoint returns data for client-side rendering
+        cy.makePrivateAdminAPICall(
+            "GET",
+            "/api/person/2/avatar",
+            null,
+            200,
+        ).then((resp) => {
+            expect(resp.body).to.have.property("initials");
+            expect(resp.body).to.have.property("hasPhoto");
+            expect(resp.body.hasPhoto).to.eq(false);
         });
     });
 
-    it("Change Person Initial Style / Delete Person Image / Generate Initial Image", () => {
+    it("Change Person Initial Style / Delete Person Image / Avatar info available", () => {
         const json = { value: "1" };
         cy.makePrivateAdminAPICall(
             "POST",
-            "/api/system/config/iPersonInitialStyle",
+            "/admin/api/system/config/iPersonInitialStyle",
             json,
             200,
         );
 
-        cy.request({
-            method: "GET",
-            url: "/api/system/config/iPersonInitialStyle",
-            headers: {
-                "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
-            },
-        }).then((resp) => {
-            expect(resp.status).to.eq(200);
-            const result = JSON.parse(JSON.stringify(resp.body));
-            expect(result.value).to.eq(json.value);
+        cy.makePrivateAdminAPICall(
+            "GET",
+            "/admin/api/system/config/iPersonInitialStyle",
+            null,
+            200,
+        ).then((resp) => {
+            expect(resp.body.value).to.eq(json.value);
         });
 
         cy.makePrivateAdminAPICall(
@@ -50,15 +55,22 @@ describe("API Private Admin Person Initial Setting", () => {
             200,
         );
 
-        cy.request({
-            method: "GET",
-            url: "/api/person/2/photo",
-            headers: {
-                "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
-            },
-        }).then((resp) => {
-            expect(resp.status).to.eq(200);
+        // After deleting photo, /photo endpoint returns 404
+        cy.makePrivateAdminAPICall(
+            "GET",
+            "/api/person/2/photo",
+            null,
+            404,
+        );
+
+        // Avatar info endpoint returns data for client-side rendering
+        cy.makePrivateAdminAPICall(
+            "GET",
+            "/api/person/2/avatar",
+            null,
+            200,
+        ).then((resp) => {
+            expect(resp.body).to.have.property("initials");
         });
     });
 });

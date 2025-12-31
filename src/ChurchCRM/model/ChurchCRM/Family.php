@@ -188,7 +188,7 @@ class Family extends BaseFamily implements PhotoInterface
             }
         }
 
-        return $emails;
+        return array_unique($emails);
     }
 
     public function createTimeLineNote($type): void
@@ -253,21 +253,20 @@ class Family extends BaseFamily implements PhotoInterface
         return false;
     }
 
-    public function setImageFromBase64($base64): bool
+    public function setImageFromBase64($base64): void
     {
-        if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-            $note = new Note();
-            $note->setText(gettext('Profile Image uploaded'));
-            $note->setType('photo');
-            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-            $this->getPhoto()->setImageFromBase64($base64);
-            $note->setFamId($this->getId());
-            $note->save();
-
-            return true;
-        }
-
-        return false;
+        $note = new Note();
+        $note->setText(gettext('Profile Image uploaded'));
+        $note->setType('photo');
+        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
+        $this->getPhoto()->setImageFromBase64($base64);
+        $note->setFamId($this->getId());
+        $note->save();
+        
+        // Update family's last edited date and editor
+        $this->setDateLastEdited(new \DateTime());
+        $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+        $this->save();
     }
 
     public function verify(): void
@@ -293,6 +292,44 @@ class Family extends BaseFamily implements PhotoInterface
         } else {
             return $this->getName() . ' ' . $this->getAddress();
         }
+    }
+
+    /**
+     * Return the family's status as text ('Active' or 'Inactive').
+     * Presentation (HTML badges) should be handled by the view or client.
+     */
+    public function getStatusText(): string
+    {
+        return $this->isActive() ? gettext('Active') : gettext('Inactive');
+    }
+
+    /**
+     * Return an HTML link for the family name, optionally including the photo button.
+     */
+    public function getLinkHtml(bool $includePhoto = true, bool $strong = true): string
+    {
+        $name = $strong ? '<strong>' . htmlspecialchars($this->getName()) . '</strong>' : htmlspecialchars($this->getName());
+        $html = '<a href="' . $this->getViewURI() . '">' . $name . '</a>';
+
+        if ($includePhoto && $this->getPhoto() && $this->getPhoto()->hasUploadedPhoto()) {
+            $html .= ' <button class="btn btn-xs btn-outline-secondary view-family-photo ml-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+        }
+
+        return $html;
+    }
+
+    /**
+     * Return a compact City/State string, truncated to a maximum length.
+     */
+    public function getCityStateShort(int $maxLen = 30): string
+    {
+        $city = $this->getCity();
+        $state = $this->getState();
+        $s = trim($city . ($city && $state ? ', ' : '') . $state);
+        if (mb_strlen($s) > $maxLen) {
+            $s = mb_substr($s, 0, $maxLen) . '...';
+        }
+        return htmlspecialchars($s);
     }
 
     public function hasLatitudeAndLongitude(): bool

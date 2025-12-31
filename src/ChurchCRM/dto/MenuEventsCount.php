@@ -1,14 +1,4 @@
 <?php
-
-/*
- * File : MenuEventsCount.php
- *
- * Created by : Philippe by Hand.
- * User: Philippe Logel
- * Date: 11/26/2017
- * Time: 3:00 AM.
- */
-
 namespace ChurchCRM\dto;
 
 use ChurchCRM\model\ChurchCRM\Family;

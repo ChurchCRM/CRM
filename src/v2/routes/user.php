@@ -47,7 +47,7 @@ function viewUser(Request $request, Response $response, array $args): Response
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/admin/user/not-found?id=' . $args['id']);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/user/not-found?id=' . $args['id']);
     }
 
     $pageArgs = [
@@ -73,7 +73,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/admin/user/not-found?id=' . $args['id']);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/user/not-found?id=' . $args['id']);
     }
 
     if ($user->equals($curUser)) {

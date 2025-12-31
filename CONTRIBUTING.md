@@ -16,39 +16,62 @@ The project welcomes, and depends on, contributions from developers and users in
 
 ## Setting Up Your Development Environment
 
-### Install Dev Tools
+### Quick Start (Recommended)
 
-1. **Install Git:**
-   - Please follow https://github.com/git-guides/install-git
-      - note: if you would like to use a graphical interface, consider using the [GitHub desktop app](https://desktop.github.com/).
+**🚀 GitHub Codespaces (Easiest):**
+1. Click "Code" → "Codespaces" → "Create codespace on [branch]"
+2. Wait 2-3 minutes for automatic setup
+3. Open `http://localhost` and login with `admin`/`changeme`
 
-2. **Install Node.js version 20:**
-   - Download and install Node.js version 20+ from the official website: [Node.js Downloads](https://nodejs.org/en/download/).
+**🐳 VS Code Dev Containers:**
+1. Install the "Dev Containers" extension in VS Code
+2. Open this repo in VS Code
+3. Click "Reopen in Container" when prompted
+4. Wait for setup to complete
 
-3. **Install Docker:**
-   - Download and install Docker from the official website:
-     - [Docker for Windows](https://docs.docker.com/desktop/install/windows/)
-     - [Docker for macOS](https://docs.docker.com/desktop/install/mac/)
-     - [Docker for Linux](https://docs.docker.com/desktop/install/linux/).
+### Manual Setup
 
-4. **Clone the Repository:**
+If you prefer manual setup or the automatic options don't work:
+
+1. **Install Prerequisites:**
+   - [Git](https://github.com/git-guides/install-git) (or [GitHub Desktop](https://desktop.github.com/))
+   - [Node.js version 20+](https://nodejs.org/en/download/)
+   - [Docker](https://docs.docker.com/desktop/)
+
+2. **Clone and Setup:**
    ```bash
    git clone https://github.com/your-username/ChurchCRM.git
+   cd ChurchCRM
+   ./scripts/setup-dev-environment.sh
    ```
 
-5. **Install Dependencies:**
-   ```bash
-   npm ci
-   npm run deploy
-   ```
+3. **Access the Website:**
+   - ChurchCRM: [http://localhost/](http://localhost/) (`admin`/`changeme`)
+   - MailHog: [http://localhost:8025](http://localhost:8025) (email testing)
+   - Adminer: [http://localhost:8088](http://localhost:8088) (database admin)
 
-6. **Set Up Docker Containers:**
-   ```bash
-   docker compose -f "docker/docker-compose.test-php8-apache.yaml" up -d --build
-   ```
+### Troubleshooting
 
-7. **Access the Website:**
-   - Open [http://localhost/](http://localhost/) in your browser and log in with `admin`/`changeme`.
+**Common Issues:**
+- **Port 80 conflicts:** Stop other web servers or change Docker port mapping
+- **Docker build fails:** Ensure Docker has 4GB+ memory allocated
+- **Services not starting:** Run `npm run docker:dev:logs` to check logs
+- **Tests failing locally:** Use `npm run docker:test:rebuild` for clean test environment
+- **Missing PHP extensions:** Use Docker containers - don't build locally
+- **Database schema outdated:** Run `npm run docker:test:restart:db` to refresh
+
+**Quick Commands:**
+```bash
+# Development
+npm run docker:dev:logs       # View service logs
+npm run docker:dev:stop       # Stop containers
+npm run build:frontend        # Rebuild JS/CSS after changes
+
+# Testing
+npm run test                  # Run Cypress tests
+npm run docker:test:restart   # Restart test containers
+npm run docker:test:rebuild   # Full rebuild (remove volumes, rebuild images)
+```
 
 ### User Interface using AdminLTE
 
@@ -72,7 +95,20 @@ For new APIs and pages, ChurchCRM follows the Slim MVC (Model-View-Controller) a
 
 ### Adding Tests with Cypress
 
-We use Cypress for end-to-end testing. Follow the previously mentioned steps to set up Cypress and write tests for UI components and functionalities.
+We use Cypress for end-to-end testing. The test environment is automatically configured in Codespaces/Dev Containers.
+
+**Running Tests:**
+```bash
+npm run test              # Run all tests (headless)
+npm run test:ui           # Interactive browser testing
+```
+
+**Test Structure:**
+- API tests: `cypress/e2e/api/private/[feature]/[endpoint].spec.js`
+- UI tests: `cypress/e2e/ui/[feature]/`
+- Use helper commands: `cy.loginAdmin()`, `cy.makePrivateAdminAPICall()`, etc.
+
+For complete testing guidelines, see `.github/copilot-instructions.md`.
 
 ## Development Workflow
 
@@ -93,46 +129,40 @@ We use Cypress for end-to-end testing. Follow the previously mentioned steps to 
 
 5. **Commit Messages:**
    - Use descriptive commit messages in the present tense.
-   - For complete standards, see `.github/ai-preferences/`
+   - For complete standards, see `.github/copilot-instructions.md`
 
-## AI Preferences Standards
+## AI Coding Standards
 
-ChurchCRM uses **standardized AI agent preferences** to ensure consistent code quality. These apply to all contributors, whether working with AI assistance or manually.
+ChurchCRM uses **standardized AI agent instructions** to ensure consistent code quality across all contributions.
 
 ### Quick Reference
-**See `.github/ai-preferences/preferences.yml` for complete standards including:**
+**See `.github/copilot-instructions.md` for complete standards including:**
 - ✅ **Database:** Propel ORM mandatory (no raw SQL)
-- ✅ **HTML5:** Bootstrap CSS only, no deprecated attributes
+- ✅ **HTML5:** Bootstrap 4.6.2 CSS only, no deprecated attributes
 - ✅ **Asset Paths:** Use `SystemURLs::getRootPath()`
 - ✅ **Services:** Business logic in Service classes
-- ✅ **Objects:** Validate with `=== null`, never `empty()`
-- ✅ **CSS:** Webpack bundled, no CDN links
+- ✅ **PHP 8.2+:** (See [System Requirements](https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites)) Explicit nullable types, modern patterns
+- ✅ **i18n:** Wrap UI text with `gettext()` or `i18next.t()`
 
 ### Using AI Assistance
-If using GitHub Copilot or Claude:
-1. Reference `.github/ai-preferences/preferences.yml` in your conversation or tool settings
-2. Verify all code follows standards before committing
-3. Run pre-commit checks: `php -l src/YourFile.php`
-4. See `.github/ai-preferences/setup.md` for detailed tool integration
-
-### AI Preferences Directory
-**Location:** `.github/ai-preferences/`
-
-**Contains:**
-- `README.md` - Overview & file reference
-- `preferences.yml` - Core standards (used by all agents)
-- `setup.md` - Detailed setup guide for Copilot and Claude
+If using GitHub Copilot, Claude, or other AI tools:
+1. Reference `.github/copilot-instructions.md` for project-specific patterns
+2. **CRITICAL:** Follow Slim Framework 4 LIFO middleware order (see copilot-instructions.md)
+   - Slim 4 executes middleware in reverse order (last added runs first)
+   - Wrong order causes "No active authentication provider" errors
+3. Verify all code follows standards before committing
+4. Run syntax check: `php -l src/YourFile.php`
 
 ## Pull Request Process
 
-1. Ensure your branch is up-to-date with the main branch:
+1. Ensure your branch is up-to-date with the master branch:
    ```bash
-   git pull origin main
+   git pull origin master
    ```
 
 2. Rebase your branch if necessary:
    ```bash
-   git rebase main
+   git rebase master
    ```
 
 3. Push your changes:

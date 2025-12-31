@@ -7,13 +7,17 @@ describe(
         },
     },
     () => {
+        beforeEach(() => {
+            cy.setupAdminSession();
+        });
+
         it("Verify CSV Import", () => {
-            cy.loginAdmin("CSVImport.php");
+            cy.visit("CSVImport.php");
             cy.get("#CSVFileChooser").selectFile(
                 "cypress/data/test_import.csv",
             );
             cy.get("#UploadCSVBtn").click();
-            cy.contains("Total number of rows in the CSV file:3");
+            cy.contains("Total number of rows in the CSV file: 3");
             // It is not clear why, but it seems that force:true was needed to get the selections to work
             cy.get("#SelField0").select("Last Name", { force: true });
             cy.get("#SelField1").select("First Name", { force: true });

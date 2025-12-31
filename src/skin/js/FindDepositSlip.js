@@ -1,23 +1,22 @@
+/**
+ * Find Deposit Slip
+ * Requires: moment.js (loaded globally), i18next, DataTables
+ */
+
 var dataT = 0;
 
-document.addEventListener("DOMContentLoaded", function () {
+function initializeDepositSlip() {
     function updateSelectedCount() {
         var selectedRows = dataT.rows(".selected").data().length;
         $("#deleteSelectedRows").prop("disabled", !selectedRows);
-        $("#deleteSelectedRows").text(
-            "Delete (" + selectedRows + ") Selected Rows",
-        );
+        $("#deleteSelectedRows").text("Delete (" + selectedRows + ") Selected Rows");
         $("#exportSelectedRows").prop("disabled", !selectedRows);
         $("#exportSelectedRows").html(
-            '<i class="fa-solid fa-download"></i> Export (' +
-                selectedRows +
-                ") Selected Rows (OFX)",
+            '<i class="fa-solid fa-download"></i> Export (' + selectedRows + ") Selected Rows (OFX)",
         );
         $("#exportSelectedRowsCSV").prop("disabled", !selectedRows);
         $("#exportSelectedRowsCSV").html(
-            '<i class="fa-solid fa-download"></i> Export (' +
-                selectedRows +
-                ") Selected Rows (CSV)",
+            '<i class="fa-solid fa-download"></i> Export (' + selectedRows + ") Selected Rows (CSV)",
         );
         $("#generateDepositSlip").prop("disabled", !selectedRows);
         $("#generateDepositSlip").html(
@@ -40,14 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 i18next.t("Deposit(s)") +
                 "?</p>" +
                 "<p>" +
-                i18next.t(
-                    "This will also delete all payments associated with this deposit",
-                ) +
+                i18next.t("This will also delete all payments associated with this deposit") +
                 "</p>" +
                 "<p>" +
-                i18next.t(
-                    "This action CANNOT be undone, and may have legal implications!",
-                ) +
+                i18next.t("This action CANNOT be undone, and may have legal implications!") +
                 "</p>" +
                 "<p>" +
                 i18next.t("Please ensure this what you want to do.") +
@@ -76,9 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    $("#depositDate")
-        .datepicker({ format: "yyyy-mm-dd", language: window.CRM.lang })
-        .datepicker("setDate", new Date());
+    $("#depositDate").datepicker({ format: "yyyy-mm-dd", language: window.CRM.lang }).datepicker("setDate", new Date());
     $("#addNewDeposit").click(function (e) {
         var newDeposit = {
             depositType: $("#depositType option:selected").val(),
@@ -88,10 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!$("#depositComment").val().trim()) {
             bootbox.confirm({
-                title: i18next.t("Add New Deposit"),
-                message: i18next.t(
-                    "You are about to add a new deposit without a comment",
-                ),
+                title: i18next.t("Add New") + " " + i18next.t("Deposit"),
+                message: i18next.t("You are about to add a new deposit without a comment"),
                 buttons: {
                     cancel: {
                         label: i18next.t("Cancel"),
@@ -119,10 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
         }).done(function (data) {
-            window.location.href =
-                window.CRM.root +
-                "/DepositSlipEditor.php?DepositSlipID=" +
-                data.Id;
+            window.location.href = window.CRM.root + "/DepositSlipEditor.php?DepositSlipID=" + data.Id;
         });
     }
 
@@ -199,10 +187,62 @@ document.addEventListener("DOMContentLoaded", function () {
     $(".exportButton").click(function (sender) {
         var selectedRows = dataT.rows(".selected").data();
         var type = this.getAttribute("data-exportType");
-        $.each(selectedRows, function (index, value) {
-            window.CRM.VerifyThenLoadAPIContent(
-                window.CRM.root + "/api/deposits/" + value.Id + "/" + type,
-            );
-        });
+
+        if (type === "pdf") {
+            // Validate all PDFs first before starting downloads
+            var validDeposits = [];
+            var skippedCount = 0;
+            var validationPending = selectedRows.length;
+
+            $.each(selectedRows, function (index, value) {
+                $.ajax({
+                    method: "GET",
+                    url: window.CRM.root + "/api/deposits/" + value.Id + "/payments",
+                    dataType: "json",
+                })
+                    .done(function (data) {
+                        var count = Array.isArray(data) ? data.length : 0;
+                        if (count > 0) {
+                            validDeposits.push(value);
+                        } else {
+                            skippedCount++;
+                        }
+                    })
+                    .fail(function (jqXHR) {
+                        skippedCount++;
+                    })
+                    .always(function () {
+                        validationPending--;
+                        if (validationPending === 0) {
+                            // All validations done, show summary and export valid deposits
+                            if (skippedCount > 0) {
+                                window.CRM.notify(
+                                    i18next.t("Skipped") +
+                                        " " +
+                                        skippedCount +
+                                        " " +
+                                        i18next.t("deposit(s) with no payments"),
+                                    { type: "warning", delay: 5000 },
+                                );
+                            }
+                            $.each(validDeposits, function (idx, deposit) {
+                                var url = window.CRM.root + "/api/deposits/" + deposit.Id + "/pdf";
+                                window.CRM.VerifyThenLoadAPIContent(url);
+                            });
+                        }
+                    });
+            });
+        } else {
+            // csv or other types - proceed as before
+            $.each(selectedRows, function (index, value) {
+                var url = window.CRM.root + "/api/deposits/" + value.Id + "/" + type;
+                window.CRM.VerifyThenLoadAPIContent(url);
+            });
+        }
     });
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeDepositSlip);
 });

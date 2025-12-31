@@ -274,7 +274,7 @@ Examples:
         const directories = [
             path.resolve(__dirname, `../../src/locale/textdomain/${config.locale}`),
             path.resolve(__dirname, `../../src/locale/textdomain/${config.locale}/LC_MESSAGES`),
-            path.resolve(__dirname, '../JSONKeys')
+            path.resolve(__dirname, '../../src/locale/i18n')
         ];
 
         directories.forEach(dir => {
@@ -315,7 +315,7 @@ msgstr ""
 `
             },
             {
-                path: `locale/JSONKeys/${config.locale}.json`,
+                path: `src/locale/i18n/${config.locale}.json`,
                 content: '{\n    "": "Empty translation file - translations will be populated from POEditor"\n}'
             }
         ];
@@ -332,25 +332,6 @@ msgstr ""
                 }
             }
         });
-    }
-
-    /**
-     * Generate locale JavaScript files
-     */
-    generateLocaleJS(config) {
-        if (this.dryRun) {
-            console.log(`🔧 Would run: grunt genLocaleJSFiles`);
-            console.log(`   This would create: ../../src/locale/js/${config.locale}.js`);
-        } else {
-            try {
-                console.log('🔧 Generating locale JavaScript files...');
-                execSync('grunt genLocaleJSFiles', { stdio: 'inherit' });
-                console.log(`✅ Generated locale JavaScript files`);
-            } catch (error) {
-                console.error(`❌ Failed to generate locale JS files: ${error.message}`);
-                console.log('You can manually run: npm run postinstall');
-            }
-        }
     }
 
     /**
@@ -375,8 +356,7 @@ msgstr ""
         console.log('📄 **Files created:**');
         console.log(`   - ${this.localesPath} (updated)`);
         console.log(`   - ../../src/locale/textdomain/${config.locale}/LC_MESSAGES/messages.po`);
-        console.log(`   - JSONKeys/${config.locale}.json`);
-        console.log(`   - ../../src/locale/js/${config.locale}.js (generated)\n`);
+        console.log(`   - ../../src/locale/i18n/${config.locale}.json\n`);
         
         if (this.dryRun) {
             console.log('🔄 **Run without --dry-run to actually create the files**\n');
@@ -430,9 +410,6 @@ msgstr ""
 
             // Create translation files
             this.createTranslationFiles(config);
-
-            // Generate locale JS files
-            this.generateLocaleJS(config);
 
             // Show next steps
             this.showNextSteps(config);

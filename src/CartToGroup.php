@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
@@ -10,7 +10,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups & Roles permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
 
 // Was the form submitted?
 if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SESSION['aPeopleCart']) > 0) {
@@ -27,9 +27,11 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
         $iGroupRole = 0;
     }
 
+    $iCount = isset($_SESSION['aPeopleCart']) ? count($_SESSION['aPeopleCart']) : 0;
     Cart::emptyToGroup($iGroupID, $iGroupRole);
 
-    $sGlobalMessage = $iCount . ' records(s) successfully added to selected Group.';
+    $_SESSION['sGlobalMessage'] = sprintf(ngettext('%d Person successfully added to selected Group.', '%d People successfully added to selected Group.', $iCount), $iCount);
+    $_SESSION['sGlobalMessageClass'] = 'success';
 
     RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID . '&Action=EmptyCart');
 }
@@ -37,7 +39,7 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
 $ormGroups = GroupQuery::create()->orderByName()->find();
 
 $sPageTitle = gettext('Add Cart to Group');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 if (count($_SESSION['aPeopleCart']) > 0) {
     ?>
@@ -57,7 +59,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
               // Create the group select drop-down
                 echo '<select id="GroupID" name="GroupID" onChange="UpdateRoles();"><option value="0">' . gettext('None') . '</option>';
                 foreach ($ormGroups as $ormGroup) {
-                    echo '<option value="' . $ormGroup->getID() . '">' . $ormGroup->getName() . '</option>';
+                    echo '<option value="' . InputUtils::escapeAttribute($ormGroup->getID()) . '">' . InputUtils::escapeHTML($ormGroup->getName()) . '</option>';
                 }
                 echo '</select>'; ?>
             </td>
@@ -85,4 +87,4 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         echo '<p class="text-center LargeText">' . gettext('Your cart is empty!') . '</p>';
 }
 
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

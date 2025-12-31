@@ -24,10 +24,9 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     </div>
   </div>
   <div class="container" id="classMemberContainer"></div>
-  <!-- TODO: Add a quick-entry screen for new people <a id="newStudent"><i class="fa-solid fa-plus-circle" aria-hidden="true"></i></a>-->
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/KioskJSOM.js"></script>
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/Kiosk.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/KioskJSOM.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/Kiosk.js') ?>"></script>
 <?php
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

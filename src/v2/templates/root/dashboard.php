@@ -1,8 +1,10 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
 ?>
 
 <!-- Small boxes (Stat box) -->
@@ -113,16 +115,18 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div><!-- /.row -->
 
 <div class="row">
-    <div class="card col-md-6">
+    <div class="card col-md-6" id="birthdayCard">
         <div class="card-body">
-            <h3><?= gettext("Today's Birthdays") ?></h3>
-            <table class="table table-striped" width="100%" id="PersonBirthdayDashboardItem"></table>
+            <h3><i class="fa-solid fa-cake-candles mr-2"></i><?= gettext('Birthdays') ?></h3>
+            <p class="text-muted small mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
+            <table class="table table-striped table-hover" width="100%" id="PersonBirthdayDashboardItem"></table>
         </div>
     </div>
-    <div class="card col-md-6">
+    <div class="card col-md-6" id="anniversaryCard">
         <div class="card-body">
-            <h3><?= gettext("Today's Wedding Anniversaries") ?></h3>
-            <table class="table table-striped" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+            <h3><i class="fa-solid fa-heart mr-2"></i><?= gettext('Anniversaries') ?></h3>
+            <p class="text-muted small mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
+            <table class="table table-striped table-hover" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
         </div>
     </div>
 </div>
@@ -149,38 +153,48 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
     <div class="card-header with-border">
         <div class="card-title"><h4><?= gettext('People') ?></h4></div>
     </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-5 col-sm-3">
-                    <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link active" id="vert-tabs-latest-fam-tab" data-toggle="pill" href="#vert-tabs-lasterst-fam" role="tab" aria-controls="vert-tabs-lasterst-fam" aria-selected="true"><?= gettext('Latest Families') ?></a>
-                        <a class="nav-link" id="vert-tabs-updated-fam-tab" data-toggle="pill" href="#vert-tabs-updated-fam" role="tab" aria-controls="vert-tabs-updated-fam" aria-selected="false"><?= gettext('Updated Families') ?></a>
-                        <a class="nav-link" id="vert-tabs-latest-ppl-tab" data-toggle="pill" href="#vert-tabs-latest-ppl" role="tab" aria-controls="vert-tabs-latest-ppl" aria-selected="false"><?= gettext('Latest Persons') ?></a>
-                        <a class="nav-link" id="vert-tabs-updated-ppl-tab" data-toggle="pill" href="#vert-tabs-updated-ppl" role="tab" aria-controls="vert-tabs-updated-ppl" aria-selected="false"><?= gettext('Updated Persons') ?></a>
-                    </div>
-                </div>
-                <div class="col-7 col-sm-9">
-                    <div class="tab-content" id="vert-tabs-tabContent">
-                        <div class="tab-pane text-left fade show active" id="vert-tabs-lasterst-fam" role="tabpanel" aria-labelledby="vert-tabs-latest-fam-tab">
-                            <table class="table table-striped" width="100%" id="latestFamiliesDashboardItem"></table>
-                        </div>
-                        <div class="tab-pane fade" id="vert-tabs-updated-fam" role="tabpanel" aria-labelledby="vert-tabs-updated-fam-tab">
-                            <table class="table table-striped" width="100%" id="updatedFamiliesDashboardItem"></table>
-                        </div>
-                        <div class="tab-pane fade" id="vert-tabs-latest-ppl" role="tabpanel" aria-labelledby="vert-tabs-latest-ppl-tab">
-                            <table class="table table-striped" width="100%" id="latestPersonDashboardItem"></table>
-                        </div>
-                        <div class="tab-pane fade" id="vert-tabs-updated-ppl" role="tabpanel" aria-labelledby="vert-tabs-updated-ppl-tab">
-                            <table class="table table-striped" width="100%" id="updatedPersonDashboardItem"></table>
-                        </div>
-                    </div>
-                </div>
+    <div class="card-header p-0 pt-1 border-bottom-0">
+        <ul class="nav nav-tabs" id="people-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="latest-fam-tab" data-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
+                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest Families') ?>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="updated-fam-tab" data-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
+                    <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated Families') ?>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="latest-ppl-tab" data-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="latest-ppl-pane" aria-selected="false">
+                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest People') ?>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="updated-ppl-tab" data-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
+                    <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated People') ?>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body p-0">
+        <div class="tab-content" id="people-tabs-content">
+            <div class="tab-pane fade show active" id="latest-fam-pane" role="tabpanel" aria-labelledby="latest-fam-tab">
+                <table class="table table-striped table-hover mb-0" width="100%" id="latestFamiliesDashboardItem"></table>
+            </div>
+            <div class="tab-pane fade" id="updated-fam-pane" role="tabpanel" aria-labelledby="updated-fam-tab">
+                <table class="table table-striped table-hover mb-0" width="100%" id="updatedFamiliesDashboardItem"></table>
+            </div>
+            <div class="tab-pane fade" id="latest-ppl-pane" role="tabpanel" aria-labelledby="latest-ppl-tab">
+                <table class="table table-striped table-hover mb-0" width="100%" id="latestPersonDashboardItem"></table>
+            </div>
+            <div class="tab-pane fade" id="updated-ppl-pane" role="tabpanel" aria-labelledby="updated-ppl-tab">
+                <table class="table table-striped table-hover mb-0" width="100%" id="updatedPersonDashboardItem"></table>
             </div>
         </div>
-        <!-- /.card -->
     </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/MainDashboard.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/MainDashboard.js') ?>"></script>
 <?php
-include SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

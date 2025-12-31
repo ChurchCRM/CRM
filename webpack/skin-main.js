@@ -9,6 +9,10 @@
  * Used by both logged-in and logged-out pages to provide core styling and functionality.
  */
 
+// Import jQuery and expose it globally for legacy code compatibility
+import $ from 'jquery';
+window.jQuery = window.$ = $;
+
 // Import FontAwesome CSS - webfonts are automatically bundled by webpack
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -26,8 +30,17 @@ import 'quill/dist/quill.snow.css';
 
 import { initializeQuillEditor } from './quill-editor.js';
 
+// Import notifier module (Notyf wrapper for notifications)
+import '../src/skin/js/notifier.js';
+
 // Import cart management module
 import '../src/skin/js/cart.js';
+
+// Import avatar loader (for person and family photos with client-side initials/gravatar)
+import './avatar-loader';
+
+// Import photo utilities (lightbox and delete functions for Person/Family views)
+import { showPhotoLightbox, deletePhoto } from './photo-utils';
 
 import '../src/skin/churchcrm.scss';
 
@@ -37,6 +50,11 @@ if (typeof window !== 'undefined') {
     window._quillInitQueue = window._quillInitQueue || [];
     
     window.initializeQuillEditor = initializeQuillEditor;
+    
+    // Make photo utilities available globally
+    window.CRM = window.CRM || {};
+    window.CRM.showPhotoLightbox = showPhotoLightbox;
+    window.CRM.deletePhoto = deletePhoto;
     
     // Process any queued editors
     if (window._quillInitQueue && window._quillInitQueue.length > 0) {

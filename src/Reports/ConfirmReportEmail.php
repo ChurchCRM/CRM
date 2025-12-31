@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -11,6 +11,10 @@ use ChurchCRM\Emails\verify\FamilyVerificationEmail;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 class EmailPdfConfirmReport extends ChurchInfoReport
 {
@@ -65,39 +69,66 @@ class EmailPdfConfirmReport extends ChurchInfoReport
 $familiesEmailed = 0;
 
 // Get the list of custom person fields
-$sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
-$rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysqli_num_rows($rsCustomFields);
+$customFields = PersonCustomMasterQuery::create()
+    ->orderByOrder()
+    ->find();
+$numCustomFields = count($customFields);
 
+$sCustomFieldName = [];
 if ($numCustomFields > 0) {
     $iFieldNum = 0;
-    while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_ASSOC)) {
-        extract($rowCustomField);
-        $sCustomFieldName[$iFieldNum] = $custom_Name;
+    foreach ($customFields as $field) {
+        $sCustomFieldName[$iFieldNum] = $field->getName();
         $iFieldNum += 1;
     }
 }
 
-$sSubQuery = '';
-if (InputUtils::legacyFilterInput($_GET['familyId'], 'int')) {
-    $sSubQuery = ' and fam_id in (' . $_GET['familyId'] . ') ';
+// Filter by family ID if provided in the request
+$familyId = InputUtils::legacyFilterInput($_GET['familyId'] ?? null, 'int');
+
+// Get all the families with email-enabled members
+$familyQuery = FamilyQuery::create()
+    ->usePersonQuery()
+    ->filterByEmail('', Criteria::NOT_EQUAL)
+    ->endUse()
+    ->orderByName();
+
+// Apply family ID filter if provided
+if ($familyId) {
+    $familyQuery->filterById((int)$familyId);
 }
 
-// Get all the families
-$sSQL = "SELECT * from family_fam fam, person_per per where fam.fam_id = per.per_fam_id and per.per_email is not null and per.per_email != '' " . $sSubQuery . ' group by fam_ID ORDER BY fam_Name';
-$rsFamilies = RunQuery($sSQL);
+$families = $familyQuery->distinct()->find();
 
 $dataCol = 55;
 $dataWid = 65;
 
 // Loop through families
-while ($aFam = mysqli_fetch_array($rsFamilies)) {
+foreach ($families as $family) {
     // Instantiate the directory class and build the report.
     $pdf = new EmailPdfConfirmReport();
 
-    extract($aFam);
+    $fam_ID = $family->getId();
+    $fam_Name = $family->getName();
+    $fam_Address1 = $family->getAddress1();
+    $fam_Address2 = $family->getAddress2();
+    $fam_City = $family->getCity();
+    $fam_State = $family->getState();
+    $fam_Zip = $family->getZip();
+    $fam_Country = $family->getCountry();
+    $fam_HomePhone = $family->getHomePhone();
+    $fam_SendNewsLetter = $family->getSendNewsletter();
+    $fam_WeddingDate = $family->getWeddingDate();
+    $fam_Email = $family->getEmail();
 
-    $emaillist = [];
+    // Get unique family emails
+    $emaillist = $family->getEmails();
+    
+    // Get family members for PDF rendering
+    $familyMembers = PersonQuery::create()
+        ->filterByFamId($fam_ID)
+        ->orderByFmrId()
+        ->find();
 
     $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     $curY += SystemConfig::getValue('incrementY');
@@ -147,18 +178,9 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Family Email'));
     $pdf->SetFont('Times', '', 10);
     $pdf->writeAtCell($dataCol, $curY, $dataWid, $fam_Email);
-    if (!empty($fam_Email)) {
-        $emaillist[] = $fam_Email;
-    }
 
     $curY += SystemConfig::getValue('incrementY');
     $curY += SystemConfig::getValue('incrementY');
-
-    $sSQL = 'SELECT *, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole FROM person_per
-                LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-                LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
-                WHERE per_fam_ID = ' . $fam_ID . ' ORDER BY per_fmr_ID';
-    $rsFamilyMembers = RunQuery($sSQL);
 
     $XName = 10;
     $XGender = 50;
@@ -182,9 +204,25 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     $curY += SystemConfig::getValue('incrementY');
 
     $numFamilyMembers = 0;
-    while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
+    foreach ($familyMembers as $member) {
         $numFamilyMembers++; // add one to the people count
-        extract($aMember);
+        
+        // Get the classification and family role objects
+        $sClassName = '';
+        if ($member->getClsId()) {
+            $classObj = $member->getClassification();
+            if ($classObj) {
+                $sClassName = $classObj->getOptionName();
+            }
+        }
+        
+        $sFamRole = '';
+        if ($member->getFmrId()) {
+            $roleObj = $member->getFamilyRole();
+            if ($roleObj) {
+                $sFamRole = $roleObj->getOptionName();
+            }
+        }
         // Make sure the person data will display with adequate room for the trailer and group information
         if (($curY + $numCustomFields * SystemConfig::getValue('incrementY')) > 260) {
             $curY = $pdf->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
@@ -199,29 +237,27 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
             $pdf->SetFont('Times', '', 10);
             $curY += SystemConfig::getValue('incrementY');
         }
-        $iPersonID = $per_ID;
+        $iPersonID = $member->getId();
         $pdf->SetFont('Times', 'B', 10);
-        $pdf->writeAtCell($XName, $curY, $XGender - $XName, $per_FirstName . ' ' . $per_MiddleName . ' ' . $per_LastName);
+        $pdf->writeAtCell($XName, $curY, $XGender - $XName, $member->getFirstName() . ' ' . $member->getMiddleName() . ' ' . $member->getLastName());
         $pdf->SetFont('Times', '', 10);
-        $genderStr = ($per_Gender == 1 ? 'M' : 'F');
+        $genderStr = ($member->getGender() == 1 ? 'M' : 'F');
         $pdf->writeAtCell($XGender, $curY, $XRole - $XGender, $genderStr);
         $pdf->writeAtCell($XRole, $curY, $XEmail - $XRole, $sFamRole);
-        $pdf->writeAtCell($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
-        if (!empty($per_Email)) {
-            $emaillist[] = $per_Email;
-        }
-        if ($per_BirthYear) {
-            $birthdayStr = $per_BirthMonth . '/' . $per_BirthDay . '/' . $per_BirthYear;
+        $pdf->writeAtCell($XEmail, $curY, $XBirthday - $XEmail, $member->getEmail());
+        
+        if ($member->getBirthYear()) {
+            $birthdayStr = $member->getBirthMonth() . '/' . $member->getBirthDay() . '/' . $member->getBirthYear();
         } else {
             $birthdayStr = '';
         }
         $pdf->writeAtCell($XBirthday, $curY, $XCellPhone - $XBirthday, $birthdayStr);
-        $pdf->writeAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, $per_CellPhone);
+        $pdf->writeAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, $member->getCellPhone());
         $pdf->writeAtCell($XClassification, $curY, $XRight - $XClassification, $sClassName);
         $curY += SystemConfig::getValue('incrementY');
         // Missing the following information for the personal record: ? Is this the place to put this data ?
         // Work Phone
-        $pdf->writeAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone') . ':' . $per_WorkPhone);
+        $pdf->writeAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone') . ': ' . $member->getWorkPhone());
         $curY += SystemConfig::getValue('incrementY');
         $curY += SystemConfig::getValue('incrementY');
 
@@ -229,15 +265,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         // Get the list of custom person fields
 
         $xSize = 40;
-        $numCustomFields = mysqli_num_rows($rsCustomFields);
         if ($numCustomFields > 0) {
-            extract($aMember);
-            $sSQL = 'SELECT * FROM person_custom WHERE per_ID = ' . $per_ID;
-            $rsCustomData = RunQuery($sSQL);
-            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
-            $numCustomData = mysqli_num_rows($rsCustomData);
-            mysqli_data_seek($rsCustomFields, 0);
-            $OutStr = '';
             $xInc = $XName; // Set the starting column for Custom fields
       // Here is where we determine if space is available on the current page to
       // display the custom data and still get the ending on the page
@@ -245,26 +273,32 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
       // For the Letter size of 279 mm, this says that curY can be no bigger than 195 mm.
       // Leaving 12 mm for a bottom margin yields 183 mm.
             $numWide = 0; // starting value for columns
-            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                extract($rowCustomField);
-                if ($sCustomFieldName[$custom_Order - 1]) {
-                    $currentFieldData = trim($aCustomData[$custom_Field]);
+            foreach ($customFields as $field) {
+                $currentFieldData = '';
+                // Try to access custom field data from the member object
+                $fieldPropertyName = $field->getId();
+                try {
+                    $methodName = 'get' . ucfirst($fieldPropertyName);
+                    $currentFieldData = trim($member->$methodName() ?? '');
+                } catch (Exception $e) {
+                    // Custom field getter does not exist or threw an exception
+                    $currentFieldData = '';
+                }
 
-                    $OutStr = $sCustomFieldName[$custom_Order - 1] . ' : ' . $currentFieldData . '    ';
-                    $pdf->writeAtCell($xInc, $curY, $xSize, $sCustomFieldName[$custom_Order - 1]);
-                    if ($currentFieldData === '') {
-                        $pdf->SetFont('Times', 'B', 6);
-                        $pdf->writeAtCell($xInc + $xSize, $curY, $xSize, '');
-                        $pdf->SetFont('Times', '', 10);
-                    } else {
-                        $pdf->writeAtCell($xInc + $xSize, $curY, $xSize, $currentFieldData);
-                    }
-                    $numWide += 1; // increment the number of columns done
-                    $xInc += (2 * $xSize); // Increment the X position by about 1/2 page width
-                    if (($numWide % 2) == 0) { // 2 columns
-                        $xInc = $XName; // Reset margin
-                        $curY += SystemConfig::getValue('incrementY');
-                    }
+                $OutStr = $field->getName() . ' : ' . $currentFieldData . '    ';
+                $pdf->writeAtCell($xInc, $curY, $xSize, $field->getName());
+                if ($currentFieldData === '') {
+                    $pdf->SetFont('Times', 'B', 6);
+                    $pdf->writeAtCell($xInc + $xSize, $curY, $xSize, '');
+                    $pdf->SetFont('Times', '', 10);
+                } else {
+                    $pdf->writeAtCell($xInc + $xSize, $curY, $xSize, $currentFieldData);
+                }
+                $numWide += 1; // increment the number of columns done
+                $xInc += (2 * $xSize); // Increment the X position by about 1/2 page width
+                if (($numWide % 2) == 0) { // 2 columns
+                    $xInc = $XName; // Reset margin
+                    $curY += SystemConfig::getValue('incrementY');
                 }
             }
             //$pdf->writeAt($XName,$curY,$OutStr);
@@ -279,25 +313,32 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     if (($curY + 2 * $numFamilyMembers * SystemConfig::getValue('incrementY')) >= 260) {
         $curY = $pdf->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     }
-    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $fam_ID . ' ORDER BY per_fmr_ID';
-    $rsFamilyMembers = RunQuery($sSQL);
-    while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
-        extract($aMember);
-
+    
+    // Get all family members again to display group assignments
+    $familyMembersForGroups = PersonQuery::create()
+        ->filterByFamId($fam_ID)
+        ->orderByFmrId()
+        ->find();
+    
+    foreach ($familyMembersForGroups as $aMember) {
         // Get the Groups this Person is assigned to
-        $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
-                FROM group_grp
-                LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
-                LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
-                WHERE person2group2role_p2g2r.p2g2r_per_ID = ' . $per_ID . '
-                ORDER BY grp_Name';
-        $rsAssignedGroups = RunQuery($sSQL);
-        if (mysqli_num_rows($rsAssignedGroups) > 0) {
-            $groupStr = 'Assigned groups for ' . $per_FirstName . ' ' . $per_LastName . ': ';
+        $assignedGroups = $aMember->getPerson2group2roleP2g2rs();
+        
+        if (count($assignedGroups) > 0) {
+            $groupStr = 'Assigned groups for ' . $aMember->getFirstName() . ' ' . $aMember->getLastName() . ': ';
 
-            while ($aGroup = mysqli_fetch_array($rsAssignedGroups)) {
-                extract($aGroup);
-                $groupStr .= $grp_Name . ' (' . $roleName . ') ';
+            foreach ($assignedGroups as $groupRole) {
+                $group = $groupRole->getGroup();
+                if ($group) {
+                    $roleName = '';
+                    if ($groupRole->getRoleId()) {
+                        $roleObj = $groupRole->getListOption();
+                        if ($roleObj) {
+                            $roleName = $roleObj->getOptionName();
+                        }
+                    }
+                    $groupStr .= $group->getName() . ' (' . $roleName . ') ';
+                }
             }
 
             $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $groupStr);
@@ -333,7 +374,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 }
 
 if ($_GET['familyId']) {
-    RedirectUtils::redirect('v2/family/' . $_GET['familyId'] . '&PDFEmailed=' . $familyEmailSent);
+    RedirectUtils::redirect('v2/family/' . $_GET['familyId'] . '?PDFEmailed=' . $familiesEmailed);
 } else {
     RedirectUtils::redirect(SystemURLs::getRootPath() . '/v2/people/verify?AllPDFsEmailed=' . $familiesEmailed);
 }

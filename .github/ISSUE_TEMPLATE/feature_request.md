@@ -1,20 +1,24 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
+about: Share an idea to make ChurchCRM better
 title: 'Feature: '
-labels: 'enhancement'
+labels: ''
 assignees: ''
 
 ---
 
-## What problem does this solve?
-<!-- Describe what you're trying to accomplish or what frustration this addresses -->
+## Share your feature idea
 
-## What would you like to see?
-<!-- Describe your ideal solution -->
+Tell us in a sentence or two:
+- **What you'd like to see**: The feature or improvement
+- **Why it matters**: The problem it solves or how it would help
 
-## How would this help you?
-<!-- Explain the benefits and use cases -->
+Examples or screenshots are great — short notes work too! Thanks for the idea! 💡
 
-## Additional context
-<!-- Any mockups, examples from other software, or additional details -->
+**Need system info?** Admins can find system logs at:
+
+**Admin → System Maintenance → System Logs** (or click the debug icon).
+
+**Advanced users**: If this relates to a UI workflow you can reproduce, a Cypress Recorder capture (exported spec) helps us prototype and validate faster.
+
+👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**

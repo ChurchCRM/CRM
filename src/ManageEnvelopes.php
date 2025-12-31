@@ -1,20 +1,21 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
-require_once 'Include/EnvelopeFunctions.php';
+require_once __DIR__ . '/Include/EnvelopeFunctions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Envelope Manager');
 
 // Security: User must have finance permission to use this form
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 $iClassification = 0;
 if (isset($_POST['Classification'])) {
@@ -30,7 +31,14 @@ $envelopesToWrite = [];
 $envelopesByFamID = getEnvelopes($iClassification);
 
 // Get the array of family name/description strings, also indexed by family ID
-$familyArray = getFamilyList(SystemConfig::getValue('sDirRoleHead'), SystemConfig::getValue('sDirRoleSpouse'), $iClassification);
+$personService = new PersonService();
+$familyArray = $personService->getFamilyList(
+    SystemConfig::getValue('sDirRoleHead'),
+    SystemConfig::getValue('sDirRoleSpouse'),
+    $iClassification,
+    null,
+    true  // allowAll: envelope management needs all families
+);
 asort($familyArray);
 
 if (isset($_POST['Confirm'])) {
@@ -73,7 +81,7 @@ while ($aRow = mysqli_fetch_array($rsClassifications)) {
     $classification[$lst_OptionID] = $lst_OptionName;
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
@@ -105,7 +113,7 @@ if (isset($_POST['PrintReport'])) {
 ?>
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEnvelopesModal"><?= gettext('Update Family Records') ?></button>
-<button type="submit" class="btn btn-default" name="PrintReport"><i class="fa-solid fa-print"></i></button>
+<button type="submit" class="btn btn-secondary" name="PrintReport"><i class="fa-solid fa-print"></i></button>
 
 <br><br>
 
@@ -122,7 +130,7 @@ if (isset($_POST['PrintReport'])) {
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Confirm') ?>" name="Confirm">
-                    <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Cancel') ?></button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Cancel') ?></button>
                 </div>
             </div>
     </div>
@@ -132,7 +140,7 @@ if (isset($_POST['PrintReport'])) {
 <thead>
 <tr>
     <th>
-    <b><?= gettext('Family Select')?></b> <?= gettext('with at least one:'); ?>
+    <b><?= gettext('Family Select')?></b> <?= gettext('with at least one:') ?>
         <select name="Classification">
         <option value="0"><?= gettext('All') ?></option>
         <?php
@@ -145,7 +153,7 @@ if (isset($_POST['PrintReport'])) {
         }
         ?>
         </select>
-        <input type="submit" class="btn btn-default" value="<?= gettext('Sort by') ?>" name="Sort">
+        <input type="submit" class="btn btn-secondary" value="<?= gettext('Sort by') ?>" name="Sort">
         <input type="radio" Name="SortBy" value="name"
         <?php if ($sSortBy === 'name') {
             echo ' checked';
@@ -157,9 +165,9 @@ if (isset($_POST['PrintReport'])) {
     </th>
     <th>
         <b>Envelope</b>
-        <input type="submit" class="btn btn-default" value="<?= gettext('Zero') ?>"
+        <input type="submit" class="btn btn-secondary" value="<?= gettext('Zero') ?>"
                  name="ZeroAll">
-        <input type="submit" class="btn btn-default" value="<?= gettext('Assign starting at #') ?>"
+        <input type="submit" class="btn btn-secondary" value="<?= gettext('Assign starting at #') ?>"
                  name="AssignAllFamilies">
         <input type="text" name="AssignStartNum" value="<?= $iAssignStartNum ?>" maxlength="5">
     </th>
@@ -231,4 +239,4 @@ function getEnvelopes(?int $classification = null): array
     return $envelopes;
 }
 
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

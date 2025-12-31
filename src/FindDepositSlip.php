@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -16,12 +16,12 @@ if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::redirect('index.php');
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 ?>
 
 <div class="card">
   <div class="card-header with-border">
-    <h3 class="card-title"><?php echo gettext('Add New Deposit: '); ?></h3>
+    <h3 class="card-title"><?php echo gettext('Add New') . ' ' . gettext('Deposit') . ': '; ?></h3>
   </div>
   <div class="card-body">
     <form action="#" method="get" class="form">
@@ -37,7 +37,6 @@ require_once 'Include/Header.php';
               <option value="Bank" selected><?= gettext('Bank') ?></option>
               <option value="CreditCard">Credit Card</option>
               <option value="BankDraft">Bank Draft</option>
-              <option value="eGive">eGive</option>
             </select>
           </div>
           <div class="col-lg-3">
@@ -49,7 +48,7 @@ require_once 'Include/Header.php';
       <p>
       <div class="row">
         <div class="col-xs-3">
-          <button type="button" class="btn btn-primary" id="addNewDeposit"><?= gettext('Add New Deposit') ?></button>
+          <button type="button" class="btn btn-primary" id="addNewDeposit"><?= gettext('Add New') . ' ' . gettext('Deposit') ?></button>
         </div>
       </div>
     </form>
@@ -58,7 +57,7 @@ require_once 'Include/Header.php';
 
 <div class="card">
   <div class="card-header with-border">
-    <h3 class="card-title"><?php echo gettext('Deposits: '); ?></h3>
+    <h3 class="card-title"><?php echo gettext('Deposits') . ': '; ?></h3>
   </div>
   <div class="card-body">
     <div class="container-fluid">
@@ -76,6 +75,6 @@ require_once 'Include/Header.php';
   </div>
 </div>
 
-<script src="<?= SystemURLs::getRootPath() ?>/skin/js/FindDepositSlip.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/FindDepositSlip.js') ?>"></script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

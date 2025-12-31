@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
@@ -41,7 +41,7 @@ $curY = $topY;
 $pdf->writeAt(
     SystemConfig::getValue('leftX'),
     $curY,
-    gettext('Voting members ') . MakeFYString($iFYID)
+    gettext('Voting Members') . ' ' . MakeFYString($iFYID)
 );
 $curY += 10;
 
@@ -109,7 +109,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 $curY += 5;
 $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, 'Number of Voting Members: ' . $votingMemberCount);
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('VotingMembers' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

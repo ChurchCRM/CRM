@@ -1,1 +1,1 @@
-ALTER TABLE events_event DROP COLUMN IF EXISTS `event_typename`;
+ALTER TABLE events_event DROP COLUMN `event_typename`;

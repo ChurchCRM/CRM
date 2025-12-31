@@ -38,6 +38,16 @@ Development
       - Default credentials: `churchcrm` / `changeme`
    - **mailserver**: Fake SMTP (ports 1025, 8025 for UI)
 
+### Docker Dev Commands
+
+| Command | Purpose |
+|---------|---------|
+| `npm run docker:dev:start` | Start dev containers (uses existing images) |
+| `npm run docker:dev:stop` | Stop running containers |
+| `npm run docker:dev:logs` | View container logs (live tail) |
+| `npm run docker:dev:login:web` | Open shell in webserver container |
+| `npm run docker:dev:login:db` | Open shell in database container |
+
 Testing
 -----------------
 
@@ -59,6 +69,20 @@ Testing
    - **database**: MariaDB server (port 3306)
    - **webserver-test**: Minimal Apache + PHP 8 runtime (port 80)
    - **mailserver**: Fake SMTP (ports 1025, 8025)
+
+### Docker Test Commands
+
+| Command | Purpose |
+|---------|---------|
+| `npm run docker:test:start` | Start test containers (uses existing images) |
+| `npm run docker:test:stop` | Stop running containers |
+| `npm run docker:test:restart` | Restart all test containers |
+| `npm run docker:test:restart:db` | Restart only database (refreshes schema) |
+| `npm run docker:test:rebuild` | Full rebuild: remove volumes, rebuild images, restart |
+| `npm run docker:test:down` | Stop and remove containers with volumes |
+| `npm run docker:test:logs` | View container logs (live tail) |
+| `npm run docker:test:login:web` | Open shell in webserver container |
+| `npm run docker:test:login:db` | Open shell in database container |
 
 ### Environment Variables
 

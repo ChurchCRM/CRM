@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
@@ -10,9 +10,9 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isNotesEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isNotesEnabled(), 'Notes');
 
-$sPageTitle = gettext('Note Delete Confirmation');
+$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Note');
 
 // Get the NoteID from the querystring
 $iNoteID = InputUtils::legacyFilterInput($_GET['NoteID'], 'int');
@@ -36,7 +36,7 @@ if (isset($_GET['Confirmed'])) {
     RedirectUtils::redirect($sReroute);
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <div class="card card-warning">
@@ -47,8 +47,8 @@ require_once 'Include/Header.php';
     <?= $note->getText() ?>
   </div>
   <div class="card-footer">
-    <a class="btn btn-default" href="<?php echo $sReroute ?>"><?= gettext('Cancel') ?></a>
+    <a class="btn btn-secondary" href="<?php echo $sReroute ?>"><?= gettext('Cancel') ?></a>
     <a class="btn btn-danger" href="NoteDelete.php?Confirmed=Yes&NoteID=<?php echo $iNoteID ?>"><?= gettext('Yes, delete this record') ?></a> <?= gettext('(this action cannot be undone)') ?>
   </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

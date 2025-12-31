@@ -1,7 +1,7 @@
 <?php
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -11,7 +11,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 
 // Check for Create Directory user permission.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(), 'CreateDirectory');
 
 // Get and filter the classifications selected
 $aClasses = [];
@@ -246,15 +246,16 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $pdf->sRecordName .= ' ' . MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $per_Flags);
         }
 
-        SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
-        $sAddress2 = SelectWhichInfo($per_Address2, $fam_Address2, false);
-        $sCity = SelectWhichInfo($per_City, $fam_City, false);
-        $sState = SelectWhichInfo($per_State, $fam_State, false);
-        $sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
-        $sHomePhone = SelectWhichInfo($per_HomePhone, $fam_HomePhone, false);
-        $sWorkPhone = SelectWhichInfo($per_WorkPhone, $fam_WorkPhone, false);
-        $sCellPhone = SelectWhichInfo($per_CellPhone, $fam_CellPhone, false);
-        $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+        // Use person data only - each person must enter their own information
+        $sAddress1 = $per_Address1 ?? '';
+        $sAddress2 = $per_Address2 ?? '';
+        $sCity = $per_City ?? '';
+        $sState = $per_State ?? '';
+        $sZip = $per_Zip ?? '';
+        $sHomePhone = $per_HomePhone ?? '';
+        $sWorkPhone = $per_WorkPhone ?? '';
+        $sCellPhone = $per_CellPhone ?? '';
+        $sEmail = $per_Email ?? '';
 
         if ($bDirAddress) {
             if (strlen($sAddress1)) {
@@ -324,7 +325,7 @@ if ($mysqlversion == 3 && $mysqlsubversion >= 22) {
     mysqli_query($cnInfoCentral, $sSQL);
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('Directory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

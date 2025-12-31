@@ -12,49 +12,27 @@ $(document).ready(function () {
             styles: [
                 {
                     featureType: "landscape",
-                    stylers: [
-                        { saturation: -100 },
-                        { lightness: 65 },
-                        { visibility: "on" },
-                    ],
+                    stylers: [{ saturation: -100 }, { lightness: 65 }, { visibility: "on" }],
                 },
                 {
                     featureType: "poi",
-                    stylers: [
-                        { saturation: -100 },
-                        { lightness: 51 },
-                        { visibility: "simplified" },
-                    ],
+                    stylers: [{ saturation: -100 }, { lightness: 51 }, { visibility: "simplified" }],
                 },
                 {
                     featureType: "road.highway",
-                    stylers: [
-                        { saturation: -100 },
-                        { visibility: "simplified" },
-                    ],
+                    stylers: [{ saturation: -100 }, { visibility: "simplified" }],
                 },
                 {
                     featureType: "road.arterial",
-                    stylers: [
-                        { saturation: -100 },
-                        { lightness: 30 },
-                        { visibility: "on" },
-                    ],
+                    stylers: [{ saturation: -100 }, { lightness: 30 }, { visibility: "on" }],
                 },
                 {
                     featureType: "road.local",
-                    stylers: [
-                        { saturation: -100 },
-                        { lightness: 40 },
-                        { visibility: "on" },
-                    ],
+                    stylers: [{ saturation: -100 }, { lightness: 40 }, { visibility: "on" }],
                 },
                 {
                     featureType: "transit",
-                    stylers: [
-                        { saturation: -100 },
-                        { visibility: "simplified" },
-                    ],
+                    stylers: [{ saturation: -100 }, { visibility: "simplified" }],
                 },
                 {
                     featureType: "administrative.province",
@@ -63,20 +41,12 @@ $(document).ready(function () {
                 {
                     featureType: "water",
                     elementType: "labels",
-                    stylers: [
-                        { visibility: "on" },
-                        { lightness: -25 },
-                        { saturation: -100 },
-                    ],
+                    stylers: [{ visibility: "on" }, { lightness: -25 }, { saturation: -100 }],
                 },
                 {
                     featureType: "water",
                     elementType: "geometry",
-                    stylers: [
-                        { hue: "#ffff00" },
-                        { lightness: -25 },
-                        { saturation: -97 },
-                    ],
+                    stylers: [{ hue: "#ffff00" }, { lightness: -25 }, { saturation: -97 }],
                 },
             ],
         };
@@ -87,6 +57,6 @@ $(document).ready(function () {
         // Create the Google Map using elements
         var map1 = new google.maps.Map(mapElement1, mapOptions1);
 
-        marker = new google.maps.Marker({ position: LatLng, map: map1 });
+        new google.maps.Marker({ position: LatLng, map: map1 });
     }
 });

@@ -3,7 +3,7 @@
     "description": "Free Church CRM Software",
     "license": "MIT",
     "type": "project",
-    "version": "5.22.0",
+    "version": "6.7.0",
     "keywords": [
         "church",
         "crm"
@@ -11,7 +11,6 @@
     "authors": [
         {
             "name": "George Dawoud",
-            "homepage": "http://blog.dawouds.com",
             "role": "Lead Developer"
         }
     ],
@@ -24,17 +23,15 @@
         "docs": "https://github.com/ChurchCRM/CRM/wiki"
     },
     "require": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-PDO": "*",
         "ext-bcmath": "*",
         "ext-curl": "*",
-        "ext-exif": "*",
         "ext-fileinfo": "*",
         "ext-filter": "*",
         "ext-gd": "*",
         "ext-gettext": "*",
         "ext-iconv": "*",
-        "ext-intl": "*",
         "ext-mbstring": "*",
         "ext-mysqli": "*",
         "ext-session": "*",
@@ -45,10 +42,12 @@
         "defuse/php-encryption": "^2.4.0",
         "drewm/mailchimp-api": "^2.5.4",
         "endroid/qr-code": "^5.0.6",
+        "ezyang/htmlpurifier": "^4.17.0",
         "geocoder-php/bing-maps-provider": "^4.3.0",
         "geocoder-php/google-maps-provider": "^4.7.1",
         "ifsnop/mysqldump-php": "^2.12",
         "knplabs/github-api": "^3.12.0",
+        "league/csv": "^9.16.0",
         "monolog/monolog": "^2.10.0",
         "php-http/guzzle7-adapter": "^1.0.0",
         "php-http/message": "^1.11.1",
@@ -63,7 +62,6 @@
         "symfony/dependency-injection": "^6.0.20",
         "symfony/translation": "^5.4.35",
         "twig/twig": "^3.20.0",
-        "verot/class.upload.php": "^2.1.6",
         "vonage/client": "^2.4.0"
     },
     "require-dev": {
@@ -85,8 +83,7 @@
     },
     "autoload": {
         "psr-4": {
-            "ChurchCRM\\": "ChurchCRM/",
-            "\\": "bin/"
+            "ChurchCRM\\": "ChurchCRM/"
         },
         "classmap": [
             "ChurchCRM/"
@@ -97,10 +94,12 @@
             "php-http/discovery": true
         },
         "platform": {
-            "php": "8.1"
+            "php": "8.2"
         },
         "sort-packages": true
     },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "scripts": {
         "orm-gen": "php vendor/bin/propel --config-dir=propel model:build",
         "sql-gen": "php vendor/bin/propel --config-dir=propel sql:build",

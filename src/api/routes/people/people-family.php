@@ -1,47 +1,63 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\GeoUtils;
-use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
-use Slim\HttpCache\CacheProvider;
 
-$app->add(new Cache('public', MiscUtils::getPhotoCacheExpirationTimestamp()));
-
+// Photo and avatar routes (no FamilyMiddleware to speed up page loads)
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    // Returns uploaded photo only - 404 if no uploaded photo
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
-        $photo = new Photo('Family', $args['familyId']);
+        $photo = new Photo('Family', (int)$args['familyId']);
+        
+        if (!$photo->hasUploadedPhoto()) {
+            throw new HttpNotFoundException($request, 'No uploaded photo exists for this family');
+        }
+        
         return SlimUtils::renderPhoto($response, $photo);
+    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
+    
+    // Returns avatar info JSON for client-side rendering
+    // No cache middleware - needs to reflect immediate photo upload changes
+    $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
+        $avatarInfo = Photo::getAvatarInfo('Family', (int)$args['familyId']);
+        return SlimUtils::renderJSON($response, $avatarInfo);
     });
+});
 
+// Routes that require FamilyMiddleware
+$app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->post('/photo', function (Request $request, Response $response): Response {
-        $input = $request->getParsedBody();
-
         /** @var Family $family */
         $family = $request->getAttribute('family');
+        $input = $request->getParsedBody();
         
         try {
             $family->setImageFromBase64($input['imgBase64']);
-            return SlimUtils::renderSuccessJSON($response);
-        } catch (\Exception $e) {
+            // Refresh photo status and return updated info
+            $family->getPhoto()->refresh();
             return SlimUtils::renderJSON($response, [
-                'success' => false,
-                'message' => $e->getMessage()
-            ], 400);
+                'success' => true,
+                'hasPhoto' => $family->getPhoto()->hasUploadedPhoto()
+            ]);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to upload family photo'), [], 400, $e, $request);
         }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
@@ -49,23 +65,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         /** @var Family $family */
         $family = $request->getAttribute('family');
 
-        return SlimUtils::renderJSON($response, ['status' => $family->deletePhoto()]);
+        return SlimUtils::renderJSON($response, ['success' => $family->deletePhoto()]);
     })->add(EditRecordsRoleAuthMiddleware::class);
-
-    $group->get('/thumbnail', function (Request $request, Response $response, array $args): Response {
-        $this->cache->withExpires(
-            $response,
-            MiscUtils::getPhotoCacheExpirationTimestamp()
-        );
-        $photo = new Photo('Family', $args['familyId']);
-
-        $response
-            ->withHeader('Content-type', $photo->getThumbnailContentType())
-            ->getBody()
-                ->write($photo->getThumbnailBytes());
-
-        return $response;
-    });
 
     $group->get('', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
@@ -123,13 +124,8 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             $family->sendVerifyEmail();
 
             return SlimUtils::renderSuccessJSON($response);
-        } catch (Exception $e) {
-            LoggerUtils::getAppLogger()->error($e->getMessage());
-
-            return SlimUtils::renderJSON($response, [
-                'message' => gettext('Error sending email(s)') . ' - ' . gettext('Please check logs for more information'),
-                'trace' => $e->getMessage(),
-            ], 500);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Error sending email(s)') , [], 500, $e, $request);
         }
     });
 
@@ -155,5 +151,51 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family->verify();
 
         return SlimUtils::renderSuccessJSON($response);
+    });
+
+    /**
+     * Update the family status to activated or deactivated with :familyId and :status true/false.
+     * Pass true to activate and false to deactivate.
+     */
+    $group->post('/activate/{status}', function (Request $request, Response $response, array $args): Response {
+        /** @var Family $family */
+        $family = $request->getAttribute('family');
+
+        // Normalize incoming status to boolean for clarity (true = activate, false = deactivate)
+        $newStatus = filter_var($args['status'], FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+        if ($newStatus === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid status'), [], 400);
+        }
+
+        $currentStatus = $family->isActive();
+
+        // update only if the value is different
+        if ($currentStatus !== $newStatus) {
+            $currentUserId = AuthenticationManager::getCurrentUser()->getId();
+            $currentDate = new \DateTime();
+            if ($newStatus === false) {
+                // Deactivating: set DateDeactivated to now
+                $family->setDateDeactivated($currentDate);
+            } else {
+                // Activating: clear DateDeactivated
+                $family->setDateDeactivated(null);
+            }
+
+
+            // Create a note to record the status change
+            $note = new Note();
+            $note->setFamId($family->getId());
+            $note->setText($newStatus === false ? gettext('Marked the Family as Inactive') : gettext('Marked the Family as Active'));
+            $note->setType('edit');
+            $note->setEntered($currentUserId);
+            $note->save();
+
+            // Update last edited metadata
+            $family->setDateLastEdited($currentDate);
+            $family->setEditedBy($currentUserId);
+            $family->save();
+        }
+
+        return SlimUtils::renderJSON($response, ['success' => true]);
     });
 })->add(FamilyMiddleware::class);

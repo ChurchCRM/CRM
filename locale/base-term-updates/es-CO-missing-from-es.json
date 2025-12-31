@@ -1,0 +1,33 @@
+{
+  "%d month old": {
+    "one": "%d mes de edad",
+    "other": "%d meses de edad"
+  },
+  "%d year old": {
+    "one": "%d año de edad",
+    "other": "%d años de edad"
+  },
+  ", -, ., / allowed.": {
+    "Must start with / if not empty, no trailing slash. Only letters, numbers, ": "Debe empezar con / si no está vacío, sin barra diagonal final. Solo letras, números, "
+  },
+  "%d event in %s": {
+    "one": "%d evento en %s",
+    "other": "%d eventos en %s"
+  },
+  "person": {
+    "one": "Persona",
+    "other": "Personas"
+  },
+  "%d Person added to the Cart.": {
+    "one": "%d persona agregada al carrito.",
+    "other": "%d personas agregadas al carrito."
+  },
+  "%d Person successfully added to selected Family.": {
+    "one": "%d persona agregada exitosamente a la familia seleccionada.",
+    "other": "%d personas agregadas exitosamente a la familia seleccionada."
+  },
+  "%d Person successfully added to selected Group.": {
+    "one": "%d persona agregada exitosamente al grupo seleccionado.",
+    "other": "%d personas agregadas exitosamente al grupo seleccionado."
+  }
+}

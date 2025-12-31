@@ -2,16 +2,17 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Filter Values
 $output = InputUtils::legacyFilterInput($_POST['output']);
@@ -24,7 +25,7 @@ $_SESSION['idefaultFY'] = $iFYID;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output !== 'pdf') {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('Admin');
 }
 
 // Get the list of funds
@@ -257,7 +258,7 @@ if ($output === 'pdf') {
         $curY += SystemConfig::getValue('incrementY');
     }
 
-    if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+    if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
         $pdf->Output('PledgeSummaryReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {
         $pdf->Output();
@@ -265,32 +266,31 @@ if ($output === 'pdf') {
 
     // Output a text file
 } elseif ($output === 'csv') {
-    // Settings
-    $delimiter = ',';
-    $eol = "\r\n";
-
-    // Build headings row
-    preg_match('/SELECT (.*) FROM /i', $sSQL, $result);
-    $headings = explode(',', $result[1]);
-    $buffer = '';
-    foreach ($headings as $heading) {
-        $buffer .= trim($heading) . $delimiter;
-    }
-    // Remove trailing delimiter and add eol
-    $buffer = mb_substr($buffer, 0, -1) . $eol;
-
-    while ($row = mysqli_fetch_row($rsPledges)) {
-        foreach ($row as $field) {
-            // Remove any delimiters from data
-            $field = str_replace($delimiter, ' ', $field);
-            $buffer .= $field . $delimiter;
+    // Re-run the query to get fresh data (previous query was consumed by PDF export)
+    $rsPledges = RunQuery($sSQL);
+    
+    // Extract headers from query
+    $headers = [];
+    $numFields = mysqli_num_fields($rsPledges);
+    for ($i = 0; $i < $numFields; $i++) {
+        $field = mysqli_fetch_field_direct($rsPledges, $i);
+        if ($field && isset($field->name)) {
+            $headers[] = $field->name;
         }
-        // Remove trailing delimiter and add eol
-        $buffer = mb_substr($buffer, 0, -1) . $eol;
     }
 
-    // Export file
-    header('Content-type: text/x-csv');
-    header('Content-Disposition: attachment; filename=ChurchInfo-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
-    echo $buffer;
+    // Convert result to 2D array
+    $rows = [];
+    while ($row = mysqli_fetch_row($rsPledges)) {
+        $rows[] = $row;
+    }
+
+    // Only export if we have headers and rows
+    if (!empty($headers) && !empty($rows)) {
+        // Export using CsvExporter
+        // basename: 'PledgeSummary', includeDateInFilename: true adds today's date, .csv is added automatically
+        CsvExporter::create($headers, $rows, 'PledgeSummary', 'UTF-8', true);
+    } else {
+        header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Pledge%20Summary');
+    }
 }

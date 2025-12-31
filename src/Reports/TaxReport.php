@@ -2,16 +2,18 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Service\FinancialService;
 
 // Security
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Filter values
 $letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
@@ -25,131 +27,100 @@ $iMinimum = InputUtils::legacyFilterInput($_POST['minimum'], 'int');
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('Admin');
 }
+
+// Prepare filter arrays
+$classList = [];
+$fundIds = [];
+$familyIds = [];
 
 if (!empty($_POST['classList'])) {
-    $classList = $_POST['classList'];
-
-    if ($classList[0]) {
-        $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-        $rsClassifications = RunQuery($sSQL);
-
-        $inClassList = '(';
-        $notInClassList = '(';
-
-        while ($aRow = mysqli_fetch_array($rsClassifications)) {
-            extract($aRow);
-            if (in_array($lst_OptionID, $classList)) {
-                if ($inClassList === '(') {
-                    $inClassList .= $lst_OptionID;
-                } else {
-                    $inClassList .= ',' . $lst_OptionID;
-                }
-            } else {
-                if ($notInClassList === '(') {
-                    $notInClassList .= $lst_OptionID;
-                } else {
-                    $notInClassList .= ',' . $lst_OptionID;
-                }
-            }
-        }
-        $inClassList .= ')';
-        $notInClassList .= ')';
-    }
-
-    // All classes were selected. this should behave as if no filter classes were specified
-    if ($notInClassList === '()') {
-        unset($classList);
-    }
+    $classList = array_map('intval', $_POST['classList']);
 }
 
-$sSQL = 'SELECT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, fam_envelope, plg_date, plg_amount, plg_method, plg_comment, plg_CheckNo, fun_Name, plg_PledgeOrPayment, plg_NonDeductible FROM family_fam
-	INNER JOIN pledge_plg ON fam_ID=plg_FamID
-	LEFT JOIN donationfund_fun ON plg_fundID=fun_ID';
-
-$sSQL .= " WHERE plg_PledgeOrPayment='Payment' ";
-
-// Add  SQL criteria
-// Report Dates OR Deposit ID
-if ($iDepID > 0) {
-    $sSQL .= " AND plg_depID='$iDepID' ";
-} else {
-    $today = date('Y-m-d');
-    if (!$sDateEnd && $sDateStart) {
-        $sDateEnd = $sDateStart;
-    }
-    if (!$sDateStart && $sDateEnd) {
-        $sDateStart = $sDateEnd;
-    }
-    if (!$sDateStart && !$sDateEnd) {
-        $sDateStart = $today;
-        $sDateEnd = $today;
-    }
-    if ($sDateStart > $sDateEnd) {
-        $temp = $sDateStart;
-        $sDateStart = $sDateEnd;
-        $sDateEnd = $temp;
-    }
-    $sSQL .= " AND plg_date BETWEEN '$sDateStart' AND '$sDateEnd' ";
-}
-
-// Filter by Fund
 if (!empty($_POST['funds'])) {
-    $count = 0;
     foreach ($_POST['funds'] as $fundID) {
-        $fund[$count++] = InputUtils::legacyFilterInput($fundID, 'int');
-    }
-    if ($count == 1) {
-        if ($fund[0]) {
-            $sSQL .= " AND plg_fundID='$fund[0]' ";
-        }
-    } else {
-        $sSQL .= " AND (plg_fundID ='$fund[0]'";
-        for ($i = 1; $i < $count; $i++) {
-            $sSQL .= " OR plg_fundID='$fund[$i]'";
-        }
-        $sSQL .= ') ';
+        $fundIds[] = InputUtils::legacyFilterInput($fundID, 'int');
     }
 }
 
-// Filter by Family
 if (!empty($_POST['family'])) {
-    $count = 0;
     foreach ($_POST['family'] as $famID) {
-        $fam[$count++] = InputUtils::legacyFilterInput($famID, 'int');
-    }
-    if ($count == 1) {
-        if ($fam[0]) {
-            $sSQL .= " AND plg_FamID='$fam[0]' ";
-        }
-    } else {
-        $sSQL .= " AND (plg_FamID='$fam[0]'";
-        for ($i = 1; $i < $count; $i++) {
-            $sSQL .= " OR plg_FamID='$fam[$i]'";
-        }
-        $sSQL .= ') ';
+        $familyIds[] = InputUtils::legacyFilterInput($famID, 'int');
     }
 }
 
-if ($classList[0]) {
-    $q = ' plg_famID IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN ' . $inClassList . ')';
-
-    $sSQL .= ' AND' . $q;
+// Normalize date range
+$today = date('Y-m-d');
+if (!$sDateEnd && $sDateStart) {
+    $sDateEnd = $sDateStart;
+}
+if (!$sDateStart && $sDateEnd) {
+    $sDateStart = $sDateEnd;
+}
+if (!$sDateStart && !$sDateEnd) {
+    $sDateStart = $today;
+    $sDateEnd = $today;
+}
+if ($sDateStart > $sDateEnd) {
+    $temp = $sDateStart;
+    $sDateStart = $sDateEnd;
+    $sDateEnd = $temp;
 }
 
-// Get Criteria string
-preg_match('/WHERE (plg_PledgeOrPayment.*)/i', $sSQL, $aSQLCriteria);
+// Use FinancialService to get data using ORM instead of raw SQL
+$financialService = new FinancialService();
+$pledgeObjects = $financialService->getTaxReportData(
+    $sDateStart,
+    $sDateEnd,
+    $iDepID > 0 ? $iDepID : null,
+    $iMinimum > 0 ? $iMinimum : null,
+    $fundIds,
+    $familyIds,
+    $classList
+);
 
-// Add SQL ORDER
-$sSQL .= ' ORDER BY plg_FamID, plg_date ';
+// Convert Propel objects to array format for backward compatibility with existing PDF/CSV code
+$rsReport = [];
+foreach ($pledgeObjects as $pledge) {
+    $row = [
+        'fam_ID' => $pledge['FamId'],
+        'fam_Name' => $pledge['Family']['Name'] ?? 'Unassigned',
+        'fam_Address1' => $pledge['Family']['Address1'] ?? '',
+        'fam_Address2' => $pledge['Family']['Address2'] ?? '',
+        'fam_City' => $pledge['Family']['City'] ?? '',
+        'fam_State' => $pledge['Family']['State'] ?? '',
+        'fam_Zip' => $pledge['Family']['Zip'] ?? '',
+        'fam_Country' => $pledge['Family']['Country'] ?? '',
+        'fam_envelope' => $pledge['Family']['Envelope'] ?? '',
+        'plg_date' => $pledge['Date'],
+        'plg_amount' => $pledge['Amount'],
+        'plg_method' => $pledge['Method'],
+        'plg_comment' => $pledge['Comment'],
+        'plg_CheckNo' => $pledge['CheckNo'] ?? '',
+        'fun_Name' => $pledge['DonationFund']['Name'] ?? 'Undesignated',
+        'plg_PledgeOrPayment' => $pledge['PledgeOrPayment'],
+        'plg_NonDeductible' => $pledge['Nondeductible'] ?? 0,
+    ];
+    $rsReport[] = $row;
+}
 
-$rsReport = RunQuery($sSQL);
+// Store criteria string for PDF report
+$aSQLCriteria = [];
+$criteriaStr = "plg_PledgeOrPayment='Payment'";
+if ($iDepID > 0) {
+    $criteriaStr .= " AND plg_depID='$iDepID'";
+} else {
+    $criteriaStr .= " AND plg_date BETWEEN '$sDateStart' AND '$sDateEnd'";
+}
+$aSQLCriteria[1] = $criteriaStr;
 
 // Exit if no rows returned
-$iCountRows = mysqli_num_rows($rsReport);
+$iCountRows = count($rsReport);
 if ($iCountRows < 1) {
     header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
+    exit();
 }
 
 // Create Giving Report -- PDF
@@ -180,7 +151,7 @@ if ($output === 'pdf') {
             global $letterhead, $sDateStart, $sDateEnd, $iDepID;
             $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
             if (SystemConfig::getValue('bUseDonationEnvelopes')) {
-                $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope:') . $fam_envelope);
+                $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope') . ': ' . $fam_envelope);
                 $curY += SystemConfig::getValue('incrementY');
             }
             $curY += 2 * SystemConfig::getValue('incrementY');
@@ -223,7 +194,7 @@ if ($output === 'pdf') {
                 $curY += (1.5 * SystemConfig::getValue('incrementY'));
                 $church_mailing = gettext('Please mail you next gift to ') . SystemConfig::getValue('sChurchName') . ', '
                     . SystemConfig::getValue('sChurchAddress') . ', ' . SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  '
-                    . SystemConfig::getValue('sChurchZip') . gettext(', Phone: ') . SystemConfig::getValue('sChurchPhone');
+                    . SystemConfig::getValue('sChurchZip') . ', ' . gettext('Phone') . ': ' . SystemConfig::getValue('sChurchPhone');
                 $this->SetFont('Times', 'I', 10);
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, $church_mailing);
                 $this->SetFont('Times', '', 10);
@@ -260,10 +231,10 @@ if ($output === 'pdf') {
                 }
                 $curX = 100;
                 $curY = 215;
-                $this->writeAt($curX, $curY, gettext('Gift Amount:'));
+                $this->writeAt($curX, $curY, gettext('Gift Amount') . ':');
                 $this->writeAt($curX + 25, $curY, '_______________________________');
                 $curY += (2 * SystemConfig::getValue('incrementY'));
-                $this->writeAt($curX, $curY, gettext('Gift Designation:'));
+                $this->writeAt($curX, $curY, gettext('Gift Designation') . ':');
                 $this->writeAt($curX + 25, $curY, '_______________________________');
                 $curY = 200 + (11 * SystemConfig::getValue('incrementY'));
             }
@@ -274,22 +245,14 @@ if ($output === 'pdf') {
     $pdf = new PdfTaxReport();
 
     // Loop through result array
-    $currentFamilyID = 0;
-    while ($row = mysqli_fetch_array($rsReport)) {
+    $currentFamilyID = -1;  // Initialize to -1 so first record (even with fam_ID=0) creates a new page
+    foreach ($rsReport as $row) {
         extract($row);
 
-        // Check for minimum amount
-        if ($iMinimum > 0) {
-            $temp = "SELECT SUM(plg_amount) AS total_gifts FROM pledge_plg
-				WHERE plg_FamID=$fam_ID AND $aSQLCriteria[1]";
-            $rsMinimum = RunQuery($temp);
-            [$total_gifts] = mysqli_fetch_row($rsMinimum);
-            if ($iMinimum > $total_gifts) {
-                continue;
-            }
-        }
+        // Minimum amount filtering is now handled in FinancialService
+        // No need to re-query for minimum amount check
         // Check for new family
-        if ($fam_ID != $currentFamilyID && $currentFamilyID != 0) {
+        if ($fam_ID != $currentFamilyID && $currentFamilyID != -1) {
             //New Family. Finish Previous Family
             $pdf->SetFont('Times', 'B', 10);
             $pdf->Cell(20, $summaryIntervalY / 2, ' ', 0, 1);
@@ -457,7 +420,7 @@ if ($output === 'pdf') {
         );
     }
 
-    if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+    if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
         $pdf->Output('TaxReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {
         $pdf->Output();
@@ -465,32 +428,33 @@ if ($output === 'pdf') {
 
     // Output a text file
 } elseif ($output === 'csv') {
-    // Settings
-    $delimiter = ',';
-    $eol = "\r\n";
-
-    // Build headings row
-    preg_match('/SELECT (.*) FROM /i', $sSQL, $result);
-    $headings = explode(',', $result[1]);
-    $buffer = '';
-    foreach ($headings as $heading) {
-        $buffer .= trim($heading) . $delimiter;
-    }
-    // Remove trailing delimiter and add eol
-    $buffer = mb_substr($buffer, 0, -1) . $eol;
-
-    while ($row = mysqli_fetch_row($rsReport)) {
-        foreach ($row as $field) {
-            // Remove any delimiters from data
-            $field = str_replace($delimiter, ' ', $field);
-            $buffer .= $field . $delimiter;
-        }
-        // Remove trailing delimiter and add eol
-        $buffer = mb_substr($buffer, 0, -1) . $eol;
+    // Use already fetched data from ORM (rsReport is already an array)
+    
+    // Build headers array from first row keys
+    $headers = [];
+    if (!empty($rsReport)) {
+        $headers = array_keys($rsReport[0]);
     }
 
-    // Export file
-    header('Content-type: text/x-csv');
-    header('Content-Disposition: attachment; filename=ChurchCRM-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
-    echo $buffer;
+    // Convert associative array to 2D indexed array for CsvExporter
+    $rows = [];
+    foreach ($rsReport as $row) {
+        $rows[] = array_values($row);
+    }
+
+    // Only export if we have headers and rows
+    if (!empty($headers) && !empty($rows)) {
+        // Export using CsvExporter
+        // basename: 'TaxReport', includeDateInFilename: true adds today's date, .csv is added automatically
+        CsvExporter::create($headers, $rows, 'TaxReport', 'UTF-8', true);
+    } else {
+        $params = [
+            'ReturnMessage' => 'NoRows',
+            'ReportType' => 'Giving Report',
+            'DateStart' => $sDateStart,
+            'DateEnd'   => $sDateEnd,
+        ];
+        header('Location: ../FinancialReports.php?' . http_build_query($params));
+        exit();
+    }
 }

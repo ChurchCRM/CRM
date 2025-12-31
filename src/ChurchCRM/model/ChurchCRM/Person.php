@@ -31,7 +31,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getFullName(): string
     {
-        return $this->getFormattedName(SystemConfig::getValue('iPersonNameStyle'));
+        return $this->getFormattedName(SystemConfig::getIntValue('iPersonNameStyle'));
     }
 
     public function isMale(): bool
@@ -344,21 +344,20 @@ class Person extends BasePerson implements PhotoInterface
         return $this->photo;
     }
 
-    public function setImageFromBase64($base64): bool
+    public function setImageFromBase64($base64): void
     {
-        if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-            $note = new Note();
-            $note->setText(gettext('Profile Image uploaded'));
-            $note->setType('photo');
-            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-            $this->getPhoto()->setImageFromBase64($base64);
-            $note->setPerId($this->getId());
-            $note->save();
-
-            return true;
-        }
-
-        return false;
+        $note = new Note();
+        $note->setText(gettext('Profile Image uploaded'));
+        $note->setType('photo');
+        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
+        $this->getPhoto()->setImageFromBase64($base64);
+        $note->setPerId($this->getId());
+        $note->save();
+        
+        // Update person's last edited date and editor
+        $this->setDateLastEdited(new \DateTime());
+        $this->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
+        $this->save();
     }
 
     /**
@@ -688,13 +687,9 @@ class Person extends BasePerson implements PhotoInterface
         $array = parent::toArray();
         $array['Address'] = $this->getAddress();
         $array['FullName'] = $this->getFullName();
+        $array['HasPhoto'] = $this->getPhoto()->hasUploadedPhoto();
 
         return $array;
-    }
-
-    public function getThumbnailURL(): string
-    {
-        return SystemURLs::getRootPath() . '/api/person/' . $this->getId() . '/thumbnail';
     }
 
     public function getEmail(): ?string

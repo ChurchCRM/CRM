@@ -5,6 +5,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -51,15 +52,26 @@ $aPropTypes = [
 
 $sGlobalMessageClass = 'success';
 
-if (isset($_GET['Registered'])) {
+// Handle session-based messages (from redirects)
+if (isset($_SESSION['sGlobalMessage'])) {
+    $sGlobalMessage = $_SESSION['sGlobalMessage'];
+    $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
+    unset($_SESSION['sGlobalMessage']);
+    unset($_SESSION['sGlobalMessageClass']);
+}
+// Handle query parameter messages (for same-page operations, legacy pattern)
+elseif (isset($_GET['Registered'])) {
     $sGlobalMessage = gettext('Thank you for registering your ChurchCRM installation.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_GET['PDFEmailed'])) {
     if ($_GET['PDFEmailed'] == 1) {
         $sGlobalMessage = gettext('PDF successfully emailed to family members.');
+        $sGlobalMessageClass = 'success';
     } else {
         $sGlobalMessage = gettext('Failed to email PDF to family members.');
+        $sGlobalMessageClass = 'danger';
     }
 }
 
@@ -67,20 +79,24 @@ if (isset($_GET['PDFEmailed'])) {
 if (isset($_GET['AddGroupToPeopleCart'])) {
     AddGroupToPeopleCart(InputUtils::legacyFilterInput($_GET['AddGroupToPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully added to the Cart.');
+    $sGlobalMessageClass = 'success';
 }
 
 // Are they removing an entire group from the Cart?
 if (isset($_GET['RemoveGroupFromPeopleCart'])) {
     RemoveGroupFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveGroupFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully removed from the Cart.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_GET['ProfileImageDeleted'])) {
     $sGlobalMessage = gettext('Profile Image successfully removed.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_GET['ProfileImageUploaded'])) {
     $sGlobalMessage = gettext('Profile Image successfully updated.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_GET['ProfileImageUploadedError'])) {
@@ -92,6 +108,7 @@ if (isset($_GET['ProfileImageUploadedError'])) {
 if (isset($_GET['RemoveFromPeopleCart'])) {
     RemoveFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Selected record successfully removed from the Cart.');
+    $sGlobalMessageClass = 'success';
 }
 
 if (isset($_POST['BulkAddToCart'])) {
@@ -109,7 +126,8 @@ if (isset($_POST['BulkAddToCart'])) {
         for ($iCount = 0; $iCount < count($aItemsToProcess); $iCount++) {
             Cart::addPerson(str_replace(',', '', $aItemsToProcess[$iCount]));
         }
-        $sGlobalMessage = $iCount . ' ' . gettext('item(s) added to the Cart.');
+        $sGlobalMessage = sprintf(ngettext('%d Person added to the Cart.', '%d People added to the Cart.', $iCount), $iCount);
+        $sGlobalMessageClass = 'success';
     }
 }
 
@@ -120,18 +138,11 @@ if (isset($_POST['BulkAddToCart'])) {
 // Returns the current fiscal year
 function CurrentFY(): int
 {
-    $yearNow = (int) date('Y');
-    $monthNow = (int) date('m');
-    $FYID = $yearNow - 1996;
-    if ($monthNow >= SystemConfig::getValue('iFYMonth') && SystemConfig::getValue('iFYMonth') > 1) {
-        $FYID += 1;
-    }
-
-    return $FYID;
+    return \ChurchCRM\Utils\FiscalYearUtils::getCurrentFiscalYearId();
 }
 
 // PrintFYIDSelect: make a fiscal year selection menu.
-function PrintFYIDSelect(string $selectName, int $iFYID = null): void
+function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 {
     echo sprintf('<select class="form-control" name="%s">', $selectName);
 
@@ -158,49 +169,22 @@ function PrintFYIDSelect(string $selectName, int $iFYID = null): void
 }
 
 // Formats a fiscal year string
-function MakeFYString(int $iFYID): string
+function MakeFYString(int|string|null $iFYID): string
 {
-    if (SystemConfig::getValue('iFYMonth') == 1) {
-        return (string) (1996 + $iFYID);
-    } else {
-        return 1995 + $iFYID . '/' . mb_substr(1996 + $iFYID, 2, 2);
+    if ($iFYID === null || $iFYID === '') {
+        return '';
     }
+
+    // Delegate to FinancialService to centralize fiscal year formatting logic.
+    return FinancialService::formatFiscalYear((int) $iFYID);
 }
 
 // Runs an SQL query.  Returns the result resource.
 // By default stop on error, unless a second (optional) argument is passed as false.
+// Delegates to ChurchCRM\Utils\Functions::runQuery() to avoid code duplication.
 function RunQuery(string $sSQL, bool $bStopOnError = true)
 {
-    global $cnInfoCentral;
-    mysqli_query($cnInfoCentral, "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
-    if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
-        return $result;
-    } elseif ($bStopOnError) {
-        LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.') . " " . $sSQL . " -|- " . mysqli_error($cnInfoCentral));
-        if (SystemConfig::getValue('sLogLevel') == "100") { // debug level
-            throw new Exception(gettext('Cannot execute query.') . "<p>$sSQL<p>" . mysqli_error($cnInfoCentral));
-        } else {
-            throw new Exception('Database error or invalid data, change sLogLevel to debug to see more.');
-        }
-    } else {
-        return false;
-    }
-}
-
-//
-// Adds a volunteer opportunity assignment to a person
-//
-function AddVolunteerOpportunity(string $iPersonID, string $iVolID)
-{
-    $sSQL = 'INSERT INTO person2volunteeropp_p2vo (p2vo_per_ID, p2vo_vol_ID) VALUES (' . $iPersonID . ', ' . $iVolID . ')';
-
-    return RunQuery($sSQL, false);
-}
-
-function RemoveVolunteerOpportunity(string $iPersonID, string $iVolID): void
-{
-    $sSQL = 'DELETE FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = ' . $iPersonID . ' AND p2vo_vol_ID = ' . $iVolID;
-    RunQuery($sSQL);
+    return \ChurchCRM\Utils\Functions::runQuery($sSQL, $bStopOnError);
 }
 
 function convertCartToString(array $aCartArray): string
@@ -219,104 +203,14 @@ function convertCartToString(array $aCartArray): string
     return $sCartString;
 }
 
-/*
- * Returns the proper information to use for a field.
- * Person info overrides Family info if they are different.
- * If using family info and bFormat set, generate HTML tags for text color red.
- * If neither family nor person info is available, return an empty string.
- */
 
-function SelectWhichInfo(string $sPersonInfo = null, string $sFamilyInfo = null, bool $bFormat = false): string
-{
-    $sPersonInfo ??= '';
-    $sFamilyInfo ??= '';
-
-    $finalData = '';
-    $isFamily = false;
-
-    if (SystemConfig::getValue('bShowFamilyData')) {
-        if ($sPersonInfo !== '') {
-            $finalData = $sPersonInfo;
-        } elseif ($sFamilyInfo !== '') {
-            $isFamily = true;
-            $finalData = $sFamilyInfo;
-        }
-    } elseif ($sPersonInfo != '') {
-        $finalData = $sPersonInfo;
-    }
-
-    if ($bFormat && $isFamily) {
-        $finalData = $finalData . "<i class='fa fa-fw fa-tree'></i>";
-    }
-
-    return $finalData;
-}
-
-//
-// Returns the correct address to use via the sReturnAddress arguments.
-// Function value returns 0 if no info was given, 1 if person info was used, and 2 if family info was used.
-// We do address lines 1 and 2 in together because separately we might end up with half family address and half person address!
-//
-function SelectWhichAddress(&$sReturnAddress1, &$sReturnAddress2, $sPersonAddress1, $sPersonAddress2, ?string $sFamilyAddress1, ?string $sFamilyAddress2, bool $bFormat = false): int
-{
-    if (SystemConfig::getValue('bShowFamilyData')) {
-        if ($bFormat) {
-            $sFamilyInfoBegin = "<span class='text-danger'>";
-            $sFamilyInfoEnd = '</span>';
-        }
-
-        if ($sPersonAddress1 || $sPersonAddress2) {
-            $sReturnAddress1 = $sPersonAddress1;
-            $sReturnAddress2 = $sPersonAddress2;
-
-            return 1;
-        } elseif ($sFamilyAddress1 || $sFamilyAddress2) {
-            if ($bFormat) {
-                if ($sFamilyAddress1) {
-                    $sReturnAddress1 = $sFamilyInfoBegin . $sFamilyAddress1 . $sFamilyInfoEnd;
-                } else {
-                    $sReturnAddress1 = '';
-                }
-                if ($sFamilyAddress2) {
-                    $sReturnAddress2 = $sFamilyInfoBegin . $sFamilyAddress2 . $sFamilyInfoEnd;
-                } else {
-                    $sReturnAddress2 = '';
-                }
-
-                return 2;
-            } else {
-                $sReturnAddress1 = $sFamilyAddress1;
-                $sReturnAddress2 = $sFamilyAddress2;
-
-                return 2;
-            }
-        } else {
-            $sReturnAddress1 = '';
-            $sReturnAddress2 = '';
-
-            return 0;
-        }
-    } else {
-        if ($sPersonAddress1 || $sPersonAddress2) {
-            $sReturnAddress1 = $sPersonAddress1;
-            $sReturnAddress2 = $sPersonAddress2;
-
-            return 1;
-        } else {
-            $sReturnAddress1 = '';
-            $sReturnAddress2 = '';
-
-            return 0;
-        }
-    }
-}
 
 function ChopLastCharacter(string $sText): string
 {
     return mb_substr($sText, 0, strlen($sText) - 1);
 }
 
-function change_date_for_place_holder(string $string = null): string
+function change_date_for_place_holder(?string $string = null): string
 {
     $string ??= '';
     $timestamp = strtotime($string);
@@ -328,78 +222,43 @@ function change_date_for_place_holder(string $string = null): string
     return '';
 }
 
-function FormatDateOutput(): string
-{
-    $fmt = SystemConfig::getValue("sDateFormatLong");
-
-    $fmt = str_replace("/", " ", $fmt);
-
-    $fmt = str_replace("-", " ", $fmt);
-
-    $fmt = str_replace("d", "%d", $fmt);
-    $fmt = str_replace("m", "%B", $fmt);
-
-    return str_replace("Y", "%Y", $fmt);
-}
-
 // Reinstated by Todd Pillars for Event Listing
 // Takes MYSQL DateTime
 // bWithtime 1 to be displayed
 function FormatDate($dDate, bool $bWithTime = false): string
 {
-    if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00') {
+    // Handle empty or invalid dates
+    if ($dDate == '' || $dDate == '0000-00-00 00:00:00' || $dDate == '0000-00-00' || $dDate === null) {
         return '';
     }
 
-    if (strlen($dDate) === 10) { // If only a date was passed append time
-        $dDate = $dDate . ' 12:00:00';
-    }  // Use noon to avoid a shift in daylight time causing
-    // a date change.
-
-    if (strlen($dDate) !== 19) {
+    try {
+        // Parse the date string into a DateTime object
+        $dateObj = new DateTime($dDate);
+    } catch (Exception $e) {
+        // Return empty string for invalid dates
         return '';
     }
 
-    // Verify it is a valid date
-    $sScanString = mb_substr($dDate, 0, 10);
-    [$iYear, $iMonth, $iDay] = sscanf($sScanString, '%04d-%02d-%02d');
-
-    if (!checkdate($iMonth, $iDay, $iYear)) {
-        return 'Unknown';
-    }
-
-    // PHP date() function is not used because it is only robust for dates between
-    // 1970 and 2038.  This is a problem on systems that are limited to 32 bit integers.
-    // To handle a much wider range of dates use MySQL date functions.
-
-    $sSQL = "SELECT DATE_FORMAT('$dDate', '%b') as mn, "
-    . "DAYOFMONTH('$dDate') as dm, YEAR('$dDate') as y, "
-    . "DATE_FORMAT('$dDate', '%k') as h, "
-    . "DATE_FORMAT('$dDate', ':%i') as m";
-    extract(mysqli_fetch_array(RunQuery($sSQL)));
-
-    if ($h > 11) {
-        $sAMPM = gettext('pm');
-        if ($h > 12) {
-            $h = $h - 12;
-        }
-    } else {
-        $sAMPM = gettext('am');
-        if ($h == 0) {
-            $h = 12;
-        }
-    }
-
-    $fmt = FormatDateOutput();
-
-    $localValue = SystemConfig::getValue("sLanguage");
-    setlocale(LC_ALL, $localValue, $localValue . '.UTF-8', $localValue . '.utf8');
+    // Get the date format from system config
+    $dateFormat = SystemConfig::getValue("sDateFormatLong");
+    
+    // Convert format to DateTime format (from strftime-style)
+    // d = day, m = month name, Y = year
+    $dateFormat = str_replace("d", "d", $dateFormat);
+    $dateFormat = str_replace("m", "F", $dateFormat);  // F = full month name
+    $dateFormat = str_replace("Y", "Y", $dateFormat);
+    $dateFormat = str_replace("/", " ", $dateFormat);
+    $dateFormat = str_replace("-", " ", $dateFormat);
 
     if ($bWithTime) {
-        return utf8_encode(strftime("$fmt %H:%M $sAMPM", strtotime($dDate)));
+        // Add time format (g:i A = 12-hour format with am/pm)
+        $formattedDate = $dateObj->format($dateFormat . ' g:i A');
     } else {
-        return utf8_encode(strftime("$fmt", strtotime($dDate)));
+        $formattedDate = $dateObj->format($dateFormat);
     }
+
+    return $formattedDate;
 }
 
 function AlternateRowStyle(string $sCurrentStyle): string
@@ -411,36 +270,7 @@ function AlternateRowStyle(string $sCurrentStyle): string
     }
 }
 
-function ConvertToBoolean(string $sInput): bool
-{
-    if (empty($sInput)) {
-        return false;
-    } else {
-        if (is_numeric($sInput)) {
-            if ($sInput == 1) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            $sInput = strtolower($sInput);
-            if (in_array($sInput, ['true', 'yes', 'si'])) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
-}
 
-function ConvertFromBoolean($sInput): int
-{
-    if ($sInput) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
 
 //
 // Collapses a formatted phone number as long as the Country is known
@@ -492,7 +322,7 @@ function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
 //
 // Need to add other countries besides the US...
 //
-function ExpandPhoneNumber(string $sPhoneNumber = null, string $sPhoneCountry = null, &$bWeird): string
+function ExpandPhoneNumber(?string $sPhoneNumber = null, ?string $sPhoneCountry = null, &$bWeird): string
 {
     $sPhoneNumber ??= '';
     $sPhoneCountry ??= '';
@@ -713,45 +543,68 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for boolean fields
         case 1:
             echo '<div class="form-group">' .
-            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value="true"' . ($data == 'true' ? 'checked' : '') . '>' . gettext('Yes') . '</label></div>' .
-            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value="false"' . ($data == 'false' ? 'checked' : '') . '>' . gettext('No') . '</label></div>' .
-            '<div class="radio"><label><input type="radio" Name="' . $fieldname . '" value=""' . (strlen($data) === 0 ? 'checked' : '') . '>' . gettext('Unknown') . '</label></div>' .
+            '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="' . $fieldname . '_yes" name="' . $fieldname . '" value="true"' . ($data == 'true' ? ' checked' : '') . '><label class="custom-control-label" for="' . $fieldname . '_yes">' . gettext('Yes') . '</label></div>' .
+            '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="' . $fieldname . '_no" name="' . $fieldname . '" value="false"' . ($data == 'false' ? ' checked' : '') . '><label class="custom-control-label" for="' . $fieldname . '_no">' . gettext('No') . '</label></div>' .
+            '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="' . $fieldname . '_unknown" name="' . $fieldname . '" value=""' . (strlen($data) === 0 ? ' checked' : '') . '><label class="custom-control-label" for="' . $fieldname . '_unknown">' . gettext('Unknown') . '</label></div>' .
             '</div>';
             break;
     // Handler for date fields
         case 2:
-            // code rajouté par Philippe Logel
             echo '<div class="input-group">' .
-            '<div class="input-group-addon">' .
-            '<i class="fa-solid fa-calendar"></i>' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>' .
             '</div>' .
-            '<input class="form-control date-picker" type="text" id="' . $fieldname . '" Name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
+            '<input class="form-control date-picker" type="text" id="' . $fieldname . '" name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
             '</div>';
             break;
 
     // Handler for 50 character max. text fields
         case 3:
-            echo '<input class="form-control" type="text" Name="' . $fieldname . '" maxlength="50" size="50" value="' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '">';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-font"></i></span>' .
+            '</div>' .
+            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="50" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '">' .
+            '</div>';
             break;
 
     // Handler for 100 character max. text fields
         case 4:
-            echo '<textarea class="form-control" Name="' . $fieldname . '" cols="40" rows="2" onKeyPress="LimitTextSize(this, 100)">' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '</textarea>';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-align-left"></i></span>' .
+            '</div>' .
+            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="2" maxlength="100">' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '</textarea>' .
+            '</div>';
             break;
 
     // Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
         case 5:
-            echo '<textarea class="form-control" Name="' . $fieldname . '" cols="60" rows="4" onKeyPress="LimitTextSize(this, 65535)">' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '</textarea>';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-paragraph"></i></span>' .
+            '</div>' .
+            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="4" maxlength="65535">' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '</textarea>' .
+            '</div>';
             break;
 
     // Handler for 4-digit year
         case 6:
-            echo '<input class="form-control" type="text" Name="' . $fieldname . '" maxlength="4" size="6" value="' . $data . '">';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>' .
+            '</div>' .
+            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="4" value="' . InputUtils::escapeAttribute($data) . '" placeholder="YYYY">' .
+            '</div>';
             break;
 
     // Handler for season (drop-down selection)
         case 7:
-            echo "<select name=\"$fieldname\" class=\"form-control\" >";
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-leaf"></i></span>' .
+            '</div>' .
+            '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-control">';
             echo '  <option value="none">' . gettext('Select Season') . '</option>';
             echo '  <option value="winter"';
             if ($data == 'winter') {
@@ -765,7 +618,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             echo '>' . gettext('Spring') . '</option>';
             echo '  <option value="summer"';
             if ($data == 'summer') {
-                echo 'selected';
+                echo ' selected';
             }
             echo '>' . gettext('Summer') . '</option>';
             echo '  <option value="fall"';
@@ -773,12 +626,17 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
                 echo ' selected';
             }
             echo '>' . gettext('Fall') . '</option>';
-            echo '</select>';
+            echo '</select></div>';
             break;
 
     // Handler for integer numbers
         case 8:
-            echo '<input class="form-control" type="text" Name="' . $fieldname . '" maxlength="11" size="15" value="' . $data . '">';
+            echo '<div class="input-group">' .
+            '<div class="input-group-prepend">' .
+            '<span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>' .
+            '</div>' .
+            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="11" value="' . InputUtils::escapeAttribute($data) . '">' .
+            '</div>';
             break;
 
     // Handler for "person from group"
@@ -794,7 +652,11 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
 
             $rsGroupPeople = RunQuery($sSQL);
 
-            echo '<select name="' . $fieldname . '" class="form-control" >';
+            echo '<div class="input-group">';
+            echo '<div class="input-group-prepend">';
+            echo '<span class="input-group-text"><i class="fa-solid fa-user"></i></span>';
+            echo '</div>';
+            echo '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-control">';
             echo '<option value="0"';
             if ($data <= 0) {
                 echo ' selected';
@@ -812,12 +674,17 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
                 echo '>' . $per_FirstName . '&nbsp;' . $per_LastName . '</option>';
             }
 
-            echo '</select>';
+            echo '</select></div>';
             break;
 
     // Handler for money amounts
         case 10:
-            echo '<input class="form-control"  type="text" Name="' . $fieldname . '" maxlength="13" size="16" value="' . $data . '">';
+            echo '<div class="input-group">';
+            echo '<div class="input-group-prepend">';
+            echo '<span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>';
+            echo '</div>';
+            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="13" value="' . InputUtils::escapeAttribute($data) . '">';
+            echo '</div>';
             break;
 
     // Handler for phone numbers
@@ -833,16 +700,20 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             }
 
             echo '<div class="input-group">';
-            echo '<div class="input-group-addon">';
-            echo '<i class="fa-solid fa-phone"></i>';
+            echo '<div class="input-group-prepend">';
+            echo '<span class="input-group-text"><i class="fa-solid fa-phone"></i></span>';
             echo '</div>';
-            echo '<input class="form-control"  type="text" Name="' . $fieldname . '" maxlength="30" size="30" value="' . htmlentities(stripslashes($data), ENT_NOQUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
-            echo '<br><input type="checkbox" name="' . $fieldname . 'noformat" value="1"';
+            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '" data-inputmask=\'"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"\' data-mask>';
+            echo '<div class="input-group-append">';
+            echo '<div class="input-group-text">';
+            echo '<div class="custom-control custom-checkbox mb-0">';
+            echo '<input type="checkbox" class="custom-control-input" id="' . $fieldname . 'noformat" name="' . $fieldname . 'noformat" value="1"';
             if ($bNoFormat_Phone) {
                 echo ' checked';
             }
-            echo '>' . gettext('Do not auto-format');
-            echo '</div>';
+            echo '>';
+            echo '<label class="custom-control-label" for="' . $fieldname . 'noformat">' . gettext('No format') . '</label>';
+            echo '</div></div></div></div>';
             break;
 
     // Handler for custom lists
@@ -850,8 +721,12 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $special ORDER BY lst_OptionSequence";
             $rsListOptions = RunQuery($sSQL);
 
-            echo '<select class="form-control" name="' . $fieldname . '">';
-            echo '<option value="0" selected>' . gettext('Unassigned') . '</option>';
+            echo '<div class="input-group">';
+            echo '<div class="input-group-prepend">';
+            echo '<span class="input-group-text"><i class="fa-solid fa-list"></i></span>';
+            echo '</div>';
+            echo '<select class="form-control" id="' . $fieldname . '" name="' . $fieldname . '">';
+            echo '<option value="0">' . gettext('Unassigned') . '</option>';
             echo '<option value="" disabled>-----------------------</option>';
 
             while ($aRow = mysqli_fetch_array($rsListOptions)) {
@@ -863,7 +738,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
                 echo '>' . $lst_OptionName . '</option>';
             }
 
-            echo '</select>';
+            echo '</select></div>';
             break;
 
     // Otherwise, display error for debugging.
@@ -1059,7 +934,6 @@ function validateCustomField($type, &$data, $col_Name, ?array &$aErrors): bool
     // Validate a date field
         case 2:
             // this part will work with each date format
-            // Philippe logel
             $data = InputUtils::filterDate($data);
 
             if (strlen($data) > 0) {
@@ -1210,29 +1084,6 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
     }
 }
 
-// Wrapper for number_format that uses the locale information
-// There are three modes: money, integer, and intmoney (whole number money)
-function formatNumber($iNumber, $sMode = 'integer'): string
-{
-    global $aLocaleInfo;
-
-    switch ($sMode) {
-        case 'money':
-            return $aLocaleInfo['currency_symbol'] . ' ' . number_format($iNumber, $aLocaleInfo['frac_digits'], $aLocaleInfo['mon_decimal_point'], $aLocaleInfo['mon_thousands_sep']);
-
-        case 'intmoney':
-            return $aLocaleInfo['currency_symbol'] . ' ' . number_format($iNumber, 0, '', $aLocaleInfo['mon_thousands_sep']);
-
-        case 'float':
-            $iDecimals = 2; // need to calculate # decimals in original number
-            return number_format($iNumber, $iDecimals, $aLocaleInfo['mon_decimal_point'], $aLocaleInfo['mon_thousands_sep']);
-
-        case 'integer':
-        default:
-            return number_format($iNumber, 0, '', $aLocaleInfo['mon_thousands_sep']);
-    }
-}
-
 function FilenameToFontname(string $filename, string $family): string
 {
     if ($filename == $family) {
@@ -1260,62 +1111,6 @@ function FontFromName(string $fontname)
             return [$fontinfo[0], mb_substr($fontinfo[1], 0, 1)];
         case 3:
             return [$fontinfo[0], mb_substr($fontinfo[1], 0, 1) . mb_substr($fontinfo[2], 0, 1)];
-    }
-}
-
-// Added for AddEvent.php
-function createTimeDropdown($start, $stop, $mininc, $hoursel, $minsel): void
-{
-    for ($hour = $start; $hour <= $stop; $hour++) {
-        if ($hour == '0') {
-            $disphour = '12';
-            $ampm = 'AM';
-        } elseif ($hour == '12') {
-            $disphour = '12';
-            $ampm = 'PM';
-        } elseif ($hour >= '13' && $hour <= '21') {
-            $test = $hour - 12;
-            $disphour = ' ' . $test;
-            $ampm = 'PM';
-        } elseif ($hour >= '22' && $hour <= '23') {
-            $disphour = $hour - 12;
-            $ampm = 'PM';
-        } else {
-            $disphour = $hour;
-            $ampm = 'AM';
-        }
-
-        for ($min = 0; $min <= 59; $min += $mininc) {
-            if ($hour >= '1' && $hour <= '9') {
-                if ($min >= '0' && $min <= '9') {
-                    if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="0' . $hour . ':0' . $min . ':00" selected> ' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
-                    } else {
-                        echo '<option value="0' . $hour . ':0' . $min . ':00"> ' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
-                    }
-                } else {
-                    if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="0' . $hour . ':' . $min . ':00" selected> ' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
-                    } else {
-                        echo '<option value="0' . $hour . ':' . $min . ':00"> ' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
-                    }
-                }
-            } else {
-                if ($min >= '0' && $min <= '9') {
-                    if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="' . $hour . ':0' . $min . ':00" selected>' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
-                    } else {
-                        echo '<option value="' . $hour . ':0' . $min . ':00">' . $disphour . ':0' . $min . ' ' . $ampm . '</option>' . "\n";
-                    }
-                } else {
-                    if ($hour == $hoursel && $min == $minsel) {
-                        echo '<option value="' . $hour . ':' . $min . ':00" selected>' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
-                    } else {
-                        echo '<option value="' . $hour . ':' . $min . ':00">' . $disphour . ':' . $min . ' ' . $ampm . '</option>' . "\n";
-                    }
-                }
-            }
-        }
     }
 }
 
@@ -1484,80 +1279,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
     }
 }
 
-/**
- * @return non-falsy-string[]
- */
-function getFamilyList(string $sDirRoleHead, string $sDirRoleSpouse, int $classification = 0, ?string $sSearchTerm = null): array
-{
-    if ($classification) {
-        if ($sSearchTerm) {
-            $whereClause = " WHERE per_cls_ID='" . $classification . "' AND fam_Name LIKE '%" . $sSearchTerm . "%' ";
-        } else {
-            $whereClause = " WHERE per_cls_ID='" . $classification . "' ";
-        }
-        $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID $whereClause ORDER BY fam_Name";
-    } else {
-        if ($sSearchTerm) {
-            $whereClause = " WHERE fam_Name LIKE '%" . $sSearchTerm . "%' ";
-        } else {
-            $whereClause = '';
-        }
-        $sSQL = "SELECT fam_ID, fam_Name, fam_Address1, fam_City, fam_State FROM family_fam $whereClause ORDER BY fam_Name";
-    }
 
-    $rsFamilies = RunQuery($sSQL);
-
-    // Build Criteria for Head of Household
-    if (!$sDirRoleHead) {
-        $sDirRoleHead = '1';
-    }
-    $head_criteria = ' per_fmr_ID = ' . $sDirRoleHead;
-    // If more than one role assigned to Head of Household, add OR
-    $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
-    // Add Spouse to criteria
-    if (intval($sDirRoleSpouse) > 0) {
-        $head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
-    }
-    // Build array of Head of Households and Spouses with fam_ID as the key
-    $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
-    $rs_head = RunQuery($sSQL);
-    $aHead = [];
-    while ([$head_firstname, $head_famid] = mysqli_fetch_row($rs_head)) {
-        if ($head_firstname && isset($aHead[$head_famid])) {
-            $aHead[$head_famid] .= ' & ' . $head_firstname;
-        } elseif ($head_firstname) {
-            $aHead[$head_famid] = $head_firstname;
-        }
-    }
-    $familyArray = [];
-    while ($aRow = mysqli_fetch_array($rsFamilies)) {
-        extract($aRow);
-        $name = $fam_Name;
-        if (isset($aHead[$fam_ID])) {
-            $name .= ', ' . $aHead[$fam_ID];
-        }
-        $name .= ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
-
-        $familyArray[$fam_ID] = $name;
-    }
-
-    return $familyArray;
-}
-
-function buildFamilySelect(int $iFamily, string $sDirRoleHead, string $sDirRoleSpouse): string
-{
-    //Get Families for the drop-down
-    $familyArray = getFamilyList($sDirRoleHead, $sDirRoleSpouse);
-    foreach ($familyArray as $fam_ID => $fam_Data) {
-        $html .= '<option value="' . $fam_ID . '"';
-        if ($iFamily == $fam_ID) {
-            $html .= ' selected';
-        }
-        $html .= '>' . $fam_Data;
-    }
-
-    return $html;
-}
 
 function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, string $date)
 {
@@ -1575,14 +1297,9 @@ function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, s
     }
 }
 
-function random_color_part(): string
-{
-    return str_pad(dechex(random_int(0, 255)), 2, '0', STR_PAD_LEFT);
-}
-
 function random_color(): string
 {
-    return random_color_part() . random_color_part() . random_color_part();
+    return bin2hex(random_bytes(3));
 }
 
 function generateGroupRoleEmailDropdown(array $roleEmails, string $href): void

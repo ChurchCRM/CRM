@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -10,11 +10,11 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('Admin');
 }
 
 $sPageTitle = gettext('Pledge Reminder Report');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['Submit'])) {
@@ -39,7 +39,7 @@ if (isset($_POST['Submit'])) {
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-8">
                 <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
-                <button type="button" class="btn btn-default" name="Cancel"
+                <button type="button" class="btn btn-secondary" name="Cancel"
                         onclick="javascript:document.location='v2/dashboard';"><?= gettext('Cancel') ?></button>
             </div>
         </div>
@@ -47,4 +47,4 @@ if (isset($_POST['Submit'])) {
     </form>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -10,7 +10,7 @@ use ChurchCRM\Service\DashboardService;
 
 $sPageTitle = gettext('People Dashboard');
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 $dashboardService = new DashboardService();
 $familyCount = $dashboardService->getFamilyCount();
@@ -19,7 +19,8 @@ $dashboardStats = $dashboardService->getDashboardStats();
 $personCount = $dashboardStats['personCount'];
 $classificationStats = $dashboardStats['classificationStats'];
 $genderStats = $dashboardStats['genderStats'];
-$ageStats = $dashboardStats['ageStats'];
+$simpleGenderStats = $dashboardStats['simpleGenderStats'];
+$ageGroupStats = $dashboardStats['ageGroupStats'];
 $familyRoleStats = $dashboardStats['familyRoleStats'];
 
 $sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
@@ -37,7 +38,7 @@ $sEmailLink = '';
 $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
 $roleEmails = [];
 while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailList)) {
-    $sEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+    $sEmail = $per_Email;
     if ($sEmail) {
         if (!stristr($sEmailLink, $sEmail)) {
             $sEmailLink .= $sEmail .= $sMailtoDelimiter;
@@ -103,27 +104,23 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
                 // Display link
                 ?>
-                <div class="btn-group">
-                    <a class="btn btn-app bg-primary" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>">
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-app bg-primary dropdown-toggle" type="button" id="emailAllDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
                         <?= gettext('Email All') ?>
-                    </a>
-                    <button type="button" class="btn btn-app bg-primary dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" aria-labelledby="emailAllDropdown">
+                        <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
                     </div>
                 </div>
-                <div class="btn-group">
-                    <a class="btn btn-app bg-info" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>">
-                        <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-app bg-info dropdown-toggle" type="button" id="emailAllBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-user-secret fa-3x"></i><br>
                         <?= gettext('Email All (BCC)') ?>
-                    </a>
-                    <button type="button" class="btn btn-app bg-info dropdown-toggle dropdown-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="sr-only">Toggle Dropdown</span>
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" aria-labelledby="emailAllBccDropdown">
+                        <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
                     </div>
                 </div>
@@ -342,8 +339,38 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                 <h3 class="card-title"><i class="fa-solid fa-id-card-clip"></i> <?= gettext('Gender Demographics') ?></h3>
             </div>
             <!-- /.box-header -->
-            <div class="card-body" style="height: 300px">
-                <canvas id="gender-donut" style="height:250px"></canvas>
+            <div class="card-body">
+                <table class="table table-sm table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            <th><?= gettext('Gender') ?></th>
+                            <th class="text-end"><?= gettext('Count') ?></th>
+                            <th class="text-end"><?= gettext('Percentage') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $totalGender = array_sum($simpleGenderStats);
+                        foreach ($simpleGenderStats as $gender => $count):
+                            if ($count > 0):
+                                $percentage = $totalGender > 0 ? round(($count / $totalGender) * 100, 1) : 0;
+                        ?>
+                        <tr>
+                            <td><?= gettext($gender) ?></td>
+                            <td class="text-end"><strong><?= $count ?></strong></td>
+                            <td class="text-end"><?= $percentage ?>%</td>
+                        </tr>
+                        <?php
+                            endif;
+                        endforeach;
+                        ?>
+                        <tr class="table-light">
+                            <td><strong><?= gettext('Total') ?></strong></td>
+                            <td class="text-end"><strong><?= $totalGender ?></strong></td>
+                            <td class="text-end"><strong>100%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="card card-info">
@@ -361,90 +388,56 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 <!-- this page specific inline scripts -->
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
-        //Gender Donut
-        var pieData = {
-            labels: [
-                '<?= gettext('Unassigned') ?>',
-                '<?= gettext('Men') ?>',
-                '<?= gettext('Women') ?>',
-                '<?= gettext('Boys') ?>',
-                '<?= gettext('Girls') ?>'
-            ],
-            datasets: [{
-                data: <?php echo json_encode($genderStats); ?>,
-                backgroundColor: ["#d1a73a", "#003399", "#9900ff", "#3399ff", "#009933"],
-                hoverBackgroundColor: ["#f6c444", "#3366ff", "#ff66cc", "#99ccff", "#99cc00"]
-            }]
-        };
-
-        var pieOptions = {
-            //Display a title
-            title: {
-                display: false
-            },
-            //Boolean - Whether we should show a stroke on each segment
-            segmentShowStroke: true,
-            //String - The colour of each segment stroke
-            segmentStrokeColor: "#fff",
-            //Number - The width of each segment stroke
-            segmentStrokeWidth: 2,
-            //Number - The percentage of the chart that we cut out of the middle
-            percentageInnerCutout: 50, // This is 0 for Pie charts
-            //Boolean - Whether we animate the rotation of the Doughnut
-            animateRotate: false,
-            //Boolean - whether to make the chart responsive to window resizing
-            responsive: true,
-            // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-            maintainAspectRatio: false,
-            // Hide legend of zero value
-            plugins: { legend: { labels: { filter: (legendItem, data) => data.datasets[0].data[legendItem.index] > 0 } } },
-        };
-
-        var ctx = document.getElementById("gender-donut").getContext('2d');
-        var pieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: pieData,
-            options: pieOptions
-        });
-
-        //Age Histogram
-        var ageLabels = <?= json_encode(array_keys($ageStats)); ?>;
-        var ageValues = <?= json_encode(array_values($ageStats)); ?>;
+        //Age Histogram with Age Groups
+        var ageGroupLabels = <?= json_encode(array_keys($ageGroupStats)); ?>;
+        var ageGroupValues = <?= json_encode(array_values($ageGroupStats)); ?>;
 
         var ctx = document.getElementById("age-stats-bar").getContext('2d');
         var AgeChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ageLabels,
-                datasets: [{
-                    label: "Ages",
-                    data: ageValues,
-                    backgroundColor: "#3366ff"
-                }]
+                labels: ageGroupLabels,
+                datasets: [
+                    {
+                        label: "Count",
+                        data: ageGroupValues,
+                        backgroundColor: "#3366ff",
+                        yAxisID: 'y'
+                    }
+                ]
             },
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
-                legend: {
-                    display: true
-                },
-                title: {
-                    display: false
+                plugins: {
+                    legend: {
+                        display: true
+                    },
+                    title: {
+                        display: false
+                    }
                 },
                 scales: {
-                    xAxes: [{
+                    x: {
                         display: true,
-                    }],
-                    yAxes: [{
                         ticks: {
-                            beginAtZero: true,
+                            maxRotation: 45,
+                            minRotation: 45,
+                            font: {
+                                size: 10
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
                             stepSize: 1
                         }
-                    }]
+                    }
                 }
             }
         });
     });
 </script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

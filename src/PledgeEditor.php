@@ -1,13 +1,18 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\MICRFunctions;
+use ChurchCRM\model\ChurchCRM\Deposit;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -20,6 +25,7 @@ $sCheckNoError = '';
 $iCheckNo = '';
 $sDateError = '';
 $sAmountError = '';
+$sNonDeductibleError = [];
 $nNonDeductible = [];
 $sComment = '';
 $tScanString = '';
@@ -36,6 +42,7 @@ $checkHash = [];
 // Get the list of funds
 $sSQL = 'SELECT fun_ID,fun_Name,fun_Active FROM donationfund_fun';
 $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
+$sSQL .= ' ORDER BY fun_Order';
 
 $rsFunds = RunQuery($sSQL);
 mysqli_data_seek($rsFunds, 0);
@@ -45,6 +52,7 @@ while ($aRow = mysqli_fetch_array($rsFunds)) {
     $nAmount[$fun_ID] = 0.0;
     $nNonDeductible[$fun_ID] = 0.0;
     $sAmountError[$fun_ID] = '';
+    $sNonDeductibleError[$fun_ID] = '';
     $sComment[$fun_ID] = '';
     if (!isset($defaultFundID)) {
         $defaultFundID = $fun_ID;
@@ -202,10 +210,9 @@ if (
         }
     }
     if (!$iEnvelope && $iFamily) {
-        $sSQL = 'SELECT fam_Envelope FROM family_fam WHERE fam_ID="' . $iFamily . '";';
-        $rsEnv = RunQuery($sSQL);
-        if ($fam_Envelope) {
-            $iEnvelope = $rsEnv['fam_Envelope'];
+        $family = FamilyQuery::create()->findPk((int)$iFamily);
+        if ($family !== null && $family->getEnvelope()) {
+            $iEnvelope = $family->getEnvelope();
         }
     }
 }
@@ -221,9 +228,12 @@ if ($PledgeOrPayment === 'Pledge') { // Don't assign the deposit slip if this is
 
     // Get the current deposit slip data
     if ($iCurrentDeposit) {
-        $sSQL = 'SELECT dep_Closed, dep_Date, dep_Type from deposit_dep WHERE dep_ID = ' . $iCurrentDeposit;
-        $rsDeposit = RunQuery($sSQL);
-        extract(mysqli_fetch_array($rsDeposit));
+        $deposit = DepositQuery::create()->findPk((int)$iCurrentDeposit);
+        if ($deposit !== null) {
+            $dep_Closed = $deposit->getClosed();
+            $dep_Date = $deposit->getDate();
+            $dep_Type = $deposit->getType();
+        }
     }
 }
 
@@ -246,14 +256,32 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
     $nonZeroFundAmountEntered = 0;
     foreach ($fundId2Name as $fun_id => $fun_name) {
         //$fun_active = $fundActive[$fun_id];
-        $nAmount[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_Amount']);
+        $rawAmount = InputUtils::legacyFilterInput($_POST[$fun_id . '_Amount']);
+        $nAmount[$fun_id] = (float)$rawAmount;
+        
+        // Validate amount is within DECIMAL(8,2) range: -999999.99 to 999999.99
+        if (abs($nAmount[$fun_id]) > 999999.99) {
+            $sAmountError[$fun_id] = gettext("Amount exceeds maximum allowed value (999999.99).");
+            $bErrorFlag = true;
+            $nAmount[$fun_id] = 0.0; // Reset to 0 to prevent database error
+        }
+        
         $sComment[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_Comment']);
         if ($nAmount[$fun_id] > 0) {
             ++$nonZeroFundAmountEntered;
         }
 
         if ($bEnableNonDeductible) {
-            $nNonDeductible[$fun_id] = InputUtils::legacyFilterInput($_POST[$fun_id . '_NonDeductible']);
+            $rawNonDeductible = InputUtils::legacyFilterInput($_POST[$fun_id . '_NonDeductible']);
+            $nNonDeductible[$fun_id] = (float)$rawNonDeductible;
+            
+            // Validate non-deductible is within DECIMAL(8,2) range
+            if (abs($nNonDeductible[$fun_id]) > 999999.99) {
+                $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount exceeds maximum allowed value (999999.99).");
+                $bErrorFlag = true;
+                $nNonDeductible[$fun_id] = 0.0;
+            }
+            
             //Validate the NonDeductible Amount
             if ($nNonDeductible[$fun_id] > $nAmount[$fun_id]) { //Validate the NonDeductible Amount
                 $sNonDeductibleError[$fun_id] = gettext("NonDeductible amount can't be greater than total amount.");
@@ -376,11 +404,11 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                 RedirectUtils::redirect($linkBack);
             } else {
                 //Send to the view of this pledge
-                RedirectUtils::redirect('PledgeEditor.php?PledgeOrPayment=' . $PledgeOrPayment . '&GroupKey=' . $sGroupKey . '&linkBack=', $linkBack);
+                RedirectUtils::redirect('PledgeEditor.php?PledgeOrPayment=' . $PledgeOrPayment . '&GroupKey=' . $sGroupKey . '&linkBack=' . $linkBack);
             }
         } elseif (isset($_POST['PledgeSubmitAndAdd'])) {
             //Reload to editor to add another record
-            RedirectUtils::redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=" . $PledgeOrPayment . '&linkBack=', $linkBack);
+            RedirectUtils::redirect("PledgeEditor.php?CurrentDeposit=$iCurrentDeposit&PledgeOrPayment=" . $PledgeOrPayment . '&linkBack=' . $linkBack);
         }
     } // end if !$bErrorFlag
 } elseif (isset($_POST['MatchFamily']) || isset($_POST['MatchEnvelope']) || isset($_POST['SetDefaultCheck'])) {
@@ -392,9 +420,10 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
 
         if ($routeAndAccount) {
-            $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
-            $rsFam = RunQuery($sSQL);
-            $iFamily = $rsFam['fam_ID'];
+            $family = FamilyQuery::create()->filterByScanCheck($routeAndAccount)->findOne();
+            if ($family !== null) {
+                $iFamily = $family->getId();
+            }
 
             $iCheckNo = $micrObj->findCheckNo($tScanString);
         } else {
@@ -406,12 +435,9 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
 
         $iEnvelope = InputUtils::legacyFilterInput($_POST['Envelope'], 'int');
         if ($iEnvelope && strlen($iEnvelope) > 0) {
-            $sSQL = 'SELECT fam_ID FROM family_fam WHERE fam_Envelope=' . $iEnvelope;
-            $rsFam = RunQuery($sSQL);
-            $numRows = mysqli_num_rows($rsFam);
-            if ($numRows) {
-                $aRow = mysqli_fetch_array($rsDeposit);
-                $iFamily = $aRow['fam_ID'];
+            $family = FamilyQuery::create()->filterByEnvelope((int)$iEnvelope)->findOne();
+            if ($family !== null) {
+                $iFamily = $family->getId();
             }
         }
     } else {
@@ -438,9 +464,16 @@ if ($iCurrentDeposit) {
 }
 
 if ($PledgeOrPayment === 'Pledge') {
-    $sPageTitle = gettext('Pledge Editor');
+    $sPageTitle = gettext('New Pledge');
+    $cardHeaderClass = 'bg-warning';
+    $cardHeaderTextClass = 'text-dark';
+    $formTypeLabel = gettext('Pledge');
 } elseif ($iCurrentDeposit) {
-    $sPageTitle = gettext('Payment Editor: ') . $dep_Type . gettext(' Deposit Slip #') . $iCurrentDeposit . " ($dep_Date)";
+    $dep_DateFormatted = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
+    $sPageTitle = gettext('New Payment') . ' - ' . $dep_Type . gettext(' Deposit #') . $iCurrentDeposit . " ($dep_DateFormatted)";
+    $cardHeaderClass = 'bg-primary';
+    $cardHeaderTextClass = 'text-white';
+    $formTypeLabel = gettext('Payment');
 
     $checksFit = SystemConfig::getValue('iChecksPerDepositForm');
 
@@ -464,12 +497,15 @@ if ($PledgeOrPayment === 'Pledge') {
     if ($roomForDeposits <= 0) {
         $sPageTitle .= '</span>';
     }
-} else { // not a plege and a current deposit hasn't been created yet
+} else { // not a pledge and a current deposit hasn't been created yet
     if ($sGroupKey) {
-        $sPageTitle = gettext('Payment Editor - Modify Existing Payment');
+        $sPageTitle = gettext('Edit Payment');
     } else {
-        $sPageTitle = gettext('Payment Editor - New Deposit Slip Will Be Created');
+        $sPageTitle = gettext('New Payment') . ' - ' . gettext('New Deposit Will Be Created');
     }
+    $cardHeaderClass = 'bg-primary';
+    $cardHeaderTextClass = 'text-white';
+    $formTypeLabel = gettext('Payment');
 } // end if $PledgeOrPayment
 
 if ($dep_Closed && $sGroupKey && $PledgeOrPayment === 'Payment') {
@@ -479,24 +515,40 @@ if ($dep_Closed && $sGroupKey && $PledgeOrPayment === 'Payment') {
 //$familySelectHtml = buildFamilySelect($iFamily, $sDirRoleHead, $sDirRoleSpouse);
 $sFamilyName = '';
 if ($iFamily) {
-    $sSQL = 'SELECT fam_Name, fam_Address1, fam_City, fam_State FROM family_fam WHERE fam_ID =' . $iFamily;
-    $rsFindFam = RunQuery($sSQL);
-    while ($aRow = mysqli_fetch_array($rsFindFam)) {
-        $sFamilyName = $fam_Name . ' ' . FormatAddressLine($aRow['fam_Address1'], $aRow['fam_City'], $aRow['fam_State']);
+    $family = FamilyQuery::create()->findPk((int)$iFamily);
+    if ($family !== null) {
+        $sFamilyName = $family->getName() . ' ' . FormatAddressLine($family->getAddress1(), $family->getCity(), $family->getState());
     }
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
 <form method="post" action="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&GroupKey=<?= $sGroupKey ?>&PledgeOrPayment=<?= $PledgeOrPayment ?>&linkBack=<?= $linkBack ?>" name="PledgeEditor">
 
+    <!-- Mode Indicator Banner -->
+    <div class="row mb-3">
+        <div class="col-lg-12">
+            <div class="alert <?= $PledgeOrPayment === 'Pledge' ? 'alert-warning' : 'alert-primary' ?> d-flex align-items-center" role="alert">
+                <i class="fa-solid <?= $PledgeOrPayment === 'Pledge' ? 'fa-file-signature' : 'fa-hand-holding-dollar' ?> fa-2x mr-3"></i>
+                <div>
+                    <strong><?= $PledgeOrPayment === 'Pledge' ? gettext('Recording a Pledge') : gettext('Recording a Payment') ?></strong>
+                    <p class="mb-0 small">
+                        <?= $PledgeOrPayment === 'Pledge' 
+                            ? gettext('A pledge is a commitment to give. It is not tied to a deposit slip.') 
+                            : gettext('A payment is an actual donation received. It will be added to the current deposit.') ?>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header with-border">
-                    <h3 class="card-title"><?= gettext("Payment Details") ?></h3>
+                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?> with-border">
+                    <h3 class="card-title"><?= $formTypeLabel ?> <?= gettext('Details') ?></h3>
                 </div>
                 <div class="card-body">
                     <input type="hidden" name="FamilyID" id="FamilyID" value="<?= $iFamily ?>">
@@ -511,7 +563,7 @@ require_once 'Include/Header.php';
 
                     <div class="col-lg-6">
                         <?php if (!$dDate) {
-                            $dDate = $dep_Date;
+                            $dDate = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
                         } ?>
                         <label for="Date"><?= gettext('Date') ?></label>
                         <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>"><span class="text-danger"><?= $sDateError ?></span>
@@ -524,7 +576,7 @@ require_once 'Include/Header.php';
                             <input class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
                             <?php if (!$dep_Closed) {
                                 ?>
-                                <input class="form-control" type="submit" class="btn btn-default" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
+                                <input class="form-control" type="submit" class="btn btn-secondary" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
                                 <?php
                             } ?>
 
@@ -564,10 +616,11 @@ require_once 'Include/Header.php';
 
                     </div>
 
+                    <?php if ($PledgeOrPayment === 'Payment'): ?>
                     <div class="col-lg-6">
                         <label for="Method"><?= gettext('Payment by') ?></label>
                         <select class="form-control" name="Method" id="Method">
-                            <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'Bank' || !$iCurrentDeposit) {
+                            <?php if ($dep_Type === 'Bank' || !$iCurrentDeposit) {
                                 ?>
                                 <option value="CHECK" <?php if ($iMethod === 'CHECK') {
                                                             echo 'selected';
@@ -579,7 +632,7 @@ require_once 'Include/Header.php';
                                 </option>
                                 <?php
                             } ?>
-                            <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'CreditCard' || !$iCurrentDeposit) {
+                            <?php if ($dep_Type === 'CreditCard' || !$iCurrentDeposit) {
                                 ?>
                                 <option value="CREDITCARD" <?php if ($iMethod === 'CREDITCARD') {
                                                                 echo 'selected';
@@ -587,7 +640,7 @@ require_once 'Include/Header.php';
                                 </option>
                                 <?php
                             } ?>
-                            <?php if ($PledgeOrPayment === 'Pledge' || $dep_Type === 'BankDraft' || !$iCurrentDeposit) {
+                            <?php if ($dep_Type === 'BankDraft' || !$iCurrentDeposit) {
                                 ?>
                                 <option value="BANKDRAFT" <?php if ($iMethod === 'BANKDRAFT') {
                                                                 echo 'selected';
@@ -595,16 +648,9 @@ require_once 'Include/Header.php';
                                 </option>
                                 <?php
                             } ?>
-                            <?php if ($PledgeOrPayment === 'Pledge') {
-                                ?>
-                                <option value="EGIVE" <?= $iMethod === 'EGIVE' ? 'selected' : '' ?>>
-                                    <?= gettext('eGive') ?>
-                                </option>
-                                <?php
-                            } ?>
                         </select>
 
-                        <?php if ($PledgeOrPayment === 'Payment' && $dep_Type === 'Bank') {
+                        <?php if ($dep_Type === 'Bank') {
                             ?>
                             <div id="checkNumberGroup">
                                 <label for="CheckNo"><?= gettext('Check') ?> #</label>
@@ -617,6 +663,7 @@ require_once 'Include/Header.php';
                         <input class="form-control" type="number" step="any" name="TotalAmount" id="TotalAmount" disabled />
 
                     </div>
+                    <?php endif; ?>
 
                     <div class="col-lg-6">
                         <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type === 'Bank' || $PledgeOrPayment === 'Pledge')) {
@@ -631,28 +678,10 @@ require_once 'Include/Header.php';
                     <div class="col-lg-6">
                         <?php if (SystemConfig::getValue('bUseScannedChecks') && $dep_Type === 'Bank') {
                             ?>
-                            <input type="submit" class="btn btn-default" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
-                            <input type="submit" class="btn btn-default" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
+                            <input type="submit" class="btn btn-secondary" value="<?= gettext('find family from check account #') ?>" name="MatchFamily">
+                            <input type="submit" class="btn btn-secondary" value="<?= gettext('Set default check account number for family') ?>" name="SetDefaultCheck">
                             <?php
                         } ?>
-                    </div>
-
-                    <div class="col-lg-12">
-                        <?php if (!$dep_Closed) {
-                            ?>
-                            <br />
-                            <input type="submit" id="saveBtn" class="btn btn-default" value="<?= gettext('Save') ?>" name="PledgeSubmit">
-                            <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-                                echo '<input id="save-n-add" type="submit" class="btn btn-primary" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
-                            } ?>
-                            <?php
-                        } ?>
-                        <?php if (!$dep_Closed) {
-                            $cancelText = 'Cancel';
-                        } else {
-                            $cancelText = 'Return';
-                        } ?>
-                        <input type="button" class="btn btn-danger" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'v2/dashboard' ?>';">
                     </div>
                 </div>
             </div>
@@ -661,8 +690,8 @@ require_once 'Include/Header.php';
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header with-border">
-                    <h3 class="card-title"><?= gettext("Fund Split") ?></h3>
+                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?> with-border">
+                    <h3 class="card-title"><?= $formTypeLabel ?> <?= gettext('Fund Allocation') ?></h3>
                 </div>
                 <div class="card-body">
                     <table class="table">
@@ -708,6 +737,30 @@ require_once 'Include/Header.php';
                             } ?>
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <?php if (!$dep_Closed) {
+                        ?>
+                        <input type="submit" id="saveBtn" class="btn btn-primary" value="<?= gettext('Save') ?>" name="PledgeSubmit">
+                        <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
+                            echo '<input id="save-n-add" type="submit" class="btn btn-success" value="' . gettext('Save and Add') . '" name="PledgeSubmitAndAdd">';
+                        } ?>
+                        <?php
+                    } ?>
+                    <?php if (!$dep_Closed) {
+                        $cancelText = 'Cancel';
+                    } else {
+                        $cancelText = 'Return';
+                    } ?>
+                    <input type="button" class="btn btn-secondary" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'finance/' ?>';">
                 </div>
             </div>
         </div>
@@ -781,4 +834,4 @@ require_once 'Include/Header.php';
     }
 </script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

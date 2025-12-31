@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
@@ -29,9 +29,9 @@ if (isset($_POST['save'])) {
         $id = key($type);
         // Filter Input
         if ($id == $iHTMLHeaderRow) { // Special handling of header value so HTML doesn't get removed
-            $value = InputUtils::filterHTML($new_value[$id]);
+            $value = InputUtils::sanitizeHTML($new_value[$id]);
         } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
-            $value = InputUtils::filterString($new_value[$id]);
+            $value = InputUtils::sanitizeText($new_value[$id]);
         } elseif ($current_type == 'number') {
             $value = InputUtils::filterFloat($new_value[$id]);
         } elseif ($current_type == 'date') {
@@ -39,9 +39,9 @@ if (isset($_POST['save'])) {
         } elseif ($current_type == 'json') {
             $value = $new_value[$id];
         } elseif ($current_type == 'choice') {
-            $value = InputUtils::filterString($new_value[$id]);
+            $value = InputUtils::sanitizeText($new_value[$id]);
         } elseif ($current_type == 'ajax') {
-            $value = InputUtils::filterString($new_value[$id]);
+            $value = InputUtils::sanitizeText($new_value[$id]);
         } elseif ($current_type == 'boolean') {
             if ($new_value[$id] != '1') {
                 $value = '';
@@ -71,14 +71,19 @@ if (isset($_POST['save'])) {
         SystemConfig::setValueById($id, $value);
         next($type);
     }
-    RedirectUtils::redirect("SystemSettings.php?saved=true");
+    $_SESSION['sGlobalMessage'] = gettext('Setting saved');
+    $_SESSION['sGlobalMessageClass'] = 'success';
+    RedirectUtils::redirect("SystemSettings.php");
 }
 
-if (isset($_GET['saved'])) {
-    $sGlobalMessage = gettext('Setting saved');
+if (isset($_SESSION['sGlobalMessage'])) {
+    $sGlobalMessage = $_SESSION['sGlobalMessage'];
+    $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
+    unset($_SESSION['sGlobalMessage']);
+    unset($_SESSION['sGlobalMessageClass']);
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Get settings
 ?>
@@ -164,7 +169,7 @@ require_once 'Include/Header.php';
                         <?php
                     } elseif ($setting->getType() == 'text') {
                         ?>
-                      <input type=text size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]' value='<?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?>' class="form-control">
+                      <input type=text size=40 maxlength=255 name='new_value[<?= $setting->getId() ?>]' value='<?= InputUtils::escapeHTML($setting->getValue()) ?>' class="form-control">
                         <?php
                     } elseif ($setting->getType() == 'password') {
                         ?>
@@ -172,7 +177,7 @@ require_once 'Include/Header.php';
                         <?php
                     } elseif ($setting->getType() == 'textarea') {
                         ?>
-                      <textarea rows=4 cols=40 name='new_value[<?= $setting->getId() ?>]' class="form-control"><?= htmlspecialchars($setting->getValue(), ENT_QUOTES) ?></textarea>
+                      <textarea rows=4 cols=40 name='new_value[<?= $setting->getId() ?>]' class="form-control"><?= InputUtils::escapeHTML($setting->getValue()) ?></textarea>
                         <?php
                     } elseif ($setting->getType() == 'number' || $setting->getType() == 'date') {
                         ?>
@@ -227,8 +232,11 @@ require_once 'Include/Header.php';
                         ?>
                       <a href="<?= $setting->getUrl() ?>" target="_blank"><i class="fa-solid fa-fw fa-link"></i></a>
                         <?php
+                    }
+                    // Do not display password defaults for security reasons (GHSA-p98h-5xcj-5c6x)
+                    if ($setting->getType() !== 'password') {
+                        echo InputUtils::escapeHTML($display_default);
                     } ?>
-                    <?= $display_default ?>
                   </td>
                 </tr>
                     <?php
@@ -272,4 +280,4 @@ require_once 'Include/Header.php';
 </script>
 <script src="skin/js/SystemSettings.js"></script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

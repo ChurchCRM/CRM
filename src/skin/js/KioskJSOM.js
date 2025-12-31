@@ -1,3 +1,8 @@
+/**
+ * Kiosk JSOM (JavaScript Object Model)
+ * Requires: moment.js (loaded globally), jQuery
+ */
+
 window.CRM.kiosk = {
     APIRequest: function (options) {
         if (!options.method) {
@@ -10,15 +15,13 @@ window.CRM.kiosk = {
     },
 
     renderClassMember: function (classMember) {
-        existingDiv = $("#personId-" + classMember.personId);
+        let existingDiv = $("#personId-" + classMember.personId);
         if (existingDiv.length > 0) {
         } else {
             var outerDiv = $("<div>", {
                 id: "personId-" + classMember.personId,
             }).addClass("col-sm-3");
-            var innerDiv = $("<div>").addClass(
-                "card card-widget widget-user-2",
-            );
+            var innerDiv = $("<div>").addClass("card card-widget widget-user-2");
             var userHeaderDiv = $("<div>", {
                 class: "widget-user-header bg-yellow",
             }).attr("data-personid", classMember.personId);
@@ -27,13 +30,7 @@ window.CRM.kiosk = {
                     class: "initials-image profile-user-img img-responsive img-circle no-border",
                 })
                     .data("name", classMember.displayName)
-                    .data(
-                        "src",
-                        window.CRM.root +
-                            "/kiosk/activeClassMember/" +
-                            classMember.personId +
-                            "/photo",
-                    ),
+                    .data("src", window.CRM.root + "/kiosk/activeClassMember/" + classMember.personId + "/photo"),
             );
             userHeaderDiv.append(imageDiv);
             userHeaderDiv
@@ -113,15 +110,13 @@ window.CRM.kiosk = {
                 path: "heartbeat",
             })
             .done(function (data) {
-                thisAssignment = JSON.parse(data.Assignment);
+                let thisAssignment = JSON.parse(data.Assignment);
                 if (window.CRM.kioskAssignmentId === undefined) {
                     window.CRM.kioskAssignmentId = thisAssignment;
                 } else if (
                     thisAssignment &&
-                    (thisAssignment.EventId !==
-                        window.CRM.kioskAssignmentId.EventId ||
-                        thisAssignment.Event.GroupId !==
-                            window.CRM.kioskAssignmentId.Event.GroupId)
+                    (thisAssignment.EventId !== window.CRM.kioskAssignmentId.EventId ||
+                        thisAssignment.Event.GroupId !== window.CRM.kioskAssignmentId.Event.GroupId)
                 ) {
                     location.reload();
                 }
@@ -142,35 +137,22 @@ window.CRM.kiosk = {
                 }
 
                 if (data.Accepted) {
-                    Assignment = JSON.parse(data.Assignment);
+                    let Assignment = JSON.parse(data.Assignment);
                     if (Assignment && Assignment.AssignmentType == 1) {
                         window.CRM.kiosk.updateActiveClassMembers();
                         $("#noEvent").hide();
                         $("#event").show();
                         $("#eventTitle").text(Assignment.Event.Title);
-                        $("#startTime").text(
-                            moment(Assignment.Event.Start).format(
-                                "MMMM Do YYYY, h:mm:ss a",
-                            ),
-                        );
-                        $("#endTime").text(
-                            moment(Assignment.Event.End).format(
-                                "MMMM Do YYYY, h:mm:ss a",
-                            ),
-                        );
+                        $("#startTime").text(moment(Assignment.Event.Start).format("MMMM Do YYYY, h:mm:ss a"));
+                        $("#endTime").text(moment(Assignment.Event.End).format("MMMM Do YYYY, h:mm:ss a"));
                     } else {
                         $("#noEvent").show();
-                        $("#noEvent").text(
-                            "No active assignments for this kiosk",
-                        );
+                        $("#noEvent").text("No active assignments for this kiosk");
                         $("#event").hide();
                     }
                 } else {
                     $("#noEvent").show();
-                    $("#noEvent").html(
-                        "This kiosk has not been accepted.<br/>Kiosk Name: " +
-                            data.Name,
-                    );
+                    $("#noEvent").html("This kiosk has not been accepted.<br/>Kiosk Name: " + data.Name);
                     $("#event").hide();
                 }
             });
@@ -201,8 +183,8 @@ window.CRM.kiosk = {
     },
 
     setCheckedOut: function (personId) {
-        $personDiv = $("#personId-" + personId);
-        $personDivButton = $("#personId-" + personId + " .checkoutButton");
+        let $personDiv = $("#personId-" + personId);
+        let $personDivButton = $("#personId-" + personId + " .checkoutButton");
         $personDivButton.addClass("checkinButton");
         $personDivButton.removeClass("checkoutButton");
         $personDivButton.text("Checkin");
@@ -211,9 +193,9 @@ window.CRM.kiosk = {
     },
 
     setCheckedIn: function (personId) {
-        $personDiv = $("#personId-" + personId);
+        let $personDiv = $("#personId-" + personId);
 
-        $personDivButton = $("#personId-" + personId + " .checkinButton");
+        let $personDivButton = $("#personId-" + personId + " .checkinButton");
         $personDivButton.removeClass("checkinButton");
         $personDivButton.addClass("checkoutButton");
         $personDivButton.text("Checkout");
@@ -230,10 +212,7 @@ window.CRM.kiosk = {
                 method: "POST",
                 data: JSON.stringify({ PersonId: personId }),
             })
-            .done(function (data) {
-                //window.CRM.kiosk.startEventLoop();
-                //TODO:  Signal to the kiosk user that the notification was sent
-            });
+            .done(function (data) {});
     },
 
     enterFullScreen: function () {
@@ -258,15 +237,10 @@ window.CRM.kiosk = {
         }
     },
 
-    displayPersonInfo: function (personId) {
-        //TODO: Display information (allergies, etc) about the person selected.
-    },
+    displayPersonInfo: function (personId) {},
 
     startEventLoop: function () {
-        window.CRM.kiosk.kioskEventLoop = setInterval(
-            window.CRM.kiosk.heartbeat,
-            2000,
-        );
+        window.CRM.kiosk.kioskEventLoop = setInterval(window.CRM.kiosk.heartbeat, 2000);
     },
 
     stopEventLoop: function () {

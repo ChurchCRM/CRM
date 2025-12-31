@@ -4,6 +4,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
+use ChurchCRM\Utils\InputUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -39,7 +40,7 @@ $app->group('/verify', function (RouteCollectorProxy $group): void {
                 $note->setEntered(Person::SELF_VERIFY);
                 $note->setText(gettext('No Changes'));
                 if (!empty($body['message'])) {
-                    $note->setText(htmlspecialchars($body['message'], ENT_QUOTES, 'UTF-8'));
+                    $note->setText(InputUtils::escapeHTML($body['message']));
                 }
                 $note->save();
                 

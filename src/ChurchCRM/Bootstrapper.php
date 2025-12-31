@@ -106,16 +106,35 @@ class Bootstrapper
             self::installChurchCRMSchema();
         }
         self::initSession();
-        SystemConfig::init(ConfigQuery::create()->find());
+        
+        // Initialize SystemConfig with database values only once during bootstrap
+        // Fallback error handlers (testMYSQLI, systemFailure) will call init() without parameters
+        if (!SystemConfig::isInitialized()) {
+            SystemConfig::init(ConfigQuery::create()->find());
+        }
+        
         self::configureLogging();
         self::configureUserEnvironment();
         self::configureLocale();
         if (!self::isDBCurrent()) {
-            if (!strpos($_SERVER['SCRIPT_NAME'], "SystemDBUpdate")) {
-                self::$bootStrapLogger->info("Database is not current, redirecting to SystemDBUpdate");
-                RedirectUtils::redirect('SystemDBUpdate.php');
+            // If we just ran the DB upgrade, avoid immediately redirecting back (prevents redirect loop)
+            if (session_status() !== PHP_SESSION_ACTIVE) {
+                @session_start();
+            }
+            if (!empty($_SESSION['dbUpgradeJustRan'])) {
+                unset($_SESSION['dbUpgradeJustRan']);
+                self::$bootStrapLogger->info('Database upgrade just ran; skipping immediate redirect to upgrade page.');
             } else {
-                self::$bootStrapLogger->debug("Database is not current, not redirecting to SystemDBUpdate since we're already on it");
+                // Minimal, robust check to avoid redirect loops when already on the external upgrade page
+                $requestUri = $_SERVER['REQUEST_URI'] ?? $_SERVER['SCRIPT_NAME'] ?? '';
+                $isOnUpgradePage = (strpos($requestUri, '/external/system') !== false);
+
+                if (!$isOnUpgradePage) {
+                    self::$bootStrapLogger->info("Database is not current, redirecting to external/system/db-upgrade");
+                    RedirectUtils::redirect('external/system/db-upgrade');
+                } else {
+                    self::$bootStrapLogger->debug("Database is not current, not redirecting to SystemDBUpdate since we're already on it");
+                }
             }
         }
         LoggerUtils::resetAppLoggerLevel();
@@ -316,8 +335,13 @@ class Bootstrapper
         mysqli_set_charset($cnInfoCentral, self::DEFAULT_CHARSET);
 
         self::$bootStrapLogger->debug("Selecting database: " . self::$databaseName);
-        mysqli_select_db($cnInfoCentral, self::$databaseName) ||
-            self::systemFailure('Could not connect to the MySQL database <strong>' . self::$databaseName . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . mysqli_error($cnInfoCentral));
+        try {
+            if (!mysqli_select_db($cnInfoCentral, self::$databaseName)) {
+                self::systemFailure('Could not select the MySQL database <strong>' . self::$databaseName . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . mysqli_error($cnInfoCentral));
+            }
+        } catch (\mysqli_sql_exception $e) {
+            self::systemFailure('Could not access the MySQL database <strong>' . self::$databaseName . '</strong>. Please verify the database name in <strong>Include/Config.php</strong>.<br/>Error: ' . $e->getMessage());
+        }
         self::$bootStrapLogger->debug("Database selected: " . self::$databaseName);
     }
     private static function testMYSQLI(): void
@@ -359,17 +383,23 @@ class Bootstrapper
     private static function isDatabaseEmpty(): bool
     {
         self::$bootStrapLogger->debug("Checking for ChurchCRM Database tables");
-        $connection = Propel::getConnection();
-        $query = "SHOW TABLES FROM `" . self::$databaseName . "`";
-        $statement = $connection->prepare($query);
-        $statement->execute();
-        $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
-        if (count($results) === 0) {
-            self::$bootStrapLogger->debug("No database tables found");
-            return true;
+        try {
+            $connection = Propel::getConnection();
+            $query = "SHOW TABLES FROM `" . self::$databaseName . "`";
+            $statement = $connection->prepare($query);
+            $statement->execute();
+            $results = $statement->fetchAll(\PDO::FETCH_ASSOC);
+            if (count($results) === 0) {
+                self::$bootStrapLogger->debug("No database tables found");
+                return true;
+            }
+            self::$bootStrapLogger->debug("Found " . count($results) . " Database tables");
+            return false;
+        } catch (\PDOException $e) {
+            self::$bootStrapLogger->error("Database check failed: " . $e->getMessage());
+            self::systemFailure('Could not access the MySQL database <strong>' . self::$databaseName . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>Error: ' . $e->getMessage());
+            return true; // This line won't be reached due to systemFailure() calling exit()
         }
-        self::$bootStrapLogger->debug("Found " . count($results) . " Database tables");
-        return false;
     }
     private static function installChurchCRMSchema(): void
     {
@@ -445,7 +475,8 @@ class Bootstrapper
             ],
         ];
     }
-    private static function configureUserEnvironment(): void  // TODO: This function needs to stop creating global variable-variables.
+
+    private static function configureUserEnvironment(): void
     {
         global $cnInfoCentral;
         if (AuthenticationManager::validateUserSessionIsActive(false)) { // set on POST to /session/begin
@@ -471,19 +502,51 @@ class Bootstrapper
 
     public static function systemFailure($message, $header = 'Setup failure'): void
     {
+        // Clear any output buffers to ensure error message is displayed
+        while (ob_get_level() > 0) {
+            ob_end_clean();
+        }
+        
+        // Set HTTP status code
+        http_response_code(500);
+        
         $sPageTitle = $header;
         if (!SystemConfig::isInitialized()) {
             SystemConfig::init();
         }
-        require_once '../Include/HeaderNotLoggedIn.php'; ?>
+        
+        try {
+            $headerPath = SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
+            $footerPath = SystemURLs::getDocumentRoot() . '/Include/FooterNotLoggedIn.php';
+            
+            if (file_exists($headerPath)) {
+                require_once $headerPath;
+            } else {
+                // Fallback to basic HTML header
+                echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>ChurchCRM - Error</title></head><body>';
+            }
+            ?>
     <div class='container'>
         <h3>ChurchCRM – <?= _($header) ?></h3>
-        <div class='alert alert-danger text-center' style='margin-top: 20px;'>
+        <div class='alert alert-danger text-center'>
             <?= gettext($message) ?>
         </div>
     </div>
-        <?php
-        require_once '../Include/FooterNotLoggedIn.php';
+            <?php
+            if (file_exists($footerPath)) {
+                require_once $footerPath;
+            } else {
+                echo '</body></html>';
+            }
+        } catch (\Exception $e) {
+            // Last resort: plain HTML error if header/footer includes fail
+            echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>ChurchCRM Error</title></head><body>';
+            echo '<div style="max-width: 800px; margin: 50px auto; padding: 20px;">';
+            echo '<h1>ChurchCRM Error</h1>';
+            echo '<div style="padding: 15px; margin: 20px 0; border: 1px solid #f5c6cb; background-color: #f8d7da; color: #721c24; border-radius: 4px;">';
+            echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+            echo '</div></div></body></html>';
+        }
         exit();
     }
     public static function isDBCurrent(): bool

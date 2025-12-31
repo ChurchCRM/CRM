@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 
-require_once 'Header-Security.php';
+require_once __DIR__ . '/Header-Security.php';
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -13,7 +13,7 @@ require_once 'Header-Security.php';
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 
-  <?php require_once 'Header-HTML-Scripts.php'; ?>
+  <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
 </head>
 
 <body>

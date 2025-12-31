@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\FamilyQuery;
@@ -37,12 +37,12 @@ class PdfConfirmReport extends ChurchInfoReport
             'graphic'
         );
 
-        $curY += 2 * SystemConfig::getValue('incrementY');
+        $curY += SystemConfig::getValue('incrementY');
         $blurb = SystemConfig::getValue('sConfirm1');
 
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
 
-        return $curY + 2 * SystemConfig::getValue('incrementY');
+        return $curY + SystemConfig::getValue('incrementY');
     }
 
     public function finishPage($curY): void
@@ -102,237 +102,228 @@ if ($_GET['familyId']) {
     $families = $familyQuery->find();
 }
 
-$dataCol = 55;
-$dataWid = 65;
+    $leftX = SystemConfig::getValue('leftX');
+    $rightMargin = 200;
+    $lineHeight = 5.5;
 
-// Loop through families
-foreach ($families as $family) {
-    //If this is a report for a single family, name the file accordingly.
-    if ($iFamilyID) {
-        $filename = 'ConfirmReport-' . $family->getName() . '.pdf';
-    }
+    // Loop through families
+    foreach ($families as $family) {
+        //If this is a report for a single family, name the file accordingly.
+        if ($iFamilyID) {
+            $filename = 'ConfirmReport-' . $family->getName() . '.pdf';
+        }
 
-    $curY = $pdf->startNewPage($family);
-    $curY += SystemConfig::getValue('incrementY');
+        $curY = $pdf->startNewPage($family);
+        $curY += 7;
 
-    $pdf->SetFont('Times', 'B', 10);
-    $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Family Name'));
-    $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $family->getName());
-    $curY += SystemConfig::getValue('incrementY');
+        // Helper function to add a labeled field with wrapping support
+        $addField = function ($label, $value, $x, $y, $width = 85) use ($pdf) {
+            $pdf->SetFont('Times', 'B', 10);
+            $pdf->SetXY($x, $y);
+            $pdf->Cell($width, 4, $label . ':', 0, 1, 'L');
+            
+            // Data value with wrapping
+            $pdf->SetFont('Times', '', 10);
+            $pdf->SetXY($x + 2, $pdf->GetY());
+            $pdf->MultiCell($width - 4, 4, $value, 0, 'L');
+            
+            return $pdf->GetY();
+        };
 
-    $pdf->SetFont('Times', 'B', 10);
-    $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Address 1'));
-    $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $family->getAddress1());
-    $curY += SystemConfig::getValue('incrementY');
+        // Family information section - 2 column layout
+        $col1X = $leftX;
+        $col2X = $leftX + 95;
+        $fieldY = $curY;
+        $col1Y = $fieldY;
+        $col2Y = $fieldY;
+        $maxY = $fieldY;
 
-    $pdf->SetFont('Times', 'B', 10);
-    $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Address 2'));
-    $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $family->getAddress2());
-    $curY += SystemConfig::getValue('incrementY');
+        // Column 1
+        $col1Y = $addField(gettext('Family Name'), $family->getName(), $col1X, $col1Y, 85) + 1;
+        
+        // Combined address field
+        $address = $family->getAddress1();
+        if (!empty($family->getAddress2())) {
+            $address .= ', ' . $family->getAddress2();
+        }
+        $address .= ', ' . $family->getCity() . ', ' . $family->getState() . '  ' . $family->getZip();
+        $col1Y = $addField(gettext('Address'), $address, $col1X, $col1Y, 85) + 1;
 
-    $pdf->SetFont('Times', 'B', 10);
-    $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('City, State, Zip'));
-    $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $family->getCity() . ', ' . $family->getState() . '  ' . $family->getZip());
-    $curY += SystemConfig::getValue('incrementY');
+        // Column 2
+        $col2Y = $addField(gettext('Home Phone'), $family->getHomePhone(), $col2X, $col2Y, 85) + 1;
+        $col2Y = $addField(gettext('Send Newsletter'), $family->getSendNewsletter(), $col2X, $col2Y, 85) + 1;
+        if ($family->getWeddingdate()) {
+            $col2Y = $addField(gettext('Anniversary Date'), $family->getWeddingdate(SystemConfig::getValue('sDateFormatLong')), $col2X, $col2Y, 85) + 1;
+        }
+        $col2Y = $addField(gettext('Family Email'), $family->getEmail(), $col2X, $col2Y, 85) + 1;
 
-    $pdf->SetFont('Times', 'B', 10);
-    $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Home Phone'));
-    $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $family->getHomePhone());
-    $curY += SystemConfig::getValue('incrementY');
-
-    $pdf->SetFont('Times', 'B', 10);
-    $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Send Newsletter'));
-    $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $family->getSendNewsletter());
-    $curY += SystemConfig::getValue('incrementY');
-
-    // Missing the following information from the Family record:
-    // Wedding date (if present) - need to figure how to do this with sensitivity
-    // Family e-mail address
-
-    $pdf->SetFont('Times', 'B', 10);
-    $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Anniversary Date'));
-    $pdf->SetFont('Times', '', 10);
-    if ($family->getWeddingdate()) {
-        $pdf->writeAtCell($dataCol, $curY, $dataWid, $family->getWeddingdate(SystemConfig::getValue('sDateFormatLong')));
-    }
-    $curY += SystemConfig::getValue('incrementY');
-
-    $pdf->SetFont('Times', 'B', 10);
-    $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Family Email'));
-    $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, $family->getEmail());
-    $curY += SystemConfig::getValue('incrementY');
-    $curY += SystemConfig::getValue('incrementY');
-
-    $sSQL = 'SELECT *, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole FROM person_per
+        // Move cursor to after both columns
+        $curY = max($col1Y, $col2Y) + 1;
+        
+        $sSQL = 'SELECT *, cls.lst_OptionName AS sClassName, fmr.lst_OptionName AS sFamRole FROM person_per
                 LEFT JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
                 LEFT JOIN list_lst fmr ON per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
                 WHERE per_fam_ID = ' . $family->getId() . ' ORDER BY per_fmr_ID';
-    $rsFamilyMembers = RunQuery($sSQL);
+        $rsFamilyMembers = RunQuery($sSQL);
+        $numFamilyMembers = 0;
 
-    $XName = 10;
-    $XGender = 40;
-    $XRole = 50;
-    $XEmail = 80;
-    $XBirthday = 125;
-    $XHideAge = 145;
-    $XCellPhone = 155;
-    $XClassification = 180;
-    $XWorkPhone = 155;
-    $XRight = 208;
+        // Check if we have family members to display
+        if (mysqli_num_rows($rsFamilyMembers) > 0) {
+            // Family members section header
+            $curY += 1;
+            $pdf->SetFont('Times', 'B', 11);
+            $pdf->SetXY($leftX, $curY);
+            $pdf->Cell(0, 5, gettext('Family Members'), 0, 1, 'L');
+            $curY = $pdf->GetY() + 2;
 
-    $pdf->SetFont('Times', 'B', 10);
-    $pdf->writeAtCell($XName, $curY, $XGender - $XName, gettext('Member Name'));
-    $pdf->writeAtCell($XGender, $curY, $XRole - $XGender, gettext('M/F'));
-    $pdf->writeAtCell($XRole, $curY, $XEmail - $XRole, gettext('Adult/Child'));
-    $pdf->writeAtCell($XEmail, $curY, $XBirthday - $XEmail, gettext('Email'));
-    $pdf->writeAtCell($XBirthday, $curY, $XHideAge - $XBirthday, gettext('Birthday'));
-    $pdf->writeAtCell($XHideAge, $curY, $XCellPhone - $XHideAge, gettext('Hide Age'));
-    $pdf->writeAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, gettext('Cell phone'));
-    $pdf->writeAtCell($XClassification, $curY, $XRight - $XClassification, gettext('Member/Friend'));
-    $pdf->SetFont('Times', '', 10);
-    $curY += 3 * SystemConfig::getValue('incrementY');
+            // Table header
+            $pdf->SetFont('Times', 'B', 8.5);
+            $pdf->SetXY($leftX, $curY);
+            $pdf->Cell(40, $lineHeight + 0.5, gettext('Name'), 0, 0, 'L');
+            $pdf->Cell(8, $lineHeight + 0.5, gettext('M/F'), 0, 0, 'C');
+            $pdf->Cell(15, $lineHeight + 0.5, gettext('Role'), 0, 0, 'L');
+            $pdf->Cell(30, $lineHeight + 0.5, gettext('Email'), 0, 0, 'L');
+            $pdf->Cell(18, $lineHeight + 0.5, gettext('Birthday'), 0, 0, 'L');
+            $pdf->Cell(8, $lineHeight + 0.5, gettext('Age'), 0, 0, 'C');
+            $pdf->Cell(28, $lineHeight + 0.5, gettext('Cell Phone'), 0, 1, 'L');
+            $curY = $pdf->GetY();
+            
+            // Divider line
+            $pdf->SetDrawColor(100, 100, 100);
+            $pdf->Line($leftX, $curY, 195, $curY);
+            $pdf->SetDrawColor(0, 0, 0);
+            $curY += 1.5;
 
-    $numFamilyMembers = 0;
-    while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
-        $numFamilyMembers++;    // add one to the people count
-        extract($aMember);
-        // Make sure the person data will display with adequate room for the trailer and group information
-        if (($curY + $numCustomFields * SystemConfig::getValue('incrementY')) > 260) {
-            $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), $family->getCity(), $family->getState(), $family->getZip(), $family->getCountry());
-            $pdf->SetFont('Times', 'B', 10);
-            $pdf->writeAtCell($XName, $curY, $XGender - $XName, gettext('Member Name'));
-            $pdf->writeAtCell($XGender, $curY, $XRole - $XGender, gettext('M/F'));
-            $pdf->writeAtCell($XRole, $curY, $XEmail - $XRole, gettext('Adult/Child'));
-            $pdf->writeAtCell($XEmail, $curY, $XBirthday - $XEmail, gettext('Email'));
-            $pdf->writeAtCell($XBirthday, $curY, $XHideAge - $XBirthday, gettext('Birthday'));
-            $pdf->writeAtCell($XHideAge, $curY, $XCellPhone - $XHideAge, gettext('Hide Age'));
-            $pdf->writeAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, gettext('Cell phone'));
-            $pdf->writeAtCell($XClassification, $curY, $XRight - $XClassification, gettext('Member/Friend'));
-            $pdf->SetFont('Times', '', 10);
-            $curY += SystemConfig::getValue('incrementY');
-        }
-
-        $pdf->SetFont('Times', 'B', 10);
-        $pdf->writeAtCell($XName, $curY, $XGender - $XName, $per_FirstName . ' ' . $per_MiddleName . ' ' . $per_LastName);
-        $pdf->SetFont('Times', '', 10);
-        $genderStr = ($per_Gender == 1 ? 'M' : 'F');
-        $pdf->writeAtCell($XGender, $curY, $XRole - $XGender, $genderStr);
-        $pdf->writeAtCell($XRole, $curY, $XEmail - $XRole, $sFamRole);
-        $pdf->writeAtCell($XEmail, $curY, $XBirthday - $XEmail, $per_Email);
-
-        $birthdayStr = MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, false);
-        // If the "HideAge" check box is true, then create a Yes/No representation of the checkbox.
-        if ($per_Flags) {
-            $hideAgeStr = gettext('Yes');
-        } else {
-            $hideAgeStr = gettext('No');
-        }
-
-        $pdf->writeAtCell($XBirthday, $curY, $XHideAge - $XBirthday, $birthdayStr);
-        $pdf->writeAtCell($XHideAge, $curY, $XCellPhone - $XHideAge, $hideAgeStr);
-        $pdf->writeAtCell($XCellPhone, $curY, $XClassification - $XCellPhone, $per_CellPhone);
-        $pdf->writeAtCell($XClassification, $curY, $XRight - $XClassification, $sClassName);
-        $curY += SystemConfig::getValue('incrementY');
-        // Missing the following information for the personal record: ? Is this the place to put this data ?
-        // Work Phone
-        $pdf->writeAtCell($XWorkPhone, $curY, $XRight - $XWorkPhone, gettext('Work Phone') . ':' . $per_WorkPhone);
-        $curY += SystemConfig::getValue('incrementY');
-        $curY += SystemConfig::getValue('incrementY');
-
-        // *** All custom fields ***
-        // Get the list of custom person fields
-
-        $xSize = 40;
-        $numCustomFields = mysqli_num_rows($rsCustomFields);
-        if ($numCustomFields > 0) {
-            extract($aMember);
-            $sSQL = 'SELECT * FROM person_custom WHERE per_ID = ' . $per_ID;
-            $rsCustomData = RunQuery($sSQL);
-            $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
-            $numCustomData = mysqli_num_rows($rsCustomData);
-            mysqli_data_seek($rsCustomFields, 0);
-            $OutStr = '';
-            $xInc = $XName;    // Set the starting column for Custom fields
-            // Here is where we determine if space is available on the current page to
-            // display the custom data and still get the ending on the page
-            // Calculations (without groups) show 84 mm is needed.
-            // For the Letter size of 279 mm, this says that curY can be no bigger than 195 mm.
-            // Leaving 12 mm for a bottom margin yields 183 mm.
-            $numWide = 0;    // starting value for columns
-            while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
-                extract($rowCustomField);
-                if ($sCustomFieldName[$custom_Order - 1]) {
-                    $currentFieldData = trim($aCustomData[$custom_Field]);
-
-                    $OutStr = $sCustomFieldName[$custom_Order - 1] . ' : ' . $currentFieldData . '    ';
-                    $pdf->writeAtCell($xInc, $curY, $xSize, $sCustomFieldName[$custom_Order - 1]);
-                    if (empty($currentFieldData)) {
-                        $pdf->SetFont('Times', 'B', 6);
-                        $pdf->writeAtCell($xInc + $xSize, $curY, $xSize, '');
-                        $pdf->SetFont('Times', '', 10);
-                    } else {
-                        $pdf->writeAtCell($xInc + $xSize, $curY, $xSize, $currentFieldData);
-                    }
-                    $numWide += 1;    // increment the number of columns done
-                    $xInc += (2 * $xSize);    // Increment the X position by about 1/2 page width
-                    if (($numWide % 2) === 0) { // 2 columns
-                        $xInc = $XName;    // Reset margin
-                        $curY += SystemConfig::getValue('incrementY');
-                    }
+            // Reset family members query
+            mysqli_data_seek($rsFamilyMembers, 0);
+            $numFamilyMembers = 0;
+            
+            while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
+                $numFamilyMembers++;
+                extract($aMember);
+                
+                // Check if we need a new page
+                if ($curY > 255) {
+                    $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), $family->getCity(), $family->getState(), $family->getZip(), $family->getCountry());
+                    $curY += 3;
+                    
+                    // Redraw table header on new page
+                    $pdf->SetFont('Times', 'B', 8.5);
+                    $pdf->SetXY($leftX, $curY);
+                    $pdf->Cell(40, $lineHeight + 0.5, gettext('Name'), 0, 0, 'L');
+                    $pdf->Cell(8, $lineHeight + 0.5, gettext('M/F'), 0, 0, 'C');
+                    $pdf->Cell(15, $lineHeight + 0.5, gettext('Role'), 0, 0, 'L');
+                    $pdf->Cell(30, $lineHeight + 0.5, gettext('Email'), 0, 0, 'L');
+                    $pdf->Cell(18, $lineHeight + 0.5, gettext('Birthday'), 0, 0, 'L');
+                    $pdf->Cell(8, $lineHeight + 0.5, gettext('Age'), 0, 0, 'C');
+                    $pdf->Cell(28, $lineHeight + 0.5, gettext('Cell Phone'), 0, 1, 'L');
+                    $curY = $pdf->GetY();
+                    $pdf->SetDrawColor(100, 100, 100);
+                    $pdf->Line($leftX, $curY, 195, $curY);
+                    $pdf->SetDrawColor(0, 0, 0);
+                    $curY += 1.5;
                 }
+
+                // Member data row
+                $pdf->SetFont('Times', '', 8.5);
+                $memberName = mb_substr($per_FirstName . ' ' . $per_LastName, 0, 25);
+                $genderStr = ($per_Gender == 1 ? 'M' : 'F');
+                $birthdayStr = MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, false);
+                $hideAgeStr = ($per_Flags ? 'Y' : 'N');
+                $email = mb_substr($per_Email, 0, 20);
+                $cellPhone = mb_substr($per_WorkPhone, 0, 18);
+                $role = mb_substr($sFamRole, 0, 10);
+                if (strlen($sFamRole) > 10) {
+                    $role = mb_substr($role, 0, 7) . '...';
+                }
+
+                $pdf->SetXY($leftX, $curY);
+                $pdf->Cell(40, $lineHeight, $memberName, 0, 0, 'L');
+                $pdf->Cell(8, $lineHeight, $genderStr, 0, 0, 'C');
+                $pdf->Cell(15, $lineHeight, $role, 0, 0, 'L');
+                $pdf->Cell(30, $lineHeight, $email, 0, 0, 'L');
+                $pdf->Cell(18, $lineHeight, $birthdayStr, 0, 0, 'L');
+                $pdf->Cell(8, $lineHeight, $hideAgeStr, 0, 0, 'C');
+                $pdf->Cell(28, $lineHeight, $cellPhone, 0, 1, 'L');
+                $curY = $pdf->GetY();
+                
+                // Show work phone if available
+                if (!empty($per_WorkPhone)) {
+                    $pdf->SetFont('Times', '', 7.5);
+                    $pdf->SetXY($leftX + 2, $curY);
+                    $pdf->Cell(0, $lineHeight - 1, gettext('Work') . ': ' . mb_substr($per_WorkPhone, 0, 18), 0, 1, 'L');
+                    $curY = $pdf->GetY();
+                }
+                
+                $curY += 0.5;
             }
-            //$pdf->writeAt($XName,$curY,$OutStr);
-            //$curY += (2 * SystemConfig::getValue("incrementY"));
         }
-        $curY += 2 * SystemConfig::getValue('incrementY');
-    }
-    //
 
-    $curY += SystemConfig::getValue('incrementY');
+        $curY += 2;
 
-    if (($curY + 2 * $numFamilyMembers * SystemConfig::getValue('incrementY')) >= 260) {
-        $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), $family->getCity(), $family->getState(), $family->getZip(), $family->getCountry());
-    }
-    $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $family->getId() . ' ORDER BY per_fmr_ID';
-    $rsFamilyMembers = RunQuery($sSQL);
-    while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
-        extract($aMember);
+        if (($curY + 10) >= 260) {
+            $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), $family->getCity(), $family->getState(), $family->getZip(), $family->getCountry());
+            $curY += 3;
+        }
+        
+        $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $family->getId() . ' ORDER BY per_fmr_ID';
+        $rsFamilyMembers = RunQuery($sSQL);
+        $groupsFound = false;
+        
+        while ($aMember = mysqli_fetch_array($rsFamilyMembers)) {
+            extract($aMember);
 
-        // Get the Groups this Person is assigned to
-        $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
-                FROM group_grp
-                LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
-                LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
-                WHERE person2group2role_p2g2r.p2g2r_per_ID = ' . $per_ID . '
-                ORDER BY grp_Name';
-        $rsAssignedGroups = RunQuery($sSQL);
-        if (mysqli_num_rows($rsAssignedGroups) > 0) {
-            $groupStr = 'Assigned groups for ' . $per_FirstName . ' ' . $per_LastName . ': ';
-
-            while ($aGroup = mysqli_fetch_array($rsAssignedGroups)) {
-                extract($aGroup);
-                $groupStr .= $grp_Name . ' (' . $roleName . ') ';
+            // Get the Groups this Person is assigned to
+            $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
+                    FROM group_grp
+                    LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
+                    LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
+                    WHERE person2group2role_p2g2r.p2g2r_per_ID = ' . $per_ID . '
+                    ORDER BY grp_Name';
+            $rsAssignedGroups = RunQuery($sSQL);
+            
+            if (mysqli_num_rows($rsAssignedGroups) > 0) {
+                // Add section header once
+                if (!$groupsFound) {
+                    $groupsFound = true;
+                    $curY += 1;
+                    $pdf->SetFont('Times', 'B', 11);
+                    $pdf->SetXY($leftX, $curY);
+                    $pdf->Cell(0, 5, gettext('Group Memberships'), 0, 1, 'L');
+                    $curY = $pdf->GetY() + 1.5;
+                }
+                
+                $pdf->SetFont('Times', '', 9);
+                $personName = mb_substr($per_FirstName . ' ' . $per_LastName, 0, 28);
+                $pdf->SetXY($leftX, $curY);
+                $pdf->Cell(40, $lineHeight, $personName . ':', 0, 0, 'L');
+                
+                // Build groups string
+                $groupsList = '';
+                while ($aGroup = mysqli_fetch_array($rsAssignedGroups)) {
+                    extract($aGroup);
+                    if (!empty($groupsList)) {
+                        $groupsList .= ', ';
+                    }
+                    $groupsList .= $grp_Name . ' (' . $roleName . ')';
+                }
+                
+                // Wrap groups text with proper spacing
+                $pdf->SetXY($leftX + 42, $curY);
+                $pdf->MultiCell(153, $lineHeight, $groupsList, 0, 'L');
+                $curY = $pdf->GetY() + 1;
             }
-
-            $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, $groupStr);
-            $curY += 2 * SystemConfig::getValue('incrementY');
         }
+
+        $curY += 1;
+        if ($curY > 183) {
+            $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), $family->getCity(), $family->getState(), $family->getZip(), $family->getCountry());
+            $curY += 3;
+        }
+        $pdf->finishPage($curY);
     }
 
-    if ($curY > 183) {    // This ensures the trailer information fits continuously on the page (3 inches of "footer"
-        $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), $family->getCity(), $family->getState(), $family->getZip(), $family->getCountry());
-    }
-    $pdf->finishPage($curY);
-}
-
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output($filename, 'D');
 } else {
     $pdf->Output();

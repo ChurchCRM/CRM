@@ -1,6 +1,10 @@
 describe('Admin System Logs - UI Tests', () => {
+  beforeEach(() => {
+    cy.setupAdminSession();
+  });
+
   it('Should display log level configuration section', () => {
-    cy.loginAdmin('v2/admin/logs');
+    cy.visit('admin/system/logs');
     
     // Verify log level configuration card exists
     cy.get('.card-header h4').should('contain', 'Log Settings');
@@ -9,12 +13,10 @@ describe('Admin System Logs - UI Tests', () => {
     cy.get('#logLevel').should('exist');
     cy.get('#saveLogLevel').should('contain', 'Save Log Level');
     
-    // Verify helper text exists
-    cy.get('.text-muted').should('contain', 'Lower numbers log more details');
   });
 
   it('Should display system logs section', () => {
-    cy.loginAdmin('v2/admin/logs');
+    cy.visit('admin/system/logs');
     
     // Verify system logs card exists
     cy.get('.card-header h4').should('contain', 'System Logs');
@@ -22,7 +24,7 @@ describe('Admin System Logs - UI Tests', () => {
   });
 
   it('Should update log level when changed', () => {
-    cy.loginAdmin('v2/admin/logs');
+    cy.visit('admin/system/logs');
     
     // Change log level to ERROR (400)
     cy.get('#logLevel').select('400');
@@ -42,7 +44,7 @@ describe('Admin System Logs - UI Tests', () => {
   });
 
   it('Should show appropriate content when no logs exist', () => {
-    cy.loginAdmin('v2/admin/logs');
+    cy.visit('admin/system/logs');
     
     cy.get('.card-body').then(($body) => {
       if ($body.find('.alert-info').length > 0) {

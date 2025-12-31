@@ -16,18 +16,23 @@ $app->get('/', function (Request $request, Response $response, array $args): Res
     return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
 });
 
-$app->get('/heartbeat', fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON($response, $app->kiosk->heartbeat()));
+$app->get('/heartbeat', function (Request $request, Response $response, array $args) use ($app): Response {
+    $kiosk = $app->getContainer()->get('kiosk');
+    return SlimUtils::renderJSON($response, $kiosk->heartbeat());
+});
 
 $app->post('/checkin', function (Request $request, Response $response, array $args) use ($app): Response {
     $input = $request->getParsedBody();
-    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkInPerson($input['PersonId']);
+    $kiosk = $app->getContainer()->get('kiosk');
+    $status = $kiosk->getActiveAssignment()->getEvent()->checkInPerson($input['PersonId']);
 
     return SlimUtils::renderJSON($response, $status);
 });
 
 $app->post('/checkout', function (Request $request, Response $response, array $args) use ($app): Response {
     $input = $request->getParsedBody();
-    $status = $app->kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input['PersonId']);
+    $kiosk = $app->getContainer()->get('kiosk');
+    $status = $kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input['PersonId']);
 
     return SlimUtils::renderJSON($response, $status);
 });
@@ -41,13 +46,17 @@ $app->post('/triggerNotification', function (Request $request, Response $respons
     $Notification = new Notification();
     $Notification->setPerson($Person);
     $Notification->setRecipients($Person->getFamily()->getAdults());
-    $Notification->setProjectorText($app->kiosk->getActiveAssignment()->getEvent()->getType() . '-' . $Person->getId());
+    $kiosk = $app->getContainer()->get('kiosk');
+    $Notification->setProjectorText($kiosk->getActiveAssignment()->getEvent()->getType() . '-' . $Person->getId());
     $status = $Notification->send();
 
     return SlimUtils::renderJSON($response, $status);
 });
 
-$app->get('/activeClassMembers', fn (Request $request, Response $response, array $args) => $app->kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON());
+$app->get('/activeClassMembers', function (Request $request, Response $response, array $args) use ($app): Response {
+    $kiosk = $app->getContainer()->get('kiosk');
+    return $kiosk->getActiveAssignment()->getActiveGroupMembers()->toJSON();
+});
 
 $app->get('/activeClassMember/{PersonId}/photo', function (ServerRequestInterface $request, Response $response, array $args) {
     $photo = new Photo('Person', $args['PersonId']);

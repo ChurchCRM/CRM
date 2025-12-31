@@ -1,6 +1,6 @@
 module.exports = {
     locales: ['en'],
-    input: ['../src/skin/js/*.js', '../react/**/*.tsx'],
+    input: ['../src/skin/js/*.js', '../webpack/*.js', '../react/**/*.tsx'],
     output: 'locale/locales/$LOCALE/$NAMESPACE.json',
     sort: true,
     createOldCatalogs: false,

@@ -1,8 +1,10 @@
 /// <reference types="cypress" />
 
 describe("People Tools", () => {
+    beforeEach(() => cy.setupStandardSession());
+    
     it("Open the People Dashboard", () => {
-        cy.loginStandard("PeopleDashboard.php");
+        cy.visit("PeopleDashboard.php");
         cy.contains("People Dashboard");
         cy.contains("People Functions");
         cy.contains("Reports");
@@ -12,24 +14,24 @@ describe("People Tools", () => {
     });
 
     it("verify people", () => {
-        cy.loginStandard("v2/people/verify");
+        cy.visit("v2/people/verify");
         cy.contains("People Verify Dashboard");
     });
 
     it("self-register", () => {
-        cy.loginStandard("members/self-register.php");
+        cy.visit("members/self-register.php");
         cy.contains("Self Registrations");
-        cy.contains("Persons");
+        cy.contains("People");
         cy.contains("Families");
     });
 
     it("Geo Page", () => {
-        cy.loginStandard("GeoPage.php");
+        cy.visit("GeoPage.php");
         cy.contains("Family Geographic Utilities");
     });
 
     it("Update Lat & Long ", () => {
-        cy.loginStandard("UpdateAllLatLon.php");
+        cy.visit("UpdateAllLatLon.php");
         cy.contains("Update Latitude & Longitude");
     });
 });

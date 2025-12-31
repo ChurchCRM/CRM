@@ -1,7 +1,7 @@
 <?php
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfGroupDirectory;
@@ -73,15 +73,16 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
     $pdf->sFamily = FormatFullName($aRow['per_Title'], $aRow['per_FirstName'], $aRow['per_MiddleName'], $aRow['per_LastName'], $aRow['per_Suffix'], 3);
 
-    SelectWhichAddress($sAddress1, $sAddress2, $aRow['per_Address1'], $aRow['per_Address2'], $aRow['fam_Address1'], $aRow['fam_Address2'], false);
-
-    $sCity = SelectWhichInfo($aRow['per_City'], $aRow['fam_City'], false);
-    $sState = SelectWhichInfo($aRow['per_State'], $aRow['fam_State'], false);
-    $sZip = SelectWhichInfo($aRow['per_Zip'], $aRow['fam_Zip'], false);
-    $sHomePhone = SelectWhichInfo($aRow['per_HomePhone'], $aRow['fam_HomePhone'], false);
-    $sWorkPhone = SelectWhichInfo($aRow['per_WorkPhone'], $aRow['fam_WorkPhone'], false);
-    $sCellPhone = SelectWhichInfo($aRow['per_CellPhone'], $aRow['fam_CellPhone'], false);
-    $sEmail = SelectWhichInfo($aRow['per_Email'], $aRow['fam_Email'], false);
+    // Use person data only - each person must enter their own information
+    $sAddress1 = $aRow['per_Address1'] ?? '';
+    $sAddress2 = $aRow['per_Address2'] ?? '';
+    $sCity = $aRow['per_City'] ?? '';
+    $sState = $aRow['per_State'] ?? '';
+    $sZip = $aRow['per_Zip'] ?? '';
+    $sHomePhone = $aRow['per_HomePhone'] ?? '';
+    $sWorkPhone = $aRow['per_WorkPhone'] ?? '';
+    $sCellPhone = $aRow['per_CellPhone'] ?? '';
+    $sEmail = $aRow['per_Email'] ?? '';
 
     if (isset($_POST['GroupRoleEnable'])) {
         $OutStr = gettext('Role') . ': ' . $aRoleNames[$aRow['p2g2r_rle_ID']] . "\n";
@@ -143,7 +144,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
     $pdf->addRecord($pdf->sFamily, $OutStr, $numlines);
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('GroupDirectory-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

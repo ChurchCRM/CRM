@@ -24,7 +24,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
+    function initializeEmailWithout() {
         var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/families/email/without",
@@ -51,6 +51,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#noEmails").DataTable(dataTableConfig);
+    }
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializeEmailWithout);
     });
 
     function peopleToString(people) {

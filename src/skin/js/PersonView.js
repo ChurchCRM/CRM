@@ -4,15 +4,9 @@ $(document).ready(function () {
         window.CRM.groups.promptSelection(
             { Type: window.CRM.groups.selectTypes.Role, GroupID: GroupID },
             function (selection) {
-                window.CRM.groups
-                    .addPerson(
-                        GroupID,
-                        window.CRM.currentPersonID,
-                        selection.RoleID,
-                    )
-                    .done(function () {
-                        location.reload();
-                    });
+                window.CRM.groups.addPerson(GroupID, window.CRM.currentPersonID, selection.RoleID).done(function () {
+                    location.reload();
+                });
             },
         );
     });
@@ -23,9 +17,7 @@ $(document).ready(function () {
 
         bootbox.confirm({
             message:
-                i18next.t(
-                    "Are you sure you want to remove this person's membership from",
-                ) +
+                i18next.t("Are you sure you want to remove this person's membership from") +
                 " " +
                 targetGroupName +
                 "?",
@@ -41,11 +33,9 @@ $(document).ready(function () {
             },
             callback: function (result) {
                 if (result) {
-                    window.CRM.groups
-                        .removePerson(targetGroupID, window.CRM.currentPersonID)
-                        .done(function () {
-                            location.reload();
-                        });
+                    window.CRM.groups.removePerson(targetGroupID, window.CRM.currentPersonID).done(function () {
+                        location.reload();
+                    });
                 }
             },
         });
@@ -54,20 +44,12 @@ $(document).ready(function () {
     $("#addGroup").click(function () {
         var target = window.CRM.groups.promptSelection(
             {
-                Type:
-                    window.CRM.groups.selectTypes.Group |
-                    window.CRM.groups.selectTypes.Role,
+                Type: window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role,
             },
             function (data) {
-                window.CRM.groups
-                    .addPerson(
-                        data.GroupID,
-                        window.CRM.currentPersonID,
-                        data.RoleID,
-                    )
-                    .done(function () {
-                        location.reload();
-                    });
+                window.CRM.groups.addPerson(data.GroupID, window.CRM.currentPersonID, data.RoleID).done(function () {
+                    location.reload();
+                });
             },
         );
     });
@@ -82,11 +64,7 @@ $(document).ready(function () {
             promptBox
                 .addClass("form-group")
                 .append($("<label></label>").html(pro_prompt))
-                .append(
-                    $(
-                        '<textarea rows="3" class="form-control" name="PropertyValue"></textarea>',
-                    ).val(pro_value),
-                );
+                .append($('<textarea rows="3" class="form-control" name="PropertyValue"></textarea>').val(pro_value));
         }
     });
 
@@ -103,11 +81,7 @@ $(document).ready(function () {
         });
         window.CRM.APIRequest({
             method: "POST",
-            path:
-                "people/properties/person/" +
-                window.CRM.currentPersonID +
-                "/" +
-                propertyId,
+            path: "people/properties/person/" + window.CRM.currentPersonID + "/" + propertyId,
             data: JSON.stringify({ value: value }),
         }).done(function (data) {
             location.reload();
@@ -116,23 +90,16 @@ $(document).ready(function () {
 
     $(".remove-property-btn").click(function (event) {
         let propertyId = $(this).data("property_id");
-        bootbox.confirm(
-            i18next.t("Are you sure you want to unassign this property?"),
-            function (result) {
-                if (result) {
-                    window.CRM.APIRequest({
-                        method: "DELETE",
-                        path:
-                            "people/properties/person/" +
-                            window.CRM.currentPersonID +
-                            "/" +
-                            propertyId,
-                    }).done(function (data) {
-                        location.reload();
-                    });
-                }
-            },
-        );
+        bootbox.confirm(i18next.t("Are you sure you want to unassign this property?"), function (result) {
+            if (result) {
+                window.CRM.APIRequest({
+                    method: "DELETE",
+                    path: "people/properties/person/" + window.CRM.currentPersonID + "/" + propertyId,
+                }).done(function (data) {
+                    location.reload();
+                });
+            }
+        });
     });
 
     $("#edit-role-btn").click(function (event) {
@@ -169,17 +136,8 @@ $(document).ready(function () {
                                 $.ajax({
                                     type: "POST",
                                     dataType: "json",
-                                    url:
-                                        window.CRM.root +
-                                        "/api/person/" +
-                                        personId +
-                                        "/role/" +
-                                        result,
-                                    success: function (
-                                        data,
-                                        status,
-                                        xmlHttpReq,
-                                    ) {
+                                    url: window.CRM.root + "/api/person/" + personId + "/role/" + result,
+                                    success: function (data, status, xmlHttpReq) {
                                         if (data.success) {
                                             location.reload();
                                         }
@@ -197,10 +155,7 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url:
-                window.CRM.root +
-                "/api/mailchimp/person/" +
-                window.CRM.currentPersonID,
+            url: window.CRM.root + "/api/mailchimp/person/" + window.CRM.currentPersonID,
             success: function (data, status, xmlHttpReq) {
                 for (const emailData of data) {
                     let htmlVal = "";
@@ -209,8 +164,7 @@ $(document).ready(function () {
                         let listName = list["name"];
                         let listStatus = list["status"];
                         if (listStatus != 404) {
-                            let listOpenRate =
-                                list["stats"]["avg_open_rate"] * 100;
+                            let listOpenRate = list["stats"]["avg_open_rate"] * 100;
                             htmlVal =
                                 htmlVal +
                                 "<li>" +

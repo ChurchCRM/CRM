@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
@@ -80,7 +80,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
         // Start page for this paddle number
         $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 
-        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Donated Items:'));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Donated Items') . ':');
         $curY += 2 * SystemConfig::getValue('incrementY');
 
         $ItemWid = 10;
@@ -131,7 +131,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
         // Get purchased items and make the table
         $curY += 2 * $tableCellY;
         $pdf->SetFont('Times', '', 10);
-        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Purchased Items:'));
+        $pdf->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Purchased Items') . ':');
         $curY += 2 * SystemConfig::getValue('incrementY');
 
         $totalAmount = 0.0;

@@ -1,10 +1,10 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 $sPageTitle = gettext('Group Listing');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 
@@ -15,7 +15,7 @@ if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
     ?>
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title"><?= gettext('Add New Group') ?></h3>
+        <h3 class="card-title"><?= gettext('Add New') . ' ' . gettext('Group') ?></h3>
     </div>
     <div class="card-body">
         <form action="#" method="get" class="form-inline">
@@ -47,4 +47,4 @@ if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
 <script src="skin/js/GroupList.js"></script>
 
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

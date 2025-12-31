@@ -11,6 +11,7 @@ use FPDF;
 
 // Load the FPDF library
 
+#[\AllowDynamicProperties]
 class ChurchInfoReport extends FPDF
 {
     // Paper size for all PDF report documents
@@ -19,25 +20,6 @@ class ChurchInfoReport extends FPDF
     // are read from the database.
 
     public string $paperFormat = 'Letter';
-
-    public function stripPhone($phone)
-    {
-        if (mb_substr($phone, 0, 3) == SystemConfig::getValue('sHomeAreaCode')) {
-            $phone = mb_substr($phone, 3, strlen($phone) - 3);
-        }
-        if (mb_substr($phone, 0, 5) == ('(' . SystemConfig::getValue('sHomeAreaCode') . ')')) {
-            $phone = mb_substr($phone, 5, strlen($phone) - 5);
-        }
-        if (mb_substr($phone, 0, 1) == '-') {
-            $phone = mb_substr($phone, 1, strlen($phone) - 1);
-        }
-        if (strlen($phone) === 7) {
-            // Fix the missing -
-            $phone = mb_substr($phone, 0, 3) . '-' . mb_substr($phone, 3, 4);
-        }
-
-        return $phone;
-    }
 
     public function printRightJustified($x, $y, $str): void
     {
@@ -125,6 +107,10 @@ class ChurchInfoReport extends FPDF
     public function makeSalutation($famID): string
     {
         $family = FamilyQuery::create()->findPk($famID);
+
+        if ($family === null) {
+            return gettext('Dear Friend');  // Default salutation for unassigned/orphaned payments
+        }
 
         return $family->getSalutation();
     }

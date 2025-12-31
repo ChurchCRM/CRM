@@ -1,14 +1,18 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: user must be allowed to edit records to use this page.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(), 'EditRecords');
+
+// Initialize logger for error tracking
+$logger = LoggerUtils::getAppLogger();
 
 $sPageTitle = gettext('Group Member Properties Editor');
 
@@ -23,13 +27,7 @@ extract(mysqli_fetch_array($rsPersonInfo));
 
 $fam_Country = '';
 
-if ($per_fam_ID > 0) {
-    $sSQL = 'SELECT fam_Country FROM family_fam WHERE fam_ID = ' . $per_fam_ID;
-    $rsFam = RunQuery($sSQL);
-    extract(mysqli_fetch_array($rsFam));
-}
-
-$sPhoneCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+$sPhoneCountry = $per_Country ?? '';
 
 // Get the name of this group.
 $sSQL = 'SELECT grp_Name FROM group_grp WHERE grp_ID = ' . $iGroupID;
@@ -84,35 +82,73 @@ if (isset($_POST['GroupPropSubmit'])) {
         $sSQL .= ' WHERE per_ID = ' . $iPersonID;
 
         //Execute the SQL
-        RunQuery($sSQL);
-
-        // Return to the Person View
-        RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
+        $updateResult = RunQuery($sSQL);
+        
+        if (!$updateResult) {
+            $logger->error('Failed to update group properties', [
+                'person_id' => $iPersonID,
+                'group_id' => $iGroupID,
+            ]);
+            $bErrorFlag = true;
+        } else {
+            // Return to the Person View
+            RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
+        }
     }
 } else {
     // First Pass
-    // we are always editing, because the record for a group member was created when they were added to the group
-
+    // Verify that the groupprop_X table exists
+    $checkTableSQL = 'SHOW TABLES LIKE "groupprop_' . $iGroupID . '"';
+    $tableCheckResult = RunQuery($checkTableSQL);
+    
+    if (mysqli_num_rows($tableCheckResult) === 0) {
+        // Table does not exist - create it with initial per_ID column
+        $createTableSQL = 'CREATE TABLE IF NOT EXISTS groupprop_' . $iGroupID . ' (
+            per_ID mediumint(8) unsigned NOT NULL default "0",
+            PRIMARY KEY (per_ID),
+            UNIQUE KEY per_ID (per_ID)
+        ) ENGINE=InnoDB';
+        $createResult = RunQuery($createTableSQL);
+        
+        if (!$createResult) {
+            $logger->error('Failed to create group properties table', ['group_id' => $iGroupID]);
+            $bErrorFlag = true;
+        }
+    }
+    
     // Get the existing data for this group member
     $sSQL = 'SELECT * FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID;
     $rsPersonProps = RunQuery($sSQL);
+    
+    // Check if a record exists for this person in the group properties table
+    if (mysqli_num_rows($rsPersonProps) === 0) {
+        // No record exists - insert one with just the per_ID
+        // This handles cases where the person was added before properties were enabled
+        $sSQL = 'INSERT INTO groupprop_' . $iGroupID . ' (per_ID) VALUES (' . $iPersonID . ')';
+        RunQuery($sSQL);
+        
+        // Now fetch the newly created record
+        $sSQL = 'SELECT * FROM groupprop_' . $iGroupID . ' WHERE per_ID = ' . $iPersonID;
+        $rsPersonProps = RunQuery($sSQL);
+    }
+    
     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 if (mysqli_num_rows($rsPropList) === 0) {
-    ?>
+?>
     <form>
         <h3><?= gettext('This group currently has no properties!  You can add them in the Group Editor.') ?></h3>
         <BR>
-        <input type="button" class="btn btn-default" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
+        <input type="button" class="btn btn-secondary" value="<?= gettext('Return to Person Record') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
     </form>
-    <?php
+<?php
 } else {
-    ?>
+?>
 
-    <div class="box ">
+    <div class="card">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName . ' ' . $per_LastName ?> </i></h3>
         </div>
@@ -145,20 +181,20 @@ if (mysqli_num_rows($rsPropList) === 0) {
                             </td>
                             <td><?= $prop_Description ?></td>
                         </tr>
-                        <?php
+                    <?php
                     } ?>
                     <tr>
                         <td class="text-center" colspan="3">
                             <br><br>
                             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="GroupPropSubmit">
                             &nbsp;
-                            <input type="button" class="btn btn-default" value="<?= gettext('Cancel') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
+                            <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" Name="Cancel" onclick="javascript:document.location='PersonView.php?PersonID=<?= $iPersonID ?>';">
                         </td>
                     </tr>
                 </table>
             </form>
         </div>
     </div>
-    <?php
+<?php
 }
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

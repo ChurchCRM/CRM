@@ -328,12 +328,6 @@ class PdfDirectory extends ChurchInfoReport
         if ($bDirFamilyPhone && strlen($fam_HomePhone)) {
             $sFamilyStr .= '   ' . gettext('Phone') . ': ' . ExpandPhoneNumber($fam_HomePhone, $fam_Country, $bWeird) . "\n";
         }
-        if ($bDirFamilyWork && strlen($fam_WorkPhone)) {
-            $sFamilyStr .= '   ' . gettext('Work') . ': ' . ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $bWeird) . "\n";
-        }
-        if ($bDirFamilyCell && strlen($fam_CellPhone)) {
-            $sFamilyStr .= '   ' . gettext('Cell') . ': ' . ExpandPhoneNumber($fam_CellPhone, $fam_Country, $bWeird) . "\n";
-        }
         if ($bDirFamilyEmail && strlen($fam_Email)) {
             $sFamilyStr .= '   ' . gettext('Email') . ': ' . $fam_Email . "\n";
         }
@@ -396,7 +390,7 @@ class PdfDirectory extends ChurchInfoReport
 
         $sHeadStr .= ' ' . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
-        $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+        $sCountry = $per_Country;
 
         if ($bDirPersonalPhone && strlen($per_HomePhone)) {
             $TempStr = ExpandPhoneNumber($per_HomePhone, $sCountry, $bWeird);
@@ -453,7 +447,7 @@ class PdfDirectory extends ChurchInfoReport
 
         $sMemberStr .= ' ' . $this->getBirthdayString($bDirBirthday, $per_BirthMonth, $per_BirthDay, $per_BirthYear, $per_Flags) . "\n";
 
-        $sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+        $sCountry = $per_Country;
 
         if ($bDirPersonalPhone && strlen($per_HomePhone)) {
             $TempStr = ExpandPhoneNumber($per_HomePhone, $sCountry, $bWeird);
@@ -483,13 +477,13 @@ class PdfDirectory extends ChurchInfoReport
         $dirimg = '';
         if ($fid !== null) {
             $family = FamilyQuery::create()->findOneById($fid);
-            if ($family && !$family->getPhoto()->isInitials() && file_exists($family->getPhoto()->getPhotoURI())) {
+            if ($family && $family->getPhoto()->hasUploadedPhoto() && file_exists($family->getPhoto()->getPhotoURI())) {
                 $dirimg = $family->getPhoto()->getPhotoURI();
             }
         }
         if ($pid !== null) {
             $person = PersonQuery::create()->findOneById($pid);
-            if ($person && !$person->getPhoto()->isInitials() && file_exists($person->getPhoto()->getPhotoURI())) {
+            if ($person && $person->getPhoto()->hasUploadedPhoto() && file_exists($person->getPhoto()->getPhotoURI())) {
                 $dirimg = $person->getPhoto()->getPhotoURI();
             }
         }

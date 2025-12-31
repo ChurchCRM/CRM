@@ -1,14 +1,17 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
-require_once 'Include/QuillEditorHelper.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/QuillEditorHelper.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
@@ -17,7 +20,7 @@ if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
 
 $sPageTitle = gettext('Church Event Editor');
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 $sAction = 'Create Event';
 
@@ -29,19 +32,24 @@ if (isset($_GET['calendarAction'])) {
         $sAction = $_POST['Action'];
     }
 
-    if (array_key_exists('EID', $_POST)) {
-        $sOpp = $_POST['EID'];
+    // Check for EID from GET (from ListEvents link) or POST (from form submission)
+    if (array_key_exists('EID', $_GET)) {
+        $sOpp = InputUtils::filterInt($_GET['EID']);
+        $sAction = 'Edit';
+    } elseif (array_key_exists('EID', $_POST)) {
+        $sOpp = InputUtils::filterInt($_POST['EID']);
     } // from EDIT button on event listing
 
     $tyid = 0;
 
     if (array_key_exists('EN_tyid', $_POST)) {
-        $tyid = $_POST['EN_tyid'];
+        $tyid = InputUtils::filterInt($_POST['EN_tyid']);
     }
 }
 
 $EventExists = 0;
 $iEventID = 0;
+$iTypeID = 0;
 $iErrors = 0;
 
 if ($sAction === 'Create Event' && !empty($tyid)) {
@@ -52,36 +60,47 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     // event fields...but still allow the user to edit everything
     // except event type since event type is tied to the attendance count fields
 
-    $sSQL = "SELECT * FROM event_types WHERE type_id=$tyid";
-    $rsOpps = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsOpps);
-    $ceRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-    extract($ceRow);
+    // Use Propel ORM instead of raw SQL for type safety and SQL injection prevention (GHSA-wxcc-gvfv-56fg)
+    $eventType = EventTypeQuery::create()->findOneById((int)$tyid);
+    
+    if ($eventType !== null) {
+        $iTypeID = $eventType->getId();
+        $sTypeName = $eventType->getName();
+        $sDefStartTime = $eventType->getDefStartTime() ? $eventType->getDefStartTime()->format('H:i:s') : '00:00:00';
+        $iDefRecurDOW = $eventType->getDefRecurDow();
+        $iDefRecurDOM = $eventType->getDefRecurDom();
+        $sDefRecurDOY = $eventType->getDefRecurDoy();
+        $sDefRecurType = $eventType->getDefRecurType();
+    } else {
+        // Handle case where event type is not found
+        $iTypeID = 0;
+        $sTypeName = '';
+        $sDefStartTime = '00:00';
+        $iDefRecurDOW = 0;
+        $iDefRecurDOM = 0;
+        $sDefRecurDOY = '';
+        $sDefRecurType = 'none';
+    }
 
-    $iTypeID = $type_id;
-    $sTypeName = $type_name;
-    $sDefStartTime = $type_defstarttime;
-    $iDefRecurDOW = $type_defrecurDOW;
-    $iDefRecurDOM = $type_defrecurDOM;
-    $sDefRecurDOY = $type_defrecurDOY;
-    $sDefRecurType = $type_defrecurtype;
-
-    $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
-    $sSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$iTypeID' ORDER BY evctnm_countid ASC";
-    $cOpps = RunQuery($sSQL);
-    $iNumCounts = mysqli_num_rows($cOpps);
+    // Use Propel ORM to fetch event count names
+    $eventCountNames = EventCountNameQuery::create()
+        ->filterByTypeId((int)$iTypeID)
+        ->orderById()
+        ->find();
+    
+    $iNumCounts = count($eventCountNames);
 
     $aCountID = [];
     $aCountName = [];
     $aCount = [];
 
-    if ($iNumCounts) {
-        for ($c = 0; $c < $iNumCounts; $c++) {
-            $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
-            extract($cRow);
-            $aCountID[$c] = $evctnm_countid;
-            $aCountName[$c] = $evctnm_countname;
+    if ($iNumCounts > 0) {
+        $c = 0;
+        foreach ($eventCountNames as $countName) {
+            $aCountID[$c] = $countName->getId();
+            $aCountName[$c] = $countName->getName();
             $aCount[$c] = 0;
+            $c++;
         }
     }
     $nCnts = $iNumCounts;
@@ -221,47 +240,54 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     $sEventDesc = '';
     $sEventText = '';
     $iEventStatus = 0;
-    $iTypeID = $type_id;
-} elseif ($sAction = 'Edit' && !empty($sOpp)) {
+} elseif ($sAction === 'Edit' && !empty($sOpp)) {
     $EventExists = 1;
-    $sSQL = "SELECT * FROM events_event as t1, event_types as t2 WHERE t1.event_type = t2.type_id AND t1.event_id ='" . $sOpp . "' LIMIT 1";
-    $rsOpps = RunQuery($sSQL);
+    // Use Propel ORM instead of raw SQL for SQL injection prevention
+    $iEventID = (int) $sOpp;
+    $event = EventQuery::create()
+        ->joinWithEventType()
+        ->findOneById($iEventID);
+    
+    if ($event === null) {
+        $iErrors++;
+        LoggerUtils::getAppLogger()->warning('Event not found: ' . $iEventID);
+    } else {
+        $aRow = array_merge($event->toArray(), $event->getEventType()->toArray());
+        extract($aRow);
 
-    $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-    extract($aRow);
+        $iEventID = $event_id;
+        $iTypeID = $type_id;
+        $sTypeName = $type_name;
+        $sEventTitle = $event_title;
+        $sEventDesc = $event_desc;
+        $sEventText = $event_text;
+        $aStartTokens = explode(' ', $event_start);
+        $sEventStartDate = $aStartTokens[0];
+        $aStartTimeTokens = explode(':', $aStartTokens[1]);
+        $iEventStartHour = $aStartTimeTokens[0];
+        $iEventStartMins = $aStartTimeTokens[1];
+        $aEndTokens = explode(' ', $event_end);
+        $sEventEndDate = $aEndTokens[0];
+        $aEndTimeTokens = explode(':', $aEndTokens[1]);
+        $iEventEndHour = $aEndTimeTokens[0];
+        $iEventEndMins = $aEndTimeTokens[1];
+        $iEventStatus = $inactive;
 
-    $iEventID = $event_id;
-    $iTypeID = $type_id;
-    $sTypeName = $type_name;
-    $sEventTitle = $event_title;
-    $sEventDesc = $event_desc;
-    $sEventText = $event_text;
-    $aStartTokens = explode(' ', $event_start);
-    $sEventStartDate = $aStartTokens[0];
-    $aStartTimeTokens = explode(':', $aStartTokens[1]);
-    $iEventStartHour = $aStartTimeTokens[0];
-    $iEventStartMins = $aStartTimeTokens[1];
-    $aEndTokens = explode(' ', $event_end);
-    $sEventEndDate = $aEndTokens[0];
-    $aEndTimeTokens = explode(':', $aEndTokens[1]);
-    $iEventEndHour = $aEndTimeTokens[0];
-    $iEventEndMins = $aEndTimeTokens[1];
-    $iEventStatus = $inactive;
+        $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
 
-    $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
+        $cvOpps = RunQuery($sSQL);
+        $iNumCounts = mysqli_num_rows($cvOpps);
+        $nCnts = $iNumCounts;
 
-    $cvOpps = RunQuery($sSQL);
-    $iNumCounts = mysqli_num_rows($cvOpps);
-    $nCnts = $iNumCounts;
-
-    if ($iNumCounts) {
-        for ($c = 0; $c < $iNumCounts; $c++) {
-            $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
-            extract($aRow);
-            $aCountID[$c] = $evtcnt_countid;
-            $aCountName[$c] = $evtcnt_countname;
-            $aCount[$c] = $evtcnt_countcount;
-            $sCountNotes = $evtcnt_notes;
+        if ($iNumCounts) {
+            for ($c = 0; $c < $iNumCounts; $c++) {
+                $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
+                extract($aRow);
+                $aCountID[$c] = $evtcnt_countid;
+                $aCountName[$c] = $evtcnt_countname;
+                $aCount[$c] = $evtcnt_countcount;
+                $sCountNotes = $evtcnt_notes;
+            }
         }
     }
 } elseif (isset($_POST['SaveChanges'])) {
@@ -322,8 +348,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
-                ->setDesc(InputUtils::filterHTML($sEventDesc))
-                ->setText(InputUtils::filterHTML($sEventText))
+                ->setDesc(InputUtils::sanitizeHTML($sEventDesc))
+                ->setText(InputUtils::sanitizeHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
@@ -333,14 +359,16 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $iEventID = $event->getId();
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
+                $filteredCount = InputUtils::legacyFilterInput($aCount[$c]);
+                $filteredCountNotes = InputUtils::legacyFilterInput($sCountNotes);
                 $sSQL = "INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
                        ('" . InputUtils::legacyFilterInput($iEventID) . "',
                         '" . InputUtils::legacyFilterInput($aCountID[$c]) . "',
                         '" . InputUtils::legacyFilterInput($aCountName[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($aCount[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($sCountNotes) . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                        '" . $filteredCount . "',
+                        '" . $filteredCountNotes . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='" . $filteredCount . "', evtcnt_notes='" . $filteredCountNotes . "'";
                 RunQuery($sSQL);
             }
         } else {
@@ -348,22 +376,24 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event
                 ->setType(InputUtils::legacyFilterInput($iTypeID))
                 ->setTitle(InputUtils::legacyFilterInput($sEventTitle))
-                ->setDesc(InputUtils::filterHTML($sEventDesc))
-                ->setText(InputUtils::filterHTML($sEventText))
+                ->setDesc(InputUtils::sanitizeHTML($sEventDesc))
+                ->setText(InputUtils::sanitizeHTML($sEventText))
                 ->setStart(InputUtils::legacyFilterInput($sEventStart))
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
             $event->save();
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
+                $filteredCount = InputUtils::legacyFilterInput($aCount[$c]);
+                $filteredCountNotes = InputUtils::legacyFilterInput($sCountNotes);
                 $sSQL = "INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
                        ('" . InputUtils::legacyFilterInput($iEventID) . "',
                         '" . InputUtils::legacyFilterInput($aCountID[$c]) . "',
                         '" . InputUtils::legacyFilterInput($aCountName[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($aCount[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($sCountNotes) . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='$aCount[$c]', evtcnt_notes='$sCountNotes'";
+                        '" . $filteredCount . "',
+                        '" . $filteredCountNotes . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='" . $filteredCount . "', evtcnt_notes='" . $filteredCountNotes . "'";
                 RunQuery($sSQL);
             }
         }
@@ -373,19 +403,37 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 }
 ?>
 
+<div class="mb-3 d-flex justify-content-between align-items-center">
+    <a href="ListEvents.php" class="btn btn-outline-secondary">
+        <i class="fas fa-chevron-left mr-1"></i>
+        <?= gettext('Return to Events') ?>
+    </a>
+    <?php if ($EventExists && $iEventID > 0): ?>
+    <div>
+        <a href="Checkin.php?EventID=<?= $iEventID ?>" class="btn btn-info mr-2">
+            <i class="fas fa-clipboard-check mr-1"></i>
+            <?= gettext('Manage Check-ins') ?>
+        </a>
+        <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting this event will also delete all attendance records. Are you sure?') ?>');">
+            <input type="hidden" name="EID" value="<?= $iEventID ?>">
+            <button type="submit" name="Action" value="Delete" class="btn btn-outline-danger">
+                <i class="fas fa-trash mr-1"></i>
+                <?= gettext('Delete Event') ?>
+            </button>
+        </form>
+    </div>
+    <?php endif; ?>
+</div>
+
 <div class='card'>
     <div class='card-header'>
-        <h3><?= ($EventExists === 0) ? gettext('Create a new Event') : gettext('Editing Event ID: ') . $iEventID ?></h3>
-
-        <?php
-        if ($iErrors === 0) {
-            echo '<div>' . gettext('Items with a ') . '<span class="text-danger">*</span>' . gettext(' are required') . '</div>';
-        } else {
-            echo "<div class='alert alert-danger'>" . gettext('There were ') . $iErrors . gettext(' errors. Please see below') . '</div>';
-        }
-        ?>
+        <h3 class="mb-0"><?= ($EventExists === 0) ? gettext('Create a new Event') : gettext('Editing Event') . ': ' . InputUtils::escapeHTML($sEventTitle ?: 'ID ' . $iEventID) ?></h3>
+        <?php if ($iErrors > 0): ?>
+            <div class="alert alert-danger mt-2 mb-0"><?= gettext('There were ') . $iErrors . gettext(' errors. Please see below') ?></div>
+        <?php endif; ?>
     </div>
     <div class='card-body'>
+        <p class="text-muted mb-3"><span class="text-danger">*</span> <?= gettext('Required fields') ?></p>
 
     <form method="post" action="EventEditor.php" name="EventsEditor">
         <input type="hidden" name="EventID" value="<?= ($iEventID) ?>">
@@ -423,36 +471,48 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <?php
             } else { ?>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?>:</td>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?></td>
                     <td colspan="3" class="TextColumn">
                         <input type="hidden" name="EventTypeName" value="<?= ($sTypeName) ?>">
                         <input type="hidden" name="EventTypeID" value="<?= ($iTypeID) ?>">
-                        <?= ($iTypeID . '-' . $sTypeName) ?>
+                        <span class="badge badge-info font-weight-normal" style="font-size: 1rem;"><?= InputUtils::escapeHTML($sTypeName) ?></span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Title') ?>:</td>
-                    <td colspan="1" class="TextColumn">
-                        <input type="text" name="EventTitle" value="<?= ($sEventTitle) ?>" size="30" maxlength="100" class='form-control w-100' required>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Title') ?></td>
+                    <td colspan="3" class="TextColumn">
+                        <input type="text" name="EventTitle" value="<?= InputUtils::escapeHTML($sEventTitle) ?>" maxlength="100" class="form-control" placeholder="<?= gettext('Enter event title...') ?>" required>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Desc') ?>:</td>
+                    <td class="LabelColumn"><?= gettext('Event Description') ?></td>
                     <td colspan="3" class="TextColumn">
                         <?= getQuillEditorContainer('EventDesc', 'EventDescInput', $sEventDesc, 'form-control', '100px') ?>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span>
-                        <?= gettext('Date Range') ?>:
-                    </td>
-                    <td class="TextColumn">
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Date & Time') ?></td>
+                    <td class="TextColumn" colspan="3">
                         <input type="text" name="EventDateRange" value=""
-                               maxlength="10" id="EventDateRange" size="50" class='form-control w-100' required>
+                               maxlength="10" id="EventDateRange" class="form-control" style="max-width: 400px;" required>
+                        <small class="form-text text-muted"><?= gettext('Select start and end date/time') ?></small>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><?= gettext('Attendance Counts') ?></td>
+                    <td class="LabelColumn">
+                        <div><?= gettext('Attendance Counts') ?></div>
+                        <?php if ($nCnts > 0) { ?>
+                        <div class="mt-2">
+                            <input type="number" 
+                                   id="RealTotal" 
+                                   class="form-control" 
+                                   readonly 
+                                   value="0" 
+                                   style="background-color: #e9ecef; font-weight: bold; max-width: 200px;">
+                            <small class="form-text text-muted"><?= gettext('Auto-calculated from counts above') ?></small>
+                        </div>
+                        <?php } ?>
+                    </td>
                     <td class="TextColumn" colspan="3">
                         <input type="hidden" name="NumAttendCounts" value="<?= $nCnts ?>">
                         <?php
@@ -460,51 +520,67 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                             echo gettext('No Attendance counts recorded');
                         } else {
                             ?>
-                            <table>
+                            <div class="row">
                                 <?php
                                 for ($c = 0; $c < $nCnts; $c++) {
-                                    ?><tr>
-                                    <td><strong><?= (gettext($aCountName[$c]) . ':') ?>&nbsp;</strong></td>
-                                    <td>
-                                        <input type="text" name="EventCount[]" value="<?= ($aCount[$c]) ?>" size="8" class='form-control'>
-                                        <input type="hidden" name="EventCountID[]" value="<?= ($aCountID[$c]) ?>">
-                                        <input type="hidden" name="EventCountName[]" value="<?= ($aCountName[$c]) ?>">
-                                    </td>
-                                    </tr>
+                                    $countName = $aCountName[$c];
+                                    $inputId = 'EventCount_' . $c;
+                                    ?>
+                                    <div class="col-md-4 col-sm-6 mb-2">
+                                        <label for="<?= $inputId ?>" class="font-weight-bold"><?= gettext($countName) ?></label>
+                                        <input type="number" 
+                                               id="<?= $inputId ?>" 
+                                               name="EventCount[]" 
+                                               value="<?= (int) $aCount[$c] ?>" 
+                                               class="form-control attendance-count"
+                                               min="0"
+                                               data-count-name="<?= InputUtils::escapeHTML($countName) ?>">
+                                        <input type="hidden" name="EventCountID[]" value="<?= $aCountID[$c] ?>">
+                                        <input type="hidden" name="EventCountName[]" value="<?= $countName ?>">
+                                    </div>
                                     <?php
                                 } ?>
-                                <tr>
-                                    <td><strong><?= gettext('Attendance Notes: ') ?>&nbsp;</strong></td>
-                                    <td><input type="text" name="EventCountNotes" value="<?= $sCountNotes ?>" class='form-control'>
-                                    </td>
-                                </tr>
-                            </table>
+                            </div>
+                            <div class="form-group mt-3">
+                                <label for="EventCountNotes" class="font-weight-bold"><?= gettext('Attendance Notes') ?></label>
+                                <input type="text" id="EventCountNotes" name="EventCountNotes" value="<?= InputUtils::escapeHTML($sCountNotes) ?>" class="form-control" placeholder="<?= gettext('Optional notes about attendance...') ?>">
+                            </div>
                             <?php
                         } ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td colspan="4" class="TextColumn"><?= gettext('Event Sermon') ?>:<br>
+                    <td class="LabelColumn"><?= gettext('Sermon / Event Text') ?></td>
+                    <td colspan="3" class="TextColumn">
+                        <small class="form-text text-muted mb-2"><?= gettext('Optional - Add sermon notes or additional event details') ?></small>
                         <?= getQuillEditorContainer('EventText', 'EventTextInput', $sEventText, 'form-control', '200px') ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Status') ?>:</td>
+                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Status') ?></td>
                     <td colspan="3" class="TextColumn">
-                        <input type="radio" name="EventStatus" value="0" <?php if ($iEventStatus == 0) {
-                            echo 'checked';
-                                                                         } ?>/> <?= _('Active')?>
-                        <input type="radio" name="EventStatus" value="1" <?php if ($iEventStatus == 1) {
-                            echo 'checked';
-                                                                         } ?>/> <?= _('Inactive')?>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-outline-success <?= ($iEventStatus == 0) ? 'active' : '' ?>">
+                                <input type="radio" name="EventStatus" value="0" <?= ($iEventStatus == 0) ? 'checked' : '' ?>>
+                                <i class="fas fa-check mr-1"></i><?= gettext('Active') ?>
+                            </label>
+                            <label class="btn btn-outline-secondary <?= ($iEventStatus == 1) ? 'active' : '' ?>">
+                                <input type="radio" name="EventStatus" value="1" <?= ($iEventStatus == 1) ? 'checked' : '' ?>>
+                                <i class="fas fa-ban mr-1"></i><?= gettext('Inactive') ?>
+                            </label>
+                        </div>
                     </td>
                 </tr>
 
                 <tr>
                     <td></td>
-                    <td><input type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary"></td>
+                    <td>
+                        <button type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary btn-lg">
+                            <i class="fas fa-save mr-1"></i><?= gettext('Save Changes') ?>
+                        </button>
+                    </td>
                 </tr>
                 <?php
             } ?>
@@ -512,17 +588,11 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     </form>
     </div>
 </div>
-
-<div class="card-footer">
-    <a href="ListEvents.php" class='btn btn-secondary'>
-        <i class='fa fa-chevron-left'></i>
-        <?= gettext('Return to Events') ?>
-    </a>
-</div>
 <?php
 $eventStart = $sEventStartDate . ' ' . $iEventStartHour . ':' . $iEventStartMins;
 $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
 ?>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $( document ).ready(function() {
         var startDate = moment("<?= $eventStart?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
@@ -540,10 +610,32 @@ $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
             startDate: startDate,
             endDate: endDate
         });
+
+        // Auto-calculate Real Total from all attendance counts
+        function updateRealTotal() {
+            var total = 0;
+            $('.attendance-count').each(function() {
+                var val = parseInt($(this).val()) || 0;
+                total += val;
+            });
+            $('#RealTotal').val(total);
+        }
+
+        // Bind change event to all attendance count fields
+        $('.attendance-count').on('input change', updateRealTotal);
+
+        // Calculate initial total on page load
+        updateRealTotal();
     });
+
+    (function() {
+        <?= getQuillEditorInitScript('EventDesc', 'EventDescInput', gettext("Enter event description..."), false) ?>
+    })();
+
+    (function() {
+        <?= getQuillEditorInitScript('EventText', 'EventTextInput', gettext("Enter sermon notes or event text..."), false) ?>
+    })();
 </script>
 
-<?php require_once 'Include/Footer.php'; ?>
-
-<?= getQuillEditorInitScript('EventText', 'EventTextInput', gettext("Enter event description...")) ?>
+<?php require_once __DIR__ . '/Include/Footer.php'; ?>
 

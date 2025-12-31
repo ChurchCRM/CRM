@@ -1,12 +1,13 @@
 <?php
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfLabel;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\CsvExporter;
 
 function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
 {
@@ -635,11 +636,12 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
                 $sName = "To the parents of:\n" . $sName;
             }
 
-            SelectWhichAddress($sAddress1, $sAddress2, $aRow['per_Address1'], $aRow['per_Address2'], $aRow['fam_Address1'], $aRow['fam_Address2'], false);
-
-            $sCity = SelectWhichInfo($aRow['per_City'], $aRow['fam_City'], false);
-            $sState = SelectWhichInfo($aRow['per_State'], $aRow['fam_State'], false);
-            $sZip = SelectWhichInfo($aRow['per_Zip'], $aRow['fam_Zip'], false);
+            // Use person data only - each person must enter their own information
+            $sAddress1 = $aRow['per_Address1'] ?? '';
+            $sAddress2 = $aRow['per_Address2'] ?? '';
+            $sCity = $aRow['per_City'] ?? '';
+            $sState = $aRow['per_State'] ?? '';
+            $sZip = $aRow['per_Zip'] ?? '';
 
             $sAddress = $sAddress1;
             if ($sAddress2 != '') {
@@ -771,61 +773,51 @@ $aLabelList = unserialize(
 );
 
 if ($sFileType === 'PDF') {
-    if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+    if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
         $pdf->Output('Labels-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
     } else {
         $pdf->Output();
     }
 } else {
-    // File Type must be CSV
-    $delimiter = SystemConfig::getValue('sCSVExportDelimiter');
-
-    $sCSVOutput = '';
+    // File Type must be CSV - Use CsvExporter for RFC 4180 compliance and formula injection prevention
+    // Build headers
+    $headers = [];
     if ($iBulkCode) {
-        $sCSVOutput .= '"ZipBundle"' . $delimiter;
+        $headers[] = 'ZipBundle';
     }
+    $headers[] = 'Greeting';
+    $headers[] = 'Name';
+    $headers[] = 'Address';
+    $headers[] = 'City';
+    $headers[] = 'State';
+    $headers[] = 'Zip';
 
-    $sCSVOutput .= '"' . InputUtils::translateSpecialCharset('Greeting') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('Name') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('Address') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('City') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('State') . '"' . $delimiter . '"' . InputUtils::translateSpecialCharset('Zip') . '"' . "\n";
-
+    // Build rows - handle newline-separated names and addresses by creating multiple rows
+    $rows = [];
     foreach ($aLabelList as $sLT) {
-        if ($iBulkCode) {
-            $sCSVOutput .= '"' . $sLT['Note'] . '"' . $delimiter;
-        }
+        // Handle multiline names (split by newline into separate rows)
+        $nameLines = explode("\n", $sLT['Name']);
+        $addressLines = explode("\n", $sLT['Address']);
 
-        $iNewline = strpos($sLT['Name'], "\n");
-        if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '""' . $delimiter . '"' . InputUtils::translateSpecialCharset($sLT['Name']) . '"' . $delimiter;
-        } else {
-            $sCSVOutput .= '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], 0, $iNewline)) . '"' . $delimiter .
-                            '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Name'], $iNewline + 1)) . '"' . $delimiter;
+        // Create a row for each combination of name and address lines
+        $maxLines = max(count($nameLines), count($addressLines));
+        for ($i = 0; $i < $maxLines; $i++) {
+            $row = [];
+            if ($iBulkCode) {
+                $row[] = ($i === 0) ? $sLT['Note'] : ''; // Only add Note on first line
+            }
+            $row[] = ($i === 0) ? $sLT['Greeting'] : '';  // Only add Greeting on first line
+            $row[] = $nameLines[$i] ?? '';
+            $row[] = $addressLines[$i] ?? '';
+            $row[] = ($i === 0) ? $sLT['City'] : '';      // Only add City on first line
+            $row[] = ($i === 0) ? $sLT['State'] : '';     // Only add State on first line
+            $row[] = ($i === 0) ? $sLT['Zip'] : '';       // Only add Zip on first line
+            $rows[] = $row;
         }
-
-        $iNewline = strpos($sLT['Address'], "\n");
-        if ($iNewline === false) { // There is no newline character
-            $sCSVOutput .= '"' . InputUtils::translateSpecialCharset($sLT['Address']) . '"' . $delimiter;
-        } else {
-            $sCSVOutput .= '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], 0, $iNewline)) . '"' . $delimiter .
-                            '"' . InputUtils::translateSpecialCharset(mb_substr($sLT['Address'], $iNewline + 1)) . '"' . $delimiter;
-        }
-
-        $sCSVOutput .= '"' . InputUtils::translateSpecialCharset($sLT['City']) . '"' . $delimiter .
-                        '"' . InputUtils::translateSpecialCharset($sLT['State']) . '"' . $delimiter .
-                        '"' . $sLT['Zip'] . '"' . "\n";
     }
 
-    header('Content-type: application/csv;charset=' . SystemConfig::getValue('sCSVExportCharset'));
-    header('Content-Disposition: attachment; filename=Labels-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
-    header('Content-Transfer-Encoding: binary');
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public');
-
-    // Add BOM to fix UTF-8 in Excel 2016 but not under, so the problem is solved with the sCSVExportCharset variable
-    if (SystemConfig::getValue('sCSVExportCharset') == 'UTF-8') {
-        echo "\xEF\xBB\xBF";
-    }
-
-    echo $sCSVOutput;
+    // Use CsvExporter for RFC 4180 compliance and formula injection prevention
+    CsvExporter::create($headers, $rows, 'Labels', 'UTF-8', true);
 }
 
 exit;

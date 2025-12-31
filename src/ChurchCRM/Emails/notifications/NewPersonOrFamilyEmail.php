@@ -68,7 +68,7 @@ class NewPersonOrFamilyEmail extends BaseEmail
             $myTokens['body'] = gettext('New Family Added') . "\r\n" .
             gettext('Family Name') . ': ' . $family->getName();
             $myTokens['FamilyEmail'] = $family->getEmail();
-            $myTokens['FamilyPhone'] = $family->getCellPhone();
+            $myTokens['FamilyPhone'] = $family->getHomePhone();
             $myTokens['FamilyAddress'] = $family->getAddress();
             $myTokens['IncludeDataInNewFamilyNotifications'] = SystemConfig::getBooleanValue('IncludeDataInNewPersonNotifications');
         } elseif ($this->relatedObject instanceof Person) {

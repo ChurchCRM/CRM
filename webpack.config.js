@@ -5,14 +5,26 @@ const webpack = require('webpack');
 module.exports = {
   mode: "development",
   entry: {
-    'calendar-event-editor' : './react/calendar-event-editor.tsx',
-    'two-factor-enrollment' : './react/two-factor-enrollment.tsx',
-    'churchcrm' : './webpack/skin-main',  // Main bundle for all pages
-    'photo-uploader' : './webpack/photo-uploader-entry'  // Photo uploader for specific pages
+    'calendar-event-editor': './react/calendar-event-editor.tsx',
+    'two-factor-enrollment': './react/two-factor-enrollment.tsx',
+    'churchcrm': './webpack/skin-main',  // Main bundle for all pages
+    'photo-uploader': './webpack/photo-uploader-entry',  // Photo uploader for specific pages
+    'setup': './webpack/setup',  // Setup wizard styles
+    'family-register': './webpack/family-register',  // Family registration styles and scripts
+    'family-verify': './webpack/family-verify',  // Family verification page styles and scripts
+    'upgrade-wizard': './webpack/upgrade-wizard',  // Upgrade wizard styles and scripts
+    'locale-loader': './webpack/locale-loader',  // Dynamic locale loader
+    'backup': './webpack/backup',  // Backup database page
+    'restore': './webpack/restore',  // Restore database page
+    'admin-dashboard': './webpack/admin-dashboard',  // Admin dashboard page styles and scripts
+    'system-settings-panel': './webpack/system-settings-panel'  // Reusable settings panel component
+    , 'people-list': './webpack/people/person-list'
+    , 'people-family-list': './webpack/people/family-list'
   },
   output: {
-    path:path.resolve('./src/skin/v2'),
-    filename:'[name].min.js'
+    path: path.resolve('./src/skin/v2'),
+    filename: '[name].min.js',
+    publicPath: 'auto'  // Auto-detect public path based on script location
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
@@ -24,9 +36,9 @@ module.exports = {
   module: {
     rules: [
       // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { 
-        test: /\.tsx?$/, 
-        loader: "ts-loader" 
+      {
+        test: /\.tsx?$/,
+        loader: "ts-loader"
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -59,12 +71,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].min.css',
       ignoreOrder: false,
-    }),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery',
-      'window.$': 'jquery',
     }),
   ],
 }

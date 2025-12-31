@@ -13,7 +13,7 @@
     height: auto;
     white-space: normal;
     word-wrap: break-word;
-    padding: 15px 5px;
+    padding: 15px 10px;
 
     // Large icon styling with proper spacing
     > .fa-3x {
@@ -44,6 +44,18 @@
         opacity: 0;
         transform: translateY(20px);
         pointer-events: none;
+    }
+}
+
+// Person View specific FAB - always visible, doesn't hide
+.fab-person-view {
+    z-index: 1040; // Higher than AdminLTE sidebar (1030)
+
+    // Override the hidden behavior - these buttons stay visible
+    &.hidden {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
     }
 }
 
@@ -97,6 +109,7 @@
         }
     }
 
+    // Color variants - consolidated
     &.fab-person .fab-icon {
         background-color: #007bff; // Bootstrap primary
     }
@@ -111,5 +124,81 @@
 
     &.fab-family:hover .fab-icon {
         background-color: #218838;
+    }
+
+    &.fab-edit .fab-icon {
+        background-color: #007bff; // Bootstrap primary
+    }
+
+    &.fab-edit:hover .fab-icon {
+        background-color: #0056b3;
+    }
+
+    &.fab-note .fab-icon {
+        background-color: #6f42c1; // Bootstrap purple/indigo
+    }
+
+    &.fab-note:hover .fab-icon {
+        background-color: #5a32a3;
+    }
+
+    &.fab-save .fab-icon {
+        background-color: #28a745; // Bootstrap success/green
+    }
+
+    &.fab-save:hover .fab-icon {
+        background-color: #218838;
+    }
+
+    &.fab-save-add .fab-icon {
+        background-color: #007bff; // Bootstrap primary/blue
+    }
+
+    &.fab-save-add:hover .fab-icon {
+        background-color: #0056b3;
+    }
+
+    &.fab-cancel .fab-icon {
+        background-color: #6c757d; // Bootstrap secondary/gray
+    }
+
+    &.fab-cancel:hover .fab-icon {
+        background-color: #5a6268;
+    }
+}
+
+// Person Editor specific FAB - always visible, doesn't hide
+.fab-person-editor {
+    z-index: 1040; // Higher than AdminLTE sidebar (1030)
+
+    // Override the hidden behavior - these buttons stay visible
+    &.hidden {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+}
+
+// Family Editor specific FAB - always visible, doesn't hide
+.fab-family-editor {
+    z-index: 1040; // Higher than AdminLTE sidebar (1030)
+
+    // Override the hidden behavior - these buttons stay visible
+    &.hidden {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+    }
+}
+
+// Family View specific FAB - always visible, doesn't hide
+.fab-family-view {
+    z-index: 1040; // Higher than AdminLTE sidebar (1030)
+
+    // Override the hidden behavior - these buttons stay visible
+    &.hidden {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
     }
 }

@@ -64,41 +64,20 @@ msgid "Backup Database"
 msgstr "バックアップデータベース"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "このツールは、手動でChurchCRMデータベースをバックアップする際に役立ちます"
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "すでにシステムの定期的なバックアップ手順がある場合を除き、少なくとも週に1回は手動でバックアップを取る必要があります"
+msgid "Batch Winner Entry"
+msgstr "バッチ当選者入力"
 
 #: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "バックアップ ファイルをダウンロードしたら、コピーを 2 つ作成する必要があります　そのうちの 1 つをサイト内の耐火金庫に置き、もう 1 つをサイト外の安全な場所に置きます"
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "ChurchCRM データベースに保存されているデータの機密性が心配な場合は、他の人がアクセスできる可能性のある場所にバックアップ データを保存する場合は、バックアップ データを暗号化する必要があります"
-
-#: 
-msgid "Select archive type"
-msgstr "アーカイブの種類を選択してください"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "バックアップファイルをパスワードで暗号化しますか?"
-
-#: 
-msgid "Re-type Password"
-msgstr "パスワードを再入力してください"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "バックアップを生成して外部ストレージに送信する"
+msgid "Winner"
+msgstr "当選者"
 
 #: 
 msgid "Price"
 msgstr "価格"
+
+#: 
+msgid "Enter Winners"
+msgstr "当選者を入力"
 
 #: 
 msgid "CSV Export"
@@ -129,16 +108,16 @@ msgid "Zip"
 msgstr "郵便番号"
 
 #: 
+msgid "Envelope"
+msgstr "封筒"
+
+#: 
 msgid "Work/Other Email"
 msgstr "仕事/その他のメールアドレス"
 
 #: 
 msgid "Membership Date"
 msgstr "会員登録日"
-
-#: 
-msgid "Birth / Anniversary Date"
-msgstr "生年月日 / 記念日"
 
 #: 
 msgid "Age / Years Married"
@@ -178,6 +157,14 @@ msgid "Based on filters below.."
 msgstr "以下のフィルターに基づいて"
 
 #: 
+msgid "People in Cart (filters ignored)"
+msgstr "カート内の人物 (フィルターは無視されます)"
+
+#: 
+msgid "Use Ctrl Key to select multiple"
+msgstr "複数選択するには Ctrl キーを使用してください"
+
+#: 
 msgid "Don't Filter"
 msgstr "フィルタリングしない"
 
@@ -192,8 +179,36 @@ msgid "Female"
 msgstr "女性"
 
 #: 
-msgid "Birthday Date"
-msgstr "生年月日"
+msgid "Group Membership"
+msgstr "グループ所属"
+
+#: 
+msgid "From"
+msgstr "開始"
+
+#: 
+msgid "To"
+msgstr "終了"
+
+#: 
+msgid "Anniversary Date"
+msgstr "記念日"
+
+#: 
+msgid "Output Method:"
+msgstr "出力形式:"
+
+#: 
+msgid "CSV Individual Records"
+msgstr "CSV 個別レコード"
+
+#: 
+msgid "CSV Combine Families"
+msgstr "CSV 世帯統合"
+
+#: 
+msgid "Add Individuals to Cart"
+msgstr "個人をカートに追加"
 
 #: 
 msgid "Skip records with incomplete mail address"
@@ -208,7 +223,8 @@ msgid "No file selected for upload."
 msgstr "アップロードするファイルが選択されていません"
 
 #: 
-msgid "Total number of rows in the CSV file:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
 msgstr "CSV ファイルの合計行数"
 
 #: 
@@ -219,10 +235,18 @@ msgstr "このフィールドを無視します"
 msgid "Title"
 msgstr "タイトル"
 
+#: 
+msgid "Suffix"
+msgstr "接尾辞"
+
 #. Context: queryparameters_qrp
 #: 
 msgid "Gender"
 msgstr "性別"
+
+#: 
+msgid "Donation Envelope"
+msgstr "寄付用封筒"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -238,8 +262,16 @@ msgid "Mobile Phone"
 msgstr "携帯電話"
 
 #: 
+msgid "Work / Other Email"
+msgstr "職場 / その他メール"
+
+#: 
 msgid "Birth Date"
 msgstr "生年月日"
+
+#: 
+msgid "Wedding Date"
+msgstr "結婚記念日"
 
 #: 
 msgid "Ignore first CSV row (to exclude a header)"
@@ -250,12 +282,33 @@ msgid "Make Family records based on last name and address"
 msgstr "姓と住所に基づいて家族記録を作成する"
 
 #: 
+msgid "Patriarch"
+msgstr "世帯主 (男性)"
+
+#: 
+msgid "Matriarch"
+msgstr "世帯主 (女性)"
+
+#: 
+msgid "Family Type: used with Make Family records... option above"
+msgstr "世帯タイプ: 上記の「世帯レコード作成...」オプションで使用"
+
+#: 
 msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
 msgstr "注意　区切り文字  ダッシュなど の有無は関係ありません"
 
 #: 
 msgid "Default country if none specified otherwise"
 msgstr "特に指定がない場合のデフォルトの国"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Classification"
+msgstr "分類"
+
+#: 
+msgid "Perform Import"
+msgstr "インポートを実行"
 
 #: 
 msgid "ERROR: the uploaded CSV file no longer exists!"
@@ -270,12 +323,16 @@ msgid "Data import successful."
 msgstr "データのインポートが成功しました"
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "カートに追加したいイベントを選択してください"
+msgid "people were imported"
+msgstr "名がインポートされました"
 
 #: 
-msgid "Add New Event"
-msgstr "新しいイベントを追加"
+msgid "Add Cart to Event"
+msgstr "カートをイベントに追加"
+
+#: 
+msgid "OR"
+msgstr "または"
 
 #: 
 msgid "Your cart is empty!"
@@ -285,10 +342,18 @@ msgstr "あなたのカートは空です！"
 msgid "No family name entered!"
 msgstr "家族名が入力されていません!"
 
+#: 
+msgid "Add Cart to Family"
+msgstr "カートを世帯に追加"
+
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Name"
 msgstr "名前"
+
+#: 
+msgid "Assign Role"
+msgstr "役割を割り当て"
 
 #: 
 msgid "Already in a family"
@@ -303,6 +368,14 @@ msgid "If adding a new family, enter data below."
 msgstr "新しい家族を追加する場合は、以下のデータを入力してください"
 
 #: 
+msgid "Use address/contact data from"
+msgstr "住所/連絡先データの参照元"
+
+#: 
+msgid "Only the new data below"
+msgstr "以下の新しいデータのみ"
+
+#: 
 msgid "Do not auto-format"
 msgstr "自動フォーマットしない"
 
@@ -315,20 +388,80 @@ msgid "Add Cart to Group"
 msgstr "カートをグループに追加"
 
 #: 
+msgid "Select the group to which you would like to add your cart"
+msgstr "カートを追加するグループを選択してください"
+
+#: 
 msgid "Select Group"
 msgstr "グループを選択"
+
+#: 
+msgid "No Group Selected"
+msgstr "グループが選択されていません"
 
 #: 
 msgid "Add to Group"
 msgstr "グループに追加"
 
 #: 
+msgid "View Your Cart"
+msgstr "カートを見る"
+
+#: 
+msgid "You have no items in your cart."
+msgstr "カートにアイテムがありません。"
+
+#: 
 msgid "Back to Menu"
 msgstr "メニューに戻る"
 
 #: 
+msgid "Empty Cart"
+msgstr "カートを空にする"
+
+#: 
+msgid "Empty Cart to Group"
+msgstr "カートを空にしてグループへ"
+
+#: 
+msgid "Empty Cart to Family"
+msgstr "カートを空にして世帯へ"
+
+#: 
+msgid "Map Cart"
+msgstr "カートを地図に表示"
+
+#: 
+msgid "Name Tags"
+msgstr "名札"
+
+#: 
+msgid "Email Cart"
+msgstr "カートにメールを送信"
+
+#: 
+msgid "Email (BCC)"
+msgstr "メール (BCC)"
+
+#: 
 msgid "Create Directory From Cart"
 msgstr "カートからのディレクトリ作成"
+
+#: 
+msgid "Bulk Mail Presort"
+msgstr "一括メール事前仕分け"
+
+#: 
+msgid "Quiet Presort"
+msgstr "静かな仕分け"
+
+#: 
+msgid "Your cart contains"
+msgstr "カートの内容:"
+
+#: 
+msgid "people from"
+msgstr "名の所属:"
 
 #: 
 msgid "Remove"
@@ -343,8 +476,113 @@ msgid "No"
 msgstr "いいえ"
 
 #: 
+msgid "Developer Chat"
+msgstr "開発者チャット"
+
+#: 
+msgid "Event Checkin"
+msgstr "イベント・チェックイン"
+
+#: 
+msgid "Select Event"
+msgstr "イベント選択"
+
+#: 
+msgid "CheckOut"
+msgstr "チェックアウト"
+
+#: 
+msgid "Checked In Time"
+msgstr "チェックイン時刻"
+
+#: 
+msgid "Checked In By"
+msgstr "チェックイン担当者"
+
+#: 
+msgid "Checked Out Time"
+msgstr "チェックアウト時刻"
+
+#: 
+msgid "Checked Out By"
+msgstr "チェックアウト担当者"
+
+#: 
+msgid "Action"
+msgstr "操作"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Member"
+msgstr "メンバー"
+
+#: 
+msgid " of the"
+msgstr " の"
+
+#: 
+msgid "(No assigned family)"
+msgstr "(世帯未割当)"
+
+#: 
+msgid "Convert Individuals to Families"
+msgstr "個人を世帯に変換"
+
+#: 
+msgid "Convert Next"
+msgstr "次を変換"
+
+#: 
 msgid "Convert All"
 msgstr "全て変換"
+
+#: 
+msgid "Deposit Slip Number"
+msgstr "入金伝票番号"
+
+#: 
+msgid "Deposit Details"
+msgstr "入金詳細"
+
+#: 
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
+msgstr "重要: 入金伝票が閉じられると、失敗した取引は完全に削除されます。"
+
+#: 
+msgid "Add Payment"
+msgstr "支払いを追加"
+
+#: 
+msgid "Load Authorized"
+msgstr "承認済みを読み込む"
+
+#: 
+msgid "Run Transactions"
+msgstr "取引を実行"
+
+#: 
+msgid "Directory reports"
+msgstr "名簿レポート"
+
+#: 
+msgid "Select classifications to include"
+msgstr "含める分類を選択"
+
+#: 
+msgid "Which role is the head of household?"
+msgstr "世帯主の役割はどれですか？"
+
+#: 
+msgid "Which role is the spouse?"
+msgstr "配偶者の役割はどれですか？"
+
+#: 
+msgid "Which role is a child?"
+msgstr "子供の役割はどれですか？"
+
+#: 
+msgid "Information to Include"
+msgstr "含める情報"
 
 #: 
 msgid "Address"
@@ -353,6 +591,54 @@ msgstr "住所"
 #: 
 msgid "Birthday"
 msgstr "生年月日"
+
+#: 
+msgid "Family Home Phone"
+msgstr "世帯の自宅電話"
+
+#: 
+msgid "Family Work Phone"
+msgstr "世帯の職場電話"
+
+#: 
+msgid "Family Cell Phone"
+msgstr "世帯の携帯電話"
+
+#: 
+msgid "Family Email"
+msgstr "世帯のメールアドレス"
+
+#: 
+msgid "Personal Home Phone"
+msgstr "個人の自宅電話"
+
+#: 
+msgid "Personal Work Phone"
+msgstr "個人の職場電話"
+
+#: 
+msgid "Personal Cell Phone"
+msgstr "個人の携帯電話"
+
+#: 
+msgid "Personal Email"
+msgstr "個人のメールアドレス"
+
+#: 
+msgid "Personal Work/Other Email"
+msgstr "個人の職場/その他メール"
+
+#: 
+msgid "Photos"
+msgstr "写真"
+
+#: 
+msgid "Number of Columns"
+msgstr "列数"
+
+#: 
+msgid "Paper Size"
+msgstr "用紙サイズ"
 
 #: 
 msgid "Font Size"
@@ -371,8 +657,16 @@ msgid "Church Name"
 msgstr "教会名"
 
 #: 
+msgid "Disclaimer"
+msgstr "免責事項"
+
+#: 
 msgid "Create Directory"
 msgstr "ディレクトリを作成"
+
+#: 
+msgid "Donated Item Editor"
+msgstr "寄付アイテムエディター"
 
 #: 
 msgid "Save and Add"
@@ -383,8 +677,28 @@ msgid "Item"
 msgstr "アイテム"
 
 #: 
+msgid "Multiple items"
+msgstr "複数のアイテム"
+
+#: 
+msgid "Sell to everyone"
+msgstr "全員に販売"
+
+#: 
+msgid "Estimated Price"
+msgstr "見積価格"
+
+#: 
 msgid "Multiple"
 msgstr "複数"
+
+#: 
+msgid "Final Price"
+msgstr "最終価格"
+
+#: 
+msgid "Replicate item"
+msgstr "アイテムを複製"
 
 #: 
 msgid "Go"
@@ -395,8 +709,44 @@ msgid "Description"
 msgstr "説明"
 
 #: 
+msgid "Picture URL"
+msgstr "画像 URL"
+
+#: 
+msgid "Donation Fund Editor"
+msgstr "寄付基金エディター"
+
+#: 
+msgid "Are you sure you want to delete this fund?"
+msgstr "この基金を削除してもよろしいですか？"
+
+#: 
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr "無効なフィールドまたは選択があります。変更は保存されませんでした！修正して再試行してください。"
+
+#: 
+msgid "No funds have been added yet"
+msgstr "基金はまだ追加されていません"
+
+#: 
+msgid "Active"
+msgstr "有効"
+
+#: 
 msgid "Save Changes"
 msgstr "変更内容を保存"
+
+#: 
+msgid "Church Event Editor"
+msgstr "教会イベントエディター"
+
+#: 
+msgid "Edit Event Types"
+msgstr "イベントタイプを編集"
+
+#: 
+msgid "Edit Event Type"
+msgstr "イベントタイプを編集"
 
 #: 
 msgid "Event Type"
@@ -407,12 +757,41 @@ msgid "Save Name"
 msgstr "名前を保存"
 
 #: 
+msgid "Recurrence Pattern"
+msgstr "繰り返しパターン"
+
+#: 
+msgid "Attendance Counts"
+msgstr "出席数"
+
+#: 
+msgid "Add counter"
+msgstr "カウンターを追加"
+
+#: 
+msgid "Return to Event Types"
+msgstr "イベントタイプに戻る"
+
+#: 
 msgid "Family"
 msgstr "家族"
 
 #: 
+msgid "Type"
+msgstr "タイプ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year"
+msgstr "会計年度"
+
+#: 
 msgid "Amount"
 msgstr "量"
+
+#: 
+msgid "Fund"
+msgstr "基金"
 
 #: 
 msgid "Bank"
@@ -432,16 +811,40 @@ msgid "Edit"
 msgstr "編集"
 
 #: 
-msgid "Event Attendees"
-msgstr "イベント参加者"
+msgid "Event Title"
+msgstr "イベントタイトル"
 
 #: 
-msgid "Event Nonattendees"
-msgstr "イベント不参加者"
+msgid "Create Event"
+msgstr "イベント作成"
 
 #: 
-msgid "Event Guests"
-msgstr "イベントゲスト"
+msgid "Create a new Event"
+msgstr "新しいイベントを作成"
+
+#: 
+msgid " errors. Please see below"
+msgstr " 個のエラーがあります。以下を確認してください"
+
+#: 
+msgid "Select your event type"
+msgstr "イベントタイプを選択"
+
+#: 
+msgid "You must pick an event type."
+msgstr "イベントタイプを選択する必要があります。"
+
+#: 
+msgid "No Attendance counts recorded"
+msgstr "出席数は記録されていません"
+
+#: 
+msgid "Event Status"
+msgstr "イベント状況"
+
+#: 
+msgid "Return to Events"
+msgstr "イベントに戻る"
 
 #: 
 msgid "Sundays"
@@ -472,20 +875,68 @@ msgid "Saturdays"
 msgstr "土曜日"
 
 #: 
-msgid "Optional"
-msgstr "オプション"
+msgid "Add Event Type"
+msgstr "イベントタイプを追加"
+
+#: 
+msgid "Custom Family Fields Editor"
+msgstr "カスタム世帯フィールドエディター"
 
 #: 
 msgid "Default Option"
 msgstr "デフォルトオプション"
 
 #: 
+msgid "No custom Family fields have been added yet"
+msgstr "カスタム世帯フィールドはまだ追加されていません"
+
+#: 
+msgid "Special option"
+msgstr "特別オプション"
+
+#: 
+msgid "Security Option"
+msgstr "セキュリティオプション"
+
+#: 
+msgid "You must select a group."
+msgstr "グループを選択する必要があります。"
+
+#: 
+msgid "Edit List Options"
+msgstr "リストオプションを編集"
+
+#: 
+msgid "Help on types.."
+msgstr "タイプに関するヘルプ.."
+
+#: 
 msgid "You must enter a name"
 msgstr "名前を入力する必要があります"
 
 #: 
-msgid "Add New Field"
-msgstr "新しいフィールドを追加する"
+msgid "That field name already exists."
+msgstr "そのフィールド名は既に存在します。"
+
+#: 
+msgid "Family Editor"
+msgstr "世帯エディター"
+
+#: 
+msgid "First name must be entered"
+msgstr "名は必須入力です"
+
+#: 
+msgid "Invalid Birth Date."
+msgstr "無効な生年月日です。"
+
+#: 
+msgid "Not a valid Wedding Date"
+msgstr "無効な結婚記念日です"
+
+#: 
+msgid "Email is Not Valid"
+msgstr "メールアドレスが無効です"
 
 #: 
 msgid "Family Info"
@@ -496,8 +947,8 @@ msgid "Contact Info"
 msgstr "連絡先情報"
 
 #: 
-msgid "Other Info"
-msgstr "他の情報"
+msgid "Envelope Info"
+msgstr "封筒情報"
 
 #: 
 msgid "Custom Fields"
@@ -506,6 +957,34 @@ msgstr "カスタムフィールド"
 #: 
 msgid "Family Members"
 msgstr "家族のメンバー"
+
+#: 
+msgid "First"
+msgstr "名"
+
+#: 
+msgid "Middle"
+msgstr "ミドルネーム"
+
+#: 
+msgid "Last"
+msgstr "姓"
+
+#: 
+msgid "Role"
+msgstr "役割"
+
+#: 
+msgid "Select Gender"
+msgstr "性別を選択"
+
+#: 
+msgid "Select Role"
+msgstr "役割を選択"
+
+#: 
+msgid "Unknown"
+msgstr "不明"
 
 #: 
 msgid "January"
@@ -556,20 +1035,16 @@ msgid "December"
 msgstr "12月"
 
 #: 
-msgid "Add New Member"
-msgstr "新しいメンバーを追加"
+msgid "Unk"
+msgstr "不明"
 
 #: 
-msgid "Previous Family"
-msgstr "前の家族"
+msgid "Created"
+msgstr "作成日"
 
 #: 
-msgid "Next Family"
-msgstr "次の家族"
-
-#: 
-msgid "Delete this Family"
-msgstr "この家族を削除"
+msgid "Envelope Number"
+msgstr "封筒番号"
 
 #: 
 msgid "Upload Photo"
@@ -580,12 +1055,32 @@ msgid "Delete Photo"
 msgstr "写真を削除"
 
 #: 
+msgid "Timeline"
+msgstr "タイムライン"
+
+#: 
+msgid "Pledges and Payments"
+msgstr "献金予約と支払い"
+
+#: 
+msgid "No property assignments."
+msgstr "プロパティの割り当てはありません。"
+
+#: 
 msgid "Value"
 msgstr "値"
 
 #: 
 msgid "Edit Value"
 msgstr "値を編集"
+
+#: 
+msgid "Assign a New Property"
+msgstr "新しいプロパティを割り当て"
+
+#: 
+msgid "Assign"
+msgstr "割り当て"
 
 #: 
 msgid "Date Updated"
@@ -596,16 +1091,40 @@ msgid "Updated By"
 msgstr "更新者"
 
 #: 
+msgid "Show Pledges"
+msgstr "献金予約を表示"
+
+#: 
+msgid "Show Payments"
+msgstr "支払いを表示"
+
+#: 
+msgid "Since"
+msgstr "以降"
+
+#: 
 msgid "Update"
 msgstr "更新"
+
+#: 
+msgid "Pledge or Payment"
+msgstr "予約または支払い"
 
 #: 
 msgid "Date"
 msgstr "日付"
 
 #: 
+msgid "NonDeductible"
+msgstr "控除対象外"
+
+#: 
 msgid "Schedule"
 msgstr "スケジュール"
+
+#: 
+msgid "Method"
+msgstr "支払い方法"
 
 #: 
 msgid "Comment"
@@ -616,12 +1135,160 @@ msgid "Close"
 msgstr "閉じる"
 
 #: 
+msgid "Confirm Delete"
+msgstr "削除の確認"
+
+#: 
 msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr "プロフィール写真を削除しようとしています　この手順は元に戻せません"
 
 #: 
+msgid "Do you want to proceed?"
+msgstr "続行しますか？"
+
+#: 
+msgid "You are about to email copy of the family information to the following emails"
+msgstr "以下のメールアドレスに世帯情報のコピーを送信しようとしています"
+
+#: 
+msgid "Financial Reports"
+msgstr "財務レポート"
+
+#: 
+msgid "Report Type"
+msgstr "レポートタイプ"
+
+#: 
+msgid "Select Report Type"
+msgstr "レポートタイプを選択"
+
+#: 
+msgid "Pledge Summary"
+msgstr "予約概要"
+
+#: 
+msgid "Pledge Family Summary"
+msgstr "世帯別予約概要"
+
+#: 
+msgid "Pledge Reminders"
+msgstr "予約リマインダー"
+
+#: 
+msgid "Voting Members"
+msgstr "投票権のあるメンバー"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "寄付レポート (納税証明)"
+
+#: 
+msgid "Zero Givers"
+msgstr "寄付ゼロの利用者"
+
+#: 
+msgid "Individual Deposit Report"
+msgstr "個別入金レポート"
+
+#: 
+msgid "Advanced Deposit Report"
+msgstr "詳細入金レポート"
+
+#: 
 msgid "Next"
 msgstr "次"
+
+#: 
+msgid "Filter by Family"
+msgstr "世帯でフィルター"
+
+#: 
+msgid "Report Start Date"
+msgstr "レポート開始日"
+
+#: 
+msgid "Report End Date"
+msgstr "レポート終了日"
+
+#: 
+msgid "Apply Report Dates To"
+msgstr "レポート日付の適用先"
+
+#: 
+msgid "Deposit Date (Default)"
+msgstr "入金日 (デフォルト)"
+
+#: 
+msgid "Payment Date"
+msgstr "支払日"
+
+#: 
+msgid "Filter by Deposit"
+msgstr "入金でフィルター"
+
+#: 
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr "入金が選択されている場合、日付基準は無視されます。"
+
+#: 
+msgid "All deposits within date range"
+msgstr "日付範囲内のすべての入金"
+
+#: 
+msgid "Filter by Payment Type"
+msgstr "支払いタイプでフィルター"
+
+#: 
+msgid "All Methods"
+msgstr "すべての方法"
+
+#: 
+msgid "Check"
+msgstr "小切手"
+
+#: 
+msgid "Cash"
+msgstr "現金"
+
+#: 
+msgid "Bank Draft"
+msgstr "銀行振込"
+
+#: 
+msgid "Minimum Total Amount:"
+msgstr "最小合計金額:"
+
+#: 
+msgid "0 - No Minimum"
+msgstr "0 - 制限なし"
+
+#: 
+msgid "Other Settings"
+msgstr "その他の設定"
+
+#: 
+msgid "Only Payments with Pledges"
+msgstr "予約済みの支払いのみ"
+
+#: 
+msgid "All Payments"
+msgstr "すべての支払い"
+
+#: 
+msgid "Only Families with unpaid pledges"
+msgstr "未払いの予約がある世帯のみ"
+
+#: 
+msgid "All Families"
+msgstr "すべての世帯"
+
+#: 
+msgid "Report Heading:"
+msgstr "レポート見出し:"
+
+#: 
+msgid "Graphic"
+msgstr "グラフィック"
 
 #: 
 msgid "Church Address"
@@ -632,12 +1299,32 @@ msgid "Blank"
 msgstr "銀行"
 
 #: 
+msgid "Remittance Slip:"
+msgstr "送金票:"
+
+#: 
+msgid "Sort Data by:"
+msgstr "データの並べ替え:"
+
+#: 
+msgid "Deposit"
+msgstr "入金"
+
+#: 
 msgid "All Data"
 msgstr "全てのデータ"
 
 #: 
+msgid "Moderate Detail"
+msgstr "標準的な詳細"
+
+#: 
 msgid "Summary Data"
 msgstr "概要データ"
+
+#: 
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "投票権を得るには、過去何年以内に<br>寄付を行っている必要がありますか<br>(寄付を不要とする場合は 0)"
 
 #: 
 msgid "CSV"
@@ -652,6 +1339,14 @@ msgid "Create Report"
 msgstr "レポートを作成する"
 
 #: 
+msgid "Deposit Listing"
+msgstr "入金一覧"
+
+#: 
+msgid "Deposits"
+msgstr "入金"
+
+#: 
 msgid "Delete Selected Rows"
 msgstr "選択した行を削除"
 
@@ -664,12 +1359,156 @@ msgid "Export Selected Rows (CSV)"
 msgstr "選択した行をエクスポート　CSV"
 
 #: 
+msgid "Fundraiser Listing"
+msgstr "資金調達一覧"
+
+#: 
+msgid "Date Start"
+msgstr "開始日"
+
+#: 
 msgid "Apply Filters"
 msgstr "フィルターを適用する"
 
 #: 
+msgid "Date End"
+msgstr "終了日"
+
+#: 
+msgid "Clear Filter"
+msgstr "フィルターをクリア"
+
+#: 
 msgid "Number"
 msgstr "番号"
+
+#: 
+msgid "Create New Fund Raiser"
+msgstr "新しい資金調達を作成"
+
+#: 
+msgid "Add Donated Item"
+msgstr "寄付アイテムを追加"
+
+#: 
+msgid "Generate Catalog"
+msgstr "カタログを生成"
+
+#: 
+msgid "Generate Bid Sheets"
+msgstr "入札シートを生成"
+
+#: 
+msgid "Generate Certificates"
+msgstr "証明書を生成"
+
+#: 
+msgid "Donated items for this fundraiser"
+msgstr "この資金調達のための寄付アイテム"
+
+#: 
+msgid "Donor"
+msgstr "寄付者"
+
+#: 
+msgid "Buyer"
+msgstr "購入者"
+
+#: 
+msgid "Sale Price"
+msgstr "販売価格"
+
+#: 
+msgid "Material Value"
+msgstr "資産価値"
+
+#: 
+msgid "Minimum Price"
+msgstr "最低価格"
+
+#: 
+msgid "Family Geographic Utilities"
+msgstr "世帯位置情報ユーティリティ"
+
+#: 
+msgid "Select Family"
+msgstr "世帯を選択"
+
+#: 
+msgid "Maximum number of neighbors"
+msgstr "近隣住民の最大表示数"
+
+#: 
+msgid "Maximum distance"
+msgstr "最大距離"
+
+#: 
+msgid "Data file format"
+msgstr "データファイル形式"
+
+#: 
+msgid "GPS Visualizer"
+msgstr "GPS ビジュアライザー"
+
+#: 
+msgid "Street Atlas USA"
+msgstr "Street Atlas USA"
+
+#: 
+msgid "Include families in the coordinate file"
+msgstr "座標ファイルに世帯を含める"
+
+#: 
+msgid "Neighbor Families"
+msgstr "近隣世帯"
+
+#: 
+msgid "Make Data File"
+msgstr "データファイルを作成"
+
+#: 
+msgid "Show Neighbors"
+msgstr "近隣住民を表示"
+
+#: 
+msgid "Distance"
+msgstr "距離"
+
+#: 
+msgid "Direction"
+msgstr "方向"
+
+#: 
+msgid "Latitude"
+msgstr "緯度"
+
+#: 
+msgid "Longitude"
+msgstr "経度"
+
+#: 
+msgid "Add to Cart"
+msgstr "カートに追加"
+
+#: 
+msgid "Intersect with Cart"
+msgstr "カートと交差選択"
+
+#: 
+msgid "Remove from Cart"
+msgstr "カートから削除"
+
+#: 
+msgid "Group Editor"
+msgstr "グループエディター"
+
+#: 
+msgid "Group Settings"
+msgstr "グループ設定"
+
+#: 
+msgid "Type of Group"
+msgstr "グループの種類"
 
 #: 
 msgid "Group Member Roles"
@@ -680,36 +1519,148 @@ msgid "Clone roles"
 msgstr "ロールをクローンする"
 
 #: 
+msgid "from group"
+msgstr "グループより"
+
+#: 
+msgid "Select a group"
+msgstr "グループを選択"
+
+#: 
+msgid "Group Specific Properties"
+msgstr "グループ固有のプロパティ"
+
+#: 
 msgid "Enabled"
 msgstr "有効"
+
+#: 
+msgid "Edit Group-Specific Properties Form"
+msgstr "グループ固有プロパティフォームを編集"
 
 #: 
 msgid "Disabled"
 msgstr "無効"
 
 #: 
+msgid "Enable Group Specific Properties"
+msgstr "グループ固有プロパティを有効にする"
+
+#: 
 msgid "Group Roles"
 msgstr "グループロール"
+
+#: 
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr "グループ役割名の変更は、ボックスからフォーカスが外れるとすぐに保存されます"
 
 #: 
 msgid "New Role"
 msgstr "新しいロール"
 
 #: 
-msgid "Add New Role"
-msgstr "新しいロールを追加"
+msgid "Group Listing"
+msgstr "グループ一覧"
+
+#: 
+msgid "Group Member Properties Editor"
+msgstr "グループメンバープロパティエディター"
+
+#: 
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr "このグループには現在プロパティがありません！グループエディターで追加できます。"
+
+#: 
+msgid "Return to Person Record"
+msgstr "個人レコードに戻る"
 
 #: 
 msgid "Editing"
 msgstr "編集中"
 
 #: 
+msgid "data for member"
+msgstr "メンバー用データ"
+
+#: 
+msgid "Group-Specific Properties Form Editor"
+msgstr "グループ固有プロパティフォームエディター"
+
+#: 
+msgid "No properties have been added yet"
+msgstr "プロパティはまだ追加されていません"
+
+#: 
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
+msgstr "警告: 「変更を保存」をクリックせずに上、下、削除、または「新規追加」ボタンを使用すると、フィールドの変更内容は失われます！"
+
+#: 
+msgid "Show in"
+msgstr "表示先:"
+
+#: 
+msgid "Person View"
+msgstr "個人ビュー"
+
+#: 
+msgid "Group reports"
+msgstr "グループ・レポート"
+
+#: 
+msgid "Select the group you would like to report"
+msgstr "レポート対象のグループを選択"
+
+#: 
+msgid "No Role Selected"
+msgstr "役割が選択されていません"
+
+#: 
+msgid "Only cart people?"
+msgstr "カート内の人物のみ？"
+
+#: 
+msgid "Report Model"
+msgstr "レポートモデル"
+
+#: 
+msgid "Report for group and role selected"
+msgstr "選択したグループと役割のレポート"
+
+#: 
+msgid "Report for any role in group selected"
+msgstr "選択したグループの全役割のレポート"
+
+#: 
+msgid "Select which information you want to include"
+msgstr "含める情報を選択してください"
+
+#: 
+msgid "Standard Info"
+msgstr "標準情報"
+
+#: 
 msgid "Other Email"
 msgstr "他のメールアドレス"
 
 #: 
+msgid "GroupRole"
+msgstr "グループでの役割"
+
+#: 
+msgid "Group-Specific Property Fields"
+msgstr "グループ固有のプロパティフィールド"
+
+#: 
 msgid "Undefined"
 msgstr "未定義"
+
+#: 
+msgid "Group View"
+msgstr "グループビュー"
+
+#: 
+msgid "Edit this Group"
+msgstr "このグループを編集"
 
 #: 
 msgid "Delete this Group"
@@ -718,6 +1669,30 @@ msgstr "このグループを削除"
 #: 
 msgid "Confirm Delete Group"
 msgstr "グループの削除の確認"
+
+#: 
+msgid "Please confirm deletion of this group record"
+msgstr "このグループ・レコードの削除を確認してください"
+
+#: 
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr "これにより、このグループに関連付けられたすべての役割およびグループ固有プロパティデータも削除されます。"
+
+#: 
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr "すべてのグループ所属およびプロパティが破棄されます。グループメンバー自体は変更されません。"
+
+#: 
+msgid "Please select target group for members"
+msgstr "メンバーの移行先グループを選択してください"
+
+#: 
+msgid "Add Group Members to Cart"
+msgstr "グループメンバーをカートに追加"
+
+#: 
+msgid "Map this group"
+msgstr "このグループを地図に表示"
 
 #: 
 msgid "Email Group"
@@ -730,6 +1705,70 @@ msgstr "メンバー数"
 #: 
 msgid "Default Role"
 msgstr "デフォルトロール"
+
+#: 
+msgid "Group-Specific Properties"
+msgstr "グループ固有プロパティ"
+
+#: 
+msgid "Disabled for this group."
+msgstr "このグループでは無効です。"
+
+#: 
+msgid "Assigned Properties"
+msgstr "割り当てられたプロパティ"
+
+#: 
+msgid "Group Members"
+msgstr "グループメンバー"
+
+#: 
+msgid "Remove Selected Members from group"
+msgstr "選択したメンバーをグループから削除"
+
+#: 
+msgid "Add Selected Members to Cart"
+msgstr "選択したメンバーをカートに追加"
+
+#: 
+msgid "Add Selected Members to Group"
+msgstr "選択したメンバーをグループに追加"
+
+#: 
+msgid "Move Selected Members to Group"
+msgstr "選択したメンバーを別のグループに移動"
+
+#: 
+msgid "Add Group Member"
+msgstr "グループメンバーを追加"
+
+#: 
+msgid "Letters and Mailing Labels"
+msgstr "手紙と宛名ラベル"
+
+#: 
+msgid "Newsletter labels"
+msgstr "ニュースレター用ラベル"
+
+#: 
+msgid "Confirm data labels"
+msgstr "データラベルの確認"
+
+#: 
+msgid "Listing All Church Events"
+msgstr "すべての教会イベント一覧"
+
+#: 
+msgid "Start Date/Time"
+msgstr "開始日時"
+
+#: 
+msgid "Invalid login or password"
+msgstr "ログイン名またはパスワードが無効です"
+
+#: 
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr "ログイン失敗回数が多すぎます。アカウントがロックされました。管理者に連絡してください。"
 
 #: 
 msgid "Please Login"
@@ -748,12 +1787,48 @@ msgid "Login"
 msgstr "ログイン"
 
 #: 
+msgid "Envelope Manager"
+msgstr "封筒マネージャー"
+
+#: 
+msgid "Update Family Records"
+msgstr "世帯レコードを更新"
+
+#: 
+msgid "Update Envelopes"
+msgstr "封筒を更新"
+
+#: 
 msgid "Confirm"
 msgstr "確認"
 
 #: 
+msgid "Sort by"
+msgstr "並べ替え順"
+
+#: 
+msgid "Zero"
+msgstr "ゼロ"
+
+#: 
+msgid "Assign starting at #"
+msgstr "割り当て開始番号 #"
+
+#: 
+msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr "教会の緯度または経度が不足しているため、地図を表示できません。設定メニューで教会の住所を更新してください。"
+
+#: 
+msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
+msgstr "Google Map API キーが設定されていません。小規模な地点セットでのみ動作します。設定メニューの地図セクションでキーを作成してください。"
+
+#: 
 msgid "Member Role Change"
 msgstr "メンバーのロールを変更"
+
+#: 
+msgid "Member's Name"
+msgstr "メンバー名"
 
 #: 
 msgid "Current Role"
@@ -764,12 +1839,80 @@ msgid "All People"
 msgstr "全員"
 
 #: 
-msgid "Men"
-msgstr "男性"
+msgid "Email All"
+msgstr "全員にメール"
 
 #: 
-msgid "Women"
-msgstr "女性"
+msgid "Email All (BCC)"
+msgstr "全員にメール (BCC)"
+
+#: 
+msgid "Family Roles"
+msgstr "世帯内の役割"
+
+#: 
+msgid "Family Geographic"
+msgstr "世帯位置情報"
+
+#: 
+msgid "Update All Family Coordinates"
+msgstr "すべての世帯座標を更新"
+
+#: 
+msgid "Volunteer Opportunities"
+msgstr "ボランティアの機会"
+
+#: 
+msgid "Families"
+msgstr "世帯"
+
+#: 
+msgid "See all Families"
+msgstr "すべての世帯を見る"
+
+#: 
+msgid "People"
+msgstr "人物"
+
+#: 
+msgid "See All People"
+msgstr "すべての人物を見る"
+
+#: 
+msgid "Sunday School Kids"
+msgstr "日曜学校の子供たち"
+
+#: 
+msgid "More info"
+msgstr "詳細情報"
+
+#: 
+msgid "Reports on groups and roles"
+msgstr "グループと役割に関するレポート"
+
+#: 
+msgid "Report on group and roles selected (it may be a multi-page PDF)."
+msgstr "選択したグループと役割のレポート (複数ページのPDFになる場合があります)。"
+
+#: 
+msgid "Generate letters and mailing labels."
+msgstr "手紙と宛名ラベルを生成します。"
+
+#: 
+msgid "Role / Gender"
+msgstr "役割 / 性別"
+
+#: 
+msgid "Count"
+msgstr "数"
+
+#: 
+msgid "People Classification"
+msgstr "人物分類"
+
+#: 
+msgid "Gender Demographics"
+msgstr "性別統計"
 
 #: 
 msgid "Boys"
@@ -778,6 +1921,4429 @@ msgstr "男の子"
 #: 
 msgid "Girls"
 msgstr "女の子"
+
+#: 
+msgid "Sunday School Classes"
+msgstr "日曜学校のクラス"
+
+#: 
+msgid "Deposit Tracking"
+msgstr "入金追跡"
+
+#: 
+msgid "Latest Families"
+msgstr "最新の世帯"
+
+#: 
+msgid "Family Name"
+msgstr "世帯名"
+
+#: 
+msgid "Updated Families"
+msgstr "更新された世帯"
+
+#: 
+msgid "Updated"
+msgstr "更新日"
+
+#: 
+msgid "Please confirm deletion of this note"
+msgstr "このノートの削除を確認してください"
+
+#: 
+msgid "Yes, delete this record"
+msgstr "はい、このレコードを削除します"
+
+#: 
+msgid "(this action cannot be undone)"
+msgstr "(この操作は取り消せません)"
+
+#: 
+msgid "Note Editor"
+msgstr "ノートエディター"
+
+#: 
+msgid "Private"
+msgstr "プライベート"
+
+#: 
+msgid "Person"
+msgstr "個人"
+
+#: 
+msgid "Group"
+msgstr "グループ"
+
+#: 
+msgid "Option"
+msgstr "オプション"
+
+#: 
+msgid "Error: Duplicate"
+msgstr "エラー: 重複"
+
+#: 
+msgid "Default"
+msgstr "デフォルト"
+
+#: 
+msgid "Duplicate name found."
+msgstr "重複した名前が見つかりました。"
+
+#: 
+msgid "Make Default"
+msgstr "デフォルトに設定"
+
+#: 
+msgid "Exit"
+msgstr "終了"
+
+#: 
+msgid "Add New"
+msgstr "新規追加"
+
+#: 
+msgid " by that name already exists."
+msgstr " という名前は既に存在します。"
+
+#: 
+msgid "Buyer Number Editor"
+msgstr "購入者番号エディター"
+
+#: 
+msgid "Generate Statement"
+msgstr "明細を生成"
+
+#: 
+msgid "Buyers for this fundraiser:"
+msgstr "この資金調達の購入者:"
+
+#: 
+msgid "Select all"
+msgstr "すべて選択"
+
+#: 
+msgid "Select none"
+msgstr "すべて解除"
+
+#: 
+msgid "Add Buyer"
+msgstr "購入者を追加"
+
+#: 
+msgid "Generate Statements for Selected"
+msgstr "選択した項目に対して明細を生成"
+
+#: 
+msgid "Select"
+msgstr "選択"
+
+#: 
+msgid "Custom Person Fields Editor"
+msgstr "カスタム個人フィールドエディター"
+
+#: 
+msgid "No custom person fields have been added yet"
+msgstr "カスタム個人フィールドはまだ追加されていません"
+
+#: 
+msgid "Person Editor"
+msgstr "個人エディター"
+
+#: 
+msgid "Not a valid Friend Date"
+msgstr "無効な友人登録日です"
+
+#: 
+msgid "Not a valid Membership Date"
+msgstr "無効な会員登録日です"
+
+#: 
+msgid "Work Email is Not Valid"
+msgstr "職場のメールアドレスが無効です"
+
+#: 
+msgid "Birth Month"
+msgstr "誕生月"
+
+#: 
+msgid "Birth Day"
+msgstr "誕生日"
+
+#: 
+msgid "Birth Year"
+msgstr "誕生年"
+
+#: 
+msgid "Hide Age"
+msgstr "年齢を非表示にする"
+
+#: 
+msgid "Create a new family (using last name)"
+msgstr "新しい世帯を作成 (姓を使用)"
+
+#: 
+msgid "Friend Date"
+msgstr "友人登録日"
+
+#: 
+msgid "Person Profile"
+msgstr "個人プロフィール"
+
+#: 
+msgid "Not assigned"
+msgstr "未割り当て"
+
+#: 
+msgid "Printable Page"
+msgstr "印刷用ページ"
+
+#: 
+msgid "Edit \"Why Came\" Notes"
+msgstr "「来会の理由」ノートを編集"
+
+#: 
+msgid "Delete this Record"
+msgstr "このレコードを削除"
+
+#: 
+msgid "Make User"
+msgstr "ユーザーを作成"
+
+#: 
+msgid "Edit User"
+msgstr "ユーザーを編集"
+
+#: 
+msgid "List Members"
+msgstr "メンバー一覧"
+
+#: 
+msgid "No group assignments."
+msgstr "グループの割り当てはありません。"
+
+#: 
+msgid "Change Role"
+msgstr "役割を変更"
+
+#: 
+msgid "Update Properties"
+msgstr "プロパティを更新"
+
+#: 
+msgid "Assign New Group"
+msgstr "新しいグループを割り当て"
+
+#: 
+msgid "No volunteer opportunity assignments."
+msgstr "ボランティア機会の割り当てはありません。"
+
+#: 
+msgid "Assign a New Volunteer Opportunity"
+msgstr "新しいボランティア機会を割り当て"
+
+#: 
+msgid "Electronic Transaction Details"
+msgstr "電子取引の詳細"
+
+#: 
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr "控除対象外金額を合計金額より大きくすることはできません。"
+
+#: 
+msgid "At least one fund must have a non-zero amount."
+msgstr "少なくとも1つの基金にゼロ以外の金額を入力する必要があります。"
+
+#: 
+msgid "Must specify non-zero check number"
+msgstr "ゼロ以外の小切手番号を指定してください"
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "「現金」支払いの場合、小切手番号は無効です"
+
+#: 
+msgid " more entries will fit."
+msgstr " 個の追加エントリが入ります。"
+
+#: 
+msgid "Deposit closed"
+msgstr "入金完了"
+
+#: 
+msgid "Find family->"
+msgstr "世帯を検索->"
+
+#: 
+msgid "Payment Schedule"
+msgstr "支払いスケジュール"
+
+#: 
+msgid "Select Schedule"
+msgstr "スケジュールを選択"
+
+#: 
+msgid "Weekly"
+msgstr "毎週"
+
+#: 
+msgid "Monthly"
+msgstr "毎月"
+
+#: 
+msgid "Quarterly"
+msgstr "四半期ごと"
+
+#: 
+msgid "Once"
+msgstr "一度のみ"
+
+#: 
+msgid "Other"
+msgstr "その他"
+
+#: 
+msgid "Payment by"
+msgstr "支払い方法:"
+
+#: 
+msgid "Scan check"
+msgstr "小切手をスキャン"
+
+#: 
+msgid "find family from check account #"
+msgstr "小切手口座番号から世帯を検索 #"
+
+#: 
+msgid "Set default check account number for family"
+msgstr "世帯のデフォルト小切手口座番号を設定"
+
+#: 
+msgid "Fund Name"
+msgstr "基金名"
+
+#: 
+msgid "Non-deductible amount"
+msgstr "控除対象外金額"
+
+#: 
+msgid "Printable View"
+msgstr "印刷用表示"
+
+#: 
+msgid "Age"
+msgstr "年齢"
+
+#: 
+msgid "Assigned Groups"
+msgstr "割り当てられたグループ"
+
+#: 
+msgid "Group Name"
+msgstr "グループ名"
+
+#: 
+msgid "Entered"
+msgstr "登録日"
+
+#: 
+msgid "by"
+msgstr "登録者:"
+
+#: 
+msgid "Property successfully assigned."
+msgstr "プロパティが正常に割り当てられました。"
+
+#: 
+msgid " Property Assignment"
+msgstr " プロパティの割り当て"
+
+#: 
+msgid "Assigning"
+msgstr "割り当て中"
+
+#: 
+msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgstr "このプロパティを削除すると、個人、世帯、またはグループのレコードに対するこのプロパティのすべての割り当ても削除されます。"
+
+#: 
+msgid "No, cancel this deletion"
+msgstr "いいえ、削除をキャンセルします"
+
+#: 
+msgid "Property Editor"
+msgstr "プロパティエディター"
+
+#: 
+msgid "You must select a type"
+msgstr "タイプを選択してください"
+
+#: 
+msgid "Select Property Type"
+msgstr "プロパティタイプを選択"
+
+#: 
+msgid "A"
+msgstr "あ"
+
+#: 
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr "プロンプト値を入力すると、自由形式の値を関連付けることができます。"
+
+#: 
+msgid "Property List"
+msgstr "プロパティリスト"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "プロパティ"
+
+#: 
+msgid "Prompt"
+msgstr "プロンプト"
+
+#: 
+msgid "Warning"
+msgstr "警告"
+
+#: 
+msgid "This property type is still being used by at least one property."
+msgstr "このプロパティタイプはまだ少なくとも1つのプロパティで使用されています。"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using"
+msgstr "このタイプを削除すると、これを使用しているすべてのプロパティも削除され、"
+
+#: 
+msgid "it and lose any corresponding property assignments."
+msgstr "対応するプロパティの割り当てが失われます。"
+
+#: 
+msgid "Please confirm deletion of this Property Type"
+msgstr "このプロパティタイプの削除を確認してください"
+
+#: 
+msgid "Property Type Editor"
+msgstr "プロパティタイプエディター"
+
+#: 
+msgid "Property Type List"
+msgstr "プロパティタイプリスト"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Class"
+msgstr "クラス"
+
+#: 
+msgid "Properties"
+msgstr "プロパティ"
+
+#: 
+msgid " Property Unassignment"
+msgstr " プロパティの割り当て解除"
+
+#: 
+msgid "Please confirm removal of this property from this"
+msgstr "このレコードからこのプロパティを削除することを確認してください"
+
+#: 
+msgid "Unassigning"
+msgstr "解除中"
+
+#: 
+msgid "Yes, unassign this Property"
+msgstr "はい、このプロパティを解除します"
+
+#: 
+msgid "No, retain this assignment"
+msgstr "いいえ、この割り当てを維持します"
+
+#: 
+msgid "Query Listing"
+msgstr "クエリ一覧"
+
+#: 
+msgid "Free-Text Query"
+msgstr "フリーテキストクエリ"
+
+#: 
+msgid "Export Results to CSV file"
+msgstr "結果を CSV ファイルにエクスポート"
+
+#: 
+msgid "Execute SQL"
+msgstr "SQL を実行"
+
+#: 
+msgid "An error occurred"
+msgstr "エラーが発生しました"
+
+#: 
+msgid " record(s) returned"
+msgstr " 件のレコードが返されました"
+
+#: 
+msgid "Add Results To Cart"
+msgstr "結果をカートに追加"
+
+#: 
+msgid "Intersect Results With Cart"
+msgstr "結果をカートと交差選択"
+
+#: 
+msgid "Remove Results From Cart"
+msgstr "結果をカートから削除"
+
+#: 
+msgid "Return to Query Menu"
+msgstr "クエリメニューに戻る"
+
+#: 
+msgid "Query View"
+msgstr "クエリビュー"
+
+#: 
+msgid "This value is required."
+msgstr "この値は必須です。"
+
+#: 
+msgid "This value must be numeric."
+msgstr "この値は数値である必要があります。"
+
+#: 
+msgid "This value must be at least "
+msgstr "この値は少なくとも "
+
+#: 
+msgid "This value cannot be more than "
+msgstr "この値は最大 "
+
+#: 
+msgid " characters long"
+msgstr " 文字である必要があります"
+
+#: 
+msgid "This value cannot be less than "
+msgstr "この値は最小 "
+
+#: 
+msgid "Run Query Again"
+msgstr "クエリを再実行"
+
+#: 
+msgid "Execute Query"
+msgstr "クエリを実行"
+
+#: 
+msgid "Pledge Reminder Report"
+msgstr "献金予約リマインダーレポート"
+
+#: 
+msgid "Restore Database"
+msgstr "データベースの復元"
+
+#: 
+msgid "All donations from this family have been moved to another family."
+msgstr "この世帯からのすべての寄付は別の世帯に移動されました。"
+
+#: 
+msgid "Please confirm deletion of"
+msgstr "削除の確認:"
+
+#: 
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
+msgstr "申し訳ありませんが、この世帯には寄付の記録があります。この世帯は削除できません。"
+
+#: 
+msgid "Return to Family View"
+msgstr "世帯ビューに戻る"
+
+#: 
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
+msgstr "警告: この世帯には寄付の記録があります。これらの寄付を別の世帯に関連付けるまで、この世帯を削除することはできません。"
+
+#: 
+msgid "Please select another family with whom to associate these donations:"
+msgstr "これらの寄付を関連付ける別の世帯を選択してください:"
+
+#: 
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr "警告: この操作は取り消すことができず、法的影響が生じる可能性があります！"
+
+#: 
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr "現在の寄付実績のある世帯"
+
+#: 
+msgid "Please confirm deletion of this family record:"
+msgstr "この世帯レコードの削除を確認してください:"
+
+#: 
+msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr "注意: これにより、この世帯レコードに関連付けられたすべてのノートも削除されます。"
+
+#: 
+msgid "Delete Family Record ONLY"
+msgstr "世帯レコードのみ削除"
+
+#: 
+msgid "Delete Family Record AND Family Members"
+msgstr "世帯レコードと世帯メンバーを削除"
+
+#: 
+msgid "Listing"
+msgstr "一覧"
+
+#: 
+msgid "My User Settings"
+msgstr "マイ・ユーザー設定"
+
+#: 
+msgid "Variable name"
+msgstr "変数名"
+
+#: 
+msgid "Current Value"
+msgstr "現在の値"
+
+#: 
+msgid "Save Settings"
+msgstr "設定を保存"
+
+#: 
+msgid "Default User Settings"
+msgstr "デフォルト・ユーザー設定"
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value.<BR>"
+msgstr "新しいユーザーに現在の値を変更する権限を与えるには、権限を True に設定してください。<BR>"
+
+#: 
+msgid "Permission"
+msgstr "権限"
+
+#: 
+msgid "System Settings"
+msgstr "システム設定"
+
+#: 
+msgid "Tax Report"
+msgstr "納税レポート"
+
+#: 
+msgid "Calendar Year"
+msgstr "カレンダー年"
+
+#: 
+msgid "Update Latitude & Longitude"
+msgstr "緯度と経度を更新"
+
+#: 
+msgid "User Delete Confirmation"
+msgstr "ユーザー削除の確認"
+
+#: 
+msgid "Please confirm removal of user status from"
+msgstr "ユーザー・ステータスの解除を確認してください:"
+
+#: 
+msgid "User Editor"
+msgstr "ユーザーエディター"
+
+#: 
+msgid "Note: Changes will not take effect until next logon."
+msgstr "注意: 変更は次回のログインまで反映されません。"
+
+#: 
+msgid "Person to Make User"
+msgstr "ユーザーにする対象者"
+
+#: 
+msgid "User"
+msgstr "ユーザー"
+
+#: 
+msgid "Login Name"
+msgstr "ログイン名"
+
+#: 
+msgid "Add Records"
+msgstr "レコードを追加"
+
+#: 
+msgid "Edit Records"
+msgstr "レコードを編集"
+
+#: 
+msgid "Delete Records"
+msgstr "レコードを削除"
+
+#: 
+msgid "Manage Properties and Classifications"
+msgstr "プロパティと分類を管理"
+
+#: 
+msgid "Manage Groups and Roles"
+msgstr "グループと役割を管理"
+
+#: 
+msgid "Manage Donations and Finance"
+msgstr "寄付と財務を管理"
+
+#: 
+msgid "View, Add and Edit Notes"
+msgstr "ノートの表示、追加、編集"
+
+#: 
+msgid "Edit Self"
+msgstr "自分の情報を編集"
+
+#: 
+msgid "(Edit own family only.)"
+msgstr "(自分の世帯のみ編集可能)"
+
+#: 
+msgid "Admin"
+msgstr "管理者"
+
+#: 
+msgid "(Grants all privileges.)"
+msgstr "(すべての特権を付与)"
+
+#: 
+msgid "Style"
+msgstr "スタイル"
+
+#: 
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr "このユーザーに現在の値を変更する権限を与えるには、権限を True に設定してください。"
+
+#: 
+msgid "User Settings"
+msgstr "ユーザー設定"
+
+#: 
+msgid "Last Login"
+msgstr "最終ログイン"
+
+#: 
+msgid "Total Logins"
+msgstr "総ログイン数"
+
+#: 
+msgid "Failed Logins"
+msgstr "ログイン失敗回数"
+
+#: 
+msgid "You must enter the same password in both boxes"
+msgstr "両方のボックスに同じパスワードを入力する必要があります"
+
+#: 
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr "パスワードが単純すぎます。別のものを選択してください。"
+
+#: 
+msgid "Your new password must be at least"
+msgstr "新しいパスワードは少なくとも"
+
+#: 
+msgid "characters"
+msgstr "文字以上である必要があります"
+
+#: 
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
+msgstr "現在のパスワードを入力し、次に新しいパスワードを2回入力してください。パスワードは少なくとも"
+
+#: 
+msgid "characters in length."
+msgstr "文字以上の長さである必要があります。"
+
+#: 
+msgid "Old Password"
+msgstr "旧パスワード"
+
+#: 
+msgid "New Password"
+msgstr "新パスワード"
+
+#: 
+msgid "Confirm New Password"
+msgstr "新パスワードの確認"
+
+#: 
+msgid "Please confirm the password reset of this user"
+msgstr "このユーザーのパスワードリセットを確認してください"
+
+#: 
+msgid "Volunteer Opportunity Editor"
+msgstr "ボランティア機会エディター"
+
+#: 
+msgid "No volunteer opportunities have been added yet"
+msgstr "ボランティアの機会はまだ追加されていません"
+
+#: 
+msgid "\"Why Came\" notes for "
+msgstr "来会の理由 ノート:"
+
+#: 
+msgid "Why did you come to the church?"
+msgstr "なぜ当教会に来られたのですか？"
+
+#: 
+msgid "Why do you keep coming?"
+msgstr "なぜ来会を続けておられるのですか？"
+
+#: 
+msgid "Do you have any suggestions for us?"
+msgstr "何かご意見やご提案はありますか？"
+
+#: 
+msgid "How did you learn of the church?"
+msgstr "どのようにして当教会を知りましたか？"
+
+#: 
+msgid "eMail Dashboard"
+msgstr "メール・ダッシュボード"
+
+#: 
+msgid "Assigned envelope numbers to all families with at least one member."
+msgstr "少なくとも1人のメンバーがいるすべての世帯に封筒番号を割り当てました。"
+
+#: 
+msgid "Assigned envelope numbers to all families."
+msgstr "すべての世帯に封筒番号を割り当てました。"
+
+#: 
+msgid "Version"
+msgstr "バージョン"
+
+#: 
+msgid "Copyright"
+msgstr "著作権"
+
+#: 
+msgid "All rights reserved"
+msgstr "無断転載を禁じます"
+
+#: 
+msgid "True / False"
+msgstr "真 / 偽"
+
+#: 
+msgid "Text Field (50 char)"
+msgstr "テキストフィールド (50文字)"
+
+#: 
+msgid "Text Field (100 char)"
+msgstr "テキストフィールド (100文字)"
+
+#: 
+msgid "Text Field (long)"
+msgstr "テキストフィールド (長文)"
+
+#: 
+msgid "Season"
+msgstr "シーズン"
+
+#: 
+msgid "Person from Group"
+msgstr "グループ内の人物"
+
+#: 
+msgid "Money"
+msgstr "金額"
+
+#: 
+msgid "Phone Number"
+msgstr "電話番号"
+
+#: 
+msgid "Custom Drop-Down List"
+msgstr "カスタム・ドロップダウンリスト"
+
+#: 
+msgid "Thank you for registering your ChurchCRM installation."
+msgstr "ChurchCRM のインストールを登録していただき、ありがとうございます。"
+
+#: 
+msgid "PDF successfully emailed to family members."
+msgstr "PDF が世帯メンバーに正常に送信されました。"
+
+#: 
+msgid "Failed to email PDF to family members."
+msgstr "世帯メンバーへの PDF 送信に失敗しました。"
+
+#: 
+msgid "Group successfully added to the Cart."
+msgstr "グループがカートに正常に追加されました。"
+
+#: 
+msgid "Group successfully removed from the Cart."
+msgstr "グループがカートから正常に削除されました。"
+
+#: 
+msgid "Profile Image successfully removed."
+msgstr "プロフィール画像が正常に削除されました。"
+
+#: 
+msgid "Profile Image successfully updated."
+msgstr "プロフィール画像が正常に更新されました。"
+
+#: 
+msgid "Profile Image upload Error."
+msgstr "プロフィール画像のアップロードエラー。"
+
+#: 
+msgid "Selected record successfully removed from the Cart."
+msgstr "選択されたレコードがカートから正常に削除されました。"
+
+#: 
+msgid "Your cart has been successfully emptied"
+msgstr "カートは正常に空になりました"
+
+#: 
+msgid "Select Fiscal Year"
+msgstr "会計年度を選択"
+
+#: 
+msgid "Invalid Editor ID!"
+msgstr "無効なエディター ID です！"
+
+#: 
+msgid "Select Season"
+msgstr "シーズンを選択"
+
+#: 
+msgid "Winter"
+msgstr "冬"
+
+#: 
+msgid "Spring"
+msgstr "春"
+
+#: 
+msgid "Summer"
+msgstr "夏"
+
+#: 
+msgid "Fall"
+msgstr "秋"
+
+#: 
+msgid "Error: Invalid Editor ID!"
+msgstr "エラー: 無効なエディター ID です！"
+
+#: 
+msgid "Not a valid date"
+msgstr "無効な日付です"
+
+#: 
+msgid "Invalid Year"
+msgstr "無効な年です"
+
+#: 
+msgid "Invalid Number"
+msgstr "無効な数値です"
+
+#: 
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr "数値が大きすぎます。-2147483648 から 2147483647 の間である必要があります"
+
+#: 
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr "金額が大きすぎます。最大は $999999999.99 です"
+
+#: 
+msgid " Bold Italic"
+msgstr " 太字 斜体"
+
+#: 
+msgid " Italic"
+msgstr " 斜体"
+
+#: 
+msgid " Bold"
+msgstr " 太字"
+
+#: 
+msgid "Error making API Call to"
+msgstr "API 呼び出しエラー:"
+
+#: 
+msgid "Error text"
+msgstr "エラーテキスト"
+
+#: 
+msgid "Issue Report!"
+msgstr "不具合報告！"
+
+#: 
+msgid "No personally identifiable information will be submitted unless you purposefully include it."
+msgstr "意図的に含めない限り、個人を特定できる情報は送信されません。"
+
+#: 
+msgid "Dashboard"
+msgstr "ダッシュボード"
+
+#: 
+msgid "Change Password"
+msgstr "パスワード変更"
+
+#: 
+msgid "Home"
+msgstr "ホーム"
+
+#: 
+msgid "Font"
+msgstr "フォント"
+
+#: 
+msgid "Label Type"
+msgstr "ラベルの種類"
+
+#: 
+msgid "Label Grouping"
+msgstr "ラベルのグループ化"
+
+#: 
+msgid "All Individuals"
+msgstr "すべての個人"
+
+#: 
+msgid "Grouped by Family"
+msgstr "世帯ごとにグループ化"
+
+#: 
+msgid "To the parents of"
+msgstr "保護者様へ"
+
+#: 
+msgid "Start Row"
+msgstr "開始行"
+
+#: 
+msgid "Start Column"
+msgstr "開始列"
+
+#: 
+msgid "Ignore Incomplete<br>Addresses"
+msgstr "不完全な住所を無視する"
+
+#: 
+msgid "File Type"
+msgstr "ファイルタイプ"
+
+#: 
+msgid "items"
+msgstr "アイテム"
+
+#: 
+msgid "M/F"
+msgstr "男/女"
+
+#: 
+msgid "Liaison"
+msgstr "連絡係"
+
+#: 
+msgid "City, State, Zip"
+msgstr "市区町村, 都道府県, 郵便番号"
+
+#: 
+msgid "Send Newsletter"
+msgstr "ニュースレターを送信"
+
+#: 
+msgid "Member Name"
+msgstr "メンバー名"
+
+#: 
+msgid "Adult/Child"
+msgstr "大人/子供"
+
+#: 
+msgid "Cell Phone"
+msgstr "携帯電話"
+
+#: 
+msgid "Member/Friend"
+msgstr "会員/友人"
+
+#: 
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr "このオプションにはMySQL 3.22以上が必要です!ブラウザの戻るボタンを押してChurchCRMに戻ってください。"
+
+#: 
+msgid "Work"
+msgstr "職場"
+
+#: 
+msgid "Cell"
+msgstr "携帯"
+
+#: 
+msgid "Estimated value "
+msgstr "推定価値 "
+
+#: 
+msgid "Donated by "
+msgstr "寄付者: "
+
+#: 
+msgid "Paddle"
+msgstr "パドル"
+
+#: 
+msgid "Bid"
+msgstr "入札"
+
+#: 
+msgid "Minimum bid "
+msgstr "最低入札額 "
+
+#: 
+msgid "All Funds"
+msgstr "すべての基金"
+
+#: 
+msgid " for all funds"
+msgstr " (全基金用)"
+
+#: 
+msgid " for fund "
+msgstr " (基金用: "
+
+#: 
+msgid "for funds "
+msgstr " (基金用: "
+
+#: 
+msgid "Donated Items"
+msgstr "寄付アイテム"
+
+#: 
+msgid "Purchased Items"
+msgstr "購入済みアイテム"
+
+#: 
+msgid "Total of all purchases: $"
+msgstr "全購入合計: $"
+
+#: 
+msgid "Total purchases: $"
+msgstr "購入合計: $"
+
+#: 
+msgid "Amount paid: ________________"
+msgstr "支払額: ________________"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "支払い方法: (  ) 現金  (  ) チェック  (  ) クレジットカード __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  有効期限 __ / __"
+
+#: 
+msgid "                                        Signature ________________________________________________________________"
+msgstr "署名 ________________________________________________________________"
+
+#: 
+msgid "Totals"
+msgstr "合計"
+
+#: 
+msgid "Certificate of Ownership"
+msgstr "所有権証明書"
+
+#: 
+msgid "Directory"
+msgstr "名簿"
+
+#: 
+msgid "Page"
+msgstr "ページ"
+
+#: 
+msgid "Wedding"
+msgstr "結婚"
+
+#: 
+msgid "and"
+msgstr "および"
+
+#: 
+msgid "Group Directory"
+msgstr "グループ名簿"
+
+#: 
+msgid "Please detach this slip and mail with your next gift."
+msgstr "この伝票を切り離し、次回の献金と一緒に郵送してください。"
+
+#: 
+msgid "Please mail you next gift to "
+msgstr "次回の献金は、こちらまで郵送してください: "
+
+#: 
+msgid "Gift Amount"
+msgstr "献金額"
+
+#: 
+msgid "Gift Designation"
+msgstr "献金指定先"
+
+#: 
+msgid "Sunday School"
+msgstr "日曜学校"
+
+#: 
+msgid "Sunday School Class Functions"
+msgstr "日曜学校クラス機能"
+
+#: 
+msgid "Teachers"
+msgstr "教師"
+
+#: 
+msgid "Send Message"
+msgstr "メッセージを送信"
+
+#: 
+msgid "Quick Status"
+msgstr "クイックステータス"
+
+#: 
+msgid "Birthdays by Month"
+msgstr "月別誕生日"
+
+#: 
+msgid "Students"
+msgstr "生徒"
+
+#: 
+msgid "Mobile"
+msgstr "携帯"
+
+#: 
+msgid "Home Address"
+msgstr "自宅住所"
+
+#: 
+msgid "Dad Name"
+msgstr "父親の名前"
+
+#: 
+msgid "Dad Mobile"
+msgstr "父親の携帯"
+
+#: 
+msgid "Dad Email"
+msgstr "父親のメール"
+
+#: 
+msgid "Mom Name"
+msgstr "母親の名前"
+
+#: 
+msgid "Mom Mobile"
+msgstr "母親の携帯"
+
+#: 
+msgid "Mom Email"
+msgstr "母親のメール"
+
+#: 
+msgid "Compose New Message"
+msgstr "新しいメッセージを作成"
+
+#: 
+msgid "Kids Emails"
+msgstr "子供たちのメール"
+
+#: 
+msgid "Parents Emails"
+msgstr "保護者のメール"
+
+#: 
+msgid "Teachers Emails"
+msgstr "教師のメール"
+
+#: 
+msgid "Attachment"
+msgstr "添付ファイル"
+
+#: 
+msgid "Max. 32MB"
+msgstr "最大 32MB"
+
+#: 
+msgid "Discard"
+msgstr "破棄"
+
+#: 
+msgid "Sunday School Dashboard"
+msgstr "日曜学校ダッシュボード"
+
+#: 
+msgid "Classes"
+msgstr "クラス"
+
+#: 
+msgid "Sunday School Reports"
+msgstr "日曜学校レポート"
+
+#: 
+msgid "Generate class lists and attendance sheets"
+msgstr "名簿と出席簿を生成"
+
+#: 
+msgid "Export All Classes, Kids, and Parent to CSV file"
+msgstr "全クラス、子供、保護者を CSV にエクスポート"
+
+#: 
+msgid "Students not in a Sunday School Class"
+msgstr "日曜学校のクラスに所属していない生徒"
+
+#: 
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr "名簿または出席簿を作成するには、少なくとも1つのグループを選択する必要があります。"
+
+#: 
+msgid "Report Details"
+msgstr "レポート詳細"
+
+#: 
+msgid "To select multiple hold CTL"
+msgstr "複数選択するには CTL を長押ししてください"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups<br>"
+msgstr "複数のグループがある場合、グループ間で改ページされます<br>"
+
+#: 
+msgid "List all Roles (unchecked will list Teacher/Student roles only)"
+msgstr "すべての役割を表示 (チェックなしは教師/生徒のみ)"
+
+#: 
+msgid "First Sunday"
+msgstr "最初の日曜日"
+
+#: 
+msgid "Last Sunday"
+msgstr "最後の日曜日"
+
+#: 
+msgid "No Sunday School"
+msgstr "日曜学校なし"
+
+#: 
+msgid "Extra Students"
+msgstr "予備生徒"
+
+#: 
+msgid "Extra Teachers"
+msgstr "予備教師"
+
+#: 
+msgid "Create Class List"
+msgstr "クラス名簿を作成"
+
+#: 
+msgid "Create Attendance Sheet"
+msgstr "出席簿を作成"
+
+#: 
+msgid "System Users"
+msgstr "システムユーザー"
+
+#: 
+msgid "Calendar"
+msgstr "カレンダー"
+
+#: 
+msgid "Members"
+msgstr "メンバー"
+
+#: 
+msgid "Events"
+msgstr "イベント"
+
+#: 
+msgid "Fundraiser"
+msgstr "資金調達"
+
+#: 
+msgid "Email Export"
+msgstr "メール・エクスポート"
+
+#: 
+msgid "List"
+msgstr "一覧"
+
+#: 
+msgid "Import Data"
+msgstr "データをインポート"
+
+#: 
+msgid "Are you sure you want to delete the selected"
+msgstr "選択した項目を削除してもよろしいですか"
+
+#: 
+msgid "Deposit(s)"
+msgstr "入金"
+
+#: 
+msgid "This will also delete all payments associated with this deposit"
+msgstr "これにより、この入金に関連付けられたすべての支払いも削除されます"
+
+#: 
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr "この操作は取り消すことができず、法的影響が生じる可能性があります！"
+
+#: 
+msgid "Please ensure this what you want to do."
+msgstr "これが本当に行いたいことか確認してください。"
+
+#: 
+msgid "Deposit Type"
+msgstr "入金タイプ"
+
+#: 
+msgid "Deposit Date"
+msgstr "入金日"
+
+#: 
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr "これにより、データベース内の家族エンベロープ番号がこのページで選択したものに上書きされます。続行しますか?"
+
+#: 
+msgid "Family Select"
+msgstr "世帯選択"
+
+#: 
+msgid "with at least one:"
+msgstr "少なくとも1つ:"
+
+#: 
+msgid "Welcome to"
+msgstr "ようこそ"
+
+#: 
+msgid "Church Information"
+msgstr "教会情報"
+
+#: 
+msgid "Email Setup"
+msgstr "メール設定"
+
+#: 
+msgid "Map Settings"
+msgstr "地図設定"
+
+#: 
+msgid "Report Settings"
+msgstr "レポート設定"
+
+#: 
+msgid "Localization"
+msgstr "ローカライズ"
+
+#: 
+msgid "Setting saved"
+msgstr "設定が保存されました"
+
+#: 
+msgid "Edit JSON Settings"
+msgstr "JSON 設定を編集"
+
+#: 
+msgid "Default Value"
+msgstr "デフォルト値"
+
+#: 
+msgid "False"
+msgstr "偽"
+
+#: 
+msgid "True"
+msgstr "真"
+
+#: 
+msgid "Edit Settings"
+msgstr "設定を編集"
+
+#: 
+msgid "Full Path:"
+msgstr "フルパス:"
+
+#: 
+msgid "Backup Complete, Ready for Download."
+msgstr "バックアップが完了しました。ダウンロード可能です。"
+
+#: 
+msgid "Backup Downloaded, Copy on server removed"
+msgstr "バックアップがダウンロードされました。サーバー上のコピーは削除されました"
+
+#: 
+msgid "Campaigns:"
+msgstr "キャンペーン:"
+
+#: 
+msgid "Unsubscribed count:"
+msgstr "配信停止数:"
+
+#: 
+msgid "Unsubscribed count since last send:"
+msgstr "最終送信以降の配信停止数:"
+
+#: 
+msgid "Cleaned count:"
+msgstr "クリーニング済み件数:"
+
+#: 
+msgid "Cleaned count since last send:"
+msgstr "最終送信以降のクリーニング済み件数:"
+
+#: 
+msgid "Functions"
+msgstr "機能"
+
+#: 
+msgid "Export to CSV"
+msgstr "CSV にエクスポート"
+
+#: 
+msgid "Add"
+msgstr "追加"
+
+#: 
+msgid "Enter Name"
+msgstr "名前を入力"
+
+#: 
+msgid "New Release"
+msgstr "新しいリリース"
+
+#: 
+msgid "Self Registration"
+msgstr "セルフ登録"
+
+#: 
+msgid "No coordinates found"
+msgstr "座標が見つかりませんでした"
+
+#: 
+msgid "Anonymous"
+msgstr "匿名"
+
+#: 
+msgid "Registration Complete"
+msgstr "登録完了"
+
+#: 
+msgid "Add All Classes"
+msgstr "すべてのクラスを追加"
+
+#: 
+msgid "Clear All Classes"
+msgstr "すべてのクラスを解除"
+
+#: 
+msgid "Add All Families"
+msgstr "すべての世帯を追加"
+
+#: 
+msgid "Clear All Families"
+msgstr "すべての世帯を解除"
+
+#: 
+msgid "Add All Funds"
+msgstr "すべての基金を追加"
+
+#: 
+msgid "Clear All Funds"
+msgstr "すべての基金を解除"
+
+#: 
+msgid "Deposit Comment"
+msgstr "入金コメント"
+
+#: 
+msgid "Your previous session timed out.  Please login again."
+msgstr "前回のセッションがタイムアウトしました。もう一度ログインしてください。"
+
+#: 
+msgid "Register a New Family"
+msgstr "新しい世帯を登録"
+
+#: 
+msgid "Signature definition file signature failed validation"
+msgstr "署名定義ファイルの署名検証に失敗しました"
+
+#: 
+msgid "One or more files failed signature validation"
+msgstr "1つ以上のファイルの署名検証に失敗しました"
+
+#: 
+msgid "item"
+msgstr "アイテム"
+
+#: 
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr "-----------------------------------------------------------------------------------------------------------------------------------------------"
+
+#: 
+msgid "Buyer # "
+msgstr "購入者番号 # "
+
+#: 
+msgid "Family Members:"
+msgstr "世帯メンバー:"
+
+#: 
+msgid "Anniversary"
+msgstr "記念日"
+
+#: 
+msgid "Notes"
+msgstr "メモ"
+
+#: 
+msgid "Reports"
+msgstr "レポート"
+
+#: 
+msgid "File Name:"
+msgstr "ファイル名:"
+
+#: 
+msgid "family"
+msgstr "家族"
+
+#: 
+msgid "Date Entered"
+msgstr "入力日"
+
+#: 
+msgid "CSV Import"
+msgstr "CSVインポート"
+
+#: 
+msgid "Members:"
+msgstr "メンバー:"
+
+#: 
+msgid "There were "
+msgstr "ありました "
+
+#: 
+msgid "Inactive"
+msgstr "非アクティブ"
+
+#: 
+msgid "Start Time"
+msgstr "開始時刻"
+
+#: 
+msgid "Filter by Fund"
+msgstr "資金でフィルター"
+
+#: 
+msgid "Estimated value"
+msgstr "推定値"
+
+#: 
+msgid "Disable Group Specific Properties"
+msgstr "グループ固有のプロパティを無効にする"
+
+#: 
+msgid "Text Group"
+msgstr "テキストグループ"
+
+#: 
+msgid "Group Properties"
+msgstr "グループプロパティ"
+
+#: 
+msgid "There was a problem retrieving the requested object"
+msgstr "要求されたオブジェクトを取得する際に問題が発生しました"
+
+#: 
+msgid "All"
+msgstr "すべて"
+
+#: 
+msgid "Family Map"
+msgstr "家族マップ"
+
+#: 
+msgid "Groups"
+msgstr "グループ"
+
+#: 
+msgid "Total $"
+msgstr "合計 $"
+
+#: 
+msgid "with this property..."
+msgstr "このプロパティで..."
+
+#: 
+msgid "Church Email"
+msgstr "教会メール"
+
+#: 
+msgid "Include only these classifications in the directory, comma separated"
+msgstr "ディレクトリにこれらの分類のみを含める(カンマ区切り)"
+
+#: 
+msgid "These are the family role numbers designated as head of house"
+msgstr "これらは家族の頭として指定された役割番号です"
+
+#: 
+msgid "These are the family role numbers designated as spouse"
+msgstr "これらは配偶者として指定された役割番号です"
+
+#: 
+msgid "These are the family role numbers designated as child"
+msgstr "これらは子供として指定された役割番号です"
+
+#: 
+msgid "Should only administrators have access to the CSV export system and directory report?"
+msgstr "管理者のみがCSVエクスポートシステムとディレクトリレポートにアクセスできるようにしますか?"
+
+#: 
+msgid "Minimum length a user may set their password to"
+msgstr "ユーザーがパスワードに設定できる最小長"
+
+#: 
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr "許可されていない(明らかすぎる)パスワードのカンマ区切りリスト。"
+
+#: 
+msgid "Default City"
+msgstr "デフォルト市区町村"
+
+#: 
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr "デフォルト都道府県 - 2文字の略語である必要があります!"
+
+#: 
+msgid "Default account for receiving a copy of all emails"
+msgstr "すべてのメールのコピーを受け取るデフォルトアカウント"
+
+#: 
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr "SMTPサーバーアドレス (mail.server.com:25)"
+
+#: 
+msgid "Does your SMTP server require auththentication (username/password)?"
+msgstr "SMTPサーバーは認証(ユーザー名/パスワード)が必要ですか?"
+
+#: 
+msgid "SMTP Username"
+msgstr "SMTPユーザー名"
+
+#: 
+msgid "SMTP Password"
+msgstr "SMTPパスワード"
+
+#: 
+msgid "Internationalization (I18n) support"
+msgstr "国際化(I18n)サポート"
+
+#: 
+msgid "First month of the fiscal year"
+msgstr "会計年度の最初の月"
+
+#: 
+msgid "Latitude of the church, used to center the Google map"
+msgstr "教会の緯度(Googleマップの中心に使用)"
+
+#: 
+msgid "Longitude of the church, used to center the Google map"
+msgstr "教会の経度(Googleマップの中心に使用)"
+
+#: 
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr "人物エディタで友人日付の入力を無効にするには、trueを設定します。人物エディタで友人日付の入力を有効にするには、falseを設定します。"
+
+#: 
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr "ファミリーエディタのニュースレター購読の管理を無効にするにはtrueを設定します。"
+
+#: 
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr "ファミリーエディタで結婚日の入力を無効にするにはtrueを設定します。ファミリーエディタで結婚日の入力を有効にするにはfalseを設定します。"
+
+#: 
+msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
+msgstr "ファミリーエディタで緯度と経度の入力を無効にするにはtrueを設定します。ファミリーエディタで緯度と経度の入力を有効にするにはfalseを設定します。ルックアップは実行されますが、表示されません。"
+
+#: 
+msgid "Set true to enable use of donation envelopes"
+msgstr "寄付エンベロープの使用を有効にするにはtrueを設定します"
+
+#: 
+msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
+msgstr "各ページの上部にヘッダーとして表示されるHTMLコードを入力します。タグを閉じてください!注:新しいヘッダーを表示するには、ブラウザを2回更新する必要があります。"
+
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "預金伝票レポートのチェック数"
+
+#: 
+msgid "Set true to enable use of scanned checks"
+msgstr "スキャンされたチェックの使用を有効にするにはtrueを設定します"
+
+#: 
+msgid "Unit used to measure distance, miles or km."
+msgstr "距離を測定するために使用される単位(マイルまたはkm)"
+
+#: 
+msgid "Names of markers for Google Maps in order of classification"
+msgstr "分類順のGoogleマップのマーカーの名前"
+
+#: 
+msgid "Enable non-deductible payments"
+msgstr "控除不可能な支払いを有効にします"
+
+#: 
+msgid "Set true to enable family self registration."
+msgstr "家族のセルフ登録を有効にするにはtrueを設定します。"
+
+#: 
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr "左マージン (1 = 1/100インチ)"
+
+#: 
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr "線の太さ (1 = 1/100インチ)"
+
+#: 
+msgid "Church City"
+msgstr "教会市区町村"
+
+#: 
+msgid "Church State"
+msgstr "教会都道府県"
+
+#: 
+msgid "Church Zip"
+msgstr "教会郵便番号"
+
+#: 
+msgid "Church Phone"
+msgstr "教会電話"
+
+#: 
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr "税務報告書の最上行の文言。日付はこの行の最後に追加されます。"
+
+#: 
+msgid "Verbage for bottom line of tax report."
+msgstr "税務報告書の下部行の文言。"
+
+#: 
+msgid "Tax Report signer"
+msgstr "税務報告書署名者"
+
+#: 
+msgid "Verbage for the pledge reminder report"
+msgstr "誓約リマインダーレポートの文言"
+
+#: 
+msgid "Pledge Reminder Signer"
+msgstr "誓約リマインダー署名者"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr "誓約リマインダーレポートの文言 - 誓約の記録がない"
+
+#: 
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr "誓約リマインダーレポートの文言 - 支払い記録がない"
+
+#: 
+msgid "Verbage for the database information confirmation and correction report"
+msgstr "データベース情報確認・修正レポートの文言"
+
+#: 
+msgid "Database information confirmation and correction report signer"
+msgstr "データベース情報確認・修正レポート署名者"
+
+#: 
+msgid "Verbage for the pledge summary report"
+msgstr "誓約サマリーレポートの文言"
+
+#: 
+msgid "Verbage for the directory report"
+msgstr "ディレクトリレポートの文言"
+
+#: 
+msgid "Church Letterhead path and file"
+msgstr "教会レターヘッドパスとファイル"
+
+#: 
+msgid "lookup user images on Gravatar when no local image is present"
+msgstr "ローカル画像がない場合、Gravatarでユーザー画像を検索します"
+
+#: 
+msgid "Enable Remote Backups to Cloud Services"
+msgstr "クラウドサービスへのリモートバックアップを有効にする"
+
+#: 
+msgid "Cloud Service Type (Supported values: WebDAV, Local)"
+msgstr "クラウドサービスタイプ (サポート値: WebDAV、Local)"
+
+#: 
+msgid "Remote Backup Username"
+msgstr "リモートバックアップユーザー名"
+
+#: 
+msgid "Remote Backup Password"
+msgstr "リモートバックアップパスワード"
+
+#: 
+msgid "Interval in Hours for Automatic Remote Backups"
+msgstr "自動リモートバックアップの間隔(時間)"
+
+#: 
+msgid "Last Backup Timestamp"
+msgstr "最後のバックアップタイムスタンプ"
+
+#: 
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr "QuickBooks預金チケット設定"
+
+#: 
+msgid "List Groups"
+msgstr "グループを一覧表示"
+
+#: 
+msgid "List Church Events"
+msgstr "教会イベントを一覧表示"
+
+#: 
+msgid "Add Church Event"
+msgstr "教会イベントを追加"
+
+#: 
+msgid "List Event Types"
+msgstr "イベントタイプを一覧表示"
+
+#: 
+msgid "Check-in and Check-out"
+msgstr "チェックインとチェックアウト"
+
+#: 
+msgid "View All Deposits"
+msgstr "すべての預金を表示"
+
+#: 
+msgid "Deposit Reports"
+msgstr "預金レポート"
+
+#: 
+msgid "Edit Deposit Slip"
+msgstr "預金伝票を編集"
+
+#: 
+msgid "View All Fundraisers"
+msgstr "すべての募金活動を表示"
+
+#: 
+msgid "Create New Fundraiser"
+msgstr "新しい募金活動を作成"
+
+#: 
+msgid "Edit Fundraiser"
+msgstr "募金活動を編集"
+
+#: 
+msgid "View Buyers"
+msgstr "購入者を表示"
+
+#: 
+msgid "Add Donors to Buyer List"
+msgstr "寄付者を購入者リストに追加"
+
+#: 
+msgid "Data/Reports"
+msgstr "データ/レポート"
+
+#: 
+msgid "Query Menu"
+msgstr "クエリメニュー"
+
+#: 
+msgid "CSV Export Records"
+msgstr "CSVレコードをエクスポート"
+
+#: 
+msgid "Family Properties"
+msgstr "家族のプロパティ"
+
+#: 
+msgid "Property Types"
+msgstr "プロパティタイプ"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Zip Code"
+msgstr "郵便番号"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "仕事用メール"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "定期的な参加者"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "ゲスト"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "非参加者"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "非参加者 (スタッフ)"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "最小年齢"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "最大年齢"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "開始日"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "終了日"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "検索"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field"
+msgstr "フィールド"
+
+#. Context: query_qry
+#. Context: queryparameters_qrp
+#: 
+msgid "Registered students"
+msgstr "登録済み学生"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "ボランティア機会"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "月"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "最初の会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "第2会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "カスタムフィールド"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "フィールド値"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "レコードを返すための最小年齢。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "レコードを返すための最大年齢。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "データベースを検索する目的の性別。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "目的の家族の役割を選択してください。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "レコードを返す目的の性別。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "人物レコードを返す目的のプロパティ。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "各メンバーの総貢献を計算するための開始日を選択してください (例: YYYY-MM-DD)。注:寄付を含む日付のみを選択できます。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "各メンバーの総貢献を計算するための最後の日付を入力してください (例: YYYY-MM-DD)。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "次のいずれかの一部を入力してください:名前、市区町村、都道府県、郵便番号、自宅電話、メール、または仕事用メール。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "検索するフィールドを選択してください。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "レコードを返す目的の誕生月。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "レコードを返す目的の日曜学校のクラス。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "登録済み学生のグループ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "レコードを返す目的のメンバーシップ記念月。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "ボランティア機会を選択してください"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "友人になってからの月数"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "比較用の最初の会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "比較用の第2会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "今年誓約"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "ただし今年ではない"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "会計年度。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "メンバー、定期的な参加者など"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "最初のボランティア機会の選択肢"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "第2のボランティア機会の選択肢"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "顧客人物フィールドを選択"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "カスタムフィールドをこの値に一致させます"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "プロパティ別の人物"
+
+#. Context: query_qry
+#: 
+msgid "Birthdays"
+msgstr "誕生日"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "メンバーシップ記念日"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "ボランティア"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "最近の友人"
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "誓約比較"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "誓約が不足しています"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "会計年度別の家族誓約"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "カスタム検索"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "指定されたプロパティが割り当てられている人物レコードを返します。"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "特定の月に誕生日を持つ人物"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "登録済み学生を検索"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "特定の月に参加したメンバー"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "特定の機会のボランティアを検索"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "前の月に登録した友人"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "2つの会計年度間で誓約を比較"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "1年誓約した人を検索しますが、別の年は誓約していません"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "選択した会計年度の各資金について、家族名別の誓約サマリー"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "2つの特定の機会コードに一致するボランティアを検索"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "カスタムフィールド値を持つ人を検索"
+
+#: 
+msgid "Last Edited"
+msgstr "最後に編集"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "mailtoリンク経由でメールを送信するユーザー権限"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "mailtoリンクでメールを分離するデリミタ"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "ディレクトリを作成するユーザー権限"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "CSVファイルをエクスポートするユーザー権限"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "ユーザーが新しいイベントを追加することを許可します"
+
+#: 
+msgid "Weekly on"
+msgstr "毎週"
+
+#: 
+msgid "Monthly on"
+msgstr "毎月"
+
+#: 
+msgid "Yearly on"
+msgstr "毎年"
+
+#: 
+msgid "Family Roles Editor"
+msgstr "家族の役割エディタ"
+
+#: 
+msgid "Person Classification"
+msgstr "人物分類"
+
+#: 
+msgid "Person Classifications"
+msgstr "人物分類"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "人物分類エディタ"
+
+#: 
+msgid "Group Type"
+msgstr "グループタイプ"
+
+#: 
+msgid "Group Types"
+msgstr "グループタイプ"
+
+#: 
+msgid "Group Types Editor"
+msgstr "グループタイプエディタ"
+
+#: 
+msgid "Security Group"
+msgstr "セキュリティグループ"
+
+#: 
+msgid "Security Groups"
+msgstr "セキュリティグループ"
+
+#: 
+msgid "Security Groups Editor"
+msgstr "セキュリティグループエディタ"
+
+#: 
+msgid "Group Member Role"
+msgstr "グループメンバーの役割"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "グループメンバーの役割エディタ"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "人物カスタムリストオプション"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "人物カスタムリストオプション"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "人物カスタムリストオプションエディタ"
+
+#: 
+msgid "Custom List Option"
+msgstr "カスタムリストオプション"
+
+#: 
+msgid "Custom List Options"
+msgstr "カスタムリストオプション"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "カスタムリストオプションエディタ"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "家族カスタムリストオプション"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "家族カスタムリストオプション"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "家族カスタムリストオプションエディタ"
+
+#: 
+msgid "are not allowed."
+msgstr "は許可されていません。"
+
+#: 
+msgid "Name for New"
+msgstr "新規の名前"
+
+#: 
+msgid "Imported"
+msgstr "インポート済み"
+
+#: 
+msgid "Created via Family"
+msgstr "ファミリー経由で作成"
+
+#: 
+msgid "Updated via Family"
+msgstr "ファミリー経由で更新"
+
+#: 
+msgid "Family Data Verified"
+msgstr "ファミリーデータを確認"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "プロフィール画像を削除"
+
+#: 
+msgid "miles"
+msgstr "マイル"
+
+#: 
+msgid "kilometers"
+msgstr "キロメートル"
+
+#: 
+msgid "WebDAV"
+msgstr "WebDAV"
+
+#: 
+msgid "Local"
+msgstr "ローカル"
+
+#. Context: countries
+#: 
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr "アフガニスタン (‫افغانستان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Åland Islands (Åland)"
+msgstr "オーランド諸島 (Åland)"
+
+#. Context: countries
+#: 
+msgid "Albania (Shqipëri)"
+msgstr "アルバニア (Shqipëri)"
+
+#. Context: countries
+#: 
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr "アルジェリア (‫الجزائر‬‎)"
+
+#. Context: countries
+#: 
+msgid "American Samoa"
+msgstr "アメリカンサモア"
+
+#. Context: countries
+#: 
+msgid "Andorra"
+msgstr "アンドラ"
+
+#. Context: countries
+#: 
+msgid "Angola"
+msgstr "アンゴラ"
+
+#. Context: countries
+#: 
+msgid "Anguilla"
+msgstr "アンギラ"
+
+#. Context: countries
+#: 
+msgid "Antarctica"
+msgstr "南極大陸"
+
+#. Context: countries
+#: 
+msgid "Antigua and Barbuda"
+msgstr "アンティグアバーブーダ"
+
+#. Context: countries
+#: 
+msgid "Argentina"
+msgstr "アルゼンチン"
+
+#. Context: countries
+#: 
+msgid "Armenia (Հայաստան)"
+msgstr "アルメニア (Հայաստան)"
+
+#. Context: countries
+#: 
+msgid "Aruba"
+msgstr "アルバ"
+
+#. Context: countries
+#: 
+msgid "Ascension Island"
+msgstr "アセンション島"
+
+#. Context: countries
+#: 
+msgid "Australia"
+msgstr "オーストラリア"
+
+#. Context: countries
+#: 
+msgid "Austria (Österreich)"
+msgstr "オーストリア (Österreich)"
+
+#. Context: countries
+#: 
+msgid "Azerbaijan (Azərbaycan)"
+msgstr "アゼルバイジャン (Azərbaycan)"
+
+#. Context: countries
+#: 
+msgid "Bahamas"
+msgstr "バハマ"
+
+#. Context: countries
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "バーレーン (‫البحرين‬‎)"
+
+#. Context: countries
+#: 
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr "バングラデシュ (বাংলাদেশ)"
+
+#. Context: countries
+#: 
+msgid "Barbados"
+msgstr "バルバドス"
+
+#. Context: countries
+#: 
+msgid "Belarus (Беларусь)"
+msgstr "ベラルーシ (Беларусь)"
+
+#. Context: countries
+#: 
+msgid "Belgium (België)"
+msgstr "ベルギー (België)"
+
+#. Context: countries
+#: 
+msgid "Belize"
+msgstr "ベリーズ"
+
+#. Context: countries
+#: 
+msgid "Benin (Bénin)"
+msgstr "ベナン (Bénin)"
+
+#. Context: countries
+#: 
+msgid "Bermuda"
+msgstr "バミューダ"
+
+#. Context: countries
+#: 
+msgid "Bhutan (འབྲུག)"
+msgstr "ブータン (འབྲུག)"
+
+#. Context: countries
+#: 
+msgid "Bolivia"
+msgstr "ボリビア"
+
+#. Context: countries
+#: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "ボスニアヘルツェゴビナ (Босна и Херцеговина)"
+
+#. Context: countries
+#: 
+msgid "Botswana"
+msgstr "ボツワナ"
+
+#. Context: countries
+#: 
+msgid "Bouvet Island"
+msgstr "ブーベ島"
+
+#. Context: countries
+#: 
+msgid "Brazil (Brasil)"
+msgstr "ブラジル (Brasil)"
+
+#. Context: countries
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "イギリス領インド洋領土"
+
+#. Context: countries
+#: 
+msgid "British Virgin Islands"
+msgstr "イギリス領ヴァージン諸島"
+
+#. Context: countries
+#: 
+msgid "Brunei"
+msgstr "ブルネイ"
+
+#. Context: countries
+#: 
+msgid "Bulgaria (България)"
+msgstr "ブルガリア (България)"
+
+#. Context: countries
+#: 
+msgid "Burkina Faso"
+msgstr "ブルキナファソ"
+
+#. Context: countries
+#: 
+msgid "Burundi (Uburundi)"
+msgstr "ブルンジ (Uburundi)"
+
+#. Context: countries
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "カンボジア (កម្ពុជា)"
+
+#. Context: countries
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "カメルーン (Cameroun)"
+
+#. Context: countries
+#: 
+msgid "Canada"
+msgstr "カナダ"
+
+#. Context: countries
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "カナリア諸島 (islas Canarias)"
+
+#. Context: countries
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "カーボベルデ (Kabu Verdi)"
+
+#. Context: countries
+#: 
+msgid "Caribbean Netherlands"
+msgstr "カリブ海オランダ領"
+
+#. Context: countries
+#: 
+msgid "Cayman Islands"
+msgstr "ケイマン諸島"
+
+#. Context: countries
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "中央アフリカ共和国 (République centrafricaine)"
+
+#. Context: countries
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "セウタ・メリリャ (Ceuta y Melilla)"
+
+#. Context: countries
+#: 
+msgid "Chad (Tchad)"
+msgstr "チャド (Tchad)"
+
+#. Context: countries
+#: 
+msgid "Chile"
+msgstr "チリ"
+
+#. Context: countries
+#: 
+msgid "China (中国)"
+msgstr "中国 (中国)"
+
+#. Context: countries
+#: 
+msgid "Christmas Island"
+msgstr "クリスマス島"
+
+#. Context: countries
+#: 
+msgid "Clipperton Island"
+msgstr "クリッパートン島"
+
+#. Context: countries
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "ココス(キーリング)諸島 (Kepulauan Cocos (Keeling))"
+
+#. Context: countries
+#: 
+msgid "Colombia"
+msgstr "コロンビア"
+
+#. Context: countries
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "コモロ (‫جزر القمر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "コンゴ(DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+
+#. Context: countries
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "コンゴ(共和国) (Congo-Brazzaville)"
+
+#. Context: countries
+#: 
+msgid "Cook Islands"
+msgstr "クック諸島"
+
+#. Context: countries
+#: 
+msgid "Costa Rica"
+msgstr "コスタリカ"
+
+#. Context: countries
+#: 
+msgid "Croatia (Hrvatska)"
+msgstr "クロアチア (Hrvatska)"
+
+#. Context: countries
+#: 
+msgid "Cuba"
+msgstr "キューバ"
+
+#. Context: countries
+#: 
+msgid "Curaçao"
+msgstr "キュラソー"
+
+#. Context: countries
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "キプロス (Κύπρος)"
+
+#. Context: countries
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "チェコ共和国 (Česká republika)"
+
+#. Context: countries
+#: 
+msgid "Denmark (Danmark)"
+msgstr "デンマーク (Danmark)"
+
+#. Context: countries
+#: 
+msgid "Diego Garcia"
+msgstr "ディエゴガルシア"
+
+#. Context: countries
+#: 
+msgid "Djibouti"
+msgstr "ジブチ"
+
+#. Context: countries
+#: 
+msgid "Dominica"
+msgstr "ドミニカ"
+
+#. Context: countries
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "ドミニカ共和国 (República Dominicana)"
+
+#. Context: countries
+#: 
+msgid "Ecuador"
+msgstr "エクアドル"
+
+#. Context: countries
+#: 
+msgid "Egypt (‫مصر‬‎)"
+msgstr "エジプト (‫مصر‬‎)"
+
+#. Context: countries
+#: 
+msgid "El Salvador"
+msgstr "エルサルバドル"
+
+#. Context: countries
+#: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "赤道ギニア (Guinea Ecuatorial)"
+
+#. Context: countries
+#: 
+msgid "Eritrea"
+msgstr "エリトリア"
+
+#. Context: countries
+#: 
+msgid "Estonia (Eesti)"
+msgstr "エストニア (Eesti)"
+
+#. Context: countries
+#: 
+msgid "Ethiopia"
+msgstr "エチオピア"
+
+#. Context: countries
+#: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "フォークランド諸島 (Islas Malvinas)"
+
+#. Context: countries
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "フェロー諸島 (Føroyar)"
+
+#. Context: countries
+#: 
+msgid "Fiji"
+msgstr "フィジー"
+
+#. Context: countries
+#: 
+msgid "Finland (Suomi)"
+msgstr "フィンランド (Suomi)"
+
+#. Context: countries
+#: 
+msgid "France"
+msgstr "フランス"
+
+#. Context: countries
+#: 
+msgid "French Guiana (Guyane française)"
+msgstr "フランス領ギアナ (Guyane française)"
+
+#. Context: countries
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "フランス領ポリネシア (Polynésie française)"
+
+#. Context: countries
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "フランス領南方・南極地域 (Terres australes françaises)"
+
+#. Context: countries
+#: 
+msgid "Gabon"
+msgstr "ガボン"
+
+#. Context: countries
+#: 
+msgid "Gambia"
+msgstr "ガンビア"
+
+#. Context: countries
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "ジョージア (საქართველო)"
+
+#. Context: countries
+#: 
+msgid "Germany (Deutschland)"
+msgstr "ドイツ (Deutschland)"
+
+#. Context: countries
+#: 
+msgid "Ghana (Gaana)"
+msgstr "ガーナ (Gaana)"
+
+#. Context: countries
+#: 
+msgid "Gibraltar"
+msgstr "ジブラルタル"
+
+#. Context: countries
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "ギリシャ (Ελλάδα)"
+
+#. Context: countries
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "グリーンランド (Kalaallit Nunaat)"
+
+#. Context: countries
+#: 
+msgid "Grenada"
+msgstr "グレナダ"
+
+#. Context: countries
+#: 
+msgid "Guadeloupe"
+msgstr "グアドループ"
+
+#. Context: countries
+#: 
+msgid "Guam"
+msgstr "グアム"
+
+#. Context: countries
+#: 
+msgid "Guatemala"
+msgstr "グアテマラ"
+
+#. Context: countries
+#: 
+msgid "Guernsey"
+msgstr "ガーンジー"
+
+#. Context: countries
+#: 
+msgid "Guinea (Guinée)"
+msgstr "ギニア (Guinée)"
+
+#. Context: countries
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "ギニアビサウ (Guiné Bissau)"
+
+#. Context: countries
+#: 
+msgid "Guyana"
+msgstr "ガイアナ"
+
+#. Context: countries
+#: 
+msgid "Haiti"
+msgstr "ハイチ"
+
+#. Context: countries
+#: 
+msgid "Heard & McDonald Islands"
+msgstr "ハード・マクドナルド諸島"
+
+#. Context: countries
+#: 
+msgid "Honduras"
+msgstr "ホンジュラス"
+
+#. Context: countries
+#: 
+msgid "Hong Kong (香港)"
+msgstr "香港 (香港)"
+
+#. Context: countries
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "ハンガリー (Magyarország)"
+
+#. Context: countries
+#: 
+msgid "Iceland (Ísland)"
+msgstr "アイスランド (Ísland)"
+
+#. Context: countries
+#: 
+msgid "India (भारत)"
+msgstr "インド (भारत)"
+
+#. Context: countries
+#: 
+msgid "Indonesia"
+msgstr "インドネシア"
+
+#. Context: countries
+#: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "イラン (‫ایران‬‎)"
+
+#. Context: countries
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "イラク (‫العراق‬‎)"
+
+#. Context: countries
+#: 
+msgid "Ireland"
+msgstr "アイルランド"
+
+#. Context: countries
+#: 
+msgid "Isle of Man"
+msgstr "マン島"
+
+#. Context: countries
+#: 
+msgid "Israel (‫ישראל‬‎)"
+msgstr "イスラエル (‫ישראל‬‎)"
+
+#. Context: countries
+#: 
+msgid "Italy (Italia)"
+msgstr "イタリア (Italia)"
+
+#. Context: countries
+#: 
+msgid "Jamaica"
+msgstr "ジャマイカ"
+
+#. Context: countries
+#: 
+msgid "Japan (日本)"
+msgstr "日本 (日本)"
+
+#. Context: countries
+#: 
+msgid "Jersey"
+msgstr "ジャージー"
+
+#. Context: countries
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "ヨルダン (‫الأردن‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "カザフスタン (Казахстан)"
+
+#. Context: countries
+#: 
+msgid "Kenya"
+msgstr "ケニア"
+
+#. Context: countries
+#: 
+msgid "Kiribati"
+msgstr "キリバス"
+
+#. Context: countries
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "コソボ (Kosovë)"
+
+#. Context: countries
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "クウェート (‫الكويت‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "キルギスタン (Кыргызстан)"
+
+#. Context: countries
+#: 
+msgid "Laos (ລາວ)"
+msgstr "ラオス (ລາວ)"
+
+#. Context: countries
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "レバノン (‫لبنان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Lesotho"
+msgstr "レソト"
+
+#. Context: countries
+#: 
+msgid "Liberia"
+msgstr "リベリア"
+
+#. Context: countries
+#: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "リビア (‫ليبيا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Liechtenstein"
+msgstr "リヒテンシュタイン"
+
+#. Context: countries
+#: 
+msgid "Lithuania (Lietuva)"
+msgstr "リトアニア (Lietuva)"
+
+#. Context: countries
+#: 
+msgid "Luxembourg"
+msgstr "ルクセンブルク"
+
+#. Context: countries
+#: 
+msgid "Macau (澳門)"
+msgstr "マカオ (澳門)"
+
+#. Context: countries
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "マケドニア (FYROM) (Македонија)"
+
+#. Context: countries
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "マダガスカル (Madagasikara)"
+
+#. Context: countries
+#: 
+msgid "Malawi"
+msgstr "マラウイ"
+
+#. Context: countries
+#: 
+msgid "Malaysia"
+msgstr "マレーシア"
+
+#. Context: countries
+#: 
+msgid "Maldives"
+msgstr "モルディブ"
+
+#. Context: countries
+#: 
+msgid "Mali"
+msgstr "マリ"
+
+#. Context: countries
+#: 
+msgid "Malta"
+msgstr "マルタ"
+
+#. Context: countries
+#: 
+msgid "Marshall Islands"
+msgstr "マーシャル諸島"
+
+#. Context: countries
+#: 
+msgid "Martinique"
+msgstr "マルティニーク"
+
+#. Context: countries
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "モーリタニア (‫موريتانيا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mauritius (Moris)"
+msgstr "モーリシャス (Moris)"
+
+#. Context: countries
+#: 
+msgid "Mayotte"
+msgstr "マヨット"
+
+#. Context: countries
+#: 
+msgid "Mexico (México)"
+msgstr "メキシコ (México)"
+
+#. Context: countries
+#: 
+msgid "Micronesia"
+msgstr "ミクロネシア"
+
+#. Context: countries
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "モルドバ (Republica Moldova)"
+
+#. Context: countries
+#: 
+msgid "Monaco"
+msgstr "モナコ"
+
+#. Context: countries
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "モンゴル (Монгол)"
+
+#. Context: countries
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "モンテネグロ (Crna Gora)"
+
+#. Context: countries
+#: 
+msgid "Montserrat"
+msgstr "モントセラト"
+
+#. Context: countries
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "モロッコ (‫المغرب‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "モザンビーク (Moçambique)"
+
+#. Context: countries
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "ミャンマー (Burma) (မြန်မာ)"
+
+#. Context: countries
+#: 
+msgid "Namibia (Namibië)"
+msgstr "ナミビア (Namibië)"
+
+#. Context: countries
+#: 
+msgid "Nauru"
+msgstr "ナウル"
+
+#. Context: countries
+#: 
+msgid "Nepal (नेपाल)"
+msgstr "ネパール (नेपाल)"
+
+#. Context: countries
+#: 
+msgid "Netherlands (Nederland)"
+msgstr "オランダ (Nederland)"
+
+#. Context: countries
+#: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "ニューカレドニア (Nouvelle-Calédonie)"
+
+#. Context: countries
+#: 
+msgid "New Zealand"
+msgstr "ニュージーランド"
+
+#. Context: countries
+#: 
+msgid "Nicaragua"
+msgstr "ニカラグア"
+
+#. Context: countries
+#: 
+msgid "Niger (Nijar)"
+msgstr "ニジェール (Nijar)"
+
+#. Context: countries
+#: 
+msgid "Nigeria"
+msgstr "ナイジェリア"
+
+#. Context: countries
+#: 
+msgid "Niue"
+msgstr "ニウエ"
+
+#. Context: countries
+#: 
+msgid "Norfolk Island"
+msgstr "ノーフォーク島"
+
+#. Context: countries
+#: 
+msgid "Northern Mariana Islands"
+msgstr "北マリアナ諸島"
+
+#. Context: countries
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "北朝鮮 (조선 민주주의 인민 공화국)"
+
+#. Context: countries
+#: 
+msgid "Norway (Norge)"
+msgstr "ノルウェー (Norge)"
+
+#. Context: countries
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "オマーン (‫عُمان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr "パキスタン (‫پاکستان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Palau"
+msgstr "パラオ"
+
+#. Context: countries
+#: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "パレスチナ (‫فلسطين‬‎)"
+
+#. Context: countries
+#: 
+msgid "Panama (Panamá)"
+msgstr "パナマ (Panamá)"
+
+#. Context: countries
+#: 
+msgid "Papua New Guinea"
+msgstr "パプアニューギニア"
+
+#. Context: countries
+#: 
+msgid "Paraguay"
+msgstr "パラグアイ"
+
+#. Context: countries
+#: 
+msgid "Peru (Perú)"
+msgstr "ペルー (Perú)"
+
+#. Context: countries
+#: 
+msgid "Philippines"
+msgstr "フィリピン"
+
+#. Context: countries
+#: 
+msgid "Pitcairn Islands"
+msgstr "ピトケアン諸島"
+
+#. Context: countries
+#: 
+msgid "Poland (Polska)"
+msgstr "ポーランド (Polska)"
+
+#. Context: countries
+#: 
+msgid "Portugal"
+msgstr "ポルトガル"
+
+#. Context: countries
+#: 
+msgid "Puerto Rico"
+msgstr "プエルトリコ"
+
+#. Context: countries
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "カタール (‫قطر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "レユニオン (La Réunion)"
+
+#. Context: countries
+#: 
+msgid "Romania (România)"
+msgstr "ルーマニア (România)"
+
+#. Context: countries
+#: 
+msgid "Russia (Россия)"
+msgstr "ロシア (Россия)"
+
+#. Context: countries
+#: 
+msgid "Rwanda"
+msgstr "ルワンダ"
+
+#. Context: countries
+#: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "サン・バルテルミー (Saint-Barthélemy)"
+
+#. Context: countries
+#: 
+msgid "Saint Helena"
+msgstr "セントヘレナ"
+
+#. Context: countries
+#: 
+msgid "Saint Kitts and Nevis"
+msgstr "セントクリストファー・ネイビス"
+
+#. Context: countries
+#: 
+msgid "Saint Lucia"
+msgstr "セントルシア"
+
+#. Context: countries
+#: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "サン・マルタン (Saint-Martin (partie française))"
+
+#. Context: countries
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "サンピエール・ミクロン (Saint-Pierre-et-Miquelon)"
+
+#. Context: countries
+#: 
+msgid "Samoa"
+msgstr "サモア"
+
+#. Context: countries
+#: 
+msgid "San Marino"
+msgstr "サンマリノ"
+
+#. Context: countries
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "サントメ・プリンシペ (São Tomé e Príncipe)"
+
+#. Context: countries
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "サウジアラビア (‫المملكة العربية السعودية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "セネガル (Sénégal)"
+
+#. Context: countries
+#: 
+msgid "Serbia (Србија)"
+msgstr "セルビア (Србија)"
+
+#. Context: countries
+#: 
+msgid "Seychelles"
+msgstr "セーシェル"
+
+#. Context: countries
+#: 
+msgid "Sierra Leone"
+msgstr "シエラレオネ"
+
+#. Context: countries
+#: 
+msgid "Singapore"
+msgstr "シンガポール"
+
+#. Context: countries
+#: 
+msgid "Sint Maarten"
+msgstr "シント・マールテン"
+
+#. Context: countries
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "スロバキア (Slovensko)"
+
+#. Context: countries
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "スロベニア (Slovenija)"
+
+#. Context: countries
+#: 
+msgid "Solomon Islands"
+msgstr "ソロモン諸島"
+
+#. Context: countries
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "ソマリア (Soomaaliya)"
+
+#. Context: countries
+#: 
+msgid "South Africa"
+msgstr "南アフリカ"
+
+#. Context: countries
+#: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "南ジョージア・南サンドウィッチ諸島"
+
+#. Context: countries
+#: 
+msgid "South Korea (대한민국)"
+msgstr "韓国 (대한민국)"
+
+#. Context: countries
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "南スーダン (‫جنوب السودان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Spain (España)"
+msgstr "スペイン (España)"
+
+#. Context: countries
+#: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "スリランカ (ශ්‍රී ලංකාව)"
+
+#. Context: countries
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "セントビンセント・グレナディーン"
+
+#. Context: countries
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "スーダン (‫السودان‬‎)"
+
+#. Context: countries
+#: 
+msgid "Suriname"
+msgstr "スリナム"
+
+#. Context: countries
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "スヴァールバル・ヤンマイエン (Svalbard og Jan Mayen)"
+
+#. Context: countries
+#: 
+msgid "Swaziland"
+msgstr "エスワティニ"
+
+#. Context: countries
+#: 
+msgid "Sweden (Sverige)"
+msgstr "スウェーデン (Sverige)"
+
+#. Context: countries
+#: 
+msgid "Switzerland (Schweiz)"
+msgstr "スイス (Schweiz)"
+
+#. Context: countries
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "シリア (‫سوريا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Taiwan (台灣)"
+msgstr "台湾 (台灣)"
+
+#. Context: countries
+#: 
+msgid "Tajikistan"
+msgstr "タジキスタン"
+
+#. Context: countries
+#: 
+msgid "Tanzania"
+msgstr "タンザニア"
+
+#. Context: countries
+#: 
+msgid "Thailand (ไทย)"
+msgstr "タイ (ไทย)"
+
+#. Context: countries
+#: 
+msgid "Timor-Leste"
+msgstr "東ティモール"
+
+#. Context: countries
+#: 
+msgid "Togo"
+msgstr "トーゴ"
+
+#. Context: countries
+#: 
+msgid "Tokelau"
+msgstr "トケラウ"
+
+#. Context: countries
+#: 
+msgid "Tonga"
+msgstr "トンガ"
+
+#. Context: countries
+#: 
+msgid "Trinidad and Tobago"
+msgstr "トリニダード・トバゴ"
+
+#. Context: countries
+#: 
+msgid "Tristan da Cunha"
+msgstr "トリスタン・ダ・クーニャ"
+
+#. Context: countries
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "チュニジア (‫تونس‬‎)"
+
+#. Context: countries
+#: 
+msgid "Turkey (Türkiye)"
+msgstr "トルコ (Türkiye)"
+
+#. Context: countries
+#: 
+msgid "Turkmenistan"
+msgstr "トルクメニスタン"
+
+#. Context: countries
+#: 
+msgid "Turks and Caicos Islands"
+msgstr "タークス・カイコス諸島"
+
+#. Context: countries
+#: 
+msgid "Tuvalu"
+msgstr "ツバル"
+
+#. Context: countries
+#: 
+msgid "U.S. Outlying Islands"
+msgstr "合衆国領有離島"
+
+#. Context: countries
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "米国領ヴァージン諸島"
+
+#. Context: countries
+#: 
+msgid "Uganda"
+msgstr "ウガンダ"
+
+#. Context: countries
+#: 
+msgid "Ukraine (Україна)"
+msgstr "ウクライナ (Україна)"
+
+#. Context: countries
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "アラブ首長国連邦 (‫الإمارات العربية المتحدة‬‎)"
+
+#. Context: countries
+#: 
+msgid "United Kingdom"
+msgstr "イギリス"
+
+#. Context: countries
+#: 
+msgid "United States"
+msgstr "アメリカ合衆国"
+
+#. Context: countries
+#: 
+msgid "Uruguay"
+msgstr "ウルグアイ"
+
+#. Context: countries
+#: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "ウズベキスタン (Oʻzbekiston)"
+
+#. Context: countries
+#: 
+msgid "Vanuatu"
+msgstr "バヌアツ"
+
+#. Context: countries
+#: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "バチカン市国 (Città del Vaticano)"
+
+#. Context: countries
+#: 
+msgid "Venezuela"
+msgstr "ベネズエラ"
+
+#. Context: countries
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "ベトナム (Việt Nam)"
+
+#. Context: countries
+#: 
+msgid "Wallis and Futuna"
+msgstr "ウォリス・フツナ"
+
+#. Context: countries
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "西サハラ (‫الصحراء الغربية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "イエメン (‫اليمن‬‎)"
+
+#. Context: countries
+#: 
+msgid "Zambia"
+msgstr "ザンビア"
+
+#. Context: countries
+#: 
+msgid "Zimbabwe"
+msgstr "ジンバブエ"
+
+#: 
+msgid "Please verify your family's information"
+msgstr "ご家族の情報をご確認ください"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "確認情報を読み込むことができません"
+
+#: 
+msgid "No Changes"
+msgstr "変更なし"
+
+#: 
+msgid "Page not fond"
+msgstr "ページが見つかりません"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "エラー!ページが見つかりません。"
+
+#: 
+msgid "Family Registration"
+msgstr "ファミリー登録"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "ご家族の確認を開始するために以下を入力してください"
+
+#: 
+msgid "Family Verification"
+msgstr "ファミリー確認"
+
+#: 
+msgid "Work Email"
+msgstr "仕事用メール"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "ファミリー情報確認をリクエスト"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "ファミリー情報をどのように確認してもらいたいかを選択してください"
+
+#: 
+msgid "Online Verification"
+msgstr "オンライン確認"
+
+#: 
+msgid "Verified In Person"
+msgstr "対面で確認済み"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "バックアップアーカイブにはデータベースが含まれていません"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "ユーザーが入力した郵便番号をデータベースに保存するときに大文字にします。"
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "署名者の前に手紙を終了するために使用されます"
+
+#: 
+msgid "Google Analytics Tracking Code"
+msgstr "Googleアナリティクストラッキングコード"
+
+#. Context: locales
+#: 
+msgid "English - United States"
+msgstr "英語 - アメリカ合衆国"
+
+#. Context: locales
+#: 
+msgid "English - Canada"
+msgstr "英語 - カナダ"
+
+#. Context: locales
+#: 
+msgid "English - Australia"
+msgstr "英語 - オーストラリア"
+
+#. Context: locales
+#: 
+msgid "English - Great Britain"
+msgstr "英語 - グレートブリテン"
+
+#. Context: locales
+#: 
+msgid "German - Germany"
+msgstr "ドイツ語 - ドイツ"
+
+#. Context: locales
+#: 
+msgid "Spanish - Spain"
+msgstr "スペイン語 - スペイン"
+
+#. Context: locales
+#: 
+msgid "French - France"
+msgstr "フランス語 - フランス"
+
+#. Context: locales
+#: 
+msgid "Hungarian"
+msgstr "ハンガリー語"
+
+#. Context: locales
+#: 
+msgid "Italian - Italy"
+msgstr "イタリア語 - イタリア"
+
+#. Context: locales
+#: 
+msgid "Norwegian"
+msgstr "ノルウェー語"
+
+#. Context: locales
+#: 
+msgid "Dutch - Netherlands"
+msgstr "オランダ語 - オランダ"
+
+#. Context: locales
+#: 
+msgid "Polish"
+msgstr "ポーランド語"
+
+#. Context: locales
+#: 
+msgid "Portuguese - Brazil"
+msgstr "ポルトガル語 - ブラジル"
+
+#. Context: locales
+#: 
+msgid "Romanian - Romania"
+msgstr "ルーマニア語 - ルーマニア"
+
+#. Context: locales
+#: 
+msgid "Russian"
+msgstr "ロシア語"
+
+#. Context: locales
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "サーミ語 (北部) (スウェーデン)"
+
+#. Context: locales
+#: 
+msgid "Albanian"
+msgstr "アルバニア語"
+
+#. Context: locales
+#: 
+msgid "Vietnamese"
+msgstr "ベトナム語"
+
+#. Context: locales
+#: 
+msgid "Chinese - China"
+msgstr "中国語 - 中国"
+
+#. Context: locales
+#: 
+msgid "Chinese - Taiwan"
+msgstr "中国語 - 台湾"
+
+#: 
+msgid "Maximum upload size"
+msgstr "最大アップロードサイズ"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "選択したファイルがこのサーバーの最大アップロードサイズを超えています"
+
+#: 
+msgid "Failed"
+msgstr "失敗しました"
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "教会普通預金口座番号"
+
+#: 
+msgid "Marked the Family as Inactive"
+msgstr "ファミリーを非アクティブとしてマーク"
+
+#: 
+msgid "Marked the Family as Active"
+msgstr "ファミリーをアクティブとしてマーク"
+
+#: 
+msgid "families"
+msgstr "家族"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "預金チケットタイプ。QBDT - Quickbooks"
+
+#: 
+msgid "Financial Settings"
+msgstr "財務設定"
+
+#: 
+msgid "An invalid configuration name has been requested"
+msgstr "無効な構成名がリクエストされました"
+
+#: 
+msgid "An invalid configuration id has been requested"
+msgstr "無効な構成IDがリクエストされました"
+
+#: 
+msgid "Profile Image uploaded"
+msgstr "プロフィール画像をアップロード"
+
+#: 
+msgid "payment(s)?"
+msgstr "支払い?"
+
+#: 
+msgid "Please ensure this what you want to do.</p>"
+msgstr "これが本当にしたいことであることを確認してください。"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "非アクティブ化を確認"
+
+#: 
+msgid "Confirm Activation"
+msgstr "アクティブ化を確認"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "ファミリーの非アクティブ化を確認してください"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "ファミリーのアクティブ化を確認してください"
+
+#: 
+msgid "Show neighbors with these classifications"
+msgstr "これらの分類を持つ隣人を表示"
+
+#: 
+msgid "Please select a Family."
+msgstr "ファミリーを選択してください。"
+
+#: 
+msgid "Coordinate database file name"
+msgstr "座標データベースファイル名"
+
+#: 
+msgid "select an option"
+msgstr "オプションを選択"
+
+#: 
+msgid "Direct me"
+msgstr "案内してください"
+
+#: 
+msgid "Your cart is empty"
+msgstr "カートは空です"
+
+#: 
+msgid "The record could not be found."
+msgstr "レコードが見つかりませんでした。"
+
+#: 
+msgid "The property is already assigned."
+msgstr "プロパティは既に割り当てられています。"
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "プロパティが正常に割り当てられました。"
+
+#: 
+msgid "The property could not be assigned."
+msgstr "プロパティを割り当てることができませんでした。"
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "プロパティが正常に割り当て解除されました。"
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "プロパティの割り当てを解除できませんでした。"
+
+#: 
+msgid "Select event"
+msgstr "イベントを選択"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "この人物は既にこのイベントにチェックインされています"
+
+#: 
+msgid "CheckOut Person"
+msgstr "チェックアウト人物"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "チェックイン入力を削除"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "チェックアウト大人"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "メール/レポート内の名前の前のテキスト"
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "預金伝票に請求数を表示"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "アカウントが削除されました"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "ChurchCRMアカウントが削除されました。"
+
+#: 
+msgid "Account Locked"
+msgstr "アカウントがロック"
+
+#: 
+msgid "Your New Account"
+msgstr "新しいアカウント"
+
+#: 
+msgid "Password Reset"
+msgstr "パスワードリセット"
+
+#: 
+msgid "Account Unlocked"
+msgstr "アカウントがロック解除"
+
+#: 
+msgid "Part"
+msgstr "部分"
+
+#: 
+msgid "View Photo"
+msgstr "写真を表示"
+
+#: 
+msgid "Status"
+msgstr "ステータス"
+
+#: 
+msgid "Email export"
+msgstr "メール エクスポート"
+
+#: 
+msgid "Include"
+msgstr "含める"
+
+#: 
+msgid "Exclude"
+msgstr "除外"
+
+#: 
+msgid "View Cart"
+msgstr "カートを表示"
+
+#: 
+msgid "Your Cart is Empty"
+msgstr "カートは空です"
+
+#: 
+msgid "View on Map"
+msgstr "マップで表示"
+
+#: 
+msgid "Legend"
+msgstr "凡例"
+
+#: 
+msgid "Actions"
+msgstr "操作"
+
+#: 
+msgid "Action Confirmation"
+msgstr "操作の確認"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "非アクティブな家族を除外"
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "ChurchCRMアカウントがロックされました。"
+
+#: 
+msgid "system user updated"
+msgstr "システムユーザーが更新されました。"
+
+#: 
+msgid "Nexmo SMS From Number"
+msgstr "Nexmo SMSの送信元番号"
+
+#: 
+msgid "OpenLP URL"
+msgstr "OpenLP URL"
+
+#: 
+msgid "OpenLP Username"
+msgstr "OpenLPユーザー名"
+
+#: 
+msgid "OpenLP Password"
+msgstr "OpenLPパスワード"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "キオスク表示タイムスタンプ"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "ログイン画面に紛失パスワードリンクを表示/非表示にします"
+
+#: 
+msgid "Backup"
+msgstr "バックアップ"
+
+#: 
+msgid "Integration"
+msgstr "統合"
+
+#: 
+msgid "Notification"
+msgstr "通知"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "保護者"
+
+#: 
+msgid "A notification was triggered by the classroom teacher at"
+msgstr "クラスルームティーチャーによって通知がトリガーされました"
+
+#: 
+msgid "Please go to this location"
+msgstr "この場所に移動してください"
+
+#: 
+msgid "Your ChurchCRM password has been changed"
+msgstr "ChurchCRMパスワードが変更されました"
+
+#: 
+msgid "Password Reset Link"
+msgstr "パスワードリセットリンク"
+
+#: 
+msgid "Reset Password"
+msgstr "パスワードをリセット"
+
+#: 
+msgid "Reset your password"
+msgstr "パスワードをリセット"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "申し訳ありませんが、現在リクエストを処理することができません。"
+
+#: 
+msgid "Kiosk Manager"
+msgstr "キオスクマネージャー"
+
+#: 
+msgid "Report an issue"
+msgstr "問題を報告"
+
+#: 
+msgid "Enable New Kiosk Registration"
+msgstr "新しいキオスク登録を有効にします"
+
+#: 
+msgid "Active Kiosks"
+msgstr "アクティブなキオスク"
+
+#: 
+msgid "I forgot my password"
+msgstr "パスワードを忘れました"
+
+#: 
+msgid "Attendees Checked In"
+msgstr "チェックインした参加者"
+
+#: 
+msgid "Text Cart"
+msgstr "テキストカート"
+
+#: 
+msgid "Your Church's Website"
+msgstr "教会のウェブサイト"
+
+#: 
+msgid "E"
+msgstr "東"
+
+#: 
+msgid "N"
+msgstr "北"
+
+#: 
+msgid "S"
+msgstr "南"
+
+#: 
+msgid "W"
+msgstr "西"
+
+#: 
+msgid "Search Family"
+msgstr "家族を検索"
+
+#: 
+msgid "Quick Search"
+msgstr "クイック検索"
+
+#: 
+msgid "Add Students"
+msgstr "生徒を追加"
+
+#: 
+msgid "Edit this Class"
+msgstr "このクラスを編集"
+
+#: 
+msgid "OK"
+msgstr "了解"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "この人物のメンバーシップを削除してもよろしいですか"
+
+#: 
+msgid "All Members"
+msgstr "すべてのメンバー"
+
+#: 
+msgid "PhotoBook"
+msgstr "フォトブック"
+
+#: 
+msgid "With Photos"
+msgstr "写真付き"
+
+#: 
+msgid "Create PhotoBook"
+msgstr "フォトブックを作成"
+
+#: 
+msgid "Group Role"
+msgstr "グループ内役割"
+
+#: 
+msgid "Members to cart"
+msgstr "メンバーをカートに追加"
+
+#: 
+msgid "Profile"
+msgstr "プロフィール"
+
+#: 
+msgid "Sign out"
+msgstr "サインアウト"
+
+#: 
+msgid "Sermon Text"
+msgstr "説教テキスト"
+
+#: 
+msgid "People Dashboard"
+msgstr "人物ダッシュボード"
+
+#: 
+msgid "Calendar Name"
+msgstr "カレンダー名"
+
+#: 
+msgid "New Calendar"
+msgstr "新規カレンダー"
+
+#: 
+msgid "Validation Error"
+msgstr "検証エラー"
+
+#: 
+msgid "Link Not found"
+msgstr "リンクが見つかりません"
+
+#: 
+msgid "Email Functions"
+msgstr "メール機能"
+
+#: 
+msgid "Debug"
+msgstr "デバッグ"
+
+#: 
+msgid "Family Custom Fields"
+msgstr "家族のカスタムフィールド"
+
+#: 
+msgid "Person Custom Fields"
+msgstr "人物のカスタムフィールド"
+
+#: 
+msgid "Donation Funds"
+msgstr "寄付資金"
+
+#: 
+msgid "Unable to open file"
+msgstr "ファイルを開くことができません"
+
+#: 
+msgid "Missing calendar access token"
+msgstr "カレンダーアクセストークンがありません"
+
+#: 
+msgid "Calendar access token not found"
+msgstr "カレンダーアクセストークンが見つかりません"
+
+#: 
+msgid "User must have Delete Records permission"
+msgstr "ユーザーにはレコード削除権限が必要です"
+
+#: 
+msgid "ChurchCRM Central Notifications URL"
+msgstr "ChurchCRM中央通知URL"
+
+#: 
+msgid "Follow us on"
+msgstr "フォローしてください"
+
+#: 
+msgid "invalid event type id"
+msgstr "無効なイベントタイプID"
+
+#: 
+msgid "invalid calendar pinning"
+msgstr "無効なカレンダーピニング"
+
+#: 
+msgid "Duplicate Emails"
+msgstr "重複したメールアドレス"
+
+#: 
+msgid "Latest People"
+msgstr "最近追加された人物"
+
+#: 
+msgid "Missing"
+msgstr "見つかりません"
+
+#: 
+msgid "Software Version"
+msgstr "ソフトウェア・バージョン"
+
+#: 
+msgid "Records"
+msgstr "レコード"
+
+#: 
+msgid "URL"
+msgstr "URL"
+
+#: 
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr "認証器アプリに表示されるアプリケーション名を指定します"
+
+#: 
+msgid "Review"
+msgstr "レビュー"
+
+#: 
+msgid "Thank you for registering your family"
+msgstr "ご家族を登録いただきありがとうございます"
+
+#: 
+msgid "Register another family!"
+msgstr "別の家族を登録してください!"
+
+#: 
+msgid "Done, show me the homepage!"
+msgstr "完了、ホームページを表示してください!"
 
 #: 
 msgid "LastName, FirstName MiddleName"
@@ -792,6 +6358,10 @@ msgid "2FA Code"
 msgstr "2FAコード"
 
 #: 
+msgid "2 Factor Authentication enrollment"
+msgstr "2要素認証の登録"
+
+#: 
 msgid "Your new password is too similar to your old one."
 msgstr "新しいパスワードが以前のパスワードと似すぎています"
 
@@ -804,32 +6374,40 @@ msgid "Enter new user password. Administratively set passwords are not subject t
 msgstr "新しいユーザーパスワードを入力します　管理者が設定したパスワードには、長さや複雑さの要件は適用されません"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "ChurchCRMのインストール情報"
-
-#: 
 msgid "Web Server"
 msgstr "Webサーバ"
-
-#: 
-msgid "Email Information"
-msgstr "メールアドレス情報"
-
-#: 
-msgid "Passwords"
-msgstr "パスワード"
-
-#: 
-msgid "2FA"
-msgstr "2FA - 2要素認証"
 
 #: 
 msgid "Login Info"
 msgstr "ログイン情報"
 
 #: 
+msgid "Login Count"
+msgstr "ログイン回数"
+
+#: 
 msgid "Failed Login"
 msgstr "ログインに失敗"
+
+#: 
+msgid "Permissions"
+msgstr "権限"
+
+#: 
+msgid "Manage Notes"
+msgstr "メモの管理"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "家族別献金約束（プレッジ）概要"
+
+#: 
+msgid "Paid"
+msgstr "支払い済み"
+
+#: 
+msgid "Owe"
+msgstr "未払額"
 
 #: 
 msgid "Start Date"
@@ -838,6 +6416,10 @@ msgstr "開始日"
 #: 
 msgid "End Date"
 msgstr "終了日"
+
+#: 
+msgid "This field is required"
+msgstr "この項目は必須です"
 
 #: 
 msgid "Text"
@@ -860,6 +6442,10 @@ msgid "To confirm enrollment, you'll need to enter the code generated by your au
 msgstr "登録を確認するには、認証アプリによって生成されたコードを入力する必要があります"
 
 #: 
+msgid "Loading"
+msgstr "読み込み中"
+
+#: 
 msgid "Api Key"
 msgstr "APIキー"
 
@@ -874,6 +6460,10 @@ msgstr "初期ページ長　ページあたりの行数　を変更します"
 #: 
 msgid "User Interface"
 msgstr "ユーザーインターフェース"
+
+#: 
+msgid "Deleted"
+msgstr "削除"
 
 #: 
 msgid "System"
@@ -923,4 +6513,454 @@ msgstr "これが機能しない場合は、次のリンクをコピーしてブ
 #: 
 msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
 msgstr "このメールは、あなたのアカウントに対するアクティビティのリクエストを受け取ったために受信しました　リクエストしていない場合は、このメールを削除しても安全です"
+
+#: 
+msgid "property"
+msgstr "プロパティ"
+
+#: 
+msgid "Default Zip"
+msgstr "デフォルト郵便番号"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "クレジットカード支払者"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "クレジットカードで支払うように設定されている人物。"
+
+#: 
+msgid "Log Settings"
+msgstr "ログ設定"
+
+#: 
+msgid "View"
+msgstr "表示"
+
+#: 
+msgid "Error"
+msgstr "エラー"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "カートへの追加が完了しました"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "カートをすべて空にしますか？"
+
+#: 
+msgid "Family added to cart"
+msgstr "家族がカートに追加されました"
+
+#: 
+msgid "Base URL is required"
+msgstr "ベースURLが必要です"
+
+#: 
+msgid "City is required"
+msgstr "市区町村が必要です"
+
+#: 
+msgid "Database name is required"
+msgstr "データベース名が必要です"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "データベースサーバーホスト名またはIPアドレスが必要です (例: localhostまたは127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "データベースサーバーポートが必要です (例: 3306)"
+
+#: 
+msgid "Passwords do not match"
+msgstr "パスワードが一致しません"
+
+#: 
+msgid "Phone number"
+msgstr "電話番号"
+
+#: 
+msgid "Previous"
+msgstr "前"
+
+#: 
+msgid "Street address"
+msgstr "住所（番地）"
+
+#: 
+msgid "Zip code is required"
+msgstr "郵便番号は必須です"
+
+#: 
+msgid "Database Backup"
+msgstr "データベースのバックアップ"
+
+#: 
+msgid "Setting updated successfully"
+msgstr "設定が正常に更新されました"
+
+#: 
+msgid "Skip Backup"
+msgstr "バックアップをスキップ"
+
+#: 
+msgid "System Up to Date"
+msgstr "システムが最新です"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "システムアップグレードウィザード"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "システムアップグレードが正常に完了しました!"
+
+#: 
+msgid "Checks"
+msgstr "チェック"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "入金情報が正常に保存されました"
+
+#: 
+msgid "Funds"
+msgstr "資金"
+
+#: 
+msgid "Payments"
+msgstr "支払い"
+
+#: 
+msgid "Total Deposit"
+msgstr "入金総額"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "ChurchCRMのインストール"
+
+#: 
+msgid "Copy"
+msgstr "コピー"
+
+#: 
+msgid "Server Information"
+msgstr "サーバー情報"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "このチェックインレコードを削除してもよろしいですか?"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "出席カウントカテゴリー"
+
+#: 
+msgid "Attendance Notes"
+msgstr "出席メモ"
+
+#: 
+msgid "Change Event"
+msgstr "イベントを変更"
+
+#: 
+msgid "Check In"
+msgstr "チェックイン"
+
+#: 
+msgid "Clear"
+msgstr "クリア"
+
+#: 
+msgid "People Checked In"
+msgstr "チェックイン済みの人物"
+
+#: 
+msgid "Search by name or email..."
+msgstr "名前またはメールで検索..."
+
+#: 
+msgid "Access Denied"
+msgstr "アクセスが拒否されました"
+
+#: 
+msgid "Administrator privileges"
+msgstr "管理者権限"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "すべての孤立ファイルを削除"
+
+#: 
+msgid "Delete records permission"
+msgstr "レコード削除権限"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "%d個のファイルを削除し、%d個が失敗しました"
+
+#: 
+msgid "Deletion Results"
+msgstr "削除結果"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "バックアップファイルをここにドラッグアンドドロップしてください"
+
+#: 
+msgid "Loading..."
+msgstr "読み込み中..."
+
+#: 
+msgid "Security Recommendation"
+msgstr "セキュリティに関する推奨事項"
+
+#: 
+msgid "Apr"
+msgstr "4月"
+
+#: 
+msgid "Aug"
+msgstr "8月"
+
+#: 
+msgid "Dec"
+msgstr "12月"
+
+#: 
+msgid "Feb"
+msgstr "2月"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "税務報告書（寄付証明書）の作成"
+
+#: 
+msgid "Giving funds and categories"
+msgstr "献金基金およびカテゴリー"
+
+#: 
+msgid "ID"
+msgstr "ID"
+
+#: 
+msgid "Jan"
+msgstr "1月"
+
+#: 
+msgid "Jul"
+msgstr "7月"
+
+#: 
+msgid "Jun"
+msgstr "6月"
+
+#: 
+msgid "M"
+msgstr "男"
+
+#: 
+msgid "Manage Users"
+msgstr "ユーザー管理"
+
+#: 
+msgid "Mar"
+msgstr "3月"
+
+#: 
+msgid "Membership Reports"
+msgstr "会員レポート"
+
+#: 
+msgid "New Payment"
+msgstr "新規支払い"
+
+#: 
+msgid "New Pledge"
+msgstr "新規献金約束（プレッジ）"
+
+#: 
+msgid "Nov"
+msgstr "11月"
+
+#: 
+msgid "Oct"
+msgstr "10月"
+
+#: 
+msgid "Sep"
+msgstr "9月"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "ChurchCRMへようこそ"
+
+#: 
+msgid "YTD Payments"
+msgstr "本年累計支払額"
+
+#: 
+msgid "yes"
+msgstr "はい"
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "ADD、Delete、および並べ替え変更は即座です。名前と説明の変更は「変更を保存」をクリックして保存する必要があります。"
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "削除してもよろしいですか"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "矢印と削除ボタンは即座に反映されます。「変更を保存」をクリックする前に上、下、削除、または「新規追加」ボタンを使用すると、フィールド名の変更内容は失われます！"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "このフィールドを削除すると、このフィールドに割り当てられたすべての世帯データが完全失われます！"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "このフィールドを削除すると、このフィールドに割り当てられたすべての個人データが完全に失われます！"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "変更は保存されませんでした！修正して再試行してください。"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "プロパティ削除の確認"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "ボランティア機会削除の確認"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "削除の確認"
+
+#: 
+msgid "Existing"
+msgstr "既存"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "既存のカスタム世帯フィールド"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "既存のカスタム個人フィールド"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "既存のボランティア機会"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "フィールドが正常に削除されました"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "無効な CSRF トークンです"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "無効なフィールドまたは選択があります。"
+
+#: 
+msgid "Item deleted successfully"
+msgstr "アイテムが正常に削除されました"
+
+#: 
+msgid "Move down"
+msgstr "下に移動"
+
+#: 
+msgid "Move up"
+msgstr "上に移動"
+
+#: 
+msgid "Opportunity"
+msgstr "機会"
+
+#: 
+msgid "Order"
+msgstr "順序"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "%s 世帯に PDF を正常に送信しました。"
+
+#: 
+msgid "Percentage"
+msgstr "パーセンテージ"
+
+#: 
+msgid "Person Properties"
+msgstr "個人のプロパティ"
+
+#: 
+msgid "Property Type"
+msgstr "プロパティタイプ"
+
+#: 
+msgid "Property to Delete"
+msgstr "削除するプロパティ"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "このボランティア機会に割り当てられている人物がいます。削除すると割り当てが解除されます:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "これにより、現在割り当てられているすべての人物から削除されます。"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "ボランティアの機会"
+
+#: 
+msgid "Warning:"
+msgstr "警告:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "はい、この機会を削除します"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "使用するためにユーザーが財務権限を必要とするクエリ"
+
+#: 
+msgid "Fund(s)"
+msgstr "基金"
+
+#: 
+msgid "Password reset for"
+msgstr "パスワードのリセット対象:"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "スペイン語 - アルゼンチン"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "スペイン語 - コロンビア"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "スペイン語 - エルサルバドル"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "スペイン語 - メキシコ"
 

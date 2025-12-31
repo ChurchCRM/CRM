@@ -1,14 +1,14 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Manage Groups & Roles permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
 
 $sPageTitle = gettext('Member Role Change');
 
@@ -55,7 +55,7 @@ extract($rsCurrentRole);
 $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $grp_RoleListID ORDER BY lst_OptionSequence";
 $rsAllRoles = RunQuery($sSQL);
 
-require_once 'Include/Header.php'
+require_once __DIR__ . '/Include/Header.php'
 
 ?>
 
@@ -98,12 +98,12 @@ require_once 'Include/Header.php'
     </tr>
     <tr>
         <td colspan="2" class="text-center">
-            <input type="submit" class="btn btn-default" name="Submit" value="<?= gettext('Update') ?>">
+            <input type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Update') ?>">
             <?php
             if ($iReturn) {
-                echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="' . gettext('Cancel') . "\" onclick=\"document.location='GroupView.php?GroupID=" . $iGroupID . "';\">";
+                echo '&nbsp;&nbsp;<input type="button" class="btn btn-secondary" name="Cancel" value="' . gettext('Cancel') . "\" onclick=\"document.location='GroupView.php?GroupID=" . $iGroupID . "';\">";
             } else {
-                echo '&nbsp;&nbsp;<input type="button" class="btn btn-default" name="Cancel" value="' . gettext('Cancel') . "\" onclick=\"document.location='PersonView.php?PersonID=" . $iPersonID . "';\">";
+                echo '&nbsp;&nbsp;<input type="button" class="btn btn-secondary" name="Cancel" value="' . gettext('Cancel') . "\" onclick=\"document.location='PersonView.php?PersonID=" . $iPersonID . "';\">";
             }
             ?>
         </td>
@@ -111,4 +111,4 @@ require_once 'Include/Header.php'
 </table>
 </form>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -77,40 +77,29 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 // Format the BirthDate
 $dBirthDate = MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $per_Flags);
 
-// Assign the values locally, after selecting whether to display the family or person information
-SelectWhichAddress($sAddress1, $sAddress2, $per_Address1, $per_Address2, $fam_Address1, $fam_Address2, false);
-$sCity = SelectWhichInfo($per_City, $fam_City, false);
-$sState = SelectWhichInfo($per_State, $fam_State, false);
-$sZip = SelectWhichInfo($per_Zip, $fam_Zip, false);
-$sCountry = SelectWhichInfo($per_Country, $fam_Country, false);
+// Assign person data only - each person must enter their own information
+$sAddress1 = $per_Address1 ?? '';
+$sAddress2 = $per_Address2 ?? '';
+$sCity = $per_City ?? '';
+$sState = $per_State ?? '';
+$sZip = $per_Zip ?? '';
+$sCountry = $per_Country ?? '';
 
-$sHomePhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy),
-    ExpandPhoneNumber($fam_HomePhone, $fam_Country, $dummy),
-    false
-);
-$sWorkPhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_WorkPhone, $sCountry, $dummy),
-    ExpandPhoneNumber($fam_WorkPhone, $fam_Country, $dummy),
-    false
-);
-$sCellPhone = SelectWhichInfo(
-    ExpandPhoneNumber($per_CellPhone, $sCountry, $dummy),
-    ExpandPhoneNumber($fam_CellPhone, $fam_Country, $dummy),
-    false
-);
+$sHomePhone = ExpandPhoneNumber($per_HomePhone, $sCountry, $dummy);
+$sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sCountry, $dummy);
+$sCellPhone = ExpandPhoneNumber($per_CellPhone, $sCountry, $dummy);
 
-$sUnformattedEmail = SelectWhichInfo($per_Email, $fam_Email, false);
+$sUnformattedEmail = $per_Email ?? '';
 
 $sPageTitle = gettext('Printable View');
 $iTableSpacerWidth = 10;
-require_once 'Include/Header-Short.php';
+require_once __DIR__ . '/Include/Header-Short.php';
 ?>
 
 <table width="200">
     <tr>
         <td>
-            <p class="ShadedBox">
+            <p class="card card-body">
 
                 <?php
 
@@ -253,9 +242,9 @@ require_once 'Include/Header-Short.php';
                     <td width="<?= $iTableSpacerWidth ?>"></td>
                     <td class="TextColumnWithBottomBorder"><?php if ($sFamRole != '') {
                                                                 echo $sFamRole;
-                                                           } else {
-                                                               echo gettext('Unassigned');
-                                                           } ?>&nbsp;</td>
+                                                            } else {
+                                                                echo gettext('Unassigned');
+                                                            } ?>&nbsp;</td>
                 </tr>
                 <?php
                 for ($i = 1; $i <= $numColumn2Fields; $i++) {
@@ -312,7 +301,7 @@ require_once 'Include/Header-Short.php';
 <br>
 
 <?php if ($fam_ID) {
-    ?>
+?>
 
     <b><?= gettext('Family Members') ?>:</b>
     <table cellpadding=5 cellspacing=0 width="100%">
@@ -336,7 +325,7 @@ require_once 'Include/Header-Short.php';
             $sRowClass = AlternateRowStyle($sRowClass)
 
             // Display the family member
-            ?>
+        ?>
             <tr class="<?= $sRowClass ?>">
                 <td>
                     <?= $per_FirstName . ' ' . $per_LastName ?>
@@ -359,11 +348,11 @@ require_once 'Include/Header-Short.php';
                 </td>
                 <td><?= MiscUtils::formatAge($per_BirthMonth, $per_BirthDay, $per_BirthYear) ?></td>
             </tr>
-            <?php
+    <?php
         }
         echo '</table>';
-}
-?>
+    }
+    ?>
     <BR>
     <b><?= gettext('Assigned Groups') ?>:</b>
 
@@ -477,13 +466,13 @@ require_once 'Include/Header-Short.php';
     }
 
     if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
-        echo '<p><b>' . gettext('Notes:') . '</b></p>';
+        echo '<p><b>' . gettext('Notes') . ':</b></p>';
 
         // Loop through all the notes
         while ($aRow = mysqli_fetch_array($rsNotes)) {
             extract($aRow);
-            echo '<p class="ShadedBox")>' . $nte_Text . '</p>';
-            echo '<span class="SmallText">' . gettext('Entered:') . FormatDate($nte_DateEntered, true) . '</span><br>';
+            echo '<p class="card card-body")>' . $nte_Text . '</p>';
+            echo '<span class="SmallText">' . gettext('Entered') . ': ' . FormatDate($nte_DateEntered, true) . '</span><br>';
 
             if (strlen($nte_DateLastEdited)) {
                 echo '<span class="SmallText">' . gettext('Last Edited') . FormatDate($nte_DateLastEdited, true) . ' ' . gettext('by') . ' ' . $EditedFirstName . ' ' . $EditedLastName . '</span><br>';
@@ -491,4 +480,4 @@ require_once 'Include/Header-Short.php';
         }
     }
 
-    require_once 'Include/Footer-Short.php';
+    require_once __DIR__ . '/Include/Footer-Short.php';

@@ -5,8 +5,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemURLs;
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 $eidQueryParam = $_GET['EID'];
 $sanitizedEidQueryParam = InputUtils::filterInt($eidQueryParam);
@@ -23,13 +23,13 @@ $aEventText = $event->getText();
 <html>
 <head>
   <meta charset="UTF-8">
-  <title><?= htmlspecialchars($aEventTitle) ?></title>
-  <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
+  <title><?= InputUtils::escapeHTML($aEventTitle) ?></title>
+  <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.css') ?>">
 </head>
 <body>
 <div class="container-fluid p-4">
-  <h4><?= htmlspecialchars($aEventTitle) ?></h4>
-  <div class="text-muted small mb-3"><?= gettext('Event ID') ?>: <?= htmlspecialchars($aEventID) ?></div>
+  <h4><?= InputUtils::escapeHTML($aEventTitle) ?></h4>
+  <div class="text-muted small mb-3"><?= gettext('Event ID') ?>: <?= InputUtils::escapeHTML($aEventID) ?></div>
   
   <div class="lh-lg">
     <?= $aEventText ?>

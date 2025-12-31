@@ -1,7 +1,7 @@
 <?php
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -18,7 +18,7 @@ $groups = GroupQuery::create()
                     ->find();
 
 $sPageTitle = gettext('Sunday School Reports');
-require_once '../Include/Header.php';
+require_once __DIR__ . '/../Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isset($_POST['SubmitClassAttendance'])) {
@@ -113,7 +113,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
         echo "<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\"> " . gettext('At least one group must be selected to make class lists or attendance sheets.') . "</span></p>";
     }
 } else {
-    $iFYID = $_SESSION['idefaultFY'];
+    $iFYID = isset($_SESSION['idefaultFY']) ? (int)$_SESSION['idefaultFY'] : \CurrentFY();
     $iGroupID = 0;
     $currentUser = UserQuery::create()->findPk(AuthenticationManager::getCurrentUser()->getId());
 
@@ -179,7 +179,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
             // Create the group select drop-down
             echo '<select id="GroupID" name="GroupID[]" multiple size="8" onChange="UpdateRoles();"><option value="0">' . gettext('None') . '</option>';
             foreach ($groups as $group) {
-                echo '<option value="' . $group->getID() . '">' . $group->getName() . '</option>';
+                echo '<option value="' . $group->getID() . '">' . InputUtils::escapeHTML($group->getName()) . '</option>';
             }
             echo '</select><br>';
             echo gettext('Multiple groups will have a Page Break between Groups<br>');
@@ -200,52 +200,52 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
 
         <tr>
           <td><?= gettext('First Sunday') ?>:</td>
-          <td><input type="text" name="FirstSunday" value="<?= $dFirstSunday ?>" maxlength="10" id="FirstSunday" size="11"  class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="FirstSunday" value="<?= $dFirstSunday ?>" maxlength="10" id="FirstSunday" size="11"  class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('Last Sunday') ?>:</td>
-          <td><input type="text" name="LastSunday" value="<?= $dLastSunday ?>" maxlength="10" id="LastSunday" size="11"  class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="LastSunday" value="<?= $dLastSunday ?>" maxlength="10" id="LastSunday" size="11"  class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool1" value="<?= $dNoSchool1 ?>" maxlength="10" id="NoSchool1" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="NoSchool1" value="<?= $dNoSchool1 ?>" maxlength="10" id="NoSchool1" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool2" value="<?= $dNoSchool2 ?>" maxlength="10" id="NoSchool2" size="11"  class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="NoSchool2" value="<?= $dNoSchool2 ?>" maxlength="10" id="NoSchool2" size="11"  class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool3" value="<?= $dNoSchool3 ?>" maxlength="10" id="NoSchool3" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="NoSchool3" value="<?= $dNoSchool3 ?>" maxlength="10" id="NoSchool3" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool4" value="<?= $dNoSchool4 ?>" maxlength="10" id="NoSchool4" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="NoSchool4" value="<?= $dNoSchool4 ?>" maxlength="10" id="NoSchool4" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool5" value="<?= $dNoSchool5 ?>" maxlength="10" id="NoSchool5" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="NoSchool5" value="<?= $dNoSchool5 ?>" maxlength="10" id="NoSchool5" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool6" value="<?= $dNoSchool6 ?>" maxlength="10" id="NoSchool6" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="NoSchool6" value="<?= $dNoSchool6 ?>" maxlength="10" id="NoSchool6" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool7" value="<?= $dNoSchool7 ?>" maxlength="10" id="NoSchool7" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="NoSchool7" value="<?= $dNoSchool7 ?>" maxlength="10" id="NoSchool7" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
           <td><?= gettext('No Sunday School') ?>:</td>
-          <td><input type="text" name="NoSchool8" value="<?= $dNoSchool8 ?>" maxlength="10" id="NoSchool8" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>"></td>
+          <td><input type="text" name="NoSchool8" value="<?= $dNoSchool8 ?>" maxlength="10" id="NoSchool8" size="11" class="date-picker" placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>"></td>
         </tr>
 
         <tr>
@@ -272,8 +272,8 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
               </div>
           </td>
           <td width="35%">
-            <div class="col-rd-12">
-                <input type="button" style="align=right" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
+            <div class="col-rd-12 float-right">
+                <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
             </div>
           </td>
         </tr>
@@ -283,4 +283,4 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
 </div>
 
 <?php
-require_once '../Include/Footer.php';
+require_once __DIR__ . '/../Include/Footer.php';

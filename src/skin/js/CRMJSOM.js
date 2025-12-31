@@ -5,44 +5,60 @@
 window.CRM.APIRequest = function (options) {
     if (!options.method) {
         options.method = "GET";
-    } else {
-        options.dataType = "json";
     }
+    options.dataType = "json";
     options.url = window.CRM.root + "/api/" + options.path;
     options.contentType = "application/json";
     options.beforeSend = function (jqXHR, settings) {
         jqXHR.url = settings.url;
     };
     options.error = function (jqXHR, textStatus, errorThrown) {
-        window.CRM.system.handlejQAJAXError(
-            jqXHR,
-            textStatus,
-            errorThrown,
-            options.suppressErrorDialog,
-        );
+        window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
+    };
+    return $.ajax(options);
+};
+
+/**
+ * Admin-only API Request wrapper
+ * Used for endpoints in /admin/api/* - does NOT add /api prefix
+ * Endpoint paths should be like "upgrade/download-latest-release" which becomes "/admin/api/upgrade/download-latest-release"
+ */
+window.CRM.AdminAPIRequest = function (options) {
+    if (!options.method) {
+        options.method = "GET";
+    }
+    options.dataType = "json";
+    options.url = window.CRM.root + "/admin/api/" + options.path;
+    options.contentType = "application/json";
+    options.beforeSend = function (jqXHR, settings) {
+        jqXHR.url = settings.url;
+    };
+    options.error = function (jqXHR, textStatus, errorThrown) {
+        window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
     };
     return $.ajax(options);
 };
 
 window.CRM.DisplayErrorMessage = function (endpoint, error) {
-    console.trace(error);
-    message =
+    // Handle different error response formats (message, error, msg)
+    var errorText =
+        error && (error.message || error.error || error.msg)
+            ? error.message || error.error || error.msg
+            : i18next.t("Unknown error");
+
+    var message =
         "<p>" +
         i18next.t("Error making API Call to") +
         ": " +
         endpoint +
-        "</p><p>" +
+        "</p>" +
+        "<p>" +
         i18next.t("Error text") +
         ": " +
-        error.message;
-    if (error.trace) {
-        message +=
-            "</p>" +
-            i18next.t("Stack Trace") +
-            ": <pre>" +
-            JSON.stringify(error.trace, undefined, 2) +
-            "</pre>";
-    }
+        errorText +
+        "</p>";
+
+    // Never include server side traces in the UI
     bootbox.alert({
         title: i18next.t("ERROR"),
         message: message,
@@ -50,9 +66,29 @@ window.CRM.DisplayErrorMessage = function (endpoint, error) {
 };
 
 window.CRM.VerifyThenLoadAPIContent = function (url) {
-    var error = i18next.t(
-        "There was a problem retrieving the requested object",
-    );
+    var error = i18next.t("There was a problem retrieving the requested object");
+
+    // Helper function to fetch error message from JSON response
+    function fetchErrorMessage(targetUrl, fallbackError, callback) {
+        try {
+            $.ajax({
+                method: "GET",
+                url: targetUrl,
+                async: false,
+                dataType: "json",
+                success: function (data) {
+                    var msg = data && data.message ? data.message : fallbackError;
+                    callback(msg);
+                },
+                error: function () {
+                    callback(fallbackError);
+                },
+            });
+        } catch (e) {
+            callback(fallbackError);
+        }
+    }
+
     $.ajax({
         method: "HEAD",
         url: url,
@@ -62,10 +98,14 @@ window.CRM.VerifyThenLoadAPIContent = function (url) {
                 window.open(url);
             },
             404: function () {
-                window.CRM.DisplayErrorMessage(url, { message: error });
+                fetchErrorMessage(url, error, function (msg) {
+                    window.CRM.DisplayErrorMessage(url, { message: msg });
+                });
             },
             500: function () {
-                window.CRM.DisplayErrorMessage(url, { message: error });
+                fetchErrorMessage(url, error, function (msg) {
+                    window.CRM.DisplayErrorMessage(url, { message: msg });
+                });
             },
         },
     });
@@ -82,9 +122,7 @@ window.CRM.kiosks = {
         window.CRM.APIRequest({
             path: "kiosks/" + id + "/reloadKiosk",
             method: "POST",
-        }).done(function (data) {
-            //todo: tell the user the kiosk was reloaded..?  maybe nothing...
-        });
+        }).done(function (data) {});
     },
     enableRegistration: function () {
         return window.CRM.APIRequest({
@@ -109,7 +147,8 @@ window.CRM.kiosks = {
         });
     },
     setAssignment: function (id, assignmentId) {
-        assignmentSplit = assignmentId.split("-");
+        let assignmentSplit = assignmentId.split("-");
+        let assignmentType, eventId;
         if (assignmentSplit.length > 0) {
             assignmentType = assignmentSplit[0];
             eventId = assignmentSplit[1];
@@ -161,7 +200,7 @@ window.CRM.groups = {
                 },
             },
         };
-        initFunction = function () {};
+        let initFunction = function () {};
 
         if (selectOptions.Type & window.CRM.groups.selectTypes.Group) {
             options.title = i18next.t("Select Group");
@@ -195,27 +234,22 @@ window.CRM.groups = {
                 throw i18next.t("GroupID required for role selection prompt");
             }
             initFunction = function () {
-                window.CRM.groups
-                    .getRoles(selectOptions.GroupID)
-                    .done(function (rdata) {
-                        rolesList = rdata.map(function (item) {
-                            return {
-                                text: i18next.t(item.OptionName), // to translate the Teacher and Student in localize text
-                                id: item.OptionId,
-                            };
-                        });
-                        $("#targetRoleSelection").select2({
-                            data: rolesList,
-                            dropdownParent: $(".bootbox"),
-                        });
+                window.CRM.groups.getRoles(selectOptions.GroupID).done(function (rdata) {
+                    let rolesList = rdata.map(function (item) {
+                        return {
+                            // i18next-disable-next-line
+                            text: i18next.t(item.OptionName), // to translate the Teacher and Student in localize text
+                            id: item.OptionId,
+                        };
                     });
+                    $("#targetRoleSelection").select2({
+                        data: rolesList,
+                        dropdownParent: $(".bootbox"),
+                    });
+                });
             };
         }
-        if (
-            selectOptions.Type ===
-            (window.CRM.groups.selectTypes.Group |
-                window.CRM.groups.selectTypes.Role)
-        ) {
+        if (selectOptions.Type === (window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role)) {
             options.title = i18next.t("Select Group and Role");
             options.buttons.confirm.callback = function () {
                 selection = {
@@ -235,34 +269,29 @@ window.CRM.groups = {
                     id: item.Id,
                 };
             });
-            $("#targetGroupSelection")
-                .parents(".bootbox")
-                .removeAttr("tabindex");
+            $("#targetGroupSelection").parents(".bootbox").removeAttr("tabindex");
             $groupSelect2 = $("#targetGroupSelection").select2({
                 data: groupsList,
                 dropdownParent: $(".bootbox"),
             });
 
             $groupSelect2.on("select2:select", function (e) {
-                var targetGroupId = $(
-                    "#targetGroupSelection option:selected",
-                ).val();
+                var targetGroupId = $("#targetGroupSelection option:selected").val();
                 $parent = $("#targetRoleSelection").parent();
                 $("#targetRoleSelection").empty();
-                window.CRM.groups
-                    .getRoles(targetGroupId)
-                    .done(function (rdata) {
-                        rolesList = rdata.map(function (item) {
-                            return {
-                                text: i18next.t(item.OptionName), // this is for the Teacher and Student role
-                                id: item.OptionId,
-                            };
-                        });
-                        $("#targetRoleSelection").select2({
-                            data: rolesList,
-                            dropdownParent: $(".bootbox"),
-                        });
+                window.CRM.groups.getRoles(targetGroupId).done(function (rdata) {
+                    rolesList = rdata.map(function (item) {
+                        return {
+                            // i18next-disable-next-line
+                            text: i18next.t(item.OptionName), // this is for the Teacher and Student role
+                            id: item.OptionId,
+                        };
                     });
+                    $("#targetRoleSelection").select2({
+                        data: rolesList,
+                        dropdownParent: $(".bootbox"),
+                    });
+                });
             });
         });
     },
@@ -331,17 +360,9 @@ window.CRM.system = {
             suppressErrorDialog: true,
         });
     },
-    handlejQAJAXError: function (
-        jqXHR,
-        textStatus,
-        errorThrown,
-        suppressErrorDialog,
-    ) {
+    handlejQAJAXError: function (jqXHR, textStatus, errorThrown, suppressErrorDialog) {
         if (jqXHR.status === 401) {
-            window.location =
-                window.CRM.root +
-                "/session/begin?location=" +
-                window.location.pathname;
+            window.location = window.CRM.root + "/session/begin?location=" + window.location.pathname;
         }
         try {
             var CRMResponse = JSON.parse(jqXHR.responseText);
@@ -362,52 +383,18 @@ window.CRM.system = {
 };
 
 window.CRM.dashboard = {
-    renderers: {
-        EventsCounters: function (data) {
-            if (document.getElementById("BirthdateNumber") != null) {
-                document.getElementById("BirthdateNumber").innerText =
-                    data.Birthdays;
-                document.getElementById("AnniversaryNumber").innerText =
-                    data.Anniversaries;
-                document.getElementById("EventsNumber").innerText = data.Events;
-            }
-        },
-        PageLocale: function (data) {
-            $(".fi").addClass("fi-" + data.countryFlagCode);
-            $("#translationInfo").html(
-                data.name + " [" + window.CRM.locale + "]",
-            );
-            if (data.displayPerCompleted && data.poPerComplete < 90) {
-                $("#translationPer").html(data.poPerComplete + "%");
-                $("#localePer").removeClass("hidden");
-            }
-        },
-        SystemUpgrade: function (data) {
-            if (data.newVersion) {
-                $("#upgradeToVersion").html(
-                    data.newVersion.MAJOR +
-                        "." +
-                        data.newVersion.MINOR +
-                        "." +
-                        data.newVersion.PATCH,
-                );
-                $("#systemUpdateMenuItem").removeClass("d-none");
-            }
-        },
-    },
-    refresh: function () {
+    /**
+     * Load event counters once on page load (birthdays, anniversaries, events today)
+     */
+    loadEventCounters: function () {
         window.CRM.APIRequest({
             method: "GET",
-            path:
-                "background/page?token=" +
-                Math.random() +
-                "&name=" +
-                window.CRM.PageName.replace(window.CRM.root, ""),
+            path: "calendar/events-counters",
             suppressErrorDialog: true,
         }).done(function (data) {
-            for (var key in data) {
-                window["CRM"]["dashboard"]["renderers"][key](data[key]);
-            }
+            document.getElementById("BirthdateNumber").innerText = data.Birthdays;
+            document.getElementById("AnniversaryNumber").innerText = data.Anniversaries;
+            document.getElementById("EventsNumber").innerText = data.Events;
         });
     },
 };

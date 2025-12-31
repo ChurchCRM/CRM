@@ -8,5 +8,5 @@ interface PhotoInterface
 
     public function deletePhoto();
 
-    public function setImageFromBase64($base64);
+    public function setImageFromBase64($base64): void;
 }

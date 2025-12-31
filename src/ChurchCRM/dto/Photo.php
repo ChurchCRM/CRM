@@ -4,353 +4,143 @@ namespace ChurchCRM\dto;
 
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\MiscUtils;
 
+/**
+ * Photo class handles uploaded photos for Person and Family entities.
+ * 
+ * This class ONLY handles uploaded photos. Avatar generation (initials, gravatar)
+ * is handled client-side using the avatar-initials npm package.
+ * 
+ * @see webpack/avatar-loader.ts for client-side avatar rendering
+ */
 class Photo
 {
+    // Hardcoded photo dimensions - all photos stored at this size for optimal bandwidth/storage
+    public const PHOTO_WIDTH = 200;
+    public const PHOTO_HEIGHT = 200;
+    
+    // HTTP cache duration for photo responses (in seconds)
+    public const CACHE_DURATION_SECONDS = 7200; // 2 hours
+
     private string $photoType;
     private int $id;
-    private $photoURI;
-    private ?string $photoThumbURI = null;
-    private ?string $thumbnailPath = null;
-    private $photoContentType = null;
-    private $thumbnailContentType = null;
-    private bool $remotesEnabled;
+    private ?string $photoURI = null;
+    private ?string $photoContentType = null;
+    private bool $hasUploadedPhoto = false;
 
-    public static $validExtensions = ['png', 'jpeg', 'jpg', 'gif', 'webp'];
+    public static array $validExtensions = ['png', 'jpeg', 'jpg', 'gif', 'webp'];
 
     public function __construct(string $photoType, int $id)
     {
         $this->photoType = $photoType;
         $this->id = $id;
-        $this->remotesEnabled = SystemConfig::getBooleanValue('bEnableGooglePhotos') || SystemConfig::getBooleanValue('bEnableGravatarPhotos');
-        $this->photoHunt();
+        $this->findUploadedPhoto();
     }
 
-    public static function getValidExtensions()
+    public static function getValidExtensions(): array
     {
-        return Photo::$validExtensions;
+        return self::$validExtensions;
     }
 
-    public function createThumbnail(): void
+    /**
+     * Check if this entity has an uploaded photo
+     */
+    public function hasUploadedPhoto(): bool
     {
-        $this->ensureThumbnailsPath();
-        $thumbWidth = SystemConfig::getValue('iThumbnailWidth');
-        $img = $this->getGDImage($this->photoURI); //just in case we have legacy JPG/GIF that don't have a thumbnail.
-        $width = imagesx($img);
-        $height = imagesy($img);
-        $new_width = $thumbWidth;
-        $new_height = floor($height * ($thumbWidth / $width));
-        $tmp_img = imagecreatetruecolor($new_width, $new_height);
-        imagecopyresized($tmp_img, $img, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-        imagejpeg($tmp_img, $this->photoThumbURI, 50);
+        return $this->hasUploadedPhoto;
     }
 
-    private function setURIs(string $photoPath): void
+    /**
+     * Look for an uploaded photo file (no remote or initials)
+     */
+    private function findUploadedPhoto(): void
     {
-        $this->photoURI = $photoPath;
-        $this->thumbnailPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/';
-        $this->photoThumbURI = $this->thumbnailPath . $this->id . '.jpg';
-    }
-
-    private function shouldRefreshPhotoFile(string $photoFile): bool
-    {
-        $logger = LoggerUtils::getAppLogger();
-
-        if (!$this->remotesEnabled) {
-            // if remotes are disabled, and the image contains remote, then we should re-gen
-            return strpos($photoFile, 'remote') !== false;
-        }
-
-        // default defined in SystemConfig.php
-        $defaultInterval = \DateInterval::createFromDateString('72 hours');
-
-        $interval = null;
-        try {
-            // if the system has remotes enabled, calculate the cutoff timestamp for refreshing remote photos.
-            $remotePhotoCacheDuration = SystemConfig::getValue('iRemotePhotoCacheDuration');
-            if (!$remotePhotoCacheDuration) {
-                // log error and use default value
-                $logger->error(
-                    'config iRemotePhotoCacheDuration somehow not set, please investigate',
-                    ['stacktrace' => debug_backtrace()]
-                );
-            } else {
-                $interval = \DateInterval::createFromDateString($remotePhotoCacheDuration);
-                MiscUtils::throwIfFailed($interval);
-            }
-        } catch (\Throwable $exception) {
-            // log error and use default value
-            $logger->error(
-                'invalid config provided for iRemotePhotoCacheDuration',
-                [
-                    'iRemotePhotoCacheDuration' => SystemConfig::getValue('iRemotePhotoCacheDuration'),
-                    'exception' => $exception,
-                ]
-            );
-        }
-
-        if ($interval === null) {
-            $interval = $defaultInterval;
-        }
-        $remoteCacheThreshold = new \DateTimeImmutable();
-        $remoteCacheThreshold = $remoteCacheThreshold->sub($interval);
-
-        if (strpos($photoFile, 'remote') !== false || strpos($photoFile, 'initials') !== false) {
-            return filemtime($photoFile) < $remoteCacheThreshold->getTimestamp();
-        }
-
-        return false;
-    }
-
-    private function photoHunt(): void
-    {
+        $this->ensurePhotoDirsExist();
+        
         $baseName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id;
-        $extensions = Photo::$validExtensions;
 
-        foreach ($extensions as $ext) {
-            $photoFiles = [$baseName . '.' . $ext, $baseName . '-remote.' . $ext, $baseName . '-initials.' . $ext];
-            foreach ($photoFiles as $photoFile) {
-                if (is_file($photoFile)) {
-                    $this->setURIs($photoFile);
-                    if ($ext !== 'png') {
-                        $this->convertToPNG();
-                    }
-                    if ($this->shouldRefreshPhotoFile($photoFile)) {
-                        //if we found the file, but it's remote and aged, then we should update it.
-                        $this->delete();
-                        break 2;
-                    }
-
-                    return;
-                }
+        foreach (self::$validExtensions as $ext) {
+            $photoFile = $baseName . '.' . $ext;
+            if (is_file($photoFile)) {
+                $this->photoURI = $photoFile;
+                $this->hasUploadedPhoto = true;
+                return;
             }
         }
-        // we still haven't found a photo file.  Begin checking remote if it's enabled
-        // only check google and gravatar for person photos.
-        if ($this->photoType == 'Person' && $this->remotesEnabled) {
-            $person = PersonQuery::create()->findOneById($this->id);
-            if ($person) {
-                $personEmail = $person->getEmail();
-                if (SystemConfig::getBooleanValue('bEnableGooglePhotos')) {
-                    $photoPath = $this->loadFromGoogle($personEmail, $baseName);
-                    if ($photoPath) {
-                        $this->setURIs($photoPath);
+        
+        // No uploaded photo found
+        $this->hasUploadedPhoto = false;
+        $this->photoURI = null;
+    }
 
-                        return;
-                    }
-                }
-
-                if (SystemConfig::getBooleanValue('bEnableGravatarPhotos')) {
-                    try {
-                        $photoPath = $this->loadFromGravatar($personEmail, $baseName);
-                        $this->setURIs($photoPath);
-
-                        return;
-                    } catch (\Exception $e) {
-                        // do nothing
-                    }
-                }
-            }
+    /**
+     * Ensure required photo directories exist
+     */
+    private function ensurePhotoDirsExist(): void
+    {
+        $imagesRoot = SystemURLs::getImagesRoot();
+        $photoTypeDir = $imagesRoot . '/' . $this->photoType;
+        
+        if (!is_dir($imagesRoot)) {
+            @mkdir($imagesRoot, 0755, true);
         }
-
-        // still no image - generate it from initials
-        $this->renderInitials();
-    }
-
-    private function convertToPNG(): void
-    {
-        $image = $this->getGDImage($this->getPhotoURI());
-        $this->delete();
-        $targetPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
-        imagepng($image, $targetPath);
-        $this->setURIs($targetPath);
-    }
-
-    private function getGDImage($sourceImagePath): \GdImage
-    {
-        $sourceImageType = exif_imagetype($sourceImagePath);
-        switch ($sourceImageType) {
-            case IMAGETYPE_GIF:
-                $sourceGDImage = imagecreatefromgif($sourceImagePath);
-                break;
-            case IMAGETYPE_JPEG:
-                $sourceGDImage = imagecreatefromjpeg($sourceImagePath);
-                break;
-            case IMAGETYPE_PNG:
-                $sourceGDImage = imagecreatefrompng($sourceImagePath);
-                break;
-            default:
-                throw new \Exception('Unsupported image type: ' . $sourceImageType);
-        }
-        MiscUtils::throwIfFailed($sourceGDImage);
-
-        return $sourceGDImage;
-    }
-
-    private function ensureThumbnailsPath(): void
-    {
-        if (!file_exists($this->thumbnailPath)) {
-            mkdir($this->thumbnailPath);
+        
+        if (!is_dir($photoTypeDir)) {
+            @mkdir($photoTypeDir, 0755, true);
         }
     }
 
-    public function getThumbnailBytes(): string
+    /**
+     * Get photo bytes - only for uploaded photos
+     * 
+     * @throws \Exception if no uploaded photo exists
+     */
+    public function getPhotoBytes(): string
     {
-        if (!file_exists($this->photoThumbURI)) {
-            $this->createThumbnail();
+        if (!$this->hasUploadedPhoto || !$this->photoURI) {
+            throw new \Exception('No uploaded photo exists for this entity');
         }
-
-        $content = file_get_contents($this->photoThumbURI);
-        MiscUtils::throwIfFailed($content);
+        
+        if (!file_exists($this->photoURI)) {
+            throw new \Exception("Photo file not found: " . $this->photoURI);
+        }
+        
+        $content = file_get_contents($this->photoURI);
+        if ($content === false) {
+            throw new \Exception("Failed to read photo file: " . $this->photoURI);
+        }
 
         return $content;
     }
 
-    public function getPhotoBytes(): string
+    public function getPhotoContentType(): ?string
     {
-        $content = file_get_contents($this->photoURI);
-        MiscUtils::throwIfFailed($content);
-
-        return (string) $content;
-    }
-
-    public function getPhotoContentType()
-    {
-        $finfo = new \finfo(FILEINFO_MIME);
+        if (!$this->hasUploadedPhoto || !$this->photoURI) {
+            return null;
+        }
+        
+        $finfo = new \finfo(FILEINFO_MIME_TYPE);
         $this->photoContentType = $finfo->file($this->photoURI);
 
         return $this->photoContentType;
     }
 
-    public function getThumbnailContentType()
-    {
-        $finfo = new \finfo(FILEINFO_MIME);
-        $this->thumbnailContentType = $finfo->file($this->photoThumbURI);
-
-        return $this->thumbnailContentType;
-    }
-
-    public function getThumbnailURI(): ?string
-    {
-        if (!is_file($this->photoThumbURI)) {
-            $this->createThumbnail();
-        }
-
-        return $this->photoThumbURI;
-    }
-
-    public function getPhotoURI()
+    public function getPhotoURI(): ?string
     {
         return $this->photoURI;
     }
 
-    private function loadFromGravatar($email, string $baseName): string
+    /**
+     * Save an uploaded image from base64 data
+     */
+    public function setImageFromBase64(string $base64): void
     {
-        $s = 60;
-        $d = '404';
-        $r = 'g';
-        $url = 'https://www.gravatar.com/avatar/';
-        $url .= md5(strtolower(trim($email)));
-        $url .= "?s=$s&d=$d&r=$r";
-
-        $photo = imagecreatefromstring(file_get_contents($url));
-        if ($photo) {
-            $photoPath = $baseName . '-remote.png';
-            imagepng($photo, $photoPath);
-
-            return $photoPath;
-        }
-
-        throw new \Exception('Gravatar not found');
-    }
-
-    private function loadFromGoogle($email, string $baseName)
-    {
-        $url = 'http://picasaweb.google.com/data/entry/api/user/';
-        $url .= strtolower(trim($email));
-        $url .= '?alt=json';
-        $headers = @get_headers($url);
-        if (strpos($headers[0], '404') === false) {
-            $json = file_get_contents($url);
-            if (!empty($json)) {
-                $obj = json_decode($json, null, 512, JSON_THROW_ON_ERROR);
-                $photoEntry = $obj->entry;
-                $photoURL = $photoEntry->{'gphoto$thumbnail'}->{'$t'};
-                $photo = imagecreatefromstring(file_get_contents($photoURL));
-                if ($photo) {
-                    $photoPath = $baseName . '-remote.png';
-                    imagepng($photo, $photoPath);
-
-                    return $photoPath;
-                }
-            }
-        }
-
-        return false;
-    }
-
-    private function getRandomColor(\GdImage $image)
-    {
-        $red = random_int(0, 150);
-        $green = random_int(0, 150);
-        $blue = random_int(0, 150);
-
-        return imagecolorallocate($image, $red, $green, $blue);
-    }
-
-    private function getInitialsString(): string
-    {
-        $retstr = '';
-        if ($this->photoType == 'Person') {
-            $retstr = PersonQuery::create()->findOneById($this->id)->getInitial(SystemConfig::getValue('iPersonInitialStyle'));
-        } elseif ($this->photoType == 'Family') {
-            $fullNameArr = FamilyQuery::create()->findOneById($this->id)->getName();
-            $retstr .= mb_strtoupper(mb_substr($fullNameArr, 0, 1));
-        }
-
-        return $retstr;
-    }
-
-    private function renderInitials(): void
-    {
-        $initials = $this->getInitialsString();
-        $targetPath = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '-initials.png';
-        $height = SystemConfig::getValue('iPhotoHeight');
-        $width = SystemConfig::getValue('iPhotoWidth');
-        $pointSize = SystemConfig::getValue('iInitialsPointSize');
-        $font = SystemURLs::getDocumentRoot() . '/fonts/' . SystemConfig::getValue('sFont');
-        $image = imagecreatetruecolor($width, $height);
-        MiscUtils::throwIfFailed($image);
-        $bgcolor = $this->getRandomColor($image);
-        $white = imagecolorallocate($image, 255, 255, 255);
-        imagefilledrectangle($image, 0, 0, $height, $width, $bgcolor);
-        $tb = imageftbbox($pointSize, 0, $font, $initials);
-        $x = ceil(($width - $tb[2]) / 2);
-        $y = ceil(($height - $tb[5]) / 2);
-        imagefttext($image, $pointSize, 0, $x, $y, $white, $font, $initials);
-        imagepng($image, $targetPath);
-        $this->setURIs($targetPath);
-    }
-
-    public function setImageFromBase64($base64): void
-    {
-        $this->delete();
-        
-        // Extract mime type and base64 data
-        if (preg_match('/^data:image\/(\w+);base64,(.+)$/', $base64, $matches)) {
-            $imageType = $matches[1];
-            $base64Data = $matches[2];
-        } else {
-            // Fallback for legacy format without data URI prefix
-            $imageType = 'png';
-            $base64Data = str_replace(' ', '+', $base64);
-            $base64Data = str_replace('data:image/png;base64,', '', $base64Data);
-        }
+        $this->ensurePhotoDirsExist();
         
         // Decode base64 data
+        $base64Data = preg_replace('/^data:image\/\w+;base64,/', '', $base64);
         $fileData = base64_decode($base64Data);
+        
         if ($fileData === false) {
             throw new \Exception('Invalid base64 data');
         }
@@ -372,28 +162,64 @@ class Photo
             throw new \Exception('Invalid image type. Only JPEG, PNG, GIF, and WebP images are allowed.');
         }
         
-        $extension = $allowedMimeTypes[$mimeType];
-        $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.' . $extension;
-        
         // Validate file size (check against max upload size)
         $maxSize = $this->parseSize(ini_get('upload_max_filesize'));
         if (strlen($fileData) > $maxSize) {
             throw new \Exception('Image file size exceeds maximum allowed size');
         }
         
-        // Write file
-        if (file_put_contents($fileName, $fileData) === false) {
-            throw new \Exception('Failed to save image file');
+        // Create GD image from uploaded data
+        $sourceImage = imagecreatefromstring($fileData);
+        if ($sourceImage === false) {
+            throw new \Exception('Failed to create image from uploaded data');
         }
         
-        // Update URIs
-        $this->setURIs($fileName);
+        // Get original dimensions
+        $sourceWidth = imagesx($sourceImage);
+        $sourceHeight = imagesy($sourceImage);
+        
+        // Create resized image at standard dimensions
+        $resizedImage = imagecreatetruecolor(self::PHOTO_WIDTH, self::PHOTO_HEIGHT);
+        if ($resizedImage === false) {
+            throw new \Exception('Failed to create resized image');
+        }
+        
+        // Preserve transparency for PNG/GIF
+        imagealphablending($resizedImage, false);
+        imagesavealpha($resizedImage, true);
+        
+        // Resize image to standard dimensions
+        if (!imagecopyresampled(
+            $resizedImage,
+            $sourceImage,
+            0, 0, 0, 0,
+            self::PHOTO_WIDTH,
+            self::PHOTO_HEIGHT,
+            $sourceWidth,
+            $sourceHeight
+        )) {
+            throw new \Exception('Failed to resize image');
+        }
+        
+        // Delete any existing photo first
+        $this->delete();
+        
+        // Save as PNG at standard dimensions
+        $fileName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id . '.png';
+        
+        if (!imagepng($resizedImage, $fileName)) {
+            throw new \Exception('Failed to save resized image');
+        }
+        
+        // Update state
+        $this->photoURI = $fileName;
+        $this->hasUploadedPhoto = true;
     }
     
     /**
      * Parse size string (e.g., "8M", "2G") to bytes
      */
-    private function parseSize($size): int
+    private function parseSize(string $size): int
     {
         $unit = strtolower(substr($size, -1));
         $value = (int)$size;
@@ -412,41 +238,134 @@ class Photo
         return $value;
     }
 
+    /**
+     * Delete the uploaded photo and any legacy remote/initials files
+     */
     public function delete(): bool
     {
-        $deleted = [];
+        // Delete main photo
         if ($this->photoURI && is_file($this->photoURI)) {
-            $deleted[$this->photoURI] = unlink($this->photoURI);
+            unlink($this->photoURI);
         }
-        if ($this->photoThumbURI && is_file($this->photoThumbURI)) {
-            $deleted[$this->photoThumbURI] = unlink($this->photoThumbURI);
+        
+        // Also clean up any legacy remote/initials files
+        $baseName = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/' . $this->id;
+        $legacyPatterns = ['-remote.png', '-initials.png', '-remote.jpg', '-initials.jpg'];
+        foreach ($legacyPatterns as $pattern) {
+            $legacyFile = $baseName . $pattern;
+            if (is_file($legacyFile)) {
+                unlink($legacyFile);
+            }
         }
-
-        return !in_array(false, $deleted);
+        
+        $this->photoURI = null;
+        $this->hasUploadedPhoto = false;
+        
+        return true;
     }
 
+    /**
+     * Refresh photo state (re-check for uploaded photo)
+     */
     public function refresh(): void
     {
-        if (strpos($this->photoURI, 'initials') || strpos($this->photoURI, 'remote')) {
-            $this->delete();
-        }
-        $this->photoURI = $this->photoHunt();
-        $this->photoThumbURI = SystemURLs::getImagesRoot() . '/' . $this->photoType . '/thumbnails/' . $this->id . '.jpg';
+        $this->findUploadedPhoto();
     }
 
-    public function isInitials(): bool
-    {
-        if ($this->photoType == 'Person' && $this->id == 2) {
-            echo $this->photoURI;
-            echo strpos($this->photoURI, 'initials') !== false;
-            exit;
-        }
+    // ========== Static Helper Methods for Avatar Info ==========
 
-        return strpos($this->photoURI, 'initials') !== false;
+    /**
+     * Get complete avatar info for a Person (single DB query)
+     */
+    private static function getPersonAvatarInfo(int $personId): array
+    {
+        $person = PersonQuery::create()->findOneById($personId);
+        
+        if ($person === null) {
+            return [
+                'initials' => '?',
+                'email' => null,
+            ];
+        }
+        
+        $style = SystemConfig::getIntValue('iPersonInitialStyle');
+        $email = $person->getEmail();
+        
+        return [
+            'initials' => $person->getInitial($style),
+            'email' => !empty($email) ? $email : null,
+        ];
     }
 
-    public function isRemote(): bool
+    /**
+     * Get complete avatar info for a Family (single DB query for family, possible additional for heads)
+     */
+    private static function getFamilyAvatarInfo(int $familyId): array
     {
-        return strpos($this->photoURI, 'remote') !== false;
+        $family = FamilyQuery::create()->findOneById($familyId);
+        
+        if ($family === null) {
+            return [
+                'initials' => '?',
+                'email' => null,
+            ];
+        }
+        
+        // Get initials from family name (first two characters)
+        $name = trim($family->getName());
+        // Handle edge cases: empty name, single character, special characters
+        if ($name === '') {
+            $initials = '?';
+        } else {
+            // Take up to 2 characters for better readability
+            $initials = mb_strtoupper(mb_substr($name, 0, min(2, mb_strlen($name))));
+        }
+        
+        // Try to get email from head of household first
+        // NOTE: getHeadPeople() may trigger additional queries if not eagerly loaded.
+        // For bulk operations, consider optimizing with joinWith() in the query.
+        $email = null;
+        $heads = $family->getHeadPeople();
+        foreach ($heads as $head) {
+            $headEmail = $head->getEmail();
+            if (!empty($headEmail)) {
+                $email = $headEmail;
+                break;
+            }
+        }
+        
+        // Fall back to family email if no head has email
+        if ($email === null) {
+            $familyEmail = $family->getEmail();
+            $email = !empty($familyEmail) ? $familyEmail : null;
+        }
+        
+        return [
+            'initials' => $initials,
+            'email' => $email,
+        ];
+    }
+
+    /**
+     * Get complete avatar info for an entity (used by API)
+     * Optimized to make minimal DB queries
+     */
+    public static function getAvatarInfo(string $entityType, int $entityId): array
+    {
+        $photo = new self($entityType, $entityId);
+        
+        // Get entity-specific info with single query per entity type
+        $entityInfo = match ($entityType) {
+            'Person' => self::getPersonAvatarInfo($entityId),
+            'Family' => self::getFamilyAvatarInfo($entityId),
+            default => ['initials' => '?', 'email' => null],
+        };
+        
+        return [
+            'hasPhoto' => $photo->hasUploadedPhoto(),
+            'photoUrl' => null,
+            'initials' => $entityInfo['initials'],
+            'email' => $entityInfo['email'],
+        ];
     }
 }

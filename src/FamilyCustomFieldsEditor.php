@@ -1,11 +1,13 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -14,7 +16,7 @@ AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sPageTitle = gettext('Custom Family Fields Editor');
 
-require_once 'Include/Header.php'; ?>
+require_once __DIR__ . '/Include/Header.php'; ?>
 
 <div class="card card-body">
 
@@ -55,7 +57,7 @@ if (isset($_POST['SaveChanges'])) {
             $aNameErrors[$iFieldID] = false;
         }
 
-        $aFieldSecurity[$iFieldID] = $_POST[$iFieldID . 'FieldSec'];
+        $aFieldSecurity[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'FieldSec'], 'int');
 
         if (isset($_POST[$iFieldID . 'special'])) {
             $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
@@ -72,13 +74,17 @@ if (isset($_POST['SaveChanges'])) {
     // If no errors, then update.
     if (!$bErrorFlag) {
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
-            $sSQL = "UPDATE family_custom_master
-                    SET `fam_custom_Name` = '" . $aNameFields[$iFieldID] . "',
-                        `fam_custom_Special` = " . $aSpecialFields[$iFieldID] . ",
-                        `fam_custom_FieldSec` = " . $aFieldSecurity[$iFieldID] . "
-                    WHERE `fam_custom_Field` = '" . $aFieldFields[$iFieldID] . "';";
-
-            RunQuery($sSQL);
+            // Use Propel ORM instead of raw SQL to prevent time-based blind SQL injection (GHSA-47q3-c874-mqvp)
+            $customField = FamilyCustomMasterQuery::create()
+                ->findOneById($aFieldFields[$iFieldID]);
+            
+            if ($customField !== null) {
+                $customField
+                    ->setName($aNameFields[$iFieldID])
+                    ->setSpecial($aSpecialFields[$iFieldID])
+                    ->setFieldSec((int)$aFieldSecurity[$iFieldID])
+                    ->save();
+            }
         }
     }
 } else {
@@ -86,7 +92,7 @@ if (isset($_POST['SaveChanges'])) {
     if (isset($_POST['AddField'])) {
         $newFieldType = InputUtils::legacyFilterInput($_POST['newFieldType'], 'int');
         $newFieldName = InputUtils::legacyFilterInput($_POST['newFieldName']);
-        $newFieldSec = $_POST['newFieldSec'];
+        $newFieldSec = InputUtils::legacyFilterInput($_POST['newFieldSec'], 'int');
 
         if (strlen($newFieldName) === 0) {
             $bNewNameError = true;
@@ -235,7 +241,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 {
-    $sOptList = '<select name="' . $fld_name . '">';
+    $sOptList = '<select name="' . $fld_name . '" class="form-control form-control-sm">';
     $grp_Count = count($aSecGrp);
 
     for ($i = 0; $i < $grp_Count; $i++) {
@@ -254,178 +260,248 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 // Construct the form
 ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-function confirmDeleteField( Field ) {
-    var answer = confirm (<?= "'" . gettext('Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!') . "'" ?>)
-    if ( answer )
-    {
-        window.location="FamilyCustomFieldsRowOps.php?Field=" + Field +"&Action=delete";
-        return true;
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    function confirmDeleteField(fieldName, fieldId) {
+        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + fieldName + '"?';
+        msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
+        msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all family data assigned for this field!')) ?>;
+        bootbox.confirm({
+            title: <?= json_encode(gettext('Delete Confirmation')) ?>,
+            message: msg,
+            buttons: {
+                cancel: { label: <?= json_encode(gettext('Cancel')) ?>, className: 'btn-secondary' },
+                confirm: { label: <?= json_encode(gettext('Delete')) ?>, className: 'btn-danger' }
+            },
+            callback: function(result) {
+                if (result) {
+                    // Submit deletion as a POST request with CSRF protection
+                    var form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = 'FamilyCustomFieldsRowOps.php';
+
+                    var fieldInput = document.createElement('input');
+                    fieldInput.type = 'hidden';
+                    fieldInput.name = 'Field';
+                    fieldInput.value = fieldId;
+                    form.appendChild(fieldInput);
+
+                    var actionInput = document.createElement('input');
+                    actionInput.type = 'hidden';
+                    actionInput.name = 'Action';
+                    actionInput.value = 'delete';
+                    form.appendChild(actionInput);
+
+                    var csrfInput = document.createElement('input');
+                    csrfInput.type = 'hidden';
+                    csrfInput.name = 'csrf_token';
+                    csrfInput.value = <?= json_encode(CSRFUtils::generateToken('deleteFamilyCustomField')) ?>;
+                    form.appendChild(csrfInput);
+
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            }
+        });
+        return false;
     }
-    event.preventDefault ? event.preventDefault() : event.returnValue = false;
-    return false;
-}
+
+    <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
+    $(document).ready(function() {
+        window.CRM.notify(
+            <?= json_encode(gettext('Field deleted successfully')) ?>,
+            { type: 'success' }
+        );
+    });
+    <?php endif; ?>
 </script>
-<div class="alert alert-warning">
-        <i class="fa-solid fa-ban"></i>
-        <?= gettext("Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
-</div>
+
 <form method="post" action="FamilyCustomFieldsEditor.php" name="FamilyCustomFieldsEditor">
-    <div class="table-responsive">
-<table class="table" class="table">
-
-<?php
-if ($numRows == 0) {
-    ?>
-    <div class="text-center"><h2><?= gettext('No custom Family fields have been added yet') ?></h2>
-    </div>
-    <?php
-} else {
-    ?>
-    <tr><td colspan="7">
-    <?php
-    if ($bErrorFlag) {
-        echo '<span class="LargeText" class="text-danger"><BR>' . gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') . '</span>';
-    } ?>
-    </td></tr>
-        <tr>
-            <th><?= gettext('Type') ?></th>
-            <th><?= gettext('Name') ?></th>
-            <th><?= gettext('Special option') ?></th>
-            <th><?= gettext('Security Option') ?></th>
-            <th><?= gettext('Delete') ?></th>
-        </tr>
-    <?php
-
-    for ($row = 1; $row <= $numRows; $row++) {
-        ?>
-        <tr>
-            <td class="TextColumn">
-                <?= $aPropTypes[$aTypeFields[$row]] ?>
-            </td>
-            <td class="TextColumn text-center">
-                <input type="text" name="<?= $row . 'name' ?>" value="<?= htmlentities(stripslashes($aNameFields[$row]), ENT_NOQUOTES, 'UTF-8') ?>" size="35" maxlength="40">
-                <?php
-                if ($aNameErrors[$row]) {
-                    echo '<span class="text-danger"><BR>' . gettext('You must enter a name') . ' </span>';
-                } ?>
-            </td>
-            <td class="TextColumn text-center">
-
-            <?php
-            if ($aTypeFields[$row] == 9) {
-                echo '<select name="' . $row . 'special">';
-                echo '<option value="0" selected>Select a group</option>';
-
-                $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
-                $rsGroupList = RunQuery($sSQL);
-
-                while ($aRow = mysqli_fetch_array($rsGroupList)) {
-                    extract($aRow);
-
-                    echo '<option value="' . $grp_ID . '"';
-                    if ($aSpecialFields[$row] == $grp_ID) {
-                        echo ' selected';
-                    }
-                    echo '>' . $grp_Name;
-                }
-
-                echo '</select>';
-                if ($aSpecialErrors[$row]) {
-                    echo '<span class="text-danger"><BR>' . gettext('You must select a group.') . '</span>';
-                }
-            } elseif ($aTypeFields[$row] == 12) {
-                // TLH 6-23-07 Added scrollbars to the popup so long lists can be edited.
-                echo "<a href=\"javascript:void(0)\" onClick=\"Newwin=window.open('OptionManager.php?mode=famcustom&ListID=$aSpecialFields[$row]','Newwin','toolbar=no,status=no,width=400,height=500,scrollbars=1')\">" . gettext('Edit List Options') . '</a>';
-            } else {
-                echo '&nbsp;';
-            } ?>
-
-            </td>
-            <td class="TextColumn text-center text-nowrap">
-                <?= GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]) ?>
-            </td>
-            <td>
-                <input type="button" class="btn btn-danger" value="<?= gettext('Delete') ?>"   name="delete" onclick="return confirmDeleteField('<?= $aFieldFields[$row] ?>');">
-            </td>
-            <td class="TextColumn" width="5%" class="text-nowrap">
-                <?php
-                if ($row > 1) {
-                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=up"><i class="fa-solid fa-arrow-up"></i></a>';
-                }
-                if ($row < $numRows) {
-                    echo "<a href=\"FamilyCustomFieldsRowOps.php?OrderID=$row&Field=" . $aFieldFields[$row] . '&Action=down"><i class="fa-solid fa-arrow-down"></i></a>';
-                } ?>
-            </td>
-
-        </tr>
-        <?php
-    } ?>
-
-        <tr>
-            <td colspan="6">
-            <table width="100%">
-                <tr>
-                    <td width="30%"></td>
-                    <td width="40%" class="text-center align-bottom">
-                        <input type="submit" class="btn btn-primary" value="<?= gettext('Save Changes') ?>" Name="SaveChanges">
-                    </td>
-                    <td width="30%"></td>
-                </tr>
-            </table>
-            </td>
-            <td>
-        </tr>
-    <?php
-} ?>
-        <tr><td colspan="7"><hr></td></tr>
-        <tr>
-            <td colspan="7">
-            <table width="100%">
-                <tr>
-                    <td width="15%"></td>
-                    <td class="align-top">
-                    <div><?= gettext('Type') ?>:</div>
-                    <?php
-                        echo '<select name="newFieldType">';
-
-                    for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
-                        echo '<option value="' . $iOptionID . '"';
-                        echo '>' . $aPropTypes[$iOptionID];
-                    }
-                        echo '</select>';
-                    ?><BR>
-                    <a href="<?= SystemURLs::getSupportURL() ?>"><?= gettext('Help on types..') ?></a>
-                    </td>
-                    <td class="align-top">
-                        <div><?= gettext('Name') ?>:</div>
-                        <input type="text" name="newFieldName" size="30" maxlength="40">
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">
+                <i class="fa-solid fa-plus"></i>
+                <?= gettext('Add New') . ' ' . gettext('Field') ?>
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="newFieldType" class="form-label"><?= gettext('Type') ?>:</label>
+                    <select id="newFieldType" name="newFieldType" class="form-control">
                         <?php
-                        if ($bNewNameError) {
-                            echo '<div><span class="text-danger"><BR>' . gettext('You must enter a name') . '</span></div>';
-                        }
-                        if ($bDuplicateNameError) {
-                            echo '<div><span class="text-danger"><BR>' . gettext('That field name already exists.') . '</span></div>';
+                        for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
+                            echo '<option value="' . InputUtils::escapeAttribute($iOptionID) . '">' . InputUtils::escapeHTML($aPropTypes[$iOptionID]) . '</option>';
                         }
                         ?>
-                        &nbsp;
-                    </td>
-                    <td class="align-top text-nowrap">
-                        <div><?= gettext('Security Option') ?></div>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="newFieldName" class="form-label"><?= gettext('Name') ?>:</label>
+                    <input type="text" id="newFieldName" class="form-control" name="newFieldName" maxlength="40">
+                    <?php
+                    if ($bNewNameError) {
+                        echo '<small class="text-danger d-block mt-1">' . gettext('You must enter a name') . '</small>';
+                    }
+                    if ($bDuplicateNameError) {
+                        echo '<small class="text-danger d-block mt-1">' . gettext('That field name already exists.') . '</small>';
+                    }
+                    ?>
+                </div>
+                <div class="col-md-3">
+                    <label for="newFieldSec" class="form-label"><?= gettext('Security Option') ?></label>
+                    <div id="newFieldSec">
                         <?= GetSecurityList($aSecurityGrp, 'newFieldSec') ?>
+                    </div>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-success w-100" name="AddField">
+                        <i class="fa-solid fa-plus"></i>
+                        <?= gettext('Add New') . ' ' . gettext('Field') ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+    if ($numRows == 0) {
+    ?>
+        <div class="alert alert-info">
+            <i class="fa-solid fa-circle-info"></i>
+            <?= gettext('No custom Family fields have been added yet') ?>
+        </div>
+    <?php
+    } else {
+    ?>
+        <div class="alert alert-warning" role="alert">
+            <i class="fa-solid fa-exclamation-triangle"></i>
+            <strong><?= gettext('Warning:') ?></strong>
+            <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+        </div>
+        <?php
+        if ($bErrorFlag) {
+        ?>
+            <div class="alert alert-danger" role="alert">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <strong><?= gettext('Error:') ?></strong>
+                <?= gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') ?>
+            </div>
+        <?php
+        }
+        ?>
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">
+                    <i class="fa-solid fa-list"></i>
+                    <?= gettext('Existing Custom Family Fields') ?>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover table-sm">
+                        <thead class="table-light">
+                            <tr>
+                                <th><?= gettext('Type') ?></th>
+                                <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('Special option') ?></th>
+                                <th><?= gettext('Security Option') ?></th>
+                                <th><?= gettext('Actions') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            <?php
+
+            for ($row = 1; $row <= $numRows; $row++) {
+                ?>
+                <tr>
+                    <td>
+                        <span class="badge badge-primary"><?= htmlspecialchars($aPropTypes[$aTypeFields[$row]], ENT_QUOTES, 'UTF-8') ?></span>
                     </td>
                     <td>
-                        <input type="submit" class="btn btn-primary" <?= 'value="' . gettext('Add New Field') . '"' ?> Name="AddField">
+                        <input type="text" class="form-control form-control-sm" name="<?= $row . 'name' ?>" value="<?= htmlspecialchars(stripslashes($aNameFields[$row]), ENT_QUOTES, 'UTF-8') ?>" maxlength="40">
+                        <?php
+                        if ($aNameErrors[$row]) {
+                            echo '<small class="text-danger"><br>' . gettext('You must enter a name') . '</small>';
+                        } ?>
                     </td>
-                    <td width="15%"></td>
-                </tr>
-            </table>
-            </td>
-        </tr>
+                    <td>
 
-    </table>
-    </div>
+                    <?php
+                    if ($aTypeFields[$row] == 9) {
+                        echo '<select name="' . $row . 'special" class="form-control form-control-sm">';
+                        echo '<option value="0">Select a group</option>';
+
+                        $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
+                        $rsGroupList = RunQuery($sSQL);
+
+                        while ($aRow = mysqli_fetch_array($rsGroupList)) {
+                            extract($aRow);
+
+                            echo '<option value="' . htmlspecialchars($grp_ID, ENT_QUOTES, 'UTF-8') . '"';
+                            if ($aSpecialFields[$row] == $grp_ID) {
+                                echo ' selected';
+                            }
+                            echo '>' . htmlspecialchars($grp_Name, ENT_QUOTES, 'UTF-8') . '</option>';
+                        }
+
+                        echo '</select>';
+                        if ($aSpecialErrors[$row]) {
+                            echo '<small class="text-danger"><br>' . gettext('You must select a group.') . '</small>';
+                        }
+                    } elseif ($aTypeFields[$row] == 12) {
+                        echo '<a href="javascript:void(0)" class="btn btn-sm btn-outline-primary" onclick="Newwin=window.open(\'OptionManager.php?mode=famcustom&ListID=' . htmlspecialchars($aSpecialFields[$row], ENT_QUOTES, 'UTF-8') . '\',\'Newwin\',\'toolbar=no,status=no,width=400,height=500,scrollbars=1\')">' . gettext('Edit List Options') . '</a>';
+                    } else {
+                        echo '&nbsp;';
+                    } ?>
+
+                    </td>
+                    <td>
+                        <?php
+                        if (isset($aSecurityType[$aFieldSecurity[$row]])) {
+                            echo GetSecurityList($aSecurityGrp, $row . 'FieldSec', $aSecurityType[$aFieldSecurity[$row]]);
+                        } else {
+                            echo GetSecurityList($aSecurityGrp, $row . 'FieldSec');
+                        } ?>
+                    </td>
+                    <td class="text-nowrap">
+                        <div class="btn-group btn-group-sm" role="group">
+                            <?php
+                            $fieldNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
+                            $fieldIdJs = htmlspecialchars(json_encode($aFieldFields[$row]), ENT_QUOTES, 'UTF-8');
+                            ?>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $fieldIdJs ?>)">
+                                <i class="fa-solid fa-trash"></i>
+                                <?= gettext('Delete') ?>
+                            </button>
+                            <?php
+                            if ($row > 1) {
+                                echo '<a href="FamilyCustomFieldsRowOps.php?OrderID=' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
+                            }
+                            if ($row < $numRows) {
+                                echo '<a href="FamilyCustomFieldsRowOps.php?OrderID=' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
+                            }
+                            ?>
+                        </div>
+                    </td>
+
+                </tr>
+                <?php
+    } ?>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center my-3">
+            <button type="submit" class="btn btn-primary" name="SaveChanges">
+                <i class="fa-solid fa-save"></i>
+                <?= gettext('Save Changes') ?>
+            </button>
+        </div>
+    <?php
+    } ?>
     </form>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

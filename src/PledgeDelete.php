@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
@@ -14,7 +14,7 @@ $sGroupKey = InputUtils::legacyFilterInput($_GET['GroupKey'], 'string');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 
 // Is this the second pass?
 if (isset($_POST['Delete'])) {
@@ -28,7 +28,7 @@ if (isset($_POST['Delete'])) {
     RedirectUtils::redirect($linkBack);
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
@@ -38,10 +38,10 @@ require_once 'Include/Header.php';
 
     <tr>
         <td class="text-center">
-            <input type="submit" class="btn btn-default" value="<?= gettext('Delete') ?>" name="Delete">
-            <input type="submit" class="btn btn-default" value="<?= gettext('Cancel') ?>" name="Cancel">
+            <input type="submit" class="btn btn-secondary" value="<?= gettext('Delete') ?>" name="Delete">
+            <input type="submit" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="Cancel">
         </td>
     </tr>
 </table>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

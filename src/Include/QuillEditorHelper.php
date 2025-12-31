@@ -16,6 +16,7 @@
  */
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 /**
  * Generate HTML container for a Quill editor instance
@@ -44,10 +45,10 @@ use ChurchCRM\dto\SystemURLs;
 function getQuillEditorContainer($editorId, $inputId, $content = '', $cssClasses = '', $minHeight = '300px')
 {
     // Sanitize IDs to prevent HTML injection
-    $editorId = htmlspecialchars($editorId, ENT_QUOTES, 'UTF-8');
-    $inputId = htmlspecialchars($inputId, ENT_QUOTES, 'UTF-8');
-    $cssClasses = htmlspecialchars($cssClasses, ENT_QUOTES, 'UTF-8');
-    $minHeight = htmlspecialchars($minHeight, ENT_QUOTES, 'UTF-8');
+    $editorId = InputUtils::escapeAttribute($editorId);
+    $inputId = InputUtils::escapeAttribute($inputId);
+    $cssClasses = InputUtils::escapeAttribute($cssClasses);
+    $minHeight = InputUtils::escapeAttribute($minHeight);
     
     // Merge CSS classes with base editor class
     $classes = trim($cssClasses . ' quill-editor-container');
@@ -102,9 +103,9 @@ HTML;
 function getQuillEditorInitScript($editorId, $inputId, $placeholder = '', $includeScriptTag = true)
 {
     // Sanitize parameters to prevent injection into JavaScript
-    $editorId = htmlspecialchars($editorId, ENT_QUOTES, 'UTF-8');
-    $inputId = htmlspecialchars($inputId, ENT_QUOTES, 'UTF-8');
-    $placeholder = htmlspecialchars($placeholder, ENT_QUOTES, 'UTF-8');
+    $editorId = InputUtils::escapeAttribute($editorId);
+    $inputId = InputUtils::escapeAttribute($inputId);
+    $placeholder = InputUtils::escapeAttribute($placeholder);
     
     // Get CSP nonce for inline script
     $nonce = SystemURLs::getCSPNonce();

@@ -81,7 +81,7 @@ class SystemService
                     // if there was no previous backup, or if the interval suggests we do a backup now.
                     LoggerUtils::getAppLogger()->info('Starting a backup job.  Last backup run: ' . SystemConfig::getValue('sLastBackupTimeStamp'));
                     $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
-                    $Backup = new BackupJob($BaseName, BackupType::FULL_BACKUP, SystemConfig::getValue('bBackupExtraneousImages'), false, '');
+                    $Backup = new BackupJob($BaseName, BackupType::FULL_BACKUP, false, '');
                     $Backup->execute();
                     $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
                     $now = new \DateTime();  // update the LastBackupTimeStamp.
@@ -94,32 +94,6 @@ class SystemService
                 // an error in the auto-backup shouldn't prevent the page from loading...
                 LoggerUtils::getAppLogger()->warning('Failure executing backup job: ' . $exc->getMessage());
             }
-        }
-        if (SystemConfig::getBooleanValue('bEnableIntegrityCheck') && SystemConfig::getValue('iIntegrityCheckInterval') > 0) {
-            if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastIntegrityCheckTimeStamp'), SystemConfig::getValue('iIntegrityCheckInterval'))) {
-                // if there was no integrity check, or if the interval suggests we do one now.
-                LoggerUtils::getAppLogger()->info('Starting application integrity check');
-                $integrityCheckFile = SystemURLs::getDocumentRoot() . '/integrityCheck.json';
-                $appIntegrity = AppIntegrityService::verifyApplicationIntegrity();
-                file_put_contents($integrityCheckFile, json_encode($appIntegrity, JSON_THROW_ON_ERROR));
-                $now = new \DateTime();  // update the LastBackupTimeStamp.
-                SystemConfig::setValue('sLastIntegrityCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
-                if ($appIntegrity['status'] === 'success') {
-                    LoggerUtils::getAppLogger()->info('Application integrity check passed');
-                } else {
-                    LoggerUtils::getAppLogger()->warning('Application integrity check failed: ' . $appIntegrity['message']);
-                }
-            } else {
-                LoggerUtils::getAppLogger()->debug('Not starting application integrity check.  Last application integrity check run: ' . SystemConfig::getValue('sLastIntegrityCheckTimeStamp'));
-            }
-        }
-        if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastSoftwareUpdateCheckTimeStamp'), SystemConfig::getValue('iSoftwareUpdateCheckInterval'))) {
-            // Since checking for updates from GitHub is a potentially expensive operation,
-            // Run this task as part of the "background jobs" API call
-            // Inside ChurchCRMReleaseManager, the restults are stored to the $_SESSION
-            ChurchCRMReleaseManager::checkForUpdates();
-            $now = new \DateTime();  // update the LastBackupTimeStamp.
-            SystemConfig::setValue('sLastSoftwareUpdateCheckTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
         }
 
         LoggerUtils::getAppLogger()->debug('Finished background job processing');

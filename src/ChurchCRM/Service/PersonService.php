@@ -2,13 +2,16 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
+use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class PersonService
 {
     /**
-     * @return array<mixed, array<'address'|'displayName'|'familyID'|'familyRole'|'firstName'|'id'|'lastName'|'role'|'thumbnailURI'|'title'|'uri', mixed>>
+     * @return array<mixed, array<'address'|'displayName'|'familyID'|'familyRole'|'firstName'|'id'|'lastName'|'role'|'photoURI'|'title'|'uri', mixed>>
      */
     public function search(string $searchTerm, bool $includeFamilyRole = true): array
     {
@@ -27,7 +30,7 @@ class PersonService
             $values['lastName'] = $person->getLastName();
             $values['displayName'] = $person->getFullName();
             $values['uri'] = $person->getViewURI();
-            $values['thumbnailURI'] = $person->getPhoto()->getThumbnailURI();
+            $values['photoURI'] = $person->getPhoto()->getPhotoURI();
             $values['title'] = $person->getTitle();
             $values['address'] = $person->getAddress();
             $values['role'] = $person->getFamilyRoleName();
@@ -57,45 +60,189 @@ class PersonService
      */
     public function getPeopleEmailsAndGroups(): array
     {
-        $sSQL = "SELECT per_FirstName, per_LastName, per_Email, per_ID, group_grp.grp_Name, lst_OptionName
-                from person_per
-                    left JOIN person2group2role_p2g2r on
-                  person2group2role_p2g2r.p2g2r_per_ID = person_per.per_id
+        // Get people with emails
+        $people = PersonQuery::create()
+            ->filterByEmail('', Criteria::NOT_EQUAL)
+            ->orderById()
+            ->find();
 
-                left JOIN group_grp ON
-                  person2group2role_p2g2r.p2g2r_grp_ID = group_grp.grp_ID
+        $result = [];
+        foreach ($people as $person) {
+            $personData = [
+                'id' => $person->getId(),
+                'email' => $person->getEmail(),
+                'firstName' => $person->getFirstName(),
+                'lastName' => $person->getLastName(),
+            ];
 
-                left JOIN list_lst ON
-                  group_grp.grp_RoleListID = list_lst.lst_ID AND
-                  person2group2role_p2g2r.p2g2r_rle_ID =  list_lst.lst_OptionID
-
-              where per_email != ''
-
-              order by per_id;";
-        $rsPeopleWithEmails = RunQuery($sSQL);
-        $people = [];
-        $lastPersonId = 0;
-        $person = [];
-        while ($row = mysqli_fetch_array($rsPeopleWithEmails)) {
-            if ($lastPersonId != $row['per_ID']) {
-                if ($lastPersonId != 0) {
-                    $people[] = $person;
+            // Get group memberships for this person
+            $groupMemberships = $person->getPerson2group2roleP2g2rs();
+            foreach ($groupMemberships as $membership) {
+                $group = $membership->getGroup();
+                if ($group !== null) {
+                    $roleName = '';
+                    $roleList = $group->getListOptionById($membership->getRoleId());
+                    if ($roleList !== null) {
+                        $roleName = $roleList->getOptionName();
+                    }
+                    $personData[$group->getName()] = $roleName;
                 }
-                $person = [];
-                $person['id'] = $row['per_ID'];
-                $person['email'] = $row['per_Email'];
-                $person['firstName'] = $row['per_FirstName'];
-                $person['lastName'] = $row['per_LastName'];
             }
 
-            $person[$row['grp_Name']] = $row['lst_OptionName'];
+            $result[] = $personData;
+        }
 
-            if ($lastPersonId != $row['per_ID']) {
-                $lastPersonId = $row['per_ID'];
+        return $result;
+    }
+
+    /**
+     * Assign a volunteer opportunity to a person.
+     */
+    public function addVolunteerOpportunity(int $personId, int $opportunityId): bool
+    {
+        $assignment = new PersonVolunteerOpportunity();
+        $assignment->setPerID($personId);
+        $assignment->setVolID($opportunityId);
+
+        return (bool)$assignment->save();
+    }
+
+    /**
+     * Remove a volunteer opportunity assignment from a person.
+     */
+    public function removeVolunteerOpportunity(int $personId, int $opportunityId): void
+    {
+        PersonVolunteerOpportunityQuery::create()
+            ->filterByPerID($personId)
+            ->filterByVolID($opportunityId)
+            ->delete();
+    }
+
+    /**
+     * Get a list of families with head of household information.
+     *
+     * @param bool $allowAll When true, allows loading all families without search/classification filter
+     *
+     * @return array<int, string> Family list keyed by family ID, with formatted name and household head info
+     */
+    public function getFamilyList(string $dirRoleHead, string $dirRoleSpouse, int $classification = 0, ?string $searchTerm = null, bool $allowAll = false): array
+    {
+        // Require minimum 2 characters for search, or classification filter, to prevent loading entire database
+        $hasValidSearch = $searchTerm !== null && mb_strlen(trim($searchTerm)) >= 2;
+        $hasClassification = $classification > 0;
+
+        if (!$hasValidSearch && !$hasClassification && !$allowAll) {
+            return [];
+        }
+
+        // Build family query using Propel ORM
+        $familyQuery = FamilyQuery::create();
+
+        if ($hasClassification) {
+            // Get family IDs that have persons with this classification
+            $familyIds = PersonQuery::create()
+                ->filterByClsId((int) $classification)
+                ->filterByFamId(null, Criteria::ISNOTNULL)
+                ->select(['FamId'])
+                ->distinct()
+                ->find()
+                ->toArray();
+
+            if (empty($familyIds)) {
+                return [];
+            }
+            $familyQuery->filterById($familyIds);
+        }
+
+        if ($hasValidSearch) {
+            $familyQuery->filterByName('%' . trim($searchTerm) . '%', Criteria::LIKE);
+        }
+
+        $families = $familyQuery->orderByName()->find();
+
+        // Build head of household roles array
+        $headRoles = array_filter(array_map('intval', explode(',', $dirRoleHead ?: '1')));
+        $spouseRole = max(0, (int) $dirRoleSpouse);
+        if ($spouseRole > 0) {
+            $headRoles[] = $spouseRole;
+        }
+
+        // Get all heads of household and spouses
+        $headPersons = PersonQuery::create()
+            ->filterByFmrId($headRoles)
+            ->filterByFamId(null, Criteria::ISNOTNULL)
+            ->filterByFamId(0, Criteria::NOT_EQUAL)
+            ->orderByFamId()
+            ->find();
+
+        $aHead = [];
+        foreach ($headPersons as $person) {
+            $famId = $person->getFamId();
+            $firstName = $person->getFirstName();
+            if ($firstName) {
+                if (isset($aHead[$famId])) {
+                    $aHead[$famId] .= ' & ' . $firstName;
+                } else {
+                    $aHead[$famId] = $firstName;
+                }
             }
         }
-        $people[] = $person;
 
-        return $people;
+        // Build display array
+        $familyArray = [];
+        foreach ($families as $family) {
+            $name = $family->getName();
+            $famId = $family->getId();
+
+            if (isset($aHead[$famId])) {
+                $name .= ', ' . $aHead[$famId];
+            }
+            $name .= ' ' . $family->getAddress();
+
+            $familyArray[$famId] = $name;
+        }
+
+        return $familyArray;
+    }
+
+    /**
+     * Get count of people missing gender data.
+     *
+     * @return int Count of people with Gender = 0 (excluding system record)
+     */
+    public function getMissingGenderDataCount(): int
+    {
+        return PersonQuery::create()
+            ->filterByGender(0)
+            ->filterById(1, Criteria::NOT_EQUAL)
+            ->count();
+    }
+
+    /**
+     * Get count of people missing family role data.
+     *
+     * @return int Count of people with FmrId = 0 and assigned to a family
+     */
+    public function getMissingRoleDataCount(): int
+    {
+        return PersonQuery::create()
+            ->filterByFmrId(0)
+            ->filterById(1, Criteria::NOT_EQUAL)
+            ->filterByFamId(null, Criteria::ISNOTNULL)
+            ->filterByFamId(0, Criteria::NOT_EQUAL)
+            ->count();
+    }
+
+    /**
+     * Get count of people missing classification data.
+     *
+     * @return int Count of people with ClsId = 0 (excluding system record)
+     */
+    public function getMissingClassificationDataCount(): int
+    {
+        return PersonQuery::create()
+            ->filterByClsId(0)
+            ->filterById(1, Criteria::NOT_EQUAL)
+            ->count();
     }
 }

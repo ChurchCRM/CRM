@@ -48,7 +48,7 @@ jobs:
           
           # Exempt labels - issues with these labels will NEVER be marked as stale
           # SECURITY PROTECTION: security, vulnerability, cve, security-fix labels are protected
-          exempt-issue-labels: 'pinned,security,vulnerability,cve,bug,enhancement,good first issue,help wanted,priority:high,priority:critical,security-fix'
+          exempt-issue-labels: 'pinned,security,vulnerability,cve,bug,enhancement,feature,features,type:feature,type: feature,good first issue,help wanted,priority:high,priority:critical,security-fix'
           exempt-pr-labels: 'pinned,security,vulnerability,security-fix,work-in-progress,do-not-merge,priority:high,priority:critical'
           
           # Custom messages for issues

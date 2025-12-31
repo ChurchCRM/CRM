@@ -1,7 +1,7 @@
 <?php
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -70,7 +70,7 @@ foreach ($rsTeachers as $teacher) {
     $TeachersEmails[] = $teacher['per_Email'];
 }
 
-require_once '../Include/Header.php';
+require_once __DIR__ . '/../Include/Header.php';
 
 ?>
 
@@ -108,32 +108,26 @@ require_once '../Include/Header.php';
     if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
         ?>
-      <div class="btn-group">
-        <a class="btn btn-app bg-teal" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>">
+      <div class="dropdown d-inline-block">
+        <button class="btn btn-app bg-teal dropdown-toggle" type="button" id="emailClassDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fa-solid fa-paper-plane fa-3x"></i><br>
             <?= gettext('Email') ?>
-        </a>
-        <button type="button" class="btn btn-app bg-teal dropdown-toggle" data-toggle="dropdown">
-          <span class="caret"></span>
-          <span class="sr-only"><?= gettext('Toggle Dropdown') ?></span>
         </button>
-        <ul class="dropdown-menu" role="menu">
+        <div class="dropdown-menu" aria-labelledby="emailClassDropdown">
+          <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
           <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
-        </ul>
+        </div>
       </div>
 
-      <div class="btn-group">
-        <a class="btn btn-app bg-navy" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>">
-            <i class="fa-regular fa-paper-plane fa-3x"></i><br>
+      <div class="dropdown d-inline-block">
+        <button class="btn btn-app bg-navy dropdown-toggle" type="button" id="emailClassBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa-solid fa-user-secret fa-3x"></i><br>
             <?= gettext('Email (BCC)') ?>
-        </a>
-        <button type="button" class="btn btn-app bg-navy dropdown-toggle" data-toggle="dropdown">
-          <span class="caret"></span>
-          <span class="sr-only"><?= gettext('Toggle Dropdown') ?></span>
         </button>
-        <ul class="dropdown-menu" role="menu">
+        <div class="dropdown-menu" aria-labelledby="emailClassBccDropdown">
+          <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
           <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
-        </ul>
+        </div>
       </div>
         <?php
     }
@@ -189,8 +183,9 @@ require_once '../Include/Header.php';
         <div class="card card-primary text-center user-profile-2">
           <div class="user-profile-inner">
             <h4 class="white mb-3"><?= $teacher['per_FirstName'] . ' ' . $teacher['per_LastName'] ?></h4>
-            <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $teacher['per_ID'] ?>/thumbnail"
-                  alt="User Image" class="user-image initials-image mb-3" width="85" height="85" />
+            <img data-image-entity-type="person" 
+                 data-image-entity-id="<?= $teacher['per_ID'] ?>"
+                 class="photo-small" />
             <div class="btn-group btn-group-sm d-flex" role="group">
                 <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-success">
                     <i class="fa-solid fa-envelope"></i>
@@ -236,14 +231,19 @@ require_once '../Include/Header.php';
 
         foreach ($thisClassChildren as $child) {
             $hideAge = $child['flags'] == 1 || empty($child['birthYear']);
-            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $child['flags']); ?>
+            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $child['flags']);
+            $childPhoto = new \ChurchCRM\dto\Photo('person', $child['kidId']);
+            ?>
           <tr>
           <td>
             <a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
-              <img src="<?= SystemURLs::getRootPath(); ?>/api/person/<?= $child['kidId'] ?>/thumbnail"
-                  alt="User Image" class="user-image initials-image me-2" width="35" height="35" />
               <?= $child['LastName'] . ', ' . $child['firstName'] ?>
             </a>
+            <?php if ($childPhoto->hasUploadedPhoto()) { ?>
+              <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $child['kidId'] ?>" title="<?= gettext('View Photo') ?>">
+                <i class="fa-solid fa-camera"></i>
+              </button>
+            <?php } ?>
           </td>
           <td><?= $birthDate ?> </td>
           <td><?= MiscUtils::formatAge($child['birthMonth'], $child['birthDay'], $child['birthYear']) ?></td>
@@ -342,7 +342,7 @@ function implodeUnique($array, $withQuotes): string
 </div><!-- /.modal -->
 
 <!-- chartjs -->
-<script  src="<?= SystemURLs::getRootPath() ?>/skin/external/chartjs/chart.umd.js"></script>
+<script  src="<?= SystemURLs::assetVersioned('/skin/external/chartjs/chart.umd.js') ?>"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(function () {
@@ -462,8 +462,10 @@ function implodeUnique($array, $withQuotes): string
           }]
       },
       options: {
-          legend: {
-              position: 'bottom'
+          plugins: {
+              legend: {
+                  position: 'bottom'
+              }
           }
       }
   };
@@ -484,5 +486,6 @@ function implodeUnique($array, $withQuotes): string
   }
 
 </script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <?php
-require_once '../Include/Footer.php';
+require_once __DIR__ . '/../Include/Footer.php';

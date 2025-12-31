@@ -1,8 +1,8 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
-require_once 'Include/QuillEditorHelper.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/QuillEditorHelper.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -13,7 +13,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isNotesEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isNotesEnabled(), 'Notes');
 
 $sPageTitle = gettext('Note Editor');
 
@@ -43,7 +43,7 @@ if (isset($_POST['Submit'])) {
 
     // Assign all variables locally
     $iNoteID = InputUtils::legacyFilterInput($_POST['NoteID'], 'int');
-    $sNoteText = InputUtils::filterHTML($_POST['NoteTextInput']);
+    $sNoteText = InputUtils::sanitizeHTML($_POST['NoteTextInput']);
 
     // If they didn't check the private box, set the value to 0
     if (isset($_POST['Private'])) {
@@ -96,7 +96,7 @@ if (isset($_POST['Submit'])) {
         $iFamilyID = $dbNote->getFamId();
     }
 }
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <form method="post">
@@ -121,7 +121,7 @@ require_once 'Include/Header.php';
   <p class="text-center">
     <input type="submit" class="btn btn-success" name="Submit" value="<?= gettext('Save') ?>">
     &nbsp;
-    <input type="button" class="btn btn-default" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='<?= $sBackPage ?>';">
+    <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='<?= $sBackPage ?>';">
 
   </p>
 </form>
@@ -129,4 +129,4 @@ require_once 'Include/Header.php';
 <?= getQuillEditorInitScript('NoteText', 'NoteTextInput', gettext("Enter note text here...")) ?>
 
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

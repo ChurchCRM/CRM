@@ -154,7 +154,9 @@ jobs:
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: devskim-results.sarif
-          category: 'DevSkim Security Analysis'
+          category: 'devskim'
+          # Wait for processing to ensure alerts are properly reconciled
+          wait-for-processing: true
 
       - name: Create security summary
         if: always()

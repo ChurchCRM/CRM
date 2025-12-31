@@ -26,19 +26,8 @@ msgid "Based on filters below.."
 msgstr "Based on filters below ..."
 
 #: 
-msgid "Select the event to which you would like to add your cart"
-msgstr "Select the event which you would like to add your cart"
-
-#: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Use the textbox for countries other than the UK)"
-
-#: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Select the event which you would like to check people in for"
-
-#: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Load Authorised Transactions"
 
 #: 
@@ -86,11 +75,6 @@ msgstr "Post Code"
 #: 
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Enter any part of the following: Name, City, Post Code, Home Phone, Email, or Work Email."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Search by any part of Name, City, Post Code, Home Phone, Email, or Work Email."
 
 #: 
 msgid "Foreground Color"

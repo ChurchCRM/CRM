@@ -5,15 +5,12 @@ use ChurchCRM\dto\SystemURLs;
 ?>
 <title>ChurchCRM: <?= $sPageTitle ?></title>
 
+<link rel="icon" href="<?= SystemURLs::getRootPath() ?>/favicon.ico" type="image/x-icon">
+
 <!-- Custom ChurchCRM styles -->
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.css') ?>">
 
-<!-- jQuery JS -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery/jquery.min.js"></script>
-<!-- jQuery UI -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/jquery-ui/jquery-ui.min.js"></script>
+<!-- Core ChurchCRM bundle (includes jQuery) -->
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.js') ?>"></script>
 
-<!-- Core ChurchCRM bundle -->
-<script src="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.js"></script>
-
-<script src="<?= SystemURLs::getRootPath() ?>/skin/external/moment/moment-with-locales.min.js"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>

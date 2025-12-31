@@ -22,6 +22,12 @@
  * - .text-center, .text-right, .text-left (instead of .text-center/right/left)
  * - .m-0, .mx-auto, .mt-5, etc. (instead of .margin-*, .padding-*)
  * - .w-100, .w-75, .w-50 (instead of .width-*)
+ * 
+ * DEPRECATED CLASSES (Migrated to Bootstrap):
+ * - .callout, .callout-info, .callout-warning, .callout-danger → Use Bootstrap .alert .alert-info .alert-warning .alert-danger
+ * - .ShadedBox, .LightShadedBox → Use Bootstrap .card .card-body or .alert
+ * - .box-info, .box-danger, .box-warning → Use Bootstrap .card with .bg-info .bg-danger .bg-warning
+ * - .main-box, .main-box-body → Use Bootstrap .card .card-body
  */
 
 /* ============================================
@@ -31,6 +37,11 @@
 /* Custom cursor pointer utility (not in Bootstrap) */
 .cursor-pointer {
     cursor: pointer;
+}
+
+/* Text decoration utilities (Bootstrap 4 doesn't have these) */
+.text-decoration-none {
+    text-decoration: none;
 }
 
 /* Float-right deprecated in Bootstrap 5, but kept for legacy support */
@@ -168,4 +179,9 @@
 
 .birthday-filter-hidden {
     display: none;
+}
+
+/* Hide view photo button when there is no uploaded photo or gravatar */
+.hide-if-no-photo {
+    display: none !important;
 }

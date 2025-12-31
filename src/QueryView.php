@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -19,7 +19,7 @@ if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array($iQ
     RedirectUtils::redirect('v2/dashboard');
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Get the query information
 $sSQL = 'SELECT * FROM query_qry WHERE qry_ID = ' . $iQueryID;
@@ -119,7 +119,8 @@ function ValidateInput()
                     break;
 
                 default:
-                    $vPOST[$qrp_Alias] = $_POST[$qrp_Alias];
+                    // Sanitize input to prevent SQL injection
+                    $vPOST[$qrp_Alias] = InputUtils::sanitizeText($_POST[$qrp_Alias]);
                     break;
             }
         }
@@ -132,6 +133,7 @@ function ProcessSQL()
     global $vPOST;
     global $qry_SQL;
     global $rsParameters;
+    global $cnInfoCentral;
 
     // Loop through the list of parameters
     if (mysqli_num_rows($rsParameters)) {
@@ -144,9 +146,31 @@ function ProcessSQL()
         // echo "--" . $qry_SQL . "<br>--" . "~" . $qrp_Alias . "~" . "<br>--" . $vPOST[$qrp_Alias] . "<p>";
 
         // Replace the placeholder with the parameter value
-        $qrp_Value = is_array($vPOST[$qrp_Alias]) ? implode(',', $vPOST[$qrp_Alias]) : $vPOST[$qrp_Alias];
+        // GHSA-qc2c-qmw4-52fp: Properly escape values before SQL substitution to prevent injection
+        $qrp_Value = escapeQueryParameter($vPOST[$qrp_Alias], $cnInfoCentral);
         $qry_SQL = str_replace('~' . $qrp_Alias . '~', $qrp_Value, $qry_SQL);
     }
+}
+
+// Helper function to safely escape and format query parameters
+function escapeQueryParameter($value, $connection)
+{
+    if (is_array($value)) {
+        // For arrays, escape each element and quote it, then join with commas
+        $escapedValues = array_map(function($val) use ($connection) {
+            return "'" . $connection->real_escape_string((string)$val) . "'";
+        }, $value);
+        return implode(',', $escapedValues);
+    }
+    
+    // For single values, determine if numeric or string
+    if (is_numeric($value)) {
+        // Numeric values don't need quotes
+        return (string)$value;
+    }
+    
+    // String values need quotes and escaping
+    return "'" . $connection->real_escape_string((string)$value) . "'";
 }
 
 // Checks if a count is to be displayed, and displays it if required
@@ -230,7 +254,7 @@ function DoQuery()
             } else {
                 // ...otherwise just render the field
                 // Write the actual value of this row
-                echo '<td>' . htmlspecialchars($aRow[$iCount]) . '</td>';
+                echo '<td>' . InputUtils::escapeHTML($aRow[$iCount]) . '</td>';
             }
         }
 
@@ -247,25 +271,27 @@ function DoQuery()
             <div class="col-sm-offset-1">
                 <input type="hidden" value="<?= implode(',', $aAddToCartIDs) ?>" name="BulkAddToCart">
                 <button type="button" id="addResultsToCart" class="btn btn-success" > <?= gettext('Add Results to Cart') ?></button>
-                <!-- TODO: #5049 create cart intersect API <input type="submit" class="btn btn-warning btn-sm" name="AndToCartSubmit" value="<?= gettext('Intersect With Cart') ?>"> -->
                 <button type="button" id="removeResultsFromCart" class="btn btn-danger" > <?= gettext('Remove Results from Cart') ?></button>
             </div>
-            <script>
-                $("#addResultsToCart").click(function () {
-                    var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                    window.CRM.cartManager.addPerson(selectedPersons, {
-                        showNotification: true
+            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                // Wait for locales to load before setting up cart handlers
+                // CartManager uses i18next for notifications
+                window.CRM.onLocalesReady(function() {
+                    $("#addResultsToCart").click(function () {
+                        var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                        window.CRM.cartManager.addPerson(selectedPersons, {
+                            showNotification: true
+                        });
+                    });
+
+                    $("#removeResultsFromCart").click(function(){
+                        var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
+                        window.CRM.cartManager.removePerson(selectedPersons, {
+                            confirm: true,
+                            showNotification: true
+                        });
                     });
                 });
-
-                $("#removeResultsFromCart").click(function(){
-                    var selectedPersons = <?= json_encode($aAddToCartIDs) ?>;
-                    window.CRM.cartManager.removePerson(selectedPersons, {
-                        confirm: true,
-                        showNotification: true
-                    });
-                });
-
             </script>
 
         <?php } ?>
@@ -283,7 +309,7 @@ function DoQuery()
         <div class="card-title">Query</div>
     </div>
     <div class="card-body">
-        <code><?= str_replace(chr(13), '<br>', htmlspecialchars($qry_SQL)); ?></code>
+        <code><?= str_replace(chr(13), '<br>', InputUtils::escapeHTML($qry_SQL)); ?></code>
     </div>
 </div>
     <?php
@@ -417,4 +443,4 @@ function DisplayParameterForm()
     <?php
 }
 
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

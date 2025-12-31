@@ -2,16 +2,18 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Service\FinancialService;
 
 // Security
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 // Filter values
 $sort = InputUtils::legacyFilterInput($_POST['sort']);
@@ -22,39 +24,32 @@ $sDateStart = InputUtils::legacyFilterInput($_POST['DateStart'], 'date');
 $sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
 $iDepID = InputUtils::legacyFilterInput($_POST['deposit'], 'int');
 
+// Prepare filter arrays
+$classList = [];
+$fundIds = [];
+$familyIds = [];
+$methods = [];
+
 if (!empty($_POST['classList'])) {
-    $classList = $_POST['classList'];
+    $classList = array_map('intval', $_POST['classList']);
+}
 
-    if ($classList[0]) {
-        $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-        $rsClassifications = RunQuery($sSQL);
-
-        $inClassList = '(';
-        $notInClassList = '(';
-
-        while ($aRow = mysqli_fetch_array($rsClassifications)) {
-            extract($aRow);
-            if (in_array($lst_OptionID, $classList)) {
-                if ($inClassList === '(') {
-                    $inClassList .= $lst_OptionID;
-                } else {
-                    $inClassList .= ',' . $lst_OptionID;
-                }
-            } else {
-                if ($notInClassList === '(') {
-                    $notInClassList .= $lst_OptionID;
-                } else {
-                    $notInClassList .= ',' . $lst_OptionID;
-                }
-            }
-        }
-        $inClassList .= ')';
-        $notInClassList .= ')';
+if (!empty($_POST['funds'])) {
+    foreach ($_POST['funds'] as $fundID) {
+        $fundIds[] = InputUtils::legacyFilterInput($fundID, 'int');
     }
 }
 
 if (!empty($_POST['family'])) {
-    $familyList = $_POST['family'];
+    foreach ($_POST['family'] as $famID) {
+        $familyIds[] = InputUtils::legacyFilterInput($famID, 'int');
+    }
+}
+
+if (!empty($_POST['method'])) {
+    foreach ($_POST['method'] as $methodItem) {
+        $methods[] = InputUtils::legacyFilterInput($methodItem);
+    }
 }
 
 if (!$sort) {
@@ -69,137 +64,85 @@ if (!$output) {
 
 // If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
 if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('Admin');
 }
 
-// Build SQL Query
-// Build SELECT SQL Portion
-
-$sSQL = 'SELECT DISTINCT fam_ID, fam_Name, fam_Address1, fam_Address2, fam_City, fam_State, fam_Zip, fam_Country, plg_date, plg_amount, plg_method, plg_comment, plg_depID, plg_CheckNo, fun_ID, fun_Name, dep_Date FROM pledge_plg';
-$sSQL .= ' LEFT JOIN family_fam ON plg_FamID=fam_ID';
-$sSQL .= ' INNER JOIN deposit_dep ON plg_depID = dep_ID';
-$sSQL .= ' LEFT JOIN donationfund_fun ON plg_fundID=fun_ID';
-
-if ($classList[0]) {
-    $sSQL .= ' LEFT JOIN person_per ON fam_ID=per_fam_ID';
+// Normalize date range
+$today = date('Y-m-d');
+if (!$sDateEnd && $sDateStart) {
+    $sDateEnd = $sDateStart;
 }
-$sSQL .= " WHERE plg_PledgeOrPayment='Payment'";
-
-// Add  SQL criteria
-// Report Dates OR Deposit ID
-if ($iDepID > 0) {
-    $sSQL .= " AND plg_depID='$iDepID' ";
-} else {
-    $today = date('Y-m-d');
-    if (!$sDateEnd && $sDateStart) {
-        $sDateEnd = $sDateStart;
-    }
-    if (!$sDateStart && $sDateEnd) {
-        $sDateStart = $sDateEnd;
-    }
-    if (!$sDateStart && !$sDateEnd) {
-        $sDateStart = $today;
-        $sDateEnd = $today;
-    }
-    if ($sDateStart > $sDateEnd) {
-        $temp = $sDateStart;
-        $sDateStart = $sDateEnd;
-        $sDateEnd = $temp;
-    }
-    if ($datetype === 'Payment') {
-        $sSQL .= " AND plg_date BETWEEN '$sDateStart' AND '$sDateEnd' ";
-    } else {
-        $sSQL .= " AND dep_Date BETWEEN '$sDateStart' AND '$sDateEnd' ";
-    }
+if (!$sDateStart && $sDateEnd) {
+    $sDateStart = $sDateEnd;
+}
+if (!$sDateStart && !$sDateEnd) {
+    $sDateStart = $today;
+    $sDateEnd = $today;
+}
+if ($sDateStart > $sDateEnd) {
+    $temp = $sDateStart;
+    $sDateStart = $sDateEnd;
+    $sDateEnd = $temp;
 }
 
-// Filter by Fund
-if (!empty($_POST['funds'])) {
-    $count = 0;
-    foreach ($_POST['funds'] as $fundID) {
-        $fund[$count++] = InputUtils::legacyFilterInput($fundID, 'int');
-    }
-    if ($count == 1) {
-        if ($fund[0]) {
-            $sSQL .= " AND plg_fundID='$fund[0]' ";
-        }
-    } else {
-        $sSQL .= " AND (plg_fundID ='$fund[0]'";
-        for ($i = 1; $i < $count; $i++) {
-            $sSQL .= " OR plg_fundID='$fund[$i]'";
-        }
-        $sSQL .= ') ';
-    }
+// Use FinancialService to get data using ORM instead of raw SQL
+$financialService = new FinancialService();
+$pledgeObjects = $financialService->getAdvancedDepositReportData(
+    $sort,
+    $sDateStart,
+    $sDateEnd,
+    $iDepID > 0 ? $iDepID : null,
+    $fundIds,
+    $familyIds,
+    $methods,
+    $classList,
+    $datetype
+);
+
+// Convert Propel objects to array format for backward compatibility with existing PDF/CSV code
+// Using withColumn() fields (FamilyName, FamilyAddress1, etc.) added by PledgeQuery
+$rsReport = [];
+foreach ($pledgeObjects as $pledge) {
+    $row = [
+        'fam_ID' => $pledge['FamId'],
+        'fam_Name' => $pledge['FamilyName'] ?? 'Unassigned',
+        'fam_Address1' => $pledge['FamilyAddress1'] ?? '',
+        'fam_Address2' => $pledge['FamilyAddress2'] ?? '',
+        'fam_City' => $pledge['FamilyCity'] ?? '',
+        'fam_State' => $pledge['FamilyState'] ?? '',
+        'fam_Zip' => $pledge['FamilyZip'] ?? '',
+        'fam_Country' => $pledge['FamilyCountry'] ?? '',
+        'plg_date' => $pledge['Date'],
+        'plg_amount' => $pledge['Amount'],
+        'plg_method' => $pledge['Method'],
+        'plg_comment' => $pledge['Comment'],
+        'plg_depID' => $pledge['DepId'],
+        'plg_CheckNo' => $pledge['CheckNo'] ?? '',
+        'fun_ID' => $pledge['FundId'],
+        'fun_Name' => $pledge['FundName'] ?? 'Undesignated',
+        'dep_Date' => $pledge['DepositDate'] ?? '',
+    ];
+    $rsReport[] = $row;
 }
-
-// Filter by Family
-if ($familyList) {
-    $count = 0;
-    foreach ($familyList as $famID) {
-        $fam[$count++] = InputUtils::legacyFilterInput($famID, 'int');
-    }
-    if ($count == 1) {
-        if ($fam[0]) {
-            $sSQL .= " AND plg_FamID='$fam[0]' ";
-        }
-    } else {
-        $sSQL .= " AND (plg_FamID='$fam[0]'";
-        for ($i = 1; $i < $count; $i++) {
-            $sSQL .= " OR plg_FamID='$fam[$i]'";
-        }
-        $sSQL .= ' ) ';
-    }
-}
-
-if ($classList[0]) {
-    $sSQL .= ' AND per_cls_ID IN ' . $inClassList . ' AND per_fam_ID NOT IN (SELECT DISTINCT per_fam_ID FROM person_per WHERE per_cls_ID IN ' . $notInClassList . ')';
-}
-
-// Filter by Payment Method
-if (!empty($_POST['method'])) {
-    $count = 0;
-    foreach ($_POST['method'] as $MethodItem) {
-        $aMethod[$count++] = InputUtils::legacyFilterInput($MethodItem);
-    }
-    if ($count == 1) {
-        if ($aMethod[0]) {
-            $sSQL .= " AND plg_method='$aMethod[0]' ";
-        }
-    } else {
-        $sSQL .= " AND (plg_method='$aMethod[0]' ";
-        for ($i = 1; $i < $count; $i++) {
-            $sSQL .= " OR plg_method='$aMethod[$i]'";
-        }
-        $sSQL .= ') ';
-    }
-}
-
-// Add SQL ORDER
-if ($sort === 'deposit') {
-    $sSQL .= ' ORDER BY plg_depID, fun_Name, fam_Name, fam_ID';
-} elseif ($sort === 'fund') {
-    $sSQL .= ' ORDER BY fun_Name, fam_Name, fam_ID, plg_depID ';
-} elseif ($sort === 'family') {
-    $sSQL .= ' ORDER BY fam_Name, fam_ID, fun_Name, plg_depID';
-}
-
-//var_dump($sSQL);
-
-//Execute SQL Statement
-$rsReport = RunQuery($sSQL);
 
 // Exit if no rows returned
-$iCountRows = mysqli_num_rows($rsReport);
+$iCountRows = count($rsReport);
 if ($iCountRows < 1) {
-    header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Advanced%20Deposit%20Report');
+    $params = [
+        'ReturnMessage' => 'NoRows',
+        'ReportType' => 'Advanced Deposit Report',
+        'DateStart' => $sDateStart,
+        'DateEnd'   => $sDateEnd,
+        'datetype'  => $datetype,
+    ];
+    header('Location: ../FinancialReports.php?' . http_build_query($params));
+    exit;
 }
 
-// Create PDF Report -- PDF
-if ($output === 'pdf') {
-    // Set up bottom border value
-    $bottom_border = 250;
-    $summaryIntervalY = 4;
-    $page = 1;
+// Set up bottom border value
+$bottom_border = 250;
+$summaryIntervalY = 4;
+$page = 1;
 
     class PdfAdvancedDepositReport extends ChurchInfoReport
     {
@@ -324,7 +267,8 @@ if ($output === 'pdf') {
     }
 
     // Instantiate the directory class and build the report.
-    $pdf = new PdfAdvancedDepositReport();
+    if ($output === 'pdf') {
+        $pdf = new PdfAdvancedDepositReport();
 
     $curY = $pdf->startFirstPage();
     $curX = 0;
@@ -347,11 +291,21 @@ if ($output === 'pdf') {
             $curY = $pdf->headings($curY);
         }
 
-        while ($aRow = mysqli_fetch_array($rsReport)) {
-            extract($aRow);
+        foreach ($rsReport as $aRow) {
+            $fun_ID = $aRow['fun_ID'];
+            $fun_Name = $aRow['fun_Name'];
+            $fam_ID = $aRow['fam_ID'];
+            $fam_Name = $aRow['fam_Name'];
+            $fam_Address1 = $aRow['fam_Address1'];
+            $plg_depID = $aRow['plg_depID'];
+            $plg_amount = $aRow['plg_amount'];
+            $plg_method = $aRow['plg_method'];
+            $plg_comment = $aRow['plg_comment'];
+            $plg_CheckNo = $aRow['plg_CheckNo'];
+            $dep_Date = $aRow['dep_Date'];
+            
             if (!$fun_ID) {
                 $fun_ID = -1;
-                $fun_Name = 'Undesignated';
             }
             if (!$fam_ID) {
                 $fam_ID = -1;
@@ -434,9 +388,9 @@ if ($output === 'pdf') {
                 if (strlen($plg_comment) > 29) {
                     $plg_comment = mb_substr($plg_comment, 0, 28) . '...';
                 }
-                $fam_Name = $fam_Name . ' - ' . $fam_Address1;
-                if (strlen($fam_Name) > 31) {
-                    $fam_Name = mb_substr($fam_Name, 0, 30) . '...';
+                $fam_Name_Display = $fam_Name . ' - ' . $fam_Address1;
+                if (strlen($fam_Name_Display) > 31) {
+                    $fam_Name_Display = mb_substr($fam_Name_Display, 0, 30) . '...';
                 }
 
                 // Print Data
@@ -444,7 +398,7 @@ if ($output === 'pdf') {
                 $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
                 $pdf->Cell(16, $summaryIntervalY, $plg_CheckNo, 0, 0, 'R');
                 $pdf->Cell(40, $summaryIntervalY, $sfun_Name);
-                $pdf->Cell(55, $summaryIntervalY, $fam_Name);
+                $pdf->Cell(55, $summaryIntervalY, $fam_Name_Display);
                 $pdf->Cell(40, $summaryIntervalY, $plg_comment);
                 $pdf->SetFont('Courier', '', 9);
                 $pdf->Cell(25, $summaryIntervalY, $plg_amount, 0, 0, 'R');
@@ -505,11 +459,21 @@ if ($output === 'pdf') {
             $curY = $pdf->headings($curY);
         }
 
-        while ($aRow = mysqli_fetch_array($rsReport)) {
-            extract($aRow);
+        foreach ($rsReport as $aRow) {
+            $fun_ID = isset($aRow['fun_ID']) ? $aRow['fun_ID'] : null;
+            $fun_Name = isset($aRow['fun_Name']) ? $aRow['fun_Name'] : null;
+            $fam_ID = isset($aRow['fam_ID']) ? $aRow['fam_ID'] : null;
+            $fam_Name = isset($aRow['fam_Name']) ? $aRow['fam_Name'] : null;
+            $fam_Address1 = isset($aRow['fam_Address1']) ? $aRow['fam_Address1'] : null;
+            $plg_depID = isset($aRow['plg_depID']) ? $aRow['plg_depID'] : null;
+            $plg_amount = isset($aRow['plg_amount']) ? $aRow['plg_amount'] : null;
+            $plg_method = isset($aRow['plg_method']) ? $aRow['plg_method'] : null;
+            $plg_comment = isset($aRow['plg_comment']) ? $aRow['plg_comment'] : null;
+            $plg_CheckNo = isset($aRow['plg_CheckNo']) ? $aRow['plg_CheckNo'] : null;
+            $dep_Date = isset($aRow['dep_Date']) ? $aRow['dep_Date'] : null;
+            
             if (!$fun_ID) {
                 $fun_ID = -1;
-                $fun_Name = 'Undesignated';
             }
             if (!$fam_ID) {
                 $fam_ID = -1;
@@ -662,11 +626,21 @@ if ($output === 'pdf') {
         $page = $pdf->pageBreak($page);
     } elseif ($sort === 'family') {
         // Sort by Family  Report
-        while ($aRow = mysqli_fetch_array($rsReport)) {
-            extract($aRow);
+        foreach ($rsReport as $aRow) {
+            $fun_ID = isset($aRow['fun_ID']) ? $aRow['fun_ID'] : null;
+            $fun_Name = isset($aRow['fun_Name']) ? $aRow['fun_Name'] : null;
+            $fam_ID = isset($aRow['fam_ID']) ? $aRow['fam_ID'] : null;
+            $fam_Name = isset($aRow['fam_Name']) ? $aRow['fam_Name'] : null;
+            $fam_Address1 = isset($aRow['fam_Address1']) ? $aRow['fam_Address1'] : null;
+            $plg_depID = isset($aRow['plg_depID']) ? $aRow['plg_depID'] : null;
+            $plg_amount = isset($aRow['plg_amount']) ? $aRow['plg_amount'] : null;
+            $plg_method = isset($aRow['plg_method']) ? $aRow['plg_method'] : null;
+            $plg_comment = isset($aRow['plg_comment']) ? $aRow['plg_comment'] : null;
+            $plg_CheckNo = isset($aRow['plg_CheckNo']) ? $aRow['plg_CheckNo'] : null;
+            $dep_Date = isset($aRow['dep_Date']) ? $aRow['dep_Date'] : null;
+            
             if (!$fun_ID) {
                 $fun_ID = -1;
-                $fun_Name = 'Undesignated';
             }
             if (!$fam_ID) {
                 $fam_ID = -1;
@@ -861,33 +835,32 @@ if ($output === 'pdf') {
 
     // Output a text file
     // ##################
-} elseif ($output === 'csv') {
-    // Settings
-    $delimiter = ',';
-    $eol = "\r\n";
-
-    // Build headings row
-    preg_match('#SELECT (.*) FROM #mi', $sSQL, $result);
-    $headings = explode(',', $result[1]);
-    $buffer = '';
-    foreach ($headings as $heading) {
-        $buffer .= trim($heading) . $delimiter;
-    }
-    // Remove trailing delimiter and add eol
-    $buffer = mb_substr($buffer, 0, -1) . $eol;
-
-    // Add data
-    while ($row = mysqli_fetch_row($rsReport)) {
-        foreach ($row as $field) {
-            $field = str_replace($delimiter, ' ', $field);    // Remove any delimiters from data
-            $buffer .= $field . $delimiter;
-        }
-        // Remove trailing delimiter and add eol
-        $buffer = mb_substr($buffer, 0, -1) . $eol;
+    } elseif ($output === 'csv') {
+    // Extract headers from rsReport array
+    $headers = [];
+    if (!empty($rsReport) && is_array($rsReport[0])) {
+        $headers = array_keys($rsReport[0]);
     }
 
-    // Export file
-    header('Content-type: text/x-csv');
-    header("Content-Disposition: attachment; filename='ChurchCRM" . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv');
-    echo $buffer;
+    // Convert array to 2D row format
+    $rows = [];
+    foreach ($rsReport as $record) {
+        $rows[] = array_values($record);
+    }
+
+    // Only export if we have headers and rows
+    if (!empty($headers) && !empty($rows)) {
+        // Export using CsvExporter
+        // basename: 'AdvancedDepositReport', includeDateInFilename: true adds today's date, .csv is added automatically
+        CsvExporter::create($headers, $rows, 'AdvancedDepositReport', 'UTF-8', true);
+    } else {
+        $params = [
+            'ReturnMessage' => 'NoRows',
+            'ReportType' => 'Advanced Deposit Report',
+            'DateStart' => $sDateStart,
+            'DateEnd'   => $sDateEnd,
+            'datetype'  => $datetype,
+        ];
+        header('Location: ../FinancialReports.php?' . http_build_query($params));
+    }
 }

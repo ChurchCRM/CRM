@@ -89,19 +89,95 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isEditSelf();
     }
 
+    /**
+     * Check if the user can edit a specific person's record.
+     * Combines role-based (EditRecords) and object-level (EditSelf + family/own) authorization.
+     *
+     * @param int $personId The ID of the person to potentially edit
+     * @param int $personFamilyId The family ID of the person (0 if no family)
+     * @return bool True if user can edit this person's record
+     */
+    public function canEditPerson(int $personId, int $personFamilyId = 0): bool
+    {
+        // Users with EditRecords permission can edit anyone
+        if ($this->isEditRecordsEnabled()) {
+            return true;
+        }
+
+        // Users with EditSelf permission can edit their own record or family members
+        if ($this->isEditSelfEnabled()) {
+            // Can edit own record
+            if ($personId === $this->getId()) {
+                return true;
+            }
+
+            // Can edit family members (if person has a family)
+            if ($personFamilyId > 0 && $personFamilyId === $this->getPerson()->getFamId()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Update password using secure bcrypt hashing.
+     */
     public function updatePassword(string $password): void
     {
         $this->setPassword($this->hashPassword($password));
     }
 
+    /**
+     * Validate password against stored hash.
+     * Supports both legacy SHA-256 and new bcrypt formats for migration.
+     * If legacy hash matches, upgrades to bcrypt on successful validation.
+     */
     public function isPasswordValid(string $password): bool
     {
-        return $this->getPassword() == $this->hashPassword($password);
+        $storedHash = $this->getPassword();
+
+        // Check if this is a bcrypt hash (starts with $2y$)
+        if ($this->isBcryptHash($storedHash)) {
+            return password_verify($password, $storedHash);
+        }
+
+        // Legacy SHA-256 check for migration period
+        $legacyHash = $this->legacyHashPassword($password);
+        if (hash_equals($storedHash, $legacyHash)) {
+            // Upgrade to bcrypt on successful login
+            $this->setPassword($this->hashPassword($password));
+            $this->save();
+            return true;
+        }
+
+        return false;
     }
 
+    /**
+     * Hash password using bcrypt (PHP's password_hash with PASSWORD_DEFAULT).
+     * This is the secure method for new passwords.
+     */
     public function hashPassword(string $password): string
     {
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    /**
+     * Legacy SHA-256 hashing for backward compatibility during migration.
+     * @deprecated Will be removed in a future version
+     */
+    private function legacyHashPassword(string $password): string
+    {
         return hash('sha256', $password . $this->getPersonId());
+    }
+
+    /**
+     * Check if a hash is in bcrypt format.
+     */
+    private function isBcryptHash(string $hash): bool
+    {
+        return str_starts_with($hash, '$2y$') || str_starts_with($hash, '$2b$') || str_starts_with($hash, '$2a$');
     }
 
     public function isAddEventEnabled(): bool // TODO: Create permission to manag event deletion see https://github.com/ChurchCRM/CRM/issues/4726
@@ -136,7 +212,7 @@ class User extends BaseUser
 
     public function isLocked(): bool
     {
-        return SystemConfig::getValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getValue('iMaxFailedLogins');
+        return SystemConfig::getIntValue('iMaxFailedLogins') > 0 && $this->getFailedLogins() >= SystemConfig::getIntValue('iMaxFailedLogins');
     }
 
     public function resetPasswordToRandom(): string
@@ -154,12 +230,12 @@ class User extends BaseUser
         $alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $pass = []; //remember to declare $pass as an array
         $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-        for ($i = 0; $i < SystemConfig::getValue('iMinPasswordLength'); $i++) {
+        for ($i = 0; $i < SystemConfig::getIntValue('iMinPasswordLength'); $i++) {
             $n = random_int(0, $alphaLength);
             $pass[] = $alphabet[$n];
         }
 
-        return implode($pass); //turn the array into a string
+        return implode('', $pass); //turn the array into a string
     }
 
     public static function randomApiKey(): string
@@ -347,7 +423,7 @@ class User extends BaseUser
     public function confirmProvisional2FACode($twoFACode)
     {
         $google2fa = new Google2FA();
-        $window = 2; //TODO: make this a system config
+        $window = 2;
         $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManager::getTwoFASecretKey());
         $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
         if ($isKeyValid) {
@@ -405,7 +481,7 @@ class User extends BaseUser
     public function isTwoFACodeValid($twoFACode): bool
     {
         $google2fa = new Google2FA();
-        $window = 2; //TODO: make this a system config
+        $window = 2;
         $timestamp = $google2fa->verifyKeyNewer($this->getDecryptedTwoFactorAuthSecret(), $twoFACode, $this->getTwoFactorAuthLastKeyTimestamp(), $window);
         if ($timestamp !== false) {
             $this->setTwoFactorAuthLastKeyTimestamp($timestamp);
@@ -451,15 +527,15 @@ class User extends BaseUser
             throw new PasswordChangeException('New', gettext('Your password choice is too obvious. Please choose something else.'));
         }
 
-        if (strlen($newPassword) < SystemConfig::getValue('iMinPasswordLength')) {
-            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters'));
+        if (strlen($newPassword) < SystemConfig::getIntValue('iMinPasswordLength')) {
+            throw new PasswordChangeException('New', gettext('Your new password must be at least') . ' ' . SystemConfig::getIntValue('iMinPasswordLength') . ' ' . gettext('characters'));
         }
 
         if ($newPassword == $oldPassword) {
             throw new PasswordChangeException('New', gettext('Your new password must not match your old one.'));
         }
 
-        if (levenshtein(strtolower($newPassword), strtolower($oldPassword)) < SystemConfig::getValue('iMinPasswordChange')) {
+        if (levenshtein(strtolower($newPassword), strtolower($oldPassword)) < SystemConfig::getIntValue('iMinPasswordChange')) {
             throw new PasswordChangeException('New', gettext('Your new password is too similar to your old one.'));
         }
 

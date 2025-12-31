@@ -1,12 +1,8 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\MenuEventsCount;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Map\TokenTableMap;
-use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -128,87 +124,57 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args): Response {
         $scanString = $args['scanString'];
 
-        /** @var FinancialService $financialService */
-        $financialService = $this->get('FinancialService');
+        $financialService = new FinancialService();
 
         return SlimUtils::renderJSON($response, $financialService->getMemberByScanString($scanString));
-    });
-
-    /**
-     * Update the family status to activated or deactivated with :familyId and :status true/false.
-     * Pass true to activate and false to deactivate.     *.
-     */
-    $group->post('/{familyId:[0-9]+}/activate/{status}', function (Request $request, Response $response, array $args): Response {
-        $familyId = $args['familyId'];
-        $newStatus = $args['status'];
-
-        $family = FamilyQuery::create()->findPk($familyId);
-        $currentStatus = (empty($family->getDateDeactivated()) ? 'true' : 'false');
-
-        //update only if the value is different
-        if ($currentStatus !== $newStatus) {
-            if ($newStatus == 'false') {
-                $family->setDateDeactivated(date('YmdHis'));
-            } elseif ($newStatus == 'true') {
-                $family->setDateDeactivated(null);
-            }
-            $family->save();
-
-            //Create a note to record the status change
-            $note = new Note();
-            $note->setFamId($familyId);
-            if ($newStatus == 'false') {
-                $note->setText(gettext('Deactivated the Family'));
-            } else {
-                $note->setText(gettext('Activated the Family'));
-            }
-            $note->setType('edit');
-            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-            $note->save();
-        }
-
-        return SlimUtils::renderJSON($response, ['success' => true]);
     });
 });
 
 function getFamiliesWithAnniversaries(Request $request, Response $response, array $args): Response
 {
+    // Get anniversaries for 14-day range: 7 days before to 7 days after today
+    $today = new \DateTime();
+    $conditions = [];
+
+    for ($i = -7; $i <= 7; $i++) {
+        $date = (clone $today)->modify("{$i} days");
+        $month = (int)$date->format('m');
+        $day = (int)$date->format('d');
+        // Values are safe: cast to int from DateTime::format()
+        $conditions[] = "(MONTH(" . FamilyTableMap::COL_FAM_WEDDINGDATE . ") = {$month} AND DAY(" . FamilyTableMap::COL_FAM_WEDDINGDATE . ") = {$day})";
+    }
+
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
         ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'MONTH(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . date('m'), Criteria::CUSTOM)
-        ->addUsingAlias(FamilyTableMap::COL_FAM_WEDDINGDATE, 'DAY(' . FamilyTableMap::COL_FAM_WEDDINGDATE . ') =' . date('d'), Criteria::CUSTOM)
+        ->where(implode(' OR ', $conditions))
         ->orderByWeddingdate('DESC')
         ->find();
 
-    return SlimUtils::renderJSON($response, buildFormattedFamilies($families, false, false, true));
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }
 
 function getLatestFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
-        ->filterByDateDeactivated(null)
         ->orderByDateEntered('DESC')
         ->limit(10)
         ->find();
 
-    return SlimUtils::renderJSON($response, buildFormattedFamilies($families, true, false, false));
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }
 
 function getUpdatedFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
-        ->filterByDateDeactivated(null)
         ->orderByDateLastEdited('DESC')
         ->limit(10)
         ->find();
 
-    $formattedList = buildFormattedFamilies($families, false, true, false);
-
-    return SlimUtils::renderJSON($response, $formattedList);
+    return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }
 
-function buildFormattedFamilies($families, bool $created, bool $edited, bool $wedding): array
+function buildFormattedFamilies($families): array
 {
     $formattedList = [];
 
@@ -217,29 +183,13 @@ function buildFormattedFamilies($families, bool $created, bool $edited, bool $we
         $formattedFamily['FamilyId'] = $family->getId();
         $formattedFamily['Name'] = $family->getName();
         $formattedFamily['Address'] = $family->getAddress();
-        if ($created) {
-            $value = null;
-            if ($family->getDateEntered()) {
-                $value = date_format($family->getDateEntered(), SystemConfig::getValue('sDateFormatLong'));
-            }
-            $formattedFamily['Created'] = $value;
-        }
-
-        if ($edited) {
-            $value = null;
-            if ($family->getDateLastEdited()) {
-                $value = date_format($family->getDateLastEdited(), SystemConfig::getValue('sDateFormatLong'));
-            }
-            $formattedFamily['LastEdited'] = $value;
-        }
-
-        if ($wedding) {
-            $value = null;
-            if ($family->getWeddingdate()) {
-                $value = date_format($family->getWeddingdate(), SystemConfig::getValue('sDateFormatLong'));
-            }
-            $formattedFamily['WeddingDate'] = $value;
-        }
+        $formattedFamily['HasPhoto'] = $family->getPhoto()->hasUploadedPhoto();
+        $formattedFamily['IsActive'] = $family->isActive();
+        $formattedFamily['StatusText'] = $family->getStatusText();
+        
+        $formattedFamily['Created'] = $family->getDateEntered() ? $family->getDateEntered()->format('c') : null; // ISO 8601
+        $formattedFamily['LastEdited'] = $family->getDateLastEdited() ? $family->getDateLastEdited()->format('c') : null; // ISO 8601
+        $formattedFamily['WeddingDate'] = $family->getWeddingdate() ? $family->getWeddingdate()->format('F j, Y') : null;
 
         $formattedList[] = $formattedFamily;
     }

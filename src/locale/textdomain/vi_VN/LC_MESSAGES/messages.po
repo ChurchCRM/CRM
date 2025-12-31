@@ -64,42 +64,6 @@ msgid "Backup Database"
 msgstr "Sao lưu dữ liệu"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "Công cụ này sẽ giúp bạn tự sao lưu cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh"
-
-#. yep fixed
-#: 
-#, fuzzy
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "Bạn nên thực hiện một sao lưu thủ công ít nhất một lần một tuần, trừ khi bạn đã có một lịch sao lưu thường xuyên cho hệ thống của bạn."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "Sau khi bạn tải về các tập tin sao lưu, bạn nên làm cho hai bản sao. Đặt một trong số tập tin này vào nơi an toàn trong máy chủ và ngoài máy chủ."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "Nếu bạn lo lắng về tính bảo mật của dữ liệu được lưu trữ trong cơ sở dữ liệu của Hệ Thống Quản Lý Hội Thánh, bạn nên mã hóa dữ liệu sao lưu nếu nó sẽ được lưu trữ ở đâu đó có khả năng tiếp cận với những người khác"
-
-#: 
-#, fuzzy
-msgid "Select archive type"
-msgstr "Chọn loại lưu trữ"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Mã hóa tập tin sao lưu với một mật khẩu?"
-
-#: 
-#, fuzzy
-msgid "Re-type Password"
-msgstr "Gõ lại mật khẩu:"
-
-#: 
-msgid "Generate and Ship Backup to External Storage"
-msgstr "Tạo và gửi tập tin lưu trữ đến kho lưu trữ bên ngoài"
-
-#: 
 msgid "Batch Winner Entry"
 msgstr "Mục nhập người chiến thắng hàng loạt"
 
@@ -160,11 +124,6 @@ msgstr "Email công việc/khác"
 #, fuzzy
 msgid "Membership Date"
 msgstr "Ngày đăng ký thành viên"
-
-#: 
-#, fuzzy
-msgid "Birth / Anniversary Date"
-msgstr "Ngày sinh / Kỷ niệm ngày cưới"
 
 #: 
 #, fuzzy
@@ -234,17 +193,14 @@ msgid "Group Membership"
 msgstr "Thành viên trong nhóm"
 
 #: 
-msgid "From:"
-msgstr "Gửi từ:"
-
-#: 
-msgid "To:"
-msgstr "Gửi đến:"
+#, fuzzy
+msgid "From"
+msgstr "Gửi từ"
 
 #: 
 #, fuzzy
-msgid "Birthday Date"
-msgstr "Ngày sinh nhật:"
+msgid "To"
+msgstr "Gửi đến"
 
 #: 
 #, fuzzy
@@ -280,8 +236,9 @@ msgid "No file selected for upload."
 msgstr "Không có tập tin được lựa chọn để tải lên."
 
 #: 
-msgid "Total number of rows in the CSV file:"
-msgstr "Tổng số hàng trong tập tin CSV:"
+#, fuzzy
+msgid "Total number of rows in the CSV file"
+msgstr "Tổng số hàng trong tập tin CSV"
 
 #: 
 msgid "Ignore this Field"
@@ -379,7 +336,8 @@ msgid "Data import successful."
 msgstr "Nhập dữ liệu thành công"
 
 #: 
-msgid "persons were imported"
+#, fuzzy
+msgid "people were imported"
 msgstr "thành viên đã được nhập vào"
 
 #: 
@@ -387,17 +345,8 @@ msgid "Add Cart to Event"
 msgstr "Thêm vào giỏ rồi gửi đến Sự kiện"
 
 #: 
-#, fuzzy
-msgid "Select the event to which you would like to add your cart"
-msgstr "Chọn sự kiện mà bạn muốn thêm vào giỏ của bạn"
-
-#: 
 msgid "OR"
 msgstr "HOẶC"
-
-#: 
-msgid "Add New Event"
-msgstr "Thêm sự kiện mới"
 
 #: 
 msgid "Your cart is empty!"
@@ -440,10 +389,6 @@ msgstr "Sử dụng địa chỉ/liên hệ từ"
 #: 
 msgid "Only the new data below"
 msgstr "Chỉ có các dữ liệu mới dưới đây"
-
-#: 
-msgid "(Use the textbox for countries other than US and Canada)"
-msgstr "(Sử dụng hộp văn bản cho các quốc gia khác ngoài Mỹ và Canada)"
 
 #: 
 msgid "Do not auto-format"
@@ -498,10 +443,6 @@ msgid "Empty Cart to Family"
 msgstr "Xóa bỏ giỏ trong Gia đình"
 
 #: 
-msgid "Empty Cart to Event"
-msgstr "Xóa bỏ giỏ trong Sự kiện"
-
-#: 
 msgid "Map Cart"
 msgstr "Giỏ Bản đồ"
 
@@ -534,7 +475,8 @@ msgid "Your cart contains"
 msgstr "Giỏ hàng của bạn chứa"
 
 #: 
-msgid "persons from"
+#, fuzzy
+msgid "people from"
 msgstr "thành viên từ"
 
 #: 
@@ -558,20 +500,8 @@ msgid "Event Checkin"
 msgstr "Đăng ký sự kiện"
 
 #: 
-msgid "Select the event to which you would like to check people in for"
-msgstr "Chọn sự kiện mà bạn muốn kiểm tra mọi người"
-
-#: 
 msgid "Select Event"
 msgstr "Lựa chọn sự kiện"
-
-#: 
-msgid "Add Visitor"
-msgstr "Thêm người truy cập"
-
-#: 
-msgid "CheckIn"
-msgstr "Kiểm tra vào"
 
 #: 
 msgid "CheckOut"
@@ -596,10 +526,6 @@ msgstr "Kiểm tra bởi"
 #: 
 msgid "Action"
 msgstr "Hành động"
-
-#: 
-msgid "No Attendees Assigned to Event"
-msgstr "Không có người tham dự nào được chỉ định cho sự kiện"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -627,44 +553,27 @@ msgid "Convert All"
 msgstr "Chuyển đổi tất cả"
 
 #: 
-msgid "Deposit Slip Number: "
-msgstr "Số phiếu gửi tiền:"
-
-#: 
-msgid "Deposit Details: "
-msgstr "Chi tiết tiền gửi:"
-
-#: 
-msgid "Close deposit slip (remember to press Save)"
-msgstr "Đóng phiếu gửi (nhớ bấm Lưu)"
-
-#: 
-msgid "Deposit Slip Report"
-msgstr "Báo cáo tiền gửi"
+#, fuzzy
+msgid "Deposit Slip Number"
+msgstr "Số phiếu gửi tiền"
 
 #: 
 #, fuzzy
-msgid "Important note: failed transactions will be deleted permanently when the deposit slip is closed."
+msgid "Deposit Details"
+msgstr "Chi tiết tiền gửi:"
+
+#: 
+#, fuzzy
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr "Lưu ý quan trọng: các giao dịch không thành công sẽ bị xóa vĩnh viễn khi đóng phiếu gửi tiền."
-
-#: 
-msgid "Deposit Summary: "
-msgstr "Tóm tắt tiền gửi:"
-
-#: 
-msgid "Payments on this deposit slip:"
-msgstr "Các khoản thanh toán trên phiếu gửi tiền này:"
-
-#: 
-msgid "Import eGive"
-msgstr "Nhập eGive"
 
 #: 
 msgid "Add Payment"
 msgstr "Thêm thanh toán"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Tải các giao dịch được ủy quyền"
 
 #: 
@@ -832,10 +741,6 @@ msgid "Are you sure you want to delete this fund?"
 msgstr "Bạn có chắc chắn muốn xóa quỹ này không?"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using a delete or 'add new' button!"
-msgstr "Cảnh báo: Các thay đổi trường sẽ bị mất nếu bạn không 'Lưu Thay đổi' trước khi sử dụng nút xóa hoặc 'thêm mới'!"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Các trường hoặc lựa chọn không hợp lệ. Thay đổi không được lưu! Vui lòng sửa và thử lại!"
 
@@ -850,10 +755,6 @@ msgstr "Kích hoạt"
 #: 
 msgid "Save Changes"
 msgstr "Lưu thay đổi"
-
-#: 
-msgid "Add New Fund"
-msgstr "Thêm quỹ mới"
 
 #: 
 msgid "Church Event Editor"
@@ -930,44 +831,8 @@ msgid "Edit"
 msgstr "Chỉnh sửa"
 
 #: 
-msgid "Event Attendees"
-msgstr "Người tham dự sự kiện"
-
-#: 
-msgid "Event Nonattendees"
-msgstr "Người không tham dự sự kiện"
-
-#: 
-msgid "Event Guests"
-msgstr "Khách sự kiện"
-
-#: 
-msgid "There "
-msgstr "tại đây␣"
-
-#: 
 msgid "Event Title"
 msgstr "Tiêu đề sự kiện"
-
-#: 
-msgid "Event Date"
-msgstr "Ngày sự kiện"
-
-#: 
-msgid "Attending Members"
-msgstr "Thành viên tham dự"
-
-#: 
-msgid "Non-Attending Members"
-msgstr "Thành viên không tham dự"
-
-#: 
-msgid "Guests"
-msgstr "Khách"
-
-#: 
-msgid "There are no events in this category"
-msgstr "Không có sự kiện nào trong chuyên mục này"
 
 #: 
 msgid "Create Event"
@@ -978,20 +843,8 @@ msgid "Create a new Event"
 msgstr "Tạo sự kiện mới"
 
 #: 
-msgid "Editing Event ID: "
-msgstr "Chỉnh ID sự kiện: "
-
-#: 
 msgid " errors. Please see below"
 msgstr " bị lỗi. Vui lòng xem bên dưới"
-
-#: 
-msgid "Items with a "
-msgstr "Các mặt hàng có"
-
-#: 
-msgid " are required"
-msgstr "được yêu cầu"
 
 #: 
 msgid "Select your event type"
@@ -1002,20 +855,8 @@ msgid "You must pick an event type."
 msgstr "Bạn cần chọn loại sự kiện"
 
 #: 
-msgid "Event Desc"
-msgstr "Mô tả sự kiện"
-
-#: 
 msgid "No Attendance counts recorded"
 msgstr "Không có số điểm chuyên cần nào được ghi lại"
-
-#: 
-msgid "Attendance Notes: "
-msgstr "Ghi chú tham dự: "
-
-#: 
-msgid "Event Sermon"
-msgstr "Bài giảng của sự kiện"
 
 #: 
 msgid "Event Status"
@@ -1024,10 +865,6 @@ msgstr "Trạng thái sự kiện"
 #: 
 msgid "Return to Events"
 msgstr "Quay về sự kiện"
-
-#: 
-msgid "EVENT TYPE NAME"
-msgstr "TÊN LOẠI SỰ KIỆN"
 
 #: 
 msgid "Sundays"
@@ -1058,30 +895,6 @@ msgid "Saturdays"
 msgstr "Thứ Bảy"
 
 #: 
-msgid "DEFAULT START TIME"
-msgstr "THỜI GIAN BẮT ĐẦU"
-
-#: 
-msgid "ATTENDANCE COUNTS"
-msgstr "SỐ LƯỢNG THAM DỰ"
-
-#: 
-msgid "Optional"
-msgstr "Không bắt buộc"
-
-#: 
-msgid "Enter a list of the attendance counts you want to include with this event."
-msgstr "Nhập danh sách số lượng người tham dự bạn muốn đưa vào sự kiện này."
-
-#: 
-msgid "Separate each count_name with a comma. e.g. Members, Visitors, Campus, Children"
-msgstr "Phân tách từng tên_đếm bằng dấu phẩy. ví dụ: Thành viên, Khách truy cập, Cơ sở, Trẻ em"
-
-#: 
-msgid "Every event type includes a Total count, you do not need to include it."
-msgstr "Mọi loại sự kiện đều bao gồm Tổng số, bạn không cần phải bao gồm nó."
-
-#: 
 msgid "Add Event Type"
 msgstr "Thêm loại sự kiện"
 
@@ -1092,14 +905,6 @@ msgstr "Chỉnh sửa trường gia đình tùy chỉnh"
 #: 
 msgid "Default Option"
 msgstr "Tùy chọn mặc định"
-
-#: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all family data assigned for this field!"
-msgstr "Cảnh báo: Bằng cách xóa trường này, bạn sẽ mất tất cả dữ liệu gia đình được chỉ định cho trường này không thể thay đổi được!"
-
-#: 
-msgid "Warning: Arrow and delete buttons take effect immediately.  Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Cảnh báo: Mũi tên và nút xóa sẽ có hiệu lực ngay lập tức. Thay đổi tên trường sẽ bị mất nếu bạn không nhấn nút \"Lưu thay đổi\" trước khi sử dụng lên, xuống, xóa hoặc thêm trường mới !"
 
 #: 
 msgid "No custom Family fields have been added yet"
@@ -1134,10 +939,6 @@ msgid "That field name already exists."
 msgstr "Tên trường này đã tồn tại"
 
 #: 
-msgid "Add New Field"
-msgstr "Thêm trường mới"
-
-#: 
 msgid "Family Editor"
 msgstr "Chỉnh sửa thông tin Gia đình"
 
@@ -1166,10 +967,6 @@ msgid "Contact Info"
 msgstr "Thông tin liên hệ"
 
 #: 
-msgid "Other Info"
-msgstr "Thông tin khác"
-
-#: 
 msgid "Envelope Info"
 msgstr "Thông tin phong bì"
 
@@ -1180,10 +977,6 @@ msgstr "Thông tin thêm"
 #: 
 msgid "Family Members"
 msgstr "Thành viên gia đình"
-
-#: 
-msgid "You may create family members now or add them later.  All entries will become <i>new</i> person records."
-msgstr "Bạn có thể tạo thành viên gia đình ngay bây giờ hoặc thêm họ sau. Tất cả các mục sẽ trở thành hồ sơ người <i> mới </i>."
 
 #: 
 msgid "First"
@@ -1266,10 +1059,6 @@ msgid "Unk"
 msgstr "Unk"
 
 #: 
-msgid "Family List"
-msgstr "Danh sách gia đình"
-
-#: 
 msgid "Created"
 msgstr "Đã tạo"
 
@@ -1278,40 +1067,12 @@ msgid "Envelope Number"
 msgstr "Số phong bì"
 
 #: 
-msgid "Verify Info"
-msgstr "Xác nhận thông tin"
-
-#: 
-msgid "Add New Member"
-msgstr "Thêm thành viên mới"
-
-#: 
-msgid "Previous Family"
-msgstr "Gia đình trước"
-
-#: 
-msgid "Next Family"
-msgstr "Gia đình kế tiếp"
-
-#: 
-msgid "Delete this Family"
-msgstr "Xóa gia đình này"
-
-#: 
 msgid "Upload Photo"
 msgstr "Tải lên hình ảnh"
 
 #: 
 msgid "Delete Photo"
 msgstr "Xóa hình ảnh"
-
-#: 
-msgid "Add a Note"
-msgstr "Thêm ghi chú"
-
-#: 
-msgid "Add All Family Members to Cart"
-msgstr "Thêm tất cả thành viên trong gia đình vào giỏ"
 
 #: 
 msgid "Timeline"
@@ -1390,14 +1151,6 @@ msgid "Comment"
 msgstr "Bình luận"
 
 #: 
-msgid "Add a new pledge"
-msgstr "Thêm một cam kết mới"
-
-#: 
-msgid "Add a new payment"
-msgstr "Thêm một khoản thanh toán mới"
-
-#: 
 msgid "Close"
 msgstr "Đóng lại"
 
@@ -1422,12 +1175,9 @@ msgid "Financial Reports"
 msgstr "Báo cáo tài chính"
 
 #: 
-msgid "No records were returned from the previous report."
-msgstr "Không có hồ sơ nào được trả lại từ báo cáo trước."
-
-#: 
-msgid "Report Type:"
-msgstr "Loại báo cáo:"
+#, fuzzy
+msgid "Report Type"
+msgstr "Loại báo cáo"
 
 #: 
 msgid "Select Report Type"
@@ -1474,16 +1224,19 @@ msgid "Filter by Family"
 msgstr "Lọc theo gia đình"
 
 #: 
-msgid "Report Start Date:"
+#, fuzzy
+msgid "Report Start Date"
 msgstr "Ngày bắt đầu báo cáo"
 
 #: 
-msgid "Report End Date:"
+#, fuzzy
+msgid "Report End Date"
 msgstr "Ngày kết thúc báo cáo"
 
 #: 
-msgid "Apply Report Dates To:"
-msgstr "Áp dụng Ngày Báo cáo Cho:"
+#, fuzzy
+msgid "Apply Report Dates To"
+msgstr "Áp dụng Ngày Báo cáo Cho"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1494,8 +1247,9 @@ msgid "Payment Date"
 msgstr "Ngày thanh toán"
 
 #: 
-msgid "Filter by Deposit:"
-msgstr "Lọc theo tiền gửi:"
+#, fuzzy
+msgid "Filter by Deposit"
+msgstr "Lọc theo tiền gửi"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1506,8 +1260,9 @@ msgid "All deposits within date range"
 msgstr "Tất cả các khoản tiền gửi trong phạm vi ngày"
 
 #: 
-msgid "Filter by Payment Type:"
-msgstr "Lọc theo Hình thức Thanh toán:"
+#, fuzzy
+msgid "Filter by Payment Type"
+msgstr "Lọc theo Hình thức Thanh toán"
 
 #: 
 msgid "All Methods"
@@ -1526,10 +1281,6 @@ msgid "Bank Draft"
 msgstr "Dự thảo ngân hàng"
 
 #: 
-msgid "eGive"
-msgstr "eGive"
-
-#: 
 #, fuzzy
 msgid "Minimum Total Amount:"
 msgstr "Tổng số tiền tối thiểu:"
@@ -1543,20 +1294,12 @@ msgid "Other Settings"
 msgstr "Các thiết lập khác"
 
 #: 
-msgid "Include:"
-msgstr "Bao gồm:"
-
-#: 
 msgid "Only Payments with Pledges"
 msgstr "Chỉ thanh toán có cầm cố"
 
 #: 
 msgid "All Payments"
 msgstr "Tất cả các khoản thanh toán"
-
-#: 
-msgid "Generate:"
-msgstr "Tạo:"
 
 #: 
 msgid "Only Families with unpaid pledges"
@@ -1607,8 +1350,9 @@ msgid "Summary Data"
 msgstr "Dữ liệu tóm tắt"
 
 #: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation):"
-msgstr "Các thành viên bỏ phiếu phải đã đóng góp <br> trong vòng nhiều năm này <br> (0 để không yêu cầu đóng góp):"
+#, fuzzy
+msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
+msgstr "Các thành viên bỏ phiếu phải đã đóng góp <br> trong vòng nhiều năm này <br> (0 để không yêu cầu đóng góp)"
 
 #: 
 msgid "CSV"
@@ -1627,12 +1371,9 @@ msgid "Deposit Listing"
 msgstr "Đăng ký tiền gửi"
 
 #: 
-msgid "Add New Deposit"
-msgstr "Thêm khoản thu mới"
-
-#: 
-msgid "Deposits: "
-msgstr "Tiền dâng hiến: "
+#, fuzzy
+msgid "Deposits"
+msgstr "Tiền dâng hiến"
 
 #: 
 msgid "Delete Selected Rows"
@@ -1663,7 +1404,8 @@ msgid "Date End"
 msgstr "Ngày kết thúc"
 
 #: 
-msgid "Clear Filters"
+#, fuzzy
+msgid "Clear Filter"
 msgstr "Xóa bỏ lọc"
 
 #: 
@@ -1719,11 +1461,13 @@ msgid "Family Geographic Utilities"
 msgstr "Tìm kiếm các tín hữu ở gần nhau"
 
 #: 
-msgid "Select Family:"
-msgstr "Lựa chọn Gia đình:"
+#, fuzzy
+msgid "Select Family"
+msgstr "Lựa chọn Gia đình"
 
 #: 
-msgid "Maximum number of neighbors:"
+#, fuzzy
+msgid "Maximum number of neighbors"
 msgstr "Hiển thị tối đa các tín hữu ở gần nhau"
 
 #: 
@@ -1731,8 +1475,9 @@ msgid "Maximum distance"
 msgstr "Khoảng cách tối đa"
 
 #: 
-msgid "Data file format:"
-msgstr "Định dạng tệp dữ liệu:"
+#, fuzzy
+msgid "Data file format"
+msgstr "Định dạng tệp dữ liệu"
 
 #: 
 msgid "GPS Visualizer"
@@ -1743,8 +1488,9 @@ msgid "Street Atlas USA"
 msgstr "Bản đồ đường phố Hoa Kỳ"
 
 #: 
-msgid "Include families in coordinate file:"
-msgstr "Bao gồm các họ trong tệp tọa độ:"
+#, fuzzy
+msgid "Include families in the coordinate file"
+msgstr "Bao gồm các họ trong tệp tọa độ"
 
 #: 
 msgid "Neighbor Families"
@@ -1815,7 +1561,8 @@ msgid "Select a group"
 msgstr "Lựa chọn Ban/Mục vụ"
 
 #: 
-msgid "Group Specific Properties: "
+#, fuzzy
+msgid "Group Specific Properties"
 msgstr "Thuộc tính Ban/Mục vụ đặc biệt"
 
 #: 
@@ -1847,16 +1594,8 @@ msgid "New Role"
 msgstr "Vai trò mới"
 
 #: 
-msgid "Add New Role"
-msgstr "Thêm vai trò mới"
-
-#: 
 msgid "Group Listing"
 msgstr "Danh sách Ban/Mục vụ"
-
-#: 
-msgid "Add New Group"
-msgstr "Thêm Ban/Mục vụ mới"
 
 #: 
 msgid "Group Member Properties Editor"
@@ -1879,7 +1618,8 @@ msgid "data for member"
 msgstr "dữ liệu cho thành viên"
 
 #: 
-msgid "Group-Specific Properties Form Editor:"
+#, fuzzy
+msgid "Group-Specific Properties Form Editor"
 msgstr "Chỉnh sửa mẫu thuộc tính cho Ban/Mục vụ đặc biệt"
 
 #: 
@@ -1887,7 +1627,8 @@ msgid "No properties have been added yet"
 msgstr "Chưa có thuộc tính nào được thêm vào"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'add new' button!"
+#, fuzzy
+msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
 msgstr "Cảnh báo: Các thay đổi trường sẽ bị mất nếu bạn không 'Lưu Thay đổi' trước khi sử dụng nút lên, xuống, xóa hoặc 'thêm mới'!"
 
 #: 
@@ -1911,7 +1652,8 @@ msgid "No Role Selected"
 msgstr "Không có vai trò đã lựa chọn"
 
 #: 
-msgid "Only cart persons?"
+#, fuzzy
+msgid "Only cart people?"
 msgstr "Chỉ những thành viên trong giỏ ?"
 
 #: 
@@ -1953,10 +1695,6 @@ msgstr "Chưa xác định"
 #: 
 msgid "Group View"
 msgstr "Xem Ban/Mục vụ"
-
-#: 
-msgid "Group Functions"
-msgstr "Tính năng Ban/Mục vụ"
 
 #: 
 msgid "Edit this Group"
@@ -2019,8 +1757,9 @@ msgid "Assigned Properties"
 msgstr "Nhóm Tế Bào"
 
 #: 
-msgid "Group Members:"
-msgstr "Thành viên Ban/Mục vụ:"
+#, fuzzy
+msgid "Group Members"
+msgstr "Thành viên Ban/Mục vụ"
 
 #: 
 msgid "Remove Selected Members from group"
@@ -2039,8 +1778,9 @@ msgid "Move Selected Members to Group"
 msgstr "Di chuyển thành viên đã lựa chọn đến Ban/Mục vụ"
 
 #: 
-msgid "Add Group Member: "
-msgstr "Thêm thành viên vào Ban/Mục vụ: "
+#, fuzzy
+msgid "Add Group Member"
+msgstr "Thêm thành viên vào Ban/Mục vụ"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -2055,36 +1795,12 @@ msgid "Confirm data labels"
 msgstr "Xác nhận nhãn dữ liệu"
 
 #: 
-msgid "Listing Events of Type = "
-msgstr "Sự kiện danh sách thuộc loại ="
-
-#: 
 msgid "Listing All Church Events"
 msgstr "Danh sách tất cả các sự kiện Hội Thánh"
 
 #: 
-msgid "Select Event Types To Display"
-msgstr "Chọn loại sự kiện để hiển thị"
-
-#: 
-msgid "Display Events in Year"
-msgstr "Hiển thị sự kiện trong năm"
-
-#: 
 msgid "Start Date/Time"
 msgstr "Thời gian/ngày bắt đầu"
-
-#: 
-msgid "No Attendance Recorded"
-msgstr "Không có điểm danh nào được ghi lại"
-
-#: 
-msgid "Attendees"
-msgstr "Người tham dự"
-
-#: 
-msgid " Monthly Averages"
-msgstr "Trung bình hàng tháng"
 
 #: 
 msgid "Invalid login or password"
@@ -2163,10 +1879,6 @@ msgid "All People"
 msgstr "Tất cả thành viên"
 
 #: 
-msgid "Classifications Manager"
-msgstr "Quản lý phân loại"
-
-#: 
 msgid "Email All"
 msgstr "Email cho tất cả"
 
@@ -2243,14 +1955,6 @@ msgid "Gender Demographics"
 msgstr "Bản đồ các giới tính"
 
 #: 
-msgid "Men"
-msgstr "Đàn ông"
-
-#: 
-msgid "Women"
-msgstr "Phụ nữ"
-
-#: 
 msgid "Boys"
 msgstr "Con trai"
 
@@ -2281,10 +1985,6 @@ msgstr "Gia đình vừa cập nhật"
 #: 
 msgid "Updated"
 msgstr "Đã cập nhật"
-
-#: 
-msgid "Note Delete Confirmation"
-msgstr "Ghi chú Xóa xác nhận"
 
 #: 
 msgid "Please confirm deletion of this note"
@@ -2319,10 +2019,6 @@ msgid "Option"
 msgstr "Tùy chọn"
 
 #: 
-msgid "Warning: Removing will reset all assignments for all persons with the assignment!"
-msgstr "Cảnh báo: Việc xóa bỏ các thuộc tính này sẽ xóa bỏ đi các thuộc tính đã được ghép cho các thành viên khác."
-
-#: 
 msgid "Error: Duplicate"
 msgstr "Lỗi: trùng lặp"
 
@@ -2345,10 +2041,6 @@ msgstr "Thoát khỏi"
 #: 
 msgid "Add New"
 msgstr "Thêm mới"
-
-#: 
-msgid "Error: A "
-msgstr "Lỗi: "
 
 #: 
 msgid " by that name already exists."
@@ -2391,20 +2083,12 @@ msgid "Custom Person Fields Editor"
 msgstr "Chỉnh sửa trường tùy chọn"
 
 #: 
-msgid "Warning:  By deleting this field, you will irrevokably lose all person data assigned for this field!"
-msgstr "Cảnh báo: Bằng cách xóa trường này, bạn sẽ mất tất cả dữ liệu người được chỉ định cho trường này một cách không thể thay đổi được!"
-
-#: 
 msgid "No custom person fields have been added yet"
 msgstr "Chưa có trường người tùy chỉnh nào được thêm vào"
 
 #: 
 msgid "Person Editor"
 msgstr "Chỉnh sửa thành viên"
-
-#: 
-msgid "You must enter a Last Name if no Family is selected."
-msgstr "Bạn phải nhập Họ nếu không có Họ nào được chọn."
 
 #: 
 msgid "Not a valid Friend Date"
@@ -2419,40 +2103,12 @@ msgid "Work Email is Not Valid"
 msgstr "Email công việc không hợp lệ"
 
 #: 
-msgid "Red text"
-msgstr "Chữ màu đỏ"
-
-#: 
-msgid "indicates items inherited from the associated family record."
-msgstr "cho biết các mục này được kế thừa từ bản ghi của gia đình được liên kết."
-
-#: 
-msgid "Personal Info"
-msgstr "Thông tin cá nhân"
-
-#: 
-msgid "Mr., Mrs., Dr., Rev."
-msgstr "Ông, Bà, Tiến sĩ, Rev."
-
-#: 
-msgid "Jr., Sr., III"
-msgstr "Jr., Sr., III"
-
-#: 
 msgid "Birth Month"
 msgstr "Tháng sinh"
 
 #: 
-msgid "Select Month"
-msgstr "Lựa chọn tháng"
-
-#: 
 msgid "Birth Day"
 msgstr "Ngày sinh"
-
-#: 
-msgid "Select Day"
-msgstr "Lựa chọn ngày"
 
 #: 
 msgid "Birth Year"
@@ -2467,10 +2123,6 @@ msgid "Create a new family (using last name)"
 msgstr "Tạo gia đình mới (sử dụng Họ)"
 
 #: 
-msgid "Membership Info"
-msgstr "Thông tin thành viên"
-
-#: 
 msgid "Friend Date"
 msgstr "Ngày đến Hội Thánh"
 
@@ -2481,10 +2133,6 @@ msgstr "Hồ sơ cá nhân"
 #: 
 msgid "Not assigned"
 msgstr "Không được chỉ định"
-
-#: 
-msgid "About Me"
-msgstr "Giới thiệu về tôi"
 
 #: 
 msgid "Printable Page"
@@ -2555,28 +2203,8 @@ msgid "Check number not valid for 'CASH' payment"
 msgstr "Số séc không hợp lệ để thanh toán bằng 'TIỀN MẶT'"
 
 #: 
-msgid "Pledge Editor"
-msgstr "Pledge Editor"
-
-#: 
-msgid "Payment Editor: "
-msgstr "Biên tập viên thanh toán:"
-
-#: 
-msgid " Deposit Slip #"
-msgstr "Phiếu gửi tiền #"
-
-#: 
 msgid " more entries will fit."
 msgstr "nhiều mục sẽ phù hợp."
-
-#: 
-msgid "Payment Editor - Modify Existing Payment"
-msgstr "Trình chỉnh sửa Thanh toán - Sửa đổi Thanh toán Hiện tại"
-
-#: 
-msgid "Payment Editor - New Deposit Slip Will Be Created"
-msgstr "Trình chỉnh sửa thanh toán - Phiếu gửi tiền mới sẽ được tạo"
 
 #: 
 msgid "Deposit closed"
@@ -2655,12 +2283,9 @@ msgid "Group Name"
 msgstr "Tên Ban/Mục vụ"
 
 #: 
-msgid "Notes:"
-msgstr "Ghi chú:"
-
-#: 
-msgid "Entered:"
-msgstr "Đã nhập:"
+#, fuzzy
+msgid "Entered"
+msgstr "Đã nhập"
 
 #: 
 msgid "by"
@@ -2677,14 +2302,6 @@ msgstr " Gán thuộc tính"
 #: 
 msgid "Assigning"
 msgstr "Phân công"
-
-#: 
-msgid "Property Delete Confirmation"
-msgstr "Xác nhận xóa thuộc tính"
-
-#: 
-msgid "Please confirm deletion of this property"
-msgstr "Vui lòng xác nhận xóa bỏ thuộc tính"
 
 #: 
 msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
@@ -2718,10 +2335,6 @@ msgstr "Nhập giá trị Nhắc sẽ cho phép liên kết giá trị dạng t�
 msgid "Property List"
 msgstr "(Danh sách thuộc tính)"
 
-#: 
-msgid "Add a New"
-msgstr "Thêm mới"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Property"
@@ -2730,10 +2343,6 @@ msgstr "Thuộc tính"
 #: 
 msgid "Prompt"
 msgstr "Lời nhắc"
-
-#: 
-msgid "Property Type Delete Confirmation"
-msgstr "Xác nhận xóa bỏ loại thuộc tính"
 
 #: 
 msgid "Warning"
@@ -2762,10 +2371,6 @@ msgstr "Chỉnh sửa loại thuộc tính"
 #: 
 msgid "Property Type List"
 msgstr "Danh sách thuộc tính"
-
-#: 
-msgid "Add a New Property Type"
-msgstr "Thêm loại thuộc tính mới"
 
 #. Context: queryparameters_qrp
 #: 
@@ -2801,10 +2406,6 @@ msgid "Query Listing"
 msgstr "Danh sách truy vấn"
 
 #: 
-msgid "Run a Free-Text Query"
-msgstr "Chạy truy vấn văn bản tự do"
-
-#: 
 msgid "Free-Text Query"
 msgstr "Truy vấn văn bản tự do"
 
@@ -2818,8 +2419,8 @@ msgstr "Thực thi SQL"
 
 #: 
 #, fuzzy
-msgid "An error occurred: "
-msgstr "Đã xảy ra lỗi:"
+msgid "An error occurred"
+msgstr "Đã xảy ra lỗi"
 
 #: 
 msgid " record(s) returned"
@@ -2878,16 +2479,8 @@ msgid "Execute Query"
 msgstr "Thực hiện kiểm tra"
 
 #: 
-msgid "Send"
-msgstr "Gửi đi"
-
-#: 
 msgid "Pledge Reminder Report"
 msgstr "Báo cáo cam kết nhắc nhở"
-
-#: 
-msgid "Event Attendance Reports"
-msgstr "Báo cáo tham dự sự kiện"
 
 #: 
 msgid "Restore Database"
@@ -2896,10 +2489,6 @@ msgstr "Khôi phục dữ liệu"
 #: 
 msgid "All donations from this family have been moved to another family."
 msgstr "Tất cả tiền dâng hiến của gia đình này đã được chuyển sang gia đình khác"
-
-#: 
-msgid "Family Delete Confirmation"
-msgstr "Xác nhận Xóa gia đình"
 
 #: 
 msgid "Please confirm deletion of"
@@ -3075,14 +2664,6 @@ msgid "Set Permission True to give this user the ability to change their current
 msgstr "Thiết lập quyền đúng sẽ cho phép thành viên mới có khả năng thay đổi giá trị hiện tại của họ."
 
 #: 
-msgid "User Listing"
-msgstr "Danh sách thành viên"
-
-#: 
-msgid "New User"
-msgstr "Thêm thành viên"
-
-#: 
 msgid "User Settings"
 msgstr "Cài đặt thành viên"
 
@@ -3139,36 +2720,12 @@ msgid "Please confirm the password reset of this user"
 msgstr "Vui lòng xác nhận việc đặt lại mật khẩu của người dùng này"
 
 #: 
-msgid "Volunteer Opportunity Delete Confirmation"
-msgstr "Xác nhận xóa ra khỏi Mục vụ"
-
-#: 
-msgid "There are people assigned to this Volunteer Opportunity."
-msgstr "Họ là những thành viên đã được thêm vào Mục vụ"
-
-#: 
-msgid "Volunteer Opportunity will be unassigned for the following people."
-msgstr "Người này sẽ bị gỡ khỏi Mục vụ đã tham gia"
-
-#: 
-msgid "Yes, delete this Volunteer Opportunity"
-msgstr "Vâng, hãy xóa đi"
-
-#: 
 msgid "Volunteer Opportunity Editor"
 msgstr "Mục vụ đã tham gia của Thành viên"
 
 #: 
 msgid "No volunteer opportunities have been added yet"
 msgstr "Không có Nhân sự nào được thêm vào đây"
-
-#: 
-msgid "NOTE: ADD, Delete, and Ordering changes are immediate.  Changes to Name or Desc fields must be saved by pressing 'Save Changes'"
-msgstr "LƯU Ý: THÊM, Xóa, và thay đổi thứ tự diễn ra ngay lập tức. Khi thay đổi tên hoặc mô tả bạn sẽ cần phải nhấn vào nút 'Lưu thay đổi'"
-
-#: 
-msgid "Add New Opportunity"
-msgstr "Thêm mới"
 
 #: 
 msgid "\"Why Came\" notes for "
@@ -3189,38 +2746,6 @@ msgstr "Bạn có ý kiến đóng góp nào cho chúng tôi không ?"
 #: 
 msgid "How did you learn of the church?"
 msgstr "Làm thế nào mà bạn học hỏi được tại Hội Thánh ?"
-
-#: 
-msgid "eGive Import"
-msgstr "Nhập eGive"
-
-#: 
-msgid "Re-import to selected family"
-msgstr "Nhập lại vào gia đình đã chọn"
-
-#: 
-msgid "Data import results: "
-msgstr "Kết quả nhập dữ liệu:"
-
-#: 
-msgid " gifts were imported, "
-msgstr "quà tặng đã được nhập khẩu,"
-
-#: 
-msgid " gifts unchanged, and "
-msgstr "quà tặng không thay đổi, và"
-
-#: 
-msgid " gifts not imported due to problems"
-msgstr "quà tặng không được nhập khẩu do có vấn đề"
-
-#: 
-msgid "Back to Deposit Slip"
-msgstr "Quay lại phiếu gửi tiền"
-
-#: 
-msgid "Fatal error in eGive API datastream: '"
-msgstr "Lỗi nghiêm trọng trong luồng dữ liệu API eGive: '"
 
 #: 
 msgid "eMail Dashboard"
@@ -3287,10 +2812,6 @@ msgid "Thank you for registering your ChurchCRM installation."
 msgstr "Cảm ơn bạn đã đăng ký cài đặt ChurchCRM của mình."
 
 #: 
-msgid "PDFs successfully emailed "
-msgstr "Các tệp PDF đã được gửi qua email thành công"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF đã được gửi thành công qua email cho các thành viên trong gia đình."
 
@@ -3327,20 +2848,8 @@ msgid "Your cart has been successfully emptied"
 msgstr "Giỏ hàng của bạn đã được làm trống thành công"
 
 #: 
-msgid "item(s) added to the Cart."
-msgstr "(các) mặt hàng được thêm vào Giỏ hàng."
-
-#: 
 msgid "Select Fiscal Year"
 msgstr "Chọn năm tài chính"
-
-#: 
-msgid "pm"
-msgstr "buổi chiều"
-
-#: 
-msgid "am"
-msgstr "là"
 
 #: 
 msgid "Invalid Editor ID!"
@@ -3425,14 +2934,6 @@ msgstr "Bảng điều khiển"
 #: 
 msgid "Change Password"
 msgstr "Thay đổi mật khẩu"
-
-#: 
-msgid "You have"
-msgstr "Bạn có"
-
-#: 
-msgid "task(s)"
-msgstr "yêu cầu"
 
 #: 
 msgid "Home"
@@ -3563,12 +3064,14 @@ msgid "for funds "
 msgstr "cho quỹ"
 
 #: 
-msgid "Donated Items:"
-msgstr "Các mặt hàng được tặng:"
+#, fuzzy
+msgid "Donated Items"
+msgstr "Các mặt hàng được tặng"
 
 #: 
-msgid "Purchased Items:"
-msgstr "Các mặt hàng đã mua:"
+#, fuzzy
+msgid "Purchased Items"
+msgstr "Các mặt hàng đã mua"
 
 #: 
 msgid "Total of all purchases: $"
@@ -3627,12 +3130,14 @@ msgid "Please mail you next gift to "
 msgstr "Xin vui lòng gửi cho bạn món quà tiếp theo qua thư"
 
 #: 
-msgid "Gift Amount:"
-msgstr "Số tiền quà tặng:"
+#, fuzzy
+msgid "Gift Amount"
+msgstr "Số tiền quà tặng"
 
 #: 
-msgid "Gift Designation:"
-msgstr "Chỉ định quà tặng:"
+#, fuzzy
+msgid "Gift Designation"
+msgstr "Chỉ định quà tặng"
 
 #: 
 msgid "Sunday School"
@@ -3643,20 +3148,12 @@ msgid "Sunday School Class Functions"
 msgstr "Tính năng lớp học Trường Chúa Nhật"
 
 #: 
-msgid "Toggle Dropdown"
-msgstr "Chuyển đổi menu thả xuống"
-
-#: 
 msgid "Teachers"
 msgstr "Giáo viên"
 
 #: 
 msgid "Send Message"
 msgstr "Gửi đi"
-
-#: 
-msgid "View Profile"
-msgstr "Xem hồ sơ"
 
 #: 
 msgid "Quick Status"
@@ -3815,19 +3312,6 @@ msgid "Members"
 msgstr "Thành viên"
 
 #: 
-msgid "Add New Person"
-msgstr "Thêm thành viên mới"
-
-#: 
-#, fuzzy
-msgid "View All People"
-msgstr "Danh sách Thành viên"
-
-#: 
-msgid "Add New Family"
-msgstr "Thêm gia đình mới"
-
-#: 
 msgid "Events"
 msgstr "Sự kiện"
 
@@ -3846,18 +3330,6 @@ msgstr "Danh sách"
 #: 
 msgid "Import Data"
 msgstr "Nhập dữ liệu"
-
-#: 
-msgid "Are you sure you want to DELETE this person from Event ID: "
-msgstr "Bạn có chắc chắn rằng muốn XÓA thành viên này từ mã sự kiện: "
-
-#: 
-msgid "Date Range"
-msgstr "Phạm vi ngày"
-
-#: 
-msgid "Deleting this event TYPE will NOT delete any existing Events or Attendance Counts.  Are you sure you want to DELETE Event Type ID: "
-msgstr "Xóa sự kiện TYPE này sẽ KHÔNG xóa bất kỳ Sự kiện hoặc Số lượng người tham dự hiện có nào. Bạn có chắc chắn muốn XÓA ID Loại Sự kiện:"
 
 #: 
 msgid "Are you sure you want to delete the selected"
@@ -3888,14 +3360,6 @@ msgid "Deposit Date"
 msgstr "Ngày ký thác"
 
 #: 
-msgid "Details:"
-msgstr "Chi tiết:"
-
-#: 
-msgid "File Missing"
-msgstr "Tệp bị thiếu"
-
-#: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr "Thao tác này sẽ ghi đè số phong bì gia đình trong cơ sở dữ liệu với những số được chọn trên trang này. Tiếp tục?"
 
@@ -3912,49 +3376,8 @@ msgid "Welcome to"
 msgstr "Chào mừng bạn đến với"
 
 #: 
-msgid "Select Database Files"
-msgstr "Lựa chọn tập tin dữ liệu"
-
-#: 
-msgid "Select a backup file to restore"
-msgstr "Lựa chọn tập tin để khôi phục"
-
-#: 
-msgid "CAUTION: This will completely erase the existing database, and replace it with the backup"
-msgstr "THẬN TRỌNG: Thao tác này sẽ xóa hoàn toàn cơ sở dữ liệu hiện có và thay thế bằng bản sao lưu"
-
-#: 
-msgid "If you upload a backup from ChurchInfo, or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema"
-msgstr "Nếu bạn tải lên bản sao lưu từ ChurchInfo hoặc phiên bản trước của ChurchCRM, nó sẽ được tự động nâng cấp lên cơ sở dữ liệu hiện tại"
-
-#: 
-msgid "Upload Files"
-msgstr "Tải lên tập tin"
-
-#: 
-msgid "No Restore Running"
-msgstr "Không có phiên bản khôi phục"
-
-#: 
-msgid "Restore Complete"
-msgstr "Hoàn thành khôi phục"
-
-#: 
-msgid "Login to restored Database"
-msgstr "Đăng nhập để phục hồi cơ sở dữ liệu"
-
-#: 
-msgid "Restore Error."
-msgstr "Khôi phục bị lỗi"
-
-#: 
 msgid "Church Information"
 msgstr "Hội Thánh"
-
-#: 
-#, fuzzy
-msgid "User Setup"
-msgstr "Thành viên"
 
 #: 
 msgid "Email Setup"
@@ -3997,68 +3420,12 @@ msgid "Edit Settings"
 msgstr "Chỉnh sửa cài đặt"
 
 #: 
-msgid "Upgrade ChurchCRM"
-msgstr "Nâng cấp ChurchCRM"
-
-#: 
-msgid "Step 1: Backup Database"
-msgstr "Bước 1: Sao lưu dữ liệu"
-
-#: 
-msgid "Please create a database backup before beginning the upgrade process."
-msgstr "Vui lòng tạo bản sao lưu dữ liệu trước khi tiến hành quá trình cập nhật"
-
-#: 
-msgid "Generate Database Backup"
-msgstr "Tạo bản sao lưu"
-
-#: 
-msgid "Step 2: Fetch Update Package on Server"
-msgstr "Bước 2: Tìm nạp gói cập nhật trên máy chủ"
-
-#: 
-msgid "Fetch the latest files from the ChurchCRM GitHub release page"
-msgstr "Tìm nạp các tệp mới nhất từ ​​trang phát hành ChurchCRM GitHub"
-
-#: 
-msgid "Fetch Update Files"
-msgstr "Tìm nạp tệp cập nhật"
-
-#: 
-msgid "Step 3: Apply Update Package on Server"
-msgstr "Bước 3: Áp dụng gói cập nhật trên máy chủ"
-
-#: 
-msgid "Extract the upgrade archive, and apply the new files"
-msgstr "Giải nén kho lưu trữ nâng cấp và áp dụng các tệp mới"
-
-#: 
 msgid "Full Path:"
 msgstr "Đường dẫn đầy đủ:"
 
 #: 
-msgid "SHA1:"
-msgstr "SHA1:"
-
-#: 
-msgid "Upgrade System"
-msgstr "Nâng cấp hệ thống"
-
-#: 
-msgid "Step 4: Login"
-msgstr "Bước 4: Đăng nhập"
-
-#: 
-msgid "Login to Upgraded System"
-msgstr "Đăng nhập để nâng cấp hệ thống"
-
-#: 
 msgid "Backup Complete, Ready for Download."
 msgstr "Tập tin sao lưu đã thành công, nhấn vào để tải ngay."
-
-#: 
-msgid "Backup Error."
-msgstr "Lỗi sao lưu."
 
 #: 
 msgid "Backup Downloaded, Copy on server removed"
@@ -4089,10 +3456,6 @@ msgid "Functions"
 msgstr "Các tính năng"
 
 #: 
-msgid "Add New Class"
-msgstr "Thêm lớp mới"
-
-#: 
 msgid "Export to CSV"
 msgstr "Xuất ra CSV"
 
@@ -4105,73 +3468,24 @@ msgid "Enter Name"
 msgstr "Nhập tên"
 
 #: 
-msgid "Update Church Info"
-msgstr "Cập nhật thông tin Hội Thánh"
-
-#: 
-msgid "Set Church Address"
-msgstr "Thiết lập địa chỉ"
-
-#: 
-msgid "Set Email Settings"
-msgstr "Cài đặt Email"
-
-#: 
 msgid "New Release"
 msgstr "Phiên bản mới"
-
-#: 
-msgid "Application Integrity Check Failed"
-msgstr "Không thành công khi Kiểm tra các yêu cầu cài đặt của ứng dụng"
 
 #: 
 msgid "Self Registration"
 msgstr "Tự đăng ký"
 
 #: 
-msgid "Restore Status:"
-msgstr "Trạng thái khôi phục:"
-
-#: 
 msgid "No coordinates found"
 msgstr "Không tìm thấy tọa độ"
-
-#: 
-msgid "Backup Status:"
-msgstr "Trạng thái sao lưu:"
-
-#: 
-msgid "No Backup Running"
-msgstr "Không có bản sao lưu nào"
 
 #: 
 msgid "Anonymous"
 msgstr "Vô danh"
 
 #: 
-#, fuzzy
-msgid "Attendees for Event"
-msgstr "Những người tham dự cho sự kiện:"
-
-#: 
-msgid "Yearly"
-msgstr "Hàng năm"
-
-#: 
 msgid "Registration Complete"
 msgstr "Đăng ký hoàn tất"
-
-#: 
-msgid "Register"
-msgstr "Đăng ký"
-
-#: 
-msgid "Register your family"
-msgstr "Đăng ký gia đình của bạn"
-
-#: 
-msgid "How many people are in your family"
-msgstr "Có bao nhiêu người trong gia đình bạn"
 
 #: 
 msgid "Add All Classes"
@@ -4206,7 +3520,8 @@ msgid "Your previous session timed out.  Please login again."
 msgstr "Phiên truy cập trước đã hết thời gian, vui lòng đăng nhập lại."
 
 #: 
-msgid "Register a new Family"
+#, fuzzy
+msgid "Register a New Family"
 msgstr "Đăng ký một gia đình mới"
 
 #: 
@@ -4214,40 +3529,12 @@ msgid "Signature definition file signature failed validation"
 msgstr "Xác thực tệp định nghĩa chữ ký chữ ký không hợp lệ"
 
 #: 
-msgid "Signature definition File Missing"
-msgstr "Thiếu tệp định nghĩa chữ ký"
-
-#: 
 msgid "One or more files failed signature validation"
 msgstr "Một hoặc nhiều tệp không xác thực được chữ ký"
 
 #: 
-msgid "Configure HTTPS"
-msgstr "Cấu hình HTTPS"
-
-#: 
-msgid "Files failing integrity check"
-msgstr "Các tệp không kiểm tra được tính toàn vẹn"
-
-#: 
-msgid "Family:"
-msgstr "Gia đình:"
-
-#: 
 msgid "item"
 msgstr "mục"
-
-#: 
-msgid "Address 1"
-msgstr "Địa chỉ 1"
-
-#: 
-msgid "Address 2"
-msgstr "Địa chỉ 2"
-
-#: 
-msgid "Cell phone"
-msgstr "Di động"
 
 #: 
 msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
@@ -4256,22 +3543,6 @@ msgstr "-------------------------------------------------- ---------------------
 #: 
 msgid "Buyer # "
 msgstr "Người mua #"
-
-#: 
-msgid "Envelope:"
-msgstr "Phong bì:"
-
-#: 
-msgid ", Phone: "
-msgstr ", Điện thoại:"
-
-#: 
-msgid "Voting members "
-msgstr "Bầu chọn thành viên"
-
-#: 
-msgid "Restore Running, Please wait."
-msgstr "Đang khôi phục, vui lòng chờ đợi."
 
 #: 
 msgid "Family Members:"
@@ -4294,52 +3565,21 @@ msgid "File Name:"
 msgstr "Tên tệp:"
 
 #: 
-msgid "Fiscal Year:"
-msgstr "Năm tài chính:"
-
-#: 
-msgid "Add Attendees for Event"
-msgstr "Thêm người tham dự sự kiện"
-
-#: 
 msgid "family"
 msgstr "gia đình"
 
 #: 
-msgid "Anniversary Date:"
-msgstr "Kỷ niệm ngày cưới:"
-
-#: 
-msgid "Date Entered:"
-msgstr "Ngày nhập vào:"
+#, fuzzy
+msgid "Date Entered"
+msgstr "Ngày nhập vào"
 
 #: 
 msgid "CSV Import"
 msgstr "Nhập vào CSV"
 
 #: 
-msgid "Comment:"
-msgstr "Bình luận:"
-
-#: 
-msgid "Closed:"
-msgstr "Đã đóng cửa:"
-
-#: 
-msgid "Start Date: "
-msgstr "Ngày bắt đầu:"
-
-#: 
-msgid "End Date: "
-msgstr "Ngày cuối:"
-
-#: 
 msgid "Members:"
 msgstr "Thành viên:"
-
-#: 
-msgid "Edit General Settings"
-msgstr "Cài đặt tổng quan"
 
 #: 
 msgid "There were "
@@ -4358,10 +3598,6 @@ msgid "Filter by Fund"
 msgstr "Lọc theo quỹ"
 
 #: 
-msgid "Add New Deposit: "
-msgstr "Thêm khoản thu mới: "
-
-#: 
 msgid "Estimated value"
 msgstr "Giá trị ước tính"
 
@@ -4376,10 +3612,6 @@ msgstr "Nhóm văn bản"
 #: 
 msgid "Group Properties"
 msgstr "Thuộc tính Ban/Mục vụ"
-
-#: 
-msgid "Assign a New Property:"
-msgstr "Thêm vào thuộc tính mới"
 
 #: 
 msgid "There was a problem retrieving the requested object"
@@ -4398,24 +3630,13 @@ msgid "Groups"
 msgstr "Ban/Mục vụ"
 
 #: 
-msgid "Error: You must enter a name"
-msgstr "Lỗi: Bạn phải nhập tên"
-
-#: 
-msgid " Since:"
-msgstr "Từ:"
-
-#: 
 msgid "Total $"
 msgstr "Tổng $"
 
 #: 
-msgid "with this property.."
+#, fuzzy
+msgid "with this property..."
 msgstr "với tài sản này .."
-
-#: 
-msgid "with this Property..."
-msgstr "với thuộc tính này..."
 
 #: 
 msgid "Church Email"
@@ -4437,10 +3658,6 @@ msgstr "Đây là những con số vai trò trong gia đình được chỉ đ�
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Đây là các số vai trò gia đình được chỉ định khi còn nhỏ"
-
-#: 
-msgid "Queries for which user must have finance permissions to use:"
-msgstr "Các truy vấn mà người dùng phải có quyền tài chính để sử dụng:"
 
 #: 
 msgid "Should only administrators have access to the CSV export system and directory report?"
@@ -4500,10 +3717,6 @@ msgid "Longitude of the church, used to center the Google map"
 msgstr "Kinh độ của nhà thờ, được sử dụng để căn giữa bản đồ Google"
 
 #: 
-msgid "Set true to disable entering addresses in Person Editor.  Set false to enable entering addresses in Person Editor."
-msgstr "Đặt true để tắt nhập địa chỉ trong Person Editor. Đặt false để cho phép nhập địa chỉ trong Person Editor."
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Đặt true để tắt tính năng nhập Ngày kết bạn trong Trình chỉnh sửa cá nhân. Đặt false để cho phép nhập Ngày kết bạn trong Trình chỉnh sửa cá nhân."
 
@@ -4552,10 +3765,6 @@ msgid "Set true to enable family self registration."
 msgstr "Đặt true để cho phép tự đăng ký gia đình."
 
 #: 
-msgid "ChurchCRM has been registered.  The ChurchCRM team uses registration information to track usage.  This information is kept confidential and never released or sold.  If this field is true the registration option in the admin menu changes to update registration."
-msgstr "ChurchCRM đã được đăng ký. Nhóm ChurchCRM sử dụng thông tin đăng ký để theo dõi việc sử dụng. Thông tin này được giữ bí mật và không bao giờ tiết lộ hoặc bán. Nếu trường này đúng, tùy chọn đăng ký trong menu quản trị sẽ thay đổi để cập nhật đăng ký."
-
-#: 
 msgid "Left Margin (1 = 1/100th inch)"
 msgstr "Lề trái (1 = 1/100 inch)"
 
@@ -4578,10 +3787,6 @@ msgstr "Nhà thờ Zip"
 #: 
 msgid "Church Phone"
 msgstr "Điện thoại nhà thờ"
-
-#: 
-msgid "Home area code of the church"
-msgstr "Mã vùng nhà của nhà thờ"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -4664,18 +3869,6 @@ msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Cài đặt vé gửi tiền QuickBooks"
 
 #: 
-msgid "Enable Integrity Check"
-msgstr "Bật kiểm tra tính toàn vẹn"
-
-#: 
-msgid "Interval in Hours for Integrity Check"
-msgstr "Khoảng thời gian trong giờ để kiểm tra tính toàn vẹn"
-
-#: 
-msgid "Last Integrity Check Timestamp"
-msgstr "Dấu thời gian kiểm tra tính toàn vẹn lần cuối"
-
-#: 
 msgid "List Groups"
 msgstr "Danh sách Ban/Mục vụ"
 
@@ -4740,10 +3933,6 @@ msgid "CSV Export Records"
 msgstr "Xuất CSV"
 
 #: 
-msgid "People Properties"
-msgstr "Thuộc tính thành viên"
-
-#: 
 msgid "Family Properties"
 msgstr "Thuộc tính Gia đình"
 
@@ -4755,26 +3944,6 @@ msgstr "Các loại thuộc tính"
 #: 
 msgid "Zip Code"
 msgstr "Mã bưu chính"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2012/2013"
-msgstr "2012/2013"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2013/2014"
-msgstr "2013/2014"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2014/2015"
-msgstr "2014/2015"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "2015/2016"
-msgstr "2015/2016"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -5000,33 +4169,8 @@ msgstr "Khớp trường tùy chỉnh với giá trị này"
 
 #. Context: query_qry
 #: 
-msgid "Family Member Count"
-msgstr "Số lượng thành viên gia đình"
-
-#. Context: query_qry
-#: 
-msgid "Person by Age"
-msgstr "Người theo độ tuổi"
-
-#. Context: query_qry
-#: 
-msgid "Total By Gender"
-msgstr "Tổng theo giới tính"
-
-#. Context: query_qry
-#: 
-msgid "Person by Role and Gender"
-msgstr "Người theo vai trò và giới tính"
-
-#. Context: query_qry
-#: 
 msgid "Person by Property"
 msgstr "Người theo tài sản"
-
-#. Context: query_qry
-#: 
-msgid "Advanced Search"
-msgstr "tìm kiếm nâng cao"
 
 #. Context: query_qry
 #: 
@@ -5037,16 +4181,6 @@ msgstr "Ngày sinh nhật"
 #: 
 msgid "Membership anniversaries"
 msgstr "Ngày kỷ niệm thành viên"
-
-#. Context: query_qry
-#: 
-msgid "Select database users"
-msgstr "Chọn người dùng cơ sở dữ liệu"
-
-#. Context: query_qry
-#: 
-msgid "Select all members"
-msgstr "Lựa chọn tất cả thành viên"
 
 #. Context: query_qry
 #: 
@@ -5080,33 +4214,8 @@ msgstr "Tìm kiếm tuỳ chỉnh"
 
 #. Context: query_qry
 #: 
-msgid "Returns each family and the total number of people assigned to them."
-msgstr "Trả về từng gia đình và tổng số người được chỉ định cho họ."
-
-#. Context: query_qry
-#: 
-msgid "Returns any person records with ages between two given ages."
-msgstr "Trả về bất kỳ bản ghi người nào có độ tuổi giữa hai độ tuổi nhất định."
-
-#. Context: query_qry
-#: 
-msgid "Total of records matching a given gender."
-msgstr "Tổng số bản ghi phù hợp với một giới tính nhất định."
-
-#. Context: query_qry
-#: 
-msgid "Selects person records with the family role and gender specified."
-msgstr "Chọn hồ sơ cá nhân với vai trò gia đình và giới tính được chỉ định."
-
-#. Context: query_qry
-#: 
 msgid "Returns person records which are assigned the given property."
 msgstr "Trả về các bản ghi người được gán thuộc tính đã cho."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Tìm kiếm theo bất kỳ phần nào của Tên, Thành phố, Tiểu bang, Mã zip, Điện thoại nhà riêng, Email hoặc Email cơ quan."
 
 #. Context: query_qry
 #: 
@@ -5122,16 +4231,6 @@ msgstr "Tìm sinh viên đã đăng ký"
 #: 
 msgid "Members who joined in a particular month"
 msgstr "Các thành viên đã tham gia vào một tháng cụ thể"
-
-#. Context: query_qry
-#: 
-msgid "People who are registered as database users"
-msgstr "Những người đã đăng ký làm người dùng cơ sở dữ liệu"
-
-#. Context: query_qry
-#: 
-msgid "People who are members"
-msgstr "Những người là thành viên"
 
 #. Context: query_qry
 #: 
@@ -5212,46 +4311,6 @@ msgstr "Hàng tháng vào"
 #: 
 msgid "Yearly on"
 msgstr "Hàng năm vào"
-
-#: 
-msgid "All Events of Type"
-msgstr "Tất cả các sự kiện thuộc loại"
-
-#: 
-msgid "There is"
-msgstr "Có"
-
-#: 
-msgid "There are"
-msgstr "Có"
-
-#: 
-msgid "event"
-msgstr "biến cố"
-
-#: 
-msgid "events"
-msgstr "sự kiện"
-
-#: 
-msgid " in this category."
-msgstr "trong danh mục này."
-
-#: 
-msgid "There currently is"
-msgstr "Hiện tại có"
-
-#: 
-msgid "There currently are"
-msgstr "Hiện tại có"
-
-#: 
-msgid "custom event type"
-msgstr "loại sự kiện tùy chỉnh"
-
-#: 
-msgid "custom event types"
-msgstr "các loại sự kiện tùy chỉnh"
 
 #: 
 msgid "Family Roles Editor"
@@ -6661,42 +5720,6 @@ msgid "Please verify your family's information"
 msgstr "Vui lòng xác minh thông tin của gia đình bạn"
 
 #: 
-msgid "Church Address is not Set."
-msgstr "Địa chỉ Hội thánh chưa được thiết lập"
-
-#: 
-msgid "Church Name is set to default value"
-msgstr "Tên Hội thánh là giá trị được thiết lập mặc định"
-
-#: 
-msgid "SMTP Server info are blank"
-msgstr "Thông tin máy chủ SMTP đang trống"
-
-#: 
-msgid "Your system could be more secure by installing an TLS/SSL Cert."
-msgstr "Hệ thống của bạn có thể an toàn hơn bằng cách cài đặt TLS / SSL Cert."
-
-#: 
-msgid "Missing Classification Data"
-msgstr "Thiếu dữ liệu phân loại"
-
-#: 
-msgid "Missing Classification Data for Some People"
-msgstr "Thiếu dữ liệu phân loại cho một số người"
-
-#: 
-msgid "Missing Gender Data"
-msgstr "Thiếu dữ liệu giới tính"
-
-#: 
-msgid "Missing Gender Data for Some People"
-msgstr "Thiếu dữ liệu giới tính cho một số người"
-
-#: 
-msgid "Missing Role Data"
-msgstr "Thiếu dữ liệu vai trò"
-
-#: 
 msgid "Unable to load verification info"
 msgstr "Không thể tải thông tin xác minh"
 
@@ -6725,24 +5748,8 @@ msgid "Family Verification"
 msgstr "Xác minh gia đình"
 
 #: 
-msgid "Family Member(s)"
-msgstr "Thành viên gia đình"
-
-#: 
 msgid "Work Email"
 msgstr "Email công việc"
-
-#: 
-msgid "Your verification request is complete"
-msgstr "Yêu cầu xác minh của bạn đã hoàn tất"
-
-#: 
-msgid "We encountered an error submitting with your verification data"
-msgstr "Chúng tôi đã gặp lỗi khi gửi dữ liệu xác minh của bạn"
-
-#: 
-msgid "Visit our Site"
-msgstr "Ghé thăm trang web của chúng tôi"
 
 #: 
 msgid "Request Family Info Verification"
@@ -6761,20 +5768,8 @@ msgid "Verified In Person"
 msgstr "Đã xác minh tận tay"
 
 #: 
-msgid "None State"
-msgstr "Không có tiểu bang"
-
-#: 
 msgid "Backup archive does not contain a database"
 msgstr "Kho lưu trữ sao lưu không chứa cơ sở dữ liệu"
-
-#: 
-msgid "Missing Coordinates"
-msgstr "Thiếu tọa độ"
-
-#: 
-msgid "Family Coordinates Data for Some Families"
-msgstr "Dữ liệu tọa độ gia đình cho một số gia đình"
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
@@ -6897,10 +5892,6 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr "Tệp đã chọn vượt quá kích thước tải lên tối đa của máy chủ này là"
 
 #: 
-msgid "Unmet Application Prerequisites"
-msgstr "Điều kiện yêu cầu bắt buộc chưa được đáp ứng"
-
-#: 
 msgid "Failed"
 msgstr "Thất bại"
 
@@ -6909,23 +5900,13 @@ msgid "Church Checking Account Number"
 msgstr "Số tài khoản kiểm tra nhà thờ"
 
 #: 
-msgid "Missing Role Data for Some People"
-msgstr "Thiếu dữ liệu vai trò cho một số người"
-
-#: 
-msgid "PHP Max File size too small"
-msgstr "Kích thước tệp tối đa trong PHP quá nhỏ"
-
-#: 
-msgid "Increase the php upload limits to allow for mobile photo upload, and backup restore."
-msgstr "Tăng giới hạn tải lên php để cho phép tải lên ảnh di động và khôi phục sao lưu."
-
-#: 
-msgid "Deactivated the Family"
+#, fuzzy
+msgid "Marked the Family as Inactive"
 msgstr "Đã hủy kích hoạt gia đình này"
 
 #: 
-msgid "Activated the Family"
+#, fuzzy
+msgid "Marked the Family as Active"
 msgstr "Đã kích hoạt Gia đình"
 
 #: 
@@ -6953,16 +5934,13 @@ msgid "Profile Image uploaded"
 msgstr "Đã cập nhật hình ảnh đại diện"
 
 #: 
-msgid "payments(s)?"
+#, fuzzy
+msgid "payment(s)?"
 msgstr "(các) khoản thanh toán?"
 
 #: 
 msgid "Please ensure this what you want to do.</p>"
 msgstr "Hãy đảm bảo điều này những gì bạn muốn làm. </p>"
-
-#: 
-msgid " this Family"
-msgstr " gia đình này"
 
 #: 
 msgid "Confirm Deactivation"
@@ -6981,7 +5959,8 @@ msgid "Please confirm activation of family"
 msgstr "Vui lòng xác nhận kích hoạt gia đình"
 
 #: 
-msgid "Show neighbors with these classifications:"
+#, fuzzy
+msgid "Show neighbors with these classifications"
 msgstr "Hiển thị tín hữu với các phân loại này"
 
 #: 
@@ -6989,16 +5968,9 @@ msgid "Please select a Family."
 msgstr "Vui lòng lựa chọn gia đình."
 
 #: 
-msgid "Coordinate data base file name:"
-msgstr "Tên tệp cơ sở dữ liệu tọa độ:"
-
-#: 
-msgid "Intersect With Cart"
-msgstr "Giao với giỏ"
-
-#: 
-msgid "Family Member"
-msgstr "Thành viên Gia đình"
+#, fuzzy
+msgid "Coordinate database file name"
+msgstr "Tên tệp cơ sở dữ liệu tọa độ"
 
 #: 
 msgid "select an option"
@@ -7041,15 +6013,6 @@ msgid "Select event"
 msgstr "Chọn sự kiện"
 
 #: 
-msgid "Person's Name"
-msgstr "Tên của người đó"
-
-#: 
-#, fuzzy
-msgid "Checked in By (Optional)"
-msgstr "Đã đăng ký bởi (Tùy chọn)"
-
-#: 
 msgid "Person has been already checked in for this event"
 msgstr "Một người đã được đăng ký cho sự kiện này"
 
@@ -7068,10 +6031,6 @@ msgstr "Người lớn trả phòng"
 #: 
 msgid "Text before name in emails/reports"
 msgstr "Văn bản trước tên trong email / báo cáo"
-
-#: 
-msgid "Set true to allow empty lastname in Person Editor.  Set false to validate last name and inherit from family when left empty."
-msgstr "Đặt true để cho phép họ trống trong Person Editor. Đặt false để xác thực họ và kế thừa từ gia đình khi để trống."
 
 #: 
 msgid "Display bill counts on deposit slip"
@@ -7110,14 +6069,6 @@ msgid "View Photo"
 msgstr "Xem ảnh"
 
 #: 
-msgid "Family Photo"
-msgstr "Hình ảnh gia đình"
-
-#: 
-msgid "Quick Settings"
-msgstr "Cài đặt nhanh"
-
-#: 
 msgid "Status"
 msgstr "Trạng thái"
 
@@ -7132,10 +6083,6 @@ msgstr "Bao gồm"
 #: 
 msgid "Exclude"
 msgstr "Loại trừ"
-
-#: 
-msgid "No property assignments"
-msgstr "Không có thuộc tính nào được thêm vào đây"
 
 #: 
 msgid "View Cart"
@@ -7158,18 +6105,6 @@ msgid "assigned"
 msgstr "giao"
 
 #: 
-msgid "Photo"
-msgstr "hình chụp"
-
-#: 
-msgid "Payment Details"
-msgstr "Chi tiết thanh toán"
-
-#: 
-msgid "Fund Split"
-msgstr "Chia quỹ"
-
-#: 
 msgid "Showing students with birthdays in"
 msgstr "Hiển thị sinh viên có sinh nhật trong"
 
@@ -7184,14 +6119,6 @@ msgstr "Xác nhận hành động"
 #: 
 msgid "Please confirm reset failed login count"
 msgstr "Vui lòng xác nhận đặt lại số lần đăng nhập không thành công"
-
-#: 
-msgid "View Active Families"
-msgstr "Danh sách Gia đình"
-
-#: 
-msgid "View Inactive Families"
-msgstr "Không hoạt động"
 
 #: 
 msgid "SMTP Server timeout in sec"
@@ -7419,24 +6346,12 @@ msgid "Reset Password"
 msgstr "Đặt lại mật khẩu"
 
 #: 
-msgid "Unable to reset password"
-msgstr "Không thể đặt lại mật khẩu"
-
-#: 
 msgid "Reset your password"
 msgstr "Khôi phục mật khẩu của bạn"
 
 #: 
 msgid "Sorry, we are unable to process your request at this point in time."
 msgstr "Xin lỗi, chúng tôi không thể xử lý yêu cầu của bạn tại thời điểm này."
-
-#: 
-msgid "Login Name is Required"
-msgstr "Tên đăng nhập là bắt buộc"
-
-#: 
-msgid "A new password was sent to you. Please check your email"
-msgstr "Một mật khẩu mới đã được gửi cho bạn. Xin vui lòng kiểm tra email của bạn"
 
 #: 
 msgid "Kiosk Manager"
@@ -7473,18 +6388,6 @@ msgstr "Trang web của Giáo hội của bạn"
 #: 
 msgid "Self Verification"
 msgstr "Tự xác minh"
-
-#: 
-msgid "Deactivate"
-msgstr "Hủy kích hoạt"
-
-#: 
-msgid "Activate"
-msgstr "Kích hoạt"
-
-#: 
-msgid "Stack Trace"
-msgstr "Dấu vết ngăn xếp"
 
 #: 
 msgid "Check Number"
@@ -7573,19 +6476,6 @@ msgid "Thai"
 msgstr "Thái"
 
 #: 
-msgid "Your Church's Facebook Page"
-msgstr "Trang Facebook của Giáo hội của bạn"
-
-#: 
-#, fuzzy
-msgid "Your Church's X Page"
-msgstr "Trang X của Giáo hội của bạn"
-
-#: 
-msgid "lookup user images on Google when no local image is present"
-msgstr "tra cứu hình ảnh người dùng trên Google khi không có hình ảnh cục bộ"
-
-#: 
 msgid "Self Register"
 msgstr "Tự đăng ký"
 
@@ -7607,20 +6497,12 @@ msgid "Indonesian - Indonesia"
 msgstr "Indonesia - Indonesia"
 
 #: 
-msgid "POST to cart requires a Persons array, FamilyID, or GroupID"
-msgstr "ĐĂNG vào giỏ hàng yêu cầu mảng Người, FamilyID hoặc GroupID"
-
-#: 
 msgid "records(s) successfully added to selected Group."
 msgstr "(các) bản ghi được thêm thành công vào Nhóm đã chọn."
 
 #: 
 msgid "To export to another For european CharSet use ;"
 msgstr "Để xuất sang người khác Để sử dụng CharSet châu Âu;"
-
-#: 
-msgid "Default is UTF-8, For european CharSet use Windows-1252 for example for French language."
-msgstr "Mặc định là UTF-8, Đối với CharSet châu Âu, hãy sử dụng Windows-1252 chẳng hạn cho ngôn ngữ Pháp."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -7731,10 +6613,6 @@ msgid "WSW"
 msgstr "WSW"
 
 #: 
-msgid "Persons"
-msgstr "Thành viên"
-
-#: 
 msgid "Search Family"
 msgstr "Tìm kiếm gia đình"
 
@@ -7787,10 +6665,6 @@ msgid "Maximum number of Addresses"
 msgstr "Số lượng địa chỉ tối đa"
 
 #: 
-msgid "Show type of group:"
-msgstr "Hiển thị loại Ban/Mục vụ"
-
-#: 
 msgid "Add Students"
 msgstr "Thêm học viên"
 
@@ -7837,30 +6711,6 @@ msgstr "Tạo sách ảnh"
 #: 
 msgid "SSE"
 msgstr "SSE"
-
-#: 
-msgid "Height to use for images"
-msgstr "Chiều cao để sử dụng cho hình ảnh"
-
-#: 
-msgid "Width to use for images"
-msgstr "Chiều rộng để sử dụng cho hình ảnh"
-
-#: 
-msgid "Width to use for thumbnails"
-msgstr "Chiều rộng để sử dụng cho hình thu nhỏ"
-
-#: 
-msgid "Point size to use for initials thumbnails"
-msgstr "Kích thước điểm để sử dụng cho hình thu nhỏ viết tắt"
-
-#: 
-msgid "Client cache seconds for images"
-msgstr "Bộ nhớ đệm ứng dụng khách giây cho hình ảnh"
-
-#: 
-msgid "Server cache time for remote images"
-msgstr "Thời gian bộ nhớ cache của máy chủ cho hình ảnh từ xa"
 
 #: 
 msgid "Recipient Naming Method"
@@ -8003,26 +6853,6 @@ msgid "Upgrade Required"
 msgstr "Yêu cầu nâng cấp"
 
 #: 
-msgid "Current DB Version: "
-msgstr "Phiên bản DB hiện tại:"
-
-#: 
-msgid "Current Software Version: "
-msgstr "Phiên bản phần mềm hiện tại: "
-
-#: 
-msgid "Upgrade database"
-msgstr "Cập nhật dữ liệu"
-
-#: 
-msgid "Show Birthdates Anniversaries on start up of the CRM"
-msgstr "Hiển thị Ngày kỷ niệm ngày sinh khi khởi động CRM"
-
-#: 
-msgid "Number of seconds after page load until the banner disappears, default 10 seconds"
-msgstr "Số giây sau khi tải trang cho đến khi biểu ngữ biến mất, mặc định là 10 giây"
-
-#: 
 msgid "Help & Manual"
 msgstr "Trợ giúp & Hướng dẫn sử dụng"
 
@@ -8071,24 +6901,12 @@ msgid "Meanwhile, you may"
 msgstr "Trong khi đó, bạn có thể"
 
 #: 
-msgid "Database Only (.sql)"
-msgstr "Chỉ cần bảng dữ liệu (.sql)"
-
-#: 
-msgid "Database and Photos (.tar.gz)"
-msgstr "Bảng dữ liệu và Hình ảnh (.tar.gz)"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Người dùng phải là Quản trị viên"
 
 #: 
 msgid "No logged in user"
 msgstr "Không có người dùng đã đăng nhập"
-
-#: 
-msgid "Set the standard profile picture icon size in pixels to be used in people lists, default 85 pixels."
-msgstr "Đặt kích thước biểu tượng ảnh hồ sơ tiêu chuẩn tính bằng pixel sẽ được sử dụng trong danh sách người, mặc định là 85 pixel."
 
 #: 
 msgid "not found"
@@ -8111,10 +6929,6 @@ msgid "return to People Dashboard"
 msgstr "Quay lại Bảng điều khiển thành viên"
 
 #: 
-msgid "User must have MenuOptions permission"
-msgstr "Người dùng phải có quyền MenuOptions"
-
-#: 
 msgid "SMTP Host is not setup, please visit the settings page"
 msgstr "Máy chủ lưu trữ SMTP chưa được thiết lập, vui lòng truy cập trang cài đặt"
 
@@ -8123,20 +6937,13 @@ msgid "Debug Email Connection"
 msgstr "Gỡ lỗi kết nối email"
 
 #: 
-msgid "This Family is Deactivated"
+#, fuzzy
+msgid "This Family is Inactive"
 msgstr "Gia đình này đã bị hủy kích hoạt"
-
-#: 
-msgid "Metadata"
-msgstr "Thông tin cơ bản"
 
 #: 
 msgid "The database has been cleared."
 msgstr "Dữ liệu đã được xóa sạch"
-
-#: 
-msgid "User must have bAddEvent permissions"
-msgstr "Người dùng phải có quyền bAddEvent"
 
 #: 
 msgid "Anniversaries"
@@ -8170,10 +6977,6 @@ msgstr "không tìm thấy hoặc người dùng không có email"
 #: 
 msgid "UserName not set"
 msgstr "UserName chưa được đặt"
-
-#: 
-msgid "The people and families has been cleared from the database."
-msgstr "Các thành viên và gia đình đã được xóa sạch khỏi bảng dữ liệu"
 
 #: 
 msgid "Self Registrations"
@@ -8222,10 +7025,6 @@ msgstr "Xóa mã thông báo truy cập"
 #: 
 msgid "ICS URL"
 msgstr "URL ICS"
-
-#: 
-msgid "JSON URL"
-msgstr "URL JSON"
 
 #: 
 msgid "Foreground Color"
@@ -8279,10 +7078,6 @@ msgstr "Bật menu Tài chính"
 #: 
 msgid "Enable Events menu."
 msgstr "Bật menu Sự kiện."
-
-#: 
-msgid "Enable Calendar menu."
-msgstr "Bật menu Lịch."
 
 #: 
 msgid "Enable Fundraiser menu."
@@ -8386,11 +7181,13 @@ msgid "HTML URL"
 msgstr "URL HTML"
 
 #: 
-msgid "Latest Persons"
+#, fuzzy
+msgid "Latest People"
 msgstr "Thành viên mới được thêm"
 
 #: 
-msgid "Updated Persons"
+#, fuzzy
+msgid "Updated People"
 msgstr "Thành viên vừa cập nhật"
 
 #: 
@@ -8410,10 +7207,6 @@ msgid "User must have Edit Records permission"
 msgstr "Người dùng phải có quyền Chỉnh sửa Bản ghi"
 
 #: 
-msgid "User must have Finance permission"
-msgstr "Người dùng phải có quyền Tài chính"
-
-#: 
 msgid "Can't delete yourself"
 msgstr "Không thể xóa chính bạn"
 
@@ -8428,10 +7221,6 @@ msgstr "Thêm menu"
 #: 
 msgid "Menu Name"
 msgstr "Tên menu"
-
-#: 
-msgid "Max 20 char"
-msgstr "Tối đa 20 ký tự"
 
 #: 
 msgid "Link Address"
@@ -8450,20 +7239,8 @@ msgid "is disabled"
 msgstr "đã được vô hiệu hóa"
 
 #: 
-msgid "System Information"
-msgstr "Thông tin hệ thống"
-
-#: 
 msgid "Software Version"
 msgstr "Phiên bản phần mềm"
-
-#: 
-msgid "Valid Mail Server Settings"
-msgstr "Cài đặt giá trị máy chủ Email"
-
-#: 
-msgid "Database"
-msgstr "Dữ liệu"
 
 #: 
 msgid "Database Version"
@@ -8532,24 +7309,8 @@ msgid "Emptied into Event"
 msgstr "Đã hết vào sự kiện"
 
 #: 
-msgid "integrityCheck.json file missing"
-msgstr "thiếu tệp tin liêm chính.json"
-
-#: 
 msgid "Passed"
 msgstr "Thông qua"
-
-#: 
-msgid "PHP Max Execution Time is too Short"
-msgstr "Thời gian thực thi tối đa của PHP quá ngắn"
-
-#: 
-msgid "Increase the PHP execution time limit to allow for backup and restore."
-msgstr "Tăng giới hạn thời gian thực thi PHP để cho phép sao lưu và khôi phục."
-
-#: 
-msgid "Application Integrity Check"
-msgstr "Kiểm tra tính toàn vẹn của ứng dụng"
 
 #: 
 msgid "Focus"
@@ -8579,54 +7340,18 @@ msgstr "Nếu bạn muốn duy trì các thay đổi của mình đối với c�
 msgid "Integrity Check Details:"
 msgstr "Chi tiết Kiểm tra Tính toàn vẹn:"
 
-#: 
-msgid "I Understand"
-msgstr "Tôi hiểu"
-
-#: 
-msgid "Unsupported Deposit Types Detected"
-msgstr "Đã phát hiện các loại tiền gửi không được hỗ trợ"
-
-#: 
-msgid "Support for eGive, Credit Card, and Bank Draft payments has been deprecated.  Existing non-bank reports may no longer be accessible in future versions."
-msgstr "Hỗ trợ cho thanh toán eGive, Thẻ tín dụng và Hối phiếu Ngân hàng đã không còn được dùng nữa. Các báo cáo phi ngân hàng hiện tại có thể không còn truy cập được trong các phiên bản trong tương lai."
-
 #. Context: locales
 #: 
 msgid "Estonian"
 msgstr "Người Estonia"
 
 #: 
-msgid "Error decoding integrity check result file"
-msgstr "Lỗi giải mã tệp kết quả kiểm tra tính toàn vẹn"
-
-#: 
 msgid "Error decoding signature definition file"
 msgstr "Lỗi giải mã tệp định nghĩa chữ ký"
 
 #: 
-msgid "Generate Backup"
-msgstr "Tạo bản sao lưu"
-
-#: 
 msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
 msgstr "Điểm cuối sao lưu từ xa. Nếu WebDAV, điều này phải được mã hóa url."
-
-#: 
-msgid "Include initials image files, remote image files (gravatar), and thumbnails in backup.  These files are generally able to be reproduced after a restore and add very little value to the backup archive at a large expense of execution time and storage"
-msgstr "Bao gồm các tệp hình ảnh viết tắt, tệp hình ảnh từ xa (gravatar) và hình thu nhỏ trong bản sao lưu. Các tệp này thường có thể được sao chép sau khi khôi phục và thêm rất ít giá trị vào kho lưu trữ sao lưu với chi phí lớn về thời gian thực hiện và lưu trữ"
-
-#: 
-msgid "Password (if any)"
-msgstr "Mật khẩu (nếu có)"
-
-#: 
-msgid "All information on this page is correct."
-msgstr "Tất cả thông tin trên trang này là chính xác."
-
-#: 
-msgid "Please update the my family information with the following"
-msgstr "Vui lòng cập nhật thông tin gia đình tôi với những điều sau"
 
 #: 
 msgid "Age Histogram"
@@ -8664,13 +7389,8 @@ msgid "PDF handling mode.\n"
 msgstr "Thông tin người không có sẵn được kế thừa từ gia đình được chỉ định để hiển thị?"
 
 #: 
-msgid "Unavailable person info inherited from assigned family for display?\n"
-"This option causes certain info from a person's assigned family record to be\n"
-"displayed IF the corresponding info has NOT been entered for that person. "
-msgstr "Tùy chọn này sẽ hiển thị một số thông tin nhất định từ hồ sơ gia đình được chỉ định của một người NẾU KHÔNG nhập thông tin tương ứng cho người đó."
-
-#: 
-msgid "Press CTRL + C to copy all group members\\' phone numbers"
+#, fuzzy
+msgid "Press CTRL + C to copy all group members' phone numbers"
 msgstr "Nhấn CTRL + C để sao chép tất cả số điện thoại của các thành viên trong nhóm"
 
 #: 
@@ -8718,20 +7438,8 @@ msgid "Verification URL"
 msgstr "URL xác minh"
 
 #: 
-msgid "Reset System"
-msgstr "Đặt lại hệ thống"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Id người không mong muốn"
-
-#: 
-msgid "Interval in Hours for software update check"
-msgstr "Khoảng thời gian trong giờ để kiểm tra cập nhật phần mềm"
-
-#: 
-msgid "Last Software Update Check Timestamp"
-msgstr "Dấu thời gian kiểm tra cập nhật phần mềm lần cuối"
 
 #: 
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
@@ -8756,20 +7464,8 @@ msgid_plural "%d years old"
 msgstr[0] "%d tuổi"
 
 #: 
-msgid "Unsupported PHP Version"
-msgstr "Phiên bản PHP không được hỗ trợ"
-
-#: 
-msgid "Support for this PHP version will soon be removed.  Current PHP Version: "
-msgstr "Hỗ trợ cho phiên bản PHP này sẽ sớm bị loại bỏ. Phiên bản PHP hiện tại:"
-
-#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Thiếu PHP ZipArchive"
-
-#: 
-msgid "PHP ZipArchive required to support upgrade"
-msgstr "Cần có PHP ZipArchive để hỗ trợ nâng cấp"
 
 #: 
 msgid "Add Results to Cart"
@@ -8780,33 +7476,8 @@ msgid "Remove Results from Cart"
 msgstr "Xóa kết quả khỏi giỏ hàng"
 
 #: 
-msgid "Warning: Pre-Upgrade Tasks Detected"
-msgstr "Cảnh báo: Đã phát hiện tác vụ nâng cấp trước"
-
-#: 
-#, fuzzy
-msgid "Some conditions have been identified which may prevent a successful upgrade"
-msgstr "Một số điều kiện đã được xác định có thể ngăn cản việc nâng cấp thành công"
-
-#: 
-msgid "Please review and mitigate these tasks before continuing with the upgrade:"
-msgstr "Vui lòng xem xét và giảm thiểu các tác vụ này trước khi tiếp tục nâng cấp:"
-
-#: 
 msgid "Database Reset Functions"
 msgstr "Các chức năng thiết lập lại cơ sở dữ liệu"
-
-#: 
-msgid "Reset Members"
-msgstr "Đặt lại thành viên"
-
-#: 
-msgid "This will remove all the member data, people, and families and can't be undone."
-msgstr "Thao tác này sẽ xóa tất cả dữ liệu thành viên, mọi người và gia đình và không thể hoàn tác."
-
-#: 
-msgid "Reset Families/People"
-msgstr "Đặt lại gia đình / người"
 
 #: 
 msgid "Reset Database"
@@ -8840,10 +7511,6 @@ msgstr "ChurchCRM"
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
 msgstr "Chỉ định tên ứng dụng sẽ được hiển thị trong ứng dụng xác thực"
-
-#: 
-msgid "Secret Keys missing from Config.php"
-msgstr "Khóa bí mật bị thiếu trong Config.php"
 
 #: 
 msgid "Review"
@@ -8922,10 +7589,6 @@ msgid "Must be set to 'true'"
 msgstr "Phải được đặt thành 'true'"
 
 #: 
-msgid "Include/Config.php must define an encryption key for storing 2FA secret keys in the database by setting a value for"
-msgstr "Bao gồm / Config.php phải xác định khóa mã hóa để lưu trữ khóa bí mật 2FA trong cơ sở dữ liệu bằng cách đặt giá trị cho"
-
-#: 
 msgid "Google Maps API Key used for Geocoding addresses"
 msgstr "Khóa API của Google Maps được sử dụng cho các địa chỉ Mã hóa địa lý"
 
@@ -8953,10 +7616,6 @@ msgstr "Mật khẩu mới của bạn quá giống với mật khẩu cũ của
 #, fuzzy
 msgid "Password reset not available.  Please contact your system administrator"
 msgstr "Đặt lại mật khẩu không khả dụng. Xin vui lòng liên hệ với quản trị hệ thống của bạn"
-
-#: 
-msgid "Authentication Issue"
-msgstr "Vấn đề xác thực"
 
 #: 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
@@ -9005,20 +7664,8 @@ msgid "Audience not in the ChurchCRM"
 msgstr "Khán giả không ở trong Nhà thờCRM"
 
 #: 
-msgid "ChurchCRM Installation Information"
-msgstr "Thông tin cài đặt ChurchCRM"
-
-#: 
-msgid "Database Server Version"
-msgstr "Phiên bản máy chủ cơ sở dữ liệu"
-
-#: 
 msgid "Web Server"
 msgstr "Máy chủ web"
-
-#: 
-msgid "Email Information"
-msgstr "Thông tin Email"
 
 #: 
 msgid "List maintenance"
@@ -9044,62 +7691,6 @@ msgstr "tỉ lệ mở"
 #: 
 msgid "Not Subscribed "
 msgstr "Chưa đăng ký"
-
-#: 
-msgid "Global User Settings"
-msgstr "Cài đặt Người dùng Toàn cầu"
-
-#: 
-msgid "General"
-msgstr "Chung"
-
-#: 
-msgid "Passwords"
-msgstr "Mật khẩu"
-
-#: 
-msgid "2FA"
-msgstr "2FA"
-
-#: 
-msgid "Session Timeout"
-msgstr "Thời gian chờ của phiên"
-
-#: 
-msgid "Max Failed Login"
-msgstr "Đăng nhập không thành công tối đa"
-
-#: 
-msgid "Enable Password Reset"
-msgstr "Bật Đặt lại mật khẩu"
-
-#: 
-msgid "Send email to Deleted Users"
-msgstr "Gửi email đến Người dùng đã Xóa"
-
-#: 
-msgid "Min Password Length"
-msgstr "Độ dài mật khẩu tối thiểu"
-
-#: 
-msgid "Min Password Characters Delta"
-msgstr "Ký tự mật khẩu tối thiểu Delta"
-
-#: 
-msgid "Disallowed Passwords"
-msgstr "Mật khẩu không được phép"
-
-#: 
-msgid "Enable 2FA"
-msgstr "Bật 2FA"
-
-#: 
-msgid "Require 2FA"
-msgstr "Yêu cầu 2FA"
-
-#: 
-msgid "2FA Application Name"
-msgstr "Tên ứng dụng 2FA"
 
 #: 
 msgid "Login Info"
@@ -9246,14 +7837,6 @@ msgid "If you ever lose access to your newly enrolled authenticator app, you'll 
 msgstr "Nếu bạn mất quyền truy cập vào ứng dụng trình xác thực mới đăng ký của mình, bạn sẽ cần sử dụng mã khôi phục để có quyền truy cập vào tài khoản của mình"
 
 #: 
-msgid "Event Attendance"
-msgstr "Tham dự sự kiện"
-
-#: 
-msgid "Generate attendance -AND- non-attendance reports for events"
-msgstr "Tạo báo cáo tham dự -AND- không tham dự cho các sự kiện"
-
-#: 
 msgid "Help translate this project"
 msgstr "Giúp dịch dự án này"
 
@@ -9277,14 +7860,6 @@ msgstr "Chuyển nhượng tài sản gia đình"
 #: 
 msgid "Do you want to remove"
 msgstr "Bạn có muốn loại bỏ"
-
-#: 
-msgid "View Active People"
-msgstr "Xem những người đang hoạt động"
-
-#: 
-msgid "View Inactive People"
-msgstr "Xem những người không hoạt động"
 
 #: 
 msgid "Today's Birthdays"
@@ -9376,6 +7951,26 @@ msgstr "Hệ thống"
 
 #. Context: locales
 #: 
+msgid "Amharic - Ethiopia"
+msgstr "Tiếng Amharic - Ethiopia"
+
+#. Context: locales
+#: 
+msgid "Czech"
+msgstr "Tiếng Séc"
+
+#. Context: locales
+#: 
+msgid "Finnish"
+msgstr "Tiếng Phần Lan"
+
+#. Context: locales
+#: 
+msgid "Greek"
+msgstr "Tiếng Hy Lạp"
+
+#. Context: locales
+#: 
 msgid "Turkish"
 msgstr "Thổ Nhĩ Kỳ"
 
@@ -9452,6 +8047,10 @@ msgid "Not Subscribed"
 msgstr "Không đăng ký"
 
 #: 
+msgid "property"
+msgstr "thuộc tính"
+
+#: 
 msgid "Default Zip"
 msgstr "Mã vùng mặc định"
 
@@ -9464,10 +8063,6 @@ msgstr "Người có phương thức thanh toán là thẻ tín dụng"
 #: 
 msgid "People who are configured to pay by credit card."
 msgstr "Những người được cài đặt thanh toán bằng thẻ tín dụng."
-
-#: 
-msgid "Adult Name (Optional)"
-msgstr "Tên người lớn (Tùy chọn)"
 
 #: 
 msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
@@ -9499,6 +8094,11 @@ msgstr "Tiếng Anh - Nam Phi"
 msgid "English - Jamaica"
 msgstr "Tiếng Anh - Jamaica"
 
+#. Context: locales
+#: 
+msgid "Swahili"
+msgstr "Tiếng Swahili"
+
 #: 
 msgid "One character from FirstName and one character from LastName"
 msgstr "Một ký tự từ Tên và một ký tự từ Họ"
@@ -9508,14 +8108,3305 @@ msgid "Two characters from FirstName"
 msgstr "Hai ký tự từ Tên"
 
 #: 
-msgid "Set font to render initials. Upload custom font to fonts directory"
-msgstr "Chọn phông chữ để hiển thị chữ cái đầu. Tải phông chữ tùy chỉnh lên thư mục phông chữ"
+msgid "Church Email not set, please visit the settings page"
+msgstr "Email Giáo hội chưa được thiết lập, vui lòng truy cập trang cài đặt"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "Tiếng Telugu - Ấn Độ"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "Tiếng Hàn"
 
 #: 
-msgid "Person List Columns"
-msgstr "Cột Danh sách cá nhân"
+msgid "System Logs"
+msgstr "Nhật ký hệ thống"
 
 #: 
-msgid "Family List Columns"
-msgstr "Cột Danh sách gia đình"
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "Áp dụng Chính sách Bảo mật Nội dung (CSP) để bảo vệ khỏi tấn công XSS. Khi tắt, các vi phạm chỉ được ghi nhận lại."
+
+#: 
+msgid "Enter event description..."
+msgstr "Nhập mô tả sự kiện..."
+
+#: 
+msgid "Event ID"
+msgstr "Mã sự kiện"
+
+#: 
+msgid "Enter note text here..."
+msgstr "Nhập nội dung ghi chú tại đây..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "Chưa có ghi chú nào cho thành viên này."
+
+#: 
+msgid "Note"
+msgstr "Ghi chú"
+
+#: 
+msgid "Log Settings"
+msgstr "Cấu hình nhật ký"
+
+#: 
+msgid "Log Level:"
+msgstr "Mức độ nhật ký:"
+
+#: 
+msgid "Save Log Level"
+msgstr "Lưu mức độ nhật ký"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "Xem nhật ký ứng dụng. Nhấn vào tệp để xem nội dung."
+
+#: 
+msgid "Delete All Logs"
+msgstr "Xóa tất cả nhật ký"
+
+#: 
+msgid "No log files found."
+msgstr "Không tìm thấy tệp nhật ký nào."
+
+#: 
+msgid "Log File"
+msgstr "Tệp nhật ký"
+
+#: 
+msgid "Size"
+msgstr "Kích thước"
+
+#: 
+msgid "Last Modified"
+msgstr "Cập nhật lần cuối"
+
+#: 
+msgid "View"
+msgstr "Xem"
+
+#: 
+msgid "Log File Viewer"
+msgstr "Trình xem nhật ký"
+
+#: 
+msgid "Filter by log level:"
+msgstr "Lọc theo mức độ:"
+
+#: 
+msgid "Error"
+msgstr "Lỗi"
+
+#: 
+msgid "Info"
+msgstr "Thông tin"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "Số dòng hiển thị:"
+
+#: 
+msgid "Loading log file..."
+msgstr "Đang tải tệp nhật ký..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "Chưa có ghi chú nào cho gia đình này."
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "Mã truy cập lịch đã được tạo và lưu."
+
+#: 
+msgid "added"
+msgstr "đã thêm"
+
+#: 
+msgid "Added"
+msgstr "Đã thêm"
+
+#: 
+msgid "Added to cart successfully"
+msgstr "Đã thêm vào danh sách chọn"
+
+#: 
+msgid "All members already in cart"
+msgstr "Tất cả thành viên đã có trong danh sách"
+
+#: 
+msgid "already in cart"
+msgstr "đã có trong danh sách"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "Không thể tải lịch. Vui lòng kiểm tra mã truy cập hoặc cấu hình."
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "Đã làm trống danh sách chọn"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "Đã chuyển danh sách vào nhóm thành công"
+
+#: 
+msgid "Empty your entire cart?"
+msgstr "Xóa toàn bộ danh sách đang chọn?"
+
+#: 
+msgid "Failed to add family to cart"
+msgstr "Không thể thêm hộ gia đình vào danh sách"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "Không thể thêm nhóm vào danh sách"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "Thêm vào danh sách thất bại"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "Xóa danh sách thất bại"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "Chuyển danh sách vào nhóm thất bại"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "Không thể xóa hộ gia đình khỏi danh sách"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "Xóa khỏi danh sách thất bại"
+
+#: 
+msgid "Failed to remove group"
+msgstr "Xóa nhóm thất bại"
+
+#: 
+msgid "Family added to cart"
+msgstr "Đã thêm hộ gia đình vào danh sách"
+
+#: 
+msgid "Family removed from cart"
+msgstr "Đã xóa hộ gia đình khỏi danh sách"
+
+#: 
+msgid "Group added to cart"
+msgstr "Đã thêm nhóm vào danh sách"
+
+#: 
+msgid "Group removed from cart"
+msgstr "Đã xóa nhóm khỏi danh sách"
+
+#: 
+msgid "in cart"
+msgstr "trong danh sách"
+
+#: 
+msgid "members. Already had"
+msgstr "thành viên. Đã có sẵn"
+
+#: 
+msgid "people added to cart"
+msgstr "người đã được thêm vào danh sách"
+
+#: 
+msgid "people already in cart"
+msgstr "người đã có sẵn trong danh sách"
+
+#: 
+msgid "people from cart"
+msgstr "người từ danh sách"
+
+#: 
+msgid "people removed from cart"
+msgstr "người đã được xóa khỏi danh sách"
+
+#: 
+msgid "Person already in cart"
+msgstr "Người này đã có trong danh sách"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "Xóa hộ gia đình này khỏi danh sách?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "Xóa nhóm này khỏi danh sách?"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "Xóa người này khỏi danh sách?"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "Đã xóa khỏi danh sách thành công"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "Có, xóa hết"
+
+#: 
+msgid "Yes, Remove"
+msgstr "Có, xóa bỏ"
+
+#: 
+msgid "Add Group"
+msgstr "Thêm nhóm"
+
+#: 
+msgid "Back to Group List"
+msgstr "Quay lại danh sách nhóm"
+
+#: 
+msgid "Default role updated."
+msgstr "Đã cập nhật vai trò mặc định."
+
+#: 
+msgid "Edit Group"
+msgstr "Chỉnh sửa nhóm"
+
+#: 
+msgid "Enter group name"
+msgstr "Nhập tên nhóm"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "Lỗi thêm vai trò. Vui lòng thử lại."
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "Lỗi tạo nhóm. Vui lòng thử lại."
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "Xóa vai trò thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to load cart status."
+msgstr "Lỗi tải trạng thái danh sách chọn."
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "Lỗi tải nhóm. Vui lòng tải lại trang."
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "Thiết lập vai trò mặc định thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "Cập nhật nhóm thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "Cập nhật thuộc tính thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "Cập nhật tên vai trò thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "Để trống nếu không muốn đổi mật khẩu"
+
+#: 
+msgid "Please enter a group name."
+msgstr "Vui lòng nhập tên nhóm."
+
+#: 
+msgid "Role added successfully."
+msgstr "Đã thêm vai trò thành công."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "Đã xóa vai trò thành công."
+
+#: 
+msgid "Role name updated."
+msgstr "Đã cập nhật tên vai trò."
+
+#: 
+msgid "View Group"
+msgstr "Xem nhóm"
+
+#: 
+msgid "Events Today"
+msgstr "Sự kiện hôm nay"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "Tổng quan Trường Chúa Nhật"
+
+#: 
+msgid "Add Family Member"
+msgstr "Thêm thành viên gia đình"
+
+#: 
+msgid "Address is required"
+msgstr "Yêu cầu nhập địa chỉ"
+
+#: 
+msgid "Base URL is required"
+msgstr "Yêu cầu URL cơ sở"
+
+#: 
+msgid "City is required"
+msgstr "Yêu cầu tên thành phố"
+
+#: 
+msgid "Database name is required"
+msgstr "Yêu cầu tên cơ sở dữ liệu"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "Yêu cầu tên máy chủ hoặc địa chỉ IP (ví dụ: localhost hoặc 127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "Yêu cầu cổng máy chủ cơ sở dữ liệu (ví dụ: 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "Yêu cầu tên người dùng cơ sở dữ liệu"
+
+#: 
+msgid "Email Address"
+msgstr "Địa chỉ Email"
+
+#: 
+msgid "Email address"
+msgstr "Địa chỉ Email"
+
+#: 
+msgid "Enter family name"
+msgstr "Nhập tên gia đình"
+
+#: 
+msgid "Family Information"
+msgstr "Thông tin hộ gia đình"
+
+#: 
+msgid "Family name is required"
+msgstr "Yêu cầu nhập tên hộ gia đình (tộc họ)"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "Tên gia đình phải có ít nhất 2 ký tự"
+
+#: 
+msgid "First name"
+msgstr "Tên"
+
+#: 
+msgid "First name is required"
+msgstr "Yêu cầu tên"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "Tên phải có ít nhất 2 ký tự"
+
+#: 
+msgid "Home phone is required"
+msgstr "Yêu cầu số điện thoại nhà"
+
+#: 
+msgid "Home phone number"
+msgstr "Số điện thoại nhà"
+
+#: 
+msgid "Invalid format"
+msgstr "Định dạng không hợp lệ"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "Ghi danh hộ gia đình để tham gia cộng đoàn chúng tôi"
+
+#: 
+msgid "Last name"
+msgstr "Họ và tên đệm"
+
+#: 
+msgid "Last name is required"
+msgstr "Yêu cầu họ"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "Họ phải có ít nhất 2 ký tự"
+
+#: 
+msgid "Maximum length is"
+msgstr "Độ dài tối đa là"
+
+#: 
+msgid "Minimum length is"
+msgstr "Độ dài tối thiểu là"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "Phải là URL hợp lệ bắt đầu bằng http:// hoặc https://"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "Phải là URL hợp lệ (ví dụ: http://localhost hoặc https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "Phải là số cổng hợp lệ (ví dụ: 3306)"
+
+#: 
+msgid "Next Member"
+msgstr "Thành viên tiếp theo"
+
+#: 
+msgid "Passwords do not match"
+msgstr "Mật khẩu không khớp"
+
+#: 
+msgid "Phone Type"
+msgstr "Loại điện thoại"
+
+#: 
+msgid "Phone number"
+msgstr "Số điện thoại"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "Vui lòng thêm ít nhất một thành viên trong gia đình."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "Vui lòng sửa các lỗi xác thực trước khi tiếp tục."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "Vui lòng nhập URL hợp lệ"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "Vui lòng nhập địa chỉ email hợp lệ"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "Vui lòng nhập địa chỉ email hợp lệ (ví dụ: name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "Vui lòng nhập một số hợp lệ"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "Vui lòng nhập số điện thoại hợp lệ"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "Vui lòng điền đúng các thông tin bắt buộc."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "Vui lòng kiểm tra kỹ tất cả thông tin trước khi gửi. Bạn có thể quay lại để thay đổi nếu cần."
+
+#: 
+msgid "Previous"
+msgstr "Quay lại"
+
+#: 
+msgid "Registration Error"
+msgstr "Lỗi đăng ký"
+
+#: 
+msgid "Review & Submit"
+msgstr "Kiểm tra & Gửi"
+
+#: 
+msgid "Role in Family"
+msgstr "Vai trò trong gia đình"
+
+#: 
+msgid "Select date"
+msgstr "Chọn ngày"
+
+#: 
+msgid "Street address"
+msgstr "Địa chỉ nhà/đường"
+
+#: 
+msgid "Submit Registration"
+msgstr "Gửi đăng ký"
+
+#: 
+msgid "Zip code is required"
+msgstr "Yêu cầu mã bưu điện"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "Mật khẩu mới đã được tạo và gửi vào email của bạn."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "Một phiên bản ChurchCRM mới đã sẵn sàng để cài đặt."
+
+#: 
+msgid "Actual Hash"
+msgstr "Mã Hash thực tế"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "Tất cả các kiểm tra trước nâng cấp đã hoàn tất. Bạn có thể tiến hành nâng cấp."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Cho phép nâng cấp phiên bản thử nghiệm (Pre-release)"
+
+#: 
+msgid "Apply Update Now"
+msgstr "Cập nhật ngay"
+
+#: 
+msgid "Applying System Update..."
+msgstr "Đang áp dụng cập nhật hệ thống..."
+
+#: 
+msgid "Back to Login"
+msgstr "Quay lại đăng nhập"
+
+#: 
+msgid "Back to login"
+msgstr "Quay lại đăng nhập"
+
+#: 
+msgid "Backup Skipped"
+msgstr "Đã bỏ qua sao lưu"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "Kiểm tra GitHub để biết thông tin phiên bản mới nhất"
+
+#: 
+msgid "Complete"
+msgstr "Hoàn tất"
+
+#: 
+msgid "Continue to Backup"
+msgstr "Tiếp tục đến phần Sao lưu"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "Tiếp tục Tải xuống & Áp dụng"
+
+#: 
+msgid "Create Backup"
+msgstr "Tạo bản sao lưu"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "Tạo bản sao lưu cơ sở dữ liệu của bạn trước khi áp dụng bản cập nhật."
+
+#: 
+msgid "Current Version:"
+msgstr "Phiên bản hiện tại:"
+
+#: 
+msgid "Database Backup"
+msgstr "Sao lưu cơ sở dữ liệu"
+
+#: 
+msgid "Download & Apply"
+msgstr "Tải về & Áp dụng"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "Tải xuống và Áp dụng Cập nhật Hệ thống"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "Tải xuống phiên bản mới nhất và áp dụng cho bản cài đặt ChurchCRM của bạn."
+
+#: 
+msgid "Downloaded"
+msgstr "Đã tải xuống"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "Đang tải xuống phiên bản mới nhất từ GitHub..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "Nhập tên đăng nhập của bạn và chúng tôi sẽ gửi email liên kết để đặt lại mật khẩu."
+
+#: 
+msgid "Expected Hash"
+msgstr "Mã Hash dự kiến"
+
+#: 
+msgid "Failed to create backup."
+msgstr "Tạo bản sao lưu thất bại."
+
+#: 
+msgid "Failed to download update package."
+msgstr "Tải gói cập nhật thất bại."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "Cập nhật thông tin nâng cấp từ GitHub thất bại."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "Cập nhật thông tin nâng cấp thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "Lưu cài đặt thất bại. Vui lòng thử lại."
+
+#: 
+msgid "File Name"
+msgstr "Tên tệp"
+
+#: 
+msgid "Files Missing"
+msgstr "Tệp bị thiếu"
+
+#: 
+msgid "Files Modified"
+msgstr "Tệp bị thay đổi"
+
+#: 
+msgid "Go to Login"
+msgstr "Đi tới Đăng nhập"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "Tôi đã hiểu - Tiếp tục"
+
+#: 
+msgid "Language updated to"
+msgstr "Ngôn ngữ đã được cập nhật thành"
+
+#: 
+msgid "Login Name is required"
+msgstr "Yêu cầu tên đăng nhập"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "Sau khi nhận được email, bạn có thể đăng nhập bằng mật khẩu tạm thời và đổi sang mật khẩu bạn muốn."
+
+#: 
+msgid "Password Reset Error"
+msgstr "Lỗi đặt lại mật khẩu"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "Đặt lại mật khẩu thành công"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "Vui lòng kiểm tra email của bạn (bao gồm cả thư rác) để lấy mật khẩu tạm thời."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "Vui lòng không đóng cửa sổ này hoặc tải lại trang."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "Các tác vụ trước nâng cấp đã hoàn tất"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "Cảnh báo trước nâng cấp"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "Làm mới từ GitHub"
+
+#: 
+msgid "Release Notes:"
+msgstr "Ghi chú phiên bản:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "Yêu cầu cấp lại mật khẩu"
+
+#: 
+msgid "Retry Download"
+msgstr "Tử tải lại"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "Mã Hash SHA1:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "Gửi Email đặt lại"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "Cài đặt đã lưu. Đang tải lại trang..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "Cập nhật cài đặt thành công"
+
+#: 
+msgid "Skip Backup"
+msgstr "Bỏ qua sao lưu"
+
+#: 
+msgid "System Up to Date"
+msgstr "Hệ thống đã mới nhất"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "Trình hướng dẫn nâng cấp hệ thống"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "Nâng cấp hệ thống hoàn tất thành công!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "Quá trình này có thể mất vài phút."
+
+#: 
+msgid "Update Available!"
+msgstr "Có phiên bản cập nhật!"
+
+#: 
+msgid "Update Package Details"
+msgstr "Chi tiết gói cập nhật"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "Đã tải xuống gói cập nhật thành công."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "Cập nhật thành công!"
+
+#: 
+msgid "Upgrade failed."
+msgstr "Nâng cấp thất bại."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "Nâng cấp thất bại. Vui lòng kiểm tra nhật ký (logs)."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "Thông tin nâng cấp đã được làm mới thành công"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "Thông tin nâng cấp đã làm mới. Đang tải lại trang..."
+
+#: 
+msgid "Version Information"
+msgstr "Thông tin phiên bản"
+
+#: 
+msgid "Warnings"
+msgstr "Cảnh báo"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "Chúng tôi không thể xử lý yêu cầu đặt lại mật khẩu của bạn. Vui lòng thử yêu cầu một liên kết mới."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "Bạn đã chọn bỏ qua sao lưu. Chúng tôi khuyến nghị nên có bản sao lưu trước khi tiến hành nâng cấp."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "Bản cài đặt ChurchCRM của bạn đã được nâng cấp thành công."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "Bản cài đặt ChurchCRM của bạn đang chạy phiên bản mới nhất."
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 ký tự"
+
+#: 
+msgid "Dear Friend"
+msgstr "Bạn thân mến"
+
+#: 
+msgid "No Data Found"
+msgstr "Không có dữ liệu"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "Không có bản ghi nào được trả về từ báo cáo trước. Vui lòng điều chỉnh bộ lọc hoặc khoảng ngày và thử lại."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "Vui lòng nhập tên menu (2-50 ký tự)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "Vui lòng nhập URL hợp lệ bắt đầu bằng http:// hoặc https://"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "Tất cả chữ ký tệp hệ thống đều khớp với giá trị dự kiến."
+
+#: 
+msgid "Files with issues"
+msgstr "Các tệp có vấn đề"
+
+#: 
+msgid "Integrity check failed"
+msgstr "Kiểm tra tính toàn vẹn thất bại"
+
+#: 
+msgid "Integrity check passed"
+msgstr "Kiểm tra tính toàn vẹn thành công"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "Tệp định nghĩa chữ ký tồn tại nhưng không thể đọc. Kiểm tra quyền của tệp."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "Thiếu tệp định nghĩa chữ ký tại %s."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "Không thể kết nối với điểm cuối kiểm tra tính toàn vẹn. Kiểm tra nhật ký lỗi máy chủ."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "Thêm bất kỳ ghi chú bổ sung nào về khoản tiền gửi này"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "Số tiền vượt quá giá trị tối đa cho phép (999,999.99)."
+
+#: 
+msgid "Checks"
+msgstr "Chi phiếu"
+
+#: 
+msgid "Clear Filters"
+msgstr "Xóa bộ lọc"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "Nhấp vào một thanh để lọc các khoản thanh toán"
+
+#: 
+msgid "Delete Selected"
+msgstr "Xóa mục đã chọn"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "Đã lưu khoản đóng góp thành công"
+
+#: 
+msgid "Error deleting payments"
+msgstr "Lỗi khi xóa các khoản thanh toán"
+
+#: 
+msgid "Error loading payments"
+msgstr "Lỗi khi tải các khoản thanh toán"
+
+#: 
+msgid "Error saving deposit"
+msgstr "Lỗi khi lưu khoản tiền gửi"
+
+#: 
+msgid "Funds"
+msgstr "Các quỹ"
+
+#: 
+msgid "Generate Report"
+msgstr "Xuất báo cáo"
+
+#: 
+msgid "No Cash"
+msgstr "Không có tiền mặt"
+
+#: 
+msgid "No Checks"
+msgstr "Không có chi phiếu"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "Chưa có khoản thanh toán nào. Nhấp vào \"Thêm thanh toán\" để bắt đầu."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "Số tiền không được khấu trừ thuế vượt quá giá trị tối đa cho phép."
+
+#: 
+msgid "Payments"
+msgstr "Các khoản đóng góp"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "Xóa các khoản thanh toán thành công"
+
+#: 
+msgid "Please select a date"
+msgstr "Vui lòng chọn một ngày"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "Vui lòng chọn các hàng để xóa"
+
+#: 
+msgid "Saving..."
+msgstr "Đang lưu..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "Hành động này không thể hoàn tác."
+
+#: 
+msgid "Total Deposit"
+msgstr "Tổng nộp"
+
+#: 
+msgid "Total Payments"
+msgstr "Tổng khoản thu"
+
+#: 
+msgid "payments(s)?"
+msgstr "khoản thanh toán?"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "Tất cả các tệp hệ thống đã vượt qua kiểm tra tính toàn vẹn."
+
+#: 
+msgid "Base URL"
+msgstr "URL cơ sở"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "Cài đặt ChurchCRM"
+
+#: 
+msgid "Copy"
+msgstr "Sao chép"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "Máy chủ cơ sở dữ liệu"
+
+#: 
+msgid "Debug Info"
+msgstr "Thông tin gỡ lỗi"
+
+#: 
+msgid "Document Root"
+msgstr "Thư mục gốc tài liệu"
+
+#: 
+msgid "Email Configuration"
+msgstr "Cấu hình Email"
+
+#: 
+msgid "Email Debug Info"
+msgstr "Thông tin gỡ lỗi Email"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "Quyền hệ thống tệp"
+
+#: 
+msgid "Hostname"
+msgstr "Tên máy chủ"
+
+#: 
+msgid "IP Address"
+msgstr "Địa chỉ IP"
+
+#: 
+msgid "Images Root"
+msgstr "Thư mục gốc hình ảnh"
+
+#: 
+msgid "Import Demo Data"
+msgstr "Nhập dữ liệu mẫu"
+
+#: 
+msgid "Include events and calendars"
+msgstr "Bao gồm sự kiện và lịch"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "Bao gồm dữ liệu tài chính (quỹ dâng hiến, hứa dâng)"
+
+#: 
+msgid "Invalid API key"
+msgstr "Khóa API không hợp lệ"
+
+#: 
+msgid "Not configured"
+msgstr "Chưa được cấu hình"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "Yêu cầu PHP & Máy chủ"
+
+#: 
+msgid "PHP Configuration"
+msgstr "Cấu hình PHP"
+
+#: 
+msgid "Platform"
+msgstr "Nền tảng"
+
+#: 
+msgid "Root Path"
+msgstr "Đường dẫn gốc"
+
+#: 
+msgid "SMTP Host"
+msgstr "Máy chủ SMTP"
+
+#: 
+msgid "Server Information"
+msgstr "Thông tin máy chủ"
+
+#: 
+msgid "Software"
+msgstr "Phần mềm"
+
+#: 
+msgid "System & Configuration"
+msgstr "Hệ thống & Cấu hình"
+
+#: 
+msgid "Tip:"
+msgstr "Mẹo:"
+
+#: 
+msgid "Valid Settings"
+msgstr "Cài đặt hợp lệ"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "Đã xảy ra lỗi trong khi nhập dữ liệu mẫu"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "Nhập dữ liệu mẫu thành công"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "Bao gồm các lớp Trường Chúa Nhật và danh sách đăng ký"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "Cần xóa dữ liệu này sau?"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "Không có khoản thanh toán nào trong lần gửi này"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "Không có khoản thanh toán nào trong lần gửi này"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "Dữ liệu tùy chọn để bao gồm"
+
+#: 
+msgid "Skipped"
+msgstr "Đã bỏ qua"
+
+#: 
+msgid "Unknown error"
+msgstr "Lỗi không xác định"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "khoản gửi không có thanh toán"
+
+#: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d sự kiện trong %s"
+
+#: 
+msgid "All Event Types"
+msgstr "Tất cả loại sự kiện"
+
+#: 
+msgid "All Types"
+msgstr "Tất cả các loại"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "Bạn có chắc chắn muốn xóa bản ghi điểm danh này không?"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "Các danh mục đếm số người tham dự"
+
+#: 
+msgid "Attendance Notes"
+msgstr "Ghi chú hiện diện"
+
+#: 
+msgid "Change Event"
+msgstr "Thay đổi sự kiện"
+
+#: 
+msgid "Check In"
+msgstr "Điểm danh"
+
+#: 
+msgid "Check In Person"
+msgstr "Điểm danh người"
+
+#: 
+msgid "Check In to Event"
+msgstr "Điểm danh vào sự kiện"
+
+#: 
+msgid "Check-in"
+msgstr "Ghi danh"
+
+#: 
+msgid "Choose an event..."
+msgstr "Chọn một sự kiện..."
+
+#: 
+msgid "Clear"
+msgstr "Xóa sạch"
+
+#: 
+msgid "Create"
+msgstr "Tạo"
+
+#: 
+msgid "Create New Event"
+msgstr "Tạo sự kiện mới"
+
+#: 
+msgid "Create an event type to get started."
+msgstr "Tạo một loại sự kiện để bắt đầu."
+
+#: 
+msgid "Current DB Version"
+msgstr "Phiên bản CSDL hiện tại"
+
+#: 
+msgid "Current Software Version"
+msgstr "Phiên bản phần mềm hiện tại"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "Nâng cấp cơ sở dữ liệu thành công. Đang chuyển hướng đến bảng điều khiển..."
+
+#: 
+msgid "Date & Time"
+msgstr "Ngày & Giờ"
+
+#: 
+msgid "Default Start Time"
+msgstr "Giờ bắt đầu mặc định"
+
+#: 
+msgid "Delete Event"
+msgstr "Xóa sự kiện"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "Xóa một sự kiện cũng sẽ xóa tất cả số liệu điểm danh. Xóa sự kiện này?"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "Xóa loại sự kiện này sẽ KHÔNG xóa các sự kiện hiện có. Bạn có chắc không?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "Xóa sự kiện này cũng sẽ xóa tất cả hồ sơ điểm danh. Bạn có chắc không?"
+
+#: 
+msgid "Edit Event"
+msgstr "Chỉnh sửa sự kiện"
+
+#: 
+msgid "Editing Event"
+msgstr "Đang chỉnh sửa sự kiện"
+
+#: 
+msgid "Enter comma-separated count categories. \"Total\" is automatically included."
+msgstr "Nhập các danh mục đếm cách nhau bằng dấu phẩy. \"Tổng cộng\" được tự động bao gồm."
+
+#: 
+msgid "Enter event title..."
+msgstr "Nhập tiêu đề sự kiện..."
+
+#: 
+msgid "Event"
+msgstr "Sự kiện"
+
+#: 
+msgid "Event Type Name"
+msgstr "Tên loại sự kiện"
+
+#: 
+msgid "Event Types"
+msgstr "Loại sự kiện"
+
+#: 
+msgid "Filter Events"
+msgstr "Lọc sự kiện"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "Lọc theo loại sự kiện"
+
+#: 
+msgid "Filter by Type"
+msgstr "Lọc theo loại"
+
+#: 
+msgid "Head Count"
+msgstr "Số người tham dự"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "Danh sách sự kiện loại"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "Quản lý điểm danh"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "Thành viên, Khách, Trẻ em"
+
+#: 
+msgid "Monthly Averages"
+msgstr "Trung bình hàng tháng"
+
+#: 
+msgid "Monthly on the"
+msgstr "Hàng tháng vào ngày"
+
+#: 
+msgid "No event types defined yet."
+msgstr "Chưa có loại sự kiện nào được xác định."
+
+#: 
+msgid "None (one-time event)"
+msgstr "Không (sự kiện một lần)"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "Tùy chọn - Thêm ghi chú bài giảng hoặc chi tiết sự kiện bổ sung"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "Tùy chọn - để trống nếu không theo dõi"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "Ghi chú tùy chọn về việc tham dự..."
+
+#: 
+msgid "People Checked In"
+msgstr "Những người đã điểm danh"
+
+#: 
+msgid "People in Cart"
+msgstr "Những người trong giỏ hàng"
+
+#: 
+msgid "Person Checking In"
+msgstr "Người đang điểm danh"
+
+#: 
+msgid "Recurrence"
+msgstr "Lặp lại"
+
+#: 
+msgid "Required fields"
+msgstr "Các trường bắt buộc"
+
+#: 
+msgid "Save Event Type"
+msgstr "Lưu loại sự kiện"
+
+#: 
+msgid "Search by name or email..."
+msgstr "Tìm theo tên hoặc email..."
+
+#: 
+msgid "Search for adult..."
+msgstr "Tìm người lớn..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "Tìm người giám sát..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "Chọn sự kiện để điểm danh"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "Chọn ngày/giờ bắt đầu và kết thúc"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "Chọn sự kiện để điểm danh cho các thành viên trong giỏ hàng"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "Nội dung Bài giảng / Sự kiện"
+
+#: 
+msgid "Unclassified"
+msgstr "Chưa phân loại"
+
+#: 
+msgid "Upgrade database now"
+msgstr "Nâng cấp cơ sở dữ liệu ngay"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "Bản cài đặt ChurchCRM của bạn cần nâng cấp cơ sở dữ liệu. Vui lòng đảm bảo bạn có bản sao lưu gần đây trước khi tiếp tục."
+
+#: 
+msgid "added to this event"
+msgstr "đã thêm vào sự kiện này"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "ví dụ: Trường Chúa Nhật, Học Kinh Thánh..."
+
+#: 
+msgid "optional"
+msgstr "tùy chọn"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "người"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ Điểm danh ra"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "Phát hiện %d tệp mồ côi"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d tệp đã bị thay đổi hoặc bị thiếu. Sử dụng 'Buộc cài đặt lại' để khôi phục các phiên bản chính thức."
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d tệp đã không vượt qua kiểm tra tính toàn vẹn."
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d tệp sẽ bị xóa vĩnh viễn."
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "Phát hiện %d tệp mồ côi trên máy chủ của bạn."
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(làm mới từ GitHub)"
+
+#: 
+msgid "Access Denied"
+msgstr "Truy cập bị từ chối"
+
+#: 
+msgid "Add event permission"
+msgstr "Quyền thêm sự kiện"
+
+#: 
+msgid "Add records permission"
+msgstr "Quyền thêm bản ghi"
+
+#: 
+msgid "Administrator privileges"
+msgstr "Đặc quyền quản trị viên"
+
+#: 
+msgid "All Files Verified"
+msgstr "Tất cả tệp đã được xác minh"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "Tất cả các tệp hệ thống đều khớp với chữ ký dự kiến."
+
+#: 
+msgid "Application Integrity"
+msgstr "Tính toàn vẹn của ứng dụng"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "Các tệp ứng dụng đã được cập nhật lên phiên bản mới nhất"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "Bạn có chắc chắn muốn xóa tất cả các tệp mồ côi không?"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "Quay lại Thông tin gỡ lỗi"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "Thực hành tốt nhất cho sao lưu"
+
+#: 
+msgid "Backup Status"
+msgstr "Trạng thái sao lưu"
+
+#: 
+msgid "Backup Type"
+msgstr "Loại sao lưu"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "Sao lưu hoàn tất! Nhấp vào bên dưới để tải xuống."
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "Sao lưu hoàn tất thành công!"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "Đã tải bản sao lưu xuống. Bản sao trên máy chủ đã được xóa."
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "Sao lưu thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "Bản sao lưu đã được tạo và sao chép sang máy chủ từ xa"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "Đang thực hiện sao lưu, vui lòng đợi..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "Sao lưu vào bộ nhớ ngoài"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "CHÚ Ý: Khôi phục bản sao lưu sẽ xóa hoàn toàn cơ sở dữ liệu hiện tại và thay thế bằng dữ liệu sao lưu."
+
+#: 
+msgid "CSV export permission"
+msgstr "Quyền xuất tệp CSV"
+
+#: 
+msgid "Close & Refresh"
+msgstr "Đóng & Làm mới"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "Xác nhận xóa"
+
+#: 
+msgid "Create a backup first"
+msgstr "Tạo bản sao lưu trước"
+
+#: 
+msgid "Create directory permission"
+msgstr "Quyền tạo thư mục"
+
+#: 
+msgid "Database Only"
+msgstr "Chỉ cơ sở dữ liệu"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "Khôi phục cơ sở dữ liệu thành công!"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "Sơ đồ cơ sở dữ liệu đã được nâng cấp tự động"
+
+#: 
+msgid "Delete All Files"
+msgstr "Xóa tất cả tệp"
+
+#: 
+msgid "Delete All Orphaned Files"
+msgstr "Xóa tất cả tệp mồ côi"
+
+#: 
+msgid "Delete records permission"
+msgstr "Quyền xóa bản ghi"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "Đã xóa %d tệp, %d thất bại"
+
+#: 
+msgid "Deletion Results"
+msgstr "Kết quả xóa"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "Kéo và thả tệp sao lưu của bạn vào đây"
+
+#: 
+msgid "Edit records permission"
+msgstr "Quyền chỉnh sửa bản ghi"
+
+#: 
+msgid "Encryption"
+msgstr "Mã hóa"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "Xuất cấu trúc và dữ liệu CSDL. Kích thước tệp nhỏ hơn."
+
+#: 
+msgid "File Integrity Check"
+msgstr "Kiểm tra tính toàn vẹn của tệp"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "Phát hiện vấn đề về tính toàn vẹn của tệp"
+
+#: 
+msgid "File Path"
+msgstr "Đường dẫn tệp"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "Chữ ký tệp khớp với bản phát hành chính thức."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "Các tệp có thể bị sửa đổi hoặc thiếu. Hãy cân nhắc cài đặt lại từ bản phát hành chính thức."
+
+#: 
+msgid "Finance access"
+msgstr "Truy cập tài chính"
+
+#: 
+msgid "Force Re-install"
+msgstr "Buộc cài đặt lại"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "Đã bắt đầu buộc cài đặt lại. Vui lòng sao lưu CSDL trước khi thực hiện."
+
+#: 
+msgid "Full Backup"
+msgstr "Sao lưu đầy đủ"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "Tạo & Tải bản sao lưu"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "Đi tới Bảng điều khiển"
+
+#: 
+msgid "Group management access"
+msgstr "Truy cập quản lý nhóm"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "Nếu bạn cần truy cập tính năng này, vui lòng liên hệ với quản trị viên của bạn."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "Nếu bạn tải lên bản sao lưu từ phiên bản cũ, nó sẽ được tự động nâng cấp."
+
+#: 
+msgid "Important Warning"
+msgstr "Cảnh báo quan trọng"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "Bao gồm CSDL và tất cả ảnh đã tải lên. Kích thước tệp lớn hơn."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "Giữ một bản sao trong két an toàn tại chỗ và một bản khác ở nơi khác."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "Phiên bản GitHub mới nhất:"
+
+#: 
+msgid "Loading..."
+msgstr "Đang tải..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "Thực hiện sao lưu ít nhất một lần một tuần trừ khi bạn có sao lưu tự động."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "Quản lý tệp mồ côi"
+
+#: 
+msgid "Menu options access"
+msgstr "Truy cập tùy chọn menu"
+
+#: 
+msgid "Missing Files"
+msgstr "Tệp bị thiếu"
+
+#: 
+msgid "Modified Files"
+msgstr "Tệp đã thay đổi"
+
+#: 
+msgid "Multiple Copies"
+msgstr "Nhiều bản sao"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "Không tìm thấy tệp mồ côi nào"
+
+#: 
+msgid "Notes access"
+msgstr "Truy cập ghi chú"
+
+#: 
+msgid "Orphaned Files"
+msgstr "Tệp mồ côi"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "Quản lý tệp mồ côi"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "Tệp mồ côi là các tệp PHP hoặc JavaScript tồn tại trên máy chủ nhưng không thuộc bản phát hành chính thức. Chúng có thể gây rủi ro bảo mật."
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "Đã dọn dẹp các tệp mồ côi từ phiên bản trước"
+
+#: 
+msgid "Permission Required"
+msgstr "Yêu cầu quyền truy cập"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "Vui lòng kiểm tra tệp sao lưu và thử lại."
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "Vui lòng chọn một tệp sao lưu để khôi phục"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "Tải lại và áp dụng phiên bản hiện tại để khôi phục tất cả các tệp về trạng thái chính thức"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "Sẵn sàng tạo bản sao lưu. Chọn các tùy chọn và nhấp vào nút sao lưu."
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "Sẵn sàng khôi phục. Chọn tệp và nhấp Khôi phục cơ sở dữ liệu."
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "Khuyến nghị: Xem lại và xóa các tệp này trước hoặc sau khi nâng cấp."
+
+#: 
+msgid "Redirecting in"
+msgstr "Chuyển hướng sau"
+
+#: 
+msgid "Refresh List"
+msgstr "Làm mới danh sách"
+
+#: 
+msgid "Regular Backups"
+msgstr "Sao lưu định kỳ"
+
+#: 
+msgid "Required Permission"
+msgstr "Quyền bắt buộc"
+
+#: 
+msgid "Required permission"
+msgstr "Quyền bắt buộc"
+
+#: 
+msgid "Restore Status"
+msgstr "Trạng thái khôi phục"
+
+#: 
+msgid "Restore failed."
+msgstr "Khôi phục thất bại."
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "Khôi phục thất bại. Vui lòng kiểm tra tệp sao lưu và thử lại."
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "Đang thực hiện khôi phục, vui lòng đợi..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "Xem lại các tệp bên dưới và xóa chúng để tăng cường bảo mật."
+
+#: 
+msgid "Security Recommendation"
+msgstr "Khuyến nghị bảo mật"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "Cảnh báo bảo mật: Phát hiện tệp mồ côi"
+
+#: 
+msgid "Select Backup File"
+msgstr "Chọn tệp sao lưu"
+
+#: 
+msgid "Supported formats:"
+msgstr "Định dạng hỗ trợ:"
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "Các tệp sau tồn tại trên máy chủ nhưng KHÔNG thuộc bản phát hành chính thức."
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "Trang bạn truy cập yêu cầu các quyền đặc biệt mà tài khoản của bạn hiện không có."
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "Các tệp này không thuộc bản phát hành chính thức và có thể gây rủi ro bảo mật."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "Các tệp này có thể là phần thừa từ phiên bản cũ. Xóa chúng sẽ cải thiện bảo mật hệ thống."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "Chúng có thể chứa mã lỗi thời với các lỗ hổng bảo mật."
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "Hành động này không thể hoàn tác. Đảm bảo bạn có bản sao lưu dữ liệu hiện tại nếu cần."
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "Quá trình này có thể mất vài phút đối với các CSDL lớn."
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "Có thể mất vài phút. Vui lòng không đóng trang này."
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "Việc này sẽ tải lại và áp dụng phiên bản hiện tại. Tiếp tục?"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "Tóm tắt nâng cấp"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "Sử dụng các công cụ bên ngoài để mã hóa bản sao lưu trước khi lưu trữ bên ngoài."
+
+#: 
+msgid "User authentication"
+msgstr "Xác thực người dùng"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "Người dùng phải có quyền Thêm sự kiện"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "Người dùng phải có quyền Tùy chọn Menu"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "Tệp mồ côi là gì?"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "Bạn không có quyền truy cập trang này"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "Bạn sẽ bị đăng xuất và chuyển hướng đến trang đăng nhập."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "Bản cài đặt của bạn sạch sẽ. Tất cả các tệp đều khớp với bản phát hành chính thức."
+
+#: 
+msgid "or click to browse"
+msgstr "hoặc nhấp để duyệt tệp"
+
+#: 
+msgid "seconds..."
+msgstr "giây..."
+
+#: 
+msgid " Deposit #"
+msgstr " Lần gửi tiền số #"
+
+#: 
+msgid "%d missing classification"
+msgstr "thiếu %d phân loại"
+
+#: 
+msgid "%d missing gender"
+msgstr "thiếu %d giới tính"
+
+#: 
+msgid "%d missing role"
+msgstr "thiếu %d vai trò"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "Thanh toán là một khoản quyên góp thực tế đã nhận được."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "Lời hứa dâng hiến là một cam kết sẽ đóng góp."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "Thêm một thành viên gia đình khác"
+
+#: 
+msgid "Add Pledge"
+msgstr "Thêm lời hứa dâng hiến"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "Bảng điều khiển quản trị"
+
+#: 
+msgid "Advanced Operations"
+msgstr "Thao tác nâng cao"
+
+#: 
+msgid "All System Settings"
+msgstr "Tất cả cài đặt hệ thống"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "Đã xảy ra lỗi không mong muốn. Vui lòng liên hệ với quản trị viên."
+
+#: 
+msgid "Apr"
+msgstr "Th4"
+
+#: 
+msgid "Aug"
+msgstr "Th8"
+
+#: 
+msgid "Back to Deposits"
+msgstr "Quay lại danh sách gửi tiền"
+
+#: 
+msgid "Back to Families"
+msgstr "Quay lại danh sách gia đình"
+
+#: 
+msgid "Birth & Family"
+msgstr "Ngày sinh & Gia đình"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "Xuất tệp CSV chỉ dành cho quản trị viên."
+
+#: 
+msgid "Cart"
+msgstr "Giỏ chọn"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "Thay đổi điều này trong Cài đặt hệ thống."
+
+#: 
+msgid "Church Membership"
+msgstr "Thành viên Giáo hội"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "Tên Giáo hội đang để giá trị mặc định"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "Các lớp học và đăng ký"
+
+#: 
+msgid "Clean Up Files"
+msgstr "Dọn dẹp tệp"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "Xóa tất cả dữ liệu và bắt đầu lại từ đầu. Không thể hoàn tác."
+
+#: 
+msgid "Close All Deposits"
+msgstr "Đóng tất cả các lần gửi tiền"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "Các lần gửi tiền đã đóng:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "Đã đóng so với Tổng số"
+
+#: 
+msgid "Coming soon"
+msgstr "Sắp ra mắt"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "Hoàn thành các tác vụ thiết lập thiết yếu này để ChurchCRM chạy trơn tru:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "Hoàn thành theo thứ tự bất kỳ. Sử dụng Dữ liệu mẫu để khám phá."
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "Hoàn thành các tác vụ này để đảm bảo báo cáo thuế cuối năm chính xác."
+
+#: 
+msgid "Configuration:"
+msgstr "Cấu hình:"
+
+#: 
+msgid "Configure Email"
+msgstr "Cấu hình Email"
+
+#: 
+msgid "Contact Information"
+msgstr "Thông tin liên lạc"
+
+#: 
+msgid "Create Deposit"
+msgstr "Tạo đợt đóng góp"
+
+#: 
+msgid "Create First Deposit"
+msgstr "Tạo lần gửi tiền đầu tiên"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "Tạo hoặc mở một khoản gửi tiền trước"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "Tạo hoặc chọn một khoản gửi tiền để bắt đầu."
+
+#: 
+msgid "Current Deposit"
+msgstr "Đợt đóng góp hiện tại"
+
+#: 
+msgid "Current fiscal year"
+msgstr "Năm tài chính hiện tại"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "Báo cáo có thể tùy chỉnh với các bộ lọc."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Tùy chỉnh văn bản xuất hiện trên báo cáo thuế."
+
+#: 
+msgid "Data Quality:"
+msgstr "Chất lượng dữ liệu:"
+
+#: 
+msgid "Database:"
+msgstr "Cơ sở dữ liệu:"
+
+#: 
+msgid "Day"
+msgstr "Ngày"
+
+#: 
+msgid "Dec"
+msgstr "Th12"
+
+#: 
+msgid "Demo Data"
+msgstr "Dữ liệu mẫu"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "Điều hướng gửi tiền"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "Thống kê gửi tiền"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "Chi tiết phân tích của một phiếu gửi tiền đơn lẻ."
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "Chi tiết các lời hứa và thanh toán theo gia đình."
+
+#: 
+msgid "Documentation"
+msgstr "Tài liệu hướng dẫn"
+
+#: 
+msgid "Donor Families"
+msgstr "Các gia đình dâng hiến"
+
+#: 
+msgid "Edit Deposit"
+msgstr "Sửa khoản gửi tiền"
+
+#: 
+msgid "Edit Family"
+msgstr "Sửa thông tin gia đình"
+
+#: 
+msgid "Edit Payment"
+msgstr "Sửa khoản thanh toán"
+
+#: 
+msgid "Edit Person"
+msgstr "Sửa thông tin cá nhân"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "Đảm bảo tất cả các khoản gửi tiền trong năm thuế đều đã được đóng."
+
+#: 
+msgid "Export Options"
+msgstr "Tùy chọn xuất dữ liệu"
+
+#: 
+msgid "F"
+msgstr "Nữ"
+
+#: 
+msgid "Failed to save settings"
+msgstr "Lưu cài đặt thất bại"
+
+#: 
+msgid "Family Navigation"
+msgstr "Điều hướng gia đình"
+
+#: 
+msgid "Feb"
+msgstr "Th2"
+
+#: 
+msgid "File Integrity:"
+msgstr "Tính toàn vẹn của tệp:"
+
+#: 
+msgid "Filtering"
+msgstr "Đang lọc"
+
+#: 
+msgid "Finance"
+msgstr "Tài chính"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "Bảng quản lý tài chính"
+
+#: 
+msgid "Force Import"
+msgstr "Buộc nhập dữ liệu"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "Buộc nhập sẽ thử lại và có thể tạo dữ liệu trùng lặp."
+
+#: 
+msgid "Fund Allocation"
+msgstr "Phân bổ quỹ"
+
+#: 
+msgid "Generate"
+msgstr "Tạo"
+
+#: 
+msgid "Generate Reports"
+msgstr "Tạo báo cáo"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Tạo báo cáo thuế"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "Tạo báo cáo dâng hiến hàng năm."
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "Tạo báo cáo dâng hiến khấu trừ thuế hàng năm."
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "Tạo báo cáo chi tiết cho các khoản gửi."
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "Tạo thư nhắc nhở cho các gia đình chưa hoàn thành lời hứa."
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "Tạo báo cáo thuế, theo dõi lời hứa và phân tích tài chính."
+
+#: 
+msgid "Giving funds and categories"
+msgstr "Các quỹ và danh mục dâng hiến"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS chưa được cấu hình"
+
+#: 
+msgid "ID"
+msgstr "ID"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "Xác định các thành viên không dâng hiến trong một khoảng thời gian."
+
+#: 
+msgid "Import failed"
+msgstr "Nhập dữ liệu thất bại"
+
+#: 
+msgid "Import from CSV files"
+msgstr "Nhập từ tệp CSV"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "Nhập mẫu gia đình, người và nhóm để trải nghiệm."
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "Cài đặt chứng chỉ TLS/SSL để bảo mật tốt hơn"
+
+#: 
+msgid "Jan"
+msgstr "Th1"
+
+#: 
+msgid "Jr., Sr."
+msgstr "Jr., Sr."
+
+#: 
+msgid "Jul"
+msgstr "Th7"
+
+#: 
+msgid "Jun"
+msgstr "Th6"
+
+#: 
+msgid "Latest Note"
+msgstr "Ghi chú mới nhất"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "Hãy thiết lập hệ thống của bạn sẵn sàng sử dụng"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "Danh sách thành viên đủ điều kiện bầu cử."
+
+#: 
+msgid "Location"
+msgstr "Vị trí"
+
+#: 
+msgid "M"
+msgstr "Nam"
+
+#: 
+msgid "Manage Funds"
+msgstr "Quản lý các quỹ"
+
+#: 
+msgid "Manage Users"
+msgstr "Quản lý người dùng"
+
+#: 
+msgid "Mar"
+msgstr "Th3"
+
+#: 
+msgid "Membership Reports"
+msgstr "Báo cáo thành viên"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "Thiếu các khóa bí mật (Secret Keys)"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "Hầu hết các báo cáo có thể xuất ra PDF hoặc CSV."
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "Ông, Bà, Ts."
+
+#: 
+msgid "Name & Identity"
+msgstr "Tên & Định danh"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "Khoản gửi tiền mới sẽ được tạo"
+
+#: 
+msgid "New Payment"
+msgstr "Khoản thanh toán mới"
+
+#: 
+msgid "New Pledge"
+msgstr "Lời hứa dâng hiến mới"
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "7 ngày tới và 7 ngày qua"
+
+#: 
+msgid "No Active Deposit"
+msgstr "Không có khoản gửi tiền nào đang hoạt động"
+
+#: 
+msgid "No active funds configured."
+msgstr "Chưa có quỹ hoạt động nào được cấu hình."
+
+#: 
+msgid "No deposits found."
+msgstr "Không tìm thấy khoản gửi tiền nào."
+
+#: 
+msgid "No format"
+msgstr "Không có định dạng"
+
+#: 
+msgid "Nov"
+msgstr "Th11"
+
+#: 
+msgid "Oct"
+msgstr "Th10"
+
+#: 
+msgid "Open"
+msgstr "Mở"
+
+#: 
+msgid "Open Deposits:"
+msgstr "Các lần gửi tiền đang mở:"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "Tổ chức, múi giờ, email"
+
+#: 
+msgid "Organizational structure"
+msgstr "Cơ cấu tổ chức"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "Các tệp mồ côi:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
+msgid "Payment"
+msgstr "Thanh toán"
+
+#: 
+msgid "Pledge Reports"
+msgstr "Báo cáo lời hứa dâng hiến"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "In hoặc gửi email báo cáo dâng hiến hàng năm cho tất cả người dâng."
+
+#: 
+msgid "Quick Actions"
+msgstr "Thao tác nhanh"
+
+#: 
+msgid "Quick Start"
+msgstr "Bắt đầu nhanh"
+
+#: 
+msgid "Recent Deposits"
+msgstr "Các lần gửi tiền gần đây"
+
+#: 
+msgid "Recording a Payment"
+msgstr "Ghi nhận một khoản thanh toán"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "Ghi nhận một lời hứa dâng hiến"
+
+#: 
+msgid "Report Tips"
+msgstr "Mẹo báo cáo"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "Báo cáo liên quan đến quyền bầu cử và quản trị tổ chức."
+
+#: 
+msgid "Reset"
+msgstr "Đặt lại"
+
+#: 
+msgid "Restore"
+msgstr "Khôi phục"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "Khôi phục từ tệp sao lưu. Sẽ xóa dữ liệu hiện có."
+
+#: 
+msgid "Review Donation Funds"
+msgstr "Xem lại các quỹ quyên góp"
+
+#: 
+msgid "SMTP server settings are not configured"
+msgstr "Cài đặt máy chủ SMTP chưa được cấu hình"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "Lưu và Thêm gia đình mới"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Thiếu các khóa bí mật trong file Config.php"
+
+#: 
+msgid "Sep"
+msgstr "Th9"
+
+#: 
+msgid "Server error"
+msgstr "Lỗi máy chủ"
+
+#: 
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "Đã lưu cài đặt thành công"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "Các tác vụ thiết lập:"
+
+#: 
+msgid "Social Media"
+msgstr "Mạng xã hội"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "Một số điều kiện tiên quyết của ứng dụng chưa được đáp ứng"
+
+#: 
+msgid "State (Other)"
+msgstr "Tỉnh/Thành phố (Khác)"
+
+#: 
+msgid "Status:"
+msgstr "Trạng thái:"
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "Tóm tắt lời hứa so với thanh toán theo quỹ."
+
+#: 
+msgid "System Configuration:"
+msgstr "Cấu hình hệ thống:"
+
+#: 
+msgid "System Health"
+msgstr "Sức khỏe hệ thống"
+
+#: 
+msgid "System Info"
+msgstr "Thông tin hệ thống"
+
+#: 
+msgid "Tax & Giving Reports"
+msgstr "Báo cáo Thuế & Dâng hiến"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "Ngôn từ báo cáo thuế"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "Báo cáo thuế (Báo cáo dâng hiến)"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "Danh mục kiểm tra báo cáo năm thuế"
+
+#: 
+msgid "Today"
+msgstr "Hôm nay"
+
+#: 
+msgid "Total"
+msgstr "Tổng cộng"
+
+#: 
+msgid "Total Amount"
+msgstr "Tổng số tiền"
+
+#: 
+msgid "Total Deposits:"
+msgstr "Tổng số lần gửi tiền:"
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "Theo dõi lời hứa và tiến độ thanh toán cho các chiến dịch."
+
+#: 
+msgid "Type:"
+msgstr "Loại:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "Điều kiện tiên quyết chưa đáp ứng"
+
+#: 
+msgid "Update Church Name"
+msgstr "Cập nhật tên Giáo hội"
+
+#: 
+msgid "Upgrade"
+msgstr "Nâng cấp"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "Sử dụng bộ lọc để tạo báo cáo cho các nhóm người dâng cụ thể."
+
+#: 
+msgid "User accounts and roles"
+msgstr "Tài khoản người dùng và vai trò"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "Người dùng phải là Quản trị viên hoặc có quyền Tài chính"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Xác minh tên, địa chỉ và thông tin liên hệ trên báo cáo thuế."
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "Xác minh tên quỹ và mô tả là chính xác."
+
+#: 
+msgid "Version:"
+msgstr "Phiên bản:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "Chào mừng đến với ChurchCRM"
+
+#: 
+msgid "YTD Payments"
+msgstr "Thanh toán từ đầu năm đến nay"
+
+#: 
+msgid "YTD Pledges"
+msgstr "Lời hứa từ đầu năm đến nay"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "Bạn có thể tạo các thành viên ngay bây giờ hoặc thêm sau."
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "Năm tài chính của bạn bắt đầu vào tháng"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "Mã bưu điện"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "Yêu cầu phần mở rộng ZipArchive để nâng cấp"
+
+#: 
+msgid "active"
+msgstr "đang hoạt động"
+
+#: 
+msgid "ago"
+msgstr "trước"
+
+#: 
+msgid "day"
+msgstr "ngày"
+
+#: 
+msgid "days"
+msgstr "ngày"
+
+#: 
+msgid "found"
+msgstr "tìm thấy"
+
+#: 
+msgid "in"
+msgstr "trong"
+
+#: 
+msgid "issues"
+msgstr "vấn đề"
+
+#: 
+msgid "open"
+msgstr "đang mở"
+
+#: 
+msgid "years"
+msgstr "năm"
+
+#: 
+msgid "yes"
+msgstr "có"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(Nhập tỉnh/thành phố cho các quốc gia không có danh sách sẵn)"
+
+#: 
+msgid "Available"
+msgstr "Có sẵn"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "Cấu hình URL cơ sở không hợp lệ. Vui lòng kiểm tra file Config.php."
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "URL cơ sở chưa được cấu hình trong Config.php"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "Các ngôn ngữ được ChurchCRM hỗ trợ"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "Kết nối với máy chủ của bạn qua SSH, FTP hoặc bảng điều khiển lưu trữ"
+
+#: 
+msgid "Contact"
+msgstr "Liên hệ"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "Lỗi cấu hình nghiêm trọng"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "Giá trị $URL[0] hiện tại:"
+
+#: 
+msgid "Custom port:"
+msgstr "Cổng tùy chỉnh:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "Kết thúc bằng một <strong>dấu gạch chéo</strong> (/)"
+
+#: 
+msgid "Error:"
+msgstr "Lỗi:"
+
+#: 
+msgid "Find the line:"
+msgstr "Tìm dòng:"
+
+#: 
+msgid "Group Memberships"
+msgstr "Thành viên nhóm"
+
+#: 
+msgid "How to Fix:"
+msgstr "Cách khắc phục:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "Tham gia cộng đồng ChurchCRM."
+
+#: 
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+#: 
+msgid "Local development:"
+msgstr "Phát triển cục bộ:"
+
+#: 
+msgid "Locale Support"
+msgstr "Hỗ trợ ngôn ngữ địa phương"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "Vị trí & Thông tin liên hệ"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "Di chuyển đến thư mục cài đặt ChurchCRM của bạn"
+
+#: 
+msgid "New to"
+msgstr "Mới đối với"
+
+#: 
+msgid "No locales configured"
+msgstr "Chưa có ngôn ngữ nào được cấu hình"
+
+#: 
+msgid "Not Available"
+msgstr "Không khả dụng"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "Mở tệp này bằng trình soạn thảo văn bản:"
+
+#: 
+msgid "Register Now"
+msgstr "Đăng ký ngay"
+
+#: 
+msgid "Register Your Church"
+msgstr "Đăng ký Giáo hội của bạn"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "Lưu tệp và tải lại trang này"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "Đặt true để tắt nhập địa chỉ cá nhân cho những người không thuộc gia đình."
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "Bắt đầu bằng <strong>http://</strong> hoặc <strong>https://</strong>"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "Cài đặt trong thư mục con:"
+
+#: 
+msgid "System Locale Support"
+msgstr "Hỗ trợ ngôn ngữ hệ thống"
+
+#: 
+msgid "System Support"
+msgstr "Hỗ trợ hệ thống"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URL không chứa tên máy chủ hợp lệ"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "Tên máy chủ URL không hợp lệ"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URL không đúng định dạng"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URL phải kết thúc bằng dấu gạch chéo (/)"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URL phải bắt đầu bằng http:// hoặc https://"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "Không thể phát hiện ngôn ngữ hệ thống"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "Không thể xác định các ngôn ngữ có sẵn"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "Không thể tải thông tin ngôn ngữ"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "Không thể tải danh sách tỉnh/thành."
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "Cập nhật thành một URL hợp lệ mà:"
+
+#: 
+msgid "Valid Examples:"
+msgstr "Các ví dụ hợp lệ:"
+
+#: 
+msgid "View Logs"
+msgstr "Xem Nhật ký"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "Xem và quản lý các tệp nhật ký hệ thống để gỡ lỗi."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "Bạn phải nhập Họ."
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "Sự riêng tư của bạn rất quan trọng. Chúng tôi không bao giờ chia sẻ thông tin với bên thứ ba."
+
+#: 
+msgid "Additional Information"
+msgstr "Thông tin bổ sung"
+
+#: 
+msgid "All information is correct"
+msgstr "Mọi thông tin đã chính xác"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "Giao cơ hội (phụng vụ/công tác)"
+
+#: 
+msgid "Assign Property"
+msgstr "Gán thuộc tính"
+
+#: 
+msgid "Choose a property..."
+msgstr "Chọn một thuộc tính..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "Chọn cơ hội..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "Xác nhận thông tin gia đình"
+
+#: 
+msgid "Confirm family information"
+msgstr "Xác nhận thông tin gia đình"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "Thông tin liên hệ & cá nhân"
+
+#: 
+msgid "Copied!"
+msgstr "Đã sao chép!"
+
+#: 
+msgid "Edit Role"
+msgstr "Sửa vai trò"
+
+#: 
+msgid "Edited"
+msgstr "Đã chỉnh sửa"
+
+#: 
+msgid "Email PDF"
+msgstr "Gửi PDF qua email"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "Sao chép URL thất bại"
+
+#: 
+msgid "ID:"
+msgstr "ID:"
+
+#: 
+msgid "Newsletter"
+msgstr "Bản tin/Thông báo"
+
+#: 
+msgid "No assigned family"
+msgstr "Chưa được gán gia đình"
+
+#: 
+msgid "Open in New Tab"
+msgstr "Mở trong thẻ mới"
+
+#: 
+msgid "Personal"
+msgstr "Cá nhân"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "Vui lòng xác nhận thông tin gia đình của bạn:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "Vui lòng cập nhật hồ sơ của chúng tôi với các bản sửa lỗi"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "Cung cấp bất kỳ sửa đổi hoặc thông tin bổ sung nào tại đây..."
+
+#: 
+msgid "Remove Property"
+msgstr "Xóa thuộc tính"
+
+#: 
+msgid "Select Opportunities"
+msgstr "Chọn các cơ hội"
+
+#: 
+msgid "Select Property"
+msgstr "Chọn thuộc tính"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "Chia sẻ URL này với các thành viên gia đình để xác minh thông tin"
+
+#: 
+msgid "Submit Verification"
+msgstr "Gửi xác nhận"
+
+#: 
+msgid "Thank You!"
+msgstr "Xin cảm ơn!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "Bản dịch chưa hoàn thành"
+
+#: 
+msgid "Visit Our Website"
+msgstr "Truy cập trang web của chúng tôi"
+
+#: 
+msgid "Volunteer"
+msgstr "Tình nguyện viên/Người phục vụ"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "Lỗi khi xử lý xác minh."
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "Yêu cầu xác minh của bạn đã được nhận. Cảm ơn bạn."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "Đã xảy ra lỗi. Vui lòng liên hệ quản trị viên."
+
+#: 
+msgid "Backup failed"
+msgstr "Sao lưu thất bại"
+
+#: 
+msgid "Database reset failed"
+msgstr "Đặt lại CSDL thất bại"
+
+#: 
+msgid "Database restore failed"
+msgstr "Khôi phục CSDL thất bại"
+
+#: 
+msgid "Demo data import failed"
+msgstr "Nhập dữ liệu mẫu thất bại"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "Dữ liệu mẫu chỉ khả dụng khi mới cài đặt."
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "Dữ liệu mẫu đã được tải thành công"
+
+#: 
+msgid "Download failed"
+msgstr "Tải xuống thất bại"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "Áp dụng nâng cấp thất bại"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "Xóa các tệp mồ côi thất bại"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "Tải phiên bản mới nhất thất bại"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "Làm mới thông tin nâng cấp thất bại"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "Tải ảnh gia đình lên thất bại"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "Tải ảnh cá nhân lên thất bại"
+
+#: 
+msgid "Remote backup failed"
+msgstr "Sao lưu từ xa thất bại"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "Sao lưu WebDAV chưa được cấu hình đúng."
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA Đã bật"
+
+#: 
+msgid "Active Users"
+msgstr "Người dùng đang hoạt động"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "Xuất dữ liệu ChMeetings"
+
+#: 
+msgid "Delete User"
+msgstr "Xóa người dùng"
+
+#: 
+msgid "Disable 2FA"
+msgstr "Tắt 2FA"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "Xuất tất cả dữ liệu người dùng theo định dạng ChMeetings."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "Xuất sang ChMeetings CSV"
+
+#: 
+msgid "Exporting..."
+msgstr "Đang xuất..."
+
+#: 
+msgid "Family Listing"
+msgstr "Danh sách gia đình"
+
+#: 
+msgid "Invalid request data"
+msgstr "Dữ liệu yêu cầu không hợp lệ"
+
+#: 
+msgid "Invalid status"
+msgstr "Trạng thái không hợp lệ"
+
+#: 
+msgid "Locked Users"
+msgstr "Người dùng bị khóa"
+
+#: 
+msgid "Person Listing"
+msgstr "Danh sách cá nhân"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "Người dùng đã được xóa khỏi giỏ hàng"
+
+#: 
+msgid "Quick Settings"
+msgstr "Cài đặt nhanh"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "Đặt lại các lần đăng nhập lỗi"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "Đặt lại mật khẩu qua Email"
+
+#: 
+msgid "Set Active"
+msgstr "Đặt trạng thái Hoạt động"
+
+#: 
+msgid "Set Inactive"
+msgstr "Đặt trạng thái Không hoạt động"
+
+#: 
+msgid "Show"
+msgstr "Hiển thị"
+
+#: 
+msgid "Showing"
+msgstr "Đang hiển thị"
+
+#: 
+msgid "Total Users"
+msgstr "Tổng số người dùng"
+
+#: 
+msgid "User Management"
+msgstr "Quản lý thành viên"
+
+#: 
+msgid "View Details"
+msgstr "Xem chi tiết"
+
+#: 
+msgid "entries"
+msgstr "mục"
+
+#: 
+msgid "of"
+msgstr "trên"
+
+#: 
+msgid "total"
+msgstr "tổng số"
+
+#: 
+msgid "Code incomplete"
+msgstr "Mã chưa đầy đủ"
+
+#: 
+msgid "Code is invalid"
+msgstr "Mã không hợp lệ"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "Khóa mã hóa để lưu trữ các khóa bí mật 2FA"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "Xác thực 2 lớp (2FA)"
+
+#: 
+msgid "Validation pending"
+msgstr "Đang chờ xác thực"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "phải được cấu hình với một khóa mã hóa"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "Đã thêm %d người vào giỏ hàng."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "Đã thêm thành công %d người vào Gia đình được chọn."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "Đã thêm thành công %d người vào Nhóm được chọn."
+
+#: 
+msgid "A "
+msgstr "Một "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "Các thay đổi Tên và Mô tả phải được lưu bằng cách nhấp vào 'Lưu Thay đổi'."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "Bạn có chắc chắn muốn xóa"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "Thay đổi tên trường sẽ bị mất nếu bạn không 'Lưu Thay đổi'!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "Bằng cách xóa trường này, bạn sẽ mất vĩnh viễn tất cả dữ liệu gia đình liên quan!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "Bằng cách xóa trường này, bạn sẽ mất vĩnh viễn tất cả dữ liệu cá nhân liên quan!"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "Thay đổi chưa được lưu! Vui lòng sửa và thử lại!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "Xác nhận xóa thuộc tính"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "Xác nhận xóa cơ hội tình nguyện"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "Xác nhận xóa"
+
+#: 
+msgid "Existing"
+msgstr "Hiện có"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "Các trường gia đình tùy chỉnh hiện có"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "Các trường cá nhân tùy chỉnh hiện có"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "Các cơ hội tình nguyện hiện có"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "Trường đã được xóa thành công"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "Mã thông báo CSRF không hợp lệ"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "Các trường hoặc lựa chọn không hợp lệ."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "Mục đã được xóa thành công"
+
+#: 
+msgid "Move down"
+msgstr "Di chuyển xuống"
+
+#: 
+msgid "Move up"
+msgstr "Di chuyển lên"
+
+#: 
+msgid "Opportunity"
+msgstr "Cơ hội"
+
+#: 
+msgid "Order"
+msgstr "Thứ tự"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "Các tệp PDF đã được gửi email thành công đến %s gia đình."
+
+#: 
+msgid "Percentage"
+msgstr "Tỷ lệ phần trăm"
+
+#: 
+msgid "Person Properties"
+msgstr "Thuộc tính cá nhân"
+
+#: 
+msgid "Property Type"
+msgstr "Loại thuộc tính"
+
+#: 
+msgid "Property to Delete"
+msgstr "Thuộc tính cần xóa"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "Có những người được giao cho cơ hội tình nguyện này. Việc xóa sẽ hủy phân công:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "Điều này sẽ xóa nó khỏi tất cả những người hiện đang được gán."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "Cơ hội tình nguyện"
+
+#: 
+msgid "Warning:"
+msgstr "Cảnh báo:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "Có, xóa cơ hội này"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "Các truy vấn mà người dùng phải có quyền tài chính mới được sử dụng"
+
+#: 
+msgid "Fund(s)"
+msgstr "Quỹ"
+
+#: 
+msgid "Password reset for"
+msgstr "Đặt lại mật khẩu cho"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "Tiếng Tây Ban Nha - Argentina"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "Tiếng Tây Ban Nha - Colombia"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "Tiếng Tây Ban Nha - El Salvador"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "Tiếng Tây Ban Nha - Mexico"
 

@@ -1,0 +1,84 @@
+{
+  "name": "ChurchCRM Development",
+  "image": "mcr.microsoft.com/devcontainers/php:8.2-bullseye",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "shutdownAction": "none",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "version": "22"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "ppa": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/git-lfs:1": {},
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "formulahendry.auto-rename-tag",
+        "ms-vscode.vscode-json",
+        "ms-vscode-remote.remote-containers",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "bmewburn.vscode-intelephense-client",
+        "xdebug.php-debug",
+        "ms-playwright.playwright"
+      ],
+      "settings": {
+        "php.suggest.basic": false,
+        "php.validate.enable": true,
+        "php.validate.executablePath": "/usr/local/bin/php",
+        "intelephense.files.maxSize": 1000000,
+        "typescript.preferences.quoteStyle": "single",
+        "editor.formatOnSave": true,
+        "files.associations": {
+          "*.php": "php"
+        },
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  "forwardPorts": [80, 3306, 8025, 8088],
+  "portsAttributes": {
+    "80": {
+      "label": "ChurchCRM Web Server",
+      "onAutoForward": "notify"
+    },
+    "3306": {
+      "label": "MariaDB Database"
+    },
+    "8025": {
+      "label": "MailHog UI"
+    },
+    "8088": {
+      "label": "Adminer Database UI"
+    }
+  },
+
+  "postCreateCommand": {
+    "install-php-extensions": "apt-get update && apt-get install -y libzip-dev libpng-dev libfreetype6-dev libjpeg62-turbo-dev libicu-dev libsodium-dev && docker-php-ext-install bcmath curl exif gd gettext intl json mbstring mysqli opcache pdo_mysql phar soap sodium xml zip",
+    "setup": "bash .devcontainer/init.sh"
+  },
+
+  "postStartCommand": "bash -c 'sleep 2 && code --reuse-window .devcontainer/README.md' &",
+
+  "containerEnv": {
+    "COMPOSER_ALLOW_SUPERUSER": "1",
+    "NODE_ENV": "development"
+  },
+
+  "remoteUser": "vscode"
+}

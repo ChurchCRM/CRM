@@ -1,32 +1,18 @@
 <?php
-use ChurchCRM\Service\DepositService;
-use ChurchCRM\Slim\SlimUtils;
+
+require_once __DIR__ . '/../Include/LoadConfigs.php';
+
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
-use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
-use ChurchCRM\Service\FinancialService;
-use ChurchCRM\Service\GroupService;
-use ChurchCRM\Service\PersonService;
-use ChurchCRM\Service\SystemService;
+use ChurchCRM\Slim\Middleware\VersionMiddleware;
+use ChurchCRM\Slim\SlimUtils;
 use Slim\Factory\AppFactory;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-require_once '../Include/Config.php';
-require_once __DIR__ . '/../vendor/autoload.php';
-
-// Use SlimUtils to get base path, default to /api
+// Get base path by combining $sRootPath from Config.php with /api endpoint
+// Examples: '' + '/api' = '/api' (root install)
+//           '/churchcrm' + '/api' = '/churchcrm/api' (subdirectory install)
 $basePath = SlimUtils::getBasePath('/api');
 
-
-$container = new ContainerBuilder();
-$container->set('PersonService', new PersonService());
-$container->set('GroupService', new GroupService());
-$container->set('FinancialService', new FinancialService());
-$container->set('SystemService', new SystemService());
-$container->set('DepositService', new DepositService());
-$container->compile();
-
-AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
@@ -39,9 +25,9 @@ SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
-$app->add(VersionMiddleware::class);
-$app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
+$app->add(VersionMiddleware::class);
 
 // Group routes for better organization
 require __DIR__ . '/routes/calendar/events.php';
@@ -60,14 +46,10 @@ require __DIR__ . '/routes/public/public-calendar.php';
 require __DIR__ . '/routes/public/public-user.php';
 require __DIR__ . '/routes/public/public-register.php';
 require __DIR__ . '/routes/system/system.php';
-require __DIR__ . '/routes/system/system-config.php';
 require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-database.php';
 require __DIR__ . '/routes/system/system-debug.php';
 require __DIR__ . '/routes/system/system-issues.php';
-require __DIR__ . '/routes/system/system-logs.php';
-require __DIR__ . '/routes/system/system-register.php';
-require __DIR__ . '/routes/system/system-upgrade.php';
 require __DIR__ . '/routes/system/system-custom-menu.php';
 require __DIR__ . '/routes/system/system-locale.php';
 require __DIR__ . '/routes/cart.php';
@@ -77,7 +59,6 @@ require __DIR__ . '/routes/kiosks.php';
 require __DIR__ . '/routes/email/mailchimp.php';
 require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/users/user.php';
-require __DIR__ . '/routes/users/user-admin.php';
 require __DIR__ . '/routes/users/user-current.php';
 require __DIR__ . '/routes/users/user-settings.php';
 

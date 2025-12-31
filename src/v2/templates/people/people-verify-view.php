@@ -3,7 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext('People Verify Dashboard');
-include SystemURLs::getDocumentRoot() . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="card">
@@ -11,8 +11,14 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><?= gettext('Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app"><i class="fa-solid fa-file-pdf"></i><?= gettext('Download family letters') ?></a>
-        <div class="btn btn-app" id="verifyEmail"><i class="fa  fa-envelope"></i><?= gettext('Send family email') ?></div>
+        <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app bg-danger">
+            <i class="fa-solid fa-file-pdf fa-3x"></i><br>
+            <?= gettext('Download family letters') ?>
+        </a>
+        <button type="button" class="btn btn-app bg-primary" id="verifyEmail">
+            <i class="fa-solid fa-envelope fa-3x"></i><br>
+            <?= gettext('Send family email') ?>
+        </button>
     </div>
 </div>
 
@@ -51,7 +57,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
+    function initializePeopleVerify() {
 
         $("#verifyEmail").click(function() {
             bootbox.confirm({
@@ -156,6 +162,11 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
           $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
         $("#families-pending").DataTable(dataTableConfig);
+    }
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializePeopleVerify);
     });
 </script>
 <?php

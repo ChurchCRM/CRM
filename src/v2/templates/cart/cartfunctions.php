@@ -22,7 +22,7 @@ use ChurchCRM\dto\SystemURLs;
     <?php }
     ?>
     <a href="<?= SystemURLs::getRootPath() . "/CartToEvent.php"?>" class="btn btn-app bg-info"><i
-        class="fa-solid fa-ticket-alt fa-3x"></i><br><?= gettext('Empty Cart to Event') ?></a>
+        class="fa-solid fa-ticket-alt fa-3x"></i><br><?= gettext('Check In to Event') ?></a>
 
     <?php if (AuthenticationManager::getCurrentUser()->isCSVExport()) {
         ?>
@@ -38,12 +38,25 @@ use ChurchCRM\dto\SystemURLs;
 
         if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
             // Display link
-            echo "<a href='mailto:" . $sEmailLink . "' class='btn btn-app bg-info'><i class='fa fa-paper-plane fa-3x'></i><br>" . gettext('Email Cart') . '</a>';
-            echo "<a href='mailto:?bcc=" . $sEmailLink . "' class='btn btn-app bg-secondary'><i class='fa-regular fa-paper-plane fa-3x'></i><br>" . gettext('Email (BCC)') . '</a>';
-
-            // Display link
-            echo '<a href="javascript:void(0)" onclick="allPhonesCommaD()" class="btn btn-app bg-success"><i class="fa-solid fa-mobile-phone fa-3x"></i><br>' . gettext("Text Cart") . '</a>';
-            echo '<script nonce="' . SystemURLs::getCSPNonce() . '">function allPhonesCommaD() {prompt("Press CTRL + C to copy all group members\' phone numbers", "' . $sPhoneLink . '")};</script>';
+            ?>
+            <a href="mailto:<?= $sEmailLink ?>" class="btn btn-app bg-info">
+                <i class="fa-solid fa-paper-plane fa-3x"></i><br>
+                <?= gettext('Email Cart') ?>
+            </a>
+            <a href="mailto:?bcc=<?= $sEmailLink ?>" class="btn btn-app bg-secondary">
+                <i class="fa-solid fa-user-secret fa-3x"></i><br>
+                <?= gettext('Email (BCC)') ?>
+            </a>
+            <a href="javascript:void(0)" onclick="allPhonesCommaD()" class="btn btn-app bg-success">
+                <i class="fa-solid fa-mobile-phone fa-3x"></i><br>
+                <?= gettext("Text Cart") ?>
+            </a>
+            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                function allPhonesCommaD() {
+                    prompt("Press CTRL + C to copy all group members' phone numbers", "<?= $sPhoneLink ?>");
+                };
+            </script>
+            <?php
         }
 
         ?>

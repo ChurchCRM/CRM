@@ -2,8 +2,8 @@
 
 namespace ChurchCRM\Reports;
 
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID']);
 $aGrp = explode(',', $iGroupID);
@@ -48,6 +49,12 @@ for ($i = 0; $i < $nGrps; $i++) {
     }
 
     $group = GroupQuery::create()->findOneById($iGroupID);
+    
+    // Skip if group not found
+    if ($group === null) {
+        LoggerUtils::getAppLogger()->warning("ClassList: Group with ID $iGroupID not found");
+        continue;
+    }
 
     $nameX = 20;
     $birthdayX = 70;
@@ -92,21 +99,20 @@ for ($i = 0; $i < $nGrps; $i++) {
         $homePhone = '';
         if (!empty($family)) {
             $homePhone = $family->getHomePhone();
-
-            if (empty($homePhone)) {
-                $homePhone = $family->getCellPhone();
-            }
-
-            if (empty($homePhone)) {
-                $homePhone = $family->getWorkPhone();
-            }
         }
 
         $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($groupRoleMembership->getRoleId())->findOne();
+        
+        // Skip if role not found
+        if ($groupRole === null) {
+            LoggerUtils::getAppLogger()->warning("ClassList: Role not found for group " . $group->getName() . " and role ID " . $groupRoleMembership->getRoleId());
+            continue;
+        }
+        
         $lst_OptionName = $groupRole->getOptionName();
 
         if ($lst_OptionName === 'Teacher') {
-            $phone = $pdf->stripPhone($homePhone);
+            $phone = $homePhone;
             if ($teacherCount >= $teachersThatFit) {
                 if (!$bFirstTeacher2) {
                     $teacherString2 .= ', ';
@@ -121,8 +127,8 @@ for ($i = 0; $i < $nGrps; $i++) {
                 $bFirstTeacher1 = false;
             }
             $teacherCount++;
-        } elseif ($lst_OptionName == gettext('Liaison')) {
-            $liaisonString .= gettext('Liaison') . ':' . $person->getFullName() . ' ' . $phone . ' ';
+            } elseif ($lst_OptionName == gettext('Liaison')) {
+                $liaisonString .= gettext('Liaison') . ': ' . $person->getFullName() . ' ' . $phone . ' ';
         } elseif ($lst_OptionName === 'Student') {
             $elt = ['perID' => $groupRoleMembership->getPersonId()];
 
@@ -164,7 +170,8 @@ for ($i = 0; $i < $nGrps; $i++) {
         if ($studentName != $prevStudentName) {
             $pdf->writeAt($nameX, $y, $studentName);
 
-            $imgName = $person->getPhoto()->getThumbnailURI();
+            // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
+            $imgName = $person->getPhoto()->getPhotoURI();
 
             $birthdayStr = change_date_for_place_holder($person->getBirthYear() . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
             $pdf->writeAt($birthdayX, $y, $birthdayStr);
@@ -192,7 +199,7 @@ for ($i = 0; $i < $nGrps; $i++) {
                     $nw = $imageHeight;
                     $nh = $imageHeight;
 
-                    $pdf->Image($imgName, $nameX - $nw, $y, $nw, $nh, 'JPG');
+                    $pdf->Image($imgName, $nameX - $nw, $y, $nw, $nh, 'PNG');
                 }
 
                 $nameX += 2;
@@ -222,19 +229,11 @@ for ($i = 0; $i < $nGrps; $i++) {
             $parentsStr = $pdf->makeSalutation($family->getId());
 
             $phone = $family->getHomePhone();
-
-            if (empty($phone)) {
-                $phone = $family->getCellPhone();
-            }
-
-            if (empty($phone)) {
-                $phone = $family->getWorkPhone();
-            }
         }
 
         $pdf->writeAt($parentsX, $y, $parentsStr);
 
-        $pdf->writeAt($phoneX, $y, $pdf->stripPhone($phone));
+        $pdf->writeAt($phoneX, $y, $phone);
         $y += $yIncrement;
 
         $addrStr = '';
@@ -260,7 +259,7 @@ for ($i = 0; $i < $nGrps; $i++) {
     $pdf->writeAt($phoneX - 7, $y + 5, FormatDate(date('Y-m-d')));
 }
 
-if ((int) SystemConfig::getValue('iPDFOutputType') === 1) {
+if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
     $pdf->Output('ClassList' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf', 'D');
 } else {
     $pdf->Output();

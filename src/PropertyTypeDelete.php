@@ -1,16 +1,16 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have property and classification editing permission
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
 
-$sPageTitle = gettext('Property Type Delete Confirmation');
+$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Property Type');
 
 // Get the PersonID from the querystring
 $iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
@@ -38,7 +38,7 @@ $rsProperty = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsProperty));
 $sType = '';
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 if (isset($_GET['Warn'])) {
     ?>
@@ -59,4 +59,4 @@ if (isset($_GET['Warn'])) {
 
 </p>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

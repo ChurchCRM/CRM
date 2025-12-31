@@ -64,35 +64,6 @@ msgid "Backup Database"
 msgstr "Backup Database"
 
 #: 
-msgid "This tool will assist you in manually backing up the ChurchCRM database."
-msgstr "This tool will assist you in manually backing up the ChurchCRM database."
-
-#. yep fixed
-#: 
-msgid "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-msgstr "You should make a manual backup at least once a week unless you already have a regular backup procedure for your systems."
-
-#: 
-msgid "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-msgstr "After you download the backup file, you should make two copies. Put one of them in a fire-proof safe on-site and the other in a safe location off-site."
-
-#: 
-msgid "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others"
-msgstr "If you are concerned about confidentiality of data stored in the ChurchCRM database, you should encrypt the backup data if it will be stored somewhere potentially accessible to others."
-
-#: 
-msgid "Select archive type"
-msgstr "Select archive type"
-
-#: 
-msgid "Encrypt backup file with a password?"
-msgstr "Encrypt backup file with a password?"
-
-#: 
-msgid "Re-type Password"
-msgstr "Re-type password"
-
-#: 
 #, fuzzy
 msgid "Zip"
 msgstr "Postcode"
@@ -102,15 +73,12 @@ msgid "Use Ctrl Key to select multiple"
 msgstr "Use Ctrl Key (Mac: ⌘ ) to select multiple"
 
 #: 
-msgid "CheckIn"
-msgstr "Check In"
-
-#: 
 msgid "CheckOut"
 msgstr "Check Out"
 
 #: 
-msgid "Load Authorized Transactions"
+#, fuzzy
+msgid "Load Authorized"
 msgstr "Load Authorised Transactions"
 
 #: 
@@ -146,10 +114,6 @@ msgid "Localization"
 msgstr "Localisation"
 
 #: 
-msgid "Cell phone"
-msgstr "Mobile phone"
-
-#: 
 msgid "Internationalization (I18n) support"
 msgstr "Internationalisation (I18n) support"
 
@@ -166,11 +130,6 @@ msgstr "Postcode"
 #: 
 msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
 msgstr "Enter any part of the following: Name, City, State, Postcode, Home Phone, Email, or Work Email."
-
-#. Context: query_qry
-#: 
-msgid "Search by any part of Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Search by any part of Name, City, State, Postcode, Home Phone, Email, or Work Email."
 
 #: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."

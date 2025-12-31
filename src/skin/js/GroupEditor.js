@@ -1,33 +1,25 @@
-$(document).ready(() => {
+function initializeGroupEditor() {
     $(".groupSpecificProperties").click((e) => {
         const groupPropertyAction = e.currentTarget.id;
         if (groupPropertyAction === "enableGroupProps") {
             $("#groupSpecificPropertiesModal").modal("show");
-            $("#gsproperties-label").text(
-                i18next.t("Confirm Enable Group Specific Properties"),
-            );
+            $("#gsproperties-label").text(i18next.t("Confirm Enable Group Specific Properties"));
             $("#groupSpecificPropertiesModal .modal-body span").text(
                 i18next.t(
                     "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor.",
                 ),
             );
-            $("#setgroupSpecificProperties").text(
-                i18next.t("Enable Group Specific Properties"),
-            );
+            $("#setgroupSpecificProperties").text(i18next.t("Enable Group Specific Properties"));
             $("#setgroupSpecificProperties").data("action", 1);
         } else {
             $("#groupSpecificPropertiesModal").modal("show");
-            $("#gsproperties-label").text(
-                i18next.t("Confirm Disable Group Specific Properties"),
-            );
+            $("#gsproperties-label").text(i18next.t("Confirm Disable Group Specific Properties"));
             $("#groupSpecificPropertiesModal .modal-body span").text(
                 i18next.t(
                     "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!",
                 ),
             );
-            $("#setgroupSpecificProperties").text(
-                i18next.t("Disable Group Specific Properties"),
-            );
+            $("#setgroupSpecificProperties").text(i18next.t("Disable Group Specific Properties"));
             $("#setgroupSpecificProperties").data("action", 0);
         }
     });
@@ -45,18 +37,10 @@ $(document).ready(() => {
                 location.reload();
             })
             .fail((xhr, status, error) => {
-                console.error(
-                    "Failed to set group specific property status:",
-                    error,
-                );
-                $.notify(i18next.t("Failed to update properties. Please try again."), {
+                console.error("Failed to set group specific property status:", error);
+                window.CRM.notify(i18next.t("Failed to update properties. Please try again."), {
                     type: "danger",
-                    icon: "fa fa-exclamation-triangle",
                     delay: 5000,
-                    placement: {
-                        from: "top",
-                        align: "right",
-                    },
                 });
             });
     });
@@ -96,14 +80,9 @@ $(document).ready(() => {
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to update group:", error);
-                $.notify(i18next.t("Failed to update group. Please try again."), {
+                window.CRM.notify(i18next.t("Failed to update group. Please try again."), {
                     type: "danger",
-                    icon: "fa fa-exclamation-triangle",
                     delay: 5000,
-                    placement: {
-                        from: "top",
-                        align: "right",
-                    },
                 });
             });
     });
@@ -129,20 +108,16 @@ $(document).ready(() => {
                 dataT.row.add(newRow);
                 dataT.rows().invalidate().draw(true);
                 $("#newRole").val("");
-                $.notify(i18next.t("Role added successfully."), {
+                window.CRM.notify(i18next.t("Role added successfully."), {
                     type: "success",
-                    icon: "fa fa-check",
                     delay: 3000,
-                    placement: { from: "top", align: "right" },
                 });
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to add new role:", error);
-                $.notify(i18next.t("Failed to add role. Please try again."), {
+                window.CRM.notify(i18next.t("Failed to add role. Please try again."), {
                     type: "danger",
-                    icon: "fa fa-exclamation-triangle",
                     delay: 5000,
-                    placement: { from: "top", align: "right" },
                 });
             });
     });
@@ -163,20 +138,16 @@ $(document).ready(() => {
                     defaultRoleID = 1;
                 }
                 dataT.rows().invalidate().draw(true);
-                $.notify(i18next.t("Role deleted successfully."), {
+                window.CRM.notify(i18next.t("Role deleted successfully."), {
                     type: "success",
-                    icon: "fa fa-check",
                     delay: 3000,
-                    placement: { from: "top", align: "right" },
                 });
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to delete role:", error);
-                $.notify(i18next.t("Failed to delete role. Please try again."), {
+                window.CRM.notify(i18next.t("Failed to delete role. Please try again."), {
                     type: "danger",
-                    icon: "fa fa-exclamation-triangle",
                     delay: 5000,
-                    placement: { from: "top", align: "right" },
                 });
             });
     });
@@ -230,20 +201,16 @@ $(document).ready(() => {
         })
             .done((data) => {
                 // Role name updated successfully
-                $.notify(i18next.t("Role name updated."), {
+                window.CRM.notify(i18next.t("Role name updated."), {
                     type: "success",
-                    icon: "fa fa-check",
                     delay: 3000,
-                    placement: { from: "top", align: "right" },
                 });
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to update role name:", error);
-                $.notify(i18next.t("Failed to update role name. Please try again."), {
+                window.CRM.notify(i18next.t("Failed to update role name. Please try again."), {
                     type: "danger",
-                    icon: "fa fa-exclamation-triangle",
                     delay: 5000,
-                    placement: { from: "top", align: "right" },
                 });
             });
     });
@@ -260,20 +227,16 @@ $(document).ready(() => {
             .done((data) => {
                 defaultRoleID = roleID;
                 dataT.rows().invalidate().draw(true);
-                $.notify(i18next.t("Default role updated."), {
+                window.CRM.notify(i18next.t("Default role updated."), {
                     type: "success",
-                    icon: "fa fa-check",
                     delay: 3000,
-                    placement: { from: "top", align: "right" },
                 });
             })
             .fail((xhr, status, error) => {
                 console.error("Failed to set default role:", error);
-                $.notify(i18next.t("Failed to set default role. Please try again."), {
+                window.CRM.notify(i18next.t("Failed to set default role. Please try again."), {
                     type: "danger",
-                    icon: "fa fa-exclamation-triangle",
                     delay: 5000,
-                    placement: { from: "top", align: "right" },
                 });
             });
     });
@@ -287,11 +250,9 @@ $(document).ready(() => {
                 data: "lst_OptionName",
                 render: (data, type, full, meta) => {
                     if (type === "display") {
-                        const isReadOnly =
-                            data === "Student" || data === "Teacher";
-                        const displayValue = isReadOnly
-                            ? i18next.t(data)
-                            : data;
+                        const isReadOnly = data === "Student" || data === "Teacher";
+                        // i18next-disable-next-line
+                        const displayValue = isReadOnly ? i18next.t(data) : data;
                         const readOnlyAttr = isReadOnly ? " readonly" : "";
                         return `<input type="text" class="roleName" id="roleName-${full.lst_OptionID}" value="${displayValue}"${readOnlyAttr}>`;
                     }
@@ -301,6 +262,7 @@ $(document).ready(() => {
             {
                 width: "auto",
                 title: i18next.t("Make Default"),
+                data: null,
                 render: (data, type, full, meta) => {
                     if (full.lst_OptionID == defaultRoleID) {
                         return `<strong><i class="fa-solid fa-check"></i>${i18next.t("Default")}</strong>`;
@@ -332,10 +294,9 @@ $(document).ready(() => {
             {
                 width: "auto",
                 title: i18next.t("Delete"),
+                data: null,
                 render: (data, type, full, meta) => {
-                    const isProtected =
-                        full.lst_OptionName === "Student" ||
-                        full.lst_OptionName === "Teacher";
+                    const isProtected = full.lst_OptionName === "Student" || full.lst_OptionName === "Teacher";
                     const disabledAttr = isProtected ? " disabled" : "";
                     return `<button type="button" id="roleDelete-${full.lst_OptionID}" class="btn btn-danger deleteRole"${disabledAttr}>${i18next.t("Delete")}</button>`;
                 },
@@ -345,6 +306,11 @@ $(document).ready(() => {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
     dataT = $("#groupRoleTable").DataTable(dataTableConfig);
+}
+
+// Wait for locales to load before initializing
+$(document).ready(function () {
+    window.CRM.onLocalesReady(initializeGroupEditor);
 });
 
 function setGroupRoleOrder(groupID, roleID, groupRoleOrder) {

@@ -12,14 +12,14 @@
 // The only library we do not embed is Bootstrap, because it's very big
 @import "external/bootstrap-datepicker/bootstrap-datepicker.standalone.min.css";
 @import "external/bootstrap-daterangepicker/daterangepicker.css";
-@import "external/datatables/datatables.min.css";
+@import "external/datatables/dataTables.bootstrap4.min.css";
+@import "external/datatables/buttons.bootstrap4.min.css";
+@import "external/datatables/responsive.bootstrap4.min.css";
+@import "external/datatables/select.bootstrap4.min.css";
 @import "external/select2/select2.min.css";
 @import "external/adminlte/adminlte.min.css";
-
-// jQuery UI is loaded from CDN in base template, not from local files (missing image assets)
-// @import "external/jquery-ui/jquery-ui.css";
 @import "external/bootstrap-toggle/bootstrap-toggle.css";
-@import "external/jquery.steps/jquery.steps.css";
+@import "external/bs-stepper/bs-stepper.min.css";
 
 // Import ChurchCRM custom styles
 
@@ -30,8 +30,10 @@
 @include meta.load-css("scss/ui-components");
 
 @include meta.load-css("scss/dropdowns");
+@include meta.load-css("scss/events");
 @include meta.load-css("scss/forms");
 @include meta.load-css("scss/tables");
+@include meta.load-css("scss/financial-reports");
 @include meta.load-css("scss/profileImage");
 @include meta.load-css("scss/shortConfig");
 @include meta.load-css("scss/leftNav");
@@ -46,6 +48,8 @@
 @include meta.load-css("scss/systemSettings");
 @include meta.load-css("scss/kiosk");
 @include meta.load-css("scss/groups");
+@include meta.load-css("scss/people-lazy-image-loading");
+@include meta.load-css("scss/finance");
 
 html,
 body {

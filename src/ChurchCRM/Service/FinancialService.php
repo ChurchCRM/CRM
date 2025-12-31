@@ -8,12 +8,16 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\MICRFunctions;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Utils\Functions;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\AuthService;
+use Propel\Runtime\Map\TableMap;
+use Propel\Runtime\Collection\ObjectCollection;
 
 class FinancialService
 {
@@ -54,7 +58,7 @@ class FinancialService
             $newRow['Nondeductible'] = $row->getNondeductible();
             $newRow['Schedule'] = $row->getSchedule();
             $newRow['Method'] = $row->getMethod();
-            $newRow['Comment'] = htmlspecialchars($row->getComment() ?? '', ENT_QUOTES, 'UTF-8');
+            $newRow['Comment'] = InputUtils::sanitizeAndEscapeText($row->getComment() ?? '');
             $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
             $newRow['Date'] = $row->getDate('Y-m-d');
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
@@ -78,7 +82,7 @@ class FinancialService
             throw new \Exception('error in locating family');
         }
         $sSQL = 'SELECT fam_ID, fam_Name FROM family_fam WHERE fam_scanCheck="' . $routeAndAccount . '"';
-        $rsFam = RunQuery($sSQL);
+        $rsFam = Functions::runQuery($sSQL);
         $row = mysqli_fetch_array($rsFam);
         $iCheckNo = $micrObj->findCheckNo($tScanString);
 
@@ -97,20 +101,20 @@ class FinancialService
             $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
             $deposit
                 ->setDate($depositDate)
-                ->setComment(InputUtils::filterString($depositComment))
+                ->setComment(InputUtils::sanitizeText($depositComment))
                 ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setClosed(intval($depositClosed));
             $deposit->save();
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
                 // Delete any failed transactions on this deposit slip now that it is closing
                 $q = 'DELETE FROM pledge_plg WHERE plg_depID = ' . $iDepositSlipID . ' AND plg_PledgeOrPayment="Payment" AND plg_aut_Cleared=0';
-                RunQuery($q);
+                Functions::runQuery($q);
             }
         } else {
             $deposit = new Deposit();
             $deposit
                 ->setDate($depositDate)
-                ->setComment(InputUtils::filterString($depositComment))
+                ->setComment(InputUtils::sanitizeText($depositComment))
                 ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setType($depositType);
             $deposit->save();
@@ -130,7 +134,7 @@ class FinancialService
         }
         // Get deposit total
         $sSQL = "SELECT SUM(plg_amount) AS deposit_total FROM pledge_plg WHERE plg_depID = '$id' AND plg_PledgeOrPayment = 'Payment' " . $sqlClause;
-        $rsDepositTotal = RunQuery($sSQL);
+        $rsDepositTotal = Functions::runQuery($sSQL);
         [$deposit_total] = mysqli_fetch_row($rsDepositTotal);
 
         return $deposit_total;
@@ -192,7 +196,7 @@ class FinancialService
         $sSQL = 'SELECT count(plg_FamID) from pledge_plg
                  WHERE plg_CheckNo = ' . $checkNumber . ' AND
                  plg_FamID = ' . $fam_ID;
-        $rCount = RunQuery($sSQL);
+        $rCount = Functions::runQuery($sSQL);
 
         return mysqli_fetch_array($rCount)[0];
     }
@@ -229,7 +233,7 @@ class FinancialService
             }
             $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
       VALUES ('" . $groupKey . "','" . $payment->DepositID . "','" . $cdom->currencyID . "','" . $cdom->Count . "')";
-            RunQuery($sSQL);
+            Functions::runQuery($sSQL);
             unset($sSQL);
         }
     }
@@ -311,7 +315,7 @@ class FinancialService
         AuthService::requireUserGroupMembership('bFinance');
         $total = 0;
         $sSQL = 'SELECT plg_plgID, plg_FamID, plg_date, plg_fundID, plg_amount, plg_NonDeductible,plg_comment, plg_FYID, plg_method, plg_EditedBy from pledge_plg where plg_GroupKey="' . $GroupKey . '"';
-        $rsKeys = RunQuery($sSQL);
+        $rsKeys = Functions::runQuery($sSQL);
         $payment = new \stdClass();
         $payment->funds = [];
         while ($aRow = mysqli_fetch_array($rsKeys)) {
@@ -377,7 +381,7 @@ class FinancialService
                  where  plg_depID = ' . $depositID . '
                  AND
                  pdem_denominationID = ' . $currencyID;
-        $rscurrencyDenomination = RunQuery($sSQL);
+        $rscurrencyDenomination = Functions::runQuery($sSQL);
 
         return mysqli_fetch_array($rscurrencyDenomination)[0];
     }
@@ -390,7 +394,7 @@ class FinancialService
         $currencies = [];
         // Get the list of Currency denominations
         $sSQL = 'SELECT * FROM currency_denominations_cdem';
-        $rscurrencyDenomination = RunQuery($sSQL);
+        $rscurrencyDenomination = Functions::runQuery($sSQL);
         mysqli_data_seek($rscurrencyDenomination, 0);
         while ($row = mysqli_fetch_array($rscurrencyDenomination)) {
             $currency = new \stdClass();
@@ -413,7 +417,7 @@ class FinancialService
         $funds = [];
         $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
         $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-        $rsFunds = RunQuery($sSQL);
+        $rsFunds = Functions::runQuery($sSQL);
         mysqli_data_seek($rsFunds, 0);
         while ($aRow = mysqli_fetch_array($rsFunds)) {
             $fund = new \stdClass();
@@ -434,10 +438,383 @@ class FinancialService
      */
     public static function formatFiscalYear(int $fyId): string
     {
-        if (SystemConfig::getValue('iFYMonth') === 1) {
+        if (SystemConfig::getIntValue('iFYMonth') === 1) {
             return (string) (1996 + $fyId);
         } else {
             return (1995 + $fyId) . '/' . mb_substr(1996 + $fyId, 2, 2);
         }
+    }
+
+    /**
+     * Get Advanced Deposit Report data using ORM
+     * 
+     * Security: Checks finance permissions before returning data
+     *
+     * @param string $sort Sort order: 'deposit', 'fund', or 'family'
+     * @param string $dateStart Start date (Y-m-d format)
+     * @param string $dateEnd End date (Y-m-d format)
+     * @param int|null $depositId Optional deposit ID filter
+     * @param array $fundIds Optional fund IDs filter
+     * @param array $familyIds Optional family IDs filter
+     * @param array $methods Optional payment methods filter
+     * @param array $classificationIds Optional classification IDs filter
+     * @return array
+     */
+    public function getAdvancedDepositReportData(
+        string $sort = 'deposit',
+        string $dateStart = '',
+        string $dateEnd = '',
+        ?int $depositId = null,
+        array $fundIds = [],
+        array $familyIds = [],
+        array $methods = [],
+        array $classificationIds = [],
+        string $datetype = 'Payment'
+    ): array {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        $query = PledgeQuery::create()->filterForAdvancedDeposit(
+            $dateStart,
+            $dateEnd,
+            $fundIds,
+            $familyIds,
+            $methods,
+            $classificationIds,
+            $datetype,
+            $sort
+        );
+
+        // Add deposit ID filter if specified
+        if ($depositId > 0) {
+            $query->filterByDepId($depositId);
+        }
+
+        // Get results and convert to array WITHOUT foreign objects
+        // Using withColumn() in the query provides Family and Fund names directly
+        $collection = $query->find();
+        $results = [];
+        foreach ($collection as $pledge) {
+            $results[] = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
+        }
+        return $results;
+    }
+
+    /**
+     * Get Tax Report (Giving Report) data using ORM
+     * 
+     * Security: Checks finance permissions before returning data
+     *
+     * @param string $dateStart Start date (Y-m-d format)
+     * @param string $dateEnd End date (Y-m-d format)
+     * @param int|null $depositId Optional deposit ID filter
+     * @param int|null $minimumAmount Optional minimum amount filter
+     * @param array $fundIds Optional fund IDs filter
+     * @param array $familyIds Optional family IDs filter
+     * @param array $classificationIds Optional classification IDs filter
+     * @return array
+     */
+    public function getTaxReportData(
+        string $dateStart = '',
+        string $dateEnd = '',
+        ?int $depositId = null,
+        ?int $minimumAmount = null,
+        array $fundIds = [],
+        array $familyIds = [],
+        array $classificationIds = []
+    ): array {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        $query = PledgeQuery::create()->filterForTaxReport(
+            $dateStart,
+            $dateEnd,
+            $fundIds,
+            $familyIds,
+            $classificationIds
+        );
+
+        // Add optional filters
+        if ($depositId > 0) {
+            $query->filterByDepId($depositId);
+        }
+        if ($minimumAmount > 0) {
+            $query->filterByAmount($minimumAmount, Criteria::GREATER_EQUAL);
+        }
+
+        // Get results and convert to array with foreign objects included
+        $collection = $query->find();
+        $results = [];
+        foreach ($collection as $pledge) {
+            $results[] = $pledge->toArray(\Propel\Runtime\Map\TableMap::TYPE_PHPNAME, true, [], true);
+        }
+        return $results;
+    }
+
+    /**
+     * Get Zero Givers Report data using ORM
+     * 
+     * Security: Checks finance permissions before returning data
+     * Returns families with members (classification 1) who didn't give in the date range
+     *
+     * @param string $dateStart Start date (Y-m-d format)
+     * @param string $dateEnd End date (Y-m-d format)
+     * @return array
+     */
+    public function getZeroGiversReportData(string $dateStart = '', string $dateEnd = ''): array
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        // Get all families with at least one member (classification ID 1)
+        $familyQuery = FamilyQuery::create()
+            ->usePersonQuery()
+                ->filterByClsId(1)
+            ->endUse();
+
+        // Get family IDs that made payments in the date range
+        $paidFamilyIds = PledgeQuery::create()
+            ->filterForZeroGivers($dateStart, $dateEnd)
+            ->select(['FamId'])
+            ->distinct()
+            ->find()
+            ->toArray();
+
+        // Flatten the array of arrays to just IDs
+        $paidFamilyIds = array_map(function($row) {
+            return is_array($row) ? $row[0] : $row;
+        }, $paidFamilyIds);
+
+        // Exclude families that made payments
+        if (!empty($paidFamilyIds)) {
+            $familyQuery->filterById($paidFamilyIds, Criteria::NOT_IN);
+        }
+
+        return $familyQuery
+            ->orderById()
+            ->find()
+            ->toArray();
+    }
+
+    // =========================================================================
+    // Dashboard Methods
+    // =========================================================================
+
+    /**
+     * Calculate fiscal year date range based on system configuration.
+     *
+     * @return array{startDate: string, endDate: string, label: string, month: int}
+     */
+    public function getFiscalYearDates(): array
+    {
+        $iFYMonth = SystemConfig::getIntValue('iFYMonth');
+        $currentYear = (int) date('Y');
+        $currentMonth = (int) date('n');
+
+        if ($iFYMonth === 1) {
+            // Calendar year fiscal year
+            $fyStartDate = $currentYear . '-01-01';
+            $fyEndDate = $currentYear . '-12-31';
+            $fyLabel = (string) $currentYear;
+        } else {
+            // Non-calendar fiscal year
+            if ($currentMonth >= $iFYMonth) {
+                $fyStartYear = $currentYear;
+                $fyEndYear = $currentYear + 1;
+            } else {
+                $fyStartYear = $currentYear - 1;
+                $fyEndYear = $currentYear;
+            }
+            $fyStartDate = $fyStartYear . '-' . str_pad($iFYMonth, 2, '0', STR_PAD_LEFT) . '-01';
+            // Calculate end date (last day of month before fiscal year month)
+            $endMonth = $iFYMonth - 1;
+            if ($endMonth === 0) {
+                $endMonth = 12;
+            }
+            $fyEndDate = $fyEndYear . '-' . str_pad($endMonth, 2, '0', STR_PAD_LEFT) . '-' . date('t', strtotime($fyEndYear . '-' . $endMonth . '-01'));
+            $fyLabel = $fyStartYear . '/' . substr((string) $fyEndYear, 2, 2);
+        }
+
+        return [
+            'startDate' => $fyStartDate,
+            'endDate' => $fyEndDate,
+            'label' => $fyLabel,
+            'month' => $iFYMonth,
+        ];
+    }
+
+    /**
+     * Get deposit statistics (total, open, closed counts).
+     *
+     * @return array{total: int, open: int, closed: int}
+     */
+    public function getDepositStatistics(): array
+    {
+        return [
+            'total' => DepositQuery::create()->count(),
+            'open' => DepositQuery::create()->filterByClosed(false)->count(),
+            'closed' => DepositQuery::create()->filterByClosed(true)->count(),
+        ];
+    }
+
+    /**
+     * Get recent deposits within the current fiscal year.
+     *
+     * @param int $limit Maximum number of deposits to return
+     * @param string|null $fyStartDate Optional fiscal year start date filter
+     * @return ObjectCollection Collection of Deposit objects
+     */
+    public function getRecentDeposits(int $limit = 5, ?string $fyStartDate = null): ObjectCollection
+    {
+        $query = DepositQuery::create()
+            ->orderByDate(Criteria::DESC)
+            ->limit($limit);
+
+        // Filter to only show deposits from current fiscal year
+        if ($fyStartDate !== null) {
+            $query->filterByDate($fyStartDate, Criteria::GREATER_EQUAL);
+        }
+
+        return $query->find();
+    }
+
+    /**
+     * Get active donation funds.
+     *
+     * @return ObjectCollection Collection of DonationFund objects
+     */
+    public function getActiveDonationFunds(): ObjectCollection
+    {
+        return DonationFundQuery::create()
+            ->filterByActive('true')
+            ->orderByOrder()
+            ->find();
+    }
+
+    /**
+     * Get total count of donation funds.
+     *
+     * @return int
+     */
+    public function getTotalFundCount(): int
+    {
+        return DonationFundQuery::create()->count();
+    }
+
+    /**
+     * Get Year-to-Date payment total for a fiscal year.
+     *
+     * @param string $fyStartDate Fiscal year start date
+     * @param string $fyEndDate Fiscal year end date
+     * @return float|null
+     */
+    public function getYtdPaymentTotal(string $fyStartDate, string $fyEndDate): ?float
+    {
+        return PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment')
+            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+            ->withColumn('SUM(plg_amount)', 'TotalAmount')
+            ->select(['TotalAmount'])
+            ->findOne();
+    }
+
+    /**
+     * Get Year-to-Date pledge total for a fiscal year.
+     *
+     * @param string $fyStartDate Fiscal year start date
+     * @param string $fyEndDate Fiscal year end date
+     * @return float|null
+     */
+    public function getYtdPledgeTotal(string $fyStartDate, string $fyEndDate): ?float
+    {
+        return PledgeQuery::create()
+            ->filterByPledgeOrPayment('Pledge')
+            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+            ->withColumn('SUM(plg_amount)', 'TotalAmount')
+            ->select(['TotalAmount'])
+            ->findOne();
+    }
+
+    /**
+     * Get Year-to-Date payment count for a fiscal year.
+     *
+     * @param string $fyStartDate Fiscal year start date
+     * @param string $fyEndDate Fiscal year end date
+     * @return int
+     */
+    public function getYtdPaymentCount(string $fyStartDate, string $fyEndDate): int
+    {
+        return PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment')
+            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+            ->count();
+    }
+
+    /**
+     * Get count of unique donor families for a fiscal year.
+     *
+     * @param string $fyStartDate Fiscal year start date
+     * @param string $fyEndDate Fiscal year end date
+     * @return int|null
+     */
+    public function getYtdDonorFamilyCount(string $fyStartDate, string $fyEndDate): ?int
+    {
+        return PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment')
+            ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
+            ->withColumn('COUNT(DISTINCT plg_FamID)', 'FamilyCount')
+            ->select(['FamilyCount'])
+            ->findOne();
+    }
+
+    /**
+     * Get current deposit from session.
+     *
+     * @return Deposit|null
+     */
+    public function getCurrentDeposit(): ?Deposit
+    {
+        $currentDepositId = $_SESSION['iCurrentDeposit'] ?? null;
+        if ($currentDepositId) {
+            return DepositQuery::create()->findOneById((int) $currentDepositId);
+        }
+        return null;
+    }
+
+    /**
+     * Get current deposit ID from session.
+     *
+     * @return int|null
+     */
+    public function getCurrentDepositId(): ?int
+    {
+        return $_SESSION['iCurrentDeposit'] ?? null;
+    }
+
+    /**
+     * Get all dashboard data in a single call.
+     * 
+     * This method consolidates all the dashboard queries into a single 
+     * service call to simplify the view layer.
+     *
+     * @return array Dashboard data including fiscal year info, statistics, and deposits
+     */
+    public function getDashboardData(): array
+    {
+        $fiscalYear = $this->getFiscalYearDates();
+        $depositStats = $this->getDepositStatistics();
+        $currentDeposit = $this->getCurrentDeposit();
+
+        return [
+            'fiscalYear' => $fiscalYear,
+            'depositStats' => $depositStats,
+            'recentDeposits' => $this->getRecentDeposits(5, $fiscalYear['startDate']),
+            'activeFunds' => $this->getActiveDonationFunds(),
+            'activeFundCount' => $this->getActiveDonationFunds()->count(),
+            'totalFundCount' => $this->getTotalFundCount(),
+            'ytdPaymentTotal' => $this->getYtdPaymentTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'ytdPledgeTotal' => $this->getYtdPledgeTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'ytdPaymentCount' => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'ytdDonorFamilies' => $this->getYtdDonorFamilyCount($fiscalYear['startDate'], $fiscalYear['endDate']),
+            'currentDeposit' => $currentDeposit,
+            'currentDepositId' => $this->getCurrentDepositId(),
+        ];
     }
 }

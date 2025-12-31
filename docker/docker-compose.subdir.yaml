@@ -1,0 +1,6 @@
+services:
+  webserver-test:
+    volumes:
+      - ../src:/var/www/html/churchcrm
+    environment:
+      - CHURCHCRM_SUBDIR=churchcrm

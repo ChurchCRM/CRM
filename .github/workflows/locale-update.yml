@@ -1,0 +1,128 @@
+name: Locale Generate App Terms
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update-locale:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Install gettext tools
+        run: sudo apt-get update && sudo apt-get install -y gettext
+      
+      - name: Start CI Docker containers
+        run: npm run docker:ci:start
+
+      - name: Wait for Docker to be ready
+        run: |
+          echo "Waiting for services to be ready..."
+          sleep 10
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
+      
+      - name: Run locale build
+        run: npm run locale:build
+      
+      - name: Stop CI Docker containers
+        if: always()
+        run: npm run docker:ci:down
+      
+      - name: Check for meaningful changes
+        id: check_changes
+        run: |
+          # Check if there are any changes to .po files
+          if git diff --quiet locale/messages.po; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected in locale files"
+            exit 0
+          fi
+          
+          # Check if changes are only in the header (first 20 lines typically contain headers)
+          # We'll check if there are changes beyond line 25 to be safe
+          CHANGES=$(git diff locale/messages.po | grep -E '^\+[^+]|^\-[^-]' | tail -n +25 | wc -l)
+          
+          if [ "$CHANGES" -gt 0 ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Meaningful changes detected: $CHANGES lines"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "Only header changes detected, skipping PR creation"
+          fi
+      
+      - name: Configure Git
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Create locale update branch
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          BRANCH_NAME="locale/update-$TIMESTAMP"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+          git checkout -b "$BRANCH_NAME"
+      
+      - name: Commit locale changes
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git add locale/messages.po src/locale/i18n/
+          git commit -m "Update locale strings from source code"
+      
+      - name: Push branch
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git push origin "$BRANCH_NAME"
+      
+      - name: Create Pull Request
+        if: steps.check_changes.outputs.has_changes == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Get the commit SHA that triggered this
+          TRIGGER_SHA="${{ github.sha }}"
+          TRIGGER_COMMIT_MSG=$(git log --format=%B -n 1 $TRIGGER_SHA)
+          
+          gh pr create \
+            --title "Update locale strings" \
+            --body "This PR updates the locale translation strings extracted from source code.
+
+          ## Triggered By
+          Commit: \`$TRIGGER_SHA\`
+          Message: $TRIGGER_COMMIT_MSG
+
+          ## Changes
+          - Updated \`locale/messages.po\` with new/modified translatable strings
+          - Updated JSON locale keys
+
+          ## Next Steps
+          - Review the new strings that need translation
+          - Merge this PR to update the base locale file
+          - Upload to POEditor for translation if needed" \
+            --base ${{ github.ref_name }} \
+            --head "$BRANCH_NAME" \
+            --label "Localization"

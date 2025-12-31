@@ -35,7 +35,7 @@ abstract class BaseEmail
         $this->mail = new PHPMailer();
         $this->mail->IsSMTP();
         $this->mail->CharSet = 'UTF-8';
-        $this->mail->Timeout = intval(SystemConfig::getValue('iSMTPTimeout'));
+        $this->mail->Timeout = SystemConfig::getIntValue('iSMTPTimeout');
         $this->mail->Host = SystemConfig::getValue('sSMTPHost');
         $this->mail->SMTPAutoTLS = SystemConfig::getBooleanValue('bPHPMailerAutoTLS');
         $this->mail->SMTPSecure = SystemConfig::getValue('sPHPMailerSMTPSecure');

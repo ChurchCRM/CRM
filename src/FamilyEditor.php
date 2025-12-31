@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -30,7 +31,7 @@ if (array_key_exists('FamilyID', $_GET)) {
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
     if (!(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() || (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId()))) {
-        RedirectUtils::redirect('v2/dashboard');
+        RedirectUtils::securityRedirect('EditRecords');
     }
 
     $family = FamilyQuery::create()->findOneById($iFamilyID);
@@ -38,7 +39,7 @@ if ($iFamilyID > 0) {
         RedirectUtils::redirect('v2/dashboard');
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-    RedirectUtils::redirect('v2/dashboard');
+    RedirectUtils::securityRedirect('AddRecords');
 }
 
 // Get the list of custom person fields
@@ -93,8 +94,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
-    $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
-    $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
     $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
     $bSendNewsLetter = isset($_POST['SendNewsLetter']);
 
@@ -137,8 +136,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $dWeddingDate = InputUtils::legacyFilterInput($_POST['WeddingDate'] ?? '');
 
     $bNoFormat_HomePhone = isset($_POST['NoFormat_HomePhone']);
-    $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
-    $bNoFormat_CellPhone = isset($_POST['NoFormat_CellPhone']);
 
     //Loop through the Family Member 'quick entry' form fields
     for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
@@ -229,12 +226,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         if (!$bNoFormat_HomePhone) {
             $sHomePhone = CollapsePhoneNumber($sHomePhone, $sCountry);
         }
-        if (!$bNoFormat_WorkPhone) {
-            $sWorkPhone = CollapsePhoneNumber($sWorkPhone, $sCountry);
-        }
-        if (!$bNoFormat_CellPhone) {
-            $sCellPhone = CollapsePhoneNumber($sCellPhone, $sCountry);
-        }
 
         //Write the base SQL depending on the Action
         $bSendNewsLetterString = $bSendNewsLetter ? 'TRUE' : 'FALSE';
@@ -259,8 +250,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setZip($sZip)
             ->setCountry($sCountry)
             ->setHomePhone($sHomePhone)
-            ->setWorkPhone($sWorkPhone)
-            ->setCellPhone($sCellPhone)
             ->setSendNewsletter($bSendNewsLetterString)
             ->setEnvelope($nEnvelope)
             ->setWeddingdate($dWeddingDate)
@@ -448,8 +437,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sZip = $family->getZip();
         $sCountry = $family->getCountry();
         $sHomePhone = $family->getHomePhone();
-        $sWorkPhone = $family->getWorkPhone();
-        $sCellPhone = $family->getCellPhone();
         $sEmail = $family->getEmail();
         $bSendNewsLetter = $family->getSendNewsletter() === 'TRUE';
         $dWeddingDate = $family->getWeddingdate(SystemConfig::getValue("sDatePickerFormat"));
@@ -458,8 +445,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         // Expand the phone number
         $sHomePhone = ExpandPhoneNumber($sHomePhone, $sCountry, $bNoFormat_HomePhone);
-        $sWorkPhone = ExpandPhoneNumber($sWorkPhone, $sCountry, $bNoFormat_WorkPhone);
-        $sCellPhone = ExpandPhoneNumber($sCellPhone, $sCountry, $bNoFormat_CellPhone);
 
         $sSQL = 'SELECT * FROM family_custom WHERE fam_ID = ' . $iFamilyID;
         $rsCustomData = RunQuery($sSQL);
@@ -507,7 +492,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sState = SystemConfig::getValue('sDefaultState');
         $sZip = SystemConfig::getValue('sDefaultZip');
         $iClassification = '0';
-        $iFamilyMemberRows = 6;
+        $iFamilyMemberRows = 4;
 
         $iFamilyID = -1;
         $sName = '';
@@ -526,13 +511,15 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $nLongitude = 0.0;
 
         //Loop through the Family Member 'quick entry' form fields
+        $iDefaultHeadRole = (int) SystemConfig::getValue('sDirRoleHead');
         for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
             // Assign everything to arrays
             $aFirstNames[$iCount] = '';
             $aMiddleNames[$iCount] = '';
             $aLastNames[$iCount] = '';
             $aSuffix[$iCount] = '';
-            $aRoles[$iCount] = 0;
+            // First member defaults to Head of Household
+            $aRoles[$iCount] = ($iCount === 1) ? $iDefaultHeadRole : 0;
             $aGenders[$iCount] = '';
             $aBirthDays[$iCount] = 0;
             $aBirthMonths[$iCount] = 0;
@@ -555,193 +542,207 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 }
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 ?>
 <form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>" id="familyEditor">
     <input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
     <input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
     <input type="hidden" id="stateType" name="stateType" value="">
+
+    <!-- Card 1: Family Info -->
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Family Info') ?></h3>
-            <div class="card-tools">
-                <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
-            </div>
-        </div><!-- /.box-header -->
+        </div>
         <div class="card-body">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label><?= gettext('Family Name') ?>:</label>
-                        <input type="text" Name="Name" id="FamilyName" value="<?= htmlentities(stripslashes($sName), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="48" class="form-control">
-                        <?php if ($sNameError) {
-                            ?><span class="text-danger"><?= $sNameError ?></span><?php
-                        } ?>
-                    </div>
-                </div>
-                <p />
-                <div class="row">
-                    <div class="col-md-6">
-                        <label><?= gettext('Address') ?> 1:</label>
-                        <input type="text" Name="Address1" value="<?= htmlentities(stripslashes($sAddress1), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label><?= gettext('Address') ?> 2:</label>
-                        <input type="text" Name="Address2" value="<?= htmlentities(stripslashes($sAddress2), ENT_NOQUOTES, 'UTF-8') ?>" size="50" maxlength="250" class="form-control">
-                    </div>
-                    <div class="col-md-6">
-                        <label><?= gettext('City') ?>:</label>
-                        <input type="text" Name="City" value="<?= htmlentities(stripslashes($sCity), ENT_NOQUOTES, 'UTF-8') ?>" maxlength="50" class="form-control">
-                    </div>
-                </div>
-                <p />
-                <div class="row">
-                    <div id="stateOptionDiv" class="form-group col-md-3">
-                        <label for="StateTextBox"><?= gettext('State') ?>: </label>
-                        <select id="State" name="State" class="form-control select2" id="state-input" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
-                        </select>
-                    </div>
-                    <div id="stateInputDiv" class="form-group col-md-3 hidden">
-                        <label><?= gettext('State') ?>:</label>
-                        <input id="StateTextbox" type="text" class="form-control" name="StateTextbox" value="<?= htmlentities(stripslashes($sState), ENT_NOQUOTES, 'UTF-8') ?>" size="20" maxlength="30">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label><?= gettext('Zip') ?>:</label>
-                        <input type="text" Name="Zip" class="form-control" <?php
-                        if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
-                            echo 'style="text-transform:uppercase" ';
-                        }
-                                                                            echo 'value="' . htmlentities(stripslashes($sZip), ENT_NOQUOTES, 'UTF-8') . '" '; ?> maxlength="10" size="8">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label> <?= gettext('Country') ?>:</label>
-                        <select id="Country" name="Country" class="form-control select2" id="country-input" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
-                        </select>
-                    </div>
-                </div>
-                <?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
-                    if (!$bHaveXML) { // No point entering if values will just be overwritten
-                        ?>
-                        <div class="row">
-                            <div class="form-group col-md-3">
-                                <label><?= gettext('Latitude') ?>:</label>
-                                <input type="text" class="form-control" Name="Latitude" value="<?= $nLatitude ?>" size="30" maxlength="50">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label><?= gettext('Longitude') ?>:</label>
-                                <input type="text" class="form-control" Name="Longitude" value="<?= $nLongitude ?>" size="30" maxlength="50">
-                            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="FamilyName"><?= gettext('Family Name') ?>:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-people-roof"></i></span>
                         </div>
-                        <?php
-                    }
-                } /* Lat/Lon can be hidden - General Settings */ ?>
+                        <input type="text" name="Name" id="FamilyName" value="<?= InputUtils::escapeAttribute($sName) ?>" maxlength="48" class="form-control">
+                    </div>
+                    <?php if ($sNameError) { ?>
+                        <span class="text-danger small"><?= $sNameError ?></span>
+                    <?php } ?>
+                </div>
+                <?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
+                    if (empty($dWeddingDate)) {
+                        $dWeddingDate = '';
+                    } ?>
+                <div class="form-group col-md-4">
+                    <label for="WeddingDate"><?= gettext('Wedding Date') ?>:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-heart"></i></span>
+                        </div>
+                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
+                    </div>
+                    <?php if ($sWeddingDateError) { ?>
+                    <span class="text-danger small"><?= $sWeddingDateError ?></span>
+                    <?php } ?>
+                </div>
+                <?php } /* Wedding date can be hidden - General Settings */ ?>
             </div>
         </div>
     </div>
+
+    <!-- Card 2: Location & Contact Information -->
     <div class="card card-info clearfix">
         <div class="card-header">
-            <h3 class="card-title"><?= gettext('Contact Info') ?></h3>
-            <div class="card-tools">
-                <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
-            </div>
-        </div><!-- /.box-header -->
+            <h3 class="card-title"><?= gettext('Location & Contact Information') ?></h3>
+        </div>
         <div class="card-body">
+            <!-- Location Section -->
             <div class="row">
-                <div class="form-group col-md-6">
-                    <label><?= gettext('Home Phone') ?>:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <input type="text" Name="HomePhone" value="<?= htmlentities(stripslashes($sHomePhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
-                        <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
-                                                                                        echo ' checked';
-                                                                                   } ?>><?= gettext('Do not auto-format') ?>
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label><?= gettext('Work Phone') ?>:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <input type="text" name="WorkPhone" value="<?= htmlentities(stripslashes($sWorkPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"' data-mask />
-                        <input type="checkbox" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? ' checked' : '' ?>><?= gettext('Do not auto-format') ?>
-                    </div>
-                </div>
-                <div class="form-group col-md-6">
-                    <label><?= gettext('Mobile Phone') ?>:</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa-solid fa-phone"></i>
-                        </div>
-                        <input type="text" name="CellPhone" value="<?= htmlentities(stripslashes($sCellPhone)) ?>" size="30" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormatCell') ?>"' data-mask>
-                        <input type="checkbox" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? ' checked' : '' ?>><?= gettext('Do not auto-format') ?>
-                    </div>
+                <div class="col-12">
+                    <h5 class="text-muted mb-3"><?= gettext('Address') ?></h5>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-md-6">
-                    <label><?= gettext('Email') ?>:</label>
+                    <label for="Address1"><?= gettext('Address') ?> 1:</label>
                     <div class="input-group">
-                        <div class="input-group-addon">
-                            <i class="fa-solid fa-envelope"></i>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
                         </div>
-                        <input type="text" Name="Email" class="form-control" value="<?= htmlentities(stripslashes($sEmail)) ?>" size="30" maxlength="100"><span class="text-danger"><?php echo '<BR>' . $sEmailError ?></span>
+                        <input type="text" id="Address1" name="Address1" value="<?= InputUtils::escapeAttribute($sAddress1) ?>" maxlength="250" class="form-control">
                     </div>
                 </div>
-                <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
-                    <div class="form-group col-md-4">
-                        <label><?= gettext('Send Newsletter') ?>:</label><br />
-                        <input type="checkbox" Name="SendNewsLetter" value="1" <?php if ($bSendNewsLetter) {
-                                                                                    echo ' checked';
-                                                                               } ?>>
+                <div class="form-group col-md-6">
+                    <label for="Address2"><?= gettext('Address') ?> 2:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+                        </div>
+                        <input type="text" id="Address2" name="Address2" value="<?= InputUtils::escapeAttribute($sAddress2) ?>" maxlength="250" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="City"><?= gettext('City') ?>:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-city"></i></span>
+                        </div>
+                        <input type="text" id="City" name="City" value="<?= InputUtils::escapeAttribute($sCity) ?>" maxlength="50" class="form-control">
+                    </div>
+                </div>
+                <div id="stateOptionDiv" class="form-group col-md-3">
+                    <label for="State"><?= gettext('State') ?>:</label>
+                    <select id="State" name="State" class="form-control select2" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    </select>
+                </div>
+                <div id="stateInputDiv" class="form-group col-md-3 d-none">
+                    <label for="StateTextbox"><?= gettext('State') ?>:</label>
+                    <input id="StateTextbox" type="text" class="form-control" name="StateTextbox" value="<?= InputUtils::escapeAttribute($sState) ?>" maxlength="30">
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="Zip"><?= gettext('Zip') ?>:</label>
+                    <input type="text" id="Zip" name="Zip" class="form-control" <?php
+                    if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
+                        echo 'style="text-transform:uppercase" ';
+                    }
+                    echo 'value="' . InputUtils::escapeAttribute($sZip) . '" '; ?> maxlength="10">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="Country"><?= gettext('Country') ?>:</label>
+                    <select id="Country" name="Country" class="form-control select2" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    </select>
+                </div>
+            </div>
+            <?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
+                if (!$bHaveXML) { // No point entering if values will just be overwritten
+                    ?>
+                    <div class="row">
+                        <div class="form-group col-md-3">
+                            <label for="Latitude"><?= gettext('Latitude') ?>:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="Latitude" name="Latitude" value="<?= $nLatitude && $nLatitude != 0 ? $nLatitude : '' ?>" maxlength="50">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="Longitude"><?= gettext('Longitude') ?>:</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="Longitude" name="Longitude" value="<?= $nLongitude && $nLongitude != 0 ? $nLongitude : '' ?>" maxlength="50">
+                            </div>
+                        </div>
                     </div>
                     <?php
-                } ?>
+                }
+            } /* Lat/Lon can be hidden - General Settings */ ?>
+
+            <!-- Contact Information Section -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h5 class="text-muted mb-3"><?= gettext('Contact') ?></h5>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="card card-info clearfix">
-        <div class="card-header">
-            <h3 class="card-title"><?= gettext('Other Info') ?>:</h3>
-            <div class="card-tools">
-                <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
-            </div>
-        </div><!-- /.box-header -->
-        <div class="card-body">
-            <?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
-                if (empty($dWeddingDate)) {
-                    $dWeddingDate = '';
-                } ?>
-                <div class="row">
-                    <div class="form-group col-md-4">
-                        <label><?= gettext('Wedding Date') ?>:</label>
-                        <input type="text" class="form-control date-picker" Name="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" id="WeddingDate" size="15" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
-                        <?php if ($sWeddingDateError) {
-                            ?> <span class="text-danger"><br /><?php $sWeddingDateError ?></span> <?php
-                        } ?>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="HomePhone"><?= gettext('Home Phone') ?>:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
+                        </div>
+                        <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <input type="checkbox" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                                <label class="mb-0 ml-1 small"><?= gettext('No format') ?></label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <?php
-            } /* Wedding date can be hidden - General Settings */ ?>
+                <div class="form-group col-md-6">
+                    <label for="Email"><?= gettext('Email') ?>:</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
+                        </div>
+                        <input type="email" id="Email" name="Email" class="form-control" value="<?= InputUtils::escapeAttribute($sEmail) ?>" maxlength="100">
+                    </div>
+                    <?php if ($sEmailError) { ?>
+                    <span class="text-danger small"><?= $sEmailError ?></span>
+                    <?php } ?>
+                </div>
+            </div>
+            <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="SendNewsLetter" name="SendNewsLetter" value="1" <?= $bSendNewsLetter ? 'checked' : '' ?>>
+                        <label class="custom-control-label" for="SendNewsLetter"><?= gettext('Send Newsletter') ?></label>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
         </div>
     </div>
     <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { /* Donation envelopes can be hidden - General Settings */ ?>
         <div class="card card-info clearfix">
             <div class="card-header">
-                <h3><?= gettext('Envelope Info') ?></h3>
-                <div class="card-tools">
-                    <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
-                </div>
+                <h3 class="card-title"><?= gettext('Envelope Info') ?></h3>
             </div><!-- /.box-header -->
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-md-4">
-                        <label><?= gettext('Envelope Number') ?>:</label>
-                        <input type="text" Name="Envelope" <?php if ($fam_Envelope) {
-                                                                echo ' value="' . $fam_Envelope;
-                                                           } ?>" size="30" maxlength="50">
+                        <label for="Envelope"><?= gettext('Envelope Number') ?>:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa-solid fa-envelope-open-text"></i></span>
+                            </div>
+                            <input type="text" id="Envelope" name="Envelope" class="form-control" value="<?= $fam_Envelope ?? '' ?>" maxlength="50">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -753,9 +754,6 @@ require_once 'Include/Header.php';
         <div class="card card-info clearfix">
             <div class="card-header">
                 <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
-                <div class="card-tools">
-                    <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
-                </div>
             </div><!-- /.box-header -->
             <div class="card-body">
                 <?php mysqli_data_seek($rsCustomFields, 0);
@@ -764,8 +762,8 @@ require_once 'Include/Header.php';
                     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                         ?>
                         <div class="row">
-                            <div class="form-group col-md-4">
-                                <label><?= $fam_custom_Name  ?> </label>
+                            <div class="form-group col-md-6">
+                                <label for="<?= $fam_custom_Field ?>"><?= $fam_custom_Name ?></label>
                         <?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
                         if ($type_ID == 11) {
@@ -773,186 +771,144 @@ require_once 'Include/Header.php';
                         }
 
                         formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
-                        echo '<span class="text-danger">' . $aCustomErrors[$fam_custom_Field] . '</span>';
+                        if (!empty($aCustomErrors[$fam_custom_Field])) {
+                            echo '<span class="text-danger small">' . $aCustomErrors[$fam_custom_Field] . '</span>';
+                        }
                         echo '</div></div>';
                     }
                 } ?>
-                            </div>
-                        </div>
-                    <?php
+            </div>
+        </div>
+    <?php
     } ?>
-                    <div class="card card-info clearfix">
-                        <div class="card-header">
-                            <h3 class="card-title"><?= gettext('Family Members') ?></h3>
-                            <div class="card-tools">
-                                <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FamilySubmit">
-                            </div>
-                        </div><!-- /.box-header -->
-                        <div class="card-body">
+    <div class="card card-info clearfix">
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Family Members') ?></h3>
+        </div><!-- /.box-header -->
+        <div class="card-body">
 
-                            <?php if ($iFamilyMemberRows > 0) {
-                                ?>
+            <?php if ($iFamilyMemberRows > 0) {
+                ?>
 
-                                <tr>
-                                    <td colspan="2">
-                                        <div class="MediumText">
-                                            <div class="text-center"><?= $iFamilyID < 0 ? gettext('You may create family members now or add them later.  All entries will become <i>new</i> person records.') : '' ?></div>
-                                        </div><br><br>
-                                        <div class="table-responsive">
-                                            <table cellpadding="3" cellspacing="0" width="100%">
-                                                <thead>
-                                                    <tr class="TableHeader text-center">
-                                                        <th><?= gettext('First') ?></th>
-                                                        <th><?= gettext('Middle') ?></th>
-                                                        <th><?= gettext('Last') ?></th>
-                                                        <th><?= gettext('Suffix') ?></th>
-                                                        <th><?= gettext('Gender') ?></th>
-                                                        <th><?= gettext('Role') ?></th>
-                                                        <th><?= gettext('Birth Month') ?></th>
-                                                        <th><?= gettext('Birth Day') ?></th>
-                                                        <th><?= gettext('Birth Year') ?></th>
-                                                        <th><?= gettext('Classification') ?></th>
-                                                    </tr>
-                                                </thead>
-                                                <?php
+                                <?php if ($iFamilyID < 0) { ?>
+                                <div class="alert alert-info mb-3">
+                                    <i class="fa-solid fa-info-circle"></i> <?= gettext('You may create family members now or add them later. All entries will become new person records.') ?>
+                                </div>
+                                <?php } ?>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover">
+                                        <thead class="thead-light">
+                                            <tr class="text-center">
+                                                <th><?= gettext('First') ?></th>
+                                                <th><?= gettext('Middle') ?></th>
+                                                <th><?= gettext('Last') ?></th>
+                                                <th><?= gettext('Suffix') ?></th>
+                                                <th><?= gettext('Gender') ?></th>
+                                                <th><?= gettext('Role') ?></th>
+                                                <th><?= gettext('Birth Month') ?></th>
+                                                <th><?= gettext('Birth Day') ?></th>
+                                                <th><?= gettext('Birth Year') ?></th>
+                                                <th><?= gettext('Classification') ?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="familyMembersTbody">
+                                        <?php
 
-                                                //Get family roles
-                                                $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-                                                $rsFamilyRoles = RunQuery($sSQL);
-                                                $numFamilyRoles = mysqli_num_rows($rsFamilyRoles);
-                                                for ($c = 1; $c <= $numFamilyRoles; $c++) {
-                                                    $aRow = mysqli_fetch_array($rsFamilyRoles);
-                                                    extract($aRow);
-                                                    $aFamilyRoleNames[$c] = $lst_OptionName;
-                                                    $aFamilyRoleIDs[$c] = $lst_OptionID;
-                                                }
+                                        //Get family roles using Propel ORM
+                                        $familyRoles = ListOptionQuery::create()
+                                            ->filterById(2)
+                                            ->orderByOptionSequence()
+                                            ->find();
+                                        $numFamilyRoles = $familyRoles->count();
+                                        $c = 1;
+                                        foreach ($familyRoles as $role) {
+                                            $aFamilyRoleNames[$c] = $role->getOptionName();
+                                            $aFamilyRoleIDs[$c] = $role->getOptionId();
+                                            $c++;
+                                        }
 
-                                                for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
-                                                    ?>
+                                        for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
+                                            ?>
+                                            <tr>
+                                                <td>
                                                     <input type="hidden" name="PersonID<?= $iCount ?>" value="<?= $aPersonIDs[$iCount] ?>">
-                                                    <tr>
-                                                        <td class="TextColumn">
-                                                            <input name="FirstName<?= $iCount ?>" type="text" value="<?= $aFirstNames[$iCount] ?>" size="10">
-                                                            <div><span class="text-danger"><?php if (array_key_exists($iCount, $aFirstNameError)) {
-                                                                                                echo $aFirstNameError[$iCount];
-                                                                                           } ?></span></div>
-                                                        </td>
-                                                        <td class="TextColumn">
-                                                            <input name="MiddleName<?= $iCount ?>" type="text" value="<?= $aMiddleNames[$iCount] ?>" size="10">
-                                                        </td>
-                                                        <td class="TextColumn">
-                                                            <input name="LastName<?= $iCount ?>" type="text" value="<?= $aLastNames[$iCount] ?>" size="10">
-                                                        </td>
-                                                        <td class="TextColumn">
-                                                            <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" size="10">
-                                                        </td>
-                                                        <td class="TextColumn">
-                                                            <select name="Gender<?php echo $iCount ?>">
-                                                                <option value="0" <?php if ($aGenders[$iCount] == 0) {
-                                                                                        echo 'selected';
-                                                                                  } ?>><?= gettext('Select Gender') ?></option>
-                                                                <option value="1" <?php if ($aGenders[$iCount] == 1) {
-                                                                                        echo 'selected';
-                                                                                  } ?>><?= gettext('Male') ?></option>
-                                                                <option value="2" <?php if ($aGenders[$iCount] == 2) {
-                                                                                        echo 'selected';
-                                                                                  } ?>><?= gettext('Female') ?></option>
-                                                            </select>
-                                                        </td>
-
-                                                        <td class="TextColumn">
-                                                            <select name="Role<?php echo $iCount ?>">
-                                                                <option value="0" <?php if ($aRoles[$iCount] == 0) {
-                                                                                        echo 'selected';
-                                                                                  } ?>><?= gettext('Select Role') ?></option>
-                                                                <?php
-                                                                //Build the role select box
-                                                                for ($c = 1; $c <= $numFamilyRoles; $c++) {
-                                                                    echo '<option value="' . $aFamilyRoleIDs[$c] . '"';
-                                                                    if ($aRoles[$iCount] == $aFamilyRoleIDs[$c]) {
-                                                                        echo ' selected';
-                                                                    }
-                                                                    echo '>' . $aFamilyRoleNames[$c] . '</option>';
-                                                                } ?>
-                                                            </select>
-                                                        </td>
-                                                        <td class="TextColumn">
-                                                            <select name="BirthMonth<?php echo $iCount ?>">
-                                                                <option value="0" <?php if ($aBirthMonths[$iCount] == 0) {
-                                                                                        echo 'selected';
-                                                                                  } ?>><?= gettext('Unknown') ?></option>
-                                                                <option value="01" <?php if ($aBirthMonths[$iCount] == 1) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('January') ?></option>
-                                                                <option value="02" <?php if ($aBirthMonths[$iCount] == 2) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('February') ?></option>
-                                                                <option value="03" <?php if ($aBirthMonths[$iCount] == 3) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('March') ?></option>
-                                                                <option value="04" <?php if ($aBirthMonths[$iCount] == 4) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('April') ?></option>
-                                                                <option value="05" <?php if ($aBirthMonths[$iCount] == 5) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('May') ?></option>
-                                                                <option value="06" <?php if ($aBirthMonths[$iCount] == 6) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('June') ?></option>
-                                                                <option value="07" <?php if ($aBirthMonths[$iCount] == 7) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('July') ?></option>
-                                                                <option value="08" <?php if ($aBirthMonths[$iCount] == 8) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('August') ?></option>
-                                                                <option value="09" <?php if ($aBirthMonths[$iCount] == 9) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('September') ?></option>
-                                                                <option value="10" <?php if ($aBirthMonths[$iCount] == 10) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('October') ?></option>
-                                                                <option value="11" <?php if ($aBirthMonths[$iCount] == 11) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('November') ?></option>
-                                                                <option value="12" <?php if ($aBirthMonths[$iCount] == 12) {
-                                                                                        echo 'selected';
-                                                                                   } ?>><?= gettext('December') ?></option>
-                                                            </select>
-                                                        </td>
-                                                        <td class="TextColumn">
-                                                            <select name="BirthDay<?= $iCount ?>">
-                                                                <option value="0"><?= gettext('Unk') ?></option>
-                                                                <?php for ($x = 1; $x < 32; $x++) {
-                                                                    if ($x < 10) {
-                                                                        $sDay = '0' . $x;
-                                                                    } else {
-                                                                        $sDay = $x;
-                                                                    } ?>
-                                                                    <option value="<?= $sDay ?>" <?php if ($aBirthDays[$iCount] == $x) {
-                                                                                                        echo 'selected';
-                                                                                   } ?>><?= $x ?></option>
-                                                                    <?php
-                                                                } ?>
-                                                            </select>
-                                                        </td>
-                                                        <td class="TextColumn">
-                                                            <?php if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount]) {
-                                                                $UpdateBirthYear = 1; ?>
-                                                                <input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" size="4" maxlength="4">
-                                                                <div><span class="text-danger"><?php if (array_key_exists($iCount, $aBirthDateError)) {
-                                                                                                    echo $aBirthDateError[$iCount];
-                                                                                               } ?></span></div>
-                                                                <?php
-                                                            } else {
-                                                                $UpdateBirthYear = 0;
-                                                            } ?>
-                                                        </td>
-                                                        <td>
-                                                            <select name="Classification<?php echo $iCount ?>">
-                                                                <option value="0" <?php if ($aClassification[$iCount] == 0) {
-                                                                                        echo 'selected';
-                                                                                  } ?>><?= gettext('Unassigned') ?></option>
-                                                                <option value="" disabled>-----------------------</option>
+                                                    <input name="FirstName<?= $iCount ?>" type="text" value="<?= $aFirstNames[$iCount] ?>" class="form-control form-control-sm">
+                                                    <?php if (array_key_exists($iCount, $aFirstNameError)) { ?>
+                                                    <span class="text-danger small"><?= $aFirstNameError[$iCount] ?></span>
+                                                    <?php } ?>
+                                                </td>
+                                                <td>
+                                                    <input name="MiddleName<?= $iCount ?>" type="text" value="<?= $aMiddleNames[$iCount] ?>" class="form-control form-control-sm">
+                                                </td>
+                                                <td>
+                                                    <input name="LastName<?= $iCount ?>" type="text" value="<?= $aLastNames[$iCount] ?>" class="form-control form-control-sm">
+                                                </td>
+                                                <td>
+                                                    <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" class="form-control form-control-sm" style="width: 60px;">
+                                                </td>
+                                                <td>
+                                                    <select name="Gender<?= $iCount ?>" class="form-control form-control-sm">
+                                                        <option value="0" <?= $aGenders[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Select Gender') ?></option>
+                                                        <option value="1" <?= $aGenders[$iCount] == 1 ? 'selected' : '' ?>><?= gettext('Male') ?></option>
+                                                        <option value="2" <?= $aGenders[$iCount] == 2 ? 'selected' : '' ?>><?= gettext('Female') ?></option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select name="Role<?= $iCount ?>" class="form-control form-control-sm">
+                                                        <option value="0" <?= $aRoles[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Select Role') ?></option>
+                                                        <?php
+                                                        //Build the role select box
+                                                        for ($c = 1; $c <= $numFamilyRoles; $c++) {
+                                                            echo '<option value="' . $aFamilyRoleIDs[$c] . '"';
+                                                            if ($aRoles[$iCount] == $aFamilyRoleIDs[$c]) {
+                                                                echo ' selected';
+                                                            }
+                                                            echo '>' . $aFamilyRoleNames[$c] . '</option>';
+                                                        } ?>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select name="BirthMonth<?= $iCount ?>" class="form-control form-control-sm">
+                                                        <option value="0" <?= $aBirthMonths[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Unknown') ?></option>
+                                                        <option value="01" <?= $aBirthMonths[$iCount] == 1 ? 'selected' : '' ?>><?= gettext('January') ?></option>
+                                                        <option value="02" <?= $aBirthMonths[$iCount] == 2 ? 'selected' : '' ?>><?= gettext('February') ?></option>
+                                                        <option value="03" <?= $aBirthMonths[$iCount] == 3 ? 'selected' : '' ?>><?= gettext('March') ?></option>
+                                                        <option value="04" <?= $aBirthMonths[$iCount] == 4 ? 'selected' : '' ?>><?= gettext('April') ?></option>
+                                                        <option value="05" <?= $aBirthMonths[$iCount] == 5 ? 'selected' : '' ?>><?= gettext('May') ?></option>
+                                                        <option value="06" <?= $aBirthMonths[$iCount] == 6 ? 'selected' : '' ?>><?= gettext('June') ?></option>
+                                                        <option value="07" <?= $aBirthMonths[$iCount] == 7 ? 'selected' : '' ?>><?= gettext('July') ?></option>
+                                                        <option value="08" <?= $aBirthMonths[$iCount] == 8 ? 'selected' : '' ?>><?= gettext('August') ?></option>
+                                                        <option value="09" <?= $aBirthMonths[$iCount] == 9 ? 'selected' : '' ?>><?= gettext('September') ?></option>
+                                                        <option value="10" <?= $aBirthMonths[$iCount] == 10 ? 'selected' : '' ?>><?= gettext('October') ?></option>
+                                                        <option value="11" <?= $aBirthMonths[$iCount] == 11 ? 'selected' : '' ?>><?= gettext('November') ?></option>
+                                                        <option value="12" <?= $aBirthMonths[$iCount] == 12 ? 'selected' : '' ?>><?= gettext('December') ?></option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select name="BirthDay<?= $iCount ?>" class="form-control form-control-sm">
+                                                        <option value="0"><?= gettext('Unk') ?></option>
+                                                        <?php for ($x = 1; $x < 32; $x++) {
+                                                            $sDay = $x < 10 ? '0' . $x : $x;
+                                                            ?>
+                                                            <option value="<?= $sDay ?>" <?= $aBirthDays[$iCount] == $x ? 'selected' : '' ?>><?= $x ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <?php if (!array_key_exists($iCount, $aperFlags) || !$aperFlags[$iCount]) {
+                                                        $UpdateBirthYear = 1; ?>
+                                                        <input name="BirthYear<?= $iCount ?>" type="text" value="<?= $aBirthYears[$iCount] ?>" class="form-control form-control-sm" style="width: 70px;" maxlength="4">
+                                                        <?php if (array_key_exists($iCount, $aBirthDateError)) { ?>
+                                                        <span class="text-danger small"><?= $aBirthDateError[$iCount] ?></span>
+                                                        <?php }
+                                                    } else {
+                                                        $UpdateBirthYear = 0;
+                                                    } ?>
+                                                </td>
+                                                <td>
+                                                    <select name="Classification<?= $iCount ?>" class="form-control form-control-sm">
+                                                        <option value="0" <?= $aClassification[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Unassigned') ?></option>
+                                                        <option value="" disabled>-----------------------</option>
                                                         <?php
                                                         //Get Classifications for the drop-down
                                                         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
@@ -965,30 +921,121 @@ require_once 'Include/Header.php';
                                                             if ($aClassification[$iCount] == $lst_OptionID) {
                                                                 echo ' selected';
                                                             }
-                                                            echo '>' . $lst_OptionName . '&nbsp;';
+                                                            echo '>' . $lst_OptionName . '</option>';
                                                         }
-                                                        echo '</select></td></tr>';
-                                                }
-                                                    echo '</table></div>';
+                                                        ?>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <?php if ($iFamilyID < 0) { ?>
+                                <div class="mt-3">
+                                    <button type="button" class="btn btn-outline-primary btn-sm" id="addFamilyMemberRow">
+                                        <i class="fa-solid fa-plus"></i> <?= gettext('Add Another Family Member') ?>
+                                    </button>
+                                </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
+                    </div>
 
-                                                    echo '</div></div>';
-                            }
+                    <input type="hidden" Name="UpdateBirthYear" value="<?= $UpdateBirthYear ?>">
 
-                                                echo '<td colspan="2" class="text-center">';
-                                                echo '<input type="hidden" Name="UpdateBirthYear" value="' . $UpdateBirthYear . '">';
+                    <!-- Hidden submit buttons for FAB -->
+                    <div class="d-none">
+                        <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="FamilySubmit" id="FamilySubmitBottom">
+                        <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
+                        <input type="submit" class="btn btn-info" value="<?= gettext('Save and Add New Family') ?>" name="FamilySubmitAndAdd" id="FamilySubmitAndAddButton">
+                        <?php } ?>
+                    </div>
+                </form>
 
-                                                echo '<input type="submit" class="btn btn-primary" value="' . gettext('Save') . '" Name="FamilySubmit" id="FamilySubmitBottom"> ';
-                            if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-                                echo ' <input type="submit" class="btn btn-info" value="' . gettext('Save and Add') . '" name="FamilySubmitAndAdd"> ';
-                            }
-                                                echo ' <input type="button" class="btn btn-default" value="' . gettext('Cancel') . '" Name="FamilyCancel"';
-                            if ($iFamilyID > 0) {
-                                echo " onclick=\"javascript:document.location='v2/family/$iFamilyID';\">";
-                            } else {
-                                echo " onclick=\"javascript:document.location='" . SystemURLs::getRootPath() . "/v2/family';\">";
-                            }
-                                                echo '</td></tr></form></table>';
-                            ?>
-                                                        <script src="<?= SystemURLs::getRootPath() ?>/skin/js/FamilyEditor.js"></script>
+<!-- FAB Container -->
+<div id="fab-family-editor" class="fab-container fab-family-editor">
+    <?php if ($iFamilyID > 0) { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>" class="fab-button fab-cancel" aria-label="<?= gettext('Cancel') ?>">
+        <span class="fab-label"><?= gettext('Cancel') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+    </a>
+    <?php } else { ?>
+    <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="fab-button fab-cancel" aria-label="<?= gettext('Cancel') ?>">
+        <span class="fab-label"><?= gettext('Cancel') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+    </a>
+    <?php } ?>
+    <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
+    <a href="#" class="fab-button fab-save-add" aria-label="<?= gettext('Save and Add New Family') ?>" onclick="document.getElementById('FamilySubmitAndAddButton').click(); return false;">
+        <span class="fab-label"><?= gettext('Save and Add New Family') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-users-rectangle"></i>
+        </div>
+    </a>
+    <?php } ?>
+    <a href="#" class="fab-button fab-save" aria-label="<?= gettext('Save') ?>" onclick="document.getElementById('FamilySubmitBottom').click(); return false;">
+        <span class="fab-label"><?= gettext('Save') ?></span>
+        <div class="fab-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+    </a>
+</div>
+
+<?php if ($iFamilyID < 0) {
+    // Get family roles for JavaScript using Propel ORM
+    $familyRolesForJS = ListOptionQuery::create()
+        ->filterById(2)
+        ->orderByOptionSequence()
+        ->find();
+    $familyRolesJS = [];
+    foreach ($familyRolesForJS as $role) {
+        $familyRolesJS[] = ['id' => $role->getOptionId(), 'name' => $role->getOptionName()];
+    }
+
+    // Get classifications for JavaScript using Propel ORM
+    $classificationsForJS = ListOptionQuery::create()
+        ->filterById(1)
+        ->orderByOptionSequence()
+        ->find();
+    $classificationsJS = [];
+    foreach ($classificationsForJS as $classification) {
+        $classificationsJS[] = ['id' => $classification->getOptionId(), 'name' => $classification->getOptionName()];
+    }
+?>
+<script>
+    window.CRM.familyRoles = <?= json_encode($familyRolesJS) ?>;
+    window.CRM.classifications = <?= json_encode($classificationsJS) ?>;
+    window.CRM.initialFamilyMemberCount = <?= $iFamilyMemberRows ?>;
+    window.CRM.i18n = {
+        selectGender: <?= json_encode(gettext('Select Gender')) ?>,
+        male: <?= json_encode(gettext('Male')) ?>,
+        female: <?= json_encode(gettext('Female')) ?>,
+        selectRole: <?= json_encode(gettext('Select Role')) ?>,
+        unknown: <?= json_encode(gettext('Unknown')) ?>,
+        unassigned: <?= json_encode(gettext('Unassigned')) ?>,
+        months: [
+            <?= json_encode(gettext('January')) ?>,
+            <?= json_encode(gettext('February')) ?>,
+            <?= json_encode(gettext('March')) ?>,
+            <?= json_encode(gettext('April')) ?>,
+            <?= json_encode(gettext('May')) ?>,
+            <?= json_encode(gettext('June')) ?>,
+            <?= json_encode(gettext('July')) ?>,
+            <?= json_encode(gettext('August')) ?>,
+            <?= json_encode(gettext('September')) ?>,
+            <?= json_encode(gettext('October')) ?>,
+            <?= json_encode(gettext('November')) ?>,
+            <?= json_encode(gettext('December')) ?>
+        ]
+    };
+</script>
+<?php } ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/DropdownManager.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/FamilyEditor.js') ?>"></script>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

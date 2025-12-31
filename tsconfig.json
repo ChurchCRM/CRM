@@ -5,9 +5,12 @@
     "sourceMap": true,
     "jsx": "react-jsx",
     "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "moduleResolution": "bundler",
     "skipLibCheck": true,
-    "types": ["jquery", "node"]
+    "types": ["jquery", "node"],
+    "typeRoots": ["./node_modules/@types", "./webpack/types"]
   },
   "exclude": [
     "node_modules",

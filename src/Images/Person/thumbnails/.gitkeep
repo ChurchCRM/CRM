@@ -1,2 +1,0 @@
-# This file ensures the thumbnails directory is tracked by git
-# The directory must exist for the Photo DTO to generate thumbnails

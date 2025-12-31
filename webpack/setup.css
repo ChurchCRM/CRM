@@ -1,0 +1,149 @@
+/* Import Bootstrap and Font Awesome styles */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import '~bs-stepper/dist/css/bs-stepper.min.css';
+
+/* ChurchCRM Setup Wizard Styles */
+
+body {
+    padding-bottom: 60px;
+}
+
+/* Main container - constrain and center everything */
+/* Higher specificity to override AdminLTE's .container-fluid {width:100%} */
+#setup-stepper .container-fluid,
+body .container-fluid {
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+/* Jumbotron */
+.jumbotron {
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* BS Stepper */
+#setup-stepper.bs-stepper {
+    box-shadow: none;
+}
+
+#setup-stepper .bs-stepper-header {
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+}
+
+#setup-stepper .bs-stepper-content {
+    display: flex;
+    align-items: flex-start;
+    min-height: 500px;
+    width: 100%;
+}
+
+#setup-stepper .content {
+    display: none;
+    width: 100%;
+    max-width: 100%;
+}
+
+#setup-stepper .content.active {
+    display: block;
+    width: 100%;
+}
+
+/* Force all cards to full width */
+#setup-stepper .card {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Step prerequisites specific layout */
+#step-prerequisites .row {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#step-prerequisites .col-lg-8,
+#step-prerequisites .col-lg-4 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+#step-prerequisites .col-lg-8 {
+    padding-right: 15px;
+}
+
+/* Responsive: Stack on smaller screens */
+@media (max-width: 991px) {
+    #step-prerequisites .col-lg-8 {
+        padding-right: 0;
+    }
+}
+
+/* Collapsible section headers in card body */
+#step-prerequisites .card-body h6 {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    border-bottom: none !important;
+}
+
+#step-prerequisites .card-body h6 a {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    background-color: #f8f9fa;
+    border-radius: 0.25rem;
+    font-weight: 600;
+}
+
+#step-prerequisites .card-body h6 a:hover {
+    background-color: #e9ecef;
+    text-decoration: none;
+}
+
+#step-prerequisites .card-body h6 a i.fa-chevron-down,
+#step-prerequisites .card-body h6 a i.fa-chevron-up {
+    font-size: 0.875rem;
+    transition: transform 0.2s ease;
+}
+
+/* Bootstrap standard: Hide chevron-up when collapsed, show chevron-down */
+#step-prerequisites .card-body h6 a.collapsed .fa-chevron-up {
+    display: none;
+}
+
+#step-prerequisites .card-body h6 a.collapsed .fa-chevron-down {
+    display: inline-block;
+}
+
+/* Bootstrap standard: Show chevron-up when expanded, hide chevron-down */
+#step-prerequisites .card-body h6 a:not(.collapsed) .fa-chevron-up {
+    display: inline-block;
+}
+
+#step-prerequisites .card-body h6 a:not(.collapsed) .fa-chevron-down {
+    display: none;
+}
+
+/* Spacing for collapsible sections */
+#step-prerequisites .card-body > h6:not(:first-child) {
+    margin-top: 1rem;
+}
+
+/* Remove text decoration from collapsible card header buttons */
+.card-header .btn-link {
+    text-decoration: none;
+}
+
+.card-header .btn-link:hover {
+    text-decoration: none;
+}

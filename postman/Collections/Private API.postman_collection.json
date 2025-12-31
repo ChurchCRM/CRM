@@ -222,14 +222,15 @@
 							}
 						],
 						"url": {
-							"raw": "{{host}}/api/email/debug",
+							"raw": "{{host}}/admin/system/debug/email",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"api",
-								"email",
-								"debug"
+								"admin",
+								"system",
+								"debug",
+								"email"
 							]
 						}
 					},
@@ -1342,32 +1343,6 @@
 							]
 						},
 						{
-							"name": "Person: Get Photo Thumbnail by ID",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/person/2/thumbnail",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"person",
-										"2",
-										"thumbnail"
-									]
-								},
-								"description": "return photo thumbnail for member"
-							},
-							"response": []
-						},
-						{
 							"name": "Person: Delete Photo by ID",
 							"request": {
 								"method": "DELETE",
@@ -1982,29 +1957,6 @@
 							"response": []
 						},
 						{
-							"name": "Family: Get Photo Thumbnail by ID",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "x-api-key",
-										"value": "{{api-key}}"
-									}
-								],
-								"url": {
-									"raw": "{{host}}/api/family/2/thumbnail",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"api",
-										"family",
-										"2",
-										"thumbnail"
-									]
-								}
-							},
-							"response": []
 						},
 						{
 							"name": "Family: Verify via Email by ID",

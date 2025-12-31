@@ -31,6 +31,7 @@ if (process.argv.includes('--temp-dir')) {
 class DatabaseTermExtractor {
     constructor() {
         this.configPath = path.resolve(__dirname, '../../BuildConfig.json');
+        this.configExamplePath = path.resolve(__dirname, '../../BuildConfig.json.example');
         // Use project temp directory instead of OS temp
         const projectRoot = path.resolve(__dirname, '../..');
         this.stringsDir = path.join(projectRoot, 'temp', 'churchcrm-locale-db-strings');
@@ -39,22 +40,28 @@ class DatabaseTermExtractor {
     }
 
     /**
-     * Load database configuration from BuildConfig.json
+     * Load database configuration from BuildConfig.json or BuildConfig.json.example
      */
     loadConfig() {
         console.log('=====================================================');
         console.log('========== Building locale from DB started ==========');
         console.log('=====================================================\n');
 
+        let configFile = this.configPath;
         if (!fs.existsSync(this.configPath)) {
-            throw new Error(`ERROR: The file ${this.configPath} does not exist`);
+            if (fs.existsSync(this.configExamplePath)) {
+                console.log(`⚠️  BuildConfig.json not found, using BuildConfig.json.example\n`);
+                configFile = this.configExamplePath;
+            } else {
+                throw new Error(`ERROR: Neither ${this.configPath} nor ${this.configExamplePath} exist`);
+            }
         }
 
-        const buildConfig = fs.readFileSync(this.configPath, 'utf8');
+        const buildConfig = fs.readFileSync(configFile, 'utf8');
         const config = JSON.parse(buildConfig);
 
         if (!config.Env?.local?.database) {
-            throw new Error(`ERROR: The file ${this.configPath} does not have local db env, check ${this.configPath}.example for schema`);
+            throw new Error(`ERROR: The configuration file does not have local db env, check BuildConfig.json.example for schema`);
         }
 
         return config.Env.local.database;
@@ -234,7 +241,5 @@ if (require.main === module) {
     const extractor = new DatabaseTermExtractor();
     extractor.run();
 }
-
-module.exports = DatabaseTermExtractor;
 
 module.exports = DatabaseTermExtractor;

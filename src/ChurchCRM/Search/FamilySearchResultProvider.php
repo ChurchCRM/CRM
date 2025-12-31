@@ -42,10 +42,6 @@ class FamilySearchResultProvider extends BaseSearchResultProvider
                 ->filterByHomePhone("%$SearchQuery%", Criteria::LIKE)
                 ->_or()
                 ->filterByEmail("%$SearchQuery%", Criteria::LIKE)
-                ->_or()
-                ->filterByCellPhone("%$SearchQuery%", Criteria::LIKE)
-                ->_or()
-                ->filterByWorkPhone("%$SearchQuery%", Criteria::LIKE)
                 ->limit(SystemConfig::getValue('bSearchIncludeFamiliesMax'))
                 ->find();
 

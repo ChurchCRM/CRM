@@ -19,6 +19,7 @@ const QuillEditor: React.FunctionComponent<{
   const editorRef = useRef<HTMLDivElement>(null);
   const quillRef = useRef<Quill | null>(null);
 
+  // Initialize Quill editor once on mount
   useEffect(() => {
     if (!editorRef.current || quillRef.current) {
       return;
@@ -70,7 +71,7 @@ const QuillEditor: React.FunctionComponent<{
         delete window.quillEditors[name];
       }
     };
-  }, []);
+  }, [name]);
 
   return (
     <div

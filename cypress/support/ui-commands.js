@@ -8,49 +8,117 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-// -- This is a login command --
-Cypress.Commands.add("loginAdmin", (location, checkMatchingLocation = true) => {
-    cy.login("admin", "changeme", location, checkMatchingLocation);
+/**
+ * Internal helper: Sets up a cached login session using cy.session()
+ * Performs login and validates with CRM cookie presence
+ * @param {string} sessionName - Unique identifier for this session (e.g., 'admin-session')
+ * @param {string} username - The username to authenticate with
+ * @param {string} password - The password to authenticate with
+ * @param {{ forceLogin?: boolean }} options - Additional behaviour flags
+ */
+Cypress.Commands.add('setupLoginSession', (sessionName, username, password, options = {}) => {
+    const { forceLogin = false } = options;
+    const uniqueSuffix = forceLogin ? `-${Date.now()}-${Math.random().toString(36).slice(2, 8)}` : '';
+    const effectiveSessionName = `${sessionName}${uniqueSuffix}`;
+
+    cy.session(
+        effectiveSessionName,
+        () => {
+            // Perform the login
+            cy.visit('/login');
+            cy.get('input[name=User]').type(username);
+            cy.get('input[name=Password]').type(password + '{enter}');
+            // Wait for redirect away from login
+            cy.url().should('not.include', '/login');
+        },
+        {
+            // Validate session by checking for a CRM cookie
+            validate: () => {
+                cy.getCookies().should('satisfy', (cookies) => {
+                    return cookies.some(cookie => cookie.name.startsWith('CRM-'));
+                });
+            }
+        }
+    );
 });
 
-Cypress.Commands.add(
-    "loginStandard",
-    (location, checkMatchingLocation = true) => {
-        cy.login(
-            "tony.wade@example.com",
-            "basicjoe",
-            location,
-            checkMatchingLocation,
-        );
-    },
-);
+/**
+ * Sets up a cached admin login session for Cypress UI tests.
+ * Reads credentials from cypress.config.ts env configuration.
+ * Usage in test files:
+ *   beforeEach(() => cy.setupAdminSession());
+ * 
+ * Note: Uses cy.session() with explicit validation to cache login across test runs.
+ * If validation fails, the session is cleared and login is re-attempted.
+ */
+Cypress.Commands.add('setupAdminSession', (options = {}) => {
+    const username = Cypress.env('admin.username');
+    const password = Cypress.env('admin.password');
+    if (!username || !password) {
+        throw new Error('Admin credentials not configured in cypress.config.ts env: admin.username and admin.password required');
+    }
+    cy.setupLoginSession('admin-session', username, password, options);
+});
 
-Cypress.Commands.add(
-    "login",
-    (username, password, location, checkMatchingLocation = true) => {
-        cy.visit("/?location=/" + location);
-        cy.wait(150);
-        
-        // Use data-cy attributes when available, fallback to ID
-        cy.get("[data-cy=username], #UserBox").type(username);
-        cy.get("[data-cy=password], #PasswordBox").type(password);
-        cy.get("form").submit();
+/**
+ * Sets up a cached standard user login session for Cypress UI tests.
+ * Reads credentials from cypress.config.ts env configuration.
+ * Usage in test files:
+ *   beforeEach(() => cy.setupStandardSession());
+ * 
+ * Note: Uses cy.session() with explicit validation to cache login across test runs.
+ * If validation fails, the session is cleared and login is re-attempted.
+ */
+Cypress.Commands.add('setupStandardSession', (options = {}) => {
+    const username = Cypress.env('standard.username');
+    const password = Cypress.env('standard.password');
+    if (!username || !password) {
+        throw new Error('Standard user credentials not configured in cypress.config.ts env: standard.username and standard.password required');
+    }
+    cy.setupLoginSession('standard-session', username, password, options);
+});
 
-        if (location && checkMatchingLocation) {
-            cy.location("pathname").should("include", location.split("?")[0]);
+/**
+ * Sets up a cached session for a user WITHOUT finance permissions.
+ * Used to test that finance pages correctly deny access to non-finance users.
+ * Reads credentials from cypress.config.ts env configuration.
+ * Usage in test files:
+ *   beforeEach(() => cy.setupNoFinanceSession());
+ */
+Cypress.Commands.add('setupNoFinanceSession', (options = {}) => {
+    const username = Cypress.env('nofinance.username');
+    const password = Cypress.env('nofinance.password');
+    if (!username || !password) {
+        throw new Error('No-finance user credentials not configured in cypress.config.ts env: nofinance.username and nofinance.password required');
+    }
+    cy.setupLoginSession('nofinance-session', username, password, options);
+});
+
+/**
+ * cy.loginWithCredentials(username, password, sessionName, expectSuccess = true)
+ * Login with custom credentials (for testing password changes, etc.)
+ * Creates a new session with the provided credentials
+ * If expectSuccess is false, skips CRM cookie validation (for testing bad credentials)
+ */
+Cypress.Commands.add('loginWithCredentials', (username, password, sessionName = 'custom-session', expectSuccess = true) => {
+    cy.session(sessionName, () => {
+        cy.visit('/login');
+        cy.get('input[name=User]').type(username);
+        cy.get('input[name=Password]').type(password + '{enter}');
+    }, {
+        validate: () => {
+            if (expectSuccess) {
+                cy.getCookies().should('satisfy', (cookies) => {
+                    return cookies.some(cookie => cookie.name.startsWith('CRM-'));
+                });
+            }
         }
-    },
-);
+    });
+});
 
 Cypress.Commands.add("buildRandom", (prefixString) => {
     const rand = Math.random().toString(36).substring(7);
     return prefixString.concat(" - ", rand);
-});
-
-// Modern command to wait for page to be ready
-Cypress.Commands.add("waitForPageLoad", () => {
-    cy.window().should("have.property", "document");
-    cy.document().should("have.property", "readyState", "complete");
 });
 
 // Modern command for better element interaction
@@ -175,7 +243,7 @@ Cypress.Commands.add('select2ByText', (selector, text) => {
     // Wait for dropdown to appear and search for the text
     cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
         .should('be.visible')
-        .type(text, { delay: 50 });
+        .type(text);
     
     // Wait for results and click the matching option
     cy.get('.select2-results__option', { timeout: 5000 })
@@ -220,7 +288,7 @@ Cypress.Commands.add('select2Search', (selector, searchText, resultText = null) 
     // Type in the search field
     cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
         .should('be.visible')
-        .type(searchText, { delay: 50 });
+        .type(searchText);
     
     // Wait for AJAX results (look for non-loading options)
     cy.get('.select2-results__option', { timeout: 10000 })
@@ -328,3 +396,54 @@ Cypress.Commands.add('clearQuill', (editorId) => {
         quillEditor.setContents([]);
     });
 });
+
+/**
+ * Set a Bootstrap Datepicker value by typing and blurring to trigger change event
+ * This mimics user interaction to trigger all proper datepicker events
+ * @param {string} selector - The CSS selector for the datepicker input
+ * @param {string} dateString - The date string in MM/DD/YYYY format
+ * @example cy.setDatePickerValue("#member-birthday-2", "08/07/1980");
+ */
+Cypress.Commands.add('setDatePickerValue', (selector, dateString) => {
+    // Type the date and blur to trigger datepicker's change event
+    cy.get(selector).clear().type(dateString);
+    
+    // Click elsewhere to blur the field and trigger change event
+    cy.get('body').click();
+    
+    // Wait for event handlers to process
+    cy.wait(100);
+});
+
+/**
+ * Wait for ChurchCRM locales to be fully loaded
+ * This ensures i18next and all locale files are ready before proceeding
+ * @param {number} timeout - Maximum time to wait in milliseconds (default: 10000)
+ * @example cy.waitForLocales()
+ */
+Cypress.Commands.add('waitForLocales', (timeout = 10000) => {
+    cy.window({ timeout }).should((win) => {
+        expect(win.CRM).to.exist;
+        expect(win.CRM.localesLoaded).to.be.true;
+    });
+});
+
+/**
+ * Wait for a Notyf notification with specific text
+ * Ensures locales are loaded first (for i18next translations) and verifies notification content
+ * @param {string} expectedText - The text to find in the notification
+ * @param {object} options - Optional config { timeout: 5000 }
+ * @example cy.waitForNotification('Menu added successfully')
+ */
+Cypress.Commands.add('waitForNotification', (expectedText, options = {}) => {
+    const { timeout = 5000 } = options;
+    
+    // Wait for locales first so translations are available
+    cy.waitForLocales(timeout);
+    
+    // Wait for notification toast to appear and contain the expected text
+    cy.get('.notyf__toast', { timeout })
+        .should('be.visible')
+        .should('contain', expectedText);
+});
+

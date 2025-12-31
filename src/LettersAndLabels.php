@@ -1,14 +1,14 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
-require_once 'Include/LabelFunctions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/LabelFunctions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Letters and Mailing Labels');
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?
 if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) || isset($_POST['SubmitConfirmLabels']) || isset($_POST['SubmitConfirmReportEmail'])) {
@@ -56,8 +56,8 @@ FontSizeSelect('labelfontsize');
           </table>
             </div>
             <div>
-              <input type="submit" class="btn btn-default" name="SubmitNewsLetter" value="<?= gettext('Newsletter labels') ?>">
-              <input type="submit" class="btn btn-default" name="SubmitConfirmLabels" value="<?= gettext('Confirm data labels') ?>">
+              <input type="submit" class="btn btn-secondary" name="SubmitNewsLetter" value="<?= gettext('Newsletter labels') ?>">
+              <input type="submit" class="btn btn-secondary" name="SubmitConfirmLabels" value="<?= gettext('Confirm data labels') ?>">
               <input type="button" class="btn btn-warning" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
             </div>
 
@@ -67,4 +67,4 @@ FontSizeSelect('labelfontsize');
   </div>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';

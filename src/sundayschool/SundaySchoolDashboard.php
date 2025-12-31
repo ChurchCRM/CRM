@@ -1,6 +1,6 @@
 <?php
-require_once '../Include/Config.php';
-require_once '../Include/Functions.php';
+require_once __DIR__ . '/../Include/Config.php';
+require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
@@ -38,7 +38,7 @@ foreach ($classStats as $class) {
 }
 
 $sPageTitle = gettext('Sunday School Dashboard');
-require_once '../Include/Header.php';
+require_once __DIR__ . '/../Include/Header.php';
 
 ?>
 <div class="card card-info card-outline">
@@ -108,7 +108,7 @@ require_once '../Include/Header.php';
                     ?>
                   <button class="btn btn-app bg-success" data-toggle="modal" data-target="#add-class">
                       <i class="fa-solid fa-plus-square fa-3x"></i><br>
-                      <?= gettext('Add New Class') ?>
+                      <?= gettext('Add New') . ' ' . gettext('Class') ?>
                   </button>
                     <?php
                 } ?>
@@ -207,12 +207,18 @@ require_once '../Include/Header.php';
                 LoggerUtils::getAppLogger()->error("Failed to retrieve student's age", ['exception' => $ex]);
             }
 
+            $personPhoto = new \ChurchCRM\dto\Photo('person', $kidId);
+            $photoIcon = '';
+            if ($personPhoto->hasUploadedPhoto()) {
+                $photoIcon = ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+            }
+
             $html = <<<HTML
 <tr>
 <td>
   <a href="../PersonView.php?PersonID={$kidId}">
     $firstName
-  </a>
+  </a>$photoIcon
 </td>
 <td>$LastName</td>
 <td>$birthDate</td>
@@ -248,7 +254,7 @@ HTML;
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal"><?= gettext('Cancel') ?></button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Cancel') ?></button>
           <button type="button" id="addNewClassBtn" class="btn btn-primary"
                   data-dismiss="modal"><?= gettext('Add') ?></button>
         </div>
@@ -283,7 +289,8 @@ HTML;
 
     });
   </script>
+  <script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 
     <?php
 }
-require_once '../Include/Footer.php';
+require_once __DIR__ . '/../Include/Footer.php';

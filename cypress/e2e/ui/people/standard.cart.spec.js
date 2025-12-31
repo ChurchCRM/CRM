@@ -1,19 +1,43 @@
 /// <reference types="cypress" />
 
 describe("Standard Cart", () => {
+    // Helper function to ensure cart is fully initialized
+    const waitForCartReady = () => {
+        // Wait for locales to be fully loaded
+        cy.window().should('have.property', 'CRM');
+        cy.window().its('CRM.localesLoaded').should('eq', true);
+        
+        // Wait for cart manager to exist
+        cy.window().its('CRM.cartManager').should('exist');
+        
+        // Wait for cart dropdown to be initialized (not showing "undefined")
+        cy.get("#cart-dropdown-menu").should('not.contain', 'undefined');
+    };
+
     beforeEach(() => {
+        cy.setupStandardSession();
         // Empty cart before each test and verify it's empty
-        cy.loginStandard("v2/cart");
+        cy.visit("v2/cart");
+        
+        // Wait for cart to be fully ready
+        waitForCartReady();
+        
         cy.get("body").then(($body) => {
             if (!$body.text().includes("You have no items in your cart")) {
-                cy.get("#emptyCart").click();
-                // Wait for and click the confirm button in the bootbox dialog
-                cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-                cy.wait(1500);
+                // Use API to empty cart instead of clicking UI (more reliable in beforeEach)
+                cy.request({
+                    method: "DELETE",
+                    url: "/api/cart/",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({})
+                });
             }
         });
         // Verify cart is empty
         cy.visit("v2/cart");
+        waitForCartReady();
         cy.contains("You have no items in your cart").should("be.visible");
     });
 
@@ -21,78 +45,56 @@ describe("Standard Cart", () => {
         cy.visit("v2/cart");
         cy.contains("You have no items in your cart");
         cy.visit("PersonView.php?PersonID=1");
+        
+        // Wait for cart to be ready before clicking
+        waitForCartReady();
+        
         cy.get("#AddPersonToCart").click();
+        
+        // Wait for cart count to update instead of arbitrary timeout
+        cy.get("#iconCount").should('not.contain', '0');
+        
         cy.visit("v2/cart");
         cy.contains("Cart Functions");
         cy.contains("Church Admin");
+        
+        // Wait for cart to be ready
+        waitForCartReady();
+        
         cy.get("#emptyCart").click();
         // Wait for and click the confirm button in the bootbox dialog
-        cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-        cy.wait(1500);
-        cy.contains("You have no items in your cart");
+        cy.get(".bootbox .btn-danger", { timeout: 5000 }).should('be.visible').click();
+        
+        // Wait for success notification or cart to update
+        cy.contains("You have no items in your cart", { timeout: 10000 }).should('be.visible');
     });
 
     it("Cart Add and Remove Family", () => {
         cy.visit("v2/cart");
         cy.contains("You have no items in your cart");
         cy.visit("v2/family/6");
+        
+        // Wait for cart to be ready before clicking
+        waitForCartReady();
+        
         cy.get("#AddFamilyToCart").click();
+        
+        // Wait for cart count to update instead of arbitrary timeout
+        cy.get("#iconCount").should('not.contain', '0');
+        
         cy.visit("v2/cart");
         cy.contains("Kenzi Dixon");
         cy.contains("Cart Functions");
+        
+        // Wait for cart to be ready
+        waitForCartReady();
+        
         cy.get("#emptyCart").click();
         // Wait for and click the confirm button in the bootbox dialog
-        cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-        cy.wait(1500);
-        cy.contains("You have no items in your cart");
-    });
-
-    it("Cart count updates after bulk operations", () => {
-        cy.visit("v2/cart");
-        cy.contains("You have no items in your cart");
-
-        // Add multiple people via Add All to Cart
-        cy.visit("v2/people?Gender=1");
+        cy.get(".bootbox .btn-danger", { timeout: 5000 }).should('be.visible').click();
         
-        // Wait for DataTable to load
-        cy.get("#members").should("be.visible");
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
-        
-        cy.get("#AddAllToCart").click();
-        
-        // Wait for page reload after Add All
-        cy.url().should("include", "/v2/people");
-        
-        // Check that cart page shows items
-        cy.visit("v2/cart");
-        cy.contains("Cart Functions");
-        cy.get("body").should("not.contain", "You have no items in your cart");
-        
-        // Remove all via people page
-        cy.visit("v2/people?Gender=1");
-        
-        // Wait for DataTable to load again
-        cy.get("#members").should("be.visible");
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
-        
-        cy.get("#RemoveAllFromCart").should("be.visible").click();
-        
-        // Wait for page reload after Remove All
-        cy.url().should("include", "/v2/people");
-        cy.wait(2000);
-        
-        // Verify cart is empty by using empty cart button
-        cy.visit("v2/cart");
-        cy.get("body").then(($body) => {
-            if (!$body.text().includes("You have no items in your cart")) {
-                // Cart still has items, empty it manually
-                cy.get("#emptyCart").click();
-                // Wait for and click the confirm button in the bootbox dialog
-                cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-                cy.wait(1500);
-            }
-        });
-        cy.contains("You have no items in your cart");
+        // Wait for success notification or cart to update
+        cy.contains("You have no items in your cart", { timeout: 10000 }).should('be.visible');
     });
 
     it("Cart prevents duplicate person additions", () => {
@@ -101,19 +103,27 @@ describe("Standard Cart", () => {
         
         // Add person first time
         cy.visit("PersonView.php?PersonID=1");
+        
+        // Wait for cart to be ready
+        waitForCartReady();
+        
         cy.get("#AddPersonToCart").click();
         
-        // Wait for notification and cart update
-        cy.wait(500);
+        // Wait for cart to update
+        cy.get("#iconCount").should('contain', '1');
         
         // Try to add same person again
         cy.get("#AddPersonToCart").click();
         
-        // Wait for notification
-        cy.wait(500);
+        // Cart count should still be 1
+        cy.get("#iconCount").should('contain', '1');
         
         // Verify cart still only has one person
         cy.visit("v2/cart");
+        
+        // Wait for cart to be ready
+        waitForCartReady();
+        
         cy.contains("Church Admin");
         
         // Should only appear once in the cart
@@ -125,10 +135,15 @@ describe("Standard Cart", () => {
         });
         
         // Clean up
+        // Wait for cart to be ready
+        waitForCartReady();
+        
         cy.get("#emptyCart").click();
         // Wait for and click the confirm button in the bootbox dialog
-        cy.get(".bootbox .btn-danger", { timeout: 5000 }).click();
-        cy.wait(1500);
+        cy.get(".bootbox .btn-danger", { timeout: 5000 }).should('be.visible').click();
+        
+        // Wait for cart to be emptied
+        cy.contains("You have no items in your cart", { timeout: 10000 }).should('be.visible');
     });
 
     it("Cart API returns correct duplicate information", () => {

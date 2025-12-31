@@ -4,6 +4,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ORMUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -23,7 +24,20 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
 
     foreach ($request->getParsedBody() as $key => $value) {
         if (is_string($value)) {
-            $familyMetadata[$key] = htmlspecialchars(trim(strip_tags($value)), ENT_QUOTES, 'UTF-8');
+            $familyMetadata[$key] = InputUtils::sanitizeAndEscapeText($value);
+        } elseif (is_array($value) && $key === 'people') {
+            // Sanitize nested people array
+            $familyMetadata[$key] = array_map(function ($person) {
+                $sanitized = [];
+                foreach ($person as $pKey => $pValue) {
+                    if (is_string($pValue)) {
+                        $sanitized[$pKey] = InputUtils::sanitizeAndEscapeText($pValue);
+                    } else {
+                        $sanitized[$pKey] = $pValue;
+                    }
+                }
+                return $sanitized;
+            }, $value);
         } else {
             $familyMetadata[$key] = $value;
         }
@@ -38,8 +52,6 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     $family->setCountry($familyMetadata['Country']);
     $family->setZip($familyMetadata['Zip']);
     $family->setHomePhone($familyMetadata['HomePhone']);
-    $family->setWorkPhone($familyMetadata['WorkPhone']);
-    $family->setCellPhone($familyMetadata['CellPhone']);
     $family->setEmail($familyMetadata['Email']);
     $family->setEnteredBy(Person::SELF_REGISTER);
     $family->setDateEntered(new DateTime());
@@ -105,8 +117,56 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
 
 function registerPersonAPI(Request $request, Response $response, array $args): Response
 {
+    // Sanitize input data before creating person
+    $personData = [];
+    foreach ($request->getParsedBody() as $key => $value) {
+        if (is_string($value)) {
+            $personData[$key] = InputUtils::sanitizeAndEscapeText($value);
+        } else {
+            $personData[$key] = $value;
+        }
+    }
+
     $person = new Person();
-    $person->fromJSON($request->getBody());
+    
+    // Set sanitized fields manually instead of using fromJSON
+    if (isset($personData['firstName'])) {
+        $person->setFirstName($personData['firstName']);
+    }
+    if (isset($personData['lastName'])) {
+        $person->setLastName($personData['lastName']);
+    }
+    if (isset($personData['email'])) {
+        $person->setEmail($personData['email']);
+    }
+    if (isset($personData['cellPhone'])) {
+        $person->setCellPhone($personData['cellPhone']);
+    }
+    if (isset($personData['homePhone'])) {
+        $person->setHomePhone($personData['homePhone']);
+    }
+    if (isset($personData['workPhone'])) {
+        $person->setWorkPhone($personData['workPhone']);
+    }
+    if (isset($personData['gender'])) {
+        $person->setGender($personData['gender']);
+    }
+    if (isset($personData['address1'])) {
+        $person->setAddress1($personData['address1']);
+    }
+    if (isset($personData['address2'])) {
+        $person->setAddress2($personData['address2']);
+    }
+    if (isset($personData['city'])) {
+        $person->setCity($personData['city']);
+    }
+    if (isset($personData['state'])) {
+        $person->setState($personData['state']);
+    }
+    if (isset($personData['zip'])) {
+        $person->setZip($personData['zip']);
+    }
+    
     $person->setEnteredBy(Person::SELF_REGISTER);
     $person->setDateEntered(new DateTime());
 

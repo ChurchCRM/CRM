@@ -1,4 +1,4 @@
-name: Locale POEditor Download and Audit 
+name: Locale Download POEditor 
 permissions:
   contents: write
   pull-requests: write
@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['20.x']
+        node-version: ['22.x']
     
     steps:
     - name: Checkout repository
@@ -97,10 +97,6 @@ jobs:
       with:
         name: "BuildConfig.json"
         json: '{"POEditor": { "id": "77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}'
-
-    - name: Clean existing locales
-      if: inputs.operation_mode != 'audit-only'
-      run: npm run locale:clean
       
     - name: Download locales from POEditor
       if: inputs.operation_mode != 'audit-only'
@@ -108,18 +104,8 @@ jobs:
         set -e  # Exit on any command failure
         echo "🌍 Downloading locales from POEditor..."
         
-        # Run individual steps with error checking
-        echo "Step 1: Cleaning existing locales..."
-        npm run locale:clean
-        
-        echo "Step 2: Updating from POEditor..."
-        grunt updateFromPOeditor
-        
-        echo "Step 3: Generating locale JS files..."
-        grunt genLocaleJSFiles
-        
-        echo "Step 4: Running locale audit..."
-        npm run locale:audit
+        # Run the complete locale download workflow
+        npm run locale:download
         
         echo "✅ Locale download completed successfully"
 
@@ -129,7 +115,7 @@ jobs:
         echo "🔍 Validating locale download integrity..."
         
         # Check if any JSON files were created
-        json_count=$(find locale/JSONKeys -name "*.json" -type f | wc -l)
+        json_count=$(find src/locale/i18n -name "*.json" -type f | wc -l)
         echo "Found $json_count JSON locale files"
         
         if [ "$json_count" -eq 0 ]; then
@@ -139,7 +125,7 @@ jobs:
         
         # Check for completely empty JSON files (which shouldn't exist)
         # Exclude en_US.json as it's the base locale and will always be empty
-        empty_files=$(find locale/JSONKeys -name "*.json" -type f -empty ! -name "en_US.json")
+        empty_files=$(find src/locale/i18n -name "*.json" -type f -empty ! -name "en_US.json")
         if [ -n "$empty_files" ]; then
           echo "❌ ERROR: Found empty JSON locale files:"
           echo "$empty_files"
@@ -150,7 +136,7 @@ jobs:
         # Check for JSON files that only contain whitespace or are malformed
         # Exclude en_US.json as it's the base locale
         invalid_files=""
-        for json_file in locale/JSONKeys/*.json; do
+        for json_file in src/locale/i18n/*.json; do
           # Skip en_US.json (base locale, expected to be empty)
           if [ "$(basename "$json_file")" = "en_US.json" ]; then
             continue
@@ -185,7 +171,7 @@ jobs:
         regression_files=""
         
         # Check git diff for files that went from having content to being empty
-        deleted_content=$(git diff --name-only --diff-filter=M | grep "locale/JSONKeys/.*\.json$" || true)
+        deleted_content=$(git diff --name-only --diff-filter=M | grep "src/locale/i18n/.*\.json$" || true)
         
         if [ -n "$deleted_content" ]; then
           for file in $deleted_content; do
@@ -218,12 +204,23 @@ jobs:
       if: inputs.operation_mode != 'audit-only'
       run: |
         echo "📊 Download Summary:"
-        echo "Total JSON files: $(find locale/JSONKeys -name "*.json" -type f | wc -l)"
-        echo "Non-empty JSON files: $(find locale/JSONKeys -name "*.json" -type f ! -empty | wc -l)"
-        echo "Files with substantial content (>100 bytes): $(find locale/JSONKeys -name "*.json" -type f -exec wc -c {} \; | awk '$1 > 100' | wc -l)"
+        echo "Total JSON files: $(find src/locale/i18n -name "*.json" -type f | wc -l)"
+        echo "Non-empty JSON files: $(find src/locale/i18n -name "*.json" -type f ! -empty | wc -l)"
+        echo "Files with substantial content (>100 bytes): $(find src/locale/i18n -name "*.json" -type f -exec wc -c {} \; | awk '$1 > 100' | wc -l)"
         echo ""
         echo "Git status after download:"
-        git status --porcelain locale/
+        git status --porcelain src/locale/i18n/
+        
+        # Check if base term updates exist
+        if [ -d "locale/base-term-updates" ]; then
+          base_updates_count=$(find locale/base-term-updates -name "*.json" -type f 2>/dev/null | wc -l)
+          if [ "$base_updates_count" -gt 0 ]; then
+            echo ""
+            echo "📋 Base Term Updates:"
+            echo "Generated files: $base_updates_count"
+            find locale/base-term-updates -name "*.json" -type f -exec ls -lh {} \;
+          fi
+        fi
 
     - name: Check for changes
       if: inputs.operation_mode != 'audit-only'
@@ -239,6 +236,60 @@ jobs:
           git diff --name-only
         fi
 
+    - name: Generate base term updates for variants
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "🔄 Generating base term updates for locale variants..."
+        node locale/scripts/locale-populate-variants.js
+        echo "✅ Base term updates generated"
+
+    - name: Configure Git
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Commit base term updates
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        if [ -d "locale/base-term-updates" ] && [ -n "$(find locale/base-term-updates -name '*.json' -type f 2>/dev/null)" ]; then
+          echo "📝 Committing base term updates..."
+          git add locale/base-term-updates/
+          # Check if there are staged changes to commit
+          if ! git diff --cached --quiet; then
+            git commit -m "📋 Base term updates: Add missing translation terms for locale variants"
+            echo "✅ Base term updates committed"
+          else
+            echo "ℹ️  No new base term updates to commit"
+          fi
+        else
+          echo "ℹ️  No base term updates generated"
+        fi
+
+    - name: Generate missing terms for all locales
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        echo "📋 Generating missing translation terms for all locales..."
+        npm run locale:missing
+        echo "✅ Missing terms files generated"
+
+    - name: Commit missing terms for POEditor
+      if: inputs.operation_mode != 'audit-only'
+      run: |
+        if [ -d "locale/missing-terms" ] && [ -n "$(find locale/missing-terms -name 'poeditor-*.json' -type f 2>/dev/null)" ]; then
+          echo "📝 Committing missing terms files..."
+          git add locale/missing-terms/poeditor-*.json
+          # Check if there are staged changes to commit
+          if ! git diff --cached --quiet; then
+            git commit -m "📊 Missing translation terms: Updated for all locales from master list"
+            echo "✅ Missing terms files committed"
+          else
+            echo "ℹ️  No new missing terms to commit"
+          fi
+        else
+          echo "ℹ️  No missing terms files generated"
+        fi
+
     - name: Create Pull Request
       if: inputs.operation_mode != 'audit-only' && (steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch')
       uses: peter-evans/create-pull-request@v6
@@ -248,7 +299,6 @@ jobs:
         delete-branch: true
         labels: |
           localization
-          automated
         milestone: ${{ steps.package-version.outputs.current-version}}
         title: "🌍 POEditor Locale Update - ${{ steps.date.outputs.date }}"
         commit-message: |
@@ -260,7 +310,7 @@ jobs:
         body: |
           ## 🌍 Automatic Locale Update
           
-          This PR contains updated translations downloaded from POEditor.
+          This PR contains updated translations downloaded from POEditor, base term updates for locale variants, and missing term reports for all locales.
           
           **Details:**
           - 📅 **Date**: ${{ steps.date.outputs.date }}
@@ -270,7 +320,15 @@ jobs:
           **What's included:**
           - Updated translation files from POEditor
           - Generated locale JSON files
+          - 📋 Base term updates for locale variants (in `locale/base-term-updates/`)
+          - 📊 Missing terms for all locales (in `locale/missing-terms/poeditor-*.json`)
           - Locale audit results
+          
+          **Base Term Updates:**
+          Syncs missing translations from base locales (Portuguese, Spanish) to their variants via POEditor.
+          
+          **Missing Terms Reports:**
+          For each incomplete locale, a `poeditor-{locale}.json` file contains all missing/untranslated terms from the master English list. These can be imported into POEditor to help translators complete the translations.
           
           This PR was automatically created by the POEditor workflow.
           
@@ -292,6 +350,8 @@ jobs:
         echo "- **Operation mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
         echo "- **Download validation**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
         echo "- **Regression check**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
+        echo "- **Base term updates**: Generated and committed"
+        echo "- **Missing terms report**: Generated for all locales"
         echo "- **Changes detected**: ${{ inputs.operation_mode == 'audit-only' && 'N/A (audit-only)' || steps.changes.outputs.has_changes }}"
         echo "- **PR created**: ${{ inputs.operation_mode == 'audit-only' && 'No (audit-only)' || ((steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch') && 'Yes' || 'No') }}"
         echo "- **Branch**: ${{ inputs.operation_mode == 'audit-only' && 'N/A' || format('locale/{0}', steps.package-version.outputs.current-version) }}"

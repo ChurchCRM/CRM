@@ -21,7 +21,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    $(document).ready(function () {
+    function initializeMailchimpMissing() {
         var dataTableConfig = {
             ajax: {
                 url: window.CRM.root + "/api/mailchimp/list/<?= $listId ?>/missing",
@@ -53,6 +53,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#noEmails").DataTable(dataTableConfig);
+    }
+
+    // Wait for locales to load before initializing
+    $(document).ready(function () {
+        window.CRM.onLocalesReady(initializeMailchimpMissing);
     });
 
     function peopleToString(people) {

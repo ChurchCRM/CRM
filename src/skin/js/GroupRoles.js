@@ -8,6 +8,7 @@ function UpdateRoles() {
         var html = "";
         $.each(data.ListOptions, function (index, value) {
             html += '<option value="' + value.OptionId + '"';
+            // i18next-disable-next-line
             html += ">" + i18next.t(value.OptionName) + "</option>";
         });
         $("#GroupRole").html(html);

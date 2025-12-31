@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-$ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' . gettext('persons from') . ' ' . $iNumFamilies . ' ' . gettext('families');
+$ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' . gettext('people from') . ' ' . $iNumFamilies . ' ' . gettext('families');
 ?>
 <!-- BEGIN CART LISTING -->
 <div class="card card-primary">
@@ -34,7 +34,11 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
               </button>
             </td>
             <td>
-              <img src="<?= $Person->getThumbnailURL(); ?>?>" class="direct-chat-img initials-image">&nbsp
+              <?php if ($Person->getPhoto()->hasUploadedPhoto()) { ?>
+                <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $Person->getId() ?>" title="<?= gettext('View Photo') ?>">
+                  <i class="fa-solid fa-camera"></i>
+                </button>
+              <?php } ?>
               <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $Person->getId() ?>"><?= $Person->getFullName() ?></a>
             </td>
             <td><?= $Person->getAddress() ?></td>
@@ -52,6 +56,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
 
 <!-- END CART LISTING -->
 
+<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
         // Handle remove from cart button clicks in cart listing

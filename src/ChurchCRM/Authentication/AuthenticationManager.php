@@ -13,6 +13,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Service\NotificationService;
+use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -44,7 +45,8 @@ class AuthenticationManager
         try {
             $currentUser = self::getAuthenticationProvider()->getCurrentUser();
             if (!$currentUser instanceof User) {
-                throw new \Exception('No current user provided by current authentication provider: ' . get_class(self::getAuthenticationProvider()));
+                $provider = self::getAuthenticationProvider();
+                throw new \Exception('No current user provided by current authentication provider: ' . $provider::class);
             }
 
             return $currentUser;
@@ -52,6 +54,16 @@ class AuthenticationManager
             LoggerUtils::getAppLogger()->debug('Failed to get current user', ['exception' => $e]);
 
             throw $e;
+        }
+    }
+
+    public static function isUserAuthenticated(): bool
+    {
+        try {
+            $user = self::getCurrentUser();
+            return $user !== null;
+        } catch (\Exception $e) {
+            return false;
         }
     }
 
@@ -70,10 +82,8 @@ class AuthenticationManager
         try {
             self::getAuthenticationProvider()->endSession();
 
-            $_COOKIE = [];
-            $_SESSION = [];
+            session_unset();
             session_destroy();
-            Bootstrapper::initSession();
             $logger->info(
                 'Ended Local session for user',
                 $logCtx
@@ -93,7 +103,7 @@ class AuthenticationManager
     public static function authenticate(AuthenticationRequest $AuthenticationRequest): AuthenticationResult
     {
         $logger = LoggerUtils::getAppLogger();
-        switch (get_class($AuthenticationRequest)) {
+        switch ($AuthenticationRequest::class) {
             case APITokenAuthenticationRequest::class:
                 $AuthenticationProvider = new APITokenAuthentication();
                 self::setAuthenticationProvider($AuthenticationProvider);
@@ -113,7 +123,7 @@ class AuthenticationManager
                 }
                 break;
             default:
-                $logger->critical('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => get_class($AuthenticationRequest)]);
+                $logger->critical('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => $AuthenticationRequest::class]);
                 break;
         }
 
@@ -131,6 +141,10 @@ class AuthenticationManager
             }
             $redirectLocation ??= $_SESSION['location'] ?? 'v2/dashboard';
             NotificationService::updateNotifications();
+            
+            // Check for system updates once on login for admin users
+            self::checkSystemUpdates();
+            
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
             );
@@ -227,17 +241,16 @@ class AuthenticationManager
 
     public static function getForgotPasswordURL(): string
     {
-        // this assumes we're using local authentication
-        // TODO: when we implement other authentication providers (SAML/etc)
-        // this URL will need to be configurable by the system administrator
-        // since they likely will not want users attempting to reset ChurchCRM passwords
-        // but rather redirect users to some other password reset mechanism.
         return SystemURLs::getRootPath() . '/session/forgot-password/reset-request';
     }
-    public static function redirectHomeIfFalse(bool $hasAccess): void
+    public static function redirectHomeIfFalse(bool $hasAccess, string $missingRole = ''): void
     {
         if (!$hasAccess) {
-            RedirectUtils::redirect('v2/dashboard');
+            if ($missingRole !== '') {
+                RedirectUtils::securityRedirect($missingRole);
+            } else {
+                RedirectUtils::redirect('v2/dashboard');
+            }
         }
     }
 
@@ -246,5 +259,25 @@ class AuthenticationManager
         if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
             RedirectUtils::securityRedirect('Admin');
         }
+    }
+
+    /**
+     * Check for system updates and store result in session
+     * Only runs for admin users on login
+     */
+    private static function checkSystemUpdates(): void
+    {
+        $currentUser = self::getCurrentUser();
+        if (!$currentUser->isAdmin()) {
+            $_SESSION['systemUpdateAvailable'] = false;
+            $_SESSION['systemUpdateVersion'] = null;
+            $_SESSION['systemLatestVersion'] = null;
+            return;
+        }
+
+        $updateInfo = ChurchCRMReleaseManager::checkSystemUpdateAvailable();
+        $_SESSION['systemUpdateAvailable'] = $updateInfo['available'];
+        $_SESSION['systemUpdateVersion'] = $updateInfo['version'];
+        $_SESSION['systemLatestVersion'] = $updateInfo['latestVersion'];
     }
 }

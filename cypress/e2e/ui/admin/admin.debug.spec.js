@@ -1,18 +1,22 @@
 /// <reference types="cypress" />
 
 describe("Admin Debug", () => {
+    beforeEach(() => {
+        cy.setupAdminSession();
+    });
+
     it("View system debug", () => {
-        cy.loginAdmin("v2/admin/debug");
-        cy.contains("ChurchCRM Installation Information");
+        cy.visit("admin/system/debug");
+        cy.contains("ChurchCRM Installation");
         cy.contains("Database");
     });
 
     it("View email debug", () => {
-        cy.loginAdmin("v2/email/debug");
+        cy.visit("admin/system/debug/email");
         cy.contains("Debug Email Connection");
     });
 
     it("View system settings", () => {
-        cy.loginAdmin("SystemSettings.php");
+        cy.visit("SystemSettings.php");
     });
 });

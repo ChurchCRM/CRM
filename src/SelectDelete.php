@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Include/Config.php';
-require_once 'Include/Functions.php';
+require_once __DIR__ . '/Include/Config.php';
+require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -12,7 +12,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled());
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 
 $iFamilyID = 0;
 $iDonationFamilyID = 0;
@@ -44,16 +44,11 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && isset($_GET['
         . "' WHERE plg_FamID='$iFamilyID'";
     RunQuery($sSQL);
 
-    $sSQL = "UPDATE egive_egv SET egv_famID='$iDonationFamilyID',
-        egv_DateLastEdited ='$today', egv_EditedBy='" . AuthenticationManager::getCurrentUser()->getId()
-        . "' WHERE egv_famID='$iFamilyID'";
-    RunQuery($sSQL);
-
-    $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
+            $DonationMessage = '<p><b><span class="text-error">' . gettext('All donations from this family have been moved to another family.') . '</span></b></p>';
 }
 
 //Set the Page Title
-$sPageTitle = gettext('Family Delete Confirmation');
+$sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Family');
 
 //Do we have deletion confirmation?
 if (isset($_GET['Confirmed'])) {
@@ -93,11 +88,7 @@ if (isset($_GET['Confirmed'])) {
     RunQuery($sSQL);
 
     // Delete the photo files, if they exist
-    $photoThumbnail = 'Images/Family/thumbnails/' . $iFamilyID . '.jpg';
-    if (file_exists($photoThumbnail)) {
-        unlink($photoThumbnail);
-    }
-    $photoFile = 'Images/Family/' . $iFamilyID . '.jpg';
+    $photoFile = 'Images/Family/' . $iFamilyID . '.png';
     if (file_exists($photoFile)) {
         unlink($photoFile);
     }
@@ -111,14 +102,14 @@ $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
 $rsFamily = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsFamily));
 
-require_once 'Include/Header.php';
+require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <div class="card">
     <div class="card-body">
         <?php
         // Delete Family Confirmation
-        // See if this family has any donations OR an Egive association
+        // See if this family has any donations
         $sSQL = "SELECT plg_plgID FROM pledge_plg WHERE plg_PledgeOrPayment = 'Payment' AND plg_FamID = " . $iFamilyID;
         $rsDonations = RunQuery($sSQL);
         $bIsDonor = (mysqli_num_rows($rsDonations) > 0);
@@ -132,8 +123,8 @@ require_once 'Include/Header.php';
             // Select another family to move donations to.
             echo '<p class="LargeText">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
             echo '<form name=SelectFamily method=get action=SelectDelete.php>';
-            echo '<div class="ShadedBox">';
-            echo '<div class="LightShadedBox"><strong>' . gettext('Family Name') . ':' . " $fam_Name</strong></div>";
+            echo '<div class="card card-body">';
+            echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' . " $fam_Name</strong></div>";
             echo '<p>' . gettext('Please select another family with whom to associate these donations:');
             echo '<br><b>' . gettext('WARNING: This action can not be undone and may have legal implications!') . '</b></p>';
             echo "<input name=FamilyID value=$iFamilyID type=hidden>";
@@ -249,35 +240,35 @@ require_once 'Include/Header.php';
                         <td><?= $plg_DateLastEdited ?>&nbsp;</td>
                         <td><?= $EnteredFirstName . ' ' . $EnteredLastName ?>&nbsp;</td>
                     </tr>
-                    <?php
+            <?php
                 }
                 echo '</table>';
-        } else {
-            // No Donations from family.  Normal delete confirmation
-            echo $DonationMessage;
-            echo "<p class='callout callout-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
-            echo gettext('Note: This will also delete all Notes associated with this Family record.');
-            echo gettext('(this action cannot be undone)') . '</p>';
-            echo '<div>';
-            echo '<strong>' . gettext('Family Name') . ':</strong>';
-            echo '&nbsp;' . $fam_Name;
-            echo '</div><br/>';
-            echo '<div><strong>' . gettext('Family Members:') . '</strong><ul>';
-            //List Family Members
-            $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $iFamilyID;
-            $rsPerson = RunQuery($sSQL);
-            while ($aRow = mysqli_fetch_array($rsPerson)) {
-                extract($aRow);
-                echo '<li>' . $per_FirstName . ' ' . $per_LastName . '</li>';
-                RunQuery($sSQL);
+            } else {
+                // No Donations from family.  Normal delete confirmation
+                echo $DonationMessage;
+                echo "<div class='alert alert-warning'><b>" . gettext('Please confirm deletion of this family record:') . '</b><br/>';
+                echo gettext('Note: This will also delete all Notes associated with this Family record.');
+                echo gettext('(this action cannot be undone)') . '</div>';
+                echo '<div>';
+                echo '<strong>' . gettext('Family Name') . ':</strong>';
+                echo '&nbsp;' . $fam_Name;
+                echo '</div><br/>';
+                echo '<div><strong>' . gettext('Family Members:') . '</strong><ul>';
+                //List Family Members
+                $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $iFamilyID;
+                $rsPerson = RunQuery($sSQL);
+                while ($aRow = mysqli_fetch_array($rsPerson)) {
+                    extract($aRow);
+                    echo '<li>' . $per_FirstName . ' ' . $per_LastName . '</li>';
+                    RunQuery($sSQL);
+                }
+                echo '</ul></div>';
+                echo "<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
+                echo "<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
+                echo "<a class='btn btn-info' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
             }
-            echo '</ul></div>';
-            echo "<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
-            echo "<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
-            echo "<a class='btn btn-info' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
-        }
-        ?>
+            ?>
     </div>
 </div>
 <?php
-require_once 'Include/Footer.php';
+require_once __DIR__ . '/Include/Footer.php';
