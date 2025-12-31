@@ -11,6 +11,10 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FileSystemUtils;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use DateTime;
 use Exception;
 use JsonException;
@@ -259,6 +263,16 @@ class DemoDataService
                 $this->familyMap[$family->getId()] = $family;
                 $this->importResult['imported']['families']++;
 
+                // Import demo photo for family (if provided)
+                if (!empty($famData['photo'])) {
+                    $basename = basename($famData['photo']);
+                    $src = self::DATA_PATH . '/images/families/' . $basename;
+
+                    if (!$this->importDemoPhotoForEntity($src, $family, 'family')) {
+                        $this->addWarning("Failed to import family photo for family '{$family->getName()}'", ['src' => $src, 'family_id' => $family->getId()]);
+                    }
+                }
+
                 // members
                 $members = $famData['members'] ?? [];
                 foreach ($members as $m) {
@@ -297,6 +311,16 @@ class DemoDataService
                         $person->save();
                         $this->personMap[$person->getId()] = $person;
                         $this->importResult['imported']['people']++;
+
+                        // Simplified import: demo photos are stored in DATA_PATH/images/people/<basename>
+                        if (!empty($m['photo'])) {
+                            $basename = basename($m['photo']);
+                            $src = self::DATA_PATH . '/images/people/' . $basename;
+
+                            if (!$this->importDemoPhotoForEntity($src, $person, 'person')) {
+                                $this->addWarning("Failed to import person photo for {$person->getFirstName()} {$person->getLastName()}", ['src' => $src, 'person_id' => $person->getId()]);
+                            }
+                        }
 
                         // person notes
                         $pnotes = $m['notes'] ?? [];
@@ -679,6 +703,39 @@ class DemoDataService
         } catch (JsonException $e) {
             $this->importResult['errors'][] = "JSON parse error in file {$filename}: {$e->getMessage()}";
             return null;
+        }
+    }
+
+    /**
+     * Copy demo photo file to an entity (person|family) Images folder and refresh photo state.
+     * Returns true on success, false otherwise.
+     */
+    private function importDemoPhotoForEntity(string $src, $entity, string $entityType): bool
+    {
+        if (!file_exists($src) || !is_file($src)) {
+            return false;
+        }
+
+        try {
+            $ext = pathinfo($src, PATHINFO_EXTENSION);
+            $dst = SystemURLs::getImagesRoot() . '/' . $entityType . '/' . $entity->getId() . '.' . $ext;
+
+            if (!FileSystemUtils::copyFile($src, $dst)) {
+                return false;
+            }
+
+            // Refresh photo state
+            try {
+                $entity->getPhoto()->refresh();
+            } catch (\Throwable $e) {
+                // log but consider copy successful
+                $this->addWarning("Photo copied but failed to refresh photo state for {$entityType} id {$entity->getId()}: {$e->getMessage()}");
+            }
+
+            return true;
+        } catch (\Throwable $e) {
+            $this->addWarning("Exception during photo import for {$entityType} id {$entity->getId()}: {$e->getMessage()}");
+            return false;
         }
     }
 }

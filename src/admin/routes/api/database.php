@@ -9,6 +9,8 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\FileSystemUtils;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 $app->group('/api/database', function (RouteCollectorProxy $group): void {
@@ -58,6 +60,29 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
             $connection->exec('SET FOREIGN_KEY_CHECKS = 1;');
 
             $logger->info("Database reset completed - dropped $droppedCount objects (tables and views)");
+
+            // Remove uploaded images for people and families from Images root
+            try {
+                $imagesRoot = SystemURLs::getImagesRoot();
+                $personDir = $imagesRoot . '/person';
+                $familyDir = $imagesRoot . '/family';
+
+                // Remove and recreate person dir
+                if (is_dir($personDir)) {
+                    FileSystemUtils::recursiveRemoveDirectory($personDir);
+                }
+                @mkdir($personDir, 0755, true);
+
+                // Remove and recreate family dir
+                if (is_dir($familyDir)) {
+                    FileSystemUtils::recursiveRemoveDirectory($familyDir);
+                }
+                @mkdir($familyDir, 0755, true);
+
+                $logger->info('Database reset: cleared person and family Images directories', ['personDir' => $personDir, 'familyDir' => $familyDir]);
+            } catch (\Throwable $e) {
+                $this->logger->warning('Failed to clear Images directories during DB reset', ['error' => $e->getMessage()]);
+            }
 
             // Destroy the session directly
             session_destroy();
