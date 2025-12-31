@@ -34,7 +34,8 @@
                     "birthMonth": 1,
                     "birthDay": 15,
                     "maidenName": null,
-                    "familyRole": 1
+                    "familyRole": 2,
+                    "photo": "rebecca.garcia.jpg"
                 },
                 {
                     "title": "Mr",
@@ -51,7 +52,8 @@
                     "birthMonth": 2,
                     "birthDay": 15,
                     "maidenName": null,
-                    "familyRole": 2
+                    "familyRole": 2,
+                    "photo": "john.garcia.jpg"
                 }
             ],
             "notes": [],
@@ -94,7 +96,8 @@
                     "birthDay": 15,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 1
+                    "familyRole": 1,
+                    "photo": "nancy.hernandez.jpg"
                 },
                 {
                     "title": null,
@@ -145,7 +148,8 @@
                     "birthDay": 15,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 3
+                    "familyRole": 3,
+                    "photo": "mary.hernandez.jpg"
                 }
             ],
             "notes": [],
@@ -188,7 +192,8 @@
                     "birthDay": 15,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 1
+                    "familyRole": 1,
+                    "photo": "jason.johnson85.jpg"
                 },
                 {
                     "title": null,
@@ -205,7 +210,8 @@
                     "birthDay": 15,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 2
+                    "familyRole": 2,
+                    "photo": "matthew.johnson.jpg"
                 },
                 {
                     "title": null,
@@ -256,7 +262,8 @@
                     "birthDay": 15,
                     "classification": "Guest",
                     "maidenName": null,
-                    "familyRole": 3
+                    "familyRole": 3,
+                    "photo": "jason.johnson32.jpg"
                 }
             ],
             "notes": [
@@ -313,7 +320,8 @@
                     "birthDay": 15,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 1
+                    "familyRole": 1,
+                    "photo": "carol.williams.jpg"
                 },
                 {
                     "title": null,
@@ -330,7 +338,8 @@
                     "birthDay": 13,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 2
+                    "familyRole": 2,
+                    "photo": "mary.williams.jpg"
                 },
                 {
                     "title": null,
@@ -438,7 +447,8 @@
                     "birthDay": 17,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 1
+                    "familyRole": 1,
+                    "photo": "richard.scott2.jpg"
                 },
                 {
                     "title": "Mrs",
@@ -462,7 +472,8 @@
                     "birthDay": 18,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 2
+                    "familyRole": 2,
+                    "photo": "stephanie.scott.jpg"
                 },
                 {
                     "title": null,
@@ -479,7 +490,8 @@
                     "birthDay": 19,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 3
+                    "familyRole": 3,
+                    "photo": "joseph.scott37.jpg"
                 },
                 {
                     "title": null,
@@ -496,7 +508,8 @@
                     "birthDay": 20,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 3
+                    "familyRole": 3,
+                    "photo": "daniel.scott2.jpg"
                 },
                 {
                     "title": null,
@@ -513,7 +526,8 @@
                     "birthDay": 21,
                     "classification": "Guest",
                     "maidenName": null,
-                    "familyRole": 3
+                    "familyRole": 3,
+                    "photo": "stephanie.scott2.jpg"
                 },
                 {
                     "title": null,
@@ -530,7 +544,8 @@
                     "birthDay": 22,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 3
+                    "familyRole": 3,
+                    "photo": "george.scott1.jpg"
                 }
             ],
             "notes": [],
@@ -580,7 +595,8 @@
                     "birthDay": 23,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 1
+                    "familyRole": 1,
+                    "photo": "dorothy.johnson.jpg"
                 },
                 {
                     "title": null,
@@ -597,7 +613,8 @@
                     "birthDay": 24,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 2
+                    "familyRole": 2,
+                    "photo": "kenneth.johnson22.jpg"
                 },
                 {
                     "title": null,
@@ -614,7 +631,8 @@
                     "birthDay": 25,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 3
+                    "familyRole": 3,
+                    "photo": "daniel.johnson.jpg"
                 }
             ],
             "notes": [],
@@ -688,7 +706,8 @@
                     "birthDay": 27,
                     "classification": "Member",
                     "maidenName": "Baker",
-                    "familyRole": 2
+                    "familyRole": 2,
+                    "photo": "ashley.baker.jpg"
                 },
                 {
                     "title": null,
@@ -779,7 +798,8 @@
                     "birthDay": 3,
                     "classification": "Member",
                     "maidenName": null,
-                    "familyRole": 2
+                    "familyRole": 2,
+                    "photo": "cynthia.thompson.jpg"
                 },
                 {
                     "title": null,

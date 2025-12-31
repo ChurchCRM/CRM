@@ -298,6 +298,36 @@ class DemoDataService
                         $this->personMap[$person->getId()] = $person;
                         $this->importResult['imported']['people']++;
 
+                        // Simplified import: demo photos are stored in DATA_PATH/images/people/<basename>
+                        if (!empty($m['photo'])) {
+                            $basename = basename($m['photo']);
+                            $src = self::DATA_PATH . '/images/people/' . $basename;
+
+                            if (file_exists($src) && is_file($src)) {
+                                try {
+                                    $fileData = file_get_contents($src);
+                                    if ($fileData !== false) {
+                                        $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                                        $mime = $finfo->file($src);
+                                        $dataUrl = 'data:' . $mime . ';base64,' . base64_encode($fileData);
+
+                                        try {
+                                            $person->getPhoto()->setImageFromBase64($dataUrl);
+                                            $person->getPhoto()->refresh();
+                                        } catch (Exception $e) {
+                                            $this->addWarning("Failed to set photo for person {$person->getId()}: {$e->getMessage()}", ['src' => $src]);
+                                        }
+                                    } else {
+                                        $this->addWarning("Failed to read demo photo file: {$src}");
+                                    }
+                                } catch (\Throwable $e) {
+                                    $this->addWarning("Failed to import demo photo for person: {$e->getMessage()}", ['src' => $src]);
+                                }
+                            } else {
+                                $this->addWarning("Demo photo file not found at expected location: {$src}");
+                            }
+                        }
+
                         // person notes
                         $pnotes = $m['notes'] ?? [];
                         foreach ($pnotes as $pn) {
