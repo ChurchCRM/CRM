@@ -197,6 +197,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
     </div>
 <?php
 }
+?>
 <script>
     // Initialize all phone mask toggles for custom fields (guarded)
     document.addEventListener('DOMContentLoaded', function() {
@@ -210,4 +211,5 @@ if (mysqli_num_rows($rsPropList) === 0) {
     });
 </script>
 <?php
-require_once __DIR__ . '/Include/Footer.php';?>
+require_once __DIR__ . '/Include/Footer.php';
+?>
