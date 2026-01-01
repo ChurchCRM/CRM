@@ -2800,14 +2800,6 @@ msgid "eMail Dashboard"
 msgstr "Strona Główna eMail"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Przypisz numer Koperty do wszystkich rodzin z przynajmniej jednym członkiem."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Przypisz numer Koperty do Wszystkich rodzin"
-
-#: 
 msgid "Version"
 msgstr "Wersja"
 
@@ -3794,10 +3786,6 @@ msgstr "Ustaw True aby wyłączyć podawanie współrzędnych geograficznych w E
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Ustaw True aby włączyć użycie kopert na datki."
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Wprowadź kod HTML, który będzie wyświetlany jako nagłówek na górze każdej strony. Pamiętaj o zamknięciu tagów! Uwaga: Musisz ODŚWIEŻYĆ PRZEGLĄDARKĘ PO RAZ DRUGI, aby zobaczyć nowy nagłówek."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

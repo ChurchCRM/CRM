@@ -1,7 +1,4 @@
 {
-  "Boxed Layout": "",
-  "Activate the boxed layout": "",
-  "Toggle Sidebar": "",
   "Toggle the left sidebar's state (open or collapse)": "",
   "Tables Settings": "",
   "Page length": "",
@@ -98,5 +95,8 @@
   "Family removed from cart": "",
   "Group added to cart": "",
   "Group removed from cart": "",
-  "in cart": ""
+  "in cart": "",
+  "members. Already had": "",
+  "people added to cart": "",
+  "people already in cart": ""
 }

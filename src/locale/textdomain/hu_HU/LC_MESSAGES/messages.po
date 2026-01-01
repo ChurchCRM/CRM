@@ -2790,14 +2790,6 @@ msgid "eMail Dashboard"
 msgstr "E-mail műszerfal"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Célhoz boríték számok minden család legalább egy tagja."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Célhoz boríték számok minden család."
-
-#: 
 msgid "Version"
 msgstr "Verzió"
 
@@ -3783,10 +3775,6 @@ msgstr "Állítsa Igazra a szélesség és hosszúság megadásának letiltásá
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Állítsa Igazra az adományborítékok használatának engedélyezéséhez"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Adja meg a HTML kódot, amely minden oldal tetején fejlécként fog megjelenni. Ügyeljen a tagek lezárására! Megjegyzés: FRISSÍTSE BÖNGÉSZŐJÉT KÉTSZER az új fejléc megjelenítéséhez."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

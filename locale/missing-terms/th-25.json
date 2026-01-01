@@ -1,8 +1,4 @@
 {
-  "Import sample families, people, and groups to explore ChurchCRM with realistic data.": "",
-  "Install TLS/SSL certificate for better security": "",
-  "Jan": "",
-  "Jr., Sr.": "",
   "Jul": "",
   "Jun": "",
   "Latest Note": "",
@@ -98,5 +94,9 @@
   "in": "",
   "issues": "",
   "open": "",
-  "years": ""
+  "years": "",
+  "yes": "",
+  "(Enter state/province for countries without predefined states)": "",
+  "Available": "",
+  "Base URL configuration is invalid. Please check your Config.php file.": ""
 }

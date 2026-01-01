@@ -2723,14 +2723,6 @@ msgid "eMail Dashboard"
 msgstr "የኢሜል"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "ቢያንስ አንድ አባል ላላቸው ቤተሰቦች በሙሉ የተመደበው የመለያ ቁጥሮች"
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "ለሁሉም ቤተሰቦች የተመደበ የመለያ ቁጥሮች"
-
-#: 
 msgid "Version"
 msgstr "ሥሪት"
 
@@ -3706,10 +3698,6 @@ msgstr "በቤተሰብ አርታኢ ውስጥ ወደ ኬክሮስ እና ኬን
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "የልገሳ ኤንቨሎፖችን ለመጠቀም እውነት ያዘጋጁ"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "በእያንዳንዱ ገጽ አናት ላይ እንደ ራስጌ የሚታየውን HTML ኮድ ያስገቡ. መለያዎችዎን መዝጋትዎን ያረጋግጡ! ማስታወሻ: አዲሱን ራስጌ ለማየት አሳሽህን ለሁለተኛ ጊዜ ማደስ አለብህ."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

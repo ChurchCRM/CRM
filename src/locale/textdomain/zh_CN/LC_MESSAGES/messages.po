@@ -2802,14 +2802,6 @@ msgid "eMail Dashboard"
 msgstr "电子邮件仪表板"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "信封号码的所有家庭至少有一名成员。"
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "信封所有家庭的数字。"
-
-#: 
 msgid "Version"
 msgstr "Version"
 
@@ -3800,10 +3792,6 @@ msgstr "设置为true(是)以禁用在家庭编辑器中输入纬度和经度。
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "设置为true(是)以允许使用捐赠信封"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "输入HTML代码，该代码将显示为每页顶部的标题。一定要关闭你的标签！注意：您必须第二次刷新浏览器才能查看新标题。"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

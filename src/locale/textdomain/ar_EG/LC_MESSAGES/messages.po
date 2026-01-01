@@ -2723,14 +2723,6 @@ msgid "eMail Dashboard"
 msgstr "أرسل لوحة"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "تعيين أرقام المغلف لجميع الأسر التي لديها عضو واحد على الأقل."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "تعيين أرقام المغلف لجميع الأسر."
-
-#: 
 msgid "Version"
 msgstr "اصدار"
 
@@ -3706,10 +3698,6 @@ msgstr "تعيين وفيا لتعطيل دخول خطوط الطول والعر
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "تعيين صحيح لتمكين استخدام المغلفات التبرع"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "أدخل في كود HTML والتي سيتم عرضها على النحو رأس في أعلى كل صفحة. تأكد من إغلاق العلامات الخاصة بك! ملاحظة: يجب أن تقوم بتحديث المتصفح A مرة الثانية لعرض رأس جديد."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

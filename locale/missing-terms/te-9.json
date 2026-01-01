@@ -1,7 +1,4 @@
 {
-  "Guardian(s) of": "",
-  "A notification was triggered by the classroom teacher at": "",
-  "Please go to this location": "",
   "Your ChurchCRM password has been changed": "",
   "Password Reset Link": "",
   "Reset Password": "",
@@ -98,5 +95,8 @@
   "Group Role": "",
   "Members from group": "",
   "Members to another group": "",
-  "Members to cart": ""
+  "Members to cart": "",
+  "OR Create a Group and add the CART in ONE ACTION": "",
+  "Create Group + ADD Cart": "",
+  "Move Event": ""
 }

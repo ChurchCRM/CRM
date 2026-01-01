@@ -2735,14 +2735,6 @@ msgid "eMail Dashboard"
 msgstr "Trang tổng quan eMail"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Đã chỉ định số phong bì cho tất cả các gia đình có ít nhất một thành viên."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Chỉ định số phong bì cho tất cả các gia đình."
-
-#: 
 msgid "Version"
 msgstr "Phiên bản"
 
@@ -3718,10 +3710,6 @@ msgstr "Đặt true để tắt tính năng nhập Vĩ độ và Kinh độ tron
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Đặt true để cho phép sử dụng phong bì quyên góp"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Nhập mã HTML sẽ được hiển thị dưới dạng tiêu đề ở đầu mỗi trang. Hãy chắc chắn đóng thẻ của bạn! Lưu ý: Bạn phải LÀM LẠI TRÌNH DUYỆT CỦA BẠN MỘT LẦN THỨ HAI để xem tiêu đề mới."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

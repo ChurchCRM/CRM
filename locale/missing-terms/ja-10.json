@@ -1,5 +1,4 @@
 {
-  "Reset": "",
   "Restore": "",
   "Restore from a backup file. Erases existing data.": "",
   "Review Donation Funds": "",
@@ -98,5 +97,6 @@
   "View Logs": "",
   "View and manage system log files for debugging.": "",
   "You must enter a Last Name.": "",
-  "Your privacy is important. We never share your information with third parties.": ""
+  "Your privacy is important. We never share your information with third parties.": "",
+  "Additional Information": ""
 }

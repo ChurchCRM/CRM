@@ -1,5 +1,4 @@
 {
-  "Nov": "",
   "Oct": "",
   "Open": "",
   "Open Deposits:": "",
@@ -98,5 +97,6 @@
   "2FA Enabled": "",
   "Active Users": "",
   "ChMeetings Export": "",
-  "Delete User": ""
+  "Delete User": "",
+  "Disable 2FA": ""
 }

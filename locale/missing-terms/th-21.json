@@ -1,8 +1,4 @@
 {
-  "Create a backup of your database before applying the update.": "",
-  "Current Version:": "",
-  "Database Backup": "",
-  "Download & Apply": "",
   "Download and Apply System Update": "",
   "Download the latest release and apply it to your ChurchCRM installation.": "",
   "Downloaded": "",
@@ -98,5 +94,9 @@
   "ChurchCRM Installation": "",
   "Copy": "",
   "DSN": "",
-  "Database Server": ""
+  "Database Server": "",
+  "Debug Info": "",
+  "Document Root": "",
+  "Email Configuration": "",
+  "Email Debug Info": ""
 }

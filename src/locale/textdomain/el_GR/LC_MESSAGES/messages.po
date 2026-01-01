@@ -2723,14 +2723,6 @@ msgid "eMail Dashboard"
 msgstr "Πίνακας ελέγχου ηλεκτρονικού ταχυδρομείου"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Δόθηκαν αριθμοί φακέλων σε όλες τις οικογένειες με τουλάχιστον ένα μέλος."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Δόθηκαν αριθμοί φακέλων σε όλες τις οικογένειες."
-
-#: 
 msgid "Version"
 msgstr "Εκδοχή"
 
@@ -3706,10 +3698,6 @@ msgstr "Ορίστε true για να απενεργοποιήσετε την ε
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Ορίστε true για να ενεργοποιήσετε τη χρήση φακέλων δωρεών"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Εισαγάγετε κώδικα HTML που θα εμφανίζεται ως κεφαλίδα στο επάνω μέρος κάθε σελίδας. Φροντίστε να κλείσετε τις ετικέτες σας! Σημείωση: Πρέπει να ανανεώσετε το πρόγραμμα περιήγησής σας για δεύτερη φορά για να δείτε τη νέα κεφαλίδα."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

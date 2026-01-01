@@ -1,5 +1,4 @@
 {
-  "Disable 2FA": "",
   "Export all people data in ChMeetings format for import into external systems.": "",
   "Export to ChMeetings CSV": "",
   "Exporting...": "",
@@ -79,5 +78,6 @@
   "View Properties": "",
   "e.g., Visitors, Children": "",
   "of pledges": "",
-  "records": ""
+  "records": "",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": ""
 }

@@ -2697,14 +2697,6 @@ msgid "eMail Dashboard"
 msgstr "ईमेल डैशबोर्ड"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "कम से कम एक सदस्य वाले सभी परिवारों को लिफाफा नंबर आवंटित किए गए।"
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "सभी परिवारों को लिफाफा नंबर आवंटित किए गए।"
-
-#: 
 msgid "Version"
 msgstr "संस्करण"
 
@@ -3671,10 +3663,6 @@ msgstr "परिवार संपादक में अक्षांश �
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "दान लिफाफों के उपयोग को सक्षम करने के लिए true सेट करें"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "HTML कोड दर्ज करें जो प्रत्येक पृष्ठ के शीर्ष पर हेडर के रूप में प्रदर्शित होगा।"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

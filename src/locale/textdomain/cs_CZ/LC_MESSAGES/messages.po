@@ -2719,14 +2719,6 @@ msgid "eMail Dashboard"
 msgstr "Nástěnka e-Mailů"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Přidělena čísla obálek všem rodinám s alespoň jedním členem."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Přidělena čísla obálek všem rodinám."
-
-#: 
 msgid "Version"
 msgstr "Verze"
 
@@ -3698,10 +3690,6 @@ msgstr "Nastavením hodnoty true zakážete zadávání zeměpisné šířky a d
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Nastavením hodnoty true povolíte používání dárcovských obálek"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Zadejte kód HTML, který se zobrazí jako záhlaví v horní části každé stránky. Nezapomeňte uzavřít značky! Poznámka: Aby se nové záhlaví zobrazilo, je třeba PODRUHÉ OBNOVIT PROHLÍŽEČ."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -8519,11 +8507,6 @@ msgstr "Musí se jednat o platnou adresu URL začínající http:// nebo https:/
 #: 
 msgid "Must be a valid port number (e.g., 3306)"
 msgstr "Musí být platné číslo portu (např. 3306)"
-
-#: 
-msgctxt ", -, ., / allowed."
-msgid "Must start with / if not empty, no trailing slash. Only letters, numbers, "
-msgstr "Musí začínat znakem /, pokud není prázdný, bez koncového lomítka. Pouze písmena, číslice, "
 
 #: 
 msgid "Next Member"

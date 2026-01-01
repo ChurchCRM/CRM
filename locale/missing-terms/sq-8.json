@@ -1,5 +1,4 @@
 {
-  "No records were returned from the previous report. Please adjust your filters or date range and try again.": "",
   "Please enter a menu name (2-50 characters)": "",
   "Please enter a valid URL starting with http:// or https://": "",
   "All system file signatures match the expected values.": "",
@@ -101,5 +100,6 @@
   "Deleting an event will also delete all attendance counts. Delete this event?": "",
   "Deleting this event type will NOT delete existing events. Are you sure?": "",
   "Deleting this event will also delete all attendance records. Are you sure?": "",
-  "Edit Event": ""
+  "Edit Event": "",
+  "Editing Event": ""
 }

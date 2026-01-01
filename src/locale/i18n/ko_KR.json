@@ -666,8 +666,6 @@
     "Do you have any suggestions for us?": "교회를 위해 제안하고 싶은 것이 있나요?",
     "How did you learn of the church?": "우리 교회를 어떻게 알게 되었나요?",
     "eMail Dashboard": "이메일 대시보드",
-    "Assigned envelope numbers to all families with at least one member.": "구성원이 있는 모든 가족에 헌금봉투 번호를 배정했습니다.",
-    "Assigned envelope numbers to all families.": "모든 가족에 헌금봉투 번호를 배정했습니다.",
     "Version": "버전",
     "Copyright": "저작권",
     "All rights reserved": "모든 권리를 보유합니다.",
@@ -910,7 +908,6 @@
     "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.": "True로 설정하면 가족 정보에서 결혼기념일 입력을 막습니다. False로 설정하면 입력할 수 있습니다.",
     "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.": "True로 설정하면 가족 정보에서 위도와 경도를 입력할 수 없습니다. False로 설정하면 입력과 표시가 활성화됩니다. 조회는 계속 수행됩니다.",
     "Set true to enable use of donation envelopes": "True로 설정하면 헌금봉투 기능을 사용합니다.",
-    "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.": "페이지 상단에 표시할 HTML 코드를 입력하세요. 태그를 반드시 닫아야 합니다! 새 헤더를 보려면 브라우저를 한 번 더 새로고침해야 합니다.",
     "Number of checks for Deposit Slip Report": "입금 내역서 보고서에 표시할 수표 수",
     "Set true to enable use of scanned checks": "True로 설정하면 스캔한 수표 기능을 사용합니다.",
     "Unit used to measure distance, miles or km.": "거리 단위(마일 또는 km)",
@@ -2021,9 +2018,6 @@
     "Must be a valid URL starting with http:// or https://": "http:// 또는 https://로 시작하는 유효한 URL이어야 합니다",
     "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "http:// 또는 https://로 시작하는 유효한 URL이어야 합니다 (예: http://localhost 또는 https://domain.com)",
     "Must be a valid port number (e.g., 3306)": "유효한 포트 번호여야 합니다 (예: 3306)",
-    ", -, ., / allowed.": {
-        "Must start with / if not empty, no trailing slash. Only letters, numbers, ": "값이 있는 경우 반드시 /로 시작해야 하며, 끝에 /를 붙일 수 없습니다. 영문자, 숫자만 허용 "
-    },
     "Next Member": "다음 구성원",
     "Passwords do not match": "비밀번호가 일치하지 않습니다",
     "Phone Type": "전화 유형",

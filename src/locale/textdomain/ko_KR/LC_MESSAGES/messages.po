@@ -2721,14 +2721,6 @@ msgid "eMail Dashboard"
 msgstr "이메일 대시보드"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "구성원이 있는 모든 가족에 헌금봉투 번호를 배정했습니다."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "모든 가족에 헌금봉투 번호를 배정했습니다."
-
-#: 
 msgid "Version"
 msgstr "버전"
 
@@ -3702,10 +3694,6 @@ msgstr "True로 설정하면 가족 정보에서 위도와 경도를 입력할 �
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "True로 설정하면 헌금봉투 기능을 사용합니다."
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "페이지 상단에 표시할 HTML 코드를 입력하세요. 태그를 반드시 닫아야 합니다! 새 헤더를 보려면 브라우저를 한 번 더 새로고침해야 합니다."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -8526,11 +8514,6 @@ msgstr "http:// 또는 https://로 시작하는 유효한 URL이어야 합니다
 #: 
 msgid "Must be a valid port number (e.g., 3306)"
 msgstr "유효한 포트 번호여야 합니다 (예: 3306)"
-
-#: 
-msgctxt ", -, ., / allowed."
-msgid "Must start with / if not empty, no trailing slash. Only letters, numbers, "
-msgstr "값이 있는 경우 반드시 /로 시작해야 하며, 끝에 /를 붙일 수 없습니다. 영문자, 숫자만 허용 "
 
 #: 
 msgid "Next Member"

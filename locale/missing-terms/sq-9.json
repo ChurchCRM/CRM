@@ -1,5 +1,4 @@
 {
-  "Editing Event": "",
   "Enter event title...": "",
   "Event": "",
   "Event Type Name": "",
@@ -101,5 +100,6 @@
   "Admin Dashboard": "",
   "Advanced Operations": "",
   "All System Settings": "",
-  "An unexpected error occurred. Please contact your administrator.": ""
+  "An unexpected error occurred. Please contact your administrator.": "",
+  "Apr": ""
 }

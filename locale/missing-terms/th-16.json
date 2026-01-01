@@ -1,7 +1,4 @@
 {
-  "Edit this Class": "",
-  "OK": "",
-  "Please select target Role for members": "",
   "GroupID required for role selection prompt": "",
   "Select Group and Role": "",
   "Are you sure you want to remove this person's membership from": "",
@@ -98,5 +95,8 @@
   "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "",
   "Links": "",
   "Show custom links on the left menu.": "",
-  "Enable Sunday School left menu.": ""
+  "Enable Sunday School left menu.": "",
+  "Enable Finance menu": "",
+  "Enable Events menu.": "",
+  "Enable Fundraiser menu.": ""
 }

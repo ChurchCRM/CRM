@@ -1,7 +1,4 @@
 {
-  "members. Already had": "",
-  "people added to cart": "",
-  "people already in cart": "",
   "people from cart": "",
   "people removed from cart": "",
   "Person already in cart": "",
@@ -62,9 +59,6 @@
   "Must be a valid URL starting with http:// or https://": "",
   "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "",
   "Must be a valid port number (e.g., 3306)": "",
-  ", -, ., / allowed.": {
-    "Must start with / if not empty, no trailing slash. Only letters, numbers, ": ""
-  },
   "Next Member": "",
   "Passwords do not match": "",
   "Phone Type": "",
@@ -100,5 +94,9 @@
   "Complete": "",
   "Continue to Backup": "",
   "Continue to Download & Apply": "",
-  "Create Backup": ""
+  "Create Backup": "",
+  "Create a backup of your database before applying the update.": "",
+  "Current Version:": "",
+  "Database Backup": "",
+  "Download & Apply": ""
 }

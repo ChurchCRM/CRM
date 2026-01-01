@@ -1,8 +1,4 @@
 {
-  "Debug Info": "",
-  "Document Root": "",
-  "Email Configuration": "",
-  "Email Debug Info": "",
   "Filesystem Permissions": "",
   "Hostname": "",
   "IP Address": "",
@@ -104,5 +100,9 @@
     "other": ""
   },
   "✓ CheckOut": "",
-  "%d Orphaned Files Detected": ""
+  "%d Orphaned Files Detected": "",
+  "%d files have been modified or are missing. Use Force Re-install to restore official versions.": "",
+  "%d files have failed integrity validation.": "",
+  "%d files will be permanently deleted.": "",
+  "%d orphaned files were detected on your server.": ""
 }

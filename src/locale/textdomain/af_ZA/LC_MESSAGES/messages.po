@@ -2723,14 +2723,6 @@ msgid "eMail Dashboard"
 msgstr "e-pos Dashboard"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Koevertnommers toegeken aan alle gesinne met ten minste een lid."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Toegewysde koevertnommers aan alle gesinne."
-
-#: 
 msgid "Version"
 msgstr "Weergawe"
 
@@ -3706,10 +3698,6 @@ msgstr "Stel waar om die invoer van Latitude en Longitude in Family Editor uit t
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Stel waar om die gebruik van donasie-koeverte moontlik te maak"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Voer HTML-kode in wat as 'n koptekst aan die bokant van elke bladsy vertoon word. Maak seker dat u u etikette toemaak! Opmerking: u moet u blaaier 'n TWEEDE KEER VERVERS om die nuwe opskrif te sien."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -11391,4 +11379,160 @@ msgstr "Spaans - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Spaans - Mexiko"
+
+#: 
+msgid "Add Property Type"
+msgstr "Voeg eiendomstipe by"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Voeg jou eerste eiendomstipe by"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Outomaties bereken vanaf bogenoemde tellings"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Deur hierdie veld te verwyder, sal u onherroeplik alle groep-liddata wat aan hierdie veld toegeken is, verloor!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Deur hierdie fonds te verwyder, kan u historiese gifte rekords beïnvloed!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategorie Naam"
+
+#: 
+msgid "Checked In"
+msgstr "Aangemeld"
+
+#: 
+msgid "Checked Out"
+msgstr "Afgemeld"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Huidige Fiskale Jaar"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Verwyder (sal alle geassosieerde rekords uitvee)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Wysig eiendomstipe"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Voer komma-geskeide telkategorieë in (bv. Lede, Besoekers, Kinders)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Voer preeknotas of gebeurtenisteks in..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Bestaande donasiefondse"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Bestaande groep eienskappe"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Kon nie rol bywerk nie. Probeer asseblief weer."
+
+#: 
+msgid "Family Pledges"
+msgstr "Gesinsbelofte"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Veldveranderinge sal verlore gaan as u nie 'Veranderinge Stoor' klik voor 'Verwyder' of 'Voeg Nuut' nie!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filter volgens klas"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fonds suksesvol verwyder"
+
+#: 
+msgid "In Use"
+msgstr "In Gebruik"
+
+#: 
+msgid "Manage"
+msgstr "Bestuur"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Geen beloftes gevind vir die geselekteerde fiskale jaar nie"
+
+#: 
+msgid "No property types found"
+msgstr "Geen eiendomstipes gevind nie"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Aantal rekords wat hierdie eiendomstipe gebruik"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Opsionele gedetailleerde beskrywing van hierdie eiendomstipe"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Reguleer asseblief die foute hieronder."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Beloofde bedrag"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Beloftedashboard"
+
+#: 
+msgid "Remaining"
+msgstr "Oorblywend"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Verwyder hierdie bywoningstelling?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Kies die tipe rekord waarvoor hierdie eiendom van toepassing is"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Daardie fondsnaam bestaan reeds."
+
+#: 
+msgid "Total Pledges"
+msgstr "Totale Beloftes"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Volg en bestuur belofte-verpligtinge per gesin en fonds"
+
+#: 
+msgid "View Properties"
+msgstr "Bekyk eienskappe"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "bv., Besoekers, Kinders"
+
+#: 
+msgid "of pledges"
+msgstr "van beloftes"
+
+#: 
+msgid "records"
+msgstr "rekords"
 

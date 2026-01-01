@@ -2721,14 +2721,6 @@ msgid "eMail Dashboard"
 msgstr "לוח בקרת דואר אלקטרוני"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "מספרי מעטפות הוקצו לכל המשפחות עם לפחות חבר אחד."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "מספרי מעטפות הוקצו לכל המשפחות."
-
-#: 
 msgid "Version"
 msgstr "גרסה"
 
@@ -3702,10 +3694,6 @@ msgstr "הגדר כ-true כדי להשבית הזנת קו רוחב וקו או�
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "הגדר כ-true כדי לאפשר שימוש במעטפות תרומה"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "הזן קוד HTML שיוצג ככותרת בראש כל עמוד. הקפד לסגור את התגיות שלך! הערה: עליך לרענן את הדפדפן פעם שנייה כדי לראות את הכותרת החדשה."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

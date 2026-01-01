@@ -2724,14 +2724,6 @@ msgid "eMail Dashboard"
 msgstr "Dasbor Surel"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Menetapkan nomor amplop untuk semua keluarga dengan setidaknya satu anggota."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Nomor amplop yang ditetapkan untuk semua keluarga."
-
-#: 
 msgid "Version"
 msgstr "Versi: kapan"
 
@@ -3707,10 +3699,6 @@ msgstr "Set true untuk menonaktifkan memasukkan Latitude dan Longitude di Family
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Set true untuk mengaktifkan penggunaan amplop donasi"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Masukkan kode HTML yang akan ditampilkan sebagai tajuk di bagian atas setiap halaman. Pastikan untuk menutup tag Anda! Catatan: Anda harus MEMBANGKITKAN BROWSER ANDA WAKTU KEDUA untuk melihat tajuk baru."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

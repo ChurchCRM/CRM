@@ -1,8 +1,4 @@
 {
-  "Tip:": "",
-  "Valid Settings": "",
-  "An error occurred during demo data import": "",
-  "Demo data imported successfully": "",
   "Include Sunday School classes and enrollments": "",
   "Need to remove this data later?": "",
   "No Payments on this Deposit": "",
@@ -104,5 +100,9 @@
   "Backup Type": "",
   "Backup complete! Click below to download.": "",
   "Backup completed successfully!": "",
-  "Backup downloaded. Server copy removed.": ""
+  "Backup downloaded. Server copy removed.": "",
+  "Backup failed. Please try again.": "",
+  "Backup generated and copied to remote server": "",
+  "Backup in progress, please wait...": "",
+  "Backup to External Storage": ""
 }

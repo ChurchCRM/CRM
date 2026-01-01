@@ -71,9 +71,6 @@
   "Must be a valid URL starting with http:// or https://": "",
   "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "",
   "Must be a valid port number (e.g., 3306)": "",
-  ", -, ., / allowed.": {
-    "Must start with / if not empty, no trailing slash. Only letters, numbers, ": ""
-  },
   "Next Member": "",
   "Phone Type": "",
   "Please add at least one family member.": "",
@@ -100,5 +97,6 @@
   "Back to Login": "",
   "Back to login": "",
   "Backup Skipped": "",
-  "Check GitHub for the latest release information": ""
+  "Check GitHub for the latest release information": "",
+  "Complete": ""
 }

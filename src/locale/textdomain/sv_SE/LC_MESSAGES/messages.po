@@ -2830,14 +2830,6 @@ msgid "eMail Dashboard"
 msgstr "E-post instrumentbräda"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Tilldelad kuvertnummer till alla familjer med minst en medlem"
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Tilldelad kuvertnummer till alla familjer."
-
-#: 
 msgid "Version"
 msgstr "Version"
 
@@ -3831,10 +3823,6 @@ msgstr "Ställ in true för att inaktivera att ange Latitude och Longitud i Fami
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Ställ in true för att möjliggöra användning av donations kuvert"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Ange i HTML-kod som visas som en rubrik högst upp på varje sida. Var noga med att stänga dina taggar! Obs! Du måste uppdatera din brytare en andra tid för att se den nya rubriken."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
