@@ -16,21 +16,6 @@ if (empty($bSuppressSessionTests)) {  // This is used for the login page only.
     AuthenticationManager::ensureAuthentication();
 }
 
-// If magic_quotes off and array
-function addslashes_deep($value)
-{
-    return is_array($value) ?
-        array_map('addslashes_deep', $value) :
-        addslashes($value);
-}
-
-// If Magic Quotes is turned off, do the same thing manually..
-if (!isset($_SESSION['bHasMagicQuotes'])) {
-    foreach ($_REQUEST as $value) {
-        $value = addslashes_deep($value);
-    }
-}
-
 // Constants
 $aPropTypes = [
   1  => gettext('True / False'),
@@ -508,7 +493,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-font"></i></span>' .
             '</div>' .
-            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="50" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '">' .
+            '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="50" value="' . InputUtils::escapeAttribute($data) . '">' .
             '</div>';
             break;
 
@@ -518,7 +503,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-align-left"></i></span>' .
             '</div>' .
-            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="2" maxlength="100">' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '</textarea>' .
+            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="2" maxlength="100">' . InputUtils::escapeHTML($data) . '</textarea>' .
             '</div>';
             break;
 
@@ -528,7 +513,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-paragraph"></i></span>' .
             '</div>' .
-            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="4" maxlength="65535">' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '</textarea>' .
+            '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="4" maxlength="65535">' . InputUtils::escapeHTML($data) . '</textarea>' .
             '</div>';
             break;
 
@@ -655,7 +640,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             echo '<span class="input-group-text"><i class="fa-solid fa-phone"></i></span>';
             echo '</div>';
             // Note: using data-phone-mask instead of data-inputmask to prevent auto-initialization
-            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . htmlentities(stripslashes($data), ENT_QUOTES, 'UTF-8') . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"}\'>'; 
+            echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . InputUtils::escapeAttribute($data) . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"}\'>'; 
             echo '<div class="input-group-append">';
             echo '<div class="input-group-text">';
             echo '<div class="custom-control custom-checkbox mb-0">';

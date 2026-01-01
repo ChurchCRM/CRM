@@ -415,10 +415,10 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                 ?>
                 <tr>
                     <td>
-                        <span class="badge badge-primary"><?= htmlspecialchars($aPropTypes[$aTypeFields[$row]], ENT_QUOTES, 'UTF-8') ?></span>
+                        <span class="badge badge-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
                     </td>
                     <td>
-                        <input type="text" class="form-control form-control-sm" name="<?= $row . 'name' ?>" value="<?= htmlspecialchars(stripslashes($aNameFields[$row]), ENT_QUOTES, 'UTF-8') ?>" maxlength="40">
+                        <input type="text" class="form-control form-control-sm" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" maxlength="40">
                         <?php
                         if ($aNameErrors[$row]) {
                             echo '<small class="text-danger"><br>' . gettext('You must enter a name') . '</small>';
@@ -437,11 +437,11 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                         while ($aRow = mysqli_fetch_array($rsGroupList)) {
                             extract($aRow);
 
-                            echo '<option value="' . htmlspecialchars($grp_ID, ENT_QUOTES, 'UTF-8') . '"';
+                            echo '<option value="' . InputUtils::escapeAttribute($grp_ID) . '"';
                             if ($aSpecialFields[$row] == $grp_ID) {
                                 echo ' selected';
                             }
-                            echo '>' . htmlspecialchars($grp_Name, ENT_QUOTES, 'UTF-8') . '</option>';
+                            echo '>' . InputUtils::escapeHTML($grp_Name) . '</option>';
                         }
 
                         echo '</select>';

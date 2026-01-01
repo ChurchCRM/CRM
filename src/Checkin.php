@@ -514,7 +514,7 @@ function loadPerson($iPersonID)
     // Only show photo if person has uploaded one
     $personPhoto = new \ChurchCRM\dto\Photo('person', $iPersonID);
     if ($personPhoto->hasUploadedPhoto()) {
-        $html .= '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/photo" alt="' . htmlspecialchars($person->getFullName()) . '" class="photo-medium">';
+        $html .= '<img src="' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/photo" alt="' . InputUtils::escapeAttribute($person->getFullName()) . '" class="photo-medium">';
     }
     
     $html .= '</div>';
