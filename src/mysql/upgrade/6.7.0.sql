@@ -37,3 +37,6 @@ DELETE FROM queryparameters_qrp WHERE qrp_qry_ID = 21;
 
 -- Finally delete the query definition itself
 DELETE FROM query_qry WHERE qry_ID = 21;
+
+-- Remove deprecated `sHeader` system config (was an XSS vector)
+DELETE FROM config_cfg WHERE cfg_name = 'sHeader';

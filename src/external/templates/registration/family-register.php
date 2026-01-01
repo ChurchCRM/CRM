@@ -2,20 +2,10 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
-
-$headerHTML = '<b>Church</b>CRM';
-$sHeader = SystemConfig::getValue("sHeader");
-$sChurchName = SystemConfig::getValue("sChurchName");
-
-if (!empty($sHeader)) {
-    $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
-} elseif (!empty($sChurchName)) {
-    $headerHTML = $sChurchName;
-}
 
 ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-register.min.css') ?>">
@@ -32,7 +22,7 @@ if (!empty($sHeader)) {
 </script>
 <div class="register-box" style="width: 90%; max-width: 900px;">
     <div class="register-logo text-center mb-4">
-        <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= InputUtils::escapeHTML($headerHTML) ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= ChurchMetaData::getChurchName() ?></a>
         <p class="text-muted mt-2"><?= gettext("Join our community by registering your family") ?></p>
     </div>
     <div class="card registration-card">

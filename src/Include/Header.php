@@ -6,6 +6,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\view\MenuRenderer;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
@@ -187,14 +188,7 @@ $MenuFirst = 1;
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png" alt="ChurchCRM Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <!-- logo for regular state and mobile devices -->
-          <?php
-            $headerHTML = '<b>Church</b>CRM';
-            $sHeader = SystemConfig::getValue("sHeader");
-            if (!empty($sHeader)) {
-                $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
-            }
-            ?>
-          <span class="brand-text font-weight-light"><?= $headerHTML ?></span>
+                    <span class="brand-text font-weight-light"><?= ChurchMetaData::getChurchName() ?></span>
       </a>
     <!-- sidebar: style can be found in sidebar.less -->
     <div class="sidebar">
