@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-30 01:40+0000\n"
+"POT-Creation-Date: 2026-01-01 10:47-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1711,6 +1711,9 @@ msgstr ""
 msgid "Current Deposit"
 msgstr ""
 
+msgid "Current Fiscal Year"
+msgstr ""
+
 msgid "Current Role"
 msgstr ""
 
@@ -2984,6 +2987,9 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Family Pledge by Fiscal Year"
+msgstr ""
+
+msgid "Family Pledges"
 msgstr ""
 
 msgid "Family Properties"
@@ -5071,6 +5077,9 @@ msgstr ""
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr ""
 
+msgid "No pledges found for the selected fiscal year"
+msgstr ""
+
 msgid "No properties have been added yet"
 msgstr ""
 
@@ -5839,6 +5848,12 @@ msgstr ""
 msgid "Pledge"
 msgstr ""
 
+msgid "Pledge Amount"
+msgstr ""
+
+msgid "Pledge Dashboard"
+msgstr ""
+
 msgid "Pledge Family Summary"
 msgstr ""
 
@@ -6127,6 +6142,9 @@ msgid "Release Notes"
 msgstr ""
 
 msgid "Release Notes:"
+msgstr ""
+
+msgid "Remaining"
 msgstr ""
 
 msgid "Remittance Slip:"
@@ -7571,6 +7589,9 @@ msgstr ""
 msgid "Total Payments"
 msgstr ""
 
+msgid "Total Pledges"
+msgstr ""
+
 msgid "Total Users"
 msgstr ""
 
@@ -7584,6 +7605,9 @@ msgid "Total purchases: $"
 msgstr ""
 
 msgid "Totals"
+msgstr ""
+
+msgid "Track and manage pledge commitments by family and fund"
 msgstr ""
 
 msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
@@ -8610,6 +8634,9 @@ msgid "of"
 msgstr ""
 
 msgid "of People"
+msgstr ""
+
+msgid "of pledges"
 msgstr ""
 
 msgid "open"
