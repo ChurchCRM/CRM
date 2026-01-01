@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\SQLUtils;
+use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Exception;
 use PharData;
