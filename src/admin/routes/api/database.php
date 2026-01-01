@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\FileSystemUtils;
+use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 
