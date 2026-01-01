@@ -267,8 +267,8 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         </td>
                                         <td>
                                             <?php
-                                            $fundNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
-                                            $fundIdJs = htmlspecialchars(json_encode($aIDFields[$row]), ENT_QUOTES, 'UTF-8');
+                                            $fundNameJs = InputUtils::escapeAttribute(json_encode($aNameFields[$row]));
+                                            $fundIdJs = InputUtils::escapeAttribute(json_encode($aIDFields[$row]));
                                             ?>
                                             <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteFund(<?= $fundNameJs ?>, <?= $fundIdJs ?>)">
                                                 <i class="fa-solid fa-trash"></i>

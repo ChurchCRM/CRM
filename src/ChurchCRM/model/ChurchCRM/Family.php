@@ -11,6 +11,7 @@ use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
 use ChurchCRM\model\ChurchCRM\Base\Family as BaseFamily;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Utils\GeoUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTime;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -308,7 +309,7 @@ class Family extends BaseFamily implements PhotoInterface
      */
     public function getLinkHtml(bool $includePhoto = true, bool $strong = true): string
     {
-        $name = $strong ? '<strong>' . htmlspecialchars($this->getName()) . '</strong>' : htmlspecialchars($this->getName());
+        $name = $strong ? '<strong>' . InputUtils::escapeHTML($this->getName()) . '</strong>' : InputUtils::escapeHTML($this->getName());
         $html = '<a href="' . $this->getViewURI() . '">' . $name . '</a>';
 
         if ($includePhoto && $this->getPhoto() && $this->getPhoto()->hasUploadedPhoto()) {
@@ -329,7 +330,7 @@ class Family extends BaseFamily implements PhotoInterface
         if (mb_strlen($s) > $maxLen) {
             $s = mb_substr($s, 0, $maxLen) . '...';
         }
-        return htmlspecialchars($s);
+        return InputUtils::escapeHTML($s);
     }
 
     public function hasLatitudeAndLongitude(): bool

@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -549,7 +550,7 @@ class Bootstrapper
             echo '<div style="max-width: 800px; margin: 50px auto; padding: 20px;">';
             echo '<h1>ChurchCRM Error</h1>';
             echo '<div style="padding: 15px; margin: 20px 0; border: 1px solid #f5c6cb; background-color: #f8d7da; color: #721c24; border-radius: 4px;">';
-            echo htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+            echo InputUtils::escapeHTML($message);
             echo '</div></div></body></html>';
         }
         exit();
