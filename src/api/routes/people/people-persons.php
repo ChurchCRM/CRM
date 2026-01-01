@@ -188,6 +188,13 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
         $birthDay = $person->getBirthDay();
         $birthdayThisYear = new \DateTime("{$thisYear}-{$birthMonth}-{$birthDay}");
         $diff = (int) $today->diff($birthdayThisYear)->format('%r%a');
+        
+        // If birthday already passed this year (more than 7 days ago), calculate next year's birthday
+        if ($diff < -7) {
+            $birthdayNextYear = new \DateTime(($thisYear + 1) . "-{$birthMonth}-{$birthDay}");
+            $diff = (int) $today->diff($birthdayNextYear)->format('%r%a');
+        }
+        
         $formattedPerson['DaysUntil'] = $diff;
         
         // Get age (respects hideAge setting)
