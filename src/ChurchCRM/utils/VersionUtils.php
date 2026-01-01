@@ -10,11 +10,18 @@ use Propel\Runtime\Propel;
 class VersionUtils
 {
     private const COMPOSER_NAME = 'churchcrm/crm';
+    private static ?string $cachedVersion = null;
 
-    public static function getInstalledVersion()
+    public static function getInstalledVersion(): string
     {
+        // Return cached version if already fetched in this request
+        if (self::$cachedVersion !== null) {
+            return self::$cachedVersion;
+        }
+
         $version = InstalledVersions::getPrettyVersion(self::COMPOSER_NAME);
         if ($version) {
+            self::$cachedVersion = $version;
             return $version;
         }
 
@@ -22,7 +29,8 @@ class VersionUtils
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
         $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
 
-        return $composerJson['version'];
+        self::$cachedVersion = $composerJson['version'];
+        return self::$cachedVersion;
     }
 
     public static function getDBVersion()
