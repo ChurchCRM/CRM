@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\SystemConfig;
 
-require_once __DIR__ . '/Header-function.php';
 require_once __DIR__ . '/Header-Security.php';
 
 // Turn ON output buffering
