@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+    /// <reference types="cypress" />
 
 describe("User 2FA", () => {
     beforeEach(() => cy.setupStandardSession());

@@ -9,11 +9,91 @@
         currentMemberCount: 0,
     };
 
-    // ==================== Member Management ====================
+    // ==================== Phone Mask Toggle ====================
 
     /**
-     * Collapse all member cards except the specified one (accordion behavior)
+     * Initialize phone mask toggle for family home phone field
+     * Fallback for external pages that don't load the main bundle
      */
+    function initializeFamilyHomePhoneToggle() {
+        var checkbox = $('input[name="NoFormat_familyHomePhone"]');
+        var input = $('input[name="familyHomePhone"]');
+
+        if (checkbox.length === 0 || input.length === 0) {
+            return; // Elements not found
+        }
+
+        function updateMask() {
+            if (checkbox.is(":checked")) {
+                // Remove input mask to allow free-form entry
+                input.inputmask("remove");
+            } else {
+                // Re-apply input mask
+                input.inputmask();
+            }
+        }
+
+        // Set initial state with a small delay to ensure inputmask is ready
+        setTimeout(updateMask, 10);
+
+        // Listen for checkbox changes
+        checkbox.change(updateMask);
+    }
+
+    /**
+     * Initialize phone mask toggle for a specific member
+     * @param {number} memberIndex - The member index
+     */
+    function initializeMemberPhoneToggle(memberIndex) {
+        var checkbox = $(`#member-phone-noformat-${memberIndex}`);
+        var input = $(`#member-phone-${memberIndex}`);
+        var typeSelect = $(`#member-phone-type-${memberIndex}`);
+
+        if (checkbox.length === 0 || input.length === 0 || typeSelect.length === 0) {
+            return; // Elements not found
+        }
+
+        function updateMask() {
+            if (checkbox.is(":checked")) {
+                // Remove input mask to allow free-form entry
+                input.inputmask("remove");
+            } else {
+                // Apply mask based on phone type
+                var phoneType = typeSelect.val();
+                var mask = window.CRM.phoneFormats.home; // default
+
+                switch (phoneType) {
+                    case "mobile":
+                        mask = window.CRM.phoneFormats.cell;
+                        break;
+                    case "home":
+                        mask = window.CRM.phoneFormats.home;
+                        break;
+                }
+
+                // Remove existing mask and apply new one
+                input.inputmask("remove");
+                if (mask) {
+                    input.inputmask({ mask: mask });
+                }
+            }
+        }
+
+        function onPhoneTypeChange() {
+            // Always update mask when phone type changes, regardless of checkbox state
+            updateMask();
+        }
+
+        // Set initial state with a small delay to ensure inputmask is ready
+        setTimeout(updateMask, 10);
+
+        // Listen for checkbox changes
+        checkbox.change(updateMask);
+
+        // Listen for phone type changes - always update mask
+        typeSelect.change(onPhoneTypeChange);
+    }
+
     function collapseAllExcept(memberIndex) {
         document.querySelectorAll(".member-card").forEach((card) => {
             const index = card.getAttribute("data-member-index");
@@ -54,6 +134,7 @@
             "member-email": "email",
             "member-phone": "phone",
             "member-phone-type": "phoneType",
+            "member-phone-noformat": "phoneNoFormat",
             "member-birthday": "birthday",
             "member-hide-age": "hideAge",
         };
@@ -63,6 +144,11 @@
             if (element) {
                 element.id = `${className}-${memberIndex}`;
                 element.setAttribute("data-field-name", fieldName);
+
+                // Set unique name for form submission
+                if (element.name) {
+                    element.name = `${element.name}-${memberIndex}`;
+                }
 
                 // Set the label's "for" attribute if this is a checkbox/radio
                 if (element.type === "checkbox" || element.type === "radio") {
@@ -182,14 +268,8 @@
         // Initialize state on page load
         updateHideAgeState();
 
-        // Initialize input mask on new phone field (safe)
-        if ($.fn && $.fn.inputmask) {
-            try {
-                $(`#member-phone-${memberIndex}`).inputmask();
-            } catch (e) {
-                console.warn("Failed to initialize inputmask for member phone", e);
-            }
-        }
+        // Initialize phone mask toggle for new member
+        initializeMemberPhoneToggle(memberIndex);
 
         // Update display
         updateMemberCount();
@@ -702,10 +782,15 @@
                         state.validatedNavigation = { from: 0, to: 1 };
                         registrationStepper.next();
                     } else {
-                        window.CRM.notify(i18next.t("Please fill in all required fields correctly."), {
-                            type: "warning",
-                            delay: 4000,
-                        });
+                        // Use notify if available, otherwise fallback to alert for external pages
+                        if (window.CRM && window.CRM.notify) {
+                            window.CRM.notify(i18next.t("Please fill in all required fields correctly."), {
+                                type: "warning",
+                                delay: 4000,
+                            });
+                        } else {
+                            alert(i18next.t("Please fill in all required fields correctly."));
+                        }
                     }
                 });
             } else {
@@ -781,5 +866,13 @@
                 console.error("Failed to initialize inputmask:", e);
             }
         });
+
+        // Initialize phone mask toggles
+        if (window.CRM && window.CRM.formUtils && window.CRM.formUtils.togglePhoneMask) {
+            window.CRM.formUtils.togglePhoneMask("NoFormat_familyHomePhone", "familyHomePhone");
+        } else {
+            // Fallback: inline toggle functionality for external pages that don't load main bundle
+            initializeFamilyHomePhoneToggle();
+        }
     });
 })();

@@ -443,8 +443,12 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $nLatitude = $family->getLatitude();
         $nLongitude = $family->getLongitude();
 
-        // Expand the phone number
-        $sHomePhone = ExpandPhoneNumber($sHomePhone, $sCountry, $bNoFormat_HomePhone);
+        // No display formatting — keep stored value as-is
+
+        // Set "No format" checkbox based on whether field has data
+        // If field has data: checkbox checked, no mask
+        // If field is empty: checkbox unchecked, mask applied
+        $bNoFormat_HomePhone = !empty($sHomePhone);
 
         $sSQL = 'SELECT * FROM family_custom WHERE fam_ID = ' . $iFamilyID;
         $rsCustomData = RunQuery($sSQL);
@@ -694,7 +698,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
                         </div>
-                        <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+                        <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-phone-mask='{"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <input type="checkbox" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
@@ -756,7 +760,9 @@ require_once __DIR__ . '/Include/Header.php';
                 <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
             </div><!-- /.box-header -->
             <div class="card-body">
-                <?php mysqli_data_seek($rsCustomFields, 0);
+                <?php 
+                $customPhoneFields = [];
+                mysqli_data_seek($rsCustomFields, 0);
                 while ($rowCustomField = mysqli_fetch_array($rsCustomFields, MYSQLI_BOTH)) {
                     extract($rowCustomField);
                     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
@@ -765,10 +771,6 @@ require_once __DIR__ . '/Include/Header.php';
                             <div class="form-group col-md-6">
                                 <label for="<?= $fam_custom_Field ?>"><?= $fam_custom_Name ?></label>
                         <?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
-
-                        if ($type_ID == 11) {
-                            $fam_custom_Special = $sCountry;
-                        }
 
                         formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
                         if (!empty($aCustomErrors[$fam_custom_Field])) {
@@ -1010,6 +1012,7 @@ require_once __DIR__ . '/Include/Header.php';
 <script>
     window.CRM.familyRoles = <?= json_encode($familyRolesJS) ?>;
     window.CRM.classifications = <?= json_encode($classificationsJS) ?>;
+    window.CRM.customPhoneFields = <?= json_encode($customPhoneFields ?? []) ?>;
     window.CRM.initialFamilyMemberCount = <?= $iFamilyMemberRows ?>;
     window.CRM.i18n = {
         selectGender: <?= json_encode(gettext('Select Gender')) ?>,

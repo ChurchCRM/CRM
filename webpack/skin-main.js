@@ -42,6 +42,9 @@ import './avatar-loader';
 // Import photo utilities (lightbox and delete functions for Person/Family views)
 import { showPhotoLightbox, deletePhoto } from './photo-utils';
 
+// Import form utilities (phone mask toggles, etc.)
+import '../src/skin/js/form-utils.js';
+
 import '../src/skin/churchcrm.scss';
 
 // Make Quill initialization function available globally

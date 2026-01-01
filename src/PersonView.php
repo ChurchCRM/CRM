@@ -153,17 +153,17 @@ $sCity = $per_City ?? '';
 $sState = $per_State ?? '';
 $sZip = $per_Zip ?? '';
 $sCountry = $per_Country ?? '';
+
 $formattedMailingAddress = $person->getAddress();
 
-$sPhoneCountry = $per_Country ?? '';
-$sHomePhone = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
-$sHomePhoneUnformatted = ExpandPhoneNumber($per_HomePhone, $sPhoneCountry, $dummy);
+$sHomePhone = $per_HomePhone ?? '';
+$sHomePhoneUnformatted = $per_HomePhone ?? '';
 
-$sWorkPhone = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
-$sWorkPhoneUnformatted = ExpandPhoneNumber($per_WorkPhone, $sPhoneCountry, $dummy);
+$sWorkPhone = $per_WorkPhone ?? '';
+$sWorkPhoneUnformatted = $per_WorkPhone ?? '';
 
-$sCellPhone = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
-$sCellPhoneUnformatted = ExpandPhoneNumber($per_CellPhone, $sPhoneCountry, $dummy);
+$sCellPhone = $per_CellPhone ?? '';
+$sCellPhoneUnformatted = $per_CellPhone ?? '';
 
 $sEmail = $per_Email ?? '';
 $sUnformattedEmail = $per_Email ?? '';
@@ -422,7 +422,7 @@ $bOkToEdit = (
                             $displayIcon = "fa-solid fa-user";
                             $displayLink = SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $currentData;
                         } elseif ($type_ID == 11) {
-                            $custom_Special = $sPhoneCountry;
+                            $custom_Special = null;
                             $displayIcon = "fa-solid fa-phone";
                             // Sanitize phone number for tel: URI - allow only digits, +, -, (, ), and 'e' for extension
                             // Remove all other characters including spaces to prevent injection
@@ -782,7 +782,7 @@ $bOkToEdit = (
                                                         if (strlen($currentData) > 0) {
                                                             $sRowClass = AlternateRowStyle($sRowClass);
                                                             if ($type_ID == 11) {
-                                                                $prop_Special = $sPhoneCountry;
+                                                                $prop_Special = null;
                                                             }
                                                             echo '<strong>' . $prop_Name . '</strong>: ' . displayCustomField($type_ID, $currentData, $prop_Special) . '<br/>';
                                                         }
