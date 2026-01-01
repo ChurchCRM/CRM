@@ -318,18 +318,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     //If no errors, then let's update...
     if (!$bErrorFlag) {
-        $sPhoneCountry = $sCountry;
-
-        if (!$bNoFormat_HomePhone) {
-            $sHomePhone = CollapsePhoneNumber($sHomePhone, $sPhoneCountry);
-        }
-        if (!$bNoFormat_WorkPhone) {
-            $sWorkPhone = CollapsePhoneNumber($sWorkPhone, $sPhoneCountry);
-        }
-        if (!$bNoFormat_CellPhone) {
-            $sCellPhone = CollapsePhoneNumber($sCellPhone, $sPhoneCountry);
-        }
-
         //If no birth year, set to NULL
         if (strlen($iBirthYear) !== 4) {
             $iBirthYear = null;
