@@ -1,8 +1,8 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\Utils;
 
-class KeyManager
+class KeyManagerUtils
 {
     private static $TwoFASecretKey;
 

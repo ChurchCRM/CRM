@@ -10,7 +10,7 @@ use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\LockedEmail;
-use ChurchCRM\KeyManager;
+use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\LoggerUtils;
@@ -50,7 +50,7 @@ class LocalAuthentication implements IAuthenticationProvider
 
     public static function getIsTwoFactorAuthSupported(): bool
     {
-        return SystemConfig::getBooleanValue('bEnable2FA') && KeyManager::getAreAllSecretsDefined();
+        return SystemConfig::getBooleanValue('bEnable2FA') && KeyManagerUtils::getAreAllSecretsDefined();
     }
 
     public static function getTwoFactorQRCode($username, $secret): QrCode
