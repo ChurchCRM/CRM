@@ -266,7 +266,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                             echo '<p><?= gettext("No member properties have been created")?></p>';
                         } else {
                             ?>
-                            <table class="table w-100">
+                            <table class="table table-striped w-100">
                                 <thead>
                                 <tr>
                                     <th><?= gettext('Type') ?></th>
@@ -276,10 +276,8 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                                 </thead>
                                 <tbody>
                             <?php
-                            $sRowClass = 'RowColorA';
                             for ($row = 1; $row <= $numRows; $row++) {
-                                $sRowClass = AlternateRowStyle($sRowClass);
-                                echo '<tr class="' . $sRowClass . '">';
+                                echo '<tr>';
                                 echo '<td>' . $aPropTypes[$aTypeFields[$row]] . '</td>';
                                 echo '<td>' . $aNameFields[$row] . '</td>';
                                 echo '<td>' . $aDescFields[$row] . '&nbsp;</td>';
@@ -304,7 +302,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     } else {
                         // Display table of properties
                         ?>
-                            <table class="table w-100">
+                            <table class="table table-striped w-100">
                                 <thead>
                                 <tr>
                                     <th width="15%" class="align-top"><b><?= gettext('Type') ?></b></th>
@@ -327,19 +325,12 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                                     extract($aRow);
 
                                     if ($pro_prt_ID != $last_pro_prt_ID) {
-                                        echo '<tr class="';
-                                        if ($bIsFirst) {
-                                            echo 'RowColorB';
-                                        } else {
-                                            echo 'RowColorC';
-                                        }
-                                        echo '"><td><b>' . $prt_Name . '</b></td>';
+                                        echo '<tr><td><b>' . $prt_Name . '</b></td>';
 
                                         $bIsFirst = false;
                                         $last_pro_prt_ID = $pro_prt_ID;
-                                        $sRowClass = 'RowColorB';
                                     } else {
-                                        echo '<tr class="' . $sRowClass . '">';
+                                        echo '<tr>';
                                         echo '<td class="align-top">&nbsp;</td>';
                                     }
 
@@ -360,8 +351,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 
                                     echo '</tr>';
 
-                                    //Alternate the row style
-                                    $sRowClass = AlternateRowStyle($sRowClass); 
+ 
 
                                     $sAssignedProperties .= $pro_ID . ',';
                                 }

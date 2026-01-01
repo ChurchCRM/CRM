@@ -261,17 +261,6 @@ function FormatDate($dDate, bool $bWithTime = false): string
     return $formattedDate;
 }
 
-function AlternateRowStyle(string $sCurrentStyle): string
-{
-    if ($sCurrentStyle === 'RowColorA') {
-        return 'RowColorB';
-    } else {
-        return 'RowColorA';
-    }
-}
-
-
-
 //
 // Collapses a formatted phone number as long as the Country is known
 // Eg. for United States:  555-555-1212 Ext. 123 ==> 5555551212e123

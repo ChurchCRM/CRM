@@ -37,7 +37,7 @@ require_once __DIR__ . '/Include/Header.php';
 </div>
 <div class="card card-body">
 
-    <table cellpadding="5" cellspacing="5">
+    <table class="table table-striped">
 
         <tr class="TableHeader">
             <td><?= gettext('Select') ?></td>
@@ -54,8 +54,8 @@ require_once __DIR__ . '/Include/Header.php';
             while ($aRow = mysqli_fetch_array($rsPaddleNums)) {
                 extract($aRow);
 
-                $sRowClass = 'RowColorA'; ?>
-                <tr class="<?= $sRowClass ?>">
+                ?>
+                <tr>
                     <td>
                         <input type="checkbox" name="Chk<?= $pn_ID . '"';
                         if (isset($_GET['SelectAll'])) {

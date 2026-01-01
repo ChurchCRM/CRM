@@ -780,7 +780,7 @@ $bOkToEdit = (
                                                         extract($aProps);
                                                         $currentData = trim($aPersonProps[$prop_Field]);
                                                         if (strlen($currentData) > 0) {
-                                                            $sRowClass = AlternateRowStyle($sRowClass);
+
                                                             if ($type_ID == 11) {
                                                                 $prop_Special = null;
                                                             }
