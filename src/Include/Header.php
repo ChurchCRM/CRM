@@ -20,7 +20,7 @@ require_once __DIR__ . '/Header-Security.php';
 // Top level menu index counter
 $MenuFirst = 1;
 ?>
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8"/>
