@@ -424,6 +424,11 @@ class Bootstrapper
         session_name($sessionName);
         session_start();
         self::$bootStrapLogger->debug("Session initialized: " . $sessionName);
+        
+        // Cache the installed version in the session (only once per session)
+        if (!isset($_SESSION['sSoftwareInstalledVersion'])) {
+            $_SESSION['sSoftwareInstalledVersion'] = VersionUtils::getInstalledVersion();
+        }
     }
     private static function configureLogging(): void
     {
