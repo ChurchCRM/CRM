@@ -185,13 +185,6 @@ function convertCartToString(array $aCartArray): string
     return $sCartString;
 }
 
-
-
-function ChopLastCharacter(string $sText): string
-{
-    return mb_substr($sText, 0, strlen($sText) - 1);
-}
-
 function change_date_for_place_holder(?string $string = null): string
 {
     $string ??= '';
