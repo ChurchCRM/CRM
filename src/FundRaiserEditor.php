@@ -198,8 +198,8 @@ require_once __DIR__ . '/Include/Header.php';
                         $di_Item = '~';
                     }
 
-                    $sRowClass = 'RowColorA'; ?>
-                    <tr class="<?= $sRowClass ?>">
+                    ?>
+                    <tr>
                         <td>
                             <a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . $iFundRaiserID ?>"><?= $di_Item ?></a>
                         </td>

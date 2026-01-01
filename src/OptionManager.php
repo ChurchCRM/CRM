@@ -280,8 +280,7 @@ for ($row = 1; $row <= $numRows; $row++) {
     $aSeqs[$row] = $aRow['lst_OptionSequence'];
 }
 
-//Set the starting row color
-$sRowClass = 'RowColorA';
+// Legacy per-row classes removed; Bootstrap tables handle zebra striping
 
 // Use a minimal page header if this form is going to be used within a frame
 if ($embedded) {

@@ -114,11 +114,8 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
     if (mysqli_error($cnInfoCentral) != '') {
         echo gettext('An error occurred') . ': ' . mysqli_errno($cnInfoCentral) . '--' . mysqli_error($cnInfoCentral);
     } else {
-        $sRowClass = 'RowColorA';
-
-        echo '<table class="mx-auto table-spaced">';
-
-        echo '<tr class="' . $sRowClass . '">';
+        echo '<table class="table table-striped mx-auto">';
+        echo '<thead><tr class="table-light">';
 
         //Loop through the fields and write the header row
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
@@ -131,13 +128,11 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
             }
         }
 
-        echo '</tr>';
+        echo '</tr></thead><tbody>';
 
         //Loop through the recordset
         while ($aRow = mysqli_fetch_array($rsQueryResults)) {
-            $sRowClass = AlternateRowStyle($sRowClass);
-
-            echo '<tr class="' . $sRowClass . '">';
+            echo '<tr>';
 
             //Loop through the fields and write each one
             for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {

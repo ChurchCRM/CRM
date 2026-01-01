@@ -227,12 +227,8 @@ function DoQuery()
     <?php
     $aAddToCartIDs = [];
 
-    $sRowClass = 'RowColorA';
     while ($aRow = mysqli_fetch_array($rsQueryResults)) {
-        // Alternate the background color of the row
-        $sRowClass = AlternateRowStyle($sRowClass);
-
-        echo '<tr class="' . $sRowClass . '">';
+        echo '<tr>';
 
         // Loop through the fields and write each one
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {

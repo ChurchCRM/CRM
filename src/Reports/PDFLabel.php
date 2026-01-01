@@ -573,7 +573,6 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     $sSQL .= 'WHERE per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ') ';
     $sSQL .= 'ORDER BY per_LastName, per_FirstName, fam_Zip';
     $rsCartItems = RunQuery($sSQL);
-    $sRowClass = 'RowColorA';
     $didFam = [];
 
     while ($aRow = mysqli_fetch_array($rsCartItems)) {
@@ -584,7 +583,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         // At most one label for all others (for example, another church or a landscape
         // company)
 
-        $sRowClass = AlternateRowStyle($sRowClass);
+
 
         if (($aRow['per_fam_ID'] == 0) && ($mode == 'fam')) {
             // Skip people with no family ID

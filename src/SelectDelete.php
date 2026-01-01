@@ -185,7 +185,7 @@ require_once __DIR__ . '/Include/Header.php';
                  LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
                  WHERE plg_famID = ' . $iFamilyID . ' ORDER BY pledge_plg.plg_date';
             $rsPledges = RunQuery($sSQL); ?>
-            <table cellpadding="5" cellspacing="0" width="100%">
+            <table class="table table-striped w-100">
                 <tr class="TableHeader">
                     <td><?= gettext('Type') ?></td>
                     <td><?= gettext('Fund') ?></td>
@@ -214,21 +214,8 @@ require_once __DIR__ . '/Include/Header.php';
                     $plg_EditedBy = '';
                     extract($aRow);
 
-                    //Alternate the row style
-                    if ($tog) {
-                        $sRowClass = 'RowColorA';
-                    } else {
-                        $sRowClass = 'RowColorB';
-                    }
-
-                    if ($plg_PledgeOrPayment === 'Payment') {
-                        if ($tog) {
-                            $sRowClass = 'PaymentRowColorA';
-                        } else {
-                            $sRowClass = 'PaymentRowColorB';
-                        }
-                    } ?>
-                    <tr class="<?= $sRowClass ?>">
+                    ?>
+                    <tr>
                         <td><?= $plg_PledgeOrPayment ?>&nbsp;</td>
                         <td><?= $fundName ?>&nbsp;</td>
                         <td><?= MakeFYString($plg_FYID ? (int) $plg_FYID : null) ?>&nbsp;</td>

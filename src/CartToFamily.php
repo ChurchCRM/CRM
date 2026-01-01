@@ -150,18 +150,16 @@ echo $sError;
                 ->orderByLastName()
                 ->find();
 
-            echo "<table class='table'>";
+            echo "<table class='table table-striped'>";
             echo '<tr>';
             echo '<td>&nbsp;</td>';
             echo '<td><b>' . gettext('Name') . '</b></td>';
             echo '<td class="text-center"><b>' . gettext('Assign Role') . '</b></td>';
 
             $count = 1;
-            $sRowClass = 'RowColorA';
             foreach ($cartPersons as $cartPerson) {
-                $sRowClass = AlternateRowStyle($sRowClass);
 
-                echo '<tr class="' . $sRowClass . '">';
+                echo '<tr>';
                 echo '<td class="text-center">' . $count++ . '</td>';
                 $personPhoto = new \ChurchCRM\dto\Photo('person', $cartPerson->getId());
                 $photoIcon = '';
