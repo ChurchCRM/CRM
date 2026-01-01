@@ -2812,14 +2812,6 @@ msgid "eMail Dashboard"
 msgstr "eMail-Dashboard"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Zugewiesene Umschlagnummer an alle Familien mit mindestens einem Mitglied."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Zugewiesene Umschlagsnummer an alle Familien."
-
-#: 
 msgid "Version"
 msgstr "Version"
 
@@ -3814,10 +3806,6 @@ msgstr "Setzen Sie true, um die Eingabe von Breiten- und Längengrad im Familien
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Setze auf true um Spendenbriefumschläge zu aktivieren."
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Geben Sie den HTML-Code ein, der oben auf jeder Seite als Kopfzeile angezeigt wird. Achten Sie darauf, Ihre Tags zu schließen! Hinweis: Sie müssen Ihren Browser ein zweites Mal neu laden, um die neue Kopfzeile zu sehen."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

@@ -1,6 +1,4 @@
 {
-  "Page": "",
-  "Wedding": "",
   "and": "",
   "Group Directory": "",
   "Please detach this slip and mail with your next gift.": "",
@@ -98,5 +96,7 @@
   "Clear All Classes": "",
   "Add All Families": "",
   "Clear All Families": "",
-  "Add All Funds": ""
+  "Add All Funds": "",
+  "Clear All Funds": "",
+  "Deposit Comment": ""
 }

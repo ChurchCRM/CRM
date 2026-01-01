@@ -2693,14 +2693,6 @@ msgid "eMail Dashboard"
 msgstr "メール・ダッシュボード"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "少なくとも1人のメンバーがいるすべての世帯に封筒番号を割り当てました。"
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "すべての世帯に封筒番号を割り当てました。"
-
-#: 
 msgid "Version"
 msgstr "バージョン"
 
@@ -3667,10 +3659,6 @@ msgstr "ファミリーエディタで緯度と経度の入力を無効にする
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "寄付エンベロープの使用を有効にするにはtrueを設定します"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "各ページの上部にヘッダーとして表示されるHTMLコードを入力します。タグを閉じてください!注:新しいヘッダーを表示するには、ブラウザを2回更新する必要があります。"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

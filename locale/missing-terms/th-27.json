@@ -1,8 +1,4 @@
 {
-  "ChMeetings Export": "",
-  "Delete User": "",
-  "Disable 2FA": "",
-  "Export all people data in ChMeetings format for import into external systems.": "",
   "Export to ChMeetings CSV": "",
   "Exporting...": "",
   "Family Listing": "",
@@ -107,5 +103,9 @@
   "No property types found": "",
   "Number of records using this property type": "",
   "Optional detailed description of this property type": "",
-  "Please correct the errors below.": ""
+  "Please correct the errors below.": "",
+  "Pledge Amount": "",
+  "Pledge Dashboard": "",
+  "Remaining": "",
+  "Remove this attendance count?": ""
 }

@@ -2701,14 +2701,6 @@ msgid "eMail Dashboard"
 msgstr "Sähköpostin hallintapaneeli"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Määritetty kirjekuoren numerot kaikille perheille, joissa on vähintään yksi jäsen."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Määritetty kirjekuoren numerot kaikille perheille."
-
-#: 
 msgid "Version"
 msgstr "Versio"
 
@@ -3675,10 +3667,6 @@ msgstr "Aseta 'Tosi' poistaaksesi koordinaattien syöttämisen perhemuokkaimessa
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Aseta 'Tosi' salliaksesi lahjoituskuorien käytön"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Syötä HTML-koodi, joka näytetään sivun yläreunassa. Muista sulkea tagit!"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

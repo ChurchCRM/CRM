@@ -1,8 +1,4 @@
 {
-  "yes": "",
-  "(Enter state/province for countries without predefined states)": "",
-  "Available": "",
-  "Base URL configuration is invalid. Please check your Config.php file.": "",
   "Base URL is not configured in Config.php": "",
   "ChurchCRM Supported Locales": "",
   "Connect to your server via SSH, FTP, or your hosting control panel": "",
@@ -98,5 +94,9 @@
   "Remote backup failed": "",
   "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set": "",
   "2FA Enabled": "",
-  "Active Users": ""
+  "Active Users": "",
+  "ChMeetings Export": "",
+  "Delete User": "",
+  "Disable 2FA": "",
+  "Export all people data in ChMeetings format for import into external systems.": ""
 }

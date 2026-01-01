@@ -1,7 +1,4 @@
 {
-  "LastName, Title FirstName": "",
-  "Event Log severity to write, used by ORM and App Logs": "",
-  "Time zone": "",
   "Nexmo SMS API Key": "",
   "Nexmo SMS API Secret": "",
   "Nexmo SMS From Number": "",
@@ -98,5 +95,8 @@
   "Maximum number of Deposits": "",
   "Maximum number of Payments": "",
   "Maximum number of Addresses": "",
-  "Add Students": ""
+  "Add Students": "",
+  "Edit this Class": "",
+  "OK": "",
+  "Please select target Role for members": ""
 }

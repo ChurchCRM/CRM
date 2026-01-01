@@ -1,5 +1,4 @@
 {
-  "Backup downloaded. Server copy removed.": "",
   "Backup failed. Please try again.": "",
   "Backup generated and copied to remote server": "",
   "Backup in progress, please wait...": "",
@@ -98,5 +97,6 @@
   "Admin Dashboard": "",
   "Advanced Operations": "",
   "All System Settings": "",
-  "An unexpected error occurred. Please contact your administrator.": ""
+  "An unexpected error occurred. Please contact your administrator.": "",
+  "Back to Deposits": ""
 }

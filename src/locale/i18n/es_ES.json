@@ -666,8 +666,6 @@
     "Do you have any suggestions for us?": "¿Tiene alguna sugerencia para nosotros?",
     "How did you learn of the church?": "¿Cómo se enteró de la iglesia?",
     "eMail Dashboard": "Dashboard de correo electrónico",
-    "Assigned envelope numbers to all families with at least one member.": "Asignación de números de Sobre para todas las familias con al menos un miembro.",
-    "Assigned envelope numbers to all families.": "numeros asignados de sobres para todaslas familias",
     "Version": "Versión",
     "Copyright": "Derechos de autor",
     "All rights reserved": "Todos los derechos reservados",
@@ -910,7 +908,6 @@
     "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.": "Colocar en verdadero para deshabilitar ingreso de Fecha de Matrimonio en Editor de familia. Colocar en falso para habilitar ingreso de Fecha de Matrimonio en Editor de familia.",
     "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.": "Colocar en verdadero para deshabilitar ingreso de Latitud y Longitud en Editor de familia. Colocar en falso para habilitar ingreso de Latitud y Longitud en Editor de familia. Búsquedas inversas aún serán efectuadas, solamente que no mostradas.",
     "Set true to enable use of donation envelopes": "Colocar en verdadero para habilitar uso de sobres de donación",
-    "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.": "Ingresar en código HTML que será desplegado como cabecera arriba de cada página. Asegúrese de cerrar sus tags! Nota: Debe REFRESCAR SU NAVEGADOR UNA SEGUNDA VEZ para ver el nuevo encabezado.",
     "Number of checks for Deposit Slip Report": "Número de cheques para Reporte de fichas de depósito",
     "Set true to enable use of scanned checks": "Colocar en verdadero para habilitar el uso de cheques escaneados.",
     "Unit used to measure distance, miles or km.": "Unidad usada para medir distancias, millas o km.",
@@ -2023,9 +2020,6 @@
     "Must be a valid URL starting with http:// or https://": "Debe ser una URL válida que comience con http:// o https://",
     "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "Debe ser una URL válida que comience con http:// o https:// (por ejemplo, http://localhost o https://domain.com)",
     "Must be a valid port number (e.g., 3306)": "Debe ser un número de puerto válido (por ejemplo, 3306)",
-    ", -, ., / allowed.": {
-        "Must start with / if not empty, no trailing slash. Only letters, numbers, ": "Debe empezar con / si no está vacío, sin barra diagonal final. Solo letras, números, "
-    },
     "Next Member": "Próximo miembro",
     "Passwords do not match": "Las contraseñas no coinciden",
     "Phone Type": "Tipo de teléfono",

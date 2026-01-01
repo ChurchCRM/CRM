@@ -7,9 +7,6 @@
     "one": "%d año de edad",
     "other": "%d años de edad"
   },
-  ", -, ., / allowed.": {
-    "Must start with / if not empty, no trailing slash. Only letters, numbers, ": "Debe empezar con / si no está vacío, sin barra diagonal final. Solo letras, números, "
-  },
   "%d event in %s": {
     "one": "%d evento en %s",
     "other": "%d eventos en %s"

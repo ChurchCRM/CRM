@@ -1,5 +1,4 @@
 {
-  "Please enter a valid number": "",
   "Please enter a valid phone number": "",
   "Please fill in all required fields correctly.": "",
   "Failed to refresh upgrade information from GitHub.": "",
@@ -101,5 +100,6 @@
   "Monthly Averages": "",
   "No event types defined yet.": "",
   "Optional - Add sermon notes or additional event details": "",
-  "Optional - leave blank if not tracking": ""
+  "Optional - leave blank if not tracking": "",
+  "Optional notes about attendance...": ""
 }

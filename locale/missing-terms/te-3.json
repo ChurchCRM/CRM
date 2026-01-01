@@ -1,6 +1,4 @@
 {
-  " Italic": "",
-  " Bold": "",
   "Error making API Call to": "",
   "Error text": "",
   "Issue Report!": "",
@@ -98,5 +96,7 @@
   "Family Members:": "",
   "File Name:": "",
   "Members:": "",
-  "There were ": ""
+  "There were ": "",
+  "Filter by Fund": "",
+  "Disable Group Specific Properties": ""
 }

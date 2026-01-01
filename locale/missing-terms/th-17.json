@@ -1,7 +1,4 @@
 {
-  "Enable Finance menu": "",
-  "Enable Events menu.": "",
-  "Enable Fundraiser menu.": "",
   "Enable Email menu.": "",
   "Enabled Features": "",
   "Validation Error": "",
@@ -104,5 +101,8 @@
   "Remove Results from Cart": "",
   "Database Reset Functions": "",
   "Reset Database": "",
-  "This will reset the system data and will restart the system as a new install.": ""
+  "This will reset the system data and will restart the system as a new install.": "",
+  "Portuguese - Portugal": "",
+  "Holiday": "",
+  "Allow users to self-enroll in 2 factor authentication": ""
 }

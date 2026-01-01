@@ -1,6 +1,4 @@
 {
-  "Clear All Funds": "",
-  "Deposit Comment": "",
   "Your previous session timed out.  Please login again.": "",
   "Register a New Family": "",
   "Signature definition file signature failed validation": "",
@@ -55,7 +53,6 @@
   "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.": "",
   "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.": "",
   "Set true to enable use of donation envelopes": "",
-  "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.": "",
   "Number of checks for Deposit Slip Report": "",
   "Set true to enable use of scanned checks": "",
   "Unit used to measure distance, miles or km.": "",
@@ -98,5 +95,8 @@
   "Edit Deposit Slip": "",
   "View All Fundraisers": "",
   "Create New Fundraiser": "",
-  "Edit Fundraiser": ""
+  "Edit Fundraiser": "",
+  "View Buyers": "",
+  "Add Donors to Buyer List": "",
+  "Data/Reports": ""
 }

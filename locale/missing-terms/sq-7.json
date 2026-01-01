@@ -13,9 +13,6 @@
   "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)": "",
   "Database server port is required (e.g., 3306)": "",
   "Database username is required": "",
-  ", -, ., / allowed.": {
-    "Must start with / if not empty, no trailing slash. Only letters, numbers, ": ""
-  },
   "Please enter a valid phone number": "",
   "Please fill in all required fields correctly.": "",
   "Please review all information carefully before submitting. You can go back to make changes if needed.": "",
@@ -100,5 +97,6 @@
   "Your ChurchCRM installation is running the latest version.": "",
   "2-50 characters": "",
   "Dear Friend": "",
-  "No Data Found": ""
+  "No Data Found": "",
+  "No records were returned from the previous report. Please adjust your filters or date range and try again.": ""
 }

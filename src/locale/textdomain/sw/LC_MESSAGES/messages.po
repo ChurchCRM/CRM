@@ -2721,14 +2721,6 @@ msgid "eMail Dashboard"
 msgstr "Dashibodi ya barua pepe"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Imekabidhi nambari za bahasha kwa familia zote zilizo na angalau mshiriki mmoja."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Imekabidhi nambari za bahasha kwa familia zote."
-
-#: 
 msgid "Version"
 msgstr "Toleo"
 
@@ -3702,10 +3694,6 @@ msgstr "Weka kweli ili kuzima kuingiza Latitudo na Longitude katika Kihariri cha
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Weka kweli ili kuwezesha matumizi ya bahasha za michango"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Ingiza msimbo wa HTML ambao utaonyeshwa kama kichwa juu ya kila ukurasa. Hakikisha umefunga lebo zako! Kumbuka: Ni lazima UPYA UPYA KIvinjari CHAKO MARA YA PILI ili kutazama kichwa kipya."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

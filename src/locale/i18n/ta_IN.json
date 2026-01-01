@@ -666,8 +666,6 @@
     "Do you have any suggestions for us?": "எங்களுக்கு ஏதேனும் பரிந்துரைகள் உள்ளதா?",
     "How did you learn of the church?": "தேவாலயத்தைப் பற்றி நீங்கள் எவ்வாறு கற்றுக்கொண்டீர்கள்?",
     "eMail Dashboard": "eGive API டேட்டாஸ்ட்ரீமில் அபாயகரமான பிழை: '",
-    "Assigned envelope numbers to all families with at least one member.": "குறைந்தபட்சம் ஒரு உறுப்பினரைக் கொண்ட அனைத்து குடும்பங்களுக்கும் உறை எண்கள் ஒதுக்கப்பட்டுள்ளன.",
-    "Assigned envelope numbers to all families.": "அனைத்து குடும்பங்களுக்கும் உறை எண்கள் ஒதுக்கப்பட்டுள்ளன.",
     "Version": "பதிப்பு",
     "Copyright": "காப்புரிமை",
     "All rights reserved": "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை",
@@ -910,7 +908,6 @@
     "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.": "குடும்ப எடிட்டரில் திருமணத் தேதியை உள்ளிடுவதை முடக்குவதற்கு உண்மை அல்லது சரி என்று அமைக்கவும். ஃபேமிலி எடிட்டரில் திருமண தேதியை உள்ளிடுவதை இயக்குவதற்கு தவறு என அமைக்கவும்.",
     "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.": "குடும்ப எடிட்டரில் அட்சரேகை மற்றும் தீர்க்கரேகையை உள்ளிடுவதை முடக்குவதற்கு உண்மை அல்லது சரி என்று அமைக்கவும். ஃபேமிலி எடிட்டரில் அட்சரேகை மற்றும் தீர்க்கரேகையை உள்ளிடுவதை இயக்குவதற்கு தவறு என அமைக்கவும். தேடல்கள் இன்னும் செய்யப்படுகின்றன, காட்டப்படவில்லை.",
     "Set true to enable use of donation envelopes": "நன்கொடை உறைகளைப் பயன்படுத்துவதற்கு உண்மை அல்லது சரி என்று அமைக்கவும்",
-    "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.": "HTML குறியீட்டை உள்ளிடவும், அது ஒவ்வொரு பக்கத்தின் மேற்புறத்திலும் தலைப்பாகக் காட்டப்படும். உங்கள் குறிச்சொற்களை மூடுவதை உறுதி செய்யவும்! குறிப்பு: புதிய தலைப்பைப் பார்க்க, உங்கள் உலாவியை இரண்டாவது முறை புதுப்பிக்க வேண்டும்.",
     "Number of checks for Deposit Slip Report": "டெபாசிட் சீட்டு அறிக்கைக்கான காசோலைகளின் எண்ணிக்கை",
     "Set true to enable use of scanned checks": "ஸ்கேன் செய்யப்பட்ட காசோலைகளைப் பயன்படுத்துவதற்கு உண்மை அல்லது சரி என்று அமைக்கவும்",
     "Unit used to measure distance, miles or km.": "தூரம், மைல்கள் அல்லது கிமீ அளவிட பயன்படும் அலகு.",
@@ -2023,9 +2020,6 @@
     "Must be a valid URL starting with http:// or https://": "http:// அல்லது https:// உடன் தொடங்கும் செல்லுபடியாகும் URL ஆக இருக்க வேண்டும்",
     "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "http:// அல்லது https:// உடன் தொடங்கும் செல்லுபடியாகும் URL ஆக இருக்க வேண்டும் (எ.கா., http://localhost அல்லது https://domain.com)",
     "Must be a valid port number (e.g., 3306)": "செல்லுபடியாகும் போர்ட் எண்ணாக இருக்க வேண்டும் (எ.கா., 3306)",
-    ", -, ., / allowed.": {
-        "Must start with / if not empty, no trailing slash. Only letters, numbers, ": "காலியாக இல்லாவிட்டால் / உடன் தொடங்க வேண்டும், இறுதி சாய்வு இல்லை. எழுத்துக்கள், எண்கள் மட்டுமே,\nசூழல்\n, -, ., / அனுமதிக்கப்படுகிறது."
-    },
     "Next Member": "அடுத்த உறுப்பினர்",
     "Passwords do not match": "கடவுச்சொற்கள் பொருந்தவில்லை",
     "Phone Type": "தொலைபேசி வகை",

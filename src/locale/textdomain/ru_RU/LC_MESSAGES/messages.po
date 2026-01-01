@@ -2799,14 +2799,6 @@ msgid "eMail Dashboard"
 msgstr "Email Панель Управления"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Assigned Numbers конверт для всех семей, по крайней мере одним членом."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Всем семьям присвоены номера оболочек"
-
-#: 
 msgid "Version"
 msgstr "Версия"
 
@@ -3795,10 +3787,6 @@ msgstr "Установите true, чтобы запретить ввод шир
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Установите true, чтобы включить использование конвертов для пожертвований"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Введите HTML-код, который будет отображаться в качестве заголовка в верхней части каждой страницы. Обязательно закрывайте теги! Примечание: необходимо ОБНОВИТЬ БРАУЗЕР ВТОРОЙ РАЗ, чтобы увидеть новый заголовок."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

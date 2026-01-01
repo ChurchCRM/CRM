@@ -101,10 +101,8 @@
   "Must be a valid URL starting with http:// or https://": "",
   "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "",
   "Must be a valid port number (e.g., 3306)": "",
-  ", -, ., / allowed.": {
-    "Must start with / if not empty, no trailing slash. Only letters, numbers, ": ""
-  },
   "Please add at least one family member.": "",
   "Please correct the validation errors before continuing.": "",
-  "Please enter a valid email address (e.g., name@example.com)": ""
+  "Please enter a valid email address (e.g., name@example.com)": "",
+  "Please enter a valid number": ""
 }

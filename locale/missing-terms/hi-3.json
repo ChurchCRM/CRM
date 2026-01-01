@@ -1,5 +1,4 @@
 {
-  "Optional notes about attendance...": "",
   "People in Cart": "",
   "Person Checking In": "",
   "Save Event Type": "",
@@ -101,5 +100,6 @@
   "Classes and enrollments": "",
   "Clear all data and start fresh. Cannot be undone.": "",
   "Close All Deposits": "",
-  "Closed vs Total": ""
+  "Closed vs Total": "",
+  "Complete these essential setup tasks to get ChurchCRM running smoothly:": ""
 }

@@ -2723,14 +2723,6 @@ msgid "eMail Dashboard"
 msgstr "Tableau de bord eMail"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Attribuer des numéros d&#39;enveloppe à toutes les familles avec au moins un membre."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Attribuer des numéros d&#39;enveloppe pour toutes les familles."
-
-#: 
 msgid "Version"
 msgstr "Version"
 
@@ -3706,10 +3698,6 @@ msgstr "Cocher Vrai pour désactiver la saisie de latitude et de longitude dans 
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Cocher Vrai pour activer l'utilisation d&#39;enveloppes de dons"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Saisir un code HTML qui sera affiché en entête de chaque page. Vérifiez que les tags soient bien fermés ! Note : vous devrez RAFRAÎCHIR LA PAGE UNE SECONDE FOIS pour voir le nouvel entête."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
@@ -8540,11 +8528,6 @@ msgstr "Doit être une URL valide commençant par http:// ou https:// (par exemp
 #: 
 msgid "Must be a valid port number (e.g., 3306)"
 msgstr "Doit être un numéro de port valide (par exemple, 3306)"
-
-#: 
-msgctxt ", -, ., / allowed."
-msgid "Must start with / if not empty, no trailing slash. Only letters, numbers, "
-msgstr "Doit commencer par / si non vide, sans barre oblique finale. Seules les lettres, les chiffres, -, ., /sont autorisés."
 
 #: 
 msgid "Next Member"

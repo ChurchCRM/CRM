@@ -1,8 +1,4 @@
 {
-  "System Locale Support": "",
-  "System Support": "",
-  "URL does not contain a valid hostname": "",
-  "URL hostname is not valid": "",
   "URL is not in valid format": "",
   "URL must end with a trailing slash (/)": "",
   "URL must start with http:// or https://": "",
@@ -101,5 +97,15 @@
   "%d Person added to the Cart.": {
     "one": "",
     "other": ""
-  }
+  },
+  "%d Person successfully added to selected Family.": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person successfully added to selected Group.": {
+    "one": "",
+    "other": ""
+  },
+  "A ": "",
+  "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.": ""
 }

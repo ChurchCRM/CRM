@@ -666,8 +666,6 @@
     "Do you have any suggestions for us?": "Máš pro nás nějaká doporučení?",
     "How did you learn of the church?": "Jak ses o sboru dozvěděl?",
     "eMail Dashboard": "Nástěnka e-Mailů",
-    "Assigned envelope numbers to all families with at least one member.": "Přidělena čísla obálek všem rodinám s alespoň jedním členem.",
-    "Assigned envelope numbers to all families.": "Přidělena čísla obálek všem rodinám.",
     "Version": "Verze",
     "Copyright": "Copyright",
     "All rights reserved": "Všechna práva vyhrazena",
@@ -910,7 +908,6 @@
     "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.": "Nastavením hodnoty true zakážete zadávání data svatby v Editoru rodiny.  Nastavením false povolíte zadávání data svatby v Editoru rodiny.",
     "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.": "Nastavením hodnoty true zakážete zadávání zeměpisné šířky a délky v Editoru rodiny.  Nastavením false povolíte zadávání zeměpisné šířky a délky v Editoru rodin.  Vyhledávání se stále provádí, pouze se nezobrazuje.",
     "Set true to enable use of donation envelopes": "Nastavením hodnoty true povolíte používání dárcovských obálek",
-    "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.": "Zadejte kód HTML, který se zobrazí jako záhlaví v horní části každé stránky. Nezapomeňte uzavřít značky! Poznámka: Aby se nové záhlaví zobrazilo, je třeba PODRUHÉ OBNOVIT PROHLÍŽEČ.",
     "Number of checks for Deposit Slip Report": "Počet šeků pro zprávu o vkladových listech",
     "Set true to enable use of scanned checks": "Nastavením hodnoty true povolíte používání skenovaných šeků",
     "Unit used to measure distance, miles or km.": "Jednotka měření vzdálenosti, míle nebo km.",
@@ -2025,9 +2022,6 @@
     "Must be a valid URL starting with http:// or https://": "Musí se jednat o platnou adresu URL začínající http:// nebo https://",
     "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "Musí se jednat o platnou adresu URL začínající http:// nebo https:// (např. http://localhost nebo https://domain.com)",
     "Must be a valid port number (e.g., 3306)": "Musí být platné číslo portu (např. 3306)",
-    ", -, ., / allowed.": {
-        "Must start with / if not empty, no trailing slash. Only letters, numbers, ": "Musí začínat znakem /, pokud není prázdný, bez koncového lomítka. Pouze písmena, číslice, "
-    },
     "Next Member": "Další člen",
     "Passwords do not match": "Hesla nesouhlasí",
     "Phone Type": "Typ telefonu",
