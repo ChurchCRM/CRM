@@ -163,10 +163,10 @@ function MakeFYString(int|string|null $iFYID): string
 
 // Runs an SQL query.  Returns the result resource.
 // By default stop on error, unless a second (optional) argument is passed as false.
-// Delegates to ChurchCRM\Utils\Functions::runQuery() to avoid code duplication.
+// Delegates to ChurchCRM\Utils\FunctionsUtils::runQuery() to avoid code duplication.
 function RunQuery(string $sSQL, bool $bStopOnError = true)
 {
-    return \ChurchCRM\Utils\Functions::runQuery($sSQL, $bStopOnError);
+    return \ChurchCRM\Utils\FunctionsUtils::runQuery($sSQL, $bStopOnError);
 }
 
 function convertCartToString(array $aCartArray): string

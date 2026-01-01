@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\Utils;
 
 // Sourced from http://stackoverflow.com/questions/147821/loading-sql-files-from-within-php
 class SQLUtils

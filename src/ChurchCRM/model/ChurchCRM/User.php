@@ -5,7 +5,7 @@ namespace ChurchCRM\model\ChurchCRM;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\KeyManager;
+use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\Utils\MiscUtils;
 use Defuse\Crypto\Crypto;
@@ -415,7 +415,7 @@ class User extends BaseUser
         // that the user is capable of generating valid 2FA codes
         // encrypt the 2FA key since this object and its properties are serialized into the $_SESSION store
         // which is generally written to disk.
-        $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManager::getTwoFASecretKey());
+        $this->provisional2FAKey = Crypto::encryptWithPassword($key, KeyManagerUtils::getTwoFASecretKey());
 
         return $key;
     }
@@ -424,7 +424,7 @@ class User extends BaseUser
     {
         $google2fa = new Google2FA();
         $window = 2;
-        $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManager::getTwoFASecretKey());
+        $pw = Crypto::decryptWithPassword($this->provisional2FAKey, KeyManagerUtils::getTwoFASecretKey());
         $isKeyValid = $google2fa->verifyKey($pw, $twoFACode, $window);
         if ($isKeyValid) {
             $this->setTwoFactorAuthSecret($this->provisional2FAKey);
@@ -444,12 +444,12 @@ class User extends BaseUser
 
     public function getDecryptedTwoFactorAuthSecret()
     {
-        return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManager::getTwoFASecretKey());
+        return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManagerUtils::getTwoFASecretKey());
     }
 
     private function getDecryptedTwoFactorAuthRecoveryCodes(): array
     {
-        return explode(',', Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManager::getTwoFASecretKey()));
+        return explode(',', Crypto::decryptWithPassword($this->getTwoFactorAuthRecoveryCodes(), KeyManagerUtils::getTwoFASecretKey()));
     }
 
     public function disableTwoFactorAuthentication(): void
@@ -472,7 +472,7 @@ class User extends BaseUser
             $recoveryCodes[$i] = base64_encode(random_bytes(10));
         }
         $recoveryCodesString = implode(',', $recoveryCodes);
-        $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::getTwoFASecretKey()));
+        $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
         $this->save();
 
         return $recoveryCodes;
@@ -501,7 +501,7 @@ class User extends BaseUser
         if (($key = array_search($twoFaRecoveryCode, $codes)) !== false) {
             unset($codes[$key]);
             $recoveryCodesString = implode(',', $codes);
-            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManager::getTwoFASecretKey()));
+            $this->setTwoFactorAuthRecoveryCodes(Crypto::encryptWithPassword($recoveryCodesString, KeyManagerUtils::getTwoFASecretKey()));
 
             return true;
         }

@@ -1,6 +1,6 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\Utils;
 
 use ChurchCRM\Utils\LoggerUtils;
 

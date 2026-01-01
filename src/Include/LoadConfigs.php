@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use ChurchCRM\Bootstrapper;
-use ChurchCRM\KeyManager;
+use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\dto\SystemConfig;
 
 /**
@@ -25,4 +25,4 @@ Bootstrapper::init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRoot
 
 // Initialize KeyManager with 2FA secret from SystemConfig
 $twoFASecretKey = SystemConfig::getValue('sTwoFASecretKey');
-KeyManager::init($twoFASecretKey);
+KeyManagerUtils::init($twoFASecretKey);

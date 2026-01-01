@@ -12,6 +12,7 @@ use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
