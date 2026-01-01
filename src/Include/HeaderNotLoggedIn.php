@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 
 require_once __DIR__ . '/Header-Security.php';
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">

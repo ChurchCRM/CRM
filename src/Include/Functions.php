@@ -236,48 +236,6 @@ function FormatDate($dDate, bool $bWithTime = false): string
     return $formattedDate;
 }
 
-//
-// Collapses a formatted phone number as long as the Country is known
-// Eg. for United States:  555-555-1212 Ext. 123 ==> 5555551212e123
-//
-// Need to add other countries besides the US...
-//
-function CollapsePhoneNumber($sPhoneNumber, $sPhoneCountry)
-{
-    switch ($sPhoneCountry) {
-        case 'United States':
-            $sCollapsedPhoneNumber = '';
-            $bHasExtension = false;
-
-          // Loop through the input string
-            for ($iCount = 0; $iCount <= strlen($sPhoneNumber); $iCount++) {
-            // Take one character...
-                $sThisCharacter = mb_substr($sPhoneNumber, $iCount, 1);
-
-              // Is it a number?
-                if (ord($sThisCharacter) >= 48 && ord($sThisCharacter) <= 57) {
-                    // Yes, add it to the returned value.
-                    $sCollapsedPhoneNumber .= $sThisCharacter;
-                } elseif (!$bHasExtension && ($sThisCharacter == 'e' || $sThisCharacter == 'E')) {
-                    // Is the user trying to add an extension?
-                    // Yes, add the extension identifier 'e' to the stored string.
-                    $sCollapsedPhoneNumber .= 'e';
-                    // From now on, ignore other non-digits and process normally
-                    $bHasExtension = true;
-                }
-            }
-            break;
-
-        default:
-            $sCollapsedPhoneNumber = $sPhoneNumber;
-            break;
-    }
-
-    return $sCollapsedPhoneNumber;
-}
-
-
-
 // Returns a string of a person's full name, formatted as specified by $Style
 // $Style = 0  :  "Title FirstName MiddleName LastName, Suffix"
 // $Style = 1  :  "Title FirstName MiddleInitial. LastName, Suffix"
@@ -996,11 +954,7 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
     // phone
         case 11:
             if (strlen($data) > 0) {
-                if (!isset($_POST[$col_Name . 'noformat'])) {
-                    $sSQL .= $col_Name . " = '" . CollapsePhoneNumber($data, $special) . "', ";
-                } else {
-                    $sSQL .= $col_Name . " = '" . $data . "', ";
-                }
+                $sSQL .= $col_Name . " = '" . $data . "', ";
             } else {
                 $sSQL .= $col_Name . ' = NULL, ';
             }
