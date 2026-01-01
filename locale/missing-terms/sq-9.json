@@ -1,6 +1,5 @@
 {
   "Editing Event": "",
-  "Enter comma-separated count categories. \"Total\" is automatically included.": "",
   "Enter event title...": "",
   "Event": "",
   "Event Type Name": "",
@@ -101,5 +100,6 @@
   "Add Pledge": "",
   "Admin Dashboard": "",
   "Advanced Operations": "",
-  "All System Settings": ""
+  "All System Settings": "",
+  "An unexpected error occurred. Please contact your administrator.": ""
 }

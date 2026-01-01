@@ -1,6 +1,4 @@
 {
-  "Follow us on": "",
-  "invalid event type id": "",
   "invalid calendar pinning": "",
   "invalid group id": "",
   "invalid status value": "",
@@ -104,5 +102,7 @@
   "Manage 2 Factor Authentication": "",
   "Two Factor Status": "",
   "Please confirm disabling 2 Factor Auth for this user": "",
-  "Please enter 2FA code": ""
+  "Please enter 2FA code": "",
+  "2FA Code": "",
+  "2 Factor Authentication enrollment": ""
 }

@@ -1,8 +1,4 @@
 {
-  "Your new password must be at least": "",
-  "characters": "",
-  "Enter your current password, then your new password twice.  Passwords must be at least": "",
-  "characters in length.": "",
   "Old Password": "",
   "New Password": "",
   "Confirm New Password": "",
@@ -98,5 +94,9 @@
   "Total of all purchases: $": "",
   "Total purchases: $": "",
   "Amount paid: ________________": "",
-  "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __": ""
+  "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __": "",
+  "                                        Signature ________________________________________________________________": "",
+  "Totals": "",
+  "Certificate of Ownership": "",
+  "Directory": ""
 }

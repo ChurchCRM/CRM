@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Editor příspěvkových fondů"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Opravdu chcete smazat tento fond?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Neplatná pole nebo výběry. Změny nebyly uloženy! Proveďte opravu a zkuste to znovu!"
 
@@ -771,10 +767,6 @@ msgstr "Opakování"
 #: 
 msgid "Attendance Counts"
 msgstr "Počty účastníků"
-
-#: 
-msgid "Add counter"
-msgstr "Přidat počítadlo"
 
 #: 
 msgid "Return to Event Types"
@@ -1614,11 +1606,6 @@ msgid "No properties have been added yet"
 msgstr "Zatím nebyly přidány žádné vlastnosti"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Varování: Pokud před použitím tlačítek nahoru, dolů, smazat nebo 'přidat nový' nepoužijete tlačítko 'Uložit změny', budou změny polí ztraceny!"
-
-#: 
 msgid "Show in"
 msgstr "Ukázat v"
 
@@ -2348,10 +2335,6 @@ msgstr "které jej používají a ztratíte odpovídající přiřazení vlastno
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Potvrďte smazání toho typu vlastnosti"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Editor typů vlastností"
 
 #: 
 msgid "Property Type List"
@@ -9328,10 +9311,6 @@ msgstr "Upravit událost"
 #: 
 msgid "Editing Event"
 msgstr "Úprava akce"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Zadejte kategorie počtu oddělené čárkami. „Celkem“ je zahrnuto automaticky."
 
 #: 
 msgid "Enter event title..."

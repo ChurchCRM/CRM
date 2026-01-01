@@ -752,10 +752,6 @@ msgid "Donation Fund Editor"
 msgstr "Donasjon Fund Editor"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Er du sikker på at du vil slette dette fondet?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ugyldige felt eller valg. Endringer ikke lagret! Rett opp og prøv igjen!"
 
@@ -799,10 +795,6 @@ msgstr "Recurrence Mønster"
 #: 
 msgid "Attendance Counts"
 msgstr "Oppmøte teller"
-
-#: 
-msgid "Add counter"
-msgstr "Legg til teller"
 
 #: 
 msgid "Return to Event Types"
@@ -1661,11 +1653,6 @@ msgid "No properties have been added yet"
 msgstr "Ingen egenskaper er ennå ikke lagt"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Advarsel: Felt endringer vil gå tapt hvis du ikke \"Lagre endringer\" før du bruker opp, ned, slette eller &#39;Legg til ny&#39; knappen!"
-
-#: 
 msgid "Show in"
 msgstr "Vis i"
 
@@ -2434,10 +2421,6 @@ msgstr "det og miste noen tilsvarende eiendom oppdrag."
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Vennligst bekreft sletting av denne Eiendomstype"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Eiendomstype Editor"
 
 #: 
 msgid "Property Type List"
@@ -9437,10 +9420,6 @@ msgstr "Rediger hendelse"
 #: 
 msgid "Editing Event"
 msgstr "Redigerer hendelse"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Skriv inn kommaseparerte tellekategorier. \"Total\" er inkludert automatisk."
 
 #: 
 msgid "Enter event title..."

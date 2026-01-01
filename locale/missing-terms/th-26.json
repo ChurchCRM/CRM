@@ -1,9 +1,4 @@
 {
-  "found": "",
-  "in": "",
-  "issues": "",
-  "open": "",
-  "years": "",
   "yes": "",
   "(Enter state/province for countries without predefined states)": "",
   "Available": "",
@@ -98,5 +93,10 @@
   "Failed to delete orphaned files": "",
   "Failed to download latest release": "",
   "Failed to refresh upgrade information": "",
-  "Failed to upload family photo": ""
+  "Failed to upload family photo": "",
+  "Failed to upload person photo": "",
+  "Remote backup failed": "",
+  "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set": "",
+  "2FA Enabled": "",
+  "Active Users": ""
 }

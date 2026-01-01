@@ -1,5 +1,4 @@
 {
-  "Your privacy is important. We never share your information with third parties.": "",
   "Additional Information": "",
   "All information is correct": "",
   "Assign Opportunities": "",
@@ -94,5 +93,19 @@
     "one": "",
     "other": ""
   },
-  "A ": ""
+  "A ": "",
+  "Add Property Type": "",
+  "Add Your First Property Type": "",
+  "Auto-calculated from counts above": "",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
+  "By deleting this fund, you may affect historical donation records!": "",
+  "Category Name": "",
+  "Checked In": "",
+  "Checked Out": "",
+  "Current Fiscal Year": "",
+  "Delete (will delete all associated records)": "",
+  "Edit Property Type": "",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
+  "Enter sermon notes or event text...": "",
+  "Existing Donation Funds": ""
 }

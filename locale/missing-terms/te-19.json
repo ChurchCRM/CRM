@@ -1,7 +1,4 @@
 {
-  "No format": "",
-  "Open": "",
-  "Open Deposits:": "",
   "Organization, timezone, email": "",
   "Organizational structure": "",
   "Orphaned Files:": "",
@@ -98,5 +95,8 @@
   "Open this file in a text editor:": "",
   "Register Now": "",
   "Register Your Church": "",
-  "Save the file and refresh this page": ""
+  "Save the file and refresh this page": "",
+  "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment.": "",
+  "Starts with <strong>http://</strong> or <strong>https://</strong>": "",
+  "Subdirectory installation:": ""
 }

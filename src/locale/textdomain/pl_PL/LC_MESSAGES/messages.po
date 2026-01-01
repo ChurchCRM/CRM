@@ -749,10 +749,6 @@ msgid "Donation Fund Editor"
 msgstr "Edytor Datków (Celu)"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Czy jesteś pewny że chcesz usunąć ten Cel (Fund)?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Nieprawidłowe pola lub wybór. Nie zapisano zmian! Proszę spróbować ponownie!"
 
@@ -796,10 +792,6 @@ msgstr "Częstotliwość Wydarzenia"
 #: 
 msgid "Attendance Counts"
 msgstr "Ilość Uczestników"
-
-#: 
-msgid "Add counter"
-msgstr "Dodaj licznik"
 
 #: 
 msgid "Return to Event Types"
@@ -1653,11 +1645,6 @@ msgid "No properties have been added yet"
 msgstr "Nie dodano jeszcze żadnych nowych Ustawień"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Uwaga: Wprowadzone zmiany zostaną UTRACONE jeżeli nie 'Zapiszesz Zmian' przed wykonaniem inne operacji!"
-
-#: 
 msgid "Show in"
 msgstr "Pokaż"
 
@@ -2408,10 +2395,6 @@ msgstr "go używają oraz wszystkie ich powiązania."
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Proszę potwierdzić USUNIĘCIE tego Typu Właściwości"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Edytor Typów Właściwości"
 
 #: 
 msgid "Property Type List"
@@ -9419,10 +9402,6 @@ msgstr "Edytuj wydarzenie"
 #: 
 msgid "Editing Event"
 msgstr "Edytowanie wydarzenia"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Wpisz kategorie (oddzielone przecinkami). 'Suma' dodawana automatycznie."
 
 #: 
 msgid "Enter event title..."

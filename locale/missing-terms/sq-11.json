@@ -1,5 +1,4 @@
 {
-  "No format": "",
   "Nov": "",
   "Oct": "",
   "Open": "",
@@ -98,5 +97,6 @@
   "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set": "",
   "2FA Enabled": "",
   "Active Users": "",
-  "ChMeetings Export": ""
+  "ChMeetings Export": "",
+  "Delete User": ""
 }

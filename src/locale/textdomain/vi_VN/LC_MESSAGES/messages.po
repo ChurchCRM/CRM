@@ -737,10 +737,6 @@ msgid "Donation Fund Editor"
 msgstr "Biên tập viên Quỹ đóng góp"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Bạn có chắc chắn muốn xóa quỹ này không?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Các trường hoặc lựa chọn không hợp lệ. Thay đổi không được lưu! Vui lòng sửa và thử lại!"
 
@@ -783,10 +779,6 @@ msgstr "Mô hình phát sinh"
 #: 
 msgid "Attendance Counts"
 msgstr "Số lượng chuyên cần"
-
-#: 
-msgid "Add counter"
-msgstr "Thêm bộ đếm"
 
 #: 
 msgid "Return to Event Types"
@@ -1627,11 +1619,6 @@ msgid "No properties have been added yet"
 msgstr "Chưa có thuộc tính nào được thêm vào"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Cảnh báo: Các thay đổi trường sẽ bị mất nếu bạn không 'Lưu Thay đổi' trước khi sử dụng nút lên, xuống, xóa hoặc 'thêm mới'!"
-
-#: 
 msgid "Show in"
 msgstr "Hiển thị trong"
 
@@ -2363,10 +2350,6 @@ msgstr "nó và mất bất kỳ chuyển nhượng tài sản tương ứng."
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Vui lòng xác nhận việc xóa Loại Thuộc tính này"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Chỉnh sửa loại thuộc tính"
 
 #: 
 msgid "Property Type List"
@@ -9345,10 +9328,6 @@ msgstr "Chỉnh sửa sự kiện"
 #: 
 msgid "Editing Event"
 msgstr "Đang chỉnh sửa sự kiện"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Nhập các danh mục đếm cách nhau bằng dấu phẩy. \"Tổng cộng\" được tự động bao gồm."
 
 #: 
 msgid "Enter event title..."

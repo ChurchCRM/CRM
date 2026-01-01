@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Donaties"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Weet u zeker dat u dit fonds wil verwijderen?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ongeldig veld of selectie. Verandering niet aangepast! Graag veranderen en probeer opnieuw"
 
@@ -771,10 +767,6 @@ msgstr "Periodiek Patroon"
 #: 
 msgid "Attendance Counts"
 msgstr "Opkomst Tellingen"
-
-#: 
-msgid "Add counter"
-msgstr "Voeg teller toe"
 
 #: 
 msgid "Return to Event Types"
@@ -1614,11 +1606,6 @@ msgid "No properties have been added yet"
 msgstr "Er zijn nog geen kenmerken toegevoegd"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Waarschuwing: Aanpassingen op het veld zullen verdwijnen als u niet 'Eerst Opslaat' voor het gebruik van een op, neer, verwijder of toevoeg knop!"
-
-#: 
 msgid "Show in"
 msgstr "Weergegeven in: "
 
@@ -2350,10 +2337,6 @@ msgstr "het en verlies elke coresponderende Eigenschap toepassing"
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Bevestig aub de verwijdering van dit soort kenmerk"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Kenmerken per soort"
 
 #: 
 msgid "Property Type List"
@@ -9340,10 +9323,6 @@ msgstr "Evenement Bewerken"
 #: 
 msgid "Editing Event"
 msgstr "Evenement aan het bewerken"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Voer met komma's gescheiden teltcategorieën in. \"Totaal\" is automatisch inbegrepen."
 
 #: 
 msgid "Enter event title..."

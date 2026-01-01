@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Συντάκτης Ταμείου Δωρεών"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το ταμείο;"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Μη έγκυρα πεδία ή επιλογές. Οι αλλαγές δεν αποθηκεύτηκαν! Διορθώστε και προσπαθήστε ξανά!"
 
@@ -771,10 +767,6 @@ msgstr "Μοτίβο επανάληψης"
 #: 
 msgid "Attendance Counts"
 msgstr "Μετράει η συμμετοχή"
-
-#: 
-msgid "Add counter"
-msgstr "Προσθήκη μετρητή"
 
 #: 
 msgid "Return to Event Types"
@@ -1615,11 +1607,6 @@ msgid "No properties have been added yet"
 msgstr "Δεν έχουν προστεθεί ακόμη ιδιότητες"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Προειδοποίηση: Οι αλλαγές πεδίων θα χαθούν εάν δεν «Αποθήκευση αλλαγών» πριν χρησιμοποιήσετε ένα κουμπί πάνω, κάτω, διαγραφή ή «προσθήκη νέου»!"
-
-#: 
 msgid "Show in"
 msgstr "Εμφάνιση"
 
@@ -2351,10 +2338,6 @@ msgstr "και να χάσει τυχόν αντίστοιχες εκχωρήσ�
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Επιβεβαιώστε τη διαγραφή αυτού του Τύπου ιδιότητας"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Επεξεργαστής τύπου ιδιότητας"
 
 #: 
 msgid "Property Type List"
@@ -9343,10 +9326,6 @@ msgstr "Επεξεργασία Event"
 #: 
 msgid "Editing Event"
 msgstr "Επεξεργασίαing Event"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Εισάγετε κατηγορίες καταμέτρησης χωρισμένες με κόμμα. Το \"Σύνολο\" περιλαμβάνεται αυτόματα."
 
 #: 
 msgid "Enter event title..."

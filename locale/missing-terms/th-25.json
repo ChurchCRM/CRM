@@ -1,9 +1,4 @@
 {
-  "HTTPS Not Configured": "",
-  "ID": "",
-  "Identify members who have not made any donations within a date range.": "",
-  "Import failed": "",
-  "Import from CSV files": "",
   "Import sample families, people, and groups to explore ChurchCRM with realistic data.": "",
   "Install TLS/SSL certificate for better security": "",
   "Jan": "",
@@ -98,5 +93,10 @@
   "active": "",
   "ago": "",
   "day": "",
-  "days": ""
+  "days": "",
+  "found": "",
+  "in": "",
+  "issues": "",
+  "open": "",
+  "years": ""
 }

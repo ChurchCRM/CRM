@@ -1,5 +1,4 @@
 {
-  "Backup completed successfully!": "",
   "Backup downloaded. Server copy removed.": "",
   "Backup failed. Please try again.": "",
   "Backup generated and copied to remote server": "",
@@ -98,5 +97,6 @@
   "Add Pledge": "",
   "Admin Dashboard": "",
   "Advanced Operations": "",
-  "All System Settings": ""
+  "All System Settings": "",
+  "An unexpected error occurred. Please contact your administrator.": ""
 }

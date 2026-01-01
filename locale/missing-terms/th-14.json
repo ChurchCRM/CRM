@@ -1,8 +1,4 @@
 {
-  "Dutch - Netherlands": "",
-  "Polish": "",
-  "Portuguese - Brazil": "",
-  "Romanian - Romania": "",
   "Russian": "",
   "Sami (Northern) (Sweden)": "",
   "Albanian": "",
@@ -98,5 +94,9 @@
   "ALERT": "",
   "EMERGENCY": "",
   "Title FirstName MiddleName LastName": "",
-  "Title FirstName MiddleInitial. LastName": ""
+  "Title FirstName MiddleInitial. LastName": "",
+  "LastName, Title FirstName MiddleName": "",
+  "LastName, Title FirstName MiddleInitial": "",
+  "FirstName MiddleName LastName": "",
+  "Title FirstName LastName": ""
 }

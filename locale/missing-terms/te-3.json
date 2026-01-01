@@ -1,6 +1,4 @@
 {
-  "Money amount too large. Maximum is $999999999.99": "",
-  " Bold Italic": "",
   " Italic": "",
   " Bold": "",
   "Error making API Call to": "",
@@ -98,5 +96,7 @@
   "-----------------------------------------------------------------------------------------------------------------------------------------------": "",
   "Buyer # ": "",
   "Family Members:": "",
-  "File Name:": ""
+  "File Name:": "",
+  "Members:": "",
+  "There were ": ""
 }

@@ -721,10 +721,6 @@ msgid "Donation Fund Editor"
 msgstr "दान निधि संपादक"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "क्या आप वाकई इस निधि को हटाना चाहते हैं?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "अमान्य फ़ील्ड या चयन। परिवर्तन सहेजे नहीं गए! कृपया सुधारें और पुनः प्रयास करें!"
 
@@ -767,10 +763,6 @@ msgstr "पुनरावृत्ति पैटर्न"
 #: 
 msgid "Attendance Counts"
 msgstr "उपस्थिति गणना"
-
-#: 
-msgid "Add counter"
-msgstr "काउंटर जोड़ें"
 
 #: 
 msgid "Return to Event Types"
@@ -1595,10 +1587,6 @@ msgid "No properties have been added yet"
 msgstr "अभी तक कोई गुण नहीं जोड़ा गया है"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "चेतावनी: यदि आप ऊपर, नीचे, हटाने या 'नया जोड़ें' बटन का उपयोग करने से पहले 'परिवर्तन सहेजें' पर क्लिक नहीं करते हैं, तो फ़ील्ड परिवर्तन खो जाएंगे!"
-
-#: 
 msgid "Show in"
 msgstr "इसमें दिखाएं"
 
@@ -2326,10 +2314,6 @@ msgstr "और संबंधित विशेषता असाइनमे
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "कृपया इस विशेषता प्रकार के विलोपन की पुष्टि करें"
-
-#: 
-msgid "Property Type Editor"
-msgstr "विशेषता प्रकार संपादक"
 
 #: 
 msgid "Property Type List"

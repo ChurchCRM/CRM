@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Lahjoitusrahastojen muokkaus"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Oletko varma, että haluat poistaa tämän rahaston?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Virheellisiä kenttiä tai valintoja. Muutoksia ei tallennettu! Korjaa tiedot ja yritä uudelleen!"
 
@@ -771,10 +767,6 @@ msgstr "Toistuvuussääntö"
 #: 
 msgid "Attendance Counts"
 msgstr "Osallistujamäärät"
-
-#: 
-msgid "Add counter"
-msgstr "Lisää laskuri"
 
 #: 
 msgid "Return to Event Types"
@@ -1599,10 +1591,6 @@ msgid "No properties have been added yet"
 msgstr "Ominaisuuksia ei ole vielä lisätty"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Varoitus: Kenttien muutokset menetetään, jos et paina 'Tallenna muutokset' ennen kuin käytät ylös, alas, poista tai 'Lisää uusi' -painikkeita!"
-
-#: 
 msgid "Show in"
 msgstr "Näytä kohteessa"
 
@@ -2330,10 +2318,6 @@ msgstr "sitä, ja menetät kaikki vastaavat ominaisuusmääritykset."
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Vahvista tämän ominaisuustyypin poistaminen"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Ominaisuustyyppien muokkaus"
 
 #: 
 msgid "Property Type List"
@@ -9289,10 +9273,6 @@ msgstr "Muokkaa tapahtumaa"
 #: 
 msgid "Editing Event"
 msgstr "Tapahtuman muokkaaminen"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Syötä pilkuilla erotetut laskentakategoriat. \"Yhteensä\" sisältyy automaattisesti."
 
 #: 
 msgid "Enter event title..."

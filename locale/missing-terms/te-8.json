@@ -1,6 +1,4 @@
 {
-  "families": "",
-  "Deposit ticket type.  QBDT - Quickbooks": "",
   "Financial Settings": "",
   "An invalid configuration name has been requested": "",
   "An invalid configuration id has been requested": "",
@@ -98,5 +96,7 @@
   "OpenLP Password": "",
   "KioskVisibilityTimestamp": "",
   "Show/Hide Lost Password Link on the login screen": "",
-  "Backup": ""
+  "Backup": "",
+  "Integration": "",
+  "Notification": ""
 }

@@ -46,7 +46,6 @@
   "Deleting this event will also delete all attendance records. Are you sure?": "",
   "Edit Event": "",
   "Editing Event": "",
-  "Enter comma-separated count categories. \"Total\" is automatically included.": "",
   "Enter event title...": "",
   "Event": "",
   "Event Type Name": "",
@@ -104,5 +103,6 @@
   "Backup Best Practices": "",
   "Backup Status": "",
   "Backup Type": "",
-  "Backup complete! Click below to download.": ""
+  "Backup complete! Click below to download.": "",
+  "Backup completed successfully!": ""
 }

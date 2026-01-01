@@ -750,10 +750,6 @@ msgid "Donation Fund Editor"
 msgstr "Editor fond de donații"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Sunteți sigur că doriți să ștergeți acest fond?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Selecții sau câmpuri invalide. Modificările nu au fost salvate! Vă rugăm să corectați și încercați din nou!"
 
@@ -797,10 +793,6 @@ msgstr "Model recurență"
 #: 
 msgid "Attendance Counts"
 msgstr "Numără participare"
-
-#: 
-msgid "Add counter"
-msgstr "Adaugă contor"
 
 #: 
 msgid "Return to Event Types"
@@ -1654,11 +1646,6 @@ msgid "No properties have been added yet"
 msgstr "Nicio proprietate nu a fost adăugată încă"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Avertisment: Schimbările de câmp vor fi pierdute dacă nu faceți clic pe 'Salvează schimbările' înainte de a folosi butoanele 'Sus', 'Jos', 'Șterge' sau 'Adaugă nou'!"
-
-#: 
 msgid "Show in"
 msgstr "Arată în"
 
@@ -2409,10 +2396,6 @@ msgstr "l și pierde orice misiuni de proprietate corespunzătoare."
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Vă rugăm să confirmați ștergerea acestui Tip Proprietate"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Tip de Editor"
 
 #: 
 msgid "Property Type List"
@@ -9424,10 +9407,6 @@ msgstr "Editează evenimentul"
 #: 
 msgid "Editing Event"
 msgstr "Se editează evenimentul"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Introduceți categoriile de numărare separate prin virgulă. „Total” este inclus automat."
 
 #: 
 msgid "Enter event title..."

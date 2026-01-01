@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Gestionnaire de la caisse de dons/Comptable"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Etes vous sûr de vouloir supprimer ce capital?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Champ ou sélection invalide. Les modifications n&#39;ont pas été enregistrées! Veuillez corriger et essayer à nouveau !"
 
@@ -771,10 +767,6 @@ msgstr "Modèle de récurrence"
 #: 
 msgid "Attendance Counts"
 msgstr "Comptes de présence"
-
-#: 
-msgid "Add counter"
-msgstr "Ajouter un compteur"
 
 #: 
 msgid "Return to Event Types"
@@ -1615,11 +1607,6 @@ msgid "No properties have been added yet"
 msgstr "Aucune propriété n&#39;a été ajouté"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Attention: Les modifications seront perdus si vous ne cliquez pas sur &quot;Enregistrer les modifications&quot; avant d&#39;utiliser les flèches du haut, bas et les boutons Supprimer ou &#39;Ajouter un nouveau&#39;!"
-
-#: 
 msgid "Show in"
 msgstr "Montrer"
 
@@ -2351,10 +2338,6 @@ msgstr "et vous perdrez toutes les Propriétés correspondantes."
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Veuillez confirmer la suppression du Type de Propriété"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Gestionnaire des Types de Propriété"
 
 #: 
 msgid "Property Type List"
@@ -9348,10 +9331,6 @@ msgstr "Modifier l'événement"
 #: 
 msgid "Editing Event"
 msgstr "Modification de l'événement"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Entrez les catégories de décompte séparées par des virgules. \"Total\" est inclus automatiquement."
 
 #: 
 msgid "Enter event title..."

@@ -1,5 +1,4 @@
 {
-  "Assigning": "",
   "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records.": "",
   "No, cancel this deletion": "",
   "You must select a type": "",
@@ -8,7 +7,6 @@
   "If you delete this type, you will also remove all properties using": "",
   "it and lose any corresponding property assignments.": "",
   "Please confirm deletion of this Property Type": "",
-  "Property Type Editor": "",
   "Property Type List": "",
   " Property Unassignment": "",
   "Please confirm removal of this property from this": "",
@@ -98,5 +96,7 @@
   "Not a valid date": "",
   "Invalid Year": "",
   "Invalid Number": "",
-  "Number too large. Must be between -2147483648 and 2147483647": ""
+  "Number too large. Must be between -2147483648 and 2147483647": "",
+  "Money amount too large. Maximum is $999999999.99": "",
+  " Bold Italic": ""
 }

@@ -1,6 +1,4 @@
 {
-  "2FA Code": "",
-  "2 Factor Authentication enrollment": "",
   "Unsupported Two Factor Authentication Configuration": "",
   "Unable To Begin Two Factor Authentication Enrollment": "",
   "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "",
@@ -98,5 +96,7 @@
   "Amharic - Ethiopia": "",
   "Czech": "",
   "Finnish": "",
-  "Greek": ""
+  "Greek": "",
+  "Turkish": "",
+  "Ukrainian": ""
 }

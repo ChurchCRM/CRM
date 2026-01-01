@@ -21,7 +21,6 @@
   "Description": "",
   "Picture URL": "",
   "Donation Fund Editor": "",
-  "Are you sure you want to delete this fund?": "",
   "Invalid fields or selections. Changes not saved! Please correct and try again!": "",
   "No funds have been added yet": "",
   "Active": "",
@@ -33,7 +32,6 @@
   "Save Name": "",
   "Recurrence Pattern": "",
   "Attendance Counts": "",
-  "Add counter": "",
   "Return to Event Types": "",
   "Family": "",
   "Type": "",
@@ -98,5 +96,7 @@
   "August": "",
   "September": "",
   "October": "",
-  "November": ""
+  "November": "",
+  "December": "",
+  "Unk": ""
 }

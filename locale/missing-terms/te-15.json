@@ -1,6 +1,4 @@
 {
-  "I Understand - Continue": "",
-  "Language updated to": "",
   "Login Name is required": "",
   "Once you receive the email, you can log in with your temporary password and change it to something you prefer.": "",
   "Password Reset Error": "",
@@ -98,5 +96,7 @@
   "Platform": "",
   "Root Path": "",
   "SMTP Host": "",
-  "Server Information": ""
+  "Server Information": "",
+  "Software": "",
+  "System & Configuration": ""
 }

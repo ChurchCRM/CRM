@@ -1,8 +1,4 @@
 {
-  "Edit Deposit Slip": "",
-  "View All Fundraisers": "",
-  "Create New Fundraiser": "",
-  "Edit Fundraiser": "",
   "View Buyers": "",
   "Add Donors to Buyer List": "",
   "Data/Reports": "",
@@ -98,5 +94,9 @@
   "Group Member Role": "",
   "Group Member Roles Editor": "",
   "Person Custom List Option": "",
-  "Person Custom List Options": ""
+  "Person Custom List Options": "",
+  "Person Custom List Options Editor": "",
+  "Custom List Option": "",
+  "Custom List Options": "",
+  "Custom List Options Editor": ""
 }

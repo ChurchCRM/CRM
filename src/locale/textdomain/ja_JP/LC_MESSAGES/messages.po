@@ -717,10 +717,6 @@ msgid "Donation Fund Editor"
 msgstr "寄付基金エディター"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "この基金を削除してもよろしいですか？"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "無効なフィールドまたは選択があります。変更は保存されませんでした！修正して再試行してください。"
 
@@ -763,10 +759,6 @@ msgstr "繰り返しパターン"
 #: 
 msgid "Attendance Counts"
 msgstr "出席数"
-
-#: 
-msgid "Add counter"
-msgstr "カウンターを追加"
 
 #: 
 msgid "Return to Event Types"
@@ -1591,10 +1583,6 @@ msgid "No properties have been added yet"
 msgstr "プロパティはまだ追加されていません"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "警告: 「変更を保存」をクリックせずに上、下、削除、または「新規追加」ボタンを使用すると、フィールドの変更内容は失われます！"
-
-#: 
 msgid "Show in"
 msgstr "表示先:"
 
@@ -2322,10 +2310,6 @@ msgstr "対応するプロパティの割り当てが失われます。"
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "このプロパティタイプの削除を確認してください"
-
-#: 
-msgid "Property Type Editor"
-msgstr "プロパティタイプエディター"
 
 #: 
 msgid "Property Type List"

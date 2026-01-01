@@ -1,8 +1,4 @@
 {
-  "LastName, Title FirstName MiddleName": "",
-  "LastName, Title FirstName MiddleInitial": "",
-  "FirstName MiddleName LastName": "",
-  "Title FirstName LastName": "",
   "LastName, Title FirstName": "",
   "Event Log severity to write, used by ORM and App Logs": "",
   "Time zone": "",
@@ -98,5 +94,9 @@
   "Search Addresses": "",
   "Maximum number of Families": "",
   "Maximum number of Family H.O.H Names": "",
-  "Maximum number of Groups": ""
+  "Maximum number of Groups": "",
+  "Maximum number of Deposits": "",
+  "Maximum number of Payments": "",
+  "Maximum number of Addresses": "",
+  "Add Students": ""
 }
