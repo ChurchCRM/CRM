@@ -222,11 +222,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     //If no errors, then let's update...
     if (!$bErrorFlag) {
-        // Format the phone numbers before we store them
-        if (!$bNoFormat_HomePhone) {
-            $sHomePhone = CollapsePhoneNumber($sHomePhone, $sCountry);
-        }
-
         //Write the base SQL depending on the Action
         $bSendNewsLetterString = $bSendNewsLetter ? 'TRUE' : 'FALSE';
 

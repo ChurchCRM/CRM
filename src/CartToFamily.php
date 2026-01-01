@@ -49,11 +49,8 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
         }
 
-        // Get and format any phone data from the form.
+        // Get phone data from the form (store as entered by user).
         $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
-        if (!isset($_POST['NoFormat_HomePhone'])) {
-            $sHomePhone = CollapsePhoneNumber($sHomePhone, $sCountry);
-        }
 
         $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
 
