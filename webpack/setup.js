@@ -660,7 +660,7 @@ window.Stepper = Stepper;
 					let errorMessage;
 					if (field.name === "ROOT_PATH") {
 						errorMessage = i18next.t(
-							"Must start with / if not empty, no trailing slash. Only letters, numbers, _, -, ., / allowed.",
+							"Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.",
 						);
 					} else if (field.name === "DB_SERVER_PORT") {
 						errorMessage = i18next.t(

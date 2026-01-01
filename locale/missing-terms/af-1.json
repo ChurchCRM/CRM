@@ -1,72 +1,70 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d maand oud",
+    "other": "%d maande oud"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d jaar oud",
+    "other": "%d jaar oud"
   },
-  ", -, ., / allowed.": {
-    "Must start with / if not empty, no trailing slash. Only letters, numbers, ": ""
-  },
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Moet begin met / as dit nie leeg is nie; geen skuinsstreep aan die einde nie. Slegs letters, syfers, _, -, ., en / word toegelaat.",
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d gebeurtenis in %s",
+    "other": "%d gebeure in %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "Persoon",
+    "other": "Persone"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persoon by die mandjie gevoeg.",
+    "other": "%d Persone by die mandjie gevoeg."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persoon suksesvol by die gesin gevoeg.",
+    "other": "%d Persone suksesvol by die gesin gevoeg."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persoon suksesvol by die groep gevoeg.",
+    "other": "%d Persone suksesvol by die groep gevoeg."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": ""
+  "Add Property Type": "Voeg eiendomstipe by",
+  "Add Your First Property Type": "Voeg jou eerste eiendomstipe by",
+  "Auto-calculated from counts above": "Outomaties bereken vanaf bogenoemde tellings",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "Deur hierdie veld te verwyder, sal u onherroeplik alle groep-liddata wat aan hierdie veld toegeken is, verloor!",
+  "By deleting this fund, you may affect historical donation records!": "Deur hierdie fonds te verwyder, kan u historiese gifte rekords beïnvloed!",
+  "Category Name": "Kategorie Naam",
+  "Checked In": "Aangemeld",
+  "Checked Out": "Afgemeld",
+  "Current Fiscal Year": "Huidige Fiskale Jaar",
+  "Delete (will delete all associated records)": "Verwyder (sal alle geassosieerde rekords uitvee)",
+  "Edit Property Type": "Wysig eiendomstipe",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "Voer komma-geskeide telkategorieë in (bv. Lede, Besoekers, Kinders).",
+  "Enter sermon notes or event text...": "Voer preeknotas of gebeurtenisteks in...",
+  "Existing Donation Funds": "Bestaande donasiefondse",
+  "Existing Group Properties": "Bestaande groep eienskappe",
+  "Failed to update role. Please try again.": "Kon nie rol bywerk nie. Probeer asseblief weer.",
+  "Family Pledges": "Gesinsbelofte",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "Veldveranderinge sal verlore gaan as u nie 'Veranderinge Stoor' klik voor 'Verwyder' of 'Voeg Nuut' nie!",
+  "Filter by Class": "Filter volgens klas",
+  "Fund deleted successfully": "Fonds suksesvol verwyder",
+  "In Use": "In Gebruik",
+  "Manage": "Bestuur",
+  "No pledges found for the selected fiscal year": "Geen beloftes gevind vir die geselekteerde fiskale jaar nie",
+  "No property types found": "Geen eiendomstipes gevind nie",
+  "Number of records using this property type": "Aantal rekords wat hierdie eiendomstipe gebruik",
+  "Optional detailed description of this property type": "Opsionele gedetailleerde beskrywing van hierdie eiendomstipe",
+  "Please correct the errors below.": "Reguleer asseblief die foute hieronder.",
+  "Pledge Amount": "Beloofde bedrag",
+  "Pledge Dashboard": "Beloftedashboard",
+  "Remaining": "Oorblywend",
+  "Remove this attendance count?": "Verwyder hierdie bywoningstelling?",
+  "Select the type of record this property applies to": "Kies die tipe rekord waarvoor hierdie eiendom van toepassing is",
+  "That fund name already exists.": "Daardie fondsnaam bestaan reeds.",
+  "Total Pledges": "Totale Beloftes",
+  "Track and manage pledge commitments by family and fund": "Volg en bestuur belofte-verpligtinge per gesin en fonds",
+  "View Properties": "Bekyk eienskappe",
+  "e.g., Visitors, Children": "bv., Besoekers, Kinders",
+  "of pledges": "van beloftes",
+  "records": "rekords"
 }
