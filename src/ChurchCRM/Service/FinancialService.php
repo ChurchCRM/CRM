@@ -5,7 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\MICRFunctions;
+use ChurchCRM\Utils\MICRUtils;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
@@ -76,7 +76,7 @@ class FinancialService
             throw new \Exception('Scanned Checks is disabled');
         }
 
-        $micrObj = new MICRFunctions(); // Instantiate the MICR class
+        $micrObj = new MICRUtils(); // Instantiate the MICR class
         $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
         if (!$routeAndAccount) {
             throw new \Exception('error in locating family');

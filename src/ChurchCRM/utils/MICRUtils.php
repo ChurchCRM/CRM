@@ -1,10 +1,10 @@
 <?php
 
-namespace ChurchCRM;
+namespace ChurchCRM\Utils;
 
 // Utility functions used to process MICR data
 
-class MICRFunctions
+class MICRUtils
 {
     public int $CHECKNO_FIRST = 1; // o<check>o t<route>t <account>o
     public int $ROUTE_FIRST1 = 2;   // t<route>t <account>o <check>
