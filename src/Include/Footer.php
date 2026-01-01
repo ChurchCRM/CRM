@@ -107,7 +107,3 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
 // Turn OFF output buffering
 ob_end_flush();
-
-// Reset the Global Message
-unset($_SESSION['sGlobalMessage']);
-unset($_SESSION['sGlobalMessageClass']);
