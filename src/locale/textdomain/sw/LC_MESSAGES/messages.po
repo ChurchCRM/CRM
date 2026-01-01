@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Mhariri wa Mfuko wa Michango"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Je, una uhakika unataka kufuta hazina hii?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Sehemu au chaguo batili. Mabadiliko hayajahifadhiwa! Tafadhali sahihisha na ujaribu tena!"
 
@@ -771,10 +767,6 @@ msgstr "Muundo wa Kujirudia"
 #: 
 msgid "Attendance Counts"
 msgstr "Hesabu za Mahudhurio"
-
-#: 
-msgid "Add counter"
-msgstr "Ongeza counter"
 
 #: 
 msgid "Return to Event Types"
@@ -1614,11 +1606,6 @@ msgid "No properties have been added yet"
 msgstr "Bado hakuna sifa zilizoongezwa"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Onyo: Mabadiliko ya sehemu yatapotea ikiwa huta 'Hifadhi Mabadiliko' kabla ya kutumia kitufe cha juu, chini, kufuta au 'ongeza kipya'!"
-
-#: 
 msgid "Show in"
 msgstr "Onyesha ndani"
 
@@ -2350,10 +2337,6 @@ msgstr "na kupoteza mgawo wowote wa mali unaolingana."
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Tafadhali thibitisha kufutwa kwa Aina hii ya Mali"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Mhariri wa Aina ya Mali"
 
 #: 
 msgid "Property Type List"
@@ -9334,10 +9317,6 @@ msgstr "Hariri Tukio"
 #: 
 msgid "Editing Event"
 msgstr "Inahariri Tukio"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Ingiza kategoria za hesabu zilizotenganishwa kwa koma. \"Jumla\" inajumuishwa kiotomatiki."
 
 #: 
 msgid "Enter event title..."

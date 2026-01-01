@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Annetusfondi toimetaja"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Kas soovite kindlasti selle fondi kustutada?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Kehtetud väljad või valikud. Muudatusi ei salvestatud! Parandage ja proovige uuesti!"
 
@@ -771,10 +767,6 @@ msgstr "Kordusmuster"
 #: 
 msgid "Attendance Counts"
 msgstr "Osalejate arvu loendus"
-
-#: 
-msgid "Add counter"
-msgstr "Lisage loendur"
 
 #: 
 msgid "Return to Event Types"
@@ -1615,11 +1607,6 @@ msgid "No properties have been added yet"
 msgstr "Ühtegi atribuuti pole veel lisatud"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Hoiatus: välja muudatused lähevad kaotsi, kui te ei kasuta nuppu Salvesta muudatused enne üles, alla, kustutamist ega uue lisamist!"
-
-#: 
 msgid "Show in"
 msgstr "Näita"
 
@@ -2351,10 +2338,6 @@ msgstr "ja kaotad kõik vastavad välja ülesanded."
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Kinnitage selle omaduse tüübi kustutamine"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Omaduse tüübi redigeerija"
 
 #: 
 msgid "Property Type List"
@@ -9342,10 +9325,6 @@ msgstr "Muuda sündmust"
 #: 
 msgid "Editing Event"
 msgstr "Sündmuse muutmine"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Sisestage koma eraldatud loendamise kategooriad. \"Kokku\" sisaldub automaatselt."
 
 #: 
 msgid "Enter event title..."

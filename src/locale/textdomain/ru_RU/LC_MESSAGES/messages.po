@@ -746,10 +746,6 @@ msgid "Donation Fund Editor"
 msgstr "Пожертвование Фонд редактор"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Вы уверены, что хотите удалить этот фонд?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Недействительные поля или выбора. Изменения не сохранены! Пожалуйста, исправьте и попробуйте еще раз!"
 
@@ -793,10 +789,6 @@ msgstr "Recurrence Pattern"
 #: 
 msgid "Attendance Counts"
 msgstr "Посещений Графы"
-
-#: 
-msgid "Add counter"
-msgstr "Добавить счетчик"
 
 #: 
 msgid "Return to Event Types"
@@ -1652,11 +1644,6 @@ msgid "No properties have been added yet"
 msgstr "Нет свойства, которые были добавлены еще"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Предупреждение: изменения полей будут потеряны, если вы не нажмете кнопку «Сохранить изменения» перед использованием кнопки «вверх», «вниз», «удалить» или «добавить новый»!"
-
-#: 
 msgid "Show in"
 msgstr "Показать в"
 
@@ -2408,10 +2395,6 @@ msgstr "это и терять соответствующие поручения
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Пожалуйста, подтвердите удаление этой недвижимости Тип"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Тип недвижимости редактор"
 
 #: 
 msgid "Property Type List"
@@ -9416,10 +9399,6 @@ msgstr "Редактировать событие"
 #: 
 msgid "Editing Event"
 msgstr "Редактирование события"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Введите категории через запятую. 'Всего' добавится само."
 
 #: 
 msgid "Enter event title..."

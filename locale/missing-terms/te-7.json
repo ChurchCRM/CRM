@@ -1,6 +1,4 @@
 {
-  "Saint Helena": "",
-  "Saint Kitts and Nevis": "",
   "Saint Lucia": "",
   "Saint Martin (Saint-Martin (partie française))": "",
   "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)": "",
@@ -98,5 +96,7 @@
   "Failed": "",
   "Church Checking Account Number": "",
   "Marked the Family as Inactive": "",
-  "Marked the Family as Active": ""
+  "Marked the Family as Active": "",
+  "families": "",
+  "Deposit ticket type.  QBDT - Quickbooks": ""
 }

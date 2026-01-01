@@ -1,5 +1,4 @@
 {
-  "Reports related to member voting eligibility and organization governance.": "",
   "Reset": "",
   "Restore": "",
   "Restore from a backup file. Erases existing data.": "",
@@ -98,5 +97,6 @@
   "Valid Examples:": "",
   "View Logs": "",
   "View and manage system log files for debugging.": "",
-  "You must enter a Last Name.": ""
+  "You must enter a Last Name.": "",
+  "Your privacy is important. We never share your information with third parties.": ""
 }

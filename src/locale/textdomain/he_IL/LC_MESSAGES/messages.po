@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "עורך קרן תרומות"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "האם אתה בטוח במחיקת תרומה זאת?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "שדות או בחירות לא חוקיים. השינויים לא נשמרו ! אנא תקן ונסה שוב !"
 
@@ -771,10 +767,6 @@ msgstr "תבנית חזרה"
 #: 
 msgid "Attendance Counts"
 msgstr "ספירת נוכחות"
-
-#: 
-msgid "Add counter"
-msgstr "הוסף מונה"
 
 #: 
 msgid "Return to Event Types"
@@ -1614,11 +1606,6 @@ msgid "No properties have been added yet"
 msgstr "עדיין לא נוספו מאפיינים"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "אזהרה: שינויי השדה יאבדו אם לא תלחץ על 'שמור שינויים' לפני שימוש בכפתורי למעלה, למטה, מחק או 'הוסף חדש'!"
-
-#: 
 msgid "Show in"
 msgstr "הצג ב"
 
@@ -2350,10 +2337,6 @@ msgstr "בו ותאבד את כל הקצאות המאפיינים המתאימו
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "אנא אשר את מחיקת סוג המאפיין הזה"
-
-#: 
-msgid "Property Type Editor"
-msgstr "עורך סוגי מאפיינים"
 
 #: 
 msgid "Property Type List"
@@ -9335,10 +9318,6 @@ msgstr "ערוך אירוע"
 #: 
 msgid "Editing Event"
 msgstr "עורך אירוע"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "הזן קטגוריות ספירה מופרדות בפסיקים. \"סה\"כ\" נכלל אוטומטית."
 
 #: 
 msgid "Enter event title..."

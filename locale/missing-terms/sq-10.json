@@ -1,5 +1,4 @@
 {
-  "An unexpected error occurred. Please contact your administrator.": "",
   "Apr": "",
   "Aug": "",
   "Back to Deposits": "",
@@ -98,5 +97,6 @@
   "Next 7 days and past 7 days": "",
   "No Active Deposit": "",
   "No active funds configured.": "",
-  "No deposits found.": ""
+  "No deposits found.": "",
+  "No format": ""
 }

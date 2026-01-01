@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Fondi Dhurim Editor"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Jeni te sigurte qe doni te fshini kete fond?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Fushat e pavlefshme ose zgjedhje. Ndryshimet nuk i shpëtuar! Ju lutem korrigjojeni dhe provoni përsëri!"
 
@@ -771,10 +767,6 @@ msgstr "Modeli i përsëritjes"
 #: 
 msgid "Attendance Counts"
 msgstr "Pikat Pjesëmarrja"
-
-#: 
-msgid "Add counter"
-msgstr "Shto numërues"
 
 #: 
 msgid "Return to Event Types"
@@ -1612,10 +1604,6 @@ msgid "No properties have been added yet"
 msgstr "Asnjë prona janë shtuar ende"
 
 #: 
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Paralajmërim: Ndryshimet e fushës do të humbasin nëse nuk klikoni 'Ruaj Ndryshimet' para se të përdorni butonat lart, poshtë, fshij ose 'Shto të re'!"
-
-#: 
 msgid "Show in"
 msgstr "Shoqëroj"
 
@@ -2348,10 +2336,6 @@ msgstr "ajo dhe humbasin asnjë detyra përkatëse të pronësisë."
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Ju lutem konfirmoni fshirjen e këtij Tipi i patundshmërisë"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Tipi i Pronës Editor"
 
 #: 
 msgid "Property Type List"

@@ -1,7 +1,4 @@
 {
-  "Assigned Groups": "",
-  "Group Name": "",
-  "Entered": "",
   "by": "",
   "Property successfully assigned.": "",
   " Property Assignment": "",
@@ -21,7 +18,6 @@
   "If you delete this type, you will also remove all properties using": "",
   "it and lose any corresponding property assignments.": "",
   "Please confirm deletion of this Property Type": "",
-  "Property Type Editor": "",
   "Property Type List": "",
   "Class": "",
   "Properties": "",
@@ -98,5 +94,9 @@
   "Total Logins": "",
   "Failed Logins": "",
   "You must enter the same password in both boxes": "",
-  "Your password choice is too obvious. Please choose something else.": ""
+  "Your password choice is too obvious. Please choose something else.": "",
+  "Your new password must be at least": "",
+  "characters": "",
+  "Enter your current password, then your new password twice.  Passwords must be at least": "",
+  "characters in length.": ""
 }

@@ -1,6 +1,4 @@
 {
-  "Select Family": "",
-  "Maximum number of neighbors": "",
   "Maximum distance": "",
   "Data file format": "",
   "GPS Visualizer": "",
@@ -39,7 +37,6 @@
   "data for member": "",
   "Group-Specific Properties Form Editor": "",
   "No properties have been added yet": "",
-  "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!": "",
   "Show in": "",
   "Person View": "",
   "Group reports": "",
@@ -98,5 +95,8 @@
   "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.": "",
   "Member Role Change": "",
   "Member's Name": "",
-  "Current Role": ""
+  "Current Role": "",
+  "All People": "",
+  "Email All": "",
+  "Email All (BCC)": ""
 }

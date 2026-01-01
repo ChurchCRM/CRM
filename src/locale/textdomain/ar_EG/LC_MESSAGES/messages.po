@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "تحرير صندوق التبرعات"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "هل أنت متأكد من أنك تريد حذف هذا الصندوق؟"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "حقول غير صالحة أو التحديدات. التغييرات غير المحفوظة! الرجاء تصحيح وحاول مرة أخرى!"
 
@@ -771,10 +767,6 @@ msgstr "نمط التكرار"
 #: 
 msgid "Attendance Counts"
 msgstr "تهم بالحضور"
-
-#: 
-msgid "Add counter"
-msgstr "إضافة عداد"
 
 #: 
 msgid "Return to Event Types"
@@ -1615,11 +1607,6 @@ msgid "No properties have been added yet"
 msgstr "لم يتم إضافة أي خصائص بعد"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "تحذير: سيتم فقدان التغييرات الميدان إذا لم تقم بذلك \"حفظ التغييرات\" قبل استخدام أعلى والأسفل وحذف، أو \"إضافة جديدة 'زر!"
-
-#: 
 msgid "Show in"
 msgstr "عرض في"
 
@@ -2351,10 +2338,6 @@ msgstr "انها وتفقد أي تعيينات الخصائص المقابلة.
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "يرجى تأكيد حذف هذا نوع العقار"
-
-#: 
-msgid "Property Type Editor"
-msgstr "نوع محرر الملكية"
 
 #: 
 msgid "Property Type List"
@@ -9338,10 +9321,6 @@ msgstr "تحرير الحدث"
 #: 
 msgid "Editing Event"
 msgstr "تحرير الحدث"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "أدخل فئات الحساب مفصولة بفواصل. يتم تضمين \"الإجمالي\" تلقائيا."
 
 #: 
 msgid "Enter event title..."

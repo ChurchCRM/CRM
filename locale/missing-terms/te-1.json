@@ -6,7 +6,6 @@
   "data for member": "",
   "Group-Specific Properties Form Editor": "",
   "No properties have been added yet": "",
-  "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!": "",
   "Show in": "",
   "Person View": "",
   "Group reports": "",
@@ -98,5 +97,6 @@
   "find family from check account #": "",
   "Set default check account number for family": "",
   "Property successfully assigned.": "",
-  " Property Assignment": ""
+  " Property Assignment": "",
+  "Assigning": ""
 }

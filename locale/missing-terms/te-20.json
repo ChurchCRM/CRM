@@ -1,7 +1,4 @@
 {
-  "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment.": "",
-  "Starts with <strong>http://</strong> or <strong>https://</strong>": "",
-  "Subdirectory installation:": "",
   "System Locale Support": "",
   "System Support": "",
   "URL does not contain a valid hostname": "",
@@ -98,5 +95,11 @@
   "Code incomplete": "",
   "Code is invalid": "",
   "Encryption key for storing 2FA secret keys in the database": "",
-  "Two-Factor Authentication": ""
+  "Two-Factor Authentication": "",
+  "Validation pending": "",
+  "must be configured with an encryption key": "",
+  "%d Person added to the Cart.": {
+    "one": "",
+    "other": ""
+  }
 }

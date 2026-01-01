@@ -747,10 +747,6 @@ msgid "Donation Fund Editor"
 msgstr "Adomány Alap szerkesztő"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Biztos benne, hogy törölni szeretné ezt az alapot?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Érvénytelen mező vagy kiválasztást. Változtatások nem lettek elmentve! Kérjük, javítsa ki és próbálja újra!"
 
@@ -793,10 +789,6 @@ msgstr "Ismétlődési minta"
 #: 
 msgid "Attendance Counts"
 msgstr "Részvétel számít"
-
-#: 
-msgid "Add counter"
-msgstr "Számláló hozzáadása"
 
 #: 
 msgid "Return to Event Types"
@@ -1646,11 +1638,6 @@ msgid "No properties have been added yet"
 msgstr "Nincs tulajdonságokat adtak még"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Figyelmeztetés: Field változtatások elvesznek, ha nem a \"Változtatások mentése\" használata előtt fel, le, törölheti, vagy \"új\" gombra!"
-
-#: 
 msgid "Show in"
 msgstr "Megjelenítés"
 
@@ -2400,10 +2387,6 @@ msgstr "azt, és elveszíti minden megfelelő ingatlan feladatokat."
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Kérjük, erősítse meg törlését ez az ingatlan típusa"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Ingatlan típusa szerkesztő"
 
 #: 
 msgid "Property Type List"
@@ -9403,10 +9386,6 @@ msgstr "Esemény Szerkesztése"
 #: 
 msgid "Editing Event"
 msgstr "Esemény Szerkesztése"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Írjon be vesszővel elválasztott számlálási kategóriákat. A \"Teljes\" automatikusan bekerül."
 
 #: 
 msgid "Enter event title..."

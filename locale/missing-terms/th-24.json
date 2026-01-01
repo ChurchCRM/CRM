@@ -1,9 +1,4 @@
 {
-  "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks.": "",
-  "The page you tried to visit requires special permissions that your account does not currently have.": "",
-  "These files are not part of the official release and may pose security risks.": "",
-  "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security.": "",
-  "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities.": "",
   "This action cannot be undone. Make sure you have a backup of the current data if needed.": "",
   "This may take a few minutes for large databases.": "",
   "This may take several minutes for large databases. Do not close this page.": "",
@@ -98,5 +93,10 @@
   "Generate detailed reports for individual deposits or date ranges.": "",
   "Generate reminder letters for families with outstanding pledges.": "",
   "Generate reports for tax statements, pledge tracking, and financial analysis.": "",
-  "Giving funds and categories": ""
+  "Giving funds and categories": "",
+  "HTTPS Not Configured": "",
+  "ID": "",
+  "Identify members who have not made any donations within a date range.": "",
+  "Import failed": "",
+  "Import from CSV files": ""
 }

@@ -1,7 +1,4 @@
 {
-  "All People": "",
-  "Email All": "",
-  "Email All (BCC)": "",
   "Family Roles": "",
   "Family Geographic": "",
   "Update All Family Coordinates": "",
@@ -98,5 +95,8 @@
   "Fund Name": "",
   "Non-deductible amount": "",
   "Printable View": "",
-  "Age": ""
+  "Age": "",
+  "Assigned Groups": "",
+  "Group Name": "",
+  "Entered": ""
 }

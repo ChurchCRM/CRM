@@ -1,7 +1,4 @@
 {
-  "%d missing role": "",
-  "A payment is an actual donation received. It will be added to the current deposit.": "",
-  "A pledge is a commitment to give. It is not tied to a deposit slip.": "",
   "Add Another Family Member": "",
   "Add Pledge": "",
   "Admin Dashboard": "",
@@ -98,5 +95,8 @@
   "Next 7 days and past 7 days": "",
   "No Active Deposit": "",
   "No active funds configured.": "",
-  "No deposits found.": ""
+  "No deposits found.": "",
+  "No format": "",
+  "Open": "",
+  "Open Deposits:": ""
 }

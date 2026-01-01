@@ -1,8 +1,4 @@
 {
-  "Complete": "",
-  "Continue to Backup": "",
-  "Continue to Download & Apply": "",
-  "Create Backup": "",
   "Create a backup of your database before applying the update.": "",
   "Current Version:": "",
   "Database Backup": "",
@@ -98,5 +94,9 @@
   "Total Payments": "",
   "payments(s)?": "",
   "All system files have passed integrity validation.": "",
-  "Base URL": ""
+  "Base URL": "",
+  "ChurchCRM Installation": "",
+  "Copy": "",
+  "DSN": "",
+  "Database Server": ""
 }

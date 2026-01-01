@@ -1,6 +1,4 @@
 {
-  "Software": "",
-  "System & Configuration": "",
   "Tip:": "",
   "Valid Settings": "",
   "An error occurred during demo data import": "",
@@ -43,7 +41,6 @@
   "Deleting this event will also delete all attendance records. Are you sure?": "",
   "Edit Event": "",
   "Editing Event": "",
-  "Enter comma-separated count categories. \"Total\" is automatically included.": "",
   "Enter event title...": "",
   "Event": "",
   "Event Type Name": "",
@@ -104,5 +101,8 @@
   "Back to Debug Info": "",
   "Backup Best Practices": "",
   "Backup Status": "",
-  "Backup Type": ""
+  "Backup Type": "",
+  "Backup complete! Click below to download.": "",
+  "Backup completed successfully!": "",
+  "Backup downloaded. Server copy removed.": ""
 }

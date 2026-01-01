@@ -1,12 +1,4 @@
 {
-  "e.g., Sunday School, Bible Study...": "",
-  "optional": "",
-  "person": {
-    "one": "",
-    "other": ""
-  },
-  "✓ CheckOut": "",
-  "%d Orphaned Files Detected": "",
   "%d files have been modified or are missing. Use Force Re-install to restore official versions.": "",
   "%d files have failed integrity validation.": "",
   "%d files will be permanently deleted.": "",
@@ -101,5 +93,10 @@
   "Security Recommendation": "",
   "Security Warning: Orphaned Files Detected": "",
   "Select Backup File": "",
-  "Supported formats:": ""
+  "Supported formats:": "",
+  "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks.": "",
+  "The page you tried to visit requires special permissions that your account does not currently have.": "",
+  "These files are not part of the official release and may pose security risks.": "",
+  "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security.": "",
+  "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities.": ""
 }

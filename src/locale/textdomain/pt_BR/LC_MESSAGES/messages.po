@@ -866,11 +866,6 @@ msgstr "Editor de Fundo de Doações"
 
 #: 
 #, fuzzy
-msgid "Are you sure you want to delete this fund?"
-msgstr "Você tem certeza que quer apagar este fundo?"
-
-#: 
-#, fuzzy
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Campos ou seleções inválidas. As alterações não foram salvas! Por favor, corrija e tente novamente!"
 
@@ -922,11 +917,6 @@ msgstr "Padrão de Recorrência"
 #, fuzzy
 msgid "Attendance Counts"
 msgstr "Total de presentes"
-
-#: 
-#, fuzzy
-msgid "Add counter"
-msgstr "Adicionar contador"
 
 #: 
 #, fuzzy
@@ -1936,11 +1926,6 @@ msgstr "nenhuma propriedade foi adicionada ainda"
 
 #: 
 #, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Atenção: as mudanças de campo serão perdidos se você não \"Guardar alterações\" antes de usar um para cima, para baixo, excluir ou \"adicionar novo\" botão!"
-
-#: 
-#, fuzzy
 msgid "Show in"
 msgstr "mostrar"
 
@@ -2811,11 +2796,6 @@ msgstr "e perder as atribuições de propriedade correspondentes."
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Por favor, confirme a exclusão deste tipo de propriedade"
-
-#: 
-#, fuzzy
-msgid "Property Type Editor"
-msgstr "Editor de Tipo de Propriedade"
 
 #: 
 #, fuzzy
@@ -10997,10 +10977,6 @@ msgstr "Editar evento"
 #: 
 msgid "Editing Event"
 msgstr "Editando evento"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Digite as categorias de contagem separadas por vírgula. \"Total\" é incluído automaticamente."
 
 #: 
 msgid "Enter event title..."

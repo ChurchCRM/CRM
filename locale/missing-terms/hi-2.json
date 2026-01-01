@@ -89,7 +89,6 @@
   "Deleting this event will also delete all attendance records. Are you sure?": "",
   "Edit Event": "",
   "Editing Event": "",
-  "Enter comma-separated count categories. \"Total\" is automatically included.": "",
   "Enter event title...": "",
   "Event": "",
   "Event Types": "",
@@ -101,5 +100,6 @@
   "Members, Visitors, Children": "",
   "Monthly Averages": "",
   "No event types defined yet.": "",
-  "Optional - Add sermon notes or additional event details": ""
+  "Optional - Add sermon notes or additional event details": "",
+  "Optional - leave blank if not tracking": ""
 }

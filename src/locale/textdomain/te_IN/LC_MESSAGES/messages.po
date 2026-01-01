@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "విరాళ నిధి ఎడిటర్"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "మీరు ఖచ్చితంగా ఈ ఫండ్‌ని తొలగించాలనుకుంటున్నారా?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "చెల్లని ఫీల్డ్‌లు లేదా ఎంపికలు. మార్పులు సేవ్ చేయబడలేదు! దయచేసి సరిచేసి, మళ్లీ ప్రయత్నించండి!"
 
@@ -771,10 +767,6 @@ msgstr "పునరావృత నమూనా"
 #: 
 msgid "Attendance Counts"
 msgstr "హాజరు గణనలు"
-
-#: 
-msgid "Add counter"
-msgstr "కౌంటర్ జోడించండి"
 
 #: 
 msgid "Return to Event Types"

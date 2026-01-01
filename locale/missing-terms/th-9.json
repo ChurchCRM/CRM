@@ -1,8 +1,4 @@
 {
-  "Clear All Classes": "",
-  "Add All Families": "",
-  "Clear All Families": "",
-  "Add All Funds": "",
   "Clear All Funds": "",
   "Deposit Comment": "",
   "Your previous session timed out.  Please login again.": "",
@@ -98,5 +94,9 @@
   "List Event Types": "",
   "Check-in and Check-out": "",
   "View All Deposits": "",
-  "Deposit Reports": ""
+  "Deposit Reports": "",
+  "Edit Deposit Slip": "",
+  "View All Fundraisers": "",
+  "Create New Fundraiser": "",
+  "Edit Fundraiser": ""
 }

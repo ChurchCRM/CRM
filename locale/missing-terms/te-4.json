@@ -1,6 +1,4 @@
 {
-  "Members:": "",
-  "There were ": "",
   "Filter by Fund": "",
   "Disable Group Specific Properties": "",
   "There was a problem retrieving the requested object": "",
@@ -98,5 +96,7 @@
   "Recent friends": "",
   "Pledge comparison": "",
   "Missing pledges": "",
-  "Family Pledge by Fiscal Year": ""
+  "Family Pledge by Fiscal Year": "",
+  "CustomSearch": "",
+  "Returns person records which are assigned the given property.": ""
 }

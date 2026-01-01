@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "헌금 항목 편집"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "이 헌금 항목을 삭제하시겠습니까?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "잘못된 필드나 선택입니다. 변경 사항이 저장되지 않았습니다! 수정 후 다시 시도하세요!"
 
@@ -771,10 +767,6 @@ msgstr "반복 패턴"
 #: 
 msgid "Attendance Counts"
 msgstr "출석 인원"
-
-#: 
-msgid "Add counter"
-msgstr "집계 항목 추가"
 
 #: 
 msgid "Return to Event Types"
@@ -1614,11 +1606,6 @@ msgid "No properties have been added yet"
 msgstr "추가된 속성이 없습니다."
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "경고: 위/아래/삭제 또는 '새로 추가' 버튼을 누르기 전에 '변경 사항 저장'을 하지 않으면 수정 내용이 사라집니다!"
-
-#: 
 msgid "Show in"
 msgstr "표시 위치"
 
@@ -2350,10 +2337,6 @@ msgstr "관련된 배정 정보도 사라집니다."
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "이 속성 유형을 삭제할지 확인하세요."
-
-#: 
-msgid "Property Type Editor"
-msgstr "속성 유형 편집"
 
 #: 
 msgid "Property Type List"
@@ -9333,10 +9316,6 @@ msgstr "행사 편집"
 #: 
 msgid "Editing Event"
 msgstr "행사 편집 중"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "쉼표로 구분된 집계 카테고리를 입력하세요. \"전체\"는 자동으로 포함됩니다."
 
 #: 
 msgid "Enter event title..."

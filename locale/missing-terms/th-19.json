@@ -1,8 +1,4 @@
 {
-  "View Family Page": "",
-  "View Person Page": "",
-  "Verify": "",
-  "Family has no emails to use": "",
   "Boxed Layout": "",
   "Activate the boxed layout": "",
   "Toggle Sidebar": "",
@@ -98,5 +94,9 @@
   "Failed to remove family from cart": "",
   "Failed to remove from cart": "",
   "Failed to remove group": "",
-  "Family added to cart": ""
+  "Family added to cart": "",
+  "Family removed from cart": "",
+  "Group added to cart": "",
+  "Group removed from cart": "",
+  "in cart": ""
 }

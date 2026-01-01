@@ -1,6 +1,4 @@
 {
-  "December": "",
-  "Unk": "",
   "Created": "",
   "Envelope Number": "",
   "Upload Photo": "",
@@ -98,5 +96,7 @@
   "Sale Price": "",
   "Material Value": "",
   "Minimum Price": "",
-  "Family Geographic Utilities": ""
+  "Family Geographic Utilities": "",
+  "Select Family": "",
+  "Maximum number of neighbors": ""
 }

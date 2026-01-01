@@ -1,8 +1,4 @@
 {
-  "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token": "",
-  "Links": "",
-  "Show custom links on the left menu.": "",
-  "Enable Sunday School left menu.": "",
   "Enable Finance menu": "",
   "Enable Events menu.": "",
   "Enable Fundraiser menu.": "",
@@ -104,5 +100,9 @@
     "other": ""
   },
   "Missing PHP ZipArchive": "",
-  "Add Results to Cart": ""
+  "Add Results to Cart": "",
+  "Remove Results from Cart": "",
+  "Database Reset Functions": "",
+  "Reset Database": "",
+  "This will reset the system data and will restart the system as a new install.": ""
 }

@@ -1,8 +1,4 @@
 {
-  "Remove Results from Cart": "",
-  "Database Reset Functions": "",
-  "Reset Database": "",
-  "This will reset the system data and will restart the system as a new install.": "",
   "Portuguese - Portugal": "",
   "Holiday": "",
   "Allow users to self-enroll in 2 factor authentication": "",
@@ -98,5 +94,9 @@
   "Today's Birthdays": "",
   "Today's Wedding Anniversaries": "",
   "Api Key": "",
-  "Regen API Key": ""
+  "Regen API Key": "",
+  "View Family Page": "",
+  "View Person Page": "",
+  "Verify": "",
+  "Family has no emails to use": ""
 }

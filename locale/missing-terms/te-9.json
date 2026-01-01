@@ -1,6 +1,4 @@
 {
-  "Integration": "",
-  "Notification": "",
   "Guardian(s) of": "",
   "A notification was triggered by the classroom teacher at": "",
   "Please go to this location": "",
@@ -98,5 +96,7 @@
   "Add A Group Name": "",
   "Default Name Group": "",
   "Group Role": "",
-  "Members from group": ""
+  "Members from group": "",
+  "Members to another group": "",
+  "Members to cart": ""
 }

@@ -1,8 +1,4 @@
 {
-  "ChurchCRM Installation": "",
-  "Copy": "",
-  "DSN": "",
-  "Database Server": "",
   "Debug Info": "",
   "Document Root": "",
   "Email Configuration": "",
@@ -66,7 +62,6 @@
   "Deleting this event will also delete all attendance records. Are you sure?": "",
   "Edit Event": "",
   "Editing Event": "",
-  "Enter comma-separated count categories. \"Total\" is automatically included.": "",
   "Enter event title...": "",
   "Event": "",
   "Event Type Name": "",
@@ -101,5 +96,13 @@
   "Unclassified": "",
   "Upgrade database now": "",
   "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding.": "",
-  "added to this event": ""
+  "added to this event": "",
+  "e.g., Sunday School, Bible Study...": "",
+  "optional": "",
+  "person": {
+    "one": "",
+    "other": ""
+  },
+  "✓ CheckOut": "",
+  "%d Orphaned Files Detected": ""
 }

@@ -1,8 +1,4 @@
 {
-  "Family removed from cart": "",
-  "Group added to cart": "",
-  "Group removed from cart": "",
-  "in cart": "",
   "members. Already had": "",
   "people added to cart": "",
   "people already in cart": "",
@@ -100,5 +96,9 @@
   "Back to Login": "",
   "Back to login": "",
   "Backup Skipped": "",
-  "Check GitHub for the latest release information": ""
+  "Check GitHub for the latest release information": "",
+  "Complete": "",
+  "Continue to Backup": "",
+  "Continue to Download & Apply": "",
+  "Create Backup": ""
 }

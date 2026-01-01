@@ -754,10 +754,6 @@ msgid "Donation Fund Editor"
 msgstr "Insamlingsfond redigerare"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Är du säker på att du vill radera denna Insamlingsfond"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ogiltig fält eller val.  Ändringar sparades inte! Rätta till och försöka igen!"
 
@@ -801,10 +797,6 @@ msgstr "Återkommande mönster"
 #: 
 msgid "Attendance Counts"
 msgstr "Deltagande summor"
-
-#: 
-msgid "Add counter"
-msgstr "Lägg till räknare"
 
 #: 
 msgid "Return to Event Types"
@@ -1664,11 +1656,6 @@ msgid "No properties have been added yet"
 msgstr "Inga egenskapar tillägd än"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Varning:  Fält ändringar förloras om du inte 'spara ändringar' innan du använder pil up, ner, radera, eller 'lägg till' knappen!"
-
-#: 
 msgid "Show in"
 msgstr "Visa in"
 
@@ -2437,10 +2424,6 @@ msgstr "och den fölorar alla egenskap tilldelningar."
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Var snäll och bekräfta att du vill radera egenskapstypen"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Egenskapstyp redigeringsverktyg"
 
 #: 
 msgid "Property Type List"
@@ -9468,10 +9451,6 @@ msgstr "Redigera händelse"
 #: 
 msgid "Editing Event"
 msgstr "Redigerar händelse"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Ange kommaseparerade räkningskategorier. \"Totalt\" inkluderas automatiskt."
 
 #: 
 msgid "Enter event title..."

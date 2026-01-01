@@ -1,5 +1,4 @@
 {
-  "Optional - leave blank if not tracking": "",
   "Optional notes about attendance...": "",
   "People in Cart": "",
   "Person Checking In": "",
@@ -101,5 +100,6 @@
   "Church name is set to default value": "",
   "Classes and enrollments": "",
   "Clear all data and start fresh. Cannot be undone.": "",
-  "Close All Deposits": ""
+  "Close All Deposits": "",
+  "Closed vs Total": ""
 }

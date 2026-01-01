@@ -1,7 +1,4 @@
 {
-  "Backup complete! Click below to download.": "",
-  "Backup completed successfully!": "",
-  "Backup downloaded. Server copy removed.": "",
   "Backup failed. Please try again.": "",
   "Backup generated and copied to remote server": "",
   "Backup in progress, please wait...": "",
@@ -98,5 +95,8 @@
   "seconds...": "",
   " Deposit #": "",
   "%d missing classification": "",
-  "%d missing gender": ""
+  "%d missing gender": "",
+  "%d missing role": "",
+  "A payment is an actual donation received. It will be added to the current deposit.": "",
+  "A pledge is a commitment to give. It is not tied to a deposit slip.": ""
 }

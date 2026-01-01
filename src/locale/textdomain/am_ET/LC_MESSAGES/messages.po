@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "የልገሳ ፈንድ አዘጋጅ"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "እርግጠኛ ነዎት ይህን ፈንድ መሰረዝ ይፈልጋሉ?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "ልክ ያልሆኑ መስኮች ወይም ምርጫዎች። ለውጦች አልተቀመጡም! እባክህ አስተካክል እና እንደገና ሞክር!"
 
@@ -771,10 +767,6 @@ msgstr "የተደጋጋሚነት ንድፍ"
 #: 
 msgid "Attendance Counts"
 msgstr "የመገኘት ብዛት"
-
-#: 
-msgid "Add counter"
-msgstr "ቆጣሪ ያክሉ"
 
 #: 
 msgid "Return to Event Types"
@@ -1615,11 +1607,6 @@ msgid "No properties have been added yet"
 msgstr "እስካሁን ምንም ንብረቶች አልተጨመሩም።"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "ማስጠንቀቂያ፡ ወደላይ፣ ወደ ታች፣ መሰረዝ ወይም 'አዲስ አክል' የሚለውን ቁልፍ ከመጠቀምዎ በፊት 'ለውጦችን ካላስቀመጡ' የመስክ ለውጦች ይጠፋሉ!"
-
-#: 
 msgid "Show in"
 msgstr "ውስጥ አሳይ"
 
@@ -2351,10 +2338,6 @@ msgstr "ራሱ እና ሌሎች የንብረት ምደባዎች ታጣለህ"
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "እባክዎ የንብረት አይነቱ መሰርዝ እንደሚፈልጉ ያረጋግጡ"
-
-#: 
-msgid "Property Type Editor"
-msgstr "የንብረት አይነት ማረሚያ"
 
 #: 
 msgid "Property Type List"
@@ -9360,10 +9343,6 @@ msgstr "ኩነት አርም"
 #: 
 msgid "Editing Event"
 msgstr "ኩነት በማረም ላይ"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "በኮማ የተለዩ የቆጠራ ምድቦችን ያስገቡ። \"Total\" በራሱ ይካተታል።"
 
 #: 
 msgid "Enter event title..."

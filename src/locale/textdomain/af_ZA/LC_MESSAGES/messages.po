@@ -725,10 +725,6 @@ msgid "Donation Fund Editor"
 msgstr "Donasie Fondsredakteur"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "Is u seker dat u hierdie fonds wil verwyder?"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "Ongeldige velde of keuses. Veranderinge kan nie stoor nie! Maak reg en probeer weer. "
 
@@ -771,10 +767,6 @@ msgstr "Herhaling Patroon"
 #: 
 msgid "Attendance Counts"
 msgstr "Bywoning telling"
-
-#: 
-msgid "Add counter"
-msgstr "Voeg teller by"
 
 #: 
 msgid "Return to Event Types"
@@ -1615,11 +1607,6 @@ msgid "No properties have been added yet"
 msgstr "Geen eiendomme is nog bygevoeg nie"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "Waarskuwing: Veldveranderings sal verlore gaan as u nie 'Verander veranderinge' doen voordat u 'n op, af, uitvee of 'voeg' by nie!"
-
-#: 
 msgid "Show in"
 msgstr "Wys in"
 
@@ -2351,10 +2338,6 @@ msgstr "dit verloor en enige ooreenstemmende eiendomstoewysings verloor."
 #: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "Bevestig die verwydering van hierdie eiendomstipe"
-
-#: 
-msgid "Property Type Editor"
-msgstr "Eiendomstipe redakteur"
 
 #: 
 msgid "Property Type List"
@@ -9344,10 +9327,6 @@ msgstr "Redigeer Gelegentheid"
 #: 
 msgid "Editing Event"
 msgstr "Redigeer Gelegentheid"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "Voer komma-geskei telle kategorieë in. \"Totaal\" is outomaties ingesluit."
 
 #: 
 msgid "Enter event title..."

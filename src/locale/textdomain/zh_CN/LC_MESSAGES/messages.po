@@ -750,10 +750,6 @@ msgid "Donation Fund Editor"
 msgstr "捐赠基金的编辑"
 
 #: 
-msgid "Are you sure you want to delete this fund?"
-msgstr "您确定您要删除此基金吗？"
-
-#: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
 msgstr "无效的字段或选择。更改未保存！请更正，然后再试一次！"
 
@@ -797,10 +793,6 @@ msgstr "复发性模式"
 #: 
 msgid "Attendance Counts"
 msgstr "出席计数"
-
-#: 
-msgid "Add counter"
-msgstr "增加计数器"
 
 #: 
 msgid "Return to Event Types"
@@ -1655,11 +1647,6 @@ msgid "No properties have been added yet"
 msgstr "尚未添加任何属性"
 
 #: 
-#, fuzzy
-msgid "Warning: Field changes will be lost if you do not 'Save Changes' before using an up, down, delete, or 'Add New' button!"
-msgstr "警告：场的变化将丢失，如果你不“保存更改”使用前，向下，删除，或添加新的按钮！"
-
-#: 
 msgid "Show in"
 msgstr "显示在"
 
@@ -2410,10 +2397,6 @@ msgstr "它和失去任何相应的属性分配。"
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "请确认删除该属性类型"
-
-#: 
-msgid "Property Type Editor"
-msgstr "物业类型编辑器"
 
 #: 
 msgid "Property Type List"
@@ -9437,10 +9420,6 @@ msgstr "编辑活动"
 #: 
 msgid "Editing Event"
 msgstr "正在编辑活动"
-
-#: 
-msgid "Enter comma-separated count categories. \"Total\" is automatically included."
-msgstr "输入以逗号分隔的统计类别。“总计”将自动包含。"
 
 #: 
 msgid "Enter event title..."

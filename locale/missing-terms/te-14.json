@@ -1,6 +1,4 @@
 {
-  "Failed to delete role. Please try again.": "",
-  "Failed to load cart status.": "",
   "Failed to load groups. Please refresh the page.": "",
   "Failed to set default role. Please try again.": "",
   "Failed to update group. Please try again.": "",
@@ -100,5 +98,7 @@
   "File Name": "",
   "Files Missing": "",
   "Files Modified": "",
-  "Go to Login": ""
+  "Go to Login": "",
+  "I Understand - Continue": "",
+  "Language updated to": ""
 }
