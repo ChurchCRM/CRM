@@ -1,22 +1,19 @@
-/// <reference types="cypress" />
+    /// <reference types="cypress" />
 
 describe("User 2FA", () => {
     beforeEach(() => cy.setupStandardSession());
     
     it("Ensure QR code displays", () => {
         cy.visit("v2/user/current/enroll2fa");
-        // The page may show a Begin Enrollment button or already display a QR code.
-        cy.get('body').then(($body) => {
-            if ($body.find('#begin2faEnrollment').length) {
-                cy.get('#begin2faEnrollment').should('be.visible').click();
-                cy.get('#2faQrCodeDataUri').should('exist').and('have.attr', 'src').and('not.be.empty');
-            } else if ($body.find('#2faQrCodeDataUri').length) {
-                cy.get('#2faQrCodeDataUri').should('be.visible').and('have.attr', 'src').and('not.be.empty');
-            } else {
-                // Fail with helpful message if neither element is present
-                throw new Error('Neither begin enrollment button nor QR code was found on enroll2fa page');
-            }
-        });
+        cy.get("#begin2faEnrollment")
+            .should("exist")
+            .should("be.visible")
+            .should("be.enabled")
+            .click();
+        cy.get("#2faQrCodeDataUri")
+            .should("exist")
+            .should("be.visible")
+            .should("have.attr", "src");
     });
 });
 
