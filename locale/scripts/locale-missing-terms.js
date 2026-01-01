@@ -49,6 +49,12 @@ function saveMissingTermsFileBatched(poEditorCode, missingTerms) {
         fs.mkdirSync(OUTPUT_DIR, { recursive: true });
     }
     
+    // Remove any existing batch files for this locale to ensure a clean rebuild
+    const existingBatches = fs.readdirSync(OUTPUT_DIR).filter(f => f.startsWith(poEditorCode + '-'));
+    existingBatches.forEach(f => {
+        try { fs.unlinkSync(path.join(OUTPUT_DIR, f)); } catch (e) { /* ignore */ }
+    });
+    
     const TERMS_PER_FILE = 100;
     const entries = Object.entries(missingTerms);
     const files = [];
@@ -97,15 +103,30 @@ function main() {
     
     // Load locales configuration
     const localesConfig = loadLocalesConfig();
+
+    // Determine which locales are actually present in the system (i18n files)
+    let installedLocales = [];
+    if (fs.existsSync(I18N_DIR)) {
+        installedLocales = fs.readdirSync(I18N_DIR)
+            .filter(f => f.endsWith('.json'))
+            .map(f => path.basename(f, '.json'));
+    }
+    console.log(`ℹ️ Found ${installedLocales.length} installed i18n locale files in ${I18N_DIR}\n`);
     
     let totalMissing = 0;
     let filesGenerated = 0;
     const results = [];
     
-    // Process each locale
+    // Process each locale (only those part of the running system)
     Object.entries(localesConfig).forEach(([localeName, config]) => {
         const poEditorCode = config.poEditor;
         const locale = config.locale;
+        // Skip locales not installed on this system (no i18n file)
+        if (!installedLocales.includes(locale)) {
+            console.log(`⏭️  ${localeName} (${poEditorCode}) - skipped (not installed: ${locale})`);
+            results.push({ locale: localeName, code: poEditorCode, missing: 0, total: 0, skipped: true });
+            return;
+        }
         
         // Skip locales marked for audit skipping (e.g., English variants)
         if (config.skip_audit === true) {
