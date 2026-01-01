@@ -547,7 +547,7 @@ if (isset($_POST['DoImport'])) {
                         case 14:
                         case 15:
                         case 16:
-                                $sSQLpersonData .= "'" . addslashes(CollapsePhoneNumber($aData[$col], $sCountry)) . "',";
+                                $sSQLpersonData .= "'" . addslashes($aData[$col]) . "',";
                                 $sSQLpersonFields .= $aPersonTableFields[$currentType] . ', ';
                             break;
                         default:
