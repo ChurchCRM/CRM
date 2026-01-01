@@ -1,7 +1,7 @@
 <?php
 
 use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Utils\PhpVersion;
+use ChurchCRM\Utils\VersionUtils;
 use ChurchCRM\Utils\URLValidator;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -15,7 +15,7 @@ $app->group('/', function (RouteCollectorProxy $group): void {
         $renderPage = 'setup-steps.php';
         
         try {
-            if (version_compare(phpversion(), PhpVersion::getRequiredPhpVersion(), '<')) {
+            if (version_compare(phpversion(), VersionUtils::getRequiredPhpVersion(), '<')) {
                 $renderPage = 'setup-error.php';
             }
         } catch (\RuntimeException $e) {

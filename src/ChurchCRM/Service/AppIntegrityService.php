@@ -6,7 +6,7 @@ use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Utils\PhpVersion;
+use ChurchCRM\Utils\VersionUtils;
 
 class AppIntegrityService
 {
@@ -208,7 +208,7 @@ class AppIntegrityService
      */
     public static function getApplicationPrerequisites(): array
     {
-        $requiredPhp = PhpVersion::getRequiredPhpVersion();
+        $requiredPhp = VersionUtils::getRequiredPhpVersion();
 
         return [
             new Prerequisite('PHP ' . $requiredPhp . '+', fn (): bool => version_compare(PHP_VERSION, $requiredPhp, '>=')),

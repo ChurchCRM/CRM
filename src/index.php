@@ -1,17 +1,17 @@
 <?php
 
-// Load composer autoloader first so we can use PhpVersion utility
+// Load composer autoloader first so we can use VersionUtils utility
 require_once __DIR__ . '/vendor/autoload.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Utils\PhpVersion;
+use ChurchCRM\Utils\VersionUtils;
 
 // Get required PHP version from composer.json (single source of truth)
 // Throws RuntimeException if system state cannot be determined
 try {
-    $requiredPhp = PhpVersion::getRequiredPhpVersion();
+    $requiredPhp = VersionUtils::getRequiredPhpVersion();
 } catch (\RuntimeException $e) {
     // System cannot determine PHP requirements - fail loudly with clear error
     http_response_code(500);
