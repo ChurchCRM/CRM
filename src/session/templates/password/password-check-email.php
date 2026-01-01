@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Password Reset Successful");
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
@@ -9,17 +10,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 
     <div class="register-box register-box-600">
         <div class="register-logo">
-            <?php
-            $headerHTML = '<b>Church</b>CRM';
-            $sHeader = SystemConfig::getValue("sHeader");
-            $sChurchName = SystemConfig::getValue("sChurchName");
-            if (!empty($sHeader)) {
-                $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
-            } else if (!empty($sChurchName)) {
-                $headerHTML = $sChurchName;
-            }
-            ?>
-            <a href="<?= SystemURLs::getRootPath() ?>"><?= $headerHTML ?></a>
+            <a href="<?= SystemURLs::getRootPath() ?>"><?= ChurchMetaData::getChurchName() ?></a>
         </div>
 
         <div class="register-box-body">

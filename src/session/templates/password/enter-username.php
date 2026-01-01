@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Password Reset");
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
@@ -11,17 +12,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
                 <div class="text-center my-4">
-            <?php
-            $headerHTML = '<b>Church</b>CRM';
-            $sHeader = SystemConfig::getValue("sHeader");
-            $sChurchName = SystemConfig::getValue("sChurchName");
-            if (!empty($sHeader)) {
-                $headerHTML = html_entity_decode($sHeader, ENT_QUOTES);
-            } else if (!empty($sChurchName)) {
-                $headerHTML = $sChurchName;
-            }
-            ?>
-            <a href="<?= SystemURLs::getRootPath() ?>/"><?= $headerHTML ?></a>
+            <a href="<?= SystemURLs::getRootPath() ?>/"><?= ChurchMetaData::getChurchName() ?></a>
                 </div>
 
                 <div class="card mt-4">
