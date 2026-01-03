@@ -6,12 +6,13 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 // Get the Fiscal Year ID out of the query string
 $iFYID = (int) InputUtils::legacyFilterInput($_POST['FYID'], 'int');
 if (!$iFYID) {
-    $iFYID = CurrentFY();
+    $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 }
 // Remember the chosen Fiscal Year ID
 $_SESSION['idefaultFY'] = $iFYID;

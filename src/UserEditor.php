@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserConfig;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -51,7 +52,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
     // Assign all variables locally
     $sAction = $_POST['Action'];
 
-    $defaultFY = CurrentFY();
+    $defaultFY = FiscalYearUtils::getCurrentFiscalYearId();
     $sUserName = InputUtils::legacyFilterInput($_POST['UserName']);
 
     if (strlen($sUserName) < 3) {

@@ -6,6 +6,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
@@ -15,7 +16,7 @@ $curYear = (new DateTime())->format("Y");
 $familyAddress = $family->getAddress();
 $mailchimp = new MailChimpService();
 
-$iFYID = CurrentFY();
+$iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 if (array_key_exists('idefaultFY', $_SESSION)) {
     $iFYID = MakeFYString((int) $_SESSION['idefaultFY']);
 }

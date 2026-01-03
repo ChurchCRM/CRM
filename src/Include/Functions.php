@@ -6,6 +6,8 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\Functions;
 use ChurchCRM\Utils\InputUtils;
 
 $personService = new PersonService();
@@ -117,12 +119,6 @@ if (isset($_POST['BulkAddToCart'])) {
 // Some very basic functions that all scripts use
 //
 
-// Returns the current fiscal year
-function CurrentFY(): int
-{
-    return \ChurchCRM\Utils\FiscalYearUtils::getCurrentFiscalYearId();
-}
-
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 {
@@ -130,7 +126,7 @@ function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 
     $hasSelected = false;
     $selectableOptions = [];
-    for ($fy = 1; $fy < CurrentFY() + 2; $fy++) {
+    for ($fy = 1; $fy < FiscalYearUtils::getCurrentFiscalYearId() + 2; $fy++) {
         $selectedTag = '';
         if ($iFYID === $fy) {
             $hasSelected = true;
@@ -166,7 +162,7 @@ function MakeFYString(int|string|null $iFYID): string
 // Delegates to ChurchCRM\Utils\Functions::runQuery() to avoid code duplication.
 function RunQuery(string $sSQL, bool $bStopOnError = true)
 {
-    return \ChurchCRM\Utils\Functions::runQuery($sSQL, $bStopOnError);
+    return Functions::runQuery($sSQL, $bStopOnError);
 }
 
 function convertCartToString(array $aCartArray): string
