@@ -1,0 +1,401 @@
+# Database terms extracted from ChurchCRM
+# Generated automatically - do not edit
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: \n"
+"Generated-By: ChurchCRM locale-build-db.js\n"
+
+#. Context: userconfig_ucfg
+msgid "User permission to send email via mailto: links"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "Delimiter to separate emails in mailto: links"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "User permission to create directories"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "User permission to export CSV files"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "Allow user to add new event"
+msgstr ""
+
+#. Context: query_qry
+msgid "Person by Property"
+msgstr ""
+
+#. Context: query_qry
+msgid "Birthdays"
+msgstr ""
+
+#. Context: query_qry
+msgid "Registered students"
+msgstr ""
+
+#. Context: query_qry
+msgid "Membership anniversaries"
+msgstr ""
+
+#. Context: query_qry
+msgid "Volunteers"
+msgstr ""
+
+#. Context: query_qry
+msgid "Recent friends"
+msgstr ""
+
+#. Context: query_qry
+msgid "Pledge comparison"
+msgstr ""
+
+#. Context: query_qry
+msgid "Missing pledges"
+msgstr ""
+
+#. Context: query_qry
+msgid "Credit Card People"
+msgstr ""
+
+#. Context: query_qry
+msgid "Family Pledge by Fiscal Year"
+msgstr ""
+
+#. Context: query_qry
+msgid "CustomSearch"
+msgstr ""
+
+#. Context: query_qry
+msgid "Returns person records which are assigned the given property."
+msgstr ""
+
+#. Context: query_qry
+msgid "People with birthdays in a particular month"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find Registered students"
+msgstr ""
+
+#. Context: query_qry
+msgid "Members who joined in a particular month"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find volunteers for a particular opportunity"
+msgstr ""
+
+#. Context: query_qry
+msgid "Friends who signed up in previous months"
+msgstr ""
+
+#. Context: query_qry
+msgid "Compare pledges between two fiscal years"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people who pledged one year but not another"
+msgstr ""
+
+#. Context: query_qry
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
+#. Context: query_qry
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people with a custom field value"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Male"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Female"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Name"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Zip Code"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "State"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "City"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Home Phone"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2012/2013"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2013/2014"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2014/2015"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2015/2016"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Email"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "WorkEmail"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Member"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Regular Attender"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Guest"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Non-Attender"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Non-Attender (staff)"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2016/2017"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2017/2018"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2018/2019"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2019/2020"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2020/2021"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2021/2022"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "2022/2023"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Minimum Age"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Maximum Age"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Gender"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Family Role"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Property"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Beginning Date"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Ending Date"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Search"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Field"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Month"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Class"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Volunteer opportunities"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Months"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Classification"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Custom field"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Field value"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The minimum age for which you want records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The maximum age for which you want records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The desired gender to search the database for."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select the desired family role."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The gender for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The property for which you would like person records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select field to search for."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The birthday month for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The sunday school class for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Group of registered students"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The membership anniversary month for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Choose a volunteer opportunity"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Number of months since becoming a friend"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First fiscal year for comparison"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second fiscal year for comparison"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Pledged this year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "but not this year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Member, Regular Attender, etc."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First volunteer opportunity choice"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second volunteer opportunity choice"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Choose customer person field"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Match custom field to this value"
+msgstr ""
+

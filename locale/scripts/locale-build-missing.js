@@ -20,7 +20,7 @@ const path = require('path');
 const LOCALES_JSON = path.join(__dirname, '../../src/locale/locales.json');
 const MESSAGES_JSON = path.join(__dirname, '../messages.json');
 const I18N_DIR = path.join(__dirname, '../../src/locale/i18n');
-const OUTPUT_DIR = path.join(__dirname, '../missing-terms');
+const OUTPUT_DIR = path.join(__dirname, '../terms', 'missing', 'new');
 
 function loadJSON(filePath) {
     if (!fs.existsSync(filePath)) {
@@ -45,42 +45,59 @@ function loadLocalesConfig() {
 }
 
 function saveMissingTermsFileBatched(poEditorCode, missingTerms) {
+    // Ensure output directory for this status exists
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR, { recursive: true });
     }
-    
-    // Remove any existing batch files for this locale to ensure a clean rebuild
-    const existingBatches = fs.readdirSync(OUTPUT_DIR).filter(f => f.startsWith(poEditorCode + '-'));
+
+    // Create a subdirectory for this locale code to group batches
+    const localeOutDir = path.join(OUTPUT_DIR, poEditorCode);
+    if (!fs.existsSync(localeOutDir)) {
+        fs.mkdirSync(localeOutDir, { recursive: true });
+    }
+
+    // Remove any existing batch files for this locale-status to ensure a clean rebuild
+    const existingBatches = fs.readdirSync(localeOutDir).filter(f => f.endsWith('.json'));
     existingBatches.forEach(f => {
-        try { fs.unlinkSync(path.join(OUTPUT_DIR, f)); } catch (e) { /* ignore */ }
+        try { fs.unlinkSync(path.join(localeOutDir, f)); } catch (e) { /* ignore */ }
     });
-    
+
     const TERMS_PER_FILE = 100;
     const entries = Object.entries(missingTerms);
     const files = [];
     let batchNumber = 1;
-    
+
     for (let i = 0; i < entries.length; i += TERMS_PER_FILE) {
         const batch = Object.fromEntries(entries.slice(i, i + TERMS_PER_FILE));
-        const filename = path.join(OUTPUT_DIR, `${poEditorCode}-${batchNumber}.json`);
+        const filename = path.join(localeOutDir, `${poEditorCode}-${batchNumber}.json`);
         fs.writeFileSync(filename, JSON.stringify(batch, null, 2));
         files.push({ number: batchNumber, filename, count: Object.keys(batch).length });
         batchNumber++;
     }
-    
+
     return files;
 }
 
 function cleanupMissingTermsDir() {
+    // Clean the 'new' status folder (remove per-locale subfolders and files)
     if (fs.existsSync(OUTPUT_DIR)) {
-        const files = fs.readdirSync(OUTPUT_DIR);
-        files.forEach(file => {
-            const filePath = path.join(OUTPUT_DIR, file);
-            if (fs.statSync(filePath).isFile()) {
-                fs.unlinkSync(filePath);
+        const entries = fs.readdirSync(OUTPUT_DIR);
+        entries.forEach(entry => {
+            const entryPath = path.join(OUTPUT_DIR, entry);
+            try {
+                // remove files or directories recursively
+                const stat = fs.statSync(entryPath);
+                if (stat.isDirectory()) {
+                    const { execSync } = require('child_process');
+                    execSync(`rm -rf "${entryPath}"`);
+                } else {
+                    fs.unlinkSync(entryPath);
+                }
+            } catch (e) {
+                // ignore errors
             }
         });
-        console.log(`🧹 Cleaned up existing missing-terms files\n`);
+        console.log(`🧹 Cleaned up existing missing-terms files in ${OUTPUT_DIR}\n`);
     }
 }
 

@@ -1,0 +1,1213 @@
+# Static data (countries, locales) extracted from ChurchCRM
+# Generated automatically - do not edit
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: \n"
+"Generated-By: ChurchCRM locale-build-static.js\n"
+
+#. Context: countries
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Åland Islands (Åland)"
+msgstr ""
+
+#. Context: countries
+msgid "Albania (Shqipëri)"
+msgstr ""
+
+#. Context: countries
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "American Samoa"
+msgstr ""
+
+#. Context: countries
+msgid "Andorra"
+msgstr ""
+
+#. Context: countries
+msgid "Angola"
+msgstr ""
+
+#. Context: countries
+msgid "Anguilla"
+msgstr ""
+
+#. Context: countries
+msgid "Antarctica"
+msgstr ""
+
+#. Context: countries
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#. Context: countries
+msgid "Argentina"
+msgstr ""
+
+#. Context: countries
+msgid "Armenia (Հայաստան)"
+msgstr ""
+
+#. Context: countries
+msgid "Aruba"
+msgstr ""
+
+#. Context: countries
+msgid "Ascension Island"
+msgstr ""
+
+#. Context: countries
+msgid "Australia"
+msgstr ""
+
+#. Context: countries
+msgid "Austria (Österreich)"
+msgstr ""
+
+#. Context: countries
+msgid "Azerbaijan (Azərbaycan)"
+msgstr ""
+
+#. Context: countries
+msgid "Bahamas"
+msgstr ""
+
+#. Context: countries
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr ""
+
+#. Context: countries
+msgid "Barbados"
+msgstr ""
+
+#. Context: countries
+msgid "Belarus (Беларусь)"
+msgstr ""
+
+#. Context: countries
+msgid "Belgium (België)"
+msgstr ""
+
+#. Context: countries
+msgid "Belize"
+msgstr ""
+
+#. Context: countries
+msgid "Benin (Bénin)"
+msgstr ""
+
+#. Context: countries
+msgid "Bermuda"
+msgstr ""
+
+#. Context: countries
+msgid "Bhutan (འབྲུག)"
+msgstr ""
+
+#. Context: countries
+msgid "Bolivia"
+msgstr ""
+
+#. Context: countries
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr ""
+
+#. Context: countries
+msgid "Botswana"
+msgstr ""
+
+#. Context: countries
+msgid "Bouvet Island"
+msgstr ""
+
+#. Context: countries
+msgid "Brazil (Brasil)"
+msgstr ""
+
+#. Context: countries
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#. Context: countries
+msgid "British Virgin Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Brunei"
+msgstr ""
+
+#. Context: countries
+msgid "Bulgaria (България)"
+msgstr ""
+
+#. Context: countries
+msgid "Burkina Faso"
+msgstr ""
+
+#. Context: countries
+msgid "Burundi (Uburundi)"
+msgstr ""
+
+#. Context: countries
+msgid "Cambodia (កម្ពុជា)"
+msgstr ""
+
+#. Context: countries
+msgid "Cameroon (Cameroun)"
+msgstr ""
+
+#. Context: countries
+msgid "Canada"
+msgstr ""
+
+#. Context: countries
+msgid "Canary Islands (islas Canarias)"
+msgstr ""
+
+#. Context: countries
+msgid "Cape Verde (Kabu Verdi)"
+msgstr ""
+
+#. Context: countries
+msgid "Caribbean Netherlands"
+msgstr ""
+
+#. Context: countries
+msgid "Cayman Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Central African Republic (République centrafricaine)"
+msgstr ""
+
+#. Context: countries
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr ""
+
+#. Context: countries
+msgid "Chad (Tchad)"
+msgstr ""
+
+#. Context: countries
+msgid "Chile"
+msgstr ""
+
+#. Context: countries
+msgid "China (中国)"
+msgstr ""
+
+#. Context: countries
+msgid "Christmas Island"
+msgstr ""
+
+#. Context: countries
+msgid "Clipperton Island"
+msgstr ""
+
+#. Context: countries
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr ""
+
+#. Context: countries
+msgid "Colombia"
+msgstr ""
+
+#. Context: countries
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr ""
+
+#. Context: countries
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr ""
+
+#. Context: countries
+msgid "Cook Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Costa Rica"
+msgstr ""
+
+#. Context: countries
+msgid "Côte d’Ivoire"
+msgstr ""
+
+#. Context: countries
+msgid "Croatia (Hrvatska)"
+msgstr ""
+
+#. Context: countries
+msgid "Cuba"
+msgstr ""
+
+#. Context: countries
+msgid "Curaçao"
+msgstr ""
+
+#. Context: countries
+msgid "Cyprus (Κύπρος)"
+msgstr ""
+
+#. Context: countries
+msgid "Czech Republic (Česká republika)"
+msgstr ""
+
+#. Context: countries
+msgid "Denmark (Danmark)"
+msgstr ""
+
+#. Context: countries
+msgid "Diego Garcia"
+msgstr ""
+
+#. Context: countries
+msgid "Djibouti"
+msgstr ""
+
+#. Context: countries
+msgid "Dominica"
+msgstr ""
+
+#. Context: countries
+msgid "Dominican Republic (República Dominicana)"
+msgstr ""
+
+#. Context: countries
+msgid "Ecuador"
+msgstr ""
+
+#. Context: countries
+msgid "Egypt (‫مصر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "El Salvador"
+msgstr ""
+
+#. Context: countries
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr ""
+
+#. Context: countries
+msgid "Eritrea"
+msgstr ""
+
+#. Context: countries
+msgid "Estonia (Eesti)"
+msgstr ""
+
+#. Context: countries
+msgid "Ethiopia"
+msgstr ""
+
+#. Context: countries
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr ""
+
+#. Context: countries
+msgid "Faroe Islands (Føroyar)"
+msgstr ""
+
+#. Context: countries
+msgid "Fiji"
+msgstr ""
+
+#. Context: countries
+msgid "Finland (Suomi)"
+msgstr ""
+
+#. Context: countries
+msgid "France"
+msgstr ""
+
+#. Context: countries
+msgid "French Guiana (Guyane française)"
+msgstr ""
+
+#. Context: countries
+msgid "French Polynesia (Polynésie française)"
+msgstr ""
+
+#. Context: countries
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr ""
+
+#. Context: countries
+msgid "Gabon"
+msgstr ""
+
+#. Context: countries
+msgid "Gambia"
+msgstr ""
+
+#. Context: countries
+msgid "Georgia (საქართველო)"
+msgstr ""
+
+#. Context: countries
+msgid "Germany (Deutschland)"
+msgstr ""
+
+#. Context: countries
+msgid "Ghana (Gaana)"
+msgstr ""
+
+#. Context: countries
+msgid "Gibraltar"
+msgstr ""
+
+#. Context: countries
+msgid "Greece (Ελλάδα)"
+msgstr ""
+
+#. Context: countries
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr ""
+
+#. Context: countries
+msgid "Grenada"
+msgstr ""
+
+#. Context: countries
+msgid "Guadeloupe"
+msgstr ""
+
+#. Context: countries
+msgid "Guam"
+msgstr ""
+
+#. Context: countries
+msgid "Guatemala"
+msgstr ""
+
+#. Context: countries
+msgid "Guernsey"
+msgstr ""
+
+#. Context: countries
+msgid "Guinea (Guinée)"
+msgstr ""
+
+#. Context: countries
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr ""
+
+#. Context: countries
+msgid "Guyana"
+msgstr ""
+
+#. Context: countries
+msgid "Haiti"
+msgstr ""
+
+#. Context: countries
+msgid "Heard & McDonald Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Honduras"
+msgstr ""
+
+#. Context: countries
+msgid "Hong Kong (香港)"
+msgstr ""
+
+#. Context: countries
+msgid "Hungary (Magyarország)"
+msgstr ""
+
+#. Context: countries
+msgid "Iceland (Ísland)"
+msgstr ""
+
+#. Context: countries
+msgid "India (भारत)"
+msgstr ""
+
+#. Context: countries
+msgid "Indonesia"
+msgstr ""
+
+#. Context: countries
+msgid "Iran (‫ایران‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Iraq (‫العراق‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Ireland"
+msgstr ""
+
+#. Context: countries
+msgid "Isle of Man"
+msgstr ""
+
+#. Context: countries
+msgid "Israel (‫ישראל‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Italy (Italia)"
+msgstr ""
+
+#. Context: countries
+msgid "Jamaica"
+msgstr ""
+
+#. Context: countries
+msgid "Japan (日本)"
+msgstr ""
+
+#. Context: countries
+msgid "Jersey"
+msgstr ""
+
+#. Context: countries
+msgid "Jordan (‫الأردن‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Kazakhstan (Казахстан)"
+msgstr ""
+
+#. Context: countries
+msgid "Kenya"
+msgstr ""
+
+#. Context: countries
+msgid "Kiribati"
+msgstr ""
+
+#. Context: countries
+msgid "Kosovo (Kosovë)"
+msgstr ""
+
+#. Context: countries
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr ""
+
+#. Context: countries
+msgid "Laos (ລາວ)"
+msgstr ""
+
+#. Context: countries
+msgid "Latvia (Latvija)"
+msgstr ""
+
+#. Context: countries
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Lesotho"
+msgstr ""
+
+#. Context: countries
+msgid "Liberia"
+msgstr ""
+
+#. Context: countries
+msgid "Libya (‫ليبيا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Liechtenstein"
+msgstr ""
+
+#. Context: countries
+msgid "Lithuania (Lietuva)"
+msgstr ""
+
+#. Context: countries
+msgid "Luxembourg"
+msgstr ""
+
+#. Context: countries
+msgid "Macau (澳門)"
+msgstr ""
+
+#. Context: countries
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr ""
+
+#. Context: countries
+msgid "Madagascar (Madagasikara)"
+msgstr ""
+
+#. Context: countries
+msgid "Malawi"
+msgstr ""
+
+#. Context: countries
+msgid "Malaysia"
+msgstr ""
+
+#. Context: countries
+msgid "Maldives"
+msgstr ""
+
+#. Context: countries
+msgid "Mali"
+msgstr ""
+
+#. Context: countries
+msgid "Malta"
+msgstr ""
+
+#. Context: countries
+msgid "Marshall Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Martinique"
+msgstr ""
+
+#. Context: countries
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Mauritius (Moris)"
+msgstr ""
+
+#. Context: countries
+msgid "Mayotte"
+msgstr ""
+
+#. Context: countries
+msgid "Mexico (México)"
+msgstr ""
+
+#. Context: countries
+msgid "Micronesia"
+msgstr ""
+
+#. Context: countries
+msgid "Moldova (Republica Moldova)"
+msgstr ""
+
+#. Context: countries
+msgid "Monaco"
+msgstr ""
+
+#. Context: countries
+msgid "Mongolia (Монгол)"
+msgstr ""
+
+#. Context: countries
+msgid "Montenegro (Crna Gora)"
+msgstr ""
+
+#. Context: countries
+msgid "Montserrat"
+msgstr ""
+
+#. Context: countries
+msgid "Morocco (‫المغرب‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Mozambique (Moçambique)"
+msgstr ""
+
+#. Context: countries
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr ""
+
+#. Context: countries
+msgid "Namibia (Namibië)"
+msgstr ""
+
+#. Context: countries
+msgid "Nauru"
+msgstr ""
+
+#. Context: countries
+msgid "Nepal (नेपाल)"
+msgstr ""
+
+#. Context: countries
+msgid "Netherlands (Nederland)"
+msgstr ""
+
+#. Context: countries
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr ""
+
+#. Context: countries
+msgid "New Zealand"
+msgstr ""
+
+#. Context: countries
+msgid "Nicaragua"
+msgstr ""
+
+#. Context: countries
+msgid "Niger (Nijar)"
+msgstr ""
+
+#. Context: countries
+msgid "Nigeria"
+msgstr ""
+
+#. Context: countries
+msgid "Niue"
+msgstr ""
+
+#. Context: countries
+msgid "Norfolk Island"
+msgstr ""
+
+#. Context: countries
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#. Context: countries
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr ""
+
+#. Context: countries
+msgid "Norway (Norge)"
+msgstr ""
+
+#. Context: countries
+msgid "Oman (‫عُمان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Palau"
+msgstr ""
+
+#. Context: countries
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Panama (Panamá)"
+msgstr ""
+
+#. Context: countries
+msgid "Papua New Guinea"
+msgstr ""
+
+#. Context: countries
+msgid "Paraguay"
+msgstr ""
+
+#. Context: countries
+msgid "Peru (Perú)"
+msgstr ""
+
+#. Context: countries
+msgid "Philippines"
+msgstr ""
+
+#. Context: countries
+msgid "Pitcairn Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Poland (Polska)"
+msgstr ""
+
+#. Context: countries
+msgid "Portugal"
+msgstr ""
+
+#. Context: countries
+msgid "Puerto Rico"
+msgstr ""
+
+#. Context: countries
+msgid "Qatar (‫قطر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Réunion (La Réunion)"
+msgstr ""
+
+#. Context: countries
+msgid "Romania (România)"
+msgstr ""
+
+#. Context: countries
+msgid "Russia (Россия)"
+msgstr ""
+
+#. Context: countries
+msgid "Rwanda"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Helena"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Lucia"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr ""
+
+#. Context: countries
+msgid "Samoa"
+msgstr ""
+
+#. Context: countries
+msgid "San Marino"
+msgstr ""
+
+#. Context: countries
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr ""
+
+#. Context: countries
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Senegal (Sénégal)"
+msgstr ""
+
+#. Context: countries
+msgid "Serbia (Србија)"
+msgstr ""
+
+#. Context: countries
+msgid "Seychelles"
+msgstr ""
+
+#. Context: countries
+msgid "Sierra Leone"
+msgstr ""
+
+#. Context: countries
+msgid "Singapore"
+msgstr ""
+
+#. Context: countries
+msgid "Sint Maarten"
+msgstr ""
+
+#. Context: countries
+msgid "Slovakia (Slovensko)"
+msgstr ""
+
+#. Context: countries
+msgid "Slovenia (Slovenija)"
+msgstr ""
+
+#. Context: countries
+msgid "Solomon Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Somalia (Soomaaliya)"
+msgstr ""
+
+#. Context: countries
+msgid "South Africa"
+msgstr ""
+
+#. Context: countries
+msgid "South Georgia & South Sandwich Islands"
+msgstr ""
+
+#. Context: countries
+msgid "South Korea (대한민국)"
+msgstr ""
+
+#. Context: countries
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Spain (España)"
+msgstr ""
+
+#. Context: countries
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr ""
+
+#. Context: countries
+msgid "St. Vincent & Grenadines"
+msgstr ""
+
+#. Context: countries
+msgid "Sudan (‫السودان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Suriname"
+msgstr ""
+
+#. Context: countries
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr ""
+
+#. Context: countries
+msgid "Swaziland"
+msgstr ""
+
+#. Context: countries
+msgid "Sweden (Sverige)"
+msgstr ""
+
+#. Context: countries
+msgid "Switzerland (Schweiz)"
+msgstr ""
+
+#. Context: countries
+msgid "Syria (‫سوريا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Taiwan (台灣)"
+msgstr ""
+
+#. Context: countries
+msgid "Tajikistan"
+msgstr ""
+
+#. Context: countries
+msgid "Tanzania"
+msgstr ""
+
+#. Context: countries
+msgid "Thailand (ไทย)"
+msgstr ""
+
+#. Context: countries
+msgid "Timor-Leste"
+msgstr ""
+
+#. Context: countries
+msgid "Togo"
+msgstr ""
+
+#. Context: countries
+msgid "Tokelau"
+msgstr ""
+
+#. Context: countries
+msgid "Tonga"
+msgstr ""
+
+#. Context: countries
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#. Context: countries
+msgid "Tristan da Cunha"
+msgstr ""
+
+#. Context: countries
+msgid "Tunisia (‫تونس‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Turkey (Türkiye)"
+msgstr ""
+
+#. Context: countries
+msgid "Turkmenistan"
+msgstr ""
+
+#. Context: countries
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Tuvalu"
+msgstr ""
+
+#. Context: countries
+msgid "U.S. Outlying Islands"
+msgstr ""
+
+#. Context: countries
+msgid "U.S. Virgin Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Uganda"
+msgstr ""
+
+#. Context: countries
+msgid "Ukraine (Україна)"
+msgstr ""
+
+#. Context: countries
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "United Kingdom"
+msgstr ""
+
+#. Context: countries
+msgid "United States"
+msgstr ""
+
+#. Context: countries
+msgid "Uruguay"
+msgstr ""
+
+#. Context: countries
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr ""
+
+#. Context: countries
+msgid "Vanuatu"
+msgstr ""
+
+#. Context: countries
+msgid "Vatican City (Città del Vaticano)"
+msgstr ""
+
+#. Context: countries
+msgid "Venezuela"
+msgstr ""
+
+#. Context: countries
+msgid "Vietnam (Việt Nam)"
+msgstr ""
+
+#. Context: countries
+msgid "Wallis and Futuna"
+msgstr ""
+
+#. Context: countries
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Yemen (‫اليمن‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Zambia"
+msgstr ""
+
+#. Context: countries
+msgid "Zimbabwe"
+msgstr ""
+
+#. Context: locales
+msgid "Afrikaans"
+msgstr ""
+
+#. Context: locales
+msgid "Albanian"
+msgstr ""
+
+#. Context: locales
+msgid "Amharic - Ethiopia"
+msgstr ""
+
+#. Context: locales
+msgid "Arabic - Egypt"
+msgstr ""
+
+#. Context: locales
+msgid "Chinese - China"
+msgstr ""
+
+#. Context: locales
+msgid "Chinese - Taiwan"
+msgstr ""
+
+#. Context: locales
+msgid "Czech"
+msgstr ""
+
+#. Context: locales
+msgid "Dutch - Netherlands"
+msgstr ""
+
+#. Context: locales
+msgid "English - Australia"
+msgstr ""
+
+#. Context: locales
+msgid "English - Canada"
+msgstr ""
+
+#. Context: locales
+msgid "English - Great Britain"
+msgstr ""
+
+#. Context: locales
+msgid "English - Jamaica"
+msgstr ""
+
+#. Context: locales
+msgid "English - South Africa"
+msgstr ""
+
+#. Context: locales
+msgid "English - United States"
+msgstr ""
+
+#. Context: locales
+msgid "Estonian"
+msgstr ""
+
+#. Context: locales
+msgid "Finnish"
+msgstr ""
+
+#. Context: locales
+msgid "French - France"
+msgstr ""
+
+#. Context: locales
+msgid "German - Germany"
+msgstr ""
+
+#. Context: locales
+msgid "Greek"
+msgstr ""
+
+#. Context: locales
+msgid "Hebrew"
+msgstr ""
+
+#. Context: locales
+msgid "Hindi - India"
+msgstr ""
+
+#. Context: locales
+msgid "Hungarian"
+msgstr ""
+
+#. Context: locales
+msgid "Indonesian - Indonesia"
+msgstr ""
+
+#. Context: locales
+msgid "Italian - Italy"
+msgstr ""
+
+#. Context: locales
+msgid "Japanese"
+msgstr ""
+
+#. Context: locales
+msgid "Korean"
+msgstr ""
+
+#. Context: locales
+msgid "Norwegian"
+msgstr ""
+
+#. Context: locales
+msgid "Polish"
+msgstr ""
+
+#. Context: locales
+msgid "Portuguese - Brazil"
+msgstr ""
+
+#. Context: locales
+msgid "Portuguese - Portugal"
+msgstr ""
+
+#. Context: locales
+msgid "Romanian - Romania"
+msgstr ""
+
+#. Context: locales
+msgid "Russian"
+msgstr ""
+
+#. Context: locales
+msgid "Sami (Northern) (Sweden)"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Spain"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Mexico"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Argentina"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Colombia"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - El Salvador"
+msgstr ""
+
+#. Context: locales
+msgid "Swahili"
+msgstr ""
+
+#. Context: locales
+msgid "Tamil - India"
+msgstr ""
+
+#. Context: locales
+msgid "Telugu - India"
+msgstr ""
+
+#. Context: locales
+msgid "Thai"
+msgstr ""
+
+#. Context: locales
+msgid "Turkish"
+msgstr ""
+
+#. Context: locales
+msgid "Ukrainian"
+msgstr ""
+
+#. Context: locales
+msgid "Vietnamese"
+msgstr ""
+

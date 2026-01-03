@@ -191,8 +191,8 @@ class TermExtractor {
      */
     async extractDatabaseTerms() {
         this.log('🗄️', 'Extracting database terms...');
-        await this.execNode('locale/scripts/locale-extract-db.js');
-        return this.getTempDir('locale/scripts/locale-extract-db.js');
+        await this.execNode('locale/scripts/locale-build-db.js');
+        return this.getTempDir('locale/scripts/locale-build-db.js');
     }
 
     /**
@@ -200,8 +200,8 @@ class TermExtractor {
      */
     async extractStaticData() {
         this.log('🌍', 'Extracting static data (countries and locales)...');
-        await this.execNode('locale/scripts/locale-extract-static.js');
-        return this.getTempDir('locale/scripts/locale-extract-static.js');
+        await this.execNode('locale/scripts/locale-build-static.js');
+        return this.getTempDir('locale/scripts/locale-build-static.js');
     }
 
     /**
@@ -318,6 +318,24 @@ class TermExtractor {
             this.exec(`msgcat --no-wrap --sort-output "${this.messagesFile}" -o "${this.messagesFile}.tmp"`);
             this.exec(`mv "${this.messagesFile}.tmp" "${this.messagesFile}"`);
 
+            // Save a timestamped copy of the generated base term files into locale/terms/base
+            try {
+                const termsBaseDir = path.join(this.localeDir, 'terms', 'base');
+                if (!fs.existsSync(termsBaseDir)) {
+                    fs.mkdirSync(termsBaseDir, { recursive: true });
+                }
+                // Use stable filenames (no timestamps) so review pipelines can reference them
+                const messagesCopy = path.join(termsBaseDir, `messages.po`);
+                this.copyFile(this.messagesFile, messagesCopy);
+
+                const translationJsonPath = path.join(this.localeDir, 'locales', 'en', 'translation.json');
+                if (this.fileExists(translationJsonPath)) {
+                    const translationCopy = path.join(termsBaseDir, `translation.json`);
+                    this.copyFile(translationJsonPath, translationCopy);
+                }
+            } catch (err) {
+                console.error('Failed to save terms/base copies:', err.message);
+            }
             // 8. Cleanup temporary directories
             this.cleanup(dbTempDir);
             this.cleanup(staticTempDir);

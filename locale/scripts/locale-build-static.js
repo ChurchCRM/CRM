@@ -71,6 +71,19 @@ class StaticDataExtractor {
         // Write PO file
         this.writePoFile(poFile, entries);
         
+        // Also save a timestamped copy into locale/terms/base for review
+        try {
+            const projectRoot = path.resolve(__dirname, '../..');
+            const termsBaseDir = path.join(projectRoot, 'locale', 'terms', 'base');
+            if (!fs.existsSync(termsBaseDir)) {
+                fs.mkdirSync(termsBaseDir, { recursive: true });
+            }
+            const dest = path.join(termsBaseDir, `static-terms.po`);
+            fs.copyFileSync(poFile, dest);
+            console.log(`${dest} created (copy of static terms)`);
+        } catch (err) {
+            console.error('Failed to copy static terms to terms/base:', err.message);
+        }
         return poFile;
     }
 
@@ -86,7 +99,7 @@ msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\\n"
 "Language: \\n"
-"Generated-By: ChurchCRM locale-extract-static.js\\n"
+"Generated-By: ChurchCRM locale-build-static.js\\n"
 
 `;
         

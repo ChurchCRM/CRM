@@ -12,9 +12,9 @@ locale/
 ├── scripts/
 │   ├── i18next-parser.config.js    # i18next parser configuration
 │   ├── locale-audit.js             # Locale completeness audit script
-│   ├── locale-extract-db.js        # Database term extraction script
-│   ├── locale-extract-static.js    # Static data (countries/locales) extraction
-│   └── locale-term-extract.js      # Main term extraction orchestrator
+│   ├── locale-build-db.js          # Database term extraction script (renamed)
+│   ├── locale-build-static.js      # Static data (countries/locales) extraction (renamed)
+│   └── locale-build.js              # Main term extraction orchestrator (renamed)
 ├── messages.po                     # Master Gettext template file
 └── poeditor-audit.md              # Locale completeness report
 ```
@@ -51,7 +51,7 @@ ChurchCRM uses [POEditor](https://poeditor.com) as the primary translation manag
 
 ### POEditor Workflow
 
-1. **Extract Terms**: `npm run locale:term-extract` → Generates `messages.po` with all translatable terms
+1. **Extract Terms**: `npm run locale:build` → Generates `messages.po` with all translatable terms
 2. **Upload to POEditor**: Upload `locale/messages.po` to POEditor project
 3. **Translate**: Contributors translate terms in POEditor web interface
 4. **Download**: `npm run locale:download` downloads completed translations
@@ -84,7 +84,7 @@ t('Text to translate')
 
 ### Term Extraction Process
 
-The `npm run locale:term-extract` script (`scripts/locale-term-extract.js`) performs a comprehensive extraction:
+The `npm run locale:build` script (`scripts/locale-build.js`) performs a comprehensive extraction:
 
 1. **Database Terms** - Extracts terms from database queries, user configurations, and system data
    - Uses `locale-extract-db.js` with direct MySQL connectivity  
