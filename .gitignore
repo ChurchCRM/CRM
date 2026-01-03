@@ -8,6 +8,9 @@ vendor
 node_modules
 temp
 
+# Locale build artifacts
+locale/terms/base
+
 # Uploaded Images
 src/Images/Family/*
 src/Images/Person/*
