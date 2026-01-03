@@ -7,7 +7,7 @@ use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\FiscalYearUtils;
-use ChurchCRM\Utils\Functions;
+use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $personService = new PersonService();
@@ -162,7 +162,7 @@ function MakeFYString(int|string|null $iFYID): string
 // Delegates to ChurchCRM\Utils\FunctionsUtils::runQuery() to avoid code duplication.
 function RunQuery(string $sSQL, bool $bStopOnError = true)
 {
-    return Functions::runQuery($sSQL, $bStopOnError);
+    return FunctionsUtils::runQuery($sSQL, $bStopOnError);
 }
 
 function convertCartToString(array $aCartArray): string
