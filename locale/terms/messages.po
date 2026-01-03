@@ -1,0 +1,2661 @@
+# Database terms extracted from ChurchCRM
+# Generated automatically - do not edit
+#
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: \n"
+"Generated-By: ChurchCRM locale-build-db.js\n"
+
+msgid "2 Factor Authentication Enrollment Success"
+msgstr ""
+
+msgid "2 Factor Authentication Secret"
+msgstr ""
+
+msgid "A Calendar access token has been generated and saved."
+msgstr ""
+
+msgid "Access Token"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Action Confirmation"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Add A Group Name"
+msgstr ""
+
+msgid "Add New"
+msgstr ""
+
+msgid "Add to Cart"
+msgstr ""
+
+msgid "Added"
+msgstr ""
+
+msgid "Added to cart successfully"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Address is required"
+msgstr ""
+
+#. Context: countries
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr ""
+
+#. Context: locales
+msgid "Afrikaans"
+msgstr ""
+
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr ""
+
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr ""
+
+#. Context: countries
+msgid "Albania (Shqipëri)"
+msgstr ""
+
+#. Context: locales
+msgid "Albanian"
+msgstr ""
+
+#. Context: countries
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr ""
+
+msgid "All System Settings"
+msgstr ""
+
+msgid "All members already in cart"
+msgstr ""
+
+msgid "All members of this group are in the cart"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "Allow user to add new event"
+msgstr ""
+
+#. Context: countries
+msgid "American Samoa"
+msgstr ""
+
+#. Context: locales
+msgid "Amharic - Ethiopia"
+msgstr ""
+
+msgid "Amount"
+msgstr ""
+
+msgid "An error occurred during demo data import"
+msgstr ""
+
+#. Context: countries
+msgid "Andorra"
+msgstr ""
+
+#. Context: countries
+msgid "Angola"
+msgstr ""
+
+#. Context: countries
+msgid "Anguilla"
+msgstr ""
+
+msgid "Anniversary"
+msgstr ""
+
+msgid "Anonymous"
+msgstr ""
+
+#. Context: countries
+msgid "Antarctica"
+msgstr ""
+
+#. Context: countries
+msgid "Antigua and Barbuda"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+#. Context: locales
+msgid "Arabic - Egypt"
+msgstr ""
+
+msgid "Are you sure you want to change the end time for "
+msgstr ""
+
+msgid "Are you sure you want to delete the selected"
+msgstr ""
+
+msgid "Are you sure you want to move"
+msgstr ""
+
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr ""
+
+msgid "Are you sure you want to remove the selected group members?"
+msgstr ""
+
+msgid "Are you sure you want to remove this person's membership from"
+msgstr ""
+
+msgid "Are you sure you want to unassign this property?"
+msgstr ""
+
+#. Context: countries
+msgid "Argentina"
+msgstr ""
+
+#. Context: countries
+msgid "Armenia (Հայաստան)"
+msgstr ""
+
+#. Context: countries
+msgid "Aruba"
+msgstr ""
+
+#. Context: countries
+msgid "Ascension Island"
+msgstr ""
+
+msgid "Assign a New Property"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+#. Context: countries
+msgid "Australia"
+msgstr ""
+
+#. Context: countries
+msgid "Austria (Österreich)"
+msgstr ""
+
+msgid "Available"
+msgstr ""
+
+#. Context: countries
+msgid "Azerbaijan (Azərbaycan)"
+msgstr ""
+
+msgid "Background Color"
+msgstr ""
+
+msgid "Backup Complete, Ready for Download."
+msgstr ""
+
+msgid "Backup Downloaded, Copy on server removed"
+msgstr ""
+
+msgid "Backup Skipped"
+msgstr ""
+
+msgid "Backup complete! Click below to download."
+msgstr ""
+
+msgid "Backup downloaded. Server copy removed."
+msgstr ""
+
+msgid "Backup generated and copied to remote server"
+msgstr ""
+
+#. Context: countries
+msgid "Bahamas"
+msgstr ""
+
+#. Context: countries
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr ""
+
+#. Context: countries
+msgid "Barbados"
+msgstr ""
+
+msgid "Base URL is required"
+msgstr ""
+
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Beginning Date"
+msgstr ""
+
+msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
+msgstr ""
+
+#. Context: countries
+msgid "Belarus (Беларусь)"
+msgstr ""
+
+#. Context: countries
+msgid "Belgium (België)"
+msgstr ""
+
+#. Context: countries
+msgid "Belize"
+msgstr ""
+
+#. Context: countries
+msgid "Benin (Bénin)"
+msgstr ""
+
+#. Context: countries
+msgid "Bermuda"
+msgstr ""
+
+#. Context: countries
+msgid "Bhutan (འབྲུག)"
+msgstr ""
+
+msgid "Birthday"
+msgstr ""
+
+#. Context: query_qry
+msgid "Birthdays"
+msgstr ""
+
+#. Context: countries
+msgid "Bolivia"
+msgstr ""
+
+#. Context: countries
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr ""
+
+#. Context: countries
+msgid "Botswana"
+msgstr ""
+
+#. Context: countries
+msgid "Bouvet Island"
+msgstr ""
+
+#. Context: countries
+msgid "Brazil (Brasil)"
+msgstr ""
+
+#. Context: countries
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#. Context: countries
+msgid "British Virgin Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Brunei"
+msgstr ""
+
+#. Context: countries
+msgid "Bulgaria (България)"
+msgstr ""
+
+#. Context: countries
+msgid "Burkina Faso"
+msgstr ""
+
+#. Context: countries
+msgid "Burundi (Uburundi)"
+msgstr ""
+
+msgid "Calendar Name"
+msgstr ""
+
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr ""
+
+#. Context: countries
+msgid "Cambodia (កម្ពុជា)"
+msgstr ""
+
+#. Context: countries
+msgid "Cameroon (Cameroun)"
+msgstr ""
+
+#. Context: countries
+msgid "Canada"
+msgstr ""
+
+#. Context: countries
+msgid "Canary Islands (islas Canarias)"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+#. Context: countries
+msgid "Cape Verde (Kabu Verdi)"
+msgstr ""
+
+#. Context: countries
+msgid "Caribbean Netherlands"
+msgstr ""
+
+msgid "Cart emptied successfully"
+msgstr ""
+
+msgid "Cart emptied to group successfully"
+msgstr ""
+
+#. Context: countries
+msgid "Cayman Islands"
+msgstr ""
+
+msgid "Cell Phone"
+msgstr ""
+
+#. Context: countries
+msgid "Central African Republic (République centrafricaine)"
+msgstr ""
+
+#. Context: countries
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr ""
+
+#. Context: countries
+msgid "Chad (Tchad)"
+msgstr ""
+
+msgid "Change role"
+msgstr ""
+
+msgid "Check In to Event"
+msgstr ""
+
+msgid "Check Number"
+msgstr ""
+
+msgid "Checking Cart Status"
+msgstr ""
+
+#. Context: countries
+msgid "Chile"
+msgstr ""
+
+#. Context: countries
+msgid "China (中国)"
+msgstr ""
+
+#. Context: locales
+msgid "Chinese - China"
+msgstr ""
+
+#. Context: locales
+msgid "Chinese - Taiwan"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Choose a volunteer opportunity"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Choose customer person field"
+msgstr ""
+
+#. Context: countries
+msgid "Christmas Island"
+msgstr ""
+
+msgid "ChurchCRM Supported Locales"
+msgstr ""
+
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "City"
+msgstr ""
+
+msgid "City is required"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Class"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Classification"
+msgstr ""
+
+#. Context: countries
+msgid "Clipperton Island"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Closed"
+msgstr ""
+
+#. Context: countries
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr ""
+
+msgid "Code incomplete"
+msgstr ""
+
+msgid "Code is invalid"
+msgstr ""
+
+#. Context: countries
+msgid "Colombia"
+msgstr ""
+
+msgid "Coming soon"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+#. Context: countries
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr ""
+
+#. Context: query_qry
+msgid "Compare pledges between two fiscal years"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Confirm Activation"
+msgstr ""
+
+msgid "Confirm Deactivation"
+msgstr ""
+
+msgid "Confirm Delete"
+msgstr ""
+
+msgid "Confirm Disable Group Specific Properties"
+msgstr ""
+
+msgid "Confirm Enable Group Specific Properties"
+msgstr ""
+
+#. Context: countries
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr ""
+
+#. Context: countries
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr ""
+
+#. Context: countries
+msgid "Cook Islands"
+msgstr ""
+
+msgid "Copied!"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+#. Context: countries
+msgid "Costa Rica"
+msgstr ""
+
+msgid "Created"
+msgstr ""
+
+#. Context: query_qry
+msgid "Credit Card People"
+msgstr ""
+
+#. Context: countries
+msgid "Croatia (Hrvatska)"
+msgstr ""
+
+#. Context: countries
+msgid "Cuba"
+msgstr ""
+
+#. Context: countries
+msgid "Curaçao"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Custom field"
+msgstr ""
+
+#. Context: query_qry
+msgid "CustomSearch"
+msgstr ""
+
+#. Context: countries
+msgid "Cyprus (Κύπρος)"
+msgstr ""
+
+#. Context: locales
+msgid "Czech"
+msgstr ""
+
+#. Context: countries
+msgid "Czech Republic (Česká republika)"
+msgstr ""
+
+#. Context: countries
+msgid "Côte d’Ivoire"
+msgstr ""
+
+msgid "Database name is required"
+msgstr ""
+
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr ""
+
+msgid "Database server port is required (e.g., 3306)"
+msgstr ""
+
+msgid "Database username is required"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Date Updated"
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Default Name Group"
+msgstr ""
+
+msgid "Default role updated."
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete Access Token"
+msgstr ""
+
+msgid "Delete Calendar"
+msgstr ""
+
+msgid "Delete this person?"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "Delimiter to separate emails in mailto: links"
+msgstr ""
+
+msgid "Demo data imported successfully"
+msgstr ""
+
+#. Context: countries
+msgid "Denmark (Danmark)"
+msgstr ""
+
+msgid "Deposit"
+msgstr ""
+
+msgid "Deposit Comment"
+msgstr ""
+
+msgid "Deposit Date"
+msgstr ""
+
+msgid "Deposit ID"
+msgstr ""
+
+msgid "Deposit Total"
+msgstr ""
+
+msgid "Deposit Type"
+msgstr ""
+
+msgid "Deposit saved successfully"
+msgstr ""
+
+msgid "Deposit(s)"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+#. Context: countries
+msgid "Diego Garcia"
+msgstr ""
+
+msgid "Disable Group Specific Properties"
+msgstr ""
+
+#. Context: countries
+msgid "Djibouti"
+msgstr ""
+
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr ""
+
+msgid "Do you want to remove"
+msgstr ""
+
+#. Context: countries
+msgid "Dominica"
+msgstr ""
+
+#. Context: countries
+msgid "Dominican Republic (República Dominicana)"
+msgstr ""
+
+msgid "Done, show me the homepage!"
+msgstr ""
+
+msgid "Downloaded"
+msgstr ""
+
+msgid "Downloading latest release from GitHub..."
+msgstr ""
+
+#. Context: locales
+msgid "Dutch - Netherlands"
+msgstr ""
+
+msgid "ERROR"
+msgstr ""
+
+#. Context: countries
+msgid "Ecuador"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit Group"
+msgstr ""
+
+#. Context: countries
+msgid "Egypt (‫مصر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "El Salvador"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Email"
+msgstr ""
+
+msgid "Empty Cart"
+msgstr ""
+
+msgid "Empty Cart to Family"
+msgstr ""
+
+msgid "Empty Cart to Group"
+msgstr ""
+
+msgid "Empty your entire cart?"
+msgstr ""
+
+msgid "Enable Group Specific Properties"
+msgstr ""
+
+msgid "End Date"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Ending Date"
+msgstr ""
+
+#. Context: locales
+msgid "English - Australia"
+msgstr ""
+
+#. Context: locales
+msgid "English - Canada"
+msgstr ""
+
+#. Context: locales
+msgid "English - Great Britain"
+msgstr ""
+
+#. Context: locales
+msgid "English - Jamaica"
+msgstr ""
+
+#. Context: locales
+msgid "English - South Africa"
+msgstr ""
+
+#. Context: locales
+msgid "English - United States"
+msgstr ""
+
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr ""
+
+msgid "Enter TOTP code to confirm enrollment"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr ""
+
+#. Context: countries
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr ""
+
+#. Context: countries
+msgid "Eritrea"
+msgstr ""
+
+msgid "Error deleting payments"
+msgstr ""
+
+msgid "Error loading payments"
+msgstr ""
+
+msgid "Error making API Call to"
+msgstr ""
+
+msgid "Error saving deposit"
+msgstr ""
+
+msgid "Error text"
+msgstr ""
+
+#. Context: countries
+msgid "Estonia (Eesti)"
+msgstr ""
+
+#. Context: locales
+msgid "Estonian"
+msgstr ""
+
+#. Context: countries
+msgid "Ethiopia"
+msgstr ""
+
+msgid "Event Description"
+msgstr ""
+
+msgid "Event Title"
+msgstr ""
+
+msgid "Event Type"
+msgstr ""
+
+msgid "Failed generate a new API Key"
+msgstr ""
+
+msgid "Failed to add family to cart"
+msgstr ""
+
+msgid "Failed to add group to cart"
+msgstr ""
+
+msgid "Failed to add role. Please try again."
+msgstr ""
+
+msgid "Failed to add to cart"
+msgstr ""
+
+msgid "Failed to copy URL"
+msgstr ""
+
+msgid "Failed to create backup."
+msgstr ""
+
+msgid "Failed to create group. Please try again."
+msgstr ""
+
+msgid "Failed to delete role. Please try again."
+msgstr ""
+
+msgid "Failed to download update package."
+msgstr ""
+
+msgid "Failed to empty cart"
+msgstr ""
+
+msgid "Failed to empty cart to group"
+msgstr ""
+
+msgid "Failed to load cart status."
+msgstr ""
+
+msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr ""
+
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr ""
+
+msgid "Failed to remove family from cart"
+msgstr ""
+
+msgid "Failed to remove from cart"
+msgstr ""
+
+msgid "Failed to remove group"
+msgstr ""
+
+msgid "Failed to save setting. Please try again."
+msgstr ""
+
+msgid "Failed to save settings"
+msgstr ""
+
+msgid "Failed to set default role. Please try again."
+msgstr ""
+
+msgid "Failed to update group. Please try again."
+msgstr ""
+
+msgid "Failed to update properties. Please try again."
+msgstr ""
+
+msgid "Failed to update role name. Please try again."
+msgstr ""
+
+#. Context: countries
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr ""
+
+msgid "Family"
+msgstr ""
+
+#. Context: query_qry
+msgid "Family Pledge by Fiscal Year"
+msgstr ""
+
+msgid "Family Property Unassignment"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Family Role"
+msgstr ""
+
+msgid "Family added to cart"
+msgstr ""
+
+msgid "Family name is required"
+msgstr ""
+
+msgid "Family name must be at least 2 characters"
+msgstr ""
+
+msgid "Family removed from cart"
+msgstr ""
+
+#. Context: countries
+msgid "Faroe Islands (Føroyar)"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Female"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Field"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Field value"
+msgstr ""
+
+#. Context: countries
+msgid "Fiji"
+msgstr ""
+
+msgid "Files with issues"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find Registered students"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people who pledged one year but not another"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people with a custom field value"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find volunteers for a particular opportunity"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr ""
+
+#. Context: countries
+msgid "Finland (Suomi)"
+msgstr ""
+
+#. Context: locales
+msgid "Finnish"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First fiscal year for comparison"
+msgstr ""
+
+msgid "First name is required"
+msgstr ""
+
+msgid "First name must be at least 2 characters"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First volunteer opportunity choice"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year."
+msgstr ""
+
+msgid "Focus"
+msgstr ""
+
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr ""
+
+msgid "Force Import"
+msgstr ""
+
+msgid "Force Import will retry and may create duplicate data."
+msgstr ""
+
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+#. Context: countries
+msgid "France"
+msgstr ""
+
+#. Context: locales
+msgid "French - France"
+msgstr ""
+
+#. Context: countries
+msgid "French Guiana (Guyane française)"
+msgstr ""
+
+#. Context: countries
+msgid "French Polynesia (Polynésie française)"
+msgstr ""
+
+#. Context: countries
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr ""
+
+#. Context: query_qry
+msgid "Friends who signed up in previous months"
+msgstr ""
+
+msgid "Fund"
+msgstr ""
+
+msgid "Fund(s)"
+msgstr ""
+
+#. Context: countries
+msgid "Gabon"
+msgstr ""
+
+#. Context: countries
+msgid "Gambia"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Gender"
+msgstr ""
+
+#. Context: countries
+msgid "Georgia (საქართველო)"
+msgstr ""
+
+#. Context: locales
+msgid "German - Germany"
+msgstr ""
+
+#. Context: countries
+msgid "Germany (Deutschland)"
+msgstr ""
+
+#. Context: countries
+msgid "Ghana (Gaana)"
+msgstr ""
+
+#. Context: countries
+msgid "Gibraltar"
+msgstr ""
+
+#. Context: countries
+msgid "Greece (Ελλάδα)"
+msgstr ""
+
+#. Context: locales
+msgid "Greek"
+msgstr ""
+
+#. Context: countries
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr ""
+
+#. Context: countries
+msgid "Grenada"
+msgstr ""
+
+msgid "Group Cart Status"
+msgstr ""
+
+msgid "Group Name"
+msgstr ""
+
+msgid "Group Role"
+msgstr ""
+
+msgid "Group Type"
+msgstr ""
+
+msgid "Group added to cart"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Group of registered students"
+msgstr ""
+
+msgid "Group removed from cart"
+msgstr ""
+
+msgid "GroupID required for role selection prompt"
+msgstr ""
+
+#. Context: countries
+msgid "Guadeloupe"
+msgstr ""
+
+#. Context: countries
+msgid "Guam"
+msgstr ""
+
+#. Context: countries
+msgid "Guatemala"
+msgstr ""
+
+#. Context: countries
+msgid "Guernsey"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Guest"
+msgstr ""
+
+#. Context: countries
+msgid "Guinea (Guinée)"
+msgstr ""
+
+#. Context: countries
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr ""
+
+#. Context: countries
+msgid "Guyana"
+msgstr ""
+
+msgid "HTML URL"
+msgstr ""
+
+#. Context: countries
+msgid "Haiti"
+msgstr ""
+
+#. Context: countries
+msgid "Heard & McDonald Islands"
+msgstr ""
+
+#. Context: locales
+msgid "Hebrew"
+msgstr ""
+
+#. Context: locales
+msgid "Hindi - India"
+msgstr ""
+
+msgid "Holiday"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Home Phone"
+msgstr ""
+
+msgid "Home phone is required"
+msgstr ""
+
+#. Context: countries
+msgid "Honduras"
+msgstr ""
+
+#. Context: countries
+msgid "Hong Kong (香港)"
+msgstr ""
+
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr ""
+
+#. Context: locales
+msgid "Hungarian"
+msgstr ""
+
+#. Context: countries
+msgid "Hungary (Magyarország)"
+msgstr ""
+
+msgid "ICS URL"
+msgstr ""
+
+#. Context: countries
+msgid "Iceland (Ísland)"
+msgstr ""
+
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr ""
+
+msgid "Import Demo Data"
+msgstr ""
+
+msgid "Import failed"
+msgstr ""
+
+msgid "Inactive"
+msgstr ""
+
+msgid "Include Sunday School classes and enrollments"
+msgstr ""
+
+msgid "Include events and calendars"
+msgstr ""
+
+msgid "Include financial data (donation funds, pledges)"
+msgstr ""
+
+#. Context: countries
+msgid "India (भारत)"
+msgstr ""
+
+#. Context: countries
+msgid "Indonesia"
+msgstr ""
+
+#. Context: locales
+msgid "Indonesian - Indonesia"
+msgstr ""
+
+msgid "Integrity check failed"
+msgstr ""
+
+msgid "Integrity check passed"
+msgstr ""
+
+msgid "Invalid Entry"
+msgstr ""
+
+msgid "Invalid format"
+msgstr ""
+
+#. Context: countries
+msgid "Iran (‫ایران‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Iraq (‫العراق‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Ireland"
+msgstr ""
+
+#. Context: countries
+msgid "Isle of Man"
+msgstr ""
+
+#. Context: countries
+msgid "Israel (‫ישראל‬‎)"
+msgstr ""
+
+#. Context: locales
+msgid "Italian - Italy"
+msgstr ""
+
+#. Context: countries
+msgid "Italy (Italia)"
+msgstr ""
+
+#. Context: countries
+msgid "Jamaica"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+#. Context: countries
+msgid "Japan (日本)"
+msgstr ""
+
+#. Context: locales
+msgid "Japanese"
+msgstr ""
+
+#. Context: countries
+msgid "Jersey"
+msgstr ""
+
+#. Context: countries
+msgid "Jordan (‫الأردن‬‎)"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+#. Context: countries
+msgid "Kazakhstan (Казахстан)"
+msgstr ""
+
+#. Context: countries
+msgid "Kenya"
+msgstr ""
+
+#. Context: countries
+msgid "Kiribati"
+msgstr ""
+
+#. Context: locales
+msgid "Korean"
+msgstr ""
+
+#. Context: countries
+msgid "Kosovo (Kosovë)"
+msgstr ""
+
+#. Context: countries
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr ""
+
+msgid "Language updated to"
+msgstr ""
+
+#. Context: countries
+msgid "Laos (ລາວ)"
+msgstr ""
+
+msgid "Last name is required"
+msgstr ""
+
+msgid "Last name must be at least 2 characters"
+msgstr ""
+
+#. Context: countries
+msgid "Latvia (Latvija)"
+msgstr ""
+
+#. Context: countries
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Lesotho"
+msgstr ""
+
+#. Context: countries
+msgid "Liberia"
+msgstr ""
+
+#. Context: countries
+msgid "Libya (‫ليبيا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Liechtenstein"
+msgstr ""
+
+#. Context: countries
+msgid "Lithuania (Lietuva)"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+#. Context: countries
+msgid "Luxembourg"
+msgstr ""
+
+#. Context: countries
+msgid "Macau (澳門)"
+msgstr ""
+
+#. Context: countries
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr ""
+
+#. Context: countries
+msgid "Madagascar (Madagasikara)"
+msgstr ""
+
+msgid "Make Default"
+msgstr ""
+
+#. Context: countries
+msgid "Malawi"
+msgstr ""
+
+#. Context: countries
+msgid "Malaysia"
+msgstr ""
+
+#. Context: countries
+msgid "Maldives"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Male"
+msgstr ""
+
+#. Context: countries
+msgid "Mali"
+msgstr ""
+
+#. Context: countries
+msgid "Malta"
+msgstr ""
+
+msgid "Map Cart"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+#. Context: countries
+msgid "Marshall Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Martinique"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Match custom field to this value"
+msgstr ""
+
+#. Context: countries
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Mauritius (Moris)"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Maximum Age"
+msgstr ""
+
+msgid "Maximum length is"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+#. Context: countries
+msgid "Mayotte"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Member"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Member, Regular Attender, etc."
+msgstr ""
+
+msgid "Members"
+msgstr ""
+
+msgid "Members from group"
+msgstr ""
+
+msgid "Members to another group"
+msgstr ""
+
+msgid "Members to cart"
+msgstr ""
+
+#. Context: query_qry
+msgid "Members who joined in a particular month"
+msgstr ""
+
+#. Context: query_qry
+msgid "Membership anniversaries"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+#. Context: countries
+msgid "Mexico (México)"
+msgstr ""
+
+#. Context: countries
+msgid "Micronesia"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Minimum Age"
+msgstr ""
+
+msgid "Minimum length is"
+msgstr ""
+
+#. Context: query_qry
+msgid "Missing pledges"
+msgstr ""
+
+#. Context: countries
+msgid "Moldova (Republica Moldova)"
+msgstr ""
+
+#. Context: countries
+msgid "Monaco"
+msgstr ""
+
+#. Context: countries
+msgid "Mongolia (Монгол)"
+msgstr ""
+
+#. Context: countries
+msgid "Montenegro (Crna Gora)"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Month"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Months"
+msgstr ""
+
+#. Context: countries
+msgid "Montserrat"
+msgstr ""
+
+#. Context: countries
+msgid "Morocco (‫المغرب‬‎)"
+msgstr ""
+
+msgid "Move"
+msgstr ""
+
+msgid "Move Event"
+msgstr ""
+
+#. Context: countries
+msgid "Mozambique (Moçambique)"
+msgstr ""
+
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr ""
+
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr ""
+
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr ""
+
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr ""
+
+#. Context: countries
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Name"
+msgstr ""
+
+#. Context: countries
+msgid "Namibia (Namibië)"
+msgstr ""
+
+#. Context: countries
+msgid "Nauru"
+msgstr ""
+
+msgid "Need to remove this data later?"
+msgstr ""
+
+#. Context: countries
+msgid "Nepal (नेपाल)"
+msgstr ""
+
+#. Context: countries
+msgid "Netherlands (Nederland)"
+msgstr ""
+
+msgid "New Access Token"
+msgstr ""
+
+#. Context: countries
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr ""
+
+msgid "New Calendar"
+msgstr ""
+
+#. Context: countries
+msgid "New Zealand"
+msgstr ""
+
+#. Context: countries
+msgid "Nicaragua"
+msgstr ""
+
+#. Context: countries
+msgid "Niger (Nijar)"
+msgstr ""
+
+#. Context: countries
+msgid "Nigeria"
+msgstr ""
+
+#. Context: countries
+msgid "Niue"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "No payments on this deposit"
+msgstr ""
+
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Non-Attender"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Non-Attender (staff)"
+msgstr ""
+
+msgid "NonDeductible"
+msgstr ""
+
+#. Context: countries
+msgid "Norfolk Island"
+msgstr ""
+
+#. Context: countries
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr ""
+
+#. Context: countries
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Norway (Norge)"
+msgstr ""
+
+#. Context: locales
+msgid "Norwegian"
+msgstr ""
+
+msgid "Not Available"
+msgstr ""
+
+msgid "Not Subscribed"
+msgstr ""
+
+msgid "Not Subscribed "
+msgstr ""
+
+msgid "Not all members of this group are in the cart"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Number of months since becoming a friend"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+#. Context: countries
+msgid "Oman (‫عُمان‬‎)"
+msgstr ""
+
+msgid "Open in New Tab"
+msgstr ""
+
+msgid "Optional Data to Include"
+msgstr ""
+
+#. Context: countries
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Palau"
+msgstr ""
+
+#. Context: countries
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Panama (Panamá)"
+msgstr ""
+
+#. Context: countries
+msgid "Papua New Guinea"
+msgstr ""
+
+#. Context: countries
+msgid "Paraguay"
+msgstr ""
+
+msgid "Password reset for"
+msgstr ""
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "Payments deleted successfully"
+msgstr ""
+
+#. Context: query_qry
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
+#. Context: query_qry
+msgid "People with birthdays in a particular month"
+msgstr ""
+
+msgid "Person"
+msgstr ""
+
+msgid "Person already in cart"
+msgstr ""
+
+#. Context: query_qry
+msgid "Person by Property"
+msgstr ""
+
+#. Context: countries
+msgid "Peru (Perú)"
+msgstr ""
+
+#. Context: countries
+msgid "Philippines"
+msgstr ""
+
+msgid "Pinned Calendars"
+msgstr ""
+
+#. Context: countries
+msgid "Pitcairn Islands"
+msgstr ""
+
+msgid "Please add at least one family member."
+msgstr ""
+
+msgid "Please confirm activation of family"
+msgstr ""
+
+msgid "Please confirm deactivation of family"
+msgstr ""
+
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr ""
+
+msgid "Please confirm removal of user status from"
+msgstr ""
+
+msgid "Please confirm reset failed login count"
+msgstr ""
+
+msgid "Please confirm the password reset of this user"
+msgstr ""
+
+msgid "Please correct the validation errors before continuing."
+msgstr ""
+
+msgid "Please ensure this what you want to do."
+msgstr ""
+
+msgid "Please enter a group name."
+msgstr ""
+
+msgid "Please enter a valid URL"
+msgstr ""
+
+msgid "Please enter a valid email address"
+msgstr ""
+
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr ""
+
+msgid "Please enter a valid number"
+msgstr ""
+
+msgid "Please enter a valid phone number"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr ""
+
+msgid "Please fill in all required fields correctly."
+msgstr ""
+
+msgid "Please select a backup file to restore"
+msgstr ""
+
+msgid "Please select a date"
+msgstr ""
+
+msgid "Please select rows to delete"
+msgstr ""
+
+msgid "Please select target Role for members"
+msgstr ""
+
+msgid "Please select target group for members"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr ""
+
+msgid "Please store these recovery codes in a safe location"
+msgstr ""
+
+#. Context: query_qry
+msgid "Pledge comparison"
+msgstr ""
+
+msgid "Pledge or Payment"
+msgstr ""
+
+#. Context: query_qry
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Pledged this year"
+msgstr ""
+
+#. Context: countries
+msgid "Poland (Polska)"
+msgstr ""
+
+#. Context: locales
+msgid "Polish"
+msgstr ""
+
+#. Context: countries
+msgid "Portugal"
+msgstr ""
+
+#. Context: locales
+msgid "Portuguese - Brazil"
+msgstr ""
+
+#. Context: locales
+msgid "Portuguese - Portugal"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Property"
+msgstr ""
+
+#. Context: countries
+msgid "Puerto Rico"
+msgstr ""
+
+#. Context: countries
+msgid "Qatar (‫قطر‬‎)"
+msgstr ""
+
+#. Context: query_qry
+msgid "Recent friends"
+msgstr ""
+
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr ""
+
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Register another family!"
+msgstr ""
+
+#. Context: query_qry
+msgid "Registered students"
+msgstr ""
+
+msgid "Registration Complete"
+msgstr ""
+
+msgid "Registration Error"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Regular Attender"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Remove 2 Factor Authentication Secret"
+msgstr ""
+
+msgid "Remove all"
+msgstr ""
+
+msgid "Remove this family from cart?"
+msgstr ""
+
+msgid "Remove this group from cart?"
+msgstr ""
+
+msgid "Remove this person from cart?"
+msgstr ""
+
+msgid "Removed from cart successfully"
+msgstr ""
+
+msgid "Resize Event"
+msgstr ""
+
+msgid "Restore failed. Please check the backup file and try again."
+msgstr ""
+
+msgid "Retry Download"
+msgstr ""
+
+#. Context: query_qry
+msgid "Returns person records which are assigned the given property."
+msgstr ""
+
+msgid "Role Name"
+msgstr ""
+
+msgid "Role added successfully."
+msgstr ""
+
+msgid "Role deleted successfully."
+msgstr ""
+
+msgid "Role name updated."
+msgstr ""
+
+#. Context: countries
+msgid "Romania (România)"
+msgstr ""
+
+#. Context: locales
+msgid "Romanian - Romania"
+msgstr ""
+
+#. Context: countries
+msgid "Russia (Россия)"
+msgstr ""
+
+#. Context: locales
+msgid "Russian"
+msgstr ""
+
+#. Context: countries
+msgid "Rwanda"
+msgstr ""
+
+#. Context: countries
+msgid "Réunion (La Réunion)"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Helena"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Lucia"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr ""
+
+#. Context: locales
+msgid "Sami (Northern) (Sweden)"
+msgstr ""
+
+#. Context: countries
+msgid "Samoa"
+msgstr ""
+
+#. Context: countries
+msgid "San Marino"
+msgstr ""
+
+#. Context: countries
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save Settings"
+msgstr ""
+
+msgid "Saving..."
+msgstr ""
+
+msgid "Schedule"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Search"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second fiscal year for comparison"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second volunteer opportunity choice"
+msgstr ""
+
+msgid "Select Group"
+msgstr ""
+
+msgid "Select Group and Role"
+msgstr ""
+
+msgid "Select Role"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select field to search for."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select the desired family role."
+msgstr ""
+
+#. Context: countries
+msgid "Senegal (Sénégal)"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "Sequence"
+msgstr ""
+
+#. Context: countries
+msgid "Serbia (Србија)"
+msgstr ""
+
+msgid "Server error"
+msgstr ""
+
+msgid "Setting saved. Reloading page..."
+msgstr ""
+
+msgid "Setting updated successfully"
+msgstr ""
+
+msgid "Settings saved successfully"
+msgstr ""
+
+#. Context: countries
+msgid "Seychelles"
+msgstr ""
+
+msgid "Share this URL with family members to verify their information"
+msgstr ""
+
+#. Context: countries
+msgid "Sierra Leone"
+msgstr ""
+
+#. Context: countries
+msgid "Singapore"
+msgstr ""
+
+#. Context: countries
+msgid "Sint Maarten"
+msgstr ""
+
+msgid "Skipped"
+msgstr ""
+
+#. Context: countries
+msgid "Slovakia (Slovensko)"
+msgstr ""
+
+#. Context: countries
+msgid "Slovenia (Slovenija)"
+msgstr ""
+
+#. Context: countries
+msgid "Solomon Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Somalia (Soomaaliya)"
+msgstr ""
+
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr ""
+
+#. Context: countries
+msgid "South Africa"
+msgstr ""
+
+#. Context: countries
+msgid "South Georgia & South Sandwich Islands"
+msgstr ""
+
+#. Context: countries
+msgid "South Korea (대한민국)"
+msgstr ""
+
+#. Context: countries
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Spain (España)"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Argentina"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Colombia"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - El Salvador"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Mexico"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Spain"
+msgstr ""
+
+#. Context: countries
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr ""
+
+#. Context: countries
+msgid "St. Vincent & Grenadines"
+msgstr ""
+
+msgid "Start Date"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "State"
+msgstr ""
+
+msgid "Store these in a secure location"
+msgstr ""
+
+#. Context: countries
+msgid "Sudan (‫السودان‬‎)"
+msgstr ""
+
+msgid "Sunday School"
+msgstr ""
+
+#. Context: countries
+msgid "Suriname"
+msgstr ""
+
+#. Context: countries
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr ""
+
+#. Context: locales
+msgid "Swahili"
+msgstr ""
+
+#. Context: countries
+msgid "Swaziland"
+msgstr ""
+
+#. Context: countries
+msgid "Sweden (Sverige)"
+msgstr ""
+
+#. Context: countries
+msgid "Switzerland (Schweiz)"
+msgstr ""
+
+#. Context: countries
+msgid "Syria (‫سوريا‬‎)"
+msgstr ""
+
+msgid "System Support"
+msgstr ""
+
+msgid "System upgrade completed successfully!"
+msgstr ""
+
+#. Context: countries
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr ""
+
+#. Context: countries
+msgid "Taiwan (台灣)"
+msgstr ""
+
+#. Context: countries
+msgid "Tajikistan"
+msgstr ""
+
+#. Context: locales
+msgid "Tamil - India"
+msgstr ""
+
+#. Context: countries
+msgid "Tanzania"
+msgstr ""
+
+#. Context: locales
+msgid "Telugu - India"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+#. Context: locales
+msgid "Thai"
+msgstr ""
+
+#. Context: countries
+msgid "Thailand (ไทย)"
+msgstr ""
+
+msgid "Thank you for registering your family"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The birthday month for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The desired gender to search the database for."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The gender for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The maximum age for which you want records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The membership anniversary month for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The minimum age for which you want records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The property for which you would like person records returned."
+msgstr ""
+
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The sunday school class for which you would like records returned."
+msgstr ""
+
+msgid "There was a problem retrieving the requested object"
+msgstr ""
+
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr ""
+
+msgid "This action cannot be undone."
+msgstr ""
+
+msgid "This field is required"
+msgstr ""
+
+msgid "This will also delete all payments associated with this deposit"
+msgstr ""
+
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr ""
+
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr ""
+
+#. Context: countries
+msgid "Timor-Leste"
+msgstr ""
+
+msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
+msgstr ""
+
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr ""
+
+msgid "Today"
+msgstr ""
+
+#. Context: countries
+msgid "Togo"
+msgstr ""
+
+#. Context: countries
+msgid "Tokelau"
+msgstr ""
+
+#. Context: countries
+msgid "Tonga"
+msgstr ""
+
+#. Context: countries
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#. Context: countries
+msgid "Tristan da Cunha"
+msgstr ""
+
+#. Context: countries
+msgid "Tunisia (‫تونس‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Turkey (Türkiye)"
+msgstr ""
+
+#. Context: locales
+msgid "Turkish"
+msgstr ""
+
+#. Context: countries
+msgid "Turkmenistan"
+msgstr ""
+
+#. Context: countries
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Tuvalu"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+#. Context: countries
+msgid "U.S. Outlying Islands"
+msgstr ""
+
+#. Context: countries
+msgid "U.S. Virgin Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Uganda"
+msgstr ""
+
+#. Context: countries
+msgid "Ukraine (Україна)"
+msgstr ""
+
+#. Context: locales
+msgid "Ukrainian"
+msgstr ""
+
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr ""
+
+msgid "Unable to detect system locales"
+msgstr ""
+
+msgid "Unable to determine available locales"
+msgstr ""
+
+msgid "Unable to load locale information"
+msgstr ""
+
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr ""
+
+msgid "Unassigned"
+msgstr ""
+
+msgid "Unfocus"
+msgstr ""
+
+#. Context: countries
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "United Kingdom"
+msgstr ""
+
+#. Context: countries
+msgid "United States"
+msgstr ""
+
+msgid "Unknown error"
+msgstr ""
+
+msgid "Update package downloaded successfully."
+msgstr ""
+
+msgid "Updated"
+msgstr ""
+
+msgid "Updated By"
+msgstr ""
+
+msgid "Upgrade failed."
+msgstr ""
+
+msgid "Upgrade failed. Please check the logs."
+msgstr ""
+
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr ""
+
+#. Context: countries
+msgid "Uruguay"
+msgstr ""
+
+msgid "User Delete Confirmation"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "User permission to create directories"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "User permission to export CSV files"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "User permission to send email via mailto: links"
+msgstr ""
+
+#. Context: countries
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr ""
+
+msgid "Validation pending"
+msgstr ""
+
+#. Context: countries
+msgid "Vanuatu"
+msgstr ""
+
+#. Context: countries
+msgid "Vatican City (Città del Vaticano)"
+msgstr ""
+
+#. Context: countries
+msgid "Venezuela"
+msgstr ""
+
+msgid "Verification URL"
+msgstr ""
+
+msgid "Verification email sent"
+msgstr ""
+
+msgid "Verification recorded"
+msgstr ""
+
+#. Context: countries
+msgid "Vietnam (Việt Nam)"
+msgstr ""
+
+#. Context: locales
+msgid "Vietnamese"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "View Cart"
+msgstr ""
+
+msgid "View Group"
+msgstr ""
+
+msgid "View Photo"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Volunteer opportunities"
+msgstr ""
+
+#. Context: query_qry
+msgid "Volunteers"
+msgstr ""
+
+#. Context: countries
+msgid "Wallis and Futuna"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Warnings"
+msgstr ""
+
+#. Context: countries
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr ""
+
+msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
+msgstr ""
+
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "WorkEmail"
+msgstr ""
+
+#. Context: countries
+msgid "Yemen (‫اليمن‬‎)"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Yes, Empty Cart"
+msgstr ""
+
+msgid "Yes, Remove"
+msgstr ""
+
+msgid "You are about to add a new deposit without a comment"
+msgstr ""
+
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr ""
+
+msgid "You must enter the same password in both boxes"
+msgstr ""
+
+msgid "Your Cart is Empty"
+msgstr ""
+
+#. Context: countries
+msgid "Zambia"
+msgstr ""
+
+#. Context: countries
+msgid "Zimbabwe"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Zip Code"
+msgstr ""
+
+msgid "Zip code is required"
+msgstr ""
+
+msgid "added"
+msgstr ""
+
+msgid "ago"
+msgstr ""
+
+msgid "already in cart"
+msgstr ""
+
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "but not this year"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "days"
+msgstr ""
+
+msgid "deposit(s) with no payments"
+msgstr ""
+
+msgid "from"
+msgstr ""
+
+msgid "in"
+msgstr ""
+
+msgid "in cart"
+msgstr ""
+
+msgid "members. Already had"
+msgstr ""
+
+msgid "open rate"
+msgstr ""
+
+msgid "payment(s)?"
+msgstr ""
+
+msgid "people added to cart"
+msgstr ""
+
+msgid "people already in cart"
+msgstr ""
+
+msgid "people from cart"
+msgstr ""
+
+msgid "people removed from cart"
+msgstr ""
+
+msgid "property"
+msgstr ""
+
+msgid "to"
+msgstr ""
+
+msgid "years"
+msgstr ""
+
+#. Context: countries
+msgid "Åland Islands (Åland)"
+msgstr ""
