@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -122,7 +123,7 @@ if (
         $iFYID = $_SESSION['idefaultFY'];
     }
     if (!$iFYID) {
-        $iFYID = CurrentFY();
+        $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
     }
     $_SESSION['idefaultFY'] = $iFYID;
 
@@ -196,7 +197,7 @@ if (
         if (array_key_exists('idefaultFY', $_SESSION)) {
             $iFYID = $_SESSION['idefaultFY'];
         } else {
-            $iFYID = CurrentFY();
+            $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
         }
         if (array_key_exists('iDefaultSchedule', $_SESSION)) {
             $iSchedule = $_SESSION['iDefaultSchedule'];
