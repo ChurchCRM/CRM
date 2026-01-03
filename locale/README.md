@@ -10,11 +10,11 @@ locale/
 ├── JSONKeys/                       # Generated JSON translation files
 ├── locales/                        # i18next translation files
 ├── scripts/
+│   ├── i18next-parser.config.js    # i18next parser configuration
 │   ├── locale-audit.js             # Locale completeness audit script
 │   ├── locale-extract-db.js        # Database term extraction script
 │   ├── locale-extract-static.js    # Static data (countries/locales) extraction
 │   └── locale-term-extract.js      # Main term extraction orchestrator
-├── i18next-parser.config.js       # i18next parser configuration
 ├── messages.po                     # Master Gettext template file
 └── poeditor-audit.md              # Locale completeness report
 ```

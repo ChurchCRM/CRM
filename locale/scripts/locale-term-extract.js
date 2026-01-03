@@ -241,7 +241,7 @@ class TermExtractor {
             execSync('which npx', { stdio: 'pipe' });
             
             // Run i18next parser
-            this.exec('npx i18next-parser --config locale/i18next-parser.config.js');
+            this.exec('npx i18next-parser --config locale/scripts/i18next-parser.config.js');
             
             // Convert JSON to PO if translation files were created
             const translationJson = path.join(this.localeDir, 'locales/en/translation.json');
