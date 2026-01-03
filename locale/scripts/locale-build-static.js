@@ -2,11 +2,11 @@
 
 const fs = require('fs');
 const path = require('path');
+const config = require('./locale-config');
 
 // Handle command line options
 if (process.argv.includes('--temp-dir')) {
-    const projectRoot = path.resolve(__dirname, '../..');
-    console.log(path.join(projectRoot, 'temp', 'churchcrm-locale-static'));
+    console.log(config.temp.staticStrings);
     process.exit(0);
 }
 
@@ -15,9 +15,7 @@ if (process.argv.includes('--temp-dir')) {
  */
 class StaticDataExtractor {
     constructor() {
-        // Use project temp directory
-        const projectRoot = path.resolve(__dirname, '../..');
-        this.stringsDir = path.join(projectRoot, 'temp', 'churchcrm-locale-static');
+        this.stringsDir = config.temp.staticStrings;
     }
 
     /**
@@ -71,14 +69,13 @@ class StaticDataExtractor {
         // Write PO file
         this.writePoFile(poFile, entries);
         
-        // Also save a timestamped copy into locale/terms/base for review
+        // Also save a copy into locale/terms/base for review
         try {
-            const projectRoot = path.resolve(__dirname, '../..');
-            const termsBaseDir = path.join(projectRoot, 'locale', 'terms', 'base');
+            const termsBaseDir = config.terms.base;
             if (!fs.existsSync(termsBaseDir)) {
                 fs.mkdirSync(termsBaseDir, { recursive: true });
             }
-            const dest = path.join(termsBaseDir, `static-terms.po`);
+            const dest = config.termsOutput.staticPo;
             fs.copyFileSync(poFile, dest);
             console.log(`${dest} created (copy of static terms)`);
         } catch (err) {
@@ -160,8 +157,7 @@ msgstr ""
      */
     async getLocalesData() {
         try {
-            const localesPath = path.resolve(__dirname, '../../src/locale/locales.json');
-            const localesData = fs.readFileSync(localesPath, 'utf8');
+            const localesData = fs.readFileSync(config.localesJson, 'utf8');
             const locales = JSON.parse(localesData);
             
             // Extract locale names for translation

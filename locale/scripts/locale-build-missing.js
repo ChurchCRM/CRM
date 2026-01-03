@@ -9,18 +9,19 @@
  * 3. Compares to find untranslated terms
  * 4. Creates JSON files with missing terms for POEditor import
  * 
- * Output: /locale/missing-terms/{locale}.json
+ * Output: /locale/terms/missing/new/{locale}/
  * 
- * Usage: node locale-missing-terms.js
+ * Usage: node locale-build-missing.js
  */
 
 const fs = require('fs');
 const path = require('path');
+const config = require('./locale-config');
 
-const LOCALES_JSON = path.join(__dirname, '../../src/locale/locales.json');
-const MESSAGES_JSON = path.join(__dirname, '../messages.json');
-const I18N_DIR = path.join(__dirname, '../../src/locale/i18n');
-const OUTPUT_DIR = path.join(__dirname, '../terms', 'missing', 'new');
+const LOCALES_JSON = config.localesJson;
+const MESSAGES_JSON = config.messagesJson;
+const I18N_DIR = config.i18nDir;
+const OUTPUT_DIR = config.terms.missingNew;
 
 function loadJSON(filePath) {
     if (!fs.existsSync(filePath)) {
@@ -62,7 +63,7 @@ function saveMissingTermsFileBatched(poEditorCode, missingTerms) {
         try { fs.unlinkSync(path.join(localeOutDir, f)); } catch (e) { /* ignore */ }
     });
 
-    const TERMS_PER_FILE = 100;
+    const TERMS_PER_FILE = config.settings.missingTermsBatchSize;
     const entries = Object.entries(missingTerms);
     const files = [];
     let batchNumber = 1;

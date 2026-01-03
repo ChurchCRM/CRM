@@ -17,12 +17,13 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync, spawn } = require('child_process');
+const config = require('./locale-config');
 
 class TermExtractor {
     constructor() {
-        this.projectRoot = path.resolve(__dirname, '../..');
-        this.localeDir = path.join(this.projectRoot, 'locale');
-        this.messagesFile = path.join(this.localeDir, 'messages.po');
+        this.projectRoot = config.projectRoot;
+        this.localeDir = config.localeRoot;
+        this.messagesFile = config.messagesPo;
     }
 
     /**
@@ -318,20 +319,18 @@ class TermExtractor {
             this.exec(`msgcat --no-wrap --sort-output "${this.messagesFile}" -o "${this.messagesFile}.tmp"`);
             this.exec(`mv "${this.messagesFile}.tmp" "${this.messagesFile}"`);
 
-            // Save a timestamped copy of the generated base term files into locale/terms/base
+            // Save a copy of the generated base term files into locale/terms/base
             try {
-                const termsBaseDir = path.join(this.localeDir, 'terms', 'base');
+                const termsBaseDir = config.terms.base;
                 if (!fs.existsSync(termsBaseDir)) {
                     fs.mkdirSync(termsBaseDir, { recursive: true });
                 }
                 // Use stable filenames (no timestamps) so review pipelines can reference them
-                const messagesCopy = path.join(termsBaseDir, `messages.po`);
-                this.copyFile(this.messagesFile, messagesCopy);
+                this.copyFile(this.messagesFile, config.termsOutput.messagesPo);
 
-                const translationJsonPath = path.join(this.localeDir, 'locales', 'en', 'translation.json');
+                const translationJsonPath = path.join(config.localesDir, 'en', 'translation.json');
                 if (this.fileExists(translationJsonPath)) {
-                    const translationCopy = path.join(termsBaseDir, `translation.json`);
-                    this.copyFile(translationJsonPath, translationCopy);
+                    this.copyFile(translationJsonPath, config.termsOutput.translationJson);
                 }
             } catch (err) {
                 console.error('Failed to save terms/base copies:', err.message);

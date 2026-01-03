@@ -18,23 +18,20 @@
 
 const fs = require('fs');
 const mysql = require('mysql2/promise');
-const os = require('os');
 const path = require('path');
+const config = require('./locale-config');
 
 // Handle command line options
 if (process.argv.includes('--temp-dir')) {
-    const projectRoot = path.resolve(__dirname, '../..');
-    console.log(path.join(projectRoot, 'temp', 'churchcrm-locale-db-strings'));
+    console.log(config.temp.dbStrings);
     process.exit(0);
 }
 
 class DatabaseTermExtractor {
     constructor() {
-        this.configPath = path.resolve(__dirname, '../../BuildConfig.json');
-        this.configExamplePath = path.resolve(__dirname, '../../BuildConfig.json.example');
-        // Use project temp directory instead of OS temp
-        const projectRoot = path.resolve(__dirname, '../..');
-        this.stringsDir = path.join(projectRoot, 'temp', 'churchcrm-locale-db-strings');
+        this.configPath = config.buildConfigJson;
+        this.configExamplePath = config.buildConfigExample;
+        this.stringsDir = config.temp.dbStrings;
         this.stringFiles = [];
         this.connection = null;
     }
@@ -153,14 +150,13 @@ class DatabaseTermExtractor {
         // Write PO file
         this.writePoFile(poFile, entries);
         
-        // Also save a timestamped copy into locale/terms/base for review
+        // Also save a copy into locale/terms/base for review
         try {
-            const projectRoot = path.resolve(__dirname, '../..');
-            const termsBaseDir = path.join(projectRoot, 'locale', 'terms', 'base');
+            const termsBaseDir = config.terms.base;
             if (!fs.existsSync(termsBaseDir)) {
                 fs.mkdirSync(termsBaseDir, { recursive: true });
             }
-            const dest = path.join(termsBaseDir, `database-terms.po`);
+            const dest = config.termsOutput.databasePo;
             fs.copyFileSync(poFile, dest);
             console.log(`${dest} created (copy of database terms)`);
         } catch (err) {

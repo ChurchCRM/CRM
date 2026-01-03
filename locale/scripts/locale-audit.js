@@ -25,14 +25,15 @@
 
 const fs = require('fs');
 const path = require('path');
+const config = require('./locale-config');
 
 class LocaleAuditor {
     constructor() {
-        this.configPath = path.resolve(__dirname, '../../BuildConfig.json');
-        this.configExamplePath = path.resolve(__dirname, '../../BuildConfig.json.example');
-        this.localesPath = path.resolve(__dirname, '../../src/locale/locales.json');
-        this.outputPath = path.resolve(__dirname, '../../src/locale/poeditor.json');
-        this.reportPath = path.resolve(__dirname, '../poeditor-audit.md');
+        this.configPath = config.buildConfigJson;
+        this.configExamplePath = config.buildConfigExample;
+        this.localesPath = config.localesJson;
+        this.outputPath = config.poeditor.outputJson;
+        this.reportPath = config.poeditor.auditReport;
         this.config = null;
         this.locales = null;
     }
