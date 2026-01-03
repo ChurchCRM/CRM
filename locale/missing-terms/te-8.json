@@ -1,7 +1,4 @@
 {
-  "Financial Settings": "",
-  "An invalid configuration name has been requested": "",
-  "An invalid configuration id has been requested": "",
   "Profile Image uploaded": "",
   "payment(s)?": "",
   "Please ensure this what you want to do.</p>": "",
@@ -98,5 +95,8 @@
   "Show/Hide Lost Password Link on the login screen": "",
   "Backup": "",
   "Integration": "",
-  "Notification": ""
+  "Notification": "",
+  "Guardian(s) of": "",
+  "A notification was triggered by the classroom teacher at": "",
+  "Please go to this location": ""
 }

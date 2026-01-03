@@ -2721,14 +2721,6 @@ msgid "eMail Dashboard"
 msgstr "Paneli i emaileve"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Caktuar numrat zarf për të gjitha familjet me të paktën një anëtar."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Caktuar numrat zarf për të gjitha familjet."
-
-#: 
 msgid "Version"
 msgstr "Versioni"
 
@@ -3701,10 +3693,6 @@ msgstr "Caktoni 'True' për të çaktivizuar futjen e gjerësisë dhe gjatësis�
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Caktoni 'True' për të aktivizuar përdorimin e zarfeve të donacionit"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Futni kodin HTML i cili do të shfaqet si kokë (header) në krye të çdo faqeje. Sigurohuni që të mbyllni etiketat tuaja! Shënim: Duhet të RIFRESKONI BREGUESIN TUAJ PËR HERË TË DYTË për të parë kokën e re."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

@@ -1,7 +1,4 @@
 {
-  "OR Create a Group and add the CART in ONE ACTION": "",
-  "Create Group + ADD Cart": "",
-  "Move Event": "",
   "Resize Event": "",
   "Profile": "",
   "Sign out": "",
@@ -98,5 +95,8 @@
   "User must have Delete Records permission": "",
   "ChurchCRM Central Notifications URL": "",
   "Follow us on": "",
-  "invalid event type id": ""
+  "invalid event type id": "",
+  "invalid calendar pinning": "",
+  "invalid group id": "",
+  "invalid status value": ""
 }

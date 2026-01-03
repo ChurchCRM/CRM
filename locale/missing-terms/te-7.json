@@ -1,7 +1,4 @@
 {
-  "Saint Lucia": "",
-  "Saint Martin (Saint-Martin (partie française))": "",
-  "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)": "",
   "Samoa": "",
   "San Marino": "",
   "São Tomé and Príncipe (São Tomé e Príncipe)": "",
@@ -98,5 +95,8 @@
   "Marked the Family as Inactive": "",
   "Marked the Family as Active": "",
   "families": "",
-  "Deposit ticket type.  QBDT - Quickbooks": ""
+  "Deposit ticket type.  QBDT - Quickbooks": "",
+  "Financial Settings": "",
+  "An invalid configuration name has been requested": "",
+  "An invalid configuration id has been requested": ""
 }

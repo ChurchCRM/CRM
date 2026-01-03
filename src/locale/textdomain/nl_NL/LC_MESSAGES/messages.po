@@ -2721,14 +2721,6 @@ msgid "eMail Dashboard"
 msgstr "E-mail menu"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Koppel Envelop nummers aan ale families die minimaal uit een lid bestaan."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Giften en fondsen"
-
-#: 
 msgid "Version"
 msgstr "Versie"
 
@@ -3705,11 +3697,6 @@ msgstr "Zet aan om het invoeren van breedte- en lengtegraad in Family Editor uit
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "\"Aan\" instellen om het gebruik van de donatie enveloppen mogelijk te maken\n"
-""
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Voer de HTML-code in, die als een \"header\" aan de bovenkant van elke pagina wordt weergegeven. Zorg ervoor dat u uw labels te sluit! Opmerking: U moet uw browser vernieuwen om een tweede maal de nieuwe header te zien.\n"
 ""
 
 #: 

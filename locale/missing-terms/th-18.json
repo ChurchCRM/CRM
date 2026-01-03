@@ -1,7 +1,4 @@
 {
-  "Portuguese - Portugal": "",
-  "Holiday": "",
-  "Allow users to self-enroll in 2 factor authentication": "",
   "Requires users to self-enroll in 2 factor authentication": "",
   "ChurchCRM": "",
   "Specify the application name to be displayed in authenticator app": "",
@@ -98,5 +95,8 @@
   "View Family Page": "",
   "View Person Page": "",
   "Verify": "",
-  "Family has no emails to use": ""
+  "Family has no emails to use": "",
+  "Boxed Layout": "",
+  "Activate the boxed layout": "",
+  "Toggle Sidebar": ""
 }

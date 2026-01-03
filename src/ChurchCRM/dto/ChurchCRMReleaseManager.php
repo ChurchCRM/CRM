@@ -5,7 +5,7 @@ namespace ChurchCRM\Utils;
 use ChurchCRM\dto\ChurchCRMRelease;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\FileSystemUtils;
+use ChurchCRM\Utils\FileSystemUtils;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\ExecutionTime;

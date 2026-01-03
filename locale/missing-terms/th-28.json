@@ -1,8 +1,4 @@
 {
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
   "Select the type of record this property applies to": "",
   "That fund name already exists.": "",
   "Total Pledges": "",
@@ -10,5 +6,6 @@
   "View Properties": "",
   "e.g., Visitors, Children": "",
   "of pledges": "",
-  "records": ""
+  "records": "",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": ""
 }

@@ -2732,14 +2732,6 @@ msgid "eMail Dashboard"
 msgstr "eMail Dashboard"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Assegnato numeri busta a tutte le famiglie con almeno un membro."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Assegnato numeri busta a tutte le famiglie."
-
-#: 
 msgid "Version"
 msgstr "Versione"
 
@@ -3719,10 +3711,6 @@ msgstr "Impostare true per disabilitare l'immissione di Latitudine e Longitudine
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Impostare true per abilitare l'uso delle buste di donazione"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Inserisci il codice HTML che verrà visualizzato come intestazione nella parte superiore di ogni pagina. Assicurati di chiudere i tag! Nota: è necessario AGGIORNARE IL TUO BROWSER UNA SECONDA ORA per visualizzare la nuova intestazione."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

@@ -2723,14 +2723,6 @@ msgid "eMail Dashboard"
 msgstr "e-posti töölaud"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Määra ümbriku numbrid kõigile peredele, kus on vähemalt üks liige."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Määra ümbrikute numbrid kõigile peredele."
-
-#: 
 msgid "Version"
 msgstr "Versioon"
 
@@ -3705,10 +3697,6 @@ msgstr "Määrake tõeline, et keelata Pereredaktoris laius- ja pikkuskraadide s
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Annetusümbrike kasutamise lubamiseks määrake see tõene"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Sisestage HTML-kood, mis kuvatakse iga lehe ülaservas päisena. Sulgege kindlasti oma sildid! Märkus. Uue päise kuvamiseks peate oma brauserit värskendama juba teist korda."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

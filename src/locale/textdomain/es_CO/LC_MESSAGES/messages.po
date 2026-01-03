@@ -2694,14 +2694,6 @@ msgid "eMail Dashboard"
 msgstr "Dashboard de correo electrónico"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Asignación de números de Sobre para todas las familias con al menos un miembro."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "numeros asignados de sobres para todaslas familias"
-
-#: 
 msgid "Version"
 msgstr "Versión"
 
@@ -3668,10 +3660,6 @@ msgstr "Colocar en verdadero para deshabilitar ingreso de Latitud y Longitud en 
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Colocar en verdadero para habilitar uso de sobres de donación"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Ingresar en código HTML que será desplegado como cabecera arriba de cada página. Asegúrese de cerrar sus tags! Nota: Debe REFRESCAR SU NAVEGADOR UNA SEGUNDA VEZ para ver el nuevo encabezado."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

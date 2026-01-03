@@ -2797,14 +2797,6 @@ msgid "eMail Dashboard"
 msgstr "Panou eMail"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Atribuite numere plic pentru toate familiile cu cel puțin un membru."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Atribuite numere plic pentru toate familiile."
-
-#: 
 msgid "Version"
 msgstr "Versiune"
 
@@ -3794,10 +3786,6 @@ msgstr "Setați true pentru a dezactiva introducerea Latitude și Longitudine î
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Setează true pentru a permite folosirea donațiilor în plicuri"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Introduceți cod HTML care va fi afișat ca antet în partea de sus a fiecărei pagini. Asigurați-vă că vă închideți etichetele! Notă: Pentru a vizualiza noul antet, trebuie să-ți împrospătezi browserul "
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

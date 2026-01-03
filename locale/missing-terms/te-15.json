@@ -1,8 +1,4 @@
 {
-  "Login Name is required": "",
-  "Once you receive the email, you can log in with your temporary password and change it to something you prefer.": "",
-  "Password Reset Error": "",
-  "Password Reset Successful": "",
   "Please check your email (including spam/junk folder) for your temporary password.": "",
   "Please do not close this window or refresh the page.": "",
   "Pre-Upgrade Tasks Complete": "",
@@ -98,5 +94,9 @@
   "SMTP Host": "",
   "Server Information": "",
   "Software": "",
-  "System & Configuration": ""
+  "System & Configuration": "",
+  "Tip:": "",
+  "Valid Settings": "",
+  "An error occurred during demo data import": "",
+  "Demo data imported successfully": ""
 }

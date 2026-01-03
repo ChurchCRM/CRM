@@ -1,8 +1,4 @@
 {
-  "Backup failed. Please try again.": "",
-  "Backup generated and copied to remote server": "",
-  "Backup in progress, please wait...": "",
-  "Backup to External Storage": "",
   "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data.": "",
   "CSV export permission": "",
   "Close & Refresh": "",
@@ -98,5 +94,9 @@
   "%d missing gender": "",
   "%d missing role": "",
   "A payment is an actual donation received. It will be added to the current deposit.": "",
-  "A pledge is a commitment to give. It is not tied to a deposit slip.": ""
+  "A pledge is a commitment to give. It is not tied to a deposit slip.": "",
+  "Add Another Family Member": "",
+  "Add Pledge": "",
+  "Admin Dashboard": "",
+  "Advanced Operations": ""
 }

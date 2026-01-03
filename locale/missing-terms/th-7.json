@@ -11,8 +11,6 @@
   "Do you have any suggestions for us?": "",
   "How did you learn of the church?": "",
   "eMail Dashboard": "",
-  "Assigned envelope numbers to all families with at least one member.": "",
-  "Assigned envelope numbers to all families.": "",
   "Version": "",
   "Copyright": "",
   "All rights reserved": "",
@@ -98,5 +96,7 @@
   "                                        Signature ________________________________________________________________": "",
   "Totals": "",
   "Certificate of Ownership": "",
-  "Directory": ""
+  "Directory": "",
+  "Page": "",
+  "Wedding": ""
 }

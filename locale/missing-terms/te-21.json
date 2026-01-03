@@ -1,14 +1,4 @@
 {
-  "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
-  },
-  "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
-  },
-  "A ": "",
-  "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.": "",
   "Are you sure you want to delete": "",
   "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!": "",
   "By deleting this field, you will irrevocably lose all family data assigned for this field!": "",
@@ -84,5 +74,6 @@
   "View Properties": "",
   "e.g., Visitors, Children": "",
   "of pledges": "",
-  "records": ""
+  "records": "",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": ""
 }

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-01 10:47-0800\n"
+"POT-Creation-Date: 2026-01-01 12:39-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -714,12 +714,6 @@ msgid "Assigned Groups"
 msgstr ""
 
 msgid "Assigned Properties"
-msgstr ""
-
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr ""
-
-msgid "Assigned envelope numbers to all families."
 msgstr ""
 
 msgid "Assigning"
@@ -2581,9 +2575,6 @@ msgid "Enter family name"
 msgstr ""
 
 msgid "Enter group name"
-msgstr ""
-
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
 msgstr ""
 
 msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
@@ -4818,8 +4809,7 @@ msgstr ""
 msgid "Must specify non-zero check number"
 msgstr ""
 
-msgctxt ", -, ., / allowed."
-msgid "Must start with / if not empty, no trailing slash. Only letters, numbers, "
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
 msgstr ""
 
 msgid "My User Settings"

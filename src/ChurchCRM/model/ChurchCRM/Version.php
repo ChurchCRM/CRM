@@ -2,7 +2,7 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
-use ChurchCRM\ArrayUtils;
+use ChurchCRM\Utils\ArrayUtils;
 use ChurchCRM\model\ChurchCRM\Base\Version as BaseVersion;
 use Propel\Runtime\Connection\ConnectionInterface;
 

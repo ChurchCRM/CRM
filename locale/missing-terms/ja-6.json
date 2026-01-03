@@ -1,5 +1,4 @@
 {
-  "Complete": "",
   "Continue to Backup": "",
   "Continue to Download & Apply": "",
   "Create Backup": "",
@@ -98,5 +97,6 @@
   "Hostname": "",
   "IP Address": "",
   "Images Root": "",
-  "Import Demo Data": ""
+  "Import Demo Data": "",
+  "Include events and calendars": ""
 }

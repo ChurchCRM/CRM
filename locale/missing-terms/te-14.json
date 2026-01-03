@@ -1,7 +1,4 @@
 {
-  "Failed to load groups. Please refresh the page.": "",
-  "Failed to set default role. Please try again.": "",
-  "Failed to update group. Please try again.": "",
   "Failed to update properties. Please try again.": "",
   "Failed to update role name. Please try again.": "",
   "Leave blank to keep existing password": "",
@@ -41,9 +38,6 @@
   "Must be a valid URL starting with http:// or https://": "",
   "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "",
   "Must be a valid port number (e.g., 3306)": "",
-  ", -, ., / allowed.": {
-    "Must start with / if not empty, no trailing slash. Only letters, numbers, ": ""
-  },
   "Next Member": "",
   "Passwords do not match": "",
   "Phone Type": "",
@@ -100,5 +94,9 @@
   "Files Modified": "",
   "Go to Login": "",
   "I Understand - Continue": "",
-  "Language updated to": ""
+  "Language updated to": "",
+  "Login Name is required": "",
+  "Once you receive the email, you can log in with your temporary password and change it to something you prefer.": "",
+  "Password Reset Error": "",
+  "Password Reset Successful": ""
 }

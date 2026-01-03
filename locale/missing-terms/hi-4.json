@@ -1,5 +1,4 @@
 {
-  "Complete these essential setup tasks to get ChurchCRM running smoothly:": "",
   "Complete these in any order. Use Demo Data to explore with sample records.": "",
   "Complete these tasks to ensure accurate year-end tax reporting for your donors.": "",
   "Configuration:": "",
@@ -98,5 +97,6 @@
   "Connect to your server via SSH, FTP, or your hosting control panel": "",
   "Critical Configuration Error": "",
   "Current $URL[0] value:": "",
-  "Custom port:": ""
+  "Custom port:": "",
+  "Ends with a <strong>trailing slash</strong> (/)": ""
 }

@@ -2723,14 +2723,6 @@ msgid "eMail Dashboard"
 msgstr "E -posta Gösterge Tablosu"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "En az bir üyeli tüm ailelere zarf numaraları atanmıştır."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Tüm ailelere zarf numaraları atandı."
-
-#: 
 msgid "Version"
 msgstr "Versiyon"
 
@@ -3706,10 +3698,6 @@ msgstr "Aile düzenleyicisine enlem ve boylam girişi devre dışı bırakmak i�
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Bağış zarflarının kullanımını etkinleştirmek için true ayarlayın"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Her sayfanın üstünde başlık olarak görüntülenecek HTML koduna girin. Etiketlerinizi kapattığınızdan emin olun! Not: Yeni başlığı görüntülemek için tarayıcınızı ikinci kez yenilemelisiniz."
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

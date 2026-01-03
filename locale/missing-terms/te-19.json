@@ -1,8 +1,4 @@
 {
-  "Organization, timezone, email": "",
-  "Organizational structure": "",
-  "Orphaned Files:": "",
-  "PDF/CSV": "",
   "Payment": "",
   "Pledge Reports": "",
   "Print or email annual giving statements to all donors.": "",
@@ -98,5 +94,9 @@
   "Save the file and refresh this page": "",
   "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment.": "",
   "Starts with <strong>http://</strong> or <strong>https://</strong>": "",
-  "Subdirectory installation:": ""
+  "Subdirectory installation:": "",
+  "System Locale Support": "",
+  "System Support": "",
+  "URL does not contain a valid hostname": "",
+  "URL hostname is not valid": ""
 }

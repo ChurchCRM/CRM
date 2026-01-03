@@ -666,8 +666,6 @@
     "Do you have any suggestions for us?": "Avez-vous des suggestions à nous faire?",
     "How did you learn of the church?": "Comment avez-vous découvert l&#39;église ? (un membre, le site internet, etc ...)",
     "eMail Dashboard": "Tableau de bord eMail",
-    "Assigned envelope numbers to all families with at least one member.": "Attribuer des numéros d&#39;enveloppe à toutes les familles avec au moins un membre.",
-    "Assigned envelope numbers to all families.": "Attribuer des numéros d&#39;enveloppe pour toutes les familles.",
     "Version": "Version",
     "Copyright": "Copyright",
     "All rights reserved": "Tous droits réservés",
@@ -910,7 +908,6 @@
     "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.": "Cocher Vrai pour désactiver la saisie de la date de mariage dans le Gestionnaire de famille. Cocher Faux pour activer la saisie de la date de mariage dans le Gestionnaire de famille.",
     "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.": "Cocher Vrai pour désactiver la saisie de latitude et de longitude dans le gestionnaire de famille. Cocher Faux pour activer la saisie de latitude et de longitude dans le gestionnaire de famille. Les recherches sont toujours effectuées, juste pas affichées.",
     "Set true to enable use of donation envelopes": "Cocher Vrai pour activer l'utilisation d&#39;enveloppes de dons",
-    "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header.": "Saisir un code HTML qui sera affiché en entête de chaque page. Vérifiez que les tags soient bien fermés ! Note : vous devrez RAFRAÎCHIR LA PAGE UNE SECONDE FOIS pour voir le nouvel entête.",
     "Number of checks for Deposit Slip Report": "Nombre de chèques pour le rapport du bordereau de dépôt",
     "Set true to enable use of scanned checks": "Cocher Vrai pour activer l'utilisation des chèques scannés",
     "Unit used to measure distance, miles or km.": "Unité utilisée pour les distances, miles ou km.",
@@ -2023,9 +2020,6 @@
     "Must be a valid URL starting with http:// or https://": "Doit être une URL valide commençant par http:// ou https://",
     "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)": "Doit être une URL valide commençant par http:// ou https:// (par exemple, http://localhost ou https://domain.com)",
     "Must be a valid port number (e.g., 3306)": "Doit être un numéro de port valide (par exemple, 3306)",
-    ", -, ., / allowed.": {
-        "Must start with / if not empty, no trailing slash. Only letters, numbers, ": "Doit commencer par / si non vide, sans barre oblique finale. Seules les lettres, les chiffres, -, ., /sont autorisés."
-    },
     "Next Member": "Membre suivant",
     "Passwords do not match": "Les mots de passe ne correspondent pas",
     "Phone Type": "Type de téléphone",

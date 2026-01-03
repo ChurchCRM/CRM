@@ -3251,15 +3251,6 @@ msgid "eMail Dashboard"
 msgstr "Painel de E-mail"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Atribuir números de envelope para todas as famílias com pelo menos um membro."
-
-#: 
-#, fuzzy
-msgid "Assigned envelope numbers to all families."
-msgstr "Atribuídos números de envelope para todas as famílias."
-
-#: 
 #, fuzzy
 msgid "Version"
 msgstr "Versão"
@@ -4439,11 +4430,6 @@ msgstr "Defina verdadeiro para desabilitar a entrada da Latitude e Longitude o n
 #, fuzzy
 msgid "Set true to enable use of donation envelopes"
 msgstr "Defina verdadeiro para habilitar o uso de envelopes de doação"
-
-#: 
-#, fuzzy
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Digite no código HTML que será exibido como um cabeçalho no topo de cada página. Certifique-se de fechar suas tags! Nota: Você deve ATUALIZAR O SEU NAVEGADOR UMA SEGUNDA VEZ para ver o novo cabeçalho."
 
 #: 
 #, fuzzy

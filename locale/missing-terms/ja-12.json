@@ -1,5 +1,4 @@
 {
-  "Existing Group Properties": "",
   "Failed to update role. Please try again.": "",
   "Family Pledges": "",
   "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
@@ -23,5 +22,6 @@
   "View Properties": "",
   "e.g., Visitors, Children": "",
   "of pledges": "",
-  "records": ""
+  "records": "",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": ""
 }

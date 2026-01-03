@@ -2826,14 +2826,6 @@ msgid "eMail Dashboard"
 msgstr "E-post dashbord"
 
 #: 
-msgid "Assigned envelope numbers to all families with at least one member."
-msgstr "Tilordnet konvolutt nummer til alle familier med minst ett medlem."
-
-#: 
-msgid "Assigned envelope numbers to all families."
-msgstr "Tilordnet konvolutt nummer til alle familier."
-
-#: 
 msgid "Version"
 msgstr "Versjon"
 
@@ -3822,10 +3814,6 @@ msgstr "Sett til 'Sann' for å deaktivere inntasting av koordinater i familiered
 #: 
 msgid "Set true to enable use of donation envelopes"
 msgstr "Sett til 'Sann' for å aktivere bruk av donasjonskonvolutter"
-
-#: 
-msgid "Enter in HTML code which will be displayed as a header at the top of each page. Be sure to close your tags! Note: You must REFRESH YOUR BROWSER A SECOND TIME to view the new header."
-msgstr "Skriv inn HTML-kode som skal vises som overskrift øverst på hver side. Husk å lukke taggene!"
 
 #: 
 msgid "Number of checks for Deposit Slip Report"

@@ -4,7 +4,7 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
 
-class Functions
+class FunctionsUtils
 {
     /**
      * Runs an SQL query. Returns the result resource.

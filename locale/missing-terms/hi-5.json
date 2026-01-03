@@ -1,5 +1,4 @@
 {
-  "Ends with a <strong>trailing slash</strong> (/)": "",
   "Error:": "",
   "Find the line:": "",
   "How to Fix:": "",
@@ -105,5 +104,6 @@
   "View Properties": "",
   "e.g., Visitors, Children": "",
   "of pledges": "",
-  "records": ""
+  "records": "",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": ""
 }

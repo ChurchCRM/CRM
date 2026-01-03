@@ -68,8 +68,6 @@
   "Do you have any suggestions for us?": "",
   "How did you learn of the church?": "",
   "eMail Dashboard": "",
-  "Assigned envelope numbers to all families with at least one member.": "",
-  "Assigned envelope numbers to all families.": "",
   "Text Field (50 char)": "",
   "Text Field (100 char)": "",
   "Text Field (long)": "",
@@ -98,5 +96,7 @@
   "Invalid Number": "",
   "Number too large. Must be between -2147483648 and 2147483647": "",
   "Money amount too large. Maximum is $999999999.99": "",
-  " Bold Italic": ""
+  " Bold Italic": "",
+  " Italic": "",
+  " Bold": ""
 }

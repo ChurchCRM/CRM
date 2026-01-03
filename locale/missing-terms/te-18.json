@@ -1,8 +1,4 @@
 {
-  "Add Another Family Member": "",
-  "Add Pledge": "",
-  "Admin Dashboard": "",
-  "Advanced Operations": "",
   "All System Settings": "",
   "An unexpected error occurred. Please contact your administrator.": "",
   "Back to Deposits": "",
@@ -98,5 +94,9 @@
   "No deposits found.": "",
   "No format": "",
   "Open": "",
-  "Open Deposits:": ""
+  "Open Deposits:": "",
+  "Organization, timezone, email": "",
+  "Organizational structure": "",
+  "Orphaned Files:": "",
+  "PDF/CSV": ""
 }
