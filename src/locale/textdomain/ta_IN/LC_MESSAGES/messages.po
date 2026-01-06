@@ -11378,3 +11378,165 @@ msgstr "ஸ்பெயின் - எல் சால்வடோர்"
 msgid "Spanish - Mexico"
 msgstr "ஸ்பெயின் - மெக்சிகோ"
 
+#: 
+msgid "Add Property Type"
+msgstr "சொத்து வகையைச் சேர்க்கவும்"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "\n"
+"உங்கள் முதல் சொத்து வகையைச் சேர்க்கவும்"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "\n"
+"மேலே உள்ள எண்ணிக்கைகளிலிருந்து தானாகவே கணக்கிடப்பட்டது"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "இந்த புலத்தை நீக்குவதன் மூலம், இந்த புலத்திற்கு ஒதுக்கப்பட்ட அனைத்து குழு உறுப்பினர் தரவுகளையும் நீங்கள் மீளமுடியாமல் இழந்துவிடுவீர்கள்!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "இந்த நிதியை நீக்குவதன் மூலம், வரலாற்று நன்கொடைப் பதிவுகளை நீங்கள் பாதிக்கக்கூடும்!"
+
+#: 
+msgid "Category Name"
+msgstr "வகை பெயர்"
+
+#: 
+msgid "Checked In"
+msgstr "உள்ளே வந்தவர்கள்"
+
+#: 
+msgid "Checked Out"
+msgstr "வெளியே சென்றவர்கள்"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "நடப்பு நிதியாண்டு"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "நீக்கு (தொடர்புடைய அனைத்துப் பதிவுகளும் நீக்கப்படும்)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "சொத்து வகையைத் திருத்தவும்"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "கமாக்களால் பிரிக்கப்பட்ட எண்ணிக்கை வகைகளை உள்ளிடவும் (எ.கா., உறுப்பினர்கள், பார்வையாளர்கள், குழந்தைகள்)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "பிரசங்கக் குறிப்புகள் அல்லது நிகழ்வு உரையை உள்ளிடவும்..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "ஏற்கனவே உள்ள நன்கொடை நிதிகள்"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "ஏற்கனவே உள்ள குழுப் பண்புகள்"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "பதவியை புதுப்பிக்கத் தவறிவிட்டது. மீண்டும் முயற்சிக்கவும்."
+
+#: 
+msgid "Family Pledges"
+msgstr "குடும்ப உறுதிமொழிகள்"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "நீக்கு அல்லது 'புதியதைச் சேர்' பொத்தானைப் பயன்படுத்துவதற்கு முன்பு நீங்கள் 'மாற்றங்களைச் சேமி' செய்யவில்லை என்றால், புலம் மாற்றங்கள் இழக்கப்படும்!"
+
+#: 
+msgid "Filter by Class"
+msgstr "வகுப்பின்படி வடிகட்டவும்"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "நிதி வெற்றிகரமாக நீக்கப்பட்டது"
+
+#: 
+msgid "In Use"
+msgstr "பயன்பாட்டில் உள்ளது"
+
+#: 
+msgid "Manage"
+msgstr "நிர்வகிக்கவும்"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "தேர்ந்தெடுக்கப்பட்ட நிதியாண்டிற்கு உறுதிமொழிகள் எதுவும் காணப்படவில்லை"
+
+#: 
+msgid "No property types found"
+msgstr "சொத்து வகைகள் எதுவும் காணப்படவில்லை"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "இந்த சொத்து வகையைப் பயன்படுத்தும் பதிவுகளின் எண்ணிக்கை"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "இந்த சொத்து வகையின் விருப்ப விரிவான விளக்கம்"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "கீழே உள்ள பிழைகளைச் சரிசெய்யவும்."
+
+#: 
+msgid "Pledge Amount"
+msgstr "உறுதிமொழித் தொகை"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "உறுதிமொழி டாஷ்போர்டு"
+
+#: 
+msgid "Remaining"
+msgstr "மீதமுள்ளது"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "இந்த வருகை எண்ணிக்கையை அகற்றவா?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "இந்த பண்பு பொருந்தும் பதிவின் வகையைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "That fund name already exists."
+msgstr "அந்த நிதிப் பெயர் ஏற்கனவே உள்ளது."
+
+#: 
+msgid "Total Pledges"
+msgstr "மொத்த உறுதிமொழிகள்"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "குடும்பம் மற்றும் நிதியின் அடிப்படையில் உறுதிமொழிப் பொறுப்புகளைக் கண்காணித்து நிர்வகிக்கவும்"
+
+#: 
+msgid "View Properties"
+msgstr "பண்புகளைக் காண்க"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "எ.கா., பார்வையாளர்கள், குழந்தைகள்"
+
+#: 
+msgid "of pledges"
+msgstr "உறுதிமொழிகளில்"
+
+#: 
+msgid "records"
+msgstr "பதிவுகள்"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "காலியாக இல்லாவிட்டால் '/' உடன் தொடங்க வேண்டும்; இறுதியில் ஸ்லாஷ் இருக்கக்கூடாது. எழுத்துக்கள், எண்கள், அடிக்கோடு, கோடு, புள்ளி மற்றும் '/' மட்டுமே அனுமதிக்கப்படும்."
+
