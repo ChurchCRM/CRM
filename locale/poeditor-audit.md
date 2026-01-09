@@ -10,6 +10,7 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `pt-br` | Portuguese (BR) | 2764 | 100% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 2764 | 100% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 2763 | 99.96% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 2724 | 98.55% | 🟢 Complete | ✅ Yes |
@@ -28,7 +29,6 @@
 | `ko` | Korean | 2724 | 98.55% | 🟢 Complete | ✅ Yes |
 | `nb` | Norwegian Bokmål | 2724 | 98.55% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 2724 | 98.55% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 2724 | 98.55% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2724 | 98.55% | 🟢 Complete | ✅ Yes |
 | `es-ar` | Spanish (AR) | 2724 | 98.55% | 🟢 Complete | ✅ Yes |
 | `es-mx` | Spanish (MX) | 2724 | 98.55% | 🟢 Complete | ✅ Yes |
