@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -113,7 +114,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
         echo "<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\"> " . gettext('At least one group must be selected to make class lists or attendance sheets.') . "</span></p>";
     }
 } else {
-    $iFYID = isset($_SESSION['idefaultFY']) ? (int)$_SESSION['idefaultFY'] : \CurrentFY();
+    $iFYID = isset($_SESSION['idefaultFY']) ? (int)$_SESSION['idefaultFY'] : FiscalYearUtils::getCurrentFiscalYearId();
     $iGroupID = 0;
     $currentUser = UserQuery::create()->findPk(AuthenticationManager::getCurrentUser()->getId());
 
