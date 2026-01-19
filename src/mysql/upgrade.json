@@ -463,11 +463,12 @@
     "current": {
         "versions": [
             "6.6.0",
-            "6.6.1"
+            "6.6.1",
+            "6.7.0"
         ],
         "scripts": [
             "/mysql/upgrade/6.7.0.sql"
         ],
-        "dbVersion": "6.7.0"
+        "dbVersion": "6.7.1"
     }
 }
