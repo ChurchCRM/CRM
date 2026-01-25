@@ -18,4 +18,17 @@ describe("Admin Settings", () => {
         cy.contains("Integration");
         cy.contains("Backup");
     });
+
+    it("Email Setup section contains SMTP Port field", () => {
+        cy.visit("SystemSettings.php");
+        
+        // Click on Email Setup tab
+        cy.get('#EmailSetup-tab').click();
+        
+        // Verify SMTP Port field is visible
+        cy.contains("sSMTPHost").should("exist");
+        cy.contains("iSMTPPort").should("exist");
+        cy.contains("bSMTPAuth").should("exist");
+        cy.contains("sSMTPUser").should("exist");
+    });
 });
