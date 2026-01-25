@@ -63,4 +63,28 @@ describe("Standard Person", () => {
         cy.url().should("contain", personViewPath);
         cy.contains(name);
     });
+
+    it("Add Person with Create New Family option", () => {
+        // Tests fix for issue #7895 - setWorkPhone error when creating new family
+        const firstName = "NewFam " + uniqueSeed;
+        const lastName = "TestFamily" + uniqueSeed;
+
+        cy.visit(personEditorPath);
+        cy.get("#FirstName").type(firstName);
+        cy.get("#LastName").type(lastName);
+        
+        // Select "Create a new family (using last name)" option (-1)
+        // Use force:true because Select2 covers the native select element
+        cy.get("#familyId").select("-1", { force: true });
+        
+        // Select Head of Household role
+        cy.get("#FamilyRole").select("1", { force: true });
+        
+        // Click FAB save button
+        cy.get(".fab-save").click();
+
+        // Should redirect to PersonView without error
+        cy.url().should("contain", personViewPath);
+        cy.contains(firstName);
+    });
 });
