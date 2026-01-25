@@ -472,9 +472,10 @@
     },
     "current": {
         "versions": [
-            "6.7.0"
+            "6.7.0",
+            "6.7.1"
         ],
         "scripts": [],
-        "dbVersion": "6.7.1"
+        "dbVersion": "6.7.2"
     }
 }
