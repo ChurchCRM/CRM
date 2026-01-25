@@ -23,14 +23,10 @@ if (isset($_POST['save'])) {
     ksort($type);
     reset($type);
 
-    $iHTMLHeaderRow = SystemConfig::getConfigItem('sHeader')->getId();
-
     while ($current_type = current($type)) {
         $id = key($type);
-        // Filter Input
-        if ($id == $iHTMLHeaderRow) { // Special handling of header value so HTML doesn't get removed
-            $value = InputUtils::sanitizeHTML($new_value[$id]);
-        } elseif ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
+        // Filter Input based on type
+        if ($current_type == 'text' || $current_type == 'textarea' || $current_type == 'password') {
             $value = InputUtils::sanitizeText($new_value[$id]);
         } elseif ($current_type == 'number') {
             $value = InputUtils::filterFloat($new_value[$id]);

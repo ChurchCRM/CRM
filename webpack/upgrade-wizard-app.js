@@ -385,7 +385,7 @@ function setupPrereleaseToggle() {
         $spinner.addClass('active');
 
         // Save the new value (convert boolean to string '1' or '0')
-        window.CRM.APIRequest({
+        window.CRM.AdminAPIRequest({
             method: 'POST',
             path: 'system/config/bAllowPrereleaseUpgrade',
             data: JSON.stringify({ value: newValue ? '1' : '0' })
