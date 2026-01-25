@@ -221,8 +221,10 @@ class TermExtractor {
 
             if (phpFiles.length > 0) {
                 const filesArg = phpFiles.join(' ');
+                // Use absolute path to ensure PHP terms merge into the correct file
+                const outputPath = this.messagesFile;
                 execSync(
-                    `xgettext --no-location --no-wrap --join-existing --from-code=UTF-8 -o ../locale/messages.po -L PHP ${filesArg}`,
+                    `xgettext --no-location --no-wrap --join-existing --from-code=UTF-8 -o "${outputPath}" -L PHP ${filesArg}`,
                     { cwd: srcDir, stdio: 'inherit' }
                 );
             }
