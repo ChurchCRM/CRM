@@ -1,13 +1,24 @@
 name: Auto-comment on Issues with Diagnostics Links
 
+# =============================================================================
+# PURPOSE: Automatically respond to new issues with helpful templates
+# 
+# This workflow:
+# 1. Detects the type of issue (bug, question, security CVE, etc.)
+# 2. Posts an appropriate template comment with guidance
+# 3. For security issues (CVE/GHSA), closes and labels for admin deletion
+#
+# Template files are stored in .github/issue-comments/
+# =============================================================================
+
 # Triggers on newly opened issues
 on:
   issues:
     types: [opened]
 
 permissions:
-  contents: read
-  issues: write
+  contents: read   # Read template files from repository
+  issues: write    # Post comments, add labels, close issues
 
 jobs:
   comment-on-issue:
@@ -16,7 +27,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 1  # Shallow clone - only need template files
 
       - name: Comment on bug reports
         uses: actions/github-script@v7
@@ -26,7 +37,16 @@ jobs:
             const path = require('path');
             const workspace = process.env.GITHUB_WORKSPACE || process.cwd();
 
-            // Read template files from the repository (bug, question, generic, system-info, security)
+            // =========================================================
+            // STEP 1: Load all comment templates from .github/issue-comments/
+            // 
+            // Template files:
+            //   - bug.md        : For bug reports (has "describe the issue")
+            //   - question.md   : For questions (has "how can we help")
+            //   - generic.md    : Fallback for unrecognized issue types
+            //   - system-info.md: When in-app reporter was used
+            //   - security.md   : For CVE/GHSA security disclosures
+            // =========================================================
             let bugComment = '';
             let questionComment = '';
             let genericComment = '';
@@ -58,28 +78,56 @@ jobs:
               console.log('Could not read security.md:', e.message);
             }
 
+            // =========================================================
+            // STEP 2: Extract issue content for classification
+            // =========================================================
             const issue = context.payload.issue || {};
             const title = (issue.title || '');
             const body = (issue.body || '');
             const titleLower = title.toLowerCase();
             const bodyLower = body.toLowerCase();
             
-            // Check for CVE mentions in title or body (security vulnerability disclosure)
-            // Match full CVE format (CVE-2025-1234), partial (CVE-), or GitHub Security Advisory (GHSA-xxxx-xxxx-xxxx)
+            // =========================================================
+            // STEP 3: Detect issue type using content patterns
+            // 
+            // SECURITY CHECK (highest priority):
+            //   - CVE pattern: CVE-2025-1234 or just CVE-
+            //   - GHSA pattern: GHSA-xxxx-xxxx-xxxx (GitHub Security Advisory)
+            //   These should NEVER be disclosed publicly in issues!
+            //
+            // SYSTEM INFO CHECK:
+            //   - "Collected Value Title" indicates the in-app bug reporter
+            //     was used, which automatically captures system info
+            //
+            // ISSUE TYPE CHECK:
+            //   - "describe the issue" = bug report template
+            //   - "how can we help" = question template
+            // =========================================================
             const cvePattern = /cve-(\d{4}-\d+)?/i;
             const ghsaPattern = /ghsa-[a-z0-9]{4}-[a-z0-9]{4}-[a-z0-9]{4}/i;
             const hasCVE = cvePattern.test(title) || cvePattern.test(body) || ghsaPattern.test(title) || ghsaPattern.test(body);
             
-            // Check if system info was collected (in-app reporter includes "Collected Value Title")
             const hasSystemInfo = bodyLower.includes('collected value title');
             
-            // Detect issue type from body content patterns
             const isBug = bodyLower.includes('describe the issue');
             const isQuestion = bodyLower.includes('how can we help');
             
-            console.log('hasCVE:', hasCVE, 'hasSystemInfo:', hasSystemInfo, 'isBug:', isBug, 'isQuestion:', isQuestion);
+            console.log('Issue Classification Results:');
+            console.log('  hasCVE:', hasCVE, '(security vulnerability disclosure)');
+            console.log('  hasSystemInfo:', hasSystemInfo, '(in-app reporter used)');
+            console.log('  isBug:', isBug);
+            console.log('  isQuestion:', isQuestion);
 
-            // Choose template based on priority: security (CVE) > system-info > specific type > generic
+            // =========================================================
+            // STEP 4: Select appropriate template
+            // 
+            // Priority order (highest to lowest):
+            //   1. Security (CVE/GHSA) - Must be handled immediately
+            //   2. System-info - User used in-app reporter, thank them
+            //   3. Bug report - Standard bug template
+            //   4. Question - Help/support template
+            //   5. Generic - Fallback for unrecognized issues
+            // =========================================================
             let comment = '';
             if (hasCVE && securityComment) {
               console.log('Posting security comment - CVE detected');
@@ -98,6 +146,9 @@ jobs:
               comment = genericComment;
             }
 
+            // =========================================================
+            // STEP 5: Post comment and handle security issues
+            // =========================================================
             if (comment) {
               await github.rest.issues.createComment({
                 issue_number: context.issue.number,
@@ -106,11 +157,21 @@ jobs:
                 body: comment
               });
               
-              // If CVE detected, delete the issue to prevent public disclosure
+              // ---------------------------------------------------------
+              // SECURITY HANDLING: CVE/GHSA issues must be closed immediately
+              // to prevent public disclosure of vulnerabilities.
+              //
+              // Actions taken:
+              //   1. Add 'security' and 'security-delete-required' labels
+              //   2. Close the issue with 'not_planned' reason
+              //   3. Log for admin to manually delete (API can't delete issues)
+              //
+              // The security.md template directs users to:
+              //   https://github.com/ChurchCRM/CRM/security/advisories
+              // ---------------------------------------------------------
               if (hasCVE) {
-                console.log('Deleting issue due to CVE disclosure');
+                console.log('⚠️ SECURITY: Closing issue due to CVE/GHSA disclosure');
                 
-                // Add labels to flag for admin deletion
                 await github.rest.issues.addLabels({
                   issue_number: context.issue.number,
                   owner: context.repo.owner,
@@ -118,7 +179,6 @@ jobs:
                   labels: ['security', 'security-delete-required']
                 });
                 
-                // Close the issue
                 await github.rest.issues.update({
                   issue_number: context.issue.number,
                   owner: context.repo.owner,
@@ -126,9 +186,10 @@ jobs:
                   state: 'closed',
                   state_reason: 'not_planned'
                 });
-                // Note: GitHub API doesn't allow issue deletion via REST API
+                
+                // Note: GitHub REST API doesn't support issue deletion
                 // Issues can only be deleted by repository admins via the UI
-                // The issue is closed and labeled for admin to delete manually
+                // The 'security-delete-required' label flags this for admin action
                 console.log('Issue closed and labeled - manual deletion required by admin');
               }
             } else {
