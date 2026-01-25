@@ -50,6 +50,7 @@
 @include meta.load-css("scss/groups");
 @include meta.load-css("scss/people-lazy-image-loading");
 @include meta.load-css("scss/finance");
+@include meta.load-css("scss/photo-gallery");
 
 html,
 body {
