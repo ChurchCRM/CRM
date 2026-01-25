@@ -42,7 +42,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="row">
                 <!-- Classification Filter -->
                 <div class="col-md-4 col-sm-6 mb-2">
-                    <label for="classification" class="form-label">
+                    <label for="classification">
                         <i class="fa-solid fa-filter mr-1"></i><?= gettext('Classification') ?>
                     </label>
                     <select name="classification" id="classification" class="form-control" onchange="this.form.submit()">
@@ -58,7 +58,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 
                 <!-- Photos Only Toggle -->
                 <div class="col-md-4 col-sm-6 mb-2">
-                    <label class="form-label d-block">&nbsp;</label>
+                    <label class="d-block">&nbsp;</label>
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="photosOnly" 
                                name="photosOnly" value="1" 
@@ -72,7 +72,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 
                 <!-- Reset Button -->
                 <div class="col-md-4 col-sm-12 mb-2">
-                    <label class="form-label d-block">&nbsp;</label>
+                    <label class="d-block">&nbsp;</label>
                     <a href="<?= $sRootPath ?>/v2/people/photos" class="btn btn-outline-secondary">
                         <i class="fa-solid fa-rotate-left mr-1"></i><?= gettext('Reset Filters') ?>
                     </a>
@@ -105,18 +105,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <?php else: ?>
                                         <!-- Avatar placeholder using initials -->
                                         <div class="avatar-placeholder rounded d-flex align-items-center justify-content-center"
-                                             data-person-id="<?= $person->getId() ?>"
-                                             data-initials="<?= InputUtils::escapeAttribute(
-                                                 strtoupper(
-                                                     substr($person->getFirstName(), 0, 1) . 
-                                                     substr($person->getLastName(), 0, 1)
-                                                 )
-                                             ) ?>">
+                                             data-person-id="<?= $person->getId() ?>">
                                             <span class="initials-text">
                                                 <?= InputUtils::escapeHTML(
-                                                    strtoupper(
-                                                        substr($person->getFirstName(), 0, 1) . 
-                                                        substr($person->getLastName(), 0, 1)
+                                                    mb_strtoupper(
+                                                        mb_substr($person->getFirstName() ?? '', 0, 1) . 
+                                                        mb_substr($person->getLastName() ?? '', 0, 1)
                                                     )
                                                 ) ?>
                                             </span>
@@ -136,6 +130,32 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                 <?php endforeach; ?>
             </div>
+            
+            <!-- Pagination -->
+            <?php if ($totalPages > 1): ?>
+                <nav aria-label="Photo gallery pagination" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <?php 
+                        $queryString = http_build_query(array_filter([
+                            'classification' => $classificationFilter,
+                            'photosOnly' => $showOnlyWithPhotos ? '1' : null,
+                        ]));
+                        $baseUrl = $sRootPath . '/v2/people/photos' . ($queryString ? '?' . $queryString . '&' : '?');
+                        ?>
+                        <li class="page-item <?= $currentPage <= 1 ? 'disabled' : '' ?>">
+                            <a class="page-link" href="<?= $baseUrl ?>page=<?= $currentPage - 1 ?>">&laquo;</a>
+                        </li>
+                        <?php for ($i = max(1, $currentPage - 2); $i <= min($totalPages, $currentPage + 2); $i++): ?>
+                            <li class="page-item <?= $i === $currentPage ? 'active' : '' ?>">
+                                <a class="page-link" href="<?= $baseUrl ?>page=<?= $i ?>"><?= $i ?></a>
+                            </li>
+                        <?php endfor; ?>
+                        <li class="page-item <?= $currentPage >= $totalPages ? 'disabled' : '' ?>">
+                            <a class="page-link" href="<?= $baseUrl ?>page=<?= $currentPage + 1 ?>">&raquo;</a>
+                        </li>
+                    </ul>
+                </nav>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </div>

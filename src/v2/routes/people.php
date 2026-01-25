@@ -179,9 +179,13 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k): bool => is_numeric($k));
     }
 
-    // Build query for people - using ORM
+    // Pagination parameters
+    $page = isset($queryParams['page']) ? max(1, InputUtils::filterInt($queryParams['page'])) : 1;
+    $limit = 100; // People per page
+    $offset = ($page - 1) * $limit;
+
+    // Build query for people - using ORM (no family join needed for this view)
     $peopleQuery = PersonQuery::create()
-        ->joinWithFamily()
         ->orderByLastName()
         ->orderByFirstName();
 
@@ -195,7 +199,15 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         $peopleQuery->filterByClsId($classificationFilter);
     }
 
-    $people = $peopleQuery->find();
+    // Get total count before pagination
+    $totalCount = (clone $peopleQuery)->count();
+    $totalPages = (int) ceil($totalCount / $limit);
+
+    // Apply pagination
+    $people = $peopleQuery
+        ->limit($limit)
+        ->offset($offset)
+        ->find();
 
     // Build array of people with photo info
     $peopleData = [];
@@ -222,6 +234,9 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         'showOnlyWithPhotos'   => $showOnlyWithPhotos,
         'classificationFilter' => $classificationFilter,
         'totalPeople'          => count($peopleData),
+        'currentPage'          => $page,
+        'totalPages'           => $totalPages,
+        'totalCount'           => $totalCount,
     ];
 
     return $renderer->render($response, 'photo-gallery.php', $pageArgs);
