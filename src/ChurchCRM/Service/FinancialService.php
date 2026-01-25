@@ -540,11 +540,44 @@ class FinancialService
             $query->filterByAmount($minimumAmount, Criteria::GREATER_EQUAL);
         }
 
-        // Get results and convert to array with foreign objects included
+        // Get results - DO NOT include foreign objects recursively (causes memory exhaustion)
+        // Instead, manually fetch only the Family and DonationFund data we need
         $collection = $query->find();
         $results = [];
         foreach ($collection as $pledge) {
-            $results[] = $pledge->toArray(\Propel\Runtime\Map\TableMap::TYPE_PHPNAME, true, [], true);
+            // Get basic pledge data without foreign objects
+            $pledgeData = $pledge->toArray(\Propel\Runtime\Map\TableMap::TYPE_PHPNAME, true, [], false);
+            
+            // Manually add only the Family fields we need for Tax Reports
+            $family = $pledge->getFamily();
+            if ($family !== null) {
+                $pledgeData['Family'] = [
+                    'Id' => $family->getId(),
+                    'Name' => $family->getName(),
+                    'Address1' => $family->getAddress1(),
+                    'Address2' => $family->getAddress2(),
+                    'City' => $family->getCity(),
+                    'State' => $family->getState(),
+                    'Zip' => $family->getZip(),
+                    'Country' => $family->getCountry(),
+                    'Envelope' => $family->getEnvelope(),
+                ];
+            } else {
+                $pledgeData['Family'] = null;
+            }
+            
+            // Manually add only the DonationFund name we need
+            $fund = $pledge->getDonationFund();
+            if ($fund !== null) {
+                $pledgeData['DonationFund'] = [
+                    'Id' => $fund->getId(),
+                    'Name' => $fund->getName(),
+                ];
+            } else {
+                $pledgeData['DonationFund'] = null;
+            }
+            
+            $results[] = $pledgeData;
         }
         return $results;
     }
