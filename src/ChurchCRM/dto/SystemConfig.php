@@ -112,7 +112,8 @@ class   SystemConfig
             'sDefaultCountry'                      => new ConfigItem(23, 'sDefaultCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
             'sToEmailAddress'                      => new ConfigItem(26, 'sToEmailAddress', 'text', '', gettext('Default account for receiving a copy of all emails')),
             'iSMTPTimeout'                         => new ConfigItem(24, 'iSMTPTimeout', 'number', '10', gettext('SMTP Server timeout in sec')),
-            'sSMTPHost'                            => new ConfigItem(27, 'sSMTPHost', 'text', '', gettext('SMTP Server Address (mail.server.com:25)')),
+            'sSMTPHost'                            => new ConfigItem(27, 'sSMTPHost', 'text', '', gettext('SMTP Server Address (e.g., smtp.gmail.com)')),
+            'iSMTPPort'                            => new ConfigItem(25, 'iSMTPPort', 'number', '587', gettext('SMTP Server Port (587 for TLS, 465 for SSL, 25 for unencrypted)')),
             'bSMTPAuth'                            => new ConfigItem(28, 'bSMTPAuth', 'boolean', '0', gettext('Does your SMTP server require auththentication (username/password)?')),
             'sSMTPUser'                            => new ConfigItem(29, 'sSMTPUser', 'text', '', gettext('SMTP Username')),
             'sSMTPPass'                            => new ConfigItem(30, 'sSMTPPass', 'password', '', gettext('SMTP Password')),
@@ -262,7 +263,7 @@ class   SystemConfig
     {
         return [
             gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite'],
-            gettext('Email Setup')        => ['sSMTPHost', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'iSMTPTimeout', 'sToEmailAddress', 'bPHPMailerAutoTLS', 'sPHPMailerSMTPSecure'],
+            gettext('Email Setup')        => ['sSMTPHost', 'iSMTPPort', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'iSMTPTimeout', 'sToEmailAddress', 'bPHPMailerAutoTLS', 'sPHPMailerSMTPSecure'],
             gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'iPersonNameStyle', 'iPersonInitialStyle', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification'],
             gettext('Enabled Features')   => ['bEnabledFinance', 'bEnabledSundaySchool', 'bEnabledEvents', 'bEnabledFundraiser', 'bEnableSelfRegistration','bEnabledEmail', 'bEnabledMenuLinks', 'bEnableExternalCalendarAPI'],
             gettext('Map Settings')       => ['sGeoCoderProvider', 'sGoogleMapsGeocodeKey', 'sGoogleMapsRenderKey', 'sBingMapKey', 'sGMapIcons', 'iMapZoom'],
