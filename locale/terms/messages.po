@@ -886,10 +886,6 @@ msgstr ""
 msgid "Family"
 msgstr ""
 
-#. Context: query_qry
-msgid "Family Pledge by Fiscal Year"
-msgstr ""
-
 msgid "Family Property Unassignment"
 msgstr ""
 
@@ -936,10 +932,6 @@ msgid "Files with issues"
 msgstr ""
 
 #. Context: query_qry
-msgid "Find Registered students"
-msgstr ""
-
-#. Context: query_qry
 msgid "Find people who pledged one year but not another"
 msgstr ""
 
@@ -981,12 +973,7 @@ msgstr ""
 msgid "First volunteer opportunity choice"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Fiscal Year"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Fiscal Year."
 msgstr ""
 
 msgid "Focus"
@@ -1098,10 +1085,6 @@ msgid "Group Type"
 msgstr ""
 
 msgid "Group added to cart"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Group of registered students"
 msgstr ""
 
 msgid "Group removed from cart"
@@ -1837,10 +1820,6 @@ msgstr ""
 msgid "Pledge or Payment"
 msgstr ""
 
-#. Context: query_qry
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr ""
-
 #. Context: queryparameters_qrp
 msgid "Pledged this year"
 msgstr ""
@@ -1888,10 +1867,6 @@ msgid "Regenerate 2 Factor Authentication Secret"
 msgstr ""
 
 msgid "Register another family!"
-msgstr ""
-
-#. Context: query_qry
-msgid "Registered students"
 msgstr ""
 
 msgid "Registration Complete"
