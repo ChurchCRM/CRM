@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -15,6 +16,7 @@ use Slim\Views\PhpRenderer;
 // entity can be a person, family, or business
 $app->group('/people', function (RouteCollectorProxy $group): void {
     $group->get('/verify', 'viewPeopleVerify');
+    $group->get('/photos', 'viewPeoplePhotoGallery');
     $group->get('/', 'listPeople');
     $group->get('', 'listPeople');
 });
@@ -148,4 +150,94 @@ function listPeople(Request $request, Response $response, array $args): Response
     ];
 
     return $renderer->render($response, 'person-list.php', $pageArgs);
+}
+
+/**
+ * Photo Gallery view - displays medium-sized photos of all people with names.
+ * Feature request: https://github.com/ChurchCRM/CRM/issues/7899
+ */
+function viewPeoplePhotoGallery(Request $request, Response $response, array $args): Response
+{
+    $renderer = new PhpRenderer('templates/people/');
+
+    // Get query parameters for filtering
+    $queryParams = $request->getQueryParams();
+    $showOnlyWithPhotos = isset($queryParams['photosOnly']) && $queryParams['photosOnly'] === '1';
+    $classificationFilter = !empty($queryParams['classification']) ? InputUtils::filterInt($queryParams['classification']) : null;
+
+    // Get classification list for filter dropdown
+    $classifications = ListOptionQuery::create()
+        ->filterById(1)
+        ->orderByOptionSequence()
+        ->find();
+
+    // Get inactive classification IDs from config
+    $sInactiveClassificationIds = SystemConfig::getValue('sInactiveClassification');
+    $aInactiveClasses = [];
+    if ($sInactiveClassificationIds !== '') {
+        $aInactiveClassificationIds = explode(',', $sInactiveClassificationIds);
+        $aInactiveClasses = array_filter($aInactiveClassificationIds, fn ($k): bool => is_numeric($k));
+    }
+
+    // Pagination parameters
+    $page = isset($queryParams['page']) ? max(1, InputUtils::filterInt($queryParams['page'])) : 1;
+    $limit = 100; // People per page
+    $offset = ($page - 1) * $limit;
+
+    // Build query for people - using ORM (no family join needed for this view)
+    $peopleQuery = PersonQuery::create()
+        ->orderByLastName()
+        ->orderByFirstName();
+
+    // Exclude inactive classifications by default
+    if (!empty($aInactiveClasses)) {
+        $peopleQuery->filterByClsId($aInactiveClasses, \Propel\Runtime\ActiveQuery\Criteria::NOT_IN);
+    }
+
+    // Apply classification filter if specified
+    if ($classificationFilter !== null) {
+        $peopleQuery->filterByClsId($classificationFilter);
+    }
+
+    // Get total count before pagination
+    $totalCount = (clone $peopleQuery)->count();
+    $totalPages = (int) ceil($totalCount / $limit);
+
+    // Apply pagination
+    $people = $peopleQuery
+        ->limit($limit)
+        ->offset($offset)
+        ->find();
+
+    // Build array of people with photo info
+    $peopleData = [];
+    foreach ($people as $person) {
+        $photo = new Photo('Person', $person->getId());
+        $hasPhoto = $photo->hasUploadedPhoto();
+
+        // Skip people without photos if filter is enabled
+        if ($showOnlyWithPhotos && !$hasPhoto) {
+            continue;
+        }
+
+        $peopleData[] = [
+            'person'   => $person,
+            'hasPhoto' => $hasPhoto,
+        ];
+    }
+
+    $pageArgs = [
+        'sRootPath'            => SystemURLs::getRootPath(),
+        'sPageTitle'           => gettext('Photo Directory'),
+        'peopleData'           => $peopleData,
+        'classifications'      => $classifications,
+        'showOnlyWithPhotos'   => $showOnlyWithPhotos,
+        'classificationFilter' => $classificationFilter,
+        'totalPeople'          => count($peopleData),
+        'currentPage'          => $page,
+        'totalPages'           => $totalPages,
+        'totalCount'           => $totalCount,
+    ];
+
+    return $renderer->render($response, 'photo-gallery.php', $pageArgs);
 }
