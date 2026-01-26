@@ -7421,13 +7421,13 @@ msgstr "Maksimum aantal kalendergeleenthede"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] " %d maand oud"
 msgstr[1] " %d maande oud"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d jaar oud"
 msgstr[1] "%d jare oud"
 
@@ -9208,7 +9208,7 @@ msgstr "deposito(s) sonder betalings"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "%d geleentheid in %s"
 msgstr[1] "%d geleenthede in %s"
 
@@ -9466,7 +9466,7 @@ msgstr "opsioneel"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "persoon"
 msgstr[1] "persone"
 
@@ -11204,19 +11204,19 @@ msgstr "moet opgestel word met 'n enkripsietoetsl"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "%d persoon by die mandjie gevoeg."
 msgstr[1] "%d persone by die mandjie gevoeg."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "%d persoon suksesvol by die gekose Familie gevoeg."
 msgstr[1] "%d persone suksesvol by die gekose Familie gevoeg."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "%d persoon suksesvol by die gekose Groep gevoeg."
 msgstr[1] "%d persone suksesvol by die gekose Groep gevoeg."
 

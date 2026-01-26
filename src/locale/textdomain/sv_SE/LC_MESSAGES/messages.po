@@ -7546,13 +7546,13 @@ msgstr "Maximalt antal kalenderhändelser"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d månad gammal"
 msgstr[1] "%d månader gammal"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d år gammal"
 msgstr[1] "%d år gammal"
 
@@ -9332,7 +9332,7 @@ msgstr "insättning(ar) utan betalningar"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "%d händelse i %s"
 msgstr[1] "%d händelser i %s"
 
@@ -9590,7 +9590,7 @@ msgstr "valfritt"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "person"
 msgstr[1] "personer"
 
@@ -11328,19 +11328,19 @@ msgstr "måste konfigureras med en krypteringsnyckel"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "%d person tillagd i kundvagnen."
 msgstr[1] "%d personer tillagda i kundvagnen."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "%d person tillagd till vald familj."
 msgstr[1] "%d personer tillagda till vald familj."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "%d person tillagd till vald grupp."
 msgstr[1] "%d personer tillagda till vald grupp."
 

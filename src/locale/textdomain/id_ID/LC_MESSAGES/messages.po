@@ -7415,12 +7415,12 @@ msgstr "Jumlah maksimum Acara Kalender"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d bulan"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d tahun"
 
 #: 
@@ -9199,7 +9199,7 @@ msgstr "setoran tanpa pembayaran"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "%d kegiatan di %s"
 
 #: 
@@ -9456,7 +9456,7 @@ msgstr "opsional"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "orang"
 
 #: 
@@ -11193,17 +11193,17 @@ msgstr "harus dikonfigurasi dengan kunci enkripsi"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "%d Orang ditambahkan ke Keranjang."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "%d Orang berhasil ditambahkan ke Keluarga yang dipilih."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "%d Orang berhasil ditambahkan ke Grup yang dipilih."
 
 #: 

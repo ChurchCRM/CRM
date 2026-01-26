@@ -7501,14 +7501,14 @@ msgstr "Maksymalna liczba Wydarzeń w kalendarzu"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d miesiąc"
 msgstr[1] "%d miesiące"
 msgstr[2] "%d miesięcy"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d rok"
 msgstr[1] "%d lat"
 msgstr[2] "%d lat"

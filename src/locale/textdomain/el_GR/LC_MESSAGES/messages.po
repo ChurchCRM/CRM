@@ -7421,13 +7421,13 @@ msgstr "Μέγιστος αριθμός συμβάντων ημερολογίο�
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d μηνών"
 msgstr[1] "%d μηνών"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d ετών"
 msgstr[1] "%d ετών"
 
@@ -9207,7 +9207,7 @@ msgstr "κατάθεση(εις) χωρίς πληρωμές"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "%d συμβάν στο %s"
 msgstr[1] "%d συμβάντα στο %s"
 
@@ -9465,7 +9465,7 @@ msgstr "προαιρετικό"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "άτομο"
 msgstr[1] "άτομα"
 
@@ -11203,19 +11203,19 @@ msgstr "πρέπει να ρυθμιστεί με ένα κλειδί κρυπτ
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "%d άτομο προστέθηκε στο καλάθι."
 msgstr[1] "%d άτομα προστέθηκαν στο καλάθι."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "%d άτομο προστέθηκε επιτυχώς στην επιλεγμένη οικογένεια."
 msgstr[1] "%d άτομα προστέθηκαν επιτυχώς στην επιλεγμένη οικογένεια."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "%d άτομο προστέθηκε επιτυχώς στην επιλεγμένη ομάδα."
 msgstr[1] "%d άτομα προστέθηκαν επιτυχώς στην επιλεγμένη ομάδα."
 
