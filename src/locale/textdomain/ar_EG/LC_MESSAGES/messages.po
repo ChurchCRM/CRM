@@ -7414,7 +7414,7 @@ msgstr "الحد الأقصى لعدد الأحداث"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d منذ شهر"
 msgstr[1] "%d منذ شهر"
 msgstr[2] "%d منذ شهر"
@@ -7424,7 +7424,7 @@ msgstr[5] "%d منذ شهر"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d سنة"
 msgstr[1] "%d سنة"
 msgstr[2] "%d سنة"

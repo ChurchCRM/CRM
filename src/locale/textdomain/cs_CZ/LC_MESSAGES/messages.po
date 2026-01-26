@@ -7400,14 +7400,14 @@ msgstr "Maximální počet událostí kalendáře"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d měsíc"
 msgstr[1] "%d měsíce"
 msgstr[2] "%d měsíců"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d rok"
 msgstr[1] "%d roky"
 msgstr[2] "%d let"
@@ -9186,7 +9186,7 @@ msgstr "vklad(y) bez plateb"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "%d událost v %s"
 msgstr[1] "%d události v %s"
 msgstr[2] "%d událostí v %s"
@@ -9445,7 +9445,7 @@ msgstr "volitelně"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "osoba"
 msgstr[1] "osoby"
 msgstr[2] "osob"
@@ -11184,21 +11184,21 @@ msgstr "musí být nakonfigurován s šifrovacím klíčem"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "%d osoba přidána do košíku."
 msgstr[1] "%d osoby přidány do košíku."
 msgstr[2] "%d osob přidáno do košíku."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "%d osoba byla úspěšně přidána do vybrané rodiny."
 msgstr[1] "%d osoby byly úspěšně přidány do vybrané rodiny."
 msgstr[2] "%d osob bylo úspěšně přidáno do vybrané rodiny."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "%d osoba byla úspěšně přidána do vybrané skupiny."
 msgstr[1] "%d osoby byly úspěšně přidány do vybrané skupiny."
 msgstr[2] "%d osob bylo úspěšně přidáno do vybrané skupiny."

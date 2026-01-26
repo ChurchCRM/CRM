@@ -7413,13 +7413,13 @@ msgstr "Idadi ya juu zaidi ya Matukio ya Kalenda"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "Umri wa mwezi %d"
 msgstr[1] "Wenye umri wa miezi %d"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "Umri wa mwaka %d"
 msgstr[1] "Wenye umri wa miaka %d"
 
@@ -9198,7 +9198,7 @@ msgstr "amana zisizo na malipo"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "Tukio %d katika %s"
 msgstr[1] "Matukio %d katika %s"
 
@@ -9456,7 +9456,7 @@ msgstr "hiari"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "mtu"
 msgstr[1] "watu"
 
@@ -11194,19 +11194,19 @@ msgstr "lazima isanidiwe na ufunguo wa usimbuaji"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "Mtu %d ameongezwa kwenye Kigari."
 msgstr[1] "Watu %d wameongezwa kwenye Kigari."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "Mtu %d ameongezwa kwa mafanikio kwenye Familia iliyochaguliwa."
 msgstr[1] "Watu %d wameongezwa kwa mafanikio kwenye Familia iliyochaguliwa."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "Mtu %d ameongezwa kwa mafanikio kwenye Kikundi kilichochaguliwa."
 msgstr[1] "Watu %d wameongezwa kwa mafanikio kwenye Kikundi kilichochaguliwa."
 

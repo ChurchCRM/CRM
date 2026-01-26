@@ -7418,13 +7418,13 @@ msgstr "Maximaal aantal agendagebeurtenissen"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d maand oud"
 msgstr[1] "%d maanden oud"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d jaar oud"
 msgstr[1] "%d jaar oud"
 
@@ -9203,7 +9203,7 @@ msgstr "storting(en) zonder betalingen"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "%d gebeurtenis in %s"
 msgstr[1] "%d gebeurtenissen in %s"
 
@@ -9461,7 +9461,7 @@ msgstr "optioneel"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "persoon"
 msgstr[1] "personen"
 
@@ -11199,19 +11199,19 @@ msgstr "moet worden geconfigureerd met een versleutelingssleutel"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "%d persoon aan winkelwagen toegevoegd."
 msgstr[1] "%d personen aan winkelwagen toegevoegd."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde familie."
 msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde familie."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde groep."
 msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde groep."
 

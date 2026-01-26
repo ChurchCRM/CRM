@@ -7507,14 +7507,14 @@ msgstr "Numărul maxim de Evenimente din Calendar"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "de %d lună"
 msgstr[1] "de %d luni"
 msgstr[2] "de %d luni"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "un an"
 msgstr[1] "de %d ani"
 msgstr[2] "de %d ani"

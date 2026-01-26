@@ -7370,13 +7370,13 @@ msgstr "Kalenteritapahtumien enimmäismäärä"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d kuukauden ikäinen"
 msgstr[1] "%d kuukauden ikäinen"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d-vuotias"
 msgstr[1] "%d-vuotias"
 
@@ -9154,7 +9154,7 @@ msgstr "talletus(ta), joissa ei ole maksuja"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "%d tapahtuma kohteessa %s"
 msgstr[1] "%d tapahtumaa kohteessa %s"
 

@@ -7415,13 +7415,13 @@ msgstr "מספר מקסימלי של אירועי לוח שנה"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "בן/בת %d חודש"
 msgstr[1] "בן/בת %d חודשים"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d שנה"
 msgstr[1] "%d שנים"
 
@@ -9199,7 +9199,7 @@ msgstr "הפקדות ללא תשלומים"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "אירוע %d ב-%s"
 msgstr[1] "%d אירועים ב-%s"
 
@@ -9457,7 +9457,7 @@ msgstr "אופציונלי"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "אדם"
 msgstr[1] "אנשים"
 
@@ -11195,19 +11195,19 @@ msgstr "חייב להיות מוגדר עם מפתח הצפנה"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "אדם %d נוסף לסל."
 msgstr[1] "%d אנשים נוספו לסל."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "אדם %d נוסף בהצלחה למשפחה הנבחרת."
 msgstr[1] "%d אנשים נוספו בהצלחה למשפחה הנבחרת."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "אדם %d נוסף בהצלחה לקבוצה הנבחרת."
 msgstr[1] "%d אנשים נוספו בהצלחה לקבוצה הנבחרת."
 

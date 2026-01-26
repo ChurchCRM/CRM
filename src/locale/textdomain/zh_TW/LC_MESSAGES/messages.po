@@ -7596,13 +7596,13 @@ msgstr "日曆活動的最大數量"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "％d個月大\n"
 "Plural: ％d個月大"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d歲大\n"
 "Plural: %d歲大"
 
@@ -9477,7 +9477,7 @@ msgstr "無付款的存款"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "%s 中的 %d 個活動"
 
 #: 
@@ -9734,7 +9734,7 @@ msgstr "可選"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "個人"
 
 #: 
@@ -11471,17 +11471,17 @@ msgstr "必須配置加密密鑰"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "%d 人已加入清單。"
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "%d 人已成功加入選定的家庭。"
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "%d 人已成功加入選定的群組。"
 
 #: 

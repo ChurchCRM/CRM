@@ -7366,13 +7366,13 @@ msgstr "Número máximo de eventos de calendario"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d mes de edad"
 msgstr[1] "%d meses de edad"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d año de edad"
 msgstr[1] "%d años de edad"
 
@@ -9151,7 +9151,7 @@ msgstr "depósito(s) sin pagos"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d events in %s"
+msgid_plural "%d event in %s"
 msgstr[0] "%d evento en %s"
 msgstr[1] "%d eventos en %s"
 
@@ -9409,7 +9409,7 @@ msgstr "optional"
 
 #: 
 msgid "person"
-msgid_plural "people"
+msgid_plural "person"
 msgstr[0] "Persona"
 msgstr[1] "Personas"
 
@@ -11147,19 +11147,19 @@ msgstr "debe estar configurado con una clave de cifrado"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d People added to the Cart."
+msgid_plural "%d Person added to the Cart."
 msgstr[0] "%d persona agregada al carrito."
 msgstr[1] "%d personas agregadas al carrito."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d People successfully added to selected Family."
+msgid_plural "%d Person successfully added to selected Family."
 msgstr[0] "%d persona agregada exitosamente a la familia seleccionada."
 msgstr[1] "%d personas agregadas exitosamente a la familia seleccionada."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d People successfully added to selected Group."
+msgid_plural "%d Person successfully added to selected Group."
 msgstr[0] "%d persona agregada exitosamente al grupo seleccionado."
 msgstr[1] "%d personas agregadas exitosamente al grupo seleccionado."
 

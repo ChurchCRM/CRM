@@ -7367,13 +7367,13 @@ msgstr "कैलेंडर ईवेंट की अधिकतम सं�
 
 #: 
 msgid "%d month old"
-msgid_plural "%d months old"
+msgid_plural "%d month old"
 msgstr[0] "%d महीना पुराना"
 msgstr[1] "%d महीने पुराना"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d years old"
+msgid_plural "%d year old"
 msgstr[0] "%d वर्ष पुराना"
 msgstr[1] "%d वर्ष पुराना"
 
