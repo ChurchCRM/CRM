@@ -3921,12 +3921,6 @@ msgstr "Buscar"
 msgid "Field"
 msgstr "Campo"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Estudiantes registrados"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4019,11 +4013,6 @@ msgstr "La clase de escuela dominical por la cual quisiera retornar registros."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Grupo de estudiantes registrados"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "El mes de aniversario de membresía por el cual quisiera retornar registros."
 
@@ -4056,11 +4045,6 @@ msgstr "Promesas este año"
 #: 
 msgid "but not this year"
 msgstr "pero no para este año"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Año Fiscal."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4124,11 +4108,6 @@ msgstr "Faltan promesas"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Promesas familiares por Año Fiscal"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "BúsquedaPersonalizada"
 
@@ -4141,11 +4120,6 @@ msgstr "Retorna los registros de persona que están asignados a la propiedad dad
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "ersonas con cumpleaños en un mes en particular"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Buscar estudiantes registrados"
 
 #. Context: query_qry
 #: 
@@ -4171,11 +4145,6 @@ msgstr "Comparación de las promesas entre dos años fiscales"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Encontrar personas que donaron un año pero no otro"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Resumen de promesas por nombre de familia para cada fondo por el año fiscal seleccionado"
 
 #. Context: query_qry
 #: 

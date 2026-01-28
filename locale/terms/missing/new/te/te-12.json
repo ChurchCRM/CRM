@@ -1,9 +1,4 @@
 {
-  "System configuration ": "",
-  "Must be set to 'true'": "",
-  "Google Maps API Key used for Geocoding addresses": "",
-  "Send an email notifying users when their account has been deleted": "",
-  "Google Maps API Key used for rendering maps in browser": "",
   "Incorrect password supplied for current user": "",
   "Your new password must not match your old one.": "",
   "Your new password is too similar to your old one.": "",
@@ -98,5 +93,10 @@
   "Ukrainian": "",
   "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled.": "",
   "Submit to GitHub": "",
-  "Change role": ""
+  "Change role": "",
+  "Closed": "",
+  "Delete this person?": "",
+  "Deposit ID": "",
+  "Deposit Total": "",
+  "Group Cart Status": ""
 }

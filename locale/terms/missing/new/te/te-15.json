@@ -1,9 +1,4 @@
 {
-  "Please check your email (including spam/junk folder) for your temporary password.": "",
-  "Please do not close this window or refresh the page.": "",
-  "Pre-Upgrade Tasks Complete": "",
-  "Pre-Upgrade Warnings": "",
-  "Refresh from GitHub": "",
   "Release Notes:": "",
   "Request Password Reset": "",
   "Retry Download": "",
@@ -98,5 +93,10 @@
   "Tip:": "",
   "Valid Settings": "",
   "An error occurred during demo data import": "",
-  "Demo data imported successfully": ""
+  "Demo data imported successfully": "",
+  "Include Sunday School classes and enrollments": "",
+  "Need to remove this data later?": "",
+  "No Payments on this Deposit": "",
+  "No payments on this deposit": "",
+  "Optional Data to Include": ""
 }

@@ -1,10 +1,4 @@
 {
-  "Upgrade Summary": "",
-  "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site.": "",
-  "User authentication": "",
-  "User must have Add Event permission": "",
-  "User must have Menu Options permission": "",
-  "What are Orphaned Files?": "",
   "You don't have access to this page": "",
   "You will be logged out and redirected to the login page.": "",
   "Your ChurchCRM installation is clean. All files on the server match the official release.": "",
@@ -98,5 +92,11 @@
   "Import sample families, people, and groups to explore ChurchCRM with realistic data.": "",
   "Install TLS/SSL certificate for better security": "",
   "Jan": "",
-  "Jr., Sr.": ""
+  "Jr., Sr.": "",
+  "Jul": "",
+  "Jun": "",
+  "Latest Note": "",
+  "Let's get your system set up and ready to use": "",
+  "List members eligible to vote based on giving history and membership criteria.": "",
+  "Location": ""
 }

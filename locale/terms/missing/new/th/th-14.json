@@ -1,10 +1,4 @@
 {
-  "Vietnamese": "",
-  "Chinese - China": "",
-  "Chinese - Taiwan": "",
-  "Maximum upload size": "",
-  "The selected file exceeds this servers maximum upload size of": "",
-  "Failed": "",
   "Church Checking Account Number": "",
   "Marked the Family as Inactive": "",
   "Marked the Family as Active": "",
@@ -98,5 +92,11 @@
   "Title FirstName LastName": "",
   "LastName, Title FirstName": "",
   "Event Log severity to write, used by ORM and App Logs": "",
-  "Time zone": ""
+  "Time zone": "",
+  "Nexmo SMS API Key": "",
+  "Nexmo SMS API Secret": "",
+  "Nexmo SMS From Number": "",
+  "OpenLP URL": "",
+  "OpenLP Username": "",
+  "OpenLP Password": ""
 }

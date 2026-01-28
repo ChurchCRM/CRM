@@ -3951,12 +3951,6 @@ msgstr "Hledat"
 msgid "Field"
 msgstr "Pole"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Registrovaní žáci"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4049,11 +4043,6 @@ msgstr "Třída nedělní školy, pro kterou chcete vrátit záznamy."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Skupina registrovaných žáků"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Výroční měsíc členství, za který chcete vrátit záznamy."
 
@@ -4086,11 +4075,6 @@ msgstr "Přispěl tento rok"
 #: 
 msgid "but not this year"
 msgstr "ale ne tento rok"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiskální rok."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4154,11 +4138,6 @@ msgstr "Chybějící příspěvky"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Příspěvky rodiny podle fiskálního roku"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Hledání podle vlastních polí"
 
@@ -4171,11 +4150,6 @@ msgstr "Vrátí záznamy osob, kterým je přiřazena daná vlastnost."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Osoby s narozeninami v určitém měsíci"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Najít registrované žáky"
 
 #. Context: query_qry
 #: 
@@ -4201,11 +4175,6 @@ msgstr "Porovnat přísliby mezi dvěma fiskálními roky"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Najít osoby, které v jednom roce přislíbili, ale v jiném ne"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Přehled příslibů podle jmen rodin pro každý fond za vybraný fiskální rok"
 
 #. Context: query_qry
 #: 
@@ -7400,14 +7369,14 @@ msgstr "Maximální počet událostí kalendáře"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d měsíc"
 msgstr[1] "%d měsíce"
 msgstr[2] "%d měsíců"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d rok"
 msgstr[1] "%d roky"
 msgstr[2] "%d let"
@@ -9186,7 +9155,7 @@ msgstr "vklad(y) bez plateb"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d událost v %s"
 msgstr[1] "%d události v %s"
 msgstr[2] "%d událostí v %s"
@@ -9445,7 +9414,7 @@ msgstr "volitelně"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "osoba"
 msgstr[1] "osoby"
 msgstr[2] "osob"
@@ -11184,21 +11153,21 @@ msgstr "musí být nakonfigurován s šifrovacím klíčem"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d osoba přidána do košíku."
 msgstr[1] "%d osoby přidány do košíku."
 msgstr[2] "%d osob přidáno do košíku."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d osoba byla úspěšně přidána do vybrané rodiny."
 msgstr[1] "%d osoby byly úspěšně přidány do vybrané rodiny."
 msgstr[2] "%d osob bylo úspěšně přidáno do vybrané rodiny."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d osoba byla úspěšně přidána do vybrané skupiny."
 msgstr[1] "%d osoby byly úspěšně přidány do vybrané skupiny."
 msgstr[2] "%d osob bylo úspěšně přidáno do vybrané skupiny."

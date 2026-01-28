@@ -1,10 +1,4 @@
 {
-  "Toggle the left sidebar's state (open or collapse)": "",
-  "Tables Settings": "",
-  "Page length": "",
-  "Change the initial page length (number of rows per page)": "",
-  "User Interface": "",
-  "Locale": "",
   "Override system locale": "",
   "Deleted": "",
   "Invalid Birth Date: Missing birth month or day.": "",
@@ -98,5 +92,11 @@
   "in cart": "",
   "members. Already had": "",
   "people added to cart": "",
-  "people already in cart": ""
+  "people already in cart": "",
+  "people from cart": "",
+  "people removed from cart": "",
+  "Person already in cart": "",
+  "Remove this family from cart?": "",
+  "Remove this group from cart?": "",
+  "Remove this person from cart?": ""
 }

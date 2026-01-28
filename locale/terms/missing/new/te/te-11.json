@@ -1,9 +1,4 @@
 {
-  "invalid export value": "",
-  "Invalid User/Password": "",
-  "Find Duplicate Emails": "",
-  "Duplicate Emails": "",
-  "HTML URL": "",
   "Latest People": "",
   "Updated People": "",
   "Custom Menus": "",
@@ -104,5 +99,10 @@
   "2 Factor Authentication enrollment": "",
   "Unsupported Two Factor Authentication Configuration": "",
   "Unable To Begin Two Factor Authentication Enrollment": "",
-  "Two factor authentication requires ChurchCRM administrators to configure a few parameters": ""
+  "Two factor authentication requires ChurchCRM administrators to configure a few parameters": "",
+  "System configuration ": "",
+  "Must be set to 'true'": "",
+  "Google Maps API Key used for Geocoding addresses": "",
+  "Send an email notifying users when their account has been deleted": "",
+  "Google Maps API Key used for rendering maps in browser": ""
 }

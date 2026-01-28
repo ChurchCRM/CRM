@@ -4036,12 +4036,6 @@ msgstr "Keresés"
 msgid "Field"
 msgstr "Mező"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Regisztrált diákok"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4134,11 +4128,6 @@ msgstr "A vasárnapi iskolai osztály, amelyre vonatkozóan rekordokat szeretne 
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Regisztrált diákok csoportja"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "A tagsági évforduló hónapja, amelyre vonatkozóan rekordokat szeretne visszakapni."
 
@@ -4171,11 +4160,6 @@ msgstr "Felajánlott idén"
 #: 
 msgid "but not this year"
 msgstr "de nem idén"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Pénzügyi év."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4239,11 +4223,6 @@ msgstr "Hiányzó felajánlások"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Családi felajánlás pénzügyi év szerint"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Egyéni keresés"
 
@@ -4256,11 +4235,6 @@ msgstr "Visszaadja azokat a személyi rekordokat, amelyekhez a megadott tulajdon
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Adott hónapban született személyek"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Regisztrált diákok keresése"
 
 #. Context: query_qry
 #: 
@@ -4286,11 +4260,6 @@ msgstr "Felajánlások összehasonlítása két pénzügyi év között"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Személyek keresése, akik az egyik évben tettek felajánlást, de a másikban nem"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Felajánlási összesítő családnév szerint minden alaphoz a kiválasztott pénzügyi évben"
 
 #. Context: query_qry
 #: 
@@ -7483,13 +7452,13 @@ msgstr "Naptár események maximális száma"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d hó régi"
 msgstr[1] "%d hó régi"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d év régi"
 msgstr[1] "%d év régi"
 
@@ -9267,7 +9236,7 @@ msgstr "letét(ek) kifizetések nélkül"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d esemény az %s időszakban"
 msgstr[1] "%d esemény az %s időszakban"
 
@@ -9525,7 +9494,7 @@ msgstr "opcionális"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "személy"
 msgstr[1] "személy"
 
@@ -11263,19 +11232,19 @@ msgstr "titkosító kulccsal kell konfigurálni"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d személy hozzáadva a kosárhoz."
 msgstr[1] "%d személy hozzáadva a kosárhoz."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
 msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott családhoz."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
 msgstr[1] "%d személy sikeresen hozzáadva a kiválasztott csoporthoz."
 

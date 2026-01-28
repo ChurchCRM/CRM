@@ -3959,12 +3959,6 @@ msgstr "Rechercher"
 msgid "Field"
 msgstr "Champ"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Étudiants enregistrés"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4058,11 +4052,6 @@ msgstr "La classe d'école du dimanche pour laquelle vous voulez retourner les r
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Groupe d'étudiants enregistrés"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Le mois anniversaire de mariage d'adhésion pour lequel vous voulez retourner un enregistrement."
 
@@ -4095,11 +4084,6 @@ msgstr "Contributions de l'année"
 #: 
 msgid "but not this year"
 msgstr "mais pas cette année"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Année fiscale."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4163,11 +4147,6 @@ msgstr "Contributions manquantes"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Contribution familiale par année fiscale"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Recherche personnalisé"
 
@@ -4180,11 +4159,6 @@ msgstr "Renvoyer les enregistrements de personnes qui sont assignées à une pro
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Personnes nées un mois particulié"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Rechercher les étudiant enregistré"
 
 #. Context: query_qry
 #: 
@@ -4210,11 +4184,6 @@ msgstr "Comparer les contributions entre deux années fiscales."
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Rechercher les Personnes qui ont contribué une année mais plus par la suite"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Résumé des contributions par nom de famille pour chaque fond de l'année fiscale sélectionnée"
 
 #. Context: query_qry
 #: 
@@ -7420,13 +7389,13 @@ msgstr "Nombre maximum d'événements dans le calendrier"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "il y a %d mois"
 msgstr[1] "il y a %d mois"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "il y a %d an"
 msgstr[1] "il y a %d ans"
 
@@ -9207,7 +9176,7 @@ msgstr "versement(s) sans offrande"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d événement dans %s"
 msgstr[1] "%d événements dans %s"
 
@@ -9465,7 +9434,7 @@ msgstr "optionnel"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "personne"
 msgstr[1] "personnes"
 
@@ -11203,19 +11172,19 @@ msgstr "doit être configuré avec une clé de chiffrement"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d personne ajoutée au panier."
 msgstr[1] "%d personnes ajoutées au panier."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d personne ajoutée avec succès à la famille sélectionnée."
 msgstr[1] "%d personnes ajoutées avec succès à la famille sélectionnée."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d personne ajoutée avec succès au groupe sélectionné."
 msgstr[1] "%d personnes ajoutées avec succès au groupe sélectionné."
 

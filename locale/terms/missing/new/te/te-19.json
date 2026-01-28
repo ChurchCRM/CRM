@@ -1,9 +1,4 @@
 {
-  "Payment": "",
-  "Pledge Reports": "",
-  "Print or email annual giving statements to all donors.": "",
-  "Quick Actions": "",
-  "Quick Start": "",
   "Recent Deposits": "",
   "Recording a Payment": "",
   "Recording a Pledge": "",
@@ -98,5 +93,10 @@
   "System Locale Support": "",
   "System Support": "",
   "URL does not contain a valid hostname": "",
-  "URL hostname is not valid": ""
+  "URL hostname is not valid": "",
+  "URL is not in valid format": "",
+  "URL must end with a trailing slash (/)": "",
+  "URL must start with http:// or https://": "",
+  "Unable to detect system locales": "",
+  "Unable to determine available locales": ""
 }

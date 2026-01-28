@@ -4047,12 +4047,6 @@ msgstr "Szukaj"
 msgid "Field"
 msgstr "Pole"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Zarejestrowani uczniowie"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4145,11 +4139,6 @@ msgstr "Klasa szkoły niedzielnej, dla której mają zostać zwrócone rekordy."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Grupa zarejestrowanych uczniów"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Miesiąc rocznicy członkostwa, dla którego mają zostać zwrócone rekordy."
 
@@ -4182,11 +4171,6 @@ msgstr "Zadeklarowano w tym roku"
 #: 
 msgid "but not this year"
 msgstr "ale nie w tym roku"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Rok fiskalny."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4250,11 +4234,6 @@ msgstr "Brakujące deklaracje"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Deklaracja rodziny według roku fiskalnego"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Wyszukiwanie niestandardowe"
 
@@ -4267,11 +4246,6 @@ msgstr "Zwraca rekordy osób, którym przypisano daną właściwość."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Osoby urodzone w danym miesiącu"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Znajdź zarejestrowanych uczniów"
 
 #. Context: query_qry
 #: 
@@ -4297,11 +4271,6 @@ msgstr "Porównaj deklaracje między dwoma latami fiskalnymi"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Znajdź osoby, które złożyły deklarację w jednym roku, ale nie w drugim"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Podsumowanie deklaracji według nazwiska rodziny dla każdego funduszu w wybranym roku"
 
 #. Context: query_qry
 #: 
@@ -7501,14 +7470,14 @@ msgstr "Maksymalna liczba Wydarzeń w kalendarzu"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d miesiąc"
 msgstr[1] "%d miesiące"
 msgstr[2] "%d miesięcy"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d rok"
 msgstr[1] "%d lat"
 msgstr[2] "%d lat"

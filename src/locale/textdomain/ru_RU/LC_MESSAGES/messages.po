@@ -4048,12 +4048,6 @@ msgstr "Поиск"
 msgid "Field"
 msgstr "Поле"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Зарегистрированные студенты"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4147,11 +4141,6 @@ msgstr "Класс воскресной школы, по которому вы �
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Группа зарегистрированных студентов"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Месяц годовщины членства, за который вы хотите вернуть записи."
 
@@ -4184,11 +4173,6 @@ msgstr "Залог в этом году"
 #: 
 msgid "but not this year"
 msgstr "но не в этом году"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Отчетный год"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4252,11 +4236,6 @@ msgstr "Недостающие залоги"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Обещания семьи по финансовым годам"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Пользовательский поиск"
 
@@ -4269,11 +4248,6 @@ msgstr "Возвращает записи о людях, которым прис
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Люди с днями рождения в определенном месяце"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Найти зарегистрированных студентов"
 
 #. Context: query_qry
 #: 
@@ -4299,11 +4273,6 @@ msgstr "Сравните взносы за два финансовых года"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Найдите людей, которые обещали один год, а другой нет"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Сводка обещаний с указанием фамилии для каждого фонда за выбранный финансовый год"
 
 #. Context: query_qry
 #: 
@@ -7494,7 +7463,7 @@ msgstr "Максимальное количество событий кален�
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d месяц"
 msgstr[1] "%d месяца"
 msgstr[2] "%d месяцев"
@@ -7502,7 +7471,7 @@ msgstr[3] "%d-месячный"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d год"
 msgstr[1] "%d года"
 msgstr[2] "%d лет"

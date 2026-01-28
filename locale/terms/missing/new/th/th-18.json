@@ -1,10 +1,4 @@
 {
-  "Requires users to self-enroll in 2 factor authentication": "",
-  "ChurchCRM": "",
-  "Specify the application name to be displayed in authenticator app": "",
-  "Review": "",
-  "Thank you for registering your family": "",
-  "Register another family!": "",
   "Done, show me the homepage!": "",
   "User authenticated via API Key: ": "",
   "Unsuccessful API Key authentication attempt": "",
@@ -98,5 +92,11 @@
   "Family has no emails to use": "",
   "Boxed Layout": "",
   "Activate the boxed layout": "",
-  "Toggle Sidebar": ""
+  "Toggle Sidebar": "",
+  "Toggle the left sidebar's state (open or collapse)": "",
+  "Tables Settings": "",
+  "Page length": "",
+  "Change the initial page length (number of rows per page)": "",
+  "User Interface": "",
+  "Locale": ""
 }

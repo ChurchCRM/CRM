@@ -1,10 +1,4 @@
 {
-  "people from cart": "",
-  "people removed from cart": "",
-  "Person already in cart": "",
-  "Remove this family from cart?": "",
-  "Remove this group from cart?": "",
-  "Remove this person from cart?": "",
   "Removed from cart successfully": "",
   "Yes, Empty Cart": "",
   "Yes, Remove": "",
@@ -98,5 +92,11 @@
   "Create a backup of your database before applying the update.": "",
   "Current Version:": "",
   "Database Backup": "",
-  "Download & Apply": ""
+  "Download & Apply": "",
+  "Download and Apply System Update": "",
+  "Download the latest release and apply it to your ChurchCRM installation.": "",
+  "Downloaded": "",
+  "Downloading latest release from GitHub...": "",
+  "Enter your login name and we will email you a link to reset your password.": "",
+  "Expected Hash": ""
 }

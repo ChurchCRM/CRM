@@ -3959,12 +3959,6 @@ msgstr "بحث"
 msgid "Field"
 msgstr "حقل"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "الطلاب المسجلين"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4058,11 +4052,6 @@ msgstr "الطبقة مدرسة الأحد التي ترغب السجلات ال
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "مجموعة من الطلاب المسجلين"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "شهر عضوية الذكرى التي التي ترغب السجلات التي تم إرجاعها."
 
@@ -4095,11 +4084,6 @@ msgstr "تعهد هذا العام"
 #: 
 msgid "but not this year"
 msgstr "ولكن ليس هذا العام"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "السنة المالية."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4163,11 +4147,6 @@ msgstr "تعهدات المفقودين"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "تعهد الأسرة السنة المالية"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "بحث مخصص"
 
@@ -4180,11 +4159,6 @@ msgstr "يعود سجلات الشخص الذي يتم تعيين خاصية م�
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "أعياد الميلاد في شهر معين"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "البحث الطلبة مسجل"
 
 #. Context: query_qry
 #: 
@@ -4210,11 +4184,6 @@ msgstr "تعهدات مقارنة بين سنتين ماليتين"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "تجد الناس الذين تعهد سنة واحدة ولكن ليس آخر"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "ملخص تعهد اسم العائلة لكل صندوق للسنة المالية المختارة"
 
 #. Context: query_qry
 #: 
@@ -7414,7 +7383,7 @@ msgstr "الحد الأقصى لعدد الأحداث"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d منذ شهر"
 msgstr[1] "%d منذ شهر"
 msgstr[2] "%d منذ شهر"
@@ -7424,7 +7393,7 @@ msgstr[5] "%d منذ شهر"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d سنة"
 msgstr[1] "%d سنة"
 msgstr[2] "%d سنة"

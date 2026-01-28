@@ -3971,12 +3971,6 @@ msgstr "Tìm kiếm"
 msgid "Field"
 msgstr "Cánh đồng"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Sinh viên đã đăng ký"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4070,11 +4064,6 @@ msgstr "Lớp học chủ nhật mà bạn muốn trả lại hồ sơ."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Nhóm sinh viên đã đăng ký"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Tháng kỷ niệm thành viên mà bạn muốn trả lại hồ sơ."
 
@@ -4107,11 +4096,6 @@ msgstr "Cam kết trong năm nay"
 #: 
 msgid "but not this year"
 msgstr "nhưng không phải năm nay"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Năm tài chính."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4175,11 +4159,6 @@ msgstr "Thiếu cam kết"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Cam kết gia đình theo năm tài chính"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Tìm kiếm tuỳ chỉnh"
 
@@ -4192,11 +4171,6 @@ msgstr "Trả về các bản ghi người được gán thuộc tính đã cho.
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Những người có sinh nhật trong một tháng cụ thể"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Tìm sinh viên đã đăng ký"
 
 #. Context: query_qry
 #: 
@@ -4222,11 +4196,6 @@ msgstr "So sánh các cam kết giữa hai năm tài chính"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Tìm những người đã cam kết một năm chứ không phải người khác"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Tóm tắt cam kết theo tên gia đình cho mỗi quỹ trong năm tài chính đã chọn"
 
 #. Context: query_qry
 #: 
@@ -7426,12 +7395,12 @@ msgstr "Số sự kiện lịch tối đa"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d tháng tuổi"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d tuổi"
 
 #: 
@@ -9210,7 +9179,7 @@ msgstr "khoản gửi không có thanh toán"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d sự kiện trong %s"
 
 #: 
@@ -9467,7 +9436,7 @@ msgstr "tùy chọn"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "người"
 
 #: 
@@ -11204,17 +11173,17 @@ msgstr "phải được cấu hình với một khóa mã hóa"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "Đã thêm %d người vào giỏ hàng."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "Đã thêm thành công %d người vào Gia đình được chọn."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "Đã thêm thành công %d người vào Nhóm được chọn."
 
 #: 

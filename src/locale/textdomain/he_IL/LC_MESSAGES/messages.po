@@ -3955,12 +3955,6 @@ msgstr "חיפוש"
 msgid "Field"
 msgstr "שדה"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "תלמידים רשומים"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4053,11 +4047,6 @@ msgstr "כיתת בית הספר של יום ראשון שעבורה אתה רו
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "קבוצת תלמידים רשומים"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "חודש יום השנה לחברות שעבורו אתה רוצה לקבל רשומות."
 
@@ -4090,11 +4079,6 @@ msgstr "הובטח השנה"
 #: 
 msgid "but not this year"
 msgstr "אבל לא השנה"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "שנת כספים."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4158,11 +4142,6 @@ msgstr "התחייבויות חסרות"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "התחייבות משפחה לפי שנת כספים"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "חיפוש מותאם אישית"
 
@@ -4175,11 +4154,6 @@ msgstr "מחזיר רשומות אנשים שהוקצה להם המאפיין ה
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "אנשים שיש להם יום הולדת בחודש מסוים"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "מצא תלמידים רשומים"
 
 #. Context: query_qry
 #: 
@@ -4205,11 +4179,6 @@ msgstr "השווה התחייבויות בין שתי שנות כספים"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "מצא אנשים שהתחייבו בשנה אחת אך לא באחרת"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "סיכום התחייבויות לפי שם משפחה עבור כל קרן לשנת הכספים שנבחרה"
 
 #. Context: query_qry
 #: 
@@ -7415,13 +7384,13 @@ msgstr "מספר מקסימלי של אירועי לוח שנה"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "בן/בת %d חודש"
 msgstr[1] "בן/בת %d חודשים"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d שנה"
 msgstr[1] "%d שנים"
 
@@ -9199,7 +9168,7 @@ msgstr "הפקדות ללא תשלומים"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "אירוע %d ב-%s"
 msgstr[1] "%d אירועים ב-%s"
 
@@ -9457,7 +9426,7 @@ msgstr "אופציונלי"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "אדם"
 msgstr[1] "אנשים"
 
@@ -11195,19 +11164,19 @@ msgstr "חייב להיות מוגדר עם מפתח הצפנה"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "אדם %d נוסף לסל."
 msgstr[1] "%d אנשים נוספו לסל."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "אדם %d נוסף בהצלחה למשפחה הנבחרת."
 msgstr[1] "%d אנשים נוספו בהצלחה למשפחה הנבחרת."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "אדם %d נוסף בהצלחה לקבוצה הנבחרת."
 msgstr[1] "%d אנשים נוספו בהצלחה לקבוצה הנבחרת."
 

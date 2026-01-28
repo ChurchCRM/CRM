@@ -1,9 +1,4 @@
 {
-  "Your ChurchCRM password has been changed": "",
-  "Password Reset Link": "",
-  "Reset Password": "",
-  "Reset your password": "",
-  "Sorry, we are unable to process your request at this point in time.": "",
   "Kiosk Manager": "",
   "Report an issue": "",
   "Enable New Kiosk Registration": "",
@@ -98,5 +93,10 @@
   "Members to cart": "",
   "OR Create a Group and add the CART in ONE ACTION": "",
   "Create Group + ADD Cart": "",
-  "Move Event": ""
+  "Move Event": "",
+  "Resize Event": "",
+  "Profile": "",
+  "Sign out": "",
+  "Sermon Text": "",
+  "Change Settings": ""
 }

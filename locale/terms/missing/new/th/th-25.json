@@ -1,10 +1,4 @@
 {
-  "Jul": "",
-  "Jun": "",
-  "Latest Note": "",
-  "Let's get your system set up and ready to use": "",
-  "List members eligible to vote based on giving history and membership criteria.": "",
-  "Location": "",
   "M": "",
   "Manage Funds": "",
   "Manage Users": "",
@@ -98,5 +92,11 @@
   "yes": "",
   "(Enter state/province for countries without predefined states)": "",
   "Available": "",
-  "Base URL configuration is invalid. Please check your Config.php file.": ""
+  "Base URL configuration is invalid. Please check your Config.php file.": "",
+  "Base URL is not configured in Config.php": "",
+  "ChurchCRM Supported Locales": "",
+  "Connect to your server via SSH, FTP, or your hosting control panel": "",
+  "Contact": "",
+  "Critical Configuration Error": "",
+  "Current $URL[0] value:": ""
 }

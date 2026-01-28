@@ -3960,12 +3960,6 @@ msgstr "Cari"
 msgid "Field"
 msgstr "Bidang"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Siswa terdaftar"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4059,11 +4053,6 @@ msgstr "Kelas sekolah minggu dimana Anda ingin catatan dikembalikan."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Kelompok siswa terdaftar"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Bulan peringatan keanggotaan yang ingin Anda rekam dikembalikan."
 
@@ -4096,11 +4085,6 @@ msgstr "Dijanjikan tahun ini"
 #: 
 msgid "but not this year"
 msgstr "tapi tidak tahun ini"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Tahun fiskal."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4164,11 +4148,6 @@ msgstr "Janji yang hilang"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Janji Keluarga menurut Tahun Anggaran"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "CustomSearch"
 
@@ -4181,11 +4160,6 @@ msgstr "Mengembalikan catatan orang yang diberikan properti yang diberikan."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Orang-orang yang berulang tahun di bulan tertentu"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Temukan siswa terdaftar"
 
 #. Context: query_qry
 #: 
@@ -4211,11 +4185,6 @@ msgstr "Bandingkan janji antara dua tahun fiskal"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Temukan orang yang berjanji satu tahun tetapi tidak yang lain"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Ringkasan janji dengan nama keluarga untuk setiap dana untuk tahun fiskal yang dipilih"
 
 #. Context: query_qry
 #: 
@@ -7415,12 +7384,12 @@ msgstr "Jumlah maksimum Acara Kalender"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d bulan"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d tahun"
 
 #: 
@@ -9199,7 +9168,7 @@ msgstr "setoran tanpa pembayaran"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d kegiatan di %s"
 
 #: 
@@ -9456,7 +9425,7 @@ msgstr "opsional"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "orang"
 
 #: 
@@ -11193,17 +11162,17 @@ msgstr "harus dikonfigurasi dengan kunci enkripsi"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Orang ditambahkan ke Keranjang."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d Orang berhasil ditambahkan ke Keluarga yang dipilih."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d Orang berhasil ditambahkan ke Grup yang dipilih."
 
 #: 

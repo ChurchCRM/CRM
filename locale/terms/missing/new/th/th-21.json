@@ -1,10 +1,4 @@
 {
-  "Download and Apply System Update": "",
-  "Download the latest release and apply it to your ChurchCRM installation.": "",
-  "Downloaded": "",
-  "Downloading latest release from GitHub...": "",
-  "Enter your login name and we will email you a link to reset your password.": "",
-  "Expected Hash": "",
   "Failed to create backup.": "",
   "Failed to download update package.": "",
   "Failed to refresh upgrade information from GitHub.": "",
@@ -98,5 +92,11 @@
   "Debug Info": "",
   "Document Root": "",
   "Email Configuration": "",
-  "Email Debug Info": ""
+  "Email Debug Info": "",
+  "Filesystem Permissions": "",
+  "Hostname": "",
+  "IP Address": "",
+  "Images Root": "",
+  "Import Demo Data": "",
+  "Include events and calendars": ""
 }

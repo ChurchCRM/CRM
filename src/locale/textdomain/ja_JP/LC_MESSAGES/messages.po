@@ -3920,12 +3920,6 @@ msgstr "検索"
 msgid "Field"
 msgstr "フィールド"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "登録済み学生"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4018,11 +4012,6 @@ msgstr "レコードを返す目的の日曜学校のクラス。"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "登録済み学生のグループ"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "レコードを返す目的のメンバーシップ記念月。"
 
@@ -4055,11 +4044,6 @@ msgstr "今年誓約"
 #: 
 msgid "but not this year"
 msgstr "ただし今年ではない"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "会計年度。"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4123,11 +4107,6 @@ msgstr "誓約が不足しています"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "会計年度別の家族誓約"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "カスタム検索"
 
@@ -4140,11 +4119,6 @@ msgstr "指定されたプロパティが割り当てられている人物レコ
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "特定の月に誕生日を持つ人物"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "登録済み学生を検索"
 
 #. Context: query_qry
 #: 
@@ -4170,11 +4144,6 @@ msgstr "2つの会計年度間で誓約を比較"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "1年誓約した人を検索しますが、別の年は誓約していません"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "選択した会計年度の各資金について、家族名別の誓約サマリー"
 
 #. Context: query_qry
 #: 

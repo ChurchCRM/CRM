@@ -1,9 +1,4 @@
 {
-  "Profile Image uploaded": "",
-  "payment(s)?": "",
-  "Please ensure this what you want to do.</p>": "",
-  "Confirm Deactivation": "",
-  "Confirm Activation": "",
   "Please confirm deactivation of family": "",
   "Please confirm activation of family": "",
   "Show neighbors with these classifications": "",
@@ -98,5 +93,10 @@
   "Notification": "",
   "Guardian(s) of": "",
   "A notification was triggered by the classroom teacher at": "",
-  "Please go to this location": ""
+  "Please go to this location": "",
+  "Your ChurchCRM password has been changed": "",
+  "Password Reset Link": "",
+  "Reset Password": "",
+  "Reset your password": "",
+  "Sorry, we are unable to process your request at this point in time.": ""
 }

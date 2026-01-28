@@ -1,10 +1,4 @@
 {
-  "Export to ChMeetings CSV": "",
-  "Exporting...": "",
-  "Family Listing": "",
-  "Invalid request data": "",
-  "Invalid status": "",
-  "Locked Users": "",
   "Person Listing": "",
   "Person(s) removed from cart": "",
   "Quick Settings": "",
@@ -107,5 +101,11 @@
   "Pledge Amount": "",
   "Pledge Dashboard": "",
   "Remaining": "",
-  "Remove this attendance count?": ""
+  "Remove this attendance count?": "",
+  "Select the type of record this property applies to": "",
+  "That fund name already exists.": "",
+  "Total Pledges": "",
+  "Track and manage pledge commitments by family and fund": "",
+  "View Properties": "",
+  "e.g., Visitors, Children": ""
 }

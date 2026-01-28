@@ -3959,12 +3959,6 @@ msgstr "Zoeken"
 msgid "Field"
 msgstr "Veld"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Geregistreerde leerlingen"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4058,11 +4052,6 @@ msgstr "De zondagsschoolklas waar u op wil zoeken"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Groep met geregistreerde leerlingen"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "De lidmaatschapsjubileummaand waarop u wilt zoeken"
 
@@ -4095,11 +4084,6 @@ msgstr "Dit jaar toegezegd"
 #: 
 msgid "but not this year"
 msgstr "maar niet dit jaar"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiscaal jaar"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4164,11 +4148,6 @@ msgstr "Ontbrekende toezeggingen"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Toezeggingen gezinnen per fiscaal jaar"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Aangepaste zoekopdracht"
 
@@ -4181,11 +4160,6 @@ msgstr "Retourneert persoonsrecords waaraan de opgegeven eigenschap is toegeweze
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Personen met een verjaardag in een gegeven maand"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Vind geregistreerde leden"
 
 #. Context: query_qry
 #: 
@@ -4211,11 +4185,6 @@ msgstr "Toezeggingen tussen twee boekjaren vergelijken"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Zoek mensen die het ene jaar hebben geschonken, maar het andere niet"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Giften op achternaam voor elk doel van het geselecteerde fiscale jaar"
 
 #. Context: query_qry
 #: 
@@ -7418,13 +7387,13 @@ msgstr "Maximaal aantal agendagebeurtenissen"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d maand oud"
 msgstr[1] "%d maanden oud"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d jaar oud"
 msgstr[1] "%d jaar oud"
 
@@ -9203,7 +9172,7 @@ msgstr "storting(en) zonder betalingen"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d gebeurtenis in %s"
 msgstr[1] "%d gebeurtenissen in %s"
 
@@ -9461,7 +9430,7 @@ msgstr "optioneel"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "persoon"
 msgstr[1] "personen"
 
@@ -11199,19 +11168,19 @@ msgstr "moet worden geconfigureerd met een versleutelingssleutel"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d persoon aan winkelwagen toegevoegd."
 msgstr[1] "%d personen aan winkelwagen toegevoegd."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde familie."
 msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde familie."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde groep."
 msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde groep."
 
