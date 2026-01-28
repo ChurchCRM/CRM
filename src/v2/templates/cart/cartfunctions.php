@@ -24,12 +24,9 @@ use ChurchCRM\dto\SystemURLs;
     <a href="<?= SystemURLs::getRootPath() . "/CartToEvent.php"?>" class="btn btn-app bg-info"><i
         class="fa-solid fa-ticket-alt fa-3x"></i><br><?= gettext('Check In to Event') ?></a>
 
-    <?php if (AuthenticationManager::getCurrentUser()->isCSVExport()) {
-        ?>
-      <a href="<?= SystemURLs::getRootPath() . "/CSVExport.php?Source=cart" ?>" class="btn btn-app bg-warning"><i
-          class="fa-solid fa-file-csv fa-3x"></i><br><?= gettext('CSV Export') ?></a>
-    <?php }
-    ?>
+    <a href="<?= SystemURLs::getRootPath() . "/CSVExport.php?Source=cart" ?>" class="btn btn-app bg-warning"><i
+        class="fa-solid fa-file-csv fa-3x"></i><br><?= gettext('CSV Export') ?></a>
+
     <a href="<?= SystemURLs::getRootPath() . "/MapUsingGoogle.php?GroupID=0"?>" class="btn btn-app bg-purple"><i
         class="fa-solid fa-map-marker fa-3x"></i><br><?= gettext('Map Cart') ?></a>
     <a href="<?= SystemURLs::getRootPath() . "/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36"?>" class="btn btn-app bg-primary"><i
