@@ -8,6 +8,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
+use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -290,20 +291,23 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         
         $iEventStatus = $event->getInActive();
 
-        $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='" . (int)$iEventID . "' ORDER BY evtcnt_countid ASC";
-
-        $cvOpps = RunQuery($sSQL);
-        $iNumCounts = mysqli_num_rows($cvOpps);
+        // Get event attendance counts using Propel ORM
+        $eventCounts = EventCountsQuery::create()
+            ->filterByEvtcntEventid($iEventID)
+            ->orderByEvtcntCountid()
+            ->find();
+        
+        $iNumCounts = $eventCounts->count();
         $nCnts = $iNumCounts;
 
         if ($iNumCounts) {
-            for ($c = 0; $c < $iNumCounts; $c++) {
-                $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
-                extract($aRow);
-                $aCountID[$c] = $evtcnt_countid;
-                $aCountName[$c] = $evtcnt_countname;
-                $aCount[$c] = $evtcnt_countcount;
-                $sCountNotes = $evtcnt_notes;
+            $c = 0;
+            foreach ($eventCounts as $countRow) {
+                $aCountID[$c] = $countRow->getEvtcntCountid();
+                $aCountName[$c] = $countRow->getEvtcntCountname();
+                $aCount[$c] = $countRow->getEvtcntCountcount();
+                $sCountNotes = $countRow->getEvtcntNotes();
+                $c++;
             }
         }
     }
