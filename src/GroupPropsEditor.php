@@ -164,7 +164,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
                     while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
                         extract($rowPropList); ?>
                         <tr>
-                            <td><?= $prop_Name ?>: </td>
+                            <td><?= InputUtils::escapeHTML($prop_Name) ?>: </td>
                             <td>
                                 <?php
                                 $currentFieldData = trim($aPersonProps[$prop_Field]);
@@ -176,10 +176,10 @@ if (mysqli_num_rows($rsPropList) === 0) {
                                 formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
                                 if (array_key_exists($prop_Field, $aPropErrors)) {
-                                    echo '<span class="text-error">' . $aPropErrors[$prop_Field] . '</span>';
+                                    echo '<span class="text-error">' . InputUtils::escapeHTML($aPropErrors[$prop_Field]) . '</span>';
                                 } ?>
                             </td>
-                            <td><?= $prop_Description ?></td>
+                            <td><?= InputUtils::escapeHTML($prop_Description) ?></td>
                         </tr>
                     <?php
                     } ?>

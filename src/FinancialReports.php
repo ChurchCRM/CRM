@@ -131,8 +131,8 @@ if ($sReportType == '') {
                     <?php
                     while ($aRow = mysqli_fetch_array($rsClassifications)) {
                         extract($aRow);
-                        echo '<option value="' . $lst_OptionID . '"';
-                        echo '>' . $lst_OptionName . '&nbsp;';
+                        echo '<option value="' . (int)$lst_OptionID . '"';
+                        echo '>' . InputUtils::escapeHTML($lst_OptionName) . '&nbsp;';
                     } ?>
                     </select>
                 </td>
@@ -176,11 +176,11 @@ if ($sReportType == '') {
         }
         while ($aRow = mysqli_fetch_array($rsFamilies)) {
             extract($aRow);
-            echo "<option value=$fam_ID>$fam_Name";
+            echo '<option value="' . (int)$fam_ID . '">' . InputUtils::escapeHTML($fam_Name);
             if (array_key_exists($fam_ID, $aHead)) {
-                echo ', ' . $aHead[$fam_ID];
+                echo ', ' . InputUtils::escapeHTML($aHead[$fam_ID]);
             }
-            echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+            echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
         }
 
         echo '</select></td></tr>'; ?>
@@ -235,7 +235,7 @@ if ($sReportType == '') {
         }
         while ($aRow = mysqli_fetch_array($rsDeposits)) {
             extract($aRow);
-            echo "<option value=$dep_ID>$dep_ID &nbsp;$dep_Date &nbsp;$dep_Type ";
+            echo '<option value="' . (int)$dep_ID . '">' . (int)$dep_ID . ' &nbsp;' . InputUtils::escapeHTML($dep_Date) . ' &nbsp;' . InputUtils::escapeHTML($dep_Type) . ' ';
         }
         echo '</select></td></tr>';
     }
@@ -250,7 +250,7 @@ if ($sReportType == '') {
         <?php
         while ($aRow = mysqli_fetch_array($rsFunds)) {
             extract($aRow);
-            echo "<option value=$fun_ID>$fun_Name";
+            echo '<option value="' . (int)$fun_ID . '">' . InputUtils::escapeHTML($fun_Name);
             if ($fun_Active == 'false') {
                 echo ' &nbsp; INACTIVE';
             }

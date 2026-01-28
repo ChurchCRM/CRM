@@ -202,12 +202,12 @@ require_once __DIR__ . '/Include/Header.php';
                                 $rsPeople = RunQuery($sPeopleSQL);
                                 while ($aRow = mysqli_fetch_array($rsPeople)) {
                                     extract($aRow);
-                                    echo '<option value="' . $per_ID . '"';
+                                    echo '<option value="' . (int)$per_ID . '"';
                                     if ($iDonor == $per_ID) {
                                         echo ' selected';
                                     }
-                                    echo '>' . $per_LastName . ', ' . $per_FirstName;
-                                    echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                                    echo '>' . InputUtils::escapeHTML($per_LastName) . ', ' . InputUtils::escapeHTML($per_FirstName);
+                                    echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
                                 }
                                 ?>
                             </select>
@@ -253,11 +253,11 @@ require_once __DIR__ . '/Include/Header.php';
                                 $rsBuyers = RunQuery($sPaddleSQL);
                                 while ($aRow = mysqli_fetch_array($rsBuyers)) {
                                     extract($aRow);
-                                    echo '<option value="' . $pn_per_ID . '"';
+                                    echo '<option value="' . (int)$pn_per_ID . '"';
                                     if ($iBuyer == $pn_per_ID) {
                                         echo ' selected';
                                     }
-                                    echo '>' . $pn_Num . ': ' . $buyerFirstName . ' ' . $buyerLastName;
+                                    echo '>' . (int)$pn_Num . ': ' . InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName);
                                 }
                             }
                             ?>

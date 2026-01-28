@@ -155,18 +155,18 @@ require_once __DIR__ . '/Include/Header.php';
             }
             while ($aRow = mysqli_fetch_array($rsFamilies)) {
                 extract($aRow);
-                echo '<option value="' . $fam_ID . '"';
+                echo '<option value="' . (int)$fam_ID . '"';
                 if ($fam_ID == $iFamilyID) {
                     echo ' selected';
                 }
-                echo '>' . $fam_Name;
+                echo '>' . InputUtils::escapeHTML($fam_Name);
                 if ($aHead[$fam_ID]) {
-                    echo ', ' . $aHead[$fam_ID];
+                    echo ', ' . InputUtils::escapeHTML($aHead[$fam_ID]);
                 }
                 if ($fam_ID == $iFamilyID) {
                     echo ' -- ' . gettext('CURRENT FAMILY WITH DONATIONS');
                 } else {
-                    echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                    echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
                 }
             }
             echo '</select><br><br>';
@@ -216,16 +216,16 @@ require_once __DIR__ . '/Include/Header.php';
 
                     ?>
                     <tr>
-                        <td><?= $plg_PledgeOrPayment ?>&nbsp;</td>
-                        <td><?= $fundName ?>&nbsp;</td>
+                        <td><?= InputUtils::escapeHTML($plg_PledgeOrPayment) ?>&nbsp;</td>
+                        <td><?= InputUtils::escapeHTML($fundName) ?>&nbsp;</td>
                         <td><?= MakeFYString($plg_FYID ? (int) $plg_FYID : null) ?>&nbsp;</td>
-                        <td><?= $plg_date ?>&nbsp;</td>
-                        <td><?= $plg_amount ?>&nbsp;</td>
-                        <td><?= $plg_schedule ?>&nbsp;</td>
-                        <td><?= $plg_method ?>&nbsp;</td>
-                        <td><?= $plg_comment ?>&nbsp;</td>
-                        <td><?= $plg_DateLastEdited ?>&nbsp;</td>
-                        <td><?= $EnteredFirstName . ' ' . $EnteredLastName ?>&nbsp;</td>
+                        <td><?= InputUtils::escapeHTML($plg_date) ?>&nbsp;</td>
+                        <td><?= InputUtils::escapeHTML($plg_amount) ?>&nbsp;</td>
+                        <td><?= InputUtils::escapeHTML($plg_schedule) ?>&nbsp;</td>
+                        <td><?= InputUtils::escapeHTML($plg_method) ?>&nbsp;</td>
+                        <td><?= InputUtils::escapeHTML($plg_comment) ?>&nbsp;</td>
+                        <td><?= InputUtils::escapeHTML($plg_DateLastEdited) ?>&nbsp;</td>
+                        <td><?= InputUtils::escapeHTML($EnteredFirstName) . ' ' . InputUtils::escapeHTML($EnteredLastName) ?>&nbsp;</td>
                     </tr>
             <?php
                 }
@@ -238,15 +238,15 @@ require_once __DIR__ . '/Include/Header.php';
                 echo gettext('(this action cannot be undone)') . '</div>';
                 echo '<div>';
                 echo '<strong>' . gettext('Family Name') . ':</strong>';
-                echo '&nbsp;' . $fam_Name;
+                echo '&nbsp;' . InputUtils::escapeHTML($fam_Name);
                 echo '</div><br/>';
                 echo '<div><strong>' . gettext('Family Members:') . '</strong><ul>';
                 //List Family Members
-                $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . $iFamilyID;
+                $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID = ' . (int)$iFamilyID;
                 $rsPerson = RunQuery($sSQL);
                 while ($aRow = mysqli_fetch_array($rsPerson)) {
                     extract($aRow);
-                    echo '<li>' . $per_FirstName . ' ' . $per_LastName . '</li>';
+                    echo '<li>' . InputUtils::escapeHTML($per_FirstName) . ' ' . InputUtils::escapeHTML($per_LastName) . '</li>';
                     RunQuery($sSQL);
                 }
                 echo '</ul></div>';
