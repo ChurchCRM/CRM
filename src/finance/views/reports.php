@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
@@ -20,9 +19,6 @@ if ($iFYMonth === 1) {
         $fyLabel = ($currentYear - 1) . '/' . substr($currentYear, 2, 2);
     }
 }
-
-$bCSVAdminOnly = SystemConfig::getBooleanValue('bCSVAdminOnly');
-$isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
 ?>
 
@@ -245,9 +241,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             <h6><i class="fa-solid fa-download text-success"></i> <?= gettext('Export Options') ?></h6>
                             <p class="small text-muted">
                                 <?= gettext('Most reports can be exported as PDF for printing or CSV for spreadsheet analysis.') ?>
-                                <?php if ($bCSVAdminOnly && !$isAdmin): ?>
-                                <span class="text-warning"><?= gettext('CSV export is restricted to administrators.') ?></span>
-                                <?php endif; ?>
                             </p>
                         </div>
                         <div class="col-md-4">

@@ -101,7 +101,6 @@ class   SystemConfig
             'sDirRoleChild'                        => new ConfigItem(8, 'sDirRoleChild', 'choice', '3', gettext('These are the family role numbers designated as child'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
             'iSessionTimeout'                      => new ConfigItem(9, 'iSessionTimeout', 'number', '3600', gettext("Session timeout length in seconds\nSet to zero to disable session timeouts.")),
             'aFinanceQueries'                      => new ConfigItem(10, 'aFinanceQueries', 'text', '28,30', gettext('Queries for which user must have finance permissions to use') . ':'),
-            'bCSVAdminOnly'                        => new ConfigItem(11, 'bCSVAdminOnly', 'boolean', '1', gettext('Should only administrators have access to the CSV export system and directory report?')),
             'iMinPasswordLength'                   => new ConfigItem(13, 'iMinPasswordLength', 'number', '6', gettext('Minimum length a user may set their password to')),
             'iMinPasswordChange'                   => new ConfigItem(14, 'iMinPasswordChange', 'number', '4', gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\nSet to zero to disable this feature")),
             'aDisallowedPasswords'                 => new ConfigItem(15, 'aDisallowedPasswords', 'text', 'password,god,jesus,church,christian', gettext('A comma-separated list of disallowed (too obvious) passwords.')),
@@ -274,7 +273,7 @@ class   SystemConfig
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword'],
             gettext('Two-Factor Authentication') => ['bEnable2FA', 'bRequire2FA', 's2FAApplicationName', 'sTwoFASecretKey'],
-            gettext('System Settings')    => ['sLogLevel', 'bCSVAdminOnly', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'bAllowPrereleaseUpgrade'],
+            gettext('System Settings')    => ['sLogLevel', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'bAllowPrereleaseUpgrade'],
         ];
     }
 

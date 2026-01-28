@@ -6,10 +6,8 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\FinancialService;
 
 // Security
@@ -60,11 +58,6 @@ if (!$detail_level) {
 }
 if (!$output) {
     $output = 'pdf';
-}
-
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::securityRedirect('Admin');
 }
 
 // Normalize date range

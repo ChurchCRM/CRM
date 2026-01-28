@@ -326,10 +326,8 @@ if ($sReportType == '') {
         echo '<td class=TextColumnWithBottomBorder><input name=RequireDonationYears type=text value=0 size=5></td></tr>';
     }
 
-    if (
-        ((AuthenticationManager::getCurrentUser()->isAdmin() && $bCSVAdminOnly) || !$bCSVAdminOnly)
-        && (in_array($sReportType, ['Pledge Summary', 'Giving Report', 'Individual Deposit Report', 'Advanced Deposit Report', 'Zero Givers']))
-    ) {
+    // Show CSV output option for reports that support it
+    if (in_array($sReportType, ['Pledge Summary', 'Giving Report', 'Individual Deposit Report', 'Advanced Deposit Report', 'Zero Givers'])) {
         echo '<tr><td class=LabelColumn>' . gettext('Output Method:') . '</td>';
         echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>PDF";
         echo " <input name=output type=radio value='csv'>" . gettext('CSV') . '</tr>';

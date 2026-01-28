@@ -71,6 +71,6 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
         $userId = $args['userId'];
         $user = UserQuery::create()->findPk($userId);
 
-        return SlimUtils::renderJSON($response, ['user' => $user->getName(), 'userId' => $user->getId(), 'addEvent' => $user->isAddEvent(), 'csvExport' => $user->isCSVExport()]);
+        return SlimUtils::renderJSON($response, ['user' => $user->getName(), 'userId' => $user->getId(), 'addEvent' => $user->isAddEvent()]);
     });
 })->add(AdminRoleAuthMiddleware::class)->add(UserMiddleware::class);

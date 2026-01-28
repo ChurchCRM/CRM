@@ -6,10 +6,8 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\FinancialService;
 
 // Security
@@ -24,11 +22,6 @@ $sDateStart = InputUtils::legacyFilterInput($_POST['DateStart'], 'date');
 $sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
 $iDepID = InputUtils::legacyFilterInput($_POST['deposit'], 'int');
 $iMinimum = InputUtils::legacyFilterInput($_POST['minimum'], 'int');
-
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::securityRedirect('Admin');
-}
 
 // Prepare filter arrays
 $classList = [];

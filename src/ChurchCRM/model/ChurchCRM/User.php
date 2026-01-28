@@ -190,16 +190,6 @@ class User extends BaseUser
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
     }
 
-    public function isCSVExportEnabled(): bool
-    {
-        return $this->isCSVExport();
-    }
-
-    public function isCSVExport(): bool
-    {
-        return $this->isAdmin() || $this->isEnabledSecurity('bExportCSV');
-    }
-
     public function isEmailEnabled(): bool
     {
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
