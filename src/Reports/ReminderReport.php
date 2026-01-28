@@ -6,10 +6,8 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
@@ -24,11 +22,6 @@ $_SESSION['idefaultFY'] = $iFYID;
 $output = InputUtils::legacyFilterInput($_POST['output']);
 $pledge_filter = InputUtils::legacyFilterInput($_POST['pledge_filter']);
 $only_owe = InputUtils::legacyFilterInput($_POST['only_owe']);
-
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly')) {
-    RedirectUtils::securityRedirect('Admin');
-}
 
 if (!empty($_POST['classList'])) {
     $classList = $_POST['classList'];

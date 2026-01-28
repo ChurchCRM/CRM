@@ -6,10 +6,8 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Service\FinancialService;
 
 // Security
@@ -22,11 +20,6 @@ $sDateEnd = InputUtils::legacyFilterInput($_POST['DateEnd'], 'date');
 
 $letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
 $remittance = InputUtils::legacyFilterInput($_POST['remittance']);
-
-// If CSVAdminOnly option is enabled and user is not admin, redirect to the menu.
-if (!AuthenticationManager::getCurrentUser()->isAdmin() && SystemConfig::getValue('bCSVAdminOnly') && $output != 'pdf') {
-    RedirectUtils::securityRedirect('Admin');
-}
 
 // Normalize date range
 $today = date('Y-m-d');
