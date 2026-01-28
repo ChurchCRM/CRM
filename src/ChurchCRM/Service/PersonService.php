@@ -101,8 +101,8 @@ class PersonService
     public function addVolunteerOpportunity(int $personId, int $opportunityId): bool
     {
         $assignment = new PersonVolunteerOpportunity();
-        $assignment->setPerID($personId);
-        $assignment->setVolID($opportunityId);
+        $assignment->setPersonId($personId);
+        $assignment->setVolunteerOpportunityId($opportunityId);
 
         return (bool)$assignment->save();
     }
@@ -113,8 +113,8 @@ class PersonService
     public function removeVolunteerOpportunity(int $personId, int $opportunityId): void
     {
         PersonVolunteerOpportunityQuery::create()
-            ->filterByPerID($personId)
-            ->filterByVolID($opportunityId)
+            ->filterByPersonId($personId)
+            ->filterByVolunteerOpportunityId($opportunityId)
             ->delete();
     }
 
