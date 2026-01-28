@@ -857,12 +857,12 @@ $bOkToEdit = (
                                         $r2p_Value = '';
                                         extract($aRow); ?>
                                         <tr>
-                                            <td><span class="badge badge-info"><?= $prt_Name ?></span></td>
-                                            <td><strong><?= $pro_Name ?></strong></td>
+                                            <td><span class="badge badge-info"><?= InputUtils::escapeHTML($prt_Name) ?></span></td>
+                                            <td><strong><?= InputUtils::escapeHTML($pro_Name) ?></strong></td>
                                             <td><?= InputUtils::escapeHTML($r2p_Value) ?></td>
                                             <?php if ($bOkToEdit) { ?>
                                                 <td class="text-right">
-                                                    <button class="btn btn-sm btn-danger remove-property-btn" data-property_id="<?= $pro_ID ?>" title="<?= gettext('Remove Property') ?>">
+                                                    <button class="btn btn-sm btn-danger remove-property-btn" data-property_id="<?= (int)$pro_ID ?>" title="<?= gettext('Remove Property') ?>">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>
                                                 </td>

@@ -441,8 +441,8 @@ require_once __DIR__ . '/Include/Header-Short.php';
 
             //Display the row
             echo '<tr>';
-            echo '<td class="align-top">' . gettext($pro_Name) . '&nbsp;</td>';
-            echo '<td class="align-top">' . $r2p_Value . '&nbsp;</td>';
+            echo '<td class="align-top">' . InputUtils::escapeHTML($pro_Name) . '&nbsp;</td>';
+            echo '<td class="align-top">' . InputUtils::escapeHTML($r2p_Value) . '&nbsp;</td>';
 
             echo '</tr>';
 
@@ -457,11 +457,11 @@ require_once __DIR__ . '/Include/Header-Short.php';
         // Loop through all the notes
         while ($aRow = mysqli_fetch_array($rsNotes)) {
             extract($aRow);
-            echo '<p class="card card-body")>' . $nte_Text . '</p>';
+            echo '<p class="card card-body")>' . InputUtils::escapeHTML($nte_Text) . '</p>';
             echo '<span class="SmallText">' . gettext('Entered') . ': ' . FormatDate($nte_DateEntered, true) . '</span><br>';
 
             if (strlen($nte_DateLastEdited)) {
-                echo '<span class="SmallText">' . gettext('Last Edited') . FormatDate($nte_DateLastEdited, true) . ' ' . gettext('by') . ' ' . $EditedFirstName . ' ' . $EditedLastName . '</span><br>';
+                echo '<span class="SmallText">' . gettext('Last Edited') . FormatDate($nte_DateLastEdited, true) . ' ' . gettext('by') . ' ' . InputUtils::escapeHTML($EditedFirstName) . ' ' . InputUtils::escapeHTML($EditedLastName) . '</span><br>';
             }
         }
     }
