@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 // Security
@@ -92,8 +93,8 @@ while ($aRow = mysqli_fetch_array($rsList)) {
     $person->save();
 
     echo '<br><br><br>';
-    echo "$per_FirstName $per_LastName (per_ID = $per_ID) is now part of the ";
-    echo "$per_LastName Family (fam_ID = $iFamilyID)<br>";
+    echo InputUtils::escapeHTML($per_FirstName) . ' ' . InputUtils::escapeHTML($per_LastName) . ' (per_ID = ' . (int)$per_ID . ') is now part of the ';
+    echo InputUtils::escapeHTML($per_LastName) . ' Family (fam_ID = ' . (int)$iFamilyID . ')<br>';
     echo '*****************************************';
 
     if (!$bDoAll) {

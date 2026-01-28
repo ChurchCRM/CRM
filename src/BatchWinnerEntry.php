@@ -78,7 +78,7 @@ for ($row = 0; $row < 10; $row += 1) {
         $di_ID = $itemArr['di_ID'];
         $di_Item = $itemArr['di_Item'];
         $di_title = $itemArr['di_title'];
-        echo '<option value="' . $di_ID . '">' . $di_Item . ' ' . $di_title . "</option>\n";
+        echo '<option value="' . (int)$di_ID . '">' . InputUtils::escapeHTML($di_Item) . ' ' . InputUtils::escapeHTML($di_title) . "</option>\n";
     }
     echo "</select>\n";
     echo '</td>';
@@ -93,7 +93,7 @@ for ($row = 0; $row < 10; $row += 1) {
         $pn_Num = $paddleArr['pn_Num'];
         $buyerFirstName = $paddleArr['buyerFirstName'];
         $buyerLastName = $paddleArr['buyerLastName'];
-        echo '<option value="' . $pn_per_ID . '">' . $pn_Num . ' ' . $buyerFirstName . ' ' . $buyerLastName . "</option>\n";
+        echo '<option value="' . (int)$pn_per_ID . '">' . (int)$pn_Num . ' ' . InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName) . "</option>\n";
     }
     echo "</select>\n";
     echo '</td>';

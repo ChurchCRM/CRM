@@ -34,7 +34,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 echo '<option value="0">' . gettext('None') . '</option>';
                                 while ($aRow = mysqli_fetch_array($rsGroups)) {
                                     extract($aRow);
-                                    echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
+                                    echo '<option value="' . (int)$grp_ID . '">' . InputUtils::escapeHTML($grp_Name) . '</option>';
                                 } ?>
                             </select>
                         </div>
@@ -122,7 +122,7 @@ require_once __DIR__ . '/Include/Header.php';
                                     if (mysqli_num_rows($rsPropFields) > 0) {
                                         while ($aRow = mysqli_fetch_array($rsPropFields)) {
                                             extract($aRow);
-                                            echo '<input type="checkbox" Name="' . $prop_Field . 'enable" value="1">' . $prop_Name . '<br>';
+                                            echo '<input type="checkbox" Name="' . InputUtils::escapeAttribute($prop_Field) . 'enable" value="1">' . InputUtils::escapeHTML($prop_Name) . '<br>';
                                         }
                                     } else {
                                         echo gettext('None');

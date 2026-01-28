@@ -201,7 +201,7 @@ require_once __DIR__ . '/Include/Header.php';
                     ?>
                     <tr>
                         <td>
-                            <a href="DonatedItemEditor.php?DonatedItemID=<?= $di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . $iFundRaiserID ?>"><?= $di_Item ?></a>
+                            <a href="DonatedItemEditor.php?DonatedItemID=<?= (int)$di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . (int)$iFundRaiserID ?>"><?= InputUtils::escapeHTML($di_Item) ?></a>
                         </td>
                         <td>
                             <?php if ($di_multibuy) {
@@ -209,32 +209,32 @@ require_once __DIR__ . '/Include/Header.php';
                             } ?>&nbsp;
                         </td>
                         <td>
-                            <?= $donorFirstName . ' ' . $donorLastName ?>&nbsp;
+                            <?= InputUtils::escapeHTML($donorFirstName) . ' ' . InputUtils::escapeHTML($donorLastName) ?>&nbsp;
                         </td>
                         <td>
                             <?php if ($di_multibuy) {
                                 echo gettext('Multiple');
                             } else {
-                                echo $buyerFirstName . ' ' . $buyerLastName;
+                                echo InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName);
                             } ?>&nbsp;
                         </td>
                         <td>
-                            <?= $di_title ?>&nbsp;
+                            <?= InputUtils::escapeHTML($di_title) ?>&nbsp;
                         </td>
                         <td align=center>
-                            <?= $di_sellprice ?>&nbsp;
+                            <?= InputUtils::escapeHTML($di_sellprice) ?>&nbsp;
                         </td>
                         <td align=center>
-                            <?= $di_estprice ?>&nbsp;
+                            <?= InputUtils::escapeHTML($di_estprice) ?>&nbsp;
                         </td>
                         <td align=center>
-                            <?= $di_materialvalue ?>&nbsp;
+                            <?= InputUtils::escapeHTML($di_materialvalue) ?>&nbsp;
                         </td>
                         <td align=center>
-                            <?= $di_minimum ?>&nbsp;
+                            <?= InputUtils::escapeHTML($di_minimum) ?>&nbsp;
                         </td>
                         <td>
-                            <a href="DonatedItemDelete.php?DonatedItemID=<?= $di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . $iFundRaiserID ?>">Delete</a>
+                            <a href="DonatedItemDelete.php?DonatedItemID=<?= (int)$di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . (int)$iFundRaiserID ?>">Delete</a>
                         </td>
                     </tr>
                     <?php

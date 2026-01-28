@@ -169,12 +169,12 @@ require_once __DIR__ . '/Include/Header.php';
                                                     $rsPeople = RunQuery($sPeopleSQL);
                                                     while ($aRow = mysqli_fetch_array($rsPeople)) {
                                                         extract($aRow);
-                                                        echo '<option value="' . $per_ID . '"';
+                                                        echo '<option value="' . (int)$per_ID . '"';
                                                         if ($iPerID == $per_ID) {
                                                             echo ' selected';
                                                         }
-                                                        echo '>' . $per_LastName . ', ' . $per_FirstName;
-                                                        echo ' ' . FormatAddressLine($fam_Address1, $fam_City, $fam_State);
+                                                        echo '>' . InputUtils::escapeHTML($per_LastName) . ', ' . InputUtils::escapeHTML($per_FirstName);
+                                                        echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
                                                     }
                                                     ?>
 
@@ -200,8 +200,8 @@ require_once __DIR__ . '/Include/Header.php';
                                                 $mb_count = 0;
                                             } ?>
                                             <tr>
-                                                <td class="LabelColumn"><?= $di_title ?></td>
-                                                <td class="TextColumn"><input type="text" name="MBItem<?= $di_ID ?>" id="MBItem<?= $di_ID ?>" value="<?= $mb_count ?>"></td>
+                                                <td class="LabelColumn"><?= InputUtils::escapeHTML($di_title) ?></td>
+                                                <td class="TextColumn"><input type="text" name="MBItem<?= (int)$di_ID ?>" id="MBItem<?= (int)$di_ID ?>" value="<?= (int)$mb_count ?>"></td>
                                             </tr>
                                             <?php
                                         }
