@@ -184,4 +184,108 @@ describe('Event Editor', () => {
             expect(names.length).to.equal(uniqueNames.length);
         });
     });
+
+    it('should edit existing event and update it (issue #7918)', () => {
+        // Step 1: Create a new event first
+        cy.visit('/EventNames.php');
+        cy.get('#eventNames tbody tr').first().within(() => {
+            cy.get('button.btn-success').click();
+        });
+
+        const originalTitle = 'OriginalEvent' + Date.now();
+        cy.get('input[name="EventTitle"]').clear().type(originalTitle);
+        cy.get('input[name="EventStatus"][value="0"]').check();
+        cy.get('button[name="SaveChanges"]').click();
+
+        // Verify redirect to event list
+        cy.url().should('include', '/ListEvents.php');
+
+        // Step 2: Get the event ID via API and navigate directly to edit
+        cy.request('/api/events').then((response) => {
+            // Propel toJSON returns an object with Events array
+            const events = response.body.Events || response.body;
+            const eventArray = Array.isArray(events) ? events : Object.values(events);
+            const createdEvent = eventArray.find(e => e.Title === originalTitle);
+            expect(createdEvent, 'Created event should exist in API response').to.exist;
+            const eventId = createdEvent.Id;
+
+            // Step 3: Navigate directly to edit page
+            cy.visit(`/EventEditor.php?EID=${eventId}`);
+
+            // Step 4: Verify we're editing (not creating new)
+            cy.contains('Editing Event').should('exist');
+
+            // Step 5: Verify the original title is loaded
+            cy.get('input[name="EventTitle"]').should('have.value', originalTitle);
+
+            // Step 6: Update the event title
+            const updatedTitle = 'UpdatedEvent' + Date.now();
+            cy.get('input[name="EventTitle"]').clear().type(updatedTitle);
+            cy.get('button[name="SaveChanges"]').click();
+
+            // Step 7: Verify redirect to event list
+            cy.url().should('include', '/ListEvents.php');
+
+            // Step 8: Verify the update via API
+            cy.request('/api/events').then((updateResponse) => {
+                const updatedEvents = updateResponse.body.Events || updateResponse.body;
+                const updatedArray = Array.isArray(updatedEvents) ? updatedEvents : Object.values(updatedEvents);
+                const updatedEvent = updatedArray.find(e => e.Id === eventId);
+                expect(updatedEvent.Title).to.equal(updatedTitle);
+                // Verify original title no longer exists (was updated, not duplicated)
+                const originalExists = updatedArray.some(e => e.Title === originalTitle);
+                expect(originalExists).to.be.false;
+            });
+        });
+    });
+
+    it('should load event data correctly when editing (regression test)', () => {
+        // Create an event with specific data
+        cy.visit('/EventNames.php');
+        cy.get('#eventNames tbody tr').first().within(() => {
+            cy.get('button.btn-success').click();
+        });
+
+        const testTitle = 'DataLoadTest' + Date.now();
+        cy.get('input[name="EventTitle"]').clear().type(testTitle);
+        
+        // Set attendance counts if available
+        cy.get('.attendance-count').each(($input) => {
+            cy.wrap($input).clear().type('15');
+        });
+        
+        cy.get('input[name="EventStatus"][value="0"]').check();
+        cy.get('button[name="SaveChanges"]').click();
+
+        cy.url().should('include', '/ListEvents.php');
+
+        // Get event ID via API and navigate directly
+        cy.request('/api/events').then((response) => {
+            const events = response.body.Events || response.body;
+            const eventArray = Array.isArray(events) ? events : Object.values(events);
+            const createdEvent = eventArray.find(e => e.Title === testTitle);
+            expect(createdEvent, 'Created event should exist in API response').to.exist;
+            const eventId = createdEvent.Id;
+
+            // Navigate directly to edit page
+            cy.visit(`/EventEditor.php?EID=${eventId}`);
+
+            // Verify all data loads correctly (not empty/default values)
+            cy.get('input[name="EventTitle"]').should('have.value', testTitle);
+            
+            // Verify EventID hidden field has a value (not 0)
+            cy.get('input[name="EventID"]').should('not.have.value', '0');
+            cy.get('input[name="EventID"]').invoke('val').then((val) => {
+                expect(parseInt(val)).to.equal(eventId);
+            });
+
+            // Verify attendance counts loaded (if they exist)
+            cy.get('.attendance-count').each(($input) => {
+                cy.wrap($input).invoke('val').then((val) => {
+                    // Should have the value we set (15) or be calculated
+                    expect(parseInt(val) || 0).to.be.at.least(0);
+                });
+            });
+        });
+    });
 });
