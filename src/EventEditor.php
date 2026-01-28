@@ -252,28 +252,45 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         $iErrors++;
         LoggerUtils::getAppLogger()->warning('Event not found: ' . $iEventID);
     } else {
-        $aRow = array_merge($event->toArray(), $event->getEventType()->toArray());
-        extract($aRow);
+        // Use Propel getters instead of extract() to avoid field name mismatches
+        $iEventID = $event->getId();
+        $iTypeID = $event->getType();
+        $sTypeName = $event->getEventType()->getName();
+        $sEventTitle = $event->getTitle();
+        $sEventDesc = $event->getDesc();
+        $sEventText = $event->getText();
+        
+        // Parse start date/time
+        $eventStart = $event->getStart();
+        if ($eventStart instanceof \DateTime) {
+            $sEventStartDate = $eventStart->format('Y-m-d');
+            $iEventStartHour = $eventStart->format('H');
+            $iEventStartMins = $eventStart->format('i');
+        } else {
+            $aStartTokens = explode(' ', (string)$eventStart);
+            $sEventStartDate = $aStartTokens[0];
+            $aStartTimeTokens = explode(':', $aStartTokens[1] ?? '00:00');
+            $iEventStartHour = $aStartTimeTokens[0];
+            $iEventStartMins = $aStartTimeTokens[1];
+        }
+        
+        // Parse end date/time
+        $eventEnd = $event->getEnd();
+        if ($eventEnd instanceof \DateTime) {
+            $sEventEndDate = $eventEnd->format('Y-m-d');
+            $iEventEndHour = $eventEnd->format('H');
+            $iEventEndMins = $eventEnd->format('i');
+        } else {
+            $aEndTokens = explode(' ', (string)$eventEnd);
+            $sEventEndDate = $aEndTokens[0];
+            $aEndTimeTokens = explode(':', $aEndTokens[1] ?? '00:00');
+            $iEventEndHour = $aEndTimeTokens[0];
+            $iEventEndMins = $aEndTimeTokens[1];
+        }
+        
+        $iEventStatus = $event->getInActive();
 
-        $iEventID = $event_id;
-        $iTypeID = $type_id;
-        $sTypeName = $type_name;
-        $sEventTitle = $event_title;
-        $sEventDesc = $event_desc;
-        $sEventText = $event_text;
-        $aStartTokens = explode(' ', $event_start);
-        $sEventStartDate = $aStartTokens[0];
-        $aStartTimeTokens = explode(':', $aStartTokens[1]);
-        $iEventStartHour = $aStartTimeTokens[0];
-        $iEventStartMins = $aStartTimeTokens[1];
-        $aEndTokens = explode(' ', $event_end);
-        $sEventEndDate = $aEndTokens[0];
-        $aEndTimeTokens = explode(':', $aEndTokens[1]);
-        $iEventEndHour = $aEndTimeTokens[0];
-        $iEventEndMins = $aEndTimeTokens[1];
-        $iEventStatus = $inactive;
-
-        $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
+        $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='" . (int)$iEventID . "' ORDER BY evtcnt_countid ASC";
 
         $cvOpps = RunQuery($sSQL);
         $iNumCounts = mysqli_num_rows($cvOpps);
