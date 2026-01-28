@@ -3,14 +3,7 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\RedirectUtils;
-
-// If user does not have CSV Export permission, redirect to the menu.
-if (!AuthenticationManager::getCurrentUser()->isCSVExport()) {
-    RedirectUtils::securityRedirect("CSVExport");
-}
 
 // Get Classifications for the drop-down
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
