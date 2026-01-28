@@ -325,7 +325,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                                     extract($aRow);
 
                                     if ($pro_prt_ID != $last_pro_prt_ID) {
-                                        echo '<tr><td><b>' . $prt_Name . '</b></td>';
+                                        echo '<tr><td><b>' . InputUtils::escapeHTML($prt_Name) . '</b></td>';
 
                                         $bIsFirst = false;
                                         $last_pro_prt_ID = $pro_prt_ID;
@@ -334,17 +334,17 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                                         echo '<td class="align-top">&nbsp;</td>';
                                     }
 
-                                    echo '<td class="align-top">' . $pro_Name . '&nbsp;</td>';
-                                    echo '<td class="align-top">' . $r2p_Value . '&nbsp;</td>';
+                                    echo '<td class="align-top">' . InputUtils::escapeHTML($pro_Name) . '&nbsp;</td>';
+                                    echo '<td class="align-top">' . InputUtils::escapeHTML($r2p_Value) . '&nbsp;</td>';
 
                                     if (strlen($pro_Prompt) > 0 && AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                        echo '<td class="align-top"><a href="PropertyAssign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Edit Value') . '</a></td>';
+                                        echo '<td class="align-top"><a href="PropertyAssign.php?GroupID=' . (int)$iGroupID . '&amp;PropertyID=' . (int)$pro_ID . '">' . gettext('Edit Value') . '</a></td>';
                                     } else {
                                         echo '<td>&nbsp;</td>';
                                     }
 
                                     if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                        echo '<td class="align-top"><a href="PropertyUnassign.php?GroupID=' . $iGroupID . '&amp;PropertyID=' . $pro_ID . '">' . gettext('Remove') . '</a>';
+                                        echo '<td class="align-top"><a href="PropertyUnassign.php?GroupID=' . (int)$iGroupID . '&amp;PropertyID=' . (int)$pro_ID . '">' . gettext('Remove') . '</a>';
                                     } else {
                                         echo '<td>&nbsp;</td>';
                                     }
