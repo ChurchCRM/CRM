@@ -1,10 +1,4 @@
 {
-  "Filesystem Permissions": "",
-  "Hostname": "",
-  "IP Address": "",
-  "Images Root": "",
-  "Import Demo Data": "",
-  "Include events and calendars": "",
   "Include financial data (donation funds, pledges)": "",
   "Invalid API key": "",
   "Not configured": "",
@@ -104,5 +98,11 @@
   "%d files have been modified or are missing. Use Force Re-install to restore official versions.": "",
   "%d files have failed integrity validation.": "",
   "%d files will be permanently deleted.": "",
-  "%d orphaned files were detected on your server.": ""
+  "%d orphaned files were detected on your server.": "",
+  "(refresh from GitHub)": "",
+  "Access Denied": "",
+  "Add event permission": "",
+  "Add records permission": "",
+  "Administrator privileges": "",
+  "All Files Verified": ""
 }

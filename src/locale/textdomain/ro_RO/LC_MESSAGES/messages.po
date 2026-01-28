@@ -4047,12 +4047,6 @@ msgstr "Caută"
 msgid "Field"
 msgstr "Câmp"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Stundent înregistrat"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4146,11 +4140,6 @@ msgstr "Clasa duminicală pentru care doriți să vedeți înregistrările"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Grup de studenți înregistrați"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Luna aniversării abonării pentru care doriți să se vedeți înregistrările."
 
@@ -4183,11 +4172,6 @@ msgstr "Gajat anul acest"
 #: 
 msgid "but not this year"
 msgstr "dar nu din acest an"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "An fiscal."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4251,11 +4235,6 @@ msgstr "Gaj-ul lipsește"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Gajul familiei pe anul fiscal"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Căutare personalizată"
 
@@ -4268,11 +4247,6 @@ msgstr "Returnează înregistrările persoanei cărora li se atribuie proprietat
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Membri cu aniversarea într-o anumită lună"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Caută studenți înregistrați"
 
 #. Context: query_qry
 #: 
@@ -4298,11 +4272,6 @@ msgstr "Compară angajamentele de donație între doi ani fiscali"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Caută oameni care au făcut angajament de donație într-un an dar nu și în următorul"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Rezumatul angajamentului după numele de familie pentru fiecare fond pentru anul fiscal selectat"
 
 #. Context: query_qry
 #: 
@@ -7507,14 +7476,14 @@ msgstr "Numărul maxim de Evenimente din Calendar"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "de %d lună"
 msgstr[1] "de %d luni"
 msgstr[2] "de %d luni"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "un an"
 msgstr[1] "de %d ani"
 msgstr[2] "de %d ani"

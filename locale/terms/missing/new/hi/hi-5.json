@@ -105,5 +105,10 @@
   "e.g., Visitors, Children": "",
   "of pledges": "",
   "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": ""
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "%d person": {
+    "one": "",
+    "other": ""
+  },
+  "All Classifications": ""
 }

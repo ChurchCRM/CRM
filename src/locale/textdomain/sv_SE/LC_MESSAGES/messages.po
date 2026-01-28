@@ -4084,12 +4084,6 @@ msgstr "Sök"
 msgid "Field"
 msgstr "Fält"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Registrerade studenter"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4183,11 +4177,6 @@ msgstr "Söndagsskoleklassen som du vill ha poster tillbaka för."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Grupp registrerade studenter"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Medlemskapsjubileumsmånaden som du vill ha poster tillbaka för."
 
@@ -4220,11 +4209,6 @@ msgstr "Löfte i år"
 #: 
 msgid "but not this year"
 msgstr "men inte i år"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Räkenskapsår."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4288,11 +4272,6 @@ msgstr "Saknade löften"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familjelöfte efter räkenskapsåret"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "CustomSearch"
 
@@ -4305,11 +4284,6 @@ msgstr "Returnerar personposter som tilldelas den givna egenskapen."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Personer med födelsedagar i en viss månad"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Hitta registrerade studenter"
 
 #. Context: query_qry
 #: 
@@ -4335,11 +4309,6 @@ msgstr "Jämför pantsättningar mellan två räkenskapsår"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Hitta personer som lovade ett år men inte ett annat"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Pantsammanfattning efter släktnamn för varje fond för det valda räkenskapsåret"
 
 #. Context: query_qry
 #: 
@@ -7546,13 +7515,13 @@ msgstr "Maximalt antal kalenderhändelser"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d månad gammal"
 msgstr[1] "%d månader gammal"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d år gammal"
 msgstr[1] "%d år gammal"
 
@@ -9332,7 +9301,7 @@ msgstr "insättning(ar) utan betalningar"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d händelse i %s"
 msgstr[1] "%d händelser i %s"
 
@@ -9590,7 +9559,7 @@ msgstr "valfritt"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "person"
 msgstr[1] "personer"
 
@@ -11328,19 +11297,19 @@ msgstr "måste konfigureras med en krypteringsnyckel"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d person tillagd i kundvagnen."
 msgstr[1] "%d personer tillagda i kundvagnen."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d person tillagd till vald familj."
 msgstr[1] "%d personer tillagda till vald familj."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d person tillagd till vald grupp."
 msgstr[1] "%d personer tillagda till vald grupp."
 

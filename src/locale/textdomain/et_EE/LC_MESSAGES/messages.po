@@ -3958,12 +3958,6 @@ msgstr "Otsing"
 msgid "Field"
 msgstr "Väli"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Registreeritud õpilased"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4057,11 +4051,6 @@ msgstr "Pühapäevakooli klass, mille kohta soovite teavet saada."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Registreeritud õpilaste rühm"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Liikmelisuse aastapäev, mille kohta soovite teavet saada."
 
@@ -4094,11 +4083,6 @@ msgstr "Sel aastal lubatud"
 #: 
 msgid "but not this year"
 msgstr "kuid mitte sel aastal"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Majandusaasta"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4162,11 +4146,6 @@ msgstr "Puuduvad lubadused"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Pere lubadus eelarveaasta järgi"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Kohandatud otsing"
 
@@ -4179,11 +4158,6 @@ msgstr "Näitab isikukirjed, millele on määratud antud omadust."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Inimesed, kellel on konkreetsel kuul sünnipäev"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Leidke registreeritud õpilased"
 
 #. Context: query_qry
 #: 
@@ -4209,11 +4183,6 @@ msgstr "Võrrelge kahe eelarveaasta lubadusi"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Leidke inimesi, kes lubasid ühe aasta, kuid mitte teise aasta"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Rühmita kokkuvõte perekonnanime järgi iga fondi kohta valitud eelarveaastal"
 
 #. Context: query_qry
 #: 
@@ -7420,13 +7389,13 @@ msgstr "Kalendrisündmuste maksimaalne arv"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d kuune"
 msgstr[1] "%d kuud vana"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d aastane"
 msgstr[1] "%d aastane"
 
@@ -9206,7 +9175,7 @@ msgstr "deposiit(id) ilma makseta"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d sündmus alas %s"
 msgstr[1] "%d sündmust alas %s"
 
@@ -9464,7 +9433,7 @@ msgstr "valikuline"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "inimene"
 msgstr[1] "inimesi"
 
@@ -11202,19 +11171,19 @@ msgstr "peab olema konfigureeritud krüptimise võtmega"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d inimene lisati ostukorvi."
 msgstr[1] "%d inimest lisati ostukorvi."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d inimene lisati edukalt valitud perekonda."
 msgstr[1] "%d inimest lisati edukalt valitud perekonda."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d inimene lisati edukalt valitud rühma."
 msgstr[1] "%d inimest lisati edukalt valitud rühma."
 

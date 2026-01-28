@@ -3924,12 +3924,6 @@ msgstr "खोजें"
 msgid "Field"
 msgstr "क्षेत्र"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "पंजीकृत छात्र"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4022,11 +4016,6 @@ msgstr "वह संडे स्कूल कक्षा जिसके ल�
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "पंजीकृत छात्रों का समूह"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "वह सदस्यता वर्षगांठ का महीना जिसके लिए आप रिकॉर्ड चाहते हैं।"
 
@@ -4059,11 +4048,6 @@ msgstr "इस वर्ष प्रतिज्ञा की"
 #: 
 msgid "but not this year"
 msgstr "लेकिन इस वर्ष नहीं"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "वित्तीय वर्ष।"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4127,11 +4111,6 @@ msgstr "अनुपलब्ध प्रतिज्ञाएं"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "वित्तीय वर्ष के अनुसार पारिवारिक प्रतिज्ञा"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "कस्टमखोज"
 
@@ -4144,11 +4123,6 @@ msgstr "उन व्यक्तियों के रिकॉर्ड ल�
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "किसी विशेष महीने में जन्मदिन वाले व्यक्ति"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "पंजीकृत छात्र खोजें"
 
 #. Context: query_qry
 #: 
@@ -4174,11 +4148,6 @@ msgstr "दो वित्तीय वर्षों के बीच प्�
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "उन लोगों को खोजें जिन्होंने एक साल प्रतिज्ञा की लेकिन दूसरे साल नहीं"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "चयनित वित्तीय वर्ष के लिए प्रतिज्ञा सारांश"
 
 #. Context: query_qry
 #: 
@@ -7367,13 +7336,13 @@ msgstr "कैलेंडर ईवेंट की अधिकतम सं�
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d महीना पुराना"
 msgstr[1] "%d महीने पुराना"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d वर्ष पुराना"
 msgstr[1] "%d वर्ष पुराना"
 

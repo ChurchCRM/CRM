@@ -2485,12 +2485,6 @@ msgstr "వెతుకు"
 msgid "Field"
 msgstr "ఫీల్డ్"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "నమోదైన విద్యార్థులు"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Months"

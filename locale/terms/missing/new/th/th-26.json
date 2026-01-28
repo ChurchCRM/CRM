@@ -1,10 +1,4 @@
 {
-  "Base URL is not configured in Config.php": "",
-  "ChurchCRM Supported Locales": "",
-  "Connect to your server via SSH, FTP, or your hosting control panel": "",
-  "Contact": "",
-  "Critical Configuration Error": "",
-  "Current $URL[0] value:": "",
   "Custom port:": "",
   "Ends with a <strong>trailing slash</strong> (/)": "",
   "Error:": "",
@@ -98,5 +92,11 @@
   "ChMeetings Export": "",
   "Delete User": "",
   "Disable 2FA": "",
-  "Export all people data in ChMeetings format for import into external systems.": ""
+  "Export all people data in ChMeetings format for import into external systems.": "",
+  "Export to ChMeetings CSV": "",
+  "Exporting...": "",
+  "Family Listing": "",
+  "Invalid request data": "",
+  "Invalid status": "",
+  "Locked Users": ""
 }

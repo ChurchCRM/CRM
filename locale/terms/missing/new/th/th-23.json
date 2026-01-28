@@ -1,10 +1,4 @@
 {
-  "(refresh from GitHub)": "",
-  "Access Denied": "",
-  "Add event permission": "",
-  "Add records permission": "",
-  "Administrator privileges": "",
-  "All Files Verified": "",
   "All system files match their expected signatures.": "",
   "Application Integrity": "",
   "Application files updated to latest version": "",
@@ -98,5 +92,11 @@
   "This action cannot be undone. Make sure you have a backup of the current data if needed.": "",
   "This may take a few minutes for large databases.": "",
   "This may take several minutes for large databases. Do not close this page.": "",
-  "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?": ""
+  "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?": "",
+  "Upgrade Summary": "",
+  "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site.": "",
+  "User authentication": "",
+  "User must have Add Event permission": "",
+  "User must have Menu Options permission": "",
+  "What are Orphaned Files?": ""
 }

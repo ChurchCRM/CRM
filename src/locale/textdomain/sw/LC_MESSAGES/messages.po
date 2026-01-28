@@ -3955,12 +3955,6 @@ msgstr "Tafuta"
 msgid "Field"
 msgstr "Shamba"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Wanafunzi waliosajiliwa"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4053,11 +4047,6 @@ msgstr "Darasa la shule ya Jumapili ambalo ungependa rekodi zake zirudishwe."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Kundi la wanafunzi waliosajiliwa"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Mwezi wa maadhimisho ya mwaka wa uanachama ambao ungependa rekodi zirudishwe."
 
@@ -4090,11 +4079,6 @@ msgstr "Imeahidiwa mwaka huu"
 #: 
 msgid "but not this year"
 msgstr "lakini sio mwaka huu"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Mwaka wa fedha."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4158,11 +4142,6 @@ msgstr "Ahadi zinazokosekana"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Ahadi ya Familia kabla ya Mwaka wa Fedha"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Utafutaji Maalum"
 
@@ -4175,11 +4154,6 @@ msgstr "Hurejesha rekodi za mtu ambazo zimepewa mali iliyotolewa."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Watu walio na siku za kuzaliwa katika mwezi fulani"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Tafuta Wanafunzi Waliosajiliwa"
 
 #. Context: query_qry
 #: 
@@ -4205,11 +4179,6 @@ msgstr "Linganisha ahadi kati ya miaka miwili ya fedha"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Tafuta watu ambao waliahidi mwaka mmoja lakini sio mwingine"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Muhtasari wa ahadi kwa jina la familia kwa kila hazina kwa mwaka wa fedha uliochaguliwa"
 
 #. Context: query_qry
 #: 
@@ -7413,13 +7382,13 @@ msgstr "Idadi ya juu zaidi ya Matukio ya Kalenda"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "Umri wa mwezi %d"
 msgstr[1] "Wenye umri wa miezi %d"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "Umri wa mwaka %d"
 msgstr[1] "Wenye umri wa miaka %d"
 
@@ -9198,7 +9167,7 @@ msgstr "amana zisizo na malipo"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "Tukio %d katika %s"
 msgstr[1] "Matukio %d katika %s"
 
@@ -9456,7 +9425,7 @@ msgstr "hiari"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "mtu"
 msgstr[1] "watu"
 
@@ -11194,19 +11163,19 @@ msgstr "lazima isanidiwe na ufunguo wa usimbuaji"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "Mtu %d ameongezwa kwenye Kigari."
 msgstr[1] "Watu %d wameongezwa kwenye Kigari."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "Mtu %d ameongezwa kwa mafanikio kwenye Familia iliyochaguliwa."
 msgstr[1] "Watu %d wameongezwa kwa mafanikio kwenye Familia iliyochaguliwa."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "Mtu %d ameongezwa kwa mafanikio kwenye Kikundi kilichochaguliwa."
 msgstr[1] "Watu %d wameongezwa kwa mafanikio kwenye Kikundi kilichochaguliwa."
 

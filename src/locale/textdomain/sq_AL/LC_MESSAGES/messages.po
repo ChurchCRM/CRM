@@ -3954,12 +3954,6 @@ msgstr "Kërko"
 msgid "Field"
 msgstr "Fusha"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Nxënësit e regjistruar"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4052,11 +4046,6 @@ msgstr "Klasa e shkollës të së dielës për të cilën dëshironi të kthehen
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Grupi i nxënësve të regjistruar"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Muaji i përvjetorit të anëtarësimit për të cilin dëshironi të kthehen rekordet."
 
@@ -4089,11 +4078,6 @@ msgstr "Zotuar këtë vit"
 #: 
 msgid "but not this year"
 msgstr "por jo këtë vit"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Viti fiskal."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4157,11 +4141,6 @@ msgstr "Zotimet që mungojnë"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Zotimi familjar sipas vitit fiskal"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Kërkim i personalizuar"
 
@@ -4174,11 +4153,6 @@ msgstr "Kthen rekordet e personave që u është caktuar veçoria e dhënë."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Njerëzit me ditëlindje në një muaj të caktuar"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Gjeni nxënësit e regjistruar"
 
 #. Context: query_qry
 #: 
@@ -4204,11 +4178,6 @@ msgstr "Krahasoni zotimet midis dy viteve fiskale"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Gjeni njerëz që u zotuan një vit, por jo një vit tjetër"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Përmbledhja e zotimeve sipas mbiemrit për çdo fond për vitin fiskal të përzgjedhur"
 
 #. Context: query_qry
 #: 

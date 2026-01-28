@@ -1,9 +1,4 @@
 {
-  "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data.": "",
-  "CSV export permission": "",
-  "Close & Refresh": "",
-  "Confirm Deletion": "",
-  "Create a backup first": "",
   "Create directory permission": "",
   "Database Only": "",
   "Database Restored Successfully!": "",
@@ -98,5 +93,10 @@
   "Add Another Family Member": "",
   "Add Pledge": "",
   "Admin Dashboard": "",
-  "Advanced Operations": ""
+  "Advanced Operations": "",
+  "All System Settings": "",
+  "An unexpected error occurred. Please contact your administrator.": "",
+  "Back to Deposits": "",
+  "Back to Families": "",
+  "Birth & Family": ""
 }

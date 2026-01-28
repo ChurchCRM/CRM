@@ -1,9 +1,4 @@
 {
-  "Closed": "",
-  "Delete this person?": "",
-  "Deposit ID": "",
-  "Deposit Total": "",
-  "Group Cart Status": "",
   "If that doesn't work, copy and paste the following link in your browser": "",
   "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email.": "",
   "To stop receiving these emails, you can email": "",
@@ -98,5 +93,10 @@
   "Failed to load cart status.": "",
   "Failed to load groups. Please refresh the page.": "",
   "Failed to set default role. Please try again.": "",
-  "Failed to update group. Please try again.": ""
+  "Failed to update group. Please try again.": "",
+  "Failed to update properties. Please try again.": "",
+  "Failed to update role name. Please try again.": "",
+  "Leave blank to keep existing password": "",
+  "Please enter a group name.": "",
+  "Role added successfully.": ""
 }

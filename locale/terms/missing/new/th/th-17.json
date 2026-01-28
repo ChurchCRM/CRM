@@ -1,10 +1,4 @@
 {
-  "Enable Email menu.": "",
-  "Enabled Features": "",
-  "Validation Error": "",
-  "Link Not found": "",
-  "Email Functions": "",
-  "Debug": "",
   "Family Custom Fields": "",
   "Person Custom Fields": "",
   "Donation Funds": "",
@@ -104,5 +98,11 @@
   "This will reset the system data and will restart the system as a new install.": "",
   "Portuguese - Portugal": "",
   "Holiday": "",
-  "Allow users to self-enroll in 2 factor authentication": ""
+  "Allow users to self-enroll in 2 factor authentication": "",
+  "Requires users to self-enroll in 2 factor authentication": "",
+  "ChurchCRM": "",
+  "Specify the application name to be displayed in authenticator app": "",
+  "Review": "",
+  "Thank you for registering your family": "",
+  "Register another family!": ""
 }

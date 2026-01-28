@@ -3955,12 +3955,6 @@ msgstr "검색"
 msgid "Field"
 msgstr "필드"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "등록된 학생"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4053,11 +4047,6 @@ msgstr "조회할 주일학교 반입니다."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "등록된 학생 그룹"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "조회할 등록 기념 월입니다."
 
@@ -4090,11 +4079,6 @@ msgstr "올해 서약"
 #: 
 msgid "but not this year"
 msgstr "하지만 올해는 아님"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "회계 연도"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4158,11 +4142,6 @@ msgstr "누락된 서약"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "회계 연도별 가족 서약"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "사용자 정의 검색"
 
@@ -4175,11 +4154,6 @@ msgstr "해당 속성이 배정된 개인을 조회합니다."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "특정 월에 생일이 있는 사람들"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "등록된 학생 찾기"
 
 #. Context: query_qry
 #: 
@@ -4205,11 +4179,6 @@ msgstr "두 회계 연도의 서약 비교"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "어느 해에는 서약했지만 다른 해에는 서약하지 않은 사람 찾기"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "선택한 회계 연도의 각 헌금 항목별 가족 서약 요약"
 
 #. Context: query_qry
 #: 
@@ -7411,12 +7380,12 @@ msgstr "캘린더 행사 최대 개수"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d개월"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d세"
 
 #: 
@@ -9193,7 +9162,7 @@ msgstr "건의 결제가 없는 입금"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%s 동안 발생한 %d개의 이벤트"
 
 #: 
@@ -9450,7 +9419,7 @@ msgstr "선택사항"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "사람"
 
 #: 
@@ -11189,17 +11158,17 @@ msgstr "암호화 키로 구성되어야 함"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d명이 카트에 추가됨."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d명이 선택된 가족에 성공적으로 추가됨."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d명이 선택된 그룹에 성공적으로 추가됨."
 
 #: 

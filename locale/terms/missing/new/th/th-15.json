@@ -1,10 +1,4 @@
 {
-  "Nexmo SMS API Key": "",
-  "Nexmo SMS API Secret": "",
-  "Nexmo SMS From Number": "",
-  "OpenLP URL": "",
-  "OpenLP Username": "",
-  "OpenLP Password": "",
   "KioskVisibilityTimestamp": "",
   "Show/Hide Lost Password Link on the login screen": "",
   "Backup": "",
@@ -98,5 +92,11 @@
   "Add Students": "",
   "Edit this Class": "",
   "OK": "",
-  "Please select target Role for members": ""
+  "Please select target Role for members": "",
+  "GroupID required for role selection prompt": "",
+  "Select Group and Role": "",
+  "Are you sure you want to remove this person's membership from": "",
+  "All Members": "",
+  "PhotoBook": "",
+  "With Photos": ""
 }

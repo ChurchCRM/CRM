@@ -1,9 +1,4 @@
 {
-  "URL is not in valid format": "",
-  "URL must end with a trailing slash (/)": "",
-  "URL must start with http:// or https://": "",
-  "Unable to detect system locales": "",
-  "Unable to determine available locales": "",
   "Unable to load locale information": "",
   "Unable to load state list. Please check your network connection or try again later.": "",
   "Update it to a valid URL that:": "",
@@ -107,5 +102,10 @@
     "other": ""
   },
   "A ": "",
-  "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.": ""
+  "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.": "",
+  "Are you sure you want to delete": "",
+  "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!": "",
+  "By deleting this field, you will irrevocably lose all family data assigned for this field!": "",
+  "By deleting this field, you will irrevocably lose all person data assigned for this field!": "",
+  "Changes not saved! Please correct and try again!": ""
 }

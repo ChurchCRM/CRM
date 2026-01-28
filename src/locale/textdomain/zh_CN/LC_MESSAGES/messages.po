@@ -4053,12 +4053,6 @@ msgstr "搜索"
 msgid "Field"
 msgstr "领域"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "注册学生"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4152,11 +4146,6 @@ msgstr "返回您想要记录的主日学校课程。"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "已注册学生组"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "返回您想要记录的会员周年的月份。"
 
@@ -4189,11 +4178,6 @@ msgstr "今年的承诺"
 #: 
 msgid "but not this year"
 msgstr "但不是今年"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "财政年度."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4257,11 +4241,6 @@ msgstr "遗失承诺"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "财政年度的家庭承诺"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "定制搜索"
 
@@ -4274,11 +4253,6 @@ msgstr "返回分配制定属性的人员记录。"
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "在特定月份生日的人"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "找到注册学生"
 
 #. Context: query_qry
 #: 
@@ -4304,11 +4278,6 @@ msgstr "比较两个财政年度之间的承诺"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "寻找承诺一年但不承诺一年的人"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "通过姓氏删选所选会计年度基金的承诺摘要"
 
 #. Context: query_qry
 #: 
@@ -7518,12 +7487,12 @@ msgstr "日历活动的最大数量"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "％d个月大"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "％d岁"
 
 #: 
@@ -9302,7 +9271,7 @@ msgstr "无付款的存款"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%s 中的 %d 个活动"
 
 #: 
@@ -9559,7 +9528,7 @@ msgstr "可选"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "个人"
 
 #: 
@@ -11296,17 +11265,17 @@ msgstr "必须配置加密密钥"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d 人已加入清单。"
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d 人已成功加入选定的家庭。"
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d 人已成功加入选定的群组。"
 
 #: 

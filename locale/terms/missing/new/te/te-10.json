@@ -1,9 +1,4 @@
 {
-  "Resize Event": "",
-  "Profile": "",
-  "Sign out": "",
-  "Sermon Text": "",
-  "Change Settings": "",
   "Unknown Type": "",
   "PersonID for Cart must be numeric": "",
   "GroupID for Cart must be numeric": "",
@@ -98,5 +93,10 @@
   "invalid event type id": "",
   "invalid calendar pinning": "",
   "invalid group id": "",
-  "invalid status value": ""
+  "invalid status value": "",
+  "invalid export value": "",
+  "Invalid User/Password": "",
+  "Find Duplicate Emails": "",
+  "Duplicate Emails": "",
+  "HTML URL": ""
 }

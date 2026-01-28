@@ -3972,12 +3972,6 @@ msgstr "Ricerca"
 msgid "Field"
 msgstr "Campo"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Studenti registrati"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4071,11 +4065,6 @@ msgstr "La lezione di scuola domenicale per la quale si desidera restituire i re
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Gruppo di studenti registrati"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Il mese dell'anniversario dell'iscrizione per il quale desideri vengano restituiti i documenti."
 
@@ -4108,11 +4097,6 @@ msgstr "Impegnato quest'anno"
 #: 
 msgid "but not this year"
 msgstr "ma non quest'anno"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Anno fiscale."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4176,11 +4160,6 @@ msgstr "Impegni mancanti"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Family Pledge per Anno Fiscale"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "CustomSearch"
 
@@ -4193,11 +4172,6 @@ msgstr "Restituisce record di persone a cui viene assegnata la proprietà specif
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Persone con compleanni in un determinato mese"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Trova studenti registrati"
 
 #. Context: query_qry
 #: 
@@ -4223,11 +4197,6 @@ msgstr "Confronta gli impegni tra due anni fiscali"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Trova persone che hanno promesso un anno ma non un altro"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Riepilogo impegno in base al nome di famiglia per ciascun fondo per l'anno fiscale selezionato"
 
 #. Context: query_qry
 #: 
@@ -7443,13 +7412,13 @@ msgstr "Numero massimo di eventi del calendario"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d mese"
 msgstr[1] "%d mesi"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d anno"
 msgstr[1] "%d anni"
 
@@ -9229,7 +9198,7 @@ msgstr "deposito/i senza pagamenti"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d evento in %s"
 msgstr[1] "%d eventi in %s"
 
@@ -9487,7 +9456,7 @@ msgstr "facoltativo"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "persona"
 msgstr[1] "persone"
 
@@ -11225,19 +11194,19 @@ msgstr "deve essere configurato con una chiave di crittografia"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Persona aggiunta al Carrello."
 msgstr[1] "%d Persone aggiunte al Carrello."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d Persona aggiunta con successo alla Famiglia selezionata."
 msgstr[1] "%d Persone aggiunte con successo alla Famiglia selezionata."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d Persona aggiunta con successo al Gruppo selezionato."
 msgstr[1] "%d Persone aggiunte con successo al Gruppo selezionato."
 

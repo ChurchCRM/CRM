@@ -1,9 +1,4 @@
 {
-  "Samoa": "",
-  "San Marino": "",
-  "São Tomé and Príncipe (São Tomé e Príncipe)": "",
-  "Saudi Arabia (‫المملكة العربية السعودية‬‎)": "",
-  "Senegal (Sénégal)": "",
   "Serbia (Србија)": "",
   "Seychelles": "",
   "Sierra Leone": "",
@@ -98,5 +93,10 @@
   "Deposit ticket type.  QBDT - Quickbooks": "",
   "Financial Settings": "",
   "An invalid configuration name has been requested": "",
-  "An invalid configuration id has been requested": ""
+  "An invalid configuration id has been requested": "",
+  "Profile Image uploaded": "",
+  "payment(s)?": "",
+  "Please ensure this what you want to do.</p>": "",
+  "Confirm Deactivation": "",
+  "Confirm Activation": ""
 }

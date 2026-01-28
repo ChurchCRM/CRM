@@ -1,9 +1,4 @@
 {
-  "Include Sunday School classes and enrollments": "",
-  "Need to remove this data later?": "",
-  "No Payments on this Deposit": "",
-  "No payments on this deposit": "",
-  "Optional Data to Include": "",
   "Skipped": "",
   "Unknown error": "",
   "deposit(s) with no payments": "",
@@ -104,5 +99,10 @@
   "Backup failed. Please try again.": "",
   "Backup generated and copied to remote server": "",
   "Backup in progress, please wait...": "",
-  "Backup to External Storage": ""
+  "Backup to External Storage": "",
+  "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data.": "",
+  "CSV export permission": "",
+  "Close & Refresh": "",
+  "Confirm Deletion": "",
+  "Create a backup first": ""
 }

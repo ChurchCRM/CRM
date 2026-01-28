@@ -1,10 +1,4 @@
 {
-  "GroupID required for role selection prompt": "",
-  "Select Group and Role": "",
-  "Are you sure you want to remove this person's membership from": "",
-  "All Members": "",
-  "PhotoBook": "",
-  "With Photos": "",
   "Create PhotoBook": "",
   "SSE": "",
   "Recipient Naming Method": "",
@@ -98,5 +92,11 @@
   "Enable Sunday School left menu.": "",
   "Enable Finance menu": "",
   "Enable Events menu.": "",
-  "Enable Fundraiser menu.": ""
+  "Enable Fundraiser menu.": "",
+  "Enable Email menu.": "",
+  "Enabled Features": "",
+  "Validation Error": "",
+  "Link Not found": "",
+  "Email Functions": "",
+  "Debug": ""
 }
