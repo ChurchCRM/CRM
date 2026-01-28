@@ -39,27 +39,27 @@ $sPageTitle = gettext('Buyer Number Editor');
 // Is this the second pass?
 if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) || isset($_POST['GenerateStatement'])) {
     //Get all the variables from the request object and assign them locally
-    $iNum = InputUtils::legacyFilterInput($_POST['Num']);
-    $iPerID = InputUtils::legacyFilterInput($_POST['PerID']);
+    $iNum = (int) InputUtils::legacyFilterInput($_POST['Num']);
+    $iPerID = (int) InputUtils::legacyFilterInput($_POST['PerID']);
 
     $rsMBItems = RunQuery($sMultibuyItemsSQL); // Go through the multibuy items, see if this person bought any
     while ($aRow = mysqli_fetch_array($rsMBItems)) {
         extract($aRow);
         $mbName = 'MBItem' . $di_ID;
-        $iMBCount = InputUtils::legacyFilterInput($_POST[$mbName], 'int');
+        $iMBCount = (int) InputUtils::legacyFilterInput($_POST[$mbName], 'int');
         if ($iMBCount > 0) { // count for this item is positive.  If a multibuy record exists, update it.  If not, create it.
-            $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
+            $sqlNumBought = 'SELECT mb_count from multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int)$di_ID;
             $rsNumBought = RunQuery($sqlNumBought);
             $numBoughtRow = mysqli_fetch_array($rsNumBought);
             if ($numBoughtRow) {
-                $sSQL = 'UPDATE multibuy_mb SET mb_count=' . $iMBCount . ' WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
+                $sSQL = 'UPDATE multibuy_mb SET mb_count=' . $iMBCount . ' WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int)$di_ID;
                 RunQuery($sSQL);
             } else {
-                $sSQL = 'INSERT INTO multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES (' . $iPerID . ',' . $di_ID . ',' . $iMBCount . ')';
+                $sSQL = 'INSERT INTO multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES (' . $iPerID . ',' . (int)$di_ID . ',' . $iMBCount . ')';
                 RunQuery($sSQL);
             }
         } else { // count is zero, if it was positive before there is a multibuy record that needs to be deleted
-            $sSQL = 'DELETE FROM multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . $di_ID;
+            $sSQL = 'DELETE FROM multibuy_mb WHERE mb_per_ID=' . $iPerID . ' AND mb_item_ID=' . (int)$di_ID;
             RunQuery($sSQL);
         }
     }
@@ -67,11 +67,11 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     // New PaddleNum
     if (strlen($iPaddleNumID) < 1) {
         $sSQL = 'INSERT INTO paddlenum_pn (pn_fr_ID, pn_Num, pn_per_ID)
-                 VALUES (' . $iCurrentFundraiser . ",'" . $iNum . "','" . $iPerID . "')";
+                 VALUES (' . (int)$iCurrentFundraiser . ',' . $iNum . ',' . $iPerID . ')';
         $bGetKeyBack = true;
         // Existing record (update)
     } else {
-        $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = ' . $iCurrentFundraiser . ", pn_Num = '" . $iNum . "', pn_per_ID = '" . $iPerID . "'";
+        $sSQL = 'UPDATE paddlenum_pn SET pn_fr_ID = ' . (int)$iCurrentFundraiser . ', pn_Num = ' . $iNum . ', pn_per_ID = ' . $iPerID;
         $sSQL .= ' WHERE pn_ID = ' . $iPaddleNumID;
         $bGetKeyBack = false;
     }
