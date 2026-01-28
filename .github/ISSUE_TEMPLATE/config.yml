@@ -1,9 +1,9 @@
 blank_issues_enabled: false
 contact_links:
-  - name: � Report Bug via ChurchCRM App (Recommended)
+  - name: 🐛 Report Bug via ChurchCRM App (Recommended)
     url: https://github.com/ChurchCRM/CRM/wiki/Reporting-Issues
     about: Use Support → Report an Issue in your ChurchCRM installation for automatic system info capture
-  - name: �📚 Documentation
+  - name: 📚 Documentation
     url: https://github.com/ChurchCRM/CRM/wiki
     about: Check our documentation and wiki for answers
   - name: 💬 Community Discussion
