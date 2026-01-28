@@ -136,9 +136,9 @@ function newEvent(Request $request, Response $response, array $args): Response
 
     // we have event type and pined calendars.  now create the event.
     $event = new Event();
-    $event->setTitle($input['Title']);
+    $event->setTitle(InputUtils::sanitizeText($input['Title']));
     $event->setEventType($type);
-    $event->setDesc($input['Desc']);
+    $event->setDesc(InputUtils::sanitizeHTML($input['Desc']));
     $event->setStart(str_replace('T', ' ', $input['Start']));
     $event->setEnd(str_replace('T', ' ', $input['End']));
     $event->setText(InputUtils::sanitizeHTML($input['Text']));
@@ -154,6 +154,18 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     /** @var Event $Event */
     $Event = $request->getAttribute('event');
     $id = $Event->getId();
+
+    // Sanitize user-controlled fields before applying to the model
+    if (isset($input['Title'])) {
+        $input['Title'] = InputUtils::sanitizeText($input['Title']);
+    }
+    if (isset($input['Desc'])) {
+        $input['Desc'] = InputUtils::sanitizeHTML($input['Desc']);
+    }
+    if (isset($input['Text'])) {
+        $input['Text'] = InputUtils::sanitizeHTML($input['Text']);
+    }
+
     $Event->fromArray($input);
     $Event->setId($id);
     $PinnedCalendars = CalendarQuery::create()
