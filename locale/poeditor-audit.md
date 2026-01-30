@@ -10,8 +10,8 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `ta` | Tamil | 2766 | 100% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 2758 | 99.71% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2758 | 99.71% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 2757 | 99.67% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 2718 | 98.26% | 🟢 Complete | ✅ Yes |
 | `zh-cn` | Chinese | 2718 | 98.26% | 🟢 Complete | ✅ Yes |

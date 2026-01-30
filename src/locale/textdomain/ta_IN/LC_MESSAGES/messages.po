@@ -10286,7 +10286,7 @@ msgstr "இடம்"
 
 #: 
 msgid "M"
-msgstr "M"
+msgstr "எம்"
 
 #: 
 msgid "Manage Funds"
@@ -11508,4 +11508,40 @@ msgstr "பதிவுகள்"
 #: 
 msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
 msgstr "காலியாக இல்லாவிட்டால் '/' உடன் தொடங்க வேண்டும்; இறுதியில் ஸ்லாஷ் இருக்கக்கூடாது. எழுத்துக்கள், எண்கள், அடிக்கோடு, கோடு, புள்ளி மற்றும் '/' மட்டுமே அனுமதிக்கப்படும்."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d நபர்\n"
+"பன்மை: %d பேர்"
+msgstr[1] "ஒன்று\n"
+"மற்றவை"
+
+#: 
+msgid "All Classifications"
+msgstr "அனைத்து வகைப்பாடுகளும்"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "உங்கள் நிபந்தனைகளுக்குப் பொருந்தக்கூடிய நபர்கள் யாரும் காணப்படவில்லை."
+
+#: 
+msgid "Off"
+msgstr "ஆஃப்"
+
+#: 
+msgid "On"
+msgstr "ஆன்"
+
+#: 
+msgid "Photo Directory"
+msgstr "புகைப்பட அடைவு"
+
+#: 
+msgid "Reset Filters"
+msgstr "வடிகட்டிகளை மீட்டமைக்கவும்"
+
+#: 
+msgid "Show only people with photos"
+msgstr "புகைப்படங்கள் உள்ளவர்களை மட்டும் காட்டு"
 

@@ -2466,7 +2466,7 @@
     "Let's get your system set up and ready to use": "உங்கள் கணினியை அமைத்து, பயன்படுத்தத் தயாராக வைப்போம்",
     "List members eligible to vote based on giving history and membership criteria.": "வரலாறு மற்றும் உறுப்பினர் அளவுகோல்களைக் கொடுத்து வாக்களிக்கத் தகுதியுள்ள உறுப்பினர்களைப் பட்டியலிடுங்கள்.",
     "Location": "இடம்",
-    "M": "M",
+    "M": "எம்",
     "Manage Funds": "நிதிகளை நிர்வகிக்கவும்",
     "Manage Users": "பயனர்களை நிர்வகிக்கவும்",
     "Mar": "மார்ச்",
@@ -2777,5 +2777,16 @@
     "e.g., Visitors, Children": "எ.கா., பார்வையாளர்கள், குழந்தைகள்",
     "of pledges": "உறுதிமொழிகளில்",
     "records": "பதிவுகள்",
-    "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "காலியாக இல்லாவிட்டால் '/' உடன் தொடங்க வேண்டும்; இறுதியில் ஸ்லாஷ் இருக்கக்கூடாது. எழுத்துக்கள், எண்கள், அடிக்கோடு, கோடு, புள்ளி மற்றும் '/' மட்டுமே அனுமதிக்கப்படும்."
+    "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "காலியாக இல்லாவிட்டால் '/' உடன் தொடங்க வேண்டும்; இறுதியில் ஸ்லாஷ் இருக்கக்கூடாது. எழுத்துக்கள், எண்கள், அடிக்கோடு, கோடு, புள்ளி மற்றும் '/' மட்டுமே அனுமதிக்கப்படும்.",
+    "%d person": {
+        "one": "%d நபர்\nபன்மை: %d பேர்",
+        "other": "ஒன்று\nமற்றவை"
+    },
+    "All Classifications": "அனைத்து வகைப்பாடுகளும்",
+    "No people found matching your criteria.": "உங்கள் நிபந்தனைகளுக்குப் பொருந்தக்கூடிய நபர்கள் யாரும் காணப்படவில்லை.",
+    "Off": "ஆஃப்",
+    "On": "ஆன்",
+    "Photo Directory": "புகைப்பட அடைவு",
+    "Reset Filters": "வடிகட்டிகளை மீட்டமைக்கவும்",
+    "Show only people with photos": "புகைப்படங்கள் உள்ளவர்களை மட்டும் காட்டு"
 }
