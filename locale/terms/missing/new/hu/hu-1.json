@@ -1,82 +1,82 @@
 {
-  "s": "",
+  "s": "másodperc",
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d hónapos",
+    "other": "%d hónapos"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d éves",
+    "other": "%d éves"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d esemény itt: %s",
+    "other": "%d esemény itt: %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "személy",
+    "other": "személy"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d Személy hozzáadva a kosárhoz.",
+    "other": "%d Személy hozzáadva a kosárhoz."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d Személy sikeresen hozzáadva a kiválasztott Családhoz.",
+    "other": "%d Személy sikeresen hozzáadva a kiválasztott Családhoz."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d Személy sikeresen hozzáadva a kiválasztott Csoporthoz.",
+    "other": "%d Személy sikeresen hozzáadva a kiválasztott Csoporthoz."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Add Property Type": "Tulajdonságtípus Hozzáadása",
+  "Add Your First Property Type": "Adja Hozzá az Első Tulajdonságtípusát",
+  "Auto-calculated from counts above": "Automatikusan számítva a fenti számokból",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "A mező törlésével visszavonhatatlanul elveszíti az ehhez a mezőhöz rendelt összes csoporttag adatot!",
+  "By deleting this fund, you may affect historical donation records!": "Az alap törlésével befolyásolhatja a korábbi adományrekordokat!",
+  "Category Name": "Kategória Neve",
+  "Checked In": "Bejelentkezett",
+  "Checked Out": "Kijelentkezett",
+  "Current Fiscal Year": "Aktuális Pénzügyi Év",
+  "Delete (will delete all associated records)": "Törlés (törli az összes kapcsolódó rekordot)",
+  "Edit Property Type": "Tulajdonságtípus Szerkesztése",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "Adja meg a vesszővel elválasztott számlálási kategóriákat (pl. Tagok, Látogatók, Gyermekek).",
+  "Enter sermon notes or event text...": "Adja meg a prédikáció jegyzeteit vagy az esemény szövegét...",
+  "Existing Donation Funds": "Meglévő Adomány Alapok",
+  "Existing Group Properties": "Meglévő Csoport Tulajdonságok",
+  "Failed to update role. Please try again.": "A szerepkör frissítése sikertelen. Kérjük, próbálja újra.",
+  "Family Pledges": "Családi Ígéretek",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "A mező módosításai elvesznek, ha nem kattint a 'Változások Mentése' gombra a törlés vagy 'Új Hozzáadása' gomb használata előtt!",
+  "Filter by Class": "Szűrés Osztály szerint",
+  "Fund deleted successfully": "Alap sikeresen törölve",
+  "In Use": "Használatban",
+  "Manage": "Kezelés",
+  "No pledges found for the selected fiscal year": "Nem találhatók ígéretek a kiválasztott pénzügyi évre",
+  "No property types found": "Nem találhatók tulajdonságtípusok",
+  "Number of records using this property type": "A tulajdonságtípust használó rekordok száma",
+  "Optional detailed description of this property type": "A tulajdonságtípus opcionális részletes leírása",
+  "Please correct the errors below.": "Kérjük, javítsa ki az alábbi hibákat.",
+  "Pledge Amount": "Ígéret Összege",
+  "Pledge Dashboard": "Ígéret Vezérlőpult",
+  "Remaining": "Hátralévő",
+  "Remove this attendance count?": "Eltávolítja ezt a jelenléti számot?",
+  "Select the type of record this property applies to": "Válassza ki a rekord típusát, amelyre ez a tulajdonság vonatkozik",
+  "That fund name already exists.": "Ez az alap név már létezik.",
+  "Total Pledges": "Összes Ígéret",
+  "Track and manage pledge commitments by family and fund": "Kövesse és kezelje az ígéret vállalásokat család és alap szerint",
+  "View Properties": "Tulajdonságok Megtekintése",
+  "e.g., Visitors, Children": "pl. Látogatók, Gyermekek",
+  "of pledges": "ígéretből",
+  "records": "rekord",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "/-vel kell kezdődnie, ha nem üres; nincs záró perjel. Csak betűk, számok, aláhúzás, kötőjel, pont és / megengedett.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d személy",
+    "other": "%d személy"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "Összes Besorolás",
+  "No people found matching your criteria.": "Nem találhatók a feltételeinek megfelelő személyek.",
+  "Off": "Ki",
+  "On": "Be",
+  "Photo Directory": "Fotó Könyvtár",
+  "Reset Filters": "Szűrők Visszaállítása",
+  "Show only people with photos": "Csak fotóval rendelkező személyek mutatása"
 }

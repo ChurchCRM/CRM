@@ -1,81 +1,81 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d kuukauden ikäinen",
+    "other": "%d kuukauden ikäinen"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d vuoden ikäinen",
+    "other": "%d vuoden ikäinen"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d tapahtuma kohteessa %s",
+    "other": "%d tapahtumaa kohteessa %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "henkilö",
+    "other": "henkilöä"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d Henkilö lisätty koriin.",
+    "other": "%d Henkilöä lisätty koriin."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d Henkilö lisätty onnistuneesti valittuun Perheeseen.",
+    "other": "%d Henkilöä lisätty onnistuneesti valittuun Perheeseen."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d Henkilö lisätty onnistuneesti valittuun Ryhmään.",
+    "other": "%d Henkilöä lisätty onnistuneesti valittuun Ryhmään."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Add Property Type": "Lisää Ominaisuustyyppi",
+  "Add Your First Property Type": "Lisää Ensimmäinen Ominaisuustyyppisi",
+  "Auto-calculated from counts above": "Laskettu automaattisesti yllä olevista luvuista",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "Poistamalla tämän kentän menetät peruuttamattomasti kaikki tälle kentälle määritetyt ryhmän jäsentiedot!",
+  "By deleting this fund, you may affect historical donation records!": "Poistamalla tämän rahaston saatat vaikuttaa historiallisiin lahjoitustietoihin!",
+  "Category Name": "Kategorian Nimi",
+  "Checked In": "Kirjautunut sisään",
+  "Checked Out": "Kirjautunut ulos",
+  "Current Fiscal Year": "Kuluva Tilivuosi",
+  "Delete (will delete all associated records)": "Poista (poistaa kaikki liittyvät tietueet)",
+  "Edit Property Type": "Muokkaa Ominaisuustyyppiä",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "Syötä pilkuilla erotetut laskentakategoriat (esim. Jäsenet, Vierailijat, Lapset).",
+  "Enter sermon notes or event text...": "Syötä saarnan muistiinpanot tai tapahtuman teksti...",
+  "Existing Donation Funds": "Olemassa olevat Lahjoitusrahastot",
+  "Existing Group Properties": "Olemassa olevat Ryhmän Ominaisuudet",
+  "Failed to update role. Please try again.": "Roolin päivitys epäonnistui. Yritä uudelleen.",
+  "Family Pledges": "Perheen Lupaukset",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "Kenttämuutokset menetetään, jos et napsauta 'Tallenna Muutokset' ennen poisto- tai 'Lisää Uusi' -painikkeen käyttöä!",
+  "Filter by Class": "Suodata Luokan mukaan",
+  "Fund deleted successfully": "Rahasto poistettu onnistuneesti",
+  "In Use": "Käytössä",
+  "Manage": "Hallitse",
+  "No pledges found for the selected fiscal year": "Lupauksia ei löytynyt valitulle tilivuodelle",
+  "No property types found": "Ominaisuustyyppejä ei löytynyt",
+  "Number of records using this property type": "Tätä ominaisuustyyppiä käyttävien tietueiden määrä",
+  "Optional detailed description of this property type": "Valinnainen yksityiskohtainen kuvaus tästä ominaisuustyypistä",
+  "Please correct the errors below.": "Korjaa alla olevat virheet.",
+  "Pledge Amount": "Lupauksen Summa",
+  "Pledge Dashboard": "Lupausten Hallintapaneeli",
+  "Remaining": "Jäljellä",
+  "Remove this attendance count?": "Poista tämä läsnäololuku?",
+  "Select the type of record this property applies to": "Valitse tietuetyyppi, johon tämä ominaisuus liittyy",
+  "That fund name already exists.": "Tämä rahaston nimi on jo olemassa.",
+  "Total Pledges": "Lupaukset Yhteensä",
+  "Track and manage pledge commitments by family and fund": "Seuraa ja hallitse lupausitoumuksia perheen ja rahaston mukaan",
+  "View Properties": "Näytä Ominaisuudet",
+  "e.g., Visitors, Children": "esim. Vierailijat, Lapset",
+  "of pledges": "lupauksista",
+  "records": "tietuetta",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Täytyy alkaa /-merkillä jos ei tyhjä; ei loppu-kauttaviivaa. Vain kirjaimet, numerot, alaviiva, viiva, piste ja / sallittu.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d henkilö",
+    "other": "%d henkilöä"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "Kaikki Luokitukset",
+  "No people found matching your criteria.": "Kriteereitäsi vastaavia henkilöitä ei löytynyt.",
+  "Off": "Pois",
+  "On": "Päällä",
+  "Photo Directory": "Kuvahakemisto",
+  "Reset Filters": "Nollaa Suodattimet",
+  "Show only people with photos": "Näytä vain henkilöt, joilla on kuva"
 }

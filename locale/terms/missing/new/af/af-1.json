@@ -1,42 +1,42 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d maand oud",
+    "other": "%d maande oud"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d jaar oud",
+    "other": "%d jaar oud"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d geleentheid in %s",
+    "other": "%d geleenthede in %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "persoon",
+    "other": "persone"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persoon by die mandjie gevoeg.",
+    "other": "%d Persone by die mandjie gevoeg."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persoon suksesvol by geselekteerde Gesin gevoeg.",
+    "other": "%d Persone suksesvol by geselekteerde Gesin gevoeg."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persoon suksesvol by geselekteerde Groep gevoeg.",
+    "other": "%d Persone suksesvol by geselekteerde Groep gevoeg."
   },
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Moet met / begin as dit nie leeg is nie; geen agterste skuinsstreep nie. Slegs letters, syfers, onderstreep, streep, punt en / toegelaat.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d persoon",
+    "other": "%d persone"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "Alle Klassifikasies",
+  "No people found matching your criteria.": "Geen persone gevind wat aan jou kriteria voldoen nie.",
+  "Off": "Af",
+  "On": "Aan",
+  "Photo Directory": "Foto Gids",
+  "Reset Filters": "Herstel Filters",
+  "Show only people with photos": "Wys slegs mense met foto's"
 }

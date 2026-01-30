@@ -1,8 +1,8 @@
 {
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "No people found matching your criteria.": "आपके मानदंडों से मेल खाने वाले कोई लोग नहीं मिले।",
+  "Off": "बंद",
+  "On": "चालू",
+  "Photo Directory": "फ़ोटो डायरेक्टरी",
+  "Reset Filters": "फ़िल्टर रीसेट करें",
+  "Show only people with photos": "केवल फ़ोटो वाले लोग दिखाएं"
 }

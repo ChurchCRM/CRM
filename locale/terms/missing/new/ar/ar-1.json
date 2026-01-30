@@ -1,81 +1,81 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "عمره %d شهر",
+    "other": "عمره %d أشهر"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "عمره %d سنة",
+    "other": "عمره %d سنوات"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d حدث في %s",
+    "other": "%d أحداث في %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "شخص",
+    "other": "أشخاص"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "تمت إضافة %d شخص إلى السلة.",
+    "other": "تمت إضافة %d أشخاص إلى السلة."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "تمت إضافة %d شخص بنجاح إلى العائلة المحددة.",
+    "other": "تمت إضافة %d أشخاص بنجاح إلى العائلة المحددة."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "تمت إضافة %d شخص بنجاح إلى المجموعة المحددة.",
+    "other": "تمت إضافة %d أشخاص بنجاح إلى المجموعة المحددة."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Add Property Type": "إضافة نوع الخاصية",
+  "Add Your First Property Type": "أضف نوع الخاصية الأول",
+  "Auto-calculated from counts above": "يُحسب تلقائياً من الأعداد أعلاه",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "بحذف هذا الحقل، ستفقد بشكل لا رجعة فيه جميع بيانات أعضاء المجموعة المخصصة لهذا الحقل!",
+  "By deleting this fund, you may affect historical donation records!": "بحذف هذا الصندوق، قد تؤثر على سجلات التبرعات التاريخية!",
+  "Category Name": "اسم الفئة",
+  "Checked In": "تم تسجيل الحضور",
+  "Checked Out": "تم تسجيل المغادرة",
+  "Current Fiscal Year": "السنة المالية الحالية",
+  "Delete (will delete all associated records)": "حذف (سيحذف جميع السجلات المرتبطة)",
+  "Edit Property Type": "تعديل نوع الخاصية",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "أدخل فئات العد مفصولة بفواصل (مثل: الأعضاء، الزوار، الأطفال).",
+  "Enter sermon notes or event text...": "أدخل ملاحظات الموعظة أو نص الحدث...",
+  "Existing Donation Funds": "صناديق التبرعات الموجودة",
+  "Existing Group Properties": "خصائص المجموعة الموجودة",
+  "Failed to update role. Please try again.": "فشل تحديث الدور. يرجى المحاولة مرة أخرى.",
+  "Family Pledges": "تعهدات العائلة",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "ستفقد تغييرات الحقول إذا لم تقم بـ 'حفظ التغييرات' قبل استخدام زر الحذف أو 'إضافة جديد'!",
+  "Filter by Class": "تصفية حسب الفصل",
+  "Fund deleted successfully": "تم حذف الصندوق بنجاح",
+  "In Use": "قيد الاستخدام",
+  "Manage": "إدارة",
+  "No pledges found for the selected fiscal year": "لم يتم العثور على تعهدات للسنة المالية المحددة",
+  "No property types found": "لم يتم العثور على أنواع خصائص",
+  "Number of records using this property type": "عدد السجلات التي تستخدم نوع الخاصية هذا",
+  "Optional detailed description of this property type": "وصف تفصيلي اختياري لنوع الخاصية هذا",
+  "Please correct the errors below.": "يرجى تصحيح الأخطاء أدناه.",
+  "Pledge Amount": "مبلغ التعهد",
+  "Pledge Dashboard": "لوحة تحكم التعهدات",
+  "Remaining": "المتبقي",
+  "Remove this attendance count?": "إزالة عدد الحضور هذا؟",
+  "Select the type of record this property applies to": "حدد نوع السجل الذي تنطبق عليه هذه الخاصية",
+  "That fund name already exists.": "اسم الصندوق هذا موجود بالفعل.",
+  "Total Pledges": "إجمالي التعهدات",
+  "Track and manage pledge commitments by family and fund": "تتبع وإدارة التزامات التعهدات حسب العائلة والصندوق",
+  "View Properties": "عرض الخصائص",
+  "e.g., Visitors, Children": "مثال: الزوار، الأطفال",
+  "of pledges": "من التعهدات",
+  "records": "سجلات",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "يجب أن يبدأ بـ / إذا لم يكن فارغاً؛ بدون شرطة مائلة في النهاية. يُسمح فقط بالأحرف والأرقام والشرطة السفلية والشرطة والنقطة و /.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d شخص",
+    "other": "%d أشخاص"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "جميع التصنيفات",
+  "No people found matching your criteria.": "لم يتم العثور على أشخاص مطابقين لمعاييرك.",
+  "Off": "إيقاف",
+  "On": "تشغيل",
+  "Photo Directory": "دليل الصور",
+  "Reset Filters": "إعادة تعيين الفلاتر",
+  "Show only people with photos": "عرض الأشخاص الذين لديهم صور فقط"
 }

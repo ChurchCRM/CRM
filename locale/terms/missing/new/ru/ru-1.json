@@ -1,82 +1,82 @@
 {
-  "Qatar (‫قطر‬‎)": "",
+  "Qatar (‫قطر‬‎)": "Катар (‫قطر‬‎)",
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d месяц",
+    "other": "%d месяцев"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d год",
+    "other": "%d лет"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d событие в %s",
+    "other": "%d событий в %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "человек",
+    "other": "человек"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d Человек добавлен в Корзину.",
+    "other": "%d Человек добавлено в Корзину."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d Человек успешно добавлен в выбранную Семью.",
+    "other": "%d Человек успешно добавлено в выбранную Семью."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d Человек успешно добавлен в выбранную Группу.",
+    "other": "%d Человек успешно добавлено в выбранную Группу."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Add Property Type": "Добавить Тип Свойства",
+  "Add Your First Property Type": "Добавьте Ваш Первый Тип Свойства",
+  "Auto-calculated from counts above": "Автоматически рассчитано из подсчётов выше",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "Удалив это поле, вы безвозвратно потеряете все данные участников группы, назначенные для этого поля!",
+  "By deleting this fund, you may affect historical donation records!": "Удалив этот фонд, вы можете повлиять на исторические записи пожертвований!",
+  "Category Name": "Название Категории",
+  "Checked In": "Отмечен вход",
+  "Checked Out": "Отмечен выход",
+  "Current Fiscal Year": "Текущий Финансовый Год",
+  "Delete (will delete all associated records)": "Удалить (удалит все связанные записи)",
+  "Edit Property Type": "Редактировать Тип Свойства",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "Введите категории подсчёта через запятую (напр., Члены, Посетители, Дети).",
+  "Enter sermon notes or event text...": "Введите заметки проповеди или текст события...",
+  "Existing Donation Funds": "Существующие Фонды Пожертвований",
+  "Existing Group Properties": "Существующие Свойства Группы",
+  "Failed to update role. Please try again.": "Не удалось обновить роль. Пожалуйста, попробуйте снова.",
+  "Family Pledges": "Семейные Обязательства",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "Изменения полей будут потеряны, если вы не нажмёте 'Сохранить Изменения' перед использованием кнопки удаления или 'Добавить Новый'!",
+  "Filter by Class": "Фильтр по Классу",
+  "Fund deleted successfully": "Фонд успешно удалён",
+  "In Use": "Используется",
+  "Manage": "Управление",
+  "No pledges found for the selected fiscal year": "Обязательства для выбранного финансового года не найдены",
+  "No property types found": "Типы свойств не найдены",
+  "Number of records using this property type": "Количество записей, использующих этот тип свойства",
+  "Optional detailed description of this property type": "Необязательное подробное описание этого типа свойства",
+  "Please correct the errors below.": "Пожалуйста, исправьте ошибки ниже.",
+  "Pledge Amount": "Сумма Обязательства",
+  "Pledge Dashboard": "Панель Обязательств",
+  "Remaining": "Осталось",
+  "Remove this attendance count?": "Удалить этот подсчёт посещаемости?",
+  "Select the type of record this property applies to": "Выберите тип записи, к которой применяется это свойство",
+  "That fund name already exists.": "Такое название фонда уже существует.",
+  "Total Pledges": "Всего Обязательств",
+  "Track and manage pledge commitments by family and fund": "Отслеживайте и управляйте обязательствами по семьям и фондам",
+  "View Properties": "Просмотр Свойств",
+  "e.g., Visitors, Children": "напр., Посетители, Дети",
+  "of pledges": "обязательств",
+  "records": "записей",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Должно начинаться с / если не пусто; без завершающей косой черты. Разрешены только буквы, цифры, подчёркивание, дефис, точка и /.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d человек",
+    "other": "%d человек"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "Все Классификации",
+  "No people found matching your criteria.": "Не найдено людей, соответствующих вашим критериям.",
+  "Off": "Выкл",
+  "On": "Вкл",
+  "Photo Directory": "Фотокаталог",
+  "Reset Filters": "Сбросить Фильтры",
+  "Show only people with photos": "Показать только людей с фотографиями"
 }

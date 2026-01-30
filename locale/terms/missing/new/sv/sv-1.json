@@ -1,81 +1,81 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d månad gammal",
+    "other": "%d månader gammal"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d år gammal",
+    "other": "%d år gammal"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d händelse i %s",
+    "other": "%d händelser i %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "person",
+    "other": "personer"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d Person tillagd i Kundvagnen.",
+    "other": "%d Personer tillagda i Kundvagnen."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d Person har lagts till i den valda Familjen.",
+    "other": "%d Personer har lagts till i den valda Familjen."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d Person har lagts till i den valda Gruppen.",
+    "other": "%d Personer har lagts till i den valda Gruppen."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Add Property Type": "Lägg till Egenskapstyp",
+  "Add Your First Property Type": "Lägg till Din Första Egenskapstyp",
+  "Auto-calculated from counts above": "Automatiskt beräknat från räkningarna ovan",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "Genom att ta bort detta fält kommer du oåterkalleligt att förlora all gruppmedlemsdata som tilldelats detta fält!",
+  "By deleting this fund, you may affect historical donation records!": "Genom att ta bort denna fond kan du påverka historiska donationsregister!",
+  "Category Name": "Kategorinamn",
+  "Checked In": "Incheckad",
+  "Checked Out": "Utcheckad",
+  "Current Fiscal Year": "Nuvarande Räkenskapsår",
+  "Delete (will delete all associated records)": "Ta bort (tar bort alla associerade poster)",
+  "Edit Property Type": "Redigera Egenskapstyp",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "Ange kommaseparerade räknekategorier (t.ex. Medlemmar, Besökare, Barn).",
+  "Enter sermon notes or event text...": "Ange predikningsanteckningar eller händelsetext...",
+  "Existing Donation Funds": "Befintliga Donationsfonder",
+  "Existing Group Properties": "Befintliga Gruppegenskaper",
+  "Failed to update role. Please try again.": "Misslyckades med att uppdatera roll. Försök igen.",
+  "Family Pledges": "Familjelöften",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "Fältändringar kommer att förloras om du inte klickar på 'Spara Ändringar' innan du använder en ta bort- eller 'Lägg till Ny'-knapp!",
+  "Filter by Class": "Filtrera efter Klass",
+  "Fund deleted successfully": "Fonden har tagits bort",
+  "In Use": "I Användning",
+  "Manage": "Hantera",
+  "No pledges found for the selected fiscal year": "Inga löften hittades för det valda räkenskapsåret",
+  "No property types found": "Inga egenskapstyper hittades",
+  "Number of records using this property type": "Antal poster som använder denna egenskapstyp",
+  "Optional detailed description of this property type": "Valfri detaljerad beskrivning av denna egenskapstyp",
+  "Please correct the errors below.": "Vänligen korrigera felen nedan.",
+  "Pledge Amount": "Löftesbelopp",
+  "Pledge Dashboard": "Löftespanel",
+  "Remaining": "Återstående",
+  "Remove this attendance count?": "Ta bort denna närvaroräkning?",
+  "Select the type of record this property applies to": "Välj den posttyp som denna egenskap gäller för",
+  "That fund name already exists.": "Det fondnamnet finns redan.",
+  "Total Pledges": "Totala Löften",
+  "Track and manage pledge commitments by family and fund": "Spåra och hantera löftesåtaganden efter familj och fond",
+  "View Properties": "Visa Egenskaper",
+  "e.g., Visitors, Children": "t.ex. Besökare, Barn",
+  "of pledges": "av löften",
+  "records": "poster",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Måste börja med / om inte tomt; ingen avslutande snedstreck. Endast bokstäver, siffror, understreck, bindestreck, punkt och / tillåtet.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d person",
+    "other": "%d personer"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "Alla Klassificeringar",
+  "No people found matching your criteria.": "Inga personer hittades som matchar dina kriterier.",
+  "Off": "Av",
+  "On": "På",
+  "Photo Directory": "Fotokatalog",
+  "Reset Filters": "Återställ Filter",
+  "Show only people with photos": "Visa endast personer med foton"
 }

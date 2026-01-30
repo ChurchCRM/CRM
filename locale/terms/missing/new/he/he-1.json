@@ -1,81 +1,81 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "בן %d חודש",
+    "other": "בן %d חודשים"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "בן %d שנה",
+    "other": "בן %d שנים"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d אירוע ב-%s",
+    "other": "%d אירועים ב-%s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "אדם",
+    "other": "אנשים"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d אדם נוסף לעגלה.",
+    "other": "%d אנשים נוספו לעגלה."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d אדם נוסף בהצלחה למשפחה שנבחרה.",
+    "other": "%d אנשים נוספו בהצלחה למשפחה שנבחרה."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d אדם נוסף בהצלחה לקבוצה שנבחרה.",
+    "other": "%d אנשים נוספו בהצלחה לקבוצה שנבחרה."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Add Property Type": "הוסף סוג מאפיין",
+  "Add Your First Property Type": "הוסף את סוג המאפיין הראשון שלך",
+  "Auto-calculated from counts above": "מחושב אוטומטית מהספירות למעלה",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "מחיקת שדה זה תגרום לאובדן בלתי הפיך של כל נתוני חברי הקבוצה שהוקצו לשדה זה!",
+  "By deleting this fund, you may affect historical donation records!": "מחיקת קרן זו עלולה להשפיע על רשומות תרומות היסטוריות!",
+  "Category Name": "שם קטגוריה",
+  "Checked In": "נרשם כנוכח",
+  "Checked Out": "נרשם כיוצא",
+  "Current Fiscal Year": "שנת הכספים הנוכחית",
+  "Delete (will delete all associated records)": "מחק (ימחק את כל הרשומות המשויכות)",
+  "Edit Property Type": "ערוך סוג מאפיין",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "הזן קטגוריות ספירה מופרדות בפסיקים (לדוגמה, חברים, מבקרים, ילדים).",
+  "Enter sermon notes or event text...": "הזן הערות דרשה או טקסט אירוע...",
+  "Existing Donation Funds": "קרנות תרומה קיימות",
+  "Existing Group Properties": "מאפייני קבוצה קיימים",
+  "Failed to update role. Please try again.": "עדכון התפקיד נכשל. נא לנסות שוב.",
+  "Family Pledges": "התחייבויות משפחתיות",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "שינויי השדה יאבדו אם לא תלחץ על 'שמור שינויים' לפני שימוש בכפתור מחק או 'הוסף חדש'!",
+  "Filter by Class": "סנן לפי כיתה",
+  "Fund deleted successfully": "הקרן נמחקה בהצלחה",
+  "In Use": "בשימוש",
+  "Manage": "נהל",
+  "No pledges found for the selected fiscal year": "לא נמצאו התחייבויות לשנת הכספים שנבחרה",
+  "No property types found": "לא נמצאו סוגי מאפיינים",
+  "Number of records using this property type": "מספר הרשומות המשתמשות בסוג מאפיין זה",
+  "Optional detailed description of this property type": "תיאור מפורט אופציונלי של סוג מאפיין זה",
+  "Please correct the errors below.": "נא לתקן את השגיאות למטה.",
+  "Pledge Amount": "סכום ההתחייבות",
+  "Pledge Dashboard": "לוח בקרת התחייבויות",
+  "Remaining": "נותר",
+  "Remove this attendance count?": "להסיר ספירת נוכחות זו?",
+  "Select the type of record this property applies to": "בחר את סוג הרשומה שאליה מאפיין זה חל",
+  "That fund name already exists.": "שם קרן זה כבר קיים.",
+  "Total Pledges": "סה\"כ התחייבויות",
+  "Track and manage pledge commitments by family and fund": "עקוב ונהל התחייבויות לפי משפחה וקרן",
+  "View Properties": "הצג מאפיינים",
+  "e.g., Visitors, Children": "לדוגמה, מבקרים, ילדים",
+  "of pledges": "מההתחייבויות",
+  "records": "רשומות",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "חייב להתחיל ב-/ אם לא ריק; ללא קו נטוי בסוף. מותרים רק אותיות, מספרים, קו תחתון, מקף, נקודה ו-/.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d אדם",
+    "other": "%d אנשים"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "כל הסיווגים",
+  "No people found matching your criteria.": "לא נמצאו אנשים התואמים לקריטריונים שלך.",
+  "Off": "כבוי",
+  "On": "פעיל",
+  "Photo Directory": "ספריית תמונות",
+  "Reset Filters": "אפס מסננים",
+  "Show only people with photos": "הצג רק אנשים עם תמונות"
 }

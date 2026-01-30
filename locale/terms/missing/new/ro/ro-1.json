@@ -1,81 +1,81 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d lună",
+    "other": "%d luni"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d an",
+    "other": "%d ani"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d eveniment în %s",
+    "other": "%d evenimente în %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "persoană",
+    "other": "persoane"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persoană adăugată în Coș.",
+    "other": "%d Persoane adăugate în Coș."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persoană adăugată cu succes la Familia selectată.",
+    "other": "%d Persoane adăugate cu succes la Familia selectată."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persoană adăugată cu succes la Grupul selectat.",
+    "other": "%d Persoane adăugate cu succes la Grupul selectat."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Add Property Type": "Adăugați Tip de Proprietate",
+  "Add Your First Property Type": "Adăugați Primul Dvs. Tip de Proprietate",
+  "Auto-calculated from counts above": "Calculat automat din numărătorile de mai sus",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "Prin ștergerea acestui câmp, veți pierde irevocabil toate datele membrilor grupului atribuite acestui câmp!",
+  "By deleting this fund, you may affect historical donation records!": "Prin ștergerea acestui fond, puteți afecta înregistrările istorice ale donațiilor!",
+  "Category Name": "Nume Categorie",
+  "Checked In": "Înregistrat intrare",
+  "Checked Out": "Înregistrat ieșire",
+  "Current Fiscal Year": "Anul Fiscal Curent",
+  "Delete (will delete all associated records)": "Șterge (va șterge toate înregistrările asociate)",
+  "Edit Property Type": "Editați Tipul de Proprietate",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "Introduceți categorii de numărare separate prin virgulă (ex. Membri, Vizitatori, Copii).",
+  "Enter sermon notes or event text...": "Introduceți notițele predicii sau textul evenimentului...",
+  "Existing Donation Funds": "Fonduri de Donații Existente",
+  "Existing Group Properties": "Proprietăți de Grup Existente",
+  "Failed to update role. Please try again.": "Actualizarea rolului a eșuat. Vă rugăm să încercați din nou.",
+  "Family Pledges": "Angajamente de Familie",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "Modificările câmpurilor se vor pierde dacă nu faceți clic pe 'Salvați Modificările' înainte de a utiliza un buton de ștergere sau 'Adăugați Nou'!",
+  "Filter by Class": "Filtrare după Clasă",
+  "Fund deleted successfully": "Fondul a fost șters cu succes",
+  "In Use": "În Uz",
+  "Manage": "Gestionare",
+  "No pledges found for the selected fiscal year": "Nu s-au găsit angajamente pentru anul fiscal selectat",
+  "No property types found": "Nu s-au găsit tipuri de proprietate",
+  "Number of records using this property type": "Numărul de înregistrări care utilizează acest tip de proprietate",
+  "Optional detailed description of this property type": "Descriere detaliată opțională a acestui tip de proprietate",
+  "Please correct the errors below.": "Vă rugăm să corectați erorile de mai jos.",
+  "Pledge Amount": "Sumă Angajament",
+  "Pledge Dashboard": "Panou Angajamente",
+  "Remaining": "Rămas",
+  "Remove this attendance count?": "Eliminați această numărătoare de prezență?",
+  "Select the type of record this property applies to": "Selectați tipul de înregistrare la care se aplică această proprietate",
+  "That fund name already exists.": "Acest nume de fond există deja.",
+  "Total Pledges": "Total Angajamente",
+  "Track and manage pledge commitments by family and fund": "Urmăriți și gestionați angajamentele după familie și fond",
+  "View Properties": "Vizualizare Proprietăți",
+  "e.g., Visitors, Children": "ex. Vizitatori, Copii",
+  "of pledges": "din angajamente",
+  "records": "înregistrări",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Trebuie să înceapă cu / dacă nu este gol; fără bară oblică finală. Sunt permise doar litere, cifre, liniuță jos, cratimă, punct și /.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d persoană",
+    "other": "%d persoane"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "Toate Clasificările",
+  "No people found matching your criteria.": "Nu s-au găsit persoane care să corespundă criteriilor dvs.",
+  "Off": "Oprit",
+  "On": "Pornit",
+  "Photo Directory": "Director Foto",
+  "Reset Filters": "Resetare Filtre",
+  "Show only people with photos": "Afișează doar persoanele cu fotografii"
 }

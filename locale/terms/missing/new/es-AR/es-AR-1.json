@@ -1,81 +1,81 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d mes de edad",
+    "other": "%d meses de edad"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d año de edad",
+    "other": "%d años de edad"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d evento en %s",
+    "other": "%d eventos en %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "persona",
+    "other": "personas"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persona agregada al carrito.",
+    "other": "%d Personas agregadas al carrito."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persona agregada exitosamente a la Familia seleccionada.",
+    "other": "%d Personas agregadas exitosamente a la Familia seleccionada."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d Persona agregada exitosamente al Grupo seleccionado.",
+    "other": "%d Personas agregadas exitosamente al Grupo seleccionado."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Add Property Type": "Agregar Tipo de Propiedad",
+  "Add Your First Property Type": "Agregá tu Primer Tipo de Propiedad",
+  "Auto-calculated from counts above": "Calculado automáticamente de los conteos anteriores",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "¡Al eliminar este campo, perderás irrevocablemente todos los datos de miembros del grupo asignados a este campo!",
+  "By deleting this fund, you may affect historical donation records!": "¡Al eliminar este fondo, podés afectar los registros históricos de donaciones!",
+  "Category Name": "Nombre de Categoría",
+  "Checked In": "Registrado",
+  "Checked Out": "Salida registrada",
+  "Current Fiscal Year": "Año Fiscal Actual",
+  "Delete (will delete all associated records)": "Eliminar (eliminará todos los registros asociados)",
+  "Edit Property Type": "Editar Tipo de Propiedad",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "Ingresá categorías de conteo separadas por comas (ej., Miembros, Visitantes, Niños).",
+  "Enter sermon notes or event text...": "Ingresá notas del sermón o texto del evento...",
+  "Existing Donation Funds": "Fondos de Donación Existentes",
+  "Existing Group Properties": "Propiedades de Grupo Existentes",
+  "Failed to update role. Please try again.": "Error al actualizar el rol. Por favor, intentá de nuevo.",
+  "Family Pledges": "Promesas Familiares",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "¡Los cambios de campo se perderán si no hacés clic en 'Guardar Cambios' antes de usar un botón de eliminar o 'Agregar Nuevo'!",
+  "Filter by Class": "Filtrar por Clase",
+  "Fund deleted successfully": "Fondo eliminado exitosamente",
+  "In Use": "En Uso",
+  "Manage": "Gestionar",
+  "No pledges found for the selected fiscal year": "No se encontraron promesas para el año fiscal seleccionado",
+  "No property types found": "No se encontraron tipos de propiedad",
+  "Number of records using this property type": "Número de registros usando este tipo de propiedad",
+  "Optional detailed description of this property type": "Descripción detallada opcional de este tipo de propiedad",
+  "Please correct the errors below.": "Por favor, corregí los errores a continuación.",
+  "Pledge Amount": "Monto de la Promesa",
+  "Pledge Dashboard": "Panel de Promesas",
+  "Remaining": "Restante",
+  "Remove this attendance count?": "¿Eliminar este conteo de asistencia?",
+  "Select the type of record this property applies to": "Seleccioná el tipo de registro al que se aplica esta propiedad",
+  "That fund name already exists.": "Ese nombre de fondo ya existe.",
+  "Total Pledges": "Total de Promesas",
+  "Track and manage pledge commitments by family and fund": "Rastreá y gestioná compromisos de promesas por familia y fondo",
+  "View Properties": "Ver Propiedades",
+  "e.g., Visitors, Children": "ej., Visitantes, Niños",
+  "of pledges": "de promesas",
+  "records": "registros",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Debe comenzar con / si no está vacío; sin barra final. Solo se permiten letras, números, guión bajo, guión, punto y /.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d persona",
+    "other": "%d personas"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "Todas las Clasificaciones",
+  "No people found matching your criteria.": "No se encontraron personas que coincidan con tus criterios.",
+  "Off": "Apagado",
+  "On": "Encendido",
+  "Photo Directory": "Directorio de Fotos",
+  "Reset Filters": "Restablecer Filtros",
+  "Show only people with photos": "Mostrar solo personas con fotos"
 }

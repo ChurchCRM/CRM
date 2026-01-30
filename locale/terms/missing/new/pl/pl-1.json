@@ -1,82 +1,82 @@
 {
-  "A": "",
+  "A": "A",
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d miesiąc",
+    "other": "%d miesięcy"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d rok",
+    "other": "%d lat"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d wydarzenie w %s",
+    "other": "%d wydarzeń w %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "osoba",
+    "other": "osób"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d Osoba dodana do Koszyka.",
+    "other": "%d Osób dodanych do Koszyka."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d Osoba pomyślnie dodana do wybranej Rodziny.",
+    "other": "%d Osób pomyślnie dodanych do wybranej Rodziny."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d Osoba pomyślnie dodana do wybranej Grupy.",
+    "other": "%d Osób pomyślnie dodanych do wybranej Grupy."
   },
-  "Add Property Type": "",
-  "Add Your First Property Type": "",
-  "Auto-calculated from counts above": "",
-  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "",
-  "By deleting this fund, you may affect historical donation records!": "",
-  "Category Name": "",
-  "Checked In": "",
-  "Checked Out": "",
-  "Current Fiscal Year": "",
-  "Delete (will delete all associated records)": "",
-  "Edit Property Type": "",
-  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "",
-  "Enter sermon notes or event text...": "",
-  "Existing Donation Funds": "",
-  "Existing Group Properties": "",
-  "Failed to update role. Please try again.": "",
-  "Family Pledges": "",
-  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "",
-  "Filter by Class": "",
-  "Fund deleted successfully": "",
-  "In Use": "",
-  "Manage": "",
-  "No pledges found for the selected fiscal year": "",
-  "No property types found": "",
-  "Number of records using this property type": "",
-  "Optional detailed description of this property type": "",
-  "Please correct the errors below.": "",
-  "Pledge Amount": "",
-  "Pledge Dashboard": "",
-  "Remaining": "",
-  "Remove this attendance count?": "",
-  "Select the type of record this property applies to": "",
-  "That fund name already exists.": "",
-  "Total Pledges": "",
-  "Track and manage pledge commitments by family and fund": "",
-  "View Properties": "",
-  "e.g., Visitors, Children": "",
-  "of pledges": "",
-  "records": "",
-  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "",
+  "Add Property Type": "Dodaj Typ Właściwości",
+  "Add Your First Property Type": "Dodaj Swój Pierwszy Typ Właściwości",
+  "Auto-calculated from counts above": "Automatycznie obliczone z powyższych liczb",
+  "By deleting this field, you will irrevocably lose all group member data assigned for this field!": "Usuwając to pole, bezpowrotnie utracisz wszystkie dane członków grupy przypisane do tego pola!",
+  "By deleting this fund, you may affect historical donation records!": "Usuwając ten fundusz, możesz wpłynąć na historyczne zapisy darowizn!",
+  "Category Name": "Nazwa Kategorii",
+  "Checked In": "Zameldowany",
+  "Checked Out": "Wymeldowany",
+  "Current Fiscal Year": "Bieżący Rok Podatkowy",
+  "Delete (will delete all associated records)": "Usuń (usunie wszystkie powiązane rekordy)",
+  "Edit Property Type": "Edytuj Typ Właściwości",
+  "Enter comma-separated count categories (e.g., Members, Visitors, Children).": "Wprowadź kategorie liczenia oddzielone przecinkami (np. Członkowie, Goście, Dzieci).",
+  "Enter sermon notes or event text...": "Wprowadź notatki z kazania lub tekst wydarzenia...",
+  "Existing Donation Funds": "Istniejące Fundusze Darowizn",
+  "Existing Group Properties": "Istniejące Właściwości Grupy",
+  "Failed to update role. Please try again.": "Nie udało się zaktualizować roli. Spróbuj ponownie.",
+  "Family Pledges": "Zobowiązania Rodzinne",
+  "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!": "Zmiany w polach zostaną utracone, jeśli nie klikniesz 'Zapisz Zmiany' przed użyciem przycisku usuń lub 'Dodaj Nowy'!",
+  "Filter by Class": "Filtruj według Klasy",
+  "Fund deleted successfully": "Fundusz został pomyślnie usunięty",
+  "In Use": "W Użyciu",
+  "Manage": "Zarządzaj",
+  "No pledges found for the selected fiscal year": "Nie znaleziono zobowiązań dla wybranego roku podatkowego",
+  "No property types found": "Nie znaleziono typów właściwości",
+  "Number of records using this property type": "Liczba rekordów używających tego typu właściwości",
+  "Optional detailed description of this property type": "Opcjonalny szczegółowy opis tego typu właściwości",
+  "Please correct the errors below.": "Proszę poprawić błędy poniżej.",
+  "Pledge Amount": "Kwota Zobowiązania",
+  "Pledge Dashboard": "Panel Zobowiązań",
+  "Remaining": "Pozostało",
+  "Remove this attendance count?": "Usunąć ten licznik obecności?",
+  "Select the type of record this property applies to": "Wybierz typ rekordu, do którego odnosi się ta właściwość",
+  "That fund name already exists.": "Ta nazwa funduszu już istnieje.",
+  "Total Pledges": "Łączne Zobowiązania",
+  "Track and manage pledge commitments by family and fund": "Śledź i zarządzaj zobowiązaniami według rodziny i funduszu",
+  "View Properties": "Zobacz Właściwości",
+  "e.g., Visitors, Children": "np. Goście, Dzieci",
+  "of pledges": "zobowiązań",
+  "records": "rekordów",
+  "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Musi zaczynać się od / jeśli nie jest puste; bez końcowego ukośnika. Dozwolone są tylko litery, cyfry, podkreślenie, myślnik, kropka i /.",
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d osoba",
+    "other": "%d osób"
   },
-  "All Classifications": "",
-  "No people found matching your criteria.": "",
-  "Off": "",
-  "On": "",
-  "Photo Directory": "",
-  "Reset Filters": "",
-  "Show only people with photos": ""
+  "All Classifications": "Wszystkie Klasyfikacje",
+  "No people found matching your criteria.": "Nie znaleziono osób spełniających kryteria.",
+  "Off": "Wył",
+  "On": "Wł",
+  "Photo Directory": "Katalog Zdjęć",
+  "Reset Filters": "Resetuj Filtry",
+  "Show only people with photos": "Pokaż tylko osoby ze zdjęciami"
 }
