@@ -11365,3 +11365,197 @@ msgstr "ስፓኒሽ - ኤል ሳልቫዶር"
 msgid "Spanish - Mexico"
 msgstr "ስፓኒሽ - ሜክሲኮ"
 
+#: 
+msgid "Add Property Type"
+msgstr "የንብረት ዓይነት ጨምር"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "የመጀመሪያ የንብረት ዓይነትዎን ያክሉ"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "ከላይ ካለው ቆጠራ በራስ-ሰር ይሰላል"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "ይህን መስክ በመሰረዝ፣ ለዚህ መስክ የተመደበውን ሁሉንም የቡድን አባል ውሂብ በማይመለስ ሁኔታ ያጣሉ!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "ይህን ፈንድ በመሰረዝ፣ ታሪካዊ የልገሳ መዝገቦችን ሊጎዱ ይችላሉ!"
+
+#: 
+msgid "Category Name"
+msgstr "የምድብ ስም"
+
+#: 
+msgid "Checked In"
+msgstr "ገብቷል"
+
+#: 
+msgid "Checked Out"
+msgstr "ወጥቷል"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "የአሁኑ የፊስካል አመት"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "ሰርዝ (ሁሉንም ተዛማጅ መዝገቦች ይሰርዛል)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "የንብረት ዓይነት አርትዕ"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "በኮማ የተለዩ የቆጠራ ምድቦችን ያስገቡ (ለምሳሌ፣ አባላት፣ ጎብኝዎች፣ ልጆች)።"
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "የስብከት ማስታወሻዎች ወይም የክስተት ጽሑፍ ያስገቡ..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "ነባር የልገሳ ፈንዶች"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "ነባር የቡድን ባህሪያት"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "ሚናን ማዘመን አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Family Pledges"
+msgstr "የቤተሰብ ቃል ኪዳኖች"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "ሰርዝ ወይም 'አዲስ ጨምር' ቁልፍን ከመጠቀምዎ በፊት 'ለውጦችን አስቀምጥ' ካላደረጉ የመስክ ለውጦች ይጠፋሉ!"
+
+#: 
+msgid "Filter by Class"
+msgstr "በክፍል አጣራ"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "ፈንድ በተሳካ ሁኔታ ተሰርዟል"
+
+#: 
+msgid "In Use"
+msgstr "በአገልግሎት ላይ"
+
+#: 
+msgid "Manage"
+msgstr "አስተዳድር"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "ለተመረጠው የፊስካል አመት ምንም ቃል ኪዳኖች አልተገኙም"
+
+#: 
+msgid "No property types found"
+msgstr "ምንም የንብረት ዓይነቶች አልተገኙም"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "ይህን የንብረት ዓይነት የሚጠቀሙ መዝገቦች ብዛት"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "የዚህ የንብረት ዓይነት አማራጭ ዝርዝር መግለጫ"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "እባክዎ ከታች ያሉትን ስህተቶች ያስተካክሉ።"
+
+#: 
+msgid "Pledge Amount"
+msgstr "የቃል ኪዳን መጠን"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "የቃል ኪዳን ዳሽቦርድ"
+
+#: 
+msgid "Remaining"
+msgstr "ቀሪ"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "ይህን የመገኘት ቆጠራ ያስወግዱ?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "ይህ ንብረት የሚተገበርበትን የመዝገብ ዓይነት ይምረጡ"
+
+#: 
+msgid "That fund name already exists."
+msgstr "ያ የፈንድ ስም ቀድሞውኑ አለ።"
+
+#: 
+msgid "Total Pledges"
+msgstr "ጠቅላላ ቃል ኪዳኖች"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "የቃል ኪዳን ቁርጠኝነቶችን በቤተሰብ እና በፈንድ ይከታተሉ እና ያስተዳድሩ"
+
+#: 
+msgid "View Properties"
+msgstr "ባህሪያትን ይመልከቱ"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "ለምሳሌ፣ ጎብኝዎች፣ ልጆች"
+
+#: 
+msgid "of pledges"
+msgstr "ከቃል ኪዳኖች"
+
+#: 
+msgid "records"
+msgstr "መዝገቦች"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "ባዶ ካልሆነ በ / መጀመር አለበት፤ የመጨረሻ ስላሽ የለም። ፊደሎች፣ ቁጥሮች፣ የታችኛው መስመር፣ ሰረዝ፣ ነጥብ እና / ብቻ ይፈቀዳሉ።"
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d ሰው"
+msgstr[1] "%d ሰዎች"
+
+#: 
+msgid "All Classifications"
+msgstr "ሁሉም ምደባዎች"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "መስፈርትዎን የሚያሟሉ ሰዎች አልተገኙም።"
+
+#: 
+msgid "Off"
+msgstr "ጠፍቷል"
+
+#: 
+msgid "On"
+msgstr "በርቷል"
+
+#: 
+msgid "Photo Directory"
+msgstr "የፎቶ ማውጫ"
+
+#: 
+msgid "Reset Filters"
+msgstr "ማጣሪያዎችን ዳግም አስጀምር"
+
+#: 
+msgid "Show only people with photos"
+msgstr "ፎቶ ያላቸውን ሰዎች ብቻ አሳይ"
+

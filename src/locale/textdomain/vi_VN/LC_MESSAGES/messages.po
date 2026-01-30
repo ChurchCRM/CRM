@@ -11346,3 +11346,196 @@ msgstr "Tiếng Tây Ban Nha - El Salvador"
 msgid "Spanish - Mexico"
 msgstr "Tiếng Tây Ban Nha - Mexico"
 
+#: 
+msgid "Add Property Type"
+msgstr "Thêm Loại Thuộc tính"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Thêm Loại Thuộc tính Đầu tiên của Bạn"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Tự động tính từ các số đếm ở trên"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Bằng cách xóa trường này, bạn sẽ mất vĩnh viễn tất cả dữ liệu thành viên nhóm được gán cho trường này!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Bằng cách xóa quỹ này, bạn có thể ảnh hưởng đến các bản ghi quyên góp lịch sử!"
+
+#: 
+msgid "Category Name"
+msgstr "Tên Danh mục"
+
+#: 
+msgid "Checked In"
+msgstr "Đã điểm danh vào"
+
+#: 
+msgid "Checked Out"
+msgstr "Đã điểm danh ra"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Năm Tài chính Hiện tại"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Xóa (sẽ xóa tất cả các bản ghi liên quan)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Chỉnh sửa Loại Thuộc tính"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Nhập các danh mục đếm phân cách bằng dấu phẩy (ví dụ: Thành viên, Khách, Trẻ em)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Nhập ghi chú bài giảng hoặc văn bản sự kiện..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Quỹ Quyên góp Hiện có"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Thuộc tính Nhóm Hiện có"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Không thể cập nhật vai trò. Vui lòng thử lại."
+
+#: 
+msgid "Family Pledges"
+msgstr "Cam kết Gia đình"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Các thay đổi trường sẽ bị mất nếu bạn không nhấp 'Lưu Thay đổi' trước khi sử dụng nút xóa hoặc 'Thêm Mới'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Lọc theo Lớp"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Quỹ đã được xóa thành công"
+
+#: 
+msgid "In Use"
+msgstr "Đang Sử dụng"
+
+#: 
+msgid "Manage"
+msgstr "Quản lý"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Không tìm thấy cam kết cho năm tài chính đã chọn"
+
+#: 
+msgid "No property types found"
+msgstr "Không tìm thấy loại thuộc tính"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Số bản ghi sử dụng loại thuộc tính này"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Mô tả chi tiết tùy chọn của loại thuộc tính này"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Vui lòng sửa các lỗi bên dưới."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Số tiền Cam kết"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Bảng điều khiển Cam kết"
+
+#: 
+msgid "Remaining"
+msgstr "Còn lại"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Xóa số đếm điểm danh này?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Chọn loại bản ghi mà thuộc tính này áp dụng"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Tên quỹ đó đã tồn tại."
+
+#: 
+msgid "Total Pledges"
+msgstr "Tổng Cam kết"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Theo dõi và quản lý các cam kết theo gia đình và quỹ"
+
+#: 
+msgid "View Properties"
+msgstr "Xem Thuộc tính"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "ví dụ: Khách, Trẻ em"
+
+#: 
+msgid "of pledges"
+msgstr "cam kết"
+
+#: 
+msgid "records"
+msgstr "bản ghi"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Phải bắt đầu bằng / nếu không trống; không có dấu gạch chéo ở cuối. Chỉ cho phép chữ cái, số, gạch dưới, gạch ngang, dấu chấm và /."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d người"
+
+#: 
+msgid "All Classifications"
+msgstr "Tất cả Phân loại"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Không tìm thấy người nào phù hợp với tiêu chí của bạn."
+
+#: 
+msgid "Off"
+msgstr "Tắt"
+
+#: 
+msgid "On"
+msgstr "Bật"
+
+#: 
+msgid "Photo Directory"
+msgstr "Thư mục Ảnh"
+
+#: 
+msgid "Reset Filters"
+msgstr "Đặt lại Bộ lọc"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Chỉ hiển thị người có ảnh"
+

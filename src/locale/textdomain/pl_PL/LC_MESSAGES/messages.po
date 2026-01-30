@@ -11400,3 +11400,191 @@ msgstr "Hiszpański - Salwador"
 msgid "Spanish - Mexico"
 msgstr "Hiszpański - Meksyk"
 
+#: 
+msgid "Add Property Type"
+msgstr "Dodaj Typ Właściwości"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Dodaj Swój Pierwszy Typ Właściwości"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automatycznie obliczone z powyższych liczb"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Usuwając to pole, bezpowrotnie utracisz wszystkie dane członków grupy przypisane do tego pola!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Usuwając ten fundusz, możesz wpłynąć na historyczne zapisy darowizn!"
+
+#: 
+msgid "Category Name"
+msgstr "Nazwa Kategorii"
+
+#: 
+msgid "Checked In"
+msgstr "Zameldowany"
+
+#: 
+msgid "Checked Out"
+msgstr "Wymeldowany"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Bieżący Rok Podatkowy"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Usuń (usunie wszystkie powiązane rekordy)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Edytuj Typ Właściwości"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Wprowadź kategorie liczenia oddzielone przecinkami (np. Członkowie, Goście, Dzieci)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Wprowadź notatki z kazania lub tekst wydarzenia..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Istniejące Fundusze Darowizn"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Istniejące Właściwości Grupy"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Nie udało się zaktualizować roli. Spróbuj ponownie."
+
+#: 
+msgid "Family Pledges"
+msgstr "Zobowiązania Rodzinne"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Zmiany w polach zostaną utracone, jeśli nie klikniesz 'Zapisz Zmiany' przed użyciem przycisku usuń lub 'Dodaj Nowy'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filtruj według Klasy"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fundusz został pomyślnie usunięty"
+
+#: 
+msgid "In Use"
+msgstr "W Użyciu"
+
+#: 
+msgid "Manage"
+msgstr "Zarządzaj"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Nie znaleziono zobowiązań dla wybranego roku podatkowego"
+
+#: 
+msgid "No property types found"
+msgstr "Nie znaleziono typów właściwości"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Liczba rekordów używających tego typu właściwości"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Opcjonalny szczegółowy opis tego typu właściwości"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Proszę poprawić błędy poniżej."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Kwota Zobowiązania"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Panel Zobowiązań"
+
+#: 
+msgid "Remaining"
+msgstr "Pozostało"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Usunąć ten licznik obecności?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Wybierz typ rekordu, do którego odnosi się ta właściwość"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Ta nazwa funduszu już istnieje."
+
+#: 
+msgid "Total Pledges"
+msgstr "Łączne Zobowiązania"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Śledź i zarządzaj zobowiązaniami według rodziny i funduszu"
+
+#: 
+msgid "View Properties"
+msgstr "Zobacz Właściwości"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "np. Goście, Dzieci"
+
+#: 
+msgid "of pledges"
+msgstr "zobowiązań"
+
+#: 
+msgid "records"
+msgstr "rekordów"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Musi zaczynać się od / jeśli nie jest puste; bez końcowego ukośnika. Dozwolone są tylko litery, cyfry, podkreślenie, myślnik, kropka i /."
+
+#: 
+msgid "All Classifications"
+msgstr "Wszystkie Klasyfikacje"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Nie znaleziono osób spełniających kryteria."
+
+#: 
+msgid "Off"
+msgstr "Wył"
+
+#: 
+msgid "On"
+msgstr "Wł"
+
+#: 
+msgid "Photo Directory"
+msgstr "Katalog Zdjęć"
+
+#: 
+msgid "Reset Filters"
+msgstr "Resetuj Filtry"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Pokaż tylko osoby ze zdjęciami"
+

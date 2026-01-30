@@ -11347,3 +11347,197 @@ msgstr "Hispaania - El Salvador"
 msgid "Spanish - Mexico"
 msgstr "Hispaania - Mehhiko"
 
+#: 
+msgid "Add Property Type"
+msgstr "Lisa Omaduse Tüüp"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Lisa Oma Esimene Omaduse Tüüp"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automaatselt arvutatud ülaltoodud arvudest"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Selle välja kustutamisega kaotate pöördumatult kõik sellele väljale määratud grupi liikmete andmed!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Selle fondi kustutamisega võite mõjutada ajaloolisi annetuste kirjeid!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategooria Nimi"
+
+#: 
+msgid "Checked In"
+msgstr "Sisse registreeritud"
+
+#: 
+msgid "Checked Out"
+msgstr "Välja registreeritud"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Praegune Eelarveaasta"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Kustuta (kustutab kõik seotud kirjed)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Muuda Omaduse Tüüpi"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Sisestage komadega eraldatud loenduskategooriad (nt Liikmed, Külastajad, Lapsed)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Sisestage jutluse märkmed või sündmuse tekst..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Olemasolevad Annetuste Fondid"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Olemasolevad Grupi Omadused"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Rolli värskendamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Family Pledges"
+msgstr "Perekonna Lubadused"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Välja muudatused lähevad kaotsi, kui te ei klõpsa 'Salvesta Muudatused' enne kustutamise või 'Lisa Uus' nupu kasutamist!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filtreeri Klassi järgi"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fond edukalt kustutatud"
+
+#: 
+msgid "In Use"
+msgstr "Kasutusel"
+
+#: 
+msgid "Manage"
+msgstr "Halda"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Valitud eelarveaasta kohta lubadusi ei leitud"
+
+#: 
+msgid "No property types found"
+msgstr "Omaduse tüüpe ei leitud"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Seda omaduse tüüpi kasutavate kirjete arv"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Selle omaduse tüübi valikuline üksikasjalik kirjeldus"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Palun parandage allpool olevad vead."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Lubaduse Summa"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Lubaduste Töölaud"
+
+#: 
+msgid "Remaining"
+msgstr "Järelejäänud"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Eemalda see osavõtu arv?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Valige kirje tüüp, millele see omadus kehtib"
+
+#: 
+msgid "That fund name already exists."
+msgstr "See fondi nimi on juba olemas."
+
+#: 
+msgid "Total Pledges"
+msgstr "Kokku Lubadusi"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Jälgige ja hallake lubaduste kohustusi perekonna ja fondi järgi"
+
+#: 
+msgid "View Properties"
+msgstr "Vaata Omadusi"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "nt Külastajad, Lapsed"
+
+#: 
+msgid "of pledges"
+msgstr "lubadustest"
+
+#: 
+msgid "records"
+msgstr "kirjet"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Peab algama /-ga, kui pole tühi; ilma lõpukaldkriipsuta. Lubatud on ainult tähed, numbrid, allkriips, sidekriips, punkt ja /."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d isik"
+msgstr[1] "%d isikut"
+
+#: 
+msgid "All Classifications"
+msgstr "Kõik Klassifikatsioonid"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Teie kriteeriumidele vastavaid inimesi ei leitud."
+
+#: 
+msgid "Off"
+msgstr "Väljas"
+
+#: 
+msgid "On"
+msgstr "Sees"
+
+#: 
+msgid "Photo Directory"
+msgstr "Fotode Kataloog"
+
+#: 
+msgid "Reset Filters"
+msgstr "Lähtesta Filtrid"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Näita ainult fotodega inimesi"
+

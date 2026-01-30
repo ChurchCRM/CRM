@@ -11408,3 +11408,197 @@ msgstr "Spanyol - El Salvador"
 msgid "Spanish - Mexico"
 msgstr "Spanyol - Mexikó"
 
+#: 
+msgid "Add Property Type"
+msgstr "Tulajdonságtípus Hozzáadása"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Adja Hozzá az Első Tulajdonságtípusát"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automatikusan számítva a fenti számokból"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "A mező törlésével visszavonhatatlanul elveszíti az ehhez a mezőhöz rendelt összes csoporttag adatot!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Az alap törlésével befolyásolhatja a korábbi adományrekordokat!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategória Neve"
+
+#: 
+msgid "Checked In"
+msgstr "Bejelentkezett"
+
+#: 
+msgid "Checked Out"
+msgstr "Kijelentkezett"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Aktuális Pénzügyi Év"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Törlés (törli az összes kapcsolódó rekordot)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Tulajdonságtípus Szerkesztése"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Adja meg a vesszővel elválasztott számlálási kategóriákat (pl. Tagok, Látogatók, Gyermekek)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Adja meg a prédikáció jegyzeteit vagy az esemény szövegét..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Meglévő Adomány Alapok"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Meglévő Csoport Tulajdonságok"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "A szerepkör frissítése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Family Pledges"
+msgstr "Családi Ígéretek"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "A mező módosításai elvesznek, ha nem kattint a 'Változások Mentése' gombra a törlés vagy 'Új Hozzáadása' gomb használata előtt!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Szűrés Osztály szerint"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Alap sikeresen törölve"
+
+#: 
+msgid "In Use"
+msgstr "Használatban"
+
+#: 
+msgid "Manage"
+msgstr "Kezelés"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Nem találhatók ígéretek a kiválasztott pénzügyi évre"
+
+#: 
+msgid "No property types found"
+msgstr "Nem találhatók tulajdonságtípusok"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "A tulajdonságtípust használó rekordok száma"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "A tulajdonságtípus opcionális részletes leírása"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Kérjük, javítsa ki az alábbi hibákat."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Ígéret Összege"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Ígéret Vezérlőpult"
+
+#: 
+msgid "Remaining"
+msgstr "Hátralévő"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Eltávolítja ezt a jelenléti számot?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Válassza ki a rekord típusát, amelyre ez a tulajdonság vonatkozik"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Ez az alap név már létezik."
+
+#: 
+msgid "Total Pledges"
+msgstr "Összes Ígéret"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Kövesse és kezelje az ígéret vállalásokat család és alap szerint"
+
+#: 
+msgid "View Properties"
+msgstr "Tulajdonságok Megtekintése"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "pl. Látogatók, Gyermekek"
+
+#: 
+msgid "of pledges"
+msgstr "ígéretből"
+
+#: 
+msgid "records"
+msgstr "rekord"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "/-vel kell kezdődnie, ha nem üres; nincs záró perjel. Csak betűk, számok, aláhúzás, kötőjel, pont és / megengedett."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d személy"
+msgstr[1] "%d személy"
+
+#: 
+msgid "All Classifications"
+msgstr "Összes Besorolás"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Nem találhatók a feltételeinek megfelelő személyek."
+
+#: 
+msgid "Off"
+msgstr "Ki"
+
+#: 
+msgid "On"
+msgstr "Be"
+
+#: 
+msgid "Photo Directory"
+msgstr "Fotó Könyvtár"
+
+#: 
+msgid "Reset Filters"
+msgstr "Szűrők Visszaállítása"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Csak fotóval rendelkező személyek mutatása"
+

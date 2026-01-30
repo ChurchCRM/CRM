@@ -11332,3 +11332,191 @@ msgstr "Španělština - El Salvador"
 msgid "Spanish - Mexico"
 msgstr "Španělština - Mexiko"
 
+#: 
+msgid "Add Property Type"
+msgstr "Přidat typ vlastnosti"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Přidejte svůj první typ vlastnosti"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automaticky vypočítáno z výše uvedených počtů"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Smazáním tohoto pole nevratně ztratíte všechna data členů skupiny přiřazená k tomuto poli!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Smazáním tohoto fondu můžete ovlivnit historické záznamy o darech!"
+
+#: 
+msgid "Category Name"
+msgstr "Název kategorie"
+
+#: 
+msgid "Checked In"
+msgstr "Přihlášen"
+
+#: 
+msgid "Checked Out"
+msgstr "Odhlášen"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Aktuální fiskální rok"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Smazat (smaže všechny související záznamy)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Upravit typ vlastnosti"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Zadejte kategorie počtů oddělené čárkami (např. Členové, Návštěvníci, Děti)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Zadejte poznámky ke kázání nebo text události..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Existující fondy darů"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Existující vlastnosti skupiny"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Nepodařilo se aktualizovat roli. Zkuste to prosím znovu."
+
+#: 
+msgid "Family Pledges"
+msgstr "Rodinné sliby"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Změny polí budou ztraceny, pokud neprovedete 'Uložit změny' před použitím tlačítka smazat nebo 'Přidat nový'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filtrovat podle třídy"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fond úspěšně smazán"
+
+#: 
+msgid "In Use"
+msgstr "Používá se"
+
+#: 
+msgid "Manage"
+msgstr "Spravovat"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Pro vybraný fiskální rok nebyly nalezeny žádné sliby"
+
+#: 
+msgid "No property types found"
+msgstr "Nebyly nalezeny žádné typy vlastností"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Počet záznamů používajících tento typ vlastnosti"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Volitelný podrobný popis tohoto typu vlastnosti"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Opravte prosím níže uvedené chyby."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Částka slibu"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Přehled slibů"
+
+#: 
+msgid "Remaining"
+msgstr "Zbývající"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Odebrat tento počet účasti?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Vyberte typ záznamu, na který se tato vlastnost vztahuje"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Tento název fondu již existuje."
+
+#: 
+msgid "Total Pledges"
+msgstr "Celkové sliby"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Sledujte a spravujte závazky slibů podle rodiny a fondu"
+
+#: 
+msgid "View Properties"
+msgstr "Zobrazit vlastnosti"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "např. Návštěvníci, Děti"
+
+#: 
+msgid "of pledges"
+msgstr "ze slibů"
+
+#: 
+msgid "records"
+msgstr "záznamy"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Musí začínat / pokud není prázdné; bez koncového lomítka. Povolena jsou pouze písmena, čísla, podtržítko, pomlčka, tečka a /."
+
+#: 
+msgid "All Classifications"
+msgstr "Všechny klasifikace"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Nebyly nalezeny žádné osoby odpovídající vašim kritériím."
+
+#: 
+msgid "Off"
+msgstr "Vypnuto"
+
+#: 
+msgid "On"
+msgstr "Zapnuto"
+
+#: 
+msgid "Photo Directory"
+msgstr "Adresář fotografií"
+
+#: 
+msgid "Reset Filters"
+msgstr "Resetovat filtry"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Zobrazit pouze osoby s fotografiemi"
+

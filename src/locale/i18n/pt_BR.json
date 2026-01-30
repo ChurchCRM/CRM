@@ -2777,5 +2777,16 @@
     "e.g., Visitors, Children": "Por exemplo, visitantes, crianças.",
     "of pledges": "de promessas",
     "records": "registros",
-    "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Deve começar com / se não estiver vazio; não é permitida barra no final. Somente letras, números, sublinhado, hífen, ponto e / são permitidos."
+    "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Deve começar com / se não estiver vazio; não é permitida barra no final. Somente letras, números, sublinhado, hífen, ponto e / são permitidos.",
+    "%d person": {
+        "one": "%d pessoa",
+        "other": "%d pessoas"
+    },
+    "All Classifications": "Todas as Classificações",
+    "No people found matching your criteria.": "Nenhuma pessoa encontrada que corresponda aos seus critérios.",
+    "Off": "Desligado",
+    "On": "Ligado",
+    "Photo Directory": "Diretório de Fotos",
+    "Reset Filters": "Redefinir Filtros",
+    "Show only people with photos": "Mostrar apenas pessoas com fotos"
 }

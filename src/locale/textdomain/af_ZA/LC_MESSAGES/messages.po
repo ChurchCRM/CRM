@@ -11505,3 +11505,41 @@ msgstr "van beloftes"
 msgid "records"
 msgstr "rekords"
 
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Moet met / begin as dit nie leeg is nie; geen agterste skuinsstreep nie. Slegs letters, syfers, onderstreep, streep, punt en / toegelaat."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d persoon"
+msgstr[1] "%d persone"
+
+#: 
+msgid "All Classifications"
+msgstr "Alle Klassifikasies"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Geen persone gevind wat aan jou kriteria voldoen nie."
+
+#: 
+msgid "Off"
+msgstr "Af"
+
+#: 
+msgid "On"
+msgstr "Aan"
+
+#: 
+msgid "Photo Directory"
+msgstr "Foto Gids"
+
+#: 
+msgid "Reset Filters"
+msgstr "Herstel Filters"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Wys slegs mense met foto's"
+
