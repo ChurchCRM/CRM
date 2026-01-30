@@ -9,6 +9,7 @@ use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PropertyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -130,7 +131,9 @@ function addProperty(Request $request, Response $response, $id, $property): Resp
     $propertyValue = '';
     if (!empty($property->getProPrompt())) {
         $data = $request->getParsedBody();
-        $propertyValue = empty($data['value']) ? 'N/A' : $data['value'];
+        // GHSA-8r36-fvxj-26qv: Sanitize property value to prevent stored XSS
+        $rawValue = empty($data['value']) ? 'N/A' : $data['value'];
+        $propertyValue = InputUtils::sanitizeText($rawValue);
         LoggerUtils::getAppLogger()->debug('final value is: ' . $propertyValue);
     }
 

@@ -64,15 +64,19 @@ function initializeFamilyView() {
                     let { id: propId, name: propName, value: propVal, allowEdit, allowDelete } = prop;
                     selectedFamilyProperties.push(propId);
 
+                    // GHSA-8r36-fvxj-26qv: Escape property values to prevent XSS
+                    let safePropName = window.CRM.escapeHtml(propName || "");
+                    let safePropVal = window.CRM.escapeHtml(propVal || "");
+
                     let editIcon = allowEdit
                         ? `<a href="${window.CRM.root}/PropertyAssign.php?FamilyID=${window.CRM.currentFamily}&PropertyID=${propId}"><button type="button" class="btn btn-xs btn-primary"><i class="fa-solid fa-pen"></i></button></a>`
                         : "";
                     let deleteIcon = allowDelete
-                        ? `<div class="btn btn-xs btn-danger delete-property" data-property-id="${propId}" data-property-name="${propName}"><i class="fa-solid fa-trash"></i></div>`
+                        ? `<div class="btn btn-xs btn-danger delete-property" data-property-id="${propId}" data-property-name="${safePropName}"><i class="fa-solid fa-trash"></i></div>`
                         : "";
 
                     $("#family-property-table").append(
-                        `<tr><td>${deleteIcon} ${editIcon}</td><td>${propName}</td><td>${propVal}</td></tr>`,
+                        `<tr><td>${deleteIcon} ${editIcon}</td><td>${safePropName}</td><td>${safePropVal}</td></tr>`,
                     );
                 });
 
@@ -107,10 +111,12 @@ function initializeFamilyView() {
     function deleteProperty() {
         let propId = $(this).attr("data-property-id");
         let propName = $(this).attr("data-property-name");
+        // GHSA-8r36-fvxj-26qv: Escape property name in bootbox message
+        let safePropName = window.CRM.escapeHtml(propName || "");
 
         bootbox.confirm({
             title: i18next.t("Family Property Unassignment"),
-            message: `${i18next.t("Do you want to remove")} ${propName} ${i18next.t("property")}`,
+            message: `${i18next.t("Do you want to remove")} ${safePropName} ${i18next.t("property")}`,
             locale: window.CRM.locale,
             callback: function (result) {
                 if (result) {
