@@ -11405,3 +11405,191 @@ msgstr "Spaniolă - El Salvador"
 msgid "Spanish - Mexico"
 msgstr "Spaniolă - Mexic"
 
+#: 
+msgid "Add Property Type"
+msgstr "Adăugați Tip de Proprietate"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Adăugați Primul Dvs. Tip de Proprietate"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Calculat automat din numărătorile de mai sus"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Prin ștergerea acestui câmp, veți pierde irevocabil toate datele membrilor grupului atribuite acestui câmp!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Prin ștergerea acestui fond, puteți afecta înregistrările istorice ale donațiilor!"
+
+#: 
+msgid "Category Name"
+msgstr "Nume Categorie"
+
+#: 
+msgid "Checked In"
+msgstr "Înregistrat intrare"
+
+#: 
+msgid "Checked Out"
+msgstr "Înregistrat ieșire"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Anul Fiscal Curent"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Șterge (va șterge toate înregistrările asociate)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Editați Tipul de Proprietate"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Introduceți categorii de numărare separate prin virgulă (ex. Membri, Vizitatori, Copii)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Introduceți notițele predicii sau textul evenimentului..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Fonduri de Donații Existente"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Proprietăți de Grup Existente"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Actualizarea rolului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Family Pledges"
+msgstr "Angajamente de Familie"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Modificările câmpurilor se vor pierde dacă nu faceți clic pe 'Salvați Modificările' înainte de a utiliza un buton de ștergere sau 'Adăugați Nou'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filtrare după Clasă"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fondul a fost șters cu succes"
+
+#: 
+msgid "In Use"
+msgstr "În Uz"
+
+#: 
+msgid "Manage"
+msgstr "Gestionare"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Nu s-au găsit angajamente pentru anul fiscal selectat"
+
+#: 
+msgid "No property types found"
+msgstr "Nu s-au găsit tipuri de proprietate"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Numărul de înregistrări care utilizează acest tip de proprietate"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Descriere detaliată opțională a acestui tip de proprietate"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Vă rugăm să corectați erorile de mai jos."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Sumă Angajament"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Panou Angajamente"
+
+#: 
+msgid "Remaining"
+msgstr "Rămas"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Eliminați această numărătoare de prezență?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Selectați tipul de înregistrare la care se aplică această proprietate"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Acest nume de fond există deja."
+
+#: 
+msgid "Total Pledges"
+msgstr "Total Angajamente"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Urmăriți și gestionați angajamentele după familie și fond"
+
+#: 
+msgid "View Properties"
+msgstr "Vizualizare Proprietăți"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "ex. Vizitatori, Copii"
+
+#: 
+msgid "of pledges"
+msgstr "din angajamente"
+
+#: 
+msgid "records"
+msgstr "înregistrări"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Trebuie să înceapă cu / dacă nu este gol; fără bară oblică finală. Sunt permise doar litere, cifre, liniuță jos, cratimă, punct și /."
+
+#: 
+msgid "All Classifications"
+msgstr "Toate Clasificările"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Nu s-au găsit persoane care să corespundă criteriilor dvs."
+
+#: 
+msgid "Off"
+msgstr "Oprit"
+
+#: 
+msgid "On"
+msgstr "Pornit"
+
+#: 
+msgid "Photo Directory"
+msgstr "Director Foto"
+
+#: 
+msgid "Reset Filters"
+msgstr "Resetare Filtre"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Afișează doar persoanele cu fotografii"
+

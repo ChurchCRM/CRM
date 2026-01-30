@@ -11348,3 +11348,197 @@ msgstr "Ισπανικά - Ελ Σαλβαδόρ"
 msgid "Spanish - Mexico"
 msgstr "Ισπανικά - Μεξικό"
 
+#: 
+msgid "Add Property Type"
+msgstr "Προσθήκη Τύπου Ιδιότητας"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Προσθέστε τον Πρώτο Τύπο Ιδιότητας"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Υπολογίζεται αυτόματα από τους παραπάνω αριθμούς"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Διαγράφοντας αυτό το πεδίο, θα χάσετε αμετάκλητα όλα τα δεδομένα μελών ομάδας που έχουν εκχωρηθεί σε αυτό το πεδίο!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Διαγράφοντας αυτό το ταμείο, μπορεί να επηρεάσετε ιστορικά αρχεία δωρεών!"
+
+#: 
+msgid "Category Name"
+msgstr "Όνομα Κατηγορίας"
+
+#: 
+msgid "Checked In"
+msgstr "Άφιξη"
+
+#: 
+msgid "Checked Out"
+msgstr "Αναχώρηση"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Τρέχον Οικονομικό Έτος"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Διαγραφή (θα διαγράψει όλες τις σχετικές εγγραφές)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Επεξεργασία Τύπου Ιδιότητας"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Εισάγετε κατηγορίες αρίθμησης διαχωρισμένες με κόμμα (π.χ., Μέλη, Επισκέπτες, Παιδιά)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Εισάγετε σημειώσεις κηρύγματος ή κείμενο εκδήλωσης..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Υπάρχοντα Ταμεία Δωρεών"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Υπάρχουσες Ιδιότητες Ομάδας"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Αποτυχία ενημέρωσης ρόλου. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Family Pledges"
+msgstr "Οικογενειακές Υποσχέσεις"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Οι αλλαγές πεδίων θα χαθούν αν δεν 'Αποθηκεύσετε τις Αλλαγές' πριν χρησιμοποιήσετε το κουμπί διαγραφής ή 'Προσθήκη Νέου'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Φιλτράρισμα κατά Τάξη"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Το ταμείο διαγράφηκε επιτυχώς"
+
+#: 
+msgid "In Use"
+msgstr "Σε Χρήση"
+
+#: 
+msgid "Manage"
+msgstr "Διαχείριση"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Δεν βρέθηκαν υποσχέσεις για το επιλεγμένο οικονομικό έτος"
+
+#: 
+msgid "No property types found"
+msgstr "Δεν βρέθηκαν τύποι ιδιοτήτων"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Αριθμός εγγραφών που χρησιμοποιούν αυτόν τον τύπο ιδιότητας"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Προαιρετική λεπτομερής περιγραφή αυτού του τύπου ιδιότητας"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Παρακαλώ διορθώστε τα παρακάτω σφάλματα."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Ποσό Υπόσχεσης"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Πίνακας Υποσχέσεων"
+
+#: 
+msgid "Remaining"
+msgstr "Υπολειπόμενο"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Αφαίρεση αυτής της καταμέτρησης παρουσίας;"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Επιλέξτε τον τύπο εγγραφής στον οποίο εφαρμόζεται αυτή η ιδιότητα"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Αυτό το όνομα ταμείου υπάρχει ήδη."
+
+#: 
+msgid "Total Pledges"
+msgstr "Συνολικές Υποσχέσεις"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Παρακολουθήστε και διαχειριστείτε τις δεσμεύσεις υποσχέσεων ανά οικογένεια και ταμείο"
+
+#: 
+msgid "View Properties"
+msgstr "Προβολή Ιδιοτήτων"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "π.χ., Επισκέπτες, Παιδιά"
+
+#: 
+msgid "of pledges"
+msgstr "των υποσχέσεων"
+
+#: 
+msgid "records"
+msgstr "εγγραφές"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Πρέπει να αρχίζει με / αν δεν είναι κενό· χωρίς κάθετο στο τέλος. Επιτρέπονται μόνο γράμματα, αριθμοί, κάτω παύλα, παύλα, τελεία και /."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d άτομο"
+msgstr[1] "%d άτομα"
+
+#: 
+msgid "All Classifications"
+msgstr "Όλες οι Ταξινομήσεις"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Δεν βρέθηκαν άτομα που να ταιριάζουν με τα κριτήριά σας."
+
+#: 
+msgid "Off"
+msgstr "Απενεργοποιημένο"
+
+#: 
+msgid "On"
+msgstr "Ενεργοποιημένο"
+
+#: 
+msgid "Photo Directory"
+msgstr "Κατάλογος Φωτογραφιών"
+
+#: 
+msgid "Reset Filters"
+msgstr "Επαναφορά Φίλτρων"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Εμφάνιση μόνο ατόμων με φωτογραφίες"
+

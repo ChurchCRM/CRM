@@ -11319,3 +11319,191 @@ msgstr "الإسبانية - السلفادور"
 msgid "Spanish - Mexico"
 msgstr "الإسبانية - المكسيك"
 
+#: 
+msgid "Add Property Type"
+msgstr "إضافة نوع الخاصية"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "أضف نوع الخاصية الأول"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "يُحسب تلقائياً من الأعداد أعلاه"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "بحذف هذا الحقل، ستفقد بشكل لا رجعة فيه جميع بيانات أعضاء المجموعة المخصصة لهذا الحقل!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "بحذف هذا الصندوق، قد تؤثر على سجلات التبرعات التاريخية!"
+
+#: 
+msgid "Category Name"
+msgstr "اسم الفئة"
+
+#: 
+msgid "Checked In"
+msgstr "تم تسجيل الحضور"
+
+#: 
+msgid "Checked Out"
+msgstr "تم تسجيل المغادرة"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "السنة المالية الحالية"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "حذف (سيحذف جميع السجلات المرتبطة)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "تعديل نوع الخاصية"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "أدخل فئات العد مفصولة بفواصل (مثل: الأعضاء، الزوار، الأطفال)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "أدخل ملاحظات الموعظة أو نص الحدث..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "صناديق التبرعات الموجودة"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "خصائص المجموعة الموجودة"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "فشل تحديث الدور. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Family Pledges"
+msgstr "تعهدات العائلة"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "ستفقد تغييرات الحقول إذا لم تقم بـ 'حفظ التغييرات' قبل استخدام زر الحذف أو 'إضافة جديد'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "تصفية حسب الفصل"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "تم حذف الصندوق بنجاح"
+
+#: 
+msgid "In Use"
+msgstr "قيد الاستخدام"
+
+#: 
+msgid "Manage"
+msgstr "إدارة"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "لم يتم العثور على تعهدات للسنة المالية المحددة"
+
+#: 
+msgid "No property types found"
+msgstr "لم يتم العثور على أنواع خصائص"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "عدد السجلات التي تستخدم نوع الخاصية هذا"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "وصف تفصيلي اختياري لنوع الخاصية هذا"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "يرجى تصحيح الأخطاء أدناه."
+
+#: 
+msgid "Pledge Amount"
+msgstr "مبلغ التعهد"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "لوحة تحكم التعهدات"
+
+#: 
+msgid "Remaining"
+msgstr "المتبقي"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "إزالة عدد الحضور هذا؟"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "حدد نوع السجل الذي تنطبق عليه هذه الخاصية"
+
+#: 
+msgid "That fund name already exists."
+msgstr "اسم الصندوق هذا موجود بالفعل."
+
+#: 
+msgid "Total Pledges"
+msgstr "إجمالي التعهدات"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "تتبع وإدارة التزامات التعهدات حسب العائلة والصندوق"
+
+#: 
+msgid "View Properties"
+msgstr "عرض الخصائص"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "مثال: الزوار، الأطفال"
+
+#: 
+msgid "of pledges"
+msgstr "من التعهدات"
+
+#: 
+msgid "records"
+msgstr "سجلات"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "يجب أن يبدأ بـ / إذا لم يكن فارغاً؛ بدون شرطة مائلة في النهاية. يُسمح فقط بالأحرف والأرقام والشرطة السفلية والشرطة والنقطة و /."
+
+#: 
+msgid "All Classifications"
+msgstr "جميع التصنيفات"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "لم يتم العثور على أشخاص مطابقين لمعاييرك."
+
+#: 
+msgid "Off"
+msgstr "إيقاف"
+
+#: 
+msgid "On"
+msgstr "تشغيل"
+
+#: 
+msgid "Photo Directory"
+msgstr "دليل الصور"
+
+#: 
+msgid "Reset Filters"
+msgstr "إعادة تعيين الفلاتر"
+
+#: 
+msgid "Show only people with photos"
+msgstr "عرض الأشخاص الذين لديهم صور فقط"
+

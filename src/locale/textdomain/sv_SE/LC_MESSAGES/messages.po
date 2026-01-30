@@ -11473,3 +11473,197 @@ msgstr "Spanska - El Salvador"
 msgid "Spanish - Mexico"
 msgstr "Spanska - Mexiko"
 
+#: 
+msgid "Add Property Type"
+msgstr "Lägg till Egenskapstyp"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Lägg till Din Första Egenskapstyp"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automatiskt beräknat från räkningarna ovan"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Genom att ta bort detta fält kommer du oåterkalleligt att förlora all gruppmedlemsdata som tilldelats detta fält!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Genom att ta bort denna fond kan du påverka historiska donationsregister!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategorinamn"
+
+#: 
+msgid "Checked In"
+msgstr "Incheckad"
+
+#: 
+msgid "Checked Out"
+msgstr "Utcheckad"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Nuvarande Räkenskapsår"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Ta bort (tar bort alla associerade poster)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Redigera Egenskapstyp"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Ange kommaseparerade räknekategorier (t.ex. Medlemmar, Besökare, Barn)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Ange predikningsanteckningar eller händelsetext..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Befintliga Donationsfonder"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Befintliga Gruppegenskaper"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Misslyckades med att uppdatera roll. Försök igen."
+
+#: 
+msgid "Family Pledges"
+msgstr "Familjelöften"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Fältändringar kommer att förloras om du inte klickar på 'Spara Ändringar' innan du använder en ta bort- eller 'Lägg till Ny'-knapp!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filtrera efter Klass"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fonden har tagits bort"
+
+#: 
+msgid "In Use"
+msgstr "I Användning"
+
+#: 
+msgid "Manage"
+msgstr "Hantera"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Inga löften hittades för det valda räkenskapsåret"
+
+#: 
+msgid "No property types found"
+msgstr "Inga egenskapstyper hittades"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Antal poster som använder denna egenskapstyp"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Valfri detaljerad beskrivning av denna egenskapstyp"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Vänligen korrigera felen nedan."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Löftesbelopp"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Löftespanel"
+
+#: 
+msgid "Remaining"
+msgstr "Återstående"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Ta bort denna närvaroräkning?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Välj den posttyp som denna egenskap gäller för"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Det fondnamnet finns redan."
+
+#: 
+msgid "Total Pledges"
+msgstr "Totala Löften"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Spåra och hantera löftesåtaganden efter familj och fond"
+
+#: 
+msgid "View Properties"
+msgstr "Visa Egenskaper"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "t.ex. Besökare, Barn"
+
+#: 
+msgid "of pledges"
+msgstr "av löften"
+
+#: 
+msgid "records"
+msgstr "poster"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Måste börja med / om inte tomt; ingen avslutande snedstreck. Endast bokstäver, siffror, understreck, bindestreck, punkt och / tillåtet."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d person"
+msgstr[1] "%d personer"
+
+#: 
+msgid "All Classifications"
+msgstr "Alla Klassificeringar"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Inga personer hittades som matchar dina kriterier."
+
+#: 
+msgid "Off"
+msgstr "Av"
+
+#: 
+msgid "On"
+msgstr "På"
+
+#: 
+msgid "Photo Directory"
+msgstr "Fotokatalog"
+
+#: 
+msgid "Reset Filters"
+msgstr "Återställ Filter"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Visa endast personer med foton"
+

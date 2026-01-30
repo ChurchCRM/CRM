@@ -11453,3 +11453,37 @@ msgstr "registros"
 msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
 msgstr "Deve começar com / se não estiver vazio; não é permitida barra no final. Somente letras, números, sublinhado, hífen, ponto e / são permitidos."
 
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d pessoa"
+msgstr[1] "%d pessoas"
+
+#: 
+msgid "All Classifications"
+msgstr "Todas as Classificações"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Nenhuma pessoa encontrada que corresponda aos seus critérios."
+
+#: 
+msgid "Off"
+msgstr "Desligado"
+
+#: 
+msgid "On"
+msgstr "Ligado"
+
+#: 
+msgid "Photo Directory"
+msgstr "Diretório de Fotos"
+
+#: 
+msgid "Reset Filters"
+msgstr "Redefinir Filtros"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Mostrar apenas pessoas com fotos"
+

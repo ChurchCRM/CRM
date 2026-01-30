@@ -11331,3 +11331,196 @@ msgstr "스페인어 - 엘살바도르"
 msgid "Spanish - Mexico"
 msgstr "스페인어 - 멕시코"
 
+#: 
+msgid "Add Property Type"
+msgstr "속성 유형 추가"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "첫 번째 속성 유형 추가"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "위의 숫자에서 자동 계산됨"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "이 필드를 삭제하면 이 필드에 할당된 모든 그룹 구성원 데이터가 영구적으로 삭제됩니다!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "이 기금을 삭제하면 과거 기부 기록에 영향을 줄 수 있습니다!"
+
+#: 
+msgid "Category Name"
+msgstr "카테고리 이름"
+
+#: 
+msgid "Checked In"
+msgstr "체크인 완료"
+
+#: 
+msgid "Checked Out"
+msgstr "체크아웃 완료"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "현재 회계연도"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "삭제 (모든 관련 레코드가 삭제됩니다)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "속성 유형 편집"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "쉼표로 구분된 카운트 카테고리를 입력하세요 (예: 회원, 방문자, 어린이)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "설교 노트 또는 이벤트 텍스트를 입력하세요..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "기존 기부 기금"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "기존 그룹 속성"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "역할 업데이트에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Family Pledges"
+msgstr "가족 서약"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "삭제 또는 '새로 추가' 버튼을 사용하기 전에 '변경 사항 저장'을 클릭하지 않으면 필드 변경 사항이 손실됩니다!"
+
+#: 
+msgid "Filter by Class"
+msgstr "클래스별 필터"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "기금이 성공적으로 삭제되었습니다"
+
+#: 
+msgid "In Use"
+msgstr "사용 중"
+
+#: 
+msgid "Manage"
+msgstr "관리"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "선택한 회계연도에 대한 서약이 없습니다"
+
+#: 
+msgid "No property types found"
+msgstr "속성 유형을 찾을 수 없습니다"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "이 속성 유형을 사용하는 레코드 수"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "이 속성 유형에 대한 선택적 상세 설명"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "아래 오류를 수정해 주세요."
+
+#: 
+msgid "Pledge Amount"
+msgstr "서약 금액"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "서약 대시보드"
+
+#: 
+msgid "Remaining"
+msgstr "남은 금액"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "이 출석 수를 제거하시겠습니까?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "이 속성이 적용되는 레코드 유형을 선택하세요"
+
+#: 
+msgid "That fund name already exists."
+msgstr "해당 기금 이름이 이미 존재합니다."
+
+#: 
+msgid "Total Pledges"
+msgstr "총 서약"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "가족 및 기금별 서약 약정 추적 및 관리"
+
+#: 
+msgid "View Properties"
+msgstr "속성 보기"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "예: 방문자, 어린이"
+
+#: 
+msgid "of pledges"
+msgstr "서약 중"
+
+#: 
+msgid "records"
+msgstr "레코드"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "비어 있지 않으면 /로 시작해야 합니다. 끝에 슬래시 없음. 문자, 숫자, 밑줄, 대시, 점 및 /만 허용됩니다."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d명"
+
+#: 
+msgid "All Classifications"
+msgstr "모든 분류"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "조건에 맞는 사람이 없습니다."
+
+#: 
+msgid "Off"
+msgstr "끔"
+
+#: 
+msgid "On"
+msgstr "켬"
+
+#: 
+msgid "Photo Directory"
+msgstr "사진 디렉토리"
+
+#: 
+msgid "Reset Filters"
+msgstr "필터 초기화"
+
+#: 
+msgid "Show only people with photos"
+msgstr "사진이 있는 사람만 표시"
+

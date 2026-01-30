@@ -2776,5 +2776,17 @@
     "View Properties": "Bekyk eienskappe",
     "e.g., Visitors, Children": "bv., Besoekers, Kinders",
     "of pledges": "van beloftes",
-    "records": "rekords"
+    "records": "rekords",
+    "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Moet met / begin as dit nie leeg is nie; geen agterste skuinsstreep nie. Slegs letters, syfers, onderstreep, streep, punt en / toegelaat.",
+    "%d person": {
+        "one": "%d persoon",
+        "other": "%d persone"
+    },
+    "All Classifications": "Alle Klassifikasies",
+    "No people found matching your criteria.": "Geen persone gevind wat aan jou kriteria voldoen nie.",
+    "Off": "Af",
+    "On": "Aan",
+    "Photo Directory": "Foto Gids",
+    "Reset Filters": "Herstel Filters",
+    "Show only people with photos": "Wys slegs mense met foto's"
 }

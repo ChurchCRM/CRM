@@ -11335,3 +11335,196 @@ msgstr "Spanyol - El Salvador"
 msgid "Spanish - Mexico"
 msgstr "Spanyol - Meksiko"
 
+#: 
+msgid "Add Property Type"
+msgstr "Tambah Jenis Properti"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Tambahkan Jenis Properti Pertama Anda"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Dihitung otomatis dari hitungan di atas"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Dengan menghapus bidang ini, Anda akan kehilangan semua data anggota grup yang ditetapkan untuk bidang ini secara permanen!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Dengan menghapus dana ini, Anda mungkin mempengaruhi catatan donasi historis!"
+
+#: 
+msgid "Category Name"
+msgstr "Nama Kategori"
+
+#: 
+msgid "Checked In"
+msgstr "Sudah Masuk"
+
+#: 
+msgid "Checked Out"
+msgstr "Sudah Keluar"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Tahun Fiskal Saat Ini"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Hapus (akan menghapus semua catatan terkait)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Edit Jenis Properti"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Masukkan kategori hitungan yang dipisahkan koma (mis., Anggota, Pengunjung, Anak-anak)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Masukkan catatan khotbah atau teks acara..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Dana Donasi yang Ada"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Properti Grup yang Ada"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Gagal memperbarui peran. Silakan coba lagi."
+
+#: 
+msgid "Family Pledges"
+msgstr "Janji Keluarga"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Perubahan bidang akan hilang jika Anda tidak 'Simpan Perubahan' sebelum menggunakan tombol hapus atau 'Tambah Baru'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filter berdasarkan Kelas"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Dana berhasil dihapus"
+
+#: 
+msgid "In Use"
+msgstr "Sedang Digunakan"
+
+#: 
+msgid "Manage"
+msgstr "Kelola"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Tidak ada janji ditemukan untuk tahun fiskal yang dipilih"
+
+#: 
+msgid "No property types found"
+msgstr "Tidak ada jenis properti ditemukan"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Jumlah catatan yang menggunakan jenis properti ini"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Deskripsi detail opsional dari jenis properti ini"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Silakan perbaiki kesalahan di bawah ini."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Jumlah Janji"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Dasbor Janji"
+
+#: 
+msgid "Remaining"
+msgstr "Tersisa"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Hapus hitungan kehadiran ini?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Pilih jenis catatan yang berlaku untuk properti ini"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Nama dana tersebut sudah ada."
+
+#: 
+msgid "Total Pledges"
+msgstr "Total Janji"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Lacak dan kelola komitmen janji berdasarkan keluarga dan dana"
+
+#: 
+msgid "View Properties"
+msgstr "Lihat Properti"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "mis., Pengunjung, Anak-anak"
+
+#: 
+msgid "of pledges"
+msgstr "dari janji"
+
+#: 
+msgid "records"
+msgstr "catatan"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Harus dimulai dengan / jika tidak kosong; tanpa garis miring di akhir. Hanya huruf, angka, garis bawah, tanda hubung, titik dan / yang diizinkan."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d orang"
+
+#: 
+msgid "All Classifications"
+msgstr "Semua Klasifikasi"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Tidak ada orang ditemukan yang sesuai dengan kriteria Anda."
+
+#: 
+msgid "Off"
+msgstr "Mati"
+
+#: 
+msgid "On"
+msgstr "Hidup"
+
+#: 
+msgid "Photo Directory"
+msgstr "Direktori Foto"
+
+#: 
+msgid "Reset Filters"
+msgstr "Reset Filter"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Tampilkan hanya orang dengan foto"
+

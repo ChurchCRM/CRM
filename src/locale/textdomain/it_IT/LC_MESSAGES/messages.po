@@ -11370,3 +11370,197 @@ msgstr "Spagnolo - El Salvador"
 msgid "Spanish - Mexico"
 msgstr "Spagnolo - Messico"
 
+#: 
+msgid "Add Property Type"
+msgstr "Aggiungi Tipo di Proprietà"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Aggiungi il Tuo Primo Tipo di Proprietà"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Calcolato automaticamente dai conteggi sopra"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Eliminando questo campo, perderai irrevocabilmente tutti i dati dei membri del gruppo assegnati a questo campo!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Eliminando questo fondo, potresti influire sui record storici delle donazioni!"
+
+#: 
+msgid "Category Name"
+msgstr "Nome Categoria"
+
+#: 
+msgid "Checked In"
+msgstr "Check-in effettuato"
+
+#: 
+msgid "Checked Out"
+msgstr "Check-out effettuato"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Anno Fiscale Corrente"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Elimina (eliminerà tutti i record associati)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Modifica Tipo di Proprietà"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Inserisci categorie di conteggio separate da virgole (es. Membri, Visitatori, Bambini)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Inserisci note del sermone o testo dell'evento..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Fondi di Donazione Esistenti"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Proprietà di Gruppo Esistenti"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Aggiornamento del ruolo non riuscito. Riprova."
+
+#: 
+msgid "Family Pledges"
+msgstr "Impegni Familiari"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Le modifiche ai campi andranno perse se non fai clic su 'Salva Modifiche' prima di usare un pulsante elimina o 'Aggiungi Nuovo'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filtra per Classe"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fondo eliminato con successo"
+
+#: 
+msgid "In Use"
+msgstr "In Uso"
+
+#: 
+msgid "Manage"
+msgstr "Gestisci"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Nessun impegno trovato per l'anno fiscale selezionato"
+
+#: 
+msgid "No property types found"
+msgstr "Nessun tipo di proprietà trovato"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Numero di record che utilizzano questo tipo di proprietà"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Descrizione dettagliata opzionale di questo tipo di proprietà"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Correggi gli errori qui sotto."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Importo dell'Impegno"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Dashboard degli Impegni"
+
+#: 
+msgid "Remaining"
+msgstr "Rimanente"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Rimuovere questo conteggio presenze?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Seleziona il tipo di record a cui si applica questa proprietà"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Quel nome di fondo esiste già."
+
+#: 
+msgid "Total Pledges"
+msgstr "Totale Impegni"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Traccia e gestisci gli impegni per famiglia e fondo"
+
+#: 
+msgid "View Properties"
+msgstr "Visualizza Proprietà"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "es. Visitatori, Bambini"
+
+#: 
+msgid "of pledges"
+msgstr "degli impegni"
+
+#: 
+msgid "records"
+msgstr "record"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Deve iniziare con / se non vuoto; nessuna barra finale. Sono consentiti solo lettere, numeri, trattino basso, trattino, punto e /."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d persona"
+msgstr[1] "%d persone"
+
+#: 
+msgid "All Classifications"
+msgstr "Tutte le Classificazioni"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Nessuna persona trovata corrispondente ai tuoi criteri."
+
+#: 
+msgid "Off"
+msgstr "Spento"
+
+#: 
+msgid "On"
+msgstr "Acceso"
+
+#: 
+msgid "Photo Directory"
+msgstr "Directory Foto"
+
+#: 
+msgid "Reset Filters"
+msgstr "Reimposta Filtri"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Mostra solo persone con foto"
+

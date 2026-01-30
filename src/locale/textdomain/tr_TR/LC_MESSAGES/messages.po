@@ -11348,3 +11348,197 @@ msgstr "İspanyolca - El Salvador"
 msgid "Spanish - Mexico"
 msgstr "İspanyolca - Meksika"
 
+#: 
+msgid "Add Property Type"
+msgstr "Özellik Türü Ekle"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "İlk Özellik Türünüzü Ekleyin"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Yukarıdaki sayılardan otomatik hesaplandı"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Bu alanı silerek, bu alana atanan tüm grup üyesi verilerini geri dönüşsüz olarak kaybedeceksiniz!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Bu fonu silerek, geçmiş bağış kayıtlarını etkileyebilirsiniz!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategori Adı"
+
+#: 
+msgid "Checked In"
+msgstr "Giriş Yapıldı"
+
+#: 
+msgid "Checked Out"
+msgstr "Çıkış Yapıldı"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Mevcut Mali Yıl"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Sil (tüm ilişkili kayıtları silecek)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Özellik Türünü Düzenle"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Virgülle ayrılmış sayım kategorileri girin (örn., Üyeler, Ziyaretçiler, Çocuklar)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Vaaz notları veya etkinlik metni girin..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Mevcut Bağış Fonları"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Mevcut Grup Özellikleri"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Rol güncellenemedi. Lütfen tekrar deneyin."
+
+#: 
+msgid "Family Pledges"
+msgstr "Aile Taahhütleri"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Bir silme veya 'Yeni Ekle' düğmesini kullanmadan önce 'Değişiklikleri Kaydet'e tıklamazsanız alan değişiklikleri kaybolacak!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Sınıfa Göre Filtrele"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fon başarıyla silindi"
+
+#: 
+msgid "In Use"
+msgstr "Kullanımda"
+
+#: 
+msgid "Manage"
+msgstr "Yönet"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Seçilen mali yıl için taahhüt bulunamadı"
+
+#: 
+msgid "No property types found"
+msgstr "Özellik türü bulunamadı"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Bu özellik türünü kullanan kayıt sayısı"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Bu özellik türünün isteğe bağlı ayrıntılı açıklaması"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Lütfen aşağıdaki hataları düzeltin."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Taahhüt Tutarı"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Taahhüt Paneli"
+
+#: 
+msgid "Remaining"
+msgstr "Kalan"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Bu katılım sayısını kaldır?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Bu özelliğin uygulandığı kayıt türünü seçin"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Bu fon adı zaten mevcut."
+
+#: 
+msgid "Total Pledges"
+msgstr "Toplam Taahhütler"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Aile ve fona göre taahhüt yükümlülüklerini takip edin ve yönetin"
+
+#: 
+msgid "View Properties"
+msgstr "Özellikleri Görüntüle"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "örn., Ziyaretçiler, Çocuklar"
+
+#: 
+msgid "of pledges"
+msgstr "taahhüt"
+
+#: 
+msgid "records"
+msgstr "kayıt"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Boş değilse / ile başlamalı; sonda eğik çizgi yok. Yalnızca harfler, sayılar, alt çizgi, tire, nokta ve / izin verilir."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d kişi"
+msgstr[1] "%d kişi"
+
+#: 
+msgid "All Classifications"
+msgstr "Tüm Sınıflandırmalar"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Kriterlerinize uyan kişi bulunamadı."
+
+#: 
+msgid "Off"
+msgstr "Kapalı"
+
+#: 
+msgid "On"
+msgstr "Açık"
+
+#: 
+msgid "Photo Directory"
+msgstr "Fotoğraf Dizini"
+
+#: 
+msgid "Reset Filters"
+msgstr "Filtreleri Sıfırla"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Yalnızca fotoğrafı olan kişileri göster"
+
