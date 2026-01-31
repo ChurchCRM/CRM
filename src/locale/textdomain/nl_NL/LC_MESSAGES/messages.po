@@ -3959,12 +3959,6 @@ msgstr "Zoeken"
 msgid "Field"
 msgstr "Veld"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Geregistreerde leerlingen"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4058,11 +4052,6 @@ msgstr "De zondagsschoolklas waar u op wil zoeken"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Groep met geregistreerde leerlingen"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "De lidmaatschapsjubileummaand waarop u wilt zoeken"
 
@@ -4095,11 +4084,6 @@ msgstr "Dit jaar toegezegd"
 #: 
 msgid "but not this year"
 msgstr "maar niet dit jaar"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiscaal jaar"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4164,11 +4148,6 @@ msgstr "Ontbrekende toezeggingen"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Toezeggingen gezinnen per fiscaal jaar"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Aangepaste zoekopdracht"
 
@@ -4181,11 +4160,6 @@ msgstr "Retourneert persoonsrecords waaraan de opgegeven eigenschap is toegeweze
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Personen met een verjaardag in een gegeven maand"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Vind geregistreerde leden"
 
 #. Context: query_qry
 #: 
@@ -4211,11 +4185,6 @@ msgstr "Toezeggingen tussen twee boekjaren vergelijken"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Zoek mensen die het ene jaar hebben geschonken, maar het andere niet"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Giften op achternaam voor elk doel van het geselecteerde fiscale jaar"
 
 #. Context: query_qry
 #: 
@@ -7418,13 +7387,13 @@ msgstr "Maximaal aantal agendagebeurtenissen"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d maand oud"
 msgstr[1] "%d maanden oud"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d jaar oud"
 msgstr[1] "%d jaar oud"
 
@@ -9203,7 +9172,7 @@ msgstr "storting(en) zonder betalingen"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d gebeurtenis in %s"
 msgstr[1] "%d gebeurtenissen in %s"
 
@@ -9461,7 +9430,7 @@ msgstr "optioneel"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "persoon"
 msgstr[1] "personen"
 
@@ -11199,19 +11168,19 @@ msgstr "moet worden geconfigureerd met een versleutelingssleutel"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d persoon aan winkelwagen toegevoegd."
 msgstr[1] "%d personen aan winkelwagen toegevoegd."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde familie."
 msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde familie."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d persoon succesvol toegevoegd aan geselecteerde groep."
 msgstr[1] "%d personen succesvol toegevoegd aan geselecteerde groep."
 
@@ -11374,4 +11343,198 @@ msgstr "Spaans - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Spaans - Mexico"
+
+#: 
+msgid "Add Property Type"
+msgstr "Eigenschapstype Toevoegen"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Voeg Uw Eerste Eigenschapstype Toe"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automatisch berekend uit bovenstaande tellingen"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Door dit veld te verwijderen, verliest u onherroepelijk alle groepslidgegevens die aan dit veld zijn toegewezen!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Door dit fonds te verwijderen, kunt u historische donatiegegevens beïnvloeden!"
+
+#: 
+msgid "Category Name"
+msgstr "Categorienaam"
+
+#: 
+msgid "Checked In"
+msgstr "Ingecheckt"
+
+#: 
+msgid "Checked Out"
+msgstr "Uitgecheckt"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Huidig Boekjaar"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Verwijderen (verwijdert alle gekoppelde records)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Eigenschapstype Bewerken"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Voer door komma's gescheiden telcategorieën in (bijv. Leden, Bezoekers, Kinderen)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Voer preeknotities of evenementtekst in..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Bestaande Donatiefondsen"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Bestaande Groepseigenschappen"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Rol bijwerken mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Family Pledges"
+msgstr "Familietoezeggingen"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Veldwijzigingen gaan verloren als u niet op 'Wijzigingen Opslaan' klikt voordat u een verwijder- of 'Nieuw Toevoegen'-knop gebruikt!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filteren op Klasse"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fonds succesvol verwijderd"
+
+#: 
+msgid "In Use"
+msgstr "In Gebruik"
+
+#: 
+msgid "Manage"
+msgstr "Beheren"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Geen toezeggingen gevonden voor het geselecteerde boekjaar"
+
+#: 
+msgid "No property types found"
+msgstr "Geen eigenschapstypen gevonden"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Aantal records dat dit eigenschapstype gebruikt"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Optionele gedetailleerde beschrijving van dit eigenschapstype"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Corrigeer de fouten hieronder."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Toezeggingsbedrag"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Toezeggingendashboard"
+
+#: 
+msgid "Remaining"
+msgstr "Resterend"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Deze aanwezigheidstelling verwijderen?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Selecteer het recordtype waarop deze eigenschap van toepassing is"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Die fondsnaam bestaat al."
+
+#: 
+msgid "Total Pledges"
+msgstr "Totale Toezeggingen"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Volg en beheer toezeggingen per familie en fonds"
+
+#: 
+msgid "View Properties"
+msgstr "Eigenschappen Bekijken"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "bijv. Bezoekers, Kinderen"
+
+#: 
+msgid "of pledges"
+msgstr "van toezeggingen"
+
+#: 
+msgid "records"
+msgstr "records"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Moet beginnen met / indien niet leeg; geen afsluitende schuine streep. Alleen letters, cijfers, onderstrepingsteken, streepje, punt en / zijn toegestaan."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d persoon"
+msgstr[1] "%d personen"
+
+#: 
+msgid "All Classifications"
+msgstr "Alle Classificaties"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Geen personen gevonden die aan uw criteria voldoen."
+
+#: 
+msgid "Off"
+msgstr "Uit"
+
+#: 
+msgid "On"
+msgstr "Aan"
+
+#: 
+msgid "Photo Directory"
+msgstr "Fotomap"
+
+#: 
+msgid "Reset Filters"
+msgstr "Filters Resetten"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Toon alleen personen met foto's"
 

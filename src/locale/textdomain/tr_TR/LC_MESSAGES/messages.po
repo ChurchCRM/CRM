@@ -3959,12 +3959,6 @@ msgstr "Arama"
 msgid "Field"
 msgstr "Alan"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Kayıtlı Öğrenciler"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4058,11 +4052,6 @@ msgstr "Kayıtların iade edilmesini istediğiniz Pazar Okulu Sınıfı."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Kayıtlı öğrenci grubu"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Kayıtların iade edilmesini istediğiniz üyelik yıldönümü ayı."
 
@@ -4095,11 +4084,6 @@ msgstr "Bu yıl söz verdi"
 #: 
 msgid "but not this year"
 msgstr "Ama bu yıl değil"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Mali yıl."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4163,11 +4147,6 @@ msgstr "Eksik Taahhütler"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Mali yıla kadar aile sözü"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Özel arama"
 
@@ -4180,11 +4159,6 @@ msgstr "Verilen mülke atanan kişi kayıtlarını döndürür."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Belirli bir ayda doğum günleri olan insanlar"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Kayıtlı Öğrencileri Bulun"
 
 #. Context: query_qry
 #: 
@@ -4210,11 +4184,6 @@ msgstr "İki mali yıl arasındaki taahhütleri karşılaştırın"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Bir yıl vaat eden ama başka bir kişiyi bulun"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Seçilen mali yıl için her fon için aile ismine göre rehin özeti"
 
 #. Context: query_qry
 #: 
@@ -7421,13 +7390,13 @@ msgstr "Maksimum takvim etkinliği sayısı"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d Ay önce"
 msgstr[1] "%d Ay önce"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d yıl önce"
 msgstr[1] "%d yıl önce"
 
@@ -9207,7 +9176,7 @@ msgstr "ödemesi olmayan para yatırma(lar)"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%s içinde %d etkinlik"
 msgstr[1] "%s içinde %d etkinlik"
 
@@ -9465,7 +9434,7 @@ msgstr "isteğe bağlı"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "kişi"
 msgstr[1] "kişi"
 
@@ -11203,19 +11172,19 @@ msgstr "bir şifreleme anahtarı ile yapılandırılmalıdır"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Kişi Sepete eklendi."
 msgstr[1] "%d Kişi Sepete eklendi."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d Kişi seçilen Aileye başarıyla eklendi."
 msgstr[1] "%d Kişi seçilen Aileye başarıyla eklendi."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d Kişi seçilen Gruba başarıyla eklendi."
 msgstr[1] "%d Kişi seçilen Gruba başarıyla eklendi."
 
@@ -11378,4 +11347,198 @@ msgstr "İspanyolca - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "İspanyolca - Meksika"
+
+#: 
+msgid "Add Property Type"
+msgstr "Özellik Türü Ekle"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "İlk Özellik Türünüzü Ekleyin"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Yukarıdaki sayılardan otomatik hesaplandı"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Bu alanı silerek, bu alana atanan tüm grup üyesi verilerini geri dönüşsüz olarak kaybedeceksiniz!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Bu fonu silerek, geçmiş bağış kayıtlarını etkileyebilirsiniz!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategori Adı"
+
+#: 
+msgid "Checked In"
+msgstr "Giriş Yapıldı"
+
+#: 
+msgid "Checked Out"
+msgstr "Çıkış Yapıldı"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Mevcut Mali Yıl"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Sil (tüm ilişkili kayıtları silecek)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Özellik Türünü Düzenle"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Virgülle ayrılmış sayım kategorileri girin (örn., Üyeler, Ziyaretçiler, Çocuklar)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Vaaz notları veya etkinlik metni girin..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Mevcut Bağış Fonları"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Mevcut Grup Özellikleri"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Rol güncellenemedi. Lütfen tekrar deneyin."
+
+#: 
+msgid "Family Pledges"
+msgstr "Aile Taahhütleri"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Bir silme veya 'Yeni Ekle' düğmesini kullanmadan önce 'Değişiklikleri Kaydet'e tıklamazsanız alan değişiklikleri kaybolacak!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Sınıfa Göre Filtrele"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fon başarıyla silindi"
+
+#: 
+msgid "In Use"
+msgstr "Kullanımda"
+
+#: 
+msgid "Manage"
+msgstr "Yönet"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Seçilen mali yıl için taahhüt bulunamadı"
+
+#: 
+msgid "No property types found"
+msgstr "Özellik türü bulunamadı"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Bu özellik türünü kullanan kayıt sayısı"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Bu özellik türünün isteğe bağlı ayrıntılı açıklaması"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Lütfen aşağıdaki hataları düzeltin."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Taahhüt Tutarı"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Taahhüt Paneli"
+
+#: 
+msgid "Remaining"
+msgstr "Kalan"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Bu katılım sayısını kaldır?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Bu özelliğin uygulandığı kayıt türünü seçin"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Bu fon adı zaten mevcut."
+
+#: 
+msgid "Total Pledges"
+msgstr "Toplam Taahhütler"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Aile ve fona göre taahhüt yükümlülüklerini takip edin ve yönetin"
+
+#: 
+msgid "View Properties"
+msgstr "Özellikleri Görüntüle"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "örn., Ziyaretçiler, Çocuklar"
+
+#: 
+msgid "of pledges"
+msgstr "taahhüt"
+
+#: 
+msgid "records"
+msgstr "kayıt"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Boş değilse / ile başlamalı; sonda eğik çizgi yok. Yalnızca harfler, sayılar, alt çizgi, tire, nokta ve / izin verilir."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d kişi"
+msgstr[1] "%d kişi"
+
+#: 
+msgid "All Classifications"
+msgstr "Tüm Sınıflandırmalar"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Kriterlerinize uyan kişi bulunamadı."
+
+#: 
+msgid "Off"
+msgstr "Kapalı"
+
+#: 
+msgid "On"
+msgstr "Açık"
+
+#: 
+msgid "Photo Directory"
+msgstr "Fotoğraf Dizini"
+
+#: 
+msgid "Reset Filters"
+msgstr "Filtreleri Sıfırla"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Yalnızca fotoğrafı olan kişileri göster"
 

@@ -3955,12 +3955,6 @@ msgstr "Tafuta"
 msgid "Field"
 msgstr "Shamba"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Wanafunzi waliosajiliwa"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4053,11 +4047,6 @@ msgstr "Darasa la shule ya Jumapili ambalo ungependa rekodi zake zirudishwe."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Kundi la wanafunzi waliosajiliwa"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Mwezi wa maadhimisho ya mwaka wa uanachama ambao ungependa rekodi zirudishwe."
 
@@ -4090,11 +4079,6 @@ msgstr "Imeahidiwa mwaka huu"
 #: 
 msgid "but not this year"
 msgstr "lakini sio mwaka huu"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Mwaka wa fedha."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4158,11 +4142,6 @@ msgstr "Ahadi zinazokosekana"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Ahadi ya Familia kabla ya Mwaka wa Fedha"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Utafutaji Maalum"
 
@@ -4175,11 +4154,6 @@ msgstr "Hurejesha rekodi za mtu ambazo zimepewa mali iliyotolewa."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Watu walio na siku za kuzaliwa katika mwezi fulani"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Tafuta Wanafunzi Waliosajiliwa"
 
 #. Context: query_qry
 #: 
@@ -4205,11 +4179,6 @@ msgstr "Linganisha ahadi kati ya miaka miwili ya fedha"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Tafuta watu ambao waliahidi mwaka mmoja lakini sio mwingine"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Muhtasari wa ahadi kwa jina la familia kwa kila hazina kwa mwaka wa fedha uliochaguliwa"
 
 #. Context: query_qry
 #: 
@@ -7413,13 +7382,13 @@ msgstr "Idadi ya juu zaidi ya Matukio ya Kalenda"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "Umri wa mwezi %d"
 msgstr[1] "Wenye umri wa miezi %d"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "Umri wa mwaka %d"
 msgstr[1] "Wenye umri wa miaka %d"
 
@@ -9198,7 +9167,7 @@ msgstr "amana zisizo na malipo"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "Tukio %d katika %s"
 msgstr[1] "Matukio %d katika %s"
 
@@ -9456,7 +9425,7 @@ msgstr "hiari"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "mtu"
 msgstr[1] "watu"
 
@@ -11194,19 +11163,19 @@ msgstr "lazima isanidiwe na ufunguo wa usimbuaji"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "Mtu %d ameongezwa kwenye Kigari."
 msgstr[1] "Watu %d wameongezwa kwenye Kigari."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "Mtu %d ameongezwa kwa mafanikio kwenye Familia iliyochaguliwa."
 msgstr[1] "Watu %d wameongezwa kwa mafanikio kwenye Familia iliyochaguliwa."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "Mtu %d ameongezwa kwa mafanikio kwenye Kikundi kilichochaguliwa."
 msgstr[1] "Watu %d wameongezwa kwa mafanikio kwenye Kikundi kilichochaguliwa."
 
@@ -11369,4 +11338,198 @@ msgstr "Kihispania - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Kihispania - Meksiko"
+
+#: 
+msgid "Add Property Type"
+msgstr "Ongeza Aina ya Mali"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Ongeza Aina Yako ya Kwanza ya Mali"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Imehesabiwa kiotomatiki kutoka hesabu hapo juu"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Kwa kufuta sehemu hii, utapoteza bila kurudi data zote za wanakikundi zilizowekwa kwa sehemu hii!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Kwa kufuta mfuko huu, unaweza kuathiri rekodi za michango ya kihistoria!"
+
+#: 
+msgid "Category Name"
+msgstr "Jina la Kategoria"
+
+#: 
+msgid "Checked In"
+msgstr "Amejiandikisha"
+
+#: 
+msgid "Checked Out"
+msgstr "Ameondoka"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Mwaka wa Fedha wa Sasa"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Futa (itafuta rekodi zote zinazohusiana)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Hariri Aina ya Mali"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Ingiza kategoria za kuhesabu zilizotenganishwa na koma (k.m., Wanachama, Wageni, Watoto)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Ingiza maelezo ya mahubiri au maandishi ya tukio..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Mifuko ya Michango Iliyopo"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Mali za Kikundi Zilizopo"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Imeshindwa kusasisha jukumu. Tafadhali jaribu tena."
+
+#: 
+msgid "Family Pledges"
+msgstr "Ahadi za Familia"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Mabadiliko ya sehemu yatapotea ikiwa hautabofya 'Hifadhi Mabadiliko' kabla ya kutumia kitufe cha kufuta au 'Ongeza Mpya'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Chuja kwa Darasa"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Mfuko umefutwa kwa mafanikio"
+
+#: 
+msgid "In Use"
+msgstr "Inatumika"
+
+#: 
+msgid "Manage"
+msgstr "Simamia"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Hakuna ahadi zilizopatikana kwa mwaka wa fedha uliochaguliwa"
+
+#: 
+msgid "No property types found"
+msgstr "Hakuna aina za mali zilizopatikana"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Idadi ya rekodi zinazotumia aina hii ya mali"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Maelezo ya kina ya hiari ya aina hii ya mali"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Tafadhali rekebisha makosa yaliyo hapa chini."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Kiasi cha Ahadi"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Dashibodi ya Ahadi"
+
+#: 
+msgid "Remaining"
+msgstr "Iliyobaki"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Ondoa hesabu hii ya mahudhurio?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Chagua aina ya rekodi ambayo mali hii inatumika"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Jina hilo la mfuko tayari lipo."
+
+#: 
+msgid "Total Pledges"
+msgstr "Jumla ya Ahadi"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Fuatilia na simamia ahadi kwa familia na mfuko"
+
+#: 
+msgid "View Properties"
+msgstr "Tazama Mali"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "k.m., Wageni, Watoto"
+
+#: 
+msgid "of pledges"
+msgstr "ya ahadi"
+
+#: 
+msgid "records"
+msgstr "rekodi"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Lazima ianze na / ikiwa si tupu; hakuna mkwaju wa mwisho. Herufi, nambari, mstari wa chini, dashi, nukta na / pekee zinaruhusiwa."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "mtu %d"
+msgstr[1] "watu %d"
+
+#: 
+msgid "All Classifications"
+msgstr "Uainishaji Wote"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Hakuna watu waliopatikana wanaolingana na vigezo vyako."
+
+#: 
+msgid "Off"
+msgstr "Zima"
+
+#: 
+msgid "On"
+msgstr "Washa"
+
+#: 
+msgid "Photo Directory"
+msgstr "Saraka ya Picha"
+
+#: 
+msgid "Reset Filters"
+msgstr "Weka Upya Vichujio"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Onyesha watu wenye picha pekee"
 

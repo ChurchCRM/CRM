@@ -3920,12 +3920,6 @@ msgstr "検索"
 msgid "Field"
 msgstr "フィールド"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "登録済み学生"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4018,11 +4012,6 @@ msgstr "レコードを返す目的の日曜学校のクラス。"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "登録済み学生のグループ"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "レコードを返す目的のメンバーシップ記念月。"
 
@@ -4055,11 +4044,6 @@ msgstr "今年誓約"
 #: 
 msgid "but not this year"
 msgstr "ただし今年ではない"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "会計年度。"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4123,11 +4107,6 @@ msgstr "誓約が不足しています"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "会計年度別の家族誓約"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "カスタム検索"
 
@@ -4140,11 +4119,6 @@ msgstr "指定されたプロパティが割り当てられている人物レコ
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "特定の月に誕生日を持つ人物"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "登録済み学生を検索"
 
 #. Context: query_qry
 #: 
@@ -4170,11 +4144,6 @@ msgstr "2つの会計年度間で誓約を比較"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "1年誓約した人を検索しますが、別の年は誓約していません"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "選択した会計年度の各資金について、家族名別の誓約サマリー"
 
 #. Context: query_qry
 #: 
@@ -4218,6 +4187,10 @@ msgstr "ユーザーが新しいイベントを追加することを許可しま
 #: 
 msgid "Weekly on"
 msgstr "毎週"
+
+#: 
+msgid "s"
+msgstr "秒"
 
 #: 
 msgid "Monthly on"
@@ -6006,6 +5979,14 @@ msgid "Legend"
 msgstr "凡例"
 
 #: 
+msgid "assigned"
+msgstr "割り当て済み"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "誕生日のある学生を表示"
+
+#: 
 msgid "Actions"
 msgstr "操作"
 
@@ -6014,16 +5995,172 @@ msgid "Action Confirmation"
 msgstr "操作の確認"
 
 #: 
+msgid "Please confirm reset failed login count"
+msgstr "ログイン失敗回数のリセットを確認してください"
+
+#: 
+msgid "SMTP Server timeout in sec"
+msgstr "SMTPサーバータイムアウト（秒）"
+
+#: 
 msgid "Exclude Inactive Families"
 msgstr "非アクティブな家族を除外"
+
+#: 
+msgid "The role is already assigned."
+msgstr "この役割は既に割り当てられています。"
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "役割が正常に割り当てられました。"
+
+#: 
+msgid "The role could not be assigned."
+msgstr "役割を割り当てられませんでした。"
+
+#: 
+msgid "Bing map API requires a unique key"
+msgstr "Bing Map APIには一意のキーが必要です"
+
+#: 
+msgid "Google Maps Zoom"
+msgstr "Googleマップズーム"
+
+#: 
+msgid "Select GeoCoder Provider"
+msgstr "ジオコーダープロバイダーを選択"
 
 #: 
 msgid "Your ChurchCRM account was locked."
 msgstr "ChurchCRMアカウントがロックされました。"
 
 #: 
+msgid "A ChurchCRM account was created for you"
+msgstr "ChurchCRMアカウントが作成されました"
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "このリンクをクリックしてChurchCRMパスワードをリセットできます"
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "ChurchCRMアカウントがロック解除されました。"
+
+#: 
+msgid "system user created"
+msgstr "システムユーザーが作成されました"
+
+#: 
 msgid "system user updated"
 msgstr "システムユーザーが更新されました。"
+
+#: 
+msgid "system user deleted"
+msgstr "システムユーザーが削除されました"
+
+#: 
+msgid "system user password reset"
+msgstr "システムユーザーパスワードがリセットされました"
+
+#: 
+msgid "system user changed password"
+msgstr "システムユーザーがパスワードを変更しました"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "管理者によりシステムユーザーパスワードが変更されました"
+
+#: 
+msgid "system user login reset"
+msgstr "システムユーザーログインがリセットされました"
+
+#: 
+msgid "Missing Families? Update Family Latitude or Longitude now."
+msgstr "家族が見つかりませんか？今すぐ家族の緯度または経度を更新してください。"
+
+#: 
+msgid "Families without Geo Info"
+msgstr "地理情報のない家族"
+
+#: 
+msgid "Notification for"
+msgstr "の通知"
+
+#: 
+msgid "DEBUG"
+msgstr "デバッグ"
+
+#: 
+msgid "INFO"
+msgstr "情報"
+
+#: 
+msgid "NOTICE"
+msgstr "通知"
+
+#: 
+msgid "WARNING"
+msgstr "警告"
+
+#: 
+msgid "ERROR"
+msgstr "エラー"
+
+#: 
+msgid "CRITICAL"
+msgstr "重大"
+
+#: 
+msgid "ALERT"
+msgstr "アラート"
+
+#: 
+msgid "EMERGENCY"
+msgstr "緊急"
+
+#: 
+msgid "Title FirstName MiddleName LastName"
+msgstr "敬称 名 ミドルネーム 姓"
+
+#: 
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr "敬称 名 ミドルイニシャル. 姓"
+
+#: 
+msgid "LastName, Title FirstName MiddleName"
+msgstr "姓, 敬称 名 ミドルネーム"
+
+#: 
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr "姓, 敬称 名 ミドルイニシャル"
+
+#: 
+msgid "FirstName MiddleName LastName"
+msgstr "名 ミドルネーム 姓"
+
+#: 
+msgid "Title FirstName LastName"
+msgstr "敬称 名 姓"
+
+#: 
+msgid "LastName, Title FirstName"
+msgstr "姓, 敬称 名"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "記録するイベントログの重大度、ORMとアプリログで使用"
+
+#: 
+msgid "Time zone"
+msgstr "タイムゾーン"
+
+#: 
+msgid "Nexmo SMS API Key"
+msgstr "Nexmo SMS APIキー"
+
+#: 
+msgid "Nexmo SMS API Secret"
+msgstr "Nexmo SMS APIシークレット"
 
 #: 
 msgid "Nexmo SMS From Number"
@@ -6126,28 +6263,283 @@ msgid "Your Church's Website"
 msgstr "教会のウェブサイト"
 
 #: 
+msgid "Self Verification"
+msgstr "自己確認"
+
+#: 
+msgid "Check Number"
+msgstr "小切手番号"
+
+#: 
+msgid "Details"
+msgstr "詳細"
+
+#: 
+msgid "Verification email sent"
+msgstr "確認メールを送信しました"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "グループ固有プロパティの有効化を確認"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "これにより、このグループのグループ固有プロパティテーブルが作成されます。その後、グループ固有プロパティフォームエディターで必要なプロパティを追加してください。"
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "グループ固有プロパティの無効化を確認"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "グループ固有の人物プロパティを削除してもよろしいですか？すべてのグループメンバープロパティデータが失われます！"
+
+#: 
+msgid "Role Name"
+msgstr "役割名"
+
+#: 
+msgid "Sequence"
+msgstr "順序"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "カートのステータスを確認中"
+
+#: 
+msgid "All members of this group are in the cart"
+msgstr "このグループのすべてのメンバーがカートに入っています"
+
+#: 
+msgid "Remove all"
+msgstr "すべて削除"
+
+#: 
+msgid "Not all members of this group are in the cart"
+msgstr "このグループのすべてのメンバーがカートに入っているわけではありません"
+
+#: 
+msgid "Are you sure you want to remove the selected group members?"
+msgstr "選択したグループメンバーを削除してもよろしいですか？"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "この人物を削除しますか？この操作は元に戻せません。"
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "このプロパティの割り当てを解除してもよろしいですか？"
+
+#: 
+msgid "Select a family"
+msgstr "家族を選択"
+
+#: 
+msgid "Release Notes"
+msgstr "リリースノート"
+
+#: 
+msgid "Move"
+msgstr "移動"
+
+#. Context: locales
+#: 
+msgid "Arabic - Egypt"
+msgstr "アラビア語 - エジプト"
+
+#. Context: locales
+#: 
+msgid "Thai"
+msgstr "タイ語"
+
+#: 
+msgid "Self Register"
+msgstr "自己登録"
+
+#: 
+msgid "List families that were created via self registration."
+msgstr "自己登録で作成された家族を一覧表示。"
+
+#: 
+msgid "Pending Self Verify"
+msgstr "自己確認保留中"
+
+#: 
+msgid "Self Verify"
+msgstr "自己確認"
+
+#. Context: locales
+#: 
+msgid "Indonesian - Indonesia"
+msgstr "インドネシア語 - インドネシア"
+
+#: 
+msgid "records(s) successfully added to selected Group."
+msgstr "件のレコードが選択したグループに正常に追加されました。"
+
+#: 
+msgid "To export to another For european CharSet use ;"
+msgstr "ヨーロッパの文字セットにエクスポートするには ; を使用"
+
+#: 
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr "日付ピッカーの日付形式を定義するには、デフォルト: yyyy-mm-dd、フランス語の例: dd/mm/yyyy"
+
+#: 
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr "日付ピッカーの日付形式を定義するには、デフォルト: Y-m-d、フランス語の例: d/m/Y"
+
+#: 
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr "新しい家族または人物が追加されたときに通知する人のPersonIDのカンマ区切りリスト"
+
+#: 
+msgid "Allow unauthenticated reads of events from the external calendar API"
+msgstr "外部カレンダーAPIからの認証なしイベント読み取りを許可"
+
+#: 
+msgid "New Person Added"
+msgstr "新しい人物が追加されました"
+
+#: 
+msgid "New Family Added"
+msgstr "新しい家族が追加されました"
+
+#: 
+msgid "Church Greeter"
+msgstr "教会の挨拶係"
+
+#: 
+msgid "External Calendar API is disabled"
+msgstr "外部カレンダーAPIが無効です"
+
+#: 
+msgid "Special Group Settings : Sunday School Type"
+msgstr "特別グループ設定：日曜学校タイプ"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases :"
+msgstr "日曜学校グループは、次の2つの場合にのみ変更できます："
+
+#: 
+msgid "You can create/delete sunday school group. "
+msgstr "日曜学校グループを作成/削除できます。"
+
+#: 
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr "新しい役割を追加できますが、生徒と教師の役割の変更または名前変更はできません。"
+
+#: 
 msgid "E"
 msgstr "東"
+
+#: 
+msgid "ENE"
+msgstr "東北東"
+
+#: 
+msgid "ESE"
+msgstr "東南東"
 
 #: 
 msgid "N"
 msgstr "北"
 
 #: 
+msgid "NE"
+msgstr "北東"
+
+#: 
+msgid "NNE"
+msgstr "北北東"
+
+#: 
+msgid "NNW"
+msgstr "北北西"
+
+#: 
+msgid "NW"
+msgstr "北西"
+
+#: 
 msgid "S"
 msgstr "南"
+
+#: 
+msgid "SE"
+msgstr "南東"
+
+#: 
+msgid "SSW"
+msgstr "南南西"
+
+#: 
+msgid "SW"
+msgstr "南西"
 
 #: 
 msgid "W"
 msgstr "西"
 
 #: 
+msgid "WNW"
+msgstr "西北西"
+
+#: 
+msgid "WSW"
+msgstr "西南西"
+
+#: 
 msgid "Search Family"
 msgstr "家族を検索"
 
 #: 
+msgid "Show Family Head of House Names"
+msgstr "世帯主名を表示"
+
+#: 
+msgid "Search Groups"
+msgstr "グループを検索"
+
+#: 
+msgid "Search Deposits"
+msgstr "入金を検索"
+
+#: 
+msgid "Search Payments"
+msgstr "支払いを検索"
+
+#: 
 msgid "Quick Search"
 msgstr "クイック検索"
+
+#: 
+msgid "Search Addresses"
+msgstr "住所を検索"
+
+#: 
+msgid "Maximum number of Families"
+msgstr "家族の最大数"
+
+#: 
+msgid "Maximum number of Family H.O.H Names"
+msgstr "世帯主名の最大数"
+
+#: 
+msgid "Maximum number of Groups"
+msgstr "グループの最大数"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "入金の最大数"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "支払いの最大数"
+
+#: 
+msgid "Maximum number of Addresses"
+msgstr "住所の最大数"
 
 #: 
 msgid "Add Students"
@@ -6160,6 +6552,18 @@ msgstr "このクラスを編集"
 #: 
 msgid "OK"
 msgstr "了解"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "メンバーのターゲット役割を選択してください"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "役割選択プロンプトにはGroupIDが必要です"
+
+#: 
+msgid "Select Group and Role"
+msgstr "グループと役割を選択"
 
 #: 
 msgid "Are you sure you want to remove this person's membership from"
@@ -6182,12 +6586,56 @@ msgid "Create PhotoBook"
 msgstr "フォトブックを作成"
 
 #: 
+msgid "SSE"
+msgstr "南南東"
+
+#: 
+msgid "Recipient Naming Method"
+msgstr "受取人の命名方法"
+
+#: 
+msgid "Salutation Utility"
+msgstr "挨拶ユーティリティ"
+
+#: 
+msgid "Add A Group Name"
+msgstr "グループ名を追加"
+
+#: 
+msgid "Default Name Group"
+msgstr "デフォルト名グループ"
+
+#: 
 msgid "Group Role"
 msgstr "グループ内役割"
 
 #: 
+msgid "Members from group"
+msgstr "グループのメンバー"
+
+#: 
+msgid "Members to another group"
+msgstr "別のグループへのメンバー"
+
+#: 
 msgid "Members to cart"
 msgstr "メンバーをカートに追加"
+
+#: 
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr "または、グループを作成して1つのアクションでカートを追加"
+
+#: 
+msgid "Create Group + ADD Cart"
+msgstr "グループ作成 + カート追加"
+
+#: 
+msgid "Move Event"
+msgstr "イベントを移動"
+
+#: 
+msgid "Resize Event"
+msgstr "イベントのサイズを変更"
 
 #: 
 msgid "Profile"
@@ -6202,8 +6650,272 @@ msgid "Sermon Text"
 msgstr "説教テキスト"
 
 #: 
+msgid "Change Settings"
+msgstr "設定を変更"
+
+#: 
+msgid "Unknown Type"
+msgstr "不明なタイプ"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "カートのPersonIDは数値である必要があります"
+
+#: 
+msgid "GroupID for Cart must be numeric"
+msgstr "カートのGroupIDは数値である必要があります"
+
+#: 
+msgid "FamilyID for Cart must be numeric"
+msgstr "カートのFamilyIDは数値である必要があります"
+
+#: 
+msgid "Search People"
+msgstr "人物を検索"
+
+#: 
+msgid "Maximum number of People"
+msgstr "人物の最大数"
+
+#: 
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "告解の父が記載されているフィールド、グループタイプの人々である必要があります"
+
+#: 
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "最後の告解が保存されているフィールド、日付タイプである必要があります"
+
+#: 
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "このChurchCRMデータベースへのHTTPSアクセスを必須にする"
+
+#: 
+msgid "People Setup"
+msgstr "人物設定"
+
+#: 
+msgid "Church Services"
+msgstr "教会サービス"
+
+#: 
+msgid "People Reports"
+msgstr "人物レポート"
+
+#: 
 msgid "People Dashboard"
 msgstr "人物ダッシュボード"
+
+#: 
+msgid "People Functions"
+msgstr "人物機能"
+
+#: 
+msgid "People Directory"
+msgstr "人物ディレクトリ"
+
+#: 
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "すべての人物の印刷可能なディレクトリ、割り当てられた家族でグループ化"
+
+#: 
+msgid "of People"
+msgstr "人物の"
+
+#: 
+msgid "System Upgrade"
+msgstr "システムアップグレード"
+
+#: 
+msgid "Upgrade Required"
+msgstr "アップグレードが必要です"
+
+#: 
+msgid "Help & Manual"
+msgstr "ヘルプとマニュアル"
+
+#: 
+msgid "Contributing"
+msgstr "貢献"
+
+#: 
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr "リレーサーバーが提供している場合、SMTP暗号化を自動的に有効にする。"
+
+#: 
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr "使用する暗号化システムを設定 - ssl（非推奨）またはtls"
+
+#: 
+msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr "ダッシュボードサービスの動的非同期更新間隔、デフォルト60秒"
+
+#: 
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr "選択した行の入金伝票を生成（PDF）"
+
+#: 
+msgid "Add All to Cart"
+msgstr "すべてをカートに追加"
+
+#: 
+msgid "Remove All from Cart"
+msgstr "すべてをカートから削除"
+
+#: 
+msgid "records(s) successfully deleted from the selected Group."
+msgstr "件のレコードが選択したグループから正常に削除されました。"
+
+#: 
+msgid "Not Found"
+msgstr "見つかりません"
+
+#: 
+msgid "Oops!"
+msgstr "おっと！"
+
+#: 
+msgid "Meanwhile, you may"
+msgstr "その間、次のことができます"
+
+#: 
+msgid "User must be an Admin"
+msgstr "ユーザーは管理者である必要があります"
+
+#: 
+msgid "No logged in user"
+msgstr "ログインユーザーがいません"
+
+#: 
+msgid "not found"
+msgstr "見つかりません"
+
+#: 
+msgid "Deleted from group"
+msgstr "グループから削除されました"
+
+#: 
+msgid "Added to group"
+msgstr "グループに追加されました"
+
+#: 
+msgid "We could not find the person(s) you were looking for."
+msgstr "お探しの人物が見つかりませんでした。"
+
+#: 
+msgid "return to People Dashboard"
+msgstr "人物ダッシュボードに戻る"
+
+#: 
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "SMTPホストが設定されていません。設定ページにアクセスしてください"
+
+#: 
+msgid "Debug Email Connection"
+msgstr "メール接続をデバッグ"
+
+#: 
+msgid "This Family is Inactive"
+msgstr "この家族は非アクティブです"
+
+#: 
+msgid "The database has been cleared."
+msgstr "データベースがクリアされました。"
+
+#: 
+msgid "Anniversaries"
+msgstr "記念日"
+
+#: 
+msgid "New Family Notification Email Error"
+msgstr "新しい家族通知メールエラー"
+
+#: 
+msgid "New Person Notification Email Error"
+msgstr "新しい人物通知メールエラー"
+
+#: 
+msgid "View User"
+msgstr "ユーザーを表示"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "無効なリクエスト：カレンダーIDがありません"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "見つかりません：不明なカレンダーID"
+
+#: 
+msgid "not found or user without an email"
+msgstr "見つからない、またはメールのないユーザー"
+
+#: 
+msgid "UserName not set"
+msgstr "ユーザー名が設定されていません"
+
+#: 
+msgid "Self Registrations"
+msgstr "自己登録"
+
+#: 
+msgid "Public Calendar"
+msgstr "公開カレンダー"
+
+#: 
+msgid "Private Calendar"
+msgstr "プライベートカレンダー"
+
+#: 
+msgid "Username"
+msgstr "ユーザー名"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "移動してもよろしいですか"
+
+#: 
+msgid "from"
+msgstr "から"
+
+#: 
+msgid "to"
+msgstr "へ"
+
+#: 
+msgid "Are you sure you want to change the end time for "
+msgstr "終了時間を変更してもよろしいですか "
+
+#: 
+msgid "Access Token"
+msgstr "アクセストークン"
+
+#: 
+msgid "New Access Token"
+msgstr "新しいアクセストークン"
+
+#: 
+msgid "Delete Access Token"
+msgstr "アクセストークンを削除"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
+
+#: 
+msgid "Foreground Color"
+msgstr "前景色"
+
+#: 
+msgid "Background Color"
+msgstr "背景色"
+
+#: 
+msgid "Delete Calendar"
+msgstr "カレンダーを削除"
+
+#: 
+msgid "Invalid Entry"
+msgstr "無効なエントリ"
 
 #: 
 msgid "Calendar Name"
@@ -6212,6 +6924,46 @@ msgstr "カレンダー名"
 #: 
 msgid "New Calendar"
 msgstr "新規カレンダー"
+
+#: 
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPIが無効ですが、一部のカレンダーにはアクセストークンがあります"
+
+#: 
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr "カレンダーを共有するには、カレンダーに特定のアクセストークンがあることに加えて、bEnableExternalCalendarAPI設定を有効にする必要があります"
+
+#: 
+msgid "Links"
+msgstr "リンク"
+
+#: 
+msgid "Show custom links on the left menu."
+msgstr "左側のメニューにカスタムリンクを表示。"
+
+#: 
+msgid "Enable Sunday School left menu."
+msgstr "日曜学校の左メニューを有効化。"
+
+#: 
+msgid "Enable Finance menu"
+msgstr "財務メニューを有効化"
+
+#: 
+msgid "Enable Events menu."
+msgstr "イベントメニューを有効化。"
+
+#: 
+msgid "Enable Fundraiser menu."
+msgstr "募金活動メニューを有効化。"
+
+#: 
+msgid "Enable Email menu."
+msgstr "メールメニューを有効化。"
+
+#: 
+msgid "Enabled Features"
+msgstr "有効な機能"
 
 #: 
 msgid "Validation Error"
@@ -6274,28 +7026,363 @@ msgid "invalid calendar pinning"
 msgstr "無効なカレンダーピニング"
 
 #: 
+msgid "invalid group id"
+msgstr "無効なグループID"
+
+#: 
+msgid "invalid status value"
+msgstr "無効なステータス値"
+
+#: 
+msgid "invalid export value"
+msgstr "無効なエクスポート値"
+
+#: 
+msgid "Invalid User/Password"
+msgstr "無効なユーザー名/パスワード"
+
+#: 
+msgid "Find Duplicate Emails"
+msgstr "重複メールを検索"
+
+#: 
 msgid "Duplicate Emails"
 msgstr "重複したメールアドレス"
+
+#: 
+msgid "HTML URL"
+msgstr "HTML URL"
 
 #: 
 msgid "Latest People"
 msgstr "最近追加された人物"
 
 #: 
+msgid "Updated People"
+msgstr "更新された人物"
+
+#: 
+msgid "Custom Menus"
+msgstr "カスタムメニュー"
+
+#: 
+msgid "User must have Manage Groups permission"
+msgstr "ユーザーはグループ管理権限が必要です"
+
+#: 
 msgid "Missing"
 msgstr "見つかりません"
+
+#: 
+msgid "User must have Edit Records permission"
+msgstr "ユーザーはレコード編集権限が必要です"
+
+#: 
+msgid "Can't delete yourself"
+msgstr "自分自身は削除できません"
+
+#: 
+msgid "The role could not be found."
+msgstr "役割が見つかりませんでした。"
+
+#: 
+msgid "Add Menu"
+msgstr "メニューを追加"
+
+#: 
+msgid "Menu Name"
+msgstr "メニュー名"
+
+#: 
+msgid "Link Address"
+msgstr "リンクアドレス"
+
+#: 
+msgid "Start with http:// or https://"
+msgstr "http://またはhttps://で始める"
+
+#: 
+msgid "Menus"
+msgstr "メニュー"
+
+#: 
+msgid "is disabled"
+msgstr "は無効です"
 
 #: 
 msgid "Software Version"
 msgstr "ソフトウェア・バージョン"
 
 #: 
+msgid "Database Version"
+msgstr "データベースバージョン"
+
+#: 
+msgid "Application Prerequisites"
+msgstr "アプリケーション前提条件"
+
+#: 
+msgid "Invalid country name supplied"
+msgstr "無効な国名が指定されました"
+
+#: 
+msgid "LastName FirstName"
+msgstr "姓 名"
+
+#: 
+msgid "Holidays"
+msgstr "祝日"
+
+#: 
+msgid "Person Name"
+msgstr "人物名"
+
+#: 
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr "教会挨拶係メール1のカスタムメッセージ、最大255文字"
+
+#: 
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr "教会挨拶係メール2のカスタムメッセージ、最大255文字"
+
+#: 
+msgid "Include contact and demographic data in new member email notification body"
+msgstr "新メンバーメール通知本文に連絡先と人口統計データを含める"
+
+#: 
+msgid "Include family custom properties in global search."
+msgstr "グローバル検索に家族カスタムプロパティを含める。"
+
+#. Context: countries
+#: 
+msgid "Latvia (Latvija)"
+msgstr "ラトビア"
+
+#: 
+msgid "You are about to add a new deposit without a comment"
+msgstr "コメントなしで新しい入金を追加しようとしています"
+
+#: 
+msgid "Families Without Emails"
+msgstr "メールのない家族"
+
+#: 
+msgid "Record"
+msgstr "レコード"
+
+#: 
 msgid "Records"
 msgstr "レコード"
 
 #: 
+msgid "Emptied into Event"
+msgstr "イベントに空にしました"
+
+#: 
+msgid "Passed"
+msgstr "合格"
+
+#: 
+msgid "Focus"
+msgstr "フォーカス"
+
+#: 
+msgid "Unfocus"
+msgstr "フォーカス解除"
+
+#: 
+msgid "Warning: Signature mismatch"
+msgstr "警告：署名の不一致"
+
+#: 
+msgid "Some ChurchCRM system files may have been modified since the last installation."
+msgstr "一部のChurchCRMシステムファイルが最後のインストール以降に変更された可能性があります。"
+
+#: 
+msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
+msgstr "このアップグレードは、ファイルを公式バージョンに戻すことで、以下のファイルに加えられたカスタマイズを完全に破棄します。"
+
+#: 
+msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
+msgstr "これらのファイルへの変更を維持したい場合は、このアップグレードを進める前にこれらのファイルの手動バックアップを取り、アップグレード完了後にファイルを手動で復元してください。"
+
+#: 
+msgid "Integrity Check Details:"
+msgstr "整合性チェックの詳細："
+
+#. Context: locales
+#: 
+msgid "Estonian"
+msgstr "エストニア語"
+
+#: 
+msgid "Error decoding signature definition file"
+msgstr "署名定義ファイルのデコードエラー"
+
+#: 
+msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
+msgstr "リモートバックアップエンドポイント。WebDAVの場合、URLエンコードが必要です。"
+
+#: 
+msgid "Age Histogram"
+msgstr "年齢ヒストグラム"
+
+#: 
+msgid "Missing event id"
+msgstr "イベントIDがありません"
+
+#: 
+msgid "Event not found"
+msgstr "イベントが見つかりません"
+
+#: 
+msgid "Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr "セッションタイムアウトの長さ（秒）\n"
+"セッションタイムアウトを無効にするには0に設定。"
+
+#: 
+msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr "新しいパスワードが古いパスワードと異なる必要がある最小量（変更された文字数）\n"
+"この機能を無効にするには0に設定"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "ユーザーアカウントがロックされる前に許可される最大ログイン失敗回数。\n"
+"最大に達すると、管理者がアカウントを再有効化する必要があります。\n"
+"この機能は、自動パスワード推測攻撃から保護するのに役立ちます。\n"
+"この機能を無効にするには0に設定。"
+
+#: 
+msgid "PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr "PDF処理モード。\n"
+"1 = ファイル保存ダイアログ\n"
+"2 = 現在のブラウザウィンドウで開く"
+
+#: 
+msgid "Press CTRL + C to copy all group members' phone numbers"
+msgstr "CTRL + Cを押してすべてのグループメンバーの電話番号をコピー"
+
+#: 
+msgid "Verify People"
+msgstr "人物を確認"
+
+#: 
+msgid "People Verify Dashboard"
+msgstr "人物確認ダッシュボード"
+
+#: 
+msgid "Download family letters"
+msgstr "家族レターをダウンロード"
+
+#: 
+msgid "Send family email"
+msgstr "家族メールを送信"
+
+#: 
+msgid "Verification recorded"
+msgstr "確認が記録されました"
+
+#: 
+msgid "Verification URL created"
+msgstr "確認URLが作成されました"
+
+#: 
 msgid "URL"
 msgstr "URL"
+
+#: 
+msgid "PDF"
+msgstr "PDF"
+
+#: 
+msgid "Error sending email(s)"
+msgstr "メール送信エラー"
+
+#: 
+msgid "Please check logs for more information"
+msgstr "詳細についてはログを確認してください"
+
+#: 
+msgid "Verification URL"
+msgstr "確認URL"
+
+#: 
+msgid "Unexpected Person Id"
+msgstr "予期しない人物ID"
+
+#: 
+msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgstr "GitHubで「プレリリース」としてマークされたリリースへのシステムアップグレードを許可"
+
+#: 
+msgid "Search Calendar Events"
+msgstr "カレンダーイベントを検索"
+
+#: 
+msgid "Maximum number of Calendar Events"
+msgstr "カレンダーイベントの最大数"
+
+#: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%dヶ月"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d歳"
+
+#: 
+msgid "Missing PHP ZipArchive"
+msgstr "PHP ZipArchiveがありません"
+
+#: 
+msgid "Add Results to Cart"
+msgstr "結果をカートに追加"
+
+#: 
+msgid "Remove Results from Cart"
+msgstr "結果をカートから削除"
+
+#: 
+msgid "Database Reset Functions"
+msgstr "データベースリセット機能"
+
+#: 
+msgid "Reset Database"
+msgstr "データベースをリセット"
+
+#: 
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr "これによりシステムデータがリセットされ、新規インストールとしてシステムが再起動されます。"
+
+#. Context: locales
+#: 
+msgid "Portuguese - Portugal"
+msgstr "ポルトガル語 - ポルトガル"
+
+#: 
+msgid "Holiday"
+msgstr "祝日"
+
+#: 
+msgid "Allow users to self-enroll in 2 factor authentication"
+msgstr "ユーザーが2要素認証に自己登録することを許可"
+
+#: 
+msgid "Requires users to self-enroll in 2 factor authentication"
+msgstr "ユーザーに2要素認証への自己登録を要求"
+
+#: 
+msgid "ChurchCRM"
+msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -6318,8 +7405,32 @@ msgid "Done, show me the homepage!"
 msgstr "完了、ホームページを表示してください!"
 
 #: 
+msgid "User authenticated via API Key: "
+msgstr "APIキーで認証されたユーザー："
+
+#: 
+msgid "Unsuccessful API Key authentication attempt"
+msgstr "APIキー認証の試行に失敗しました"
+
+#: 
+msgid "Unpinned Events"
+msgstr "ピン留め解除されたイベント"
+
+#: 
 msgid "LastName, FirstName MiddleName"
 msgstr "姓, 名, ミドルネーム"
+
+#: 
+msgid "Manage 2 Factor Authentication"
+msgstr "2要素認証を管理"
+
+#: 
+msgid "Two Factor Status"
+msgstr "2要素認証ステータス"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "このユーザーの2要素認証を無効にすることを確認してください"
 
 #: 
 msgid "Please enter 2FA code"
@@ -6334,6 +7445,46 @@ msgid "2 Factor Authentication enrollment"
 msgstr "2要素認証の登録"
 
 #: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "サポートされていない2要素認証設定"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "2要素認証登録を開始できません"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "2要素認証では、ChurchCRM管理者がいくつかのパラメータを設定する必要があります"
+
+#: 
+msgid "System configuration "
+msgstr "システム設定 "
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "'true'に設定する必要があります"
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "住所のジオコーディングに使用されるGoogle Maps APIキー"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "アカウントが削除されたときにユーザーに通知メールを送信"
+
+#: 
+msgid "Google Maps API Key used for rendering maps in browser"
+msgstr "ブラウザでマップをレンダリングするために使用されるGoogle Maps APIキー"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "現在のユーザーに対して間違ったパスワードが指定されました"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "新しいパスワードは古いパスワードと一致してはいけません。"
+
+#: 
 msgid "Your new password is too similar to your old one."
 msgstr "新しいパスワードが以前のパスワードと似すぎています"
 
@@ -6346,8 +7497,74 @@ msgid "Enter new user password. Administratively set passwords are not subject t
 msgstr "新しいユーザーパスワードを入力します　管理者が設定したパスワードには、長さや複雑さの要件は適用されません"
 
 #: 
+msgid "No email passed in"
+msgstr "メールが渡されていません"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimpがアクティブではありません"
+
+#: 
+msgid "Mailchimp"
+msgstr "Mailchimp"
+
+#: 
+msgid "Lists"
+msgstr "リスト"
+
+#: 
+msgid "loading"
+msgstr "読み込み中"
+
+#: 
+msgid "List not found"
+msgstr "リストが見つかりません"
+
+#. typo
+#: 
+msgid "List not in the list"
+msgstr "リストに含まれていません"
+
+#: 
+msgid "People not in"
+msgstr "含まれていない人"
+
+#: 
+msgid "Invalid List id"
+msgstr "無効なリストID"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "オーディエンスがChurchCRMにありません"
+
+#: 
 msgid "Web Server"
 msgstr "Webサーバ"
+
+#: 
+msgid "List maintenance"
+msgstr "リストメンテナンス"
+
+#: 
+msgid "People not in list"
+msgstr "リストにない人物"
+
+#: 
+msgid "Audience not in the CRM"
+msgstr "オーディエンスがCRMにありません"
+
+#. Context: locales
+#: 
+msgid "Hebrew"
+msgstr "ヘブライ語"
+
+#: 
+msgid "open rate"
+msgstr "開封率"
+
+#: 
+msgid "Not Subscribed "
+msgstr "購読していません "
 
 #: 
 msgid "Login Info"
@@ -6370,8 +7587,16 @@ msgid "Manage Notes"
 msgstr "メモの管理"
 
 #: 
+msgid "Failed generate a new API Key"
+msgstr "新しいAPIキーの生成に失敗しました"
+
+#: 
 msgid "Pledge Summary By Family"
 msgstr "家族別献金約束（プレッジ）概要"
+
+#: 
+msgid "Pledge"
+msgstr "誓約"
 
 #: 
 msgid "Paid"
@@ -6390,6 +7615,10 @@ msgid "End Date"
 msgstr "終了日"
 
 #: 
+msgid "Pinned Calendars"
+msgstr "ピン留めされたカレンダー"
+
+#: 
 msgid "This field is required"
 msgstr "この項目は必須です"
 
@@ -6400,6 +7629,30 @@ msgstr "テキスト"
 #: 
 msgid "Event Description"
 msgstr "イベントの説明"
+
+#: 
+msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
+msgstr "ChurchCRMユーザーアカウントを2要素認証に登録すると、アカウントにアクセスしようとする悪意のある人物に対する追加の防御層が提供されます。"
+
+#: 
+msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr "ChurchCRM 2要素認証は任意のTOTP認証アプリをサポートしているため、Microsoft Authenticator、Google Authenticator、Authy、LastPassなどから自由に選択できます"
+
+#: 
+msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
+msgstr "ChurchCRMにサインインするとき、通常どおりユーザー名とパスワードを入力します"
+
+#: 
+msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
+msgstr "ただし、ログインを完了するには、認証デバイスからのワンタイムコードも必要です"
+
+#: 
+msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
+msgstr "資格情報とワンタイムコードの両方を正常に入力すると、通常どおりログインできます"
+
+#: 
+msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
+msgstr "ChurchCRMアカウントからロックアウトされるのを防ぐため、開始をクリックする前に2要素認証登録を完了する準備ができていることを確認してください"
 
 #: 
 msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
@@ -6414,8 +7667,81 @@ msgid "To confirm enrollment, you'll need to enter the code generated by your au
 msgstr "登録を確認するには、認証アプリによって生成されたコードを入力する必要があります"
 
 #: 
+msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
+msgstr "アプリの登録を確認すると、使い捨てリカバリコードが生成されて表示されます。"
+
+#: 
+msgid "Recovery codes can be used instead of a code generated from your authenticator app."
+msgstr "リカバリコードは、認証アプリから生成されたコードの代わりに使用できます。"
+
+#: 
+msgid "Store these in a secure location"
+msgstr "これらを安全な場所に保管してください"
+
+#: 
+msgid "Begin Two Factor Authentication Enrollment"
+msgstr "2要素認証登録を開始"
+
+#: 
+msgid "2 Factor Authentication Secret"
+msgstr "2要素認証シークレット"
+
+#: 
+msgid "Regenerate 2 Factor Authentication Secret"
+msgstr "2要素認証シークレットを再生成"
+
+#: 
+msgid "Remove 2 Factor Authentication Secret"
+msgstr "2要素認証シークレットを削除"
+
+#: 
+msgid "Enter TOTP code to confirm enrollment"
+msgstr "登録を確認するためにTOTPコードを入力"
+
+#: 
+msgid "2 Factor Authentication Enrollment Success"
+msgstr "2要素認証登録成功"
+
+#: 
+msgid "Please store these recovery codes in a safe location"
+msgstr "これらのリカバリコードを安全な場所に保管してください"
+
+#: 
+msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
+msgstr "新しく登録した認証アプリにアクセスできなくなった場合は、リカバリコードを使用してアカウントにアクセスする必要があります"
+
+#: 
+msgid "Help translate this project"
+msgstr "このプロジェクトの翻訳にご協力ください"
+
+#. Context: locales
+#: 
+msgid "Afrikaans"
+msgstr "アフリカーンス語"
+
+#: 
+msgid " has a type mismatch"
+msgstr " に型の不一致があります"
+
+#: 
 msgid "Loading"
 msgstr "読み込み中"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "家族プロパティの割り当て解除"
+
+#: 
+msgid "Do you want to remove"
+msgstr "削除しますか"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "今日の誕生日"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "今日の結婚記念日"
 
 #: 
 msgid "Api Key"
@@ -6426,6 +7752,46 @@ msgid "Regen API Key"
 msgstr "APIを再作成する"
 
 #: 
+msgid "View Family Page"
+msgstr "家族ページを表示"
+
+#: 
+msgid "View Person Page"
+msgstr "人物ページを表示"
+
+#: 
+msgid "Verify"
+msgstr "確認"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "家族には使用できるメールがありません"
+
+#: 
+msgid "Boxed Layout"
+msgstr "ボックスレイアウト"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "ボックスレイアウトを有効化"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "サイドバーを切り替え"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "左サイドバーの状態を切り替え（展開または折りたたみ）"
+
+#: 
+msgid "Tables Settings"
+msgstr "テーブル設定"
+
+#: 
+msgid "Page length"
+msgstr "ページ長"
+
+#: 
 msgid "Change the initial page length (number of rows per page)"
 msgstr "初期ページ長　ページあたりの行数　を変更します"
 
@@ -6434,12 +7800,33 @@ msgid "User Interface"
 msgstr "ユーザーインターフェース"
 
 #: 
+msgid "Locale"
+msgstr "ロケール"
+
+#: 
+msgid "Override system locale"
+msgstr "システムロケールを上書き"
+
+#: 
 msgid "Deleted"
 msgstr "削除"
 
 #: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "無効な生年月日：誕生月または日がありません。"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "無効な生年月日：誕生月と日がありません。"
+
+#: 
 msgid "System"
 msgstr "システム"
+
+#. Context: locales
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "アムハラ語 - エチオピア"
 
 #. Context: locales
 #: 
@@ -6479,12 +7866,59 @@ msgid "Change role"
 msgstr "ロールを変更"
 
 #: 
+msgid "Closed"
+msgstr "クローズ"
+
+#: 
+msgid "Delete this person?"
+msgstr "この人物を削除しますか？"
+
+#: 
+msgid "Deposit ID"
+msgstr "入金ID"
+
+#: 
+msgid "Deposit Total"
+msgstr "入金合計"
+
+#: 
+msgid "Group Cart Status"
+msgstr "グループカートステータス"
+
+#: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
 msgstr "これが機能しない場合は、次のリンクをコピーしてブラウザに貼り付けてください"
 
 #: 
 msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
 msgstr "このメールは、あなたのアカウントに対するアクティビティのリクエストを受け取ったために受信しました　リクエストしていない場合は、このメールを削除しても安全です"
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "これらのメールの受信を停止するには、メールを送信してください"
+
+#: 
+msgid "invalid group request"
+msgstr "無効なグループリクエスト"
+
+#. Context: locales
+#: 
+msgid "Hindi - India"
+msgstr "ヒンディー語 - インド"
+
+#. Context: locales
+#: 
+msgid "Japanese"
+msgstr "日本語"
+
+#. Context: locales
+#: 
+msgid "Tamil - India"
+msgstr "タミル語 - インド"
+
+#: 
+msgid "Not Subscribed"
+msgstr "購読していません"
 
 #: 
 msgid "property"
@@ -6505,28 +7939,393 @@ msgid "People who are configured to pay by credit card."
 msgstr "クレジットカードで支払うように設定されている人物。"
 
 #: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "復元の一環として、外部バックアップが無効になりました。自動バックアップを続行する場合は、bEnableExternalBackupTarget設定を手動で再有効化する必要があります。"
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "前回の整合性チェックに合格しました。すべてのシステムファイルハッシュが期待値と一致しています。"
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "非アクティブとして表示する分類のカンマ区切りリスト"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimpが設定されていません"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "MailChimp APIキーを更新してください："
+
+#. Context: locales
+#: 
+msgid "English - South Africa"
+msgstr "英語 - 南アフリカ"
+
+#. Context: locales
+#: 
+msgid "English - Jamaica"
+msgstr "英語 - ジャマイカ"
+
+#. Context: locales
+#: 
+msgid "Swahili"
+msgstr "スワヒリ語"
+
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "名から1文字と姓から1文字"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "名から2文字"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "教会メールが設定されていません。設定ページにアクセスしてください"
+
+#. Context: locales
+#: 
+msgid "Telugu - India"
+msgstr "テルグ語 - インド"
+
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "韓国語"
+
+#: 
+msgid "System Logs"
+msgstr "システムログ"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "クロスサイトスクリプティングから保護するためにコンテンツセキュリティポリシー（CSP）を適用。無効の場合、CSP違反は報告のみされます。"
+
+#: 
+msgid "Enter event description..."
+msgstr "イベントの説明を入力..."
+
+#: 
+msgid "Event ID"
+msgstr "イベントID"
+
+#: 
+msgid "Enter note text here..."
+msgstr "ここにノートテキストを入力..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "この人物にノートは追加されていません。"
+
+#: 
+msgid "Note"
+msgstr "ノート"
+
+#: 
 msgid "Log Settings"
 msgstr "ログ設定"
+
+#: 
+msgid "Log Level:"
+msgstr "ログレベル："
+
+#: 
+msgid "Save Log Level"
+msgstr "ログレベルを保存"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "アプリケーションログを表示。ログファイルをクリックして内容を表示。"
+
+#: 
+msgid "Delete All Logs"
+msgstr "すべてのログを削除"
+
+#: 
+msgid "No log files found."
+msgstr "ログファイルが見つかりません。"
+
+#: 
+msgid "Log File"
+msgstr "ログファイル"
+
+#: 
+msgid "Size"
+msgstr "サイズ"
+
+#: 
+msgid "Last Modified"
+msgstr "最終更新"
 
 #: 
 msgid "View"
 msgstr "表示"
 
 #: 
+msgid "Log File Viewer"
+msgstr "ログファイルビューア"
+
+#: 
+msgid "Filter by log level:"
+msgstr "ログレベルでフィルター："
+
+#: 
 msgid "Error"
 msgstr "エラー"
+
+#: 
+msgid "Info"
+msgstr "情報"
+
+#: 
+msgid "Number of lines to display:"
+msgstr "表示する行数："
+
+#: 
+msgid "Loading log file..."
+msgstr "ログファイルを読み込み中..."
+
+#: 
+msgid "No notes have been added for this family."
+msgstr "この家族にノートは追加されていません。"
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "カレンダーアクセストークンが生成され、保存されました。"
+
+#: 
+msgid "added"
+msgstr "追加されました"
+
+#: 
+msgid "Added"
+msgstr "追加済み"
 
 #: 
 msgid "Added to cart successfully"
 msgstr "カートへの追加が完了しました"
 
 #: 
+msgid "All members already in cart"
+msgstr "すべてのメンバーが既にカートに入っています"
+
+#: 
+msgid "already in cart"
+msgstr "既にカートに入っています"
+
+#: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "カレンダーのプロパティを読み込めませんでした。このカレンダーにはアクセストークンがないか、正しく設定されていない可能性があります。"
+
+#: 
+msgid "Cart emptied successfully"
+msgstr "カートが正常に空になりました"
+
+#: 
+msgid "Cart emptied to group successfully"
+msgstr "カートがグループに正常に空になりました"
+
+#: 
 msgid "Empty your entire cart?"
 msgstr "カートをすべて空にしますか？"
 
 #: 
+msgid "Failed to add family to cart"
+msgstr "家族をカートに追加できませんでした"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "グループをカートに追加できませんでした"
+
+#: 
+msgid "Failed to add to cart"
+msgstr "カートに追加できませんでした"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "カートを空にできませんでした"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "カートをグループに空にできませんでした"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "家族をカートから削除できませんでした"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "カートから削除できませんでした"
+
+#: 
+msgid "Failed to remove group"
+msgstr "グループを削除できませんでした"
+
+#: 
 msgid "Family added to cart"
 msgstr "家族がカートに追加されました"
+
+#: 
+msgid "Family removed from cart"
+msgstr "家族がカートから削除されました"
+
+#: 
+msgid "Group added to cart"
+msgstr "グループがカートに追加されました"
+
+#: 
+msgid "Group removed from cart"
+msgstr "グループがカートから削除されました"
+
+#: 
+msgid "in cart"
+msgstr "カート内"
+
+#: 
+msgid "members. Already had"
+msgstr "メンバー。既にありました"
+
+#: 
+msgid "people added to cart"
+msgstr "人がカートに追加されました"
+
+#: 
+msgid "people already in cart"
+msgstr "人が既にカートに入っています"
+
+#: 
+msgid "people from cart"
+msgstr "人をカートから"
+
+#: 
+msgid "people removed from cart"
+msgstr "人がカートから削除されました"
+
+#: 
+msgid "Person already in cart"
+msgstr "人物は既にカートに入っています"
+
+#: 
+msgid "Remove this family from cart?"
+msgstr "この家族をカートから削除しますか？"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "このグループをカートから削除しますか？"
+
+#: 
+msgid "Remove this person from cart?"
+msgstr "この人物をカートから削除しますか？"
+
+#: 
+msgid "Removed from cart successfully"
+msgstr "カートから正常に削除されました"
+
+#: 
+msgid "Yes, Empty Cart"
+msgstr "はい、カートを空にする"
+
+#: 
+msgid "Yes, Remove"
+msgstr "はい、削除する"
+
+#: 
+msgid "Add Group"
+msgstr "グループを追加"
+
+#: 
+msgid "Back to Group List"
+msgstr "グループリストに戻る"
+
+#: 
+msgid "Default role updated."
+msgstr "デフォルトの役割が更新されました。"
+
+#: 
+msgid "Edit Group"
+msgstr "グループを編集"
+
+#: 
+msgid "Enter group name"
+msgstr "グループ名を入力"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "役割の追加に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "グループの作成に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "役割の削除に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to load cart status."
+msgstr "カートステータスの読み込みに失敗しました。"
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "グループの読み込みに失敗しました。ページを更新してください。"
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "デフォルトの役割の設定に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "グループの更新に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "プロパティの更新に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "役割名の更新に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "既存のパスワードを維持するには空白のまま"
+
+#: 
+msgid "Please enter a group name."
+msgstr "グループ名を入力してください。"
+
+#: 
+msgid "Role added successfully."
+msgstr "役割が正常に追加されました。"
+
+#: 
+msgid "Role deleted successfully."
+msgstr "役割が正常に削除されました。"
+
+#: 
+msgid "Role name updated."
+msgstr "役割名が更新されました。"
+
+#: 
+msgid "View Group"
+msgstr "グループを表示"
+
+#: 
+msgid "Events Today"
+msgstr "今日のイベント"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "日曜学校の概要"
+
+#: 
+msgid "Add Family Member"
+msgstr "家族メンバーを追加"
+
+#: 
+msgid "Address is required"
+msgstr "住所は必須です"
 
 #: 
 msgid "Base URL is required"
@@ -6549,28 +8348,380 @@ msgid "Database server port is required (e.g., 3306)"
 msgstr "データベースサーバーポートが必要です (例: 3306)"
 
 #: 
+msgid "Database username is required"
+msgstr "データベースユーザー名は必須です"
+
+#: 
+msgid "Email Address"
+msgstr "メールアドレス"
+
+#: 
+msgid "Email address"
+msgstr "メールアドレス"
+
+#: 
+msgid "Enter family name"
+msgstr "家族名を入力"
+
+#: 
+msgid "Family Information"
+msgstr "家族情報"
+
+#: 
+msgid "Family name is required"
+msgstr "家族名は必須です"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "家族名は2文字以上である必要があります"
+
+#: 
+msgid "First name"
+msgstr "名"
+
+#: 
+msgid "First name is required"
+msgstr "名は必須です"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "名は2文字以上である必要があります"
+
+#: 
+msgid "Home phone is required"
+msgstr "自宅電話は必須です"
+
+#: 
+msgid "Home phone number"
+msgstr "自宅電話番号"
+
+#: 
+msgid "Invalid format"
+msgstr "無効な形式"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "家族を登録してコミュニティに参加"
+
+#: 
+msgid "Last name"
+msgstr "姓"
+
+#: 
+msgid "Last name is required"
+msgstr "姓は必須です"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "姓は2文字以上である必要があります"
+
+#: 
+msgid "Maximum length is"
+msgstr "最大長は"
+
+#: 
+msgid "Minimum length is"
+msgstr "最小長は"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "http://またはhttps://で始まる有効なURLである必要があります"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "http://またはhttps://で始まる有効なURLである必要があります（例：http://localhostまたはhttps://domain.com）"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "有効なポート番号である必要があります（例：3306）"
+
+#: 
+msgid "Next Member"
+msgstr "次のメンバー"
+
+#: 
 msgid "Passwords do not match"
 msgstr "パスワードが一致しません"
+
+#: 
+msgid "Phone Type"
+msgstr "電話タイプ"
 
 #: 
 msgid "Phone number"
 msgstr "電話番号"
 
 #: 
+msgid "Please add at least one family member."
+msgstr "少なくとも1人の家族メンバーを追加してください。"
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "続行する前に検証エラーを修正してください。"
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "有効なURLを入力してください"
+
+#: 
+msgid "Please enter a valid email address"
+msgstr "有効なメールアドレスを入力してください"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "有効なメールアドレスを入力してください（例：name@example.com）"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "有効な数字を入力してください"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "有効な電話番号を入力してください"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "すべての必須フィールドに正しく入力してください。"
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "送信前にすべての情報を慎重に確認してください。必要に応じて戻って変更できます。"
+
+#: 
 msgid "Previous"
 msgstr "前"
+
+#: 
+msgid "Registration Error"
+msgstr "登録エラー"
+
+#: 
+msgid "Review & Submit"
+msgstr "確認して送信"
+
+#: 
+msgid "Role in Family"
+msgstr "家族での役割"
+
+#: 
+msgid "Select date"
+msgstr "日付を選択"
 
 #: 
 msgid "Street address"
 msgstr "住所（番地）"
 
 #: 
+msgid "Submit Registration"
+msgstr "登録を送信"
+
+#: 
 msgid "Zip code is required"
 msgstr "郵便番号は必須です"
 
 #: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "新しいパスワードが生成され、メールアドレスに送信されました。"
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "ChurchCRMの新しいバージョンがインストール可能です。"
+
+#: 
+msgid "Actual Hash"
+msgstr "実際のハッシュ"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "すべてのアップグレード前チェックに合格しました。アップグレードを続行できます。"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "プレリリースアップグレードを許可"
+
+#: 
+msgid "Apply Update Now"
+msgstr "今すぐ更新を適用"
+
+#: 
+msgid "Applying System Update..."
+msgstr "システム更新を適用中..."
+
+#: 
+msgid "Back to Login"
+msgstr "ログインに戻る"
+
+#: 
+msgid "Back to login"
+msgstr "ログインに戻る"
+
+#: 
+msgid "Backup Skipped"
+msgstr "バックアップはスキップされました"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "GitHubで最新リリース情報を確認"
+
+#: 
+msgid "Complete"
+msgstr "完了"
+
+#: 
+msgid "Continue to Backup"
+msgstr "バックアップに進む"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "ダウンロードと適用に進む"
+
+#: 
+msgid "Create Backup"
+msgstr "バックアップを作成"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "更新を適用する前にデータベースのバックアップを作成してください。"
+
+#: 
+msgid "Current Version:"
+msgstr "現在のバージョン："
+
+#: 
 msgid "Database Backup"
 msgstr "データベースのバックアップ"
+
+#: 
+msgid "Download & Apply"
+msgstr "ダウンロードと適用"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "システム更新をダウンロードして適用"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "最新リリースをダウンロードしてChurchCRMインストールに適用します。"
+
+#: 
+msgid "Downloaded"
+msgstr "ダウンロード済み"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "GitHubから最新リリースをダウンロード中..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "ログイン名を入力すると、パスワードリセットリンクをメールでお送りします。"
+
+#: 
+msgid "Expected Hash"
+msgstr "期待されるハッシュ"
+
+#: 
+msgid "Failed to create backup."
+msgstr "バックアップの作成に失敗しました。"
+
+#: 
+msgid "Failed to download update package."
+msgstr "更新パッケージのダウンロードに失敗しました。"
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "GitHubからのアップグレード情報の更新に失敗しました。"
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "アップグレード情報の更新に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "設定の保存に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "File Name"
+msgstr "ファイル名"
+
+#: 
+msgid "Files Missing"
+msgstr "ファイルがありません"
+
+#: 
+msgid "Files Modified"
+msgstr "変更されたファイル"
+
+#: 
+msgid "Go to Login"
+msgstr "ログインへ移動"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "理解しました - 続行"
+
+#: 
+msgid "Language updated to"
+msgstr "言語が更新されました"
+
+#: 
+msgid "Login Name is required"
+msgstr "ログイン名は必須です"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "メールを受信したら、一時パスワードでログインし、お好みのパスワードに変更できます。"
+
+#: 
+msgid "Password Reset Error"
+msgstr "パスワードリセットエラー"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "パスワードリセット成功"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "一時パスワードについてメール（スパム/迷惑メールフォルダを含む）を確認してください。"
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "このウィンドウを閉じたり、ページを更新したりしないでください。"
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "アップグレード前タスク完了"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "アップグレード前の警告"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "GitHubから更新"
+
+#: 
+msgid "Release Notes:"
+msgstr "リリースノート："
+
+#: 
+msgid "Request Password Reset"
+msgstr "パスワードリセットをリクエスト"
+
+#: 
+msgid "Retry Download"
+msgstr "ダウンロードを再試行"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "SHA1ハッシュ："
+
+#: 
+msgid "Send Reset Email"
+msgstr "リセットメールを送信"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "設定が保存されました。ページを再読み込み中..."
 
 #: 
 msgid "Setting updated successfully"
@@ -6593,24 +8744,224 @@ msgid "System upgrade completed successfully!"
 msgstr "システムアップグレードが正常に完了しました!"
 
 #: 
+msgid "This may take several minutes."
+msgstr "これには数分かかる場合があります。"
+
+#: 
+msgid "Update Available!"
+msgstr "更新が利用可能です！"
+
+#: 
+msgid "Update Package Details"
+msgstr "更新パッケージの詳細"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "更新パッケージが正常にダウンロードされました。"
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "アップグレード完了！"
+
+#: 
+msgid "Upgrade failed."
+msgstr "アップグレードに失敗しました。"
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "アップグレードに失敗しました。ログを確認してください。"
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "アップグレード情報が正常に更新されました"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "アップグレード情報が更新されました。ページを再読み込み中..."
+
+#: 
+msgid "Version Information"
+msgstr "バージョン情報"
+
+#: 
+msgid "Warnings"
+msgstr "警告"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "パスワードリセットリクエストを処理できませんでした。新しいパスワードリセットリンクをリクエストしてください。"
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "バックアップをスキップすることを選択しました。アップグレードを続行する前にバックアップを取ることを強くお勧めします。"
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "ChurchCRMインストールが正常にアップグレードされました。"
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "ChurchCRMインストールは最新バージョンで実行されています。"
+
+#: 
+msgid "2-50 characters"
+msgstr "2〜50文字"
+
+#: 
+msgid "Dear Friend"
+msgstr "親愛なる友人"
+
+#: 
+msgid "No Data Found"
+msgstr "データが見つかりません"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "前回のレポートからレコードが返されませんでした。フィルターまたは日付範囲を調整して、もう一度お試しください。"
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "メニュー名を入力してください（2〜50文字）"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "http://またはhttps://で始まる有効なURLを入力してください"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "すべてのシステムファイル署名が期待値と一致しています。"
+
+#: 
+msgid "Files with issues"
+msgstr "問題のあるファイル"
+
+#: 
+msgid "Integrity check failed"
+msgstr "整合性チェックに失敗しました"
+
+#: 
+msgid "Integrity check passed"
+msgstr "整合性チェックに合格しました"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "署名定義ファイルは存在しますが、読み取りできません。ファイル権限を確認してください。"
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "署名定義ファイルが%sにありません。パッケージングタスクを実行するか、公式リリースをデプロイして署名を再生成してください。"
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "整合性エンドポイントに接続できません。Webサーバーエラーログを確認してください。"
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "この入金に関する追加メモを追加"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "金額が最大許容値（999999.99）を超えています。"
+
+#: 
 msgid "Checks"
 msgstr "チェック"
+
+#: 
+msgid "Clear Filters"
+msgstr "フィルターをクリア"
+
+#: 
+msgid "Click a bar to filter payments"
+msgstr "バーをクリックして支払いをフィルター"
+
+#: 
+msgid "Delete Selected"
+msgstr "選択を削除"
 
 #: 
 msgid "Deposit saved successfully"
 msgstr "入金情報が正常に保存されました"
 
 #: 
+msgid "Error deleting payments"
+msgstr "支払いの削除エラー"
+
+#: 
+msgid "Error loading payments"
+msgstr "支払いの読み込みエラー"
+
+#: 
+msgid "Error saving deposit"
+msgstr "入金の保存エラー"
+
+#: 
 msgid "Funds"
 msgstr "資金"
+
+#: 
+msgid "Generate Report"
+msgstr "レポートを生成"
+
+#: 
+msgid "No Cash"
+msgstr "現金なし"
+
+#: 
+msgid "No Checks"
+msgstr "小切手なし"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "まだ支払いがありません。「支払いを追加」をクリックして開始してください。"
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "控除対象外金額が最大許容値（999999.99）を超えています。"
 
 #: 
 msgid "Payments"
 msgstr "支払い"
 
 #: 
+msgid "Payments deleted successfully"
+msgstr "支払いが正常に削除されました"
+
+#: 
+msgid "Please select a date"
+msgstr "日付を選択してください"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "削除する行を選択してください"
+
+#: 
+msgid "Saving..."
+msgstr "保存中..."
+
+#: 
+msgid "This action cannot be undone."
+msgstr "この操作は元に戻せません。"
+
+#: 
 msgid "Total Deposit"
 msgstr "入金総額"
+
+#: 
+msgid "Total Payments"
+msgstr "支払い合計"
+
+#: 
+msgid "payments(s)?"
+msgstr "件の支払い？"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "すべてのシステムファイルが整合性検証に合格しました。"
+
+#: 
+msgid "Base URL"
+msgstr "ベースURL"
 
 #: 
 msgid "ChurchCRM Installation"
@@ -6621,8 +8972,157 @@ msgid "Copy"
 msgstr "コピー"
 
 #: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "データベースサーバー"
+
+#: 
+msgid "Debug Info"
+msgstr "デバッグ情報"
+
+#: 
+msgid "Document Root"
+msgstr "ドキュメントルート"
+
+#: 
+msgid "Email Configuration"
+msgstr "メール設定"
+
+#: 
+msgid "Email Debug Info"
+msgstr "メールデバッグ情報"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "ファイルシステム権限"
+
+#: 
+msgid "Hostname"
+msgstr "ホスト名"
+
+#: 
+msgid "IP Address"
+msgstr "IPアドレス"
+
+#: 
+msgid "Images Root"
+msgstr "画像ルート"
+
+#: 
+msgid "Import Demo Data"
+msgstr "デモデータをインポート"
+
+#: 
+msgid "Include events and calendars"
+msgstr "イベントとカレンダーを含める"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "財務データ（寄付基金、誓約）を含める"
+
+#: 
+msgid "Invalid API key"
+msgstr "無効なAPIキー"
+
+#: 
+msgid "Not configured"
+msgstr "設定されていません"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "PHPとサーバー要件"
+
+#: 
+msgid "PHP Configuration"
+msgstr "PHP設定"
+
+#: 
+msgid "Platform"
+msgstr "プラットフォーム"
+
+#: 
+msgid "Root Path"
+msgstr "ルートパス"
+
+#: 
+msgid "SMTP Host"
+msgstr "SMTPホスト"
+
+#: 
 msgid "Server Information"
 msgstr "サーバー情報"
+
+#: 
+msgid "Software"
+msgstr "ソフトウェア"
+
+#: 
+msgid "System & Configuration"
+msgstr "システムと設定"
+
+#: 
+msgid "Tip:"
+msgstr "ヒント："
+
+#: 
+msgid "Valid Settings"
+msgstr "有効な設定"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "デモデータのインポート中にエラーが発生しました"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "デモデータが正常にインポートされました"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "日曜学校のクラスと登録を含める"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "後でこのデータを削除する必要がありますか？"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "この入金に支払いはありません"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "この入金に支払いはありません"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "含めるオプションデータ"
+
+#: 
+msgid "Skipped"
+msgstr "スキップ"
+
+#: 
+msgid "Unknown error"
+msgstr "不明なエラー"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "支払いのない入金"
+
+#: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%sに%dイベント"
+
+#: 
+msgid "All Event Types"
+msgstr "すべてのイベントタイプ"
+
+#: 
+msgid "All Types"
+msgstr "すべてのタイプ"
 
 #: 
 msgid "Are you sure you want to delete this check-in record?"
@@ -6645,24 +9145,381 @@ msgid "Check In"
 msgstr "チェックイン"
 
 #: 
+msgid "Check In Person"
+msgstr "人物をチェックイン"
+
+#: 
+msgid "Check In to Event"
+msgstr "イベントにチェックイン"
+
+#: 
+msgid "Check-in"
+msgstr "チェックイン"
+
+#: 
+msgid "Choose an event..."
+msgstr "イベントを選択..."
+
+#: 
 msgid "Clear"
 msgstr "クリア"
+
+#: 
+msgid "Create"
+msgstr "作成"
+
+#: 
+msgid "Create New Event"
+msgstr "新しいイベントを作成"
+
+#: 
+msgid "Create an event type to get started."
+msgstr "開始するにはイベントタイプを作成してください。"
+
+#: 
+msgid "Current DB Version"
+msgstr "現在のDBバージョン"
+
+#: 
+msgid "Current Software Version"
+msgstr "現在のソフトウェアバージョン"
+
+#: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "データベースのアップグレードが正常に完了しました。ダッシュボードにリダイレクト中..."
+
+#: 
+msgid "Date & Time"
+msgstr "日付と時刻"
+
+#: 
+msgid "Default Start Time"
+msgstr "デフォルト開始時刻"
+
+#: 
+msgid "Delete Event"
+msgstr "イベントを削除"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "イベントを削除すると、すべての出席カウントも削除されます。このイベントを削除しますか？"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "このイベントタイプを削除しても、既存のイベントは削除されません。よろしいですか？"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "このイベントを削除すると、すべての出席記録も削除されます。よろしいですか？"
+
+#: 
+msgid "Edit Event"
+msgstr "イベントを編集"
+
+#: 
+msgid "Editing Event"
+msgstr "イベントを編集中"
+
+#: 
+msgid "Enter event title..."
+msgstr "イベントタイトルを入力..."
+
+#: 
+msgid "Event"
+msgstr "イベント"
+
+#: 
+msgid "Event Type Name"
+msgstr "イベントタイプ名"
+
+#: 
+msgid "Event Types"
+msgstr "イベントタイプ"
+
+#: 
+msgid "Filter Events"
+msgstr "イベントをフィルター"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "イベントタイプでフィルター"
+
+#: 
+msgid "Filter by Type"
+msgstr "タイプでフィルター"
+
+#: 
+msgid "Head Count"
+msgstr "人数"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "タイプのイベントを一覧表示"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "チェックインを管理"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "メンバー、訪問者、子供"
+
+#: 
+msgid "Monthly Averages"
+msgstr "月間平均"
+
+#: 
+msgid "Monthly on the"
+msgstr "毎月の"
+
+#: 
+msgid "No event types defined yet."
+msgstr "まだイベントタイプが定義されていません。"
+
+#: 
+msgid "None (one-time event)"
+msgstr "なし（一回限りのイベント）"
+
+#: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "オプション - 説教ノートや追加イベント詳細を追加"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "オプション - 追跡しない場合は空白のまま"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "出席に関するオプションのメモ..."
 
 #: 
 msgid "People Checked In"
 msgstr "チェックイン済みの人物"
 
 #: 
+msgid "People in Cart"
+msgstr "カート内の人物"
+
+#: 
+msgid "Person Checking In"
+msgstr "チェックインする人物"
+
+#: 
+msgid "Recurrence"
+msgstr "繰り返し"
+
+#: 
+msgid "Required fields"
+msgstr "必須フィールド"
+
+#: 
+msgid "Save Event Type"
+msgstr "イベントタイプを保存"
+
+#: 
 msgid "Search by name or email..."
 msgstr "名前またはメールで検索..."
+
+#: 
+msgid "Search for adult..."
+msgstr "大人を検索..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "監督者を検索..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "チェックイン用のイベントを選択"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "開始と終了の日付/時刻を選択"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "カートメンバーをチェックインするイベントを選択"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "説教/イベントテキスト"
+
+#: 
+msgid "Unclassified"
+msgstr "未分類"
+
+#: 
+msgid "Upgrade database now"
+msgstr "今すぐデータベースをアップグレード"
+
+#: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "ChurchCRMインストールは、インストールされたソフトウェアバージョンに合わせてデータベースのアップグレードが必要です。この操作はスキーマとデータの移行を適用します。続行する前に最近のバックアップがあることを確認してください。"
+
+#: 
+msgid "added to this event"
+msgstr "このイベントに追加されました"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "例：日曜学校、聖書研究..."
+
+#: 
+msgid "optional"
+msgstr "オプション"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "人"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ チェックアウト"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "%d個の孤立ファイルが検出されました"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d個のファイルが変更されているか、見つかりません。強制再インストールを使用して公式バージョンを復元してください。"
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d個のファイルが整合性検証に失敗しました。"
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d個のファイルが完全に削除されます。"
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "サーバーで%d個の孤立ファイルが検出されました。"
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "（GitHubから更新）"
 
 #: 
 msgid "Access Denied"
 msgstr "アクセスが拒否されました"
 
 #: 
+msgid "Add event permission"
+msgstr "イベント追加権限"
+
+#: 
+msgid "Add records permission"
+msgstr "レコード追加権限"
+
+#: 
 msgid "Administrator privileges"
 msgstr "管理者権限"
+
+#: 
+msgid "All Files Verified"
+msgstr "すべてのファイルが検証されました"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "すべてのシステムファイルが期待される署名と一致しています。"
+
+#: 
+msgid "Application Integrity"
+msgstr "アプリケーション整合性"
+
+#: 
+msgid "Application files updated to latest version"
+msgstr "アプリケーションファイルが最新バージョンに更新されました"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "すべての孤立ファイルを削除してもよろしいですか？"
+
+#: 
+msgid "Back to Debug Info"
+msgstr "デバッグ情報に戻る"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "バックアップのベストプラクティス"
+
+#: 
+msgid "Backup Status"
+msgstr "バックアップステータス"
+
+#: 
+msgid "Backup Type"
+msgstr "バックアップタイプ"
+
+#: 
+msgid "Backup complete! Click below to download."
+msgstr "バックアップ完了！下をクリックしてダウンロードしてください。"
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "バックアップが正常に完了しました！"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "バックアップがダウンロードされました。サーバーコピーが削除されました。"
+
+#: 
+msgid "Backup failed. Please try again."
+msgstr "バックアップに失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "バックアップが生成され、リモートサーバーにコピーされました"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "バックアップ中です。お待ちください..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "外部ストレージへバックアップ"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "注意：バックアップを復元すると、既存のデータベースが完全に消去され、バックアップデータに置き換えられます。"
+
+#: 
+msgid "CSV export permission"
+msgstr "CSVエクスポート権限"
+
+#: 
+msgid "Close & Refresh"
+msgstr "閉じて更新"
+
+#: 
+msgid "Confirm Deletion"
+msgstr "削除を確認"
+
+#: 
+msgid "Create a backup first"
+msgstr "最初にバックアップを作成"
+
+#: 
+msgid "Create directory permission"
+msgstr "ディレクトリ作成権限"
+
+#: 
+msgid "Database Only"
+msgstr "データベースのみ"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "データベースが正常に復元されました！"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "データベーススキーマが自動的にアップグレードされました"
+
+#: 
+msgid "Delete All Files"
+msgstr "すべてのファイルを削除"
 
 #: 
 msgid "Delete All Orphaned Files"
@@ -6685,12 +9542,352 @@ msgid "Drag and drop your backup file here"
 msgstr "バックアップファイルをここにドラッグアンドドロップしてください"
 
 #: 
+msgid "Edit records permission"
+msgstr "レコード編集権限"
+
+#: 
+msgid "Encryption"
+msgstr "暗号化"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "データベース構造とデータをエクスポートします。ファイルサイズが小さくなります。"
+
+#: 
+msgid "File Integrity Check"
+msgstr "ファイル整合性チェック"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "ファイル整合性の問題が検出されました"
+
+#: 
+msgid "File Path"
+msgstr "ファイルパス"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "ファイル署名が公式リリースと一致しています。"
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "ファイルが変更または欠落している可能性があります。公式リリースから再デプロイすることを検討してください。"
+
+#: 
+msgid "Finance access"
+msgstr "財務アクセス"
+
+#: 
+msgid "Force Re-install"
+msgstr "強制再インストール"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "強制再インストールが開始されました。適用する前にデータベースをバックアップしてください。"
+
+#: 
+msgid "Full Backup"
+msgstr "フルバックアップ"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "バックアップを生成してダウンロード"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "ダッシュボードへ移動"
+
+#: 
+msgid "Group management access"
+msgstr "グループ管理アクセス"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "この機能にアクセスする必要がある場合は、教会の管理者にお問い合わせください。"
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "ChurchInfoまたは以前のバージョンのChurchCRMからバックアップをアップロードすると、現在のデータベーススキーマに自動的にアップグレードされます。"
+
+#: 
+msgid "Important Warning"
+msgstr "重要な警告"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "データベースとアップロードされたすべての写真を含みます。ファイルサイズが大きくなります。"
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "1部は現地の耐火金庫に、もう1部は別の場所に保管してください。"
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "最新のGitHubバージョン："
+
+#: 
 msgid "Loading..."
 msgstr "読み込み中..."
 
 #: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "自動バックアップがない限り、少なくとも週に1回はバックアップを作成してください。"
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "孤立ファイルの管理"
+
+#: 
+msgid "Menu options access"
+msgstr "メニューオプションアクセス"
+
+#: 
+msgid "Missing Files"
+msgstr "不足しているファイル"
+
+#: 
+msgid "Modified Files"
+msgstr "変更されたファイル"
+
+#: 
+msgid "Multiple Copies"
+msgstr "複数のコピー"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "孤立ファイルは見つかりませんでした"
+
+#: 
+msgid "Notes access"
+msgstr "メモアクセス"
+
+#: 
+msgid "Orphaned Files"
+msgstr "孤立ファイル"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "孤立ファイル管理"
+
+#: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "孤立ファイルは、サーバー上に存在するが公式ChurchCRMリリースの一部ではないPHPまたはJavaScriptファイルです。これらのファイルは以前のバージョンから残っている可能性があり、脆弱性を含む古いコードが含まれている場合、セキュリティリスクをもたらす可能性があります。"
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "以前のバージョンの孤立ファイルがクリーンアップされました"
+
+#: 
+msgid "Permission Required"
+msgstr "権限が必要です"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "バックアップファイルを確認して、もう一度お試しください。"
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "復元するバックアップファイルを選択してください"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "現在のバージョンを再ダウンロードして再適用し、すべてのファイルを公式の状態に復元します"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "バックアップを作成する準備ができました。上記のオプションを選択し、バックアップボタンをクリックしてください。"
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "復元の準備ができました。バックアップファイルを選択し、データベースの復元をクリックしてください。"
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "推奨：アップグレードの前後にこれらのファイルを確認して削除してください。"
+
+#: 
+msgid "Redirecting in"
+msgstr "リダイレクト中"
+
+#: 
+msgid "Refresh List"
+msgstr "リストを更新"
+
+#: 
+msgid "Regular Backups"
+msgstr "定期的なバックアップ"
+
+#: 
+msgid "Required Permission"
+msgstr "必要な権限"
+
+#: 
+msgid "Required permission"
+msgstr "必要な権限"
+
+#: 
+msgid "Restore Status"
+msgstr "復元ステータス"
+
+#: 
+msgid "Restore failed."
+msgstr "復元に失敗しました。"
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "復元に失敗しました。バックアップファイルを確認して、もう一度お試しください。"
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "復元中です。お待ちください..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "以下のファイルを確認し、削除してセキュリティを向上させてください。"
+
+#: 
 msgid "Security Recommendation"
 msgstr "セキュリティに関する推奨事項"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "セキュリティ警告：孤立ファイルが検出されました"
+
+#: 
+msgid "Select Backup File"
+msgstr "バックアップファイルを選択"
+
+#: 
+msgid "Supported formats:"
+msgstr "サポートされている形式："
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "以下のファイルはサーバー上に存在しますが、公式ChurchCRMリリースの一部ではありません。これらは以前のバージョンから残っている可能性があり、セキュリティリスクをもたらす可能性があります。"
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "アクセスしようとしたページには、現在アカウントにない特別な権限が必要です。"
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "これらのファイルは公式リリースの一部ではなく、セキュリティリスクをもたらす可能性があります。"
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "これらのファイルは古いChurchCRMバージョンの一部であった可能性があり、以前のアップグレード中にクリーンアップされませんでした。削除するとシステムセキュリティが向上します。"
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "これらのファイルは古いChurchCRMバージョンの一部であった可能性があり、以前のアップグレード中にクリーンアップされませんでした。セキュリティの脆弱性がある古いコードが含まれている可能性があります。"
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "この操作は元に戻せません。必要に応じて現在のデータのバックアップがあることを確認してください。"
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "大きなデータベースの場合、数分かかる場合があります。"
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "大きなデータベースの場合、数分かかる場合があります。このページを閉じないでください。"
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "現在のバージョンを再ダウンロードして再適用します。これにより、破損または変更されたファイルを修正できます。続行しますか？"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "アップグレードの概要"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "外部ツール（GPG、7-Zip）を使用して、オフサイトに保存する前にバックアップを暗号化してください。"
+
+#: 
+msgid "User authentication"
+msgstr "ユーザー認証"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "ユーザーはイベント追加権限が必要です"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "ユーザーはメニューオプション権限が必要です"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "孤立ファイルとは？"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "このページへのアクセス権がありません"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "ログアウトされ、ログインページにリダイレクトされます。"
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "ChurchCRMのインストールはクリーンです。サーバー上のすべてのファイルが公式リリースと一致しています。"
+
+#: 
+msgid "or click to browse"
+msgstr "またはクリックして参照"
+
+#: 
+msgid "seconds..."
+msgstr "秒..."
+
+#: 
+msgid " Deposit #"
+msgstr " 預金番号"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d件の分類が不足"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d件の性別が不足"
+
+#: 
+msgid "%d missing role"
+msgstr "%d件の役割が不足"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "支払いは実際に受け取った寄付です。現在の預金に追加されます。"
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "誓約は寄付の約束です。預金伝票には関連付けられていません。"
+
+#: 
+msgid "Add Another Family Member"
+msgstr "別の家族メンバーを追加"
+
+#: 
+msgid "Add Pledge"
+msgstr "誓約を追加"
+
+#: 
+msgid "Admin Dashboard"
+msgstr "管理ダッシュボード"
+
+#: 
+msgid "Advanced Operations"
+msgstr "高度な操作"
+
+#: 
+msgid "All System Settings"
+msgstr "すべてのシステム設定"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "予期しないエラーが発生しました。管理者にお問い合わせください。"
 
 #: 
 msgid "Apr"
@@ -6701,28 +9898,304 @@ msgid "Aug"
 msgstr "8月"
 
 #: 
+msgid "Back to Deposits"
+msgstr "預金に戻る"
+
+#: 
+msgid "Back to Families"
+msgstr "家族に戻る"
+
+#: 
+msgid "Birth & Family"
+msgstr "出生と家族"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "CSVエクスポートは管理者に制限されています。"
+
+#: 
+msgid "Cart"
+msgstr "カート"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "システム設定で変更してください。"
+
+#: 
+msgid "Church Membership"
+msgstr "教会メンバーシップ"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "教会名がデフォルト値に設定されています"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "クラスと登録"
+
+#: 
+msgid "Clean Up Files"
+msgstr "ファイルをクリーンアップ"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "すべてのデータを消去して新規に開始します。元に戻せません。"
+
+#: 
+msgid "Close All Deposits"
+msgstr "すべての預金を締める"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "締め切った預金："
+
+#: 
+msgid "Closed vs Total"
+msgstr "締め切り済み対合計"
+
+#: 
+msgid "Coming soon"
+msgstr "近日公開"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "ChurchCRMをスムーズに実行するために、これらの重要なセットアップタスクを完了してください："
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "任意の順序で完了してください。サンプルレコードで探索するにはデモデータを使用してください。"
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "寄付者の正確な年末税務報告を確保するために、これらのタスクを完了してください。"
+
+#: 
+msgid "Configuration:"
+msgstr "設定："
+
+#: 
+msgid "Configure Email"
+msgstr "メールを設定"
+
+#: 
+msgid "Contact Information"
+msgstr "連絡先情報"
+
+#: 
+msgid "Create Deposit"
+msgstr "預金を作成"
+
+#: 
+msgid "Create First Deposit"
+msgstr "最初の預金を作成"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "最初に預金を作成または開く"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "開始するには預金を作成または選択してください。"
+
+#: 
+msgid "Current Deposit"
+msgstr "現在の預金"
+
+#: 
+msgid "Current fiscal year"
+msgstr "現在の会計年度"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "日付、基金、家族、支払い方法でフィルタリングできるカスタマイズ可能なレポート。"
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "税務明細書に表示されるテキストをカスタマイズします（sTaxReport1、sTaxReport2など）。"
+
+#: 
+msgid "Data Quality:"
+msgstr "データ品質："
+
+#: 
+msgid "Database:"
+msgstr "データベース："
+
+#: 
+msgid "Day"
+msgstr "日"
+
+#: 
 msgid "Dec"
 msgstr "12月"
+
+#: 
+msgid "Demo Data"
+msgstr "デモデータ"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "預金ナビゲーション"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "預金統計"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "単一の預金伝票の詳細な内訳。"
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "家族別の誓約と支払いの詳細な内訳。"
+
+#: 
+msgid "Documentation"
+msgstr "ドキュメント"
+
+#: 
+msgid "Donor Families"
+msgstr "寄付者家族"
+
+#: 
+msgid "Edit Deposit"
+msgstr "預金を編集"
+
+#: 
+msgid "Edit Family"
+msgstr "家族を編集"
+
+#: 
+msgid "Edit Payment"
+msgstr "支払いを編集"
+
+#: 
+msgid "Edit Person"
+msgstr "人物を編集"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "明細書を生成する前に、税年度のすべての預金が締め切られていることを確認してください。"
+
+#: 
+msgid "Export Options"
+msgstr "エクスポートオプション"
+
+#: 
+msgid "F"
+msgstr "女"
+
+#: 
+msgid "Failed to save settings"
+msgstr "設定の保存に失敗しました"
+
+#: 
+msgid "Family Navigation"
+msgstr "家族ナビゲーション"
 
 #: 
 msgid "Feb"
 msgstr "2月"
 
 #: 
+msgid "File Integrity:"
+msgstr "ファイル整合性："
+
+#: 
+msgid "Filtering"
+msgstr "フィルタリング"
+
+#: 
+msgid "Finance"
+msgstr "財務"
+
+#: 
+msgid "Finance Dashboard"
+msgstr "財務ダッシュボード"
+
+#: 
+msgid "Force Import"
+msgstr "強制インポート"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "強制インポートは再試行し、重複データが作成される可能性があります。"
+
+#: 
+msgid "Fund Allocation"
+msgstr "基金配分"
+
+#: 
+msgid "Generate"
+msgstr "生成"
+
+#: 
+msgid "Generate Reports"
+msgstr "レポートを生成"
+
+#: 
 msgid "Generate Tax Statements"
 msgstr "税務報告書（寄付証明書）の作成"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "寄付者の年間寄付明細書を生成し、寄付パターンを特定します。"
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "寄付者の年間控除対象寄付明細書を生成します。印刷またはメールで送信できます。"
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "個々の預金または日付範囲の詳細なレポートを生成します。"
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "未払いの誓約がある家族にリマインダーレターを生成します。"
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "税務明細書、誓約追跡、財務分析のレポートを生成します。"
 
 #: 
 msgid "Giving funds and categories"
 msgstr "献金基金およびカテゴリー"
 
 #: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPSが設定されていません"
+
+#: 
 msgid "ID"
 msgstr "ID"
 
 #: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "日付範囲内に寄付をしていないメンバーを特定します。"
+
+#: 
+msgid "Import failed"
+msgstr "インポートに失敗しました"
+
+#: 
+msgid "Import from CSV files"
+msgstr "CSVファイルからインポート"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "サンプルの家族、人物、グループをインポートして、リアルなデータでChurchCRMを探索します。"
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "セキュリティを向上させるためにTLS/SSL証明書をインストール"
+
+#: 
 msgid "Jan"
 msgstr "1月"
+
+#: 
+msgid "Jr., Sr."
+msgstr "Jr.、Sr."
 
 #: 
 msgid "Jul"
@@ -6733,8 +10206,28 @@ msgid "Jun"
 msgstr "6月"
 
 #: 
+msgid "Latest Note"
+msgstr "最新のメモ"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "システムをセットアップして使用できる状態にしましょう"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "寄付履歴とメンバーシップ基準に基づいて投票資格のあるメンバーをリストします。"
+
+#: 
+msgid "Location"
+msgstr "場所"
+
+#: 
 msgid "M"
 msgstr "男"
+
+#: 
+msgid "Manage Funds"
+msgstr "基金を管理"
 
 #: 
 msgid "Manage Users"
@@ -6749,12 +10242,52 @@ msgid "Membership Reports"
 msgstr "会員レポート"
 
 #: 
+msgid "Missing Secret Keys"
+msgstr "秘密鍵が不足しています"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "ほとんどのレポートは、印刷用にPDFとして、またはスプレッドシート分析用にCSVとしてエクスポートできます。"
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "Mr.、Mrs.、Dr."
+
+#: 
+msgid "Name & Identity"
+msgstr "名前とアイデンティティ"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "新しい預金が作成されます"
+
+#: 
 msgid "New Payment"
 msgstr "新規支払い"
 
 #: 
 msgid "New Pledge"
 msgstr "新規献金約束（プレッジ）"
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "今後7日間と過去7日間"
+
+#: 
+msgid "No Active Deposit"
+msgstr "アクティブな預金がありません"
+
+#: 
+msgid "No active funds configured."
+msgstr "アクティブな基金が設定されていません。"
+
+#: 
+msgid "No deposits found."
+msgstr "預金が見つかりません。"
+
+#: 
+msgid "No format"
+msgstr "フォーマットなし"
 
 #: 
 msgid "Nov"
@@ -6765,8 +10298,224 @@ msgid "Oct"
 msgstr "10月"
 
 #: 
+msgid "Open"
+msgstr "開く"
+
+#: 
+msgid "Open Deposits:"
+msgstr "未締め切りの預金："
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "組織、タイムゾーン、メール"
+
+#: 
+msgid "Organizational structure"
+msgstr "組織構造"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "孤立ファイル："
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
+msgid "Payment"
+msgstr "支払い"
+
+#: 
+msgid "Pledge Reports"
+msgstr "誓約レポート"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "すべての寄付者に年間寄付明細書を印刷またはメールで送信します。"
+
+#: 
+msgid "Quick Actions"
+msgstr "クイックアクション"
+
+#: 
+msgid "Quick Start"
+msgstr "クイックスタート"
+
+#: 
+msgid "Recent Deposits"
+msgstr "最近の預金"
+
+#: 
+msgid "Recording a Payment"
+msgstr "支払いの記録"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "誓約の記録"
+
+#: 
+msgid "Report Tips"
+msgstr "レポートのヒント"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "メンバーの投票資格と組織ガバナンスに関連するレポート。"
+
+#: 
+msgid "Reset"
+msgstr "リセット"
+
+#: 
+msgid "Restore"
+msgstr "復元"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "バックアップファイルから復元します。既存のデータは消去されます。"
+
+#: 
+msgid "Review Donation Funds"
+msgstr "寄付基金を確認"
+
+#: 
+msgid "SMTP server settings are not configured"
+msgstr "SMTPサーバー設定が構成されていません"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "保存して新しい家族を追加"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Config.phpに秘密鍵がありません"
+
+#: 
 msgid "Sep"
 msgstr "9月"
+
+#: 
+msgid "Server error"
+msgstr "サーバーエラー"
+
+#: 
+msgid "Settings"
+msgstr "設定"
+
+#: 
+msgid "Settings saved successfully"
+msgstr "設定が正常に保存されました"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "セットアップタスク："
+
+#: 
+msgid "Social Media"
+msgstr "ソーシャルメディア"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "一部のアプリケーション前提条件が満たされていません"
+
+#: 
+msgid "State (Other)"
+msgstr "州（その他）"
+
+#: 
+msgid "Status:"
+msgstr "ステータス："
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "会計年度の基金別の誓約対支払いの概要。"
+
+#: 
+msgid "System Configuration:"
+msgstr "システム設定："
+
+#: 
+msgid "System Health"
+msgstr "システムの健全性"
+
+#: 
+msgid "System Info"
+msgstr "システム情報"
+
+#: 
+msgid "Tax & Giving Reports"
+msgstr "税務と寄付レポート"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "税務レポートの文言"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "税務明細書（寄付レポート）"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "税年度報告チェックリスト"
+
+#: 
+msgid "Today"
+msgstr "今日"
+
+#: 
+msgid "Total"
+msgstr "合計"
+
+#: 
+msgid "Total Amount"
+msgstr "合計金額"
+
+#: 
+msgid "Total Deposits:"
+msgstr "預金合計："
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "キャンペーンと会計年度予算の誓約と支払い進捗を追跡します。"
+
+#: 
+msgid "Type:"
+msgstr "タイプ："
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "未達成の前提条件"
+
+#: 
+msgid "Update Church Name"
+msgstr "教会名を更新"
+
+#: 
+msgid "Upgrade"
+msgstr "アップグレード"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "分類と家族フィルターを使用して、特定の寄付者グループのレポートを生成します。"
+
+#: 
+msgid "User accounts and roles"
+msgstr "ユーザーアカウントと役割"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "ユーザーは管理者であるか、財務権限を持っている必要があります"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "教会名、住所、連絡先情報が税務明細書に表示されることを確認します。"
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "基金名と説明が明細書に正確であることを確認します。"
+
+#: 
+msgid "Version:"
+msgstr "バージョン："
 
 #: 
 msgid "Welcome to ChurchCRM"
@@ -6777,8 +10526,603 @@ msgid "YTD Payments"
 msgstr "本年累計支払額"
 
 #: 
+msgid "YTD Pledges"
+msgstr "年初来の誓約"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "今すぐ家族メンバーを作成するか、後で追加できます。すべてのエントリは新しい人物レコードになります。"
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "あなたの会計年度は月に始まります"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "郵便番号"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "アップグレードにはZipArchive拡張が必要です"
+
+#: 
+msgid "active"
+msgstr "アクティブ"
+
+#: 
+msgid "ago"
+msgstr "前"
+
+#: 
+msgid "day"
+msgstr "日"
+
+#: 
+msgid "days"
+msgstr "日"
+
+#: 
+msgid "found"
+msgstr "見つかりました"
+
+#: 
+msgid "in"
+msgstr "で"
+
+#: 
+msgid "issues"
+msgstr "問題"
+
+#: 
+msgid "open"
+msgstr "開く"
+
+#: 
+msgid "years"
+msgstr "年"
+
+#: 
 msgid "yes"
 msgstr "はい"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "（事前定義された州がない国の場合は、州/県を入力してください）"
+
+#: 
+msgid "Available"
+msgstr "利用可能"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "ベースURL設定が無効です。Config.phpファイルを確認してください。"
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "ベースURLがConfig.phpで設定されていません"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "ChurchCRMサポートされているロケール"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "SSH、FTP、またはホスティングコントロールパネルを介してサーバーに接続します"
+
+#: 
+msgid "Contact"
+msgstr "連絡先"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "重大な設定エラー"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "現在の$URL[0]値："
+
+#: 
+msgid "Custom port:"
+msgstr "カスタムポート："
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "<strong>末尾のスラッシュ</strong>（/）で終わる"
+
+#: 
+msgid "Error:"
+msgstr "エラー："
+
+#: 
+msgid "Find the line:"
+msgstr "行を見つける："
+
+#: 
+msgid "Group Memberships"
+msgstr "グループメンバーシップ"
+
+#: 
+msgid "How to Fix:"
+msgstr "修正方法："
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "ChurchCRMコミュニティに参加し、情報を共有して改善に協力してください。1分もかかりません！"
+
+#: 
+msgid "Language"
+msgstr "言語"
+
+#: 
+msgid "Local development:"
+msgstr "ローカル開発："
+
+#: 
+msgid "Locale Support"
+msgstr "ロケールサポート"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "場所と連絡先情報"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "ChurchCRMインストールディレクトリに移動します"
+
+#: 
+msgid "New to"
+msgstr "新規"
+
+#: 
+msgid "No locales configured"
+msgstr "ロケールが設定されていません"
+
+#: 
+msgid "Not Available"
+msgstr "利用不可"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "このファイルをテキストエディタで開く："
+
+#: 
+msgid "Register Now"
+msgstr "今すぐ登録"
+
+#: 
+msgid "Register Your Church"
+msgstr "教会を登録"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "ファイルを保存してこのページを更新"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "Person Editorで未所属の人の個人住所の入力を無効にするにはtrueに設定します。家族の割り当てがない人の住所入力を有効にするにはfalseに設定します。"
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "<strong>http://</strong>または<strong>https://</strong>で始まる"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "サブディレクトリインストール："
+
+#: 
+msgid "System Locale Support"
+msgstr "システムロケールサポート"
+
+#: 
+msgid "System Support"
+msgstr "システムサポート"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URLに有効なホスト名が含まれていません"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "URLホスト名が無効です"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URLの形式が無効です"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URLは末尾のスラッシュ（/）で終わる必要があります"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URLはhttp://またはhttps://で始まる必要があります"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "システムロケールを検出できません"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "利用可能なロケールを判断できません"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "ロケール情報を読み込めません"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "州リストを読み込めません。ネットワーク接続を確認するか、後でもう一度お試しください。"
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "次の条件を満たす有効なURLに更新してください："
+
+#: 
+msgid "Valid Examples:"
+msgstr "有効な例："
+
+#: 
+msgid "View Logs"
+msgstr "ログを表示"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "デバッグ用のシステムログファイルを表示および管理します。"
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "姓を入力する必要があります。"
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "あなたのプライバシーは重要です。私たちはあなたの情報を第三者と共有することはありません。"
+
+#: 
+msgid "Additional Information"
+msgstr "追加情報"
+
+#: 
+msgid "All information is correct"
+msgstr "すべての情報が正しい"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "機会を割り当て"
+
+#: 
+msgid "Assign Property"
+msgstr "プロパティを割り当て"
+
+#: 
+msgid "Choose a property..."
+msgstr "プロパティを選択..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "機会を選択..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "家族情報を確認"
+
+#: 
+msgid "Confirm family information"
+msgstr "家族情報を確認"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "連絡先と個人情報"
+
+#: 
+msgid "Copied!"
+msgstr "コピーしました！"
+
+#: 
+msgid "Edit Role"
+msgstr "役割を編集"
+
+#: 
+msgid "Edited"
+msgstr "編集済み"
+
+#: 
+msgid "Email PDF"
+msgstr "PDFをメール"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "URLのコピーに失敗しました"
+
+#: 
+msgid "ID:"
+msgstr "ID："
+
+#: 
+msgid "Newsletter"
+msgstr "ニュースレター"
+
+#: 
+msgid "No assigned family"
+msgstr "割り当てられた家族がありません"
+
+#: 
+msgid "Open in New Tab"
+msgstr "新しいタブで開く"
+
+#: 
+msgid "Personal"
+msgstr "個人"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "家族情報を確認してください："
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "修正内容でレコードを更新してください"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "ここに修正または追加情報を入力してください..."
+
+#: 
+msgid "Remove Property"
+msgstr "プロパティを削除"
+
+#: 
+msgid "Select Opportunities"
+msgstr "機会を選択"
+
+#: 
+msgid "Select Property"
+msgstr "プロパティを選択"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "このURLを家族メンバーと共有して情報を確認してもらいます"
+
+#: 
+msgid "Submit Verification"
+msgstr "確認を送信"
+
+#: 
+msgid "Thank You!"
+msgstr "ありがとうございます！"
+
+#: 
+msgid "Translation incomplete"
+msgstr "翻訳が不完全です"
+
+#: 
+msgid "Visit Our Website"
+msgstr "ウェブサイトを訪問"
+
+#: 
+msgid "Volunteer"
+msgstr "ボランティア"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "確認の処理中にエラーが発生しました。もう一度お試しいただくか、直接お問い合わせください。"
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "確認リクエストを受け取りました。情報を最新の状態に保っていただきありがとうございます。"
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "エラーが発生しました。システム管理者にお問い合わせください。"
+
+#: 
+msgid "Backup failed"
+msgstr "バックアップに失敗しました"
+
+#: 
+msgid "Database reset failed"
+msgstr "データベースのリセットに失敗しました"
+
+#: 
+msgid "Database restore failed"
+msgstr "データベースの復元に失敗しました"
+
+#: 
+msgid "Demo data import failed"
+msgstr "デモデータのインポートに失敗しました"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "デモデータのインポートは、正確に1人の人物がいる新規インストールでのみ利用可能です"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "デモデータが正常に読み込まれました"
+
+#: 
+msgid "Download failed"
+msgstr "ダウンロードに失敗しました"
+
+#: 
+msgid "Failed to apply upgrade"
+msgstr "アップグレードの適用に失敗しました"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "孤立ファイルの削除に失敗しました"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "最新リリースのダウンロードに失敗しました"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "アップグレード情報の更新に失敗しました"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "家族写真のアップロードに失敗しました"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "人物写真のアップロードに失敗しました"
+
+#: 
+msgid "Remote backup failed"
+msgstr "リモートバックアップに失敗しました"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "WebDAVバックアップが正しく設定されていません。エンドポイント、ユーザー名、パスワードが設定されていることを確認してください"
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA有効"
+
+#: 
+msgid "Active Users"
+msgstr "アクティブユーザー"
+
+#: 
+msgid "ChMeetings Export"
+msgstr "ChMeetingsエクスポート"
+
+#: 
+msgid "Delete User"
+msgstr "ユーザーを削除"
+
+#: 
+msgid "Disable 2FA"
+msgstr "2FAを無効化"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "外部システムにインポートするためにすべての人物データをChMeetings形式でエクスポートします。"
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "ChMeetings CSVにエクスポート"
+
+#: 
+msgid "Exporting..."
+msgstr "エクスポート中..."
+
+#: 
+msgid "Family Listing"
+msgstr "家族一覧"
+
+#: 
+msgid "Invalid request data"
+msgstr "無効なリクエストデータ"
+
+#: 
+msgid "Invalid status"
+msgstr "無効なステータス"
+
+#: 
+msgid "Locked Users"
+msgstr "ロックされたユーザー"
+
+#: 
+msgid "Person Listing"
+msgstr "人物一覧"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "人物がカートから削除されました"
+
+#: 
+msgid "Quick Settings"
+msgstr "クイック設定"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "失敗したログインをリセット"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "メールでパスワードをリセット"
+
+#: 
+msgid "Set Active"
+msgstr "アクティブに設定"
+
+#: 
+msgid "Set Inactive"
+msgstr "非アクティブに設定"
+
+#: 
+msgid "Show"
+msgstr "表示"
+
+#: 
+msgid "Showing"
+msgstr "表示中"
+
+#: 
+msgid "Total Users"
+msgstr "総ユーザー数"
+
+#: 
+msgid "User Management"
+msgstr "ユーザー管理"
+
+#: 
+msgid "View Details"
+msgstr "詳細を表示"
+
+#: 
+msgid "entries"
+msgstr "エントリ"
+
+#: 
+msgid "of"
+msgstr "の"
+
+#: 
+msgid "total"
+msgstr "合計"
+
+#: 
+msgid "Code incomplete"
+msgstr "コードが不完全です"
+
+#: 
+msgid "Code is invalid"
+msgstr "コードが無効です"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "データベースに2FA秘密鍵を保存するための暗号化キー"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "二要素認証"
+
+#: 
+msgid "Validation pending"
+msgstr "検証保留中"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "暗号化キーで設定する必要があります"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d人がカートに追加されました。"
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d人が選択した家族に正常に追加されました。"
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d人が選択したグループに正常に追加されました。"
+
+#: 
+msgid "A "
+msgstr "A "
 
 #: 
 msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
@@ -6935,4 +11279,197 @@ msgstr "スペイン語 - エルサルバドル"
 #: 
 msgid "Spanish - Mexico"
 msgstr "スペイン語 - メキシコ"
+
+#: 
+msgid "Add Property Type"
+msgstr "プロパティタイプを追加"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "最初のプロパティタイプを追加"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "上記のカウントから自動計算"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "このフィールドを削除すると、このフィールドに割り当てられたすべてのグループメンバーデータが永久に失われます！"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "この基金を削除すると、過去の寄付記録に影響を与える可能性があります！"
+
+#: 
+msgid "Category Name"
+msgstr "カテゴリ名"
+
+#: 
+msgid "Checked In"
+msgstr "チェックイン済み"
+
+#: 
+msgid "Checked Out"
+msgstr "チェックアウト済み"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "現在の会計年度"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "削除（関連するすべてのレコードが削除されます）"
+
+#: 
+msgid "Edit Property Type"
+msgstr "プロパティタイプを編集"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "カンマ区切りのカウントカテゴリを入力してください（例：メンバー、訪問者、子供）。"
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "説教メモまたはイベントテキストを入力..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "既存の寄付基金"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "既存のグループプロパティ"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "役割の更新に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Family Pledges"
+msgstr "家族の誓約"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "削除または「新規追加」ボタンを使用する前に「変更を保存」しないと、フィールドの変更が失われます！"
+
+#: 
+msgid "Filter by Class"
+msgstr "クラスでフィルター"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "基金が正常に削除されました"
+
+#: 
+msgid "In Use"
+msgstr "使用中"
+
+#: 
+msgid "Manage"
+msgstr "管理"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "選択した会計年度の誓約が見つかりません"
+
+#: 
+msgid "No property types found"
+msgstr "プロパティタイプが見つかりません"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "このプロパティタイプを使用しているレコード数"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "このプロパティタイプのオプションの詳細説明"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "以下のエラーを修正してください。"
+
+#: 
+msgid "Pledge Amount"
+msgstr "誓約金額"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "誓約ダッシュボード"
+
+#: 
+msgid "Remaining"
+msgstr "残り"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "この出席カウントを削除しますか？"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "このプロパティが適用されるレコードタイプを選択"
+
+#: 
+msgid "That fund name already exists."
+msgstr "その基金名はすでに存在します。"
+
+#: 
+msgid "Total Pledges"
+msgstr "誓約合計"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "家族と基金別に誓約コミットメントを追跡および管理"
+
+#: 
+msgid "View Properties"
+msgstr "プロパティを表示"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "例：訪問者、子供"
+
+#: 
+msgid "of pledges"
+msgstr "の誓約"
+
+#: 
+msgid "records"
+msgstr "レコード"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "空でない場合は/で始まる必要があります。末尾のスラッシュは不可。文字、数字、アンダースコア、ダッシュ、ドット、/のみ使用可能。"
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d人"
+
+#: 
+msgid "All Classifications"
+msgstr "すべての分類"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "条件に一致する人物が見つかりません。"
+
+#: 
+msgid "Off"
+msgstr "オフ"
+
+#: 
+msgid "On"
+msgstr "オン"
+
+#: 
+msgid "Photo Directory"
+msgstr "写真ディレクトリ"
+
+#: 
+msgid "Reset Filters"
+msgstr "フィルターをリセット"
+
+#: 
+msgid "Show only people with photos"
+msgstr "写真のある人物のみ表示"
 

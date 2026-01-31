@@ -107,7 +107,17 @@ $MenuFirst = 1;
                     dom: "<'row'<'col-sm-4'B><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
                             "<'row'<'col-sm-12't>>" +
                             "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>",
-                    buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+                    buttons: [
+                        'copy',
+                        'csv',
+                        'excel',
+                        {
+                            extend: 'pdf',
+                            orientation: 'landscape',
+                            pageSize: 'LEGAL'
+                        },
+                        'print'
+                    ]
                 }
             },
             PageName:"<?= $_SERVER['REQUEST_URI']; ?>"

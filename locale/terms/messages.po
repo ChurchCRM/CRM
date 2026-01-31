@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-24 18:38-0800\n"
+"POT-Creation-Date: 2026-01-27 22:27-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -130,6 +130,12 @@ msgstr[1] ""
 #, php-format
 msgid "%d orphaned files were detected on your server."
 msgstr ""
+
+#, php-format
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] ""
+msgstr[1] ""
 
 #, php-format
 msgid "%d year old"
@@ -443,6 +449,9 @@ msgid "Algeria (‫الجزائر‬‎)"
 msgstr ""
 
 msgid "All"
+msgstr ""
+
+msgid "All Classifications"
 msgstr ""
 
 msgid "All Data"
@@ -5047,6 +5056,9 @@ msgstr ""
 msgid "No payments yet. Click \"Add Payment\" to get started."
 msgstr ""
 
+msgid "No people found matching your criteria."
+msgstr ""
+
 msgid "No personally identifiable information will be submitted unless you purposefully include it."
 msgstr ""
 
@@ -5648,6 +5660,9 @@ msgid "Phone Type"
 msgstr ""
 
 msgid "Phone number"
+msgstr ""
+
+msgid "Photo Directory"
 msgstr ""
 
 msgid "PhotoBook"
@@ -6256,6 +6271,9 @@ msgstr ""
 msgid "Reset Failed Logins"
 msgstr ""
 
+msgid "Reset Filters"
+msgstr ""
+
 msgid "Reset Password"
 msgstr ""
 
@@ -6843,6 +6861,9 @@ msgid "Show in"
 msgstr ""
 
 msgid "Show neighbors with these classifications"
+msgstr ""
+
+msgid "Show only people with photos"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"

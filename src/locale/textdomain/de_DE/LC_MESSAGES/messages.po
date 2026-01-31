@@ -4067,12 +4067,6 @@ msgstr "Suche"
 msgid "Field"
 msgstr "Feld"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Registrierte Schüler"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4165,11 +4159,6 @@ msgstr "Die Sonntagsschulklasse, für die Sie die Unterlagen zurückhaben möcht
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Gruppe von registrierten Schülern"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Der Monat des Mitgliedsjubiläums, für den Sie die Daten zurückerhalten möchten."
 
@@ -4202,11 +4191,6 @@ msgstr "dieses Jahr Spenden zugesagt"
 #: 
 msgid "but not this year"
 msgstr "aber nicht dieses Jahr"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Geschäftsjahr."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4270,11 +4254,6 @@ msgstr "Fehlende Zusagen"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familienverpflichtung nach Steuerjahr"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Benutzerdefinierte Suche"
 
@@ -4287,11 +4266,6 @@ msgstr "Gibt Personendatensätze zurück, denen die angegebene Eigenschaft zugew
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Personen mit Geburtstagen in einem bestimmten Monat"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Registrierte Studenten suchen"
 
 #. Context: query_qry
 #: 
@@ -4317,11 +4291,6 @@ msgstr "Vergleich der Zuwendungen zwischen zwei Steuerjahren"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Finden Sie Personen, die ein Jahr Zuwendungen versprochen haben, ein anderes aber nicht"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Zusammenfassung der Zuwendungen nach Familiennamen für jede Spende für das ausgewählte Finanzjahr"
 
 #. Context: query_qry
 #: 
@@ -7530,13 +7499,13 @@ msgstr "Maximale Anzahl von Kalenderereignissen"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d Monat alt"
 msgstr[1] "%d Monate alt"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d Jahr alt"
 msgstr[1] "%d Jahre alt"
 
@@ -9316,7 +9285,7 @@ msgstr "Einzahlung(en) ohne Zahlungen"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d Ereignis in %s"
 msgstr[1] "%d Ereignisse in %s"
 
@@ -9574,7 +9543,7 @@ msgstr "optional"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "Person"
 msgstr[1] "Personen"
 
@@ -11312,19 +11281,19 @@ msgstr "muss mit einem Verschlüsselungsschlüssel konfiguriert werden"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Person zum Warenkorb hinzugefügt."
 msgstr[1] "%d Personen zum Warenkorb hinzugefügt."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d Person erfolgreich zur ausgewählten Familie hinzugefügt."
 msgstr[1] "%d Personen erfolgreich zur ausgewählten Familie hinzugefügt."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d Person erfolgreich zur ausgewählten Gruppe hinzugefügt."
 msgstr[1] "%d Personen erfolgreich zur ausgewählten Gruppe hinzugefügt."
 
@@ -11487,4 +11456,198 @@ msgstr "Spanisch - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Spanisch - Mexiko"
+
+#: 
+msgid "Add Property Type"
+msgstr "Eigenschaftstyp hinzufügen"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Fügen Sie Ihren ersten Eigenschaftstyp hinzu"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automatisch aus den obigen Zahlen berechnet"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Durch das Löschen dieses Feldes verlieren Sie unwiderruflich alle Gruppenmitgliedsdaten, die diesem Feld zugewiesen sind!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Durch das Löschen dieses Fonds können Sie historische Spendensätze beeinflussen!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategoriename"
+
+#: 
+msgid "Checked In"
+msgstr "Eingecheckt"
+
+#: 
+msgid "Checked Out"
+msgstr "Ausgecheckt"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Aktuelles Geschäftsjahr"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Löschen (löscht alle zugehörigen Datensätze)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Eigenschaftstyp bearbeiten"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Geben Sie kommagetrennte Zählkategorien ein (z.B. Mitglieder, Besucher, Kinder)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Geben Sie Predigtnotizen oder Veranstaltungstext ein..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Vorhandene Spendenfonds"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Vorhandene Gruppeneigenschaften"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Aktualisierung der Rolle fehlgeschlagen. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Family Pledges"
+msgstr "Familienzusagen"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Feldänderungen gehen verloren, wenn Sie nicht vor Verwendung einer Lösch- oder 'Neu hinzufügen'-Schaltfläche 'Änderungen speichern'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Nach Klasse filtern"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fonds erfolgreich gelöscht"
+
+#: 
+msgid "In Use"
+msgstr "In Verwendung"
+
+#: 
+msgid "Manage"
+msgstr "Verwalten"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Keine Zusagen für das ausgewählte Geschäftsjahr gefunden"
+
+#: 
+msgid "No property types found"
+msgstr "Keine Eigenschaftstypen gefunden"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Anzahl der Datensätze, die diesen Eigenschaftstyp verwenden"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Optionale detaillierte Beschreibung dieses Eigenschaftstyps"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Bitte korrigieren Sie die folgenden Fehler."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Zusagebetrag"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Zusagen-Dashboard"
+
+#: 
+msgid "Remaining"
+msgstr "Verbleibend"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Diese Anwesenheitszahl entfernen?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Wählen Sie den Datensatztyp, für den diese Eigenschaft gilt"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Dieser Fondsname existiert bereits."
+
+#: 
+msgid "Total Pledges"
+msgstr "Gesamtzusagen"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Verfolgen und verwalten Sie Zusagenverpflichtungen nach Familie und Fonds"
+
+#: 
+msgid "View Properties"
+msgstr "Eigenschaften anzeigen"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "z.B. Besucher, Kinder"
+
+#: 
+msgid "of pledges"
+msgstr "der Zusagen"
+
+#: 
+msgid "records"
+msgstr "Datensätze"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Muss mit / beginnen, wenn nicht leer; kein abschließender Schrägstrich. Nur Buchstaben, Zahlen, Unterstrich, Bindestrich, Punkt und / erlaubt."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d Person"
+msgstr[1] "%d Personen"
+
+#: 
+msgid "All Classifications"
+msgstr "Alle Klassifizierungen"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Keine Personen gefunden, die Ihren Kriterien entsprechen."
+
+#: 
+msgid "Off"
+msgstr "Aus"
+
+#: 
+msgid "On"
+msgstr "An"
+
+#: 
+msgid "Photo Directory"
+msgstr "Fotoverzeichnis"
+
+#: 
+msgid "Reset Filters"
+msgstr "Filter zurücksetzen"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Nur Personen mit Fotos anzeigen"
 

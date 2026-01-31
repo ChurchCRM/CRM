@@ -904,12 +904,14 @@ $bOkToEdit = (
                                                                             $pro_Value = $assignedProperty->getPropertyValue();
                                                                         }
                                                                     }
-                                                                    $attributes .= "data-pro_Prompt=\"{$pro_Prompt}\" data-pro_Value=\"{$pro_Value}\" ";
+                                                                    // GHSA-8r36-fvxj-26qv: Escape HTML attributes to prevent XSS
+                                                                    $attributes .= "data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) . "\" data-pro_Value=\"" . InputUtils::escapeAttribute($pro_Value) . "\" ";
                                                                 }
 
-                                                                $optionText = $pro_Name;
+                                                                // GHSA-8r36-fvxj-26qv: Escape property name for defense in depth
+                                                                $optionText = InputUtils::escapeHTML($pro_Name);
                                                                 if (in_array($pro_ID, $assignedPropertiesArray)) {
-                                                                    $optionText = $pro_Name . ' (' . gettext('assigned') . ')';
+                                                                    $optionText = InputUtils::escapeHTML($pro_Name) . ' (' . gettext('assigned') . ')';
                                                                 }
                                                                 echo "<option {$attributes}>{$optionText}</option>";
                                                             } ?>

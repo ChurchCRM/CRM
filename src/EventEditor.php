@@ -8,6 +8,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
+use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -252,41 +253,61 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         $iErrors++;
         LoggerUtils::getAppLogger()->warning('Event not found: ' . $iEventID);
     } else {
-        $aRow = array_merge($event->toArray(), $event->getEventType()->toArray());
-        extract($aRow);
+        // Use Propel getters instead of extract() to avoid field name mismatches
+        $iEventID = $event->getId();
+        $iTypeID = $event->getType();
+        $sTypeName = $event->getEventType()->getName();
+        $sEventTitle = $event->getTitle();
+        $sEventDesc = $event->getDesc();
+        $sEventText = $event->getText();
+        
+        // Parse start date/time
+        $eventStart = $event->getStart();
+        if ($eventStart instanceof \DateTime) {
+            $sEventStartDate = $eventStart->format('Y-m-d');
+            $iEventStartHour = $eventStart->format('H');
+            $iEventStartMins = $eventStart->format('i');
+        } else {
+            $aStartTokens = explode(' ', (string)$eventStart);
+            $sEventStartDate = $aStartTokens[0];
+            $aStartTimeTokens = explode(':', $aStartTokens[1] ?? '00:00');
+            $iEventStartHour = $aStartTimeTokens[0];
+            $iEventStartMins = $aStartTimeTokens[1];
+        }
+        
+        // Parse end date/time
+        $eventEnd = $event->getEnd();
+        if ($eventEnd instanceof \DateTime) {
+            $sEventEndDate = $eventEnd->format('Y-m-d');
+            $iEventEndHour = $eventEnd->format('H');
+            $iEventEndMins = $eventEnd->format('i');
+        } else {
+            $aEndTokens = explode(' ', (string)$eventEnd);
+            $sEventEndDate = $aEndTokens[0];
+            $aEndTimeTokens = explode(':', $aEndTokens[1] ?? '00:00');
+            $iEventEndHour = $aEndTimeTokens[0];
+            $iEventEndMins = $aEndTimeTokens[1];
+        }
+        
+        $iEventStatus = $event->getInActive();
 
-        $iEventID = $event_id;
-        $iTypeID = $type_id;
-        $sTypeName = $type_name;
-        $sEventTitle = $event_title;
-        $sEventDesc = $event_desc;
-        $sEventText = $event_text;
-        $aStartTokens = explode(' ', $event_start);
-        $sEventStartDate = $aStartTokens[0];
-        $aStartTimeTokens = explode(':', $aStartTokens[1]);
-        $iEventStartHour = $aStartTimeTokens[0];
-        $iEventStartMins = $aStartTimeTokens[1];
-        $aEndTokens = explode(' ', $event_end);
-        $sEventEndDate = $aEndTokens[0];
-        $aEndTimeTokens = explode(':', $aEndTokens[1]);
-        $iEventEndHour = $aEndTimeTokens[0];
-        $iEventEndMins = $aEndTimeTokens[1];
-        $iEventStatus = $inactive;
-
-        $sSQL = "SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid='$iEventID' ORDER BY evtcnt_countid ASC";
-
-        $cvOpps = RunQuery($sSQL);
-        $iNumCounts = mysqli_num_rows($cvOpps);
+        // Get event attendance counts using Propel ORM
+        $eventCounts = EventCountsQuery::create()
+            ->filterByEvtcntEventid($iEventID)
+            ->orderByEvtcntCountid()
+            ->find();
+        
+        $iNumCounts = $eventCounts->count();
         $nCnts = $iNumCounts;
 
         if ($iNumCounts) {
-            for ($c = 0; $c < $iNumCounts; $c++) {
-                $aRow = mysqli_fetch_array($cvOpps, MYSQLI_BOTH);
-                extract($aRow);
-                $aCountID[$c] = $evtcnt_countid;
-                $aCountName[$c] = $evtcnt_countname;
-                $aCount[$c] = $evtcnt_countcount;
-                $sCountNotes = $evtcnt_notes;
+            $c = 0;
+            foreach ($eventCounts as $countRow) {
+                $aCountID[$c] = $countRow->getEvtcntCountid();
+                $aCountName[$c] = $countRow->getEvtcntCountname();
+                $aCount[$c] = $countRow->getEvtcntCountcount();
+                $sCountNotes = $countRow->getEvtcntNotes();
+                $c++;
             }
         }
     }
