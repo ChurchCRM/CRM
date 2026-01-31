@@ -4075,12 +4075,6 @@ msgstr "Søk"
 msgid "Field"
 msgstr "Felt"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Registrerte elever"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4173,11 +4167,6 @@ msgstr "Søndagsskoleklassen du ønsker resultater for."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Gruppe med registrerte elever"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Måneden for medlemsjubileum du ønsker resultater for."
 
@@ -4210,11 +4199,6 @@ msgstr "Gitt lovnad i år"
 #: 
 msgid "but not this year"
 msgstr "men ikke i år"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Regnskapsår."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4278,11 +4262,6 @@ msgstr "Manglende lovnader"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familielovnader etter regnskapsår"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "EgendefinertSøk"
 
@@ -4295,11 +4274,6 @@ msgstr "Returnerer personposter som er tildelt den angitte egenskapen."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Personer med bursdag i en bestemt måned"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Finn registrerte elever"
 
 #. Context: query_qry
 #: 
@@ -4325,11 +4299,6 @@ msgstr "Sammenlign lovnader mellom to regnskapsår"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Finn personer som ga lovnad ett år, men ikke et annet"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Lovnadssammendrag etter familienavn for hvert fond i valgt regnskapsår"
 
 #. Context: query_qry
 #: 
@@ -7517,13 +7486,13 @@ msgstr "Maksimalt antall kalenderhendelser"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d måned gammel"
 msgstr[1] "%d måneder gammel"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d år gammel"
 msgstr[1] "%d år gammel"
 
@@ -9301,7 +9270,7 @@ msgstr "innskudd uten betalinger"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d hendelse i %s"
 msgstr[1] "%d hendelser i %s"
 
@@ -9559,7 +9528,7 @@ msgstr "valgfritt"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "person"
 msgstr[1] "personer"
 
@@ -11297,19 +11266,19 @@ msgstr "må konfigureres med en krypteringsnøkkel"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d person lagt til i kurven."
 msgstr[1] "%d personer lagt til i kurven."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d person lagt til i valgt familie."
 msgstr[1] "%d personer lagt til i valgt familie."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d person lagt til i valgt gruppe."
 msgstr[1] "%d personer lagt til i valgt gruppe."
 
@@ -11472,4 +11441,198 @@ msgstr "Spansk - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Spansk - Mexico"
+
+#: 
+msgid "Add Property Type"
+msgstr "Legg til Egenskapstype"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Legg til din første Egenskapstype"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Automatisk beregnet fra tellinger ovenfor"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Ved å slette dette feltet vil du ugjenkallelig miste alle gruppemedlemsdata tildelt dette feltet!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Ved å slette dette fondet kan du påvirke historiske donasjonsregistre!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategorinavn"
+
+#: 
+msgid "Checked In"
+msgstr "Sjekket inn"
+
+#: 
+msgid "Checked Out"
+msgstr "Sjekket ut"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Nåværende Regnskapsår"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Slett (vil slette alle tilknyttede poster)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Rediger Egenskapstype"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Skriv inn kommaseparerte tellekategorier (f.eks. Medlemmer, Besøkende, Barn)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Skriv inn prekentekst eller arrangementstekst..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Eksisterende Donasjonsfond"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Eksisterende Gruppeegenskaper"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Kunne ikke oppdatere rolle. Vennligst prøv igjen."
+
+#: 
+msgid "Family Pledges"
+msgstr "Familieløfter"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Feltendringer vil gå tapt hvis du ikke klikker 'Lagre Endringer' før du bruker en slett- eller 'Legg til Ny'-knapp!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filtrer etter Klasse"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Fondet ble slettet"
+
+#: 
+msgid "In Use"
+msgstr "I Bruk"
+
+#: 
+msgid "Manage"
+msgstr "Administrer"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Ingen løfter funnet for det valgte regnskapsåret"
+
+#: 
+msgid "No property types found"
+msgstr "Ingen egenskapstyper funnet"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Antall poster som bruker denne egenskapstypen"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Valgfri detaljert beskrivelse av denne egenskapstypen"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Vennligst rett feilene nedenfor."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Løftebeløp"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Løfteoversikt"
+
+#: 
+msgid "Remaining"
+msgstr "Gjenstående"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Fjerne denne oppmøtetellingen?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Velg posttypen denne egenskapen gjelder for"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Det fondnavnet eksisterer allerede."
+
+#: 
+msgid "Total Pledges"
+msgstr "Totale Løfter"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Spor og administrer løfteforpliktelser etter familie og fond"
+
+#: 
+msgid "View Properties"
+msgstr "Vis Egenskaper"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "f.eks. Besøkende, Barn"
+
+#: 
+msgid "of pledges"
+msgstr "av løfter"
+
+#: 
+msgid "records"
+msgstr "poster"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Må starte med / hvis ikke tom; ingen avsluttende skråstrek. Bare bokstaver, tall, understrek, bindestrek, punktum og / er tillatt."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d person"
+msgstr[1] "%d personer"
+
+#: 
+msgid "All Classifications"
+msgstr "Alle Klassifiseringer"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Ingen personer funnet som matcher kriteriene dine."
+
+#: 
+msgid "Off"
+msgstr "Av"
+
+#: 
+msgid "On"
+msgstr "På"
+
+#: 
+msgid "Photo Directory"
+msgstr "Bildekatalog"
+
+#: 
+msgid "Reset Filters"
+msgstr "Tilbakestill Filtre"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Vis bare personer med bilder"
 

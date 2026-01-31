@@ -3959,12 +3959,6 @@ msgstr "Soek"
 msgid "Field"
 msgstr "Veld"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Geregistreerde studente"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4058,11 +4052,6 @@ msgstr "Die sondagskoolklas waarvoor u die rekords wil teruggee."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Groep geregistreerde studente"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Die lidmaatskapherdenkingsmaand waarvoor u rekords wil teruggee."
 
@@ -4095,11 +4084,6 @@ msgstr "Vanjaar beloof"
 #: 
 msgid "but not this year"
 msgstr "maar nie hierdie jaar nie"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiskale jaar."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4163,11 +4147,6 @@ msgstr "Beloftes ontbreek"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Gesinsbelofte volgens die boekjaar"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "CustomSearch"
 
@@ -4180,11 +4159,6 @@ msgstr "Wys persoonrekords waaraan die gegewe eiendom toegeken word."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Mense met verjaarsdae in 'n spesifieke maand"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Vind geregistreerde studente"
 
 #. Context: query_qry
 #: 
@@ -4210,11 +4184,6 @@ msgstr "Vergelyk beloftes tussen twee boekjare"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Soek mense wat een jaar belowe het, maar nie 'n ander jaar nie"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Belofteopsomming volgens familienaam vir elke fonds vir die gekose boekjaar"
 
 #. Context: query_qry
 #: 
@@ -7421,13 +7390,13 @@ msgstr "Maksimum aantal kalendergeleenthede"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] " %d maand oud"
 msgstr[1] " %d maande oud"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d jaar oud"
 msgstr[1] "%d jare oud"
 
@@ -9208,7 +9177,7 @@ msgstr "deposito(s) sonder betalings"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d geleentheid in %s"
 msgstr[1] "%d geleenthede in %s"
 
@@ -9466,7 +9435,7 @@ msgstr "opsioneel"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "persoon"
 msgstr[1] "persone"
 
@@ -11204,19 +11173,19 @@ msgstr "moet opgestel word met 'n enkripsietoetsl"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d persoon by die mandjie gevoeg."
 msgstr[1] "%d persone by die mandjie gevoeg."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d persoon suksesvol by die gekose Familie gevoeg."
 msgstr[1] "%d persone suksesvol by die gekose Familie gevoeg."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d persoon suksesvol by die gekose Groep gevoeg."
 msgstr[1] "%d persone suksesvol by die gekose Groep gevoeg."
 
@@ -11535,4 +11504,42 @@ msgstr "van beloftes"
 #: 
 msgid "records"
 msgstr "rekords"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Moet met / begin as dit nie leeg is nie; geen agterste skuinsstreep nie. Slegs letters, syfers, onderstreep, streep, punt en / toegelaat."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d persoon"
+msgstr[1] "%d persone"
+
+#: 
+msgid "All Classifications"
+msgstr "Alle Klassifikasies"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Geen persone gevind wat aan jou kriteria voldoen nie."
+
+#: 
+msgid "Off"
+msgstr "Af"
+
+#: 
+msgid "On"
+msgstr "Aan"
+
+#: 
+msgid "Photo Directory"
+msgstr "Foto Gids"
+
+#: 
+msgid "Reset Filters"
+msgstr "Herstel Filters"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Wys slegs mense met foto's"
 

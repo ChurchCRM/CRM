@@ -3960,12 +3960,6 @@ msgstr "Cari"
 msgid "Field"
 msgstr "Bidang"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Siswa terdaftar"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4059,11 +4053,6 @@ msgstr "Kelas sekolah minggu dimana Anda ingin catatan dikembalikan."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Kelompok siswa terdaftar"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Bulan peringatan keanggotaan yang ingin Anda rekam dikembalikan."
 
@@ -4096,11 +4085,6 @@ msgstr "Dijanjikan tahun ini"
 #: 
 msgid "but not this year"
 msgstr "tapi tidak tahun ini"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Tahun fiskal."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4164,11 +4148,6 @@ msgstr "Janji yang hilang"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Janji Keluarga menurut Tahun Anggaran"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "CustomSearch"
 
@@ -4181,11 +4160,6 @@ msgstr "Mengembalikan catatan orang yang diberikan properti yang diberikan."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Orang-orang yang berulang tahun di bulan tertentu"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Temukan siswa terdaftar"
 
 #. Context: query_qry
 #: 
@@ -4211,11 +4185,6 @@ msgstr "Bandingkan janji antara dua tahun fiskal"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Temukan orang yang berjanji satu tahun tetapi tidak yang lain"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Ringkasan janji dengan nama keluarga untuk setiap dana untuk tahun fiskal yang dipilih"
 
 #. Context: query_qry
 #: 
@@ -7415,12 +7384,12 @@ msgstr "Jumlah maksimum Acara Kalender"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d bulan"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d tahun"
 
 #: 
@@ -9199,7 +9168,7 @@ msgstr "setoran tanpa pembayaran"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d kegiatan di %s"
 
 #: 
@@ -9456,7 +9425,7 @@ msgstr "opsional"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "orang"
 
 #: 
@@ -11193,17 +11162,17 @@ msgstr "harus dikonfigurasi dengan kunci enkripsi"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Orang ditambahkan ke Keranjang."
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d Orang berhasil ditambahkan ke Keluarga yang dipilih."
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d Orang berhasil ditambahkan ke Grup yang dipilih."
 
 #: 
@@ -11365,4 +11334,197 @@ msgstr "Spanyol - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Spanyol - Meksiko"
+
+#: 
+msgid "Add Property Type"
+msgstr "Tambah Jenis Properti"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Tambahkan Jenis Properti Pertama Anda"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Dihitung otomatis dari hitungan di atas"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Dengan menghapus bidang ini, Anda akan kehilangan semua data anggota grup yang ditetapkan untuk bidang ini secara permanen!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Dengan menghapus dana ini, Anda mungkin mempengaruhi catatan donasi historis!"
+
+#: 
+msgid "Category Name"
+msgstr "Nama Kategori"
+
+#: 
+msgid "Checked In"
+msgstr "Sudah Masuk"
+
+#: 
+msgid "Checked Out"
+msgstr "Sudah Keluar"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Tahun Fiskal Saat Ini"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Hapus (akan menghapus semua catatan terkait)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Edit Jenis Properti"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Masukkan kategori hitungan yang dipisahkan koma (mis., Anggota, Pengunjung, Anak-anak)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Masukkan catatan khotbah atau teks acara..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Dana Donasi yang Ada"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Properti Grup yang Ada"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Gagal memperbarui peran. Silakan coba lagi."
+
+#: 
+msgid "Family Pledges"
+msgstr "Janji Keluarga"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Perubahan bidang akan hilang jika Anda tidak 'Simpan Perubahan' sebelum menggunakan tombol hapus atau 'Tambah Baru'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Filter berdasarkan Kelas"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Dana berhasil dihapus"
+
+#: 
+msgid "In Use"
+msgstr "Sedang Digunakan"
+
+#: 
+msgid "Manage"
+msgstr "Kelola"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Tidak ada janji ditemukan untuk tahun fiskal yang dipilih"
+
+#: 
+msgid "No property types found"
+msgstr "Tidak ada jenis properti ditemukan"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Jumlah catatan yang menggunakan jenis properti ini"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Deskripsi detail opsional dari jenis properti ini"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Silakan perbaiki kesalahan di bawah ini."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Jumlah Janji"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Dasbor Janji"
+
+#: 
+msgid "Remaining"
+msgstr "Tersisa"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Hapus hitungan kehadiran ini?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Pilih jenis catatan yang berlaku untuk properti ini"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Nama dana tersebut sudah ada."
+
+#: 
+msgid "Total Pledges"
+msgstr "Total Janji"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Lacak dan kelola komitmen janji berdasarkan keluarga dan dana"
+
+#: 
+msgid "View Properties"
+msgstr "Lihat Properti"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "mis., Pengunjung, Anak-anak"
+
+#: 
+msgid "of pledges"
+msgstr "dari janji"
+
+#: 
+msgid "records"
+msgstr "catatan"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Harus dimulai dengan / jika tidak kosong; tanpa garis miring di akhir. Hanya huruf, angka, garis bawah, tanda hubung, titik dan / yang diizinkan."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d orang"
+
+#: 
+msgid "All Classifications"
+msgstr "Semua Klasifikasi"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Tidak ada orang ditemukan yang sesuai dengan kriteria Anda."
+
+#: 
+msgid "Off"
+msgstr "Mati"
+
+#: 
+msgid "On"
+msgstr "Hidup"
+
+#: 
+msgid "Photo Directory"
+msgstr "Direktori Foto"
+
+#: 
+msgid "Reset Filters"
+msgstr "Reset Filter"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Tampilkan hanya orang dengan foto"
 

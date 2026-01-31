@@ -4048,12 +4048,6 @@ msgstr "Поиск"
 msgid "Field"
 msgstr "Поле"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Зарегистрированные студенты"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4147,11 +4141,6 @@ msgstr "Класс воскресной школы, по которому вы �
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Группа зарегистрированных студентов"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Месяц годовщины членства, за который вы хотите вернуть записи."
 
@@ -4184,11 +4173,6 @@ msgstr "Залог в этом году"
 #: 
 msgid "but not this year"
 msgstr "но не в этом году"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Отчетный год"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4252,11 +4236,6 @@ msgstr "Недостающие залоги"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Обещания семьи по финансовым годам"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Пользовательский поиск"
 
@@ -4269,11 +4248,6 @@ msgstr "Возвращает записи о людях, которым прис
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Люди с днями рождения в определенном месяце"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Найти зарегистрированных студентов"
 
 #. Context: query_qry
 #: 
@@ -4299,11 +4273,6 @@ msgstr "Сравните взносы за два финансовых года"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Найдите людей, которые обещали один год, а другой нет"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Сводка обещаний с указанием фамилии для каждого фонда за выбранный финансовый год"
 
 #. Context: query_qry
 #: 
@@ -5403,6 +5372,11 @@ msgstr "Португалия"
 #: 
 msgid "Puerto Rico"
 msgstr "Пуэрто-Рико"
+
+#. Context: countries
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "Катар (‫قطر‬‎)"
 
 #. Context: countries
 #: 
@@ -7494,7 +7468,7 @@ msgstr "Максимальное количество событий кален�
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d месяц"
 msgstr[1] "%d месяца"
 msgstr[2] "%d месяцев"
@@ -7502,7 +7476,7 @@ msgstr[3] "%d-месячный"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d год"
 msgstr[1] "%d года"
 msgstr[2] "%d лет"
@@ -11427,4 +11401,192 @@ msgstr "Испанский — Сальвадор"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Испанский — Мексика"
+
+#: 
+msgid "Add Property Type"
+msgstr "Добавить Тип Свойства"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Добавьте Ваш Первый Тип Свойства"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Автоматически рассчитано из подсчётов выше"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Удалив это поле, вы безвозвратно потеряете все данные участников группы, назначенные для этого поля!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Удалив этот фонд, вы можете повлиять на исторические записи пожертвований!"
+
+#: 
+msgid "Category Name"
+msgstr "Название Категории"
+
+#: 
+msgid "Checked In"
+msgstr "Отмечен вход"
+
+#: 
+msgid "Checked Out"
+msgstr "Отмечен выход"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Текущий Финансовый Год"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Удалить (удалит все связанные записи)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Редактировать Тип Свойства"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Введите категории подсчёта через запятую (напр., Члены, Посетители, Дети)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Введите заметки проповеди или текст события..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Существующие Фонды Пожертвований"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Существующие Свойства Группы"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Не удалось обновить роль. Пожалуйста, попробуйте снова."
+
+#: 
+msgid "Family Pledges"
+msgstr "Семейные Обязательства"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Изменения полей будут потеряны, если вы не нажмёте 'Сохранить Изменения' перед использованием кнопки удаления или 'Добавить Новый'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Фильтр по Классу"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Фонд успешно удалён"
+
+#: 
+msgid "In Use"
+msgstr "Используется"
+
+#: 
+msgid "Manage"
+msgstr "Управление"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Обязательства для выбранного финансового года не найдены"
+
+#: 
+msgid "No property types found"
+msgstr "Типы свойств не найдены"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Количество записей, использующих этот тип свойства"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Необязательное подробное описание этого типа свойства"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Пожалуйста, исправьте ошибки ниже."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Сумма Обязательства"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Панель Обязательств"
+
+#: 
+msgid "Remaining"
+msgstr "Осталось"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Удалить этот подсчёт посещаемости?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Выберите тип записи, к которой применяется это свойство"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Такое название фонда уже существует."
+
+#: 
+msgid "Total Pledges"
+msgstr "Всего Обязательств"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Отслеживайте и управляйте обязательствами по семьям и фондам"
+
+#: 
+msgid "View Properties"
+msgstr "Просмотр Свойств"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "напр., Посетители, Дети"
+
+#: 
+msgid "of pledges"
+msgstr "обязательств"
+
+#: 
+msgid "records"
+msgstr "записей"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Должно начинаться с / если не пусто; без завершающей косой черты. Разрешены только буквы, цифры, подчёркивание, дефис, точка и /."
+
+#: 
+msgid "All Classifications"
+msgstr "Все Классификации"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Не найдено людей, соответствующих вашим критериям."
+
+#: 
+msgid "Off"
+msgstr "Выкл"
+
+#: 
+msgid "On"
+msgstr "Вкл"
+
+#: 
+msgid "Photo Directory"
+msgstr "Фотокаталог"
+
+#: 
+msgid "Reset Filters"
+msgstr "Сбросить Фильтры"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Показать только людей с фотографиями"
 

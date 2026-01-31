@@ -3924,12 +3924,6 @@ msgstr "खोजें"
 msgid "Field"
 msgstr "क्षेत्र"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "पंजीकृत छात्र"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4022,11 +4016,6 @@ msgstr "वह संडे स्कूल कक्षा जिसके ल�
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "पंजीकृत छात्रों का समूह"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "वह सदस्यता वर्षगांठ का महीना जिसके लिए आप रिकॉर्ड चाहते हैं।"
 
@@ -4059,11 +4048,6 @@ msgstr "इस वर्ष प्रतिज्ञा की"
 #: 
 msgid "but not this year"
 msgstr "लेकिन इस वर्ष नहीं"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "वित्तीय वर्ष।"
 
 #. Context: queryparameters_qrp
 #: 
@@ -4127,11 +4111,6 @@ msgstr "अनुपलब्ध प्रतिज्ञाएं"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "वित्तीय वर्ष के अनुसार पारिवारिक प्रतिज्ञा"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "कस्टमखोज"
 
@@ -4144,11 +4123,6 @@ msgstr "उन व्यक्तियों के रिकॉर्ड ल�
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "किसी विशेष महीने में जन्मदिन वाले व्यक्ति"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "पंजीकृत छात्र खोजें"
 
 #. Context: query_qry
 #: 
@@ -4174,11 +4148,6 @@ msgstr "दो वित्तीय वर्षों के बीच प्�
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "उन लोगों को खोजें जिन्होंने एक साल प्रतिज्ञा की लेकिन दूसरे साल नहीं"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "चयनित वित्तीय वर्ष के लिए प्रतिज्ञा सारांश"
 
 #. Context: query_qry
 #: 
@@ -7367,13 +7336,13 @@ msgstr "कैलेंडर ईवेंट की अधिकतम सं�
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d महीना पुराना"
 msgstr[1] "%d महीने पुराना"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d वर्ष पुराना"
 msgstr[1] "%d वर्ष पुराना"
 
@@ -7834,8 +7803,37 @@ msgid "Change the initial page length (number of rows per page)"
 msgstr "प्रारंभिक पृष्ठ लंबाई बदलें (प्रति पृष्ठ पंक्तियों की संख्या)"
 
 #: 
+msgid "User Interface"
+msgstr "यूज़र इंटरफ़ेस"
+
+#: 
+msgid "Locale"
+msgstr "स्थानीयता"
+
+#: 
+msgid "Override system locale"
+msgstr "सिस्टम स्थानीयता को ओवरराइड करें"
+
+#: 
 msgid "Deleted"
 msgstr "हटा दिया गया"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "अमान्य जन्म तिथि: जन्म का महीना या दिन गायब है।"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "अमान्य जन्म तिथि: जन्म का महीना और दिन गायब है।"
+
+#: 
+msgid "System"
+msgstr "सिस्टम"
+
+#. Context: locales
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "अम्हारिक - इथियोपिया"
 
 #. Context: locales
 #: 
@@ -7862,6 +7860,54 @@ msgstr "तुर्की"
 msgid "Ukrainian"
 msgstr "यूक्रेनी"
 
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "जब आप \"GitHub पर सबमिट करें\" पर क्लिक करते हैं तो आपको GitHub इश्यू पेज पर भेजा जाएगा जहाँ आपकी सिस्टम जानकारी पहले से भरी होगी।"
+
+#: 
+msgid "Submit to GitHub"
+msgstr "GitHub पर सबमिट करें"
+
+#: 
+msgid "Change role"
+msgstr "भूमिका बदलें"
+
+#: 
+msgid "Closed"
+msgstr "बंद"
+
+#: 
+msgid "Delete this person?"
+msgstr "इस व्यक्ति को हटाएं?"
+
+#: 
+msgid "Deposit ID"
+msgstr "जमा आईडी"
+
+#: 
+msgid "Deposit Total"
+msgstr "जमा कुल"
+
+#: 
+msgid "Group Cart Status"
+msgstr "ग्रुप कार्ट स्थिति"
+
+#: 
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr "अगर यह काम नहीं करता, तो निम्नलिखित लिंक को अपने ब्राउज़र में कॉपी और पेस्ट करें"
+
+#: 
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr "आपको यह ईमेल इसलिए मिला क्योंकि हमें आपके खाते पर गतिविधि के लिए अनुरोध प्राप्त हुआ। अगर आपने यह अनुरोध नहीं किया है तो आप इस ईमेल को सुरक्षित रूप से हटा सकते हैं।"
+
+#: 
+msgid "To stop receiving these emails, you can email"
+msgstr "इन ईमेल को प्राप्त करना बंद करने के लिए, आप ईमेल कर सकते हैं"
+
+#: 
+msgid "invalid group request"
+msgstr "अमान्य ग्रुप अनुरोध"
+
 #. Context: locales
 #: 
 msgid "Hindi - India"
@@ -7881,6 +7927,44 @@ msgstr "तमिल - भारत"
 msgid "Not Subscribed"
 msgstr "सदस्यता नहीं ली गई"
 
+#: 
+msgid "property"
+msgstr "संपत्ति"
+
+#: 
+msgid "Default Zip"
+msgstr "डिफ़ॉल्ट पिन कोड"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "क्रेडिट कार्ड वाले लोग"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "जो लोग क्रेडिट कार्ड से भुगतान करने के लिए कॉन्फ़िगर किए गए हैं।"
+
+#: 
+msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgstr "रिस्टोर के भाग के रूप में, बाहरी बैकअप अक्षम कर दिए गए हैं। यदि आप स्वचालित बैकअप जारी रखना चाहते हैं, तो आपको bEnableExternalBackupTarget सेटिंग को मैन्युअल रूप से पुनः सक्षम करना होगा।"
+
+#: 
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr "पिछली अखंडता जांच पास हो गई। सभी सिस्टम फ़ाइल हैश अपेक्षित मानों से मेल खाते हैं।"
+
+#: 
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr "अल्पविराम से अलग किए गए वर्गीकरणों की सूची जो निष्क्रिय के रूप में दिखाई देनी चाहिए"
+
+#: 
+msgid "MailChimp is not configured"
+msgstr "MailChimp कॉन्फ़िगर नहीं है"
+
+#: 
+msgid "Please update the MailChimp API key in:"
+msgstr "कृपया MailChimp API कुंजी को अपडेट करें:"
+
 #. Context: locales
 #: 
 msgid "English - South Africa"
@@ -7896,14 +7980,51 @@ msgstr "अंग्रेज़ी - जमैका"
 msgid "Swahili"
 msgstr "स्वाहिली"
 
+#: 
+msgid "One character from FirstName and one character from LastName"
+msgstr "पहले नाम से एक अक्षर और अंतिम नाम से एक अक्षर"
+
+#: 
+msgid "Two characters from FirstName"
+msgstr "पहले नाम से दो अक्षर"
+
+#: 
+msgid "Church Email not set, please visit the settings page"
+msgstr "चर्च ईमेल सेट नहीं है, कृपया सेटिंग्स पेज पर जाएं"
+
 #. Context: locales
 #: 
 msgid "Telugu - India"
 msgstr "तेलुगु - भारत"
 
+#. Context: locales
+#: 
+msgid "Korean"
+msgstr "कोरियाई"
+
 #: 
 msgid "System Logs"
 msgstr "सिस्टम लॉग्स"
+
+#: 
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr "क्रॉस-साइट स्क्रिप्टिंग से सुरक्षा के लिए कंटेंट सिक्योरिटी पॉलिसी (CSP) लागू करें। अक्षम होने पर, CSP उल्लंघन केवल रिपोर्ट किए जाते हैं।"
+
+#: 
+msgid "Enter event description..."
+msgstr "इवेंट विवरण दर्ज करें..."
+
+#: 
+msgid "Event ID"
+msgstr "इवेंट आईडी"
+
+#: 
+msgid "Enter note text here..."
+msgstr "यहाँ नोट टेक्स्ट दर्ज करें..."
+
+#: 
+msgid "No notes have been added for this person."
+msgstr "इस व्यक्ति के लिए कोई नोट नहीं जोड़े गए हैं।"
 
 #: 
 msgid "Note"
@@ -7920,6 +8041,10 @@ msgstr "लॉग स्तर:"
 #: 
 msgid "Save Log Level"
 msgstr "लॉग स्तर सहेजें"
+
+#: 
+msgid "View application logs. Click on a log file to view its contents."
+msgstr "एप्लिकेशन लॉग देखें। इसकी सामग्री देखने के लिए लॉग फ़ाइल पर क्लिक करें।"
 
 #: 
 msgid "Delete All Logs"
@@ -7950,6 +8075,10 @@ msgid "Log File Viewer"
 msgstr "लॉग फ़ाइल दर्शक"
 
 #: 
+msgid "Filter by log level:"
+msgstr "लॉग स्तर द्वारा फ़िल्टर करें:"
+
+#: 
 msgid "Error"
 msgstr "त्रुटि"
 
@@ -7958,12 +8087,24 @@ msgid "Info"
 msgstr "जानकारी"
 
 #: 
+msgid "Number of lines to display:"
+msgstr "प्रदर्शित करने के लिए पंक्तियों की संख्या:"
+
+#: 
 msgid "Loading log file..."
 msgstr "लॉग फ़ाइल लोड हो रही है..."
 
 #: 
 msgid "No notes have been added for this family."
 msgstr "इस परिवार के लिए कोई नोट्स नहीं जोड़े गए हैं।"
+
+#: 
+msgid "A Calendar access token has been generated and saved."
+msgstr "कैलेंडर एक्सेस टोकन जनरेट और सेव किया गया है।"
+
+#: 
+msgid "added"
+msgstr "जोड़ा गया"
 
 #: 
 msgid "Added"
@@ -7982,6 +8123,10 @@ msgid "already in cart"
 msgstr "पहले से ही कार्ट में है"
 
 #: 
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr "कैलेंडर गुण लोड नहीं किए जा सके। इस कैलेंडर में एक्सेस टोकन गायब हो सकता है या यह सही ढंग से कॉन्फ़िगर नहीं है।"
+
+#: 
 msgid "Cart emptied successfully"
 msgstr "कार्ट सफलतापूर्वक खाली कर दी गई"
 
@@ -7994,8 +8139,36 @@ msgid "Empty your entire cart?"
 msgstr "क्या आप अपनी पूरी कार्ट खाली करना चाहते हैं?"
 
 #: 
+msgid "Failed to add family to cart"
+msgstr "कार्ट में परिवार जोड़ने में विफल"
+
+#: 
+msgid "Failed to add group to cart"
+msgstr "कार्ट में ग्रुप जोड़ने में विफल"
+
+#: 
 msgid "Failed to add to cart"
 msgstr "कार्ट में जोड़ने में विफल"
+
+#: 
+msgid "Failed to empty cart"
+msgstr "कार्ट खाली करने में विफल"
+
+#: 
+msgid "Failed to empty cart to group"
+msgstr "ग्रुप में कार्ट खाली करने में विफल"
+
+#: 
+msgid "Failed to remove family from cart"
+msgstr "कार्ट से परिवार हटाने में विफल"
+
+#: 
+msgid "Failed to remove from cart"
+msgstr "कार्ट से हटाने में विफल"
+
+#: 
+msgid "Failed to remove group"
+msgstr "ग्रुप हटाने में विफल"
 
 #: 
 msgid "Family added to cart"
@@ -8018,20 +8191,52 @@ msgid "in cart"
 msgstr "कार्ट में"
 
 #: 
+msgid "members. Already had"
+msgstr "सदस्य। पहले से थे"
+
+#: 
 msgid "people added to cart"
 msgstr "लोग कार्ट में जोड़े गए"
+
+#: 
+msgid "people already in cart"
+msgstr "लोग पहले से कार्ट में हैं"
+
+#: 
+msgid "people from cart"
+msgstr "कार्ट से लोग"
+
+#: 
+msgid "people removed from cart"
+msgstr "कार्ट से लोग हटाए गए"
 
 #: 
 msgid "Person already in cart"
 msgstr "व्यक्ति पहले से ही कार्ट में है"
 
 #: 
+msgid "Remove this family from cart?"
+msgstr "इस परिवार को कार्ट से हटाएं?"
+
+#: 
+msgid "Remove this group from cart?"
+msgstr "इस ग्रुप को कार्ट से हटाएं?"
+
+#: 
 msgid "Remove this person from cart?"
 msgstr "क्या इस व्यक्ति को कार्ट से हटाना है?"
 
 #: 
+msgid "Removed from cart successfully"
+msgstr "कार्ट से सफलतापूर्वक हटाया गया"
+
+#: 
 msgid "Yes, Empty Cart"
 msgstr "हाँ, कार्ट खाली करें"
+
+#: 
+msgid "Yes, Remove"
+msgstr "हाँ, हटाएं"
 
 #: 
 msgid "Add Group"
@@ -8042,12 +8247,72 @@ msgid "Back to Group List"
 msgstr "समूह सूची पर वापस जाएँ"
 
 #: 
+msgid "Default role updated."
+msgstr "डिफ़ॉल्ट भूमिका अपडेट की गई।"
+
+#: 
 msgid "Edit Group"
 msgstr "समूह संपादित करें"
 
 #: 
 msgid "Enter group name"
 msgstr "समूह का नाम दर्ज करें"
+
+#: 
+msgid "Failed to add role. Please try again."
+msgstr "भूमिका जोड़ने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to create group. Please try again."
+msgstr "ग्रुप बनाने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to delete role. Please try again."
+msgstr "भूमिका हटाने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to load cart status."
+msgstr "कार्ट स्थिति लोड करने में विफल।"
+
+#: 
+msgid "Failed to load groups. Please refresh the page."
+msgstr "ग्रुप लोड करने में विफल। कृपया पेज रिफ्रेश करें।"
+
+#: 
+msgid "Failed to set default role. Please try again."
+msgstr "डिफ़ॉल्ट भूमिका सेट करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to update group. Please try again."
+msgstr "ग्रुप अपडेट करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to update properties. Please try again."
+msgstr "गुण अपडेट करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "भूमिका नाम अपडेट करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "मौजूदा पासवर्ड रखने के लिए खाली छोड़ें"
+
+#: 
+msgid "Please enter a group name."
+msgstr "कृपया ग्रुप का नाम दर्ज करें।"
+
+#: 
+msgid "Role added successfully."
+msgstr "भूमिका सफलतापूर्वक जोड़ी गई।"
+
+#: 
+msgid "Role deleted successfully."
+msgstr "भूमिका सफलतापूर्वक हटाई गई।"
+
+#: 
+msgid "Role name updated."
+msgstr "भूमिका का नाम अपडेट किया गया।"
 
 #: 
 msgid "View Group"
@@ -8070,16 +8335,52 @@ msgid "Address is required"
 msgstr "पता आवश्यक है"
 
 #: 
+msgid "Base URL is required"
+msgstr "बेस URL आवश्यक है"
+
+#: 
 msgid "City is required"
 msgstr "शहर आवश्यक है"
+
+#: 
+msgid "Database name is required"
+msgstr "डेटाबेस नाम आवश्यक है"
+
+#: 
+msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
+msgstr "डेटाबेस सर्वर होस्टनाम या IP पता आवश्यक है (जैसे, localhost या 127.0.0.1)"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "डेटाबेस सर्वर पोर्ट आवश्यक है (जैसे, 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "डेटाबेस यूज़रनेम आवश्यक है"
 
 #: 
 msgid "Email Address"
 msgstr "ईमेल पता"
 
 #: 
+msgid "Email address"
+msgstr "ईमेल पता"
+
+#: 
+msgid "Enter family name"
+msgstr "परिवार का नाम दर्ज करें"
+
+#: 
+msgid "Family Information"
+msgstr "परिवार की जानकारी"
+
+#: 
 msgid "Family name is required"
 msgstr "परिवार का नाम आवश्यक है"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "परिवार का नाम कम से कम 2 अक्षरों का होना चाहिए"
 
 #: 
 msgid "First name"
@@ -8090,12 +8391,56 @@ msgid "First name is required"
 msgstr "प्रथम नाम आवश्यक है"
 
 #: 
+msgid "First name must be at least 2 characters"
+msgstr "पहला नाम कम से कम 2 अक्षरों का होना चाहिए"
+
+#: 
+msgid "Home phone is required"
+msgstr "घर का फोन आवश्यक है"
+
+#: 
+msgid "Home phone number"
+msgstr "घर का फोन नंबर"
+
+#: 
+msgid "Invalid format"
+msgstr "अमान्य प्रारूप"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "अपने परिवार को पंजीकृत करके हमारे समुदाय में शामिल हों"
+
+#: 
+msgid "Last name"
+msgstr "अंतिम नाम"
+
+#: 
+msgid "Last name is required"
+msgstr "अंतिम नाम आवश्यक है"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "अंतिम नाम कम से कम 2 अक्षरों का होना चाहिए"
+
+#: 
 msgid "Maximum length is"
 msgstr "अधिकतम लंबाई है"
 
 #: 
 msgid "Minimum length is"
 msgstr "न्यूनतम लंबाई है"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "http:// या https:// से शुरू होने वाला वैध URL होना चाहिए"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "http:// या https:// से शुरू होने वाला वैध URL होना चाहिए (जैसे, http://localhost या https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "वैध पोर्ट नंबर होना चाहिए (जैसे, 3306)"
 
 #: 
 msgid "Next Member"
@@ -8114,12 +8459,36 @@ msgid "Phone number"
 msgstr "फ़ोन नंबर"
 
 #: 
+msgid "Please add at least one family member."
+msgstr "कृपया कम से कम एक परिवार का सदस्य जोड़ें।"
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "जारी रखने से पहले कृपया सत्यापन त्रुटियों को ठीक करें।"
+
+#: 
 msgid "Please enter a valid URL"
 msgstr "कृपया एक मान्य URL दर्ज करें"
 
 #: 
 msgid "Please enter a valid email address"
 msgstr "कृपया एक मान्य ईमेल पता दर्ज करें"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "कृपया वैध ईमेल पता दर्ज करें (जैसे, name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "कृपया वैध संख्या दर्ज करें"
+
+#: 
+msgid "Please enter a valid phone number"
+msgstr "कृपया वैध फोन नंबर दर्ज करें"
+
+#: 
+msgid "Please fill in all required fields correctly."
+msgstr "कृपया सभी आवश्यक फ़ील्ड सही ढंग से भरें।"
 
 #: 
 msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
@@ -8266,6 +8635,18 @@ msgid "Failed to download update package."
 msgstr "अपडेट पैकेज डाउनलोड करने में विफल।"
 
 #: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "GitHub से अपग्रेड जानकारी रिफ्रेश करने में विफल।"
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "अपग्रेड जानकारी रिफ्रेश करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "सेटिंग सहेजने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
 msgid "File Name"
 msgstr "फ़ाइल का नाम"
 
@@ -8282,8 +8663,20 @@ msgid "Go to Login"
 msgstr "लॉगिन पर जाएं"
 
 #: 
+msgid "I Understand - Continue"
+msgstr "मैं समझता/समझती हूँ - जारी रखें"
+
+#: 
 msgid "Language updated to"
 msgstr "भाषा को इसमें अपडेट किया गया"
+
+#: 
+msgid "Login Name is required"
+msgstr "लॉगिन नाम आवश्यक है"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "एक बार जब आप ईमेल प्राप्त कर लें, तो आप अपने अस्थायी पासवर्ड से लॉग इन कर सकते हैं और इसे अपनी पसंद के अनुसार बदल सकते हैं।"
 
 #: 
 msgid "Password Reset Error"
@@ -8294,6 +8687,10 @@ msgid "Password Reset Successful"
 msgstr "पासवर्ड रीसेट सफल रहा"
 
 #: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "कृपया अपने अस्थायी पासवर्ड के लिए अपना ईमेल (स्पैम/जंक फ़ोल्डर सहित) जांचें।"
+
+#: 
 msgid "Please do not close this window or refresh the page."
 msgstr "कृपया इस विंडो को बंद न करें या पेज को रिफ्रेश न करें।"
 
@@ -8302,12 +8699,72 @@ msgid "Pre-Upgrade Tasks Complete"
 msgstr "अपग्रेड-पूर्व कार्य पूर्ण हुए"
 
 #: 
+msgid "Pre-Upgrade Warnings"
+msgstr "अपग्रेड-पूर्व चेतावनियाँ"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "GitHub से रिफ्रेश करें"
+
+#: 
+msgid "Release Notes:"
+msgstr "रिलीज़ नोट्स:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "पासवर्ड रीसेट का अनुरोध करें"
+
+#: 
+msgid "Retry Download"
+msgstr "डाउनलोड पुनः प्रयास करें"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "SHA1 हैश:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "रीसेट ईमेल भेजें"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "सेटिंग सहेजी गई। पेज पुनः लोड हो रहा है..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "सेटिंग सफलतापूर्वक अपडेट की गई"
+
+#: 
+msgid "Skip Backup"
+msgstr "बैकअप छोड़ें"
+
+#: 
 msgid "System Up to Date"
 msgstr "सिस्टम अप-टू-डेट है"
 
 #: 
+msgid "System Upgrade Wizard"
+msgstr "सिस्टम अपग्रेड विज़ार्ड"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "सिस्टम अपग्रेड सफलतापूर्वक पूरा हुआ!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "इसमें कई मिनट लग सकते हैं।"
+
+#: 
 msgid "Update Available!"
 msgstr "अपडेट उपलब्ध है!"
+
+#: 
+msgid "Update Package Details"
+msgstr "अपडेट पैकेज विवरण"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "अपडेट पैकेज सफलतापूर्वक डाउनलोड किया गया।"
 
 #: 
 msgid "Upgrade Complete!"
@@ -8322,20 +8779,96 @@ msgid "Upgrade failed. Please check the logs."
 msgstr "अपग्रेड विफल रहा। कृपया लॉग जाँचें।"
 
 #: 
+msgid "Upgrade information refreshed successfully"
+msgstr "अपग्रेड जानकारी सफलतापूर्वक रिफ्रेश की गई"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "अपग्रेड जानकारी रिफ्रेश की गई। पेज पुनः लोड हो रहा है..."
+
+#: 
 msgid "Version Information"
 msgstr "संस्करण जानकारी"
+
+#: 
+msgid "Warnings"
+msgstr "चेतावनियाँ"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "हम आपके पासवर्ड रीसेट अनुरोध को संसाधित करने में असमर्थ थे। कृपया नए पासवर्ड रीसेट लिंक का अनुरोध करने का प्रयास करें।"
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "आपने बैकअप छोड़ना चुना है। अपग्रेड के साथ आगे बढ़ने से पहले बैकअप लेने की दृढ़ता से अनुशंसा की जाती है।"
 
 #: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "आपका ChurchCRM इंस्टालेशन सफलतापूर्वक अपग्रेड कर दिया गया है।"
 
 #: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "आपका ChurchCRM इंस्टॉलेशन नवीनतम संस्करण चला रहा है।"
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 अक्षर"
+
+#: 
+msgid "Dear Friend"
+msgstr "प्रिय मित्र"
+
+#: 
+msgid "No Data Found"
+msgstr "कोई डेटा नहीं मिला"
+
+#: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "पिछली रिपोर्ट से कोई रिकॉर्ड नहीं मिला। कृपया अपने फ़िल्टर या तिथि सीमा को समायोजित करें और पुनः प्रयास करें।"
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "कृपया मेनू नाम दर्ज करें (2-50 अक्षर)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "कृपया http:// या https:// से शुरू होने वाला वैध URL दर्ज करें"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "सभी सिस्टम फ़ाइल हस्ताक्षर अपेक्षित मानों से मेल खाते हैं।"
+
+#: 
 msgid "Files with issues"
 msgstr "समस्याग्रस्त फ़ाइलें"
 
 #: 
+msgid "Integrity check failed"
+msgstr "अखंडता जांच विफल"
+
+#: 
 msgid "Integrity check passed"
 msgstr "अखंडता जाँच सफल रही"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "हस्ताक्षर परिभाषा फ़ाइल मौजूद है लेकिन पढ़ी जाने योग्य नहीं है। फ़ाइल अनुमतियाँ जांचें।"
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "हस्ताक्षर परिभाषा फ़ाइल %s पर गायब है। हस्ताक्षर पुनर्जनन के लिए पैकेजिंग कार्य चलाएं या आधिकारिक रिलीज़ डिप्लॉय करें।"
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "अखंडता एंडपॉइंट से संपर्क करने में असमर्थ। वेब सर्वर त्रुटि लॉग जांचें।"
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "इस जमा के बारे में कोई अतिरिक्त नोट जोड़ें"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "राशि अधिकतम अनुमत मान (999999.99) से अधिक है।"
 
 #: 
 msgid "Checks"
@@ -8346,12 +8879,28 @@ msgid "Clear Filters"
 msgstr "फ़िल्टर साफ़ करें"
 
 #: 
+msgid "Click a bar to filter payments"
+msgstr "भुगतान फ़िल्टर करने के लिए बार पर क्लिक करें"
+
+#: 
 msgid "Delete Selected"
 msgstr "चयनित हटाएं"
 
 #: 
 msgid "Deposit saved successfully"
 msgstr "जमा सफलतापूर्वक सहेजा गया"
+
+#: 
+msgid "Error deleting payments"
+msgstr "भुगतान हटाने में त्रुटि"
+
+#: 
+msgid "Error loading payments"
+msgstr "भुगतान लोड करने में त्रुटि"
+
+#: 
+msgid "Error saving deposit"
+msgstr "जमा सहेजने में त्रुटि"
 
 #: 
 msgid "Funds"
@@ -8370,8 +8919,28 @@ msgid "No Checks"
 msgstr "कोई चेक नहीं"
 
 #: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "अभी तक कोई भुगतान नहीं। शुरू करने के लिए \"भुगतान जोड़ें\" पर क्लिक करें।"
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "गैर-कटौती योग्य राशि अधिकतम अनुमत मान (999999.99) से अधिक है।"
+
+#: 
 msgid "Payments"
 msgstr "भुगतान"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "भुगतान सफलतापूर्वक हटाए गए"
+
+#: 
+msgid "Please select a date"
+msgstr "कृपया एक तिथि चुनें"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "कृपया हटाने के लिए पंक्तियाँ चुनें"
 
 #: 
 msgid "Saving..."
@@ -8388,6 +8957,14 @@ msgstr "कुल जमा"
 #: 
 msgid "Total Payments"
 msgstr "कुल भुगतान"
+
+#: 
+msgid "payments(s)?"
+msgstr "भुगतान?"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "सभी सिस्टम फ़ाइलों ने अखंडता सत्यापन पास कर लिया है।"
 
 #: 
 msgid "Base URL"
@@ -8426,12 +9003,20 @@ msgid "Email Debug Info"
 msgstr "ईमेल डिबग जानकारी"
 
 #: 
+msgid "Filesystem Permissions"
+msgstr "फ़ाइलसिस्टम अनुमतियाँ"
+
+#: 
 msgid "Hostname"
 msgstr "होस्टनाम"
 
 #: 
 msgid "IP Address"
 msgstr "आईपी पता"
+
+#: 
+msgid "Images Root"
+msgstr "इमेज रूट"
 
 #: 
 msgid "Import Demo Data"
@@ -8442,6 +9027,10 @@ msgid "Include events and calendars"
 msgstr "ईवेंट और कैलेंडर शामिल करें"
 
 #: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "वित्तीय डेटा शामिल करें (दान फंड, प्रतिज्ञाएं)"
+
+#: 
 msgid "Invalid API key"
 msgstr "अमान्य एपीआई कुंजी"
 
@@ -8450,12 +9039,24 @@ msgid "Not configured"
 msgstr "कॉन्फ़िगर नहीं किया गया"
 
 #: 
+msgid "PHP & Server Requirements"
+msgstr "PHP और सर्वर आवश्यकताएं"
+
+#: 
 msgid "PHP Configuration"
 msgstr "PHP कॉन्फ़िगरेशन"
 
 #: 
 msgid "Platform"
 msgstr "प्लेटफ़ॉर्म"
+
+#: 
+msgid "Root Path"
+msgstr "रूट पथ"
+
+#: 
+msgid "SMTP Host"
+msgstr "SMTP होस्ट"
 
 #: 
 msgid "Server Information"
@@ -8470,28 +9071,98 @@ msgid "System & Configuration"
 msgstr "सिस्टम और कॉन्फ़िगरेशन"
 
 #: 
+msgid "Tip:"
+msgstr "सुझाव:"
+
+#: 
 msgid "Valid Settings"
 msgstr "मान्य सेटिंग्स"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "डेमो डेटा आयात के दौरान एक त्रुटि हुई"
 
 #: 
 msgid "Demo data imported successfully"
 msgstr "डेमो डेटा सफलतापूर्वक आयात किया गया"
 
 #: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "संडे स्कूल कक्षाएं और नामांकन शामिल करें"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "बाद में इस डेटा को हटाने की आवश्यकता है?"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "इस जमा पर कोई भुगतान नहीं"
+
+#: 
 msgid "No payments on this deposit"
 msgstr "इस जमा पर कोई भुगतान नहीं है"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "शामिल करने के लिए वैकल्पिक डेटा"
+
+#: 
+msgid "Skipped"
+msgstr "छोड़ा गया"
 
 #: 
 msgid "Unknown error"
 msgstr "अज्ञात त्रुटि"
 
 #: 
+msgid "deposit(s) with no payments"
+msgstr "बिना भुगतान वाली जमा(एं)"
+
+#: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%s में %d इवेंट"
+msgstr[1] "%s में %d इवेंट"
+
+#: 
 msgid "All Event Types"
 msgstr "सभी कार्यक्रम प्रकार"
 
 #: 
+msgid "All Types"
+msgstr "सभी प्रकार"
+
+#: 
+msgid "Are you sure you want to delete this check-in record?"
+msgstr "क्या आप वाकई इस चेक-इन रिकॉर्ड को हटाना चाहते हैं?"
+
+#: 
+msgid "Attendance Count Categories"
+msgstr "उपस्थिति गणना श्रेणियाँ"
+
+#: 
+msgid "Attendance Notes"
+msgstr "उपस्थिति नोट्स"
+
+#: 
+msgid "Change Event"
+msgstr "इवेंट बदलें"
+
+#: 
 msgid "Check In"
 msgstr "चेक इन"
+
+#: 
+msgid "Check In Person"
+msgstr "व्यक्ति चेक-इन करें"
+
+#: 
+msgid "Check In to Event"
+msgstr "इवेंट में चेक-इन करें"
+
+#: 
+msgid "Check-in"
+msgstr "चेक-इन"
 
 #: 
 msgid "Choose an event..."
@@ -8510,6 +9181,10 @@ msgid "Create New Event"
 msgstr "नया कार्यक्रम बनाएं"
 
 #: 
+msgid "Create an event type to get started."
+msgstr "शुरू करने के लिए एक इवेंट प्रकार बनाएं।"
+
+#: 
 msgid "Current DB Version"
 msgstr "वर्तमान डेटाबेस संस्करण"
 
@@ -8518,28 +9193,124 @@ msgid "Current Software Version"
 msgstr "वर्तमान सॉफ्टवेयर संस्करण"
 
 #: 
+msgid "Database upgrade completed successfully. Redirecting to dashboard..."
+msgstr "डेटाबेस अपग्रेड सफलतापूर्वक पूरा हुआ। डैशबोर्ड पर रीडायरेक्ट हो रहा है..."
+
+#: 
 msgid "Date & Time"
 msgstr "तिथि और समय"
+
+#: 
+msgid "Default Start Time"
+msgstr "डिफ़ॉल्ट प्रारंभ समय"
+
+#: 
+msgid "Delete Event"
+msgstr "इवेंट हटाएं"
+
+#: 
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr "इवेंट हटाने से सभी उपस्थिति गणनाएं भी हट जाएंगी। इस इवेंट को हटाएं?"
+
+#: 
+msgid "Deleting this event type will NOT delete existing events. Are you sure?"
+msgstr "इस इवेंट प्रकार को हटाने से मौजूदा इवेंट नहीं हटेंगे। क्या आप निश्चित हैं?"
+
+#: 
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr "इस इवेंट को हटाने से सभी उपस्थिति रिकॉर्ड भी हट जाएंगे। क्या आप निश्चित हैं?"
+
+#: 
+msgid "Edit Event"
+msgstr "इवेंट संपादित करें"
+
+#: 
+msgid "Editing Event"
+msgstr "इवेंट संपादन"
+
+#: 
+msgid "Enter event title..."
+msgstr "इवेंट शीर्षक दर्ज करें..."
+
+#: 
+msgid "Event"
+msgstr "इवेंट"
 
 #: 
 msgid "Event Type Name"
 msgstr "कार्यक्रम प्रकार का नाम"
 
 #: 
+msgid "Event Types"
+msgstr "इवेंट प्रकार"
+
+#: 
+msgid "Filter Events"
+msgstr "इवेंट फ़िल्टर करें"
+
+#: 
+msgid "Filter by Event Type"
+msgstr "इवेंट प्रकार द्वारा फ़िल्टर करें"
+
+#: 
+msgid "Filter by Type"
+msgstr "प्रकार द्वारा फ़िल्टर करें"
+
+#: 
 msgid "Head Count"
 msgstr "कुल संख्या"
+
+#: 
+msgid "Listing Events of Type"
+msgstr "प्रकार के इवेंट की सूची"
+
+#: 
+msgid "Manage Check-ins"
+msgstr "चेक-इन प्रबंधित करें"
+
+#: 
+msgid "Members, Visitors, Children"
+msgstr "सदस्य, आगंतुक, बच्चे"
+
+#: 
+msgid "Monthly Averages"
+msgstr "मासिक औसत"
 
 #: 
 msgid "Monthly on the"
 msgstr "मासिक आधार पर"
 
 #: 
+msgid "No event types defined yet."
+msgstr "अभी तक कोई इवेंट प्रकार परिभाषित नहीं है।"
+
+#: 
 msgid "None (one-time event)"
 msgstr "कोई नहीं (एक बार का कार्यक्रम)"
 
 #: 
+msgid "Optional - Add sermon notes or additional event details"
+msgstr "वैकल्पिक - उपदेश नोट्स या अतिरिक्त इवेंट विवरण जोड़ें"
+
+#: 
+msgid "Optional - leave blank if not tracking"
+msgstr "वैकल्पिक - ट्रैक नहीं कर रहे हों तो खाली छोड़ें"
+
+#: 
+msgid "Optional notes about attendance..."
+msgstr "उपस्थिति के बारे में वैकल्पिक नोट्स..."
+
+#: 
 msgid "People Checked In"
 msgstr "लोग जो चेक-इन कर चुके हैं"
+
+#: 
+msgid "People in Cart"
+msgstr "कार्ट में लोग"
+
+#: 
+msgid "Person Checking In"
+msgstr "चेक-इन करने वाला व्यक्ति"
 
 #: 
 msgid "Recurrence"
@@ -8550,8 +9321,36 @@ msgid "Required fields"
 msgstr "आवश्यक फ़ील्ड"
 
 #: 
+msgid "Save Event Type"
+msgstr "इवेंट प्रकार सहेजें"
+
+#: 
 msgid "Search by name or email..."
 msgstr "नाम या ईमेल द्वारा खोजें..."
+
+#: 
+msgid "Search for adult..."
+msgstr "वयस्क खोजें..."
+
+#: 
+msgid "Search for supervisor..."
+msgstr "पर्यवेक्षक खोजें..."
+
+#: 
+msgid "Select Event for Check-In"
+msgstr "चेक-इन के लिए इवेंट चुनें"
+
+#: 
+msgid "Select start and end date/time"
+msgstr "प्रारंभ और समाप्ति तिथि/समय चुनें"
+
+#: 
+msgid "Select the event to check in your cart members"
+msgstr "अपने कार्ट सदस्यों को चेक-इन करने के लिए इवेंट चुनें"
+
+#: 
+msgid "Sermon / Event Text"
+msgstr "उपदेश / इवेंट टेक्स्ट"
 
 #: 
 msgid "Unclassified"
@@ -8562,24 +9361,98 @@ msgid "Upgrade database now"
 msgstr "डेटाबेस को अभी अपग्रेड करें"
 
 #: 
+msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
+msgstr "आपके ChurchCRM इंस्टॉलेशन को इंस्टॉल किए गए सॉफ़्टवेयर संस्करण से मेल खाने के लिए डेटाबेस अपग्रेड की आवश्यकता है। यह ऑपरेशन स्कीमा और डेटा माइग्रेशन लागू करेगा। कृपया आगे बढ़ने से पहले सुनिश्चित करें कि आपके पास हाल का बैकअप है।"
+
+#: 
+msgid "added to this event"
+msgstr "इस इवेंट में जोड़ा गया"
+
+#: 
+msgid "e.g., Sunday School, Bible Study..."
+msgstr "जैसे, संडे स्कूल, बाइबल अध्ययन..."
+
+#: 
 msgid "optional"
 msgstr "वैकल्पिक"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "व्यक्ति"
+msgstr[1] "लोग"
+
+#: 
+msgid "✓ CheckOut"
+msgstr "✓ चेक-आउट"
+
+#: 
+msgid "%d Orphaned Files Detected"
+msgstr "%d अनाथ फ़ाइलें पाई गईं"
+
+#: 
+msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
+msgstr "%d फ़ाइलें संशोधित या गायब हैं। आधिकारिक संस्करण पुनर्स्थापित करने के लिए फ़ोर्स रि-इंस्टॉल का उपयोग करें।"
+
+#: 
+msgid "%d files have failed integrity validation."
+msgstr "%d फ़ाइलें अखंडता सत्यापन में विफल हुई हैं।"
+
+#: 
+msgid "%d files will be permanently deleted."
+msgstr "%d फ़ाइलें स्थायी रूप से हटा दी जाएंगी।"
+
+#: 
+msgid "%d orphaned files were detected on your server."
+msgstr "आपके सर्वर पर %d अनाथ फ़ाइलें पाई गईं।"
+
+#: 
+msgid "(refresh from GitHub)"
+msgstr "(GitHub से रिफ्रेश करें)"
 
 #: 
 msgid "Access Denied"
 msgstr "पहुंच अस्वीकृत"
 
 #: 
+msgid "Add event permission"
+msgstr "इवेंट जोड़ने की अनुमति"
+
+#: 
+msgid "Add records permission"
+msgstr "रिकॉर्ड जोड़ने की अनुमति"
+
+#: 
 msgid "Administrator privileges"
 msgstr "प्रशासक विशेषाधिकार"
+
+#: 
+msgid "All Files Verified"
+msgstr "सभी फ़ाइलें सत्यापित"
+
+#: 
+msgid "All system files match their expected signatures."
+msgstr "सभी सिस्टम फ़ाइलें उनके अपेक्षित हस्ताक्षरों से मेल खाती हैं।"
 
 #: 
 msgid "Application Integrity"
 msgstr "एप्लिकेशन अखंडता"
 
 #: 
+msgid "Application files updated to latest version"
+msgstr "एप्लिकेशन फ़ाइलें नवीनतम संस्करण में अपडेट की गईं"
+
+#: 
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr "क्या आप वाकई सभी अनाथ फ़ाइलें हटाना चाहते हैं?"
+
+#: 
 msgid "Back to Debug Info"
 msgstr "डिबग जानकारी पर वापस जाएँ"
+
+#: 
+msgid "Backup Best Practices"
+msgstr "बैकअप सर्वोत्तम अभ्यास"
 
 #: 
 msgid "Backup Status"
@@ -8590,28 +9463,124 @@ msgid "Backup Type"
 msgstr "बैकअप प्रकार"
 
 #: 
+msgid "Backup complete! Click below to download."
+msgstr "बैकअप पूर्ण! डाउनलोड करने के लिए नीचे क्लिक करें।"
+
+#: 
+msgid "Backup completed successfully!"
+msgstr "बैकअप सफलतापूर्वक पूरा हुआ!"
+
+#: 
+msgid "Backup downloaded. Server copy removed."
+msgstr "बैकअप डाउनलोड किया गया। सर्वर कॉपी हटाई गई।"
+
+#: 
 msgid "Backup failed. Please try again."
 msgstr "बैकअप विफल रहा। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Backup generated and copied to remote server"
+msgstr "बैकअप जनरेट किया गया और रिमोट सर्वर पर कॉपी किया गया"
+
+#: 
+msgid "Backup in progress, please wait..."
+msgstr "बैकअप जारी है, कृपया प्रतीक्षा करें..."
+
+#: 
+msgid "Backup to External Storage"
+msgstr "बाहरी स्टोरेज में बैकअप"
+
+#: 
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr "सावधानी: बैकअप रिस्टोर करने से मौजूदा डेटाबेस पूरी तरह से मिट जाएगा और बैकअप डेटा से बदल दिया जाएगा।"
+
+#: 
+msgid "CSV export permission"
+msgstr "CSV निर्यात अनुमति"
+
+#: 
+msgid "Close & Refresh"
+msgstr "बंद करें और रिफ्रेश करें"
 
 #: 
 msgid "Confirm Deletion"
 msgstr "हटाने की पुष्टि करें"
 
 #: 
+msgid "Create a backup first"
+msgstr "पहले बैकअप बनाएं"
+
+#: 
+msgid "Create directory permission"
+msgstr "डायरेक्टरी बनाने की अनुमति"
+
+#: 
 msgid "Database Only"
 msgstr "केवल डेटाबेस"
+
+#: 
+msgid "Database Restored Successfully!"
+msgstr "डेटाबेस सफलतापूर्वक रिस्टोर किया गया!"
+
+#: 
+msgid "Database schema upgraded automatically"
+msgstr "डेटाबेस स्कीमा स्वचालित रूप से अपग्रेड की गई"
 
 #: 
 msgid "Delete All Files"
 msgstr "सभी फ़ाइलें हटाएं"
 
 #: 
+msgid "Delete All Orphaned Files"
+msgstr "सभी अनाथ फ़ाइलें हटाएं"
+
+#: 
+msgid "Delete records permission"
+msgstr "रिकॉर्ड हटाने की अनुमति"
+
+#: 
+msgid "Deleted %d files, %d failed"
+msgstr "%d फ़ाइलें हटाई गईं, %d विफल"
+
+#: 
+msgid "Deletion Results"
+msgstr "हटाने के परिणाम"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "अपनी बैकअप फ़ाइल यहाँ ड्रैग और ड्रॉप करें"
+
+#: 
+msgid "Edit records permission"
+msgstr "रिकॉर्ड संपादित करने की अनुमति"
+
+#: 
 msgid "Encryption"
 msgstr "एन्क्रिप्शन"
 
 #: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "डेटाबेस संरचना और डेटा निर्यात करता है। छोटा फ़ाइल आकार।"
+
+#: 
+msgid "File Integrity Check"
+msgstr "फ़ाइल अखंडता जांच"
+
+#: 
+msgid "File Integrity Issues Detected"
+msgstr "फ़ाइल अखंडता समस्याएं पाई गईं"
+
+#: 
 msgid "File Path"
 msgstr "फ़ाइल पथ"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "फ़ाइल हस्ताक्षर आधिकारिक रिलीज़ से मेल खाते हैं।"
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "फ़ाइलें संशोधित या गायब हो सकती हैं। आधिकारिक रिलीज़ से पुनः डिप्लॉय करने पर विचार करें।"
 
 #: 
 msgid "Finance access"
@@ -8622,16 +9591,44 @@ msgid "Force Re-install"
 msgstr "बलपूर्वक पुनः स्थापित करें"
 
 #: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "फ़ोर्स रि-इंस्टॉल शुरू किया गया। लागू करने से पहले कृपया अपने डेटाबेस का बैकअप लें।"
+
+#: 
 msgid "Full Backup"
 msgstr "पूर्ण बैकअप"
+
+#: 
+msgid "Generate & Download Backup"
+msgstr "बैकअप जनरेट और डाउनलोड करें"
 
 #: 
 msgid "Go to Dashboard"
 msgstr "डैशबोर्ड पर जाएँ"
 
 #: 
+msgid "Group management access"
+msgstr "ग्रुप प्रबंधन एक्सेस"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "यदि आपको इस फ़ीचर तक पहुंच की आवश्यकता है, तो कृपया अपने चर्च व्यवस्थापक से संपर्क करें।"
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "यदि आप ChurchInfo या ChurchCRM के पिछले संस्करण से बैकअप अपलोड करते हैं, तो यह स्वचालित रूप से वर्तमान डेटाबेस स्कीमा में अपग्रेड हो जाएगा।"
+
+#: 
 msgid "Important Warning"
 msgstr "महत्वपूर्ण चेतावनी"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "डेटाबेस और सभी अपलोड की गई फ़ोटो शामिल हैं। बड़ा फ़ाइल आकार।"
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "एक कॉपी साइट पर अग्निरोधक सेफ में और दूसरी ऑफ-साइट रखें।"
 
 #: 
 msgid "Latest GitHub Version:"
@@ -8642,8 +9639,44 @@ msgid "Loading..."
 msgstr "लोड हो रहा है..."
 
 #: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "जब तक आपके पास स्वचालित बैकअप न हो, सप्ताह में कम से कम एक बार बैकअप बनाएं।"
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "अनाथ फ़ाइलें प्रबंधित करें"
+
+#: 
+msgid "Menu options access"
+msgstr "मेनू विकल्प एक्सेस"
+
+#: 
+msgid "Missing Files"
+msgstr "गायब फ़ाइलें"
+
+#: 
+msgid "Modified Files"
+msgstr "संशोधित फ़ाइलें"
+
+#: 
+msgid "Multiple Copies"
+msgstr "एकाधिक प्रतियाँ"
+
+#: 
+msgid "No Orphaned Files Found"
+msgstr "कोई अनाथ फ़ाइल नहीं मिली"
+
+#: 
+msgid "Notes access"
+msgstr "नोट्स एक्सेस"
+
+#: 
 msgid "Orphaned Files"
 msgstr "अनाथ फाइलें"
+
+#: 
+msgid "Orphaned Files Management"
+msgstr "अनाथ फ़ाइल प्रबंधन"
 
 #: 
 msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
@@ -8710,6 +9743,10 @@ msgid "Restore failed."
 msgstr "पुनर्स्थापना विफल रही।"
 
 #: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "रिस्टोर विफल। कृपया बैकअप फ़ाइल जांचें और पुनः प्रयास करें।"
+
+#: 
 msgid "Restore in progress, please wait..."
 msgstr "पुनर्स्थापना जारी है, कृपया प्रतीक्षा करें..."
 
@@ -8734,6 +9771,10 @@ msgid "Supported formats:"
 msgstr "समर्थित प्रारूप:"
 
 #: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "निम्नलिखित फ़ाइलें आपके सर्वर पर मौजूद हैं लेकिन आधिकारिक ChurchCRM रिलीज़ का हिस्सा नहीं हैं। ये पिछले संस्करणों से बची हो सकती हैं और सुरक्षा जोखिम पैदा कर सकती हैं।"
+
+#: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
 msgstr "जिस पृष्ठ पर आप जाने का प्रयास कर रहे हैं उसके लिए विशेष अनुमति की आवश्यकता है जो वर्तमान में आपके खाते में नहीं है।"
 
@@ -8742,8 +9783,96 @@ msgid "These files are not part of the official release and may pose security ri
 msgstr "ये फ़ाइलें आधिकारिक रिलीज़ का हिस्सा नहीं हैं और सुरक्षा जोखिम पैदा कर सकती हैं।"
 
 #: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "ये फ़ाइलें संभवतः पुराने ChurchCRM संस्करण का हिस्सा थीं और पिछले अपग्रेड के दौरान साफ़ नहीं की गईं। इन्हें हटाने से आपकी सिस्टम सुरक्षा में सुधार होगा।"
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "ये फ़ाइलें संभवतः पुराने ChurchCRM संस्करण का हिस्सा थीं और पिछले अपग्रेड के दौरान साफ़ नहीं की गईं। इनमें सुरक्षा कमजोरियों वाला पुराना कोड हो सकता है।"
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "यह क्रिया पूर्ववत नहीं की जा सकती। यदि आवश्यक हो तो सुनिश्चित करें कि आपके पास वर्तमान डेटा का बैकअप है।"
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "बड़े डेटाबेस के लिए इसमें कुछ मिनट लग सकते हैं।"
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "बड़े डेटाबेस के लिए इसमें कई मिनट लग सकते हैं। इस पेज को बंद न करें।"
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "यह वर्तमान संस्करण को पुनः डाउनलोड और पुनः लागू करेगा। यह दूषित या संशोधित फ़ाइलों को ठीक कर सकता है। जारी रखें?"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "अपग्रेड सारांश"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "ऑफ-साइट स्टोर करने से पहले बैकअप एन्क्रिप्ट करने के लिए बाहरी उपकरणों (GPG, 7-Zip) का उपयोग करें।"
+
+#: 
 msgid "User authentication"
 msgstr "उपयोगकर्ता प्रमाणीकरण"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "उपयोगकर्ता के पास इवेंट जोड़ने की अनुमति होनी चाहिए"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "उपयोगकर्ता के पास मेनू विकल्प अनुमति होनी चाहिए"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "अनाथ फ़ाइलें क्या हैं?"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "आपके पास इस पेज तक पहुंच नहीं है"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "आप लॉग आउट हो जाएंगे और लॉगिन पेज पर रीडायरेक्ट कर दिए जाएंगे।"
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "आपका ChurchCRM इंस्टॉलेशन साफ़ है। सर्वर पर सभी फ़ाइलें आधिकारिक रिलीज़ से मेल खाती हैं।"
+
+#: 
+msgid "or click to browse"
+msgstr "या ब्राउज़ करने के लिए क्लिक करें"
+
+#: 
+msgid "seconds..."
+msgstr "सेकंड..."
+
+#: 
+msgid " Deposit #"
+msgstr "जमा #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d गायब वर्गीकरण"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d गायब लिंग"
+
+#: 
+msgid "%d missing role"
+msgstr "%d गायब भूमिका"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "भुगतान एक वास्तविक प्राप्त दान है। इसे वर्तमान जमा में जोड़ा जाएगा।"
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "प्रतिज्ञा देने की प्रतिबद्धता है। यह जमा पर्ची से बंधी नहीं है।"
 
 #: 
 msgid "Add Another Family Member"
@@ -8766,6 +9895,10 @@ msgid "All System Settings"
 msgstr "सभी सिस्टम सेटिंग्स"
 
 #: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "एक अप्रत्याशित त्रुटि हुई। कृपया अपने व्यवस्थापक से संपर्क करें।"
+
+#: 
 msgid "Apr"
 msgstr "अप्रैल"
 
@@ -8778,8 +9911,16 @@ msgid "Back to Deposits"
 msgstr "जमा पर वापस जाएं"
 
 #: 
+msgid "Back to Families"
+msgstr "परिवारों पर वापस जाएं"
+
+#: 
 msgid "Birth & Family"
 msgstr "जन्म और परिवार"
+
+#: 
+msgid "CSV export is restricted to administrators."
+msgstr "CSV निर्यात व्यवस्थापकों तक सीमित है।"
 
 #: 
 msgid "Cart"
@@ -8794,16 +9935,56 @@ msgid "Church Membership"
 msgstr "चर्च की सदस्यता"
 
 #: 
+msgid "Church name is set to default value"
+msgstr "चर्च का नाम डिफ़ॉल्ट मान पर सेट है"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "कक्षाएं और नामांकन"
+
+#: 
 msgid "Clean Up Files"
 msgstr "फ़ाइलें साफ़ करें"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "सभी डेटा साफ़ करें और नए सिरे से शुरू करें। पूर्ववत नहीं किया जा सकता।"
+
+#: 
+msgid "Close All Deposits"
+msgstr "सभी जमा बंद करें"
 
 #: 
 msgid "Closed Deposits:"
 msgstr "बंद की गई जमा राशि:"
 
 #: 
+msgid "Closed vs Total"
+msgstr "बंद बनाम कुल"
+
+#: 
 msgid "Coming soon"
 msgstr "जल्द आ रहा है"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "ChurchCRM को सुचारू रूप से चलाने के लिए इन आवश्यक सेटअप कार्यों को पूरा करें:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "इन्हें किसी भी क्रम में पूरा करें। नमूना रिकॉर्ड के साथ एक्सप्लोर करने के लिए डेमो डेटा का उपयोग करें।"
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "अपने दाताओं के लिए सटीक वर्ष के अंत कर रिपोर्टिंग सुनिश्चित करने के लिए इन कार्यों को पूरा करें।"
+
+#: 
+msgid "Configuration:"
+msgstr "कॉन्फ़िगरेशन:"
+
+#: 
+msgid "Configure Email"
+msgstr "ईमेल कॉन्फ़िगर करें"
 
 #: 
 msgid "Contact Information"
@@ -8814,12 +9995,40 @@ msgid "Create Deposit"
 msgstr "जमा बनाएँ"
 
 #: 
+msgid "Create First Deposit"
+msgstr "पहली जमा बनाएं"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "पहले जमा बनाएं या खोलें"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "शुरू करने के लिए जमा बनाएं या चुनें।"
+
+#: 
 msgid "Current Deposit"
 msgstr "वर्तमान जमा"
 
 #: 
 msgid "Current fiscal year"
 msgstr "वर्तमान वित्तीय वर्ष"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "तिथि, फंड, परिवार और भुगतान विधि द्वारा फ़िल्टरिंग के साथ अनुकूलन योग्य रिपोर्ट।"
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "कर विवरण पर दिखाई देने वाले टेक्स्ट को अनुकूलित करें (sTaxReport1, sTaxReport2, आदि)।"
+
+#: 
+msgid "Data Quality:"
+msgstr "डेटा गुणवत्ता:"
+
+#: 
+msgid "Database:"
+msgstr "डेटाबेस:"
 
 #: 
 msgid "Day"
@@ -8830,8 +10039,36 @@ msgid "Dec"
 msgstr "दिसंबर"
 
 #: 
+msgid "Demo Data"
+msgstr "डेमो डेटा"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "जमा नेविगेशन"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "जमा सांख्यिकी"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "एकल जमा पर्ची का विस्तृत विवरण।"
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "परिवार द्वारा प्रतिज्ञाओं और भुगतानों का विस्तृत विवरण।"
+
+#: 
 msgid "Documentation"
 msgstr "दस्तावेज़"
+
+#: 
+msgid "Donor Families"
+msgstr "दाता परिवार"
+
+#: 
+msgid "Edit Deposit"
+msgstr "जमा संपादित करें"
 
 #: 
 msgid "Edit Family"
@@ -8846,16 +10083,36 @@ msgid "Edit Person"
 msgstr "व्यक्ति संपादित करें"
 
 #: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "विवरण जनरेट करने से पहले सुनिश्चित करें कि कर वर्ष के लिए सभी जमा बंद हैं।"
+
+#: 
 msgid "Export Options"
 msgstr "निर्यात विकल्प"
+
+#: 
+msgid "F"
+msgstr "F"
 
 #: 
 msgid "Failed to save settings"
 msgstr "सेटिंग्स सहेजने में विफल"
 
 #: 
+msgid "Family Navigation"
+msgstr "परिवार नेविगेशन"
+
+#: 
 msgid "Feb"
 msgstr "फरवरी"
+
+#: 
+msgid "File Integrity:"
+msgstr "फ़ाइल अखंडता:"
+
+#: 
+msgid "Filtering"
+msgstr "फ़िल्टरिंग"
 
 #: 
 msgid "Finance"
@@ -8866,16 +10123,76 @@ msgid "Finance Dashboard"
 msgstr "वित्त डैशबोर्ड"
 
 #: 
+msgid "Force Import"
+msgstr "फ़ोर्स आयात"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "फ़ोर्स आयात पुनः प्रयास करेगा और डुप्लिकेट डेटा बना सकता है।"
+
+#: 
 msgid "Fund Allocation"
 msgstr "निधि आवंटन"
+
+#: 
+msgid "Generate"
+msgstr "जनरेट करें"
 
 #: 
 msgid "Generate Reports"
 msgstr "रिपोर्ट तैयार करें"
 
 #: 
+msgid "Generate Tax Statements"
+msgstr "कर विवरण जनरेट करें"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "दाताओं के लिए वार्षिक दान विवरण जनरेट करें और दान पैटर्न पहचानें।"
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "दाताओं के लिए वार्षिक कर-कटौती योग्य दान विवरण जनरेट करें। प्रिंट या ईमेल किया जा सकता है।"
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "व्यक्तिगत जमा या तिथि श्रेणियों के लिए विस्तृत रिपोर्ट जनरेट करें।"
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "बकाया प्रतिज्ञाओं वाले परिवारों के लिए अनुस्मारक पत्र जनरेट करें।"
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "कर विवरण, प्रतिज्ञा ट्रैकिंग और वित्तीय विश्लेषण के लिए रिपोर्ट जनरेट करें।"
+
+#: 
+msgid "Giving funds and categories"
+msgstr "दान फंड और श्रेणियाँ"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS कॉन्फ़िगर नहीं है"
+
+#: 
 msgid "ID"
 msgstr "आईडी"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "उन सदस्यों की पहचान करें जिन्होंने किसी तिथि सीमा के भीतर कोई दान नहीं किया है।"
+
+#: 
+msgid "Import failed"
+msgstr "आयात विफल"
+
+#: 
+msgid "Import from CSV files"
+msgstr "CSV फ़ाइलों से आयात करें"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "वास्तविक डेटा के साथ ChurchCRM एक्सप्लोर करने के लिए नमूना परिवार, लोग और समूह आयात करें।"
 
 #: 
 msgid "Install TLS/SSL certificate for better security"
@@ -8884,6 +10201,10 @@ msgstr "बेहतर सुरक्षा के लिए TLS/SSL प्र
 #: 
 msgid "Jan"
 msgstr "जनवरी"
+
+#: 
+msgid "Jr., Sr."
+msgstr "जूनियर, सीनियर"
 
 #: 
 msgid "Jul"
@@ -8898,12 +10219,24 @@ msgid "Latest Note"
 msgstr "नवीनतम नोट"
 
 #: 
+msgid "Let's get your system set up and ready to use"
+msgstr "आइए आपके सिस्टम को सेट अप करें और उपयोग के लिए तैयार करें"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "दान इतिहास और सदस्यता मानदंडों के आधार पर मतदान के योग्य सदस्यों की सूची बनाएं।"
+
+#: 
 msgid "Location"
 msgstr "स्थान"
 
 #: 
 msgid "M"
 msgstr "पुरुष"
+
+#: 
+msgid "Manage Funds"
+msgstr "फंड प्रबंधित करें"
 
 #: 
 msgid "Manage Users"
@@ -8914,8 +10247,28 @@ msgid "Mar"
 msgstr "मार्च"
 
 #: 
+msgid "Membership Reports"
+msgstr "सदस्यता रिपोर्ट"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "गायब गुप्त कुंजियाँ"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "अधिकांश रिपोर्ट प्रिंटिंग के लिए PDF या स्प्रेडशीट विश्लेषण के लिए CSV के रूप में निर्यात की जा सकती हैं।"
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "श्री, श्रीमती, डॉ."
+
+#: 
 msgid "Name & Identity"
 msgstr "नाम और पहचान"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "नई जमा बनाई जाएगी"
 
 #: 
 msgid "New Payment"
@@ -8934,6 +10287,18 @@ msgid "No Active Deposit"
 msgstr "कोई सक्रिय जमा नहीं"
 
 #: 
+msgid "No active funds configured."
+msgstr "कोई सक्रिय फंड कॉन्फ़िगर नहीं है।"
+
+#: 
+msgid "No deposits found."
+msgstr "कोई जमा नहीं मिली।"
+
+#: 
+msgid "No format"
+msgstr "कोई प्रारूप नहीं"
+
+#: 
 msgid "Nov"
 msgstr "नवंबर"
 
@@ -8946,8 +10311,36 @@ msgid "Open"
 msgstr "खुला"
 
 #: 
+msgid "Open Deposits:"
+msgstr "खुली जमा:"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "संगठन, टाइमज़ोन, ईमेल"
+
+#: 
+msgid "Organizational structure"
+msgstr "संगठनात्मक संरचना"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "अनाथ फ़ाइलें:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
 msgid "Payment"
 msgstr "भुगतान"
+
+#: 
+msgid "Pledge Reports"
+msgstr "प्रतिज्ञा रिपोर्ट"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "सभी दाताओं को वार्षिक दान विवरण प्रिंट या ईमेल करें।"
 
 #: 
 msgid "Quick Actions"
@@ -8962,6 +10355,22 @@ msgid "Recent Deposits"
 msgstr "हाल की जमा राशि"
 
 #: 
+msgid "Recording a Payment"
+msgstr "भुगतान रिकॉर्ड करना"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "प्रतिज्ञा रिकॉर्ड करना"
+
+#: 
+msgid "Report Tips"
+msgstr "रिपोर्ट सुझाव"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "सदस्य मतदान योग्यता और संगठन शासन से संबंधित रिपोर्ट।"
+
+#: 
 msgid "Reset"
 msgstr "रीसेट"
 
@@ -8970,12 +10379,24 @@ msgid "Restore"
 msgstr "पुनर्स्थापित करें"
 
 #: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "बैकअप फ़ाइल से रिस्टोर करें। मौजूदा डेटा मिटा देता है।"
+
+#: 
 msgid "Review Donation Funds"
 msgstr "दान निधि की समीक्षा करें"
 
 #: 
+msgid "SMTP server settings are not configured"
+msgstr "SMTP सर्वर सेटिंग्स कॉन्फ़िगर नहीं हैं"
+
+#: 
 msgid "Save and Add New Family"
 msgstr "सहेजें और नया परिवार जोड़ें"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Config.php से गुप्त कुंजियाँ गायब हैं"
 
 #: 
 msgid "Sep"
@@ -8990,8 +10411,32 @@ msgid "Settings"
 msgstr "सेटिंग्स"
 
 #: 
+msgid "Settings saved successfully"
+msgstr "सेटिंग्स सफलतापूर्वक सहेजी गईं"
+
+#: 
+msgid "Setup Tasks:"
+msgstr "सेटअप कार्य:"
+
+#: 
 msgid "Social Media"
 msgstr "सोशल मीडिया"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "कुछ एप्लिकेशन पूर्वापेक्षाएं पूरी नहीं हुई हैं"
+
+#: 
+msgid "State (Other)"
+msgstr "राज्य (अन्य)"
+
+#: 
+msgid "Status:"
+msgstr "स्थिति:"
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "वित्तीय वर्ष के लिए फंड द्वारा प्रतिज्ञाओं बनाम भुगतानों का सारांश।"
 
 #: 
 msgid "System Configuration:"
@@ -9010,6 +10455,18 @@ msgid "Tax & Giving Reports"
 msgstr "कर और दान रिपोर्ट"
 
 #: 
+msgid "Tax Report Verbiage"
+msgstr "कर रिपोर्ट शब्दावली"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "कर विवरण (दान रिपोर्ट)"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "कर वर्ष रिपोर्टिंग चेकलिस्ट"
+
+#: 
 msgid "Today"
 msgstr "आज"
 
@@ -9022,8 +10479,52 @@ msgid "Total Amount"
 msgstr "कुल राशि"
 
 #: 
+msgid "Total Deposits:"
+msgstr "कुल जमा:"
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "अभियानों और वित्तीय वर्ष बजट के लिए प्रतिज्ञाओं और भुगतान प्रगति को ट्रैक करें।"
+
+#: 
+msgid "Type:"
+msgstr "प्रकार:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "अपूर्ण पूर्वापेक्षाएं"
+
+#: 
+msgid "Update Church Name"
+msgstr "चर्च का नाम अपडेट करें"
+
+#: 
 msgid "Upgrade"
 msgstr "अपग्रेड"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "दाताओं के विशिष्ट समूहों के लिए रिपोर्ट जनरेट करने के लिए वर्गीकरण और परिवार फ़िल्टर का उपयोग करें।"
+
+#: 
+msgid "User accounts and roles"
+msgstr "उपयोगकर्ता खाते और भूमिकाएं"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "उपयोगकर्ता को व्यवस्थापक होना चाहिए या वित्त अनुमति होनी चाहिए"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "सत्यापित करें कि कर विवरण पर चर्च का नाम, पता और संपर्क जानकारी दिखाई देती है।"
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "सत्यापित करें कि फंड नाम और विवरण विवरणों के लिए सटीक हैं।"
+
+#: 
+msgid "Version:"
+msgstr "संस्करण:"
 
 #: 
 msgid "Welcome to ChurchCRM"
@@ -9034,8 +10535,24 @@ msgid "YTD Payments"
 msgstr "वर्ष-दर-वर्ष भुगतान"
 
 #: 
+msgid "YTD Pledges"
+msgstr "YTD प्रतिज्ञाएं"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "आप अभी परिवार के सदस्य बना सकते हैं या बाद में जोड़ सकते हैं। सभी प्रविष्टियाँ नए व्यक्ति रिकॉर्ड बन जाएंगी।"
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "आपका वित्तीय वर्ष महीने में शुरू होता है"
+
+#: 
 msgid "Zip / Postal Code"
 msgstr "पिन कोड"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "अपग्रेड के लिए ZipArchive एक्सटेंशन आवश्यक है"
 
 #: 
 msgid "active"
@@ -9054,6 +10571,22 @@ msgid "days"
 msgstr "दिन"
 
 #: 
+msgid "found"
+msgstr "मिला"
+
+#: 
+msgid "in"
+msgstr "में"
+
+#: 
+msgid "issues"
+msgstr "समस्याएं"
+
+#: 
+msgid "open"
+msgstr "खुला"
+
+#: 
 msgid "years"
 msgstr "वर्ष"
 
@@ -9062,24 +10595,72 @@ msgid "yes"
 msgstr "हाँ"
 
 #: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(पूर्वनिर्धारित राज्यों के बिना देशों के लिए राज्य/प्रांत दर्ज करें)"
+
+#: 
 msgid "Available"
 msgstr "उपलब्ध"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "बेस URL कॉन्फ़िगरेशन अमान्य है। कृपया अपनी Config.php फ़ाइल जांचें।"
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "Config.php में बेस URL कॉन्फ़िगर नहीं है"
 
 #: 
 msgid "ChurchCRM Supported Locales"
 msgstr "ChurchCRM समर्थित लोकेल"
 
 #: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "SSH, FTP, या अपने होस्टिंग कंट्रोल पैनल के माध्यम से अपने सर्वर से कनेक्ट करें"
+
+#: 
 msgid "Contact"
 msgstr "संपर्क करें"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "महत्वपूर्ण कॉन्फ़िगरेशन त्रुटि"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "वर्तमान $URL[0] मान:"
+
+#: 
+msgid "Custom port:"
+msgstr "कस्टम पोर्ट:"
+
+#: 
+msgid "Error:"
+msgstr "त्रुटि:"
+
+#: 
+msgid "Find the line:"
+msgstr "पंक्ति खोजें:"
 
 #: 
 msgid "Group Memberships"
 msgstr "समूह सदस्यता"
 
 #: 
+msgid "How to Fix:"
+msgstr "कैसे ठीक करें:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "ChurchCRM समुदाय में शामिल हों और अपनी जानकारी साझा करके हमें सुधारने में मदद करें। इसमें एक मिनट से भी कम समय लगता है!"
+
+#: 
 msgid "Language"
 msgstr "भाषा"
+
+#: 
+msgid "Local development:"
+msgstr "स्थानीय विकास:"
 
 #: 
 msgid "Locale Support"
@@ -9090,12 +10671,24 @@ msgid "Location & Contact Information"
 msgstr "स्थान और संपर्क जानकारी"
 
 #: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "अपनी ChurchCRM इंस्टॉलेशन डायरेक्टरी पर जाएं"
+
+#: 
 msgid "New to"
 msgstr "नया"
 
 #: 
+msgid "No locales configured"
+msgstr "कोई स्थानीयता कॉन्फ़िगर नहीं है"
+
+#: 
 msgid "Not Available"
 msgstr "उपलब्ध नहीं है"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "इस फ़ाइल को टेक्स्ट एडिटर में खोलें:"
 
 #: 
 msgid "Register Now"
@@ -9104,6 +10697,22 @@ msgstr "अभी पंजीकरण करें"
 #: 
 msgid "Register Your Church"
 msgstr "अपने चर्च को पंजीकृत करें"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "फ़ाइल सहेजें और इस पेज को रिफ्रेश करें"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "व्यक्ति संपादक में गैर-संबद्ध लोगों के लिए व्यक्तिगत पते दर्ज करना अक्षम करने के लिए true सेट करें। परिवार असाइनमेंट के बिना लोगों के लिए पते दर्ज करना सक्षम करने के लिए false सेट करें।"
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "<strong>http://</strong> या <strong>https://</strong> से शुरू होता है"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "उप-डायरेक्टरी इंस्टॉलेशन:"
 
 #: 
 msgid "System Locale Support"
@@ -9144,6 +10753,14 @@ msgstr "उपलब्ध लोकेल निर्धारित करन
 #: 
 msgid "Unable to load locale information"
 msgstr "लोकेल जानकारी लोड करने में असमर्थ"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "राज्य सूची लोड करने में असमर्थ। कृपया अपना नेटवर्क कनेक्शन जांचें या बाद में पुनः प्रयास करें।"
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "इसे एक वैध URL में अपडेट करें जो:"
 
 #: 
 msgid "Valid Examples:"
@@ -9242,12 +10859,32 @@ msgid "Personal"
 msgstr "व्यक्तिगत"
 
 #: 
+msgid "Please confirm your family information:"
+msgstr "कृपया अपनी परिवार की जानकारी की पुष्टि करें:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "कृपया सुधारों के साथ हमारे रिकॉर्ड अपडेट करें"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "यहाँ कोई सुधार या अतिरिक्त जानकारी प्रदान करें..."
+
+#: 
 msgid "Remove Property"
 msgstr "संपत्ति हटाएं"
 
 #: 
+msgid "Select Opportunities"
+msgstr "अवसर चुनें"
+
+#: 
 msgid "Select Property"
 msgstr "संपत्ति चुनें"
+
+#: 
+msgid "Share this URL with family members to verify their information"
+msgstr "उनकी जानकारी सत्यापित करने के लिए परिवार के सदस्यों के साथ यह URL साझा करें"
 
 #: 
 msgid "Submit Verification"
@@ -9438,12 +11075,28 @@ msgid "View Details"
 msgstr "विवरण देखें"
 
 #: 
+msgid "entries"
+msgstr "प्रविष्टियाँ"
+
+#: 
+msgid "of"
+msgstr "का"
+
+#: 
 msgid "total"
 msgstr "कुल"
 
 #: 
 msgid "Code incomplete"
 msgstr "कोड अधूरा है"
+
+#: 
+msgid "Code is invalid"
+msgstr "कोड अमान्य है"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "डेटाबेस में 2FA गुप्त कुंजियाँ संग्रहीत करने के लिए एन्क्रिप्शन कुंजी"
 
 #: 
 msgid "Two-Factor Authentication"
@@ -9454,6 +11107,44 @@ msgid "Validation pending"
 msgstr "सत्यापन लंबित है"
 
 #: 
+msgid "must be configured with an encryption key"
+msgstr "एन्क्रिप्शन कुंजी के साथ कॉन्फ़िगर किया जाना चाहिए"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d व्यक्ति कार्ट में जोड़ा गया।"
+msgstr[1] "%d लोग कार्ट में जोड़े गए।"
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d व्यक्ति सफलतापूर्वक चयनित परिवार में जोड़ा गया।"
+msgstr[1] "%d लोग सफलतापूर्वक चयनित परिवार में जोड़े गए।"
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d व्यक्ति सफलतापूर्वक चयनित ग्रुप में जोड़ा गया।"
+msgstr[1] "%d लोग सफलतापूर्वक चयनित ग्रुप में जोड़े गए।"
+
+#: 
+msgid "A "
+msgstr "एक "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "ADD, Delete, और क्रम परिवर्तन तत्काल हैं। नाम और विवरण परिवर्तनों को 'परिवर्तन सहेजें' पर क्लिक करके सहेजना होगा।"
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "क्या आप वाकई हटाना चाहते हैं"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "तीर और हटाएं बटन तुरंत प्रभावी होते हैं। ऊपर, नीचे, हटाएं या 'नया जोड़ें' बटन का उपयोग करने से पहले 'परिवर्तन सहेजें' नहीं करते हैं तो फ़ील्ड नाम परिवर्तन खो जाएंगे!"
+
+#: 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
 msgstr "इस क्षेत्र को हटाने से, आप इस क्षेत्र के लिए निर्धारित सभी पारिवारिक डेटा स्थायी रूप से खो देंगे!"
 
@@ -9462,8 +11153,116 @@ msgid "By deleting this field, you will irrevocably lose all person data assigne
 msgstr "इस क्षेत्र को हटाने से, आप इस क्षेत्र के लिए निर्धारित सभी व्यक्ति डेटा स्थायी रूप से खो देंगे!"
 
 #: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "परिवर्तन सहेजे नहीं गए! कृपया सही करें और पुनः प्रयास करें!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "संपत्ति हटाने की पुष्टि करें"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "स्वयंसेवक अवसर हटाने की पुष्टि करें"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "हटाने की पुष्टि"
+
+#: 
+msgid "Existing"
+msgstr "मौजूदा"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "मौजूदा कस्टम परिवार फ़ील्ड"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "मौजूदा कस्टम व्यक्ति फ़ील्ड"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "मौजूदा स्वयंसेवक अवसर"
+
+#: 
 msgid "Field deleted successfully"
 msgstr "क्षेत्र सफलतापूर्वक हटा दिया गया"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "अमान्य CSRF टोकन"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "अमान्य फ़ील्ड या चयन।"
+
+#: 
+msgid "Item deleted successfully"
+msgstr "आइटम सफलतापूर्वक हटाया गया"
+
+#: 
+msgid "Move down"
+msgstr "नीचे ले जाएं"
+
+#: 
+msgid "Move up"
+msgstr "ऊपर ले जाएं"
+
+#: 
+msgid "Opportunity"
+msgstr "अवसर"
+
+#: 
+msgid "Order"
+msgstr "क्रम"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "PDF सफलतापूर्वक %s परिवारों को ईमेल किए गए।"
+
+#: 
+msgid "Percentage"
+msgstr "प्रतिशत"
+
+#: 
+msgid "Person Properties"
+msgstr "व्यक्ति गुण"
+
+#: 
+msgid "Property Type"
+msgstr "संपत्ति प्रकार"
+
+#: 
+msgid "Property to Delete"
+msgstr "हटाने के लिए संपत्ति"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "इस स्वयंसेवक अवसर को लोग असाइन किए गए हैं। हटाने से असाइनमेंट हटेगा:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "यह इसे वर्तमान में असाइन किए गए सभी लोगों से हटा देगा।"
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "स्वयंसेवक अवसर"
+
+#: 
+msgid "Warning:"
+msgstr "चेतावनी:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "हाँ, यह अवसर हटाएं"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "जिन क्वेरीज़ के लिए उपयोगकर्ता के पास उपयोग करने के लिए वित्त अनुमतियाँ होनी चाहिए"
+
+#: 
+msgid "Fund(s)"
+msgstr "फंड"
 
 #: 
 msgid "Password reset for"
@@ -9488,4 +11287,198 @@ msgstr "स्पेनिश - अल साल्वाडोर"
 #: 
 msgid "Spanish - Mexico"
 msgstr "स्पेनिश - मैक्सिको"
+
+#: 
+msgid "Add Property Type"
+msgstr "संपत्ति प्रकार जोड़ें"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "अपना पहला संपत्ति प्रकार जोड़ें"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "ऊपर की गणनाओं से स्वचालित रूप से गणना की गई"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "इस फ़ील्ड को हटाकर, आप इस फ़ील्ड के लिए असाइन किए गए सभी ग्रुप सदस्य डेटा को अपरिवर्तनीय रूप से खो देंगे!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "इस फंड को हटाकर, आप ऐतिहासिक दान रिकॉर्ड को प्रभावित कर सकते हैं!"
+
+#: 
+msgid "Category Name"
+msgstr "श्रेणी नाम"
+
+#: 
+msgid "Checked In"
+msgstr "चेक-इन किया"
+
+#: 
+msgid "Checked Out"
+msgstr "चेक-आउट किया"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "वर्तमान वित्तीय वर्ष"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "हटाएं (सभी संबंधित रिकॉर्ड हटा दिए जाएंगे)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "संपत्ति प्रकार संपादित करें"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "अल्पविराम से अलग गणना श्रेणियाँ दर्ज करें (जैसे, सदस्य, आगंतुक, बच्चे)।"
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "उपदेश नोट्स या इवेंट टेक्स्ट दर्ज करें..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "मौजूदा दान फंड"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "मौजूदा ग्रुप गुण"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "भूमिका अपडेट करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Family Pledges"
+msgstr "परिवार प्रतिज्ञाएं"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "'हटाएं' या 'नया जोड़ें' बटन का उपयोग करने से पहले 'परिवर्तन सहेजें' नहीं करते हैं तो फ़ील्ड परिवर्तन खो जाएंगे!"
+
+#: 
+msgid "Filter by Class"
+msgstr "कक्षा द्वारा फ़िल्टर करें"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "फंड सफलतापूर्वक हटाया गया"
+
+#: 
+msgid "In Use"
+msgstr "उपयोग में"
+
+#: 
+msgid "Manage"
+msgstr "प्रबंधित करें"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "चयनित वित्तीय वर्ष के लिए कोई प्रतिज्ञा नहीं मिली"
+
+#: 
+msgid "No property types found"
+msgstr "कोई संपत्ति प्रकार नहीं मिला"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "इस संपत्ति प्रकार का उपयोग करने वाले रिकॉर्ड की संख्या"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "इस संपत्ति प्रकार का वैकल्पिक विस्तृत विवरण"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "कृपया नीचे दी गई त्रुटियों को सही करें।"
+
+#: 
+msgid "Pledge Amount"
+msgstr "प्रतिज्ञा राशि"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "प्रतिज्ञा डैशबोर्ड"
+
+#: 
+msgid "Remaining"
+msgstr "शेष"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "यह उपस्थिति गणना हटाएं?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "इस संपत्ति पर लागू होने वाले रिकॉर्ड का प्रकार चुनें"
+
+#: 
+msgid "That fund name already exists."
+msgstr "वह फंड नाम पहले से मौजूद है।"
+
+#: 
+msgid "Total Pledges"
+msgstr "कुल प्रतिज्ञाएं"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "परिवार और फंड द्वारा प्रतिज्ञा प्रतिबद्धताओं को ट्रैक और प्रबंधित करें"
+
+#: 
+msgid "View Properties"
+msgstr "गुण देखें"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "जैसे, आगंतुक, बच्चे"
+
+#: 
+msgid "of pledges"
+msgstr "प्रतिज्ञाओं का"
+
+#: 
+msgid "records"
+msgstr "रिकॉर्ड"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "खाली नहीं होने पर / से शुरू होना चाहिए; अंत में स्लैश नहीं। केवल अक्षर, संख्याएं, अंडरस्कोर, डैश, डॉट और / की अनुमति है।"
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d व्यक्ति"
+msgstr[1] "%d लोग"
+
+#: 
+msgid "All Classifications"
+msgstr "सभी वर्गीकरण"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "आपके मानदंडों से मेल खाने वाले कोई लोग नहीं मिले।"
+
+#: 
+msgid "Off"
+msgstr "बंद"
+
+#: 
+msgid "On"
+msgstr "चालू"
+
+#: 
+msgid "Photo Directory"
+msgstr "फ़ोटो डायरेक्टरी"
+
+#: 
+msgid "Reset Filters"
+msgstr "फ़िल्टर रीसेट करें"
+
+#: 
+msgid "Show only people with photos"
+msgstr "केवल फ़ोटो वाले लोग दिखाएं"
 

@@ -26,5 +26,9 @@
   "%d Person successfully added to selected Group.": {
     "one": "%d persona agregada exitosamente al grupo seleccionado.",
     "other": "%d personas agregadas exitosamente al grupo seleccionado."
+  },
+  "%d person": {
+    "one": "%d persona",
+    "other": "%d personas"
   }
 }

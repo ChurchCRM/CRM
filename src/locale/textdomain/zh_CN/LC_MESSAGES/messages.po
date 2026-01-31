@@ -4053,12 +4053,6 @@ msgstr "搜索"
 msgid "Field"
 msgstr "领域"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "注册学生"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4152,11 +4146,6 @@ msgstr "返回您想要记录的主日学校课程。"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "已注册学生组"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "返回您想要记录的会员周年的月份。"
 
@@ -4189,11 +4178,6 @@ msgstr "今年的承诺"
 #: 
 msgid "but not this year"
 msgstr "但不是今年"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "财政年度."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4257,11 +4241,6 @@ msgstr "遗失承诺"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "财政年度的家庭承诺"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "定制搜索"
 
@@ -4274,11 +4253,6 @@ msgstr "返回分配制定属性的人员记录。"
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "在特定月份生日的人"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "找到注册学生"
 
 #. Context: query_qry
 #: 
@@ -4304,11 +4278,6 @@ msgstr "比较两个财政年度之间的承诺"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "寻找承诺一年但不承诺一年的人"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "通过姓氏删选所选会计年度基金的承诺摘要"
 
 #. Context: query_qry
 #: 
@@ -7518,12 +7487,12 @@ msgstr "日历活动的最大数量"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "％d个月大"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "％d岁"
 
 #: 
@@ -9302,7 +9271,7 @@ msgstr "无付款的存款"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%s 中的 %d 个活动"
 
 #: 
@@ -9559,7 +9528,7 @@ msgstr "可选"
 
 #: 
 msgid "person"
-msgid_plural "person"
+msgid_plural "people"
 msgstr[0] "个人"
 
 #: 
@@ -11296,17 +11265,17 @@ msgstr "必须配置加密密钥"
 
 #: 
 msgid "%d Person added to the Cart."
-msgid_plural "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
 msgstr[0] "%d 人已加入清单。"
 
 #: 
 msgid "%d Person successfully added to selected Family."
-msgid_plural "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
 msgstr[0] "%d 人已成功加入选定的家庭。"
 
 #: 
 msgid "%d Person successfully added to selected Group."
-msgid_plural "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
 msgstr[0] "%d 人已成功加入选定的群组。"
 
 #: 
@@ -11468,4 +11437,197 @@ msgstr "西班牙语 - 萨尔瓦多"
 #: 
 msgid "Spanish - Mexico"
 msgstr "西班牙语 - 墨西哥"
+
+#: 
+msgid "Add Property Type"
+msgstr "添加属性类型"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "添加您的第一个属性类型"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "根据上方计数自动计算"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "删除此字段后，您将永久丢失分配给此字段的所有小组成员数据！"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "删除此基金可能会影响历史捐赠记录！"
+
+#: 
+msgid "Category Name"
+msgstr "类别名称"
+
+#: 
+msgid "Checked In"
+msgstr "已签到"
+
+#: 
+msgid "Checked Out"
+msgstr "已签退"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "当前财政年度"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "删除（将删除所有关联记录）"
+
+#: 
+msgid "Edit Property Type"
+msgstr "编辑属性类型"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "输入以逗号分隔的计数类别（例如：成员、访客、儿童）。"
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "输入讲道笔记或活动文本..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "现有捐赠基金"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "现有小组属性"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "更新角色失败。请重试。"
+
+#: 
+msgid "Family Pledges"
+msgstr "家庭认捐"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "如果在使用删除或'添加新项' 按钮之前不点击'保存更改'，字段更改将丢失！"
+
+#: 
+msgid "Filter by Class"
+msgstr "按类别筛选"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "基金删除成功"
+
+#: 
+msgid "In Use"
+msgstr "使用中"
+
+#: 
+msgid "Manage"
+msgstr "管理"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "未找到所选财政年度的认捐"
+
+#: 
+msgid "No property types found"
+msgstr "未找到属性类型"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "使用此属性类型的记录数"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "此属性类型的可选详细描述"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "请更正以下错误。"
+
+#: 
+msgid "Pledge Amount"
+msgstr "认捐金额"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "认捐仪表板"
+
+#: 
+msgid "Remaining"
+msgstr "剩余"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "删除此出席计数？"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "选择此属性适用的记录类型"
+
+#: 
+msgid "That fund name already exists."
+msgstr "该基金名称已存在。"
+
+#: 
+msgid "Total Pledges"
+msgstr "认捐总额"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "按家庭和基金跟踪和管理认捐承诺"
+
+#: 
+msgid "View Properties"
+msgstr "查看属性"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "例如：访客、儿童"
+
+#: 
+msgid "of pledges"
+msgstr "认捐"
+
+#: 
+msgid "records"
+msgstr "记录"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "如果非空则必须以/开头；末尾不能有斜杠。只允许使用字母、数字、下划线、短横线、点和/。"
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d人"
+
+#: 
+msgid "All Classifications"
+msgstr "所有分类"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "未找到符合您条件的人员。"
+
+#: 
+msgid "Off"
+msgstr "关闭"
+
+#: 
+msgid "On"
+msgstr "开启"
+
+#: 
+msgid "Photo Directory"
+msgstr "照片目录"
+
+#: 
+msgid "Reset Filters"
+msgstr "重置筛选"
+
+#: 
+msgid "Show only people with photos"
+msgstr "只显示有照片的人"
 

@@ -3928,12 +3928,6 @@ msgstr "Etsi"
 msgid "Field"
 msgstr "Kenttä"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Rekisteröidyt oppilaat"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4026,11 +4020,6 @@ msgstr "Pyhäkoululuokka, jolle haluat tuloksia."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Rekisteröityjen oppilaiden ryhmä"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Jäsenyyden vuosipäiväkuukausi, jolle haluat tuloksia."
 
@@ -4063,11 +4052,6 @@ msgstr "Luvannut tänä vuonna"
 #: 
 msgid "but not this year"
 msgstr "mutta ei tänä vuonna"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Tilikausi."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4131,11 +4115,6 @@ msgstr "Puuttuvat lupaukset"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Perheen lupaus tilikauden mukaan"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "Mukautettu haku"
 
@@ -4148,11 +4127,6 @@ msgstr "Palauttaa henkilötietueet, joille on määritetty kyseinen ominaisuus."
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Henkilöt, joilla on syntymäpäivä tietyssä kuussa"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Etsi rekisteröidyt oppilaat"
 
 #. Context: query_qry
 #: 
@@ -4178,11 +4152,6 @@ msgstr "Vertaa lupauksia kahden tilikauden välillä"
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Etsi henkilöitä, jotka tekivät lupauksen yhtenä vuonna mutta eivät toisena"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Lupausten yhteenveto sukunimen mukaan kullekin rahastolle valitulta tilikaudelta"
 
 #. Context: query_qry
 #: 
@@ -7370,13 +7339,13 @@ msgstr "Kalenteritapahtumien enimmäismäärä"
 
 #: 
 msgid "%d month old"
-msgid_plural "%d month old"
+msgid_plural "%d months old"
 msgstr[0] "%d kuukauden ikäinen"
 msgstr[1] "%d kuukauden ikäinen"
 
 #: 
 msgid "%d year old"
-msgid_plural "%d year old"
+msgid_plural "%d years old"
 msgstr[0] "%d-vuotias"
 msgstr[1] "%d-vuotias"
 
@@ -9154,7 +9123,7 @@ msgstr "talletus(ta), joissa ei ole maksuja"
 
 #: 
 msgid "%d event in %s"
-msgid_plural "%d event in %s"
+msgid_plural "%d events in %s"
 msgstr[0] "%d tapahtuma kohteessa %s"
 msgstr[1] "%d tapahtumaa kohteessa %s"
 
@@ -9409,6 +9378,12 @@ msgstr "esim. Sunnuntaikoulu, Raamatun opiskelu..."
 #: 
 msgid "optional"
 msgstr "valinnainen"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "henkilö"
+msgstr[1] "henkilöä"
 
 #: 
 msgid "✓ CheckOut"
@@ -11143,6 +11118,24 @@ msgid "must be configured with an encryption key"
 msgstr "on määritettävä salausavaimella"
 
 #: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d Henkilö lisätty koriin."
+msgstr[1] "%d Henkilöä lisätty koriin."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d Henkilö lisätty onnistuneesti valittuun Perheeseen."
+msgstr[1] "%d Henkilöä lisätty onnistuneesti valittuun Perheeseen."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d Henkilö lisätty onnistuneesti valittuun Ryhmään."
+msgstr[1] "%d Henkilöä lisätty onnistuneesti valittuun Ryhmään."
+
+#: 
 msgid "A "
 msgstr "A "
 
@@ -11301,4 +11294,198 @@ msgstr "Espanja - El Salvador"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Espanja - Meksiko"
+
+#: 
+msgid "Add Property Type"
+msgstr "Lisää Ominaisuustyyppi"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Lisää Ensimmäinen Ominaisuustyyppisi"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Laskettu automaattisesti yllä olevista luvuista"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Poistamalla tämän kentän menetät peruuttamattomasti kaikki tälle kentälle määritetyt ryhmän jäsentiedot!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Poistamalla tämän rahaston saatat vaikuttaa historiallisiin lahjoitustietoihin!"
+
+#: 
+msgid "Category Name"
+msgstr "Kategorian Nimi"
+
+#: 
+msgid "Checked In"
+msgstr "Kirjautunut sisään"
+
+#: 
+msgid "Checked Out"
+msgstr "Kirjautunut ulos"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Kuluva Tilivuosi"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Poista (poistaa kaikki liittyvät tietueet)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Muokkaa Ominaisuustyyppiä"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Syötä pilkuilla erotetut laskentakategoriat (esim. Jäsenet, Vierailijat, Lapset)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Syötä saarnan muistiinpanot tai tapahtuman teksti..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Olemassa olevat Lahjoitusrahastot"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Olemassa olevat Ryhmän Ominaisuudet"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Roolin päivitys epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Family Pledges"
+msgstr "Perheen Lupaukset"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Kenttämuutokset menetetään, jos et napsauta 'Tallenna Muutokset' ennen poisto- tai 'Lisää Uusi' -painikkeen käyttöä!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Suodata Luokan mukaan"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Rahasto poistettu onnistuneesti"
+
+#: 
+msgid "In Use"
+msgstr "Käytössä"
+
+#: 
+msgid "Manage"
+msgstr "Hallitse"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Lupauksia ei löytynyt valitulle tilivuodelle"
+
+#: 
+msgid "No property types found"
+msgstr "Ominaisuustyyppejä ei löytynyt"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Tätä ominaisuustyyppiä käyttävien tietueiden määrä"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Valinnainen yksityiskohtainen kuvaus tästä ominaisuustyypistä"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Korjaa alla olevat virheet."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Lupauksen Summa"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Lupausten Hallintapaneeli"
+
+#: 
+msgid "Remaining"
+msgstr "Jäljellä"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Poista tämä läsnäololuku?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Valitse tietuetyyppi, johon tämä ominaisuus liittyy"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Tämä rahaston nimi on jo olemassa."
+
+#: 
+msgid "Total Pledges"
+msgstr "Lupaukset Yhteensä"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Seuraa ja hallitse lupausitoumuksia perheen ja rahaston mukaan"
+
+#: 
+msgid "View Properties"
+msgstr "Näytä Ominaisuudet"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "esim. Vierailijat, Lapset"
+
+#: 
+msgid "of pledges"
+msgstr "lupauksista"
+
+#: 
+msgid "records"
+msgstr "tietuetta"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Täytyy alkaa /-merkillä jos ei tyhjä; ei loppu-kauttaviivaa. Vain kirjaimet, numerot, alaviiva, viiva, piste ja / sallittu."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d henkilö"
+msgstr[1] "%d henkilöä"
+
+#: 
+msgid "All Classifications"
+msgstr "Kaikki Luokitukset"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Kriteereitäsi vastaavia henkilöitä ei löytynyt."
+
+#: 
+msgid "Off"
+msgstr "Pois"
+
+#: 
+msgid "On"
+msgstr "Päällä"
+
+#: 
+msgid "Photo Directory"
+msgstr "Kuvahakemisto"
+
+#: 
+msgid "Reset Filters"
+msgstr "Nollaa Suodattimet"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Näytä vain henkilöt, joilla on kuva"
 

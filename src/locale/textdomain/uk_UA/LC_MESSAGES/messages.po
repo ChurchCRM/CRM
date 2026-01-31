@@ -3960,12 +3960,6 @@ msgstr "Пошук"
 msgid "Field"
 msgstr "Польовий"
 
-#. Context: query_qry
-#. Context: queryparameters_qrp
-#: 
-msgid "Registered students"
-msgstr "Зареєстровані студенти"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Volunteer opportunities"
@@ -4059,11 +4053,6 @@ msgstr "Недільний шкільний клас, для якого ви х�
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Group of registered students"
-msgstr "Група зареєстрованих студентів"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "The membership anniversary month for which you would like records returned."
 msgstr "Місячний ювілейний членський період, за який ви хотіли б повернути записи."
 
@@ -4096,11 +4085,6 @@ msgstr "Пообіцяв цього року"
 #: 
 msgid "but not this year"
 msgstr "але не цього року"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Фінансовий рік."
 
 #. Context: queryparameters_qrp
 #: 
@@ -4164,11 +4148,6 @@ msgstr "Відсутні застави"
 
 #. Context: query_qry
 #: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Сімейна застава за фінансовим роком"
-
-#. Context: query_qry
-#: 
 msgid "CustomSearch"
 msgstr "CustomSearch"
 
@@ -4181,11 +4160,6 @@ msgstr "Повертає записи особи, яким присвоєно д
 #: 
 msgid "People with birthdays in a particular month"
 msgstr "Люди з днями народження в певному місяці"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Знайдіть зареєстрованих студентів"
 
 #. Context: query_qry
 #: 
@@ -4211,11 +4185,6 @@ msgstr "Порівняйте обіцянки між двома фінансов
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Знайдіть людей, які пообіцяли один рік, але не інший"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Підсумок застави за прізвищем для кожного фонду на вибраний фінансовий рік"
 
 #. Context: query_qry
 #: 
@@ -11337,4 +11306,192 @@ msgstr "Іспанська - Сальвадор"
 #: 
 msgid "Spanish - Mexico"
 msgstr "Іспанська - Мексика"
+
+#: 
+msgid "Add Property Type"
+msgstr "Додати Тип Властивості"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "Додайте Ваш Перший Тип Властивості"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "Автоматично розраховано з підрахунків вище"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "Видаливши це поле, ви безповоротно втратите всі дані учасників групи, призначені для цього поля!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "Видаливши цей фонд, ви можете вплинути на історичні записи пожертвувань!"
+
+#: 
+msgid "Category Name"
+msgstr "Назва Категорії"
+
+#: 
+msgid "Checked In"
+msgstr "Зареєстровано вхід"
+
+#: 
+msgid "Checked Out"
+msgstr "Зареєстровано вихід"
+
+#: 
+msgid "Current Fiscal Year"
+msgstr "Поточний Фінансовий Рік"
+
+#: 
+msgid "Delete (will delete all associated records)"
+msgstr "Видалити (видалить усі пов'язані записи)"
+
+#: 
+msgid "Edit Property Type"
+msgstr "Редагувати Тип Властивості"
+
+#: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "Введіть категорії підрахунку через кому (напр., Члени, Відвідувачі, Діти)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "Введіть нотатки проповіді або текст події..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "Існуючі Фонди Пожертвувань"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "Існуючі Властивості Групи"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "Не вдалося оновити роль. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Family Pledges"
+msgstr "Сімейні Зобов'язання"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "Зміни полів будуть втрачені, якщо ви не натиснете 'Зберегти Зміни' перед використанням кнопки видалення або 'Додати Новий'!"
+
+#: 
+msgid "Filter by Class"
+msgstr "Фільтр за Класом"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "Фонд успішно видалено"
+
+#: 
+msgid "In Use"
+msgstr "Використовується"
+
+#: 
+msgid "Manage"
+msgstr "Керувати"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "Зобов'язань для вибраного фінансового року не знайдено"
+
+#: 
+msgid "No property types found"
+msgstr "Типів властивостей не знайдено"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "Кількість записів, що використовують цей тип властивості"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "Необов'язковий детальний опис цього типу властивості"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "Будь ласка, виправте помилки нижче."
+
+#: 
+msgid "Pledge Amount"
+msgstr "Сума Зобов'язання"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "Панель Зобов'язань"
+
+#: 
+msgid "Remaining"
+msgstr "Залишок"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "Видалити цей підрахунок відвідуваності?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "Виберіть тип запису, до якого застосовується ця властивість"
+
+#: 
+msgid "That fund name already exists."
+msgstr "Така назва фонду вже існує."
+
+#: 
+msgid "Total Pledges"
+msgstr "Усього Зобов'язань"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "Відстежуйте та керуйте зобов'язаннями за сім'ями та фондами"
+
+#: 
+msgid "View Properties"
+msgstr "Переглянути Властивості"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "напр., Відвідувачі, Діти"
+
+#: 
+msgid "of pledges"
+msgstr "зобов'язань"
+
+#: 
+msgid "records"
+msgstr "записів"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "Повинно починатися з / якщо не порожнє; без завершальної косої риски. Дозволено лише букви, цифри, підкреслення, дефіс, крапка та /."
+
+#: 
+msgid "All Classifications"
+msgstr "Усі Класифікації"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "Не знайдено людей, що відповідають вашим критеріям."
+
+#: 
+msgid "Off"
+msgstr "Вимк"
+
+#: 
+msgid "On"
+msgstr "Увімк"
+
+#: 
+msgid "Photo Directory"
+msgstr "Фотокаталог"
+
+#: 
+msgid "Reset Filters"
+msgstr "Скинути Фільтри"
+
+#: 
+msgid "Show only people with photos"
+msgstr "Показати лише людей з фотографіями"
 
