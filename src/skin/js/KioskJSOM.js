@@ -745,7 +745,7 @@ window.CRM.kiosk = {
         // Get the student's name for feedback
         var $personDiv = $("#personId-" + personId);
         var studentName = $personDiv.find(".kiosk-member-name").text().trim() || "Student";
-        
+
         // Visual feedback - disable button and show sending state
         var $alertBtn = $personDiv.find(".parentAlertButton");
         $alertBtn.prop("disabled", true).addClass("sending");
@@ -766,7 +766,7 @@ window.CRM.kiosk = {
                     window.CRM.kiosk.showKioskNotification("Parent alert sent for " + studentName, "success");
                 }
                 // Reset button after short delay
-                setTimeout(function() {
+                setTimeout(function () {
                     $alertBtn.prop("disabled", false).removeClass("sending");
                     $alertBtn.find("i").removeClass("fa-spinner fa-spin").addClass("fa-bell");
                 }, 2000);
@@ -788,17 +788,21 @@ window.CRM.kiosk = {
     showKioskNotification: function (message, type) {
         var $notification = $("<div>", {
             class: "kiosk-notification kiosk-notification-" + type,
-            text: message
+            text: message,
         });
         $("body").append($notification);
-        
+
         // Animate in
-        setTimeout(function() { $notification.addClass("show"); }, 10);
-        
+        setTimeout(function () {
+            $notification.addClass("show");
+        }, 10);
+
         // Remove after delay
-        setTimeout(function() {
+        setTimeout(function () {
             $notification.removeClass("show");
-            setTimeout(function() { $notification.remove(); }, 300);
+            setTimeout(function () {
+                $notification.remove();
+            }, 300);
         }, 4000);
     },
 
