@@ -2,6 +2,21 @@
  * ChurchCRM JavaScript Object Model Initialization Script
  */
 
+/**
+ * Escape HTML special characters to prevent XSS when inserting user data into DOM
+ * GHSA-8r36-fvxj-26qv: Used to sanitize property values before rendering
+ * @param {string} text - The text to escape
+ * @returns {string} - HTML-escaped text safe for DOM insertion
+ */
+window.CRM.escapeHtml = function (text) {
+    if (text === null || text === undefined) {
+        return "";
+    }
+    var div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+};
+
 window.CRM.APIRequest = function (options) {
     if (!options.method) {
         options.method = "GET";
