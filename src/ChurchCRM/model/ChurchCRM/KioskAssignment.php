@@ -33,22 +33,33 @@ class KioskAssignment extends BaseKioskAssignment
     public function getActiveGroupMembers()
     {
         if ($this->getAssignmentType() == KioskAssignmentTypes::EVENTATTENDANCEKIOSK) {
+            // Get the event's linked groups
+            $event = $this->getEvent();
+            $groups = $event->getGroups();
+            
+            if ($groups->count() === 0) {
+                // No groups linked to this event - return empty collection
+                return new \Propel\Runtime\Collection\ArrayCollection();
+            }
+            
+            // Get the first linked group for role list
+            $firstGroup = $groups->getFirst();
+            
             $groupTypeJoin = new Join();
             $groupTypeJoin->addCondition('Person2group2roleP2g2r.RoleId', 'list_lst.lst_OptionId', Join::EQUAL);
-            $groupTypeJoin->addForeignValueCondition('list_lst', 'lst_ID', '', $this->getActiveEvent()->getGroup()->getRoleListId(), Join::EQUAL);
+            $groupTypeJoin->addForeignValueCondition('list_lst', 'lst_ID', '', $firstGroup->getRoleListId(), Join::EQUAL);
             $groupTypeJoin->setJoinType(Criteria::LEFT_JOIN);
 
             return PersonQuery::create()
                 ->joinWithPerson2group2roleP2g2r()
                 ->usePerson2group2roleP2g2rQuery()
-                    ->filterByGroup($this->getEvent()->getGroups())
+                    ->filterByGroup($groups)
                     ->joinGroup()
                     ->addJoinObject($groupTypeJoin)
                 ->withColumn(ListOptionTableMap::COL_LST_OPTIONNAME, 'RoleName')
                 ->endUse()
                     ->leftJoin('EventAttend')
                     ->withColumn('(CASE WHEN event_attend.event_id is not null AND event_attend.checkout_date IS NULL then 1 else 0 end)', 'status')
-                ->select(['Id', 'FirstName', 'LastName', 'status'])
                 ->find();
         } else {
             throw new \Exception('This kiosk does not support group attendance');

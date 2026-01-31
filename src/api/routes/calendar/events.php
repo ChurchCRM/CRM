@@ -43,7 +43,24 @@ function getAllEvents(Request $request, Response $response, array $args): Respon
         throw new HttpNotFoundException($request);
     }
 
-    return SlimUtils::renderStringJSON($response, $Events->toJSON());
+    // Build response with linked groups included
+    $eventsArray = [];
+    foreach ($Events as $event) {
+        $eventData = $event->toArray();
+        // Add linked groups
+        $groups = $event->getGroups();
+        $groupsArray = [];
+        foreach ($groups as $group) {
+            $groupsArray[] = [
+                'Id' => $group->getId(),
+                'Name' => $group->getName()
+            ];
+        }
+        $eventData['Groups'] = $groupsArray;
+        $eventsArray[] = $eventData;
+    }
+
+    return SlimUtils::renderJSON($response, ['Events' => $eventsArray]);
 }
 
 function getEventTypes(Request $request, Response $response, array $args): Response
