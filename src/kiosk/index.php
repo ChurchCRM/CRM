@@ -30,30 +30,28 @@ $isAdminRoute = str_contains($requestUri, '/kiosk/admin') || str_contains($reque
 // For device routes, handle kiosk device initialization
 $Kiosk = null;
 if (!$isAdminRoute) {
-    $windowOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable();
-
     if (isset($_COOKIE['kioskCookie'])) {
         $g = hash('sha256', $_COOKIE['kioskCookie']);
         $Kiosk = KioskDeviceQuery::create()
               ->findOneByGUIDHash($g);
 
         if ($Kiosk === null) {
-            setcookie('kioskCookie', '', ['expires' => time() - 3600]);
-            header('Location: ' . $_SERVER['REQUEST_URI']);
-            exit;
-        }
-    } else {
-        if ($windowOpen) {
-            $guid = uniqid();
-            setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
+            // Kiosk was deleted - create a new one to allow re-registration
+            // Keep the same cookie so the device can re-register seamlessly
             $Kiosk = new KioskDevice();
-            $Kiosk->setGUIDHash(hash('sha256', $guid));
+            $Kiosk->setGUIDHash($g);
             $Kiosk->setAccepted(false);
             $Kiosk->save();
-        } else {
-            header('HTTP/1.1 401 Unauthorized');
-            exit;
         }
+    } else {
+        // No cookie - create a new kiosk registration
+        // Always allow device registration (admin must still approve)
+        $guid = uniqid();
+        setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
+        $Kiosk = new KioskDevice();
+        $Kiosk->setGUIDHash(hash('sha256', $guid));
+        $Kiosk->setAccepted(false);
+        $Kiosk->save();
     }
 
     // Store kiosk in container for device routes
