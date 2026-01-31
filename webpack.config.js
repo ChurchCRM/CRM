@@ -17,9 +17,10 @@ module.exports = {
     'backup': './webpack/backup',  // Backup database page
     'restore': './webpack/restore',  // Restore database page
     'admin-dashboard': './webpack/admin-dashboard',  // Admin dashboard page styles and scripts
-    'system-settings-panel': './webpack/system-settings-panel'  // Reusable settings panel component
-    , 'people-list': './webpack/people/person-list'
-    , 'people-family-list': './webpack/people/family-list'
+    'system-settings-panel': './webpack/system-settings-panel',  // Reusable settings panel component
+    'kiosk-registration-closed': './webpack/kiosk-registration-closed',  // Kiosk registration disabled page
+    'people-list': './webpack/people/person-list',
+    'people-family-list': './webpack/people/family-list'
   },
   output: {
     path: path.resolve('./src/skin/v2'),

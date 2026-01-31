@@ -30,28 +30,43 @@ $isAdminRoute = str_contains($requestUri, '/kiosk/admin') || str_contains($reque
 // For device routes, handle kiosk device initialization
 $Kiosk = null;
 if (!$isAdminRoute) {
+    $windowOpen = new \DateTimeImmutable(SystemConfig::getValue('sKioskVisibilityTimestamp')) > new \DateTimeImmutable();
+
     if (isset($_COOKIE['kioskCookie'])) {
         $g = hash('sha256', $_COOKIE['kioskCookie']);
         $Kiosk = KioskDeviceQuery::create()
               ->findOneByGUIDHash($g);
 
         if ($Kiosk === null) {
-            // Kiosk was deleted - create a new one to allow re-registration
-            // Keep the same cookie so the device can re-register seamlessly
-            $Kiosk = new KioskDevice();
-            $Kiosk->setGUIDHash($g);
-            $Kiosk->setAccepted(false);
-            $Kiosk->save();
+            // Kiosk was deleted - only allow re-registration if window is open
+            if ($windowOpen) {
+                $Kiosk = new KioskDevice();
+                $Kiosk->setGUIDHash($g);
+                $Kiosk->setAccepted(false);
+                $Kiosk->save();
+            } else {
+                // Window closed - clear cookie and show registration disabled page
+                setcookie('kioskCookie', '', ['expires' => time() - 3600]);
+                http_response_code(401);
+                $sRootPath = SystemURLs::getRootPath();
+                require __DIR__ . '/templates/registration-closed.php';
+                exit;
+            }
         }
-    } else {
-        // No cookie - create a new kiosk registration
-        // Always allow device registration (admin must still approve)
+    } elseif ($windowOpen) {
+        // No cookie and registration window is open - create new kiosk
         $guid = uniqid();
         setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
         $Kiosk = new KioskDevice();
         $Kiosk->setGUIDHash(hash('sha256', $guid));
         $Kiosk->setAccepted(false);
         $Kiosk->save();
+    } else {
+        // No cookie and registration window is closed - show registration disabled page
+        http_response_code(401);
+        $sRootPath = SystemURLs::getRootPath();
+        require __DIR__ . '/templates/registration-closed.php';
+        exit;
     }
 
     // Store kiosk in container for device routes
