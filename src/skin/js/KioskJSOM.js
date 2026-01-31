@@ -4,6 +4,8 @@
  */
 
 window.CRM.kiosk = {
+    notificationsEnabled: false, // Set from API response
+
     APIRequest: function (options) {
         if (!options.method) {
             options.method = "GET";
@@ -93,13 +95,17 @@ window.CRM.kiosk = {
                 title: "Check In",
             }).append($("<i>", { class: "fas fa-sign-in-alt" }));
 
-            var alertBtn = $("<button>", {
-                class: "kiosk-btn kiosk-btn-alert parentAlertButton",
-                "data-personid": classMember.personId,
-                title: "Parent Alert",
-            }).append($("<i>", { class: "fas fa-bell" }));
+            actionsDiv.append(checkinBtn);
 
-            actionsDiv.append(checkinBtn).append(alertBtn);
+            // Only show alert button for checked-in students when notifications are enabled
+            if (classMember.status == 1 && window.CRM.kiosk.notificationsEnabled) {
+                var alertBtn = $("<button>", {
+                    class: "kiosk-btn kiosk-btn-alert parentAlertButton",
+                    "data-personid": classMember.personId,
+                    title: "Parent Alert",
+                }).append($("<i>", { class: "fas fa-bell" }));
+                actionsDiv.append(alertBtn);
+            }
 
             memberRow.append(avatarDiv).append(infoDiv).append(actionsDiv);
 
@@ -265,6 +271,10 @@ window.CRM.kiosk = {
                     $("#classMemberContainer").html(window.CRM.kiosk.renderNoMembersMessage());
                     return;
                 }
+
+                // Store notifications enabled flag for use in rendering
+                window.CRM.kiosk.notificationsEnabled = data.notificationsEnabled || false;
+
                 // Clear loading state on first load
                 if ($("#notCheckedInList .fa-spinner").length > 0) {
                     $("#checkedInList").empty();
@@ -732,14 +742,64 @@ window.CRM.kiosk = {
     },
 
     triggerNotification: function (personId) {
-        //window.CRM.kiosk.stopEventLoop();
+        // Get the student's name for feedback
+        var $personDiv = $("#personId-" + personId);
+        var studentName = $personDiv.find(".kiosk-member-name").text().trim() || "Student";
+        
+        // Visual feedback - disable button and show sending state
+        var $alertBtn = $personDiv.find(".parentAlertButton");
+        $alertBtn.prop("disabled", true).addClass("sending");
+        $alertBtn.find("i").removeClass("fa-bell").addClass("fa-spinner fa-spin");
+
         window.CRM.kiosk
             .APIRequest({
                 path: "triggerNotification",
                 method: "POST",
                 data: JSON.stringify({ PersonId: personId }),
             })
-            .done(function (data) {});
+            .done(function (data) {
+                // Show success notification
+                if (typeof window.CRM.notify === "function") {
+                    window.CRM.notify("Parent alert sent for " + studentName, { type: "success", delay: 4000 });
+                } else {
+                    // Fallback for kiosk view without full CRM.notify
+                    window.CRM.kiosk.showKioskNotification("Parent alert sent for " + studentName, "success");
+                }
+                // Reset button after short delay
+                setTimeout(function() {
+                    $alertBtn.prop("disabled", false).removeClass("sending");
+                    $alertBtn.find("i").removeClass("fa-spinner fa-spin").addClass("fa-bell");
+                }, 2000);
+            })
+            .fail(function (xhr, status, error) {
+                // Show error notification
+                if (typeof window.CRM.notify === "function") {
+                    window.CRM.notify("Failed to send parent alert", { type: "error", delay: 4000 });
+                } else {
+                    window.CRM.kiosk.showKioskNotification("Failed to send parent alert", "error");
+                }
+                // Reset button
+                $alertBtn.prop("disabled", false).removeClass("sending");
+                $alertBtn.find("i").removeClass("fa-spinner fa-spin").addClass("fa-bell");
+            });
+    },
+
+    // Simple notification for kiosk mode (no Notyf dependency)
+    showKioskNotification: function (message, type) {
+        var $notification = $("<div>", {
+            class: "kiosk-notification kiosk-notification-" + type,
+            text: message
+        });
+        $("body").append($notification);
+        
+        // Animate in
+        setTimeout(function() { $notification.addClass("show"); }, 10);
+        
+        // Remove after delay
+        setTimeout(function() {
+            $notification.removeClass("show");
+            setTimeout(function() { $notification.remove(); }, 300);
+        }, 4000);
     },
 
     enterFullScreen: function () {

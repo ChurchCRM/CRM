@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\Notification;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -54,11 +55,18 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
         $Person = PersonQuery::create()
                 ->findOneById($input['PersonId']);
 
+        $kiosk = $app->getContainer()->get('kiosk');
+        $event = $kiosk->getActiveAssignment()->getEvent();
+        
+        // Get event/group name for the notification
+        $groups = $event->getGroups();
+        $eventName = $groups->count() > 0 ? $groups->getFirst()->getName() : $event->getTitle();
+
         $Notification = new Notification();
         $Notification->setPerson($Person);
         $Notification->setRecipients($Person->getFamily()->getAdults());
-        $kiosk = $app->getContainer()->get('kiosk');
-        $Notification->setProjectorText($kiosk->getActiveAssignment()->getEvent()->getType() . '-' . $Person->getId());
+        $Notification->setEventName($eventName);
+        $Notification->setProjectorText($event->getType() . '-' . $Person->getId());
         $status = $Notification->send();
 
         return SlimUtils::renderJSON($response, $status);
@@ -146,9 +154,15 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
             ];
         }
 
+        // Check if any notification method is configured
+        $notificationsEnabled = SystemConfig::hasValidMailServerSettings() ||
+                                SystemConfig::hasValidSMSServerSettings() ||
+                                SystemConfig::hasValidOpenLPSettings();
+
         return SlimUtils::renderJSON($response, [
             'People' => $peopleData,
             'GroupName' => $groupName,
+            'notificationsEnabled' => $notificationsEnabled,
         ]);
     });
 

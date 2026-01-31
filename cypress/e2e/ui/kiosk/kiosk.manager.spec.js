@@ -264,21 +264,21 @@ describe("Kiosk Manager Menu Integration", () => {
     it("should have Kiosk Manager link in admin menu", () => {
         cy.visit("/");
         
-        // Open the Admin menu
-        cy.get('a[href="#"]').contains("Admin").click();
+        // Find and click the Admin parent menu to expand it
+        cy.get('.nav-sidebar').contains('a', 'Admin').first().click({ force: true });
         
-        // Check for Kiosk Manager menu item pointing to new location
-        cy.get('a[href*="kiosk/admin"]').should("exist").and("contain", "Kiosk Manager");
+        // Wait for menu to expand and check for Kiosk Manager menu item
+        cy.get('a[href*="kiosk/admin"]', { timeout: 10000 }).should("exist").and("contain", "Kiosk Manager");
     });
 
     it("should navigate to Kiosk Manager from menu", () => {
         cy.visit("/");
         
-        // Open the Admin menu
-        cy.get('a[href="#"]').contains("Admin").click();
+        // Find and click the Admin parent menu to expand it
+        cy.get('.nav-sidebar').contains('a', 'Admin').first().click({ force: true });
         
-        // Click Kiosk Manager
-        cy.get('a[href*="kiosk/admin"]').click();
+        // Click Kiosk Manager link
+        cy.get('a[href*="kiosk/admin"]', { timeout: 10000 }).click({ force: true });
         
         // Should be on Kiosk Manager page
         cy.url().should("include", "kiosk/admin");

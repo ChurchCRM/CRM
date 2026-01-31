@@ -176,6 +176,39 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     background: #dc3545;
     color: white;
 }
+.kiosk-btn-alert.sending {
+    background: #6c757d;
+    border-color: #6c757d;
+    color: white;
+    cursor: wait;
+}
+/* Kiosk notification toast */
+.kiosk-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    transition: transform 0.3s ease;
+    max-width: 90%;
+    text-align: center;
+}
+.kiosk-notification.show {
+    transform: translateX(-50%) translateY(0);
+}
+.kiosk-notification-success {
+    background: #28a745;
+    color: white;
+}
+.kiosk-notification-error {
+    background: #dc3545;
+    color: white;
+}
 .kiosk-empty {
     text-align: center;
     padding: 2rem;
