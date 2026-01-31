@@ -7,10 +7,13 @@ require_once __DIR__ . '/Include/QuillEditorHelper.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\model\ChurchCRM\EventAudience;
+use ChurchCRM\model\ChurchCRM\EventAudienceQuery;
 use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -52,6 +55,7 @@ $EventExists = 0;
 $iEventID = 0;
 $iTypeID = 0;
 $iErrors = 0;
+$iLinkedGroupId = 0;
 
 if ($sAction === 'Create Event' && !empty($tyid)) {
     // User is coming from the event types screen and thus there
@@ -291,6 +295,14 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         
         $iEventStatus = $event->getInActive();
 
+        // Get linked group (via EventAudience)
+        $linkedGroups = $event->getGroups();
+        $iLinkedGroupId = 0;
+        if ($linkedGroups->count() > 0) {
+            // Get the first linked group (typically only one for kiosk/check-in purposes)
+            $iLinkedGroupId = $linkedGroups->getFirst()->getId();
+        }
+
         // Get event attendance counts using Propel ORM
         $eventCounts = EventCountsQuery::create()
             ->filterByEvtcntEventid($iEventID)
@@ -362,6 +374,9 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     }
 
     $sCountNotes = $_POST['EventCountNotes'];
+    
+    // Get selected linked group (for kiosk/check-in functionality)
+    $iLinkedGroupId = isset($_POST['LinkedGroupId']) ? InputUtils::filterInt($_POST['LinkedGroupId']) : 0;
 
     if ($iErrors === 0) {
         if ($EventExists === 0) {
@@ -378,6 +393,15 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             $event->reload();
 
             $iEventID = $event->getId();
+            
+            // Link group to event (for kiosk/check-in functionality)
+            if ($iLinkedGroupId > 0) {
+                $eventAudience = new EventAudience();
+                $eventAudience->setEventId($iEventID);
+                $eventAudience->setGroupId($iLinkedGroupId);
+                $eventAudience->save();
+            }
+            
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
                 $filteredCount = InputUtils::legacyFilterInput($aCount[$c]);
@@ -403,6 +427,21 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 ->setEnd(InputUtils::legacyFilterInput($sEventEnd))
                 ->setInActive(InputUtils::legacyFilterInput($iEventStatus));
             $event->save();
+            
+            // Update linked group (for kiosk/check-in functionality)
+            // First, remove existing group links for this event
+            EventAudienceQuery::create()
+                ->filterByEventId($iEventID)
+                ->delete();
+            
+            // Then add the new group link if selected
+            if ($iLinkedGroupId > 0) {
+                $eventAudience = new EventAudience();
+                $eventAudience->setEventId($iEventID);
+                $eventAudience->setGroupId($iLinkedGroupId);
+                $eventAudience->save();
+            }
+            
             for ($c = 0; $c < $iNumCounts; $c++) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
                 $filteredCount = InputUtils::legacyFilterInput($aCount[$c]);
@@ -517,6 +556,24 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                         <input type="text" name="EventDateRange" value=""
                                maxlength="10" id="EventDateRange" class="form-control" style="max-width: 400px;" required>
                         <small class="form-text text-muted"><?= gettext('Select start and end date/time') ?></small>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="LabelColumn"><?= gettext('Linked Group') ?></td>
+                    <td class="TextColumn" colspan="3">
+                        <select name="LinkedGroupId" id="LinkedGroupId" class="form-control" style="max-width: 400px;">
+                            <option value="0"><?= gettext('No Group (Select for Kiosk Check-in)') ?></option>
+                            <?php
+                            $groups = GroupQuery::create()
+                                ->orderByName()
+                                ->find();
+                            foreach ($groups as $group) {
+                                $selected = (isset($iLinkedGroupId) && $iLinkedGroupId === $group->getId()) ? 'selected' : '';
+                                echo '<option value="' . $group->getId() . '" ' . $selected . '>' . InputUtils::escapeHTML($group->getName()) . '</option>';
+                            }
+                            ?>
+                        </select>
+                        <small class="form-text text-muted"><?= gettext('Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk.') ?></small>
                     </td>
                 </tr>
                 <tr>

@@ -30,3 +30,8 @@ $(document).on("click", ".checkoutButton", function (event) {
     var personId = $(event.currentTarget).data("personid");
     window.CRM.kiosk.checkOutPerson(personId);
 });
+
+$(document).on("click", "#checkoutAllBtn", function (event) {
+    event.preventDefault();
+    window.CRM.kiosk.checkOutAll();
+});
