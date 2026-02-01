@@ -103,7 +103,6 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
   </div>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/js/KioskJSOM.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/Kiosk.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/kiosk.min.js') ?>"></script>
 <?php
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");

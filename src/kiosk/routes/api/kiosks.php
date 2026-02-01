@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -92,12 +93,24 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
         $kioskId = (int) $args['kioskId'];
         $input = $request->getParsedBody();
 
+        // Validate input parameters
+        $assignmentType = InputUtils::filterInt($input['assignmentType'] ?? 0);
+        // eventId is optional; when omitted or null it is passed as null to setAssignment()
+        // to indicate that the kiosk should not be assigned to a specific event.
+        $eventId = (array_key_exists('eventId', $input) && $input['eventId'] !== null && $input['eventId'] !== '')
+            ? InputUtils::filterInt($input['eventId'])
+            : null;
+        
+        if ($assignmentType < 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid assignment type'), [], 400);
+        }
+
         $kiosk = KioskDeviceQuery::create()->findOneById($kioskId);
         if ($kiosk === null) {
             return SlimUtils::renderErrorJSON($response, gettext('Kiosk not found'), [], 404);
         }
 
-        $kiosk->setAssignment($input['assignmentType'], $input['eventId']);
+        $kiosk->setAssignment($assignmentType, $eventId);
 
         return SlimUtils::renderSuccessJSON($response);
     });

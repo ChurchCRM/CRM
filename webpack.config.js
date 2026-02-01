@@ -19,6 +19,7 @@ module.exports = {
     'admin-dashboard': './webpack/admin-dashboard',  // Admin dashboard page styles and scripts
     'system-settings-panel': './webpack/system-settings-panel',  // Reusable settings panel component
     'kiosk-registration-closed': './webpack/kiosk-registration-closed',  // Kiosk registration disabled page
+    'kiosk': './webpack/kiosk',  // Kiosk check-in interface
     'people-list': './webpack/people/person-list',
     'people-family-list': './webpack/people/family-list'
   },

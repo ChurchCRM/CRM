@@ -5,6 +5,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -35,25 +36,43 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
 
     $group->post('/checkin', function (Request $request, Response $response) use ($app): Response {
         $input = $request->getParsedBody();
+        $personId = InputUtils::filterInt($input['PersonId'] ?? 0);
+        if ($personId <= 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
+        }
+        
         $kiosk = $app->getContainer()->get('kiosk');
-        $status = $kiosk->getActiveAssignment()->getEvent()->checkInPerson($input['PersonId']);
+        $status = $kiosk->getActiveAssignment()->getEvent()->checkInPerson($personId);
 
         return SlimUtils::renderJSON($response, $status);
     });
 
     $group->post('/checkout', function (Request $request, Response $response) use ($app): Response {
         $input = $request->getParsedBody();
+        $personId = InputUtils::filterInt($input['PersonId'] ?? 0);
+        if ($personId <= 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
+        }
+        
         $kiosk = $app->getContainer()->get('kiosk');
-        $status = $kiosk->getActiveAssignment()->getEvent()->checkOutPerson($input['PersonId']);
+        $status = $kiosk->getActiveAssignment()->getEvent()->checkOutPerson($personId);
 
         return SlimUtils::renderJSON($response, $status);
     });
 
     $group->post('/triggerNotification', function (Request $request, Response $response) use ($app): Response {
         $input = $request->getParsedBody();
+        $personId = InputUtils::filterInt($input['PersonId'] ?? 0);
+        if ($personId <= 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
+        }
 
         $Person = PersonQuery::create()
-                ->findOneById($input['PersonId']);
+                ->findOneById($personId);
+        
+        if ($Person === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
+        }
 
         $kiosk = $app->getContainer()->get('kiosk');
         $event = $kiosk->getActiveAssignment()->getEvent();
