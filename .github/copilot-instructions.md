@@ -152,44 +152,57 @@ If unsure
 
 ChurchCRM uses **Perpl ORM** (`perplorm/perpl`), an actively maintained fork of Propel2 with PHP 8.4+ support and 30-50% faster query building. All Propel patterns still apply, but note these **critical differences**:
 
-### withColumn() Uses Raw SQL Column Names (NOT phpNames)
+### withColumn() - Use TableMap Constants (REQUIRED)
 
-In Perpl ORM, `withColumn()` requires **actual database column names**, not Propel phpNames:
+In Perpl ORM, `withColumn()` requires **actual database column names**, not Propel phpNames. **Always use TableMap constants** for type safety and IDE support:
 
 ```php
+use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
+use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\model\ChurchCRM\Map\DepositTableMap;
+
+// ✅ CORRECT - Use TableMap constants (REQUIRED)
+$query->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'totalAmount');
+$query->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName');
+$query->withColumn(DonationFundTableMap::COL_FUN_NAME, 'FundName');
+$query->withColumn(DepositTableMap::COL_DEP_DATE, 'DepositDate');
+
 // ❌ WRONG - phpNames don't work in withColumn()
 $query->withColumn('Family.Name', 'FamilyName');
 $query->withColumn('SUM(Pledge.Amount)', 'totalAmount');
-$query->withColumn('COUNT(person2group2role_p2g2r.PersonId)', 'memberCount');
-
-// ✅ CORRECT - Use actual SQL column names
-$query->withColumn('family_fam.fam_Name', 'FamilyName');
-$query->withColumn('SUM(pledge_plg.plg_amount)', 'totalAmount');
-$query->withColumn('COUNT(person2group2role_p2g2r.p2g2r_per_ID)', 'memberCount');
 ```
 
-**Common Column Mappings** (phpName → actual column):
-| Table | phpName | Actual Column |
-|-------|---------|---------------|
-| family_fam | Family.Name | family_fam.fam_Name |
-| family_fam | Family.Address1 | family_fam.fam_Address1 |
-| pledge_plg | Pledge.Amount | pledge_plg.plg_amount |
-| pledge_plg | Pledge.Id | pledge_plg.plg_plgID |
-| pledge_plg | Pledge.DepId | pledge_plg.plg_depID |
-| donationfund_fun | DonationFund.Name | donationfund_fun.fun_Name |
-| deposit_dep | Deposit.Id | deposit_dep.dep_ID |
-| deposit_dep | Deposit.Date | deposit_dep.dep_Date |
-| list_lst | ListOption.Id | list_lst.lst_ID |
-| person2group2role_p2g2r | PersonId | p2g2r_per_ID |
+**Common TableMap Constants:**
+| TableMap Class | Constant | Resolves To |
+|----------------|----------|-------------|
+| `FamilyTableMap` | `COL_FAM_NAME` | `family_fam.fam_Name` |
+| `FamilyTableMap` | `COL_FAM_ADDRESS1` | `family_fam.fam_Address1` |
+| `PledgeTableMap` | `COL_PLG_AMOUNT` | `pledge_plg.plg_amount` |
+| `PledgeTableMap` | `COL_PLG_PLGID` | `pledge_plg.plg_plgID` |
+| `PledgeTableMap` | `COL_PLG_DEPID` | `pledge_plg.plg_depID` |
+| `DonationFundTableMap` | `COL_FUN_NAME` | `donationfund_fun.fun_Name` |
+| `DepositTableMap` | `COL_DEP_ID` | `deposit_dep.dep_ID` |
+| `DepositTableMap` | `COL_DEP_DATE` | `deposit_dep.dep_Date` |
+| `ListOptionTableMap` | `COL_LST_ID` | `list_lst.lst_ID` |
+| `Person2group2roleP2g2rTableMap` | `COL_P2G2R_PER_ID` | `person2group2role_p2g2r.p2g2r_per_ID` |
 
-**Alternative: Use TableMap Constants** (preferred for type safety):
+### addForeignValueCondition() - Column Name Only (CRITICAL)
+
+**WARNING:** The `addForeignValueCondition()` method expects **table name and column name separately**, NOT TableMap COL_ constants:
+
 ```php
-use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
-use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
 
-$query->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'Total');
-$query->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name');
+// ✅ CORRECT - Use TABLE_NAME constant + column name string
+$join->addForeignValueCondition(ListOptionTableMap::TABLE_NAME, 'lst_ID', '', 3, self::EQUAL);
+
+// ❌ WRONG - COL_ constant includes table prefix, causing duplicate
+$join->addForeignValueCondition('list_lst', ListOptionTableMap::COL_LST_ID, '', 3, self::EQUAL);
+// This generates: list_lst.list_lst.lst_ID (BROKEN!)
 ```
+
+**Why this matters:** `ListOptionTableMap::COL_LST_ID` resolves to `'list_lst.lst_ID'` (includes table prefix). When passed to `addForeignValueCondition()` which already adds the table name, you get `list_lst.list_lst.lst_ID` causing SQL errors.
 
 ### Method Override Signatures (Strict Types Required)
 
@@ -1210,8 +1223,9 @@ Before committing code changes, verify:
 
 | Path | Purpose |
 |------|---------|
+| `orm/` | Perpl ORM schema.xml and propel.php.dist configuration |
 | `src/ChurchCRM/Service/` | Business logic layer |
-| `src/ChurchCRM/model/ChurchCRM/` | Propel ORM generated classes (don't edit) |
+| `src/ChurchCRM/model/ChurchCRM/` | Perpl ORM generated classes (don't edit) |
 | `src/api/` | REST API entry point + routes |
 | `src/admin/routes/api/` | Admin-only API endpoints (NEW - use this for admin APIs) |
 | `src/finance/` | Finance module (Slim 4 MVC) - dashboard, reports |
@@ -1422,6 +1436,6 @@ This ensures security vulnerabilities are not publicly disclosed and directs rep
 
 ---
 
-Last updated: December 13, 2025
+Last updated: January 31, 2026
 
 ```
