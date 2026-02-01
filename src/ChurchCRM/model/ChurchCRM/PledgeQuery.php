@@ -3,9 +3,6 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\PledgeQuery as BasePledgeQuery;
-use ChurchCRM\model\ChurchCRM\Map\DepositTableMap;
-use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
-use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -136,15 +133,15 @@ class PledgeQuery extends BasePledgeQuery
             ->leftJoinWithPerson();
 
         // Add columns from joined tables to avoid needing foreign objects in toArray()
-        $this->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
-            ->withColumn(FamilyTableMap::COL_FAM_ADDRESS1, 'FamilyAddress1')
-            ->withColumn(FamilyTableMap::COL_FAM_ADDRESS2, 'FamilyAddress2')
-            ->withColumn(FamilyTableMap::COL_FAM_CITY, 'FamilyCity')
-            ->withColumn(FamilyTableMap::COL_FAM_STATE, 'FamilyState')
-            ->withColumn(FamilyTableMap::COL_FAM_ZIP, 'FamilyZip')
-            ->withColumn(FamilyTableMap::COL_FAM_COUNTRY, 'FamilyCountry')
-            ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'FundName')
-            ->withColumn(DepositTableMap::COL_DEP_DATE, 'DepositDate');
+        $this->withColumn('family_fam.fam_Name', 'FamilyName')
+            ->withColumn('family_fam.fam_Address1', 'FamilyAddress1')
+            ->withColumn('family_fam.fam_Address2', 'FamilyAddress2')
+            ->withColumn('family_fam.fam_City', 'FamilyCity')
+            ->withColumn('family_fam.fam_State', 'FamilyState')
+            ->withColumn('family_fam.fam_Zip', 'FamilyZip')
+            ->withColumn('family_fam.fam_Country', 'FamilyCountry')
+            ->withColumn('donationfund_fun.fun_Name', 'FundName')
+            ->withColumn('deposit_dep.dep_Date', 'DepositDate');
 
         // Apply sorting
         if ($sort === 'fund') {

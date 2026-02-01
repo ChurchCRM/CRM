@@ -2,8 +2,6 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\Deposit;
-use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
-use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -156,8 +154,8 @@ class DepositService {
             ->filterByDepId($depositId)
             ->filterByPledgeOrPayment($type)
             ->groupByGroupKey()
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
-            ->withColumn('GROUP_CONCAT(' . DonationFundTableMap::COL_FUN_NAME . " SEPARATOR ', ')", 'FundName')
+            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
+            ->withColumn("GROUP_CONCAT(donationfund_fun.fun_Name SEPARATOR ', ')", 'FundName')
             ->joinDonationFund()
             ->leftJoinWithFamily()
             ->orderBy('GroupKey', 'ASC')

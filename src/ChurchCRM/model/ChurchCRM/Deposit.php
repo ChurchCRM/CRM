@@ -6,7 +6,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\Deposit as BaseDeposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
-use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery as ChildPledgeQuery;
 use ChurchCRM\Service\AuthService;
@@ -172,9 +171,9 @@ class Deposit extends BaseDeposit
         $pledges = PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->groupByGroupKey()
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
             ->joinFamily(null, Criteria::LEFT_JOIN)
-            ->withColumn(FamilyTableMap::COL_FAM_NAME)
+            ->withColumn('family_fam.fam_Name')
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
@@ -430,7 +429,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CHECK')
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
@@ -440,7 +439,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CASH')
-            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
+            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
