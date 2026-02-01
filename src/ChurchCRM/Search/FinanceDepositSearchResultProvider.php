@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\Map\DepositTableMap;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -39,8 +40,8 @@ class FinanceDepositSearchResultProvider extends BaseSearchResultProvider
             $Deposits = DepositQuery::create()->filterByComment("%$SearchQuery%", Criteria::LIKE)
                 ->_or()
                 ->filterById($SearchQuery)
-                ->withColumn('CONCAT("#",deposit_dep.dep_ID," ",deposit_dep.dep_Comment)', 'displayName')
-                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",deposit_dep.dep_ID)', 'uri')
+                ->withColumn('CONCAT("#",' . DepositTableMap::COL_DEP_ID . '," ",' . DepositTableMap::COL_DEP_COMMENT . ')', 'displayName')
+                ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . DepositTableMap::COL_DEP_ID . ')', 'uri')
                 ->limit(SystemConfig::getValue('bSearchIncludeDepositsMax'))->find();
 
             if ($Deposits->count() > 0) {
