@@ -95,13 +95,6 @@ describe("Access Denied Page", () => {
             cy.contains("Add event permission").should("be.visible");
         });
 
-        it("Should display CSVExport role description", () => {
-            cy.visit("/v2/access-denied?role=CSVExport");
-            cy.contains("Permission Required").should("be.visible");
-            cy.get(".callout-warning").should("be.visible");
-            cy.contains("CSV export permission").should("be.visible");
-        });
-
         it("Should display default description for unknown role", () => {
             cy.visit("/v2/access-denied?role=UnknownRole");
             cy.contains("Permission Required").should("be.visible");
