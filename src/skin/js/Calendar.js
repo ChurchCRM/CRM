@@ -401,15 +401,31 @@ function initializeCalendar() {
         window.CRM.fullcalendar.destroy();
     }
 
+    // Detect mobile devices for simplified toolbar
+    var isMobile = window.innerWidth < 768;
+
     // initialize the calendar
     // -----------------------------------------------------------------
     window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
         locale: window.CRM.lang || "en",
-        headerToolbar: {
-            start: "prev,next today",
-            center: "title",
-            end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
-        },
+        headerToolbar: isMobile
+            ? {
+                  start: "prev,next",
+                  center: "title",
+                  end: "today",
+              }
+            : {
+                  start: "prev,next today",
+                  center: "title",
+                  end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+              },
+        footerToolbar: isMobile
+            ? {
+                  start: "",
+                  center: "",
+                  end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+              }
+            : false,
         contentHeight: "auto",
         windowResizeDelay: 200,
         selectable: true,
