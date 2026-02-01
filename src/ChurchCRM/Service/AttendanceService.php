@@ -62,10 +62,12 @@ class AttendanceService
                 }
 
                 // Check if attendance record already exists for this person and event on this date
+                // Extract just the date portion for duplicate checking
+                $dateOnly = date('Y-m-d', strtotime($checkinDateTime));
                 $existingRecord = EventAttendQuery::create()
                     ->filterByEventId($eventId)
                     ->filterByPersonId((int)$record['personId'])
-                    ->filterByCheckinDate(['min' => $checkinDateTime . ' 00:00:00', 'max' => $checkinDateTime . ' 23:59:59'])
+                    ->filterByCheckinDate(['min' => $dateOnly . ' 00:00:00', 'max' => $dateOnly . ' 23:59:59'])
                     ->findOne();
 
                 if ($existingRecord !== null) {
