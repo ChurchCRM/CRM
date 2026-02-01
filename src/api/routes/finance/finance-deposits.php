@@ -3,6 +3,8 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
+use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\DepositService;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
@@ -109,10 +111,10 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $filename = 'ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
         $csvData = PledgeQuery::create()->filterByDepId($id)
             ->joinDonationFund()->useDonationFundQuery()
-            ->withColumn('donationfund_fun.fun_Name', 'DonationFundName')
+            ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'DonationFundName')
             ->endUse()
             ->leftJoinFamily()->useFamilyQuery()
-            ->withColumn('family_fam.fam_Name', 'FamilyName')
+            ->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
             ->endUse()
             ->find()
             ->toCSV();
