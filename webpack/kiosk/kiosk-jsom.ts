@@ -284,7 +284,8 @@ function renderBirthdayCard(person: ClassMember, monthNames: string[], cardType:
     const infoDiv = $('<div>', { class: 'birthday-info' });
     infoDiv.append($('<div>', { class: 'birthday-name', text: person.firstName }));
 
-    let dateText = monthNames[person.birthMonth || 0] + ' ' + person.birthDay;
+    const birthMonthIndex = person.birthMonth ?? 0;
+    let dateText = monthNames[birthMonthIndex] + ' ' + person.birthDay;
     let dateClass = 'birthday-date';
     if (isToday) {
         dateText = '🎉 Today!';
@@ -433,7 +434,7 @@ function renderErrorMessage(message: string, statusCode?: number): string {
         '<p class="text-muted">' +
         escapeHtml(message) +
         '</p>' +
-        (statusCode ? '<p class="small text-muted">HTTP Status: ' + statusCode + '</p>' : '') +
+        (statusCode ? '<p class="small text-muted">HTTP Status: ' + escapeHtml(String(statusCode)) + '</p>' : '') +
         '<div class="kiosk-instructions">' +
         '<h5><i class="fas fa-lightbulb mr-2"></i>Troubleshooting</h5>' +
         '<ul>' +
@@ -450,13 +451,30 @@ function renderErrorMessage(message: string, statusCode?: number): string {
 }
 
 /**
+ * Helper function to safely parse JSON assignment data
+ */
+function parseAssignment(assignmentJson: string | null | undefined): KioskAssignment | null {
+    if (!assignmentJson) {
+        return null;
+    }
+    try {
+        return JSON.parse(assignmentJson) as KioskAssignment;
+    } catch (e) {
+        // Log the error but do not break the heartbeat loop
+        // eslint-disable-next-line no-console
+        console.error('Failed to parse kiosk Assignment JSON:', e, assignmentJson);
+        return null;
+    }
+}
+
+/**
  * Heartbeat function to check kiosk status
  */
 function heartbeat(): void {
     APIRequest({
         path: 'heartbeat',
     }).done((data: HeartbeatResponse) => {
-        const thisAssignment: KioskAssignment | null = data.Assignment ? JSON.parse(data.Assignment) : null;
+        const thisAssignment = parseAssignment(data.Assignment);
         if (kioskState.kioskAssignmentId === undefined) {
             kioskState.kioskAssignmentId = thisAssignment || undefined;
         } else if (
@@ -486,7 +504,7 @@ function heartbeat(): void {
         }
 
         if (data.Accepted) {
-            const Assignment: KioskAssignment | null = data.Assignment ? JSON.parse(data.Assignment) : null;
+            const Assignment = parseAssignment(data.Assignment);
             if (Assignment && Assignment.AssignmentType == 1) {
                 const eventStart = moment(Assignment.Event.Start);
                 const eventEnd = moment(Assignment.Event.End);
@@ -756,9 +774,14 @@ function checkOutAll(): void {
         .done(() => {
             // Move all checked-in people to not checked in
             $('#checkedInList .kiosk-member').each(function () {
-                const personId = $(this).attr('id')?.replace('personId-', '');
-                if (personId) {
-                    setCheckedOut(parseInt(personId, 10));
+                const idAttr = $(this).attr('id');
+                if (!idAttr) {
+                    return;
+                }
+                const numericPart = idAttr.replace('personId-', '');
+                const numericId = parseInt(numericPart, 10);
+                if (!Number.isNaN(numericId)) {
+                    setCheckedOut(numericId);
                 }
             });
             $btn.html(originalHtml).prop('disabled', false);
@@ -784,6 +807,9 @@ function setCheckedOut(personId: number): void {
     // Remove checked-in styling
     $personDiv.removeClass('checked-in');
 
+    // Remove alert button when checked out (alert buttons only shown for checked-in students)
+    $personDiv.find('.parentAlertButton').remove();
+
     // Move to Not Checked In section if not already there
     if ($personDiv.closest('#notCheckedInList').length === 0) {
         $personDiv.detach().appendTo('#notCheckedInList');
@@ -806,6 +832,17 @@ function setCheckedIn(personId: number): void {
 
     // Add checked-in styling
     $personDiv.addClass('checked-in');
+
+    // Add alert button if notifications are enabled and it doesn't already exist
+    if (kioskState.notificationsEnabled && $personDiv.find('.parentAlertButton').length === 0) {
+        const $actionsDiv = $personDiv.find('.kiosk-member-actions');
+        const alertBtn = $('<button>', {
+            class: 'kiosk-btn kiosk-btn-alert parentAlertButton',
+            'data-personid': personId,
+            title: 'Parent Alert',
+        }).append($('<i>', { class: 'fas fa-bell' }));
+        $actionsDiv.append(alertBtn);
+    }
 
     // Move to Checked In section if not already there
     if ($personDiv.closest('#checkedInList').length === 0) {
@@ -946,8 +983,11 @@ function stopEventLoop(): void {
 }
 
 // Export the kiosk object for global access
+// Use Object.defineProperty for the notificationsEnabled getter to reflect actual state
 export const kiosk: KioskJSOM = {
-    notificationsEnabled: false,
+    get notificationsEnabled() {
+        return kioskState.notificationsEnabled;
+    },
     escapeHtml,
     APIRequest,
     getPhotoUrl,

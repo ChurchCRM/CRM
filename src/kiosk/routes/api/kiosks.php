@@ -95,7 +95,11 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
 
         // Validate input parameters
         $assignmentType = InputUtils::filterInt($input['assignmentType'] ?? 0);
-        $eventId = isset($input['eventId']) ? InputUtils::filterInt($input['eventId']) : null;
+        // eventId is optional; when omitted or null it is passed as null to setAssignment()
+        // to indicate that the kiosk should not be assigned to a specific event.
+        $eventId = (array_key_exists('eventId', $input) && $input['eventId'] !== null && $input['eventId'] !== '')
+            ? InputUtils::filterInt($input['eventId'])
+            : null;
         
         if ($assignmentType < 0) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid assignment type'), [], 400);
