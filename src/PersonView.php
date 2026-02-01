@@ -8,6 +8,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\AttendanceService;
 use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
@@ -17,6 +18,7 @@ use ChurchCRM\Utils\RedirectUtils;
 $timelineService = new TimelineService();
 $mailchimp = new MailChimpService();
 $personService = new PersonService();
+$attendanceService = new AttendanceService();
 
 // Get the person ID from the querystring
 $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
@@ -530,6 +532,11 @@ $bOkToEdit = (
                             <i class="fa-solid fa-tags mr-1"></i><?= gettext('Properties') ?>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-item-attendance" href="#attendance" data-toggle="tab">
+                            <i class="fa-solid fa-clipboard-check mr-1"></i><?= gettext('Attendance') ?>
+                        </a>
+                    </li>
                     <?php if ($mailchimp->isActive()) { ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-toggle="tab">
@@ -1007,6 +1014,63 @@ $bOkToEdit = (
                                         </div>
                                     </form>
                                 </div>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="tab-pane" id="attendance">
+                        <?php
+                        // Get attendance records for this person
+                        $attendanceRecords = $attendanceService->getPersonAttendance($iPersonID);
+                        $attendanceCount = count($attendanceRecords);
+                        ?>
+                        
+                        <div class="mb-3">
+                            <h4><?= gettext('Attendance History') ?></h4>
+                            <p class="text-muted">
+                                <?= gettext('Total attendance records') ?>: <strong><?= $attendanceCount ?></strong>
+                            </p>
+                        </div>
+                        
+                        <?php if ($attendanceCount > 0): ?>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered" id="attendance-table">
+                                    <thead>
+                                        <tr>
+                                            <th><?= gettext('Event') ?></th>
+                                            <th><?= gettext('Check-in Date/Time') ?></th>
+                                            <th><?= gettext('Check-out Date/Time') ?></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($attendanceRecords as $record): ?>
+                                            <tr>
+                                                <td>
+                                                    <a href="<?= SystemURLs::getRootPath() ?>/EventEditor.php?calendarAction=<?= $record['event_id'] ?>">
+                                                        <?= InputUtils::escapeHTML($record['event_title']) ?>
+                                                    </a>
+                                                </td>
+                                                <td><?= InputUtils::escapeHTML($record['checkin_date'] ?? '') ?></td>
+                                                <td><?= InputUtils::escapeHTML($record['checkout_date'] ?? '-') ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <script>
+                                $(document).ready(function() {
+                                    $('#attendance-table').DataTable({
+                                        "order": [[1, "desc"]], // Sort by check-in date descending
+                                        "pageLength": 25,
+                                        "language": {
+                                            "url": window.CRM.plugin.dataTable
+                                        }
+                                    });
+                                });
+                            </script>
+                        <?php else: ?>
+                            <div class="alert alert-info">
+                                <i class="fa fa-info-circle"></i> <?= gettext('No attendance records found for this person.') ?>
                             </div>
                         <?php endif; ?>
                     </div>

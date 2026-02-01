@@ -256,6 +256,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-cog'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-cog'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', $isAdmin, 'fa-file-import'));
+        $menu->addSubMenu(new MenuItem(gettext('Attendance CSV Import'), 'AttendanceCSVImport.php', $isAdmin, 'fa-clipboard-check'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', $isAdmin, 'fa-file-export'));
         $menu->addSubMenu(new MenuItem(gettext('Custom Menus'), 'admin/system/menus', $isAdmin, 'fa-list-ul'));
         return $menu;
