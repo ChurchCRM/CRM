@@ -6,27 +6,103 @@ $sPageTitle = "ChurchCRM - Sunday School Device Kiosk";
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 
-<div>
-  <h1 id="noEvent"></h1>
-</div>
-<div id="event">
-  <div class="container" id="eventDetails">
-    <div class="col-md-6">
-      <span id="eventTitle" ></span>
-    </div>
-    <div class="col-md-2">
-      <span>Start Time</span>
-      <span id="startTime"></span>
-    </div>
-    <div class="col-md-2">
-      <span>End Time</span>
-      <span id="endTime"></span>
-    </div>
-  </div>
-  <div class="container" id="classMemberContainer"></div>
+<!-- Kiosk Status Container - shown when waiting for event or acceptance -->
+<div id="noEvent" class="kiosk-status-container" style="display: none;">
+  <!-- Content populated by JavaScript -->
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/js/KioskJSOM.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/Kiosk.js') ?>"></script>
+<!-- Event Display Container -->
+<div id="event" style="display: none;">
+  <div class="kiosk-container">
+    <!-- Tablet Warning -->
+    <div class="tablet-warning">
+      <i class="fas fa-tablet-alt mr-2"></i>
+      <strong><?= gettext('Tip') ?>:</strong> <?= gettext('This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience.') ?>
+    </div>
+    
+    <!-- Event Header -->
+    <div class="kiosk-header">
+      <div class="d-flex justify-content-between align-items-start flex-wrap">
+        <div>
+          <h1 id="eventTitle"></h1>
+          <div class="kiosk-time-info">
+            <i class="fas fa-users mr-1"></i>
+            <span class="kiosk-group-name"></span>
+            <span class="mx-2">|</span>
+            <i class="fas fa-clock mr-1"></i>
+            <span id="startTime"></span> &mdash; <span id="endTime"></span>
+          </div>
+        </div>
+        <div class="kiosk-stats mt-2 mt-md-0">
+          <div class="kiosk-stat checked-in">
+            <i class="fas fa-check mr-1"></i>
+            <span id="checkedInCount">0</span> <?= gettext('Here') ?>
+          </div>
+          <div class="kiosk-stat not-here">
+            <i class="fas fa-clock mr-1"></i>
+            <span id="notCheckedInCount">0</span> <?= gettext('Expected') ?>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Two Column Layout with Birthday Sidebar -->
+    <div class="row" id="classMemberContainer">
+      <!-- Birthday Banner (Top, full width when has birthdays) -->
+      <div class="col-12 mb-3" id="birthdayBannerContainer">
+        <div class="kiosk-birthday-banner" id="birthdayBanner" style="display: none;">
+          <div class="birthday-banner-header">
+            <i class="fas fa-birthday-cake mr-2"></i><?= gettext('Upcoming Birthdays') ?>
+            <span class="badge badge-light ml-2" id="birthdayCount">0</span>
+          </div>
+          <div class="birthday-banner-list" id="birthdayList">
+            <!-- Birthday cards rendered here -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Not Checked In Section (Primary focus - left side) -->
+      <div class="col-lg-6 col-md-6 mb-3">
+        <div class="kiosk-section">
+          <div class="kiosk-section-header not-checked-in">
+            <h4>
+              <i class="fas fa-clock mr-2"></i><?= gettext('Waiting to Check In') ?>
+              <span class="badge badge-warning ml-2" id="notCheckedInSectionCount">0</span>
+            </h4>
+          </div>
+          <div class="kiosk-section-body" id="notCheckedInList">
+            <div class="kiosk-empty">
+              <i class="fas fa-spinner fa-spin"></i>
+              <p><?= gettext('Loading...') ?></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Checked In Section -->
+      <div class="col-lg-6 col-md-6 mb-3">
+        <div class="kiosk-section">
+          <div class="kiosk-section-header checked-in d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+              <i class="fas fa-check-circle mr-2"></i><?= gettext('Checked In') ?>
+              <span class="badge badge-success ml-2" id="checkedInSectionCount">0</span>
+            </h4>
+            <button type="button" class="btn btn-sm btn-outline-dark" id="checkoutAllBtn" style="display: none;">
+              <i class="fas fa-sign-out-alt mr-1"></i><?= gettext('Checkout All') ?>
+            </button>
+          </div>
+          <div class="kiosk-section-body" id="checkedInList">
+            <div class="kiosk-empty">
+              <i class="fas fa-user-clock"></i>
+              <p><?= gettext('No one checked in yet') ?></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/kiosk.min.js') ?>"></script>
 <?php
 require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");
