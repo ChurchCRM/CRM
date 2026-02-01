@@ -246,16 +246,16 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
             $pdf->sRecordName .= ' ' . MiscUtils::formatBirthDate($per_BirthYear, $per_BirthMonth, $per_BirthDay, $per_Flags);
         }
 
-        // Use person data only - each person must enter their own information
-        $sAddress1 = $per_Address1 ?? '';
-        $sAddress2 = $per_Address2 ?? '';
-        $sCity = $per_City ?? '';
-        $sState = $per_State ?? '';
-        $sZip = $per_Zip ?? '';
-        $sHomePhone = $per_HomePhone ?? '';
+        // Use person data with fallback to family data for addresses
+        $sAddress1 = !empty($per_Address1) ? $per_Address1 : ($fam_Address1 ?? '');
+        $sAddress2 = !empty($per_Address2) ? $per_Address2 : ($fam_Address2 ?? '');
+        $sCity = !empty($per_City) ? $per_City : ($fam_City ?? '');
+        $sState = !empty($per_State) ? $per_State : ($fam_State ?? '');
+        $sZip = !empty($per_Zip) ? $per_Zip : ($fam_Zip ?? '');
+        $sHomePhone = !empty($per_HomePhone) ? $per_HomePhone : ($fam_HomePhone ?? '');
         $sWorkPhone = $per_WorkPhone ?? '';
         $sCellPhone = $per_CellPhone ?? '';
-        $sEmail = $per_Email ?? '';
+        $sEmail = !empty($per_Email) ? $per_Email : ($fam_Email ?? '');
 
         if ($bDirAddress) {
             if (strlen($sAddress1)) {
