@@ -20,7 +20,7 @@ class DepositQuery extends BaseDepositQuery
     {
         $this->joinPledge();
         $this->groupBy('Deposit.Id');
-        $this->withColumn('SUM(Pledge.Amount)', 'totalAmount');
+        $this->withColumn('SUM(pledge_plg.plg_amount)', 'totalAmount');
         parent::preSelect($con);
     }
 }

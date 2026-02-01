@@ -4,7 +4,7 @@ Purpose: Keep guidance compact. Follow these core rules when editing the repo.
 
 Stack (short)
 - PHP 8.2+
-- Propel ORM (use Query classes, never raw SQL)
+- Perpl ORM (actively maintained fork of Propel2 - use Query classes, never raw SQL)
 - Slim 4 (API routes)
 - Bootstrap 4.6.2 (AdminLTE v2 pattern for legacy pages)
 - React + TypeScript (frontend)
@@ -142,11 +142,91 @@ If unsure
 ---
 
 ## Database Rules
-- ALWAYS use Propel ORM Query classes
+- ALWAYS use Perpl ORM Query classes (perplorm/perpl - fork of Propel2)
 - NEVER use raw SQL or RunQuery()
 - Cast dynamic IDs to (int)
 - Check `=== null` not `empty()` for objects
 - Access properties as objects: `$obj->prop`, never `$obj['prop']`
+
+## Perpl ORM (CRITICAL - Migration from Propel)
+
+ChurchCRM uses **Perpl ORM** (`perplorm/perpl`), an actively maintained fork of Propel2 with PHP 8.4+ support and 30-50% faster query building. All Propel patterns still apply, but note these **critical differences**:
+
+### withColumn() Uses Raw SQL Column Names (NOT phpNames)
+
+In Perpl ORM, `withColumn()` requires **actual database column names**, not Propel phpNames:
+
+```php
+// ❌ WRONG - phpNames don't work in withColumn()
+$query->withColumn('Family.Name', 'FamilyName');
+$query->withColumn('SUM(Pledge.Amount)', 'totalAmount');
+$query->withColumn('COUNT(person2group2role_p2g2r.PersonId)', 'memberCount');
+
+// ✅ CORRECT - Use actual SQL column names
+$query->withColumn('family_fam.fam_Name', 'FamilyName');
+$query->withColumn('SUM(pledge_plg.plg_amount)', 'totalAmount');
+$query->withColumn('COUNT(person2group2role_p2g2r.p2g2r_per_ID)', 'memberCount');
+```
+
+**Common Column Mappings** (phpName → actual column):
+| Table | phpName | Actual Column |
+|-------|---------|---------------|
+| family_fam | Family.Name | family_fam.fam_Name |
+| family_fam | Family.Address1 | family_fam.fam_Address1 |
+| pledge_plg | Pledge.Amount | pledge_plg.plg_amount |
+| pledge_plg | Pledge.Id | pledge_plg.plg_plgID |
+| pledge_plg | Pledge.DepId | pledge_plg.plg_depID |
+| donationfund_fun | DonationFund.Name | donationfund_fun.fun_Name |
+| deposit_dep | Deposit.Id | deposit_dep.dep_ID |
+| deposit_dep | Deposit.Date | deposit_dep.dep_Date |
+| list_lst | ListOption.Id | list_lst.lst_ID |
+| person2group2role_p2g2r | PersonId | p2g2r_per_ID |
+
+**Alternative: Use TableMap Constants** (preferred for type safety):
+```php
+use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
+use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
+
+$query->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'Total');
+$query->withColumn(DonationFundTableMap::COL_FUN_NAME, 'Name');
+```
+
+### Method Override Signatures (Strict Types Required)
+
+Perpl ORM enforces strict return types. When overriding base methods:
+
+```php
+// ❌ WRONG - Missing return types
+public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+
+// ✅ CORRECT - Full signature with types
+public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
+```
+
+**Lifecycle Hooks** - must match base class signatures:
+```php
+// Pre-hooks return bool
+public function preSave(ConnectionInterface $con = null): bool
+public function preInsert(ConnectionInterface $con = null): bool
+public function preUpdate(ConnectionInterface $con = null): bool
+public function preDelete(ConnectionInterface $con = null): bool
+
+// Post-hooks return void
+public function postSave(ConnectionInterface $con = null): void
+public function postInsert(ConnectionInterface $con = null): void
+public function postUpdate(ConnectionInterface $con = null): void
+public function postDelete(ConnectionInterface $con = null): void
+```
+
+### preSelect Hook Signature
+
+```php
+public function preSelect(ConnectionInterface $con): void
+{
+    // Custom query modifications here
+    parent::preSelect($con);
+}
+```
 
 ## Propel ORM Method Naming (CRITICAL)
 

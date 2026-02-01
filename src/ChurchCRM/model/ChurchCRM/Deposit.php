@@ -171,9 +171,9 @@ class Deposit extends BaseDeposit
         $pledges = PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->groupByGroupKey()
-            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
             ->joinFamily(null, Criteria::LEFT_JOIN)
-            ->withColumn('Family.Name')
+            ->withColumn('family_fam.fam_Name')
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
@@ -429,7 +429,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CHECK')
-            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
@@ -439,7 +439,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CASH')
-            ->withColumn('SUM(Pledge.Amount)', 'sumAmount')
+            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }

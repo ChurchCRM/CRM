@@ -51,9 +51,9 @@
         "monolog/monolog": "^2.10.0",
         "php-http/guzzle7-adapter": "^1.0.0",
         "php-http/message": "^1.11.1",
+        "perplorm/perpl": "^2.6.0",
         "phpmailer/phpmailer": "^6.9.1",
         "pragmarx/google2fa": "^8.0.1",
-        "propel/propel": "2.0.0-alpha12",
         "setasign/fpdf": "^1.8.6",
         "slim/http-cache": "^1.1.0",
         "slim/php-view": "^3.2.0",
@@ -101,10 +101,10 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
-        "orm-gen": "php vendor/bin/propel --config-dir=propel model:build",
-        "sql-gen": "php vendor/bin/propel --config-dir=propel sql:build",
-        "graph-viz": "php vendor/bin/propel --config-dir=propel graphviz:generate",
-        "datadictionary": "php vendor/bin/propel --config-dir=propel datadictionary:generate",
+        "orm-gen": "php vendor/bin/propel --config-dir=../orm model:build",
+        "sql-gen": "php vendor/bin/propel --config-dir=../orm sql:build",
+        "graph-viz": "php vendor/bin/propel --config-dir=../orm graphviz:generate",
+        "datadictionary": "php vendor/bin/propel --config-dir=../orm datadictionary:generate",
         "post-autoload-dump": [
             "@orm-gen"
         ]

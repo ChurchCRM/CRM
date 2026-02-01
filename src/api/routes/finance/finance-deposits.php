@@ -109,10 +109,10 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $filename = 'ChurchCRM-Deposit-' . $id . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
         $csvData = PledgeQuery::create()->filterByDepId($id)
             ->joinDonationFund()->useDonationFundQuery()
-            ->withColumn('DonationFund.Name', 'DonationFundName')
+            ->withColumn('donationfund_fun.fun_Name', 'DonationFundName')
             ->endUse()
             ->leftJoinFamily()->useFamilyQuery()
-            ->withColumn('Family.Name', 'FamilyName')
+            ->withColumn('family_fam.fam_Name', 'FamilyName')
             ->endUse()
             ->find()
             ->toCSV();

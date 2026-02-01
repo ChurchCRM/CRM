@@ -21,7 +21,7 @@ class GroupQuery extends BaseGroupQuery
     public function preSelect(ConnectionInterface $con): void
     {
         $this->leftJoinPerson2group2roleP2g2r();
-        $this->withColumn('COUNT(person2group2role_p2g2r.PersonId)', 'memberCount');
+        $this->withColumn('COUNT(person2group2role_p2g2r.p2g2r_per_ID)', 'memberCount');
         $this->groupBy('Group.Id');
         $groupTypeJoin = new Join();
         $groupTypeJoin->addCondition('Group.Type', 'list_lst.lst_OptionId', self::EQUAL);

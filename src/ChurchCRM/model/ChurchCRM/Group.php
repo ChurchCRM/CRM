@@ -61,7 +61,7 @@ class Group extends BaseGroup
         if ($this->isSundaySchool()) {
             $defaultRole = 2;
         }
-        $newListID = ListOptionQuery::create()->withColumn('MAX(ListOption.Id)', 'newListId')->find()->getColumnValues('newListId')[0] + 1;
+        $newListID = ListOptionQuery::create()->withColumn('MAX(list_lst.lst_ID)', 'newListId')->find()->getColumnValues('newListId')[0] + 1;
         $this->setRoleListId($newListID);
         $this->setDefaultRole($defaultRole);
         parent::preInsert($con);
@@ -69,7 +69,7 @@ class Group extends BaseGroup
         return true;
     }
 
-    public function postInsert(ConnectionInterface $con = null): bool
+    public function postInsert(ConnectionInterface $con = null): void
     {
         $optionList = ['Member'];
         if ($this->isSundaySchool()) {
@@ -88,8 +88,6 @@ class Group extends BaseGroup
         }
 
         parent::postInsert($con);
-
-        return true;
     }
 
     public function checkAgainstCart(): bool

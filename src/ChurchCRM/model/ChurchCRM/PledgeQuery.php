@@ -133,15 +133,15 @@ class PledgeQuery extends BasePledgeQuery
             ->leftJoinWithPerson();
 
         // Add columns from joined tables to avoid needing foreign objects in toArray()
-        $this->withColumn('Family.Name', 'FamilyName')
-            ->withColumn('Family.Address1', 'FamilyAddress1')
-            ->withColumn('Family.Address2', 'FamilyAddress2')
-            ->withColumn('Family.City', 'FamilyCity')
-            ->withColumn('Family.State', 'FamilyState')
-            ->withColumn('Family.Zip', 'FamilyZip')
-            ->withColumn('Family.Country', 'FamilyCountry')
-            ->withColumn('DonationFund.Name', 'FundName')
-            ->withColumn('Deposit.Date', 'DepositDate');
+        $this->withColumn('family_fam.fam_Name', 'FamilyName')
+            ->withColumn('family_fam.fam_Address1', 'FamilyAddress1')
+            ->withColumn('family_fam.fam_Address2', 'FamilyAddress2')
+            ->withColumn('family_fam.fam_City', 'FamilyCity')
+            ->withColumn('family_fam.fam_State', 'FamilyState')
+            ->withColumn('family_fam.fam_Zip', 'FamilyZip')
+            ->withColumn('family_fam.fam_Country', 'FamilyCountry')
+            ->withColumn('donationfund_fun.fun_Name', 'FundName')
+            ->withColumn('deposit_dep.dep_Date', 'DepositDate');
 
         // Apply sorting
         if ($sort === 'fund') {
