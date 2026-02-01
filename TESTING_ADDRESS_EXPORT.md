@@ -25,7 +25,7 @@ $sAddress1 = $per_Address1 ?? '';
 
 To:
 ```php
-$sAddress1 = !empty($per_Address1) ? $per_Address1 : $fam_Address1;
+$sAddress1 = !empty($per_Address1) ? $per_Address1 : ($fam_Address1 ?? '');
 ```
 
 This ensures:
