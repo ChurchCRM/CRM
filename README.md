@@ -49,6 +49,10 @@ Check out our [contribution guidelines](CONTRIBUTING.md) to get started.
 Our [documentation](https://github.com/ChurchCRM/CRM/wiki) is your go-to resource for understanding ChurchCRM.
 If you notice anything missing or unclear, feel free to open an issue or submit a pull request.
 
+### Feature Guides
+
+- **[Attendance CSV Import](ATTENDANCE_IMPORT.md)** - Import attendance data from barcode scanning systems or CSV files
+
 ## 🤝 Community
 
 Join our [Matrix Chat](https://gitter.im/ChurchCRM/CRM) to connect with other users, ask questions, and share your experiences.
