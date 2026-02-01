@@ -1,0 +1,31 @@
+{
+    "id": "gravatar",
+    "name": "Gravatar Photos",
+    "description": "Use Gravatar profile photos for members who don't have uploaded photos. Falls back to Gravatar based on email address.",
+    "version": "1.0.0",
+    "author": "ChurchCRM Team",
+    "authorUrl": "https://churchcrm.io",
+    "type": "core",
+    "minimumCRMVersion": "5.0.0",
+    "mainClass": "ChurchCRM\\Plugins\\Gravatar\\GravatarPlugin",
+    "dependencies": [],
+    "settingsUrl": "/plugins/gravatar/settings",
+    "settings": [
+        {
+            "key": "enabled",
+            "label": "Enable Gravatar Photos",
+            "type": "boolean",
+            "required": false,
+            "help": "When enabled, uses Gravatar photos for members without uploaded photos"
+        },
+        {
+            "key": "defaultImage",
+            "label": "Default Image Style",
+            "type": "select",
+            "options": ["mp", "identicon", "monsterid", "wavatar", "retro", "robohash"],
+            "help": "The default image style when no Gravatar exists"
+        }
+    ],
+    "menuItems": [],
+    "hooks": []
+}

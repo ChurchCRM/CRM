@@ -1,0 +1,24 @@
+{
+    "id": "google-analytics",
+    "name": "Google Analytics",
+    "description": "Track ChurchCRM usage with Google Analytics. Provides insights into how your church members use the system.",
+    "version": "1.0.0",
+    "author": "ChurchCRM Team",
+    "authorUrl": "https://churchcrm.io",
+    "type": "core",
+    "minimumCRMVersion": "5.0.0",
+    "mainClass": "ChurchCRM\\Plugins\\GoogleAnalytics\\GoogleAnalyticsPlugin",
+    "dependencies": [],
+    "settingsUrl": "/plugins/google-analytics/settings",
+    "settings": [
+        {
+            "key": "trackingId",
+            "label": "Google Analytics Tracking ID",
+            "type": "text",
+            "required": true,
+            "help": "Your GA4 Measurement ID (G-XXXXXXXXXX) or Universal Analytics ID (UA-XXXXXX-X)"
+        }
+    ],
+    "menuItems": [],
+    "hooks": []
+}

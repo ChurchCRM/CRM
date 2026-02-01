@@ -1,0 +1,46 @@
+{
+    "id": "mailchimp",
+    "name": "MailChimp Integration",
+    "description": "Sync ChurchCRM contacts with MailChimp mailing lists. Automatically subscribe and unsubscribe members based on group membership.",
+    "version": "1.0.0",
+    "author": "ChurchCRM Team",
+    "authorUrl": "https://churchcrm.io",
+    "type": "core",
+    "minimumCRMVersion": "5.0.0",
+    "mainClass": "ChurchCRM\\Plugins\\MailChimp\\MailChimpPlugin",
+    "dependencies": [],
+    "settingsUrl": "/plugins/mailchimp/settings",
+    "settings": [
+        {
+            "key": "apiKey",
+            "label": "MailChimp API Key",
+            "type": "text",
+            "required": true,
+            "help": "Get your API key from MailChimp Account Settings > API Keys"
+        },
+        {
+            "key": "defaultListId",
+            "label": "Default List ID",
+            "type": "text",
+            "required": false,
+            "help": "The default MailChimp list/audience ID to sync with"
+        }
+    ],
+    "menuItems": [
+        {
+            "parent": "email",
+            "label": "MailChimp Dashboard",
+            "url": "/plugins/mailchimp/dashboard",
+            "icon": "fa-envelope",
+            "permission": "bEmailMailto"
+        }
+    ],
+    "hooks": [
+        "person.created",
+        "person.updated",
+        "person.deleted",
+        "family.updated",
+        "group.member.added",
+        "group.member.removed"
+    ]
+}
