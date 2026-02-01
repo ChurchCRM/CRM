@@ -7,7 +7,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="row">
-    <div class="col-lg-9">
+    <div class="col-lg-9 col-md-8 col-sm-12">
         <div class="card card-info">
             <div class="card-body no-padding">
                 <!-- THE CALENDAR -->
@@ -17,7 +17,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <!-- /. box -->
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-3 col-md-4 col-sm-12">
         <div class="card card-primary card-outline card-outline-tabs">
             <div class="card-header p-0 border-bottom-0">
                 <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
