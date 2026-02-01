@@ -49,11 +49,8 @@ class GravatarPlugin extends AbstractPlugin
     public function boot(): void
     {
         $this->enabled = SystemConfig::getBooleanValue('bEnableGravatarPhotos');
-        $defaultImage = SystemConfig::getValue('sGravatarDefaultImage');
-
-        if (in_array($defaultImage, self::DEFAULT_IMAGES, true)) {
-            $this->defaultImage = $defaultImage;
-        }
+        // Default image style - hardcoded for now, could be made configurable
+        $this->defaultImage = 'mp';
 
         $this->log('Gravatar plugin booted');
     }

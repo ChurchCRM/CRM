@@ -153,4 +153,72 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
             );
         }
     });
+
+    // Update plugin settings
+    $group->post('/plugins/{pluginId}/settings', function (Request $request, Response $response, array $args): Response {
+        try {
+            $pluginId = $args['pluginId'];
+            $body = $request->getParsedBody();
+            $settings = $body['settings'] ?? [];
+
+            if (empty($settings)) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    gettext('No settings provided'),
+                    [],
+                    400
+                );
+            }
+
+            $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+            PluginManager::init($pluginsPath);
+
+            $metadata = PluginManager::getPluginMetadata($pluginId);
+            if ($metadata === null) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    gettext('Plugin not found'),
+                    [],
+                    404
+                );
+            }
+
+            $updated = [];
+            $failed = [];
+
+            foreach ($settings as $key => $value) {
+                if (PluginManager::updatePluginSetting($pluginId, $key, $value)) {
+                    $updated[] = $key;
+                } else {
+                    $failed[] = $key;
+                }
+            }
+
+            if (!empty($failed)) {
+                return SlimUtils::renderJSON($response, [
+                    'success' => false,
+                    'message' => gettext('Some settings could not be saved'),
+                    'updated' => $updated,
+                    'failed' => $failed,
+                ]);
+            }
+
+            LoggerUtils::getAppLogger()->info("Plugin settings updated: $pluginId", ['settings' => array_keys($settings)]);
+
+            return SlimUtils::renderJSON($response, [
+                'success' => true,
+                'message' => gettext('Settings saved successfully'),
+                'updated' => $updated,
+            ]);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Failed to save settings'),
+                [],
+                500,
+                $e,
+                $request
+            );
+        }
+    });
 });

@@ -40,34 +40,11 @@ $app->group('', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'management.php', $pageArgs);
     });
 
-    // Individual plugin settings page (if plugin has custom settings page)
+    // Redirect individual plugin settings to main page (settings are now inline)
     $group->get('/{pluginId}/settings', function (Request $request, Response $response, array $args): Response {
-        $pluginId = $args['pluginId'];
-        $renderer = new PhpRenderer(__DIR__ . '/../views/');
-
-        // Initialize plugin system
-        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
-        PluginManager::init($pluginsPath);
-
-        $metadata = PluginManager::getPluginMetadata($pluginId);
-        $plugin = PluginManager::getPlugin($pluginId);
-
-        if ($metadata === null) {
-            // Redirect to plugins list with error
-            return $response
-                ->withHeader('Location', SystemURLs::getRootPath() . '/plugins')
-                ->withStatus(302);
-        }
-
-        $pageArgs = [
-            'sRootPath' => SystemURLs::getRootPath(),
-            'sPageTitle' => sprintf(gettext('%s Settings'), $metadata->getName()),
-            'plugin' => $metadata->toArray(),
-            'isActive' => PluginManager::isPluginActive($pluginId),
-            'isConfigured' => $plugin?->isConfigured() ?? false,
-            'settingsSchema' => $plugin?->getSettingsSchema() ?? [],
-        ];
-
-        return $renderer->render($response, 'plugin-settings.php', $pageArgs);
+        // Redirect to main plugins page - settings are displayed inline
+        return $response
+            ->withHeader('Location', SystemURLs::getRootPath() . '/plugins#' . $args['pluginId'])
+            ->withStatus(302);
     });
 });

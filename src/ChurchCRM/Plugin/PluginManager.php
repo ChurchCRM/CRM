@@ -261,7 +261,12 @@ class PluginManager
      */
     public static function isPluginActive(string $pluginId): bool
     {
-        // Core plugins with specific config checks
+        // If we have an explicit state saved, use it
+        if (isset(self::$pluginStates[$pluginId])) {
+            return self::$pluginStates[$pluginId];
+        }
+
+        // Core plugins - check legacy config values for initial state (migration)
         $corePluginConfigs = [
             'mailchimp' => 'sMailChimpApiKey',
             'vonage' => 'sVonageAPIKey',
@@ -270,18 +275,15 @@ class PluginManager
             'gravatar' => 'bEnableGravatarPhotos',
         ];
 
-        // For backward compatibility, check legacy config values
         if (isset($corePluginConfigs[$pluginId])) {
             $configKey = $corePluginConfigs[$pluginId];
-
-            // Single config key
             $configValue = SystemConfig::getValue($configKey);
 
             return !empty($configValue) && $configValue !== '0';
         }
 
-        // Check plugin states
-        return self::$pluginStates[$pluginId] ?? false;
+        // Default to inactive for unknown plugins
+        return false;
     }
 
     /**
@@ -433,6 +435,7 @@ class PluginManager
                     'isActive' => $isActive,
                     'isConfigured' => $plugin?->isConfigured() ?? false,
                     'settingsUrl' => $metadata->getSettingsUrl(),
+                    'settings' => self::getPluginSettingsWithValues($id),
                     'hasError' => false,
                     'errorMessage' => null,
                 ];
@@ -499,5 +502,98 @@ class PluginManager
         self::$loadedPlugins = [];
         self::$pluginStates = null;
         self::$initialized = false;
+    }
+
+    /**
+     * Get plugin settings with current values from SystemConfig.
+     *
+     * Maps plugin setting keys to their corresponding SystemConfig keys.
+     */
+    public static function getPluginSettingsWithValues(string $pluginId): array
+    {
+        $metadata = self::$discoveredPlugins[$pluginId] ?? null;
+        if ($metadata === null) {
+            return [];
+        }
+
+        // Mapping of plugin setting keys to SystemConfig keys
+        $configKeyMap = self::getPluginConfigKeyMap($pluginId);
+
+        $settings = [];
+        foreach ($metadata->getSettings() as $setting) {
+            $settingKey = $setting['key'] ?? '';
+            $configKey = $configKeyMap[$settingKey] ?? null;
+
+            $currentValue = '';
+            if ($configKey !== null) {
+                $currentValue = SystemConfig::getValue($configKey) ?? '';
+            }
+
+            $settings[] = array_merge($setting, [
+                'configKey' => $configKey,
+                'value' => $currentValue,
+            ]);
+        }
+
+        return $settings;
+    }
+
+    /**
+     * Get the mapping of plugin setting keys to SystemConfig keys.
+     */
+    private static function getPluginConfigKeyMap(string $pluginId): array
+    {
+        $maps = [
+            'mailchimp' => [
+                'apiKey' => 'sMailChimpApiKey',
+            ],
+            'vonage' => [
+                'apiKey' => 'sVonageAPIKey',
+                'apiSecret' => 'sVonageAPISecret',
+                'fromNumber' => 'sVonageFromNumber',
+            ],
+            'google-analytics' => [
+                'trackingId' => 'sGoogleTrackingID',
+            ],
+            'openlp' => [
+                'serverUrl' => 'sOLPURL',
+            ],
+            'gravatar' => [
+                'enabled' => 'bEnableGravatarPhotos',
+            ],
+        ];
+
+        return $maps[$pluginId] ?? [];
+    }
+
+    /**
+     * Update a plugin setting value in SystemConfig.
+     */
+    public static function updatePluginSetting(string $pluginId, string $settingKey, string $value): bool
+    {
+        $configKeyMap = self::getPluginConfigKeyMap($pluginId);
+        $configKey = $configKeyMap[$settingKey] ?? null;
+
+        if ($configKey === null) {
+            LoggerUtils::getAppLogger()->warning(
+                "Unknown plugin setting: $pluginId.$settingKey"
+            );
+            return false;
+        }
+
+        try {
+            SystemConfig::setValue($configKey, $value);
+            LoggerUtils::getAppLogger()->info(
+                "Updated plugin setting: $pluginId.$settingKey",
+                ['configKey' => $configKey]
+            );
+            return true;
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->error(
+                "Failed to update plugin setting: $pluginId.$settingKey",
+                ['error' => $e->getMessage()]
+            );
+            return false;
+        }
     }
 }

@@ -6,7 +6,7 @@
     "author": "ChurchCRM Team",
     "authorUrl": "https://churchcrm.io",
     "type": "core",
-    "minimumCRMVersion": "5.0.0",
+    "minimumCRMVersion": "7.0.0",
     "mainClass": "ChurchCRM\\Plugins\\Vonage\\VonagePlugin",
     "dependencies": [],
     "settingsUrl": "/plugins/vonage/settings",
