@@ -152,6 +152,24 @@ abstract class AbstractPlugin implements PluginInterface
     }
 
     /**
+     * Get HTML/JavaScript content to inject into the page <head>.
+     * Override in subclass to add head content.
+     */
+    public function getHeadContent(): string
+    {
+        return '';
+    }
+
+    /**
+     * Get HTML/JavaScript content to inject before closing </body>.
+     * Override in subclass to add footer content.
+     */
+    public function getFooterContent(): string
+    {
+        return '';
+    }
+
+    /**
      * Helper to log plugin messages.
      */
     protected function log(string $message, string $level = 'info', array $context = []): void

@@ -91,4 +91,20 @@ interface PluginInterface
      * Check if the plugin is properly configured and ready to use.
      */
     public function isConfigured(): bool;
+
+    /**
+     * Get HTML/JavaScript content to inject into the page <head>.
+     * Called only for active plugins on logged-in user pages.
+     *
+     * @return string HTML/JS content (should include script/style tags)
+     */
+    public function getHeadContent(): string;
+
+    /**
+     * Get HTML/JavaScript content to inject before the closing </body> tag.
+     * Called only for active plugins on logged-in user pages.
+     *
+     * @return string HTML/JS content (should include script tags)
+     */
+    public function getFooterContent(): string;
 }

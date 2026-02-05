@@ -520,4 +520,66 @@ class PluginManager
             return false;
         }
     }
+
+    // =========================================================================
+    // Head/Footer Content Injection
+    // =========================================================================
+
+    /**
+     * Get combined head content from all active plugins.
+     *
+     * Called by Header.php to inject plugin content into <head>.
+     *
+     * @return string Combined HTML/JS content from all active plugins
+     */
+    public static function getPluginHeadContent(): string
+    {
+        $content = '';
+
+        foreach (self::$loadedPlugins as $plugin) {
+            try {
+                $pluginContent = $plugin->getHeadContent();
+                if (!empty($pluginContent)) {
+                    $content .= "\n<!-- Plugin: {$plugin->getId()} -->\n";
+                    $content .= $pluginContent;
+                }
+            } catch (\Throwable $e) {
+                LoggerUtils::getAppLogger()->error(
+                    "Error getting head content from plugin: {$plugin->getId()}",
+                    ['error' => $e->getMessage()]
+                );
+            }
+        }
+
+        return $content;
+    }
+
+    /**
+     * Get combined footer content from all active plugins.
+     *
+     * Called by Footer.php to inject plugin content before </body>.
+     *
+     * @return string Combined HTML/JS content from all active plugins
+     */
+    public static function getPluginFooterContent(): string
+    {
+        $content = '';
+
+        foreach (self::$loadedPlugins as $plugin) {
+            try {
+                $pluginContent = $plugin->getFooterContent();
+                if (!empty($pluginContent)) {
+                    $content .= "\n<!-- Plugin: {$plugin->getId()} -->\n";
+                    $content .= $pluginContent;
+                }
+            } catch (\Throwable $e) {
+                LoggerUtils::getAppLogger()->error(
+                    "Error getting footer content from plugin: {$plugin->getId()}",
+                    ['error' => $e->getMessage()]
+                );
+            }
+        }
+
+        return $content;
+    }
 }

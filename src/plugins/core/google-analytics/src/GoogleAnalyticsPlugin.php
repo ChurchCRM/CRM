@@ -91,6 +91,19 @@ class GoogleAnalyticsPlugin extends AbstractPlugin
     }
 
     // =========================================================================
+    // Page Content Injection
+    // =========================================================================
+
+    /**
+     * Inject Google Analytics tracking code into page footer.
+     * This is called automatically for active plugins.
+     */
+    public function getFooterContent(): string
+    {
+        return $this->getTrackingCode();
+    }
+
+    // =========================================================================
     // Analytics Methods
     // =========================================================================
 
