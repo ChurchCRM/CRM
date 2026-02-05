@@ -454,6 +454,10 @@ class   SystemConfig
         return (!empty(self::getValue('plugin.vonage.apiKey'))) && (!empty(self::getValue('plugin.vonage.apiSecret'))) && (!empty(self::getValue('plugin.vonage.fromNumber')));
     }
 
+    /**
+     * @deprecated Use PluginManager to check OpenLP plugin status instead.
+     *             Will be removed in a future version.
+     */
     public static function hasValidOpenLPSettings(): bool
     {
         return !empty(self::getValue('plugin.openlp.serverUrl'));

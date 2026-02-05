@@ -3,20 +3,30 @@
 namespace ChurchCRM\Plugins\OpenLP;
 
 use ChurchCRM\Plugin\AbstractPlugin;
-use ChurchCRM\Utils\LoggerUtils;
 
 /**
  * OpenLP Integration Plugin.
  *
- * Sends alerts and notifications to OpenLP presentation software.
- * OpenLP is commonly used in churches for displaying lyrics and announcements.
+ * A config-only plugin that enables OpenLP integration in ChurchCRM.
+ * The actual OpenLP communication is handled by OpenLPNotification class
+ * which is used by the core Notification system.
  *
+ * Currently used for:
+ * - Kiosk check-in notifications: When a child is checked into Sunday School,
+ *   an alert can be sent to the OpenLP projector display.
+ *
+ * This plugin exposes:
+ * - enabled: Whether OpenLP is enabled
+ * - serverUrl: URL to the OpenLP server
+ * - username: Optional authentication username
+ * - password: Optional authentication password
+ *
+ * @see ChurchCRM\Plugins\OpenLP\OpenLPNotification for the actual API integration
+ * @see ChurchCRM\dto\Notification for the core notification orchestration
  * @see https://openlp.org/
  */
 class OpenLPPlugin extends AbstractPlugin
 {
-    private ?string $serverUrl = null;
-
     public function getId(): string
     {
         return 'openlp';
@@ -29,7 +39,7 @@ class OpenLPPlugin extends AbstractPlugin
 
     public function getDescription(): string
     {
-        return 'Display notifications on OpenLP presentation software.';
+        return 'Display notifications on OpenLP presentation software during worship services.';
     }
 
     public function getVersion(): string
@@ -39,13 +49,6 @@ class OpenLPPlugin extends AbstractPlugin
 
     public function boot(): void
     {
-        $this->serverUrl = $this->getConfigValue('serverUrl');
-
-        // Normalize URL
-        if ($this->serverUrl !== null && $this->serverUrl !== '') {
-            $this->serverUrl = rtrim($this->serverUrl, '/');
-        }
-
         $this->log('OpenLP plugin booted');
     }
 
@@ -66,15 +69,13 @@ class OpenLPPlugin extends AbstractPlugin
 
     public function isConfigured(): bool
     {
-        return !empty($this->serverUrl);
+        $serverUrl = $this->getConfigValue('serverUrl');
+        return !empty($serverUrl);
     }
 
     public function registerRoutes($routeCollector): void
     {
-        $routeCollector->group('/openlp', function ($group) {
-            $group->post('/alert', [$this, 'handleSendAlert']);
-            $group->get('/status', [$this, 'handleGetStatus']);
-        });
+        // No custom routes - OpenLP communication handled by OpenLPNotification class
     }
 
     public function getMenuItems(): array
@@ -89,175 +90,90 @@ class OpenLPPlugin extends AbstractPlugin
                 'key' => 'serverUrl',
                 'label' => gettext('OpenLP Server URL'),
                 'type' => 'text',
-                'help' => gettext('e.g., http://192.168.1.100:4316'),
+                'required' => true,
+                'help' => gettext('URL to your OpenLP server (e.g., http://192.168.1.100:4316)'),
             ],
             [
                 'key' => 'username',
                 'label' => gettext('Username'),
                 'type' => 'text',
-                'help' => gettext('Optional - only if OpenLP requires authentication'),
+                'help' => gettext('Optional - only required if OpenLP authentication is enabled'),
             ],
             [
                 'key' => 'password',
                 'label' => gettext('Password'),
                 'type' => 'password',
-                'help' => gettext('Optional - only if OpenLP requires authentication'),
+                'help' => gettext('Optional - only required if OpenLP authentication is enabled'),
             ],
         ];
     }
 
-    // =========================================================================
-    // OpenLP API Methods
-    // =========================================================================
+    /**
+     * Get the configured OpenLP server URL.
+     */
+    public function getServerUrl(): string
+    {
+        $url = $this->getConfigValue('serverUrl');
+        return $url ? rtrim($url, '/') : '';
+    }
 
     /**
-     * Send an alert to OpenLP.
-     *
-     * @param string $message Alert message to display
-     *
-     * @return bool Success status
+     * Get the configured username for OpenLP authentication.
      */
-    public function sendAlert(string $message): bool
+    public function getUsername(): string
+    {
+        return $this->getConfigValue('username');
+    }
+
+    /**
+     * Get the configured password for OpenLP authentication.
+     */
+    public function getPassword(): string
+    {
+        return $this->getConfigValue('password');
+    }
+
+    /**
+     * Get client-side configuration for this plugin.
+     * This is exposed to JavaScript via window.CRM.plugins.openlp
+     *
+     * @return array Configuration for client-side use
+     */
+    public function getClientConfig(): array
+    {
+        return [
+            'enabled' => $this->isEnabled(),
+            'configured' => $this->isConfigured(),
+            // Don't expose serverUrl/credentials to client for security
+        ];
+    }
+
+    /**
+     * Send an alert to OpenLP projector.
+     *
+     * This is the main entry point for sending projector notifications.
+     * Currently called by the Notification class when processing kiosk
+     * check-in events (e.g., child checked into Sunday School).
+     *
+     * @param string $text The alert text to display
+     *
+     * @return string Response from OpenLP server
+     *
+     * @throws \RuntimeException If the plugin is not configured or request fails
+     */
+    public function sendAlert(string $text): string
     {
         if (!$this->isConfigured()) {
-            $this->log('OpenLP not configured', 'warning');
-
-            return false;
+            throw new \RuntimeException('OpenLP plugin is not configured');
         }
 
-        try {
-            $url = $this->serverUrl . '/api/alert';
-            $data = json_encode(['text' => $message]);
+        $notification = new OpenLPNotification(
+            $this->getServerUrl(),
+            $this->getUsername(),
+            $this->getPassword()
+        );
+        $notification->setAlertText($text);
 
-            $ch = curl_init($url);
-            curl_setopt_array($ch, [
-                CURLOPT_POST => true,
-                CURLOPT_POSTFIELDS => $data,
-                CURLOPT_HTTPHEADER => [
-                    'Content-Type: application/json',
-                    'Content-Length: ' . strlen($data),
-                ],
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_TIMEOUT => 10,
-            ]);
-
-            $response = curl_exec($ch);
-            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
-
-            if ($httpCode === 200 || $httpCode === 204) {
-                $this->log("OpenLP alert sent: $message");
-
-                return true;
-            }
-
-            $this->log("OpenLP alert failed with HTTP $httpCode: $response", 'warning');
-        } catch (\Throwable $e) {
-            $this->log('OpenLP exception: ' . $e->getMessage(), 'error');
-        }
-
-        return false;
-    }
-
-    /**
-     * Check if OpenLP server is reachable.
-     *
-     * @return array Status information
-     */
-    public function getStatus(): array
-    {
-        if (!$this->isConfigured()) {
-            return [
-                'configured' => false,
-                'reachable' => false,
-                'message' => 'OpenLP URL not configured',
-            ];
-        }
-
-        try {
-            $url = $this->serverUrl . '/api/poll';
-
-            $ch = curl_init($url);
-            curl_setopt_array($ch, [
-                CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_TIMEOUT => 5,
-            ]);
-
-            $response = curl_exec($ch);
-            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
-
-            if ($httpCode === 200) {
-                $data = json_decode($response, true);
-
-                return [
-                    'configured' => true,
-                    'reachable' => true,
-                    'message' => 'OpenLP server connected',
-                    'data' => $data,
-                ];
-            }
-
-            return [
-                'configured' => true,
-                'reachable' => false,
-                'message' => "OpenLP server returned HTTP $httpCode",
-            ];
-        } catch (\Throwable $e) {
-            return [
-                'configured' => true,
-                'reachable' => false,
-                'message' => 'Error: ' . $e->getMessage(),
-            ];
-        }
-    }
-
-    /**
-     * Send a notification (used by notification system).
-     *
-     * @param string $title   Notification title
-     * @param string $message Notification message
-     *
-     * @return bool Success status
-     */
-    public function sendNotification(string $title, string $message): bool
-    {
-        $fullMessage = $title . ': ' . $message;
-
-        return $this->sendAlert($fullMessage);
-    }
-
-    // =========================================================================
-    // API Route Handlers
-    // =========================================================================
-
-    public function handleSendAlert($request, $response): mixed
-    {
-        $body = $request->getParsedBody();
-        $message = $body['message'] ?? null;
-
-        if (empty($message)) {
-            return $response->withJson([
-                'success' => false,
-                'message' => 'Message required',
-            ], 400);
-        }
-
-        $success = $this->sendAlert($message);
-
-        return $response->withJson([
-            'success' => $success,
-            'message' => $success ? 'Alert sent' : 'Failed to send alert',
-        ]);
-    }
-
-    public function handleGetStatus($request, $response): mixed
-    {
-        $status = $this->getStatus();
-
-        return $response->withJson([
-            'success' => true,
-            'data' => $status,
-        ]);
+        return $notification->send();
     }
 }

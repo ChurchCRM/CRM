@@ -4,6 +4,7 @@ namespace ChurchCRM\dto;
 
 use ChurchCRM\Emails\notifications\NotificationEmail;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\Plugin\PluginManager;
 use Vonage\Client;
 use Vonage\Client\Credentials\Basic;
 
@@ -79,14 +80,14 @@ class Notification
 
     private function sendProjector(): string
     {
-        $OLPAlert = new OpenLPNotification(
-            SystemConfig::getValue('plugin.openlp.serverUrl'),
-            SystemConfig::getValue('plugin.openlp.username'),
-            SystemConfig::getValue('plugin.openlp.password')
-        );
-        $OLPAlert->setAlertText($this->projectorText);
+        $pluginManager = PluginManager::getInstance();
+        $openLpPlugin = $pluginManager->getPlugin('openlp');
 
-        return $OLPAlert->send();
+        if ($openLpPlugin === null || !$openLpPlugin->isEnabled()) {
+            throw new \RuntimeException('OpenLP plugin is not enabled');
+        }
+
+        return $openLpPlugin->sendAlert($this->projectorText);
     }
 
     public function send(): array
@@ -110,7 +111,10 @@ class Notification
             }
             $methods[] = 'sms: ' . $sendSms;
         }
-        if (SystemConfig::hasValidOpenLPSettings()) {
+        // Check if OpenLP plugin is enabled and configured
+        $pluginManager = PluginManager::getInstance();
+        $openLpPlugin = $pluginManager->getPlugin('openlp');
+        if ($openLpPlugin !== null && $openLpPlugin->isEnabled() && $openLpPlugin->isConfigured()) {
             $sendOpenLp = false;
             try {
                 $sendOpenLp = (bool) $this->sendProjector();
