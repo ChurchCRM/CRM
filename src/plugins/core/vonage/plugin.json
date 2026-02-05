@@ -9,7 +9,7 @@
     "minimumCRMVersion": "7.0.0",
     "mainClass": "ChurchCRM\\Plugins\\Vonage\\VonagePlugin",
     "dependencies": [],
-    "settingsUrl": "/plugins/vonage/settings",
+    "settingsUrl": null,
     "settings": [
         {
             "key": "apiKey",

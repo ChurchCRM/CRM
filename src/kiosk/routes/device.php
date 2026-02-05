@@ -179,8 +179,11 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
         $openLpPlugin = $pluginManager->getPlugin('openlp');
         $openLpEnabled = $openLpPlugin !== null && $openLpPlugin->isEnabled() && $openLpPlugin->isConfigured();
 
+        $vonagePlugin = $pluginManager->getPlugin('vonage');
+        $smsEnabled = $vonagePlugin !== null && $vonagePlugin->isEnabled() && $vonagePlugin->isConfigured();
+
         $notificationsEnabled = SystemConfig::hasValidMailServerSettings() ||
-                                SystemConfig::hasValidSMSServerSettings() ||
+                                $smsEnabled ||
                                 $openLpEnabled;
 
         return SlimUtils::renderJSON($response, [

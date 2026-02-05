@@ -1,0 +1,88 @@
+{
+    "title": "Vonage SMS Plugin",
+    "overview": "Enables SMS messaging capabilities for ChurchCRM using the Vonage API (formerly Nexmo). Send text message notifications to members for check-in alerts, event reminders, and announcements.",
+    "requirements": [
+        "Vonage account with API access (sign up at https://dashboard.nexmo.com/sign-up)",
+        "API Key and API Secret from Vonage Dashboard",
+        "A phone number provisioned for SMS sending"
+    ],
+    "setup": [
+        {
+            "step": 1,
+            "title": "Create Vonage Account",
+            "description": "Sign up for a Vonage API account at https://dashboard.nexmo.com/sign-up. New accounts include free trial credit for testing."
+        },
+        {
+            "step": 2,
+            "title": "Get API Credentials",
+            "description": "After signing in, find your API Key and API Secret on the Vonage Dashboard homepage. Copy these values for the plugin configuration."
+        },
+        {
+            "step": 3,
+            "title": "Purchase/Configure Phone Number",
+            "description": "Go to Numbers > Buy Numbers in the Vonage Dashboard. Select a number with SMS capability in your country. Note the number in E.164 format (e.g., +14155551234)."
+        },
+        {
+            "step": 4,
+            "title": "Configure Plugin",
+            "description": "In ChurchCRM, go to Admin > Plugin Settings. Enable the Vonage SMS plugin and enter your API Key, API Secret, and From Phone Number."
+        },
+        {
+            "step": 5,
+            "title": "Test SMS",
+            "description": "Use the Check-In Kiosk feature with SMS notifications enabled to verify the setup is working correctly."
+        }
+    ],
+    "usage": {
+        "kioskNotifications": "SMS notifications are automatically sent when a person checks in and SMS notification is enabled for the event. Recipients are configured in the check-in event settings.",
+        "numberFormat": "Phone numbers should be in E.164 format: country code + number (e.g., +14155551234 for US numbers, +447700900123 for UK numbers)."
+    },
+    "troubleshooting": [
+        {
+            "issue": "SMS not sending",
+            "solutions": [
+                "Verify API Key and Secret are correct (no extra spaces)",
+                "Check that the From Number is a valid Vonage number you own",
+                "Ensure recipient phone numbers include country code",
+                "Check your Vonage account balance"
+            ]
+        },
+        {
+            "issue": "Invalid sender ID error",
+            "solutions": [
+                "Use a phone number you've purchased from Vonage",
+                "Format the number in E.164 format (+14155551234)",
+                "Alphanumeric sender IDs may be restricted in some countries"
+            ]
+        },
+        {
+            "issue": "Messages not delivered",
+            "solutions": [
+                "Check Vonage Dashboard > SMS > Logs for delivery status",
+                "Verify the recipient number is correct and can receive SMS",
+                "Some carriers may block messages from unknown numbers"
+            ]
+        }
+    ],
+    "links": [
+        {
+            "title": "Vonage Dashboard",
+            "url": "https://dashboard.nexmo.com"
+        },
+        {
+            "title": "Vonage SMS API Documentation",
+            "url": "https://developer.vonage.com/messaging/sms/overview"
+        },
+        {
+            "title": "Vonage Pricing",
+            "url": "https://www.vonage.com/communications-apis/sms/pricing/"
+        },
+        {
+            "title": "E.164 Phone Number Format",
+            "url": "https://en.wikipedia.org/wiki/E.164"
+        }
+    ],
+    "costs": "Vonage charges per SMS sent. Pricing varies by destination country. See Vonage pricing page for current rates. New accounts receive free trial credit.",
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-15"
+}

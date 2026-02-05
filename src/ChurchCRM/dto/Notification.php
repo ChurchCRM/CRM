@@ -5,8 +5,6 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Emails\notifications\NotificationEmail;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\PluginManager;
-use Vonage\Client;
-use Vonage\Client\Credentials\Basic;
 
 class Notification
 {
@@ -62,16 +60,19 @@ class Notification
 
     private function sendSMS(): bool
     {
-        $client = new Client(new Basic(
-            SystemConfig::getValue('plugin.vonage.apiKey'),
-            SystemConfig::getValue('plugin.vonage.apiSecret')
-        ));
+        $pluginManager = PluginManager::getInstance();
+        $vonagePlugin = $pluginManager->getPlugin('vonage');
+
+        if ($vonagePlugin === null || !$vonagePlugin->isEnabled()) {
+            throw new \RuntimeException('Vonage SMS plugin is not enabled');
+        }
+
+        $notificationMessage = gettext('Notification for') . ' ' . $this->person->getFullName();
 
         foreach ($this->recipients as $recipient) {
-            $client->message()->sendText(
+            $vonagePlugin->sendSMS(
                 $recipient->getNumericCellPhone(),
-                SystemConfig::getValue('plugin.vonage.fromNumber'),
-                gettext('Notification for') . ' ' . $this->person->getFullName()
+                $notificationMessage
             );
         }
 
@@ -93,6 +94,8 @@ class Notification
     public function send(): array
     {
         $methods = [];
+        $pluginManager = PluginManager::getInstance();
+
         if (SystemConfig::hasValidMailServerSettings()) {
             $sendEmail = false;
             try {
@@ -102,7 +105,10 @@ class Notification
             }
             $methods[] = 'email: ' . $sendEmail;
         }
-        if (SystemConfig::hasValidSMSServerSettings()) {
+
+        // Check if Vonage SMS plugin is enabled and configured
+        $vonagePlugin = $pluginManager->getPlugin('vonage');
+        if ($vonagePlugin !== null && $vonagePlugin->isEnabled() && $vonagePlugin->isConfigured()) {
             $sendSms = false;
             try {
                 $sendSms = $this->sendSMS();
@@ -111,8 +117,8 @@ class Notification
             }
             $methods[] = 'sms: ' . $sendSms;
         }
+
         // Check if OpenLP plugin is enabled and configured
-        $pluginManager = PluginManager::getInstance();
         $openLpPlugin = $pluginManager->getPlugin('openlp');
         if ($openLpPlugin !== null && $openLpPlugin->isEnabled() && $openLpPlugin->isConfigured()) {
             $sendOpenLp = false;

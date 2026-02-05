@@ -43,11 +43,6 @@ class VonagePlugin extends AbstractPlugin
         return 'Send SMS notifications using Vonage API.';
     }
 
-    public function getVersion(): string
-    {
-        return '2.0.0';
-    }
-
     public function boot(): void
     {
         // Load configuration using sandboxed config access

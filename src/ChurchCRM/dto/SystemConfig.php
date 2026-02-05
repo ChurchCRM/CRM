@@ -449,6 +449,10 @@ class   SystemConfig
         return $hasValidSettings;
     }
 
+    /**
+     * @deprecated Use PluginManager to check Vonage plugin status instead.
+     *             Will be removed in a future version.
+     */
     public static function hasValidSMSServerSettings(): bool
     {
         return (!empty(self::getValue('plugin.vonage.apiKey'))) && (!empty(self::getValue('plugin.vonage.apiSecret'))) && (!empty(self::getValue('plugin.vonage.fromNumber')));
