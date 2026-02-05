@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Plugins\Vonage;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Plugin\AbstractPlugin;
 use ChurchCRM\Utils\LoggerUtils;
 use Vonage\Client;
@@ -51,10 +50,10 @@ class VonagePlugin extends AbstractPlugin
 
     public function boot(): void
     {
-        // Load configuration from SystemConfig
-        $this->apiKey = SystemConfig::getValue('sVonageAPIKey');
-        $this->apiSecret = SystemConfig::getValue('sVonageAPISecret');
-        $this->fromNumber = SystemConfig::getValue('sVonageFromNumber');
+        // Load configuration using sandboxed config access
+        $this->apiKey = $this->getConfigValue('apiKey');
+        $this->apiSecret = $this->getConfigValue('apiSecret');
+        $this->fromNumber = $this->getConfigValue('fromNumber');
 
         // Initialize Vonage client if configured
         if ($this->isConfigured()) {
@@ -102,18 +101,18 @@ class VonagePlugin extends AbstractPlugin
     {
         return [
             [
-                'key' => 'sVonageAPIKey',
+                'key' => 'apiKey',
                 'label' => gettext('Vonage API Key'),
                 'type' => 'text',
                 'help' => gettext('From dashboard.vonage.com'),
             ],
             [
-                'key' => 'sVonageAPISecret',
+                'key' => 'apiSecret',
                 'label' => gettext('Vonage API Secret'),
                 'type' => 'password',
             ],
             [
-                'key' => 'sVonageFromNumber',
+                'key' => 'fromNumber',
                 'label' => gettext('From Phone Number'),
                 'type' => 'text',
                 'help' => gettext('E.164 format, e.g., +14155551234'),

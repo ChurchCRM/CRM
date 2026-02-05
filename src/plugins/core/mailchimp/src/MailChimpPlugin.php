@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Plugins\MailChimp;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Plugin\AbstractPlugin;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
@@ -46,7 +45,7 @@ class MailChimpPlugin extends AbstractPlugin
     public function boot(): void
     {
         // Initialize MailChimp client
-        $this->apiKey = SystemConfig::getValue('sMailChimpApiKey');
+        $this->apiKey = $this->getConfigValue('apiKey');
         if (!empty($this->apiKey)) {
             $this->client = new MailChimp($this->apiKey);
         }
@@ -113,7 +112,7 @@ class MailChimpPlugin extends AbstractPlugin
     {
         return [
             [
-                'key' => 'sMailChimpApiKey',
+                'key' => 'apiKey',
                 'label' => gettext('MailChimp API Key'),
                 'type' => 'password',
                 'help' => gettext('Get your API key from MailChimp Account Settings > API Keys'),

@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Plugins\GoogleAnalytics;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Plugin\AbstractPlugin;
 use ChurchCRM\Plugin\Hook\HookManager;
 
@@ -39,7 +38,7 @@ class GoogleAnalyticsPlugin extends AbstractPlugin
 
     public function boot(): void
     {
-        $this->trackingId = SystemConfig::getValue('sGoogleTrackingID');
+        $this->trackingId = $this->getConfigValue('trackingId');
 
         if ($this->isConfigured()) {
             // Determine if GA4 or Universal Analytics
@@ -83,7 +82,7 @@ class GoogleAnalyticsPlugin extends AbstractPlugin
     {
         return [
             [
-                'key' => 'sGoogleTrackingID',
+                'key' => 'trackingId',
                 'label' => gettext('Google Analytics Tracking ID'),
                 'type' => 'text',
                 'help' => gettext('GA4 (G-XXXXXXXXXX) or Universal Analytics (UA-XXXXXX-X)'),

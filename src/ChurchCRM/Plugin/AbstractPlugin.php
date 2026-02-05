@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Plugin;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -9,6 +10,10 @@ use ChurchCRM\Utils\LoggerUtils;
  *
  * Provides common functionality and sensible defaults
  * for plugin implementations.
+ *
+ * Plugins can only access their own config values using the
+ * getConfigValue() and setConfigValue() methods, which enforce
+ * the plugin.{pluginId}.{key} prefix.
  */
 abstract class AbstractPlugin implements PluginInterface
 {
@@ -25,6 +30,75 @@ abstract class AbstractPlugin implements PluginInterface
     public function getBasePath(): string
     {
         return $this->basePath;
+    }
+
+    // =========================================================================
+    // Plugin Config Access (Sandboxed to plugin.{pluginId}.* keys only)
+    // =========================================================================
+
+    /**
+     * Get the config key prefix for this plugin.
+     *
+     * All plugin config keys use format: plugin.{pluginId}.{settingKey}
+     */
+    protected function getConfigPrefix(): string
+    {
+        return 'plugin.' . $this->getId() . '.';
+    }
+
+    /**
+     * Get a config value for this plugin.
+     *
+     * Automatically prefixes the key with plugin.{pluginId}.
+     * Plugins can only access their own config values.
+     *
+     * @param string $key Setting key (without prefix)
+     * @return string Config value or empty string if not set
+     */
+    protected function getConfigValue(string $key): string
+    {
+        $fullKey = $this->getConfigPrefix() . $key;
+        return SystemConfig::getValue($fullKey) ?? '';
+    }
+
+    /**
+     * Get a boolean config value for this plugin.
+     *
+     * Automatically prefixes the key with plugin.{pluginId}.
+     * Plugins can only access their own config values.
+     *
+     * @param string $key Setting key (without prefix)
+     * @return bool Config value as boolean
+     */
+    protected function getBooleanConfigValue(string $key): bool
+    {
+        $fullKey = $this->getConfigPrefix() . $key;
+        return SystemConfig::getBooleanValue($fullKey);
+    }
+
+    /**
+     * Set a config value for this plugin.
+     *
+     * Automatically prefixes the key with plugin.{pluginId}.
+     * Plugins can only modify their own config values.
+     *
+     * @param string $key   Setting key (without prefix)
+     * @param string $value Value to set
+     */
+    protected function setConfigValue(string $key, string $value): void
+    {
+        $fullKey = $this->getConfigPrefix() . $key;
+        SystemConfig::setValue($fullKey, $value);
+    }
+
+    /**
+     * Check if this plugin is enabled.
+     *
+     * Convenience method to check the plugin.{pluginId}.enabled config.
+     */
+    protected function isEnabled(): bool
+    {
+        return $this->getBooleanConfigValue('enabled');
     }
 
     public function getAuthor(): string

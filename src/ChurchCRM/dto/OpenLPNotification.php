@@ -25,7 +25,7 @@ class OpenLPNotification
 
     private function getAuthorizationHeader(): string
     {
-        return base64_encode(SystemConfig::getValue('sOLPUserName') . ':' . SystemConfig::getValue('sOLPPassword'));
+        return base64_encode($this->OLPUsername . ':' . $this->OLPPassword);
     }
 
     public function send(): string
@@ -41,7 +41,7 @@ class OpenLPNotification
                 'allow_self_signed' => true,
             ],
         ];
-        if (SystemConfig::getValue('sOLPUserName')) {
+        if (!empty($this->OLPUsername)) {
             $headers['http']['header'] = 'Authorization: Basic ' . $this->getAuthorizationHeader() . "\r\n";
         }
         //return json_encode($headers);

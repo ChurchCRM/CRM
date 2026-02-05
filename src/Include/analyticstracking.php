@@ -3,7 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
-$googleTrackingID = SystemConfig::getValue('sGoogleTrackingID');
+$googleTrackingID = SystemConfig::getValue('plugin.google-analytics.trackingId');
 if (!empty($googleTrackingID)) {
     ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">

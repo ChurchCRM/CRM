@@ -3,7 +3,6 @@
 namespace ChurchCRM\Plugin;
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 
 /**
@@ -13,7 +12,7 @@ use ChurchCRM\Utils\LoggerUtils;
  * - Core plugins: Shipped with ChurchCRM (src/plugins/core/)
  * - Community plugins: Third-party extensions (src/plugins/community/)
  *
- * Plugin state is stored in a JSON file in the data directory.
+ * Plugin state is stored in SystemConfig with prefixed keys (plugin.{id}.enabled).
  */
 class PluginManager
 {
@@ -37,21 +36,9 @@ class PluginManager
     private static array $loadedPlugins = [];
 
     /**
-     * Plugin active states from storage.
-     *
-     * @var array<string, bool>|null
-     */
-    private static ?array $pluginStates = null;
-
-    /**
      * Whether the manager has been initialized.
      */
     private static bool $initialized = false;
-
-    /**
-     * Path to the plugin states JSON file.
-     */
-    private static string $statesFilePath = '';
 
     /**
      * Initialize the plugin system.
@@ -65,9 +52,7 @@ class PluginManager
         }
 
         self::$pluginsPath = rtrim($pluginsPath, '/');
-        self::$statesFilePath = SystemURLs::getDocumentRoot() . '/data/plugin-states.json';
         self::discoverPlugins();
-        self::loadPluginStates();
         self::loadActivePlugins();
         self::$initialized = true;
 
@@ -121,39 +106,6 @@ class PluginManager
                 }
             }
         }
-    }
-
-    /**
-     * Load plugin active states from JSON file.
-     */
-    private static function loadPluginStates(): void
-    {
-        self::$pluginStates = [];
-
-        // Load from JSON file
-        if (file_exists(self::$statesFilePath)) {
-            $content = file_get_contents(self::$statesFilePath);
-            $states = json_decode($content, true);
-            if (is_array($states)) {
-                self::$pluginStates = $states;
-            }
-        }
-    }
-
-    /**
-     * Save plugin states to JSON file.
-     */
-    private static function savePluginStates(): void
-    {
-        $dir = dirname(self::$statesFilePath);
-        if (!is_dir($dir)) {
-            mkdir($dir, 0755, true);
-        }
-
-        file_put_contents(
-            self::$statesFilePath,
-            json_encode(self::$pluginStates, JSON_PRETTY_PRINT)
-        );
     }
 
     /**
@@ -258,32 +210,13 @@ class PluginManager
 
     /**
      * Check if a plugin is active.
+     *
+     * Checks the SystemConfig key plugin.{pluginId}.enabled
      */
     public static function isPluginActive(string $pluginId): bool
     {
-        // If we have an explicit state saved, use it
-        if (isset(self::$pluginStates[$pluginId])) {
-            return self::$pluginStates[$pluginId];
-        }
-
-        // Core plugins - check legacy config values for initial state (migration)
-        $corePluginConfigs = [
-            'mailchimp' => 'sMailChimpApiKey',
-            'vonage' => 'sVonageAPIKey',
-            'google-analytics' => 'sGoogleTrackingID',
-            'openlp' => 'sOLPURL',
-            'gravatar' => 'bEnableGravatarPhotos',
-        ];
-
-        if (isset($corePluginConfigs[$pluginId])) {
-            $configKey = $corePluginConfigs[$pluginId];
-            $configValue = SystemConfig::getValue($configKey);
-
-            return !empty($configValue) && $configValue !== '0';
-        }
-
-        // Default to inactive for unknown plugins
-        return false;
+        $enabledKey = "plugin.{$pluginId}.enabled";
+        return SystemConfig::getBooleanValue($enabledKey);
     }
 
     /**
@@ -324,9 +257,9 @@ class PluginManager
         // Call activate hook
         $plugin->activate();
 
-        // Save state
-        self::$pluginStates[$pluginId] = true;
-        self::savePluginStates();
+        // Save state to SystemConfig
+        $enabledKey = "plugin.{$pluginId}.enabled";
+        SystemConfig::setValue($enabledKey, '1');
 
         LoggerUtils::getAppLogger()->info("Plugin enabled: $pluginId");
 
@@ -357,9 +290,9 @@ class PluginManager
         // Remove from loaded plugins
         unset(self::$loadedPlugins[$pluginId]);
 
-        // Save state
-        self::$pluginStates[$pluginId] = false;
-        self::savePluginStates();
+        // Save state to SystemConfig
+        $enabledKey = "plugin.{$pluginId}.enabled";
+        SystemConfig::setValue($enabledKey, '0');
 
         LoggerUtils::getAppLogger()->info("Plugin disabled: $pluginId");
 
@@ -500,7 +433,6 @@ class PluginManager
     {
         self::$discoveredPlugins = [];
         self::$loadedPlugins = [];
-        self::$pluginStates = null;
         self::$initialized = false;
     }
 
@@ -540,46 +472,38 @@ class PluginManager
 
     /**
      * Get the mapping of plugin setting keys to SystemConfig keys.
+     *
+     * All plugin config keys use the format: plugin.{pluginId}.{settingKey}
+     * This method dynamically generates the mapping based on the plugin's settings schema.
      */
     private static function getPluginConfigKeyMap(string $pluginId): array
     {
-        $maps = [
-            'mailchimp' => [
-                'apiKey' => 'sMailChimpApiKey',
-            ],
-            'vonage' => [
-                'apiKey' => 'sVonageAPIKey',
-                'apiSecret' => 'sVonageAPISecret',
-                'fromNumber' => 'sVonageFromNumber',
-            ],
-            'google-analytics' => [
-                'trackingId' => 'sGoogleTrackingID',
-            ],
-            'openlp' => [
-                'serverUrl' => 'sOLPURL',
-            ],
-            'gravatar' => [
-                'enabled' => 'bEnableGravatarPhotos',
-            ],
-        ];
+        $metadata = self::$discoveredPlugins[$pluginId] ?? null;
+        if ($metadata === null) {
+            return [];
+        }
 
-        return $maps[$pluginId] ?? [];
+        $map = [];
+        foreach ($metadata->getSettings() as $setting) {
+            $key = $setting['key'] ?? '';
+            if (!empty($key)) {
+                // Generate the SystemConfig key using plugin prefix
+                $map[$key] = "plugin.{$pluginId}.{$key}";
+            }
+        }
+
+        return $map;
     }
 
     /**
      * Update a plugin setting value in SystemConfig.
+     *
+     * The setting key is automatically prefixed with plugin.{pluginId}.
      */
     public static function updatePluginSetting(string $pluginId, string $settingKey, string $value): bool
     {
-        $configKeyMap = self::getPluginConfigKeyMap($pluginId);
-        $configKey = $configKeyMap[$settingKey] ?? null;
-
-        if ($configKey === null) {
-            LoggerUtils::getAppLogger()->warning(
-                "Unknown plugin setting: $pluginId.$settingKey"
-            );
-            return false;
-        }
+        // Generate the full config key
+        $configKey = "plugin.{$pluginId}.{$settingKey}";
 
         try {
             SystemConfig::setValue($configKey, $value);

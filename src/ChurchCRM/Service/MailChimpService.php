@@ -16,9 +16,9 @@ class MailChimpService
 
     public function __construct()
     {
-        if (!empty(SystemConfig::getValue('sMailChimpApiKey'))) {
+        if (!empty(SystemConfig::getValue('plugin.mailchimp.apiKey'))) {
             $this->hasKey = true;
-            $this->myMailchimp = new MailChimp(SystemConfig::getValue('sMailChimpApiKey'));
+            $this->myMailchimp = new MailChimp(SystemConfig::getValue('plugin.mailchimp.apiKey'));
         }
     }
 

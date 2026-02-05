@@ -61,12 +61,15 @@ class Notification
 
     private function sendSMS(): bool
     {
-        $client = new Client(new Basic(SystemConfig::getValue('sNexmoAPIKey'), SystemConfig::getValue('sNexmoAPISecret')));
+        $client = new Client(new Basic(
+            SystemConfig::getValue('plugin.vonage.apiKey'),
+            SystemConfig::getValue('plugin.vonage.apiSecret')
+        ));
 
         foreach ($this->recipients as $recipient) {
             $client->message()->sendText(
                 $recipient->getNumericCellPhone(),
-                SystemConfig::getValue('sNexmoFromNumber'),
+                SystemConfig::getValue('plugin.vonage.fromNumber'),
                 gettext('Notification for') . ' ' . $this->person->getFullName()
             );
         }
@@ -77,9 +80,9 @@ class Notification
     private function sendProjector(): string
     {
         $OLPAlert = new OpenLPNotification(
-            SystemConfig::getValue('sOLPURL'),
-            SystemConfig::getValue('sOLPUserName'),
-            SystemConfig::getValue('sOLPPassword')
+            SystemConfig::getValue('plugin.openlp.serverUrl'),
+            SystemConfig::getValue('plugin.openlp.username'),
+            SystemConfig::getValue('plugin.openlp.password')
         );
         $OLPAlert->setAlertText($this->projectorText);
 

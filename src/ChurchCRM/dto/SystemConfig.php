@@ -181,7 +181,6 @@ class   SystemConfig
             'sZeroGivers2'                         => new ConfigItem(1032, 'sZeroGivers2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.')),
             'sZeroGivers3'                         => new ConfigItem(1033, 'sZeroGivers3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.')),
             'sChurchChkAcctNum'                    => new ConfigItem(1034, 'sChurchChkAcctNum', 'text', '', gettext('Church Checking Account Number')),
-            'bEnableGravatarPhotos'                => new ConfigItem(1035, 'bEnableGravatarPhotos', 'boolean', '0', gettext('lookup user images on Gravatar when no local image is present')),
             'bEnableExternalBackupTarget'          => new ConfigItem(1036, 'bEnableExternalBackupTarget', 'boolean', '0', gettext('Enable Remote Backups to Cloud Services')),
             'sExternalBackupType'                  => new ConfigItem(1037, 'sExternalBackupType', 'choice', '', gettext('Cloud Service Type (Supported values: WebDAV, Local)'), '', '{"Choices":["' . gettext('WebDAV') . '","' . gettext('Local') . '"]}'),
             'sExternalBackupEndpoint'              => new ConfigItem(1038, 'sExternalBackupEndpoint', 'text', '', gettext('Remote Backup Endpoint.  If WebDAV, this must be url encoded. ')),
@@ -193,18 +192,10 @@ class   SystemConfig
             'sChurchCountry'                       => new ConfigItem(1047, 'sChurchCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
             'sConfirmSincerely'                    => new ConfigItem(1048, 'sConfirmSincerely', 'text', 'Sincerely', gettext('Used to end a letter before Signer')),
             'sDear'                                => new ConfigItem(1049, 'sDear', 'text', 'Dear', gettext('Text before name in emails/reports')),
-            'sGoogleTrackingID'                    => new ConfigItem(1050, 'sGoogleTrackingID', 'text', '', gettext('Google Analytics Tracking Code')),
-            'sMailChimpApiKey'                     => new ConfigItem(2000, 'sMailChimpApiKey', 'text', '', '', 'https://mailchimp.com/help/about-api-keys/'),
             'sDepositSlipType'                     => new ConfigItem(2001, 'sDepositSlipType', 'choice', 'QBDT', gettext('Deposit ticket type.  QBDT - Quickbooks'), '', '{"Choices":["QBDT"]}'),
             'iPersonNameStyle'                     => new ConfigItem(2020, 'iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
             'iPersonInitialStyle'                  => new ConfigItem(20201, 'iPersonInitialStyle', 'choice', '0', '', '', json_encode(SystemConfig::getInitialStyleChoices(), JSON_THROW_ON_ERROR)),
             'bDisplayBillCounts'                   => new ConfigItem(2002, 'bDisplayBillCounts', 'boolean', '1', gettext('Display bill counts on deposit slip')),
-            'sVonageAPIKey'                        => new ConfigItem(2080, 'sVonageAPIKey', 'text', '', gettext('Vonage SMS API Key')),
-            'sVonageAPISecret'                     => new ConfigItem(2081, 'sVonageAPISecret', 'password', '', gettext('Vonage SMS API Secret')),
-            'sVonageFromNumber'                    => new ConfigItem(2082, 'sVonageFromNumber', 'text', '', gettext('Vonage SMS From Number')),
-            'sOLPURL'                              => new ConfigItem(2007, 'sOLPURL', 'text', 'http://192.168.1.1:4316', gettext('OpenLP URL')),
-            'sOLPUserName'                         => new ConfigItem(2008, 'sOLPUserName', 'text', '', gettext('OpenLP Username')),
-            'sOLPPassword'                         => new ConfigItem(2009, 'sOLPPassword', 'password', '', gettext('OpenLP Password')),
             'sKioskVisibilityTimestamp'            => new ConfigItem(2011, 'sKioskVisibilityTimestamp', 'text', '', gettext('KioskVisibilityTimestamp')),
             'bEnableLostPassword'                  => new ConfigItem(2004, 'bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem(2013, 'sChurchWebSite', 'text', '', gettext("Your Church's Website")),
@@ -254,6 +245,32 @@ class   SystemConfig
             'sGoogleMapsRenderKey'                 => new ConfigItem(2072, 'sGoogleMapsRenderKey', 'text', '', gettext('Google Maps API Key used for rendering maps in browser'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'),
             'sInactiveClassification'              => new ConfigItem(2073, 'sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),
             'sDefaultZip'                          => new ConfigItem(2074, 'sDefaultZip', 'text', '', gettext('Default Zip')),
+
+            // Plugin Settings - prefixed with plugin ID
+            // MailChimp Plugin
+            'plugin.mailchimp.enabled'             => new ConfigItem(3000, 'plugin.mailchimp.enabled', 'boolean', '0', gettext('Enable MailChimp plugin')),
+            'plugin.mailchimp.apiKey'              => new ConfigItem(3001, 'plugin.mailchimp.apiKey', 'text', '', gettext('MailChimp API Key'), 'https://mailchimp.com/help/about-api-keys/'),
+            'plugin.mailchimp.defaultListId'       => new ConfigItem(3002, 'plugin.mailchimp.defaultListId', 'text', '', gettext('MailChimp Default List/Audience ID')),
+
+            // Vonage SMS Plugin
+            'plugin.vonage.enabled'                => new ConfigItem(3010, 'plugin.vonage.enabled', 'boolean', '0', gettext('Enable Vonage SMS plugin')),
+            'plugin.vonage.apiKey'                 => new ConfigItem(3011, 'plugin.vonage.apiKey', 'text', '', gettext('Vonage API Key')),
+            'plugin.vonage.apiSecret'              => new ConfigItem(3012, 'plugin.vonage.apiSecret', 'password', '', gettext('Vonage API Secret')),
+            'plugin.vonage.fromNumber'             => new ConfigItem(3013, 'plugin.vonage.fromNumber', 'text', '', gettext('Vonage From Phone Number (E.164 format)')),
+
+            // Google Analytics Plugin
+            'plugin.google-analytics.enabled'      => new ConfigItem(3020, 'plugin.google-analytics.enabled', 'boolean', '0', gettext('Enable Google Analytics plugin')),
+            'plugin.google-analytics.trackingId'   => new ConfigItem(3021, 'plugin.google-analytics.trackingId', 'text', '', gettext('Google Analytics Tracking ID')),
+
+            // OpenLP Plugin
+            'plugin.openlp.enabled'                => new ConfigItem(3030, 'plugin.openlp.enabled', 'boolean', '0', gettext('Enable OpenLP plugin')),
+            'plugin.openlp.serverUrl'              => new ConfigItem(3031, 'plugin.openlp.serverUrl', 'text', '', gettext('OpenLP Server URL')),
+            'plugin.openlp.username'               => new ConfigItem(3032, 'plugin.openlp.username', 'text', '', gettext('OpenLP Username (optional)')),
+            'plugin.openlp.password'               => new ConfigItem(3033, 'plugin.openlp.password', 'password', '', gettext('OpenLP Password (optional)')),
+
+            // Gravatar Plugin
+            'plugin.gravatar.enabled'              => new ConfigItem(3040, 'plugin.gravatar.enabled', 'boolean', '0', gettext('Enable Gravatar plugin')),
+            'plugin.gravatar.defaultImage'         => new ConfigItem(3041, 'plugin.gravatar.defaultImage', 'text', 'mp', gettext('Gravatar default image style')),
         ];
     }
 
@@ -434,12 +451,12 @@ class   SystemConfig
 
     public static function hasValidSMSServerSettings(): bool
     {
-        return (!empty(self::getValue('sNexmoAPIKey'))) && (!empty(self::getValue('sNexmoAPISecret'))) && (!empty(self::getValue('sNexmoFromNumber')));
+        return (!empty(self::getValue('plugin.vonage.apiKey'))) && (!empty(self::getValue('plugin.vonage.apiSecret'))) && (!empty(self::getValue('plugin.vonage.fromNumber')));
     }
 
     public static function hasValidOpenLPSettings(): bool
     {
-        return !empty(self::getValue('sOLPURL'));
+        return !empty(self::getValue('plugin.openlp.serverUrl'));
     }
 
     public static function debugEnabled(): bool

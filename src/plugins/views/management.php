@@ -21,46 +21,54 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
     $pluginId = htmlspecialchars($plugin['id']);
     $hasError = !empty($plugin['hasError']);
     $hasSettings = !empty($plugin['settings']);
+    $isActive = $plugin['isActive'] ?? false;
 ?>
-    <div class="card <?= $hasError ? 'card-danger' : ($plugin['isActive'] ? 'card-success' : 'card-secondary') ?> card-outline collapsed-card" 
+    <div class="card <?= $hasError ? 'card-danger' : ($isActive ? 'card-success' : 'card-secondary') ?> card-outline collapsed-card" 
          data-plugin-id="<?= $pluginId ?>">
         <div class="card-header">
             <h3 class="card-title">
                 <?php if ($hasError): ?>
                     <i class="fas fa-exclamation-triangle text-danger mr-2"></i>
-                <?php elseif ($plugin['isActive']): ?>
+                <?php elseif ($isActive): ?>
                     <i class="fas fa-check-circle text-success mr-2"></i>
                 <?php else: ?>
-                    <i class="fas fa-circle text-secondary mr-2"></i>
+                    <i class="fas fa-times-circle text-secondary mr-2"></i>
                 <?php endif; ?>
                 <strong><?= htmlspecialchars($plugin['name']) ?></strong>
-                <span class="badge badge-info ml-2"><?= htmlspecialchars($plugin['version']) ?></span>
-                <?php if ($plugin['isActive'] && !$plugin['isConfigured']): ?>
-                    <span class="badge badge-warning ml-2"><?= gettext('Needs Configuration') ?></span>
+                <span class="badge badge-info ml-2">v<?= htmlspecialchars($plugin['version']) ?></span>
+                <?php if ($hasError): ?>
+                    <span class="badge badge-danger ml-2"><?= gettext('Error') ?></span>
+                <?php elseif ($isActive): ?>
+                    <span class="badge badge-success ml-2"><?= gettext('Enabled') ?></span>
+                    <?php if (!$plugin['isConfigured']): ?>
+                        <span class="badge badge-warning ml-2"><?= gettext('Needs Configuration') ?></span>
+                    <?php endif; ?>
+                <?php else: ?>
+                    <span class="badge badge-secondary ml-2"><?= gettext('Disabled') ?></span>
                 <?php endif; ?>
             </h3>
             <div class="card-tools">
-                <?php if ($plugin['isActive']): ?>
-                    <button type="button" class="btn btn-tool btn-plugin-toggle text-danger" 
-                            data-action="disable" data-plugin-id="<?= $pluginId ?>"
-                            title="<?= gettext('Disable') ?>">
-                        <i class="fas fa-power-off"></i>
-                    </button>
-                <?php else: ?>
-                    <button type="button" class="btn btn-tool btn-plugin-toggle text-success" 
-                            data-action="enable" data-plugin-id="<?= $pluginId ?>"
-                            title="<?= gettext('Enable') ?>">
-                        <i class="fas fa-play"></i>
-                    </button>
+                <?php if (!$hasError): ?>
+                    <?php if ($isActive): ?>
+                        <button type="button" class="btn btn-tool btn-plugin-toggle text-danger" 
+                                data-action="disable" data-plugin-id="<?= $pluginId ?>"
+                                title="<?= gettext('Disable Plugin') ?>">
+                            <i class="fas fa-power-off"></i> <?= gettext('Disable') ?>
+                        </button>
+                    <?php else: ?>
+                        <button type="button" class="btn btn-tool btn-plugin-toggle text-success" 
+                                data-action="enable" data-plugin-id="<?= $pluginId ?>"
+                                title="<?= gettext('Enable Plugin') ?>">
+                            <i class="fas fa-play"></i> <?= gettext('Enable') ?>
+                        </button>
+                    <?php endif; ?>
                 <?php endif; ?>
-                <?php if ($hasSettings): ?>
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-plus"></i>
-                    </button>
-                <?php endif; ?>
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                    <i class="fas fa-plus"></i>
+                </button>
             </div>
         </div>
-        <div class="card-body" <?= $hasSettings ? 'style="display: none;"' : '' ?>>
+        <div class="card-body" style="display: none;">
             <p class="text-muted mb-2"><?= htmlspecialchars($plugin['description']) ?></p>
             <?php if (!empty($plugin['author'])): ?>
                 <small class="text-muted">

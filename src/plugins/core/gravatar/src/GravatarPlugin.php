@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Plugins\Gravatar;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Plugin\AbstractPlugin;
 use ChurchCRM\Plugin\Hook\HookManager;
 
@@ -48,9 +47,8 @@ class GravatarPlugin extends AbstractPlugin
 
     public function boot(): void
     {
-        $this->enabled = SystemConfig::getBooleanValue('bEnableGravatarPhotos');
-        // Default image style - hardcoded for now, could be made configurable
-        $this->defaultImage = 'mp';
+        $this->enabled = $this->getBooleanConfigValue('enabled');
+        $this->defaultImage = $this->getConfigValue('defaultImage') ?: 'mp';
 
         $this->log('Gravatar plugin booted');
     }
@@ -89,12 +87,12 @@ class GravatarPlugin extends AbstractPlugin
     {
         return [
             [
-                'key' => 'bEnableGravatarPhotos',
+                'key' => 'enabled',
                 'label' => gettext('Enable Gravatar Photos'),
                 'type' => 'boolean',
             ],
             [
-                'key' => 'sGravatarDefaultImage',
+                'key' => 'defaultImage',
                 'label' => gettext('Default Image Style'),
                 'type' => 'select',
                 'options' => self::DEFAULT_IMAGES,

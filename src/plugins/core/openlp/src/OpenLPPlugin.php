@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Plugins\OpenLP;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Plugin\AbstractPlugin;
 use ChurchCRM\Utils\LoggerUtils;
 
@@ -40,10 +39,10 @@ class OpenLPPlugin extends AbstractPlugin
 
     public function boot(): void
     {
-        $this->serverUrl = SystemConfig::getValue('sOLPURL');
+        $this->serverUrl = $this->getConfigValue('serverUrl');
 
         // Normalize URL
-        if ($this->serverUrl !== null) {
+        if ($this->serverUrl !== null && $this->serverUrl !== '') {
             $this->serverUrl = rtrim($this->serverUrl, '/');
         }
 
@@ -87,10 +86,22 @@ class OpenLPPlugin extends AbstractPlugin
     {
         return [
             [
-                'key' => 'sOLPURL',
+                'key' => 'serverUrl',
                 'label' => gettext('OpenLP Server URL'),
                 'type' => 'text',
                 'help' => gettext('e.g., http://192.168.1.100:4316'),
+            ],
+            [
+                'key' => 'username',
+                'label' => gettext('Username'),
+                'type' => 'text',
+                'help' => gettext('Optional - only if OpenLP requires authentication'),
+            ],
+            [
+                'key' => 'password',
+                'label' => gettext('Password'),
+                'type' => 'password',
+                'help' => gettext('Optional - only if OpenLP requires authentication'),
             ],
         ];
     }
