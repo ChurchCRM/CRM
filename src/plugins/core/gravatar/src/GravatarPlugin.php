@@ -49,10 +49,7 @@ class GravatarPlugin extends AbstractPlugin
         return 'Use Gravatar profile photos for members without uploaded photos.';
     }
 
-    public function getVersion(): string
-    {
-        return '1.0.0';
-    }
+    // Note: getVersion() is inherited from AbstractPlugin and reads from plugin.json
 
     public function boot(): void
     {

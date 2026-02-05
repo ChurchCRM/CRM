@@ -2,7 +2,7 @@
     "id": "openlp",
     "name": "OpenLP Integration",
     "description": "Display notifications on OpenLP presentation software during worship services. Perfect for showing announcements on the projector.",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "author": "ChurchCRM Team",
     "authorUrl": "https://churchcrm.io",
     "type": "core",

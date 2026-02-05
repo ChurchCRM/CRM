@@ -11,6 +11,9 @@ use ChurchCRM\Utils\LoggerUtils;
  * Provides common functionality and sensible defaults
  * for plugin implementations.
  *
+ * Plugin metadata (version, author, etc.) is read from plugin.json
+ * to ensure a single source of truth.
+ *
  * Plugins can only access their own config values using the
  * getConfigValue() and setConfigValue() methods, which enforce
  * the plugin.{pluginId}.{key} prefix.
@@ -18,6 +21,11 @@ use ChurchCRM\Utils\LoggerUtils;
 abstract class AbstractPlugin implements PluginInterface
 {
     protected string $basePath = '';
+
+    /**
+     * Cached plugin manifest data from plugin.json.
+     */
+    private ?array $manifest = null;
 
     public function __construct(string $basePath = '')
     {
@@ -30,6 +38,35 @@ abstract class AbstractPlugin implements PluginInterface
     public function getBasePath(): string
     {
         return $this->basePath;
+    }
+
+    /**
+     * Load and cache the plugin manifest from plugin.json.
+     *
+     * @return array The manifest data or empty array if not found
+     */
+    protected function getManifest(): array
+    {
+        if ($this->manifest === null) {
+            $manifestPath = $this->basePath . '/plugin.json';
+            if (file_exists($manifestPath)) {
+                $content = file_get_contents($manifestPath);
+                $this->manifest = json_decode($content, true) ?? [];
+            } else {
+                $this->manifest = [];
+            }
+        }
+        return $this->manifest;
+    }
+
+    /**
+     * Get the plugin version from plugin.json.
+     *
+     * This is the single source of truth for the version.
+     */
+    public function getVersion(): string
+    {
+        return $this->getManifest()['version'] ?? '0.0.0';
     }
 
     // =========================================================================

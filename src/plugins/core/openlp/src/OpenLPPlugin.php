@@ -42,10 +42,7 @@ class OpenLPPlugin extends AbstractPlugin
         return 'Display notifications on OpenLP presentation software during worship services.';
     }
 
-    public function getVersion(): string
-    {
-        return '1.0.0';
-    }
+    // Note: getVersion() is inherited from AbstractPlugin and reads from plugin.json
 
     public function boot(): void
     {

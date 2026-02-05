@@ -28,10 +28,7 @@ class GoogleAnalyticsPlugin extends AbstractPlugin
         return 'Track ChurchCRM usage with Google Analytics 4.';
     }
 
-    public function getVersion(): string
-    {
-        return '1.0.0';
-    }
+    // Note: getVersion() is inherited from AbstractPlugin and reads from plugin.json
 
     public function boot(): void
     {
