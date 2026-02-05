@@ -22,6 +22,7 @@ class PluginMetadata
     private array $menuItems;
     private array $hooks;
     private ?string $settingsUrl;
+    private array $help;
 
     public function __construct(array $data, string $path)
     {
@@ -40,6 +41,7 @@ class PluginMetadata
         $this->menuItems = $data['menuItems'] ?? [];
         $this->hooks = $data['hooks'] ?? [];
         $this->settingsUrl = $data['settingsUrl'] ?? null;
+        $this->help = $data['help'] ?? [];
     }
 
     /**
@@ -136,6 +138,28 @@ class PluginMetadata
         return $this->settingsUrl;
     }
 
+    public function getHelp(): array
+    {
+        // Try to load from help.json file first
+        $helpFile = $this->path . '/help.json';
+
+        if (file_exists($helpFile)) {
+            $content = file_get_contents($helpFile);
+            $help = json_decode($content, true);
+
+            if (json_last_error() === JSON_ERROR_NONE && is_array($help)) {
+                return [
+                    'summary' => $help['summary'] ?? '',
+                    'sections' => $help['sections'] ?? [],
+                    'links' => $help['links'] ?? [],
+                ];
+            }
+        }
+
+        // Fall back to inline help in plugin.json
+        return $this->help;
+    }
+
     /**
      * Validate the metadata has required fields.
      */
@@ -168,6 +192,7 @@ class PluginMetadata
             'menuItems' => $this->menuItems,
             'hooks' => $this->hooks,
             'settingsUrl' => $this->settingsUrl,
+            'help' => $this->help,
         ];
     }
 }

@@ -107,4 +107,16 @@ interface PluginInterface
      * @return string HTML/JS content (should include script tags)
      */
     public function getFooterContent(): string;
+
+    /**
+     * Get the plugin help content for display in the UI.
+     *
+     * Returns an array with:
+     * - 'summary': Brief help text (plain text or simple HTML)
+     * - 'sections': Optional array of help sections with 'title' and 'content'
+     * - 'links': Optional array of external links with 'label' and 'url'
+     *
+     * @return array Help content array
+     */
+    public function getHelp(): array;
 }

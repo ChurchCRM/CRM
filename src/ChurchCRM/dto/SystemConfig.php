@@ -258,9 +258,9 @@ class   SystemConfig
             'plugin.vonage.apiSecret'              => new ConfigItem(3012, 'plugin.vonage.apiSecret', 'password', '', gettext('Vonage API Secret')),
             'plugin.vonage.fromNumber'             => new ConfigItem(3013, 'plugin.vonage.fromNumber', 'text', '', gettext('Vonage From Phone Number (E.164 format)')),
 
-            // Google Analytics Plugin
+            // Google Analytics 4 Plugin
             'plugin.google-analytics.enabled'      => new ConfigItem(3020, 'plugin.google-analytics.enabled', 'boolean', '0', gettext('Enable Google Analytics plugin')),
-            'plugin.google-analytics.trackingId'   => new ConfigItem(3021, 'plugin.google-analytics.trackingId', 'text', '', gettext('Google Analytics Tracking ID')),
+            'plugin.google-analytics.trackingId'   => new ConfigItem(3021, 'plugin.google-analytics.trackingId', 'text', '', gettext('GA4 Measurement ID')),
 
             // OpenLP Plugin
             'plugin.openlp.enabled'                => new ConfigItem(3030, 'plugin.openlp.enabled', 'boolean', '0', gettext('Enable OpenLP plugin')),

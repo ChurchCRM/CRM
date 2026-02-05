@@ -21,10 +21,13 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
     $pluginId = htmlspecialchars($plugin['id']);
     $hasError = !empty($plugin['hasError']);
     $hasSettings = !empty($plugin['settings']);
+    $hasHelp = !empty($plugin['help']) && (!empty($plugin['help']['summary']) || !empty($plugin['help']['sections']));
     $isActive = $plugin['isActive'] ?? false;
+    $helpData = $hasHelp ? htmlspecialchars(json_encode($plugin['help']), ENT_QUOTES, 'UTF-8') : '';
 ?>
     <div class="card <?= $hasError ? 'card-danger' : ($isActive ? 'card-success' : 'card-secondary') ?> card-outline collapsed-card" 
-         data-plugin-id="<?= $pluginId ?>">
+         data-plugin-id="<?= $pluginId ?>"
+         <?php if ($hasHelp): ?>data-plugin-help="<?= $helpData ?>"<?php endif; ?>>
         <div class="card-header">
             <h3 class="card-title">
                 <?php if ($hasError): ?>
@@ -48,6 +51,14 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                 <?php endif; ?>
             </h3>
             <div class="card-tools">
+                <?php if ($hasHelp): ?>
+                    <button type="button" class="btn btn-tool btn-plugin-help text-info" 
+                            data-plugin-id="<?= $pluginId ?>"
+                            data-plugin-name="<?= htmlspecialchars($plugin['name']) ?>"
+                            title="<?= gettext('Help') ?>">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                <?php endif; ?>
                 <?php if (!$hasError): ?>
                     <?php if ($isActive): ?>
                         <button type="button" class="btn btn-tool btn-plugin-toggle text-danger" 
@@ -203,7 +214,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                         <p><?= gettext('No community plugins installed') ?></p>
                         <p class="small">
                             <?= gettext('Install plugins by placing them in') ?>
-                            <code>src/plugins/community/</code>
+                            <code>plugins/community/</code>
                         </p>
                     </div>
                 <?php else: ?>
@@ -237,8 +248,91 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
     </div>
 </div>
 
+<!-- Plugin Help Modal -->
+<div class="modal fade" id="pluginHelpModal" tabindex="-1" role="dialog" aria-labelledby="pluginHelpModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info">
+                <h5 class="modal-title" id="pluginHelpModalLabel">
+                    <i class="fas fa-question-circle mr-2"></i>
+                    <span id="pluginHelpTitle"><?= gettext('Plugin Help') ?></span>
+                </h5>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="<?= gettext('Close') ?>">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="pluginHelpContent">
+                <!-- Help content will be injected here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <?= gettext('Close') ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
+    // Show plugin help modal
+    $('.btn-plugin-help').on('click', function(e) {
+        e.stopPropagation();
+        const btn = $(this);
+        const pluginId = btn.data('plugin-id');
+        const pluginName = btn.data('plugin-name');
+        const card = $('[data-plugin-id="' + pluginId + '"]');
+        const helpData = card.data('plugin-help');
+        
+        if (!helpData) {
+            return;
+        }
+        
+        // Build help content HTML with i18next translation
+        let contentHtml = '';
+        
+        // Summary - translate via i18next
+        if (helpData.summary) {
+            contentHtml += '<p class="lead">' + escapeHtml(i18next.t(helpData.summary)) + '</p>';
+        }
+        
+        // Sections - translate titles and content
+        if (helpData.sections && helpData.sections.length > 0) {
+            helpData.sections.forEach(function(section) {
+                contentHtml += '<div class="card card-outline card-secondary mb-3">';
+                contentHtml += '<div class="card-header"><h6 class="mb-0">' + escapeHtml(i18next.t(section.title)) + '</h6></div>';
+                contentHtml += '<div class="card-body"><p class="mb-0" style="white-space: pre-line;">' + escapeHtml(i18next.t(section.content)) + '</p></div>';
+                contentHtml += '</div>';
+            });
+        }
+        
+        // Links - translate labels (URLs are not translated)
+        if (helpData.links && helpData.links.length > 0) {
+            contentHtml += '<div class="mt-3"><strong>' + i18next.t('Helpful Links') + ':</strong><ul class="mb-0">';
+            helpData.links.forEach(function(link) {
+                contentHtml += '<li><a href="' + escapeHtml(link.url) + '" target="_blank" rel="noopener noreferrer">';
+                contentHtml += escapeHtml(i18next.t(link.label)) + ' <i class="fas fa-external-link-alt fa-xs"></i></a></li>';
+            });
+            contentHtml += '</ul></div>';
+        }
+        
+        if (!contentHtml) {
+            contentHtml = '<p class="text-muted">' + i18next.t('No help available for this plugin.') + '</p>';
+        }
+        
+        $('#pluginHelpTitle').text(pluginName + ' - ' + i18next.t('Help'));
+        $('#pluginHelpContent').html(contentHtml);
+        $('#pluginHelpModal').modal('show');
+    });
+    
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+        if (!text) return '';
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     // Enable/Disable plugin
     $('.btn-plugin-toggle').on('click', function(e) {
         e.stopPropagation();

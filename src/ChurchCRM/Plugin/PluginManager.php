@@ -369,6 +369,7 @@ class PluginManager
                     'isConfigured' => $plugin?->isConfigured() ?? false,
                     'settingsUrl' => $metadata->getSettingsUrl(),
                     'settings' => self::getPluginSettingsWithValues($id),
+                    'help' => $plugin?->getHelp() ?? $metadata->getHelp(),
                     'hasError' => false,
                     'errorMessage' => null,
                 ];

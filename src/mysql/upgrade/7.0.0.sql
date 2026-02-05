@@ -21,11 +21,11 @@ VALUES
     (3012, 'plugin.vonage.apiSecret', '', 'password', '', 'Vonage API Secret', 'Plugins'),
     (3013, 'plugin.vonage.fromNumber', '', 'text', '', 'Vonage From Phone Number (E.164 format)', 'Plugins');
 
--- Google Analytics Plugin
+-- Google Analytics 4 Plugin
 INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value, cfg_type, cfg_default, cfg_tooltip, cfg_section)
 VALUES 
     (3020, 'plugin.google-analytics.enabled', '0', 'boolean', '0', 'Enable Google Analytics plugin', 'Plugins'),
-    (3021, 'plugin.google-analytics.trackingId', '', 'text', '', 'Google Analytics Tracking ID', 'Plugins');
+    (3021, 'plugin.google-analytics.trackingId', '', 'text', '', 'GA4 Measurement ID', 'Plugins');
 
 -- OpenLP Plugin
 INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value, cfg_type, cfg_default, cfg_tooltip, cfg_section)

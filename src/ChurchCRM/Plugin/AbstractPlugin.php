@@ -170,6 +170,58 @@ abstract class AbstractPlugin implements PluginInterface
     }
 
     /**
+     * Get plugin help content.
+     * Loads help from help.json file in the plugin directory.
+     * Override in subclass to provide dynamic/localized help.
+     *
+     * @return array Help content with optional 'summary', 'sections', and 'links'
+     */
+    public function getHelp(): array
+    {
+        return $this->loadHelpFromJson();
+    }
+
+    /**
+     * Load help content from help.json file in the plugin directory.
+     *
+     * @return array Help content or empty array if not found
+     */
+    protected function loadHelpFromJson(): array
+    {
+        $helpFile = $this->basePath . '/help.json';
+
+        if (!file_exists($helpFile)) {
+            return [
+                'summary' => '',
+                'sections' => [],
+                'links' => [],
+            ];
+        }
+
+        $content = file_get_contents($helpFile);
+        $help = json_decode($content, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE || !is_array($help)) {
+            $this->log('Failed to parse help.json', 'warning', [
+                'file' => $helpFile,
+                'error' => json_last_error_msg(),
+            ]);
+
+            return [
+                'summary' => '',
+                'sections' => [],
+                'links' => [],
+            ];
+        }
+
+        return [
+            'summary' => $help['summary'] ?? '',
+            'sections' => $help['sections'] ?? [],
+            'links' => $help['links'] ?? [],
+        ];
+    }
+
+    /**
      * Helper to log plugin messages.
      */
     protected function log(string $message, string $level = 'info', array $context = []): void

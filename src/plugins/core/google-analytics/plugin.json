@@ -13,10 +13,10 @@
     "settings": [
         {
             "key": "trackingId",
-            "label": "Google Analytics Tracking ID",
+            "label": "GA4 Measurement ID",
             "type": "text",
             "required": true,
-            "help": "Your GA4 Measurement ID (G-XXXXXXXXXX) or Universal Analytics ID (UA-XXXXXX-X)"
+            "help": "Your GA4 Measurement ID (e.g., G-XXXXXXXXXX)"
         }
     ],
     "menuItems": [],
