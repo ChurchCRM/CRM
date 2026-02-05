@@ -145,10 +145,12 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                         data-setting-key="<?= $settingKey ?>"
                                         data-config-key="<?= $configKey ?>"
                                         <?= $isRequired ? 'required' : '' ?>>
-                                    <?php foreach ($setting['options'] as $option): ?>
+                                    <?php foreach ($setting['options'] as $index => $option): 
+                                        $optionLabel = $setting['optionLabels'][$index] ?? $option;
+                                    ?>
                                         <option value="<?= htmlspecialchars($option) ?>" 
                                                 <?= $settingValue === $option ? 'selected' : '' ?>>
-                                            <?= htmlspecialchars($option) ?>
+                                            <?= htmlspecialchars($optionLabel) ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>

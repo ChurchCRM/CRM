@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 22:27-0800\n"
+"POT-Creation-Date: 2026-02-04 20:09-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,6 +167,14 @@ msgstr ""
 msgid "0 - No Minimum"
 msgstr ""
 
+#. plugin:google-analytics:section:0:content
+msgid ""
+"1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr ""
+
 msgid "2 Factor Authentication Enrollment Success"
 msgstr ""
 
@@ -204,9 +212,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr ""
 
 msgid "A new version of ChurchCRM is available for installation."
-msgstr ""
-
-msgid "A notification was triggered by the classroom teacher at"
 msgstr ""
 
 msgid "A payment is an actual donation received. It will be added to the current deposit."
@@ -1069,12 +1074,6 @@ msgstr ""
 msgid "CSV Individual Records"
 msgstr ""
 
-msgid "CSV export is restricted to administrators."
-msgstr ""
-
-msgid "CSV export permission"
-msgstr ""
-
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr ""
 
@@ -1250,6 +1249,9 @@ msgstr ""
 msgid "Checking Cart Status"
 msgstr ""
 
+msgid "Checkout All"
+msgstr ""
+
 msgid "Checks"
 msgstr ""
 
@@ -1284,6 +1286,18 @@ msgid "Choose customer person field"
 msgstr ""
 
 msgid "Choose opportunities..."
+msgstr ""
+
+#. plugin:gravatar:section:1:content
+msgid ""
+"Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - A gray silhouette outline\n"
+"• Identicon - Geometric patterns based on email hash\n"
+"• MonsterID - Unique generated monster faces\n"
+"• Wavatar - Abstract generated faces\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot images\n"
+"• Blank - Transparent image (falls back to initials)"
 msgstr ""
 
 #. Context: countries
@@ -1351,6 +1365,9 @@ msgid "ChurchCRM Supported Locales"
 msgstr ""
 
 msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
+msgstr ""
+
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -1462,6 +1479,12 @@ msgid "Comma separated list of classifications that should appear as inactive"
 msgstr ""
 
 msgid "Comment"
+msgstr ""
+
+msgid "Community Plugins"
+msgstr ""
+
+msgid "Community plugins"
 msgstr ""
 
 #. Context: countries
@@ -1590,6 +1613,12 @@ msgid "Copy"
 msgstr ""
 
 msgid "Copyright"
+msgstr ""
+
+msgid "Core Plugins"
+msgstr ""
+
+msgid "Core plugins"
 msgstr ""
 
 #. Context: countries
@@ -1930,6 +1959,13 @@ msgstr ""
 msgid "Default City"
 msgstr ""
 
+msgid "Default Image Style"
+msgstr ""
+
+#. plugin:gravatar:section:1:title
+msgid "Default Image Styles"
+msgstr ""
+
 msgid "Default Name Group"
 msgstr ""
 
@@ -2165,10 +2201,16 @@ msgstr ""
 msgid "Directory reports"
 msgstr ""
 
+msgid "Disable"
+msgstr ""
+
 msgid "Disable 2FA"
 msgstr ""
 
 msgid "Disable Group Specific Properties"
+msgstr ""
+
+msgid "Disable Plugin"
 msgstr ""
 
 msgid "Disabled"
@@ -2295,6 +2337,9 @@ msgstr ""
 msgid "E"
 msgstr ""
 
+msgid "E.164 format, e.g., +14155551234"
+msgstr ""
+
 msgid "EMERGENCY"
 msgstr ""
 
@@ -2308,6 +2353,9 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr ""
 
 msgid "ESE"
+msgstr ""
+
+msgid "Each plugin requires a"
 msgstr ""
 
 #. Context: countries
@@ -2476,6 +2524,9 @@ msgstr ""
 msgid "Empty your entire cart?"
 msgstr ""
 
+msgid "Enable"
+msgstr ""
+
 msgid "Enable Email menu."
 msgstr ""
 
@@ -2488,16 +2539,34 @@ msgstr ""
 msgid "Enable Fundraiser menu."
 msgstr ""
 
+msgid "Enable Google Analytics plugin"
+msgstr ""
+
+msgid "Enable Gravatar plugin"
+msgstr ""
+
 msgid "Enable Group Specific Properties"
 msgstr ""
 
+msgid "Enable MailChimp plugin"
+msgstr ""
+
 msgid "Enable New Kiosk Registration"
+msgstr ""
+
+msgid "Enable OpenLP plugin"
+msgstr ""
+
+msgid "Enable Plugin"
 msgstr ""
 
 msgid "Enable Remote Backups to Cloud Services"
 msgstr ""
 
 msgid "Enable Sunday School left menu."
+msgstr ""
+
+msgid "Enable Vonage SMS plugin"
 msgstr ""
 
 msgid "Enable non-deductible payments"
@@ -2753,6 +2822,9 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
+msgid "Expected"
+msgstr ""
+
 msgid "Expected Hash"
 msgstr ""
 
@@ -2834,10 +2906,16 @@ msgstr ""
 msgid "Failed to create group. Please try again."
 msgstr ""
 
+msgid "Failed to delete kiosk"
+msgstr ""
+
 msgid "Failed to delete orphaned files"
 msgstr ""
 
 msgid "Failed to delete role. Please try again."
+msgstr ""
+
+msgid "Failed to disable plugin"
 msgstr ""
 
 msgid "Failed to download latest release"
@@ -2853,6 +2931,15 @@ msgid "Failed to empty cart"
 msgstr ""
 
 msgid "Failed to empty cart to group"
+msgstr ""
+
+msgid "Failed to enable plugin"
+msgstr ""
+
+msgid "Failed to get plugin details"
+msgstr ""
+
+msgid "Failed to list plugins"
 msgstr ""
 
 msgid "Failed to load cart status."
@@ -2883,6 +2970,9 @@ msgid "Failed to save setting. Please try again."
 msgstr ""
 
 msgid "Failed to save settings"
+msgstr ""
+
+msgid "Failed to send SMS"
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -2983,6 +3073,10 @@ msgid "Family Name"
 msgstr ""
 
 msgid "Family Navigation"
+msgstr ""
+
+#. Context: query_qry
+msgid "Family Pledge by Fiscal Year"
 msgstr ""
 
 msgid "Family Pledges"
@@ -3171,6 +3265,10 @@ msgstr ""
 msgid "Find Duplicate Emails"
 msgstr ""
 
+#. Context: query_qry
+msgid "Find Registered students"
+msgstr ""
+
 msgid "Find family->"
 msgstr ""
 
@@ -3240,7 +3338,12 @@ msgstr ""
 msgid "FirstName MiddleName LastName"
 msgstr ""
 
+#. Context: queryparameters_qrp
 msgid "Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year."
 msgstr ""
 
 msgid "Focus"
@@ -3315,6 +3418,12 @@ msgstr ""
 msgid "From"
 msgstr ""
 
+msgid "From Phone Number"
+msgstr ""
+
+msgid "From dashboard.vonage.com"
+msgstr ""
+
 msgid "Full Backup"
 msgstr ""
 
@@ -3346,6 +3455,13 @@ msgid "Fundraiser Listing"
 msgstr ""
 
 msgid "Funds"
+msgstr ""
+
+msgid "GA4 Measurement ID"
+msgstr ""
+
+#. plugin:google-analytics:link:1:label
+msgid "GA4 Setup Guide"
 msgstr ""
 
 msgid "GPS Visualizer"
@@ -3432,6 +3548,13 @@ msgstr ""
 msgid "Germany (Deutschland)"
 msgstr ""
 
+msgid "Get your API key from MailChimp Account Settings > API Keys"
+msgstr ""
+
+#. plugin:google-analytics:section:0:title
+msgid "Getting Your GA4 Measurement ID"
+msgstr ""
+
 #. Context: countries
 msgid "Ghana (Gaana)"
 msgstr ""
@@ -3464,7 +3587,16 @@ msgstr ""
 msgid "Go to Login"
 msgstr ""
 
-msgid "Google Analytics Tracking Code"
+#. plugin:google-analytics:summary
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr ""
+
+#. plugin:google-analytics:link:0:label
+msgid "Google Analytics Help"
+msgstr ""
+
+#. plugin:google-analytics:section:2:content
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
 msgstr ""
 
 msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
@@ -3480,6 +3612,25 @@ msgid "Google Maps Zoom"
 msgstr ""
 
 msgid "Graphic"
+msgstr ""
+
+#. plugin:gravatar:summary
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr ""
+
+#. plugin:gravatar:link:1:label
+msgid "Gravatar Image Options"
+msgstr ""
+
+#. plugin:gravatar:link:0:label
+msgid "Gravatar Website"
+msgstr ""
+
+msgid "Gravatar default image style"
+msgstr ""
+
+#. plugin:gravatar:section:2:content
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr ""
 
 #. Context: countries
@@ -3568,6 +3719,10 @@ msgid "Group added to cart"
 msgstr ""
 
 msgid "Group management access"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Group of registered students"
 msgstr ""
 
 msgid "Group removed from cart"
@@ -3665,6 +3820,9 @@ msgstr ""
 msgid "Hebrew"
 msgstr ""
 
+msgid "Help"
+msgstr ""
+
 msgid "Help & Manual"
 msgstr ""
 
@@ -3672,6 +3830,9 @@ msgid "Help on types.."
 msgstr ""
 
 msgid "Help translate this project"
+msgstr ""
+
+msgid "Here"
 msgstr ""
 
 msgid "Hide Age"
@@ -3715,6 +3876,10 @@ msgid "Hostname"
 msgstr ""
 
 msgid "How did you learn of the church?"
+msgstr ""
+
+#. plugin:gravatar:section:0:title
+msgid "How it works"
 msgstr ""
 
 msgid "How to Fix:"
@@ -3790,6 +3955,9 @@ msgid "Ignore first CSV row (to exclude a header)"
 msgstr ""
 
 msgid "Ignore this Field"
+msgstr ""
+
+msgid "Image shown when no Gravatar exists for the email address"
 msgstr ""
 
 msgid "Images Root"
@@ -3879,6 +4047,9 @@ msgstr ""
 msgid "Install TLS/SSL certificate for better security"
 msgstr ""
 
+msgid "Install plugins by placing them in"
+msgstr ""
+
 msgid "Integration"
 msgstr ""
 
@@ -3936,6 +4107,9 @@ msgstr ""
 msgid "Invalid Year"
 msgstr ""
 
+msgid "Invalid assignment type"
+msgstr ""
+
 msgid "Invalid country name supplied"
 msgstr ""
 
@@ -3949,6 +4123,9 @@ msgid "Invalid format"
 msgstr ""
 
 msgid "Invalid login or password"
+msgstr ""
+
+msgid "Invalid person ID"
 msgstr ""
 
 msgid "Invalid request data"
@@ -4059,6 +4236,12 @@ msgid "Kids Emails"
 msgstr ""
 
 msgid "Kiosk Manager"
+msgstr ""
+
+msgid "Kiosk Registration Disabled"
+msgstr ""
+
+msgid "Kiosk not found"
 msgstr ""
 
 msgid "KioskVisibilityTimestamp"
@@ -4214,6 +4397,12 @@ msgstr ""
 msgid "Link Not found"
 msgstr ""
 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr ""
+
+msgid "Linked Group"
+msgstr ""
+
 msgid "Links"
 msgstr ""
 
@@ -4355,6 +4544,15 @@ msgstr ""
 
 #. Context: countries
 msgid "Madagascar (Madagasikara)"
+msgstr ""
+
+msgid "MailChimp API Key"
+msgstr ""
+
+msgid "MailChimp Dashboard"
+msgstr ""
+
+msgid "MailChimp Default List/Audience ID"
 msgstr ""
 
 msgid "MailChimp is not configured"
@@ -4862,6 +5060,9 @@ msgstr ""
 msgid "Need to remove this data later?"
 msgstr ""
 
+msgid "Needs Configuration"
+msgstr ""
+
 msgid "Neighbor Families"
 msgstr ""
 
@@ -4917,6 +5118,9 @@ msgstr ""
 msgid "New Zealand"
 msgstr ""
 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr ""
+
 msgid "New to"
 msgstr ""
 
@@ -4924,15 +5128,6 @@ msgid "Newsletter"
 msgstr ""
 
 msgid "Newsletter labels"
-msgstr ""
-
-msgid "Nexmo SMS API Key"
-msgstr ""
-
-msgid "Nexmo SMS API Secret"
-msgstr ""
-
-msgid "Nexmo SMS From Number"
 msgstr ""
 
 msgid "Next"
@@ -4981,6 +5176,9 @@ msgstr ""
 msgid "No Data Found"
 msgstr ""
 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr ""
+
 msgid "No Group Selected"
 msgstr ""
 
@@ -5002,7 +5200,13 @@ msgstr ""
 msgid "No assigned family"
 msgstr ""
 
+msgid "No community plugins installed"
+msgstr ""
+
 msgid "No coordinates found"
+msgstr ""
+
+msgid "No core plugins found"
 msgstr ""
 
 msgid "No custom Family fields have been added yet"
@@ -5050,6 +5254,9 @@ msgstr ""
 msgid "No notes have been added for this person."
 msgstr ""
 
+msgid "No one checked in yet"
+msgstr ""
+
 msgid "No payments on this deposit"
 msgstr ""
 
@@ -5075,6 +5282,9 @@ msgid "No property types found"
 msgstr ""
 
 msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr ""
+
+msgid "No settings provided"
 msgstr ""
 
 msgid "No volunteer opportunities have been added yet"
@@ -5189,9 +5399,6 @@ msgstr ""
 msgid "Notes access"
 msgstr ""
 
-msgid "Notification"
-msgstr ""
-
 msgid "Notification for"
 msgstr ""
 
@@ -5296,13 +5503,13 @@ msgstr ""
 msgid "Open this file in a text editor:"
 msgstr ""
 
-msgid "OpenLP Password"
+msgid "OpenLP Password (optional)"
 msgstr ""
 
-msgid "OpenLP URL"
+msgid "OpenLP Server URL"
 msgstr ""
 
-msgid "OpenLP Username"
+msgid "OpenLP Username (optional)"
 msgstr ""
 
 msgid "Opportunity"
@@ -5315,6 +5522,9 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr ""
 
 msgid "Optional - leave blank if not tracking"
+msgstr ""
+
+msgid "Optional - only if OpenLP requires authentication"
 msgstr ""
 
 msgid "Optional Data to Include"
@@ -5615,6 +5825,9 @@ msgstr ""
 msgid "Person has been already checked in for this event"
 msgstr ""
 
+msgid "Person not found"
+msgstr ""
+
 msgid "Person to Make User"
 msgstr ""
 
@@ -5662,6 +5875,9 @@ msgstr ""
 msgid "Phone number"
 msgstr ""
 
+msgid "Phone number and message required"
+msgstr ""
+
 msgid "Photo Directory"
 msgstr ""
 
@@ -5669,6 +5885,9 @@ msgid "PhotoBook"
 msgstr ""
 
 msgid "Photos"
+msgstr ""
+
+msgid "Pickup Request"
 msgstr ""
 
 msgid "Picture URL"
@@ -5793,10 +6012,10 @@ msgstr ""
 msgid "Please fill in all required fields correctly."
 msgstr ""
 
-msgid "Please go to this location"
+msgid "Please mail you next gift to "
 msgstr ""
 
-msgid "Please mail you next gift to "
+msgid "Please proceed to the classroom as soon as possible."
 msgstr ""
 
 msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
@@ -5876,11 +6095,39 @@ msgstr ""
 msgid "Pledge or Payment"
 msgstr ""
 
+#. Context: query_qry
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Pledged this year"
 msgstr ""
 
 msgid "Pledges and Payments"
+msgstr ""
+
+msgid "Plugin Development"
+msgstr ""
+
+msgid "Plugin Help"
+msgstr ""
+
+msgid "Plugin Management"
+msgstr ""
+
+msgid "Plugin disabled successfully"
+msgstr ""
+
+msgid "Plugin enabled successfully"
+msgstr ""
+
+msgid "Plugin failed to load"
+msgstr ""
+
+msgid "Plugin not found"
+msgstr ""
+
+msgid "Plugins"
 msgstr ""
 
 #. Context: countries
@@ -5928,6 +6175,14 @@ msgid "Printable View"
 msgstr ""
 
 msgid "Printable directory of all people, grouped by family where assigned"
+msgstr ""
+
+#. plugin:google-analytics:section:2:title
+msgid "Privacy Considerations"
+msgstr ""
+
+#. plugin:gravatar:section:2:title
+msgid "Privacy Note"
 msgstr ""
 
 msgid "Private"
@@ -6057,6 +6312,9 @@ msgstr ""
 msgid "Recipient Naming Method"
 msgstr ""
 
+msgid "Recipients and message required"
+msgstr ""
+
 msgid "Recommendation: Review and delete these files before or after the upgrade."
 msgstr ""
 
@@ -6109,6 +6367,10 @@ msgid "Register a New Family"
 msgstr ""
 
 msgid "Register another family!"
+msgstr ""
+
+#. Context: query_qry
+msgid "Registered students"
 msgstr ""
 
 msgid "Registration Complete"
@@ -6402,6 +6664,9 @@ msgid "SE"
 msgstr ""
 
 msgid "SHA1 Hash:"
+msgstr ""
+
+msgid "SMS sent"
 msgstr ""
 
 msgid "SMTP Host"
@@ -6836,7 +7101,7 @@ msgstr ""
 msgid "Share this URL with family members to verify their information"
 msgstr ""
 
-msgid "Should only administrators have access to the CSV export system and directory report?"
+msgid "Shipped with ChurchCRM."
 msgstr ""
 
 msgid "Show"
@@ -6944,6 +7209,9 @@ msgid "Some ChurchCRM system files may have been modified since the last install
 msgstr ""
 
 msgid "Some application prerequisites are not met"
+msgstr ""
+
+msgid "Some settings could not be saved"
 msgstr ""
 
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
@@ -7376,6 +7644,9 @@ msgstr ""
 msgid "The sunday school class for which you would like records returned."
 msgstr ""
 
+msgid "The teacher sent this alert at"
+msgstr ""
+
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr ""
 
@@ -7403,6 +7674,9 @@ msgstr ""
 msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
 msgstr ""
 
+msgid "Third-party extensions."
+msgstr ""
+
 msgid "This Family is Inactive"
 msgstr ""
 
@@ -7419,6 +7693,9 @@ msgid "This field is required"
 msgstr ""
 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr ""
+
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
 msgstr ""
 
 msgid "This may take a few minutes for large databases."
@@ -7486,6 +7763,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Timor-Leste"
+msgstr ""
+
+msgid "Tip"
 msgstr ""
 
 msgid "Tip:"
@@ -7620,6 +7900,9 @@ msgid "True"
 msgstr ""
 
 msgid "True / False"
+msgstr ""
+
+msgid "Try Again"
 msgstr ""
 
 msgid "Tuesdays"
@@ -7798,6 +8081,9 @@ msgstr ""
 msgid "Unsupported Two Factor Authentication Configuration"
 msgstr ""
 
+msgid "Upcoming Birthdays"
+msgstr ""
+
 msgid "Update"
 msgstr ""
 
@@ -7951,10 +8237,6 @@ msgstr ""
 
 #. Context: userconfig_ucfg
 msgid "User permission to create directories"
-msgstr ""
-
-#. Context: userconfig_ucfg
-msgid "User permission to export CSV files"
 msgstr ""
 
 #. Context: userconfig_ucfg
@@ -8146,6 +8428,15 @@ msgstr ""
 msgid "Volunteers"
 msgstr ""
 
+msgid "Vonage API Key"
+msgstr ""
+
+msgid "Vonage API Secret"
+msgstr ""
+
+msgid "Vonage From Phone Number (E.164 format)"
+msgstr ""
+
 msgid "Voting Members"
 msgstr ""
 
@@ -8168,6 +8459,9 @@ msgid "WNW"
 msgstr ""
 
 msgid "WSW"
+msgstr ""
+
+msgid "Waiting to Check In"
 msgstr ""
 
 #. Context: countries
@@ -8229,7 +8523,18 @@ msgstr ""
 msgid "Western Sahara (‫الصحراء الغربية‬‎)"
 msgstr ""
 
+#. plugin:google-analytics:section:1:title
+msgid "What Gets Tracked"
+msgstr ""
+
 msgid "What are Orphaned Files?"
+msgstr ""
+
+#. plugin:gravatar:section:0:content
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr ""
+
+msgid "When enabled, new kiosk devices can register for 30 seconds."
 msgstr ""
 
 msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
@@ -8405,6 +8710,9 @@ msgstr ""
 msgid "Your ChurchCRM password has been changed"
 msgstr ""
 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr ""
+
 msgid "Your New Account"
 msgstr ""
 
@@ -8418,6 +8726,9 @@ msgid "Your cart is empty"
 msgstr ""
 
 msgid "Your cart is empty!"
+msgstr ""
+
+msgid "Your child"
 msgstr ""
 
 msgid "Your fiscal year starts in month"
@@ -8532,6 +8843,9 @@ msgstr ""
 msgid "e.g., Visitors, Children"
 msgstr ""
 
+msgid "e.g., http://192.168.1.100:4316"
+msgstr ""
+
 msgid "eMail Dashboard"
 msgstr ""
 
@@ -8604,7 +8918,7 @@ msgstr ""
 msgid "loading"
 msgstr ""
 
-msgid "lookup user images on Gravatar when no local image is present"
+msgid "manifest."
 msgstr ""
 
 msgid "members. Already had"
@@ -8614,6 +8928,9 @@ msgid "miles"
 msgstr ""
 
 msgid "must be configured with an encryption key"
+msgstr ""
+
+msgid "needs to be picked up from"
 msgstr ""
 
 msgid "not found"
@@ -8717,6 +9034,9 @@ msgstr ""
 msgid "system user updated"
 msgstr ""
 
+msgid "their classroom"
+msgstr ""
+
 msgid "to"
 msgstr ""
 
@@ -8737,6 +9057,14 @@ msgstr ""
 
 #. Context: countries
 msgid "Åland Islands (Åland)"
+msgstr ""
+
+#. plugin:google-analytics:section:1:content
+msgid ""
+"• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
 msgstr ""
 
 msgid "✓ CheckOut"

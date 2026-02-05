@@ -119,4 +119,17 @@ interface PluginInterface
      * @return array Help content array
      */
     public function getHelp(): array;
+
+    /**
+     * Get client-side configuration for this plugin.
+     *
+     * Returns an array of settings to expose to JavaScript via window.CRM.plugins.{pluginId}
+     * Only called for active plugins. Use this for config that client-side code needs.
+     *
+     * Example return value:
+     *   ['enabled' => true, 'apiKey' => 'xyz', 'defaultImage' => 'mp']
+     *
+     * @return array Configuration key-value pairs for client-side use
+     */
+    public function getClientConfig(): array;
 }

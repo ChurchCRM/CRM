@@ -101,7 +101,10 @@ $MenuFirst = 1;
               sDateTimeFormat: "<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
             },
             iDashboardServiceIntervalTime:"<?= SystemConfig::getValue('iDashboardServiceIntervalTime') ?>",
-            bEnableGravatarPhotos: <?= SystemConfig::getBooleanValue('plugin.gravatar.enabled') ? 'true' : 'false' ?>,
+            // Plugin configs from active plugins (via getClientConfig())
+            plugins: <?= json_encode(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,
+            // Legacy: keep bEnableGravatarPhotos for backward compatibility with existing JS
+            bEnableGravatarPhotos: <?= json_encode(PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false) ?>,
             plugin: {
                 dataTable : {
                     "pageLength": <?= $tableSize ?>,

@@ -3,27 +3,36 @@
 namespace ChurchCRM\Plugins\Gravatar;
 
 use ChurchCRM\Plugin\AbstractPlugin;
-use ChurchCRM\Plugin\Hook\HookManager;
 
 /**
  * Gravatar Integration Plugin.
  *
- * Provides Gravatar profile photos as fallback for members
- * who don't have uploaded photos in ChurchCRM.
+ * A config-only plugin that enables Gravatar support in ChurchCRM.
+ * The actual Gravatar rendering is handled client-side by avatar-loader.ts
+ * using the avatar-initials library.
  *
+ * This plugin exposes:
+ * - enabled: Whether Gravatar is enabled (passed to client as bEnableGravatarPhotos)
+ * - defaultImage: Gravatar fallback style (mp, identicon, monsterid, etc.)
+ *
+ * @see webpack/avatar-loader.ts for client-side implementation
  * @see https://gravatar.com/
  */
 class GravatarPlugin extends AbstractPlugin
 {
-    private const GRAVATAR_BASE_URL = 'https://www.gravatar.com/avatar/';
-
     /**
      * Default image types supported by Gravatar.
+     * @see https://docs.gravatar.com/general/images/
      */
-    private const DEFAULT_IMAGES = ['mp', 'identicon', 'monsterid', 'wavatar', 'retro', 'robohash'];
-
-    private bool $enabled = false;
-    private string $defaultImage = 'mp';
+    public const DEFAULT_IMAGES = [
+        'mp' => 'Mystery Person - Gray silhouette outline',
+        'identicon' => 'Identicon - Geometric pattern based on email',
+        'monsterid' => 'MonsterID - Unique generated monster face',
+        'wavatar' => 'Wavatar - Abstract generated face',
+        'retro' => 'Retro - 8-bit arcade-style pixel art',
+        'robohash' => 'RoboHash - Unique generated robot',
+        'blank' => 'Blank - Transparent (falls back to initials)',
+    ];
 
     public function getId(): string
     {
@@ -47,9 +56,6 @@ class GravatarPlugin extends AbstractPlugin
 
     public function boot(): void
     {
-        $this->enabled = $this->getBooleanConfigValue('enabled');
-        $this->defaultImage = $this->getConfigValue('defaultImage') ?: 'mp';
-
         $this->log('Gravatar plugin booted');
     }
 
@@ -70,12 +76,13 @@ class GravatarPlugin extends AbstractPlugin
 
     public function isConfigured(): bool
     {
-        return $this->enabled;
+        // No additional configuration required beyond being enabled
+        return true;
     }
 
     public function registerRoutes($routeCollector): void
     {
-        // No custom routes - integrates with photo system
+        // No custom routes - Gravatar handled client-side
     }
 
     public function getMenuItems(): array
@@ -87,80 +94,35 @@ class GravatarPlugin extends AbstractPlugin
     {
         return [
             [
-                'key' => 'enabled',
-                'label' => gettext('Enable Gravatar Photos'),
-                'type' => 'boolean',
-            ],
-            [
                 'key' => 'defaultImage',
                 'label' => gettext('Default Image Style'),
                 'type' => 'select',
-                'options' => self::DEFAULT_IMAGES,
-                'help' => gettext('Image shown when no Gravatar exists for email'),
+                'options' => array_keys(self::DEFAULT_IMAGES),
+                'optionLabels' => array_values(self::DEFAULT_IMAGES),
+                'help' => gettext('Image shown when no Gravatar exists for the email address'),
             ],
         ];
     }
 
-    // =========================================================================
-    // Gravatar Methods
-    // =========================================================================
-
     /**
-     * Get a Gravatar URL for an email address.
-     *
-     * @param string $email Email address
-     * @param int    $size  Image size in pixels (1-2048)
-     *
-     * @return string Gravatar URL
+     * Get the configured default image style.
      */
-    public function getGravatarUrl(string $email, int $size = 200): string
+    public function getDefaultImage(): string
     {
-        $email = strtolower(trim($email));
-        $hash = md5($email);
-
-        $params = http_build_query([
-            's' => min(max($size, 1), 2048),
-            'd' => $this->defaultImage,
-            'r' => 'g', // Rating: g (general audiences)
-        ]);
-
-        return self::GRAVATAR_BASE_URL . $hash . '?' . $params;
+        return $this->getConfigValue('defaultImage') ?: 'blank';
     }
 
     /**
-     * Check if an email has a Gravatar.
+     * Get client-side configuration for this plugin.
+     * This is exposed to JavaScript via window.CRM.plugins.gravatar
      *
-     * @param string $email Email address
-     *
-     * @return bool True if Gravatar exists
+     * @return array Configuration for client-side use
      */
-    public function hasGravatar(string $email): bool
+    public function getClientConfig(): array
     {
-        $email = strtolower(trim($email));
-        $hash = md5($email);
-        $url = self::GRAVATAR_BASE_URL . $hash . '?d=404';
-
-        $headers = @get_headers($url);
-
-        return $headers && strpos($headers[0], '200') !== false;
-    }
-
-    /**
-     * Get photo URL for a person (Gravatar fallback logic).
-     *
-     * @param string $email           Person's email
-     * @param bool   $hasUploadedPhoto Whether person has uploaded photo
-     * @param int    $size            Desired size
-     *
-     * @return string|null Gravatar URL or null if disabled/no email
-     */
-    public function getPhotoFallbackUrl(string $email, bool $hasUploadedPhoto, int $size = 200): ?string
-    {
-        // Only provide Gravatar if enabled and person has no uploaded photo
-        if (!$this->enabled || $hasUploadedPhoto || empty($email)) {
-            return null;
-        }
-
-        return $this->getGravatarUrl($email, $size);
+        return [
+            'enabled' => $this->isEnabled(),
+            'defaultImage' => $this->getDefaultImage(),
+        ];
     }
 }

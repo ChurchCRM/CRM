@@ -583,4 +583,36 @@ class PluginManager
 
         return $content;
     }
+
+    /**
+     * Get combined client-side configuration from all active plugins.
+     *
+     * Called by Header.php to expose plugin configs to JavaScript via window.CRM.plugins
+     * Each plugin's getClientConfig() return value is included under its plugin ID key.
+     *
+     * Example output:
+     *   ['gravatar' => ['enabled' => true, 'defaultImage' => 'mp'], 'analytics' => ['trackingId' => 'G-XXX']]
+     *
+     * @return array<string, array> Plugin configs keyed by plugin ID
+     */
+    public static function getPluginsClientConfig(): array
+    {
+        $configs = [];
+
+        foreach (self::$loadedPlugins as $pluginId => $plugin) {
+            try {
+                $config = $plugin->getClientConfig();
+                if (!empty($config)) {
+                    $configs[$pluginId] = $config;
+                }
+            } catch (\Throwable $e) {
+                LoggerUtils::getAppLogger()->error(
+                    "Error getting client config from plugin: {$pluginId}",
+                    ['error' => $e->getMessage()]
+                );
+            }
+        }
+
+        return $configs;
+    }
 }

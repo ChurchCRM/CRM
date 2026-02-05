@@ -222,6 +222,19 @@ abstract class AbstractPlugin implements PluginInterface
     }
 
     /**
+     * Get client-side configuration for this plugin.
+     *
+     * Default implementation returns empty array (no client config).
+     * Override in subclass to provide plugin-specific client config.
+     *
+     * @return array Configuration for client-side use
+     */
+    public function getClientConfig(): array
+    {
+        return [];
+    }
+
+    /**
      * Helper to log plugin messages.
      */
     protected function log(string $message, string $level = 'info', array $context = []): void

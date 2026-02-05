@@ -9,21 +9,23 @@
     "minimumCRMVersion": "7.0.0",
     "mainClass": "ChurchCRM\\Plugins\\Gravatar\\GravatarPlugin",
     "dependencies": [],
-    "settingsUrl": "/plugins/gravatar/settings",
+    "settingsUrl": null,
     "settings": [
-        {
-            "key": "enabled",
-            "label": "Enable Gravatar Photos",
-            "type": "boolean",
-            "required": false,
-            "help": "When enabled, uses Gravatar photos for members without uploaded photos"
-        },
         {
             "key": "defaultImage",
             "label": "Default Image Style",
             "type": "select",
-            "options": ["mp", "identicon", "monsterid", "wavatar", "retro", "robohash"],
-            "help": "The default image style when no Gravatar exists"
+            "options": ["mp", "identicon", "monsterid", "wavatar", "retro", "robohash", "blank"],
+            "optionLabels": [
+                "Mystery Person - Gray silhouette outline",
+                "Identicon - Geometric pattern based on email",
+                "MonsterID - Unique generated monster face",
+                "Wavatar - Abstract generated face",
+                "Retro - 8-bit arcade-style pixel art",
+                "RoboHash - Unique generated robot",
+                "Blank - Transparent (falls back to initials)"
+            ],
+            "help": "The default image style when no Gravatar exists for the email"
         }
     ],
     "menuItems": [],

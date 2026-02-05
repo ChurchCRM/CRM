@@ -39,7 +39,7 @@ VALUES
 INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value, cfg_type, cfg_default, cfg_tooltip, cfg_section)
 VALUES 
     (3040, 'plugin.gravatar.enabled', '0', 'boolean', '0', 'Enable Gravatar plugin', 'Plugins'),
-    (3041, 'plugin.gravatar.defaultImage', 'mp', 'text', 'mp', 'Gravatar default image style', 'Plugins');
+    (3041, 'plugin.gravatar.defaultImage', 'blank', 'text', 'blank', 'Gravatar default image style', 'Plugins');
 
 -- =============================================================================
 -- STEP 2: Migrate existing values from legacy config keys to new prefixed keys

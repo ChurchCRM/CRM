@@ -270,7 +270,7 @@ class   SystemConfig
 
             // Gravatar Plugin
             'plugin.gravatar.enabled'              => new ConfigItem(3040, 'plugin.gravatar.enabled', 'boolean', '0', gettext('Enable Gravatar plugin')),
-            'plugin.gravatar.defaultImage'         => new ConfigItem(3041, 'plugin.gravatar.defaultImage', 'text', 'mp', gettext('Gravatar default image style')),
+            'plugin.gravatar.defaultImage'         => new ConfigItem(3041, 'plugin.gravatar.defaultImage', 'text', 'blank', gettext('Gravatar default image style')),
         ];
     }
 
