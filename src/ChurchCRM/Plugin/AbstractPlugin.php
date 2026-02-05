@@ -168,8 +168,23 @@ abstract class AbstractPlugin implements PluginInterface
         return null;
     }
 
+    /**
+     * Check if the plugin is properly configured.
+     * 
+     * By default, checks that all required settings have values.
+     * Override in subclass for custom configuration validation.
+     */
     public function isConfigured(): bool
     {
+        $settings = $this->getSettingsSchema();
+        foreach ($settings as $setting) {
+            if (!empty($setting['required'])) {
+                $value = $this->getConfigValue($setting['key'] ?? '');
+                if (empty($value)) {
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
@@ -186,6 +201,15 @@ abstract class AbstractPlugin implements PluginInterface
     public function uninstall(): void
     {
         LoggerUtils::getAppLogger()->info("Plugin '{$this->getId()}' uninstalled");
+    }
+
+    /**
+     * Get any configuration error message.
+     * Override in subclass to provide specific error messages.
+     */
+    public function getConfigurationError(): ?string
+    {
+        return null;
     }
 
     /**

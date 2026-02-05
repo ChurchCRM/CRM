@@ -5,7 +5,6 @@ use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
@@ -14,7 +13,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $curYear = (new DateTime())->format("Y");
 $familyAddress = $family->getAddress();
-$mailchimp = new MailChimpService();
 
 $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 if (array_key_exists('idefaultFY', $_SESSION)) {
@@ -25,6 +23,9 @@ $memberCount = count($family->getPeople());
 
 // Get unique family emails for the verification modal
 $familyEmails = $family->getEmails();
+
+// Store family email for JavaScript (used by MailChimp plugin if active)
+$familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '';
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -32,7 +33,8 @@ $familyEmails = $family->getEmails();
     window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
     window.CRM.currentFamilyView = 2;
-    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
+    window.CRM.familyEmail = "<?= htmlspecialchars($family->getEmail() ?? '', ENT_QUOTES, 'UTF-8') ?>";
+    window.CRM.familyEmailMD5 = "<?= $familyEmailMD5 ?>";
 </script>
 
 <div id="family-deactivated" class="alert alert-warning d-none">
@@ -199,10 +201,12 @@ $familyEmails = $family->getEmails();
                         <li><i class="fa-li fa-solid fa-envelope"></i><?= gettext("Email") ?>:<a
                                 href="mailto:<?= $family->getEmail() ?>">
                                 <span><?= $family->getEmail() ?></span></a></li>
-                        <?php if ($mailchimp->isActive()) { ?>
-                         <li><i class="fa-li fa-regular fa-paper-plane"></i><?= gettext("Mailchimp") ?>:
-                         <span id="<?= md5($family->getEmail())?>">... <?= gettext("loading")?> ...</span></li>
-                        <?php }
+                        <!-- MailChimp status - populated by JavaScript if plugin is active -->
+                        <li class="d-none" id="mailchimp-status-container">
+                            <i class="fa-li fa-regular fa-paper-plane"></i><?= gettext("Mailchimp") ?>:
+                            <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
+                        </li>
+                        <?php
                     }
                     foreach ($familyCustom as $customField) {
                         echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>' . $customField->getDisplayValue() . ': <span>';

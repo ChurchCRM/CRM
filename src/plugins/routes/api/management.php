@@ -6,7 +6,6 @@ use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Routing\RouteCollectorProxy;
 
 /**
  * Plugin management API routes.
@@ -15,210 +14,211 @@ use Slim\Routing\RouteCollectorProxy;
  * - Listing plugins
  * - Enabling/disabling plugins
  * - Getting plugin status
+ *
+ * These routes are under /plugins/api/ and require admin role.
  */
-$app->group('/api', function (RouteCollectorProxy $group): void {
-    // Get all plugins
-    $group->get('/plugins', function (Request $request, Response $response): Response {
-        try {
-            $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
-            PluginManager::init($pluginsPath);
 
-            $plugins = PluginManager::getAllPlugins();
+// Get all plugins
+$group->get('/plugins', function (Request $request, Response $response): Response {
+    try {
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        PluginManager::init($pluginsPath);
 
-            return SlimUtils::renderJSON($response, [
-                'success' => true,
-                'data' => $plugins,
-            ]);
-        } catch (\Throwable $e) {
+        $plugins = PluginManager::getAllPlugins();
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'data' => $plugins,
+        ]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to list plugins'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+// Get single plugin details
+$group->get('/plugins/{pluginId}', function (Request $request, Response $response, array $args): Response {
+    try {
+        $pluginId = $args['pluginId'];
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        PluginManager::init($pluginsPath);
+
+        $metadata = PluginManager::getPluginMetadata($pluginId);
+        if ($metadata === null) {
             return SlimUtils::renderErrorJSON(
                 $response,
-                gettext('Failed to list plugins'),
+                gettext('Plugin not found'),
                 [],
-                500,
-                $e,
-                $request
+                404
             );
         }
-    });
 
-    // Get single plugin details
-    $group->get('/plugins/{pluginId}', function (Request $request, Response $response, array $args): Response {
-        try {
-            $pluginId = $args['pluginId'];
-            $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
-            PluginManager::init($pluginsPath);
+        $plugin = PluginManager::getPlugin($pluginId);
 
-            $metadata = PluginManager::getPluginMetadata($pluginId);
-            if ($metadata === null) {
-                return SlimUtils::renderErrorJSON(
-                    $response,
-                    gettext('Plugin not found'),
-                    [],
-                    404
-                );
-            }
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'data' => [
+                'metadata' => $metadata->toArray(),
+                'isActive' => PluginManager::isPluginActive($pluginId),
+                'isConfigured' => $plugin?->isConfigured() ?? false,
+            ],
+        ]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to get plugin details'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
 
-            $plugin = PluginManager::getPlugin($pluginId);
+// Enable a plugin
+$group->post('/plugins/{pluginId}/enable', function (Request $request, Response $response, array $args): Response {
+    try {
+        $pluginId = $args['pluginId'];
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        PluginManager::init($pluginsPath);
 
-            return SlimUtils::renderJSON($response, [
-                'success' => true,
-                'data' => [
-                    'metadata' => $metadata->toArray(),
-                    'isActive' => PluginManager::isPluginActive($pluginId),
-                    'isConfigured' => $plugin?->isConfigured() ?? false,
-                ],
-            ]);
-        } catch (\Throwable $e) {
+        PluginManager::enablePlugin($pluginId);
+
+        LoggerUtils::getAppLogger()->info("Plugin enabled: $pluginId");
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Plugin enabled successfully'),
+        ]);
+    } catch (\RuntimeException $e) {
+        // Dependency or version errors
+        return SlimUtils::renderErrorJSON(
+            $response,
+            $e->getMessage(),
+            [],
+            400,
+            $e,
+            $request
+        );
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to enable plugin'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+// Disable a plugin
+$group->post('/plugins/{pluginId}/disable', function (Request $request, Response $response, array $args): Response {
+    try {
+        $pluginId = $args['pluginId'];
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        PluginManager::init($pluginsPath);
+
+        PluginManager::disablePlugin($pluginId);
+
+        LoggerUtils::getAppLogger()->info("Plugin disabled: $pluginId");
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Plugin disabled successfully'),
+        ]);
+    } catch (\RuntimeException $e) {
+        // Dependency errors (other plugins depend on this one)
+        return SlimUtils::renderErrorJSON(
+            $response,
+            $e->getMessage(),
+            [],
+            400,
+            $e,
+            $request
+        );
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to disable plugin'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
+
+// Update plugin settings
+$group->post('/plugins/{pluginId}/settings', function (Request $request, Response $response, array $args): Response {
+    try {
+        $pluginId = $args['pluginId'];
+        $body = $request->getParsedBody();
+        $settings = $body['settings'] ?? [];
+
+        if (empty($settings)) {
             return SlimUtils::renderErrorJSON(
                 $response,
-                gettext('Failed to get plugin details'),
+                gettext('No settings provided'),
                 [],
-                500,
-                $e,
-                $request
+                400
             );
         }
-    });
 
-    // Enable a plugin
-    $group->post('/plugins/{pluginId}/enable', function (Request $request, Response $response, array $args): Response {
-        try {
-            $pluginId = $args['pluginId'];
-            $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
-            PluginManager::init($pluginsPath);
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        PluginManager::init($pluginsPath);
 
-            PluginManager::enablePlugin($pluginId);
-
-            LoggerUtils::getAppLogger()->info("Plugin enabled: $pluginId");
-
-            return SlimUtils::renderJSON($response, [
-                'success' => true,
-                'message' => gettext('Plugin enabled successfully'),
-            ]);
-        } catch (\RuntimeException $e) {
-            // Dependency or version errors
+        $metadata = PluginManager::getPluginMetadata($pluginId);
+        if ($metadata === null) {
             return SlimUtils::renderErrorJSON(
                 $response,
-                $e->getMessage(),
+                gettext('Plugin not found'),
                 [],
-                400,
-                $e,
-                $request
-            );
-        } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON(
-                $response,
-                gettext('Failed to enable plugin'),
-                [],
-                500,
-                $e,
-                $request
+                404
             );
         }
-    });
 
-    // Disable a plugin
-    $group->post('/plugins/{pluginId}/disable', function (Request $request, Response $response, array $args): Response {
-        try {
-            $pluginId = $args['pluginId'];
-            $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
-            PluginManager::init($pluginsPath);
+        $updated = [];
+        $failed = [];
 
-            PluginManager::disablePlugin($pluginId);
-
-            LoggerUtils::getAppLogger()->info("Plugin disabled: $pluginId");
-
-            return SlimUtils::renderJSON($response, [
-                'success' => true,
-                'message' => gettext('Plugin disabled successfully'),
-            ]);
-        } catch (\RuntimeException $e) {
-            // Dependency errors (other plugins depend on this one)
-            return SlimUtils::renderErrorJSON(
-                $response,
-                $e->getMessage(),
-                [],
-                400,
-                $e,
-                $request
-            );
-        } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON(
-                $response,
-                gettext('Failed to disable plugin'),
-                [],
-                500,
-                $e,
-                $request
-            );
+        foreach ($settings as $key => $value) {
+            if (PluginManager::updatePluginSetting($pluginId, $key, $value)) {
+                $updated[] = $key;
+            } else {
+                $failed[] = $key;
+            }
         }
-    });
 
-    // Update plugin settings
-    $group->post('/plugins/{pluginId}/settings', function (Request $request, Response $response, array $args): Response {
-        try {
-            $pluginId = $args['pluginId'];
-            $body = $request->getParsedBody();
-            $settings = $body['settings'] ?? [];
-
-            if (empty($settings)) {
-                return SlimUtils::renderErrorJSON(
-                    $response,
-                    gettext('No settings provided'),
-                    [],
-                    400
-                );
-            }
-
-            $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
-            PluginManager::init($pluginsPath);
-
-            $metadata = PluginManager::getPluginMetadata($pluginId);
-            if ($metadata === null) {
-                return SlimUtils::renderErrorJSON(
-                    $response,
-                    gettext('Plugin not found'),
-                    [],
-                    404
-                );
-            }
-
-            $updated = [];
-            $failed = [];
-
-            foreach ($settings as $key => $value) {
-                if (PluginManager::updatePluginSetting($pluginId, $key, $value)) {
-                    $updated[] = $key;
-                } else {
-                    $failed[] = $key;
-                }
-            }
-
-            if (!empty($failed)) {
-                return SlimUtils::renderJSON($response, [
-                    'success' => false,
-                    'message' => gettext('Some settings could not be saved'),
-                    'updated' => $updated,
-                    'failed' => $failed,
-                ]);
-            }
-
-            LoggerUtils::getAppLogger()->info("Plugin settings updated: $pluginId", ['settings' => array_keys($settings)]);
-
+        if (!empty($failed)) {
             return SlimUtils::renderJSON($response, [
-                'success' => true,
-                'message' => gettext('Settings saved successfully'),
+                'success' => false,
+                'message' => gettext('Some settings could not be saved'),
                 'updated' => $updated,
+                'failed' => $failed,
             ]);
-        } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON(
-                $response,
-                gettext('Failed to save settings'),
-                [],
-                500,
-                $e,
-                $request
-            );
         }
-    });
+
+        LoggerUtils::getAppLogger()->info("Plugin settings updated: $pluginId", ['settings' => array_keys($settings)]);
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Settings saved successfully'),
+            'updated' => $updated,
+        ]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to save settings'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
 });

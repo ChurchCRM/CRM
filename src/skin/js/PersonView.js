@@ -151,37 +151,65 @@ $(document).ready(function () {
         });
     });
 
-    if (window.CRM.plugin.mailchimp) {
+    // Check if MailChimp plugin is active via API and load data if so
+    // Only show tab if the person has at least one email (tab content is conditionally rendered in PHP)
+    if ($("#mailchimp").length > 0) {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: window.CRM.root + "/api/mailchimp/person/" + window.CRM.currentPersonID,
-            success: function (data, status, xmlHttpReq) {
-                for (const emailData of data) {
-                    let htmlVal = "";
-                    let emailMD5 = emailData["emailMD5"];
-                    for (const list of emailData["list"]) {
-                        let listName = list["name"];
-                        let listStatus = list["status"];
-                        if (listStatus != 404) {
-                            let listOpenRate = list["stats"]["avg_open_rate"] * 100;
-                            htmlVal =
-                                htmlVal +
-                                "<li>" +
-                                listName +
-                                " (" +
-                                listStatus +
-                                ") - " +
-                                listOpenRate +
-                                "% " +
-                                i18next.t("open rate") +
-                                " </li>";
-                        }
-                    }
-                    if (htmlVal === "") {
-                        htmlVal = i18next.t("Not Subscribed ");
-                    }
-                    $("#" + emailMD5).html(htmlVal);
+            url: window.CRM.root + "/plugins/api/plugins/mailchimp",
+            success: function (pluginData) {
+                if (pluginData.success && pluginData.data.isActive && pluginData.data.isConfigured) {
+                    // Show the MailChimp tab and content
+                    $("#nav-item-mailchimp-container").removeClass("d-none");
+                    $("#mailchimp").removeClass("d-none");
+
+                    // Load the person's MailChimp data
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: window.CRM.root + "/plugins/mailchimp/api/person/" + window.CRM.currentPersonID,
+                        success: function (data) {
+                            if (!data || data.length === 0) {
+                                // No email data returned - should not happen if tab is shown
+                                return;
+                            }
+                            for (const emailData of data) {
+                                let htmlVal = "";
+                                let emailMD5 = emailData["emailMD5"];
+                                let lists = emailData["list"] || [];
+                                for (const list of lists) {
+                                    let listName = list["name"];
+                                    let listStatus = list["status"];
+                                    if (listStatus != 404) {
+                                        let listOpenRate = (list["stats"]?.["avg_open_rate"] || 0) * 100;
+                                        htmlVal +=
+                                            "<li>" +
+                                            listName +
+                                            " (" +
+                                            listStatus +
+                                            ") - " +
+                                            listOpenRate.toFixed(2) +
+                                            "% " +
+                                            i18next.t("open rate") +
+                                            "</li>";
+                                    }
+                                }
+                                if (htmlVal === "") {
+                                    htmlVal = i18next.t("Not Subscribed");
+                                }
+                                $("#" + emailMD5).html(htmlVal);
+                            }
+                        },
+                        error: function () {
+                            // API error - update all loading cells to show error
+                            $("#mailchimp td[id]").each(function () {
+                                if ($(this).text().includes("loading")) {
+                                    $(this).html('<span class="text-muted">' + i18next.t("Unable to load") + "</span>");
+                                }
+                            });
+                        },
+                    });
                 }
             },
         });

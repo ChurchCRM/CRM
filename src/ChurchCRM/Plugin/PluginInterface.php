@@ -93,6 +93,12 @@ interface PluginInterface
     public function isConfigured(): bool;
 
     /**
+     * Get any configuration error message for display in the plugin management UI.
+     * Return null if there are no errors.
+     */
+    public function getConfigurationError(): ?string;
+
+    /**
      * Get HTML/JavaScript content to inject into the page <head>.
      * Called only for active plugins on logged-in user pages.
      *

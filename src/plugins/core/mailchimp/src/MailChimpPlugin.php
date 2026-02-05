@@ -5,8 +5,6 @@ namespace ChurchCRM\Plugins\MailChimp;
 use ChurchCRM\Plugin\AbstractPlugin;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
-use ChurchCRM\Utils\LoggerUtils;
-use DrewM\MailChimp\MailChimp;
 
 /**
  * MailChimp Integration Plugin.
@@ -18,9 +16,22 @@ use DrewM\MailChimp\MailChimp;
  */
 class MailChimpPlugin extends AbstractPlugin
 {
-    private ?MailChimp $client = null;
-    private ?string $apiKey = null;
-    private bool $connectionVerified = false;
+    private static ?MailChimpPlugin $instance = null;
+    private ?MailChimpService $service = null;
+
+    public function __construct(string $basePath = '')
+    {
+        parent::__construct($basePath);
+        self::$instance = $this;
+    }
+
+    /**
+     * Get the singleton instance of the plugin.
+     */
+    public static function getInstance(): ?MailChimpPlugin
+    {
+        return self::$instance;
+    }
 
     public function getId(): string
     {
@@ -37,18 +48,11 @@ class MailChimpPlugin extends AbstractPlugin
         return 'Sync ChurchCRM contacts with MailChimp mailing lists.';
     }
 
-    public function getVersion(): string
-    {
-        return '1.0.0';
-    }
-
     public function boot(): void
     {
-        // Initialize MailChimp client
-        $this->apiKey = $this->getConfigValue('apiKey');
-        if (!empty($this->apiKey)) {
-            $this->client = new MailChimp($this->apiKey);
-        }
+        // Initialize the service with the configured API key
+        $apiKey = $this->getConfigValue('apiKey');
+        $this->service = new MailChimpService($apiKey);
 
         // Register hooks for person/family/group changes
         $this->registerHooks();
@@ -58,7 +62,6 @@ class MailChimpPlugin extends AbstractPlugin
 
     public function activate(): void
     {
-        // Nothing special needed on activation
         $this->log('MailChimp plugin activated');
     }
 
@@ -77,19 +80,75 @@ class MailChimpPlugin extends AbstractPlugin
 
     public function isConfigured(): bool
     {
-        return !empty($this->apiKey);
+        $serviceExists = $this->service !== null;
+        $hasApiKey = $serviceExists && $this->service->hasApiKey();
+        $hasNoError = $serviceExists && $this->service->getLastError() === null;
+        return $serviceExists && $hasApiKey && $hasNoError;
+    }
+
+    public function getConfigurationError(): ?string
+    {
+        if ($this->service === null) {
+            return null;
+        }
+        return $this->service->getLastError();
+    }
+
+    /**
+     * Check if MailChimp is active (configured and connected).
+     */
+    public function isActive(): bool
+    {
+        return $this->service !== null && $this->service->isActive();
+    }
+
+    /**
+     * Get the internal MailChimp service.
+     */
+    public function getService(): ?MailChimpService
+    {
+        return $this->service;
+    }
+
+    /**
+     * Convenience method to get account info via the service.
+     */
+    public function getAccountInfo(): array
+    {
+        return $this->service?->getAccountInfo() ?? [];
+    }
+
+    /**
+     * Convenience method to get lists via the service.
+     */
+    public function getLists(): array
+    {
+        return $this->service?->getLists() ?? [];
+    }
+
+    /**
+     * Convenience method to get a specific list.
+     */
+    public function getList(string $listId): ?array
+    {
+        return $this->service?->getList($listId);
+    }
+
+    /**
+     * Convenience method to check email status.
+     */
+    public function isEmailInMailChimp(?string $email): array
+    {
+        if ($this->service === null) {
+            throw new \Exception(gettext('MailChimp is not configured'));
+        }
+        return $this->service->isEmailInMailChimp($email);
     }
 
     public function registerRoutes($routeCollector): void
     {
-        // API routes for MailChimp functionality
-        $routeCollector->group('/mailchimp', function ($group) {
-            $group->get('/lists', [$this, 'handleGetLists']);
-            $group->get('/lists/{listId}', [$this, 'handleGetList']);
-            $group->get('/person/{personId}/status', [$this, 'handleGetPersonStatus']);
-            $group->post('/person/{personId}/subscribe', [$this, 'handleSubscribe']);
-            $group->post('/person/{personId}/unsubscribe', [$this, 'handleUnsubscribe']);
-        });
+        // Plugin API routes are registered through the plugin system
+        // Dashboard view is also provided through plugin views
     }
 
     public function getMenuItems(): array
@@ -102,8 +161,8 @@ class MailChimpPlugin extends AbstractPlugin
             [
                 'parent' => 'email',
                 'label' => gettext('MailChimp Dashboard'),
-                'url' => '/v2/plugins/mailchimp/dashboard',
-                'icon' => 'fa-envelope',
+                'url' => 'plugins/mailchimp/dashboard',
+                'icon' => 'fa-brands fa-mailchimp',
             ],
         ];
     }
@@ -115,7 +174,15 @@ class MailChimpPlugin extends AbstractPlugin
                 'key' => 'apiKey',
                 'label' => gettext('MailChimp API Key'),
                 'type' => 'password',
-                'help' => gettext('Get your API key from MailChimp Account Settings > API Keys'),
+                'required' => true,
+                'help' => gettext('Get your API key from MailChimp: Account Settings > Extras > API Keys'),
+            ],
+            [
+                'key' => 'defaultListId',
+                'label' => gettext('Default List ID'),
+                'type' => 'text',
+                'required' => false,
+                'help' => gettext('Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID'),
             ],
         ];
     }
@@ -144,7 +211,7 @@ class MailChimpPlugin extends AbstractPlugin
      */
     public function onPersonUpdated($person, array $oldData): void
     {
-        if (!$this->isConfigured() || !$this->isActive()) {
+        if (!$this->isActive()) {
             return;
         }
 
@@ -153,7 +220,7 @@ class MailChimpPlugin extends AbstractPlugin
 
         // If email changed, update in MailChimp
         if ($oldEmail !== null && $oldEmail !== $newEmail) {
-            $this->updateSubscriberEmail($oldEmail, $newEmail, $person);
+            $this->service->updateSubscriberEmail($oldEmail, $newEmail, $person);
         }
     }
 
@@ -162,13 +229,13 @@ class MailChimpPlugin extends AbstractPlugin
      */
     public function onPersonDeleted(int $personId, array $personData): void
     {
-        if (!$this->isConfigured() || !$this->isActive()) {
+        if (!$this->isActive()) {
             return;
         }
 
         $email = $personData['email'] ?? null;
         if (!empty($email)) {
-            $this->unsubscribeFromAllLists($email);
+            $this->service->unsubscribeFromAllLists($email);
         }
     }
 
@@ -177,14 +244,14 @@ class MailChimpPlugin extends AbstractPlugin
      */
     public function onGroupMemberAdded($membership, $group, $person): void
     {
-        if (!$this->isConfigured() || !$this->isActive()) {
+        if (!$this->isActive()) {
             return;
         }
 
         // Check if group has associated MailChimp list
         $listId = $this->getGroupMailChimpListId($group->getId());
         if ($listId && !empty($person->getEmail())) {
-            $this->subscribeToList($listId, $person);
+            $this->service->subscribeToList($listId, $person);
         }
     }
 
@@ -193,7 +260,7 @@ class MailChimpPlugin extends AbstractPlugin
      */
     public function onGroupMemberRemoved(int $personId, $group): void
     {
-        if (!$this->isConfigured() || !$this->isActive()) {
+        if (!$this->isActive()) {
             return;
         }
 
@@ -206,228 +273,13 @@ class MailChimpPlugin extends AbstractPlugin
         // Check if group has associated MailChimp list
         $listId = $this->getGroupMailChimpListId($group->getId());
         if ($listId) {
-            $this->unsubscribeFromList($listId, $person->getEmail());
-        }
-    }
-
-    // =========================================================================
-    // MailChimp API Methods
-    // =========================================================================
-
-    /**
-     * Check if MailChimp connection is active.
-     */
-    public function isActive(): bool
-    {
-        if ($this->connectionVerified) {
-            return true;
-        }
-
-        if ($this->client === null) {
-            return false;
-        }
-
-        try {
-            $rootAPI = $this->client->get('');
-            if (isset($rootAPI['total_subscribers']) && $rootAPI['total_subscribers'] >= 0) {
-                $this->connectionVerified = true;
-
-                return true;
-            }
-        } catch (\Throwable $e) {
-            $this->log('MailChimp connection check failed: ' . $e->getMessage(), 'error');
-        }
-
-        return false;
-    }
-
-    /**
-     * Get all MailChimp lists (with caching).
-     */
-    public function getLists(): array
-    {
-        if (!$this->isActive()) {
-            return [];
-        }
-
-        return $this->getListsFromCache();
-    }
-
-    /**
-     * Get a specific list by ID.
-     */
-    public function getList(string $listId): ?array
-    {
-        $lists = $this->getLists();
-        foreach ($lists as $list) {
-            if ($list['id'] === $listId) {
-                return $list;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * Check email status in all MailChimp lists.
-     */
-    public function getEmailStatus(string $email): array
-    {
-        if (!$this->isActive()) {
-            return [];
-        }
-
-        $lists = $this->getListsFromCache();
-        $statuses = [];
-
-        foreach ($lists as $list) {
-            $data = $this->client->get("lists/{$list['id']}/members/" . md5(strtolower($email)));
-            $statuses[] = [
-                'list_id' => $list['id'],
-                'list_name' => $list['name'],
-                'status' => $data['status'] ?? 'not_found',
-                'subscribed_at' => $data['timestamp_signup'] ?? null,
-            ];
-        }
-
-        return $statuses;
-    }
-
-    /**
-     * Subscribe a person to a list.
-     */
-    public function subscribeToList(string $listId, $person): bool
-    {
-        if (!$this->isActive() || empty($person->getEmail())) {
-            return false;
-        }
-
-        try {
-            $result = $this->client->post("lists/$listId/members", [
-                'email_address' => $person->getEmail(),
-                'status' => 'subscribed',
-                'merge_fields' => [
-                    'FNAME' => $person->getFirstName(),
-                    'LNAME' => $person->getLastName(),
-                ],
-            ]);
-
-            if ($this->client->success()) {
-                $this->invalidateListCache();
-                $this->log("Subscribed {$person->getEmail()} to list $listId");
-
-                return true;
-            }
-
-            $this->log("Failed to subscribe {$person->getEmail()}: " . $this->client->getLastError(), 'warning');
-        } catch (\Throwable $e) {
-            $this->log("Exception subscribing {$person->getEmail()}: " . $e->getMessage(), 'error');
-        }
-
-        return false;
-    }
-
-    /**
-     * Unsubscribe an email from a list.
-     */
-    public function unsubscribeFromList(string $listId, string $email): bool
-    {
-        if (!$this->isActive()) {
-            return false;
-        }
-
-        try {
-            $this->client->patch("lists/$listId/members/" . md5(strtolower($email)), [
-                'status' => 'unsubscribed',
-            ]);
-
-            if ($this->client->success()) {
-                $this->invalidateListCache();
-                $this->log("Unsubscribed $email from list $listId");
-
-                return true;
-            }
-        } catch (\Throwable $e) {
-            $this->log("Exception unsubscribing $email: " . $e->getMessage(), 'error');
-        }
-
-        return false;
-    }
-
-    /**
-     * Unsubscribe from all lists.
-     */
-    public function unsubscribeFromAllLists(string $email): void
-    {
-        $lists = $this->getLists();
-        foreach ($lists as $list) {
-            $this->unsubscribeFromList($list['id'], $email);
-        }
-    }
-
-    /**
-     * Update subscriber email in all lists.
-     */
-    private function updateSubscriberEmail(string $oldEmail, string $newEmail, $person): void
-    {
-        $lists = $this->getLists();
-        foreach ($lists as $list) {
-            try {
-                // Check if subscribed to this list
-                $member = $this->client->get("lists/{$list['id']}/members/" . md5(strtolower($oldEmail)));
-                if ($member['status'] === 'subscribed') {
-                    // Re-subscribe with new email
-                    $this->unsubscribeFromList($list['id'], $oldEmail);
-                    $this->subscribeToList($list['id'], $person);
-                }
-            } catch (\Throwable $e) {
-                // Member not in this list, skip
-            }
+            $this->service->unsubscribeFromList($listId, $person->getEmail());
         }
     }
 
     // =========================================================================
     // Private Helper Methods
     // =========================================================================
-
-    private function getListsFromCache(): array
-    {
-        if (!isset($_SESSION['MailChimpLists'])) {
-            LoggerUtils::getAppLogger()->debug('Updating MailChimp List Cache');
-
-            $lists = $this->client->get('lists')['lists'] ?? [];
-
-            foreach ($lists as &$list) {
-                $list['members'] = [];
-                $listMembers = $this->client->get(
-                    "lists/{$list['id']}/members",
-                    [
-                        'count' => $list['stats']['member_count'] ?? 100,
-                        'fields' => 'members.id,members.email_address,members.status,members.merge_fields',
-                        'status' => 'subscribed',
-                    ]
-                );
-
-                foreach ($listMembers['members'] ?? [] as $member) {
-                    $list['members'][] = [
-                        'email' => strtolower($member['email_address']),
-                        'first' => $member['merge_fields']['FNAME'] ?? '',
-                        'last' => $member['merge_fields']['LNAME'] ?? '',
-                        'status' => $member['status'],
-                    ];
-                }
-            }
-
-            $_SESSION['MailChimpLists'] = $lists;
-        }
-
-        return $_SESSION['MailChimpLists'] ?? [];
-    }
-
-    private function invalidateListCache(): void
-    {
-        unset($_SESSION['MailChimpLists']);
-    }
 
     /**
      * Get the MailChimp list ID associated with a group.
@@ -440,97 +292,5 @@ class MailChimpPlugin extends AbstractPlugin
         // TODO: Implement group-to-list mapping
         // Could be stored in group_grp custom fields or a plugin-specific table
         return null;
-    }
-
-    // =========================================================================
-    // API Route Handlers
-    // =========================================================================
-
-    public function handleGetLists($request, $response): mixed
-    {
-        $lists = $this->getLists();
-
-        return $response->withJson([
-            'success' => true,
-            'data' => $lists,
-        ]);
-    }
-
-    public function handleGetList($request, $response, array $args): mixed
-    {
-        $list = $this->getList($args['listId']);
-
-        if ($list === null) {
-            return $response->withJson([
-                'success' => false,
-                'message' => 'List not found',
-            ], 404);
-        }
-
-        return $response->withJson([
-            'success' => true,
-            'data' => $list,
-        ]);
-    }
-
-    public function handleGetPersonStatus($request, $response, array $args): mixed
-    {
-        $person = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk((int) $args['personId']);
-
-        if ($person === null) {
-            return $response->withJson([
-                'success' => false,
-                'message' => 'Person not found',
-            ], 404);
-        }
-
-        $status = $this->getEmailStatus($person->getEmail());
-
-        return $response->withJson([
-            'success' => true,
-            'data' => $status,
-        ]);
-    }
-
-    public function handleSubscribe($request, $response, array $args): mixed
-    {
-        $person = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk((int) $args['personId']);
-        $body = $request->getParsedBody();
-        $listId = $body['listId'] ?? null;
-
-        if ($person === null || $listId === null) {
-            return $response->withJson([
-                'success' => false,
-                'message' => 'Person or List ID required',
-            ], 400);
-        }
-
-        $success = $this->subscribeToList($listId, $person);
-
-        return $response->withJson([
-            'success' => $success,
-            'message' => $success ? 'Subscribed' : 'Failed to subscribe',
-        ]);
-    }
-
-    public function handleUnsubscribe($request, $response, array $args): mixed
-    {
-        $person = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk((int) $args['personId']);
-        $body = $request->getParsedBody();
-        $listId = $body['listId'] ?? null;
-
-        if ($person === null || $listId === null) {
-            return $response->withJson([
-                'success' => false,
-                'message' => 'Person or List ID required',
-            ], 400);
-        }
-
-        $success = $this->unsubscribeFromList($listId, $person->getEmail());
-
-        return $response->withJson([
-            'success' => $success,
-            'message' => $success ? 'Unsubscribed' : 'Failed to unsubscribe',
-        ]);
     }
 }

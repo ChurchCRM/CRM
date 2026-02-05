@@ -71,11 +71,8 @@ class GravatarPlugin extends AbstractPlugin
         // Nothing to clean up
     }
 
-    public function isConfigured(): bool
-    {
-        // No additional configuration required beyond being enabled
-        return true;
-    }
+    // Uses default isConfigured() from AbstractPlugin which checks required settings
+    // Gravatar has no required settings, so it's always configured once enabled
 
     public function registerRoutes($routeCollector): void
     {

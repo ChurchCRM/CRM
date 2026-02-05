@@ -23,6 +23,7 @@ class PluginMetadata
     private array $hooks;
     private ?string $settingsUrl;
     private array $help;
+    private ?string $routesFile;
 
     public function __construct(array $data, string $path)
     {
@@ -42,6 +43,7 @@ class PluginMetadata
         $this->hooks = $data['hooks'] ?? [];
         $this->settingsUrl = $data['settingsUrl'] ?? null;
         $this->help = $data['help'] ?? [];
+        $this->routesFile = $data['routesFile'] ?? null;
     }
 
     /**
@@ -138,6 +140,11 @@ class PluginMetadata
         return $this->settingsUrl;
     }
 
+    public function getRoutesFile(): ?string
+    {
+        return $this->routesFile;
+    }
+
     public function getHelp(): array
     {
         // Try to load from help.json file first
@@ -192,6 +199,7 @@ class PluginMetadata
             'menuItems' => $this->menuItems,
             'hooks' => $this->hooks,
             'settingsUrl' => $this->settingsUrl,
+            'routesFile' => $this->routesFile,
             'help' => $this->help,
         ];
     }

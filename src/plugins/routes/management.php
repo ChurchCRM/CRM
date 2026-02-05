@@ -4,7 +4,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
 /**
@@ -14,37 +13,50 @@ use Slim\Views\PhpRenderer;
  * - Viewing installed plugins
  * - Enabling/disabling plugins
  * - Viewing plugin settings
+ *
+ * These routes are under /plugins/management/ and require admin role.
  */
-$app->group('', function (RouteCollectorProxy $group): void {
-    // Plugin list page - handle both /plugins and /plugins/
-    $group->get('[/]', function (Request $request, Response $response): Response {
-        $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-        // Initialize plugin system
-        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
-        PluginManager::init($pluginsPath);
+// Plugin list page - handle both /plugins/management and /plugins/management/
+$group->get('[/]', function (Request $request, Response $response): Response {
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-        $plugins = PluginManager::getAllPlugins();
+    // Initialize plugin system
+    $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+    PluginManager::init($pluginsPath);
 
-        // Separate core and community plugins
-        $corePlugins = array_filter($plugins, fn ($p) => $p['type'] === 'core');
-        $communityPlugins = array_filter($plugins, fn ($p) => $p['type'] !== 'core');
+    $plugins = PluginManager::getAllPlugins();
 
-        $pageArgs = [
-            'sRootPath' => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('Plugin Management'),
-            'corePlugins' => array_values($corePlugins),
-            'communityPlugins' => array_values($communityPlugins),
-        ];
+    // Separate core and community plugins
+    $corePlugins = array_filter($plugins, fn ($p) => $p['type'] === 'core');
+    $communityPlugins = array_filter($plugins, fn ($p) => $p['type'] !== 'core');
 
-        return $renderer->render($response, 'management.php', $pageArgs);
-    });
+    $pageArgs = [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('Plugin Management'),
+        'corePlugins' => array_values($corePlugins),
+        'communityPlugins' => array_values($communityPlugins),
+    ];
 
-    // Redirect individual plugin settings to main page (settings are now inline)
-    $group->get('/{pluginId}/settings', function (Request $request, Response $response, array $args): Response {
-        // Redirect to main plugins page - settings are displayed inline
+    return $renderer->render($response, 'management.php', $pageArgs);
+});
+
+// Individual plugin settings page - redirect to management with hash to expand the plugin
+$group->get('/{pluginId}', function (Request $request, Response $response, array $args): Response {
+    $pluginId = $args['pluginId'];
+    $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+    PluginManager::init($pluginsPath);
+
+    $metadata = PluginManager::getPluginMetadata($pluginId);
+    if ($metadata === null) {
+        // Plugin not found, redirect to list
         return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/plugins#' . $args['pluginId'])
+            ->withHeader('Location', SystemURLs::getRootPath() . '/plugins/management')
             ->withStatus(302);
-    });
+    }
+
+    // Redirect to management page with hash to auto-expand this plugin's card
+    return $response
+        ->withHeader('Location', SystemURLs::getRootPath() . '/plugins/management#plugin-' . $pluginId)
+        ->withStatus(302);
 });

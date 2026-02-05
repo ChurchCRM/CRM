@@ -94,13 +94,13 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                 </small>
             <?php endif; ?>
             <?php if ($hasError): ?>
-                <div class="alert alert-danger mt-2 mb-0">
-                    <i class="fas fa-bug mr-2"></i>
+                <div class="alert alert-danger mt-2 mb-2">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
                     <?= htmlspecialchars($plugin['errorMessage'] ?? gettext('Plugin failed to load')) ?>
                 </div>
             <?php endif; ?>
             
-            <?php if ($hasSettings && !$hasError): ?>
+            <?php if ($hasSettings): ?>
                 <hr>
                 <form class="plugin-settings-form" data-plugin-id="<?= $pluginId ?>">
                     <?php foreach ($plugin['settings'] as $setting): 
@@ -413,6 +413,22 @@ $(document).ready(function() {
             submitBtn.prop('disabled', false).html('<i class="fas fa-save mr-1"></i>' + i18next.t('Save Settings'));
         });
     });
+    
+    // Auto-expand plugin card if URL has hash (e.g., #plugin-mailchimp)
+    if (window.location.hash && window.location.hash.startsWith('#plugin-')) {
+        const pluginId = window.location.hash.replace('#plugin-', '');
+        const card = $('[data-plugin-id="' + pluginId + '"]');
+        if (card.length) {
+            card.removeClass('collapsed-card');
+            card.find('.card-body').show();
+            card.find('.card-tools .btn-tool[data-card-widget="collapse"] i')
+                .removeClass('fa-plus').addClass('fa-minus');
+            // Scroll to the card
+            $('html, body').animate({
+                scrollTop: card.offset().top - 100
+            }, 500);
+        }
+    }
 });
 </script>
 

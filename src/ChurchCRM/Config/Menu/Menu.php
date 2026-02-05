@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\MenuLinkQuery;
+use ChurchCRM\Plugin\PluginManager;
 
 class Menu
 {
@@ -37,7 +38,7 @@ class Menu
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin),
-            'Email'        => new MenuItem(gettext('Email'), 'v2/email/dashboard', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope'),
+            'Email'        => self::getEmailMenu(),
             'Events'       => self::getEventsMenu(isAddEventEnabled: $currentUser->isAddEventEnabled()),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu(),
@@ -47,6 +48,10 @@ class Menu
         if ($isAdmin) {
             $menus['Admin'] = self::getAdminMenu($isAdmin);
         }
+        
+        // Add plugin menu items to their parent menus
+        self::addPluginMenuItems($menus);
+        
         return $menus;
 
     }
@@ -167,6 +172,60 @@ class Menu
         }
 
         return $sundaySchoolMenu;
+    }
+
+    private static function getEmailMenu(): MenuItem
+    {
+        $emailMenu = new MenuItem(gettext('Email'), '', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope');
+        $emailMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'v2/email/dashboard', true, 'fa-tachometer-alt'));
+        // Plugin-provided menu items will be added by addPluginMenuItems()
+
+        return $emailMenu;
+    }
+
+    /**
+     * Add plugin menu items to their parent menus.
+     *
+     * Plugins can register menu items via getMenuItems() which specify a 'parent' key.
+     * This method merges those items into the appropriate parent menu.
+     *
+     * @param array<string, MenuItem> $menus The main menu array to modify
+     */
+    private static function addPluginMenuItems(array &$menus): void
+    {
+        try {
+            $pluginMenuItems = PluginManager::getPluginMenuItems();
+            
+            foreach ($pluginMenuItems as $parentKey => $items) {
+                // Find the parent menu (case-insensitive match)
+                $parentMenu = null;
+                foreach ($menus as $menuKey => $menu) {
+                    if (strtolower($menuKey) === $parentKey) {
+                        $parentMenu = $menu;
+                        break;
+                    }
+                }
+                
+                if ($parentMenu === null) {
+                    // Parent menu not found, skip these items
+                    continue;
+                }
+                
+                // Add each plugin menu item as a submenu
+                foreach ($items as $item) {
+                    $label = $item['label'] ?? '';
+                    $url = $item['url'] ?? '';
+                    $icon = $item['icon'] ?? 'fa-plug';
+                    
+                    if (!empty($label) && !empty($url)) {
+                        $parentMenu->addSubMenu(new MenuItem($label, $url, true, $icon));
+                    }
+                }
+            }
+        } catch (\Throwable $e) {
+            // Don't let plugin errors break the menu
+            // Silently fail - plugins may not be initialized yet
+        }
     }
 
     private static function getEventsMenu(bool $isAddEventEnabled): MenuItem

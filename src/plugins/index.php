@@ -1,7 +1,22 @@
 <?php
 
+/**
+ * Plugin Entry Point.
+ *
+ * Handles:
+ * 1. Plugin management routes (admin UI for managing plugins) - requires admin role
+ * 2. Plugin-provided routes (each enabled plugin can register its own routes) - uses plugin permissions
+ *
+ * URL Structure:
+ * - /plugins/management/... - Admin UI for managing plugins (admin only)
+ * - /plugins/api/... - Plugin management API (admin only)
+ * - /plugins/{plugin-name}/... - Plugin-specific routes (uses plugin's permission settings)
+ */
+
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
@@ -11,7 +26,12 @@ use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
+use Slim\Routing\RouteCollectorProxy;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+
+// Initialize plugin system
+$pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+PluginManager::init($pluginsPath);
 
 // base path for plugin module
 $basePath = SlimUtils::getBasePath('/plugins');
@@ -23,9 +43,27 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Register routes FIRST before middleware
-require __DIR__ . '/routes/management.php';
-require __DIR__ . '/routes/api/management.php';
+// Root /plugins route - redirect to management
+$app->get('[/]', function ($request, $response) {
+    return $response
+        ->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/plugins/management')
+        ->withStatus(302);
+});
+
+// Register plugin management routes (admin UI) - with admin middleware
+$app->group('/management', function (RouteCollectorProxy $group): void {
+    require __DIR__ . '/routes/management.php';
+})->add(AdminRoleAuthMiddleware::class);
+
+// Register plugin management API routes - with admin middleware
+$app->group('/api', function (RouteCollectorProxy $group): void {
+    require __DIR__ . '/routes/api/management.php';
+})->add(AdminRoleAuthMiddleware::class);
+
+// Register routes from all active plugins
+// Only enabled plugins have their routes loaded (system-wide security)
+// These routes use the plugin's own permission settings, not admin-only
+PluginManager::registerPluginRoutes($app);
 
 // Body parsing and routing middleware
 $app->addBodyParsingMiddleware();
@@ -66,8 +104,8 @@ $errorMiddleware->setDefaultErrorHandler(function (
 });
 
 // Auth middleware (LIFO - added last, runs first)
+// Note: AdminRoleAuthMiddleware is applied to specific route groups above, not globally
 $app->add(new CorsMiddleware());
-$app->add(AdminRoleAuthMiddleware::class);
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 

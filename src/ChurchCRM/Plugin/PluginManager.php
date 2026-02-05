@@ -356,6 +356,7 @@ class PluginManager
             try {
                 $plugin = self::$loadedPlugins[$id] ?? null;
                 $isActive = self::isPluginActive($id);
+                $configError = $plugin?->getConfigurationError();
 
                 $result[] = [
                     'id' => $id,
@@ -370,8 +371,8 @@ class PluginManager
                     'settingsUrl' => $metadata->getSettingsUrl(),
                     'settings' => self::getPluginSettingsWithValues($id),
                     'help' => $plugin?->getHelp() ?? $metadata->getHelp(),
-                    'hasError' => false,
-                    'errorMessage' => null,
+                    'hasError' => $configError !== null,
+                    'errorMessage' => $configError,
                 ];
             } catch (\Throwable $e) {
                 // Plugin has an error - still show it in the list but mark as errored
@@ -614,5 +615,88 @@ class PluginManager
         }
 
         return $configs;
+    }
+
+    /**
+     * Get combined menu items from all active plugins.
+     *
+     * Collects menu items from all active plugins that have getMenuItems() defined.
+     * Returns items grouped by their parent menu key.
+     *
+     * @return array<string, array<int, array{label: string, url: string, icon?: string}>>
+     *               Menu items grouped by parent menu key (e.g., 'email', 'admin')
+     */
+    public static function getPluginMenuItems(): array
+    {
+        $menuItems = [];
+
+        foreach (self::$loadedPlugins as $pluginId => $plugin) {
+            try {
+                $items = $plugin->getMenuItems();
+                if (!empty($items)) {
+                    foreach ($items as $item) {
+                        $parent = strtolower($item['parent'] ?? 'custom');
+                        if (!isset($menuItems[$parent])) {
+                            $menuItems[$parent] = [];
+                        }
+                        $menuItems[$parent][] = $item;
+                    }
+                }
+            } catch (\Throwable $e) {
+                LoggerUtils::getAppLogger()->error(
+                    "Error getting menu items from plugin: {$pluginId}",
+                    ['error' => $e->getMessage()]
+                );
+            }
+        }
+
+        return $menuItems;
+    }
+
+    /**
+     * Register routes for all active plugins that have a routesFile.
+     *
+     * This should be called after the Slim app is created and before $app->run().
+     * The routes file will receive the $app variable in its scope.
+     *
+     * @param mixed $app The Slim application instance
+     */
+    public static function registerPluginRoutes($app): void
+    {
+        foreach (self::$loadedPlugins as $pluginId => $plugin) {
+            try {
+                $metadata = self::$discoveredPlugins[$pluginId] ?? null;
+                if ($metadata === null) {
+                    continue;
+                }
+
+                $routesFile = $metadata->getRoutesFile();
+                if (empty($routesFile)) {
+                    continue;
+                }
+
+                $routesPath = $metadata->getPath() . '/' . $routesFile;
+                if (!file_exists($routesPath)) {
+                    LoggerUtils::getAppLogger()->warning(
+                        "Plugin routes file not found: $routesPath",
+                        ['plugin' => $pluginId]
+                    );
+                    continue;
+                }
+
+                // Include the routes file - it has access to $app
+                require $routesPath;
+
+                LoggerUtils::getAppLogger()->debug(
+                    "Loaded plugin routes: $pluginId",
+                    ['routesFile' => $routesFile]
+                );
+            } catch (\Throwable $e) {
+                LoggerUtils::getAppLogger()->error(
+                    "Error loading plugin routes: $pluginId",
+                    ['error' => $e->getMessage()]
+                );
+            }
+        }
     }
 }
