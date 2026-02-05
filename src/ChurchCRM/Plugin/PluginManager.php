@@ -212,11 +212,18 @@ class PluginManager
      * Check if a plugin is active.
      *
      * Checks the SystemConfig key plugin.{pluginId}.enabled
+     * Returns false if the config key doesn't exist (graceful degradation).
      */
     public static function isPluginActive(string $pluginId): bool
     {
-        $enabledKey = "plugin.{$pluginId}.enabled";
-        return SystemConfig::getBooleanValue($enabledKey);
+        try {
+            $enabledKey = "plugin.{$pluginId}.enabled";
+            return SystemConfig::getBooleanValue($enabledKey);
+        } catch (\Throwable $e) {
+            // Config key doesn't exist - plugin is not enabled
+            // This prevents plugin issues from breaking the main application
+            return false;
+        }
     }
 
     /**

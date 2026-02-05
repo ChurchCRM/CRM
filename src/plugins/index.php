@@ -43,13 +43,6 @@ AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Root /plugins route - redirect to management
-$app->get('[/]', function ($request, $response) {
-    return $response
-        ->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/plugins/management')
-        ->withStatus(302);
-});
-
 // Register plugin management routes (admin UI) - with admin middleware
 $app->group('/management', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/management.php';

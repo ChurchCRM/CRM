@@ -6,7 +6,8 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\model\ChurchCRM\MenuLinkQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\PluginManager;
 
 class Menu
@@ -43,14 +44,18 @@ class Menu
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu(),
             'Reports'      => self::getReportsMenu(),
-            'Custom'       => self::getCustomMenu()
         ];
-        if ($isAdmin) {
-            $menus['Admin'] = self::getAdminMenu($isAdmin);
-        }
         
         // Add plugin menu items to their parent menus
         self::addPluginMenuItems($menus);
+        
+        // Allow plugins to add top-level menus via the MENU_BUILDING hook
+        $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
+        
+        // Admin menu is always last (at bottom of nav)
+        if ($isAdmin) {
+            $menus['Admin'] = self::getAdminMenu($isAdmin);
+        }
         
         return $menus;
 
@@ -314,20 +319,9 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Admin Dashboard'), 'admin/', $isAdmin, 'fa-tachometer-alt'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-cog'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-cog'));
-        $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins', $isAdmin, 'fa-plug'));
+        $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', $isAdmin, 'fa-file-import'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', $isAdmin, 'fa-file-export'));
-        $menu->addSubMenu(new MenuItem(gettext('Custom Menus'), 'admin/system/menus', $isAdmin, 'fa-list-ul'));
-        return $menu;
-    }
-
-    private static function getCustomMenu(): MenuItem
-    {
-        $menu = new MenuItem(gettext('Links'), '', SystemConfig::getBooleanValue('bEnabledMenuLinks'), 'fa-link');
-        $menuLinks = MenuLinkQuery::create()->orderByOrder()->select(['Name','Uri'])->find()->toArray();
-        foreach ($menuLinks as $link) {
-            $menu->addSubMenu(new MenuItem($link['Name'], $link['Uri'], true, 'fa-external-link-alt'));
-        }
 
         return $menu;
     }

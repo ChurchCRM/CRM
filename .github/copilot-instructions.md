@@ -37,7 +37,7 @@ Routing & middleware
 - **Admin System Pages** (consolidated at `/admin/system/`):
   - Routes in `src/admin/routes/system.php`
   - Views in `src/admin/views/` with PhpRenderer
-  - Examples: `/admin/system/debug`, `/admin/system/menus`, `/admin/system/backup`
+  - Examples: `/admin/system/debug`, `/admin/system/backup`
   - Add menu entries in `src/ChurchCRM/Config/Menu/Menu.php`
   - Use AdminRoleAuthMiddleware for security
 - **Admin APIs**: Place in `src/admin/routes/api/` (NOT in `src/api/routes/system/`)
@@ -1410,6 +1410,7 @@ public function onPersonUpdated($person, array $oldData): void
 
 | Plugin | Description | Has Routes | Has Views |
 |--------|-------------|-----------|-----------|
+| `custom-links` | Custom external links in navigation menu | ✅ | ✅ |
 | `mailchimp` | MailChimp email list integration | ✅ | ✅ |
 | `gravatar` | Gravatar profile photos | ❌ | ❌ |
 | `google-analytics` | GA4 tracking code injection | ❌ | ❌ |

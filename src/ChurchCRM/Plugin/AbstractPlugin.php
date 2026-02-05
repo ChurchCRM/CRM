@@ -88,14 +88,20 @@ abstract class AbstractPlugin implements PluginInterface
      *
      * Automatically prefixes the key with plugin.{pluginId}.
      * Plugins can only access their own config values.
+     * Returns empty string if config key doesn't exist (graceful degradation).
      *
      * @param string $key Setting key (without prefix)
      * @return string Config value or empty string if not set
      */
     protected function getConfigValue(string $key): string
     {
-        $fullKey = $this->getConfigPrefix() . $key;
-        return SystemConfig::getValue($fullKey) ?? '';
+        try {
+            $fullKey = $this->getConfigPrefix() . $key;
+            return SystemConfig::getValue($fullKey) ?? '';
+        } catch (\Throwable $e) {
+            // Config key doesn't exist - return empty string
+            return '';
+        }
     }
 
     /**
@@ -103,14 +109,20 @@ abstract class AbstractPlugin implements PluginInterface
      *
      * Automatically prefixes the key with plugin.{pluginId}.
      * Plugins can only access their own config values.
+     * Returns false if config key doesn't exist (graceful degradation).
      *
      * @param string $key Setting key (without prefix)
      * @return bool Config value as boolean
      */
     protected function getBooleanConfigValue(string $key): bool
     {
-        $fullKey = $this->getConfigPrefix() . $key;
-        return SystemConfig::getBooleanValue($fullKey);
+        try {
+            $fullKey = $this->getConfigPrefix() . $key;
+            return SystemConfig::getBooleanValue($fullKey);
+        } catch (\Throwable $e) {
+            // Config key doesn't exist - return false
+            return false;
+        }
     }
 
     /**
@@ -118,24 +130,39 @@ abstract class AbstractPlugin implements PluginInterface
      *
      * Automatically prefixes the key with plugin.{pluginId}.
      * Plugins can only modify their own config values.
+     * Silently fails if config key doesn't exist (graceful degradation).
      *
      * @param string $key   Setting key (without prefix)
      * @param string $value Value to set
      */
     protected function setConfigValue(string $key, string $value): void
     {
-        $fullKey = $this->getConfigPrefix() . $key;
-        SystemConfig::setValue($fullKey, $value);
+        try {
+            $fullKey = $this->getConfigPrefix() . $key;
+            SystemConfig::setValue($fullKey, $value);
+        } catch (\Throwable $e) {
+            // Config key doesn't exist - log but don't crash
+            LoggerUtils::getAppLogger()->warning(
+                'Failed to set plugin config',
+                ['plugin' => $this->getId(), 'key' => $key, 'error' => $e->getMessage()]
+            );
+        }
     }
 
     /**
      * Check if this plugin is enabled.
      *
      * Convenience method to check the plugin.{pluginId}.enabled config.
+     * Returns false if config key doesn't exist (graceful degradation).
      */
-    protected function isEnabled(): bool
+    public function isEnabled(): bool
     {
-        return $this->getBooleanConfigValue('enabled');
+        try {
+            return $this->getBooleanConfigValue('enabled');
+        } catch (\Throwable $e) {
+            // Config key doesn't exist - plugin is not enabled
+            return false;
+        }
     }
 
     public function getAuthor(): string

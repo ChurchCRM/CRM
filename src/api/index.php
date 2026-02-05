@@ -50,7 +50,6 @@ require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-database.php';
 require __DIR__ . '/routes/system/system-debug.php';
 require __DIR__ . '/routes/system/system-issues.php';
-require __DIR__ . '/routes/system/system-custom-menu.php';
 require __DIR__ . '/routes/system/system-locale.php';
 require __DIR__ . '/routes/cart.php';
 require __DIR__ . '/routes/background.php';
