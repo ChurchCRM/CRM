@@ -11510,3 +11510,137 @@ msgstr "Filters Resetten"
 msgid "Show only people with photos"
 msgstr "Toon alleen personen met foto's"
 
+#: 
+msgid "Checkout All"
+msgstr "Iedereen uitchecken"
+
+#: 
+msgid "Expected"
+msgstr "Verwacht"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Kiosk verwijderen mislukt"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Familie toezegging per boekjaar"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Geregistreerde studenten zoeken"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Boekjaar."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Groep van geregistreerde studenten"
+
+#: 
+msgid "Here"
+msgstr "Hier"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Ongeldig toewijzingstype"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Ongeldige persoons-ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Kiosk registratie uitgeschakeld"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kiosk niet gevonden"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Koppel dit evenement aan een groep voor kiosk check-in functionaliteit. De groepsleden worden weergegeven op de kiosk."
+
+#: 
+msgid "Linked Group"
+msgstr "Gekoppelde groep"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Registratie van nieuwe kiosk apparaten is momenteel uitgeschakeld. Neem contact op met uw systeembeheerder om kiosk registratie in te schakelen."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Geen groep (Selecteer voor kiosk check-in)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Nog niemand ingecheckt"
+
+#: 
+msgid "Person not found"
+msgstr "Persoon niet gevonden"
+
+#: 
+msgid "Pickup Request"
+msgstr "Ophaalverzoek"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Ga alstublieft zo snel mogelijk naar het klaslokaal."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Overzicht van toezeggingen per familienaam voor elk fonds voor het geselecteerde boekjaar"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Geregistreerde studenten"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "De leraar heeft dit alarm verzonden om"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Deze kiosk wordt het best weergegeven op een tablet in landschapsmodus voor een optimale check-in ervaring."
+
+#: 
+msgid "Tip"
+msgstr "Tip"
+
+#: 
+msgid "Try Again"
+msgstr "Opnieuw proberen"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Aankomende verjaardagen"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Wachten op inchecken"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Wanneer ingeschakeld, kunnen nieuwe kiosk apparaten zich gedurende 30 seconden registreren."
+
+#: 
+msgid "Your child"
+msgstr "Uw kind"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "moet worden opgehaald van"
+
+#: 
+msgid "their classroom"
+msgstr "hun klaslokaal"
+
