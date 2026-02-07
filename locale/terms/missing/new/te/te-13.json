@@ -1,10 +1,4 @@
 {
-  "Database Restored Successfully!": "",
-  "Database schema upgraded automatically": "",
-  "Delete All Files": "",
-  "Delete All Orphaned Files": "",
-  "Delete records permission": "",
-  "Deleted %d files, %d failed": "",
   "Deletion Results": "",
   "Drag and drop your backup file here": "",
   "Edit records permission": "",
@@ -97,6 +91,12 @@
   "Back to Deposits": "",
   "Back to Families": "",
   "Birth & Family": "",
-  "CSV export is restricted to administrators.": "",
-  "Cart": ""
+  "Cart": "",
+  "Change this in System Settings.": "",
+  "Church Membership": "",
+  "Church name is set to default value": "",
+  "Classes and enrollments": "",
+  "Clean Up Files": "",
+  "Clear all data and start fresh. Cannot be undone.": "",
+  "Close All Deposits": ""
 }

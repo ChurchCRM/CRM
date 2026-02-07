@@ -3624,10 +3624,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Ini adalah nomor peran keluarga yang ditetapkan sebagai anak"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Haruskah hanya administrator yang memiliki akses ke sistem ekspor dan laporan direktori CSV?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Panjang minimum pengguna dapat mengatur kata sandi mereka"
 
@@ -5868,10 +5864,6 @@ msgid "payment(s)?"
 msgstr "pembayaran?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Harap pastikan ini yang ingin Anda lakukan. </p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Konfirmasikan Penonaktifan"
 
@@ -6246,20 +6238,8 @@ msgid "Integration"
 msgstr "Integrasi"
 
 #: 
-msgid "Notification"
-msgstr "Pemberitahuan"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Wali dari"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Pemberitahuan dipicu oleh guru kelas di"
-
-#: 
-msgid "Please go to this location"
-msgstr "Silakan pergi ke lokasi ini"
 
 #: 
 #, fuzzy
@@ -9541,10 +9521,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "PERHATIAN: Mengembalikan cadangan akan menghapus database saat ini dan menggantinya dengan data cadangan."
 
 #: 
-msgid "CSV export permission"
-msgstr "Izin ekspor CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Tutup & Segarkan"
 
@@ -9963,10 +9939,6 @@ msgstr "Kembali ke Keluarga"
 #: 
 msgid "Birth & Family"
 msgstr "Kelahiran & Keluarga"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Ekspor CSV dibatasi hanya untuk administrator."
 
 #: 
 msgid "Cart"

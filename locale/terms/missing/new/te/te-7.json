@@ -1,9 +1,4 @@
 {
-  "Email Functions": "",
-  "Family Custom Fields": "",
-  "Person Custom Fields": "",
-  "Donation Funds": "",
-  "Unable to open file": "",
   "Missing calendar access token": "",
   "Calendar access token not found": "",
   "User must have Delete Records permission": "",
@@ -104,5 +99,10 @@
   "Specify the application name to be displayed in authenticator app": "",
   "Thank you for registering your family": "",
   "Register another family!": "",
-  "Done, show me the homepage!": ""
+  "Done, show me the homepage!": "",
+  "User authenticated via API Key: ": "",
+  "Unsuccessful API Key authentication attempt": "",
+  "Unpinned Events": "",
+  "LastName, FirstName MiddleName": "",
+  "Manage 2 Factor Authentication": ""
 }

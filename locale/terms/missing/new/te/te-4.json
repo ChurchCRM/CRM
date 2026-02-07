@@ -1,5 +1,4 @@
 {
-  "Norwegian": "",
   "Dutch - Netherlands": "",
   "Polish": "",
   "Portuguese - Brazil": "",
@@ -23,7 +22,6 @@
   "An invalid configuration id has been requested": "",
   "Profile Image uploaded": "",
   "payment(s)?": "",
-  "Please ensure this what you want to do.</p>": "",
   "Confirm Deactivation": "",
   "Confirm Activation": "",
   "Please confirm deactivation of family": "",
@@ -98,5 +96,7 @@
   "EMERGENCY": "",
   "Title FirstName MiddleName LastName": "",
   "Title FirstName MiddleInitial. LastName": "",
-  "LastName, Title FirstName MiddleName": ""
+  "LastName, Title FirstName MiddleName": "",
+  "LastName, Title FirstName MiddleInitial": "",
+  "FirstName MiddleName LastName": ""
 }

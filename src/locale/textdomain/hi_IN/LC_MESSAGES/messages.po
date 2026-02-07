@@ -3589,10 +3589,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "ये परिवार की भूमिका संख्याएँ हैं जो बच्चे के रूप में नामित हैं"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "क्या केवल प्रशासकों को CSV निर्यात प्रणाली और निर्देशिका रिपोर्ट तक पहुंच होनी चाहिए?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "न्यूनतम लंबाई जो एक उपयोगकर्ता अपना पासवर्ड सेट कर सकता है"
 
@@ -5828,10 +5824,6 @@ msgid "payment(s)?"
 msgstr "भुगतान?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "कृपया सुनिश्चित करें कि आप यही करना चाहते हैं।</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "निष्क्रिय करने की पुष्टि करें"
 
@@ -6204,20 +6196,8 @@ msgid "Integration"
 msgstr "एकीकरण (इंटीग्रेशन)"
 
 #: 
-msgid "Notification"
-msgstr "अधिसूचना"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "इनके अभिभावक"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "कक्षा शिक्षक द्वारा इस समय एक अधिसूचना ट्रिगर की गई थी:"
-
-#: 
-msgid "Please go to this location"
-msgstr "कृपया इस स्थान पर जाएं"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9495,10 +9475,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "सावधानी: बैकअप रिस्टोर करने से मौजूदा डेटाबेस पूरी तरह से मिट जाएगा और बैकअप डेटा से बदल दिया जाएगा।"
 
 #: 
-msgid "CSV export permission"
-msgstr "CSV निर्यात अनुमति"
-
-#: 
 msgid "Close & Refresh"
 msgstr "बंद करें और रिफ्रेश करें"
 
@@ -9917,10 +9893,6 @@ msgstr "परिवारों पर वापस जाएं"
 #: 
 msgid "Birth & Family"
 msgstr "जन्म और परिवार"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV निर्यात व्यवस्थापकों तक सीमित है।"
 
 #: 
 msgid "Cart"

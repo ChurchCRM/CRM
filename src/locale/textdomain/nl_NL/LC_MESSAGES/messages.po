@@ -3622,10 +3622,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Dit zijn de familie rol nummers aangewezen als kind"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Moeten alleen beheerders toegang hebben tot het CSV-exportsysteem en directoryrapport?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Minimale lengte kan een gebruiker zijn wachtwoord ingesteld op"
 
@@ -5868,10 +5864,6 @@ msgid "payment(s)?"
 msgstr "betalingen(en)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Zorg ervoor dat dit is wat u wilt doen.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bevestig deactivering"
 
@@ -6246,20 +6238,8 @@ msgid "Integration"
 msgstr "integratie"
 
 #: 
-msgid "Notification"
-msgstr "Kennisgeving"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Voogd(en) van"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Er is een melding geactiveerd door de catechiseermeester op:"
-
-#: 
-msgid "Please go to this location"
-msgstr "Ga alsjeblieft naar deze locatie"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9547,10 +9527,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "VOORZICHTIG: Het herstellen van een back-up verwijdert de bestaande database volledig en vervangt deze door de back-upgegevens."
 
 #: 
-msgid "CSV export permission"
-msgstr "Toestemming CSV-export"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Sluiten en Vernieuwen"
 
@@ -9969,10 +9945,6 @@ msgstr "Terug naar Families"
 #: 
 msgid "Birth & Family"
 msgstr "Geboorte en Familie"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV-export is beperkt tot beheerders."
 
 #: 
 msgid "Cart"
