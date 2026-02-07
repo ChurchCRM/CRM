@@ -18,6 +18,7 @@
 | `it` | Italian | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `ko` | Korean | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `pl` | Polish | 2791 | 100% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 2790 | 99.96% | 🟢 Complete | ✅ Yes |
@@ -33,7 +34,6 @@
 | `hu` | Hungarian | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `nb` | Norwegian Bokmål | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `es-ar` | Spanish (AR) | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `es-mx` | Spanish (MX) | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `es-sv` | Spanish (SV) | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
