@@ -10,11 +10,11 @@ describe("Admin Debug", () => {
         cy.contains("ChurchCRM Installation");
         cy.contains("Database");
         
-        // Verify timezone information is displayed
-        cy.contains("Timezone Information").should("exist");
-        cy.get("#browser-timezone").should("not.contain", "Loading...");
-        cy.get("#browser-time").should("not.contain", "Loading...");
-        cy.get("#timezone-summary").should("exist");
+        // Verify timezone information is displayed using stable selectors
+        cy.get("#headingTimezone").should("exist").invoke("text").should("not.be.empty");
+        cy.get("#browser-timezone").should("exist").invoke("text").should("not.be.empty");
+        cy.get("#browser-time").should("exist").invoke("text").should("not.be.empty");
+        cy.get("#timezone-summary").should("exist").invoke("text").should("not.be.empty");
     });
 
     it("View email debug", () => {

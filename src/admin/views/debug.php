@@ -297,7 +297,6 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     $configuredTimezone = SystemConfig::getValue('sTimeZone');
     $currentServerTime = new DateTime('now', new DateTimeZone($serverTimezone));
     $serverConfigMismatch = !empty($configuredTimezone) && $configuredTimezone !== $serverTimezone;
-    $baseTimezone = !empty($configuredTimezone) ? $configuredTimezone : $serverTimezone;
     ?>
     <div class="col-md-4">
         <div class="card">
@@ -484,21 +483,13 @@ EOD;
             String(now.getMinutes()).padStart(2, '0') + ':' + 
             String(now.getSeconds()).padStart(2, '0');
         
-        // Helper to escape HTML in JS
-        function escapeHtml(text) {
-            var div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
-        }
-        var safeBrowserTimezone = escapeHtml(browserTimezone);
-        
-        // Update browser timezone display
-        $('#browser-timezone').text(safeBrowserTimezone);
+        // Update browser timezone display - .text() handles escaping
+        $('#browser-timezone').text(browserTimezone);
         $('#browser-time').text(browserTimeString + ' (' + offsetString + ')');
         
         // Compare against baseline (configured timezone, or server if not configured)
-        var serverTimezone = '<?= InputUtils::escapeHTML($serverTimezone) ?>';
-        var configuredTimezone = '<?= InputUtils::escapeHTML($configuredTimezone) ?>';
+        var serverTimezone = <?= json_encode($serverTimezone) ?>;
+        var configuredTimezone = <?= json_encode($configuredTimezone) ?>;
         var baselineTimezone = configuredTimezone || serverTimezone;
         
         var browserMatchesBaseline = (browserTimezone === baselineTimezone);
@@ -590,10 +581,16 @@ EOD;
         });
     };
 
-    // Initialize when DOM is ready - use jQuery ready for reliability
-    $(document).ready(function() {
-        initializeDebugPage();
-    });
+    // Initialize page once locales (i18next) are ready, with DOM-ready fallback
+    if (window.CRM && typeof window.CRM.onLocalesReady === 'function') {
+        window.CRM.onLocalesReady(function() {
+            initializeDebugPage();
+        });
+    } else {
+        $(document).ready(function() {
+            initializeDebugPage();
+        });
+    }
 </script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
