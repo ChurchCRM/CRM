@@ -285,11 +285,29 @@ class ChurchCRMReleaseManager
         if (!is_writable($docRoot)) {
             self::$isUpgradeInProgress = false;
             ini_set('display_errors', $displayErrors);
+
+            // Safely determine the directory owner name, handling environments
+            // where POSIX functions or lookups may fail.
+            $ownerName = 'N/A';
+            if (function_exists('posix_getpwuid')) {
+                $fileOwner = @fileowner($docRoot);
+                if ($fileOwner !== false) {
+                    $ownerInfo = @posix_getpwuid($fileOwner);
+                    if (is_array($ownerInfo) && isset($ownerInfo['name'])) {
+                        $ownerName = $ownerInfo['name'];
+                    } else {
+                        $ownerName = 'unknown';
+                    }
+                } else {
+                    $ownerName = 'unknown';
+                }
+            }
+
             $logger->error('Cannot write to ChurchCRM installation directory', [
                 'docRoot' => $docRoot,
                 'isWritable' => false,
                 'permissions' => substr(sprintf('%o', fileperms($docRoot)), -4),
-                'owner' => function_exists('posix_getpwuid') ? (posix_getpwuid(fileowner($docRoot))['name'] ?? 'unknown') : 'N/A',
+                'owner' => $ownerName,
             ]);
             throw new \Exception(gettext('Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions.'));
         }
@@ -380,7 +398,8 @@ class ChurchCRMReleaseManager
         $zip = new \ZipArchive();
         $codeDeploySuccessful = false;
 
-        if ($zip->open($zipFilename) === true) {
+        $openResult = $zip->open($zipFilename);
+        if ($openResult === true) {
             $logger->info('Extracting ' . $zipFilename . ' to: ' . $upgradeDir);
 
             $executionTime = new ExecutionTime();
@@ -421,6 +440,15 @@ class ChurchCRMReleaseManager
             FileSystemUtils::moveDir($extractedChurchCRM, $docRoot);
             $codeDeploySuccessful = true;
             $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
+        } else {
+            // ZipArchive::open() failed - log the error code and throw
+            self::$isUpgradeInProgress = false;
+            ini_set('display_errors', $displayErrors);
+            $logger->error('Failed to open upgrade archive', [
+                'zipFilename' => $zipFilename,
+                'errorCode' => $openResult,
+            ]);
+            throw new \Exception(gettext('Failed to open upgrade archive. The downloaded file may be corrupted.'));
         }
         $logger->info('Deleting zip archive: ' . $zipFilename);
         unlink($zipFilename);
