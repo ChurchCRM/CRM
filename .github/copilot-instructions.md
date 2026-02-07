@@ -29,8 +29,10 @@ Terminology & i18n conventions (project-standard)
 API error handling
 - For API route errors, return standardized JSON errors with `SlimUtils::renderErrorJSON(...)` instead of throwing `Http*Exception` directly from route handlers. This ensures consistent logging and sanitized client messages.
 
-Locale rebuild reminder
-- After changing msgids or UI gettext strings, run `npm run locale:build` and `npm run build` to regenerate frontend translation assets and ensure all i18n bundles include the new keys.
+Locale rebuild reminder (CRITICAL for agents)
+- **BEFORE committing**: If you added new `gettext()` or `i18next.t()` strings, you MUST run `npm run locale:build` to extract terms into messages.po
+- After locale:build, run `npm run build` to regenerate frontend translation assets
+- Commit the updated `locale/terms/messages.po` along with your code changes
 
 Routing & middleware
 - Put API routes in `src/api/routes/` and legacy pages in `src/*.php`.
@@ -1119,6 +1121,7 @@ Before committing code changes, verify:
 - [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
 - [ ] No alert() calls - use window.CRM.notify() instead
+- [ ] **If new gettext() strings added**: Run `npm run locale:build` to extract terms
 - [ ] Tests pass (if available) - run relevant tests before committing
 - [ ] Commit message follows imperative mood (< 72 chars, no file paths)
 - [ ] Branch name follows kebab-case format
