@@ -330,7 +330,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                             <div>
                                 <small class="text-muted d-block"><?= gettext('PHP Active') ?></small>
                                 <strong class="mb-0"><?= InputUtils::escapeHTML($serverTimezone) ?></strong>
-                                <small class="text-muted d-block"><?= $currentServerTime->format('Y-m-d H:i:s T') ?></small>
+                                <small class="text-muted d-block"><?= InputUtils::escapeHTML($currentServerTime->format('Y-m-d H:i:s T')) ?></small>
                             </div>
                             <?php if ($serverConfigMismatch): ?>
                                 <span class="badge badge-warning" title="<?= gettext('Does not match system config') ?>">
@@ -467,8 +467,13 @@ EOD;
     }
 
     var initializeDebugPage = function() {
-        // Populate browser timezone information
-        var browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        // Populate browser timezone information with guard for older browsers
+        var browserTimezone;
+        try {
+            browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || '<?= gettext('Unknown') ?>';
+        } catch (e) {
+            browserTimezone = '<?= gettext('Unknown') ?>';
+        }
         var now = new Date();
         var browserOffset = -now.getTimezoneOffset();
         var offsetHours = Math.floor(Math.abs(browserOffset) / 60);
@@ -525,7 +530,7 @@ EOD;
             summaryHtml = '<span class="text-success"><i class="fa fa-check-circle mr-1"></i><?= gettext('All timezones match') ?></span>';
         } else {
             summaryHtml = '<span class="text-warning"><i class="fa fa-exclamation-triangle mr-1"></i>' + 
-                          issueCount + ' <?= gettext('mismatch(es) detected') ?></span>';
+                          issueCount + ' ' + (issueCount === 1 ? '<?= gettext('mismatch detected') ?>' : '<?= gettext('mismatches detected') ?>') + '</span>';
             if (!browserMatchesBaseline) {
                 summaryHtml += '<br><small class="text-muted"><?= gettext('Browser differs from system config - dates may display incorrectly for this user.') ?></small>';
             }
