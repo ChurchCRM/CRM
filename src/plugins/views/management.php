@@ -131,14 +131,29 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                         <?= gettext('Enabled') ?>
                                     </label>
                                 </div>
-                            <?php elseif ($settingType === 'password'): ?>
-                                <input type="password" 
-                                       class="form-control plugin-setting" 
-                                       id="<?= $pluginId ?>-<?= $settingKey ?>"
-                                       data-setting-key="<?= $settingKey ?>"
-                                       data-config-key="<?= $configKey ?>"
-                                       value="<?= $settingValue ?>"
-                                       placeholder="<?= $isRequired ? gettext('Required') : '' ?>">
+                            <?php elseif ($settingType === 'password'): 
+                                $hasExistingValue = !empty($setting['hasValue']);
+                                $placeholder = $hasExistingValue 
+                                    ? gettext('Value is set - leave blank to keep current') 
+                                    : ($isRequired ? gettext('Required') : '');
+                            ?>
+                                <div class="input-group">
+                                    <input type="password" 
+                                           class="form-control plugin-setting" 
+                                           id="<?= $pluginId ?>-<?= $settingKey ?>"
+                                           data-setting-key="<?= $settingKey ?>"
+                                           data-config-key="<?= $configKey ?>"
+                                           data-has-value="<?= $hasExistingValue ? '1' : '0' ?>"
+                                           value=""
+                                           placeholder="<?= $placeholder ?>">
+                                    <?php if ($hasExistingValue): ?>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text text-success" title="<?= gettext('Value is configured') ?>">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                                    </div>
+                                    <?php endif; ?>
+                                </div>
                             <?php elseif ($settingType === 'select' && !empty($setting['options'])): ?>
                                 <select class="form-control plugin-setting"
                                         id="<?= $pluginId ?>-<?= $settingKey ?>"
@@ -386,11 +401,20 @@ $(document).ready(function() {
             
             if (input.attr('type') === 'checkbox') {
                 value = input.is(':checked') ? '1' : '0';
+                settings[key] = value;
+            } else if (input.attr('type') === 'password') {
+                // For password fields, only include if user entered a new value
+                // Skip empty passwords when there's an existing value (preserve current)
+                value = input.val();
+                const hasExistingValue = input.data('has-value') === 1 || input.data('has-value') === '1';
+                if (value !== '' || !hasExistingValue) {
+                    settings[key] = value;
+                }
+                // If empty and hasExistingValue, don't include in settings (keep existing)
             } else {
                 value = input.val();
+                settings[key] = value;
             }
-            
-            settings[key] = value;
         });
         
         submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin mr-1"></i>' + i18next.t('Saving...'));

@@ -449,6 +449,7 @@ class PluginManager
      * Get plugin settings with current values from SystemConfig.
      *
      * Maps plugin setting keys to their corresponding SystemConfig keys.
+     * Password fields are masked to prevent leaking sensitive data in HTML.
      */
     public static function getPluginSettingsWithValues(string $pluginId): array
     {
@@ -463,16 +464,26 @@ class PluginManager
         $settings = [];
         foreach ($metadata->getSettings() as $setting) {
             $settingKey = $setting['key'] ?? '';
+            $settingType = $setting['type'] ?? 'text';
             $configKey = $configKeyMap[$settingKey] ?? null;
 
             $currentValue = '';
+            $hasValue = false;
             if ($configKey !== null) {
                 $currentValue = SystemConfig::getValue($configKey) ?? '';
+                $hasValue = !empty($currentValue);
+            }
+
+            // For password fields, don't expose the actual value in HTML
+            // Instead, indicate whether a value is set
+            if ($settingType === 'password' && $hasValue) {
+                $currentValue = ''; // Don't send password to client
             }
 
             $settings[] = array_merge($setting, [
                 'configKey' => $configKey,
                 'value' => $currentValue,
+                'hasValue' => $hasValue, // For password fields to show "configured" state
             ]);
         }
 
