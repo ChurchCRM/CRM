@@ -321,11 +321,14 @@ class ExternalBackupPlugin extends AbstractPlugin
                     : gettext('Backup created but failed to copy to remote server'),
             ];
         } catch (\Exception $e) {
-            $logger->error('External Backup Plugin: Manual backup failed: ' . $e->getMessage());
+            $logger->error('External Backup Plugin: Manual backup failed', [
+                'exception' => $e::class,
+                'message' => $e->getMessage(),
+            ]);
 
             return [
                 'success' => false,
-                'message' => gettext('Remote backup failed') . ': ' . $e->getMessage(),
+                'message' => gettext('Remote backup failed. Check server logs for details.'),
             ];
         }
     }
@@ -358,6 +361,16 @@ class ExternalBackupPlugin extends AbstractPlugin
             curl_setopt($ch, CURLOPT_TIMEOUT, 10);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PROPFIND');
             curl_setopt($ch, CURLOPT_HTTPHEADER, ['Depth: 0']);
+
+            // SSL/TLS verification - secure by default
+            // Self-signed certs are common in home/church networks
+            if ($this->getAllowSelfSigned()) {
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+            } else {
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+            }
 
             curl_exec($ch);
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);

@@ -3,6 +3,7 @@
 namespace ChurchCRM\Plugins\Vonage;
 
 use ChurchCRM\Plugin\AbstractPlugin;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Vonage\Client;
 use Vonage\Client\Credentials\Basic;
@@ -240,16 +241,16 @@ class VonagePlugin extends AbstractPlugin
      * @param \Psr\Http\Message\ServerRequestInterface $request
      * @param \Psr\Http\Message\ResponseInterface      $response
      *
-     * @return mixed Response with JSON
+     * @return \Psr\Http\Message\ResponseInterface Response with JSON
      */
-    public function handleSendSMS($request, $response): mixed
+    public function handleSendSMS($request, $response): \Psr\Http\Message\ResponseInterface
     {
         $body = $request->getParsedBody();
         $to = $body['to'] ?? null;
         $message = $body['message'] ?? null;
 
         if (empty($to) || empty($message)) {
-            return $response->withJson([
+            return SlimUtils::renderJSON($response, [
                 'success' => false,
                 'message' => gettext('Phone number and message required'),
             ], 400);
@@ -257,7 +258,7 @@ class VonagePlugin extends AbstractPlugin
 
         $success = $this->sendSMS($to, $message);
 
-        return $response->withJson([
+        return SlimUtils::renderJSON($response, [
             'success' => $success,
             'message' => $success ? gettext('SMS sent') : gettext('Failed to send SMS'),
         ]);
@@ -269,16 +270,16 @@ class VonagePlugin extends AbstractPlugin
      * @param \Psr\Http\Message\ServerRequestInterface $request
      * @param \Psr\Http\Message\ResponseInterface      $response
      *
-     * @return mixed Response with JSON
+     * @return \Psr\Http\Message\ResponseInterface Response with JSON
      */
-    public function handleSendBulkSMS($request, $response): mixed
+    public function handleSendBulkSMS($request, $response): \Psr\Http\Message\ResponseInterface
     {
         $body = $request->getParsedBody();
         $recipients = $body['recipients'] ?? [];
         $message = $body['message'] ?? null;
 
         if (empty($recipients) || empty($message)) {
-            return $response->withJson([
+            return SlimUtils::renderJSON($response, [
                 'success' => false,
                 'message' => gettext('Recipients and message required'),
             ], 400);
@@ -287,7 +288,7 @@ class VonagePlugin extends AbstractPlugin
         $results = $this->sendBulkSMS($recipients, $message);
         $successCount = count(array_filter($results));
 
-        return $response->withJson([
+        return SlimUtils::renderJSON($response, [
             'success' => $successCount > 0,
             'data' => [
                 'total' => count($recipients),

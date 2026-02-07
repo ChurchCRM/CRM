@@ -67,6 +67,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    // Helper to escape HTML and prevent XSS
+    function escapeHtml(text) {
+        if (text == null) return '';
+        var div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     function initializeUnsubscribedTable() {
         var dataTableConfig = {
             ajax: {
@@ -84,8 +92,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Name'),
                     data: 'name',
                     render: function (data, type, row) {
-                        return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + row.id + '" class="text-primary">' +
-                            '<i class="fa-solid fa-user mr-2"></i>' + data + '</a>';
+                        // row.id is from CRM (integer), safe to use directly
+                        return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + parseInt(row.id, 10) + '" class="text-primary">' +
+                            '<i class="fa-solid fa-user mr-2"></i>' + escapeHtml(data) + '</a>';
                     },
                     searchable: true
                 },
@@ -95,8 +104,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     render: function (data, type, row) {
                         if (!data || data.length === 0) return '<span class="text-muted">' + i18next.t('No email') + '</span>';
                         return data.map(function(email) {
-                            return '<a href="mailto:' + email + '" class="badge badge-light mr-1">' +
-                                '<i class="fa-solid fa-envelope mr-1"></i>' + email + '</a>';
+                            var escaped = escapeHtml(email);
+                            return '<a href="mailto:' + encodeURIComponent(email) + '" class="badge badge-light mr-1">' +
+                                '<i class="fa-solid fa-envelope mr-1"></i>' + escaped + '</a>';
                         }).join(' ');
                     }
                 }

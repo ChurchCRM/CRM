@@ -68,6 +68,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    // Helper to escape HTML and prevent XSS
+    function escapeHtml(text) {
+        if (text == null) return '';
+        var div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
     function initializeMissingTable() {
         var dataTableConfig = {
             ajax: {
@@ -85,7 +93,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Name'),
                     data: 'last',
                     render: function (data, type, row) {
-                        return '<i class="fa-solid fa-user text-muted mr-2"></i>' + (row.first || '') + " " + (row.last || '');
+                        return '<i class="fa-solid fa-user text-muted mr-2"></i>' + escapeHtml(row.first || '') + " " + escapeHtml(row.last || '');
                     },
                     searchable: true
                 },
@@ -93,7 +101,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Email'),
                     data: 'email',
                     render: function(data) {
-                        return '<a href="mailto:' + data + '">' + data + '</a>';
+                        var escaped = escapeHtml(data);
+                        return '<a href="mailto:' + encodeURIComponent(data) + '">' + escaped + '</a>';
                     }
                 },
                 {
@@ -101,10 +110,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'status',
                     render: function(data) {
                         var badgeClass = 'badge-secondary';
+                        var status = escapeHtml(data);
                         if (data === 'subscribed') badgeClass = 'badge-success';
                         else if (data === 'unsubscribed') badgeClass = 'badge-warning';
                         else if (data === 'cleaned') badgeClass = 'badge-danger';
-                        return '<span class="badge ' + badgeClass + '">' + data + '</span>';
+                        return '<span class="badge ' + badgeClass + '">' + status + '</span>';
                     }
                 }
             ],
