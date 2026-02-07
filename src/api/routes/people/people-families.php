@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -111,7 +112,7 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::TYPE_FAMILY_VERIFY)
             ->filterByRemainingUses(['min' => 1])
-            ->filterByValidUntilDate(['min' => new DateTime()])
+            ->filterByValidUntilDate(['min' => DateTimeUtils::getToday()])
             ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
             ->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
             ->withColumn(TokenTableMap::COL_REFERENCE_ID, 'FamilyId')
@@ -133,7 +134,8 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
 function getFamiliesWithAnniversaries(Request $request, Response $response, array $args): Response
 {
     // Get anniversaries for 14-day range: 7 days before to 7 days after today
-    $today = new \DateTime();
+    // Use configured timezone to ensure correct "today" calculation
+    $today = DateTimeUtils::getToday();
     $conditions = [];
 
     for ($i = -7; $i <= 7; $i++) {

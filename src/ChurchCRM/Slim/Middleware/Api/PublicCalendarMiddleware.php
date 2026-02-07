@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use DateTime;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -52,7 +53,8 @@ class PublicCalendarMiddleware implements MiddlewareInterface
         if (isset($params['start'])) {
             $start_date = DateTime::createFromFormat('Y-m-d', $params['start']);
         } else {
-            $start_date = new DateTime();
+            // Use configured timezone for default start date
+            $start_date = DateTimeUtils::getToday();
         }
         $start_date->setTime(0, 0, 0);
 

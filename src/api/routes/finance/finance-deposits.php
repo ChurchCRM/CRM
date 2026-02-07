@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\DepositService;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -18,7 +19,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
         $input = $request->getParsedBody();
         $depositType = $input['depositType'] ?? '';
         $depositComment = InputUtils::sanitizeText($input['depositComment']) ?? '';
-        $depositDate = $input['depositDate'] ?? date('Y-m-d');
+        $depositDate = $input['depositDate'] ?? DateTimeUtils::getTodayDate();
 
         // Validate depositType against allowed values
         $allowedTypes = ['Bank', 'CreditCard', 'BankDraft'];
@@ -38,7 +39,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
 
     $group->get('/dashboard', function (Request $request, Response $response, array $args): Response {
         $list = DepositQuery::create()
-            ->filterByDate(['min' => date('Y-m-d', strtotime('-90 days'))])
+            ->filterByDate(['min' => DateTimeUtils::getRelativeDate('-90 days')])
             ->find();
 
         return SlimUtils::renderJSON($response, $list->toArray());

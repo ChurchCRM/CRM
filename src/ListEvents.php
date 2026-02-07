@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $eType = 'All';
@@ -26,7 +27,7 @@ if ($eType != 'All') {
 if (isset($_POST['WhichYear'])) {
     $EventYear = InputUtils::legacyFilterInput($_POST['WhichYear'], 'int');
 } else {
-    $EventYear = date('Y');
+    $EventYear = DateTimeUtils::getCurrentYear();
 }
 
 require_once __DIR__ . '/Include/Header.php';

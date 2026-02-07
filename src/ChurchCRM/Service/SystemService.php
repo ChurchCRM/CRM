@@ -8,6 +8,7 @@ use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use PDO;
 use Propel\Runtime\Propel;
@@ -60,7 +61,7 @@ class SystemService
         if (empty($LastTime)) {
             return true;
         }
-        $tz = new \DateTimeZone(SystemConfig::getValue('sTimeZone'));
+        $tz = DateTimeUtils::getConfiguredTimezone();
         $now = new \DateTime('now', $tz);  //get the current time
         $previous = \DateTime::createFromFormat(SystemConfig::getValue('sDateFilenameFormat'), $LastTime, $tz); // get a DateTime object for the last time a backup was done.
         if ($previous === false) {
