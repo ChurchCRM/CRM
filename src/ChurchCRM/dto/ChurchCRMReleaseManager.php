@@ -274,6 +274,59 @@ class ChurchCRMReleaseManager
         $logger = LoggerUtils::getAppLogger();
         $logger->info('Beginning upgrade process');
         $logger->info('PHP max_execution_time is now: ' . ini_get('max_execution_time'));
+
+        // Pre-flight validation: Check if we can create the Upgrade directory
+        $docRoot = SystemURLs::getDocumentRoot();
+        $upgradeDir = $docRoot . '/Upgrade';
+        $logger->info('Document root: ' . $docRoot);
+        $logger->info('Upgrade directory will be: ' . $upgradeDir);
+
+        // Check if document root is writable
+        if (!is_writable($docRoot)) {
+            self::$isUpgradeInProgress = false;
+            ini_set('display_errors', $displayErrors);
+
+            // Safely determine the directory owner name, handling environments
+            // where POSIX functions or lookups may fail.
+            $ownerName = 'N/A';
+            if (function_exists('posix_getpwuid')) {
+                $fileOwner = @fileowner($docRoot);
+                if ($fileOwner !== false) {
+                    $ownerInfo = @posix_getpwuid($fileOwner);
+                    if (is_array($ownerInfo) && isset($ownerInfo['name'])) {
+                        $ownerName = $ownerInfo['name'];
+                    } else {
+                        $ownerName = 'unknown';
+                    }
+                } else {
+                    $ownerName = 'unknown';
+                }
+            }
+
+            $logger->error('Cannot write to ChurchCRM installation directory', [
+                'docRoot' => $docRoot,
+                'isWritable' => false,
+                'permissions' => substr(sprintf('%o', fileperms($docRoot)), -4),
+                'owner' => $ownerName,
+            ]);
+            throw new \Exception(gettext('Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions.'));
+        }
+
+        // Create Upgrade directory if it doesn't exist
+        if (!is_dir($upgradeDir)) {
+            $logger->info('Creating Upgrade directory: ' . $upgradeDir);
+            if (!@mkdir($upgradeDir, 0755, true)) {
+                self::$isUpgradeInProgress = false;
+                ini_set('display_errors', $displayErrors);
+                $error = error_get_last();
+                $logger->error('Failed to create Upgrade directory', [
+                    'upgradeDir' => $upgradeDir,
+                    'lastError' => $error,
+                ]);
+                throw new \Exception(gettext('Failed to create Upgrade directory. Please check file permissions.'));
+            }
+        }
+
         $logger->info('Beginning hash validation on ' . $zipFilename);
 
         // Log detailed file information before attempting hash
@@ -345,23 +398,57 @@ class ChurchCRMReleaseManager
         $zip = new \ZipArchive();
         $codeDeploySuccessful = false;
 
-        if ($zip->open($zipFilename) === true) {
-            $logger->info('Extracting ' . $zipFilename . ' to: ' . SystemURLs::getDocumentRoot() . '/Upgrade');
+        $openResult = $zip->open($zipFilename);
+        if ($openResult === true) {
+            $logger->info('Extracting ' . $zipFilename . ' to: ' . $upgradeDir);
 
             $executionTime = new ExecutionTime();
-            $isSuccessful = $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-            MiscUtils::throwIfFailed($isSuccessful);
+            $isSuccessful = $zip->extractTo($upgradeDir);
+            if (!$isSuccessful) {
+                self::$isUpgradeInProgress = false;
+                ini_set('display_errors', $displayErrors);
+                $logger->error('Failed to extract upgrade archive', [
+                    'zipFilename' => $zipFilename,
+                    'upgradeDir' => $upgradeDir,
+                    'diskFreeSpace' => disk_free_space($docRoot),
+                ]);
+                $zip->close();
+                throw new \Exception(gettext('Failed to extract upgrade archive. Please check disk space and file permissions.'));
+            }
 
             $zip->close();
 
             $logger->info('Extraction completed.  Took:' . $executionTime->getMilliseconds());
+
+            // Verify the extracted directory exists
+            $extractedChurchCRM = $upgradeDir . '/churchcrm';
+            if (!is_dir($extractedChurchCRM)) {
+                self::$isUpgradeInProgress = false;
+                ini_set('display_errors', $displayErrors);
+                $logger->error('Extraction completed but expected directory not found', [
+                    'upgradeDir' => $upgradeDir,
+                    'expectedDir' => $extractedChurchCRM,
+                    'upgradeDirContents' => @scandir($upgradeDir),
+                ]);
+                throw new \Exception(gettext('Extraction completed but upgrade files not found. The upgrade archive may be corrupted.'));
+            }
+
             $logger->info('Moving extracted zip into place');
 
             $executionTime = new ExecutionTime();
 
-            FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            FileSystemUtils::moveDir($extractedChurchCRM, $docRoot);
             $codeDeploySuccessful = true;
             $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
+        } else {
+            // ZipArchive::open() failed - log the error code and throw
+            self::$isUpgradeInProgress = false;
+            ini_set('display_errors', $displayErrors);
+            $logger->error('Failed to open upgrade archive', [
+                'zipFilename' => $zipFilename,
+                'errorCode' => $openResult,
+            ]);
+            throw new \Exception(gettext('Failed to open upgrade archive. The downloaded file may be corrupted.'));
         }
         $logger->info('Deleting zip archive: ' . $zipFilename);
         unlink($zipFilename);
