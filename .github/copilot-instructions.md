@@ -3,7 +3,7 @@
 Purpose: Keep guidance compact. Follow these core rules when editing the repo.
 
 Stack (short)
-- PHP 8.2+
+- PHP 8.3+
 - Perpl ORM (actively maintained fork of Propel2 - use Query classes, never raw SQL)
 - Slim 4 (API routes)
 - Bootstrap 4.6.2 (AdminLTE v2 pattern for legacy pages)
@@ -446,9 +446,9 @@ ALWAYS use SystemURLs::getRootPath() for asset references:
 
 ---
 
-## PHP 8.2+ Requirements
+## PHP 8.3+ Requirements
 
-MANDATORY: All code must be compatible with PHP 8.2+ and avoid deprecated patterns.
+MANDATORY: All code must be compatible with PHP 8.3+ and avoid deprecated patterns.
 
 Key Standards:
 - Explicit nullable parameters: `?int $param = null` not `int $param = null`
@@ -456,7 +456,7 @@ Key Standards:
 - Use IntlDateFormatter instead of strftime
 - **Use imports, never inline fully-qualified class names**: Add `use` statements at top of file
 - Explicit global namespace: `\MakeFYString($id)` in namespaced code
-- Version checks: `version_compare(phpversion(), '8.2.0', '<')`
+- Version checks: `version_compare(phpversion(), '8.3.0', '<')`
 - Public constants for shared values: `public const PHOTO_WIDTH = 200;`
 
 ### Import Statement Rules
