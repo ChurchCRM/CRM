@@ -22,6 +22,10 @@ src/skin/external
 # Configuration files with passwords
 src/Include/Config.php
 BuildConfig.json
+orm/propel.php
+
+# Perpl/Propel generated config
+src/generated-conf/
 
 src/admin/data/signatures.json
 src/ChurchCRM/model/ChurchCRM/Base
