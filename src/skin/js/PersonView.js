@@ -205,7 +205,9 @@ $(document).ready(function () {
                             // API error - update all loading cells to show error
                             // Use data attribute marker instead of localized text check
                             $("#mailchimp td[data-loading='true']").each(function () {
-                                $(this).removeAttr('data-loading').html('<span class="text-muted">' + i18next.t("Unable to load") + "</span>");
+                                $(this)
+                                    .removeAttr("data-loading")
+                                    .html('<span class="text-muted">' + i18next.t("Unable to load") + "</span>");
                             });
                         },
                     });
