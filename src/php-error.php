@@ -7,7 +7,7 @@
  */
 
 // Read required PHP version from composer.json (same source as VersionUtils)
-$requiredPhpVersion = '8.0'; // fallback
+$requiredPhpVersion = '8.3'; // fallback
 $composerFile = __DIR__ . '/composer.json';
 if (file_exists($composerFile)) {
     $composerJson = @file_get_contents($composerFile);
