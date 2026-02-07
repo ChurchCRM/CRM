@@ -97,10 +97,10 @@ $group->post('/plugins/{pluginId}/enable', function (Request $request, Response 
             'message' => gettext('Plugin enabled successfully'),
         ]);
     } catch (\RuntimeException $e) {
-        // Dependency or version errors
+        // Dependency or version errors - use generic message
         return SlimUtils::renderErrorJSON(
             $response,
-            $e->getMessage(),
+            gettext('Plugin cannot be enabled due to dependency or version requirements'),
             [],
             400,
             $e,
@@ -134,10 +134,10 @@ $group->post('/plugins/{pluginId}/disable', function (Request $request, Response
             'message' => gettext('Plugin disabled successfully'),
         ]);
     } catch (\RuntimeException $e) {
-        // Dependency errors (other plugins depend on this one)
+        // Dependency errors (other plugins depend on this one) - use generic message
         return SlimUtils::renderErrorJSON(
             $response,
-            $e->getMessage(),
+            gettext('Plugin cannot be disabled because other plugins depend on it'),
             [],
             400,
             $e,

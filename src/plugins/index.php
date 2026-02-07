@@ -53,6 +53,19 @@ $app->group('/api', function (RouteCollectorProxy $group): void {
     require __DIR__ . '/routes/api/management.php';
 })->add(AdminRoleAuthMiddleware::class);
 
+// Public plugin status endpoint - no admin required
+// Used by PersonView.js/FamilyView.js to check if MailChimp tab should be shown
+$app->get('/status/{pluginId}', function (Request $request, \Psr\Http\Message\ResponseInterface $response, array $args) {
+    $pluginId = $args['pluginId'];
+    $plugin = PluginManager::getPlugin($pluginId);
+
+    return SlimUtils::renderJSON($response, [
+        'success' => true,
+        'isActive' => PluginManager::isPluginActive($pluginId),
+        'isConfigured' => $plugin?->isConfigured() ?? false,
+    ]);
+});
+
 // Register routes from all active plugins
 // Only enabled plugins have their routes loaded (system-wide security)
 // These routes use the plugin's own permission settings, not admin-only
@@ -97,8 +110,9 @@ $errorMiddleware->setDefaultErrorHandler(function (
 
 // Auth middleware (LIFO - added last, runs first)
 // Note: AdminRoleAuthMiddleware is applied to specific route groups above, not globally
-$app->add(new CorsMiddleware());
-$app->add(AuthMiddleware::class);
+// Order: Version added first (runs last), Auth second, CORS last (runs first)
 $app->add(VersionMiddleware::class);
+$app->add(AuthMiddleware::class);
+$app->add(new CorsMiddleware());
 
 $app->run();

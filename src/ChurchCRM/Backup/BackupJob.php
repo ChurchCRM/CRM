@@ -6,6 +6,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\VersionUtils;
 use Exception;
 use Ifsnop\Mysqldump\Mysqldump;
 use PharData;
@@ -40,29 +41,35 @@ class BackupJob extends JobBase
             $remoteUrl = $normalizedEndpoint . urlencode($this->BackupFile->getFilename());
             LoggerUtils::getAppLogger()->debug('Full remote URL: ' . $remoteUrl);
 
-            // Read file contents into memory to avoid rewind issues with auth negotiation
-            $fileContents = file_get_contents($this->BackupFile->getPathname());
-            if ($fileContents === false) {
-                throw new \Exception('Failed to read backup file');
+            // Get file size for headers and streaming
+            $fileSize = filesize($this->BackupFile->getPathname());
+            if ($fileSize === false) {
+                throw new \Exception('Failed to get backup file size');
+            }
+
+            // Open file for streaming upload (avoids loading entire file into memory)
+            $fileHandle = fopen($this->BackupFile->getPathname(), 'rb');
+            if ($fileHandle === false) {
+                throw new \Exception('Failed to open backup file for reading');
             }
 
             $ch = curl_init($remoteUrl);
             // Use CURLAUTH_ANY to let cURL negotiate the best auth method (Basic or Digest)
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
             curl_setopt($ch, CURLOPT_USERPWD, $Username . ':' . $Password);
-            curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $fileContents);
+            curl_setopt($ch, CURLOPT_PUT, true);
+            curl_setopt($ch, CURLOPT_INFILE, $fileHandle);
+            curl_setopt($ch, CURLOPT_INFILESIZE, $fileSize);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_HTTPHEADER, [
                 'Content-Type: application/octet-stream',
-                'Content-Length: ' . strlen($fileContents),
-                'User-Agent: ChurchCRM/5.0',
+                'User-Agent: ChurchCRM/' . VersionUtils::getInstalledVersion(),
             ]);
             curl_setopt($ch, CURLOPT_TIMEOUT, 300); // 5 minute timeout for large files
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Follow redirects
 
-            LoggerUtils::getAppLogger()->debug('Beginning to send file (' . strlen($fileContents) . ' bytes)');
+            LoggerUtils::getAppLogger()->debug('Beginning to stream file (' . $fileSize . ' bytes)');
             $time = new ExecutionTime();
             $result = curl_exec($ch);
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -70,11 +77,9 @@ class BackupJob extends JobBase
             $authUsed = curl_getinfo($ch, CURLINFO_HTTPAUTH_AVAIL);
             $error_msg = curl_error($ch);
             curl_close($ch);
+            fclose($fileHandle);
 
             LoggerUtils::getAppLogger()->debug('cURL info - HTTP: ' . $httpCode . ', Auth available: ' . $authUsed . ', Effective URL: ' . $effectiveUrl);
-
-            // Free memory
-            unset($fileContents);
 
             if (!empty($error_msg)) {
                 throw new \Exception('Error backing up to remote: ' . $error_msg);

@@ -157,9 +157,9 @@ $(document).ready(function () {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: window.CRM.root + "/plugins/api/plugins/mailchimp",
+            url: window.CRM.root + "/plugins/status/mailchimp",
             success: function (pluginData) {
-                if (pluginData.success && pluginData.data.isActive && pluginData.data.isConfigured) {
+                if (pluginData.success && pluginData.isActive && pluginData.isConfigured) {
                     // Show the MailChimp tab and content
                     $("#nav-item-mailchimp-container").removeClass("d-none");
                     $("#mailchimp").removeClass("d-none");
@@ -203,10 +203,9 @@ $(document).ready(function () {
                         },
                         error: function () {
                             // API error - update all loading cells to show error
-                            $("#mailchimp td[id]").each(function () {
-                                if ($(this).text().includes("loading")) {
-                                    $(this).html('<span class="text-muted">' + i18next.t("Unable to load") + "</span>");
-                                }
+                            // Use data attribute marker instead of localized text check
+                            $("#mailchimp td[data-loading='true']").each(function () {
+                                $(this).removeAttr('data-loading').html('<span class="text-muted">' + i18next.t("Unable to load") + "</span>");
                             });
                         },
                     });

@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Backup\BackupDownloader;
 use ChurchCRM\Backup\BackupJob;
+use ChurchCRM\Backup\BackupType;
 use ChurchCRM\Backup\RestoreJob;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Plugin\PluginManager;
@@ -56,7 +57,8 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
         }
 
         $input = $request->getParsedBody();
-        $backupType = $input['BackupType'] ?? 'FullBackup';
+        // Default to full backup (BackupType::FULL_BACKUP = 3)
+        $backupType = $input['BackupType'] ?? BackupType::FULL_BACKUP;
 
         try {
             $result = $plugin->executeManualBackup($backupType);

@@ -1019,14 +1019,14 @@ $bOkToEdit = (
                             <tr>
                                 <td><?= gettext("Home") ?></td>
                                 <td><?= $person->getEmail() ?></td>
-                                <td id="<?= md5(strtolower($person->getEmail())) ?>"> ... <?= gettext("loading") ?> ... </td>
+                                <td id="<?= md5(strtolower($person->getEmail())) ?>" data-loading="true"> ... <?= gettext("loading") ?> ... </td>
                             </tr>
                             <?php endif; ?>
                             <?php if (!empty($person->getWorkEmail()) && strtolower($person->getWorkEmail()) !== strtolower($person->getEmail() ?? '')) : ?>
                             <tr>
                                 <td><?= gettext("Work") ?></td>
                                 <td><?= $person->getWorkEmail() ?></td>
-                                <td id="<?= md5(strtolower($person->getWorkEmail())) ?>"> ... <?= gettext("loading") ?> ... </td>
+                                <td id="<?= md5(strtolower($person->getWorkEmail())) ?>" data-loading="true"> ... <?= gettext("loading") ?> ... </td>
                             </tr>
                             <?php endif; ?>
                         </table>

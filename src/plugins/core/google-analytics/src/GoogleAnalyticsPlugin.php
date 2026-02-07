@@ -115,9 +115,15 @@ class GoogleAnalyticsPlugin extends AbstractPlugin
             return '';
         }
 
-        $eventName = htmlspecialchars($eventName, ENT_QUOTES, 'UTF-8');
+        // Use json_encode for safe JS string construction
+        $eventNameJs = json_encode($eventName, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT);
         $paramsJson = json_encode($params, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT);
 
-        return "gtag('event', '{$eventName}', {$paramsJson});";
+        // Handle json_encode failures gracefully
+        if ($eventNameJs === false || $paramsJson === false) {
+            return '';
+        }
+
+        return "gtag('event', {$eventNameJs}, {$paramsJson});";
     }
 }

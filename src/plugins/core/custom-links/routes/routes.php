@@ -100,7 +100,7 @@ $app->group('/custom-links/api', function (RouteCollectorProxy $group) use ($plu
         $link = MenuLinkQuery::create()->findPk((int) $args['id']);
 
         if ($link === null) {
-            throw new HttpNotFoundException($request, gettext('Link not found'));
+            return SlimUtils::renderErrorJSON($response, gettext('Link not found'), [], 404);
         }
 
         try {

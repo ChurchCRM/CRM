@@ -401,9 +401,9 @@ function initializeFamilyView() {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: window.CRM.root + "/plugins/api/plugins/mailchimp",
+            url: window.CRM.root + "/plugins/status/mailchimp",
             success: function (pluginData) {
-                if (pluginData.success && pluginData.data.isActive && pluginData.data.isConfigured) {
+                if (pluginData.success && pluginData.isActive && pluginData.isConfigured) {
                     // Show the MailChimp status container
                     $("#mailchimp-status-container").removeClass("d-none");
 
