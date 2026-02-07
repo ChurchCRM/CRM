@@ -41,7 +41,16 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
             UpgradeAPIService::doUpgrade($input['fullPath'], $input['sha1']);
             return SlimUtils::renderSuccessJSON($response);
         } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to apply upgrade'), [], 500, $e, $request);
+            // Pass through the detailed error message from the upgrade process
+            // The exception message from ChurchCRMReleaseManager already contains helpful context
+            $errorMessage = $e->getMessage();
+            
+            // If it's a generic message, provide more context
+            if (empty($errorMessage) || $errorMessage === 'error') {
+                $errorMessage = gettext('Failed to apply upgrade. Please check the server logs for details.');
+            }
+            
+            return SlimUtils::renderErrorJSON($response, $errorMessage, [], 500, $e, $request);
         }
     });
 
