@@ -1,0 +1,25 @@
+{
+    "summary": "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists.",
+    "sections": [
+        {
+            "title": "Getting Started",
+            "content": "To use MailChimp Integration, you need a MailChimp account and an API key.\n\n1. Log in to your MailChimp account\n2. Go to Account > Extras > API Keys\n3. Create a new API key or copy an existing one\n4. Enter the API key in the plugin settings"
+        },
+        {
+            "title": "Features",
+            "content": "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+        },
+        {
+            "title": "Dashboard",
+            "content": "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n\n- Member count for each list\n- Campaign statistics\n- Unsubscribe counts\n- List maintenance tools"
+        },
+        {
+            "title": "Person/Family Integration",
+            "content": "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n\n- Email subscription status across all lists\n- Which lists the person is subscribed to\n- Subscription statistics"
+        },
+        {
+            "title": "Privacy & Compliance",
+            "content": "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+        }
+    ]
+}

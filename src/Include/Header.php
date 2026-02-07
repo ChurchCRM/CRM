@@ -7,6 +7,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\PHPToMomentJSConverter;
@@ -18,6 +19,10 @@ ob_start();
 
 require_once __DIR__ . '/Header-Security.php';
 
+// Initialize plugin system for logged-in users
+$pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+PluginManager::init($pluginsPath);
+
 // Top level menu index counter
 $MenuFirst = 1;
 ?>
@@ -28,6 +33,7 @@ $MenuFirst = 1;
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
+  <?= PluginManager::getPluginHeadContent() ?>
 </head>
 
 <body class="hold-transition <?= AuthenticationManager::getCurrentUser()->getStyle() ?> sidebar-mini">
@@ -95,7 +101,10 @@ $MenuFirst = 1;
               sDateTimeFormat: "<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
             },
             iDashboardServiceIntervalTime:"<?= SystemConfig::getValue('iDashboardServiceIntervalTime') ?>",
-            bEnableGravatarPhotos: <?= SystemConfig::getBooleanValue('bEnableGravatarPhotos') ? 'true' : 'false' ?>,
+            // Plugin configs from active plugins (via getClientConfig())
+            plugins: <?= json_encode(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,
+            // Legacy: keep bEnableGravatarPhotos for backward compatibility with existing JS
+            bEnableGravatarPhotos: <?= json_encode(PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false) ?>,
             plugin: {
                 dataTable : {
                     "pageLength": <?= $tableSize ?>,

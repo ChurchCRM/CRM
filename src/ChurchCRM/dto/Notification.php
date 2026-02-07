@@ -4,8 +4,7 @@ namespace ChurchCRM\dto;
 
 use ChurchCRM\Emails\notifications\NotificationEmail;
 use ChurchCRM\model\ChurchCRM\Person;
-use Vonage\Client;
-use Vonage\Client\Credentials\Basic;
+use ChurchCRM\Plugin\PluginManager;
 
 class Notification
 {
@@ -61,13 +60,18 @@ class Notification
 
     private function sendSMS(): bool
     {
-        $client = new Client(new Basic(SystemConfig::getValue('sNexmoAPIKey'), SystemConfig::getValue('sNexmoAPISecret')));
+        $vonagePlugin = PluginManager::getPlugin('vonage');
+
+        if ($vonagePlugin === null || !$vonagePlugin->isEnabled()) {
+            throw new \RuntimeException('Vonage SMS plugin is not enabled');
+        }
+
+        $notificationMessage = gettext('Notification for') . ' ' . $this->person->getFullName();
 
         foreach ($this->recipients as $recipient) {
-            $client->message()->sendText(
+            $vonagePlugin->sendSMS(
                 $recipient->getNumericCellPhone(),
-                SystemConfig::getValue('sNexmoFromNumber'),
-                gettext('Notification for') . ' ' . $this->person->getFullName()
+                $notificationMessage
             );
         }
 
@@ -76,19 +80,19 @@ class Notification
 
     private function sendProjector(): string
     {
-        $OLPAlert = new OpenLPNotification(
-            SystemConfig::getValue('sOLPURL'),
-            SystemConfig::getValue('sOLPUserName'),
-            SystemConfig::getValue('sOLPPassword')
-        );
-        $OLPAlert->setAlertText($this->projectorText);
+        $openLpPlugin = PluginManager::getPlugin('openlp');
 
-        return $OLPAlert->send();
+        if ($openLpPlugin === null || !$openLpPlugin->isEnabled()) {
+            throw new \RuntimeException('OpenLP plugin is not enabled');
+        }
+
+        return $openLpPlugin->sendAlert($this->projectorText);
     }
 
     public function send(): array
     {
         $methods = [];
+
         if (SystemConfig::hasValidMailServerSettings()) {
             $sendEmail = false;
             try {
@@ -98,7 +102,10 @@ class Notification
             }
             $methods[] = 'email: ' . $sendEmail;
         }
-        if (SystemConfig::hasValidSMSServerSettings()) {
+
+        // Check if Vonage SMS plugin is enabled and configured
+        $vonagePlugin = PluginManager::getPlugin('vonage');
+        if ($vonagePlugin !== null && $vonagePlugin->isEnabled() && $vonagePlugin->isConfigured()) {
             $sendSms = false;
             try {
                 $sendSms = $this->sendSMS();
@@ -107,7 +114,10 @@ class Notification
             }
             $methods[] = 'sms: ' . $sendSms;
         }
-        if (SystemConfig::hasValidOpenLPSettings()) {
+
+        // Check if OpenLP plugin is enabled and configured
+        $openLpPlugin = PluginManager::getPlugin('openlp');
+        if ($openLpPlugin !== null && $openLpPlugin->isEnabled() && $openLpPlugin->isConfigured()) {
             $sendOpenLp = false;
             try {
                 $sendOpenLp = (bool) $this->sendProjector();

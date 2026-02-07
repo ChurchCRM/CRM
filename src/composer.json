@@ -62,7 +62,7 @@
         "symfony/dependency-injection": "^6.4.0",
         "symfony/translation": "^5.4.35",
         "twig/twig": "^3.20.0",
-        "vonage/client": "^2.4.0"
+        "vonage/client": "^4.3.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.1.6",
