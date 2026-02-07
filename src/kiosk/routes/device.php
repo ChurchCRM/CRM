@@ -5,6 +5,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -101,9 +102,11 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
         $groupName = $groups->count() > 0 ? $groups->getFirst()->getName() : '';
 
         // Build response array using Person object methods
-        $currentMonth = (int) date('n');
-        $currentDay = (int) date('j');
-        $currentYear = (int) date('Y');
+        // Use configured timezone for "today" calculations
+        $today = DateTimeUtils::getToday();
+        $currentMonth = (int) $today->format('n');
+        $currentDay = (int) $today->format('j');
+        $currentYear = (int) $today->format('Y');
         $peopleData = [];
         foreach ($members as $person) {
             $photo = new Photo('Person', $person->getId());
@@ -117,8 +120,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
             $age = null;
             if (!empty($birthYear) && $birthMonth > 0 && $birthDay > 0) {
                 // Calculate age manually to avoid hideAge() interference
-                $birthDate = new \DateTime("$birthYear-$birthMonth-$birthDay");
-                $today = new \DateTime('today');
+                $birthDate = DateTimeUtils::createDateTime("$birthYear-$birthMonth-$birthDay");
                 $ageInterval = $today->diff($birthDate);
                 $age = $ageInterval->y;
             }
@@ -131,10 +133,9 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
             $birthdayRecent = false;
             $birthdayToday = false;
             if ($birthMonth > 0 && $birthDay > 0) {
-                // Calculate this year's birthday
-                $thisBirthday = new \DateTime();
+                // Calculate this year's birthday using configured timezone
+                $thisBirthday = DateTimeUtils::getToday();
                 $thisBirthday->setDate($currentYear, $birthMonth, $birthDay);
-                $today = new \DateTime('today');
 
                 // Get the difference in days
                 $interval = $today->diff($thisBirthday);

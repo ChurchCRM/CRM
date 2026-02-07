@@ -9,6 +9,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 // Security
@@ -62,7 +63,7 @@ if (!$output) {
 }
 
 // Normalize date range
-$today = date('Y-m-d');
+$today = DateTimeUtils::getTodayDate();
 if (!$sDateEnd && $sDateStart) {
     $sDateEnd = $sDateStart;
 }

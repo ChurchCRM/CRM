@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -275,7 +276,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
             $attendee = new EventAttend();
             $attendee->setEventId($EventID);
             $attendee->setPersonId($iChildID);
-            $attendee->setCheckinDate(date("Y-m-d H:i:s"));
+            $attendee->setCheckinDate(DateTimeUtils::getNowDateTime());
             if (!empty($iAdultID)) {
                 $attendee->setCheckinId($iAdultID);
             }
@@ -289,7 +290,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
         $attendee = EventAttendQuery::create()
             ->filterByEventId($EventID)
             ->findOneByPersonId($iChildID);
-        $attendee->setCheckoutDate(date("Y-m-d H:i:s"));
+        $attendee->setCheckoutDate(DateTimeUtils::getNowDateTime());
         if ($iAdultID) {
             $attendee->setCheckoutId($iAdultID);
         }

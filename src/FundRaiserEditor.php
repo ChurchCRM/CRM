@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -54,7 +55,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
                 ->setTitle($sTitle)
                 ->setDescription($sDescription)
                 ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
-                ->setEnteredDate(date('YmdHis'));
+                ->setEnteredDate(DateTimeUtils::getToday()->format('YmdHis'));
             $fundraiser->save();
             $fundraiser->reload();
 
@@ -67,7 +68,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
                 ->setTitle($sTitle)
                 ->setDescription($sDescription)
                 ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
-                ->setEnteredDate(date('YmdHis'));
+                ->setEnteredDate(DateTimeUtils::getToday()->format('YmdHis'));
             $fundraiser->save();
         }
 

@@ -6,13 +6,14 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-$curYear = (new DateTime())->format("Y");
+$curYear = DateTimeUtils::getCurrentYear();
 $familyAddress = $family->getAddress();
 $mailchimp = new MailChimpService();
 

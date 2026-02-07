@@ -10,11 +10,11 @@ use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\LockedEmail;
-use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use DateTimeZone;
 use Endroid\QrCode\QrCode;
 use PragmaRX\Google2FA\Google2FA;
 
@@ -87,7 +87,7 @@ class LocalAuthentication implements IAuthenticationProvider
     private function prepareSuccessfulLoginOperations(): void
     {
         // Set the LastLogin and Increment the LoginCount
-        $date = new \DateTimeImmutable('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
+        $date = new \DateTimeImmutable('now', DateTimeUtils::getConfiguredTimezone());
         $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
         $this->currentUser->setLoginCount($this->currentUser->getLoginCount() + 1);
         $this->currentUser->setFailedLogins(0);

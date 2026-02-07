@@ -252,9 +252,8 @@ function renderBirthdaySection(birthdayPeople: ClassMember[]): void {
  */
 function renderBirthdayCard(person: ClassMember, monthNames: string[], cardType: string): JQuery {
     let cardClass = 'birthday-card';
-    const today = new Date();
-    const isToday =
-        person.birthdayToday || (person.birthMonth === today.getMonth() + 1 && person.birthDay === today.getDate());
+    // Use server-provided birthdayToday flag (calculated with correct timezone)
+    const isToday = person.birthdayToday;
 
     if (isToday) {
         cardClass += ' today';
