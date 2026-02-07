@@ -46,17 +46,17 @@ class OpenLPPlugin extends AbstractPlugin
 
     public function boot(): void
     {
-        $this->log('OpenLP plugin booted');
+        $this->log('OpenLP plugin booted', 'debug');
     }
 
     public function activate(): void
     {
-        $this->log('OpenLP plugin activated');
+        $this->log('OpenLP plugin activated', 'debug');
     }
 
     public function deactivate(): void
     {
-        $this->log('OpenLP plugin deactivated');
+        $this->log('OpenLP plugin deactivated', 'debug');
     }
 
     public function uninstall(): void

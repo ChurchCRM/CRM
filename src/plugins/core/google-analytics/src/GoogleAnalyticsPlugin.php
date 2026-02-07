@@ -33,17 +33,17 @@ class GoogleAnalyticsPlugin extends AbstractPlugin
     public function boot(): void
     {
         $this->trackingId = $this->getConfigValue('trackingId');
-        $this->log('Google Analytics plugin booted');
+        $this->log('Google Analytics plugin booted', 'debug');
     }
 
     public function activate(): void
     {
-        $this->log('Google Analytics plugin activated');
+        $this->log('Google Analytics plugin activated', 'debug');
     }
 
     public function deactivate(): void
     {
-        $this->log('Google Analytics plugin deactivated');
+        $this->log('Google Analytics plugin deactivated', 'debug');
     }
 
     public function uninstall(): void

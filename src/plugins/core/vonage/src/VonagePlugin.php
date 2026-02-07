@@ -56,17 +56,17 @@ class VonagePlugin extends AbstractPlugin
             $this->initializeClient();
         }
 
-        $this->log('Vonage SMS plugin booted');
+        $this->log('Vonage SMS plugin booted', 'debug');
     }
 
     public function activate(): void
     {
-        $this->log('Vonage SMS plugin activated');
+        $this->log('Vonage SMS plugin activated', 'debug');
     }
 
     public function deactivate(): void
     {
-        $this->log('Vonage SMS plugin deactivated');
+        $this->log('Vonage SMS plugin deactivated', 'debug');
     }
 
     public function uninstall(): void

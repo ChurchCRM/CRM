@@ -57,19 +57,19 @@ class MailChimpPlugin extends AbstractPlugin
         // Register hooks for person/family/group changes
         $this->registerHooks();
 
-        $this->log('MailChimp plugin booted');
+        $this->log('MailChimp plugin booted', 'debug');
     }
 
     public function activate(): void
     {
-        $this->log('MailChimp plugin activated');
+        $this->log('MailChimp plugin activated', 'debug');
     }
 
     public function deactivate(): void
     {
         // Clear cached data
         unset($_SESSION['MailChimpLists']);
-        $this->log('MailChimp plugin deactivated');
+        $this->log('MailChimp plugin deactivated', 'debug');
     }
 
     public function uninstall(): void
@@ -284,13 +284,13 @@ class MailChimpPlugin extends AbstractPlugin
     /**
      * Get the MailChimp list ID associated with a group.
      *
-     * This could be stored in group custom fields or a mapping table.
-     * For now, returns null - needs configuration UI.
+     * Group-to-list mapping is not yet implemented.
+     * Future enhancement could store mapping in group custom fields or a plugin-specific table.
+     *
+     * @return null Always returns null until group-to-list mapping is implemented
      */
     private function getGroupMailChimpListId(int $groupId): ?string
     {
-        // TODO: Implement group-to-list mapping
-        // Could be stored in group_grp custom fields or a plugin-specific table
         return null;
     }
 }

@@ -1,7 +1,34 @@
 describe('Custom Links Plugin UI - Security & Functionality', () => {
+    before(() => {
+        // Enable the custom-links plugin before running tests
+        cy.setupAdminSession();
+        cy.request({
+            method: 'POST',
+            url: '/plugins/api/plugins/custom-links/enable',
+            headers: { 'Content-Type': 'application/json' },
+            failOnStatusCode: false
+        }).then((response) => {
+            // Plugin may already be enabled, that's OK
+            expect(response.status).to.be.oneOf([200, 400]);
+        });
+    });
+
+    after(() => {
+        // Disable the plugin after tests to leave clean state
+        cy.setupAdminSession();
+        cy.request({
+            method: 'POST',
+            url: '/plugins/api/plugins/custom-links/disable',
+            headers: { 'Content-Type': 'application/json' },
+            failOnStatusCode: false
+        });
+    });
+
     beforeEach(() => {
         cy.setupAdminSession();
         cy.visit('/plugins/custom-links/manage');
+        // Wait for page to fully load
+        cy.get('#link-form').should('be.visible');
     });
 
     describe('HTML5 Inline Validation & XSS Protection', () => {

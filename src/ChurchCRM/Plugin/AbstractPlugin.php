@@ -217,12 +217,12 @@ abstract class AbstractPlugin implements PluginInterface
 
     public function activate(): void
     {
-        LoggerUtils::getAppLogger()->info("Plugin '{$this->getId()}' activated");
+        LoggerUtils::getAppLogger()->debug("Plugin '{$this->getId()}' activated");
     }
 
     public function deactivate(): void
     {
-        LoggerUtils::getAppLogger()->info("Plugin '{$this->getId()}' deactivated");
+        LoggerUtils::getAppLogger()->debug("Plugin '{$this->getId()}' deactivated");
     }
 
     public function uninstall(): void

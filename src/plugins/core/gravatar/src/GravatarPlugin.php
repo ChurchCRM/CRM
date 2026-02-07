@@ -53,17 +53,17 @@ class GravatarPlugin extends AbstractPlugin
 
     public function boot(): void
     {
-        $this->log('Gravatar plugin booted');
+        $this->log('Gravatar plugin booted', 'debug');
     }
 
     public function activate(): void
     {
-        $this->log('Gravatar plugin activated');
+        $this->log('Gravatar plugin activated', 'debug');
     }
 
     public function deactivate(): void
     {
-        $this->log('Gravatar plugin deactivated');
+        $this->log('Gravatar plugin deactivated', 'debug');
     }
 
     public function uninstall(): void

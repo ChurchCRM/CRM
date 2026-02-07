@@ -91,7 +91,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
     $logger = LoggerUtils::getAppLogger();
 
     if ($exception instanceof HttpNotFoundException) {
-        $logger->info('Plugin 404 redirect', ['path' => $request->getUri()->getPath()]);
+        $logger->debug('Plugin 404 redirect', ['path' => $request->getUri()->getPath()]);
         $response = $app->getResponseFactory()->createResponse(302);
 
         return $response->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/');

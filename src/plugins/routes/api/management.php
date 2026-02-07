@@ -90,8 +90,6 @@ $group->post('/plugins/{pluginId}/enable', function (Request $request, Response 
 
         PluginManager::enablePlugin($pluginId);
 
-        LoggerUtils::getAppLogger()->info("Plugin enabled: $pluginId");
-
         return SlimUtils::renderJSON($response, [
             'success' => true,
             'message' => gettext('Plugin enabled successfully'),
@@ -126,8 +124,6 @@ $group->post('/plugins/{pluginId}/disable', function (Request $request, Response
         PluginManager::init($pluginsPath);
 
         PluginManager::disablePlugin($pluginId);
-
-        LoggerUtils::getAppLogger()->info("Plugin disabled: $pluginId");
 
         return SlimUtils::renderJSON($response, [
             'success' => true,
@@ -204,7 +200,7 @@ $group->post('/plugins/{pluginId}/settings', function (Request $request, Respons
             ]);
         }
 
-        LoggerUtils::getAppLogger()->info("Plugin settings updated: $pluginId", ['settings' => array_keys($settings)]);
+        LoggerUtils::getAppLogger()->debug("Plugin settings updated: $pluginId", ['settings' => array_keys($settings)]);
 
         return SlimUtils::renderJSON($response, [
             'success' => true,

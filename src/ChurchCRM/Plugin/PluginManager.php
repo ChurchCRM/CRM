@@ -171,7 +171,7 @@ class PluginManager
 
         self::$loadedPlugins[$pluginId] = $plugin;
 
-        LoggerUtils::getAppLogger()->info("Plugin loaded: $pluginId");
+        LoggerUtils::getAppLogger()->debug("Plugin loaded: $pluginId");
 
         return $plugin;
     }
@@ -527,7 +527,7 @@ class PluginManager
 
         try {
             SystemConfig::setValue($configKey, $value);
-            LoggerUtils::getAppLogger()->info(
+            LoggerUtils::getAppLogger()->debug(
                 "Updated plugin setting: $pluginId.$settingKey",
                 ['configKey' => $configKey]
             );
