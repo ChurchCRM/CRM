@@ -12,6 +12,7 @@ class Notification
     protected string $projectorText;
     protected array $recipients;
     protected ?Person $person = null;
+    protected string $eventName = '';
 
     public function setRecipients(array $recipients): void
     {
@@ -31,6 +32,16 @@ class Notification
         $this->person = $Person;
     }
 
+    public function setEventName(string $eventName): void
+    {
+        $this->eventName = $eventName;
+    }
+
+    public function getEventName(): string
+    {
+        return $this->eventName;
+    }
+
     public function setProjectorText(string $text): void
     {
         $this->projectorText = $text;
@@ -43,7 +54,7 @@ class Notification
             $emailaddresses[] = $recipient->getEmail();
         }
 
-        $email = new NotificationEmail($emailaddresses, $this->person->getFullName());
+        $email = new NotificationEmail($emailaddresses, $this->person->getFullName(), $this->eventName);
 
         return $email->send();
     }

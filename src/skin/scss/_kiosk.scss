@@ -9,8 +9,449 @@
  * See: src/skin/Kiosk.css (legacy, no longer used)
  */
 
-// Kiosk device display styles
-// Styles for Sunday School class view and other kiosk displays
+// =============================================================================
+// Kiosk Container & Layout
+// =============================================================================
+
+.kiosk-container {
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+// =============================================================================
+// Kiosk Header (Event title, stats, time info)
+// =============================================================================
+
+.kiosk-header {
+    background: linear-gradient(135deg, #3c8dbc 0%, #2a6a8a 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+
+    h1 {
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: 600;
+    }
+}
+
+.kiosk-stats {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.kiosk-stat {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+
+    &.checked-in {
+        background: #28a745;
+    }
+
+    &.not-here {
+        background: #6c757d;
+    }
+}
+
+.kiosk-time-info {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 0.5rem;
+}
+
+// =============================================================================
+// Kiosk Section Cards (Checked In / Not Checked In lists)
+// =============================================================================
+
+.kiosk-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 220px);
+    display: flex;
+    flex-direction: column;
+
+    &.has-birthday-banner {
+        height: calc(100vh - 320px);
+    }
+}
+
+.kiosk-section-header {
+    padding: 1rem 1.25rem;
+    border-bottom: 2px solid;
+    flex-shrink: 0;
+
+    &.checked-in {
+        background: #d4edda;
+        border-color: #28a745;
+        color: #155724;
+    }
+
+    &.not-checked-in {
+        background: #fff3cd;
+        border-color: #ffc107;
+        color: #856404;
+    }
+
+    h4 {
+        margin: 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+}
+
+.kiosk-section-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.75rem;
+}
+
+// =============================================================================
+// Kiosk Member Cards
+// =============================================================================
+
+.kiosk-member {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid transparent;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: #e9ecef;
+    }
+
+    &.checked-in {
+        border-left-color: #28a745;
+        background: #f0fff4;
+    }
+}
+
+.kiosk-member-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e9ecef;
+    border: 2px solid #dee2e6;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.kiosk-member-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.kiosk-member-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.125rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.kiosk-member-age {
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.kiosk-member-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+// =============================================================================
+// Kiosk Buttons
+// =============================================================================
+
+.kiosk-btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kiosk-btn-checkin {
+    background: #28a745;
+    color: white;
+
+    &:hover {
+        background: #218838;
+    }
+}
+
+.kiosk-btn-checkout {
+    background: #ffc107;
+    color: #212529;
+
+    &:hover {
+        background: #e0a800;
+    }
+}
+
+.kiosk-btn-alert {
+    background: transparent;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    padding: 0.5rem 0.75rem;
+
+    &:hover {
+        background: #dc3545;
+        color: white;
+    }
+
+    &.sending {
+        background: #6c757d;
+        border-color: #6c757d;
+        color: white;
+        cursor: wait;
+    }
+}
+
+// =============================================================================
+// Kiosk Notification Toast
+// =============================================================================
+
+.kiosk-notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s ease;
+    max-width: 90%;
+    text-align: center;
+
+    &.show {
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+.kiosk-notification-success {
+    background: #28a745;
+    color: white;
+}
+
+.kiosk-notification-error {
+    background: #dc3545;
+    color: white;
+}
+
+// =============================================================================
+// Kiosk Empty State
+// =============================================================================
+
+.kiosk-empty {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+
+    i {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+        display: block;
+    }
+}
+
+// =============================================================================
+// Birthday Banner
+// =============================================================================
+
+.kiosk-birthday-banner {
+    background: linear-gradient(135deg, #fff5f8 0%, #ffe4ec 100%);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(232, 62, 140, 0.2);
+    border: 2px solid #e83e8c;
+    overflow: hidden;
+}
+
+.birthday-banner-header {
+    background: linear-gradient(135deg, #e83e8c 0%, #f06595 100%);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.birthday-banner-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+.birthday-card {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: white;
+    border-radius: 8px;
+    border-left: 4px solid #e83e8c;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    min-width: 200px;
+    flex: 0 1 auto;
+
+    &.today {
+        border-left-color: #ffc107;
+        background: #fffbeb;
+        animation: kiosk-birthday-pulse 2s infinite;
+    }
+
+    &.upcoming {
+        border-left-color: #28a745;
+        background: #f0fff4;
+    }
+
+    &.recent {
+        border-left-color: #6c757d;
+        background: #f8f9fa;
+    }
+}
+
+@keyframes kiosk-birthday-pulse {
+    0%,
+    100% {
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+    }
+}
+
+.birthday-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fce4ec;
+    color: #e83e8c;
+    font-size: 0.9rem;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.birthday-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.birthday-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.birthday-date {
+    font-size: 0.75rem;
+    color: #6c757d;
+
+    &.today {
+        color: #ffc107;
+        font-weight: 600;
+    }
+}
+
+.birthday-age-badge {
+    background: #e83e8c;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.birthday-subheader {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+// =============================================================================
+// Tablet Warning Banner
+// =============================================================================
+
+.tablet-warning {
+    display: none;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #856404;
+}
+
+// =============================================================================
+// Responsive - Tablet and Mobile
+// =============================================================================
+
+@media (max-width: 768px) {
+    .tablet-warning {
+        display: block;
+    }
+
+    .kiosk-section {
+        height: auto;
+        min-height: 300px;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (min-width: 769px) and (max-aspect-ratio: 4/3) {
+    .tablet-warning {
+        display: none;
+    }
+}
+
+// =============================================================================
+// Legacy Kiosk Styles (for backward compatibility)
+// =============================================================================
 
 .widget-user-2 .widget-user-header {
     padding: 5px;
@@ -30,11 +471,6 @@
     }
 }
 
-#eventTitle {
-    font-size: 30px !important;
-    font-weight: bold;
-}
-
 #newStudent {
     position: fixed;
     left: 20px;
@@ -52,8 +488,76 @@
 
 #noEvent {
     display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+}
+
+// =============================================================================
+// Kiosk Status Container - centered display for waiting states
+// =============================================================================
+
+.kiosk-status-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 20px;
+}
+
+// Kiosk Status Card - uses Bootstrap card-primary pattern
+.kiosk-status-card {
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+
+    .card-body {
+        padding: 40px;
+    }
+}
+
+// Kiosk Status Icons - large centered icons
+.kiosk-status-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+// Kiosk Name Display - highlighted device name
+.kiosk-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 15px 0;
+    padding: 10px 20px;
+    background: #f8f9fa;
+    border-radius: 0.25rem;
+    display: inline-block;
+}
+
+// Kiosk Instructions - setup help for admins
+.kiosk-instructions {
+    text-align: left;
+    margin-top: 25px;
+    padding: 20px;
+    background: #e9ecef;
+    border-radius: 0.25rem;
+
+    h5 {
+        margin-bottom: 15px;
+        color: #495057;
+    }
+
+    ol {
+        margin-bottom: 0;
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 8px;
+        color: #6c757d;
+    }
+}
+
+// Kiosk Countdown Display
+.kiosk-countdown {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 20px 0;
 }

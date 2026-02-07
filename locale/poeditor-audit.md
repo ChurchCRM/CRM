@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥90%):** 37
-**Good Locales (75-89%):** 1
+**Complete Locales (≥90%):** 38
+**Good Locales (75-89%):** 0
 **Needs Work (<75%):** 7
 **WIP Candidates (>5%, not yet added):** 6
 
@@ -40,6 +40,7 @@
 | `vi` | Vietnamese | 2766 | 100% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 2765 | 99.96% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 2765 | 99.96% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 2765 | 99.96% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 2764 | 99.93% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 2760 | 99.78% | 🟢 Complete | ✅ Yes |
 | `pl` | Polish | 2760 | 99.78% | 🟢 Complete | ✅ Yes |
@@ -47,7 +48,6 @@
 | `ru` | Russian | 2760 | 99.78% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2758 | 99.71% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2758 | 99.71% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 2340 | 84.6% | 🟡 Good | ✅ Yes |
 | `te` | Telugu | 1107 | 40.02% | 🟠 Needs Work | ✅ Yes |
 | `sl` | Slovenian | 82 | 2.96% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 80 | 2.89% | 🟠 Needs Work | ❌ No |
@@ -64,8 +64,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥90%):** 37 locales ready for production
-- **🟡 Good (75-89%):** 1 locales with solid translation coverage
+- **🟢 Complete (≥90%):** 38 locales ready for production
+- **🟡 Good (75-89%):** 0 locales with solid translation coverage
 - **🟠 Needs Work (<75%):** 1 locales requiring translator attention
 - **🔴 Incomplete:** 0 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
