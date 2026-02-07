@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-27 22:27-0800\n"
+"POT-Creation-Date: 2026-02-07 19:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -204,9 +204,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr ""
 
 msgid "A new version of ChurchCRM is available for installation."
-msgstr ""
-
-msgid "A notification was triggered by the classroom teacher at"
 msgstr ""
 
 msgid "A payment is an actual donation received. It will be added to the current deposit."
@@ -1069,12 +1066,6 @@ msgstr ""
 msgid "CSV Individual Records"
 msgstr ""
 
-msgid "CSV export is restricted to administrators."
-msgstr ""
-
-msgid "CSV export permission"
-msgstr ""
-
 msgid "CURRENT FAMILY WITH DONATIONS"
 msgstr ""
 
@@ -1248,6 +1239,9 @@ msgid "Checked Out Time"
 msgstr ""
 
 msgid "Checking Cart Status"
+msgstr ""
+
+msgid "Checkout All"
 msgstr ""
 
 msgid "Checks"
@@ -2753,6 +2747,9 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
+msgid "Expected"
+msgstr ""
+
 msgid "Expected Hash"
 msgstr ""
 
@@ -2832,6 +2829,9 @@ msgid "Failed to create backup."
 msgstr ""
 
 msgid "Failed to create group. Please try again."
+msgstr ""
+
+msgid "Failed to delete kiosk"
 msgstr ""
 
 msgid "Failed to delete orphaned files"
@@ -2983,6 +2983,10 @@ msgid "Family Name"
 msgstr ""
 
 msgid "Family Navigation"
+msgstr ""
+
+#. Context: query_qry
+msgid "Family Pledge by Fiscal Year"
 msgstr ""
 
 msgid "Family Pledges"
@@ -3171,6 +3175,10 @@ msgstr ""
 msgid "Find Duplicate Emails"
 msgstr ""
 
+#. Context: query_qry
+msgid "Find Registered students"
+msgstr ""
+
 msgid "Find family->"
 msgstr ""
 
@@ -3240,7 +3248,12 @@ msgstr ""
 msgid "FirstName MiddleName LastName"
 msgstr ""
 
+#. Context: queryparameters_qrp
 msgid "Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year."
 msgstr ""
 
 msgid "Focus"
@@ -3570,6 +3583,10 @@ msgstr ""
 msgid "Group management access"
 msgstr ""
 
+#. Context: queryparameters_qrp
+msgid "Group of registered students"
+msgstr ""
+
 msgid "Group removed from cart"
 msgstr ""
 
@@ -3672,6 +3689,9 @@ msgid "Help on types.."
 msgstr ""
 
 msgid "Help translate this project"
+msgstr ""
+
+msgid "Here"
 msgstr ""
 
 msgid "Hide Age"
@@ -3936,6 +3956,9 @@ msgstr ""
 msgid "Invalid Year"
 msgstr ""
 
+msgid "Invalid assignment type"
+msgstr ""
+
 msgid "Invalid country name supplied"
 msgstr ""
 
@@ -3949,6 +3972,9 @@ msgid "Invalid format"
 msgstr ""
 
 msgid "Invalid login or password"
+msgstr ""
+
+msgid "Invalid person ID"
 msgstr ""
 
 msgid "Invalid request data"
@@ -4059,6 +4085,12 @@ msgid "Kids Emails"
 msgstr ""
 
 msgid "Kiosk Manager"
+msgstr ""
+
+msgid "Kiosk Registration Disabled"
+msgstr ""
+
+msgid "Kiosk not found"
 msgstr ""
 
 msgid "KioskVisibilityTimestamp"
@@ -4212,6 +4244,12 @@ msgid "Link Address"
 msgstr ""
 
 msgid "Link Not found"
+msgstr ""
+
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr ""
+
+msgid "Linked Group"
 msgstr ""
 
 msgid "Links"
@@ -4917,6 +4955,9 @@ msgstr ""
 msgid "New Zealand"
 msgstr ""
 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr ""
+
 msgid "New to"
 msgstr ""
 
@@ -4979,6 +5020,9 @@ msgid "No Checks"
 msgstr ""
 
 msgid "No Data Found"
+msgstr ""
+
+msgid "No Group (Select for Kiosk Check-in)"
 msgstr ""
 
 msgid "No Group Selected"
@@ -5048,6 +5092,9 @@ msgid "No notes have been added for this family."
 msgstr ""
 
 msgid "No notes have been added for this person."
+msgstr ""
+
+msgid "No one checked in yet"
 msgstr ""
 
 msgid "No payments on this deposit"
@@ -5187,9 +5234,6 @@ msgid "Notes"
 msgstr ""
 
 msgid "Notes access"
-msgstr ""
-
-msgid "Notification"
 msgstr ""
 
 msgid "Notification for"
@@ -5615,6 +5659,9 @@ msgstr ""
 msgid "Person has been already checked in for this event"
 msgstr ""
 
+msgid "Person not found"
+msgstr ""
+
 msgid "Person to Make User"
 msgstr ""
 
@@ -5669,6 +5716,9 @@ msgid "PhotoBook"
 msgstr ""
 
 msgid "Photos"
+msgstr ""
+
+msgid "Pickup Request"
 msgstr ""
 
 msgid "Picture URL"
@@ -5753,9 +5803,6 @@ msgstr ""
 msgid "Please ensure this what you want to do."
 msgstr ""
 
-msgid "Please ensure this what you want to do.</p>"
-msgstr ""
-
 msgid "Please enter 2FA code"
 msgstr ""
 
@@ -5793,10 +5840,10 @@ msgstr ""
 msgid "Please fill in all required fields correctly."
 msgstr ""
 
-msgid "Please go to this location"
+msgid "Please mail you next gift to "
 msgstr ""
 
-msgid "Please mail you next gift to "
+msgid "Please proceed to the classroom as soon as possible."
 msgstr ""
 
 msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
@@ -5874,6 +5921,10 @@ msgid "Pledge comparison"
 msgstr ""
 
 msgid "Pledge or Payment"
+msgstr ""
+
+#. Context: query_qry
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -6109,6 +6160,10 @@ msgid "Register a New Family"
 msgstr ""
 
 msgid "Register another family!"
+msgstr ""
+
+#. Context: query_qry
+msgid "Registered students"
 msgstr ""
 
 msgid "Registration Complete"
@@ -6836,9 +6891,6 @@ msgstr ""
 msgid "Share this URL with family members to verify their information"
 msgstr ""
 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr ""
-
 msgid "Show"
 msgstr ""
 
@@ -7376,6 +7428,9 @@ msgstr ""
 msgid "The sunday school class for which you would like records returned."
 msgstr ""
 
+msgid "The teacher sent this alert at"
+msgstr ""
+
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
 msgstr ""
 
@@ -7419,6 +7474,9 @@ msgid "This field is required"
 msgstr ""
 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr ""
+
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
 msgstr ""
 
 msgid "This may take a few minutes for large databases."
@@ -7486,6 +7544,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Timor-Leste"
+msgstr ""
+
+msgid "Tip"
 msgstr ""
 
 msgid "Tip:"
@@ -7620,6 +7681,9 @@ msgid "True"
 msgstr ""
 
 msgid "True / False"
+msgstr ""
+
+msgid "Try Again"
 msgstr ""
 
 msgid "Tuesdays"
@@ -7796,6 +7860,9 @@ msgid "Unsuccessful API Key authentication attempt"
 msgstr ""
 
 msgid "Unsupported Two Factor Authentication Configuration"
+msgstr ""
+
+msgid "Upcoming Birthdays"
 msgstr ""
 
 msgid "Update"
@@ -8170,6 +8237,9 @@ msgstr ""
 msgid "WSW"
 msgstr ""
 
+msgid "Waiting to Check In"
+msgstr ""
+
 #. Context: countries
 msgid "Wallis and Futuna"
 msgstr ""
@@ -8230,6 +8300,9 @@ msgid "Western Sahara (‫الصحراء الغربية‬‎)"
 msgstr ""
 
 msgid "What are Orphaned Files?"
+msgstr ""
+
+msgid "When enabled, new kiosk devices can register for 30 seconds."
 msgstr ""
 
 msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
@@ -8418,6 +8491,9 @@ msgid "Your cart is empty"
 msgstr ""
 
 msgid "Your cart is empty!"
+msgstr ""
+
+msgid "Your child"
 msgstr ""
 
 msgid "Your fiscal year starts in month"
@@ -8616,6 +8692,9 @@ msgstr ""
 msgid "must be configured with an encryption key"
 msgstr ""
 
+msgid "needs to be picked up from"
+msgstr ""
+
 msgid "not found"
 msgstr ""
 
@@ -8715,6 +8794,9 @@ msgid "system user password reset"
 msgstr ""
 
 msgid "system user updated"
+msgstr ""
+
+msgid "their classroom"
 msgstr ""
 
 msgid "to"

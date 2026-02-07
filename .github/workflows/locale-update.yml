@@ -99,7 +99,7 @@ jobs:
       - name: Commit locale changes
         if: steps.check_changes.outputs.has_changes == 'true'
         run: |
-          git add locale/terms/messages.po locale/terms/base/ src/locale/i18n/
+          git add locale/terms/messages.po src/locale/i18n/
           git commit -m "Update locale strings from source code"
       
       - name: Push branch
