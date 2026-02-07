@@ -3589,10 +3589,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "ये परिवार की भूमिका संख्याएँ हैं जो बच्चे के रूप में नामित हैं"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "क्या केवल प्रशासकों को CSV निर्यात प्रणाली और निर्देशिका रिपोर्ट तक पहुंच होनी चाहिए?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "न्यूनतम लंबाई जो एक उपयोगकर्ता अपना पासवर्ड सेट कर सकता है"
 
@@ -5828,10 +5824,6 @@ msgid "payment(s)?"
 msgstr "भुगतान?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "कृपया सुनिश्चित करें कि आप यही करना चाहते हैं।</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "निष्क्रिय करने की पुष्टि करें"
 
@@ -6204,20 +6196,8 @@ msgid "Integration"
 msgstr "एकीकरण (इंटीग्रेशन)"
 
 #: 
-msgid "Notification"
-msgstr "अधिसूचना"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "इनके अभिभावक"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "कक्षा शिक्षक द्वारा इस समय एक अधिसूचना ट्रिगर की गई थी:"
-
-#: 
-msgid "Please go to this location"
-msgstr "कृपया इस स्थान पर जाएं"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9495,10 +9475,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "सावधानी: बैकअप रिस्टोर करने से मौजूदा डेटाबेस पूरी तरह से मिट जाएगा और बैकअप डेटा से बदल दिया जाएगा।"
 
 #: 
-msgid "CSV export permission"
-msgstr "CSV निर्यात अनुमति"
-
-#: 
 msgid "Close & Refresh"
 msgstr "बंद करें और रिफ्रेश करें"
 
@@ -9917,10 +9893,6 @@ msgstr "परिवारों पर वापस जाएं"
 #: 
 msgid "Birth & Family"
 msgstr "जन्म और परिवार"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV निर्यात व्यवस्थापकों तक सीमित है।"
 
 #: 
 msgid "Cart"
@@ -10633,6 +10605,10 @@ msgstr "वर्तमान $URL[0] मान:"
 #: 
 msgid "Custom port:"
 msgstr "कस्टम पोर्ट:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "<strong>अनुगामी स्लैश</strong> (/) के साथ समाप्त होता है"
 
 #: 
 msgid "Error:"
@@ -11481,4 +11457,138 @@ msgstr "फ़िल्टर रीसेट करें"
 #: 
 msgid "Show only people with photos"
 msgstr "केवल फ़ोटो वाले लोग दिखाएं"
+
+#: 
+msgid "Checkout All"
+msgstr "सभी को चेकआउट करें"
+
+#: 
+msgid "Expected"
+msgstr "अपेक्षित"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "कियोस्क हटाने में विफल"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "वित्तीय वर्ष के अनुसार पारिवारिक प्रतिज्ञा"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "पंजीकृत छात्र खोजें"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "वित्तीय वर्ष।"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "पंजीकृत छात्रों का समूह"
+
+#: 
+msgid "Here"
+msgstr "यहाँ"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "अमान्य असाइनमेंट प्रकार"
+
+#: 
+msgid "Invalid person ID"
+msgstr "अमान्य व्यक्ति आईडी"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "कियोस्क पंजीकरण अक्षम"
+
+#: 
+msgid "Kiosk not found"
+msgstr "कियोस्क नहीं मिला"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "कियोस्क चेक-इन कार्यक्षमता के लिए इस कार्यक्रम को एक समूह से जोड़ें। समूह के सदस्य कियोस्क पर दिखाई देंगे।"
+
+#: 
+msgid "Linked Group"
+msgstr "लिंक किया गया समूह"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "नए कियोस्क उपकरण पंजीकरण वर्तमान में अक्षम है। कियोस्क पंजीकरण सक्षम करने के लिए कृपया अपने सिस्टम व्यवस्थापक से संपर्क करें।"
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "कोई समूह नहीं (कियोस्क चेक-इन के लिए चुनें)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "अभी तक किसी ने चेक-इन नहीं किया"
+
+#: 
+msgid "Person not found"
+msgstr "व्यक्ति नहीं मिला"
+
+#: 
+msgid "Pickup Request"
+msgstr "पिकअप अनुरोध"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "कृपया जितनी जल्दी हो सके कक्षा में जाएं।"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "चयनित वित्तीय वर्ष के लिए प्रत्येक फंड के लिए परिवार के नाम के अनुसार प्रतिज्ञा सारांश"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "पंजीकृत छात्र"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "शिक्षक ने यह अलर्ट भेजा"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "इष्टतम चेक-इन अनुभव के लिए इस कियोस्क को टैबलेट पर लैंडस्केप मोड में देखना सबसे अच्छा है।"
+
+#: 
+msgid "Tip"
+msgstr "सुझाव"
+
+#: 
+msgid "Try Again"
+msgstr "पुनः प्रयास करें"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "आगामी जन्मदिन"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "चेक-इन की प्रतीक्षा में"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "सक्षम होने पर, नए कियोस्क उपकरण 30 सेकंड के लिए पंजीकरण कर सकते हैं।"
+
+#: 
+msgid "Your child"
+msgstr "आपका बच्चा"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "से लेने की जरूरत है"
+
+#: 
+msgid "their classroom"
+msgstr "उनकी कक्षा"
 

@@ -3596,10 +3596,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "เหล่านี้คือหมายเลขบทบาทครอบครัวที่กำหนดเป็นเด็ก"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "ควรให้เฉพาะผู้ดูแลระบบเข้าถึงระบบส่งออก CSV และรายงานไดเรกทอรีหรือไม่?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "ความยาวขั้นต่ำที่ผู้ใช้สามารถตั้งค่ารหัสผ่านได้"
 
@@ -5825,10 +5821,6 @@ msgid "payment(s)?"
 msgstr "การชำระเงิน?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "กรุณาตรวจสอบให้แน่ใจว่านี่คือสิ่งที่คุณต้องการทำ</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "ยืนยันการปิดใช้งาน"
 
@@ -6201,20 +6193,8 @@ msgid "Integration"
 msgstr "การผสานรวม"
 
 #: 
-msgid "Notification"
-msgstr "การแจ้งเตือน"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "ผู้ปกครองของ"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "การแจ้งเตือนถูกเรียกโดยครูในชั้นเรียนที่"
-
-#: 
-msgid "Please go to this location"
-msgstr "กรุณาไปที่สถานที่นี้"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9492,10 +9472,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "ข้อควรระวัง: การกู้คืนการสำรองข้อมูลจะลบฐานข้อมูลที่มีอยู่ทั้งหมดและแทนที่ด้วยข้อมูลสำรอง"
 
 #: 
-msgid "CSV export permission"
-msgstr "สิทธิ์ส่งออก CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "ปิดและรีเฟรช"
 
@@ -9914,10 +9890,6 @@ msgstr "กลับไปที่ครอบครัว"
 #: 
 msgid "Birth & Family"
 msgstr "การเกิดและครอบครัว"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "การส่งออก CSV จำกัดเฉพาะผู้ดูแลระบบ"
 
 #: 
 msgid "Cart"

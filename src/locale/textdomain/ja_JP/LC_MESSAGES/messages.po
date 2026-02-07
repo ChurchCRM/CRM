@@ -3585,10 +3585,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "これらは子供として指定された役割番号です"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "管理者のみがCSVエクスポートシステムとディレクトリレポートにアクセスできるようにしますか?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "ユーザーがパスワードに設定できる最小長"
 
@@ -5819,10 +5815,6 @@ msgid "payment(s)?"
 msgstr "支払い?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "これが本当にしたいことであることを確認してください。"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "非アクティブ化を確認"
 
@@ -6195,20 +6187,8 @@ msgid "Integration"
 msgstr "統合"
 
 #: 
-msgid "Notification"
-msgstr "通知"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "保護者"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "クラスルームティーチャーによって通知がトリガーされました"
-
-#: 
-msgid "Please go to this location"
-msgstr "この場所に移動してください"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9486,10 +9466,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "注意：バックアップを復元すると、既存のデータベースが完全に消去され、バックアップデータに置き換えられます。"
 
 #: 
-msgid "CSV export permission"
-msgstr "CSVエクスポート権限"
-
-#: 
 msgid "Close & Refresh"
 msgstr "閉じて更新"
 
@@ -9908,10 +9884,6 @@ msgstr "家族に戻る"
 #: 
 msgid "Birth & Family"
 msgstr "出生と家族"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSVエクスポートは管理者に制限されています。"
 
 #: 
 msgid "Cart"
@@ -11472,4 +11444,138 @@ msgstr "フィルターをリセット"
 #: 
 msgid "Show only people with photos"
 msgstr "写真のある人物のみ表示"
+
+#: 
+msgid "Checkout All"
+msgstr "全員チェックアウト"
+
+#: 
+msgid "Expected"
+msgstr "予定"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "キオスクの削除に失敗しました"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "会計年度別家族誓約"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "登録済み学生を検索"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "会計年度。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "登録済み学生グループ"
+
+#: 
+msgid "Here"
+msgstr "こちら"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "無効な割り当てタイプ"
+
+#: 
+msgid "Invalid person ID"
+msgstr "無効な人物ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "キオスク登録が無効です"
+
+#: 
+msgid "Kiosk not found"
+msgstr "キオスクが見つかりません"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "キオスクチェックイン機能のためにこのイベントをグループにリンクします。グループメンバーがキオスクに表示されます。"
+
+#: 
+msgid "Linked Group"
+msgstr "リンクされたグループ"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "新しいキオスクデバイスの登録は現在無効になっています。キオスク登録を有効にするには、システム管理者にお問い合わせください。"
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "グループなし（キオスクチェックイン用に選択）"
+
+#: 
+msgid "No one checked in yet"
+msgstr "まだ誰もチェックインしていません"
+
+#: 
+msgid "Person not found"
+msgstr "人物が見つかりません"
+
+#: 
+msgid "Pickup Request"
+msgstr "お迎えリクエスト"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "できるだけ早く教室にお越しください。"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "選択した会計年度の各基金の家族名別誓約概要"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "登録済み学生"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "先生がこのアラートを送信した時刻"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "このキオスクは、最適なチェックイン体験のためにタブレットの横向きモードで表示することをお勧めします。"
+
+#: 
+msgid "Tip"
+msgstr "ヒント"
+
+#: 
+msgid "Try Again"
+msgstr "再試行"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "近日中の誕生日"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "チェックイン待ち"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "有効にすると、新しいキオスクデバイスは30秒間登録できます。"
+
+#: 
+msgid "Your child"
+msgstr "お子様"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "から迎えに来てください"
+
+#: 
+msgid "their classroom"
+msgstr "教室"
 

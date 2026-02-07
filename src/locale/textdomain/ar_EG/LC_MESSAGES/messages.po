@@ -3623,10 +3623,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "هذه هي الأرقام دور الأسرة تسمى الطفل"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "ينبغي أن يكون للمسؤولين فقط الوصول إلى نظام تصدير CSV وتقرير الدليل؟"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "الحد الأدنى لطول يجوز للمستخدم ضبط كلمة المرور الخاصة بهم ل"
 
@@ -5867,10 +5863,6 @@ msgid "payment(s)?"
 msgstr "المدفوعات (ق)؟"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "الرجاء التأكد من هذا ما تريد القيام به. </p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "تأكيد التعطيل"
 
@@ -6245,20 +6237,8 @@ msgid "Integration"
 msgstr "دمج"
 
 #: 
-msgid "Notification"
-msgstr "تنبيه"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "الجارديان (ق) من"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "واندلعت إخطار من قبل معلم الصف في"
-
-#: 
-msgid "Please go to this location"
-msgstr "يرجى الدخول إلى هذا الموقع"
 
 #: 
 #, fuzzy
@@ -9176,6 +9156,16 @@ msgid "deposit(s) with no payments"
 msgstr "إيداع (ات) بدون مدفوعات"
 
 #: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "لا يوجد أحداث في %s"
+msgstr[1] "حدث واحد في %s"
+msgstr[2] "حدثان في %s"
+msgstr[3] "%d أحداث في %s"
+msgstr[4] "%d حدثاً في %s"
+msgstr[5] "%d أحداث في %s"
+
+#: 
 msgid "All Event Types"
 msgstr "جميع أنواع الأحداث"
 
@@ -9428,6 +9418,16 @@ msgid "optional"
 msgstr "اختياري"
 
 #: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "لا أحد"
+msgstr[1] "شخص"
+msgstr[2] "شخصان"
+msgstr[3] "أشخاص"
+msgstr[4] "شخصاً"
+msgstr[5] "أشخاص"
+
+#: 
 msgid "✓ CheckOut"
 msgstr "✓ تسجيل المغادرة"
 
@@ -9538,10 +9538,6 @@ msgstr "نسخة احتياطية للتخزين الخارجي"
 #: 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr "تحذير: استعادة النسخة الاحتياطية ستمحو قاعدة البيانات الموجودة تماما واستبدالها ببيانات النسخة الاحتياطية."
-
-#: 
-msgid "CSV export permission"
-msgstr "إذن تصدير CSV"
 
 #: 
 msgid "Close & Refresh"
@@ -9962,10 +9958,6 @@ msgstr "العودة إلى العائلات"
 #: 
 msgid "Birth & Family"
 msgstr "الميلاد والعائلة"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "تصدير CSV مقيد بالمسؤولين."
 
 #: 
 msgid "Cart"
@@ -11160,6 +11152,36 @@ msgid "must be configured with an encryption key"
 msgstr "يجب تكوينه بمفتاح تشفير"
 
 #: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "لم يُضف أحد إلى السلة."
+msgstr[1] "تم إضافة شخص واحد إلى السلة."
+msgstr[2] "تمت إضافة شخصين إلى السلة."
+msgstr[3] "تمت إضافة %d أشخاص إلى السلة."
+msgstr[4] "تمت إضافة %d شخصاً إلى السلة."
+msgstr[5] "تم إضافة %d شخص إلى السلة."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "لم يُضف أحد إلى العائلة المحددة."
+msgstr[1] "تم إضافة شخص واحد بنجاح إلى العائلة المحددة."
+msgstr[2] "تمت إضافة شخصين بنجاح إلى العائلة المحددة."
+msgstr[3] "تمت إضافة %d أشخاص بنجاح إلى العائلة المحددة."
+msgstr[4] "تمت إضافة %d شخصاً بنجاح إلى العائلة المحددة."
+msgstr[5] "تم إضافة %d شخص بنجاح إلى العائلة المحددة."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "لم يُضف أحد إلى المجموعة المحددة."
+msgstr[1] "تم إضافة شخص واحد بنجاح إلى المجموعة المحددة."
+msgstr[2] "تمت إضافة شخصين بنجاح إلى المجموعة المحددة."
+msgstr[3] "تمت إضافة %d أشخاص بنجاح إلى المجموعة المحددة."
+msgstr[4] "تمت إضافة %d شخصاً بنجاح إلى المجموعة المحددة."
+msgstr[5] "تم إضافة %d شخص بنجاح إلى المجموعة المحددة."
+
+#: 
 msgid "A "
 msgstr "أ"
 
@@ -11480,6 +11502,16 @@ msgid "Must start with / if not empty; no trailing slash. Only letters, numbers,
 msgstr "يجب أن يبدأ بـ / إذا لم يكن فارغاً؛ بدون شرطة مائلة في النهاية. يُسمح فقط بالأحرف والأرقام والشرطة السفلية والشرطة والنقطة و /."
 
 #: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "لا أحد"
+msgstr[1] "%d شخص"
+msgstr[2] "شخصان"
+msgstr[3] "%d أشخاص"
+msgstr[4] "%d شخصاً"
+msgstr[5] "%d أشخاص"
+
+#: 
 msgid "All Classifications"
 msgstr "جميع التصنيفات"
 
@@ -11506,4 +11538,138 @@ msgstr "إعادة تعيين الفلاتر"
 #: 
 msgid "Show only people with photos"
 msgstr "عرض الأشخاص الذين لديهم صور فقط"
+
+#: 
+msgid "Checkout All"
+msgstr "تسجيل خروج الجميع"
+
+#: 
+msgid "Expected"
+msgstr "متوقع"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "فشل في حذف الكشك"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "تعهد العائلة حسب السنة المالية"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "البحث عن الطلاب المسجلين"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "السنة المالية."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "مجموعة الطلاب المسجلين"
+
+#: 
+msgid "Here"
+msgstr "هنا"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "نوع التعيين غير صالح"
+
+#: 
+msgid "Invalid person ID"
+msgstr "معرّف الشخص غير صالح"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "تسجيل الكشك معطل"
+
+#: 
+msgid "Kiosk not found"
+msgstr "الكشك غير موجود"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "اربط هذا الحدث بمجموعة لوظيفة تسجيل الدخول عبر الكشك. سيظهر أعضاء المجموعة على الكشك."
+
+#: 
+msgid "Linked Group"
+msgstr "المجموعة المرتبطة"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "تسجيل أجهزة الكشك الجديدة معطل حالياً. يرجى الاتصال بمسؤول النظام لتمكين تسجيل الكشك."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "لا توجد مجموعة (اختر لتسجيل الدخول عبر الكشك)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "لم يسجل أحد دخوله بعد"
+
+#: 
+msgid "Person not found"
+msgstr "الشخص غير موجود"
+
+#: 
+msgid "Pickup Request"
+msgstr "طلب استلام"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "يرجى التوجه إلى الفصل في أقرب وقت ممكن."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "ملخص التعهدات حسب اسم العائلة لكل صندوق للسنة المالية المحددة"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "الطلاب المسجلون"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "أرسل المعلم هذا التنبيه في"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "يُفضل عرض هذا الكشك على جهاز لوحي في الوضع الأفقي للحصول على أفضل تجربة تسجيل دخول."
+
+#: 
+msgid "Tip"
+msgstr "نصيحة"
+
+#: 
+msgid "Try Again"
+msgstr "حاول مرة أخرى"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "أعياد الميلاد القادمة"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "في انتظار تسجيل الدخول"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "عند التمكين، يمكن لأجهزة الكشك الجديدة التسجيل لمدة 30 ثانية."
+
+#: 
+msgid "Your child"
+msgstr "طفلك"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "يحتاج إلى استلامه من"
+
+#: 
+msgid "their classroom"
+msgstr "فصله الدراسي"
 

@@ -3623,10 +3623,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Αυτοί είναι οι αριθμοί ρόλων της οικογένειας που ορίζονται ως παιδί"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Θα πρέπει μόνο οι διαχειριστές να έχουν πρόσβαση στο σύστημα εξαγωγής CSV και στην αναφορά καταλόγου;"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Ελάχιστο μήκος στο οποίο μπορεί να ορίσει ο χρήστης τον κωδικό πρόσβασής του"
 
@@ -5867,10 +5863,6 @@ msgid "payment(s)?"
 msgstr "πληρωμές;"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Βεβαιωθείτε ότι αυτό θέλετε να κάνετε.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Επιβεβαίωση Απενεργοποίησης"
 
@@ -6245,20 +6237,8 @@ msgid "Integration"
 msgstr "Ενσωμάτωση"
 
 #: 
-msgid "Notification"
-msgstr "Γνωστοποίηση"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Κηδεμόνας(οι) του"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Μια ειδοποίηση ενεργοποιήθηκε από τον δάσκαλο της τάξης στο"
-
-#: 
-msgid "Please go to this location"
-msgstr "Παρακαλώ μεταβείτε σε αυτήν την τοποθεσία"
 
 #: 
 #, fuzzy
@@ -9551,10 +9531,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "ΠΡΟΣΟΧΗ: Η επαναφορά αντιγράφου ασφαλείας θα διαγράψει πλήρως την υπάρχουσα βάση δεδομένων και θα την αντικαταστήσει με τα δεδομένα του αντιγράφου."
 
 #: 
-msgid "CSV export permission"
-msgstr "Άδεια εξαγωγής CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Κλείσιμο & Ανανέωση"
 
@@ -9973,10 +9949,6 @@ msgstr "Επιστροφή σε Οικογένειες"
 #: 
 msgid "Birth & Family"
 msgstr "Γέννηση & Οικογένεια"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Η εξαγωγή CSV περιορίζεται στους διαχειριστές."
 
 #: 
 msgid "Cart"

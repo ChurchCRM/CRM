@@ -3760,10 +3760,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Estes são os números de papíes famíliares designados como filhos"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Só os administradores terão acesso ao sistema de exportação CSV e ao relatório de diretório?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "O tamanho mínimo da senha de um utilizador pode é"
 
@@ -6025,10 +6021,6 @@ msgid "payment(s)?"
 msgstr "pagamento(s)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Por favor, assegure-se que é isso que você pretende fazer. </ P>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Confirme a Desativação"
 
@@ -6403,20 +6395,8 @@ msgid "Integration"
 msgstr "Integração"
 
 #: 
-msgid "Notification"
-msgstr "Notificação"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Responsável por"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Uma notificação foi desencadeada pelo professor da sala de aula em"
-
-#: 
-msgid "Please go to this location"
-msgstr "Por favor, vá para esta localização"
 
 #: 
 #, fuzzy
@@ -9711,10 +9691,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "CUIDADO: restaurar um backup apagará completamente o banco de dados existente e o substituirá pelos dados de backup."
 
 #: 
-msgid "CSV export permission"
-msgstr "Permissão de exportação CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Fechar e atualizar"
 
@@ -10133,10 +10109,6 @@ msgstr "Voltar para famílias"
 #: 
 msgid "Birth & Family"
 msgstr "Nascimento e família"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "A exportação CSV é restrita aos administradores."
 
 #: 
 msgid "Cart"
@@ -11701,4 +11673,138 @@ msgstr "Repor Filtros"
 #: 
 msgid "Show only people with photos"
 msgstr "Mostrar apenas pessoas com fotos"
+
+#: 
+msgid "Checkout All"
+msgstr "Registar saída de todos"
+
+#: 
+msgid "Expected"
+msgstr "Esperado"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Falha ao eliminar quiosque"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Compromisso familiar por ano fiscal"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Encontrar alunos registados"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Ano fiscal."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Grupo de alunos registados"
+
+#: 
+msgid "Here"
+msgstr "Aqui"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Tipo de atribuição inválido"
+
+#: 
+msgid "Invalid person ID"
+msgstr "ID de pessoa inválido"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Registo de quiosque desativado"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Quiosque não encontrado"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Associe este evento a um grupo para a funcionalidade de check-in no quiosque. Os membros do grupo aparecerão no quiosque."
+
+#: 
+msgid "Linked Group"
+msgstr "Grupo associado"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "O registo de novos dispositivos de quiosque está atualmente desativado. Por favor contacte o administrador do sistema para ativar o registo de quiosques."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Sem grupo (Selecionar para check-in no quiosque)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Ninguém fez check-in ainda"
+
+#: 
+msgid "Person not found"
+msgstr "Pessoa não encontrada"
+
+#: 
+msgid "Pickup Request"
+msgstr "Pedido de recolha"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Por favor dirija-se à sala de aula o mais rapidamente possível."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Resumo de compromissos por nome de família para cada fundo do ano fiscal selecionado"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Alunos registados"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "O professor enviou este alerta às"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Este quiosque é melhor visualizado num tablet em modo paisagem para uma experiência de check-in ideal."
+
+#: 
+msgid "Tip"
+msgstr "Dica"
+
+#: 
+msgid "Try Again"
+msgstr "Tentar novamente"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Próximos aniversários"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "A aguardar check-in"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Quando ativado, os novos dispositivos de quiosque podem registar-se durante 30 segundos."
+
+#: 
+msgid "Your child"
+msgstr "O seu filho"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "precisa de ser recolhido de"
+
+#: 
+msgid "their classroom"
+msgstr "a sua sala de aula"
 

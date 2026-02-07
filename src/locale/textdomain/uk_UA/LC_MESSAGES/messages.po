@@ -3624,10 +3624,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Це номери сімейних ролей, позначені як дитячі"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Чи повинні лише адміністратори мати доступ до системи експорту та звіту CSV?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Мінімальна довжина, яку користувач може встановити для свого пароля"
 
@@ -5868,10 +5864,6 @@ msgid "payment(s)?"
 msgstr "платежі?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Будь ласка, переконайтеся, що ви хочете зробити. </p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Підтвердьте деактивацію"
 
@@ -6246,20 +6238,8 @@ msgid "Integration"
 msgstr "Інтеграція"
 
 #: 
-msgid "Notification"
-msgstr "Повідомлення"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Опікун (и)"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Повідомлення було зроблено вчителем класу в"
-
-#: 
-msgid "Please go to this location"
-msgstr "Будь ласка, перейдіть за цим місцем"
 
 #: 
 #, fuzzy
@@ -9528,10 +9508,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "УВАГА: Відновлення з резервної копії повністю видалить існуючу базу даних і замінить її даними з копії."
 
 #: 
-msgid "CSV export permission"
-msgstr "Дозвіл на експорт CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Закрити та оновити"
 
@@ -9950,10 +9926,6 @@ msgstr "Назад до сімей"
 #: 
 msgid "Birth & Family"
 msgstr "Народження та сім'я"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Експорт CSV дозволено лише адміністраторам."
 
 #: 
 msgid "Cart"

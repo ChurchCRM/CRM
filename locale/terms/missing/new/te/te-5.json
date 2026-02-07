@@ -1,6 +1,4 @@
 {
-  "LastName, Title FirstName MiddleInitial": "",
-  "FirstName MiddleName LastName": "",
   "Title FirstName LastName": "",
   "LastName, Title FirstName": "",
   "Event Log severity to write, used by ORM and App Logs": "",
@@ -15,10 +13,7 @@
   "Show/Hide Lost Password Link on the login screen": "",
   "Backup": "",
   "Integration": "",
-  "Notification": "",
   "Guardian(s) of": "",
-  "A notification was triggered by the classroom teacher at": "",
-  "Please go to this location": "",
   "Your ChurchCRM password has been changed": "",
   "Password Reset Link": "",
   "Reset Password": "",
@@ -98,5 +93,10 @@
   "Add Students": "",
   "Edit this Class": "",
   "Please select target Role for members": "",
-  "GroupID required for role selection prompt": ""
+  "GroupID required for role selection prompt": "",
+  "Select Group and Role": "",
+  "Are you sure you want to remove this person's membership from": "",
+  "All Members": "",
+  "PhotoBook": "",
+  "With Photos": ""
 }
