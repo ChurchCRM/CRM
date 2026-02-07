@@ -138,13 +138,12 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                        data-setting-key="<?= $settingKey ?>"
                                        data-config-key="<?= $configKey ?>"
                                        value="<?= $settingValue ?>"
-                                       <?= $isRequired ? 'required' : '' ?>>
+                                       placeholder="<?= $isRequired ? gettext('Required') : '' ?>">
                             <?php elseif ($settingType === 'select' && !empty($setting['options'])): ?>
                                 <select class="form-control plugin-setting"
                                         id="<?= $pluginId ?>-<?= $settingKey ?>"
                                         data-setting-key="<?= $settingKey ?>"
-                                        data-config-key="<?= $configKey ?>"
-                                        <?= $isRequired ? 'required' : '' ?>>
+                                        data-config-key="<?= $configKey ?>">
                                     <?php foreach ($setting['options'] as $index => $option): 
                                         $optionLabel = $setting['optionLabels'][$index] ?? $option;
                                     ?>
@@ -161,16 +160,21 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                        data-setting-key="<?= $settingKey ?>"
                                        data-config-key="<?= $configKey ?>"
                                        value="<?= $settingValue ?>"
-                                       <?= $isRequired ? 'required' : '' ?>>
+                                       placeholder="<?= $isRequired ? gettext('Required') : '' ?>">
                             <?php endif; ?>
                             <?php if ($settingHelp): ?>
                                 <small class="form-text text-muted"><?= htmlspecialchars($settingHelp) ?></small>
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        <i class="fas fa-save mr-1"></i><?= gettext('Save Settings') ?>
-                    </button>
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-primary btn-sm">
+                            <i class="fas fa-save mr-1"></i><?= gettext('Save Settings') ?>
+                        </button>
+                        <button type="button" class="btn btn-outline-danger btn-sm btn-reset-settings" data-plugin-id="<?= $pluginId ?>">
+                            <i class="fas fa-undo mr-1"></i><?= gettext('Reset') ?>
+                        </button>
+                    </div>
                 </form>
             <?php endif; ?>
         </div>
@@ -411,6 +415,51 @@ $(document).ready(function() {
         })
         .always(function() {
             submitBtn.prop('disabled', false).html('<i class="fas fa-save mr-1"></i>' + i18next.t('Save Settings'));
+        });
+    });
+
+    // Reset plugin settings
+    $('.btn-reset-settings').on('click', function(e) {
+        e.preventDefault();
+        const btn = $(this);
+        const pluginId = btn.data('plugin-id');
+        const form = btn.closest('form');
+        
+        // Confirm reset
+        if (!confirm(i18next.t('Are you sure you want to reset all settings for this plugin? This will clear all configured values.'))) {
+            return;
+        }
+        
+        btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin mr-1"></i>' + i18next.t('Resetting...'));
+        
+        $.ajax({
+            url: window.CRM.root + '/plugins/api/plugins/' + pluginId + '/reset',
+            method: 'POST',
+            dataType: 'json',
+            contentType: 'application/json'
+        })
+        .done(function(response) {
+            if (response.success) {
+                window.CRM.notify(i18next.t('Settings reset'), { type: 'success' });
+                // Clear form fields
+                form.find('.plugin-setting').each(function() {
+                    const input = $(this);
+                    if (input.attr('type') === 'checkbox') {
+                        input.prop('checked', false);
+                    } else {
+                        input.val('');
+                    }
+                });
+            } else {
+                window.CRM.notify(response.message || i18next.t('Failed to reset settings'), { type: 'error' });
+            }
+        })
+        .fail(function(xhr) {
+            const error = xhr.responseJSON?.message || i18next.t('Failed to reset settings');
+            window.CRM.notify(error, { type: 'error' });
+        })
+        .always(function() {
+            btn.prop('disabled', false).html('<i class="fas fa-undo mr-1"></i>' + i18next.t('Reset'));
         });
     });
     

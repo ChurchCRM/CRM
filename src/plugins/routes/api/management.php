@@ -222,3 +222,68 @@ $group->post('/plugins/{pluginId}/settings', function (Request $request, Respons
         );
     }
 });
+
+// Reset plugin settings (clear all values)
+$group->post('/plugins/{pluginId}/reset', function (Request $request, Response $response, array $args): Response {
+    try {
+        $pluginId = $args['pluginId'];
+
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        PluginManager::init($pluginsPath);
+
+        $metadata = PluginManager::getPluginMetadata($pluginId);
+        if ($metadata === null) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Plugin not found'),
+                [],
+                404
+            );
+        }
+
+        // Get all settings for this plugin and clear them
+        $settings = $metadata->getSettings();
+        $cleared = [];
+        $failed = [];
+
+        foreach ($settings as $setting) {
+            $key = $setting['key'] ?? null;
+            if ($key === null) {
+                continue;
+            }
+
+            // Clear the setting by setting it to empty string
+            if (PluginManager::updatePluginSetting($pluginId, $key, '')) {
+                $cleared[] = $key;
+            } else {
+                $failed[] = $key;
+            }
+        }
+
+        if (!empty($failed)) {
+            return SlimUtils::renderJSON($response, [
+                'success' => false,
+                'message' => gettext('Some settings could not be reset'),
+                'cleared' => $cleared,
+                'failed' => $failed,
+            ]);
+        }
+
+        LoggerUtils::getAppLogger()->info("Plugin settings reset: $pluginId", ['cleared' => $cleared]);
+
+        return SlimUtils::renderJSON($response, [
+            'success' => true,
+            'message' => gettext('Settings reset successfully'),
+            'cleared' => $cleared,
+        ]);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON(
+            $response,
+            gettext('Failed to reset settings'),
+            [],
+            500,
+            $e,
+            $request
+        );
+    }
+});
