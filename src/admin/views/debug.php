@@ -291,6 +291,68 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             </div>
         </div>
     </div>
+    <!-- Timezone Information -->
+    <?php
+    $serverTimezone = date_default_timezone_get();
+    $configuredTimezone = SystemConfig::getValue('sTimeZone');
+    $currentServerTime = new DateTime('now', new DateTimeZone($serverTimezone));
+    ?>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header" id="headingTimezone">
+                <h4 data-toggle="collapse" data-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" style="cursor: pointer;">
+                    <i class="fa fa-clock mr-2"></i><?= gettext('Timezone Information') ?>
+                    <i class="fa fa-chevron-down float-right"></i>
+                </h4>
+            </div>
+            <div id="collapseTimezone" class="collapse" aria-labelledby="headingTimezone">
+                <div class="card-body">
+                <h6 class="text-muted mb-2"><?= gettext('Server Timezone') ?></h6>
+                <table class="table table-striped table-sm mb-3">
+                    <tr>
+                        <td><?= gettext('Configured') ?></td>
+                        <td>
+                            <strong><?= InputUtils::escapeHTML($configuredTimezone ?: gettext('Not set')) ?></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('Active') ?></td>
+                        <td>
+                            <strong><?= InputUtils::escapeHTML($serverTimezone) ?></strong>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('Server Time') ?></td>
+                        <td>
+                            <strong><?= $currentServerTime->format('Y-m-d H:i:s T') ?></strong>
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <h6 class="text-muted mb-2"><?= gettext('Browser Timezone') ?></h6>
+                <table class="table table-striped table-sm mb-3">
+                    <tr>
+                        <td><?= gettext('Timezone') ?></td>
+                        <td id="browser-timezone"><em><?= gettext('Loading...') ?></em></td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('Browser Time') ?></td>
+                        <td id="browser-time"><em><?= gettext('Loading...') ?></em></td>
+                    </tr>
+                    <tr>
+                        <td><?= gettext('UTC Offset') ?></td>
+                        <td id="browser-offset"><em><?= gettext('Loading...') ?></em></td>
+                    </tr>
+                </table>
+                <hr>
+                <h6 class="text-muted mb-2"><?= gettext('Comparison') ?></h6>
+                <div id="timezone-comparison">
+                    <p><em><?= gettext('Calculating...') ?></em></p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingPHP">
@@ -388,6 +450,48 @@ EOD;
     }
 
     var initializeDebugPage = function() {
+        // Populate browser timezone information
+        var browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        var now = new Date();
+        var browserOffset = -now.getTimezoneOffset();
+        var offsetHours = Math.floor(Math.abs(browserOffset) / 60);
+        var offsetMinutes = Math.abs(browserOffset) % 60;
+        var offsetSign = browserOffset >= 0 ? '+' : '-';
+        var offsetString = offsetSign + String(offsetHours).padStart(2, '0') + ':' + String(offsetMinutes).padStart(2, '0');
+        
+        var browserTimeString = now.getFullYear() + '-' + 
+            String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+            String(now.getDate()).padStart(2, '0') + ' ' +
+            String(now.getHours()).padStart(2, '0') + ':' + 
+            String(now.getMinutes()).padStart(2, '0') + ':' + 
+            String(now.getSeconds()).padStart(2, '0');
+        
+        $('#browser-timezone').html('<strong>' + browserTimezone + '</strong>');
+        $('#browser-time').html('<strong>' + browserTimeString + '</strong>');
+        $('#browser-offset').html('<strong>UTC' + offsetString + '</strong>');
+        
+        // Compare server and browser timezones
+        var serverTimezone = '<?= InputUtils::escapeHTML($serverTimezone) ?>';
+        var comparisonHtml = '';
+        
+        if (browserTimezone === serverTimezone) {
+            comparisonHtml = '<div class="alert alert-success mb-0">' +
+                '<i class="fa fa-check-circle mr-2"></i>' +
+                '<strong><?= gettext('Timezones Match') ?></strong><br>' +
+                '<small><?= gettext('Browser and server are using the same timezone.') ?></small>' +
+                '</div>';
+        } else {
+            comparisonHtml = '<div class="alert alert-warning mb-0">' +
+                '<i class="fa fa-exclamation-triangle mr-2"></i>' +
+                '<strong><?= gettext('Timezone Mismatch') ?></strong><br>' +
+                '<small><?= gettext('Browser timezone') ?>: <strong>' + browserTimezone + '</strong><br>' +
+                '<?= gettext('Server timezone') ?>: <strong>' + serverTimezone + '</strong><br>' +
+                '<?= gettext('This may cause date/time display issues.') ?></small>' +
+                '</div>';
+        }
+        
+        $('#timezone-comparison').html(comparisonHtml);
+        
         $(document).on('click', '.copy-btn', function() {
             var txt = $(this).data('copy');
             if (navigator.clipboard && navigator.clipboard.writeText) {
