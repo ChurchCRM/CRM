@@ -27,6 +27,7 @@ describe("csv export", () => {
 
         it("should include address columns in CSV export with family fallback", () => {
             // Test default format includes address fields when requested
+            // This also validates the family fallback logic for addresses
             cy.request({
                 method: "POST",
                 url: "/CSVCreateFile.php",
@@ -46,6 +47,10 @@ describe("csv export", () => {
                 expect(response.status).to.eq(200);
                 expect(response.headers["content-type"]).to.include("text/csv");
                 
+                // Verify no PHP errors in response
+                expect(response.body).to.not.include("Fatal error");
+                expect(response.body).to.not.include("Parse error");
+                
                 // Verify CSV header contains address columns
                 const lines = response.body.split('\n');
                 expect(lines.length).to.be.greaterThan(1);
@@ -53,6 +58,11 @@ describe("csv export", () => {
                 expect(header).to.include("address 1");
                 expect(header).to.include("city");
                 expect(header).to.include("state");
+                
+                // Verify at least one data row exists (family fallback should populate addresses)
+                // Filter out empty lines
+                const dataLines = lines.slice(1).filter(line => line.trim().length > 0);
+                expect(dataLines.length).to.be.greaterThan(0, "Expected at least one data row in export");
             });
         });
 
@@ -77,6 +87,10 @@ describe("csv export", () => {
                 expect(response.status).to.eq(200);
                 expect(response.headers["content-type"]).to.include("text/csv");
                 
+                // Verify no PHP errors in response
+                expect(response.body).to.not.include("Fatal error");
+                expect(response.body).to.not.include("Parse error");
+                
                 // Verify CSV header contains address columns
                 const lines = response.body.split('\n');
                 expect(lines.length).to.be.greaterThan(1);
@@ -84,6 +98,10 @@ describe("csv export", () => {
                 expect(header).to.include("address 1");
                 expect(header).to.include("city");
                 expect(header).to.include("state");
+                
+                // Verify at least one data row exists
+                const dataLines = lines.slice(1).filter(line => line.trim().length > 0);
+                expect(dataLines.length).to.be.greaterThan(0, "Expected at least one data row in export");
             });
         });
     });

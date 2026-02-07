@@ -376,6 +376,8 @@ if ($sFormat === 'addtocart') {
 
         // Use person data with fallback to family data for addresses/contact
         // This ensures members without personal addresses still get exported with their family's address
+        // Note: Similar logic exists in DirectoryReports.php - consider centralizing in PersonService
+        // if this pattern needs to be reused elsewhere (see issue #7937)
         $sHomePhone = !empty($per_HomePhone) ? $per_HomePhone : ($fam_HomePhone ?? '');
         $sWorkPhone = $per_WorkPhone ?? '';
         $sCellPhone = $per_CellPhone ?? '';
