@@ -11496,3 +11496,137 @@ msgstr "필터 초기화"
 msgid "Show only people with photos"
 msgstr "사진이 있는 사람만 표시"
 
+#: 
+msgid "Checkout All"
+msgstr "전체 체크아웃"
+
+#: 
+msgid "Expected"
+msgstr "예상"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "키오스크 삭제 실패"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "회계연도별 가족 서약"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "등록된 학생 찾기"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "회계연도."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "등록된 학생 그룹"
+
+#: 
+msgid "Here"
+msgstr "여기"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "잘못된 할당 유형"
+
+#: 
+msgid "Invalid person ID"
+msgstr "잘못된 사람 ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "키오스크 등록이 비활성화됨"
+
+#: 
+msgid "Kiosk not found"
+msgstr "키오스크를 찾을 수 없음"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "키오스크 체크인 기능을 위해 이 이벤트를 그룹에 연결하세요. 그룹 구성원이 키오스크에 표시됩니다."
+
+#: 
+msgid "Linked Group"
+msgstr "연결된 그룹"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "새 키오스크 장치 등록이 현재 비활성화되어 있습니다. 키오스크 등록을 활성화하려면 시스템 관리자에게 문의하세요."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "그룹 없음 (키오스크 체크인 선택)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "아직 체크인한 사람이 없습니다"
+
+#: 
+msgid "Person not found"
+msgstr "사람을 찾을 수 없음"
+
+#: 
+msgid "Pickup Request"
+msgstr "픽업 요청"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "가능한 빨리 교실로 와주세요."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "선택한 회계연도의 각 펀드에 대한 가족 이름별 서약 요약"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "등록된 학생"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "선생님이 이 알림을 보낸 시간"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "이 키오스크는 최적의 체크인 경험을 위해 태블릿의 가로 모드에서 가장 잘 보입니다."
+
+#: 
+msgid "Tip"
+msgstr "팁"
+
+#: 
+msgid "Try Again"
+msgstr "다시 시도"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "다가오는 생일"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "체크인 대기 중"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "활성화하면 새 키오스크 장치가 30초 동안 등록할 수 있습니다."
+
+#: 
+msgid "Your child"
+msgstr "자녀"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "에서 픽업해야 합니다"
+
+#: 
+msgid "their classroom"
+msgstr "교실"
+
