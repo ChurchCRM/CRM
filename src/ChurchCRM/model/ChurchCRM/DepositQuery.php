@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\DepositQuery as BaseDepositQuery;
+use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use Propel\Runtime\Connection\ConnectionInterface;
 
 /**
@@ -20,7 +21,7 @@ class DepositQuery extends BaseDepositQuery
     {
         $this->joinPledge();
         $this->groupBy('Deposit.Id');
-        $this->withColumn('SUM(Pledge.Amount)', 'totalAmount');
+        $this->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'totalAmount');
         parent::preSelect($con);
     }
 }

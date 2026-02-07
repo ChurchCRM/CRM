@@ -1,0 +1,39 @@
+<?php
+/**
+ * Perpl ORM Configuration Template
+ * 
+ * Copy this file to propel.php and customize for your environment.
+ * This file configures the Propel/Perpl CLI tools for model generation.
+ * 
+ * Usage: cd src && composer run orm-gen
+ */
+
+return [
+    'propel' => [
+        'paths' => [
+            // The directory where Propel expects to find your `schema.xml` file.
+            'schemaDir' => __DIR__,
+
+            // The directory where Propel should output generated object model classes.
+            'phpDir' => __DIR__ . '/../src',
+        ],
+        'generator' => [
+            'schema' => [
+                'autoPackage' => true,
+            ],
+        ],
+        'database' => [
+            'connections' => [
+                'default' => [
+                    'adapter' => 'mysql',
+                    'dsn' => 'mysql:host=localhost;port=3306;dbname=churchcrm',
+                    'user' => 'churchcrm',
+                    'password' => 'churchcrm',
+                    'settings' => [
+                        'charset' => 'utf8',
+                    ],
+                ],
+            ],
+        ],
+    ],
+];
