@@ -296,59 +296,71 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     $serverTimezone = date_default_timezone_get();
     $configuredTimezone = SystemConfig::getValue('sTimeZone');
     $currentServerTime = new DateTime('now', new DateTimeZone($serverTimezone));
+    $serverConfigMismatch = !empty($configuredTimezone) && $configuredTimezone !== $serverTimezone;
+    $baseTimezone = !empty($configuredTimezone) ? $configuredTimezone : $serverTimezone;
     ?>
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingTimezone">
                 <h4 data-toggle="collapse" data-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" style="cursor: pointer;">
                     <i class="fa fa-clock mr-2"></i><?= gettext('Timezone Information') ?>
+                    <?php if ($serverConfigMismatch): ?>
+                        <i class="fa fa-exclamation-triangle text-warning ml-2" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
+                    <?php else: ?>
+                        <i class="fa fa-exclamation-triangle text-warning ml-2 d-none" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
+                    <?php endif; ?>
                     <i class="fa fa-chevron-down float-right"></i>
                 </h4>
             </div>
             <div id="collapseTimezone" class="collapse" aria-labelledby="headingTimezone">
-                <div class="card-body">
-                <h6 class="text-muted mb-2"><?= gettext('Server Timezone') ?></h6>
-                <table class="table table-striped table-sm mb-3">
-                    <tr>
-                        <td><?= gettext('Configured') ?></td>
-                        <td>
-                            <strong><?= InputUtils::escapeHTML($configuredTimezone ?: gettext('Not set')) ?></strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Active') ?></td>
-                        <td>
-                            <strong><?= InputUtils::escapeHTML($serverTimezone) ?></strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Server Time') ?></td>
-                        <td>
-                            <strong><?= $currentServerTime->format('Y-m-d H:i:s T') ?></strong>
-                        </td>
-                    </tr>
-                </table>
-                <hr>
-                <h6 class="text-muted mb-2"><?= gettext('Browser Timezone') ?></h6>
-                <table class="table table-striped table-sm mb-3">
-                    <tr>
-                        <td><?= gettext('Timezone') ?></td>
-                        <td id="browser-timezone"><em><?= gettext('Loading...') ?></em></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Browser Time') ?></td>
-                        <td id="browser-time"><em><?= gettext('Loading...') ?></em></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('UTC Offset') ?></td>
-                        <td id="browser-offset"><em><?= gettext('Loading...') ?></em></td>
-                    </tr>
-                </table>
-                <hr>
-                <h6 class="text-muted mb-2"><?= gettext('Comparison') ?></h6>
-                <div id="timezone-comparison">
-                    <p><em><?= gettext('Calculating...') ?></em></p>
-                </div>
+                <div class="card-body p-0">
+                    <!-- System Config (Baseline) -->
+                    <div class="p-3 bg-light border-bottom">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted d-block"><?= gettext('System Config') ?> (sTimeZone)</small>
+                                <strong class="h6 mb-0"><?= InputUtils::escapeHTML($configuredTimezone ?: gettext('Not set')) ?></strong>
+                            </div>
+                            <span class="badge badge-primary"><?= gettext('Baseline') ?></span>
+                        </div>
+                    </div>
+                    
+                    <!-- PHP Active -->
+                    <div class="p-3 border-bottom <?= $serverConfigMismatch ? 'bg-warning-light' : '' ?>">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted d-block"><?= gettext('PHP Active') ?></small>
+                                <strong class="mb-0"><?= InputUtils::escapeHTML($serverTimezone) ?></strong>
+                                <small class="text-muted d-block"><?= $currentServerTime->format('Y-m-d H:i:s T') ?></small>
+                            </div>
+                            <?php if ($serverConfigMismatch): ?>
+                                <span class="badge badge-warning" title="<?= gettext('Does not match system config') ?>">
+                                    <i class="fa fa-exclamation-triangle"></i> <?= gettext('Mismatch') ?>
+                                </span>
+                            <?php elseif (!empty($configuredTimezone)): ?>
+                                <span class="badge badge-success"><i class="fa fa-check"></i></span>
+                            <?php else: ?>
+                                <span class="badge badge-secondary"><?= gettext('Default') ?></span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    
+                    <!-- Browser -->
+                    <div class="p-3 border-bottom" id="browser-tz-row">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted d-block"><?= gettext('Browser') ?></small>
+                                <strong class="mb-0" id="browser-timezone"><?= gettext('Loading...') ?></strong>
+                                <small class="text-muted d-block" id="browser-time"><?= gettext('Loading...') ?></small>
+                            </div>
+                            <span class="badge" id="browser-tz-badge"><?= gettext('Loading...') ?></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Summary -->
+                    <div class="p-3" id="timezone-summary">
+                        <small class="text-muted"><i class="fa fa-spinner fa-spin mr-1"></i><?= gettext('Comparing timezones...') ?></small>
+                    </div>
                 </div>
             </div>
         </div>
@@ -431,6 +443,12 @@ EOD;
     </div>
 </div>
 
+<style nonce="<?= SystemURLs::getCSPNonce() ?>">
+.bg-warning-light {
+    background-color: rgba(255, 193, 7, 0.1) !important;
+}
+</style>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var callback = function() {
         $("#fileIntegrityCheckResultsTable").DataTable({
@@ -457,7 +475,7 @@ EOD;
         var offsetHours = Math.floor(Math.abs(browserOffset) / 60);
         var offsetMinutes = Math.abs(browserOffset) % 60;
         var offsetSign = browserOffset >= 0 ? '+' : '-';
-        var offsetString = offsetSign + String(offsetHours).padStart(2, '0') + ':' + String(offsetMinutes).padStart(2, '0');
+        var offsetString = 'UTC' + offsetSign + String(offsetHours).padStart(2, '0') + ':' + String(offsetMinutes).padStart(2, '0');
         
         var browserTimeString = now.getFullYear() + '-' + 
             String(now.getMonth() + 1).padStart(2, '0') + '-' + 
@@ -466,31 +484,62 @@ EOD;
             String(now.getMinutes()).padStart(2, '0') + ':' + 
             String(now.getSeconds()).padStart(2, '0');
         
-        $('#browser-timezone').html('<strong>' + browserTimezone + '</strong>');
-        $('#browser-time').html('<strong>' + browserTimeString + '</strong>');
-        $('#browser-offset').html('<strong>UTC' + offsetString + '</strong>');
+        // Helper to escape HTML in JS
+        function escapeHtml(text) {
+            var div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        var safeBrowserTimezone = escapeHtml(browserTimezone);
         
-        // Compare server and browser timezones
+        // Update browser timezone display
+        $('#browser-timezone').text(safeBrowserTimezone);
+        $('#browser-time').text(browserTimeString + ' (' + offsetString + ')');
+        
+        // Compare against baseline (configured timezone, or server if not configured)
         var serverTimezone = '<?= InputUtils::escapeHTML($serverTimezone) ?>';
-        var comparisonHtml = '';
+        var configuredTimezone = '<?= InputUtils::escapeHTML($configuredTimezone) ?>';
+        var baselineTimezone = configuredTimezone || serverTimezone;
         
-        if (browserTimezone === serverTimezone) {
-            comparisonHtml = '<div class="alert alert-success mb-0">' +
-                '<i class="fa fa-check-circle mr-2"></i>' +
-                '<strong><?= gettext('Timezones Match') ?></strong><br>' +
-                '<small><?= gettext('Browser and server are using the same timezone.') ?></small>' +
-                '</div>';
+        var browserMatchesBaseline = (browserTimezone === baselineTimezone);
+        var $badge = $('#browser-tz-badge');
+        var $row = $('#browser-tz-row');
+        var $headerAlert = $('#tz-header-alert');
+        
+        if (browserMatchesBaseline) {
+            $badge.removeClass('badge-warning badge-secondary').addClass('badge-success')
+                  .html('<i class="fa fa-check"></i>');
+            $row.removeClass('bg-warning-light');
         } else {
-            comparisonHtml = '<div class="alert alert-warning mb-0">' +
-                '<i class="fa fa-exclamation-triangle mr-2"></i>' +
-                '<strong><?= gettext('Timezone Mismatch') ?></strong><br>' +
-                '<small><?= gettext('Browser timezone') ?>: <strong>' + browserTimezone + '</strong><br>' +
-                '<?= gettext('Server timezone') ?>: <strong>' + serverTimezone + '</strong><br>' +
-                '<?= gettext('This may cause date/time display issues.') ?></small>' +
-                '</div>';
+            $badge.removeClass('badge-success badge-secondary').addClass('badge-warning')
+                  .html('<i class="fa fa-exclamation-triangle"></i> <?= gettext('Mismatch') ?>');
+            $row.addClass('bg-warning-light');
+            // Show alert icon in card header
+            $headerAlert.removeClass('d-none');
         }
         
-        $('#timezone-comparison').html(comparisonHtml);
+        // Update summary
+        var serverConfigMismatch = configuredTimezone && (configuredTimezone !== serverTimezone);
+        var issueCount = 0;
+        if (serverConfigMismatch) issueCount++;
+        if (!browserMatchesBaseline) issueCount++;
+        
+        // Update header alert visibility based on any mismatch
+        if (issueCount > 0) {
+            $headerAlert.removeClass('d-none');
+        }
+        
+        var summaryHtml = '';
+        if (issueCount === 0) {
+            summaryHtml = '<span class="text-success"><i class="fa fa-check-circle mr-1"></i><?= gettext('All timezones match') ?></span>';
+        } else {
+            summaryHtml = '<span class="text-warning"><i class="fa fa-exclamation-triangle mr-1"></i>' + 
+                          issueCount + ' <?= gettext('mismatch(es) detected') ?></span>';
+            if (!browserMatchesBaseline) {
+                summaryHtml += '<br><small class="text-muted"><?= gettext('Browser differs from system config - dates may display incorrectly for this user.') ?></small>';
+            }
+        }
+        $('#timezone-summary').html(summaryHtml);
         
         $(document).on('click', '.copy-btn', function() {
             var txt = $(this).data('copy');
@@ -541,9 +590,10 @@ EOD;
         });
     };
 
-    if (window.CRM && typeof window.CRM.onLocalesReady === 'function') {
-        window.CRM.onLocalesReady(initializeDebugPage);
-    }
+    // Initialize when DOM is ready - use jQuery ready for reliability
+    $(document).ready(function() {
+        initializeDebugPage();
+    });
 </script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

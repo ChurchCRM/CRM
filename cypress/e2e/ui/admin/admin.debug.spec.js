@@ -14,7 +14,7 @@ describe("Admin Debug", () => {
         cy.contains("Timezone Information").should("exist");
         cy.get("#browser-timezone").should("not.contain", "Loading...");
         cy.get("#browser-time").should("not.contain", "Loading...");
-        cy.get("#timezone-comparison").should("exist");
+        cy.get("#timezone-summary").should("exist");
     });
 
     it("View email debug", () => {
