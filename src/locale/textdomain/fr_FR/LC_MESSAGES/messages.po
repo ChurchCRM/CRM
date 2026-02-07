@@ -11514,3 +11514,137 @@ msgstr "Réinitialiser les Filtres"
 msgid "Show only people with photos"
 msgstr "Afficher uniquement les personnes avec photos"
 
+#: 
+msgid "Checkout All"
+msgstr "Enregistrer la sortie de tous"
+
+#: 
+msgid "Expected"
+msgstr "Attendu"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Échec de la suppression du kiosque"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Engagement familial par année fiscale"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Trouver les étudiants inscrits"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Année fiscale."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Groupe d'étudiants inscrits"
+
+#: 
+msgid "Here"
+msgstr "Ici"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Type d'affectation invalide"
+
+#: 
+msgid "Invalid person ID"
+msgstr "ID de personne invalide"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Enregistrement du kiosque désactivé"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kiosque non trouvé"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Liez cet événement à un groupe pour la fonctionnalité d'enregistrement au kiosque. Les membres du groupe apparaîtront sur le kiosque."
+
+#: 
+msgid "Linked Group"
+msgstr "Groupe lié"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "L'enregistrement de nouveaux appareils kiosque est actuellement désactivé. Veuillez contacter votre administrateur système pour activer l'enregistrement des kiosques."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Aucun groupe (Sélectionner pour l'enregistrement au kiosque)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Personne ne s'est encore enregistré"
+
+#: 
+msgid "Person not found"
+msgstr "Personne non trouvée"
+
+#: 
+msgid "Pickup Request"
+msgstr "Demande de récupération"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Veuillez vous rendre à la salle de classe dès que possible."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Résumé des engagements par nom de famille pour chaque fonds de l'année fiscale sélectionnée"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Étudiants inscrits"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "L'enseignant a envoyé cette alerte à"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Ce kiosque est mieux visualisé sur une tablette en mode paysage pour une expérience d'enregistrement optimale."
+
+#: 
+msgid "Tip"
+msgstr "Conseil"
+
+#: 
+msgid "Try Again"
+msgstr "Réessayer"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Anniversaires à venir"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "En attente d'enregistrement"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Lorsqu'activé, les nouveaux appareils kiosque peuvent s'enregistrer pendant 30 secondes."
+
+#: 
+msgid "Your child"
+msgstr "Votre enfant"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "doit être récupéré de"
+
+#: 
+msgid "their classroom"
+msgstr "sa salle de classe"
+
