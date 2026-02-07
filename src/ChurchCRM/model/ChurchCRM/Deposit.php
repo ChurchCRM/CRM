@@ -172,9 +172,9 @@ class Deposit extends BaseDeposit
         $pledges = PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->groupByGroupKey()
-            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
+            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
             ->joinFamily(null, Criteria::LEFT_JOIN)
-            ->withColumn('family_fam.fam_Name')
+            ->withColumn(FamilyTableMap::COL_FAM_NAME)
             ->find();
         foreach ($pledges as $pledge) {
             // then all of the checks in key-value pairs, in 3 separate columns.  Left to right, then top to bottom.
@@ -430,7 +430,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CHECK')
-            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
+            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
@@ -440,7 +440,7 @@ class Deposit extends BaseDeposit
         return PledgeQuery::create()
             ->filterByDepId($this->getId())
             ->filterByMethod('CASH')
-            ->withColumn('SUM(pledge_plg.plg_amount)', 'sumAmount')
+            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'sumAmount')
             ->find()
             ->getColumnValues('sumAmount')[0];
     }
