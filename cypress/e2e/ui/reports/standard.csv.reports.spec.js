@@ -26,14 +26,14 @@ describe("csv export", () => {
         });
 
         it("should include address columns in CSV export with family fallback", () => {
-            // Test default format (format=0) includes address fields when requested
+            // Test default format includes address fields when requested
             cy.request({
                 method: "POST",
                 url: "/CSVCreateFile.php",
                 form: true,
                 body: {
                     output: "csv",
-                    format: "default",
+                    Format: "default",
                     familyonly: "false",
                     Source: "all",
                     Address1: "1",
@@ -64,7 +64,7 @@ describe("csv export", () => {
                 form: true,
                 body: {
                     output: "csv",
-                    format: "rollup",
+                    Format: "rollup",
                     familyonly: "false",
                     Source: "all",
                     Address1: "1",

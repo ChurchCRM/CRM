@@ -374,33 +374,18 @@ if ($sFormat === 'addtocart') {
         extract($aRow);
         $person = PersonQuery::create()->findOneById($per_ID);
 
-        // Use person data with fallback to family data for addresses
+        // Use person data with fallback to family data for addresses/contact
         // This ensures members without personal addresses still get exported with their family's address
-        if ($sFormat === 'rollup') {
-            // Rollup format: use person data with family fallback for address/contact fields
-            $sHomePhone = !empty($per_HomePhone) ? $per_HomePhone : ($fam_HomePhone ?? '');
-            $sWorkPhone = $per_WorkPhone ?? '';
-            $sCellPhone = $per_CellPhone ?? '';
-            $sCountry = !empty($per_Country) ? $per_Country : ($fam_Country ?? '');
-            $sAddress1 = !empty($per_Address1) ? $per_Address1 : ($fam_Address1 ?? '');
-            $sAddress2 = !empty($per_Address2) ? $per_Address2 : ($fam_Address2 ?? '');
-            $sCity = !empty($per_City) ? $per_City : ($fam_City ?? '');
-            $sState = !empty($per_State) ? $per_State : ($fam_State ?? '');
-            $sZip = !empty($per_Zip) ? $per_Zip : ($fam_Zip ?? '');
-            $sEmail = !empty($per_Email) ? $per_Email : ($fam_Email ?? '');
-        } else {
-            // Default format: use person data with family fallback for address/contact fields
-            $sHomePhone = !empty($per_HomePhone) ? $per_HomePhone : ($fam_HomePhone ?? '');
-            $sWorkPhone = $per_WorkPhone ?? '';
-            $sCellPhone = $per_CellPhone ?? '';
-            $sCountry = !empty($per_Country) ? $per_Country : ($fam_Country ?? '');
-            $sAddress1 = !empty($per_Address1) ? $per_Address1 : ($fam_Address1 ?? '');
-            $sAddress2 = !empty($per_Address2) ? $per_Address2 : ($fam_Address2 ?? '');
-            $sCity = !empty($per_City) ? $per_City : ($fam_City ?? '');
-            $sState = !empty($per_State) ? $per_State : ($fam_State ?? '');
-            $sZip = !empty($per_Zip) ? $per_Zip : ($fam_Zip ?? '');
-            $sEmail = !empty($per_Email) ? $per_Email : ($fam_Email ?? '');
-        }
+        $sHomePhone = !empty($per_HomePhone) ? $per_HomePhone : ($fam_HomePhone ?? '');
+        $sWorkPhone = $per_WorkPhone ?? '';
+        $sCellPhone = $per_CellPhone ?? '';
+        $sCountry = !empty($per_Country) ? $per_Country : ($fam_Country ?? '');
+        $sAddress1 = !empty($per_Address1) ? $per_Address1 : ($fam_Address1 ?? '');
+        $sAddress2 = !empty($per_Address2) ? $per_Address2 : ($fam_Address2 ?? '');
+        $sCity = !empty($per_City) ? $per_City : ($fam_City ?? '');
+        $sState = !empty($per_State) ? $per_State : ($fam_State ?? '');
+        $sZip = !empty($per_Zip) ? $per_Zip : ($fam_Zip ?? '');
+        $sEmail = !empty($per_Email) ? $per_Email : ($fam_Email ?? '');
 
         // Check if we're filtering out people with incomplete addresses
         if (!($bSkipIncompleteAddr && (strlen($sCity) === 0 || strlen($sState) === 0 || strlen($sZip) === 0 || (strlen($sAddress1) === 0 && strlen($sAddress2) === 0)))) {
