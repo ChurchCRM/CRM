@@ -24,6 +24,68 @@ describe("csv export", () => {
                 expect(response.body).to.not.include("Parse error");
             });
         });
+
+        it("should include address columns in CSV export with family fallback", () => {
+            // Test default format (format=0) includes address fields when requested
+            cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    output: "csv",
+                    format: "default",
+                    familyonly: "false",
+                    Source: "all",
+                    Address1: "1",
+                    Address2: "1",
+                    City: "1",
+                    State: "1",
+                    Zip: "1"
+                }
+            }).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.headers["content-type"]).to.include("text/csv");
+                
+                // Verify CSV header contains address columns
+                const lines = response.body.split('\n');
+                expect(lines.length).to.be.greaterThan(1);
+                const header = lines[0].toLowerCase();
+                expect(header).to.include("address 1");
+                expect(header).to.include("city");
+                expect(header).to.include("state");
+            });
+        });
+
+        it("should include address columns in rollup format CSV export", () => {
+            // Test rollup format includes address fields when requested
+            cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    output: "csv",
+                    format: "rollup",
+                    familyonly: "false",
+                    Source: "all",
+                    Address1: "1",
+                    Address2: "1",
+                    City: "1",
+                    State: "1",
+                    Zip: "1"
+                }
+            }).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.headers["content-type"]).to.include("text/csv");
+                
+                // Verify CSV header contains address columns
+                const lines = response.body.split('\n');
+                expect(lines.length).to.be.greaterThan(1);
+                const header = lines[0].toLowerCase();
+                expect(header).to.include("address 1");
+                expect(header).to.include("city");
+                expect(header).to.include("state");
+            });
+        });
     });
 
     describe("advanced deposit report", () => {
