@@ -3740,10 +3740,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Dette er tallene for familieroller som er utpekt som barn"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Skal kun administratorer ha tilgang til CSV-eksportsystemet og katalograpporten?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Minimumslengde en bruker kan sette passordet sitt til"
 
@@ -5979,10 +5975,6 @@ msgid "payment(s)?"
 msgstr "betaling(er)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Vennligst bekreft at dette er hva du vil gjøre.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bekreft deaktivering"
 
@@ -6355,20 +6347,8 @@ msgid "Integration"
 msgstr "Integrasjon"
 
 #: 
-msgid "Notification"
-msgstr "Varsling"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Foresatte for"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Et varsel ble utløst av læreren kl."
-
-#: 
-msgid "Please go to this location"
-msgstr "Vennligst gå til dette stedet"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9645,10 +9625,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "ADVARSEL: Gjenoppretting av en sikkerhetskopi vil slette den eksisterende databasen helt og erstatte den med data fra sikkerhetskopien."
 
 #: 
-msgid "CSV export permission"
-msgstr "Tillatelse til CSV-eksport"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Lukk og oppdater"
 
@@ -10067,10 +10043,6 @@ msgstr "Tilbake til familier"
 #: 
 msgid "Birth & Family"
 msgstr "Fødsel og familie"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV-eksport er begrenset til administratorer."
 
 #: 
 msgid "Cart"

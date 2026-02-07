@@ -1,9 +1,4 @@
 {
-  "User authenticated via API Key: ": "",
-  "Unsuccessful API Key authentication attempt": "",
-  "Unpinned Events": "",
-  "LastName, FirstName MiddleName": "",
-  "Manage 2 Factor Authentication": "",
   "Two Factor Status": "",
   "Please confirm disabling 2 Factor Auth for this user": "",
   "Please enter 2FA code": "",
@@ -98,5 +93,10 @@
   "Invalid Birth Date: Missing birth month and day.": "",
   "System": "",
   "Amharic - Ethiopia": "",
-  "Czech": ""
+  "Czech": "",
+  "Finnish": "",
+  "Greek": "",
+  "Turkish": "",
+  "Ukrainian": "",
+  "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled.": ""
 }

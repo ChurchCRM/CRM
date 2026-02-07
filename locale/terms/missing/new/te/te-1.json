@@ -6,7 +6,6 @@
   "These are the family role numbers designated as head of house": "",
   "These are the family role numbers designated as spouse": "",
   "These are the family role numbers designated as child": "",
-  "Should only administrators have access to the CSV export system and directory report?": "",
   "Minimum length a user may set their password to": "",
   "A comma-separated list of disallowed (too obvious) passwords.": "",
   "Default account for receiving a copy of all emails": "",
@@ -98,5 +97,6 @@
   "Friends who signed up in previous months": "",
   "Compare pledges between two fiscal years": "",
   "Find people who pledged one year but not another": "",
-  "Find volunteers for who match two specific opportunity codes": ""
+  "Find volunteers for who match two specific opportunity codes": "",
+  "Find people with a custom field value": ""
 }

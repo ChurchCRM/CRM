@@ -1,9 +1,4 @@
 {
-  "Failed to delete role. Please try again.": "",
-  "Failed to load cart status.": "",
-  "Failed to load groups. Please refresh the page.": "",
-  "Failed to set default role. Please try again.": "",
-  "Failed to update group. Please try again.": "",
   "Failed to update properties. Please try again.": "",
   "Failed to update role name. Please try again.": "",
   "Leave blank to keep existing password": "",
@@ -98,5 +93,10 @@
   "Login Name is required": "",
   "Once you receive the email, you can log in with your temporary password and change it to something you prefer.": "",
   "Password Reset Error": "",
-  "Password Reset Successful": ""
+  "Password Reset Successful": "",
+  "Please check your email (including spam/junk folder) for your temporary password.": "",
+  "Please do not close this window or refresh the page.": "",
+  "Pre-Upgrade Tasks Complete": "",
+  "Pre-Upgrade Warnings": "",
+  "Refresh from GitHub": ""
 }

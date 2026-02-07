@@ -1,9 +1,4 @@
 {
-  "Select Group and Role": "",
-  "Are you sure you want to remove this person's membership from": "",
-  "All Members": "",
-  "PhotoBook": "",
-  "With Photos": "",
   "Create PhotoBook": "",
   "SSE": "",
   "Recipient Naming Method": "",
@@ -98,5 +93,10 @@
   "Enable Fundraiser menu.": "",
   "Enable Email menu.": "",
   "Enabled Features": "",
-  "Link Not found": ""
+  "Link Not found": "",
+  "Email Functions": "",
+  "Family Custom Fields": "",
+  "Person Custom Fields": "",
+  "Donation Funds": "",
+  "Unable to open file": ""
 }

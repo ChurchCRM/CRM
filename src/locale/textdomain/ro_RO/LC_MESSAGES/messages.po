@@ -3711,10 +3711,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Acestea sunt numerele de rol familial desemnate șef copil"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Ar trebuie ca numai administratorii să aibă acces la exportul în CSV a sistemului sau a directorului de rapoarte "
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Lungime minim parolă"
 
@@ -5956,10 +5952,6 @@ msgid "payment(s)?"
 msgstr "plată(ți)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Verificați dacă asta vreți să faceți </p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Confirmați dezactivarea"
 
@@ -6334,20 +6326,8 @@ msgid "Integration"
 msgstr "Integrare"
 
 #: 
-msgid "Notification"
-msgstr "Notificare"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Gardian(eni) pentru"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "O notificare a fost trimisă de către profesor la"
-
-#: 
-msgid "Please go to this location"
-msgstr "Navigați la această locație"
 
 #: 
 #, fuzzy
@@ -9626,10 +9606,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "ATENȚIE: Restaurarea unei copii de rezervă va șterge complet baza de date existentă și o va înlocui cu datele din copia de rezervă."
 
 #: 
-msgid "CSV export permission"
-msgstr "Permisiune export CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Închide și reîmprospătează"
 
@@ -10048,10 +10024,6 @@ msgstr "Înapoi la familii"
 #: 
 msgid "Birth & Family"
 msgstr "Naștere și familie"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Exportul CSV este restricționat pentru administratori."
 
 #: 
 msgid "Cart"

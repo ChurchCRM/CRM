@@ -1,11 +1,4 @@
 {
-  "Change this in System Settings.": "",
-  "Church Membership": "",
-  "Church name is set to default value": "",
-  "Classes and enrollments": "",
-  "Clean Up Files": "",
-  "Clear all data and start fresh. Cannot be undone.": "",
-  "Close All Deposits": "",
   "Closed Deposits:": "",
   "Closed vs Total": "",
   "Coming soon": "",
@@ -98,5 +91,12 @@
   "Recording a Payment": "",
   "Recording a Pledge": "",
   "Report Tips": "",
-  "Reports related to member voting eligibility and organization governance.": ""
+  "Reports related to member voting eligibility and organization governance.": "",
+  "Reset": "",
+  "Restore": "",
+  "Restore from a backup file. Erases existing data.": "",
+  "Review Donation Funds": "",
+  "SMTP server settings are not configured": "",
+  "Save and Add New Family": "",
+  "Secret keys missing from Config.php": ""
 }
