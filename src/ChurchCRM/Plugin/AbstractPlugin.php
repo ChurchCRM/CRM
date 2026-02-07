@@ -323,6 +323,26 @@ abstract class AbstractPlugin implements PluginInterface
     }
 
     /**
+     * Get menu items to add to the navigation.
+     *
+     * Default implementation returns empty array (no menu items).
+     * Override in subclass to provide plugin-specific menu items.
+     *
+     * Each menu item should be an array with:
+     * - 'parent': Parent menu key (e.g., 'admin', 'email', 'people')
+     * - 'label': Display text (use gettext() for i18n)
+     * - 'url': Relative URL path
+     * - 'icon': Optional FontAwesome icon class
+     * - 'permission': Optional permission required (e.g., 'bAdmin')
+     *
+     * @return array<int, array{parent: string, label: string, url: string, icon?: string, permission?: string}>
+     */
+    public function getMenuItems(): array
+    {
+        return [];
+    }
+
+    /**
      * Helper to log plugin messages.
      */
     protected function log(string $message, string $level = 'info', array $context = []): void

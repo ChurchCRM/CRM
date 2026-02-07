@@ -181,13 +181,6 @@ class   SystemConfig
             'sZeroGivers2'                         => new ConfigItem(1032, 'sZeroGivers2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.')),
             'sZeroGivers3'                         => new ConfigItem(1033, 'sZeroGivers3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.')),
             'sChurchChkAcctNum'                    => new ConfigItem(1034, 'sChurchChkAcctNum', 'text', '', gettext('Church Checking Account Number')),
-            'bEnableExternalBackupTarget'          => new ConfigItem(1036, 'bEnableExternalBackupTarget', 'boolean', '0', gettext('Enable Remote Backups to Cloud Services')),
-            'sExternalBackupType'                  => new ConfigItem(1037, 'sExternalBackupType', 'choice', '', gettext('Cloud Service Type (Supported values: WebDAV, Local)'), '', '{"Choices":["' . gettext('WebDAV') . '","' . gettext('Local') . '"]}'),
-            'sExternalBackupEndpoint'              => new ConfigItem(1038, 'sExternalBackupEndpoint', 'text', '', gettext('Remote Backup Endpoint.  If WebDAV, this must be url encoded. ')),
-            'sExternalBackupUsername'              => new ConfigItem(1039, 'sExternalBackupUsername', 'text', '', gettext('Remote Backup Username')),
-            'sExternalBackupPassword'              => new ConfigItem(1040, 'sExternalBackupPassword', 'password', '', gettext('Remote Backup Password')),
-            'sExternalBackupAutoInterval'          => new ConfigItem(1041, 'sExternalBackupAutoInterval', 'text', '', gettext('Interval in Hours for Automatic Remote Backups')),
-            'sLastBackupTimeStamp'                 => new ConfigItem(1042, 'sLastBackupTimeStamp', 'text', '', gettext('Last Backup Timestamp')),
             'sQBDTSettings'                        => new ConfigItem(1043, 'sQBDTSettings', 'json', '{"date1":{"x":"12","y":"42"},"date2X":"185","leftX":"64","topY":"7","perforationY":"97","amountOffsetX":"35","lineItemInterval":{"x":"49","y":"7"},"max":{"x":"200","y":"140"},"numberOfItems":{"x":"136","y":"68"},"subTotal":{"x":"197","y":"42"},"topTotal":{"x":"197","y":"68"},"titleX":"85"}', gettext('QuickBooks Deposit Ticket Settings')),
             'sChurchCountry'                       => new ConfigItem(1047, 'sChurchCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
             'sConfirmSincerely'                    => new ConfigItem(1048, 'sConfirmSincerely', 'text', 'Sincerely', gettext('Used to end a letter before Signer')),
@@ -273,6 +266,14 @@ class   SystemConfig
 
             // Custom Links Plugin
             'plugin.custom-links.enabled'          => new ConfigItem(3050, 'plugin.custom-links.enabled', 'boolean', '0', gettext('Enable Custom Links plugin')),
+
+            // External Backup Plugin (WebDAV)
+            'plugin.external-backup.enabled'       => new ConfigItem(3060, 'plugin.external-backup.enabled', 'boolean', '0', gettext('Enable External Backup plugin')),
+            'plugin.external-backup.endpoint'      => new ConfigItem(3062, 'plugin.external-backup.endpoint', 'text', '', gettext('Full WebDAV URL (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)')),
+            'plugin.external-backup.username'      => new ConfigItem(3063, 'plugin.external-backup.username', 'text', '', gettext('WebDAV username')),
+            'plugin.external-backup.password'      => new ConfigItem(3064, 'plugin.external-backup.password', 'password', '', gettext('WebDAV password')),
+            'plugin.external-backup.autoInterval'  => new ConfigItem(3065, 'plugin.external-backup.autoInterval', 'number', '', gettext('Hours between scheduled backups (leave empty for manual backups only)')),
+            'plugin.external-backup.lastBackupTimestamp' => new ConfigItem(3066, 'plugin.external-backup.lastBackupTimestamp', 'text', '', gettext('Last backup timestamp')),
         ];
     }
 
@@ -289,7 +290,6 @@ class   SystemConfig
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Localization')       => ['sLanguage', 'sDistanceUnit', 'sPhoneFormat', 'sPhoneFormatWithExt', 'sPhoneFormatCell', 'sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder', 'sCSVExportDelimiter'],
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
-            gettext('Backup')             => ['sLastBackupTimeStamp', 'bEnableExternalBackupTarget', 'sExternalBackupType', 'sExternalBackupAutoInterval', 'sExternalBackupEndpoint', 'sExternalBackupUsername', 'sExternalBackupPassword'],
             gettext('Two-Factor Authentication') => ['bEnable2FA', 'bRequire2FA', 's2FAApplicationName', 'sTwoFASecretKey'],
             gettext('System Settings')    => ['sLogLevel', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime', 'bAllowPrereleaseUpgrade'],
         ];

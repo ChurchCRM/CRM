@@ -5,6 +5,8 @@ use ChurchCRM\Backup\BackupDownloader;
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\RestoreJob;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Plugins\ExternalBackup\ExternalBackupPlugin;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -42,30 +44,27 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
     });
 
     $group->post('/backupRemote', function (Request $request, Response $response, array $args): Response {
-        if (SystemConfig::getValue('sExternalBackupUsername') && SystemConfig::getValue('sExternalBackupPassword') && SystemConfig::getValue('sExternalBackupEndpoint')) {
-            $input = $request->getParsedBody();
-            $BaseName = preg_replace(
-                '/[^a-zA-Z0-9\-_]/',
-                '',
-                SystemConfig::getValue('sChurchName')
-            ) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
-            $BackupType = $input['BackupType'];
-            try {
-                $Backup = new BackupJob($BaseName, $BackupType);
-                $Backup->execute();
-                $copyStatus = $Backup->copyToWebDAV(
-                    SystemConfig::getValue('sExternalBackupEndpoint'),
-                    SystemConfig::getValue('sExternalBackupUsername'),
-                    SystemConfig::getValue('sExternalBackupPassword')
-                );
+        // Check if External Backup plugin is active and configured
+        if (!PluginManager::isPluginActive('external-backup')) {
+            return SlimUtils::renderErrorJSON($response, gettext('External Backup plugin is not enabled. Please enable and configure it in Plugin Management.'), [], 400);
+        }
 
-                return SlimUtils::renderJSON($response, ['copyStatus' => $copyStatus]);
-            } catch (\Throwable $e) {
-                $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
-                return SlimUtils::renderErrorJSON($response, gettext('Remote backup failed'), [], $status, $e, $request);
-            }
-        } else {
-            return SlimUtils::renderErrorJSON($response, gettext('WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set'), [], 500);
+        /** @var ExternalBackupPlugin|null $plugin */
+        $plugin = PluginManager::getPlugin('external-backup');
+        if ($plugin === null || !$plugin->isConfigured()) {
+            return SlimUtils::renderErrorJSON($response, gettext('External Backup plugin is not configured. Please configure WebDAV settings in the plugin.'), [], 400);
+        }
+
+        $input = $request->getParsedBody();
+        $backupType = $input['BackupType'] ?? 'FullBackup';
+
+        try {
+            $result = $plugin->executeManualBackup($backupType);
+
+            return SlimUtils::renderJSON($response, ['copyStatus' => $result]);
+        } catch (\Throwable $e) {
+            $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+            return SlimUtils::renderErrorJSON($response, gettext('Remote backup failed'), [], $status, $e, $request);
         }
     });
 

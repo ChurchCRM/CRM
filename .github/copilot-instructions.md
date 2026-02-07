@@ -1411,6 +1411,7 @@ public function onPersonUpdated($person, array $oldData): void
 | Plugin | Description | Has Routes | Has Views |
 |--------|-------------|-----------|-----------|
 | `custom-links` | Custom external links in navigation menu | ✅ | ✅ |
+| `external-backup` | WebDAV cloud backup (NextCloud, ownCloud, etc.) | ✅ | ✅ |
 | `mailchimp` | MailChimp email list integration | ✅ | ✅ |
 | `gravatar` | Gravatar profile photos | ❌ | ❌ |
 | `google-analytics` | GA4 tracking code injection | ❌ | ❌ |
