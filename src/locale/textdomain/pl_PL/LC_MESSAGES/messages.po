@@ -3712,10 +3712,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Są to numery ról rodzinnych wyznaczone jako dziecko"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Czy tylko administratorzy powinni mieć dostęp do systemu eksportu CSV i raportu katalogowego?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Minimalna długość hasła, jaką może ustawić użytkownik"
 
@@ -5951,10 +5947,6 @@ msgid "payment(s)?"
 msgstr "płatność(i)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Upewnij się, że to jest to, co chcesz zrobić.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Potwierdź dezaktywację"
 
@@ -6328,20 +6320,8 @@ msgid "Integration"
 msgstr "Integracja"
 
 #: 
-msgid "Notification"
-msgstr "Powiadomienie"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Opiekunowie"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Powiadomienie zostało wyzwolone przez nauczyciela w"
-
-#: 
-msgid "Please go to this location"
-msgstr "Proszę udać się do tej lokalizacji"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9621,10 +9601,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "UWAGA: Przywrócenie kopii całkowicie wymaże obecną bazę danych."
 
 #: 
-msgid "CSV export permission"
-msgstr "Uprawnienie do eksportu CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Zamknij i odśwież"
 
@@ -10043,10 +10019,6 @@ msgstr "Powrót do rodzin"
 #: 
 msgid "Birth & Family"
 msgstr "Urodzenie i rodzina"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Eksport CSV jest ograniczony do administratorów."
 
 #: 
 msgid "Cart"

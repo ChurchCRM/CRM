@@ -3717,10 +3717,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "这些是指定为孩子的家庭角色的编号"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "是否只有管理员才能访问CSV导出系统和目录报告？"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "用户设置密码的最小长度"
 
@@ -5961,10 +5957,6 @@ msgid "payment(s)?"
 msgstr "付款？"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "请确认这是你想要做的。"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "确认停用"
 
@@ -6339,20 +6331,8 @@ msgid "Integration"
 msgstr "集成"
 
 #: 
-msgid "Notification"
-msgstr "通知"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "监护人"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "有一条通知已由课堂老师发出于"
-
-#: 
-msgid "Please go to this location"
-msgstr "请到这个位置"
 
 #: 
 #, fuzzy
@@ -9644,10 +9624,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "注意：还原备份将完全擦除现有数据库，并将其替换为备份数据。"
 
 #: 
-msgid "CSV export permission"
-msgstr "CSV 导出权限"
-
-#: 
 msgid "Close & Refresh"
 msgstr "关闭并刷新"
 
@@ -10066,10 +10042,6 @@ msgstr "返回家庭列表"
 #: 
 msgid "Birth & Family"
 msgstr "出生与家庭"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV 导出仅限管理员使用。"
 
 #: 
 msgid "Cart"

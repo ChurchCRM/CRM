@@ -3620,10 +3620,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "אלה מספרי תפקידי המשפחה המוגדרים כילד"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "האם רק למנהלי מערכת תהיה גישה לייצוא קובץ - CSV ולדוח הספריות ?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "אורך מינימלי שמשתמש יכול להגדיר לסיסמה שלו"
 
@@ -5865,10 +5861,6 @@ msgid "payment(s)?"
 msgstr "תשלומים?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "אנא ודא שזה מה שאתה רוצה לעשות.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "אישור ביטול הפעלה"
 
@@ -6243,20 +6235,8 @@ msgid "Integration"
 msgstr "אינטגרציה"
 
 #: 
-msgid "Notification"
-msgstr "התראה"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "אפוטרופוס(ים) של"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "התראה נשלחה על ידי מורה הכיתה ב-"
-
-#: 
-msgid "Please go to this location"
-msgstr "אנא גש למיקום זה"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9543,10 +9523,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "זהירות: שחזור גיבוי ימחק לחלוטין את מסד הנתונים הקיים ויחליף אותו בנתוני הגיבוי."
 
 #: 
-msgid "CSV export permission"
-msgstr "הרשאת ייצוא ל-CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "סגור ורענן"
 
@@ -9965,10 +9941,6 @@ msgstr "חזרה למשפחות"
 #: 
 msgid "Birth & Family"
 msgstr "לידה ומשפחה"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "ייצוא CSV מוגבל למנהלים בלבד."
 
 #: 
 msgid "Cart"

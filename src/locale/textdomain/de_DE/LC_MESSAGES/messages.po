@@ -3732,10 +3732,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Diese Familienrollen sind als Kinder gedacht"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Sollen nur Administratoren CSV Dateien exportieren dürfen?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Mindestlänge für ein Passwort, das ein Benutzer setzen kann"
 
@@ -5976,10 +5972,6 @@ msgid "payment(s)?"
 msgstr "Zahlung(en)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Bitte stelle sicher, dass Du dies tun möchtest.<p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bestätige die Deaktivierung"
 
@@ -6354,20 +6346,8 @@ msgid "Integration"
 msgstr "Integration"
 
 #: 
-msgid "Notification"
-msgstr "Benachrichtigung"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Vormund(e) von"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Eine Benachrichtigung wurde durch den Klassenlehrer ausgelöst bei"
-
-#: 
-msgid "Please go to this location"
-msgstr "Bitte gehen Sie zu diesem Standort"
 
 #: 
 #, fuzzy
@@ -9660,10 +9640,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "WARNUNG: Das Wiederherstellen einer Sicherung löscht die vorhandene Datenbank vollständig und ersetzt sie durch die Sicherungsdaten."
 
 #: 
-msgid "CSV export permission"
-msgstr "CSV-Exportberechtigung"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Schließen & Aktualisieren"
 
@@ -10082,10 +10058,6 @@ msgstr "Zurück zu Familien"
 #: 
 msgid "Birth & Family"
 msgstr "Geburt & Familie"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV-Export ist auf Administratoren beschränkt."
 
 #: 
 msgid "Cart"

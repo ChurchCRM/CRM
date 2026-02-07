@@ -1,11 +1,4 @@
 {
-  "Reset": "",
-  "Restore": "",
-  "Restore from a backup file. Erases existing data.": "",
-  "Review Donation Funds": "",
-  "SMTP server settings are not configured": "",
-  "Save and Add New Family": "",
-  "Secret keys missing from Config.php": "",
   "Server error": "",
   "Settings": "",
   "Settings saved successfully": "",
@@ -98,5 +91,12 @@
   "View Logs": "",
   "View and manage system log files for debugging.": "",
   "You must enter a Last Name.": "",
-  "Your privacy is important. We never share your information with third parties.": ""
+  "Your privacy is important. We never share your information with third parties.": "",
+  "Additional Information": "",
+  "All information is correct": "",
+  "Assign Opportunities": "",
+  "Choose a property...": "",
+  "Choose opportunities...": "",
+  "Confirm Family Information": "",
+  "Confirm family information": ""
 }

@@ -1,9 +1,4 @@
 {
-  "No payments on this deposit": "",
-  "Optional Data to Include": "",
-  "Skipped": "",
-  "Unknown error": "",
-  "deposit(s) with no payments": "",
   "%d event in %s": {
     "one": "",
     "other": ""
@@ -99,10 +94,15 @@
   "Backup in progress, please wait...": "",
   "Backup to External Storage": "",
   "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data.": "",
-  "CSV export permission": "",
   "Close & Refresh": "",
   "Confirm Deletion": "",
   "Create a backup first": "",
   "Create directory permission": "",
-  "Database Only": ""
+  "Database Only": "",
+  "Database Restored Successfully!": "",
+  "Database schema upgraded automatically": "",
+  "Delete All Files": "",
+  "Delete All Orphaned Files": "",
+  "Delete records permission": "",
+  "Deleted %d files, %d failed": ""
 }
