@@ -62,8 +62,9 @@ PluginManager::registerPluginRoutes($app);
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
-// Error middleware - must be added BEFORE other middleware (LIFO execution order)
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+// Error middleware - use config-driven display (false in production)
+$displayErrors = \ChurchCRM\dto\SystemConfig::debugEnabled();
+$errorMiddleware = $app->addErrorMiddleware($displayErrors, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
 
 // Custom error handler for HTML pages
@@ -88,12 +89,10 @@ $errorMiddleware->setDefaultErrorHandler(function (
         'message' => $exception->getMessage(),
     ]);
 
-    $response = $app->getResponseFactory()->createResponse(500);
+    $response = $app->getResponseFactory()->createResponse();
 
-    return SlimUtils::renderJSON($response, [
-        'success' => false,
-        'error' => $exception->getMessage(),
-    ]);
+    // Use standardized error response - don't expose raw exception messages
+    return SlimUtils::renderErrorJSON($response, gettext('An error occurred processing the plugin request'), [], 500, $exception, $request);
 });
 
 // Auth middleware (LIFO - added last, runs first)

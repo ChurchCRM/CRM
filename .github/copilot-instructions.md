@@ -523,6 +523,79 @@ echo $notification?->title ?? 'No Title';
 echo $notification->title;  // TypeError if null
 ```
 
+### TLS/SSL Verification (Network Requests)
+
+When making HTTPS requests (cURL, Guzzle, etc.), **always enable TLS verification by default**:
+
+```php
+// CORRECT - Secure by default with optional override for self-signed certs
+public function sendRequest(string $url, bool $allowSelfSigned = false): void
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    
+    if ($allowSelfSigned) {
+        // Only disable for explicitly configured local network servers
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    } else {
+        // Default: verify SSL certificates (secure)
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    }
+    curl_exec($ch);
+}
+
+// WRONG - Disables security by default (allows MITM attacks)
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  // ❌ Never hardcode false
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);      // ❌ Security vulnerability
+```
+
+**Guidelines:**
+- **Default to secure**: Always verify TLS certificates by default
+- **Make insecure behavior opt-in**: Add explicit config option (e.g., `allowSelfSigned`)
+- **Document the risk**: Add setting description explaining when to use (local networks only)
+- **Use case**: Self-signed certs are common in home/church networks for local servers (OpenLP, etc.)
+
+### Algorithm Performance (Avoid O(N*M))
+
+When filtering or matching items between two collections, **use hash-based lookups instead of nested loops**:
+
+```php
+// CORRECT - O(N+M) using set membership
+$localIds = [];
+foreach ($localPeople as $person) {
+    $localIds[$person->getId()] = true;  // Build hash map
+}
+$remoteOnly = [];
+foreach ($remotePeople as $remotePerson) {
+    if (!isset($localIds[$remotePerson['id']])) {  // O(1) lookup
+        $remoteOnly[] = $remotePerson;
+    }
+}
+
+// CORRECT - Using array_flip for sets
+$localIdSet = array_flip(array_column($localPeople, 'id'));  // O(N)
+$remoteOnly = array_filter($remotePeople, function($p) use ($localIdSet) {
+    return !isset($localIdSet[$p['id']]);  // O(1) per item
+});
+
+// WRONG - O(N*M) nested filter (scales poorly)
+$remoteOnly = array_filter($remotePeople, function($remotePerson) use ($localPeople) {
+    foreach ($localPeople as $localPerson) {  // ❌ O(M) per remote person
+        if ($localPerson->getId() === $remotePerson['id']) {
+            return false;
+        }
+    }
+    return true;
+});
+```
+
+**Guidelines:**
+- **Build lookup structures first**: Use `array_flip()`, associative arrays, or `isset()` for O(1) membership tests
+- **Avoid `in_array()` in loops**: `in_array()` is O(N); use `isset()` on flipped array instead
+- **Scale consideration**: 1000 local × 1000 remote = 1M comparisons with O(N*M), only 2K with O(N+M)
+
 ### API Error Handling (Critical)
 
 **ALWAYS use `SlimUtils::renderErrorJSON()` for API errors** — Located in `src/ChurchCRM/Slim/SlimUtils.php`
@@ -1119,6 +1192,11 @@ Before committing code changes, verify:
 - [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
 - [ ] No alert() calls - use window.CRM.notify() instead
+- [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
+- [ ] Use RedirectUtils for redirects (not manual header/withHeader)
+- [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)
+- [ ] TLS verification enabled by default for HTTPS requests
+- [ ] No O(N*M) algorithms - use hash-based lookups for set membership
 - [ ] Tests pass (if available) - run relevant tests before committing
 - [ ] Commit message follows imperative mood (< 72 chars, no file paths)
 - [ ] Branch name follows kebab-case format
@@ -1352,6 +1430,38 @@ PluginManager::disablePlugin('mailchimp');
 ```
 
 **CRITICAL**: `PluginManager` is a static class. Never call `PluginManager::getInstance()` - it doesn't exist.
+
+### Slim Entry Point Configuration (plugins/index.php)
+
+Plugin entry points create their own Slim app instance. Configure error middleware properly:
+
+```php
+// CORRECT - Config-driven error display
+$displayErrors = SystemConfig::debugEnabled();
+$app->addErrorMiddleware($displayErrors, true, true)
+    ->setDefaultErrorHandler(function (Request $request, Throwable $exception) use ($app): Response {
+        $response = $app->getResponseFactory()->createResponse();
+        return SlimUtils::renderErrorJSON(
+            $response, 
+            gettext('An error occurred'), 
+            [], 
+            500, 
+            $exception, 
+            $request
+        );
+    });
+
+// WRONG - Always exposes error details (security risk in production)
+$app->addErrorMiddleware(true, true, true);  // ❌ Hardcoded true exposes exceptions
+
+// WRONG - Throws exception which leaks info to client
+throw new HttpNotFoundException($request);  // ❌ Use SlimUtils::renderErrorJSON instead
+```
+
+**Guidelines:**
+- **Use `SystemConfig::debugEnabled()`** to control `displayErrorDetails` parameter
+- **Set custom error handler** that uses `SlimUtils::renderErrorJSON()` for sanitized responses
+- **Never throw HTTP exceptions in API routes** - always catch and return sanitized JSON errors
 
 ### Plugin URL Structure
 

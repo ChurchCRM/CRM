@@ -19,13 +19,15 @@ class OpenLPNotification
     protected string $username;
     protected string $password;
     protected string $alertText = '';
+    protected bool $allowSelfSigned = false;
 
-    public function __construct(string $serverUrl, string $username, string $password)
+    public function __construct(string $serverUrl, string $username, string $password, bool $allowSelfSigned = false)
     {
         // Remove trailing slash if present
         $this->serverUrl = rtrim($serverUrl, '/');
         $this->username = $username;
         $this->password = $password;
+        $this->allowSelfSigned = $allowSelfSigned;
     }
 
     public function setAlertText(string $text): void
@@ -59,12 +61,17 @@ class OpenLPNotification
                              "Accept: application/json\r\n",
                 'content' => $payload,
             ],
-            'ssl' => [
+        ];
+
+        // Only disable TLS verification if explicitly configured for self-signed certs
+        // Default: verification enabled for security
+        if ($this->allowSelfSigned) {
+            $headers['ssl'] = [
                 'verify_peer'       => false,
                 'verify_peer_name'  => false,
                 'allow_self_signed' => true,
-            ],
-        ];
+            ];
+        }
 
         // Add Basic Auth if credentials are configured
         if (!empty($this->username)) {

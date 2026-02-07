@@ -4,27 +4,6 @@ describe('Custom Links Plugin UI - Security & Functionality', () => {
         cy.visit('/plugins/custom-links/manage');
     });
 
-    /**
-     * Helper to create a link and verify it appears
-     */
-    const createLink = (name, url) => {
-        cy.get('#LINK_NAME').type(name);
-        cy.get('#LINK_URL').type(url);
-        cy.get('#add-link').click();
-        cy.waitForNotification('Link added successfully');
-    };
-
-    /**
-     * Helper to delete a link by name (searches table for exact match)
-     */
-    const deleteLink = (name) => {
-        cy.get('#links-table tbody tr').contains(name).parent('tr').find('.delete-link').click();
-        cy.get('.bootbox-confirm').within(() => {
-            cy.contains('Yes').click();
-        });
-        cy.waitForNotification('Link deleted');
-    };
-
     describe('HTML5 Inline Validation & XSS Protection', () => {
         it('should show Bootstrap validation when required fields are empty', () => {
             cy.get('#add-link').click();

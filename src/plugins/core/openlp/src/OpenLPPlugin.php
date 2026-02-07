@@ -102,6 +102,13 @@ class OpenLPPlugin extends AbstractPlugin
                 'type' => 'password',
                 'help' => gettext('Optional - only required if OpenLP authentication is enabled'),
             ],
+            [
+                'key' => 'allowSelfSigned',
+                'label' => gettext('Allow Self-Signed Certificates'),
+                'type' => 'boolean',
+                'default' => false,
+                'help' => gettext('Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification.'),
+            ],
         ];
     }
 
@@ -128,6 +135,15 @@ class OpenLPPlugin extends AbstractPlugin
     public function getPassword(): string
     {
         return $this->getConfigValue('password');
+    }
+
+    /**
+     * Check if self-signed certificates are allowed.
+     * Only enable for local network servers with self-signed certs.
+     */
+    public function getAllowSelfSigned(): bool
+    {
+        return $this->getBooleanConfigValue('allowSelfSigned');
     }
 
     /**
@@ -167,7 +183,8 @@ class OpenLPPlugin extends AbstractPlugin
         $notification = new OpenLPNotification(
             $this->getServerUrl(),
             $this->getUsername(),
-            $this->getPassword()
+            $this->getPassword(),
+            $this->getAllowSelfSigned()
         );
         $notification->setAlertText($text);
 

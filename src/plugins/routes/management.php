@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Utils\RedirectUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -50,13 +51,9 @@ $group->get('/{pluginId}', function (Request $request, Response $response, array
     $metadata = PluginManager::getPluginMetadata($pluginId);
     if ($metadata === null) {
         // Plugin not found, redirect to list
-        return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/plugins/management')
-            ->withStatus(302);
+        RedirectUtils::redirect('plugins/management');
     }
 
     // Redirect to management page with hash to auto-expand this plugin's card
-    return $response
-        ->withHeader('Location', SystemURLs::getRootPath() . '/plugins/management#plugin-' . $pluginId)
-        ->withStatus(302);
+    RedirectUtils::redirect('plugins/management#plugin-' . $pluginId);
 });

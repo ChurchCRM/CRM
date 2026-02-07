@@ -1,55 +1,58 @@
 -- ChurchCRM 7.0.0 Database Upgrade
 -- Plugin System Migration: Migrate legacy config keys to new prefixed format
+-- Note: config_cfg table only has cfg_id, cfg_name, cfg_value (other columns removed in 2.6.0)
+-- Plugin settings metadata (labels, types, defaults) are defined in plugin.json files
 
 -- =============================================================================
 -- STEP 1: Add new plugin config keys with prefixed naming convention
 -- Format: plugin.{pluginId}.{settingKey}
+-- Values are empty/defaults - actual metadata is in plugin.json files
 -- =============================================================================
 
 -- MailChimp Plugin
-INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value, cfg_type, cfg_default, cfg_tooltip, cfg_section)
+INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value)
 VALUES 
-    (3000, 'plugin.mailchimp.enabled', '0', 'boolean', '0', 'Enable MailChimp plugin', 'Plugins'),
-    (3001, 'plugin.mailchimp.apiKey', '', 'text', '', 'MailChimp API Key', 'Plugins'),
-    (3002, 'plugin.mailchimp.defaultListId', '', 'text', '', 'MailChimp Default List/Audience ID', 'Plugins');
+    (3000, 'plugin.mailchimp.enabled', '0'),
+    (3001, 'plugin.mailchimp.apiKey', ''),
+    (3002, 'plugin.mailchimp.defaultListId', '');
 
 -- Vonage SMS Plugin  
-INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value, cfg_type, cfg_default, cfg_tooltip, cfg_section)
+INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value)
 VALUES 
-    (3010, 'plugin.vonage.enabled', '0', 'boolean', '0', 'Enable Vonage SMS plugin', 'Plugins'),
-    (3011, 'plugin.vonage.apiKey', '', 'text', '', 'Vonage API Key', 'Plugins'),
-    (3012, 'plugin.vonage.apiSecret', '', 'password', '', 'Vonage API Secret', 'Plugins'),
-    (3013, 'plugin.vonage.fromNumber', '', 'text', '', 'Vonage From Phone Number (E.164 format)', 'Plugins');
+    (3010, 'plugin.vonage.enabled', '0'),
+    (3011, 'plugin.vonage.apiKey', ''),
+    (3012, 'plugin.vonage.apiSecret', ''),
+    (3013, 'plugin.vonage.fromNumber', '');
 
 -- Google Analytics 4 Plugin
-INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value, cfg_type, cfg_default, cfg_tooltip, cfg_section)
+INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value)
 VALUES 
-    (3020, 'plugin.google-analytics.enabled', '0', 'boolean', '0', 'Enable Google Analytics plugin', 'Plugins'),
-    (3021, 'plugin.google-analytics.trackingId', '', 'text', '', 'GA4 Measurement ID', 'Plugins');
+    (3020, 'plugin.google-analytics.enabled', '0'),
+    (3021, 'plugin.google-analytics.trackingId', '');
 
 -- OpenLP Plugin
-INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value, cfg_type, cfg_default, cfg_tooltip, cfg_section)
+INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value)
 VALUES 
-    (3030, 'plugin.openlp.enabled', '0', 'boolean', '0', 'Enable OpenLP plugin', 'Plugins'),
-    (3031, 'plugin.openlp.serverUrl', '', 'text', '', 'OpenLP Server URL', 'Plugins'),
-    (3032, 'plugin.openlp.username', '', 'text', '', 'OpenLP Username (optional)', 'Plugins'),
-    (3033, 'plugin.openlp.password', '', 'password', '', 'OpenLP Password (optional)', 'Plugins');
+    (3030, 'plugin.openlp.enabled', '0'),
+    (3031, 'plugin.openlp.serverUrl', ''),
+    (3032, 'plugin.openlp.username', ''),
+    (3033, 'plugin.openlp.password', ''),
+    (3034, 'plugin.openlp.allowSelfSigned', '0');
 
 -- Gravatar Plugin
-INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value, cfg_type, cfg_default, cfg_tooltip, cfg_section)
+INSERT IGNORE INTO config_cfg (cfg_id, cfg_name, cfg_value)
 VALUES 
-    (3040, 'plugin.gravatar.enabled', '0', 'boolean', '0', 'Enable Gravatar plugin', 'Plugins'),
-    (3041, 'plugin.gravatar.defaultImage', 'blank', 'text', 'blank', 'Gravatar default image style', 'Plugins');
+    (3040, 'plugin.gravatar.enabled', '0'),
+    (3041, 'plugin.gravatar.defaultImage', 'blank');
 
 -- =============================================================================
 -- STEP 2: Migrate existing values from legacy config keys to new prefixed keys
 -- =============================================================================
 
--- Migrate MailChimp API Key
+-- Migrate MailChimp API Key - enable plugin if legacy key was configured
 UPDATE config_cfg AS new_cfg
 JOIN config_cfg AS old_cfg ON old_cfg.cfg_name = 'sMailChimpApiKey'
-SET new_cfg.cfg_value = old_cfg.cfg_value,
-    new_cfg.cfg_value = IF(old_cfg.cfg_value != '', '1', '0')
+SET new_cfg.cfg_value = IF(old_cfg.cfg_value != '', '1', '0')
 WHERE new_cfg.cfg_name = 'plugin.mailchimp.enabled' AND old_cfg.cfg_value != '';
 
 UPDATE config_cfg AS new_cfg

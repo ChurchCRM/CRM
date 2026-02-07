@@ -29,6 +29,13 @@
             "label": "Password",
             "type": "password",
             "help": "Optional - only required if OpenLP authentication is enabled"
+        },
+        {
+            "key": "allowSelfSigned",
+            "label": "Allow Self-Signed Certificates",
+            "type": "boolean",
+            "default": false,
+            "help": "Enable this only for local network servers with self-signed SSL certificates"
         }
     ],
     "menuItems": [],

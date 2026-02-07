@@ -33,7 +33,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
     window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
     window.CRM.currentFamilyView = 2;
-    window.CRM.familyEmail = "<?= htmlspecialchars($family->getEmail() ?? '', ENT_QUOTES, 'UTF-8') ?>";
+    window.CRM.familyEmail = "<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
     window.CRM.familyEmailMD5 = "<?= $familyEmailMD5 ?>";
 </script>
 

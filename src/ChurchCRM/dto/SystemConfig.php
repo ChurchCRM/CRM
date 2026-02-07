@@ -239,41 +239,43 @@ class   SystemConfig
             'sDefaultZip'                          => new ConfigItem(2074, 'sDefaultZip', 'text', '', gettext('Default Zip')),
 
             // Plugin Settings - prefixed with plugin ID
+            // Labels/tooltips are in plugin.json files, not here (plugin management UI reads from plugin.json)
             // MailChimp Plugin
-            'plugin.mailchimp.enabled'             => new ConfigItem(3000, 'plugin.mailchimp.enabled', 'boolean', '0', gettext('Enable MailChimp plugin')),
-            'plugin.mailchimp.apiKey'              => new ConfigItem(3001, 'plugin.mailchimp.apiKey', 'text', '', gettext('MailChimp API Key'), 'https://mailchimp.com/help/about-api-keys/'),
-            'plugin.mailchimp.defaultListId'       => new ConfigItem(3002, 'plugin.mailchimp.defaultListId', 'text', '', gettext('MailChimp Default List/Audience ID')),
+            'plugin.mailchimp.enabled'             => new ConfigItem(3000, 'plugin.mailchimp.enabled', 'boolean', '0'),
+            'plugin.mailchimp.apiKey'              => new ConfigItem(3001, 'plugin.mailchimp.apiKey', 'text', ''),
+            'plugin.mailchimp.defaultListId'       => new ConfigItem(3002, 'plugin.mailchimp.defaultListId', 'text', ''),
 
             // Vonage SMS Plugin
-            'plugin.vonage.enabled'                => new ConfigItem(3010, 'plugin.vonage.enabled', 'boolean', '0', gettext('Enable Vonage SMS plugin')),
-            'plugin.vonage.apiKey'                 => new ConfigItem(3011, 'plugin.vonage.apiKey', 'text', '', gettext('Vonage API Key')),
-            'plugin.vonage.apiSecret'              => new ConfigItem(3012, 'plugin.vonage.apiSecret', 'password', '', gettext('Vonage API Secret')),
-            'plugin.vonage.fromNumber'             => new ConfigItem(3013, 'plugin.vonage.fromNumber', 'text', '', gettext('Vonage From Phone Number (E.164 format)')),
+            'plugin.vonage.enabled'                => new ConfigItem(3010, 'plugin.vonage.enabled', 'boolean', '0'),
+            'plugin.vonage.apiKey'                 => new ConfigItem(3011, 'plugin.vonage.apiKey', 'text', ''),
+            'plugin.vonage.apiSecret'              => new ConfigItem(3012, 'plugin.vonage.apiSecret', 'password', ''),
+            'plugin.vonage.fromNumber'             => new ConfigItem(3013, 'plugin.vonage.fromNumber', 'text', ''),
 
             // Google Analytics 4 Plugin
-            'plugin.google-analytics.enabled'      => new ConfigItem(3020, 'plugin.google-analytics.enabled', 'boolean', '0', gettext('Enable Google Analytics plugin')),
-            'plugin.google-analytics.trackingId'   => new ConfigItem(3021, 'plugin.google-analytics.trackingId', 'text', '', gettext('GA4 Measurement ID')),
+            'plugin.google-analytics.enabled'      => new ConfigItem(3020, 'plugin.google-analytics.enabled', 'boolean', '0'),
+            'plugin.google-analytics.trackingId'   => new ConfigItem(3021, 'plugin.google-analytics.trackingId', 'text', ''),
 
             // OpenLP Plugin
-            'plugin.openlp.enabled'                => new ConfigItem(3030, 'plugin.openlp.enabled', 'boolean', '0', gettext('Enable OpenLP plugin')),
-            'plugin.openlp.serverUrl'              => new ConfigItem(3031, 'plugin.openlp.serverUrl', 'text', '', gettext('OpenLP Server URL')),
-            'plugin.openlp.username'               => new ConfigItem(3032, 'plugin.openlp.username', 'text', '', gettext('OpenLP Username (optional)')),
-            'plugin.openlp.password'               => new ConfigItem(3033, 'plugin.openlp.password', 'password', '', gettext('OpenLP Password (optional)')),
+            'plugin.openlp.enabled'                => new ConfigItem(3030, 'plugin.openlp.enabled', 'boolean', '0'),
+            'plugin.openlp.serverUrl'              => new ConfigItem(3031, 'plugin.openlp.serverUrl', 'text', ''),
+            'plugin.openlp.username'               => new ConfigItem(3032, 'plugin.openlp.username', 'text', ''),
+            'plugin.openlp.password'               => new ConfigItem(3033, 'plugin.openlp.password', 'password', ''),
+            'plugin.openlp.allowSelfSigned'        => new ConfigItem(3034, 'plugin.openlp.allowSelfSigned', 'boolean', '0'),
 
             // Gravatar Plugin
-            'plugin.gravatar.enabled'              => new ConfigItem(3040, 'plugin.gravatar.enabled', 'boolean', '0', gettext('Enable Gravatar plugin')),
-            'plugin.gravatar.defaultImage'         => new ConfigItem(3041, 'plugin.gravatar.defaultImage', 'text', 'blank', gettext('Gravatar default image style')),
+            'plugin.gravatar.enabled'              => new ConfigItem(3040, 'plugin.gravatar.enabled', 'boolean', '0'),
+            'plugin.gravatar.defaultImage'         => new ConfigItem(3041, 'plugin.gravatar.defaultImage', 'text', 'blank'),
 
             // Custom Links Plugin
-            'plugin.custom-links.enabled'          => new ConfigItem(3050, 'plugin.custom-links.enabled', 'boolean', '0', gettext('Enable Custom Links plugin')),
+            'plugin.custom-links.enabled'          => new ConfigItem(3050, 'plugin.custom-links.enabled', 'boolean', '0'),
 
             // External Backup Plugin (WebDAV)
-            'plugin.external-backup.enabled'       => new ConfigItem(3060, 'plugin.external-backup.enabled', 'boolean', '0', gettext('Enable External Backup plugin')),
-            'plugin.external-backup.endpoint'      => new ConfigItem(3062, 'plugin.external-backup.endpoint', 'text', '', gettext('Full WebDAV URL (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)')),
-            'plugin.external-backup.username'      => new ConfigItem(3063, 'plugin.external-backup.username', 'text', '', gettext('WebDAV username')),
-            'plugin.external-backup.password'      => new ConfigItem(3064, 'plugin.external-backup.password', 'password', '', gettext('WebDAV password')),
-            'plugin.external-backup.autoInterval'  => new ConfigItem(3065, 'plugin.external-backup.autoInterval', 'number', '', gettext('Hours between scheduled backups (leave empty for manual backups only)')),
-            'plugin.external-backup.lastBackupTimestamp' => new ConfigItem(3066, 'plugin.external-backup.lastBackupTimestamp', 'text', '', gettext('Last backup timestamp')),
+            'plugin.external-backup.enabled'       => new ConfigItem(3060, 'plugin.external-backup.enabled', 'boolean', '0'),
+            'plugin.external-backup.endpoint'      => new ConfigItem(3062, 'plugin.external-backup.endpoint', 'text', ''),
+            'plugin.external-backup.username'      => new ConfigItem(3063, 'plugin.external-backup.username', 'text', ''),
+            'plugin.external-backup.password'      => new ConfigItem(3064, 'plugin.external-backup.password', 'password', ''),
+            'plugin.external-backup.autoInterval'  => new ConfigItem(3065, 'plugin.external-backup.autoInterval', 'number', ''),
+            'plugin.external-backup.lastBackupTimestamp' => new ConfigItem(3066, 'plugin.external-backup.lastBackupTimestamp', 'text', ''),
         ];
     }
 

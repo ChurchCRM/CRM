@@ -17,7 +17,6 @@ use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
-use Slim\Exception\HttpInternalServerErrorException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
@@ -104,21 +103,25 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
         $list = $mailchimpPlugin->getList($args['id']);
         
         if ($list === null) {
-            throw new HttpNotFoundException($request, gettext('List not found'));
+            return SlimUtils::renderErrorJSON($response, gettext('List not found'), [], 404);
         }
 
         return SlimUtils::renderJSON($response, ['success' => true, 'data' => ['list' => $list]]);
     });
 
     // Get emails in MailChimp list but not in CRM (for list maintenance)
+    // Optimized: Build a set of CRM emails first, then filter once (O(N+M) instead of O(N*M))
     $group->get('/list/{id}/missing', function (Request $request, Response $response, array $args) use ($mailchimpPlugin): Response {
         $list = $mailchimpPlugin->getList($args['id']);
         
         if ($list === null) {
-            throw new HttpNotFoundException($request, gettext('List not found'));
+            return SlimUtils::renderErrorJSON($response, gettext('List not found'), [], 404);
         }
 
         $mailchimpListMembers = $list['members'] ?? [];
+        
+        // Build a set of normalized CRM emails for O(1) lookup
+        $crmEmails = [];
         $peopleWithEmails = PersonQuery::create()
             ->filterByEmail(null, Criteria::NOT_EQUAL)
             ->_or()
@@ -126,19 +129,26 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
             ->find();
 
         foreach ($peopleWithEmails as $person) {
-            $mailchimpListMembers = array_filter($mailchimpListMembers, function ($member) use ($person) {
-                $email = strtolower($member['email']);
-                return $email !== strtolower($person->getEmail() ?? '') 
-                    && $email !== strtolower($person->getWorkEmail() ?? '');
-            });
+            if (!empty($person->getEmail())) {
+                $crmEmails[strtolower($person->getEmail())] = true;
+            }
+            if (!empty($person->getWorkEmail())) {
+                $crmEmails[strtolower($person->getWorkEmail())] = true;
+            }
         }
+
+        // Filter MailChimp members once - keep those NOT in CRM
+        $missingMembers = array_filter($mailchimpListMembers, function ($member) use ($crmEmails) {
+            $email = strtolower($member['email']);
+            return !isset($crmEmails[$email]);
+        });
 
         return SlimUtils::renderJSON($response, [
             'success' => true,
             'data' => [
                 'id' => $list['id'],
                 'name' => $list['name'],
-                'members' => array_values($mailchimpListMembers),
+                'members' => array_values($missingMembers),
             ],
         ]);
     });
@@ -148,11 +158,13 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
         $list = $mailchimpPlugin->getList($args['id']);
         
         if ($list === null) {
-            throw new HttpNotFoundException($request, gettext('List not found'));
+            return SlimUtils::renderErrorJSON($response, gettext('List not found'), [], 404);
         }
 
         $mailchimpListMembers = $list['members'] ?? [];
         $mailchimpEmails = array_map('strtolower', array_column($mailchimpListMembers, 'email'));
+        // Convert to set for O(1) lookup
+        $mailchimpEmailSet = array_flip($mailchimpEmails);
         
         $personsNotInMailchimp = [];
         $peopleWithEmails = PersonQuery::create()
@@ -164,11 +176,11 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
         foreach ($peopleWithEmails as $person) {
             $inList = false;
             
-            if (!empty($person->getEmail()) && in_array(strtolower($person->getEmail()), $mailchimpEmails)) {
+            if (!empty($person->getEmail()) && isset($mailchimpEmailSet[strtolower($person->getEmail())])) {
                 $inList = true;
             }
             
-            if (!$inList && !empty($person->getWorkEmail()) && in_array(strtolower($person->getWorkEmail()), $mailchimpEmails)) {
+            if (!$inList && !empty($person->getWorkEmail()) && isset($mailchimpEmailSet[strtolower($person->getWorkEmail())])) {
                 $inList = true;
             }
 
@@ -203,7 +215,7 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
         $person = PersonQuery::create()->findPk((int) $args['personId']);
         
         if ($person === null) {
-            throw new HttpNotFoundException($request, gettext('Person not found'));
+            return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
         }
 
         $emailToLists = [];
@@ -230,7 +242,7 @@ $app->group('/mailchimp/api', function (RouteCollectorProxy $group) use ($mailch
         $family = FamilyQuery::create()->findPk((int) $args['familyId']);
         
         if ($family === null) {
-            throw new HttpNotFoundException($request, gettext('Family not found'));
+            return SlimUtils::renderErrorJSON($response, gettext('Family not found'), [], 404);
         }
 
         $emailToLists = [];
