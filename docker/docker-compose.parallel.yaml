@@ -1,0 +1,103 @@
+# Parallel test configuration for GitHub Actions
+# Supports running root and subdirectory tests in parallel with separate databases
+# Use with: docker compose -f docker-compose.yaml -f docker-compose.parallel.yaml --profile ci-root up
+#       or: docker compose -f docker-compose.yaml -f docker-compose.parallel.yaml --profile ci-subdir up
+
+services:
+  # Root path database (separate from subdirectory)
+  database-root:
+    profiles: [ci-root]
+    image: mariadb
+    ports:
+      - ${DATABASE_PORT:-3306}:3306
+    env_file:
+      - .env
+    volumes:
+      - ../demo:/docker-entrypoint-initdb.d
+    hostname: crm-database-root
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 20s
+      retries: 10
+
+  # Subdirectory path database (separate from root)
+  database-subdir:
+    profiles: [ci-subdir]
+    image: mariadb
+    ports:
+      - ${DATABASE_SUBDIR_PORT:-3307}:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
+      - MYSQL_USER=${MYSQL_USER:-churchcrm}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-changeme}
+    volumes:
+      - ../demo:/docker-entrypoint-initdb.d
+    hostname: crm-database-subdir
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 20s
+      retries: 10
+
+  # Root path webserver
+  webserver-root:
+    profiles: [ci-root]
+    build:
+      context: .
+      dockerfile: Dockerfile.churchcrm-apache-php8
+      target: test
+    image: churchcrm/crm:php8-debian
+    ports:
+      - ${WEBSERVER_PORT:-80}:80
+    volumes:
+      - ../src:/var/www/html
+      - ..:/home/ChurchCRM
+    hostname: crm-webserver-root
+    env_file:
+      - .env
+    depends_on:
+      database-root:
+        condition: service_healthy
+    # Use specific user for GitHub Actions
+    user: "1001:121"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '4.0'
+        reservations:
+          memory: 1G
+          cpus: '2.0'
+
+  # Subdirectory path webserver
+  webserver-subdir:
+    profiles: [ci-subdir]
+    build:
+      context: .
+      dockerfile: Dockerfile.churchcrm-apache-php8
+      target: test
+    image: churchcrm/crm:php8-debian
+    ports:
+      - ${WEBSERVER_SUBDIR_PORT:-8080}:80
+    volumes:
+      - ../src:/var/www/html/churchcrm
+    hostname: crm-webserver-subdir
+    environment:
+      - CHURCHCRM_SUBDIR=churchcrm
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
+      - MYSQL_USER=${MYSQL_USER:-churchcrm}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-changeme}
+    depends_on:
+      database-subdir:
+        condition: service_healthy
+    # Use specific user for GitHub Actions
+    user: "1001:121"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '4.0'
+        reservations:
+          memory: 1G
+          cpus: '2.0'
