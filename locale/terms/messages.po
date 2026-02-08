@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-07 19:24+0000\n"
+"POT-Creation-Date: 2026-02-08 16:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,6 +108,12 @@ msgstr ""
 #, php-format
 msgid "%d files will be permanently deleted."
 msgstr ""
+
+#, php-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
 
 #, php-format
 msgid "%d missing classification"
@@ -218,6 +224,9 @@ msgstr ""
 msgid "ALERT"
 msgstr ""
 
+msgid "About WebDAV Backups"
+msgstr ""
+
 msgid "Access Denied"
 msgstr ""
 
@@ -314,7 +323,7 @@ msgstr ""
 msgid "Add Individuals to Cart"
 msgstr ""
 
-msgid "Add Menu"
+msgid "Add Link"
 msgstr ""
 
 msgid "Add New"
@@ -351,6 +360,9 @@ msgid "Add Your First Property Type"
 msgstr ""
 
 msgid "Add any additional notes about this deposit"
+msgstr ""
+
+msgid "Add custom external links to the navigation menu."
 msgstr ""
 
 msgid "Add event permission"
@@ -523,6 +535,9 @@ msgstr ""
 msgid "Allow Pre-release Upgrades"
 msgstr ""
 
+msgid "Allow Self-Signed Certificates"
+msgstr ""
+
 msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
 msgstr ""
 
@@ -560,6 +575,9 @@ msgid "An error occurred"
 msgstr ""
 
 msgid "An error occurred during demo data import"
+msgstr ""
+
+msgid "An error occurred processing the plugin request"
 msgstr ""
 
 msgid "An error occurred. Please contact your system administrator."
@@ -685,7 +703,7 @@ msgstr ""
 msgid "Aruba"
 msgstr ""
 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
 msgstr ""
 
 #. Context: countries
@@ -746,10 +764,10 @@ msgstr ""
 msgid "Attendees Checked In"
 msgstr ""
 
-msgid "Audience not in the CRM"
+msgid "Audience not in the ChurchCRM"
 msgstr ""
 
-msgid "Audience not in the ChurchCRM"
+msgid "Audiences"
 msgstr ""
 
 msgid "Aug"
@@ -766,7 +784,16 @@ msgstr ""
 msgid "Austria (Österreich)"
 msgstr ""
 
+msgid "Authentication failed. Please check username and password."
+msgstr ""
+
+msgid "Auto-Backup Interval"
+msgstr ""
+
 msgid "Auto-calculated from counts above"
+msgstr ""
+
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
 msgstr ""
 
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
@@ -775,11 +802,20 @@ msgstr ""
 msgid "Available"
 msgstr ""
 
+msgid "Avg Click Rate"
+msgstr ""
+
+msgid "Avg Open Rate"
+msgstr ""
+
 #. Context: countries
 msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
 
 msgid "Back"
+msgstr ""
+
+msgid "Back to Dashboard"
 msgstr ""
 
 msgid "Back to Debug Info"
@@ -839,6 +875,9 @@ msgstr ""
 msgid "Backup completed successfully!"
 msgstr ""
 
+msgid "Backup created but failed to copy to remote server"
+msgstr ""
+
 msgid "Backup downloaded. Server copy removed."
 msgstr ""
 
@@ -855,6 +894,9 @@ msgid "Backup in progress, please wait..."
 msgstr ""
 
 msgid "Backup to External Storage"
+msgstr ""
+
+msgid "Backup to WebDAV Now"
 msgstr ""
 
 #. Context: countries
@@ -1048,6 +1090,9 @@ msgstr ""
 msgid "CRITICAL"
 msgstr ""
 
+msgid "CRM Members Not Subscribed"
+msgstr ""
+
 msgid "CSV"
 msgstr ""
 
@@ -1092,7 +1137,7 @@ msgstr ""
 msgid "Cameroon (Cameroun)"
 msgstr ""
 
-msgid "Campaigns:"
+msgid "Campaigns Sent"
 msgstr ""
 
 msgid "Can't delete yourself"
@@ -1347,6 +1392,9 @@ msgstr ""
 msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
 msgstr ""
 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr ""
+
 #. Context: queryparameteroptions_qpo
 msgid "City"
 msgstr ""
@@ -1374,10 +1422,7 @@ msgstr ""
 msgid "Clean Up Files"
 msgstr ""
 
-msgid "Cleaned count since last send:"
-msgstr ""
-
-msgid "Cleaned count:"
+msgid "Cleaned"
 msgstr ""
 
 msgid "Clear"
@@ -1402,6 +1447,9 @@ msgid "Clear all data and start fresh. Cannot be undone."
 msgstr ""
 
 msgid "Click a bar to filter payments"
+msgstr ""
+
+msgid "Click the button below to test your WebDAV connection settings."
 msgstr ""
 
 #. Context: countries
@@ -1429,9 +1477,6 @@ msgstr ""
 msgid "Closed vs Total"
 msgstr ""
 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr ""
-
 #. Context: countries
 msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
 msgstr ""
@@ -1456,6 +1501,12 @@ msgid "Comma separated list of classifications that should appear as inactive"
 msgstr ""
 
 msgid "Comment"
+msgstr ""
+
+msgid "Community Plugins"
+msgstr ""
+
+msgid "Community plugins"
 msgstr ""
 
 #. Context: countries
@@ -1485,6 +1536,21 @@ msgid "Configuration:"
 msgstr ""
 
 msgid "Configure Email"
+msgstr ""
+
+msgid "Configure External Backup"
+msgstr ""
+
+msgid "Configure MailChimp"
+msgstr ""
+
+msgid "Configure these settings in the"
+msgstr ""
+
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr ""
+
+msgid "Configured"
 msgstr ""
 
 msgid "Confirm"
@@ -1540,6 +1606,21 @@ msgstr ""
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr ""
 
+msgid "Connected"
+msgstr ""
+
+msgid "Connection failed"
+msgstr ""
+
+msgid "Connection failed with HTTP code"
+msgstr ""
+
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr ""
+
+msgid "Connection test failed"
+msgstr ""
+
 msgid "Contact"
 msgstr ""
 
@@ -1584,6 +1665,12 @@ msgid "Copy"
 msgstr ""
 
 msgid "Copyright"
+msgstr ""
+
+msgid "Core Plugins"
+msgstr ""
+
+msgid "Core plugins"
 msgstr ""
 
 #. Context: countries
@@ -1647,6 +1734,9 @@ msgstr ""
 msgid "Create a backup first"
 msgstr ""
 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr ""
+
 msgid "Create a backup of your database before applying the update."
 msgstr ""
 
@@ -1654,6 +1744,9 @@ msgid "Create a new Event"
 msgstr ""
 
 msgid "Create a new family (using last name)"
+msgstr ""
+
+msgid "Create an Audience in MailChimp"
 msgstr ""
 
 msgid "Create an event type to get started."
@@ -1750,7 +1843,7 @@ msgstr ""
 msgid "Custom List Options Editor"
 msgstr ""
 
-msgid "Custom Menus"
+msgid "Custom Menu Links"
 msgstr ""
 
 msgid "Custom Person Fields"
@@ -1922,6 +2015,12 @@ msgid "Default"
 msgstr ""
 
 msgid "Default City"
+msgstr ""
+
+msgid "Default Image Style"
+msgstr ""
+
+msgid "Default List ID"
 msgstr ""
 
 msgid "Default Name Group"
@@ -2159,10 +2258,16 @@ msgstr ""
 msgid "Directory reports"
 msgstr ""
 
+msgid "Disable"
+msgstr ""
+
 msgid "Disable 2FA"
 msgstr ""
 
 msgid "Disable Group Specific Properties"
+msgstr ""
+
+msgid "Disable Plugin"
 msgstr ""
 
 msgid "Disabled"
@@ -2289,6 +2394,9 @@ msgstr ""
 msgid "E"
 msgstr ""
 
+msgid "E.164 format, e.g., +14155551234"
+msgstr ""
+
 msgid "EMERGENCY"
 msgstr ""
 
@@ -2302,6 +2410,9 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr ""
 
 msgid "ESE"
+msgstr ""
+
+msgid "Each plugin requires a"
 msgstr ""
 
 #. Context: countries
@@ -2413,6 +2524,9 @@ msgstr ""
 msgid "Email Address"
 msgstr ""
 
+msgid "Email Addresses"
+msgstr ""
+
 msgid "Email All"
 msgstr ""
 
@@ -2470,10 +2584,16 @@ msgstr ""
 msgid "Empty your entire cart?"
 msgstr ""
 
+msgid "Enable"
+msgstr ""
+
 msgid "Enable Email menu."
 msgstr ""
 
 msgid "Enable Events menu."
+msgstr ""
+
+msgid "Enable External Backup Plugin"
 msgstr ""
 
 msgid "Enable Finance menu"
@@ -2488,13 +2608,19 @@ msgstr ""
 msgid "Enable New Kiosk Registration"
 msgstr ""
 
-msgid "Enable Remote Backups to Cloud Services"
+msgid "Enable Plugin"
 msgstr ""
 
 msgid "Enable Sunday School left menu."
 msgstr ""
 
 msgid "Enable non-deductible payments"
+msgstr ""
+
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr ""
+
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr ""
 
 msgid "Enabled"
@@ -2514,6 +2640,9 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "Ending Date"
+msgstr ""
+
+msgid "Endpoint URL"
 msgstr ""
 
 msgid "Ends with a <strong>trailing slash</strong> (/)"
@@ -2783,6 +2912,24 @@ msgstr ""
 msgid "Exports database structure and data. Smaller file size."
 msgstr ""
 
+msgid "External Backup"
+msgstr ""
+
+msgid "External Backup (WebDAV)"
+msgstr ""
+
+msgid "External Backup Settings"
+msgstr ""
+
+msgid "External Backup plugin is enabled but not configured."
+msgstr ""
+
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr ""
+
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr ""
+
 msgid "External Calendar API is disabled"
 msgstr ""
 
@@ -2831,13 +2978,22 @@ msgstr ""
 msgid "Failed to create group. Please try again."
 msgstr ""
 
+msgid "Failed to create link"
+msgstr ""
+
 msgid "Failed to delete kiosk"
+msgstr ""
+
+msgid "Failed to delete link"
 msgstr ""
 
 msgid "Failed to delete orphaned files"
 msgstr ""
 
 msgid "Failed to delete role. Please try again."
+msgstr ""
+
+msgid "Failed to disable plugin"
 msgstr ""
 
 msgid "Failed to download latest release"
@@ -2853,6 +3009,15 @@ msgid "Failed to empty cart"
 msgstr ""
 
 msgid "Failed to empty cart to group"
+msgstr ""
+
+msgid "Failed to enable plugin"
+msgstr ""
+
+msgid "Failed to get plugin details"
+msgstr ""
+
+msgid "Failed to list plugins"
 msgstr ""
 
 msgid "Failed to load cart status."
@@ -2879,10 +3044,16 @@ msgstr ""
 msgid "Failed to remove group"
 msgstr ""
 
+msgid "Failed to reset settings"
+msgstr ""
+
 msgid "Failed to save setting. Please try again."
 msgstr ""
 
 msgid "Failed to save settings"
+msgstr ""
+
+msgid "Failed to send SMS"
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -3035,6 +3206,9 @@ msgstr ""
 msgid "Family name must be at least 2 characters"
 msgstr ""
 
+msgid "Family not found"
+msgstr ""
+
 msgid "Family removed from cart"
 msgstr ""
 
@@ -3180,6 +3354,9 @@ msgid "Find Registered students"
 msgstr ""
 
 msgid "Find family->"
+msgstr ""
+
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
 msgstr ""
 
 #. Context: query_qry
@@ -3328,6 +3505,12 @@ msgstr ""
 msgid "From"
 msgstr ""
 
+msgid "From Phone Number"
+msgstr ""
+
+msgid "From dashboard.vonage.com"
+msgstr ""
+
 msgid "Full Backup"
 msgstr ""
 
@@ -3359,6 +3542,9 @@ msgid "Fundraiser Listing"
 msgstr ""
 
 msgid "Funds"
+msgstr ""
+
+msgid "GA4 Measurement ID"
 msgstr ""
 
 msgid "GPS Visualizer"
@@ -3445,6 +3631,9 @@ msgstr ""
 msgid "Germany (Deutschland)"
 msgstr ""
 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr ""
+
 #. Context: countries
 msgid "Ghana (Gaana)"
 msgstr ""
@@ -3475,9 +3664,6 @@ msgid "Go to Dashboard"
 msgstr ""
 
 msgid "Go to Login"
-msgstr ""
-
-msgid "Google Analytics Tracking Code"
 msgstr ""
 
 msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
@@ -3682,6 +3868,9 @@ msgstr ""
 msgid "Hebrew"
 msgstr ""
 
+msgid "Help"
+msgstr ""
+
 msgid "Help & Manual"
 msgstr ""
 
@@ -3812,6 +4001,9 @@ msgstr ""
 msgid "Ignore this Field"
 msgstr ""
 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr ""
+
 msgid "Images Root"
 msgstr ""
 
@@ -3899,7 +4091,7 @@ msgstr ""
 msgid "Install TLS/SSL certificate for better security"
 msgstr ""
 
-msgid "Integration"
+msgid "Install plugins by placing them in"
 msgstr ""
 
 msgid "Integrity Check Details:"
@@ -3918,9 +4110,6 @@ msgid "Intersect Results With Cart"
 msgstr ""
 
 msgid "Intersect with Cart"
-msgstr ""
-
-msgid "Interval in Hours for Automatic Remote Backups"
 msgstr ""
 
 msgid "Invalid API key"
@@ -3960,6 +4149,9 @@ msgid "Invalid assignment type"
 msgstr ""
 
 msgid "Invalid country name supplied"
+msgstr ""
+
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
 msgstr ""
 
 msgid "Invalid fields or selections."
@@ -4135,7 +4327,10 @@ msgstr ""
 msgid "Last"
 msgstr ""
 
-msgid "Last Backup Timestamp"
+msgid "Last Backup"
+msgstr ""
+
+msgid "Last Campaign"
 msgstr ""
 
 msgid "Last Edited"
@@ -4150,7 +4345,16 @@ msgstr ""
 msgid "Last Name"
 msgstr ""
 
+msgid "Last Subscriber"
+msgstr ""
+
+msgid "Last Successful Backup"
+msgstr ""
+
 msgid "Last Sunday"
+msgstr ""
+
+msgid "Last campaign"
 msgstr ""
 
 msgid "Last name"
@@ -4240,10 +4444,22 @@ msgstr ""
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr ""
 
-msgid "Link Address"
+msgid "Link Name"
 msgstr ""
 
-msgid "Link Not found"
+msgid "Link address cannot contain HTML tags"
+msgstr ""
+
+msgid "Link address is required"
+msgstr ""
+
+msgid "Link must be a valid URL"
+msgstr ""
+
+msgid "Link must start with http:// or https://"
+msgstr ""
+
+msgid "Link not found"
 msgstr ""
 
 msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
@@ -4253,9 +4469,6 @@ msgid "Linked Group"
 msgstr ""
 
 msgid "Links"
-msgstr ""
-
-msgid "List"
 msgstr ""
 
 msgid "List Church Events"
@@ -4276,16 +4489,10 @@ msgstr ""
 msgid "List families that were created via self registration."
 msgstr ""
 
-msgid "List maintenance"
-msgstr ""
-
 msgid "List members eligible to vote based on giving history and membership criteria."
 msgstr ""
 
 msgid "List not found"
-msgstr ""
-
-msgid "List not in the list"
 msgstr ""
 
 msgid "Listing"
@@ -4314,9 +4521,6 @@ msgid "Loading log file..."
 msgstr ""
 
 msgid "Loading..."
-msgstr ""
-
-msgid "Local"
 msgstr ""
 
 msgid "Local development:"
@@ -4395,6 +4599,15 @@ msgstr ""
 msgid "Madagascar (Madagasikara)"
 msgstr ""
 
+msgid "MailChimp"
+msgstr ""
+
+msgid "MailChimp API Key"
+msgstr ""
+
+msgid "MailChimp Dashboard"
+msgstr ""
+
 msgid "MailChimp is not configured"
 msgstr ""
 
@@ -4464,6 +4677,9 @@ msgstr ""
 msgid "Manage Groups and Roles"
 msgstr ""
 
+msgid "Manage Links"
+msgstr ""
+
 msgid "Manage Notes"
 msgstr ""
 
@@ -4474,6 +4690,9 @@ msgid "Manage Properties and Classifications"
 msgstr ""
 
 msgid "Manage Users"
+msgstr ""
+
+msgid "Manual Backup"
 msgstr ""
 
 msgid "Map Cart"
@@ -4622,9 +4841,6 @@ msgstr ""
 msgid "Members, Visitors, Children"
 msgstr ""
 
-msgid "Members:"
-msgstr ""
-
 msgid "Membership Date"
 msgstr ""
 
@@ -4635,13 +4851,22 @@ msgstr ""
 msgid "Membership anniversaries"
 msgstr ""
 
-msgid "Menu Name"
+msgid "Menu Links"
+msgstr ""
+
+msgid "Menu name cannot contain HTML tags"
+msgstr ""
+
+msgid "Menu name is required"
+msgstr ""
+
+msgid "Menu name must be 50 characters or less"
+msgstr ""
+
+msgid "Menu name must be at least 2 characters"
 msgstr ""
 
 msgid "Menu options access"
-msgstr ""
-
-msgid "Menus"
 msgstr ""
 
 msgid "Method"
@@ -4842,6 +5067,9 @@ msgstr ""
 msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
 msgstr ""
 
+msgid "Must start with http:// or https://"
+msgstr ""
+
 msgid "My User Settings"
 msgstr ""
 
@@ -4900,6 +5128,9 @@ msgstr ""
 msgid "Need to remove this data later?"
 msgstr ""
 
+msgid "Needs Configuration"
+msgstr ""
+
 msgid "Neighbor Families"
 msgstr ""
 
@@ -4909,6 +5140,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Netherlands (Nederland)"
+msgstr ""
+
+msgid "Never"
 msgstr ""
 
 msgid "New Access Token"
@@ -4967,15 +5201,6 @@ msgstr ""
 msgid "Newsletter labels"
 msgstr ""
 
-msgid "Nexmo SMS API Key"
-msgstr ""
-
-msgid "Nexmo SMS API Secret"
-msgstr ""
-
-msgid "Nexmo SMS From Number"
-msgstr ""
-
 msgid "Next"
 msgstr ""
 
@@ -5008,6 +5233,9 @@ msgid "No Active Deposit"
 msgstr ""
 
 msgid "No Attendance counts recorded"
+msgstr ""
+
+msgid "No Audiences Found"
 msgstr ""
 
 msgid "No Cash"
@@ -5046,7 +5274,16 @@ msgstr ""
 msgid "No assigned family"
 msgstr ""
 
+msgid "No backups recorded"
+msgstr ""
+
+msgid "No community plugins installed"
+msgstr ""
+
 msgid "No coordinates found"
+msgstr ""
+
+msgid "No core plugins found"
 msgstr ""
 
 msgid "No custom Family fields have been added yet"
@@ -5124,6 +5361,9 @@ msgstr ""
 msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
 msgstr ""
 
+msgid "No settings provided"
+msgstr ""
+
 msgid "No volunteer opportunities have been added yet"
 msgstr ""
 
@@ -5185,6 +5425,9 @@ msgstr ""
 msgid "Not Available"
 msgstr ""
 
+msgid "Not Configured"
+msgstr ""
+
 msgid "Not Found"
 msgstr ""
 
@@ -5192,9 +5435,6 @@ msgid "Not Found: Unknown calendar id"
 msgstr ""
 
 msgid "Not Subscribed"
-msgstr ""
-
-msgid "Not Subscribed "
 msgstr ""
 
 msgid "Not a valid Friend Date"
@@ -5216,6 +5456,12 @@ msgid "Not assigned"
 msgstr ""
 
 msgid "Not configured"
+msgstr ""
+
+msgid "Not in CRM"
+msgstr ""
+
+msgid "Not set"
 msgstr ""
 
 msgid "Note"
@@ -5334,19 +5580,16 @@ msgstr ""
 msgid "Open Deposits:"
 msgstr ""
 
+msgid "Open MailChimp"
+msgstr ""
+
 msgid "Open in New Tab"
 msgstr ""
 
 msgid "Open this file in a text editor:"
 msgstr ""
 
-msgid "OpenLP Password"
-msgstr ""
-
-msgid "OpenLP URL"
-msgstr ""
-
-msgid "OpenLP Username"
+msgid "OpenLP Server URL"
 msgstr ""
 
 msgid "Opportunity"
@@ -5359,6 +5602,9 @@ msgid "Optional - Add sermon notes or additional event details"
 msgstr ""
 
 msgid "Optional - leave blank if not tracking"
+msgstr ""
+
+msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr ""
 
 msgid "Optional Data to Include"
@@ -5575,9 +5821,6 @@ msgstr ""
 msgid "People not in"
 msgstr ""
 
-msgid "People not in list"
-msgstr ""
-
 #. Context: query_qry
 msgid "People who are configured to pay by credit card."
 msgstr ""
@@ -5709,6 +5952,9 @@ msgstr ""
 msgid "Phone number"
 msgstr ""
 
+msgid "Phone number and message required"
+msgstr ""
+
 msgid "Photo Directory"
 msgstr ""
 
@@ -5747,6 +5993,18 @@ msgid "Please check the backup file and try again."
 msgstr ""
 
 msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr ""
+
+msgid "Please configure endpoint, username, and password first."
+msgstr ""
+
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr ""
+
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr ""
+
+msgid "Please configure your MailChimp API key to use this integration."
 msgstr ""
 
 msgid "Please confirm activation of family"
@@ -5809,7 +6067,7 @@ msgstr ""
 msgid "Please enter a group name."
 msgstr ""
 
-msgid "Please enter a menu name (2-50 characters)"
+msgid "Please enter a link name (2-50 characters)"
 msgstr ""
 
 msgid "Please enter a valid URL"
@@ -5880,9 +6138,6 @@ msgstr ""
 msgid "Please update our records with corrections"
 msgstr ""
 
-msgid "Please update the MailChimp API key in:"
-msgstr ""
-
 msgid "Please verify your family's information"
 msgstr ""
 
@@ -5932,6 +6187,39 @@ msgid "Pledged this year"
 msgstr ""
 
 msgid "Pledges and Payments"
+msgstr ""
+
+msgid "Plugin Development"
+msgstr ""
+
+msgid "Plugin Help"
+msgstr ""
+
+msgid "Plugin Management"
+msgstr ""
+
+msgid "Plugin Settings"
+msgstr ""
+
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr ""
+
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr ""
+
+msgid "Plugin disabled successfully"
+msgstr ""
+
+msgid "Plugin enabled successfully"
+msgstr ""
+
+msgid "Plugin failed to load"
+msgstr ""
+
+msgid "Plugin not found"
+msgstr ""
+
+msgid "Plugins"
 msgstr ""
 
 #. Context: countries
@@ -6108,6 +6396,9 @@ msgstr ""
 msgid "Recipient Naming Method"
 msgstr ""
 
+msgid "Recipients and message required"
+msgstr ""
+
 msgid "Recommendation: Review and delete these files before or after the upgrade."
 msgstr ""
 
@@ -6191,16 +6482,10 @@ msgstr ""
 msgid "Remittance Slip:"
 msgstr ""
 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr ""
-
-msgid "Remote Backup Password"
-msgstr ""
-
-msgid "Remote Backup Username"
-msgstr ""
-
 msgid "Remote backup failed"
+msgstr ""
+
+msgid "Remote backup failed. Check server logs for details."
 msgstr ""
 
 msgid "Remove"
@@ -6457,6 +6742,9 @@ msgid "SE"
 msgstr ""
 
 msgid "SHA1 Hash:"
+msgstr ""
+
+msgid "SMS sent"
 msgstr ""
 
 msgid "SMTP Host"
@@ -6878,6 +7166,9 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+msgid "Settings reset successfully"
+msgstr ""
+
 msgid "Settings saved successfully"
 msgstr ""
 
@@ -6889,6 +7180,9 @@ msgid "Seychelles"
 msgstr ""
 
 msgid "Share this URL with family members to verify their information"
+msgstr ""
+
+msgid "Shipped with ChurchCRM."
 msgstr ""
 
 msgid "Show"
@@ -6904,9 +7198,6 @@ msgid "Show Payments"
 msgstr ""
 
 msgid "Show Pledges"
-msgstr ""
-
-msgid "Show custom links on the left menu."
 msgstr ""
 
 msgid "Show in"
@@ -6996,6 +7287,12 @@ msgid "Some ChurchCRM system files may have been modified since the last install
 msgstr ""
 
 msgid "Some application prerequisites are not met"
+msgstr ""
+
+msgid "Some settings could not be reset"
+msgstr ""
+
+msgid "Some settings could not be saved"
 msgstr ""
 
 msgid "Sorry, there are records of donations from this family. This family may not be deleted."
@@ -7088,9 +7385,6 @@ msgstr ""
 msgid "Start Time"
 msgstr ""
 
-msgid "Start with http:// or https://"
-msgstr ""
-
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr ""
 
@@ -7135,6 +7429,12 @@ msgid "Submit Verification"
 msgstr ""
 
 msgid "Submit to GitHub"
+msgstr ""
+
+msgid "Subscribers"
+msgstr ""
+
+msgid "Subscribers Not in CRM"
 msgstr ""
 
 #. Context: countries
@@ -7307,6 +7607,12 @@ msgstr ""
 msgid "Telugu - India"
 msgstr ""
 
+msgid "Test Connection"
+msgstr ""
+
+msgid "Test WebDAV Connection"
+msgstr ""
+
 msgid "Text"
 msgstr ""
 
@@ -7456,6 +7762,18 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr ""
 
 msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr ""
+
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr ""
+
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr ""
+
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr ""
+
+msgid "Third-party extensions."
 msgstr ""
 
 msgid "This Family is Inactive"
@@ -7627,6 +7945,9 @@ msgstr ""
 msgid "Total Amount"
 msgstr ""
 
+msgid "Total Campaigns"
+msgstr ""
+
 msgid "Total Deposit"
 msgstr ""
 
@@ -7643,6 +7964,9 @@ msgid "Total Payments"
 msgstr ""
 
 msgid "Total Pledges"
+msgstr ""
+
+msgid "Total Subscribers"
 msgstr ""
 
 msgid "Total Users"
@@ -7760,6 +8084,9 @@ msgstr ""
 msgid "URL must start with http:// or https://"
 msgstr ""
 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr ""
+
 #. Context: countries
 msgid "Uganda"
 msgstr ""
@@ -7785,6 +8112,9 @@ msgid "Unable to determine available locales"
 msgstr ""
 
 msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgstr ""
+
+msgid "Unable to load"
 msgstr ""
 
 msgid "Unable to load locale information"
@@ -7850,10 +8180,7 @@ msgstr ""
 msgid "Unpinned Events"
 msgstr ""
 
-msgid "Unsubscribed count since last send:"
-msgstr ""
-
-msgid "Unsubscribed count:"
+msgid "Unsubscribed"
 msgstr ""
 
 msgid "Unsuccessful API Key authentication attempt"
@@ -8053,6 +8380,12 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
+msgid "Value is configured"
+msgstr ""
+
+msgid "Value is set - leave blank to keep current"
+msgstr ""
+
 #. Context: countries
 msgid "Vanuatu"
 msgstr ""
@@ -8213,6 +8546,12 @@ msgstr ""
 msgid "Volunteers"
 msgstr ""
 
+msgid "Vonage API Key"
+msgstr ""
+
+msgid "Vonage API Secret"
+msgstr ""
+
 msgid "Voting Members"
 msgstr ""
 
@@ -8268,10 +8607,22 @@ msgstr ""
 msgid "Web Server"
 msgstr ""
 
-msgid "WebDAV"
+msgid "WebDAV Configuration"
 msgstr ""
 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgid "WebDAV Connection"
+msgstr ""
+
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr ""
+
+msgid "WebDAV endpoint URL is required."
+msgstr ""
+
+msgid "WebDAV password is required."
+msgstr ""
+
+msgid "WebDAV username is required."
 msgstr ""
 
 msgid "Wedding"
@@ -8478,6 +8829,12 @@ msgstr ""
 msgid "Your ChurchCRM password has been changed"
 msgstr ""
 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr ""
+
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr ""
+
 msgid "Your New Account"
 msgstr ""
 
@@ -8602,6 +8959,9 @@ msgstr ""
 msgid "deposit(s) with no payments"
 msgstr ""
 
+msgid "e.g., Church Website"
+msgstr ""
+
 msgid "e.g., Sunday School, Bible Study..."
 msgstr ""
 
@@ -8680,7 +9040,7 @@ msgstr ""
 msgid "loading"
 msgstr ""
 
-msgid "lookup user images on Gravatar when no local image is present"
+msgid "manifest."
 msgstr ""
 
 msgid "members. Already had"
@@ -8773,6 +9133,9 @@ msgid "seconds..."
 msgstr ""
 
 msgid "select an option"
+msgstr ""
+
+msgid "subscribers"
 msgstr ""
 
 msgid "system user changed password"
