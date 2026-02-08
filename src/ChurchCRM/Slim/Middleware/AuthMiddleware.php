@@ -16,7 +16,11 @@ class AuthMiddleware implements MiddlewareInterface
 {
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (!str_starts_with($request->getUri()->getPath(), '/api/public')) {
+        // Construct the full public API path including any subdirectory installation
+        // Examples: '/api/public' (root install), '/crm/api/public' (subdirectory install)
+        $publicApiPath = SystemURLs::getRootPath() . '/api/public';
+        
+        if (!str_starts_with($request->getUri()->getPath(), $publicApiPath)) {
             $apiKey = $request->getHeader('x-api-key');
             if (!empty($apiKey)) {
                 $logger = LoggerUtils::getAppLogger();
