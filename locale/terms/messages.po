@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-07 13:47-0800\n"
+"POT-Creation-Date: 2026-02-08 16:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -520,6 +520,9 @@ msgstr ""
 msgid "All system files match their expected signatures."
 msgstr ""
 
+msgid "All timezones match"
+msgstr ""
+
 msgid "Allow Pre-release Upgrades"
 msgstr ""
 
@@ -894,6 +897,9 @@ msgstr ""
 msgid "Based on filters below.."
 msgstr ""
 
+msgid "Baseline"
+msgstr ""
+
 msgid "Batch Winner Entry"
 msgstr ""
 
@@ -997,6 +1003,12 @@ msgstr ""
 
 #. Context: countries
 msgid "British Virgin Islands"
+msgstr ""
+
+msgid "Browser"
+msgstr ""
+
+msgid "Browser differs from system config - dates may display incorrectly for this user."
 msgstr ""
 
 #. Context: countries
@@ -1467,6 +1479,9 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Compare pledges between two fiscal years"
+msgstr ""
+
+msgid "Comparing timezones..."
 msgstr ""
 
 msgid "Complete"
@@ -2214,6 +2229,9 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
+msgid "Does not match system config"
+msgstr ""
+
 msgid "Does your SMTP server require auththentication (username/password)?"
 msgstr ""
 
@@ -2874,6 +2892,9 @@ msgid "Failed to load cart status."
 msgstr ""
 
 msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
 msgstr ""
 
 msgid "Failed to refresh upgrade information"
@@ -4700,6 +4721,9 @@ msgstr ""
 msgid "Minimum length is"
 msgstr ""
 
+msgid "Mismatch"
+msgstr ""
+
 msgid "Missing"
 msgstr ""
 
@@ -5233,6 +5257,9 @@ msgstr ""
 msgid "Not configured"
 msgstr ""
 
+msgid "Not set"
+msgstr ""
+
 msgid "Note"
 msgstr ""
 
@@ -5447,6 +5474,9 @@ msgid "PDFs successfully emailed to %s families."
 msgstr ""
 
 msgid "PHP & Server Requirements"
+msgstr ""
+
+msgid "PHP Active"
 msgstr ""
 
 msgid "PHP Configuration"
@@ -7235,6 +7265,9 @@ msgstr ""
 msgid "System & Configuration"
 msgstr ""
 
+msgid "System Config"
+msgstr ""
+
 msgid "System Configuration:"
 msgstr ""
 
@@ -7558,6 +7591,12 @@ msgid "Time zone"
 msgstr ""
 
 msgid "Timeline"
+msgstr ""
+
+msgid "Timezone Information"
+msgstr ""
+
+msgid "Timezone mismatch detected"
 msgstr ""
 
 #. Context: countries
@@ -8705,6 +8744,12 @@ msgid "members. Already had"
 msgstr ""
 
 msgid "miles"
+msgstr ""
+
+msgid "mismatch detected"
+msgstr ""
+
+msgid "mismatches detected"
 msgstr ""
 
 msgid "must be configured with an encryption key"
