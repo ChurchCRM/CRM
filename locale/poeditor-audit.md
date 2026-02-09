@@ -21,6 +21,7 @@
 | `pt` | Portuguese | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `es` | Spanish | 2791 | 100% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 2790 | 99.96% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
@@ -39,7 +40,6 @@
 | `es-sv` | Spanish (SV) | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `sv` | Swedish | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `vi` | Vietnamese | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 2758 | 98.82% | 🟢 Complete | ✅ Yes |
