@@ -94,6 +94,7 @@ jobs:
         name: build-${{ github.run_id }}
         path: |
           src/
+          temp/
           !src/logs
         retention-days: 1
 

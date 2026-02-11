@@ -10,8 +10,11 @@ services:
     image: mariadb
     ports:
       - ${DATABASE_PORT:-3306}:3306
-    env_file:
-      - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
+      - MYSQL_USER=${MYSQL_USER:-churchcrm}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-changeme}
     volumes:
       - ../demo:/docker-entrypoint-initdb.d
     hostname: crm-database-root

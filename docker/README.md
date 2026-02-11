@@ -88,22 +88,16 @@ Testing
 
 ChurchCRM supports both root path (`/`) and subdirectory (`/churchcrm/`) installations. The parallel testing infrastructure allows testing both configurations simultaneously without conflicts.
 
-**📖 For detailed parallel testing documentation, see [PARALLEL_TESTING.md](PARALLEL_TESTING.md)**
-
-Quick start for parallel testing:
 ```bash
 # Root path tests
 npm run docker:ci:root:start
 npm run test:root
 npm run docker:ci:root:down
 
-# Subdirectory tests
+# Subdirectory tests  
 npm run docker:ci:subdir:start
 npm run test:subdir
 npm run docker:ci:subdir:down
-
-# Demo script (runs both in parallel)
-./scripts/demo-parallel-testing.sh
 ```
 
 ### Environment Variables
