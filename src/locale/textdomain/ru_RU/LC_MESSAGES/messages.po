@@ -11557,10 +11557,107 @@ msgstr "Сбросить Фильтры"
 msgid "Show only people with photos"
 msgstr "Показать только людей с фотографиями"
 
+#: 
+msgid "Checkout All"
+msgstr "Выписать всех"
+
+#: 
+msgid "Expected"
+msgstr "Ожидается"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Не удалось удалить киоск"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Семейные обязательства по финансовому году"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Найти зарегистрированных студентов"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Финансовый год."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Группа зарегистрированных студентов"
+
+#: 
+msgid "Here"
+msgstr "Здесь"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Недопустимый тип назначения"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Недопустимый ID человека"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Регистрация киоска отключена"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Киоск не найден"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Свяжите это событие с группой для функции регистрации на киоске. Участники группы появятся на киоске."
+
+#: 
+msgid "Linked Group"
+msgstr "Связанная группа"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Регистрация новых устройств киоска в настоящее время отключена. Обратитесь к системному администратору для включения регистрации киоска."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Нет группы (Выберите для регистрации на киоске)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Пока никто не зарегистрировался"
+
+#: 
+msgid "Person not found"
+msgstr "Человек не найден"
+
+#: 
+msgid "Pickup Request"
+msgstr "Запрос на забор"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Пожалуйста, пройдите в класс как можно скорее."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Сводка обязательств по семейному имени для каждого фонда за выбранный финансовый год"
+
 #. Context: query_qry
 #: 
 msgid "Registered students"
 msgstr "Зарегистрированные студенты"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Учитель отправил это предупреждение в"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Этот киоск лучше всего просматривать на планшете в альбомном режиме для оптимального опыта регистрации."
 
 #: 
 msgid "Tip"
@@ -11575,6 +11672,10 @@ msgid "Upcoming Birthdays"
 msgstr "Предстоящие дни рождения"
 
 #: 
+msgid "Waiting to Check In"
+msgstr "Ожидание регистрации"
+
+#: 
 msgid "When enabled, new kiosk devices can register for 30 seconds."
 msgstr "При включении новые киоски могут быть зарегистрированы в течение 30 секунд."
 
@@ -11583,6 +11684,114 @@ msgid "Your child"
 msgstr "Ваш ребенок"
 
 #: 
+msgid "needs to be picked up from"
+msgstr "нужно забрать из"
+
+#: 
 msgid "their classroom"
 msgstr "классная комната"
+
+#: 
+msgid "All timezones match"
+msgstr "Все часовые пояса совпадают"
+
+#: 
+msgid "Baseline"
+msgstr "Базовая линия"
+
+#: 
+msgid "Browser"
+msgstr "Браузер"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Браузер отличается от конфигурации системы - даты могут отображаться неправильно для этого пользователя."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Невозможно записать в каталог установки ChurchCRM. Проверьте, есть ли у веб-сервера права на запись."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Сравнение часовых поясов..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Целевой каталог не существует. Убедитесь, что ChurchCRM установлен правильно."
+
+#: 
+msgid "Does not match system config"
+msgstr "Не соответствует конфигурации системы"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Загруженный файл релиза пуст. Это может быть связано с проблемами сети или ограничением скорости GitHub. Попробуйте позже."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Извлечение завершено, но файлы обновления не найдены. Архив обновления может быть поврежден."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Не удалось применить обновление. Проверьте журналы сервера для получения подробностей."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Не удалось создать каталог обновления. Проверьте права доступа к файлам."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Не удалось загрузить файл релиза с GitHub после нескольких попыток. Проверьте интернет-соединение сервера и повторите попытку."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Не удалось извлечь архив обновления. Проверьте место на диске и права доступа к файлам."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Не удалось открыть архив обновления. Загруженный файл может быть поврежден."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Не удалось сохранить загруженный файл релиза. Проверьте место на диске и права доступа."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Неверный формат даты в параметре начала"
+
+#: 
+msgid "Mismatch"
+msgstr "Несоответствие"
+
+#: 
+msgid "Not set"
+msgstr "Не установлено"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP активен"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Исходный каталог не существует. Архив обновления мог быть извлечен неправильно. Проверьте права доступа к файлам и место на диске."
+
+#: 
+msgid "System Config"
+msgstr "Конфигурация системы"
+
+#: 
+msgid "Timezone Information"
+msgstr "Информация о часовом поясе"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Обнаружено несоответствие часового пояса"
+
+#: 
+msgid "mismatch detected"
+msgstr "обнаружено несоответствие"
+
+#: 
+msgid "mismatches detected"
+msgstr "обнаружены несоответствия"
 

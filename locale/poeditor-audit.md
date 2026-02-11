@@ -10,25 +10,29 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `ar` | Arabic | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `de` | German | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2790 | 99.08% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `de` | German | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `hi` | Hindi | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 2816 | 100% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 2810 | 99.79% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 2789 | 99.04% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 2759 | 97.98% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 2782 | 98.79% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `fi` | Finnish | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `el` | Greek | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
@@ -36,9 +40,6 @@
 | `hu` | Hungarian | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `nb` | Norwegian Bokmål | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `sv` | Swedish | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 2758 | 97.94% | 🟢 Complete | ✅ Yes |
@@ -46,9 +47,8 @@
 | `cs` | Czech | 2757 | 97.9% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 2756 | 97.87% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 2752 | 97.73% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 2750 | 97.66% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2750 | 97.66% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 1107 | 39.31% | 🟠 Needs Work | ✅ Yes |
+| `te` | Telugu | 1543 | 54.79% | 🟠 Needs Work | ✅ Yes |
 | `sl` | Slovenian | 82 | 2.91% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 80 | 2.84% | 🟠 Needs Work | ❌ No |
 | `en-za` | English (ZA) | 80 | 2.84% | N/A | ✅ Yes |

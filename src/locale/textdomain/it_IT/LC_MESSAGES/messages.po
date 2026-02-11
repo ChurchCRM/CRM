@@ -11666,3 +11666,107 @@ msgstr "deve essere prelevato da"
 msgid "their classroom"
 msgstr "la sua aula"
 
+#: 
+msgid "All timezones match"
+msgstr "Tutti i fusi orari corrispondono"
+
+#: 
+msgid "Baseline"
+msgstr "Riferimento"
+
+#: 
+msgid "Browser"
+msgstr "Browser"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Il browser differisce dalla configurazione di sistema - le date potrebbero essere visualizzate in modo errato per questo utente."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Impossibile scrivere nella directory di installazione di ChurchCRM. Verificare che il server web abbia i permessi di scrittura."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Confronto dei fusi orari..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "La directory di destinazione non esiste. Verificare che ChurchCRM sia installato correttamente."
+
+#: 
+msgid "Does not match system config"
+msgstr "Non corrisponde alla configurazione di sistema"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Il file della versione scaricato è vuoto. Questo potrebbe essere dovuto a problemi di rete o limitazioni di GitHub. Riprovare più tardi."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Estrazione completata ma file di aggiornamento non trovati. L'archivio di aggiornamento potrebbe essere corrotto."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Impossibile applicare l'aggiornamento. Controllare i log del server per i dettagli."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Impossibile creare la directory di aggiornamento. Verificare i permessi dei file."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Impossibile scaricare il file della versione da GitHub dopo diversi tentativi. Verificare la connessione Internet del server e riprovare."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Impossibile estrarre l'archivio di aggiornamento. Verificare lo spazio su disco e i permessi dei file."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Impossibile aprire l'archivio di aggiornamento. Il file scaricato potrebbe essere corrotto."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Impossibile salvare il file della versione scaricato. Verificare lo spazio su disco e i permessi."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Formato data non valido nel parametro di inizio"
+
+#: 
+msgid "Mismatch"
+msgstr "Discordanza"
+
+#: 
+msgid "Not set"
+msgstr "Non impostato"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP attivo"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "La directory di origine non esiste. L'archivio di aggiornamento potrebbe non essere stato estratto correttamente. Verificare i permessi dei file e lo spazio su disco."
+
+#: 
+msgid "System Config"
+msgstr "Configurazione di sistema"
+
+#: 
+msgid "Timezone Information"
+msgstr "Informazioni sul fuso orario"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Rilevata discordanza del fuso orario"
+
+#: 
+msgid "mismatch detected"
+msgstr "discordanza rilevata"
+
+#: 
+msgid "mismatches detected"
+msgstr "discordanze rilevate"
+
