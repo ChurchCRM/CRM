@@ -215,11 +215,13 @@ function initDataTable() {
                             '<i class="fa-solid fa-camera"></i>' +
                             "</button>";
                     }
+                    // Escape full name to prevent XSS
+                    const escapedName = $("<div>").text(full.Person.FullName).html();
                     return (
                         '<a target="_top" href="PersonView.php?PersonID=' +
                         full.PersonId +
                         '">' +
-                        full.Person.FullName +
+                        escapedName +
                         "</a>" +
                         photoIcon
                     );
@@ -233,13 +235,14 @@ function initDataTable() {
                     thisRole = $(window.CRM.groupRoles).filter(function (index, item) {
                         return item.OptionId == data;
                     })[0];
+                    // Escape role name to prevent XSS
+                    // i18next-disable-next-line
+                    const escapedRoleName = $("<div>").text(i18next.t(thisRole?.OptionName)).html();
                     return (
                         '<span class="d-inline-block text-truncate" style="max-width: 150px;" title="' +
-                        // i18next-disable-next-line
-                        i18next.t(thisRole?.OptionName) +
+                        escapedRoleName +
                         '">' +
-                        // i18next-disable-next-line
-                        i18next.t(thisRole?.OptionName) +
+                        escapedRoleName +
                         "</span> " +
                         '<button class="btn btn-xs changeMembership" data-personid=' +
                         full.PersonId +
@@ -256,11 +259,13 @@ function initDataTable() {
                     if (full.Person.Address2) {
                         address += " " + full.Person.Address2;
                     }
+                    // Escape address to prevent XSS
+                    const escapedAddress = $("<div>").text(address).html();
                     return (
                         '<span class="d-inline-block text-truncate" style="max-width: 200px;" title="' +
-                        address +
+                        escapedAddress +
                         '">' +
-                        address +
+                        escapedAddress +
                         "</span>"
                     );
                 },
@@ -291,11 +296,13 @@ function initDataTable() {
                 data: "Person.Email",
                 render: function (data, type, full, meta) {
                     if (data) {
+                        // Escape email to prevent XSS
+                        const escapedEmail = $("<div>").text(data).html();
                         return (
                             '<span class="d-inline-block text-truncate" style="max-width: 180px;" title="' +
-                            data +
+                            escapedEmail +
                             '">' +
-                            data +
+                            escapedEmail +
                             "</span>"
                         );
                     }
