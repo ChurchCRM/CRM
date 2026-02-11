@@ -23,6 +23,7 @@
 | `es` | Spanish | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 2791 | 100% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 2790 | 99.96% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 2760 | 98.89% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 2759 | 98.85% | 🟢 Complete | ✅ Yes |
@@ -45,7 +46,6 @@
 | `cs` | Czech | 2758 | 98.82% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 2757 | 98.78% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 2753 | 98.64% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 2753 | 98.64% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2751 | 98.57% | 🟢 Complete | ✅ Yes |
 | `uk` | Ukrainian | 2751 | 98.57% | 🟢 Complete | ✅ Yes |
 | `te` | Telugu | 1107 | 39.66% | 🟠 Needs Work | ✅ Yes |
