@@ -3748,10 +3748,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Det här är familjens rollnummer som utses till barn"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Bör bara administratörer ha tillgång till CSV-exportsystemet och katalograpporten?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Minsta längd som en användare kan ställa in sitt lösenord till"
 
@@ -5992,10 +5988,6 @@ msgid "payment(s)?"
 msgstr "betalningar (s)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Se till att du gör det du vill göra. </p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bekräfta avaktivering"
 
@@ -6370,20 +6362,8 @@ msgid "Integration"
 msgstr "Integration"
 
 #: 
-msgid "Notification"
-msgstr "Underrättelse"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Förmyndare"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Ett meddelande utlöste av klassrumsläraren kl"
-
-#: 
-msgid "Please go to this location"
-msgstr "Gå till den här platsen"
 
 #: 
 #, fuzzy
@@ -9676,10 +9656,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "VARNING: Återställning av en säkerhetskopia kommer att radera den befintliga databasen helt och ersätta den med data från säkerhetskopian."
 
 #: 
-msgid "CSV export permission"
-msgstr "Behörighet för CSV-export"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Stäng & Uppdatera"
 
@@ -10098,10 +10074,6 @@ msgstr "Tillbaka till familjer"
 #: 
 msgid "Birth & Family"
 msgstr "Födelse & Familj"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV-export är begränsad till administratörer."
 
 #: 
 msgid "Cart"
@@ -11130,10 +11102,6 @@ msgstr "Demodata har laddats"
 #: 
 msgid "Download failed"
 msgstr "Nedladdning misslyckades"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "Misslyckades med att tillämpa uppgradering"
 
 #: 
 msgid "Failed to delete orphaned files"

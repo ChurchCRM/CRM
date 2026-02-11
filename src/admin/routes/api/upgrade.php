@@ -41,7 +41,16 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
             UpgradeAPIService::doUpgrade($input['fullPath'], $input['sha1']);
             return SlimUtils::renderSuccessJSON($response);
         } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to apply upgrade'), [], 500, $e, $request);
+            // Return a localized, user-safe error message and log full details server-side
+            // Exception details (including file paths) are logged by SlimUtils::renderErrorJSON
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Failed to apply upgrade. Please check the server logs for details.'),
+                [],
+                500,
+                $e,
+                $request
+            );
         }
     });
 

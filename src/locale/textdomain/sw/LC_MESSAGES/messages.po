@@ -3620,10 +3620,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Hizi ndizo nambari za jukumu la familia zilizoteuliwa kama mtoto"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Je, ni wasimamizi pekee wanaopaswa kufikia mfumo wa usafirishaji wa CSV na ripoti ya saraka?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Urefu wa chini ambao mtumiaji anaweza kuweka nenosiri lake"
 
@@ -5862,10 +5858,6 @@ msgid "payment(s)?"
 msgstr "malipo?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Tafadhali hakikisha hiki unachotaka kufanya.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Thibitisha Kuzima"
 
@@ -6240,20 +6232,8 @@ msgid "Integration"
 msgstr "Kuunganisha"
 
 #: 
-msgid "Notification"
-msgstr "Taarifa"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Mlezi wa"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Taarifa ilitolewa na mwalimu wa darasa katika"
-
-#: 
-msgid "Please go to this location"
-msgstr "Tafadhali nenda mahali hapa"
 
 #: 
 #, fuzzy
@@ -9542,10 +9522,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "TAHADHARI: Kurejesha nakala kutafuta kabisa hifadhidata iliyopo na kuibadilisha na data za nakala."
 
 #: 
-msgid "CSV export permission"
-msgstr "Ruhusa ya kutoa CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Funga na Huisha"
 
@@ -9964,10 +9940,6 @@ msgstr "Rudi kwenye Familia"
 #: 
 msgid "Birth & Family"
 msgstr "Kuzaliwa na Familia"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Kutoa CSV ni kwa ajili ya wasimamizi pekee."
 
 #: 
 msgid "Cart"
@@ -10996,10 +10968,6 @@ msgstr "Data za majaribio zimepakiwa kwa mafanikio"
 #: 
 msgid "Download failed"
 msgstr "Upakuaji umeshindikana"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "Imeshindikana kutumia sasisho"
 
 #: 
 msgid "Failed to delete orphaned files"

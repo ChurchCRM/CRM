@@ -3593,10 +3593,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Nämä ovat perherooleja, jotka on määritelty lapsiksi"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Pitäisikö vain ylläpitäjillä olla pääsy CSV-vientiin ja hakemistoraporttiin?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Salasanan vähimmäispituus"
 
@@ -5832,10 +5828,6 @@ msgid "payment(s)?"
 msgstr "maksu(t)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Varmista, että haluat tehdä tämän.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Vahvista käytöstä poistaminen"
 
@@ -6208,20 +6200,8 @@ msgid "Integration"
 msgstr "Integraatio"
 
 #: 
-msgid "Notification"
-msgstr "Ilmoitus"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Huoltajat henkilölle:"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Luokanopettaja lähetti ilmoituksen kellonajalla"
-
-#: 
-msgid "Please go to this location"
-msgstr "Ole hyvä ja mene tähän sijaintiin"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9498,10 +9478,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "VAROITUS: Varmuuskopion palauttaminen poistaa olemassa olevan tietokannan kokonaan ja korvaa sen varmuuskopion tiedoilla."
 
 #: 
-msgid "CSV export permission"
-msgstr "CSV-viennin käyttöoikeus"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Sulje ja päivitä"
 
@@ -9920,10 +9896,6 @@ msgstr "Takaisin perheisiin"
 #: 
 msgid "Birth & Family"
 msgstr "Syntymä ja perhe"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV-vienti on rajoitettu järjestelmänvalvojille."
 
 #: 
 msgid "Cart"
@@ -10952,10 +10924,6 @@ msgstr "Demotiedot ladattu onnistuneesti"
 #: 
 msgid "Download failed"
 msgstr "Lataus epäonnistui"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "Päivityksen soveltaminen epäonnistui"
 
 #: 
 msgid "Failed to delete orphaned files"

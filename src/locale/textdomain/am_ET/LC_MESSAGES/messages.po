@@ -3623,10 +3623,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "እነዚህ እንደ ልጅ የተሰየሙ የቤተሰብ ሚና ቁጥሮች ናቸው"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "የCSV ኤክስፖርት ስርዓት እና የማውጫ ሪፖርት መዳረሻ ያላቸው አስተዳዳሪዎች ብቻ ናቸው?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "አንድ ተጠቃሚ የይለፍ ቃሉን ሊያዘጋጅ የሚችልበት አነስተኛ ርዝመት"
 
@@ -5868,10 +5864,6 @@ msgid "payment(s)?"
 msgstr "ክፍያ(ዎች)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "እባክዎ ይህን ማድረግ እንደሚፈልጉ ያረጋግጡ።"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "ማቋረጥ መፈለጎትን ያረጋግጡ"
 
@@ -6246,20 +6238,8 @@ msgid "Integration"
 msgstr "ውህደት"
 
 #: 
-msgid "Notification"
-msgstr "ማሳወቂያ"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "የአሳዳጊ(ዎች)"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "በክፍል መምህር የተቀሰቀሰው ማሳወቂያ በ"
-
-#: 
-msgid "Please go to this location"
-msgstr "እባክዎ ወደ ሚከተለው ቦታ ይሂዱ"
 
 #: 
 #, fuzzy
@@ -9568,10 +9548,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "ጥንቃቄ፦ መጠባበቂያን መመለስ ነባሩን ዳታቤዝ ሙሉ በሙሉ ያጠፋል እና በመጠባበቂያ መረጃው ይተካዋል።"
 
 #: 
-msgid "CSV export permission"
-msgstr "የCSV ኤክስፖርት ፈቃድ"
-
-#: 
 msgid "Close & Refresh"
 msgstr "ዝጋ እና አድስ"
 
@@ -9990,10 +9966,6 @@ msgstr "ወደ ቤተሰቦች ተመለስ"
 #: 
 msgid "Birth & Family"
 msgstr "ልደት እና ቤተሰብ"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "የCSV ኤክስፖርት ለአስተዳዳሪዎች ብቻ የተገደበ ነው።"
 
 #: 
 msgid "Cart"
@@ -11022,10 +10994,6 @@ msgstr "የሙከራ መረጃ በተሳካ ሁኔታ ተጭኗል"
 #: 
 msgid "Download failed"
 msgstr "ማውረድ አልተሳካም"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "ማሻሻያ መተግበር አልተሳካም"
 
 #: 
 msgid "Failed to delete orphaned files"

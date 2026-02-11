@@ -3622,10 +3622,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Need perekonnanumbrid on mõeldud lapsena"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Kas CSV-eksportimissüsteemile ja kataloogiaruandele peaks olema juurdepääs ainult administraatoritel?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Minimaalne pikkus, mille kasutaja võib parooliks seada"
 
@@ -5866,10 +5862,6 @@ msgid "payment(s)?"
 msgstr "makse(d)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Palun veenduge selles, mida soovite teha.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Kinnitage desaktiveerimine"
 
@@ -6244,20 +6236,8 @@ msgid "Integration"
 msgstr "Integratsioon"
 
 #: 
-msgid "Notification"
-msgstr "Teavitus"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Hooldaja(d)."
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Klassiõpetaja käivitas teatise kella"
-
-#: 
-msgid "Please go to this location"
-msgstr "Palun minge sellesse asukohta"
 
 #: 
 #, fuzzy
@@ -9550,10 +9530,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "HOIATUS: Varukoopia taastamine kustutab täielikult olemasoleva andmebaasi ja asendab selle varukoopiaandmetega."
 
 #: 
-msgid "CSV export permission"
-msgstr "CSV ekspordilt õigused"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Sulge ja värskenda"
 
@@ -9972,10 +9948,6 @@ msgstr "Tagasi perekondadele"
 #: 
 msgid "Birth & Family"
 msgstr "Sünd ja perekond"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV eksportimine on piiratud administraatoritele."
 
 #: 
 msgid "Cart"
@@ -11004,10 +10976,6 @@ msgstr "Demoandmed on edukalt laaditud"
 #: 
 msgid "Download failed"
 msgstr "Allalaadimine ebaõnnestus"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "Täienduse rakendamine ebaõnnestus"
 
 #: 
 msgid "Failed to delete orphaned files"

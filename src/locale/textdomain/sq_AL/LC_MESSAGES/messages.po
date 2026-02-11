@@ -3619,10 +3619,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Këta janë numrat e roleve familjare të përcaktuar si fëmijë"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "A duhet që vetëm administratorët të kenë qasje në sistemin e eksportit CSV dhe raportin e direktorisë?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Gjatësia minimale që një përdorues mund të caktojë për fjalëkalimin e tij"
 
@@ -5858,10 +5854,6 @@ msgid "payment(s)?"
 msgstr "pagesë(at)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Ju lutemi sigurohuni që kjo është ajo që dëshironi të bëni.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Konfirmo çaktivizimin"
 
@@ -6234,20 +6226,8 @@ msgid "Integration"
 msgstr "Integrimi"
 
 #: 
-msgid "Notification"
-msgstr "Njoftim"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Kujdestar(ë) i/e"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Një njoftim u aktivizua nga mësuesi i klasës në"
-
-#: 
-msgid "Please go to this location"
-msgstr "Ju lutem shkoni në këtë vendndodhje"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9529,10 +9509,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "KUJDES: Rivendosja e një kopjeje rezervë do të fshijë plotësisht bazën ekzistuese të të dhënave dhe do ta zëvendësojë atë me të dhënat e kopjes rezervë."
 
 #: 
-msgid "CSV export permission"
-msgstr "Leja për eksportim CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Mbyll dhe rifresko"
 
@@ -9951,10 +9927,6 @@ msgstr "Kthehu në familje"
 #: 
 msgid "Birth & Family"
 msgstr "Lindja dhe familja"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Eksporti CSV është i kufizuar për administratorët."
 
 #: 
 msgid "Cart"
@@ -10983,10 +10955,6 @@ msgstr "Të dhënat demo u ngarkuan me sukses"
 #: 
 msgid "Download failed"
 msgstr "Shkarkimi dështoi"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "Dështoi aplikimi i përmirësimit"
 
 #: 
 msgid "Failed to delete orphaned files"

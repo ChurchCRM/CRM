@@ -405,6 +405,7 @@ function initializeCalendar() {
     // -----------------------------------------------------------------
     window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
         locale: window.CRM.lang || "en",
+        timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
         headerToolbar: {
             start: "prev,next today",
             center: "title",

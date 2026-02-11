@@ -3635,10 +3635,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Đây là các số vai trò gia đình được chỉ định khi còn nhỏ"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Chỉ có quản trị viên mới có quyền truy cập vào hệ thống xuất CSV và báo cáo thư mục?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Độ dài tối thiểu mà người dùng có thể đặt mật khẩu của họ"
 
@@ -5879,10 +5875,6 @@ msgid "payment(s)?"
 msgstr "(các) khoản thanh toán?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Hãy đảm bảo điều này những gì bạn muốn làm. </p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Xác nhận việc hủy kích hoạt"
 
@@ -6257,20 +6249,8 @@ msgid "Integration"
 msgstr "Tích hợp"
 
 #: 
-msgid "Notification"
-msgstr "Thông báo"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Người giám hộ của"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Một thông báo đã được kích hoạt bởi giáo viên lớp học tại"
-
-#: 
-msgid "Please go to this location"
-msgstr "Vui lòng đến địa điểm này"
 
 #: 
 #, fuzzy
@@ -9552,10 +9532,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "CHÚ Ý: Khôi phục bản sao lưu sẽ xóa hoàn toàn cơ sở dữ liệu hiện tại và thay thế bằng dữ liệu sao lưu."
 
 #: 
-msgid "CSV export permission"
-msgstr "Quyền xuất tệp CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Đóng & Làm mới"
 
@@ -9974,10 +9950,6 @@ msgstr "Quay lại danh sách gia đình"
 #: 
 msgid "Birth & Family"
 msgstr "Ngày sinh & Gia đình"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Xuất tệp CSV chỉ dành cho quản trị viên."
 
 #: 
 msgid "Cart"
@@ -11006,10 +10978,6 @@ msgstr "Dữ liệu mẫu đã được tải thành công"
 #: 
 msgid "Download failed"
 msgstr "Tải xuống thất bại"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "Áp dụng nâng cấp thất bại"
 
 #: 
 msgid "Failed to delete orphaned files"

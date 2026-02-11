@@ -93,6 +93,7 @@ $MenuFirst = 1;
             systemLocale: "<?= $localeInfo->getSystemLocale() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
+            timeZone: "<?= SystemConfig::getValue('sTimeZone') ?>",
             maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= SystemService::getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",

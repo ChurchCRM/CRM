@@ -84,6 +84,22 @@ Testing
 | `npm run docker:test:login:web` | Open shell in webserver container |
 | `npm run docker:test:login:db` | Open shell in database container |
 
+### Parallel Testing (Root + Subdirectory)
+
+ChurchCRM supports both root path (`/`) and subdirectory (`/churchcrm/`) installations. The parallel testing infrastructure allows testing both configurations simultaneously without conflicts.
+
+```bash
+# Root path tests
+npm run docker:ci:root:start
+npm run test:root
+npm run docker:ci:root:down
+
+# Subdirectory tests  
+npm run docker:ci:subdir:start
+npm run test:subdir
+npm run docker:ci:subdir:down
+```
+
 ### Environment Variables
 
 Configure ports in `docker/.env`:

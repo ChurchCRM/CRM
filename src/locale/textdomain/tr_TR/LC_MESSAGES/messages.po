@@ -3623,10 +3623,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Bunlar çocuk olarak belirlenen aile rol numaralarıdır"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Yalnızca yöneticilerin CSV Dışa Aktarma Sistemi ve Dizin Raporuna erişimi olmalı mı?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Bir kullanıcının şifresini ayarlayabileceği minimum uzunluk"
 
@@ -5867,10 +5863,6 @@ msgid "payment(s)?"
 msgstr "Ödemeler?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Lütfen bunu yapmak istediğiniz şeyden emin olun. </p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Devre dışı bırakmayı onaylayın"
 
@@ -6245,20 +6237,8 @@ msgid "Integration"
 msgstr "Entegrasyon"
 
 #: 
-msgid "Notification"
-msgstr "Bildirim"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Koruyucu (lar)"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Sınıf öğretmeni tarafından bir bildirim tetiklendi"
-
-#: 
-msgid "Please go to this location"
-msgstr "Lütfen bu konuma gidin"
 
 #: 
 #, fuzzy
@@ -9551,10 +9531,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "DİKKAT: Bir yedeği geri yüklemek mevcut veritabanını tamamen silecek ve onu yedek verilerle değiştirecektir."
 
 #: 
-msgid "CSV export permission"
-msgstr "CSV dışa aktarma izni"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Kapat ve Yenile"
 
@@ -9973,10 +9949,6 @@ msgstr "Ailelere Dön"
 #: 
 msgid "Birth & Family"
 msgstr "Doğum ve Aile"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV dışa aktarma yetkisi yöneticilerle sınırlandırılmıştır."
 
 #: 
 msgid "Cart"
@@ -11005,10 +10977,6 @@ msgstr "Demo verisi başarıyla yüklendi"
 #: 
 msgid "Download failed"
 msgstr "İndirme başarısız oldu"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "Yükseltme uygulanamadı"
 
 #: 
 msgid "Failed to delete orphaned files"

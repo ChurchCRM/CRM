@@ -226,13 +226,89 @@ class ChurchCRMReleaseManager
         $logger->debug('Using temp directory: ' . $UpgradeDir);
         $logger->info('Downloading release from: ' . $url . ' to: ' . $UpgradeDir . '/' . basename($url));
         $executionTime = new ExecutionTime();
-        file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
+
+        // Download the file with retry logic (3 attempts total)
+        $maxAttempts = 3;
+        $downloadContent = false;
+        $lastError = null;
+
+        for ($attempt = 1; $attempt <= $maxAttempts; $attempt++) {
+            $logger->info('Download attempt ' . $attempt . ' of ' . $maxAttempts);
+
+            // Clear any previous error
+            @error_clear_last();
+
+            $downloadContent = @file_get_contents($url);
+
+            // Check if download succeeded and content is not empty
+            if ($downloadContent !== false && strlen($downloadContent) > 0) {
+                $logger->info('Download succeeded on attempt ' . $attempt);
+                break;
+            }
+
+            // Capture the error for logging
+            $lastError = error_get_last();
+            $errorMsg = $lastError['message'] ?? 'Unknown error or empty response';
+
+            if ($attempt < $maxAttempts) {
+                $logger->warning('Download attempt ' . $attempt . ' failed, retrying...', [
+                    'url' => $url,
+                    'error' => $errorMsg,
+                ]);
+                // Wait before retry (1 second, then 2 seconds)
+                sleep($attempt);
+            }
+        }
+
+        // Check if all attempts failed
+        if ($downloadContent === false) {
+            $errorMsg = $lastError['message'] ?? 'Unknown error';
+            $logger->error('Failed to download release file after ' . $maxAttempts . ' attempts', [
+                'url' => $url,
+                'error' => $errorMsg,
+            ]);
+            throw new \Exception(gettext('Failed to download the release file from GitHub after multiple attempts. Please check your server\'s internet connection and try again.') . ' Error: ' . $errorMsg);
+        }
+
+        // Check if downloaded content is empty
+        $downloadSize = strlen($downloadContent);
+        if ($downloadSize === 0) {
+            $logger->error('Downloaded release file is empty after ' . $maxAttempts . ' attempts', [
+                'url' => $url,
+                'size' => 0,
+            ]);
+            throw new \Exception(gettext('Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later.'));
+        }
+
+        // Minimum expected size for a ChurchCRM release ZIP (at least 1MB)
+        $minExpectedSize = 1024 * 1024;
+        if ($downloadSize < $minExpectedSize) {
+            $logger->warning('Downloaded file is smaller than expected', [
+                'url' => $url,
+                'size' => $downloadSize,
+                'minExpectedSize' => $minExpectedSize,
+            ]);
+        }
+
+        $destPath = $UpgradeDir . '/' . basename($url);
+        $writeResult = file_put_contents($destPath, $downloadContent);
+
+        if ($writeResult === false) {
+            $logger->error('Failed to write downloaded file to disk', [
+                'destPath' => $destPath,
+                'downloadSize' => $downloadSize,
+            ]);
+            throw new \Exception(gettext('Failed to save the downloaded release file. Please check disk space and permissions.'));
+        }
+
         $logger->info('Finished downloading file.  Execution time: ' . $executionTime->getMilliseconds() . ' ms');
+        $logger->info('Downloaded file size: ' . $downloadSize . ' bytes');
+
         $returnFile = [];
         $returnFile['fileName'] = basename($url);
         $returnFile['releaseNotes'] = $release->getReleaseNotes();
-        $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
-        $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
+        $returnFile['fullPath'] = $destPath;
+        $returnFile['sha1'] = sha1_file($destPath);
         $logger->info('SHA1 hash for ' . $returnFile['fullPath'] . ': ' . $returnFile['sha1']);
         $logger->info('Release notes: ' . $returnFile['releaseNotes']);
 
@@ -274,6 +350,59 @@ class ChurchCRMReleaseManager
         $logger = LoggerUtils::getAppLogger();
         $logger->info('Beginning upgrade process');
         $logger->info('PHP max_execution_time is now: ' . ini_get('max_execution_time'));
+
+        // Pre-flight validation: Check if we can create the Upgrade directory
+        $docRoot = SystemURLs::getDocumentRoot();
+        $upgradeDir = $docRoot . '/Upgrade';
+        $logger->info('Document root: ' . $docRoot);
+        $logger->info('Upgrade directory will be: ' . $upgradeDir);
+
+        // Check if document root is writable
+        if (!is_writable($docRoot)) {
+            self::$isUpgradeInProgress = false;
+            ini_set('display_errors', $displayErrors);
+
+            // Safely determine the directory owner name, handling environments
+            // where POSIX functions or lookups may fail.
+            $ownerName = 'N/A';
+            if (function_exists('posix_getpwuid')) {
+                $fileOwner = @fileowner($docRoot);
+                if ($fileOwner !== false) {
+                    $ownerInfo = @posix_getpwuid($fileOwner);
+                    if (is_array($ownerInfo) && isset($ownerInfo['name'])) {
+                        $ownerName = $ownerInfo['name'];
+                    } else {
+                        $ownerName = 'unknown';
+                    }
+                } else {
+                    $ownerName = 'unknown';
+                }
+            }
+
+            $logger->error('Cannot write to ChurchCRM installation directory', [
+                'docRoot' => $docRoot,
+                'isWritable' => false,
+                'permissions' => substr(sprintf('%o', fileperms($docRoot)), -4),
+                'owner' => $ownerName,
+            ]);
+            throw new \Exception(gettext('Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions.'));
+        }
+
+        // Create Upgrade directory if it doesn't exist
+        if (!is_dir($upgradeDir)) {
+            $logger->info('Creating Upgrade directory: ' . $upgradeDir);
+            if (!@mkdir($upgradeDir, 0755, true)) {
+                self::$isUpgradeInProgress = false;
+                ini_set('display_errors', $displayErrors);
+                $error = error_get_last();
+                $logger->error('Failed to create Upgrade directory', [
+                    'upgradeDir' => $upgradeDir,
+                    'lastError' => $error,
+                ]);
+                throw new \Exception(gettext('Failed to create Upgrade directory. Please check file permissions.'));
+            }
+        }
+
         $logger->info('Beginning hash validation on ' . $zipFilename);
 
         // Log detailed file information before attempting hash
@@ -345,23 +474,57 @@ class ChurchCRMReleaseManager
         $zip = new \ZipArchive();
         $codeDeploySuccessful = false;
 
-        if ($zip->open($zipFilename) === true) {
-            $logger->info('Extracting ' . $zipFilename . ' to: ' . SystemURLs::getDocumentRoot() . '/Upgrade');
+        $openResult = $zip->open($zipFilename);
+        if ($openResult === true) {
+            $logger->info('Extracting ' . $zipFilename . ' to: ' . $upgradeDir);
 
             $executionTime = new ExecutionTime();
-            $isSuccessful = $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-            MiscUtils::throwIfFailed($isSuccessful);
+            $isSuccessful = $zip->extractTo($upgradeDir);
+            if (!$isSuccessful) {
+                self::$isUpgradeInProgress = false;
+                ini_set('display_errors', $displayErrors);
+                $logger->error('Failed to extract upgrade archive', [
+                    'zipFilename' => $zipFilename,
+                    'upgradeDir' => $upgradeDir,
+                    'diskFreeSpace' => disk_free_space($docRoot),
+                ]);
+                $zip->close();
+                throw new \Exception(gettext('Failed to extract upgrade archive. Please check disk space and file permissions.'));
+            }
 
             $zip->close();
 
             $logger->info('Extraction completed.  Took:' . $executionTime->getMilliseconds());
+
+            // Verify the extracted directory exists
+            $extractedChurchCRM = $upgradeDir . '/churchcrm';
+            if (!is_dir($extractedChurchCRM)) {
+                self::$isUpgradeInProgress = false;
+                ini_set('display_errors', $displayErrors);
+                $logger->error('Extraction completed but expected directory not found', [
+                    'upgradeDir' => $upgradeDir,
+                    'expectedDir' => $extractedChurchCRM,
+                    'upgradeDirContents' => @scandir($upgradeDir),
+                ]);
+                throw new \Exception(gettext('Extraction completed but upgrade files not found. The upgrade archive may be corrupted.'));
+            }
+
             $logger->info('Moving extracted zip into place');
 
             $executionTime = new ExecutionTime();
 
-            FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            FileSystemUtils::moveDir($extractedChurchCRM, $docRoot);
             $codeDeploySuccessful = true;
             $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
+        } else {
+            // ZipArchive::open() failed - log the error code and throw
+            self::$isUpgradeInProgress = false;
+            ini_set('display_errors', $displayErrors);
+            $logger->error('Failed to open upgrade archive', [
+                'zipFilename' => $zipFilename,
+                'errorCode' => $openResult,
+            ]);
+            throw new \Exception(gettext('Failed to open upgrade archive. The downloaded file may be corrupted.'));
         }
         $logger->info('Deleting zip archive: ' . $zipFilename);
         unlink($zipFilename);

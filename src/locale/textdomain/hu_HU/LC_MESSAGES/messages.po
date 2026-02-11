@@ -3701,10 +3701,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Ezek a gyermekként megjelölt családi szerepkör számok"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Csak az adminisztrátorok férhessenek hozzá a CSV exportáló rendszerhez és a névjegyzék-jelentéshez?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Minimális jelszóhossz a felhasználók számára"
 
@@ -5940,10 +5936,6 @@ msgid "payment(s)?"
 msgstr "fizetés(ek)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Kérjük, győződjön meg róla, hogy valóban ezt szeretné tenni.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Deaktiválás megerősítése"
 
@@ -6316,20 +6308,8 @@ msgid "Integration"
 msgstr "Integráció"
 
 #: 
-msgid "Notification"
-msgstr "Értesítés"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Gondviselője:"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Egy értesítést váltott ki a tanár ekkor:"
-
-#: 
-msgid "Please go to this location"
-msgstr "Kérjük, menjen erre a helyszínre"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9611,10 +9591,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "FIGYELMEZTETÉS: A biztonsági másolat visszaállítása teljesen törli a meglévő adatbázist, és helyét a biztonsági másolati adatok foglalják el."
 
 #: 
-msgid "CSV export permission"
-msgstr "CSV exportálási engedély"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Bezárás és Frissítés"
 
@@ -10033,10 +10009,6 @@ msgstr "Vissza a Családokhoz"
 #: 
 msgid "Birth & Family"
 msgstr "Születés & Család"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "A CSV exportálás a rendszergazdákra korlátozódik."
 
 #: 
 msgid "Cart"
@@ -11065,10 +11037,6 @@ msgstr "A bemutató adatok sikeresen betöltve"
 #: 
 msgid "Download failed"
 msgstr "A letöltés nem sikerült"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "A frissítés alkalmazása nem sikerült"
 
 #: 
 msgid "Failed to delete orphaned files"

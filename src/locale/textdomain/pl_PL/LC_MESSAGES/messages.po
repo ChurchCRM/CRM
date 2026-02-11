@@ -3712,10 +3712,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Są to numery ról rodzinnych wyznaczone jako dziecko"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Czy tylko administratorzy powinni mieć dostęp do systemu eksportu CSV i raportu katalogowego?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Minimalna długość hasła, jaką może ustawić użytkownik"
 
@@ -5951,10 +5947,6 @@ msgid "payment(s)?"
 msgstr "płatność(i)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Upewnij się, że to jest to, co chcesz zrobić.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Potwierdź dezaktywację"
 
@@ -6328,20 +6320,8 @@ msgid "Integration"
 msgstr "Integracja"
 
 #: 
-msgid "Notification"
-msgstr "Powiadomienie"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Opiekunowie"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Powiadomienie zostało wyzwolone przez nauczyciela w"
-
-#: 
-msgid "Please go to this location"
-msgstr "Proszę udać się do tej lokalizacji"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9257,6 +9237,13 @@ msgid "deposit(s) with no payments"
 msgstr "wpłaty bez płatności"
 
 #: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d wydarzenie w %s"
+msgstr[1] "%d wydarzenia w %s"
+msgstr[2] "%d wydarzeń w %s"
+
+#: 
 msgid "All Event Types"
 msgstr "Wszystkie typy wydarzeń"
 
@@ -9509,6 +9496,13 @@ msgid "optional"
 msgstr "opcjonalnie"
 
 #: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "osoba"
+msgstr[1] "osoby"
+msgstr[2] "osoby"
+
+#: 
 msgid "✓ CheckOut"
 msgstr "✓ Wymeldowanie"
 
@@ -9619,10 +9613,6 @@ msgstr "Kopia na zewnętrzny dysk/chmurę"
 #: 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr "UWAGA: Przywrócenie kopii całkowicie wymaże obecną bazę danych."
-
-#: 
-msgid "CSV export permission"
-msgstr "Uprawnienie do eksportu CSV"
 
 #: 
 msgid "Close & Refresh"
@@ -10043,10 +10033,6 @@ msgstr "Powrót do rodzin"
 #: 
 msgid "Birth & Family"
 msgstr "Urodzenie i rodzina"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Eksport CSV jest ograniczony do administratorów."
 
 #: 
 msgid "Cart"
@@ -11077,10 +11063,6 @@ msgid "Download failed"
 msgstr "Pobieranie nie powiodło się"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Nie udało się zastosować aktualizacji"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Nie udało się usunąć osieroconych plików"
 
@@ -11239,6 +11221,27 @@ msgstr "Oczekiwanie na walidację"
 #: 
 msgid "must be configured with an encryption key"
 msgstr "musi być skonfigurowany z kluczem szyfrowania"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d osoba dodana do koszyka."
+msgstr[1] "%d osoby dodane do koszyka."
+msgstr[2] "%d osób dodanych do koszyka."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d osoba pomyślnie dodana do wybranej rodziny."
+msgstr[1] "%d osoby pomyślnie dodane do wybranej rodziny."
+msgstr[2] "%d osób pomyślnie dodanych do wybranej rodziny."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d osoba pomyślnie dodana do wybranej grupy."
+msgstr[1] "%d osoby pomyślnie dodane do wybranej grupy."
+msgstr[2] "%d osób pomyślnie dodanych do wybranej grupy."
 
 #: 
 msgid "A "
@@ -11561,6 +11564,13 @@ msgid "Must start with / if not empty; no trailing slash. Only letters, numbers,
 msgstr "Musi zaczynać się od / jeśli nie jest puste; bez końcowego ukośnika. Dozwolone są tylko litery, cyfry, podkreślenie, myślnik, kropka i /."
 
 #: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d osoba"
+msgstr[1] "%d osoby"
+msgstr[2] "%d osób"
+
+#: 
 msgid "All Classifications"
 msgstr "Wszystkie Klasyfikacje"
 
@@ -11587,4 +11597,138 @@ msgstr "Resetuj Filtry"
 #: 
 msgid "Show only people with photos"
 msgstr "Pokaż tylko osoby ze zdjęciami"
+
+#: 
+msgid "Checkout All"
+msgstr "Wymelduj wszystkich"
+
+#: 
+msgid "Expected"
+msgstr "Oczekiwany"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Nie udało się usunąć kiosku"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Zobowiązanie rodziny według roku podatkowego"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Znajdź zarejestrowanych uczniów"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Rok podatkowy."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Grupa zarejestrowanych uczniów"
+
+#: 
+msgid "Here"
+msgstr "Tutaj"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Nieprawidłowy typ przypisania"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Nieprawidłowy identyfikator osoby"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Rejestracja kiosku wyłączona"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kiosk nie znaleziony"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Połącz to wydarzenie z grupą, aby włączyć funkcję odprawy na kiosku. Członkowie grupy pojawią się na kiosku."
+
+#: 
+msgid "Linked Group"
+msgstr "Połączona grupa"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Rejestracja nowych urządzeń kioskowych jest obecnie wyłączona. Skontaktuj się z administratorem systemu, aby włączyć rejestrację kiosków."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Brak grupy (Wybierz do odprawy na kiosku)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Nikt jeszcze się nie zameldował"
+
+#: 
+msgid "Person not found"
+msgstr "Osoba nie znaleziona"
+
+#: 
+msgid "Pickup Request"
+msgstr "Prośba o odbiór"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Proszę udać się do klasy jak najszybciej."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Podsumowanie zobowiązań według nazwiska rodziny dla każdego funduszu za wybrany rok podatkowy"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Zarejestrowani uczniowie"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Nauczyciel wysłał ten alert o"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Ten kiosk najlepiej oglądać na tablecie w trybie poziomym dla optymalnego doświadczenia odprawy."
+
+#: 
+msgid "Tip"
+msgstr "Wskazówka"
+
+#: 
+msgid "Try Again"
+msgstr "Spróbuj ponownie"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Nadchodzące urodziny"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Oczekiwanie na zameldowanie"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Po włączeniu nowe urządzenia kioskowe mogą się rejestrować przez 30 sekund."
+
+#: 
+msgid "Your child"
+msgstr "Twoje dziecko"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "musi zostać odebrane z"
+
+#: 
+msgid "their classroom"
+msgstr "ich klasy"
 

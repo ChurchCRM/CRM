@@ -1,11 +1,4 @@
 {
-  "Additional Information": "",
-  "All information is correct": "",
-  "Assign Opportunities": "",
-  "Choose a property...": "",
-  "Choose opportunities...": "",
-  "Confirm Family Information": "",
-  "Confirm family information": "",
   "Contact & Personal Info": "",
   "Copied!": "",
   "Edit Role": "",
@@ -37,7 +30,6 @@
   "Demo data import is only available on fresh installations with exactly 1 person": "",
   "Demo data loaded successfully": "",
   "Download failed": "",
-  "Failed to apply upgrade": "",
   "Failed to delete orphaned files": "",
   "Failed to download latest release": "",
   "Failed to refresh upgrade information": "",
@@ -107,5 +99,13 @@
   "Move up": "",
   "Opportunity": "",
   "Order": "",
-  "PDFs successfully emailed to %s families.": ""
+  "PDFs successfully emailed to %s families.": "",
+  "Percentage": "",
+  "Person Properties": "",
+  "Property to Delete": "",
+  "There are people assigned to this Volunteer Opportunity. Deletion will unassign:": "",
+  "This will remove it from all people currently assigned to it.": "",
+  "Volunteer Opportunity": "",
+  "Warning:": "",
+  "Yes, delete this Opportunity": ""
 }

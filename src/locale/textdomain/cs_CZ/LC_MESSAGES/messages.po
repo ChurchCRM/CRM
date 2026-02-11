@@ -3616,10 +3616,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Toto jsou čísla rodinných rolí, určená jako dítě"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Měli by mít k systému exportu CSV a sestavě adresáře přístup pouze správci?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Minimální délka, na kterou může uživatel nastavit své heslo"
 
@@ -5855,10 +5851,6 @@ msgid "payment(s)?"
 msgstr "platba(-y)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Ujistěte se, že to chcete udělat.</p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Potvrďte deaktivaci"
 
@@ -6233,20 +6225,8 @@ msgid "Integration"
 msgstr "Integrace"
 
 #: 
-msgid "Notification"
-msgstr "Oznámení"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Opatrovník(-ci) osoby"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Upozornění spustil učitel na"
-
-#: 
-msgid "Please go to this location"
-msgstr "Přejděte na tuto stránku"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -9532,10 +9512,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "UPOZORNĚNÍ: Obnovení zálohy zcela vymaže stávající databázi a nahradí ji záložními daty."
 
 #: 
-msgid "CSV export permission"
-msgstr "Oprávnění k exportu CSV"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Zavřít a obnovit"
 
@@ -9954,10 +9930,6 @@ msgstr "Zpátky na rodiny"
 #: 
 msgid "Birth & Family"
 msgstr "Narození a rodina"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "Export do formátu CSV je omezen na správce."
 
 #: 
 msgid "Cart"
@@ -10986,10 +10958,6 @@ msgstr "Ukázková data byla úspěšně načtena"
 #: 
 msgid "Download failed"
 msgstr "Stažení se nezdařilo"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "Použití aktualizace se nezdařilo"
 
 #: 
 msgid "Failed to delete orphaned files"

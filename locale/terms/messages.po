@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-07 19:24+0000\n"
+"POT-Creation-Date: 2026-02-10 20:18-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -520,6 +520,9 @@ msgstr ""
 msgid "All system files match their expected signatures."
 msgstr ""
 
+msgid "All timezones match"
+msgstr ""
+
 msgid "Allow Pre-release Upgrades"
 msgstr ""
 
@@ -894,6 +897,9 @@ msgstr ""
 msgid "Based on filters below.."
 msgstr ""
 
+msgid "Baseline"
+msgstr ""
+
 msgid "Batch Winner Entry"
 msgstr ""
 
@@ -997,6 +1003,12 @@ msgstr ""
 
 #. Context: countries
 msgid "British Virgin Islands"
+msgstr ""
+
+msgid "Browser"
+msgstr ""
+
+msgid "Browser differs from system config - dates may display incorrectly for this user."
 msgstr ""
 
 #. Context: countries
@@ -1110,6 +1122,9 @@ msgid "Cancel"
 msgstr ""
 
 msgid "Cannot execute query."
+msgstr ""
+
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
 msgstr ""
 
 #. Context: countries
@@ -1464,6 +1479,9 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Compare pledges between two fiscal years"
+msgstr ""
+
+msgid "Comparing timezones..."
 msgstr ""
 
 msgid "Complete"
@@ -2131,6 +2149,9 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr ""
+
 msgid "Detailed breakdown of a single deposit slip."
 msgstr ""
 
@@ -2208,6 +2229,9 @@ msgstr ""
 msgid "Documentation"
 msgstr ""
 
+msgid "Does not match system config"
+msgstr ""
+
 msgid "Does your SMTP server require auththentication (username/password)?"
 msgstr ""
 
@@ -2268,6 +2292,9 @@ msgid "Download the latest release and apply it to your ChurchCRM installation."
 msgstr ""
 
 msgid "Downloaded"
+msgstr ""
+
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
 msgstr ""
 
 msgid "Downloading latest release from GitHub..."
@@ -2792,6 +2819,9 @@ msgstr ""
 msgid "Extra Teachers"
 msgstr ""
 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr ""
+
 msgid "F"
 msgstr ""
 
@@ -2819,10 +2849,13 @@ msgstr ""
 msgid "Failed to add to cart"
 msgstr ""
 
-msgid "Failed to apply upgrade"
+msgid "Failed to apply upgrade. Please check the server logs for details."
 msgstr ""
 
 msgid "Failed to copy URL"
+msgstr ""
+
+msgid "Failed to create Upgrade directory. Please check file permissions."
 msgstr ""
 
 msgid "Failed to create backup."
@@ -2843,6 +2876,9 @@ msgstr ""
 msgid "Failed to download latest release"
 msgstr ""
 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr ""
+
 msgid "Failed to download update package."
 msgstr ""
 
@@ -2855,10 +2891,16 @@ msgstr ""
 msgid "Failed to empty cart to group"
 msgstr ""
 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr ""
+
 msgid "Failed to load cart status."
 msgstr ""
 
 msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
 msgstr ""
 
 msgid "Failed to refresh upgrade information"
@@ -2883,6 +2925,9 @@ msgid "Failed to save setting. Please try again."
 msgstr ""
 
 msgid "Failed to save settings"
+msgstr ""
+
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -3962,6 +4007,9 @@ msgstr ""
 msgid "Invalid country name supplied"
 msgstr ""
 
+msgid "Invalid date format in start parameter"
+msgstr ""
+
 msgid "Invalid fields or selections."
 msgstr ""
 
@@ -4685,6 +4733,9 @@ msgstr ""
 msgid "Minimum length is"
 msgstr ""
 
+msgid "Mismatch"
+msgstr ""
+
 msgid "Missing"
 msgstr ""
 
@@ -5218,6 +5269,9 @@ msgstr ""
 msgid "Not configured"
 msgstr ""
 
+msgid "Not set"
+msgstr ""
+
 msgid "Note"
 msgstr ""
 
@@ -5432,6 +5486,9 @@ msgid "PDFs successfully emailed to %s families."
 msgstr ""
 
 msgid "PHP & Server Requirements"
+msgstr ""
+
+msgid "PHP Active"
 msgstr ""
 
 msgid "PHP Configuration"
@@ -7010,6 +7067,9 @@ msgstr ""
 msgid "Sort by"
 msgstr ""
 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr ""
+
 #. Context: countries
 msgid "South Africa"
 msgstr ""
@@ -7215,6 +7275,9 @@ msgid "System"
 msgstr ""
 
 msgid "System & Configuration"
+msgstr ""
+
+msgid "System Config"
 msgstr ""
 
 msgid "System Configuration:"
@@ -7540,6 +7603,12 @@ msgid "Time zone"
 msgstr ""
 
 msgid "Timeline"
+msgstr ""
+
+msgid "Timezone Information"
+msgstr ""
+
+msgid "Timezone mismatch detected"
 msgstr ""
 
 #. Context: countries
@@ -8687,6 +8756,12 @@ msgid "members. Already had"
 msgstr ""
 
 msgid "miles"
+msgstr ""
+
+msgid "mismatch detected"
+msgstr ""
+
+msgid "mismatches detected"
 msgstr ""
 
 msgid "must be configured with an encryption key"

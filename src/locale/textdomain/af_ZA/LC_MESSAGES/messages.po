@@ -3623,10 +3623,6 @@ msgid "These are the family role numbers designated as child"
 msgstr "Dit is die gesinsrolnommers wat as kind aangewys word"
 
 #: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Moet slegs administrateurs toegang hê tot die CSV-uitvoerstelsel en gidsverslag?"
-
-#: 
 msgid "Minimum length a user may set their password to"
 msgstr "Minimum lengte waarop 'n gebruiker hul wagwoord kan stel"
 
@@ -5867,10 +5863,6 @@ msgid "payment(s)?"
 msgstr "betalings (s)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Verseker dit wat u wil doen. </p>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Bevestig Deaktivering"
 
@@ -6245,20 +6237,8 @@ msgid "Integration"
 msgstr "Integrasie"
 
 #: 
-msgid "Notification"
-msgstr "Kennisgewing"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Voog (e) van"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "'N Kennisgewing is deur die klaskameronderwyser by"
-
-#: 
-msgid "Please go to this location"
-msgstr "Gaan asseblief na hierdie plek"
 
 #: 
 #, fuzzy
@@ -9552,10 +9532,6 @@ msgid "CAUTION: Restoring a backup will completely erase the existing database a
 msgstr "WAARSKUWING: Die herstel van 'n rugsteun sal die bestaande database volledig uitwis en dit vervang met die rugsteundata."
 
 #: 
-msgid "CSV export permission"
-msgstr "CSV-uitvoerbevoegdheid"
-
-#: 
 msgid "Close & Refresh"
 msgstr "Sluit & Verfris"
 
@@ -9974,10 +9950,6 @@ msgstr "Terug na Families"
 #: 
 msgid "Birth & Family"
 msgstr "Geboorte & Familie"
-
-#: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSV-uitvoer is beperk tot administrateurs."
 
 #: 
 msgid "Cart"
@@ -11006,10 +10978,6 @@ msgstr "Demo data suksesvol gelaai"
 #: 
 msgid "Download failed"
 msgstr "Aflaai het misluk"
-
-#: 
-msgid "Failed to apply upgrade"
-msgstr "Misluk to apply upgrade"
 
 #: 
 msgid "Failed to delete orphaned files"

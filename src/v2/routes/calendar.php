@@ -34,5 +34,6 @@ function getCalendarJSArgs(): array
         'isModifiable'               => AuthenticationManager::getCurrentUser()->isAddEvent(),
         'countCalendarAccessTokens'  => CalendarQuery::create()->filterByAccessToken(null, Criteria::NOT_EQUAL)->count(),
         'bEnableExternalCalendarAPI' => SystemConfig::getBooleanValue('bEnableExternalCalendarAPI'),
+        'sTimeZone'                  => SystemConfig::getValue('sTimeZone'),
     ];
 }

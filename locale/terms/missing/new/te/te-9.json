@@ -1,9 +1,4 @@
 {
-  "Finnish": "",
-  "Greek": "",
-  "Turkish": "",
-  "Ukrainian": "",
-  "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled.": "",
   "Submit to GitHub": "",
   "Change role": "",
   "Closed": "",
@@ -98,5 +93,10 @@
   "Edit Group": "",
   "Enter group name": "",
   "Failed to add role. Please try again.": "",
-  "Failed to create group. Please try again.": ""
+  "Failed to create group. Please try again.": "",
+  "Failed to delete role. Please try again.": "",
+  "Failed to load cart status.": "",
+  "Failed to load groups. Please refresh the page.": "",
+  "Failed to set default role. Please try again.": "",
+  "Failed to update group. Please try again.": ""
 }

@@ -3,11 +3,11 @@
 describe("Standard Family Activation", () => {
     beforeEach(() => {
        
-
-        cy.intercept("POST", "/api/family/3/activate/true").as(
+        // Use glob pattern to support both root (/) and subdirectory (/churchcrm/) installations
+        cy.intercept("POST", "**/api/family/3/activate/true").as(
             "updateToActive",
         );
-        cy.intercept("POST", "/api/family/3/activate/false").as(
+        cy.intercept("POST", "**/api/family/3/activate/false").as(
             "updateToInActive",
         );
 
