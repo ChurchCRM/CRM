@@ -182,7 +182,16 @@ class InputUtils
                     throw new \InvalidArgumentException('Invalid "type" for legacyFilterInput provided');
             }
         } else {
-            return '';
+            // PHP 8 compatibility: return type-appropriate empty values
+            // to avoid loose comparison issues (e.g., '' != 0 is true in PHP 8)
+            switch ($type) {
+                case 'int':
+                    return 0;
+                case 'float':
+                    return 0.0;
+                default:
+                    return '';
+            }
         }
     }
 }

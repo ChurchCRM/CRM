@@ -937,10 +937,12 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
     // list selects
         case 9:
         case 12:
-            if ($data != 0) {
-                $sSQL .= $col_Name . " = '" . $data . "', ";
-            } else {
+            // PHP 8 changed loose comparison: '' != 0 is now true (was false in PHP 7)
+            // Explicitly check for empty string/null/zero to maintain original behavior
+            if ($data === '' || $data === null || (int) $data === 0) {
                 $sSQL .= $col_Name . ' = NULL, ';
+            } else {
+                $sSQL .= $col_Name . " = '" . (int) $data . "', ";
             }
             break;
 
