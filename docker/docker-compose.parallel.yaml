@@ -84,7 +84,10 @@ services:
       - ${WEBSERVER_SUBDIR_PORT:-8080}:80
     volumes:
       - ../src:/var/www/html/churchcrm
+      - ..:/home/ChurchCRM
     hostname: crm-webserver-subdir
+    env_file:
+      - .env
     environment:
       - CHURCHCRM_SUBDIR=churchcrm
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
