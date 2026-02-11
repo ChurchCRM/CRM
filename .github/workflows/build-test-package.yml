@@ -23,7 +23,7 @@ on:
       - '.gitignore'
 
 jobs:
-  test-n-package:
+  build:
     permissions:
       contents: read
     runs-on: ubuntu-latest
@@ -88,20 +88,56 @@ jobs:
         echo "🔍 Validating PHP syntax for all files in signatures..."
         npm run build:php:validate
 
-    - name: Run Docker
-      run: npm run docker:ci:start
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: build-${{ github.run_id }}
+        path: |
+          src/
+          temp/
+          !src/logs
+        retention-days: 1
+
+  test-root:
+    needs: build
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Download Build Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Install Composer Dependencies
+      run: |
+        cd src
+        composer install --no-dev
+
+    - name: Run Docker (Root Path)
+      run: npm run docker:ci:root:start
 
     - name: Wait for Docker to be ready
       run: |
-        echo "Waiting for services to be ready..."
+        echo "Waiting for root path services to be ready..."
         sleep 10
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs
 
-    - name: Test Server
+    - name: Test Server (Root Path)
       run: |
-        echo "Testing API endpoint..."
-        # Retry logic: wait up to 60 seconds for server to respond
+        echo "Testing root path API endpoint..."
         max_attempts=12
         attempt=1
         until curl -f http://127.0.0.1/api/public/echo || [ $attempt -eq $max_attempts ]; do
@@ -112,41 +148,39 @@ jobs:
         
         if [ $attempt -eq $max_attempts ]; then
           echo "Server failed to respond after $max_attempts attempts"
-          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
-          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs
           exit 1
         fi
         
-        echo "Server is responding! Running verbose test..."
+        echo "Root path server is responding!"
         curl -vvv http://127.0.0.1/api/public/echo
 
-    - name: Run Cypress Tests
+    - name: Run Cypress Tests (Root Path)
       run: |
-        npm run test
+        npm run test:root
 
     - name: Collect Docker Logs on Failure
       if: failure()
       run: |
         mkdir -p cypress/logs/docker
-        echo "=== Docker Container Logs ===" > cypress/logs/docker/docker-compose.log
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs >> cypress/logs/docker/docker-compose.log 2>&1 || true
+        echo "=== Docker Container Logs ===" > cypress/logs/docker/docker-compose-root.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs >> cypress/logs/docker/docker-compose-root.log 2>&1 || true
         
-        echo "=== Docker Container Status ===" >> cypress/logs/docker/docker-compose.log
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a >> cypress/logs/docker/docker-compose.log 2>&1 || true
+        echo "=== Docker Container Status ===" >> cypress/logs/docker/docker-compose-root.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-root.log 2>&1 || true
         
         echo "=== Collecting PHP Application Logs ===" 
         mkdir -p cypress/logs/php
         if [ -d "src/logs" ]; then
           cp -r src/logs cypress/logs/php/ || true
         fi
-        
-        echo "✅ Logs collected to cypress/logs/"
 
-    - name: Upload Cypress Artifacts
+    - name: Upload Cypress Artifacts (Root)
       if: failure()
       uses: actions/upload-artifact@v4
       with:
-        name: cypress-artifacts-${{ github.run_id }}
+        name: cypress-artifacts-root-${{ github.run_id }}
         path: |
           cypress/logs
           cypress/results
@@ -155,18 +189,147 @@ jobs:
         retention-days: 30
         if-no-files-found: ignore
 
-    - name: Upload Cypress Reports on Failure
+    - name: Stop Docker
+      if: always()
+      run: |
+        npm run docker:ci:root:down
+
+  test-subdir:
+    needs: build
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Download Build Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Install Composer Dependencies
+      run: |
+        cd src
+        composer install --no-dev
+
+    - name: Run Docker (Subdirectory Path)
+      run: npm run docker:ci:subdir:start
+
+    - name: Wait for Docker to be ready
+      run: |
+        echo "Waiting for subdirectory path services to be ready..."
+        sleep 10
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs
+
+    - name: Test Server (Subdirectory Path)
+      run: |
+        echo "Testing subdirectory path API endpoint..."
+        max_attempts=12
+        attempt=1
+        until curl -f http://127.0.0.1:8080/churchcrm/api/public/echo || [ $attempt -eq $max_attempts ]; do
+          echo "Attempt $attempt/$max_attempts failed. Retrying in 5 seconds..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        
+        if [ $attempt -eq $max_attempts ]; then
+          echo "Server failed to respond after $max_attempts attempts"
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs
+          exit 1
+        fi
+        
+        echo "Subdirectory path server is responding!"
+        curl -vvv http://127.0.0.1:8080/churchcrm/api/public/echo
+
+    - name: Run Cypress Tests (Subdirectory Path)
+      run: |
+        npm run test:subdir
+
+    - name: Collect Docker Logs on Failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker
+        echo "=== Docker Container Logs ===" > cypress/logs/docker/docker-compose-subdir.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs >> cypress/logs/docker/docker-compose-subdir.log 2>&1 || true
+        
+        echo "=== Docker Container Status ===" >> cypress/logs/docker/docker-compose-subdir.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-subdir.log 2>&1 || true
+        
+        echo "=== Collecting PHP Application Logs ===" 
+        mkdir -p cypress/logs/php
+        if [ -d "src/logs" ]; then
+          cp -r src/logs cypress/logs/php/ || true
+        fi
+
+    - name: Upload Cypress Artifacts (Subdir)
       if: failure()
       uses: actions/upload-artifact@v4
       with:
-        name: cypress-reports-${{ steps.vars.outputs.safe_branch }}
-        path: cypress/reports/
+        name: cypress-artifacts-subdir-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/results
+          cypress/screenshots
+          cypress/videos
         retention-days: 30
         if-no-files-found: ignore
 
     - name: Stop Docker
+      if: always()
       run: |
-        npm run docker:ci:down
+        npm run docker:ci:subdir:down
+
+  package:
+    needs: [test-root, test-subdir]
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x'
+        cache: 'npm'
+
+    - name: Declare some variables
+      id: vars
+      shell: bash
+      run: |
+        # Extract branch name and sanitize for artifact naming
+        branch_name="${GITHUB_REF#refs/heads/}"
+        # For pull requests, use a cleaner name
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
+          branch_name="pr-${{ github.event.number }}"
+        fi
+        # Replace invalid characters for artifact names
+        safe_branch=$(echo "$branch_name" | sed 's/[\/\\<>:"|?*]/-/g')
+        echo "branch=$branch_name" >> $GITHUB_OUTPUT
+        echo "safe_branch=$safe_branch" >> $GITHUB_OUTPUT
+
+    - name: get-npm-version
+      id: package-version
+      uses: martinbeentjes/npm-get-version-action@v1.3.1
+
+    - name: Download Build Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: build-${{ github.run_id }}
+        path: .
 
     - name: List build artifacts
       run: |
@@ -177,7 +340,7 @@ jobs:
           echo "📊 File sizes:"
           du -h temp/*
         else
-          echo "❌ No target directory found"
+          echo "❌ No temp directory found"
           exit 1
         fi
   
@@ -194,56 +357,6 @@ jobs:
         retention-days: 90
         if-no-files-found: error
 
-    - name: Check for source code changes
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
-      id: src-changes
-      run: |
-        echo "Checking for changes in /src directory..."
-        
-        # Get the list of changed files in this push
-        changed_files=$(git diff --name-only ${{ github.event.before }}..${{ github.sha }})
-        echo "Changed files:"
-        echo "$changed_files"
-        
-        # Check if any files in src/ directory were changed
-        src_changes=$(echo "$changed_files" | grep '^src/' | wc -l)
-        
-        if [ "$src_changes" -gt 0 ]; then
-          echo "✅ Found $src_changes changes in /src directory"
-          echo "create_release=true" >> $GITHUB_OUTPUT
-          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
-          echo "$changed_files" | grep '^src/' >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-        else
-          echo "ℹ️ No changes found in /src directory - skipping release"
-          echo "create_release=false" >> $GITHUB_OUTPUT
-        fi
-
-    - name: Verify package files
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push' && steps.src-changes.outputs.create_release == 'true'
-      run: |
-        echo "📋 Verifying package files..."
-        if [ -d "temp" ]; then
-          echo "✅ Temp directory exists"
-          ls -la temp/
-          
-          # Find the zip file
-          zip_files=$(find temp -name "ChurchCRM-*.zip" -type f)
-          if [ -n "$zip_files" ]; then
-            echo "✅ Found package files:"
-            for zip_file in $zip_files; do
-              file_size=$(ls -lh "$zip_file" | awk '{print $5}')
-              echo "  📦 $(basename "$zip_file") ($file_size)"
-            done
-          else
-            echo "❌ No ChurchCRM-*.zip files found in temp directory!"
-            exit 1
-          fi
-        else
-          echo "❌ Temp directory does not exist!"
-          exit 1
-        fi
-
     - name: Build Summary
       if: always()
       run: |
@@ -253,21 +366,10 @@ jobs:
         echo "**🌿 Branch:** ${{ steps.vars.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
         echo "**📝 Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
-        
-        # Add test failure debug info
-        if [ "${{ job.status }}" = "failure" ]; then
-          echo "## ❌ Test Failure Debug Artifacts" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "The following debug artifacts have been uploaded to help troubleshoot test failures:" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "-  **cypress-reports-${{ steps.vars.outputs.safe_branch }}** - Detailed test reports and results" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**💡 Quick Debug Tips:**" >> $GITHUB_STEP_SUMMARY
-          echo "1. Download and review the Cypress reports for detailed error messages and stack traces" >> $GITHUB_STEP_SUMMARY
-          echo "2. Check the mochawesome report for a visual breakdown of test results" >> $GITHUB_STEP_SUMMARY
-          echo "3. Look for specific test names and failure reasons in the reports" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-        fi
+        echo "**✅ Tests Passed:**" >> $GITHUB_STEP_SUMMARY
+        echo "- Root path installation tests" >> $GITHUB_STEP_SUMMARY
+        echo "- Subdirectory installation tests" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
         
         if [ -d "temp" ]; then
           echo "**📦 Artifacts Created:**" >> $GITHUB_STEP_SUMMARY
@@ -278,21 +380,4 @@ jobs:
             fi
           done
           echo "" >> $GITHUB_STEP_SUMMARY
-        fi
-        
-        if [ "${{ github.ref }}" = "refs/heads/master" ] && [ "${{ github.event_name }}" = "push" ]; then
-          echo "**✅ Build Completed for Version:** ${{ steps.package-version.outputs.current-version }}" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "**📋 Next Steps to Create Release:**" >> $GITHUB_STEP_SUMMARY
-          echo "1. Download the \`ChurchCRM-${{ steps.package-version.outputs.current-version }}\` artifact from this workflow run" >> $GITHUB_STEP_SUMMARY
-          echo "2. Go to [Releases](https://github.com/ChurchCRM/CRM/releases) and create a new release" >> $GITHUB_STEP_SUMMARY
-          echo "3. Use tag: \`${{ steps.package-version.outputs.current-version }}\` (no 'v' prefix)" >> $GITHUB_STEP_SUMMARY
-          echo "4. Upload the ChurchCRM-${{ steps.package-version.outputs.current-version }}.zip file" >> $GITHUB_STEP_SUMMARY
-        else
-          artifact_name="${{ github.ref == 'refs/heads/master' && 
-                             format('ChurchCRM-{0}', steps.package-version.outputs.current-version) ||
-                             (github.event_name == 'pull_request' && 
-                              format('ChurchCRM-{0}-PR{1}', steps.package-version.outputs.current-version, github.event.number) ||
-                              format('ChurchCRM-{0}-{1}', steps.package-version.outputs.current-version, steps.vars.outputs.safe_branch)) }}"
-          echo "**📥 Download Artifact:** $artifact_name" >> $GITHUB_STEP_SUMMARY
         fi
