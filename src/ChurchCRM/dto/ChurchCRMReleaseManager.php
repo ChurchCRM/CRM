@@ -226,13 +226,89 @@ class ChurchCRMReleaseManager
         $logger->debug('Using temp directory: ' . $UpgradeDir);
         $logger->info('Downloading release from: ' . $url . ' to: ' . $UpgradeDir . '/' . basename($url));
         $executionTime = new ExecutionTime();
-        file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
+
+        // Download the file with retry logic (3 attempts total)
+        $maxAttempts = 3;
+        $downloadContent = false;
+        $lastError = null;
+
+        for ($attempt = 1; $attempt <= $maxAttempts; $attempt++) {
+            $logger->info('Download attempt ' . $attempt . ' of ' . $maxAttempts);
+
+            // Clear any previous error
+            @error_clear_last();
+
+            $downloadContent = @file_get_contents($url);
+
+            // Check if download succeeded and content is not empty
+            if ($downloadContent !== false && strlen($downloadContent) > 0) {
+                $logger->info('Download succeeded on attempt ' . $attempt);
+                break;
+            }
+
+            // Capture the error for logging
+            $lastError = error_get_last();
+            $errorMsg = $lastError['message'] ?? 'Unknown error or empty response';
+
+            if ($attempt < $maxAttempts) {
+                $logger->warning('Download attempt ' . $attempt . ' failed, retrying...', [
+                    'url' => $url,
+                    'error' => $errorMsg,
+                ]);
+                // Wait before retry (1 second, then 2 seconds)
+                sleep($attempt);
+            }
+        }
+
+        // Check if all attempts failed
+        if ($downloadContent === false) {
+            $errorMsg = $lastError['message'] ?? 'Unknown error';
+            $logger->error('Failed to download release file after ' . $maxAttempts . ' attempts', [
+                'url' => $url,
+                'error' => $errorMsg,
+            ]);
+            throw new \Exception(gettext('Failed to download the release file from GitHub after multiple attempts. Please check your server\'s internet connection and try again.') . ' Error: ' . $errorMsg);
+        }
+
+        // Check if downloaded content is empty
+        $downloadSize = strlen($downloadContent);
+        if ($downloadSize === 0) {
+            $logger->error('Downloaded release file is empty after ' . $maxAttempts . ' attempts', [
+                'url' => $url,
+                'size' => 0,
+            ]);
+            throw new \Exception(gettext('Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later.'));
+        }
+
+        // Minimum expected size for a ChurchCRM release ZIP (at least 1MB)
+        $minExpectedSize = 1024 * 1024;
+        if ($downloadSize < $minExpectedSize) {
+            $logger->warning('Downloaded file is smaller than expected', [
+                'url' => $url,
+                'size' => $downloadSize,
+                'minExpectedSize' => $minExpectedSize,
+            ]);
+        }
+
+        $destPath = $UpgradeDir . '/' . basename($url);
+        $writeResult = file_put_contents($destPath, $downloadContent);
+
+        if ($writeResult === false) {
+            $logger->error('Failed to write downloaded file to disk', [
+                'destPath' => $destPath,
+                'downloadSize' => $downloadSize,
+            ]);
+            throw new \Exception(gettext('Failed to save the downloaded release file. Please check disk space and permissions.'));
+        }
+
         $logger->info('Finished downloading file.  Execution time: ' . $executionTime->getMilliseconds() . ' ms');
+        $logger->info('Downloaded file size: ' . $downloadSize . ' bytes');
+
         $returnFile = [];
         $returnFile['fileName'] = basename($url);
         $returnFile['releaseNotes'] = $release->getReleaseNotes();
-        $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
-        $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
+        $returnFile['fullPath'] = $destPath;
+        $returnFile['sha1'] = sha1_file($destPath);
         $logger->info('SHA1 hash for ' . $returnFile['fullPath'] . ': ' . $returnFile['sha1']);
         $logger->info('Release notes: ' . $returnFile['releaseNotes']);
 
