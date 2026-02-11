@@ -11669,3 +11669,107 @@ msgstr "يحتاج إلى استلامه من"
 msgid "their classroom"
 msgstr "فصله الدراسي"
 
+#: 
+msgid "All timezones match"
+msgstr "جميع المناطق الزمنية متطابقة"
+
+#: 
+msgid "Baseline"
+msgstr "الأساس"
+
+#: 
+msgid "Browser"
+msgstr "المتصفح"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "المتصفح يختلف عن إعدادات النظام - قد تظهر التواريخ بشكل غير صحيح لهذا المستخدم."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "لا يمكن الكتابة إلى دليل تثبيت ChurchCRM. يرجى التحقق من أن خادم الويب لديه أذونات الكتابة."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "جاري مقارنة المناطق الزمنية..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "دليل الوجهة غير موجود. يرجى التحقق من أن ChurchCRM مثبت بشكل صحيح."
+
+#: 
+msgid "Does not match system config"
+msgstr "لا يتطابق مع إعدادات النظام"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "ملف الإصدار المحمل فارغ. قد يكون ذلك بسبب مشاكل في الشبكة أو تحديد معدل GitHub. يرجى المحاولة مرة أخرى لاحقاً."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "اكتمل الاستخراج لكن لم يتم العثور على ملفات الترقية. قد يكون أرشيف الترقية تالفاً."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "فشل في تطبيق الترقية. يرجى التحقق من سجلات الخادم للتفاصيل."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "فشل في إنشاء دليل الترقية. يرجى التحقق من أذونات الملفات."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "فشل في تنزيل ملف الإصدار من GitHub بعد عدة محاولات. يرجى التحقق من اتصال الإنترنت الخاص بالخادم والمحاولة مرة أخرى."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "فشل في استخراج أرشيف الترقية. يرجى التحقق من مساحة القرص وأذونات الملفات."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "فشل في فتح أرشيف الترقية. قد يكون الملف المحمل تالفاً."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "فشل في حفظ ملف الإصدار المحمل. يرجى التحقق من مساحة القرص والأذونات."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "تنسيق تاريخ غير صالح في معامل البداية"
+
+#: 
+msgid "Mismatch"
+msgstr "عدم تطابق"
+
+#: 
+msgid "Not set"
+msgstr "غير محدد"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP نشط"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "دليل المصدر غير موجود. قد لا يكون أرشيف الترقية قد استُخرج بشكل صحيح. يرجى التحقق من أذونات الملفات ومساحة القرص."
+
+#: 
+msgid "System Config"
+msgstr "إعدادات النظام"
+
+#: 
+msgid "Timezone Information"
+msgstr "معلومات المنطقة الزمنية"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "تم اكتشاف عدم تطابق في المنطقة الزمنية"
+
+#: 
+msgid "mismatch detected"
+msgstr "تم اكتشاف عدم تطابق"
+
+#: 
+msgid "mismatches detected"
+msgstr "تم اكتشاف عدم تطابقات"
+

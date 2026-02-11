@@ -11732,3 +11732,107 @@ msgstr "musi zostać odebrane z"
 msgid "their classroom"
 msgstr "ich klasy"
 
+#: 
+msgid "All timezones match"
+msgstr "Wszystkie strefy czasowe są zgodne"
+
+#: 
+msgid "Baseline"
+msgstr "Podstawa"
+
+#: 
+msgid "Browser"
+msgstr "Przeglądarka"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Przeglądarka różni się od konfiguracji systemu - daty mogą być wyświetlane nieprawidłowo dla tego użytkownika."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Nie można zapisać do katalogu instalacyjnego ChurchCRM. Sprawdź, czy serwer WWW ma uprawnienia do zapisu."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Porównywanie stref czasowych..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Katalog docelowy nie istnieje. Sprawdź, czy ChurchCRM jest poprawnie zainstalowany."
+
+#: 
+msgid "Does not match system config"
+msgstr "Nie pasuje do konfiguracji systemu"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Pobrany plik wydania jest pusty. Może to być spowodowane problemami z siecią lub ograniczeniem szybkości GitHub. Spróbuj ponownie później."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Ekstrakcja zakończona, ale pliki aktualizacji nie zostały znalezione. Archiwum aktualizacji może być uszkodzone."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Nie udało się zastosować aktualizacji. Sprawdź logi serwera, aby uzyskać szczegóły."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Nie udało się utworzyć katalogu aktualizacji. Sprawdź uprawnienia plików."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Nie udało się pobrać pliku wydania z GitHub po wielu próbach. Sprawdź połączenie internetowe serwera i spróbuj ponownie."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Nie udało się wyodrębnić archiwum aktualizacji. Sprawdź miejsce na dysku i uprawnienia plików."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Nie udało się otworzyć archiwum aktualizacji. Pobrany plik może być uszkodzony."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Nie udało się zapisać pobranego pliku wydania. Sprawdź miejsce na dysku i uprawnienia."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Nieprawidłowy format daty w parametrze początkowym"
+
+#: 
+msgid "Mismatch"
+msgstr "Niezgodność"
+
+#: 
+msgid "Not set"
+msgstr "Nie ustawiono"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP aktywny"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Katalog źródłowy nie istnieje. Archiwum aktualizacji mogło nie zostać poprawnie wyodrębnione. Sprawdź uprawnienia plików i miejsce na dysku."
+
+#: 
+msgid "System Config"
+msgstr "Konfiguracja systemu"
+
+#: 
+msgid "Timezone Information"
+msgstr "Informacje o strefie czasowej"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Wykryto niezgodność strefy czasowej"
+
+#: 
+msgid "mismatch detected"
+msgstr "wykryto niezgodność"
+
+#: 
+msgid "mismatches detected"
+msgstr "wykryto niezgodności"
+
