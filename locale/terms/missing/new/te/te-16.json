@@ -30,7 +30,6 @@
   "Demo data import is only available on fresh installations with exactly 1 person": "",
   "Demo data loaded successfully": "",
   "Download failed": "",
-  "Failed to apply upgrade": "",
   "Failed to delete orphaned files": "",
   "Failed to download latest release": "",
   "Failed to refresh upgrade information": "",
@@ -107,5 +106,6 @@
   "There are people assigned to this Volunteer Opportunity. Deletion will unassign:": "",
   "This will remove it from all people currently assigned to it.": "",
   "Volunteer Opportunity": "",
-  "Warning:": ""
+  "Warning:": "",
+  "Yes, delete this Opportunity": ""
 }

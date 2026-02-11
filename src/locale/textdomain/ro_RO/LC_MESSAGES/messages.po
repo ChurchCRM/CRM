@@ -11054,10 +11054,6 @@ msgid "Download failed"
 msgstr "Descărcare eșuată"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Eșec la aplicarea actualizării"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Eșec la ștergerea fișierelor orfane"
 

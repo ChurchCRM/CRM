@@ -10979,10 +10979,6 @@ msgid "Download failed"
 msgstr "İndirme başarısız oldu"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Yükseltme uygulanamadı"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Sahipsiz dosyalar silinemedi"
 

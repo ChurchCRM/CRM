@@ -10960,10 +10960,6 @@ msgid "Download failed"
 msgstr "Stažení se nezdařilo"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Použití aktualizace se nezdařilo"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Nepodařilo se odstranit osamocené soubory"
 

@@ -11063,10 +11063,6 @@ msgid "Download failed"
 msgstr "Pobieranie nie powiodło się"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Nie udało się zastosować aktualizacji"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Nie udało się usunąć osieroconych plików"
 

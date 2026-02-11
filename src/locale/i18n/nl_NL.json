@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Demogegevens importeren is alleen beschikbaar bij nieuwe installaties met exactement 1 persoon",
     "Demo data loaded successfully": "Demogegevens succesvol geladen",
     "Download failed": "Download mislukt",
-    "Failed to apply upgrade": "Upgrade toepassen mislukt",
     "Failed to delete orphaned files": "Verweesde bestanden verwijderen mislukt",
     "Failed to download latest release": "Nieuwste release downloaden mislukt",
     "Failed to refresh upgrade information": "Upgrade-informatie vernieuwen mislukt",

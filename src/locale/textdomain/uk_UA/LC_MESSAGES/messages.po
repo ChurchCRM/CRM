@@ -10956,10 +10956,6 @@ msgid "Download failed"
 msgstr "Завантаження не вдалося"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Не вдалося застосувати оновлення"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Не вдалося видалити застарілі файли"
 

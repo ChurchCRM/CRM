@@ -10978,10 +10978,6 @@ msgid "Download failed"
 msgstr "Allalaadimine ebaõnnestus"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Täienduse rakendamine ebaõnnestus"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Vervatest failide kustutamine ebaõnnestus"
 

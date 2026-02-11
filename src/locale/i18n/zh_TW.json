@@ -2635,7 +2635,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "演示數據匯入僅適用於只有 1 個人的全新安裝",
     "Demo data loaded successfully": "演示數據載入成功",
     "Download failed": "下載失敗",
-    "Failed to apply upgrade": "套用升級失敗",
     "Failed to delete orphaned files": "刪除孤立檔案失敗",
     "Failed to download latest release": "下載最新發佈版本失敗",
     "Failed to refresh upgrade information": "更新升級資訊失敗",

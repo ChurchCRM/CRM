@@ -2633,7 +2633,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "การนำเข้าข้อมูลสาธิตพร้อมใช้งานเฉพาะในการติดตั้งใหม่ที่มีบุคคลเพียง 1 คน",
     "Demo data loaded successfully": "โหลดข้อมูลสาธิตสำเร็จ",
     "Download failed": "การดาวน์โหลดล้มเหลว",
-    "Failed to apply upgrade": "ใช้การอัปเกรดล้มเหลว",
     "Failed to delete orphaned files": "ลบไฟล์กำพร้าล้มเหลว",
     "Failed to download latest release": "ดาวน์โหลดเวอร์ชันล่าสุดล้มเหลว",
     "Failed to refresh upgrade information": "รีเฟรชข้อมูลการอัปเกรดล้มเหลว",

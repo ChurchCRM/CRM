@@ -10926,10 +10926,6 @@ msgid "Download failed"
 msgstr "Lataus epäonnistui"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Päivityksen soveltaminen epäonnistui"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Jääneiden tiedostojen poistaminen epäonnistui"
 

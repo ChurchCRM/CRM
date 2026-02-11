@@ -10920,10 +10920,6 @@ msgid "Download failed"
 msgstr "การดาวน์โหลดล้มเหลว"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "ใช้การอัปเกรดล้มเหลว"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "ลบไฟล์กำพร้าล้มเหลว"
 

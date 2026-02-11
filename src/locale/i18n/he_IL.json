@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "נתוני דמו זמינים רק בהתקנות חדשות.",
     "Demo data loaded successfully": "נתוני דמו נטענו בהצלחה",
     "Download failed": "ההורדה נכשלה",
-    "Failed to apply upgrade": "החלת השדרוג נכשלה",
     "Failed to delete orphaned files": "מחיקת קבצים יתומים נכשלה",
     "Failed to download latest release": "הורדת הגרסה האחרונה נכשלה",
     "Failed to refresh upgrade information": "רענון פרטי השדרוג נכשל",

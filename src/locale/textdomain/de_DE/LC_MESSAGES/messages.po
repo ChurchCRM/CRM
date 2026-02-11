@@ -11088,10 +11088,6 @@ msgid "Download failed"
 msgstr "Download fehlgeschlagen"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Upgrade konnte nicht angewendet werden"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Verwaiste Dateien konnten nicht gelöscht werden"
 

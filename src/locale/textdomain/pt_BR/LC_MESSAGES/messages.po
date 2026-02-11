@@ -10924,10 +10924,6 @@ msgid "Download failed"
 msgstr "Falha no download"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Falha ao aplicar atualização"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Falha ao excluir arquivos órfãos"
 

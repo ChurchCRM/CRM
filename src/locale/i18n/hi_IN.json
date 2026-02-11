@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "डेमो डेटा आयात केवल ठीक 1 व्यक्ति वाले नए इंस्टॉलेशन पर उपलब्ध है",
     "Demo data loaded successfully": "डेमो डेटा सफलतापूर्वक लोड किया गया",
     "Download failed": "डाउनलोड विफल रहा",
-    "Failed to apply upgrade": "अपग्रेड लागू करने में विफल",
     "Failed to delete orphaned files": "अनाथ फाइलों को हटाने में विफल",
     "Failed to download latest release": "नवीनतम रिलीज़ डाउनलोड करने में विफल",
     "Failed to refresh upgrade information": "अपग्रेड जानकारी रीफ्रेश करने में विफल",
