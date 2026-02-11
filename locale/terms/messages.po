@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-08 16:07+0000\n"
+"POT-Creation-Date: 2026-02-10 20:18-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2294,6 +2294,9 @@ msgstr ""
 msgid "Downloaded"
 msgstr ""
 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr ""
+
 msgid "Downloading latest release from GitHub..."
 msgstr ""
 
@@ -2873,6 +2876,9 @@ msgstr ""
 msgid "Failed to download latest release"
 msgstr ""
 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr ""
+
 msgid "Failed to download update package."
 msgstr ""
 
@@ -2919,6 +2925,9 @@ msgid "Failed to save setting. Please try again."
 msgstr ""
 
 msgid "Failed to save settings"
+msgstr ""
+
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -3996,6 +4005,9 @@ msgid "Invalid assignment type"
 msgstr ""
 
 msgid "Invalid country name supplied"
+msgstr ""
+
+msgid "Invalid date format in start parameter"
 msgstr ""
 
 msgid "Invalid fields or selections."
