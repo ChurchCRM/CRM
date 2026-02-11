@@ -10923,10 +10923,6 @@ msgid "Download failed"
 msgstr "डाउनलोड विफल रहा"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "अपग्रेड लागू करने में विफल"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "अनाथ फाइलों को हटाने में विफल"
 

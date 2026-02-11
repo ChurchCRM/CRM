@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Uingizaji wa data za majaribio unapatikana tu kwenye usakinishaji mpya wenye mtu mmoja tu",
     "Demo data loaded successfully": "Data za majaribio zimepakiwa kwa mafanikio",
     "Download failed": "Upakuaji umeshindikana",
-    "Failed to apply upgrade": "Imeshindikana kutumia sasisho",
     "Failed to delete orphaned files": "Imeshindikana kufuta faili yatima",
     "Failed to download latest release": "Imeshindikana kupakua toleo jipya",
     "Failed to refresh upgrade information": "Imeshindikana kuhuisha taarifa za sasisho",

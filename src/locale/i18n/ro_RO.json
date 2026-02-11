@@ -2633,7 +2633,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Importul datelor demo este disponibil numai pe instalațiile proaspete cu exact 1 persoană",
     "Demo data loaded successfully": "Datele demo au fost încărcate cu succes",
     "Download failed": "Descărcare eșuată",
-    "Failed to apply upgrade": "Eșec la aplicarea actualizării",
     "Failed to delete orphaned files": "Eșec la ștergerea fișierelor orfane",
     "Failed to download latest release": "Eșec la descărcarea ultimei versiuni",
     "Failed to refresh upgrade information": "Eșec la reîmprospătarea informațiilor de actualizare",

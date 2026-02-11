@@ -10996,10 +10996,6 @@ msgid "Download failed"
 msgstr "ማውረድ አልተሳካም"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "ማሻሻያ መተግበር አልተሳካም"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "ተረጂ ያልሆኑ ፋይሎችን መሰረዝ አልተሳካም"
 

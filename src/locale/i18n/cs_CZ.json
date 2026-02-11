@@ -2643,7 +2643,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Import ukázkových dat je k dispozici pouze u nových instalací s přesně 1 osobou.",
     "Demo data loaded successfully": "Ukázková data byla úspěšně načtena",
     "Download failed": "Stažení se nezdařilo",
-    "Failed to apply upgrade": "Použití aktualizace se nezdařilo",
     "Failed to delete orphaned files": "Nepodařilo se odstranit osamocené soubory",
     "Failed to download latest release": "Nepodařilo se stáhnout nejnovější verzi",
     "Failed to refresh upgrade information": "Obnovení informací o aktualizaci se nezdařilo",

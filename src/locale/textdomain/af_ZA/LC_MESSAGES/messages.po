@@ -10980,10 +10980,6 @@ msgid "Download failed"
 msgstr "Aflaai het misluk"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Misluk to apply upgrade"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Misluk to delete orphaned files"
 

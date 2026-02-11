@@ -10979,10 +10979,6 @@ msgid "Download failed"
 msgstr "Η λήψη απέτυχε"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Αποτυχία εφαρμογής αναβάθμισης"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Αποτυχία διαγραφής ορφανών αρχείων"
 

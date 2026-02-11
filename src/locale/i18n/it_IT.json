@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "L'importazione di dati demo è disponibile solo su installazioni nuove con esattamente 1 persona",
     "Demo data loaded successfully": "Dati demo caricati con successo",
     "Download failed": "Download non riuscito",
-    "Failed to apply upgrade": "Impossibile applicare l'upgrade",
     "Failed to delete orphaned files": "Impossibile eliminare i file orfani",
     "Failed to download latest release": "Impossibile scaricare l'ultima versione",
     "Failed to refresh upgrade information": "Impossibile aggiornare le informazioni di upgrade",

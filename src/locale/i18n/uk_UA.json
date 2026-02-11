@@ -2623,7 +2623,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Імпорт демо-даних доступний лише на нових інсталяціях.",
     "Demo data loaded successfully": "Демо-дані успішно завантажено",
     "Download failed": "Завантаження не вдалося",
-    "Failed to apply upgrade": "Не вдалося застосувати оновлення",
     "Failed to delete orphaned files": "Не вдалося видалити застарілі файли",
     "Failed to download latest release": "Не вдалося завантажити останній реліз",
     "Failed to refresh upgrade information": "Не вдалося оновити інформацію про оновлення",

@@ -10965,10 +10965,6 @@ msgid "Download failed"
 msgstr "다운로드 실패"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "업그레이드 적용 실패"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "고아 파일 삭제 실패"
 

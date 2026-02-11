@@ -10957,10 +10957,6 @@ msgid "Download failed"
 msgstr "Shkarkimi dështoi"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Dështoi aplikimi i përmirësimit"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Dështoi fshirja e skedarëve jetimë"
 

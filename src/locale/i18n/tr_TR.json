@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Demo verisi içe aktarma yalnızca tam olarak 1 kişi bulunan yeni kurulumlarda kullanılabilir",
     "Demo data loaded successfully": "Demo verisi başarıyla yüklendi",
     "Download failed": "İndirme başarısız oldu",
-    "Failed to apply upgrade": "Yükseltme uygulanamadı",
     "Failed to delete orphaned files": "Sahipsiz dosyalar silinemedi",
     "Failed to download latest release": "En son sürüm indirilemedi",
     "Failed to refresh upgrade information": "Yükseltme bilgileri yenilenemedi",
