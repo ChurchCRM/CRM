@@ -254,7 +254,9 @@ function initializeGroupEditor() {
                         // i18next-disable-next-line
                         const displayValue = isReadOnly ? i18next.t(data) : data;
                         const readOnlyAttr = isReadOnly ? " readonly" : "";
-                        return `<input type="text" class="roleName" id="roleName-${full.lst_OptionID}" value="${displayValue}"${readOnlyAttr}>`;
+                        // Escape HTML to prevent XSS
+                        const escapedValue = $('<div>').text(displayValue).html();
+                        return `<input type="text" class="roleName" id="roleName-${full.lst_OptionID}" value="${escapedValue}"${readOnlyAttr}>`;
                     }
                     return data;
                 },

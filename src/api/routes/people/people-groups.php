@@ -207,7 +207,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $group = GroupQuery::create()->findOneById($groupID);
             if (isset($input['groupRoleName'])) {
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
-                $groupRole->setOptionName($input['groupRoleName']);
+                // Sanitize role name to prevent XSS
+                $groupRole->setOptionName(InputUtils::sanitizeText($input['groupRoleName']));
                 $groupRole->save();
 
                 return SlimUtils::renderSuccessJSON($response);
