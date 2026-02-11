@@ -2635,7 +2635,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Impor data demo hanya bisa dilakukan pada instalasi baru.",
     "Demo data loaded successfully": "Data demo berhasil dimuat",
     "Download failed": "Gagal mengunduh",
-    "Failed to apply upgrade": "Gagal menerapkan pembaruan",
     "Failed to delete orphaned files": "Gagal menghapus file yatim",
     "Failed to download latest release": "Gagal mengunduh rilis terbaru",
     "Failed to refresh upgrade information": "Gagal memuat info pembaruan",

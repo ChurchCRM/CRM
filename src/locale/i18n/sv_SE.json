@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Import av demodata är endast tillgänglig på nya installationer med exakt 1 person",
     "Demo data loaded successfully": "Demodata har laddats",
     "Download failed": "Nedladdning misslyckades",
-    "Failed to apply upgrade": "Misslyckades med att tillämpa uppgradering",
     "Failed to delete orphaned files": "Misslyckades med att radera föräldralösa filer",
     "Failed to download latest release": "Misslyckades med att ladda ner senaste utgåvan",
     "Failed to refresh upgrade information": "Misslyckades med att uppdatera uppgraderingsinformation",

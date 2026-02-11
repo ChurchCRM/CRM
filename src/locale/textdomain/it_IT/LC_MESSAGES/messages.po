@@ -11001,10 +11001,6 @@ msgid "Download failed"
 msgstr "Download non riuscito"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Impossibile applicare l'upgrade"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Impossibile eliminare i file orfani"
 

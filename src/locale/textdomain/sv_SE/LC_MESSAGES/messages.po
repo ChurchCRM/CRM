@@ -11104,10 +11104,6 @@ msgid "Download failed"
 msgstr "Nedladdning misslyckades"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Misslyckades med att tillämpa uppgradering"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Misslyckades med att radera föräldralösa filer"
 

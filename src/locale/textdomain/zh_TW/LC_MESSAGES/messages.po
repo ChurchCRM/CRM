@@ -11247,10 +11247,6 @@ msgid "Download failed"
 msgstr "下載失敗"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "套用升級失敗"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "刪除孤立檔案失敗"
 

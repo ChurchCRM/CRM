@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Demotietojen tuonti on käytettävissä vain uusissa asennuksissa, joissa on tarkalleen 1 henkilö",
     "Demo data loaded successfully": "Demotiedot ladattu onnistuneesti",
     "Download failed": "Lataus epäonnistui",
-    "Failed to apply upgrade": "Päivityksen soveltaminen epäonnistui",
     "Failed to delete orphaned files": "Jääneiden tiedostojen poistaminen epäonnistui",
     "Failed to download latest release": "Uusimman version lataaminen epäonnistui",
     "Failed to refresh upgrade information": "Päivitystietojen päivittäminen epäonnistui",

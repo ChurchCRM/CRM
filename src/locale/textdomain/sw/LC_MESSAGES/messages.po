@@ -10970,10 +10970,6 @@ msgid "Download failed"
 msgstr "Upakuaji umeshindikana"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Imeshindikana kutumia sasisho"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Imeshindikana kufuta faili yatima"
 

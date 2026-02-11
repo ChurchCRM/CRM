@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "சரியாக 1 நபரைக் கொண்ட புதிய நிறுவல்களில் மட்டுமே டெமோ தரவு இறக்குமதி கிடைக்கும்",
     "Demo data loaded successfully": "டெமோ தரவு வெற்றிகரமாக ஏற்றப்பட்டது",
     "Download failed": "பதிவிறக்கம் தோல்வியடைந்தது",
-    "Failed to apply upgrade": "மேம்படுத்தலைப் பயன்படுத்தத் தவறிவிட்டது",
     "Failed to delete orphaned files": "பயன்பாட்டில் இல்லாத கோப்புகளை நீக்கத் தவறிவிட்டது",
     "Failed to download latest release": "சமீபத்திய பதிப்பைப் பதிவிறக்கத் தவறிவிட்டது",
     "Failed to refresh upgrade information": "மேம்படுத்தல் தகவலைப் புதுப்பிக்கத் தவறிவிட்டது",

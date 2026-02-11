@@ -2635,7 +2635,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Демо-данные только для новых систем (1 чел).",
     "Demo data loaded successfully": "Демо-данные загружены",
     "Download failed": "Загрузка не удалась",
-    "Failed to apply upgrade": "Не удалось применить обновление",
     "Failed to delete orphaned files": "Не удалось удалить бесхозные файлы",
     "Failed to download latest release": "Не удалось скачать релиз",
     "Failed to refresh upgrade information": "Не удалось обновить данные об апгрейде",

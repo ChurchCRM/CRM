@@ -10975,10 +10975,6 @@ msgid "Download failed"
 msgstr "Download mislukt"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Upgrade toepassen mislukt"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Verweesde bestanden verwijderen mislukt"
 

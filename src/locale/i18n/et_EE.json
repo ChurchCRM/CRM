@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Demoandmete importimine on saadaval ainult uutes paigaldustes täpselt ühe inimesega",
     "Demo data loaded successfully": "Demoandmed on edukalt laaditud",
     "Download failed": "Allalaadimine ebaõnnestus",
-    "Failed to apply upgrade": "Täienduse rakendamine ebaõnnestus",
     "Failed to delete orphaned files": "Vervatest failide kustutamine ebaõnnestus",
     "Failed to download latest release": "Uusima väljaande allalaadimine ebaõnnestus",
     "Failed to refresh upgrade information": "Täienduse teabe värskendamine ebaõnnestus",

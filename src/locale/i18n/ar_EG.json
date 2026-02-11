@@ -2655,7 +2655,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "استيراد بيانات العرض التوضيحي متاح فقط على التثبيتات الجديدة التي تحتوي على شخص واحد فقط",
     "Demo data loaded successfully": "تم تحميل بيانات العرض التوضيحي بنجاح",
     "Download failed": "فشل التحميل",
-    "Failed to apply upgrade": "فشل تطبيق الترقية",
     "Failed to delete orphaned files": "فشل حذف الملفات اليتيمة",
     "Failed to download latest release": "فشل تحميل أحدث إصدار",
     "Failed to refresh upgrade information": "فشل تحديث معلومات الترقية",

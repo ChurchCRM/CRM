@@ -10978,10 +10978,6 @@ msgid "Download failed"
 msgstr "பதிவிறக்கம் தோல்வியடைந்தது"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "மேம்படுத்தலைப் பயன்படுத்தத் தவறிவிட்டது"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "பயன்பாட்டில் இல்லாத கோப்புகளை நீக்கத் தவறிவிட்டது"
 

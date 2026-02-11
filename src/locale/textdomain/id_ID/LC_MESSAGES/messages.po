@@ -10969,10 +10969,6 @@ msgid "Download failed"
 msgstr "Gagal mengunduh"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Gagal menerapkan pembaruan"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Gagal menghapus file yatim"
 

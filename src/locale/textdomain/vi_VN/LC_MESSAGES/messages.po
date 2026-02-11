@@ -10980,10 +10980,6 @@ msgid "Download failed"
 msgstr "Tải xuống thất bại"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Áp dụng nâng cấp thất bại"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Xóa các tệp mồ côi thất bại"
 

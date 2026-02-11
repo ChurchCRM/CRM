@@ -2635,7 +2635,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "데모 데이터 가져오기는 정확히 1명이 있는 새 설치에서만 사용할 수 있습니다",
     "Demo data loaded successfully": "데모 데이터를 불러왔습니다",
     "Download failed": "다운로드 실패",
-    "Failed to apply upgrade": "업그레이드 적용 실패",
     "Failed to delete orphaned files": "고아 파일 삭제 실패",
     "Failed to download latest release": "최신 릴리스 다운로드 실패",
     "Failed to refresh upgrade information": "업그레이드 정보 새로고침 실패",

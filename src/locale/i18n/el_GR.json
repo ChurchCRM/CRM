@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Η εισαγωγή δεδομένων επίδειξης είναι διαθέσιμη μόνο σε νέες εγκαταστάσεις με ακριβώς 1 άτομο",
     "Demo data loaded successfully": "Τα δεδομένα δείγματος φορτώθηκαν με επιτυχία",
     "Download failed": "Η λήψη απέτυχε",
-    "Failed to apply upgrade": "Αποτυχία εφαρμογής αναβάθμισης",
     "Failed to delete orphaned files": "Αποτυχία διαγραφής ορφανών αρχείων",
     "Failed to download latest release": "Αποτυχία λήψης της τελευταίας έκδοσης",
     "Failed to refresh upgrade information": "Αποτυχία ανανέωσης πληροφοριών αναβάθμισης",

@@ -11073,10 +11073,6 @@ msgid "Download failed"
 msgstr "Nedlasting mislyktes"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Kunne ikke utføre oppgraderingen"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Kunne ikke slette foreldreløse filer"
 

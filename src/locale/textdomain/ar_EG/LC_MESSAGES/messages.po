@@ -10988,10 +10988,6 @@ msgid "Download failed"
 msgstr "فشل التحميل"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "فشل تطبيق الترقية"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "فشل حذف الملفات اليتيمة"
 
