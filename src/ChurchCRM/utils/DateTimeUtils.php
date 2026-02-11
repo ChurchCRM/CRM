@@ -23,16 +23,34 @@ class DateTimeUtils
     }
 
     /**
-     * Get today's date in the configured timezone.
+     * Get the current date and time ("now") in the configured timezone.
      *
-     * Use this instead of `new \DateTime()` to ensure "today" is calculated
-     * correctly for the church's timezone, not the server's default timezone.
+     * Use this instead of `new \DateTime()` to ensure the current moment is
+     * calculated correctly for the church's timezone, not the server's
+     * default timezone.
      *
-     * @return \DateTime Today's date/time in the configured timezone
+     * Note: This returns a timestamp with the current time. For midnight at
+     * the start of today, use getStartOfToday().
+     *
+     * @return \DateTime Current date/time in the configured timezone
      */
     public static function getToday(): \DateTime
     {
         return new \DateTime('now', self::getConfiguredTimezone());
+    }
+
+    /**
+     * Get a DateTime representing the start of today (midnight) in the
+     * configured timezone.
+     *
+     * This is useful for date-only comparisons where the time of day should
+     * be normalized to 00:00:00.
+     *
+     * @return \DateTime Today's date at midnight in the configured timezone
+     */
+    public static function getStartOfToday(): \DateTime
+    {
+        return new \DateTime('today', self::getConfiguredTimezone());
     }
 
     /**
