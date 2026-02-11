@@ -119,6 +119,11 @@ jobs:
         name: build-${{ github.run_id }}
         path: .
 
+    - name: Install Composer Dependencies
+      run: |
+        cd src
+        composer install --no-dev
+
     - name: Run Docker (Root Path)
       run: npm run docker:ci:root:start
 
@@ -209,6 +214,11 @@ jobs:
       with:
         name: build-${{ github.run_id }}
         path: .
+
+    - name: Install Composer Dependencies
+      run: |
+        cd src
+        composer install --no-dev
 
     - name: Run Docker (Subdirectory Path)
       run: npm run docker:ci:subdir:start
