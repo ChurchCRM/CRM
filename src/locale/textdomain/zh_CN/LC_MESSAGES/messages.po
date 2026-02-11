@@ -11599,3 +11599,241 @@ msgstr "重置筛选"
 msgid "Show only people with photos"
 msgstr "只显示有照片的人"
 
+#: 
+msgid "Checkout All"
+msgstr "全部签出"
+
+#: 
+msgid "Expected"
+msgstr "预期"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "删除自助终端失败"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "按财年的家庭承诺"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "查找已注册学生"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "财年。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "已注册学生群组"
+
+#: 
+msgid "Here"
+msgstr "这里"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "无效的分配类型"
+
+#: 
+msgid "Invalid person ID"
+msgstr "无效的人员ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "自助终端注册已禁用"
+
+#: 
+msgid "Kiosk not found"
+msgstr "未找到自助终端"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "将此活动链接到群组以实现自助终端签到功能。群组成员将显示在自助终端上。"
+
+#: 
+msgid "Linked Group"
+msgstr "已链接群组"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "新自助终端设备注册目前已禁用。请联系系统管理员启用自助终端注册。"
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "无群组（选择以进行自助终端签到）"
+
+#: 
+msgid "No one checked in yet"
+msgstr "还没有人签到"
+
+#: 
+msgid "Person not found"
+msgstr "未找到人员"
+
+#: 
+msgid "Pickup Request"
+msgstr "接送请求"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "请尽快前往教室。"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "所选财年每个基金按家庭名称的承诺摘要"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "已注册学生"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "老师在以下时间发送了此警报"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "此自助终端最好在平板电脑横屏模式下查看，以获得最佳签到体验。"
+
+#: 
+msgid "Tip"
+msgstr "提示"
+
+#: 
+msgid "Try Again"
+msgstr "重试"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "即将到来的生日"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "等待签到"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "启用后，新的自助终端设备可以在30秒内完成注册。"
+
+#: 
+msgid "Your child"
+msgstr "您的孩子"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "需要从以下地点接走"
+
+#: 
+msgid "their classroom"
+msgstr "他们的教室"
+
+#: 
+msgid "All timezones match"
+msgstr "所有时区匹配"
+
+#: 
+msgid "Baseline"
+msgstr "基准"
+
+#: 
+msgid "Browser"
+msgstr "浏览器"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "浏览器与系统配置不同 - 此用户的日期可能显示不正确。"
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "无法写入ChurchCRM安装目录。请检查Web服务器是否具有写入权限。"
+
+#: 
+msgid "Comparing timezones..."
+msgstr "正在比较时区..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "目标目录不存在。请验证ChurchCRM是否正确安装。"
+
+#: 
+msgid "Does not match system config"
+msgstr "与系统配置不匹配"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "下载的发布文件为空。这可能是由于网络问题或GitHub速率限制。请稍后重试。"
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "提取完成但未找到升级文件。升级存档可能已损坏。"
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "应用升级失败。请检查服务器日志获取详情。"
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "创建升级目录失败。请检查文件权限。"
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "多次尝试后仍无法从GitHub下载发布文件。请检查服务器的互联网连接并重试。"
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "提取升级存档失败。请检查磁盘空间和文件权限。"
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "无法打开升级存档。下载的文件可能已损坏。"
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "保存下载的发布文件失败。请检查磁盘空间和权限。"
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "开始参数中的日期格式无效"
+
+#: 
+msgid "Mismatch"
+msgstr "不匹配"
+
+#: 
+msgid "Not set"
+msgstr "未设置"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP活跃"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "源目录不存在。升级存档可能未正确提取。请检查文件权限和磁盘空间。"
+
+#: 
+msgid "System Config"
+msgstr "系统配置"
+
+#: 
+msgid "Timezone Information"
+msgstr "时区信息"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "检测到时区不匹配"
+
+#: 
+msgid "mismatch detected"
+msgstr "检测到不匹配"
+
+#: 
+msgid "mismatches detected"
+msgstr "检测到多处不匹配"
+
