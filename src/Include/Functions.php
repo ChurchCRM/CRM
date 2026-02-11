@@ -938,11 +938,18 @@ function sqlCustomField(string &$sSQL, $type, $data, string $col_Name, $special)
         case 9:
         case 12:
             // PHP 8 changed loose comparison: '' != 0 is now true (was false in PHP 7)
-            // Explicitly check for empty string/null/zero to maintain original behavior
-            if ($data === '' || $data === null || (int) $data === 0) {
+            // Validate as proper integer to avoid truncation (e.g. '12abc' -> 12)
+            $rawValue = is_string($data) ? trim($data) : $data;
+            if ($rawValue === '' || $rawValue === null) {
                 $sSQL .= $col_Name . ' = NULL, ';
             } else {
-                $sSQL .= $col_Name . " = '" . (int) $data . "', ";
+                $validatedInt = filter_var($rawValue, FILTER_VALIDATE_INT);
+                if ($validatedInt === false || $validatedInt === 0) {
+                    // Invalid integer or zero: treat as no value (NULL) to preserve legacy semantics
+                    $sSQL .= $col_Name . ' = NULL, ';
+                } else {
+                    $sSQL .= $col_Name . " = '" . $validatedInt . "', ";
+                }
             }
             break;
 
