@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
 
 $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
@@ -100,7 +101,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <?php
 } ?>
 
-<?php  include_once('analyticstracking.php'); ?>
+<?= PluginManager::getPluginFooterContent() ?>
 </body>
 </html>
 <?php

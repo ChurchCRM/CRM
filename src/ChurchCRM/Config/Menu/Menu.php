@@ -6,7 +6,9 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\model\ChurchCRM\MenuLinkQuery;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Plugin\PluginManager;
 
 class Menu
 {
@@ -37,16 +39,24 @@ class Menu
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin),
-            'Email'        => new MenuItem(gettext('Email'), 'v2/email/dashboard', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope'),
+            'Email'        => self::getEmailMenu(),
             'Events'       => self::getEventsMenu(isAddEventEnabled: $currentUser->isAddEventEnabled()),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu(),
             'Reports'      => self::getReportsMenu(),
-            'Custom'       => self::getCustomMenu()
         ];
+        
+        // Add plugin menu items to their parent menus
+        self::addPluginMenuItems($menus);
+        
+        // Allow plugins to add top-level menus via the MENU_BUILDING hook
+        $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
+        
+        // Admin menu is always last (at bottom of nav)
         if ($isAdmin) {
             $menus['Admin'] = self::getAdminMenu($isAdmin);
         }
+        
         return $menus;
 
     }
@@ -169,6 +179,60 @@ class Menu
         return $sundaySchoolMenu;
     }
 
+    private static function getEmailMenu(): MenuItem
+    {
+        $emailMenu = new MenuItem(gettext('Email'), '', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope');
+        $emailMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'v2/email/dashboard', true, 'fa-tachometer-alt'));
+        // Plugin-provided menu items will be added by addPluginMenuItems()
+
+        return $emailMenu;
+    }
+
+    /**
+     * Add plugin menu items to their parent menus.
+     *
+     * Plugins can register menu items via getMenuItems() which specify a 'parent' key.
+     * This method merges those items into the appropriate parent menu.
+     *
+     * @param array<string, MenuItem> $menus The main menu array to modify
+     */
+    private static function addPluginMenuItems(array &$menus): void
+    {
+        try {
+            $pluginMenuItems = PluginManager::getPluginMenuItems();
+            
+            foreach ($pluginMenuItems as $parentKey => $items) {
+                // Find the parent menu (case-insensitive match)
+                $parentMenu = null;
+                foreach ($menus as $menuKey => $menu) {
+                    if (strtolower($menuKey) === $parentKey) {
+                        $parentMenu = $menu;
+                        break;
+                    }
+                }
+                
+                if ($parentMenu === null) {
+                    // Parent menu not found, skip these items
+                    continue;
+                }
+                
+                // Add each plugin menu item as a submenu
+                foreach ($items as $item) {
+                    $label = $item['label'] ?? '';
+                    $url = $item['url'] ?? '';
+                    $icon = $item['icon'] ?? 'fa-plug';
+                    
+                    if (!empty($label) && !empty($url)) {
+                        $parentMenu->addSubMenu(new MenuItem($label, $url, true, $icon));
+                    }
+                }
+            }
+        } catch (\Throwable $e) {
+            // Don't let plugin errors break the menu
+            // Silently fail - plugins may not be initialized yet
+        }
+    }
+
     private static function getEventsMenu(bool $isAddEventEnabled): MenuItem
     {
         $eventsMenu = new MenuItem(gettext('Events'), '', SystemConfig::getBooleanValue('bEnabledEvents'), 'fa-ticket-alt');
@@ -255,19 +319,9 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('Admin Dashboard'), 'admin/', $isAdmin, 'fa-tachometer-alt'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-cog'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-cog'));
+        $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Import'), 'CSVImport.php', $isAdmin, 'fa-file-import'));
         $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', $isAdmin, 'fa-file-export'));
-        $menu->addSubMenu(new MenuItem(gettext('Custom Menus'), 'admin/system/menus', $isAdmin, 'fa-list-ul'));
-        return $menu;
-    }
-
-    private static function getCustomMenu(): MenuItem
-    {
-        $menu = new MenuItem(gettext('Links'), '', SystemConfig::getBooleanValue('bEnabledMenuLinks'), 'fa-link');
-        $menuLinks = MenuLinkQuery::create()->orderByOrder()->select(['Name','Uri'])->find()->toArray();
-        foreach ($menuLinks as $link) {
-            $menu->addSubMenu(new MenuItem($link['Name'], $link['Uri'], true, 'fa-external-link-alt'));
-        }
 
         return $menu;
     }

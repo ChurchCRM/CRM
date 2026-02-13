@@ -503,7 +503,7 @@ class Person extends BasePerson implements PhotoInterface
         return $nameString;
     }
 
-    public function preDelete(ConnectionInterface $con = null)
+    public function preDelete(ConnectionInterface $con = null): bool
     {
         $this->deletePhoto();
 
@@ -682,9 +682,9 @@ class Person extends BasePerson implements PhotoInterface
         return $this->getFullName() . ' ' . $this->getAge();
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+    public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
     {
-        $array = parent::toArray();
+        $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
         $array['Address'] = $this->getAddress();
         $array['FullName'] = $this->getFullName();
         $array['HasPhoto'] = $this->getPhoto()->hasUploadedPhoto();

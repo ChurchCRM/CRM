@@ -50,13 +50,10 @@ require __DIR__ . '/routes/system/system-custom-fields.php';
 require __DIR__ . '/routes/system/system-database.php';
 require __DIR__ . '/routes/system/system-debug.php';
 require __DIR__ . '/routes/system/system-issues.php';
-require __DIR__ . '/routes/system/system-custom-menu.php';
 require __DIR__ . '/routes/system/system-locale.php';
 require __DIR__ . '/routes/cart.php';
 require __DIR__ . '/routes/background.php';
 require __DIR__ . '/routes/geocoder.php';
-// Kiosk routes moved to /kiosk/api - see src/kiosk/routes/api/kiosks.php
-require __DIR__ . '/routes/email/mailchimp.php';
 require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/users/user.php';
 require __DIR__ . '/routes/users/user-current.php';

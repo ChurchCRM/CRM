@@ -4,6 +4,7 @@ use ChurchCRM\dto\Notification;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -175,9 +176,15 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
         }
 
         // Check if any notification method is configured
+        $openLpPlugin = PluginManager::getPlugin('openlp');
+        $openLpEnabled = $openLpPlugin !== null && $openLpPlugin->isEnabled() && $openLpPlugin->isConfigured();
+
+        $vonagePlugin = PluginManager::getPlugin('vonage');
+        $smsEnabled = $vonagePlugin !== null && $vonagePlugin->isEnabled() && $vonagePlugin->isConfigured();
+
         $notificationsEnabled = SystemConfig::hasValidMailServerSettings() ||
-                                SystemConfig::hasValidSMSServerSettings() ||
-                                SystemConfig::hasValidOpenLPSettings();
+                                $smsEnabled ||
+                                $openLpEnabled;
 
         return SlimUtils::renderJSON($response, [
             'People' => $peopleData,

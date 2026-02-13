@@ -1,6 +1,15 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
+
+// Check if External Backup plugin is active and configured
+$externalBackupEnabled = PluginManager::isPluginActive('external-backup');
+$externalBackupConfigured = false;
+if ($externalBackupEnabled) {
+    $plugin = PluginManager::getPlugin('external-backup');
+    $externalBackupConfigured = $plugin !== null && $plugin->isConfigured();
+}
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -102,9 +111,25 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </button>
                 </div>
                 <div class="col-md-6 mb-2">
-                    <button type="button" class="btn btn-outline-secondary btn-block" id="doRemoteBackup">
-                        <i class="fa-solid fa-cloud-upload-alt mr-2"></i><?= gettext('Backup to External Storage') ?>
-                    </button>
+                    <?php if ($externalBackupEnabled && $externalBackupConfigured): ?>
+                        <button type="button" class="btn btn-outline-secondary btn-block" id="doRemoteBackup">
+                            <i class="fa-solid fa-cloud-upload-alt mr-2"></i><?= gettext('Backup to External Storage') ?>
+                        </button>
+                    <?php elseif ($externalBackupEnabled && !$externalBackupConfigured): ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/plugins/external-backup/settings" class="btn btn-outline-warning btn-block">
+                            <i class="fa-solid fa-cog mr-2"></i><?= gettext('Configure External Backup') ?>
+                        </a>
+                        <small class="form-text text-muted text-center">
+                            <?= gettext('External Backup plugin is enabled but not configured.') ?>
+                        </small>
+                    <?php else: ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/plugins/management" class="btn btn-outline-info btn-block">
+                            <i class="fa-solid fa-plug mr-2"></i><?= gettext('Enable External Backup Plugin') ?>
+                        </a>
+                        <small class="form-text text-muted text-center">
+                            <?= gettext('Enable the External Backup plugin for WebDAV cloud storage.') ?>
+                        </small>
+                    <?php endif; ?>
                 </div>
             </div>
         </form>
