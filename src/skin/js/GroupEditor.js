@@ -255,7 +255,7 @@ function initializeGroupEditor() {
                         const displayValue = isReadOnly ? i18next.t(data) : data;
                         const readOnlyAttr = isReadOnly ? " readonly" : "";
                         // Escape HTML to prevent XSS
-                        const escapedValue = $('<div>').text(displayValue).html();
+                        const escapedValue = $("<div>").text(displayValue).html();
                         return `<input type="text" class="roleName" id="roleName-${full.lst_OptionID}" value="${escapedValue}"${readOnlyAttr}>`;
                     }
                     return data;
