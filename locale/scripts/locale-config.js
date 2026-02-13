@@ -32,6 +32,7 @@ const LocaleConfig = {
         staticStrings: path.join(PROJECT_ROOT, 'temp/churchcrm-locale-static'),
         phpStrings: path.join(PROJECT_ROOT, 'temp/churchcrm-locale-php'),
         jsStrings: path.join(PROJECT_ROOT, 'temp/churchcrm-locale-js'),
+        pluginHelp: path.join(PROJECT_ROOT, 'temp/churchcrm-locale-plugin-help'),
     },
     
     terms: {

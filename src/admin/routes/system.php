@@ -128,18 +128,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'debug.php', $pageArgs);
     });
 
-    // Menus page
-    $group->get('/menus', function (Request $request, Response $response): Response {
-        $renderer = new PhpRenderer(__DIR__ . '/../views/');
-
-        $pageArgs = [
-            'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('Custom Menus'),
-        ];
-
-        return $renderer->render($response, 'menus.php', $pageArgs);
-    });
-
     // Orphaned Files Management page
     $group->get('/orphaned-files', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');

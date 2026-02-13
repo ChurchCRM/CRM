@@ -2,11 +2,11 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\Backup\BackupJob;
-use ChurchCRM\Backup\BackupType;
 use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\Plugins\ExternalBackup\ExternalBackupPlugin;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -75,26 +75,18 @@ class SystemService
     public static function runTimerJobs(): void
     {
         LoggerUtils::getAppLogger()->debug('Starting background job processing');
-        //start the external backup timer job
-        if (SystemConfig::getBooleanValue('bEnableExternalBackupTarget') && SystemConfig::getValue('sExternalBackupAutoInterval') > 0) {  //if remote backups are enabled, and the interval is greater than zero
-            try {
-                if (self::isTimerThresholdExceeded(SystemConfig::getValue('sLastBackupTimeStamp'), SystemConfig::getValue('sExternalBackupAutoInterval'))) {
-                    // if there was no previous backup, or if the interval suggests we do a backup now.
-                    LoggerUtils::getAppLogger()->info('Starting a backup job.  Last backup run: ' . SystemConfig::getValue('sLastBackupTimeStamp'));
-                    $BaseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName')) . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
-                    $Backup = new BackupJob($BaseName, BackupType::FULL_BACKUP, false, '');
-                    $Backup->execute();
-                    $Backup->copyToWebDAV(SystemConfig::getValue('sExternalBackupEndpoint'), SystemConfig::getValue('sExternalBackupUsername'), SystemConfig::getValue('sExternalBackupPassword'));
-                    $now = new \DateTime();  // update the LastBackupTimeStamp.
-                    SystemConfig::setValue('sLastBackupTimeStamp', $now->format(SystemConfig::getValue('sDateFilenameFormat')));
-                    LoggerUtils::getAppLogger()->info('Backup job successful');
-                } else {
-                    LoggerUtils::getAppLogger()->info('Not starting a backup job.  Last backup run: ' . SystemConfig::getValue('sLastBackupTimeStamp') . '.');
+        
+        // Run external backup timer job if plugin is active
+        try {
+            if (PluginManager::isPluginActive('external-backup')) {
+                $plugin = PluginManager::getPlugin('external-backup');
+                if ($plugin instanceof ExternalBackupPlugin) {
+                    $plugin->executeAutomaticBackup();
                 }
-            } catch (\Exception $exc) {
-                // an error in the auto-backup shouldn't prevent the page from loading...
-                LoggerUtils::getAppLogger()->warning('Failure executing backup job: ' . $exc->getMessage());
             }
+        } catch (\Exception $exc) {
+            // An error in the auto-backup shouldn't prevent the page from loading
+            LoggerUtils::getAppLogger()->warning('Failure executing backup job: ' . $exc->getMessage());
         }
 
         LoggerUtils::getAppLogger()->debug('Finished background job processing');

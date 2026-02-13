@@ -395,30 +395,53 @@ function initializeFamilyView() {
         });
     }
 
-    if (window.CRM.plugin.mailchimp) {
-        window.CRM.APIRequest({
+    // Check if MailChimp plugin is active via API and load data if so
+    // Only check if family has email (mailchimp-status-container is rendered conditionally in PHP)
+    if ($("#mailchimp-status-container").length > 0 && window.CRM.familyEmail) {
+        $.ajax({
             type: "GET",
-            path: `mailchimp/family/${window.CRM.currentFamily}`,
             dataType: "json",
-        }).then(function (data) {
-            for (let emailData of data) {
-                let htmlVal = "";
-                let emailMD5 = emailData["emailMD5"];
-                for (let list of emailData["list"]) {
-                    let {
-                        name: listName,
-                        status: listStatus,
-                        stats: { avg_open_rate: listOpenRate },
-                    } = list;
-                    if (listStatus !== 404) {
-                        htmlVal += `${listName} (${listStatus}) - ${listOpenRate * 100}% ${i18next.t("open rate")}`;
-                    }
+            url: window.CRM.root + "/plugins/status/mailchimp",
+            success: function (pluginData) {
+                if (pluginData.success && pluginData.isActive && pluginData.isConfigured) {
+                    // Show the MailChimp status container
+                    $("#mailchimp-status-container").removeClass("d-none");
+
+                    // Load the family's MailChimp data
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: window.CRM.root + "/plugins/mailchimp/api/family/" + window.CRM.currentFamily,
+                        success: function (data) {
+                            if (!data || data.length === 0) {
+                                $("#mailchimp-status").html(i18next.t("Not Subscribed"));
+                                return;
+                            }
+                            for (let emailData of data) {
+                                let htmlVal = "";
+                                let lists = emailData["list"] || [];
+                                for (let list of lists) {
+                                    let listName = list["name"];
+                                    let listStatus = list["status"];
+                                    let listOpenRate = list["stats"]?.["avg_open_rate"] || 0;
+                                    if (listStatus !== 404) {
+                                        htmlVal += `${listName} (${listStatus}) - ${(listOpenRate * 100).toFixed(2)}% ${i18next.t("open rate")}`;
+                                    }
+                                }
+                                if (htmlVal === "") {
+                                    htmlVal = i18next.t("Not Subscribed");
+                                }
+                                $("#mailchimp-status").html(htmlVal);
+                            }
+                        },
+                        error: function () {
+                            $("#mailchimp-status").html(
+                                '<span class="text-muted">' + i18next.t("Unable to load") + "</span>",
+                            );
+                        },
+                    });
                 }
-                if (htmlVal === "") {
-                    htmlVal = i18next.t("Not Subscribed");
-                }
-                $(`#${emailMD5}`).html(htmlVal);
-            }
+            },
         });
     }
 }
