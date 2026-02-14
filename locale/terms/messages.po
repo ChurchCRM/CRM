@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-13 02:59+0000\n"
+"POT-Creation-Date: 2026-02-14 23:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -802,9 +802,6 @@ msgstr ""
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr ""
 
-msgid "Available"
-msgstr ""
-
 msgid "Avg Click Rate"
 msgstr ""
 
@@ -931,9 +928,6 @@ msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr ""
 
 msgid "Base URL is not configured in Config.php"
-msgstr ""
-
-msgid "Base URL is required"
 msgstr ""
 
 msgid "Based on filters below.."
@@ -1963,9 +1957,6 @@ msgstr ""
 msgid "Database information confirmation and correction report signer"
 msgstr ""
 
-msgid "Database name is required"
-msgstr ""
-
 msgid "Database reset failed"
 msgstr ""
 
@@ -1975,16 +1966,7 @@ msgstr ""
 msgid "Database schema upgraded automatically"
 msgstr ""
 
-msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
-msgstr ""
-
-msgid "Database server port is required (e.g., 3306)"
-msgstr ""
-
 msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr ""
-
-msgid "Database username is required"
 msgstr ""
 
 msgid "Database:"
@@ -3334,9 +3316,6 @@ msgstr ""
 msgid "Files may be modified or missing. Consider re-deploying from an official release."
 msgstr ""
 
-msgid "Files with issues"
-msgstr ""
-
 msgid "Filesystem Permissions"
 msgstr ""
 
@@ -4140,12 +4119,6 @@ msgid "Install plugins by placing them in"
 msgstr ""
 
 msgid "Integrity Check Details:"
-msgstr ""
-
-msgid "Integrity check failed"
-msgstr ""
-
-msgid "Integrity check passed"
 msgstr ""
 
 msgid "Internationalization (I18n) support"
@@ -5473,9 +5446,6 @@ msgstr ""
 msgid "Norwegian"
 msgstr ""
 
-msgid "Not Available"
-msgstr ""
-
 msgid "Not Configured"
 msgstr ""
 
@@ -6101,9 +6071,6 @@ msgid "Please confirm your family information:"
 msgstr ""
 
 msgid "Please correct the errors below."
-msgstr ""
-
-msgid "Please correct the validation errors before continuing."
 msgstr ""
 
 msgid "Please detach this slip and mail with your next gift."
@@ -7595,9 +7562,6 @@ msgstr ""
 msgid "System Settings"
 msgstr ""
 
-msgid "System Support"
-msgstr ""
-
 msgid "System Up to Date"
 msgstr ""
 
@@ -8168,22 +8132,10 @@ msgstr ""
 msgid "Unable To Begin Two Factor Authentication Enrollment"
 msgstr ""
 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr ""
-
-msgid "Unable to detect system locales"
-msgstr ""
-
-msgid "Unable to determine available locales"
-msgstr ""
-
 msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
 msgstr ""
 
 msgid "Unable to load"
-msgstr ""
-
-msgid "Unable to load locale information"
 msgstr ""
 
 msgid "Unable to load state list. Please check your network connection or try again later."
