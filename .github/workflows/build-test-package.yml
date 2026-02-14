@@ -290,8 +290,118 @@ jobs:
       run: |
         npm run docker:ci:subdir:down
 
+  test-new-system:
+    needs: build
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Download Build Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Install Composer Dependencies
+      run: |
+        cd src
+        composer install --no-dev
+
+    - name: Generate File Signatures
+      run: |
+        echo "Generating file signatures for integrity check..."
+        node scripts/generate-signatures-node.js
+
+    - name: Remove Config.php for Fresh Install Test
+      run: |
+        rm -f src/Include/Config.php
+        echo "Config.php removed - setup wizard will be triggered"
+
+    - name: Run Docker (New System Test)
+      run: npm run docker:ci:new-system:start
+
+    - name: Wait for Docker to be ready
+      run: |
+        echo "Waiting for new system test services to be ready..."
+        sleep 10
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs
+
+    - name: Test Server Redirects to Setup (New System Test)
+      run: |
+        echo "Testing that server redirects to setup wizard..."
+        max_attempts=12
+        attempt=1
+        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
+          echo "Attempt $attempt/$max_attempts failed. Retrying in 5 seconds..."
+          sleep 5
+          attempt=$((attempt + 1))
+          if [ $attempt -eq $max_attempts ]; then
+            break
+          fi
+        done
+        
+        if [ $attempt -eq $max_attempts ]; then
+          echo "Server failed to respond after $max_attempts attempts"
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs
+          exit 1
+        fi
+        
+        echo "New system test server is responding!"
+        # Should redirect to setup since Config.php doesn't exist
+        curl -vvv http://127.0.0.1:8081/
+
+    - name: Run Cypress Tests (Setup Wizard)
+      run: |
+        npm run test:new-system
+
+    - name: Collect Docker Logs on Failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker
+        echo "=== Docker Container Logs ===" > cypress/logs/docker/docker-compose-new-system.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs >> cypress/logs/docker/docker-compose-new-system.log 2>&1 || true
+        
+        echo "=== Docker Container Status ===" >> cypress/logs/docker/docker-compose-new-system.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-new-system.log 2>&1 || true
+        
+        echo "=== Collecting PHP Application Logs ===" 
+        mkdir -p cypress/logs/php
+        if [ -d "src/logs" ]; then
+          cp -r src/logs cypress/logs/php/ || true
+        fi
+
+    - name: Upload Cypress Artifacts (New System)
+      if: failure()
+      uses: actions/upload-artifact@v4
+      with:
+        name: cypress-artifacts-new-system-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/results
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
+    - name: Stop Docker
+      if: always()
+      run: |
+        npm run docker:ci:new-system:down
+
   package:
-    needs: [test-root, test-subdir]
+    needs: [test-root, test-subdir, test-new-system]
     permissions:
       contents: read
     runs-on: ubuntu-latest
@@ -369,6 +479,7 @@ jobs:
         echo "**✅ Tests Passed:**" >> $GITHUB_STEP_SUMMARY
         echo "- Root path installation tests" >> $GITHUB_STEP_SUMMARY
         echo "- Subdirectory installation tests" >> $GITHUB_STEP_SUMMARY
+        echo "- New system setup wizard tests" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         
         if [ -d "temp" ]; then
