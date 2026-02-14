@@ -84,11 +84,23 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
                 $this->logger->warning('Failed to clear Images directories during DB reset', ['error' => $e->getMessage()]);
             }
 
-            // Destroy the session directly
+            // Destroy the session and clear the session cookie
+            // This ensures the client doesn't send stale session cookies on subsequent requests
+            $sessionName = session_name();
+            $cookieParams = session_get_cookie_params();
             session_destroy();
+            
+            // Build Set-Cookie header to expire the session cookie
+            $expiredCookie = sprintf(
+                '%s=; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; path=%s%s%s',
+                $sessionName,
+                $cookieParams['path'] ?: '/',
+                $cookieParams['domain'] ? '; domain=' . $cookieParams['domain'] : '',
+                $cookieParams['secure'] ? '; secure' : ''
+            );
 
             return SlimUtils::renderJSON(
-                $response,
+                $response->withHeader('Set-Cookie', $expiredCookie),
                 [
                     'success' => true,
                     'msg' => gettext('The database has been cleared.'),

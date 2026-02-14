@@ -85,10 +85,38 @@ window.Stepper = Stepper;
 		$("#prerequisites-force-btn").hide();
 		state.prerequisitesStatus = true;
 
+		// Update status banner
+		updateStatusBanner("success", "All checks passed", "Your server meets all requirements.");
+
 		// Automatically advance to next step
 		if (setupStepper) {
 			setupStepper.next();
 		}
+	}
+
+	function updateStatusBanner(status, title, detail) {
+		const $banner = $("#status-banner");
+		$banner.removeClass("status-checking status-success status-warning status-error");
+		$banner.addClass("status-" + status);
+		
+		let icon = "";
+		switch (status) {
+			case "success":
+				icon = '<i class="fa-solid fa-circle-check"></i>';
+				break;
+			case "warning":
+				icon = '<i class="fa-solid fa-exclamation-triangle"></i>';
+				break;
+			case "error":
+				icon = '<i class="fa-solid fa-circle-xmark"></i>';
+				break;
+			default:
+				icon = '<i class="fa-solid fa-spinner fa-spin"></i>';
+		}
+		
+		$banner.find(".status-icon").html(icon);
+		$banner.find(".status-text strong").text(title);
+		$banner.find(".status-detail").text(detail);
 	}
 
 	function updatePrerequisitesUI() {
@@ -115,11 +143,15 @@ window.Stepper = Stepper;
 			$("#prerequisites-war").hide();
 			$("#prerequisites-next-btn").prop("disabled", false);
 			$("#prerequisites-force-btn").hide();
+			if (state.checksComplete) {
+				updateStatusBanner("success", "System check passed!", "Your server meets all requirements. Click Continue to proceed.");
+			}
 		} else if (state.checksComplete) {
 			// All checks are done but some failed
 			$("#prerequisites-war").show();
 			$("#prerequisites-next-btn").prop("disabled", true);
 			$("#prerequisites-force-btn").show();
+			updateStatusBanner("warning", "Some requirements not met", "Review the issues below. You can force install, but some features may not work.");
 		} else {
 			// Checks still running
 			$("#prerequisites-war").hide();
@@ -231,12 +263,12 @@ window.Stepper = Stepper;
                       return;
               }
 
-              const detailRow = $("<tr>", { id: detailRowId });
+              const detailRow = $("<tr>", { id: detailRowId, class: "integrity-details-row" });
               const detailCell = $("<td>", { colspan: 2 });
               const heading = $("<div>")
-                      .addClass("font-weight-bold mb-2")
-                      .text(i18next.t("Files with issues"));
-              const list = $("<ul>").addClass("mb-0 pl-3");
+                      .addClass("integrity-details-header")
+                      .html('<i class="fa-solid fa-file-circle-exclamation mr-2"></i>Files with issues');
+              const list = $("<ul>").addClass("integrity-files-list");
 
               items.forEach(function (fileName) {
                       list.append($("<li>").text(fileName));
@@ -345,7 +377,7 @@ window.Stepper = Stepper;
 
 		// Show pending state
 		const pendingRow = $("<tr>", { id: rowId })
-			.append($("<td>", { text: "ChurchCRM File Integrity Check" }))
+			.append($("<td>", { text: "Signature Validation" }))
 			.append($("<td>", statusConfig.pending));
 		$(`#${rowId}`).remove();
 		$(config.table).append(pendingRow);
@@ -369,14 +401,14 @@ window.Stepper = Stepper;
 					data && typeof data === "object" && data.message
 						? data.message
 						: satisfied
-						? i18next.t("Integrity check passed")
-						: i18next.t("Integrity check failed");
+						? "Integrity check passed"
+						: "Integrity check failed";
 
 				const resultRow = $("<tr>", {
 					id: rowId,
 				})
 					.append(
-						$("<td>", { text: "ChurchCRM File Integrity Check" }),
+						$("<td>", { text: "Signature Validation" }),
 					)
 					.append(buildStatusCell(statusInfo, message));
 
@@ -398,14 +430,12 @@ window.Stepper = Stepper;
 					id: rowId,
 				})
 					.append(
-						$("<td>", { text: "ChurchCRM File Integrity Check" }),
+						$("<td>", { text: "Signature Validation" }),
 					)
 					.append(
 						buildStatusCell(
 							statusConfig.false,
-							i18next.t(
-								"Unable to contact integrity endpoint. Check web server error logs.",
-							),
+							"Unable to contact integrity endpoint. Check web server error logs.",
 						),
 					);
 
@@ -525,8 +555,8 @@ window.Stepper = Stepper;
 			// Create table header
 			const $thead = $("<thead>").append(
 				$("<tr>")
-					.append($("<th>").text(i18next.t("ChurchCRM Supported Locales")))
-					.append($("<th style='text-align: center; width: 100px;'>").text(i18next.t("System Support")))
+					.append($("<th>").text("ChurchCRM Supported Locales"))
+					.append($("<th style='text-align: center; width: 100px;'>").text("System Support"))
 			);
 			$table.append($thead);
 
@@ -534,8 +564,8 @@ window.Stepper = Stepper;
 			const $tbody = $("<tbody>");
 			locales.forEach(function (locale) {
 				const statusBadge = locale.systemAvailable
-					? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>${i18next.t('Available')}</span>`
-					: `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>${i18next.t('Not Available')}</span>`;
+					? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>Available</span>`
+					: `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>Not Available</span>`;
 
 				const $row = $("<tr>")
 					.append(
@@ -554,7 +584,7 @@ window.Stepper = Stepper;
 		} else {
 			const $row = $("<tr>").append(
 				$("<td colspan='2'>").html(
-					`<i class='fa-solid fa-exclamation-triangle text-warning mr-2'></i>${i18next.t("Unable to determine available locales")}`
+					`<i class='fa-solid fa-exclamation-triangle text-warning mr-2'></i>Unable to determine available locales`
 				)
 			);
 			$table.append($row);
@@ -568,12 +598,12 @@ window.Stepper = Stepper;
 
 		$table.empty();
 		$summary.attr("class", "alert alert-danger mb-2");
-		$summary.html(`<i class='fa-solid fa-times-circle'></i> ${i18next.t("Unable to detect system locales")}`);
+		$summary.html(`<i class='fa-solid fa-times-circle'></i> Unable to detect system locales`);
 		$status.html('<i class="fa-solid fa-times text-danger"></i>');
 
 		const $errorRow = $("<tr>").append(
 			$("<td>").html(
-				`<i class='fa-solid fa-exclamation-circle text-danger mr-2'></i>${i18next.t("Unable to load locale information")}`
+				`<i class='fa-solid fa-exclamation-circle text-danger mr-2'></i>Unable to load locale information`
 			)
 		);
 		$table.append($errorRow);
@@ -611,30 +641,22 @@ window.Stepper = Stepper;
 					let errorMessage;
 					switch (field.name) {
 						case "DB_SERVER_NAME":
-							errorMessage = i18next.t(
-								"Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)",
-							);
+							errorMessage = "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)";
 							break;
 						case "DB_SERVER_PORT":
-							errorMessage = i18next.t(
-								"Database server port is required (e.g., 3306)",
-							);
+							errorMessage = "Database server port is required (e.g., 3306)";
 							break;
 						case "DB_NAME":
-							errorMessage = i18next.t(
-								"Database name is required",
-							);
+							errorMessage = "Database name is required";
 							break;
 						case "DB_USER":
-							errorMessage = i18next.t(
-								"Database username is required",
-							);
+							errorMessage = "Database username is required";
 							break;
 						case "URL":
-							errorMessage = i18next.t("Base URL is required");
+							errorMessage = "Base URL is required";
 							break;
 						default:
-							errorMessage = i18next.t("This field is required");
+							errorMessage = "This field is required";
 					}
 
 					rules.push({
@@ -869,7 +891,6 @@ window.Stepper = Stepper;
 		window.setupStepper = setupStepper;
 
 		// Initialize validators for steps that need validation
-		validators["step-location"] = initializeStepValidation("step-location");
 		validators["step-database"] = initializeStepValidation("step-database");
 
 		// Custom navigation logic with validation
@@ -940,43 +961,6 @@ window.Stepper = Stepper;
 			.getElementById("prerequisites-next-btn")
 			.addEventListener("click", function () {
 				if (setupStepper) {
-					setupStepper.next();
-				}
-			});
-
-		// Handle location step buttons
-		document
-			.getElementById("location-prev-btn")
-			.addEventListener("click", function () {
-				if (setupStepper) {
-					setupStepper.previous();
-				}
-			});
-
-		document
-			.getElementById("location-next-btn")
-			.addEventListener("click", function (event) {
-				event.preventDefault();
-				// Validate the location step before proceeding
-				if (validators["step-location"]) {
-					validators["step-location"]
-						.revalidate()
-						.then(function (isValid) {
-							if (isValid && setupStepper) {
-								setupStepper.next();
-							} else if (!isValid) {
-								window.CRM.notify(
-									i18next.t(
-										"Please correct the validation errors before continuing.",
-									),
-									{
-										type: "warning",
-										delay: 3000,
-									},
-								);
-							}
-						});
-				} else if (setupStepper) {
 					setupStepper.next();
 				}
 			});
