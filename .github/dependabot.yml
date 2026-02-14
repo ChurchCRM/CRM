@@ -1,0 +1,100 @@
+# Dependabot configuration
+# https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+
+version: 2
+updates:
+  # npm packages in root directory
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "Package Dependencies"
+    commit-message:
+      prefix: "chore(deps)"
+    open-pull-requests-limit: 5
+    groups:
+      # Group all minor/patch updates together
+      npm-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Group dev dependencies separately
+      npm-dev-dependencies:
+        dependency-type: "development"
+        patterns:
+          - "*"
+      # Group TypeScript ecosystem together
+      typescript:
+        patterns:
+          - "typescript"
+          - "@types/*"
+          - "ts-*"
+      # Group testing tools together
+      testing:
+        patterns:
+          - "cypress"
+          - "@cypress/*"
+          - "jest"
+          - "@jest/*"
+      # Group build tools together
+      build-tools:
+        patterns:
+          - "webpack"
+          - "webpack-*"
+          - "babel-*"
+          - "@babel/*"
+          - "eslint"
+          - "eslint-*"
+
+  # Composer packages in src directory
+  - package-ecosystem: "composer"
+    directory: "/src"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    labels:
+      - "dependencies"
+      - "Package Dependencies"
+    commit-message:
+      prefix: "chore(deps)"
+    open-pull-requests-limit: 5
+    groups:
+      # Group all minor/patch updates together
+      composer-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+      # Group Slim framework packages
+      slim:
+        patterns:
+          - "slim/*"
+          - "slim-*"
+      # Group Propel/Perpl ORM packages
+      orm:
+        patterns:
+          - "propel/*"
+          - "perplorm/*"
+
+  # GitHub Actions workflows
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels:
+      - "dependencies"
+      - "build"
+    commit-message:
+      prefix: "chore(ci)"
+    open-pull-requests-limit: 3
+    groups:
+      # Group all actions together into single PR
+      actions:
+        patterns:
+          - "*"
