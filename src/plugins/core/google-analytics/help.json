@@ -1,0 +1,27 @@
+{
+    "summary": "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage.",
+    "sections": [
+        {
+            "title": "Getting Your GA4 Measurement ID",
+            "content": "1. Go to Google Analytics (analytics.google.com)\n2. Create a property or select an existing one\n3. Go to Admin → Data Streams → Web\n4. Copy the Measurement ID (starts with G-)"
+        },
+        {
+            "title": "What Gets Tracked",
+            "content": "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information"
+        },
+        {
+            "title": "Privacy Considerations",
+            "content": "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+        }
+    ],
+    "links": [
+        {
+            "label": "Google Analytics Help",
+            "url": "https://support.google.com/analytics"
+        },
+        {
+            "label": "GA4 Setup Guide",
+            "url": "https://support.google.com/analytics/answer/9304153"
+        }
+    ]
+}

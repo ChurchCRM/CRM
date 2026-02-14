@@ -10,6 +10,8 @@ use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\FunctionsUtils;
@@ -47,7 +49,7 @@ class FinancialService
             }
         }
         
-        $query->innerJoinDonationFund()->withColumn('donationfund_fun.fun_Name', 'PledgeName');
+        $query->innerJoinDonationFund()->withColumn(DonationFundTableMap::COL_FUN_NAME, 'PledgeName');
         $data = $query->find();
 
         $rows = [];
@@ -743,7 +745,7 @@ class FinancialService
         return PledgeQuery::create()
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
-            ->withColumn('SUM(plg_amount)', 'TotalAmount')
+            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'TotalAmount')
             ->select(['TotalAmount'])
             ->findOne();
     }
@@ -760,7 +762,7 @@ class FinancialService
         return PledgeQuery::create()
             ->filterByPledgeOrPayment('Pledge')
             ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
-            ->withColumn('SUM(plg_amount)', 'TotalAmount')
+            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'TotalAmount')
             ->select(['TotalAmount'])
             ->findOne();
     }
@@ -792,7 +794,7 @@ class FinancialService
         return PledgeQuery::create()
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate])
-            ->withColumn('COUNT(DISTINCT plg_FamID)', 'FamilyCount')
+            ->withColumn('COUNT(DISTINCT ' . PledgeTableMap::COL_PLG_FAMID . ')', 'FamilyCount')
             ->select(['FamilyCount'])
             ->findOne();
     }

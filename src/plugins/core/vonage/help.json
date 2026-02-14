@@ -1,0 +1,52 @@
+{
+    "summary": "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system.",
+    "requirements": "Requires a Vonage account with API access (sign up at https://dashboard.nexmo.com/sign-up), API Key and Secret from Vonage Dashboard, and a phone number provisioned for SMS sending.",
+    "sections": [
+        {
+            "title": "Current Usage",
+            "content": "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+        },
+        {
+            "title": "Setup",
+            "content": "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n2. Find your API Key and API Secret on the Vonage Dashboard homepage\n3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n4. Note the number in E.164 format (e.g., +14155551234)\n5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+        },
+        {
+            "title": "Phone Number Format",
+            "content": "Phone numbers should be in E.164 format: country code + number. Examples:\n- US: +14155551234\n- UK: +447700900123\n- Australia: +61412345678\n\nRecipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+        },
+        {
+            "title": "Troubleshooting - SMS Not Sending",
+            "content": "If SMS messages aren't being sent:\n1. Verify API Key and Secret are correct (no extra spaces)\n2. Check that the From Number is a valid Vonage number you own\n3. Ensure recipient phone numbers include country code\n4. Check your Vonage account balance\n5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+        },
+        {
+            "title": "Troubleshooting - Invalid Sender ID",
+            "content": "If you receive invalid sender ID errors:\n1. Use a phone number you've purchased from Vonage\n2. Format the number in E.164 format (+14155551234)\n3. Note: Alphanumeric sender IDs may be restricted in some countries"
+        },
+        {
+            "title": "Troubleshooting - Messages Not Delivered",
+            "content": "If messages are sent but not received:\n1. Check Vonage Dashboard > SMS > Logs for delivery status\n2. Verify the recipient number is correct and can receive SMS\n3. Some carriers may block messages from unknown numbers\n4. Check if the destination country has SMS restrictions"
+        },
+        {
+            "title": "Costs",
+            "content": "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+        }
+    ],
+    "links": [
+        {
+            "label": "Vonage Dashboard",
+            "url": "https://dashboard.nexmo.com"
+        },
+        {
+            "label": "Vonage SMS API Documentation",
+            "url": "https://developer.vonage.com/messaging/sms/overview"
+        },
+        {
+            "label": "Vonage Pricing",
+            "url": "https://www.vonage.com/communications-apis/sms/pricing/"
+        },
+        {
+            "label": "E.164 Phone Number Format",
+            "url": "https://en.wikipedia.org/wiki/E.164"
+        }
+    ]
+}

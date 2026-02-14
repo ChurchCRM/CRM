@@ -42,11 +42,30 @@ interface AvatarConfig {
 // Cache for avatar info to avoid repeated API calls
 const avatarInfoCache = new Map<string, AvatarInfo>();
 
-// Helper function to get gravatar setting dynamically from page config
-// This must be checked at runtime, not at module load time, because window.CRM
+// Helper functions to get Gravatar plugin settings dynamically from page config
+// These must be checked at runtime, not at module load time, because window.CRM
 // is set up after the bundles are loaded
+
+/**
+ * Check if Gravatar is enabled via the Gravatar plugin
+ */
 function isGravatarEnabled(): boolean {
+    // First try the new plugin config structure
+    const plugins = (window as any).CRM?.plugins;
+    if (plugins?.gravatar?.enabled !== undefined) {
+        return plugins.gravatar.enabled;
+    }
+    // Fall back to legacy config for backward compatibility
     return (window as any).CRM?.bEnableGravatarPhotos ?? false;
+}
+
+/**
+ * Get the configured Gravatar default image style
+ * Gravatar supports: mp, identicon, monsterid, wavatar, retro, robohash, blank
+ */
+function getGravatarDefaultImage(): string {
+    const plugins = (window as any).CRM?.plugins;
+    return plugins?.gravatar?.defaultImage ?? 'blank';
 }
 
 /**
@@ -293,10 +312,17 @@ class AvatarLoader {
      * Load avatar with Gravatar (with initials fallback)
      */
     private loadWithGravatar(img: HTMLImageElement, avatarInfo: AvatarInfo, size: number): void {
+        // Get the configured default image style from the Gravatar plugin
+        const defaultImage = getGravatarDefaultImage();
+        
+        // If defaultImage is 'blank', we want to fall back to our initials system
+        // Otherwise, use Gravatar's server-side fallback images
+        const useGravatarFallback = defaultImage !== 'blank';
+        
         // Build settings object with all required fields
         const settings: any = {
             useGravatar: true,
-            useGravatarFallback: false,
+            useGravatarFallback: useGravatarFallback, // Use Gravatar's fallback (identicon, monsterid, etc.)
             size: size,
             initials: avatarInfo.initials,
             color: '#ffffff',
@@ -304,7 +330,7 @@ class AvatarLoader {
             fontSize: Math.floor(size * 0.4),
             fontWeight: 600,
             fontFamily: "'Segoe UI', 'Helvetica Neue', Arial, sans-serif",
-            fallback: 'blank', // Use blank fallback to trigger initials
+            fallback: defaultImage, // Gravatar default image type (mp, identicon, monsterid, etc.)
             rating: 'g',
             setSourceCallback: () => {
                 img.classList.remove('loading');
