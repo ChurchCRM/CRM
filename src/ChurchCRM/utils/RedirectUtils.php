@@ -82,8 +82,10 @@ class RedirectUtils
             return $fallback;
         }
 
-        // Check for null bytes or line breaks (HTTP response splitting)
-        if (preg_match('/[\x00\r\n]/', $url)) {
+        // Check for all ASCII control characters (0x00-0x1F) and DEL (0x7F)
+        // This catches null bytes, line breaks, tabs, and other control chars
+        // that could be used in bypass attempts or HTTP response splitting
+        if (preg_match('/[\x00-\x1F\x7F]/', $url)) {
             LoggerUtils::getAppLogger()->warning('Rejected redirect URL containing control characters', ['url' => $url]);
 
             return $fallback;
