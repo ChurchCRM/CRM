@@ -12,7 +12,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Create New Fund Raiser');
 
-$linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
+$linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
 $iFundRaiserID = InputUtils::legacyFilterInputArr($_GET, 'FundRaiserID');
 
 $fundraiser = null;
