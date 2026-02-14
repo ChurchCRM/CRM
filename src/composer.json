@@ -52,7 +52,7 @@
         "php-http/guzzle7-adapter": "^1.0.0",
         "php-http/message": "^1.11.1",
         "perplorm/perpl": "^2.6.0",
-        "phpmailer/phpmailer": "^6.9.1",
+        "phpmailer/phpmailer": "^7.0.2",
         "pragmarx/google2fa": "^8.0.1",
         "setasign/fpdf": "^1.8.6",
         "slim/http-cache": "^1.1.0",
