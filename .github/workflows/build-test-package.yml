@@ -35,12 +35,12 @@ jobs:
       matrix:
         node-version: ['22.x']
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         # Fetch full history for changelog generation and version comparison
         fetch-depth: 0
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -76,7 +76,7 @@ jobs:
         cd src
         echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
 
-    - uses: actions/cache@v4
+    - uses: actions/cache@v5
       with:
         path: ${{ steps.composer-cache.outputs.dir }}
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
@@ -93,7 +93,7 @@ jobs:
         npm run build:php:validate
 
     - name: Upload Build Artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: build-${{ github.run_id }}
         path: |
@@ -108,9 +108,9 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Use Node.js 22.x
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: '22.x'
         cache: 'npm'
@@ -119,7 +119,7 @@ jobs:
       run: npm ci
 
     - name: Download Build Artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
       with:
         name: build-${{ github.run_id }}
         path: .
@@ -182,7 +182,7 @@ jobs:
 
     - name: Upload Cypress Artifacts (Root)
       if: failure()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: cypress-artifacts-root-${{ github.run_id }}
         path: |
@@ -204,9 +204,9 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Use Node.js 22.x
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: '22.x'
         cache: 'npm'
@@ -215,7 +215,7 @@ jobs:
       run: npm ci
 
     - name: Download Build Artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
       with:
         name: build-${{ github.run_id }}
         path: .
@@ -278,7 +278,7 @@ jobs:
 
     - name: Upload Cypress Artifacts (Subdir)
       if: failure()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: cypress-artifacts-subdir-${{ github.run_id }}
         path: |
@@ -300,9 +300,9 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Use Node.js 22.x
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: '22.x'
         cache: 'npm'
@@ -311,7 +311,7 @@ jobs:
       run: npm ci
 
     - name: Download Build Artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
       with:
         name: build-${{ github.run_id }}
         path: .
@@ -388,7 +388,7 @@ jobs:
 
     - name: Upload Cypress Artifacts (New System)
       if: failure()
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: cypress-artifacts-new-system-${{ github.run_id }}
         path: |
@@ -410,12 +410,12 @@ jobs:
       contents: read
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
     - name: Use Node.js 22.x
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: '22.x'
         cache: 'npm'
@@ -440,7 +440,7 @@ jobs:
       uses: martinbeentjes/npm-get-version-action@v1.3.1
 
     - name: Download Build Artifact
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v7
       with:
         name: build-${{ github.run_id }}
         path: .
@@ -459,7 +459,7 @@ jobs:
         fi
   
     - name: Upload release artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: >-
           ${{ github.ref == 'refs/heads/master' && 
