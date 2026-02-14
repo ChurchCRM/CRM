@@ -125,17 +125,19 @@ jobs:
             console.log('Checking for associated PRs...\n');
 
             for (const issue of staleIssues) {
-              // Get the timeline to find cross-references to PRs
-              const timeline =
-                await github.rest.issues.listEventsForTimeline({
+              // Get the full timeline (all pages) to find cross-references to PRs
+              const timeline = await github.paginate(
+                github.rest.issues.listEventsForTimeline,
+                {
                   owner: context.repo.owner,
                   repo: context.repo.repo,
                   issue_number: issue.number,
                   per_page: 100
-                });
+                }
+              );
 
               // Look for cross-reference events that link to PRs
-              const linkedPRs = timeline.data.filter(event =>
+              const linkedPRs = timeline.filter(event =>
                 event.event === 'cross-referenced' &&
                 event.source &&
                 event.source.issue &&
