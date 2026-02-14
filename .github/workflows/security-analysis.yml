@@ -1,22 +1,24 @@
-name: 'Security Analysis vua DevSkim'
+name: 'Security Analysis'
 
 on:
   push:
-    branches: [ "master", "develop" ]
+    branches: [master, develop]
     paths:
       - '**/*.php'
       - '**/*.js'
       - '**/*.ts'
+      - '**/*.tsx'
       - '**/*.json'
       - '**/*.yml'
       - '**/*.yaml'
       - '**/*.sql'
   pull_request:
-    branches: [ "master" ]
+    branches: [master]
     paths:
       - '**/*.php'
       - '**/*.js'
       - '**/*.ts'
+      - '**/*.tsx'
       - '**/*.json'
       - '**/*.yml'
       - '**/*.yaml'
@@ -25,10 +27,9 @@ on:
     # Run weekly on Mondays at 6:00 AM UTC
     - cron: '0 6 * * 1'
   workflow_dispatch:
-    # Allow manual triggering for immediate security scans
     inputs:
       scan_severity:
-        description: 'Minimum severity level to report'
+        description: 'DevSkim minimum severity level'
         required: false
         type: choice
         options:
@@ -38,7 +39,7 @@ on:
           - 'critical'
         default: 'medium'
       fail_on_error:
-        description: 'Fail the workflow if security issues are found'
+        description: 'Fail if DevSkim finds issues'
         required: false
         type: boolean
         default: false
@@ -48,21 +49,50 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  security-scan:
-    name: 'Security Analysis with DevSkim'
+  # CodeQL: Semantic analysis for JavaScript/TypeScript
+  # Understands data flow, tracks tainted input through function calls
+  codeql-analysis:
+    name: 'CodeQL (JS/TS)'
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript-typescript
+          # Use security-extended for more comprehensive scanning
+          queries: security-extended
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:javascript-typescript"
+
+  # DevSkim: Pattern-based analysis for PHP and config files
+  # Catches hardcoded secrets, common vulnerability patterns
+  devskim-analysis:
+    name: 'DevSkim (PHP/Config)'
     runs-on: ubuntu-latest
     
     permissions:
       actions: read
       contents: read
       security-events: write
-      pull-requests: write  # For PR comments
-    
+      pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # Fetch full history for better analysis
           fetch-depth: 0
 
       - name: Cache DevSkim rules
@@ -78,20 +108,16 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
-      - name: Install DevSkim CLI manually
+      - name: Install DevSkim CLI
         run: |
-          echo "📥 Installing DevSkim CLI manually..."
+          echo "📥 Installing DevSkim CLI..."
           
-          # Try different installation methods
           if dotnet tool install --global Microsoft.CST.DevSkim.Cli --version 0.7.104; then
             echo "✅ DevSkim CLI installed successfully via dotnet tool"
           elif dotnet tool install --global Microsoft.CST.DevSkim.Cli; then
             echo "✅ DevSkim CLI installed successfully (latest version)"
           else
-            echo "❌ Failed to install DevSkim CLI via dotnet tool"
             echo "🔄 Trying alternative installation method..."
-            
-            # Download and install manually
             wget -q https://github.com/Microsoft/DevSkim/releases/download/v0.7.104/devskim-linux-x64.zip -O devskim.zip
             unzip -q devskim.zip -d devskim-cli
             chmod +x devskim-cli/devskim
@@ -99,7 +125,6 @@ jobs:
             echo "✅ DevSkim CLI installed manually"
           fi
           
-          # Verify installation
           if command -v devskim >/dev/null 2>&1; then
             echo "✅ DevSkim CLI is available"
             devskim --version
@@ -112,11 +137,8 @@ jobs:
         id: devskim
         run: |
           echo "🔍 Running DevSkim security analysis..."
-          
-          # Create output directory
           mkdir -p devskim-output
           
-          # Run DevSkim with custom configuration
           if [ -f ".devskim.json" ]; then
             echo "Using custom DevSkim configuration"
             devskim analyze . --output-file devskim-results.sarif --output-text-format sarif --severity-threshold ${{ inputs.scan_severity || 'medium' }} --config-file .devskim.json
@@ -132,14 +154,11 @@ jobs:
         id: check-results
         run: |
           if [ -f "devskim-results.sarif" ]; then
-            # Count issues by severity
             issues=$(jq '.runs[0].results | length' devskim-results.sarif 2>/dev/null || echo "0")
             echo "issues_found=$issues" >> $GITHUB_OUTPUT
             
             if [ "$issues" -gt 0 ]; then
               echo "🚨 DevSkim found $issues security issues"
-              
-              # Extract summary
               jq -r '.runs[0].results[] | "- \(.level // "unknown"): \(.message.text)"' devskim-results.sarif | head -10
               
               if [ "$issues" -gt 10 ]; then
@@ -153,13 +172,12 @@ jobs:
             echo "issues_found=0" >> $GITHUB_OUTPUT
           fi
 
-      - name: Upload DevSkim scan results to GitHub Security tab
+      - name: Upload DevSkim results to GitHub Security tab
         if: always() && hashFiles('devskim-results.sarif') != ''
         uses: github/codeql-action/upload-sarif@v3
         with:
           sarif_file: devskim-results.sarif
           category: 'devskim'
-          # Wait for processing to ensure alerts are properly reconciled
           wait-for-processing: true
 
       - name: Create security summary
@@ -182,7 +200,6 @@ jobs:
               echo "" >> $GITHUB_STEP_SUMMARY
               echo "### Summary of Issues:" >> $GITHUB_STEP_SUMMARY
               
-              # Add issue summary to step summary
               jq -r '.runs[0].results[] | "- **\(.level // "unknown" | ascii_upcase)**: \(.message.text) in `\(.locations[0].physicalLocation.artifactLocation.uri // "unknown")`"' devskim-results.sarif | head -5 >> $GITHUB_STEP_SUMMARY
               
               if [ "$issues" -gt 5 ]; then
