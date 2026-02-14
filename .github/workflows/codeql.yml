@@ -4,17 +4,17 @@ on:
   push:
     branches: [master, develop]
     paths:
-      - '**.php'
-      - '**.js'
-      - '**.ts'
-      - '**.tsx'
+      - '**/*.php'
+      - '**/*.js'
+      - '**/*.ts'
+      - '**/*.tsx'
   pull_request:
     branches: [master]
     paths:
-      - '**.php'
-      - '**.js'
-      - '**.ts'
-      - '**.tsx'
+      - '**/*.php'
+      - '**/*.js'
+      - '**/*.ts'
+      - '**/*.tsx'
   schedule:
     # Run weekly on Monday at 6 AM UTC
     - cron: '0 6 * * 1'
@@ -35,9 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: ['javascript-typescript']
-        # Note: PHP is not directly supported by CodeQL
-        # DevSkim handles PHP security scanning
+        language: ['javascript-typescript', 'php']
 
     steps:
       - name: Checkout repository
