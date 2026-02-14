@@ -107,3 +107,56 @@ services:
         reservations:
           memory: 1G
           cpus: '2.0'
+
+  # New system test database (empty - no demo data, for fresh install testing)
+  database-new-system:
+    profiles: [ci-new-system]
+    image: mariadb
+    ports:
+      - ${DATABASE_NEW_SYSTEM_PORT:-3308}:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
+      - MYSQL_USER=${MYSQL_USER:-churchcrm}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-changeme}
+    # No volume mount for demo data - database starts empty
+    hostname: crm-database-new-system
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 20s
+      retries: 10
+
+  # New system test webserver (no Config.php - runs setup wizard)
+  webserver-new-system:
+    profiles: [ci-new-system]
+    build:
+      context: .
+      dockerfile: Dockerfile.churchcrm-apache-php8
+      target: test
+    image: churchcrm/crm:php8-debian
+    ports:
+      - ${WEBSERVER_NEW_SYSTEM_PORT:-8081}:80
+    volumes:
+      - ../src:/var/www/html
+      - ..:/home/ChurchCRM
+    hostname: crm-webserver-new-system
+    env_file:
+      - .env
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-changeme}
+      - MYSQL_DATABASE=${MYSQL_DATABASE:-churchcrm}
+      - MYSQL_USER=${MYSQL_USER:-churchcrm}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD:-changeme}
+    depends_on:
+      database-new-system:
+        condition: service_healthy
+    # Use specific user for GitHub Actions
+    user: "1001:121"
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '4.0'
+        reservations:
+          memory: 1G
+          cpus: '2.0'

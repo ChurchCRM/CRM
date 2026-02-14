@@ -1,28 +1,30 @@
 import { defineConfig } from 'cypress'
-import { verifyDownloadTasks } from 'cy-verify-downloads';
 
+// Configuration for new system setup wizard testing
+// Tests the fresh install workflow without Config.php or existing database
 export default defineConfig({
   chromeWebSecurity: false,
   video: false,
   videosFolder: 'cypress/videos',
   screenshotOnRunFailure: true,
   screenshotsFolder: 'cypress/screenshots',
-  pageLoadTimeout: 30000,
-  defaultCommandTimeout: 30000,
-  requestTimeout: 15000,
+  pageLoadTimeout: 120000,  // Longer timeout for install/restore operations
+  defaultCommandTimeout: 60000,  // Longer for backup/restore commands
+  requestTimeout: 120000,  // Longer for backup/restore API calls
+  responseTimeout: 120000,  // Longer for backup/restore responses
   viewportHeight: 1080,
   viewportWidth: 1920,
   projectId: 'n4qnyb',
   env: {
-    'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
-    'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
-    'nofinance.api.key': 'M_5K4ZWTdBTmMOTGTfLWCmXFbETgHNG6_6FNZXJJulicn_WweBjm',
+    // Database connection settings for new system test
+    'db.host': 'database-new-system',
+    'db.port': '3306',
+    'db.name': 'churchcrm',
+    'db.user': 'churchcrm',
+    'db.password': 'changeme',
+    // Default admin credentials to use after install
     'admin.username': 'admin',
     'admin.password': 'changeme',
-    'standard.username': 'tony.wade@example.com',
-    'standard.password': 'basicjoe',
-    'nofinance.username': 'judith.matthews@example.com',
-    'nofinance.password': 'noMoney$',
   },
   retries: 0,
   numTestsKeptInMemory: 0,
@@ -40,9 +42,6 @@ export default defineConfig({
         printLogsToFile: 'always'
       });
       
-      // Register download verification tasks
-      on('task', verifyDownloadTasks);
-      
       // Modern Cypress 15.x event handling
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome') {
@@ -54,10 +53,9 @@ export default defineConfig({
       // Return the config (required for Cypress 15.x)
       return config;
     },
-    baseUrl: 'http://localhost/',
+    baseUrl: 'http://localhost:8081/',
     specPattern: [
-      'cypress/e2e/api/**/*.spec.js',
-      'cypress/e2e/ui/**/*.spec.js'
+      'cypress/e2e/new-system/**/*.spec.js'
     ]
   },
 })
