@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard User Setting", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
     
     it("View User Setting and Edit Page", () => {
         cy.visit("/v2/user/3");

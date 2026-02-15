@@ -1,6 +1,6 @@
 describe('Event Editor', () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it('should display event editor page', () => {

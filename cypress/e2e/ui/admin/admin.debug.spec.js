@@ -2,7 +2,7 @@
 
 describe("Admin Debug", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it("View system debug", () => {

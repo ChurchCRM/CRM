@@ -2,7 +2,7 @@
 
 describe("Family Verification Modal (Admin/Staff View)", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
         // Navigate to a family view with verification modal
         cy.visit("v2/family/1");
     });

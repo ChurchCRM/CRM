@@ -15,7 +15,7 @@ describe("Standard Cart", () => {
     };
 
     beforeEach(() => {
-        cy.setupStandardSession();
+        cy.setupStandardSessionFromEnv();
         // Empty cart before each test and verify it's empty
         cy.visit("v2/cart");
         

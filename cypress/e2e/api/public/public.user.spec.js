@@ -15,7 +15,9 @@ describe("API Public User", () => {
         }).then((resp) => {
             expect(resp.status).to.eq(200);
             expect(resp.body).to.have.property('apiKey');
-            expect(resp.body.apiKey).to.eq(Cypress.env("admin.api.key"));
+            cy.env("admin.api.key").then(expectedApiKey => {
+                expect(resp.body.apiKey).to.eq(expectedApiKey);
+            });
         });
     });
 

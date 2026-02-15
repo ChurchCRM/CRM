@@ -3,7 +3,7 @@
 describe("API Private Family Cart", () => {
     beforeEach(() => {
         // Empty cart before each test via API
-        cy.setupStandardSession();
+        cy.setupStandardSessionFromEnv();
         cy.makePrivateAdminAPICall(
             "DELETE",
             "/api/cart/",

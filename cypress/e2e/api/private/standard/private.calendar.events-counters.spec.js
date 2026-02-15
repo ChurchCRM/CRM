@@ -7,7 +7,7 @@
  */
 describe("API Private Calendar Events Counters", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     describe("GET /api/calendar/events-counters", () => {

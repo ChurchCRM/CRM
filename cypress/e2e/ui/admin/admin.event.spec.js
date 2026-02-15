@@ -3,7 +3,7 @@
 describe("Admin Event", () => {
 
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it("Create New Event Type", () => {

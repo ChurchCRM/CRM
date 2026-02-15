@@ -11,7 +11,7 @@
 
 describe("Issue #7854 - Financial Reports Fix", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     describe("Advanced Deposit Report - Fund and Family Names", () => {

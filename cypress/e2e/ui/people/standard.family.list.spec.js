@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard Family List", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
 
     it("Listing all families shows correct columns", () => {
         cy.visit("v2/family");

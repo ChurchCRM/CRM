@@ -1,6 +1,6 @@
 describe('Finance: Pledge Dashboard', () => {
     before(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
         cy.visit('/finance/pledge/dashboard');
     });
 

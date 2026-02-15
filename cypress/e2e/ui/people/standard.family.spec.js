@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard Family", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
 
     it("View invalid Family", () => {
         cy.visit("v2/family/9999");

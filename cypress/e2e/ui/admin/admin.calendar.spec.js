@@ -2,7 +2,7 @@
 
 describe("Admin Calendar", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it("Create New Calendar", () => {

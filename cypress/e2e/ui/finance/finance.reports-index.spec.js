@@ -10,7 +10,7 @@
 
 describe("Finance Reports Index", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it("should load the reports index page", () => {
@@ -104,7 +104,7 @@ describe("Finance Reports Index", () => {
 
 describe("Finance Reports Index - Standard User Access", () => {
     beforeEach(() => {
-        cy.setupStandardSession();
+        cy.setupStandardSessionFromEnv();
     });
 
     it("should allow standard users with finance permission to access reports", () => {
@@ -119,7 +119,7 @@ describe("Finance Reports Index - Standard User Access", () => {
 
 describe("Finance Reports Index - No Finance Permission", () => {
     beforeEach(() => {
-        cy.setupNoFinanceSession();
+        cy.setupNoFinanceSessionFromEnv();
     });
 
     it("should deny access to users without finance permission", () => {

@@ -3,7 +3,7 @@
 describe("Standard Person", () => {
     const uniqueSeed = Date.now().toString();
     
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
     
     it("Add Person only first and last name", () => {
         const name = "Robby " + uniqueSeed;

@@ -3,7 +3,7 @@
 describe("Person Profile", () => {
     const personId = 2;
     
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
 
     it("Printable page", () => {
         cy.visit(`PersonView.php?PersonID=${personId}`);

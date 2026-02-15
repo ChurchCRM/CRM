@@ -3,7 +3,7 @@
 
 describe("Finance Deposits", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it("Envelope Manager", () => {

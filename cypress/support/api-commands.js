@@ -12,42 +12,48 @@
 Cypress.Commands.add(
     "makePrivateAdminAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.makePrivateAPICall(
-            Cypress.env("admin.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
+        return cy.env("admin.api.key").then(apiKey => {
+            return cy.makePrivateAPICall(
+                apiKey,
+                method,
+                url,
+                body,
+                expectedStatus,
+                timeoutMs,
+            );
+        });
     },
 );
 
 Cypress.Commands.add(
     "makePrivateUserAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.makePrivateAPICall(
-            Cypress.env("user.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
+        return cy.env("user.api.key").then(apiKey => {
+            return cy.makePrivateAPICall(
+                apiKey,
+                method,
+                url,
+                body,
+                expectedStatus,
+                timeoutMs,
+            );
+        });
     },
 );
 
 Cypress.Commands.add(
     "makePrivateNoFinanceAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.makePrivateAPICall(
-            Cypress.env("nofinance.api.key"),
-            method,
-            url,
-            body,
-            expectedStatus,
-            timeoutMs,
-        );
+        return cy.env("nofinance.api.key").then(apiKey => {
+            return cy.makePrivateAPICall(
+                apiKey,
+                method,
+                url,
+                body,
+                expectedStatus,
+                timeoutMs,
+            );
+        });
     },
 );
 

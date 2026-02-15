@@ -20,7 +20,7 @@
 
 describe("Finance Payment Submission - Issue #7257 Regression Test", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it("Add CASH payment", () => {

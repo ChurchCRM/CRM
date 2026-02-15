@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Email Pages", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
     
     it("Email Dashboard", () => {
         cy.visit("v2/email/dashboard");

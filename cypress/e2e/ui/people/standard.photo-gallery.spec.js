@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Photo Gallery Page", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
 
     it("Photo Directory page loads and filters work", () => {
         // Test page load

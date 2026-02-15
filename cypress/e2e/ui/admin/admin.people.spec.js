@@ -2,7 +2,7 @@
 
 describe("Admin People", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it("Person Classifications Editor", () => {

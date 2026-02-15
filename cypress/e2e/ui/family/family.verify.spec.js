@@ -4,7 +4,7 @@ describe("Family Verification Page", () => {
     const familyId = 1;
 
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
         // Get a fresh verification URL for each test (token is consumed on use)
         cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then((response) => {
             cy.wrap(response.body.url).as("verifyUrl");

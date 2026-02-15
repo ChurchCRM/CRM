@@ -1,6 +1,6 @@
 describe('Admin Restore Database', () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it('should load the restore page', () => {

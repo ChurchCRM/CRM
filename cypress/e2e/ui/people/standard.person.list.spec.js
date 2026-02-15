@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard People", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
  
     it("Person Not Found", () => {
         cy.visit("PersonView.php?PersonID=9999");

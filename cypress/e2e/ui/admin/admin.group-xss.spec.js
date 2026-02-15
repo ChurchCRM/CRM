@@ -3,7 +3,7 @@
 describe('Group XSS Security Tests', () => {
 
   beforeEach(() => {
-    cy.setupAdminSession();
+    cy.setupAdminSessionFromEnv();
   });
 
   it('Should prevent stored XSS in group description via GroupEditor', () => {

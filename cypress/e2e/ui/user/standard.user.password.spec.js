@@ -1,7 +1,7 @@
     /// <reference types="cypress" />
 
 describe("User 2FA", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
     
     it("Ensure QR code displays", () => {
         cy.visit("v2/user/current/enroll2fa");
@@ -18,7 +18,7 @@ describe("User 2FA", () => {
 });
 
 describe("Standard User Password", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
     
     it("Change with invalid password", () => {
         cy.visit("v2/user/current/changepassword");

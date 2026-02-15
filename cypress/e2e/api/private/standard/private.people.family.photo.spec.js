@@ -5,7 +5,7 @@ describe("API Private Photo and Avatar - Family", () => {
     const invalidFamilyId = 99999;
 
     beforeEach(() => {
-        cy.setupStandardSession();
+        cy.setupStandardSessionFromEnv();
     });
 
     describe("GET /api/family/{id}/photo", () => {

@@ -2,7 +2,7 @@
 
 describe("Admin Reports", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it("Gen DirectoryReports", () => {

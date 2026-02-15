@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard User Session", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
 
     it("View Event Checkin via URL", () => {
         cy.visit("Checkin.php?eventId=3");

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("People Tools", () => {
-    beforeEach(() => cy.setupStandardSession());
+    beforeEach(() => cy.setupStandardSessionFromEnv());
     
     it("Open the People Dashboard", () => {
         cy.visit("PeopleDashboard.php");

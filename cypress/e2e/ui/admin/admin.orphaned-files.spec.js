@@ -1,6 +1,6 @@
 describe('Admin Orphaned Files', () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it('should load the orphaned files page', () => {

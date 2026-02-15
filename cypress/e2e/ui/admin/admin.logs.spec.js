@@ -1,6 +1,6 @@
 describe('Admin System Logs - UI Tests', () => {
   beforeEach(() => {
-    cy.setupAdminSession();
+    cy.setupAdminSessionFromEnv();
   });
 
   it('Should display log level configuration section', () => {

@@ -44,36 +44,38 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
 
 /**
  * Sets up a cached admin login session for Cypress UI tests.
- * Reads credentials from cypress.config.ts env configuration.
  * Usage in test files:
- *   beforeEach(() => cy.setupAdminSession());
+ *   beforeEach(() => {
+ *       cy.env('admin.username').then(username => {
+ *           cy.env('admin.password').then(password => {
+ *               cy.setupAdminSession(username, password);
+ *           });
+ *       });
+ *   });
+ * 
+ * Or use the helper: cy.setupAdminSessionFromEnv()
  * 
  * Note: Uses cy.session() with explicit validation to cache login across test runs.
  * If validation fails, the session is cleared and login is re-attempted.
  */
-Cypress.Commands.add('setupAdminSession', (options = {}) => {
-    const username = Cypress.env('admin.username');
-    const password = Cypress.env('admin.password');
+Cypress.Commands.add('setupAdminSession', (username, password, options = {}) => {
     if (!username || !password) {
-        throw new Error('Admin credentials not configured in cypress.config.ts env: admin.username and admin.password required');
+        throw new Error('Admin credentials are required');
     }
     cy.setupLoginSession('admin-session', username, password, options);
 });
 
 /**
  * Sets up a cached standard user login session for Cypress UI tests.
- * Reads credentials from cypress.config.ts env configuration.
  * Usage in test files:
- *   beforeEach(() => cy.setupStandardSession());
+ *   beforeEach(() => cy.setupStandardSessionFromEnv());
  * 
  * Note: Uses cy.session() with explicit validation to cache login across test runs.
  * If validation fails, the session is cleared and login is re-attempted.
  */
-Cypress.Commands.add('setupStandardSession', (options = {}) => {
-    const username = Cypress.env('standard.username');
-    const password = Cypress.env('standard.password');
+Cypress.Commands.add('setupStandardSession', (username, password, options = {}) => {
     if (!username || !password) {
-        throw new Error('Standard user credentials not configured in cypress.config.ts env: standard.username and standard.password required');
+        throw new Error('Standard user credentials are required');
     }
     cy.setupLoginSession('standard-session', username, password, options);
 });
@@ -81,17 +83,42 @@ Cypress.Commands.add('setupStandardSession', (options = {}) => {
 /**
  * Sets up a cached session for a user WITHOUT finance permissions.
  * Used to test that finance pages correctly deny access to non-finance users.
- * Reads credentials from cypress.config.ts env configuration.
  * Usage in test files:
- *   beforeEach(() => cy.setupNoFinanceSession());
+ *   beforeEach(() => cy.setupNoFinanceSessionFromEnv());
  */
-Cypress.Commands.add('setupNoFinanceSession', (options = {}) => {
-    const username = Cypress.env('nofinance.username');
-    const password = Cypress.env('nofinance.password');
+Cypress.Commands.add('setupNoFinanceSession', (username, password, options = {}) => {
     if (!username || !password) {
-        throw new Error('No-finance user credentials not configured in cypress.config.ts env: nofinance.username and nofinance.password required');
+        throw new Error('No-finance user credentials are required');
     }
     cy.setupLoginSession('nofinance-session', username, password, options);
+});
+
+/**
+ * Convenience helpers that read credentials from cy.env() (secure)
+ * These should be used in most tests instead of manually passing credentials
+ */
+Cypress.Commands.add('setupAdminSessionFromEnv', (options = {}) => {
+    cy.env('admin.username').then(username => {
+        cy.env('admin.password').then(password => {
+            cy.setupAdminSession(username, password, options);
+        });
+    });
+});
+
+Cypress.Commands.add('setupStandardSessionFromEnv', (options = {}) => {
+    cy.env('standard.username').then(username => {
+        cy.env('standard.password').then(password => {
+            cy.setupStandardSession(username, password, options);
+        });
+    });
+});
+
+Cypress.Commands.add('setupNoFinanceSessionFromEnv', (options = {}) => {
+    cy.env('nofinance.username').then(username => {
+        cy.env('nofinance.password').then(password => {
+            cy.setupNoFinanceSession(username, password, options);
+        });
+    });
 });
 
 /**

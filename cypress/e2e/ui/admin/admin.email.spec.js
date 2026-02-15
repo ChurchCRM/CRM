@@ -1,6 +1,6 @@
 describe("Admin Email", () => {
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSessionFromEnv();
     });
 
     it("Debug", () => {

@@ -4,7 +4,7 @@ describe("Event Types Management", () => {
   const eventTypeName = "Test Event Type " + Date.now();
 
   beforeEach(() => {
-    cy.setupAdminSession();
+    cy.setupAdminSessionFromEnv();
   });
 
   it("should view all event types", () => {
