@@ -23,7 +23,7 @@
         "docs": "https://github.com/ChurchCRM/CRM/wiki"
     },
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.4",
         "ext-PDO": "*",
         "ext-bcmath": "*",
         "ext-curl": "*",
@@ -94,7 +94,7 @@
             "php-http/discovery": true
         },
         "platform": {
-            "php": "8.3"
+            "php": "8.4"
         },
         "sort-packages": true
     },
