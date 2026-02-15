@@ -6,6 +6,7 @@ use ChurchCRM\Config;
 use ChurchCRM\data\Countries;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use Exception;
+use Monolog\Level;
 use Monolog\Logger;
 
 class   SystemConfig
@@ -36,14 +37,14 @@ class   SystemConfig
     {
         return [
             'Choices' => [
-                gettext('DEBUG') . ':' . Logger::DEBUG,
-                gettext('INFO') . ':' . Logger::INFO,
-                gettext('NOTICE') . ':' . Logger::NOTICE,
-                gettext('WARNING') . ':' . Logger::WARNING,
-                gettext('ERROR') . ':' . Logger::ERROR,
-                gettext('CRITICAL') . ':' . Logger::CRITICAL,
-                gettext('ALERT') . ':' . Logger::ALERT,
-                gettext('EMERGENCY') . ':' . Logger::EMERGENCY,
+                gettext('DEBUG') . ':' . Level::Debug->value,
+                gettext('INFO') . ':' . Level::Info->value,
+                gettext('NOTICE') . ':' . Level::Notice->value,
+                gettext('WARNING') . ':' . Level::Warning->value,
+                gettext('ERROR') . ':' . Level::Error->value,
+                gettext('CRITICAL') . ':' . Level::Critical->value,
+                gettext('ALERT') . ':' . Level::Alert->value,
+                gettext('EMERGENCY') . ':' . Level::Emergency->value,
             ],
         ];
     }
@@ -473,7 +474,7 @@ class   SystemConfig
 
     public static function debugEnabled(): bool
     {
-        if (self::getValue('sLogLevel') == Logger::DEBUG) {
+        if (intval(self::getValue('sLogLevel')) == Level::Debug->value) {
             return true;
         }
 
