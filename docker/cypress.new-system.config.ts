@@ -28,6 +28,9 @@ export default defineConfig({
   },
   retries: 0,
   numTestsKeptInMemory: 0,
+  // TODO: Migrate away from Cypress.env() when Cypress provides stable alternative API
+  // See: https://on.cypress.io/cypress-env-migration
+  allowCypressEnv: true,
   e2e: {
     setupNodeEvents(on, config) {
       // cypress-terminal-report logs printer for CI debugging
