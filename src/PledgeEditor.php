@@ -72,7 +72,7 @@ if (array_key_exists('GroupKey', $_GET)) {
 if (array_key_exists('CurrentDeposit', $_GET)) {
     $iCurrentDeposit = InputUtils::legacyFilterInput($_GET['CurrentDeposit'], 'int');
 }
-$linkBack = InputUtils::legacyFilterInput($_GET['linkBack'], 'string');
+$linkBack = RedirectUtils::getLinkBackFromRequest('finance/');
 $iFamily = 0;
 if (array_key_exists('FamilyID', $_GET)) {
     $iFamily = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
@@ -761,7 +761,7 @@ require_once __DIR__ . '/Include/Header.php';
                     } else {
                         $cancelText = 'Return';
                     } ?>
-                    <input type="button" class="btn btn-secondary" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= $linkBack ? $linkBack : 'finance/' ?>';">
+                    <input type="button" class="btn btn-secondary" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'finance/') ?>';">
                 </div>
             </div>
         </div>

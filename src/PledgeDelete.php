@@ -9,7 +9,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Confirm Delete');
 
-$linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
+$linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 $sGroupKey = InputUtils::legacyFilterInput($_GET['GroupKey'], 'string');
 
 // Security: User must have Add or Edit Records permission to use this form in those manners

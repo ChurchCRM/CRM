@@ -3,7 +3,7 @@
 /**
  * Security tests for RedirectUtils linkBack validation
  * 
- * Tests that malicious redirect URLs are properly rejected:
+ * Tests verify malicious redirect URLs are properly rejected:
  * - Absolute URLs (http://, https://)
  * - JavaScript protocols (javascript:, data:, vbscript:)
  * - Protocol-relative URLs (//evil.com)
@@ -15,12 +15,6 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
-
-    // Test pages that use linkBack parameter
-    const testPages = [
-        { path: '/WhyCameEditor.php', params: { PersonID: 1, WhyCameID: 0 } },
-        { path: '/PledgeEditor.php', params: { 'Ession': 1, 'PledgeOrPayment': 'Pledge' } },
-    ];
 
     describe('Rejects malicious redirect URLs', () => {
         const maliciousUrls = [
