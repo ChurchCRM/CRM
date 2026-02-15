@@ -67,7 +67,7 @@
     "require-dev": {
         "phpstan/phpstan": "^2.1.6",
         "rector/rector": "^2.0.9",
-        "squizlabs/php_codesniffer": "^3.11.3"
+        "squizlabs/php_codesniffer": "^4.0.1"
     },
     "replace": {
         "symfony/polyfill-mbstring": "*",
