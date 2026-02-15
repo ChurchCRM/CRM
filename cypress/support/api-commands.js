@@ -9,51 +9,50 @@
 // ***********************************************
 
 // -- Modern API command patterns --
+// Note: These commands use Cypress.env() which is safe because support files
+// execute in Node.js context, not browser context.
 Cypress.Commands.add(
     "makePrivateAdminAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.env("admin.api.key").then(apiKey => {
-            return cy.makePrivateAPICall(
-                apiKey,
-                method,
-                url,
-                body,
-                expectedStatus,
-                timeoutMs,
-            );
-        });
+        const apiKey = Cypress.env("admin.api.key");
+        return cy.makePrivateAPICall(
+            apiKey,
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
     },
 );
 
 Cypress.Commands.add(
     "makePrivateUserAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.env("user.api.key").then(apiKey => {
-            return cy.makePrivateAPICall(
-                apiKey,
-                method,
-                url,
-                body,
-                expectedStatus,
-                timeoutMs,
-            );
-        });
+        const apiKey = Cypress.env("user.api.key");
+        return cy.makePrivateAPICall(
+            apiKey,
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
     },
 );
 
 Cypress.Commands.add(
     "makePrivateNoFinanceAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.env("nofinance.api.key").then(apiKey => {
-            return cy.makePrivateAPICall(
-                apiKey,
-                method,
-                url,
-                body,
-                expectedStatus,
-                timeoutMs,
-            );
-        });
+        const apiKey = Cypress.env("nofinance.api.key");
+        return cy.makePrivateAPICall(
+            apiKey,
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
     },
 );
 

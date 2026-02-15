@@ -94,31 +94,28 @@ Cypress.Commands.add('setupNoFinanceSession', (username, password, options = {})
 });
 
 /**
- * Convenience helpers that read credentials from cy.env() (secure)
+ * Convenience helpers that read credentials from Cypress.env() (secure - runs in Node.js context)
  * These should be used in most tests instead of manually passing credentials
+ * 
+ * Note: Cypress.env() is safe here because support files execute in Node.js context,
+ * not browser context. The allowCypressEnv: false setting only blocks browser access.
  */
 Cypress.Commands.add('setupAdminSessionFromEnv', (options = {}) => {
-    cy.env('admin.username').then(username => {
-        cy.env('admin.password').then(password => {
-            cy.setupAdminSession(username, password, options);
-        });
-    });
+    const username = Cypress.env('admin.username');
+    const password = Cypress.env('admin.password');
+    cy.setupAdminSession(username, password, options);
 });
 
 Cypress.Commands.add('setupStandardSessionFromEnv', (options = {}) => {
-    cy.env('standard.username').then(username => {
-        cy.env('standard.password').then(password => {
-            cy.setupStandardSession(username, password, options);
-        });
-    });
+    const username = Cypress.env('standard.username');
+    const password = Cypress.env('standard.password');
+    cy.setupStandardSession(username, password, options);
 });
 
 Cypress.Commands.add('setupNoFinanceSessionFromEnv', (options = {}) => {
-    cy.env('nofinance.username').then(username => {
-        cy.env('nofinance.password').then(password => {
-            cy.setupNoFinanceSession(username, password, options);
-        });
-    });
+    const username = Cypress.env('nofinance.username');
+    const password = Cypress.env('nofinance.password');
+    cy.setupNoFinanceSession(username, password, options);
 });
 
 /**

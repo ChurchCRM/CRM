@@ -12,8 +12,8 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get('#Finance').check();
         cy.get('#SaveButton').click();
         
-        // Wait for page to load
-        cy.wait(500);
+        // Wait for page to reload after save
+        cy.url().should('include', 'UserEditor.php');
         
         // Reload page and verify ORM loaded the updated value
         cy.visit('UserEditor.php?PersonID=1');
@@ -22,7 +22,7 @@ describe("User Editor - ORM Migration Tests", () => {
         // Uncheck to clean up
         cy.get('#Finance').uncheck();
         cy.get('#SaveButton').click();
-        cy.wait(500);
+        cy.url().should('include', 'UserEditor.php');
     });
 
     it("Should handle ORM user update with multiple permission changes", () => {
@@ -35,7 +35,8 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get('#Notes').check();
         cy.get('#SaveButton').click();
         
-        cy.wait(500);
+        // Wait for save to complete
+        cy.url().should('include', 'UserEditor.php');
         
         // Reload and verify ORM persisted all changes
         cy.visit('UserEditor.php?PersonID=1');
@@ -48,7 +49,7 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get('#EditRecords').uncheck();
         cy.get('#Notes').uncheck();
         cy.get('#SaveButton').click();
-        cy.wait(500);
+        cy.url().should('include', 'UserEditor.php');
     });
 
     it("Should update username via ORM", () => {
@@ -62,7 +63,7 @@ describe("User Editor - ORM Migration Tests", () => {
             // Update username
             cy.get('#UserName').clear().type(newUsername);
             cy.get('#SaveButton').click();
-            cy.wait(500);
+            cy.url().should('include', 'UserEditor.php');
             
             // Verify ORM persisted the change
             cy.visit('UserEditor.php?PersonID=1');
@@ -71,7 +72,7 @@ describe("User Editor - ORM Migration Tests", () => {
             // Reset to original
             cy.get('#UserName').clear().type(originalUsername);
             cy.get('#SaveButton').click();
-            cy.wait(500);
+            cy.url().should('include', 'UserEditor.php');
         });
     });
 
@@ -82,7 +83,7 @@ describe("User Editor - ORM Migration Tests", () => {
         // Change style
         cy.get('#Style').select('skin-purple');
         cy.get('#SaveButton').click();
-        cy.wait(500);
+        cy.url().should('include', 'UserEditor.php');
         
         // Reload and verify ORM loaded the style
         cy.visit('UserEditor.php?PersonID=1');
@@ -91,6 +92,6 @@ describe("User Editor - ORM Migration Tests", () => {
         // Reset to default
         cy.get('#Style').select('skin-blue');
         cy.get('#SaveButton').click();
-        cy.wait(500);
+        cy.url().should('include', 'UserEditor.php');
     });
 });

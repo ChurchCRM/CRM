@@ -30,8 +30,6 @@ describe('04 - System Reset', () => {
         cy.get('input[name=Password]').type(adminCredentials.password);
         cy.get('input[name=Password]').type('{enter}');
         cy.url({ timeout: 30000 }).should('not.include', '/login');
-        // Give the session time to establish
-        cy.wait(1000);
     };
 
     describe('Step 10a: Navigate to Reset Page', () => {

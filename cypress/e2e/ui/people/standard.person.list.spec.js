@@ -11,7 +11,9 @@ describe("Standard People", () => {
 
     it("Listing all persons", () => {
         cy.visit("v2/people");
-        cy.wait(500);
+        
+        // Wait for DataTable to be ready
+        cy.get("#members_filter input").should('be.visible');
         
         // Search for Admin
         cy.get("#members_filter input").type("Admin");
@@ -29,7 +31,9 @@ describe("Standard People", () => {
 
    it("Listing all persons with gender url filter", () => {
         cy.visit("v2/people?Gender=0");
-        cy.wait(500);
+        
+        // Wait for DataTable to be ready with filter applied
+        cy.get("#members_filter input").should('be.visible');
         
         // Search for Admin (male)
         cy.get("#members_filter input").type("Admin");
@@ -48,7 +52,8 @@ describe("Standard People", () => {
     it("Multiple filter combinations", () => {
         cy.visit("v2/people");
         
-       cy.wait(500);
+        // Wait for DataTable and filters to be ready
+        cy.get("#members_filter input").should('be.visible');
 
         // Apply gender filter using Select2
         cy.get(".filter-Gender").parent().find(".select2-selection").click();
