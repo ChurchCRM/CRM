@@ -100,6 +100,15 @@ jobs:
         echo "🔍 Validating PHP syntax for all files in signatures..."
         npm run build:php:validate
 
+    - name: Build Docker Images
+      run: |
+        echo "🐳 Building Docker images for CI tests..."
+        cd docker
+        docker build --target test -t churchcrm/crm:php8-debian -f Dockerfile.churchcrm-apache-php8 .
+        echo "📦 Saving Docker image to tar file..."
+        docker save churchcrm/crm:php8-debian | gzip > ../temp/docker-image.tar.gz
+        echo "✅ Docker image saved: $(ls -lh ../temp/docker-image.tar.gz | awk '{print $5}')"
+
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
@@ -132,8 +141,17 @@ jobs:
         name: build-${{ github.run_id }}
         path: .
 
+    - name: Load Docker Image
+      run: |
+        echo "📦 Loading pre-built Docker image..."
+        docker load < temp/docker-image.tar.gz
+        echo "✅ Docker images loaded:"
+        docker images | grep churchcrm
+
     - name: Run Docker (Root Path)
-      run: npm run docker:ci:root:start
+      run: |
+        cp docker/Config.root.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
 
     - name: Wait for Docker to be ready
       run: |
@@ -223,8 +241,17 @@ jobs:
         name: build-${{ github.run_id }}
         path: .
 
+    - name: Load Docker Image
+      run: |
+        echo "📦 Loading pre-built Docker image..."
+        docker load < temp/docker-image.tar.gz
+        echo "✅ Docker images loaded:"
+        docker images | grep churchcrm
+
     - name: Run Docker (Subdirectory Path)
-      run: npm run docker:ci:subdir:start
+      run: |
+        cp docker/Config.parallel.subdir.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
 
     - name: Wait for Docker to be ready
       run: |
@@ -314,6 +341,13 @@ jobs:
         name: build-${{ github.run_id }}
         path: .
 
+    - name: Load Docker Image
+      run: |
+        echo "📦 Loading pre-built Docker image..."
+        docker load < temp/docker-image.tar.gz
+        echo "✅ Docker images loaded:"
+        docker images | grep churchcrm
+
     - name: Generate File Signatures
       run: |
         echo "Generating file signatures for integrity check..."
@@ -325,7 +359,8 @@ jobs:
         echo "Config.php removed - setup wizard will be triggered"
 
     - name: Run Docker (New System Test)
-      run: npm run docker:ci:new-system:start
+      run: |
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
 
     - name: Wait for Docker to be ready
       run: |
