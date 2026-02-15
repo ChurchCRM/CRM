@@ -66,6 +66,13 @@ jobs:
       run: |
         npm ci
 
+    - name: Setup PHP 8.4
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath, sodium
+        coverage: none
+
     - name: Get Composer Cache Directory
       id: composer-cache
       run: |
@@ -78,6 +85,11 @@ jobs:
         key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
           ${{ runner.os }}-composer-
+
+    - name: Install Composer Dependencies
+      run: |
+        cd src
+        composer install --no-dev
 
     - name: Build App
       run: |
@@ -119,11 +131,6 @@ jobs:
       with:
         name: build-${{ github.run_id }}
         path: .
-
-    - name: Install Composer Dependencies
-      run: |
-        cd src
-        composer install --no-dev
 
     - name: Run Docker (Root Path)
       run: npm run docker:ci:root:start
@@ -216,11 +223,6 @@ jobs:
         name: build-${{ github.run_id }}
         path: .
 
-    - name: Install Composer Dependencies
-      run: |
-        cd src
-        composer install --no-dev
-
     - name: Run Docker (Subdirectory Path)
       run: npm run docker:ci:subdir:start
 
@@ -311,11 +313,6 @@ jobs:
       with:
         name: build-${{ github.run_id }}
         path: .
-
-    - name: Install Composer Dependencies
-      run: |
-        cd src
-        composer install --no-dev
 
     - name: Generate File Signatures
       run: |
