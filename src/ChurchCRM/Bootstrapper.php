@@ -15,6 +15,7 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Connection\ConnectionWrapper;
@@ -94,9 +95,9 @@ class Bootstrapper
             self::handleBootstrapFailure($e, 'SystemURLs initialization failed');
         }
         if ($debugBootstrapper) {
-            self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::DEBUG);
+            self::$bootStrapLogger = LoggerUtils::getAppLogger(Level::Debug->value);
         } else {
-            self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::INFO);
+            self::$bootStrapLogger = LoggerUtils::getAppLogger(Level::Info->value);
         }
 
         self::$bootStrapLogger->debug("Starting ChurchCRM");
