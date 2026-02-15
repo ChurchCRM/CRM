@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
@@ -91,12 +91,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Cache DevSkim rules
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.devskim
           key: devskim-rules-${{ runner.os }}-${{ hashFiles('**/*.json') }}
@@ -104,7 +104,7 @@ jobs:
             devskim-rules-${{ runner.os }}-
 
       - name: Setup .NET 6.0
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: '6.0.x'
 
@@ -224,7 +224,7 @@ jobs:
 
       - name: Archive security results
         if: always() && hashFiles('devskim-results.sarif') != ''
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: devskim-security-results
           path: devskim-results.sarif
