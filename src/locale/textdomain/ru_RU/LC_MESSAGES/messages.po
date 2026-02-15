@@ -101,7 +101,7 @@ msgstr "Имя"
 
 #: 
 msgid "Middle Name"
-msgstr "Второе имя"
+msgstr "Отчество"
 
 #: 
 msgid "Zip"
@@ -987,7 +987,7 @@ msgstr "Первый"
 
 #: 
 msgid "Middle"
-msgstr "Второе имя"
+msgstr "Отчество"
 
 #: 
 msgid "Last"
@@ -1124,7 +1124,7 @@ msgstr "Показать платежи"
 
 #: 
 msgid "Since"
-msgstr "с тех пор"
+msgstr "Член церкви с"
 
 #: 
 msgid "Update"
@@ -10191,7 +10191,7 @@ msgstr "Опции экспорта"
 
 #: 
 msgid "F"
-msgstr "Ж"
+msgstr "Жен."
 
 #: 
 msgid "Failed to save settings"
@@ -10331,7 +10331,7 @@ msgstr "Местоположение"
 
 #: 
 msgid "M"
-msgstr "М"
+msgstr "Муж."
 
 #: 
 msgid "Manage Funds"
