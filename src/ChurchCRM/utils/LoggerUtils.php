@@ -7,10 +7,8 @@ use ChurchCRM\dto\SystemURLs;
 use Monolog\Formatter\JsonFormatter;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
-use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
-use Monolog\LogRecord;
 use Monolog\Processor\IntrospectionProcessor;
 use Monolog\Processor\PsrLogMessageProcessor;
 
@@ -68,7 +66,7 @@ class LoggerUtils
         if (self::$formatter === null) {
             // In production, use JSON for better log viewer compatibility (ELK, Splunk, Datadog)
             // In development, use text format for readability
-            $useJson = SystemConfig::getValue('sLogLevel') == Level::Debug->value ? false : true;
+            $useJson = SystemConfig::getValue('sLogLevel') != Level::Debug->value;
             
             if ($useJson) {
                 // JsonFormatter with optimized settings for structured logging
@@ -129,8 +127,8 @@ class LoggerUtils
             
             $slimLogger->pushHandler($handler);
             
-            // Add IntrospectionProcessor for automatic call context
-            $slimLogger->pushProcessor(new IntrospectionProcessor(Level::Debug, ['ChurchCRM\\', 'Slim\\']));
+            // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
+            $slimLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\', 'Slim\\']));
             
             self::$slimLogger = $slimLogger;
         }
@@ -145,14 +143,27 @@ class LoggerUtils
     {
         if (!self::$appLogger instanceof Logger) {
             if ($level === null) {
-                $level = self::getLogLevel();
+                $level = self::getLogLevelValue();
+            } elseif ($level instanceof Level) {
+                $level = $level->value;
             }
 
             self::$appLogger = new Logger('defaultLogger');
-            self::$appLogHandler = new StreamHandler(self::buildLogFilePath('app'), $level);
+            $baseLogPath = SystemURLs::getDocumentRoot() . '/logs/app';
+            self::$appLogHandler = new RotatingFileHandler($baseLogPath . '.log', 30, $level);
             self::$appLogHandler->setFormatter(self::createFormatter());
+            
+            // Add error callback for graceful failure handling
+            self::$appLogHandler->setOnFailureCallback(function (\Throwable $error) {
+                error_log('App logger handler failed: ' . $error->getMessage());
+            });
+            
             self::$appLogger->pushHandler(self::$appLogHandler);
             self::$appLogger->pushProcessor(new PsrLogMessageProcessor());
+            
+            // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
+            self::$appLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\']));
+            
             self::$appLogger->pushProcessor(function (array $entry): array {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
                 $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
@@ -186,9 +197,20 @@ class LoggerUtils
     {
         if (!self::$authLogger instanceof Logger) {
             self::$authLogger = new Logger('authLogger');
-            self::$authLogHandler = new StreamHandler(self::buildLogFilePath('auth'), self::getLogLevel());
+            $baseLogPath = SystemURLs::getDocumentRoot() . '/logs/auth';
+            self::$authLogHandler = new RotatingFileHandler($baseLogPath . '.log', 30, self::getLogLevelValue());
             self::$authLogHandler->setFormatter(self::createFormatter());
+            
+            // Add error callback for graceful failure handling
+            self::$authLogHandler->setOnFailureCallback(function (\Throwable $error) {
+                error_log('Auth logger handler failed: ' . $error->getMessage());
+            });
+            
             self::$authLogger->pushHandler(self::$authLogHandler);
+            
+            // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
+            self::$authLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\']));
+            
             self::$authLogger->pushProcessor(function (array $entry): array {
                 $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
                 $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
@@ -207,7 +229,7 @@ class LoggerUtils
         // If the app log handler was initialized (in the bootstrapper) to a specific level
         // before the database initialization occurred,
         // we provide a function to reset the app logger to what's defined in the database.
-        self::$appLogHandler->setLevel(self::getLogLevel());
+        self::$appLogHandler->setLevel(self::getLogLevelValue());
     }
 
     public static function getCSPLogger(): ?Logger
@@ -227,8 +249,8 @@ class LoggerUtils
             
             self::$cspLogger->pushHandler($handler);
             
-            // Add IntrospectionProcessor for automatic call context
-            self::$cspLogger->pushProcessor(new IntrospectionProcessor(Level::Debug, ['ChurchCRM\\']));
+            // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
+            self::$cspLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\']));
         }
 
         return self::$cspLogger;
