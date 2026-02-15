@@ -110,22 +110,44 @@ class LoggerUtils
         return sys_get_temp_dir() . '/churchcrm-' . date('Y-m-d') . '-' . $type . '.log';
     }
 
+    /**
+     * Build a rotating log file base path (without date/extension for RotatingFileHandler)
+     */
+    private static function buildRotatingLogBasePath(string $type): string
+    {
+        try {
+            $docRoot = SystemURLs::getDocumentRoot();
+            if ($docRoot && is_dir($docRoot . '/logs') && is_writable($docRoot . '/logs')) {
+                return $docRoot . '/logs/' . $type;
+            }
+        } catch (\Exception $e) {
+            // Config not initialized or logs directory not accessible
+        }
+        
+        // Fallback to temp directory
+        return sys_get_temp_dir() . '/churchcrm-' . $type;
+    }
+
     public static function getSlimMVCLogger(): Logger
     {
         if (!self::$slimLogger instanceof Logger) {
             $slimLogger = new Logger('slim-app');
             
             // Use RotatingFileHandler for automatic daily rotation
-            $baseLogPath = SystemURLs::getDocumentRoot() . '/logs/slim';
-            $handler = new RotatingFileHandler($baseLogPath . '.log', 30, self::getLogLevel()->value);
-            $handler->setFormatter(self::createFormatter());
-            
-            // Add error callback for graceful failure handling
-            $handler->setOnFailureCallback(function (\Throwable $error) {
-                error_log('Slim logger handler failed: ' . $error->getMessage());
-            });
-            
-            $slimLogger->pushHandler($handler);
+            try {
+                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('slim'), 30, self::getLogLevel()->value);
+                $handler->setFormatter(self::createFormatter());
+                
+                // Add error callback for graceful failure handling
+                $handler->setOnFailureCallback(function (\Throwable $error) {
+                    error_log('Slim logger handler failed: ' . $error->getMessage());
+                });
+                
+                $slimLogger->pushHandler($handler);
+            } catch (\Throwable $e) {
+                // Fallback to error_log if file handler fails during initialization
+                error_log('Failed to initialize Slim logger: ' . $e->getMessage());
+            }
             
             // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
             $slimLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\', 'Slim\\']));
@@ -149,16 +171,22 @@ class LoggerUtils
             }
 
             self::$appLogger = new Logger('defaultLogger');
-            $baseLogPath = SystemURLs::getDocumentRoot() . '/logs/app';
-            self::$appLogHandler = new RotatingFileHandler($baseLogPath . '.log', 30, $level);
-            self::$appLogHandler->setFormatter(self::createFormatter());
             
-            // Add error callback for graceful failure handling
-            self::$appLogHandler->setOnFailureCallback(function (\Throwable $error) {
-                error_log('App logger handler failed: ' . $error->getMessage());
-            });
+            try {
+                self::$appLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('app'), 30, $level);
+                self::$appLogHandler->setFormatter(self::createFormatter());
+                
+                // Add error callback for graceful failure handling
+                self::$appLogHandler->setOnFailureCallback(function (\Throwable $error) {
+                    error_log('App logger handler failed: ' . $error->getMessage());
+                });
+                
+                self::$appLogger->pushHandler(self::$appLogHandler);
+            } catch (\Throwable $e) {
+                // Fallback to error_log if file handler fails during initialization
+                error_log('Failed to initialize app logger: ' . $e->getMessage());
+            }
             
-            self::$appLogger->pushHandler(self::$appLogHandler);
             self::$appLogger->pushProcessor(new PsrLogMessageProcessor());
             
             // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
@@ -197,16 +225,21 @@ class LoggerUtils
     {
         if (!self::$authLogger instanceof Logger) {
             self::$authLogger = new Logger('authLogger');
-            $baseLogPath = SystemURLs::getDocumentRoot() . '/logs/auth';
-            self::$authLogHandler = new RotatingFileHandler($baseLogPath . '.log', 30, self::getLogLevelValue());
-            self::$authLogHandler->setFormatter(self::createFormatter());
             
-            // Add error callback for graceful failure handling
-            self::$authLogHandler->setOnFailureCallback(function (\Throwable $error) {
-                error_log('Auth logger handler failed: ' . $error->getMessage());
-            });
-            
-            self::$authLogger->pushHandler(self::$authLogHandler);
+            try {
+                self::$authLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('auth'), 30, self::getLogLevelValue());
+                self::$authLogHandler->setFormatter(self::createFormatter());
+                
+                // Add error callback for graceful failure handling
+                self::$authLogHandler->setOnFailureCallback(function (\Throwable $error) {
+                    error_log('Auth logger handler failed: ' . $error->getMessage());
+                });
+                
+                self::$authLogger->pushHandler(self::$authLogHandler);
+            } catch (\Throwable $e) {
+                // Fallback to error_log if file handler fails during initialization
+                error_log('Failed to initialize auth logger: ' . $e->getMessage());
+            }
             
             // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
             self::$authLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\']));
@@ -229,7 +262,9 @@ class LoggerUtils
         // If the app log handler was initialized (in the bootstrapper) to a specific level
         // before the database initialization occurred,
         // we provide a function to reset the app logger to what's defined in the database.
-        self::$appLogHandler->setLevel(self::getLogLevelValue());
+        if (self::$appLogHandler !== null) {
+            self::$appLogHandler->setLevel(self::getLogLevelValue());
+        }
     }
 
     public static function getCSPLogger(): ?Logger
@@ -238,16 +273,20 @@ class LoggerUtils
             self::$cspLogger = new Logger('cspLogger');
             
             // Use RotatingFileHandler for automatic daily rotation and retention
-            $baseLogPath = SystemURLs::getDocumentRoot() . '/logs/csp';
-            $handler = new RotatingFileHandler($baseLogPath . '.log', 30, self::getLogLevel()->value);
-            $handler->setFormatter(self::createFormatter());
-            
-            // Add error callback for graceful failure handling
-            $handler->setOnFailureCallback(function (\Throwable $error) {
-                error_log('CSP logger handler failed: ' . $error->getMessage());
-            });
-            
-            self::$cspLogger->pushHandler($handler);
+            try {
+                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('csp'), 30, self::getLogLevel()->value);
+                $handler->setFormatter(self::createFormatter());
+                
+                // Add error callback for graceful failure handling
+                $handler->setOnFailureCallback(function (\Throwable $error) {
+                    error_log('CSP logger handler failed: ' . $error->getMessage());
+                });
+                
+                self::$cspLogger->pushHandler($handler);
+            } catch (\Throwable $e) {
+                // Fallback to error_log if file handler fails during initialization
+                error_log('Failed to initialize CSP logger: ' . $e->getMessage());
+            }
             
             // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
             self::$cspLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\']));
