@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Manage stale issues and PRs
-        uses: actions/stale@v9
+        uses: actions/stale@v10
         with:
           # Repository token
           repo-token: ${{ secrets.GITHUB_TOKEN }}
