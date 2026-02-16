@@ -18,31 +18,31 @@ window.initializePeopleListFromServer = function (serverVars) {
     familyActiveStatus,
   } = serverVars;
 
-  // Classification
+  // Classification - use DOM APIs to escape server values and prevent XSS
   if (Array.isArray(serverVars.ClassificationList)) {
     for (let i = 0; i < serverVars.ClassificationList.length; i++) {
-      $(".filter-Classification").append("<option value=" + i + ">" + serverVars.ClassificationList[i] + "</option>");
+      $('<option>').val(i).text(serverVars.ClassificationList[i]).appendTo('.filter-Classification');
     }
   }
 
   // Populate Role select
   if (Array.isArray(RoleList)) {
     for (let i = 0; i < RoleList.length; i++) {
-      $(".filter-Role").append("<option value=" + i + ">" + RoleList[i] + "</option>");
+      $('<option>').val(i).text(RoleList[i]).appendTo('.filter-Role');
     }
   }
 
   // Properties
   if (Array.isArray(PropertyList)) {
     for (let i = 0; i < PropertyList.length; i++) {
-      $(".filter-Properties").append("<option value=" + i + ">" + PropertyList[i] + "</option>");
+      $('<option>').val(i).text(PropertyList[i]).appendTo('.filter-Properties');
     }
   }
 
   // CustomList can be an object (mapping) - use the keys for the dropdown
   const CustomListKeys = Array.isArray(CustomList) ? CustomList : Object.keys(CustomList || {});
   for (let i = 0; i < CustomListKeys.length; i++) {
-    $(".filter-Custom").append("<option value=" + i + ">" + CustomListKeys[i] + "</option>");
+    $('<option>').val(i).text(CustomListKeys[i]).appendTo('.filter-Custom');
   }
 
   // Family Status (use server-provided, localized list when available)
@@ -50,9 +50,7 @@ window.initializePeopleListFromServer = function (serverVars) {
     ? serverVars.FamilyStatusList
     : ["Active", "Inactive"];
   for (let i = 0; i < FamilyStatusList.length; i++) {
-    $(".filter-FamilyStatus").append(
-      '<option value="' + FamilyStatusList[i] + '">' + FamilyStatusList[i] + "</option>",
-    );
+    $('<option>').val(FamilyStatusList[i]).text(FamilyStatusList[i]).appendTo('.filter-FamilyStatus');
   }
 
   // Apply initial selections if provided
@@ -74,7 +72,7 @@ window.initializePeopleListFromServer = function (serverVars) {
   // Groups
   if (Array.isArray(GroupList)) {
     for (let i = 0; i < GroupList.length; i++) {
-      $(".filter-Group").append("<option value=" + i + ">" + GroupList[i] + "</option>");
+      $('<option>').val(i).text(GroupList[i]).appendTo('.filter-Group');
     }
   }
 

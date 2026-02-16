@@ -23,10 +23,11 @@
     "scripts": {
         "audit": "npm audit fix --only=prod --audit-level=high",
         "build": "run-p build:php build:frontend",
-        "build:frontend": "npm run build:js && npm run format:web",
+        "build:frontend": "NODE_ENV=production npm run build:js && npm run format:web",
         "build:js": "run-p build:js:legacy build:webpack",
         "build:js:legacy": "grunt copy && grunt patchDataTablesCSS",
         "build:webpack": "webpack",
+        "build:webpack:watch": "webpack --watch",
         "build:php": "run-s composer:install",
         "build:orm": "cd src/ && ./vendor/bin/propel build --config-dir=propel",
         "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external src/locale/vendor ai-notes/ src/logs/*.log",
