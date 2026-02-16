@@ -13,17 +13,12 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Slim\Views\PhpRenderer;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 // Get base path by combining $sRootPath from Config.php with /session endpoint
 // Examples: '' + '/session' = '/session' (root install)
 //           '/churchcrm' + '/session' = '/churchcrm/session' (subdirectory install)
 $basePath = SlimUtils::getBasePath('/session');
 
-$container = new ContainerBuilder();
-$container->compile();
-// Register custom error handlers
-AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
