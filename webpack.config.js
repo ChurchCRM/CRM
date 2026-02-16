@@ -1,46 +1,56 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
+
+const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  mode: "development",
+  mode: isProduction ? 'production' : 'development',
   entry: {
     'calendar-event-editor': './react/calendar-event-editor.tsx',
     'two-factor-enrollment': './react/two-factor-enrollment.tsx',
-    'churchcrm': './webpack/skin-main',  // Main bundle for all pages
-    'photo-uploader': './webpack/photo-uploader-entry',  // Photo uploader for specific pages
-    'setup': './webpack/setup',  // Setup wizard styles
-    'family-register': './webpack/family-register',  // Family registration styles and scripts
-    'family-verify': './webpack/family-verify',  // Family verification page styles and scripts
-    'upgrade-wizard': './webpack/upgrade-wizard',  // Upgrade wizard styles and scripts
-    'locale-loader': './webpack/locale-loader',  // Dynamic locale loader
-    'backup': './webpack/backup',  // Backup database page
-    'restore': './webpack/restore',  // Restore database page
-    'admin-dashboard': './webpack/admin-dashboard',  // Admin dashboard page styles and scripts
-    'system-settings-panel': './webpack/system-settings-panel',  // Reusable settings panel component
-    'kiosk-registration-closed': './webpack/kiosk-registration-closed',  // Kiosk registration disabled page
-    'kiosk': './webpack/kiosk',  // Kiosk check-in interface
+    churchcrm: './webpack/skin-main',
+    'photo-uploader': './webpack/photo-uploader-entry',
+    setup: './webpack/setup',
+    'family-register': './webpack/family-register',
+    'family-verify': './webpack/family-verify',
+    'upgrade-wizard': './webpack/upgrade-wizard',
+    'locale-loader': './webpack/locale-loader',
+    backup: './webpack/backup',
+    restore: './webpack/restore',
+    'admin-dashboard': './webpack/admin-dashboard',
+    'system-settings-panel': './webpack/system-settings-panel',
+    'kiosk-registration-closed': './webpack/kiosk-registration-closed',
+    kiosk: './webpack/kiosk',
     'people-list': './webpack/people/person-list',
-    'people-family-list': './webpack/people/family-list'
+    'people-family-list': './webpack/people/family-list',
   },
   output: {
     path: path.resolve('./src/skin/v2'),
     filename: '[name].min.js',
-    publicPath: 'auto'  // Auto-detect public path based on script location
+    publicPath: 'auto',
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    extensions: ['.ts', '.tsx', '.js'],
     alias: {
       jquery: path.resolve(__dirname, 'node_modules/jquery'),
     },
   },
-
+  cache: {
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
+  devtool: isProduction ? false : 'eval-cheap-module-source-map',
+  optimization: {
+    moduleIds: 'deterministic',
+    chunkIds: 'deterministic',
+  },
   module: {
     rules: [
-      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
       {
         test: /\.tsx?$/,
-        loader: "ts-loader"
+        loader: 'ts-loader',
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -51,7 +61,6 @@ module.exports = {
             options: {
               url: {
                 filter: (url) => {
-                  // Only process relative URLs, skip absolute paths and data URIs
                   return !url.startsWith('/') && !url.startsWith('data:');
                 },
               },
@@ -64,10 +73,10 @@ module.exports = {
         test: /\.(woff2?|ttf|eot|svg|png|jpg|gif)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/[name].[hash][ext]',
+          filename: 'assets/[name].[contenthash][ext]',
         },
       },
-    ]
+    ],
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -75,4 +84,4 @@ module.exports = {
       ignoreOrder: false,
     }),
   ],
-}
+};

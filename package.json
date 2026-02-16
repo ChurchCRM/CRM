@@ -23,10 +23,11 @@
     "scripts": {
         "audit": "npm audit fix --only=prod --audit-level=high",
         "build": "run-p build:php build:frontend",
-        "build:frontend": "npm run build:js && npm run format:web",
+        "build:frontend": "NODE_ENV=production npm run build:js && npm run format:web",
         "build:js": "run-p build:js:legacy build:webpack",
         "build:js:legacy": "grunt copy && grunt patchDataTablesCSS",
         "build:webpack": "webpack",
+        "build:webpack:watch": "webpack --watch",
         "build:php": "run-s composer:install",
         "build:orm": "cd src/ && ./vendor/bin/propel build --config-dir=propel",
         "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external src/locale/vendor ai-notes/ src/logs/*.log",
@@ -150,7 +151,7 @@
         "style-loader": "^4.0.0",
         "ts-loader": "^9.5.4",
         "typescript": "^5.9.3",
-        "webpack": "^5.102.1",
-        "webpack-cli": "^5.1.4"
+        "webpack": "^5.105.2",
+        "webpack-cli": "^6.0.1"
     }
 }
