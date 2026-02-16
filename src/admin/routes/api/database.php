@@ -81,7 +81,7 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
 
                 $logger->info('Database reset: cleared person and family Images directories', ['personDir' => $personDir, 'familyDir' => $familyDir]);
             } catch (\Throwable $e) {
-                $this->logger->warning('Failed to clear Images directories during DB reset', ['error' => $e->getMessage()]);
+                $logger->warning('Failed to clear Images directories during DB reset', ['error' => $e->getMessage()]);
             }
 
             // Destroy the session and clear the session cookie
