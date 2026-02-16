@@ -27,23 +27,18 @@ jobs:
     permissions:
       contents: read
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['24.x']
     steps:
     - uses: actions/checkout@v6
       with:
         # Fetch full history for changelog generation and version comparison
         fetch-depth: 0
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Get Env Ready
-      env:
-        NPM_CONFIG_ENGINE_STRICT: false
       run: npm ci
 
     - name: Declare some variables
@@ -127,15 +122,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-    - name: Use Node.js 24.x
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: '24.x'
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Install dependencies
-      env:
-        NPM_CONFIG_ENGINE_STRICT: false
       run: npm ci
 
     - name: Download Build Artifact
@@ -229,15 +222,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-    - name: Use Node.js 24.x
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: '24.x'
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Install dependencies
-      env:
-        NPM_CONFIG_ENGINE_STRICT: false
       run: npm ci
 
     - name: Download Build Artifact
@@ -331,15 +322,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-    - name: Use Node.js 24.x
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: '24.x'
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Install dependencies
-      env:
-        NPM_CONFIG_ENGINE_STRICT: false
       run: npm ci
 
     - name: Download Build Artifact
@@ -449,10 +438,10 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Use Node.js 24.x
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: '24.x'
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Declare some variables

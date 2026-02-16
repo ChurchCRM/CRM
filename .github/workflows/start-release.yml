@@ -22,15 +22,13 @@ jobs:
         with:
           fetch-depth: 0
       
-      - name: Setup Node.js
+      - name: Setup Node.js (from .nvmrc)
         uses: actions/setup-node@v6
         with:
-          node-version: '24.x'
+          node-version-file: '.nvmrc'
           cache: 'npm'
       
       - name: Install dependencies
-        env:
-          NPM_CONFIG_ENGINE_STRICT: false
         run: npm ci
       
       - name: Configure Git

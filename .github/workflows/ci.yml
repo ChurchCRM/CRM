@@ -38,8 +38,6 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
-        env:
-          NPM_CONFIG_ENGINE_STRICT: false
         run: npm ci
       - name: Typecheck (tsc)
         run: npx tsc --noEmit --pretty
@@ -66,8 +64,6 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
-        env:
-          NPM_CONFIG_ENGINE_STRICT: false
         run: npm ci
       - name: Apply Biome format
         run: npx biome format --write .

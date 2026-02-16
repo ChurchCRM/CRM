@@ -31,10 +31,6 @@ concurrency:
 jobs:
   download:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['24.x']
-    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
@@ -57,10 +53,10 @@ jobs:
             ;;
         esac
 
-    - name: Setup Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Get package version
@@ -80,8 +76,6 @@ jobs:
           ${{ runner.os }}-node-
 
     - name: Install dependencies
-      env:
-        NPM_CONFIG_ENGINE_STRICT: false
       run: |
         npm ci
         npm install grunt-cli --save-dev

@@ -12,9 +12,6 @@
         "LAMP",
         "Free"
     ],
-    "engines": {
-        "node": "^20.19.0 || ^22.13.0 || >=24"
-    },
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/ChurchCRM/CRM/issues"
