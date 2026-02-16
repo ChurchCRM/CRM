@@ -303,7 +303,9 @@ function initDataTable() {
     responsive: true,
     autoWidth: false,
     drawCallback: function (settings) {
-      $("#iTotalMembers").text(settings.aoData.length);
+      var api = new $.fn.dataTable.Api(settings);
+      var totalMembers = api.rows({ search: "none" }).count();
+      $("#iTotalMembers").text(totalMembers);
     },
     createdRow: function (row, data, index) {
       $(row).addClass("groupRow");
