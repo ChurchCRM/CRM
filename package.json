@@ -12,6 +12,9 @@
         "LAMP",
         "Free"
     ],
+    "engines": {
+        "node": "^20.19.0 || ^22.13.0 || >=24"
+    },
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/ChurchCRM/CRM/issues"
@@ -58,12 +61,14 @@
         "docker:test:restart:db": "docker compose -f docker/docker-compose.yaml --profile test restart database",
         "docker:test:subdir": "cp docker/Config.subdir.php src/Include/Config.php && docker compose -f docker/docker-compose.yaml -f docker/docker-compose.subdir.yaml --profile test up -d",
         "docker:test:stop": "docker compose -f docker/docker-compose.yaml --profile test stop",
-        "format:web": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,scss,html,json}\" --ignore-path .prettierignore",
+        "format:web": "biome format --write .",
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-build.js",
         "locale:download": "node locale/scripts/poeditor-downloader.js && npm run locale:audit",
         "locale:variants": "node locale/scripts/locale-populate-variants.js",
         "locale:missing": "node locale/scripts/locale-build-missing.js",
+        "lint": "biome check react/",
+        "lint:fix": "biome check --write react/",
         "locale:lint": "node scripts/locale-check.js",
         "package": "npm run deploy && node scripts/package-release.js",
         "test": "cp docker/cypress.config.ts cypress.config.ts && node_modules/cypress/bin/cypress run --e2e",
@@ -119,20 +124,16 @@
         "select2": "^4.0.13"
     },
     "devDependencies": {
+        "@biomejs/biome": "^2.0.0",
         "@types/jquery": "^3.5.33",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
-        "@typescript-eslint/eslint-plugin": "^8.55.0",
-        "@typescript-eslint/parser": "^8.46.4",
         "archiver": "^7.0.1",
         "css-loader": "^7.1.3",
         "cy-verify-downloads": "^0.3.0",
         "cypress": "^15.7.0",
         "cypress-terminal-report": "^3.5.2",
         "datatables.net-plugins": "^2.3.2",
-        "eslint": "^8.57.1",
-        "eslint-plugin-react": "^7.37.5",
-        "eslint-plugin-react-hooks": "^7.0.1",
         "grunt": "^1.6.1",
         "grunt-cli": "^1.5.0",
         "grunt-contrib-copy": "^1.0.0",
@@ -142,7 +143,6 @@
         "mysql2": "^3.17.1",
         "node-sha1": "^1.0.1",
         "npm-run-all": "^4.1.5",
-        "prettier": "^3.8.1",
         "sass": "^1.97.3",
         "sass-loader": "^16.0.7",
         "style-loader": "^4.0.0",

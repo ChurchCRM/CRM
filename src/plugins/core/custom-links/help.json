@@ -1,25 +1,25 @@
 {
-    "title": "Custom Menu Links",
-    "sections": [
-        {
-            "title": "Overview",
-            "content": "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
-        },
-        {
-            "title": "Adding Links",
-            "content": "To add a new link:\n1. Go to the Links menu in the sidebar and click 'Manage Links'\n2. Enter a display name (2-50 characters)\n3. Enter the full URL (must start with http:// or https://)\n4. Click 'Add Link'\n\nThe link will immediately appear in the Links menu."
-        },
-        {
-            "title": "Managing Links",
-            "content": "All configured links are shown in a table. You can:\n- View the link name and URL\n- Click the URL to test it opens correctly\n- Delete links you no longer need\n\nLinks appear in the order they were added in the navigation menu."
-        },
-        {
-            "title": "Security",
-            "content": "For security:\n- Only administrators can add or remove links\n- The 'Manage Links' option only appears for administrators\n- Links must use http:// or https:// protocols\n- HTML tags are not allowed in names or URLs\n- All input is validated and sanitized"
-        },
-        {
-            "title": "Use Cases",
-            "content": "Common uses for custom links:\n- Church website\n- Online giving portal\n- Volunteer signup forms\n- Denomination resources\n- Partner organization sites\n- Cloud storage folders\n- Event registration pages"
-        }
-    ]
+  "title": "Custom Menu Links",
+  "sections": [
+    {
+      "title": "Overview",
+      "content": "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+    },
+    {
+      "title": "Adding Links",
+      "content": "To add a new link:\n1. Go to the Links menu in the sidebar and click 'Manage Links'\n2. Enter a display name (2-50 characters)\n3. Enter the full URL (must start with http:// or https://)\n4. Click 'Add Link'\n\nThe link will immediately appear in the Links menu."
+    },
+    {
+      "title": "Managing Links",
+      "content": "All configured links are shown in a table. You can:\n- View the link name and URL\n- Click the URL to test it opens correctly\n- Delete links you no longer need\n\nLinks appear in the order they were added in the navigation menu."
+    },
+    {
+      "title": "Security",
+      "content": "For security:\n- Only administrators can add or remove links\n- The 'Manage Links' option only appears for administrators\n- Links must use http:// or https:// protocols\n- HTML tags are not allowed in names or URLs\n- All input is validated and sanitized"
+    },
+    {
+      "title": "Use Cases",
+      "content": "Common uses for custom links:\n- Church website\n- Online giving portal\n- Volunteer signup forms\n- Denomination resources\n- Partner organization sites\n- Cloud storage folders\n- Event registration pages"
+    }
+  ]
 }

@@ -1,17 +1,17 @@
 /**
  * ChurchCRM Custom Utility Classes
- * 
+ *
  * This file contains CUSTOM CSS utility classes unique to ChurchCRM.
  * Bootstrap standard utilities are used for common patterns (display, spacing, colors, etc.)
- * 
+ *
  * See BOOTSTRAP_CONSOLIDATION_GUIDE.md for Bootstrap equivalent classes.
- * 
+ *
  * Benefits:
  * - Reduced CSS bloat (no duplication with Bootstrap)
  * - Consistent with Bootstrap conventions
  * - CSP compliance (removes need for 'unsafe-inline')
  * - DRY principle (Don't Repeat Yourself)
- * 
+ *
  * BOOTSTRAP ALTERNATIVES TO USE INSTEAD:
  * - .text-danger (instead of .text-error)
  * - .text-success (instead of .text-success)
@@ -22,7 +22,7 @@
  * - .text-center, .text-right, .text-left (instead of .text-center/right/left)
  * - .m-0, .mx-auto, .mt-5, etc. (instead of .margin-*, .padding-*)
  * - .w-100, .w-75, .w-50 (instead of .width-*)
- * 
+ *
  * DEPRECATED CLASSES (Migrated to Bootstrap):
  * - .callout, .callout-info, .callout-warning, .callout-danger → Use Bootstrap .alert .alert-info .alert-warning .alert-danger
  * - .ShadedBox, .LightShadedBox → Use Bootstrap .card .card-body or .alert
@@ -36,17 +36,17 @@
 
 /* Custom cursor pointer utility (not in Bootstrap) */
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* Text decoration utilities (Bootstrap 4 doesn't have these) */
 .text-decoration-none {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Float-right deprecated in Bootstrap 5, but kept for legacy support */
 .float-right {
-    float: right;
+  float: right;
 }
 
 /* ============================================
@@ -55,101 +55,101 @@
 
 /* Profile-related styles */
 .initials-image {
-    max-width: none;
+  max-width: none;
 }
 
 .profile-user-img {
-    display: inline-block;
+  display: inline-block;
 }
 
 .profile-picture-list {
-    max-width: none;
+  max-width: none;
 }
 
 .person-thumbnail {
-    width: 40px;
-    height: 40px;
-    display: inline-block;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
 }
 
 /* Registration form styles */
 .register-box-margin {
-    margin: 72px auto 0;
+  margin: 72px auto 0;
 }
 
 .register-box-600 {
-    width: 600px;
+  width: 600px;
 }
 
 .register-box-75pct {
-    width: 75%;
+  width: 75%;
 }
 
 .register-logo-margin {
-    margin: 72px auto 0;
+  margin: 72px auto 0;
 }
 
 .register-box-flex {
-    width: 100%;
-    margin-top: 5px;
+  width: 100%;
+  margin-top: 5px;
 }
 
 /* Select and form control full-width variants */
 .select-100pct {
-    width: 100%;
+  width: 100%;
 }
 
 .form-control-100pct {
-    width: 100%;
+  width: 100%;
 }
 
 /* Textarea and canvas custom heights */
 .textarea-120px {
-    height: 120px;
+  height: 120px;
 }
 
 .canvas-250px {
-    height: 250px;
+  height: 250px;
 }
 
 .canvas-250px-donut {
-    height: 250px;
+  height: 250px;
 }
 
 .canvas-flex {
-    height: 250px;
+  height: 250px;
 }
 
 /* Table styling utilities */
 .table-100pct {
-    width: 100%;
+  width: 100%;
 }
 
 .table-responsive-100pct {
-    width: 100%;
+  width: 100%;
 }
 
 .td-center {
-    text-align: center;
-    padding: 2px;
-    color: #fff;
-    font-weight: 600;
-    font-size: 13px;
+  text-align: center;
+  padding: 2px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
 }
 
 .td-width-20pct {
-    width: 20%;
+  width: 20%;
 }
 
 .td-width-80px {
-    width: 80px;
+  width: 80px;
 }
 
 /* Unordered list flex styles */
 .ul-flex {
-    margin: 0px;
-    border: 0px;
-    padding: 0px;
+  margin: 0px;
+  border: 0px;
+  padding: 0px;
 }
 
 /* ============================================
@@ -158,7 +158,7 @@
 
 /* Pre-formatted text with compact line height */
 .pre-compact {
-    line-height: 1.2;
+  line-height: 1.2;
 }
 
 /* ============================================
@@ -166,22 +166,22 @@
    ============================================ */
 
 .LargeText {
-    font-size: larger;
+  font-size: larger;
 }
 
 .form-field-error {
-    color: red;
+  color: red;
 }
 
 .error-message {
-    color: red;
+  color: red;
 }
 
 .birthday-filter-hidden {
-    display: none;
+  display: none;
 }
 
 /* Hide view photo button when there is no uploaded photo or gravatar */
 .hide-if-no-photo {
-    display: none !important;
+  display: none !important;
 }
