@@ -6,7 +6,7 @@ alwaysApply: true
 # ChurchCRM Project Conventions
 
 ## Stack
-- PHP 8.3+, Perpl ORM (Propel2 fork), Slim 4, Bootstrap 4.6.2 (AdminLTE), React + TypeScript, Webpack, Cypress
+- PHP 8.4+, Node 24, Perpl ORM (Propel2 fork), Slim 4, Bootstrap 4.6.2 (AdminLTE), React + TypeScript, Webpack, Cypress
 
 ## Key Conventions
 - **Service layer first**: Add/update services in `src/ChurchCRM/Service/` for business logic
@@ -50,7 +50,7 @@ Use `src/ChurchCRM/Utils/RedirectUtils.php`:
 <link href="/skin/v2/churchcrm.min.css">
 ```
 
-## PHP 8.3+
+## PHP 8.4+
 - Explicit nullable: `?int $param = null`
 - Use imports, never inline FQCN
 - Global functions: `\MakeFYString($id)` in namespaced code

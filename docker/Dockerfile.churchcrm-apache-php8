@@ -67,5 +67,5 @@ RUN curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt
     /opt/node-install.sh && \
     rm /opt/node-install.sh
 
-# Install Node.js LTS and global packages
-RUN /bin/bash -c "source /root/.nvm/nvm.sh && nvm install --lts && npm install -g node-gyp"
+# Install Node.js 24 (aligned with CI and package.json engines)
+RUN /bin/bash -c "source /root/.nvm/nvm.sh && nvm install 24 && npm install -g node-gyp"
