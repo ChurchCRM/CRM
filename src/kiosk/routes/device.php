@@ -30,39 +30,39 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
         return $renderer->render($response, 'sunday-school-class-view.php', $pageObjects);
     });
 
-    $group->get('/heartbeat', function (Request $request, Response $response) use ($app): Response {
-        $kiosk = $app->getContainer()->get('kiosk');
+    $group->get('/heartbeat', function (Request $request, Response $response) use ($deviceGetKiosk): Response {
+        $kiosk = $deviceGetKiosk();
 
         return SlimUtils::renderJSON($response, $kiosk->heartbeat());
     });
 
-    $group->post('/checkin', function (Request $request, Response $response) use ($app): Response {
+    $group->post('/checkin', function (Request $request, Response $response) use ($deviceGetKiosk): Response {
         $input = $request->getParsedBody();
         $personId = InputUtils::filterInt($input['PersonId'] ?? 0);
         if ($personId <= 0) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
         }
         
-        $kiosk = $app->getContainer()->get('kiosk');
+        $kiosk = $deviceGetKiosk();
         $status = $kiosk->getActiveAssignment()->getEvent()->checkInPerson($personId);
 
         return SlimUtils::renderJSON($response, $status);
     });
 
-    $group->post('/checkout', function (Request $request, Response $response) use ($app): Response {
+    $group->post('/checkout', function (Request $request, Response $response) use ($deviceGetKiosk): Response {
         $input = $request->getParsedBody();
         $personId = InputUtils::filterInt($input['PersonId'] ?? 0);
         if ($personId <= 0) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
         }
         
-        $kiosk = $app->getContainer()->get('kiosk');
+        $kiosk = $deviceGetKiosk();
         $status = $kiosk->getActiveAssignment()->getEvent()->checkOutPerson($personId);
 
         return SlimUtils::renderJSON($response, $status);
     });
 
-    $group->post('/triggerNotification', function (Request $request, Response $response) use ($app): Response {
+    $group->post('/triggerNotification', function (Request $request, Response $response) use ($deviceGetKiosk): Response {
         $input = $request->getParsedBody();
         $personId = InputUtils::filterInt($input['PersonId'] ?? 0);
         if ($personId <= 0) {
@@ -76,7 +76,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
             return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
         }
 
-        $kiosk = $app->getContainer()->get('kiosk');
+        $kiosk = $deviceGetKiosk();
         $event = $kiosk->getActiveAssignment()->getEvent();
         
         // Get event/group name for the notification
@@ -93,8 +93,8 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
         return SlimUtils::renderJSON($response, $status);
     });
 
-    $group->get('/activeClassMembers', function (Request $request, Response $response) use ($app): Response {
-        $kiosk = $app->getContainer()->get('kiosk');
+    $group->get('/activeClassMembers', function (Request $request, Response $response) use ($deviceGetKiosk): Response {
+        $kiosk = $deviceGetKiosk();
         $members = $kiosk->getActiveAssignment()->getActiveGroupMembers();
 
         // Get the group name for context
@@ -201,8 +201,8 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($app): void {
         return $response->withAddedHeader('Content-type', $photo->getPhotoContentType());
     });
 
-    $group->post('/checkoutAll', function (Request $request, Response $response) use ($app): Response {
-        $kiosk = $app->getContainer()->get('kiosk');
+    $group->post('/checkoutAll', function (Request $request, Response $response) use ($deviceGetKiosk): Response {
+        $kiosk = $deviceGetKiosk();
         $event = $kiosk->getActiveAssignment()->getEvent();
         $checkedInPeople = $event->getEventAttends();
         

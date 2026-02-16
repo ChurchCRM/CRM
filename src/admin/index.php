@@ -11,15 +11,11 @@ use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 // base path for admin
 $basePath = SlimUtils::getBasePath('/admin');
 
-$container = new ContainerBuilder();
-$container->compile();
-
-AppFactory::setContainer($container);
+$app = AppFactory::create();
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
