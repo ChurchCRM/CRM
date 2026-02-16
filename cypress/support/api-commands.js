@@ -9,7 +9,6 @@
 // ***********************************************
 
 // -- Modern API command patterns --
-// Note: Cypress.env() is used here to read config values synchronously
 Cypress.Commands.add(
     "makePrivateAdminAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {

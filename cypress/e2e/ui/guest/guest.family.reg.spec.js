@@ -98,9 +98,12 @@ describe("Family Reg", () => {
         // Navigate to members step
         cy.get("#family-info-next").click();
         
-        // Wait for stepper transition and ensure add member button is ready
+        // Wait for stepper transition and ensure members step content is visible
         cy.get("#step-members").should("be.visible");
-        cy.get("#add-member-btn").should('be.visible').click();
+        
+        // Wait a moment for stepper transition, then click the add member button
+        cy.wait(500);
+        cy.get("#add-member-btn").click();
 
         // Ensure the member phone field is visible
         cy.get("#member-phone-2").should("be.visible");
