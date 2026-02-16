@@ -462,7 +462,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             }
         }
         $EventExists = 1;
-        header('Location: ListEvents.php');
+        RedirectUtils::redirect('ListEvents.php');
     }
 }
 ?>

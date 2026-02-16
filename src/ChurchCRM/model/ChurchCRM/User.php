@@ -396,7 +396,14 @@ class User extends BaseUser
         return $this->getSettingValue(UserSetting::FINANCE_SHOW_SINCE);
     }
 
-    public function provisionNew2FAKey()
+    /**
+     * Generates a new 2FA secret key for enrollment.
+     * Uses pragmarx/google2fa v9.0+ default: 32-character secrets (160-bit entropy).
+     * usr_TwoFactorAuthSecret (VARCHAR 255) supports both legacy 16-char and new 32-char secrets.
+     *
+     * @return string Base32-encoded TOTP secret
+     */
+    public function provisionNew2FAKey(): string
     {
         $google2fa = new Google2FA();
         $key = $google2fa->generateSecretKey();
@@ -410,7 +417,7 @@ class User extends BaseUser
         return $key;
     }
 
-    public function confirmProvisional2FACode($twoFACode)
+    public function confirmProvisional2FACode(string $twoFACode): bool
     {
         $google2fa = new Google2FA();
         $window = 2;
@@ -432,7 +439,7 @@ class User extends BaseUser
         $this->save();
     }
 
-    public function getDecryptedTwoFactorAuthSecret()
+    public function getDecryptedTwoFactorAuthSecret(): string
     {
         return Crypto::decryptWithPassword($this->getTwoFactorAuthSecret(), KeyManagerUtils::getTwoFASecretKey());
     }
@@ -468,7 +475,7 @@ class User extends BaseUser
         return $recoveryCodes;
     }
 
-    public function isTwoFACodeValid($twoFACode): bool
+    public function isTwoFACodeValid(string $twoFACode): bool
     {
         $google2fa = new Google2FA();
         $window = 2;
@@ -483,7 +490,7 @@ class User extends BaseUser
         }
     }
 
-    public function isTwoFaRecoveryCodeValid($twoFaRecoveryCode): bool
+    public function isTwoFaRecoveryCodeValid(string $twoFaRecoveryCode): bool
     {
         // checks for validity of a 2FA recovery code
         // if the specified code was valid, the code is also removed.
