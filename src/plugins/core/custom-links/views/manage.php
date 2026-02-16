@@ -108,6 +108,7 @@ $(document).ready(function() {
                 searchable: false
             },
             {
+                title: i18next.t('Name'),
                 data: 'Name',
                 render: function(data, type, row) {
                     if (type === 'display') {
@@ -117,6 +118,7 @@ $(document).ready(function() {
                 }
             },
             {
+                title: i18next.t('Link'),
                 data: 'Uri',
                 render: function(data, type, row) {
                     if (type === 'display') {
