@@ -7,18 +7,12 @@ use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Slim\Factory\AppFactory;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 // Get base path by combining $sRootPath from Config.php with /v2 endpoint
 // Examples: '' + '/v2' = '/v2' (root install)
 //           '/churchcrm' + '/v2' = '/churchcrm/v2' (subdirectory install)
 $basePath = SlimUtils::getBasePath('/v2');
 
-
-$container = new ContainerBuilder();
-// Register custom error handlers
-
-AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
