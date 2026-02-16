@@ -7,7 +7,7 @@
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "nodeGypDependencies": true,
-      "version": "22"
+      "version": "24"
     },
     "ghcr.io/devcontainers/features/git:1": {
       "ppa": true,

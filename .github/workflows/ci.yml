@@ -28,19 +28,15 @@ jobs:
     permissions:
       contents: read
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['22.x']
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js (from .nvmrc)
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm ci
       - name: Typecheck (tsc)
@@ -56,21 +52,17 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['22.x']
     steps:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
           persist-credentials: true
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js (from .nvmrc)
         uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm ci
       - name: Apply Biome format

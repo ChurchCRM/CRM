@@ -31,10 +31,6 @@ concurrency:
 jobs:
   download:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['22.x']
-    
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
@@ -57,12 +53,11 @@ jobs:
             ;;
         esac
 
-    - name: Setup Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version-file: '.nvmrc'
         cache: 'npm'
-        registry-url: 'https://registry.npmjs.org'
 
     - name: Get package version
       id: package-version

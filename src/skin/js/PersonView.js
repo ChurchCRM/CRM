@@ -59,7 +59,7 @@ $(document).ready(function () {
     if (pro_prompt) {
       promptBox
         .addClass("form-group")
-        .append($("<label></label>").html(pro_prompt))
+        .append($("<label></label>").text(pro_prompt))
         .append($('<textarea rows="3" class="form-control" name="PropertyValue"></textarea>').val(pro_value));
     }
   });
