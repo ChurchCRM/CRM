@@ -16,7 +16,6 @@ use Slim\Factory\AppFactory;
 $basePath = SlimUtils::getBasePath('/admin');
 
 $app = AppFactory::create();
-$app = AppFactory::create();
 $app->setBasePath($basePath);
 
 // Register routes FIRST before middleware

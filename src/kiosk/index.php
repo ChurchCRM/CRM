@@ -54,6 +54,8 @@ if (!$isAdminRoute) {
         // No cookie and registration window is open - create new kiosk
         $guid = uniqid();
         setcookie('kioskCookie', $guid, ['expires' => 2_147_483_647]);
+        // Populate $_COOKIE for current request since setcookie() doesn't
+        $_COOKIE['kioskCookie'] = $guid;
         $Kiosk = new KioskDevice();
         $Kiosk->setGUIDHash(hash('sha256', $guid));
         $Kiosk->setAccepted(false);
@@ -68,12 +70,9 @@ if (!$isAdminRoute) {
 }
 
 // Helper function to retrieve kiosk device from cookie (instead of container)
-$getKioskFromCookie = function (): ?KioskDevice {
-    if (!isset($_COOKIE['kioskCookie'])) {
-        return null;
-    }
-    $g = hash('sha256', $_COOKIE['kioskCookie']);
-    return KioskDeviceQuery::create()->findOneByGUIDHash($g);
+// Captures the already-initialized $Kiosk to handle newly created devices in the current request
+$getKioskFromCookie = function (): ?KioskDevice use ($Kiosk) {
+    return $Kiosk ?? null;
 };
 
 // Create app (no container needed - Slim 4 works fine without one)
