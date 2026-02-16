@@ -118,8 +118,7 @@ $MenuFirst = 1;
                         topStart: 'search',
                         topEnd: 'buttons',
                         bottomStart: 'pageLength',
-                        bottomCenter: 'info',
-                        bottomEnd: 'paging'
+                        bottomEnd: ['info', 'paging']
                     },
                     buttons: [
                         'copy',
