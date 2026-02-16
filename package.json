@@ -106,7 +106,6 @@
         "daterangepicker": "^3.1.0",
         "flag-icons": "^7.5.0",
         "fullcalendar": "^6.1.19",
-        "i18n": "^0.15.3",
         "i18next": "^25.8.8",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
