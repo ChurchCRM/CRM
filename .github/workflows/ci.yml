@@ -1,10 +1,26 @@
-name: CI — Typecheck & Lint
+name: CI — Typecheck, Lint & Format
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - develop
+      - 'hotfix/**'
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+      - develop
+      - 'hotfix/**'
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,7 +30,7 @@ jobs:
   typecheck-and-lint:
     name: Typecheck & Lint
     permissions:
-      contents: read
+      contents: write  # needed for git-auto-commit to push format fixes
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -22,8 +38,9 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          # fetch full history to be consistent with other workflows
           fetch-depth: 0
+          ref: ${{ github.event_name == 'pull_request' && github.head_ref || github.ref }}
+          persist-credentials: ${{ github.event_name == 'pull_request' }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
@@ -34,5 +51,10 @@ jobs:
         run: npm ci
       - name: Typecheck (tsc)
         run: npx tsc --noEmit --pretty
-      - name: Lint (eslint)
-        run: npx eslint "react/**/*.{js,jsx,ts,tsx}"
+      - name: Lint & format (biome)
+        run: npx biome check --write .
+      - name: Commit format changes
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "style: apply Biome format and lint fixes"
