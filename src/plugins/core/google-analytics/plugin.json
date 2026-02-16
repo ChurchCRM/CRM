@@ -1,24 +1,24 @@
 {
-    "id": "google-analytics",
-    "name": "Google Analytics",
-    "description": "Track ChurchCRM usage with Google Analytics. Provides insights into how your church members use the system.",
-    "version": "2.0.0",
-    "author": "ChurchCRM Team",
-    "authorUrl": "https://churchcrm.io",
-    "type": "core",
-    "minimumCRMVersion": "7.0.0",
-    "mainClass": "ChurchCRM\\Plugins\\GoogleAnalytics\\GoogleAnalyticsPlugin",
-    "dependencies": [],
-    "settingsUrl": "/plugins/google-analytics/settings",
-    "settings": [
-        {
-            "key": "trackingId",
-            "label": "GA4 Measurement ID",
-            "type": "text",
-            "required": true,
-            "help": "Your GA4 Measurement ID (e.g., G-XXXXXXXXXX)"
-        }
-    ],
-    "menuItems": [],
-    "hooks": []
+  "id": "google-analytics",
+  "name": "Google Analytics",
+  "description": "Track ChurchCRM usage with Google Analytics. Provides insights into how your church members use the system.",
+  "version": "2.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\GoogleAnalytics\\GoogleAnalyticsPlugin",
+  "dependencies": [],
+  "settingsUrl": "/plugins/google-analytics/settings",
+  "settings": [
+    {
+      "key": "trackingId",
+      "label": "GA4 Measurement ID",
+      "type": "text",
+      "required": true,
+      "help": "Your GA4 Measurement ID (e.g., G-XXXXXXXXXX)"
+    }
+  ],
+  "menuItems": [],
+  "hooks": []
 }

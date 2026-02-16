@@ -1,48 +1,48 @@
 {
-    "summary": "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display.",
-    "requirements": "Requires OpenLP 3.0+ with API v2 support. OpenLP removed API v1 in January 2026.",
-    "sections": [
-        {
-            "title": "Current Usage",
-            "content": "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
-        },
-        {
-            "title": "How it works",
-            "content": "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
-        },
-        {
-            "title": "Setup",
-            "content": "1. Install OpenLP 3.0 or later on your presentation computer\n2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n3. Enable the Alerts plugin in OpenLP for alert display support\n4. Note the IP address of the OpenLP computer\n5. Enter the server URL in the format: http://IP_ADDRESS:4316\n6. If you've configured authentication in OpenLP, enter the username and password"
-        },
-        {
-            "title": "Finding Your Server URL",
-            "content": "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
-        },
-        {
-            "title": "Authentication",
-            "content": "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
-        },
-        {
-            "title": "Troubleshooting",
-            "content": "If alerts aren't appearing:\n1. Verify OpenLP is running and the Remote plugin is active\n2. Ensure the Alerts plugin is enabled in OpenLP\n3. Check that the server URL is correct (try accessing it in a browser)\n4. Verify firewall settings allow connections on port 4316\n5. If using authentication, verify credentials are correct"
-        }
-    ],
-    "links": [
-        {
-            "label": "OpenLP Website",
-            "url": "https://openlp.org"
-        },
-        {
-            "label": "OpenLP Documentation",
-            "url": "https://manual.openlp.org"
-        },
-        {
-            "label": "OpenLP API v2 Source",
-            "url": "https://gitlab.com/openlp/openlp/-/tree/master/openlp/core/api/versions/v2"
-        },
-        {
-            "label": "Download OpenLP",
-            "url": "https://openlp.org/#download"
-        }
-    ]
+  "summary": "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display.",
+  "requirements": "Requires OpenLP 3.0+ with API v2 support. OpenLP removed API v1 in January 2026.",
+  "sections": [
+    {
+      "title": "Current Usage",
+      "content": "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+    },
+    {
+      "title": "How it works",
+      "content": "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+    },
+    {
+      "title": "Setup",
+      "content": "1. Install OpenLP 3.0 or later on your presentation computer\n2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n3. Enable the Alerts plugin in OpenLP for alert display support\n4. Note the IP address of the OpenLP computer\n5. Enter the server URL in the format: http://IP_ADDRESS:4316\n6. If you've configured authentication in OpenLP, enter the username and password"
+    },
+    {
+      "title": "Finding Your Server URL",
+      "content": "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+    },
+    {
+      "title": "Authentication",
+      "content": "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+    },
+    {
+      "title": "Troubleshooting",
+      "content": "If alerts aren't appearing:\n1. Verify OpenLP is running and the Remote plugin is active\n2. Ensure the Alerts plugin is enabled in OpenLP\n3. Check that the server URL is correct (try accessing it in a browser)\n4. Verify firewall settings allow connections on port 4316\n5. If using authentication, verify credentials are correct"
+    }
+  ],
+  "links": [
+    {
+      "label": "OpenLP Website",
+      "url": "https://openlp.org"
+    },
+    {
+      "label": "OpenLP Documentation",
+      "url": "https://manual.openlp.org"
+    },
+    {
+      "label": "OpenLP API v2 Source",
+      "url": "https://gitlab.com/openlp/openlp/-/tree/master/openlp/core/api/versions/v2"
+    },
+    {
+      "label": "Download OpenLP",
+      "url": "https://openlp.org/#download"
+    }
+  ]
 }
