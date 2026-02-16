@@ -9,7 +9,8 @@
  */
 
 // Import Uppy CSS
-import "@uppy/core/dist/style.min.css";
+// @uppy/core v5+ requires ./css/ export path instead of ./dist/
+import "@uppy/core/css/style.min.css";
 import "@uppy/dashboard/dist/style.min.css";
 import "@uppy/webcam/dist/style.min.css";
 
