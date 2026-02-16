@@ -1,5 +1,6 @@
-import { createRoot, Root } from "react-dom/client";
+import { createRoot, type Root } from "react-dom/client";
 import ExistingEvent from "./components/Events/ExistingEvent";
+
 declare global {
   interface Window {
     // Since TypeScript requires a definition for all methods, let's tell it how to handle the javascript objects already in the page
@@ -21,50 +22,43 @@ declare global {
 // Store the root instance for unmounting
 let reactRoot: Root | null = null;
 
-window.showEventForm = function (event) {
+window.showEventForm = (event) => {
   const container = document.getElementById("calendar-event-react-app");
   if (!container) return;
 
-  const unmount = function () {
+  const unmount = () => {
     if (reactRoot) {
       reactRoot.unmount();
       reactRoot = null;
     }
     window.CRM.refreshAllFullCalendarSources();
   };
-  
+
   // Unmount existing component if any
   unmount();
-  
+
   // Create new root and render
   reactRoot = createRoot(container);
   reactRoot.render(<ExistingEvent onClose={unmount} eventId={event.id} />);
 };
 
-window.showNewEventForm = function (info) {
+window.showNewEventForm = (info) => {
   const { start, end } = info;
   const container = document.getElementById("calendar-event-react-app");
   if (!container) return;
 
-  const unmount = function () {
+  const unmount = () => {
     if (reactRoot) {
       reactRoot.unmount();
       reactRoot = null;
     }
     window.CRM.refreshAllFullCalendarSources();
   };
-  
+
   // Unmount existing component if any
   unmount();
-  
+
   // Create new root and render
   reactRoot = createRoot(container);
-  reactRoot.render(
-    <ExistingEvent
-      onClose={unmount}
-      eventId={0}
-      start={start}
-      end={end}
-    />,
-  );
+  reactRoot.render(<ExistingEvent onClose={unmount} eventId={0} start={start} end={end} />);
 };

@@ -6,6 +6,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
 
 // Get required PHP version from composer.json (single source of truth)
@@ -52,8 +53,7 @@ AuthenticationManager::ensureAuthentication();
 
 if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
     // Index.php -> v2/dashboard
-    header('Location: ' . SystemURLs::getRootPath() . '/v2/dashboard');
-    exit;
+    RedirectUtils::redirect('v2/dashboard');
 } elseif (file_exists($shortName)) {
     // Try actual path
     require $shortName;
@@ -64,6 +64,5 @@ if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.p
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
     exit;
 } else {
-    header('Location: index.php');
-    exit;
+    RedirectUtils::redirect('index.php');
 }

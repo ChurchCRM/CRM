@@ -1,0 +1,25 @@
+---
+description: ChurchCRM agent behavior, git, and PR standards
+alwaysApply: true
+---
+
+# ChurchCRM Agent Behavior
+
+## Documentation
+- DO NOT create unnecessary .md review/planning docs unless requested
+- Make code changes directly without documentation overhead
+
+## Git
+- DO NOT auto-commit without explicit user request
+- DO ask permission before committing: "Ready to commit? [describe changes]"
+- Use `git mv` for file moves to preserve history
+
+## PR Descriptions
+- ALWAYS output PR description in a Markdown code block
+- Include: Summary, Changes (bulleted), Why, Files Changed
+- Use imperative mood
+
+## API Tests
+- Add API tests when creating new endpoints
+- Location: `cypress/e2e/api/private/standard/` or `admin/`
+- Required: success case, validation, auth (401)

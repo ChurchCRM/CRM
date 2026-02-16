@@ -1,33 +1,33 @@
 {
-    "id": "gravatar",
-    "name": "Gravatar Photos",
-    "description": "Use Gravatar profile photos for members who don't have uploaded photos. Falls back to Gravatar based on email address.",
-    "version": "1.0.0",
-    "author": "ChurchCRM Team",
-    "authorUrl": "https://churchcrm.io",
-    "type": "core",
-    "minimumCRMVersion": "7.0.0",
-    "mainClass": "ChurchCRM\\Plugins\\Gravatar\\GravatarPlugin",
-    "dependencies": [],
-    "settingsUrl": null,
-    "settings": [
-        {
-            "key": "defaultImage",
-            "label": "Default Image Style",
-            "type": "select",
-            "options": ["mp", "identicon", "monsterid", "wavatar", "retro", "robohash", "blank"],
-            "optionLabels": [
-                "Mystery Person - Gray silhouette outline",
-                "Identicon - Geometric pattern based on email",
-                "MonsterID - Unique generated monster face",
-                "Wavatar - Abstract generated face",
-                "Retro - 8-bit arcade-style pixel art",
-                "RoboHash - Unique generated robot",
-                "Blank - Transparent (falls back to initials)"
-            ],
-            "help": "The default image style when no Gravatar exists for the email"
-        }
-    ],
-    "menuItems": [],
-    "hooks": []
+  "id": "gravatar",
+  "name": "Gravatar Photos",
+  "description": "Use Gravatar profile photos for members who don't have uploaded photos. Falls back to Gravatar based on email address.",
+  "version": "1.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\Gravatar\\GravatarPlugin",
+  "dependencies": [],
+  "settingsUrl": null,
+  "settings": [
+    {
+      "key": "defaultImage",
+      "label": "Default Image Style",
+      "type": "select",
+      "options": ["mp", "identicon", "monsterid", "wavatar", "retro", "robohash", "blank"],
+      "optionLabels": [
+        "Mystery Person - Gray silhouette outline",
+        "Identicon - Geometric pattern based on email",
+        "MonsterID - Unique generated monster face",
+        "Wavatar - Abstract generated face",
+        "Retro - 8-bit arcade-style pixel art",
+        "RoboHash - Unique generated robot",
+        "Blank - Transparent (falls back to initials)"
+      ],
+      "help": "The default image style when no Gravatar exists for the email"
+    }
+  ],
+  "menuItems": [],
+  "hooks": []
 }

@@ -1,35 +1,35 @@
 /**
  * ChurchCRM Dropdown Customizations
- * 
+ *
  * Custom styles for dropdown menus and Select2 selections.
  * Extends Bootstrap dropdown functionality with ChurchCRM-specific styling.
  * Component-specific - no Bootstrap duplicates.
  */
 
 @media (max-width: 767px) {
-    .skin-blue .main-header .navbar .dropdown-menu li a {
-        color: #000000;
-    }
+  .skin-blue .main-header .navbar .dropdown-menu li a {
+    color: #000000;
+  }
 }
 
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: #222d32;
+  background-color: #222d32;
 }
 
 .user-header a.item_link {
-    color: #fff !important;
-    cursor: pointer;
-    cursor: hand;
+  color: #fff !important;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .user-header a.item_link:link {
-    color: #fff !important;
-    cursor: pointer;
-    cursor: hand;
+  color: #fff !important;
+  cursor: pointer;
+  cursor: hand;
 }
 
 .user-header a.item_link:hover {
-    color: #cccccc !important;
-    cursor: pointer;
-    cursor: hand;
+  color: #cccccc !important;
+  cursor: pointer;
+  cursor: hand;
 }
