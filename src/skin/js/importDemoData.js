@@ -5,10 +5,10 @@
  * - Uses optional status/result elements when present (#demoImportStatus, #demoImportResults, #demoImportResultsList)
  */
 (function ($) {
-    // Inject shared styles once
-    function injectStyles() {
-        if ($("#demo-import-styles").length === 0) {
-            $("head").append(`
+  // Inject shared styles once
+  function injectStyles() {
+    if ($("#demo-import-styles").length === 0) {
+      $("head").append(`
         <style id="demo-import-styles">
           body.demo-import-open {
             overflow: hidden;
@@ -199,14 +199,14 @@
           }
         </style>
       `);
-        }
     }
+  }
 
-    // Create and inject confirmation overlay HTML if not already present
-    function ensureConfirmOverlay() {
-        if ($("#demoImportConfirmOverlay").length === 0) {
-            injectStyles();
-            $("body").append(`
+  // Create and inject confirmation overlay HTML if not already present
+  function ensureConfirmOverlay() {
+    if ($("#demoImportConfirmOverlay").length === 0) {
+      injectStyles();
+      $("body").append(`
         <div id="demoImportConfirmOverlay" class="demo-import-overlay confirm" style="display: none;">
           <div class="demo-import-confirm-modal">
             <div class="demo-import-confirm-content">
@@ -258,14 +258,14 @@
           </div>
         </div>
       `);
-        }
     }
+  }
 
-    // Create and inject loading spinner overlay
-    function ensureSpinnerOverlay() {
-        if ($("#demoImportSpinnerOverlay").length === 0) {
-            injectStyles();
-            $("body").append(`
+  // Create and inject loading spinner overlay
+  function ensureSpinnerOverlay() {
+    if ($("#demoImportSpinnerOverlay").length === 0) {
+      injectStyles();
+      $("body").append(`
         <div id="demoImportSpinnerOverlay" class="demo-import-overlay spinner" style="display: none;">
           <div class="demo-import-spinner">
             <div class="spinner-border text-primary mb-3" role="status" style="width: 60px; height: 60px;">
@@ -276,211 +276,207 @@
           </div>
         </div>
       `);
-        }
+    }
+  }
+
+  function showConfirmOverlay() {
+    ensureConfirmOverlay();
+    $("body").addClass("demo-import-open");
+    $("#demoImportConfirmOverlay").addClass("show");
+  }
+
+  function hideConfirmOverlay() {
+    $("body").removeClass("demo-import-open");
+    $("#demoImportConfirmOverlay").removeClass("show");
+  }
+
+  function showSpinnerOverlay() {
+    ensureSpinnerOverlay();
+    $("#demoImportSpinnerOverlay").addClass("show");
+  }
+
+  function hideSpinnerOverlay() {
+    $("body").removeClass("demo-import-open");
+    $("#demoImportSpinnerOverlay").removeClass("show");
+  }
+
+  // Track if we're in force import mode
+  var forceImportMode = false;
+
+  function doImport($button, includeFinancial, includeEvents, includeSundaySchool, forceImport) {
+    var $status = $("#demoImportStatus");
+    var $results = $("#demoImportResults");
+    var $resultsList = $("#demoImportResultsList");
+
+    hideConfirmOverlay();
+    showSpinnerOverlay();
+
+    if ($status.length) {
+      $status.show();
+    }
+    if ($results.length) {
+      $results.hide();
     }
 
-    function showConfirmOverlay() {
-        ensureConfirmOverlay();
-        $("body").addClass("demo-import-open");
-        $("#demoImportConfirmOverlay").addClass("show");
-    }
+    $button.prop("disabled", true);
 
-    function hideConfirmOverlay() {
-        $("body").removeClass("demo-import-open");
-        $("#demoImportConfirmOverlay").removeClass("show");
-    }
-
-    function showSpinnerOverlay() {
-        ensureSpinnerOverlay();
-        $("#demoImportSpinnerOverlay").addClass("show");
-    }
-
-    function hideSpinnerOverlay() {
-        $("body").removeClass("demo-import-open");
-        $("#demoImportSpinnerOverlay").removeClass("show");
-    }
-
-    // Track if we're in force import mode
-    var forceImportMode = false;
-
-    function doImport($button, includeFinancial, includeEvents, includeSundaySchool, forceImport) {
-        var $status = $("#demoImportStatus");
-        var $results = $("#demoImportResults");
-        var $resultsList = $("#demoImportResultsList");
-
-        hideConfirmOverlay();
-        showSpinnerOverlay();
+    window.CRM.AdminAPIRequest({
+      path: "demo/load",
+      method: "POST",
+      data: JSON.stringify({
+        includeFinancial: includeFinancial,
+        includeEvents: includeEvents,
+        includeSundaySchool: includeSundaySchool,
+        force: forceImport || false,
+      }),
+    })
+      .done(function (data) {
+        hideSpinnerOverlay();
 
         if ($status.length) {
-            $status.show();
+          $status.hide();
         }
-        if ($results.length) {
-            $results.hide();
-        }
+        $button.prop("disabled", false);
 
-        $button.prop("disabled", true);
+        if (data && data.success) {
+          // Reset force import mode on success
+          forceImportMode = false;
+          resetImportButton();
 
-        window.CRM.AdminAPIRequest({
-            path: "demo/load",
-            method: "POST",
-            data: JSON.stringify({
-                includeFinancial: includeFinancial,
-                includeEvents: includeEvents,
-                includeSundaySchool: includeSundaySchool,
-                force: forceImport || false,
-            }),
-        })
-            .done(function (data) {
-                hideSpinnerOverlay();
-
-                if ($status.length) {
-                    $status.hide();
-                }
-                $button.prop("disabled", false);
-
-                if (data && data.success) {
-                    // Reset force import mode on success
-                    forceImportMode = false;
-                    resetImportButton();
-
-                    if ($resultsList.length) {
-                        $resultsList.empty();
-                        var imported = data.imported || {};
-                        for (var key in imported) {
-                            if (Object.prototype.hasOwnProperty.call(imported, key) && imported[key] > 0) {
-                                var label = key.replace(/_/g, " ").replace(/\b\w/g, function (l) {
-                                    return l.toUpperCase();
-                                });
-                                $resultsList.append("<li>" + label + ": <strong>" + imported[key] + "</strong></li>");
-                            }
-                        }
-                        if (data.warnings && data.warnings.length > 0) {
-                            $resultsList.append(
-                                '<li class="text-warning">' +
-                                    i18next.t("Warnings") +
-                                    ": " +
-                                    data.warnings.length +
-                                    "</li>",
-                            );
-                        }
-                        $results.show();
-                    }
-
-                    window.CRM.notify(i18next.t("Demo data imported successfully"), { type: "success", delay: 3000 });
-                } else {
-                    // Enable force import mode on failure
-                    forceImportMode = true;
-
-                    var errorMsg = data && data.message ? data.message : i18next.t("Unknown error");
-
-                    // Update button to Force Import and show overlay again with error
-                    setForceImportButton(errorMsg);
-                    showConfirmOverlay();
-                }
-            })
-            .fail(function (xhr) {
-                hideSpinnerOverlay();
-
-                if ($status.length) {
-                    $status.hide();
-                }
-                $button.prop("disabled", false);
-
-                // Enable force import mode on error
-                forceImportMode = true;
-
-                var errorMessage = i18next.t("An error occurred during demo data import");
-                if (xhr && xhr.responseJSON && xhr.responseJSON.message) {
-                    errorMessage = xhr.responseJSON.message;
-                } else if (xhr && xhr.status) {
-                    errorMessage = i18next.t("Server error") + " (" + xhr.status + ")";
-                }
-
-                // Update button to Force Import and show overlay again with error
-                setForceImportButton(errorMessage);
-                showConfirmOverlay();
-            });
-    }
-
-    function setForceImportButton(errorMessage) {
-        // Remove existing warning if any
-        $("#demoImportWarning").remove();
-
-        // Show inline warning message with specific error - better readability
-        var warningHtml =
-            '<div id="demoImportWarning" class="alert alert-danger mb-4" style="border-left: 4px solid #dc3545; padding: 16px;">' +
-            '<div style="font-weight: 600; font-size: 15px; margin-bottom: 8px; color: #721c24;">' +
-            '<i class="fa fa-exclamation-circle mr-2"></i>' +
-            i18next.t("Import failed") +
-            "</div>" +
-            '<div style="font-size: 14px; color: #495057; margin-bottom: 12px; line-height: 1.5;">' +
-            (errorMessage || i18next.t("Unknown error")) +
-            "</div>" +
-            '<div style="font-size: 13px; color: #856404; background: #fff3cd; padding: 10px 12px; border-radius: 4px; border: 1px solid #ffeeba;">' +
-            '<i class="fa fa-info-circle mr-1"></i>' +
-            i18next.t("Force Import will retry and may create duplicate data.") +
-            "</div></div>";
-        $(".demo-import-options").before(warningHtml);
-
-        $("#demoImportConfirmBtn")
-            .removeClass("btn-success")
-            .addClass("btn-danger")
-            .html('<i class="fa fa-exclamation-triangle mr-2"></i>' + i18next.t("Force Import"));
-    }
-
-    function resetImportButton() {
-        $("#demoImportWarning").remove();
-        $("#demoImportConfirmBtn")
-            .removeClass("btn-danger")
-            .addClass("btn-success")
-            .html('<i class="fa fa-users mr-2"></i>' + i18next.t("Import Demo Data"));
-    }
-
-    function attachHandlers() {
-        var selectors = ["#importDemoData", "#importDemoDataQuickBtn", "#importDemoDataV2"];
-        selectors.forEach(function (sel) {
-            var $btn = $(sel);
-            if ($btn.length) {
-                $btn.off("click").on("click", function (e) {
-                    e.preventDefault();
-                    console.log("Import button clicked, showing confirmation overlay");
-                    showConfirmOverlay();
+          if ($resultsList.length) {
+            $resultsList.empty();
+            var imported = data.imported || {};
+            for (var key in imported) {
+              if (Object.prototype.hasOwnProperty.call(imported, key) && imported[key] > 0) {
+                var label = key.replace(/_/g, " ").replace(/\b\w/g, function (l) {
+                  return l.toUpperCase();
                 });
+                $resultsList.append("<li>" + label + ": <strong>" + imported[key] + "</strong></li>");
+              }
             }
-        });
+            if (data.warnings && data.warnings.length > 0) {
+              $resultsList.append(
+                '<li class="text-warning">' + i18next.t("Warnings") + ": " + data.warnings.length + "</li>",
+              );
+            }
+            $results.show();
+          }
 
-        // Attach confirm button handler
-        $(document)
-            .off("click", "#demoImportConfirmBtn")
-            .on("click", "#demoImportConfirmBtn", function (e) {
-                e.preventDefault();
-                console.log("Confirm button clicked, starting import");
-                var includeFinancial = $("#includeDemoFinancial").is(":checked");
-                var includeEvents = $("#includeDemoEvents").is(":checked");
-                var includeSundaySchool = $("#includeDemoSundaySchool").is(":checked");
-                var $btn = $("#importDemoData, #importDemoDataQuickBtn, #importDemoDataV2").first();
-
-                // Pass forceImport flag based on current mode
-                doImport($btn, includeFinancial, includeEvents, includeSundaySchool, forceImportMode);
-            });
-
-        // Attach cancel button handler
-        $(document)
-            .off("click", "#demoImportCancelBtn")
-            .on("click", "#demoImportCancelBtn", function (e) {
-                e.preventDefault();
-                console.log("Cancel button clicked");
-                hideConfirmOverlay();
-            });
-    }
-
-    $(document).ready(function () {
-        if (window.CRM && typeof window.CRM.onLocalesReady === "function") {
-            window.CRM.onLocalesReady(function () {
-                attachHandlers();
-            });
+          window.CRM.notify(i18next.t("Demo data imported successfully"), { type: "success", delay: 3000 });
         } else {
-            attachHandlers();
+          // Enable force import mode on failure
+          forceImportMode = true;
+
+          var errorMsg = data && data.message ? data.message : i18next.t("Unknown error");
+
+          // Update button to Force Import and show overlay again with error
+          setForceImportButton(errorMsg);
+          showConfirmOverlay();
         }
+      })
+      .fail(function (xhr) {
+        hideSpinnerOverlay();
+
+        if ($status.length) {
+          $status.hide();
+        }
+        $button.prop("disabled", false);
+
+        // Enable force import mode on error
+        forceImportMode = true;
+
+        var errorMessage = i18next.t("An error occurred during demo data import");
+        if (xhr && xhr.responseJSON && xhr.responseJSON.message) {
+          errorMessage = xhr.responseJSON.message;
+        } else if (xhr && xhr.status) {
+          errorMessage = i18next.t("Server error") + " (" + xhr.status + ")";
+        }
+
+        // Update button to Force Import and show overlay again with error
+        setForceImportButton(errorMessage);
+        showConfirmOverlay();
+      });
+  }
+
+  function setForceImportButton(errorMessage) {
+    // Remove existing warning if any
+    $("#demoImportWarning").remove();
+
+    // Show inline warning message with specific error - better readability
+    var warningHtml =
+      '<div id="demoImportWarning" class="alert alert-danger mb-4" style="border-left: 4px solid #dc3545; padding: 16px;">' +
+      '<div style="font-weight: 600; font-size: 15px; margin-bottom: 8px; color: #721c24;">' +
+      '<i class="fa fa-exclamation-circle mr-2"></i>' +
+      i18next.t("Import failed") +
+      "</div>" +
+      '<div style="font-size: 14px; color: #495057; margin-bottom: 12px; line-height: 1.5;">' +
+      (errorMessage || i18next.t("Unknown error")) +
+      "</div>" +
+      '<div style="font-size: 13px; color: #856404; background: #fff3cd; padding: 10px 12px; border-radius: 4px; border: 1px solid #ffeeba;">' +
+      '<i class="fa fa-info-circle mr-1"></i>' +
+      i18next.t("Force Import will retry and may create duplicate data.") +
+      "</div></div>";
+    $(".demo-import-options").before(warningHtml);
+
+    $("#demoImportConfirmBtn")
+      .removeClass("btn-success")
+      .addClass("btn-danger")
+      .html('<i class="fa fa-exclamation-triangle mr-2"></i>' + i18next.t("Force Import"));
+  }
+
+  function resetImportButton() {
+    $("#demoImportWarning").remove();
+    $("#demoImportConfirmBtn")
+      .removeClass("btn-danger")
+      .addClass("btn-success")
+      .html('<i class="fa fa-users mr-2"></i>' + i18next.t("Import Demo Data"));
+  }
+
+  function attachHandlers() {
+    var selectors = ["#importDemoData", "#importDemoDataQuickBtn", "#importDemoDataV2"];
+    selectors.forEach(function (sel) {
+      var $btn = $(sel);
+      if ($btn.length) {
+        $btn.off("click").on("click", function (e) {
+          e.preventDefault();
+          console.log("Import button clicked, showing confirmation overlay");
+          showConfirmOverlay();
+        });
+      }
     });
+
+    // Attach confirm button handler
+    $(document)
+      .off("click", "#demoImportConfirmBtn")
+      .on("click", "#demoImportConfirmBtn", function (e) {
+        e.preventDefault();
+        console.log("Confirm button clicked, starting import");
+        var includeFinancial = $("#includeDemoFinancial").is(":checked");
+        var includeEvents = $("#includeDemoEvents").is(":checked");
+        var includeSundaySchool = $("#includeDemoSundaySchool").is(":checked");
+        var $btn = $("#importDemoData, #importDemoDataQuickBtn, #importDemoDataV2").first();
+
+        // Pass forceImport flag based on current mode
+        doImport($btn, includeFinancial, includeEvents, includeSundaySchool, forceImportMode);
+      });
+
+    // Attach cancel button handler
+    $(document)
+      .off("click", "#demoImportCancelBtn")
+      .on("click", "#demoImportCancelBtn", function (e) {
+        e.preventDefault();
+        console.log("Cancel button clicked");
+        hideConfirmOverlay();
+      });
+  }
+
+  $(document).ready(function () {
+    if (window.CRM && typeof window.CRM.onLocalesReady === "function") {
+      window.CRM.onLocalesReady(function () {
+        attachHandlers();
+      });
+    } else {
+      attachHandlers();
+    }
+  });
 })(jQuery);
