@@ -8,7 +8,12 @@ function initializeMainDashboard() {
     paging: false,
     ordering: false,
     info: false,
-    dom: "<'row'<'col-sm-12't>>",
+    layout: {
+      topStart: null,
+      topEnd: null,
+      bottomStart: null,
+      bottomEnd: null,
+    },
   };
 
   // Define action column for families and base columns without action
