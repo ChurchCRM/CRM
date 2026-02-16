@@ -1,0 +1,44 @@
+---
+description: ChurchCRM Perpl/Propel ORM rules and database access
+globs: **/*.php
+alwaysApply: false
+---
+
+# ChurchCRM Database & Perpl ORM
+
+## Rules
+- ALWAYS use Perpl Query classes (perplorm/perpl)
+- NEVER raw SQL or RunQuery()
+- Cast IDs: `(int)`
+- Check `=== null` for objects, not `empty()`
+- Access: `$obj->prop` never `$obj['prop']`
+
+## withColumn() - TableMap Constants REQUIRED
+```php
+// ✅ CORRECT
+$query->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'totalAmount');
+$query->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName');
+
+// ❌ WRONG - phpNames don't work
+$query->withColumn('Family.Name', 'FamilyName');
+```
+
+## addForeignValueCondition()
+Use **TABLE_NAME + column name string**, NOT COL_ constants:
+```php
+// ✅ CORRECT
+$join->addForeignValueCondition(ListOptionTableMap::TABLE_NAME, 'lst_ID', '', 3, self::EQUAL);
+
+// ❌ WRONG - COL_ includes table prefix
+$join->addForeignValueCondition('list_lst', ListOptionTableMap::COL_LST_ID, ...);
+```
+
+## Propel Method Naming
+- **Never guess** method names. Check Base Query class `@method` PHPDoc.
+- `lst_ID` → `findOneById()`, `filterById()` (phpName: Id)
+- `custom_order` → `orderByOrder()`, `filterByOrder()`
+- Common mistakes: `filterByCustomField()` → use `findOneById()`
+
+## User Authorization
+- Role-based: `isAdmin()`, `isEditRecordsEnabled()`, `isFinanceEnabled()`, etc.
+- Object-level: `canEditPerson(int $personId, int $personFamilyId)` for person records

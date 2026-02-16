@@ -1,0 +1,31 @@
+---
+description: ChurchCRM frontend, webpack, Bootstrap, and i18n
+globs: "**/*.{ts,tsx,js,jsx}, webpack/**"
+alwaysApply: false
+---
+
+# ChurchCRM Frontend
+
+## Webpack TypeScript API
+Use `webpack/api-utils.ts` for all webpack bundles:
+```typescript
+import { buildAPIUrl, buildAdminAPIUrl, fetchAPIJSON } from './api-utils';
+
+const url = buildAPIUrl('person/123/avatar');
+const adminUrl = buildAdminAPIUrl('system/config/key');
+const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
+```
+- **DON'T** assign `window.CRM.root` in constructors (bundles load before CRM init)
+- Old: `${(window as any).CRM.root}/api/...` → New: `buildAPIUrl('...')`
+
+## Admin API Calls
+- `window.CRM.AdminAPIRequest()` for jQuery-based code
+- Native `fetch()` for modern JS
+- Path format: `'database/reset'` → `/admin/api/database/reset`
+
+## Bootstrap 4.6.2
+- Use BS4 classes only; never BS5 (`w-100`, `gap-*`, `d-grid`)
+
+## i18n
+- JS: `i18next.t('text')`; PHP: `gettext('text')`
+- Consolidate compound terms: `gettext('Add New') . ' ' . gettext('Fund')`

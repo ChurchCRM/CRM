@@ -1,15 +1,16 @@
 ---
-description: Provide PR description after committing changes
+description: Always append PR description at end of summary for easy copy/paste
 alwaysApply: true
 ---
 
-# PR Description After Commits
+# PR Description After Code Changes
 
-After committing changes on a branch, **always provide a ready-to-use PR description** that the user can paste when opening a pull request.
+When completing any task that results in code changes (committed or not), **always append a ready-to-use PR description at the very end of your response summary**. Format it in a markdown code block so the user can quickly copy/paste when opening a pull request.
 
-The PR description should include:
+**Placement:** The PR description block must be the **last thing** in your reply—after the summary, after any other content. Make it easy to spot and copy.
 
-1. **Title** – Clear, concise summary
+**Format (inside a ```markdown code block):**
+1. **Title** – Clear, concise one-line summary
 2. **Summary** – What changed and why
-3. **Checklist** – If applicable (e.g., testing done, docs updated)
-4. **Screenshots/setup** – Only if relevant to the changes
+3. **Checklist** – Testing done, docs updated (if applicable)
+4. **Screenshots/setup** – Only if relevant
