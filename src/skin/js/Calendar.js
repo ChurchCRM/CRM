@@ -444,6 +444,8 @@ function initializeCalendar() {
 
 function getCalendarFilterElement(calendar, type, parent) {
   boxId = type + calendar.Id;
+  const switchId = "display-" + boxId;
+  const statusId = "status-" + boxId;
   return (
     '<div class="panel card card-primary" style="border-top: 0px">' +
     '<div class="card-header" style="background-color:#' +
@@ -465,15 +467,22 @@ function getCalendarFilterElement(calendar, type, parent) {
     boxId +
     '" class="panel-collapse collapse" aria-expanded="false" style="">' +
     '<div class="card-body">' +
-    "<div style='margin-bottom: 10px' class='checkbox'><input checked data-onstyle='info' data-width='100%' data-toggle='toggle' data-on='Show on Calendar' data-off='Hide on Calendar' type='checkbox' id='display-" +
-    boxId +
-    "' class='calendarSelectionBox' data-calendartype='" +
+    '<div class="custom-control custom-switch mb-2">' +
+    '<input type="checkbox" class="custom-control-input calendarSelectionBox" id="' +
+    switchId +
+    '" checked data-calendartype="' +
     type +
-    "' data-calendarname='" +
+    '" data-calendarname="' +
     calendar.Name +
-    "' data-calendarid='" +
+    '" data-calendarid="' +
     calendar.Id +
-    "'/></div>" +
+    '"/>' +
+    '<label class="custom-control-label" for="' +
+    switchId +
+    '"><span id="' +
+    statusId +
+    '">Visible on Calendar</span></label>' +
+    "</div>" +
     "<div style='margin-bottom: 10px'><a class='btn btn-primary calendarfocus' style='width:100%' data-calendartype='" +
     type +
     "' data-calendarname='" +
@@ -510,7 +519,12 @@ function GetCalendarURL(calendarType, calendarID) {
 function registerCalendarSelectionEvents() {
   $(document).on("change", ".calendarSelectionBox", function (event) {
     var eventSourceURL = GetCalendarURL($(this).data("calendartype"), $(this).data("calendarid"));
+    var switchId = $(this).attr("id");
+    var statusId = "status-" + switchId.replace("display-", "");
+
+    // Update status text
     if ($(this).is(":checked")) {
+      $("#" + statusId).text("Visible on Calendar");
       var alreadyPresent = window.CRM.fullcalendar.getEventSources().find(function (element) {
         return element.url === eventSourceURL;
       });
@@ -518,6 +532,7 @@ function registerCalendarSelectionEvents() {
         window.CRM.fullcalendar.addEventSource(eventSourceURL);
       }
     } else {
+      $("#" + statusId).text("Hidden from Calendar");
       var eventSource = window.CRM.fullcalendar.getEventSources().find(function (element) {
         return element.url === eventSourceURL;
       });
@@ -586,7 +601,6 @@ function showAllUserCalendars() {
 
       window.CRM.fullcalendar.addEventSource(GetCalendarURL("user", calendar.Id));
     });
-    $(".calendarSelectionBox").filter("input[data-calendartype=user]").bootstrapToggle();
   });
 }
 
@@ -600,7 +614,6 @@ function showAllSystemCalendars() {
       $("#systemCalendars").append(getCalendarFilterElement(calendar, "system", "systemCalendars"));
       window.CRM.fullcalendar.addEventSource(GetCalendarURL("system", calendar.Id));
     });
-    $(".calendarSelectionBox").filter("input[data-calendartype=system]").bootstrapToggle();
   });
 }
 

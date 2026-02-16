@@ -14,8 +14,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="card-body">
         <div class="form-group">
           <label><?= gettext('Enable New Kiosk Registration') ?>:</label>
-          <div>
-            <input data-width="150" id="isNewKioskRegistrationActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Active') ?>" data-off="<?= gettext('Inactive') ?>">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="isNewKioskRegistrationActive">
+            <label class="custom-control-label" for="isNewKioskRegistrationActive">
+              <span id="kioskRegistrationStatus"><?= gettext('Inactive') ?></span>
+            </label>
           </div>
           <small class="form-text text-muted"><?= gettext('When enabled, new kiosk devices can register for 30 seconds.') ?></small>
         </div>
@@ -136,18 +139,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
   $('#isNewKioskRegistrationActive').change(function() {
     if ($("#isNewKioskRegistrationActive").prop('checked')) {
+      $("#kioskRegistrationStatus").text(i18next.t('Active'));
       window.CRM.kioskAPI.enableRegistration().then(function(data) {
         window.CRM.secondsLeft = moment(data.visibleUntil.date).unix() - moment().unix();
         window.CRM.discoverInterval = setInterval(function() {
           window.CRM.secondsLeft -= 1;
           if (window.CRM.secondsLeft > 0) {
-            $("#isNewKioskRegistrationActive").next(".toggle-group").children(".toggle-on").html(i18next.t('Active for') + ' ' + window.CRM.secondsLeft + ' ' + i18next.t('seconds'));
+            $("#kioskRegistrationStatus").text(i18next.t('Active for') + ' ' + window.CRM.secondsLeft + ' ' + i18next.t('seconds'));
           } else {
             clearInterval(window.CRM.discoverInterval);
-            $('#isNewKioskRegistrationActive').bootstrapToggle('off');
+            $('#isNewKioskRegistrationActive').prop('checked', false);
+            $("#kioskRegistrationStatus").text(i18next.t('Inactive'));
           }
         }, 1000);
       });
+    } else {
+      $("#kioskRegistrationStatus").text(i18next.t('Inactive'));
     }
   });
 
