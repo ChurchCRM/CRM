@@ -159,11 +159,11 @@ require_once __DIR__ . '/Include/Header.php';
 <table class="table table-striped">
     <tr>
         <td align="right"><b><?= $sTypeName ?>:</b></td>
-        <td><?= $sName ?></td>
+        <td><?= InputUtils::escapeHTML($sName) ?></td>
     </tr>
     <tr>
         <td align="right"><b><?= gettext('Assigning') ?>:</b></td>
-        <td><?php echo $sPropertyName ?></td>
+        <td><?= InputUtils::escapeHTML($sPropertyName) ?></td>
 <?php if (strlen($sPrompt)) {
     ?>
         <tr>
@@ -171,9 +171,9 @@ require_once __DIR__ . '/Include/Header.php';
                 <b><?= gettext('Value') ?>:</b>
             </td>
             <td>
-                <?= $sPrompt ?>
+                <?= InputUtils::escapeHTML($sPrompt) ?>
                 <p><br/></p>
-                <textarea name="Value" cols="60" rows="10"><?= $sValue ?></textarea>
+                <textarea name="Value" cols="60" rows="10"><?= InputUtils::escapeHTML($sValue) ?></textarea>
             </td>
         </tr>
     <?php
