@@ -62,7 +62,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        registry-url: 'https://registry.npmjs.org'
 
     - name: Get package version
       id: package-version

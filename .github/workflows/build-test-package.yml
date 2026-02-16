@@ -40,8 +40,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
-        registry-url: 'https://registry.npmjs.org'
 
     - name: Declare some variables
       id: vars
@@ -87,9 +85,11 @@ jobs:
           ${{ runner.os }}-composer-
 
     - name: Install Composer Dependencies
+      env:
+        COMPOSER_MEMORY_LIMIT: -1
       run: |
         cd src
-        composer install --no-dev
+        composer install --no-dev --no-interaction --prefer-dist
 
     - name: Build App
       run: |
