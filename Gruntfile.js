@@ -137,7 +137,7 @@ module.exports = function (grunt) {
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/datatables.net/js/jquery.dataTables.min.js",
+                            "node_modules/datatables.net/js/dataTables.min.js",
                         ],
                         dest: "src/skin/external/datatables/",
                     },

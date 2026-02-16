@@ -84,7 +84,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/families/self-verify",
                 dataSrc: 'families'
             },
-            responsive: false,
+
             autoWidth: false,
             columns: [
                 {
@@ -128,7 +128,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/families/pending-self-verify",
                 dataSrc: 'families'
             },
-            responsive: false,
+
             autoWidth: false,
             columns: [
                 {

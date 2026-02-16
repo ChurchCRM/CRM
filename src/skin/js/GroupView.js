@@ -302,8 +302,8 @@ function initDataTable() {
     ],
     responsive: true,
     autoWidth: false,
-    fnDrawCallback: function (oSettings) {
-      $("#iTotalMembers").text(oSettings.aoData.length);
+    drawCallback: function (settings) {
+      $("#iTotalMembers").text(settings.aoData.length);
     },
     createdRow: function (row, data, index) {
       $(row).addClass("groupRow");

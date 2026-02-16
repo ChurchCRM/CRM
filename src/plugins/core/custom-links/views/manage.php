@@ -95,7 +95,6 @@ $(document).ready(function() {
             url: window.CRM.root + "/plugins/custom-links/api/links",
             dataSrc: "data"
         },
-        responsive: false,
         autoWidth: false,
         columns: [
             {
