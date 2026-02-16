@@ -15,17 +15,23 @@ $(document).ready(function () {
     var targetGroupID = event.currentTarget.dataset.groupid;
     var targetGroupName = event.currentTarget.dataset.groupname;
 
-    $("#input-person-properties").on("select2:select", function (event) {
-        promptBox = $("#prompt-box");
-        promptBox.removeClass("form-group").html("");
-        selected = $("#input-person-properties :selected");
-        pro_prompt = selected.data("pro_prompt");
-        pro_value = selected.data("pro_value");
-        if (pro_prompt) {
-            promptBox
-                .addClass("form-group")
-                .append($("<label></label>").text(pro_prompt))
-                .append($('<textarea rows="3" class="form-control" name="PropertyValue"></textarea>').val(pro_value));
+    bootbox.confirm({
+      message: i18next.t("Are you sure you want to remove this person's membership from") + " " + targetGroupName + "?",
+      buttons: {
+        confirm: {
+          label: i18next.t("Yes"),
+          className: "btn-success",
+        },
+        cancel: {
+          label: i18next.t("No"),
+          className: "btn-danger",
+        },
+      },
+      callback: function (result) {
+        if (result) {
+          window.CRM.groups.removePerson(targetGroupID, window.CRM.currentPersonID).done(function () {
+            location.reload();
+          });
         }
       },
     });
@@ -53,7 +59,7 @@ $(document).ready(function () {
     if (pro_prompt) {
       promptBox
         .addClass("form-group")
-        .append($("<label></label>").html(pro_prompt))
+        .append($("<label></label>").text(pro_prompt))
         .append($('<textarea rows="3" class="form-control" name="PropertyValue"></textarea>').val(pro_value));
     }
   });
