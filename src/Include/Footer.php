@@ -74,7 +74,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootbox/bootbox.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap-toggle/bootstrap-toggle.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/i18next/i18next.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/just-validate/just-validate.production.min.js') ?>"></script>
 

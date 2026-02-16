@@ -51,16 +51,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: [
-                            "node_modules/bootstrap-toggle/css/bootstrap-toggle.css",
-                            "node_modules/bootstrap-toggle/js/bootstrap-toggle.js",
-                        ],
-                        dest: "src/skin/external/bootstrap-toggle/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         cwd: "",
                         src: [
                             "node_modules/daterangepicker/daterangepicker.*",
