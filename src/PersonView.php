@@ -22,8 +22,7 @@ $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 $person = PersonQuery::create()->findPk($iPersonID);
 
 if (empty($person)) {
-    header('Location: ' . SystemURLs::getRootPath() . '/v2/person/not-found?id=' . $iPersonID);
-    exit;
+    RedirectUtils::redirect('v2/person/not-found?id=' . $iPersonID);
 }
 
 // GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person

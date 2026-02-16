@@ -1,6 +1,6 @@
-import * as React from "react";
-import { useEffect, useRef } from "react";
 import Quill from "quill";
+import type * as React from "react";
+import { useEffect, useRef } from "react";
 import "quill/dist/quill.snow.css";
 
 declare global {
@@ -71,7 +71,7 @@ const QuillEditor: React.FunctionComponent<{
         delete window.quillEditors[name];
       }
     };
-  }, [name]);
+  }, [name, onChange, placeholder, value]);
 
   return (
     <div

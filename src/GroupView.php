@@ -380,7 +380,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                             echo '<select name="PropertyID">';
 
                             foreach ($availableProperties as $prop) {
-                                echo '<option value="' . $prop['id'] . '">' . $prop['name'] . '</option>';
+                                echo '<option value="' . $prop['id'] . '">' . InputUtils::escapeHTML($prop['name']) . '</option>';
                             }
 
                             echo '</select>';

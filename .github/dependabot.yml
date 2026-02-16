@@ -48,8 +48,7 @@ updates:
           - "webpack-*"
           - "babel-*"
           - "@babel/*"
-          - "eslint"
-          - "eslint-*"
+          - "@biomejs/biome"
 
   # Composer packages in src directory
   - package-ecosystem: "composer"

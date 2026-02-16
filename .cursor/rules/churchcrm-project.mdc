@@ -1,0 +1,71 @@
+---
+description: ChurchCRM core conventions, stack, and project standards
+alwaysApply: true
+---
+
+# ChurchCRM Project Conventions
+
+## Stack
+- PHP 8.4+, Node 24, Perpl ORM (Propel2 fork), Slim 4, Bootstrap 4.6.2 (AdminLTE), React + TypeScript, Webpack, Cypress
+
+## Key Conventions
+- **Service layer first**: Add/update services in `src/ChurchCRM/Service/` for business logic
+- **Propel Query classes only** for DB access (no RunQuery or inline SQL)
+- **Use `use` imports** at top of PHP files; avoid inline fully-qualified class names
+- **PHP templates**: Render initial UI state server-side (avoid JS-only flashes)
+- **Boolean config**: `SystemConfig::getBooleanValue('key')`
+- **Asset paths**: `SystemURLs::getRootPath()` for css/img/src
+- **Notifications**: `window.CRM.notify()` (i18n via i18next.t) — never `alert()`
+
+## Terminology & i18n
+- Prefer "Family Listing", "People" (not Persons) for UI strings; do NOT rename API routes/internal keys
+- Family status: **Active / Inactive** (not "Deactivated"); actions: `Set Active` / `Set Inactive`
+- Add new UI terms to `locale/messages.po` before templates; leave translations empty for translators
+
+## Locale Rebuild (CRITICAL)
+- **BEFORE committing**: If you added `gettext()` or `i18next.t()` strings, run `npm run locale:build`
+- Then `npm run build` to regenerate frontend translation assets
+- Commit updated `locale/terms/messages.po` with your changes
+
+## Routing & Middleware
+- API routes: `src/api/routes/`; legacy pages: `src/*.php`
+- **Admin System**: Routes in `src/admin/routes/system.php`, views in `src/admin/views/`; menu in `Menu.php`
+- **Admin APIs**: `src/admin/routes/api/` (NOT `src/api/routes/system/`); prefix `/admin/api/`; kebab-case
+- **Finance**: `src/finance/` with Slim 4; `FinanceRoleAuthMiddleware`
+- **Middleware order (LIFO)**: addBodyParsing → addRouting → CorsMiddleware → AuthMiddleware → VersionMiddleware
+
+## RedirectUtils (Security)
+Use `src/ChurchCRM/Utils/RedirectUtils.php`:
+- `redirect($sRelativeURL)` – Safe relative redirects
+- `securityRedirect($missingRole)` – Permission-denied, logs warning
+- `absoluteRedirect($sTargetURL)` – External URLs
+- **DO NOT** use `header('Location:...')` directly
+
+## Asset Paths
+```php
+// CORRECT
+<link href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
+
+// WRONG
+<link href="/skin/v2/churchcrm.min.css">
+```
+
+## PHP 8.4+
+- Explicit nullable: `?int $param = null`
+- Use imports, never inline FQCN
+- Global functions: `\MakeFYString($id)` in namespaced code
+
+## HTML & Bootstrap
+- **Bootstrap 4.6.2 only** — never Bootstrap 5 classes
+- AVOID: `w-100`, `gap-*`, `d-grid`; use `btn-block` not `w-100` on buttons
+
+## File Locations
+| Path | Purpose |
+|------|---------|
+| `src/ChurchCRM/Service/` | Business logic |
+| `src/admin/routes/api/` | Admin-only APIs |
+| `src/api/routes/` | REST API |
+| `src/finance/` | Finance module |
+| `src/plugins/core/` | Core plugins |
+| `webpack/` | Webpack entry points |
+| `cypress/e2e/` | Tests |

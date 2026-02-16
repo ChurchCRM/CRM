@@ -1,10 +1,22 @@
-name: CI — Typecheck & Lint
+name: CI — Typecheck, Lint & Format
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - develop
+      - 'hotfix/**'
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
   pull_request:
-    branches: [ master ]
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -16,23 +28,48 @@ jobs:
     permissions:
       contents: read
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['22.x']
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
-          # fetch full history to be consistent with other workflows
           fetch-depth: 0
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+      - name: Use Node.js (from .nvmrc)
+        uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version-file: '.nvmrc'
           cache: 'npm'
-          registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies
         run: npm ci
       - name: Typecheck (tsc)
         run: npx tsc --noEmit --pretty
-      - name: Lint (eslint)
-        run: npx eslint "react/**/*.{js,jsx,ts,tsx}"
+      - name: Format check (biome)
+        run: npx biome format .
+      - name: Lint check (biome)
+        run: npx biome check react/
+
+  format-fix:
+    name: Apply format fixes
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+          persist-credentials: true
+      - name: Use Node.js (from .nvmrc)
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Apply Biome format
+        run: npx biome format --write .
+      - name: Apply Biome lint fixes
+        run: npx biome check --write react/
+      - name: Commit format changes
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "style: apply Biome format and lint fixes"

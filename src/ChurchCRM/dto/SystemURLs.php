@@ -9,6 +9,8 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\Utils\RedirectUtils;
+
 class SystemURLs
 {
     private static $rootPath;
@@ -113,8 +115,7 @@ class SystemURLs
             }
 
             if (!$validURL) {
-                header('Location: ' . $URL[0]);
-                exit;
+                RedirectUtils::absoluteRedirect($URL[0]);
             }
         }
     }

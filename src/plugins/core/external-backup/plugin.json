@@ -1,47 +1,47 @@
 {
-    "id": "external-backup",
-    "name": "External Backup (WebDAV)",
-    "description": "Automatically backup your ChurchCRM database to external cloud storage via WebDAV. Supports services like Nextcloud, ownCloud, and other WebDAV-compatible storage.",
-    "version": "1.0.0",
-    "author": "ChurchCRM Team",
-    "authorUrl": "https://churchcrm.io",
-    "type": "core",
-    "minimumCRMVersion": "7.0.0",
-    "mainClass": "ChurchCRM\\Plugins\\ExternalBackup\\ExternalBackupPlugin",
-    "dependencies": [],
-    "settingsUrl": null,
-    "routesFile": "routes/routes.php",
-    "settings": [
-        {
-            "key": "endpoint",
-            "label": "WebDAV Endpoint URL",
-            "type": "text",
-            "required": true,
-            "help": "Full WebDAV folder URL starting with https://. Example: https://cloud.example.com/remote.php/dav/files/username/ChurchCRM-Backups/"
-        },
-        {
-            "key": "username",
-            "label": "Username",
-            "type": "text",
-            "required": true,
-            "help": "Username for WebDAV authentication"
-        },
-        {
-            "key": "password",
-            "label": "Password",
-            "type": "password",
-            "required": true,
-            "help": "Password for WebDAV authentication"
-        },
-        {
-            "key": "autoInterval",
-            "label": "Scheduled Backup Interval (hours)",
-            "type": "number",
-            "required": false,
-            "default": "",
-            "help": "Hours between automatic scheduled backups. Leave empty for manual backups only. Recommended: 24 (daily) or 168 (weekly)."
-        }
-    ],
-    "menuItems": [],
-    "hooks": []
+  "id": "external-backup",
+  "name": "External Backup (WebDAV)",
+  "description": "Automatically backup your ChurchCRM database to external cloud storage via WebDAV. Supports services like Nextcloud, ownCloud, and other WebDAV-compatible storage.",
+  "version": "1.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\ExternalBackup\\ExternalBackupPlugin",
+  "dependencies": [],
+  "settingsUrl": null,
+  "routesFile": "routes/routes.php",
+  "settings": [
+    {
+      "key": "endpoint",
+      "label": "WebDAV Endpoint URL",
+      "type": "text",
+      "required": true,
+      "help": "Full WebDAV folder URL starting with https://. Example: https://cloud.example.com/remote.php/dav/files/username/ChurchCRM-Backups/"
+    },
+    {
+      "key": "username",
+      "label": "Username",
+      "type": "text",
+      "required": true,
+      "help": "Username for WebDAV authentication"
+    },
+    {
+      "key": "password",
+      "label": "Password",
+      "type": "password",
+      "required": true,
+      "help": "Password for WebDAV authentication"
+    },
+    {
+      "key": "autoInterval",
+      "label": "Scheduled Backup Interval (hours)",
+      "type": "number",
+      "required": false,
+      "default": "",
+      "help": "Hours between automatic scheduled backups. Leave empty for manual backups only. Recommended: 24 (daily) or 168 (weekly)."
+    }
+  ],
+  "menuItems": [],
+  "hooks": []
 }

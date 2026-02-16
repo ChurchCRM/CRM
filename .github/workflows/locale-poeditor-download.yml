@@ -31,13 +31,9 @@ concurrency:
 jobs:
   download:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['22.x']
-    
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       with:
         # fetch full history so things like auto-changelog work properly
         fetch-depth: 0
@@ -57,12 +53,11 @@ jobs:
             ;;
         esac
 
-    - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+    - name: Setup Node.js (from .nvmrc)
+      uses: actions/setup-node@v6
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version-file: '.nvmrc'
         cache: 'npm'
-        registry-url: 'https://registry.npmjs.org'
 
     - name: Get package version
       id: package-version
@@ -73,7 +68,7 @@ jobs:
       run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
 
     - name: Cache node modules
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
@@ -296,7 +291,7 @@ jobs:
 
     - name: Create Pull Request
       if: inputs.operation_mode != 'audit-only' && (steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch')
-      uses: peter-evans/create-pull-request@v6
+      uses: peter-evans/create-pull-request@v8
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         branch: 'locale/${{ steps.package-version.outputs.current-version}}'
