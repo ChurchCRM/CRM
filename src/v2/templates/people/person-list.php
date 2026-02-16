@@ -213,9 +213,28 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
         <table id="members" class="table table-striped table-hover data-table mb-0 w-100">
             <thead>
                 <tr>
-                    <?php foreach ($personListColumns as $column) {
+                    <?php 
+                    // Map of column names to localized display titles
+                    $htmlColumnTitleMap = [
+                        'Id' => gettext('Id'),
+                        'Name' => gettext('Name'),
+                        'Family Name' => gettext('Family Name'),
+                        'Family Status' => gettext('Family Status'),
+                        'Phone' => gettext('Phone'),
+                        'Email' => gettext('Email'),
+                        'Classification' => gettext('Classification'),
+                        'Gender' => gettext('Gender'),
+                        'Role' => gettext('Role'),
+                        'Birth Date' => gettext('Birth Date'),
+                        'Address' => gettext('Address'),
+                        'Properties' => gettext('Properties'),
+                        'Custom' => gettext('Custom'),
+                        'Group' => gettext('Group'),
+                    ];
+                    foreach ($personListColumns as $column) {
                         // Output all columns - DataTables JS config controls visibility
-                        echo '<th>' . $column->name . '</th>';
+                        $localizedHeader = $htmlColumnTitleMap[$column->name] ?? $column->name;
+                        echo '<th>' . $localizedHeader . '</th>';
                     } ?>
                     <th><?= gettext('Actions') ?></th>
                 </tr>
@@ -456,11 +475,30 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 $columnId = -1;
                 $columnIdMap = [];
                 $columns = $personListColumns;
+                // Map of column names to localized display titles
+                $columnTitleMap = [
+                    'Id' => gettext('Id'),
+                    'Name' => gettext('Name'),
+                    'Family Name' => gettext('Family Name'),
+                    'Family Status' => gettext('Family Status'),
+                    'Phone' => gettext('Phone'),
+                    'Email' => gettext('Email'),
+                    'Classification' => gettext('Classification'),
+                    'Gender' => gettext('Gender'),
+                    'Role' => gettext('Role'),
+                    'Birth Date' => gettext('Birth Date'),
+                    'Address' => gettext('Address'),
+                    'Properties' => gettext('Properties'),
+                    'Custom' => gettext('Custom'),
+                    'Group' => gettext('Group'),
+                ];
                 foreach ($columns as $column) {
                     // Include ALL columns - DataTables needs config for each <th>
                     $columnId++;
                     $columnIdMap[$column->name] = $columnId;
-                    $columnTitle = ['title' => $column->name];
+                    // Use localized title for display, but keep plain name for filtering
+                    $localizedTitle = $columnTitleMap[$column->name] ?? $column->name;
+                    $columnTitle = ['title' => $localizedTitle];
                     if ($column->visible !== 'false') {
                         if ($firstVisibleColumnId > $columnId) {
                             $firstVisibleColumnId = $columnId;
@@ -675,7 +713,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             var filteredCount = listPeople.length;
             
             bootbox.confirm({
-                title: "Remove from Cart",
+                title: i18next.t("Remove from Cart"),
                 message: i18next.t("Remove") + " " + filteredCount + " " + i18next.t("people from cart?"),
                 buttons: {
                     cancel: {

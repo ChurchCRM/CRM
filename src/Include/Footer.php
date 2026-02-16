@@ -53,7 +53,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
 
 <!-- DataTables: Core library and Bootstrap 4 integration -->
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.bootstrap4.min.js') ?>"></script>
 <!-- DataTables: Extensions -->
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.buttons.min.js') ?>"></script>
