@@ -17,6 +17,9 @@
         "url": "https://github.com/ChurchCRM/CRM/issues"
     },
     "homepage": "https://churchcrm.io",
+    "engines": {
+        "node": ">=24.0.0 <25.0.0"
+    },
     "scripts": {
         "audit": "npm audit fix --only=prod --audit-level=high",
         "build": "run-p build:php build:frontend",
@@ -109,7 +112,7 @@
         "moment": "^2.30.1",
         "notyf": "^3.10.0",
         "pdfmake": "^0.3.4",
-        "quill": "^2.0.3",
+        "quill": "2.0.2",
         "react": "^19.2.4",
         "react-bootstrap": "^2.10.10",
         "react-datepicker": "^8.9.0",
