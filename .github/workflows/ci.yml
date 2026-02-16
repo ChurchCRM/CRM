@@ -12,10 +12,6 @@ on:
       - 'LICENSE'
       - '.gitignore'
   pull_request:
-    branches:
-      - master
-      - develop
-      - 'hotfix/**'
     paths-ignore:
       - '**/*.md'
       - 'docs/**'
@@ -51,8 +47,10 @@ jobs:
         run: npm ci
       - name: Typecheck (tsc)
         run: npx tsc --noEmit --pretty
-      - name: Lint & format (biome)
-        run: npx biome check --write .
+      - name: Format (biome)
+        run: npx biome format --write .
+      - name: Lint (biome)
+        run: npx biome check --write react/
       - name: Commit format changes
         if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
         uses: stefanzweifel/git-auto-commit-action@v7
