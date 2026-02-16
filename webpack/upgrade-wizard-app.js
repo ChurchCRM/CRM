@@ -381,10 +381,8 @@ window.UpgradeWizard = {
  */
 function setupPrereleaseToggle() {
   const $toggle = $("#bAllowPrereleaseUpgrade");
+  const $status = $("#prereleaseUpgradeStatus");
   let isTogglingProgrammatically = false;
-
-  // Initialize bootstrap-toggle (checkbox is already set to correct value from PHP)
-  $toggle.bootstrapToggle();
 
   // Handle toggle change
   $toggle.change(function () {
@@ -394,6 +392,9 @@ function setupPrereleaseToggle() {
 
     const newValue = $(this).prop("checked");
     const $spinner = $("#upgradeSpinner");
+
+    // Update status text
+    $status.text(newValue ? i18next.t("Enabled") : i18next.t("Disabled"));
 
     // Show spinner
     $spinner.addClass("active");
@@ -429,9 +430,10 @@ function setupPrereleaseToggle() {
               delay: 5000,
             });
 
-            // Revert the toggle on failure
+            // Revert the toggle and status text on failure
             isTogglingProgrammatically = true;
             $toggle.prop("checked", !newValue).change();
+            $status.text(!newValue ? i18next.t("Enabled") : i18next.t("Disabled"));
             isTogglingProgrammatically = false;
           });
       })
@@ -442,9 +444,10 @@ function setupPrereleaseToggle() {
           delay: 5000,
         });
 
-        // Revert the toggle
+        // Revert the toggle and status text
         isTogglingProgrammatically = true;
         $toggle.prop("checked", !newValue).change();
+        $status.text(!newValue ? i18next.t("Enabled") : i18next.t("Disabled"));
         isTogglingProgrammatically = false;
       });
   });

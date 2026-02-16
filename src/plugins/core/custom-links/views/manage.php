@@ -95,7 +95,6 @@ $(document).ready(function() {
             url: window.CRM.root + "/plugins/custom-links/api/links",
             dataSrc: "data"
         },
-        responsive: false,
         autoWidth: false,
         columns: [
             {
@@ -109,6 +108,7 @@ $(document).ready(function() {
                 searchable: false
             },
             {
+                title: i18next.t('Name'),
                 data: 'Name',
                 render: function(data, type, row) {
                     if (type === 'display') {
@@ -118,6 +118,7 @@ $(document).ready(function() {
                 }
             },
             {
+                title: i18next.t('Link'),
                 data: 'Uri',
                 render: function(data, type, row) {
                     if (type === 'display') {
