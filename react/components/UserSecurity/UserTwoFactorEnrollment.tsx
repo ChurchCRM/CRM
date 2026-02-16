@@ -143,7 +143,7 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
             </div>
 
             <p className="text-muted small text-center mb-0">
-              {window.i18next.t("Cant scan")}{" "}
+              {window.i18next.t("Can't scan?")}{" "}
               <button type="button" className="btn btn-link btn-sm p-0" onClick={() => newQRCode()}>
                 {window.i18next.t("Generate new code")}
               </button>
@@ -344,7 +344,7 @@ const TwoFAStatusEnabled: React.FunctionComponent<{
             <ul className="mb-0 pl-3 small">
               <li>
                 {window.i18next.t(
-                  "Each time you sign in, youll need to confirm with a code from your authenticator app",
+                  "Each time you sign in, you'll need to confirm with a code from your authenticator app",
                 )}
               </li>
               <li>{window.i18next.t("You can also use backup recovery codes if you lose access to your app")}</li>
@@ -612,7 +612,7 @@ class UserTwoFactorEnrollment extends React.Component<Record<string, unknown>, T
         </div>
       );
     } else {
-      return <h4>Uh-oh</h4>;
+      return <h4>{window.i18next.t("Two Factor Enrollment Error")}</h4>;
     }
   }
 }
