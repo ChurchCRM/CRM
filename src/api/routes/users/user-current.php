@@ -15,6 +15,7 @@ $app->group('/user/current', function (RouteCollectorProxy $group): void {
     $group->post('/remove2fasecret', 'remove2fasecret');
     $group->post('/test2FAEnrollmentCode', 'test2FAEnrollmentCode');
     $group->get('/get2faqrcode', 'get2faqrcode');
+    $group->get('/2fa-status', 'get2FAStatus');
 });
 
 function refresh2fasecret(Request $request, Response $response, array $args): Response
@@ -57,14 +58,16 @@ function remove2fasecret(Request $request, Response $response, array $args): Res
 function get2faqrcode(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
+    $qrCode = LocalAuthentication::getTwoFactorQRCode(
+        $user->getUserName(),
+        $user->getDecryptedTwoFactorAuthSecret()
+    );
+
+    $writer = new PngWriter();
+    $result = $writer->write($qrCode);
+
     $response = $response->withHeader('Content-Type', 'image/png');
-    $response->getBody()
-        ->write(
-            LocalAuthentication::getTwoFactorQRCode(
-                $user->getUserName(),
-                $user->getDecryptedTwoFactorAuthSecret()
-            )->writeString()
-        );
+    $response->getBody()->write($result->getString());
 
     return $response;
 }
@@ -81,4 +84,12 @@ function test2FAEnrollmentCode(Request $request, Response $response, array $args
     }
 
     return SlimUtils::renderJSON($response, ['IsEnrollmentCodeValid' => $result]);
+}
+
+function get2FAStatus(Request $request, Response $response, array $args): Response
+{
+    $user = AuthenticationManager::getCurrentUser();
+    $isEnabled = $user->is2FactorAuthEnabled();
+
+    return SlimUtils::renderJSON($response, ['IsEnabled' => $isEnabled]);
 }
