@@ -761,7 +761,7 @@ require_once __DIR__ . '/Include/Header.php';
                     } else {
                         $cancelText = 'Return';
                     } ?>
-                    <input type="button" class="btn btn-secondary" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="javascript:document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'finance/') ?>';">
+                    <input type="button" class="btn btn-secondary" value="<?= gettext($cancelText) ?>" name="PledgeCancel" onclick="document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'finance/') ?>';">
                 </div>
             </div>
         </div>

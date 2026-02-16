@@ -140,7 +140,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-secondary" value="' . gettext('Save and Add') . "\" name=\"PaddleNumSubmitAndAdd\">\n";
                         } ?>
-                        <input type="button" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard') ?>';">
+                        <input type="button" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard') ?>';">
                     </td>
                 </tr>
 

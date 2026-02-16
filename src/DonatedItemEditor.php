@@ -307,7 +307,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) : ?>
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
                 <?php endif; ?>
-                <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel" onclick="javascript:document.location = '<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard'); ?>';">
+                <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel" onclick="document.location = '<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard'); ?>';">
             </div>
 
         </div>
