@@ -3,7 +3,6 @@
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use Slim\Factory\AppFactory;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 if (file_exists('../Include/Config.php')) {
     header('Location: ../');
@@ -53,9 +52,6 @@ if ($rootPath !== '' && $rootPath[0] !== '/') {
 $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] = $rootPath;
 $GLOBALS['CHURCHCRM_SETUP_DOC_ROOT'] = dirname(__DIR__);
 
-$container = new ContainerBuilder();
-$container->compile();
-AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 

@@ -13,17 +13,12 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Slim\Views\PhpRenderer;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 // Get base path by combining $sRootPath from Config.php with /session endpoint
 // Examples: '' + '/session' = '/session' (root install)
 //           '/churchcrm' + '/session' = '/churchcrm/session' (subdirectory install)
 $basePath = SlimUtils::getBasePath('/session');
 
-$container = new ContainerBuilder();
-$container->compile();
-// Register custom error handlers
-AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
@@ -49,9 +44,11 @@ function processTwoFactorGet(Request $request, Response $response, array $args):
 {
     $renderer = new PhpRenderer('templates/');
     $curUser = AuthenticationManager::getCurrentUser();
+    $queryParams = $request->getQueryParams();
     $pageArgs = [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'user'      => $curUser,
+        'sRootPath'    => SystemURLs::getRootPath(),
+        'user'         => $curUser,
+        'bInvalidCode' => isset($queryParams['invalid']),
     ];
 
     return $renderer->render($response, 'two-factor.php', $pageArgs);
@@ -60,8 +57,10 @@ function processTwoFactorGet(Request $request, Response $response, array $args):
 function processTwoFactorPost(Request $request, Response $response, array $args): void
 {
     $loginRequestBody = $request->getParsedBody();
-    $request = new LocalTwoFactorTokenRequest($loginRequestBody['TwoFACode']);
-    AuthenticationManager::authenticate($request);
+    $twoFARequest = new LocalTwoFactorTokenRequest($loginRequestBody['TwoFACode'] ?? '');
+    // AuthenticationManager::authenticate() calls RedirectUtils::redirect() which exits.
+    // On success: redirects to dashboard. On failure: redirects to /session/two-factor?invalid=1
+    AuthenticationManager::authenticate($twoFARequest);
 }
 
 function endSession(Request $request, Response $response, array $args): Response

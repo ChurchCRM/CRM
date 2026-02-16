@@ -18,11 +18,13 @@ const EventPropertiesViewer: React.FunctionComponent<{
               if (event.Type != null && event.Type === eventType.Id) {
                 return <p key={eventType.Id}>{eventType.Name}</p>;
               }
+              return null;
             })}
           </td>
         </tr>
         <tr>
           <td>{window.i18next.t("Event Description")}</td>
+          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event description is sanitized HTML from database (InputUtils::sanitizeHTML) */}
           <td dangerouslySetInnerHTML={{ __html: event.Desc || "" }} />
         </tr>
         <tr>
@@ -41,12 +43,14 @@ const EventPropertiesViewer: React.FunctionComponent<{
                 if (event.PinnedCalendars?.includes(calendar.Id)) {
                   return <li key={calendar.Id}>{calendar.Name}</li>;
                 }
+                return null;
               })}
             </ul>
           </td>
         </tr>
         <tr>
           <td>{window.i18next.t("Text")}</td>
+          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event text is sanitized HTML from database (InputUtils::sanitizeHTML) */}
           <td dangerouslySetInnerHTML={{ __html: event.Text || "" }} />
         </tr>
       </tbody>

@@ -27,7 +27,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
 use Slim\Routing\RouteCollectorProxy;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
+
 
 // Initialize plugin system
 $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
@@ -36,10 +36,6 @@ PluginManager::init($pluginsPath);
 // base path for plugin module
 $basePath = SlimUtils::getBasePath('/plugins');
 
-$container = new ContainerBuilder();
-$container->compile();
-
-AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 

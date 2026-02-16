@@ -253,13 +253,13 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <button disabled={!this.isFormComplete()} className="btn btn-success" onClick={this.save}>
+              <button type="button" disabled={!this.isFormComplete()} className="btn btn-success" onClick={this.save}>
                 Save
               </button>
-              <button className="btn btn-danger pull-left" onClick={this.delete}>
+              <button type="button" className="btn btn-danger pull-left" onClick={this.delete}>
                 Delete
               </button>
-              <button className="btn btn-default pull-right" onClick={this.exit}>
+              <button type="button" className="btn btn-default pull-right" onClick={this.exit}>
                 Cancel
               </button>
             </Modal.Footer>
@@ -281,13 +281,13 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
               />
             </Modal.Body>
             <Modal.Footer>
-              <button className="btn btn-success" onClick={this.setEditMode}>
+              <button type="button" className="btn btn-success" onClick={this.setEditMode}>
                 Edit
               </button>
-              <button className="btn btn-danger pull-left" onClick={this.delete}>
+              <button type="button" className="btn btn-danger pull-left" onClick={this.delete}>
                 Delete
               </button>
-              <button className="btn btn-default pull-right" onClick={this.exit}>
+              <button type="button" className="btn btn-default pull-right" onClick={this.exit}>
                 Cancel
               </button>
             </Modal.Footer>
