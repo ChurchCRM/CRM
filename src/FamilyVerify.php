@@ -15,4 +15,4 @@ $family = FamilyQuery::create()
 
 $family->verify();
 
-RedirectUtils::redirect('v2/family/' . $family->getId());
+RedirectUtils::redirect($family->getViewURI());
