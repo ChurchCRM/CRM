@@ -13,7 +13,8 @@
 Cypress.Commands.add(
     "makePrivateAdminAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.env("admin.api.key").then(apiKey => {
+        return cy.env(["admin.api.key"]).then(values => {
+            const apiKey = values['admin.api.key'];
             return cy.makePrivateAPICall(
                 apiKey,
                 method,
@@ -29,7 +30,8 @@ Cypress.Commands.add(
 Cypress.Commands.add(
     "makePrivateUserAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.env("user.api.key").then(apiKey => {
+        return cy.env(["user.api.key"]).then(values => {
+            const apiKey = values['user.api.key'];
             return cy.makePrivateAPICall(
                 apiKey,
                 method,
@@ -45,7 +47,8 @@ Cypress.Commands.add(
 Cypress.Commands.add(
     "makePrivateNoFinanceAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.env("nofinance.api.key").then(apiKey => {
+        return cy.env(["nofinance.api.key"]).then(values => {
+            const apiKey = values['nofinance.api.key'];
             return cy.makePrivateAPICall(
                 apiKey,
                 method,

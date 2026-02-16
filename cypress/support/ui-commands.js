@@ -46,10 +46,8 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
  * Sets up a cached admin login session for Cypress UI tests.
  * Usage in test files:
  *   beforeEach(() => {
- *       cy.env('admin.username').then(username => {
- *           cy.env('admin.password').then(password => {
- *               cy.setupAdminSession(username, password);
- *           });
+ *       cy.env(['admin.username', 'admin.password']).then(values => {
+ *           cy.setupAdminSession(values['admin.username'], values['admin.password']);
  *       });
  *   });
  * 
@@ -101,26 +99,20 @@ Cypress.Commands.add('setupNoFinanceSession', (username, password, options = {})
  * The allowCypressEnv: false setting blocks deprecated Cypress.env() browser access.
  */
 Cypress.Commands.add('setupAdminSessionFromEnv', (options = {}) => {
-    cy.env('admin.username').then(username => {
-        cy.env('admin.password').then(password => {
-            cy.setupAdminSession(username, password, options);
-        });
+    cy.env(['admin.username', 'admin.password']).then(values => {
+        cy.setupAdminSession(values['admin.username'], values['admin.password'], options);
     });
 });
 
 Cypress.Commands.add('setupStandardSessionFromEnv', (options = {}) => {
-    cy.env('standard.username').then(username => {
-        cy.env('standard.password').then(password => {
-            cy.setupStandardSession(username, password, options);
-        });
+    cy.env(['standard.username', 'standard.password']).then(values => {
+        cy.setupStandardSession(values['standard.username'], values['standard.password'], options);
     });
 });
 
 Cypress.Commands.add('setupNoFinanceSessionFromEnv', (options = {}) => {
-    cy.env('nofinance.username').then(username => {
-        cy.env('nofinance.password').then(password => {
-            cy.setupNoFinanceSession(username, password, options);
-        });
+    cy.env(['nofinance.username', 'nofinance.password']).then(values => {
+        cy.setupNoFinanceSession(values['nofinance.username'], values['nofinance.password'], options);
     });
 });
 
