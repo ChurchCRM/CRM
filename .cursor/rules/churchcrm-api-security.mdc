@@ -1,0 +1,34 @@
+---
+description: ChurchCRM API error handling, sanitization, and security
+globs: "**/*.php"
+alwaysApply: false
+---
+
+# ChurchCRM API & Security
+
+## API Error Handling
+**Always use `SlimUtils::renderErrorJSON()`** — never throw exceptions from route handlers:
+```php
+try {
+  $result = doSomething();
+  return SlimUtils::renderJSON($response, ['data' => $result]);
+} catch (\Throwable $e) {
+  $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
+  return SlimUtils::renderErrorJSON($response, gettext('User-facing message'), [], $status, $e, $request);
+}
+```
+
+## InputUtils (XSS Protection)
+- `sanitizeText($input)` – Plain text, strips HTML
+- `sanitizeHTML($input)` – Rich text (Quill), XSS-safe
+- `escapeHTML($input)` – Output in HTML body
+- `escapeAttribute($input)` – HTML attributes
+- NEVER use `htmlspecialchars()` directly
+
+## API Response
+- Success: `{success: true, data: ...}` or `{success: true, message: ...}`
+- Errors: use `message` field consistently (not `error` or `msg`)
+
+## TLS Verification
+- Default: verify TLS certificates
+- Self-signed: explicit opt-in config only, document the risk

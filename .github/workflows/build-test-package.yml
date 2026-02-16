@@ -27,21 +27,19 @@ jobs:
     permissions:
       contents: read
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: ['22.x']
     steps:
     - uses: actions/checkout@v6
       with:
         # Fetch full history for changelog generation and version comparison
         fetch-depth: 0
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version-file: '.nvmrc'
         cache: 'npm'
-        # setting a registry enables the NODE_AUTH_TOKEN env variable where we can set an npm token.  REQUIRED
-        registry-url: 'https://registry.npmjs.org'
+
+    - name: Get Env Ready
+      run: npm ci
 
     - name: Declare some variables
       id: vars
@@ -62,9 +60,12 @@ jobs:
       id: package-version
       uses: martinbeentjes/npm-get-version-action@v1.3.1
 
-    - name: Get Env Ready
-      run: |
-        npm ci
+    - name: Setup PHP 8.4
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath, sodium
+        coverage: none
 
     - name: Get Composer Cache Directory
       id: composer-cache
@@ -79,6 +80,13 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-composer-
 
+    - name: Install Composer Dependencies
+      env:
+        COMPOSER_MEMORY_LIMIT: -1
+      run: |
+        cd src
+        composer install --no-dev --no-interaction --prefer-dist
+
     - name: Build App
       run: |
         npm run package
@@ -87,6 +95,15 @@ jobs:
       run: |
         echo "🔍 Validating PHP syntax for all files in signatures..."
         npm run build:php:validate
+
+    - name: Build Docker Images
+      run: |
+        echo "🐳 Building Docker images for CI tests..."
+        cd docker
+        docker build --target test -t churchcrm/crm:php8-debian -f Dockerfile.churchcrm-apache-php8 .
+        echo "📦 Saving Docker image to tar file..."
+        docker save churchcrm/crm:php8-debian | gzip > ../temp/docker-image.tar.gz
+        echo "✅ Docker image saved: $(ls -lh ../temp/docker-image.tar.gz | awk '{print $5}')"
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v6
@@ -105,10 +122,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-    - name: Use Node.js 22.x
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: '22.x'
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Install dependencies
@@ -120,13 +137,17 @@ jobs:
         name: build-${{ github.run_id }}
         path: .
 
-    - name: Install Composer Dependencies
+    - name: Load Docker Image
       run: |
-        cd src
-        composer install --no-dev
+        echo "📦 Loading pre-built Docker image..."
+        docker load < temp/docker-image.tar.gz
+        echo "✅ Docker images loaded:"
+        docker images | grep churchcrm
 
     - name: Run Docker (Root Path)
-      run: npm run docker:ci:root:start
+      run: |
+        cp docker/Config.root.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
 
     - name: Wait for Docker to be ready
       run: |
@@ -201,10 +222,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-    - name: Use Node.js 22.x
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: '22.x'
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Install dependencies
@@ -216,13 +237,17 @@ jobs:
         name: build-${{ github.run_id }}
         path: .
 
-    - name: Install Composer Dependencies
+    - name: Load Docker Image
       run: |
-        cd src
-        composer install --no-dev
+        echo "📦 Loading pre-built Docker image..."
+        docker load < temp/docker-image.tar.gz
+        echo "✅ Docker images loaded:"
+        docker images | grep churchcrm
 
     - name: Run Docker (Subdirectory Path)
-      run: npm run docker:ci:subdir:start
+      run: |
+        cp docker/Config.parallel.subdir.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
 
     - name: Wait for Docker to be ready
       run: |
@@ -297,10 +322,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
-    - name: Use Node.js 22.x
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: '22.x'
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Install dependencies
@@ -312,10 +337,12 @@ jobs:
         name: build-${{ github.run_id }}
         path: .
 
-    - name: Install Composer Dependencies
+    - name: Load Docker Image
       run: |
-        cd src
-        composer install --no-dev
+        echo "📦 Loading pre-built Docker image..."
+        docker load < temp/docker-image.tar.gz
+        echo "✅ Docker images loaded:"
+        docker images | grep churchcrm
 
     - name: Generate File Signatures
       run: |
@@ -328,7 +355,8 @@ jobs:
         echo "Config.php removed - setup wizard will be triggered"
 
     - name: Run Docker (New System Test)
-      run: npm run docker:ci:new-system:start
+      run: |
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
 
     - name: Wait for Docker to be ready
       run: |
@@ -410,10 +438,10 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Use Node.js 22.x
+    - name: Use Node.js (from .nvmrc)
       uses: actions/setup-node@v6
       with:
-        node-version: '22.x'
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Declare some variables

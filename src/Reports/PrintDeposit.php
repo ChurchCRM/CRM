@@ -61,7 +61,7 @@ if ($output === 'pdf') {
         RedirectUtils::redirect('DepositSlipEditor.php?DepositSlipID=' . (int)$iDepositSlipID);
         exit;
     }
-    header('Location: ' . SystemURLs::getRootPath() . '/api/deposits/' . $iDepositSlipID . '/pdf');
+    RedirectUtils::redirect('api/deposits/' . $iDepositSlipID . '/pdf');
 } elseif ($output === 'csv') {
-    header('Location: ' . SystemURLs::getRootPath() . '/api/deposits/' . $iDepositSlipID . '/csv');
+    RedirectUtils::redirect('api/deposits/' . $iDepositSlipID . '/csv');
 }
