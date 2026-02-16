@@ -114,9 +114,12 @@ $MenuFirst = 1;
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
-                    dom: "<'row'<'col-sm-4'B><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
-                            "<'row'<'col-sm-12't>>" +
-                            "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>",
+                    layout: {
+                        topStart: 'search',
+                        topEnd: 'buttons',
+                        bottomStart: 'pageLength',
+                        bottomEnd: ['info', 'paging']
+                    },
                     buttons: [
                         'copy',
                         'csv',

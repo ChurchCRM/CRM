@@ -52,7 +52,6 @@ use ChurchCRM\dto\SystemURLs;
                 url: window.CRM.root + "/api/families/self-register",
                 dataSrc: 'families'
             },
-            responsive: false,
             autoWidth: false,
             columns: [
                 {
@@ -92,7 +91,6 @@ use ChurchCRM\dto\SystemURLs;
                 url: window.CRM.root + "/api/persons/self-register",
                 dataSrc: 'people'
             },
-            responsive: false,
             autoWidth: false,
             columns: [
                 {

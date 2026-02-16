@@ -7,25 +7,34 @@ describe("template spec", () => {
         // Test that we can filter people by classifications
         cy.visit("v2/people?familyActiveStatus=all");
         
-        // Verify table has data before filtering
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+        // Wait for page to load and verify we're on the right page
+        cy.url().should("include", "/v2/people");
         
-        // Test filtering by email
-        cy.get("#members_filter input").type("tony.wade@example.com");
+        // Verify table exists and has data before filtering
+        cy.get("#members", { timeout: 10000 }).should("exist");
+        cy.get("#members tbody", { timeout: 10000 }).should("exist");
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
         
-        // Wait for filter results to update (either shows record or "No matching records")
+        // Test filtering by email (DataTables v2 uses .dt-search container)
+        cy.get(".dt-search input", { timeout: 5000 }).first().type("tony.wade@example.com", { delay: 100 });
+        
+        // Wait for filter results to update
+        cy.wait(500);
+        
+        // Either we find the person or get "No matching records"
         cy.get("#members tbody").then(($tbody) => {
-            // Either we find the person or get "No matching records found"
             const hasRecord = $tbody.text().includes("tony.wade@example.com");
             if (!hasRecord) {
-                cy.contains("No matching records found").should("exist");
+                // If no exact match, check for "No matching records"
+                cy.get("#members tbody tr").first().should("contain", "No matching records");
             } else {
                 cy.get("#members tbody").contains("tony.wade@example.com").should("exist");
             }
         });
         
-        // Clear filter and verify table reloads
-        cy.get("#members_filter input").clear();
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+        // Clear filter and verify table resets
+        cy.get(".dt-search input").first().clear();
+        cy.wait(300);
+        cy.get("#members tbody tr", { timeout: 5000 }).should("have.length.greaterThan", 0);
     });
 });
