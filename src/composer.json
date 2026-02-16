@@ -56,7 +56,6 @@
     "slim/php-view": "^3.2.0",
     "slim/psr7": "^1.7",
     "slim/slim": "^4.15.0",
-    "symfony/dependency-injection": "^6.4.0",
     "symfony/translation": "^5.4.35",
     "twig/twig": "^3.20.0",
     "vonage/client": "^4.3.0"
