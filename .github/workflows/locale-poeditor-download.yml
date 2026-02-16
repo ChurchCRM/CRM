@@ -81,6 +81,7 @@ jobs:
 
     - name: Install dependencies
       run: |
+        npm config set engine-strict false
         npm ci
         npm install grunt-cli --save-dev
 

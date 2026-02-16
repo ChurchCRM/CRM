@@ -33,7 +33,9 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm config set engine-strict false
+          npm ci
       
       - name: Install gettext tools
         run: sudo apt-get update && sudo apt-get install -y gettext
