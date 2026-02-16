@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Get the FamilyID out of the querystring
 $iFamilyID = InputUtils::legacyFilterInput($_GET['FamilyID'], 'int');
@@ -14,5 +15,4 @@ $family = FamilyQuery::create()
 
 $family->verify();
 
-header('Location: ' . $family->getViewURI());
-exit;
+RedirectUtils::redirect('v2/family/' . $family->getId());

@@ -11,6 +11,7 @@ use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
@@ -130,8 +131,7 @@ if ($iCountRows < 1) {
         'DateEnd'   => $sDateEnd,
         'datetype'  => $datetype,
     ];
-    header('Location: ../FinancialReports.php?' . http_build_query($params));
-    exit;
+    RedirectUtils::redirect('FinancialReports.php?' . http_build_query($params));
 }
 
 // Set up bottom border value
@@ -856,6 +856,6 @@ $page = 1;
             'DateEnd'   => $sDateEnd,
             'datetype'  => $datetype,
         ];
-        header('Location: ../FinancialReports.php?' . http_build_query($params));
+        RedirectUtils::redirect('FinancialReports.php?' . http_build_query($params));
     }
 }
