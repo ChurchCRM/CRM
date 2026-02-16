@@ -29,9 +29,9 @@ jobs:
           cache: 'npm'
       
       - name: Install dependencies
-        run: |
-          npm config set engine-strict false
-          npm ci
+        env:
+          NPM_CONFIG_ENGINE_STRICT: false
+        run: npm ci
       
       - name: Configure Git
         run: |

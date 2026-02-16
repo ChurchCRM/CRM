@@ -80,8 +80,9 @@ jobs:
           ${{ runner.os }}-node-
 
     - name: Install dependencies
+      env:
+        NPM_CONFIG_ENGINE_STRICT: false
       run: |
-        npm config set engine-strict false
         npm ci
         npm install grunt-cli --save-dev
 

@@ -42,9 +42,9 @@ jobs:
         cache: 'npm'
 
     - name: Get Env Ready
-      run: |
-        npm config set engine-strict false
-        npm ci
+      env:
+        NPM_CONFIG_ENGINE_STRICT: false
+      run: npm ci
 
     - name: Declare some variables
       id: vars
@@ -134,9 +134,9 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: |
-        npm config set engine-strict false
-        npm ci
+      env:
+        NPM_CONFIG_ENGINE_STRICT: false
+      run: npm ci
 
     - name: Download Build Artifact
       uses: actions/download-artifact@v7
@@ -236,9 +236,9 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: |
-        npm config set engine-strict false
-        npm ci
+      env:
+        NPM_CONFIG_ENGINE_STRICT: false
+      run: npm ci
 
     - name: Download Build Artifact
       uses: actions/download-artifact@v7
@@ -338,9 +338,9 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: |
-        npm config set engine-strict false
-        npm ci
+      env:
+        NPM_CONFIG_ENGINE_STRICT: false
+      run: npm ci
 
     - name: Download Build Artifact
       uses: actions/download-artifact@v7

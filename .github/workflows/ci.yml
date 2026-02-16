@@ -38,9 +38,9 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
-        run: |
-          npm config set engine-strict false
-          npm ci
+        env:
+          NPM_CONFIG_ENGINE_STRICT: false
+        run: npm ci
       - name: Typecheck (tsc)
         run: npx tsc --noEmit --pretty
       - name: Format check (biome)
@@ -66,9 +66,9 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
       - name: Install dependencies
-        run: |
-          npm config set engine-strict false
-          npm ci
+        env:
+          NPM_CONFIG_ENGINE_STRICT: false
+        run: npm ci
       - name: Apply Biome format
         run: npx biome format --write .
       - name: Apply Biome lint fixes
