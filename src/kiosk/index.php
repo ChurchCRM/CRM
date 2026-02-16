@@ -71,7 +71,7 @@ if (!$isAdminRoute) {
 
 // Helper function to retrieve kiosk device from cookie (instead of container)
 // Captures the already-initialized $Kiosk to handle newly created devices in the current request
-$getKioskFromCookie = function (): ?KioskDevice use ($Kiosk) {
+$getKioskFromCookie = function () use ($Kiosk): ?KioskDevice {
     return $Kiosk ?? null;
 };
 
