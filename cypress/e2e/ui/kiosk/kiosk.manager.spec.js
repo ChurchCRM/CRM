@@ -126,8 +126,8 @@ describe("Kiosk Manager Workflow", () => {
         // Click the toggle to enable registration
         cy.get("#isNewKioskRegistrationActive").check({ force: true });
         
-        // Should show countdown (Active for X seconds)
-        cy.get(".toggle-on", { timeout: 10000 }).should("contain", "Active");
+        // Should show countdown (Active for X seconds) - check the status span
+        cy.get("#kioskRegistrationStatus", { timeout: 10000 }).should("contain", "Active");
     });
 
     it("should load and display kiosk data from API", () => {
