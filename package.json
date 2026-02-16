@@ -83,7 +83,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "^6.7.2",
         "@ttskch/select2-bootstrap4-theme": "^1.5.2",
-        "@uppy/core": "^4.5.3",
+        "@uppy/core": "^5.2.0",
         "@uppy/dashboard": "^4.4.3",
         "@uppy/webcam": "^4.3.2",
         "@uppy/xhr-upload": "^4.4.2",
@@ -107,7 +107,7 @@
         "flag-icons": "^7.5.0",
         "fullcalendar": "^6.1.19",
         "i18n": "^0.15.3",
-        "i18next": "^24.2.3",
+        "i18next": "^25.8.8",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
         "jszip": "^3.10.1",
