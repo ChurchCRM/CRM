@@ -61,10 +61,11 @@ class LocalAuthentication implements IAuthenticationProvider
             $username,
             $secret
         );
-        $qrCode = new QrCode($g2faUrl);
-        $qrCode->setSize(300);
 
-        return $qrCode;
+        return new QrCode(
+            data: $g2faUrl,
+            size: 300
+        );
     }
 
     public function getCurrentUser(): ?User
@@ -174,7 +175,7 @@ class LocalAuthentication implements IAuthenticationProvider
             } else {
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1';
             }
         }
 
