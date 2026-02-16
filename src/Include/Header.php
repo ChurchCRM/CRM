@@ -261,8 +261,8 @@ $MenuFirst = 1;
                       <i class="fa-solid fa-cogs"></i> <?= gettext('Change Settings') ?></a>
                   <?php if (LocalAuthentication::getIsTwoFactorAuthSupported()) { ?>
                       <div class="dropdown-divider"></div>
-                      <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/enroll2fa" class="dropdown-item">
-                          <i class="fa-solid fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></a>
+                      <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
+                          <i class="fa-solid fa-shield"></i> <?= gettext("Manage 2 Factor Authentication") ?></a>
                   <?php } ?>
                      <div class="dropdown-divider"></div>
                     <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">
