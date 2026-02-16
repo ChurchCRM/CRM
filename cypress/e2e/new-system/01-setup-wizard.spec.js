@@ -23,14 +23,16 @@ describe('01 - Setup Wizard', () => {
     };
 
     before(() => {
-        // Load database configuration from Cypress.env()
-        dbConfig = {
-            host: Cypress.env('db.host') || 'database-new-system',
-            port: Cypress.env('db.port') || '3306',
-            name: Cypress.env('db.name') || 'churchcrm',
-            user: Cypress.env('db.user') || 'churchcrm',
-            password: Cypress.env('db.password') || 'changeme'
-        };
+        // Load database configuration from cy.env() (secure Node context)
+        cy.env(['db.host', 'db.port', 'db.name', 'db.user', 'db.password']).then(values => {
+            dbConfig = {
+                host: values['db.host'] || 'database-new-system',
+                port: values['db.port'] || '3306',
+                name: values['db.name'] || 'churchcrm',
+                user: values['db.user'] || 'churchcrm',
+                password: values['db.password'] || 'changeme'
+            };
+        });
     });
 
     describe('Fresh Installation', () => {

@@ -10,17 +10,19 @@ describe("API Private Current User", () => {
             200,
         );
 
-        cy.request({
-            method: "GET",
-            url: "/api/user/3/setting/ui.style",
-            headers: {
-                "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
-            },
-        }).then((resp) => {
-            expect(resp.status).to.eq(200);
-            const result = JSON.parse(JSON.stringify(resp.body));
-            expect(result.value).to.eq(json.value);
+        cy.env(["admin.api.key"]).then(values => {
+            cy.request({
+                method: "GET",
+                url: "/api/user/3/setting/ui.style",
+                headers: {
+                    "content-type": "application/json",
+                    "x-api-key": values["admin.api.key"],
+                },
+            }).then((resp) => {
+                expect(resp.status).to.eq(200);
+                const result = JSON.parse(JSON.stringify(resp.body));
+                expect(result.value).to.eq(json.value);
+            });
         });
     });
 
@@ -33,17 +35,19 @@ describe("API Private Current User", () => {
             200,
         );
 
-        cy.request({
-            method: "GET",
-            url: "/api/user/3/setting/ui.style",
-            headers: {
-                "content-type": "application/json",
-                "x-api-key": Cypress.env("admin.api.key"),
-            },
-        }).then((resp) => {
-            expect(resp.status).to.eq(200);
-            const result = JSON.parse(JSON.stringify(resp.body));
-            expect(result.value).to.eq(json.value);
+        cy.env(["admin.api.key"]).then(values => {
+            cy.request({
+                method: "GET",
+                url: "/api/user/3/setting/ui.style",
+                headers: {
+                    "content-type": "application/json",
+                    "x-api-key": values["admin.api.key"],
+                },
+            }).then((resp) => {
+                expect(resp.status).to.eq(200);
+                const result = JSON.parse(JSON.stringify(resp.body));
+                expect(result.value).to.eq(json.value);
+            });
         });
     });
 
