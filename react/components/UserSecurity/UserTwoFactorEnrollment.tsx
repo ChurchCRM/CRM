@@ -70,6 +70,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
           {/* CTA Button */}
           <div className="text-center mt-4">
             <button
+              type="button"
               id="begin2faEnrollment"
               className="btn btn-primary btn-lg btn-block"
               onClick={() => {
@@ -143,7 +144,7 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
 
             <p className="text-muted small text-center mb-0">
               {window.i18next.t("Cant scan")}{" "}
-              <button className="btn btn-link btn-sm p-0" onClick={() => newQRCode()}>
+              <button type="button" className="btn btn-link btn-sm p-0" onClick={() => newQRCode()}>
                 {window.i18next.t("Generate new code")}
               </button>
             </p>
@@ -214,7 +215,7 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
 
           {/* Action Buttons */}
           <div className="text-center">
-            <button className="btn btn-outline-secondary" onClick={() => remove2FA()}>
+            <button type="button" className="btn btn-outline-secondary" onClick={() => remove2FA()}>
               <i className="fa fa-times mr-1"></i>
               {window.i18next.t("Cancel")}
             </button>
@@ -274,6 +275,7 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
               {TwoFARecoveryCodes.length ? (
                 <div>
                   {TwoFARecoveryCodes.map((code: string, index: number) => (
+                    // biome-ignore lint/suspicious/noArrayIndexKey: Recovery codes are static list that won't be reordered
                     <div key={index}>
                       <span className="text-muted mr-2">{String(index + 1).padStart(2, "0")}.</span>
                       <code>{code}</code>
@@ -288,6 +290,7 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
             {/* Action Buttons */}
             <div className="mt-4 d-flex justify-content-between">
               <button
+                type="button"
                 className="btn btn-outline-secondary"
                 onClick={() => {
                   window.print();
@@ -353,6 +356,7 @@ const TwoFAStatusEnabled: React.FunctionComponent<{
           {/* Actions */}
           <div className="text-center">
             <button
+              type="button"
               className="btn btn-outline-danger"
               onClick={() => {
                 if (
@@ -512,6 +516,7 @@ class UserTwoFactorEnrollment extends React.Component<Record<string, unknown>, T
           is2FAEnabled: false,
           currentView: "intro",
         });
+        // biome-ignore lint/suspicious/noExplicitAny: Legacy window.CRM integration requires any type
         (window.CRM as any).notify(window.i18next.t("Two-factor authentication has been disabled"), {
           type: "success",
         });
@@ -564,6 +569,7 @@ class UserTwoFactorEnrollment extends React.Component<Record<string, unknown>, T
           <div className="col-lg-8">
             <div className="card card-outline card-primary">
               <div className="card-body p-5 text-center">
+                {/* biome-ignore lint/a11y/useSemanticElements: Bootstrap spinner pattern requires div wrapper */}
                 <div className="spinner-border" role="status">
                   <span className="sr-only">{window.i18next.t("Loading")}...</span>
                 </div>
