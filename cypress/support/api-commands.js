@@ -9,55 +9,46 @@
 // ***********************************************
 
 // -- Modern API command patterns --
-// Note: These commands use cy.env() which keeps credentials in secure Node context
+// Note: Cypress.env() is used here to read config values synchronously
 Cypress.Commands.add(
     "makePrivateAdminAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.env(["admin.api.key"]).then(values => {
-            const apiKey = values['admin.api.key'];
-            return cy.makePrivateAPICall(
-                apiKey,
-                method,
-                url,
-                body,
-                expectedStatus,
-                timeoutMs,
-            );
-        });
+        return cy.makePrivateAPICall(
+            Cypress.env("admin.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
     },
 );
 
 Cypress.Commands.add(
     "makePrivateUserAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.env(["user.api.key"]).then(values => {
-            const apiKey = values['user.api.key'];
-            return cy.makePrivateAPICall(
-                apiKey,
-                method,
-                url,
-                body,
-                expectedStatus,
-                timeoutMs,
-            );
-        });
+        return cy.makePrivateAPICall(
+            Cypress.env("user.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
     },
 );
 
 Cypress.Commands.add(
     "makePrivateNoFinanceAPICall",
     (method, url, body, expectedStatus = 200, timeoutMs) => {
-        return cy.env(["nofinance.api.key"]).then(values => {
-            const apiKey = values['nofinance.api.key'];
-            return cy.makePrivateAPICall(
-                apiKey,
-                method,
-                url,
-                body,
-                expectedStatus,
-                timeoutMs,
-            );
-        });
+        return cy.makePrivateAPICall(
+            Cypress.env("nofinance.api.key"),
+            method,
+            url,
+            body,
+            expectedStatus,
+            timeoutMs,
+        );
     },
 );
 
