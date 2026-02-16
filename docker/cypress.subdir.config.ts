@@ -26,6 +26,9 @@ export default defineConfig({
   },
   retries: 0,
   numTestsKeptInMemory: 0,
+  // Explicitly disable Cypress.env() access from browser code after migration to cy.env()
+  // See: https://on.cypress.io/cypress-env-migration
+  allowCypressEnv: false,
   e2e: {
     setupNodeEvents(on, config) {
       // cypress-terminal-report logs printer for CI debugging
