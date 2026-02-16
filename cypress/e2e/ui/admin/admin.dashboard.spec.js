@@ -2,7 +2,7 @@
 
 describe("Admin Dashboard", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("should display the admin dashboard", () => {

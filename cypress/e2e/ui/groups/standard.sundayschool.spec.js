@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard Sunday School", () => {
-    beforeEach(() => cy.setupStandardSessionFromEnv());
+    beforeEach(() => cy.setupStandardSession());
     
     it("View Sunday School dashboard", () => {
         cy.visit("sundayschool/SundaySchoolDashboard.php");

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Main Dashboard", () => {
-    beforeEach(() => cy.setupStandardSessionFromEnv());
+    beforeEach(() => cy.setupStandardSession());
     
     it("Loads all", () => {
         cy.visit("v2/dashboard");

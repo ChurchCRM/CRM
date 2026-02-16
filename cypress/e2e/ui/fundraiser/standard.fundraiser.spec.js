@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Fund Raiser", () => {
-    beforeEach(() => cy.setupStandardSessionFromEnv());
+    beforeEach(() => cy.setupStandardSession());
     
     it("View All ", () => {
         cy.visit("FundRaiserEditor.php?FundRaiserID=-1");

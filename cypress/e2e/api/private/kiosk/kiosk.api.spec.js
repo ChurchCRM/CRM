@@ -9,7 +9,7 @@
 
 describe("Kiosk API - Admin Operations", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     describe("GET /kiosk/api/devices", () => {
@@ -161,7 +161,7 @@ describe("Kiosk API - Admin Operations", () => {
 describe("Kiosk API - Access Control", () => {
     describe("Standard User Access", () => {
         beforeEach(() => {
-            cy.setupStandardSessionFromEnv();
+            cy.setupStandardSession();
         });
 
         it("should deny GET /kiosk/api/devices for non-admin", () => {

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard Groups", () => {
-    beforeEach(() => cy.setupStandardSessionFromEnv());
+    beforeEach(() => cy.setupStandardSession());
     
     it("Add Group ", () => {
         const uniqueSeed = Date.now().toString();

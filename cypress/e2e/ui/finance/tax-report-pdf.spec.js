@@ -9,7 +9,7 @@
  */
 describe("Tax Report PDF Generation - Issue #7906", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("should generate a valid PDF for Giving Report when data exists", () => {

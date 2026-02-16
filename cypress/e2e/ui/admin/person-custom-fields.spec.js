@@ -2,7 +2,7 @@
 
 describe("Person Custom Fields", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
         cy.visit("PersonCustomFieldsEditor.php");
     });
 

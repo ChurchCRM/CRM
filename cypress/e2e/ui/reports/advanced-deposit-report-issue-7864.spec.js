@@ -19,7 +19,7 @@
 
 describe("Issue #7864 - Advanced Deposit Report Summary Data Fund Totals", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     const getTodayDate = () => {

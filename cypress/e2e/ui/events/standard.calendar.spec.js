@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard Calendar", () => {
-    beforeEach(() => cy.setupStandardSessionFromEnv());
+    beforeEach(() => cy.setupStandardSession());
     
     it("Create New Event", () => {
         const title = "My New Event - " + Cypress._.random(0, 1e6);

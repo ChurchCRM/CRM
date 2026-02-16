@@ -1,6 +1,6 @@
 describe('Plugin Management UI', () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
         cy.visit('/plugins/management');
     });
 
@@ -112,7 +112,7 @@ describe('Plugin Management UI', () => {
     describe('Plugin Settings', () => {
         before(() => {
             // Enable mailchimp plugin for settings tests
-            cy.setupAdminSessionFromEnv();
+            cy.setupAdminSession();
             cy.request({
                 method: 'POST',
                 url: '/plugins/api/plugins/mailchimp/enable',
@@ -199,7 +199,7 @@ describe('Plugin Management UI', () => {
 
     describe('Access Control', () => {
         it('should not allow standard user to access plugin management', () => {
-            cy.setupStandardSessionFromEnv();
+            cy.setupStandardSession();
             cy.visit('/plugins/management', { failOnStatusCode: false });
             
             // Standard user should either:

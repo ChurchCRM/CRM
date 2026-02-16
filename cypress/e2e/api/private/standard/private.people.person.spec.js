@@ -7,7 +7,7 @@
  */
 describe("API Private Person", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     describe("GET /api/person/{id} - Get Person by ID", () => {

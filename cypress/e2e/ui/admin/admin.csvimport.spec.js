@@ -8,7 +8,7 @@ describe(
     },
     () => {
         beforeEach(() => {
-            cy.setupAdminSessionFromEnv();
+            cy.setupAdminSession();
         });
 
         it("Verify CSV Import", () => {

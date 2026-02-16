@@ -1,6 +1,6 @@
 describe("template spec", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("filter-by-classification", () => {

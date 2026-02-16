@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard Reports", () => {
-    beforeEach(() => cy.setupStandardSessionFromEnv());
+    beforeEach(() => cy.setupStandardSession());
     
     it("Gen Newsletter Labels ", () => {
         cy.visit("LettersAndLabels.php");

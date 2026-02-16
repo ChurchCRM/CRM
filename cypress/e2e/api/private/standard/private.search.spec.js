@@ -6,7 +6,7 @@
  */
 describe("API Private Search", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     describe("GET /api/search/{query} - Global Search", () => {

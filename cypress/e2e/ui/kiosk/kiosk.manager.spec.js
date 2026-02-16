@@ -3,7 +3,7 @@
 describe("Kiosk Manager", () => {
     describe("Admin Access", () => {
         beforeEach(() => {
-            cy.setupAdminSessionFromEnv();
+            cy.setupAdminSession();
         });
 
         it("should display the Kiosk Manager page", () => {
@@ -35,7 +35,7 @@ describe("Kiosk Manager", () => {
 
     describe("Standard User Access Denied", () => {
         beforeEach(() => {
-            cy.setupStandardSessionFromEnv();
+            cy.setupStandardSession();
         });
 
         it("should deny access to non-admin users for kiosk admin page", () => {
@@ -49,7 +49,7 @@ describe("Kiosk Manager", () => {
 describe("Kiosk API", () => {
     describe("Admin API Access", () => {
         beforeEach(() => {
-            cy.setupAdminSessionFromEnv();
+            cy.setupAdminSession();
         });
 
         it("should fetch kiosk devices list", () => {
@@ -76,7 +76,7 @@ describe("Kiosk API", () => {
 
     describe("Standard User API Access Denied", () => {
         beforeEach(() => {
-            cy.setupStandardSessionFromEnv();
+            cy.setupStandardSession();
         });
 
         it("should deny access to non-admin users for kiosk API", () => {
@@ -117,7 +117,7 @@ describe("Kiosk API", () => {
 
 describe("Kiosk Manager Workflow", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("should enable kiosk registration and show countdown", () => {
@@ -170,7 +170,7 @@ describe("Kiosk Device Operations", () => {
     let testKioskId = null;
 
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("should handle reload command for existing kiosk", () => {
@@ -258,7 +258,7 @@ describe("Kiosk Device Operations", () => {
 
 describe("Kiosk Manager Menu Integration", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("should have Kiosk Manager link in admin menu", () => {

@@ -1,6 +1,6 @@
 describe('Admin System Reset', () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it('should load the system reset page', () => {

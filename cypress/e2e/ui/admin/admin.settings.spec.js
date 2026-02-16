@@ -2,7 +2,7 @@
 
 describe("Admin Settings", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("View system settings", () => {

@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 describe("Standard Family", () => {
-    beforeEach(() => cy.setupStandardSessionFromEnv());
+    beforeEach(() => cy.setupStandardSession());
     
     it("Delete Person", () => {
         cy.visit("PersonView.php?PersonID=69");

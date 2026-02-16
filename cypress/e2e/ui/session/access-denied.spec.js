@@ -2,7 +2,7 @@
 
 describe("Access Denied Page", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     describe("Direct Access", () => {
@@ -130,7 +130,7 @@ describe("Access Denied Page", () => {
 
 describe("Access Denied Redirect for Standard User", () => {
     beforeEach(() => {
-        cy.setupStandardSessionFromEnv();
+        cy.setupStandardSession();
     });
 
     it("Standard user accessing admin page should be redirected to access-denied", () => {

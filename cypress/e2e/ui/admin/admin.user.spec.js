@@ -1,6 +1,6 @@
 describe("Admin User Password", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("List System Users", () => {

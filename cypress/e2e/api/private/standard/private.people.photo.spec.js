@@ -5,7 +5,7 @@ describe("API Private Photo and Avatar - Person", () => {
     const invalidPersonId = 99999;
 
     beforeEach(() => {
-        cy.setupStandardSessionFromEnv();
+        cy.setupStandardSession();
     });
 
     describe("GET /api/person/{id}/photo", () => {

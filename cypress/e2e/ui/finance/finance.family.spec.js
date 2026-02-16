@@ -2,7 +2,7 @@
 
 describe("Finance Family", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("View a Family", () => {

@@ -4,7 +4,7 @@ const personViewPath = "PersonView.php";
 describe("Standard Person", () => {
     const uniqueSeed = Date.now().toString();
     
-    beforeEach(() => cy.setupStandardSessionFromEnv());
+    beforeEach(() => cy.setupStandardSession());
 
     it("Add Full Person", () => {
         const name = "Bobby " + uniqueSeed;

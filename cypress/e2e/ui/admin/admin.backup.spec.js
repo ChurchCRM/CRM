@@ -1,6 +1,6 @@
 describe('Admin Backup Database', () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it('should load the backup page', () => {

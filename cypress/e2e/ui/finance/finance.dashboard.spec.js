@@ -14,7 +14,7 @@
 
 describe("Finance Dashboard", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("should load the finance dashboard", () => {
@@ -140,7 +140,7 @@ describe("Finance Dashboard", () => {
 
 describe("Finance Dashboard - Standard User Access", () => {
     beforeEach(() => {
-        cy.setupStandardSessionFromEnv();
+        cy.setupStandardSession();
     });
 
     it("should allow standard users with finance permission to access the dashboard", () => {
@@ -157,7 +157,7 @@ describe("Finance Dashboard - Standard User Access", () => {
 
 describe("Finance Dashboard - No Finance Permission", () => {
     beforeEach(() => {
-        cy.setupNoFinanceSessionFromEnv();
+        cy.setupNoFinanceSession();
     });
 
     it("should deny access to users without finance permission", () => {

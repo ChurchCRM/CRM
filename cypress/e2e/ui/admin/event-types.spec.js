@@ -1,6 +1,6 @@
 describe('Event Type Management', () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it('should display event types with 12-hour time format', () => {

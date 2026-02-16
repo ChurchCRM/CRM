@@ -9,7 +9,7 @@
  */
 describe("Volunteer Opportunity Assignment - Issue #7917", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("should assign a volunteer opportunity without error", () => {

@@ -28,7 +28,7 @@ describe('Plugin Management API', () => {
         });
 
         it('should not allow standard user access', () => {
-            cy.setupStandardSessionFromEnv();
+            cy.setupStandardSession();
             cy.request({
                 method: 'GET',
                 url: '/plugins/api/plugins',
@@ -101,7 +101,7 @@ describe('Plugin Management API', () => {
     describe('POST /plugins/api/plugins/{pluginId}/settings', () => {
         before(() => {
             // Enable mailchimp plugin for settings tests
-            cy.setupAdminSessionFromEnv();
+            cy.setupAdminSession();
             cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/mailchimp/enable');
         });
 
@@ -129,7 +129,7 @@ describe('Plugin Management API', () => {
 
     describe('POST /plugins/api/plugins/{pluginId}/reset', () => {
         before(() => {
-            cy.setupAdminSessionFromEnv();
+            cy.setupAdminSession();
             // Enable mailchimp and set some settings
             cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/mailchimp/enable');
             cy.makePrivateAdminAPICall('POST', '/plugins/api/plugins/mailchimp/settings', {

@@ -4,7 +4,7 @@ require("cy-verify-downloads").addCustomCommand();
 
 describe("Financial Reports", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it("Navigate to Financial Reports from Dashboard", () => {

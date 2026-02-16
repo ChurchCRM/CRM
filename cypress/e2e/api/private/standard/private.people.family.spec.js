@@ -7,7 +7,7 @@
  */
 describe("API Private Family", () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     describe("GET /api/families/latest - Latest Families", () => {

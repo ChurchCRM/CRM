@@ -1,6 +1,6 @@
 describe('System Upgrade Page', () => {
     beforeEach(() => {
-        cy.setupAdminSessionFromEnv();
+        cy.setupAdminSession();
     });
 
     it('should load and display version information', () => {
