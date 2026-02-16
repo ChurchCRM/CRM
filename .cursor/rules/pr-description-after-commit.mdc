@@ -1,0 +1,15 @@
+---
+description: Provide PR description after committing changes
+alwaysApply: true
+---
+
+# PR Description After Commits
+
+After committing changes on a branch, **always provide a ready-to-use PR description** that the user can paste when opening a pull request.
+
+The PR description should include:
+
+1. **Title** – Clear, concise summary
+2. **Summary** – What changed and why
+3. **Checklist** – If applicable (e.g., testing done, docs updated)
+4. **Screenshots/setup** – Only if relevant to the changes
