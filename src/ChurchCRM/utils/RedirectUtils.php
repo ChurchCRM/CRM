@@ -52,6 +52,16 @@ class RedirectUtils
      */
     public static function getLinkBackFromRequest(string $fallback = 'v2/dashboard'): string
     {
+        // Get the raw value first to check for control characters before strip_tags removes them
+        $rawLinkBack = $_GET['linkBack'] ?? '';
+        
+        // Check for control characters in the raw value (before filtering strips them)
+        // This catches null bytes, CRLF injection, etc.
+        if ($rawLinkBack !== '' && preg_match('/[\x00-\x1F\x7F]/', $rawLinkBack)) {
+            LoggerUtils::getAppLogger()->warning('Rejected linkBack with control characters before filtering', ['rawValue' => bin2hex($rawLinkBack)]);
+            return $fallback;
+        }
+        
         $linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack') ?? '';
 
         return self::validateRedirectUrl($linkBack, $fallback);
@@ -82,17 +92,17 @@ class RedirectUtils
             return $fallback;
         }
 
-        // Check for all ASCII control characters (0x00-0x1F) and DEL (0x7F)
-        // This catches null bytes, line breaks, tabs, and other control chars
-        // that could be used in bypass attempts or HTTP response splitting
-        if (preg_match('/[\x00-\x1F\x7F]/', $url)) {
+        // Decode URL to catch encoded attacks
+        $decodedUrl = urldecode($url);
+
+        // Check for all ASCII control characters (0x00-0x1F) and DEL (0x7F) in both original and decoded
+        // This catches null bytes, line breaks, tabs, and control chars in encoded form (%00, %0d, etc.)
+        // Note: The raw check in getLinkBackFromRequest() catches them before strip_tags removes them
+        if (preg_match('/[\x00-\x1F\x7F]/', $url) || preg_match('/[\x00-\x1F\x7F]/', $decodedUrl)) {
             LoggerUtils::getAppLogger()->warning('Rejected redirect URL containing control characters', ['url' => $url]);
 
             return $fallback;
         }
-
-        // Decode URL to catch encoded attacks
-        $decodedUrl = urldecode($url);
 
         // Check for protocol schemes (case-insensitive)
         // This catches http://, https://, javascript:, data:, vbscript:, etc.
