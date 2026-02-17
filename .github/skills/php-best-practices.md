@@ -91,6 +91,104 @@ class MyService {
 
 ---
 
+## Global Functions Reference
+
+ChurchCRM defines utility functions in `src/Include/Functions.php` and `src/Include/QuillEditorHelper.php` for common operations. All require `\` prefix when called from namespaced code.
+
+### Formatting Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `\MakeFYString($iFYID)` | Format fiscal year ID as string | `echo \MakeFYString(2024);` → `"2024-2025"` |
+| `\FormatDate($date, $withTime)` | Format date with i18n locale | `\FormatDate($person->getDateOfBirth(), false)` |
+| `\FormatFullName($title, $first, $middle, $last, $suffix, $style)` | Format person name | `\FormatFullName($per_Title, ..., $style)` |
+| `\FormatAddressLine($address, $city, $state)` | Format address single line | `\FormatAddressLine($adr_Address1, $adr_City, ...)` |
+| `\FilenameToFontname($filename, $family)` | Convert filename to font name | For font path handling |
+
+### Data Conversion Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `\convertCartToString($aCartArray)` | Convert cart array to string | `$cartStr = \convertCartToString($_SESSION['aPeopleCart']);` |
+| `\assembleYearMonthDay($year, $month, $day, $pasfut)` | Assemble date from components | `\assembleYearMonthDay('2024', '02', '15')` |
+| `\parseAndValidateDate($data, $locale, $pasfut)` | Parse and validate date string | `$date = \parseAndValidateDate($_POST['dateField']);` |
+| `\change_date_for_place_holder($string)` | Convert date for placeholder | Internal date conversion |
+
+### Validation Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `\validateCustomField($type, &$data, $colName, &$aErrors)` | Validate custom field data | `if (!\validateCustomField($type, $data, ...)) { /* handle error */ }` |
+| `\checkEmail($email, $domainCheck, $verify, $returnErrors)` | Validate email address | `if (\checkEmail($email)) { /* valid */ }` |
+
+### Custom Field Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `\displayCustomField($type, $data, $special)` | Render custom field for display | Echo HTML for field value |
+| `\formCustomField($type, $fieldname, $data, $special, $bFirstPass)` | Render custom field for form editing | Echo HTML form input |
+| `\sqlCustomField(&$sSQL, $type, $data, $colName, $special)` | Build SQL for custom field query | Modifies $sSQL by reference |
+
+### UI Helper Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `\PrintFYIDSelect($selectName, $iFYID)` | Render fiscal year dropdown | `\PrintFYIDSelect('SelectedYear', 2024)` |
+| `\generateGroupRoleEmailDropdown($roleEmails, $href)` | Render group role email dropdown | For group management pages |
+| `\random_color()` | Generate random hex color | `$color = \random_color();` |
+
+### Quill Rich Text Editor Functions
+
+Located in `src/Include/QuillEditorHelper.php`:
+
+| Function | Purpose |
+|----------|---------|
+| `\getQuillEditorContainer($editorId, $inputId, $content, $cssClasses, $minHeight)` | Render Quill editor HTML container |
+| `\getQuillEditorInitScript($editorId, $inputId, $placeholder, $includeScriptTag)` | Render Quill initialization JavaScript |
+| `\getQuillEditorContent($inputId)` | Extract Quill editor content from DOM |
+
+### Deprecated Functions (AVOID)
+
+| Function | Status | Replacement |
+|----------|--------|-------------|
+| `\RunQuery($sSQL, $bStopOnError)` | ❌ DEPRECATED | Use Perpl ORM Query classes instead |
+| `\FindMemberClassID()` | ⚠️ Legacy | Use `Group` or `GroupQuery` with ORM |
+| `\FontFromName($fontname)` | ⚠️ Internal | For font rendering only |
+| `\genGroupKey(...)` | ⚠️ Internal | For group sync operations |
+
+### Usage Pattern
+
+Always call with backslash prefix in namespaced code:
+
+```php
+namespace ChurchCRM\Service;
+
+use ChurchCRM\Utils\InputUtils;
+
+class PersonService {
+    public function getFormattedName($person) {
+        // ✅ CORRECT - Use backslash for global function
+        return \FormatFullName(
+            $person->getTitle(),
+            $person->getFirstName(),
+            $person->getMiddleName(),
+            $person->getLastName(),
+            $person->getSuffix(),
+            1  // style parameter
+        );
+    }
+    
+    public function getDatesAsString() {
+        // ✅ CORRECT - Multiple global function calls
+        $fyString = \MakeFYString(date('Y'));
+        $dateString = \FormatDate(new \DateTime());
+        return "$dateString (FY: $fyString)";
+    }
+}
+```
+
+---
+
 ## Perpl ORM (Database Access)
 
 ChurchCRM uses **Perpl ORM** (`perplorm/perpl`), an actively maintained fork of Propel2 with PHP 8.3+ support.
