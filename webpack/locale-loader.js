@@ -21,6 +21,82 @@ function loadScript(url) {
 }
 
 /**
+ * Check browser locale against current ChurchCRM locale and notify user if different
+ */
+function checkBrowserLocale() {
+  // Skip if already dismissed for current version
+  const dismissKey = "browser-locale-prompt-dismissed";
+  const dismissedVersion = localStorage.getItem(dismissKey);
+  if (dismissedVersion === window.CRM.version) {
+    return;
+  }
+
+  // Get browser locale directly from navigator
+  const browserLocale = navigator.language || navigator.userLanguage;
+  if (!browserLocale) {
+    return;
+  }
+
+  // Extract language code (e.g., "en-US" -> "en", "ja" -> "ja")
+  const browserLangCode = browserLocale.split("-")[0].split("_")[0];
+  const crmLangCode = window.CRM.shortLocale || "";
+
+  console.log("[Locale Detection] Browser:", browserLocale, "->", browserLangCode);
+  console.log("[Locale Detection] CRM:", window.CRM.locale, "->", crmLangCode);
+  console.log("[Locale Detection] Match:", browserLangCode === crmLangCode);
+
+  // Compare language codes only (ignore region variants)
+  if (browserLangCode === crmLangCode) {
+    return;
+  }
+
+  const showPrompt = () => {
+    const container =
+      document.querySelector(".content-wrapper > section.content > .container-fluid") ||
+      document.querySelector(".content-wrapper");
+    if (!container) {
+      return;
+    }
+
+    const alert = document.createElement("div");
+    alert.className = "alert alert-info alert-dismissible";
+    alert.style.marginBottom = "1rem";
+
+    const userSettingsUrl = window.CRM.root + "/v2/user/" + window.CRM.userId;
+
+    alert.innerHTML = `
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>${i18next.t("Browser language preference detected")}</strong>
+      <div>${i18next.t("Your browser language preference differs from your ChurchCRM locale")}.</div>
+      <div class="mt-2">
+        <a href="${userSettingsUrl}" class="btn btn-sm btn-primary">
+          <i class="fa-solid fa-cog mr-1"></i>${i18next.t("Change Your Locale")}
+        </a>
+        <button id="dismissBrowserLocaleBtn" class="btn btn-sm btn-secondary ml-2">${i18next.t("Dismiss")}</button>
+      </div>
+    `;
+
+    container.insertAdjacentElement("afterbegin", alert);
+
+    // Handle dismiss and close buttons
+    const markDismissed = () => localStorage.setItem(dismissKey, window.CRM.version);
+    alert.querySelector("#dismissBrowserLocaleBtn").addEventListener("click", () => {
+      markDismissed();
+      alert.remove();
+    });
+    alert.querySelector(".close").addEventListener("click", markDismissed);
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", showPrompt);
+  } else {
+    setTimeout(showPrompt, 500); // Small delay to ensure content wrapper exists
+  }
+}
+
+/**
  * Load all locale files for the specified locale
  * @param {object} localeConfig - Locale configuration from locales.json
  */
@@ -131,6 +207,9 @@ async function loadLocaleFiles(localeConfig) {
         translation: window.CRM.i18keys,
       };
       i18next.init(i18nextOpt);
+
+      // Detect browser locale and prompt user if different
+      checkBrowserLocale();
 
       // Dispatch event to signal that locales are ready
       window.dispatchEvent(new Event("CRM.localesReady"));

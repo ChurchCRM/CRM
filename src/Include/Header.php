@@ -90,6 +90,7 @@ $MenuFirst = 1;
             fullURL:"<?= SystemURLs::getURL() ?>",
             lang: "<?= $localeInfo->getLanguageCode() ?>",
             userId: "<?= AuthenticationManager::getCurrentUser()->getId() ?>",
+            version: "<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>",
             systemLocale: "<?= $localeInfo->getSystemLocale() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
