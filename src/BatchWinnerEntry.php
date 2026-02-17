@@ -7,7 +7,7 @@ use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-$linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
+$linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 $iCurrentFundraiser = InputUtils::filterInt($_GET['CurrentFundraiser']);
 
 if ($iCurrentFundraiser >0) {
@@ -105,11 +105,7 @@ for ($row = 0; $row < 10; $row += 1) {
     <tr>
         <td colspan="2" class="text-center">
             <input type="submit" class="btn btn-primary" value="<?= gettext('Enter Winners') ?>" name="EnterWinners">
-            <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-                echo $linkBack;
-                                                                } else {
-                                                                    echo 'v2/dashboard';
-                                                                } ?>';">
+            <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard') ?>';">
         </td>
     </tr>
     </table>

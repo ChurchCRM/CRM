@@ -9,7 +9,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
-$linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
+$linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 
 if ($iPaddleNumID > 0) {
     $sSQL = "SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";
@@ -90,7 +90,7 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
         RedirectUtils::redirect('PaddleNumEditor.php?PaddleNumID=' . $iPaddleNumID . '&linkBack=' . $linkBack);
     } elseif (isset($_POST['PaddleNumSubmitAndAdd'])) {
         //Reload to editor to add another record
-        RedirectUtils::redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+        RedirectUtils::redirect("PaddleNumEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=" . $linkBack);
     } elseif (isset($_POST['GenerateStatement'])) {
         //Jump straight to generating the statement report
         RedirectUtils::redirect("Reports/FundRaiserStatement.php?PaddleNumID=$iPaddleNumID");
@@ -140,11 +140,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
                             echo '<input type="submit" class="btn btn-secondary" value="' . gettext('Save and Add') . "\" name=\"PaddleNumSubmitAndAdd\">\n";
                         } ?>
-                        <input type="button" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-                                                                                                                                                                        echo $linkBack;
-                                                                            } else {
-                                                                                echo 'v2/dashboard';
-                                                                            } ?>';">
+                        <input type="button" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard') ?>';">
                     </td>
                 </tr>
 
