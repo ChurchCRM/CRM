@@ -276,6 +276,33 @@ The original [copilot-instructions.md](../copilot-instructions.md) was a compreh
 - CVE & security vulnerability handling
 - Pre-release security checklist
 
+### 23. [Performance Optimization & Best Practices](./performance-optimization.md)
+**When to use:** Optimizing queries, scaling for large data, improving response times
+
+- Database query optimization (selective fields, eager loading, batch operations)
+- N+1 query prevention patterns
+- Algorithm efficiency patterns (O(N*M) vs O(N+M))
+- Hash-based lookups for performance
+- Frontend code splitting and tree shaking
+- Caching strategies (HTTP headers, middleware, response caching)
+- Profiling and monitoring with slow query logs
+- Performance checklist for code reviews
+- Real codebase examples of good and problematic patterns
+
+### 24. [Modern PHP 8.3+ & Framework Best Practices](./modern-php-frameworks.md)
+**When to use:** Security hardening, using framework features correctly, upgrading patterns
+
+- Password hashing with Argon2ID and password pepper
+- Session security hardening (strict mode, HTTPS only, HTTPOnly, SameSite)
+- Error display hardening (production vs development)
+- Slim 4 middleware ordering (LIFO critical!)
+- Dependency injection patterns with container
+- Error handling in routes (avoid exceptions, use sanitized responses)
+- Perpl ORM eager loading and batch operations
+- Query optimization with findObjects() and selective fields
+- Type-safe joins with useXXXQuery()
+- Best practices checklist by category
+
 ## How to Use These Skills
 
 ### For AI Agents
@@ -296,17 +323,19 @@ When working on a task:
 
 **Example workflows:**
 
-- **Creating a new API endpoint**: Load skills #2 (API Development), #4 (Service Layer), #11 (Slim 4 Best Practices), #22 (Security), #14 (Cypress Testing), #15 (PHP Best Practices), #19 (Git Workflow)
+- **Creating a new API endpoint**: Load skills #2 (API Development), #4 (Service Layer), #11 (Slim 4 Best Practices), #22 (Security), #23 (Performance), #24 (Modern PHP), #14 (Cypress Testing), #15 (PHP Best Practices), #19 (Git Workflow)
 - **Migrating a legacy page**: Load skills #17 (Routing & Architecture), #6 (Frontend Development), #1 (Database Operations), #13 (Bootstrap & AdminLTE), #15 (PHP Best Practices), #19 (Git Workflow)
-- **Fixing a security issue**: Load skills #22 (Security Best Practices), #15 (PHP Best Practices), #19 (Git Workflow), #9 (Code Standards)
+- **Fixing a security issue**: Load skills #22 (Security Best Practices), #24 (Modern PHP), #15 (PHP Best Practices), #19 (Git Workflow), #9 (Code Standards)
 - **Adding a new plugin**: Load skills #18 (Plugin System), #2 (API Development), #6 (Frontend Development), #15 (PHP Best Practices), #19 (Git Workflow)
-- **Managing admin UI pages**: Load skills #17 (Routing & Architecture), #11 (Slim 4), #13 (Bootstrap & AdminLTE), #12 (Webpack & TypeScript), #21 (Configuration), #15 (PHP Best Practices), #19 (Git Workflow)
+- **Optimizing database queries**: Load skills #23 (Performance), #1 (Database Operations), #4 (Service Layer), #15 (PHP Best Practices), #19 (Git Workflow)
+- **Managing admin UI pages**: Load skills #17 (Routing & Architecture), #11 (Slim 4), #13 (Bootstrap & AdminLTE), #12 (Webpack & TypeScript), #21 (Configuration), #23 (Performance), #15 (PHP Best Practices), #19 (Git Workflow)
 - **Writing tests**: Load skills #14 (Cypress Testing), #7 (Testing), #19 (Git Workflow)
 - **Creating documentation**: Load skills #16 (Wiki Documentation) for complex topics, inline code comments for simple items
-- **Implementing a Service**: Load skills #4 (Service Layer), #15 (PHP Best Practices), #1 (Database Operations), #21 (Configuration), #19 (Git Workflow)
-- **Organizing code structure**: Load skills #17 (Routing & Architecture), #18 (Plugin System), #15 (PHP Best Practices)
+- **Implementing a Service**: Load skills #4 (Service Layer), #15 (PHP Best Practices), #1 (Database Operations), #21 (Configuration), #23 (Performance), #19 (Git Workflow)
+- **Organizing code structure**: Load skills #17 (Routing & Architecture), #18 (Plugin System), #15 (PHP Best Practices), #24 (Modern PHP)
 - **Adding UI text**: Load skills #20 (i18n & Localization), #15 (PHP Best Practices), #19 (Git Workflow)
 - **Git & commit workflow**: Load skills #19 (Git Workflow), #20 (i18n & Localization for locale:build)
+- **Security hardening**: Load skills #22 (Security), #24 (Modern PHP), #19 (Git Workflow)
 
 ### For Human Developers
 
@@ -361,4 +390,4 @@ Keep skills focused, actionable, and aligned with actual codebase patterns.
 
 ---
 
-**Last updated:** February 16, 2026 (22 skills)
+**Last updated:** February 16, 2026 (24 skills - includes sub-agent findings)
