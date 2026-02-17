@@ -365,18 +365,17 @@ When working on a task:
 If a new workflow area emerges:
 1. **Create new skill file** - Follow the existing format
 2. **Add to this README** - Document when to use the new skill
-3. **Update copilot-instructions.md** - Reference the new skill
-4. **Keep it focused** - One skill = one workflow/area
+3. **Keep it focused** - One skill = one workflow/area
 
-## Relationship to copilot-instructions.md
+## Relationship to the Skills Directory
 
-The main [copilot-instructions.md](../copilot-instructions.md) file now serves as:
-- **Entry point** - Quick reference to load skills
-- **Core conventions** - Essential patterns used across all skills
-- **Terminology** - Project-standard naming and conventions
-- **Index** - Points to specific skills for detailed guidance
+This skills directory is the canonical, decomposed form of the previous large guidance file. Use these skill files as:
+- **Entry points** - Load only the skills relevant to your task
+- **Core conventions** - Each skill contains the essential patterns for its area
+- **Terminology** - Project-standard naming and conventions are preserved within relevant skills
+- **Index** - This README points to the appropriate skill for detailed guidance
 
-For detailed workflow guidance, always refer to the appropriate skill file rather than adding more content to the main copilot-instructions.md.
+For detailed workflow guidance, always refer to the appropriate skill file rather than a single monolithic document.
 
 ## Questions or Improvements?
 
