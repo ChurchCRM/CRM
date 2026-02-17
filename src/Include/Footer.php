@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
 
 $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
@@ -52,7 +53,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
 
 <!-- DataTables: Core library and Bootstrap 4 integration -->
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.bootstrap4.min.js') ?>"></script>
 <!-- DataTables: Extensions -->
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.buttons.min.js') ?>"></script>
@@ -73,7 +74,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootbox/bootbox.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap-toggle/bootstrap-toggle.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/i18next/i18next.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/just-validate/just-validate.production.min.js') ?>"></script>
 
@@ -100,7 +100,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <?php
 } ?>
 
-<?php  include_once('analyticstracking.php'); ?>
+<?= PluginManager::getPluginFooterContent() ?>
 </body>
 </html>
 <?php

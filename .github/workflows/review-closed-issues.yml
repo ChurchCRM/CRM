@@ -1,0 +1,241 @@
+---
+name: 'Review Closed Issues Without PRs'
+
+# ===========================================================================
+# PURPOSE: Identify closed issues that may need manual review
+#
+# This workflow:
+# 1. Finds all closed issues in the repository
+# 2. Checks if they have an associated PR that fixed them
+# 3. If they have the "stale" label and no associated PR
+# 4. Tags them with "needs-manual-review" for maintainer attention
+#
+# This helps ensure issues weren't incorrectly auto-closed without
+# resolution.
+# ===========================================================================
+
+permissions:
+  contents: read
+  issues: write
+
+'on':
+  schedule:
+    # Run weekly on Monday at 2:00 AM UTC
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+    # Allow manual triggering for immediate review
+    inputs:
+      dry_run:
+        description: 'Dry run - only log what would be done'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  review-closed-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Review closed issues without PRs
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const dryRun = ${{ inputs.dry_run || false }};
+
+            console.log('===============================================');
+            console.log('Starting review of closed issues without PRs');
+            console.log('Dry run mode:', dryRun);
+            console.log('===============================================\n');
+
+            // =====================================================
+            // STEP 1: Fetch all closed issues
+            //
+            // We're looking for issues that:
+            //   - Are closed (state: closed)
+            //   - May have been auto-closed by the stale bot
+            //   - Don't have an associated PR that fixed them
+            // =====================================================
+            let page = 1;
+            let allClosedIssues = [];
+            let hasMorePages = true;
+
+            console.log('Fetching closed issues from repository...');
+
+            while (hasMorePages) {
+              const response = await github.rest.issues.listForRepo({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                state: 'closed',
+                per_page: 100,
+                page: page
+              });
+
+              // Filter out PRs (they have a pull_request property)
+              const issues = response.data.filter(
+                issue => !issue.pull_request
+              );
+              allClosedIssues = allClosedIssues.concat(issues);
+
+              console.log(
+                `  Page ${page}: Found ${issues.length} closed issues`
+              );
+
+              // Check if there are more pages
+              hasMorePages = response.data.length === 100;
+              page++;
+
+              // Safety limit to prevent infinite loops
+              if (page > 50) {
+                console.log(
+                  '  Reached page limit (50), stopping pagination'
+                );
+                break;
+              }
+            }
+
+            console.log(
+              `\nTotal closed issues found: ` +
+              `${allClosedIssues.length}\n`
+            );
+
+            // =====================================================
+            // STEP 2: Filter for issues with "stale" label
+            // =====================================================
+            const staleIssues = allClosedIssues.filter(issue => {
+              const labels = issue.labels.map(label => label.name);
+              return labels.includes('stale');
+            });
+
+            console.log(
+              `Issues with "stale" label: ${staleIssues.length}\n`
+            );
+
+            // =====================================================
+            // STEP 3: Check each issue for associated PRs
+            //
+            // An issue might be "fixed" by a PR if:
+            //   1. The PR mentions the issue in its body/title
+            //   2. The PR uses GitHub keywords
+            //      (fixes, closes, resolves)
+            //   3. The issue was linked manually
+            //
+            // We'll use the GitHub timeline API to find linked PRs
+            // =====================================================
+            let issuesNeedingReview = [];
+
+            console.log('Checking for associated PRs...\n');
+
+            for (const issue of staleIssues) {
+              // Get the full timeline (all pages) to find cross-references to PRs
+              const timeline = await github.paginate(
+                github.rest.issues.listEventsForTimeline,
+                {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: issue.number,
+                  per_page: 100
+                }
+              );
+
+              // Look for cross-reference events that link to PRs
+              const linkedPRs = timeline.filter(event =>
+                event.event === 'cross-referenced' &&
+                event.source &&
+                event.source.issue &&
+                event.source.issue.pull_request
+              );
+
+              if (linkedPRs.length === 0) {
+                console.log(
+                  `  Issue #${issue.number}: No linked PRs ` +
+                  `found - needs review`
+                );
+                issuesNeedingReview.push(issue);
+              } else {
+                console.log(
+                  `  Issue #${issue.number}: Has ` +
+                  `${linkedPRs.length} linked PR(s) - skipping`
+                );
+              }
+            }
+
+            console.log(`\n===============================================`);
+            console.log(
+              `Issues needing manual review: ` +
+              `${issuesNeedingReview.length}`
+            );
+            console.log(`===============================================\n`);
+
+            // =====================================================
+            // STEP 4: Tag issues with "needs-manual-review" label
+            // =====================================================
+            if (issuesNeedingReview.length > 0) {
+              console.log('Tagging issues for manual review...\n');
+
+              for (const issue of issuesNeedingReview) {
+                const labels = issue.labels.map(
+                  label => label.name
+                );
+
+                // Only add the label if it doesn't already exist
+                if (!labels.includes('needs-manual-review')) {
+                  if (!dryRun) {
+                    await github.rest.issues.addLabels({
+                      owner: context.repo.owner,
+                      repo: context.repo.repo,
+                      issue_number: issue.number,
+                      labels: ['needs-manual-review']
+                    });
+                    console.log(
+                      `  ✓ Added "needs-manual-review" label to ` +
+                      `issue #${issue.number}`
+                    );
+                  } else {
+                    console.log(
+                      `  [DRY RUN] Would add ` +
+                      `"needs-manual-review" label to ` +
+                      `issue #${issue.number}`
+                    );
+                  }
+                } else {
+                  console.log(
+                    `  - Issue #${issue.number} already has ` +
+                    `"needs-manual-review" label`
+                  );
+                }
+              }
+
+              console.log('\n===============================================');
+              console.log('Review complete!');
+              console.log('===============================================');
+
+              // Generate summary
+              console.log('\n📊 Summary:');
+              console.log(
+                `  Total closed issues: ${allClosedIssues.length}`
+              );
+              console.log(
+                `  Issues with "stale" label: ${staleIssues.length}`
+              );
+              console.log(
+                `  Issues without PRs: ` +
+                `${issuesNeedingReview.length}`
+              );
+              console.log(
+                `  Issues tagged for review: ` +
+                `${issuesNeedingReview.length}`
+              );
+
+              if (issuesNeedingReview.length > 0) {
+                console.log('\n🔍 Issues tagged for manual review:');
+                for (const issue of issuesNeedingReview) {
+                  console.log(
+                    `  - Issue #${issue.number}: ${issue.title}`
+                  );
+                  console.log(`    URL: ${issue.html_url}`);
+                }
+              }
+            } else {
+              console.log(
+                'No issues need manual review at this time.\n'
+              );
+            }

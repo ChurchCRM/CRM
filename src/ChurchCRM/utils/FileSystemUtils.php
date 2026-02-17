@@ -56,16 +56,24 @@ class FileSystemUtils
         $logger = LoggerUtils::getAppLogger();
 
         if (!is_dir($src)) {
-            $msg = 'provided src path is not a directory: ' . $src;
-            $logger->error($msg);
+            $logger->error('moveDir: Source directory does not exist', [
+                'src' => $src,
+                'dest' => $dest,
+                'srcExists' => file_exists($src),
+                'srcIsDir' => is_dir($src),
+            ]);
 
-            throw new \Exception($msg);
+            throw new \Exception(gettext('Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space.'));
         }
         if (!is_dir($dest)) {
-            $msg = 'provided dest path is not a directory: ' . $dest;
-            $logger->error($msg);
+            $logger->error('moveDir: Destination directory does not exist', [
+                'src' => $src,
+                'dest' => $dest,
+                'destExists' => file_exists($dest),
+                'destIsDir' => is_dir($dest),
+            ]);
 
-            throw new \Exception($msg);
+            throw new \Exception(gettext('Destination directory does not exist. Please verify ChurchCRM is installed correctly.'));
         }
 
         $logger->info('Moving files: ' . $src . ' to ' . $dest);

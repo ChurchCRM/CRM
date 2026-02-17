@@ -6,6 +6,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\VersionUtils;
 use Exception;
 use Ifsnop\Mysqldump\Mysqldump;
 use PharData;
@@ -35,35 +36,69 @@ class BackupJob extends JobBase
         LoggerUtils::getAppLogger()->info('Beginning to copy backup to: ' . $Endpoint);
 
         try {
-            $fh = fopen($this->BackupFile->getPathname(), 'r');
-            $remoteUrl = $Endpoint . urlencode($this->BackupFile->getFilename());
+            // Ensure endpoint ends with / for proper URL construction
+            $normalizedEndpoint = rtrim($Endpoint, '/') . '/';
+            $remoteUrl = $normalizedEndpoint . urlencode($this->BackupFile->getFilename());
             LoggerUtils::getAppLogger()->debug('Full remote URL: ' . $remoteUrl);
-            $credentials = $Username . ':' . $Password;
-            $ch = curl_init($remoteUrl);
-            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-            curl_setopt($ch, CURLOPT_USERPWD, $credentials);
-            curl_setopt($ch, CURLOPT_PUT, true);
-            curl_setopt($ch, CURLOPT_FAILONERROR, true);
-            curl_setopt($ch, CURLOPT_INFILE, $fh);
-            curl_setopt($ch, CURLOPT_INFILESIZE, $this->BackupFile->getSize());
-            LoggerUtils::getAppLogger()->debug('Beginning to send file');
-            $time = new ExecutionTime();
-            $result = (bool) curl_exec($ch);
-            if (curl_error($ch)) {
-                $error_msg = curl_error($ch);
-            }
-            fclose($fh);
 
-            if (isset($error_msg)) {
+            // Get file size for headers and streaming
+            $fileSize = filesize($this->BackupFile->getPathname());
+            if ($fileSize === false) {
+                throw new \Exception('Failed to get backup file size');
+            }
+
+            // Open file for streaming upload (avoids loading entire file into memory)
+            $fileHandle = fopen($this->BackupFile->getPathname(), 'rb');
+            if ($fileHandle === false) {
+                throw new \Exception('Failed to open backup file for reading');
+            }
+
+            $ch = curl_init($remoteUrl);
+            // Use CURLAUTH_ANY to let cURL negotiate the best auth method (Basic or Digest)
+            curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+            curl_setopt($ch, CURLOPT_USERPWD, $Username . ':' . $Password);
+            curl_setopt($ch, CURLOPT_PUT, true);
+            curl_setopt($ch, CURLOPT_INFILE, $fileHandle);
+            curl_setopt($ch, CURLOPT_INFILESIZE, $fileSize);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Content-Type: application/octet-stream',
+                'User-Agent: ChurchCRM/' . VersionUtils::getInstalledVersion(),
+            ]);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 300); // 5 minute timeout for large files
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Follow redirects
+
+            LoggerUtils::getAppLogger()->debug('Beginning to stream file (' . $fileSize . ' bytes)');
+            $time = new ExecutionTime();
+            $result = curl_exec($ch);
+            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $effectiveUrl = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+            $authUsed = curl_getinfo($ch, CURLINFO_HTTPAUTH_AVAIL);
+            $error_msg = curl_error($ch);
+            curl_close($ch);
+            fclose($fileHandle);
+
+            LoggerUtils::getAppLogger()->debug('cURL info - HTTP: ' . $httpCode . ', Auth available: ' . $authUsed . ', Effective URL: ' . $effectiveUrl);
+
+            if (!empty($error_msg)) {
                 throw new \Exception('Error backing up to remote: ' . $error_msg);
             }
-            LoggerUtils::getAppLogger()->debug('File send complete.  Took: ' . $time->getMilliseconds() . 'ms');
+
+            // HTTP 201 Created or 204 No Content are success for WebDAV PUT
+            $success = in_array($httpCode, [200, 201, 204], true);
+            if (!$success) {
+                throw new \Exception('WebDAV upload failed with HTTP ' . $httpCode);
+            }
+
+            LoggerUtils::getAppLogger()->debug('File send complete. Took: ' . $time->getMilliseconds() . 'ms. HTTP: ' . $httpCode);
+
+            return true;
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->error('Error copying backup: ' . $e);
-        }
-        LoggerUtils::getAppLogger()->info('Backup copy completed.  Curl result: ' . $result);
 
-        return $result;
+            throw $e;
+        }
     }
 
     private function captureSQLFile(\SplFileInfo $SqlFilePath): void

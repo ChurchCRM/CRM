@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\Collection;
 use Propel\Runtime\Propel;
@@ -127,7 +128,8 @@ function getUpdatedPersons(Request $request, Response $response, array $args): R
 function getPersonsWithBirthdays(Request $request, Response $response, array $args): Response
 {
     // Get birthdays for 14-day range: 7 days before to 7 days after today
-    $today = new \DateTime();
+    // Use configured timezone to ensure correct "today" calculation
+    $today = DateTimeUtils::getToday();
     $dates = [];
     
     for ($i = -7; $i <= 7; $i++) {
@@ -186,12 +188,12 @@ function getPersonsWithBirthdays(Request $request, Response $response, array $ar
         // Calculate days until birthday this year (for sorting)
         $birthMonth = $person->getBirthMonth();
         $birthDay = $person->getBirthDay();
-        $birthdayThisYear = new \DateTime("{$thisYear}-{$birthMonth}-{$birthDay}");
+        $birthdayThisYear = DateTimeUtils::createDateTime("{$thisYear}-{$birthMonth}-{$birthDay}");
         $diff = (int) $today->diff($birthdayThisYear)->format('%r%a');
         
         // If birthday already passed this year (more than 7 days ago), calculate next year's birthday
         if ($diff < -7) {
-            $birthdayNextYear = new \DateTime(($thisYear + 1) . "-{$birthMonth}-{$birthDay}");
+            $birthdayNextYear = DateTimeUtils::createDateTime(($thisYear + 1) . "-{$birthMonth}-{$birthDay}");
             $diff = (int) $today->diff($birthdayNextYear)->format('%r%a');
         }
         

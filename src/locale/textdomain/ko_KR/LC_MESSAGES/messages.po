@@ -10965,10 +10965,6 @@ msgid "Download failed"
 msgstr "다운로드 실패"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "업그레이드 적용 실패"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "고아 파일 삭제 실패"
 
@@ -11629,4 +11625,108 @@ msgstr "에서 픽업해야 합니다"
 #: 
 msgid "their classroom"
 msgstr "교실"
+
+#: 
+msgid "All timezones match"
+msgstr "모든 시간대가 일치합니다"
+
+#: 
+msgid "Baseline"
+msgstr "기준선"
+
+#: 
+msgid "Browser"
+msgstr "브라우저"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "브라우저가 시스템 설정과 다릅니다 - 이 사용자에게 날짜가 잘못 표시될 수 있습니다."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "ChurchCRM 설치 디렉토리에 쓸 수 없습니다. 웹 서버에 쓰기 권한이 있는지 확인하십시오."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "시간대 비교 중..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "대상 디렉토리가 존재하지 않습니다. ChurchCRM이 올바르게 설치되었는지 확인하십시오."
+
+#: 
+msgid "Does not match system config"
+msgstr "시스템 설정과 일치하지 않음"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "다운로드한 릴리스 파일이 비어 있습니다. 네트워크 문제 또는 GitHub 속도 제한 때문일 수 있습니다. 나중에 다시 시도하십시오."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "추출이 완료되었지만 업그레이드 파일을 찾을 수 없습니다. 업그레이드 아카이브가 손상되었을 수 있습니다."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "업그레이드 적용에 실패했습니다. 자세한 내용은 서버 로그를 확인하십시오."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "업그레이드 디렉토리를 만들 수 없습니다. 파일 권한을 확인하십시오."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "여러 번 시도한 후 GitHub에서 릴리스 파일을 다운로드하지 못했습니다. 서버의 인터넷 연결을 확인하고 다시 시도하십시오."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "업그레이드 아카이브 추출에 실패했습니다. 디스크 공간과 파일 권한을 확인하십시오."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "업그레이드 아카이브를 열 수 없습니다. 다운로드한 파일이 손상되었을 수 있습니다."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "다운로드한 릴리스 파일을 저장하지 못했습니다. 디스크 공간과 권한을 확인하십시오."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "시작 매개변수의 날짜 형식이 잘못되었습니다"
+
+#: 
+msgid "Mismatch"
+msgstr "불일치"
+
+#: 
+msgid "Not set"
+msgstr "설정되지 않음"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP 활성"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "소스 디렉토리가 존재하지 않습니다. 업그레이드 아카이브가 올바르게 추출되지 않았을 수 있습니다. 파일 권한과 디스크 공간을 확인하십시오."
+
+#: 
+msgid "System Config"
+msgstr "시스템 설정"
+
+#: 
+msgid "Timezone Information"
+msgstr "시간대 정보"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "시간대 불일치 감지됨"
+
+#: 
+msgid "mismatch detected"
+msgstr "불일치 감지됨"
+
+#: 
+msgid "mismatches detected"
+msgstr "불일치 감지됨"
 

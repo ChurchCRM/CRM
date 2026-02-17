@@ -1,0 +1,58 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "includes": [
+      "react/**",
+      "src/**",
+      "webpack/**",
+      "!src/skin/v2",
+      "!src/skin/external",
+      "!src/skin/vendor",
+      "!src/vendor",
+      "!src/propel",
+      "!src/locale/states",
+      "!src/locale/i18n",
+      "!src/locale/vendor",
+      "!src/admin/data/signatures.json",
+      "!**/*.min.js",
+      "!**/*.scss"
+    ]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 120,
+    "lineEnding": "lf"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "useIterableCallbackReturn": "warn",
+        "noArrayIndexKey": "warn"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "warn"
+      },
+      "a11y": {
+        "noAutofocus": "warn",
+        "useButtonType": "warn"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "semicolons": "always",
+      "trailingCommas": "all"
+    },
+    "globals": ["bootbox", "i18next", "moment", "$"]
+  }
+}

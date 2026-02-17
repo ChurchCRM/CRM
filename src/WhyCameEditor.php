@@ -12,7 +12,7 @@ use ChurchCRM\Utils\RedirectUtils;
 
 $logger = LoggerUtils::getAppLogger();
 
-$linkBack = InputUtils::legacyFilterInput($_GET['linkBack']);
+$linkBack = RedirectUtils::getLinkBackFromRequest('');
 $iPerson = InputUtils::filterInt($_GET['PersonID']);
 $iWhyCameID = InputUtils::filterInt($_GET['WhyCameID']);
 
@@ -50,7 +50,7 @@ if (isset($_POST['Submit'])) {
             RedirectUtils::redirect($linkBack);
         } else {
             //Send to the view of this pledge
-            RedirectUtils::redirect('WhyCameEditor.php?PersonID=' . $iPerson . '&WhyCameID=' . $iWhyCameID . '&linkBack=', $linkBack);
+            RedirectUtils::redirect('WhyCameEditor.php?PersonID=' . $iPerson . '&WhyCameID=' . $iWhyCameID . '&linkBack=' . $linkBack);
         }
     }
 } else {
@@ -96,11 +96,7 @@ require_once __DIR__ . '/Include/Header.php';
         <tr>
           <td colspan="2" class="text-center">
             <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
-            <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="javascript:document.location='<?php if (strlen($linkBack) > 0) {
-                echo $linkBack;
-                                                                } else {
-                                                                    echo 'PersonView.php?PersonID=' . $iPerson;
-                                                                } ?>';">
+            <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'PersonView.php?PersonID=' . $iPerson) ?>';">
           </td>
         </tr>
       </table>

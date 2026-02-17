@@ -10975,10 +10975,6 @@ msgid "Download failed"
 msgstr "Download mislukt"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Upgrade toepassen mislukt"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Verweesde bestanden verwijderen mislukt"
 
@@ -11643,4 +11639,108 @@ msgstr "moet worden opgehaald van"
 #: 
 msgid "their classroom"
 msgstr "hun klaslokaal"
+
+#: 
+msgid "All timezones match"
+msgstr "Alle tijdzones komen overeen"
+
+#: 
+msgid "Baseline"
+msgstr "Basis"
+
+#: 
+msgid "Browser"
+msgstr "Browser"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Browser verschilt van de systeemconfiguratie - datums worden mogelijk onjuist weergegeven voor deze gebruiker."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Kan niet schrijven naar de ChurchCRM-installatiemap. Controleer of de webserver schrijfrechten heeft."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Tijdzones vergelijken..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Doelmap bestaat niet. Controleer of ChurchCRM correct is geïnstalleerd."
+
+#: 
+msgid "Does not match system config"
+msgstr "Komt niet overeen met systeemconfiguratie"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Gedownload releasebestand is leeg. Dit kan komen door netwerkproblemen of GitHub-snelheidsbeperking. Probeer het later opnieuw."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Extractie voltooid maar upgradebestanden niet gevonden. Het upgrade-archief is mogelijk beschadigd."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Upgrade toepassen mislukt. Controleer de serverlogboeken voor details."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Aanmaken van upgrademap mislukt. Controleer de bestandsrechten."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Downloaden van het releasebestand van GitHub mislukt na meerdere pogingen. Controleer de internetverbinding van uw server en probeer het opnieuw."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Extractie van upgrade-archief mislukt. Controleer de schijfruimte en bestandsrechten."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Openen van upgrade-archief mislukt. Het gedownloade bestand is mogelijk beschadigd."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Opslaan van het gedownloade releasebestand mislukt. Controleer de schijfruimte en rechten."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Ongeldig datumformaat in startparameter"
+
+#: 
+msgid "Mismatch"
+msgstr "Afwijking"
+
+#: 
+msgid "Not set"
+msgstr "Niet ingesteld"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP actief"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Bronmap bestaat niet. Het upgrade-archief is mogelijk niet correct uitgepakt. Controleer de bestandsrechten en schijfruimte."
+
+#: 
+msgid "System Config"
+msgstr "Systeemconfiguratie"
+
+#: 
+msgid "Timezone Information"
+msgstr "Tijdzone-informatie"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Tijdzone-afwijking gedetecteerd"
+
+#: 
+msgid "mismatch detected"
+msgstr "afwijking gedetecteerd"
+
+#: 
+msgid "mismatches detected"
+msgstr "afwijkingen gedetecteerd"
 

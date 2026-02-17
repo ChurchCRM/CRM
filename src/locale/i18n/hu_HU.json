@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "A bemutató adatok importálása csak olyan friss telepítéseken érhető el, amelyeken pontosan 1 személy található",
     "Demo data loaded successfully": "A bemutató adatok sikeresen betöltve",
     "Download failed": "A letöltés nem sikerült",
-    "Failed to apply upgrade": "A frissítés alkalmazása nem sikerült",
     "Failed to delete orphaned files": "Az árva fájlok törlése nem sikerült",
     "Failed to download latest release": "A legújabb kiadás letöltése sikertelen",
     "Failed to refresh upgrade information": "A frissítési információk frissítése sikertelen",

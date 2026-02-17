@@ -10,11 +10,11 @@ use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\LockedEmail;
-use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use DateTimeZone;
 use Endroid\QrCode\QrCode;
 use PragmaRX\Google2FA\Google2FA;
 
@@ -61,10 +61,11 @@ class LocalAuthentication implements IAuthenticationProvider
             $username,
             $secret
         );
-        $qrCode = new QrCode($g2faUrl);
-        $qrCode->setSize(300);
 
-        return $qrCode;
+        return new QrCode(
+            data: $g2faUrl,
+            size: 300
+        );
     }
 
     public function getCurrentUser(): ?User
@@ -87,7 +88,7 @@ class LocalAuthentication implements IAuthenticationProvider
     private function prepareSuccessfulLoginOperations(): void
     {
         // Set the LastLogin and Increment the LoginCount
-        $date = new \DateTimeImmutable('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
+        $date = new \DateTimeImmutable('now', DateTimeUtils::getConfiguredTimezone());
         $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
         $this->currentUser->setLoginCount($this->currentUser->getLoginCount() + 1);
         $this->currentUser->setFailedLogins(0);
@@ -174,7 +175,7 @@ class LocalAuthentication implements IAuthenticationProvider
             } else {
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1';
             }
         }
 

@@ -7,7 +7,7 @@ Development container configuration for GitHub Codespaces and VS Code Dev Contai
 When you open ChurchCRM in a Codespace or Dev Container, the setup automatically:
 
 1. **✓ Checks Out Code** - Full repository cloned to workspace
-2. **✓ Installs Tools** - PHP 8.2+, Node.js LTS, Composer, Git LFS, Docker
+2. **✓ Installs Tools** - PHP 8.4+, Node.js 24 LTS, Composer, Git LFS, Docker
 3. **✓ Installs Dependencies** - `npm ci` (Node packages) + `composer install` (PHP packages)
 4. **✓ Builds Frontend** - Webpack, Grunt tasks, locale files via `npm run build:frontend`
 5. **✓ Configures Environment** - Creates `docker/.env`, sets up directories
@@ -104,8 +104,8 @@ XDEBUG_CONFIG=client_host=host.docker.internal client_port=9003
 ## Troubleshooting
 
 ### Build Issues
-- **"npm ci failed"**: Check Node.js version (must be LTS), retry
-- **"composer install failed"**: Verify PHP 8.2+ is available: `php -v`
+- **"npm ci failed"**: Check Node.js version (must be 24.x per .nvmrc), retry
+- **"composer install failed"**: Verify PHP 8.4+ is available: `php -v`
 - **"Grunt task failed"**: Ensure all npm packages installed: `npm ci`
 
 ### Docker Issues

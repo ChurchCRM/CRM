@@ -15,6 +15,7 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Connection\ConnectionWrapper;
@@ -29,7 +30,7 @@ class Bootstrapper
     private const LOCALE_DOMAIN = 'messages';
     private const SESSION_PREFIX = 'CRM-';
     private const DEFAULT_CHARSET = 'utf8mb4';
-    private const PROPEL_MIN_VERSION = '2.0.0-dev';
+    private const PROPEL_CONFIG_VERSION = 2; // Perpl ORM configuration version
     private const LOCALHOST_IDENTIFIER = 'localhost';
     
     private static ?ConnectionManagerSingle $manager = null;
@@ -94,9 +95,9 @@ class Bootstrapper
             self::handleBootstrapFailure($e, 'SystemURLs initialization failed');
         }
         if ($debugBootstrapper) {
-            self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::DEBUG);
+            self::$bootStrapLogger = LoggerUtils::getAppLogger(Level::Debug->value);
         } else {
-            self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::INFO);
+            self::$bootStrapLogger = LoggerUtils::getAppLogger(Level::Info->value);
         }
 
         self::$bootStrapLogger->debug("Starting ChurchCRM");
@@ -373,13 +374,14 @@ class Bootstrapper
         // ==== ORM
         self::$dbClassName = '\\' . ConnectionWrapper::class;
         self::$serviceContainer = Propel::getServiceContainer();
-        self::$serviceContainer->checkVersion(self::PROPEL_MIN_VERSION);
+        self::$serviceContainer->checkVersion(self::PROPEL_CONFIG_VERSION);
         self::$serviceContainer->setAdapterClass('default', 'mysql');
-        self::$manager = new ConnectionManagerSingle();
+        self::$manager = new ConnectionManagerSingle('default');
         self::$manager->setConfiguration(self::buildConnectionManagerConfig());
-        self::$manager->setName('default');
-        self::$serviceContainer->setConnectionManager('default', self::$manager);
+        self::$serviceContainer->setConnectionManager(self::$manager);
         self::$serviceContainer->setDefaultDatasource('default');
+        // Load database map from Include directory (Perpl ORM requirement)
+        require_once __DIR__ . '/../Include/LoadDatabaseMap.php';
         self::$bootStrapLogger->debug("Initialized Propel ORM");
     }
     private static function isDatabaseEmpty(): bool

@@ -1,0 +1,17 @@
+{
+  "id": "custom-links",
+  "name": "Custom Menu Links",
+  "description": "Add custom external links to the navigation menu. Create shortcuts to frequently used external websites and resources.",
+  "version": "1.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\CustomLinks\\CustomLinksPlugin",
+  "dependencies": [],
+  "settingsUrl": null,
+  "routesFile": "routes/routes.php",
+  "settings": [],
+  "menuItems": [],
+  "hooks": ["menu.building"]
+}

@@ -1,18 +1,18 @@
 /**
  * ChurchCRM React Datepicker - Minimal Customizations
- * 
+ *
  * Only override what's necessary:
  * - Z-index for modal compatibility
  * - Time container sizing to allow proper spacing
  */
 
 .react-datepicker__time-container {
-    width: auto !important;
+  width: auto !important;
 }
 
 /**
  * ChurchCRM React Datepicker - Minimal Customizations
- * 
+ *
  * Only override what's necessary:
  * - Z-index for modal compatibility
  * - Time container sizing to allow proper spacing
@@ -20,23 +20,23 @@
  */
 
 .react-datepicker__time-container {
-    width: auto !important;
+  width: auto !important;
 }
 
 .react-datepicker__time-container .react-datepicker__time .react-datepicker__time-box {
-    width: auto !important;
+  width: auto !important;
 }
 
 /* Wrapper for full-width input fields */
 .datepicker-wrapper.w-100 {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 .datepicker-wrapper.w-100 input {
-    width: 100% !important;
+  width: 100% !important;
 }
 
 /* Wide popper for date/time display */
 .react-datepicker-popper-wide {
-    min-width: 320px !important;
+  min-width: 320px !important;
 }

@@ -3,8 +3,8 @@
 Purpose: Keep guidance compact. Follow these core rules when editing the repo.
 
 Stack (short)
-- PHP 8.2+
-- Propel ORM (use Query classes, never raw SQL)
+- PHP 8.3+
+- Perpl ORM (actively maintained fork of Propel2 - use Query classes, never raw SQL)
 - Slim 4 (API routes)
 - Bootstrap 4.6.2 (AdminLTE v2 pattern for legacy pages)
 - React + TypeScript (frontend)
@@ -39,7 +39,7 @@ Routing & middleware
 - **Admin System Pages** (consolidated at `/admin/system/`):
   - Routes in `src/admin/routes/system.php`
   - Views in `src/admin/views/` with PhpRenderer
-  - Examples: `/admin/system/debug`, `/admin/system/menus`, `/admin/system/backup`
+  - Examples: `/admin/system/debug`, `/admin/system/backup`
   - Add menu entries in `src/ChurchCRM/Config/Menu/Menu.php`
   - Use AdminRoleAuthMiddleware for security
 - **Admin APIs**: Place in `src/admin/routes/api/` (NOT in `src/api/routes/system/`)
@@ -144,11 +144,104 @@ If unsure
 ---
 
 ## Database Rules
-- ALWAYS use Propel ORM Query classes
+- ALWAYS use Perpl ORM Query classes (perplorm/perpl - fork of Propel2)
 - NEVER use raw SQL or RunQuery()
 - Cast dynamic IDs to (int)
 - Check `=== null` not `empty()` for objects
 - Access properties as objects: `$obj->prop`, never `$obj['prop']`
+
+## Perpl ORM (CRITICAL - Migration from Propel)
+
+ChurchCRM uses **Perpl ORM** (`perplorm/perpl`), an actively maintained fork of Propel2 with PHP 8.4+ support and 30-50% faster query building. All Propel patterns still apply, but note these **critical differences**:
+
+### withColumn() - Use TableMap Constants (REQUIRED)
+
+In Perpl ORM, `withColumn()` requires **actual database column names**, not Propel phpNames. **Always use TableMap constants** for type safety and IDE support:
+
+```php
+use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
+use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\model\ChurchCRM\Map\DepositTableMap;
+
+// ✅ CORRECT - Use TableMap constants (REQUIRED)
+$query->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'totalAmount');
+$query->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName');
+$query->withColumn(DonationFundTableMap::COL_FUN_NAME, 'FundName');
+$query->withColumn(DepositTableMap::COL_DEP_DATE, 'DepositDate');
+
+// ❌ WRONG - phpNames don't work in withColumn()
+$query->withColumn('Family.Name', 'FamilyName');
+$query->withColumn('SUM(Pledge.Amount)', 'totalAmount');
+```
+
+**Common TableMap Constants:**
+| TableMap Class | Constant | Resolves To |
+|----------------|----------|-------------|
+| `FamilyTableMap` | `COL_FAM_NAME` | `family_fam.fam_Name` |
+| `FamilyTableMap` | `COL_FAM_ADDRESS1` | `family_fam.fam_Address1` |
+| `PledgeTableMap` | `COL_PLG_AMOUNT` | `pledge_plg.plg_amount` |
+| `PledgeTableMap` | `COL_PLG_PLGID` | `pledge_plg.plg_plgID` |
+| `PledgeTableMap` | `COL_PLG_DEPID` | `pledge_plg.plg_depID` |
+| `DonationFundTableMap` | `COL_FUN_NAME` | `donationfund_fun.fun_Name` |
+| `DepositTableMap` | `COL_DEP_ID` | `deposit_dep.dep_ID` |
+| `DepositTableMap` | `COL_DEP_DATE` | `deposit_dep.dep_Date` |
+| `ListOptionTableMap` | `COL_LST_ID` | `list_lst.lst_ID` |
+| `Person2group2roleP2g2rTableMap` | `COL_P2G2R_PER_ID` | `person2group2role_p2g2r.p2g2r_per_ID` |
+
+### addForeignValueCondition() - Column Name Only (CRITICAL)
+
+**WARNING:** The `addForeignValueCondition()` method expects **table name and column name separately**, NOT TableMap COL_ constants:
+
+```php
+use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
+
+// ✅ CORRECT - Use TABLE_NAME constant + column name string
+$join->addForeignValueCondition(ListOptionTableMap::TABLE_NAME, 'lst_ID', '', 3, self::EQUAL);
+
+// ❌ WRONG - COL_ constant includes table prefix, causing duplicate
+$join->addForeignValueCondition('list_lst', ListOptionTableMap::COL_LST_ID, '', 3, self::EQUAL);
+// This generates: list_lst.list_lst.lst_ID (BROKEN!)
+```
+
+**Why this matters:** `ListOptionTableMap::COL_LST_ID` resolves to `'list_lst.lst_ID'` (includes table prefix). When passed to `addForeignValueCondition()` which already adds the table name, you get `list_lst.list_lst.lst_ID` causing SQL errors.
+
+### Method Override Signatures (Strict Types Required)
+
+Perpl ORM enforces strict return types. When overriding base methods:
+
+```php
+// ❌ WRONG - Missing return types
+public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+
+// ✅ CORRECT - Full signature with types
+public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
+```
+
+**Lifecycle Hooks** - must match base class signatures:
+```php
+// Pre-hooks return bool
+public function preSave(ConnectionInterface $con = null): bool
+public function preInsert(ConnectionInterface $con = null): bool
+public function preUpdate(ConnectionInterface $con = null): bool
+public function preDelete(ConnectionInterface $con = null): bool
+
+// Post-hooks return void
+public function postSave(ConnectionInterface $con = null): void
+public function postInsert(ConnectionInterface $con = null): void
+public function postUpdate(ConnectionInterface $con = null): void
+public function postDelete(ConnectionInterface $con = null): void
+```
+
+### preSelect Hook Signature
+
+```php
+public function preSelect(ConnectionInterface $con): void
+{
+    // Custom query modifications here
+    parent::preSelect($con);
+}
+```
 
 ## Propel ORM Method Naming (CRITICAL)
 
@@ -355,9 +448,9 @@ ALWAYS use SystemURLs::getRootPath() for asset references:
 
 ---
 
-## PHP 8.2+ Requirements
+## PHP 8.3+ Requirements
 
-MANDATORY: All code must be compatible with PHP 8.2+ and avoid deprecated patterns.
+MANDATORY: All code must be compatible with PHP 8.3+ and avoid deprecated patterns.
 
 Key Standards:
 - Explicit nullable parameters: `?int $param = null` not `int $param = null`
@@ -365,7 +458,7 @@ Key Standards:
 - Use IntlDateFormatter instead of strftime
 - **Use imports, never inline fully-qualified class names**: Add `use` statements at top of file
 - Explicit global namespace: `\MakeFYString($id)` in namespaced code
-- Version checks: `version_compare(phpversion(), '8.2.0', '<')`
+- Version checks: `version_compare(phpversion(), '8.3.0', '<')`
 - Public constants for shared values: `public const PHOTO_WIDTH = 200;`
 
 ### Import Statement Rules
@@ -524,6 +617,79 @@ echo $notification?->title ?? 'No Title';
 // WRONG
 echo $notification->title;  // TypeError if null
 ```
+
+### TLS/SSL Verification (Network Requests)
+
+When making HTTPS requests (cURL, Guzzle, etc.), **always enable TLS verification by default**:
+
+```php
+// CORRECT - Secure by default with optional override for self-signed certs
+public function sendRequest(string $url, bool $allowSelfSigned = false): void
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    
+    if ($allowSelfSigned) {
+        // Only disable for explicitly configured local network servers
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    } else {
+        // Default: verify SSL certificates (secure)
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+    }
+    curl_exec($ch);
+}
+
+// WRONG - Disables security by default (allows MITM attacks)
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);  // ❌ Never hardcode false
+curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);      // ❌ Security vulnerability
+```
+
+**Guidelines:**
+- **Default to secure**: Always verify TLS certificates by default
+- **Make insecure behavior opt-in**: Add explicit config option (e.g., `allowSelfSigned`)
+- **Document the risk**: Add setting description explaining when to use (local networks only)
+- **Use case**: Self-signed certs are common in home/church networks for local servers (OpenLP, etc.)
+
+### Algorithm Performance (Avoid O(N*M))
+
+When filtering or matching items between two collections, **use hash-based lookups instead of nested loops**:
+
+```php
+// CORRECT - O(N+M) using set membership
+$localIds = [];
+foreach ($localPeople as $person) {
+    $localIds[$person->getId()] = true;  // Build hash map
+}
+$remoteOnly = [];
+foreach ($remotePeople as $remotePerson) {
+    if (!isset($localIds[$remotePerson['id']])) {  // O(1) lookup
+        $remoteOnly[] = $remotePerson;
+    }
+}
+
+// CORRECT - Using array_flip for sets
+$localIdSet = array_flip(array_column($localPeople, 'id'));  // O(N)
+$remoteOnly = array_filter($remotePeople, function($p) use ($localIdSet) {
+    return !isset($localIdSet[$p['id']]);  // O(1) per item
+});
+
+// WRONG - O(N*M) nested filter (scales poorly)
+$remoteOnly = array_filter($remotePeople, function($remotePerson) use ($localPeople) {
+    foreach ($localPeople as $localPerson) {  // ❌ O(M) per remote person
+        if ($localPerson->getId() === $remotePerson['id']) {
+            return false;
+        }
+    }
+    return true;
+});
+```
+
+**Guidelines:**
+- **Build lookup structures first**: Use `array_flip()`, associative arrays, or `isset()` for O(1) membership tests
+- **Avoid `in_array()` in loops**: `in_array()` is O(N); use `isset()` on flipped array instead
+- **Scale consideration**: 1000 local × 1000 remote = 1M comparisons with O(N*M), only 2K with O(N+M)
 
 ### API Error Handling (Critical)
 
@@ -1121,6 +1287,11 @@ Before committing code changes, verify:
 - [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
 - [ ] No alert() calls - use window.CRM.notify() instead
+- [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
+- [ ] Use RedirectUtils for redirects (not manual header/withHeader)
+- [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)
+- [ ] TLS verification enabled by default for HTTPS requests
+- [ ] No O(N*M) algorithms - use hash-based lookups for set membership
 - [ ] **If new gettext() strings added**: Run `npm run locale:build` to extract terms
 - [ ] Tests pass (if available) - run relevant tests before committing
 - [ ] Commit message follows imperative mood (< 72 chars, no file paths)
@@ -1129,15 +1300,345 @@ Before committing code changes, verify:
 
 ---
 
+## Plugin System
+
+ChurchCRM uses a WordPress-style plugin architecture for extensibility. Plugins can add functionality without modifying core code.
+
+### Plugin Architecture
+
+**Core Files** (`src/ChurchCRM/Plugin/`):
+- `PluginManager.php` - Discovery, loading, activation, route registration (static class)
+- `AbstractPlugin.php` - Base class with sensible defaults
+- `PluginInterface.php` - Contract all plugins must implement
+- `PluginMetadata.php` - Data class for plugin.json manifest parsing
+- `Hooks.php` - Constants for available hook points
+
+**Hook System** (`src/ChurchCRM/Plugin/Hook/`):
+- `HookManager.php` - WordPress-style actions & filters
+
+### Plugin Location
+
+| Type | Path | Description |
+|------|------|-------------|
+| Core | `src/plugins/core/{plugin-name}/` | Shipped with ChurchCRM |
+| Community | `src/plugins/community/{plugin-name}/` | Third-party extensions |
+| Management | `src/plugins/routes/`, `src/plugins/views/` | Admin UI for managing plugins |
+
+### Plugin Structure
+
+Each plugin requires this structure:
+```
+src/plugins/core/{plugin-name}/
+├── plugin.json           # Manifest (required)
+├── src/
+│   └── {PluginName}Plugin.php  # Main class extending AbstractPlugin
+├── routes/
+│   └── routes.php        # MVC & API routes (optional)
+├── views/
+│   └── *.php             # View templates (optional)
+└── help.json             # User documentation (optional)
+```
+
+### plugin.json Manifest
+
+```json
+{
+    "id": "mailchimp",
+    "name": "MailChimp Integration",
+    "description": "Sync contacts with MailChimp mailing lists",
+    "version": "1.0.0",
+    "author": "ChurchCRM Team",
+    "authorUrl": "https://churchcrm.io",
+    "type": "core",
+    "minimumCRMVersion": "7.0.0",
+    "mainClass": "ChurchCRM\\Plugins\\MailChimp\\MailChimpPlugin",
+    "dependencies": [],
+    "settingsUrl": null,
+    "routesFile": "routes/routes.php",
+    "settings": [
+        {
+            "key": "apiKey",
+            "label": "API Key",
+            "type": "password",
+            "required": true,
+            "help": "Get from MailChimp settings"
+        }
+    ],
+    "menuItems": [
+        {
+            "parent": "email",
+            "label": "MailChimp Dashboard",
+            "url": "/plugins/mailchimp/dashboard",
+            "icon": "fa-brands fa-mailchimp",
+            "permission": "bEmailMailto"
+        }
+    ],
+    "hooks": ["person.created", "person.updated", "person.deleted"]
+}
+```
+
+### Creating a Plugin
+
+1. **Create plugin directory**: `src/plugins/core/{plugin-name}/`
+2. **Create plugin.json** with required fields
+3. **Create main class** extending `AbstractPlugin`:
+
+```php
+<?php
+namespace ChurchCRM\Plugins\MyPlugin;
+
+use ChurchCRM\Plugin\AbstractPlugin;
+
+class MyPluginPlugin extends AbstractPlugin
+{
+    private static ?MyPluginPlugin $instance = null;
+
+    public function __construct(string $basePath = '')
+    {
+        parent::__construct($basePath);
+        self::$instance = $this;
+    }
+
+    public static function getInstance(): ?MyPluginPlugin
+    {
+        return self::$instance;
+    }
+
+    public function getId(): string { return 'my-plugin'; }
+    public function getName(): string { return 'My Plugin'; }
+    public function getDescription(): string { return 'Description here'; }
+
+    public function boot(): void
+    {
+        // Initialize services, register hooks
+    }
+
+    public function isConfigured(): bool
+    {
+        // Check if required settings have values
+        return !empty($this->getConfigValue('apiKey'));
+    }
+
+    public function getConfigurationError(): ?string
+    {
+        if (!$this->isConfigured()) {
+            return gettext('API Key is required');
+        }
+        return null;
+    }
+
+    public function getMenuItems(): array
+    {
+        return [
+            [
+                'parent' => 'admin',
+                'label' => gettext('My Plugin'),
+                'url' => 'plugins/my-plugin/dashboard',
+                'icon' => 'fa-plug',
+            ],
+        ];
+    }
+
+    public function getSettingsSchema(): array
+    {
+        return [
+            [
+                'key' => 'apiKey',
+                'label' => gettext('API Key'),
+                'type' => 'password',
+                'required' => true,
+            ],
+        ];
+    }
+}
+```
+
+### Plugin Routes (routes/routes.php)
+
+Routes are only loaded when the plugin is active. Use the singleton pattern:
+
+```php
+<?php
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugins\MyPlugin\MyPluginPlugin;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Routing\RouteCollectorProxy;
+use Slim\Views\PhpRenderer;
+
+$plugin = MyPluginPlugin::getInstance();
+if ($plugin === null) {
+    return; // Safety check
+}
+
+// MVC Route (returns HTML)
+$app->get('/my-plugin/dashboard', function (Request $request, Response $response) use ($plugin): Response {
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+    return $renderer->render($response, 'dashboard.php', [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('My Plugin Dashboard'),
+        'data' => $plugin->getData(),
+    ]);
+});
+
+// API Routes (return JSON)
+$app->group('/my-plugin/api', function (RouteCollectorProxy $group) use ($plugin): void {
+    $group->get('/items', function (Request $request, Response $response) use ($plugin): Response {
+        return SlimUtils::renderJSON($response, ['data' => $plugin->getItems()]);
+    });
+});
+```
+
+### Plugin Config Access (Sandboxed)
+
+Plugins can only access their own config keys (prefixed with `plugin.{id}.`):
+
+```php
+// In your plugin class (extends AbstractPlugin)
+$apiKey = $this->getConfigValue('apiKey');     // Gets plugin.my-plugin.apiKey
+$enabled = $this->getBooleanConfigValue('enabled');
+$this->setConfigValue('lastSync', date('c'));  // Sets plugin.my-plugin.lastSync
+```
+
+### Using PluginManager (Static Methods)
+
+```php
+use ChurchCRM\Plugin\PluginManager;
+
+// Initialize (done once in src/plugins/index.php)
+PluginManager::init($pluginsPath);
+
+// Check plugin status
+$isActive = PluginManager::isPluginActive('mailchimp');
+
+// Get plugin instance
+$plugin = PluginManager::getPlugin('mailchimp');
+if ($plugin !== null && $plugin->isConfigured()) {
+    $result = $plugin->doSomething();
+}
+
+// Get all plugins for admin UI
+$plugins = PluginManager::getAllPlugins();
+
+// Enable/disable plugins
+PluginManager::enablePlugin('mailchimp');
+PluginManager::disablePlugin('mailchimp');
+```
+
+**CRITICAL**: `PluginManager` is a static class. Never call `PluginManager::getInstance()` - it doesn't exist.
+
+### Slim Entry Point Configuration (plugins/index.php)
+
+Plugin entry points create their own Slim app instance. Configure error middleware properly:
+
+```php
+// CORRECT - Config-driven error display
+$displayErrors = SystemConfig::debugEnabled();
+$app->addErrorMiddleware($displayErrors, true, true)
+    ->setDefaultErrorHandler(function (Request $request, Throwable $exception) use ($app): Response {
+        $response = $app->getResponseFactory()->createResponse();
+        return SlimUtils::renderErrorJSON(
+            $response, 
+            gettext('An error occurred'), 
+            [], 
+            500, 
+            $exception, 
+            $request
+        );
+    });
+
+// WRONG - Always exposes error details (security risk in production)
+$app->addErrorMiddleware(true, true, true);  // ❌ Hardcoded true exposes exceptions
+
+// WRONG - Throws exception which leaks info to client
+throw new HttpNotFoundException($request);  // ❌ Use SlimUtils::renderErrorJSON instead
+```
+
+**Guidelines:**
+- **Use `SystemConfig::debugEnabled()`** to control `displayErrorDetails` parameter
+- **Set custom error handler** that uses `SlimUtils::renderErrorJSON()` for sanitized responses
+- **Never throw HTTP exceptions in API routes** - always catch and return sanitized JSON errors
+
+### Plugin URL Structure
+
+| URL Pattern | Purpose |
+|-------------|---------|
+| `/plugins/management` | Admin UI for managing plugins |
+| `/plugins/management/{pluginId}` | Redirects to management with plugin expanded |
+| `/plugins/api/plugins` | API: List all plugins |
+| `/plugins/api/plugins/{id}/enable` | API: Enable plugin |
+| `/plugins/api/plugins/{id}/disable` | API: Disable plugin |
+| `/plugins/api/plugins/{id}/settings` | API: Update settings |
+| `/plugins/{plugin-name}/*` | Plugin-specific routes |
+
+### Available Hooks
+
+Defined in `src/ChurchCRM/Plugin/Hooks.php`:
+
+**Person**: `PERSON_PRE_CREATE`, `PERSON_CREATED`, `PERSON_PRE_UPDATE`, `PERSON_UPDATED`, `PERSON_DELETED`, `PERSON_VIEW_TABS`
+
+**Family**: `FAMILY_PRE_CREATE`, `FAMILY_CREATED`, `FAMILY_PRE_UPDATE`, `FAMILY_UPDATED`, `FAMILY_DELETED`, `FAMILY_VIEW_TABS`
+
+**Financial**: `DONATION_RECEIVED`, `DEPOSIT_CLOSED`
+
+**Events**: `EVENT_CREATED`, `EVENT_CHECKIN`, `EVENT_CHECKOUT`
+
+**Groups**: `GROUP_MEMBER_ADDED`, `GROUP_MEMBER_REMOVED`
+
+**Email**: `EMAIL_PRE_SEND`, `EMAIL_SENT`
+
+**UI/Menu**: `MENU_BUILDING`, `DASHBOARD_WIDGETS`, `SETTINGS_PANELS`, `ADMIN_PAGE`
+
+**System**: `SYSTEM_INIT`, `SYSTEM_UPGRADED`, `CRON_RUN`, `API_RESPONSE`
+
+### Registering Hooks
+
+```php
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
+
+public function boot(): void
+{
+    HookManager::addAction(Hooks::PERSON_UPDATED, [$this, 'onPersonUpdated']);
+    HookManager::addAction(Hooks::GROUP_MEMBER_ADDED, [$this, 'onGroupMemberAdded']);
+}
+
+public function onPersonUpdated($person, array $oldData): void
+{
+    if (!$this->isActive()) {
+        return;
+    }
+    // Handle person update
+}
+```
+
+### Core Plugins Reference
+
+| Plugin | Description | Has Routes | Has Views |
+|--------|-------------|-----------|-----------|
+| `custom-links` | Custom external links in navigation menu | ✅ | ✅ |
+| `external-backup` | WebDAV cloud backup (NextCloud, ownCloud, etc.) | ✅ | ✅ |
+| `mailchimp` | MailChimp email list integration | ✅ | ✅ |
+| `gravatar` | Gravatar profile photos | ❌ | ❌ |
+| `google-analytics` | GA4 tracking code injection | ❌ | ❌ |
+| `openlp` | OpenLP projector integration | ❌ | ❌ |
+| `vonage` | Vonage SMS notifications | ❌ | ❌ |
+
+---
+
 ## File Locations
 
 | Path | Purpose |
 |------|---------|
+| `orm/` | Perpl ORM schema.xml and propel.php.dist configuration |
 | `src/ChurchCRM/Service/` | Business logic layer |
-| `src/ChurchCRM/model/ChurchCRM/` | Propel ORM generated classes (don't edit) |
+| `src/ChurchCRM/model/ChurchCRM/` | Perpl ORM generated classes (don't edit) |
 | `src/api/` | REST API entry point + routes |
 | `src/admin/routes/api/` | Admin-only API endpoints (NEW - use this for admin APIs) |
 | `src/finance/` | Finance module (Slim 4 MVC) - dashboard, reports |
+| `src/plugins/` | Plugin system entry point + management routes |
+| `src/plugins/core/` | Core plugins shipped with ChurchCRM |
+| `src/plugins/community/` | Third-party community plugins |
 | `src/Include/` | Utility functions, helpers, Config.php |
 | `src/locale/` | i18n/translation strings |
 | `src/skin/v2/` | Compiled CSS/JS from Webpack |
@@ -1345,6 +1846,6 @@ This ensures security vulnerabilities are not publicly disclosed and directs rep
 
 ---
 
-Last updated: December 13, 2025
+Last updated: January 31, 2026
 
 ```

@@ -10,12 +10,14 @@ describe("Admin Settings", () => {
         cy.contains("Church Information");
         cy.contains("Email Setup");
         cy.contains("People Setup");
-        cy.contains("System Settings");
+        cy.contains("Enabled Features");
         cy.contains("Map Settings");
         cy.contains("Report Settings");
-        cy.contains("Localization");
         cy.contains("Financial Settings");
-        cy.contains("Integration");
-        cy.contains("Backup");
+        cy.contains("Quick Search");
+        cy.contains("Localization");
+        cy.contains("Church Services");
+        cy.contains("Two-Factor Authentication");
+        cy.contains("System Settings");
     });
 });

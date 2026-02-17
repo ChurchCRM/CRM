@@ -5,6 +5,19 @@
  * Displays when the current PHP version is incompatible with ChurchCRM requirements.
  * This page is shown by index.php before autoloader is even loaded.
  */
+
+// Read required PHP version from composer.json (same source as VersionUtils)
+$requiredPhpVersion = '8.4'; // fallback
+$composerFile = __DIR__ . '/composer.json';
+if (file_exists($composerFile)) {
+    $composerJson = @file_get_contents($composerFile);
+    if ($composerJson !== false) {
+        $composer = json_decode($composerJson, true);
+        if (is_array($composer) && !empty($composer['config']['platform']['php'])) {
+            $requiredPhpVersion = $composer['config']['platform']['php'];
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -110,17 +123,17 @@
         <h1 class="error-title">PHP Version Not Supported</h1>
         
         <div class="version-info">
-            <p><strong>Current Version:</strong> <span class="highlight-version"><?php echo htmlspecialchars(phpversion(), ENT_QUOTES, 'UTF-8'); ?></span></p>
-            <p><strong>Required Version:</strong> <span>PHP 8.2 or later</span></p>
+            <p><strong>Current Version:</strong> <span class="highlight-version"><?= phpversion() ?></span></p>
+            <p><strong>Required Version:</strong> <span>PHP <?= $requiredPhpVersion ?> or later</span></p>
         </div>
 
         <div class="error-message">
-            <p>ChurchCRM requires PHP 8.2 or later with active security support.</p>
+            <p>ChurchCRM requires PHP <?= $requiredPhpVersion ?> or later with active security support.</p>
         </div>
 
         <div class="action-required">
             <strong>What you need to do:</strong>
-            <p>Contact your hosting provider or system administrator and request an upgrade to PHP 8.2 or later.</p>
+            <p>Contact your hosting provider or system administrator and request an upgrade to PHP <?= $requiredPhpVersion ?> or later.</p>
             <p>Older PHP versions no longer receive security updates, which puts your church data at risk.</p>
         </div>
 

@@ -182,6 +182,8 @@ class InputUtils
                     throw new \InvalidArgumentException('Invalid "type" for legacyFilterInput provided');
             }
         } else {
+            // Preserve legacy behavior: for empty input, always return an empty string,
+            // allowing callers to distinguish "no value" from 0 / 0.0 and store NULL where appropriate.
             return '';
         }
     }

@@ -11247,10 +11247,6 @@ msgid "Download failed"
 msgstr "下載失敗"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "套用升級失敗"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "刪除孤立檔案失敗"
 
@@ -11777,4 +11773,242 @@ msgstr "重設篩選"
 #: 
 msgid "Show only people with photos"
 msgstr "只顯示有照片的人"
+
+#: 
+msgid "Checkout All"
+msgstr "全部簽出"
+
+#: 
+msgid "Expected"
+msgstr "預期"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "刪除自助終端失敗"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "按財年的家庭承諾"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "查找已註冊學生"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "財年。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "已註冊學生群組"
+
+#: 
+msgid "Here"
+msgstr "這裡"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "無效的分配類型"
+
+#: 
+msgid "Invalid person ID"
+msgstr "無效的人員ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "自助終端註冊已停用"
+
+#: 
+msgid "Kiosk not found"
+msgstr "未找到自助終端"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "將此活動連結到群組以實現自助終端簽到功能。群組成員將顯示在自助終端上。"
+
+#: 
+msgid "Linked Group"
+msgstr "已連結群組"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "新自助終端裝置註冊目前已停用。請聯繫系統管理員啟用自助終端註冊。"
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "無群組（選擇以進行自助終端簽到）"
+
+#: 
+msgid "No one checked in yet"
+msgstr "還沒有人簽到"
+
+#: 
+msgid "Person not found"
+msgstr "未找到人員"
+
+#: 
+msgid "Pickup Request"
+msgstr "接送請求"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "請儘快前往教室。"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "所選財年每個基金按家庭名稱的承諾摘要"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "已註冊學生"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "老師在以下時間發送了此警報"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "此自助終端最好在平板電腦橫屏模式下查看，以獲得最佳簽到體驗。"
+
+#: 
+msgid "Tip"
+msgstr "提示"
+
+#: 
+msgid "Try Again"
+msgstr "重試"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "即將到來的生日"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "等待簽到"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "啟用後，新的自助終端裝置可以在30秒內完成註冊。"
+
+#: 
+msgid "Your child"
+msgstr "您的孩子"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "需要從以下地點接走"
+
+#: 
+msgid "their classroom"
+msgstr "他們的教室"
+
+#: 
+msgid "All timezones match"
+msgstr "所有時區匹配"
+
+#: 
+msgid "Baseline"
+msgstr "基準"
+
+#: 
+msgid "Browser"
+msgstr "瀏覽器"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "瀏覽器與系統配置不同 - 此用戶的日期可能顯示不正確。"
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "無法寫入ChurchCRM安裝目錄。請檢查Web伺服器是否具有寫入權限。"
+
+#: 
+msgid "Comparing timezones..."
+msgstr "正在比較時區..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "目標目錄不存在。請驗證ChurchCRM是否正確安裝。"
+
+#: 
+msgid "Does not match system config"
+msgstr "與系統配置不匹配"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "下載的發布文件為空。這可能是由於網路問題或GitHub速率限制。請稍後重試。"
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "提取完成但未找到升級文件。升級存檔可能已損壞。"
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "應用升級失敗。請檢查伺服器日誌獲取詳情。"
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "建立升級目錄失敗。請檢查文件權限。"
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "多次嘗試後仍無法從GitHub下載發布文件。請檢查伺服器的網際網路連接並重試。"
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "提取升級存檔失敗。請檢查磁碟空間和文件權限。"
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "無法開啟升級存檔。下載的文件可能已損壞。"
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "儲存下載的發布文件失敗。請檢查磁碟空間和權限。"
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "開始參數中的日期格式無效"
+
+#: 
+msgid "Mismatch"
+msgstr "不匹配"
+
+#: 
+msgid "Not set"
+msgstr "未設定"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP活躍"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "來源目錄不存在。升級存檔可能未正確提取。請檢查文件權限和磁碟空間。"
+
+#: 
+msgid "System Config"
+msgstr "系統配置"
+
+#: 
+msgid "Timezone Information"
+msgstr "時區資訊"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "檢測到時區不匹配"
+
+#: 
+msgid "mismatch detected"
+msgstr "檢測到不匹配"
+
+#: 
+msgid "mismatches detected"
+msgstr "檢測到多處不匹配"
 

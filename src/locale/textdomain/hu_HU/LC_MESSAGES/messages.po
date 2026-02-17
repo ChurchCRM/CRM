@@ -11039,10 +11039,6 @@ msgid "Download failed"
 msgstr "A letöltés nem sikerült"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "A frissítés alkalmazása nem sikerült"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Az árva fájlok törlése nem sikerült"
 

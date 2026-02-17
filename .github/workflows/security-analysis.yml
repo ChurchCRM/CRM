@@ -1,0 +1,231 @@
+name: 'Security Analysis'
+
+on:
+  push:
+    branches: [master, develop]
+    paths:
+      - '**/*.php'
+      - '**/*.js'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.json'
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.sql'
+  pull_request:
+    branches: [master]
+    paths:
+      - '**/*.php'
+      - '**/*.js'
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.json'
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.sql'
+  schedule:
+    # Run weekly on Mondays at 6:00 AM UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      scan_severity:
+        description: 'DevSkim minimum severity level'
+        required: false
+        type: choice
+        options:
+          - 'low'
+          - 'medium'
+          - 'high'
+          - 'critical'
+        default: 'medium'
+      fail_on_error:
+        description: 'Fail if DevSkim finds issues'
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # CodeQL: Semantic analysis for JavaScript/TypeScript
+  # Understands data flow, tracks tainted input through function calls
+  codeql-analysis:
+    name: 'CodeQL (JS/TS)'
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      contents: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v4
+        with:
+          languages: javascript-typescript
+          # Use security-extended for more comprehensive scanning
+          queries: security-extended
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v4
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v4
+        with:
+          category: "/language:javascript-typescript"
+
+  # DevSkim: Pattern-based analysis for PHP and config files
+  # Catches hardcoded secrets, common vulnerability patterns
+  devskim-analysis:
+    name: 'DevSkim (PHP/Config)'
+    runs-on: ubuntu-latest
+    
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Cache DevSkim rules
+        uses: actions/cache@v5
+        with:
+          path: ~/.devskim
+          key: devskim-rules-${{ runner.os }}-${{ hashFiles('**/*.json') }}
+          restore-keys: |
+            devskim-rules-${{ runner.os }}-
+
+      - name: Setup .NET 6.0
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Install DevSkim CLI
+        run: |
+          echo "📥 Installing DevSkim CLI..."
+          
+          if dotnet tool install --global Microsoft.CST.DevSkim.Cli --version 0.7.104; then
+            echo "✅ DevSkim CLI installed successfully via dotnet tool"
+          elif dotnet tool install --global Microsoft.CST.DevSkim.Cli; then
+            echo "✅ DevSkim CLI installed successfully (latest version)"
+          else
+            echo "🔄 Trying alternative installation method..."
+            wget -q https://github.com/Microsoft/DevSkim/releases/download/v0.7.104/devskim-linux-x64.zip -O devskim.zip
+            unzip -q devskim.zip -d devskim-cli
+            chmod +x devskim-cli/devskim
+            sudo mv devskim-cli/devskim /usr/local/bin/devskim
+            echo "✅ DevSkim CLI installed manually"
+          fi
+          
+          if command -v devskim >/dev/null 2>&1; then
+            echo "✅ DevSkim CLI is available"
+            devskim --version
+          else
+            echo "❌ DevSkim CLI installation failed"
+            exit 1
+          fi
+
+      - name: Run DevSkim security scanner
+        id: devskim
+        run: |
+          echo "🔍 Running DevSkim security analysis..."
+          mkdir -p devskim-output
+          
+          if [ -f ".devskim.json" ]; then
+            echo "Using custom DevSkim configuration"
+            devskim analyze . --output-file devskim-results.sarif --output-text-format sarif --severity-threshold ${{ inputs.scan_severity || 'medium' }} --config-file .devskim.json
+          else
+            echo "Using default DevSkim configuration"
+            devskim analyze . --output-file devskim-results.sarif --output-text-format sarif --severity-threshold ${{ inputs.scan_severity || 'medium' }}
+          fi
+          
+          echo "✅ DevSkim analysis completed"
+        continue-on-error: true
+
+      - name: Check DevSkim results
+        id: check-results
+        run: |
+          if [ -f "devskim-results.sarif" ]; then
+            issues=$(jq '.runs[0].results | length' devskim-results.sarif 2>/dev/null || echo "0")
+            echo "issues_found=$issues" >> $GITHUB_OUTPUT
+            
+            if [ "$issues" -gt 0 ]; then
+              echo "🚨 DevSkim found $issues security issues"
+              jq -r '.runs[0].results[] | "- \(.level // "unknown"): \(.message.text)"' devskim-results.sarif | head -10
+              
+              if [ "$issues" -gt 10 ]; then
+                echo "... and $((issues - 10)) more issues"
+              fi
+            else
+              echo "✅ No security issues found"
+            fi
+          else
+            echo "❌ DevSkim results file not found"
+            echo "issues_found=0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Upload DevSkim results to GitHub Security tab
+        if: always() && hashFiles('devskim-results.sarif') != ''
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: devskim-results.sarif
+          category: 'devskim'
+          wait-for-processing: true
+
+      - name: Create security summary
+        if: always()
+        run: |
+          echo "## 🛡️ DevSkim Security Analysis Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "devskim-results.sarif" ]; then
+            issues=${{ steps.check-results.outputs.issues_found }}
+            
+            if [ "$issues" -eq 0 ]; then
+              echo "✅ **No security issues detected**" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "Your code passed all DevSkim security checks!" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "🚨 **$issues security issues found**" >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "Please review the issues in the **Security** tab of this repository." >> $GITHUB_STEP_SUMMARY
+              echo "" >> $GITHUB_STEP_SUMMARY
+              echo "### Summary of Issues:" >> $GITHUB_STEP_SUMMARY
+              
+              jq -r '.runs[0].results[] | "- **\(.level // "unknown" | ascii_upcase)**: \(.message.text) in `\(.locations[0].physicalLocation.artifactLocation.uri // "unknown")`"' devskim-results.sarif | head -5 >> $GITHUB_STEP_SUMMARY
+              
+              if [ "$issues" -gt 5 ]; then
+                echo "- ... and $((issues - 5)) more issues" >> $GITHUB_STEP_SUMMARY
+              fi
+            fi
+          else
+            echo "❌ **Scan failed or no results file generated**" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Scan details:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Trigger: ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Severity threshold: ${{ inputs.scan_severity || 'medium' }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Branch: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+
+      - name: Fail on security issues (if configured)
+        if: inputs.fail_on_error == true && steps.check-results.outputs.issues_found != '0'
+        run: |
+          echo "❌ Failing workflow due to security issues found and fail_on_error=true"
+          exit 1
+
+      - name: Archive security results
+        if: always() && hashFiles('devskim-results.sarif') != ''
+        uses: actions/upload-artifact@v6
+        with:
+          name: devskim-security-results
+          path: devskim-results.sarif
+          retention-days: 30

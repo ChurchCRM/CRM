@@ -10979,10 +10979,6 @@ msgid "Download failed"
 msgstr "Échec du téléchargement"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Impossible d'appliquer la mise à niveau"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Impossible de supprimer les fichiers orphelins"
 
@@ -11647,4 +11643,108 @@ msgstr "doit être récupéré de"
 #: 
 msgid "their classroom"
 msgstr "sa salle de classe"
+
+#: 
+msgid "All timezones match"
+msgstr "Tous les fuseaux horaires correspondent"
+
+#: 
+msgid "Baseline"
+msgstr "Référence"
+
+#: 
+msgid "Browser"
+msgstr "Navigateur"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Le navigateur diffère de la configuration système - les dates peuvent s'afficher incorrectement pour cet utilisateur."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Impossible d'écrire dans le répertoire d'installation de ChurchCRM. Veuillez vérifier que le serveur web a les permissions d'écriture."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Comparaison des fuseaux horaires..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Le répertoire de destination n'existe pas. Veuillez vérifier que ChurchCRM est correctement installé."
+
+#: 
+msgid "Does not match system config"
+msgstr "Ne correspond pas à la configuration système"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Le fichier de version téléchargé est vide. Cela peut être dû à des problèmes de réseau ou à une limitation du débit GitHub. Veuillez réessayer plus tard."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Extraction terminée mais fichiers de mise à jour non trouvés. L'archive de mise à jour peut être corrompue."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Échec de l'application de la mise à jour. Veuillez consulter les journaux du serveur pour plus de détails."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Échec de la création du répertoire de mise à jour. Veuillez vérifier les permissions des fichiers."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Échec du téléchargement du fichier de version depuis GitHub après plusieurs tentatives. Veuillez vérifier la connexion Internet de votre serveur et réessayer."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Échec de l'extraction de l'archive de mise à jour. Veuillez vérifier l'espace disque et les permissions des fichiers."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Échec de l'ouverture de l'archive de mise à jour. Le fichier téléchargé peut être corrompu."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Échec de l'enregistrement du fichier de version téléchargé. Veuillez vérifier l'espace disque et les permissions."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Format de date invalide dans le paramètre de début"
+
+#: 
+msgid "Mismatch"
+msgstr "Incohérence"
+
+#: 
+msgid "Not set"
+msgstr "Non défini"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP actif"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Le répertoire source n'existe pas. L'archive de mise à jour n'a peut-être pas été extraite correctement. Veuillez vérifier les permissions des fichiers et l'espace disque."
+
+#: 
+msgid "System Config"
+msgstr "Configuration système"
+
+#: 
+msgid "Timezone Information"
+msgstr "Information de fuseau horaire"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Incohérence de fuseau horaire détectée"
+
+#: 
+msgid "mismatch detected"
+msgstr "incohérence détectée"
+
+#: 
+msgid "mismatches detected"
+msgstr "incohérences détectées"
 

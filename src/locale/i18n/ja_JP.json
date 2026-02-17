@@ -2634,7 +2634,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "デモデータのインポートは、正確に1人の人物がいる新規インストールでのみ利用可能です",
     "Demo data loaded successfully": "デモデータが正常に読み込まれました",
     "Download failed": "ダウンロードに失敗しました",
-    "Failed to apply upgrade": "アップグレードの適用に失敗しました",
     "Failed to delete orphaned files": "孤立ファイルの削除に失敗しました",
     "Failed to download latest release": "最新リリースのダウンロードに失敗しました",
     "Failed to refresh upgrade information": "アップグレード情報の更新に失敗しました",

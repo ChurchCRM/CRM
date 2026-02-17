@@ -1,0 +1,28 @@
+---
+description: ChurchCRM Cypress testing and debugging
+globs: "cypress/**"
+alwaysApply: false
+---
+
+# ChurchCRM Testing
+
+## UI Tests
+- Location: `cypress/e2e/ui/`
+- **Session-based login REQUIRED**:
+```javascript
+beforeEach(() => {
+  cy.setupAdminSession();  // or cy.setupStandardSession()
+  cy.visit('/path/to/page');
+});
+```
+- ❌ Never use deprecated `cy.loginAdmin()`
+
+## API Tests
+- Location: `cypress/e2e/api/private/`
+- Use helper commands: `cy.makePrivateAdminAPICall()`, `cy.makePrivateUserAPICall()`
+- Never use `cy.request` directly
+
+## Debugging 500 Errors
+1. Clear logs: `rm -f src/logs/$(date +%Y-%m-%d)-*.log`
+2. Run failing test
+3. Check: `cat src/logs/$(date +%Y-%m-%d)-php.log`

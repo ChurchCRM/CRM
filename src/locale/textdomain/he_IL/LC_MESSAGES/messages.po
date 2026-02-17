@@ -10971,10 +10971,6 @@ msgid "Download failed"
 msgstr "ההורדה נכשלה"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "החלת השדרוג נכשלה"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "מחיקת קבצים יתומים נכשלה"
 

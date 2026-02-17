@@ -1,0 +1,38 @@
+{
+  "id": "vonage",
+  "name": "Vonage SMS",
+  "description": "Send SMS notifications using Vonage API. Enables text messaging for event reminders, announcements, and member communications.",
+  "version": "2.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\Vonage\\VonagePlugin",
+  "dependencies": [],
+  "settingsUrl": null,
+  "settings": [
+    {
+      "key": "apiKey",
+      "label": "Vonage API Key",
+      "type": "text",
+      "required": true,
+      "help": "Your Vonage API Key from dashboard.vonage.com"
+    },
+    {
+      "key": "apiSecret",
+      "label": "Vonage API Secret",
+      "type": "password",
+      "required": true,
+      "help": "Your Vonage API Secret from dashboard.vonage.com"
+    },
+    {
+      "key": "fromNumber",
+      "label": "From Phone Number",
+      "type": "text",
+      "required": true,
+      "help": "The phone number to send SMS from (E.164 format, e.g., +14155551234)"
+    }
+  ],
+  "menuItems": [],
+  "hooks": []
+}

@@ -10914,10 +10914,6 @@ msgid "Download failed"
 msgstr "ダウンロードに失敗しました"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "アップグレードの適用に失敗しました"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "孤立ファイルの削除に失敗しました"
 

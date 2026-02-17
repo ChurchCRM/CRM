@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "የሙከራ መረጃ ማስገባት የሚቻለው 1 ሰው ብቻ ባለበት አዲስ ጭነት ላይ ብቻ ነው።",
     "Demo data loaded successfully": "የሙከራ መረጃ በተሳካ ሁኔታ ተጭኗል",
     "Download failed": "ማውረድ አልተሳካም",
-    "Failed to apply upgrade": "ማሻሻያ መተግበር አልተሳካም",
     "Failed to delete orphaned files": "ተረጂ ያልሆኑ ፋይሎችን መሰረዝ አልተሳካም",
     "Failed to download latest release": "የቅርብ ጊዜውን ልቀት ማውረድ አልተሳካም",
     "Failed to refresh upgrade information": "የማሻሻያ መረጃን ማደስ አልተሳካም",

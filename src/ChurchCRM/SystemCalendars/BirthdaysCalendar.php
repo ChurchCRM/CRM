@@ -4,6 +4,7 @@ namespace ChurchCRM\SystemCalendars;
 
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
 
@@ -65,8 +66,9 @@ class BirthdaysCalendar implements SystemCalendar
         $events = new ObjectCollection();
         $events->setModel(Event::class);
 
-        $startDate = $start ? new \DateTimeImmutable($start) : new \DateTimeImmutable(date('Y') . '-01-01');
-        $endDate = $end ? new \DateTimeImmutable($end) : new \DateTimeImmutable((date('Y') + 1) . '-12-31');
+        $currentYear = DateTimeUtils::getCurrentYear();
+        $startDate = $start ? new \DateTimeImmutable($start) : new \DateTimeImmutable($currentYear . '-01-01');
+        $endDate = $end ? new \DateTimeImmutable($end) : new \DateTimeImmutable(($currentYear + 1) . '-12-31');
 
         $maxYears = 2;
         if ($startDate->diff($endDate)->y > $maxYears) {

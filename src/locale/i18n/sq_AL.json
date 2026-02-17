@@ -2639,7 +2639,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Importimi i të dhënave demo është i disponueshëm vetëm në instalime të reja me saktësisht 1 person",
     "Demo data loaded successfully": "Të dhënat demo u ngarkuan me sukses",
     "Download failed": "Shkarkimi dështoi",
-    "Failed to apply upgrade": "Dështoi aplikimi i përmirësimit",
     "Failed to delete orphaned files": "Dështoi fshirja e skedarëve jetimë",
     "Failed to download latest release": "Dështoi shkarkimi i versionit të fundit",
     "Failed to refresh upgrade information": "Dështoi rifreskimi i informacionit të përmirësimit",

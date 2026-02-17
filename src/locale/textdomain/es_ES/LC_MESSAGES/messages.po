@@ -11005,10 +11005,6 @@ msgid "Download failed"
 msgstr "Error de descarga"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Error al aplicar actualización"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Error al eliminar archivos huérfanos"
 
@@ -11673,4 +11669,108 @@ msgstr "necesita ser recogido de"
 #: 
 msgid "their classroom"
 msgstr "su aula"
+
+#: 
+msgid "All timezones match"
+msgstr "Todas las zonas horarias coinciden"
+
+#: 
+msgid "Baseline"
+msgstr "Línea base"
+
+#: 
+msgid "Browser"
+msgstr "Navegador"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "El navegador difiere de la configuración del sistema - las fechas pueden mostrarse incorrectamente para este usuario."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "No se puede escribir en el directorio de instalación de ChurchCRM. Por favor verifique que el servidor web tenga permisos de escritura."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Comparando zonas horarias..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "El directorio de destino no existe. Por favor verifique que ChurchCRM esté instalado correctamente."
+
+#: 
+msgid "Does not match system config"
+msgstr "No coincide con la configuración del sistema"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "El archivo de versión descargado está vacío. Esto puede deberse a problemas de red o limitación de velocidad de GitHub. Por favor intente más tarde."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Extracción completada pero archivos de actualización no encontrados. El archivo de actualización puede estar corrupto."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Error al aplicar la actualización. Por favor revise los registros del servidor para más detalles."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Error al crear el directorio de actualización. Por favor verifique los permisos de archivos."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Error al descargar el archivo de versión desde GitHub después de múltiples intentos. Por favor verifique la conexión a Internet de su servidor e intente de nuevo."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Error al extraer el archivo de actualización. Por favor verifique el espacio en disco y los permisos de archivos."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Error al abrir el archivo de actualización. El archivo descargado puede estar corrupto."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Error al guardar el archivo de versión descargado. Por favor verifique el espacio en disco y los permisos."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Formato de fecha inválido en el parámetro de inicio"
+
+#: 
+msgid "Mismatch"
+msgstr "Discrepancia"
+
+#: 
+msgid "Not set"
+msgstr "No establecido"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP activo"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "El directorio de origen no existe. El archivo de actualización puede no haberse extraído correctamente. Por favor verifique los permisos de archivos y el espacio en disco."
+
+#: 
+msgid "System Config"
+msgstr "Configuración del sistema"
+
+#: 
+msgid "Timezone Information"
+msgstr "Información de zona horaria"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Discrepancia de zona horaria detectada"
+
+#: 
+msgid "mismatch detected"
+msgstr "discrepancia detectada"
+
+#: 
+msgid "mismatches detected"
+msgstr "discrepancias detectadas"
 

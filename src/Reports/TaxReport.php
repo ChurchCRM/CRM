@@ -9,7 +9,9 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\CsvExporter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
@@ -46,7 +48,7 @@ if (!empty($_POST['family'])) {
 }
 
 // Normalize date range
-$today = date('Y-m-d');
+$today = DateTimeUtils::getTodayDate();
 if (!$sDateEnd && $sDateStart) {
     $sDateEnd = $sDateStart;
 }
@@ -113,8 +115,7 @@ $aSQLCriteria[1] = $criteriaStr;
 // Exit if no rows returned
 $iCountRows = count($rsReport);
 if ($iCountRows < 1) {
-    header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
-    exit();
+    RedirectUtils::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=Giving%20Report');
 }
 
 // Create Giving Report -- PDF
@@ -448,7 +449,6 @@ if ($output === 'pdf') {
             'DateStart' => $sDateStart,
             'DateEnd'   => $sDateEnd,
         ];
-        header('Location: ../FinancialReports.php?' . http_build_query($params));
-        exit();
+        RedirectUtils::redirect('FinancialReports.php?' . http_build_query($params));
     }
 }

@@ -6,12 +6,15 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $sPageTitle = gettext('Create New Fund Raiser');
 
-$linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
+// Check if linkBack was explicitly provided (not the fallback)
+$linkBackProvided = isset($_GET['linkBack']) && $_GET['linkBack'] !== '';
+$linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
 $iFundRaiserID = InputUtils::legacyFilterInputArr($_GET, 'FundRaiserID');
 
 $fundraiser = null;
@@ -54,7 +57,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
                 ->setTitle($sTitle)
                 ->setDescription($sDescription)
                 ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
-                ->setEnteredDate(date('YmdHis'));
+                ->setEnteredDate(DateTimeUtils::getToday()->format('YmdHis'));
             $fundraiser->save();
             $fundraiser->reload();
 
@@ -67,18 +70,19 @@ if (isset($_POST['FundRaiserSubmit'])) {
                 ->setTitle($sTitle)
                 ->setDescription($sDescription)
                 ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId())
-                ->setEnteredDate(date('YmdHis'));
+                ->setEnteredDate(DateTimeUtils::getToday()->format('YmdHis'));
             $fundraiser->save();
         }
 
         $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 
         if (isset($_POST['FundRaiserSubmit'])) {
-            if ($linkBack != '') {
+            // Only use linkBack if it was explicitly provided in the original request
+            if ($linkBackProvided) {
                 RedirectUtils::redirect($linkBack);
             } else {
                 //Send to the view of this FundRaiser
-                RedirectUtils::redirect('FundRaiserEditor.php?linkBack=' . $linkBack . '&FundRaiserID=' . $iFundRaiserID);
+                RedirectUtils::redirect('FundRaiserEditor.php?FundRaiserID=' . $iFundRaiserID);
             }
         }
     }
@@ -116,7 +120,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <div class="card card-body">
-    <form method="post" action="FundRaiserEditor.php?<?= 'linkBack=' . $linkBack . '&FundRaiserID=' . $iFundRaiserID ?>" name="FundRaiserEditor">
+    <form method="post" action="FundRaiserEditor.php?<?= ($linkBackProvided ? 'linkBack=' . urlencode($linkBack) . '&' : '') . 'FundRaiserID=' . $iFundRaiserID ?>" name="FundRaiserEditor">
 
         <table cellpadding="3" width="100%">
             <tr>

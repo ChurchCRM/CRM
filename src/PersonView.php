@@ -8,14 +8,12 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Service\MailChimpService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $timelineService = new TimelineService();
-$mailchimp = new MailChimpService();
 $personService = new PersonService();
 
 // Get the person ID from the querystring
@@ -24,8 +22,7 @@ $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
 $person = PersonQuery::create()->findPk($iPersonID);
 
 if (empty($person)) {
-    header('Location: ' . SystemURLs::getRootPath() . '/v2/person/not-found?id=' . $iPersonID);
-    exit;
+    RedirectUtils::redirect('v2/person/not-found?id=' . $iPersonID);
 }
 
 // GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person
@@ -530,13 +527,12 @@ $bOkToEdit = (
                             <i class="fa-solid fa-tags mr-1"></i><?= gettext('Properties') ?>
                         </a>
                     </li>
-                    <?php if ($mailchimp->isActive()) { ?>
-                    <li class="nav-item">
+                    <!-- Plugin tabs will be dynamically added here by JavaScript -->
+                    <li class="nav-item d-none" id="nav-item-mailchimp-container">
                         <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-toggle="tab">
                             <i class="fa-brands fa-mailchimp mr-1"></i><?= gettext('Mailchimp') ?>
                         </a>
                     </li>
-                    <?php } ?>
                 </ul>
             </div>
             <div class="card-body">
@@ -1010,27 +1006,31 @@ $bOkToEdit = (
                             </div>
                         <?php endif; ?>
                     </div>
-                    <div class="tab-pane" id="mailchimp">
+                    <?php if (!empty($person->getEmail()) || !empty($person->getWorkEmail())) : ?>
+                    <div class="tab-pane d-none" id="mailchimp">
                         <table class="table">
                             <tr>
                                 <th><?= gettext("Type") ?></th>
                                 <th><?= gettext("Email") ?></th>
                                 <th><?= gettext("Lists") ?></th>
                             </tr>
+                            <?php if (!empty($person->getEmail())) : ?>
                             <tr>
-                                <td>Home</td>
+                                <td><?= gettext("Home") ?></td>
                                 <td><?= $person->getEmail() ?></td>
-                                <td id="<?= md5($person->getEmail()) ?>"> ... <?= gettext("loading") ?> ... </td>
+                                <td id="<?= md5(strtolower($person->getEmail())) ?>" data-loading="true"> ... <?= gettext("loading") ?> ... </td>
                             </tr>
-                            <?php if (!empty($person->getWorkEmail())) { ?>
-                                <tr>
-                                    <td>Work</td>
-                                    <td><?= $person->getWorkEmail() ?></td>
-                                    <td id="<?= md5($person->getWorkEmail()) ?>"> ... <?= gettext("loading") ?> ... </td>
-                                </tr>
-                            <?php } ?>
+                            <?php endif; ?>
+                            <?php if (!empty($person->getWorkEmail()) && strtolower($person->getWorkEmail()) !== strtolower($person->getEmail() ?? '')) : ?>
+                            <tr>
+                                <td><?= gettext("Work") ?></td>
+                                <td><?= $person->getWorkEmail() ?></td>
+                                <td id="<?= md5(strtolower($person->getWorkEmail())) ?>" data-loading="true"> ... <?= gettext("loading") ?> ... </td>
+                            </tr>
+                            <?php endif; ?>
                         </table>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -1060,7 +1060,6 @@ $bOkToEdit = (
         <script src="<?= SystemURLs::assetVersioned('/skin/js/PersonView.js') ?>"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM.currentPersonID = <?= $iPersonID ?>;
-            window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
 
             $("#deletePhoto").click(function() {
                 window.CRM.deletePhoto("person", window.CRM.currentPersonID);

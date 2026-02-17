@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -115,7 +116,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
     // definitions, recurrence type, etc.
     switch ($sDefRecurType) {
         case 'none':
-            $sEventStartDate = date('Y-m-d');
+            $sEventStartDate = DateTimeUtils::getTodayDate();
             $sEventEndDate = $sEventStartDate;
             $aStartTimeTokens = explode(':', $sDefStartTime);
             $iEventStartHour = $aStartTimeTokens[0];
@@ -136,7 +137,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 extract($ecRow);
                 $aStartTokens = explode(' ', $event_start);
                 $ceEventStartDate = $aStartTokens[0];
-                $sEventStartDate = date('Y-m-d', strtotime("$ceEventStartDate +1 week"));
+                $sEventStartDate = DateTimeUtils::getDateRelativeTo($ceEventStartDate, '+1 week');
 
                 $aEventStartTimeTokens = explode(':', $sDefStartTime);
                 $iEventStartHour = $aEventStartTimeTokens[0];
@@ -147,7 +148,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 $iEventEndMins = $iEventStartMins;
             } else {
                 // Use the event type definition
-                $sEventStartDate = date('Y-m-d', strtotime("last $iDefRecurDOW"));
+                $sEventStartDate = DateTimeUtils::getRelativeDate("last $iDefRecurDOW");
                 $aStartTimeTokens = explode(':', $sDefStartTime);
                 $iEventStartHour = $aStartTimeTokens[0];
                 $iEventStartMins = $aStartTimeTokens[1];
@@ -172,7 +173,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 $ceDMY = explode('-', $aStartTokens[0]);
                 $aEventStartTimeTokens = explode(':', $ceStartTokens[1]);
 
-                $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $ceDMY[1] + 1, $ceDMY[2], $ceDMY[0]));
+                $sEventStartDate = DateTimeUtils::formatDateFromComponents((int) $ceDMY[0], (int) $ceDMY[1] + 1, (int) $ceDMY[2]);
                 $iEventStartHour = $aEventStartTimeTokens[0];
                 $iEventStartMins = $aEventStartTimeTokens[1];
                 $sEventEndDate = $sEventStartDate;
@@ -180,11 +181,13 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 $iEventEndMins = $aEventStartTimeTokens[1];
             } else {
                 // Use the event type definition
-                $currentDOM = date('d');
+                $currentDOM = DateTimeUtils::getCurrentDay();
+                $currentMonth = DateTimeUtils::getCurrentMonth();
+                $currentYear = DateTimeUtils::getCurrentYear();
                 if ($currentDOM < $iDefRecurDOM) {
-                    $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, date('m') - 1, $iDefRecurDOM, date('Y')));
+                    $sEventStartDate = DateTimeUtils::formatDateFromComponents($currentYear, $currentMonth - 1, $iDefRecurDOM);
                 } else {
-                    $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, date('m'), $iDefRecurDOM, date('Y')));
+                    $sEventStartDate = DateTimeUtils::formatDateFromComponents($currentYear, $currentMonth, $iDefRecurDOM);
                 }
 
                 $aStartTimeTokens = explode(':', $ceDefStartTime);
@@ -209,7 +212,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 $aDMY = explode('-', $aStartTokens[0]);
                 $aEventStartTimeTokens = explode(':', $aStartTokens[1]);
 
-                $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], $aDMY[0] + 1));
+                $sEventStartDate = DateTimeUtils::formatDateFromComponents((int) $aDMY[0] + 1, (int) $aDMY[1], (int) $aDMY[2]);
                 $iEventStartHour = $aEventStartTimeTokens[0];
                 $iEventStartMins = $aEventStartTimeTokens[1];
                 $sEventEndDate = $sEventStartDate;
@@ -219,17 +222,18 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 // Use the event type definition
                 $currentDOY = time();
                 $defaultDOY = strtotime($sDefRecurDOY);
+                $currentYear = DateTimeUtils::getCurrentYear();
                 if ($currentDOY < $defaultDOY) {
                     // Event is in the future
                     $sEventStartDate = $sDefRecurDOY;
                 } elseif ($currentDOY > $defaultDOY + (365 * 24 * 60 * 60)) {
                     // Event is over 1 year in the past
                     $aDMY = explode('-', $sDefRecurDOY);
-                    $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y') - 1));
+                    $sEventStartDate = DateTimeUtils::formatDateFromComponents($currentYear - 1, (int) $aDMY[1], (int) $aDMY[2]);
                 } else {
                     // Event is past
                     $aDMY = explode('-', $sDefRecurDOY);
-                    $sEventStartDate = date('Y-m-d', mktime(0, 0, 0, $aDMY[1], $aDMY[2], date('Y')));
+                    $sEventStartDate = DateTimeUtils::formatDateFromComponents($currentYear, (int) $aDMY[1], (int) $aDMY[2]);
                 }
 
                 $aStartTimeTokens = explode(':', $sDefStartTime);
@@ -458,7 +462,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             }
         }
         $EventExists = 1;
-        header('Location: ListEvents.php');
+        RedirectUtils::redirect('ListEvents.php');
     }
 }
 ?>

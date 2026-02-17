@@ -39,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
       editable: false,
       selectMirror: true,
       locale: window.CRM.lang,
+      timeZone: '<?= ChurchMetaData::getChurchTimeZone() ?>',
       eventSources: [
         '<?= $eventSource ?>'
       ]

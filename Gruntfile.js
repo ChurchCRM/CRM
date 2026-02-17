@@ -51,16 +51,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: [
-                            "node_modules/bootstrap-toggle/css/bootstrap-toggle.css",
-                            "node_modules/bootstrap-toggle/js/bootstrap-toggle.js",
-                        ],
-                        dest: "src/skin/external/bootstrap-toggle/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         cwd: "",
                         src: [
                             "node_modules/daterangepicker/daterangepicker.*",
@@ -137,7 +127,7 @@ module.exports = function (grunt) {
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/datatables.net/js/jquery.dataTables.min.js",
+                            "node_modules/datatables.net/js/dataTables.min.js",
                         ],
                         dest: "src/skin/external/datatables/",
                     },

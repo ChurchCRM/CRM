@@ -2635,7 +2635,6 @@
     "Demo data import is only available on fresh installations with exactly 1 person": "Dữ liệu mẫu chỉ khả dụng khi mới cài đặt.",
     "Demo data loaded successfully": "Dữ liệu mẫu đã được tải thành công",
     "Download failed": "Tải xuống thất bại",
-    "Failed to apply upgrade": "Áp dụng nâng cấp thất bại",
     "Failed to delete orphaned files": "Xóa các tệp mồ côi thất bại",
     "Failed to download latest release": "Tải phiên bản mới nhất thất bại",
     "Failed to refresh upgrade information": "Làm mới thông tin nâng cấp thất bại",

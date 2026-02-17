@@ -7,6 +7,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Utils\PHPToMomentJSConverter;
@@ -18,6 +19,10 @@ ob_start();
 
 require_once __DIR__ . '/Header-Security.php';
 
+// Initialize plugin system for logged-in users
+$pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+PluginManager::init($pluginsPath);
+
 // Top level menu index counter
 $MenuFirst = 1;
 ?>
@@ -28,6 +33,7 @@ $MenuFirst = 1;
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
+  <?= PluginManager::getPluginHeadContent() ?>
 </head>
 
 <body class="hold-transition <?= AuthenticationManager::getCurrentUser()->getStyle() ?> sidebar-mini">
@@ -87,6 +93,7 @@ $MenuFirst = 1;
             systemLocale: "<?= $localeInfo->getSystemLocale() ?>",
             locale: "<?= $localeInfo->getLocale() ?>",
             shortLocale: "<?= $localeInfo->getShortLocale() ?>",
+            timeZone: "<?= SystemConfig::getValue('sTimeZone') ?>",
             maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",
             maxUploadSizeBytes: "<?= SystemService::getMaxUploadFileSize(false) ?>",
             datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
@@ -95,7 +102,10 @@ $MenuFirst = 1;
               sDateTimeFormat: "<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
             },
             iDashboardServiceIntervalTime:"<?= SystemConfig::getValue('iDashboardServiceIntervalTime') ?>",
-            bEnableGravatarPhotos: <?= SystemConfig::getBooleanValue('bEnableGravatarPhotos') ? 'true' : 'false' ?>,
+            // Plugin configs from active plugins (via getClientConfig())
+            plugins: <?= json_encode(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,
+            // Legacy: keep bEnableGravatarPhotos for backward compatibility with existing JS
+            bEnableGravatarPhotos: <?= json_encode(PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false) ?>,
             plugin: {
                 dataTable : {
                     "pageLength": <?= $tableSize ?>,
@@ -104,9 +114,12 @@ $MenuFirst = 1;
                         "url": "<?= SystemURLs::getRootPath() ?>/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
                     },
                     responsive: true,
-                    dom: "<'row'<'col-sm-4'B><'col-sm-4'r><'col-sm-4 searchStyle'f>>" +
-                            "<'row'<'col-sm-12't>>" +
-                            "<'row'<'col-sm-4'l><'col-sm-4'i><'col-sm-4'p>>",
+                    layout: {
+                        topStart: 'search',
+                        topEnd: 'buttons',
+                        bottomStart: 'pageLength',
+                        bottomEnd: ['info', 'paging']
+                    },
                     buttons: [
                         'copy',
                         'csv',
@@ -251,8 +264,8 @@ $MenuFirst = 1;
                       <i class="fa-solid fa-cogs"></i> <?= gettext('Change Settings') ?></a>
                   <?php if (LocalAuthentication::getIsTwoFactorAuthSupported()) { ?>
                       <div class="dropdown-divider"></div>
-                      <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/enroll2fa" class="dropdown-item">
-                          <i class="fa-solid fa-gear"></i> <?= gettext("Manage 2 Factor Authentication") ?></a>
+                      <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
+                          <i class="fa-solid fa-shield"></i> <?= gettext("Manage Two-Factor Authentication") ?></a>
                   <?php } ?>
                      <div class="dropdown-divider"></div>
                     <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">

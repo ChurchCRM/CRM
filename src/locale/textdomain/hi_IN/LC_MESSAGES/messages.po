@@ -10923,10 +10923,6 @@ msgid "Download failed"
 msgstr "डाउनलोड विफल रहा"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "अपग्रेड लागू करने में विफल"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "अनाथ फाइलों को हटाने में विफल"
 
@@ -11591,4 +11587,108 @@ msgstr "से लेने की जरूरत है"
 #: 
 msgid "their classroom"
 msgstr "उनकी कक्षा"
+
+#: 
+msgid "All timezones match"
+msgstr "सभी समय क्षेत्र मेल खाते हैं"
+
+#: 
+msgid "Baseline"
+msgstr "आधार रेखा"
+
+#: 
+msgid "Browser"
+msgstr "ब्राउज़र"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "ब्राउज़र सिस्टम कॉन्फ़िग से भिन्न है - इस उपयोगकर्ता के लिए तारीखें गलत प्रदर्शित हो सकती हैं।"
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "ChurchCRM इंस्टॉलेशन डायरेक्टरी में लिखा नहीं जा सकता। कृपया जांचें कि वेब सर्वर के पास लिखने की अनुमति है।"
+
+#: 
+msgid "Comparing timezones..."
+msgstr "समय क्षेत्रों की तुलना हो रही है..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "गंतव्य डायरेक्टरी मौजूद नहीं है। कृपया सत्यापित करें कि ChurchCRM सही ढंग से स्थापित है।"
+
+#: 
+msgid "Does not match system config"
+msgstr "सिस्टम कॉन्फ़िग से मेल नहीं खाता"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "डाउनलोड की गई रिलीज़ फ़ाइल खाली है। यह नेटवर्क समस्याओं या GitHub दर सीमा के कारण हो सकता है। कृपया बाद में पुनः प्रयास करें।"
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "निष्कर्षण पूर्ण हुआ लेकिन अपग्रेड फ़ाइलें नहीं मिलीं। अपग्रेड संग्रह दूषित हो सकता है।"
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "अपग्रेड लागू करने में विफल। विवरण के लिए कृपया सर्वर लॉग देखें।"
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "अपग्रेड डायरेक्टरी बनाने में विफल। कृपया फ़ाइल अनुमतियां जांचें।"
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "कई प्रयासों के बाद GitHub से रिलीज़ फ़ाइल डाउनलोड करने में विफल। कृपया अपने सर्वर का इंटरनेट कनेक्शन जांचें और पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "अपग्रेड संग्रह निकालने में विफल। कृपया डिस्क स्थान और फ़ाइल अनुमतियां जांचें।"
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "अपग्रेड संग्रह खोलने में विफल। डाउनलोड की गई फ़ाइल दूषित हो सकती है।"
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "डाउनलोड की गई रिलीज़ फ़ाइल सहेजने में विफल। कृपया डिस्क स्थान और अनुमतियां जांचें।"
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "प्रारंभ पैरामीटर में अमान्य दिनांक प्रारूप"
+
+#: 
+msgid "Mismatch"
+msgstr "बेमेल"
+
+#: 
+msgid "Not set"
+msgstr "सेट नहीं"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP सक्रिय"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "स्रोत डायरेक्टरी मौजूद नहीं है। अपग्रेड संग्रह सही ढंग से नहीं निकला हो सकता है। कृपया फ़ाइल अनुमतियां और डिस्क स्थान जांचें।"
+
+#: 
+msgid "System Config"
+msgstr "सिस्टम कॉन्फ़िग"
+
+#: 
+msgid "Timezone Information"
+msgstr "समय क्षेत्र जानकारी"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "समय क्षेत्र बेमेल पाया गया"
+
+#: 
+msgid "mismatch detected"
+msgstr "बेमेल पाया गया"
+
+#: 
+msgid "mismatches detected"
+msgstr "बेमेल पाए गए"
 
