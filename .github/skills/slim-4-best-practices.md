@@ -1,3 +1,11 @@
+---
+title: "Slim 4 Best Practices"
+intent: "Guidance for Slim 4 app setup, routing, middleware, and error handling"
+tags: ["slim","middleware","routing","api","error-handling"]
+prereqs: ["php-best-practices.md","routing-architecture.md"]
+complexity: "intermediate"
+---
+
 # Skill: Slim 4 Best Practices
 
 ## Context

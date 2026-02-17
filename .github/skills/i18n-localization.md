@@ -1,3 +1,11 @@
+---
+title: "i18n & Localization Best Practices"
+intent: "Guidance for adding UI terms, workflows for locale builds, and term consolidation"
+tags: ["i18n","localization","gettext","i18next"]
+prereqs: []
+complexity: "beginner"
+---
+
 # i18n & Localization Best Practices
 
 Guidelines for multilingual support, term consolidation, and the locale rebuild workflow.

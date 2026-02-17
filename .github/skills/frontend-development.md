@@ -1,3 +1,11 @@
+---
+title: "Frontend Development"
+intent: "Guidance for frontend work, React/TypeScript, and asset management"
+tags: ["frontend","react","webpack","i18n"]
+prereqs: ["webpack-typescript.md","i18n-localization.md"]
+complexity: "intermediate"
+---
+
 # Skill: Frontend Development
 
 ## Context
@@ -10,6 +18,14 @@ This skill covers frontend patterns, UI components, notifications, international
 - **Webpack** - Build system
 - **Quill** - Rich text editor
 - **i18next** - Frontend internationalization
+
+**Verified versions in this repo (package.json):**
+- `bootstrap` 4.6.2
+- `admin-lte` 3.2.0
+- `react` 19.2.4, `react-dom` 19.2.4
+- `react-bootstrap` 2.10.10
+- `typescript` 5.9.3
+- `webpack` 5.105.2
 
 ## Bootstrap 4.6.2 (CRITICAL)
 

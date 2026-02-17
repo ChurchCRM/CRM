@@ -1,3 +1,11 @@
+---
+title: "API Development"
+intent: "Patterns for creating and maintaining API endpoints using Slim and service layer"
+tags: ["api","slim","routes","security"]
+prereqs: ["slim-4-best-practices.md","php-best-practices.md"]
+complexity: "intermediate"
+---
+
 # Skill: API Development
 
 ## Context

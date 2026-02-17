@@ -1,4 +1,12 @@
 ---
+title: "Refactor Patterns"
+intent: "Guidance for refactoring legacy code to services and MVC structure"
+tags: ["refactor","service-layer","mvc"]
+prereqs: ["php-best-practices.md","service-layer.md"]
+complexity: "intermediate"
+---
+
+---
 title: Refactor & Migration Skill
 summary: |
   Guidance and a per-feature checklist for migrating legacy PHP pages to

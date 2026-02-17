@@ -1,3 +1,11 @@
+---
+title: "Development Workflows"
+intent: "Setup, build, Docker, and testing workflows for development and CI"
+tags: ["devops","workflows","docker","testing"]
+prereqs: ["testing.md"]
+complexity: "beginner"
+---
+
 # Skill: Development Workflows
 
 ## Context

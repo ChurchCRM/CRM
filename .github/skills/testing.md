@@ -1,3 +1,11 @@
+---
+title: "Testing"
+intent: "Guidance for Cypress, unit/integration tests, and test workflows"
+tags: ["testing","cypress","ci"]
+prereqs: ["cypress-testing.md"]
+complexity: "intermediate"
+---
+
 # Skill: Testing with Cypress
 
 ## Context

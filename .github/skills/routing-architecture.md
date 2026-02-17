@@ -1,3 +1,11 @@
+---
+title: "Routing & Project Architecture"
+intent: "Organization patterns for routes, modules, and menus"
+tags: ["routing","architecture","mvc","admin","api"]
+prereqs: ["slim-4-best-practices.md"]
+complexity: "intermediate"
+---
+
 # Routing & Project Architecture
 
 Guide to organizing code in ChurchCRM across API routes, admin pages, and the finance module.

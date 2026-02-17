@@ -1,11 +1,10 @@
-# Skill: Admin MVC Module Migration
-
-## Context
-This skill covers migrating legacy PHP pages to the modern Admin MVC structure with Slim 4 routing.
-
-## File Organization
-
-- **Views**: `src/admin/views/[feature].php` - Use PhpRenderer for clean separation
+---
+title: "Admin MVC Module Migration"
+intent: "Patterns and steps to migrate legacy pages into the Admin MVC structure"
+tags: ["admin","mvc","migration","slim"]
+prereqs: ["service-layer.md","php-best-practices.md"]
+complexity: "intermediate"
+---
 - **Routes**: `src/admin/routes/[feature].php` - Define route endpoints
 - **APIs**: `src/admin/routes/api/[feature-api].php` - Admin API endpoints
 - **Services**: `src/ChurchCRM/Service/[Feature]Service.php` - Business logic (shared with APIs)

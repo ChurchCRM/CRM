@@ -1,3 +1,11 @@
+---
+title: "Performance Optimization & Best Practices"
+intent: "Patterns for improving query performance, caching, and frontend optimization"
+tags: ["performance","database","caching"]
+prereqs: ["database-operations.md","service-layer.md"]
+complexity: "advanced"
+---
+
 # Performance Optimization & Best Practices
 
 This skill documents performance patterns verified in the ChurchCRM codebase and best practices from code/web research.

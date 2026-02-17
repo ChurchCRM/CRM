@@ -1,3 +1,11 @@
+---
+title: "Bootstrap & AdminLTE Patterns"
+intent: "UI component and layout guidance using Bootstrap 4.6.2 and AdminLTE"
+tags: ["frontend","bootstrap","adminlte","ui"]
+prereqs: ["frontend-development.md"]
+complexity: "beginner"
+---
+
 # Skill: Bootstrap 4.6.2 & AdminLTE v3.2.0
 
 ## Context

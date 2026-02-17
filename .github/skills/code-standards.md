@@ -1,3 +1,11 @@
+---
+title: "Code Standards"
+intent: "Coding conventions, PR checklist, and pre-commit guidance"
+tags: ["standards","code-quality","pr"]
+prereqs: ["php-best-practices.md"]
+complexity: "beginner"
+---
+
 # Skill: Code Standards & Quality
 
 ## Context

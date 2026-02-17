@@ -1,3 +1,11 @@
+---
+title: "PHP Best Practices"
+intent: "Project-wide PHP conventions, Perpl ORM rules, and service-layer patterns"
+tags: ["php","perpl","service-layer","security"]
+prereqs: []
+complexity: "intermediate"
+---
+
 # Skill: PHP Best Practices
 
 ## Context

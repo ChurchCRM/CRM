@@ -3,6 +3,14 @@
 ## Context
 ChurchCRM uses Webpack to bundle frontend JavaScript/TypeScript and CSS. This skill covers entry points, API utilities, type safety, and best practices for building modern webpack modules.
 
+**Verified versions in this repo (package.json):**
+- `react` 19.2.4
+- `react-dom` 19.2.4
+- `typescript` 5.9.3
+- `webpack` 5.105.2
+- `webpack-cli` 6.0.1
+- `ts-loader` 9.5.4
+
 ---
 
 ## Critical Issue: Window.CRM Initialization Timing
