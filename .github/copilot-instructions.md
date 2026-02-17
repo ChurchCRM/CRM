@@ -1,8 +1,10 @@
-# ChurchCRM — AI Coding Agent (concise)
+# ChurchCRM — AI Coding Agent Instructions
 
-Purpose: Keep guidance compact. Follow these core rules when editing the repo.
+This document provides comprehensive conventions, standards, and patterns for developing on ChurchCRM.
 
-Stack (short)
+---
+
+## Core Stack
 - PHP 8.3+
 - Perpl ORM (actively maintained fork of Propel2 - use Query classes, never raw SQL)
 - Slim 4 (API routes)
@@ -34,35 +36,9 @@ Locale rebuild reminder (CRITICAL for agents)
 - After locale:build, run `npm run build` to regenerate frontend translation assets
 - Commit the updated `locale/terms/messages.po` along with your code changes
 
-Routing & middleware
-- Put API routes in `src/api/routes/` and legacy pages in `src/*.php`.
-- **Admin System Pages** (consolidated at `/admin/system/`):
-  - Routes in `src/admin/routes/system.php`
-  - Views in `src/admin/views/` with PhpRenderer
-  - Examples: `/admin/system/debug`, `/admin/system/backup`
-  - Add menu entries in `src/ChurchCRM/Config/Menu/Menu.php`
-  - Use AdminRoleAuthMiddleware for security
-- **Admin APIs**: Place in `src/admin/routes/api/` (NOT in `src/api/routes/system/`)
-  - Example: `orphaned-files.php` contains `/admin/api/orphaned-files/delete-all` endpoint
-  - Routes are prefixed with `/admin/api/` when accessed from frontend
-  - Use kebab-case for endpoint names (e.g., `/delete-all`)
-  - AdminRoleAuthMiddleware is applied at the router level
-- **Finance Module** (consolidated at `/finance/`):
-  - Entry point: `src/finance/index.php` with Slim 4 app
-  - Routes in `src/finance/routes/` (dashboard.php, reports.php)
-  - Views in `src/finance/views/` with PhpRenderer
-  - Examples: `/finance/` (dashboard), `/finance/reports`
-  - Use FinanceRoleAuthMiddleware for security (allows admin OR finance permission)
-  - Menu entry in `src/ChurchCRM/Config/Menu/Menu.php` under "Finance"
-- **Deprecated locations** (DO NOT USE):
-  - `src/v2/routes/admin/` - REMOVED (admin routes consolidated to `/admin/system/`)
-  - `src/api/routes/system/` - Legacy admin APIs (no new files here)
-- Middleware order (CRITICAL - Slim 4 uses LIFO):
-    1. addBodyParsingMiddleware()
-    2. addRoutingMiddleware()
-    3. add(CorsMiddleware)          // Last added, runs FIRST
-    4. add(AuthMiddleware)          // Runs SECOND
-    5. add(VersionMiddleware)       // First added, runs LAST
+Routing & project organization
+- See [Skill: Routing & Project Architecture](./skills/routing-architecture.md) for routes organization (API, Admin, Finance, Plugins, menus)
+- See [Skill: Slim 4 Best Practices](./skills/slim-4-best-practices.md) for middleware patterns, application setup, error handling
 
 ## RedirectUtils (Security & Navigation)
 
@@ -113,6 +89,15 @@ if ($person === null) {
 - `header('Location: ...')` directly (bypasses root path handling)
 - `header('Location: ' . SystemURLs::getRootPath() . ...)` (RedirectUtils does this automatically)
 - Unhandled exception throws for access denied (use security redirects)
+
+**For detailed PHP patterns**, see [Skill: PHP Best Practices](./skills/php-best-practices.md) including:
+- PHP 8.3+ requirements and standards
+- Import statements and namespacing
+- Perpl ORM Query methods and patterns
+- Service layer architecture
+- Authorization and security patterns
+- File inclusion (require vs include)
+- Logging standards with LoggerUtils
 
 API & naming
 - Prefer kebab-case endpoints for upgrade/system routes (e.g. `/download-latest-release`).
@@ -433,18 +418,12 @@ For admin pages that display system settings:
 
 ---
 
-## Asset Paths (SystemURLs)
-
-ALWAYS use SystemURLs::getRootPath() for asset references:
-
-```php
-// CORRECT
-<link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/churchcrm.min.css">
-<img src="<?= SystemURLs::getRootPath() ?>/images/logo.png">
-
-// WRONG - Relative paths break in subdirectories
-<link rel="stylesheet" href="/skin/v2/churchcrm.min.css">
-```
+**For configuration, asset paths, and settings management**, see [Skill: Configuration Management](./skills/configuration-management.md) including:
+- SystemConfig methods for reading/setting system configuration
+- Boolean configuration with `getBooleanValue()`
+- Asset paths using `SystemURLs::getRootPath()`
+- Settings panels with dynamic form generation
+- Admin UI patterns for configuration pages
 
 ---
 
@@ -501,43 +480,12 @@ class MyClass {
 
 ---
 
-## HTML Sanitization & XSS Protection
-
-**Use `InputUtils` for all HTML/text handling** - Located in `src/ChurchCRM/Utils/InputUtils.php`
-
-Four core methods for security:
-
-1. **`sanitizeText($input)`** - Plain text, removes ALL HTML tags
-   - Use for: Names, descriptions, social media handles
-   - Example: `$person->setFirstName(InputUtils::sanitizeText($_POST['firstName']))`
-
-2. **`sanitizeHTML($input)`** - Rich text with XSS protection (HTML Purifier)
-   - Use for: User-provided HTML content (event descriptions, Quill editor)
-   - Allows safe tags: `<a><b><i><u><h1-h6><pre><img><table><p><blockquote><div><code>` etc.
-   - Blocks dangerous: `<script><iframe><embed><form><style><meta>`
-   - Example: `$event->setDesc(InputUtils::sanitizeHTML($sEventDesc))`
-
-3. **`escapeHTML($input)`** - Output escaping for HTML body content
-   - Automatically handles `stripslashes()` for magic quotes
-   - Use for: Displaying database/user values in HTML
-   - Example: `<?= InputUtils::escapeHTML($person->getFirstName()) ?>`
-
-4. **`escapeAttribute($input)`** - Output escaping for HTML attributes
-   - Same security as `escapeHTML()` (uses `ENT_QUOTES`)
-   - Use for: Values in HTML attributes or form fields
-   - Example: `<input value="<?= InputUtils::escapeAttribute($address) ?>">`
-
-5. **`sanitizeAndEscapeText($input)`** - Combined plain text sanitization + output escape
-   - Use for: Untrusted user input that must be plain text and escaped
-   - Example: `$data[$key] = InputUtils::sanitizeAndEscapeText($userSubmittedValue)`
-
-**CRITICAL Security Rules:**
-- ❌ NEVER use `htmlspecialchars()` or `htmlentities()` directly
-- ❌ NEVER use `ENT_NOQUOTES` flag (doesn't escape quotes in attributes)
-- ❌ NEVER use `stripslashes()` directly (let InputUtils handle it)
-- ✅ ALWAYS use InputUtils methods for all HTML/text handling
-- ✅ ALWAYS use `escapeAttribute()` for form input values
-- ✅ ALWAYS use `sanitizeHTML()` for rich text editors (Quill)
+**Use `InputUtils` for all HTML/text handling** — see [Skill: Security Best Practices](./skills/security-best-practices.md) for comprehensive HTML sanitization, XSS protection, authorization patterns, SQL injection prevention, TLS/SSL verification, and CVE handling guidelines. Includes:
+- Sanitization methods: `sanitizeText()`, `sanitizeHTML()`, `sanitizeAndEscapeText()`
+- Output escaping: `escapeHTML()`, `escapeAttribute()`
+- Security patterns with examples and decision trees
+- Authorization: role-based and object-level permission checks
+- API error handling with `SlimUtils::renderErrorJSON()`
 
 ---
 
@@ -844,128 +792,23 @@ $app->add(new Cache('public', 3600));
 
 ---
 
-## HTML & CSS
-
-**Bootstrap Version: 4.6.2** - NEVER use Bootstrap 5 classes!
-
-Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes or Bootstrap 5 classes:
-
-```php
-// CORRECT - Bootstrap 4.6.2 classes
-<div class="text-center align-top">Content</div>
-<button class="btn btn-primary btn-block">Full Width Button</button>
-<div class="btn-group btn-group-sm d-flex" role="group">
-    <a class="btn btn-outline-primary flex-fill">Button 1</a>
-    <a class="btn btn-outline-primary flex-fill">Button 2</a>
-</div>
-
-// WRONG - Bootstrap 5 classes (DO NOT USE!)
-<button class="btn btn-primary w-100">Button</button>  // Use btn-block instead
-<div class="d-flex flex-wrap gap-2">Content</div>      // gap- is Bootstrap 5 only
-<div class="d-grid gap-3">Content</div>               // d-grid is Bootstrap 5 only
-
-// WRONG - Deprecated HTML attributes  
-<div align="center" valign="top">Content</div>
-<button style="margin-top: 12px;">Click</button>
-```
-
-**Bootstrap 5 Classes to AVOID:**
-- `w-100` on buttons (use `btn-block`)
-- `gap-*` utilities (use margins/padding instead)
-- `d-grid` (use `d-flex` or Bootstrap 4 grid)
-- `text-decoration-*` (use existing classes)
-- `fw-*` and `fs-*` font utilities
-- `rounded-*` beyond Bootstrap 4 values
-- `justify-content-*` with `gap-*` (gap is Bootstrap 5 only)
-- `flex-wrap` with `gap-*` (use proper spacing classes instead)
+**For Bootstrap 4.6.2 & AdminLTE v3.2.0 component patterns**, see [Skill: Bootstrap 4.6.2 & AdminLTE v3.2.0](./skills/bootstrap-adminlte.md) including:
+- Grid system and responsive breakpoints
+- Small boxes for dashboards
+- Card components with collapse and tools
+- Data tables and badges
+- Utility classes (display, spacing, flexbox)
+- Bootstrap 5 compatibility warnings
 
 ---
 
-## Internationalization (i18n)
-
-CRITICAL: Always wrap user-facing text for translation.
-
-JavaScript:
-```javascript
-window.CRM.notify(i18next.t('Operation completed'), {
-    type: 'success',
-    delay: 3000
-});
-```
-
-PHP:
-```php
-echo gettext('Welcome to ChurchCRM');
-```
-
-NEVER use alert() - only use window.CRM.notify() with Notyf:
-```javascript
-// WRONG
-alert('Operation completed');
-
-// CORRECT
-window.CRM.notify(i18next.t('Operation completed'), {
-    type: 'success',
-    delay: 3000
-});
-```
-
-### i18n Term Consolidation Patterns (Reduce Localization Burden)
-
-To reduce translator burden across 45+ languages, **consolidate compound terms into reusable components**.
-
-**Delete Confirmation Pattern:**
-- ❌ WRONG: `gettext('Family Delete Confirmation')`, `gettext('Note Delete Confirmation')`, etc. (7+ variants = 7 translations per language)
-- ✅ CORRECT: `gettext('Delete Confirmation') . ': ' . gettext('Family')`
-- **Reduces**: 7 variants → 1 term + type names (reduces translator workload)
-- **Usage**: In deletion confirmation pages (NoteDelete.php, PropertyDelete.php, etc.)
-- **Example**:
-  ```php
-  $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Note');
-  ```
-
-**Add New Pattern:**
-- ❌ WRONG: `gettext('Add New Field')`, `gettext('Add New Fund')`, `gettext('Add New User')`, etc. (16+ variants per language)
-- ✅ CORRECT: `gettext('Add New') . ' ' . gettext('Field')`
-- **Reduces**: 16+ variants → 1 "Add New" term + reuse type names (significant translator workload reduction)
-- **Usage**: Button labels, page titles, form headers
-- **Examples**:
-  ```php
-  // Button value
-  <input type="submit" value="<?= gettext('Add New') . ' ' . gettext('Fund') ?>" />
-  
-  // Page title
-  <h3><?= gettext('Add New') . ' ' . gettext('Group') ?></h3>
-  
-  // Card header
-  <?= gettext('Add New') . ' ' . gettext('Field') ?>
-  ```
-
-**Exception**: Menu items with consistent patterns (e.g., "Add New Person", "Add New Family") may stay unified for clarity.
-
-**General Consolidation Principles:**
-1. **Identify compound terms**: Look for "[Action] [Type]" or "[Type] [Action]" patterns
-2. **Split into components**: Translate action/type separately when repeated 2+ times
-3. **Reuse type names**: If "Person", "Family", "Group" are standalone translation terms, reuse them
-4. **Test rebuilds**: Always run `npm run locale:build` to verify consolidation
-5. **Reduce total terms**: Every term consolidated = 45 fewer translations needed (45 languages)
-
-**When NOT to Consolidate:**
-- Unique terms with only 1 usage → Keep as-is
-- Idiomatic phrases that don't split naturally → Keep as-is
-- Menu items with consistent naming → May keep unified for UX consistency
-
-**Before Adding New Terms:**
-- Check `locale/messages.po` for similar existing terms
-- Look for opportunities to reuse existing terms instead of creating new ones
-- Example: Instead of `"Add New Sponsor"`, use `gettext('Add New') . ' ' . gettext('Sponsor')`
-
-**Locale Rebuild Workflow:**
-After consolidating terms:
-```bash
-npm run locale:build   # Regenerate messages.po and .json files
-npm run build          # Rebuild frontend bundles with new terms
-```
+**For internationalization and localization best practices**, see [Skill: i18n & Localization Best Practices](./skills/i18n-localization.md) including:
+- Terminology conventions (`People` not `Persons`, `Active/Inactive`)
+- Term consolidation to reduce translation burden (saves 300+ translations)
+- Locale rebuild workflow (`npm run locale:build` after adding new terms)
+- PHP using `gettext()` and JavaScript using `i18next.t()`
+- User-facing i18n patterns and notification handling
+- Translation file management and consolidation examples
 
 ---
 
@@ -1023,49 +866,13 @@ fetch(window.CRM.root + '/admin/api/system/config/settingName', {
 - `window.CRM.APIRequest()` for `/api/` endpoints
 - Native `fetch()` is also acceptable for modern code
 
-## Webpack TypeScript API Utilities
-
-**For all new webpack TypeScript bundles, use the `webpack/api-utils.ts` helper module.** This ensures consistent, safe API URL construction across webpack modules.
-
-**Critical Issue:** Webpack bundles load **before** `window.CRM` is initialized. Therefore:
-- ❌ **DON'T** assign `window.CRM.root` in constructors (too early, undefined)
-- ✅ **DO** use `api-utils.ts` functions which evaluate at runtime
-
-**Available Functions:**
-
-```typescript
-import { buildAPIUrl, buildAdminAPIUrl, fetchAPIJSON } from './api-utils';
-
-// URL construction (safe - evaluated at runtime)
-const url = buildAPIUrl('person/123/avatar');           // → '/api/person/123/avatar'
-const adminUrl = buildAdminAPIUrl('system/config/key'); // → '/admin/api/system/config/key'
-
-// Fetch with automatic error handling
-const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
-
-// With fetch options
-const response = await fetchAPI('person/123/photo', {
-    method: 'DELETE'
-});
-```
-
-**API Functions:**
-- `getRootPath()` - Get `window.CRM.root` dynamically
-- `buildAPIUrl(path)` - Build `/api/` endpoint URL
-- `buildAdminAPIUrl(path)` - Build `/admin/api/` endpoint URL
-- `fetchAPI(path, options)` - Fetch with error logging
-- `fetchAPIJSON<T>(path, options)` - Fetch and parse JSON (recommended)
-- `fetchAdminAPI(path, options)` - Admin API fetch variant
-- `fetchAdminAPIJSON<T>(path, options)` - Admin API JSON variant
-
-**Examples in codebase:**
-- `webpack/avatar-loader.ts` - Uses `buildAPIUrl()` for URL construction
-- `webpack/photo-utils.ts` - Uses `buildAPIUrl()` as fallback
-- See `webpack/API_UTILITIES.md` for full documentation
-
-**Migration from old patterns:**
-- Old: `${(window as any).CRM.root}/api/...` → New: `buildAPIUrl('...')`
-- Old: `window.CRM.APIRequest()` → New: `fetchAPIJSON()` (modern, async/await)
+**For Webpack TypeScript bundling**, see [Skill: Webpack & TypeScript](./skills/webpack-typescript.md) including:
+- Critical window.CRM timing issues and solutions
+- API utilities functions (buildAPIUrl, fetchAPIJSON, etc.)
+- Entry point patterns for JavaScript, TypeScript, React
+- Type-safe fetch patterns with generics
+- CSS organization and tree shaking
+- Best practices to avoid common errors
 
 ---
 
@@ -1255,374 +1062,27 @@ cat src/logs/$(date +%Y-%m-%d)-app.log      # App events
 
 ---
 
-## Commit & PR Standards
-
-**Commit Message Format:**
-- Imperative mood, < 72 chars for subject line
-- Examples: "Fix validation in Checkin form", "Replace deprecated HTML attributes with Bootstrap CSS", "Add missing element ID for test selector"
-- Wrong: "Fixed the bug in src/EventEditor.php" (not imperative, includes file paths)
-- Include issue number when applicable: "Fix issue #7698: Replace Bootstrap 5 classes with BS4"
-
-**PR Organization:**
-- Create feature branches: `fix/issue-NUMBER-description` or `feature/description`
-- One issue per branch - do not mix fixes for different issues
-- Keep commits small and focused
-- Each PR addresses one specific bug or feature
-- Related but separate concerns get separate branches
-- Test each branch independently before creating PR
+**For detailed Git workflow, commits, PRs, and pre-commit validation**, see [Skill: Git Workflow & Development Standards](./skills/git-workflow.md) including:
+- Branch naming conventions and lifecycle
+- Commit message format (imperative, < 72 chars)
+- Multi-line commit messages
+- Pull request organization and description format
+- Pre-commit validation checklist (23 items)
+- Agent-specific commit behaviors
+- Troubleshooting common git issues
 
 ---
 
-## Pre-commit Checklist
-
-Before committing code changes, verify:
-
-- [ ] PHP syntax validation passed (npm run build:php)
-- [ ] Propel ORM used for all database operations (no raw SQL)
-- [ ] Asset paths use SystemURLs::getRootPath()
-- [ ] Service classes used for business logic
-- [ ] Type casting applied to dynamic values (`(int)`, `(string)`, etc.)
-- [ ] Critical files use `require` not `include` (Header.php, Footer.php)
-- [ ] Deprecated HTML attributes replaced with CSS
-- [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
-- [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
-- [ ] No alert() calls - use window.CRM.notify() instead
-- [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
-- [ ] Use RedirectUtils for redirects (not manual header/withHeader)
-- [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)
-- [ ] TLS verification enabled by default for HTTPS requests
-- [ ] No O(N*M) algorithms - use hash-based lookups for set membership
-- [ ] **If new gettext() strings added**: Run `npm run locale:build` to extract terms
-- [ ] Tests pass (if available) - run relevant tests before committing
-- [ ] Commit message follows imperative mood (< 72 chars, no file paths)
-- [ ] Branch name follows kebab-case format
-- [ ] Logs cleared before testing: rm -f src/logs/$(date +%Y-%m-%d)-*.log
-
----
-
-## Plugin System
-
-ChurchCRM uses a WordPress-style plugin architecture for extensibility. Plugins can add functionality without modifying core code.
-
-### Plugin Architecture
-
-**Core Files** (`src/ChurchCRM/Plugin/`):
-- `PluginManager.php` - Discovery, loading, activation, route registration (static class)
-- `AbstractPlugin.php` - Base class with sensible defaults
-- `PluginInterface.php` - Contract all plugins must implement
-- `PluginMetadata.php` - Data class for plugin.json manifest parsing
-- `Hooks.php` - Constants for available hook points
-
-**Hook System** (`src/ChurchCRM/Plugin/Hook/`):
-- `HookManager.php` - WordPress-style actions & filters
-
-### Plugin Location
-
-| Type | Path | Description |
-|------|------|-------------|
-| Core | `src/plugins/core/{plugin-name}/` | Shipped with ChurchCRM |
-| Community | `src/plugins/community/{plugin-name}/` | Third-party extensions |
-| Management | `src/plugins/routes/`, `src/plugins/views/` | Admin UI for managing plugins |
-
-### Plugin Structure
-
-Each plugin requires this structure:
-```
-src/plugins/core/{plugin-name}/
-├── plugin.json           # Manifest (required)
-├── src/
-│   └── {PluginName}Plugin.php  # Main class extending AbstractPlugin
-├── routes/
-│   └── routes.php        # MVC & API routes (optional)
-├── views/
-│   └── *.php             # View templates (optional)
-└── help.json             # User documentation (optional)
-```
-
-### plugin.json Manifest
-
-```json
-{
-    "id": "mailchimp",
-    "name": "MailChimp Integration",
-    "description": "Sync contacts with MailChimp mailing lists",
-    "version": "1.0.0",
-    "author": "ChurchCRM Team",
-    "authorUrl": "https://churchcrm.io",
-    "type": "core",
-    "minimumCRMVersion": "7.0.0",
-    "mainClass": "ChurchCRM\\Plugins\\MailChimp\\MailChimpPlugin",
-    "dependencies": [],
-    "settingsUrl": null,
-    "routesFile": "routes/routes.php",
-    "settings": [
-        {
-            "key": "apiKey",
-            "label": "API Key",
-            "type": "password",
-            "required": true,
-            "help": "Get from MailChimp settings"
-        }
-    ],
-    "menuItems": [
-        {
-            "parent": "email",
-            "label": "MailChimp Dashboard",
-            "url": "/plugins/mailchimp/dashboard",
-            "icon": "fa-brands fa-mailchimp",
-            "permission": "bEmailMailto"
-        }
-    ],
-    "hooks": ["person.created", "person.updated", "person.deleted"]
-}
-```
-
-### Creating a Plugin
-
-1. **Create plugin directory**: `src/plugins/core/{plugin-name}/`
-2. **Create plugin.json** with required fields
-3. **Create main class** extending `AbstractPlugin`:
-
-```php
-<?php
-namespace ChurchCRM\Plugins\MyPlugin;
-
-use ChurchCRM\Plugin\AbstractPlugin;
-
-class MyPluginPlugin extends AbstractPlugin
-{
-    private static ?MyPluginPlugin $instance = null;
-
-    public function __construct(string $basePath = '')
-    {
-        parent::__construct($basePath);
-        self::$instance = $this;
-    }
-
-    public static function getInstance(): ?MyPluginPlugin
-    {
-        return self::$instance;
-    }
-
-    public function getId(): string { return 'my-plugin'; }
-    public function getName(): string { return 'My Plugin'; }
-    public function getDescription(): string { return 'Description here'; }
-
-    public function boot(): void
-    {
-        // Initialize services, register hooks
-    }
-
-    public function isConfigured(): bool
-    {
-        // Check if required settings have values
-        return !empty($this->getConfigValue('apiKey'));
-    }
-
-    public function getConfigurationError(): ?string
-    {
-        if (!$this->isConfigured()) {
-            return gettext('API Key is required');
-        }
-        return null;
-    }
-
-    public function getMenuItems(): array
-    {
-        return [
-            [
-                'parent' => 'admin',
-                'label' => gettext('My Plugin'),
-                'url' => 'plugins/my-plugin/dashboard',
-                'icon' => 'fa-plug',
-            ],
-        ];
-    }
-
-    public function getSettingsSchema(): array
-    {
-        return [
-            [
-                'key' => 'apiKey',
-                'label' => gettext('API Key'),
-                'type' => 'password',
-                'required' => true,
-            ],
-        ];
-    }
-}
-```
-
-### Plugin Routes (routes/routes.php)
-
-Routes are only loaded when the plugin is active. Use the singleton pattern:
-
-```php
-<?php
-use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Plugins\MyPlugin\MyPluginPlugin;
-use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestInterface as Request;
-use Slim\Routing\RouteCollectorProxy;
-use Slim\Views\PhpRenderer;
-
-$plugin = MyPluginPlugin::getInstance();
-if ($plugin === null) {
-    return; // Safety check
-}
-
-// MVC Route (returns HTML)
-$app->get('/my-plugin/dashboard', function (Request $request, Response $response) use ($plugin): Response {
-    $renderer = new PhpRenderer(__DIR__ . '/../views/');
-    return $renderer->render($response, 'dashboard.php', [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('My Plugin Dashboard'),
-        'data' => $plugin->getData(),
-    ]);
-});
-
-// API Routes (return JSON)
-$app->group('/my-plugin/api', function (RouteCollectorProxy $group) use ($plugin): void {
-    $group->get('/items', function (Request $request, Response $response) use ($plugin): Response {
-        return SlimUtils::renderJSON($response, ['data' => $plugin->getItems()]);
-    });
-});
-```
-
-### Plugin Config Access (Sandboxed)
-
-Plugins can only access their own config keys (prefixed with `plugin.{id}.`):
-
-```php
-// In your plugin class (extends AbstractPlugin)
-$apiKey = $this->getConfigValue('apiKey');     // Gets plugin.my-plugin.apiKey
-$enabled = $this->getBooleanConfigValue('enabled');
-$this->setConfigValue('lastSync', date('c'));  // Sets plugin.my-plugin.lastSync
-```
-
-### Using PluginManager (Static Methods)
-
-```php
-use ChurchCRM\Plugin\PluginManager;
-
-// Initialize (done once in src/plugins/index.php)
-PluginManager::init($pluginsPath);
-
-// Check plugin status
-$isActive = PluginManager::isPluginActive('mailchimp');
-
-// Get plugin instance
-$plugin = PluginManager::getPlugin('mailchimp');
-if ($plugin !== null && $plugin->isConfigured()) {
-    $result = $plugin->doSomething();
-}
-
-// Get all plugins for admin UI
-$plugins = PluginManager::getAllPlugins();
-
-// Enable/disable plugins
-PluginManager::enablePlugin('mailchimp');
-PluginManager::disablePlugin('mailchimp');
-```
-
-**CRITICAL**: `PluginManager` is a static class. Never call `PluginManager::getInstance()` - it doesn't exist.
-
-### Slim Entry Point Configuration (plugins/index.php)
-
-Plugin entry points create their own Slim app instance. Configure error middleware properly:
-
-```php
-// CORRECT - Config-driven error display
-$displayErrors = SystemConfig::debugEnabled();
-$app->addErrorMiddleware($displayErrors, true, true)
-    ->setDefaultErrorHandler(function (Request $request, Throwable $exception) use ($app): Response {
-        $response = $app->getResponseFactory()->createResponse();
-        return SlimUtils::renderErrorJSON(
-            $response, 
-            gettext('An error occurred'), 
-            [], 
-            500, 
-            $exception, 
-            $request
-        );
-    });
-
-// WRONG - Always exposes error details (security risk in production)
-$app->addErrorMiddleware(true, true, true);  // ❌ Hardcoded true exposes exceptions
-
-// WRONG - Throws exception which leaks info to client
-throw new HttpNotFoundException($request);  // ❌ Use SlimUtils::renderErrorJSON instead
-```
-
-**Guidelines:**
-- **Use `SystemConfig::debugEnabled()`** to control `displayErrorDetails` parameter
-- **Set custom error handler** that uses `SlimUtils::renderErrorJSON()` for sanitized responses
-- **Never throw HTTP exceptions in API routes** - always catch and return sanitized JSON errors
-
-### Plugin URL Structure
-
-| URL Pattern | Purpose |
-|-------------|---------|
-| `/plugins/management` | Admin UI for managing plugins |
-| `/plugins/management/{pluginId}` | Redirects to management with plugin expanded |
-| `/plugins/api/plugins` | API: List all plugins |
-| `/plugins/api/plugins/{id}/enable` | API: Enable plugin |
-| `/plugins/api/plugins/{id}/disable` | API: Disable plugin |
-| `/plugins/api/plugins/{id}/settings` | API: Update settings |
-| `/plugins/{plugin-name}/*` | Plugin-specific routes |
-
-### Available Hooks
-
-Defined in `src/ChurchCRM/Plugin/Hooks.php`:
-
-**Person**: `PERSON_PRE_CREATE`, `PERSON_CREATED`, `PERSON_PRE_UPDATE`, `PERSON_UPDATED`, `PERSON_DELETED`, `PERSON_VIEW_TABS`
-
-**Family**: `FAMILY_PRE_CREATE`, `FAMILY_CREATED`, `FAMILY_PRE_UPDATE`, `FAMILY_UPDATED`, `FAMILY_DELETED`, `FAMILY_VIEW_TABS`
-
-**Financial**: `DONATION_RECEIVED`, `DEPOSIT_CLOSED`
-
-**Events**: `EVENT_CREATED`, `EVENT_CHECKIN`, `EVENT_CHECKOUT`
-
-**Groups**: `GROUP_MEMBER_ADDED`, `GROUP_MEMBER_REMOVED`
-
-**Email**: `EMAIL_PRE_SEND`, `EMAIL_SENT`
-
-**UI/Menu**: `MENU_BUILDING`, `DASHBOARD_WIDGETS`, `SETTINGS_PANELS`, `ADMIN_PAGE`
-
-**System**: `SYSTEM_INIT`, `SYSTEM_UPGRADED`, `CRON_RUN`, `API_RESPONSE`
-
-### Registering Hooks
-
-```php
-use ChurchCRM\Plugin\Hook\HookManager;
-use ChurchCRM\Plugin\Hooks;
-
-public function boot(): void
-{
-    HookManager::addAction(Hooks::PERSON_UPDATED, [$this, 'onPersonUpdated']);
-    HookManager::addAction(Hooks::GROUP_MEMBER_ADDED, [$this, 'onGroupMemberAdded']);
-}
-
-public function onPersonUpdated($person, array $oldData): void
-{
-    if (!$this->isActive()) {
-        return;
-    }
-    // Handle person update
-}
-```
-
-### Core Plugins Reference
-
-| Plugin | Description | Has Routes | Has Views |
-|--------|-------------|-----------|-----------|
-| `custom-links` | Custom external links in navigation menu | ✅ | ✅ |
-| `external-backup` | WebDAV cloud backup (NextCloud, ownCloud, etc.) | ✅ | ✅ |
-| `mailchimp` | MailChimp email list integration | ✅ | ✅ |
-| `gravatar` | Gravatar profile photos | ❌ | ❌ |
-| `google-analytics` | GA4 tracking code injection | ❌ | ❌ |
-| `openlp` | OpenLP projector integration | ❌ | ❌ |
-| `vonage` | Vonage SMS notifications | ❌ | ❌ |
+**For comprehensive plugin development**, see [Skill: Plugin System & Extensibility](./skills/plugin-system.md) including:
+- Plugin architecture and file organization
+- Creating plugin.json manifest files
+- AbstractPlugin class and plugin lifecycle
+- Hook system with 15+ available hooks (Person, Family, Financial, Events, Groups, Email, UI/Menu, System)
+- PluginManager static methods for plugin discovery and activation
+- Plugin configuration sandbox and settings management
+- Slim entry point error handling for plugin entry points
+- URL routing patterns and plugin-specific routes
+- Core plugins reference (7 built-in plugins)
 
 ---
 
@@ -1847,5 +1307,3 @@ This ensures security vulnerabilities are not publicly disclosed and directs rep
 ---
 
 Last updated: January 31, 2026
-
-```
