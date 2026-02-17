@@ -238,3 +238,9 @@ This ensures security vulnerabilities are not publicly disclosed and directs rep
 **Input Sanitization:** `src/ChurchCRM/Utils/InputUtils.php`
 **Security Policy:** `SECURITY.md`
 **Issue Templates:** `.github/issue-comments/security.md`
+
+## Related Skills
+
+- [Security Best Practices](./security-best-practices.md) - HTML sanitization, XSS protection, TLS/SSL verification, API error handling, CVE vulnerability handling
+- [Code Standards](./code-standards.md) - General code quality and standards
+- [API Development](./api-development.md) - API error handling and security response patterns
