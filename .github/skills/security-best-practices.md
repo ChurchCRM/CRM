@@ -505,6 +505,7 @@ Before committing security fixes:
 
 ## Related Skills
 
+- [Authorization & Security](./authorization-security.md) - Permission checks, authorization redirect patterns, User class methods
 - [PHP Best Practices](./php-best-practices.md) - Service layer, logging, ORM patterns
 - [Git Workflow](./git-workflow.md) - Pre-commit validation checklist
 - [Configuration Management](./configuration-management.md) - Secure config handling
