@@ -1,6 +1,12 @@
-# Modern PHP 8.3+ & Framework Best Practices
+# Modern PHP 8.4+ & Framework Best Practices
 
-This skill consolidates verified best practices from PHP.net, OWASP, Slim 4 framework docs, and Perpl ORM documentation.
+ChurchCRM requires PHP >=8.4 (defined in composer.json) with the following framework stack:
+- **PHP**: >=8.4 (required, composer.json)
+- **Perpl ORM**: ^2.6.0 (actively maintained Propel2 fork)
+- **Slim Framework**: ^4.15.0 (PSR-7/PSR-15 compliant)
+- **Monolog**: ^3.10.0 (structured logging)
+
+This skill consolidates verified best practices from PHP.net, OWASP, Slim 4 docs, and Perpl ORM documentation.
 
 ## PHP 8.3+ Security Hardening
 
