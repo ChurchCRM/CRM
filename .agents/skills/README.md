@@ -1,30 +1,27 @@
 # ChurchCRM Development Skills
 
-⚠️ **Skills have been moved to [.agents/skills/](../../.agents/skills/)** for optimal agent discovery.
+This directory contains modular, task-focused development skills for AI coding agents working on ChurchCRM. Each skill covers a specific workflow or technical area, making it easier to understand and apply best practices without needing to reference a massive single document.
 
-This directory now serves as a human-friendly index. All skill files are in `.agents/skills/` and committed to git for agent access on every clone.
+## Why Skills?
 
-## Where to Find Skills
+The original [copilot-instructions.md](../copilot-instructions.md) was a comprehensive 1800+ line document. Breaking it into focused skills provides several benefits:
 
-- **For AI agents:** [.agents/skills/](../../.agents/skills/) — all modular skills readable by agent frameworks
-- **For humans:** Same `.md` files in `.agents/skills/` — use for reference, learning, and code reviews
-- **Agent entry point:** [.github/copilot-instructions.md](../copilot-instructions.md) — pointer to skills and workflow guide
-
-## Why Split into Skills?
-
-1. **Easier to navigate** - Find exactly what you need for your task
-2. **Better context loading** - Agents load only relevant skills (e.g., API dev doesn't load plugin-system)
+1. **Easier to navigate** - Find exactly what you need without scrolling through thousands of lines
+2. **Better context loading** - AI agents can load only relevant skills for the task at hand
 3. **Clearer organization** - Each skill is self-contained with all necessary context
 4. **Easier to maintain** - Update specific skills without affecting others
-5. **Agent-first** - Stored in `.agents/skills/` for automatic discovery by agent runtimes
+5. **No context loss** - All original guidance preserved, just better organized
 
 ## Available Skills
 
-**All skills are in [.agents/skills/](../../.agents/skills/). Here's a quick index:**
-
-### 1. Database Operations
+### 1. [Database Operations](./database-operations.md)
 **When to use:** Any database access, ORM queries, or data persistence
-See [.agents/skills/database-operations.md](../../.agents/skills/database-operations.md)
+
+- Perpl ORM (fork of Propel2) patterns and critical differences
+- Method naming conventions and how to find correct query methods
+- withColumn() usage with TableMap constants
+- Common migration patterns from raw SQL to ORM
+- Method override signatures and lifecycle hooks
 
 ### 2. [API Development](./api-development.md)
 **When to use:** Creating/modifying REST API endpoints, handling API requests
