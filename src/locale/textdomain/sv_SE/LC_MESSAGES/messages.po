@@ -3412,10 +3412,6 @@ msgid "Email Export"
 msgstr "E-postexport"
 
 #: 
-msgid "List"
-msgstr "Lista"
-
-#: 
 msgid "Import Data"
 msgstr "Importera data"
 
@@ -3518,26 +3514,6 @@ msgstr "Säkerhetskopiering är klar, redo för nedladdning."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Säkerhetskopia nedladdat, kopiera på servern bort"
-
-#: 
-msgid "Campaigns:"
-msgstr "kampanjer:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Antecknat antal:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Anteckning utan prenumeration sedan förra sändningen:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Rengört antal:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Rengört antal sedan sist skickat:"
 
 #: 
 msgid "Functions"
@@ -3664,10 +3640,6 @@ msgstr "Datum in"
 #: 
 msgid "CSV Import"
 msgstr "CSV-import"
-
-#: 
-msgid "Members:"
-msgstr "medlemmar:"
 
 #: 
 msgid "There were "
@@ -3915,34 +3887,6 @@ msgstr "Verbage för katalograpporten"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Kyrkans brevpappersväg och fil"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "leta upp användarbilder på Gravatar när ingen lokal bild finns"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Aktivera fjärr säkerhetskopior till molntjänster"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Molntjänstyp (stödda värden: WebDAV, lokal)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Användarnamn för fjärrbackup"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Lösenord för fjärrbackup"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Intervall i timmar för automatisk fjärrkontroll"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Senaste tidsstämpel för säkerhetskopiering"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4480,14 +4424,6 @@ msgstr "miles"
 #: 
 msgid "kilometers"
 msgstr "kilometer"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Lokal"
 
 #. Context: countries
 #: 
@@ -5828,10 +5764,6 @@ msgstr "Gör användarinmatade postnummer / postnummer UPPERCASE när du sparar 
 msgid "Used to end a letter before Signer"
 msgstr "Används för att avsluta ett brev före Signer"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics spårningskod"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6320,18 +6252,6 @@ msgstr "Händelseloggens svårighetsgrad att skriva, används av ORM och applogg
 #: 
 msgid "Time zone"
 msgstr "Tidszon"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API-nyckel"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API Secret"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS från nummer"
 
 #: 
 msgid "OpenLP URL"

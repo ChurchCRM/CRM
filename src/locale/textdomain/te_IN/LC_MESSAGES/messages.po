@@ -3269,10 +3269,6 @@ msgid "Email Export"
 msgstr "ఇమెయిల్ ఎగుమతి"
 
 #: 
-msgid "List"
-msgstr "జాబితా"
-
-#: 
 msgid "Import Data"
 msgstr "డేటాను దిగుమతి చేయి"
 
@@ -3375,26 +3371,6 @@ msgstr "బ్యాకప్ పూర్తయింది, డౌన్‌ల
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "బ్యాకప్ డౌన్‌లోడ్ చేయబడింది, సర్వర్‌లో కాపీ తొలగించబడింది"
-
-#: 
-msgid "Campaigns:"
-msgstr "ప్రచారాలు:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "అన్‌సబ్‌స్క్రైబ్ చేసిన సంఖ్య:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "చివరి పంపడం నుండి అన్‌సబ్‌స్క్రైబ్ చేసిన సంఖ్య:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "క్లీన్ చేసిన సంఖ్య:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "చివరి పంపడం నుండి క్లీన్ చేసిన సంఖ్య:"
 
 #: 
 msgid "Functions"
@@ -3519,10 +3495,6 @@ msgstr "నమోదు చేసిన తేదీ"
 #: 
 msgid "CSV Import"
 msgstr "CSV దిగుమతి"
-
-#: 
-msgid "Members:"
-msgstr "సభ్యులు:"
 
 #: 
 msgid "There were "
@@ -3767,34 +3739,6 @@ msgstr "డైరెక్టరీ నివేదిక కోసం వెర
 #: 
 msgid "Church Letterhead path and file"
 msgstr "చర్చి లెటర్‌హెడ్ పాత్ మరియు ఫైల్"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "స్థానిక చిత్రం లేనప్పుడు Gravatar లో వినియోగదారు చిత్రాలను చూడండి"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "క్లౌడ్ సేవలకు రిమోట్ బ్యాకప్‌లను ప్రారంభించండి"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "క్లౌడ్ సర్వీస్ టైప్ (మద్దతు ఉన్న విలువలు: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "రిమోట్ బ్యాకప్ యూజర్‌నేమ్"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "రిమోట్ బ్యాకప్ పాస్‌వర్డ్"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "ఆటోమేటిక్ రిమోట్ బ్యాకప్‌ల కోసం గంటలలో విరామం"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "చివరి బ్యాకప్ టైమ్‌స్టాంప్"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4210,14 +4154,6 @@ msgstr "మైళ్ళు"
 #: 
 msgid "kilometers"
 msgstr "కిలోమీటర్లు"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "స్థానిక"
 
 #. Context: countries
 #: 

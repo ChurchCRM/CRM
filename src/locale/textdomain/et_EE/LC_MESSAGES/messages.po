@@ -3287,10 +3287,6 @@ msgid "Email Export"
 msgstr "E-posti eksport"
 
 #: 
-msgid "List"
-msgstr "Nimekiri"
-
-#: 
 msgid "Import Data"
 msgstr "Andmete importimine"
 
@@ -3393,26 +3389,6 @@ msgstr "Varundatud, allalaadimiseks valmis."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Varundus alla laaditud, koopia serverist eemaldatud"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampaaniad:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Tellimusest loobunute arv:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Tellimustest loobunute arv alates viimasest saatmisest:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Puhastatud arv:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Puhastatud arv alates viimasest saatmisest:"
 
 #: 
 msgid "Functions"
@@ -3539,10 +3515,6 @@ msgstr "Sisestamise kuupäev"
 #: 
 msgid "CSV Import"
 msgstr "CSV Import"
-
-#: 
-msgid "Members:"
-msgstr "Liikmed:"
 
 #: 
 msgid "There were "
@@ -3789,34 +3761,6 @@ msgstr "Sõnastus kataloogiaruande jaoks"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Koguduse peagablanketti asukoha rada ja fail"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "otsige Gravataris kasutajapilte, kui kohalikku pilti pole"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Pilveteenuste kaugvarunduste lubamine"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Pilveteenuse tüüp (toetatud väärtused: WebDAV, kohalik)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Kaugvarundamise kasutajanimi"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Kaug-varundusparool"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Automaatsete kaugvarunduste intervall tundides"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Viimane varundamise ajatempel"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4354,14 +4298,6 @@ msgstr "miili"
 #: 
 msgid "kilometers"
 msgstr "kilomeetrit"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Kohalik"
 
 #. Context: countries
 #: 
@@ -5702,10 +5638,6 @@ msgstr "Andmebaasi salvestamisel tehke kasutaja sisestatud sihtnumbrid SUURTÄHE
 msgid "Used to end a letter before Signer"
 msgstr "Kasutatakse kirja lõpetamiseks enne allkirjastajat"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analyticsi jälgimiskood"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6194,18 +6126,6 @@ msgstr "Sündmuste logi kirjutamise raskusaste, mida kasutavad ORM ja rakenduste
 #: 
 msgid "Time zone"
 msgstr "Ajavöönd"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API võti"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API saladus"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS numbrilt"
 
 #: 
 msgid "OpenLP URL"

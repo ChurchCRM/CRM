@@ -1,8 +1,4 @@
 {
-  "Two Factor Status": "",
-  "Please confirm disabling 2 Factor Auth for this user": "",
-  "Please enter 2FA code": "",
-  "2FA Code": "",
   "2 Factor Authentication enrollment": "",
   "Unsupported Two Factor Authentication Configuration": "",
   "Unable To Begin Two Factor Authentication Enrollment": "",
@@ -98,5 +94,9 @@
   "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled.": "",
   "Failed to update properties. Please try again.": "",
   "Failed to update role name. Please try again.": "",
-  "Leave blank to keep existing password": ""
+  "Leave blank to keep existing password": "",
+  "Please enter a group name.": "",
+  "Role added successfully.": "",
+  "Role deleted successfully.": "",
+  "Role name updated.": ""
 }

@@ -3408,10 +3408,6 @@ msgid "Email Export"
 msgstr "Eksporte"
 
 #: 
-msgid "List"
-msgstr "Liste"
-
-#: 
 msgid "Import Data"
 msgstr "Importer data"
 
@@ -3514,26 +3510,6 @@ msgstr "Sikkerhetskopiering fullført, klar for nedlasting."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Sikkerhetskopi lastet ned, kopi på server er slettet"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampanjer:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Antall avmeldte:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Antall avmeldte siden forrige utsending:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Antall rensede (feilaktige e-poster):"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Antall rensede siden forrige utsending:"
 
 #: 
 msgid "Functions"
@@ -3658,10 +3634,6 @@ msgstr "Dato lagt inn"
 #: 
 msgid "CSV Import"
 msgstr "CSV-import"
-
-#: 
-msgid "Members:"
-msgstr "Medlemmer:"
 
 #: 
 msgid "There were "
@@ -3906,34 +3878,6 @@ msgstr "Tekst for katalograpporten"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Sti og fil for kirkens brevhodepapir"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "Slå opp brukerbilder på Gravatar når lokalt bilde ikke finnes"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Aktiver ekstern sikkerhetskopiering til skytjenester"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Skytjenestetype (Støttede verdier: WebDAV, Lokal)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Brukernavn for ekstern sikkerhetskopiering"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Passord for ekstern sikkerhetskopiering"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Intervall i timer for automatisk ekstern sikkerhetskopiering"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Tidspunkt for siste sikkerhetskopiering"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4470,14 +4414,6 @@ msgstr "miles"
 #: 
 msgid "kilometers"
 msgstr "kilometer"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Lokal"
 
 #. Context: countries
 #: 
@@ -5818,10 +5754,6 @@ msgstr "Lagre brukerinndatate postnumre med STORE BOKSTAVER i databasen."
 msgid "Used to end a letter before Signer"
 msgstr "Brukt til å avslutte et brev før signatur"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics-sporingskode"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6305,18 +6237,6 @@ msgstr "Hendelsesloggens alvorlighetsgrad for skriving, brukt av ORM og app-logg
 #: 
 msgid "Time zone"
 msgstr "Tidssone"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API-nøkkel"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API-hemmelighet"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS fra-nummer"
 
 #: 
 msgid "OpenLP URL"

@@ -3285,10 +3285,6 @@ msgid "Email Export"
 msgstr "ייצוא דוא\"ל"
 
 #: 
-msgid "List"
-msgstr "רשימה"
-
-#: 
 msgid "Import Data"
 msgstr "ייבא נתונים"
 
@@ -3391,26 +3387,6 @@ msgstr "הגיבוי הושלם, ומוכן להורדה."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "הגיבוי הורד, העותק בשרת הוסר"
-
-#: 
-msgid "Campaigns:"
-msgstr "קמפיינים:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "מספר המבטלים הרשמה:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "מספר המבטלים הרשמה מאז השליחה האחרונה:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "מספר הרשומות שנוקו:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "מספר הרשומות שנוקו מאז השליחה האחרונה:"
 
 #: 
 msgid "Functions"
@@ -3537,10 +3513,6 @@ msgstr "תאריך הכניסה:"
 #: 
 msgid "CSV Import"
 msgstr "ייבוא קובץ CSV"
-
-#: 
-msgid "Members:"
-msgstr "חברים:"
 
 #: 
 msgid "There were "
@@ -3786,34 +3758,6 @@ msgstr "טקסט עבור דוח הספריה"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "נתיב וקובץ נייר מכתבים של המוסד"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "חיפוש תמונת משתמש ב-Gravatar כאשר אין תמונה מקומית"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "הפעלת גיבויים מרחוק עבור שירותים בענן"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "סוג שירות ענן (ערכים נתמכים: WebDAV, מקומי)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "שם משתמש לגיבוי מרחוק"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "סיסמת גיבוי מרחוק"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "מרווח זמן בשעות עבור גיבוי מרוחק אוטומטי"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "חותמת זמן גיבוי אחרון"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4350,14 +4294,6 @@ msgstr "מיילים"
 #: 
 msgid "kilometers"
 msgstr "קילומטרים"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "מקומי"
 
 #. Context: countries
 #: 
@@ -5701,10 +5637,6 @@ msgstr "הפוך מיקודים שהוזנו על ידי המשתמש לאותי
 msgid "Used to end a letter before Signer"
 msgstr "משמש לסיום מכתב לפני החתימה"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "קוד מעקב Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6193,18 +6125,6 @@ msgstr "רמת חומרת יומן האירועים לכתיבה, משמשת א�
 #: 
 msgid "Time zone"
 msgstr "אזור זמן"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "מפתח API של SMS Nexmo"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "סוד API של SMS Nexmo"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "מספר שולח SMS של Nexmo"
 
 #: 
 msgid "OpenLP URL"

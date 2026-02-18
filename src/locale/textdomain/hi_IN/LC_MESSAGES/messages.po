@@ -3257,10 +3257,6 @@ msgid "Email Export"
 msgstr "ईमेल निर्यात"
 
 #: 
-msgid "List"
-msgstr "सूची"
-
-#: 
 msgid "Import Data"
 msgstr "डेटा आयात करें"
 
@@ -3363,26 +3359,6 @@ msgstr "बैकअप पूरा हुआ, डाउनलोड के ल
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "बैकअप डाउनलोड किया गया, सर्वर पर मौजूद प्रतिलिपि हटा दी गई"
-
-#: 
-msgid "Campaigns:"
-msgstr "अभियान:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "सदस्यता समाप्त करने वालों की संख्या:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "पिछली बार भेजने के बाद से सदस्यता समाप्त करने वालों की संख्या:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "साफ की गई संख्या:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "पिछली बार भेजने के बाद से साफ की गई संख्या:"
 
 #: 
 msgid "Functions"
@@ -3507,10 +3483,6 @@ msgstr "दर्ज की गई तिथि"
 #: 
 msgid "CSV Import"
 msgstr "CSV आयात"
-
-#: 
-msgid "Members:"
-msgstr "सदस्य:"
 
 #: 
 msgid "There were "
@@ -3755,34 +3727,6 @@ msgstr "निर्देशिका रिपोर्ट के लिए �
 #: 
 msgid "Church Letterhead path and file"
 msgstr "चर्च लेटरहेड पथ और फ़ाइल"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "स्थानीय छवि न होने पर Gravatar पर उपयोगकर्ता छवियों को देखें"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "क्लाउड सेवाओं के लिए रिमोट बैकअप सक्षम करें"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "क्लाउड सेवा प्रकार (समर्थित मान: WebDAV, स्थानीय)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "रिमोट बैकअप उपयोगकर्ता नाम"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "रिमोट बैकअप पासवर्ड"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "स्वचालित रिमोट बैकअप के लिए घंटों में अंतराल"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "पिछला बैकअप टाइमस्टैम्प"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4319,14 +4263,6 @@ msgstr "मील"
 #: 
 msgid "kilometers"
 msgstr "किलोमीटर"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "स्थानीय"
 
 #. Context: countries
 #: 
@@ -5667,10 +5603,6 @@ msgstr "डेटाबेस में सहेजते समय उपय�
 msgid "Used to end a letter before Signer"
 msgstr "हस्ताक्षरकर्ता से पहले पत्र समाप्त करने के लिए उपयोग किया जाता है"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "गूगल एनालिटिक्स ट्रैकिंग कोड"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6154,18 +6086,6 @@ msgstr "लिखने के लिए इवेंट लॉग की गं
 #: 
 msgid "Time zone"
 msgstr "समय क्षेत्र"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API कुंजी"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API सीक्रेट"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS प्रेषक नंबर"
 
 #: 
 msgid "OpenLP URL"

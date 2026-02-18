@@ -3297,10 +3297,6 @@ msgid "Email Export"
 msgstr "Esportazione email"
 
 #: 
-msgid "List"
-msgstr "Elenco"
-
-#: 
 msgid "Import Data"
 msgstr "Importa Dati"
 
@@ -3403,26 +3399,6 @@ msgstr "Backup completo, pronto per il download."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Backup scaricato, Copia sul server rimosso"
-
-#: 
-msgid "Campaigns:"
-msgstr "campagne:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Conteggio non registrato:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Conteggio non registrato dall'ultima invio:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Conteggio pulito:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Conteggio pulito dall'ultimo invio:"
 
 #: 
 msgid "Functions"
@@ -3551,10 +3527,6 @@ msgstr "Data inserita"
 #: 
 msgid "CSV Import"
 msgstr "Importazione CSV"
-
-#: 
-msgid "Members:"
-msgstr "Membri:"
 
 #: 
 msgid "There were "
@@ -3803,34 +3775,6 @@ msgstr "Verbage per il rapporto di directory"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Percorso e file della carta intestata della Chiesa"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "cerca immagini utente su Gravatar quando non sono presenti immagini locali"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Abilita i backup remoti ai servizi cloud"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Tipo di servizio cloud (valori supportati: WebDAV, locale)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Nome utente di backup remoto"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Password di backup remoto"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Intervallo in ore per i backup automatici automatici"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Timestamp ultimo backup"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4368,14 +4312,6 @@ msgstr "miglia"
 #: 
 msgid "kilometers"
 msgstr "chilometri"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Locale"
 
 #. Context: countries
 #: 
@@ -5725,10 +5661,6 @@ msgstr "Fare inserire dall'utente zip / codici postali in MAIUSCOLO durante il s
 msgid "Used to end a letter before Signer"
 msgstr "Utilizzato per terminare una lettera prima del firmatario"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Codice di monitoraggio di Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6217,18 +6149,6 @@ msgstr "Severità registro eventi da scrivere, utilizzata da ORM e registri app"
 #: 
 msgid "Time zone"
 msgstr "Fuso Orario"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Chiave API Nexmo SMS"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Segreto Nexmo SMS API"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS dal numero"
 
 #: 
 msgid "OpenLP URL"

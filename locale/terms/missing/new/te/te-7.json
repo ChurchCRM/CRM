@@ -1,8 +1,4 @@
 {
-  "Please enter a group name.": "",
-  "Role added successfully.": "",
-  "Role deleted successfully.": "",
-  "Role name updated.": "",
   "View Group": "",
   "Events Today": "",
   "Sunday School Overview": "",
@@ -98,5 +94,9 @@
   "Release Notes:": "",
   "Request Password Reset": "",
   "Retry Download": "",
-  "SHA1 Hash:": ""
+  "SHA1 Hash:": "",
+  "Send Reset Email": "",
+  "Setting saved. Reloading page...": "",
+  "Setting updated successfully": "",
+  "Skip Backup": ""
 }

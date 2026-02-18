@@ -1,8 +1,4 @@
 {
-  "Deposit Statistics": "",
-  "Detailed breakdown of a single deposit slip.": "",
-  "Detailed breakdown of pledges and payments by family.": "",
-  "Documentation": "",
   "Donor Families": "",
   "Edit Family": "",
   "Edit Payment": "",
@@ -98,5 +94,9 @@
   "Verify church name, address, and contact info appears on tax statements.": "",
   "Verify fund names and descriptions are accurate for statements.": "",
   "Version:": "",
-  "Welcome to ChurchCRM": ""
+  "Welcome to ChurchCRM": "",
+  "YTD Payments": "",
+  "YTD Pledges": "",
+  "You may create family members now or add them later. All entries will become new person records.": "",
+  "Your fiscal year starts in month": ""
 }

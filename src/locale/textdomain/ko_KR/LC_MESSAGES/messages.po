@@ -3285,10 +3285,6 @@ msgid "Email Export"
 msgstr "이메일 내보내기"
 
 #: 
-msgid "List"
-msgstr "목록"
-
-#: 
 msgid "Import Data"
 msgstr "데이터 가져오기"
 
@@ -3391,26 +3387,6 @@ msgstr "백업 완료, 다운로드 가능합니다."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "백업을 내려받았으며 서버의 사본은 삭제되었습니다."
-
-#: 
-msgid "Campaigns:"
-msgstr "캠페인:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "구독 해지 수:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "마지막 발송 이후 구독 해지:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "정리된 주소 수:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "마지막 발송 이후 정리된 주소:"
 
 #: 
 msgid "Functions"
@@ -3537,10 +3513,6 @@ msgstr "입력일:"
 #: 
 msgid "CSV Import"
 msgstr "CSV 가져오기"
-
-#: 
-msgid "Members:"
-msgstr "구성원:"
 
 #: 
 msgid "There were "
@@ -3786,34 +3758,6 @@ msgstr "명부 보고서 문구"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "교회 레터헤드 경로/파일"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "로컬 사진이 없을 때 Gravatar에서 사용자 이미지를 조회합니다"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "클라우드 원격 백업 사용"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "클라우드 서비스 유형(지원: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "원격 백업 사용자명"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "원격 백업 비밀번호"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "원격 자동 백업 주기(시간)"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "마지막 백업 시각"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4350,14 +4294,6 @@ msgstr "마일"
 #: 
 msgid "kilometers"
 msgstr "킬로미터"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "로컬"
 
 #. Context: countries
 #: 
@@ -5698,10 +5634,6 @@ msgstr "사용자가 입력한 우편번호를 저장할 때 대문자로 변환
 msgid "Used to end a letter before Signer"
 msgstr "편지에서 서명자 직전에 넣는 마무리 문구"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics 추적 코드"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6190,18 +6122,6 @@ msgstr "ORM과 앱 로그에서 기록할 이벤트 로그 심각도"
 #: 
 msgid "Time zone"
 msgstr "시간대"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API 키"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API 시크릿"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS 발신 번호"
 
 #: 
 msgid "OpenLP URL"

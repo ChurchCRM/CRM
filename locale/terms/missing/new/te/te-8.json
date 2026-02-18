@@ -1,8 +1,4 @@
 {
-  "Send Reset Email": "",
-  "Setting saved. Reloading page...": "",
-  "Setting updated successfully": "",
-  "Skip Backup": "",
   "System Up to Date": "",
   "System Upgrade Wizard": "",
   "System upgrade completed successfully!": "",
@@ -104,5 +100,9 @@
   "Files may be modified or missing. Consider re-deploying from an official release.": "",
   "Finance access": "",
   "Force re-install initiated. Please backup your database before applying.": "",
-  "Generate & Download Backup": ""
+  "Generate & Download Backup": "",
+  "Go to Dashboard": "",
+  "Group management access": "",
+  "If you need access to this feature, please contact your church administrator.": "",
+  "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema.": ""
 }

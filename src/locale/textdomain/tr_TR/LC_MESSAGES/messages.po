@@ -3287,10 +3287,6 @@ msgid "Email Export"
 msgstr "E -posta Dışarı"
 
 #: 
-msgid "List"
-msgstr "Liste"
-
-#: 
 msgid "Import Data"
 msgstr "Verileri İçe Aktar"
 
@@ -3393,26 +3389,6 @@ msgstr "Yedekleme tamamlandı, indirmeye hazır."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Yedekleme indirildi, sunucuda kopyalama kaldırıldı"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampanyalar:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Abonelikten Çıkarılmış Sayım:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Son gönderimden bu yana abonelikten çıkma sayısı:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Temizlenmiş sayı:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Son gönderimden beri temizlenmiş sayı:"
 
 #: 
 msgid "Functions"
@@ -3539,10 +3515,6 @@ msgstr "Girilen tarih"
 #: 
 msgid "CSV Import"
 msgstr "CSV İthalat"
-
-#: 
-msgid "Members:"
-msgstr "Üyeler:"
 
 #: 
 msgid "There were "
@@ -3790,34 +3762,6 @@ msgstr "Dizin Raporu için Vaka"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Kilise antetli yolu ve dosya"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "Yerel görüntü olmadığında Gravatar'da Kullanıcı Görüntüleri Arayın"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Bulut hizmetlerine uzak yedeklemeleri etkinleştirin"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Bulut Hizmet Türü (Desteklenen Değerler: WebDav, Yerel)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Uzak Yedek Kullanıcı Adı"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Uzak yedekleme şifresi"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Otomatik uzaktan yedeklemeler için saat aralık"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Son yedekleme zaman damgası"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4355,14 +4299,6 @@ msgstr "mil"
 #: 
 msgid "kilometers"
 msgstr "kilometrelik"
-
-#: 
-msgid "WebDAV"
-msgstr "Webdav"
-
-#: 
-msgid "Local"
-msgstr "Yerel"
 
 #. Context: countries
 #: 
@@ -5703,10 +5639,6 @@ msgstr "Veritabanına kaydedilirken kullanıcı tarafından girilen zip/postkodl
 msgid "Used to end a letter before Signer"
 msgstr "Signer'dan önce bir mektubu bitirmek için kullanılır"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics izleme kodu"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6195,18 +6127,6 @@ msgstr "ORM ve Uygulama Günlükleri tarafından kullanılan olay günlüğü ci
 #: 
 msgid "Time zone"
 msgstr "Saat dilimi"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API Anahtarı"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API Sırrı"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Numaradan Nexmo SMS"
 
 #: 
 msgid "OpenLP URL"

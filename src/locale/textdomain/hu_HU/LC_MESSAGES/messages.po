@@ -3369,10 +3369,6 @@ msgid "Email Export"
 msgstr "E-mail exportálás"
 
 #: 
-msgid "List"
-msgstr "Lista"
-
-#: 
 msgid "Import Data"
 msgstr "Adatok importálása"
 
@@ -3475,26 +3471,6 @@ msgstr "Biztonsági mentés kész, letölthető."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Biztonsági mentés letöltve, a szerveren lévő másolat törölve"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampányok:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Leiratkozottak száma:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Leiratkozottak száma az utolsó küldés óta:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Tisztítottak száma:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Tisztítottak száma az utolsó küldés óta:"
 
 #: 
 msgid "Functions"
@@ -3619,10 +3595,6 @@ msgstr "Rögzítés dátuma"
 #: 
 msgid "CSV Import"
 msgstr "CSV importálás"
-
-#: 
-msgid "Members:"
-msgstr "Tagok:"
 
 #: 
 msgid "There were "
@@ -3867,34 +3839,6 @@ msgstr "Szöveg a névjegyzék jelentéshez"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Templomi levélpapír útvonala és fájlja"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "Felhasználói képek keresése a Gravataron, ha nincs helyi kép"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Távoli biztonsági mentés engedélyezése felhőszolgáltatásokba"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Felhőszolgáltatás típusa (Támogatott értékek: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Távoli mentés felhasználóneve"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Távoli mentés jelszava"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Automatikus távoli mentések időköze órákban"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Utolsó biztonsági mentés időbélyege"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4431,14 +4375,6 @@ msgstr "mérföld"
 #: 
 msgid "kilometers"
 msgstr "kilométer"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Helyi"
 
 #. Context: countries
 #: 
@@ -5779,10 +5715,6 @@ msgstr "A felhasználó által megadott irányítószámokat alakítsa NAGYBETŰ
 msgid "Used to end a letter before Signer"
 msgstr "A levél végén, az aláíró előtt használatos"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics követőkód"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6266,18 +6198,6 @@ msgstr "Eseménynapló írandó súlyossága, az ORM és az alkalmazásnaplók h
 #: 
 msgid "Time zone"
 msgstr "Időzóna"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API kulcs"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API titkos kulcs"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS küldő száma"
 
 #: 
 msgid "OpenLP URL"

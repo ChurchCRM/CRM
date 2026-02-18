@@ -1,8 +1,4 @@
 {
-  "YTD Payments": "",
-  "YTD Pledges": "",
-  "You may create family members now or add them later. All entries will become new person records.": "",
-  "Your fiscal year starts in month": "",
   "Zip / Postal Code": "",
   "ZipArchive extension required for upgrades": "",
   "active": "",
@@ -98,5 +94,9 @@
   "Database restore failed": "",
   "Demo data import failed": "",
   "Demo data import is only available on fresh installations with exactly 1 person": "",
-  "Demo data loaded successfully": ""
+  "Demo data loaded successfully": "",
+  "Download failed": "",
+  "Failed to delete orphaned files": "",
+  "Failed to download latest release": "",
+  "Failed to refresh upgrade information": ""
 }

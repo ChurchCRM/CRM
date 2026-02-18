@@ -3285,10 +3285,6 @@ msgid "Email Export"
 msgstr "Barua Pepe nje ya nchi"
 
 #: 
-msgid "List"
-msgstr "Orodha"
-
-#: 
 msgid "Import Data"
 msgstr "Ingiza Data"
 
@@ -3391,26 +3387,6 @@ msgstr "Hifadhi rudufu Imekamilika, Tayari kwa Kupakuliwa."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Hifadhi Nakala Imepakuliwa, Nakili kwenye seva imeondolewa"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampeni:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Idadi ya watu waliojiondoa:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Idadi ya watu waliojiondoa tangu kutuma mara ya mwisho:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Idadi iliyosafishwa:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Idadi iliyosafishwa tangu kutuma mara ya mwisho:"
 
 #: 
 msgid "Functions"
@@ -3537,10 +3513,6 @@ msgstr "Tarehe Iliyoingizwa"
 #: 
 msgid "CSV Import"
 msgstr "Ingiza CSV"
-
-#: 
-msgid "Members:"
-msgstr "Wanachama:"
 
 #: 
 msgid "There were "
@@ -3786,34 +3758,6 @@ msgstr "Verbage kwa ripoti ya saraka"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Kanisa Letterhead njia na faili"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "tafuta picha za mtumiaji kwenye Gravatar wakati hakuna picha ya ndani iliyopo"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Washa Hifadhi Nakala za Mbali kwa Huduma za Wingu"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Aina ya Huduma ya Wingu (Thamani zinazotumika: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Jina la Mtumiaji la Hifadhi Nakala ya Mbali"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Nenosiri la Hifadhi Nakala ya Mbali"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Muda wa Masaa kwa Hifadhi Nakala Kiotomatiki za Mbali"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Muhuri wa Muda wa Hifadhi Nakala ya Mwisho"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4350,14 +4294,6 @@ msgstr "maili"
 #: 
 msgid "kilometers"
 msgstr "kilomita"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Ndani"
 
 #. Context: countries
 #: 
@@ -5698,10 +5634,6 @@ msgstr "Fanya zip/misimbo ya posta iliyoingizwa na mtumiaji UPPERCASE unapohifad
 msgid "Used to end a letter before Signer"
 msgstr "Hutumika kumalizia barua kabla ya Mtia saini"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Msimbo wa Ufuatiliaji wa Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6190,18 +6122,6 @@ msgstr "Ukali wa kuandika Kumbukumbu ya Matukio, inayotumiwa na ORM na Kumbukumb
 #: 
 msgid "Time zone"
 msgstr "Saa za eneo"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Ufunguo wa API ya Nexmo SMS"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Siri ya API ya SMS ya Nexmo"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS Kutoka Nambari"
 
 #: 
 msgid "OpenLP URL"

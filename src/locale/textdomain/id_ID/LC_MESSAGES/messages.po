@@ -3288,10 +3288,6 @@ msgid "Email Export"
 msgstr "Ekspor Email"
 
 #: 
-msgid "List"
-msgstr "Daftar"
-
-#: 
 msgid "Import Data"
 msgstr "Impor Data"
 
@@ -3394,26 +3390,6 @@ msgstr "Cadangan Selesai, Siap untuk Diunduh."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Cadangan Diunduh, Salin di server dihapus"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampanye:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Jumlah berhenti berlangganan:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Penghitungan berhenti berlangganan sejak pengiriman terakhir:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Jumlah yang dibersihkan:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Dihitung sejak pengiriman terakhir:"
 
 #: 
 msgid "Functions"
@@ -3540,10 +3516,6 @@ msgstr "Tanggal masuk"
 #: 
 msgid "CSV Import"
 msgstr "Impor CSV"
-
-#: 
-msgid "Members:"
-msgstr "Anggota:"
 
 #: 
 msgid "There were "
@@ -3791,34 +3763,6 @@ msgstr "Verbage untuk laporan direktori"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Jalur dan file Kop Surat Gereja"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "mencari gambar pengguna di Gravatar ketika tidak ada gambar lokal"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Aktifkan Pencadangan Jarak Jauh ke Layanan Cloud"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Jenis Layanan Cloud (Nilai yang didukung: WebDAV, Lokal)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Nama Pengguna Cadangan Jarak Jauh"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Remote Backup Password"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Interval dalam Jam untuk Pencadangan Jarak Jauh Otomatis"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Stempel Waktu Cadangan Terakhir"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4356,14 +4300,6 @@ msgstr "mil"
 #: 
 msgid "kilometers"
 msgstr "kilometer"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Lokal"
 
 #. Context: countries
 #: 
@@ -5704,10 +5640,6 @@ msgstr "Buat zip / kode pos yang dimasukkan pengguna UPPERCASE saat menyimpan ke
 msgid "Used to end a letter before Signer"
 msgstr "Digunakan untuk mengakhiri surat sebelum Penandatangan"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Kode Pelacakan Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6196,18 +6128,6 @@ msgstr "Tingkat keparahan Log Kejadian untuk menulis, digunakan oleh ORM dan Log
 #: 
 msgid "Time zone"
 msgstr "Zona waktu"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Kunci API SMS Nexmo"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API Secret"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS Dari Nomor"
 
 #: 
 msgid "OpenLP URL"
