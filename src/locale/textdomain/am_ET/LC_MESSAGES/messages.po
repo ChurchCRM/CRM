@@ -3287,10 +3287,6 @@ msgid "Email Export"
 msgstr "ኢሜል ወደውጪ ላክ"
 
 #: 
-msgid "List"
-msgstr "ዝርዝር"
-
-#: 
 msgid "Import Data"
 msgstr "መረጃ አስመጣ"
 
@@ -3393,26 +3389,6 @@ msgstr "ምትኬ ተጠናቅቋል፣ ለመውረድ ዝግጁ."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "ምትኬ ወርዷል፣ በአገልጋዩ ላይ ቅጂ ተወግዷል"
-
-#: 
-msgid "Campaigns:"
-msgstr "ዘመቻዎች:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "ያልተመዘገበ ቁጥር:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "ለመጨረሻ ጊዜ ከተላከ በኋላ ከደንበኝነት ምዝገባ የወጣ ቁጥር:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "የጸዳ ብዛት:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "ለመጨረሻ ጊዜ ከተላከ በኋላ የጸዳ ቆጠራ:"
 
 #: 
 msgid "Functions"
@@ -3539,10 +3515,6 @@ msgstr "የገባበት ቀን"
 #: 
 msgid "CSV Import"
 msgstr "CSV ማስመጣት"
-
-#: 
-msgid "Members:"
-msgstr "አባላት:"
 
 #: 
 msgid "There were "
@@ -3790,34 +3762,6 @@ msgstr "ለማውጫ ሪፖርቱ ቃል"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "የቤተ ክርስቲያን ደብዳቤ ዱካ እና ፋይል"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "ምንም የአካባቢ ምስል በማይኖርበት ጊዜ የተጠቃሚ ምስሎችን በግራቫታር ይፈልጉ"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "ወደ ክላውድ አገልግሎቶች የርቀት ምትኬዎችን አንቃ"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "የክላውድ አገልግሎት አይነት (የሚደገፉ እሴቶች፡ WebDAV፣ አካባቢያዊ)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "የርቀት ምትኬ የተጠቃሚ ስም"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "የርቀት ምትኬ ይለፍ ቃል"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "ለራስ-ሰር የርቀት ምትኬዎች በሰዓታት ውስጥ ያለው የጊዜ ክፍተት"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "የመጨረሻው የመጠባበቂያ ጊዜ ማህተም"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4356,14 +4300,6 @@ msgstr "ማይል"
 #: 
 msgid "kilometers"
 msgstr "ኪሎሜትሮች"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "አካባቢያዊ"
 
 #. Context: countries
 #: 
@@ -5704,10 +5640,6 @@ msgstr "ወደ ዳታቤዝ ሲያስቀምጡ በተጠቃሚ የገቡ ዚፕ/
 msgid "Used to end a letter before Signer"
 msgstr "ከፈራሚ በፊት ደብዳቤ ለመጨረስ ይጠቅማል"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "የጉግል አናሌቲክስ መከታተያ ኮድ"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6196,18 +6128,6 @@ msgstr "የክስተት ምዝግብ ማስታወሻ ክብደት ለመጻፍ�
 #: 
 msgid "Time zone"
 msgstr "አለማቀፋዊ የጊዜ ክልል"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API ቁልፍ"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API ሚስጥር"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS ከቁጥር"
 
 #: 
 msgid "OpenLP URL"

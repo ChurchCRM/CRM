@@ -3287,10 +3287,6 @@ msgid "Email Export"
 msgstr "E-posuitvoer"
 
 #: 
-msgid "List"
-msgstr "Lys"
-
-#: 
 msgid "Import Data"
 msgstr "Voer data in"
 
@@ -3393,26 +3389,6 @@ msgstr "Rugsteun voltooi, gereed vir aflaai."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Rugsteun afgelaai, kopie op bediener verwyder"
-
-#: 
-msgid "Campaigns:"
-msgstr "Veldtogte:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Ongetekende telling:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Ongetekende telling sedert laaste stuur:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Skoongemaakte telling:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Aantal skoongemaak sedert laas gestuur:"
 
 #: 
 msgid "Functions"
@@ -3539,10 +3515,6 @@ msgstr "Datum ingevoer"
 #: 
 msgid "CSV Import"
 msgstr "CSV-invoer"
-
-#: 
-msgid "Members:"
-msgstr "Lede:"
 
 #: 
 msgid "There were "
@@ -3790,34 +3762,6 @@ msgstr "Woord vir die gidsverslag"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Kerklike briefhoof pad en lêer"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "soek gebruikersbeelde op Gravatar as daar geen plaaslike beeld is nie"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Aktiveer eksterne rugsteun na wolkdienste"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Wolkdienstipe (ondersteunde waardes: WebDAV, plaaslik)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Remote Backup Gebruikersnaam"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Remote Backup wagwoord"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Interval in ure vir outomatiese afstandbeveiliging"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Laaste rugsteuntydstempel"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4355,14 +4299,6 @@ msgstr "myl"
 #: 
 msgid "kilometers"
 msgstr "kilometers"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Plaaslik"
 
 #. Context: countries
 #: 
@@ -5703,10 +5639,6 @@ msgstr "Maak deur die gebruiker ingevoerde pos- / poskodes UPPERCASE wanneer u d
 msgid "Used to end a letter before Signer"
 msgstr "Word gebruik om 'n brief voor Signer af te sluit"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics-opsporingskode"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6195,18 +6127,6 @@ msgstr "Gebeurtenisregistrasie erns om te skryf, gebruik deur ORM en App Logs"
 #: 
 msgid "Time zone"
 msgstr "Tydsone"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API-sleutel"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API-geheim"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS vanaf nommer"
 
 #: 
 msgid "OpenLP URL"

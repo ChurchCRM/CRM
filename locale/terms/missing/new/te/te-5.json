@@ -1,8 +1,4 @@
 {
-  "SSE": "",
-  "Recipient Naming Method": "",
-  "Salutation Utility": "",
-  "Add A Group Name": "",
   "Default Name Group": "",
   "Group Role": "",
   "Members from group": "",
@@ -104,5 +100,9 @@
   "%d year old": {
     "one": "",
     "other": ""
-  }
+  },
+  "Two Factor Status": "",
+  "Please confirm disabling 2 Factor Auth for this user": "",
+  "Please enter 2FA code": "",
+  "2FA Code": ""
 }

@@ -1,8 +1,4 @@
 {
-  "Download failed": "",
-  "Failed to delete orphaned files": "",
-  "Failed to download latest release": "",
-  "Failed to refresh upgrade information": "",
   "Failed to upload family photo": "",
   "Failed to upload person photo": "",
   "Remote backup failed": "",
@@ -107,5 +103,9 @@
   "Number of records using this property type": "",
   "Optional detailed description of this property type": "",
   "Please correct the errors below.": "",
-  "Pledge Amount": ""
+  "Pledge Amount": "",
+  "Pledge Dashboard": "",
+  "Remaining": "",
+  "Remove this attendance count?": "",
+  "Select the type of record this property applies to": ""
 }

@@ -3287,10 +3287,6 @@ msgid "Email Export"
 msgstr "Eksporti i emailit"
 
 #: 
-msgid "List"
-msgstr "Lista"
-
-#: 
 msgid "Import Data"
 msgstr "Importo të dhëna"
 
@@ -3393,26 +3389,6 @@ msgstr "Rezervimi përfundoi, gati për shkarkim."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Rezervimi u shkarkua, kopja në server u hoq"
-
-#: 
-msgid "Campaigns:"
-msgstr "Fushatat:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Numri i të çregjistruarve:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Numri i të çregjistruarve që nga dërgimi i fundit:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Numri i të pastruarve:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Numri i të pastruarve që nga dërgimi i fundit:"
 
 #: 
 msgid "Functions"
@@ -3537,10 +3513,6 @@ msgstr "Data e regjistrimit"
 #: 
 msgid "CSV Import"
 msgstr "Importi CSV"
-
-#: 
-msgid "Members:"
-msgstr "Anëtarët:"
 
 #: 
 msgid "There were "
@@ -3785,34 +3757,6 @@ msgstr "Teksti për raportin e direktorisë"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Rruga dhe skedari i kokës së letrës së kishës"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "Kërko imazhet e përdoruesve në Gravatar kur nuk ka imazh lokal"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Aktivizoni rezervimet në distancë në shërbimet cloud"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Lloji i shërbimit cloud (Vlerat e mbështetura: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Emri i përdoruesit për rezervimin në distancë"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Fjalëkalimi për rezervimin në distancë"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Intervali në orë për rezervimet automatike në distancë"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Koha e rezervimit të fundit"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4349,14 +4293,6 @@ msgstr "milje"
 #: 
 msgid "kilometers"
 msgstr "kilometra"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Lokal"
 
 #. Context: countries
 #: 
@@ -5697,10 +5633,6 @@ msgstr "Bëni kodet postare të futura nga përdoruesi me SHKRONJA TË MËDHA ku
 msgid "Used to end a letter before Signer"
 msgstr "Përdoret për të mbyllur një letër përpara Nënshkruesit"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Kodi i gjurmimit të Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6184,18 +6116,6 @@ msgstr "Ashpërsia e regjistrit të ngjarjeve për t'u shkruar, përdoret nga OR
 #: 
 msgid "Time zone"
 msgstr "Zona kohore"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Çelësi API i SMS Nexmo"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Sekreti API i SMS Nexmo"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Numri SMS i Nexmo nga"
 
 #: 
 msgid "OpenLP URL"

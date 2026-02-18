@@ -1,8 +1,4 @@
 {
-  "Go to Dashboard": "",
-  "Group management access": "",
-  "If you need access to this feature, please contact your church administrator.": "",
-  "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema.": "",
   "Important Warning": "",
   "Includes database and all uploaded photos. Larger file size.": "",
   "Keep one copy in a fire-proof safe on-site and another off-site.": "",
@@ -98,5 +94,9 @@
   "Data Quality:": "",
   "Database:": "",
   "Demo Data": "",
-  "Deposit Navigation": ""
+  "Deposit Navigation": "",
+  "Deposit Statistics": "",
+  "Detailed breakdown of a single deposit slip.": "",
+  "Detailed breakdown of pledges and payments by family.": "",
+  "Documentation": ""
 }

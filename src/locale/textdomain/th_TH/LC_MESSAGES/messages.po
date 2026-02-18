@@ -3264,10 +3264,6 @@ msgid "Email Export"
 msgstr "ส่งออกอีเมล"
 
 #: 
-msgid "List"
-msgstr "รายการ"
-
-#: 
 msgid "Import Data"
 msgstr "นำเข้าข้อมูล"
 
@@ -3370,26 +3366,6 @@ msgstr "สำรองข้อมูลเสร็จสมบูรณ์ �
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "ดาวน์โหลดการสำรองข้อมูลแล้ว สำเนาบนเซิร์ฟเวอร์ถูกลบ"
-
-#: 
-msgid "Campaigns:"
-msgstr "แคมเปญ:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "จำนวนยกเลิกการสมัคร:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "จำนวนยกเลิกการสมัครตั้งแต่การส่งครั้งล่าสุด:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "จำนวนที่ล้างแล้ว:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "จำนวนที่ล้างตั้งแต่การส่งครั้งล่าสุด:"
 
 #: 
 msgid "Functions"
@@ -3514,10 +3490,6 @@ msgstr "วันที่ป้อน"
 #: 
 msgid "CSV Import"
 msgstr "นำเข้า CSV"
-
-#: 
-msgid "Members:"
-msgstr "สมาชิก:"
 
 #: 
 msgid "There were "
@@ -3762,34 +3734,6 @@ msgstr "ข้อความสำหรับรายงานไดเรก
 #: 
 msgid "Church Letterhead path and file"
 msgstr "เส้นทางและไฟล์หัวจดหมายคริสตจักร"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "ค้นหารูปผู้ใช้บน Gravatar เมื่อไม่มีรูปภาพในเครื่อง"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "เปิดใช้งานการสำรองข้อมูลระยะไกลไปยังบริการคลาวด์"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "ประเภทบริการคลาวด์ (ค่าที่รองรับ: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "ชื่อผู้ใช้สำรองข้อมูลระยะไกล"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "รหัสผ่านสำรองข้อมูลระยะไกล"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "ช่วงเวลาเป็นชั่วโมงสำหรับการสำรองข้อมูลระยะไกลอัตโนมัติ"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "ประทับเวลาการสำรองข้อมูลล่าสุด"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4326,14 +4270,6 @@ msgstr "ไมล์"
 #: 
 msgid "kilometers"
 msgstr "กิโลเมตร"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "ในเครื่อง"
 
 #. Context: countries
 #: 
@@ -5664,10 +5600,6 @@ msgstr "ทำให้รหัสไปรษณีย์ที่ผู้ใ
 msgid "Used to end a letter before Signer"
 msgstr "ใช้ลงท้ายจดหมายก่อนผู้ลงนาม"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "รหัสติดตาม Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6151,18 +6083,6 @@ msgstr "ความรุนแรงของบันทึกเหตุก
 #: 
 msgid "Time zone"
 msgstr "เขตเวลา"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "คีย์ API SMS Nexmo"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "ความลับ API SMS Nexmo"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "หมายเลขผู้ส่ง SMS Nexmo"
 
 #: 
 msgid "OpenLP URL"

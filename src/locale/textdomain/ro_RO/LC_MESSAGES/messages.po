@@ -3375,10 +3375,6 @@ msgid "Email Export"
 msgstr "Export email"
 
 #: 
-msgid "List"
-msgstr "Listă"
-
-#: 
 msgid "Import Data"
 msgstr "Import date"
 
@@ -3481,26 +3477,6 @@ msgstr "Back-up finalizat, gata de descărcare."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Back-up descărcar, copia de pe server eliminată"
-
-#: 
-msgid "Campaigns:"
-msgstr "Campanii:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Contor anulare subscripții"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Contor anulare subscripții de la ultima expediere"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Contor resetat:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Contor resetat de la ultima trimitere:"
 
 #: 
 msgid "Functions"
@@ -3627,10 +3603,6 @@ msgstr "Dată activare"
 #: 
 msgid "CSV Import"
 msgstr "Import CSV"
-
-#: 
-msgid "Members:"
-msgstr "Membri:"
 
 #: 
 msgid "There were "
@@ -3878,34 +3850,6 @@ msgstr "Verbalizare pentru raportul directorului"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Calea și fișierul cu antetul Bisericii"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "căutarea de imagini ale utilizatorului pe Gravatar când nu este prezentă o imagine locală"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Activați copii de rezervă la distanță către un serviciu cloud"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Tip serviciu cloud (WebDAV, Local, etc.)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Utilizator copie rezervă la distanță"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Parolă copie rezervă la distanță"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Interval orar copie de rezervă la distanță"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Data ultimei copii de rezervă"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4443,14 +4387,6 @@ msgstr "mile"
 #: 
 msgid "kilometers"
 msgstr "kilometri"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Local"
 
 #. Context: countries
 #: 
@@ -5792,10 +5728,6 @@ msgstr "Transformă codurile poștale introduse de user în litere CAPITALIZAT l
 msgid "Used to end a letter before Signer"
 msgstr "Folosit pentru a încheia o scrisoare înainte de semnare"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Cod urmărire Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6284,18 +6216,6 @@ msgstr "Nivelul de gravitate al jurnalului de evenimente pentru scriere, utiliza
 #: 
 msgid "Time zone"
 msgstr "Fus orar"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Cheie API Nexmo SMS"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Secret API Nexmo SMS"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Număr Expeditor SMS Nexmo"
 
 #: 
 msgid "OpenLP URL"

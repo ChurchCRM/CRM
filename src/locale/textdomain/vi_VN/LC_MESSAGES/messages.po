@@ -3299,10 +3299,6 @@ msgid "Email Export"
 msgstr "Email xuất ra"
 
 #: 
-msgid "List"
-msgstr "Danh sách"
-
-#: 
 msgid "Import Data"
 msgstr "Nhập dữ liệu"
 
@@ -3405,26 +3401,6 @@ msgstr "Tập tin sao lưu đã thành công, nhấn vào để tải ngay."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Tập tin sao lưu đã được tải, bản sao lưu trên máy chủ đã được xóa đi"
-
-#: 
-msgid "Campaigns:"
-msgstr "Các chiến dịch:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Số lượng chưa đăng ký:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Số lượng chưa đăng ký kể từ lần gửi cuối cùng:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Số lượng đã xóa:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Tổng số đã xóa kể từ lần gửi cuối cùng:"
 
 #: 
 msgid "Functions"
@@ -3551,10 +3527,6 @@ msgstr "Ngày nhập vào"
 #: 
 msgid "CSV Import"
 msgstr "Nhập vào CSV"
-
-#: 
-msgid "Members:"
-msgstr "Thành viên:"
 
 #: 
 msgid "There were "
@@ -3802,34 +3774,6 @@ msgstr "Rác cho báo cáo thư mục"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Đường dẫn và tệp của Giấy tiêu đề Nhà thờ"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "tra cứu hình ảnh người dùng trên Gravatar khi không có hình ảnh cục bộ"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Bật sao lưu từ xa vào dịch vụ đám mây"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Loại dịch vụ đám mây (Giá trị được hỗ trợ: WebDAV, Cục bộ)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Tên người dùng sao lưu từ xa"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Mật khẩu sao lưu từ xa"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Khoảng thời gian trong giờ để sao lưu từ xa tự động"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Dấu thời gian sao lưu lần cuối"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4367,14 +4311,6 @@ msgstr "Dặm"
 #: 
 msgid "kilometers"
 msgstr "Km"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Địa phương"
 
 #. Context: countries
 #: 
@@ -5715,10 +5651,6 @@ msgstr "Làm cho mã zip / mã bưu điện do người dùng nhập UPPERCASE k
 msgid "Used to end a letter before Signer"
 msgstr "Dùng để kết thúc một lá thư trước Người ký"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Mã theo dõi Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6207,18 +6139,6 @@ msgstr "Mức độ nghiêm trọng của Nhật ký sự kiện cần ghi, đư
 #: 
 msgid "Time zone"
 msgstr "Múi giờ"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Khóa API Nexmo SMS"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Bí mật API Nexmo SMS"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS từ số"
 
 #: 
 msgid "OpenLP URL"

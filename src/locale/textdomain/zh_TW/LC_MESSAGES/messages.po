@@ -3393,10 +3393,6 @@ msgid "Email Export"
 msgstr "郵件導出"
 
 #: 
-msgid "List"
-msgstr "清單"
-
-#: 
 msgid "Import Data"
 msgstr "導入數據"
 
@@ -3500,26 +3496,6 @@ msgstr "備份完成，準備下載。"
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "備份已下載，已刪除服務器上的副本"
-
-#: 
-msgid "Campaigns:"
-msgstr "市場活動"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "取消訂閱計數："
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "自上次發送以來未訂閱的計數："
-
-#: 
-msgid "Cleaned count:"
-msgstr "清理計數："
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "自上次發送以來清理的計數："
 
 #: 
 msgid "Functions"
@@ -3646,10 +3622,6 @@ msgstr "輸入日期"
 #: 
 msgid "CSV Import"
 msgstr "CSV導入"
-
-#: 
-msgid "Members:"
-msgstr "成員："
 
 #: 
 msgid "There were "
@@ -3905,34 +3877,6 @@ msgstr "用於目錄報告的用語"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "教會信頭路徑和文件"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "當沒有本地圖像時，在Gravatar上查找用戶圖像"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "啟用雲服務的遠程備份"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "雲服務類型（支持：WebDAV，本地）"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "遠程備份用戶名"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "遠程備份密碼"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "自動遠程備份的小時間隔"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "上次備份時間戳"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4479,14 +4423,6 @@ msgstr "英里"
 #: 
 msgid "kilometers"
 msgstr "公里"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "本地"
 
 #. Context: countries
 #: 
@@ -5830,10 +5766,6 @@ msgstr "將用戶輸入的ZIP/郵遞區號以大寫方式保存到資料庫。"
 msgid "Used to end a letter before Signer"
 msgstr "信結尾簽名者前用語"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics跟踪代碼"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6323,18 +6255,6 @@ msgstr "要寫入的事件日誌嚴重性，由ORM和App Logs使用"
 #: 
 msgid "Time zone"
 msgstr "時區"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API密鑰"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API保密"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS From Number"
 
 #: 
 msgid "OpenLP URL"

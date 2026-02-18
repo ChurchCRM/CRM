@@ -3261,10 +3261,6 @@ msgid "Email Export"
 msgstr "Sähköpostivienti"
 
 #: 
-msgid "List"
-msgstr "Lista"
-
-#: 
 msgid "Import Data"
 msgstr "Tuo tietoja"
 
@@ -3367,26 +3363,6 @@ msgstr "Varmuuskopio valmis, ladattavissa."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Varmuuskopio ladattu, kopio poistettu palvelimelta"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampanjat:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Lopettaneiden tilaajien määrä:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Lopettaneiden tilaajien määrä edellisen lähetyksen jälkeen:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Siivottujen määrä:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Siivottujen määrä edellisen lähetyksen jälkeen:"
 
 #: 
 msgid "Functions"
@@ -3511,10 +3487,6 @@ msgstr "Tallennuspäivä"
 #: 
 msgid "CSV Import"
 msgstr "CSV-tuonti"
-
-#: 
-msgid "Members:"
-msgstr "Jäsenet:"
 
 #: 
 msgid "There were "
@@ -3759,34 +3731,6 @@ msgstr "Hakemistoraportin teksti"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Kirkon kirjelomakkeen polku ja tiedosto"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "Hae käyttäjäkuvat Gravatarista, jos paikallista kuvaa ei ole"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Ota käyttöön etävarmuuskopiointi pilvipalveluihin"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Pilvipalvelun tyyppi (Tuetut arvot: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Etävarmuuskopioinnin käyttäjätunnus"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Etävarmuuskopioinnin salasana"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Automaattisten etävarmuuskopioiden aikaväli tunteina"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Viimeisimmän varmuuskopion aikaleima"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4323,14 +4267,6 @@ msgstr "mailia"
 #: 
 msgid "kilometers"
 msgstr "kilometriä"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Paikallinen"
 
 #. Context: countries
 #: 
@@ -5671,10 +5607,6 @@ msgstr "Muuta käyttäjän syöttämät postinumerot suuraakkosiksi tallennettae
 msgid "Used to end a letter before Signer"
 msgstr "Käytetään kirjeen lopussa ennen allekirjoittajaa"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics -seurantakoodi"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6158,18 +6090,6 @@ msgstr "Lokiin kirjoitettava tapahtumien vakavuustaso"
 #: 
 msgid "Time zone"
 msgstr "Aikavyöhyke"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API -avain"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API -salaisuus"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS lähettäjän numero"
 
 #: 
 msgid "OpenLP URL"

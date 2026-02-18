@@ -3283,10 +3283,6 @@ msgid "Email Export"
 msgstr "E-mail export"
 
 #: 
-msgid "List"
-msgstr "Seznam"
-
-#: 
 msgid "Import Data"
 msgstr "Importovat data"
 
@@ -3389,26 +3385,6 @@ msgstr "Záloha kompletní, připraveno ke stažení."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Záloha stažena, kopie na serveru odstraněna"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampaně:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Počet odhlášených:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Počet odhlášených od posledního odeslání:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Vyčištěný počet:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Vyčištěný počet od posledního odeslání:"
 
 #: 
 msgid "Functions"
@@ -3534,10 +3510,6 @@ msgstr "Zadané datum"
 #: 
 msgid "CSV Import"
 msgstr "CSV Import"
-
-#: 
-msgid "Members:"
-msgstr "Členové:"
 
 #: 
 msgid "There were "
@@ -3782,34 +3754,6 @@ msgstr "Text pro zprávu o adresáři"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Cesta a soubor hlavičkového papíru sboru"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "vyhledat obrázky uživatelů v aplikaci Gravatar, pokud není k dispozici žádný místní obrázek"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Povolení vzdáleného zálohování do cloudových služeb"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Typ cloudové služby (Podporované hodnoty: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Uživatelské jméno pro vzdálené zálohování"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Heslo pro vzdálené zálohování"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Interval v hodinách pro automatické vzdálené zálohování"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Časové razítko poslední zálohy"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4346,14 +4290,6 @@ msgstr "míle"
 #: 
 msgid "kilometers"
 msgstr "kilometry"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Místní"
 
 #. Context: countries
 #: 
@@ -5694,10 +5630,6 @@ msgstr "Převést uživatelem zadané poštovní směrovací číslo při uklád
 msgid "Used to end a letter before Signer"
 msgstr "Používá se k ukončení dopisu před podpisem"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Sledovací kód služby Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6183,18 +6115,6 @@ msgstr "Závažnost zapisovaných událostí do protokolu, používá ORM a App 
 #: 
 msgid "Time zone"
 msgstr "Časová zóna"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Klíč API Nexmo SMS"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API Secret"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS z čísla"
 
 #: 
 msgid "OpenLP URL"

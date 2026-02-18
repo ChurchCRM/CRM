@@ -3376,10 +3376,6 @@ msgid "Email Export"
 msgstr "Экспорт электронной почты"
 
 #: 
-msgid "List"
-msgstr "Список"
-
-#: 
 msgid "Import Data"
 msgstr "Импортировать данные"
 
@@ -3482,26 +3478,6 @@ msgstr "Резервное копирование завершено, готов
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Резервная копия загружена, копия на сервере удалена"
-
-#: 
-msgid "Campaigns:"
-msgstr "Кампании:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Количество отписавшихся:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Количество отписавшихся с момента последней отправки:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Количество очищенных:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Счетчик очищен с момента последней отправки:"
 
 #: 
 msgid "Functions"
@@ -3628,10 +3604,6 @@ msgstr "Дата членства"
 #: 
 msgid "CSV Import"
 msgstr "CSV Импорт"
-
-#: 
-msgid "Members:"
-msgstr "Участники"
 
 #: 
 msgid "There were "
@@ -3878,34 +3850,6 @@ msgstr "Вербаж для отчета каталога"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Путь и файл бланка церкви"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "искать пользовательские изображения на Gravatar, когда нет локального изображения"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Включить удаленное резервное копирование в облачные службы"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Тип облачной службы (поддерживаемые значения: WebDAV, локальный)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Имя пользователя удаленного резервного копирования"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Пароль удаленного резервного копирования"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Интервал в часах для автоматического удаленного резервного копирования"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Отметка времени последнего резервного копирования"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4443,14 +4387,6 @@ msgstr "Мили"
 #: 
 msgid "kilometers"
 msgstr "Километры"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Местный"
 
 #. Context: countries
 #: 
@@ -5792,10 +5728,6 @@ msgstr "Приводить вводимые пользователем почт�
 msgid "Used to end a letter before Signer"
 msgstr "Используется для завершения письма перед подписью"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Код отслеживания Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6279,18 +6211,6 @@ msgstr "Уровень серьезности лога событий, испо�
 #: 
 msgid "Time zone"
 msgstr "Часовой пояс"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API Key"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API Secret"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Номер отправителя Nexmo SMS"
 
 #: 
 msgid "OpenLP URL"

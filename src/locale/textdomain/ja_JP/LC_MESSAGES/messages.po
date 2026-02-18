@@ -3253,10 +3253,6 @@ msgid "Email Export"
 msgstr "メール・エクスポート"
 
 #: 
-msgid "List"
-msgstr "一覧"
-
-#: 
 msgid "Import Data"
 msgstr "データをインポート"
 
@@ -3359,26 +3355,6 @@ msgstr "バックアップが完了しました。ダウンロード可能です
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "バックアップがダウンロードされました。サーバー上のコピーは削除されました"
-
-#: 
-msgid "Campaigns:"
-msgstr "キャンペーン:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "配信停止数:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "最終送信以降の配信停止数:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "クリーニング済み件数:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "最終送信以降のクリーニング済み件数:"
 
 #: 
 msgid "Functions"
@@ -3503,10 +3479,6 @@ msgstr "入力日"
 #: 
 msgid "CSV Import"
 msgstr "CSVインポート"
-
-#: 
-msgid "Members:"
-msgstr "メンバー:"
 
 #: 
 msgid "There were "
@@ -3751,34 +3723,6 @@ msgstr "ディレクトリレポートの文言"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "教会レターヘッドパスとファイル"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "ローカル画像がない場合、Gravatarでユーザー画像を検索します"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "クラウドサービスへのリモートバックアップを有効にする"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "クラウドサービスタイプ (サポート値: WebDAV、Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "リモートバックアップユーザー名"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "リモートバックアップパスワード"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "自動リモートバックアップの間隔(時間)"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "最後のバックアップタイムスタンプ"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4315,14 +4259,6 @@ msgstr "マイル"
 #: 
 msgid "kilometers"
 msgstr "キロメートル"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "ローカル"
 
 #. Context: countries
 #: 
@@ -5658,10 +5594,6 @@ msgstr "ユーザーが入力した郵便番号をデータベースに保存す
 msgid "Used to end a letter before Signer"
 msgstr "署名者の前に手紙を終了するために使用されます"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Googleアナリティクストラッキングコード"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6145,18 +6077,6 @@ msgstr "記録するイベントログの重大度、ORMとアプリログで使
 #: 
 msgid "Time zone"
 msgstr "タイムゾーン"
-
-#: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS APIキー"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS APIシークレット"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMSの送信元番号"
 
 #: 
 msgid "OpenLP URL"

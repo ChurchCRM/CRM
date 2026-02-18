@@ -88,7 +88,6 @@
   "Backup archive does not contain a database": "",
   "Make user-entered zip/postcodes UPPERCASE when saving to the database.": "",
   "Used to end a letter before Signer": "",
-  "Google Analytics Tracking Code": "",
   "English - United States": "",
   "English - Canada": "",
   "English - Australia": "",
@@ -98,5 +97,6 @@
   "French - France": "",
   "Hungarian": "",
   "Italian - Italy": "",
-  "Norwegian": ""
+  "Norwegian": "",
+  "Dutch - Netherlands": ""
 }
