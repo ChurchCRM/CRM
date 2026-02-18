@@ -8,7 +8,7 @@ This file is a pointer to the canonical development guidance for AI agents (Copi
   - API development, database operations, testing, security, git workflow, and specialized ChurchCRM topics
   - Load only the skills relevant to your current task
   
-- **AI Agent Workflow:** [wiki/AI-Agent-Workflow.md](../wiki/AI-Agent-Workflow.md) — how to use AI agents for features, bug fixes, and PRs
+- **AI Agent Workflow:** [Wiki: AI-Agent-Workflow](https://github.com/ChurchCRM/CRM/wiki/AI-Agent-Workflow) — how to use AI agents for features, bug fixes, and PRs
   - Principles, workflows, templates, and best practices for safe AI-driven development
 
 - **Quick Reference by Task:**
@@ -43,7 +43,7 @@ This file is a pointer to the canonical development guidance for AI agents (Copi
 ## More Info
 
 - Full skill list and descriptions: [.agents/skills/README.md](../.agents/skills/README.md)
-- Workflow guide for contributors: [wiki/AI-Agent-Workflow.md](../wiki/AI-Agent-Workflow.md)
+- Workflow guide for contributors: [Wiki: AI-Agent-Workflow](https://github.com/ChurchCRM/CRM/wiki/AI-Agent-Workflow)
 - Repository: [github.com/ChurchCRM/CRM](https://github.com/ChurchCRM/CRM)
 
 ---
