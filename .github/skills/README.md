@@ -390,3 +390,39 @@ Keep skills focused, actionable, and aligned with actual codebase patterns.
 ---
 
 **Last updated:** February 16, 2026 (24 skills - includes sub-agent findings)
+
+## Using skills.sh (recommended for generic skills)
+
+We recommend sourcing generic, upstream skills from https://skills.sh/ rather than duplicating them verbatim in this repo. This keeps canonical guidance maintained upstream while letting this repo keep only ChurchCRM-specific and audited guidance.
+
+- Install an upstream skill locally into your agent runtime with:
+
+```bash
+npx skills add https://skills.sh/ --skill <skill-name>
+```
+
+- Example (adds the upstream `web-design-guidelines` skill into your local skills store):
+
+```bash
+npx skills add https://skills.sh/ --skill web-design-guidelines
+```
+
+- Recommended policy:
+	- Keep project-specific skills in this directory when they reference `src/`, exact `composer.json`/`package.json` versions, security rules, or CI requirements (examples: `slim-mvc-skill.md`, `groups-mvc-guidelines.md`, `db-schema-migration.md`).
+	- For generic guidance (language best practices, generic testing patterns, web-design templates), prefer linking to or installing the skills.sh copy and add a small wrapper here noting repo-specific overrides.
+
+- Wrapper pattern (recommended): create a short skill file that points to the upstream source and lists repo-specific differences. Example header:
+
+```
+# Web Design Guidelines (upstream)
+> Upstream: https://skills.sh/web-design-guidelines
+> Repo overrides: Bootstrap 4.6.2, AdminLTE 3.2.0
+
+Short note: Use upstream content for general guidance; follow repo overrides when implementing UI changes.
+```
+
+- If you want, I can:
+	- Scan the `.github/skills` directory and create wrapper files for safe-to-upstream skills.
+	- Populate your local `.agents/skills` with selected upstream skills using `npx skills add`.
+	- Create a short automation script that refreshes selected upstream skills into `.agents/skills`.
+
