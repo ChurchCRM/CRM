@@ -54,6 +54,14 @@ If you notice anything missing or unclear, feel free to open an issue or submit 
 Join our [Matrix Chat](https://gitter.im/ChurchCRM/CRM) to connect with other users, ask questions, and share your experiences.
 We believe in the power of a supportive community!
 
+## 🛠️ Installing Dev Skills
+
+To set up your development skills, run:
+
+```bash
+npm run install-skills
+```
+
 ## 🙏 Thank You
 
 A heartfelt thank you to all our contributors, past and present. Your efforts make ChurchCRM better with every release.

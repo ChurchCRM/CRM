@@ -22,6 +22,7 @@
     },
     "scripts": {
         "audit": "npm audit fix --only=prod --audit-level=high",
+        "install-skills": "node ./scripts/dev/install-skills.js",
         "build": "run-p build:php build:frontend",
         "build:frontend": "NODE_ENV=production npm run build:js && npm run format:web",
         "build:js": "run-p build:js:legacy build:webpack",

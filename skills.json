@@ -1,0 +1,12 @@
+[
+  {
+    "name": "php-best-practices",
+    "source": "https://skills.sh/",
+    "version": "latest"
+  },
+  {
+    "name": "gh-cli",
+    "source": "https://skills.sh/",
+    "version": "latest"
+  }
+]
