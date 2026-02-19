@@ -11,12 +11,10 @@ This directory contains modular, task-focused development skills for AI coding a
 │   ├── api-development.md
 │   ├── database-operations.md
 │   └── ...             (all project-specific skills)
-├── gh-cli/             ← Generic GitHub CLI skill (upstream)
-├── interface-design/   ← Generic interface design skill (upstream)
-├── php-best-practices/ ← Generic PHP 8.5+ best practices (upstream)
-├── web-design-guidelines/ ← Generic web design skill (upstream)
 └── README.md           ← This file
 ```
+
+> **Note:** Generic/upstream skills (`gh-cli`, `interface-design`, `php-best-practices`, `web-design-guidelines`) are **not stored in this repository**. They are fetched dynamically via [Skillshare](https://skills.sh/) — see [Generic / Upstream Skills](#generic--upstream-skills) below.
 
 ## ChurchCRM Skills
 
@@ -76,16 +74,40 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 
 ## Generic / Upstream Skills
 
-These skills are not ChurchCRM-specific and are maintained as standalone skill packages:
+These skills are not ChurchCRM-specific and are managed externally via the [Skillshare](https://skills.sh/) plugin ecosystem. **Do not commit these directories to this repository** — they are listed in `.gitignore` and must be fetched locally using `npx skills add`.
 
-| Folder | Description |
-|--------|-------------|
-| [`gh-cli/`](./gh-cli/) | GitHub CLI comprehensive reference |
-| [`interface-design/`](./interface-design/) | Interface design patterns for dashboards and admin panels |
-| [`php-best-practices/`](./php-best-practices/) | Generic PHP 8.5+, PSR standards, SOLID principles |
-| [`web-design-guidelines/`](./web-design-guidelines/) | Web Interface Guidelines compliance |
+### Fetching Skills Locally
 
-> **Note:** For generic guidance (language best practices, generic testing patterns, web-design templates), prefer upstream skills from https://skills.sh/ and add a small ChurchCRM-specific wrapper in `churchcrm/` noting repo-specific overrides.
+Run the following commands to install the generic skills in your local environment:
+
+```bash
+npx skills add https://skills.sh/ --skill php-best-practices
+npx skills add https://skills.sh/ --skill gh-cli
+npx skills add https://skills.sh/ --skill interface-design
+npx skills add vercel-labs/agent-skills --skill web-design-guidelines
+```
+
+### CI/CD Integration
+
+Add a step like the following to your GitHub Actions workflow to install skills during setup:
+
+```yaml
+- name: Install Skills
+  run: |
+    npx skills add https://skills.sh/ --skill php-best-practices
+    npx skills add https://skills.sh/ --skill gh-cli
+    npx skills add https://skills.sh/ --skill interface-design
+    npx skills add vercel-labs/agent-skills --skill web-design-guidelines
+```
+
+| Skill | Source | Description |
+|-------|--------|-------------|
+| `php-best-practices` | `https://skills.sh/` | Generic PHP 8.5+, PSR standards, SOLID principles |
+| `gh-cli` | `https://skills.sh/` | GitHub CLI comprehensive reference |
+| `interface-design` | `https://skills.sh/` | Interface design patterns for dashboards and admin panels |
+| `web-design-guidelines` | `vercel-labs/agent-skills` | Web Interface Guidelines compliance |
+
+> **Note:** For generic guidance (language best practices, generic testing patterns, web-design templates), always fetch from the upstream Skillshare registry rather than adding static files here.
 
 ## How to Use These Skills
 
@@ -129,9 +151,13 @@ These skills are not ChurchCRM-specific and are maintained as standalone skill p
 
 ### Adding Generic/Upstream Skills
 
-1. Create a new skill folder (e.g., `my-skill/SKILL.md`)
-2. Add an entry to the Generic Skills table above
-3. For skills.sh upstream skills: `npx skills add https://skills.sh/ --skill <skill-name>`
+Generic/upstream skills must **not** be added as static files in this repository. Instead:
+
+1. Identify the skill on the [Skillshare registry](https://skills.sh/) or `vercel-labs/agent-skills`
+2. Add the `npx skills add` command to the [Fetching Skills Locally](#fetching-skills-locally) and [CI/CD Integration](#cicd-integration) sections above
+3. Add an entry to the Generic Skills table above
+
+> ⚠️ **Do not commit static skill directories** (e.g., `gh-cli/`, `php-best-practices/`) to this repository. These paths are covered by `.gitignore`.
 
 ---
 

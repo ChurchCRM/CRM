@@ -42,3 +42,10 @@ cypress/videos
 cypress/downloads
 cypress.config.ts
 
+
+
+# Skillshare-managed skill directories (fetched dynamically via `npx skills add`)
+.agents/skills/gh-cli/
+.agents/skills/interface-design/
+.agents/skills/php-best-practices/
+.agents/skills/web-design-guidelines/
