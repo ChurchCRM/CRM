@@ -36,6 +36,6 @@ Best practices (short)
 
 See also:
 - `git-workflow.md` for branching, commit message format, and the full pre-commit checklist.
-- `gh-cli` skill (local `.agents/skills/gh-cli/SKILL.md` or upstream) for concrete `gh` commands.
+- `gh-cli` skill (install via `npx skills add https://skills.sh/ --skill gh-cli`) for concrete `gh` commands.
 
 If you prefer, I can convert this into a checklist file that the CI or editors can surface (e.g., a JSON checklist or PR template snippet).

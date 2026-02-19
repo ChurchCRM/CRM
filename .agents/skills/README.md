@@ -6,17 +6,17 @@ This directory contains modular, task-focused development skills for AI coding a
 
 ```
 .agents/skills/
-├── churchcrm/          ← ChurchCRM-specific skills (34 files)
+├── churchcrm/          ← ChurchCRM-specific skills (committed to git)
 │   ├── SKILL.md        ← Entry point index for ChurchCRM skills
 │   ├── api-development.md
 │   ├── database-operations.md
 │   └── ...             (all project-specific skills)
-├── gh-cli/             ← Generic GitHub CLI skill (upstream)
-├── interface-design/   ← Generic interface design skill (upstream)
-├── php-best-practices/ ← Generic PHP 8.5+ best practices (upstream)
-├── web-design-guidelines/ ← Generic web design skill (upstream)
 └── README.md           ← This file
 ```
+
+> **Upstream skills** (`gh-cli/`, `interface-design/`, `php-best-practices/`, `web-design-guidelines/`)
+> are managed via the [Skillshare plugin (`npx skills`)](https://skills.sh/) and are **not** committed
+> to this repository. Install them locally using the commands in the [Upstream Skills](#upstream-skills) section below.
 
 ## ChurchCRM Skills
 
@@ -74,18 +74,28 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 - [Code Standards](./churchcrm/code-standards.md)
 - [Wiki Documentation](./churchcrm/wiki-documentation.md)
 
-## Generic / Upstream Skills
+## Upstream Skills
 
-These skills are not ChurchCRM-specific and are maintained as standalone skill packages:
+These skills are not ChurchCRM-specific. They are sourced from upstream skill packages and managed
+via the [Skillshare plugin (`npx skills`)](https://skills.sh/). **They are not stored in this repo.**
+Install them locally after cloning:
 
-| Folder | Description |
-|--------|-------------|
-| [`gh-cli/`](./gh-cli/) | GitHub CLI comprehensive reference |
-| [`interface-design/`](./interface-design/) | Interface design patterns for dashboards and admin panels |
-| [`php-best-practices/`](./php-best-practices/) | Generic PHP 8.5+, PSR standards, SOLID principles |
-| [`web-design-guidelines/`](./web-design-guidelines/) | Web Interface Guidelines compliance |
+```bash
+# Web Interface Guidelines compliance
+npx skills add vercel-labs/agent-skills --skill web-design-guidelines
 
-> **Note:** For generic guidance (language best practices, generic testing patterns, web-design templates), prefer upstream skills from https://skills.sh/ and add a small ChurchCRM-specific wrapper in `churchcrm/` noting repo-specific overrides.
+# Generic PHP 8.5+, PSR standards, SOLID principles
+npx skills add https://skills.sh/ --skill php-best-practices
+
+# GitHub CLI comprehensive reference
+npx skills add https://skills.sh/ --skill gh-cli
+
+# Interface design for dashboards and admin panels
+npx skills add https://skills.sh/ --skill interface-design
+```
+
+> For generic guidance that overlaps with ChurchCRM patterns (e.g., PHP best practices), prefer the
+> ChurchCRM-specific wrapper in `churchcrm/php-best-practices.md` which notes repo-specific overrides.
 
 ## How to Use These Skills
 
@@ -129,9 +139,12 @@ These skills are not ChurchCRM-specific and are maintained as standalone skill p
 
 ### Adding Generic/Upstream Skills
 
-1. Create a new skill folder (e.g., `my-skill/SKILL.md`)
-2. Add an entry to the Generic Skills table above
-3. For skills.sh upstream skills: `npx skills add https://skills.sh/ --skill <skill-name>`
+Generic skills are managed via the Skillshare plugin. Do NOT add them as files to this repo.
+
+1. Find the upstream skill on [skills.sh](https://skills.sh/) or a GitHub repository
+2. Install it locally with `npx skills add <source> --skill <skill-name>`
+3. Add the install command to the [Upstream Skills](#upstream-skills) section above
+4. If ChurchCRM-specific overrides are needed, create a wrapper in `churchcrm/`
 
 ---
 
