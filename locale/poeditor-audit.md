@@ -10,6 +10,7 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `ta` | Tamil | 3008 | 100% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 2796 | 92.95% | 🟢 Complete | ✅ Yes |
 | `zh-cn` | Chinese | 2796 | 92.95% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 2796 | 92.95% | 🟢 Complete | ✅ Yes |
@@ -26,7 +27,6 @@
 | `es-ar` | Spanish (AR) | 2796 | 92.95% | 🟢 Complete | ✅ Yes |
 | `es-mx` | Spanish (MX) | 2796 | 92.95% | 🟢 Complete | ✅ Yes |
 | `es-sv` | Spanish (SV) | 2796 | 92.95% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2796 | 92.95% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 2790 | 92.75% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 2769 | 92.05% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2762 | 91.82% | 🟢 Complete | ✅ Yes |
