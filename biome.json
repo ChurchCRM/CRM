@@ -18,6 +18,7 @@
       "!src/locale/states",
       "!src/locale/i18n",
       "!src/locale/vendor",
+      "!src/locale/poeditor.json",
       "!src/admin/data/signatures.json",
       "!**/*.min.js",
       "!**/*.scss"
