@@ -7,7 +7,6 @@ use ChurchCRM\dto\SystemURLs;
 use Monolog\Formatter\JsonFormatter;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
-use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Processor\IntrospectionProcessor;
@@ -20,7 +19,7 @@ class LoggerUtils
     private static ?Logger $cspLogger = null;
     private static ?Logger $authLogger = null;
     private static ?Logger $slimLogger = null;
-    private static ?StreamHandler $authLogHandler = null;
+    private static ?RotatingFileHandler $authLogHandler = null;
     private static ?string $correlationId = null;
 
     public static function getCorrelationId(): ?string
@@ -225,11 +224,11 @@ class LoggerUtils
             self::$authLogger = new Logger('authLogger');
             
             try {
-                // Use StreamHandler with dated filename (YYYY-MM-DD-auth.log) for consistent naming
-                $authLogFile = self::buildLogFilePath('auth');
-                self::$authLogHandler = new StreamHandler($authLogFile, self::getLogLevelValue());
+                // Use RotatingFileHandler with 30-day retention for consistency with other loggers
+                self::$authLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('auth'), 30, self::getLogLevelValue());
+                self::$authLogHandler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 
-                // Use standard LineFormatter to match ORM and other system logs format
+                // Use standard formatter to match other system logs
                 self::$authLogHandler->setFormatter(self::createFormatter());
                 
                 // Add error callback for graceful failure handling (guarded for older Monolog)

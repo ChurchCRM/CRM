@@ -456,8 +456,8 @@ class Bootstrapper
 
             // Remap INFO → DEBUG: Propel hardcodes ->info() for all SQL queries.
             // Without this, every SQL entry appears as INFO regardless of log level config.
-            $ormLogger->pushProcessor(function ($record) {
-                if ($record instanceof \Monolog\LogRecord && $record->level === Level::Info) {
+            $ormLogger->pushProcessor(function (\Monolog\LogRecord $record): \Monolog\LogRecord {
+                if ($record->level === Level::Info) {
                     return new \Monolog\LogRecord(
                         datetime: $record->datetime,
                         channel: $record->channel,
