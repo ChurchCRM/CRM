@@ -14,6 +14,9 @@ use Monolog\Processor\PsrLogMessageProcessor;
 
 class LoggerUtils
 {
+    /** Number of daily log files to retain before the oldest is deleted. */
+    private const LOG_RETENTION_DAYS = 3;
+
     private static ?Logger $appLogger = null;
     private static ?RotatingFileHandler $appLogHandler = null;
     private static ?Logger $cspLogger = null;
@@ -126,7 +129,7 @@ class LoggerUtils
             
             // Use RotatingFileHandler for automatic daily rotation
             try {
-                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('slim'), 30, self::getLogLevel()->value);
+                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('slim'), self::LOG_RETENTION_DAYS, self::getLogLevel()->value);
                 $handler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 $handler->setFormatter(self::createFormatter());
                 
@@ -167,7 +170,7 @@ class LoggerUtils
             self::$appLogger = new Logger('defaultLogger');
             
             try {
-                self::$appLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('app'), 30, $level);
+                self::$appLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('app'), self::LOG_RETENTION_DAYS, $level);
                 self::$appLogHandler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 self::$appLogHandler->setFormatter(self::createFormatter());
                 
@@ -224,8 +227,8 @@ class LoggerUtils
             self::$authLogger = new Logger('authLogger');
             
             try {
-                // Use RotatingFileHandler with 30-day retention for consistency with other loggers
-                self::$authLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('auth'), 30, self::getLogLevelValue());
+                // Use RotatingFileHandler for consistency with other loggers
+                self::$authLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('auth'), self::LOG_RETENTION_DAYS, self::getLogLevelValue());
                 self::$authLogHandler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 
                 // Use standard formatter to match other system logs
@@ -280,7 +283,7 @@ class LoggerUtils
             
             // Use RotatingFileHandler for automatic daily rotation and retention
             try {
-                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('csp'), 30, self::getLogLevel()->value);
+                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('csp'), self::LOG_RETENTION_DAYS, self::getLogLevel()->value);
                 $handler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 $handler->setFormatter(self::createFormatter());
                 
