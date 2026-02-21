@@ -442,14 +442,35 @@ class Bootstrapper
         ini_set('log_errors', 1);
         ini_set('error_log', $phpLogPath);
 
-        // ORM Logs
-        if (SystemConfig::debugEnabled()) {
+        // ORM Logs - only enabled when BOTH debug mode is on AND log level is DEBUG.
+        // Root cause: Propel's ConnectionWrapper::log() hardcodes $logger->info()
+        // for every SQL query - the level is not configurable from outside.
+        // Fix: a processor remaps every INFO record to DEBUG before it hits the handler,
+        // so ORM queries are correctly classified as DEBUG-level entries.
+        if (SystemConfig::debugEnabled() && LoggerUtils::isDebugLogLevel()) {
             $ormLogPath = LoggerUtils::buildLogFilePath("orm");
             $ormLogger = new Logger('ormLogger');
             self::$bootStrapLogger->debug("Configuring ORM logs at :" . $ormLogPath);
             self::$dbClassName = '\\' . DebugPDO::class;
             self::$manager->setConfiguration(self::buildConnectionManagerConfig());
-            $ormLogger->pushHandler(new StreamHandler($ormLogPath, LoggerUtils::getLogLevel()));
+
+            // Remap INFO → DEBUG: Propel hardcodes ->info() for all SQL queries.
+            // Without this, every SQL entry appears as INFO regardless of log level config.
+            $ormLogger->pushProcessor(function (\Monolog\LogRecord $record): \Monolog\LogRecord {
+                if ($record->level === Level::Info) {
+                    return new \Monolog\LogRecord(
+                        datetime: $record->datetime,
+                        channel: $record->channel,
+                        level: Level::Debug,
+                        message: $record->message,
+                        context: $record->context,
+                        extra: $record->extra,
+                    );
+                }
+                return $record;
+            });
+
+            $ormLogger->pushHandler(new StreamHandler($ormLogPath, Level::Debug->value));
             self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
         }
     }
