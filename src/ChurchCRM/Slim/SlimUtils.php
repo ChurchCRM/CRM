@@ -6,6 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 use Exception;
 use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -110,7 +111,10 @@ class SlimUtils
     {
         $logPath = LoggerUtils::buildLogFilePath('slim-error');
         $logger = new Logger('slim');
-        $logger->pushHandler(new StreamHandler($logPath, LoggerUtils::getLogLevel()));
+        // Slim errors should be logged at WARNING level minimum to capture all errors
+        // regardless of system log level configuration
+        $logLevel = max(LoggerUtils::getLogLevel()->value, Level::Warning->value);
+        $logger->pushHandler(new StreamHandler($logPath, $logLevel));
         $errorMiddleware->setDefaultErrorHandler(function (
             Request $request,
             Throwable $exception,
