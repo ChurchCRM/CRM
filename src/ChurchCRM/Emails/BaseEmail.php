@@ -44,10 +44,9 @@ abstract class BaseEmail
             $this->mail->Username = SystemConfig::getValue('sSMTPUser');
             $this->mail->Password = SystemConfig::getValue('sSMTPPass');
         }
-        if (SystemConfig::debugEnabled()) {
-            $this->mail->SMTPDebug = 1;
-            $this->mail->Debugoutput = 'error_log';
-        }
+        // Keep SMTP debug off by default to avoid verbose SMTP dumps in logs.
+        // If deeper SMTP troubleshooting is needed enable PHPMailer debug explicitly.
+        $this->mail->SMTPDebug = 0;
     }
 
     public function send(): bool
