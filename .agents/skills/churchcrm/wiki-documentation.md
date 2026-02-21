@@ -1,7 +1,34 @@
 # Skill: Creating Wiki Documentation
 
 ## Context
-ChurchCRM uses GitHub Wiki for complex documentation, admin guides, and developer reference materials. This skill covers when to create wiki articles and how to structure them for GitHub's wiki system.
+ChurchCRM documentation is split across three locations. This skill covers where to put new documentation and how to structure it.
+
+---
+
+## Documentation Locations — Where Does Content Go?
+
+| Location | Audience | Content |
+|----------|----------|---------|
+| [`docs/user-manual/`](../../docs/user-manual/) | **End users** (church staff) | Day-to-day usage guides, feature how-tos, FAQs |
+| [churchcrm.io website](https://churchcrm.io) | **Everyone** | Installation, features overview, downloads |
+| [GitHub Wiki](https://github.com/ChurchCRM/CRM/wiki) | **Developers & Admins** | Dev setup, architecture, contributing, advanced config |
+
+### Use `docs/user-manual/` (this repo) for:
+- Feature how-to guides (Families, Persons, Groups, Events, Finances)
+- End-user FAQs and getting started guides
+- Content intended to be published at churchcrm.io
+
+### Use the GitHub Wiki for:
+- **Developer** content: dev setup, code conventions, database structure, Docker, contributing, testing, release process
+- **Admin** content (server-level): first-run setup, user management, backup/restore, troubleshooting, logging
+- Architecture decisions and technical reference material
+- Content too large or complex for a single Markdown file in `docs/`
+
+### Use README or guide files for:
+- Installation steps → `README.md` or churchcrm.io
+- Contributing guidelines → `CONTRIBUTING.md`
+- API documentation → API comments + OpenAPI spec
+- Architecture → ADR (Architectural Decision Records)
 
 ---
 
@@ -10,21 +37,19 @@ ChurchCRM uses GitHub Wiki for complex documentation, admin guides, and develope
 Create a wiki article when the topic is:
 
 ### Complex & Reference-Heavy
-- Multi-step workflows with edge cases
+- Multi-step admin or developer workflows with edge cases
 - Configuration guides with many options
 - Architecture decisions and trade-offs
-- Troubleshooting procedures
+- Troubleshooting procedures (server-level)
 
-### For Multiple Audiences
-- Administrators (setup, backup, permissions)
-- Developers (architecture, extending plugins)
-- End users (features, how-tos)
-- Integrators (API reference, webhooks)
+### For Developers or Administrators
+- Server setup and system maintenance
+- Developer environment setup and workflows
+- Code standards, architecture, plugin system
 
 ### Documentation That Evolves
-- Feature documentation as features change
-- Best practices that improve over time
-- Known issues and their workarounds
+- Technical best practices
+- Known issues and workarounds
 - Installation guides for different environments
 
 ### Too Large for In-Code Comments
@@ -36,6 +61,12 @@ Create a wiki article when the topic is:
 ---
 
 ## When NOT to Use Wiki
+
+**Use `docs/user-manual/` instead for:**
+- End-user feature guides (Families, Persons, Groups, Events, Finances)
+- Getting started guides for church staff
+- FAQs that non-technical users will read
+- Content you want published on churchcrm.io
 
 **Use the appropriate skill file instead for:**
 - API patterns → [API Development](./api-development.md) skill
