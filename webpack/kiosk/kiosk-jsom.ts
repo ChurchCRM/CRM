@@ -1114,28 +1114,6 @@ export const kiosk: KioskJSOM = {
   stopEventLoop,
 };
 
-// Delegated event handlers for dynamically created buttons
-$(document).on("click", ".parentAlertButton", function () {
-  const personId = $(this).data("personid");
-  if (personId) {
-    triggerNotification(personId);
-  }
-});
-
-$(document).on("click", ".checkinButton", function () {
-  const personId = $(this).data("personid");
-  if (personId) {
-    checkInPerson(personId);
-  }
-});
-
-$(document).on("click", ".checkoutButton", function () {
-  const personId = $(this).data("personid");
-  if (personId) {
-    checkOutPerson(personId);
-  }
-});
-
 // Attach to window.CRM.kiosk for global access (for external use)
 if (!(window as any).CRM) {
   (window as any).CRM = {};

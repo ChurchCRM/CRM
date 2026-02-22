@@ -121,21 +121,20 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $Notification->setProjectorText($event->getType() . '-' . $Person->getId());
         $status = $Notification->send();
 
-        // Log notification result
-        if ($status && isset($status['success']) && $status['success']) {
-            LoggerUtils::getAppLogger()->info('triggerNotification: Notification sent successfully', [
-                'personId' => $personId,
-                'personName' => $Person->getFirstName() . ' ' . $Person->getLastName(),
-                'eventName' => $eventName,
-                'status' => $status,
-            ]);
+        // Log notification result — send() returns ['status' => '', 'methods' => ['email: 1', 'sms: 1', ...]]
+        // A method is successful when its string ends with ': 1' (PHP bool true cast to string)
+        $methods = $status['methods'] ?? [];
+        $anySuccess = !empty(array_filter($methods, fn ($m) => str_ends_with((string) $m, '1')));
+        $logContext = [
+            'personId' => $personId,
+            'personName' => $Person->getFirstName() . ' ' . $Person->getLastName(),
+            'eventName' => $eventName,
+            'methods' => $methods,
+        ];
+        if ($anySuccess) {
+            LoggerUtils::getAppLogger()->info('triggerNotification: Notification sent', $logContext);
         } else {
-            LoggerUtils::getAppLogger()->warning('triggerNotification: Notification failed', [
-                'personId' => $personId,
-                'personName' => $Person->getFirstName() . ' ' . $Person->getLastName(),
-                'eventName' => $eventName,
-                'status' => $status,
-            ]);
+            LoggerUtils::getAppLogger()->warning('triggerNotification: No notification channel delivered', $logContext);
         }
 
         return SlimUtils::renderJSON($response, $status);

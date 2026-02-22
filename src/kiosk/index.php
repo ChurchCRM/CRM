@@ -7,6 +7,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\KioskDevice;
 use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
@@ -122,6 +123,9 @@ $app->addRoutingMiddleware();
 
 $app->add(new CorsMiddleware());
 $app->add(VersionMiddleware::class);
+
+// Initialize plugin system so Notification::send() can access Vonage SMS and OpenLP plugins
+PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
 
 // Device routes (no auth middleware - uses kiosk cookie)
 // Pass helper function to device routes

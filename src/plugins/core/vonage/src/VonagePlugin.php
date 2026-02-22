@@ -265,7 +265,16 @@ class VonagePlugin extends AbstractPlugin
             return null;
         }
 
-        $formatted = '+' . $numeric;
+        // Detect NANP (North American Numbering Plan) numbers stored without a country code.
+        // 10 digits → US/Canada number missing the leading 1 (e.g. 3851415437 = Utah area code 385)
+        // 11 digits starting with 1 → US/Canada number with country code already present
+        if (strlen($numeric) === 10) {
+            $formatted = '+1' . $numeric;
+        } elseif (strlen($numeric) === 11 && $numeric[0] === '1') {
+            $formatted = '+' . $numeric;
+        } else {
+            $formatted = '+' . $numeric;
+        }
 
         return $this->isValidE164($formatted) ? $formatted : null;
     }
