@@ -40,7 +40,6 @@
     "drewm/mailchimp-api": "^2.5.4",
     "endroid/qr-code": "^6.1.3",
     "ezyang/htmlpurifier": "^4.17.0",
-    "geocoder-php/bing-maps-provider": "^4.3.0",
     "geocoder-php/google-maps-provider": "^4.7.1",
     "ifsnop/mysqldump-php": "^2.12",
     "knplabs/github-api": "^3.12.0",
