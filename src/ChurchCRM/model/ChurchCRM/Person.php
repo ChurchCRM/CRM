@@ -628,7 +628,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getNumericCellPhone(): string
     {
-        return '1' . preg_replace('/[^\.0-9]/', '', $this->getCellPhone());
+        return preg_replace('/\D/', '', $this->getCellPhone());
     }
 
     public function postSave(ConnectionInterface $con = null): void

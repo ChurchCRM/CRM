@@ -8,6 +8,7 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -95,12 +96,47 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $groups = $event->getGroups();
         $eventName = $groups->count() > 0 ? $groups->getFirst()->getName() : $event->getTitle();
 
+        $family = $Person->getFamily();
+        if ($family === null) {
+            LoggerUtils::getAppLogger()->warning('triggerNotification: Person has no family', [
+                'personId' => $personId,
+                'personName' => $Person->getFirstName() . ' ' . $Person->getLastName(),
+                'eventName' => $eventName,
+            ]);
+            return SlimUtils::renderErrorJSON($response, gettext('Person has no family'), [], 404);
+        }
+
+        LoggerUtils::getAppLogger()->info('triggerNotification: Sending notification', [
+            'personId' => $personId,
+            'personName' => $Person->getFirstName() . ' ' . $Person->getLastName(),
+            'eventName' => $eventName,
+            'familyId' => $family->getId(),
+            'recipientCount' => count($family->getAdults()),
+        ]);
+
         $Notification = new Notification();
         $Notification->setPerson($Person);
-        $Notification->setRecipients($Person->getFamily()->getAdults());
+        $Notification->setRecipients($family->getAdults());
         $Notification->setEventName($eventName);
         $Notification->setProjectorText($event->getType() . '-' . $Person->getId());
         $status = $Notification->send();
+
+        // Log notification result
+        if ($status && isset($status['success']) && $status['success']) {
+            LoggerUtils::getAppLogger()->info('triggerNotification: Notification sent successfully', [
+                'personId' => $personId,
+                'personName' => $Person->getFirstName() . ' ' . $Person->getLastName(),
+                'eventName' => $eventName,
+                'status' => $status,
+            ]);
+        } else {
+            LoggerUtils::getAppLogger()->warning('triggerNotification: Notification failed', [
+                'personId' => $personId,
+                'personName' => $Person->getFirstName() . ' ' . $Person->getLastName(),
+                'eventName' => $eventName,
+                'status' => $status,
+            ]);
+        }
 
         return SlimUtils::renderJSON($response, $status);
     });
@@ -172,6 +208,9 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
                 }
             }
 
+            $family = $person->getFamily();
+            $familyId = $family !== null ? $family->getId() : null;
+
             $peopleData[] = [
                 'Id' => $person->getId(),
                 'FirstName' => $person->getFirstName(),
@@ -187,6 +226,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
                 'hasPhoto' => $photo->hasUploadedPhoto(),
                 'RoleName' => $person->getVirtualColumn('RoleName'),
                 'status' => $person->getVirtualColumn('status'),
+                'familyId' => $familyId,
             ];
         }
 

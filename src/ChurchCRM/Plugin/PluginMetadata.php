@@ -24,6 +24,7 @@ class PluginMetadata
     private ?string $settingsUrl;
     private array $help;
     private ?string $routesFile;
+    private bool $hasTest;
 
     public function __construct(array $data, string $path)
     {
@@ -44,6 +45,7 @@ class PluginMetadata
         $this->settingsUrl = $data['settingsUrl'] ?? null;
         $this->help = $data['help'] ?? [];
         $this->routesFile = $data['routesFile'] ?? null;
+        $this->hasTest = (bool) ($data['hasTest'] ?? false);
     }
 
     /**
@@ -143,6 +145,11 @@ class PluginMetadata
     public function getRoutesFile(): ?string
     {
         return $this->routesFile;
+    }
+
+    public function hasTest(): bool
+    {
+        return $this->hasTest;
     }
 
     public function getHelp(): array

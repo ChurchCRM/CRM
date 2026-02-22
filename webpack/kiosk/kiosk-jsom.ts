@@ -68,12 +68,14 @@ function getPhotoUrl(personId: number): string {
 function renderClassMember(classMember: ClassMember): void {
   const existingDiv = $("#personId-" + classMember.personId);
   if (existingDiv.length > 0) {
-    // Card already exists, just update status
+    // Card already exists - update data attributes in case familyId or other data changed
+    existingDiv.data("familyId", classMember.familyId || null);
   } else {
     // Create member row
     const memberRow = $("<div>", {
       id: "personId-" + classMember.personId,
       class: "kiosk-member",
+      "data-familyId": classMember.familyId || null,
     });
 
     // Avatar
@@ -142,14 +144,19 @@ function renderClassMember(classMember: ClassMember): void {
 
     actionsDiv.append(checkinBtn);
 
-    // Only show alert button for checked-in students when notifications are enabled
-    if (classMember.status == 1 && kioskState.notificationsEnabled) {
+    // Only show alert button for checked-in students when notifications are enabled AND they have a family
+    if (classMember.status == 1 && kioskState.notificationsEnabled && classMember.familyId !== null) {
       const alertBtn = $("<button>", {
         class: "kiosk-btn kiosk-btn-alert parentAlertButton",
         "data-personid": classMember.personId,
         title: "Parent Alert",
       }).append($("<i>", { class: "fas fa-bell" }));
       actionsDiv.append(alertBtn);
+    } else if (classMember.status == 1) {
+      // Debug: log why alert button is hidden
+      console.debug(
+        `Alert hidden for ${classMember.displayName}: notifications=${kioskState.notificationsEnabled}, familyId=${classMember.familyId}`,
+      );
     }
 
     memberRow.append(avatarDiv).append(infoDiv).append(actionsDiv);
@@ -187,6 +194,21 @@ function updateMemberCounts(): void {
     $("#checkoutAllBtn").show();
   } else {
     $("#checkoutAllBtn").hide();
+  }
+
+  // Show/hide Alert All button based on checked-in count, notifications enabled, and members with families
+  let checkedInWithFamilies = 0;
+  $("#checkedInList .kiosk-member").each(function () {
+    const familyId = ($(this).data() as any)?.familyId;
+    if (familyId) {
+      checkedInWithFamilies++;
+    }
+  });
+
+  if (kioskState.notificationsEnabled && checkedInWithFamilies > 0) {
+    $("#alertAllBtn").show();
+  } else {
+    $("#alertAllBtn").hide();
   }
 
   // Show/hide empty state messages
@@ -355,6 +377,7 @@ function updateActiveClassMembers(): void {
           birthdayToday: d.birthdayToday,
           birthDay: d.birthDay,
           birthMonth: d.birthMonth,
+          familyId: d.familyId,
         };
 
         renderClassMember(memberData);
@@ -765,8 +788,53 @@ function checkOutPerson(personId: number): void {
 }
 
 /**
- * Check out all people
+ * Send alert to all checked-in students with families
  */
+function alertAll(): void {
+  // Get all checked-in members with families
+  const membersToAlert: Array<{ personId: number; name: string }> = [];
+  $("#checkedInList .kiosk-member").each(function () {
+    const idAttr = $(this).attr("id");
+    const familyId = ($(this).data() as any)?.familyId;
+    if (!idAttr || !familyId) {
+      return;
+    }
+    const numericPart = idAttr.replace("personId-", "");
+    const numericId = parseInt(numericPart, 10);
+    if (Number.isNaN(numericId)) {
+      return;
+    }
+    const name = $(this).find(".kiosk-member-name").text().trim() || "Student";
+    membersToAlert.push({ personId: numericId, name });
+  });
+
+  if (membersToAlert.length === 0) {
+    showKioskNotification("No checked-in students with families to alert", "warning");
+    return;
+  }
+
+  // Disable button and show sending state
+  const $btn = $("#alertAllBtn");
+  const originalHtml = $btn.html();
+  $btn.prop("disabled", true).html('<i class="fas fa-spinner fa-spin"></i>');
+
+  // Send alerts sequentially (small delay between each to avoid overwhelming the server)
+  let completed = 0;
+  const total = membersToAlert.length;
+
+  membersToAlert.forEach((member, index) => {
+    setTimeout(() => {
+      triggerNotification(member.personId);
+      completed++;
+
+      // Reset button after all alerts sent
+      if (completed === total) {
+        $btn.html(originalHtml).prop("disabled", false);
+        showKioskNotification(`Alerts sent to ${total} student${total > 1 ? "s" : ""}`, "success");
+      }
+    }, index * 500); // 500ms delay between each alert
+  });
+}
 function checkOutAll(): void {
   // Disable button during processing
   const $btn = $("#checkoutAllBtn");
@@ -839,8 +907,15 @@ function setCheckedIn(personId: number): void {
   // Add checked-in styling
   $personDiv.addClass("checked-in");
 
-  // Add alert button if notifications are enabled and it doesn't already exist
-  if (kioskState.notificationsEnabled && $personDiv.find(".parentAlertButton").length === 0) {
+  // Get familyId from rendered data (stored in member row)
+  const familyId = ($personDiv.data() as any)?.familyId;
+
+  // Manage alert button: add if conditions are met, remove if not
+  const hasAlertBtn = $personDiv.find(".parentAlertButton").length > 0;
+  const shouldHaveAlertBtn = kioskState.notificationsEnabled && familyId;
+
+  if (shouldHaveAlertBtn && !hasAlertBtn) {
+    // Add alert button
     const $actionsDiv = $personDiv.find(".kiosk-member-actions");
     const alertBtn = $("<button>", {
       class: "kiosk-btn kiosk-btn-alert parentAlertButton",
@@ -848,6 +923,9 @@ function setCheckedIn(personId: number): void {
       title: "Parent Alert",
     }).append($("<i>", { class: "fas fa-bell" }));
     $actionsDiv.append(alertBtn);
+  } else if (!shouldHaveAlertBtn && hasAlertBtn) {
+    // Remove alert button if conditions no longer met
+    $personDiv.find(".parentAlertButton").remove();
   }
 
   // Move to Checked In section if not already there
@@ -864,6 +942,14 @@ function triggerNotification(personId: number): void {
   // Get the student's name for feedback
   const $personDiv = $("#personId-" + personId);
   const studentName = $personDiv.find(".kiosk-member-name").text().trim() || "Student";
+
+  // GUARD: Verify person has a family before sending alert (should not be reachable if UI guard works)
+  const familyId = ($personDiv.data() as any)?.familyId;
+  if (!familyId) {
+    console.error(`Cannot send alert: ${studentName} has no family record (familyId=${familyId})`);
+    showKioskNotification(`Error: ${studentName} has no family on record`, "error");
+    return;
+  }
 
   // Visual feedback - disable button and show sending state
   const $alertBtn = $personDiv.find(".parentAlertButton");
@@ -976,7 +1062,11 @@ function displayPersonInfo(_personId: number): void {
  * Start the event loop
  */
 function startEventLoop(): void {
-  kioskState.kioskEventLoop = setInterval(heartbeat, 2000);
+  // Call both APIs immediately on page load for instant display
+  heartbeat();
+  updateActiveClassMembers();
+  // Then set up periodic heartbeat updates (1 minute)
+  kioskState.kioskEventLoop = setInterval(heartbeat, 60000);
 }
 
 /**
@@ -1012,6 +1102,7 @@ export const kiosk: KioskJSOM = {
   checkInPerson,
   checkOutPerson,
   checkOutAll,
+  alertAll,
   setCheckedOut,
   setCheckedIn,
   triggerNotification,
@@ -1022,6 +1113,28 @@ export const kiosk: KioskJSOM = {
   startEventLoop,
   stopEventLoop,
 };
+
+// Delegated event handlers for dynamically created buttons
+$(document).on("click", ".parentAlertButton", function () {
+  const personId = $(this).data("personid");
+  if (personId) {
+    triggerNotification(personId);
+  }
+});
+
+$(document).on("click", ".checkinButton", function () {
+  const personId = $(this).data("personid");
+  if (personId) {
+    checkInPerson(personId);
+  }
+});
+
+$(document).on("click", ".checkoutButton", function () {
+  const personId = $(this).data("personid");
+  if (personId) {
+    checkOutPerson(personId);
+  }
+});
 
 // Attach to window.CRM.kiosk for global access (for external use)
 if (!(window as any).CRM) {
