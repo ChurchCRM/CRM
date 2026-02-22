@@ -152,11 +152,6 @@ function renderClassMember(classMember: ClassMember): void {
         title: "Parent Alert",
       }).append($("<i>", { class: "fas fa-bell" }));
       actionsDiv.append(alertBtn);
-    } else if (classMember.status == 1) {
-      // Debug: log why alert button is hidden
-      console.debug(
-        `Alert hidden for ${classMember.displayName}: notifications=${kioskState.notificationsEnabled}, familyId=${classMember.familyId}`,
-      );
     }
 
     memberRow.append(avatarDiv).append(infoDiv).append(actionsDiv);
@@ -818,21 +813,39 @@ function alertAll(): void {
   const originalHtml = $btn.html();
   $btn.prop("disabled", true).html('<i class="fas fa-spinner fa-spin"></i>');
 
-  // Send alerts sequentially (small delay between each to avoid overwhelming the server)
+  // Track success/failure per alert
   let completed = 0;
+  let successCount = 0;
   const total = membersToAlert.length;
 
+  const handleCompletion = (success: boolean): void => {
+    completed++;
+    if (success) successCount++;
+
+    if (completed === total) {
+      $btn.html(originalHtml).prop("disabled", false);
+      const failureCount = total - successCount;
+      if (failureCount === 0) {
+        showKioskNotification(`Alerts sent to ${total} student${total > 1 ? "s" : ""}`, "success");
+      } else if (successCount === 0) {
+        showKioskNotification(`Failed to send all ${total} alerts`, "error");
+      } else {
+        showKioskNotification(`${successCount} sent, ${failureCount} failed`, "warning");
+      }
+    }
+  };
+
+  // Send alerts sequentially with 500ms delay to avoid overwhelming the server
   membersToAlert.forEach((member, index) => {
     setTimeout(() => {
-      triggerNotification(member.personId);
-      completed++;
-
-      // Reset button after all alerts sent
-      if (completed === total) {
-        $btn.html(originalHtml).prop("disabled", false);
-        showKioskNotification(`Alerts sent to ${total} student${total > 1 ? "s" : ""}`, "success");
-      }
-    }, index * 500); // 500ms delay between each alert
+      APIRequest({
+        path: "triggerNotification",
+        method: "POST",
+        data: JSON.stringify({ PersonId: member.personId }),
+      })
+        .done(() => handleCompletion(true))
+        .fail(() => handleCompletion(false));
+    }, index * 500);
   });
 }
 function checkOutAll(): void {
@@ -1062,9 +1075,9 @@ function displayPersonInfo(_personId: number): void {
  * Start the event loop
  */
 function startEventLoop(): void {
-  // Call both APIs immediately on page load for instant display
+  // Call heartbeat immediately — it will call updateActiveClassMembers() when
+  // the event is active, avoiding a duplicate API call on page load.
   heartbeat();
-  updateActiveClassMembers();
   // Then set up periodic heartbeat updates (1 minute)
   kioskState.kioskEventLoop = setInterval(heartbeat, 60000);
 }

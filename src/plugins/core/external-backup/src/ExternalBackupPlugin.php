@@ -367,7 +367,12 @@ class ExternalBackupPlugin extends AbstractPlugin
 
         $password = $settings['password'] ?? '';
         if (empty($password)) {
-            $password = $this->getConfigValue('password');
+            // Only fall back to the saved password when testing the same endpoint.
+            // Sending stored credentials to an attacker-controlled endpoint would leak them.
+            $savedEndpoint = (string) $this->getConfigValue('endpoint');
+            if ($savedEndpoint !== '' && $endpoint === $savedEndpoint) {
+                $password = $this->getConfigValue('password');
+            }
         }
 
         if (empty($endpoint)) {

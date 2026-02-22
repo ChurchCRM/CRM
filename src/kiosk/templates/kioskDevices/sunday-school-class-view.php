@@ -102,13 +102,13 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 
 <!-- Floating Action Buttons (FABs) -->
 <div class="kiosk-fab-container">
-  <button type="button" class="kiosk-fab kiosk-fab-refresh" id="refreshBtn" onclick="window.CRM.kiosk.updateActiveClassMembers();" title="Refresh member list">
+  <button type="button" class="kiosk-fab kiosk-fab-refresh" id="refreshBtn" title="Refresh member list">
     <i class="fas fa-sync-alt"></i>
   </button>
-  <button type="button" class="kiosk-fab kiosk-fab-alert" id="alertAllBtn" onclick="window.CRM.kiosk.alertAll();" style="display: none;" title="Send alert to all families">
+  <button type="button" class="kiosk-fab kiosk-fab-alert" id="alertAllBtn" style="display: none;" title="Send alert to all families">
     <i class="fas fa-bullhorn"></i>
   </button>
-  <button type="button" class="kiosk-fab kiosk-fab-checkout" id="checkoutAllBtn" onclick="window.CRM.kiosk.checkOutAll();" style="display: none;" title="Checkout all students">
+  <button type="button" class="kiosk-fab kiosk-fab-checkout" id="checkoutAllBtn" style="display: none;" title="Checkout all students">
     <i class="fas fa-sign-out-alt"></i>
   </button>
 </div>

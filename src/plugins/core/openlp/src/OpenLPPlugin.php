@@ -177,7 +177,12 @@ class OpenLPPlugin extends AbstractPlugin
 
         $password = $settings['password'] ?? '';
         if (empty($password)) {
-            $password = $this->getConfigValue('password');
+            // Only fall back to the saved password when testing the same server URL.
+            // Sending stored credentials to an attacker-controlled URL would leak them.
+            $savedUrl = rtrim((string) $this->getConfigValue('serverUrl'), '/');
+            if ($savedUrl !== '' && $serverUrl === $savedUrl) {
+                $password = $this->getConfigValue('password');
+            }
         }
 
         $allowSelfSigned = isset($settings['allowSelfSigned'])
@@ -226,6 +231,25 @@ class OpenLPPlugin extends AbstractPlugin
                     'message' => sprintf(
                         gettext('Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.'),
                         $serverUrl
+                    ),
+                ];
+            }
+
+            // When 'ignore_errors' is true, non-200 responses still return a body.
+            // Check $http_response_header to confirm the HTTP status code is 200.
+            $statusCode = 0;
+            if (isset($http_response_header[0]) &&
+                preg_match('/HTTP\/\d\.\d\s+(\d+)/', $http_response_header[0], $matches)) {
+                $statusCode = (int) $matches[1];
+            }
+
+            if ($statusCode !== 200) {
+                return [
+                    'success' => false,
+                    'message' => sprintf(
+                        gettext('Cannot connect to OpenLP at %s. Server returned HTTP %d.'),
+                        $serverUrl,
+                        $statusCode
                     ),
                 ];
             }

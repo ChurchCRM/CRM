@@ -229,8 +229,8 @@ class MailChimpPlugin extends AbstractPlugin
                 'success' => true,
                 'message' => sprintf(
                     gettext('Connected to MailChimp! Account: %s (%d subscribers)'),
-                    $accountInfo['account_name'],
-                    $accountInfo['total_subscribers']
+                    $accountInfo['account_name'] ?? 'Unknown',
+                    $accountInfo['total_subscribers'] ?? 0
                 ),
                 'details' => $accountInfo,
             ];
