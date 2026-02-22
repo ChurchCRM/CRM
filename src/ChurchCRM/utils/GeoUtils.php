@@ -4,8 +4,6 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
-use Geocoder\Collection;
-use Geocoder\Provider\BingMaps\BingMaps;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\Query\GeocodeQuery;
 use Geocoder\StatefulGeocoder;
@@ -18,21 +16,13 @@ class GeoUtils
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::getCurrentLocale();
 
-        $provider = null;
         $adapter = new Client();
+        $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('sGoogleMapsGeocodeKey'));
 
         $lat = 0;
         $long = 0;
 
         try {
-            switch (SystemConfig::getValue('sGeoCoderProvider')) {
-                case 'GoogleMaps':
-                    $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('sGoogleMapsGeocodeKey'));
-                    break;
-                case 'BingMaps':
-                    $provider = new BingMaps($adapter, SystemConfig::getValue('sBingMapKey'));
-                    break;
-            }
             $logger->debug('Using: Geo Provider -  ' . $provider->getName());
             $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
             $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));

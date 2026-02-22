@@ -1,7 +1,7 @@
 # MAPS-01: Geocoding Call Path Audit
 
 **Audience:** Developer  
-**Last Updated:** 2026-02-22  
+**Last Updated:** 2026-02-22 (revised: Bing Maps removal, drivingDistanceMatrix detail)
 **Related:** [Issue #MAPS-01](https://github.com/ChurchCRM/CRM/issues), [GeoUtils](../../src/ChurchCRM/utils/GeoUtils.php)
 
 ## Overview
@@ -33,19 +33,21 @@ write flow, and known edge cases.  No code changes are part of this ticket.
 The single geocoding entry function used throughout the application.
 
 - Reads `SystemConfig::getValue('sGeoCoderProvider')` to choose the provider.
-- Supported providers: `GoogleMaps` (default) and `BingMaps`.
+- Supported provider: `GoogleMaps` only. Bing Maps support was removed in v7.0.0 (`geocoder-php/bing-maps-provider` removed from composer, `sBingMapKey` config deleted).
 - Uses the `geocoder-php` library (`StatefulGeocoder`) with a `Guzzle7` HTTP adapter.
 - Locale is set from `Bootstrapper::getCurrentLocale()->getShortLocale()`.
 - Returns `['Latitude' => float, 'Longitude' => float]`.
 - Returns `['Latitude' => 0, 'Longitude' => 0]` on any error (logged at WARNING level).
 
-### Other Methods in GeoUtils (No External API Call)
+### Other Methods in GeoUtils
 
-| Method | Description |
-|--------|-------------|
-| `drivingDistanceMatrix($addr1, $addr2)` | Calls Google Distance Matrix API directly via `file_get_contents()`. **Not** geocoding. |
-| `latLonDistance($lat1, $lon1, $lat2, $lon2)` | Pure math (Spherical Law of Cosines). No API call. |
-| `latLonBearing($lat1, $lon1, $lat2, $lon2)` | Pure math (bearing calculation). No API call. |
+| Method | API Call? | Description |
+|--------|-----------|-------------|
+| `drivingDistanceMatrix($addr1, $addr2)` | **Yes** — Google Distance Matrix API | Constructs a URL with both addresses and calls it via `file_get_contents()`. **Not** geocoder-php. Uses its own quota and key (currently reads `sGoogleMapsGeocodeKey` — see note below). |
+| `latLonDistance($lat1, $lon1, $lat2, $lon2)` | No | Pure math (Spherical Law of Cosines). Reads distance unit from Maps plugin settings with fallback to SystemConfig. |
+| `latLonBearing($lat1, $lon1, $lat2, $lon2)` | No | Pure math (bearing calculation). No API call. |
+
+> **`drivingDistanceMatrix` note:** This method calls the [Google Distance Matrix API](https://developers.google.com/maps/documentation/distance-matrix/overview) — a **separate product** from the Geocoding API with its own billing, quota, and (ideally) its own API key. Currently it reuses the geocode key, which is a configuration gap. It is called directly via `file_get_contents()`, bypassing geocoder-php entirely, and it is not rate-limited or cached. See also: Entry Point 5 below, where this causes two outbound API calls per single family geolocation request.
 
 ---
 
@@ -127,10 +129,12 @@ The single geocoding entry function used throughout the application.
 
 **Flow:**
 1. Resolves the family via `FamilyMiddleware`.
-2. Calls `GeoUtils::getLatLong($family->getAddress())`.
-3. Additionally calls `GeoUtils::drivingDistanceMatrix($familyAddress, ChurchMetaData::getChurchAddress())`.
+2. Calls `GeoUtils::getLatLong($family->getAddress())` → **Google Geocoding API** call.
+3. Additionally calls `GeoUtils::drivingDistanceMatrix($familyAddress, ChurchMetaData::getChurchAddress())` → **Google Distance Matrix API** call (separate product, separate quota).
 4. Merges and returns both results as JSON.
 5. **Does not save to DB.**
+
+> **Two API calls per request.** This endpoint makes one Geocoding API call and one Distance Matrix API call every time it is invoked, with no caching. If the family's coordinates are already stored in the DB, the geocoding call is still made (no short-circuit). Both calls use `file_get_contents()` or geocoder-php directly with no rate limiting.
 
 ---
 
@@ -160,11 +164,9 @@ GeoUtils::getLatLong(address)
       ▼
 geocoder-php StatefulGeocoder
       │
-      ├─ GoogleMaps provider  ──►  Google Geocoding API
-      │    (uses sGoogleMapsGeocodeKey)
-      │
-      └─ BingMaps provider   ──►  Bing Maps Geocoding API
-           (uses sBingMapKey)
+      └─ GoogleMaps provider  ──►  Google Geocoding API
+           (uses sGoogleMapsGeocodeKey)
+           [Only provider — Bing Maps removed in v7.0.0]
       │
       ▼
 Parse first result → Coordinates (lat, lng)
@@ -199,12 +201,16 @@ from the parent `Family` and can trigger `Family::updateLanLng()` as a side-effe
 All geocoding-related settings are managed in `src/ChurchCRM/dto/SystemConfig.php` under
 the **Map Settings** group:
 
-| Config Key | Type | Default | Description |
-|------------|------|---------|-------------|
-| `sGeoCoderProvider` | choice | `GoogleMaps` | Active geocoding backend (`GoogleMaps` or `BingMaps`) |
-| `sGoogleMapsGeocodeKey` | text | _(empty)_ | Google Maps API key for server-side geocoding |
-| `sBingMapKey` | text | _(empty)_ | Bing Maps API key |
-| `sGoogleMapsRenderKey` | text | _(empty)_ | Google Maps API key for browser map rendering (separate from geocoding) |
+| Config Key | Type | Default | Description | Status |
+|------------|------|---------|-------------|--------|
+| `sGeoCoderProvider` | choice | `GoogleMaps` | Active geocoding backend | Active — only value is `GoogleMaps` (Bing removed v7.0.0) |
+| `sGoogleMapsGeocodeKey` | text | _(empty)_ | Google Maps API key for server-side geocoding via geocoder-php | Active |
+| `plugin.maps.googleMapsGeocodeKey` | text | _(empty)_ | Same key stored in Maps plugin settings; takes precedence over `sGoogleMapsGeocodeKey` when set | Active |
+| `plugin.maps.googleMapsRenderKey` | text | _(empty)_ | Google Maps JS API key for browser map rendering | **To be removed** in MAPS-08 (Leaflet replaces Google Maps JS widget) |
+| `sBingMapKey` | text | _(empty)_ | Bing Maps API key | **Removed** in v7.0.0 |
+| `sGoogleMapsRenderKey` | text | _(empty)_ | Legacy render key (system config level) | **Removed** in v7.0.0 |
+
+> **Key precedence for geocoding:** `GeoUtils` now reads `plugin.maps.googleMapsGeocodeKey` first (via `PluginManager::getPlugin('maps')->getGoogleMapsGeocodeKey()`), falling back to `sGoogleMapsGeocodeKey` from SystemConfig. Both point to the same Google Geocoding API product.
 
 ---
 
@@ -244,6 +250,19 @@ The kiosk subsystem (`src/kiosk/`) does not reference `GeoUtils` or trigger any 
 A newly created or edited family will not have coordinates until the bulk update tool is
 run or the family is plotted on a map.
 
+### Distance Matrix — Separate API, Shared Key, No Caching
+
+`GeoUtils::drivingDistanceMatrix()` calls the Google Distance Matrix API, which is a **distinct
+billing product** from the Geocoding API. It currently reuses the geocode API key. The call is
+made via `file_get_contents()` with no rate limiting, no caching, and no error surfacing. The
+`GET /api/family/{id}/geolocation` endpoint therefore triggers two separate outbound API calls
+per request regardless of whether the family's coordinates are already cached in the DB.
+
+This is out of scope for the current MAPS modernization tickets but should be tracked as a
+follow-on: either add caching for distance results or remove the Distance Matrix call from the
+geolocation endpoint and replace with the pure-math `latLonDistance()` (which requires only
+stored coordinates, no API).
+
 ### Error Handling
 
 `GeoUtils::getLatLong()` wraps the entire geocoding call in a `try/catch`. Any provider
@@ -255,14 +274,14 @@ the user.
 
 ## Summary Table
 
-| Entry Point | File | Trigger | Calls `getLatLong`? | Saves to DB? |
-|-------------|------|---------|---------------------|--------------|
-| Bulk update | `UpdateAllLatLon.php` | Manual (admin) | Yes — for each un-geocoded family | Yes → `family_fam` |
-| Map rendering (persons) | `MapUsingGoogle.php` → `Person::getLatLng()` | Auto (lazy on page load) | Yes — if family has no coords | Yes → `family_fam` (side-effect) |
-| Church lat/lng lookup | `ChurchMetaData::getChurchLatitude/Longitude()` | Auto (lazy, first call) | Yes — if SystemConfig empty | Yes → `system_config` |
-| Geocoder API | `POST /api/geocoder/address` | Manual (JS call) | Yes | No |
-| Family geolocation API | `GET /api/family/{id}/geolocation` | Manual (JS call) | Yes | No |
-| Geo utilities view | `GeoPage.php` | Manual (admin) | No (math only) | No |
-| CSV import | `CSVImport.php` | Manual (admin) | No | No |
-| Kiosk | `src/kiosk/` | N/A | No | No |
-| Family editor save | `FamilyEditor.php` | Manual (user/admin) | No | No |
+| Entry Point | File | Trigger | Calls `getLatLong`? | Calls Distance Matrix? | Saves to DB? |
+|-------------|------|---------|---------------------|------------------------|--------------|
+| Bulk update | `UpdateAllLatLon.php` | Manual (admin) | Yes — for each un-geocoded family | No | Yes → `family_fam` |
+| Map rendering (persons) | `MapUsingGoogle.php` → `Person::getLatLng()` | Auto (lazy on page load) | Yes — if family has no coords | No | Yes → `family_fam` (side-effect) |
+| Church lat/lng lookup | `ChurchMetaData::getChurchLatitude/Longitude()` | Auto (lazy, first call) | Yes — if SystemConfig empty | No | Yes → `system_config` |
+| Geocoder API | `POST /api/geocoder/address` | Manual (JS call) | Yes | No | No |
+| Family geolocation API | `GET /api/family/{id}/geolocation` | Manual (JS call) | Yes (always, no short-circuit) | **Yes** (always) | No |
+| Geo utilities view | `GeoPage.php` | Manual (admin) | No (math only) | No | No |
+| CSV import | `CSVImport.php` | Manual (admin) | No | No | No |
+| Kiosk | `src/kiosk/` | N/A | No | No | No |
+| Family editor save | `FamilyEditor.php` | Manual (user/admin) | No | No | No |
