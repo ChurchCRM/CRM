@@ -33,7 +33,33 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
 
     $items = [];
 
-    if ($groupId !== null && $groupId > 0) {
+    if ($groupId !== null && $groupId === 0) {
+        // Cart view — return persons currently in the people cart (session)
+        $cartIds = $_SESSION['aPeopleCart'] ?? [];
+        if (!empty($cartIds)) {
+            $persons = PersonQuery::create()
+                ->filterById($cartIds)
+                ->find();
+
+            foreach ($persons as $person) {
+                $latLng = $person->getLatLng();
+                if (empty($latLng['Latitude']) && empty($latLng['Longitude'])) {
+                    continue;
+                }
+                $items[] = [
+                    'id'               => $person->getId(),
+                    'type'             => 'person',
+                    'name'             => $person->getFullName(),
+                    'salutation'       => $person->getFullName(),
+                    'address'          => $person->getAddress(),
+                    'latitude'         => (float) $latLng['Latitude'],
+                    'longitude'        => (float) $latLng['Longitude'],
+                    'classificationId' => (int) $person->getClsId(),
+                    'profileUrl'       => SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId(),
+                ];
+            }
+        }
+    } elseif ($groupId !== null && $groupId > 0) {
         // Return geocoded members of a specific group
         $persons = PersonQuery::create()
             ->usePerson2group2roleP2g2rQuery()
