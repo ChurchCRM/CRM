@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -86,15 +85,10 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
         }
     } else {
         // Return all active families that have been geocoded
-        $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
-
         $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)
             ->filterByLatitude(0, Criteria::NOT_EQUAL)
             ->filterByLongitude(0, Criteria::NOT_EQUAL)
-            ->usePersonQuery('per')
-                ->filterByFmrId($dirRoleHead)
-            ->endUse()
             ->find();
 
         foreach ($families as $family) {
