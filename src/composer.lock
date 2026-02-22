@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a90c02e28a3611d303a56578b9ac5a26",
+    "content-hash": "74b992759f7747830a159a50149dbdbf",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -613,64 +613,6 @@
                 "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
             },
             "time": "2020-11-24T22:02:12+00:00"
-        },
-        {
-            "name": "geocoder-php/bing-maps-provider",
-            "version": "4.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/geocoder-php/bing-maps-provider.git",
-                "reference": "6eba4f69f6301cef9e1a7e008ca52c0afb776e83"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/geocoder-php/bing-maps-provider/zipball/6eba4f69f6301cef9e1a7e008ca52c0afb776e83",
-                "reference": "6eba4f69f6301cef9e1a7e008ca52c0afb776e83",
-                "shasum": ""
-            },
-            "require": {
-                "geocoder-php/common-http": "^4.0",
-                "php": "^8.0",
-                "willdurand/geocoder": "^4.0|^5.0"
-            },
-            "provide": {
-                "geocoder-php/provider-implementation": "1.0"
-            },
-            "require-dev": {
-                "geocoder-php/provider-integration-tests": "^1.6.3",
-                "php-http/message": "^1.0",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Geocoder\\Provider\\BingMaps\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "William Durand",
-                    "email": "william.durand1@gmail.com"
-                }
-            ],
-            "description": "Geocoder BigMaps adapter",
-            "homepage": "http://geocoder-php.org/Geocoder/",
-            "support": {
-                "source": "https://github.com/geocoder-php/bing-maps-provider/tree/4.4.0"
-            },
-            "time": "2025-04-15T13:24:32+00:00"
         },
         {
             "name": "geocoder-php/common-http",
