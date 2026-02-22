@@ -162,6 +162,99 @@ class OpenLPPlugin extends AbstractPlugin
     }
 
     /**
+     * Test OpenLP connectivity using the provided settings.
+     *
+     * Makes a lightweight GET request to /api/v2/core/version without
+     * sending a visible alert to the projector screen.
+     * Falls back to saved password when the field is omitted.
+     *
+     * {@inheritdoc}
+     */
+    public function testWithSettings(array $settings): array
+    {
+        $serverUrl = rtrim($settings['serverUrl'] ?? $this->getConfigValue('serverUrl'), '/');
+        $username = $settings['username'] ?? $this->getConfigValue('username');
+
+        $password = $settings['password'] ?? '';
+        if (empty($password)) {
+            $password = $this->getConfigValue('password');
+        }
+
+        $allowSelfSigned = isset($settings['allowSelfSigned'])
+            ? filter_var($settings['allowSelfSigned'], FILTER_VALIDATE_BOOLEAN)
+            : $this->getAllowSelfSigned();
+
+        if (empty($serverUrl)) {
+            return ['success' => false, 'message' => gettext('Server URL is required.')];
+        }
+
+        if (!filter_var($serverUrl, FILTER_VALIDATE_URL)) {
+            return ['success' => false, 'message' => gettext('Invalid server URL format.')];
+        }
+
+        try {
+            $url = $serverUrl . '/api/v2/core/version';
+
+            $httpOptions = [
+                'method'        => 'GET',
+                'timeout'       => 5,
+                'header'        => "Accept: application/json\r\n",
+                'ignore_errors' => true,
+            ];
+
+            if (!empty($username)) {
+                $auth = 'Basic ' . base64_encode($username . ':' . $password);
+                $httpOptions['header'] .= "Authorization: $auth\r\n";
+            }
+
+            $contextOptions = ['http' => $httpOptions];
+
+            if ($allowSelfSigned) {
+                $contextOptions['ssl'] = [
+                    'verify_peer'       => false,
+                    'verify_peer_name'  => false,
+                    'allow_self_signed' => true,
+                ];
+            }
+
+            $context  = stream_context_create($contextOptions);
+            $response = @file_get_contents($url, false, $context);
+
+            if ($response === false) {
+                return [
+                    'success' => false,
+                    'message' => sprintf(
+                        gettext('Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.'),
+                        $serverUrl
+                    ),
+                ];
+            }
+
+            $data    = json_decode($response, true);
+            $version = $data['version'] ?? null;
+
+            if ($version !== null) {
+                return [
+                    'success' => true,
+                    'message' => sprintf(gettext('Connected to OpenLP! Version: %s'), $version),
+                    'details' => ['version' => $version],
+                ];
+            }
+
+            // Server responded but no version in body — still reachable
+            return [
+                'success' => true,
+                'message' => gettext('Connected to OpenLP server successfully.'),
+            ];
+        } catch (\Throwable $e) {
+            return [
+                'success' => false,
+                'message' => gettext('Failed to connect to OpenLP server.'),
+            ];
+        }
+    }
+
+    /**
      * Send an alert to OpenLP projector.
      *
      * This is the main entry point for sending projector notifications.
