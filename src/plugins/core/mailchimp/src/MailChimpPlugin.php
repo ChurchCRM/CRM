@@ -187,6 +187,61 @@ class MailChimpPlugin extends AbstractPlugin
         ];
     }
 
+    /**
+     * Test MailChimp connection using the provided API key.
+     *
+     * Falls back to the saved API key if the settings array omits it
+     * (e.g. password field not re-entered in the UI).
+     *
+     * {@inheritdoc}
+     */
+    public function testWithSettings(array $settings): array
+    {
+        $apiKey = $settings['apiKey'] ?? '';
+        if (empty($apiKey)) {
+            $apiKey = $this->getConfigValue('apiKey');
+        }
+
+        if (empty($apiKey)) {
+            return ['success' => false, 'message' => gettext('API Key is required.')];
+        }
+
+        try {
+            $service = new MailChimpService($apiKey);
+
+            if ($service->getLastError() !== null) {
+                return [
+                    'success' => false,
+                    'message' => gettext('Invalid API key format. Check your MailChimp API key.'),
+                ];
+            }
+
+            $accountInfo = $service->getAccountInfo();
+
+            if (empty($accountInfo)) {
+                return [
+                    'success' => false,
+                    'message' => gettext('Could not connect to MailChimp. Please check your API key.'),
+                ];
+            }
+
+            return [
+                'success' => true,
+                'message' => sprintf(
+                    gettext('Connected to MailChimp! Account: %s (%d subscribers)'),
+                    $accountInfo['account_name'] ?? 'Unknown',
+                    $accountInfo['total_subscribers'] ?? 0
+                ),
+                'details' => $accountInfo,
+            ];
+        } catch (\Throwable $e) {
+            return [
+                'success' => false,
+                'message' => gettext('MailChimp connection failed.'),
+            ];
+        }
+    }
+
     // =========================================================================
     // Hook Registration
     // =========================================================================

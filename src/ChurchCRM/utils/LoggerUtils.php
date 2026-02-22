@@ -247,15 +247,17 @@ class LoggerUtils
 
     public static function resetAppLoggerLevel(): void
     {
-        // Called after DB initialisation so the real log level is now available.
-        // Reset both the handler threshold and the formatter, because the logger
-        // may have been built during bootstrap before the DB was ready (at which
-        // point getLogLevel() fell back to Info and createFormatter() may have
-        // chosen the wrong format).
-        if (self::$appLogHandler !== null) {
-            self::$appLogHandler->setLevel(self::getLogLevelValue());
-            self::$appLogHandler->setFormatter(self::createFormatter());
-        }
+        // Called after DB initialisation so the real timezone and log level are now available.
+        // The bootstrapper forces UTC (date_default_timezone_set('UTC')) before the loggers are
+        // first created, but later reads sTimeZone from the DB and sets the correct local timezone.
+        // Nulling the cached loggers here forces them to be recreated on next use with the correct
+        // PHP default timezone, so that RotatingFileHandler names files and schedules rotation based
+        // on local midnight rather than UTC midnight.
+        self::$appLogger = null;
+        self::$appLogHandler = null;
+        self::$cspLogger = null;
+        self::$authLogger = null;
+        self::$slimLogger = null;
     }
 
     public static function getCSPLogger(): ?Logger

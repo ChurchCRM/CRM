@@ -39,5 +39,6 @@
     }
   ],
   "menuItems": [],
-  "hooks": []
+  "hooks": [],
+  "hasTest": true
 }

@@ -219,6 +219,31 @@ $group->post('/plugins/{pluginId}/settings', function (Request $request, Respons
     }
 });
 
+// Test plugin connection with the settings provided in the request body.
+// Password fields may be omitted — the plugin falls back to its saved value.
+$group->post('/plugins/{pluginId}/test', function (Request $request, Response $response, array $args): Response {
+    try {
+        $pluginId = $args['pluginId'];
+        $body     = $request->getParsedBody();
+        $settings = $body['settings'] ?? [];
+
+        $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+        PluginManager::init($pluginsPath);
+
+        $plugin = PluginManager::getPlugin($pluginId);
+        if ($plugin === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Plugin not found or not active'), [], 404);
+        }
+
+        $result     = $plugin->testWithSettings($settings);
+        $statusCode = ($result['success'] ?? false) ? 200 : 400;
+
+        return SlimUtils::renderJSON($response, $result, $statusCode);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('Connection test failed'), [], 500, $e, $request);
+    }
+});
+
 // Reset plugin settings (clear all values)
 $group->post('/plugins/{pluginId}/reset', function (Request $request, Response $response, array $args): Response {
     try {

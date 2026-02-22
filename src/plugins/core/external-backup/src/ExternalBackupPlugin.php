@@ -334,7 +334,9 @@ class ExternalBackupPlugin extends AbstractPlugin
     }
 
     /**
-     * Test the WebDAV connection.
+     * Test the WebDAV connection using saved settings.
+     *
+     * Called by the plugin-specific route: POST /plugins/external-backup/api/test
      *
      * @return array Result with status and message
      */
@@ -347,67 +349,90 @@ class ExternalBackupPlugin extends AbstractPlugin
             ];
         }
 
-        $logger = LoggerUtils::getAppLogger();
-        $logger->debug('External Backup Plugin: Testing WebDAV connection');
+        return $this->performPropfind($this->getEndpoint(), $this->getUsername(), $this->getPassword());
+    }
+
+    /**
+     * Test the WebDAV connection using settings provided from the management UI form.
+     *
+     * Falls back to the saved password when the field is omitted
+     * (i.e. the admin has not re-typed it).
+     *
+     * {@inheritdoc}
+     */
+    public function testWithSettings(array $settings): array
+    {
+        $endpoint = $settings['endpoint'] ?? $this->getConfigValue('endpoint');
+        $username = $settings['username'] ?? $this->getConfigValue('username');
+
+        $password = $settings['password'] ?? '';
+        if (empty($password)) {
+            // Only fall back to the saved password when testing the same endpoint.
+            // Sending stored credentials to an attacker-controlled endpoint would leak them.
+            $savedEndpoint = (string) $this->getConfigValue('endpoint');
+            if ($savedEndpoint !== '' && $endpoint === $savedEndpoint) {
+                $password = $this->getConfigValue('password');
+            }
+        }
+
+        if (empty($endpoint)) {
+            return ['success' => false, 'message' => gettext('WebDAV Endpoint URL is required.')];
+        }
+
+        if (!$this->isValidEndpointUrl($endpoint)) {
+            return ['success' => false, 'message' => gettext('Invalid endpoint URL. Must be a full URL starting with https://')];
+        }
+
+        if (empty($username) || empty($password)) {
+            return ['success' => false, 'message' => gettext('Username and password are required.')];
+        }
+
+        return $this->performPropfind($endpoint, $username, $password);
+    }
+
+    /**
+     * Execute a WebDAV PROPFIND request to verify connectivity and credentials.
+     *
+     * Uses HTTP 207 (Multi-Status) as the success indicator per the WebDAV spec.
+     *
+     * @return array{success: bool, message: string}
+     */
+    private function performPropfind(string $endpoint, string $username, string $password): array
+    {
+        LoggerUtils::getAppLogger()->debug('External Backup Plugin: Testing WebDAV connection', ['endpoint' => $endpoint]);
 
         try {
-            $endpoint = $this->getEndpoint();
-            $credentials = $this->getUsername() . ':' . $this->getPassword();
-
             $ch = curl_init($endpoint);
             curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-            curl_setopt($ch, CURLOPT_USERPWD, $credentials);
+            curl_setopt($ch, CURLOPT_USERPWD, $username . ':' . $password);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($ch, CURLOPT_TIMEOUT, 10);
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PROPFIND');
             curl_setopt($ch, CURLOPT_HTTPHEADER, ['Depth: 0']);
-
-            // SSL/TLS verification - secure by default
-            // Self-signed certs are common in home/church networks
-            if ($this->getAllowSelfSigned()) {
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-            } else {
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-            }
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 
             curl_exec($ch);
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            $error = curl_error($ch);
+            $error    = curl_error($ch);
             curl_close($ch);
 
             if (!empty($error)) {
-                return [
-                    'success' => false,
-                    'message' => gettext('Connection failed') . ': ' . $error,
-                ];
+                return ['success' => false, 'message' => gettext('Connection failed') . ': ' . $error];
             }
 
-            // HTTP 207 Multi-Status is success for PROPFIND
+            // HTTP 207 Multi-Status is the WebDAV success response for PROPFIND
             if ($httpCode === 207 || $httpCode === 200) {
-                return [
-                    'success' => true,
-                    'message' => gettext('Connection successful! WebDAV endpoint is accessible.'),
-                ];
+                return ['success' => true, 'message' => gettext('Connection successful! WebDAV endpoint is accessible.')];
             }
 
             if ($httpCode === 401 || $httpCode === 403) {
-                return [
-                    'success' => false,
-                    'message' => gettext('Authentication failed. Please check username and password.'),
-                ];
+                return ['success' => false, 'message' => gettext('Authentication failed. Please check username and password.')];
             }
 
-            return [
-                'success' => false,
-                'message' => gettext('Connection failed with HTTP code') . ': ' . $httpCode,
-            ];
-        } catch (\Exception $e) {
-            return [
-                'success' => false,
-                'message' => gettext('Connection test failed') . ': ' . $e->getMessage(),
-            ];
+            return ['success' => false, 'message' => gettext('Connection failed with HTTP code') . ': ' . $httpCode];
+        } catch (\Throwable $e) {
+            return ['success' => false, 'message' => gettext('Connection test failed') . ': ' . $e->getMessage()];
         }
     }
 
