@@ -8,3 +8,8 @@
 -- classifications.  The new map uses a built-in colour palette; this key is
 -- no longer read anywhere in the codebase.
 DELETE FROM config_cfg WHERE cfg_name = 'sGMapIcons';
+
+-- sGoogleMapsRenderKey stored the Google Maps JavaScript API key used to render
+-- inline maps in the family profile and family verification pages.  Both pages
+-- have been migrated to Leaflet + OpenStreetMap; no API key is required.
+DELETE FROM config_cfg WHERE cfg_name = 'sGoogleMapsRenderKey';

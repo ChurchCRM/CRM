@@ -141,25 +141,26 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             <div class="card-body">
                 <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
                    target="_blank"><?= $familyAddress ?></a>
-                <!-- Maps Start -->
-                <?php if (!empty(SystemConfig::getValue("sGoogleMapsRenderKey")) && !empty($family->getLatitude())) : ?>
+                <!-- Family location map (Leaflet + OpenStreetMap) -->
+                <?php if (!empty($family->getLatitude())) : ?>
+                    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
                     <div class="border-right border-left mt-2">
-                        <section id="map">
-                            <div id="map1"></div>
-                        </section>
+                        <div id="map1" style="height: 200px;"></div>
                     </div>
-                    <!-- Map Scripts -->
-                    <script
-                            src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapsRenderKey") ?>&sensor=false"></script>
-                    <script>
-                        var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                        (function () {
+                            var lat = <?= json_encode((float) $family->getLatitude()) ?>;
+                            var lng = <?= json_encode((float) $family->getLongitude()) ?>;
+                            var map = L.map('map1', { scrollWheelZoom: false, dragging: false, zoomControl: false })
+                                .setView([lat, lng], 14);
+                            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                maxZoom: 19,
+                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+                            }).addTo(map);
+                            L.marker([lat, lng]).addTo(map);
+                        })();
                     </script>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/js/Map.js') ?>"></script>
-                    <style>
-                        #map1 {
-                            height: 200px;
-                        }
-                    </style>
                 <?php endif; ?>
             </div>
         </div>
