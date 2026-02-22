@@ -16,48 +16,56 @@ $sPageTitle = gettext('View on Map');
 require_once __DIR__ . '/Include/Header.php';
 
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
+
+// Colour palette for classification markers (index 0 = unassigned)
+$markerColors = [
+    '#dc3545', // 0  unassigned — red
+    '#0d6efd', // 1  — blue
+    '#198754', // 2  — green
+    '#fd7e14', // 3  — orange
+    '#6f42c1', // 4  — purple
+    '#0dcaf0', // 5  — cyan
+    '#ffc107', // 6  — yellow
+    '#d63384', // 7  — pink
+    '#20c997', // 8  — teal
+    '#6c757d', // 9  — grey
+];
+
+function classificationColor(array $colors, int $id): string {
+    return $colors[$id % count($colors)] ?? '#6c757d';
+}
 ?>
 
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+
 <div class="alert alert-info">
-    <a href="<?= SystemURLs::getRootPath() ?>/UpdateAllLatLon.php" class="btn btn-secondary"><i class="fa-solid fa-map-marker"></i> </a>
+    <a href="<?= SystemURLs::getRootPath() ?>/UpdateAllLatLon.php" class="btn btn-secondary">
+        <i class="fa-solid fa-map-marker"></i>
+    </a>
     <?= gettext('Missing Families? Update Family Latitude or Longitude now.') ?>
 </div>
 
-<?php if (ChurchMetaData::getChurchLatitude() === '') {
-?>
+<?php if (ChurchMetaData::getChurchLatitude() === '') { ?>
     <div class="alert alert-danger">
         <?= gettext('Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu.') ?>
     </div>
-    <?php
-} else {
-    if (SystemConfig::getValue('sGoogleMapsRenderKey') === '') {
-    ?>
-        <div class="alert alert-warning">
-            <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php"><?= gettext('Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu.') ?></a>
-        </div>
-    <?php
-    }
-
+<?php } else {
     $plotFamily = false;
-    //Get the details from DB
     $dirRoleHead = SystemConfig::getValue('sDirRoleHead');
 
     if ($iGroupID > 0) {
-        //Get all the members of this group
         $persons = PersonQuery::create()
             ->usePerson2group2roleP2g2rQuery()
             ->filterByGroupId($iGroupID)
             ->endUse()
             ->find();
     } elseif ($iGroupID == 0) {
-        // group zero means map the cart
         if (!empty($_SESSION['aPeopleCart'])) {
             $persons = PersonQuery::create()
                 ->filterById($_SESSION['aPeopleCart'])
                 ->find();
         }
     } else {
-        //Map all the families
         $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)
             ->filterByLatitude(0, Criteria::NOT_EQUAL)
@@ -69,237 +77,197 @@ $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
         $plotFamily = true;
     }
 
-    //Markericons list
     $icons = Classification::getAll();
-
-    $markerIcons = explode(',', SystemConfig::getValue('sGMapIcons'));
-    array_unshift($markerIcons, 'red-pushpin'); //red-pushpin for unassigned classification
     ?>
 
-    <!--Google Map Scripts -->
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue('sGoogleMapsRenderKey') ?>">
-    </script>
-
     <div class="card">
-        <!-- Google map div -->
         <div id="map" class="map-div"></div>
 
-        <!-- map Desktop legend-->
+        <!-- Desktop legend -->
         <div id="maplegend">
             <h4><?= gettext('Legend') ?></h4>
             <div class="row legendbox">
                 <div class="legenditem" data-classification="0">
-                    <img
-                        src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png' />
+                    <span class="legend-dot" style="background:<?= classificationColor($markerColors, 0) ?>"></span>
                     <input type="checkbox" class="legenditem-checkbox" id="legenditem-0" checked />
                     <?= gettext('Unassigned') ?>
                 </div>
-                <?php
-                foreach ($icons as $icon) {
-                ?>
+                <?php foreach ($icons as $icon) { ?>
                     <div class="legenditem" data-classification="<?= $icon->getOptionId() ?>">
-                        <img
-                            src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png' />
+                        <span class="legend-dot" style="background:<?= classificationColor($markerColors, $icon->getOptionId()) ?>"></span>
                         <input type="checkbox" class="legenditem-checkbox" id="legenditem-<?= $icon->getOptionId() ?>" checked />
                         <?= $icon->getOptionName() ?>
                     </div>
-                <?php
-                } ?>
+                <?php } ?>
             </div>
         </div>
 
-        <!-- map Mobile legend-->
-        <div id="maplegend-mobile" class="card visible-xs-block">
+        <!-- Mobile legend -->
+        <div id="maplegend-mobile" class="card d-block d-sm-none">
             <div class="row legendbox">
-                <div class="btn bg-primary col-xs-12"><?= gettext('Legend') ?></div>
+                <div class="btn bg-primary col-12"><?= gettext('Legend') ?></div>
             </div>
             <div class="row legendbox">
-                <div class="col-xs-6 legenditem" data-classification="0">
-                    <img
-                        class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[0] ?>.png' />
+                <div class="col-6 legenditem" data-classification="0">
+                    <span class="legend-dot" style="background:<?= classificationColor($markerColors, 0) ?>"></span>
                     <div class="legenditemtext"><?= gettext('Unassigned') ?></div>
                 </div>
-                <?php
-                foreach ($icons as $icon) {
-                ?>
-                    <div class="col-xs-6 legenditem" data-classification="<?= $icon->getOptionId() ?>">
-                        <img
-                            class="legendicon" src='https://www.google.com/intl/en_us/mapfiles/ms/micons/<?= $markerIcons[$icon->getOptionId()] ?>.png' />
+                <?php foreach ($icons as $icon) { ?>
+                    <div class="col-6 legenditem" data-classification="<?= $icon->getOptionId() ?>">
+                        <span class="legend-dot" style="background:<?= classificationColor($markerColors, $icon->getOptionId()) ?>"></span>
                         <div class="legenditemtext"><?= $icon->getOptionName() ?></div>
                     </div>
-                <?php
-                } ?>
+                <?php } ?>
             </div>
         </div>
-    </div> <!--Box-->
+    </div>
 
+    <?php
+    $arrPlotItems = [];
+    if ($plotFamily) {
+        foreach ($families as $family) {
+            if ($family->hasLatitudeAndLongitude()) {
+                $class = $family->getHeadPeople()[0];
+                $arrPlotItems[] = [
+                    'ID'             => $family->getId(),
+                    'Salutation'     => $family->getSalutation(),
+                    'Name'           => $family->getName(),
+                    'Address'        => $family->getAddress(),
+                    'Latitude'       => $family->getLatitude(),
+                    'Longitude'      => $family->getLongitude(),
+                    'Classification' => $class->GetClsId(),
+                    'isFamily'       => true,
+                ];
+            }
+        }
+    } else {
+        foreach ($persons as $member) {
+            $latLng = $member->getLatLng();
+            $arrPlotItems[] = [
+                'ID'             => $member->getId(),
+                'Salutation'     => $member->getFullName(),
+                'Name'           => $member->getFullName(),
+                'Address'        => $member->getAddress(),
+                'Latitude'       => $latLng['Latitude'],
+                'Longitude'      => $latLng['Longitude'],
+                'Classification' => $member->getClsId(),
+                'isFamily'       => false,
+            ];
+        }
+    }
+    ?>
+
+    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-        $(document).ready(function() {
-            $(".legenditem-checkbox").change(function(e) {
-                var category = $(this).parent().data("classification");
-                var checked = $(this).prop("checked");
-                window.CRM.map.setClassificationVisible(category, checked);
-                //e.preventDefault();
-                //return false;
-            });
-            $(".legenditem").click(function(e) {
-                if (e.target.tagName != 'INPUT') {
-                    var inp = $(this).find("input");
-                    inp.prop("checked", !inp.prop("checked"));
-                    inp.trigger("change");
-                    return false;
-                }
-            })
-        });
+        (function () {
+            var churchLat   = <?= json_encode((float) ChurchMetaData::getChurchLatitude()) ?>;
+            var churchLng   = <?= json_encode((float) ChurchMetaData::getChurchLongitude()) ?>;
+            var mapZoom     = <?= max(1, (int) SystemConfig::getValue('iMapZoom') ?: 10) ?>;
+            var plotArray   = <?= json_encode($arrPlotItems) ?>;
+            var bPlotFamily = <?= $plotFamily ? 'true' : 'false' ?>;
+            var classColors = <?= json_encode(array_values($markerColors)) ?>;
 
-        window.CRM.map = {
-            markers: new Array(),
-            setClassificationVisible: function(clsID, visible) {
-                for (var i = 0; i < window.CRM.map.plotArray.length; i++) {
-                    if (window.CRM.map.plotArray[i].Classification == clsID) {
-                        window.CRM.map.markers[i].setVisible(visible);
+            function colorFor(clsId) {
+                return classColors[clsId % classColors.length] || '#6c757d';
+            }
+
+            // Initialise Leaflet map centred on the church
+            var map = L.map('map').setView([churchLat, churchLng], mapZoom);
+
+            // OpenStreetMap tile layer — free, no API key required
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Church marker
+            var churchIcon = L.icon({
+                iconUrl:     window.CRM.root + '/skin/icons/church.png',
+                iconSize:    [32, 32],
+                iconAnchor:  [16, 32],
+                popupAnchor: [0, -34]
+            });
+            L.marker([churchLat, churchLng], { icon: churchIcon })
+                .bindPopup('<strong><?= addslashes(htmlspecialchars(ChurchMetaData::getChurchName())) ?></strong>')
+                .addTo(map);
+
+            // Track markers by classification for show/hide filtering
+            var classMarkers = {};
+
+            for (var i = 0; i < plotArray.length; i++) {
+                var item = plotArray[i];
+                if (!item.Latitude && !item.Longitude) { continue; }
+
+                var clsId  = item.Classification;
+                var color  = colorFor(clsId);
+                var href   = bPlotFamily
+                    ? 'v2/family/' + item.ID
+                    : 'PersonView.php?PersonID=' + item.ID;
+
+                var marker = L.circleMarker([item.Latitude, item.Longitude], {
+                    radius:      8,
+                    color:       color,
+                    fillColor:   color,
+                    fillOpacity: 0.85,
+                    weight:      2
+                });
+
+                marker.bindPopup(
+                    '<strong><a href="' + href + '">' + item.Salutation + '</a></strong>' +
+                    '<br>' + item.Address
+                );
+                marker.addTo(map);
+
+                if (!classMarkers[clsId]) { classMarkers[clsId] = []; }
+                classMarkers[clsId].push(marker);
+            }
+
+            // Show/hide markers by classification
+            window.CRM.map = {
+                setClassificationVisible: function (clsId, visible) {
+                    (classMarkers[clsId] || []).forEach(function (m) {
+                        if (visible) { m.addTo(map); } else { map.removeLayer(m); }
+                    });
+                }
+            };
+
+            // Move desktop legend into the map (bottom-right corner)
+            var legendControl = L.control({ position: 'bottomright' });
+            legendControl.onAdd = function () {
+                return document.getElementById('maplegend');
+            };
+            legendControl.addTo(map);
+
+            // Legend checkbox interaction
+            document.querySelectorAll('.legenditem-checkbox').forEach(function (cb) {
+                cb.addEventListener('change', function () {
+                    var clsId = parseInt(cb.closest('.legenditem').dataset.classification, 10);
+                    window.CRM.map.setClassificationVisible(clsId, cb.checked);
+                });
+            });
+            document.querySelectorAll('.legenditem').forEach(function (item) {
+                item.addEventListener('click', function (e) {
+                    if (e.target.tagName !== 'INPUT') {
+                        var cb = item.querySelector('input');
+                        cb.checked = !cb.checked;
+                        cb.dispatchEvent(new Event('change'));
                     }
-                }
-            }
-        };
-        var churchloc = {
-            lat: <?= ChurchMetaData::getChurchLatitude() ?>,
-            lng: <?= ChurchMetaData::getChurchLongitude() ?>
-        };
-
-        var markerIcons = <?= json_encode($markerIcons) ?>;
-        var iconsJSON = <?= $icons->toJSON() ?>;
-        var icons = iconsJSON.ListOptions;
-        var iconBase = 'https://www.google.com/intl/en_us/mapfiles/ms/micons/';
-
-        var map = null;
-        var infowindow = new google.maps.InfoWindow({
-            maxWidth: 200
-        });
-
-        function addMarkerWithInfowindow(map, marker_position, image, title, infowindow_content) {
-            //Create marker
-            var marker = new google.maps.Marker({
-                position: marker_position,
-                map: map,
-                icon: image,
-                title: title
+                });
             });
-            window.CRM.map.markers.push(marker);
-
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.setContent(infowindow_content);
-                infowindow.open(map, marker);
-            });
-        }
-
-        function initialize() {
-            // init map
-            map = new google.maps.Map(document.getElementById('map'), {
-                zoom: <?= SystemConfig::getValue("iMapZoom") ?>,
-                center: churchloc
-
-            });
-
-            //Churchmark
-            var churchMark = new google.maps.Marker({
-                icon: window.CRM.root + "/skin/icons/church.png",
-                position: new google.maps.LatLng(churchloc),
-                map: map
-            });
-
-            google.maps.event.addListener(map, 'click', function() {
-                infowindow.close();
-            });
-
-            <?php
-            $arr = [];
-            $arrPlotItems = [];
-            if ($plotFamily) {
-                foreach ($families as $family) {
-                    if ($family->hasLatitudeAndLongitude()) {
-                        //this helps to add head people persons details: otherwise doesn't seems to populate
-                        $class = $family->getHeadPeople()[0];
-                        $family->getHeadPeople()[0];
-                        $arr['ID'] = $family->getId();
-                        $arr['Name'] = $family->getName();
-                        $arr['Salutation'] = $family->getSalutation();
-                        $arr['Address'] = $family->getAddress();
-                        $arr['Latitude'] = $family->getLatitude();
-                        $arr['Longitude'] = $family->getLongitude();
-                        $arr['Name'] = $family->getName();
-                        $arr['Classification'] = $class->GetClsId();
-                        $arrPlotItems[] = $arr;
-                    }
-                }
-            } else {
-                //plot Person
-                foreach ($persons as $member) {
-                    $latLng = $member->getLatLng();
-                    $arr['ID'] = $member->getId();
-                    $arr['Salutation'] = $member->getFullName();
-                    $arr['Name'] = $member->getFullName();
-                    $arr['Address'] = $member->getAddress();
-                    $arr['Latitude'] = $latLng['Latitude'];
-                    $arr['Longitude'] = $latLng['Longitude'];
-                    $arr['Name'] = $member->getFullName();
-                    $arr['Classification'] = $member->getClsId();
-                    $arrPlotItems[] = $arr;
-                }
-            } //end IF $plotFamily
-
-            ?>
-
-            window.CRM.map.plotArray = <?= json_encode($arrPlotItems) ?>;
-            var bPlotFamily = <?= ($plotFamily) ? 'true' : 'false' ?>;
-            if (window.CRM.map.plotArray.length == 0) {
-                return;
-            }
-            //loop through the families/persons and add markersmarkers
-            for (var i = 0; i < window.CRM.map.plotArray.length; i++) {
-                if (window.CRM.map.plotArray[i].Latitude + window.CRM.map.plotArray[i].Longitude == 0)
-                    continue;
-
-                //icon image
-                var clsid = window.CRM.map.plotArray[i].Classification;
-                var markerIcon = markerIcons[clsid];
-                var iconurl = iconBase + markerIcon + '.png';
-                var image = {
-                    url: iconurl,
-                    // This marker is 37 pixels wide by 34 pixels high.
-                    size: new google.maps.Size(37, 34),
-                    // The origin for this image is (0, 0).
-                    origin: new google.maps.Point(0, 0),
-                    // The anchor for this image is the base of the flagpole at (0, 32).
-                    anchor: new google.maps.Point(0, 32)
-                };
-
-                //Latlng object
-                var latlng = new google.maps.LatLng(window.CRM.map.plotArray[i].Latitude, window.CRM.map.plotArray[i].Longitude);
-
-                //Infowindow Content
-                var imghref, contentString;
-                if (bPlotFamily) {
-                    imghref = "v2/family/" + window.CRM.map.plotArray[i].ID;
-                } else {
-                    imghref = "PersonView.php?PersonID=" + window.CRM.map.plotArray[i].ID;
-                }
-
-                contentString = "<b><a href='" + imghref + "'>" + window.CRM.map.plotArray[i].Salutation + "</a></b>";
-                contentString += "<p>" + window.CRM.map.plotArray[i].Address + "</p>";
-
-                //Add marker and infowindow
-                addMarkerWithInfowindow(map, latlng, image, window.CRM.map.plotArray[i].Name, contentString);
-            }
-
-            //push Legend to right bottom
-            var legend = document.getElementById('maplegend');
-            map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
-
-        }
-        initialize();
+        })();
     </script>
-<?php
-}
-require_once __DIR__ . '/Include/Footer.php';
+
+    <style nonce="<?= SystemURLs::getCSPNonce() ?>">
+        .legend-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 4px;
+            vertical-align: middle;
+            border: 1px solid rgba(0, 0, 0, .25);
+        }
+    </style>
+<?php } ?>
+
+<?php require_once __DIR__ . '/Include/Footer.php'; ?>

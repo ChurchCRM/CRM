@@ -41,6 +41,14 @@ module.exports = function (grunt) {
                         src: ["node_modules/bootbox/dist/bootbox.min.js"],
                         dest: "src/skin/external/bootbox/",
                     },
+                    // Leaflet: interactive maps (JS + CSS + marker images)
+                    // CSS references images/ relatively, so directory structure must be preserved
+                    {
+                        expand: true,
+                        cwd: "node_modules/leaflet/dist",
+                        src: ["leaflet.js", "leaflet.css", "images/**"],
+                        dest: "src/skin/external/leaflet/",
+                    },
                     {
                         expand: true,
                         cwd: "node_modules/bootstrap/dist",
