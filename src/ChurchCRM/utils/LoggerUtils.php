@@ -133,12 +133,6 @@ class LoggerUtils
                 $handler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 $handler->setFormatter(self::createFormatter());
                 
-                // Add error callback for graceful failure handling (guarded for older Monolog)
-                if (method_exists($handler, 'setOnFailureCallback')) {
-                    $handler->setOnFailureCallback(function (\Throwable $error) {
-                        error_log('Slim logger handler failed: ' . $error->getMessage());
-                    });
-                }
                 
                 $slimLogger->pushHandler($handler);
             } catch (\Throwable $e) {
@@ -174,12 +168,6 @@ class LoggerUtils
                 self::$appLogHandler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 self::$appLogHandler->setFormatter(self::createFormatter());
                 
-                // Add error callback for graceful failure handling (guarded for older Monolog)
-                if (method_exists(self::$appLogHandler, 'setOnFailureCallback')) {
-                    self::$appLogHandler->setOnFailureCallback(function (\Throwable $error) {
-                        error_log('App logger handler failed: ' . $error->getMessage());
-                    });
-                }
                 
                 self::$appLogger->pushHandler(self::$appLogHandler);
             } catch (\Throwable $e) {
@@ -234,12 +222,6 @@ class LoggerUtils
                 // Use standard formatter to match other system logs
                 self::$authLogHandler->setFormatter(self::createFormatter());
                 
-                // Add error callback for graceful failure handling (guarded for older Monolog)
-                if (method_exists(self::$authLogHandler, 'setOnFailureCallback')) {
-                    self::$authLogHandler->setOnFailureCallback(function (\Throwable $error) {
-                        error_log('Auth logger handler failed: ' . $error->getMessage());
-                    });
-                }
                 
                 self::$authLogger->pushHandler(self::$authLogHandler);
             } catch (\Throwable $e) {
@@ -287,12 +269,6 @@ class LoggerUtils
                 $handler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 $handler->setFormatter(self::createFormatter());
                 
-                // Add error callback for graceful failure handling (guarded for older Monolog)
-                if (method_exists($handler, 'setOnFailureCallback')) {
-                    $handler->setOnFailureCallback(function (\Throwable $error) {
-                        error_log('CSP logger handler failed: ' . $error->getMessage());
-                    });
-                }
                 
                 self::$cspLogger->pushHandler($handler);
             } catch (\Throwable $e) {

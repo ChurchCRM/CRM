@@ -144,7 +144,6 @@ class Bootstrapper
         
         // Mark as initialized
         self::$initialized = true;
-        self::$bootStrapLogger->debug("ChurchCRM bootstrap completed successfully");
     }
     
     /**
