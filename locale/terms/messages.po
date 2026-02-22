@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 22:41-0800\n"
+"POT-Creation-Date: 2026-02-22 05:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -210,6 +210,9 @@ msgid "ADD, Delete, and ordering changes are immediate. Name and Description cha
 msgstr ""
 
 msgid "ALERT"
+msgstr ""
+
+msgid "API Key is required."
 msgstr ""
 
 msgid "About WebDAV Backups"
@@ -1151,6 +1154,14 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+#, php-format
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr ""
+
+#, php-format
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr ""
+
 msgid "Cannot execute query."
 msgstr ""
 
@@ -1287,9 +1298,6 @@ msgid "Checked Out Time"
 msgstr ""
 
 msgid "Checking Cart Status"
-msgstr ""
-
-msgid "Checkout All"
 msgstr ""
 
 msgid "Checks"
@@ -1615,6 +1623,21 @@ msgstr ""
 msgid "Connected"
 msgstr ""
 
+#, php-format
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr ""
+
+msgid "Connected to OpenLP server successfully."
+msgstr ""
+
+#, php-format
+msgid "Connected to OpenLP! Version: %s"
+msgstr ""
+
+#, php-format
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr ""
+
 msgid "Connection failed"
 msgstr ""
 
@@ -1681,6 +1704,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Costa Rica"
+msgstr ""
+
+msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
 msgid "Count"
@@ -2409,9 +2435,6 @@ msgstr ""
 msgid "E"
 msgstr ""
 
-msgid "E.164 format, e.g., +14155551234"
-msgstr ""
-
 msgid "EMERGENCY"
 msgstr ""
 
@@ -2993,6 +3016,9 @@ msgstr ""
 msgid "Failed to apply upgrade. Please check the server logs for details."
 msgstr ""
 
+msgid "Failed to connect to OpenLP server."
+msgstr ""
+
 msgid "Failed to copy URL"
 msgstr ""
 
@@ -3090,9 +3116,6 @@ msgid "Failed to save settings"
 msgstr ""
 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
-msgstr ""
-
-msgid "Failed to send SMS"
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -4094,6 +4117,9 @@ msgstr ""
 msgid "Include contact and demographic data in new member email notification body"
 msgstr ""
 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr ""
+
 msgid "Include events and calendars"
 msgstr ""
 
@@ -4154,7 +4180,17 @@ msgstr ""
 msgid "Intersect with Cart"
 msgstr ""
 
+#, php-format
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr ""
+
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr ""
+
 msgid "Invalid API key"
+msgstr ""
+
+msgid "Invalid API key format. Check your MailChimp API key."
 msgstr ""
 
 msgid "Invalid Birth Date."
@@ -4199,6 +4235,9 @@ msgstr ""
 msgid "Invalid date format in start parameter"
 msgstr ""
 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr ""
+
 msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
 msgstr ""
 
@@ -4221,6 +4260,9 @@ msgid "Invalid request data"
 msgstr ""
 
 msgid "Invalid request: Missing calendar id"
+msgstr ""
+
+msgid "Invalid server URL format."
 msgstr ""
 
 msgid "Invalid status"
@@ -4662,6 +4704,9 @@ msgstr ""
 msgid "MailChimp Dashboard"
 msgstr ""
 
+msgid "MailChimp connection failed."
+msgstr ""
+
 msgid "MailChimp is not configured"
 msgstr ""
 
@@ -4990,6 +5035,10 @@ msgstr ""
 
 #. Context: query_qry
 msgid "Missing pledges"
+msgstr ""
+
+#, php-format
+msgid "Missing required settings: %s"
 msgstr ""
 
 msgid "Mobile"
@@ -5959,6 +6008,9 @@ msgstr ""
 msgid "Person has been already checked in for this event"
 msgstr ""
 
+msgid "Person has no family"
+msgstr ""
+
 msgid "Person not found"
 msgstr ""
 
@@ -6007,9 +6059,6 @@ msgid "Phone Type"
 msgstr ""
 
 msgid "Phone number"
-msgstr ""
-
-msgid "Phone number and message required"
 msgstr ""
 
 msgid "Photo Directory"
@@ -6270,6 +6319,9 @@ msgstr ""
 msgid "Plugin not found"
 msgstr ""
 
+msgid "Plugin not found or not active"
+msgstr ""
+
 msgid "Plugins"
 msgstr ""
 
@@ -6448,9 +6500,6 @@ msgid "Recent friends"
 msgstr ""
 
 msgid "Recipient Naming Method"
-msgstr ""
-
-msgid "Recipients and message required"
 msgstr ""
 
 msgid "Recommendation: Review and delete these files before or after the upgrade."
@@ -6790,9 +6839,6 @@ msgid "SE"
 msgstr ""
 
 msgid "SHA1 Hash:"
-msgstr ""
-
-msgid "SMS sent"
 msgstr ""
 
 msgid "SMTP Host"
@@ -7159,6 +7205,9 @@ msgid "Sermon Text"
 msgstr ""
 
 msgid "Server Information"
+msgstr ""
+
+msgid "Server URL is required."
 msgstr ""
 
 msgid "Server error"
@@ -7875,6 +7924,9 @@ msgstr ""
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr ""
 
+msgid "This plugin does not support connection testing."
+msgstr ""
+
 msgid "This property type is still being used by at least one property."
 msgstr ""
 
@@ -8430,6 +8482,9 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
+msgid "Username and password are required."
+msgstr ""
+
 #. Context: countries
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr ""
@@ -8441,6 +8496,10 @@ msgid "Valid Settings"
 msgstr ""
 
 msgid "Validation Error"
+msgstr ""
+
+#, php-format
+msgid "Validation failed: %s"
 msgstr ""
 
 msgid "Validation pending"
@@ -8630,6 +8689,9 @@ msgstr ""
 msgid "Vonage API Secret"
 msgstr ""
 
+msgid "Vonage server error. Please try again later."
+msgstr ""
+
 msgid "Voting Members"
 msgstr ""
 
@@ -8689,6 +8751,9 @@ msgid "WebDAV Configuration"
 msgstr ""
 
 msgid "WebDAV Connection"
+msgstr ""
+
+msgid "WebDAV Endpoint URL is required."
 msgstr ""
 
 msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
