@@ -93,7 +93,7 @@ require_once __DIR__ . '/Include/Header.php';
     <!-- Deposit Details Column -->
     <div class="col-lg-7 col-md-12 mb-3">
       <div class="card">
-        <div class="card-header with-border bg-primary text-white">
+        <div class="card-header bg-primary text-white">
           <h3 class="card-title mb-0">
             <i class="fa-solid fa-file-invoice-dollar"></i> <?php echo gettext('Deposit Details'); ?>
           </h3>
@@ -223,7 +223,7 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="row mt-4">
   <div class="col-12">
     <div class="card card-sm">
-      <div class="card-header with-border bg-light d-flex justify-content-between align-items-center">
+      <div class="card-header bg-light d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">
           <i class="fa-solid fa-chart-bar"></i> <?= gettext('Funds'); ?>
           <small class="text-muted ml-2"><?= gettext('Click a bar to filter payments'); ?></small>
@@ -240,7 +240,7 @@ require_once __DIR__ . '/Include/Header.php';
 </div>
 
 <div class="card mt-3">
-  <div class="card-header with-border bg-secondary text-white d-flex justify-content-between align-items-center">
+  <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
     <h3 class="card-title mb-0">
       <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?> 
       <span class="badge badge-light text-dark" id="payment-count">0</span>

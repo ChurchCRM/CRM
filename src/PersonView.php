@@ -183,7 +183,7 @@ $bOkToEdit = (
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3">
         <div class="card card-primary">
-            <div class="card-header with-border">
+            <div class="card-header">
                 <h3 class="card-title" style="font-size: 1.5rem; font-weight: 600;">
                     <?= $person->getFullName() ?>
                 </h3>
@@ -259,13 +259,12 @@ $bOkToEdit = (
                     </li>
                 </ul>
             </div>
-            <!-- /.box-body -->
         </div>
         <!-- /.box -->
 
         <!-- Contact & Personal Info -->
         <div class="card card-primary">
-            <div class="card-header with-border">
+            <div class="card-header">
                 <h3 class="card-title"><?= gettext('Contact & Personal Info') ?></h3>
             </div>
             <div class="card-body">
@@ -792,7 +791,7 @@ $bOkToEdit = (
                                                 <div class="card-header">
                                                     <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
-                                                    <div class="card-tools pull-right">
+                                                    <div class="card-tools float-right">
                                                         <div class="label bg-gray"><?= InputUtils::escapeHTML(gettext($roleName)) ?></div>
                                                     </div>
                                                 </div>
@@ -821,7 +820,6 @@ $bOkToEdit = (
                                                         }
                                                     }
 
-                                                    echo '</div><!-- /.box-body -->';
                                                 } ?>
                                                 <div class="card-footer">
                                                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
@@ -848,7 +846,6 @@ $bOkToEdit = (
                                                     <?php
                                                     } ?>
                                                 </div>
-                                                <!-- /.box-footer-->
                                             </div>
                                             <!-- /.box -->
                                         </div>

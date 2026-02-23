@@ -14,13 +14,12 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
       <p></p>
     </div>
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-12">
         <div class="card card-info">
-            <div class="card-body no-padding">
+            <div class="card-body p-0">
                 <!-- THE CALENDAR -->
                 <div id="calendar"></div>
             </div>
-            <!-- /.box-body -->
         </div>
         <!-- /. box -->
       </div>

@@ -130,7 +130,7 @@ require_once __DIR__ . '/../Include/Header.php';
 <div class="card card-primary card-outline">
   <div class="card-header">
     <h3 class="card-title"><i class="fa-solid fa-chalkboard-user"></i> <?= gettext('Sunday School Classes') ?></h3>
-      <div class="card-tools pull-right">
+      <div class="card-tools float-right">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
           </button>
           <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i>
@@ -171,7 +171,7 @@ require_once __DIR__ . '/../Include/Header.php';
 <div class="card card-warning card-outline">
   <div class="card-header">
     <h3 class="card-title"><i class="fa-solid fa-user-xmark"></i> <?= gettext('Students not in a Sunday School Class') ?></h3>
-      <div class="card-tools pull-right">
+      <div class="card-tools float-right">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
           </button>
           <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i>

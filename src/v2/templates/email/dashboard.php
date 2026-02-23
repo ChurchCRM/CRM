@@ -7,7 +7,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 <div class="card">
-    <div class="card-header with-border">
+    <div class="card-header">
         <h3 class="card-title"><?= gettext('Email Functions') ?></h3>
     </div>
     <div class="card-body">

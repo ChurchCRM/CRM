@@ -6,7 +6,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
 ?>
 <!-- BEGIN CART LISTING -->
 <div class="card card-primary">
-  <div class="card-header with-border">
+  <div class="card-header">
     <h3 class="card-title"><?= $ListTitleText ?></h3>
   </div>
   <div class="card-body">

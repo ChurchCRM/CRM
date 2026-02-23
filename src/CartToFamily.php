@@ -208,7 +208,7 @@ echo $sError;
 
             <tr>
                 <td class="LabelColumn"><?= gettext('Wedding Date') ?>:</td>
-                <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15" class="form-control pull-right active date-picker"><span class="text-danger"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
+                <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15" class="form-control float-right active date-picker"><span class="text-danger"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
             </tr>
 
             <tr>
