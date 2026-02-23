@@ -145,7 +145,7 @@ $MenuFirst = 1;
 
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
-        <ul class="navbar-nav navbar-nav-grow">
+        <ul class="navbar-nav flex-grow-1">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa-solid fa-bars"></i></a>
             </li>
@@ -153,7 +153,7 @@ $MenuFirst = 1;
                 <a href="<?= SystemURLs::getRootPath()?>/" class="nav-link">Home</a>
             </li>
             <li class="nav-item navbar-search-item">
-                <form action="#" method="get" class="navbar-form navbar-search-form">
+                <form action="#" method="get" class="navbar-form d-flex align-items-center w-100">
                     <div class="input-group w-100">
                         <select class="form-control multiSearch">
                         </select>

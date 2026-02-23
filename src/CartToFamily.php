@@ -197,7 +197,7 @@ echo $sError;
             <tr>
                 <td></td>
                 <td>
-                    <p class="MediumLargeText"><?= gettext('If adding a new family, enter data below.') ?></p>
+                    <p class="lead"><?= gettext('If adding a new family, enter data below.') ?></p>
                 </td>
             </tr>
 

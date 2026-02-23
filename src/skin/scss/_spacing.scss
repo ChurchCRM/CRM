@@ -10,33 +10,7 @@
  *
  * Use Bootstrap spacing classes directly instead of duplicating here.
  * See: https://getbootstrap.com/docs/4.6/utilities/spacing/
+ *
+ * For equal-height columns / flex rows, use Bootstrap flex utilities directly:
+ * - .d-flex, .flex-grow-1, .flex-wrap on .row elements
  */
-
-/* ============================================
-   CUSTOM FLEX UTILITIES (NOT in Bootstrap)
-   ============================================ */
-
-/**
- * Flex row utilities for equal-height columns
- * Creates flex container with auto-sizing child columns
- */
-.row-flex,
-.row-flex > div[class*="col-"] {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  flex: 1 1 auto;
-}
-
-/**
- * Flex row wrapper for wrapping content
- * Allows flex items to wrap and align content to start
- */
-.row-flex-wrap {
-  -webkit-flex-flow: row wrap;
-  flex-flow: row wrap;
-  align-content: flex-start;
-  flex: 0;
-}
