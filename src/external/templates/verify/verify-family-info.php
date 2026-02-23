@@ -13,6 +13,9 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 
 $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
+<?php if ($doShowMap) : ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+<?php endif; ?>
 
 <div class="container-fluid py-4">
     <!-- Header Section -->
@@ -262,13 +265,23 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
     </div>
 </div>
 
-<script src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapsRenderKey") ?>"></script>
+<?php if ($doShowMap) : ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    <?php if ($doShowMap) { ?>
-        var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
-    <?php } else { ?>
-        var LatLng = null;
-    <?php } ?>
+    (function () {
+        var lat = <?= json_encode((float) $family->getLatitude()) ?>;
+        var lng = <?= json_encode((float) $family->getLongitude()) ?>;
+        var map = L.map('map1', { scrollWheelZoom: false, dragging: false, zoomControl: false })
+            .setView([lat, lng], 14);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        L.marker([lat, lng]).addTo(map);
+    })();
+</script>
+<?php endif; ?>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var token = '<?= $token->getToken()?>';
 </script>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-verify.min.css') ?>">

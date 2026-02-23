@@ -81,7 +81,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <i class="fa-solid fa-people-roof fa-3x"></i><br>
             <?= gettext('All Families') ?>
         </a>
-        <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app bg-warning">
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/map" class="btn btn-app bg-warning">
             <i class="fa-solid fa-map fa-3x"></i><br>
             <?= gettext('Family Map') ?>
         </a>

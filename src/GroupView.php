@@ -177,7 +177,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     <i class="fa-solid fa-users fa-3x"></i><br>
                     <?= gettext('Add Group Members to Cart') ?>
                 </a>
-                <a class="btn btn-app bg-primary" href="MapUsingGoogle.php?GroupID=<?= $thisGroup->getId() ?>">
+                <a class="btn btn-app bg-primary" href="<?= SystemURLs::getRootPath() ?>/v2/map?groupId=<?= $thisGroup->getId() ?>">
                     <i class="fa-solid fa-map-marker fa-3x"></i><br>
                     <?= gettext('Map this group') ?>
                 </a>

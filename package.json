@@ -110,6 +110,7 @@
         "jquery": "^3.7.1",
         "jszip": "^3.10.1",
         "just-validate": "^4.3.0",
+        "leaflet": "^1.9.4",
         "moment": "^2.30.1",
         "notyf": "^3.10.0",
         "pdfmake": "^0.3.4",
