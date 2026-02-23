@@ -6909,11 +6909,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL Pemberitahuan Pusat ChurchCRM"
 
 #: 
-#, fuzzy
-msgid "Follow us on"
-msgstr "Ikuti kami di"
-
-#: 
 msgid "invalid event type id"
 msgstr "id jenis acara tidak valid"
 
@@ -6978,10 +6973,6 @@ msgstr "Tidak bisa menghapus diri sendiri"
 #: 
 msgid "The role could not be found."
 msgstr "Peran tidak dapat ditemukan."
-
-#: 
-msgid "Menus"
-msgstr "Daftar"
 
 #: 
 msgid "is disabled"
@@ -7097,10 +7088,6 @@ msgstr "Estonia"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Terjadi kesalahan saat mendekode file definisi tanda tangan"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Remote Endpoint Cadangan. Jika WebDAV, ini harus url disandikan."
 
 #: 
 msgid "Age Histogram"
@@ -7294,28 +7281,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "LastName, FirstName MiddleName"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Kelola 2 Factor Authentication"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Status Dua Faktor"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Harap konfirmasi menonaktifkan 2 Faktor Auth untuk pengguna ini"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Silakan masukkan kode 2FA"
-
-#: 
-msgid "2FA Code"
-msgstr "Kode 2FA"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "2 pendaftaran Otentikasi Faktor"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7344,10 +7315,6 @@ msgstr "Kunci API Google Maps digunakan untuk alamat Geocoding"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Kirim email pemberitahuan ketika akun pengguna telah dihapus"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Kunci API Google Maps digunakan untuk menampilkan peta di browser"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7394,12 +7361,6 @@ msgstr "Memuat"
 msgid "List not found"
 msgstr "Daftar tidak ditemukan"
 
-#. typo
-#: 
-#, fuzzy
-msgid "List not in the list"
-msgstr "Tidak ada dalam daftar"
-
 #: 
 msgid "People not in"
 msgstr "Orang tidak masuk"
@@ -7416,18 +7377,6 @@ msgstr "Peserta tidak ada di ChurchCRM"
 msgid "Web Server"
 msgstr "Web Server"
 
-#: 
-msgid "List maintenance"
-msgstr "Daftar maintenance"
-
-#: 
-msgid "People not in list"
-msgstr "Orang tidak terdaftar"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Peserta tidak ada didalam CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7436,10 +7385,6 @@ msgstr "Ibrani"
 #: 
 msgid "open rate"
 msgstr "Buka Kurs"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Tidak Berlangganan"
 
 #: 
 msgid "Login Info"
@@ -7504,34 +7449,6 @@ msgstr "Teks"
 #: 
 msgid "Event Description"
 msgstr "Deskripsi Acara"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Mendaftarkan Autentikasi Dua Faktor pada akun ChurchCRM Anda akan menambah perlindungan dari pelaku kejahatan yang mencoba mengakses akun Anda"
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "Autentikasi Dua Faktor ChurchCRM mendukung semua aplikasi autentikasi TOTP jadi Anda bebas memilih antara Microsoft Authenticator, Google Authenticator, Authy, LastPass atau lainnya"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Saat Anda masuk ke ChurchCRM, Anda akan tetap diminta memasukkan nama pengguna dan sandi seperti biasa"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "Namun Anda juga akan diminta memasukkan kode sekali pakai dari perangkat autentikasi untuk bisa masuk"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Setelah berhasil memasukkan kredensial dan kode sekali pakai, Anda akan diizinkan masuk seperti biasa"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Untuk mencegah akun ChurchCRM Anda terkunci, mohon pastikan Anda siap menyelesaikan pendaftaran autentikasi dua faktor sebelum mengklik mulai"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Memulai pendaftaran akan membatalkan perangkat autentikasi dua faktor yang sebelumnya didaftarkan dan kode pemulihan"
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

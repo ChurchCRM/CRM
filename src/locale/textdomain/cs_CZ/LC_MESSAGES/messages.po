@@ -6892,10 +6892,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "Adresa URL centrálních oznámení ChurchCRM"
 
 #: 
-msgid "Follow us on"
-msgstr "Sledujte nás na"
-
-#: 
 msgid "invalid event type id"
 msgstr "neplatné ID typu události"
 
@@ -6958,10 +6954,6 @@ msgstr "Nejde smazat sám sebe"
 #: 
 msgid "The role could not be found."
 msgstr "Role nenalezena"
-
-#: 
-msgid "Menus"
-msgstr "Menu"
 
 #: 
 msgid "is disabled"
@@ -7076,10 +7068,6 @@ msgstr "Estonština"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Chyba při dekódování souboru s definicí podpisu"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Koncový bod vzdáleného zálohování.  Pokud jde o WebDAV, musí být  zakódováno pomocí url. "
 
 #: 
 msgid "Age Histogram"
@@ -7283,28 +7271,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Příjmení, KřestníJméno ProstředníJméno"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Spravovat dvoufaktorové ověření"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Stav dvoufaktorového ověření"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Potvrďte zakázání dvoufaktorového ověření pro tohoto uživatele"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Zadetejte 2FA kód"
-
-#: 
-msgid "2FA Code"
-msgstr "2FA kód"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "Registrace dvoufaktorového ověření"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7333,10 +7305,6 @@ msgstr "Klíč Google Maps API používaný pro geokódování adres"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Poslat e-mail s upozorněním uživatelům, že jejich účet byl smazán."
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Klíč Google Maps API používaný pro vykreslování map v prohlížeči"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7382,11 +7350,6 @@ msgstr "nahrávám"
 msgid "List not found"
 msgstr "Seznam nenalezen"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "Seznam není na seznamu"
-
 #: 
 msgid "People not in"
 msgstr "Osoby nejsou"
@@ -7403,18 +7366,6 @@ msgstr "Publikum, které není v systému ChurchCRM"
 msgid "Web Server"
 msgstr "Webový server"
 
-#: 
-msgid "List maintenance"
-msgstr "Údržba seznamu"
-
-#: 
-msgid "People not in list"
-msgstr "Osoby, které nejsou na seznamu"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Publikum, které není v CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7423,10 +7374,6 @@ msgstr "Hebrejština"
 #: 
 msgid "open rate"
 msgstr "míra otevření"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Nepřihlášený "
 
 #: 
 msgid "Login Info"
@@ -7491,34 +7438,6 @@ msgstr "Text"
 #: 
 msgid "Event Description"
 msgstr "Popis události"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Registrace uživatelského účtu ChurchCRM ke dvoufaktorovému ověření poskytuje další vrstvu obrany proti útočníkům, kteří se snaží získat přístup k vašemu účtu."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "Dvoufázové ověření ChurchCRM podporuje jakýkoli TOTP autentizátor, takže si můžete vybrat mezi Microsoft Authenticator, Google Authenticator, Authy, LastPass a dalšími"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Při přihlášení do ChurchCRM budete stále zadávat své uživatelské jméno a heslo jako obvykle"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "K dokončení přihlášení však budete muset zadat také jednorázový kód z autentizačního zařízení"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Po úspěšném zadání přihlašovacích údajů a jednorázového kódu budete přihlášeni jako obvykle"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Abyste předešli zablokování účtu ChurchCRM, ujistěte se, že jste připraveni dokončit registraci dvoufázového ověření, než kliknete na tlačítko začít"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Zahájení registrace zruší platnost všech dříve zaregistrovaných dvoufázových zařízení a kódů pro obnovení."
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

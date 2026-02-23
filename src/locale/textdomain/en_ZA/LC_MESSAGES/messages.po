@@ -283,10 +283,6 @@ msgid "invalid group id"
 msgstr "invalid group ID"
 
 #: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Remote Backup Endpoint.  If WebDAV, this must be URL encoded. "
-
-#: 
 msgid "Missing event id"
 msgstr "Missing event ID"
 
@@ -295,20 +291,12 @@ msgid "Unexpected Person Id"
 msgstr "Unexpected Person ID"
 
 #: 
-msgid "2 Factor Authentication enrollment"
-msgstr "2 Factor Authentication enrolment"
-
-#: 
 msgid "Unable To Begin Two Factor Authentication Enrollment"
 msgstr "Unable To Begin Two Factor Authentication Enrolment"
 
 #: 
 msgid "Invalid List id"
 msgstr "Invalid List ID"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Beginning enrolment will invalidate any previously enrolled 2 factor devices and recovery codes."
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

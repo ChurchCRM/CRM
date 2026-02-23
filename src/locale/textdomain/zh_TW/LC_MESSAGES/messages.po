@@ -7048,11 +7048,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM中央通知URL"
 
 #: 
-#, fuzzy
-msgid "Follow us on"
-msgstr "在推特上關注我們"
-
-#: 
 msgid "invalid event type id"
 msgstr "無效的事件類型ID"
 
@@ -7117,10 +7112,6 @@ msgstr "無法刪除自己"
 #: 
 msgid "The role could not be found."
 msgstr "找不到這個角色。"
-
-#: 
-msgid "Menus"
-msgstr "菜單"
 
 #: 
 msgid "is disabled"
@@ -7253,11 +7244,6 @@ msgstr "愛沙尼亞語"
 #, fuzzy
 msgid "Error decoding signature definition file"
 msgstr "解碼簽名定義文件錯誤"
-
-#: 
-#, fuzzy
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "遠程備份端點。如果是WebDAV，必須是url編碼的。"
 
 #: 
 #, fuzzy
@@ -7493,28 +7479,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "姓, 名 中間名"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "管理雙重認證"
-
-#: 
 msgid "Two Factor Status"
 msgstr "雙重認證狀態"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "請確認為此用戶禁用雙重認證"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "請輸入雙重認證代碼"
-
-#: 
-msgid "2FA Code"
-msgstr "雙重認證代碼"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "雙重認證代碼註冊"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7545,11 +7515,6 @@ msgstr "用於地址解析的Google Maps API密鑰"
 #, fuzzy
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "發送電子郵件通知用戶帳戶被刪除"
-
-#: 
-#, fuzzy
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Google Maps API密鑰用於在瀏覽器中呈現地圖"
 
 #: 
 #, fuzzy
@@ -7600,12 +7565,6 @@ msgstr "載入中"
 msgid "List not found"
 msgstr "找不到清單"
 
-#. typo
-#: 
-#, fuzzy
-msgid "List not in the list"
-msgstr "清單不在列表中"
-
 #: 
 msgid "People not in"
 msgstr "不在其中的人員"
@@ -7622,18 +7581,6 @@ msgstr "ChurchCRM沒有Audience"
 msgid "Web Server"
 msgstr "網頁伺服器"
 
-#: 
-msgid "List maintenance"
-msgstr "清單維護"
-
-#: 
-msgid "People not in list"
-msgstr "不在清單中的人員"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "CRM沒有Audience"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7642,11 +7589,6 @@ msgstr "希伯來書"
 #: 
 msgid "open rate"
 msgstr "開放率"
-
-#: 
-#, fuzzy
-msgid "Not Subscribed "
-msgstr "未訂閱 "
 
 #: 
 #, fuzzy
@@ -7726,39 +7668,6 @@ msgstr "文本"
 #, fuzzy
 msgid "Event Description"
 msgstr "活動說明"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "將ChurchCRM用戶帳戶註冊為雙重認證可為試圖訪問您的帳戶的不良行為者提供額外的防禦。"
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM 雙重認證支持任何TOTP身份驗證器應用程序，因此您可以自由選擇Microsoft Authenticator，Google Authenticator，Authy，LastPass和其他"
-
-#: 
-#, fuzzy
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "登錄ChurchCRM時，您仍然會像平常一樣輸入用戶名和密碼"
-
-#: 
-#, fuzzy
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "但是，您還需要提供來自身份驗證器設備的一次性代碼以完成登錄"
-
-#: 
-#, fuzzy
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "成功輸入憑據和一次性代碼後，您將照常登錄"
-
-#: 
-#, fuzzy
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "為防止您的ChurchCRM帳戶被鎖定，請確保您已準備好完成雙重驗證註冊，然後再單擊開始。"
-
-#: 
-#, fuzzy
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "開始註冊將使之前已註冊的任何雙重驗證設備和恢復代碼無效。"
 
 #: 
 #, fuzzy

@@ -6997,11 +6997,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL-ul pentru Notificări Centrale ChurchCRM"
 
 #: 
-#, fuzzy
-msgid "Follow us on"
-msgstr "Urmărește-ne pe"
-
-#: 
 msgid "invalid event type id"
 msgstr "ID-ul tipului de eveniment este invalid"
 
@@ -7066,10 +7061,6 @@ msgstr "Nu poți să te ștergi pe tine"
 #: 
 msgid "The role could not be found."
 msgstr "Rolul nu se găsește"
-
-#: 
-msgid "Menus"
-msgstr "Meniuri"
 
 #: 
 msgid "is disabled"
@@ -7185,10 +7176,6 @@ msgstr "Estonă"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Eroare la decodarea fișierului de definire a semnăturii"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Endpoint de backup la distanță. Dacă este WebDAV, acesta trebuie să fie codificat în URL"
 
 #: 
 msgid "Age Histogram"
@@ -7390,28 +7377,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Nume, prenume, al doile prenume"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Gestionați autentificarea cu doi factori"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Stare cu doi factori"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vă rugăm să confirmați autentificare în 2 factori pentru acest utilizator"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Vă rugăm introduceți codul 2FA"
-
-#: 
-msgid "2FA Code"
-msgstr "Cod 2FA"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "Înscrierea în autentificarea cu doi factori"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7440,10 +7411,6 @@ msgstr "Cheia API Google Maps utilizată pentru geocodificarea adreselor"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Trimite un email prin care să notifici utilizatorii când contul lor a fost șters"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Cheia API Google Maps folosită pentru afișarea hărților în browser"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7489,12 +7456,6 @@ msgstr "se încarcă"
 msgid "List not found"
 msgstr "Lista nu a fost găsită"
 
-#. typo
-#: 
-#, fuzzy
-msgid "List not in the list"
-msgstr "Listă care nu este in Listă"
-
 #: 
 msgid "People not in"
 msgstr "Persoane care nu sunt în"
@@ -7511,18 +7472,6 @@ msgstr "Publicul care nu este în ChurchCRM"
 msgid "Web Server"
 msgstr "Server web"
 
-#: 
-msgid "List maintenance"
-msgstr "Întreținerea listelor"
-
-#: 
-msgid "People not in list"
-msgstr "Oameni care nu sunt în listă"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Audiența care nu este în CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7531,10 +7480,6 @@ msgstr "Ebraică"
 #: 
 msgid "open rate"
 msgstr "Rata de deschidere"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Nu s-au abonat"
 
 #: 
 msgid "Login Info"
@@ -7599,34 +7544,6 @@ msgstr "Text"
 #: 
 msgid "Event Description"
 msgstr "Descriere eveniment"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Înregistrarea contului dvs. de utilizator ChurchCRM în Autentificarea în Doi Pași oferă un strat suplimentar de protecție împotriva utilizatorilor rău voitori care încearcă să acceseze contul dvs"
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "Autentificarea în doi pași din ChurchCRM suportă orice aplicație autentificatoare TOTP, așa că aveți libertatea să alegeți între Microsoft Authenticator, Google Authenticator, Authy, LastPass și altele"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Când vă conectați la ChurchCRM, veți introduce în continuare numele de utilizator și parola ca de obicei"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "Totuși, va trebui să furnizați și un cod unic de la dispozitivul dvs de autentificare pentru a finaliza conectarea"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "După ce ați introdus cu succes atât datele de autentificare, cât și codul unic, veți fi conectat ca de obicei"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Pentru a evita să fiți blocat din contul dvs ChurchCRM, vă rugăm să vă asigurați că sunteți pregătit să finalizați înregistrarea în două pași înainte de a face clic pe începere"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Începerea înregistrării va anula orice dispozitive cu autentificare în 2 pași  și coduri de recuperare înregistrate anterior"
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

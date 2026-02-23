@@ -6902,10 +6902,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM Central Notifications URL"
 
 #: 
-msgid "Follow us on"
-msgstr "Tufuatilie"
-
-#: 
 msgid "invalid event type id"
 msgstr "kitambulisho cha aina ya tukio batili"
 
@@ -6970,10 +6966,6 @@ msgstr "Huwezi kujifuta"
 #: 
 msgid "The role could not be found."
 msgstr "Jukumu halikuweza kupatikana."
-
-#: 
-msgid "Menus"
-msgstr "Menyu"
 
 #: 
 msgid "is disabled"
@@ -7088,10 +7080,6 @@ msgstr "Kiestonia"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Hitilafu katika kusimbua faili ya ufafanuzi wa sahihi"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Sehemu ya Mwisho ya Hifadhi Nakala ya Mbali. Ikiwa WebDAV, hii lazima iwe url iliyosimbwa. "
 
 #: 
 msgid "Age Histogram"
@@ -7294,28 +7282,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Jina la Mwisho, Jina la Kwanza Jina la Kati"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Dhibiti Uthibitishaji wa Sababu 2"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Hali ya Mambo Mbili"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Tafadhali thibitisha kulemaza 2 Factor Auth kwa mtumiaji huyu"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Tafadhali weka msimbo wa 2FA"
-
-#: 
-msgid "2FA Code"
-msgstr "Msimbo wa 2FA"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "2 Usajili wa Uthibitishaji wa Sababu"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7344,10 +7316,6 @@ msgstr "Ufunguo wa API ya Ramani za Google hutumiwa kwa anwani za Geocoding"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Tuma barua pepe kuwaarifu watumiaji wakati akaunti yao imefutwa"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Ufunguo wa API ya Ramani za Google unaotumika kutoa ramani kwenye kivinjari"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7393,12 +7361,6 @@ msgstr "kupakia"
 msgid "List not found"
 msgstr "Orodha haijapatikana"
 
-#. typo
-#: 
-#, fuzzy
-msgid "List not in the list"
-msgstr "Orodha si katikaList"
-
 #: 
 msgid "People not in"
 msgstr "Watu hawamo"
@@ -7415,18 +7377,6 @@ msgstr "Hadhira haipo katika KanisaCRM"
 msgid "Web Server"
 msgstr "Seva ya Wavuti"
 
-#: 
-msgid "List maintenance"
-msgstr "Matengenezo ya orodha"
-
-#: 
-msgid "People not in list"
-msgstr "Watu ambao hawako kwenye orodha"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Hadhira haiko kwenye CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7435,10 +7385,6 @@ msgstr "Kiebrania"
 #: 
 msgid "open rate"
 msgstr "kiwango cha wazi"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Hujasajiliwa "
 
 #: 
 msgid "Login Info"
@@ -7503,34 +7449,6 @@ msgstr "Maandishi"
 #: 
 msgid "Event Description"
 msgstr "Maelezo ya Tukio"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Kusajili akaunti yako ya mtumiaji wa ChurchCRM katika Uthibitishaji wa Mambo Mbili hutoa safu ya ziada ya ulinzi dhidi ya watendaji wabaya wanaojaribu kufikia akaunti yako."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM Two factor inasaidia programu yoyote ya uthibitishaji wa TOTP, kwa hivyo uko huru kuchagua kati ya Microsoft Authenticator, Google Authenticator, Authy, LastPass, na nyinginezo."
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Unapoingia kwa ChurchCRM, bado utaweka jina lako la mtumiaji na nenosiri kama kawaida"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "Hata hivyo, utahitaji pia kutoa msimbo wa mara moja kutoka kwa kifaa chako cha uthibitishaji ili kukamilisha kuingia kwako"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Baada ya kuingiza kitambulisho chako, na msimbo wa wakati mmoja kwa mafanikio, utaingia kama kawaida"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Ili kuzuia kufungiwa nje ya akaunti yako ya ChurchCRM, tafadhali hakikisha kuwa uko tayari kukamilisha uandikishaji wa vipengele viwili kabla ya kubofya kuanza."
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Uandikishaji unapoanza utabatilisha vifaa na misimbo 2 vya urejeshaji vilivyosajiliwa hapo awali."
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

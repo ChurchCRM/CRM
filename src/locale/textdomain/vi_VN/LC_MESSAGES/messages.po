@@ -6920,11 +6920,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL thông báo trung tâm của ChurchCRM"
 
 #: 
-#, fuzzy
-msgid "Follow us on"
-msgstr "theo dõi chúng tối trên"
-
-#: 
 msgid "invalid event type id"
 msgstr "id loại sự kiện không hợp lệ"
 
@@ -6989,10 +6984,6 @@ msgstr "Không thể xóa chính bạn"
 #: 
 msgid "The role could not be found."
 msgstr "Không thể tìm thấy vai trò."
-
-#: 
-msgid "Menus"
-msgstr "Menu"
 
 #: 
 msgid "is disabled"
@@ -7108,10 +7099,6 @@ msgstr "Người Estonia"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Lỗi giải mã tệp định nghĩa chữ ký"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Điểm cuối sao lưu từ xa. Nếu WebDAV, điều này phải được mã hóa url."
 
 #: 
 msgid "Age Histogram"
@@ -7305,28 +7292,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "LastName, FirstName MiddleName"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Quản lý xác thực 2 yếu tố"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Trạng thái hai yếu tố"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vui lòng xác nhận việc tắt 2 Factor Auth cho người dùng này"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Vui lòng nhập mã 2FA"
-
-#: 
-msgid "2FA Code"
-msgstr "Mã 2FA"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "Đăng ký xác thực 2 yếu tố"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7355,10 +7326,6 @@ msgstr "Khóa API của Google Maps được sử dụng cho các địa chỉ M
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Gửi email thông báo cho người dùng khi tài khoản của họ đã bị xóa"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Khóa API của Google Maps được sử dụng để hiển thị bản đồ trong trình duyệt"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7405,12 +7372,6 @@ msgstr "Đang tải"
 msgid "List not found"
 msgstr "Danh sách không tìm thấy"
 
-#. typo
-#: 
-#, fuzzy
-msgid "List not in the list"
-msgstr "Danh sách không có trong Danh sách"
-
 #: 
 msgid "People not in"
 msgstr "Những người không ở"
@@ -7427,18 +7388,6 @@ msgstr "Khán giả không ở trong Nhà thờCRM"
 msgid "Web Server"
 msgstr "Máy chủ web"
 
-#: 
-msgid "List maintenance"
-msgstr "Bảo trì danh sách"
-
-#: 
-msgid "People not in list"
-msgstr "Những người không có trong danh sách"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Đối tượng không có trong CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7447,10 +7396,6 @@ msgstr "Tiếng Do Thái"
 #: 
 msgid "open rate"
 msgstr "tỉ lệ mở"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Chưa đăng ký"
 
 #: 
 msgid "Login Info"
@@ -7515,34 +7460,6 @@ msgstr "Bản văn"
 #: 
 msgid "Event Description"
 msgstr "Mô tả sự kiện"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Việc đăng ký tài khoản người dùng ChurchCRM của bạn trong Xác thực hai yếu tố cung cấp một lớp bảo vệ bổ sung chống lại những kẻ xấu cố gắng truy cập vào tài khoản của bạn."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM Two factor hỗ trợ bất kỳ ứng dụng xác thực TOTP nào, vì vậy bạn có thể thoải mái lựa chọn giữa Microsoft Authenticator, Google Authenticator, Authy, LastPass và các ứng dụng khác"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Khi bạn đăng nhập vào ChurchCRM, bạn sẽ vẫn nhập tên người dùng và mật khẩu của mình như bình thường"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "Tuy nhiên, bạn cũng cần cung cấp mã một lần từ thiết bị xác thực của mình để hoàn tất đăng nhập"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Sau khi nhập thành công cả thông tin đăng nhập và mã một lần, bạn sẽ đăng nhập như bình thường"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Để tránh bị khóa tài khoản ChurchCRM của bạn, hãy đảm bảo rằng bạn đã sẵn sàng hoàn tất đăng ký hai yếu tố trước khi nhấp vào bắt đầu"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Bắt đầu đăng ký sẽ làm mất hiệu lực của mọi thiết bị 2 yếu tố đã đăng ký trước đó và mã khôi phục."
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

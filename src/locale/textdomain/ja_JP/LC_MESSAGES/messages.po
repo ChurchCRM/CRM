@@ -6854,10 +6854,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM中央通知URL"
 
 #: 
-msgid "Follow us on"
-msgstr "フォローしてください"
-
-#: 
 msgid "invalid event type id"
 msgstr "無効なイベントタイプID"
 
@@ -6920,10 +6916,6 @@ msgstr "自分自身は削除できません"
 #: 
 msgid "The role could not be found."
 msgstr "役割が見つかりませんでした。"
-
-#: 
-msgid "Menus"
-msgstr "メニュー"
 
 #: 
 msgid "is disabled"
@@ -7038,10 +7030,6 @@ msgstr "エストニア語"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "署名定義ファイルのデコードエラー"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "リモートバックアップエンドポイント。WebDAVの場合、URLエンコードが必要です。"
 
 #: 
 msgid "Age Histogram"
@@ -7241,28 +7229,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "姓, 名, ミドルネーム"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "2要素認証を管理"
-
-#: 
 msgid "Two Factor Status"
 msgstr "2要素認証ステータス"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "このユーザーの2要素認証を無効にすることを確認してください"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "2FAコードを入力してください"
-
-#: 
-msgid "2FA Code"
-msgstr "2FAコード"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "2要素認証の登録"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7291,10 +7263,6 @@ msgstr "住所のジオコーディングに使用されるGoogle Maps APIキー
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "アカウントが削除されたときにユーザーに通知メールを送信"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "ブラウザでマップをレンダリングするために使用されるGoogle Maps APIキー"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7340,11 +7308,6 @@ msgstr "読み込み中"
 msgid "List not found"
 msgstr "リストが見つかりません"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "リストに含まれていません"
-
 #: 
 msgid "People not in"
 msgstr "含まれていない人"
@@ -7361,18 +7324,6 @@ msgstr "オーディエンスがChurchCRMにありません"
 msgid "Web Server"
 msgstr "Webサーバ"
 
-#: 
-msgid "List maintenance"
-msgstr "リストメンテナンス"
-
-#: 
-msgid "People not in list"
-msgstr "リストにない人物"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "オーディエンスがCRMにありません"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7381,10 +7332,6 @@ msgstr "ヘブライ語"
 #: 
 msgid "open rate"
 msgstr "開封率"
-
-#: 
-msgid "Not Subscribed "
-msgstr "購読していません "
 
 #: 
 msgid "Login Info"
@@ -7449,34 +7396,6 @@ msgstr "テキスト"
 #: 
 msgid "Event Description"
 msgstr "イベントの説明"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "ChurchCRMユーザーアカウントを2要素認証に登録すると、アカウントにアクセスしようとする悪意のある人物に対する追加の防御層が提供されます。"
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM 2要素認証は任意のTOTP認証アプリをサポートしているため、Microsoft Authenticator、Google Authenticator、Authy、LastPassなどから自由に選択できます"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "ChurchCRMにサインインするとき、通常どおりユーザー名とパスワードを入力します"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "ただし、ログインを完了するには、認証デバイスからのワンタイムコードも必要です"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "資格情報とワンタイムコードの両方を正常に入力すると、通常どおりログインできます"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "ChurchCRMアカウントからロックアウトされるのを防ぐため、開始をクリックする前に2要素認証登録を完了する準備ができていることを確認してください"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "登録を開始すると、以前に登録した 2 要素デバイスとリカバリ コードが無効になります"
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
