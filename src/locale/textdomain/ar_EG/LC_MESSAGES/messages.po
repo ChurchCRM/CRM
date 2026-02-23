@@ -1830,14 +1830,6 @@ msgid "Assign starting at #"
 msgstr "انطلاق تعيين في #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "غير قادر على عرض خريطة بسبب عدم وجود كنيسة خط العرض أو خط الطول. يرجى تحديث عنوان الكنيسة في قائمة الإعدادات."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "لم يتم تعيين مفتاح API خريطة جوجل. وخريطة عمل لمجموعة أصغر من المواقع. يرجى إنشاء مفتاح في الأقسام خرائط القائمة الإعداد."
-
-#: 
 msgid "Member Role Change"
 msgstr "عضو دور التغيير"
 
@@ -3678,10 +3670,6 @@ msgstr "تعيين صحيح لتمكين استخدام الشيكات التي 
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "تستخدم وحدة لقياس المسافة، ميل أو كلم."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "أسماء علامات لخرائط جوجل في ترتيب تصنيف"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5945,10 +5933,6 @@ msgid "Your Cart is Empty"
 msgstr "عربة التسوق فارغة"
 
 #: 
-msgid "View on Map"
-msgstr "عرض على الخريطة"
-
-#: 
 msgid "Legend"
 msgstr "عنوان تفسيري"
 
@@ -5993,18 +5977,6 @@ msgid "The role could not be assigned."
 msgstr "لا يمكن تعيين دور."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "بنج خريطة API يتطلب مفتاح فريد"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "خرائط جوجل تكبير"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "مزود اختر ترميز المناطق الجغرافية"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "تم تأمين حساب ChurchCRM الخاص بك."
 
@@ -6047,10 +6019,6 @@ msgstr "كلمة السر للمستخدم نظام تغيرت من قبل ال�
 #: 
 msgid "system user login reset"
 msgstr "إعادة تعيين تسجيل دخول المستخدم نظام"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "في عداد المفقودين الأسر؟ تحديث خط العرض الأسرة أو خط الطول الآن."
 
 #: 
 msgid "Families without Geo Info"
@@ -6129,18 +6097,6 @@ msgid "Time zone"
 msgstr "وحدة زمنية"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP اسم المستخدم"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP كلمة المرور"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6151,10 +6107,6 @@ msgstr "إظهار / إخفاء فقدت كلمة السر لينك على شا�
 #: 
 msgid "Backup"
 msgstr "دعم"
-
-#: 
-msgid "Integration"
-msgstr "دمج"
 
 #: 
 msgid "Guardian(s) of"
@@ -6327,10 +6279,6 @@ msgstr "الأندونيسية - اندونيسيا"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "سجلات (ق) وأضاف بنجاح لاختيار المجموعة."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "للتصدير إلى آخر للاستخدام محارف الأوروبي."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6892,10 +6840,6 @@ msgid "Links"
 msgstr "الروابط"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "تظهر الروابط المخصصة في القائمة اليسرى."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "تمكين مدرسة الأحد القائمة نقاط."
 
@@ -6922,10 +6866,6 @@ msgstr "الميزات تمكين"
 #: 
 msgid "Validation Error"
 msgstr "خطئ في التحقق"
-
-#: 
-msgid "Link Not found"
-msgstr "وجدت رابط لا"
 
 #: 
 msgid "Email Functions"
@@ -7019,10 +6959,6 @@ msgid "Updated People"
 msgstr "تحديث الاشخاص"
 
 #: 
-msgid "Custom Menus"
-msgstr "قوائم خاصة"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "يجب أن يكون المستخدم إذن إدارة المجموعات"
 
@@ -7041,22 +6977,6 @@ msgstr "لا تستطيع مسح نفسك"
 #: 
 msgid "The role could not be found."
 msgstr "تعذر العثور الدور."
-
-#: 
-msgid "Add Menu"
-msgstr "اضافة قائمة"
-
-#: 
-msgid "Menu Name"
-msgstr "اسم القائمة"
-
-#: 
-msgid "Link Address"
-msgstr "اربط العنوان"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "بدء ب http: // أو https: //"
 
 #: 
 msgid "Menus"

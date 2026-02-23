@@ -1814,14 +1814,6 @@ msgid "Assign starting at #"
 msgstr "กำหนดเริ่มต้นที่ #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "ไม่สามารถแสดงแผนที่เนื่องจากไม่มีละติจูดหรือลองจิจูดของคริสตจักร กรุณาอัปเดตที่อยู่คริสตจักรในเมนูการตั้งค่า"
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "ไม่ได้ตั้งค่า API key ของ Google Map แผนที่จะทำงานได้กับสถานที่จำนวนน้อย กรุณาสร้าง Key ในส่วนแผนที่ของเมนูการตั้งค่า"
-
-#: 
 msgid "Member Role Change"
 msgstr "เปลี่ยนบทบาทสมาชิก"
 
@@ -3650,10 +3642,6 @@ msgstr "ตั้งเป็นจริงเพื่อเปิดใช้
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "หน่วยที่ใช้วัดระยะทาง ไมล์หรือกม."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "ชื่อเครื่องหมายสำหรับ Google Maps ตามลำดับการจัดประเภท"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5901,10 +5889,6 @@ msgid "Your Cart is Empty"
 msgstr "ตะกร้าของคุณว่างเปล่า"
 
 #: 
-msgid "View on Map"
-msgstr "ดูบนแผนที่"
-
-#: 
 msgid "Legend"
 msgstr "คำอธิบาย"
 
@@ -5949,18 +5933,6 @@ msgid "The role could not be assigned."
 msgstr "ไม่สามารถกำหนดบทบาทได้"
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "API แผนที่ Bing ต้องการคีย์เฉพาะ"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "การซูมแผนที่ Google"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "เลือกผู้ให้บริการ GeoCoder"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "บัญชี ChurchCRM ของคุณถูกล็อค"
 
@@ -6003,10 +5975,6 @@ msgstr "รหัสผ่านผู้ใช้ระบบถูกเปล
 #: 
 msgid "system user login reset"
 msgstr "รีเซ็ตการเข้าสู่ระบบผู้ใช้ระบบแล้ว"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "ครอบครัวหายไป? อัปเดตละติจูดหรือลองจิจูดครอบครัวตอนนี้"
 
 #: 
 msgid "Families without Geo Info"
@@ -6085,18 +6053,6 @@ msgid "Time zone"
 msgstr "เขตเวลา"
 
 #: 
-msgid "OpenLP URL"
-msgstr "URL OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "ชื่อผู้ใช้ OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "รหัสผ่าน OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "ประทับเวลาการมองเห็นคีออสก์"
 
@@ -6107,10 +6063,6 @@ msgstr "แสดง/ซ่อนลิงก์ลืมรหัสผ่า�
 #: 
 msgid "Backup"
 msgstr "สำรองข้อมูล"
-
-#: 
-msgid "Integration"
-msgstr "การผสานรวม"
 
 #: 
 msgid "Guardian(s) of"
@@ -6282,10 +6234,6 @@ msgstr "อินโดนีเซีย - อินโดนีเซีย"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "ระเบียนถูกเพิ่มลงในกลุ่มที่เลือกสำเร็จ"
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "เพื่อส่งออกไปยังชุดอักขระยุโรปอื่นใช้ ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6844,10 +6792,6 @@ msgid "Links"
 msgstr "ลิงก์"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "แสดงลิงก์กำหนดเองบนเมนูซ้าย"
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "เปิดใช้งานเมนูโรงเรียนวันอาทิตย์ด้านซ้าย"
 
@@ -6874,10 +6818,6 @@ msgstr "คุณสมบัติที่เปิดใช้งาน"
 #: 
 msgid "Validation Error"
 msgstr "ข้อผิดพลาดการตรวจสอบ"
-
-#: 
-msgid "Link Not found"
-msgstr "ไม่พบลิงก์"
 
 #: 
 msgid "Email Functions"
@@ -6968,10 +6908,6 @@ msgid "Updated People"
 msgstr "คนที่อัปเดต"
 
 #: 
-msgid "Custom Menus"
-msgstr "เมนูกำหนดเอง"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "ผู้ใช้ต้องมีสิทธิ์จัดการกลุ่ม"
 
@@ -6990,22 +6926,6 @@ msgstr "ไม่สามารถลบตัวเองได้"
 #: 
 msgid "The role could not be found."
 msgstr "ไม่พบบทบาท"
-
-#: 
-msgid "Add Menu"
-msgstr "เพิ่มเมนู"
-
-#: 
-msgid "Menu Name"
-msgstr "ชื่อเมนู"
-
-#: 
-msgid "Link Address"
-msgstr "ที่อยู่ลิงก์"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "เริ่มต้นด้วย http:// หรือ https://"
 
 #: 
 msgid "Menus"

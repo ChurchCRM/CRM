@@ -1811,14 +1811,6 @@ msgid "Assign starting at #"
 msgstr "Määritä alkaen numerosta #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Karttaa ei voida näyttää, koska kirkon koordinaatit puuttuvat. Päivitä kirkon osoite asetusvalikossa."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Map API -avainta ei ole asetettu. Kartta toimii vain rajoitetulla määrällä kohteita. Luo avain asetusvalikon karttaosiossa."
-
-#: 
 msgid "Member Role Change"
 msgstr "Jäsenen roolin muutos"
 
@@ -3647,10 +3639,6 @@ msgstr "Aseta 'Tosi' salliaksesi skannattujen shekkien käytön"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Etäisyyden mittayksikkö (mailit tai kilometrit)."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Google Maps -merkkien nimet luokitusjärjestyksessä"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5908,10 +5896,6 @@ msgid "Your Cart is Empty"
 msgstr "Ostoskorisi on tyhjä"
 
 #: 
-msgid "View on Map"
-msgstr "Näytä kartalla"
-
-#: 
 msgid "Legend"
 msgstr "Selite"
 
@@ -5956,18 +5940,6 @@ msgid "The role could not be assigned."
 msgstr "Roolin määrittäminen epäonnistui."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing Maps API vaatii yksilöllisen avaimen"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Mapsin zoomaustaso"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Valitse GeoCoder-palveluntarjoaja"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "ChurchCRM-tilisi on lukittu."
 
@@ -6010,10 +5982,6 @@ msgstr "ylläpitäjä vaihtoi järjestelmäkäyttäjän salasanan"
 #: 
 msgid "system user login reset"
 msgstr "järjestelmäkäyttäjän kirjautumisen nollaus"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Puuttuuko perheitä? Päivitä perheen koordinaatit nyt."
 
 #: 
 msgid "Families without Geo Info"
@@ -6092,18 +6060,6 @@ msgid "Time zone"
 msgstr "Aikavyöhyke"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL-osoite"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP-käyttäjätunnus"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP-salasana"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Kioskin näkyvyyden aikaleima"
 
@@ -6114,10 +6070,6 @@ msgstr "Näytä/piilota 'Unohdin salasanani' -linkki kirjautumissivulla"
 #: 
 msgid "Backup"
 msgstr "Varmuuskopio"
-
-#: 
-msgid "Integration"
-msgstr "Integraatio"
 
 #: 
 msgid "Guardian(s) of"
@@ -6289,10 +6241,6 @@ msgstr "Indonesia - Indonesia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "tietueet lisätty onnistuneesti valittuun ryhmään."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Käytä eurooppalaisille merkistöille erotinta ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6851,10 +6799,6 @@ msgid "Links"
 msgstr "Linkit"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Näytä mukautetut linkit vasemmassa valikossa."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Ota käyttöön pyhäkoulun vasen valikko."
 
@@ -6881,10 +6825,6 @@ msgstr "Käytössä olevat ominaisuudet"
 #: 
 msgid "Validation Error"
 msgstr "Vahvistusvirhe"
-
-#: 
-msgid "Link Not found"
-msgstr "Linkkiä ei löytynyt"
 
 #: 
 msgid "Email Functions"
@@ -6975,10 +6915,6 @@ msgid "Updated People"
 msgstr "Päivitetyt henkilöt"
 
 #: 
-msgid "Custom Menus"
-msgstr "Mukautetut valikot"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Käyttäjällä on oltava oikeus hallinnoida ryhmiä"
 
@@ -6997,22 +6933,6 @@ msgstr "Et voi poistaa itseäsi"
 #: 
 msgid "The role could not be found."
 msgstr "Roolia ei löytynyt."
-
-#: 
-msgid "Add Menu"
-msgstr "Lisää valikko"
-
-#: 
-msgid "Menu Name"
-msgstr "Valikon nimi"
-
-#: 
-msgid "Link Address"
-msgstr "Linkin osoite"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Aloita http:// tai https://"
 
 #: 
 msgid "Menus"

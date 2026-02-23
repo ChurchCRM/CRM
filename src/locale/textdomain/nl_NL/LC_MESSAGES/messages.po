@@ -1829,14 +1829,6 @@ msgid "Assign starting at #"
 msgstr "Toewijzing beginnend bij #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Kan kaart niet weergeven vanwege ontbrekende kerk-breedtegraad of lengtegraad. Werk het kerkadres bij in het instellingenmenu."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Map API-sleutel is niet ingesteld. De kaart werkt voor kleinere locaties. Maak een Key in de mapsecties van het instellingenmenu."
-
-#: 
 msgid "Member Role Change"
 msgstr "Verandering van Rol Lid"
 
@@ -3678,10 +3670,6 @@ msgstr "Als geldig te maken van gescande controle toe te"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Eenheid die wordt gebruikt om de afstand, mijl of km meten."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Namen van markers voor Google Maps in volgorde van de classificatie"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5946,10 +5934,6 @@ msgid "Your Cart is Empty"
 msgstr "Je werkbestand is leeg"
 
 #: 
-msgid "View on Map"
-msgstr "Bekijk op de landkaart"
-
-#: 
 msgid "Legend"
 msgstr "Legenda"
 
@@ -5994,18 +5978,6 @@ msgid "The role could not be assigned."
 msgstr "De rol kan niet worden toegewezen."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing map API vereist een unieke code"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Maps inzoomen"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Select GeoCoder Provider"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Uw account is afgesloten"
 
@@ -6048,10 +6020,6 @@ msgstr "Het wachtwoord is gewijzigd door beheerder"
 #: 
 msgid "system user login reset"
 msgstr "Systeemgebruiker login reset"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Gezin ontbreekt? Beheer dan de landkaart coördinatoren. "
 
 #: 
 msgid "Families without Geo Info"
@@ -6130,18 +6098,6 @@ msgid "Time zone"
 msgstr "Tijdzone"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP-gebruikersnaam"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP Password"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6152,10 +6108,6 @@ msgstr "Toon/verberg de reset wachtwoordlink op het inlogscherm"
 #: 
 msgid "Backup"
 msgstr "Back-up"
-
-#: 
-msgid "Integration"
-msgstr "integratie"
 
 #: 
 msgid "Guardian(s) of"
@@ -6327,10 +6279,6 @@ msgstr "Indonesisch - Indonesië"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "records(s) succesvol toegevoegd aan geselecteerde groep."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Om te exporteren Voor europees CharSet gebruik;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6891,10 +6839,6 @@ msgid "Links"
 msgstr "Eigen schermen"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Weergave van de eigen schermen in het linker menu. "
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Aanzetten van het linkermenu: catechisatie"
 
@@ -6921,10 +6865,6 @@ msgstr "Aanzetten: kenmerken"
 #: 
 msgid "Validation Error"
 msgstr "Validatie fout"
-
-#: 
-msgid "Link Not found"
-msgstr "Link niet gevonden"
 
 #: 
 msgid "Email Functions"
@@ -7017,10 +6957,6 @@ msgid "Updated People"
 msgstr "Aantal gewijzigde personen"
 
 #: 
-msgid "Custom Menus"
-msgstr "Aangepaste schermen"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "De gebruiker moet het recht Beheer Groepen hebben"
 
@@ -7039,22 +6975,6 @@ msgstr "Kan jezelf niet verwijderen."
 #: 
 msgid "The role could not be found."
 msgstr "Rol niet gevonden."
-
-#: 
-msgid "Add Menu"
-msgstr "Nieuw menu"
-
-#: 
-msgid "Menu Name"
-msgstr "Menu naam"
-
-#: 
-msgid "Link Address"
-msgstr "Link adres"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Start met http:// of https://"
 
 #: 
 msgid "Menus"

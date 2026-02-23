@@ -1893,14 +1893,6 @@ msgid "Assign starting at #"
 msgstr "Tilldelning:"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Det gick inte att visa karta på grund av saknad kyrka Latitude eller Longitud. Uppdatera kyrkans adress i inställningsmenyn."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Map API-nyckel är inte inställd. Kartan fungerar för mindre platser. Skapa en nyckel i kartavsnitten på inställningsmenyn."
-
-#: 
 msgid "Member Role Change"
 msgstr "Medelmmar roll ändring"
 
@@ -3803,10 +3795,6 @@ msgstr "Ställ in true för att möjliggöra användning av skannade kontroller"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Enhet som används för att mäta avstånd, miles eller km."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Namn på markörer för Google Maps i klassificeringsordning"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -6070,10 +6058,6 @@ msgid "Your Cart is Empty"
 msgstr "Din vagn är tom"
 
 #: 
-msgid "View on Map"
-msgstr "Visa på karta"
-
-#: 
 msgid "Legend"
 msgstr "Legend"
 
@@ -6118,18 +6102,6 @@ msgid "The role could not be assigned."
 msgstr "Rollen kunde inte tilldelas."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing map API kräver en unik nyckel"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Maps Zoom"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Välj GeoCoder-leverantör"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Ditt ChurchCRM-konto var låst."
 
@@ -6172,10 +6144,6 @@ msgstr "systemanvändarlösenord ändrat av admin"
 #: 
 msgid "system user login reset"
 msgstr "återställning av systemanvändares system"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Saknade familjer? Uppdatera Family Latitude eller Longitud nu."
 
 #: 
 msgid "Families without Geo Info"
@@ -6254,18 +6222,6 @@ msgid "Time zone"
 msgstr "Tidszon"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP-användarnamn"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP-lösenord"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6276,10 +6232,6 @@ msgstr "Visa / dölj länkad lösenordslänk på inloggningsskärmen"
 #: 
 msgid "Backup"
 msgstr "Säkerhetskopiering"
-
-#: 
-msgid "Integration"
-msgstr "Integration"
 
 #: 
 msgid "Guardian(s) of"
@@ -6452,10 +6404,6 @@ msgstr "Indonesiska - Indonesien"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "poster har lagts till den valda gruppen."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "För att exportera till en annan För europeisk CharSet-användning;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -7017,10 +6965,6 @@ msgid "Links"
 msgstr "Länkar"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Visa anpassade länkar på vänster meny."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Aktivera söndagsskolans vänstermeny."
 
@@ -7047,10 +6991,6 @@ msgstr "Aktiverade funktioner"
 #: 
 msgid "Validation Error"
 msgstr "Valideringsfel"
-
-#: 
-msgid "Link Not found"
-msgstr "Länk hittades inte"
 
 #: 
 msgid "Email Functions"
@@ -7144,10 +7084,6 @@ msgid "Updated People"
 msgstr "Uppdaterade personer"
 
 #: 
-msgid "Custom Menus"
-msgstr "Anpassade menyer"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Användaren måste ha Hantera grupper tillåtelse"
 
@@ -7166,22 +7102,6 @@ msgstr "Kan inte ta bort dig själv"
 #: 
 msgid "The role could not be found."
 msgstr "Rollen kunde inte hittas."
-
-#: 
-msgid "Add Menu"
-msgstr "Lägg till meny"
-
-#: 
-msgid "Menu Name"
-msgstr "Menynamn"
-
-#: 
-msgid "Link Address"
-msgstr "Länkadress"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Börja med http: // eller https: //"
 
 #: 
 msgid "Menus"

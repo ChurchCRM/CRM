@@ -1842,14 +1842,6 @@ msgid "Assign starting at #"
 msgstr "Chỉ định bắt đầu từ #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Không thể hiển thị bản đồ do thiếu Kinh độ hoặc Vĩ độ của Nhà thờ. Vui lòng cập nhật Địa chỉ nhà thờ trong menu cài đặt."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Khóa API của Google Map chưa được đặt. Bản đồ sẽ hoạt động đối với tập hợp các vị trí nhỏ hơn. Vui lòng tạo Khóa trong phần bản đồ của menu cài đặt."
-
-#: 
 msgid "Member Role Change"
 msgstr "Thay đổi vai trò thành viên"
 
@@ -3690,10 +3682,6 @@ msgstr "Đặt true để cho phép sử dụng séc đã quét"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Đơn vị dùng để đo khoảng cách, dặm hoặc km."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Tên của các điểm đánh dấu cho Google Maps theo thứ tự phân loại"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5957,10 +5945,6 @@ msgid "Your Cart is Empty"
 msgstr "Giỏ của bạn đang trống"
 
 #: 
-msgid "View on Map"
-msgstr "Xem trên bản đồ"
-
-#: 
 msgid "Legend"
 msgstr "Huyền thoại"
 
@@ -6005,18 +5989,6 @@ msgid "The role could not be assigned."
 msgstr "Không thể chỉ định vai trò."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "API bản đồ Bing yêu cầu một khóa duy nhất"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Thu phóng Google Maps"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Chọn nhà cung cấp bộ mã hóa địa lý"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Tài khoản ChurchCRM của bạn đã bị khóa."
 
@@ -6059,10 +6031,6 @@ msgstr "mật khẩu thành viên đã được thay đổi bởi Admin"
 #: 
 msgid "system user login reset"
 msgstr "hệ thống thành viên khôi phục đăng nhập"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Bạn thấy thiếu các gia đình ? Hãy cập nhật Vĩ độ và Kinh độ của các gia đình ngay bây giờ."
 
 #: 
 msgid "Families without Geo Info"
@@ -6141,18 +6109,6 @@ msgid "Time zone"
 msgstr "Múi giờ"
 
 #: 
-msgid "OpenLP URL"
-msgstr "URL OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Tên người dùng OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Mật khẩu OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6163,10 +6119,6 @@ msgstr "Hiển thị / Ẩn liên kết bị mất mật khẩu trên màn hình
 #: 
 msgid "Backup"
 msgstr "Sao lưu"
-
-#: 
-msgid "Integration"
-msgstr "Tích hợp"
 
 #: 
 msgid "Guardian(s) of"
@@ -6339,10 +6291,6 @@ msgstr "Indonesia - Indonesia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "(các) bản ghi được thêm thành công vào Nhóm đã chọn."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Để xuất sang người khác Để sử dụng CharSet châu Âu;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6904,10 +6852,6 @@ msgid "Links"
 msgstr "Liên kết"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Hiển thị các liên kết tùy chỉnh trên menu bên trái."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Bật menu bên trái của Trường học Chủ nhật."
 
@@ -6934,10 +6878,6 @@ msgstr "Tính năng"
 #: 
 msgid "Validation Error"
 msgstr "Lỗi xác nhận"
-
-#: 
-msgid "Link Not found"
-msgstr "Không tìm thấy liên kết"
 
 #: 
 msgid "Email Functions"
@@ -7031,10 +6971,6 @@ msgid "Updated People"
 msgstr "Thành viên vừa cập nhật"
 
 #: 
-msgid "Custom Menus"
-msgstr "Menu khác"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Người dùng phải có quyền Quản lý nhóm"
 
@@ -7053,22 +6989,6 @@ msgstr "Không thể xóa chính bạn"
 #: 
 msgid "The role could not be found."
 msgstr "Không thể tìm thấy vai trò."
-
-#: 
-msgid "Add Menu"
-msgstr "Thêm menu"
-
-#: 
-msgid "Menu Name"
-msgstr "Tên menu"
-
-#: 
-msgid "Link Address"
-msgstr "Đường dẫn địa chỉ"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Bắt đầu với http:// hoặc https://"
 
 #: 
 msgid "Menus"

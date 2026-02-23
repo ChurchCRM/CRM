@@ -1830,14 +1830,6 @@ msgid "Assign starting at #"
 msgstr "Εκχώρηση από #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Δεν είναι δυνατή η εμφάνιση χάρτη λόγω έλλειψης Γεωγραφικού πλάτους ή Γεωγραφικού μήκους Εκκλησίας. Ενημερώστε τη Διεύθυνση εκκλησίας στο μενού ρυθμίσεων."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Το κλειδί Google Map API δεν έχει οριστεί. Ο Χάρτης θα λειτουργεί για μικρότερο σύνολο τοποθεσιών. Δημιουργήστε ένα κλειδί στις ενότητες χαρτών του μενού ρυθμίσεων."
-
-#: 
 msgid "Member Role Change"
 msgstr "Αλλαγή ρόλου μέλους"
 
@@ -3678,10 +3670,6 @@ msgstr "Ορίστε true για να ενεργοποιήσετε τη χρήσ
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Μονάδα που χρησιμοποιείται για τη μέτρηση απόστασης, μιλίων ή χιλιομέτρων."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Ονόματα δεικτών για τους Χάρτες Google κατά σειρά ταξινόμησης"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5945,10 +5933,6 @@ msgid "Your Cart is Empty"
 msgstr "Το καλάθι σας είναι άδειο"
 
 #: 
-msgid "View on Map"
-msgstr "Προβολή στο χάρτη"
-
-#: 
 msgid "Legend"
 msgstr "Θρύλος"
 
@@ -5993,18 +5977,6 @@ msgid "The role could not be assigned."
 msgstr "Δεν ήταν δυνατή η ανάθεση του ρόλου."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Το API χάρτη Bing απαιτεί ένα μοναδικό κλειδί"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Ζουμ Χαρτών Google"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Επιλέξτε Πάροχος GeoCoder"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Ο λογαριασμός σας στο ChurchCRM κλειδώθηκε."
 
@@ -6047,10 +6019,6 @@ msgstr "Αλλαγή κωδικού πρόσβασης χρήστη συστήμ
 #: 
 msgid "system user login reset"
 msgstr "επαναφορά σύνδεσης χρήστη συστήματος"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Οικογένειες που λείπουν; Ενημερώστε το Family Latitude ή Longitude τώρα."
 
 #: 
 msgid "Families without Geo Info"
@@ -6129,18 +6097,6 @@ msgid "Time zone"
 msgstr "Ζώνη ώρας"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Όνομα χρήστη OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Κωδικός πρόσβασης OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6151,10 +6107,6 @@ msgstr "Εμφάνιση/Απόκρυψη συνδέσμου χαμένου κω
 #: 
 msgid "Backup"
 msgstr "Αντιγράφων ασφαλείας"
-
-#: 
-msgid "Integration"
-msgstr "Ενσωμάτωση"
 
 #: 
 msgid "Guardian(s) of"
@@ -6327,10 +6279,6 @@ msgstr "Ινδονησιακά - Ινδονησία"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "οι εγγραφές προστέθηκαν με επιτυχία στην επιλεγμένη ομάδα."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Για εξαγωγή σε άλλο Για χρήση σε ευρωπαϊκό CharSet."
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6892,10 +6840,6 @@ msgid "Links"
 msgstr "Συνδέσεις"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Εμφάνιση προσαρμοσμένων συνδέσμων στο αριστερό μενού."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Ενεργοποιήστε το αριστερό μενού του  Καθηχητικού."
 
@@ -6922,10 +6866,6 @@ msgstr "Ενεργοποιημένες λειτουργίες"
 #: 
 msgid "Validation Error"
 msgstr "Σφάλμα επικύρωσης"
-
-#: 
-msgid "Link Not found"
-msgstr "Ο σύνδεσμος δεν βρέθηκε"
 
 #: 
 msgid "Email Functions"
@@ -7019,10 +6959,6 @@ msgid "Updated People"
 msgstr "Ενημερωμένα Πρόσωπα"
 
 #: 
-msgid "Custom Menus"
-msgstr "Προσαρμοσμένα μενού"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Ο χρήστης πρέπει να έχει δικαίωμα διαχείρισης ομάδων"
 
@@ -7041,22 +6977,6 @@ msgstr "Δεν μπορείτε να διαγράψετε τον εαυτό σα
 #: 
 msgid "The role could not be found."
 msgstr "Ο ρόλος δεν βρέθηκε."
-
-#: 
-msgid "Add Menu"
-msgstr "Προσθήκη μενού"
-
-#: 
-msgid "Menu Name"
-msgstr "Όνομα μενού"
-
-#: 
-msgid "Link Address"
-msgstr "Διεύθυνση συνδέσμου"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Ξεκινήστε με http:// ή https://"
 
 #: 
 msgid "Menus"

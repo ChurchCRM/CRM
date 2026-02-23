@@ -1803,14 +1803,6 @@ msgid "Assign starting at #"
 msgstr "割り当て開始番号 #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "教会の緯度または経度が不足しているため、地図を表示できません。設定メニューで教会の住所を更新してください。"
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Map API キーが設定されていません。小規模な地点セットでのみ動作します。設定メニューの地図セクションでキーを作成してください。"
-
-#: 
 msgid "Member Role Change"
 msgstr "メンバーのロールを変更"
 
@@ -3639,10 +3631,6 @@ msgstr "スキャンされたチェックの使用を有効にするにはtrue�
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "距離を測定するために使用される単位(マイルまたはkm)"
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "分類順のGoogleマップのマーカーの名前"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5895,10 +5883,6 @@ msgid "Your Cart is Empty"
 msgstr "カートは空です"
 
 #: 
-msgid "View on Map"
-msgstr "マップで表示"
-
-#: 
 msgid "Legend"
 msgstr "凡例"
 
@@ -5943,18 +5927,6 @@ msgid "The role could not be assigned."
 msgstr "役割を割り当てられませんでした。"
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing Map APIには一意のキーが必要です"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Googleマップズーム"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "ジオコーダープロバイダーを選択"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "ChurchCRMアカウントがロックされました。"
 
@@ -5997,10 +5969,6 @@ msgstr "管理者によりシステムユーザーパスワードが変更され
 #: 
 msgid "system user login reset"
 msgstr "システムユーザーログインがリセットされました"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "家族が見つかりませんか？今すぐ家族の緯度または経度を更新してください。"
 
 #: 
 msgid "Families without Geo Info"
@@ -6079,18 +6047,6 @@ msgid "Time zone"
 msgstr "タイムゾーン"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLPユーザー名"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLPパスワード"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "キオスク表示タイムスタンプ"
 
@@ -6101,10 +6057,6 @@ msgstr "ログイン画面に紛失パスワードリンクを表示/非表示�
 #: 
 msgid "Backup"
 msgstr "バックアップ"
-
-#: 
-msgid "Integration"
-msgstr "統合"
 
 #: 
 msgid "Guardian(s) of"
@@ -6276,10 +6228,6 @@ msgstr "インドネシア語 - インドネシア"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "件のレコードが選択したグループに正常に追加されました。"
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "ヨーロッパの文字セットにエクスポートするには ; を使用"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6838,10 +6786,6 @@ msgid "Links"
 msgstr "リンク"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "左側のメニューにカスタムリンクを表示。"
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "日曜学校の左メニューを有効化。"
 
@@ -6868,10 +6812,6 @@ msgstr "有効な機能"
 #: 
 msgid "Validation Error"
 msgstr "検証エラー"
-
-#: 
-msgid "Link Not found"
-msgstr "リンクが見つかりません"
 
 #: 
 msgid "Email Functions"
@@ -6962,10 +6902,6 @@ msgid "Updated People"
 msgstr "更新された人物"
 
 #: 
-msgid "Custom Menus"
-msgstr "カスタムメニュー"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "ユーザーはグループ管理権限が必要です"
 
@@ -6984,22 +6920,6 @@ msgstr "自分自身は削除できません"
 #: 
 msgid "The role could not be found."
 msgstr "役割が見つかりませんでした。"
-
-#: 
-msgid "Add Menu"
-msgstr "メニューを追加"
-
-#: 
-msgid "Menu Name"
-msgstr "メニュー名"
-
-#: 
-msgid "Link Address"
-msgstr "リンクアドレス"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "http://またはhttps://で始める"
 
 #: 
 msgid "Menus"

@@ -1883,14 +1883,6 @@ msgid "Assign starting at #"
 msgstr "指定在＃"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "由於缺少教堂緯度或經度，無法顯示地圖。 請在設置菜單中更新教堂地址。"
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "未設置Google Map API密鑰。 地圖適用於較小的位置。 請在設置菜單的地圖部分創建一個鍵。"
-
-#: 
 msgid "Member Role Change"
 msgstr "會員角色的轉變"
 
@@ -3785,10 +3777,6 @@ msgstr "設置為true(是)以啟用掃描檢查"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "用於測量距離，英里或公里的單位。"
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "谷歌地圖標記的名稱按分類順序排列"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -6073,10 +6061,6 @@ msgid "Your Cart is Empty"
 msgstr "您的購物車是空的"
 
 #: 
-msgid "View on Map"
-msgstr "在地圖上查看"
-
-#: 
 msgid "Legend"
 msgstr "圖例"
 
@@ -6121,18 +6105,6 @@ msgid "The role could not be assigned."
 msgstr "角色無法分配。"
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing地圖API需要唯一的密鑰"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google地圖縮放"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "選擇GeoCoder Provider"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "您的ChurchCRM帳戶已被鎖定。"
 
@@ -6175,10 +6147,6 @@ msgstr "系統用戶密碼由admin更改"
 #: 
 msgid "system user login reset"
 msgstr "系統用戶登錄重置"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "缺失家庭？立即更新家庭緯度或經度。"
 
 #: 
 msgid "Families without Geo Info"
@@ -6257,18 +6225,6 @@ msgid "Time zone"
 msgstr "時區"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP 網址"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP 用戶名"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP 密碼"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibility時間戳"
 
@@ -6279,10 +6235,6 @@ msgstr "在登入屏幕上顯示/隱藏丟失密碼鏈接"
 #: 
 msgid "Backup"
 msgstr "備份"
-
-#: 
-msgid "Integration"
-msgstr "集成"
 
 #: 
 msgid "Guardian(s) of"
@@ -6457,10 +6409,6 @@ msgstr "印尼語 - 印尼"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "記錄已成功添加到選定的組。"
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "導出到另一個用於歐洲的CharSet使用;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -7031,10 +6979,6 @@ msgid "Links"
 msgstr "連接"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "在左側菜單中顯示自定義鏈接。"
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "啟用主日學校左側菜單。"
 
@@ -7061,10 +7005,6 @@ msgstr "啟用功能"
 #: 
 msgid "Validation Error"
 msgstr "驗證錯誤"
-
-#: 
-msgid "Link Not found"
-msgstr "鏈接未找到"
 
 #: 
 msgid "Email Functions"
@@ -7159,10 +7099,6 @@ msgid "Updated People"
 msgstr "更新人員"
 
 #: 
-msgid "Custom Menus"
-msgstr "自定義菜單"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "用戶必須具有“管理組”權限"
 
@@ -7181,22 +7117,6 @@ msgstr "無法刪除自己"
 #: 
 msgid "The role could not be found."
 msgstr "找不到這個角色。"
-
-#: 
-msgid "Add Menu"
-msgstr "添加菜單"
-
-#: 
-msgid "Menu Name"
-msgstr "菜單名稱"
-
-#: 
-msgid "Link Address"
-msgstr "鏈接地址"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "從http：//或https：//開始"
 
 #: 
 msgid "Menus"

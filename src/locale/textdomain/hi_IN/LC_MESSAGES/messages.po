@@ -1807,14 +1807,6 @@ msgid "Assign starting at #"
 msgstr "# से शुरू करते हुए असाइन करें"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "चर्च अक्षांश या देशांतर की कमी के कारण मानचित्र प्रदर्शित करने में असमर्थ। कृपया सेटिंग मेनू में चर्च का पता अपडेट करें।"
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google मैप API कुंजी सेट नहीं है। मानचित्र स्थानों के छोटे सेट के लिए काम करेगा। कृपया सेटिंग मेनू के मानचित्र अनुभाग में एक कुंजी बनाएँ।"
-
-#: 
 msgid "Member Role Change"
 msgstr "सदस्य भूमिका परिवर्तन"
 
@@ -3643,10 +3635,6 @@ msgstr "स्कैन किए गए चेक के उपयोग को
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "दूरी मापने के लिए प्रयुक्त इकाई, मील या किमी।"
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "वर्गीकरण के क्रम में गूगल मैप्स के लिए मार्करों के नाम"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5904,10 +5892,6 @@ msgid "Your Cart is Empty"
 msgstr "आपकी कार्ट खाली है"
 
 #: 
-msgid "View on Map"
-msgstr "नक्शे पर देखें"
-
-#: 
 msgid "Legend"
 msgstr "संकेत-चिह्न (लीजेंड)"
 
@@ -5952,18 +5936,6 @@ msgid "The role could not be assigned."
 msgstr "भूमिका असाइन नहीं की जा सकी।"
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "बिंग मैप API के लिए एक अद्वितीय कुंजी की आवश्यकता होती है"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "गूगल मैप्स ज़ूम"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "GeoCoder प्रदाता चुनें"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "आपका ChurchCRM खाता लॉक कर दिया गया था।"
 
@@ -6006,10 +5978,6 @@ msgstr "एडमिन द्वारा सिस्टम उपयोगक
 #: 
 msgid "system user login reset"
 msgstr "सिस्टम उपयोगकर्ता लॉगिन रीसेट"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "परिवार नहीं मिल रहे? अभी परिवार के अक्षांश या देशांतर अपडेट करें।"
 
 #: 
 msgid "Families without Geo Info"
@@ -6088,18 +6056,6 @@ msgid "Time zone"
 msgstr "समय क्षेत्र"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP उपयोगकर्ता नाम"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP पासवर्ड"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "कियोस्क दृश्यता टाइमस्टैम्प"
 
@@ -6110,10 +6066,6 @@ msgstr "लॉगिन स्क्रीन पर 'पासवर्ड भ�
 #: 
 msgid "Backup"
 msgstr "बैकअप"
-
-#: 
-msgid "Integration"
-msgstr "एकीकरण (इंटीग्रेशन)"
 
 #: 
 msgid "Guardian(s) of"
@@ -6285,10 +6237,6 @@ msgstr "इंडोनेशियाई - इंडोनेशिया"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "रिकॉर्ड सफलतापूर्वक चयनित समूह में जोड़े गए।"
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "यूरोपीय CharSet के लिए निर्यात करने के लिए ; का उपयोग करें"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6847,10 +6795,6 @@ msgid "Links"
 msgstr "लिंक"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "बाएँ मेनू पर कस्टम लिंक दिखाएं।"
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "संडे स्कूल बायां मेनू सक्षम करें।"
 
@@ -6877,10 +6821,6 @@ msgstr "सक्षम सुविधाएँ"
 #: 
 msgid "Validation Error"
 msgstr "सत्यापन त्रुटि"
-
-#: 
-msgid "Link Not found"
-msgstr "लिंक नहीं मिला"
 
 #: 
 msgid "Email Functions"
@@ -6971,10 +6911,6 @@ msgid "Updated People"
 msgstr "अपडेट किए गए लोग"
 
 #: 
-msgid "Custom Menus"
-msgstr "कस्टम मेनू"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "उपयोगकर्ता के पास समूहों को प्रबंधित करने की अनुमति होनी चाहिए"
 
@@ -6993,22 +6929,6 @@ msgstr "स्वयं को नहीं हटा सकते"
 #: 
 msgid "The role could not be found."
 msgstr "भूमिका नहीं मिल सकी।"
-
-#: 
-msgid "Add Menu"
-msgstr "मेनू जोड़ें"
-
-#: 
-msgid "Menu Name"
-msgstr "मेनू का नाम"
-
-#: 
-msgid "Link Address"
-msgstr "लिंक पता"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "http:// या https:// से शुरू करें"
 
 #: 
 msgid "Menus"

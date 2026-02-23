@@ -1876,14 +1876,6 @@ msgid "Assign starting at #"
 msgstr "Связать начиная с #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Невозможно отобразить карту из-за отсутствия широты или долготы церкви. Пожалуйста, обновите адрес церкви в меню настроек."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Ключ API карты Google не задан. Карта будет работать для меньшего набора локаций. Пожалуйста, создайте ключ в разделах карт меню настроек."
-
-#: 
 msgid "Member Role Change"
 msgstr "Участник Роль Изменить"
 
@@ -3766,10 +3758,6 @@ msgstr "Установите верно, чтобы разрешить испо�
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Единица измерения расстояния, мили или км."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Названия маркеров для Google Maps в порядке классификации"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -6029,10 +6017,6 @@ msgid "Your Cart is Empty"
 msgstr "Ваша корзина пуста"
 
 #: 
-msgid "View on Map"
-msgstr "Посмотреть на карте"
-
-#: 
 msgid "Legend"
 msgstr "Легенда"
 
@@ -6077,18 +6061,6 @@ msgid "The role could not be assigned."
 msgstr "Не удалось назначить роль."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "API карт Bing требует уникальный ключ"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Масштаб Google карт"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Выберите поставщика геокодирования"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Ваша учетная запись ChurchCRM была заблокирована."
 
@@ -6131,10 +6103,6 @@ msgstr "пароль пользователя изменен администр�
 #: 
 msgid "system user login reset"
 msgstr "сброс логина пользователя"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Пропущенные семьи? Обновите широту или долготу семьи сейчас."
 
 #: 
 msgid "Families without Geo Info"
@@ -6213,18 +6181,6 @@ msgid "Time zone"
 msgstr "Часовой пояс"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Имя пользователя OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Пароль OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Метка видимости киоска"
 
@@ -6235,10 +6191,6 @@ msgstr "Показать/скрыть ссылку 'Забыли пароль' �
 #: 
 msgid "Backup"
 msgstr "Резервное копирование"
-
-#: 
-msgid "Integration"
-msgstr "Интеграция"
 
 #: 
 msgid "Guardian(s) of"
@@ -6410,10 +6362,6 @@ msgstr "Индонезийский — Индонезия"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "запись(и) успешно добавлена в выбранную группу."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Для экспорта в другой европейский набор символов используйте ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6972,10 +6920,6 @@ msgid "Links"
 msgstr "Ссылки"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Показывать настраиваемые ссылки в левом меню."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Включить меню Воскресной школы слева."
 
@@ -7002,10 +6946,6 @@ msgstr "Включенные функции"
 #: 
 msgid "Validation Error"
 msgstr "Ошибка валидации"
-
-#: 
-msgid "Link Not found"
-msgstr "Ссылка не найдена"
 
 #: 
 msgid "Email Functions"
@@ -7096,10 +7036,6 @@ msgid "Updated People"
 msgstr "Обновленные люди"
 
 #: 
-msgid "Custom Menus"
-msgstr "Настраиваемые меню"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "У пользователя должно быть право на управление группами"
 
@@ -7118,22 +7054,6 @@ msgstr "Нельзя удалить самого себя"
 #: 
 msgid "The role could not be found."
 msgstr "Роль не найдена."
-
-#: 
-msgid "Add Menu"
-msgstr "Добавить меню"
-
-#: 
-msgid "Menu Name"
-msgstr "Название меню"
-
-#: 
-msgid "Link Address"
-msgstr "Адрес ссылки"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Начинайте с http:// или https://"
 
 #: 
 msgid "Menus"

@@ -1830,14 +1830,6 @@ msgid "Assign starting at #"
 msgstr "Määra alates #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Kaarti ei saa kuvada puuduva koguduse laius- või pikkuskraadi tõttu. Palun värskendage seadete menüüs koguduse aadressi."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Map API võti pole seadistatud. Kaart töötab väiksemate asukohtade jaoks. Palun looge võti sätete menüü kaartide sektsioonidesse."
-
-#: 
 msgid "Member Role Change"
 msgstr "Liikme rolli muutmine"
 
@@ -3677,10 +3669,6 @@ msgstr "Luba skaneeritud tšekkide kasutamise lubamiseks tõene"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Ühik, mida kasutatakse vahemaa, miili või km mõõtmiseks."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Google Mapsi markerite nimed klassifitseerimise järjekorras"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5944,10 +5932,6 @@ msgid "Your Cart is Empty"
 msgstr "Teie valikukorv on tühi"
 
 #: 
-msgid "View on Map"
-msgstr "Vaata kaardil"
-
-#: 
 msgid "Legend"
 msgstr "Legend"
 
@@ -5992,18 +5976,6 @@ msgid "The role could not be assigned."
 msgstr "Rolli ei saanud määrata."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bingi kaardi API nõuab unikaalset võtit"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Mapsi suum"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Valige GeoCoderi pakkuja"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Teie ChurchCRM-i konto lukustati."
 
@@ -6046,10 +6018,6 @@ msgstr "süsteemi kasutaja parooli muutis administraator"
 #: 
 msgid "system user login reset"
 msgstr "süsteemi kasutaja sisselogimise lähtestamine"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Puuduvad pered? Värskendage perekonna laius- või pikkuskraadi kohe."
 
 #: 
 msgid "Families without Geo Info"
@@ -6128,18 +6096,6 @@ msgid "Time zone"
 msgstr "Ajavöönd"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP kasutajanimi"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP parool"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Tööharu nähtavuse ajatempel"
 
@@ -6150,10 +6106,6 @@ msgstr "Kuva/peida kaotatud parooli link sisselogimiskuval"
 #: 
 msgid "Backup"
 msgstr "Varundamine"
-
-#: 
-msgid "Integration"
-msgstr "Integratsioon"
 
 #: 
 msgid "Guardian(s) of"
@@ -6326,10 +6278,6 @@ msgstr "indoneesia keel – Indoneesia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "kirje(d) edukalt lisatud valitud gruppi."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Teisele eksportimiseks Euroopa CharSeti kasutamiseks;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6891,10 +6839,6 @@ msgid "Links"
 msgstr "Lingid"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Kuva vasakpoolses menüüs kohandatud lingid."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Luba pühapäevakool vasak menüü."
 
@@ -6921,10 +6865,6 @@ msgstr "Lubatud funktsioonid"
 #: 
 msgid "Validation Error"
 msgstr "Valideerimisviga"
-
-#: 
-msgid "Link Not found"
-msgstr "Linki ei leitud"
 
 #: 
 msgid "Email Functions"
@@ -7018,10 +6958,6 @@ msgid "Updated People"
 msgstr "Uuendatud isikud"
 
 #: 
-msgid "Custom Menus"
-msgstr "Kohandatud menüüd"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Kasutajal peab olema Gruppide haldamise luba"
 
@@ -7040,22 +6976,6 @@ msgstr "Ei saa ennast kustutada"
 #: 
 msgid "The role could not be found."
 msgstr "Rolli ei leitud."
-
-#: 
-msgid "Add Menu"
-msgstr "Lisage menüü"
-
-#: 
-msgid "Menu Name"
-msgstr "Menüü nimi"
-
-#: 
-msgid "Link Address"
-msgstr "Lingi aadress"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Alustage tähega http: // või https: //"
 
 #: 
 msgid "Menus"
