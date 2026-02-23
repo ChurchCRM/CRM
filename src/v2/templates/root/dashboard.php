@@ -134,12 +134,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php
 if ($depositEnabled) { // If the user has Finance permissions, then let's display the deposit line chart
     ?>
-    <div class="card card-info"  id="depositChartRow">
+    <div class="card card-info" id="depositChartRow">
         <div class="card-header">
             <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext('Deposit Tracking') ?></h3>
             <div class="card-tools float-right">
                 <div id="deposit-graph" class="chart-legend"></div>
             </div>
+        </div>
         <div class="card-body" style="height: 200px">
             <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
         </div>
