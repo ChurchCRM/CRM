@@ -6,13 +6,9 @@
  * Component-specific - no Bootstrap duplicates.
  */
 
-.sidebar-menu,
-.main-sidebar .user-panel,
-.sidebar-menu > li.header {
+// AdminLTE 3 sets white-space: nowrap on .user-panel — override to allow wrapping
+.main-sidebar .user-panel {
   white-space: inherit;
-}
-.sidebar-menu > li .badge {
-  margin-top: 0px;
 }
 
 // Top navbar: search bar nav item (custom min/max-width — use flex-grow-1 on the <ul> instead)
