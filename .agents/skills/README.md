@@ -11,11 +11,13 @@ This directory contains modular, task-focused development skills for AI coding a
 │   ├── api-development.md
 │   ├── database-operations.md
 │   └── ...             (all project-specific skills)
-├── gh-cli/             ← Generic GitHub CLI skill (upstream)
-├── interface-design/   ← Generic interface design skill (upstream)
-├── php-best-practices/ ← Generic PHP 8.5+ best practices (upstream)
-├── web-design-guidelines/ ← Generic web design skill (upstream)
 └── README.md           ← This file
+
+~/.claude/skills/       ← Generic/upstream skills (shared across all projects)
+├── gh-cli/             ← GitHub CLI comprehensive reference
+├── interface-design/   ← Interface design patterns for dashboards and admin panels
+├── php-best-practices/ ← Generic PHP 8.5+ best practices
+└── web-design-guidelines/ ← Web Interface Guidelines compliance
 ```
 
 ## ChurchCRM Skills
@@ -76,14 +78,16 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 
 ## Generic / Upstream Skills
 
-These skills are not ChurchCRM-specific and are maintained as standalone skill packages:
+These skills are not ChurchCRM-specific and have been moved to `~/.claude/skills/` so they are available across **all projects** on this machine.
 
-| Folder | Description |
-|--------|-------------|
-| [`gh-cli/`](./gh-cli/) | GitHub CLI comprehensive reference |
-| [`interface-design/`](./interface-design/) | Interface design patterns for dashboards and admin panels |
-| [`php-best-practices/`](./php-best-practices/) | Generic PHP 8.5+, PSR standards, SOLID principles |
-| [`web-design-guidelines/`](./web-design-guidelines/) | Web Interface Guidelines compliance |
+| Skill | Location | Description |
+|-------|----------|-------------|
+| `gh-cli` | `~/.claude/skills/gh-cli/` | GitHub CLI comprehensive reference |
+| `interface-design` | `~/.claude/skills/interface-design/` | Interface design patterns for dashboards and admin panels |
+| `php-best-practices` | `~/.claude/skills/php-best-practices/` | Generic PHP 8.5+, PSR standards, SOLID principles |
+| `web-design-guidelines` | `~/.claude/skills/web-design-guidelines/` | Web Interface Guidelines compliance |
+
+They are registered in `~/.claude/CLAUDE.md` for automatic discovery.
 
 > **Note:** For generic guidance (language best practices, generic testing patterns, web-design templates), prefer upstream skills from https://skills.sh/ and add a small ChurchCRM-specific wrapper in `churchcrm/` noting repo-specific overrides.
 
