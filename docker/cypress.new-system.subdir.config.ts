@@ -47,7 +47,7 @@ export default defineConfig({
 
       return config;
     },
-    baseUrl: 'http://localhost:8080/churchcrm/',
+    baseUrl: 'http://localhost:8081/churchcrm/',
     specPattern: [
       'cypress/e2e/new-system/**/*.spec.js'
     ]
