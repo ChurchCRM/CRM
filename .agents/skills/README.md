@@ -43,6 +43,7 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 - [Webpack & TypeScript](./churchcrm/webpack-typescript.md)
 - [UI Development](./churchcrm/ui-development.md)
 - [i18n & Localization](./churchcrm/i18n-localization.md)
+- [AI Locale Translation](./churchcrm/locale-ai-translation.md)
 
 ### Security
 - [Authorization & Security](./churchcrm/authorization-security.md)
