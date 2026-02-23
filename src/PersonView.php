@@ -292,12 +292,49 @@ $bOkToEdit = (
                         <?php if (!empty($formattedMailingAddress)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-map-marker-alt mr-2 text-muted"></i>
-                            <a href="https://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
+                            <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer">
                                 <?= $formattedMailingAddress ?>
                             </a>
                         </li>
+                        <?php $personDirectionsUrl = $person->getDirectionsUrl(); ?>
+                        <?php if (!empty($personDirectionsUrl)) : ?>
+                        <li class="mb-2">
+                            <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                               class="btn btn-sm btn-outline-primary">
+                                <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
                         <?php endif; ?>
                     </ul>
+                    <?php
+                    // Build map config:
+                    // 1. Person's family has stored lat/lng → use coordinates directly (no API call).
+                    // 2. Unaffiliated person (bHidePersonAddress=false) with own address → pass
+                    //    address string; person-view.js geocodes via Nominatim client-side.
+                    $personMapConfig = null;
+                    $personFamily = $person->getFamily();
+                    if ($personFamily !== null && $personFamily->hasLatitudeAndLongitude()) {
+                        $personMapConfig = [
+                            'lat' => (float) $personFamily->getLatitude(),
+                            'lng' => (float) $personFamily->getLongitude(),
+                        ];
+                    } elseif ($fam_ID === '' && !empty($per_Address1) && !SystemConfig::getValue('bHidePersonAddress')) {
+                        $personMapConfig = ['address' => $plaintextMailingAddress];
+                    }
+                    ?>
+                    <?php if ($personMapConfig !== null) : ?>
+                    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+                    <div class="mt-2">
+                        <div id="person-map" style="height: 180px; border-radius: 4px;"></div>
+                    </div>
+                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                        window.CRM = window.CRM || {};
+                        window.CRM.personMapConfig = <?= json_encode($personMapConfig) ?>;
+                    </script>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
+                    <?php endif; ?>
                 </div>
                 <?php endif; ?>
 

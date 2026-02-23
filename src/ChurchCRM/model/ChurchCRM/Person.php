@@ -317,6 +317,35 @@ class Person extends BasePerson implements PhotoInterface
         ];
     }
 
+    /**
+     * Returns a Google Maps directions deep-link for this person's address.
+     *
+     * - Person has own address (Address1 set): use address string only — no family info.
+     * - Person has no own address, family has stored lat/lng: use coordinates (accurate, no API call).
+     * - Person has no own address, family has address only: use family address string.
+     * - No address anywhere: return empty string.
+     *
+     * Note: per_Latitude/per_Longitude columns do not yet exist on person_per.
+     * When added (issue #8045) this method should be updated to prefer them.
+     */
+    public function getDirectionsUrl(): string
+    {
+        if (!empty($this->getAddress1())) {
+            return GeoUtils::buildDirectionsUrl($this->getAddress());
+        }
+
+        $family = $this->getFamily();
+        if ($family === null) {
+            return '';
+        }
+
+        if ($family->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildDirectionsUrl('', (float) $family->getLatitude(), (float) $family->getLongitude());
+        }
+
+        return GeoUtils::buildDirectionsUrl($family->getAddress());
+    }
+
     public function deletePhoto(): bool
     {
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {

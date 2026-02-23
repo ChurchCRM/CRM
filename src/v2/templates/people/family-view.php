@@ -139,28 +139,29 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 </div>
             </div>
             <div class="card-body">
-                <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
-                   target="_blank"><?= $familyAddress ?></a>
+                <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
+                   target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
+                <?php $directionsUrl = $family->getDirectionsUrl(); ?>
+                <?php if (!empty($directionsUrl)) : ?>
+                <div class="mt-2">
+                    <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                       class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
+                    </a>
+                </div>
+                <?php endif; ?>
                 <!-- Family location map (Leaflet + OpenStreetMap) -->
-                <?php if (!empty($family->getLatitude())) : ?>
+                <?php if ($family->hasLatitudeAndLongitude()) : ?>
                     <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
                     <div class="border-right border-left mt-2">
                         <div id="map1" style="height: 200px;"></div>
                     </div>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
                     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                        (function () {
-                            var lat = <?= json_encode((float) $family->getLatitude()) ?>;
-                            var lng = <?= json_encode((float) $family->getLongitude()) ?>;
-                            var map = L.map('map1', { scrollWheelZoom: false, dragging: false, zoomControl: false })
-                                .setView([lat, lng], 14);
-                            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                maxZoom: 19,
-                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
-                            }).addTo(map);
-                            L.marker([lat, lng]).addTo(map);
-                        })();
+                        window.CRM = window.CRM || {};
+                        window.CRM.familyMapConfig = <?= json_encode(['lat' => (float) $family->getLatitude(), 'lng' => (float) $family->getLongitude()]) ?>;
                     </script>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
                 <?php endif; ?>
             </div>
         </div>
