@@ -140,7 +140,7 @@ class Person extends BasePerson implements PhotoInterface
         return $classificationName;
     }
 
-    public function postInsert(ConnectionInterface $con = null): void
+    public function postInsert(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('create');
         if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
@@ -151,7 +151,7 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
-    public function postUpdate(ConnectionInterface $con = null): void
+    public function postUpdate(?ConnectionInterface $con = null): void
     {
         if (!empty($this->getDateLastEdited())) {
             $this->createTimeLineNote('edit');
@@ -503,7 +503,7 @@ class Person extends BasePerson implements PhotoInterface
         return $nameString;
     }
 
-    public function preDelete(ConnectionInterface $con = null): bool
+    public function preDelete(?ConnectionInterface $con = null): bool
     {
         $this->deletePhoto();
 
@@ -631,7 +631,7 @@ class Person extends BasePerson implements PhotoInterface
         return preg_replace('/\D/', '', $this->getCellPhone());
     }
 
-    public function postSave(ConnectionInterface $con = null): void
+    public function postSave(?ConnectionInterface $con = null): void
     {
         $this->getPhoto()->refresh();
 

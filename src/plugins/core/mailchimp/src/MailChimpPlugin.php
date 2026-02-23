@@ -249,12 +249,12 @@ class MailChimpPlugin extends AbstractPlugin
     private function registerHooks(): void
     {
         // Listen for person email changes
-        HookManager::addAction(Hooks::PERSON_UPDATED, [$this, 'onPersonUpdated'], 10, 2);
-        HookManager::addAction(Hooks::PERSON_DELETED, [$this, 'onPersonDeleted'], 10, 2);
+        HookManager::addAction(Hooks::PERSON_UPDATED, [$this, 'onPersonUpdated'], 10);
+        HookManager::addAction(Hooks::PERSON_DELETED, [$this, 'onPersonDeleted'], 10);
 
         // Listen for group membership changes (for list sync)
-        HookManager::addAction(Hooks::GROUP_MEMBER_ADDED, [$this, 'onGroupMemberAdded'], 10, 3);
-        HookManager::addAction(Hooks::GROUP_MEMBER_REMOVED, [$this, 'onGroupMemberRemoved'], 10, 2);
+        HookManager::addAction(Hooks::GROUP_MEMBER_ADDED, [$this, 'onGroupMemberAdded'], 10);
+        HookManager::addAction(Hooks::GROUP_MEMBER_REMOVED, [$this, 'onGroupMemberRemoved'], 10);
     }
 
     // =========================================================================

@@ -62,17 +62,19 @@ class Notification
     {
         $vonagePlugin = PluginManager::getPlugin('vonage');
 
-        if ($vonagePlugin === null || !$vonagePlugin->isEnabled()) {
-            throw new \RuntimeException('Vonage SMS plugin is not enabled');
+        if ($vonagePlugin === null) {
+            throw new \RuntimeException('Vonage SMS plugin is not available');
         }
 
         $notificationMessage = gettext('Notification for') . ' ' . $this->person->getFullName();
 
         foreach ($this->recipients as $recipient) {
-            $vonagePlugin->sendSMS(
-                $recipient->getNumericCellPhone(),
-                $notificationMessage
-            );
+            if (method_exists($vonagePlugin, 'sendSMS')) {
+                $vonagePlugin->sendSMS(
+                    $recipient->getNumericCellPhone(),
+                    $notificationMessage
+                );
+            }
         }
 
         return true;
@@ -82,11 +84,14 @@ class Notification
     {
         $openLpPlugin = PluginManager::getPlugin('openlp');
 
-        if ($openLpPlugin === null || !$openLpPlugin->isEnabled()) {
-            throw new \RuntimeException('OpenLP plugin is not enabled');
+        if ($openLpPlugin === null) {
+            throw new \RuntimeException('OpenLP plugin is not available');
         }
 
-        return $openLpPlugin->sendAlert($this->projectorText);
+        if (method_exists($openLpPlugin, 'sendAlert')) {
+            return $openLpPlugin->sendAlert($this->projectorText);
+        }
+        return '';
     }
 
     public function send(): array
@@ -103,9 +108,9 @@ class Notification
             $methods[] = 'email: ' . $sendEmail;
         }
 
-        // Check if Vonage SMS plugin is enabled and configured
+        // Check if Vonage SMS plugin is available and configured
         $vonagePlugin = PluginManager::getPlugin('vonage');
-        if ($vonagePlugin !== null && $vonagePlugin->isEnabled() && $vonagePlugin->isConfigured()) {
+        if ($vonagePlugin !== null && $vonagePlugin->isConfigured()) {
             $sendSms = false;
             try {
                 $sendSms = $this->sendSMS();
@@ -115,9 +120,9 @@ class Notification
             $methods[] = 'sms: ' . $sendSms;
         }
 
-        // Check if OpenLP plugin is enabled and configured
+        // Check if OpenLP plugin is available and configured
         $openLpPlugin = PluginManager::getPlugin('openlp');
-        if ($openLpPlugin !== null && $openLpPlugin->isEnabled() && $openLpPlugin->isConfigured()) {
+        if ($openLpPlugin !== null && $openLpPlugin->isConfigured()) {
             $sendOpenLp = false;
             try {
                 $sendOpenLp = (bool) $this->sendProjector();

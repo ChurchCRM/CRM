@@ -12,7 +12,7 @@ use Monolog\Logger;
 class   SystemConfig
 {
     /**
-     * @var Config[]|null
+     * @var \ChurchCRM\model\ChurchCRM\Config[]|null
      */
     private static ?array $configs = null;
 
@@ -295,7 +295,7 @@ class   SystemConfig
     }
 
     /**
-     * @param Config[] $configs
+     * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
      */
     public static function init($configs = null): void
     {
@@ -320,7 +320,7 @@ class   SystemConfig
     }
 
     /**
-     * @param Config[] $configs
+     * @param \ChurchCRM\model\ChurchCRM\Config[] $configs
      */
     private static function scrapeDBConfigs($configs): void
     {
