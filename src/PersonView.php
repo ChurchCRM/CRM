@@ -820,6 +820,7 @@ $bOkToEdit = (
                                                         }
                                                     }
 
+                                                    echo '</div>';
                                                 } ?>
                                                 <div class="card-footer">
                                                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
