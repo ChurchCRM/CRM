@@ -2308,14 +2308,6 @@ msgid "This property type is still being used by at least one property."
 msgstr "ఈ ఆస్తి రకం ఇప్పటికీ కనీసం ఒక ఆస్తి ద్వారా ఉపయోగించబడుతోంది."
 
 #: 
-msgid "If you delete this type, you will also remove all properties using"
-msgstr "మీరు ఈ రకాన్ని తొలగిస్తే, ఉపయోగించే అన్ని గుణాలను కూడా తొలగిస్తారు"
-
-#: 
-msgid "it and lose any corresponding property assignments."
-msgstr "దానిని మరియు సంబంధిత ఆస్తి కేటాయింపులను కోల్పోతారు."
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "దయచేసి ఈ ఆస్తి రకం తొలగింపును నిర్ధారించండి"
 
@@ -4103,9 +4095,38 @@ msgstr "కస్టమ్ ఫీల్డ్ విలువ ఉన్న వ�
 msgid "Last Edited"
 msgstr "చివరిగా సవరించబడింది"
 
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "mailto: లింకుల ద్వారా ఇమెయిల్ పంపడానికి వినియోగదారు అనుమతి"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "mailto: లింకులలో ఇమెయిల్‌లను వేరు చేయడానికి డీలిమిటర్"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "డైరెక్టరీలు సృష్టించడానికి వినియోగదారు అనుమతి"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "CSV ఫైళ్ళను ఎగుమతి చేయడానికి వినియోగదారు అనుమతి"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "వినియోగదారుకు కొత్త సంఘటన జోడించే అనుమతి ఇవ్వండి"
+
 #: 
 msgid "Weekly on"
 msgstr "వారానికొకసారి"
+
+#: 
+msgid "s"
+msgstr "లు"
 
 #: 
 msgid "Monthly on"
@@ -4116,12 +4137,32 @@ msgid "Yearly on"
 msgstr "ఏడాదికి ఒకసారి"
 
 #: 
+msgid "Family Roles Editor"
+msgstr "కుటుంబ పాత్రల సంపాదకుడు"
+
+#: 
+msgid "Person Classification"
+msgstr "వ్యక్తి వర్గీకరణ"
+
+#: 
+msgid "Person Classifications"
+msgstr "వ్యక్తి వర్గీకరణలు"
+
+#: 
+msgid "Person Classifications Editor"
+msgstr "వ్యక్తి వర్గీకరణల సంపాదకుడు"
+
+#: 
 msgid "Group Type"
 msgstr "సమూహం రకం"
 
 #: 
 msgid "Group Types"
 msgstr "సమూహం రకాలు"
+
+#: 
+msgid "Group Types Editor"
+msgstr "సమూహ రకాల సంపాదకుడు"
 
 #: 
 msgid "Security Group"
@@ -4132,8 +4173,80 @@ msgid "Security Groups"
 msgstr "సెక్యూరిటీ సమూహాలు"
 
 #: 
+msgid "Security Groups Editor"
+msgstr "భద్రతా సమూహాల సంపాదకుడు"
+
+#: 
+msgid "Group Member Role"
+msgstr "సమూహ సభ్యుని పాత్ర"
+
+#: 
+msgid "Group Member Roles Editor"
+msgstr "సమూహ సభ్యుల పాత్రల సంపాదకుడు"
+
+#: 
+msgid "Person Custom List Option"
+msgstr "వ్యక్తి అనుకూల జాబితా ఎంపిక"
+
+#: 
+msgid "Person Custom List Options"
+msgstr "వ్యక్తి అనుకూల జాబితా ఎంపికలు"
+
+#: 
+msgid "Person Custom List Options Editor"
+msgstr "వ్యక్తి అనుకూల జాబితా ఎంపికల సంపాదకుడు"
+
+#: 
+msgid "Custom List Option"
+msgstr "అనుకూల జాబితా ఎంపిక"
+
+#: 
+msgid "Custom List Options"
+msgstr "అనుకూల జాబితా ఎంపికలు"
+
+#: 
+msgid "Custom List Options Editor"
+msgstr "అనుకూల జాబితా ఎంపికల సంపాదకుడు"
+
+#: 
+msgid "Family Custom List Option"
+msgstr "కుటుంబ అనుకూల జాబితా ఎంపిక"
+
+#: 
+msgid "Family Custom List Options"
+msgstr "కుటుంబ అనుకూల జాబితా ఎంపికలు"
+
+#: 
+msgid "Family Custom List Options Editor"
+msgstr "కుటుంబ అనుకూల జాబితా ఎంపికల సంపాదకుడు"
+
+#: 
+msgid "are not allowed."
+msgstr "అనుమతించబడవు."
+
+#: 
+msgid "Name for New"
+msgstr "కొత్తదానికి పేరు"
+
+#: 
 msgid "Imported"
 msgstr "దిగుమతి చేయబడింది"
+
+#: 
+msgid "Created via Family"
+msgstr "కుటుంబం ద్వారా సృష్టించబడింది"
+
+#: 
+msgid "Updated via Family"
+msgstr "కుటుంబం ద్వారా నవీకరించబడింది"
+
+#: 
+msgid "Family Data Verified"
+msgstr "కుటుంబ డేటా ధృవీకరించబడింది"
+
+#: 
+msgid "Profile Image Deleted"
+msgstr "ప్రొఫైల్ చిత్రం తొలగించబడింది"
 
 #: 
 msgid "miles"
@@ -4150,6 +4263,11 @@ msgstr "ఆఫ్ఘనిస్తాన్"
 
 #. Context: countries
 #: 
+msgid "Åland Islands (Åland)"
+msgstr "ఆలాండ్ దీవులు (Åland)"
+
+#. Context: countries
+#: 
 msgid "Albania (Shqipëri)"
 msgstr "అల్బేనియా"
 
@@ -4160,6 +4278,11 @@ msgstr "అల్జీరియా"
 
 #. Context: countries
 #: 
+msgid "American Samoa"
+msgstr "అమెరికన్ సమోవా"
+
+#. Context: countries
+#: 
 msgid "Andorra"
 msgstr "అండోరా"
 
@@ -4167,6 +4290,16 @@ msgstr "అండోరా"
 #: 
 msgid "Angola"
 msgstr "అంగోలా"
+
+#. Context: countries
+#: 
+msgid "Anguilla"
+msgstr "అంగుయిల్లా"
+
+#. Context: countries
+#: 
+msgid "Antarctica"
+msgstr "అంటార్కిటికా"
 
 #. Context: countries
 #: 
@@ -4185,6 +4318,16 @@ msgstr "ఆర్మేనియా"
 
 #. Context: countries
 #: 
+msgid "Aruba"
+msgstr "అరుబా"
+
+#. Context: countries
+#: 
+msgid "Ascension Island"
+msgstr "అసెన్షన్ ద్వీపం"
+
+#. Context: countries
+#: 
 msgid "Australia"
 msgstr "ఆస్ట్రేలియా"
 
@@ -4197,6 +4340,16 @@ msgstr "ఆస్ట్రియా"
 #: 
 msgid "Azerbaijan (Azərbaycan)"
 msgstr "అజర్బైజాన్"
+
+#. Context: countries
+#: 
+msgid "Bahamas"
+msgstr "బహామాస్"
+
+#. Context: countries
+#: 
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr "బహ్రెయిన్ (‫البحرين‬‎)"
 
 #. Context: countries
 #: 
@@ -4225,6 +4378,16 @@ msgstr "బెలీజ్"
 
 #. Context: countries
 #: 
+msgid "Benin (Bénin)"
+msgstr "బెనిన్ (Bénin)"
+
+#. Context: countries
+#: 
+msgid "Bermuda"
+msgstr "బెర్ముడా"
+
+#. Context: countries
+#: 
 msgid "Bhutan (འབྲུག)"
 msgstr "భూటాన్"
 
@@ -4235,13 +4398,33 @@ msgstr "బొలీవియా"
 
 #. Context: countries
 #: 
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr "బోస్నియా మరియు హెర్జెగోవినా (Босна и Херцеговина)"
+
+#. Context: countries
+#: 
 msgid "Botswana"
 msgstr "బోట్స్‌వానా"
 
 #. Context: countries
 #: 
+msgid "Bouvet Island"
+msgstr "బౌవె ద్వీపం"
+
+#. Context: countries
+#: 
 msgid "Brazil (Brasil)"
 msgstr "బ్రెజిల్"
+
+#. Context: countries
+#: 
+msgid "British Indian Ocean Territory"
+msgstr "బ్రిటిష్ హిందూ మహాసముద్ర భూభాగం"
+
+#. Context: countries
+#: 
+msgid "British Virgin Islands"
+msgstr "బ్రిటిష్ వర్జిన్ దీవులు"
 
 #. Context: countries
 #: 
@@ -4260,8 +4443,58 @@ msgstr "బుర్కినా ఫాసో"
 
 #. Context: countries
 #: 
+msgid "Burundi (Uburundi)"
+msgstr "బురుండి (Uburundi)"
+
+#. Context: countries
+#: 
+msgid "Cambodia (កម្ពុជា)"
+msgstr "కంబోడియా (កម្ពុជា)"
+
+#. Context: countries
+#: 
+msgid "Cameroon (Cameroun)"
+msgstr "కామెరూన్ (Cameroun)"
+
+#. Context: countries
+#: 
 msgid "Canada"
 msgstr "కెనడా"
+
+#. Context: countries
+#: 
+msgid "Canary Islands (islas Canarias)"
+msgstr "కేనరీ దీవులు (islas Canarias)"
+
+#. Context: countries
+#: 
+msgid "Cape Verde (Kabu Verdi)"
+msgstr "కేప్ వెర్డే (Kabu Verdi)"
+
+#. Context: countries
+#: 
+msgid "Caribbean Netherlands"
+msgstr "కరీబియన్ నెదర్లాండ్స్"
+
+#. Context: countries
+#: 
+msgid "Cayman Islands"
+msgstr "కేమాన్ దీవులు"
+
+#. Context: countries
+#: 
+msgid "Central African Republic (République centrafricaine)"
+msgstr "మధ్య ఆఫ్రికా గణతంత్రం (République centrafricaine)"
+
+#. Context: countries
+#: 
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr "సెయుటా మరియు మెలిల్లా (Ceuta y Melilla)"
+
+#. Context: countries
+#: 
+msgid "Chad (Tchad)"
+msgstr "చాడ్ (Tchad)"
 
 #. Context: countries
 #: 
@@ -4275,8 +4508,43 @@ msgstr "చైనా"
 
 #. Context: countries
 #: 
+msgid "Christmas Island"
+msgstr "క్రిస్మస్ ద్వీపం"
+
+#. Context: countries
+#: 
+msgid "Clipperton Island"
+msgstr "క్లిప్పెర్టన్ ద్వీపం"
+
+#. Context: countries
+#: 
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr "కొకొస్ (కీలింగ్) దీవులు (Kepulauan Cocos (Keeling))"
+
+#. Context: countries
+#: 
 msgid "Colombia"
 msgstr "కొలంబియా"
+
+#. Context: countries
+#: 
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr "కొమోరోస్ (‫جزر القمر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr "కాంగో (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+
+#. Context: countries
+#: 
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr "కాంగో (గణతంత్రం) (Congo-Brazzaville)"
+
+#. Context: countries
+#: 
+msgid "Cook Islands"
+msgstr "కుక్ దీవులు"
 
 #. Context: countries
 #: 
@@ -4285,8 +4553,38 @@ msgstr "కోస్టా రికా"
 
 #. Context: countries
 #: 
+msgid "Croatia (Hrvatska)"
+msgstr "క్రొయేషియా (Hrvatska)"
+
+#. Context: countries
+#: 
 msgid "Cuba"
 msgstr "క్యూబా"
+
+#. Context: countries
+#: 
+msgid "Curaçao"
+msgstr "కురాకావో"
+
+#. Context: countries
+#: 
+msgid "Cyprus (Κύπρος)"
+msgstr "సైప్రస్ (Κύπρος)"
+
+#. Context: countries
+#: 
+msgid "Czech Republic (Česká republika)"
+msgstr "చెక్ గణతంత్రం (Česká republika)"
+
+#. Context: countries
+#: 
+msgid "Denmark (Danmark)"
+msgstr "డెన్మార్క్ (Danmark)"
+
+#. Context: countries
+#: 
+msgid "Diego Garcia"
+msgstr "డియెగో గార్సియా"
 
 #. Context: countries
 #: 
@@ -4297,6 +4595,11 @@ msgstr "జిబౌటి"
 #: 
 msgid "Dominica"
 msgstr "డొమినికా"
+
+#. Context: countries
+#: 
+msgid "Dominican Republic (República Dominicana)"
+msgstr "డొమినికన్ గణతంత్రం (República Dominicana)"
 
 #. Context: countries
 #: 
@@ -4315,8 +4618,18 @@ msgstr "ఎల్ సాల్వడార్"
 
 #. Context: countries
 #: 
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr "భూమధ్యరేఖ గినియా (Guinea Ecuatorial)"
+
+#. Context: countries
+#: 
 msgid "Eritrea"
 msgstr "ఎరిట్రియా"
+
+#. Context: countries
+#: 
+msgid "Estonia (Eesti)"
+msgstr "ఎస్టోనియా (Eesti)"
 
 #. Context: countries
 #: 
@@ -4325,8 +4638,23 @@ msgstr "ఇథియోపియా"
 
 #. Context: countries
 #: 
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr "ఫాక్‌ల్యాండ్ దీవులు (Islas Malvinas)"
+
+#. Context: countries
+#: 
+msgid "Faroe Islands (Føroyar)"
+msgstr "ఫారో దీవులు (Føroyar)"
+
+#. Context: countries
+#: 
 msgid "Fiji"
 msgstr "ఫిజీ"
+
+#. Context: countries
+#: 
+msgid "Finland (Suomi)"
+msgstr "ఫిన్లాండ్ (Suomi)"
 
 #. Context: countries
 #: 
@@ -4335,8 +4663,33 @@ msgstr "ఫ్రాన్స్"
 
 #. Context: countries
 #: 
+msgid "French Guiana (Guyane française)"
+msgstr "ఫ్రెంచ్ గయానా (Guyane française)"
+
+#. Context: countries
+#: 
+msgid "French Polynesia (Polynésie française)"
+msgstr "ఫ్రెంచ్ పాలినేషియా (Polynésie française)"
+
+#. Context: countries
+#: 
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr "ఫ్రెంచ్ దక్షిణ భూభాగాలు (Terres australes françaises)"
+
+#. Context: countries
+#: 
 msgid "Gabon"
 msgstr "గాబన్"
+
+#. Context: countries
+#: 
+msgid "Gambia"
+msgstr "గాంబియా"
+
+#. Context: countries
+#: 
+msgid "Georgia (საქართველო)"
+msgstr "జార్జియా (საქართველო)"
 
 #. Context: countries
 #: 
@@ -4345,13 +4698,58 @@ msgstr "జర్మనీ"
 
 #. Context: countries
 #: 
+msgid "Ghana (Gaana)"
+msgstr "ఘానా (Gaana)"
+
+#. Context: countries
+#: 
+msgid "Gibraltar"
+msgstr "జిబ్రాల్టర్"
+
+#. Context: countries
+#: 
+msgid "Greece (Ελλάδα)"
+msgstr "గ్రీస్ (Ελλάδα)"
+
+#. Context: countries
+#: 
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr "గ్రీన్‌లాండ్ (Kalaallit Nunaat)"
+
+#. Context: countries
+#: 
 msgid "Grenada"
 msgstr "గ్రెనడా"
 
 #. Context: countries
 #: 
+msgid "Guadeloupe"
+msgstr "గ్వాడెలూప్"
+
+#. Context: countries
+#: 
+msgid "Guam"
+msgstr "గువామ్"
+
+#. Context: countries
+#: 
 msgid "Guatemala"
 msgstr "గ్వాటెమాలా"
+
+#. Context: countries
+#: 
+msgid "Guernsey"
+msgstr "గెర్న్సీ"
+
+#. Context: countries
+#: 
+msgid "Guinea (Guinée)"
+msgstr "గినియా (Guinée)"
+
+#. Context: countries
+#: 
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr "గినియా-బిస్సావు (Guiné Bissau)"
 
 #. Context: countries
 #: 
@@ -4365,8 +4763,28 @@ msgstr "హైతీ"
 
 #. Context: countries
 #: 
+msgid "Heard & McDonald Islands"
+msgstr "హెర్డ్ & మెక్‌డొనాల్డ్ దీవులు"
+
+#. Context: countries
+#: 
 msgid "Honduras"
 msgstr "హోండురాస్"
+
+#. Context: countries
+#: 
+msgid "Hong Kong (香港)"
+msgstr "హాంగ్ కాంగ్ (香港)"
+
+#. Context: countries
+#: 
+msgid "Hungary (Magyarország)"
+msgstr "హంగేరీ (Magyarország)"
+
+#. Context: countries
+#: 
+msgid "Iceland (Ísland)"
+msgstr "ఐస్‌లాండ్ (Ísland)"
 
 #. Context: countries
 #: 
@@ -4380,8 +4798,23 @@ msgstr "ఇండోనేషియా"
 
 #. Context: countries
 #: 
+msgid "Iran (‫ایران‬‎)"
+msgstr "ఇరాన్ (‫ایران‬‎)"
+
+#. Context: countries
+#: 
+msgid "Iraq (‫العراق‬‎)"
+msgstr "ఇరాక్ (‫العراق‬‎)"
+
+#. Context: countries
+#: 
 msgid "Ireland"
 msgstr "ఐర్లాండ్"
+
+#. Context: countries
+#: 
+msgid "Isle of Man"
+msgstr "ఐల్ ఆఫ్ మాన్"
 
 #. Context: countries
 #: 
@@ -4405,6 +4838,21 @@ msgstr "జపాన్"
 
 #. Context: countries
 #: 
+msgid "Jersey"
+msgstr "జెర్సీ"
+
+#. Context: countries
+#: 
+msgid "Jordan (‫الأردن‬‎)"
+msgstr "జోర్డాన్ (‫الأردن‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kazakhstan (Казахстан)"
+msgstr "కజాఖ్‌స్తాన్ (Казахстан)"
+
+#. Context: countries
+#: 
 msgid "Kenya"
 msgstr "కెన్యా"
 
@@ -4412,6 +4860,31 @@ msgstr "కెన్యా"
 #: 
 msgid "Kiribati"
 msgstr "కిరిబాటి"
+
+#. Context: countries
+#: 
+msgid "Kosovo (Kosovë)"
+msgstr "కొసోవో (Kosovë)"
+
+#. Context: countries
+#: 
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr "కువైట్ (‫الكويت‬‎)"
+
+#. Context: countries
+#: 
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr "కిర్గిజ్‌స్తాన్ (Кыргызстан)"
+
+#. Context: countries
+#: 
+msgid "Laos (ລາວ)"
+msgstr "లావోస్ (ລາວ)"
+
+#. Context: countries
+#: 
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr "లెబనాన్ (‫لبنان‬‎)"
 
 #. Context: countries
 #: 
@@ -4425,13 +4898,38 @@ msgstr "లైబీరియా"
 
 #. Context: countries
 #: 
+msgid "Libya (‫ليبيا‬‎)"
+msgstr "లిబియా (‫ليبيا‬‎)"
+
+#. Context: countries
+#: 
 msgid "Liechtenstein"
 msgstr "లిచ్టెన్‌స్టైన్"
 
 #. Context: countries
 #: 
+msgid "Lithuania (Lietuva)"
+msgstr "లిథువేనియా (Lietuva)"
+
+#. Context: countries
+#: 
 msgid "Luxembourg"
 msgstr "లక్సెంబర్గ్"
+
+#. Context: countries
+#: 
+msgid "Macau (澳門)"
+msgstr "మకావు (澳門)"
+
+#. Context: countries
+#: 
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr "మాసిడోనియా (FYROM) (Македонија)"
+
+#. Context: countries
+#: 
+msgid "Madagascar (Madagasikara)"
+msgstr "మడగాస్కర్ (Madagasikara)"
 
 #. Context: countries
 #: 
@@ -4465,8 +4963,78 @@ msgstr "మార్షల్ దీవులు"
 
 #. Context: countries
 #: 
+msgid "Martinique"
+msgstr "మార్టినిక్"
+
+#. Context: countries
+#: 
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr "మౌరిటానియా (‫موريتانيا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mauritius (Moris)"
+msgstr "మారిషస్ (Moris)"
+
+#. Context: countries
+#: 
+msgid "Mayotte"
+msgstr "మాయోట్"
+
+#. Context: countries
+#: 
+msgid "Mexico (México)"
+msgstr "మెక్సికో (México)"
+
+#. Context: countries
+#: 
+msgid "Micronesia"
+msgstr "మైక్రోనేషియా"
+
+#. Context: countries
+#: 
+msgid "Moldova (Republica Moldova)"
+msgstr "మోల్డోవా (Republica Moldova)"
+
+#. Context: countries
+#: 
 msgid "Monaco"
 msgstr "మొనాకో"
+
+#. Context: countries
+#: 
+msgid "Mongolia (Монгол)"
+msgstr "మంగోలియా (Монгол)"
+
+#. Context: countries
+#: 
+msgid "Montenegro (Crna Gora)"
+msgstr "మాంటినీగ్రో (Crna Gora)"
+
+#. Context: countries
+#: 
+msgid "Montserrat"
+msgstr "మాంట్‌సెరాట్"
+
+#. Context: countries
+#: 
+msgid "Morocco (‫المغرب‬‎)"
+msgstr "మొరాకో (‫المغرب‬‎)"
+
+#. Context: countries
+#: 
+msgid "Mozambique (Moçambique)"
+msgstr "మొజాంబిక్ (Moçambique)"
+
+#. Context: countries
+#: 
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr "మయన్మార్ (బర్మా) (မြန်မာ)"
+
+#. Context: countries
+#: 
+msgid "Namibia (Namibië)"
+msgstr "నమీబియా (Namibië)"
 
 #. Context: countries
 #: 
@@ -4485,6 +5053,11 @@ msgstr "నెదర్లాండ్స్"
 
 #. Context: countries
 #: 
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr "న్యూ కెలెడోనియా (Nouvelle-Calédonie)"
+
+#. Context: countries
+#: 
 msgid "New Zealand"
 msgstr "న్యూజిలాండ్"
 
@@ -4495,8 +5068,43 @@ msgstr "నికరాగ్వా"
 
 #. Context: countries
 #: 
+msgid "Niger (Nijar)"
+msgstr "నైజర్ (Nijar)"
+
+#. Context: countries
+#: 
 msgid "Nigeria"
 msgstr "నైజీరియా"
+
+#. Context: countries
+#: 
+msgid "Niue"
+msgstr "నియుయే"
+
+#. Context: countries
+#: 
+msgid "Norfolk Island"
+msgstr "నార్ఫోక్ ద్వీపం"
+
+#. Context: countries
+#: 
+msgid "Northern Mariana Islands"
+msgstr "ఉత్తర మారియానా దీవులు"
+
+#. Context: countries
+#: 
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr "ఉత్తర కొరియా (조선 민주주의 인민 공화국)"
+
+#. Context: countries
+#: 
+msgid "Norway (Norge)"
+msgstr "నార్వే (Norge)"
+
+#. Context: countries
+#: 
+msgid "Oman (‫عُمان‬‎)"
+msgstr "ఒమన్ (‫عُمان‬‎)"
 
 #. Context: countries
 #: 
@@ -4510,6 +5118,16 @@ msgstr "పలావు"
 
 #. Context: countries
 #: 
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr "పాలస్తీనా (‫فلسطين‬‎)"
+
+#. Context: countries
+#: 
+msgid "Panama (Panamá)"
+msgstr "పనామా (Panamá)"
+
+#. Context: countries
+#: 
 msgid "Papua New Guinea"
 msgstr "పాపువా న్యూ గినియా"
 
@@ -4520,13 +5138,48 @@ msgstr "పరాగ్వే"
 
 #. Context: countries
 #: 
+msgid "Peru (Perú)"
+msgstr "పెరూ (Perú)"
+
+#. Context: countries
+#: 
 msgid "Philippines"
 msgstr "ఫిలిప్పీన్స్"
 
 #. Context: countries
 #: 
+msgid "Pitcairn Islands"
+msgstr "పిట్‌కెయిర్న్ దీవులు"
+
+#. Context: countries
+#: 
+msgid "Poland (Polska)"
+msgstr "పోలాండ్ (Polska)"
+
+#. Context: countries
+#: 
 msgid "Portugal"
 msgstr "పోర్చుగల్"
+
+#. Context: countries
+#: 
+msgid "Puerto Rico"
+msgstr "పోర్టో రికో"
+
+#. Context: countries
+#: 
+msgid "Qatar (‫قطر‬‎)"
+msgstr "కతార్ (‫قطر‬‎)"
+
+#. Context: countries
+#: 
+msgid "Réunion (La Réunion)"
+msgstr "రియూనియన్ (La Réunion)"
+
+#. Context: countries
+#: 
+msgid "Romania (România)"
+msgstr "రొమేనియా (România)"
 
 #. Context: countries
 #: 
@@ -4540,6 +5193,16 @@ msgstr "ర్వాండా"
 
 #. Context: countries
 #: 
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr "సెయింట్ బార్తెలమీ (Saint-Barthélemy)"
+
+#. Context: countries
+#: 
+msgid "Saint Helena"
+msgstr "సెయింట్ హెలెనా"
+
+#. Context: countries
+#: 
 msgid "Saint Kitts and Nevis"
 msgstr "సెయింట్ కిట్స్ అండ్ నెవిస్"
 
@@ -4550,6 +5213,16 @@ msgstr "సెయింట్ లూసియా"
 
 #. Context: countries
 #: 
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr "సెయింట్ మార్టిన్ (Saint-Martin (partie française))"
+
+#. Context: countries
+#: 
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr "సెయింట్ పియెర్ మరియు మికెలాన్ (Saint-Pierre-et-Miquelon)"
+
+#. Context: countries
+#: 
 msgid "Samoa"
 msgstr "సమోవా"
 
@@ -4557,6 +5230,26 @@ msgstr "సమోవా"
 #: 
 msgid "San Marino"
 msgstr "సాన్ మారినో"
+
+#. Context: countries
+#: 
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr "సావో టోమే మరియు ప్రిన్సిపే (São Tomé e Príncipe)"
+
+#. Context: countries
+#: 
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr "సౌదీ అరేబియా (‫المملكة العربية السعودية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Senegal (Sénégal)"
+msgstr "సెనెగల్ (Sénégal)"
+
+#. Context: countries
+#: 
+msgid "Serbia (Србија)"
+msgstr "సెర్బియా (Србија)"
 
 #. Context: countries
 #: 
@@ -4575,8 +5268,28 @@ msgstr "సింగపూర్"
 
 #. Context: countries
 #: 
+msgid "Sint Maarten"
+msgstr "సింట్ మార్టెన్"
+
+#. Context: countries
+#: 
+msgid "Slovakia (Slovensko)"
+msgstr "స్లొవేకియా (Slovensko)"
+
+#. Context: countries
+#: 
+msgid "Slovenia (Slovenija)"
+msgstr "స్లొవేనియా (Slovenija)"
+
+#. Context: countries
+#: 
 msgid "Solomon Islands"
 msgstr "సోలమన్ దీవులు"
+
+#. Context: countries
+#: 
+msgid "Somalia (Soomaaliya)"
+msgstr "సోమాలియా (Soomaaliya)"
 
 #. Context: countries
 #: 
@@ -4585,8 +5298,18 @@ msgstr "దక్షిణ ఆఫ్రికా"
 
 #. Context: countries
 #: 
+msgid "South Georgia & South Sandwich Islands"
+msgstr "సౌత్ జార్జియా & సౌత్ శాండ్‌విచ్ దీవులు"
+
+#. Context: countries
+#: 
 msgid "South Korea (대한민국)"
 msgstr "దక్షిణ కొరియా"
+
+#. Context: countries
+#: 
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr "దక్షిణ సూడాన్ (‫جنوب السودان‬‎)"
 
 #. Context: countries
 #: 
@@ -4595,8 +5318,28 @@ msgstr "స్పెయిన్"
 
 #. Context: countries
 #: 
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr "శ్రీలంక (ශ්‍රී ලංකාව)"
+
+#. Context: countries
+#: 
+msgid "St. Vincent & Grenadines"
+msgstr "సెయింట్ వింసెంట్ & గ్రెనడైన్స్"
+
+#. Context: countries
+#: 
+msgid "Sudan (‫السودان‬‎)"
+msgstr "సూడాన్ (‫السودان‬‎)"
+
+#. Context: countries
+#: 
 msgid "Suriname"
 msgstr "సూరినామ్"
+
+#. Context: countries
+#: 
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr "స్వాల్‌బార్డ్ మరియు జాన్ మేయెన్ (Svalbard og Jan Mayen)"
 
 #. Context: countries
 #: 
@@ -4605,8 +5348,23 @@ msgstr "స్వాజిలాండ్"
 
 #. Context: countries
 #: 
+msgid "Sweden (Sverige)"
+msgstr "స్వీడన్ (Sverige)"
+
+#. Context: countries
+#: 
 msgid "Switzerland (Schweiz)"
 msgstr "స్విట్జర్లాండ్"
+
+#. Context: countries
+#: 
+msgid "Syria (‫سوريا‬‎)"
+msgstr "సిరియా (‫سوريا‬‎)"
+
+#. Context: countries
+#: 
+msgid "Taiwan (台灣)"
+msgstr "తైవాన్ (台灣)"
 
 #. Context: countries
 #: 
@@ -4625,8 +5383,18 @@ msgstr "థాయిలాండ్"
 
 #. Context: countries
 #: 
+msgid "Timor-Leste"
+msgstr "తిమోర్-లెస్టే"
+
+#. Context: countries
+#: 
 msgid "Togo"
 msgstr "టోగో"
+
+#. Context: countries
+#: 
+msgid "Tokelau"
+msgstr "టోకెలావు"
 
 #. Context: countries
 #: 
@@ -4640,6 +5408,16 @@ msgstr "ట్రినిడాడ్ మరియు టొబాగో"
 
 #. Context: countries
 #: 
+msgid "Tristan da Cunha"
+msgstr "ట్రిస్టన్ డా కున్హా"
+
+#. Context: countries
+#: 
+msgid "Tunisia (‫تونس‬‎)"
+msgstr "తునీషియా (‫تونس‬‎)"
+
+#. Context: countries
+#: 
 msgid "Turkey (Türkiye)"
 msgstr "టర్కీ"
 
@@ -4650,13 +5428,38 @@ msgstr "తుర్క్‌మెనిస్తాన్"
 
 #. Context: countries
 #: 
+msgid "Turks and Caicos Islands"
+msgstr "టర్క్స్ మరియు కైకోస్ దీవులు"
+
+#. Context: countries
+#: 
 msgid "Tuvalu"
 msgstr "టువాలు"
 
 #. Context: countries
 #: 
+msgid "U.S. Outlying Islands"
+msgstr "యు.ఎస్. బాహ్య దీవులు"
+
+#. Context: countries
+#: 
+msgid "U.S. Virgin Islands"
+msgstr "యు.ఎస్. వర్జిన్ దీవులు"
+
+#. Context: countries
+#: 
 msgid "Uganda"
 msgstr "ఉగాండా"
+
+#. Context: countries
+#: 
+msgid "Ukraine (Україна)"
+msgstr "ఉక్రెయిన్ (Україна)"
+
+#. Context: countries
+#: 
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr "సంయుక్త అరబ్ ఎమిరేట్స్ (‫الإمارات العربية المتحدة‬‎)"
 
 #. Context: countries
 #: 
@@ -4675,13 +5478,43 @@ msgstr "ఉరుగ్వే"
 
 #. Context: countries
 #: 
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr "ఉజ్బెకిస్తాన్ (Oʻzbekiston)"
+
+#. Context: countries
+#: 
 msgid "Vanuatu"
 msgstr "వనాటు"
 
 #. Context: countries
 #: 
+msgid "Vatican City (Città del Vaticano)"
+msgstr "వాటికన్ నగరం (Città del Vaticano)"
+
+#. Context: countries
+#: 
 msgid "Venezuela"
 msgstr "వెనిజులా"
+
+#. Context: countries
+#: 
+msgid "Vietnam (Việt Nam)"
+msgstr "వియత్నాం (Việt Nam)"
+
+#. Context: countries
+#: 
+msgid "Wallis and Futuna"
+msgstr "వాలిస్ మరియు ఫ్యూచునా"
+
+#. Context: countries
+#: 
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr "పశ్చిమ సహారా (‫الصحراء الغربية‬‎)"
+
+#. Context: countries
+#: 
+msgid "Yemen (‫اليمن‬‎)"
+msgstr "యెమెన్ (‫اليمن‬‎)"
 
 #. Context: countries
 #: 
@@ -4694,48 +5527,975 @@ msgid "Zimbabwe"
 msgstr "జింబాబ్వే"
 
 #: 
+msgid "Please verify your family's information"
+msgstr "దయచేసి మీ కుటుంబ సమాచారాన్ని ధృవీకరించండి"
+
+#: 
+msgid "Unable to load verification info"
+msgstr "ధృవీకరణ సమాచారాన్ని లోడ్ చేయడం సాధ్యపడలేదు"
+
+#: 
+msgid "No Changes"
+msgstr "మార్పులేమీ లేవు"
+
+#: 
+msgid "Page not fond"
+msgstr "పేజీ కనుగొనబడలేదు"
+
+#: 
+msgid "Oops! Page not found."
+msgstr "అయ్యో! పేజీ కనుగొనబడలేదు."
+
+#: 
+msgid "Family Registration"
+msgstr "కుటుంబ నమోదు"
+
+#: 
+msgid "Please enter the following to start your family's verification"
+msgstr "మీ కుటుంబ ధృవీకరణను ప్రారంభించడానికి దయచేసి కింది వివరాలు నమోదు చేయండి"
+
+#: 
 msgid "Family Verification"
 msgstr "కుటుంబ ధృవీకరణ"
+
+#: 
+msgid "Work Email"
+msgstr "కార్యాలయ ఇమెయిల్"
+
+#: 
+msgid "Request Family Info Verification"
+msgstr "కుటుంబ సమాచార ధృవీకరణను అభ్యర్థించండి"
+
+#: 
+msgid "Select how do you want to request the family information to be verified"
+msgstr "కుటుంబ సమాచారాన్ని ఎలా ధృవీకరించాలని అభ్యర్థించాలో ఎంచుకోండి"
+
+#: 
+msgid "Online Verification"
+msgstr "ఆన్‌లైన్ ధృవీకరణ"
+
+#: 
+msgid "Verified In Person"
+msgstr "ప్రత్యక్షంగా ధృవీకరించబడింది"
+
+#: 
+msgid "Backup archive does not contain a database"
+msgstr "బ్యాకప్ ఆర్కైవ్‌లో డేటాబేస్ లేదు"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "డేటాబేస్‌లో సేవ్ చేసేటప్పుడు వినియోగదారు నమోదు చేసిన zip/పోస్ట్‌కోడ్‌లను పెద్ద అక్షరాలలో మార్చండి."
+
+#: 
+msgid "Used to end a letter before Signer"
+msgstr "సంతకందారుకు ముందు లేఖను ముగించడానికి ఉపయోగించబడుతుంది"
+
+#. Context: locales
+#: 
+msgid "English - United States"
+msgstr "ఆంగ్లం - సంయుక్త రాష్ట్రాలు"
+
+#. Context: locales
+#: 
+msgid "English - Canada"
+msgstr "ఆంగ్లం - కెనడా"
+
+#. Context: locales
+#: 
+msgid "English - Australia"
+msgstr "ఆంగ్లం - ఆస్ట్రేలియా"
+
+#. Context: locales
+#: 
+msgid "English - Great Britain"
+msgstr "ఆంగ్లం - గ్రేట్ బ్రిటన్"
+
+#. Context: locales
+#: 
+msgid "German - Germany"
+msgstr "జర్మన్ - జర్మనీ"
+
+#. Context: locales
+#: 
+msgid "Spanish - Spain"
+msgstr "స్పానిష్ - స్పెయిన్"
+
+#. Context: locales
+#: 
+msgid "French - France"
+msgstr "ఫ్రెంచ్ - ఫ్రాన్స్"
+
+#. Context: locales
+#: 
+msgid "Hungarian"
+msgstr "హంగేరియన్"
+
+#. Context: locales
+#: 
+msgid "Italian - Italy"
+msgstr "ఇటాలియన్ - ఇటలీ"
+
+#. Context: locales
+#: 
+msgid "Norwegian"
+msgstr "నార్వేజియన్"
+
+#. Context: locales
+#: 
+msgid "Dutch - Netherlands"
+msgstr "డచ్ - నెదర్లాండ్స్"
+
+#. Context: locales
+#: 
+msgid "Polish"
+msgstr "పోలిష్"
+
+#. Context: locales
+#: 
+msgid "Portuguese - Brazil"
+msgstr "పోర్చుగీస్ - బ్రెజిల్"
+
+#. Context: locales
+#: 
+msgid "Romanian - Romania"
+msgstr "రొమేనియన్ - రొమేనియా"
+
+#. Context: locales
+#: 
+msgid "Russian"
+msgstr "రష్యన్"
+
+#. Context: locales
+#: 
+msgid "Sami (Northern) (Sweden)"
+msgstr "సామి (ఉత్తర) (స్వీడన్)"
+
+#. Context: locales
+#: 
+msgid "Albanian"
+msgstr "అల్బేనియన్"
+
+#. Context: locales
+#: 
+msgid "Vietnamese"
+msgstr "వియత్నామీస్"
+
+#. Context: locales
+#: 
+msgid "Chinese - China"
+msgstr "చైనీస్ - చైనా"
+
+#. Context: locales
+#: 
+msgid "Chinese - Taiwan"
+msgstr "చైనీస్ - తైవాన్"
+
+#: 
+msgid "Maximum upload size"
+msgstr "గరిష్ఠ అప్‌లోడ్ పరిమాణం"
+
+#: 
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr "ఎంచుకున్న ఫైల్ ఈ సర్వర్ యొక్క గరిష్ఠ అప్‌లోడ్ పరిమాణాన్ని మించిపోయింది"
+
+#: 
+msgid "Failed"
+msgstr "విఫలమైంది"
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "చర్చి చెకింగ్ ఖాతా సంఖ్య"
+
+#: 
+msgid "Marked the Family as Inactive"
+msgstr "కుటుంబాన్ని నిష్క్రియంగా గుర్తించబడింది"
+
+#: 
+msgid "Marked the Family as Active"
+msgstr "కుటుంబాన్ని క్రియాశీలంగా గుర్తించబడింది"
+
+#: 
+msgid "families"
+msgstr "కుటుంబాలు"
+
+#: 
+msgid "Deposit ticket type.  QBDT - Quickbooks"
+msgstr "డిపాజిట్ టిక్కెట్ రకం. QBDT - Quickbooks"
+
+#: 
+msgid "Financial Settings"
+msgstr "ఆర్థిక సెట్టింగ్‌లు"
+
+#: 
+msgid "An invalid configuration name has been requested"
+msgstr "చెల్లని కాన్ఫిగరేషన్ పేరు అభ్యర్థించబడింది"
+
+#: 
+msgid "An invalid configuration id has been requested"
+msgstr "చెల్లని కాన్ఫిగరేషన్ ID అభ్యర్థించబడింది"
+
+#: 
+msgid "Profile Image uploaded"
+msgstr "ప్రొఫైల్ చిత్రం అప్‌లోడ్ చేయబడింది"
+
+#: 
+msgid "payment(s)?"
+msgstr "చెల్లింపు(లు)?"
+
+#: 
+msgid "Confirm Deactivation"
+msgstr "నిష్క్రియతను నిర్ధారించండి"
+
+#: 
+msgid "Confirm Activation"
+msgstr "క్రియాశీలతను నిర్ధారించండి"
+
+#: 
+msgid "Please confirm deactivation of family"
+msgstr "కుటుంబాన్ని నిష్క్రియం చేయడాన్ని దయచేసి నిర్ధారించండి"
+
+#: 
+msgid "Please confirm activation of family"
+msgstr "కుటుంబాన్ని క్రియాశీలం చేయడాన్ని దయచేసి నిర్ధారించండి"
+
+#: 
+msgid "Show neighbors with these classifications"
+msgstr "ఈ వర్గీకరణలతో పొరుగువారిని చూపించు"
+
+#: 
+msgid "Please select a Family."
+msgstr "దయచేసి ఒక కుటుంబాన్ని ఎంచుకోండి."
+
+#: 
+msgid "Coordinate database file name"
+msgstr "కోఆర్డినేట్ డేటాబేస్ ఫైల్ పేరు"
+
+#: 
+msgid "select an option"
+msgstr "ఒక ఎంపికను ఎంచుకోండి"
+
+#: 
+msgid "Direct me"
+msgstr "నన్ను నడిపించు"
+
+#: 
+msgid "Your cart is empty"
+msgstr "మీ కార్ట్ ఖాళీగా ఉంది"
+
+#: 
+msgid "The record could not be found."
+msgstr "రికార్డు కనుగొనబడలేదు."
+
+#: 
+msgid "The property is already assigned."
+msgstr "ఆస్తి ఇప్పటికే కేటాయించబడింది."
+
+#: 
+msgid "The property is successfully assigned."
+msgstr "ఆస్తి విజయవంతంగా కేటాయించబడింది."
+
+#: 
+msgid "The property could not be assigned."
+msgstr "ఆస్తిని కేటాయించడం సాధ్యపడలేదు."
+
+#: 
+msgid "The property is successfully unassigned."
+msgstr "ఆస్తి విజయవంతంగా తీసివేయబడింది."
+
+#: 
+msgid "The property could not be unassigned."
+msgstr "ఆస్తిని తీసివేయడం సాధ్యపడలేదు."
+
+#: 
+msgid "Select event"
+msgstr "సంఘటనను ఎంచుకోండి"
+
+#: 
+msgid "Person has been already checked in for this event"
+msgstr "వ్యక్తి ఈ సంఘటనకు ఇప్పటికే చెక్ఇన్ చేయబడ్డారు"
+
+#: 
+msgid "CheckOut Person"
+msgstr "వ్యక్తిని చెక్‌అవుట్ చేయండి"
+
+#: 
+msgid "Delete Checkin in Entry"
+msgstr "చెక్ఇన్ నమోదును తొలగించండి"
+
+#: 
+msgid "Adult Checking Out Person"
+msgstr "పెద్దవారు వ్యక్తిని చెక్‌అవుట్ చేస్తున్నారు"
+
+#: 
+msgid "Text before name in emails/reports"
+msgstr "ఇమెయిల్‌లు/నివేదికలలో పేరుకు ముందు వచనం"
+
+#: 
+msgid "Display bill counts on deposit slip"
+msgstr "డిపాజిట్ స్లిప్‌పై బిల్లు లెక్కలు చూపించు"
+
+#: 
+msgid "Your Account was Deleted"
+msgstr "మీ ఖాతా తొలగించబడింది"
+
+#: 
+msgid "Your ChurchCRM Account was Deleted."
+msgstr "మీ ChurchCRM ఖాతా తొలగించబడింది."
+
+#: 
+msgid "Account Locked"
+msgstr "ఖాతా లాక్ చేయబడింది"
+
+#: 
+msgid "Your New Account"
+msgstr "మీ కొత్త ఖాతా"
 
 #: 
 msgid "Password Reset"
 msgstr "పాస్‌వర్డ్ రీసెట్"
 
 #: 
+msgid "Account Unlocked"
+msgstr "ఖాతా అన్‌లాక్ చేయబడింది"
+
+#: 
+msgid "Part"
+msgstr "భాగం"
+
+#: 
+msgid "View Photo"
+msgstr "ఫోటో చూడండి"
+
+#: 
+msgid "Status"
+msgstr "స్థితి"
+
+#: 
+msgid "Email export"
+msgstr "ఇమెయిల్ ఎగుమతి"
+
+#: 
+msgid "Include"
+msgstr "చేర్చండి"
+
+#: 
+msgid "Exclude"
+msgstr "మినహాయించండి"
+
+#: 
+msgid "View Cart"
+msgstr "కార్ట్ చూడండి"
+
+#: 
 msgid "Your Cart is Empty"
 msgstr "మీ కార్ట్ ఖాళీగా ఉంది"
+
+#: 
+msgid "Legend"
+msgstr "శీర్షిక వివరణ"
+
+#: 
+msgid "assigned"
+msgstr "కేటాయించబడింది"
+
+#: 
+msgid "Showing students with birthdays in"
+msgstr "పుట్టినరోజులు ఉన్న విద్యార్థులను చూపిస్తున్నారు"
+
+#: 
+msgid "Actions"
+msgstr "చర్యలు"
+
+#: 
+msgid "Action Confirmation"
+msgstr "చర్య నిర్ధారణ"
+
+#: 
+msgid "Please confirm reset failed login count"
+msgstr "విఫలమైన లాగిన్ లెక్కను రీసెట్ చేయడాన్ని దయచేసి నిర్ధారించండి"
+
+#: 
+msgid "SMTP Server timeout in sec"
+msgstr "SMTP సర్వర్ టైమ్‌అవుట్ సెకన్లలో"
+
+#: 
+msgid "Exclude Inactive Families"
+msgstr "నిష్క్రియ కుటుంబాలను మినహాయించండి"
+
+#: 
+msgid "The role is already assigned."
+msgstr "పాత్ర ఇప్పటికే కేటాయించబడింది."
+
+#: 
+msgid "The role is successfully assigned."
+msgstr "పాత్ర విజయవంతంగా కేటాయించబడింది."
+
+#: 
+msgid "The role could not be assigned."
+msgstr "పాత్రను కేటాయించడం సాధ్యపడలేదు."
+
+#: 
+msgid "Your ChurchCRM account was locked."
+msgstr "మీ ChurchCRM ఖాతా లాక్ చేయబడింది."
+
+#: 
+msgid "A ChurchCRM account was created for you"
+msgstr "మీ కోసం ఒక ChurchCRM ఖాతా సృష్టించబడింది"
+
+#: 
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr "ఈ లింక్‌పై క్లిక్ చేయడం ద్వారా మీ ChurchCRM పాస్‌వర్డ్‌ను రీసెట్ చేయవచ్చు"
+
+#: 
+msgid "Your ChurchCRM account was unlocked."
+msgstr "మీ ChurchCRM ఖాతా అన్‌లాక్ చేయబడింది."
+
+#: 
+msgid "system user created"
+msgstr "సిస్టమ్ వినియోగదారు సృష్టించబడ్డారు"
+
+#: 
+msgid "system user updated"
+msgstr "సిస్టమ్ వినియోగదారు నవీకరించబడ్డారు"
+
+#: 
+msgid "system user deleted"
+msgstr "సిస్టమ్ వినియోగదారు తొలగించబడ్డారు"
+
+#: 
+msgid "system user password reset"
+msgstr "సిస్టమ్ వినియోగదారు పాస్‌వర్డ్ రీసెట్ చేయబడింది"
+
+#: 
+msgid "system user changed password"
+msgstr "సిస్టమ్ వినియోగదారు పాస్‌వర్డ్ మార్చారు"
+
+#: 
+msgid "system user password changed by admin"
+msgstr "అడ్మిన్ ద్వారా సిస్టమ్ వినియోగదారు పాస్‌వర్డ్ మార్చబడింది"
+
+#: 
+msgid "system user login reset"
+msgstr "సిస్టమ్ వినియోగదారు లాగిన్ రీసెట్ చేయబడింది"
+
+#: 
+msgid "Families without Geo Info"
+msgstr "భౌగోళిక సమాచారం లేని కుటుంబాలు"
+
+#: 
+msgid "Notification for"
+msgstr "కోసం నోటిఫికేషన్"
+
+#: 
+msgid "DEBUG"
+msgstr "డీబగ్"
+
+#: 
+msgid "INFO"
+msgstr "సమాచారం"
+
+#: 
+msgid "NOTICE"
+msgstr "నోటీసు"
+
+#: 
+msgid "WARNING"
+msgstr "హెచ్చరిక"
+
+#: 
+msgid "ERROR"
+msgstr "లోపం"
+
+#: 
+msgid "CRITICAL"
+msgstr "క్లిష్టమైన"
+
+#: 
+msgid "ALERT"
+msgstr "అప్రమత్తం"
+
+#: 
+msgid "EMERGENCY"
+msgstr "అత్యవసర పరిస్థితి"
+
+#: 
+msgid "Title FirstName MiddleName LastName"
+msgstr "శీర్షిక మొదటి పేరు మధ్య పేరు చివరి పేరు"
+
+#: 
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr "శీర్షిక మొదటి పేరు మధ్య ఆద్యక్షరం. చివరి పేరు"
+
+#: 
+msgid "LastName, Title FirstName MiddleName"
+msgstr "చివరి పేరు, శీర్షిక మొదటి పేరు మధ్య పేరు"
+
+#: 
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr "చివరి పేరు, శీర్షిక మొదటి పేరు మధ్య ఆద్యక్షరం"
+
+#: 
+msgid "FirstName MiddleName LastName"
+msgstr "మొదటి పేరు మధ్య పేరు చివరి పేరు"
+
+#: 
+msgid "Title FirstName LastName"
+msgstr "శీర్షిక మొదటి పేరు చివరి పేరు"
+
+#: 
+msgid "LastName, Title FirstName"
+msgstr "చివరి పేరు, శీర్షిక మొదటి పేరు"
+
+#: 
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr "వ్రాయవలసిన ఈవెంట్ లాగ్ తీవ్రత, ORM మరియు యాప్ లాగ్‌లు ఉపయోగిస్తాయి"
+
+#: 
+msgid "Time zone"
+msgstr "సమయ మండలం"
+
+#: 
+msgid "KioskVisibilityTimestamp"
+msgstr "KioskVisibilityTimestamp"
+
+#: 
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr "లాగిన్ స్క్రీన్‌పై పాస్‌వర్డ్ మర్చిపోయారు లింక్‌ను చూపించు/దాచు"
+
+#: 
+msgid "Backup"
+msgstr "బ్యాకప్"
+
+#: 
+msgid "Guardian(s) of"
+msgstr "యొక్క సంరక్షకుడు/సంరక్షకులు"
+
+#: 
+msgid "Your ChurchCRM password has been changed"
+msgstr "మీ ChurchCRM పాస్‌వర్డ్ మార్చబడింది"
+
+#: 
+msgid "Password Reset Link"
+msgstr "పాస్‌వర్డ్ రీసెట్ లింక్"
 
 #: 
 msgid "Reset Password"
 msgstr "పాస్‌వర్డ్ రీసెట్ చేయండి"
 
 #: 
+msgid "Reset your password"
+msgstr "మీ పాస్‌వర్డ్‌ను రీసెట్ చేయండి"
+
+#: 
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr "క్షమించండి, ఈ సమయంలో మీ అభ్యర్థనను ప్రాసెస్ చేయడం సాధ్యం కావడం లేదు."
+
+#: 
 msgid "Kiosk Manager"
 msgstr "కియోస్క్ మేనేజర్"
+
+#: 
+msgid "Report an issue"
+msgstr "సమస్యను నివేదించండి"
+
+#: 
+msgid "Enable New Kiosk Registration"
+msgstr "కొత్త కియోస్క్ నమోదును ప్రారంభించండి"
+
+#: 
+msgid "Active Kiosks"
+msgstr "క్రియాశీల కియోస్కులు"
+
+#: 
+msgid "I forgot my password"
+msgstr "నేను పాస్‌వర్డ్ మర్చిపోయాను"
+
+#: 
+msgid "Attendees Checked In"
+msgstr "హాజరైనవారు చెక్ఇన్ చేయబడ్డారు"
+
+#: 
+msgid "Text Cart"
+msgstr "వచన కార్ట్"
+
+#: 
+msgid "Your Church's Website"
+msgstr "మీ చర్చి వెబ్‌సైట్"
+
+#: 
+msgid "Self Verification"
+msgstr "స్వయం ధృవీకరణ"
+
+#: 
+msgid "Check Number"
+msgstr "చెక్ నంబర్"
+
+#: 
+msgid "Details"
+msgstr "వివరాలు"
+
+#: 
+msgid "Verification email sent"
+msgstr "ధృవీకరణ ఇమెయిల్ పంపబడింది"
+
+#: 
+msgid "Confirm Enable Group Specific Properties"
+msgstr "సమూహ నిర్దిష్ట లక్షణాలను ప్రారంభించడాన్ని నిర్ధారించండి"
+
+#: 
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr "ఇది ఈ సమూహానికి సమూహ-నిర్దిష్ట లక్షణాల పట్టికను సృష్టిస్తుంది. అప్పుడు సమూహ-నిర్దిష్ట లక్షణాల ఫారమ్ ఎడిటర్‌తో అవసరమైన లక్షణాలను జోడించాలి."
+
+#: 
+msgid "Confirm Disable Group Specific Properties"
+msgstr "సమూహ నిర్దిష్ట లక్షణాలను నిలిపివేయడాన్ని నిర్ధారించండి"
+
+#: 
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr "మీరు నిజంగా సమూహ-నిర్దిష్ట వ్యక్తి లక్షణాలను తొలగించాలనుకుంటున్నారా? అన్ని సమూహ సభ్యుల లక్షణాల డేటా పోతుంది!"
+
+#: 
+msgid "Role Name"
+msgstr "పాత్ర పేరు"
+
+#: 
+msgid "Sequence"
+msgstr "క్రమం"
+
+#: 
+msgid "Checking Cart Status"
+msgstr "కార్ట్ స్థితిని తనిఖీ చేస్తున్నాం"
+
+#: 
+msgid "All members of this group are in the cart"
+msgstr "ఈ సమూహంలోని అందరు సభ్యులు కార్ట్‌లో ఉన్నారు"
+
+#: 
+msgid "Remove all"
+msgstr "అన్నింటినీ తొలగించండి"
+
+#: 
+msgid "Not all members of this group are in the cart"
+msgstr "ఈ సమూహంలోని అందరు సభ్యులు కార్ట్‌లో లేరు"
+
+#: 
+msgid "Are you sure you want to remove the selected group members?"
+msgstr "ఎంచుకున్న సమూహ సభ్యులను తొలగించాలని మీకు నిజంగా నిశ్చయంగా ఉందా?"
+
+#: 
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr "ఈ వ్యక్తిని తొలగించాలనుకుంటున్నారా? ఇది రద్దు చేయడం సాధ్యం కాదు."
+
+#: 
+msgid "Are you sure you want to unassign this property?"
+msgstr "ఈ లక్షణాన్ని తీసివేయాలని మీకు నిజంగా నిశ్చయంగా ఉందా?"
+
+#: 
+msgid "Select a family"
+msgstr "ఒక కుటుంబాన్ని ఎంచుకోండి"
 
 #: 
 msgid "Release Notes"
 msgstr "విడుదల నోట్స్"
 
 #: 
+msgid "Move"
+msgstr "తరలించు"
+
+#. Context: locales
+#: 
+msgid "Arabic - Egypt"
+msgstr "అరబిక్ - ఈజిప్ట్"
+
+#. Context: locales
+#: 
+msgid "Thai"
+msgstr "థాయ్"
+
+#: 
+msgid "Self Register"
+msgstr "స్వయంగా నమోదు చేయండి"
+
+#: 
+msgid "List families that were created via self registration."
+msgstr "స్వయం నమోదు ద్వారా సృష్టించబడిన కుటుంబాలను జాబితా చేయండి."
+
+#: 
+msgid "Pending Self Verify"
+msgstr "స్వయం ధృవీకరణ పెండింగ్‌లో ఉంది"
+
+#: 
+msgid "Self Verify"
+msgstr "స్వయంగా ధృవీకరించండి"
+
+#. Context: locales
+#: 
+msgid "Indonesian - Indonesia"
+msgstr "ఇండోనేషియన్ - ఇండోనేషియా"
+
+#: 
+msgid "records(s) successfully added to selected Group."
+msgstr "రికార్డు(లు) ఎంచుకున్న సమూహానికి విజయవంతంగా జోడించబడ్డాయి."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr "తేదీ-పికర్‌లో తేదీ నిర్వచించడానికి, డిఫాల్ట్‌గా: yyyy-mm-dd, ఫ్రెంచ్‌లో: dd/mm/yyyy ఉదాహరణకు."
+
+#: 
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr "తేదీ-పికర్‌లో తేదీ నిర్వచించడానికి, డిఫాల్ట్‌గా: Y-m-d, ఫ్రెంచ్‌లో: d/m/Y ఉదాహరణకు."
+
+#: 
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr "కొత్త కుటుంబం లేదా వ్యక్తి జోడించినప్పుడు నోటిఫై చేయవలసిన వ్యక్తుల PersonIDs ల కామా వేరు చేయబడిన జాబితా"
+
+#: 
+msgid "Allow unauthenticated reads of events from the external calendar API"
+msgstr "బాహ్య క్యాలెండర్ API నుండి సంఘటనల అనధికారిక పఠనాన్ని అనుమతించండి"
+
+#: 
+msgid "New Person Added"
+msgstr "కొత్త వ్యక్తి జోడించబడ్డారు"
+
+#: 
+msgid "New Family Added"
+msgstr "కొత్త కుటుంబం జోడించబడింది"
+
+#: 
+msgid "Church Greeter"
+msgstr "చర్చి స్వాగతకర్త"
+
+#: 
+msgid "External Calendar API is disabled"
+msgstr "బాహ్య క్యాలెండర్ API నిలిపివేయబడింది"
+
+#: 
+msgid "Special Group Settings : Sunday School Type"
+msgstr "ప్రత్యేక సమూహ సెట్టింగ్‌లు: ఆదివారం పాఠశాల రకం"
+
+#: 
+msgid "Sunday School group can't be modified, only in this two cases :"
+msgstr "ఆదివారం పాఠశాల సమూహాన్ని సవరించడం సాధ్యం కాదు, కేవలం ఈ రెండు సందర్భాలలో మాత్రమే:"
+
+#: 
+msgid "You can create/delete sunday school group. "
+msgstr "మీరు ఆదివారం పాఠశాల సమూహాన్ని సృష్టించవచ్చు/తొలగించవచ్చు."
+
+#: 
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr "కొత్త పాత్రలను జోడించవచ్చు, కానీ విద్యార్థి మరియు ఉపాధ్యాయుడు పాత్రలను సవరించడం లేదా పేరు మార్చడం చేయలేరు."
+
+#: 
 msgid "E"
 msgstr "తూర్పు"
+
+#: 
+msgid "ENE"
+msgstr "తూర్పు-ఈశాన్యం"
+
+#: 
+msgid "ESE"
+msgstr "తూర్పు-ఆగ్నేయం"
 
 #: 
 msgid "N"
 msgstr "ఉత్తరం"
 
 #: 
+msgid "NE"
+msgstr "ఈశాన్యం"
+
+#: 
+msgid "NNE"
+msgstr "ఉత్తర-ఈశాన్యం"
+
+#: 
+msgid "NNW"
+msgstr "ఉత్తర-వాయవ్యం"
+
+#: 
+msgid "NW"
+msgstr "వాయవ్యం"
+
+#: 
 msgid "S"
 msgstr "దక్షిణం"
+
+#: 
+msgid "SE"
+msgstr "ఆగ్నేయం"
+
+#: 
+msgid "SSW"
+msgstr "దక్షిణ-నైఋతి"
+
+#: 
+msgid "SW"
+msgstr "నైఋతి"
 
 #: 
 msgid "W"
 msgstr "పశ్చిమం"
 
 #: 
+msgid "WNW"
+msgstr "పశ్చిమ-వాయవ్యం"
+
+#: 
+msgid "WSW"
+msgstr "పశ్చిమ-నైఋతి"
+
+#: 
+msgid "Search Family"
+msgstr "కుటుంబాన్ని వెతకండి"
+
+#: 
+msgid "Show Family Head of House Names"
+msgstr "కుటుంబ ఇంటి అధిపతి పేర్లు చూపించు"
+
+#: 
+msgid "Search Groups"
+msgstr "సమూహాలను వెతకండి"
+
+#: 
+msgid "Search Deposits"
+msgstr "డిపాజిట్‌లను వెతకండి"
+
+#: 
+msgid "Search Payments"
+msgstr "చెల్లింపులను వెతకండి"
+
+#: 
+msgid "Quick Search"
+msgstr "శీఘ్ర వెతుకులాట"
+
+#: 
+msgid "Search Addresses"
+msgstr "చిరునామాలను వెతకండి"
+
+#: 
+msgid "Maximum number of Families"
+msgstr "కుటుంబాల గరిష్ఠ సంఖ్య"
+
+#: 
+msgid "Maximum number of Family H.O.H Names"
+msgstr "కుటుంబ ఇంటి అధిపతి పేర్ల గరిష్ఠ సంఖ్య"
+
+#: 
+msgid "Maximum number of Groups"
+msgstr "సమూహాల గరిష్ఠ సంఖ్య"
+
+#: 
+msgid "Maximum number of Deposits"
+msgstr "డిపాజిట్‌ల గరిష్ఠ సంఖ్య"
+
+#: 
+msgid "Maximum number of Payments"
+msgstr "చెల్లింపుల గరిష్ఠ సంఖ్య"
+
+#: 
+msgid "Maximum number of Addresses"
+msgstr "చిరునామాల గరిష్ఠ సంఖ్య"
+
+#: 
+msgid "Add Students"
+msgstr "విద్యార్థులను జోడించండి"
+
+#: 
+msgid "Edit this Class"
+msgstr "ఈ తరగతిని సవరించండి"
+
+#: 
 msgid "OK"
 msgstr "సరే"
+
+#: 
+msgid "Please select target Role for members"
+msgstr "సభ్యులకు లక్ష్య పాత్రను ఎంచుకోండి"
+
+#: 
+msgid "GroupID required for role selection prompt"
+msgstr "పాత్ర ఎంపిక ప్రాంప్ట్‌కు GroupID అవసరం"
+
+#: 
+msgid "Select Group and Role"
+msgstr "సమూహం మరియు పాత్రను ఎంచుకోండి"
+
+#: 
+msgid "Are you sure you want to remove this person's membership from"
+msgstr "మీరు నిజంగా ఈ వ్యక్తి సభ్యత్వాన్ని తొలగించాలనుకుంటున్నారా"
+
+#: 
+msgid "All Members"
+msgstr "అందరు సభ్యులు"
+
+#: 
+msgid "PhotoBook"
+msgstr "ఫోటో పుస్తకం"
+
+#: 
+msgid "With Photos"
+msgstr "ఫోటోలతో"
+
+#: 
+msgid "Create PhotoBook"
+msgstr "ఫోటో పుస్తకం సృష్టించండి"
+
+#: 
+msgid "SSE"
+msgstr "దక్షిణ-ఆగ్నేయం"
+
+#: 
+msgid "Recipient Naming Method"
+msgstr "గ్రాహకుడిని పేర్కొనే పద్ధతి"
+
+#: 
+msgid "Salutation Utility"
+msgstr "శుభాకాంక్ష యుటిలిటీ"
+
+#: 
+msgid "Add A Group Name"
+msgstr "ఒక సమూహ పేరు జోడించండి"
+
+#: 
+msgid "Default Name Group"
+msgstr "డిఫాల్ట్ పేరు సమూహం"
+
+#: 
+msgid "Group Role"
+msgstr "సమూహ పాత్ర"
+
+#: 
+msgid "Members from group"
+msgstr "సమూహం నుండి సభ్యులు"
+
+#: 
+msgid "Members to another group"
+msgstr "మరొక సమూహానికి సభ్యులు"
+
+#: 
+msgid "Members to cart"
+msgstr "కార్ట్‌కు సభ్యులు"
+
+#: 
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr "లేదా ఒక సమూహాన్ని సృష్టించి ఒకే చర్యలో కార్ట్‌ను జోడించండి"
+
+#: 
+msgid "Create Group + ADD Cart"
+msgstr "సమూహం సృష్టించు + కార్ట్ జోడించు"
+
+#: 
+msgid "Move Event"
+msgstr "సంఘటనను తరలించు"
+
+#: 
+msgid "Resize Event"
+msgstr "సంఘటన పరిమాణాన్ని మార్చండి"
+
+#: 
+msgid "Profile"
+msgstr "ప్రొఫైల్"
 
 #: 
 msgid "System Upgrade"
@@ -5268,10 +7028,6 @@ msgid "People who are configured to pay by credit card."
 msgstr "క్రెడిట్ కార్డ్ ద్వారా చెల్లించడానికి కాన్ఫిగర్ చేయబడిన వ్యక్తులు."
 
 #: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
-msgstr "పునరుద్ధరణలో భాగంగా, బాహ్య బ్యాకప్‌లు నిలిపివేయబడ్డాయి. మీరు ఆటోమేటిక్ బ్యాకప్‌లను కొనసాగించాలనుకుంటే, మీరు bEnableExternalBackupTarget సెట్టింగ్‌ను మాన్యువల్‌గా మళ్ళీ ప్రారంభించాలి."
-
-#: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
 msgstr "మునుపటి ఇంటెగ్రిటీ చెక్ పాస్ అయింది. అన్ని సిస్టమ్ ఫైల్ హ్యాష్‌లు ఊహించిన విలువలతో సరిపోలుతున్నాయి."
 
@@ -5282,10 +7038,6 @@ msgstr "ఇన్‌యాక్టివ్‌గా కనిపించవ�
 #: 
 msgid "MailChimp is not configured"
 msgstr "MailChimp కాన్ఫిగర్ కాలేదు"
-
-#: 
-msgid "Please update the MailChimp API key in:"
-msgstr "దయచేసి MailChimp API కీని అప్‌డేట్ చేయండి:"
 
 #. Context: locales
 #: 
