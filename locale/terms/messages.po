@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-22 05:30+0000\n"
+"POT-Creation-Date: 2026-02-23 00:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -964,9 +964,6 @@ msgstr ""
 msgid "Bid"
 msgstr ""
 
-msgid "Bing map API requires a unique key"
-msgstr ""
-
 msgid "Birth & Family"
 msgstr ""
 
@@ -1615,6 +1612,12 @@ msgstr ""
 
 #. Context: countries
 msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr ""
+
+msgid "Congregation Map"
+msgstr ""
+
+msgid "Congregation Map — Setup Required"
 msgstr ""
 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
@@ -3734,16 +3737,7 @@ msgstr ""
 msgid "Go to Login"
 msgstr ""
 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr ""
-
 msgid "Google Maps API Key used for Geocoding addresses"
-msgstr ""
-
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr ""
-
-msgid "Google Maps Zoom"
 msgstr ""
 
 msgid "Graphic"
@@ -4800,6 +4794,9 @@ msgstr ""
 msgid "Map Settings"
 msgstr ""
 
+msgid "Map Zoom Level"
+msgstr ""
+
 msgid "Map this group"
 msgstr ""
 
@@ -5015,9 +5012,6 @@ msgstr ""
 msgid "Missing"
 msgstr ""
 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr ""
-
 msgid "Missing Files"
 msgstr ""
 
@@ -5031,6 +5025,9 @@ msgid "Missing calendar access token"
 msgstr ""
 
 msgid "Missing event id"
+msgstr ""
+
+msgid "Missing families? Update coordinates to include them on the map."
 msgstr ""
 
 #. Context: query_qry
@@ -5215,9 +5212,6 @@ msgid "Name Tags"
 msgstr ""
 
 msgid "Name for New"
-msgstr ""
-
-msgid "Names of markers for Google Maps in order of classification"
 msgstr ""
 
 #. Context: countries
@@ -7062,9 +7056,6 @@ msgstr ""
 msgid "Select Gender"
 msgstr ""
 
-msgid "Select GeoCoder Provider"
-msgstr ""
-
 msgid "Select Group"
 msgstr ""
 
@@ -8232,7 +8223,7 @@ msgstr ""
 msgid "Unable To Begin Two Factor Authentication Enrollment"
 msgstr ""
 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgid "Unable to display map: church address has not been geocoded yet."
 msgstr ""
 
 msgid "Unable to load"
@@ -8335,6 +8326,9 @@ msgid "Update Package Details"
 msgstr ""
 
 msgid "Update Properties"
+msgstr ""
+
+msgid "Update church address in Settings."
 msgstr ""
 
 msgid "Update it to a valid URL that:"
@@ -8652,9 +8646,6 @@ msgid "View and manage system log files for debugging."
 msgstr ""
 
 msgid "View application logs. Click on a log file to view its contents."
-msgstr ""
-
-msgid "View on Map"
 msgstr ""
 
 msgid "View, Add and Edit Notes"
