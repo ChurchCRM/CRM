@@ -483,7 +483,7 @@ jobs:
         echo "Testing that server redirects to setup wizard (subdir)..."
         max_attempts=12
         attempt=1
-        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8080/churchcrm/ | grep -q "302\|200"; do
+        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/churchcrm/ | grep -q "302\|200"; do
           echo "Attempt $attempt/$max_attempts failed. Retrying in 5 seconds..."
           sleep 5
           attempt=$((attempt + 1))
@@ -500,7 +500,7 @@ jobs:
         fi
         
         echo "New system test server is responding (subdir)!"
-        curl -vvv http://127.0.0.1:8080/churchcrm/
+        curl -vvv http://127.0.0.1:8081/churchcrm/
 
     - name: Run Cypress Tests (Setup Wizard - Subdir)
       run: |
