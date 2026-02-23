@@ -11268,3 +11268,1219 @@ msgstr "Herstel Filters"
 msgid "Show only people with photos"
 msgstr "Wys slegs mense met foto's"
 
+#: 
+msgid "Checkout All"
+msgstr "Almal uitboek"
+
+#: 
+msgid "Expected"
+msgstr "Verwag"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Kon nie kiosk verwyder nie"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Gesinsbydrae per fiskale jaar"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Vind geregistreerde studente"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Fiskale jaar."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Groep geregistreerde studente"
+
+#: 
+msgid "Here"
+msgstr "Hier"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Ongeldige toewysingtipe"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Ongeldige persoon-ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Kiosk-registrasie gedeaktiveer"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kiosk nie gevind nie"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Koppel hierdie gebeurtenis aan 'n groep vir kiosk-inboekfunksionaliteit. Die groeplede sal op die kiosk verskyn."
+
+#: 
+msgid "Linked Group"
+msgstr "Gekoppelde groep"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Registrasie van nuwe kiosk-toestelle is tans gedeaktiveer. Kontak asseblief u stelseladministrateur om kiosk-registrasie te aktiveer."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Geen groep (Kies vir kiosk-inboek)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Niemand het nog ingeboek nie"
+
+#: 
+msgid "Person not found"
+msgstr "Persoon nie gevind nie"
+
+#: 
+msgid "Pickup Request"
+msgstr "Optelversoek"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Gaan asseblief so gou moontlik na die klaskamer."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Belofte-opsomming per gesinsnaam vir elke fonds vir die geselekteerde fiskale jaar"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Geregistreerde studente"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Die onderwyser het hierdie waarskuwing gestuur om"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Hierdie kiosk word die beste op 'n tablet in landskapmodus beskou vir 'n optimale inboek-ervaring."
+
+#: 
+msgid "Tip"
+msgstr "Wenk"
+
+#: 
+msgid "Try Again"
+msgstr "Probeer weer"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Komende verjaardae"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Wag om in te boek"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Wanneer geaktiveer, kan nuwe kiosk-toestelle vir 30 sekondes registreer."
+
+#: 
+msgid "Your child"
+msgstr "U kind"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "moet opgetel word van"
+
+#: 
+msgid "their classroom"
+msgstr "hul klaskamer"
+
+#: 
+msgid "All timezones match"
+msgstr "Alle tydsones stem ooreen"
+
+#: 
+msgid "Baseline"
+msgstr "Basislyn"
+
+#: 
+msgid "Browser"
+msgstr "Blaaier"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Blaaier verskil van stelselkonfigurasie – datums kan verkeerd vir hierdie gebruiker vertoon."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Kan nie na ChurchCRM-installasiegids skryf nie. Maak asseblief seker dat die webbediener skryfregte het."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Tydsones word vergelyk..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Bestemmingsgids bestaan nie. Verifieer asseblief dat ChurchCRM korrek geïnstalleer is."
+
+#: 
+msgid "Does not match system config"
+msgstr "Stem nie ooreen met stelselkonfigurasie nie"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Afgelaaide vrystellingslêer is leeg. Dit kan wees as gevolg van netwerkprobleme of GitHub-spoedbeperking. Probeer asseblief later weer."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Onttrekking voltooi maar opgraderingslêers nie gevind nie. Die opgraderingsargief kan beskadig wees."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Kon nie opgradering toepas nie. Kyk asseblief die bedienerloglêers vir besonderhede."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Kon nie opgraderingsgids skep nie. Kyk asseblief lêerregte."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Kon nie die vrystellingslêer van GitHub aflaai na verskeie pogings nie. Kyk asseblief u bediener se internetverbinding en probeer weer."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Kon nie opgraderingsargief onttrek nie. Kyk asseblief skyf-spasie en lêerregte."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Kon nie opgraderingsargief oopmaak nie. Die afgelaaide lêer kan beskadig wees."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Kon nie die afgelaaide vrystellingslêer stoor nie. Kyk asseblief skyf-spasie en regte."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Ongeldige datumformaat in beginparameter"
+
+#: 
+msgid "Mismatch"
+msgstr "Wanpassing"
+
+#: 
+msgid "Not set"
+msgstr "Nie ingestel nie"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP aktief"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Brondgids bestaan nie. Die opgraderingsargief is moontlik nie korrek onttrek nie. Kyk asseblief lêerregte en skyf-spasie."
+
+#: 
+msgid "System Config"
+msgstr "Stelselkonfigurasie"
+
+#: 
+msgid "Timezone Information"
+msgstr "Tydsone-inligting"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Tydsone-wanpassing opgespoor"
+
+#: 
+msgid "mismatch detected"
+msgstr "wanpassing opgespoor"
+
+#: 
+msgid "mismatches detected"
+msgstr "wanpassings opgespoor"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d uur"
+msgstr[1] "%d uur"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "Oor WebDAV-rugsteune"
+
+#: 
+msgid "Add Link"
+msgstr "Voeg skakel by"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Voeg 'n ekstra laag sekuriteit by u rekening"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Voeg pasgemaakte eksterne skakels by die navigasiekieslys."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Laat selfondertekende sertifikate toe"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Fout het voorgekom met die verwerking van die inprop-versoek"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Is u seker u wil tweefaktor-verifikasie deaktiveer? U rekening sal minder veilig wees."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "As deel van die herstel is eksterne rugsteune gedeaktiveer. As u outomatiese rugsteune wil voortsit, herinstalleer die Externe Rugsteun-inprop in Admin > Inproppe."
+
+#: 
+msgid "Audiences"
+msgstr "Teikengroepe"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Verifikasie misluk. Kyk asseblief gebruikersnaam en wagwoord."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Outo-rugsteun-interval"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Rugsteun outomaties u ChurchCRM-databasis na eksterne wolkberging via WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Gemiddelde klikkoers"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Gemiddelde oopkoers"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Terug na dashboard"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Rugsteun geskep maar kon nie na afgeleë bediener kopieer nie"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Rugsteun nou na WebDAV"
+
+#: 
+msgid "Before You Start"
+msgstr "Voor u begin"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Blaaier se taalvoorkeur opgespoor"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "CRM-lede nie geinteken nie"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Veldtogte gestuur"
+
+#: 
+msgid "Can't scan?"
+msgstr "Kan nie skandeer nie?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Verander u taalinstelling"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM ondersteun 'n inprop-argitektuur vir die uitbreiding van funksionaliteit."
+
+#: 
+msgid "Cleaned"
+msgstr "Skoongemaak"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Klik die knoppie hieronder om u WebDAV-verbindingsinstellings te toets."
+
+#: 
+msgid "Community Plugins"
+msgstr "Gemeenskapsinproppe"
+
+#: 
+msgid "Community plugins"
+msgstr "Gemeenskapsinproppe"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Konfigureer eksterne rugsteun"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Konfigureer MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Konfigureer hierdie instellings in die"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Konfigureer hierdie inprop om outomaties u ChurchCRM-databasis te rugsteun na WebDAV-versoenbare wolkbergingsdienste soos Nextcloud, ownCloud, of enige WebDAV-bediener. Rugsteune word tydens oordrag versleutel via HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Gekonfigureer"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Bevestig met 'n kode van u verifikasie-app"
+
+#: 
+msgid "Connected"
+msgstr "Verbind"
+
+#: 
+msgid "Connection failed"
+msgstr "Verbinding misluk"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Verbinding misluk met HTTP-kode"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Verbinding suksesvol! WebDAV-eindpunt is toeganklik."
+
+#: 
+msgid "Connection test failed"
+msgstr "Verbindingstoets misluk"
+
+#: 
+msgid "Core Plugins"
+msgstr "Kerninproppe"
+
+#: 
+msgid "Core plugins"
+msgstr "Kerninproppe"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Skep nou 'n rugsteun en laai dit op na u WebDAV-bediener."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Skep 'n teikengroep in MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Gepasmaak"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Pasgemaakte kieslysskakel"
+
+#: 
+msgid "Default Image Style"
+msgstr "Verstekbeeldstyl"
+
+#: 
+msgid "Default List ID"
+msgstr "Versteklys-ID"
+
+#: 
+msgid "Disable"
+msgstr "Deaktiveer"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Deaktiveer inprop"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Deaktiveer tweefaktor-verifikasie"
+
+#: 
+msgid "Dismiss"
+msgstr "Verwerp"
+
+#: 
+msgid "Done"
+msgstr "Klaar"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164-formaat, bv. +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Elke inprop benodig 'n"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Elke keer as u aanmeld, moet u bevestig met 'n kode van u verifikasie-app"
+
+#: 
+msgid "Email Addresses"
+msgstr "E-posadresse"
+
+#: 
+msgid "Enable"
+msgstr "Aktiveer"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Aktiveer eksterne rugsteun-inprop"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Aktiveer inprop"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Aktiveer tweefaktor-verifikasie"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Aktiveer die Externe Rugsteun-inprop vir WebDAV-wolkberging."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Aktiveer dit slegs vir plaaslike netwerkbedieners met selfondertekende SSL-sertifikate. Deaktiveer sertifikaatverifikasie."
+
+#: 
+msgid "Endpoint URL"
+msgstr "Eindpunt-URL"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Voer die 6-syfer kode van u verifikasie-app in"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Voer u gebruikersnaam en wagwoord soos gewoonlik in"
+
+#: 
+msgid "External Backup"
+msgstr "Eksterne rugsteun"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Externe rugsteun (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Externe rugsteuninstellings"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "Externe rugsteun-inprop is geaktiveer maar nie gekonfigureer nie."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "Externe rugsteun-inprop is nie gekonfigureer nie. Konfigureer asseblief WebDAV-instellings in die inprop."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "Externe rugsteun-inprop is nie geaktiveer nie. Aktiveer en konfigureer dit asseblief in Inpropbestuur."
+
+#: 
+msgid "Failed to create link"
+msgstr "Kon nie skakel skep nie"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Kon nie skakel verwyder nie"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Kon nie inprop deaktiveer nie"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Kon nie inprop aktiveer nie"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Kon nie inpropbesonderhede kry nie"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Kon nie inproppe lys nie"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Kon nie instellings herstel nie"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Kon nie SMS stuur nie"
+
+#: 
+msgid "Family Status"
+msgstr "Gesinstatus"
+
+#: 
+msgid "Family not found"
+msgstr "Gesin nie gevind nie"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Vind in MailChimp: Teikengroep > Instellings > Teikengroepnaam en versteke > Teikengroep-ID"
+
+#: 
+msgid "From Phone Number"
+msgstr "Van telefoonnommer"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "Van dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "GA4-metings-ID"
+
+#: 
+msgid "Generate new code"
+msgstr "Genereer nuwe kode"
+
+#: 
+msgid "Get Started"
+msgstr "Begin"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Kry u API-sleutel van MailChimp: Rekeninginstellings > Ekstras > API-sleutels"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Hou u verifikasie-app gereed (Google Authenticator, Microsoft Authenticator, Authy, ens.)"
+
+#: 
+msgid "Help"
+msgstr "Hulp"
+
+#: 
+msgid "Id"
+msgstr "ID"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Beeld getoon wanneer geen Gravatar bestaan vir die e-posadres nie"
+
+#: 
+msgid "Important"
+msgstr "Belangrik"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Installeer inproppe deur hulle te plaas in"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Ongeldige kode. Probeer asseblief weer."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "Ongeldige eindpunt-URL. Moet 'n volledige URL wees wat begin met https:// (bv. https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Kiosk-toestel nie gevind nie"
+
+#: 
+msgid "Last Backup"
+msgstr "Laaste rugsteun"
+
+#: 
+msgid "Last Campaign"
+msgstr "Laaste veldtog"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Laaste intekenaar"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Laaste suksesvolle rugsteun"
+
+#: 
+msgid "Last campaign"
+msgstr "Laaste veldtog"
+
+#: 
+msgid "Link Name"
+msgstr "Skakelnaam"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Skakeladdres mag nie HTML-etikette bevat nie"
+
+#: 
+msgid "Link address is required"
+msgstr "Skakeladdres is vereis"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Skakel moet 'n geldige URL wees"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Skakel moet begin met http:// of https://"
+
+#: 
+msgid "Link not found"
+msgstr "Skakel nie gevind nie"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Herstelkodes word gelaai"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "MailChimp API-sleutel"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "MailChimp-dashboard"
+
+#: 
+msgid "Manage Links"
+msgstr "Bestuur skakels"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Bestuur tweefaktor-verifikasie"
+
+#: 
+msgid "Manual Backup"
+msgstr "Handmatige rugsteun"
+
+#: 
+msgid "Menu Links"
+msgstr "Kieslysskakel"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Kieslys naam mag nie HTML-etikette bevat nie"
+
+#: 
+msgid "Menu name is required"
+msgstr "Kieslys naam is vereis"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Kieslys naam moet 50 karakters of minder wees"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Kieslys naam moet ten minste 2 karakters wees"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Moet begin met http:// of https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Benodig konfigurasie"
+
+#: 
+msgid "Never"
+msgstr "Nooit"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Geen teikengroepe gevind nie"
+
+#: 
+msgid "No backups recorded"
+msgstr "Geen rugsteune aangeteken nie"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Geen gemeenskapsinproppe geïnstalleer nie"
+
+#: 
+msgid "No core plugins found"
+msgstr "Geen kerninproppe gevind nie"
+
+#: 
+msgid "No settings provided"
+msgstr "Geen instellings verskaf nie"
+
+#: 
+msgid "Not Configured"
+msgstr "Nie gekonfigureer nie"
+
+#: 
+msgid "Not in CRM"
+msgstr "Nie in CRM nie"
+
+#: 
+msgid "One-Time Code"
+msgstr "Eenmalige kode"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Open MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Open u verifikasie-app en skandeer hierdie QR-kode"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "OpenLP-bediener-URL"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Opsioneel – slegs vereis as OpenLP-verifikasie geaktiveer is"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Telefoonnommer en boodskap vereis"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Konfigureer asseblief eers eindpunt, gebruikersnaam en wagwoord."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Konfigureer asseblief die WebDAV-instellings voor u 'n afgeleë rugsteun skep."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Konfigureer asseblief die WebDAV-instellings voor u die verbinding toets."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Konfigureer asseblief u MailChimp API-sleutel om hierdie integrasie te gebruik."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Voer asseblief 'n skakelnaam in (2-50 karakters)"
+
+#: 
+msgid "Please try again"
+msgstr "Probeer asseblief weer"
+
+#: 
+msgid "Plugin Development"
+msgstr "Inprop-ontwikkeling"
+
+#: 
+msgid "Plugin Help"
+msgstr "Inprophulp"
+
+#: 
+msgid "Plugin Management"
+msgstr "Inpropbestuur"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Inpropinstellings"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Inprop kan nie gedeaktiveer word nie omdat ander inproppe daarvan afhang"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Inprop kan nie geaktiveer word nie weens afhanklikheids- of weergawevereistes"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Inprop suksesvol gedeaktiveer"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Inprop suksesvol geaktiveer"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Inprop kon nie laai nie"
+
+#: 
+msgid "Plugin not found"
+msgstr "Inprop nie gevind nie"
+
+#: 
+msgid "Plugins"
+msgstr "Inproppe"
+
+#: 
+msgid "Print"
+msgstr "Druk"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Ontvangers en boodskap vereis"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Herstelkodes"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Afgeleë rugsteun misluk. Kyk bedienerloglêers vir besonderhede."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS gestuur"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Stoor hierdie herstelkodes op 'n veilige plek. U kan hulle gebruik om toegang tot u rekening te kry as u toegang tot u verifikasie-app verloor."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Skandeer QR-kode"
+
+#: 
+msgid "Secure"
+msgstr "Veilig"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Stel verifikator op"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Instellings suksesvol herstel"
+
+#: 
+msgid "Setup Complete"
+msgstr "Opstelling voltooi"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Saamgestuur met ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Meld aan"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Sommige instellings kon nie herstel word nie"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Sommige instellings kon nie gestoor word nie"
+
+#: 
+msgid "Subscribers"
+msgstr "Intekenaars"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Intekenaars nie in CRM nie"
+
+#: 
+msgid "Test Connection"
+msgstr "Toets verbinding"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Toets WebDAV-verbinding"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Hierdie skakels verskyn in die \"Skakels\"-kieslys in die navigasie-kantbalk wanneer hierdie inprop geaktiveer is."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Hierdie persone is ingeteken op u MailChimp-teikengroep maar bestaan nie in ChurchCRM nie. Oorweeg dit om hulle by u databasis te voeg of hulle van MailChimp te verwyder."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Hierdie persone bestaan in ChurchCRM met e-posadresse maar is nie ingeteken op hierdie MailChimp-teikengroep nie. Oorweeg dit om hulle te nooi om in te teken."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Derde party-uitbreidings."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Dit sal enige voorheen geregistreerde 2FA-metodes vervang"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Totale veldtogte"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Totale intekenaars"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Tweefaktor-registrasiefout"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Tweefaktor-verifikasie is gedeaktiveer"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Tweefaktor-verifikasie is een van die beste maniere om u rekening te beskerm. Ons beveel sterk aan om dit geaktiveer te hou."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL na u OpenLP-bediener (bv. http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Kan nie laai nie"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Uitgeteken"
+
+#: 
+msgid "Use a different account"
+msgstr "Gebruik 'n ander rekening"
+
+#: 
+msgid "Value is configured"
+msgstr "Waarde is gekonfigureer"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Waarde is ingestel – los leeg om huidig te behou"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Verifieer en meld aan"
+
+#: 
+msgid "Verify Code"
+msgstr "Verifieer kode"
+
+#: 
+msgid "Verifying"
+msgstr "Verifieer"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Vonage API-sleutel"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API-geheim"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV-konfigurasie"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV-verbinding"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV-rugsteune is nie korrek gekonfigureer nie. Maak asseblief seker dat eindpunt, gebruikersnaam en wagwoord ingestel is."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV-eindpunt-URL is vereis."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV-wagwoord is vereis."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV-gebruikersnaam is vereis."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "U kan ook rugsteun-herstelkodes gebruik as u toegang tot u app verloor"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "U kan nou u verifikasie-app gebruik om aan te meld. Elke kode is 30 sekondes geldig."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "U sal rugsteunkodes ontvang wat gebruik kan word as u toegang tot u app verloor"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "U GA4-metings-ID (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "U MailChimp-rekening het geen teikengroepe (lyste) gekonfigureer nie."
+
+#: 
+msgid "Your account is now protected"
+msgstr "U rekening is nou beskerm"
+
+#: 
+msgid "Your account is protected"
+msgstr "U rekening is beskerm"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "U verifikasie-app is suksesvol geregistreer"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "U blaaier se taalvoorkeur verskil van u ChurchCRM-taalinstelling"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "bv. Kerkwebwerf"
+
+#: 
+msgid "manifest."
+msgstr "manifes."
+
+#: 
+msgid "subscribers"
+msgstr "intekenaars"
+
+#: 
+msgid "API Key is required."
+msgstr "API-sleutel is vereis."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Kan nie met OpenLP verbind by %s nie. Kyk die bediener-URL en of OpenLP aan die gang is."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Kan nie met OpenLP verbind by %s nie. Bediener het HTTP %d teruggegee."
+
+#: 
+msgid "Congregation Map"
+msgstr "Gemeentekaart"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Gemeentekaart — Opstelling vereis"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Verbind met MailChimp! Rekening: %s (%d intekenaars)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Suksesvol verbind met OpenLP-bediener."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Verbind met OpenLP! Weergawe: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Verbind! Rekeningsaldo: €%.2f. Gereed om SMS te stuur."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Kon nie met MailChimp verbind nie. Kyk asseblief u API-sleutel."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Kon nie met OpenLP-bediener verbind nie."
+
+#: 
+msgid "Get Directions"
+msgstr "Kry aanwysings"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Sluit landskode in, bv. +14155551234 (VSA) of +447911123456 (VK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Ongeldige \"Van Nommer\": \"%s\". Sluit die landskode in, bv. +14155551234 (VSA) of +447911123456 (VK)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Ongeldige API-geloofsbriewe. Verifieer asseblief u API-sleutel en API-geheim."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Ongeldige API-sleutelformaat. Kyk u MailChimp API-sleutel."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "Ongeldige eindpunt-URL. Moet 'n volledige URL wees wat begin met https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Ongeldige bediener-URL-formaat."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp-verbinding misluk."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Kaart-inzoomvlak"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Gesinne ontbreek? Werk koördinate by om hulle op die kaart in te sluit."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Vereiste instellings ontbreek: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Persoon het geen gesin nie"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Inprop nie gevind of nie aktief nie"
+
+#: 
+msgid "Server URL is required."
+msgstr "Bediener-URL is vereis."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Hierdie inprop ondersteun nie verbindingstoetsing nie."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Kan nie kaart vertoon nie: kerkadres is nog nie geokodeer nie."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Werk kerkadres by in Instellings."
+
+#: 
+msgid "Username and password are required."
+msgstr "Gebruikersnaam en wagwoord is vereis."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Validasie misluk: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Vonage-bediener fout. Probeer asseblief later weer."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV-eindpunt-URL is vereis."
+
