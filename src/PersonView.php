@@ -319,7 +319,7 @@ $bOkToEdit = (
                             'lat' => (float) $personFamily->getLatitude(),
                             'lng' => (float) $personFamily->getLongitude(),
                         ];
-                    } elseif ($fam_ID == '' && !empty($per_Address1) && !SystemConfig::getValue('bHidePersonAddress')) {
+                    } elseif ($fam_ID === '' && !empty($per_Address1) && !SystemConfig::getValue('bHidePersonAddress')) {
                         $personMapConfig = ['address' => $plaintextMailingAddress];
                     }
                     ?>
