@@ -577,7 +577,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
                             <?php if (!$dep_Closed) {
                                 ?>
-                                <input class="form-control" type="submit" class="btn btn-secondary" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
+                                <input class="btn btn-secondary" type="submit" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
                                 <?php
                             } ?>
 

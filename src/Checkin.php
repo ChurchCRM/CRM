@@ -435,7 +435,7 @@ if ($EventID > 0) {
                                 $personPhoto = new \ChurchCRM\dto\Photo('person', $per->getPersonId());
                                 if ($personPhoto->hasUploadedPhoto()) {
                                 ?>
-                                    <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $per->getPersonId() ?>" title="<?= gettext('View Photo') ?>">
+                                    <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="<?= $per->getPersonId() ?>" title="<?= gettext('View Photo') ?>">
                                         <i class="fa-solid fa-camera"></i>
                                     </button>
                                 <?php } ?>

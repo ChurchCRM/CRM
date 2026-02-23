@@ -238,7 +238,7 @@ $bOkToEdit = (
                                 <strong><?= gettext('Family Role') ?>:</strong> <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole) ?>
                             </span>
                             <?php if ($bOkToEdit) : ?>
-                            <button id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit Role') ?>">
+                            <button id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit Role') ?>">
                                 <i class="fa-solid fa-pen"></i>
                             </button>
                             <?php endif; ?>

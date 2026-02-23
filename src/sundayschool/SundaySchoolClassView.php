@@ -240,7 +240,7 @@ require_once __DIR__ . '/../Include/Header.php';
               <?= $child['LastName'] . ', ' . $child['firstName'] ?>
             </a>
             <?php if ($childPhoto->hasUploadedPhoto()) { ?>
-              <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $child['kidId'] ?>" title="<?= gettext('View Photo') ?>">
+              <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="<?= $child['kidId'] ?>" title="<?= gettext('View Photo') ?>">
                 <i class="fa-solid fa-camera"></i>
               </button>
             <?php } ?>

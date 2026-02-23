@@ -35,7 +35,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
             </td>
             <td>
               <?php if ($Person->getPhoto()->hasUploadedPhoto()) { ?>
-                <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $Person->getId() ?>" title="<?= gettext('View Photo') ?>">
+                <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="<?= $Person->getId() ?>" title="<?= gettext('View Photo') ?>">
                   <i class="fa-solid fa-camera"></i>
                 </button>
               <?php } ?>

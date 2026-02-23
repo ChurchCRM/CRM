@@ -210,7 +210,7 @@ require_once __DIR__ . '/../Include/Header.php';
             $personPhoto = new \ChurchCRM\dto\Photo('person', $kidId);
             $photoIcon = '';
             if ($personPhoto->hasUploadedPhoto()) {
-                $photoIcon = ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+                $photoIcon = ' <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
             }
 
             $html = <<<HTML
