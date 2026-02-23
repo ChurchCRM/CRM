@@ -86,7 +86,6 @@ npm run locale:build      # Extract all terms from source code
 npm run locale:download   # Download translations from POEditor
 npm run locale:audit      # Generate completeness report
 npm run locale:missing    # Generate missing term files for each locale
-npm run locale:variants   # Populate regional variants from base language
 ```
 
 ## 📝 Gettext System
