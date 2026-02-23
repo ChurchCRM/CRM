@@ -38,6 +38,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, React, asset management |
 | [UI Development](./ui-development.md) | General UI development practices |
 | [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
+| [AI Locale Translation](./locale-ai-translation.md) | Translating missing terms via Claude AI before a release |
 
 ## Security
 

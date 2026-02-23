@@ -68,6 +68,7 @@
         "locale:build": "node locale/scripts/locale-build.js",
         "locale:download": "node locale/scripts/poeditor-downloader.js && npm run locale:audit",
         "locale:missing": "node locale/scripts/locale-build-missing.js",
+        "locale:translate:list": "node locale/scripts/locale-translate.js --list",
         "lint": "biome check react/",
         "lint:fix": "biome check --write react/",
         "locale:lint": "node scripts/locale-check.js",
