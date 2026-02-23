@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-23 00:38+0000\n"
+"POT-Creation-Date: 2026-02-22 20:07-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3697,6 +3697,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Germany (Deutschland)"
+msgstr ""
+
+msgid "Get Directions"
 msgstr ""
 
 msgid "Get Started"
@@ -8004,9 +8007,6 @@ msgid "Title page"
 msgstr ""
 
 msgid "To"
-msgstr ""
-
-msgid "To export to another For european CharSet use ;"
 msgstr ""
 
 msgid "To select multiple hold CTL"
