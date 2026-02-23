@@ -289,7 +289,7 @@ class   SystemConfig
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Localization')       => ['sLanguage', 'sDistanceUnit', 'sPhoneFormat', 'sPhoneFormatWithExt', 'sPhoneFormatCell', 'sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder', 'sCSVExportDelimiter'],
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
-            gettext('Two-Factor Authentication') => ['bEnable2FA', 'bRequire2FA', 's2FAApplicationName', 'sTwoFASecretKey'],
+            gettext('Two-Factor Authentication') => ['s2FAApplicationName', 'sTwoFASecretKey'],
             gettext('System Settings')    => ['sLogLevel', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime'],
         ];
     }
