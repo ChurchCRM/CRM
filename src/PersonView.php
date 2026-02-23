@@ -292,12 +292,53 @@ $bOkToEdit = (
                         <?php if (!empty($formattedMailingAddress)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-map-marker-alt mr-2 text-muted"></i>
-                            <a href="https://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
+                            <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer">
                                 <?= $formattedMailingAddress ?>
                             </a>
                         </li>
+                        <?php $personDirectionsUrl = $person->getDirectionsUrl(); ?>
+                        <?php if (!empty($personDirectionsUrl)) : ?>
+                        <li class="mb-2">
+                            <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                               class="btn btn-sm btn-outline-primary">
+                                <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
                         <?php endif; ?>
                     </ul>
+                    <?php
+                    // Show Leaflet map for persons with their own address and no family assignment.
+                    // Uses client-side Nominatim geocoding — no API key required.
+                    $showPersonMap = ($fam_ID == '' && !empty($per_Address1) && !SystemConfig::getValue('bHidePersonAddress'));
+                    ?>
+                    <?php if ($showPersonMap) : ?>
+                    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+                    <div class="mt-2">
+                        <div id="person-map" style="height: 180px; border-radius: 4px;"></div>
+                    </div>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                    (function () {
+                        var address = <?= json_encode($plaintextMailingAddress) ?>;
+                        fetch('https://nominatim.openstreetmap.org/search?q=' + encodeURIComponent(address) + '&format=json&limit=1', {
+                            headers: { 'Accept-Language': 'en', 'Accept': 'application/json' }
+                        })
+                        .then(function (r) { return r.json(); })
+                        .then(function (data) {
+                            if (!data.length) { return; }
+                            var lat = parseFloat(data[0].lat), lng = parseFloat(data[0].lon);
+                            var map = L.map('person-map', { scrollWheelZoom: false, dragging: false, zoomControl: false })
+                                .setView([lat, lng], 14);
+                            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                maxZoom: 19,
+                                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+                            }).addTo(map);
+                            L.marker([lat, lng]).addTo(map);
+                        });
+                    })();
+                    </script>
+                    <?php endif; ?>
                 </div>
                 <?php endif; ?>
 

@@ -139,8 +139,17 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 </div>
             </div>
             <div class="card-body">
-                <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
-                   target="_blank"><?= $familyAddress ?></a>
+                <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
+                   target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
+                <?php $directionsUrl = $family->getDirectionsUrl(); ?>
+                <?php if (!empty($directionsUrl)) : ?>
+                <div class="mt-2">
+                    <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                       class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
+                    </a>
+                </div>
+                <?php endif; ?>
                 <!-- Family location map (Leaflet + OpenStreetMap) -->
                 <?php if (!empty($family->getLatitude())) : ?>
                     <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">

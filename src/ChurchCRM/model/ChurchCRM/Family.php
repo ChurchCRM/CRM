@@ -339,6 +339,23 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
+     * Returns a Google Maps directions deep-link for this family's address.
+     * Uses stored lat/lng when available (more accurate); falls back to the address string.
+     * Returns an empty string when no address is set.
+     */
+    public function getDirectionsUrl(): string
+    {
+        if ($this->hasLatitudeAndLongitude()) {
+            return 'https://www.google.com/maps/dir/?api=1&destination=' . $this->getLatitude() . ',' . $this->getLongitude();
+        }
+        $address = $this->getAddress();
+        if (empty($address)) {
+            return '';
+        }
+        return 'https://www.google.com/maps/dir/?api=1&destination=' . urlencode($address);
+    }
+
+    /**
      * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
      */
     public function updateLanLng(): void

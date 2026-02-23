@@ -317,6 +317,26 @@ class Person extends BasePerson implements PhotoInterface
         ];
     }
 
+    /**
+     * Returns a Google Maps directions deep-link for this person's address.
+     * Prefers stored family lat/lng (already geocoded, no API call).
+     * Falls back to the address string so Google Maps geocodes it client-side.
+     * Returns an empty string when no address is available.
+     */
+    public function getDirectionsUrl(): string
+    {
+        $address = $this->getAddress();
+        if (empty($address)) {
+            return '';
+        }
+        // Use stored family lat/lng when available — avoids a GeoUtils API call on every page load
+        $family = $this->getFamily();
+        if ($family !== null && $family->hasLatitudeAndLongitude()) {
+            return 'https://www.google.com/maps/dir/?api=1&destination=' . $family->getLatitude() . ',' . $family->getLongitude();
+        }
+        return 'https://www.google.com/maps/dir/?api=1&destination=' . urlencode($address);
+    }
+
     public function deletePhoto(): bool
     {
         if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
