@@ -126,7 +126,7 @@
         "select2": "^4.0.13"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.2",
+        "@biomejs/biome": "^2.4.4",
         "@types/jquery": "^3.5.33",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
