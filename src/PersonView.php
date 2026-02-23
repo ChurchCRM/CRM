@@ -831,14 +831,14 @@ $bOkToEdit = (
                                                                 <span class="caret"></span>
                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                             </button>
-                                                            <ul class="dropdown-menu" role="menu">
-                                                                <li><a class="changeRole dropdown-item" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
+                                                            <div class="dropdown-menu">
+                                                                <a class="changeRole dropdown-item" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a>
                                                                 <?php if ($grp_hasSpecialProps) {
                                                                 ?>
-                                                                    <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>" class="dropdown-item"><?= gettext('Update Properties') ?></a></li>
+                                                                    <a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>" class="dropdown-item"><?= gettext('Update Properties') ?></a>
                                                                 <?php
                                                                 } ?>
-                                                            </ul>
+                                                            </div>
                                                         </div>
                                                         <div class="btn-group">
                                                             <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove"><i class="fa-solid fa-trash-can"></i></button>

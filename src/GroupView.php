@@ -422,10 +422,10 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a id="addSelectedToGroup" disabled> <?= gettext('Add Selected Members to Group') ?></a></li>
-                    <li><a id="moveSelectedToGroup" disabled> <?= gettext('Move Selected Members to Group') ?></a></li>
-                </ul>
+                <div class="dropdown-menu">
+                    <a id="addSelectedToGroup" class="dropdown-item disabled"> <?= gettext('Add Selected Members to Group') ?></a>
+                    <a id="moveSelectedToGroup" class="dropdown-item disabled"> <?= gettext('Move Selected Members to Group') ?></a>
+                </div>
             </div>
         </div>
     </div>
