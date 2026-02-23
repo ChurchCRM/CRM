@@ -33,17 +33,17 @@ If mode is `list`, print the output and stop.
 - **single mode**: use just that locale code
 - **all mode**: parse the `--list` output to get every locale code shown
 
-### Step 3 — For each target locale, translate all batch files
+### Step 3 — For each target locale, get metadata
 
 For each locale code, run:
 ```bash
 node locale/scripts/locale-translate.js --info --locale <code>
 ```
 
-This returns JSON containing:
+This returns lightweight JSON with **no term content** — only:
 - `name` — human-readable language name
 - `countryCode` — two-letter country code
-- `batchFiles[]` — each with `path` and `terms` (the untranslated JSON object)
+- `batchFiles[]` — each with `path` and `termCount` (number of untranslated terms)
 
 ### Step 4 — Apply denomination context
 
@@ -92,19 +92,24 @@ Standard UI terms (Save, Cancel, Delete, Edit, Search, etc.) → use the normal 
 
 Format specifiers (`%d`, `%s`, `%1$s`, `%2$d`, etc.) must be preserved **exactly** — never translate or remove them.
 
-### Step 6 — Translate each batch file
+### Step 6 — Translate each batch file (one at a time)
 
-For each batch file returned by `--info`:
+For each batch file path from the `--info` output, process files **one at a time** to keep token usage low:
 
-1. Identify untranslated terms: string keys with `""` value, or plural objects where any `one`/`other` value is `""`.
-2. Translate them into the target language applying the denomination context and church vocabulary rules.
-3. For plural forms (`{"one": "", "other": ""}`), produce the grammatically correct singular and plural forms for the target language.
-4. Build a JSON object containing **only the keys you translated** (no need to repeat already-translated keys).
-5. Write the translations back with:
+1. Load only the current file's untranslated terms:
+```bash
+node locale/scripts/locale-translate.js --read-file --file <batchFilePath>
+```
+This returns **only the untranslated entries** (empty string values or plural objects with empty forms) — already-translated keys are excluded.
 
+2. Translate the returned terms into the target language, applying the denomination context and church vocabulary rules.
+3. For plural forms (`{"one": "", "other": ""}`), produce grammatically correct singular and plural forms.
+4. Build a JSON object of **only the keys you translated**.
+5. Write them back immediately — then discard this file's content from context before moving to the next file:
 ```bash
 node locale/scripts/locale-translate.js --apply --file <batchFilePath> --translations '<json>'
 ```
+6. Repeat for the next batch file.
 
 ### Step 7 — Write reviewer notice
 

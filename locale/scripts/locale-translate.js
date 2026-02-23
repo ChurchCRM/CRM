@@ -124,6 +124,8 @@ function cmdInfo(localeMap, poEditorCode) {
         process.exit(1);
     }
     const files = getBatchFiles(poEditorCode);
+    // Returns metadata + file paths only — NO term content.
+    // Use --read-file to load one batch file at a time during translation.
     const info = {
         code: poEditorCode,
         name: entry.name,
@@ -131,10 +133,35 @@ function cmdInfo(localeMap, poEditorCode) {
         countryCode: entry.countryCode,
         batchFiles: files.map(fp => ({
             path: path.relative(config.projectRoot, fp),
-            terms: loadJSON(fp),
+            termCount: countUntranslated(loadJSON(fp) || {}),
         })),
     };
     console.log(JSON.stringify(info, null, 2));
+}
+
+function cmdReadFile(filePath) {
+    const absPath = path.isAbsolute(filePath)
+        ? filePath
+        : path.join(config.projectRoot, filePath);
+
+    if (!fs.existsSync(absPath)) {
+        console.error(`Batch file not found: ${absPath}`);
+        process.exit(1);
+    }
+
+    const terms = loadJSON(absPath);
+    if (!terms) { console.error('Failed to read file'); process.exit(1); }
+
+    // Return only untranslated entries to minimise token usage
+    const untranslated = {};
+    for (const [key, value] of Object.entries(terms)) {
+        if (value === '' || value === null) {
+            untranslated[key] = value;
+        } else if (value && typeof value === 'object' && Object.values(value).some(s => s === '')) {
+            untranslated[key] = value;
+        }
+    }
+    console.log(JSON.stringify(untranslated, null, 2));
 }
 
 function cmdApply(batchFilePath, translationsJson) {
@@ -172,9 +199,10 @@ function parseArgs() {
 
     for (let i = 0; i < args.length; i++) {
         switch (args[i]) {
-            case '--list':         opts.command = 'list';  break;
-            case '--info':         opts.command = 'info';  break;
-            case '--apply':        opts.command = 'apply'; break;
+            case '--list':         opts.command = 'list';      break;
+            case '--info':         opts.command = 'info';      break;
+            case '--read-file':    opts.command = 'read-file'; break;
+            case '--apply':        opts.command = 'apply';     break;
             case '--locale':       opts.locale       = args[++i]; break;
             case '--file':         opts.file         = args[++i]; break;
             case '--translations': opts.translations = args[++i]; break;
@@ -185,6 +213,7 @@ ChurchCRM Locale Translation Helper
 Usage:
   node locale/scripts/locale-translate.js --list
   node locale/scripts/locale-translate.js --info --locale <code>
+  node locale/scripts/locale-translate.js --read-file --file <path>
   node locale/scripts/locale-translate.js --apply --file <path> --translations '<json>'
 
 This script is driven by the /locale-translate Claude Code skill.
@@ -215,8 +244,12 @@ function main() {
             }
             cmdApply(opts.file, opts.translations);
             break;
+        case 'read-file':
+            if (!opts.file) { console.error('--file required'); process.exit(1); }
+            cmdReadFile(opts.file);
+            break;
         default:
-            console.error('Specify --list, --info, or --apply. Run --help for usage.');
+            console.error('Specify --list, --info, --read-file, or --apply. Run --help for usage.');
             process.exit(1);
     }
 }
