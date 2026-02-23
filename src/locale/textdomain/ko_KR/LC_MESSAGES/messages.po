@@ -6900,10 +6900,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM 중앙 알림 URL"
 
 #: 
-msgid "Follow us on"
-msgstr "다음에서 팔로우하세요"
-
-#: 
 msgid "invalid event type id"
 msgstr "잘못된 행사 유형 ID"
 
@@ -6968,10 +6964,6 @@ msgstr "본인 계정은 삭제할 수 없습니다"
 #: 
 msgid "The role could not be found."
 msgstr "해당 역할을 찾을 수 없습니다."
-
-#: 
-msgid "Menus"
-msgstr "메뉴"
 
 #: 
 msgid "is disabled"
@@ -7086,10 +7078,6 @@ msgstr "에스토니아어"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "서명 정의 파일을 해석하는 중 오류"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "원격 백업 엔드포인트(WebDAV인 경우 URL 인코딩 필요). "
 
 #: 
 msgid "Age Histogram"
@@ -7290,28 +7278,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "성, 이름 미들네임"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "2단계 인증 관리"
-
-#: 
 msgid "Two Factor Status"
 msgstr "2단계 인증 상태"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "이 사용자의 2단계 인증을 해제할지 확인하세요"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "2단계 인증 코드를 입력하세요"
-
-#: 
-msgid "2FA Code"
-msgstr "2FA 코드"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "2단계 인증 등록"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7340,10 +7312,6 @@ msgstr "주소 지오코딩에 사용되는 Google Maps API 키"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "계정이 삭제되면 사용자에게 알림 이메일 보내기"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "브라우저에서 지도를 표시할 때 사용하는 Google Maps API 키"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7389,11 +7357,6 @@ msgstr "로드 중"
 msgid "List not found"
 msgstr "리스트를 찾을 수 없습니다"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "리스트에 포함되지 않았습니다"
-
 #: 
 msgid "People not in"
 msgstr "포함되지 않은 사람"
@@ -7410,18 +7373,6 @@ msgstr "ChurchCRM에 없는 오디언스입니다"
 msgid "Web Server"
 msgstr "웹 서버"
 
-#: 
-msgid "List maintenance"
-msgstr "리스트 관리"
-
-#: 
-msgid "People not in list"
-msgstr "리스트에 없는 사람"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "CRM에 없는 오디언스"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7430,10 +7381,6 @@ msgstr "히브리어"
 #: 
 msgid "open rate"
 msgstr "오픈율"
-
-#: 
-msgid "Not Subscribed "
-msgstr "구독 안 함 "
 
 #: 
 msgid "Login Info"
@@ -7498,34 +7445,6 @@ msgstr "텍스트"
 #: 
 msgid "Event Description"
 msgstr "행사 설명"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "계정에 2단계 인증을 등록하면 무단 접근으로부터 추가 보안 계층이 제공됩니다."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM의 2단계 인증은 TOTP 기반 인증 앱을 지원하므로 Microsoft Authenticator, Google Authenticator, Authy, LastPass 등 원하는 앱을 사용할 수 있습니다"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "ChurchCRM에 로그인할 때는 평소처럼 사용자 이름과 비밀번호를 입력합니다"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "로그인을 마치려면 인증 앱에서 생성된 일회용 코드를 추가로 입력해야 합니다"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "자격 증명과 일회용 코드를 모두 입력하면 정상적으로 로그인됩니다"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "계정 잠금을 방지하려면 시작을 누르기 전에 2단계 인증 등록 준비가 되었는지 확인하세요"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "등록을 시작하면 기존에 등록된 모든 2단계 인증 기기와 복구 코드가 무효화됩니다."
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

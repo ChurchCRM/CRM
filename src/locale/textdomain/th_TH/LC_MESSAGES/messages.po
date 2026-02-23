@@ -6860,10 +6860,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL การแจ้งเตือนส่วนกลาง ChurchCRM"
 
 #: 
-msgid "Follow us on"
-msgstr "ติดตามเราบน"
-
-#: 
 msgid "invalid event type id"
 msgstr "ID ประเภทกิจกรรมไม่ถูกต้อง"
 
@@ -6926,10 +6922,6 @@ msgstr "ไม่สามารถลบตัวเองได้"
 #: 
 msgid "The role could not be found."
 msgstr "ไม่พบบทบาท"
-
-#: 
-msgid "Menus"
-msgstr "เมนู"
 
 #: 
 msgid "is disabled"
@@ -7044,10 +7036,6 @@ msgstr "เอสโตเนีย"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "ข้อผิดพลาดในการถอดรหัสไฟล์นิยามลายเซ็น"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "จุดสิ้นสุดการสำรองข้อมูลระยะไกล หากเป็น WebDAV ต้องเข้ารหัส URL "
 
 #: 
 msgid "Age Histogram"
@@ -7247,28 +7235,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "นามสกุล, ชื่อจริง ชื่อกลาง"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "จัดการการยืนยันตัวตนแบบ 2 ปัจจัย"
-
-#: 
 msgid "Two Factor Status"
 msgstr "สถานะ 2 ปัจจัย"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "กรุณายืนยันการปิดใช้งานการยืนยันตัวตนแบบ 2 ปัจจัยสำหรับผู้ใช้นี้"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "กรุณาป้อนรหัส 2FA"
-
-#: 
-msgid "2FA Code"
-msgstr "รหัส 2FA"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "การลงทะเบียนการยืนยันตัวตนแบบ 2 ปัจจัย"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7297,10 +7269,6 @@ msgstr "คีย์ API Google Maps ที่ใช้สำหรับกา�
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "ส่งอีเมลแจ้งเตือนผู้ใช้เมื่อบัญชีของพวกเขาถูกลบ"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "คีย์ API Google Maps ที่ใช้สำหรับแสดงแผนที่ในเบราว์เซอร์"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7346,11 +7314,6 @@ msgstr "กำลังโหลด"
 msgid "List not found"
 msgstr "ไม่พบรายการ"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "รายการไม่อยู่ในรายการ"
-
 #: 
 msgid "People not in"
 msgstr "คนที่ไม่อยู่ใน"
@@ -7367,18 +7330,6 @@ msgstr "กลุ่มผู้ชมไม่อยู่ใน ChurchCRM"
 msgid "Web Server"
 msgstr "เว็บเซิร์ฟเวอร์"
 
-#: 
-msgid "List maintenance"
-msgstr "การบำรุงรักษารายการ"
-
-#: 
-msgid "People not in list"
-msgstr "คนที่ไม่อยู่ในรายการ"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "กลุ่มผู้ชมไม่อยู่ใน CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7387,10 +7338,6 @@ msgstr "ฮีบรู"
 #: 
 msgid "open rate"
 msgstr "อัตราการเปิด"
-
-#: 
-msgid "Not Subscribed "
-msgstr "ไม่ได้สมัครรับ "
 
 #: 
 msgid "Login Info"
@@ -7455,34 +7402,6 @@ msgstr "ข้อความ"
 #: 
 msgid "Event Description"
 msgstr "คำอธิบายกิจกรรม"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "การลงทะเบียนบัญชีผู้ใช้ ChurchCRM ของคุณในการยืนยันตัวตนแบบ 2 ปัจจัยให้การป้องกันเพิ่มเติมจากผู้ไม่หวังดีที่พยายามเข้าถึงบัญชีของคุณ"
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM 2 ปัจจัยรองรับแอปยืนยันตัวตน TOTP ใดๆ ดังนั้นคุณสามารถเลือกระหว่าง Microsoft Authenticator, Google Authenticator, Authy, LastPass และอื่นๆ"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "เมื่อคุณลงชื่อเข้าใช้ ChurchCRM คุณยังคงป้อนชื่อผู้ใช้และรหัสผ่านตามปกติ"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "อย่างไรก็ตาม คุณยังต้องให้รหัสแบบใช้ครั้งเดียวจากอุปกรณ์ยืนยันตัวตนของคุณเพื่อดำเนินการเข้าสู่ระบบให้เสร็จสมบูรณ์"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "หลังจากป้อนทั้งข้อมูลรับรองและรหัสแบบใช้ครั้งเดียวสำเร็จแล้ว คุณจะเข้าสู่ระบบตามปกติ"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "เพื่อป้องกันการถูกล็อคออกจากบัญชี ChurchCRM ของคุณ กรุณาตรวจสอบให้แน่ใจว่าคุณพร้อมที่จะดำเนินการลงทะเบียน 2 ปัจจัยให้เสร็จสมบูรณ์ก่อนคลิกเริ่มต้น"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "การเริ่มต้นการลงทะเบียนจะทำให้อุปกรณ์ 2 ปัจจัยและรหัสกู้คืนที่ลงทะเบียนก่อนหน้านี้เป็นโมฆะ"
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

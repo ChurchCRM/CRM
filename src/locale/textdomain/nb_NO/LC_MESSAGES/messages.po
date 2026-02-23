@@ -7014,10 +7014,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL for sentrale varsler i ChurchCRM"
 
 #: 
-msgid "Follow us on"
-msgstr "Følg oss på"
-
-#: 
 msgid "invalid event type id"
 msgstr "ugyldig hendelsestype-ID"
 
@@ -7080,10 +7076,6 @@ msgstr "Du kan ikke slette deg selv"
 #: 
 msgid "The role could not be found."
 msgstr "Rollen ble ikke funnet."
-
-#: 
-msgid "Menus"
-msgstr "Menyer"
 
 #: 
 msgid "is disabled"
@@ -7198,10 +7190,6 @@ msgstr "Estisk"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Feil ved dekoding av signaturdefinisjonsfil"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Endepunkt for ekstern sikkerhetskopi. Hvis WebDAV, må denne være URL-kodet."
 
 #: 
 msgid "Age Histogram"
@@ -7398,28 +7386,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Etternavn, Fornavn Mellomnavn"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Administrer totrinnsverifisering"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Status for totrinnsverifisering"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vennligst bekreft deaktivering av totrinnsverifisering for denne brukeren"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Vennligst skriv inn 2FA-kode"
-
-#: 
-msgid "2FA Code"
-msgstr "2FA-kode"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "Påmelding til totrinnsverifisering"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7448,10 +7420,6 @@ msgstr "Google Maps API-nøkkel brukt for geokoding av adresser"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Send en e-post for å varsle brukere når kontoen deres har blitt slettet"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Google Maps API-nøkkel brukt for visning av kart i nettleseren"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7497,11 +7465,6 @@ msgstr "laster"
 msgid "List not found"
 msgstr "Listen ble ikke funnet"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "Listen er ikke i listen"
-
 #: 
 msgid "People not in"
 msgstr "Personer som ikke er i"
@@ -7518,18 +7481,6 @@ msgstr "Målgruppe ikke i ChurchCRM"
 msgid "Web Server"
 msgstr "Webserver"
 
-#: 
-msgid "List maintenance"
-msgstr "Vedlikehold av lister"
-
-#: 
-msgid "People not in list"
-msgstr "Personer ikke i listen"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Målgruppe ikke i CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7538,10 +7489,6 @@ msgstr "Hebraisk"
 #: 
 msgid "open rate"
 msgstr "åpningsrate"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Ikke abonnert "
 
 #: 
 msgid "Login Info"
@@ -7606,34 +7553,6 @@ msgstr "Tekst"
 #: 
 msgid "Event Description"
 msgstr "Hendelsesbeskrivelse"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Ved å aktivere tofaktorautentisering på din ChurchCRM-konto får du et ekstra lag med beskyttelse mot uvedkommende."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM støtter alle TOTP-apper, slik som Microsoft Authenticator, Google Authenticator, Authy, LastPass med flere."
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Når du logger inn, skriver du fortsatt brukernavn og passord som vanlig."
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "I tillegg må du oppgi en engangskode fra autentiseringsenheten din for å fullføre innloggingen."
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Når begge deler er tastet inn riktig, blir du logget inn som normalt."
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "For å unngå å bli låst ute, vennligst sørg for at du er klar til å fullføre oppsettet før du klikker på start."
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Oppstart av ny registrering vil deaktivere alle tidligere enheter og gjenopprettingskoder."
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

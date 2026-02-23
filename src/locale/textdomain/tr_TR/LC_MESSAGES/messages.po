@@ -6908,11 +6908,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "Churchcrm Merkezi Bildirimler URL"
 
 #: 
-#, fuzzy
-msgid "Follow us on"
-msgstr "Bizi 'da takip edin"
-
-#: 
 msgid "invalid event type id"
 msgstr "Geçersiz olay türü kimliği"
 
@@ -6977,10 +6972,6 @@ msgstr "Kendini silemiyorum"
 #: 
 msgid "The role could not be found."
 msgstr "Rol bulunamadı."
-
-#: 
-msgid "Menus"
-msgstr "Menüler"
 
 #: 
 msgid "is disabled"
@@ -7096,10 +7087,6 @@ msgstr "Estonya"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "İmza Tanım Dosyasını Kod Çözme Hata"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Uzak yedekleme uç noktası. WebDav ise, bu URL kodlanmalıdır."
 
 #: 
 msgid "Age Histogram"
@@ -7302,28 +7289,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Son ad ilk ad ikinci ad"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "2 faktör kimlik doğrulamasını yönetin"
-
-#: 
 msgid "Two Factor Status"
 msgstr "İki Faktör Durumu"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Lütfen bu kullanıcı için 2 faktörlü kimliği devre dışı bırakmayı onaylayın"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Lütfen 2FA kodunu girin"
-
-#: 
-msgid "2FA Code"
-msgstr "2FA Kodu"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "2 faktör kimlik doğrulama kaydı"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7352,10 +7323,6 @@ msgstr "Coğrafi kodlama adresleri için kullanılan Google Haritalar API Anahta
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Hesapları silindiğinde kullanıcıları bildiren bir e -posta gönderin"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Google Haritalar API Anahtarı Tarayıcıda Haritalar Oluşturmak İçin Kullanılır"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7402,12 +7369,6 @@ msgstr "Yükleniyor"
 msgid "List not found"
 msgstr "Liste bulunamadı"
 
-#. typo
-#: 
-#, fuzzy
-msgid "List not in the list"
-msgstr "Liste Inlist değil"
-
 #: 
 msgid "People not in"
 msgstr "İnsanlar içeride değil"
@@ -7424,18 +7385,6 @@ msgstr "Kilisede izleyici değil"
 msgid "Web Server"
 msgstr "Web sunucusu"
 
-#: 
-msgid "List maintenance"
-msgstr "Bakım listesi"
-
-#: 
-msgid "People not in list"
-msgstr "Listede Değil İnsanlar"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "CRM'de izleyici değil"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7444,10 +7393,6 @@ msgstr "İbranice"
 #: 
 msgid "open rate"
 msgstr "açık oran"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Abone olunmamış"
 
 #: 
 msgid "Login Info"
@@ -7512,34 +7457,6 @@ msgstr "Metin"
 #: 
 msgid "Event Description"
 msgstr "Etkinlik Açıklaması"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "ChurchCRM kullanıcı hesabınızı iki faktörlü kimliklere kaydettirmek, hesabınıza erişmeye çalışan kötü aktörlere karşı ek bir savunma katmanı sağlar."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "Churchcrm İki Faktör herhangi bir TOTP Authenticator uygulamasını destekler, bu nedenle Microsoft Authenticator, Google Authenticator, Authy, LastPass ve diğerleri arasında seçim yapmakta özgürsünüz"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "ChurchCRM'de oturum açtığınızda, yine de normal gibi kullanıcı adınızı ve şifrenizi gireceksiniz."
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "Ancak, girişinizi tamamlamak için kimlik doğrulayıcı cihazınızdan bir kerelik bir kod sağlamanız gerekir."
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Hem kimlik bilgilerinizi hem de bir kerelik kodu başarıyla girdikten sonra, normal olarak oturum açacaksınız"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "ChurchCRM hesabınızdan kilitlenmeyi önlemek için, lütfen başlamadan önce iki faktörlü kaydını tamamlamaya hazır olduğunuzdan emin olun"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Başlangıç ​​kayıtları, daha önce kaydedilmiş 2 faktörlü cihaz ve kurtarma kodlarını geçersiz kılacaktır."
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

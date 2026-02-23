@@ -6908,11 +6908,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "Κεντρική διεύθυνση URL ειδοποιήσεων ChurchCRM"
 
 #: 
-#, fuzzy
-msgid "Follow us on"
-msgstr "Ακολουθήστε μας στο"
-
-#: 
 msgid "invalid event type id"
 msgstr "μη έγκυρο αναγνωριστικό τύπου συμβάντος"
 
@@ -6977,10 +6972,6 @@ msgstr "Δεν μπορείτε να διαγράψετε τον εαυτό σα
 #: 
 msgid "The role could not be found."
 msgstr "Ο ρόλος δεν βρέθηκε."
-
-#: 
-msgid "Menus"
-msgstr "Μενού"
 
 #: 
 msgid "is disabled"
@@ -7096,10 +7087,6 @@ msgstr "Εσθονική"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Σφάλμα κατά την αποκωδικοποίηση του αρχείου ορισμού υπογραφής"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Τελικό σημείο απομακρυσμένου αντιγράφου ασφαλείας. Εάν το WebDAV, αυτό πρέπει να είναι κωδικοποιημένο με url. "
 
 #: 
 msgid "Age Histogram"
@@ -7302,28 +7289,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Επώνυμο, Όνομα MiddleName"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Διαχείριση ελέγχου ταυτότητας 2 παραγόντων"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Κατάσταση δύο παραγόντων"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Επιβεβαιώστε την απενεργοποίηση του 2 Factor Auth για αυτόν τον χρήστη"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Εισαγάγετε τον κωδικό 2FA"
-
-#: 
-msgid "2FA Code"
-msgstr "2 Κωδικός FA"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "Εγγραφή 2 Factor Authentication"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7352,10 +7323,6 @@ msgstr "Κλειδί API Χαρτών Google που χρησιμοποιείτα
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Στείλτε ένα email ειδοποιώντας τους χρήστες όταν ο λογαριασμός τους έχει διαγραφεί"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Κλειδί API Χαρτών Google που χρησιμοποιείται για την απόδοση χαρτών στο πρόγραμμα περιήγησης"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7402,12 +7369,6 @@ msgstr "φόρτωση"
 msgid "List not found"
 msgstr "Η λίστα δεν βρέθηκε"
 
-#. typo
-#: 
-#, fuzzy
-msgid "List not in the list"
-msgstr "Λίστα όχι σε Λίστα"
-
 #: 
 msgid "People not in"
 msgstr "Άνθρωποι όχι μέσα"
@@ -7424,18 +7385,6 @@ msgstr "Το κοινό δεν είναι στο ChurchCRM"
 msgid "Web Server"
 msgstr "Διακομιστής Ιστού"
 
-#: 
-msgid "List maintenance"
-msgstr "Συντήρηση καταλόγου"
-
-#: 
-msgid "People not in list"
-msgstr "Άτομα που δεν είναι στη λίστα"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Το κοινό δεν είναι στο CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7444,10 +7393,6 @@ msgstr "Εβραϊκά"
 #: 
 msgid "open rate"
 msgstr "ανοικτό ποσοστό"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Μη εγγεγραμμένος "
 
 #: 
 msgid "Login Info"
@@ -7512,34 +7457,6 @@ msgstr "Κείμενο"
 #: 
 msgid "Event Description"
 msgstr "Περιγραφή συμβάντος"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Η εγγραφή του λογαριασμού χρήστη του ChurchCRM στο Έλεγχο ταυτότητας δύο παραγόντων παρέχει ένα επιπλέον επίπεδο άμυνας ενάντια σε κακούς παράγοντες που προσπαθούν να αποκτήσουν πρόσβαση στον λογαριασμό σας."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "Το ChurchCRM Two Factor υποστηρίζει οποιαδήποτε εφαρμογή ελέγχου ταυτότητας TOTP, επομένως είστε ελεύθεροι να επιλέξετε μεταξύ του Microsoft Authenticator, του Google Authenticator, του Authy, του LastPass και άλλων"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Όταν συνδέεστε στο ChurchCRM, θα εξακολουθείτε να εισάγετε το όνομα χρήστη και τον κωδικό πρόσβασής σας όπως συνήθως"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "Ωστόσο, θα χρειαστεί επίσης να δώσετε έναν κωδικό μιας χρήσης από τη συσκευή ελέγχου ταυτότητας για να ολοκληρώσετε τη σύνδεσή σας"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Αφού εισαγάγετε επιτυχώς τόσο τα διαπιστευτήριά σας όσο και τον κωδικό μιας χρήσης, θα συνδεθείτε κανονικά"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Για να αποφύγετε τον αποκλεισμό του λογαριασμού σας στο ChurchCRM, βεβαιωθείτε ότι είστε έτοιμοι να ολοκληρώσετε την εγγραφή δύο παραγόντων πριν κάνετε κλικ στην αρχή"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Η έναρξη της εγγραφής θα ακυρώσει τυχόν συσκευές 2 παραγόντων και κωδικούς ανάκτησης που είχαν εγγραφεί προηγουμένως."
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

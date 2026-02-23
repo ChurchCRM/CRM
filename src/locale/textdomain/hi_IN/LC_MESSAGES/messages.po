@@ -6863,10 +6863,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM केंद्रीय सूचना URL"
 
 #: 
-msgid "Follow us on"
-msgstr "हमें यहाँ फॉलो करें"
-
-#: 
 msgid "invalid event type id"
 msgstr "अमान्य कार्यक्रम प्रकार आईडी"
 
@@ -6929,10 +6925,6 @@ msgstr "स्वयं को नहीं हटा सकते"
 #: 
 msgid "The role could not be found."
 msgstr "भूमिका नहीं मिल सकी।"
-
-#: 
-msgid "Menus"
-msgstr "मेनू"
 
 #: 
 msgid "is disabled"
@@ -7047,10 +7039,6 @@ msgstr "एस्टोनियाई"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "हस्ताक्षर परिभाषा फ़ाइल को डिकोड करने में त्रुटि"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "रिमोट बैकअप एंडपॉइंट।"
 
 #: 
 msgid "Age Histogram"
@@ -7248,28 +7236,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "अंतिमनाम, प्रथमनाम मध्यमनाम"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "2 फैक्टर ऑथेंटिकेशन प्रबंधित करें"
-
-#: 
 msgid "Two Factor Status"
 msgstr "टू फैक्टर स्थिति"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "कृपया इस उपयोगकर्ता के लिए 2 फैक्टर ऑथेंटिकेशन अक्षम करने की पुष्टि करें"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "कृपया 2FA कोड दर्ज करें"
-
-#: 
-msgid "2FA Code"
-msgstr "2FA कोड"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "2 फैक्टर ऑथेंटिकेशन नामांकन"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7298,10 +7270,6 @@ msgstr "पतों की जियोकोडिंग के लिए उ�
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "खाता हटाए जाने पर उपयोगकर्ताओं को सूचित करने के लिए ईमेल भेजें"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "ब्राउज़र में मैप्स रेंडर करने के लिए गूगल मैप्स API कुंजी"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7347,11 +7315,6 @@ msgstr "लोड हो रहा है"
 msgid "List not found"
 msgstr "सूची नहीं मिली"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "सूची में नहीं है"
-
 #: 
 msgid "People not in"
 msgstr "व्यक्ति इसमें नहीं हैं"
@@ -7368,18 +7331,6 @@ msgstr "ऑडियंस ChurchCRM में नहीं है"
 msgid "Web Server"
 msgstr "वेब सर्वर"
 
-#: 
-msgid "List maintenance"
-msgstr "सूची रखरखाव"
-
-#: 
-msgid "People not in list"
-msgstr "सूची में नहीं व्यक्ति"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "दर्शक CRM में नहीं हैं"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7388,10 +7339,6 @@ msgstr "हिब्रू"
 #: 
 msgid "open rate"
 msgstr "खुलने की दर"
-
-#: 
-msgid "Not Subscribed "
-msgstr "सदस्यता नहीं ली गई "
 
 #: 
 msgid "Login Info"
@@ -7456,34 +7403,6 @@ msgstr "पाठ"
 #: 
 msgid "Event Description"
 msgstr "घटना का विवरण"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "अपने ChurchCRM उपयोगकर्ता खाते को टू-फैक्टर प्रमाणीकरण में नामांकित करने से आपके खाते तक पहुँचने की कोशिश करने वाले दुर्भावनापूर्ण लोगों के खिलाफ एक अतिरिक्त सुरक्षा परत मिलती है।"
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM दो-कारक किसी भी TOTP प्रमाणीकरण ऐप का समर्थन करता है, इसलिए आप Microsoft Authenticator, Google Authenticator, Authy, LastPass और अन्य के बीच चयन करने के लिए स्वतंत्र हैं।"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "जब आप ChurchCRM में साइन इन करेंगे, तब भी आप सामान्य रूप से अपना उपयोगकर्ता नाम और पासवर्ड दर्ज करेंगे"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "हालाँकि, आपको अपना लॉगिन पूरा करने के लिए अपने ऑथेंटिकेटर डिवाइस से एक बार का कोड (OTP) भी देना होगा"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "अपने क्रेडेंशियल्स और वन-टाइम कोड दोनों को सफलतापूर्वक दर्ज करने के बाद, आप सामान्य रूप से लॉग इन हो जाएंगे"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "अपने ChurchCRM खाते से लॉक होने से बचने के लिए, कृपया सुनिश्चित करें कि आप 'आरंभ करें' पर क्लिक करने से पहले टू-फैक्टर नामांकन पूरा करने के लिए तैयार हैं"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "नामांकन शुरू करने से पहले नामांकित किए गए किसी भी टू-फैक्टर डिवाइस और रिकवरी कोड को अमान्य कर दिया जाएगा।"
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."

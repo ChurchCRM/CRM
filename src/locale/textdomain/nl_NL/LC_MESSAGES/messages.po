@@ -6907,10 +6907,6 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "De URL voor de centrale meldingen"
 
 #: 
-msgid "Follow us on"
-msgstr "Volg ons op"
-
-#: 
 msgid "invalid event type id"
 msgstr "Ongeldige identificatie code voor een \"event\""
 
@@ -6975,10 +6971,6 @@ msgstr "Kan jezelf niet verwijderen."
 #: 
 msgid "The role could not be found."
 msgstr "Rol niet gevonden."
-
-#: 
-msgid "Menus"
-msgstr "Menus"
 
 #: 
 msgid "is disabled"
@@ -7093,10 +7085,6 @@ msgstr "Estland"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Fout decoderen handtekening definitie bestand"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Remote back-up eindpunt. Met WebDAV, moet dit url-gecodeerd zijn."
 
 #: 
 msgid "Age Histogram"
@@ -7299,28 +7287,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Achternaam, Voornaam Tussennaam"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "2-factorauthenticatie beheren"
-
-#: 
 msgid "Two Factor Status"
 msgstr "2-factor status"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bevestig a.u.b. het uitschakelen van 2 Factor Auth voor deze gebruiker"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Voer a.u.b. uw 2FA-code in"
-
-#: 
-msgid "2FA Code"
-msgstr "2FA-code"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "2 Factor Authenticatie uitrollen"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7349,10 +7321,6 @@ msgstr "Google Maps API-sleutel gebruikt voor geocodering van adressen"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Stuur een e-mail om gebruikers op de hoogte te stellen wanneer hun account is verwijderd"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Google Maps API-sleutel gebruikt voor het weergeven van kaarten in de browser"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7398,11 +7366,6 @@ msgstr "laden"
 msgid "List not found"
 msgstr "Lijst niet gevonden"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "Lijst niet in Lijst"
-
 #: 
 msgid "People not in"
 msgstr "Mensen niet in"
@@ -7419,18 +7382,6 @@ msgstr "Publiek niet in kerkCRM"
 msgid "Web Server"
 msgstr "Web Server"
 
-#: 
-msgid "List maintenance"
-msgstr "Lijst onderhoud"
-
-#: 
-msgid "People not in list"
-msgstr "Mensen niet in lijst"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Publiek niet in CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7439,10 +7390,6 @@ msgstr "Hebreeuws"
 #: 
 msgid "open rate"
 msgstr "open ratio"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Niet geabonneerd "
 
 #: 
 msgid "Login Info"
@@ -7507,34 +7454,6 @@ msgstr "Tekst"
 #: 
 msgid "Event Description"
 msgstr "beschrijving van het evenement"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Door Twee-Factor Authenticatie in te schakelen voor uw ChurchCRM-gebruikersaccount, wordt uw account extra beschermd tegen ongeautoriseerde toegang."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM Two factor ondersteunt elke TOTP-authenticator-app, dus u bent vrij om te kiezen tussen Microsoft Authenticator, Google Authenticator, Authy, LastPass enz."
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Wanneer u zich aanmeldt bij ChurchCRM, voert u nog steeds uw gebruikersnaam en wachtwoord in zoals normaal"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "U moet echter ook een eenmalige code van uw authenticatieapparaat opgeven om uw aanmelding te voltooien"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Nadat je zowel je inloggegevens als de eenmalige code hebt ingevoerd, ben je weer normaal ingelogd"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Om te voorkomen dat u geen toegang meer krijgt tot uw ChurchCRM-account, moet u ervoor zorgen dat u klaar bent om tweestapsregistratie te voltooien voordat u op begin klikt"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Als u begint met het activeren, worden alle eerder gebruikte 2-factorapparaten en herstelcodes voor ChurchCRM ongeldig."
 
 #: 
 msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
