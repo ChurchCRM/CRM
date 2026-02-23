@@ -22,8 +22,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="row">
     <div class="col-12">
-        <div class="alert alert-info d-flex align-items-center gap-2 py-2">
-            <a href="<?= $sRootPath ?>/UpdateAllLatLon.php" class="btn btn-sm btn-secondary">
+        <div class="alert alert-info d-flex align-items-center py-2">
+            <a href="<?= $sRootPath ?>/UpdateAllLatLon.php" class="btn btn-sm btn-secondary mr-2">
                 <i class="fa-solid fa-location-dot"></i>
             </a>
             <span><?= gettext('Missing families? Update coordinates to include them on the map.') ?></span>

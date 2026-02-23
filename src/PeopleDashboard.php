@@ -344,8 +344,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                     <thead class="table-light">
                         <tr>
                             <th><?= gettext('Gender') ?></th>
-                            <th class="text-end"><?= gettext('Count') ?></th>
-                            <th class="text-end"><?= gettext('Percentage') ?></th>
+                            <th class="text-right"><?= gettext('Count') ?></th>
+                            <th class="text-right"><?= gettext('Percentage') ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -357,8 +357,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         ?>
                         <tr>
                             <td><?= gettext($gender) ?></td>
-                            <td class="text-end"><strong><?= $count ?></strong></td>
-                            <td class="text-end"><?= $percentage ?>%</td>
+                            <td class="text-right"><strong><?= $count ?></strong></td>
+                            <td class="text-right"><?= $percentage ?>%</td>
                         </tr>
                         <?php
                             endif;
@@ -366,8 +366,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         ?>
                         <tr class="table-light">
                             <td><strong><?= gettext('Total') ?></strong></td>
-                            <td class="text-end"><strong><?= $totalGender ?></strong></td>
-                            <td class="text-end"><strong>100%</strong></td>
+                            <td class="text-right"><strong><?= $totalGender ?></strong></td>
+                            <td class="text-right"><strong>100%</strong></td>
                         </tr>
                     </tbody>
                 </table>

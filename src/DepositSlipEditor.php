@@ -226,7 +226,7 @@ require_once __DIR__ . '/Include/Header.php';
       <div class="card-header with-border bg-light d-flex justify-content-between align-items-center">
         <h5 class="card-title mb-0">
           <i class="fa-solid fa-chart-bar"></i> <?= gettext('Funds'); ?>
-          <small class="text-muted ms-2"><?= gettext('Click a bar to filter payments'); ?></small>
+          <small class="text-muted ml-2"><?= gettext('Click a bar to filter payments'); ?></small>
         </h5>
         <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="clearFundFilter">
           <i class="fa-solid fa-times"></i> <?= gettext('Clear Filter'); ?>
@@ -387,13 +387,13 @@ code {
     color: #212529;
     margin-bottom: 0.5rem;
 }
-.form-control, .form-select {
+.form-control, .custom-select {
     border: 1px solid #e0e0e0;
     transition: all 0.2s ease;
 }
-.form-control:focus, .form-select:focus {
-    border-color: #0d6efd;
-    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.1);
+.form-control:focus, .custom-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
 }
 .btn {
     font-weight: 600;

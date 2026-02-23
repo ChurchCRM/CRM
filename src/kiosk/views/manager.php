@@ -283,9 +283,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           data: 'Accepted',
           render: function(data, type, full, meta) {
             if (full.Accepted) {
-              return '<span class="badge bg-success">' + i18next.t('Yes') + '</span>';
+              return '<span class="badge badge-success">' + i18next.t('Yes') + '</span>';
             } else {
-              return '<span class="badge bg-warning">' + i18next.t('No') + '</span>';
+              return '<span class="badge badge-warning">' + i18next.t('No') + '</span>';
             }
           }
         },

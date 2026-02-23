@@ -392,10 +392,10 @@ if ($EventID > 0) {
                 <thead class="table-light">
                     <tr>
                         <th><?= gettext('Name') ?></th>
-                        <th><i class="fa-solid fa-door-open me-1"></i><?= gettext('Checked In Time') ?></th>
-                        <th><i class="fa-solid fa-user-check me-1"></i><?= gettext('Checked In By') ?></th>
-                        <th><i class="fa-solid fa-door-closed me-1"></i><?= gettext('Checked Out Time') ?></th>
-                        <th><i class="fa-solid fa-user-xmark me-1"></i><?= gettext('Checked Out By') ?></th>
+                        <th><i class="fa-solid fa-door-open mr-1"></i><?= gettext('Checked In Time') ?></th>
+                        <th><i class="fa-solid fa-user-check mr-1"></i><?= gettext('Checked In By') ?></th>
+                        <th><i class="fa-solid fa-door-closed mr-1"></i><?= gettext('Checked Out Time') ?></th>
+                        <th><i class="fa-solid fa-user-xmark mr-1"></i><?= gettext('Checked Out By') ?></th>
                         <th class="text-nowrap"><?= gettext('Action') ?></th>
                     </tr>
                 </thead>

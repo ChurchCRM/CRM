@@ -98,7 +98,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                         $numRows = mysqli_num_rows($rsPeople);
                         if ($numRows > 0) {
                             echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-exclamation-circle'></i> <strong>" . gettext('Warning') . "!</strong> " . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') . "</div>";
-                            echo "<div class='ms-3 mb-3'>";
+                            echo "<div class='ml-3 mb-3'>";
                             for ($i = 0; $i < $numRows; $i++) {
                                 $aRow = mysqli_fetch_array($rsPeople);
                                 extract($aRow);

@@ -151,7 +151,7 @@ require_once __DIR__ . '/../Include/Header.php';
             ?>
         <tr>
           <td>
-            <a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>' class="me-2" title="<?= gettext('Edit') ?>">
+            <a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>' class="mr-2" title="<?= gettext('Edit') ?>">
               <i class="fa-solid fa-pen"></i>
             </a>
             <a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>

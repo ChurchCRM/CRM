@@ -161,6 +161,11 @@
   line-height: 1.2;
 }
 
+/* Line-height utilities (Bootstrap 4 doesn't include lh-* utilities) */
+.lh-lg {
+  line-height: 2;
+}
+
 /* ============================================
    DEPRECATED/LEGACY CLASSES (Backward Compatibility)
    ============================================ */
