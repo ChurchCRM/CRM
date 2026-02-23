@@ -469,7 +469,7 @@ jobs:
 
     - name: Run Docker (New System Test - Subdir)
       run: |
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system up -d
+        npm run docker:ci:new-system:subdir:start
 
     - name: Wait for Docker to be ready
       run: |
@@ -538,7 +538,7 @@ jobs:
     - name: Stop Docker
       if: always()
       run: |
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system down -v
+        npm run docker:ci:new-system:subdir:down
 
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
