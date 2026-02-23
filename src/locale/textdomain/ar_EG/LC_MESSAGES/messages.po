@@ -11530,3 +11530,975 @@ msgstr "تم اكتشاف عدم تطابق"
 msgid "mismatches detected"
 msgstr "تم اكتشاف عدم تطابقات"
 
+#: 
+msgid "About WebDAV Backups"
+msgstr "حول نسخ WebDAV الاحتياطية"
+
+#: 
+msgid "Add Link"
+msgstr "إضافة رابط"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "أضف طبقة حماية إضافية لحسابك"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "إضافة روابط خارجية مخصصة إلى قائمة التنقل."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "السماح بالشهادات الموقَّعة ذاتياً"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "حدث خطأ أثناء معالجة طلب الإضافة"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "هل أنت متأكد من رغبتك في تعطيل المصادقة الثنائية؟ سيصبح حسابك أقل أمانًا."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "كجزء من عملية الاستعادة، تم تعطيل النسخ الاحتياطية الخارجية. إذا كنت تريد مواصلة النسخ الاحتياطي التلقائي، فأعد تفعيل إضافة النسخ الاحتياطي الخارجي من الإدارة > الإضافات."
+
+#: 
+msgid "Audiences"
+msgstr "الجماهير"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "فشلت المصادقة. يرجى التحقق من اسم المستخدم وكلمة المرور."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "فترة النسخ الاحتياطي التلقائي"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "نسخ قاعدة بيانات ChurchCRM احتياطيًا تلقائيًا إلى التخزين السحابي الخارجي عبر WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "متوسط معدل النقر"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "متوسط معدل الفتح"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "العودة إلى لوحة التحكم"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "تم إنشاء النسخة الاحتياطية لكن فشل نسخها إلى الخادم البعيد"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "النسخ الاحتياطي إلى WebDAV الآن"
+
+#: 
+msgid "Before You Start"
+msgstr "قبل البدء"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "تم اكتشاف تفضيل لغة المتصفح"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "أعضاء CRM غير مشتركين"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "الحملات المُرسَلة"
+
+#: 
+msgid "Can't scan?"
+msgstr "لا يمكنك المسح الضوئي؟"
+
+#: 
+msgid "Change Your Locale"
+msgstr "تغيير اللغة والمنطقة"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "يدعم ChurchCRM بنية الإضافات لتوسيع الوظائف."
+
+#: 
+msgid "Cleaned"
+msgstr "تم التنظيف"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "انقر على الزر أدناه لاختبار إعدادات اتصال WebDAV."
+
+#: 
+msgid "Community Plugins"
+msgstr "إضافات المجتمع"
+
+#: 
+msgid "Community plugins"
+msgstr "إضافات المجتمع"
+
+#: 
+msgid "Configure External Backup"
+msgstr "تكوين النسخ الاحتياطي الخارجي"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "تكوين MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "قم بتكوين هذه الإعدادات في"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "قم بتكوين هذه الإضافة لنسخ قاعدة بيانات ChurchCRM احتياطيًا تلقائيًا إلى خدمات التخزين السحابي المتوافقة مع WebDAV مثل Nextcloud وownCloud وأي خادم WebDAV آخر. يتم تشفير النسخ الاحتياطية أثناء النقل باستخدام HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "تم التكوين"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "تأكيد برمز من تطبيق المصادقة"
+
+#: 
+msgid "Connected"
+msgstr "متصل"
+
+#: 
+msgid "Connection failed"
+msgstr "فشل الاتصال"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "فشل الاتصال برمز HTTP"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "تم الاتصال بنجاح! نقطة نهاية WebDAV قابلة للوصول."
+
+#: 
+msgid "Connection test failed"
+msgstr "فشل اختبار الاتصال"
+
+#: 
+msgid "Core Plugins"
+msgstr "الإضافات الأساسية"
+
+#: 
+msgid "Core plugins"
+msgstr "الإضافات الأساسية"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "أنشئ نسخة احتياطية الآن وقم بتحميلها إلى خادم WebDAV."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "إنشاء جمهور في MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "مخصص"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "روابط قائمة مخصصة"
+
+#: 
+msgid "Default Image Style"
+msgstr "نمط الصورة الافتراضي"
+
+#: 
+msgid "Default List ID"
+msgstr "معرف القائمة الافتراضية"
+
+#: 
+msgid "Disable"
+msgstr "تعطيل"
+
+#: 
+msgid "Disable Plugin"
+msgstr "تعطيل الإضافة"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "تعطيل المصادقة الثنائية"
+
+#: 
+msgid "Dismiss"
+msgstr "رفض"
+
+#: 
+msgid "Done"
+msgstr "تم"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "صيغة E.164، مثلاً: +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "كل إضافة تتطلب"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "في كل مرة تسجل فيها الدخول، ستحتاج إلى تأكيد الهوية برمز من تطبيق المصادقة"
+
+#: 
+msgid "Email Addresses"
+msgstr "عناوين البريد الإلكتروني"
+
+#: 
+msgid "Enable"
+msgstr "تفعيل"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "تفعيل إضافة النسخ الاحتياطي الخارجي"
+
+#: 
+msgid "Enable Plugin"
+msgstr "تفعيل الإضافة"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "تفعيل المصادقة الثنائية"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "فعّل إضافة النسخ الاحتياطي الخارجي لتخزين WebDAV السحابي."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "فعّل هذا فقط لخوادم الشبكة المحلية ذات شهادات SSL الموقَّعة ذاتياً. يعطّل التحقق من الشهادة."
+
+#: 
+msgid "Endpoint URL"
+msgstr "عنوان URL لنقطة النهاية"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "أدخل الرمز المكوّن من 6 أرقام من تطبيق المصادقة"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "أدخل اسم المستخدم وكلمة المرور كالمعتاد"
+
+#: 
+msgid "External Backup"
+msgstr "النسخ الاحتياطي الخارجي"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "النسخ الاحتياطي الخارجي (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "إعدادات النسخ الاحتياطي الخارجي"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "إضافة النسخ الاحتياطي الخارجي مفعّلة لكنها غير مُكوَّنة."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "إضافة النسخ الاحتياطي الخارجي غير مُكوَّنة. يرجى تكوين إعدادات WebDAV في الإضافة."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "إضافة النسخ الاحتياطي الخارجي غير مفعّلة. يرجى تفعيلها وتكوينها من إدارة الإضافات."
+
+#: 
+msgid "Failed to create link"
+msgstr "فشل إنشاء الرابط"
+
+#: 
+msgid "Failed to delete link"
+msgstr "فشل حذف الرابط"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "فشل تعطيل الإضافة"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "فشل تفعيل الإضافة"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "فشل الحصول على تفاصيل الإضافة"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "فشل سرد الإضافات"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "فشل إعادة تعيين الإعدادات"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "فشل إرسال الرسالة النصية"
+
+#: 
+msgid "Family Status"
+msgstr "حالة العائلة"
+
+#: 
+msgid "Family not found"
+msgstr "العائلة غير موجودة"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "ابحث في MailChimp: الجمهور > الإعدادات > اسم الجمهور والإعدادات الافتراضية > معرف الجمهور"
+
+#: 
+msgid "From Phone Number"
+msgstr "من رقم الهاتف"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "من dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "معرف قياس GA4"
+
+#: 
+msgid "Generate new code"
+msgstr "إنشاء رمز جديد"
+
+#: 
+msgid "Get Started"
+msgstr "ابدأ الآن"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "احصل على مفتاح API من MailChimp: إعدادات الحساب > إضافات > مفاتيح API"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "جهّز تطبيق المصادقة (Google Authenticator أو Microsoft Authenticator أو Authy وغيرها)"
+
+#: 
+msgid "Help"
+msgstr "مساعدة"
+
+#: 
+msgid "Id"
+msgstr "المعرف"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "الصورة المعروضة عند عدم وجود Gravatar لعنوان البريد الإلكتروني"
+
+#: 
+msgid "Important"
+msgstr "مهم"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "قم بتثبيت الإضافات بوضعها في"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "رمز غير صالح. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "عنوان URL لنقطة النهاية غير صالح. يجب أن يكون عنواناً كاملاً يبدأ بـ https:// (مثلاً: https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "جهاز الكيوسك غير موجود"
+
+#: 
+msgid "Last Backup"
+msgstr "آخر نسخة احتياطية"
+
+#: 
+msgid "Last Campaign"
+msgstr "آخر حملة"
+
+#: 
+msgid "Last Subscriber"
+msgstr "آخر مشترك"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "آخر نسخة احتياطية ناجحة"
+
+#: 
+msgid "Last campaign"
+msgstr "آخر حملة"
+
+#: 
+msgid "Link Name"
+msgstr "اسم الرابط"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "لا يمكن أن يحتوي عنوان الرابط على علامات HTML"
+
+#: 
+msgid "Link address is required"
+msgstr "عنوان الرابط مطلوب"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "يجب أن يكون الرابط عنوان URL صالحاً"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "يجب أن يبدأ الرابط بـ http:// أو https://"
+
+#: 
+msgid "Link not found"
+msgstr "الرابط غير موجود"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "جارٍ تحميل رموز الاسترداد"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "مفتاح API لـ MailChimp"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "لوحة تحكم MailChimp"
+
+#: 
+msgid "Manage Links"
+msgstr "إدارة الروابط"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "إدارة المصادقة الثنائية"
+
+#: 
+msgid "Manual Backup"
+msgstr "نسخ احتياطي يدوي"
+
+#: 
+msgid "Menu Links"
+msgstr "روابط القائمة"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "لا يمكن أن يحتوي اسم القائمة على علامات HTML"
+
+#: 
+msgid "Menu name is required"
+msgstr "اسم القائمة مطلوب"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "يجب ألا يتجاوز اسم القائمة 50 حرفاً"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "يجب أن يتكون اسم القائمة من حرفين على الأقل"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "يجب أن يبدأ بـ http:// أو https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "يحتاج إلى تكوين"
+
+#: 
+msgid "Never"
+msgstr "أبداً"
+
+#: 
+msgid "No Audiences Found"
+msgstr "لم يُعثر على جماهير"
+
+#: 
+msgid "No backups recorded"
+msgstr "لا توجد نسخ احتياطية مسجّلة"
+
+#: 
+msgid "No community plugins installed"
+msgstr "لا توجد إضافات مجتمعية مثبّتة"
+
+#: 
+msgid "No core plugins found"
+msgstr "لم يُعثر على إضافات أساسية"
+
+#: 
+msgid "No settings provided"
+msgstr "لم يتم توفير إعدادات"
+
+#: 
+msgid "Not Configured"
+msgstr "غير مُكوَّن"
+
+#: 
+msgid "Not in CRM"
+msgstr "غير موجود في CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "رمز لمرة واحدة"
+
+#: 
+msgid "Open MailChimp"
+msgstr "فتح MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "افتح تطبيق المصادقة وامسح رمز QR هذا"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "عنوان URL لخادم OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "اختياري - مطلوب فقط إذا كانت مصادقة OpenLP مفعّلة"
+
+#: 
+msgid "Phone number and message required"
+msgstr "رقم الهاتف والرسالة مطلوبان"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "يرجى تكوين عنوان نقطة النهاية واسم المستخدم وكلمة المرور أولاً."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "يرجى تكوين إعدادات WebDAV قبل إنشاء نسخة احتياطية عن بُعد."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "يرجى تكوين إعدادات WebDAV قبل اختبار الاتصال."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "يرجى تكوين مفتاح API لـ MailChimp لاستخدام هذا التكامل."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "يرجى إدخال اسم للرابط (من 2 إلى 50 حرفاً)"
+
+#: 
+msgid "Please try again"
+msgstr "يرجى المحاولة مرة أخرى"
+
+#: 
+msgid "Plugin Development"
+msgstr "تطوير الإضافات"
+
+#: 
+msgid "Plugin Help"
+msgstr "مساعدة الإضافة"
+
+#: 
+msgid "Plugin Management"
+msgstr "إدارة الإضافات"
+
+#: 
+msgid "Plugin Settings"
+msgstr "إعدادات الإضافة"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "لا يمكن تعطيل الإضافة لأن إضافات أخرى تعتمد عليها"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "لا يمكن تفعيل الإضافة بسبب متطلبات التبعية أو الإصدار"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "تم تعطيل الإضافة بنجاح"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "تم تفعيل الإضافة بنجاح"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "فشل تحميل الإضافة"
+
+#: 
+msgid "Plugin not found"
+msgstr "الإضافة غير موجودة"
+
+#: 
+msgid "Plugins"
+msgstr "الإضافات"
+
+#: 
+msgid "Print"
+msgstr "طباعة"
+
+#: 
+msgid "Recipients and message required"
+msgstr "المستلمون والرسالة مطلوبان"
+
+#: 
+msgid "Recovery Codes"
+msgstr "رموز الاسترداد"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "فشل النسخ الاحتياطي عن بُعد. راجع سجلات الخادم للاطلاع على التفاصيل."
+
+#: 
+msgid "SMS sent"
+msgstr "تم إرسال الرسالة النصية"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "احفظ رموز الاسترداد هذه في مكان آمن. يمكنك استخدامها للوصول إلى حسابك إذا فقدت الوصول إلى تطبيق المصادقة."
+
+#: 
+msgid "Scan QR Code"
+msgstr "مسح رمز QR"
+
+#: 
+msgid "Secure"
+msgstr "آمن"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "إعداد تطبيق المصادقة"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "تم إعادة تعيين الإعدادات بنجاح"
+
+#: 
+msgid "Setup Complete"
+msgstr "اكتمل الإعداد"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "مضمَّن مع ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "تسجيل الدخول"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "تعذّر إعادة تعيين بعض الإعدادات"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "تعذّر حفظ بعض الإعدادات"
+
+#: 
+msgid "Subscribers"
+msgstr "المشتركون"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "المشتركون غير الموجودين في CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "اختبار الاتصال"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "اختبار اتصال WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "تظهر هذه الروابط في قائمة \"الروابط\" في الشريط الجانبي للتنقل عند تفعيل هذه الإضافة."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "هؤلاء الأشخاص مشتركون في جمهور MailChimp الخاص بك لكنهم غير موجودين في ChurchCRM. يُنصح بإضافتهم إلى قاعدة البيانات أو إزالتهم من MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "هؤلاء الأشخاص موجودون في ChurchCRM بعناوين بريد إلكتروني لكنهم غير مشتركين في جمهور MailChimp هذا. يُنصح بدعوتهم للاشتراك."
+
+#: 
+msgid "Third-party extensions."
+msgstr "امتدادات من طرف ثالث."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "سيحل هذا محل أي طرق مصادقة ثنائية مسجّلة سابقاً"
+
+#: 
+msgid "Total Campaigns"
+msgstr "إجمالي الحملات"
+
+#: 
+msgid "Total Subscribers"
+msgstr "إجمالي المشتركين"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "خطأ في تسجيل المصادقة الثنائية"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "تم تعطيل المصادقة الثنائية"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "المصادقة الثنائية هي إحدى أفضل الطرق لحماية حسابك. نوصي بشدة بإبقائها مفعّلة."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "عنوان URL لخادم OpenLP (مثلاً: http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "تعذّر التحميل"
+
+#: 
+msgid "Unsubscribed"
+msgstr "تم إلغاء الاشتراك"
+
+#: 
+msgid "Use a different account"
+msgstr "استخدام حساب آخر"
+
+#: 
+msgid "Value is configured"
+msgstr "القيمة مُكوَّنة"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "القيمة محدَّدة - اتركها فارغة للإبقاء على القيمة الحالية"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "تحقق وسجّل الدخول"
+
+#: 
+msgid "Verify Code"
+msgstr "تحقق من الرمز"
+
+#: 
+msgid "Verifying"
+msgstr "جارٍ التحقق"
+
+#: 
+msgid "Vonage API Key"
+msgstr "مفتاح API لـ Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "مفتاح API السري لـ Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "تكوين WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "اتصال WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "نسخ WebDAV الاحتياطية غير مُكوَّنة بشكل صحيح. يرجى التأكد من تعيين عنوان نقطة النهاية واسم المستخدم وكلمة المرور."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "عنوان URL لنقطة نهاية WebDAV مطلوب."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "كلمة مرور WebDAV مطلوبة."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "اسم مستخدم WebDAV مطلوب."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "يمكنك أيضاً استخدام رموز استرداد النسخ الاحتياطي إذا فقدت الوصول إلى التطبيق"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "يمكنك الآن استخدام تطبيق المصادقة لتسجيل الدخول. كل رمز صالح لمدة 30 ثانية."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "ستتلقى رموز احتياطية يمكن استخدامها إذا فقدت الوصول إلى تطبيقك"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "معرف قياس GA4 الخاص بك (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "لا يحتوي حساب MailChimp الخاص بك على أي جماهير (قوائم) مُكوَّنة."
+
+#: 
+msgid "Your account is now protected"
+msgstr "حسابك محمي الآن"
+
+#: 
+msgid "Your account is protected"
+msgstr "حسابك محمي"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "تم تسجيل تطبيق المصادقة بنجاح"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "تفضيل لغة متصفحك يختلف عن إعدادات اللغة في ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "مثلاً: موقع الكنيسة"
+
+#: 
+msgid "manifest."
+msgstr "ملف البيان."
+
+#: 
+msgid "subscribers"
+msgstr "مشتركون"
+
+#: 
+msgid "API Key is required."
+msgstr "مفتاح API مطلوب."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "لا يمكن الاتصال بـ OpenLP على %s. تحقق من عنوان URL للخادم وتأكد من تشغيل OpenLP."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "لا يمكن الاتصال بـ OpenLP على %s. أعاد الخادم HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "خريطة الجماعة"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "خريطة الجماعة — الإعداد مطلوب"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "تم الاتصال بـ MailChimp! الحساب: %s (%d مشترك)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "تم الاتصال بخادم OpenLP بنجاح."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "تم الاتصال بـ OpenLP! الإصدار: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "تم الاتصال! رصيد الحساب: €%.2f. جاهز لإرسال الرسائل النصية."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "تعذّر الاتصال بـ MailChimp. يرجى التحقق من مفتاح API."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "فشل الاتصال بخادم OpenLP."
+
+#: 
+msgid "Get Directions"
+msgstr "الحصول على الاتجاهات"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "أدرج رمز البلد، مثلاً +14155551234 (الولايات المتحدة) أو +447911123456 (المملكة المتحدة)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "رقم \"المُرسِل\" غير صالح: \"%s\". أدرج رمز البلد، مثلاً +14155551234 (الولايات المتحدة) أو +447911123456 (المملكة المتحدة)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "بيانات اعتماد API غير صالحة. يرجى التحقق من مفتاح API والمفتاح السري."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "صيغة مفتاح API غير صالحة. تحقق من مفتاح API لـ MailChimp."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "عنوان URL لنقطة النهاية غير صالح. يجب أن يكون عنواناً كاملاً يبدأ بـ https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "صيغة عنوان URL للخادم غير صالحة."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "فشل الاتصال بـ MailChimp."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "مستوى تكبير الخريطة"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "هل هناك عائلات مفقودة؟ قم بتحديث الإحداثيات لتضمينها على الخريطة."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "إعدادات مطلوبة مفقودة: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "الشخص لا ينتمي إلى عائلة"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "الإضافة غير موجودة أو غير نشطة"
+
+#: 
+msgid "Server URL is required."
+msgstr "عنوان URL للخادم مطلوب."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "هذه الإضافة لا تدعم اختبار الاتصال."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "تعذّر عرض الخريطة: لم يتم ترميز عنوان الكنيسة جغرافياً بعد."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "قم بتحديث عنوان الكنيسة في الإعدادات."
+
+#: 
+msgid "Username and password are required."
+msgstr "اسم المستخدم وكلمة المرور مطلوبان."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "فشل التحقق: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "خطأ في خادم Vonage. يرجى المحاولة مرة أخرى لاحقاً."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "عنوان URL لنقطة نهاية WebDAV مطلوب."
+

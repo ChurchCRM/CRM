@@ -11451,3 +11451,981 @@ msgstr "बेमेल पाया गया"
 msgid "mismatches detected"
 msgstr "बेमेल पाए गए"
 
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d घंटा"
+msgstr[1] "%d घंटे"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "WebDAV बैकअप के बारे में"
+
+#: 
+msgid "Add Link"
+msgstr "लिंक जोड़ें"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "अपने खाते में सुरक्षा की एक अतिरिक्त परत जोड़ें"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "नेविगेशन मेनू में कस्टम बाहरी लिंक जोड़ें।"
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "स्व-हस्ताक्षरित प्रमाणपत्र अनुमति दें"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "प्लगइन अनुरोध को संसाधित करने में त्रुटि हुई"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "क्या आप वाकई द्वि-कारक प्रमाणीकरण अक्षम करना चाहते हैं? आपका खाता कम सुरक्षित हो जाएगा।"
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "पुनर्स्थापना के भाग के रूप में, बाहरी बैकअप अक्षम कर दिए गए हैं। यदि आप स्वचालित बैकअप जारी रखना चाहते हैं, तो Admin > Plugins में External Backup प्लगइन पुनः सक्षम करें।"
+
+#: 
+msgid "Audiences"
+msgstr "दर्शक"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "प्रमाणीकरण विफल हुआ। कृपया उपयोगकर्ता नाम और पासवर्ड जाँचें।"
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "स्वतः-बैकअप अंतराल"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "WebDAV के माध्यम से अपने ChurchCRM डेटाबेस को बाहरी क्लाउड स्टोरेज में स्वचालित रूप से बैकअप करें।"
+
+#: 
+msgid "Avg Click Rate"
+msgstr "औसत क्लिक दर"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "औसत ओपन दर"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "डैशबोर्ड पर वापस जाएं"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "बैकअप बना लिया गया लेकिन दूरस्थ सर्वर पर कॉपी करने में विफल रहा"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "अभी WebDAV पर बैकअप करें"
+
+#: 
+msgid "Before You Start"
+msgstr "शुरू करने से पहले"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "ब्राउज़र भाषा प्राथमिकता का पता चला"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "CRM सदस्य सदस्यता नहीं ली"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "अभियान भेजे गए"
+
+#: 
+msgid "Can't scan?"
+msgstr "स्कैन नहीं कर सकते?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "अपनी भाषा सेटिंग बदलें"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM कार्यक्षमता बढ़ाने के लिए एक प्लगइन आर्किटेक्चर का समर्थन करता है।"
+
+#: 
+msgid "Cleaned"
+msgstr "साफ किया गया"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "अपनी WebDAV कनेक्शन सेटिंग परखने के लिए नीचे दिया बटन क्लिक करें।"
+
+#: 
+msgid "Community Plugins"
+msgstr "समुदाय प्लगइन"
+
+#: 
+msgid "Community plugins"
+msgstr "समुदाय प्लगइन"
+
+#: 
+msgid "Configure External Backup"
+msgstr "बाहरी बैकअप कॉन्फ़िगर करें"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "MailChimp कॉन्फ़िगर करें"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "इन सेटिंग्स को यहाँ कॉन्फ़िगर करें"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "इस प्लगइन को Nextcloud, ownCloud, या किसी भी WebDAV सर्वर जैसी WebDAV-संगत क्लाउड स्टोरेज सेवाओं में अपने ChurchCRM डेटाबेस को स्वचालित रूप से बैकअप करने के लिए कॉन्फ़िगर करें। बैकअप HTTPS का उपयोग करके स्थानांतरण के दौरान एन्क्रिप्ट किए जाते हैं।"
+
+#: 
+msgid "Configured"
+msgstr "कॉन्फ़िगर किया गया"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "अपने प्रमाणीकरण ऐप के कोड से पुष्टि करें"
+
+#: 
+msgid "Connected"
+msgstr "जुड़ा हुआ"
+
+#: 
+msgid "Connection failed"
+msgstr "कनेक्शन विफल"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "HTTP कोड के साथ कनेक्शन विफल"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "कनेक्शन सफल! WebDAV एंडपॉइंट सुलभ है।"
+
+#: 
+msgid "Connection test failed"
+msgstr "कनेक्शन परीक्षण विफल"
+
+#: 
+msgid "Core Plugins"
+msgstr "मुख्य प्लगइन"
+
+#: 
+msgid "Core plugins"
+msgstr "मुख्य प्लगइन"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "अभी एक बैकअप बनाएं और इसे अपने WebDAV सर्वर पर अपलोड करें।"
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "MailChimp में दर्शक बनाएं"
+
+#: 
+msgid "Custom"
+msgstr "कस्टम"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "कस्टम मेनू लिंक"
+
+#: 
+msgid "Default Image Style"
+msgstr "डिफ़ॉल्ट छवि शैली"
+
+#: 
+msgid "Default List ID"
+msgstr "डिफ़ॉल्ट सूची आईडी"
+
+#: 
+msgid "Disable"
+msgstr "अक्षम करें"
+
+#: 
+msgid "Disable Plugin"
+msgstr "प्लगइन अक्षम करें"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "द्वि-कारक प्रमाणीकरण अक्षम करें"
+
+#: 
+msgid "Dismiss"
+msgstr "खारिज करें"
+
+#: 
+msgid "Done"
+msgstr "हो गया"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164 प्रारूप, जैसे +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "प्रत्येक प्लगइन के लिए एक आवश्यक है"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "हर बार साइन इन करने पर, आपको अपने प्रमाणीकरण ऐप से एक कोड से पुष्टि करनी होगी"
+
+#: 
+msgid "Email Addresses"
+msgstr "ईमेल पते"
+
+#: 
+msgid "Enable"
+msgstr "सक्षम करें"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "बाहरी बैकअप प्लगइन सक्षम करें"
+
+#: 
+msgid "Enable Plugin"
+msgstr "प्लगइन सक्षम करें"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "द्वि-कारक प्रमाणीकरण सक्षम करें"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "WebDAV क्लाउड स्टोरेज के लिए External Backup प्लगइन सक्षम करें।"
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "इसे केवल स्व-हस्ताक्षरित SSL प्रमाणपत्रों वाले स्थानीय नेटवर्क सर्वरों के लिए सक्षम करें। प्रमाणपत्र सत्यापन अक्षम करता है।"
+
+#: 
+msgid "Endpoint URL"
+msgstr "एंडपॉइंट URL"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "अपने प्रमाणीकरण ऐप से 6-अंकीय कोड दर्ज करें"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "अपना उपयोगकर्ता नाम और पासवर्ड हमेशा की तरह दर्ज करें"
+
+#: 
+msgid "External Backup"
+msgstr "बाहरी बैकअप"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "बाहरी बैकअप (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "बाहरी बैकअप सेटिंग्स"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "बाहरी बैकअप प्लगइन सक्षम है लेकिन कॉन्फ़िगर नहीं किया गया है।"
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "बाहरी बैकअप प्लगइन कॉन्फ़िगर नहीं किया गया है। कृपया प्लगइन में WebDAV सेटिंग्स कॉन्फ़िगर करें।"
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "बाहरी बैकअप प्लगइन सक्षम नहीं है। कृपया Plugin Management में इसे सक्षम और कॉन्फ़िगर करें।"
+
+#: 
+msgid "Failed to create link"
+msgstr "लिंक बनाने में विफल"
+
+#: 
+msgid "Failed to delete link"
+msgstr "लिंक हटाने में विफल"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "प्लगइन अक्षम करने में विफल"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "प्लगइन सक्षम करने में विफल"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "प्लगइन विवरण प्राप्त करने में विफल"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "प्लगइन सूची बनाने में विफल"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "सेटिंग्स रीसेट करने में विफल"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "SMS भेजने में विफल"
+
+#: 
+msgid "Family Status"
+msgstr "परिवार की स्थिति"
+
+#: 
+msgid "Family not found"
+msgstr "परिवार नहीं मिला"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "MailChimp में खोजें: Audience > Settings > Audience name and defaults > Audience ID"
+
+#: 
+msgid "From Phone Number"
+msgstr "फ़ोन नंबर से"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "dashboard.vonage.com से"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "GA4 माप आईडी"
+
+#: 
+msgid "Generate new code"
+msgstr "नया कोड उत्पन्न करें"
+
+#: 
+msgid "Get Started"
+msgstr "शुरू करें"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "MailChimp से अपनी API Key प्राप्त करें: Account Settings > Extras > API Keys"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "अपना प्रमाणीकरण ऐप तैयार रखें (Google Authenticator, Microsoft Authenticator, Authy, आदि)"
+
+#: 
+msgid "Help"
+msgstr "सहायता"
+
+#: 
+msgid "Id"
+msgstr "आईडी"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "जब ईमेल पते के लिए कोई Gravatar मौजूद नहीं है तो दिखाई जाने वाली छवि"
+
+#: 
+msgid "Important"
+msgstr "महत्वपूर्ण"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "प्लगइन इंस्टॉल करने के लिए उन्हें यहाँ रखें"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "अमान्य कोड। कृपया फिर से प्रयास करें।"
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "अमान्य एंडपॉइंट URL। यह https:// से शुरू होने वाला पूरा URL होना चाहिए (जैसे, https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "कियोस्क डिवाइस नहीं मिला"
+
+#: 
+msgid "Last Backup"
+msgstr "अंतिम बैकअप"
+
+#: 
+msgid "Last Campaign"
+msgstr "अंतिम अभियान"
+
+#: 
+msgid "Last Subscriber"
+msgstr "अंतिम सदस्य"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "अंतिम सफल बैकअप"
+
+#: 
+msgid "Last campaign"
+msgstr "अंतिम अभियान"
+
+#: 
+msgid "Link Name"
+msgstr "लिंक नाम"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "लिंक पता HTML टैग नहीं रख सकता"
+
+#: 
+msgid "Link address is required"
+msgstr "लिंक पता आवश्यक है"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "लिंक एक वैध URL होना चाहिए"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "लिंक http:// या https:// से शुरू होना चाहिए"
+
+#: 
+msgid "Link not found"
+msgstr "लिंक नहीं मिला"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "रिकवरी कोड लोड हो रहे हैं"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "MailChimp API Key"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "MailChimp डैशबोर्ड"
+
+#: 
+msgid "Manage Links"
+msgstr "लिंक प्रबंधित करें"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "द्वि-कारक प्रमाणीकरण प्रबंधित करें"
+
+#: 
+msgid "Manual Backup"
+msgstr "मैनुअल बैकअप"
+
+#: 
+msgid "Menu Links"
+msgstr "मेनू लिंक"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "मेनू नाम HTML टैग नहीं रख सकता"
+
+#: 
+msgid "Menu name is required"
+msgstr "मेनू नाम आवश्यक है"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "मेनू नाम 50 वर्णों से कम या बराबर होना चाहिए"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "मेनू नाम कम से कम 2 वर्णों का होना चाहिए"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "http:// या https:// से शुरू होना चाहिए"
+
+#: 
+msgid "Needs Configuration"
+msgstr "कॉन्फ़िगरेशन आवश्यक है"
+
+#: 
+msgid "Never"
+msgstr "कभी नहीं"
+
+#: 
+msgid "No Audiences Found"
+msgstr "कोई दर्शक नहीं मिला"
+
+#: 
+msgid "No backups recorded"
+msgstr "कोई बैकअप दर्ज नहीं"
+
+#: 
+msgid "No community plugins installed"
+msgstr "कोई समुदाय प्लगइन स्थापित नहीं"
+
+#: 
+msgid "No core plugins found"
+msgstr "कोई मुख्य प्लगइन नहीं मिला"
+
+#: 
+msgid "No settings provided"
+msgstr "कोई सेटिंग्स प्रदान नहीं की गईं"
+
+#: 
+msgid "Not Configured"
+msgstr "कॉन्फ़िगर नहीं किया गया"
+
+#: 
+msgid "Not in CRM"
+msgstr "CRM में नहीं"
+
+#: 
+msgid "One-Time Code"
+msgstr "एक बार का कोड"
+
+#: 
+msgid "Open MailChimp"
+msgstr "MailChimp खोलें"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "अपना प्रमाणीकरण ऐप खोलें और इस QR कोड को स्कैन करें"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "OpenLP सर्वर URL"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "वैकल्पिक - केवल तब आवश्यक है जब OpenLP प्रमाणीकरण सक्षम हो"
+
+#: 
+msgid "Phone number and message required"
+msgstr "फ़ोन नंबर और संदेश आवश्यक हैं"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "कृपया पहले एंडपॉइंट, उपयोगकर्ता नाम और पासवर्ड कॉन्फ़िगर करें।"
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "दूरस्थ बैकअप बनाने से पहले कृपया WebDAV सेटिंग्स कॉन्फ़िगर करें।"
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "कनेक्शन परखने से पहले कृपया WebDAV सेटिंग्स कॉन्फ़िगर करें।"
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "इस एकीकरण का उपयोग करने के लिए कृपया अपनी MailChimp API key कॉन्फ़िगर करें।"
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "कृपया एक लिंक नाम दर्ज करें (2-50 वर्ण)"
+
+#: 
+msgid "Please try again"
+msgstr "कृपया फिर से प्रयास करें"
+
+#: 
+msgid "Plugin Development"
+msgstr "प्लगइन विकास"
+
+#: 
+msgid "Plugin Help"
+msgstr "प्लगइन सहायता"
+
+#: 
+msgid "Plugin Management"
+msgstr "प्लगइन प्रबंधन"
+
+#: 
+msgid "Plugin Settings"
+msgstr "प्लगइन सेटिंग्स"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "प्लगइन अक्षम नहीं किया जा सकता क्योंकि अन्य प्लगइन इस पर निर्भर हैं"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "निर्भरता या संस्करण आवश्यकताओं के कारण प्लगइन सक्षम नहीं किया जा सकता"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "प्लगइन सफलतापूर्वक अक्षम किया गया"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "प्लगइन सफलतापूर्वक सक्षम किया गया"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "प्लगइन लोड करने में विफल"
+
+#: 
+msgid "Plugin not found"
+msgstr "प्लगइन नहीं मिला"
+
+#: 
+msgid "Plugins"
+msgstr "प्लगइन"
+
+#: 
+msgid "Print"
+msgstr "प्रिंट करें"
+
+#: 
+msgid "Recipients and message required"
+msgstr "प्राप्तकर्ता और संदेश आवश्यक हैं"
+
+#: 
+msgid "Recovery Codes"
+msgstr "रिकवरी कोड"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "दूरस्थ बैकअप विफल। विवरण के लिए सर्वर लॉग जाँचें।"
+
+#: 
+msgid "SMS sent"
+msgstr "SMS भेजा गया"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "इन रिकवरी कोड को सुरक्षित स्थान पर सहेजें। यदि आप अपने प्रमाणीकरण ऐप तक पहुँच खो देते हैं तो आप इनका उपयोग अपने खाते तक पहुँचने के लिए कर सकते हैं।"
+
+#: 
+msgid "Scan QR Code"
+msgstr "QR कोड स्कैन करें"
+
+#: 
+msgid "Secure"
+msgstr "सुरक्षित"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "प्रमाणीकरण सेट अप करें"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "सेटिंग्स सफलतापूर्वक रीसेट की गईं"
+
+#: 
+msgid "Setup Complete"
+msgstr "सेटअप पूर्ण"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "ChurchCRM के साथ शामिल।"
+
+#: 
+msgid "Sign In"
+msgstr "साइन इन करें"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "कुछ सेटिंग्स रीसेट नहीं की जा सकीं"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "कुछ सेटिंग्स सहेजी नहीं जा सकीं"
+
+#: 
+msgid "Subscribers"
+msgstr "सदस्य"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "CRM में नहीं आने वाले सदस्य"
+
+#: 
+msgid "Test Connection"
+msgstr "कनेक्शन परखें"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "WebDAV कनेक्शन परखें"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "जब यह प्लगइन सक्षम होता है तो ये लिंक नेविगेशन साइडबार के \"Links\" मेनू में दिखते हैं।"
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "ये लोग आपके MailChimp दर्शकों में सदस्य हैं लेकिन ChurchCRM में नहीं हैं। इन्हें अपने डेटाबेस में जोड़ने या MailChimp से हटाने पर विचार करें।"
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "ये लोग ChurchCRM में ईमेल पते के साथ मौजूद हैं लेकिन इस MailChimp दर्शक के सदस्य नहीं हैं। उन्हें सदस्यता लेने के लिए आमंत्रित करने पर विचार करें।"
+
+#: 
+msgid "Third-party extensions."
+msgstr "तृतीय-पक्ष एक्सटेंशन।"
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "यह पहले से नामांकित किसी भी 2FA विधि को बदल देगा"
+
+#: 
+msgid "Total Campaigns"
+msgstr "कुल अभियान"
+
+#: 
+msgid "Total Subscribers"
+msgstr "कुल सदस्य"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "द्वि-कारक नामांकन त्रुटि"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "द्वि-कारक प्रमाणीकरण अक्षम कर दिया गया है"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "द्वि-कारक प्रमाणीकरण आपके खाते की सुरक्षा के सर्वोत्तम तरीकों में से एक है। हम इसे सक्षम रखने की दृढ़ता से अनुशंसा करते हैं।"
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "आपके OpenLP सर्वर का URL (जैसे, http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "लोड करने में असमर्थ"
+
+#: 
+msgid "Unsubscribed"
+msgstr "सदस्यता रद्द की गई"
+
+#: 
+msgid "Use a different account"
+msgstr "एक अलग खाते का उपयोग करें"
+
+#: 
+msgid "Value is configured"
+msgstr "मान कॉन्फ़िगर किया गया है"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "मान सेट है - वर्तमान रखने के लिए खाली छोड़ें"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "सत्यापित करें और साइन इन करें"
+
+#: 
+msgid "Verify Code"
+msgstr "कोड सत्यापित करें"
+
+#: 
+msgid "Verifying"
+msgstr "सत्यापित हो रहा है"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Vonage API Key"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API Secret"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV कॉन्फ़िगरेशन"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV कनेक्शन"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV बैकअप सही ढंग से कॉन्फ़िगर नहीं किए गए हैं। कृपया सुनिश्चित करें कि एंडपॉइंट, उपयोगकर्ता नाम और पासवर्ड सेट हैं।"
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV एंडपॉइंट URL आवश्यक है।"
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV पासवर्ड आवश्यक है।"
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV उपयोगकर्ता नाम आवश्यक है।"
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "यदि आप अपने ऐप तक पहुँच खो देते हैं तो आप बैकअप रिकवरी कोड का भी उपयोग कर सकते हैं"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "अब आप साइन इन करने के लिए अपने प्रमाणीकरण ऐप का उपयोग कर सकते हैं। प्रत्येक कोड 30 सेकंड के लिए वैध है।"
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "आपको बैकअप कोड प्राप्त होंगे जिनका उपयोग तब किया जा सकता है यदि आप अपने ऐप तक पहुँच खो देते हैं"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "आपकी GA4 माप आईडी (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "आपके MailChimp खाते में कोई दर्शक (सूचियाँ) कॉन्फ़िगर नहीं है।"
+
+#: 
+msgid "Your account is now protected"
+msgstr "आपका खाता अब सुरक्षित है"
+
+#: 
+msgid "Your account is protected"
+msgstr "आपका खाता सुरक्षित है"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "आपका प्रमाणीकरण ऐप सफलतापूर्वक नामांकित हो गया है"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "आपकी ब्राउज़र भाषा प्राथमिकता आपकी ChurchCRM भाषा सेटिंग से भिन्न है"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "जैसे, चर्च वेबसाइट"
+
+#: 
+msgid "manifest."
+msgstr "मैनिफेस्ट।"
+
+#: 
+msgid "subscribers"
+msgstr "सदस्य"
+
+#: 
+msgid "API Key is required."
+msgstr "API Key आवश्यक है।"
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "%s पर OpenLP से कनेक्ट नहीं हो सकता। सर्वर URL जाँचें और सुनिश्चित करें कि OpenLP चल रहा है।"
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "%s पर OpenLP से कनेक्ट नहीं हो सकता। सर्वर ने HTTP %d लौटाया।"
+
+#: 
+msgid "Congregation Map"
+msgstr "मंडली मानचित्र"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "मंडली मानचित्र — सेटअप आवश्यक है"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "MailChimp से जुड़ गए! खाता: %s (%d सदस्य)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "OpenLP सर्वर से सफलतापूर्वक जुड़ गए।"
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "OpenLP से जुड़ गए! संस्करण: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "जुड़ गए! खाता शेष: €%.2f। SMS भेजने के लिए तैयार।"
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "MailChimp से कनेक्ट नहीं हो सका। कृपया अपनी API key जाँचें।"
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "OpenLP सर्वर से कनेक्ट करने में विफल।"
+
+#: 
+msgid "Get Directions"
+msgstr "दिशा-निर्देश प्राप्त करें"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "देश कोड शामिल करें, जैसे +14155551234 (US) या +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "अमान्य \"From Number\": \"%s\"। देश कोड शामिल करें, जैसे +14155551234 (US) या +447911123456 (UK)।"
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "अमान्य API क्रेडेंशियल। कृपया अपनी API Key और API Secret सत्यापित करें।"
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "अमान्य API key प्रारूप। अपनी MailChimp API key जाँचें।"
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "अमान्य एंडपॉइंट URL। यह https:// से शुरू होने वाला पूरा URL होना चाहिए"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "अमान्य सर्वर URL प्रारूप।"
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp कनेक्शन विफल।"
+
+#: 
+msgid "Map Zoom Level"
+msgstr "मानचित्र ज़ूम स्तर"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "परिवार गायब हैं? उन्हें मानचित्र पर शामिल करने के लिए निर्देशांक अपडेट करें।"
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "आवश्यक सेटिंग्स गायब हैं: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "व्यक्ति का कोई परिवार नहीं है"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "प्लगइन नहीं मिला या सक्रिय नहीं है"
+
+#: 
+msgid "Server URL is required."
+msgstr "सर्वर URL आवश्यक है।"
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "यह प्लगइन कनेक्शन परीक्षण का समर्थन नहीं करता।"
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "मानचित्र प्रदर्शित करने में असमर्थ: चर्च पते को अभी तक जियोकोड नहीं किया गया है।"
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Settings में चर्च का पता अपडेट करें।"
+
+#: 
+msgid "Username and password are required."
+msgstr "उपयोगकर्ता नाम और पासवर्ड आवश्यक हैं।"
+
+#: 
+msgid "Validation failed: %s"
+msgstr "सत्यापन विफल: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Vonage सर्वर त्रुटि। कृपया बाद में फिर से प्रयास करें।"
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV एंडपॉइंट URL आवश्यक है।"
+
