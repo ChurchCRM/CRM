@@ -87,7 +87,7 @@
         "@fortawesome/fontawesome-free": "^6.7.2",
         "@ttskch/select2-bootstrap4-theme": "^1.5.2",
         "@uppy/core": "^5.2.0",
-        "@uppy/dashboard": "^4.4.3",
+        "@uppy/dashboard": "^5.1.1",
         "@uppy/webcam": "^4.3.2",
         "@uppy/xhr-upload": "^4.4.2",
         "admin-lte": "3.2.0",
