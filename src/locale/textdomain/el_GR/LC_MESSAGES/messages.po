@@ -11267,3 +11267,1179 @@ msgstr "Επαναφορά Φίλτρων"
 msgid "Show only people with photos"
 msgstr "Εμφάνιση μόνο ατόμων με φωτογραφίες"
 
+#: 
+msgid "Checkout All"
+msgstr "Ολοκλήρωση όλων"
+
+#: 
+msgid "Expected"
+msgstr "Αναμενόμενο"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Αποτυχία διαγραφής κιόσκι"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Υπόσχεση οικογένειας ανά οικονομικό έτος"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Εύρεση εγγεγραμμένων μαθητών"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Οικονομικό έτος."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Ομάδα εγγεγραμμένων μαθητών"
+
+#: 
+msgid "Here"
+msgstr "Εδώ"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Μη έγκυρος τύπος ανάθεσης"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Μη έγκυρο αναγνωριστικό ατόμου"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Η εγγραφή κιόσκι είναι απενεργοποιημένη"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Το κιόσκι δεν βρέθηκε"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Συνδέστε αυτή την εκδήλωση με μια ομάδα για λειτουργία check-in κιόσκι. Τα μέλη της ομάδας θα εμφανίζονται στο κιόσκι."
+
+#: 
+msgid "Linked Group"
+msgstr "Συνδεδεμένη ομάδα"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Η εγγραφή νέων συσκευών κιόσκι είναι αυτήν τη στιγμή απενεργοποιημένη. Επικοινωνήστε με τον διαχειριστή του συστήματός σας για να ενεργοποιήσετε την εγγραφή κιόσκι."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Χωρίς ομάδα (Επιλέξτε για check-in κιόσκι)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Δεν έχει κάνει check-in κανείς ακόμα"
+
+#: 
+msgid "Person not found"
+msgstr "Το άτομο δεν βρέθηκε"
+
+#: 
+msgid "Pickup Request"
+msgstr "Αίτημα παραλαβής"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Παρακαλώ μεταβείτε στην αίθουσα το συντομότερο δυνατό."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Σύνοψη υποσχέσεων ανά οικογενειακό όνομα για κάθε ταμείο για το επιλεγμένο οικονομικό έτος"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Εγγεγραμμένοι μαθητές"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Ο δάσκαλος έστειλε αυτή την ειδοποίηση στις"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Αυτό το κιόσκι φαίνεται καλύτερα σε tablet σε οριζόντια λειτουργία για βέλτιστη εμπειρία check-in."
+
+#: 
+msgid "Tip"
+msgstr "Συμβουλή"
+
+#: 
+msgid "Try Again"
+msgstr "Δοκιμάστε ξανά"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Επερχόμενα γενέθλια"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Αναμονή για check-in"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Όταν είναι ενεργοποιημένο, νέες συσκευές κιόσκι μπορούν να εγγραφούν για 30 δευτερόλεπτα."
+
+#: 
+msgid "Your child"
+msgstr "Το παιδί σας"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "πρέπει να παραληφθεί από"
+
+#: 
+msgid "their classroom"
+msgstr "την αίθουσά τους"
+
+#: 
+msgid "All timezones match"
+msgstr "Όλες οι ζώνες ώρας ταιριάζουν"
+
+#: 
+msgid "Baseline"
+msgstr "Βασική γραμμή"
+
+#: 
+msgid "Browser"
+msgstr "Πρόγραμμα περιήγησης"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Το πρόγραμμα περιήγησης διαφέρει από τη διαμόρφωση του συστήματος - οι ημερομηνίες ενδέχεται να εμφανίζονται λανθασμένα για αυτόν τον χρήστη."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Δεν είναι δυνατή η εγγραφή στον κατάλογο εγκατάστασης ChurchCRM. Βεβαιωθείτε ότι ο διακομιστής ιστού έχει δικαιώματα εγγραφής."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Σύγκριση ζωνών ώρας..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Ο κατάλογος προορισμού δεν υπάρχει. Βεβαιωθείτε ότι το ChurchCRM είναι σωστά εγκατεστημένο."
+
+#: 
+msgid "Does not match system config"
+msgstr "Δεν ταιριάζει με τη διαμόρφωση του συστήματος"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Το ληφθέν αρχείο έκδοσης είναι κενό. Αυτό μπορεί να οφείλεται σε προβλήματα δικτύου ή περιορισμό ρυθμού GitHub. Δοκιμάστε ξανά αργότερα."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Η εξαγωγή ολοκληρώθηκε αλλά τα αρχεία αναβάθμισης δεν βρέθηκαν. Το αρχείο αναβάθμισης ενδέχεται να είναι κατεστραμμένο."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Αποτυχία εφαρμογής αναβάθμισης. Ελέγξτε τα αρχεία καταγραφής του διακομιστή για λεπτομέρειες."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Αποτυχία δημιουργίας καταλόγου αναβάθμισης. Ελέγξτε τα δικαιώματα αρχείων."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Αποτυχία λήψης του αρχείου έκδοσης από το GitHub μετά από πολλαπλές προσπάθειες. Ελέγξτε τη σύνδεση διαδικτύου του διακομιστή σας και δοκιμάστε ξανά."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Αποτυχία εξαγωγής αρχείου αναβάθμισης. Ελέγξτε τον ελεύθερο χώρο δίσκου και τα δικαιώματα αρχείων."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Αποτυχία ανοίγματος αρχείου αναβάθμισης. Το ληφθέν αρχείο ενδέχεται να είναι κατεστραμμένο."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Αποτυχία αποθήκευσης του ληφθέντος αρχείου έκδοσης. Ελέγξτε τον ελεύθερο χώρο δίσκου και τα δικαιώματα."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Μη έγκυρη μορφή ημερομηνίας στην παράμετρο έναρξης"
+
+#: 
+msgid "Mismatch"
+msgstr "Αναντιστοιχία"
+
+#: 
+msgid "Not set"
+msgstr "Δεν έχει οριστεί"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP Ενεργό"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Ο κατάλογος πηγής δεν υπάρχει. Το αρχείο αναβάθμισης ενδέχεται να μην έχει εξαχθεί σωστά. Ελέγξτε τα δικαιώματα αρχείων και τον ελεύθερο χώρο δίσκου."
+
+#: 
+msgid "System Config"
+msgstr "Διαμόρφωση συστήματος"
+
+#: 
+msgid "Timezone Information"
+msgstr "Πληροφορίες ζώνης ώρας"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Εντοπίστηκε αναντιστοιχία ζώνης ώρας"
+
+#: 
+msgid "mismatch detected"
+msgstr "εντοπίστηκε αναντιστοιχία"
+
+#: 
+msgid "mismatches detected"
+msgstr "εντοπίστηκαν αναντιστοιχίες"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d ώρα"
+msgstr[1] "%d ώρες"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "Σχετικά με τα αντίγραφα ασφαλείας WebDAV"
+
+#: 
+msgid "Add Link"
+msgstr "Προσθήκη συνδέσμου"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Προσθέστε ένα επιπλέον επίπεδο ασφάλειας στον λογαριασμό σας"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Προσθέστε προσαρμοσμένους εξωτερικούς συνδέσμους στο μενού πλοήγησης."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Να επιτρέπονται αυτο-υπογεγραμμένα πιστοποιητικά"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Παρουσιάστηκε σφάλμα κατά την επεξεργασία του αιτήματος πρόσθετου"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Είστε σίγουρος ότι θέλετε να απενεργοποιήσετε τον έλεγχο ταυτότητας δύο παραγόντων; Ο λογαριασμός σας θα γίνει λιγότερο ασφαλής."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "Ως μέρος της επαναφοράς, τα εξωτερικά αντίγραφα ασφαλείας έχουν απενεργοποιηθεί. Εάν επιθυμείτε να συνεχίσετε τα αυτόματα αντίγραφα ασφαλείας, ενεργοποιήστε ξανά το πρόσθετο Εξωτερικής Δημιουργίας Αντιγράφων Ασφαλείας στο Admin > Πρόσθετα."
+
+#: 
+msgid "Audiences"
+msgstr "Κοινό"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Η πιστοποίηση ταυτότητας απέτυχε. Ελέγξτε το όνομα χρήστη και τον κωδικό πρόσβασης."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Διάστημα αυτόματης δημιουργίας αντιγράφων ασφαλείας"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Δημιουργήστε αυτόματα αντίγραφα ασφαλείας της βάσης δεδομένων ChurchCRM σε εξωτερική αποθήκευση cloud μέσω WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Μέσος ρυθμός κλικ"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Μέσος ρυθμός ανοίγματος"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Επιστροφή στον πίνακα ελέγχου"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Δημιουργήθηκε αντίγραφο ασφαλείας αλλά απέτυχε η αντιγραφή στον απομακρυσμένο διακομιστή"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Δημιουργία αντιγράφου ασφαλείας σε WebDAV τώρα"
+
+#: 
+msgid "Before You Start"
+msgstr "Πριν ξεκινήσετε"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Εντοπίστηκε προτίμηση γλώσσας προγράμματος περιήγησης"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "Μέλη CRM χωρίς εγγραφή"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Καμπάνιες που εστάλησαν"
+
+#: 
+msgid "Can't scan?"
+msgstr "Δεν μπορείτε να σαρώσετε;"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Αλλαγή τοπικών ρυθμίσεων"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "Το ChurchCRM υποστηρίζει αρχιτεκτονική πρόσθετων για επέκταση λειτουργικότητας."
+
+#: 
+msgid "Cleaned"
+msgstr "Καθαρίστηκε"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Κάντε κλικ στο παρακάτω κουμπί για να δοκιμάσετε τις ρυθμίσεις σύνδεσης WebDAV."
+
+#: 
+msgid "Community Plugins"
+msgstr "Πρόσθετα κοινότητας"
+
+#: 
+msgid "Community plugins"
+msgstr "Πρόσθετα κοινότητας"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Διαμόρφωση εξωτερικής δημιουργίας αντιγράφων ασφαλείας"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Διαμόρφωση MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Διαμορφώστε αυτές τις ρυθμίσεις στο"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Διαμορφώστε αυτό το πρόσθετο για αυτόματη δημιουργία αντιγράφων ασφαλείας της βάσης δεδομένων ChurchCRM σε υπηρεσίες αποθήκευσης cloud συμβατές με WebDAV όπως Nextcloud, ownCloud ή οποιονδήποτε διακομιστή WebDAV. Τα αντίγραφα ασφαλείας κρυπτογραφούνται κατά τη μεταφορά με χρήση HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Διαμορφωμένο"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Επιβεβαιώστε με κωδικό από την εφαρμογή ελέγχου ταυτότητας"
+
+#: 
+msgid "Connected"
+msgstr "Συνδεδεμένο"
+
+#: 
+msgid "Connection failed"
+msgstr "Η σύνδεση απέτυχε"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Η σύνδεση απέτυχε με κωδικό HTTP"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Η σύνδεση ήταν επιτυχής! Το τελικό σημείο WebDAV είναι προσβάσιμο."
+
+#: 
+msgid "Connection test failed"
+msgstr "Η δοκιμή σύνδεσης απέτυχε"
+
+#: 
+msgid "Core Plugins"
+msgstr "Βασικά πρόσθετα"
+
+#: 
+msgid "Core plugins"
+msgstr "Βασικά πρόσθετα"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Δημιουργήστε τώρα ένα αντίγραφο ασφαλείας και ανεβάστε το στον διακομιστή WebDAV σας."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Δημιουργία κοινού στο MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Προσαρμοσμένο"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Προσαρμοσμένοι σύνδεσμοι μενού"
+
+#: 
+msgid "Default Image Style"
+msgstr "Προεπιλεγμένο στυλ εικόνας"
+
+#: 
+msgid "Default List ID"
+msgstr "Προεπιλεγμένο αναγνωριστικό λίστας"
+
+#: 
+msgid "Disable"
+msgstr "Απενεργοποίηση"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Απενεργοποίηση πρόσθετου"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Απενεργοποίηση ελέγχου ταυτότητας δύο παραγόντων"
+
+#: 
+msgid "Dismiss"
+msgstr "Απόρριψη"
+
+#: 
+msgid "Done"
+msgstr "Ολοκληρώθηκε"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "Μορφή E.164, π.χ. +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Κάθε πρόσθετο απαιτεί ένα"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Κάθε φορά που συνδέεστε, θα πρέπει να επιβεβαιώνετε με κωδικό από την εφαρμογή ελέγχου ταυτότητας"
+
+#: 
+msgid "Email Addresses"
+msgstr "Διευθύνσεις email"
+
+#: 
+msgid "Enable"
+msgstr "Ενεργοποίηση"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Ενεργοποίηση πρόσθετου εξωτερικής δημιουργίας αντιγράφων ασφαλείας"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Ενεργοποίηση πρόσθετου"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Ενεργοποίηση ελέγχου ταυτότητας δύο παραγόντων"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Ενεργοποιήστε το πρόσθετο εξωτερικής δημιουργίας αντιγράφων ασφαλείας για αποθήκευση cloud WebDAV."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Ενεργοποιήστε αυτό μόνο για διακομιστές τοπικού δικτύου με αυτο-υπογεγραμμένα πιστοποιητικά SSL. Απενεργοποιεί την επαλήθευση πιστοποιητικού."
+
+#: 
+msgid "Endpoint URL"
+msgstr "URL τελικού σημείου"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Εισάγετε τον 6ψήφιο κωδικό από την εφαρμογή ελέγχου ταυτότητας"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Εισάγετε το όνομα χρήστη και τον κωδικό πρόσβασης ως συνήθως"
+
+#: 
+msgid "External Backup"
+msgstr "Εξωτερική δημιουργία αντιγράφων ασφαλείας"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Εξωτερική δημιουργία αντιγράφων ασφαλείας (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Ρυθμίσεις εξωτερικής δημιουργίας αντιγράφων ασφαλείας"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "Το πρόσθετο εξωτερικής δημιουργίας αντιγράφων ασφαλείας είναι ενεργοποιημένο αλλά δεν έχει διαμορφωθεί."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "Το πρόσθετο εξωτερικής δημιουργίας αντιγράφων ασφαλείας δεν έχει διαμορφωθεί. Διαμορφώστε τις ρυθμίσεις WebDAV στο πρόσθετο."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "Το πρόσθετο εξωτερικής δημιουργίας αντιγράφων ασφαλείας δεν είναι ενεργοποιημένο. Ενεργοποιήστε και διαμορφώστε το στη Διαχείριση πρόσθετων."
+
+#: 
+msgid "Failed to create link"
+msgstr "Αποτυχία δημιουργίας συνδέσμου"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Αποτυχία διαγραφής συνδέσμου"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Αποτυχία απενεργοποίησης πρόσθετου"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Αποτυχία ενεργοποίησης πρόσθετου"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Αποτυχία λήψης λεπτομερειών πρόσθετου"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Αποτυχία καταχώρισης πρόσθετων"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Αποτυχία επαναφοράς ρυθμίσεων"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Αποτυχία αποστολής SMS"
+
+#: 
+msgid "Family Status"
+msgstr "Οικογενειακή κατάσταση"
+
+#: 
+msgid "Family not found"
+msgstr "Η οικογένεια δεν βρέθηκε"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Βρείτε στο MailChimp: Κοινό > Ρυθμίσεις > Όνομα κοινού και προεπιλογές > Αναγνωριστικό κοινού"
+
+#: 
+msgid "From Phone Number"
+msgstr "Από αριθμό τηλεφώνου"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "Από το dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "Αναγνωριστικό μέτρησης GA4"
+
+#: 
+msgid "Generate new code"
+msgstr "Δημιουργία νέου κωδικού"
+
+#: 
+msgid "Get Started"
+msgstr "Ξεκινήστε"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Λάβετε το κλειδί API από το MailChimp: Ρυθμίσεις λογαριασμού > Πρόσθετα > Κλειδιά API"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Έχετε έτοιμη την εφαρμογή ελέγχου ταυτότητας (Google Authenticator, Microsoft Authenticator, Authy κ.λπ.)"
+
+#: 
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: 
+msgid "Id"
+msgstr "Αναγνωριστικό"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Εικόνα που εμφανίζεται όταν δεν υπάρχει Gravatar για τη διεύθυνση email"
+
+#: 
+msgid "Important"
+msgstr "Σημαντικό"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Εγκαταστήστε πρόσθετα τοποθετώντας τα στο"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Μη έγκυρος κωδικός. Παρακαλώ δοκιμάστε ξανά."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "Μη έγκυρο URL τελικού σημείου. Πρέπει να είναι πλήρες URL που ξεκινά με https:// (π.χ. https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Η συσκευή κιόσκι δεν βρέθηκε"
+
+#: 
+msgid "Last Backup"
+msgstr "Τελευταίο αντίγραφο ασφαλείας"
+
+#: 
+msgid "Last Campaign"
+msgstr "Τελευταία καμπάνια"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Τελευταίος συνδρομητής"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Τελευταίο επιτυχημένο αντίγραφο ασφαλείας"
+
+#: 
+msgid "Last campaign"
+msgstr "Τελευταία καμπάνια"
+
+#: 
+msgid "Link Name"
+msgstr "Όνομα συνδέσμου"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Η διεύθυνση συνδέσμου δεν μπορεί να περιέχει ετικέτες HTML"
+
+#: 
+msgid "Link address is required"
+msgstr "Η διεύθυνση συνδέσμου είναι απαραίτητη"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Ο σύνδεσμος πρέπει να είναι έγκυρο URL"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Ο σύνδεσμος πρέπει να ξεκινά με http:// ή https://"
+
+#: 
+msgid "Link not found"
+msgstr "Ο σύνδεσμος δεν βρέθηκε"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Φόρτωση κωδικών ανάκτησης"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "Κλειδί API MailChimp"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "Πίνακας ελέγχου MailChimp"
+
+#: 
+msgid "Manage Links"
+msgstr "Διαχείριση συνδέσμων"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Διαχείριση ελέγχου ταυτότητας δύο παραγόντων"
+
+#: 
+msgid "Manual Backup"
+msgstr "Μη αυτόματη δημιουργία αντιγράφων ασφαλείας"
+
+#: 
+msgid "Menu Links"
+msgstr "Σύνδεσμοι μενού"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Το όνομα μενού δεν μπορεί να περιέχει ετικέτες HTML"
+
+#: 
+msgid "Menu name is required"
+msgstr "Το όνομα μενού είναι απαραίτητο"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Το όνομα μενού πρέπει να είναι 50 χαρακτήρες ή λιγότεροι"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Το όνομα μενού πρέπει να έχει τουλάχιστον 2 χαρακτήρες"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Πρέπει να ξεκινά με http:// ή https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Απαιτεί διαμόρφωση"
+
+#: 
+msgid "Never"
+msgstr "Ποτέ"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Δεν βρέθηκε κοινό"
+
+#: 
+msgid "No backups recorded"
+msgstr "Δεν έχουν καταγραφεί αντίγραφα ασφαλείας"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Δεν έχουν εγκατασταθεί πρόσθετα κοινότητας"
+
+#: 
+msgid "No core plugins found"
+msgstr "Δεν βρέθηκαν βασικά πρόσθετα"
+
+#: 
+msgid "No settings provided"
+msgstr "Δεν παρασχέθηκαν ρυθμίσεις"
+
+#: 
+msgid "Not Configured"
+msgstr "Δεν έχει διαμορφωθεί"
+
+#: 
+msgid "Not in CRM"
+msgstr "Δεν βρίσκεται στο CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "Κωδικός μίας χρήσης"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Άνοιγμα MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Ανοίξτε την εφαρμογή ελέγχου ταυτότητας και σαρώστε αυτόν τον κωδικό QR"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "URL διακομιστή OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Προαιρετικό - απαιτείται μόνο εάν η πιστοποίηση OpenLP είναι ενεργοποιημένη"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Απαιτείται αριθμός τηλεφώνου και μήνυμα"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Διαμορφώστε πρώτα το τελικό σημείο, το όνομα χρήστη και τον κωδικό πρόσβασης."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Διαμορφώστε τις ρυθμίσεις WebDAV πριν δημιουργήσετε ένα απομακρυσμένο αντίγραφο ασφαλείας."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Διαμορφώστε τις ρυθμίσεις WebDAV πριν δοκιμάσετε τη σύνδεση."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Διαμορφώστε το κλειδί API MailChimp για να χρησιμοποιήσετε αυτή την ενσωμάτωση."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Εισάγετε ένα όνομα συνδέσμου (2-50 χαρακτήρες)"
+
+#: 
+msgid "Please try again"
+msgstr "Παρακαλώ δοκιμάστε ξανά"
+
+#: 
+msgid "Plugin Development"
+msgstr "Ανάπτυξη πρόσθετων"
+
+#: 
+msgid "Plugin Help"
+msgstr "Βοήθεια πρόσθετου"
+
+#: 
+msgid "Plugin Management"
+msgstr "Διαχείριση πρόσθετων"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Ρυθμίσεις πρόσθετου"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Το πρόσθετο δεν μπορεί να απενεργοποιηθεί επειδή άλλα πρόσθετα εξαρτώνται από αυτό"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Το πρόσθετο δεν μπορεί να ενεργοποιηθεί λόγω απαιτήσεων εξαρτήσεων ή έκδοσης"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Το πρόσθετο απενεργοποιήθηκε επιτυχώς"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Το πρόσθετο ενεργοποιήθηκε επιτυχώς"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Αποτυχία φόρτωσης πρόσθετου"
+
+#: 
+msgid "Plugin not found"
+msgstr "Το πρόσθετο δεν βρέθηκε"
+
+#: 
+msgid "Plugins"
+msgstr "Πρόσθετα"
+
+#: 
+msgid "Print"
+msgstr "Εκτύπωση"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Απαιτούνται παραλήπτες και μήνυμα"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Κωδικοί ανάκτησης"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Αποτυχία απομακρυσμένου αντιγράφου ασφαλείας. Ελέγξτε τα αρχεία καταγραφής του διακομιστή για λεπτομέρειες."
+
+#: 
+msgid "SMS sent"
+msgstr "Το SMS εστάλη"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Αποθηκεύστε αυτούς τους κωδικούς ανάκτησης σε ασφαλές μέρος. Μπορείτε να τους χρησιμοποιήσετε για πρόσβαση στον λογαριασμό σας εάν χάσετε την πρόσβαση στην εφαρμογή ελέγχου ταυτότητας."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Σάρωση κωδικού QR"
+
+#: 
+msgid "Secure"
+msgstr "Ασφαλής"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Ρύθμιση εφαρμογής ελέγχου ταυτότητας"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Οι ρυθμίσεις επαναφέρθηκαν επιτυχώς"
+
+#: 
+msgid "Setup Complete"
+msgstr "Η εγκατάσταση ολοκληρώθηκε"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Συμπεριλαμβάνεται στο ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Σύνδεση"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Ορισμένες ρυθμίσεις δεν ήταν δυνατό να επαναφερθούν"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Ορισμένες ρυθμίσεις δεν ήταν δυνατό να αποθηκευτούν"
+
+#: 
+msgid "Subscribers"
+msgstr "Συνδρομητές"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Συνδρομητές που δεν βρίσκονται στο CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "Δοκιμή σύνδεσης"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Δοκιμή σύνδεσης WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Αυτοί οι σύνδεσμοι εμφανίζονται στο μενού «Σύνδεσμοι» στην πλαϊνή γραμμή πλοήγησης όταν αυτό το πρόσθετο είναι ενεργοποιημένο."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Αυτά τα άτομα είναι εγγεγραμμένα στο κοινό MailChimp σας αλλά δεν υπάρχουν στο ChurchCRM. Σκεφτείτε να τα προσθέσετε στη βάση δεδομένων σας ή να τα αφαιρέσετε από το MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Αυτά τα άτομα υπάρχουν στο ChurchCRM με διευθύνσεις email αλλά δεν είναι εγγεγραμμένα σε αυτό το κοινό MailChimp. Σκεφτείτε να τα προσκαλέσετε να εγγραφούν."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Επεκτάσεις τρίτων."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Αυτό θα αντικαταστήσει τυχόν προηγουμένως καταχωρημένες μεθόδους 2FA"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Συνολικές καμπάνιες"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Συνολικοί συνδρομητές"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Σφάλμα εγγραφής δύο παραγόντων"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Ο έλεγχος ταυτότητας δύο παραγόντων απενεργοποιήθηκε"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Ο έλεγχος ταυτότητας δύο παραγόντων είναι ένας από τους καλύτερους τρόπους για την προστασία του λογαριασμού σας. Συνιστούμε ανεπιφύλακτα να τον διατηρείτε ενεργοποιημένο."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL για τον διακομιστή OpenLP σας (π.χ. http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Δεν είναι δυνατή η φόρτωση"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Διαγραφή από τη λίστα"
+
+#: 
+msgid "Use a different account"
+msgstr "Χρησιμοποιήστε διαφορετικό λογαριασμό"
+
+#: 
+msgid "Value is configured"
+msgstr "Η τιμή έχει διαμορφωθεί"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Η τιμή έχει οριστεί - αφήστε κενό για να διατηρήσετε την τρέχουσα"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Επαλήθευση και σύνδεση"
+
+#: 
+msgid "Verify Code"
+msgstr "Επαλήθευση κωδικού"
+
+#: 
+msgid "Verifying"
+msgstr "Επαλήθευση"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Κλειδί API Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Μυστικό API Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "Διαμόρφωση WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "Σύνδεση WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "Τα αντίγραφα ασφαλείας WebDAV δεν έχουν διαμορφωθεί σωστά. Βεβαιωθείτε ότι έχουν οριστεί το τελικό σημείο, το όνομα χρήστη και ο κωδικός πρόσβασης."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "Το URL τελικού σημείου WebDAV είναι απαραίτητο."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "Ο κωδικός πρόσβασης WebDAV είναι απαραίτητος."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "Το όνομα χρήστη WebDAV είναι απαραίτητο."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Μπορείτε επίσης να χρησιμοποιήσετε κωδικούς ανάκτησης αντιγράφων ασφαλείας εάν χάσετε την πρόσβαση στην εφαρμογή σας"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Μπορείτε πλέον να χρησιμοποιείτε την εφαρμογή ελέγχου ταυτότητας για σύνδεση. Κάθε κωδικός ισχύει για 30 δευτερόλεπτα."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Θα λάβετε κωδικούς αντιγράφων ασφαλείας που μπορούν να χρησιμοποιηθούν εάν χάσετε την πρόσβαση στην εφαρμογή σας"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "Το αναγνωριστικό μέτρησης GA4 (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "Ο λογαριασμός σας στο MailChimp δεν έχει διαμορφωμένο κανένα κοινό (λίστα)."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Ο λογαριασμός σας είναι πλέον προστατευμένος"
+
+#: 
+msgid "Your account is protected"
+msgstr "Ο λογαριασμός σας είναι προστατευμένος"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Η εφαρμογή ελέγχου ταυτότητας καταχωρήθηκε επιτυχώς"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Η προτίμηση γλώσσας του προγράμματος περιήγησης διαφέρει από τις τοπικές ρυθμίσεις ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "π.χ. Ιστότοπος εκκλησίας"
+
+#: 
+msgid "manifest."
+msgstr "αρχείο manifest."
+
+#: 
+msgid "subscribers"
+msgstr "συνδρομητές"
+
+#: 
+msgid "API Key is required."
+msgstr "Το κλειδί API είναι απαραίτητο."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Δεν είναι δυνατή η σύνδεση με το OpenLP στο %s. Ελέγξτε το URL του διακομιστή και ότι το OpenLP εκτελείται."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Δεν είναι δυνατή η σύνδεση με το OpenLP στο %s. Ο διακομιστής επέστρεψε HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Χάρτης εκκλησιαστικής κοινότητας"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Χάρτης εκκλησιαστικής κοινότητας — Απαιτείται εγκατάσταση"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Συνδέθηκε με το MailChimp! Λογαριασμός: %s (%d συνδρομητές)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Επιτυχής σύνδεση με τον διακομιστή OpenLP."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Συνδέθηκε με το OpenLP! Έκδοση: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Συνδέθηκε! Υπόλοιπο λογαριασμού: €%.2f. Έτοιμο για αποστολή SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Δεν ήταν δυνατή η σύνδεση με το MailChimp. Ελέγξτε το κλειδί API σας."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Αποτυχία σύνδεσης με τον διακομιστή OpenLP."
+
+#: 
+msgid "Get Directions"
+msgstr "Λήψη οδηγιών"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Συμπεριλάβετε τον κωδικό χώρας, π.χ. +14155551234 (ΗΠΑ) ή +447911123456 (ΗΒ)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Μη έγκυρος «Αριθμός αποστολέα»: «%s». Συμπεριλάβετε τον κωδικό χώρας, π.χ. +14155551234 (ΗΠΑ) ή +447911123456 (ΗΒ)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Μη έγκυρα διαπιστευτήρια API. Επαληθεύστε το κλειδί API και το μυστικό API."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Μη έγκυρη μορφή κλειδιού API. Ελέγξτε το κλειδί API MailChimp."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "Μη έγκυρο URL τελικού σημείου. Πρέπει να είναι πλήρες URL που ξεκινά με https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Μη έγκυρη μορφή URL διακομιστή."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "Αποτυχία σύνδεσης MailChimp."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Επίπεδο ζουμ χάρτη"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Λείπουν οικογένειες; Ενημερώστε τις συντεταγμένες για να τις συμπεριλάβετε στον χάρτη."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Λείπουν απαιτούμενες ρυθμίσεις: %s"
+

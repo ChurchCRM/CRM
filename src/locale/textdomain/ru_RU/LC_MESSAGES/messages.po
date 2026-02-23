@@ -11551,3 +11551,367 @@ msgstr "обнаружено несоответствие"
 msgid "mismatches detected"
 msgstr "обнаружены несоответствия"
 
+#: 
+msgid "About WebDAV Backups"
+msgstr "О резервных копиях WebDAV"
+
+#: 
+msgid "Add Link"
+msgstr "Добавить ссылку"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Добавьте дополнительный уровень безопасности к своему аккаунту"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Добавьте пользовательские внешние ссылки в навигационное меню."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Разрешить самоподписанные сертификаты"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Произошла ошибка при обработке запроса плагина"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Вы уверены, что хотите отключить двухфакторную аутентификацию? Ваш аккаунт станет менее защищённым."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "В рамках восстановления внешние резервные копии были отключены. Если вы хотите продолжить автоматическое резервное копирование, повторно включите плагин внешнего резервного копирования в Администрирование > Плагины."
+
+#: 
+msgid "Audiences"
+msgstr "Аудитории"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Аутентификация не удалась. Проверьте имя пользователя и пароль."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Интервал автоматического резервного копирования"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Автоматически создавайте резервные копии базы данных ChurchCRM во внешнем облачном хранилище через WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Средний показатель кликов"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Средний показатель открытий"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Назад к панели управления"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Резервная копия создана, но не удалось скопировать её на удалённый сервер"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Создать резервную копию на WebDAV сейчас"
+
+#: 
+msgid "Before You Start"
+msgstr "Прежде чем начать"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Обнаружено языковое предпочтение браузера"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "Члены CRM без подписки"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Отправленные кампании"
+
+#: 
+msgid "Can't scan?"
+msgstr "Не можете сканировать?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Изменить языковые настройки"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM поддерживает архитектуру плагинов для расширения функциональности."
+
+#: 
+msgid "Cleaned"
+msgstr "Очищено"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Нажмите кнопку ниже, чтобы проверить настройки подключения WebDAV."
+
+#: 
+msgid "Community Plugins"
+msgstr "Плагины сообщества"
+
+#: 
+msgid "Community plugins"
+msgstr "Плагины сообщества"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Настроить внешнее резервное копирование"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Настроить MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Настройте эти параметры в"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Настройте этот плагин для автоматического резервного копирования базы данных ChurchCRM в облачные хранилища, совместимые с WebDAV, такие как Nextcloud, ownCloud или любой сервер WebDAV. Резервные копии шифруются при передаче с использованием HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Настроено"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Подтвердите кодом из приложения аутентификации"
+
+#: 
+msgid "Connected"
+msgstr "Подключено"
+
+#: 
+msgid "Connection failed"
+msgstr "Подключение не удалось"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Подключение не удалось с кодом HTTP"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Подключение успешно! Конечная точка WebDAV доступна."
+
+#: 
+msgid "Connection test failed"
+msgstr "Тест подключения не удался"
+
+#: 
+msgid "Core Plugins"
+msgstr "Основные плагины"
+
+#: 
+msgid "Core plugins"
+msgstr "Основные плагины"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Создайте резервную копию сейчас и загрузите её на сервер WebDAV."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Создать аудиторию в MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Пользовательский"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Пользовательские ссылки в меню"
+
+#: 
+msgid "Default Image Style"
+msgstr "Стиль изображения по умолчанию"
+
+#: 
+msgid "Default List ID"
+msgstr "Идентификатор списка по умолчанию"
+
+#: 
+msgid "Disable"
+msgstr "Отключить"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Отключить плагин"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Отключить двухфакторную аутентификацию"
+
+#: 
+msgid "Dismiss"
+msgstr "Закрыть"
+
+#: 
+msgid "Done"
+msgstr "Готово"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "Формат E.164, например +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Каждый плагин требует"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "При каждом входе вам нужно будет подтверждать кодом из приложения аутентификации"
+
+#: 
+msgid "Email Addresses"
+msgstr "Адреса электронной почты"
+
+#: 
+msgid "Enable"
+msgstr "Включить"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Включить плагин внешнего резервного копирования"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Включить плагин"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Включить двухфакторную аутентификацию"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Включите плагин внешнего резервного копирования для облачного хранилища WebDAV."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Включайте это только для серверов в локальной сети с самоподписанными SSL-сертификатами. Отключает проверку сертификата."
+
+#: 
+msgid "Endpoint URL"
+msgstr "URL конечной точки"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Введите 6-значный код из приложения аутентификации"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Введите имя пользователя и пароль как обычно"
+
+#: 
+msgid "External Backup"
+msgstr "Внешнее резервное копирование"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Внешнее резервное копирование (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Настройки внешнего резервного копирования"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "Плагин внешнего резервного копирования включён, но не настроен."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "Плагин внешнего резервного копирования не настроен. Настройте параметры WebDAV в плагине."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "Плагин внешнего резервного копирования не включён. Включите и настройте его в управлении плагинами."
+
+#: 
+msgid "Failed to create link"
+msgstr "Не удалось создать ссылку"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Не удалось удалить ссылку"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Не удалось отключить плагин"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Не удалось включить плагин"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Не удалось получить сведения о плагине"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Не удалось получить список плагинов"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Не удалось сбросить настройки"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Не удалось отправить SMS"
+
+#: 
+msgid "Family Status"
+msgstr "Статус семьи"
+
+#: 
+msgid "Family not found"
+msgstr "Семья не найдена"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Найдите в MailChimp: Аудитория > Настройки > Название аудитории и параметры по умолчанию > Идентификатор аудитории"
+
+#: 
+msgid "From Phone Number"
+msgstr "С номера телефона"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "С dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "Идентификатор измерения GA4"
+
+#: 
+msgid "Generate new code"
+msgstr "Сгенерировать новый код"
+
+#: 
+msgid "Get Started"
+msgstr "Начать"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Получите ключ API из MailChimp: Настройки аккаунта > Дополнения > Ключи API"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Подготовьте приложение аутентификации (Google Authenticator, Microsoft Authenticator, Authy и т.д.)"
+
+#: 
+msgid "Help"
+msgstr "Справка"
+
+#: 
+msgid "Id"
+msgstr "Ид"
+
