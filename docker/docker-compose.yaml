@@ -16,7 +16,7 @@ services:
 
   mailserver:
     profiles: [dev, test]
-    image: mailhog/mailhog
+    image: axllent/mailpit:latest
     ports:
       - ${MAILSERVER_PORT:-1025}:1025
       - ${MAILSERVER_GUI_PORT:-8025}:8025
