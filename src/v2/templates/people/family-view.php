@@ -50,7 +50,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title m-0"><?= $family->getName() ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <span class="badge badge-secondary"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
                 </div>
             </div>
@@ -102,12 +102,12 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             <div class="card-body">
                 <div class="row">
                     <div class="col-6 mb-2">
-                        <a class="btn btn-default btn-block" href="#" data-toggle="modal" data-target="#confirm-verify">
+                        <a class="btn btn-secondary btn-block" href="#" data-toggle="modal" data-target="#confirm-verify">
                             <i class="fa-solid fa-clipboard-check"></i><br><?= gettext('Verify') ?>
                         </a>
                     </div>
                     <div class="col-6 mb-2">
-                        <a class="btn btn-default btn-block AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                        <a class="btn btn-secondary btn-block AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
                             <i class="fa-solid fa-cart-plus"></i><br><?= gettext('Cart') ?>
                         </a>
                     </div>
@@ -133,7 +133,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <div class="card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
                     </button>
                 </div>
@@ -229,7 +229,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <div class="card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag"></i> <?= gettext("Properties") ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool d-block">
                         <i class="fa-solid fa-plus-circle text-blue"></i>
@@ -289,7 +289,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <div class="card card-outline card-info collapsed-card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-history"></i> <?= gettext("Timeline") ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
@@ -471,11 +471,11 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                                     <?php 
                                         $isInCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false);
                                     ?>
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>" class="btn-link">
+                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>">
                                         <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
                                     </a>
-                                    
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="btn-link">
+
+                                    <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>">
                                         <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
                                     </a>
                                     

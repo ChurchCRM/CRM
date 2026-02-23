@@ -548,7 +548,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?> with-border">
+                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?>">
                     <h3 class="card-title"><?= $formTypeLabel ?> <?= gettext('Details') ?></h3>
                 </div>
                 <div class="card-body">
@@ -577,7 +577,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input class="form-control" type="number" name="Envelope" size=8 id="Envelope" value="<?= $iEnvelope ?>">
                             <?php if (!$dep_Closed) {
                                 ?>
-                                <input class="form-control" type="submit" class="btn btn-secondary" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
+                                <input class="btn btn-secondary" type="submit" value="<?= gettext('Find family->') ?>" name="MatchEnvelope">
                                 <?php
                             } ?>
 
@@ -691,7 +691,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?> with-border">
+                <div class="card-header <?= $cardHeaderClass ?> <?= $cardHeaderTextClass ?>">
                     <h3 class="card-title"><?= $formTypeLabel ?> <?= gettext('Fund Allocation') ?></h3>
                 </div>
                 <div class="card-body">

@@ -58,7 +58,7 @@ $rsConfigs = RunQuery($sSQL);
 ?>
 <!-- Default box -->
 <div class="card">
-    <div class="card-header with-border">
+    <div class="card-header">
 
         <form method=post action=SettingsUser.php'>
             <div class="alert alert-info"> <?= gettext('Set Permission True to give new users the ability to change their current value.<BR>'); ?></div>

@@ -382,25 +382,25 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span><?= gettext('File Integrity:') ?></span>
                         <?php if ($integrityPassed): ?>
-                            <span class="badge bg-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
+                            <span class="badge badge-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php else: ?>
-                            <span class="badge bg-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
+                            <span class="badge badge-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span><?= gettext('Orphaned Files:') ?></span>
                         <?php if ($hasOrphanedFiles): ?>
-                            <span class="badge bg-danger"><?= count($orphanedFiles) ?> <?= gettext('found') ?></span>
+                            <span class="badge badge-danger"><?= count($orphanedFiles) ?> <?= gettext('found') ?></span>
                         <?php else: ?>
-                            <span class="badge bg-success"><i class="fa-solid fa-check"></i> <?= gettext('None') ?></span>
+                            <span class="badge badge-success"><i class="fa-solid fa-check"></i> <?= gettext('None') ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span><?= gettext('Configuration:') ?></span>
                         <?php if ($hasWarnings): ?>
-                            <span class="badge bg-warning"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
+                            <span class="badge badge-warning"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
                         <?php else: ?>
-                            <span class="badge bg-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
+                            <span class="badge badge-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php endif; ?>
                     </div>
                     <?php if ($hasOrphanedFiles): ?>

@@ -59,9 +59,8 @@ if ($sAction === 'delete' && $iOpp > 0) {
     $sPageTitle = gettext('Delete Confirmation') . ': ' . gettext('Volunteer Opportunity');
     require_once __DIR__ . '/Include/Header.php';
 ?>
-    <div class="container-fluid mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
+    <div class="row justify-content-center mt-2">
+        <div class="col-md-6">
                 <div class="card border-danger">
                     <div class="card-header bg-danger text-white">
                         <h5 class="mb-0">
@@ -98,7 +97,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                         $numRows = mysqli_num_rows($rsPeople);
                         if ($numRows > 0) {
                             echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-exclamation-circle'></i> <strong>" . gettext('Warning') . "!</strong> " . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') . "</div>";
-                            echo "<div class='ms-3 mb-3'>";
+                            echo "<div class='ml-3 mb-3'>";
                             for ($i = 0; $i < $numRows; $i++) {
                                 $aRow = mysqli_fetch_array($rsPeople);
                                 extract($aRow);
@@ -126,7 +125,6 @@ if ($sAction === 'delete' && $iOpp > 0) {
                 </div>
             </div>
         </div>
-    </div>
     <?php
     require_once __DIR__ . '/Include/Footer.php';
     exit;
@@ -295,8 +293,7 @@ if (isset($_POST['SaveChanges'])) {
 
 // Construct the form
     ?>
-    <div class="container-fluid mt-4">
-        <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
+    <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
                 <div class="card mb-4">
                     <div class="card-header bg-success text-white">
@@ -465,7 +462,6 @@ if (isset($_POST['SaveChanges'])) {
                     </button>
                 </div>
         <?php } ?>
-        </form>
-    </div>
+    </form>
     <?php
     require_once __DIR__ . '/Include/Footer.php';

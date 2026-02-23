@@ -116,12 +116,12 @@ require_once __DIR__ . '/Include/Header.php';
 
         if ($bIsDonor && !AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user not authorized for Finance
-            echo '<p class="LargeText">' . gettext('Sorry, there are records of donations from this family. This family may not be deleted.') . '<br><br>';
+            echo '<p class="lead">' . gettext('Sorry, there are records of donations from this family. This family may not be deleted.') . '<br><br>';
             echo '<a href="v2/family/' . $iFamilyID . '">' . gettext('Return to Family View') . '</a></p>';
         } elseif ($bIsDonor && AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
             // Donations from Family. Current user authorized for Finance.
             // Select another family to move donations to.
-            echo '<p class="LargeText">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
+            echo '<p class="lead">' . gettext('WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family.') . '</p>';
             echo '<form name=SelectFamily method=get action=SelectDelete.php>';
             echo '<div class="card card-body">';
             echo '<div class="card-header"><strong>' . gettext('Family Name') . ':' . " $fam_Name</strong></div>";
@@ -170,8 +170,8 @@ require_once __DIR__ . '/Include/Header.php';
                 }
             }
             echo '</select><br><br>';
-            echo '<input type=submit name=CancelFamily value="Cancel and Return to Family View"> &nbsp; &nbsp; ';
-            echo '<input type=submit name=MoveDonations value="Move Donations to Selected Family">';
+            echo '<input type="submit" class="btn btn-secondary mr-2" name="CancelFamily" value="' . gettext('Cancel and Return to Family View') . '">';
+            echo '<input type="submit" class="btn btn-primary" name="MoveDonations" value="' . gettext('Move Donations to Selected Family') . '">';
             echo '</div></form>';
 
             // Show payments connected with family
@@ -252,7 +252,7 @@ require_once __DIR__ . '/Include/Header.php';
                 echo '</ul></div>';
                 echo "<p id=\"deleteFamilyOnlyBtn\" class=\"text-center\"><a class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record ONLY') . '</a> ';
                 echo "<a id=\"deleteFamilyAndMembersBtn\" class='btn btn-danger' href=\"SelectDelete.php?Confirmed=Yes&Members=Yes&FamilyID=" . $iFamilyID . '">' . gettext('Delete Family Record AND Family Members') . '</a> ';
-                echo "<a class='btn btn-info' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
+                echo "<a class='btn btn-secondary ml-2' href=\"v2/family/" . $iFamilyID . '">' . gettext('No, cancel this deletion') . '</a></p>';
             }
             ?>
     </div>

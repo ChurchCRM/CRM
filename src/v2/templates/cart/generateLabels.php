@@ -2,7 +2,7 @@
 
 echo <<<'EOD'
 <div class="card">
-    <div class="card-header with-border">
+    <div class="card-header">
         <h3 class="card-title"><?= gettext('Generate Labels') ?></h3>
     </div>
     <div class="card-body">
@@ -52,6 +52,5 @@ echo <<<'EOD'
         </form>
         </td></tr></table>
     </div>
-    <!-- /.box-body -->
 </div>
 EOD;

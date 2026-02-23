@@ -33,9 +33,8 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
-<div class="container-fluid mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+<div class="row justify-content-center mt-2">
+    <div class="col-md-6">
             <div class="card border-danger">
                 <div class="card-header bg-danger text-white">
                     <h5 class="mb-0">
@@ -70,7 +69,6 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
         </div>
     </div>
-</div>
 
 <?php
 require_once __DIR__ . '/Include/Footer.php';

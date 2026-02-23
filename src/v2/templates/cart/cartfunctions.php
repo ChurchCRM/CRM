@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 
 ?>
 <div class="card">
-  <div class="card-header with-border">
+  <div class="card-header">
     <h3 class="card-title">Cart Functions</h3>
   </div>
   <div class="card-body">
@@ -73,5 +73,4 @@ use ChurchCRM\dto\SystemURLs;
       //-->
                 </SCRIPT>
               </div>
-              <!-- /.box-body -->
             </div>

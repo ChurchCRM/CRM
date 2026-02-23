@@ -89,7 +89,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                                 <?= $person->getFullName() ?>
                                             </a>
                                             <?php if ($person->getPhoto()->hasUploadedPhoto()) { ?>
-                                                <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $person->getId() ?>" title="<?= gettext('View Photo') ?>">
+                                                <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="<?= $person->getId() ?>" title="<?= gettext('View Photo') ?>">
                                                     <i class="fa-solid fa-camera"></i>
                                                 </button>
                                             <?php } ?>

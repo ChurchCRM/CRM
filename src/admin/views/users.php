@@ -180,7 +180,6 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             </table>
         </div>
     </div>
-    <!-- /.box-body -->
 </div>
 <!-- /.box -->
 

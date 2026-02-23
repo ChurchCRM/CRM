@@ -1,12 +1,7 @@
 /**
  * ChurchCRM System Settings Styles
  *
- * Custom styles for system settings UI and tooltips.
- * Component-specific - no Bootstrap duplicates.
+ * Custom styles for system settings UI.
+ * Use Bootstrap flex utilities (.d-flex, .align-items-center, .justify-content-center)
+ * directly in templates instead of custom classes here.
  */
-
-.setting-tip-box {
-  display: flex !important;
-  align-items: center;
-  justify-content: center;
-}

@@ -195,7 +195,7 @@ require_once __DIR__ . '/Include/Header.php';
                     } elseif ($setting->getType() == 'json') {
                         ?>
                       <input type="hidden" name='new_value[<?= $setting->getId() ?>]' value='<?= $setting->getValue() ?>'>
-                      <button class="btn-primary jsonSettingsEdit" id="set_value<?= $setting->getId() ?>" data-cfgid="<?= $setting->getId() ?>"><?= gettext('Edit Settings') ?>
+                      <button class="btn btn-primary jsonSettingsEdit" id="set_value<?= $setting->getId() ?>" data-cfgid="<?= $setting->getId() ?>"><?= gettext('Edit Settings') ?>
                       </button>
                         <?php
                     } elseif ($setting->getType() == 'ajax') {

@@ -20,13 +20,13 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-            <div class="card-header with-border">
+            <div class="card-header">
                 <h3 class="card-title"><?= gettext('Select the group you would like to report') ?>:</h3>
             </div>
             <div class="card-body">
                 <form method="POST" action="GroupReports.php">
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-6">
                             <label for="GroupID"><?= gettext('Select Group') ?>:</label>
                             <select id="GroupID" name="GroupID" onChange="UpdateRoles();">
                                 <?php
@@ -40,7 +40,7 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-6">
                             <label for=""><?= gettext('Select Role') ?>:</label>
                             <select name="GroupRole" id="GroupRole">
                                 <option><?= gettext('No Role Selected') ?></option>
@@ -48,13 +48,13 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-6">
                             <label for="OnlyCart"><?= gettext('Only cart people?') ?>:</label>
                             <input type="checkbox" Name="OnlyCart" value="1">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <label for="ReportModel"><?= gettext('Report Model') ?>:</label> </br>
                             <ul>
                             <li><input type="radio" Name="ReportModel" value="1" checked> <?= gettext('Report for group and role selected') ?></li>
@@ -65,7 +65,7 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-xs-6">
+                        <div class="col-6">
                             <input type="submit" id="genReportModelBtn" class="btn btn-secondary" name="Submit" value="<?= gettext('Next') ?>">
                         </div>
                     </div>
@@ -81,7 +81,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header with-border">
+                <div class="card-header">
                     <h3 class="card-title"><?= gettext('Select which information you want to include') ?></h3>
                 </div>
                 <div class="card-body">

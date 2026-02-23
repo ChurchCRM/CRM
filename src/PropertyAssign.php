@@ -28,18 +28,18 @@ if (isset($_POST['PropertyID'])) {
 if (isset($_GET['PersonID']) && AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
     // Is there a PersonID in the querystring?
     $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
-    
+
     // GHSA-fcw7-mmfh-7vjm: Add object-level authorization check to prevent privilege escalation
     $personToEdit = PersonQuery::create()->findOneById($iPersonID);
     if ($personToEdit === null) {
         RedirectUtils::redirect('v2/person/not-found?id=' . $iPersonID);
     }
-    
+
     $currentUser = AuthenticationManager::getCurrentUser();
     if (!$currentUser->canEditPerson($iPersonID, $personToEdit->getFamId())) {
         RedirectUtils::securityRedirect('PropertyAssign');
     }
-    
+
     $iRecordID = $iPersonID;
     $sQuerystring = '?PersonID=' . $iPersonID;
     $sTypeName = gettext('Person');
@@ -152,41 +152,37 @@ $sPageTitle = $sTypeName . ' : ' . gettext(' Property Assignment');
 require_once __DIR__ . '/Include/Header.php';
 ?>
 
-<form method="post" action="PropertyAssign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID ?>">
-<input type="hidden" name="SecondPass" value="True">
-<input type="hidden" name="Action" value="<?= $sAction ?>">
-<div class="table-responsive">
-<table class="table table-striped">
-    <tr>
-        <td align="right"><b><?= $sTypeName ?>:</b></td>
-        <td><?= InputUtils::escapeHTML($sName) ?></td>
-    </tr>
-    <tr>
-        <td align="right"><b><?= gettext('Assigning') ?>:</b></td>
-        <td><?= InputUtils::escapeHTML($sPropertyName) ?></td>
-<?php if (strlen($sPrompt)) {
-    ?>
-        <tr>
-            <td align="right" class="align-top">
-                <b><?= gettext('Value') ?>:</b>
-            </td>
-            <td>
-                <?= InputUtils::escapeHTML($sPrompt) ?>
-                <p><br/></p>
-                <textarea name="Value" cols="60" rows="10"><?= InputUtils::escapeHTML($sValue) ?></textarea>
-            </td>
-        </tr>
-    <?php
-} ?>
-</table>
+<div class="card card-body">
+    <form method="post" action="PropertyAssign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID ?>">
+        <input type="hidden" name="SecondPass" value="True">
+        <input type="hidden" name="Action" value="<?= $sAction ?>">
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold text-right"><?= $sTypeName ?>:</label>
+            <div class="col-sm-9 col-form-label"><?= InputUtils::escapeHTML($sName) ?></div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold text-right"><?= gettext('Assigning') ?>:</label>
+            <div class="col-sm-9 col-form-label"><?= InputUtils::escapeHTML($sPropertyName) ?></div>
+        </div>
+
+        <?php if (strlen($sPrompt)) { ?>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold text-right align-top"><?= gettext('Value') ?>:</label>
+            <div class="col-sm-9">
+                <p class="col-form-label pb-0"><?= InputUtils::escapeHTML($sPrompt) ?></p>
+                <textarea name="Value" class="form-control" rows="10"><?= InputUtils::escapeHTML($sValue) ?></textarea>
+            </div>
+        </div>
+        <?php } ?>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="<?php echo ($sAction === 'add') ? gettext('Assign') : gettext('Update') ?>" name="Submit">
+            <a href="<?= $sBackPage ?>" class="btn btn-secondary ml-2"><?= gettext('Cancel') ?></a>
+        </div>
+
+    </form>
 </div>
-
-<p class="text-center"><input type="submit" class="btn btn-primary" <?= 'value="'; if ($sAction === 'add') {
-        echo gettext('Assign');
-                                                               } else {
-                                                                   echo gettext('Update');
-                                                               } echo '"' ?> name="Submit"></p>
-
-</form>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

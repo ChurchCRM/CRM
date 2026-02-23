@@ -161,7 +161,7 @@ echo $sError;
                 $personPhoto = new \ChurchCRM\dto\Photo('person', $cartPerson->getId());
                 $photoIcon = '';
                 if ($personPhoto->hasUploadedPhoto()) {
-                    $photoIcon = ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' . $cartPerson->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+                    $photoIcon = ' <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="' . $cartPerson->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
                 }
                 echo '<td><a href="PersonView.php?PersonID=' . $cartPerson->getId() . '">' . FormatFullName($cartPerson->getTitle(), $cartPerson->getFirstName(), $cartPerson->getMiddleName(), $cartPerson->getLastName(), $cartPerson->getSuffix(), 1) . '</a>' . $photoIcon . '</td>';
 
@@ -197,7 +197,7 @@ echo $sError;
             <tr>
                 <td></td>
                 <td>
-                    <p class="MediumLargeText"><?= gettext('If adding a new family, enter data below.') ?></p>
+                    <p class="lead"><?= gettext('If adding a new family, enter data below.') ?></p>
                 </td>
             </tr>
 
@@ -208,7 +208,7 @@ echo $sError;
 
             <tr>
                 <td class="LabelColumn"><?= gettext('Wedding Date') ?>:</td>
-                <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15" class="form-control pull-right active date-picker"><span class="text-danger"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
+                <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15" class="form-control float-right active date-picker"><span class="text-danger"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
             </tr>
 
             <tr>

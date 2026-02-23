@@ -181,7 +181,7 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="card-body">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-4 col-md-offset-2 col-xs-6">
+                    <div class="col-md-4 col-md-offset-2 col-6">
                         <div class="form-group">
                             <label><?= gettext('Item') ?>:</label>
                             <input type="text" name="Item" id="Item" value="<?= $sItem ?>" class="form-control">
@@ -240,7 +240,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                     </div>
 
-                    <div class="col-md-4 col-xs-6">
+                    <div class="col-md-4 col-6">
                         <div class="form-group">
                             <label><?= gettext('Buyer') ?>:</label>
                             <?php if ($bMultibuy) {
@@ -282,7 +282,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                     </div>
 
-                    <div class="col-md-6 col-md-offset-2 col-xs-12">
+                    <div class="col-md-6 col-md-offset-2 col-12">
                         <div class="form-group">
                             <label><?= gettext('Description') ?>:</label>
                             <textarea name="Description" rows="5" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sDescription) ?></textarea>

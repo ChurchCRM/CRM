@@ -40,7 +40,7 @@ $rsProperties = RunQuery($sSQL);
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="container-fluid mt-4">
+<div class="card card-body">
     <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
         //Display the new property link and property types link
         echo '<div class="mb-3">';

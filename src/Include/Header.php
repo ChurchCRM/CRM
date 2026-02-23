@@ -145,20 +145,20 @@ $MenuFirst = 1;
 
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
-        <ul class="navbar-nav" style="flex: 1 1 auto;">
+        <ul class="navbar-nav flex-grow-1">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa-solid fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="<?= SystemURLs::getRootPath()?>/" class="nav-link">Home</a>
             </li>
-            <li class="nav-item" style="flex: 1 1 auto; min-width: 150px; max-width: 600px; margin-left: 10px;">
-                <form action="#" method="get" class="navbar-form" style="display: flex; align-items: center; width: 100%;">
-                    <div class="input-group" style="width: 100%;">
+            <li class="nav-item navbar-search-item">
+                <form action="#" method="get" class="navbar-form d-flex align-items-center w-100">
+                    <div class="input-group w-100">
                         <select class="form-control multiSearch">
                         </select>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" style="border-left: 0;">
+                            <button class="btn btn-outline-secondary navbar-search-btn" type="button">
                                 <i class="fa-solid fa-search"></i>
                             </button>
                         </div>
@@ -179,7 +179,7 @@ $MenuFirst = 1;
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true" id="upgradeMenu" title="<?= gettext('New Release') ?>">
                     <i class="fa-solid fa-download"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="dropdown-item" title="<?= gettext('New Release') ?>">
                         <i class="fa-solid fa-champagne-glasses"></i> <?= gettext('New Release') ?>
@@ -202,7 +202,7 @@ $MenuFirst = 1;
                     <span class="badge badge-warning navbar-badge" title="<?= gettext('Translation incomplete') ?>">!</span>
                     <?php } ?>
                 </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span class="dropdown-item dropdown-header">
                         <i class="fi fi-<?= $localeInfo->getCountryFlagCode() ?>"></i>
                         <?= $localeInfo->getName() ?> [<?= $localeInfo->getLocale() ?>]
@@ -223,7 +223,7 @@ $MenuFirst = 1;
                     <i class="fa-solid fa-shopping-cart"></i>
                     <span class="badge badge-info navbar-badge" id="iconCount"><?= Cart::countPeople() ?></span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <span id="cart-dropdown-menu"></span>
                 </div>
             </li>
@@ -233,7 +233,7 @@ $MenuFirst = 1;
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true" id="supportMenu">
                     <i class="fa-solid fa-headset"></i>
                 </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item" title="<?= gettext('Help & Manual') ?>">
                         <i class="fa-solid fa-book-reader"></i> <?= gettext('Help & Manual') ?>
                     </a>
@@ -256,7 +256,7 @@ $MenuFirst = 1;
                 <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
                     <i class="fa-solid fa-user"></i> <?= AuthenticationManager::getCurrentUser()->getName() ?>
                 </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                     <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
                       <i class="fa-solid fa-home"></i> <?= gettext("Profile") ?></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="dropdown-item">

@@ -39,24 +39,23 @@ extract(mysqli_fetch_array($rsProperty));
 $sType = '';
 
 require_once __DIR__ . '/Include/Header.php';
+?>
 
-if (isset($_GET['Warn'])) {
-    ?>
-    <p class="text-center LargeError">
-        <?= '<b>' . gettext('Warning') . ': </b>' . gettext('This property type is still being used by at least one property.') . '<BR>' . gettext('If you delete this type, you will also remove all properties using') . '<BR>' . gettext('it and lose any corresponding property assignments.'); ?>
-    </p>
-    <?php
-} ?>
+<div class="card card-body text-center">
+    <?php if (isset($_GET['Warn'])) { ?>
+    <div class="alert alert-warning">
+        <strong><?= gettext('Warning') ?>:</strong>
+        <?= gettext('This property type is still being used by at least one property.') ?>
+        <?= gettext('If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.') ?>
+    </div>
+    <?php } ?>
 
-<p class="text-center MediumLargeText">
-    <?= gettext('Please confirm deletion of this Property Type') ?>: <b><?= $prt_Name ?></b>
-</p>
+    <p class="lead"><?= gettext('Please confirm deletion of this Property Type') ?>: <strong><?= InputUtils::escapeHTML($prt_Name) ?></strong></p>
 
-<p class="text-center">
-    <a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?php echo $iPropertyTypeID ?>"><?= gettext('Yes, delete this record') ?></a>
-    &nbsp;&nbsp;
-    <a href="PropertyTypeList.php?Type=<?= $sType ?>"><?= gettext('No, cancel this deletion') ?></a>
-
-</p>
+    <div>
+        <a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?= $iPropertyTypeID ?>" class="btn btn-danger"><?= gettext('Yes, delete this record') ?></a>
+        <a href="PropertyTypeList.php?Type=<?= $sType ?>" class="btn btn-secondary ml-2"><?= gettext('No, cancel this deletion') ?></a>
+    </div>
+</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

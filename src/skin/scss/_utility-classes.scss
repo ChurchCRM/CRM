@@ -54,16 +54,8 @@
    ============================================ */
 
 /* Profile-related styles */
-.initials-image {
-  max-width: none;
-}
-
 .profile-user-img {
   display: inline-block;
-}
-
-.profile-picture-list {
-  max-width: none;
 }
 
 .person-thumbnail {
@@ -94,15 +86,6 @@
   margin-top: 5px;
 }
 
-/* Select and form control full-width variants */
-.select-100pct {
-  width: 100%;
-}
-
-.form-control-100pct {
-  width: 100%;
-}
-
 /* Textarea and canvas custom heights */
 .textarea-120px {
   height: 120px;
@@ -120,38 +103,6 @@
   height: 250px;
 }
 
-/* Table styling utilities */
-.table-100pct {
-  width: 100%;
-}
-
-.table-responsive-100pct {
-  width: 100%;
-}
-
-.td-center {
-  text-align: center;
-  padding: 2px;
-  color: #fff;
-  font-weight: 600;
-  font-size: 13px;
-}
-
-.td-width-20pct {
-  width: 20%;
-}
-
-.td-width-80px {
-  width: 80px;
-}
-
-/* Unordered list flex styles */
-.ul-flex {
-  margin: 0px;
-  border: 0px;
-  padding: 0px;
-}
-
 /* ============================================
    CUSTOM TYPOGRAPHY & SPACING
    ============================================ */
@@ -161,27 +112,22 @@
   line-height: 1.2;
 }
 
+/* Line-height utilities (Bootstrap 4 doesn't include lh-* utilities) */
+.lh-lg {
+  line-height: 2;
+}
+
 /* ============================================
    DEPRECATED/LEGACY CLASSES (Backward Compatibility)
    ============================================ */
 
-.LargeText {
-  font-size: larger;
-}
-
+/* Used in password change forms for inline validation errors */
 .form-field-error {
   color: red;
 }
 
-.error-message {
-  color: red;
-}
-
-.birthday-filter-hidden {
-  display: none;
-}
-
 /* Hide view photo button when there is no uploaded photo or gravatar */
+/* NOTE: toggled by JS in FamilyView.js - do not remove or rename */
 .hide-if-no-photo {
   display: none !important;
 }

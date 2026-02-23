@@ -12,10 +12,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-md-8">
         <!-- general form elements -->
         <div class="card card-primary">
-            <div class="card-header with-border">
+            <div class="card-header">
                 <?= gettext('Enter new user password. Administratively set passwords are not subject to length or complexity requirements') . '</p>' ?>
             </div>
-            <!-- /.box-header -->
             <!-- form start -->
             <form method="post" action="">
                 <?= CSRFUtils::getTokenInputField('admin_change_password') ?>
@@ -29,7 +28,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control" value="<?= $sNewPassword2 ?>"><span id="NewPasswordError" class="form-field-error"><?= $sNewPasswordError ?></span>
                     </div>
                 </div>
-                <!-- /.box-body -->
 
                 <div class="card-footer">
                     <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Save') ?>">

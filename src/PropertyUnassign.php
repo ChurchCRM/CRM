@@ -80,23 +80,24 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
-<?= gettext('Please confirm removal of this property from this') . ' ' . $sTypeName ?>:
+<div class="card card-body">
+    <p class="lead"><?= gettext('Please confirm removal of this property from this') . ' ' . $sTypeName ?>:</p>
 
-<table class="table table-striped">
-    <tr>
-        <td><b><?php echo $sTypeName ?>:</b></td>
-        <td><?= $sName ?></td>
-    </tr>
-    <tr>
-        <td><b><?= gettext('Unassigning') ?>:</b></td>
-        <td><?= $sPropertyName ?></td>
-    </tr>
-</table>
+    <table class="table table-striped mb-4">
+        <tr>
+            <td class="font-weight-bold"><?= $sTypeName ?>:</td>
+            <td><?= InputUtils::escapeHTML($sName) ?></td>
+        </tr>
+        <tr>
+            <td class="font-weight-bold"><?= gettext('Unassigning') ?>:</td>
+            <td><?= InputUtils::escapeHTML($sPropertyName) ?></td>
+        </tr>
+    </table>
 
-<div class="text-center">
-    <a class="btn btn-secondary" href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
-
-    <a class="btn btn-danger" href="PropertyUnassign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID . '&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
+    <div>
+        <a class="btn btn-secondary" href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
+        <a class="btn btn-danger ml-2" href="PropertyUnassign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID . '&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
+    </div>
 </div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

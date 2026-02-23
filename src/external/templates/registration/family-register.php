@@ -151,7 +151,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                 <div class="card-header member-card-header-clickable">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex align-items-center flex-grow-1">
-                                            <button type="button" class="btn btn-link member-toggle-btn p-0 mr-2" style="cursor: pointer;">
+                                            <button type="button" class="btn btn-link member-toggle-btn p-0 mr-2">
                                                 <i class="fa-solid fa-chevron-down"></i>
                                             </button>
                                             <h5 class="mb-0">

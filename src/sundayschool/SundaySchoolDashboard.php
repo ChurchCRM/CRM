@@ -130,7 +130,7 @@ require_once __DIR__ . '/../Include/Header.php';
 <div class="card card-primary card-outline">
   <div class="card-header">
     <h3 class="card-title"><i class="fa-solid fa-chalkboard-user"></i> <?= gettext('Sunday School Classes') ?></h3>
-      <div class="card-tools pull-right">
+      <div class="card-tools float-right">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
           </button>
           <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i>
@@ -151,7 +151,7 @@ require_once __DIR__ . '/../Include/Header.php';
             ?>
         <tr>
           <td>
-            <a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>' class="me-2" title="<?= gettext('Edit') ?>">
+            <a href='<?= SystemURLs::getRootPath() ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>' class="mr-2" title="<?= gettext('Edit') ?>">
               <i class="fa-solid fa-pen"></i>
             </a>
             <a href='SundaySchoolClassView.php?groupId=<?= $class['id'] ?>'>
@@ -171,7 +171,7 @@ require_once __DIR__ . '/../Include/Header.php';
 <div class="card card-warning card-outline">
   <div class="card-header">
     <h3 class="card-title"><i class="fa-solid fa-user-xmark"></i> <?= gettext('Students not in a Sunday School Class') ?></h3>
-      <div class="card-tools pull-right">
+      <div class="card-tools float-right">
           <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
           </button>
           <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i>
@@ -210,7 +210,7 @@ require_once __DIR__ . '/../Include/Header.php';
             $personPhoto = new \ChurchCRM\dto\Photo('person', $kidId);
             $photoIcon = '';
             if ($personPhoto->hasUploadedPhoto()) {
-                $photoIcon = ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+                $photoIcon = ' <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
             }
 
             $html = <<<HTML
