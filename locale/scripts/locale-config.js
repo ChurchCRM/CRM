@@ -39,7 +39,7 @@ const LocaleConfig = {
         root: path.join(PROJECT_ROOT, 'locale/terms'),
         base: path.join(PROJECT_ROOT, 'locale/terms/base'),
         missing: path.join(PROJECT_ROOT, 'locale/terms/missing'),
-        missingNew: path.join(PROJECT_ROOT, 'locale/terms/missing/new'),
+        missingNew: path.join(PROJECT_ROOT, 'locale/terms/missing'),
     },
     
     termsOutput: {
@@ -55,7 +55,7 @@ const LocaleConfig = {
     },
     
     settings: {
-        missingTermsBatchSize: 100,
+        missingTermsBatchSize: 150,
         wipThreshold: 5,
         completeThreshold: 90,
         goodThreshold: 75,

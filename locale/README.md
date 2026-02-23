@@ -63,12 +63,12 @@ For identifying and prioritizing untranslated terms:
 
 1. **Generate Missing Terms**: `npm run locale:missing`
    - Compares POEditor terms against each locale's translated terms
-   - Creates JSON files in `locale/terms/missing/new/{locale}/`
-   - Files are batched (default 100 terms per file) for easy POEditor import
+   - Creates JSON files in `locale/terms/missing/{locale}/`
+   - Files are batched (default 150 terms per file) for easy POEditor import
 
 2. **Upload to POEditor**: 
    - Go to POEditor → Your Project → Import
-   - Select language and upload the JSON files from `locale/terms/missing/new/{locale}/`
+   - Select language and upload the JSON files from `locale/terms/missing/{locale}/`
    - POEditor will highlight these as needing translation
 
 3. **Translation Priority**:
@@ -86,7 +86,6 @@ npm run locale:build      # Extract all terms from source code
 npm run locale:download   # Download translations from POEditor
 npm run locale:audit      # Generate completeness report
 npm run locale:missing    # Generate missing term files for each locale
-npm run locale:variants   # Populate regional variants from base language
 ```
 
 ## 📝 Gettext System
