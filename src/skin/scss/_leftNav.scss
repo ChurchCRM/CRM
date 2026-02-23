@@ -14,3 +14,28 @@
 .sidebar-menu > li .badge {
   margin-top: 0px;
 }
+
+// Top navbar: left nav group grows to fill available space
+.navbar-nav-grow {
+  flex: 1 1 auto;
+}
+
+// Top navbar: search bar nav item
+.navbar-search-item {
+  flex: 1 1 auto;
+  min-width: 150px;
+  max-width: 600px;
+  margin-left: 10px;
+}
+
+// Top navbar: search form layout
+.navbar-search-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+// Top navbar: search button removes double border with input
+.navbar-search-btn {
+  border-left: 0;
+}

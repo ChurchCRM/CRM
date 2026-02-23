@@ -692,7 +692,7 @@ $bOkToEdit = (
                                             </h3>
 
                                             <div class="timeline-body">
-                                                <pre style="line-height: 1.2;"><?= $item['text'] ?></pre>
+                                                <pre class="pre-compact"><?= $item['text'] ?></pre>
                                             </div>
 
                                         <?php
@@ -723,19 +723,19 @@ $bOkToEdit = (
                                         <table class="table table-hover table-striped" id="notes-table">
                                             <thead>
                                                 <tr>
-                                                    <th style="width: 1%; white-space: nowrap;"><?= gettext('Date') ?></th>
+                                                    <th class="td-shrink"><?= gettext('Date') ?></th>
                                                     <th><?= gettext('Note') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($personNotes as $note) { ?>
                                                     <tr>
-                                                        <td style="width: 1%; white-space: nowrap; vertical-align: top;">
-                                                            <div style="text-align: center;">
+                                                        <td class="td-shrink align-top">
+                                                            <div class="text-center">
                                                                 <i class="fa-solid fa-calendar"></i><br>
                                                                 <?= date('Y-m-d', strtotime($note['datetime'])) ?><br>
                                                                 <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
-                                                                <div style="margin-top: 10px;">
+                                                                <div class="mt-2">
                                                                     <?php if (isset($note['editLink']) && $note['editLink']) { ?>
                                                                         <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
                                                                             <i class="fa-solid fa-pen"></i>
@@ -749,8 +749,8 @@ $bOkToEdit = (
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td style="width: 99%; vertical-align: top;">
-                                                            <div style="margin-bottom: 8px;">
+                                                        <td class="align-top">
+                                                            <div class="mb-2">
                                                                 <?= $note['text'] ?>
                                                             </div>
                                                             <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $note['header'] ?></small>
@@ -824,31 +824,29 @@ $bOkToEdit = (
                                                     echo '</div><!-- /.box-body -->';
                                                 } ?>
                                                 <div class="card-footer">
-                                                    <code>
-                                                        <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                                        ?>
-                                                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-secondary" role="button"><i class="fa-solid fa-list"></i></a>
-                                                            <div class="btn-group">
-                                                                <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
-                                                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                                                                    <span class="caret"></span>
-                                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                                </button>
-                                                                <ul class="dropdown-menu" role="menu">
-                                                                    <li><a class="changeRole" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
-                                                                    <?php if ($grp_hasSpecialProps) {
-                                                                    ?>
-                                                                        <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
-                                                                    <?php
-                                                                    } ?>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="btn-group">
-                                                                <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa-solid fa-trash-can"></i></button>
-                                                            </div>
-                                                        <?php
-                                                        } ?>
-                                                    </code>
+                                                    <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+                                                    ?>
+                                                        <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-secondary" role="button"><i class="fa-solid fa-list"></i></a>
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
+                                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                                                                <span class="caret"></span>
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li><a class="changeRole dropdown-item" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
+                                                                <?php if ($grp_hasSpecialProps) {
+                                                                ?>
+                                                                    <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>" class="dropdown-item"><?= gettext('Update Properties') ?></a></li>
+                                                                <?php
+                                                                } ?>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="btn-group">
+                                                            <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove"><i class="fa-solid fa-trash-can"></i></button>
+                                                        </div>
+                                                    <?php
+                                                    } ?>
                                                 </div>
                                                 <!-- /.box-footer-->
                                             </div>
