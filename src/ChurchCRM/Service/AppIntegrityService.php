@@ -218,7 +218,7 @@ class AppIntegrityService
             new Prerequisite('PHP Session', fn (): bool => function_exists('session_start')),
             new Prerequisite('PHP XML', fn (): bool => class_exists('SimpleXMLElement')),
             new Prerequisite('PHP iconv', fn (): bool => function_exists('iconv')),
-            new Prerequisite('Mod Rewrite or Equivalent', fn (): bool => AppIntegrityService::hasModRewrite()),
+            new Prerequisite('URL Rewriting (mod_rewrite / nginx / LiteSpeed)', fn (): bool => AppIntegrityService::hasModRewrite()),
             new Prerequisite(
                 'GD Library for image manipulation',
                 fn (): bool =>
@@ -276,37 +276,84 @@ class AppIntegrityService
     {
         $logger = LoggerUtils::getAppLogger();
 
-        if (function_exists('curl_version')) {
-            $ch = curl_init();
-
-            // Security fix: Do NOT use HTTP_REFERER header as it's user-controlled (SSRF vulnerability)
-            // Use SERVER_NAME instead of HTTP_HOST since HTTP_HOST is also user-controlled
-            $request_scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-            if (isset($_SERVER['REQUEST_SCHEME'])) {
-                $request_scheme = $_SERVER['REQUEST_SCHEME'];
-            }
-            $request_host = $_SERVER['SERVER_NAME'] ?? 'localhost';
-
-            // Run a test against an URL we know does not exist to check for ModRewrite like functionality
-            $rewrite_chk_url = $request_scheme . '://' . $request_host . SystemURLs::getRootPath() . '/INVALID';
-            $logger->debug("Testing CURL loopback check to: $rewrite_chk_url");
-
-            curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HEADER, true);
-            curl_setopt($ch, CURLOPT_NOBODY, true);
-
-            $result = curl_exec($ch);
-
-            $isEnabled = preg_match('/^CRM:\s*(.*)$/mi', $result, $matches) === 1;
-
-            $logger->debug('CURL loopback check header observed: ' . ($isEnabled ? 'true' : 'false'));
-            return $isEnabled;
+        // Strategy 1: ask Apache directly (works on mod_php / litespeed with apache compat).
+        // This is the most reliable signal and requires no network call.
+        if (function_exists('apache_get_modules')) {
+            $enabled = in_array('mod_rewrite', apache_get_modules(), true);
+            $logger->debug('mod_rewrite detection via apache_get_modules: ' . ($enabled ? 'true' : 'false'));
+            return $enabled;
         }
 
-        return false;
+        // Strategy 2: Apache sets REDIRECT_STATUS in $_SERVER when the *current* request
+        // was rewritten by an .htaccess RewriteRule before landing on this script.
+        // Its presence proves that URL rewriting is active and .htaccess overrides are
+        // allowed — exactly what ChurchCRM needs — without any network call.
+        // Works on Apache FPM/CGI, nginx + ngx_http_rewrite, LiteSpeed, etc.
+        if (isset($_SERVER['REDIRECT_STATUS'])) {
+            $logger->debug('mod_rewrite detection via REDIRECT_STATUS: true');
+            return true;
+        }
+
+        // Strategy 3: curl loopback as a last resort.
+        // NOTE: many shared hosts block loopback requests at the firewall level, so a
+        // failure here does NOT mean rewriting is broken — treat any failure as "assume
+        // available".  The check is advisory; users can ignore and continue setup.
+        if (function_exists('curl_version')) {
+            try {
+                $request_scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+                if (isset($_SERVER['REQUEST_SCHEME'])) {
+                    $request_scheme = $_SERVER['REQUEST_SCHEME'];
+                }
+                $request_host = $_SERVER['SERVER_NAME'] ?? 'localhost';
+
+                $serverPort = (int) ($_SERVER['SERVER_PORT'] ?? 80);
+                $isDefaultPort = ($request_scheme === 'https' && $serverPort === 443)
+                              || ($request_scheme === 'http'  && $serverPort === 80);
+                if (!$isDefaultPort) {
+                    $request_host .= ':' . $serverPort;
+                }
+
+                $rootPath = '';
+                try {
+                    $rootPath = SystemURLs::getRootPath();
+                } catch (\Exception $e) {
+                    $rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
+                }
+
+                $rewrite_chk_url = $request_scheme . '://' . $request_host . $rootPath . '/INVALID';
+                $logger->debug("mod_rewrite detection via curl loopback: $rewrite_chk_url");
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, $rewrite_chk_url);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HEADER, true);
+                curl_setopt($ch, CURLOPT_NOBODY, true);
+                curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+                curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+
+                $result = curl_exec($ch);
+                curl_close($ch);
+
+                if ($result === false) {
+                    // Loopback blocked — assume available (advisory check only)
+                    $logger->debug('mod_rewrite curl loopback failed (blocked/timeout) — assuming available');
+                    return true;
+                }
+
+                $isEnabled = preg_match('/^CRM:\s*(.*)$/mi', $result, $matches) === 1;
+                $logger->debug('mod_rewrite curl loopback CRM header observed: ' . ($isEnabled ? 'true' : 'false'));
+                return $isEnabled;
+            } catch (\Exception $e) {
+                $logger->debug('mod_rewrite curl loopback exception: ' . $e->getMessage() . ' — assuming available');
+                return true;
+            }
+        }
+
+        // No detection method available — assume rewriting works rather than blocking setup.
+        $logger->debug('mod_rewrite: no detection method available — assuming available');
+        return true;
     }
 
     /**

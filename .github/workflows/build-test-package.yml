@@ -428,8 +428,120 @@ jobs:
       run: |
         npm run docker:ci:new-system:down
 
+  test-new-system-subdir:
+    needs: build
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+    - name: Use Node.js (from .nvmrc)
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Download Build Artifact
+      uses: actions/download-artifact@v7
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker Image
+      run: |
+        echo "📦 Loading pre-built Docker image..."
+        docker load < temp/docker-image.tar.gz
+        echo "✅ Docker images loaded:"
+        docker images | grep churchcrm
+
+    - name: Generate File Signatures
+      run: |
+        echo "Generating file signatures for integrity check..."
+        node scripts/generate-signatures-node.js
+
+    - name: Remove Config.php for Fresh Install Test (Subdir)
+      run: |
+        rm -f src/Include/Config.php
+        echo "Config.php removed - setup wizard will be triggered (subdir)"
+
+    - name: Run Docker (New System Test - Subdir)
+      run: |
+        npm run docker:ci:new-system:subdir:start
+
+    - name: Wait for Docker to be ready
+      run: |
+        echo "Waiting for new system test services to be ready (subdir)..."
+        sleep 10
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs
+
+    - name: Test Server Redirects to Setup (New System Test - Subdir)
+      run: |
+        echo "Testing that server redirects to setup wizard (subdir)..."
+        max_attempts=12
+        attempt=1
+        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/churchcrm/ | grep -q "302\|200"; do
+          echo "Attempt $attempt/$max_attempts failed. Retrying in 5 seconds..."
+          sleep 5
+          attempt=$((attempt + 1))
+          if [ $attempt -eq $max_attempts ]; then
+            break
+          fi
+        done
+        
+        if [ $attempt -eq $max_attempts ]; then
+          echo "Server failed to respond after $max_attempts attempts"
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs
+          exit 1
+        fi
+        
+        echo "New system test server is responding (subdir)!"
+        curl -vvv http://127.0.0.1:8081/churchcrm/
+
+    - name: Run Cypress Tests (Setup Wizard - Subdir)
+      run: |
+        npm run test:new-system:subdir
+
+    - name: Collect Docker Logs on Failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker
+        echo "=== Docker Container Logs ===" > cypress/logs/docker/docker-compose-new-system-subdir.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs >> cypress/logs/docker/docker-compose-new-system-subdir.log 2>&1 || true
+        
+        echo "=== Docker Container Status ===" >> cypress/logs/docker/docker-compose-new-system-subdir.log
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-new-system-subdir.log 2>&1 || true
+        
+        echo "=== Collecting PHP Application Logs ===" 
+        mkdir -p cypress/logs/php
+        if [ -d "src/logs" ]; then
+          cp -r src/logs cypress/logs/php/ || true
+        fi
+
+    - name: Upload Cypress Artifacts (New System - Subdir)
+      if: failure()
+      uses: actions/upload-artifact@v6
+      with:
+        name: cypress-artifacts-new-system-subdir-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/results
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
+    - name: Stop Docker
+      if: always()
+      run: |
+        npm run docker:ci:new-system:subdir:down
+
   package:
-    needs: [test-root, test-subdir, test-new-system]
+    needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
     permissions:
       contents: read
     runs-on: ubuntu-latest
