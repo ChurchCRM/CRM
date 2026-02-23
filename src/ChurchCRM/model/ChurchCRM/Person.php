@@ -319,22 +319,31 @@ class Person extends BasePerson implements PhotoInterface
 
     /**
      * Returns a Google Maps directions deep-link for this person's address.
-     * Prefers stored family lat/lng (already geocoded, no API call).
-     * Falls back to the address string so Google Maps geocodes it client-side.
-     * Returns an empty string when no address is available.
+     *
+     * - Person has own address (Address1 set): use address string only — no family info.
+     * - Person has no own address, family has stored lat/lng: use coordinates (accurate, no API call).
+     * - Person has no own address, family has address only: use family address string.
+     * - No address anywhere: return empty string.
+     *
+     * Note: per_Latitude/per_Longitude columns do not yet exist on person_per.
+     * When added (issue #8045) this method should be updated to prefer them.
      */
     public function getDirectionsUrl(): string
     {
-        $address = $this->getAddress();
-        if (empty($address)) {
+        if (!empty($this->getAddress1())) {
+            return GeoUtils::buildDirectionsUrl($this->getAddress());
+        }
+
+        $family = $this->getFamily();
+        if ($family === null) {
             return '';
         }
-        // Use stored family lat/lng when available — avoids a GeoUtils API call on every page load
-        $family = $this->getFamily();
-        if ($family !== null && $family->hasLatitudeAndLongitude()) {
-            return 'https://www.google.com/maps/dir/?api=1&destination=' . $family->getLatitude() . ',' . $family->getLongitude();
+
+        if ($family->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildDirectionsUrl('', (float) $family->getLatitude(), (float) $family->getLongitude());
         }
-        return 'https://www.google.com/maps/dir/?api=1&destination=' . urlencode($address);
+
+        return GeoUtils::buildDirectionsUrl($family->getAddress());
     }
 
     public function deletePhoto(): bool

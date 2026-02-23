@@ -41,6 +41,25 @@ class GeoUtils
         ];
     }
 
+    /**
+     * Returns a Google Maps directions deep-link URL.
+     *
+     * Prefer lat/lng when available — avoids client-side geocoding and gives a
+     * precise pin. Falls back to an address string otherwise.
+     * Returns an empty string when no destination can be determined.
+     */
+    public static function buildDirectionsUrl(string $address = '', float $lat = 0.0, float $lng = 0.0): string
+    {
+        $base = 'https://www.google.com/maps/dir/?api=1&destination=';
+        if ($lat !== 0.0 && $lng !== 0.0) {
+            return $base . $lat . ',' . $lng;
+        }
+        if (!empty($address)) {
+            return $base . urlencode($address);
+        }
+        return '';
+    }
+
     public static function drivingDistanceMatrix($address1, $address2): array
     {
         $logger = LoggerUtils::getAppLogger();

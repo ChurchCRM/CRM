@@ -346,13 +346,9 @@ class Family extends BaseFamily implements PhotoInterface
     public function getDirectionsUrl(): string
     {
         if ($this->hasLatitudeAndLongitude()) {
-            return 'https://www.google.com/maps/dir/?api=1&destination=' . $this->getLatitude() . ',' . $this->getLongitude();
+            return GeoUtils::buildDirectionsUrl('', (float) $this->getLatitude(), (float) $this->getLongitude());
         }
-        $address = $this->getAddress();
-        if (empty($address)) {
-            return '';
-        }
-        return 'https://www.google.com/maps/dir/?api=1&destination=' . urlencode($address);
+        return GeoUtils::buildDirectionsUrl($this->getAddress());
     }
 
     /**
