@@ -1877,14 +1877,6 @@ msgid "Assign starting at #"
 msgstr "Przypisz Numer zaczynając od #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Nie można pokazać mapy, bo brakuje informacji o lokalizacji Kościoła. Proszę wypełnić pole adresu i położenia w zakładce Ustawienia w Menu."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Nie ustawiono klucza Google API. Mapa pokaże znacznie mniej informacji. Proszę podać klucz w zakładce mapa w menu ustawień."
-
-#: 
 msgid "Member Role Change"
 msgstr "Zmiana Roli Członka"
 
@@ -3766,10 +3758,6 @@ msgstr "Ustaw True aby włączyć skanowanie czeków."
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Jednostka miary odległości, mile lub km."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Nazwy szpilek w Google Maps w kolejności kategorii"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -6028,10 +6016,6 @@ msgid "Your Cart is Empty"
 msgstr "Twój koszyk jest pusty"
 
 #: 
-msgid "View on Map"
-msgstr "Zobacz na mapie"
-
-#: 
 msgid "Legend"
 msgstr "Legenda"
 
@@ -6076,18 +6060,6 @@ msgid "The role could not be assigned."
 msgstr "Nie udało się przypisać roli."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "API map Bing wymaga unikalnego klucza"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Zoom Map Google"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Wybierz dostawcę GeoCodera"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Twoje konto ChurchCRM zostało zablokowane."
 
@@ -6130,10 +6102,6 @@ msgstr "hasło użytkownika zmienione przez admina"
 #: 
 msgid "system user login reset"
 msgstr "reset logowania użytkownika"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Brakuje rodzin? Zaktualizuj współrzędne rodziny teraz."
 
 #: 
 msgid "Families without Geo Info"
@@ -6212,18 +6180,6 @@ msgid "Time zone"
 msgstr "Strefa czasowa"
 
 #: 
-msgid "OpenLP URL"
-msgstr "Adres URL OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Użytkownik OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Hasło OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Znacznik czasu widoczności kiosku"
 
@@ -6234,10 +6190,6 @@ msgstr "Pokaż/Ukryj link zapomnianego hasła na ekranie logowania"
 #: 
 msgid "Backup"
 msgstr "Kopia zapasowa"
-
-#: 
-msgid "Integration"
-msgstr "Integracja"
 
 #: 
 msgid "Guardian(s) of"
@@ -6409,10 +6361,6 @@ msgstr "Indonezyjski - Indonezja"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "rekordy pomyślnie dodane do wybranej grupy."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Aby wyeksportować dla europejskiego zestawu znaków, użyj ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6972,10 +6920,6 @@ msgid "Links"
 msgstr "Linki"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Pokaż własne odnośniki w lewym menu."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Pokaż Szkołę Niedzielną w lewym menu."
 
@@ -7002,10 +6946,6 @@ msgstr "Włączone Funkcje"
 #: 
 msgid "Validation Error"
 msgstr "Błąd Sprawdzenia"
-
-#: 
-msgid "Link Not found"
-msgstr "Nie znaleziono linku"
 
 #: 
 msgid "Email Functions"
@@ -7098,10 +7038,6 @@ msgid "Updated People"
 msgstr "Zaktualizowane Osoby"
 
 #: 
-msgid "Custom Menus"
-msgstr "Własne Menu"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Użytkownik musi mieć dostęp do Zarządzania Grupami"
 
@@ -7120,22 +7056,6 @@ msgstr "Nie można usunąć siebie"
 #: 
 msgid "The role could not be found."
 msgstr "Nie znaleziono roli."
-
-#: 
-msgid "Add Menu"
-msgstr "Dodaj menu"
-
-#: 
-msgid "Menu Name"
-msgstr "Nazwa menu"
-
-#: 
-msgid "Link Address"
-msgstr "Adres skórtu"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Rozpocznij od http:// or https://"
 
 #: 
 msgid "Menus"

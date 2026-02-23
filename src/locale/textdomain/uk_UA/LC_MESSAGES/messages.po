@@ -1831,14 +1831,6 @@ msgid "Assign starting at #"
 msgstr "Призначати починаючи з #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Не вдається відобразити карту через відсутність церковної широти чи довготи. Будь ласка, оновіть Адресу церкви в меню налаштувань."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Ключ API Google Map не встановлений. Карта працюватиме для менших наборів місць. Будь ласка, створіть ключ у розділах карт меню налаштувань."
-
-#: 
 msgid "Member Role Change"
 msgstr "Зміна ролі члена"
 
@@ -3679,10 +3671,6 @@ msgstr "Встановіть значення true, щоб дозволити в
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Одиниця вимірювання відстані, миль або км."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Назви маркерів для Карт Google у порядку класифікації"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5946,10 +5934,6 @@ msgid "Your Cart is Empty"
 msgstr "Кошик порожній"
 
 #: 
-msgid "View on Map"
-msgstr "Переглянути на карті"
-
-#: 
 msgid "Legend"
 msgstr "Легенда"
 
@@ -5994,18 +5978,6 @@ msgid "The role could not be assigned."
 msgstr "Не вдалося призначити роль."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "API Bing map вимагає унікальний ключ"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Maps Zoom"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Виберіть постачальника геокодерів"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Ваш обліковий запис ChurchCRM був заблокований."
 
@@ -6048,10 +6020,6 @@ msgstr "пароль користувача системи змінено адм
 #: 
 msgid "system user login reset"
 msgstr "скидання входу користувача системи"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Зниклих сімей? Оновіть сімейну широту чи довготу зараз."
 
 #: 
 msgid "Families without Geo Info"
@@ -6130,18 +6098,6 @@ msgid "Time zone"
 msgstr "Часовий пояс"
 
 #: 
-msgid "OpenLP URL"
-msgstr "URL-адреса OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Ім'я користувача OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Пароль OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Відмітка часу кіоску"
 
@@ -6152,10 +6108,6 @@ msgstr "Показати / сховати посилання для втраче
 #: 
 msgid "Backup"
 msgstr "Резервне копіювання"
-
-#: 
-msgid "Integration"
-msgstr "Інтеграція"
 
 #: 
 msgid "Guardian(s) of"
@@ -6328,10 +6280,6 @@ msgstr "Індонезійська - Індонезія"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "записи успішно додано до вибраної групи."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Експортувати до іншого Для європейського використання CharSet;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6893,10 +6841,6 @@ msgid "Links"
 msgstr "Посилання"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Показати власні посилання в меню ліворуч."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Увімкнути меню лівої недільної школи."
 
@@ -6923,10 +6867,6 @@ msgstr "Увімкнені функції"
 #: 
 msgid "Validation Error"
 msgstr "Помилка перевірки"
-
-#: 
-msgid "Link Not found"
-msgstr "Посилання не знайдено"
 
 #: 
 msgid "Email Functions"
@@ -7020,10 +6960,6 @@ msgid "Updated People"
 msgstr "Оновлені особи"
 
 #: 
-msgid "Custom Menus"
-msgstr "Спеціальні меню"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Користувач повинен мати дозвіл на керування групами"
 
@@ -7042,22 +6978,6 @@ msgstr "Не вдається видалити себе"
 #: 
 msgid "The role could not be found."
 msgstr "Роль не вдалося знайти."
-
-#: 
-msgid "Add Menu"
-msgstr "Додати меню"
-
-#: 
-msgid "Menu Name"
-msgstr "Назва меню"
-
-#: 
-msgid "Link Address"
-msgstr "Адреса посилання"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Почніть з http: // або https: //"
 
 #: 
 msgid "Menus"

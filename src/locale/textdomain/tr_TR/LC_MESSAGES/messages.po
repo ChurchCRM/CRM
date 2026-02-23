@@ -1830,14 +1830,6 @@ msgid "Assign starting at #"
 msgstr "# 'Dan başlayarak atayın"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Kilise enlemi veya boylamı nedeniyle haritayı görüntüleyemiyor. Lütfen Ayarlar menüsündeki kilise adresini güncelleyin."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Harita API tuşu ayarlanmamıştır. Harita daha küçük konumlar için çalışacaktır. Lütfen ayar menüsünün haritalar bölümlerinde bir anahtar oluşturun."
-
-#: 
 msgid "Member Role Change"
 msgstr "Üye Rol Değişimi"
 
@@ -3678,10 +3670,6 @@ msgstr "Taranan çeklerin kullanımını etkinleştirmek için true ayarlayın"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Birim mesafe, mil veya km ölçmek için kullanılır."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Sınıflandırma sırasına göre Google Haritalar için İşaretçilerin Adları"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5945,10 +5933,6 @@ msgid "Your Cart is Empty"
 msgstr "Sepetiniz boş"
 
 #: 
-msgid "View on Map"
-msgstr "Haritada görüntüle"
-
-#: 
 msgid "Legend"
 msgstr "Efsane"
 
@@ -5993,18 +5977,6 @@ msgid "The role could not be assigned."
 msgstr "Rol atanamadı."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing Map API benzersiz bir anahtar gerektirir"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Haritalar Zoom"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Geocoder sağlayıcısı seçin"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "ChurchCRM hesabınız kilitlendi."
 
@@ -6047,10 +6019,6 @@ msgstr "Sistem Kullanıcı Şifresi Yönetici tarafından değiştirildi"
 #: 
 msgid "system user login reset"
 msgstr "Sistem Kullanıcı Oturum Açma Sıfırlama"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Kayıp aileler? Şimdi aile enlemini veya boylamını güncelleyin."
 
 #: 
 msgid "Families without Geo Info"
@@ -6129,18 +6097,6 @@ msgid "Time zone"
 msgstr "Saat dilimi"
 
 #: 
-msgid "OpenLP URL"
-msgstr "Openlp URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP Kullanıcı Adı"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Openlp şifresi"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskvisityTimestamp"
 
@@ -6151,10 +6107,6 @@ msgstr "Giriş ekranında kayıp şifre bağlantısını göster/gizle"
 #: 
 msgid "Backup"
 msgstr "Destek olmak"
-
-#: 
-msgid "Integration"
-msgstr "Entegrasyon"
 
 #: 
 msgid "Guardian(s) of"
@@ -6327,10 +6279,6 @@ msgstr "Endonezya - Endonezya"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "Kayıtlar seçilen gruba başarıyla eklendi."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Avrupa kömürü kullanımı için bir başkasına ihraç etmek;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6892,10 +6840,6 @@ msgid "Links"
 msgstr "Bağlar"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Sol menüde özel bağlantıları gösterin."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Pazar Okulu sol menüsünü etkinleştirin."
 
@@ -6922,10 +6866,6 @@ msgstr "Etkin özellikler"
 #: 
 msgid "Validation Error"
 msgstr "Doğrulama Hatası"
-
-#: 
-msgid "Link Not found"
-msgstr "Bağlantı bulunamadı"
 
 #: 
 msgid "Email Functions"
@@ -7019,10 +6959,6 @@ msgid "Updated People"
 msgstr "Güncellenmiş kişiler"
 
 #: 
-msgid "Custom Menus"
-msgstr "Özel menüler"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Kullanıcının grup iznini yönetmesi gerekir"
 
@@ -7041,22 +6977,6 @@ msgstr "Kendini silemiyorum"
 #: 
 msgid "The role could not be found."
 msgstr "Rol bulunamadı."
-
-#: 
-msgid "Add Menu"
-msgstr "Menü Ekle"
-
-#: 
-msgid "Menu Name"
-msgstr "Menü adı"
-
-#: 
-msgid "Link Address"
-msgstr "Bağlantı adresi"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Http: // veya https: // ile başlayın"
 
 #: 
 msgid "Menus"

@@ -1829,14 +1829,6 @@ msgid "Assign starting at #"
 msgstr "Kabidhi kuanzia #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Haiwezi kuonyesha ramani kwa sababu ya kukosa Latitudo ya Kanisa au Longitude. Tafadhali sasisha Anwani ya kanisa katika menyu ya mipangilio."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Ufunguo wa API ya Ramani ya Google haujawekwa. Ramani itafanya kazi kwa seti ndogo za maeneo. Tafadhali unda Ufunguo katika sehemu za ramani za menyu ya mipangilio."
-
-#: 
 msgid "Member Role Change"
 msgstr "Mabadiliko ya Wajibu wa Mwanachama"
 
@@ -3674,10 +3666,6 @@ msgstr "Weka kweli ili kuwezesha matumizi ya ukaguzi uliochanganuliwa"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Kitengo kinachotumika kupima umbali, maili au km."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Majina ya vialamisho vya Ramani za Google kwa mpangilio wa uainishaji"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5940,10 +5928,6 @@ msgid "Your Cart is Empty"
 msgstr "Rukwama yako ni Tupu"
 
 #: 
-msgid "View on Map"
-msgstr "Tazama kwenye Ramani"
-
-#: 
 msgid "Legend"
 msgstr "Hadithi"
 
@@ -5988,18 +5972,6 @@ msgid "The role could not be assigned."
 msgstr "Jukumu halikuweza kukabidhiwa."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "API ya ramani ya Bing inahitaji ufunguo wa kipekee"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Kuza Ramani za Google"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Chagua Mtoaji wa GeoCoder"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Akaunti yako ya ChurchCRM imefungwa."
 
@@ -6042,10 +6014,6 @@ msgstr "nenosiri la mtumiaji wa mfumo limebadilishwa na admin"
 #: 
 msgid "system user login reset"
 msgstr "kuweka upya mfumo wa kuingia kwa mtumiaji"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Je, Familia Zinazokosa? Sasisha Latitudo ya Familia au Longitude sasa."
 
 #: 
 msgid "Families without Geo Info"
@@ -6124,18 +6092,6 @@ msgid "Time zone"
 msgstr "Saa za eneo"
 
 #: 
-msgid "OpenLP URL"
-msgstr "URL ya OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP Jina la mtumiaji"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Nenosiri la OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Muhuri wa Muda wa KioskVisibility"
 
@@ -6146,10 +6102,6 @@ msgstr "Onyesha/Ficha Kiungo cha Nenosiri Lililopotea kwenye skrini ya kuingia"
 #: 
 msgid "Backup"
 msgstr "Hifadhi nakala"
-
-#: 
-msgid "Integration"
-msgstr "Kuunganisha"
 
 #: 
 msgid "Guardian(s) of"
@@ -6322,10 +6274,6 @@ msgstr "Kiindonesia - Indonesia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "rekodi zimeongezwa kwa Kikundi kilichochaguliwa."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Kusafirisha kwenda nyingine Kwa matumizi ya CharSet ya ulaya;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6886,10 +6834,6 @@ msgid "Links"
 msgstr "Viungo"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Onyesha viungo maalum kwenye menyu ya kushoto."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Washa menyu ya kushoto ya Shule ya Jumapili."
 
@@ -6916,10 +6860,6 @@ msgstr "Vipengele Vilivyowezeshwa"
 #: 
 msgid "Validation Error"
 msgstr "Hitilafu ya Uthibitishaji"
-
-#: 
-msgid "Link Not found"
-msgstr "Kiungo hakijapatikana"
 
 #: 
 msgid "Email Functions"
@@ -7012,10 +6952,6 @@ msgid "Updated People"
 msgstr "Watu Waliosasishwa"
 
 #: 
-msgid "Custom Menus"
-msgstr "Menyu Maalum"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Mtumiaji lazima awe na ruhusa ya Kusimamia Vikundi"
 
@@ -7034,22 +6970,6 @@ msgstr "Huwezi kujifuta"
 #: 
 msgid "The role could not be found."
 msgstr "Jukumu halikuweza kupatikana."
-
-#: 
-msgid "Add Menu"
-msgstr "Ongeza Menyu"
-
-#: 
-msgid "Menu Name"
-msgstr "Jina la Menyu"
-
-#: 
-msgid "Link Address"
-msgstr "Anwani ya Kiungo"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Anza na http:// au https://"
 
 #: 
 msgid "Menus"

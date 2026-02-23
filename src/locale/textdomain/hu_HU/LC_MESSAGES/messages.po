@@ -1869,14 +1869,6 @@ msgid "Assign starting at #"
 msgstr "Rendeljen kezdődnek #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "A térkép nem jeleníthető meg hiányzó templomi szélességi vagy hosszúsági adatok miatt. Kérjük, frissítse a templom címét a beállítások menüben."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "A Google Map API-kulcs nincs beállítva. A térkép csak korlátozott számú helyszín esetén fog működni. Kérjük, hozzon létre egy kulcsot a beállítások menü térkép szekciójában."
-
-#: 
 msgid "Member Role Change"
 msgstr "Tagállamok szerepe módosítása"
 
@@ -3755,10 +3747,6 @@ msgstr "Állítsa Igazra a szkennelt csekkek használatának engedélyezéséhez
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "A távolság mérésére használt mértékegység, mérföld vagy km."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "A Google Maps jelölőinek nevei besorolási sorrendben"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -6016,10 +6004,6 @@ msgid "Your Cart is Empty"
 msgstr "A kosara üres"
 
 #: 
-msgid "View on Map"
-msgstr "Megtekintés térképen"
-
-#: 
 msgid "Legend"
 msgstr "Jelmagyarázat"
 
@@ -6064,18 +6048,6 @@ msgid "The role could not be assigned."
 msgstr "A szerepkört nem sikerült hozzárendelni."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "A Bing térkép API-hoz egyedi kulcs szükséges"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Térkép nagyítás"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Válasszon GeoCoder szolgáltatót"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Az Ön ChurchCRM fiókját zárolták."
 
@@ -6118,10 +6090,6 @@ msgstr "rendszerfelhasználó jelszavát az adminisztrátor megváltoztatta"
 #: 
 msgid "system user login reset"
 msgstr "rendszerfelhasználó bejelentkezése visszaállítva"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Hiányzó családok? Frissítse a család szélességi vagy hosszúsági koordinátáit most."
 
 #: 
 msgid "Families without Geo Info"
@@ -6200,18 +6168,6 @@ msgid "Time zone"
 msgstr "Időzóna"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP felhasználónév"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP jelszó"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Kioszk láthatósági időbélyeg"
 
@@ -6222,10 +6178,6 @@ msgstr "Elfelejtett jelszó link megjelenítése/elrejtése a bejelentkezési k�
 #: 
 msgid "Backup"
 msgstr "Biztonsági mentés"
-
-#: 
-msgid "Integration"
-msgstr "Integráció"
 
 #: 
 msgid "Guardian(s) of"
@@ -6397,10 +6349,6 @@ msgstr "Indonéz - Indonézia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "rekord(ok) sikeresen hozzáadva a kiválasztott csoporthoz."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Más európai karakterkészletbe való exporthoz használjon pontosvesszőt (;)"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6959,10 +6907,6 @@ msgid "Links"
 msgstr "Linkek"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Egyéni linkek megjelenítése a bal menüben."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Az iskolai baloldali menü engedélyezése vasárnap."
 
@@ -6989,10 +6933,6 @@ msgstr "Engedélyezett funkciók"
 #: 
 msgid "Validation Error"
 msgstr "Validációs hiba"
-
-#: 
-msgid "Link Not found"
-msgstr "Link nem található"
 
 #: 
 msgid "Email Functions"
@@ -7083,10 +7023,6 @@ msgid "Updated People"
 msgstr "Frissített emberek"
 
 #: 
-msgid "Custom Menus"
-msgstr "Egyéni menük"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "A felhasználónak Csoportok kezelésének engedéllyel kell rendelkeznie"
 
@@ -7105,22 +7041,6 @@ msgstr "Nem törölheti magát"
 #: 
 msgid "The role could not be found."
 msgstr "A szerep nem található."
-
-#: 
-msgid "Add Menu"
-msgstr "Menü hozzáadása"
-
-#: 
-msgid "Menu Name"
-msgstr "Menü neve"
-
-#: 
-msgid "Link Address"
-msgstr "Link címe"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Kezdje http:// vagy https:// -vel"
 
 #: 
 msgid "Menus"

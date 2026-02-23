@@ -1890,14 +1890,6 @@ msgid "Assign starting at #"
 msgstr "Tilordning:"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Kan ikke vise kartet fordi kirkens breddegrad eller lengdegrad mangler. Vennligst oppdater kirkens adresse i innstillingsmenyen."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Map API-nøkkel er ikke angitt. Kartet vil fungere for et mindre antall lokasjoner. Vennligst opprett en nøkkel under kartseksjonen i innstillingsmenyen."
-
-#: 
 msgid "Member Role Change"
 msgstr "Medlem Rolle Endre"
 
@@ -3794,10 +3786,6 @@ msgstr "Sett til 'Sann' for å aktivere bruk av skannede sjekker"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Enhet brukt for avstand, miles eller km."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Navn på markører for Google Maps i rekkefølge etter klassifisering"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -6055,10 +6043,6 @@ msgid "Your Cart is Empty"
 msgstr "Handlekurven din er tom"
 
 #: 
-msgid "View on Map"
-msgstr "Vis på kart"
-
-#: 
 msgid "Legend"
 msgstr "Tegnforklaring"
 
@@ -6103,18 +6087,6 @@ msgid "The role could not be assigned."
 msgstr "Rollen kunne ikke tildeles."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing map API krever en unik nøkkel"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Maps Zoom"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Velg GeoCoder-leverandør"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Din ChurchCRM-konto ble låst."
 
@@ -6157,10 +6129,6 @@ msgstr "systembrukerens passord ble endret av administrator"
 #: 
 msgid "system user login reset"
 msgstr "innlogging for systembruker tilbakestilt"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Mangler du familier? Oppdater familiens bredde- eller lengdegrad nå."
 
 #: 
 msgid "Families without Geo Info"
@@ -6239,18 +6207,6 @@ msgid "Time zone"
 msgstr "Tidssone"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP brukernavn"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP passord"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6261,10 +6217,6 @@ msgstr "Vis/skjul lenke for glemt passord på innloggingsskjermen"
 #: 
 msgid "Backup"
 msgstr "Sikkerhetskopi"
-
-#: 
-msgid "Integration"
-msgstr "Integrasjon"
 
 #: 
 msgid "Guardian(s) of"
@@ -6436,10 +6388,6 @@ msgstr "Indonesisk - Indonesia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "oppføring(er) lagt til i valgt gruppe."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "For eksport til annet europeisk tegnsett, bruk ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6998,10 +6946,6 @@ msgid "Links"
 msgstr "Lenker"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Vis egendefinerte lenker i venstremenyen."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Aktiver venstremeny for søndagsskole."
 
@@ -7028,10 +6972,6 @@ msgstr "Aktiverte funksjoner"
 #: 
 msgid "Validation Error"
 msgstr "Valideringsfeil"
-
-#: 
-msgid "Link Not found"
-msgstr "Lenke ikke funnet"
 
 #: 
 msgid "Email Functions"
@@ -7122,10 +7062,6 @@ msgid "Updated People"
 msgstr "Oppdaterte personer"
 
 #: 
-msgid "Custom Menus"
-msgstr "Egendefinerte menyer"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Brukeren må ha tillatelse til å administrere grupper"
 
@@ -7144,22 +7080,6 @@ msgstr "Du kan ikke slette deg selv"
 #: 
 msgid "The role could not be found."
 msgstr "Rollen ble ikke funnet."
-
-#: 
-msgid "Add Menu"
-msgstr "Legg til meny"
-
-#: 
-msgid "Menu Name"
-msgstr "Menynavn"
-
-#: 
-msgid "Link Address"
-msgstr "Lenkeadresse"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Start med http:// eller https://"
 
 #: 
 msgid "Menus"

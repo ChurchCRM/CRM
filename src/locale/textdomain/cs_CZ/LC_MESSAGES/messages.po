@@ -1827,14 +1827,6 @@ msgid "Assign starting at #"
 msgstr "Přiřadit počínaje #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Nelze zobrazit mapu kvůli chybějící zeměpisné šířce nebo délce sboru. Aktualizujte prosím adresu sboru v nabídce nastavení."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Není nastaven klíč Google Map API. Mapa bude fungovat pro menší sadu míst. Vytvořte klíč v sekci map v  nastavení."
-
-#: 
 msgid "Member Role Change"
 msgstr "Změna role člena"
 
@@ -3670,10 +3662,6 @@ msgstr "Nastavením hodnoty true povolíte používání skenovaných šeků"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Jednotka měření vzdálenosti, míle nebo km."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Názvy značek pro Mapy Google v pořadí podle klasifikace"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5933,10 +5921,6 @@ msgid "Your Cart is Empty"
 msgstr "Košík je prázdný"
 
 #: 
-msgid "View on Map"
-msgstr "Zobrazit na mapě"
-
-#: 
 msgid "Legend"
 msgstr "Legenda"
 
@@ -5981,18 +5965,6 @@ msgid "The role could not be assigned."
 msgstr "Roli nebylo možné přiřadit."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "API rozhraní Bing map vyžaduje jedinečný klíč"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Přiblížení Map Google"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Vyberte poskytovatele GeoCoderu"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Váš účet ChurchCRM byl zablokován."
 
@@ -6035,10 +6007,6 @@ msgstr "heslo uživatele systému bylo změněno administrátorem"
 #: 
 msgid "system user login reset"
 msgstr "reset přihlášení uživatele systému"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Chybějící rodiny? Aktualizujte nyní zeměpisnou šířku nebo délku rodiny."
 
 #: 
 msgid "Families without Geo Info"
@@ -6117,18 +6085,6 @@ msgid "Time zone"
 msgstr "Časová zóna"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP uživatelské jméno"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP heslo"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6139,10 +6095,6 @@ msgstr "Zobrazení/skrytí odkazu obnovení hesla na přihlašovací obrazovce"
 #: 
 msgid "Backup"
 msgstr "Záloha"
-
-#: 
-msgid "Integration"
-msgstr "Integrace"
 
 #: 
 msgid "Guardian(s) of"
@@ -6314,10 +6266,6 @@ msgstr "Indonéština - Indonésie"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "záznamy úspěšně přidány do vybrané skupiny."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Export do jiného Pro evropskou znakovou sadu použijte ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6876,10 +6824,6 @@ msgid "Links"
 msgstr "Odkazy"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Zobrazit vlastní odkazy v levém menu."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Povolit levou nabídku nedělní školy."
 
@@ -6906,10 +6850,6 @@ msgstr "Povolené funkce"
 #: 
 msgid "Validation Error"
 msgstr "Chyba ověření"
-
-#: 
-msgid "Link Not found"
-msgstr "Odkaz nenalezen"
 
 #: 
 msgid "Email Functions"
@@ -7000,10 +6940,6 @@ msgid "Updated People"
 msgstr "Aktualizované osoby"
 
 #: 
-msgid "Custom Menus"
-msgstr "Vlastní nabídky"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Uživatel musí mít oprávnění Spravovat skupiny"
 
@@ -7022,22 +6958,6 @@ msgstr "Nejde smazat sám sebe"
 #: 
 msgid "The role could not be found."
 msgstr "Role nenalezena"
-
-#: 
-msgid "Add Menu"
-msgstr "Přidat menu"
-
-#: 
-msgid "Menu Name"
-msgstr "Název menu"
-
-#: 
-msgid "Link Address"
-msgstr "Adresa odkazu"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Začíná s http:// nebo https://"
 
 #: 
 msgid "Menus"

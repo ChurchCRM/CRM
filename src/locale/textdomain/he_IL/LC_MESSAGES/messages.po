@@ -1829,14 +1829,6 @@ msgid "Assign starting at #"
 msgstr "הקצה החל מ-#"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "לא ניתן להציג את המפה עקב חסרים בקו רוחב או קו אורך של המוסד. אנא עדכן את כתובת המוסד בתפריט ההגדרות."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "מפתח ה-API של מפת גוגל לא מוגדר. המפה תעבוד עבור קבוצה קטנה יותר של מיקומים. אנא צור מפתח במקטעי המפות בתפריט ההגדרות."
-
-#: 
 msgid "Member Role Change"
 msgstr "שינוי תפקיד חבר"
 
@@ -3674,10 +3666,6 @@ msgstr "הגדר כ-true כדי לאפשר שימוש בצ'קים סרוקים"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "יחידת המידה למרחק, מיילים או ק\"מ"
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "שמות הסמנים ב-Google Maps לפי סדר הסיווג"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5943,10 +5931,6 @@ msgid "Your Cart is Empty"
 msgstr "העגלה שלך ריקה"
 
 #: 
-msgid "View on Map"
-msgstr "הצג במפה"
-
-#: 
 msgid "Legend"
 msgstr "מקרא"
 
@@ -5991,18 +5975,6 @@ msgid "The role could not be assigned."
 msgstr "לא ניתן היה לשייך את התפקיד."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "API של מפות Bing דורש מפתח ייחודי"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "זום במפות גוגל"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "בחר ספק GeoCoder"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "חשבון ה-ChurchCRM שלך ננעל."
 
@@ -6045,10 +6017,6 @@ msgstr "סיסמת משתמש המערכת שונתה על ידי מנהל"
 #: 
 msgid "system user login reset"
 msgstr "איפוס התחברות משתמש מערכת"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "משפחות חסרות? עדכן את קו הרוחב או האורך של המשפחה עכשיו."
 
 #: 
 msgid "Families without Geo Info"
@@ -6127,18 +6095,6 @@ msgid "Time zone"
 msgstr "אזור זמן"
 
 #: 
-msgid "OpenLP URL"
-msgstr "כתובת OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "שם משתמש OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "סיסמת OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "חותמת זמן נראות קיוסק"
 
@@ -6149,10 +6105,6 @@ msgstr "הצג/הסתר קישור סיסמה אבודה במסך ההתחברו
 #: 
 msgid "Backup"
 msgstr "גיבוי"
-
-#: 
-msgid "Integration"
-msgstr "אינטגרציה"
 
 #: 
 msgid "Guardian(s) of"
@@ -6324,10 +6276,6 @@ msgstr "Indonesian - Indonesia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "הרשומה(ות) נוספה בהצלחה לקבוצה הנבחרת."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "לייצוא לאחר עבור קידוד אירופאי השתמש ב-;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6888,10 +6836,6 @@ msgid "Links"
 msgstr "קישורים"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "הצג קישורים מותאמים אישית בתפריט השמאלי."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "הפעל תפריט שמאלי של בית ספר ראשון."
 
@@ -6918,10 +6862,6 @@ msgstr "תכונות מופעלות"
 #: 
 msgid "Validation Error"
 msgstr "שגיאת אימות"
-
-#: 
-msgid "Link Not found"
-msgstr "הקישור לא נמצא"
 
 #: 
 msgid "Email Functions"
@@ -7014,10 +6954,6 @@ msgid "Updated People"
 msgstr "אנשים מעודכנים"
 
 #: 
-msgid "Custom Menus"
-msgstr "תפריטים מותאמים אישית"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "על המשתמש להיות בעל הרשאת ניהול קבוצות"
 
@@ -7036,22 +6972,6 @@ msgstr "לא ניתן למחוק את עצמך"
 #: 
 msgid "The role could not be found."
 msgstr "לא ניתן היה למצוא את התפקיד."
-
-#: 
-msgid "Add Menu"
-msgstr "הוסף תפריט"
-
-#: 
-msgid "Menu Name"
-msgstr "שם התפריט"
-
-#: 
-msgid "Link Address"
-msgstr "כתובת קישור"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "התחל עם http:// או https://"
 
 #: 
 msgid "Menus"

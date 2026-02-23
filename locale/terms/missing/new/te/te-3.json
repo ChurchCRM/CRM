@@ -56,7 +56,6 @@
   "Include": "",
   "Exclude": "",
   "View Cart": "",
-  "View on Map": "",
   "Legend": "",
   "assigned": "",
   "Showing students with birthdays in": "",
@@ -68,9 +67,6 @@
   "The role is already assigned.": "",
   "The role is successfully assigned.": "",
   "The role could not be assigned.": "",
-  "Bing map API requires a unique key": "",
-  "Google Maps Zoom": "",
-  "Select GeoCoder Provider": "",
   "Your ChurchCRM account was locked.": "",
   "A ChurchCRM account was created for you": "",
   "You can reset your ChurchCRM password by clicking this link": "",
@@ -82,7 +78,6 @@
   "system user changed password": "",
   "system user password changed by admin": "",
   "system user login reset": "",
-  "Missing Families? Update Family Latitude or Longitude now.": "",
   "Families without Geo Info": "",
   "Notification for": "",
   "DEBUG": "",
@@ -98,5 +93,10 @@
   "LastName, Title FirstName MiddleName": "",
   "LastName, Title FirstName MiddleInitial": "",
   "FirstName MiddleName LastName": "",
-  "Title FirstName LastName": ""
+  "Title FirstName LastName": "",
+  "LastName, Title FirstName": "",
+  "Event Log severity to write, used by ORM and App Logs": "",
+  "Time zone": "",
+  "KioskVisibilityTimestamp": "",
+  "Show/Hide Lost Password Link on the login screen": ""
 }

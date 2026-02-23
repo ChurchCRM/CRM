@@ -1829,14 +1829,6 @@ msgid "Assign starting at #"
 msgstr "시작 번호 지정"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "교회의 위도/경도 정보가 없어 지도를 표시할 수 없습니다. 설정 메뉴에서 교회 주소를 업데이트하세요."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google 지도 API 키가 설정되지 않았습니다. 소수 위치만 표시됩니다. 설정 메뉴의 지도 항목에서 API 키를 등록하세요."
-
-#: 
 msgid "Member Role Change"
 msgstr "회원 역할 변경"
 
@@ -3674,10 +3666,6 @@ msgstr "True로 설정하면 스캔한 수표 기능을 사용합니다."
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "거리 단위(마일 또는 km)"
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "분류 순서에 따른 Google 지도 마커 이름"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5940,10 +5928,6 @@ msgid "Your Cart is Empty"
 msgstr "카트가 비어 있습니다"
 
 #: 
-msgid "View on Map"
-msgstr "지도에서 보기"
-
-#: 
 msgid "Legend"
 msgstr "범례"
 
@@ -5988,18 +5972,6 @@ msgid "The role could not be assigned."
 msgstr "역할을 배정하지 못했습니다."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing 지도 API는 고유 키가 필요합니다"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google 지도 확대 단계"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "지오코더 제공자 선택"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "ChurchCRM 계정이 잠겼습니다."
 
@@ -6042,10 +6014,6 @@ msgstr "관리자가 시스템 사용자 비밀번호를 변경함"
 #: 
 msgid "system user login reset"
 msgstr "시스템 사용자 로그인 초기화"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "가족이 보이지 않나요? 지금 위도와 경도를 업데이트하세요."
 
 #: 
 msgid "Families without Geo Info"
@@ -6124,18 +6092,6 @@ msgid "Time zone"
 msgstr "시간대"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP 사용자명"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP 비밀번호"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "키오스크 표시 타임스탬프"
 
@@ -6146,10 +6102,6 @@ msgstr "로그인 화면에 '비밀번호 찾기' 링크 표시/숨김"
 #: 
 msgid "Backup"
 msgstr "백업"
-
-#: 
-msgid "Integration"
-msgstr "통합"
 
 #: 
 msgid "Guardian(s) of"
@@ -6321,10 +6273,6 @@ msgstr "인도네시아어 - 인도네시아"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "건이 선택한 그룹에 추가되었습니다."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "유럽 문자셋으로 내보내려면 구분자로 세미콜론(;)을 사용하세요"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6884,10 +6832,6 @@ msgid "Links"
 msgstr "링크"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "왼쪽 메뉴에 사용자 정의 링크 표시"
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "왼쪽 메뉴에 주일학교 메뉴 표시"
 
@@ -6914,10 +6858,6 @@ msgstr "활성화된 기능"
 #: 
 msgid "Validation Error"
 msgstr "검증 오류"
-
-#: 
-msgid "Link Not found"
-msgstr "링크를 찾을 수 없습니다"
 
 #: 
 msgid "Email Functions"
@@ -7010,10 +6950,6 @@ msgid "Updated People"
 msgstr "최근 수정된 개인"
 
 #: 
-msgid "Custom Menus"
-msgstr "사용자 정의 메뉴"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "그룹 관리 권한이 필요합니다"
 
@@ -7032,22 +6968,6 @@ msgstr "본인 계정은 삭제할 수 없습니다"
 #: 
 msgid "The role could not be found."
 msgstr "해당 역할을 찾을 수 없습니다."
-
-#: 
-msgid "Add Menu"
-msgstr "메뉴 추가"
-
-#: 
-msgid "Menu Name"
-msgstr "메뉴 이름"
-
-#: 
-msgid "Link Address"
-msgstr "링크 주소"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "http:// 또는 https://로 시작해야 합니다"
 
 #: 
 msgid "Menus"

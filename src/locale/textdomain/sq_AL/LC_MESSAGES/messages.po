@@ -1827,14 +1827,6 @@ msgid "Assign starting at #"
 msgstr "Cakto duke filluar nga #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Harta nuk mund të shfaqet për shkak të mungesës së gjerësisë ose gjatësisë gjeografike të kishës. Ju lutemi përditësoni adresën e kishës në menunë e cilësimeve."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Çelësi API i Google Map nuk është caktuar. Harta do të funksionojë për një grup më të vogël lokacionesh. Ju lutemi krijoni një çelës në seksionin e hartave në menunë e cilësimeve."
-
-#: 
 msgid "Member Role Change"
 msgstr "Ndryshimi Anëtar Roli"
 
@@ -3673,10 +3665,6 @@ msgstr "Caktoni 'True' për të aktivizuar përdorimin e çekëve të skanuar"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Njësia e përdorur për të matur distancën, milje ose km."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Emrat e shënjuesve për Google Maps sipas radhës së klasifikimit"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5934,10 +5922,6 @@ msgid "Your Cart is Empty"
 msgstr "Shporta juaj është bosh"
 
 #: 
-msgid "View on Map"
-msgstr "Shih në hartë"
-
-#: 
 msgid "Legend"
 msgstr "Legjenda"
 
@@ -5982,18 +5966,6 @@ msgid "The role could not be assigned."
 msgstr "Roli nuk mund të caktohej."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing Map API kërkon një çelës unik"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Zmadhimi i Google Maps"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Zgjidhni ofruesin e gjeokodimit (GeoCoder)"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Llogaria juaj ChurchCRM u bllokua."
 
@@ -6036,10 +6008,6 @@ msgstr "fjalëkalimi i përdoruesit të sistemit u ndryshua nga administratori"
 #: 
 msgid "system user login reset"
 msgstr "hyrja e përdoruesit të sistemit u rivendos"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Mungojnë familje? Përditësoni gjerësinë ose gjatësinë gjeografike të familjes tani."
 
 #: 
 msgid "Families without Geo Info"
@@ -6118,18 +6086,6 @@ msgid "Time zone"
 msgstr "Zona kohore"
 
 #: 
-msgid "OpenLP URL"
-msgstr "URL e OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Emri i përdoruesit OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Fjalëkalimi OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6140,10 +6096,6 @@ msgstr "Trego/Fshih lidhjen e fjalëkalimit të humbur në ekranin e hyrjes"
 #: 
 msgid "Backup"
 msgstr "Rezerva (Backup)"
-
-#: 
-msgid "Integration"
-msgstr "Integrimi"
 
 #: 
 msgid "Guardian(s) of"
@@ -6315,10 +6267,6 @@ msgstr "Indonezisht - Indonezi"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "rekord(e) u shtuan me sukses në grupin e zgjedhur."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Për eksport në një tjetër grup karakteresh europian përdorni ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6877,10 +6825,6 @@ msgid "Links"
 msgstr "Lidhje"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Shfaq lidhjet e personalizuara në menunë e majtë."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Aktivizo menunë e majtë të Shkollës të së Dielës."
 
@@ -6907,10 +6851,6 @@ msgstr "Veçoritë e aktivizuara"
 #: 
 msgid "Validation Error"
 msgstr "Gabim në verifikim"
-
-#: 
-msgid "Link Not found"
-msgstr "Lidhja nuk u gjet"
 
 #: 
 msgid "Email Functions"
@@ -7001,10 +6941,6 @@ msgid "Updated People"
 msgstr "Personat e përditësuar"
 
 #: 
-msgid "Custom Menus"
-msgstr "Menutë e personalizuara"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Përdoruesi duhet të ketë lejen 'Menaxho Grupet'"
 
@@ -7023,22 +6959,6 @@ msgstr "Nuk mund të fshini veten"
 #: 
 msgid "The role could not be found."
 msgstr "Roli nuk u gjet."
-
-#: 
-msgid "Add Menu"
-msgstr "Shto Menu"
-
-#: 
-msgid "Menu Name"
-msgstr "Emri i menusë"
-
-#: 
-msgid "Link Address"
-msgstr "Adresa e lidhjes"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Fillo me http:// ose https://"
 
 #: 
 msgid "Menus"

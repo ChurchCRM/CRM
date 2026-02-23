@@ -1830,14 +1830,6 @@ msgid "Assign starting at #"
 msgstr "Asignar comenzando por #:"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "No puede mostrarse el mapa pues falta la latitud y longitud de la iglesia. Por favor, actualice la dirección de la iglesia en el menú de ajustes."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "La llave de la API de Google Map no ha sido ingresada. El Mapa funcionará para conjuntos de lugares pequeños. Por favor, cree una Llave en la sección de mapas del menu de ajustes."
-
-#: 
 msgid "Member Role Change"
 msgstr "Cambio de rol de miembro"
 
@@ -3679,10 +3671,6 @@ msgstr "Colocar en verdadero para habilitar el uso de cheques escaneados."
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Unidad usada para medir distancias, millas o km."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Nombres de marcadores para Google Maps en orden de clasificación"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5967,10 +5955,6 @@ msgid "Your Cart is Empty"
 msgstr "Su carrito está vacío"
 
 #: 
-msgid "View on Map"
-msgstr "Ver en Mapa"
-
-#: 
 msgid "Legend"
 msgstr "Leyenda"
 
@@ -6015,18 +5999,6 @@ msgid "The role could not be assigned."
 msgstr "El rol no pudo ser asignado."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "API de mapas de Bing requiere una llave única"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Zoom de Google Maps"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Seleccione Proveedor de GeoCoder"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Su cuenta de ChurchCRM fue bloqueada."
 
@@ -6069,10 +6041,6 @@ msgstr "contraseña de usuario de sistema cambiada por admin"
 #: 
 msgid "system user login reset"
 msgstr "Ingreso de usuario de sistema restablecido"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "¿Faltan familias? Actualice la Latitud y Longitud de la familia ahora."
 
 #: 
 msgid "Families without Geo Info"
@@ -6151,18 +6119,6 @@ msgid "Time zone"
 msgstr "Zona horaria"
 
 #: 
-msgid "OpenLP URL"
-msgstr "URL de OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Usuario de OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Contraseña de OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Marca de Tiempo de Visibilidad de Quiosco"
 
@@ -6173,10 +6129,6 @@ msgstr "Mostrar/Ocultar Enlace de contraseña Perdida en la pantalla de ingreso"
 #: 
 msgid "Backup"
 msgstr "Respaldo"
-
-#: 
-msgid "Integration"
-msgstr "Integración"
 
 #: 
 msgid "Guardian(s) of"
@@ -6351,10 +6303,6 @@ msgstr "Indonesio - Indonesia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "registro(s) agregados exitosamente al grupo seleccionado"
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Para exportar hacia otro Para caracteres europeos use ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6916,10 +6864,6 @@ msgid "Links"
 msgstr "Enlaces"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Mostrar enlaces personalizados en el menú izquierdo."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Activar menú izquierdo de escuela dominical."
 
@@ -6946,10 +6890,6 @@ msgstr "Funcionalidades activadas"
 #: 
 msgid "Validation Error"
 msgstr "Error de Validación"
-
-#: 
-msgid "Link Not found"
-msgstr "Enlace no encontrado"
 
 #: 
 msgid "Email Functions"
@@ -7043,10 +6983,6 @@ msgid "Updated People"
 msgstr "Personas Actualizadas"
 
 #: 
-msgid "Custom Menus"
-msgstr "Menus personalizados"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Usuario debe tener permisos de Manejo de grupos"
 
@@ -7065,22 +7001,6 @@ msgstr "No puede borrarse a si mismo"
 #: 
 msgid "The role could not be found."
 msgstr "El rol no pudo ser encontrado"
-
-#: 
-msgid "Add Menu"
-msgstr "Agregar Menu"
-
-#: 
-msgid "Menu Name"
-msgstr "Nombre de Menu"
-
-#: 
-msgid "Link Address"
-msgstr "Dirección de Link"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Comenzar con http:// o https://"
 
 #: 
 msgid "Menus"

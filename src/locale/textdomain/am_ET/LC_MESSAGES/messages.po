@@ -1830,14 +1830,6 @@ msgid "Assign starting at #"
 msgstr "ከ# ጀምሮ መድብ"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "በቤተክርስትያን ኬክሮስ ወይም ኬንትሮስ አለመገኘት ምክንያት ካርታ ማሳየት አልተቻለም። እባክዎ በቅንብሮች ምናሌ ውስጥ የቤተክርስቲያኑን አድራሻ ያዘምኑ።"
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "የጉግል ካርታ ኤፒአይ ቁልፍ አልተዘጋጀም። ካርታው ለአነስተኛ የቦታ ስብስብ ይሰራል። እባክዎ በቅንብሮች ምናሌው የካርታ ክፍሎች ውስጥ ቁልፍ ይፍጠሩ።"
-
-#: 
 msgid "Member Role Change"
 msgstr "የአባላት ሚና ለውጥ"
 
@@ -3678,10 +3670,6 @@ msgstr "የተቃኙ ቼኮችን ለመጠቀም እውነትን ያቀናብ�
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "ርቀትን፣ ማይል ወይም ኪሜ ለመለካት የሚያገለግል ክፍል."
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "ለGoogle ካርታዎች የምደባ ቅደም ተከተል የጠቋሚዎች ስሞች"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -5946,10 +5934,6 @@ msgid "Your Cart is Empty"
 msgstr "የእርስዎ ጋሪ ባዶ ነው"
 
 #: 
-msgid "View on Map"
-msgstr "በካርታው ላይ ይመልከቱ"
-
-#: 
 msgid "Legend"
 msgstr "መግለጫ"
 
@@ -5994,18 +5978,6 @@ msgid "The role could not be assigned."
 msgstr "ሚናው ሊመደብ አልቻለም"
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "የBing ካርታ API ልዩ ቁልፍ ይፈልጋል"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "ጎግል ካርታዎች አጉላ"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "የጂኦኮደር አቅራቢን ይምረጡ"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "የChurchCRM መለያህ ተቆልፏል"
 
@@ -6048,10 +6020,6 @@ msgstr "የሲስተም ተጠቃሚ የይለፍ ቃል በአስተዳዳሪ �
 #: 
 msgid "system user login reset"
 msgstr "የሲስተም ተጠቃሚ መግቢያ ዳግም ማስጀመር"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "ቤተሰቦች ጠፍተዋል? የቤተሰብ ኬክሮስ ወይም ኬንትሮስ አሁን ያዘምኑ"
 
 #: 
 msgid "Families without Geo Info"
@@ -6130,18 +6098,6 @@ msgid "Time zone"
 msgstr "አለማቀፋዊ የጊዜ ክልል"
 
 #: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP የተጠቃሚ ስም"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP የይለፍ ቃል"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "የኪዮስክ ቪዚቢሊቲ የጊዜ ልጥፍ"
 
@@ -6152,10 +6108,6 @@ msgstr "የጠፋ የይለፍ ቃል ማገናኛን በመግቢያ ገጹ ላ
 #: 
 msgid "Backup"
 msgstr "ምትክ"
-
-#: 
-msgid "Integration"
-msgstr "ውህደት"
 
 #: 
 msgid "Guardian(s) of"
@@ -6328,10 +6280,6 @@ msgstr "ኢንዶኔዥያ - ኢንዶኔዥያ"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "መዝገቦች(ዎች) በተሳካ ሁኔታ ወደተመረጠው ቡድን ታክለዋል።"
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "ወደ ሌላ ለመላክ ለአውሮፓ CharSet አጠቃቀም;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6894,10 +6842,6 @@ msgid "Links"
 msgstr "ማስፈንጠሪያ"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "በግራ ምናሌው ላይ ብጁ አገናኞችን አሳይ"
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "የሰንበት ትምህርት ቤት የግራ ምናሌን አንቃ"
 
@@ -6924,10 +6868,6 @@ msgstr "ዝርዝሮችን አንቃ"
 #: 
 msgid "Validation Error"
 msgstr "የማገናዘብ ስህተት"
-
-#: 
-msgid "Link Not found"
-msgstr "ማስፈንጠሪያ አልተገኘም"
 
 #: 
 msgid "Email Functions"
@@ -7021,10 +6961,6 @@ msgid "Updated People"
 msgstr "የዘመኑ ሰዎች "
 
 #: 
-msgid "Custom Menus"
-msgstr "የተስተካከሉ ምርጫዎች "
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "ተጠቃሚው ቡድኖችን የማስተዳደር ፈቃድ ሊኖረው ይገባል "
 
@@ -7043,22 +6979,6 @@ msgstr "እራሶን መሰረዝ አይችሉም"
 #: 
 msgid "The role could not be found."
 msgstr "ምርጫው ሊገኝ አልቻለም "
-
-#: 
-msgid "Add Menu"
-msgstr "የምርጫ  ዝርዝር ይጨምሩ"
-
-#: 
-msgid "Menu Name"
-msgstr "የምርጫ ዝርዝር ስም "
-
-#: 
-msgid "Link Address"
-msgstr "አገናኝ አድራሻ "
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "http:// ወይም https:// ብለው ይጀምሩ "
 
 #: 
 msgid "Menus"

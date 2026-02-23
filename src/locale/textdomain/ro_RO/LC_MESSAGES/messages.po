@@ -1878,14 +1878,6 @@ msgid "Assign starting at #"
 msgstr "Atribuirea incepand de la #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Imposibil de afișat harta din cauza lipsei latitudinii sau longitudinii Bisericii. Vă rugăm să actualizați adresa Bisericii în meniul de setări"
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Cheia API-ului Google Map nu este setată. Harta va funcționa pentru un set mai mic de locații. Vă rugăm să creați o cheie în secțiunile de hărți din meniul de setare."
-
-#: 
 msgid "Member Role Change"
 msgstr "Schimbare de Rol pentru Membru"
 
@@ -3766,10 +3758,6 @@ msgstr "Setați opțiunea True pentru a permite verificarea scanată"
 #: 
 msgid "Unit used to measure distance, miles or km."
 msgstr "Unități pentru distanță, mile sau km"
-
-#: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Numele markerelor pentru Google Maps pentru clasificare"
 
 #: 
 msgid "Enable non-deductible payments"
@@ -6034,10 +6022,6 @@ msgid "Your Cart is Empty"
 msgstr "Coșul tău este gol"
 
 #: 
-msgid "View on Map"
-msgstr "Vizualizare pe hartă"
-
-#: 
 msgid "Legend"
 msgstr "Legendă"
 
@@ -6082,18 +6066,6 @@ msgid "The role could not be assigned."
 msgstr "Rolul nu a putut fi alocat"
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Harta BING solicită o cheie unică"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Zoom hărți google"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Selectați furnizor GeoCode"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Contul tău ChurchCRM a fost blocat."
 
@@ -6136,10 +6108,6 @@ msgstr "parolă utilizator de rețea schimbată de către admin"
 #: 
 msgid "system user login reset"
 msgstr "resetare autentificare pentru utilizatorul sistemului"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Familia nu există? Actualizează latitudinea și longitudinea pentru familie"
 
 #: 
 msgid "Families without Geo Info"
@@ -6218,18 +6186,6 @@ msgid "Time zone"
 msgstr "Fus orar"
 
 #: 
-msgid "OpenLP URL"
-msgstr "URL OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Utilizator OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Parolă OpenLp"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6240,10 +6196,6 @@ msgstr "Afișează/Ascunde link pentru resetare parolă în meniul de autentific
 #: 
 msgid "Backup"
 msgstr "Copie de rezervă"
-
-#: 
-msgid "Integration"
-msgstr "Integrare"
 
 #: 
 msgid "Guardian(s) of"
@@ -6416,10 +6368,6 @@ msgstr "Indonezia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "înregistrări adăugate cu succes grupului selectat."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Pentru a exporta în altul Pentru utilizare CharSet european;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6981,10 +6929,6 @@ msgid "Links"
 msgstr "Link-uri"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Arată link-urile personalizate în meniul din stânga"
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Activați meniul Școală Duminicală "
 
@@ -7011,10 +6955,6 @@ msgstr "Funcții activate"
 #: 
 msgid "Validation Error"
 msgstr "Eroare de validare"
-
-#: 
-msgid "Link Not found"
-msgstr "Link-ul nu a fost găsit"
 
 #: 
 msgid "Email Functions"
@@ -7108,10 +7048,6 @@ msgid "Updated People"
 msgstr "Persoane actualizate"
 
 #: 
-msgid "Custom Menus"
-msgstr "Meniu personalizat"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Utilizatorul trebuie să dețină permisiuni de gestiune a grupurilor"
 
@@ -7130,22 +7066,6 @@ msgstr "Nu poți să te ștergi pe tine"
 #: 
 msgid "The role could not be found."
 msgstr "Rolul nu se găsește"
-
-#: 
-msgid "Add Menu"
-msgstr "Adaugă meniu"
-
-#: 
-msgid "Menu Name"
-msgstr "Adaugă nume"
-
-#: 
-msgid "Link Address"
-msgstr "Link adresă"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Începe cu http:// sau https://"
 
 #: 
 msgid "Menus"
