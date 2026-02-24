@@ -253,7 +253,7 @@ class ExternalBackupPlugin extends AbstractPlugin
             $baseName = preg_replace('/[^a-zA-Z0-9\-_]/', '', SystemConfig::getValue('sChurchName'))
                 . '-' . date(SystemConfig::getValue('sDateFilenameFormat'));
 
-            $backup = new BackupJob($baseName, BackupType::FULL_BACKUP, false, '');
+            $backup = new BackupJob($baseName, BackupType::FULL_BACKUP);
             $backup->execute();
 
             $result = $backup->copyToWebDAV(

@@ -50,11 +50,19 @@ class ChurchCRMReleaseManager
 
         try {
             if ($allowPrerelease) {
-                $gitHubReleases = $client->api('repo')->releases()->all(
-                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
-                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME,
-                    ['per_page' => 5, 'page' => 1]
-                );
+                // Use the GitHub API client with proper method chaining
+                // knplabs/github-api v3 uses repos()->releases()
+                try {
+                    $gitHubReleases = $client->repo()
+                        ->releases()
+                        ->all(
+                            ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                            ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
+                        );
+                } catch (\Exception $e) {
+                    LoggerUtils::getAppLogger()->warning('Failed to fetch all releases from GitHub API', ['error' => $e->getMessage()]);
+                    $gitHubReleases = [];
+                }
 
                 foreach ($gitHubReleases as $r) {
                     $release = new ChurchCRMRelease($r);
@@ -67,10 +75,17 @@ class ChurchCRMReleaseManager
                     }
                 }
             } else {
-                $latestRelease = $client->api('repo')->releases()->latest(
-                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
-                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
-                );
+                try {
+                    $latestRelease = $client->repo()
+                        ->releases()
+                        ->latest(
+                            ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                            ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
+                        );
+                } catch (\Exception $e) {
+                    LoggerUtils::getAppLogger()->warning('Failed to fetch latest release from GitHub API', ['error' => $e->getMessage()]);
+                    $latestRelease = null;
+                }
 
                 if (is_array($latestRelease) && !empty($latestRelease)) {
                     $release = new ChurchCRMRelease($latestRelease);
@@ -412,8 +427,12 @@ class ChurchCRMReleaseManager
         $perms = $fileExists ? @fileperms($zipFilename) : false;
         $filePerms = ($perms !== false) ? substr(sprintf('%o', $perms), -4) : 'N/A';
         $currentUser = get_current_user();
-        $pwuid = $fileExists ? posix_getpwuid(fileowner($zipFilename)) : false;
-        $fileOwner = ($pwuid !== false && isset($pwuid['name'])) ? $pwuid['name'] : 'unknown';
+        $fileOwner = 'unknown';
+        // Only call posix_getpwuid if the function exists (not available on Windows)
+        if ($fileExists && function_exists('posix_getpwuid')) {
+            $pwuid = @posix_getpwuid(fileowner($zipFilename));
+            $fileOwner = ($pwuid !== false && isset($pwuid['name'])) ? $pwuid['name'] : 'unknown';
+        }
         $logger->debug('File pre-flight check', [
             'zipFilename' => $zipFilename,
             'fileExists' => $fileExists,

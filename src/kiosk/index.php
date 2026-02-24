@@ -72,9 +72,9 @@ if (!$isAdminRoute) {
 
 // Helper function to retrieve kiosk device from cookie (instead of container)
 // Captures the already-initialized $Kiosk to handle newly created devices in the current request
-$getKioskFromCookie = function () use ($Kiosk): ?KioskDevice {
-    return $Kiosk ?? null;
-};
+// Note: This is defined as a variable assignment for compatibility, but the actual
+// closure will be properly scoped when device.php is included
+$getKioskFromCookie = null;
 
 // Create app (no container needed - Slim 4 works fine without one)
 $app = AppFactory::create();
@@ -127,9 +127,14 @@ $app->add(VersionMiddleware::class);
 // Initialize plugin system so Notification::send() can access Vonage SMS and OpenLP plugins
 PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
 
+// Define the kiosk helper function in the current scope so it's available in device.php closure
+$getKioskFromCookie = function () use ($Kiosk): ?KioskDevice {
+    return $Kiosk ?? null;
+};
+
 // Device routes (no auth middleware - uses kiosk cookie)
-// Pass helper function to device routes
-$deviceGetKiosk = $getKioskFromCookie;
+// Make the kiosk helper available to device routes via $GLOBALS
+$GLOBALS['getKioskFromCookie'] = $getKioskFromCookie;
 require __DIR__ . '/routes/device.php';
 
 // Admin routes (requires admin auth)
