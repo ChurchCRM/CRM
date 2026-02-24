@@ -105,11 +105,50 @@ This returns **only the untranslated entries** (empty string values or plural ob
 2. Translate the returned terms into the target language, applying the denomination context and church vocabulary rules.
 3. For plural forms (`{"one": "", "other": ""}`), produce grammatically correct singular and plural forms.
 4. Build a JSON object of **only the keys you translated**.
-5. Write them back immediately — then discard this file's content from context before moving to the next file:
-```bash
-node locale/scripts/locale-translate.js --apply --file <batchFilePath> --translations '<json>'
-```
+5. **Write translations via the Write tool to a temp file** (NEVER use bash heredoc or echo for non-ASCII content):
+
+   Use the Write tool to create `/tmp/<locale>-<n>.json` with the translation JSON, then apply:
+   ```bash
+   node locale/scripts/locale-translate.js --apply --file <batchFilePath> --translations "$(cat /tmp/<locale>-<n>.json)"
+   ```
+
+   **Why**: Bash heredocs and echo mangle Unicode characters, typographic quotes, and apostrophes. The Write tool is the only reliable method for writing non-ASCII JSON.
+
 6. Repeat for the next batch file.
+
+### JSON Safety Rules (CRITICAL)
+
+These rules prevent the most common translation failures:
+
+**Rule 1 — Always use the Write tool for JSON, never bash heredoc/echo**
+```bash
+# ❌ WRONG — breaks with Unicode, apostrophes, typographic quotes
+node locale-translate.js --apply --file x.json --translations '{"Can'\''t scan?": "..."}'
+
+# ✅ CORRECT — Write tool creates the file, then cat reads it
+# (Use Write tool to create /tmp/<locale>-<n>.json first)
+node locale-translate.js --apply --file x.json --translations "$(cat /tmp/locale-1.json)"
+```
+
+**Rule 2 — Avoid typographic/curly quotes inside translation values**
+
+Some languages use typographic quote characters that look like JSON string delimiters. These break JSON parsing.
+
+| Language | Problematic | Safe alternative |
+|----------|-------------|-----------------|
+| Chinese | `"链接"` (U+201C/U+201D) | `「链接」` (corner brackets) |
+| Czech, German | `„Odkaz"` | Use the Write tool — it handles these safely |
+| General | Any `"` or `"` inside a value | Escape as `\"` or reword |
+
+**Rule 3 — Validate JSON before applying (optional but recommended for large batches)**
+```bash
+python3 -c "import json; json.load(open('/tmp/<locale>-<n>.json')); print('OK')"
+```
+
+**Rule 4 — Apostrophes in shell strings**
+
+If you must pass JSON directly in a bash argument (not recommended), escape apostrophes:
+- `can't` → `can'\''t` inside single-quoted shell strings
 
 ### Step 7 — Write reviewer notice
 
@@ -161,3 +200,34 @@ After all locales are done:
 - If a batch file has no untranslated terms, skip it silently.
 - Work one locale at a time to keep context focused.
 - If you are uncertain about a term's ecclesiastical meaning, prefer the most widely understood Christian term for the region over a narrow denominational one.
+
+## Performance: Parallel Agents for `--all` mode
+
+When translating many locales at once, sequential processing is slow. Use parallel background Task agents:
+
+**Group locales by size** and launch one agent per group:
+- **Small locales** (≤ 15 terms, 1 batch file): Process up to 9 in the main session at once — they're fast
+- **Medium locales** (16–200 terms, 1–2 batch files): Group 3–4 per background agent
+- **Large locales** (200+ terms, 3+ batch files): Group 2–4 per background agent
+- **Very large locales** (700+ terms, 6+ batch files): Dedicate 1 agent per locale
+
+**Agent prompt template:**
+```
+You are running the locale-translate skill for ChurchCRM. Translate the following locales: <code1>, <code2>, ...
+
+For each locale:
+1. Run: node locale/scripts/locale-translate.js --info --locale <code>
+2. For each batch file, run: node locale/scripts/locale-translate.js --read-file --file <path>
+3. Translate all terms. IMPORTANT: Use the Write tool to write translations to /tmp/<locale>-<n>.json (never bash heredoc/echo — it breaks Unicode)
+4. Apply: node locale/scripts/locale-translate.js --apply --file <path> --translations "$(cat /tmp/<locale>-<n>.json)"
+
+Working directory: /Users/gdawoud/Development/ChurchCRM/CRM
+```
+
+**Small locales share the same term keys** — all locales with exactly 13 terms share this key set:
+`%d month old`, `%d year old`, `%d event in %s`, `person`, `%d Person added to the Cart.`,
+`%d Person successfully added to selected Family.`, `%d Person successfully added to selected Group.`,
+`%d person`, `%d hour`, `Are you sure you want to permanently delete this pledge record?`,
+`Cancel and Return to Family View`, `If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.`, `Move Donations to Selected Family`
+
+This lets you pre-generate translations for multiple small locales simultaneously without reading batch files individually.
