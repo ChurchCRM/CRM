@@ -35,9 +35,5 @@
   "%d hour": {
     "one": "",
     "other": ""
-  },
-  "Are you sure you want to permanently delete this pledge record?": "",
-  "Cancel and Return to Family View": "",
-  "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "",
-  "Move Donations to Selected Family": ""
+  }
 }

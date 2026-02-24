@@ -3033,5 +3033,9 @@
     "Username and password are required.": "اسم المستخدم وكلمة المرور مطلوبان.",
     "Validation failed: %s": "فشل التحقق: %s",
     "Vonage server error. Please try again later.": "خطأ في خادم Vonage. يرجى المحاولة مرة أخرى لاحقاً.",
-    "WebDAV Endpoint URL is required.": "عنوان URL لنقطة نهاية WebDAV مطلوب."
+    "WebDAV Endpoint URL is required.": "عنوان URL لنقطة نهاية WebDAV مطلوب.",
+    "Are you sure you want to permanently delete this pledge record?": "هل أنت متأكد أنك تريد حذف سجل التعهد هذا نهائياً؟",
+    "Cancel and Return to Family View": "إلغاء والعودة إلى عرض العائلة",
+    "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "إذا حذفت هذا النوع، ستزيل أيضاً جميع الخصائص التي تستخدمه وستفقد جميع تعيينات الخصائص المقابلة.",
+    "Move Donations to Selected Family": "نقل التقدمات إلى العائلة المحددة"
 }

@@ -12422,3 +12422,19 @@ msgstr "خطأ في خادم Vonage. يرجى المحاولة مرة أخرى �
 msgid "WebDAV Endpoint URL is required."
 msgstr "عنوان URL لنقطة نهاية WebDAV مطلوب."
 
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "هل أنت متأكد أنك تريد حذف سجل التعهد هذا نهائياً؟"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "إلغاء والعودة إلى عرض العائلة"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "إذا حذفت هذا النوع، ستزيل أيضاً جميع الخصائص التي تستخدمه وستفقد جميع تعيينات الخصائص المقابلة."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "نقل التقدمات إلى العائلة المحددة"
+

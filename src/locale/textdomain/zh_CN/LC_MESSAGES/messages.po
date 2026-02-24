@@ -11514,3 +11514,996 @@ msgstr "检测到不匹配"
 msgid "mismatches detected"
 msgstr "检测到多处不匹配"
 
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d小时"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "关于WebDAV备份"
+
+#: 
+msgid "Add Link"
+msgstr "添加链接"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "为您的账户添加额外的安全层"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "向导航菜单添加自定义外部链接。"
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "允许自签名证书"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "处理插件请求时发生错误"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "您确定要禁用两步验证吗？您的账户安全性将降低。"
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "作为恢复的一部分，外部备份已被禁用。如果您希望继续自动备份，请在管理员 > 插件中重新启用外部备份插件。"
+
+#: 
+msgid "Audiences"
+msgstr "受众"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "验证失败。请检查用户名和密码。"
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "自动备份间隔"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "通过WebDAV自动将您的ChurchCRM数据库备份到外部云存储。"
+
+#: 
+msgid "Avg Click Rate"
+msgstr "平均点击率"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "平均打开率"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "返回仪表板"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "备份已创建，但复制到远程服务器失败"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "立即备份到WebDAV"
+
+#: 
+msgid "Before You Start"
+msgstr "开始之前"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "已检测到浏览器语言偏好"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "未订阅的CRM成员"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "已发送的活动"
+
+#: 
+msgid "Can't scan?"
+msgstr "无法扫描？"
+
+#: 
+msgid "Change Your Locale"
+msgstr "更改您的语言设置"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM支持插件架构以扩展功能。"
+
+#: 
+msgid "Cleaned"
+msgstr "已清理"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "单击下面的按钮测试您的WebDAV连接设置。"
+
+#: 
+msgid "Community Plugins"
+msgstr "社区插件"
+
+#: 
+msgid "Community plugins"
+msgstr "社区插件"
+
+#: 
+msgid "Configure External Backup"
+msgstr "配置外部备份"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "配置MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "在此配置这些设置"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "配置此插件以自动将您的ChurchCRM数据库备份到兼容WebDAV的云存储服务，如Nextcloud、ownCloud或任何WebDAV服务器。备份在传输过程中使用HTTPS加密。"
+
+#: 
+msgid "Configured"
+msgstr "已配置"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "使用验证器应用中的验证码确认"
+
+#: 
+msgid "Connected"
+msgstr "已连接"
+
+#: 
+msgid "Connection failed"
+msgstr "连接失败"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "连接失败，HTTP错误代码"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "连接成功！WebDAV端点可访问。"
+
+#: 
+msgid "Connection test failed"
+msgstr "连接测试失败"
+
+#: 
+msgid "Core Plugins"
+msgstr "核心插件"
+
+#: 
+msgid "Core plugins"
+msgstr "核心插件"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "立即创建备份并上传到您的WebDAV服务器。"
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "在MailChimp中创建受众"
+
+#: 
+msgid "Custom"
+msgstr "自定义"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "自定义菜单链接"
+
+#: 
+msgid "Default Image Style"
+msgstr "默认图像样式"
+
+#: 
+msgid "Default List ID"
+msgstr "默认列表ID"
+
+#: 
+msgid "Disable"
+msgstr "禁用"
+
+#: 
+msgid "Disable Plugin"
+msgstr "禁用插件"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "禁用两步验证"
+
+#: 
+msgid "Dismiss"
+msgstr "关闭"
+
+#: 
+msgid "Done"
+msgstr "完成"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164格式，例如 +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "每个插件需要一个"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "每次登录时，您需要使用验证器应用中的验证码进行确认"
+
+#: 
+msgid "Email Addresses"
+msgstr "电子邮件地址"
+
+#: 
+msgid "Enable"
+msgstr "启用"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "启用外部备份插件"
+
+#: 
+msgid "Enable Plugin"
+msgstr "启用插件"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "启用两步验证"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "启用外部备份插件以使用WebDAV云存储。"
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "仅对具有自签名SSL证书的本地网络服务器启用此选项。将禁用证书验证。"
+
+#: 
+msgid "Endpoint URL"
+msgstr "端点URL"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "输入验证器应用中的6位数验证码"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "照常输入您的用户名和密码"
+
+#: 
+msgid "External Backup"
+msgstr "外部备份"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "外部备份 (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "外部备份设置"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "外部备份插件已启用，但未配置。"
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "外部备份插件未配置。请在插件中配置WebDAV设置。"
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "外部备份插件未启用。请在插件管理中启用并配置它。"
+
+#: 
+msgid "Failed to create link"
+msgstr "创建链接失败"
+
+#: 
+msgid "Failed to delete link"
+msgstr "删除链接失败"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "禁用插件失败"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "启用插件失败"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "获取插件详情失败"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "列出插件失败"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "重置设置失败"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "发送短信失败"
+
+#: 
+msgid "Family Status"
+msgstr "家庭状态"
+
+#: 
+msgid "Family not found"
+msgstr "未找到家庭"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "在MailChimp中查找：Audience > Settings > Audience name and defaults > Audience ID"
+
+#: 
+msgid "From Phone Number"
+msgstr "发件人电话号码"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "来自 dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "GA4测量ID"
+
+#: 
+msgid "Generate new code"
+msgstr "生成新验证码"
+
+#: 
+msgid "Get Started"
+msgstr "开始"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "从MailChimp获取您的API密钥：Account Settings > Extras > API Keys"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "准备好您的验证器应用（Google Authenticator、Microsoft Authenticator、Authy等）"
+
+#: 
+msgid "Help"
+msgstr "帮助"
+
+#: 
+msgid "Id"
+msgstr "编号"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "当电子邮件地址没有Gravatar时显示的图像"
+
+#: 
+msgid "Important"
+msgstr "重要"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "通过将插件放置在以下位置来安装插件"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "验证码无效。请重试。"
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "端点URL无效。必须是以https://开头的完整URL（例如 https://cloud.example.com/remote.php/dav/files/user/backups/）"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "未找到自助服务终端设备"
+
+#: 
+msgid "Last Backup"
+msgstr "上次备份"
+
+#: 
+msgid "Last Campaign"
+msgstr "上次活动"
+
+#: 
+msgid "Last Subscriber"
+msgstr "最新订阅者"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "上次成功备份"
+
+#: 
+msgid "Last campaign"
+msgstr "上次活动"
+
+#: 
+msgid "Link Name"
+msgstr "链接名称"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "链接地址不能包含HTML标签"
+
+#: 
+msgid "Link address is required"
+msgstr "链接地址为必填项"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "链接必须是有效的URL"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "链接必须以 http:// 或 https:// 开头"
+
+#: 
+msgid "Link not found"
+msgstr "未找到链接"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "正在加载恢复码"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "MailChimp API密钥"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "MailChimp仪表板"
+
+#: 
+msgid "Manage Links"
+msgstr "管理链接"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "管理两步验证"
+
+#: 
+msgid "Manual Backup"
+msgstr "手动备份"
+
+#: 
+msgid "Menu Links"
+msgstr "菜单链接"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "菜单名称不能包含HTML标签"
+
+#: 
+msgid "Menu name is required"
+msgstr "菜单名称为必填项"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "菜单名称不能超过50个字符"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "菜单名称至少需要2个字符"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "必须以 http:// 或 https:// 开头"
+
+#: 
+msgid "Needs Configuration"
+msgstr "需要配置"
+
+#: 
+msgid "Never"
+msgstr "从不"
+
+#: 
+msgid "No Audiences Found"
+msgstr "未找到受众"
+
+#: 
+msgid "No backups recorded"
+msgstr "无备份记录"
+
+#: 
+msgid "No community plugins installed"
+msgstr "未安装社区插件"
+
+#: 
+msgid "No core plugins found"
+msgstr "未找到核心插件"
+
+#: 
+msgid "No settings provided"
+msgstr "未提供设置"
+
+#: 
+msgid "Not Configured"
+msgstr "未配置"
+
+#: 
+msgid "Not in CRM"
+msgstr "不在CRM中"
+
+#: 
+msgid "One-Time Code"
+msgstr "一次性验证码"
+
+#: 
+msgid "Open MailChimp"
+msgstr "打开MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "打开您的验证器应用并扫描此QR码"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "OpenLP服务器URL"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "可选 - 仅在启用OpenLP验证时需要"
+
+#: 
+msgid "Phone number and message required"
+msgstr "电话号码和消息为必填项"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "请先配置端点、用户名和密码。"
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "创建远程备份之前，请先配置WebDAV设置。"
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "测试连接之前，请先配置WebDAV设置。"
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "请配置您的MailChimp API密钥以使用此集成。"
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "请输入链接名称（2-50个字符）"
+
+#: 
+msgid "Please try again"
+msgstr "请重试"
+
+#: 
+msgid "Plugin Development"
+msgstr "插件开发"
+
+#: 
+msgid "Plugin Help"
+msgstr "插件帮助"
+
+#: 
+msgid "Plugin Management"
+msgstr "插件管理"
+
+#: 
+msgid "Plugin Settings"
+msgstr "插件设置"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "无法禁用该插件，因为其他插件依赖它"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "由于依赖关系或版本要求，无法启用该插件"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "插件已成功禁用"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "插件已成功启用"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "插件加载失败"
+
+#: 
+msgid "Plugin not found"
+msgstr "未找到插件"
+
+#: 
+msgid "Plugins"
+msgstr "插件"
+
+#: 
+msgid "Print"
+msgstr "打印"
+
+#: 
+msgid "Recipients and message required"
+msgstr "收件人和消息为必填项"
+
+#: 
+msgid "Recovery Codes"
+msgstr "恢复码"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "远程备份失败。请查看服务器日志了解详情。"
+
+#: 
+msgid "SMS sent"
+msgstr "短信已发送"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "请将这些恢复码保存在安全的地方。如果您失去验证器应用的访问权限，可以使用它们访问您的账户。"
+
+#: 
+msgid "Scan QR Code"
+msgstr "扫描QR码"
+
+#: 
+msgid "Secure"
+msgstr "安全"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "设置验证器"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "设置已成功重置"
+
+#: 
+msgid "Setup Complete"
+msgstr "设置完成"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "随ChurchCRM附带。"
+
+#: 
+msgid "Sign In"
+msgstr "登录"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "某些设置无法重置"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "某些设置无法保存"
+
+#: 
+msgid "Subscribers"
+msgstr "订阅者"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "不在CRM中的订阅者"
+
+#: 
+msgid "Test Connection"
+msgstr "测试连接"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "测试WebDAV连接"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "启用此插件时，这些链接将出现在导航侧边栏的「链接」菜单中。"
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "这些人已订阅您的MailChimp受众，但不存在于ChurchCRM中。请考虑将他们添加到您的数据库或从MailChimp中删除。"
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "这些人存在于ChurchCRM中并有电子邮件地址，但尚未订阅此MailChimp受众。请考虑邀请他们订阅。"
+
+#: 
+msgid "Third-party extensions."
+msgstr "第三方扩展。"
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "这将替换所有之前注册的两步验证方法"
+
+#: 
+msgid "Total Campaigns"
+msgstr "总活动数"
+
+#: 
+msgid "Total Subscribers"
+msgstr "总订阅者数"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "两步验证注册错误"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "两步验证已禁用"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "两步验证是保护您账户的最佳方式之一。我们强烈建议保持启用状态。"
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "您的OpenLP服务器URL（例如 http://192.168.1.100:4316）"
+
+#: 
+msgid "Unable to load"
+msgstr "无法加载"
+
+#: 
+msgid "Unsubscribed"
+msgstr "已取消订阅"
+
+#: 
+msgid "Use a different account"
+msgstr "使用其他账户"
+
+#: 
+msgid "Value is configured"
+msgstr "值已配置"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "值已设置 - 留空以保留当前值"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "验证并登录"
+
+#: 
+msgid "Verify Code"
+msgstr "验证验证码"
+
+#: 
+msgid "Verifying"
+msgstr "正在验证"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Vonage API密钥"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API私钥"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV配置"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV连接"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV备份未正确配置。请确保已设置端点、用户名和密码。"
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV端点URL为必填项。"
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV密码为必填项。"
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV用户名为必填项。"
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "如果您失去对应用的访问权限，也可以使用备份恢复码"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "您现在可以使用验证器应用登录。每个验证码有效期为30秒。"
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "您将收到备份码，在失去对应用的访问权限时可以使用"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "您的GA4测量ID（G-XXXXXXXXXX）"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "您的MailChimp账户未配置任何受众（列表）。"
+
+#: 
+msgid "Your account is now protected"
+msgstr "您的账户现已受到保护"
+
+#: 
+msgid "Your account is protected"
+msgstr "您的账户受到保护"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "您的验证器应用已成功注册"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "您的浏览器语言偏好与您的ChurchCRM语言设置不同"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "例如，教会网站"
+
+#: 
+msgid "manifest."
+msgstr "清单。"
+
+#: 
+msgid "subscribers"
+msgstr "订阅者"
+
+#: 
+msgid "API Key is required."
+msgstr "API密钥为必填项。"
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "无法连接到 %s 的OpenLP。请检查服务器URL以及OpenLP是否正在运行。"
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "无法连接到 %s 的OpenLP。服务器返回HTTP %d。"
+
+#: 
+msgid "Congregation Map"
+msgstr "会众地图"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "会众地图 — 需要设置"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "已连接到MailChimp！账户：%s（%d个订阅者）"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "已成功连接到OpenLP服务器。"
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "已连接到OpenLP！版本：%s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "已连接！账户余额：€%.2f。准备发送短信。"
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "无法连接到MailChimp。请检查您的API密钥。"
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "连接OpenLP服务器失败。"
+
+#: 
+msgid "Get Directions"
+msgstr "获取路线"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "请包含国家代码，例如 +14155551234（美国）或 +447911123456（英国）"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "无效的发件人号码：\"%s\"。请包含国家代码，例如 +14155551234（美国）或 +447911123456（英国）。"
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "API凭据无效。请验证您的API密钥和API私钥。"
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "API密钥格式无效。请检查您的MailChimp API密钥。"
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "端点URL无效。必须是以https://开头的完整URL"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "服务器URL格式无效。"
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp连接失败。"
+
+#: 
+msgid "Map Zoom Level"
+msgstr "地图缩放级别"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "缺少家庭？请更新坐标以将其包含在地图上。"
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "缺少必填设置：%s"
+
+#: 
+msgid "Person has no family"
+msgstr "此人没有家庭"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "插件未找到或未激活"
+
+#: 
+msgid "Server URL is required."
+msgstr "服务器URL为必填项。"
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "此插件不支持连接测试。"
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "无法显示地图：教会地址尚未进行地理编码。"
+
+#: 
+msgid "Update church address in Settings."
+msgstr "在设置中更新教会地址。"
+
+#: 
+msgid "Username and password are required."
+msgstr "用户名和密码为必填项。"
+
+#: 
+msgid "Validation failed: %s"
+msgstr "验证失败：%s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Vonage服务器错误。请稍后重试。"
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV端点URL为必填项。"
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "您确定要永久删除此奉献承诺记录吗？"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "取消并返回家庭视图"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "如果删除此类型，您还将删除所有使用它的属性，并失去所有相应的属性分配。"
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "将奉献移至所选家庭"
+

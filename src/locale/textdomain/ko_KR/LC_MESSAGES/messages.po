@@ -12386,3 +12386,19 @@ msgstr "Vonage 서버 오류입니다. 나중에 다시 시도해 주세요."
 msgid "WebDAV Endpoint URL is required."
 msgstr "WebDAV 엔드포인트 URL은 필수입니다."
 
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "이 헌금 서약 기록을 영구적으로 삭제하시겠습니까?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "취소하고 가족 보기로 돌아가기"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "이 유형을 삭제하면 해당 유형을 사용하는 모든 속성도 제거되고 해당 속성 배정도 모두 삭제됩니다."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "헌금을 선택한 가족으로 이동"
+

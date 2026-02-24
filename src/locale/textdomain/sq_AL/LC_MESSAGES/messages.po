@@ -11167,3 +11167,1235 @@ msgstr "Rivendos filtrat"
 msgid "Show only people with photos"
 msgstr "Trego vetëm personat me fotografi"
 
+#: 
+msgid "Checkout All"
+msgstr "Regjistro të Gjithë"
+
+#: 
+msgid "Expected"
+msgstr "Pritshmëri"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Dështoi fshirja e kioskut"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Zotimi i Familjes sipas Vitit Fiskal"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Gjej Studentët e Regjistruar"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Viti Fiskal."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Grup studentësh të regjistruar"
+
+#: 
+msgid "Here"
+msgstr "Këtu"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Lloj detyrimi i pavlefshëm"
+
+#: 
+msgid "Invalid person ID"
+msgstr "ID e personit e pavlefshme"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Regjistrimi i Kioskut i Çaktivizuar"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kiosku nuk u gjet"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Lidheni këtë ngjarje me një grup për funksionalitetin e hyrjes në kiosk. Anëtarët e grupit do të shfaqen në kiosk."
+
+#: 
+msgid "Linked Group"
+msgstr "Grupi i Lidhur"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Regjistrimi i ri i pajisjes kiosk është aktualisht i çaktivizuar. Ju lutemi kontaktoni administratorin e sistemit tuaj për të aktivizuar regjistrimin e kioskut."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Pa Grup (Zgjidhni për Hyrje në Kiosk)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Asnjë person nuk është regjistruar ende"
+
+#: 
+msgid "Person not found"
+msgstr "Personi nuk u gjet"
+
+#: 
+msgid "Pickup Request"
+msgstr "Kërkesë Tërheqjeje"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Ju lutemi shkoni në klasë sa më shpejt të jetë e mundur."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Përmbledhje zotimesh sipas emrit të familjes për çdo fond për vitin fiskal të zgjedhur"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Studentët e Regjistruar"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Mësuesi e dërgoi këtë sinjalizim në"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Ky kiosk shihet më mirë në tabletë në modalitetin horizontal për përvojën optimale të hyrjes."
+
+#: 
+msgid "Tip"
+msgstr "Këshillë"
+
+#: 
+msgid "Try Again"
+msgstr "Provoni Sërish"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Ditëlindjet e Ardhshme"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Duke Pritur për t'u Regjistruar"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Kur aktivizohet, pajisjet e reja kiosk mund të regjistrohen për 30 sekonda."
+
+#: 
+msgid "Your child"
+msgstr "Fëmija juaj"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "duhet të merret nga"
+
+#: 
+msgid "their classroom"
+msgstr "klasa e tyre"
+
+#: 
+msgid "All timezones match"
+msgstr "Të gjitha zonat kohore përputhen"
+
+#: 
+msgid "Baseline"
+msgstr "Baza"
+
+#: 
+msgid "Browser"
+msgstr "Shfletuesi"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Shfletuesi ndryshon nga konfigurimi i sistemit - datat mund të shfaqen gabimisht për këtë përdorues."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Nuk mund të shkruhet në direktoriumin e instalimit të ChurchCRM. Ju lutemi kontrolloni që serveri ueb ka leje shkrimi."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Duke krahasuar zonat kohore..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Direktoriumi i destinacionit nuk ekziston. Ju lutemi verifikoni që ChurchCRM është instaluar saktë."
+
+#: 
+msgid "Does not match system config"
+msgstr "Nuk përputhet me konfigurimin e sistemit"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Skedari i shkarkuar i versionit është bosh. Kjo mund të jetë shkaku i problemeve të rrjetit ose kufizimit të GitHub. Ju lutemi provoni sërish më vonë."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Nxjerrja u krye, por skedarët e përmirësimit nuk u gjetën. Arkivi i përmirësimit mund të jetë i dëmtuar."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Dështoi aplikimi i përmirësimit. Ju lutemi kontrolloni regjistrat e serverit për detaje."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Dështoi krijimi i direktoriumit të Përmirësimit. Ju lutemi kontrolloni lejet e skedarëve."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Dështoi shkarkimi i skedarit të versionit nga GitHub pas shumë përpjekjeve. Ju lutemi kontrolloni lidhjen e internetit të serverit tuaj dhe provoni sërish."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Dështoi nxjerrja e arkivit të përmirësimit. Ju lutemi kontrolloni hapësirën në disk dhe lejet e skedarëve."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Dështoi hapja e arkivit të përmirësimit. Skedari i shkarkuar mund të jetë i dëmtuar."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Dështoi ruajtja e skedarit të versionit të shkarkuar. Ju lutemi kontrolloni hapësirën në disk dhe lejet."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Format i datës i pavlefshëm në parametrin e fillimit"
+
+#: 
+msgid "Mismatch"
+msgstr "Mospërputhje"
+
+#: 
+msgid "Not set"
+msgstr "Nuk është vendosur"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP Aktiv"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Direktoriumi burim nuk ekziston. Arkivi i përmirësimit mund të mos jetë nxjerrë saktë. Ju lutemi kontrolloni lejet e skedarëve dhe hapësirën në disk."
+
+#: 
+msgid "System Config"
+msgstr "Konfigurimi i Sistemit"
+
+#: 
+msgid "Timezone Information"
+msgstr "Informacioni i Zonës Kohore"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "U zbulua mospërputhje e zonës kohore"
+
+#: 
+msgid "mismatch detected"
+msgstr "mospërputhje e zbuluar"
+
+#: 
+msgid "mismatches detected"
+msgstr "mospërputhje të zbuluara"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d orë"
+msgstr[1] "%d orë"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "Rreth Rezervimeve WebDAV"
+
+#: 
+msgid "Add Link"
+msgstr "Shto Lidhje"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Shtoni një shtresë shtesë sigurie në llogarinë tuaj"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Shtoni lidhje të jashtme të personalizuara në menynë e navigimit."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Lejo Certifikata të Nënshkruara Vetë"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Ndodhi një gabim gjatë përpunimit të kërkesës së shtojcës"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Jeni i sigurt që dëshironi të çaktivizoni vërtetimin me dy faktorë? Llogaria juaj do të jetë më pak e sigurt."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "Si pjesë e rivendosjes, rezervimet e jashtme janë çaktivizuar. Nëse dëshironi të vazhdoni me rezervimet automatike, riaktivizoni shtojcën e Rezervimit të Jashtëm te Admin > Shtojca."
+
+#: 
+msgid "Audiences"
+msgstr "Audienca"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Vërtetimi dështoi. Ju lutemi kontrolloni emrin e përdoruesit dhe fjalëkalimin."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Intervali i Auto-Rezervimit"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Rezervoni automatikisht bazën e të dhënave të ChurchCRM-it në cloud të jashtëm nëpërmjet WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Norma Mesatare e Klikimeve"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Norma Mesatare e Hapjeve"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Kthehu te Paneli i Kontrollit"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Rezervimi u krijua, por dështoi kopjimi te serveri i largët"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Rezervo te WebDAV Tani"
+
+#: 
+msgid "Before You Start"
+msgstr "Para se të Filloni"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "U zbulua preferenca e gjuhës së shfletuesit"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "Anëtarë të CRM-it jo të abonuar"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Fushatat e Dërguara"
+
+#: 
+msgid "Can't scan?"
+msgstr "Nuk mund të skanoni?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Ndryshoni Vendndodhjen Tuaj"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM mbështet një arkitekturë shtojcash për zgjerimin e funksionalitetit."
+
+#: 
+msgid "Cleaned"
+msgstr "Pastruar"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Klikoni butonin më poshtë për të testuar cilësimet e lidhjes tuaj WebDAV."
+
+#: 
+msgid "Community Plugins"
+msgstr "Shtojca të Komunitetit"
+
+#: 
+msgid "Community plugins"
+msgstr "Shtojca të komunitetit"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Konfiguro Rezervimin e Jashtëm"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Konfiguro MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Konfiguroni këto cilësime në"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Konfiguroni këtë shtojcë për të rezervuar automatikisht bazën e të dhënave të ChurchCRM-it te shërbimet e ruajtjes cloud të pajtueshme me WebDAV si Nextcloud, ownCloud ose çdo server WebDAV. Rezervimet kriptohen gjatë transferimit duke përdorur HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Konfiguruar"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Konfirmoni me një kod nga aplikacioni juaj i vërtetimit"
+
+#: 
+msgid "Connected"
+msgstr "Lidhur"
+
+#: 
+msgid "Connection failed"
+msgstr "Lidhja dështoi"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Lidhja dështoi me kodin HTTP"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Lidhja u krye me sukses! Pika fundore e WebDAV-it është e aksesueshme."
+
+#: 
+msgid "Connection test failed"
+msgstr "Testimi i lidhjes dështoi"
+
+#: 
+msgid "Core Plugins"
+msgstr "Shtojcat Kryesore"
+
+#: 
+msgid "Core plugins"
+msgstr "Shtojcat kryesore"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Krijoni një rezervim tani dhe ngarkojeni te serveri juaj WebDAV."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Krijoni një Audiencë në MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Personalizuar"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Lidhjet e Menysë të Personalizuara"
+
+#: 
+msgid "Default Image Style"
+msgstr "Stili i Paracaktuar i Imazhit"
+
+#: 
+msgid "Default List ID"
+msgstr "ID e Listës së Paracaktuar"
+
+#: 
+msgid "Disable"
+msgstr "Çaktivizo"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Çaktivizo Shtojcën"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Çaktivizo Vërtetimin me Dy Faktorë"
+
+#: 
+msgid "Dismiss"
+msgstr "Hidhe Poshtë"
+
+#: 
+msgid "Done"
+msgstr "U krye"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "Formati E.164, p.sh., +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Çdo shtojcë kërkon një"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Çdo herë që identifikoheni, do t'ju duhet të konfirmoni me një kod nga aplikacioni juaj i vërtetimit"
+
+#: 
+msgid "Email Addresses"
+msgstr "Adresat e Emailit"
+
+#: 
+msgid "Enable"
+msgstr "Aktivizo"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Aktivizo Shtojcën e Rezervimit të Jashtëm"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Aktivizo Shtojcën"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Aktivizo Vërtetimin me Dy Faktorë"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Aktivizoni shtojcën e Rezervimit të Jashtëm për ruajtjen cloud WebDAV."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Aktivizoni këtë vetëm për serverët e rrjetit lokal me certifikata SSL të nënshkruara vetë. Çaktivizon verifikimin e certifikatës."
+
+#: 
+msgid "Endpoint URL"
+msgstr "URL-ja e Pikës Fundore"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Vendosni kodin 6-shifror nga aplikacioni juaj i vërtetimit"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Vendosni emrin e përdoruesit dhe fjalëkalimin si zakonisht"
+
+#: 
+msgid "External Backup"
+msgstr "Rezervim i Jashtëm"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Rezervim i Jashtëm (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Cilësimet e Rezervimit të Jashtëm"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "Shtojca e Rezervimit të Jashtëm është aktive, por nuk është konfiguruar."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "Shtojca e Rezervimit të Jashtëm nuk është konfiguruar. Ju lutemi konfiguroni cilësimet WebDAV në shtojcë."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "Shtojca e Rezervimit të Jashtëm nuk është aktive. Ju lutemi aktivizojeni dhe konfiguroni në Menaxhimin e Shtojcave."
+
+#: 
+msgid "Failed to create link"
+msgstr "Dështoi krijimi i lidhjes"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Dështoi fshirja e lidhjes"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Dështoi çaktivizimi i shtojcës"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Dështoi aktivizimi i shtojcës"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Dështoi marrja e detajeve të shtojcës"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Dështoi listimi i shtojcave"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Dështoi rivendosja e cilësimeve"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Dështoi dërgimi i SMS-it"
+
+#: 
+msgid "Family Status"
+msgstr "Statusi i Familjes"
+
+#: 
+msgid "Family not found"
+msgstr "Familja nuk u gjet"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Gjeni në MailChimp: Audiencë > Cilësime > Emri i audiencës dhe paracaktimet > ID e Audiencës"
+
+#: 
+msgid "From Phone Number"
+msgstr "Nga Numri i Telefonit"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "Nga dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "ID e Matjes GA4"
+
+#: 
+msgid "Generate new code"
+msgstr "Gjenero kod të ri"
+
+#: 
+msgid "Get Started"
+msgstr "Fillo"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Merrni çelësin tuaj API nga MailChimp: Cilësimet e Llogarisë > Ekstra > Çelësat API"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Keni gati aplikacionin tuaj të vërtetimit (Google Authenticator, Microsoft Authenticator, Authy, etj.)"
+
+#: 
+msgid "Help"
+msgstr "Ndihmë"
+
+#: 
+msgid "Id"
+msgstr "Id"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Imazhi i shfaqur kur nuk ekziston Gravatar për adresën e emailit"
+
+#: 
+msgid "Important"
+msgstr "I rëndësishëm"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Instaloni shtojcat duke i vendosur ato në"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Kodi i pavlefshëm. Ju lutemi provoni sërish."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "URL e pikës fundore e pavlefshme. Duhet të jetë URL e plotë duke filluar me https:// (p.sh., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Pajisja kiosk nuk u gjet"
+
+#: 
+msgid "Last Backup"
+msgstr "Rezervimi i Fundit"
+
+#: 
+msgid "Last Campaign"
+msgstr "Fushata e Fundit"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Abonenti i Fundit"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Rezervimi i Fundit i Suksesshëm"
+
+#: 
+msgid "Last campaign"
+msgstr "Fushata e fundit"
+
+#: 
+msgid "Link Name"
+msgstr "Emri i Lidhjes"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Adresa e lidhjes nuk mund të përmbajë etiketa HTML"
+
+#: 
+msgid "Link address is required"
+msgstr "Adresa e lidhjes është e nevojshme"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Lidhja duhet të jetë URL e vlefshme"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Lidhja duhet të fillojë me http:// ose https://"
+
+#: 
+msgid "Link not found"
+msgstr "Lidhja nuk u gjet"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Duke ngarkuar kodet e rikuperimit"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "Çelësi API i MailChimp"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "Paneli i Kontrollit të MailChimp"
+
+#: 
+msgid "Manage Links"
+msgstr "Menaxho Lidhjet"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Menaxho Vërtetimin me Dy Faktorë"
+
+#: 
+msgid "Manual Backup"
+msgstr "Rezervim Manual"
+
+#: 
+msgid "Menu Links"
+msgstr "Lidhjet e Menysë"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Emri i menysë nuk mund të përmbajë etiketa HTML"
+
+#: 
+msgid "Menu name is required"
+msgstr "Emri i menysë është i nevojshëm"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Emri i menysë duhet të jetë 50 karaktere ose më pak"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Emri i menysë duhet të ketë të paktën 2 karaktere"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Duhet të fillojë me http:// ose https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Kërkon Konfigurim"
+
+#: 
+msgid "Never"
+msgstr "Kurrë"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Asnjë Audiencë nuk u Gjet"
+
+#: 
+msgid "No backups recorded"
+msgstr "Asnjë rezervim i regjistruar"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Asnjë shtojcë komuniteti e instaluar"
+
+#: 
+msgid "No core plugins found"
+msgstr "Asnjë shtojcë kryesore nuk u gjet"
+
+#: 
+msgid "No settings provided"
+msgstr "Asnjë cilësim i dhënë"
+
+#: 
+msgid "Not Configured"
+msgstr "Jo i Konfiguruar"
+
+#: 
+msgid "Not in CRM"
+msgstr "Jo në CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "Kod Njëpërdorimësh"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Hap MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Hapni aplikacionin tuaj të vërtetimit dhe skanoni këtë kod QR"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "URL e Serverit OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Opsionale - e nevojshme vetëm nëse vërtetimi i OpenLP është aktivizuar"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Numri i telefonit dhe mesazhi janë të nevojshëm"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Ju lutemi konfiguroni fillimisht pikën fundore, emrin e përdoruesit dhe fjalëkalimin."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Ju lutemi konfiguroni cilësimet WebDAV para se të krijoni një rezervim të largët."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Ju lutemi konfiguroni cilësimet WebDAV para se të testoni lidhjen."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Ju lutemi konfiguroni çelësin tuaj API të MailChimp për të përdorur këtë integrim."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Ju lutemi vendosni një emër lidhje (2-50 karaktere)"
+
+#: 
+msgid "Please try again"
+msgstr "Ju lutemi provoni sërish"
+
+#: 
+msgid "Plugin Development"
+msgstr "Zhvillimi i Shtojcave"
+
+#: 
+msgid "Plugin Help"
+msgstr "Ndihmë për Shtojcën"
+
+#: 
+msgid "Plugin Management"
+msgstr "Menaxhimi i Shtojcave"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Cilësimet e Shtojcës"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Shtojca nuk mund të çaktivizohet sepse shtojca të tjera varen prej saj"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Shtojca nuk mund të aktivizohet për shkak të kërkesave të varësisë ose versionit"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Shtojca u çaktivizua me sukses"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Shtojca u aktivizua me sukses"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Shtojca dështoi të ngarkohet"
+
+#: 
+msgid "Plugin not found"
+msgstr "Shtojca nuk u gjet"
+
+#: 
+msgid "Plugins"
+msgstr "Shtojca"
+
+#: 
+msgid "Print"
+msgstr "Printo"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Marrësit dhe mesazhi janë të nevojshëm"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Kodet e Rikuperimit"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Rezervimi i largët dështoi. Kontrolloni regjistrat e serverit për detaje."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS u dërgua"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Ruajini këto kode rikuperimi në një vend të sigurt. Mund t'i përdorni ato për të hyrë në llogarinë tuaj nëse humbni aksesin te aplikacioni juaj i vërtetimit."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Skanoni Kodin QR"
+
+#: 
+msgid "Secure"
+msgstr "I sigurt"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Konfiguro Vërtetuesin"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Cilësimet u rivendosën me sukses"
+
+#: 
+msgid "Setup Complete"
+msgstr "Konfigurimi u Plotësua"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Vjen me ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Hyrje"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Disa cilësime nuk mund të rivendoseshin"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Disa cilësime nuk mund të ruheshin"
+
+#: 
+msgid "Subscribers"
+msgstr "Abonentët"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Abonentë jo në CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "Testo Lidhjen"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Testo Lidhjen WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Këto lidhje shfaqen në menynë \"Lidhje\" në shiritin anësor të navigimit kur kjo shtojcë është aktive."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Këta njerëz janë abonuar te audienca juaj MailChimp, por nuk ekzistojnë në ChurchCRM. Merrni parasysh t'i shtoni në bazën tuaj të të dhënave ose t'i hiqni nga MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Këta njerëz ekzistojnë në ChurchCRM me adresa emaili, por nuk janë abonuar te kjo audiencë MailChimp. Merrni parasysh t'i ftoni të abonohen."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Zgjerime të palëve të treta."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Kjo do të zëvendësojë çdo metodë 2FA të regjistruar më parë"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Fushatat Totale"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Abonentët Totalë"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Gabim i Regjistrimit me Dy Faktorë"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Vërtetimi me dy faktorë është çaktivizuar"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Vërtetimi me dy faktorë është një nga mënyrat më të mira për të mbrojtur llogarinë tuaj. Rekomandojmë fuqimisht ta mbani aktive."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL-ja e serverit tuaj OpenLP (p.sh., http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Nuk mund të ngarkohet"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Çabonuar"
+
+#: 
+msgid "Use a different account"
+msgstr "Përdorni një llogari tjetër"
+
+#: 
+msgid "Value is configured"
+msgstr "Vlera është konfiguruar"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Vlera është vendosur - lini bosh për të mbajtur të tanishmen"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Verifiko & Hyr"
+
+#: 
+msgid "Verify Code"
+msgstr "Verifiko Kodin"
+
+#: 
+msgid "Verifying"
+msgstr "Duke Verifikuar"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Çelësi API i Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Sekret API i Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "Konfigurimi WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "Lidhja WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "Rezervimet WebDAV nuk janë konfiguruar saktë. Ju lutemi sigurohuni që pika fundore, emri i përdoruesit dhe fjalëkalimi janë vendosur."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "URL-ja e pikës fundore WebDAV është e nevojshme."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "Fjalëkalimi WebDAV është i nevojshëm."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "Emri i përdoruesit WebDAV është i nevojshëm."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Mund të përdorni gjithashtu kode rezervë rikuperimi nëse humbni aksesin te aplikacioni juaj"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Tani mund të përdorni aplikacionin tuaj të vërtetimit për të hyrë. Çdo kod është i vlefshëm për 30 sekonda."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Do të merrni kode rezervë që mund të përdoren nëse humbni aksesin te aplikacioni juaj"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "ID-ja juaj e Matjes GA4 (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "Llogaria juaj MailChimp nuk ka asnjë audiencë (listë) të konfiguruar."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Llogaria juaj është tani e mbrojtur"
+
+#: 
+msgid "Your account is protected"
+msgstr "Llogaria juaj është e mbrojtur"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Aplikacioni juaj i vërtetimit u regjistrua me sukses"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Preferenca e gjuhës së shfletuesit tuaj ndryshon nga vendndodhja juaj ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "p.sh., Faqja e Kishës"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "abonentë"
+
+#: 
+msgid "API Key is required."
+msgstr "Çelësi API është i nevojshëm."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Nuk mund të lidheni me OpenLP në %s. Kontrolloni URL-në e serverit dhe nëse OpenLP po ekzekutohet."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Nuk mund të lidheni me OpenLP në %s. Serveri ktheu HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Harta e Kongregacionit"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Harta e Kongregacionit — Kërkohet Konfigurimi"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Lidhur me MailChimp! Llogari: %s (%d abonentë)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "U lidh me sukses me serverin OpenLP."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Lidhur me OpenLP! Versioni: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Lidhur! Bilanci i llogarisë: €%.2f. Gati për të dërguar SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Nuk u lidh me MailChimp. Ju lutemi kontrolloni çelësin tuaj API."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Dështoi lidhja me serverin OpenLP."
+
+#: 
+msgid "Get Directions"
+msgstr "Merrni Udhëzimet"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Përfshini kodin e vendit, p.sh. +14155551234 (SHBA) ose +447911123456 (MB)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"Nga Numri\" i pavlefshëm: \"%s\". Përfshini kodin e vendit, p.sh. +14155551234 (SHBA) ose +447911123456 (MB)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Kredencialet API të pavlefshme. Ju lutemi verifikoni Çelësin API dhe Sekretin API."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Format i çelësit API i pavlefshëm. Kontrolloni çelësin tuaj API të MailChimp."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "URL e pikës fundore e pavlefshme. Duhet të jetë URL e plotë duke filluar me https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Format i pavlefshëm i URL-së së serverit."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "Lidhja me MailChimp dështoi."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Niveli i Zmadhimit të Hartës"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Mungojnë familje? Përditësoni koordinatat për t'i përfshirë ato në hartë."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Mungojnë cilësimet e nevojshme: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Personi nuk ka familje"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Shtojca nuk u gjet ose nuk është aktive"
+
+#: 
+msgid "Server URL is required."
+msgstr "URL-ja e serverit është e nevojshme."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Kjo shtojcë nuk mbështet testimin e lidhjes."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Nuk mund të shfaqet harta: adresa e kishës nuk është gjeokoduar ende."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Përditësoni adresën e kishës në Cilësime."
+
+#: 
+msgid "Username and password are required."
+msgstr "Emri i përdoruesit dhe fjalëkalimi janë të nevojshëm."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Vërtetimi dështoi: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Gabim i serverit Vonage. Ju lutemi provoni sërish më vonë."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "URL-ja e Pikës Fundore WebDAV është e nevojshme."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Jeni i sigurt që dëshironi të fshini përgjithmonë këtë rekord zotimi?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Kansello dhe Kthehu te Pamja e Familjes"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Nëse e fshini këtë lloj, do të hiqni gjithashtu të gjitha vetitë që e përdorin dhe do të humbni të gjitha caktimet përkatëse të vetive."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Zhvendos Ofertat te Familja e Zgjedhur"
+
