@@ -2995,5 +2995,9 @@
     "Username and password are required.": "ユーザー名とパスワードは必須です。",
     "Validation failed: %s": "バリデーションに失敗しました：%s",
     "Vonage server error. Please try again later.": "Vonage サーバーエラーです。後でもう一度お試しください。",
-    "WebDAV Endpoint URL is required.": "WebDAV エンドポイント URL は必須です。"
+    "WebDAV Endpoint URL is required.": "WebDAV エンドポイント URL は必須です。",
+    "Are you sure you want to permanently delete this pledge record?": "この誓約記録を完全に削除してもよいですか？",
+    "Cancel and Return to Family View": "キャンセルして家族表示に戻る",
+    "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "このタイプを削除すると、それを使用するすべての属性も削除され、対応するすべての属性割り当てが失われます。",
+    "Move Donations to Selected Family": "献金を選択した家族に移動"
 }

@@ -3005,5 +3005,9 @@
     "Username and password are required.": "उपयोगकर्ता नाम और पासवर्ड आवश्यक हैं।",
     "Validation failed: %s": "सत्यापन विफल: %s",
     "Vonage server error. Please try again later.": "Vonage सर्वर त्रुटि। कृपया बाद में फिर से प्रयास करें।",
-    "WebDAV Endpoint URL is required.": "WebDAV एंडपॉइंट URL आवश्यक है।"
+    "WebDAV Endpoint URL is required.": "WebDAV एंडपॉइंट URL आवश्यक है।",
+    "Are you sure you want to permanently delete this pledge record?": "क्या आप वाकई इस प्रतिज्ञा रिकॉर्ड को स्थायी रूप से हटाना चाहते हैं?",
+    "Cancel and Return to Family View": "रद्द करें और परिवार दृश्य पर वापस जाएं",
+    "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "यदि आप इस प्रकार को हटाते हैं, तो इसका उपयोग करने वाली सभी विशेषताएं भी हट जाएंगी और सभी संबंधित विशेषता नियुक्तियां खो जाएंगी।",
+    "Move Donations to Selected Family": "चुने गए परिवार में चंदा स्थानांतरित करें"
 }

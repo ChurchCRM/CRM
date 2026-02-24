@@ -2996,5 +2996,9 @@
     "Username and password are required.": "Nama pengguna dan kata sandi diperlukan.",
     "Validation failed: %s": "Validasi gagal: %s",
     "Vonage server error. Please try again later.": "Kesalahan server Vonage. Silakan coba lagi nanti.",
-    "WebDAV Endpoint URL is required.": "URL Endpoint WebDAV diperlukan."
+    "WebDAV Endpoint URL is required.": "URL Endpoint WebDAV diperlukan.",
+    "Are you sure you want to permanently delete this pledge record?": "Apakah Anda yakin ingin menghapus catatan komitmen persembahan ini secara permanen?",
+    "Cancel and Return to Family View": "Batal dan Kembali ke Tampilan Keluarga",
+    "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Jika Anda menghapus tipe ini, Anda juga akan menghapus semua properti yang menggunakannya dan kehilangan semua penugasan properti yang sesuai.",
+    "Move Donations to Selected Family": "Pindahkan Persembahan ke Keluarga yang Dipilih"
 }

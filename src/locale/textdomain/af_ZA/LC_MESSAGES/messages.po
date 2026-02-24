@@ -12404,3 +12404,19 @@ msgstr "Vonage-bediener fout. Probeer asseblief later weer."
 msgid "WebDAV Endpoint URL is required."
 msgstr "WebDAV-eindpunt-URL is vereis."
 
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Is u seker u wil hierdie toewyding permanent verwyder?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Kanselleer en keer terug na Gesinsiening"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "As u hierdie tipe verwyder, sal u ook alle eienskappe wat dit gebruik verwyder en alle ooreenstemmende eienskap-toekennings verloor."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Skuif Offergawes na Gekose Gesin"
+
