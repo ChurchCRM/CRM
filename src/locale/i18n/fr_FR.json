@@ -3005,5 +3005,9 @@
     "Username and password are required.": "Le nom d'utilisateur et le mot de passe sont requis.",
     "Validation failed: %s": "Échec de la validation : %s",
     "Vonage server error. Please try again later.": "Erreur du serveur Vonage. Veuillez réessayer plus tard.",
-    "WebDAV Endpoint URL is required.": "L'URL du point de terminaison WebDAV est requise."
+    "WebDAV Endpoint URL is required.": "L'URL du point de terminaison WebDAV est requise.",
+    "Are you sure you want to permanently delete this pledge record?": "Êtes-vous sûr de vouloir supprimer définitivement cet engagement financier ?",
+    "Cancel and Return to Family View": "Annuler et revenir à la vue famille",
+    "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Si vous supprimez ce type, vous supprimerez également toutes les propriétés qui l'utilisent et perdrez toutes les attributions de propriétés correspondantes.",
+    "Move Donations to Selected Family": "Déplacer les offrandes vers la famille sélectionnée"
 }

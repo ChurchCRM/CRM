@@ -12512,3 +12512,19 @@ msgstr "Vonage-Serverfehler. Bitte versuchen Sie es später erneut."
 msgid "WebDAV Endpoint URL is required."
 msgstr "WebDAV-Endpunkt-URL ist erforderlich."
 
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Möchten Sie diesen Spendenversprechen-Eintrag wirklich dauerhaft löschen?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Abbrechen und zur Familienansicht zurückkehren"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Wenn Sie diesen Typ löschen, entfernen Sie auch alle Eigenschaften, die ihn verwenden, und verlieren alle entsprechenden Eigenschaftszuweisungen."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Spenden zur ausgewählten Familie verschieben"
+

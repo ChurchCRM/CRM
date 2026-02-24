@@ -3005,5 +3005,9 @@
     "Username and password are required.": "பயனர்பெயர் மற்றும் கடவுச்சொல் தேவை.",
     "Validation failed: %s": "சரிபார்ப்பு தோல்வியடைந்தது: %s",
     "Vonage server error. Please try again later.": "Vonage சர்வர் பிழை. தயவுசெய்து பிறகு மீண்டும் முயற்சிக்கவும்.",
-    "WebDAV Endpoint URL is required.": "WebDAV Endpoint URL தேவை."
+    "WebDAV Endpoint URL is required.": "WebDAV Endpoint URL தேவை.",
+    "Are you sure you want to permanently delete this pledge record?": "இந்த உறுதிமொழி பதிவை நிரந்தரமாக நீக்க விரும்புகிறீர்களா?",
+    "Cancel and Return to Family View": "ரத்து செய்து குடும்ப பார்வைக்கு திரும்பு",
+    "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "இந்த வகையை நீக்கினால், அதை பயன்படுத்தும் அனைத்து பண்புகளும் நீக்கப்படும், மேலும் தொடர்பான அனைத்து பண்பு நியமனங்களும் இழக்கப்படும்.",
+    "Move Donations to Selected Family": "காணிக்கைகளை தேர்ந்தெடுத்த குடும்பத்திற்கு நகர்த்து"
 }

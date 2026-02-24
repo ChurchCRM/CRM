@@ -2958,8 +2958,8 @@
     "Vonage API Secret": "Secreto API de Vonage",
     "WebDAV Configuration": "Configuración WebDAV",
     "WebDAV Connection": "Conexión WebDAV",
-    "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set.": "Las copias de seguridad WebDAV no están configuradas correctamente. Asegúrese de que el punto de conexión, el nombre de usuario y la contraseña estén establecidos.",
-    "WebDAV endpoint URL is required.": "La URL del punto de conexión WebDAV es obligatoria.",
+    "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set.": "Las copias de seguridad WebDAV no están configuradas correctamente. Asegúrese de que el endpoint, el nombre de usuario y la contraseña estén establecidos.",
+    "WebDAV endpoint URL is required.": "La URL del endpoint WebDAV es obligatoria.",
     "WebDAV password is required.": "La contraseña WebDAV es obligatoria.",
     "WebDAV username is required.": "El nombre de usuario WebDAV es obligatorio.",
     "You can also use backup recovery codes if you lose access to your app": "También puede usar códigos de recuperación de respaldo si pierde acceso a su aplicación",
@@ -3005,5 +3005,9 @@
     "Username and password are required.": "El nombre de usuario y la contraseña son obligatorios.",
     "Validation failed: %s": "Error de validación: %s",
     "Vonage server error. Please try again later.": "Error del servidor Vonage. Por favor, inténtelo de nuevo más tarde.",
-    "WebDAV Endpoint URL is required.": "La URL del punto de conexión WebDAV es obligatoria."
+    "WebDAV Endpoint URL is required.": "La URL del punto de conexión WebDAV es obligatoria.",
+    "Are you sure you want to permanently delete this pledge record?": "¿Está seguro de eliminar permanentemente el registro de esta promesa?",
+    "Cancel and Return to Family View": "Cancelar y volver a la vista de Familia",
+    "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Si elimina este tipo, también eliminará todas las propiedades que lo utilicen y perderá todas las asignaciones de propiedad correspondientes.",
+    "Move Donations to Selected Family": "Mover Donaciones a la Familia seleccionada"
 }

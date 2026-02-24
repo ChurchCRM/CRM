@@ -12239,11 +12239,11 @@ msgstr "Conexión WebDAV"
 
 #: 
 msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
-msgstr "Las copias de seguridad WebDAV no están configuradas correctamente. Asegúrese de que el punto de conexión, el nombre de usuario y la contraseña estén establecidos."
+msgstr "Las copias de seguridad WebDAV no están configuradas correctamente. Asegúrese de que el endpoint, el nombre de usuario y la contraseña estén establecidos."
 
 #: 
 msgid "WebDAV endpoint URL is required."
-msgstr "La URL del punto de conexión WebDAV es obligatoria."
+msgstr "La URL del endpoint WebDAV es obligatoria."
 
 #: 
 msgid "WebDAV password is required."
@@ -12428,4 +12428,20 @@ msgstr "Error del servidor Vonage. Por favor, inténtelo de nuevo más tarde."
 #: 
 msgid "WebDAV Endpoint URL is required."
 msgstr "La URL del punto de conexión WebDAV es obligatoria."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "¿Está seguro de eliminar permanentemente el registro de esta promesa?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Cancelar y volver a la vista de Familia"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Si elimina este tipo, también eliminará todas las propiedades que lo utilicen y perderá todas las asignaciones de propiedad correspondientes."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Mover Donaciones a la Familia seleccionada"
 

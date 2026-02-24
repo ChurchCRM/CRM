@@ -4553,6 +4553,11 @@ msgstr "కోస్టా రికా"
 
 #. Context: countries
 #: 
+msgid "Côte d’Ivoire"
+msgstr "కోట్ డి'ఐవోయిర్"
+
+#. Context: countries
+#: 
 msgid "Croatia (Hrvatska)"
 msgstr "క్రొయేషియా (Hrvatska)"
 
@@ -6498,24 +6503,352 @@ msgid "Profile"
 msgstr "ప్రొఫైల్"
 
 #: 
+msgid "Sign out"
+msgstr "సైన్ అవుట్"
+
+#: 
+msgid "Sermon Text"
+msgstr "ప్రసంగం టెక్స్ట్"
+
+#: 
+msgid "Change Settings"
+msgstr "సెట్టింగ్‌లను మార్చండి"
+
+#: 
+msgid "Unknown Type"
+msgstr "తెలియని రకం"
+
+#: 
+msgid "PersonID for Cart must be numeric"
+msgstr "కార్ట్ కోసం పర్సన్ ఐడి సంఖ్యాత్మకంగా ఉండాలి"
+
+#: 
+msgid "GroupID for Cart must be numeric"
+msgstr "కార్ట్ కోసం గ్రూప్ ఐడి సంఖ్యాత్మకంగా ఉండాలి"
+
+#: 
+msgid "FamilyID for Cart must be numeric"
+msgstr "కార్ట్ కోసం ఫ్యామిలీ ఐడి సంఖ్యాత్మకంగా ఉండాలి"
+
+#: 
+msgid "Search People"
+msgstr "వ్యక్తులను శోధించండి"
+
+#: 
+msgid "Maximum number of People"
+msgstr "వ్యక్తుల గరిష్ట సంఖ్య"
+
+#: 
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr "తండ్రి ఉన్న ఫీల్డ్, కన్ఫెషన్ అనేది గ్రూప్ రకం వ్యక్తులకు ఉండాలి"
+
+#: 
+msgid "Field where last Confession is stored, must be a date type"
+msgstr "చివరి కన్ఫెషన్ నిల్వ చేయబడిన ఫీల్డ్, తేదీ రకంగా ఉండాలి"
+
+#: 
+msgid "Require that this ChurchCRM Database is accessed over HTTPS"
+msgstr "ఈ చర్చ్ CRM డేటాబేస్ HTTPS ద్వారా యాక్సెస్ చేయబడాలి"
+
+#: 
+msgid "People Setup"
+msgstr "వ్యక్తుల సెటప్"
+
+#: 
+msgid "Church Services"
+msgstr "చర్చి సేవలు"
+
+#: 
+msgid "People Reports"
+msgstr "వ్యక్తుల నివేదికలు"
+
+#: 
+msgid "People Dashboard"
+msgstr "వ్యక్తుల డాష్‌బోర్డ్"
+
+#: 
+msgid "People Functions"
+msgstr "వ్యక్తుల విధులు"
+
+#: 
+msgid "People Directory"
+msgstr "వ్యక్తుల డైరెక్టరీ"
+
+#: 
+msgid "Printable directory of all people, grouped by family where assigned"
+msgstr "అసైన్ చేయబడిన కుటుంబాల ద్వారా గ్రూప్ చేయబడిన అన్ని వ్యక్తుల ప్రింట్ చేయదగిన డైరెక్టరీ"
+
+#: 
+msgid "of People"
+msgstr "వ్యక్తుల"
+
+#: 
 msgid "System Upgrade"
 msgstr "సిస్టమ్ అప్‌గ్రేడ్"
+
+#: 
+msgid "Upgrade Required"
+msgstr "అప్‌గ్రేడ్ అవసరం"
+
+#: 
+msgid "Help & Manual"
+msgstr "సహాయం & మాన్యువల్"
+
+#: 
+msgid "Contributing"
+msgstr "అందించడం"
+
+#: 
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr "రిలేయింగ్ సర్వర్ ద్వారా అందించబడితే SMTP ఎన్‌క్రిప్షన్‌ను స్వయంచాలకంగా ప్రారంభించండి."
+
+#: 
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr "ఉపయోగించడానికి ఎన్‌క్రిప్షన్ సిస్టమ్‌ను సెట్ చేయండి - ssl (deprecated) లేదా tls"
+
+#: 
+msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
+msgstr "డాష్‌బోర్డ్ సర్వీస్ డైనమిక్ అసమకాలిక రిఫ్రెష్ విరామం, డిఫాల్ట్ 60 సెకన్లు"
+
+#: 
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr "ఎంచుకున్న పంక్తుల కోసం డిపాజిట్ స్లిప్‌ను రూపొందించండి (PDF)"
+
+#: 
+msgid "Add All to Cart"
+msgstr "అన్నింటినీ కార్ట్‌కు జోడించండి"
+
+#: 
+msgid "Remove All from Cart"
+msgstr "అన్నింటినీ కార్ట్ నుండి తీసివేయండి"
+
+#: 
+msgid "records(s) successfully deleted from the selected Group."
+msgstr "ఎంచుకున్న గ్రూప్ నుండి రికార్డ్(లు) విజయవంతంగా తొలగించబడ్డాయి."
+
+#: 
+msgid "Not Found"
+msgstr "కనుగొనబడలేదు"
+
+#: 
+msgid "Oops!"
+msgstr "అయ్యో!"
+
+#: 
+msgid "Meanwhile, you may"
+msgstr "ఇంతలో, మీరు"
+
+#: 
+msgid "User must be an Admin"
+msgstr "వినియోగదారు ఒక నిర్వాహకులై ఉండాలి"
+
+#: 
+msgid "No logged in user"
+msgstr "లాగిన్ అయిన వినియోగదారు లేరు"
+
+#: 
+msgid "not found"
+msgstr "కనుగొనబడలేదు"
+
+#: 
+msgid "Deleted from group"
+msgstr "గ్రూప్ నుండి తొలగించబడింది"
+
+#: 
+msgid "Added to group"
+msgstr "గ్రూప్‌కు జోడించబడింది"
+
+#: 
+msgid "We could not find the person(s) you were looking for."
+msgstr "మీరు వెతుకుతున్న వ్యక్తి(లను) మేము కనుగొనలేకపోయాము."
+
+#: 
+msgid "return to People Dashboard"
+msgstr "వ్యక్తుల డాష్‌బోర్డ్‌కు తిరిగి వెళ్ళండి"
+
+#: 
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr "SMTP హోస్ట్ సెటప్ చేయబడలేదు, దయచేసి సెట్టింగ్‌ల పేజీని సందర్శించండి"
+
+#: 
+msgid "Debug Email Connection"
+msgstr "ఇమెయిల్ కనెక్షన్‌ను డీబగ్ చేయండి"
+
+#: 
+msgid "This Family is Inactive"
+msgstr "ఈ కుటుంబం నిష్క్రియంగా ఉంది"
+
+#: 
+msgid "The database has been cleared."
+msgstr "డేటాబేస్ క్లియర్ చేయబడింది."
 
 #: 
 msgid "Anniversaries"
 msgstr "వార్షికోత్సవాలు"
 
 #: 
+msgid "New Family Notification Email Error"
+msgstr "కొత్త కుటుంబ నోటిఫికేషన్ ఇమెయిల్ లోపం"
+
+#: 
+msgid "New Person Notification Email Error"
+msgstr "కొత్త వ్యక్తి నోటిఫికేషన్ ఇమెయిల్ లోపం"
+
+#: 
 msgid "View User"
 msgstr "యూజర్‌ను చూడండి"
+
+#: 
+msgid "Invalid request: Missing calendar id"
+msgstr "చెల్లని అభ్యర్థన: క్యాలెండర్ ID లేదు"
+
+#: 
+msgid "Not Found: Unknown calendar id"
+msgstr "కనుగొనబడలేదు: తెలియని క్యాలెండర్ ID"
+
+#: 
+msgid "not found or user without an email"
+msgstr "కనుగొనబడలేదు లేదా ఇమెయిల్ లేని వినియోగదారు"
+
+#: 
+msgid "UserName not set"
+msgstr "యూజర్‌నేమ్ సెట్ చేయబడలేదు"
+
+#: 
+msgid "Self Registrations"
+msgstr "స్వీయ రిజిస్ట్రేషన్లు"
+
+#: 
+msgid "Public Calendar"
+msgstr "పబ్లిక్ క్యాలెండర్"
+
+#: 
+msgid "Private Calendar"
+msgstr "ప్రైవేట్ క్యాలెండర్"
+
+#: 
+msgid "Username"
+msgstr "యూజర్‌నేమ్"
+
+#: 
+msgid "Are you sure you want to move"
+msgstr "మీరు తరలించాలనుకుంటున్నారని ఖచ్చితంగా అనుకుంటున్నారా"
+
+#: 
+msgid "from"
+msgstr "నుండి"
+
+#: 
+msgid "to"
+msgstr "కు"
+
+#: 
+msgid "Are you sure you want to change the end time for "
+msgstr "మీరు ముగింపు సమయాన్ని మార్చాలనుకుంటున్నారని ఖచ్చితంగా అనుకుంటున్నారా"
+
+#: 
+msgid "Access Token"
+msgstr "యాక్సెస్ టోకెన్"
+
+#: 
+msgid "New Access Token"
+msgstr "కొత్త యాక్సెస్ టోకెన్"
+
+#: 
+msgid "Delete Access Token"
+msgstr "యాక్సెస్ టోకెన్‌ను తొలగించండి"
+
+#: 
+msgid "ICS URL"
+msgstr "ICS URL"
+
+#: 
+msgid "Foreground Color"
+msgstr "ముందు రంగు"
+
+#: 
+msgid "Background Color"
+msgstr "నేపథ్య రంగు"
+
+#: 
+msgid "Delete Calendar"
+msgstr "క్యాలెండర్‌ను తొలగించండి"
+
+#: 
+msgid "Invalid Entry"
+msgstr "చెల్లని ఎంట్రీ"
+
+#: 
+msgid "Calendar Name"
+msgstr "క్యాలెండర్ పేరు"
+
+#: 
+msgid "New Calendar"
+msgstr "కొత్త క్యాలెండర్"
+
+#: 
+msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
+msgstr "bEnableExternalCalendarAPI నిలిపివేయబడింది, కానీ కొన్ని క్యాలెండర్‌లకు యాక్సెస్ టోకెన్‌లు ఉన్నాయి"
+
+#: 
+msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
+msgstr "క్యాలెండర్‌లను షేర్ చేయడానికి, bEnableExternalCalendarAPI సెట్టింగ్ తప్పనిసరిగా ప్రారంభించబడాలి, అదనంగా క్యాలెండర్‌కు నిర్దిష్ట యాక్సెస్ టోకెన్ కలిగి ఉండాలి"
+
+#: 
+msgid "Links"
+msgstr "లింకులు"
+
+#: 
+msgid "Enable Sunday School left menu."
+msgstr "సండే స్కూల్ ఎడమ మెనుని ప్రారంభించండి."
+
+#: 
+msgid "Enable Finance menu"
+msgstr "ఫైనాన్స్ మెనుని ప్రారంభించండి"
+
+#: 
+msgid "Enable Events menu."
+msgstr "ఈవెంట్స్ మెనుని ప్రారంభించండి."
+
+#: 
+msgid "Enable Fundraiser menu."
+msgstr "నిధుల సేకరణ మెనుని ప్రారంభించు."
+
+#: 
+msgid "Enable Email menu."
+msgstr "ఇమెయిల్ మెనుని ప్రారంభించు."
+
+#: 
+msgid "Enabled Features"
+msgstr "ప్రారంభించబడిన ఫీచర్లు"
 
 #: 
 msgid "Validation Error"
 msgstr "ధృవీకరణ లోపం"
 
 #: 
+msgid "Email Functions"
+msgstr "ఇమెయిల్ విధులు"
+
+#: 
 msgid "Debug"
 msgstr "డీబగ్"
+
+#: 
+msgid "Family Custom Fields"
+msgstr "కుటుంబ అనుకూల ఫీల్డ్‌లు"
+
+#: 
+msgid "Person Custom Fields"
+msgstr "వ్యక్తి అనుకూల ఫీల్డ్‌లు"
+
+#: 
+msgid "Donation Funds"
+msgstr "విరాళ నిధులు"
+
+#: 
+msgid "Unable to open file"
+msgstr "ఫైల్‌ను తెరవలేకపోతున్నాను"
 
 #: 
 msgid "Missing calendar access token"
@@ -6911,20 +7244,149 @@ msgid "LastName, FirstName MiddleName"
 msgstr "ఇంటిపేరు, మొదటిపేరు మధ్యపేరు"
 
 #: 
+msgid "Two Factor Status"
+msgstr "రెండు కారకాల స్థితి"
+
+#: 
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr "ఈ వినియోగదారు కోసం 2 కారకాల ప్రామాణీకరణను నిలిపివేయడాన్ని దయచేసి నిర్ధారించండి"
+
+#: 
+msgid "Unsupported Two Factor Authentication Configuration"
+msgstr "మద్దతు లేని రెండు కారకాల ప్రామాణీకరణ కాన్ఫిగరేషన్"
+
+#: 
+msgid "Unable To Begin Two Factor Authentication Enrollment"
+msgstr "రెండు కారకాల ప్రామాణీకరణ నమోదును ప్రారంభించలేకపోతున్నాను"
+
+#: 
+msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
+msgstr "రెండు కారకాల ప్రామాణీకరణకు ChurchCRM నిర్వాహకులు కొన్ని పారామితులను కాన్ఫిగర్ చేయాల్సి ఉంటుంది"
+
+#: 
+msgid "System configuration "
+msgstr "సిస్టమ్ కాన్ఫిగరేషన్"
+
+#: 
+msgid "Must be set to 'true'"
+msgstr "'true' అని సెట్ చేయాలి"
+
+#: 
+msgid "Google Maps API Key used for Geocoding addresses"
+msgstr "చిరునామాలను జియోకోడ్ చేయడానికి ఉపయోగించే Google Maps API కీ"
+
+#: 
+msgid "Send an email notifying users when their account has been deleted"
+msgstr "వారి ఖాతా తొలగించబడినప్పుడు వినియోగదారులకు తెలియజేసే ఇమెయిల్‌ను పంపండి"
+
+#: 
+msgid "Incorrect password supplied for current user"
+msgstr "ప్రస్తుత వినియోగదారు కోసం తప్పు పాస్‌వర్డ్ అందించబడింది"
+
+#: 
+msgid "Your new password must not match your old one."
+msgstr "మీ కొత్త పాస్‌వర్డ్ మీ పాత దానితో సరిపోలకూడదు."
+
+#: 
+msgid "Your new password is too similar to your old one."
+msgstr "మీ కొత్త పాస్‌వర్డ్ మీ పాత దానితో చాలా పోలి ఉంటుంది."
+
+#: 
+msgid "Password reset not available.  Please contact your system administrator"
+msgstr "పాస్‌వర్డ్ రీసెట్ అందుబాటులో లేదు. దయచేసి మీ సిస్టమ్ నిర్వాహకుడిని సంప్రదించండి"
+
+#: 
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr "కొత్త వినియోగదారు పాస్‌వర్డ్‌ను నమోదు చేయండి. నిర్వాహకంగా సెట్ చేయబడిన పాస్‌వర్డ్‌లు పొడవు లేదా సంక్లిష్టత అవసరాలకు లోబడి ఉండవు"
+
+#: 
+msgid "No email passed in"
+msgstr "ఇమెయిల్ పాస్ చేయబడలేదు"
+
+#: 
+msgid "Mailchimp is not active"
+msgstr "Mailchimp చురుకుగా లేదు"
+
+#: 
 msgid "Mailchimp"
 msgstr "Mailchimp"
 
 #: 
+msgid "Lists"
+msgstr "జాబితాలు"
+
+#: 
+msgid "loading"
+msgstr "లోడ్ అవుతోంది"
+
+#: 
+msgid "List not found"
+msgstr "జాబితా కనుగొనబడలేదు"
+
+#: 
+msgid "People not in"
+msgstr "వ్యక్తులు చేరలేదు"
+
+#: 
+msgid "Invalid List id"
+msgstr "చెల్లని జాబితా ID"
+
+#: 
+msgid "Audience not in the ChurchCRM"
+msgstr "ChurchCRMలో ఆడియన్స్ లేదు"
+
+#: 
 msgid "Web Server"
 msgstr "వెబ్ సర్వర్"
+
+#. Context: locales
+#: 
+msgid "Hebrew"
+msgstr "హిబ్రూ"
+
+#: 
+msgid "open rate"
+msgstr "ఓపెన్ రేటు"
 
 #: 
 msgid "Login Info"
 msgstr "లాగిన్ సమాచారం"
 
 #: 
+msgid "Login Count"
+msgstr "లాగిన్ కౌంట్"
+
+#: 
+msgid "Failed Login"
+msgstr "లాగిన్ విఫలమైంది"
+
+#: 
 msgid "Permissions"
 msgstr "అనుమతులు"
+
+#: 
+msgid "Manage Notes"
+msgstr "నోట్స్ నిర్వహించు"
+
+#: 
+msgid "Failed generate a new API Key"
+msgstr "కొత్త API కీని రూపొందించడంలో విఫలమైంది"
+
+#: 
+msgid "Pledge Summary By Family"
+msgstr "కుటుంబం వారీగా విరాళ సారాంశం"
+
+#: 
+msgid "Pledge"
+msgstr "విరాళం"
+
+#: 
+msgid "Paid"
+msgstr "చెల్లించినది"
+
+#: 
+msgid "Owe"
+msgstr "చెల్లించాల్సినది"
 
 #: 
 msgid "Start Date"
@@ -6935,16 +7397,167 @@ msgid "End Date"
 msgstr "ముగింపు తేదీ"
 
 #: 
+msgid "Pinned Calendars"
+msgstr "పిన్ చేయబడిన క్యాలెండర్లు"
+
+#: 
 msgid "This field is required"
 msgstr "ఈ ఫీల్డ్ అవసరం"
+
+#: 
+msgid "Text"
+msgstr "టెక్స్ట్"
 
 #: 
 msgid "Event Description"
 msgstr "ఈవెంట్ వివరణ"
 
 #: 
+msgid "Help translate this project"
+msgstr "ఈ ప్రాజెక్ట్‌ను అనువదించడంలో సహాయం చేయండి"
+
+#. Context: locales
+#: 
+msgid "Afrikaans"
+msgstr "ఆఫ్రికాన్స్"
+
+#: 
+msgid " has a type mismatch"
+msgstr " ఒక రకం లోపం ఉంది"
+
+#: 
+msgid "Loading"
+msgstr "లోడ్ అవుతోంది"
+
+#: 
+msgid "Family Property Unassignment"
+msgstr "కుటుంబ ఆస్తి తొలగింపు"
+
+#: 
+msgid "Do you want to remove"
+msgstr "మీరు తీసివేయాలనుకుంటున్నారా"
+
+#: 
+msgid "Today's Birthdays"
+msgstr "ఈరోజు పుట్టినరోజులు"
+
+#: 
+msgid "Today's Wedding Anniversaries"
+msgstr "ఈరోజు వివాహ వార్షికోత్సవాలు"
+
+#: 
+msgid "Api Key"
+msgstr "API కీ"
+
+#: 
+msgid "Regen API Key"
+msgstr "API కీని పునరుత్పత్తి చేయండి"
+
+#: 
+msgid "View Family Page"
+msgstr "కుటుంబ పేజీని వీక్షించండి"
+
+#: 
+msgid "View Person Page"
+msgstr "వ్యక్తి పేజీని వీక్షించండి"
+
+#: 
 msgid "Verify"
 msgstr "ధృవీకరించండి"
+
+#: 
+msgid "Family has no emails to use"
+msgstr "ఉపయోగించడానికి కుటుంబానికి ఇమెయిల్‌లు లేవు"
+
+#: 
+msgid "Boxed Layout"
+msgstr "బాక్స్డ్ లేఅవుట్"
+
+#: 
+msgid "Activate the boxed layout"
+msgstr "బాక్స్డ్ లేఅవుట్‌ను సక్రియం చేయండి"
+
+#: 
+msgid "Toggle Sidebar"
+msgstr "సైడ్‌బార్‌ను టోగుల్ చేయండి"
+
+#: 
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr "ఎడమ సైడ్‌బార్ స్థితిని టోగుల్ చేయండి (తెరవండి లేదా కుదించండి)"
+
+#: 
+msgid "Tables Settings"
+msgstr "టేబుల్స్ సెట్టింగులు"
+
+#: 
+msgid "Page length"
+msgstr "పేజీ పొడవు"
+
+#: 
+msgid "Change the initial page length (number of rows per page)"
+msgstr "ప్రారంభ పేజీ పొడవును మార్చండి (పేజీకి అడ్డు వరుసల సంఖ్య)"
+
+#: 
+msgid "User Interface"
+msgstr "వినియోగదారు ఇంటర్‌ఫేస్"
+
+#: 
+msgid "Locale"
+msgstr "స్థానికం"
+
+#: 
+msgid "Override system locale"
+msgstr "సిస్టమ్ స్థానికాన్ని భర్తీ చేయండి"
+
+#: 
+msgid "Deleted"
+msgstr "తొలగించబడింది"
+
+#: 
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr "చెల్లని పుట్టిన తేదీ: పుట్టిన నెల లేదా రోజు లేదు."
+
+#: 
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr "చెల్లని పుట్టిన తేదీ: పుట్టిన నెల మరియు రోజు లేదు."
+
+#: 
+msgid "System"
+msgstr "సిస్టమ్"
+
+#. Context: locales
+#: 
+msgid "Amharic - Ethiopia"
+msgstr "అమ్హారిక్ - ఇథియోపియా"
+
+#. Context: locales
+#: 
+msgid "Czech"
+msgstr "చెక్"
+
+#. Context: locales
+#: 
+msgid "Finnish"
+msgstr "ఫిన్నిష్"
+
+#. Context: locales
+#: 
+msgid "Greek"
+msgstr "గ్రీక్"
+
+#. Context: locales
+#: 
+msgid "Turkish"
+msgstr "టర్కిష్"
+
+#. Context: locales
+#: 
+msgid "Ukrainian"
+msgstr "ఉక్రేనియన్"
+
+#: 
+msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
+msgstr "\"Submit to GitHub\" క్లిక్ చేసినప్పుడు, మీ సిస్టమ్ సమాచారం ముందే నింపబడిన GitHub సమస్యల పేజీకి మీరు దారి మళ్లించబడతారు."
 
 #: 
 msgid "Submit to GitHub"
@@ -7361,48 +7974,608 @@ msgid "Failed to update group. Please try again."
 msgstr "గ్రూప్‌ను అప్‌డేట్ చేయడంలో విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
 
 #: 
+msgid "Failed to update properties. Please try again."
+msgstr "గుణాలను నవీకరించడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to update role name. Please try again."
+msgstr "పాత్ర పేరు నవీకరించడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Leave blank to keep existing password"
+msgstr "ఇప్పటికే ఉన్న పాస్‌వర్డ్‌ను ఉంచడానికి ఖాళీగా వదలండి"
+
+#: 
+msgid "Please enter a group name."
+msgstr "దయచేసి గ్రూప్ పేరును నమోదు చేయండి."
+
+#: 
+msgid "Role added successfully."
+msgstr "పాత్ర విజయవంతంగా జోడించబడింది."
+
+#: 
+msgid "Role deleted successfully."
+msgstr "పాత్ర విజయవంతంగా తొలగించబడింది."
+
+#: 
+msgid "Role name updated."
+msgstr "పాత్ర పేరు నవీకరించబడింది."
+
+#: 
+msgid "View Group"
+msgstr "గ్రూప్‌ను వీక్షించండి"
+
+#: 
+msgid "Events Today"
+msgstr "ఈరోజు కార్యక్రమాలు"
+
+#: 
+msgid "Sunday School Overview"
+msgstr "సండే స్కూల్ అవలోకనం"
+
+#: 
+msgid "Add Family Member"
+msgstr "కుటుంబ సభ్యుడిని జోడించండి"
+
+#: 
+msgid "Address is required"
+msgstr "చిరునామా అవసరం"
+
+#: 
+msgid "City is required"
+msgstr "నగరం అవసరం"
+
+#: 
+msgid "Database server port is required (e.g., 3306)"
+msgstr "డేటాబేస్ సర్వర్ పోర్ట్ అవసరం (ఉదా., 3306)"
+
+#: 
+msgid "Database username is required"
+msgstr "డేటాబేస్ వినియోగదారు పేరు అవసరం"
+
+#: 
 msgid "Email Address"
 msgstr "ఇమెయిల్ చిరునామా"
+
+#: 
+msgid "Email address"
+msgstr "ఇమెయిల్ చిరునామా"
+
+#: 
+msgid "Enter family name"
+msgstr "కుటుంబ పేరు నమోదు చేయండి"
 
 #: 
 msgid "Family Information"
 msgstr "కుటుంబ సమాచారం"
 
 #: 
+msgid "Family name is required"
+msgstr "కుటుంబ పేరు అవసరం"
+
+#: 
+msgid "Family name must be at least 2 characters"
+msgstr "కుటుంబ పేరు కనీసం 2 అక్షరాలు ఉండాలి"
+
+#: 
+msgid "First name"
+msgstr "మొదటి పేరు"
+
+#: 
+msgid "First name is required"
+msgstr "మొదటి పేరు అవసరం"
+
+#: 
+msgid "First name must be at least 2 characters"
+msgstr "మొదటి పేరు కనీసం 2 అక్షరాలు ఉండాలి"
+
+#: 
+msgid "Home phone is required"
+msgstr "ఇంటి ఫోన్ అవసరం"
+
+#: 
+msgid "Home phone number"
+msgstr "ఇంటి ఫోన్ నంబర్"
+
+#: 
+msgid "Invalid format"
+msgstr "తప్పు ఫార్మాట్"
+
+#: 
+msgid "Join our community by registering your family"
+msgstr "మీ కుటుంబాన్ని నమోదు చేసుకోవడం ద్వారా మా సంఘంలో చేరండి"
+
+#: 
+msgid "Last name"
+msgstr "చివరి పేరు"
+
+#: 
+msgid "Last name is required"
+msgstr "చివరి పేరు అవసరం"
+
+#: 
+msgid "Last name must be at least 2 characters"
+msgstr "చివరి పేరు కనీసం 2 అక్షరాలు ఉండాలి"
+
+#: 
+msgid "Maximum length is"
+msgstr "గరిష్ట పొడవు"
+
+#: 
+msgid "Minimum length is"
+msgstr "కనీస పొడవు"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr "http:// లేదా https:// తో ప్రారంభమయ్యే చెల్లుబాటు అయ్యే URL అయి ఉండాలి"
+
+#: 
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr "http:// లేదా https:// తో ప్రారంభమయ్యే చెల్లుబాటు అయ్యే URL అయి ఉండాలి (ఉదా., http://localhost లేదా https://domain.com)"
+
+#: 
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr "చెల్లుబాటు అయ్యే పోర్ట్ నంబర్ అయి ఉండాలి (ఉదా., 3306)"
+
+#: 
+msgid "Next Member"
+msgstr "తదుపరి సభ్యుడు"
+
+#: 
+msgid "Passwords do not match"
+msgstr "పాస్‌వర్డ్‌లు సరిపోలడం లేదు"
+
+#: 
+msgid "Phone Type"
+msgstr "ఫోన్ రకం"
+
+#: 
+msgid "Phone number"
+msgstr "ఫోన్ నంబర్"
+
+#: 
+msgid "Please add at least one family member."
+msgstr "దయచేసి కనీసం ఒక కుటుంబ సభ్యుడిని జోడించండి."
+
+#: 
+msgid "Please correct the validation errors before continuing."
+msgstr "కొనసాగడానికి ముందు ధ్రువీకరణ దోషాలను సరిచేయండి."
+
+#: 
+msgid "Please enter a valid URL"
+msgstr "దయచేసి చెల్లుబాటు అయ్యే URL ను నమోదు చేయండి"
+
+#: 
 msgid "Please enter a valid email address"
 msgstr "దయచేసి చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను నమోదు చేయండి"
+
+#: 
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr "దయచేసి చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను నమోదు చేయండి (ఉదా., name@example.com)"
+
+#: 
+msgid "Please enter a valid number"
+msgstr "దయచేసి చెల్లుబాటు అయ్యే సంఖ్యను నమోదు చేయండి"
 
 #: 
 msgid "Please enter a valid phone number"
 msgstr "దయచేసి చెల్లుబాటు అయ్యే ఫోన్ నంబర్‌ను నమోదు చేయండి"
 
 #: 
+msgid "Please fill in all required fields correctly."
+msgstr "దయచేసి అన్ని అవసరమైన ఫీల్డ్‌లను సరిగ్గా పూరించండి."
+
+#: 
+msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr "దయచేసి సమర్పించే ముందు మొత్తం సమాచారాన్ని జాగ్రత్తగా సమీక్షించండి. అవసరమైతే మార్పులు చేయడానికి మీరు వెనక్కి వెళ్ళవచ్చు."
+
+#: 
 msgid "Previous"
 msgstr "మునుపటి"
+
+#: 
+msgid "Registration Error"
+msgstr "నమోదు లోపం"
+
+#: 
+msgid "Review & Submit"
+msgstr "సమీక్ష & సమర్పించండి"
+
+#: 
+msgid "Role in Family"
+msgstr "కుటుంబంలో పాత్ర"
+
+#: 
+msgid "Select date"
+msgstr "తేదీని ఎంచుకోండి"
+
+#: 
+msgid "Street address"
+msgstr "వీధి చిరునామా"
+
+#: 
+msgid "Submit Registration"
+msgstr "నమోదును సమర్పించండి"
+
+#: 
+msgid "Zip code is required"
+msgstr "జిప్ కోడ్ అవసరం"
+
+#: 
+msgid "A new password has been generated and sent to your email address."
+msgstr "కొత్త పాస్‌వర్డ్ జనరేట్ చేయబడింది మరియు మీ ఇమెయిల్ చిరునామాకు పంపబడింది."
+
+#: 
+msgid "A new version of ChurchCRM is available for installation."
+msgstr "ChurchCRM యొక్క కొత్త వెర్షన్ ఇన్‌స్టాల్ చేయడానికి అందుబాటులో ఉంది."
+
+#: 
+msgid "Actual Hash"
+msgstr "వాస్తవ హాష్"
+
+#: 
+msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
+msgstr "అన్ని ముందస్తు-అప్‌గ్రేడ్ తనిఖీలు ఉత్తీర్ణమయ్యాయి. మీరు అప్‌గ్రేడ్‌తో కొనసాగవచ్చు."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "ముందస్తు-రిలీజ్ అప్‌గ్రేడ్‌లను అనుమతించండి"
+
+#: 
+msgid "Apply Update Now"
+msgstr "ఇప్పుడే అప్‌డేట్‌ను వర్తింపజేయండి"
+
+#: 
+msgid "Applying System Update..."
+msgstr "సిస్టమ్ అప్‌డేట్‌ను వర్తింపజేస్తోంది..."
+
+#: 
+msgid "Back to Login"
+msgstr "లాగిన్‌కు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Back to login"
+msgstr "లాగిన్‌కు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Backup Skipped"
+msgstr "బ్యాకప్ దాటవేయబడింది"
+
+#: 
+msgid "Check GitHub for the latest release information"
+msgstr "తాజా విడుదల సమాచారం కోసం GitHub ను తనిఖీ చేయండి"
+
+#: 
+msgid "Complete"
+msgstr "పూర్తయింది"
+
+#: 
+msgid "Continue to Backup"
+msgstr "బ్యాకప్‌కు కొనసాగండి"
+
+#: 
+msgid "Continue to Download & Apply"
+msgstr "డౌన్‌లోడ్ & వర్తింపజేయడానికి కొనసాగండి"
+
+#: 
+msgid "Create Backup"
+msgstr "బ్యాకప్‌ను సృష్టించండి"
+
+#: 
+msgid "Create a backup of your database before applying the update."
+msgstr "అప్‌డేట్‌ను వర్తింపజేయడానికి ముందు మీ డేటాబేస్ యొక్క బ్యాకప్‌ను సృష్టించండి."
+
+#: 
+msgid "Current Version:"
+msgstr "ప్రస్తుత వెర్షన్:"
+
+#: 
+msgid "Database Backup"
+msgstr "డేటాబేస్ బ్యాకప్"
+
+#: 
+msgid "Download & Apply"
+msgstr "డౌన్‌లోడ్ & వర్తింపజేయండి"
+
+#: 
+msgid "Download and Apply System Update"
+msgstr "సిస్టమ్ అప్‌డేట్‌ను డౌన్‌లోడ్ చేసి, వర్తింపజేయండి"
+
+#: 
+msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgstr "తాజా విడుదలలను డౌన్‌లోడ్ చేసి, మీ ChurchCRM ఇన్‌స్టాలేషన్‌కు వర్తింపజేయండి."
+
+#: 
+msgid "Downloaded"
+msgstr "డౌన్‌లోడ్ చేయబడింది"
+
+#: 
+msgid "Downloading latest release from GitHub..."
+msgstr "GitHub నుండి తాజా విడుదలను డౌన్‌లోడ్ చేస్తోంది..."
+
+#: 
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr "మీ లాగిన్ పేరును నమోదు చేయండి మరియు మీ పాస్‌వర్డ్‌ను రీసెట్ చేయడానికి మేము మీకు లింక్‌ను ఇమెయిల్ చేస్తాము."
 
 #: 
 msgid "Expected Hash"
 msgstr "ఊహించిన హాష్"
 
 #: 
+msgid "Failed to create backup."
+msgstr "బ్యాకప్ సృష్టించడంలో విఫలమైంది."
+
+#: 
+msgid "Failed to download update package."
+msgstr "అప్‌డేట్ ప్యాకేజీని డౌన్‌లోడ్ చేయడంలో విఫలమైంది."
+
+#: 
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr "GitHub నుండి అప్‌గ్రేడ్ సమాచారాన్ని రిఫ్రెష్ చేయడంలో విఫలమైంది."
+
+#: 
+msgid "Failed to refresh upgrade information. Please try again."
+msgstr "అప్‌గ్రేడ్ సమాచారాన్ని రిఫ్రెష్ చేయడంలో విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to save setting. Please try again."
+msgstr "సెట్టింగ్‌ను సేవ్ చేయడంలో విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "File Name"
+msgstr "ఫైల్ పేరు"
+
+#: 
+msgid "Files Missing"
+msgstr "ఫైల్స్ మిస్సింగ్"
+
+#: 
+msgid "Files Modified"
+msgstr "ఫైల్స్ మార్చబడ్డాయి"
+
+#: 
+msgid "Go to Login"
+msgstr "లాగిన్ కు వెళ్ళండి"
+
+#: 
+msgid "I Understand - Continue"
+msgstr "నాకు అర్థమైంది - కొనసాగించండి"
+
+#: 
+msgid "Language updated to"
+msgstr "భాష దీనికి నవీకరించబడింది"
+
+#: 
+msgid "Login Name is required"
+msgstr "లాగిన్ పేరు అవసరం"
+
+#: 
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr "మీరు ఇమెయిల్ అందుకున్న తర్వాత, మీరు మీ తాత్కాలిక పాస్‌వర్డ్‌తో లాగిన్ అవ్వవచ్చు మరియు మీకు నచ్చిన దానికి మార్చవచ్చు."
+
+#: 
+msgid "Password Reset Error"
+msgstr "పాస్‌వర్డ్ రీసెట్ లోపం"
+
+#: 
+msgid "Password Reset Successful"
+msgstr "పాస్‌వర్డ్ రీసెట్ విజయవంతమైంది"
+
+#: 
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr "దయచేసి మీ తాత్కాలిక పాస్‌వర్డ్ కోసం మీ ఇమెయిల్ (స్పామ్/జంక్ ఫోల్డర్‌తో సహా) తనిఖీ చేయండి."
+
+#: 
+msgid "Please do not close this window or refresh the page."
+msgstr "దయచేసి ఈ విండోను మూసివేయవద్దు లేదా పేజీని రిఫ్రెష్ చేయవద్దు."
+
+#: 
+msgid "Pre-Upgrade Tasks Complete"
+msgstr "ప్రీ-అప్‌గ్రేడ్ పనులు పూర్తయ్యాయి"
+
+#: 
+msgid "Pre-Upgrade Warnings"
+msgstr "ప్రీ-అప్‌గ్రేడ్ హెచ్చరికలు"
+
+#: 
+msgid "Refresh from GitHub"
+msgstr "GitHub నుండి రిఫ్రెష్ చేయండి"
+
+#: 
+msgid "Release Notes:"
+msgstr "విడుదల గమనికలు:"
+
+#: 
+msgid "Request Password Reset"
+msgstr "పాస్‌వర్డ్ రీసెట్ అభ్యర్థించండి"
+
+#: 
+msgid "Retry Download"
+msgstr "డౌన్‌లోడ్‌ను మళ్ళీ ప్రయత్నించండి"
+
+#: 
+msgid "SHA1 Hash:"
+msgstr "SHA1 హాష్:"
+
+#: 
+msgid "Send Reset Email"
+msgstr "రీసెట్ ఇమెయిల్‌ను పంపండి"
+
+#: 
+msgid "Setting saved. Reloading page..."
+msgstr "సెట్టింగ్ సేవ్ చేయబడింది. పేజీ రీలోడ్ అవుతోంది..."
+
+#: 
+msgid "Setting updated successfully"
+msgstr "సెట్టింగ్ విజయవంతంగా నవీకరించబడింది"
+
+#: 
+msgid "Skip Backup"
+msgstr "బ్యాకప్‌ను దాటవేయి"
+
+#: 
+msgid "System Up to Date"
+msgstr "సిస్టమ్ అప్‌డేట్ చేయబడింది"
+
+#: 
+msgid "System Upgrade Wizard"
+msgstr "సిస్టమ్ అప్‌గ్రేడ్ విజార్డ్"
+
+#: 
+msgid "System upgrade completed successfully!"
+msgstr "సిస్టమ్ అప్‌గ్రేడ్ విజయవంతంగా పూర్తయింది!"
+
+#: 
+msgid "This may take several minutes."
+msgstr "దీనికి చాలా నిమిషాలు పట్టవచ్చు."
+
+#: 
+msgid "Update Available!"
+msgstr "అప్‌డేట్ అందుబాటులో ఉంది!"
+
+#: 
+msgid "Update Package Details"
+msgstr "అప్‌డేట్ ప్యాకేజీ వివరాలు"
+
+#: 
+msgid "Update package downloaded successfully."
+msgstr "అప్‌డేట్ ప్యాకేజీ విజయవంతంగా డౌన్‌లోడ్ చేయబడింది."
+
+#: 
+msgid "Upgrade Complete!"
+msgstr "అప్‌గ్రేడ్ పూర్తయింది!"
+
+#: 
+msgid "Upgrade failed."
+msgstr "అప్‌గ్రేడ్ విఫలమైంది."
+
+#: 
+msgid "Upgrade failed. Please check the logs."
+msgstr "అప్‌గ్రేడ్ విఫలమైంది. దయచేసి లాగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Upgrade information refreshed successfully"
+msgstr "అప్‌గ్రేడ్ సమాచారం విజయవంతంగా రిఫ్రెష్ చేయబడింది"
+
+#: 
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr "అప్‌గ్రేడ్ సమాచారం రిఫ్రెష్ చేయబడింది. పేజీ రీలోడ్ అవుతోంది..."
+
+#: 
 msgid "Version Information"
 msgstr "వెర్షన్ సమాచారం"
+
+#: 
+msgid "Warnings"
+msgstr "హెచ్చరికలు"
+
+#: 
+msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
+msgstr "మీ పాస్‌వర్డ్ రీసెట్ అభ్యర్థనను మేము ప్రాసెస్ చేయలేకపోయాము. దయచేసి కొత్త పాస్‌వర్డ్ రీసెట్ లింక్‌ను అభ్యర్థించడానికి ప్రయత్నించండి."
+
+#: 
+msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
+msgstr "మీరు బ్యాకప్‌ను దాటవేయడానికి ఎంచుకున్నారు. అప్‌గ్రేడ్‌తో ముందుకు సాగడానికి ముందు బ్యాకప్ కలిగి ఉండాలని గట్టిగా సిఫార్సు చేయబడింది."
+
+#: 
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr "మీ ChurchCRM ఇన్‌స్టాలేషన్ విజయవంతంగా అప్‌గ్రేడ్ చేయబడింది."
+
+#: 
+msgid "Your ChurchCRM installation is running the latest version."
+msgstr "మీ ChurchCRM ఇన్‌స్టాలేషన్ తాజా వెర్షన్‌లో నడుస్తోంది."
+
+#: 
+msgid "2-50 characters"
+msgstr "2-50 అక్షరాలు"
+
+#: 
+msgid "Dear Friend"
+msgstr "ప్రియమైన స్నేహితుడా"
 
 #: 
 msgid "No Data Found"
 msgstr "డేటా కనుగొనబడలేదు"
 
 #: 
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr "మునుపటి నివేదిక నుండి ఎటువంటి రికార్డులు తిరిగి రాలేదు. దయచేసి మీ ఫిల్టర్‌లను లేదా తేదీ పరిధిని సర్దుబాటు చేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Please enter a menu name (2-50 characters)"
+msgstr "దయచేసి మెనూ పేరును నమోదు చేయండి (2-50 అక్షరాలు)"
+
+#: 
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr "దయచేసి http:// లేదా https:// తో ప్రారంభమయ్యే చెల్లుబాటు అయ్యే URL ను నమోదు చేయండి"
+
+#: 
+msgid "All system file signatures match the expected values."
+msgstr "అన్ని సిస్టమ్ ఫైల్ సంతకాలు ఊహించిన విలువలతో సరిపోలుతాయి."
+
+#: 
+msgid "Files with issues"
+msgstr "సమస్యలతో ఉన్న ఫైల్స్"
+
+#: 
+msgid "Integrity check failed"
+msgstr "సంతకం తనిఖీ విఫలమైంది"
+
+#: 
 msgid "Integrity check passed"
 msgstr "ఇంటెగ్రిటీ తనిఖీ ఆమోదించబడింది"
+
+#: 
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr "సంతకం నిర్వచన ఫైల్ ఉంది కానీ చదవడానికి వీలు లేదు. ఫైల్ అనుమతులను తనిఖీ చేయండి."
+
+#: 
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr "సంతకం నిర్వచన ఫైల్ %s వద్ద లేదు. సంతకాలను పునరుత్పత్తి చేయడానికి ప్యాకేజింగ్ టాస్క్‌ను అమలు చేయండి లేదా అధికారిక విడుదలను అమలు చేయండి."
+
+#: 
+msgid "Unable to contact integrity endpoint. Check web server error logs."
+msgstr "సంతకం ఎండ్‌పాయింట్‌ను సంప్రదించలేకపోయాము. వెబ్ సర్వర్ లోపాల లాగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Add any additional notes about this deposit"
+msgstr "ఈ డిపాజిట్ గురించి ఏదైనా అదనపు గమనికలను జోడించండి"
+
+#: 
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr "మొత్తం అనుమతించబడిన గరిష్ట విలువను (999999.99) మించిపోయింది."
+
+#: 
+msgid "Checks"
+msgstr "చెక్కులు"
 
 #: 
 msgid "Clear Filters"
 msgstr "ఫిల్టర్‌లను క్లియర్ చేయండి"
 
 #: 
+msgid "Click a bar to filter payments"
+msgstr "చెల్లింపులను ఫిల్టర్ చేయడానికి ఒక బార్‌పై క్లిక్ చేయండి"
+
+#: 
 msgid "Delete Selected"
 msgstr "ఎంచుకున్నవాటిని తొలగించండి"
+
+#: 
+msgid "Deposit saved successfully"
+msgstr "డిపాజిట్ విజయవంతంగా సేవ్ చేయబడింది"
+
+#: 
+msgid "Error deleting payments"
+msgstr "చెల్లింపులను తొలగించడంలో లోపం"
+
+#: 
+msgid "Error loading payments"
+msgstr "చెల్లింపులను లోడ్ చేయడంలో లోపం"
+
+#: 
+msgid "Error saving deposit"
+msgstr "డిపాజిట్ సేవ్ చేయడంలో లోపం"
 
 #: 
 msgid "Funds"
@@ -7413,24 +8586,212 @@ msgid "Generate Report"
 msgstr "రిపోర్ట్ జనరేట్ చేయండి"
 
 #: 
+msgid "No Cash"
+msgstr "నగదు లేదు"
+
+#: 
+msgid "No Checks"
+msgstr "చెక్కులు లేవు"
+
+#: 
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr "ఇంకా చెల్లింపులు లేవు. ప్రారంభించడానికి \"చెల్లింపును జోడించు\" పై క్లిక్ చేయండి."
+
+#: 
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr "నాన్-డిడక్టబుల్ మొత్తం అనుమతించబడిన గరిష్ట విలువను (999999.99) మించిపోయింది."
+
+#: 
 msgid "Payments"
 msgstr "చెల్లింపులు"
+
+#: 
+msgid "Payments deleted successfully"
+msgstr "చెల్లింపులు విజయవంతంగా తొలగించబడ్డాయి"
+
+#: 
+msgid "Please select a date"
+msgstr "దయచేసి తేదీని ఎంచుకోండి"
+
+#: 
+msgid "Please select rows to delete"
+msgstr "దయచేసి తొలగించడానికి వరుసలను ఎంచుకోండి"
+
+#: 
+msgid "Saving..."
+msgstr "సేవ్ చేస్తోంది..."
 
 #: 
 msgid "This action cannot be undone."
 msgstr "ఈ చర్యను అన్‌డు చేయలేరు."
 
 #: 
+msgid "Total Deposit"
+msgstr "మొత్తం డిపాజిట్"
+
+#: 
 msgid "Total Payments"
 msgstr "మొత్తం చెల్లింపులు"
+
+#: 
+msgid "payments(s)?"
+msgstr "చెల్లింపు(లు)?"
+
+#: 
+msgid "All system files have passed integrity validation."
+msgstr "అన్ని సిస్టమ్ ఫైళ్లు సమగ్రత ధ్రువీకరణను విజయవంతంగా పూర్తి చేశాయి."
+
+#: 
+msgid "Base URL"
+msgstr "బేస్ URL"
+
+#: 
+msgid "ChurchCRM Installation"
+msgstr "ChurchCRM సంస్థాపన"
+
+#: 
+msgid "Copy"
+msgstr "కాపీ"
+
+#: 
+msgid "DSN"
+msgstr "DSN"
+
+#: 
+msgid "Database Server"
+msgstr "డేటాబేస్ సర్వర్"
+
+#: 
+msgid "Debug Info"
+msgstr "డీబగ్ సమాచారం"
+
+#: 
+msgid "Document Root"
+msgstr "డాక్యుమెంట్ రూట్"
 
 #: 
 msgid "Email Configuration"
 msgstr "ఇమెయిల్ కాన్ఫిగరేషన్"
 
 #: 
+msgid "Email Debug Info"
+msgstr "ఇమెయిల్ డీబగ్ సమాచారం"
+
+#: 
+msgid "Filesystem Permissions"
+msgstr "ఫైల్ సిస్టమ్ అనుమతులు"
+
+#: 
+msgid "Hostname"
+msgstr "హోస్ట్‌నేమ్"
+
+#: 
+msgid "IP Address"
+msgstr "IP చిరునామా"
+
+#: 
+msgid "Images Root"
+msgstr "చిత్రాల రూట్"
+
+#: 
+msgid "Import Demo Data"
+msgstr "డెమో డేటా దిగుమతి"
+
+#: 
+msgid "Include events and calendars"
+msgstr "ఈవెంట్‌లు మరియు క్యాలెండర్‌లను చేర్చండి"
+
+#: 
+msgid "Include financial data (donation funds, pledges)"
+msgstr "ఆర్థిక డేటాను చేర్చండి (విరాళ నిధులు, వాగ్దానాలు)"
+
+#: 
+msgid "Invalid API key"
+msgstr "చెల్లని API కీ"
+
+#: 
+msgid "Not configured"
+msgstr "కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "PHP & Server Requirements"
+msgstr "PHP & సర్వర్ అవసరాలు"
+
+#: 
+msgid "PHP Configuration"
+msgstr "PHP కాన్ఫిగరేషన్"
+
+#: 
+msgid "Platform"
+msgstr "ప్లాట్‌ఫారమ్"
+
+#: 
+msgid "Root Path"
+msgstr "రూట్ పాత్"
+
+#: 
+msgid "SMTP Host"
+msgstr "SMTP హోస్ట్"
+
+#: 
 msgid "Server Information"
 msgstr "సర్వర్ సమాచారం"
+
+#: 
+msgid "Software"
+msgstr "సాఫ్ట్‌వేర్"
+
+#: 
+msgid "System & Configuration"
+msgstr "సిస్టమ్ & కాన్ఫిగరేషన్"
+
+#: 
+msgid "Tip:"
+msgstr "చిట్కా:"
+
+#: 
+msgid "Valid Settings"
+msgstr "చెల్లుబాటు అయ్యే సెట్టింగులు"
+
+#: 
+msgid "An error occurred during demo data import"
+msgstr "డెమో డేటా దిగుమతి సమయంలో లోపం సంభవించింది"
+
+#: 
+msgid "Demo data imported successfully"
+msgstr "డెమో డేటా విజయవంతంగా దిగుమతి చేయబడింది"
+
+#: 
+msgid "Include Sunday School classes and enrollments"
+msgstr "సండే స్కూల్ తరగతులు మరియు నమోదులను చేర్చండి"
+
+#: 
+msgid "Need to remove this data later?"
+msgstr "ఈ డేటాను తరువాత తొలగించాలా?"
+
+#: 
+msgid "No Payments on this Deposit"
+msgstr "ఈ డిపాజిట్‌పై చెల్లింపులు లేవు"
+
+#: 
+msgid "No payments on this deposit"
+msgstr "ఈ డిపాజిట్‌పై చెల్లింపులు లేవు"
+
+#: 
+msgid "Optional Data to Include"
+msgstr "చేర్చడానికి ఐచ్ఛిక డేటా"
+
+#: 
+msgid "Skipped"
+msgstr "వదిలివేయబడింది"
+
+#: 
+msgid "Unknown error"
+msgstr "తెలియని లోపం"
+
+#: 
+msgid "deposit(s) with no payments"
+msgstr "చెల్లింపులు లేని డిపాజిట్(లు)"
 
 #: 
 msgid "%d event in %s"
@@ -7853,28 +9214,132 @@ msgid "Deleted %d files, %d failed"
 msgstr "%d ఫైల్‌లు తొలగించబడ్డాయి, %d విఫలమయ్యాయి"
 
 #: 
+msgid "Deletion Results"
+msgstr "తొలగింపు ఫలితాలు"
+
+#: 
+msgid "Drag and drop your backup file here"
+msgstr "మీ బ్యాకప్ ఫైల్‌ను ఇక్కడ లాగి వదలండి"
+
+#: 
 msgid "Edit records permission"
 msgstr "రికార్డ్‌లు ఎడిట్ చేయి అనుమతి"
+
+#: 
+msgid "Encryption"
+msgstr "ఎన్‌క్రిప్షన్"
+
+#: 
+msgid "Exports database structure and data. Smaller file size."
+msgstr "డేటాబేస్ స్ట్రక్చర్ మరియు డేటాను ఎగుమతి చేస్తుంది. చిన్న ఫైల్ పరిమాణం."
 
 #: 
 msgid "File Integrity Check"
 msgstr "ఫైల్ ఇంటెగ్రిటీ తనిఖీ"
 
 #: 
+msgid "File Integrity Issues Detected"
+msgstr "ఫైల్ సమగ్రత సమస్యలు కనుగొనబడ్డాయి"
+
+#: 
+msgid "File Path"
+msgstr "ఫైల్ పాత్"
+
+#: 
+msgid "File signatures match the official release."
+msgstr "ఫైల్ సంతకాలు అధికారిక విడుదలకి సరిపోతాయి."
+
+#: 
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr "ఫైళ్లు మార్చబడవచ్చు లేదా తప్పిపోవచ్చు. అధికారిక విడుదల నుండి మళ్లీ అమలు చేయడాన్ని పరిగణించండి."
+
+#: 
+msgid "Finance access"
+msgstr "ఫైనాన్స్ యాక్సెస్"
+
+#: 
 msgid "Force Re-install"
 msgstr "ఫోర్స్ రీ-ఇన్‌స్టాల్"
+
+#: 
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr "ఫోర్స్ రీ-ఇన్‌స్టాలేషన్ ప్రారంభించబడింది. దయచేసి అమలు చేయడానికి ముందు మీ డేటాబేస్‌ను బ్యాకప్ చేయండి."
 
 #: 
 msgid "Full Backup"
 msgstr "పూర్తి బ్యాకప్"
 
 #: 
+msgid "Generate & Download Backup"
+msgstr "బ్యాకప్ జనరేట్ & డౌన్‌లోడ్ చేయండి"
+
+#: 
+msgid "Go to Dashboard"
+msgstr "డాష్‌బోర్డ్‌కు వెళ్ళండి"
+
+#: 
+msgid "Group management access"
+msgstr "గ్రూప్ నిర్వహణ యాక్సెస్"
+
+#: 
+msgid "If you need access to this feature, please contact your church administrator."
+msgstr "మీకు ఈ ఫీచర్‌కి యాక్సెస్ అవసరమైతే, దయచేసి మీ చర్చి నిర్వాహకుడిని సంప్రదించండి."
+
+#: 
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr "మీరు ChurchInfo లేదా ChurchCRM యొక్క మునుపటి వెర్షన్ నుండి బ్యాకప్‌ను అప్‌లోడ్ చేస్తే, అది ప్రస్తుత డేటాబేస్ స్కీమాకి స్వయంచాలకంగా అప్‌గ్రేడ్ చేయబడుతుంది."
+
+#: 
+msgid "Important Warning"
+msgstr "ముఖ్యమైన హెచ్చరిక"
+
+#: 
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr "డేటాబేస్ మరియు అప్‌లోడ్ చేసిన అన్ని ఫోటోలను కలిగి ఉంటుంది. పెద్ద ఫైల్ పరిమాణం."
+
+#: 
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr "ఒక కాపీని ఫైర్-ప్రూఫ్ సేఫ్‌లో ఆన్-సైట్ మరియు మరొకటి ఆఫ్‌-సైట్‌లో ఉంచండి."
+
+#: 
+msgid "Latest GitHub Version:"
+msgstr "తాజా GitHub వెర్షన్:"
+
+#: 
+msgid "Loading..."
+msgstr "లోడ్ అవుతోంది..."
+
+#: 
+msgid "Make a backup at least once a week unless you have automated backups."
+msgstr "మీరు ఆటోమేటెడ్ బ్యాకప్‌లను కలిగి లేకుంటే, వారానికి కనీసం ఒకసారి బ్యాకప్ చేయండి."
+
+#: 
+msgid "Manage Orphaned Files"
+msgstr "అనాథ ఫైళ్లను నిర్వహించండి"
+
+#: 
+msgid "Menu options access"
+msgstr "మెనూ ఎంపికల యాక్సెస్"
+
+#: 
+msgid "Missing Files"
+msgstr "తప్పిపోయిన ఫైళ్లు"
+
+#: 
 msgid "Modified Files"
 msgstr "మార్చబడిన ఫైల్‌లు"
 
 #: 
+msgid "Multiple Copies"
+msgstr "బహుళ కాపీలు"
+
+#: 
 msgid "No Orphaned Files Found"
 msgstr "ఆర్ఫన్డ్ ఫైల్‌లు కనుగొనబడలేదు"
+
+#: 
+msgid "Notes access"
+msgstr "నోట్స్ యాక్సెస్"
 
 #: 
 msgid "Orphaned Files"
@@ -7885,8 +9350,224 @@ msgid "Orphaned Files Management"
 msgstr "ఆర్ఫన్డ్ ఫైల్‌ల నిర్వహణ"
 
 #: 
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr "అనాథ ఫైళ్లు మీ సర్వర్‌లో ఉన్న PHP లేదా జావాస్క్రిప్ట్ ఫైళ్లు, కానీ అవి అధికారిక ChurchCRM విడుదల యొక్క భాగం కావు. ఈ ఫైళ్లు మునుపటి వెర్షన్ల నుండి మిగిలిపోయి ఉండవచ్చు మరియు పాత కోడ్‌లో దుర్బలత్వాలు ఉంటే భద్రతా ప్రమాదాలను కలిగి ఉండవచ్చు."
+
+#: 
+msgid "Orphaned files from previous versions cleaned up"
+msgstr "మునుపటి వెర్షన్ల నుండి అనాథ ఫైళ్లు శుభ్రం చేయబడ్డాయి"
+
+#: 
+msgid "Permission Required"
+msgstr "అనుమతి అవసరం"
+
+#: 
+msgid "Please check the backup file and try again."
+msgstr "దయచేసి బ్యాకప్ ఫైల్‌ను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "Please select a backup file to restore"
+msgstr "దయచేసి పునరుద్ధరించడానికి బ్యాకప్ ఫైల్‌ను ఎంచుకోండి"
+
+#: 
+msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgstr "అన్ని ఫైళ్లను వాటి అధికారిక స్థితికి పునరుద్ధరించడానికి ప్రస్తుత వెర్షన్‌ను మళ్లీ డౌన్‌లోడ్ చేసి, మళ్లీ అమలు చేయండి"
+
+#: 
+msgid "Ready to create a backup. Select your options above and click a backup button."
+msgstr "బ్యాకప్ సృష్టించడానికి సిద్ధంగా ఉంది. పైన మీ ఎంపికలను ఎంచుకోండి మరియు బ్యాకప్ బటన్‌ను క్లిక్ చేయండి."
+
+#: 
+msgid "Ready to restore. Select a backup file and click Restore Database."
+msgstr "పునరుద్ధరించడానికి సిద్ధంగా ఉంది. బ్యాకప్ ఫైల్‌ను ఎంచుకుని, డేటాబేస్‌ను పునరుద్ధరించు క్లిక్ చేయండి."
+
+#: 
+msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr "సిఫార్సు: అప్‌గ్రేడ్ చేయడానికి ముందు లేదా తరువాత ఈ ఫైళ్లను సమీక్షించి, తొలగించండి."
+
+#: 
+msgid "Redirecting in"
+msgstr "లోకి దారి మళ్లిస్తోంది"
+
+#: 
+msgid "Refresh List"
+msgstr "జాబితాను రిఫ్రెష్ చేయండి"
+
+#: 
+msgid "Regular Backups"
+msgstr "సాధారణ బ్యాకప్‌లు"
+
+#: 
+msgid "Required Permission"
+msgstr "అవసరమైన అనుమతి"
+
+#: 
+msgid "Required permission"
+msgstr "అవసరమైన అనుమతి"
+
+#: 
+msgid "Restore Status"
+msgstr "పునరుద్ధరణ స్థితి"
+
+#: 
+msgid "Restore failed."
+msgstr "పునరుద్ధరణ విఫలమైంది."
+
+#: 
+msgid "Restore failed. Please check the backup file and try again."
+msgstr "పునరుద్ధరణ విఫలమైంది. దయచేసి బ్యాకప్ ఫైల్‌ను తనిఖీ చేసి, మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "Restore in progress, please wait..."
+msgstr "పునరుద్ధరణ జరుగుతోంది, దయచేసి వేచి ఉండండి..."
+
+#: 
+msgid "Review the files below and delete them to improve security."
+msgstr "భద్రతను మెరుగుపరచడానికి క్రింది ఫైల్‌లను సమీక్షించి, తొలగించండి."
+
+#: 
+msgid "Security Recommendation"
+msgstr "భద్రతా సిఫార్సు"
+
+#: 
+msgid "Security Warning: Orphaned Files Detected"
+msgstr "భద్రతా హెచ్చరిక: అనాథ ఫైళ్లు కనుగొనబడ్డాయి"
+
+#: 
+msgid "Select Backup File"
+msgstr "బ్యాకప్ ఫైల్‌ను ఎంచుకోండి"
+
+#: 
+msgid "Supported formats:"
+msgstr "మద్దతు ఉన్న ఫార్మాట్‌లు:"
+
+#: 
+msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
+msgstr "ఈ క్రింది ఫైల్‌లు మీ సర్వర్‌లో ఉన్నాయి కానీ అధికారిక ChurchCRM విడుదల యొక్క భాగం కావు. ఇవి మునుపటి వెర్షన్‌ల నుండి మిగిలిపోయి ఉండవచ్చు మరియు భద్రతా ప్రమాదాలను కలిగిస్తాయి."
+
+#: 
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr "మీరు సందర్శించడానికి ప్రయత్నించిన పేజీకి మీ ఖాతా ప్రస్తుతం లేని ప్రత్యేక అనుమతులు అవసరం."
+
+#: 
+msgid "These files are not part of the official release and may pose security risks."
+msgstr "ఈ ఫైల్‌లు అధికారిక విడుదల యొక్క భాగం కావు మరియు భద్రతా ప్రమాదాలను కలిగిస్తాయి."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr "ఈ ఫైల్‌లు బహుశా పాత ChurchCRM వెర్షన్‌లో భాగంగా ఉండి, మునుపటి అప్‌గ్రేడ్ సమయంలో శుభ్రం చేయబడలేదు. వాటిని తొలగించడం వలన మీ సిస్టమ్ భద్రత మెరుగుపడుతుంది."
+
+#: 
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
+msgstr "ఈ ఫైల్‌లు బహుశా పాత ChurchCRM వెర్షన్‌లో భాగంగా ఉండి, మునుపటి అప్‌గ్రేడ్ సమయంలో శుభ్రం చేయబడలేదు. వాటిలో భద్రతా లోపాలతో పాత కోడ్ ఉండవచ్చు."
+
+#: 
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr "ఈ చర్యను రద్దు చేయలేము. అవసరమైతే ప్రస్తుత డేటా యొక్క బ్యాకప్ మీకు ఉందని నిర్ధారించుకోండి."
+
+#: 
+msgid "This may take a few minutes for large databases."
+msgstr "పెద్ద డేటాబేస్‌లకు ఇది కొన్ని నిమిషాలు పట్టవచ్చు."
+
+#: 
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr "పెద్ద డేటాబేస్‌లకు ఇది చాలా నిమిషాలు పట్టవచ్చు. ఈ పేజీని మూసివేయవద్దు."
+
+#: 
+msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgstr "ఇది ప్రస్తుత వెర్షన్‌ను మళ్లీ డౌన్‌లోడ్ చేసి, మళ్లీ వర్తింపజేస్తుంది. ఇది పాడైన లేదా మార్చబడిన ఫైల్‌లను పరిష్కరించగలదు. కొనసాగించాలా?"
+
+#: 
+msgid "Upgrade Summary"
+msgstr "అప్‌గ్రేడ్ సారాంశం"
+
+#: 
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr "ఆఫ్‌సైట్‌లో నిల్వ చేయడానికి ముందు బ్యాకప్‌లను ఎన్‌క్రిప్ట్ చేయడానికి బాహ్య సాధనాలను (GPG, 7-Zip) ఉపయోగించండి."
+
+#: 
+msgid "User authentication"
+msgstr "వినియోగదారు ప్రమాణీకరణ"
+
+#: 
+msgid "User must have Add Event permission"
+msgstr "వినియోగదారుకు ఈవెంట్ జోడించు అనుమతి ఉండాలి"
+
+#: 
+msgid "User must have Menu Options permission"
+msgstr "వినియోగదారుకు మెనూ ఎంపికల అనుమతి ఉండాలి"
+
+#: 
+msgid "What are Orphaned Files?"
+msgstr "అనాథ ఫైళ్లు అంటే ఏమిటి?"
+
+#: 
+msgid "You don't have access to this page"
+msgstr "ఈ పేజీకి మీకు యాక్సెస్ లేదు"
+
+#: 
+msgid "You will be logged out and redirected to the login page."
+msgstr "మీరు లాగ్ అవుట్ చేయబడతారు మరియు లాగిన్ పేజీకి దారి మళ్లించబడతారు."
+
+#: 
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr "మీ ChurchCRM ఇన్‌స్టాలేషన్ శుభ్రంగా ఉంది. సర్వర్‌లోని అన్ని ఫైల్‌లు అధికారిక విడుదలకి సరిపోలుతాయి."
+
+#: 
+msgid "or click to browse"
+msgstr "లేదా బ్రౌజ్ చేయడానికి క్లిక్ చేయండి"
+
+#: 
+msgid "seconds..."
+msgstr "సెకన్లు..."
+
+#: 
+msgid " Deposit #"
+msgstr " డిపాజిట్ #"
+
+#: 
+msgid "%d missing classification"
+msgstr "%d వర్గీకరణ లేదు"
+
+#: 
+msgid "%d missing gender"
+msgstr "%d లింగం లేదు"
+
+#: 
+msgid "%d missing role"
+msgstr "%d పాత్ర లేదు"
+
+#: 
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr "చెల్లింపు అనేది వాస్తవ విరాళం. ఇది ప్రస్తుత డిపాజిట్‌కి జోడించబడుతుంది."
+
+#: 
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr "ప్రతిజ్ఞ అంటే ఇవ్వడానికి కట్టుబడి ఉండటం. ఇది డిపాజిట్ స్లిప్‌కి ముడిపడి ఉండదు."
+
+#: 
+msgid "Add Another Family Member"
+msgstr "మరొక కుటుంబ సభ్యుని జోడించండి"
+
+#: 
+msgid "Add Pledge"
+msgstr "ప్రతిజ్ఞను జోడించండి"
+
+#: 
 msgid "Admin Dashboard"
 msgstr "అడ్మిన్ డ్యాష్‌బోర్డ్"
+
+#: 
+msgid "Advanced Operations"
+msgstr "అధునాతన కార్యకలాపాలు"
+
+#: 
+msgid "All System Settings"
+msgstr "అన్ని సిస్టమ్ సెట్టింగ్‌లు"
+
+#: 
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr "ఊహించని లోపం సంభవించింది. దయచేసి మీ నిర్వాహకుడిని సంప్రదించండి."
 
 #: 
 msgid "Apr"
@@ -7897,8 +9578,124 @@ msgid "Aug"
 msgstr "ఆగస్టు"
 
 #: 
+msgid "Back to Deposits"
+msgstr "డిపాజిట్‌లకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Back to Families"
+msgstr "కుటుంబాలకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Birth & Family"
+msgstr "పుట్టినరోజు & కుటుంబం"
+
+#: 
+msgid "Cart"
+msgstr "కార్ట్"
+
+#: 
+msgid "Change this in System Settings."
+msgstr "సిస్టమ్ సెట్టింగ్‌లలో దీన్ని మార్చండి."
+
+#: 
+msgid "Church Membership"
+msgstr "చర్చ్ సభ్యత్వం"
+
+#: 
+msgid "Church name is set to default value"
+msgstr "చర్చ్ పేరు డిఫాల్ట్ విలువకు సెట్ చేయబడింది"
+
+#: 
+msgid "Classes and enrollments"
+msgstr "తరగతులు మరియు నమోదులు"
+
+#: 
+msgid "Clean Up Files"
+msgstr "ఫైళ్లను శుభ్రం చేయండి"
+
+#: 
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr "అన్ని డేటాను క్లియర్ చేసి, కొత్తగా ప్రారంభించండి. రద్దు చేయబడదు."
+
+#: 
+msgid "Close All Deposits"
+msgstr "అన్ని డిపాజిట్‌లను మూసివేయండి"
+
+#: 
+msgid "Closed Deposits:"
+msgstr "మూసివేసిన డిపాజిట్‌లు:"
+
+#: 
+msgid "Closed vs Total"
+msgstr "మూసివేసినవి vs మొత్తం"
+
+#: 
+msgid "Coming soon"
+msgstr "త్వరలో వస్తుంది"
+
+#: 
+msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
+msgstr "ChurchCRM ను సజావుగా నడపడానికి ఈ ముఖ్యమైన సెటప్ పనులను పూర్తి చేయండి:"
+
+#: 
+msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgstr "వీటిని ఏ క్రమంలోనైనా పూర్తి చేయండి. నమూనా రికార్డులతో అన్వేషించడానికి డెమో డేటాను ఉపయోగించండి."
+
+#: 
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr "మీ దాతల కోసం ఖచ్చితమైన సంవత్సరాంతపు పన్ను నివేదనను నిర్ధారించడానికి ఈ పనులను పూర్తి చేయండి."
+
+#: 
+msgid "Configuration:"
+msgstr "కాన్ఫిగరేషన్:"
+
+#: 
+msgid "Configure Email"
+msgstr "ఇమెయిల్ కాన్ఫిగర్ చేయండి"
+
+#: 
+msgid "Contact Information"
+msgstr "సంప్రదింపు సమాచారం"
+
+#: 
 msgid "Create Deposit"
 msgstr "డిపాజిట్ సృష్టించండి"
+
+#: 
+msgid "Create First Deposit"
+msgstr "మొదటి డిపాజిట్ సృష్టించండి"
+
+#: 
+msgid "Create or open a deposit first"
+msgstr "మొదట డిపాజిట్ సృష్టించండి లేదా తెరవండి"
+
+#: 
+msgid "Create or select a deposit to get started."
+msgstr "ప్రారంభించడానికి డిపాజిట్ సృష్టించండి లేదా ఎంచుకోండి."
+
+#: 
+msgid "Current Deposit"
+msgstr "ప్రస్తుత డిపాజిట్"
+
+#: 
+msgid "Current fiscal year"
+msgstr "ప్రస్తుత ఆర్థిక సంవత్సరం"
+
+#: 
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr "తేదీ, నిధి, కుటుంబం మరియు చెల్లింపు పద్ధతి ద్వారా ఫిల్టరింగ్‌తో అనుకూలీకరించదగిన నివేదిక."
+
+#: 
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "పన్ను ప్రకటనలలో కనిపించే వచనాన్ని అనుకూలీకరించండి (sTaxReport1, sTaxReport2, మొదలైనవి)."
+
+#: 
+msgid "Data Quality:"
+msgstr "డేటా నాణ్యత:"
+
+#: 
+msgid "Database:"
+msgstr "డేటాబేస్:"
 
 #: 
 msgid "Day"
@@ -7909,20 +9706,172 @@ msgid "Dec"
 msgstr "డిసెంబర్"
 
 #: 
+msgid "Demo Data"
+msgstr "డెమో డేటా"
+
+#: 
+msgid "Deposit Navigation"
+msgstr "డిపాజిట్ నావిగేషన్"
+
+#: 
+msgid "Deposit Statistics"
+msgstr "డిపాజిట్ గణాంకాలు"
+
+#: 
+msgid "Detailed breakdown of a single deposit slip."
+msgstr "ఒకే డిపాజిట్ స్లిప్ యొక్క వివరణాత్మక విచ్ఛిన్నం."
+
+#: 
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr "కుటుంబం వారీగా వాగ్దానాలు మరియు చెల్లింపుల వివరణాత్మక విచ్ఛిన్నం."
+
+#: 
+msgid "Documentation"
+msgstr "డాక్యుమెంటేషన్"
+
+#: 
+msgid "Donor Families"
+msgstr "దాత కుటుంబాలు"
+
+#: 
 msgid "Edit Deposit"
 msgstr "డిపాజిట్‌ను ఎడిట్ చేయండి"
+
+#: 
+msgid "Edit Family"
+msgstr "కుటుంబాన్ని సవరించండి"
+
+#: 
+msgid "Edit Payment"
+msgstr "చెల్లింపును సవరించండి"
+
+#: 
+msgid "Edit Person"
+msgstr "వ్యక్తిని సవరించండి"
+
+#: 
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr "స్టేట్‌మెంట్‌లను రూపొందించే ముందు పన్ను సంవత్సరానికి సంబంధించిన అన్ని డిపాజిట్లు మూసివేయబడ్డాయని నిర్ధారించుకోండి."
+
+#: 
+msgid "Export Options"
+msgstr "ఎగుమతి ఎంపికలు"
+
+#: 
+msgid "F"
+msgstr "F"
+
+#: 
+msgid "Failed to save settings"
+msgstr "సెట్టింగ్‌లను సేవ్ చేయడంలో విఫలమైంది"
+
+#: 
+msgid "Family Navigation"
+msgstr "కుటుంబ నావిగేషన్"
 
 #: 
 msgid "Feb"
 msgstr "ఫిబ్రవరి"
 
 #: 
+msgid "File Integrity:"
+msgstr "ఫైల్ సమగ్రత:"
+
+#: 
+msgid "Filtering"
+msgstr "వడపోత"
+
+#: 
+msgid "Finance"
+msgstr "ఫైనాన్స్"
+
+#: 
 msgid "Finance Dashboard"
 msgstr "ఆర్థిక డ్యాష్‌బోర్డ్"
 
 #: 
+msgid "Force Import"
+msgstr "బలవంతంగా దిగుమతి"
+
+#: 
+msgid "Force Import will retry and may create duplicate data."
+msgstr "బలవంతంగా దిగుమతి మళ్ళీ ప్రయత్నిస్తుంది మరియు నకిలీ డేటాను సృష్టించవచ్చు."
+
+#: 
+msgid "Fund Allocation"
+msgstr "నిధి కేటాయింపు"
+
+#: 
+msgid "Generate"
+msgstr "సృష్టించు"
+
+#: 
+msgid "Generate Reports"
+msgstr "నివేదికలను రూపొందించండి"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "పన్ను స్టేట్‌మెంట్‌లను రూపొందించండి"
+
+#: 
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr "దాతల కోసం వార్షిక విరాళాల స్టేట్‌మెంట్‌లను రూపొందించండి మరియు విరాళాల నమూనాలను గుర్తించండి."
+
+#: 
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr "దాతల కోసం వార్షిక పన్ను-మినహాయింపు విరాళాల స్టేట్‌మెంట్‌లను రూపొందించండి. ప్రింట్ చేయవచ్చు లేదా ఇమెయిల్ చేయవచ్చు."
+
+#: 
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr "వ్యక్తిగత డిపాజిట్లు లేదా తేదీ పరిధుల కోసం వివరణాత్మక నివేదికలను రూపొందించండి."
+
+#: 
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr "బకాయి ఉన్న వాగ్దానాలు ఉన్న కుటుంబాల కోసం రిమైండర్ లేఖలను రూపొందించండి."
+
+#: 
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr "పన్ను స్టేట్‌మెంట్‌లు, వాగ్దానం ట్రాకింగ్ మరియు ఆర్థిక విశ్లేషణ కోసం నివేదికలను రూపొందించండి."
+
+#: 
+msgid "Giving funds and categories"
+msgstr "నిధులు మరియు వర్గాలను ఇవ్వడం"
+
+#: 
+msgid "HTTPS Not Configured"
+msgstr "HTTPS కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "ID"
+msgstr "ID"
+
+#: 
+msgid "Identify members who have not made any donations within a date range."
+msgstr "తేదీ పరిధిలో ఎటువంటి విరాళాలు చేయని సభ్యులను గుర్తించండి."
+
+#: 
+msgid "Import failed"
+msgstr "దిగుమతి విఫలమైంది"
+
+#: 
+msgid "Import from CSV files"
+msgstr "CSV ఫైళ్ల నుండి దిగుమతి"
+
+#: 
+msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgstr "వాస్తవిక డేటాతో ChurchCRM ను అన్వేషించడానికి నమూనా కుటుంబాలు, వ్యక్తులు మరియు సమూహాలను దిగుమతి చేయండి."
+
+#: 
+msgid "Install TLS/SSL certificate for better security"
+msgstr "మెరుగైన భద్రత కోసం TLS/SSL సర్టిఫికేట్‌ను ఇన్‌స్టాల్ చేయండి"
+
+#: 
 msgid "Jan"
 msgstr "జనవరి"
+
+#: 
+msgid "Jr., Sr."
+msgstr "Jr., Sr."
 
 #: 
 msgid "Jul"
@@ -7933,8 +9882,24 @@ msgid "Jun"
 msgstr "జూన్"
 
 #: 
+msgid "Latest Note"
+msgstr "తాజా గమనిక"
+
+#: 
+msgid "Let's get your system set up and ready to use"
+msgstr "మీ సిస్టమ్‌ను సెటప్ చేసి, ఉపయోగించడానికి సిద్ధంగా ఉంచుకుందాం"
+
+#: 
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr "విరాళాల చరిత్ర మరియు సభ్యత్వ ప్రమాణాల ఆధారంగా ఓటు వేయడానికి అర్హత కలిగిన సభ్యులను జాబితా చేయండి."
+
+#: 
 msgid "Location"
 msgstr "స్థానం"
+
+#: 
+msgid "M"
+msgstr "M"
 
 #: 
 msgid "Manage Funds"
@@ -7949,6 +9914,58 @@ msgid "Mar"
 msgstr "మార్చి"
 
 #: 
+msgid "Membership Reports"
+msgstr "సభ్యత్వ నివేదికలు"
+
+#: 
+msgid "Missing Secret Keys"
+msgstr "రహస్య కీలు తప్పిపోయాయి"
+
+#: 
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr "చాలా నివేదికలను ప్రింటింగ్ కోసం PDF గా లేదా స్ప్రెడ్‌షీట్ విశ్లేషణ కోసం CSV గా ఎగుమతి చేయవచ్చు."
+
+#: 
+msgid "Mr., Mrs., Dr."
+msgstr "Mr., Mrs., Dr."
+
+#: 
+msgid "Name & Identity"
+msgstr "పేరు & గుర్తింపు"
+
+#: 
+msgid "New Deposit Will Be Created"
+msgstr "కొత్త డిపాజిట్ సృష్టించబడుతుంది"
+
+#: 
+msgid "New Payment"
+msgstr "కొత్త చెల్లింపు"
+
+#: 
+msgid "New Pledge"
+msgstr "కొత్త వాగ్దానం"
+
+#: 
+msgid "Next 7 days and past 7 days"
+msgstr "తదుపరి 7 రోజులు మరియు గత 7 రోజులు"
+
+#: 
+msgid "No Active Deposit"
+msgstr "క్రియాశీల డిపాజిట్ లేదు"
+
+#: 
+msgid "No active funds configured."
+msgstr "క్రియాశీల నిధులు కాన్ఫిగర్ చేయబడలేదు."
+
+#: 
+msgid "No deposits found."
+msgstr "డిపాజిట్లు కనుగొనబడలేదు."
+
+#: 
+msgid "No format"
+msgstr "ఫార్మాట్ లేదు"
+
+#: 
 msgid "Nov"
 msgstr "నవంబర్"
 
@@ -7961,24 +9978,160 @@ msgid "Open"
 msgstr "తెరవండి"
 
 #: 
+msgid "Open Deposits:"
+msgstr "క్రియాశీల డిపాజిట్లు:"
+
+#: 
+msgid "Organization, timezone, email"
+msgstr "సంస్థ, టైమ్‌జోన్, ఇమెయిల్"
+
+#: 
+msgid "Organizational structure"
+msgstr "సంస్థాగత నిర్మాణం"
+
+#: 
+msgid "Orphaned Files:"
+msgstr "అనాథ ఫైళ్లు:"
+
+#: 
+msgid "PDF/CSV"
+msgstr "PDF/CSV"
+
+#: 
+msgid "Payment"
+msgstr "చెల్లింపు"
+
+#: 
 msgid "Pledge Reports"
 msgstr "ప్రతిజ్ఞ నివేదికలు"
+
+#: 
+msgid "Print or email annual giving statements to all donors."
+msgstr "అన్ని దాతలకు వార్షిక విరాళాల స్టేట్‌మెంట్‌లను ప్రింట్ చేయండి లేదా ఇమెయిల్ చేయండి."
 
 #: 
 msgid "Quick Actions"
 msgstr "త్వరిత చర్యలు"
 
 #: 
+msgid "Quick Start"
+msgstr "త్వరిత ప్రారంభం"
+
+#: 
+msgid "Recent Deposits"
+msgstr "ఇటీవలి డిపాజిట్లు"
+
+#: 
+msgid "Recording a Payment"
+msgstr "చెల్లింపును రికార్డ్ చేయడం"
+
+#: 
+msgid "Recording a Pledge"
+msgstr "వాగ్దానాన్ని రికార్డ్ చేయడం"
+
+#: 
+msgid "Report Tips"
+msgstr "నివేదిక చిట్కాలు"
+
+#: 
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr "సభ్యుల ఓటు అర్హత మరియు సంస్థ పాలనకు సంబంధించిన నివేదికలు."
+
+#: 
+msgid "Reset"
+msgstr "రీసెట్"
+
+#: 
+msgid "Restore"
+msgstr "పునరుద్ధరించు"
+
+#: 
+msgid "Restore from a backup file. Erases existing data."
+msgstr "బ్యాకప్ ఫైల్ నుండి పునరుద్ధరించండి. ప్రస్తుత డేటాను తొలగిస్తుంది."
+
+#: 
+msgid "Review Donation Funds"
+msgstr "విరాళాల నిధులను సమీక్షించండి"
+
+#: 
+msgid "SMTP server settings are not configured"
+msgstr "SMTP సర్వర్ సెట్టింగ్‌లు కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "Save and Add New Family"
+msgstr "సేవ్ చేసి కొత్త కుటుంబాన్ని జోడించండి"
+
+#: 
+msgid "Secret keys missing from Config.php"
+msgstr "Config.php నుండి రహస్య కీలు తప్పిపోయాయి"
+
+#: 
 msgid "Sep"
 msgstr "సెప్టెంబర్"
+
+#: 
+msgid "Server error"
+msgstr "సర్వర్ లోపం"
+
+#: 
+msgid "Settings"
+msgstr "సెట్టింగ్‌లు"
 
 #: 
 msgid "Settings saved successfully"
 msgstr "సెట్టింగ్‌లు విజయవంతంగా సేవ్ చేయబడ్డాయి"
 
 #: 
+msgid "Setup Tasks:"
+msgstr "సెటప్ పనులు:"
+
+#: 
+msgid "Social Media"
+msgstr "సోషల్ మీడియా"
+
+#: 
+msgid "Some application prerequisites are not met"
+msgstr "కొన్ని అప్లికేషన్ ముందస్తు అవసరాలు తీరలేదు"
+
+#: 
+msgid "State (Other)"
+msgstr "రాష్ట్రం (ఇతర)"
+
+#: 
+msgid "Status:"
+msgstr "స్థితి:"
+
+#: 
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr "ఆర్థిక సంవత్సరానికి నిధుల వారీగా వాగ్దానాలు vs చెల్లింపుల సారాంశం."
+
+#: 
+msgid "System Configuration:"
+msgstr "సిస్టమ్ కాన్ఫిగరేషన్:"
+
+#: 
 msgid "System Health"
 msgstr "సిస్టమ్ హెల్త్"
+
+#: 
+msgid "System Info"
+msgstr "సిస్టమ్ సమాచారం"
+
+#: 
+msgid "Tax & Giving Reports"
+msgstr "పన్ను & విరాళాల నివేదికలు"
+
+#: 
+msgid "Tax Report Verbiage"
+msgstr "పన్ను నివేదిక వర్బియేజ్"
+
+#: 
+msgid "Tax Statements (Giving Report)"
+msgstr "పన్ను స్టేట్‌మెంట్‌లు (విరాళాల నివేదిక)"
+
+#: 
+msgid "Tax Year Reporting Checklist"
+msgstr "పన్ను సంవత్సర నివేదిక చెక్‌లిస్ట్"
 
 #: 
 msgid "Today"
@@ -7989,36 +10142,588 @@ msgid "Total"
 msgstr "మొత్తం"
 
 #: 
+msgid "Total Amount"
+msgstr "మొత్తం"
+
+#: 
+msgid "Total Deposits:"
+msgstr "మొత్తం డిపాజిట్లు:"
+
+#: 
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr "ప్రచారాలు మరియు ఆర్థిక సంవత్సర బడ్జెట్ కోసం వాగ్దానాలు మరియు చెల్లింపు పురోగతిని ట్రాక్ చేయండి."
+
+#: 
+msgid "Type:"
+msgstr "రకం:"
+
+#: 
+msgid "Unmet Prerequisites"
+msgstr "తీరని ముందస్తు అవసరాలు"
+
+#: 
+msgid "Update Church Name"
+msgstr "చర్చి పేరును నవీకరించండి"
+
+#: 
 msgid "Upgrade"
 msgstr "అప్‌గ్రేడ్"
+
+#: 
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr "నిర్దిష్ట దాతల సమూహాల కోసం నివేదికలను రూపొందించడానికి వర్గీకరణ మరియు కుటుంబ ఫిల్టర్‌లను ఉపయోగించండి."
+
+#: 
+msgid "User accounts and roles"
+msgstr "వినియోగదారు ఖాతాలు మరియు పాత్రలు"
+
+#: 
+msgid "User must be an Admin or have Finance permission"
+msgstr "వినియోగదారు తప్పనిసరిగా అడ్మిన్ అయి ఉండాలి లేదా ఫైనాన్స్ అనుమతి కలిగి ఉండాలి"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "పన్ను స్టేట్‌మెంట్‌లపై చర్చి పేరు, చిరునామా మరియు సంప్రదింపు సమాచారం కనిపిస్తుందని ధృవీకరించండి."
+
+#: 
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr "స్టేట్‌మెంట్‌ల కోసం ఫండ్ పేర్లు మరియు వివరణలు ఖచ్చితంగా ఉన్నాయని ధృవీకరించండి."
+
+#: 
+msgid "Version:"
+msgstr "వెర్షన్:"
+
+#: 
+msgid "Welcome to ChurchCRM"
+msgstr "ChurchCRMకి స్వాగతం"
+
+#: 
+msgid "YTD Payments"
+msgstr "YTD చెల్లింపులు"
+
+#: 
+msgid "YTD Pledges"
+msgstr "YTD వాగ్దానాలు"
+
+#: 
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr "మీరు ఇప్పుడు కుటుంబ సభ్యులను సృష్టించవచ్చు లేదా వాటిని తర్వాత జోడించవచ్చు. అన్ని ఎంట్రీలు కొత్త వ్యక్తి రికార్డులుగా మారుతాయి."
+
+#: 
+msgid "Your fiscal year starts in month"
+msgstr "మీ ఆర్థిక సంవత్సరం నెలలో ప్రారంభమవుతుంది"
+
+#: 
+msgid "Zip / Postal Code"
+msgstr "జిప్ / పోస్టల్ కోడ్"
+
+#: 
+msgid "ZipArchive extension required for upgrades"
+msgstr "అప్‌గ్రేడ్‌ల కోసం ZipArchive పొడిగింపు అవసరం"
+
+#: 
+msgid "active"
+msgstr "క్రియాశీల"
+
+#: 
+msgid "ago"
+msgstr "క్రితం"
+
+#: 
+msgid "day"
+msgstr "రోజు"
+
+#: 
+msgid "days"
+msgstr "రోజులు"
+
+#: 
+msgid "found"
+msgstr "కనుగొనబడింది"
+
+#: 
+msgid "in"
+msgstr "లో"
+
+#: 
+msgid "issues"
+msgstr "సమస్యలు"
+
+#: 
+msgid "open"
+msgstr "తెరిచివుంది"
+
+#: 
+msgid "years"
+msgstr "సంవత్సరాలు"
+
+#: 
+msgid "yes"
+msgstr "అవును"
+
+#: 
+msgid "(Enter state/province for countries without predefined states)"
+msgstr "(ముందుగా నిర్వచించిన రాష్ట్రాలు లేని దేశాల కోసం రాష్ట్రం/ప్రావిన్స్‌ను నమోదు చేయండి)"
+
+#: 
+msgid "Available"
+msgstr "అందుబాటులో ఉంది"
+
+#: 
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr "బేస్ URL కాన్ఫిగరేషన్ చెల్లదు. దయచేసి మీ Config.php ఫైల్‌ను తనిఖీ చేయండి."
+
+#: 
+msgid "Base URL is not configured in Config.php"
+msgstr "Config.phpలో బేస్ URL కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "ChurchCRM Supported Locales"
+msgstr "ChurchCRM మద్దతు ఉన్న లోకేల్స్"
+
+#: 
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr "SSH, FTP లేదా మీ హోస్టింగ్ కంట్రోల్ ప్యానెల్ ద్వారా మీ సర్వర్‌కు కనెక్ట్ చేయండి"
+
+#: 
+msgid "Contact"
+msgstr "సంప్రదింపు"
+
+#: 
+msgid "Critical Configuration Error"
+msgstr "క్లిష్టమైన కాన్ఫిగరేషన్ లోపం"
+
+#: 
+msgid "Current $URL[0] value:"
+msgstr "ప్రస్తుత $URL[0] విలువ:"
+
+#: 
+msgid "Custom port:"
+msgstr "కస్టమ్ పోర్ట్:"
+
+#: 
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr "<strong>ట్రైలింగ్ స్లాష్</strong> (/) తో ముగుస్తుంది"
+
+#: 
+msgid "Error:"
+msgstr "లోపం:"
+
+#: 
+msgid "Find the line:"
+msgstr "లైన్‌ను కనుగొనండి:"
+
+#: 
+msgid "Group Memberships"
+msgstr "గ్రూప్ మెంబర్‌షిప్‌లు"
+
+#: 
+msgid "How to Fix:"
+msgstr "ఎలా పరిష్కరించాలి:"
+
+#: 
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr "ChurchCRM కమ్యూనిటీలో చేరండి మరియు మీ సమాచారాన్ని పంచుకోవడం ద్వారా మమ్మల్ని మెరుగుపరచడంలో సహాయపడండి. దీనికి ఒక నిమిషం కంటే తక్కువ సమయం పడుతుంది!"
 
 #: 
 msgid "Language"
 msgstr "భాష"
 
 #: 
+msgid "Local development:"
+msgstr "స్థానిక అభివృద్ధి:"
+
+#: 
+msgid "Locale Support"
+msgstr "లోకేల్ మద్దతు"
+
+#: 
+msgid "Location & Contact Information"
+msgstr "స్థానం & సంప్రదింపు సమాచారం"
+
+#: 
+msgid "Navigate to your ChurchCRM installation directory"
+msgstr "మీ ChurchCRM ఇన్‌స్టాలేషన్ డైరెక్టరీకి నావిగేట్ చేయండి"
+
+#: 
+msgid "New to"
+msgstr "కొత్తది"
+
+#: 
+msgid "No locales configured"
+msgstr "లోకేల్స్ కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "Not Available"
+msgstr "అందుబాటులో లేదు"
+
+#: 
+msgid "Open this file in a text editor:"
+msgstr "ఈ ఫైల్‌ను టెక్స్ట్ ఎడిటర్‌లో తెరవండి:"
+
+#: 
+msgid "Register Now"
+msgstr "ఇప్పుడే నమోదు చేసుకోండి"
+
+#: 
+msgid "Register Your Church"
+msgstr "మీ చర్చిని నమోదు చేసుకోండి"
+
+#: 
+msgid "Save the file and refresh this page"
+msgstr "ఫైల్‌ను సేవ్ చేసి, ఈ పేజీని రిఫ్రెష్ చేయండి"
+
+#: 
+msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
+msgstr "వ్యక్తి ఎడిటర్‌లో అననుబంధ వ్యక్తుల కోసం వ్యక్తిగత చిరునామాలను నమోదు చేయడాన్ని నిలిపివేయడానికి నిజమని సెట్ చేయండి. కుటుంబం కేటాయించబడని వ్యక్తుల కోసం చిరునామాలను నమోదు చేయడానికి తప్పు అని సెట్ చేయండి."
+
+#: 
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr "<strong>http://</strong> లేదా <strong>https://</strong> తో ప్రారంభమవుతుంది"
+
+#: 
+msgid "Subdirectory installation:"
+msgstr "సబ్ డైరెక్టరీ ఇన్‌స్టాలేషన్:"
+
+#: 
+msgid "System Locale Support"
+msgstr "సిస్టమ్ లోకేల్ మద్దతు"
+
+#: 
+msgid "System Support"
+msgstr "సిస్టమ్ మద్దతు"
+
+#: 
+msgid "URL does not contain a valid hostname"
+msgstr "URLలో చెల్లుబాటు అయ్యే హోస్ట్‌నేమ్ లేదు"
+
+#: 
+msgid "URL hostname is not valid"
+msgstr "URL హోస్ట్‌నేమ్ చెల్లదు"
+
+#: 
+msgid "URL is not in valid format"
+msgstr "URL చెల్లుబాటు అయ్యే ఫార్మాట్‌లో లేదు"
+
+#: 
+msgid "URL must end with a trailing slash (/)"
+msgstr "URL తప్పనిసరిగా చివరి స్లాష్ (/) తో ముగియాలి"
+
+#: 
+msgid "URL must start with http:// or https://"
+msgstr "URL తప్పనిసరిగా http:// లేదా https:// తో ప్రారంభం కావాలి"
+
+#: 
+msgid "Unable to detect system locales"
+msgstr "సిస్టమ్ లోకేల్స్ ను గుర్తించలేకపోయాము"
+
+#: 
+msgid "Unable to determine available locales"
+msgstr "అందుబాటులో ఉన్న లోకేల్స్ ను గుర్తించలేకపోయాము"
+
+#: 
+msgid "Unable to load locale information"
+msgstr "లోకేల్ సమాచారాన్ని లోడ్ చేయలేకపోయాము"
+
+#: 
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr "రాష్ట్రాల జాబితాను లోడ్ చేయలేకపోయాము. దయచేసి మీ నెట్వర్క్ కనెక్షన్ని తనిఖీ చేయండి లేదా తర్వాత మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Update it to a valid URL that:"
+msgstr "దీన్ని చెల్లుబాటు అయ్యే URLకు అప్డేట్ చేయండి:"
+
+#: 
+msgid "Valid Examples:"
+msgstr "చెల్లుబాటు అయ్యే ఉదాహరణలు:"
+
+#: 
+msgid "View Logs"
+msgstr "లాగ్లను వీక్షించండి"
+
+#: 
+msgid "View and manage system log files for debugging."
+msgstr "డీబగ్గింగ్ కోసం సిస్టమ్ లాగ్ ఫైల్లను వీక్షించండి మరియు నిర్వహించండి."
+
+#: 
+msgid "You must enter a Last Name."
+msgstr "మీరు చివరి పేరును నమోదు చేయాలి."
+
+#: 
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr "మీ గోప్యత ముఖ్యం. మేము మీ సమాచారాన్ని మూడవ పక్షాలతో ఎప్పుడూ పంచుకోము."
+
+#: 
+msgid "Additional Information"
+msgstr "అదనపు సమాచారం"
+
+#: 
+msgid "All information is correct"
+msgstr "అన్ని సమాచారం సరైనది"
+
+#: 
+msgid "Assign Opportunities"
+msgstr "అవకాశాలను కేటాయించండి"
+
+#: 
 msgid "Assign Property"
 msgstr "ఆస్తిని కేటాయించండి"
+
+#: 
+msgid "Choose a property..."
+msgstr "ఒక ఆస్తిని ఎంచుకోండి..."
+
+#: 
+msgid "Choose opportunities..."
+msgstr "అవకాశాలను ఎంచుకోండి..."
+
+#: 
+msgid "Confirm Family Information"
+msgstr "కుటుంబ సమాచారాన్ని నిర్ధారించండి"
+
+#: 
+msgid "Confirm family information"
+msgstr "కుటుంబ సమాచారాన్ని నిర్ధారించండి"
+
+#: 
+msgid "Contact & Personal Info"
+msgstr "సంప్రదింపు & వ్యక్తిగత సమాచారం"
+
+#: 
+msgid "Copied!"
+msgstr "కాపీ చేయబడింది!"
+
+#: 
+msgid "Edit Role"
+msgstr "పాత్రను సవరించండి"
+
+#: 
+msgid "Edited"
+msgstr "సవరించబడింది"
+
+#: 
+msgid "Email PDF"
+msgstr "PDFని ఇమెయిల్ చేయండి"
+
+#: 
+msgid "Failed to copy URL"
+msgstr "URLను కాపీ చేయడంలో విఫలమైంది"
+
+#: 
+msgid "ID:"
+msgstr "ID:"
+
+#: 
+msgid "Newsletter"
+msgstr "వార్తాలేఖ"
+
+#: 
+msgid "No assigned family"
+msgstr "కేటాయించిన కుటుంబం లేదు"
+
+#: 
+msgid "Open in New Tab"
+msgstr "కొత్త ట్యాబ్లో తెరవండి"
+
+#: 
+msgid "Personal"
+msgstr "వ్యక్తిగత"
+
+#: 
+msgid "Please confirm your family information:"
+msgstr "దయచేసి మీ కుటుంబ సమాచారాన్ని నిర్ధారించండి:"
+
+#: 
+msgid "Please update our records with corrections"
+msgstr "దయచేసి దిద్దుబాట్లతో మా రికార్డులను అప్డేట్ చేయండి"
+
+#: 
+msgid "Provide any corrections or additional information here..."
+msgstr "ఏవైనా దిద్దుబాట్లు లేదా అదనపు సమాచారాన్ని ఇక్కడ అందించండి..."
+
+#: 
+msgid "Remove Property"
+msgstr "ఆస్తిని తొలగించండి"
+
+#: 
+msgid "Select Opportunities"
+msgstr "అవకాశాలను ఎంచుకోండి"
 
 #: 
 msgid "Select Property"
 msgstr "ఆస్తిని ఎంచుకోండి"
 
 #: 
+msgid "Share this URL with family members to verify their information"
+msgstr "వారి సమాచారాన్ని ధృవీకరించడానికి మీ కుటుంబ సభ్యులతో ఈ URLను భాగస్వామ్యం చేయండి"
+
+#: 
 msgid "Submit Verification"
 msgstr "ధృవీకరణను సమర్పించండి"
+
+#: 
+msgid "Thank You!"
+msgstr "ధన్యవాదాలు!"
+
+#: 
+msgid "Translation incomplete"
+msgstr "అనువాదం అసంపూర్ణం"
+
+#: 
+msgid "Visit Our Website"
+msgstr "మా వెబ్సైట్ను సందర్శించండి"
+
+#: 
+msgid "Volunteer"
+msgstr "స్వచ్ఛంద సేవ"
+
+#: 
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr "మీ ధృవీకరణను ప్రాసెస్ చేయడంలో మేము లోపాన్ని ఎదుర్కొన్నాము. దయచేసి మళ్ళీ ప్రయత్నించండి లేదా మమ్మల్ని నేరుగా సంప్రదించండి."
+
+#: 
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr "మీ ధృవీకరణ అభ్యర్థన అందింది. మీ సమాచారాన్ని తాజాగా ఉంచినందుకు ధన్యవాదాలు."
+
+#: 
+msgid "An error occurred. Please contact your system administrator."
+msgstr "లోపం సంభవించింది. దయచేసి మీ సిస్టమ్ నిర్వాహకుడిని సంప్రదించండి."
+
+#: 
+msgid "Backup failed"
+msgstr "బ్యాకప్ విఫలమైంది"
+
+#: 
+msgid "Database reset failed"
+msgstr "డేటాబేస్ రీసెట్ విఫలమైంది"
+
+#: 
+msgid "Database restore failed"
+msgstr "డేటాబేస్ పునరుద్ధరణ విఫలమైంది"
+
+#: 
+msgid "Demo data import failed"
+msgstr "డెమో డేటా దిగుమతి విఫలమైంది"
+
+#: 
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr "డెమో డేటా దిగుమతి అనేది సరిగ్గా 1 వ్యక్తితో కూడిన తాజా ఇన్స్టాలేషన్లలో మాత్రమే అందుబాటులో ఉంటుంది"
+
+#: 
+msgid "Demo data loaded successfully"
+msgstr "డెమో డేటా విజయవంతంగా లోడ్ చేయబడింది"
+
+#: 
+msgid "Download failed"
+msgstr "డౌన్లోడ్ విఫలమైంది"
+
+#: 
+msgid "Failed to delete orphaned files"
+msgstr "అనాథ ఫైల్లను తొలగించడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to download latest release"
+msgstr "తాజా విడుదలను డౌన్లోడ్ చేయడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to refresh upgrade information"
+msgstr "అప్గ్రేడ్ సమాచారాన్ని రిఫ్రెష్ చేయడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to upload family photo"
+msgstr "కుటుంబ ఫోటోను అప్లోడ్ చేయడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to upload person photo"
+msgstr "వ్యక్తి ఫోటోను అప్లోడ్ చేయడంలో విఫలమైంది"
+
+#: 
+msgid "Remote backup failed"
+msgstr "రిమోట్ బ్యాకప్ విఫలమైంది"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
+msgstr "WebDAV బ్యాకప్లు సరిగ్గా కాన్ఫిగర్ చేయబడలేదు. దయచేసి ఎండ్పాయింట్, వినియోగదారు పేరు మరియు పాస్వర్డ్ సెట్ చేయబడిందని నిర్ధారించుకోండి"
+
+#: 
+msgid "2FA Enabled"
+msgstr "2FA ప్రారంభించబడింది"
 
 #: 
 msgid "Active Users"
 msgstr "యాక్టివ్ వినియోగదారులు"
 
 #: 
+msgid "ChMeetings Export"
+msgstr "ChMeetings ఎగుమతి"
+
+#: 
 msgid "Delete User"
 msgstr "యూజర్‌ను తొలగించండి"
 
 #: 
+msgid "Disable 2FA"
+msgstr "2FA నిలిపివేయండి"
+
+#: 
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr "బయటి సిస్టమ్లలోకి దిగుమతి చేసుకోవడానికి ChMeetings ఫార్మాట్లో అన్ని వ్యక్తుల డేటాను ఎగుమతి చేయండి."
+
+#: 
+msgid "Export to ChMeetings CSV"
+msgstr "ChMeetings CSVకి ఎగుమతి చేయండి"
+
+#: 
+msgid "Exporting..."
+msgstr "ఎగుమతి అవుతోంది..."
+
+#: 
+msgid "Family Listing"
+msgstr "కుటుంబ జాబితా"
+
+#: 
+msgid "Invalid request data"
+msgstr "చెల్లని అభ్యర్థన డేటా"
+
+#: 
+msgid "Invalid status"
+msgstr "చెల్లని స్థితి"
+
+#: 
+msgid "Locked Users"
+msgstr "లాక్ చేయబడిన వినియోగదారులు"
+
+#: 
+msgid "Person Listing"
+msgstr "వ్యక్తి జాబితా"
+
+#: 
+msgid "Person(s) removed from cart"
+msgstr "కార్ట్ నుండి వ్యక్తులు తీసివేయబడ్డారు"
+
+#: 
 msgid "Quick Settings"
 msgstr "త్వరిత సెట్టింగ్‌లు"
+
+#: 
+msgid "Reset Failed Logins"
+msgstr "లాగిన్ విఫలమైన వాటిని రీసెట్ చేయండి"
+
+#: 
+msgid "Reset Password via Email"
+msgstr "ఇమెయిల్ ద్వారా పాస్వర్డ్ రీసెట్ చేయండి"
+
+#: 
+msgid "Set Active"
+msgstr "క్రియాశీలకంగా సెట్ చేయండి"
+
+#: 
+msgid "Set Inactive"
+msgstr "క్రియాశీలకంగా కానివ్వండి"
+
+#: 
+msgid "Show"
+msgstr "చూపించు"
 
 #: 
 msgid "Showing"
@@ -8033,26 +10738,1646 @@ msgid "User Management"
 msgstr "వినియోగదారు నిర్వహణ"
 
 #: 
+msgid "View Details"
+msgstr "వివరాలను వీక్షించండి"
+
+#: 
+msgid "entries"
+msgstr "నమోదులు"
+
+#: 
 msgid "of"
 msgstr "యొక్క"
+
+#: 
+msgid "total"
+msgstr "మొత్తం"
+
+#: 
+msgid "Code incomplete"
+msgstr "కోడ్ అసంపూర్ణంగా ఉంది"
+
+#: 
+msgid "Code is invalid"
+msgstr "కోడ్ చెల్లదు"
+
+#: 
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr "డేటాబేస్‌లో 2FA రహస్య కీలను నిల్వ చేయడానికి ఎన్క్రిప్షన్ కీ"
+
+#: 
+msgid "Two-Factor Authentication"
+msgstr "రెండు-కారకాల ప్రమాణీకరణ"
+
+#: 
+msgid "Validation pending"
+msgstr "ధ్రువీకరణ పెండింగ్‌లో ఉంది"
+
+#: 
+msgid "must be configured with an encryption key"
+msgstr "ఎన్క్రిప్షన్ కీతో కాన్ఫిగర్ చేయబడాలి"
+
+#: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d వ్యక్తి కార్ట్‌లో చేర్చబడ్డారు."
+msgstr[1] "%d మందిని కార్ట్‌కు చేర్చారు."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d వ్యక్తి ఎంచుకున్న కుటుంబానికి విజయవంతంగా జోడించబడ్డారు."
+msgstr[1] "%d మందిని ఎంచుకున్న కుటుంబానికి విజయవంతంగా చేర్చారు."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d వ్యక్తి ఎంచుకున్న సమూహానికి విజయవంతంగా జోడించబడ్డారు."
+msgstr[1] "%d మందిని ఎంచుకున్న సమూహానికి విజయవంతంగా చేర్చారు."
+
+#: 
+msgid "A "
+msgstr "ఒక "
+
+#: 
+msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
+msgstr "జోడించు, తొలగించు, మరియు ఆర్డరింగ్ మార్పులు తక్షణమే ఉంటాయి. పేరు మరియు వివరణ మార్పులు 'మార్పులను సేవ్ చేయి' క్లిక్ చేయడం ద్వారా సేవ్ చేయాలి."
+
+#: 
+msgid "Are you sure you want to delete"
+msgstr "మీరు తొలగించాలనుకుంటున్నారా"
+
+#: 
+msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
+msgstr "బాణం మరియు తొలగించు బటన్లు తక్షణమే ప్రభావం చూపుతాయి. మీరు 'మార్పులను సేవ్ చేయి' నొక్కకుండా అప్, డౌన్, తొలగించు లేదా 'కొత్తది జోడించు' బటన్ను ఉపయోగించకుండా ఫీల్డ్ పేరు మార్పులు కోల్పోతారు!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr "ఈ ఫీల్డ్‌ను తొలగించడం ద్వారా, ఈ ఫీల్డ్ కోసం కేటాయించిన అన్ని కుటుంబ డేటాను మీరు శాశ్వతంగా కోల్పోతారు!"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr "ఈ ఫీల్డ్‌ను తొలగించడం ద్వారా, ఈ ఫీల్డ్ కోసం కేటాయించిన అన్ని వ్యక్తి డేటాను మీరు శాశ్వతంగా కోల్పోతారు!"
+
+#: 
+msgid "Changes not saved! Please correct and try again!"
+msgstr "మార్పులు సేవ్ చేయబడలేదు! దయచేసి సరిదిద్ది మళ్ళీ ప్రయత్నించండి!"
+
+#: 
+msgid "Confirm Property Deletion"
+msgstr "ఆస్తి తొలగింపును నిర్ధారించండి"
+
+#: 
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr "స్వచ్ఛంద అవకాశాన్ని తొలగించడాన్ని నిర్ధారించండి"
+
+#: 
+msgid "Delete Confirmation"
+msgstr "తొలగింపు నిర్ధారణ"
+
+#: 
+msgid "Existing"
+msgstr "ఇప్పటికే ఉన్న"
+
+#: 
+msgid "Existing Custom Family Fields"
+msgstr "ఇప్పటికే ఉన్న కస్టమ్ ఫ్యామిలీ ఫీల్డ్‌లు"
+
+#: 
+msgid "Existing Custom Person Fields"
+msgstr "ఇప్పటికే ఉన్న కస్టమ్ వ్యక్తి ఫీల్డ్‌లు"
+
+#: 
+msgid "Existing Volunteer Opportunities"
+msgstr "ఇప్పటికే ఉన్న స్వచ్ఛంద అవకాశాలు"
+
+#: 
+msgid "Field deleted successfully"
+msgstr "ఫీల్డ్ విజయవంతంగా తొలగించబడింది"
+
+#: 
+msgid "Invalid CSRF token"
+msgstr "చెల్లని CSRF టోకెన్"
+
+#: 
+msgid "Invalid fields or selections."
+msgstr "చెల్లని ఫీల్డ్‌లు లేదా ఎంపికలు."
+
+#: 
+msgid "Item deleted successfully"
+msgstr "వస్తువు విజయవంతంగా తొలగించబడింది"
+
+#: 
+msgid "Move down"
+msgstr "క్రిందికి తరలించు"
+
+#: 
+msgid "Move up"
+msgstr "పైకి తరలించు"
+
+#: 
+msgid "Opportunity"
+msgstr "అవకాశం"
+
+#: 
+msgid "Order"
+msgstr "ఆర్డర్"
+
+#: 
+msgid "PDFs successfully emailed to %s families."
+msgstr "%s కుటుంబాలకు PDFలు విజయవంతంగా ఇమెయిల్ చేయబడ్డాయి."
+
+#: 
+msgid "Percentage"
+msgstr "శాతం"
+
+#: 
+msgid "Person Properties"
+msgstr "వ్యక్తి లక్షణాలు"
 
 #: 
 msgid "Property Type"
 msgstr "ఆస్తి రకం"
 
 #: 
+msgid "Property to Delete"
+msgstr "తొలగించాల్సిన ఆస్తి"
+
+#: 
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr "ఈ స్వచ్ఛంద అవకాశానికి వ్యక్తులు కేటాయించబడ్డారు. తొలగించడం వల్ల అన్‌అసైన్ అవుతుంది:"
+
+#: 
+msgid "This will remove it from all people currently assigned to it."
+msgstr "ఇది ప్రస్తుతం కేటాయించబడిన వారందరి నుండి దాన్ని తీసివేస్తుంది."
+
+#: 
+msgid "Volunteer Opportunity"
+msgstr "స్వచ్ఛంద అవకాశం"
+
+#: 
+msgid "Warning:"
+msgstr "హెచ్చరిక:"
+
+#: 
+msgid "Yes, delete this Opportunity"
+msgstr "అవును, ఈ అవకాశాన్ని తొలగించండి"
+
+#: 
+msgid "Queries for which user must have finance permissions to use"
+msgstr "వినియోగదారు ఆర్థిక అనుమతులు కలిగి ఉండాల్సిన ప్రశ్నలు"
+
+#: 
+msgid "Fund(s)"
+msgstr "నిధి(లు)"
+
+#: 
+msgid "Password reset for"
+msgstr "కోసం పాస్‌వర్డ్ రీసెట్"
+
+#. Context: locales
+#: 
+msgid "Spanish - Argentina"
+msgstr "స్పానిష్ - అర్జెంటీనా"
+
+#. Context: locales
+#: 
+msgid "Spanish - Colombia"
+msgstr "స్పానిష్ - కొలంబియా"
+
+#. Context: locales
+#: 
+msgid "Spanish - El Salvador"
+msgstr "స్పానిష్ - ఎల్ సాల్వడార్"
+
+#. Context: locales
+#: 
+msgid "Spanish - Mexico"
+msgstr "స్పానిష్ - మెక్సికో"
+
+#: 
 msgid "Add Property Type"
 msgstr "ఆస్తి రకాన్ని జోడించండి"
+
+#: 
+msgid "Add Your First Property Type"
+msgstr "మీ మొదటి ఆస్తి రకాన్ని జోడించండి"
+
+#: 
+msgid "Auto-calculated from counts above"
+msgstr "పై గణనల నుండి ఆటో-లెక్కించబడింది"
+
+#: 
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr "ఈ ఫీల్డ్‌ను తొలగించడం ద్వారా, ఈ ఫీల్డ్ కోసం కేటాయించిన అన్ని గ్రూప్ సభ్యుల డేటాను మీరు శాశ్వతంగా కోల్పోతారు!"
+
+#: 
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr "ఈ నిధిని తొలగించడం ద్వారా, మీరు చారిత్రక విరాళాల రికార్డులను ప్రభావితం చేయవచ్చు!"
+
+#: 
+msgid "Category Name"
+msgstr "వర్గం పేరు"
+
+#: 
+msgid "Checked In"
+msgstr "చెక్ ఇన్ చేయబడింది"
+
+#: 
+msgid "Checked Out"
+msgstr "చెక్ అవుట్ చేయబడింది"
 
 #: 
 msgid "Current Fiscal Year"
 msgstr "ప్రస్తుత ఆర్థిక సంవత్సరం"
 
 #: 
+msgid "Delete (will delete all associated records)"
+msgstr "తొలగించు (అనుబంధ రికార్డులన్నింటినీ తొలగిస్తుంది)"
+
+#: 
 msgid "Edit Property Type"
 msgstr "ఆస్తి రకాన్ని సవరించండి"
 
 #: 
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr "కామాతో వేరు చేయబడిన గణన వర్గాలను నమోదు చేయండి (ఉదా., సభ్యులు, సందర్శకులు, పిల్లలు)."
+
+#: 
+msgid "Enter sermon notes or event text..."
+msgstr "ప్రసంగ నోట్స్ లేదా ఈవెంట్ టెక్స్ట్ నమోదు చేయండి..."
+
+#: 
+msgid "Existing Donation Funds"
+msgstr "ఇప్పటికే ఉన్న విరాళాల నిధులు"
+
+#: 
+msgid "Existing Group Properties"
+msgstr "ఇప్పటికే ఉన్న గ్రూప్ లక్షణాలు"
+
+#: 
+msgid "Failed to update role. Please try again."
+msgstr "పాత్రను నవీకరించడంలో విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Family Pledges"
+msgstr "కుటుంబ వాగ్దానాలు"
+
+#: 
+msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
+msgstr "తొలగింపు లేదా 'కొత్తది జోడించు' బటన్ను ఉపయోగించకుండా మీరు 'మార్పులను సేవ్ చేయి' చేయకపోతే ఫీల్డ్ మార్పులు కోల్పోతాయి!"
+
+#: 
+msgid "Filter by Class"
+msgstr "తరగతి వారీగా ఫిల్టర్ చేయండి"
+
+#: 
+msgid "Fund deleted successfully"
+msgstr "నిధి విజయవంతంగా తొలగించబడింది"
+
+#: 
+msgid "In Use"
+msgstr "వాడకంలో ఉంది"
+
+#: 
+msgid "Manage"
+msgstr "నిర్వహించు"
+
+#: 
+msgid "No pledges found for the selected fiscal year"
+msgstr "ఎంచుకున్న ఆర్థిక సంవత్సరానికి వాగ్దానాలు కనుగొనబడలేదు"
+
+#: 
+msgid "No property types found"
+msgstr "ఆస్తి రకాలు కనుగొనబడలేదు"
+
+#: 
+msgid "Number of records using this property type"
+msgstr "ఈ ఆస్తి రకాన్ని ఉపయోగించే రికార్డుల సంఖ్య"
+
+#: 
+msgid "Optional detailed description of this property type"
+msgstr "ఈ ఆస్తి రకం యొక్క ఐచ్ఛిక వివరణాత్మక వివరణ"
+
+#: 
+msgid "Please correct the errors below."
+msgstr "దయచేసి క్రింది లోపాలను సరిచేయండి."
+
+#: 
+msgid "Pledge Amount"
+msgstr "వాగ్దాన మొత్తం"
+
+#: 
+msgid "Pledge Dashboard"
+msgstr "వాగ్దాన డాష్‌బోర్డ్"
+
+#: 
+msgid "Remaining"
+msgstr "మిగిలినది"
+
+#: 
+msgid "Remove this attendance count?"
+msgstr "ఈ హాజరు గణనను తీసివేయాలా?"
+
+#: 
+msgid "Select the type of record this property applies to"
+msgstr "ఈ ఆస్తికి వర్తించే రికార్డ్ రకాన్ని ఎంచుకోండి"
+
+#: 
+msgid "That fund name already exists."
+msgstr "ఆ నిధి పేరు ఇప్పటికే ఉంది."
+
+#: 
+msgid "Total Pledges"
+msgstr "మొత్తం వాగ్దానాలు"
+
+#: 
+msgid "Track and manage pledge commitments by family and fund"
+msgstr "కుటుంబం మరియు నిధి ద్వారా వాగ్దాన నిబద్ధతలను ట్రాక్ చేయండి మరియు నిర్వహించండి"
+
+#: 
+msgid "View Properties"
+msgstr "ఆస్తులను వీక్షించండి"
+
+#: 
+msgid "e.g., Visitors, Children"
+msgstr "ఉదా., సందర్శకులు, పిల్లలు"
+
+#: 
+msgid "of pledges"
+msgstr "వాగ్దానాల యొక్క"
+
+#: 
+msgid "records"
+msgstr "రికార్డులు"
+
+#: 
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr "ఖాళీగా లేకపోతే '/' తో ప్రారంభం కావాలి; చివరిలో '/' ఉండకూడదు. అక్షరాలు, సంఖ్యలు, అండర్‌స్కోర్, డాష్, డాట్ మరియు '/' మాత్రమే అనుమతించబడతాయి."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d వ్యక్తులు"
+msgstr[1] "%d మంది"
+
+#: 
+msgid "All Classifications"
+msgstr "అన్ని వర్గీకరణలు"
+
+#: 
+msgid "No people found matching your criteria."
+msgstr "మీ ప్రమాణాలకు సరిపోయే వ్యక్తులు కనుగొనబడలేదు."
+
+#: 
+msgid "Off"
+msgstr "ఆఫ్"
+
+#: 
+msgid "On"
+msgstr "ఆన్"
+
+#: 
 msgid "Photo Directory"
 msgstr "ఫోటో డైరెక్టరీ"
+
+#: 
+msgid "Reset Filters"
+msgstr "ఫిల్టర్‌లను రీసెట్ చేయండి"
+
+#: 
+msgid "Show only people with photos"
+msgstr "ఫోటోలు ఉన్న వ్యక్తులను మాత్రమే చూపించు"
+
+#: 
+msgid "Checkout All"
+msgstr "అన్నీ చెక్ అవుట్ చేయండి"
+
+#: 
+msgid "Expected"
+msgstr "అంచనా వేయబడినది"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "కియోస్క్ తొలగించడంలో విఫలమైంది"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "ఆర్థిక సంవత్సరం వారీగా కుటుంబ వాగ్దానం"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "నమోదిత విద్యార్థులను కనుగొనండి"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "ఆర్థిక సంవత్సరం."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "నమోదిత విద్యార్థుల సమూహం"
+
+#: 
+msgid "Here"
+msgstr "ఇక్కడ"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "చెల్లని అప్పగింత రకం"
+
+#: 
+msgid "Invalid person ID"
+msgstr "చెల్లని వ్యక్తి ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "కియోస్క్ నమోదు నిలిపివేయబడింది"
+
+#: 
+msgid "Kiosk not found"
+msgstr "కియోస్క్ కనుగొనబడలేదు"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "కియోస్క్ చెక్-ఇన్ కార్యాచరణ కోసం ఈ ఈవెంట్‌ను సమూహానికి లింక్ చేయండి. సమూహ సభ్యులు కియోస్క్‌లో కనిపిస్తారు."
+
+#: 
+msgid "Linked Group"
+msgstr "లింక్ చేయబడిన సమూహం"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "కొత్త కియోస్క్ పరికర నమోదు ప్రస్తుతం నిలిపివేయబడింది. కియోస్క్ నమోదును ప్రారంభించడానికి దయచేసి మీ సిస్టమ్ నిర్వాహకుడిని సంప్రదించండి."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "సమూహం లేదు (కియోస్క్ చెక్-ఇన్ కోసం ఎంచుకోండి)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "ఇంకా ఎవరూ చెక్-ఇన్ చేయలేదు"
+
+#: 
+msgid "Person not found"
+msgstr "వ్యక్తి కనుగొనబడలేదు"
+
+#: 
+msgid "Pickup Request"
+msgstr "పిక్అప్ అభ్యర్థన"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "దయచేసి వీలైనంత త్వరగా తరగతి గదికి వెళ్లండి."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "ఎంచుకున్న ఆర్థిక సంవత్సరానికి ప్రతి నిధికి కుటుంబం పేరు ద్వారా వాగ్దాన సారాంశం"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "నమోదిత విద్యార్థులు"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "ఉపాధ్యాయుడు ఈ హెచ్చరికను పంపారు"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "ఈ కియోస్క్ ఉత్తమ చెక్-ఇన్ అనుభవం కోసం టాబ్లెట్‌లో ల్యాండ్‌స్కేప్ మోడ్‌లో ఉత్తమంగా వీక్షించబడుతుంది."
+
+#: 
+msgid "Tip"
+msgstr "చిట్కా"
+
+#: 
+msgid "Try Again"
+msgstr "మళ్ళీ ప్రయత్నించండి"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "రాబోయే పుట్టినరోజులు"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "చెక్-ఇన్ కోసం వేచి ఉంది"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "ప్రారంభించబడినప్పుడు, కొత్త కియోస్క్ పరికరాలు 30 సెకన్ల పాటు నమోదు చేయగలవు."
+
+#: 
+msgid "Your child"
+msgstr "మీ బిడ్డ"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "నుండి తీసుకోబడాలి"
+
+#: 
+msgid "their classroom"
+msgstr "వారి తరగతి గది"
+
+#: 
+msgid "All timezones match"
+msgstr "అన్ని టైమ్‌జోన్‌లు సరిపోలుతాయి"
+
+#: 
+msgid "Baseline"
+msgstr "బేస్‌లైన్"
+
+#: 
+msgid "Browser"
+msgstr "బ్రౌజర్"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "బ్రౌజర్ సిస్టమ్ కాన్ఫిగరేషన్‌కు భిన్నంగా ఉంది - ఈ వినియోగదారు కోసం తేదీలు సరిగ్గా ప్రదర్శించబడకపోవచ్చు."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "ChurchCRM ఇన్‌స్టాలేషన్ డైరెక్టరీకి వ్రాయలేరు. వెబ్ సర్వర్‌కు వ్రాత అనుమతులు ఉన్నాయని దయచేసి తనిఖీ చేయండి."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "టైమ్‌జోన్‌లను పోల్చుతోంది..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "గమ్యస్థాన డైరెక్టరీ లేదు. ChurchCRM సరిగ్గా ఇన్‌స్టాల్ చేయబడిందని దయచేసి ధృవీకరించండి."
+
+#: 
+msgid "Does not match system config"
+msgstr "సిస్టమ్ కాన్ఫిగరేషన్‌కు సరిపోలడం లేదు"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "డౌన్‌లోడ్ చేయబడిన విడుదల ఫైల్ ఖాళీగా ఉంది. నెట్‌వర్క్ సమస్యలు లేదా GitHub రేట్ పరిమితుల కారణంగా ఇది సంభవించవచ్చు. దయచేసి తర్వాత మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "ఎక్స్‌ట్రాక్షన్ పూర్తయింది కానీ అప్‌గ్రేడ్ ఫైల్‌లు కనుగొనబడలేదు. అప్‌గ్రేడ్ ఆర్కైవ్ పాడైపోయి ఉండవచ్చు."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "అప్‌గ్రేడ్ వర్తింపజేయడంలో విఫలమైంది. దయచేసి వివరాల కోసం సర్వర్ లాగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "అప్‌గ్రేడ్ డైరెక్టరీని సృష్టించడంలో విఫలమైంది. దయచేసి ఫైల్ అనుమతులను తనిఖీ చేయండి."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "అనేక ప్రయత్నాల తర్వాత GitHub నుండి విడుదల ఫైల్‌ను డౌన్‌లోడ్ చేయడంలో విఫలమైంది. దయచేసి మీ సర్వర్ ఇంటర్నెట్ కనెక్షన్‌ను తనిఖీ చేయండి మరియు మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "అప్‌గ్రేడ్ ఆర్కైవ్‌ను ఎక్స్‌ట్రాక్ట్ చేయడంలో విఫలమైంది. దయచేసి డిస్క్ స్పేస్ మరియు ఫైల్ అనుమతులను తనిఖీ చేయండి."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "అప్‌గ్రేడ్ ఆర్కైవ్‌ను తెరవడంలో విఫలమైంది. డౌన్‌లోడ్ చేయబడిన ఫైల్ పాడైపోయి ఉండవచ్చు."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "డౌన్‌లోడ్ చేయబడిన విడుదల ఫైల్‌ను సేవ్ చేయడంలో విఫలమైంది. దయచేసి డిస్క్ స్పేస్ మరియు అనుమతులను తనిఖీ చేయండి."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "ప్రారంభ పరామితిలో చెల్లని తేదీ ఆకృతి"
+
+#: 
+msgid "Mismatch"
+msgstr "వైరుధ్యం"
+
+#: 
+msgid "Not set"
+msgstr "సెట్ చేయబడలేదు"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP యాక్టివ్"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "మూల డైరెక్టరీ లేదు. అప్‌గ్రేడ్ ఆర్కైవ్ సరిగ్గా ఎక్స్‌ట్రాక్ట్ చేయబడలేదు. దయచేసి ఫైల్ అనుమతులను మరియు డిస్క్ స్పేస్‌ను తనిఖీ చేయండి."
+
+#: 
+msgid "System Config"
+msgstr "సిస్టమ్ కాన్ఫిగరేషన్"
+
+#: 
+msgid "Timezone Information"
+msgstr "టైమ్‌జోన్ సమాచారం"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "టైమ్‌జోన్ వైరుధ్యం కనుగొనబడింది"
+
+#: 
+msgid "mismatch detected"
+msgstr "వైరుధ్యం కనుగొనబడింది"
+
+#: 
+msgid "mismatches detected"
+msgstr "తేడాలు కనుగొనబడ్డాయి"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d గంట"
+msgstr[1] "%d గంటలు"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "WebDAV బ్యాకప్‌ల గురించి"
+
+#: 
+msgid "Add Link"
+msgstr "లింక్‌ను జోడించండి"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "మీ ఖాతాకు అదనపు భద్రతా పొరను జోడించండి"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "నావిగేషన్ మెనుకు అనుకూల బాహ్య లింక్‌లను జోడించండి."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "స్వయం-సంతకం చేసిన సర్టిఫికెట్‌లను అనుమతించు"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "ప్లగిన్ అభ్యర్థనను ప్రాసెస్ చేయడంలో లోపం సంభవించింది"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "మీరు టూ-ఫ్యాక్టర్ ప్రామాణీకరణను నిలిపివేయాలనుకుంటున్నారా? మీ ఖాతా తక్కువ సురక్షితంగా ఉంటుంది."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "పునరుద్ధరణలో భాగంగా, బాహ్య బ్యాకప్‌లు నిలిపివేయబడ్డాయి. మీరు స్వయంచాలక బ్యాకప్‌లను కొనసాగించాలనుకుంటే, అడ్మిన్ > ప్లగిన్‌లలో ఎక్స్‌టర్నల్ బ్యాకప్ ప్లగిన్‌ను తిరిగి ప్రారంభించండి."
+
+#: 
+msgid "Audiences"
+msgstr "ప్రేక్షకులు"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "ప్రామాణీకరణ విఫలమైంది. దయచేసి వినియోగదారు పేరు మరియు పాస్‌వర్డ్‌ను తనిఖీ చేయండి."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "ఆటో-బ్యాకప్ వ్యవధి"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "WebDAV ద్వారా మీ ChurchCRM డేటాబేస్‌ను బాహ్య క్లౌడ్ స్టోరేజ్‌కు స్వయంచాలకంగా బ్యాకప్ చేయండి."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "సగటు క్లిక్ రేటు"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "సగటు ఓపెన్ రేటు"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "డాష్‌బోర్డ్‌కు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "బ్యాకప్ సృష్టించబడింది కానీ రిమోట్ సర్వర్‌కు కాపీ చేయడంలో విఫలమైంది"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "ఇప్పుడే WebDAVకు బ్యాకప్ చేయండి"
+
+#: 
+msgid "Before You Start"
+msgstr "మీరు ప్రారంభించే ముందు"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "బ్రౌజర్ భాషా ప్రాధాన్యత కనుగొనబడింది"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "CRM సభ్యులు సబ్‌స్క్రైబ్ చేయబడలేదు"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "పంపిణీ చేయబడిన ప్రచారాలు"
+
+#: 
+msgid "Can't scan?"
+msgstr "స్కాన్ చేయలేదా?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "మీ లోకేల్‌ను మార్చండి"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM కార్యాచరణను విస్తరించడానికి ప్లగిన్ నిర్మాణానికి మద్దతు ఇస్తుంది."
+
+#: 
+msgid "Cleaned"
+msgstr "శుభ్రం చేయబడింది"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "మీ WebDAV కనెక్షన్ సెట్టింగ్‌లను పరీక్షించడానికి దిగువ బటన్‌ను క్లిక్ చేయండి."
+
+#: 
+msgid "Community Plugins"
+msgstr "కమ్యూనిటీ ప్లగిన్‌లు"
+
+#: 
+msgid "Community plugins"
+msgstr "కమ్యూనిటీ ప్లగిన్‌లు"
+
+#: 
+msgid "Configure External Backup"
+msgstr "బాహ్య బ్యాకప్‌ను కాన్ఫిగర్ చేయండి"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "మెయిల్ చింప్‌ను కాన్ఫిగర్ చేయండి"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "ఈ సెట్టింగ్‌లను కాన్ఫిగర్ చేయండి"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Nextcloud, ownCloud లేదా ఏదైనా WebDAV సర్వర్ వంటి WebDAV-అనుకూల క్లౌడ్ స్టోరేజ్ సేవలకు మీ ChurchCRM డేటాబేస్‌ను స్వయంచాలకంగా బ్యాకప్ చేయడానికి ఈ ప్లగిన్‌ను కాన్ఫిగర్ చేయండి. HTTPS ఉపయోగించి బదిలీ సమయంలో బ్యాకప్‌లు ఎన్‌క్రిప్ట్ చేయబడతాయి."
+
+#: 
+msgid "Configured"
+msgstr "కాన్ఫిగర్ చేయబడింది"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "మీ ప్రామాణీకరణ అనువర్తనం నుండి కోడ్‌తో నిర్ధారించండి"
+
+#: 
+msgid "Connected"
+msgstr "కనెక్ట్ చేయబడింది"
+
+#: 
+msgid "Connection failed"
+msgstr "కనెక్షన్ విఫలమైంది"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "HTTP కోడ్‌తో కనెక్షన్ విఫలమైంది"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "కనెక్షన్ విజయవంతమైంది! WebDAV ఎండ్‌పాయింట్ అందుబాటులో ఉంది."
+
+#: 
+msgid "Connection test failed"
+msgstr "కనెక్షన్ పరీక్ష విఫలమైంది"
+
+#: 
+msgid "Core Plugins"
+msgstr "కోర్ ప్లగిన్‌లు"
+
+#: 
+msgid "Core plugins"
+msgstr "కోర్ ప్లగిన్‌లు"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "ఇప్పుడు బ్యాకప్‌ను సృష్టించి, దాన్ని మీ WebDAV సర్వర్‌కు అప్‌లోడ్ చేయండి."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "మెయిల్ చింప్‌లో ప్రేక్షకులను సృష్టించండి"
+
+#: 
+msgid "Custom"
+msgstr "అనుకూలం"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "అనుకూల మెనూ లింక్‌లు"
+
+#: 
+msgid "Default Image Style"
+msgstr "డిఫాల్ట్ చిత్ర శైలి"
+
+#: 
+msgid "Default List ID"
+msgstr "డిఫాల్ట్ జాబితా ID"
+
+#: 
+msgid "Disable"
+msgstr "నిలిపివేయి"
+
+#: 
+msgid "Disable Plugin"
+msgstr "ప్లగిన్‌ను నిలిపివేయి"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "రెండు-కారకాల ప్రామాణీకరణను నిలిపివేయండి"
+
+#: 
+msgid "Dismiss"
+msgstr "తొలగించు"
+
+#: 
+msgid "Done"
+msgstr "పూర్తయింది"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164 ఫార్మాట్, ఉదా., +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "ప్రతి ప్లగిన్‌కు ఇది అవసరం"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "ప్రతిసారి మీరు సైన్ ఇన్ చేసినప్పుడు, మీ ప్రామాణీకరణ అనువర్తనం నుండి కోడ్‌తో నిర్ధారించాల్సి ఉంటుంది"
+
+#: 
+msgid "Email Addresses"
+msgstr "ఇమెయిల్ చిరునామాలు"
+
+#: 
+msgid "Enable"
+msgstr "ఎనేబుల్ చేయండి"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "బాహ్య బ్యాకప్ ప్లగిన్‌ను ప్రారంభించండి"
+
+#: 
+msgid "Enable Plugin"
+msgstr "ప్లగిన్‌ను ప్రారంభించండి"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "రెండు-కారకాల ప్రామాణీకరణను ప్రారంభించండి"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "WebDAV క్లౌడ్ స్టోరేజ్ కోసం బాహ్య బ్యాకప్ ప్లగిన్‌ను ప్రారంభించండి."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "స్వయం-సంతకం చేసిన SSL సర్టిఫికెట్‌లతో స్థానిక నెట్‌వర్క్ సర్వర్‌ల కోసం మాత్రమే దీన్ని ప్రారంభించండి. ఇది సర్టిఫికెట్ ధృవీకరణను నిలిపివేస్తుంది."
+
+#: 
+msgid "Endpoint URL"
+msgstr "ఎండ్‌పాయింట్ URL"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "మీ ప్రామాణీకరణ అనువర్తనం నుండి 6-అంకెల కోడ్‌ను నమోదు చేయండి"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "మీ వినియోగదారు పేరు మరియు పాస్‌వర్డ్‌ను యధావిధిగా నమోదు చేయండి"
+
+#: 
+msgid "External Backup"
+msgstr "బాహ్య బ్యాకప్"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "బాహ్య బ్యాకప్ (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "బాహ్య బ్యాకప్ సెట్టింగ్‌లు"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "బాహ్య బ్యాకప్ ప్లగిన్ ప్రారంభించబడింది కానీ కాన్ఫిగర్ చేయబడలేదు."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "బాహ్య బ్యాకప్ ప్లగిన్ కాన్ఫిగర్ చేయబడలేదు. దయచేసి ప్లగిన్‌లో WebDAV సెట్టింగ్‌లను కాన్ఫిగర్ చేయండి."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "బాహ్య బ్యాకప్ ప్లగిన్ ప్రారంభించబడలేదు. దయచేసి ప్లగిన్ నిర్వహణలో దీన్ని ప్రారంభించి, కాన్ఫిగర్ చేయండి."
+
+#: 
+msgid "Failed to create link"
+msgstr "లింక్‌ను సృష్టించడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to delete link"
+msgstr "లింక్‌ను తొలగించడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "ప్లగిన్‌ను నిలిపివేయడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "ప్లగిన్‌ను ప్రారంభించడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "ప్లగిన్ వివరాలను పొందడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "ప్లగిన్‌లను జాబితా చేయడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "సెట్టింగ్‌లను రీసెట్ చేయడంలో విఫలమైంది"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "SMS పంపడంలో విఫలమైంది"
+
+#: 
+msgid "Family Status"
+msgstr "కుటుంబ స్థితి"
+
+#: 
+msgid "Family not found"
+msgstr "కుటుంబం కనుగొనబడలేదు"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "మెయిల్‌చింప్‌లో కనుగొనండి: ఆడియన్స్ > సెట్టింగ్‌లు > ఆడియన్స్ పేరు మరియు డిఫాల్ట్‌లు > ఆడియన్స్ ID"
+
+#: 
+msgid "From Phone Number"
+msgstr "ఫోన్ నంబర్ నుండి"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "dashboard.vonage.com నుండి"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "GA4 కొలత ID"
+
+#: 
+msgid "Generate new code"
+msgstr "కొత్త కోడ్‌ను రూపొందించండి"
+
+#: 
+msgid "Get Started"
+msgstr "ప్రారంభించండి"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "మెయిల్‌చింప్ నుండి మీ API కీని పొందండి: ఖాతా సెట్టింగ్‌లు > ఎక్స్‌ట్రాలు > API కీలు"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "మీ ప్రామాణీకరణ అనువర్తనాన్ని సిద్ధంగా ఉంచుకోండి (Google Authenticator, Microsoft Authenticator, Authy, మొదలైనవి)"
+
+#: 
+msgid "Help"
+msgstr "సహాయం"
+
+#: 
+msgid "Id"
+msgstr "ID"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "ఇమెయిల్ చిరునామాకు Gravatar లేనప్పుడు చూపబడిన చిత్రం"
+
+#: 
+msgid "Important"
+msgstr "ముఖ్యం"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "వాటిని ఇందులో ఉంచడం ద్వారా ప్లగిన్‌లను ఇన్‌స్టాల్ చేయండి"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "తప్పు కోడ్. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "చెల్లని ఎండ్‌పాయింట్ URL. https:// తో ప్రారంభమయ్యే పూర్తి URL అయి ఉండాలి (ఉదాహరణకు, https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "కియోస్క్ పరికరం కనుగొనబడలేదు"
+
+#: 
+msgid "Last Backup"
+msgstr "చివరి బ్యాకప్"
+
+#: 
+msgid "Last Campaign"
+msgstr "చివరి ప్రచారం"
+
+#: 
+msgid "Last Subscriber"
+msgstr "చివరి చందాదారుడు"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "చివరి విజయవంతమైన బ్యాకప్"
+
+#: 
+msgid "Last campaign"
+msgstr "చివరి ప్రచారం"
+
+#: 
+msgid "Link Name"
+msgstr "లింక్ పేరు"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "లింక్ చిరునామాలో HTML ట్యాగ్‌లు ఉండకూడదు"
+
+#: 
+msgid "Link address is required"
+msgstr "లింక్ చిరునామా తప్పనిసరి"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "లింక్ చెల్లుబాటు అయ్యే URL అయి ఉండాలి"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "లింక్ http:// లేదా https:// తో ప్రారంభం కావాలి"
+
+#: 
+msgid "Link not found"
+msgstr "లింక్ కనుగొనబడలేదు"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "రికవరీ కోడ్‌లను లోడ్ చేస్తోంది"
+
+#: 
+msgid "MailChimp"
+msgstr "మెయిల్‌చింప్"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "మెయిల్‌చింప్ API కీ"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "మెయిల్‌చింప్ డాష్‌బోర్డ్"
+
+#: 
+msgid "Manage Links"
+msgstr "లింక్‌లను నిర్వహించండి"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "రెండు-కారకాల ప్రమాణీకరణను నిర్వహించండి"
+
+#: 
+msgid "Manual Backup"
+msgstr "మాన్యువల్ బ్యాకప్"
+
+#: 
+msgid "Menu Links"
+msgstr "మెను లింక్‌లు"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "మెను పేరులో HTML ట్యాగ్‌లు ఉండకూడదు"
+
+#: 
+msgid "Menu name is required"
+msgstr "మెను పేరు తప్పనిసరి"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "మెను పేరు 50 అక్షరాలు లేదా అంతకంటే తక్కువ ఉండాలి"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "మెను పేరు కనీసం 2 అక్షరాలు ఉండాలి"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "http:// లేదా https:// తో ప్రారంభం కావాలి"
+
+#: 
+msgid "Needs Configuration"
+msgstr "కాన్ఫిగరేషన్ అవసరం"
+
+#: 
+msgid "Never"
+msgstr "ఎప్పుడూ కాదు"
+
+#: 
+msgid "No Audiences Found"
+msgstr "ఆడియన్స్ కనుగొనబడలేదు"
+
+#: 
+msgid "No backups recorded"
+msgstr "బ్యాకప్‌లు నమోదు చేయబడలేదు"
+
+#: 
+msgid "No community plugins installed"
+msgstr "కమ్యూనిటీ ప్లగిన్‌లు ఇన్‌స్టాల్ చేయబడలేదు"
+
+#: 
+msgid "No core plugins found"
+msgstr "ప్రధాన ప్లగిన్‌లు కనుగొనబడలేదు"
+
+#: 
+msgid "No settings provided"
+msgstr "సెట్టింగ్‌లు అందించబడలేదు"
+
+#: 
+msgid "Not Configured"
+msgstr "కాన్ఫిగర్ చేయబడలేదు"
+
+#: 
+msgid "Not in CRM"
+msgstr "CRMలో లేదు"
+
+#: 
+msgid "One-Time Code"
+msgstr "ఒకసారి ఉపయోగించే కోడ్"
+
+#: 
+msgid "Open MailChimp"
+msgstr "మెయిల్‌చింప్‌ను తెరవండి"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "మీ ప్రామాణీకరణ యాప్‌ను తెరిచి, ఈ QR కోడ్‌ను స్కాన్ చేయండి"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "ఓపెన్‌ఎల్‌పీ సర్వర్ URL"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "ఐచ్ఛికం - OpenLP ప్రమాణీకరణ ప్రారంభించబడితే మాత్రమే అవసరం"
+
+#: 
+msgid "Phone number and message required"
+msgstr "ఫోన్ నంబర్ మరియు సందేశం తప్పనిసరి"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "దయచేసి ముందుగా ఎండ్‌పాయింట్, వినియోగదారు పేరు మరియు పాస్‌వర్డ్‌ను కాన్ఫిగర్ చేయండి."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "రిమోట్ బ్యాకప్‌ను సృష్టించే ముందు దయచేసి WebDAV సెట్టింగ్‌లను కాన్ఫిగర్ చేయండి."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "కనెక్షన్‌ని పరీక్షించే ముందు దయచేసి WebDAV సెట్టింగ్‌లను కాన్ఫిగర్ చేయండి."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "ఈ ఇంటిగ్రేషన్‌ను ఉపయోగించడానికి దయచేసి మీ MailChimp API కీని కాన్ఫిగర్ చేయండి."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "దయచేసి లింక్ పేరును నమోదు చేయండి (2-50 అక్షరాలు)"
+
+#: 
+msgid "Please try again"
+msgstr "దయచేసి మళ్ళీ ప్రయత్నించండి"
+
+#: 
+msgid "Plugin Development"
+msgstr "ప్లగిన్ అభివృద్ధి"
+
+#: 
+msgid "Plugin Help"
+msgstr "ప్లగిన్ సహాయం"
+
+#: 
+msgid "Plugin Management"
+msgstr "ప్లగిన్ నిర్వహణ"
+
+#: 
+msgid "Plugin Settings"
+msgstr "ప్లగిన్ సెట్టింగ్‌లు"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "ఇతర ప్లగిన్‌లు దీనిపై ఆధారపడి ఉన్నందున ప్లగిన్‌ను నిలిపివేయడం సాధ్యం కాదు"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "డిపెండెన్సీ లేదా వెర్షన్ అవసరాల కారణంగా ప్లగిన్‌ను ప్రారంభించడం సాధ్యం కాదు"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "ప్లగిన్ విజయవంతంగా నిలిపివేయబడింది"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "ప్లగిన్ విజయవంతంగా ప్రారంభించబడింది"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "ప్లగిన్ లోడ్ చేయడంలో విఫలమైంది"
+
+#: 
+msgid "Plugin not found"
+msgstr "ప్లగిన్ కనుగొనబడలేదు"
+
+#: 
+msgid "Plugins"
+msgstr "ప్లగిన్‌లు"
+
+#: 
+msgid "Print"
+msgstr "ముద్రించు"
+
+#: 
+msgid "Recipients and message required"
+msgstr "గ్రహీతలు మరియు సందేశం అవసరం"
+
+#: 
+msgid "Recovery Codes"
+msgstr "పునరుద్ధరణ కోడ్‌లు"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "రిమోట్ బ్యాకప్ విఫలమైంది. వివరాల కోసం సర్వర్ లాగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS పంపబడింది"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "ఈ పునరుద్ధరణ కోడ్‌లను సురక్షితమైన ప్రదేశంలో సేవ్ చేయండి. మీరు మీ ఆథెంటికేటర్ యాప్‌కు యాక్సెస్ కోల్పోతే మీ ఖాతాను యాక్సెస్ చేయడానికి వీటిని ఉపయోగించవచ్చు."
+
+#: 
+msgid "Scan QR Code"
+msgstr "QR కోడ్‌ని స్కాన్ చేయండి"
+
+#: 
+msgid "Secure"
+msgstr "సురక్షితం"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "ఆథెంటికేటర్‌ని సెటప్ చేయండి"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "సెట్టింగ్‌లు విజయవంతంగా రీసెట్ చేయబడ్డాయి"
+
+#: 
+msgid "Setup Complete"
+msgstr "సెటప్ పూర్తయింది"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "చర్చ్ CRM తో పంపబడింది."
+
+#: 
+msgid "Sign In"
+msgstr "సైన్ ఇన్"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "కొన్ని సెట్టింగ్‌లను రీసెట్ చేయలేకపోయాము"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "కొన్ని సెట్టింగ్‌లను సేవ్ చేయలేకపోయాము"
+
+#: 
+msgid "Subscribers"
+msgstr "చందాదారులు"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "CRM లో లేని చందాదారులు"
+
+#: 
+msgid "Test Connection"
+msgstr "కనెక్షన్‌ని పరీక్షించండి"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "WebDAV కనెక్షన్‌ని పరీక్షించండి"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "ఈ ప్లగిన్ ప్రారంభించినప్పుడు నావిగేషన్ సైడ్‌బార్‌లోని \"లింక్‌లు\" మెనూలో ఈ లింక్‌లు కనిపిస్తాయి."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "ఈ వ్యక్తులు మీ MailChimp ప్రేక్షకులకు సబ్‌స్క్రైబ్ చేయబడ్డారు, కానీ ChurchCRMలో లేరు. వారిని మీ డేటాబేస్‌కు జోడించడాన్ని లేదా MailChimp నుండి తీసివేయడాన్ని పరిగణించండి."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "ఈ వ్యక్తులు ChurchCRMలో ఇమెయిల్ చిరునామాలతో ఉన్నారు, కానీ ఈ MailChimp ప్రేక్షకులకు సబ్‌స్క్రైబ్ చేయబడలేదు. వారిని సబ్‌స్క్రైబ్ చేయమని ఆహ్వానించడాన్ని పరిగణించండి."
+
+#: 
+msgid "Third-party extensions."
+msgstr "మూడవ పక్ష పొడిగింపులు."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "ఇది గతంలో నమోదు చేసిన ఏవైనా 2FA పద్ధతులను భర్తీ చేస్తుంది"
+
+#: 
+msgid "Total Campaigns"
+msgstr "మొత్తం ప్రచారాలు"
+
+#: 
+msgid "Total Subscribers"
+msgstr "మొత్తం చందాదారులు"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "రెండు కారకాల నమోదు లోపం"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "రెండు-కారకాల ప్రమాణీకరణ నిలిపివేయబడింది"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "మీ ఖాతాను రక్షించడానికి రెండు-కారకాల ప్రమాణీకరణ ఉత్తమ మార్గాలలో ఒకటి. దీన్ని ఎల్లప్పుడూ ప్రారంభించి ఉంచాలని మేము గట్టిగా సిఫార్సు చేస్తున్నాము."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "మీ OpenLP సర్వర్ URL (ఉదా., http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "లోడ్ చేయలేకపోయాము"
+
+#: 
+msgid "Unsubscribed"
+msgstr "అన్‌సబ్‌స్క్రైబ్ చేయబడింది"
+
+#: 
+msgid "Use a different account"
+msgstr "మరొక ఖాతాను ఉపయోగించండి"
+
+#: 
+msgid "Value is configured"
+msgstr "విలువ కాన్ఫిగర్ చేయబడింది"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "విలువ సెట్ చేయబడింది - ప్రస్తుతము ఉంచడానికి ఖాళీగా ఉంచండి"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "ధృవీకరించండి & సైన్ ఇన్ చేయండి"
+
+#: 
+msgid "Verify Code"
+msgstr "కోడ్‌ని ధృవీకరించండి"
+
+#: 
+msgid "Verifying"
+msgstr "ధృవీకరిస్తోంది"
+
+#: 
+msgid "Vonage API Key"
+msgstr "వోనేజ్ API కీ"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "వోనేజ్ API సీక్రెట్"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV కాన్ఫిగరేషన్"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV కనెక్షన్"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV బ్యాకప్‌లు సరిగ్గా కాన్ఫిగర్ చేయబడలేదు. దయచేసి ఎండ్‌పాయింట్, యూజర్‌నేమ్ మరియు పాస్‌వర్డ్ సెట్ చేయబడి ఉన్నాయని నిర్ధారించుకోండి."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV ఎండ్‌పాయింట్ URL అవసరం."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV పాస్‌వర్డ్ అవసరం."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV యూజర్‌నేమ్ అవసరం."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "మీరు మీ యాప్‌కు యాక్సెస్ కోల్పోతే బ్యాకప్ పునరుద్ధరణ కోడ్‌లను కూడా ఉపయోగించవచ్చు"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "మీరు ఇప్పుడు మీ ఆథెంటికేటర్ యాప్‌ను ఉపయోగించి సైన్ ఇన్ చేయవచ్చు. ప్రతి కోడ్ 30 సెకన్ల పాటు చెల్లుతుంది."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "మీరు మీ యాప్‌కు యాక్సెస్ కోల్పోతే ఉపయోగించగల బ్యాకప్ కోడ్‌లను అందుకుంటారు"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "మీ GA4 మెజర్‌మెంట్ ID (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "మీ MailChimp ఖాతాకు ఏ ప్రేక్షకులు (జాబితాలు) కాన్ఫిగర్ చేయబడలేదు."
+
+#: 
+msgid "Your account is now protected"
+msgstr "మీ ఖాతా ఇప్పుడు రక్షించబడింది"
+
+#: 
+msgid "Your account is protected"
+msgstr "మీ ఖాతా రక్షించబడింది"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "మీ ఆథెంటికేటర్ యాప్ విజయవంతంగా నమోదు చేయబడింది"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "మీ బ్రౌజర్ భాషా ప్రాధాన్యత మీ ChurchCRM స్థానికత నుండి భిన్నంగా ఉంది"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "ఉదా., చర్చి వెబ్‌సైట్"
+
+#: 
+msgid "manifest."
+msgstr "మ్యానిఫెస్ట్."
+
+#: 
+msgid "subscribers"
+msgstr "చందాదారులు"
+
+#: 
+msgid "API Key is required."
+msgstr "API కీ అవసరం."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "%s వద్ద OpenLPకి కనెక్ట్ చేయలేకపోయాము. సర్వర్ URLని మరియు OpenLP నడుస్తుందని తనిఖీ చేయండి."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "%s వద్ద OpenLPకి కనెక్ట్ చేయలేకపోయాము. సర్వర్ HTTP %dని తిరిగి ఇచ్చింది."
+
+#: 
+msgid "Congregation Map"
+msgstr "సమావేశ పటం"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "సమావేశ పటం — సెటప్ అవసరం"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "MailChimpకి కనెక్ట్ చేయబడింది! ఖాతా: %s (%d చందాదారులు)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "OpenLP సర్వర్‌కు విజయవంతంగా కనెక్ట్ చేయబడింది."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "OpenLPకి కనెక్ట్ చేయబడింది! వెర్షన్: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "కనెక్ట్ చేయబడింది! ఖాతా బ్యాలెన్స్: €%.2f. SMS పంపడానికి సిద్ధంగా ఉంది."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "MailChimpకి కనెక్ట్ చేయలేకపోయాము. దయచేసి మీ API కీని తనిఖీ చేయండి."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "OpenLP సర్వర్‌కు కనెక్ట్ చేయడంలో విఫలమైంది."
+
+#: 
+msgid "Get Directions"
+msgstr "దిశలను పొందండి"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "దేశ కోడ్‌ను చేర్చండి, ఉదాహరణకు +14155551234 (US) లేదా +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "చెల్లని \"ఫ్రమ్ నంబర్\": \"%s\". దేశ కోడ్‌ను చేర్చండి, ఉదాహరణకు +14155551234 (US) లేదా +447911123456 (UK)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "చెల్లని API ఆధారాలు. దయచేసి మీ API కీ మరియు API సీక్రెట్‌ను ధృవీకరించండి."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "చెల్లని API కీ ఆకృతి. మీ MailChimp API కీని తనిఖీ చేయండి."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "చెల్లని ఎండ్‌పాయింట్ URL. ఇది https:// తో ప్రారంభమయ్యే పూర్తి URL అయి ఉండాలి."
+
+#: 
+msgid "Invalid server URL format."
+msgstr "చెల్లని సర్వర్ URL ఆకృతి."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp కనెక్షన్ విఫలమైంది."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "మ్యాప్ జూమ్ స్థాయి"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "కుటుంబాలు లేవా? వాటిని మ్యాప్‌లో చేర్చడానికి కోఆర్డినేట్‌లను నవీకరించండి."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "తప్పనిసరి సెట్టింగ్‌లు లేవు: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "వ్యక్తికి కుటుంబం లేదు"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "ప్లగిన్ కనుగొనబడలేదు లేదా క్రియాశీలంగా లేదు"
+
+#: 
+msgid "Server URL is required."
+msgstr "సర్వర్ URL అవసరం."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "ఈ ప్లగిన్ కనెక్షన్ పరీక్షను మద్దతు ఇవ్వదు."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "మ్యాప్‌ను ప్రదర్శించలేము: చర్చి చిరునామా ఇంకా జియోకోడ్ చేయబడలేదు."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "సెట్టింగ్‌లలో చర్చి చిరునామాను నవీకరించండి."
+
+#: 
+msgid "Username and password are required."
+msgstr "వినియోగదారు పేరు మరియు పాస్‌వర్డ్ అవసరం."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "ధ్రువీకరణ విఫలమైంది: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "వోనేజ్ సర్వర్ లోపం. దయచేసి తర్వాత మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV ఎండ్‌పాయింట్ URL అవసరం."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "మీరు ఈ ప్రతిజ్ఞ రికార్డును శాశ్వతంగా తొలగించాలనుకుంటున్నారా?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "రద్దు చేసి కుటుంబ వీక్షణకు తిరిగి వెళ్ళు"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "మీరు ఈ రకాన్ని తొలగిస్తే, దాన్ని ఉపయోగించే అన్ని ప్రాపర్టీలను కూడా తీసివేస్తారు మరియు ఏదైనా సంబంధిత ప్రాపర్టీ కేటాయింపులను కోల్పోతారు."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "విరాళాలను ఎంచుకున్న కుటుంబానికి తరలించండి"
 

@@ -11938,6 +11938,406 @@ msgid "Open your authenticator app and scan this QR code"
 msgstr "Otevřete ověřovací aplikaci a naskenujte tento QR kód"
 
 #: 
+msgid "OpenLP Server URL"
+msgstr "URL serveru OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Volitelné – vyžadováno pouze pokud je povoleno ověření OpenLP"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Telefonní číslo a zpráva jsou povinné"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Nejprve prosím nakonfigurujte endpoint, uživatelské jméno a heslo."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Před vytvořením vzdálené zálohy prosím nakonfigurujte nastavení WebDAV."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Před testováním připojení prosím nakonfigurujte nastavení WebDAV."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Prosím nakonfigurujte váš API klíč MailChimp pro použití této integrace."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Zadejte prosím název odkazu (2–50 znaků)"
+
+#: 
+msgid "Please try again"
+msgstr "Zkuste to prosím znovu"
+
+#: 
+msgid "Plugin Development"
+msgstr "Vývoj pluginů"
+
+#: 
+msgid "Plugin Help"
+msgstr "Nápověda pluginu"
+
+#: 
+msgid "Plugin Management"
+msgstr "Správa pluginů"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Nastavení pluginu"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Plugin nelze zakázat, protože na něm závisí jiné pluginy"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Plugin nelze povolit kvůli požadavkům na závislosti nebo verzi"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Plugin byl úspěšně zakázán"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Plugin byl úspěšně povolen"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Plugin se nepodařilo načíst"
+
+#: 
+msgid "Plugin not found"
+msgstr "Plugin nenalezen"
+
+#: 
+msgid "Plugins"
+msgstr "Pluginy"
+
+#: 
+msgid "Print"
+msgstr "Tisk"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Příjemci a zpráva jsou povinné"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Záložní kódy"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Vzdálená záloha selhala. Pro podrobnosti zkontrolujte protokoly serveru."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS odeslána"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Uložte tyto záložní kódy na bezpečné místo. Můžete je použít pro přístup k účtu, pokud ztratíte přístup k aplikaci autentizátoru."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Naskenujte QR kód"
+
+#: 
+msgid "Secure"
+msgstr "Zabezpečeno"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Nastavit autentizátor"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Nastavení bylo úspěšně resetováno"
+
+#: 
+msgid "Setup Complete"
+msgstr "Nastavení dokončeno"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Dodáváno s ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Přihlásit se"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Některá nastavení nelze resetovat"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Některá nastavení nelze uložit"
+
+#: 
+msgid "Subscribers"
+msgstr "Odběratelé"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Odběratelé, kteří nejsou v CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "Otestovat připojení"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Otestovat připojení WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Tyto odkazy se zobrazí v nabídce \"Odkazy\" v postranním panelu navigace, když je tento plugin povolen."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Tito lidé jsou přihlášeni k odběru vaší audience MailChimp, ale v ChurchCRM neexistují. Zvažte jejich přidání do databáze nebo odebrání z MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Tito lidé existují v ChurchCRM s e-mailovými adresami, ale nejsou přihlášeni k odběru této audience MailChimp. Zvažte jejich pozvání k odběru."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Rozšíření třetích stran."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Toto nahradí všechny dříve zaregistrované metody 2FA"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Celkový počet kampaní"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Celkový počet odběratelů"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Chyba registrace dvoufázového ověření"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Dvoufázové ověření bylo zakázáno"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Dvoufázové ověření je jedním z nejlepších způsobů ochrany účtu. Důrazně doporučujeme ponechat ho povolené."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL vašeho serveru OpenLP (např. http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Nelze načíst"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Odhlášen z odběru"
+
+#: 
+msgid "Use a different account"
+msgstr "Použít jiný účet"
+
+#: 
+msgid "Value is configured"
+msgstr "Hodnota je nakonfigurována"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Hodnota je nastavena – ponechte prázdné pro zachování aktuální"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Ověřit a přihlásit"
+
+#: 
+msgid "Verify Code"
+msgstr "Ověřit kód"
+
+#: 
+msgid "Verifying"
+msgstr "Ověřuji"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Klíč API Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Tajný klíč API Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "Konfigurace WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "Připojení WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "Zálohy WebDAV nejsou správně nakonfigurovány. Zkontrolujte, zda jsou nastaveny endpoint, uživatelské jméno a heslo."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "URL endpointu WebDAV je povinná."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "Heslo WebDAV je povinné."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "Uživatelské jméno WebDAV je povinné."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Pokud ztratíte přístup k aplikaci, můžete také použít záložní kódy pro obnovení"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Nyní můžete pro přihlášení použít aplikaci autentizátoru. Každý kód je platný 30 sekund."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Obdržíte záložní kódy, které lze použít, pokud ztratíte přístup k aplikaci"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "Vaše GA4 ID měření (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "Váš účet MailChimp nemá nakonfigurovány žádné audience (seznamy)."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Váš účet je nyní chráněn"
+
+#: 
+msgid "Your account is protected"
+msgstr "Váš účet je chráněn"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Vaše aplikace autentizátoru byla úspěšně zaregistrována"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Jazyková předvolba vašeho prohlížeče se liší od nastavení jazyka ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "např. Webové stránky sboru"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "odběratelé"
+
+#: 
+msgid "API Key is required."
+msgstr "Klíč API je povinný."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Nelze se připojit k OpenLP na %s. Zkontrolujte URL serveru a zda OpenLP běží."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Nelze se připojit k OpenLP na %s. Server vrátil HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Mapa sboru"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Mapa sboru — Vyžaduje nastavení"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Připojeno k MailChimp! Účet: %s (%d odběratelů)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Úspěšně připojeno k serveru OpenLP."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Připojeno k OpenLP! Verze: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Připojeno! Zůstatek účtu: €%.2f. Připraveno k odesílání SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Nepodařilo se připojit k MailChimp. Zkontrolujte prosím váš API klíč."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Připojení k serveru OpenLP selhalo."
+
+#: 
+msgid "Get Directions"
+msgstr "Získat trasu"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Uveďte kód země, např. +14155551234 (USA) nebo +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Neplatné číslo odesílatele: \"%s\". Uveďte kód země, např. +14155551234 (USA) nebo +447911123456 (UK)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Neplatné přihlašovací údaje API. Ověřte prosím váš API klíč a tajný klíč."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Neplatný formát API klíče. Zkontrolujte váš API klíč MailChimp."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "Neplatná URL endpointu. Musí být úplná URL začínající https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Neplatný formát URL serveru."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "Připojení k MailChimp selhalo."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Úroveň přiblížení mapy"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Chybí rodiny? Aktualizujte souřadnice, abyste je zahrnuli na mapě."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Chybí povinná nastavení: %s"
+
+#: 
 msgid "Person has no family"
 msgstr "Osoba nemá rodinu"
 
@@ -11976,4 +12376,20 @@ msgstr "Chyba serveru Vonage. Zkuste to prosím znovu."
 #: 
 msgid "WebDAV Endpoint URL is required."
 msgstr "URL endpointu WebDAV je povinná."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Opravdu chcete trvale smazat tento záznam závazku?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Zrušit a vrátit se do zobrazení rodiny"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Pokud tento typ smažete, odeberete také všechny vlastnosti, které jej používají, a ztratíte všechna odpovídající přiřazení vlastností."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Přesunout dary do vybrané rodiny"
 

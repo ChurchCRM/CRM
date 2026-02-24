@@ -12388,3 +12388,19 @@ msgstr "Kesalahan server Vonage. Silakan coba lagi nanti."
 msgid "WebDAV Endpoint URL is required."
 msgstr "URL Endpoint WebDAV diperlukan."
 
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Apakah Anda yakin ingin menghapus catatan komitmen persembahan ini secara permanen?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Batal dan Kembali ke Tampilan Keluarga"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Jika Anda menghapus tipe ini, Anda juga akan menghapus semua properti yang menggunakannya dan kehilangan semua penugasan properti yang sesuai."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Pindahkan Persembahan ke Keluarga yang Dipilih"
+
