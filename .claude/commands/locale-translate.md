@@ -31,7 +31,9 @@ If mode is `list`, print the output and stop.
 ### Step 2 — Determine which locales to translate
 
 - **single mode**: use just that locale code
-- **all mode**: parse the `--list` output to get every locale code shown
+- **all mode**: parse the `--list` output to get every locale code shown, then **sort by total term count ascending (smallest first, largest last)**
+
+**Why smallest-first?** Small locales complete quickly and validate the workflow early. Failures on a 13-term locale cost almost nothing; failing halfway through a 1000-term locale wastes significant time. Always finish all small locales before starting large ones.
 
 ### Step 3 — For each target locale, get metadata
 
@@ -205,11 +207,15 @@ After all locales are done:
 
 When translating many locales at once, sequential processing is slow. Use parallel background Task agents:
 
+**Process order: smallest locales first, then scale up to larger ones.**
+
 **Group locales by size** and launch one agent per group:
-- **Small locales** (≤ 15 terms, 1 batch file): Process up to 9 in the main session at once — they're fast
-- **Medium locales** (16–200 terms, 1–2 batch files): Group 3–4 per background agent
+- **Small locales** (≤ 15 terms, 1 batch file): Do ALL of these in the main session first — fast and validate workflow
+- **Medium locales** (16–200 terms, 1–2 batch files): Group 3–4 per background agent after smalls are done
 - **Large locales** (200+ terms, 3+ batch files): Group 2–4 per background agent
-- **Very large locales** (700+ terms, 6+ batch files): Dedicate 1 agent per locale
+- **Very large locales** (700+ terms, 6+ batch files): Dedicate 1 agent per locale, run last
+
+**Background agents CANNOT use Bash** (they run without user interaction so Bash approval is never granted). Background agents must use only **Read** and **Write** tools to prepare translation files, then the main session runs the `--apply` Bash commands after agents complete.
 
 **Agent prompt template:**
 ```
