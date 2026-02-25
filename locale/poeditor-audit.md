@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥90%):** 29
-**Good Locales (75-89%):** 10
+**Complete Locales (≥90%):** 32
+**Good Locales (75-89%):** 7
 **Needs Work (<75%):** 6
 **WIP Candidates (>5%, not yet added):** 6
 
@@ -18,6 +18,8 @@
 | `nl` | Dutch | 2984 | 100% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 2984 | 100% | 🟢 Complete | ✅ Yes |
 | `de` | German | 2984 | 100% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 2984 | 100% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 2984 | 100% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 2984 | 100% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 2984 | 100% | 🟢 Complete | ✅ Yes |
 | `ko` | Korean | 2984 | 100% | 🟢 Complete | ✅ Yes |
@@ -30,22 +32,20 @@
 | `ja` | Japanese | 2983 | 99.97% | 🟢 Complete | ✅ Yes |
 | `pl` | Polish | 2983 | 99.97% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 2982 | 99.93% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 2971 | 99.56% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 2970 | 99.53% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 2975 | 99.7% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 2928 | 98.12% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 2870 | 96.18% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 2867 | 96.08% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 2821 | 94.54% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 2820 | 94.5% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 2819 | 94.47% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 2819 | 94.47% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 2736 | 91.69% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 2736 | 91.69% | 🟢 Complete | ✅ Yes |
 | `es-sv` | Spanish (SV) | 2736 | 91.69% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 2678 | 89.75% | 🟡 Good | ✅ Yes |
 | `fi` | Finnish | 2678 | 89.75% | 🟡 Good | ✅ Yes |
-| `hu` | Hungarian | 2678 | 89.75% | 🟡 Good | ✅ Yes |
 | `nb` | Norwegian Bokmål | 2678 | 89.75% | 🟡 Good | ✅ Yes |
-| `sw` | Swahili | 2678 | 89.75% | 🟡 Good | ✅ Yes |
 | `sv` | Swedish | 2678 | 89.75% | 🟡 Good | ✅ Yes |
-| `tr` | Turkish | 2678 | 89.75% | 🟡 Good | ✅ Yes |
 | `vi` | Vietnamese | 2678 | 89.75% | 🟡 Good | ✅ Yes |
 | `ro` | Romanian | 2672 | 89.54% | 🟡 Good | ✅ Yes |
 | `uk` | Ukrainian | 2670 | 89.48% | 🟡 Good | ✅ Yes |
@@ -64,8 +64,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥90%):** 29 locales ready for production
-- **🟡 Good (75-89%):** 10 locales with solid translation coverage
+- **🟢 Complete (≥90%):** 32 locales ready for production
+- **🟡 Good (75-89%):** 7 locales with solid translation coverage
 - **🟠 Needs Work (<75%):** 0 locales requiring translator attention
 - **🔴 Incomplete:** 0 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)

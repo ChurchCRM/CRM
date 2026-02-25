@@ -11957,3 +11957,459 @@ msgstr "פתח MailChimp"
 msgid "Open your authenticator app and scan this QR code"
 msgstr "פתח את אפליקציית האימות שלך וסרוק את קוד ה-QR הזה"
 
+#: 
+msgid "OpenLP Server URL"
+msgstr "כתובת שרת OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "אופציונלי - נדרש רק אם אימות OpenLP מופעל"
+
+#: 
+msgid "Phone number and message required"
+msgstr "מספר טלפון והודעה נדרשים"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "אנא הגדר תחילה נקודת קצה, שם משתמש וסיסמה."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "אנא הגדר את הגדרות WebDAV לפני יצירת גיבוי מרוחק."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "אנא הגדר את הגדרות WebDAV לפני בדיקת החיבור."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "אנא הגדר את מפתח ה-API של MailChimp שלך כדי להשתמש בשילוב זה."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "אנא הזן שם קישור (2-50 תווים)"
+
+#: 
+msgid "Please try again"
+msgstr "אנא נסה שוב"
+
+#: 
+msgid "Plugin Development"
+msgstr "פיתוח תוספים"
+
+#: 
+msgid "Plugin Help"
+msgstr "עזרה לתוסף"
+
+#: 
+msgid "Plugin Management"
+msgstr "ניהול תוספים"
+
+#: 
+msgid "Plugin Settings"
+msgstr "הגדרות תוסף"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "לא ניתן להשבית את התוסף מכיוון שתוספים אחרים תלויים בו"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "לא ניתן להפעיל את התוסף עקב דרישות תלות או גרסה"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "התוסף הושבת בהצלחה"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "התוסף הופעל בהצלחה"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "טעינת התוסף נכשלה"
+
+#: 
+msgid "Plugin not found"
+msgstr "התוסף לא נמצא"
+
+#: 
+msgid "Plugins"
+msgstr "תוספים"
+
+#: 
+msgid "Print"
+msgstr "הדפס"
+
+#: 
+msgid "Recipients and message required"
+msgstr "נמענים והודעה נדרשים"
+
+#: 
+msgid "Recovery Codes"
+msgstr "קודי שחזור"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "הגיבוי המרוחק נכשל. בדוק יומני שרת לפרטים."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS נשלח"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "שמור קודי שחזור אלה במקום בטוח. תוכל להשתמש בהם לגישה לחשבונך אם תאבד גישה לאפליקציית האימות שלך."
+
+#: 
+msgid "Scan QR Code"
+msgstr "סרוק קוד QR"
+
+#: 
+msgid "Secure"
+msgstr "מאובטח"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "הגדר אפליקציית אימות"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "ההגדרות אופסו בהצלחה"
+
+#: 
+msgid "Setup Complete"
+msgstr "ההגדרה הושלמה"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "מגיע עם ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "התחבר"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "חלק מההגדרות לא ניתן לאפס"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "חלק מההגדרות לא ניתן לשמור"
+
+#: 
+msgid "Subscribers"
+msgstr "מנויים"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "מנויים שאינם במערכת"
+
+#: 
+msgid "Test Connection"
+msgstr "בדוק חיבור"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "בדוק חיבור WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "קישורים אלה מופיעים בתפריט \"קישורים\" בסרגל הניווט כאשר תוסף זה מופעל."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "אנשים אלה מנויים לקהל MailChimp שלך אך אינם קיימים ב-ChurchCRM. שקול להוסיפם למסד הנתונים שלך או להסירם מ-MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "אנשים אלה קיימים ב-ChurchCRM עם כתובות דוא\"ל אך אינם מנויים לקהל MailChimp זה. שקול להזמינם להירשם."
+
+#: 
+msgid "Third-party extensions."
+msgstr "הרחבות צד שלישי."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "פעולה זו תחליף כל שיטות 2FA שנרשמו בעבר"
+
+#: 
+msgid "Total Campaigns"
+msgstr "סך הקמפיינים"
+
+#: 
+msgid "Total Subscribers"
+msgstr "סך המנויים"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "שגיאת רישום דו-גורמי"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "אימות דו-גורמי הושבת"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "אימות דו-גורמי הוא אחת הדרכים הטובות ביותר להגן על חשבונך. אנו ממליצים בחום להשאירו מופעל."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "כתובת URL לשרת OpenLP שלך (למשל, http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "לא ניתן לטעון"
+
+#: 
+msgid "Unsubscribed"
+msgstr "בוטל המנוי"
+
+#: 
+msgid "Use a different account"
+msgstr "השתמש בחשבון אחר"
+
+#: 
+msgid "Value is configured"
+msgstr "הערך מוגדר"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "הערך מוגדר - השאר ריק לשמירת הנוכחי"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "אמת והתחבר"
+
+#: 
+msgid "Verify Code"
+msgstr "אמת קוד"
+
+#: 
+msgid "Verifying"
+msgstr "מאמת"
+
+#: 
+msgid "Vonage API Key"
+msgstr "מפתח API של Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "סוד API של Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "הגדרת WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "חיבור WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "גיבויי WebDAV אינם מוגדרים כראוי. אנא ודא שנקודת קצה, שם משתמש וסיסמה מוגדרים."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "כתובת URL של נקודת קצה WebDAV נדרשת."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "סיסמת WebDAV נדרשת."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "שם משתמש WebDAV נדרש."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "תוכל גם להשתמש בקודי שחזור גיבוי אם תאבד גישה לאפליקציה שלך"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "כעת תוכל להשתמש באפליקציית האימות שלך להתחברות. כל קוד תקף ל-30 שניות."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "תקבל קודי גיבוי שניתן להשתמש בהם אם תאבד גישה לאפליקציה שלך"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "מזהה מדידה GA4 שלך (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "לחשבון MailChimp שלך אין קהלים (רשימות) מוגדרים."
+
+#: 
+msgid "Your account is now protected"
+msgstr "חשבונך מוגן כעת"
+
+#: 
+msgid "Your account is protected"
+msgstr "חשבונך מוגן"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "אפליקציית האימות שלך נרשמה בהצלחה"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "העדפת השפה של הדפדפן שלך שונה מהלוקאל של ChurchCRM שלך"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "למשל, אתר הכנסייה"
+
+#: 
+msgid "manifest."
+msgstr "מניפסט."
+
+#: 
+msgid "subscribers"
+msgstr "מנויים"
+
+#: 
+msgid "API Key is required."
+msgstr "מפתח API נדרש."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "לא ניתן להתחבר ל-OpenLP בכתובת %s. בדוק את כתובת השרת ושה-OpenLP פועל."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "לא ניתן להתחבר ל-OpenLP בכתובת %s. השרת החזיר HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "מפת הקהילה"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "מפת הקהילה — נדרשת הגדרה"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "מחובר ל-MailChimp! חשבון: %s (%d מנויים)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "החיבור לשרת OpenLP הצליח."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "מחובר ל-OpenLP! גרסה: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "מחובר! יתרת חשבון: ‎€%.2f. מוכן לשליחת SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "לא ניתן להתחבר ל-MailChimp. אנא בדוק את מפתח ה-API שלך."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "החיבור לשרת OpenLP נכשל."
+
+#: 
+msgid "Get Directions"
+msgstr "קבל הוראות הגעה"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "כלול קוד מדינה, למשל +14155551234 (ארה\"ב) או +447911123456 (בריטניה)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"מספר שולח\" לא חוקי: \"%s\". כלול קוד מדינה, למשל +14155551234 (ארה\"ב) או +447911123456 (בריטניה)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "אישורי API לא חוקיים. אנא אמת את מפתח ה-API וסוד ה-API שלך."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "פורמט מפתח API לא חוקי. בדוק את מפתח ה-API של MailChimp שלך."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "כתובת URL של נקודת קצה לא חוקית. חייבת להיות כתובת URL מלאה המתחילה ב-https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "פורמט כתובת URL של שרת לא חוקי."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "החיבור ל-MailChimp נכשל."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "רמת הזום של המפה"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "חסרות משפחות? עדכן קואורדינטות כדי לכלול אותן במפה."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "הגדרות נדרשות חסרות: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "לאדם אין משפחה"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "התוסף לא נמצא או לא פעיל"
+
+#: 
+msgid "Server URL is required."
+msgstr "כתובת URL של שרת נדרשת."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "תוסף זה אינו תומך בבדיקת חיבור."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "לא ניתן להציג מפה: כתובת הכנסייה טרם קיבלה גיאו-קידוד."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "עדכן את כתובת הכנסייה בהגדרות."
+
+#: 
+msgid "Username and password are required."
+msgstr "שם משתמש וסיסמה נדרשים."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "האימות נכשל: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "שגיאת שרת Vonage. אנא נסה שוב מאוחר יותר."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "כתובת URL של נקודת קצה WebDAV נדרשת."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "האם אתה בטוח שברצונך למחוק לצמיתות את רשומת ההתחייבות הזו?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "בטל וחזור לתצוגת המשפחה"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "אם תמחק סוג זה, תסיר גם את כל המאפיינים המשתמשים בו ותאבד את כל הקצאות המאפיינים המתאימות."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "העבר תרומות למשפחה הנבחרת"
+

@@ -11179,3 +11179,575 @@ msgstr "Weka Upya Vichujio"
 msgid "Show only people with photos"
 msgstr "Onyesha watu wenye picha pekee"
 
+#: 
+msgid "Checkout All"
+msgstr "Toa Wote"
+
+#: 
+msgid "Expected"
+msgstr "Inayotarajiwa"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Imeshindwa kufuta kiosk"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Ahadi za Familia kwa Mwaka wa Fedha"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Tafuta wanafunzi waliosajiliwa"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Mwaka wa Fedha."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Kundi la wanafunzi waliosajiliwa"
+
+#: 
+msgid "Here"
+msgstr "Hapa"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Aina ya ugawaji si sahihi"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Kitambulisho cha mtu si sahihi"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Usajili wa Kiosk Umezimwa"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kiosk haikupatikana"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Unganisha tukio hili na kikundi kwa ajili ya kuingia kupitia kiosk. Wanakikundi wataonekana kwenye kiosk."
+
+#: 
+msgid "Linked Group"
+msgstr "Kikundi Kilichounganishwa"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Usajili wa kifaa kipya cha kiosk umezimwa kwa sasa. Tafadhali wasiliana na msimamizi wa mfumo ili kuwezesha usajili wa kiosk."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Hakuna Kikundi (Chagua kwa Kuingia kwa Kiosk)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Hakuna mtu aliyeingia bado"
+
+#: 
+msgid "Person not found"
+msgstr "Mtu hakupatikana"
+
+#: 
+msgid "Pickup Request"
+msgstr "Ombi la Kuchukua"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Tafadhali nenda darasani haraka iwezekanavyo."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Muhtasari wa ahadi kwa jina la familia kwa kila mfuko kwa mwaka wa fedha uliochaguliwa"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Wanafunzi waliosajiliwa"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Mwalimu alituma tahadhari hii saa"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Kiosk hii inaonekana vizuri zaidi kwenye kompyuta kibao katika hali ya landscape kwa uzoefu bora wa kuingia."
+
+#: 
+msgid "Tip"
+msgstr "Kidokezo"
+
+#: 
+msgid "Try Again"
+msgstr "Jaribu Tena"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Siku za Kuzaliwa Zinazokuja"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Inasubiri Kuingia"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Inapowezeshwa, vifaa vipya vya kiosk vinaweza kusajiliwa kwa sekunde 30."
+
+#: 
+msgid "Your child"
+msgstr "Mtoto wako"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "anahitajika kuchukuliwa kutoka"
+
+#: 
+msgid "their classroom"
+msgstr "darasani kwake"
+
+#: 
+msgid "All timezones match"
+msgstr "Maeneo yote ya saa yanafanana"
+
+#: 
+msgid "Baseline"
+msgstr "Msingi"
+
+#: 
+msgid "Browser"
+msgstr "Kivinjari"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Kivinjari kinatofautiana na mipangilio ya mfumo — tarehe zinaweza kuonyeshwa vibaya kwa mtumiaji huyu."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Haiwezekani kuandika kwenye saraka ya usakinishaji wa ChurchCRM. Tafadhali angalia kwamba seva ya wavuti ina ruhusa ya kuandika."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Inalinganisha maeneo ya saa..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Saraka ya marudio haipo. Tafadhali thibitisha kwamba ChurchCRM imewekwa vizuri."
+
+#: 
+msgid "Does not match system config"
+msgstr "Haifanani na mipangilio ya mfumo"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Faili la toleo lililopakuliwa ni tupu. Hii inaweza kutokea kwa sababu ya matatizo ya mtandao au mipaka ya GitHub. Tafadhali jaribu tena baadaye."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Uchomozi umekamilika lakini faili za usasisho hazikupatikana. Kumbukumbu ya usasisho inaweza kuwa imeharibiwa."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Imeshindwa kutumia usasisho. Tafadhali angalia kumbukumbu za seva kwa maelezo."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Imeshindwa kuunda saraka ya Usasisho. Tafadhali angalia ruhusa za faili."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Imeshindwa kupakua faili la toleo kutoka GitHub baada ya majaribio mengi. Tafadhali angalia muunganisho wa intaneti wa seva yako na ujaribu tena."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Imeshindwa kuchomoa kumbukumbu ya usasisho. Tafadhali angalia nafasi ya diski na ruhusa za faili."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Imeshindwa kufungua kumbukumbu ya usasisho. Faili lililopakuliwa linaweza kuwa limeharibiwa."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Imeshindwa kuhifadhi faili la toleo lililopakuliwa. Tafadhali angalia nafasi ya diski na ruhusa."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Muundo wa tarehe si sahihi katika kigezo cha mwanzo"
+
+#: 
+msgid "Mismatch"
+msgstr "Kutofanana"
+
+#: 
+msgid "Not set"
+msgstr "Haijawekwa"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP Inafanya Kazi"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Saraka ya chanzo haipo. Kumbukumbu ya usasisho inaweza kutokuwa imechomolewa vizuri. Tafadhali angalia ruhusa za faili na nafasi ya diski."
+
+#: 
+msgid "System Config"
+msgstr "Mipangilio ya Mfumo"
+
+#: 
+msgid "Timezone Information"
+msgstr "Taarifa za Eneo la Saa"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Kutofanana kwa eneo la saa kumegunduliwa"
+
+#: 
+msgid "mismatch detected"
+msgstr "kutofanana kumegunduliwa"
+
+#: 
+msgid "mismatches detected"
+msgstr "kutofanana kumegunduliwa"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "saa %d"
+msgstr[1] "masaa %d"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "Kuhusu Nakala Rudia za WebDAV"
+
+#: 
+msgid "Add Link"
+msgstr "Ongeza Kiungo"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Ongeza safu ya ziada ya usalama kwenye akaunti yako"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Ongeza viungo vya nje vilivyobinafsishwa kwenye menyu ya urambazaji."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Ruhusu Vyeti Vilivyotiwa Sahihi Peke Yake"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Hitilafu ilitokea wakati wa kushughulikia ombi la programu-jalizi"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Je, una uhakika unataka kuzima uthibitishaji wa hatua mbili? Akaunti yako itakuwa na usalama mdogo."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "Kama sehemu ya urejesho, nakala rudia za nje zimezimwa. Ikiwa unataka kuendelea na nakala rudia za kiotomatiki, wezesha tena programu-jalizi ya Nakala Rudia ya Nje katika Msimamizi > Programu-jalizi."
+
+#: 
+msgid "Audiences"
+msgstr "Hadhira"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Uthibitishaji umeshindwa. Tafadhali angalia jina la mtumiaji na nenosiri."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Muda wa Kati wa Nakala Rudia ya Kiotomatiki"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Hifadhi nakala rudia ya hifadhidata yako ya ChurchCRM kwenye hifadhi ya wingu ya nje kupitia WebDAV kiotomatiki."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Kiwango cha Wastani cha Kubonyeza"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Kiwango cha Wastani cha Kufungua"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Rudi kwa Dashibodi"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Nakala rudia iliundwa lakini imeshindwa kuisambaza kwenye seva ya mbali"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Hifadhi Nakala Rudia kwa WebDAV Sasa"
+
+#: 
+msgid "Before You Start"
+msgstr "Kabla Hujaanza"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Upendeleo wa lugha ya kivinjari umegunduliwa"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "Wanachama wa CRM Ambao Hawajajiunga"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Kampeni Zilizotumwa"
+
+#: 
+msgid "Can't scan?"
+msgstr "Huwezi kuscanisha?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Badilisha Lugha yako"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM inasaidia muundo wa programu-jalizi kwa kupanua utendaji."
+
+#: 
+msgid "Cleaned"
+msgstr "Imesafishwa"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Bonyeza kitufe hapa chini ili kujaribu mipangilio ya muunganisho wako wa WebDAV."
+
+#: 
+msgid "Community Plugins"
+msgstr "Programu-jalizi za Jamii"
+
+#: 
+msgid "Community plugins"
+msgstr "Programu-jalizi za jamii"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Sanidi Nakala Rudia ya Nje"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Sanidi MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Sanidi mipangilio hii katika"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Sanidi programu-jalizi hii ili kuhifadhi nakala rudia ya hifadhidata yako ya ChurchCRM kiotomatiki kwenye huduma za hifadhi ya wingu zinazooana na WebDAV kama Nextcloud, ownCloud, au seva yoyote ya WebDAV. Nakala rudia zinasimbwa wakati wa uhamishaji kwa kutumia HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Imesanidiwa"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Thibitisha kwa nambari kutoka kwa programu yako ya uthibitishaji"
+
+#: 
+msgid "Connected"
+msgstr "Imeunganishwa"
+
+#: 
+msgid "Connection failed"
+msgstr "Muunganisho umeshindwa"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Muunganisho umeshindwa na nambari ya HTTP"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Muunganisho umefanikiwa! Sehemu ya mwisho ya WebDAV inapatikana."
+
+#: 
+msgid "Connection test failed"
+msgstr "Jaribio la muunganisho limeshindwa"
+
+#: 
+msgid "Core Plugins"
+msgstr "Programu-jalizi Kuu"
+
+#: 
+msgid "Core plugins"
+msgstr "Programu-jalizi kuu"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Unda nakala rudia sasa na ipakiishe kwenye seva yako ya WebDAV."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Unda Hadhira katika MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Maalum"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Viungo vya Menyu Maalum"
+
+#: 
+msgid "Default Image Style"
+msgstr "Mtindo wa Picha wa Chaguo-msingi"
+
+#: 
+msgid "Default List ID"
+msgstr "Kitambulisho cha Orodha cha Chaguo-msingi"
+
+#: 
+msgid "Disable"
+msgstr "Zima"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Zima Programu-jalizi"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Zima Uthibitishaji wa Hatua Mbili"
+
+#: 
+msgid "Dismiss"
+msgstr "Funga"
+
+#: 
+msgid "Done"
+msgstr "Imekamilika"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "Muundo wa E.164, mfano, +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Kila programu-jalizi inahitaji"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Kila unapoingia, utahitaji kuthibitisha kwa nambari kutoka kwa programu yako ya uthibitishaji"
+
+#: 
+msgid "Email Addresses"
+msgstr "Anwani za Barua Pepe"
+
+#: 
+msgid "Enable"
+msgstr "Wezesha"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Wezesha Programu-jalizi ya Nakala Rudia ya Nje"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Wezesha Programu-jalizi"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Wezesha Uthibitishaji wa Hatua Mbili"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Wezesha programu-jalizi ya Nakala Rudia ya Nje kwa hifadhi ya wingu ya WebDAV."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Wezesha hii tu kwa seva za mtandao wa ndani zenye vyeti vya SSL vilivyotiwa sahihi peke yake. Inazima uthibitisho wa cheti."
+
+#: 
+msgid "Endpoint URL"
+msgstr "URL ya Sehemu ya Mwisho"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Ingiza nambari ya tarakimu 6 kutoka kwa programu yako ya uthibitishaji"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Ingiza jina lako la mtumiaji na nenosiri kama kawaida"
+
+#: 
+msgid "External Backup"
+msgstr "Nakala Rudia ya Nje"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Nakala Rudia ya Nje (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Mipangilio ya Nakala Rudia ya Nje"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "Programu-jalizi ya Nakala Rudia ya Nje imewezeshwa lakini haijasanidiwa."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "Programu-jalizi ya Nakala Rudia ya Nje haijasanidiwa. Tafadhali sanidi mipangilio ya WebDAV katika programu-jalizi."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "Programu-jalizi ya Nakala Rudia ya Nje haijawezeshwa. Tafadhali iwezesha na uisanidi katika Usimamizi wa Programu-jalizi."
+
+#: 
+msgid "Failed to create link"
+msgstr "Imeshindwa kuunda kiungo"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Imeshindwa kufuta kiungo"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Imeshindwa kuzima programu-jalizi"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Imeshindwa kuwezsha programu-jalizi"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Imeshindwa kupata maelezo ya programu-jalizi"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Imeshindwa kuorodhesha programu-jalizi"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Imeshindwa kurudisha mipangilio"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Imeshindwa kutuma ujumbe mfupi"
+
+#: 
+msgid "Family Status"
+msgstr "Hali ya Familia"
+
+#: 
+msgid "Family not found"
+msgstr "Familia haikupatikana"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Tafuta katika MailChimp: Hadhira > Mipangilio > Jina la hadhira na chaguo-msingi > Kitambulisho cha Hadhira"
+
