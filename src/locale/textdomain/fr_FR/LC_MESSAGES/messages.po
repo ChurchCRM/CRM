@@ -61,7 +61,7 @@ msgstr "Carte de Crédit"
 
 #: 
 msgid "Backup Database"
-msgstr "Base de donnée de secours"
+msgstr "Base de données de secours"
 
 #: 
 msgid "Batch Winner Entry"

@@ -11249,3 +11249,575 @@ msgstr "Szűrők Visszaállítása"
 msgid "Show only people with photos"
 msgstr "Csak fotóval rendelkező személyek mutatása"
 
+#: 
+msgid "Checkout All"
+msgstr "Mindenki kicsekkolása"
+
+#: 
+msgid "Expected"
+msgstr "Várható"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "A kiosk törlése sikertelen"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Családi pénzügyi kötelezettségvállalás pénzügyi év szerint"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Regisztrált tanulók keresése"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Pénzügyi év."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Regisztrált tanulók csoportja"
+
+#: 
+msgid "Here"
+msgstr "Itt"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Érvénytelen hozzárendelési típus"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Érvénytelen személy-azonosító"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Kiosk regisztráció letiltva"
+
+#: 
+msgid "Kiosk not found"
+msgstr "A kiosk nem található"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Csatolja ezt az eseményt egy csoporthoz a kiosk bejelentkezési funkcióhoz. A csoport tagjai megjelennek a kioskon."
+
+#: 
+msgid "Linked Group"
+msgstr "Csatolt csoport"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Az új kiosk eszköz regisztrációja jelenleg le van tiltva. Kérem, lépjen kapcsolatba a rendszergazdával a kiosk regisztráció engedélyezéséhez."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Nincs csoport (válasszon a kiosk bejelentkezéshez)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Még senki sem jelentkezett be"
+
+#: 
+msgid "Person not found"
+msgstr "A személy nem található"
+
+#: 
+msgid "Pickup Request"
+msgstr "Elviteli kérés"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Kérem, menjen a tanterembe a lehető leghamarabb."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Kötelezettségvállalás összesítője családnév szerint, alaponként a kiválasztott pénzügyi évre"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Regisztrált tanulók"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "A tanár ezt a riasztást a következő időpontban küldte:"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Ez a kiosk vízszintes tájolású tableten jelenik meg a legjobban az optimális bejelentkezési élményhez."
+
+#: 
+msgid "Tip"
+msgstr "Tipp"
+
+#: 
+msgid "Try Again"
+msgstr "Próbálja újra"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Közelgő születésnapok"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Bejelentkezésre vár"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Ha engedélyezve van, az új kiosk eszközök 30 másodpercig regisztrálhatnak."
+
+#: 
+msgid "Your child"
+msgstr "Az Ön gyermeke"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "elviendő innen:"
+
+#: 
+msgid "their classroom"
+msgstr "a tantermükből"
+
+#: 
+msgid "All timezones match"
+msgstr "Minden időzóna egyezik"
+
+#: 
+msgid "Baseline"
+msgstr "Alapértelmezett"
+
+#: 
+msgid "Browser"
+msgstr "Böngésző"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "A böngésző eltér a rendszer konfigurációjától – a dátumok helytelenül jelenhetnek meg ennél a felhasználónál."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Nem lehet írni a ChurchCRM telepítési könyvtárába. Kérem, ellenőrizze, hogy a webszerver rendelkezik-e írási jogosultsággal."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Időzónák összehasonlítása..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "A célkönyvtár nem létezik. Kérem, ellenőrizze, hogy a ChurchCRM megfelelően van-e telepítve."
+
+#: 
+msgid "Does not match system config"
+msgstr "Nem egyezik a rendszer konfigurációjával"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "A letöltött kiadási fájl üres. Ennek oka hálózati problémák vagy a GitHub korlátozása lehet. Kérem, próbálja meg újra később."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "A kicsomagolás befejeződött, de a frissítési fájlok nem találhatók. Lehet, hogy a frissítési archívum sérült."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "A frissítés alkalmazása sikertelen. A részletekért kérem, ellenőrizze a szerver naplóit."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "A frissítési könyvtár létrehozása sikertelen. Kérem, ellenőrizze a fájljogosultságokat."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "A kiadási fájl letöltése a GitHubról több kísérlet után sem sikerült. Kérem, ellenőrizze a szerver internetkapcsolatát, és próbálja újra."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "A frissítési archívum kicsomagolása sikertelen. Kérem, ellenőrizze a lemezterületet és a fájljogosultságokat."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "A frissítési archívum megnyitása sikertelen. A letöltött fájl sérült lehet."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "A letöltött kiadási fájl mentése sikertelen. Kérem, ellenőrizze a lemezterületet és a jogosultságokat."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Érvénytelen dátumformátum a kezdési paraméterben"
+
+#: 
+msgid "Mismatch"
+msgstr "Eltérés"
+
+#: 
+msgid "Not set"
+msgstr "Nincs beállítva"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP aktív"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "A forráskönyvtár nem létezik. Lehet, hogy a frissítési archívum nem csomagolódott ki megfelelően. Kérem, ellenőrizze a fájljogosultságokat és a lemezterületet."
+
+#: 
+msgid "System Config"
+msgstr "Rendszerkonfiguráció"
+
+#: 
+msgid "Timezone Information"
+msgstr "Időzóna-információ"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Időzóna-eltérés észlelve"
+
+#: 
+msgid "mismatch detected"
+msgstr "eltérés észlelve"
+
+#: 
+msgid "mismatches detected"
+msgstr "eltérés észlelve"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d óra"
+msgstr[1] "%d óra"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "A WebDAV biztonsági mentésekről"
+
+#: 
+msgid "Add Link"
+msgstr "Hivatkozás hozzáadása"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Adjon egy extra biztonsági réteget a fiókjához"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Adjon egyéni külső hivatkozásokat a navigációs menühöz."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Önaláírt tanúsítványok engedélyezése"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Hiba történt a bővítmény kérés feldolgozása során"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Biztosan le szeretné tiltani a kétfaktoros hitelesítést? A fiókja kevésbé lesz biztonságos."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "A visszaállítás részeként a külső biztonsági mentések le lettek tiltva. Ha folytatni szeretné az automatikus biztonsági mentéseket, engedélyezze újra a Külső biztonsági mentés bővítményt az Admin > Bővítmények menüben."
+
+#: 
+msgid "Audiences"
+msgstr "Közönségek"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "A hitelesítés sikertelen. Kérem, ellenőrizze a felhasználónevet és a jelszót."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Automatikus biztonsági mentés időköze"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Automatikusan mentse el a ChurchCRM adatbázisát külső felhőalapú tárhelyre WebDAV-on keresztül."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Átlagos kattintási arány"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Átlagos megnyitási arány"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Vissza az irányítópultra"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "A biztonsági mentés létrejött, de a másolás a távoli szerverre sikertelen"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Biztonsági mentés WebDAV-ra most"
+
+#: 
+msgid "Before You Start"
+msgstr "Mielőtt elkezdené"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Böngésző nyelvi beállítása észlelve"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "Nem feliratkozott CRM-tagok"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Elküldött kampányok"
+
+#: 
+msgid "Can't scan?"
+msgstr "Nem tud beolvasni?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Nyelvi beállítás módosítása"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "A ChurchCRM bővítményalapú architektúrát támogat a funkcionalitás kiterjesztéséhez."
+
+#: 
+msgid "Cleaned"
+msgstr "Megtisztítva"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Kattintson az alábbi gombra a WebDAV kapcsolati beállítások teszteléséhez."
+
+#: 
+msgid "Community Plugins"
+msgstr "Közösségi bővítmények"
+
+#: 
+msgid "Community plugins"
+msgstr "Közösségi bővítmények"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Külső biztonsági mentés konfigurálása"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "MailChimp konfigurálása"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Konfigurálja ezeket a beállításokat a következőben:"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Konfigurálja ezt a bővítményt a ChurchCRM adatbázis automatikus mentéséhez WebDAV-kompatibilis felhőalapú tárolási szolgáltatásokra, mint a Nextcloud, az ownCloud vagy bármely WebDAV-szerver. A biztonsági mentések átvitel során HTTPS-sel titkosítva vannak."
+
+#: 
+msgid "Configured"
+msgstr "Konfigurálva"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Erősítse meg a hitelesítő alkalmazás kódjával"
+
+#: 
+msgid "Connected"
+msgstr "Csatlakozva"
+
+#: 
+msgid "Connection failed"
+msgstr "A kapcsolat sikertelen"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "A kapcsolat sikertelen a következő HTTP-kóddal:"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "A kapcsolat sikeres! A WebDAV végpont elérhető."
+
+#: 
+msgid "Connection test failed"
+msgstr "A kapcsolatteszt sikertelen"
+
+#: 
+msgid "Core Plugins"
+msgstr "Alapbővítmények"
+
+#: 
+msgid "Core plugins"
+msgstr "Alapbővítmények"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Hozzon létre most egy biztonsági mentést, és töltse fel a WebDAV-szerverére."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Hozzon létre közönséget a MailChimpben"
+
+#: 
+msgid "Custom"
+msgstr "Egyéni"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Egyéni menühivatkozások"
+
+#: 
+msgid "Default Image Style"
+msgstr "Alapértelmezett képstílus"
+
+#: 
+msgid "Default List ID"
+msgstr "Alapértelmezett listaazonosító"
+
+#: 
+msgid "Disable"
+msgstr "Letiltás"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Bővítmény letiltása"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Kétfaktoros hitelesítés letiltása"
+
+#: 
+msgid "Dismiss"
+msgstr "Bezárás"
+
+#: 
+msgid "Done"
+msgstr "Kész"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164 formátum, pl. +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Minden bővítményhez szükséges egy"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Minden bejelentkezéskor meg kell erősítenie a hitelesítő alkalmazás kódjával"
+
+#: 
+msgid "Email Addresses"
+msgstr "E-mail-címek"
+
+#: 
+msgid "Enable"
+msgstr "Engedélyezés"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Külső biztonsági mentés bővítmény engedélyezése"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Bővítmény engedélyezése"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Kétfaktoros hitelesítés engedélyezése"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Engedélyezze a külső biztonsági mentés bővítményt a WebDAV felhőalapú tároláshoz."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Csak helyi hálózati szerverekhez engedélyezze önaláírt SSL-tanúsítványokkal. Letiltja a tanúsítvány-ellenőrzést."
+
+#: 
+msgid "Endpoint URL"
+msgstr "Végpont URL"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Adja meg a 6 jegyű kódot a hitelesítő alkalmazásból"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Adja meg felhasználónevét és jelszavát a szokásos módon"
+
+#: 
+msgid "External Backup"
+msgstr "Külső biztonsági mentés"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Külső biztonsági mentés (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Külső biztonsági mentés beállításai"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "A külső biztonsági mentés bővítmény engedélyezve van, de nincs konfigurálva."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "A külső biztonsági mentés bővítmény nincs konfigurálva. Kérem, konfigurálja a WebDAV beállításokat a bővítményben."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "A külső biztonsági mentés bővítmény nincs engedélyezve. Kérem, engedélyezze és konfigurálja a bővítménykezelőben."
+
+#: 
+msgid "Failed to create link"
+msgstr "A hivatkozás létrehozása sikertelen"
+
+#: 
+msgid "Failed to delete link"
+msgstr "A hivatkozás törlése sikertelen"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "A bővítmény letiltása sikertelen"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "A bővítmény engedélyezése sikertelen"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "A bővítmény részleteinek lekérdezése sikertelen"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "A bővítmények listázása sikertelen"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "A beállítások visszaállítása sikertelen"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Az SMS küldése sikertelen"
+
+#: 
+msgid "Family Status"
+msgstr "Család állapota"
+
+#: 
+msgid "Family not found"
+msgstr "A család nem található"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Keresés a MailChimpben: Közönség > Beállítások > Közönség neve és alapértékek > Közönségazonosító"
+

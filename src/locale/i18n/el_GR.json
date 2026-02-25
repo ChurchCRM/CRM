@@ -2995,5 +2995,19 @@
     "MailChimp connection failed.": "Αποτυχία σύνδεσης MailChimp.",
     "Map Zoom Level": "Επίπεδο ζουμ χάρτη",
     "Missing families? Update coordinates to include them on the map.": "Λείπουν οικογένειες; Ενημερώστε τις συντεταγμένες για να τις συμπεριλάβετε στον χάρτη.",
-    "Missing required settings: %s": "Λείπουν απαιτούμενες ρυθμίσεις: %s"
+    "Missing required settings: %s": "Λείπουν απαιτούμενες ρυθμίσεις: %s",
+    "Person has no family": "Το μέλος δεν έχει οικογένεια",
+    "Plugin not found or not active": "Το πρόσθετο δεν βρέθηκε ή δεν είναι ενεργό",
+    "Server URL is required.": "Απαιτείται URL διακομιστή.",
+    "This plugin does not support connection testing.": "Αυτό το πρόσθετο δεν υποστηρίζει δοκιμή σύνδεσης.",
+    "Unable to display map: church address has not been geocoded yet.": "Αδυναμία εμφάνισης χάρτη: η διεύθυνση της εκκλησίας δεν έχει γεωκωδικοποιηθεί ακόμα.",
+    "Update church address in Settings.": "Ενημερώστε τη διεύθυνση της εκκλησίας στις Ρυθμίσεις.",
+    "Username and password are required.": "Απαιτείται όνομα χρήστη και κωδικός πρόσβασης.",
+    "Validation failed: %s": "Η επικύρωση απέτυχε: %s",
+    "Vonage server error. Please try again later.": "Σφάλμα διακομιστή Vonage. Δοκιμάστε ξανά αργότερα.",
+    "WebDAV Endpoint URL is required.": "Απαιτείται URL τελικού σημείου WebDAV.",
+    "Are you sure you want to permanently delete this pledge record?": "Είστε βέβαιοι ότι θέλετε να διαγράψετε οριστικά αυτήν την εγγραφή οικονομικής δέσμευσης;",
+    "Cancel and Return to Family View": "Ακύρωση και επιστροφή στην προβολή οικογένειας",
+    "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Εάν διαγράψετε αυτόν τον τύπο, θα αφαιρέσετε επίσης όλες τις ιδιότητες που τον χρησιμοποιούν και θα χάσετε όλες τις αντίστοιχες αναθέσεις ιδιοτήτων.",
+    "Move Donations to Selected Family": "Μετακίνηση προσφορών στην επιλεγμένη οικογένεια"
 }

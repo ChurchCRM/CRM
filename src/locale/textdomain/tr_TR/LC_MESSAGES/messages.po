@@ -11187,3 +11187,579 @@ msgstr "Filtreleri Sıfırla"
 msgid "Show only people with photos"
 msgstr "Yalnızca fotoğrafı olan kişileri göster"
 
+#: 
+msgid "Checkout All"
+msgstr "Tümünü Çıkış Yap"
+
+#: 
+msgid "Expected"
+msgstr "Beklenen"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Kiosk silinemedi"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Mali Yıla Göre Aile Mali Taahhüdü"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Kayıtlı öğrencileri bul"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Mali Yıl."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Kayıtlı öğrenciler grubu"
+
+#: 
+msgid "Here"
+msgstr "Buraya"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Geçersiz atama türü"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Geçersiz kişi kimliği"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Kiosk Kaydı Devre Dışı"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kiosk bulunamadı"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Kiosk giriş işlevi için bu etkinliği bir grupla ilişkilendirin. Grup üyeleri kioskte görünecektir."
+
+#: 
+msgid "Linked Group"
+msgstr "Bağlı Grup"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Yeni kiosk cihazı kaydı şu anda devre dışıdır. Kiosk kaydını etkinleştirmek için lütfen sistem yöneticinizle iletişime geçin."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Grup Yok (Kiosk Girişi için Seçin)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Henüz kimse giriş yapmadı"
+
+#: 
+msgid "Person not found"
+msgstr "Kişi bulunamadı"
+
+#: 
+msgid "Pickup Request"
+msgstr "Teslim Alma Talebi"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Lütfen en kısa sürede sınıfa geçin."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Seçili mali yıl için her fon bazında aile adına göre mali taahhüt özeti"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Kayıtlı öğrenciler"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Öğretmen bu uyarıyı şu saatte gönderdi:"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "En iyi giriş deneyimi için bu kiosk, yatay modda bir tablette görüntülenmelidir."
+
+#: 
+msgid "Tip"
+msgstr "İpucu"
+
+#: 
+msgid "Try Again"
+msgstr "Tekrar Dene"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Yaklaşan Doğum Günleri"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Giriş Bekliyor"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Etkinleştirildiğinde, yeni kiosk cihazları 30 saniye boyunca kayıt olabilir."
+
+#: 
+msgid "Your child"
+msgstr "Çocuğunuz"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "şuradan alınması gerekiyor:"
+
+#: 
+msgid "their classroom"
+msgstr "sınıfından"
+
+#: 
+msgid "All timezones match"
+msgstr "Tüm saat dilimleri eşleşiyor"
+
+#: 
+msgid "Baseline"
+msgstr "Temel"
+
+#: 
+msgid "Browser"
+msgstr "Tarayıcı"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Tarayıcı, sistem yapılandırmasından farklı — bu kullanıcı için tarihler hatalı görüntülenebilir."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "ChurchCRM kurulum dizinine yazılamıyor. Lütfen web sunucusunun yazma izinlerine sahip olduğunu doğrulayın."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Saat dilimleri karşılaştırılıyor..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Hedef dizin mevcut değil. Lütfen ChurchCRM'nin doğru kurulduğunu doğrulayın."
+
+#: 
+msgid "Does not match system config"
+msgstr "Sistem yapılandırmasıyla eşleşmiyor"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "İndirilen sürüm dosyası boş. Bu, ağ sorunları veya GitHub hız sınırlamasından kaynaklanıyor olabilir. Lütfen daha sonra tekrar deneyin."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Çıkarma tamamlandı ancak yükseltme dosyaları bulunamadı. Yükseltme arşivi bozulmuş olabilir."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Yükseltme uygulanamadı. Ayrıntılar için lütfen sunucu günlüklerini kontrol edin."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Yükseltme dizini oluşturulamadı. Lütfen dosya izinlerini kontrol edin."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Birden fazla denemeden sonra sürüm dosyası GitHub'dan indirilemedi. Lütfen sunucunuzun internet bağlantısını kontrol edip tekrar deneyin."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Yükseltme arşivi çıkarılamadı. Lütfen disk alanını ve dosya izinlerini kontrol edin."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Yükseltme arşivi açılamadı. İndirilen dosya bozulmuş olabilir."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "İndirilen sürüm dosyası kaydedilemedi. Lütfen disk alanını ve izinleri kontrol edin."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Başlangıç parametresinde geçersiz tarih biçimi"
+
+#: 
+msgid "Mismatch"
+msgstr "Uyuşmazlık"
+
+#: 
+msgid "Not set"
+msgstr "Ayarlanmamış"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP Etkin"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Kaynak dizin mevcut değil. Yükseltme arşivi doğru çıkarılmamış olabilir. Lütfen dosya izinlerini ve disk alanını kontrol edin."
+
+#: 
+msgid "System Config"
+msgstr "Sistem Yapılandırması"
+
+#: 
+msgid "Timezone Information"
+msgstr "Saat Dilimi Bilgisi"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Saat dilimi uyuşmazlığı tespit edildi"
+
+#: 
+msgid "mismatch detected"
+msgstr "uyuşmazlık tespit edildi"
+
+#: 
+msgid "mismatches detected"
+msgstr "uyuşmazlık tespit edildi"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d saat"
+msgstr[1] "%d saat"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "WebDAV Yedeklemeleri Hakkında"
+
+#: 
+msgid "Add Link"
+msgstr "Bağlantı Ekle"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Hesabınıza ekstra bir güvenlik katmanı ekleyin"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Gezinti menüsüne özel harici bağlantılar ekleyin."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Kendinden İmzalı Sertifikalara İzin Ver"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Eklenti isteği işlenirken bir hata oluştu"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "İki faktörlü kimlik doğrulamayı devre dışı bırakmak istediğinizden emin misiniz? Hesabınız daha az güvenli olacaktır."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "Geri yüklemenin bir parçası olarak harici yedeklemeler devre dışı bırakıldı. Otomatik yedeklemelere devam etmek istiyorsanız Yönetici > Eklentiler bölümünden Harici Yedekleme eklentisini yeniden etkinleştirin."
+
+#: 
+msgid "Audiences"
+msgstr "Hedef Kitleler"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Kimlik doğrulama başarısız. Lütfen kullanıcı adını ve şifreyi kontrol edin."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Otomatik Yedekleme Aralığı"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "ChurchCRM veritabanınızı WebDAV üzerinden otomatik olarak harici bulut depolama alanına yedekleyin."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Ort. Tıklama Oranı"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Ort. Açılma Oranı"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Panele Dön"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Yedekleme oluşturuldu ancak uzak sunucuya kopyalanamadı"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Şimdi WebDAV'a Yedekle"
+
+#: 
+msgid "Before You Start"
+msgstr "Başlamadan Önce"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Tarayıcı dil tercihi algılandı"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "Abone Olmayan CRM Üyeleri"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Gönderilen Kampanyalar"
+
+#: 
+msgid "Can't scan?"
+msgstr "Tarayamıyor musunuz?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Yerel Ayarınızı Değiştirin"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM, işlevselliği genişletmek için bir eklenti mimarisini destekler."
+
+#: 
+msgid "Cleaned"
+msgstr "Temizlendi"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "WebDAV bağlantı ayarlarınızı test etmek için aşağıdaki düğmeye tıklayın."
+
+#: 
+msgid "Community Plugins"
+msgstr "Topluluk Eklentileri"
+
+#: 
+msgid "Community plugins"
+msgstr "Topluluk eklentileri"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Harici Yedeklemeyi Yapılandır"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "MailChimp'i Yapılandır"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Bu ayarları şurada yapılandırın:"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Bu eklentiyi, ChurchCRM veritabanınızı Nextcloud, ownCloud veya herhangi bir WebDAV sunucusu gibi WebDAV uyumlu bulut depolama hizmetlerine otomatik olarak yedekleyecek şekilde yapılandırın. Yedeklemeler aktarım sırasında HTTPS kullanılarak şifrelenir."
+
+#: 
+msgid "Configured"
+msgstr "Yapılandırıldı"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Kimlik doğrulama uygulamanızdaki kodla onaylayın"
+
+#: 
+msgid "Connected"
+msgstr "Bağlandı"
+
+#: 
+msgid "Connection failed"
+msgstr "Bağlantı başarısız"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Bağlantı HTTP koduyla başarısız oldu"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Bağlantı başarılı! WebDAV uç noktasına erişilebilir."
+
+#: 
+msgid "Connection test failed"
+msgstr "Bağlantı testi başarısız"
+
+#: 
+msgid "Core Plugins"
+msgstr "Temel Eklentiler"
+
+#: 
+msgid "Core plugins"
+msgstr "Temel eklentiler"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Şimdi bir yedek oluşturun ve WebDAV sunucunuza yükleyin."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "MailChimp'te Hedef Kitle Oluşturun"
+
+#: 
+msgid "Custom"
+msgstr "Özel"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Özel Menü Bağlantıları"
+
+#: 
+msgid "Default Image Style"
+msgstr "Varsayılan Resim Stili"
+
+#: 
+msgid "Default List ID"
+msgstr "Varsayılan Liste Kimliği"
+
+#: 
+msgid "Disable"
+msgstr "Devre Dışı Bırak"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Eklentiyi Devre Dışı Bırak"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "İki Faktörlü Kimlik Doğrulamayı Devre Dışı Bırak"
+
+#: 
+msgid "Dismiss"
+msgstr "Kapat"
+
+#: 
+msgid "Done"
+msgstr "Tamamlandı"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164 biçimi, ör. +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Her eklenti şunları gerektirir:"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Her oturum açtığınızda, kimlik doğrulama uygulamanızdaki bir kodla onaylamanız gerekecektir"
+
+#: 
+msgid "Email Addresses"
+msgstr "E-posta Adresleri"
+
+#: 
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Harici Yedekleme Eklentisini Etkinleştir"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Eklentiyi Etkinleştir"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "İki Faktörlü Kimlik Doğrulamayı Etkinleştir"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "WebDAV bulut depolama için Harici Yedekleme eklentisini etkinleştirin."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Bunu yalnızca kendinden imzalı SSL sertifikalarına sahip yerel ağ sunucuları için etkinleştirin. Sertifika doğrulamasını devre dışı bırakır."
+
+#: 
+msgid "Endpoint URL"
+msgstr "Uç Nokta URL'si"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Kimlik doğrulama uygulamanızdaki 6 haneli kodu girin"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Kullanıcı adınızı ve şifrenizi her zamanki gibi girin"
+
+#: 
+msgid "External Backup"
+msgstr "Harici Yedekleme"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Harici Yedekleme (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Harici Yedekleme Ayarları"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "Harici Yedekleme eklentisi etkin ancak yapılandırılmamış."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "Harici Yedekleme eklentisi yapılandırılmamış. Lütfen eklentide WebDAV ayarlarını yapılandırın."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "Harici Yedekleme eklentisi etkin değil. Lütfen Eklenti Yönetimi'nde etkinleştirin ve yapılandırın."
+
+#: 
+msgid "Failed to create link"
+msgstr "Bağlantı oluşturulamadı"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Bağlantı silinemedi"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Eklenti devre dışı bırakılamadı"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Eklenti etkinleştirilemedi"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Eklenti ayrıntıları alınamadı"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Eklentiler listelenemedi"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Ayarlar sıfırlanamadı"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "SMS gönderilemedi"
+
+#: 
+msgid "Family Status"
+msgstr "Aile Durumu"
+
+#: 
+msgid "Family not found"
+msgstr "Aile bulunamadı"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "MailChimp'te bulun: Hedef Kitle > Ayarlar > Hedef kitle adı ve varsayılanlar > Hedef Kitle Kimliği"
+
+#: 
+msgid "From Phone Number"
+msgstr "Gönderen Telefon Numarası"
+

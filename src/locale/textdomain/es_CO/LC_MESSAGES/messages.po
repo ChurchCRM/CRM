@@ -12297,3 +12297,19 @@ msgstr "Error del servidor de Vonage. Por favor intente de nuevo más tarde."
 msgid "WebDAV Endpoint URL is required."
 msgstr "La URL del endpoint de WebDAV es obligatoria."
 
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "¿Está seguro de que desea eliminar permanentemente este registro de compromiso?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Cancelar y volver a la vista de familia"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Si elimina este tipo, también eliminará todas las propiedades que lo utilizan y perderá todas las asignaciones de propiedades correspondientes."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Mover ofrendas a la familia seleccionada"
+
