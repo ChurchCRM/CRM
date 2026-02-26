@@ -29,6 +29,19 @@ The project welcomes, and depends on, contributions from developers and users in
 3. Click "Reopen in Container" when prompted
 4. Wait for setup to complete
 
+**🔧 DDEV (Local Docker-based):**
+1. Install [DDEV](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/) and [Docker](https://docs.docker.com/desktop/)
+2. Clone the repo and run:
+   ```bash
+   git clone https://github.com/ChurchCRM/CRM.git churchcrm
+   cd churchcrm
+   ddev start
+   ddev setup-churchcrm
+   ```
+3. Open [https://churchcrm.ddev.site](https://churchcrm.ddev.site) and log in with `admin`/`changeme`
+
+See [DDEV Setup](#ddev-setup) below for full details and troubleshooting.
+
 ### Manual Setup
 
 If you prefer manual setup or the automatic options don't work:
@@ -72,6 +85,75 @@ npm run test                  # Run Cypress tests
 npm run docker:test:restart   # Restart test containers
 npm run docker:test:rebuild   # Full rebuild (remove volumes, rebuild images)
 ```
+
+### DDEV Setup
+
+[DDEV](https://ddev.readthedocs.io/en/stable/) is a Docker-based local development environment that gives you PHP, MariaDB, Node.js, HTTPS, and email testing with a single command — no manual port management or Docker Compose knowledge required.
+
+#### Prerequisites
+
+- [Docker Desktop](https://docs.docker.com/desktop/) (or Docker Engine + Compose v2 on Linux)
+- [DDEV](https://ddev.readthedocs.io/en/stable/users/install/ddev-installation/) v1.22+
+
+#### Quick Start
+
+```bash
+# 1. Clone the repository (use your fork URL for contributions)
+git clone https://github.com/ChurchCRM/CRM.git churchcrm
+cd churchcrm
+
+# 2. Start DDEV (first run takes ~2 min to pull images)
+#    This automatically:
+#      - Configures Config.php with DDEV database credentials
+#      - Installs Composer (PHP) dependencies
+#      - Imports the demo database
+ddev start
+
+# 3. Install Node packages and build frontend assets (~2 min)
+ddev setup-churchcrm
+
+# 4. Open the app
+ddev launch
+```
+
+Login credentials: **admin** / **changeme**
+
+#### Service URLs
+
+| Service | URL | Notes |
+|---------|-----|-------|
+| ChurchCRM | https://churchcrm.ddev.site | Main application |
+| Mailpit | https://churchcrm.ddev.site:8025 | Catch-all email testing |
+| MySQL | `ddev mysql` | Interactive prompt |
+
+#### Daily Development Workflow
+
+```bash
+ddev start                        # Start all services
+ddev stop                         # Stop all services (preserves database)
+ddev ssh                          # Shell into the web container
+ddev mysql                        # MySQL prompt (database: db, user: db, password: db)
+ddev logs                         # Tail web server logs
+ddev exec npm run build:frontend  # Rebuild JS/CSS inside the container
+ddev exec npm run build:php       # Update Composer dependencies
+ddev import-db --file=demo/ChurchCRM-Database.sql  # Reset demo database
+```
+
+#### DDEV Troubleshooting
+
+| Problem | Solution |
+|---------|----------|
+| `ddev start` fails | Ensure Docker is running: `docker info` |
+| Port 80/443 in use | DDEV uses its own router; conflicts are rare. Run `ddev poweroff && ddev start` |
+| Config.php not created | Run `ddev exec cp /var/www/html/.ddev/Config.ddev.php /var/www/html/src/Include/Config.php` |
+| Blank page / 500 error | Check logs: `ddev logs` or `ddev exec cat /var/www/html/src/logs/$(date +%Y-%m-%d)-php.log` |
+| Database empty | Re-import: `ddev import-db --file=demo/ChurchCRM-Database.sql` |
+| Node packages missing | Run `ddev setup-churchcrm` |
+| Composer packages missing | Run `ddev exec 'cd /var/www/html/src && composer install --no-dev'` |
+
+Full DDEV documentation: https://ddev.readthedocs.io
+
+---
 
 ### User Interface using AdminLTE
 
