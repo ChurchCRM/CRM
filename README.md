@@ -68,9 +68,14 @@ A heartfelt thank you to all our contributors, past and present. Your efforts ma
 
 ## 🌐 Stay Connected
 
-- [Website](https://churchcrm.io/)
-- [Matrix Chat](https://gitter.im/ChurchCRM/CRM)
-- [Documentation](https://github.com/ChurchCRM/CRM/wiki)
+Follow us for release announcements, tips, and community highlights:
+
+[![Website](https://img.shields.io/badge/Website-churchcrm.io-blue?logo=internet-explorer)](https://churchcrm.io/)
+[![X / Twitter](https://img.shields.io/badge/X-@getChurchCRM-black?logo=x)](https://x.com/getChurchCRM)
+[![Facebook](https://img.shields.io/badge/Facebook-getChurchCRM-1877F2?logo=facebook&logoColor=white)](https://www.facebook.com/getChurchCRM)
+[![Instagram](https://img.shields.io/badge/Instagram-@getchurchcrm-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/getchurchcrm/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-ChurchCRM-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/company/getchurchcrm/)
+[![Matrix Chat](https://img.shields.io/badge/Matrix-Chat-brightgreen?logo=matrix)](https://gitter.im/ChurchCRM/CRM)
 
 Happy coding and community building! 🎉
 

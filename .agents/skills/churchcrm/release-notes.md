@@ -312,9 +312,24 @@ This release patches three vulnerabilities discovered during our security audit:
 
 ---
 
+## Step 8 — Social Media Posts
+
+After saving to `changelog/` and publishing the GitHub release, generate social media posts for all four platforms:
+
+```
+→ social-media-release.md
+```
+
+Platforms: X / Twitter · Facebook · Instagram · LinkedIn
+
+Run this skill with the changelog file as context. It handles platform-specific formatting, character limits, hashtags, and tone automatically.
+
+---
+
 ## Related Skills
 
 - [Git Workflow](./git-workflow.md) — tagging, branching for releases
 - [GitHub Interaction](./github-interaction.md) — publishing the release via `gh`
+- [Social Media Release](./social-media-release.md) — X, Facebook, Instagram, LinkedIn posts
 - [i18n & Localization](./i18n-localization.md) — locale details for the notes
 - [Locale AI Translation](./locale-ai-translation.md) — AI translation pipeline before release
