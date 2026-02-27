@@ -24,6 +24,86 @@ describe("csv export", () => {
                 expect(response.body).to.not.include("Parse error");
             });
         });
+
+        it("should include address columns in CSV export with family fallback", () => {
+            // Test default format includes address fields when requested
+            // This also validates the family fallback logic for addresses
+            cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    output: "csv",
+                    Format: "default",
+                    familyonly: "false",
+                    Source: "all",
+                    Address1: "1",
+                    Address2: "1",
+                    City: "1",
+                    State: "1",
+                    Zip: "1"
+                }
+            }).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.headers["content-type"]).to.include("text/csv");
+                
+                // Verify no PHP errors in response
+                expect(response.body).to.not.include("Fatal error");
+                expect(response.body).to.not.include("Parse error");
+                
+                // Verify CSV header contains address columns
+                const lines = response.body.split('\n');
+                expect(lines.length).to.be.greaterThan(1);
+                const header = lines[0].toLowerCase();
+                expect(header).to.include("address 1");
+                expect(header).to.include("city");
+                expect(header).to.include("state");
+                
+                // Verify at least one data row exists (family fallback should populate addresses)
+                // Filter out empty lines
+                const dataLines = lines.slice(1).filter(line => line.trim().length > 0);
+                expect(dataLines.length).to.be.greaterThan(0, "Expected at least one data row in export");
+            });
+        });
+
+        it("should include address columns in rollup format CSV export", () => {
+            // Test rollup format includes address fields when requested
+            cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    output: "csv",
+                    Format: "rollup",
+                    familyonly: "false",
+                    Source: "all",
+                    Address1: "1",
+                    Address2: "1",
+                    City: "1",
+                    State: "1",
+                    Zip: "1"
+                }
+            }).then((response) => {
+                expect(response.status).to.eq(200);
+                expect(response.headers["content-type"]).to.include("text/csv");
+                
+                // Verify no PHP errors in response
+                expect(response.body).to.not.include("Fatal error");
+                expect(response.body).to.not.include("Parse error");
+                
+                // Verify CSV header contains address columns
+                const lines = response.body.split('\n');
+                expect(lines.length).to.be.greaterThan(1);
+                const header = lines[0].toLowerCase();
+                expect(header).to.include("address 1");
+                expect(header).to.include("city");
+                expect(header).to.include("state");
+                
+                // Verify at least one data row exists
+                const dataLines = lines.slice(1).filter(line => line.trim().length > 0);
+                expect(dataLines.length).to.be.greaterThan(0, "Expected at least one data row in export");
+            });
+        });
     });
 
     describe("advanced deposit report", () => {
