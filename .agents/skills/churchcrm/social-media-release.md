@@ -329,28 +329,37 @@ Download: https://github.com/ChurchCRM/CRM/releases/tag/X.Y.Z
 
 ---
 
-## Step 5 — Output Format
+## Step 5 — Save to Files
 
-Always output all four platform posts in a single response, clearly labeled, ready to copy-paste:
+Write each platform post to a separate file under `social-media/X.Y.Z/` so they can be opened and copy-pasted directly into each platform.
+
+**Directory:** `social-media/X.Y.Z/` (create it if it doesn't exist)
+
+**Files to create:**
+
+| File | Contents |
+|------|----------|
+| `social-media/X.Y.Z/twitter.txt` | X / Twitter post text only |
+| `social-media/X.Y.Z/facebook.txt` | Facebook post text only |
+| `social-media/X.Y.Z/instagram.txt` | Instagram caption + image brief at top |
+| `social-media/X.Y.Z/linkedin.txt` | LinkedIn post text only |
+
+**Instagram file format** — put the image brief as the first line so it's visible when the file is opened:
 
 ```
----
-## X / Twitter
-[post text]
-
----
-## Facebook
-[post text]
-
----
-## Instagram
 📸 Suggested image: [describe the graphic/screenshot to use]
 
-[caption]
+[caption text]
+```
 
----
-## LinkedIn
-[post text]
+After writing all four files, output a short confirmation listing the files created, e.g.:
+
+```
+Social media posts saved to social-media/X.Y.Z/:
+  twitter.txt   — X / Twitter
+  facebook.txt  — Facebook
+  instagram.txt — Instagram (image brief included at top)
+  linkedin.txt  — LinkedIn
 ```
 
 ---
@@ -368,6 +377,7 @@ Before finalizing:
 - [ ] PHP version requirement called out on Facebook and LinkedIn if applicable
 - [ ] Instagram suggests a specific image/graphic
 - [ ] Release notes link correct: `https://github.com/ChurchCRM/CRM/releases/tag/X.Y.Z`
+- [ ] All four files written to `social-media/X.Y.Z/` (twitter.txt, facebook.txt, instagram.txt, linkedin.txt)
 
 ---
 
