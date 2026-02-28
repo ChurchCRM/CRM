@@ -11186,3 +11186,1235 @@ msgstr "Lähtesta Filtrid"
 msgid "Show only people with photos"
 msgstr "Näita ainult fotodega inimesi"
 
+#: 
+msgid "Checkout All"
+msgstr "Checkout All"
+
+#: 
+msgid "Expected"
+msgstr "Expected"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Failed to delete kiosk"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Family Pledge by Fiscal Year"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Find Registered students"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Fiscal Year."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Group of registered students"
+
+#: 
+msgid "Here"
+msgstr "Here"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Invalid assignment type"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Invalid person ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Kiosk Registration Disabled"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kiosk not found"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+
+#: 
+msgid "Linked Group"
+msgstr "Linked Group"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "No Group (Select for Kiosk Check-in)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "No one checked in yet"
+
+#: 
+msgid "Person not found"
+msgstr "Person not found"
+
+#: 
+msgid "Pickup Request"
+msgstr "Pickup Request"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Please proceed to the classroom as soon as possible."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Pledge summary by family name for each fund for the selected fiscal year"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Registered students"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "The teacher sent this alert at"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+
+#: 
+msgid "Tip"
+msgstr "Tip"
+
+#: 
+msgid "Try Again"
+msgstr "Try Again"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Upcoming Birthdays"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Waiting to Check In"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "When enabled, new kiosk devices can register for 30 seconds."
+
+#: 
+msgid "Your child"
+msgstr "Your child"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "needs to be picked up from"
+
+#: 
+msgid "their classroom"
+msgstr "their classroom"
+
+#: 
+msgid "All timezones match"
+msgstr "All timezones match"
+
+#: 
+msgid "Baseline"
+msgstr "Baseline"
+
+#: 
+msgid "Browser"
+msgstr "Browser"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Browser differs from system config - dates may display incorrectly for this user."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Comparing timezones..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+
+#: 
+msgid "Does not match system config"
+msgstr "Does not match system config"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Failed to apply upgrade. Please check the server logs for details."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Failed to create Upgrade directory. Please check file permissions."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Failed to extract upgrade archive. Please check disk space and file permissions."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Failed to open upgrade archive. The downloaded file may be corrupted."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Failed to save the downloaded release file. Please check disk space and permissions."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Invalid date format in start parameter"
+
+#: 
+msgid "Mismatch"
+msgstr "Mismatch"
+
+#: 
+msgid "Not set"
+msgstr "Not set"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP Active"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+
+#: 
+msgid "System Config"
+msgstr "System Config"
+
+#: 
+msgid "Timezone Information"
+msgstr "Timezone Information"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Timezone mismatch detected"
+
+#: 
+msgid "mismatch detected"
+msgstr "mismatch detected"
+
+#: 
+msgid "mismatches detected"
+msgstr "mismatches detected"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hour"
+msgstr[1] "%d hour"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "About WebDAV Backups"
+
+#: 
+msgid "Add Link"
+msgstr "Add Link"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Add an extra layer of security to your account"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Add custom external links to the navigation menu."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Allow Self-Signed Certificates"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "An error occurred processing the plugin request"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+
+#: 
+msgid "Audiences"
+msgstr "Audiences"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Authentication failed. Please check username and password."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Auto-Backup Interval"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Avg Click Rate"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Avg Open Rate"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Back to Dashboard"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Backup created but failed to copy to remote server"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Backup to WebDAV Now"
+
+#: 
+msgid "Before You Start"
+msgstr "Before You Start"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Browser language preference detected"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "CRM Members Not Subscribed"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Campaigns Sent"
+
+#: 
+msgid "Can't scan?"
+msgstr "Can't scan?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Change Your Locale"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM supports a plugin architecture for extending functionality."
+
+#: 
+msgid "Cleaned"
+msgstr "Cleaned"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Click the button below to test your WebDAV connection settings."
+
+#: 
+msgid "Community Plugins"
+msgstr "Community Plugins"
+
+#: 
+msgid "Community plugins"
+msgstr "Community plugins"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Configure External Backup"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Configure MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Configure these settings in the"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Configured"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Confirm with a code from your authenticator app"
+
+#: 
+msgid "Connected"
+msgstr "Connected"
+
+#: 
+msgid "Connection failed"
+msgstr "Connection failed"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Connection failed with HTTP code"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Connection successful! WebDAV endpoint is accessible."
+
+#: 
+msgid "Connection test failed"
+msgstr "Connection test failed"
+
+#: 
+msgid "Core Plugins"
+msgstr "Core Plugins"
+
+#: 
+msgid "Core plugins"
+msgstr "Core plugins"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Create a backup now and upload it to your WebDAV server."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Create an Audience in MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Custom"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Custom Menu Links"
+
+#: 
+msgid "Default Image Style"
+msgstr "Default Image Style"
+
+#: 
+msgid "Default List ID"
+msgstr "Default List ID"
+
+#: 
+msgid "Disable"
+msgstr "Disable"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Disable Plugin"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Disable Two-Factor Authentication"
+
+#: 
+msgid "Dismiss"
+msgstr "Dismiss"
+
+#: 
+msgid "Done"
+msgstr "Done"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164 format, e.g., +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Each plugin requires a"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+
+#: 
+msgid "Email Addresses"
+msgstr "Email Addresses"
+
+#: 
+msgid "Enable"
+msgstr "Enable"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Enable External Backup Plugin"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Enable Plugin"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Enable Two-Factor Authentication"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Enable the External Backup plugin for WebDAV cloud storage."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+
+#: 
+msgid "Endpoint URL"
+msgstr "Endpoint URL"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Enter the 6-digit code from your authenticator app"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Enter your username and password as usual"
+
+#: 
+msgid "External Backup"
+msgstr "External Backup"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "External Backup (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "External Backup Settings"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "External Backup plugin is enabled but not configured."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+
+#: 
+msgid "Failed to create link"
+msgstr "Failed to create link"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Failed to delete link"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Failed to disable plugin"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Failed to enable plugin"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Failed to get plugin details"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Failed to list plugins"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Failed to reset settings"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Failed to send SMS"
+
+#: 
+msgid "Family Status"
+msgstr "Family Status"
+
+#: 
+msgid "Family not found"
+msgstr "Family not found"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+
+#: 
+msgid "From Phone Number"
+msgstr "From Phone Number"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "From dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "GA4 Measurement ID"
+
+#: 
+msgid "Generate new code"
+msgstr "Generate new code"
+
+#: 
+msgid "Get Started"
+msgstr "Get Started"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+
+#: 
+msgid "Help"
+msgstr "Help"
+
+#: 
+msgid "Id"
+msgstr "Id"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Image shown when no Gravatar exists for the email address"
+
+#: 
+msgid "Important"
+msgstr "Important"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Install plugins by placing them in"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Invalid code. Please try again."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Kiosk device not found"
+
+#: 
+msgid "Last Backup"
+msgstr "Last Backup"
+
+#: 
+msgid "Last Campaign"
+msgstr "Last Campaign"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Last Subscriber"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Last Successful Backup"
+
+#: 
+msgid "Last campaign"
+msgstr "Last campaign"
+
+#: 
+msgid "Link Name"
+msgstr "Link Name"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Link address cannot contain HTML tags"
+
+#: 
+msgid "Link address is required"
+msgstr "Link address is required"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Link must be a valid URL"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Link must start with http:// or https://"
+
+#: 
+msgid "Link not found"
+msgstr "Link not found"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Loading recovery codes"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "MailChimp API Key"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "MailChimp Dashboard"
+
+#: 
+msgid "Manage Links"
+msgstr "Manage Links"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Manage Two-Factor Authentication"
+
+#: 
+msgid "Manual Backup"
+msgstr "Manual Backup"
+
+#: 
+msgid "Menu Links"
+msgstr "Menu Links"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Menu name cannot contain HTML tags"
+
+#: 
+msgid "Menu name is required"
+msgstr "Menu name is required"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Menu name must be 50 characters or less"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Menu name must be at least 2 characters"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Must start with http:// or https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Needs Configuration"
+
+#: 
+msgid "Never"
+msgstr "Never"
+
+#: 
+msgid "No Audiences Found"
+msgstr "No Audiences Found"
+
+#: 
+msgid "No backups recorded"
+msgstr "No backups recorded"
+
+#: 
+msgid "No community plugins installed"
+msgstr "No community plugins installed"
+
+#: 
+msgid "No core plugins found"
+msgstr "No core plugins found"
+
+#: 
+msgid "No settings provided"
+msgstr "No settings provided"
+
+#: 
+msgid "Not Configured"
+msgstr "Not Configured"
+
+#: 
+msgid "Not in CRM"
+msgstr "Not in CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "One-Time Code"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Open MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Open your authenticator app and scan this QR code"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "OpenLP Server URL"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Optional - only required if OpenLP authentication is enabled"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Phone number and message required"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Please configure endpoint, username, and password first."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Please configure the WebDAV settings before creating a remote backup."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Please configure the WebDAV settings before testing the connection."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Please configure your MailChimp API key to use this integration."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Please enter a link name (2-50 characters)"
+
+#: 
+msgid "Please try again"
+msgstr "Please try again"
+
+#: 
+msgid "Plugin Development"
+msgstr "Plugin Development"
+
+#: 
+msgid "Plugin Help"
+msgstr "Plugin Help"
+
+#: 
+msgid "Plugin Management"
+msgstr "Plugin Management"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Plugin Settings"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Plugin cannot be disabled because other plugins depend on it"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Plugin cannot be enabled due to dependency or version requirements"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Plugin disabled successfully"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Plugin enabled successfully"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Plugin failed to load"
+
+#: 
+msgid "Plugin not found"
+msgstr "Plugin not found"
+
+#: 
+msgid "Plugins"
+msgstr "Plugins"
+
+#: 
+msgid "Print"
+msgstr "Print"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Recipients and message required"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Recovery Codes"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Remote backup failed. Check server logs for details."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS sent"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Scan QR Code"
+
+#: 
+msgid "Secure"
+msgstr "Secure"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Set Up Authenticator"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Settings reset successfully"
+
+#: 
+msgid "Setup Complete"
+msgstr "Setup Complete"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Shipped with ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Sign In"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Some settings could not be reset"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Some settings could not be saved"
+
+#: 
+msgid "Subscribers"
+msgstr "Subscribers"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Subscribers Not in CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "Test Connection"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Test WebDAV Connection"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Third-party extensions."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "This will replace any previously enrolled 2FA methods"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Total Campaigns"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Total Subscribers"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Two Factor Enrollment Error"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Two-factor authentication has been disabled"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Unable to load"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Unsubscribed"
+
+#: 
+msgid "Use a different account"
+msgstr "Use a different account"
+
+#: 
+msgid "Value is configured"
+msgstr "Value is configured"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Value is set - leave blank to keep current"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Verify & Sign In"
+
+#: 
+msgid "Verify Code"
+msgstr "Verify Code"
+
+#: 
+msgid "Verifying"
+msgstr "Verifying"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Vonage API Key"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API Secret"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV Configuration"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV Connection"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV endpoint URL is required."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV password is required."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV username is required."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "You can also use backup recovery codes if you lose access to your app"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "You'll receive backup codes that can be used if you lose access to your app"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "Your MailChimp account does not have any audiences (lists) configured."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Your account is now protected"
+
+#: 
+msgid "Your account is protected"
+msgstr "Your account is protected"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Your authenticator app has been successfully enrolled"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Your browser language preference differs from your ChurchCRM locale"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "e.g., Church Website"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "subscribers"
+
+#: 
+msgid "API Key is required."
+msgstr "API Key is required."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Congregation Map"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Congregation Map — Setup Required"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Connected to MailChimp! Account: %s (%d subscribers)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Connected to OpenLP server successfully."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Connected to OpenLP! Version: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Connected! Account balance: €%.2f. Ready to send SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Could not connect to MailChimp. Please check your API key."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Failed to connect to OpenLP server."
+
+#: 
+msgid "Get Directions"
+msgstr "Get Directions"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Invalid API credentials. Please verify your API Key and API Secret."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Invalid API key format. Check your MailChimp API key."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "Invalid endpoint URL. Must be a full URL starting with https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Invalid server URL format."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp connection failed."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Map Zoom Level"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Missing families? Update coordinates to include them on the map."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Missing required settings: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Person has no family"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Plugin not found or not active"
+
+#: 
+msgid "Server URL is required."
+msgstr "Server URL is required."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "This plugin does not support connection testing."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Unable to display map: church address has not been geocoded yet."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Update church address in Settings."
+
+#: 
+msgid "Username and password are required."
+msgstr "Username and password are required."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Validation failed: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Vonage server error. Please try again later."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV Endpoint URL is required."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Are you sure you want to permanently delete this pledge record?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Cancel and Return to Family View"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Move Donations to Selected Family"
+

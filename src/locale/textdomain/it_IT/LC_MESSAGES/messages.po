@@ -12217,3 +12217,227 @@ msgstr "Verifica codice"
 msgid "Verifying"
 msgstr "Verifica in corso"
 
+#: 
+msgid "Vonage API Key"
+msgstr "Vonage API Key"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API Secret"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV Configuration"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV Connection"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV endpoint URL is required."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV password is required."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV username is required."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "You can also use backup recovery codes if you lose access to your app"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "You'll receive backup codes that can be used if you lose access to your app"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "Your MailChimp account does not have any audiences (lists) configured."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Your account is now protected"
+
+#: 
+msgid "Your account is protected"
+msgstr "Your account is protected"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Your authenticator app has been successfully enrolled"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Your browser language preference differs from your ChurchCRM locale"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "e.g., Church Website"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "subscribers"
+
+#: 
+msgid "API Key is required."
+msgstr "API Key is required."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Congregation Map"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Congregation Map — Setup Required"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Connected to MailChimp! Account: %s (%d subscribers)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Connected to OpenLP server successfully."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Connected to OpenLP! Version: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Connected! Account balance: €%.2f. Ready to send SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Could not connect to MailChimp. Please check your API key."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Failed to connect to OpenLP server."
+
+#: 
+msgid "Get Directions"
+msgstr "Get Directions"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Invalid API credentials. Please verify your API Key and API Secret."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Invalid API key format. Check your MailChimp API key."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "Invalid endpoint URL. Must be a full URL starting with https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Invalid server URL format."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp connection failed."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Map Zoom Level"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Missing families? Update coordinates to include them on the map."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Missing required settings: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Person has no family"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Plugin not found or not active"
+
+#: 
+msgid "Server URL is required."
+msgstr "Server URL is required."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "This plugin does not support connection testing."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Unable to display map: church address has not been geocoded yet."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Update church address in Settings."
+
+#: 
+msgid "Username and password are required."
+msgstr "Username and password are required."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Validation failed: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Vonage server error. Please try again later."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV Endpoint URL is required."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Are you sure you want to permanently delete this pledge record?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Cancel and Return to Family View"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Move Donations to Selected Family"
+
