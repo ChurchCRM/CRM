@@ -93,7 +93,7 @@
         "admin-lte": "3.2.0",
         "avatar-initials": "^6.0.0",
         "bootbox": "^6.0.4",
-        "bootstrap": "^4.6.2",
+        "bootstrap": "^5.3.8",
         "bootstrap-datepicker": "^1.10.1",
         "bs-stepper": "^1.7.0",
         "chart.js": "^4.5.1",
