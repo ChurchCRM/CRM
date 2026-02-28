@@ -103,13 +103,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'debug.php', $pageArgs);
     });
 
-    // Email Debug page - redirects to the SMTP plugin settings page
-    $group->get('/debug/email', function (Request $request, Response $response): Response {
-        return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/plugins/management#plugin-smtp')
-            ->withStatus(302);
-    });
-
     // Orphaned Files Management page
     $group->get('/orphaned-files', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
