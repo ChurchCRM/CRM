@@ -48,7 +48,10 @@ class AuthMiddleware implements MiddlewareInterface
                 // since /background operations do not connotate user activity.
 
                 // User with an active browser session is still authenticated.
-                // don't really need to do anything here...
+                // For browser requests, enforce any required redirect steps (e.g. forced password change).
+                if ($this->isBrowserRequest($request)) {
+                    AuthenticationManager::ensureAuthentication();
+                }
             } else {
                 $logger = LoggerUtils::getAppLogger();
                 $logger->warning('No authenticated user or session', [
