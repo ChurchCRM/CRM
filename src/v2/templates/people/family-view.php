@@ -708,7 +708,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                         <?php
                     } ?>
             <div class="modal-footer text-center">
-                <?php if (count($familyEmails) > 0 && !empty(SystemConfig::getValue('sSMTPHost'))) {
+                <?php if (count($familyEmails) > 0 && SystemConfig::hasValidMailServerSettings()) {
                     ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i

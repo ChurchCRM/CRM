@@ -86,13 +86,15 @@ WHERE new_cfg.cfg_name = 'plugin.smtp.enabled'
     );
 
 -- =============================================================================
--- STEP 3: Clear legacy SMTP config keys (values now live in plugin.smtp.*)
+-- STEP 3: Delete legacy SMTP config keys (values now live in plugin.smtp.*)
 -- =============================================================================
 
-UPDATE config_cfg SET cfg_value = '' WHERE cfg_name = 'sSMTPHost';
-UPDATE config_cfg SET cfg_value = '0' WHERE cfg_name = 'bSMTPAuth';
-UPDATE config_cfg SET cfg_value = '' WHERE cfg_name = 'sSMTPUser';
-UPDATE config_cfg SET cfg_value = '' WHERE cfg_name = 'sSMTPPass';
-UPDATE config_cfg SET cfg_value = '10' WHERE cfg_name = 'iSMTPTimeout';
-UPDATE config_cfg SET cfg_value = '0' WHERE cfg_name = 'bPHPMailerAutoTLS';
-UPDATE config_cfg SET cfg_value = ' ' WHERE cfg_name = 'sPHPMailerSMTPSecure';
+DELETE FROM config_cfg WHERE cfg_name IN (
+    'sSMTPHost',
+    'bSMTPAuth',
+    'sSMTPUser',
+    'sSMTPPass',
+    'iSMTPTimeout',
+    'bPHPMailerAutoTLS',
+    'sPHPMailerSMTPSecure'
+);

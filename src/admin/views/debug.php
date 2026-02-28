@@ -269,12 +269,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                     <tr>
                         <td><?= gettext('SMTP Host') ?></td>
                         <td>
-                            <?php
-                            $smtpHost = SystemConfig::getBooleanValue('plugin.smtp.enabled')
-                                ? SystemConfig::getValue('plugin.smtp.host')
-                                : SystemConfig::getValue('sSMTPHost');
-                            echo htmlspecialchars($smtpHost ?: gettext('Not configured'));
-                            ?>
+                            <?= htmlspecialchars(SystemConfig::getValue('plugin.smtp.host') ?: gettext('Not configured')) ?>
                         </td>
                     </tr>
                     <tr>

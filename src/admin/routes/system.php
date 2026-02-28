@@ -1,9 +1,7 @@
 <?php
 
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
@@ -105,36 +103,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'debug.php', $pageArgs);
     });
 
-    // Email Debug page - redirects to plugin management when SMTP plugin is active
+    // Email Debug page - redirects to the SMTP plugin settings page
     $group->get('/debug/email', function (Request $request, Response $response): Response {
-        // If the SMTP plugin is enabled, redirect to plugin management page
-        if (SystemConfig::getBooleanValue('plugin.smtp.enabled')) {
-            return $response
-                ->withHeader('Location', SystemURLs::getRootPath() . '/plugins/management#plugin-smtp')
-                ->withStatus(302);
-        }
-
-        // Legacy debug path (pre-migration: SMTP configured via admin settings)
-        $renderer = new PhpRenderer(__DIR__ . '/../../v2/templates/email/');
-        $message = '';
-        $email   = null;
-
-        if (empty(SystemConfig::getValue('sSMTPHost'))) {
-            $message = gettext('SMTP Host is not setup, please visit the settings page');
-        } elseif (empty(ChurchMetaData::getChurchEmail())) {
-            $message = gettext('Church Email not set, please visit the settings page');
-        } else {
-            $email = new TestEmail([ChurchMetaData::getChurchEmail()]);
-        }
-
-        $pageArgs = [
-            'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('Debug Email Connection'),
-            'mailer'     => $email,
-            'message'    => $message,
-        ];
-
-        return $renderer->render($response, 'debug.php', $pageArgs);
+        return $response
+            ->withHeader('Location', SystemURLs::getRootPath() . '/plugins/management#plugin-smtp')
+            ->withStatus(302);
     });
 
     // Orphaned Files Management page

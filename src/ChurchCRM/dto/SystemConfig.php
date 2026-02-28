@@ -111,11 +111,6 @@ class   SystemConfig
             'sDefaultState'                        => new ConfigItem(22, 'sDefaultState', 'text', '', gettext('Default State - Must be 2-letter abbreviation!')),
             'sDefaultCountry'                      => new ConfigItem(23, 'sDefaultCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
             'sToEmailAddress'                      => new ConfigItem(26, 'sToEmailAddress', 'text', '', gettext('Default account for receiving a copy of all emails')),
-            'iSMTPTimeout'                         => new ConfigItem(24, 'iSMTPTimeout', 'number', '10', gettext('SMTP Server timeout in sec')),
-            'sSMTPHost'                            => new ConfigItem(27, 'sSMTPHost', 'text', '', gettext('SMTP Server Address (mail.server.com:25)')),
-            'bSMTPAuth'                            => new ConfigItem(28, 'bSMTPAuth', 'boolean', '0', gettext('Does your SMTP server require auththentication (username/password)?')),
-            'sSMTPUser'                            => new ConfigItem(29, 'sSMTPUser', 'text', '', gettext('SMTP Username')),
-            'sSMTPPass'                            => new ConfigItem(30, 'sSMTPPass', 'password', '', gettext('SMTP Password')),
             'sLanguage'                            => new ConfigItem(39, 'sLanguage', 'choice', 'en_US', gettext('Internationalization (I18n) support'), 'https://poeditor.com/join/project?hash=RABdnDSqAt', json_encode(SystemConfig::getSupportedLocales(), JSON_THROW_ON_ERROR)),
             'iFYMonth'                             => new ConfigItem(40, 'iFYMonth', 'choice', '1', gettext('First month of the fiscal year'), '', '{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
             'sGoogleMapsGeocodeKey'                => new ConfigItem(44, 'sGoogleMapsGeocodeKey', 'text', '', gettext('Google Maps API Key used for Geocoding addresses'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'),
@@ -210,8 +205,6 @@ class   SystemConfig
             'iPersonConfessionDateCustomField'     => new ConfigItem(2041, 'iPersonConfessionDateCustomField', 'ajax', '', gettext('Field where last Confession is stored, must be a date type'), '', '/api/system/custom-fields/person/?typeId=2'),
             'bHSTSEnable'                          => new ConfigItem(20142, 'bHSTSEnable', 'boolean', '0', gettext('Require that this ChurchCRM Database is accessed over HTTPS')),
             'bEnforceCSP'                          => new ConfigItem(20234, 'bEnforceCSP', 'boolean', '0', gettext('Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.')),
-            'bPHPMailerAutoTLS'                    => new ConfigItem(2045, 'bPHPMailerAutoTLS', 'boolean', '0', gettext('Automatically enable SMTP encryption if offered by the relaying server.')),
-            'sPHPMailerSMTPSecure'                 => new ConfigItem(2046, 'sPHPMailerSMTPSecure', 'choice', ' ', gettext('Set the encryption system to use - ssl (deprecated) or tls'), '', '{"Choices":["None: ","TLS:tls","SSL:ssl"]}'),
             'iDashboardServiceIntervalTime'        => new ConfigItem(2047, 'iDashboardServiceIntervalTime', 'number', '60', gettext('Dashboard Service dynamic asynchronous refresh interval, default 60 second')),
             'bEnabledSundaySchool'                 => new ConfigItem(2051, 'bEnabledSundaySchool', 'boolean', '1', gettext('Enable Sunday School left menu.')),
             'bEnabledFinance'                      => new ConfigItem(2052, 'bEnabledFinance', 'boolean', '1', gettext('Enable Finance menu')),
@@ -448,33 +441,20 @@ class   SystemConfig
 
     public static function hasValidMailServerSettings(): bool
     {
-        // Check SMTP plugin config first (post-migration)
-        try {
-            if (self::getBooleanValue('plugin.smtp.enabled')) {
-                if (empty(self::getValue('plugin.smtp.host'))) {
-                    return false;
-                }
-                if (self::getBooleanValue('plugin.smtp.auth')) {
-                    return !empty(self::getValue('plugin.smtp.username'))
-                        && !empty(self::getValue('plugin.smtp.password'));
-                }
-                return true;
-            }
-        } catch (\Throwable $e) {
-            // Plugin config keys not yet registered (pre-migration); fall through to legacy check
+        if (!self::getBooleanValue('plugin.smtp.enabled')) {
+            return false;
         }
 
-        // Legacy fallback for pre-migration setups
-        $hasValidSettings = true;
-        if (empty(self::getValue('sSMTPHost'))) {
-            $hasValidSettings = false;
+        if (empty(self::getValue('plugin.smtp.host'))) {
+            return false;
         }
 
-        if (SystemConfig::getBooleanValue('bSMTPAuth') && (empty(self::getValue('sSMTPUser')) || empty(self::getValue('sSMTPPass')))) {
-            $hasValidSettings = false;
+        if (self::getBooleanValue('plugin.smtp.auth')) {
+            return !empty(self::getValue('plugin.smtp.username'))
+                && !empty(self::getValue('plugin.smtp.password'));
         }
 
-        return $hasValidSettings;
+        return true;
     }
 
     /**
