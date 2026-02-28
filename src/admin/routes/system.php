@@ -1,9 +1,7 @@
 <?php
 
-use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
@@ -100,29 +98,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath'  => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Debug'),
-        ];
-
-        return $renderer->render($response, 'debug.php', $pageArgs);
-    });
-
-    // Email Debug page
-    $group->get('/debug/email', function (Request $request, Response $response): Response {
-        $renderer = new PhpRenderer(__DIR__ . '/../../v2/templates/email/');
-        $message = '';
-
-        if (empty(SystemConfig::getValue('sSMTPHost'))) {
-            $message = gettext('SMTP Host is not setup, please visit the settings page');
-        } elseif (empty(ChurchMetaData::getChurchEmail())) {
-            $message = gettext('Church Email not set, please visit the settings page');
-        } else {
-            $email = new TestEmail([ChurchMetaData::getChurchEmail()]);
-        }
-
-        $pageArgs = [
-            'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('Debug Email Connection'),
-            'mailer'     => $email,
-            'message'    => $message,
         ];
 
         return $renderer->render($response, 'debug.php', $pageArgs);

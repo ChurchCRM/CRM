@@ -379,6 +379,7 @@ class PluginManager
                     'settings' => self::getPluginSettingsWithValues($id),
                     'help' => $plugin?->getHelp() ?? $metadata->getHelp(),
                     'hasTest' => $metadata->hasTest(),
+                    'presets' => $metadata->getPresets(),
                     'hasError' => $configError !== null,
                     'errorMessage' => $configError,
                 ];

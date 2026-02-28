@@ -263,30 +263,6 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                         <td><?= SystemService::getDBServerVersion() ?></td>
                     </tr>
                 </table>
-                <hr>
-                <h6 class="text-muted mb-2"><?= gettext('Email Configuration') ?></h6>
-                <table class="table table-striped table-sm">
-                    <tr>
-                        <td><?= gettext('SMTP Host') ?></td>
-                        <td><?= SystemConfig::getValue("sSMTPHost") ?: gettext('Not configured') ?></td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Valid Settings') ?></td>
-                        <td>
-                            <?php if (SystemConfig::hasValidMailServerSettings()): ?>
-                                <i class="fa fa-check text-success mr-2"></i><span class="text-success"><?= gettext('Yes') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-primary ml-2" title="<?= gettext('Email Debug Info') ?>">
-                                    <i class="fa fa-envelope mr-1"></i><?= gettext('Debug') ?>
-                                </a>
-                            <?php else: ?>
-                                <i class="fa fa-times text-danger mr-2"></i><span class="text-danger"><?= gettext('No') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-danger ml-2" title="<?= gettext('Email Debug Info') ?>">
-                                    <i class="fa fa-envelope mr-1"></i><?= gettext('Debug') ?>
-                                </a>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                </table>
                 </div>
             </div>
         </div>

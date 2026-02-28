@@ -1,0 +1,109 @@
+{
+  "id": "smtp",
+  "name": "SMTP Email",
+  "description": "Send emails via an SMTP server. Required for all email notifications including password resets, event reminders, and member communications.",
+  "version": "1.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\Smtp\\SmtpPlugin",
+  "dependencies": [],
+  "settingsUrl": null,
+  "settings": [
+    {
+      "key": "host",
+      "label": "SMTP Host",
+      "type": "text",
+      "required": true,
+      "help": "SMTP server hostname (e.g. smtp.gmail.com)"
+    },
+    {
+      "key": "port",
+      "label": "SMTP Port",
+      "type": "text",
+      "required": false,
+      "help": "Port number: 25 (plain), 465 (SSL/TLS), or 587 (STARTTLS)"
+    },
+    {
+      "key": "smtpSecure",
+      "label": "Encryption",
+      "type": "select",
+      "required": false,
+      "help": "Encryption method for connecting to the SMTP server",
+      "options": ["", "tls", "ssl"],
+      "optionLabels": ["None", "TLS (STARTTLS) - Port 587", "SSL/TLS - Port 465"]
+    },
+    {
+      "key": "autoTLS",
+      "label": "Auto TLS",
+      "type": "boolean",
+      "required": false,
+      "help": "Automatically upgrade to TLS encryption if the server offers it"
+    },
+    {
+      "key": "auth",
+      "label": "Require Authentication",
+      "type": "boolean",
+      "required": false,
+      "help": "Enable if your SMTP server requires a username and password"
+    },
+    {
+      "key": "username",
+      "label": "SMTP Username",
+      "type": "text",
+      "required": false,
+      "help": "Your SMTP account username or email address"
+    },
+    {
+      "key": "password",
+      "label": "SMTP Password",
+      "type": "password",
+      "required": false,
+      "help": "Your SMTP account password or app-specific password"
+    },
+    {
+      "key": "timeout",
+      "label": "Timeout (seconds)",
+      "type": "text",
+      "required": false,
+      "help": "Connection timeout in seconds (default: 10)"
+    },
+    {
+      "key": "bccAddress",
+      "label": "BCC Copy Address",
+      "type": "text",
+      "required": false,
+      "help": "Email address that will receive a blind copy of all outgoing emails (leave blank to disable)"
+    }
+  ],
+  "presets": [
+    {
+      "label": "Gmail",
+      "icon": "fab fa-google",
+      "settings": {
+        "host": "smtp.gmail.com",
+        "port": "587",
+        "smtpSecure": "tls",
+        "autoTLS": "0",
+        "auth": "1",
+        "timeout": "10"
+      }
+    },
+    {
+      "label": "Outlook / Microsoft 365",
+      "icon": "fab fa-microsoft",
+      "settings": {
+        "host": "smtp-mail.outlook.com",
+        "port": "587",
+        "smtpSecure": "tls",
+        "autoTLS": "0",
+        "auth": "1",
+        "timeout": "10"
+      }
+    }
+  ],
+  "menuItems": [],
+  "hooks": [],
+  "hasTest": true
+}

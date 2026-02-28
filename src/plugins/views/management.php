@@ -102,6 +102,24 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
             
             <?php if ($hasSettings): ?>
                 <hr>
+                <?php if (!empty($plugin['presets'])): ?>
+                <div class="mb-3">
+                    <small class="text-muted d-block mb-1"><?= gettext('Quick fill:') ?></small>
+                    <?php foreach ($plugin['presets'] as $preset):
+                        $presetIcon  = htmlspecialchars($preset['icon'] ?? '');
+                        $presetLabel = htmlspecialchars($preset['label'] ?? '');
+                        $presetData  = htmlspecialchars(json_encode($preset['settings'] ?? [], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT), ENT_QUOTES, 'UTF-8');
+                    ?>
+                    <button type="button"
+                            class="btn btn-outline-secondary btn-sm btn-preset mr-1 mb-1"
+                            data-plugin-id="<?= $pluginId ?>"
+                            data-preset="<?= $presetData ?>">
+                        <?php if ($presetIcon): ?><i class="<?= $presetIcon ?> mr-1"></i><?php endif; ?>
+                        <?= $presetLabel ?>
+                    </button>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
                 <form class="plugin-settings-form" data-plugin-id="<?= $pluginId ?>">
                     <?php foreach ($plugin['settings'] as $setting): 
                         $settingKey = htmlspecialchars($setting['key'] ?? '');
@@ -363,6 +381,32 @@ $(document).ready(function() {
         return div.innerHTML;
     }
 
+    // Preset buttons: fill form fields with predefined SMTP settings
+    $(document).on('click', '.btn-preset', function() {
+        const btn      = $(this);
+        const pluginId = btn.data('plugin-id');
+        const preset   = btn.data('preset');
+        const form     = $('[data-plugin-id="' + pluginId + '"].plugin-settings-form');
+
+        if (!preset || !form.length) {
+            return;
+        }
+
+        $.each(preset, function(key, value) {
+            const field = form.find('[data-setting-key="' + key + '"]');
+            if (!field.length) {
+                return;
+            }
+            if (field.attr('type') === 'checkbox') {
+                field.prop('checked', value === '1' || value === 'true');
+            } else {
+                field.val(value);
+            }
+        });
+
+        window.CRM.notify(i18next.t('Settings pre-filled. Review and save.'), { type: 'info' });
+    });
+
     // Enable/Disable plugin
     $('.btn-plugin-toggle').on('click', function(e) {
         e.stopPropagation();
@@ -474,14 +518,24 @@ $(document).ready(function() {
     }
 
     // Show inline test result below the button group
-    function showTestResult(pluginId, success, message) {
+    function showTestResult(pluginId, success, message, details) {
         const resultDiv = $('#test-result-' + pluginId);
         const alertClass = success ? 'alert-success' : 'alert-danger';
         const icon = success ? 'fa-check-circle' : 'fa-exclamation-circle';
+
+        let html = '<i class="fas ' + icon + ' mr-1"></i>' + escapeHtml(message);
+
+        // Show SMTP debug output when present
+        if (details && details.debug) {
+            html += '<pre class="mt-2 mb-0 small border rounded p-2" style="max-height: 300px; overflow-y: auto; white-space: pre-wrap; background: #f8f9fa;">'
+                 + escapeHtml(details.debug)
+                 + '</pre>';
+        }
+
         resultDiv
             .removeClass('alert-success alert-danger')
             .addClass('alert ' + alertClass)
-            .html('<i class="fas ' + icon + ' mr-1"></i>' + escapeHtml(message))
+            .html(html)
             .show();
     }
 
@@ -503,11 +557,11 @@ $(document).ready(function() {
             data:        JSON.stringify({ settings: settings }),
         })
         .done(function(response) {
-            showTestResult(pluginId, response.success, response.message);
+            showTestResult(pluginId, response.success, response.message, response.details);
         })
         .fail(function(xhr) {
             const msg = xhr.responseJSON?.message || i18next.t('Connection test failed');
-            showTestResult(pluginId, false, msg);
+            showTestResult(pluginId, false, msg, null);
         })
         .always(function() {
             btn.prop('disabled', false).html('<i class="fas fa-plug mr-1"></i>' + i18next.t('Test Connection'));
