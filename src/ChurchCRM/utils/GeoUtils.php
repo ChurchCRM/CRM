@@ -4,6 +4,7 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Plugin\PluginManager;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\Query\GeocodeQuery;
 use Geocoder\StatefulGeocoder;
@@ -11,13 +12,31 @@ use Http\Adapter\Guzzle7\Client;
 
 class GeoUtils
 {
+    /**
+     * Resolve the Google Maps geocode API key.
+     *
+     * Uses the Maps plugin key when the plugin is active, falling back to
+     * the legacy sGoogleMapsGeocodeKey SystemConfig value.
+     */
+    private static function getGeocodeApiKey(): string
+    {
+        $mapsPlugin = PluginManager::getPlugin('maps');
+        if ($mapsPlugin !== null) {
+            $key = $mapsPlugin->getGoogleMapsGeocodeKey();
+            if (!empty($key)) {
+                return $key;
+            }
+        }
+        return SystemConfig::getValue('sGoogleMapsGeocodeKey') ?? '';
+    }
+
     public static function getLatLong(string $address): array
     {
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::getCurrentLocale();
 
         $adapter = new Client();
-        $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('sGoogleMapsGeocodeKey'));
+        $provider = new GoogleMaps($adapter, null, self::getGeocodeApiKey());
 
         $lat = 0;
         $long = 0;
