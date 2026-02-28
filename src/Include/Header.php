@@ -292,7 +292,7 @@ $MenuFirst = 1;
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png" alt="ChurchCRM Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
           <!-- logo for regular state and mobile devices -->
-                    <span class="brand-text font-weight-light"><?= ChurchMetaData::getChurchName() ?></span>
+                    <span class="brand-text font-weight-light"><?= ChurchMetaData::getChurchName() ?: gettext('ChurchCRM') ?></span>
       </a>
     <!-- sidebar: style can be found in sidebar.less -->
     <div class="sidebar">
