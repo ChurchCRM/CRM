@@ -23,8 +23,27 @@ async function saveJSONFile(fileName, data) {
         console.log(`Note: Could not read ${fileName} for line ending detection, using Unix (LF)`);
     }
     
+    // For upgrade.json ensure `current` key is always last (human expectations)
+    let dataToWrite = data;
+    try {
+        const normalized = fileName.replace(/\\/g, '/');
+        if (normalized.includes('src/mysql/upgrade.json') && data && typeof data === 'object') {
+            const ordered = {};
+            for (const k of Object.keys(data)) {
+                if (k === 'current') continue;
+                ordered[k] = data[k];
+            }
+            if (Object.prototype.hasOwnProperty.call(data, 'current')) {
+                ordered.current = data.current;
+            }
+            dataToWrite = ordered;
+        }
+    } catch (err) {
+        console.log(`Warning: could not reorder keys for ${fileName}: ${err.message}`);
+    }
+
     // Generate JSON with proper formatting
-    const jsonContent = JSON.stringify(data, null, 4);
+    const jsonContent = JSON.stringify(dataToWrite, null, 4);
     
     // Convert line endings to match original file
     const finalContent = lineEnding === '\r\n' 
@@ -60,8 +79,80 @@ async function updateDBVersion(dbFileName, newVersion, oldVersion) {
     const { current } = data;
 
     console.log(`Current DB version: ${current.dbVersion}`);
+
+    // Detect whether there are SQL/PHP upgrade scripts for the new version
+    let scriptExists = false;
+    try {
+        const upgradeDir = "src/mysql/upgrade";
+        const files = await fs.readdir(upgradeDir);
+        scriptExists = files.some((f) => f.startsWith(newVersion));
+    } catch (err) {
+        console.log(`Could not read upgrade directory for detection: ${err.message}`);
+    }
+
+    // If the current block contains upgrade scripts, this means the current
+    // release introduced DB changes. Rename the current block to
+    // `pre-<current.dbVersion>` and create a fresh `current` block with no scripts
+    // and the last DB version as its first `versions` entry.
+    if (Array.isArray(current.scripts) && current.scripts.length > 0) {
+        const preName = `pre-${current.dbVersion}`;
+
+        if (!data[preName]) {
+            // Move the whole current block to pre-<dbVersion>
+            data[preName] = {
+                versions: Array.isArray(current.versions) ? [...current.versions] : [],
+                scripts: Array.isArray(current.scripts) ? [...current.scripts] : [],
+                dbVersion: current.dbVersion,
+            };
+            console.log(`Moved current block to ${preName}`);
+        } else {
+            // Merge if pre block already exists
+            const existing = data[preName];
+            existing.versions = Array.from(new Set([...(existing.versions || []), ...(current.versions || [])]));
+            existing.scripts = Array.from(new Set([...(existing.scripts || []), ...(current.scripts || [])]));
+            existing.dbVersion = existing.dbVersion || current.dbVersion;
+            console.log(`Merged current block into existing ${preName}`);
+        }
+
+        // Create a new blank current block whose first version is the last DB version
+        // and set its dbVersion to the newVersion passed into the release
+        data.current = {
+            versions: [current.dbVersion],
+            scripts: [],
+            dbVersion: newVersion,
+        };
+
+        await saveJSONFile(dbFileName, data);
+        console.log(`${dbFileName} split: created ${preName} and reset current (no SQL).`);
+        console.log(`   Line endings preserved for ${dbFileName}`);
+        return;
+    }
+
+    // If there are no new upgrade scripts and this is the first release after a
+    // DB-change (oldVersion equals current DB), create a pre-<newVersion> block
+    // with no scripts so the release stands alone.
+    if (!scriptExists && oldVersion === current.dbVersion) {
+        const blockName = `pre-${newVersion}`;
+        if (!data[blockName]) {
+            data[blockName] = {
+                versions: [oldVersion],
+                scripts: [],
+                dbVersion: newVersion,
+            };
+            await saveJSONFile(dbFileName, data);
+            console.log(`Created ${blockName} block (no SQL) for version: ${newVersion}`);
+            console.log(`   Line endings preserved for ${dbFileName}`);
+            return;
+        } else {
+            console.log(`${blockName} already exists, skipping creation.`);
+        }
+    }
+
+    // Default behavior: add the old version into the current block and bump dbVersion
     current.dbVersion = newVersion;
-    current.versions.push(oldVersion);
+    if (!current.versions.includes(oldVersion)) {
+        current.versions.push(oldVersion);
+    }
 
     await saveJSONFile(dbFileName, data);
     console.log(`${dbFileName} updated to version: ${newVersion}`);
