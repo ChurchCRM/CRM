@@ -272,6 +272,17 @@ class   SystemConfig
             'plugin.external-backup.password'      => new ConfigItem(3064, 'plugin.external-backup.password', 'password', ''),
             'plugin.external-backup.autoInterval'  => new ConfigItem(3065, 'plugin.external-backup.autoInterval', 'number', ''),
             'plugin.external-backup.lastBackupTimestamp' => new ConfigItem(3066, 'plugin.external-backup.lastBackupTimestamp', 'text', ''),
+
+            // SMTP Email Plugin
+            'plugin.smtp.enabled'                  => new ConfigItem(3070, 'plugin.smtp.enabled', 'boolean', '0'),
+            'plugin.smtp.host'                     => new ConfigItem(3071, 'plugin.smtp.host', 'text', ''),
+            'plugin.smtp.port'                     => new ConfigItem(3072, 'plugin.smtp.port', 'text', '587'),
+            'plugin.smtp.auth'                     => new ConfigItem(3073, 'plugin.smtp.auth', 'boolean', '0'),
+            'plugin.smtp.username'                 => new ConfigItem(3074, 'plugin.smtp.username', 'text', ''),
+            'plugin.smtp.password'                 => new ConfigItem(3075, 'plugin.smtp.password', 'password', ''),
+            'plugin.smtp.smtpSecure'               => new ConfigItem(3076, 'plugin.smtp.smtpSecure', 'text', ''),
+            'plugin.smtp.autoTLS'                  => new ConfigItem(3077, 'plugin.smtp.autoTLS', 'boolean', '0'),
+            'plugin.smtp.timeout'                  => new ConfigItem(3078, 'plugin.smtp.timeout', 'text', '10'),
         ];
     }
 
@@ -279,7 +290,7 @@ class   SystemConfig
     {
         return [
             gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite'],
-            gettext('Email Setup')        => ['sSMTPHost', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'iSMTPTimeout', 'sToEmailAddress', 'bPHPMailerAutoTLS', 'sPHPMailerSMTPSecure'],
+            gettext('Email Setup')        => ['sToEmailAddress'],
             gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'iPersonNameStyle', 'iPersonInitialStyle', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification'],
             gettext('Enabled Features')   => ['bEnabledFinance', 'bEnabledSundaySchool', 'bEnabledEvents', 'bEnabledFundraiser', 'bEnableSelfRegistration','bEnabledEmail', 'bEnableExternalCalendarAPI'],
             gettext('Map Settings')       => ['sGoogleMapsGeocodeKey', 'iMapZoom'],
@@ -437,6 +448,23 @@ class   SystemConfig
 
     public static function hasValidMailServerSettings(): bool
     {
+        // Check SMTP plugin config first (post-migration)
+        try {
+            if (self::getBooleanValue('plugin.smtp.enabled')) {
+                if (empty(self::getValue('plugin.smtp.host'))) {
+                    return false;
+                }
+                if (self::getBooleanValue('plugin.smtp.auth')) {
+                    return !empty(self::getValue('plugin.smtp.username'))
+                        && !empty(self::getValue('plugin.smtp.password'));
+                }
+                return true;
+            }
+        } catch (\Throwable $e) {
+            // Plugin config not yet initialised; fall through to legacy check
+        }
+
+        // Legacy fallback for pre-migration setups
         $hasValidSettings = true;
         if (empty(self::getValue('sSMTPHost'))) {
             $hasValidSettings = false;

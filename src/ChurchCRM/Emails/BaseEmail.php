@@ -35,6 +35,28 @@ abstract class BaseEmail
         $this->mail = new PHPMailer();
         $this->mail->IsSMTP();
         $this->mail->CharSet = 'UTF-8';
+
+        // Use SMTP plugin config when the plugin is enabled (post-migration)
+        try {
+            if (SystemConfig::getBooleanValue('plugin.smtp.enabled')) {
+                $this->mail->Host       = SystemConfig::getValue('plugin.smtp.host');
+                $this->mail->Port       = (int) (SystemConfig::getValue('plugin.smtp.port') ?: 25);
+                $this->mail->Timeout    = (int) (SystemConfig::getValue('plugin.smtp.timeout') ?: 10);
+                $this->mail->SMTPAutoTLS = SystemConfig::getBooleanValue('plugin.smtp.autoTLS');
+                $this->mail->SMTPSecure = trim(SystemConfig::getValue('plugin.smtp.smtpSecure'));
+                if (SystemConfig::getBooleanValue('plugin.smtp.auth')) {
+                    $this->mail->SMTPAuth = true;
+                    $this->mail->Username = SystemConfig::getValue('plugin.smtp.username');
+                    $this->mail->Password = SystemConfig::getValue('plugin.smtp.password');
+                }
+                $this->mail->SMTPDebug = 0;
+                return;
+            }
+        } catch (\Throwable $e) {
+            // Plugin config not available; fall through to legacy settings
+        }
+
+        // Legacy config fallback (pre-migration setups)
         $this->mail->Timeout = SystemConfig::getIntValue('iSMTPTimeout');
         $this->mail->Host = SystemConfig::getValue('sSMTPHost');
         $this->mail->SMTPAutoTLS = SystemConfig::getBooleanValue('bPHPMailerAutoTLS');

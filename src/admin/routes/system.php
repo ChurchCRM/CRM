@@ -105,10 +105,19 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'debug.php', $pageArgs);
     });
 
-    // Email Debug page
+    // Email Debug page - redirects to plugin management when SMTP plugin is active
     $group->get('/debug/email', function (Request $request, Response $response): Response {
+        // If the SMTP plugin is enabled, redirect to plugin management page
+        if (SystemConfig::getBooleanValue('plugin.smtp.enabled')) {
+            return $response
+                ->withHeader('Location', SystemURLs::getRootPath() . '/plugins/management#plugin-smtp')
+                ->withStatus(302);
+        }
+
+        // Legacy debug path (pre-migration: SMTP configured via admin settings)
         $renderer = new PhpRenderer(__DIR__ . '/../../v2/templates/email/');
         $message = '';
+        $email   = null;
 
         if (empty(SystemConfig::getValue('sSMTPHost'))) {
             $message = gettext('SMTP Host is not setup, please visit the settings page');
