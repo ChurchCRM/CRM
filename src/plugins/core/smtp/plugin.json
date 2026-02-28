@@ -68,6 +68,13 @@
       "type": "text",
       "required": false,
       "help": "Connection timeout in seconds (default: 10)"
+    },
+    {
+      "key": "bccAddress",
+      "label": "BCC Copy Address",
+      "type": "text",
+      "required": false,
+      "help": "Email address that will receive a blind copy of all outgoing emails (leave blank to disable)"
     }
   ],
   "presets": [

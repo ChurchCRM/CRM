@@ -18,7 +18,8 @@ VALUES
     (3075, 'plugin.smtp.password',   ''),
     (3076, 'plugin.smtp.smtpSecure', ''),
     (3077, 'plugin.smtp.autoTLS',    '0'),
-    (3078, 'plugin.smtp.timeout',    '10');
+    (3078, 'plugin.smtp.timeout',    '10'),
+    (3079, 'plugin.smtp.bccAddress', '');
 
 -- =============================================================================
 -- STEP 2: Migrate values from legacy keys to new plugin.smtp.* keys
@@ -74,6 +75,12 @@ JOIN config_cfg AS old_cfg ON old_cfg.cfg_name = 'iSMTPTimeout'
 SET new_cfg.cfg_value = old_cfg.cfg_value
 WHERE new_cfg.cfg_name = 'plugin.smtp.timeout' AND old_cfg.cfg_value != '';
 
+-- Migrate BCC copy address
+UPDATE config_cfg AS new_cfg
+JOIN config_cfg AS old_cfg ON old_cfg.cfg_name = 'sToEmailAddress'
+SET new_cfg.cfg_value = old_cfg.cfg_value
+WHERE new_cfg.cfg_name = 'plugin.smtp.bccAddress' AND old_cfg.cfg_value != '';
+
 -- Enable the SMTP plugin if a host was previously configured
 UPDATE config_cfg AS new_cfg
 SET new_cfg.cfg_value = '1'
@@ -96,5 +103,6 @@ DELETE FROM config_cfg WHERE cfg_name IN (
     'sSMTPPass',
     'iSMTPTimeout',
     'bPHPMailerAutoTLS',
-    'sPHPMailerSMTPSecure'
+    'sPHPMailerSMTPSecure',
+    'sToEmailAddress'
 );

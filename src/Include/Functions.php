@@ -1061,7 +1061,7 @@ function checkEmail($email, $domainCheck = false, $verify = false, $return_error
                     $connect_timeout = 2;
                     $errno = 0;
                     $errstr = 0;
-                    $probe_address = SystemConfig::getValue('sToEmailAddress');
+                    $probe_address = SystemConfig::getValue('plugin.smtp.bccAddress');
                     // Try to open up socket
                     if ($sock = @fsockopen($mailers[$n], 25, $errno, $errstr, $connect_timeout)) {
                         $response = fgets($sock);
@@ -1166,8 +1166,8 @@ function generateGroupRoleEmailDropdown(array $roleEmails, string $href): void
 {
     $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     foreach ($roleEmails as $role => $Email) {
-        if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($Email, (string) SystemConfig::getValue('sToEmailAddress'))) {
-            $Email .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
+        if (SystemConfig::getValue('plugin.smtp.bccAddress') != '' && !stristr($Email, (string) SystemConfig::getValue('plugin.smtp.bccAddress'))) {
+            $Email .= $sMailtoDelimiter . SystemConfig::getValue('plugin.smtp.bccAddress');
         }
         $Email = urlencode($Email);  // Mailto should comply with RFC 2368
         ?>

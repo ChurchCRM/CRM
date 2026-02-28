@@ -110,7 +110,6 @@ class   SystemConfig
             'sDefaultCity'                         => new ConfigItem(21, 'sDefaultCity', 'text', '', gettext('Default City')),
             'sDefaultState'                        => new ConfigItem(22, 'sDefaultState', 'text', '', gettext('Default State - Must be 2-letter abbreviation!')),
             'sDefaultCountry'                      => new ConfigItem(23, 'sDefaultCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
-            'sToEmailAddress'                      => new ConfigItem(26, 'sToEmailAddress', 'text', '', gettext('Default account for receiving a copy of all emails')),
             'sLanguage'                            => new ConfigItem(39, 'sLanguage', 'choice', 'en_US', gettext('Internationalization (I18n) support'), 'https://poeditor.com/join/project?hash=RABdnDSqAt', json_encode(SystemConfig::getSupportedLocales(), JSON_THROW_ON_ERROR)),
             'iFYMonth'                             => new ConfigItem(40, 'iFYMonth', 'choice', '1', gettext('First month of the fiscal year'), '', '{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
             'sGoogleMapsGeocodeKey'                => new ConfigItem(44, 'sGoogleMapsGeocodeKey', 'text', '', gettext('Google Maps API Key used for Geocoding addresses'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'),
@@ -276,6 +275,7 @@ class   SystemConfig
             'plugin.smtp.smtpSecure'               => new ConfigItem(3076, 'plugin.smtp.smtpSecure', 'text', ''),
             'plugin.smtp.autoTLS'                  => new ConfigItem(3077, 'plugin.smtp.autoTLS', 'boolean', '0'),
             'plugin.smtp.timeout'                  => new ConfigItem(3078, 'plugin.smtp.timeout', 'text', '10'),
+            'plugin.smtp.bccAddress'               => new ConfigItem(3079, 'plugin.smtp.bccAddress', 'text', ''),
         ];
     }
 
@@ -283,7 +283,6 @@ class   SystemConfig
     {
         return [
             gettext('Church Information') => ['sChurchName', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry', 'sChurchPhone', 'sChurchEmail', 'sTimeZone', 'iChurchLatitude', 'iChurchLongitude', 'sChurchWebSite'],
-            gettext('Email Setup')        => ['sToEmailAddress'],
             gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'iPersonNameStyle', 'iPersonInitialStyle', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification'],
             gettext('Enabled Features')   => ['bEnabledFinance', 'bEnabledSundaySchool', 'bEnabledEvents', 'bEnabledFundraiser', 'bEnableSelfRegistration','bEnabledEmail', 'bEnableExternalCalendarAPI'],
             gettext('Map Settings')       => ['sGoogleMapsGeocodeKey', 'iMapZoom'],

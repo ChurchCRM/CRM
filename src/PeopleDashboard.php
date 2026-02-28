@@ -97,8 +97,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <?php
         if ($sEmailLink) {
             // Add default email if default email has been set and is not already in string
-            if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
-                $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
+            if (SystemConfig::getValue('plugin.smtp.bccAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('plugin.smtp.bccAddress'))) {
+                $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('plugin.smtp.bccAddress');
             }
             $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
             if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
