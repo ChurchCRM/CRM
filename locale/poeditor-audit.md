@@ -28,16 +28,16 @@
 | `es-mx` | Spanish (MX) | 2984 | 100% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 2984 | 100% | 🟢 Complete | ✅ Yes |
 | `te` | Telugu | 2984 | 100% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 2984 | 100% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 2983 | 99.97% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 2983 | 99.97% | 🟢 Complete | ✅ Yes |
 | `pl` | Polish | 2983 | 99.97% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 2982 | 99.93% | 🟢 Complete | ✅ Yes |
 | `es-co` | Spanish (CO) | 2975 | 99.7% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 2928 | 98.12% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 2867 | 96.08% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 2821 | 94.54% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 2820 | 94.5% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 2820 | 94.5% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 2819 | 94.47% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 2819 | 94.47% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 2736 | 91.69% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 2736 | 91.69% | 🟢 Complete | ✅ Yes |

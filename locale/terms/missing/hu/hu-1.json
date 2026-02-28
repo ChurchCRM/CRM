@@ -161,7 +161,6 @@
   "Your account is now protected": "",
   "Your account is protected": "",
   "Your authenticator app has been successfully enrolled": "",
-  "Your browser language preference differs from your ChurchCRM locale": "",
   "e.g., Church Website": "",
   "manifest.": "",
   "subscribers": "",
@@ -175,5 +174,6 @@
   "Connected to OpenLP! Version: %s": "",
   "Connected! Account balance: €%.2f. Ready to send SMS.": "",
   "Could not connect to MailChimp. Please check your API key.": "",
-  "Failed to connect to OpenLP server.": ""
+  "Failed to connect to OpenLP server.": "",
+  "Get Directions": ""
 }

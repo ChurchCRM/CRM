@@ -11821,3 +11821,7 @@ msgstr "A család nem található"
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
 msgstr "Keresés a MailChimpben: Közönség > Beállítások > Közönség neve és alapértékek > Közönségazonosító"
 
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Your browser language preference differs from your ChurchCRM locale"
+

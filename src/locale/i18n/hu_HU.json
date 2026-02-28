@@ -2844,5 +2844,6 @@
     "Failed to send SMS": "Az SMS küldése sikertelen",
     "Family Status": "Család állapota",
     "Family not found": "A család nem található",
-    "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID": "Keresés a MailChimpben: Közönség > Beállítások > Közönség neve és alapértékek > Közönségazonosító"
+    "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID": "Keresés a MailChimpben: Közönség > Beállítások > Közönség neve és alapértékek > Közönségazonosító",
+    "Your browser language preference differs from your ChurchCRM locale": "Your browser language preference differs from your ChurchCRM locale"
 }

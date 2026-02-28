@@ -1,5 +1,4 @@
 {
-  "Get Directions": "",
   "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)": "",
   "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK).": "",
   "Invalid API credentials. Please verify your API Key and API Secret.": "",
