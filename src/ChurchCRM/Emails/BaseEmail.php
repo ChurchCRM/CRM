@@ -6,6 +6,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Utils\LoggerUtils;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -53,7 +54,8 @@ abstract class BaseEmail
                 return;
             }
         } catch (\Throwable $e) {
-            // Plugin config not available; fall through to legacy settings
+            // Plugin config not available (e.g., pre-migration setup); fall through to legacy settings
+            LoggerUtils::getAppLogger()->debug('SMTP plugin config unavailable, using legacy settings', ['error' => $e->getMessage()]);
         }
 
         // Legacy config fallback (pre-migration setups)

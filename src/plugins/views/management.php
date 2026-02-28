@@ -108,12 +108,12 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <?php foreach ($plugin['presets'] as $preset):
                         $presetIcon  = htmlspecialchars($preset['icon'] ?? '');
                         $presetLabel = htmlspecialchars($preset['label'] ?? '');
-                        $presetData  = htmlspecialchars(json_encode($preset['settings'] ?? []), ENT_QUOTES, 'UTF-8');
+                        $presetData  = htmlspecialchars(json_encode($preset['settings'] ?? [], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT), ENT_QUOTES, 'UTF-8');
                     ?>
                     <button type="button"
                             class="btn btn-outline-secondary btn-sm btn-preset mr-1 mb-1"
                             data-plugin-id="<?= $pluginId ?>"
-                            data-preset='<?= $presetData ?>'>
+                            data-preset="<?= $presetData ?>">
                         <?php if ($presetIcon): ?><i class="<?= $presetIcon ?> mr-1"></i><?php endif; ?>
                         <?= $presetLabel ?>
                     </button>

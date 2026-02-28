@@ -461,7 +461,7 @@ class   SystemConfig
                 return true;
             }
         } catch (\Throwable $e) {
-            // Plugin config not yet initialised; fall through to legacy check
+            // Plugin config keys not yet registered (pre-migration); fall through to legacy check
         }
 
         // Legacy fallback for pre-migration setups
