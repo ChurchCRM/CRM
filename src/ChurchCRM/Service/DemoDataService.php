@@ -2,13 +2,18 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\model\ChurchCRM\Deposit;
+use ChurchCRM\model\ChurchCRM\DonationFund;
+use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
+use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\FileSystemUtils;
@@ -31,6 +36,11 @@ class DemoDataService
             'families' => 0,
             'people' => 0,
             'notes' => 0,
+            'funds' => 0,
+            'fundraisers' => 0,
+            'pledges' => 0,
+            'deposits' => 0,
+            'payments' => 0,
         ],
         'warnings' => [],
         'errors' => [],
@@ -42,6 +52,8 @@ class DemoDataService
     private array $personMap = [];
     private array $groupMap = [];
     private array $groupNameToId = [];
+    /** @var array<string,int> family contact email (lowercase) → family DB id */
+    private array $familyEmailToId = [];
     private $logger;
 
     public function __construct()
@@ -66,6 +78,10 @@ class DemoDataService
             $emailMap = $this->importCongregation();
 
             $this->importGroups($includeSundaySchool, $emailMap);
+
+            if ($includeFinancial) {
+                $this->importFinancial();
+            }
 
             $this->importResult['success'] = true;
             $this->importResult['endTime'] = microtime(true);
@@ -262,6 +278,12 @@ class DemoDataService
 
                 $this->familyMap[$family->getId()] = $family;
                 $this->importResult['imported']['families']++;
+
+                // Build family-email → family-id map for financial data import
+                $contactEmail = strtolower(trim($contact['email'] ?? ''));
+                if ($contactEmail !== '') {
+                    $this->familyEmailToId[$contactEmail] = $family->getId();
+                }
 
                 // Import demo photo for family (if provided)
                 if (!empty($famData['photo'])) {
@@ -704,6 +726,305 @@ class DemoDataService
             $this->importResult['errors'][] = "JSON parse error in file {$filename}: {$e->getMessage()}";
             return null;
         }
+    }
+
+    /**
+     * Import financial demo data from finance.json.
+     *
+     * All dates are generated dynamically relative to the current date:
+     *  - Previous year: all 12 months (closed deposits)
+     *  - Current year:  Jan through last month (closed) + current month (OPEN)
+     *
+     * The open deposit contains payments dated on each giving family's
+     * assigned collection Sunday, up to and including those that have
+     * already passed this month (up to 3 weeks back).
+     */
+    private function importFinancial(): void
+    {
+        $data = $this->loadJsonFile('finance.json');
+        if (!$data) {
+            $this->addWarning('Financial data import skipped: finance.json missing or invalid');
+            return;
+        }
+
+        $prevYear   = (int)date('Y') - 1;
+        $currYear   = (int)date('Y');
+        $currMonth  = (int)date('m');
+
+        // 1. Create / reuse donation funds
+        $fundMap = $this->importDonationFunds($data['funds'] ?? []);
+
+        // 2. Create fundraisers
+        $this->importFundRaisers($data['fundraisers'] ?? [], $prevYear, $currYear);
+
+        // 3. Create pledges for all families
+        $givingFamilies = $data['giving_families'] ?? [];
+        $this->importFinancialPledges($givingFamilies, $fundMap, $prevYear, $currYear);
+
+        // 4. Generate closed deposits for all months of prev year
+        for ($m = 1; $m <= 12; $m++) {
+            $this->createDepositForMonth($givingFamilies, $fundMap, $prevYear, $m, true);
+        }
+        // 5. Generate closed deposits for completed months of current year
+        for ($m = 1; $m < $currMonth; $m++) {
+            $this->createDepositForMonth($givingFamilies, $fundMap, $currYear, $m, true);
+        }
+        // 6. Generate OPEN deposit for current month (payments from passed Sundays only)
+        $this->createDepositForMonth($givingFamilies, $fundMap, $currYear, $currMonth, false);
+    }
+
+    /** @param array<array<string,mixed>> $fundsData */
+    private function importDonationFunds(array $fundsData): array
+    {
+        $fundMap = [];
+        foreach ($fundsData as $fd) {
+            $name = $fd['name'] ?? '';
+            if ($name === '') {
+                continue;
+            }
+            // Reuse existing fund with the same name (e.g. "Pledges" seeded by Install.sql)
+            $existing = DonationFundQuery::create()->filterByName($name)->findOne();
+            if ($existing) {
+                $fundMap[$name] = $existing->getId();
+                continue;
+            }
+            try {
+                $fund = new DonationFund();
+                $fund->setName($name);
+                $fund->setDescription($fd['description'] ?? '');
+                $fund->setActive($fd['active'] ? 'true' : 'false');
+                $fund->setOrder((int)($fd['order'] ?? 1));
+                $fund->save();
+                $fundMap[$name] = $fund->getId();
+                $this->importResult['imported']['funds']++;
+            } catch (Exception $e) {
+                $this->addWarning("Fund '{$name}' import failed: {$e->getMessage()}");
+            }
+        }
+        return $fundMap;
+    }
+
+    /** @param array<array<string,mixed>> $fundraisers */
+    private function importFundRaisers(array $fundraisers, int $prevYear, int $currYear): void
+    {
+        foreach ($fundraisers as $fr) {
+            try {
+                $year        = ($fr['year'] ?? 'prev') === 'prev' ? $prevYear : $currYear;
+                $enteredYear = ($fr['entered_year'] ?? 'prev') === 'prev' ? $prevYear : $currYear;
+
+                $fundraiser = new FundRaiser();
+                $fundraiser->setTitle($fr['title'] ?? 'Fundraiser');
+                $fundraiser->setDate(sprintf('%04d-%02d-%02d', $year, (int)$fr['month'], (int)$fr['day']));
+                $fundraiser->setEnteredDate(sprintf('%04d-%02d-%02d', $enteredYear, (int)$fr['entered_month'], (int)$fr['entered_day']));
+                $fundraiser->save();
+                $this->importResult['imported']['fundraisers']++;
+            } catch (Exception $e) {
+                $this->addWarning("Fundraiser '{$fr['title']}' import failed: {$e->getMessage()}");
+            }
+        }
+    }
+
+    /**
+     * Create one pledge record per family per year per fund.
+     *
+     * @param array<array<string,mixed>> $givingFamilies
+     * @param array<string,int>          $fundMap
+     */
+    private function importFinancialPledges(array $givingFamilies, array $fundMap, int $prevYear, int $currYear): void
+    {
+        $yearMap = ['prev' => $prevYear, 'curr' => $currYear];
+
+        foreach ($givingFamilies as $family) {
+            $email    = strtolower(trim($family['email'] ?? ''));
+            $familyId = $this->familyEmailToId[$email] ?? null;
+            if (!$familyId) {
+                $this->addWarning("Financial pledge skipped: family email '{$email}' not found");
+                continue;
+            }
+
+            $pledgeYears = $family['pledge_years'] ?? ['prev', 'curr'];
+            $frequency   = $family['frequency'] ?? 'monthly';
+            // plg_schedule ENUM: 'Weekly','Monthly','Quarterly','Once','Other'
+            $schedule = match ($frequency) {
+                'monthly'   => 'Monthly',
+                'quarterly' => 'Quarterly',
+                default     => 'Once',   // annual and any other
+            };
+
+            foreach ($pledgeYears as $yearKey) {
+                $year = $yearMap[$yearKey] ?? null;
+                if (!$year) {
+                    continue;
+                }
+                $fyId = $year - 1996;
+
+                foreach ($family['pledges'] ?? [] as $pd) {
+                    $fundName = $pd['fund'] ?? '';
+                    $fundId   = $fundMap[$fundName] ?? null;
+                    if (!$fundId) {
+                        $this->addWarning("Pledge skipped: fund '{$fundName}' not found");
+                        continue;
+                    }
+                    try {
+                        $pledge = new Pledge();
+                        $pledge->setFamId($familyId);
+                        $pledge->setFundId($fundId);
+                        $pledge->setFyId($fyId);
+                        $pledge->setDate(sprintf('%04d-01-01', $year));
+                        $pledge->setAmount((float)$pd['annual']);
+                        $pledge->setSchedule($schedule);
+                        $pledge->setMethod('CHECK');
+                        $pledge->setNondeductible(0.00);
+                        $pledge->setGroupKey('');
+                        $pledge->setPledgeOrPayment('Pledge');
+                        $pledge->save();
+                        $this->importResult['imported']['pledges']++;
+                    } catch (Exception $e) {
+                        $this->addWarning("Pledge import failed for '{$email}': {$e->getMessage()}");
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Create one deposit for the given year/month and add payment entries.
+     *
+     * For closed months:  all giving families contribute a single payment
+     *                     dated on the first Sunday of that month.
+     * For the open month: only families whose collection Sunday has already
+     *                     passed contribute; each payment is dated on that
+     *                     family's specific collection Sunday.
+     *
+     * @param array<array<string,mixed>> $givingFamilies
+     * @param array<string,int>          $fundMap
+     */
+    private function createDepositForMonth(array $givingFamilies, array $fundMap, int $year, int $month, bool $closed): void
+    {
+        $fyId        = $year - 1996;
+        $monthName   = date('F', mktime(0, 0, 0, $month, 1, $year));
+        $firstSunday = $this->firstSundayOfMonth($year, $month);
+        $depositDate = sprintf('%04d-%02d-%02d', $year, $month, $firstSunday);
+
+        // For the open deposit, compute which Sundays have already passed this month
+        $passedSundays = $closed ? [] : $this->passedSundaysInMonth($year, $month);
+
+        try {
+            $deposit = new Deposit();
+            $deposit->setDate($depositDate);
+            $deposit->setComment("{$monthName} {$year} Offering");
+            $deposit->setType('Bank');
+            $deposit->setClosed($closed ? 1 : 0);
+            $deposit->save();
+            $this->importResult['imported']['deposits']++;
+        } catch (Exception $e) {
+            $this->addWarning("Deposit {$year}-{$month} creation failed: {$e->getMessage()}");
+            return;
+        }
+
+        foreach ($givingFamilies as $family) {
+            $email    = strtolower(trim($family['email'] ?? ''));
+            $familyId = $this->familyEmailToId[$email] ?? null;
+            if (!$familyId) {
+                continue;
+            }
+
+            $frequency   = $family['frequency'] ?? 'monthly';
+            $paymentMonth = (int)($family['payment_month'] ?? 12);
+            $skipMonths  = $family['skip_months'] ?? [];
+            $collWeek    = (int)($family['collection_week'] ?? 1);
+
+            // Check whether this family gives during this month at all
+            if (!$this->familyGivesThisMonth($frequency, $month, $paymentMonth)) {
+                continue;
+            }
+            // Partial payers skip certain months
+            if (in_array($month, $skipMonths, true)) {
+                continue;
+            }
+
+            if ($closed) {
+                // Closed deposit: one payment per family on the deposit date
+                $payDate = $depositDate;
+            } else {
+                // Open deposit: payment only if the family's collection Sunday has passed
+                $sundayIndex = $collWeek - 1; // 0-based
+                if (!isset($passedSundays[$sundayIndex])) {
+                    continue; // that Sunday hasn't arrived yet
+                }
+                $payDate = $passedSundays[$sundayIndex];
+            }
+
+            foreach ($family['payments'] ?? [] as $pd) {
+                $fundName = $pd['fund'] ?? '';
+                $fundId   = $fundMap[$fundName] ?? null;
+                if (!$fundId) {
+                    continue;
+                }
+                try {
+                    $payment = new Pledge();
+                    $payment->setFamId($familyId);
+                    $payment->setFundId($fundId);
+                    $payment->setFyId($fyId);
+                    $payment->setDate($payDate);
+                    $payment->setAmount((float)$pd['amount']);
+                    $payment->setDepId($deposit->getId());
+                    $payment->setMethod('CHECK');
+                    $payment->setNondeductible(0.00);
+                    $payment->setGroupKey('');
+                    $payment->setPledgeOrPayment('Payment');
+                    $payment->save();
+                    $this->importResult['imported']['payments']++;
+                } catch (Exception $e) {
+                    $this->addWarning("Payment import failed for '{$email}' in {$year}-{$month}: {$e->getMessage()}");
+                }
+            }
+        }
+    }
+
+    /**
+     * Returns true if the family gives during the given calendar month.
+     */
+    private function familyGivesThisMonth(string $frequency, int $month, int $paymentMonth = 12): bool
+    {
+        return match ($frequency) {
+            'monthly'   => true,
+            'quarterly' => in_array($month, [1, 4, 7, 10], true),
+            'annual'    => $month === $paymentMonth,
+            default     => false,
+        };
+    }
+
+    /**
+     * Returns the day-of-month of the first Sunday in the given month.
+     */
+    private function firstSundayOfMonth(int $year, int $month): int
+    {
+        $date       = new DateTime(sprintf('%04d-%02d-01', $year, $month));
+        $dayOfWeek  = (int)$date->format('w'); // 0 = Sunday
+        $daysToAdd  = ($dayOfWeek === 0) ? 0 : (7 - $dayOfWeek);
+        return 1 + $daysToAdd;
+    }
+
+    /**
+     * Returns a list of Sunday date strings that have already passed (≤ today)
+     * within the given month, up to a maximum of 3.
+     *
+     * @return string[] e.g. ['2026-02-02', '2026-02-09', '2026-02-16']
+     */
+    private function passedSundaysInMonth(int $year, int $month): array
+    {
+        $today   = new DateTime('today');
+        $firstDay = $this->firstSundayOfMonth($year, $month);
+        $date    = new DateTime(sprintf('%04d-%02d-%02d', $year, $month, $firstDay));
+        $sundays = [];
+
+        while ((int)$date->format('m') === $month && $date <= $today && count($sundays) < 3) {
+            $sundays[] = $date->format('Y-m-d');
+            $date->modify('+1 week');
+        }
+
+        return $sundays;
     }
 
     /**
