@@ -12,6 +12,7 @@ This folder contains Node.js and shell scripts used for building, packaging, and
 | `package-release.js` | Create release ZIP package | `npm run package` |
 | `locale-check.js` | Lint locale files for issues | `npm run locale:lint` |
 | `startNewRelease.js` | Version bump for releases | Used by maintainers |
+| `dev/install-skills.js` | Install developer skills from `skills.json` | `npm run install-skills` |
 
 ---
 
@@ -123,6 +124,23 @@ node scripts/startNewRelease.js <new-version>
 - Creates git tag
 
 **Note:** This script is for maintainers only. Contributors should not modify version numbers.
+
+---
+
+### dev/install-skills.js
+
+**Installs developer skills** defined in `skills.json` at the repository root.
+
+```bash
+npm run install-skills
+```
+
+**What it does:**
+- Reads `skills.json` from the repository root
+- Runs `npx skills add` for each skill entry
+- Reports installation progress to the console
+
+**Use this during developer onboarding** to set up all recommended skills in one step.
 
 ---
 
