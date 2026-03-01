@@ -118,7 +118,6 @@ class   SystemConfig
             'sSMTPPass'                            => new ConfigItem(30, 'sSMTPPass', 'password', '', gettext('SMTP Password')),
             'sLanguage'                            => new ConfigItem(39, 'sLanguage', 'choice', 'en_US', gettext('Internationalization (I18n) support'), 'https://poeditor.com/join/project?hash=RABdnDSqAt', json_encode(SystemConfig::getSupportedLocales(), JSON_THROW_ON_ERROR)),
             'iFYMonth'                             => new ConfigItem(40, 'iFYMonth', 'choice', '1', gettext('First month of the fiscal year'), '', '{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
-            'sGoogleMapsGeocodeKey'                => new ConfigItem(44, 'sGoogleMapsGeocodeKey', 'text', '', gettext('Google Maps API Key used for Geocoding addresses'), 'https://developers.google.com/maps/documentation/javascript/get-api-key'),
             'iMapZoom'                             => new ConfigItem(10001, 'iMapZoom', 'number', '10', gettext('Map Zoom Level')),
             'iChurchLatitude'                      => new ConfigItem(45, 'iChurchLatitude', 'number', '', gettext('Latitude of the church, used to center the Google map')),
             'iChurchLongitude'                     => new ConfigItem(46, 'iChurchLongitude', 'number', '', gettext('Longitude of the church, used to center the Google map')),
@@ -236,6 +235,10 @@ class   SystemConfig
 
             // Plugin Settings - prefixed with plugin ID
             // Labels/tooltips are in plugin.json files, not here (plugin management UI reads from plugin.json)
+            // Maps & Geocoding Plugin
+            'plugin.maps.enabled'                  => new ConfigItem(3070, 'plugin.maps.enabled', 'boolean', '0'),
+            'plugin.maps.googleMapsGeocodeKey'     => new ConfigItem(3071, 'plugin.maps.googleMapsGeocodeKey', 'text', ''),
+
             // MailChimp Plugin
             'plugin.mailchimp.enabled'             => new ConfigItem(3000, 'plugin.mailchimp.enabled', 'boolean', '0'),
             'plugin.mailchimp.apiKey'              => new ConfigItem(3001, 'plugin.mailchimp.apiKey', 'text', ''),
@@ -282,7 +285,7 @@ class   SystemConfig
             gettext('Email Setup')        => ['sSMTPHost', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'iSMTPTimeout', 'sToEmailAddress', 'bPHPMailerAutoTLS', 'sPHPMailerSMTPSecure'],
             gettext('People Setup')       => ['sDirClassifications', 'sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHidePersonAddress', 'bHideFriendDate', 'bHideFamilyNewsletter', 'bHideWeddingDate', 'bHideLatLon', 'bForceUppercaseZip', 'iPersonNameStyle', 'iPersonInitialStyle', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2', 'sInactiveClassification'],
             gettext('Enabled Features')   => ['bEnabledFinance', 'bEnabledSundaySchool', 'bEnabledEvents', 'bEnabledFundraiser', 'bEnableSelfRegistration','bEnabledEmail', 'bEnableExternalCalendarAPI'],
-            gettext('Map Settings')       => ['sGoogleMapsGeocodeKey', 'iMapZoom'],
+            gettext('Map Settings')       => ['iMapZoom'],
             gettext('Report Settings')    => ['sQBDTSettings', 'leftX', 'incrementY', 'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDear', 'sConfirmSincerely', 'sConfirmSigner', 'sPledgeSummary1', 'sPledgeSummary2', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'bDirLetterHead', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'iPDFOutputType'],
             gettext('Financial Settings') => ['sDepositSlipType', 'iChecksPerDepositForm', 'bDisplayBillCounts', 'bUseScannedChecks', 'bEnableNonDeductible', 'iFYMonth', 'bUseDonationEnvelopes', 'aFinanceQueries'],
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],

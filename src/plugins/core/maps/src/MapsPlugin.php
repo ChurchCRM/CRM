@@ -4,8 +4,8 @@ namespace ChurchCRM\Plugins\Maps;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Plugin\AbstractPlugin;
-use ChurchCRM\Utils\LoggerUtils;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\Query\GeocodeQuery;
 use Geocoder\StatefulGeocoder;
@@ -14,12 +14,12 @@ use Http\Adapter\Guzzle7\Client;
 /**
  * Maps & Geocoding Plugin.
  *
- * Manages Google Maps API credentials, church geo-coordinates, and
- * the visibility of lat/lon fields in the Family Editor.
+ * Manages the Google Maps API key used for server-side address geocoding
+ * (stored as plugin.maps.googleMapsGeocodeKey in system_config).
  *
- * When this plugin is active and configured, it takes precedence over
- * the legacy SystemConfig settings (sGoogleMapsGeocodeKey, iChurchLatitude,
- * iChurchLongitude, bHideLatLon).
+ * Church lat/long (iChurchLatitude, iChurchLongitude) remain in system_config
+ * as church information settings; the test endpoint populates them via
+ * SystemConfig::setValue() after a successful geocode.
  */
 class MapsPlugin extends AbstractPlugin
 {
@@ -58,7 +58,7 @@ class MapsPlugin extends AbstractPlugin
 
     public function isConfigured(): bool
     {
-        return !empty($this->getGoogleMapsGeocodeKey());
+        return !empty($this->getConfigValue('googleMapsGeocodeKey'));
     }
 
     public function getConfigurationError(): ?string
@@ -83,89 +83,7 @@ class MapsPlugin extends AbstractPlugin
                 'type' => 'text',
                 'help' => gettext('Used for server-side address geocoding. Get yours at https://developers.google.com/maps/documentation/javascript/get-api-key'),
             ],
-            [
-                'key'  => 'churchLatitude',
-                'label' => gettext('Church Latitude'),
-                'type' => 'text',
-                'help' => gettext('Latitude of the church, used to center the map. Auto-populated on test.'),
-            ],
-            [
-                'key'  => 'churchLongitude',
-                'label' => gettext('Church Longitude'),
-                'type' => 'text',
-                'help' => gettext('Longitude of the church, used to center the map. Auto-populated on test.'),
-            ],
-            [
-                'key'  => 'hideLatLon',
-                'label' => gettext('Hide Lat/Lon Fields in Family Editor'),
-                'type' => 'checkbox',
-                'help' => gettext('Hides the Latitude and Longitude input fields in the Family Editor. Lookups are still performed.'),
-            ],
         ];
-    }
-
-    // =========================================================================
-    // Setting Accessors
-    // =========================================================================
-
-    /**
-     * Get the configured Google Maps API key.
-     *
-     * Returns the plugin-level key if set, otherwise falls back to the legacy
-     * SystemConfig key (sGoogleMapsGeocodeKey) for backward compatibility.
-     */
-    public function getGoogleMapsGeocodeKey(): string
-    {
-        $key = $this->getConfigValue('googleMapsGeocodeKey');
-        if (!empty($key)) {
-            return $key;
-        }
-        // Fall back to legacy SystemConfig value
-        return \ChurchCRM\dto\SystemConfig::getValue('sGoogleMapsGeocodeKey') ?? '';
-    }
-
-    /**
-     * Get the stored church latitude.
-     */
-    public function getChurchLatitude(): string
-    {
-        return $this->getConfigValue('churchLatitude');
-    }
-
-    /**
-     * Get the stored church longitude.
-     */
-    public function getChurchLongitude(): string
-    {
-        return $this->getConfigValue('churchLongitude');
-    }
-
-    /**
-     * Return true when Lat/Lon fields should be hidden in the Family Editor.
-     *
-     * Falls back to the legacy SystemConfig value (bHideLatLon) when no
-     * plugin-level value has been set.
-     */
-    public function isHideLatLon(): bool
-    {
-        $value = $this->getConfigValue('hideLatLon');
-        if ($value !== '') {
-            return $value === '1' || strtolower($value) === 'true';
-        }
-        // Fall back to legacy SystemConfig value
-        return \ChurchCRM\dto\SystemConfig::getBooleanValue('bHideLatLon');
-    }
-
-    /**
-     * Persist the church coordinates into plugin settings.
-     *
-     * @param string|float $latitude
-     * @param string|float $longitude
-     */
-    public function setChurchLatLong($latitude, $longitude): void
-    {
-        $this->setConfigValue('churchLatitude', (string) $latitude);
-        $this->setConfigValue('churchLongitude', (string) $longitude);
     }
 
     // =========================================================================
@@ -175,23 +93,17 @@ class MapsPlugin extends AbstractPlugin
     /**
      * Validate the Google Maps API key by geocoding the church address.
      *
-     * When the geocode succeeds the church lat/long are persisted into
-     * plugin settings so the caller can see the resolved coordinates in
-     * the response.  Password fields that are omitted from $settings fall
-     * back to the currently-saved key.
+     * On success the resolved coordinates are written directly to the
+     * iChurchLatitude and iChurchLongitude system config values so they
+     * are immediately available to the rest of the application.
      *
-     * @param array $settings Keys: googleMapsGeocodeKey (optional)
+     * @param array $settings Keys: googleMapsGeocodeKey
      *
      * @return array{success: bool, message: string, details?: array<string, mixed>}
      */
     public function testWithSettings(array $settings): array
     {
-        $apiKey = $settings['googleMapsGeocodeKey'] ?? '';
-
-        // Fall back to saved key when the form field was left empty
-        if (empty($apiKey)) {
-            $apiKey = $this->getGoogleMapsGeocodeKey();
-        }
+        $apiKey = $settings['googleMapsGeocodeKey'] ?? $this->getConfigValue('googleMapsGeocodeKey');
 
         if (empty($apiKey)) {
             return [
@@ -230,8 +142,9 @@ class MapsPlugin extends AbstractPlugin
             $latitude    = $coordinates->getLatitude();
             $longitude   = $coordinates->getLongitude();
 
-            // Persist the resolved coordinates into plugin settings
-            $this->setChurchLatLong($latitude, $longitude);
+            // Store resolved coordinates in the standard church-info system config
+            SystemConfig::setValue('iChurchLatitude', (string) $latitude);
+            SystemConfig::setValue('iChurchLongitude', (string) $longitude);
 
             $this->log('Maps plugin test succeeded', 'info', [
                 'address'   => $churchAddress,

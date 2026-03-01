@@ -1,7 +1,7 @@
 {
   "id": "maps",
   "name": "Maps & Geocoding",
-  "description": "Google Maps integration for address geocoding, church location display, and family mapping. Manages Google Maps API credentials and church geo-coordinates.",
+  "description": "Google Maps integration for address geocoding, church location display, and family mapping. Manages the Google Maps API key used for server-side geocoding.",
   "version": "1.0.0",
   "author": "ChurchCRM Team",
   "authorUrl": "https://churchcrm.io",
@@ -17,28 +17,6 @@
       "type": "text",
       "required": false,
       "help": "Google Maps API Key used for server-side address geocoding. Get yours at https://developers.google.com/maps/documentation/javascript/get-api-key"
-    },
-    {
-      "key": "churchLatitude",
-      "label": "Church Latitude",
-      "type": "text",
-      "required": false,
-      "help": "Latitude of the church, used to center the map. Auto-populated when a valid API key is configured."
-    },
-    {
-      "key": "churchLongitude",
-      "label": "Church Longitude",
-      "type": "text",
-      "required": false,
-      "help": "Longitude of the church, used to center the map. Auto-populated when a valid API key is configured."
-    },
-    {
-      "key": "hideLatLon",
-      "label": "Hide Lat/Lon Fields",
-      "type": "checkbox",
-      "required": false,
-      "default": false,
-      "help": "Hide the Latitude and Longitude input fields in the Family Editor. Address lookups are still performed when enabled."
     }
   ],
   "menuItems": [],

@@ -14,7 +14,6 @@ use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -654,10 +653,7 @@ require_once __DIR__ . '/Include/Header.php';
                     </select>
                 </div>
             </div>
-            <?php
-            $mapsPlugin = PluginManager::getPlugin('maps');
-            $hideLatLon = $mapsPlugin !== null ? $mapsPlugin->isHideLatLon() : SystemConfig::getBooleanValue('bHideLatLon');
-            if (!$hideLatLon) { /* Lat/Lon can be hidden - Maps plugin or General Settings */
+            <?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
                 if (!$bHaveXML) { // No point entering if values will just be overwritten
                     ?>
                     <div class="row">

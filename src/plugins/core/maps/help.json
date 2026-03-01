@@ -1,21 +1,13 @@
 {
-  "summary": "The Maps & Geocoding plugin integrates Google Maps for address geocoding, church location display, and family mapping across ChurchCRM.",
+  "summary": "The Maps & Geocoding plugin manages the Google Maps API key used for server-side address geocoding across ChurchCRM.",
   "sections": [
     {
       "title": "Getting Started",
-      "content": "1. Obtain a Google Maps API Key from https://developers.google.com/maps/documentation/javascript/get-api-key\n2. Enable the 'Geocoding API' product for your key in the Google Cloud Console.\n3. Enter the key in the Google Maps API Key field and click 'Test Connection'.\n4. A successful test will geocode your church address and store the coordinates automatically."
+      "content": "1. Obtain a Google Maps API Key from https://developers.google.com/maps/documentation/javascript/get-api-key\n2. Enable the 'Geocoding API' product for your key in the Google Cloud Console.\n3. Enter the key in the Google Maps API Key field and save.\n4. Click 'Test Connection' to validate the key against your church address. On success the church latitude and longitude in Church Information settings are automatically updated."
     },
     {
       "title": "Church Lat/Long",
-      "content": "The Church Latitude and Church Longitude fields store the resolved coordinates for your church address. These are used to center the map on all map pages. You can let the plugin populate them automatically via the Test Connection button, or enter them manually."
-    },
-    {
-      "title": "Hide Lat/Lon Fields",
-      "content": "Enable 'Hide Lat/Lon Fields in Family Editor' to remove the Latitude and Longitude input boxes from the Family Editor form. Address-based geocoding lookups still run in the background — only the visible input fields are hidden."
-    },
-    {
-      "title": "Fallback Behaviour",
-      "content": "If no API key is stored in the plugin, ChurchCRM falls back to the legacy 'sGoogleMapsGeocodeKey' system setting. Similarly, church coordinates fall back to 'iChurchLatitude' / 'iChurchLongitude', and the hide-fields flag falls back to 'bHideLatLon'."
+      "content": "The Test Connection button geocodes your church address and writes the result to the Church Latitude and Church Longitude fields in the Church Information settings panel. These are used to center the map on all map pages."
     }
   ],
   "links": [
