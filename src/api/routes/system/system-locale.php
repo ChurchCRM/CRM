@@ -24,6 +24,7 @@ $app->group('/locale', function (RouteCollectorProxy $group): void {
  *     @OA\Response(response=200, description="Array of translatable term strings",
  *         @OA\JsonContent(@OA\Property(property="terms", type="array", @OA\Items(type="string")))
  *     ),
+ *     @OA\Response(response=401, description="Unauthenticated"),
  *     @OA\Response(response=403, description="Admin role required")
  * )
  */
