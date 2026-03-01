@@ -25,6 +25,7 @@ $app->group('/system/debug', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="SupportURL", type="string")
  *         )
  *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
  *     @OA\Response(response=403, description="Admin role required")
  * )
  */
