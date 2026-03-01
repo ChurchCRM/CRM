@@ -1,0 +1,132 @@
+name: Upgrade Compatibility Test
+
+on:
+  pull_request:
+    branches: [ master, develop ]
+  push:
+    branches: [ master, develop ]
+
+jobs:
+  test-churchinfo:
+    name: Test upgrade from ChurchInfo 1.3.1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Download ChurchInfo 1.3.1
+        run: |
+          mkdir -p temp/churchinfo
+          curl -L -o temp/churchinfo.zip "https://sourceforge.net/projects/churchinfo/files/churchinfo/1.3.1/churchinfo-1.3.1.zip/download"
+          unzip -q temp/churchinfo.zip -d temp
+          topdir=$(unzip -Z -1 temp/churchinfo.zip | head -n1 | cut -d/ -f1)
+          mv "temp/$topdir" temp/churchinfo || true
+
+      - name: PHP lint (ChurchInfo)
+        run: |
+          set -e
+          find temp/churchinfo -type f -name '*.php' -print0 | xargs -0 -n1 php -l || true
+
+      - name: Deploy into Docker stack and smoke-test (ChurchInfo)
+        run: |
+          set -e
+          # Backup current src and place downloaded app into workspace src
+          if [ -d src ]; then
+            mv src src.ci.backup || true
+          fi
+          mv temp/churchinfo src
+          # Ensure a config exists for root-path tests
+          cp -f docker/Config.root.php src/Include/Config.php || true
+
+          # Start Docker stack (reuse project's compose files / profile)
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
+
+          # Wait for services
+          sleep 8
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
+
+          # Wait for HTTP root
+          max_attempts=12
+          attempt=1
+          until curl -fsS "http://127.0.0.1/" || [ $attempt -eq $max_attempts ]; do
+            echo "Attempt $attempt/$max_attempts failed. Retrying in 5s..."
+            sleep 5
+            attempt=$((attempt + 1))
+          done
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts" && docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs && exit 1
+          fi
+
+          # Install JS deps and run the Cypress login spec
+          npm ci
+          npx cypress run --spec "cypress/e2e/upgrade_login_spec.cy.js" --config baseUrl=http://127.0.0.1 || true
+
+          # Tear down and restore
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root down || true
+          mv src.ci.backup src || true
+
+  test-churchcrm:
+    name: Test upgrade from ChurchCRM 6.x
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+
+      - name: Download ChurchCRM 6.0.1 (zip)
+        run: |
+          mkdir -p temp/churchcrm
+          curl -L -o temp/churchcrm.zip "https://github.com/ChurchCRM/CRM/archive/refs/tags/6.0.1.zip"
+          unzip -q temp/churchcrm.zip -d temp
+          topdir=$(unzip -Z -1 temp/churchcrm.zip | head -n1 | cut -d/ -f1)
+          mv "temp/$topdir" temp/churchcrm || true
+
+      - name: PHP lint (ChurchCRM)
+        run: |
+          set -e
+          find temp/churchcrm -type f -name '*.php' -print0 | xargs -0 -n1 php -l || true
+
+      - name: Deploy into Docker stack and smoke-test (ChurchCRM)
+        run: |
+          set -e
+          # Backup current src and place downloaded app into workspace src
+          if [ -d src ]; then
+            mv src src.ci.backup || true
+          fi
+          mv temp/churchcrm src
+          # Ensure a config exists for root-path tests
+          cp -f docker/Config.root.php src/Include/Config.php || true
+
+          # Start Docker stack
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
+
+          # Wait for services
+          sleep 8
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
+
+          # Wait for HTTP root
+          max_attempts=12
+          attempt=1
+          until curl -fsS "http://127.0.0.1/" || [ $attempt -eq $max_attempts ]; do
+            echo "Attempt $attempt/$max_attempts failed. Retrying in 5s..."
+            sleep 5
+            attempt=$((attempt + 1))
+          done
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts" && docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs && exit 1
+          fi
+
+          # Install JS deps and run the Cypress login spec
+          npm ci
+          npx cypress run --spec "cypress/e2e/upgrade_login_spec.cy.js" --config baseUrl=http://127.0.0.1 || true
+
+          # Tear down and restore
+          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root down || true
+          mv src.ci.backup src || true
