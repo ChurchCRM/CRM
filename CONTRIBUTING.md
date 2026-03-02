@@ -50,6 +50,10 @@ If you prefer manual setup or the automatic options don't work:
    - [Git](https://github.com/git-guides/install-git) (or [GitHub Desktop](https://desktop.github.com/))
    - [Node.js version 20+](https://nodejs.org/en/download/)
    - [Docker](https://docs.docker.com/desktop/)
+   - **PHP 8.4+** with extensions: `bcmath`, `curl`, `gd`, `gettext`, `iconv`, `mbstring`, `mysqli`, `pdo_mysql`, `sodium`, `zip`, `zlib`
+     - Ubuntu/Debian example: `sudo apt-get install php8.4 php8.4-bcmath php8.4-curl php8.4-gd php8.4-gettext php8.4-iconv php8.4-mbstring php8.4-mysqli php8.4-pdo-mysql php8.4-sodium php8.4-zip`
+     - PHP and Composer are required locally only for the manual build step (`npm run deploy`). The Quick Start options (Codespaces, Dev Containers, DDEV) handle PHP inside Docker automatically.
+   - [Composer](https://getcomposer.org/download/) (PHP dependency manager)
 
 2. **Clone and Setup:**
    ```bash

@@ -56,14 +56,21 @@ Testing
 * Docker (with Compose v2+)
 * GIT
 * Node/NPM
+* PHP 8.4+ with extensions: `bcmath`, `curl`, `gd`, `gettext`, `iconv`, `mbstring`, `mysqli`, `pdo_mysql`, `sodium`, `zip`, `zlib`
+* [Composer](https://getcomposer.org/) (PHP dependency manager)
+
+> **Note:** PHP and Composer are required on the **build host** because `npm run deploy` compiles PHP
+> dependencies via Composer locally before mounting them into Docker. If you want to avoid installing
+> PHP locally, use the **Dev** workflow instead — it builds everything inside the Docker container.
 
 ## Steps
 
 1. Clone repo: `git clone git@github.com:ChurchCRM/CRM.git`
-2. Build code locally: `npm run deploy`
-3. Start test containers: `npm run docker:test:start`
-4. Run tests: `npm run test`
-5. Stop docker: `npm run docker:test:stop`
+2. Install Node dependencies: `npm ci`
+3. Build code locally: `npm run deploy`
+4. Start test containers: `npm run docker:test:start`
+5. Run tests: `npm run test`
+6. Stop docker: `npm run docker:test:stop`
 
 ### Test Profile Services
    - **database**: MariaDB server (port 3306)
