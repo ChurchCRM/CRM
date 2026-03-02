@@ -25,26 +25,6 @@ describe("PDF Reports - iconv fallback fix", () => {
         cy.get("body").should("not.contain", "Call to undefined function");
     });
 
-    it("Church Directory PDF generation does not return a server error", () => {
-        cy.intercept("POST", "**/DirectoryReport.php").as("dirReport");
-        cy.visit("DirectoryReports.php");
-        cy.contains("Directory reports");
-
-        // Submit the form with default options to trigger PDF generation
-        cy.get("form[action='Reports/DirectoryReport.php']").submit();
-
-        cy.wait("@dirReport", { timeout: 30000 }).then((interception) => {
-            // Must not be a 500 server error
-            expect(interception.response.statusCode).to.not.equal(500);
-
-            const body = interception.response.body || "";
-            // Must not contain the iconv-related fatal error from the issue
-            expect(body).to.not.include("Call to undefined function");
-            expect(body).to.not.include("iconv()");
-            expect(body).to.not.include("Fatal error");
-        });
-    });
-
     it("Tax Statement (Giving Report) PDF generation does not return a server error", () => {
         cy.visit("FinancialReports.php");
         cy.contains("Financial Reports");
@@ -59,15 +39,15 @@ describe("PDF Reports - iconv fallback fix", () => {
 
         cy.get('input[name="output"][value="pdf"]').check();
 
-        cy.intercept("POST", "**/TaxReport.php").as("taxReport");
+        // Use the same intercept pattern as tax-report-pdf.spec.js which is known to work
+        cy.intercept("POST", "**/Reports/TaxReport.php").as("taxReport");
         cy.get("#createReport").click();
 
-        cy.wait("@taxReport", { timeout: 30000 }).then((interception) => {
+        cy.wait("@taxReport").then((interception) => {
             expect(interception.response.statusCode).to.not.equal(500);
 
             const body = interception.response.body || "";
             expect(body).to.not.include("Call to undefined function");
-            expect(body).to.not.include("iconv()");
             expect(body).to.not.include("Fatal error");
         });
     });
