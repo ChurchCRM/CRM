@@ -7,77 +7,79 @@ const { execSync } = require('child_process');
 console.log('🔍 PHP Syntax Validation');
 console.log('========================\n');
 
-// Read signatures file - use the actual signatures.json from build:signatures
-let signaturesPath = path.join(__dirname, '../src/admin/data/signatures.json');
+const srcDir = path.join(__dirname, '../src');
 
-if (!fs.existsSync(signaturesPath)) {
-    console.error('❌ Error: signatures.json not found');
-    console.error('   Run "npm run build:signatures" first');
-    process.exit(1);
+// Collect PHP files to validate.
+// When signatures.json is available (post-build), use it for the canonical file list.
+// Otherwise fall back to scanning src/ directly so the script works standalone
+// (e.g. when invoked via `npm run build:php` without a prior full build).
+let phpFiles = [];
+
+const signaturesPath = path.join(srcDir, 'admin/data/signatures.json');
+
+if (fs.existsSync(signaturesPath)) {
+    const signatures = JSON.parse(fs.readFileSync(signaturesPath, 'utf8'));
+    if (!signatures.files || !Array.isArray(signatures.files)) {
+        console.error('❌ Error: Invalid signatures file format');
+        process.exit(1);
+    }
+    console.log(`📋 Using signatures.json (${signatures.files.length} entries)\n`);
+    phpFiles = signatures.files
+        .map((f) => (typeof f === 'string' ? f : f.filename))
+        .filter((f) => f.endsWith('.php') && !f.includes('/vendor/') && !f.startsWith('vendor/'))
+        .map((f) => path.join(srcDir, f.replace(/\//g, path.sep)));
+} else {
+    console.log('ℹ️  signatures.json not found — scanning src/ directly\n');
+    function walkPhp(dir) {
+        const results = [];
+        for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+            const full = path.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                if (entry.name === 'vendor') continue;
+                results.push(...walkPhp(full));
+            } else if (entry.isFile() && entry.name.endsWith('.php')) {
+                results.push(full);
+            }
+        }
+        return results;
+    }
+    phpFiles = walkPhp(srcDir);
+    console.log(`📋 Found ${phpFiles.length} PHP files in src/\n`);
 }
-
-const signatures = JSON.parse(fs.readFileSync(signaturesPath, 'utf8'));
-
-if (!signatures.files || !Array.isArray(signatures.files)) {
-    console.error('❌ Error: Invalid signatures file format');
-    process.exit(1);
-}
-
-console.log(`📋 Found ${signatures.files.length} files in signatures\n`);
 
 let errors = 0;
 let validated = 0;
-let skipped = 0;
 let notFound = 0;
 
-// Validate each PHP file
-for (const fileObj of signatures.files) {
-    // Handle both object format (from signatures.json) and string format (legacy)
-    const file = typeof fileObj === 'string' ? fileObj : fileObj.filename;
-    
-    // Only validate PHP files (skip JS files - they're minified/bundled)
-    if (!file.endsWith('.php')) {
-        skipped++;
-        continue;
-    }
-    
-    // Skip vendor files - they are third-party and validation is handled by composer
-    if (file.includes('/vendor/') || file.startsWith('vendor/')) {
-        skipped++;
-        continue;
-    }
-    
-    // Convert forward slashes to correct path separators and prepend src/
-    const filePath = path.join(__dirname, '../src', file.replace(/\//g, path.sep));
-    
+for (const filePath of phpFiles) {
     if (!fs.existsSync(filePath)) {
         notFound++;
         continue;
     }
-    
+
     try {
         // Run php -l on the file
-        execSync(`php -l "${filePath}"`, { 
+        execSync(`php -l "${filePath}"`, {
             stdio: 'pipe',
             encoding: 'utf8'
         });
         validated++;
         process.stdout.write('.');
-        
+
         // Print progress every 50 files
         if (validated % 50 === 0) {
-            console.log(` ${validated}/${signatures.files.length}`);
+            console.log(` ${validated}`);
         }
     } catch (error) {
         errors++;
-        console.log(`\n❌ SYNTAX ERROR: ${file}`);
+        const rel = path.relative(srcDir, filePath);
+        console.log(`\n❌ SYNTAX ERROR: ${rel}`);
         console.log(error.stderr || error.message);
     }
 }
 
 console.log(`\n\n${'='.repeat(60)}`);
 console.log(`✅ Validated: ${validated} PHP files`);
-console.log(`⏭️  Skipped: ${skipped} non-PHP files`);
 if (notFound > 0) {
     console.log(`⚠️  Not found: ${notFound} PHP files`);
 }
