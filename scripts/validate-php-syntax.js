@@ -8,44 +8,37 @@ console.log('🔍 PHP Syntax Validation');
 console.log('========================\n');
 
 const srcDir = path.join(__dirname, '../src');
-
-// Collect PHP files to validate.
-// When signatures.json is available (post-build), use it for the canonical file list.
-// Otherwise fall back to scanning src/ directly so the script works standalone
-// (e.g. when invoked via `npm run build:php` without a prior full build).
-let phpFiles = [];
-
 const signaturesPath = path.join(srcDir, 'admin/data/signatures.json');
 
-if (fs.existsSync(signaturesPath)) {
-    const signatures = JSON.parse(fs.readFileSync(signaturesPath, 'utf8'));
-    if (!signatures.files || !Array.isArray(signatures.files)) {
-        console.error('❌ Error: Invalid signatures file format');
+// Generate signatures.json on-the-fly if it doesn't exist yet so that the
+// script works standalone without a prior full build.
+if (!fs.existsSync(signaturesPath)) {
+    console.log('ℹ️  signatures.json not found — generating now...\n');
+    try {
+        execSync(`node "${path.join(__dirname, 'generate-signatures-node.js')}"`, {
+            stdio: 'inherit',
+            encoding: 'utf8'
+        });
+    } catch (err) {
+        console.error('❌ Error: Failed to generate signatures.json');
+        console.error(err.message || err);
         process.exit(1);
     }
-    console.log(`📋 Using signatures.json (${signatures.files.length} entries)\n`);
-    phpFiles = signatures.files
-        .map((f) => (typeof f === 'string' ? f : f.filename))
-        .filter((f) => f.endsWith('.php') && !f.includes('/vendor/') && !f.startsWith('vendor/'))
-        .map((f) => path.join(srcDir, f.replace(/\//g, path.sep)));
-} else {
-    console.log('ℹ️  signatures.json not found — scanning src/ directly\n');
-    function walkPhp(dir) {
-        const results = [];
-        for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-            const full = path.join(dir, entry.name);
-            if (entry.isDirectory()) {
-                if (entry.name === 'vendor') continue;
-                results.push(...walkPhp(full));
-            } else if (entry.isFile() && entry.name.endsWith('.php')) {
-                results.push(full);
-            }
-        }
-        return results;
-    }
-    phpFiles = walkPhp(srcDir);
-    console.log(`📋 Found ${phpFiles.length} PHP files in src/\n`);
 }
+
+const signatures = JSON.parse(fs.readFileSync(signaturesPath, 'utf8'));
+
+if (!signatures.files || !Array.isArray(signatures.files)) {
+    console.error('❌ Error: Invalid signatures file format');
+    process.exit(1);
+}
+
+console.log(`📋 Found ${signatures.files.length} files in signatures\n`);
+
+const phpFiles = signatures.files
+    .map((f) => (typeof f === 'string' ? f : f.filename))
+    .filter((f) => f.endsWith('.php') && !f.includes('/vendor/') && !f.startsWith('vendor/'))
+    .map((f) => path.join(srcDir, f.replace(/\//g, path.sep)));
 
 let errors = 0;
 let validated = 0;
