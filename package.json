@@ -86,7 +86,7 @@
         "@uppy/core": "^5.2.0",
         "@uppy/dashboard": "^4.4.3",
         "@uppy/webcam": "^4.3.2",
-        "@uppy/xhr-upload": "^4.4.2",
+        "@uppy/xhr-upload": "^5.1.1",
         "admin-lte": "3.2.0",
         "avatar-initials": "^6.0.0",
         "bootbox": "^6.0.4",
