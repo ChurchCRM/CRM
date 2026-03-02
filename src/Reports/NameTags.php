@@ -56,7 +56,7 @@ while ($aPer = mysqli_fetch_array($rsPersons)) {
         }
 
         $pdf->SetXY($PosX + $pdf->_Width / 2, $PosY + 3);
-        $pdf->MultiCell($pdf->_Width / 2, $pdf->_Line_Height, iconv('UTF-8', 'ISO-8859-1', $labelStr));
+        $pdf->MultiCell($pdf->_Width / 2, $pdf->_Line_Height, $pdf->convertToLatin1($labelStr));
         $pdf->setCharSize($sFontSize);
         $pdf->addPdfLabel('');
     } else {
