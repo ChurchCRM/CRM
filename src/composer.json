@@ -101,7 +101,7 @@
     "graph-viz": "php vendor/bin/propel --config-dir=../orm graphviz:generate",
     "datadictionary": "php vendor/bin/propel --config-dir=../orm datadictionary:generate",
     "post-autoload-dump": ["@orm-gen"],
-    "openapi-public": "php vendor/bin/openapi --legacy api/openapi/openapi-public-info.php api/routes/public/ --output ../openapi/public-api.yaml --format yaml",
-    "openapi-private": "php vendor/bin/openapi --legacy api/openapi/openapi-private-info.php api/routes/ admin/routes/api/ kiosk/routes/api/ plugins/routes/api/ --exclude api/routes/public --output ../openapi/private-api.yaml --format yaml"
+    "openapi-public": "php api/openapi/generate.php api/openapi/openapi-public-info.php api/routes/public/ --output ../openapi/public-api.yaml --format yaml",
+    "openapi-private": "php api/openapi/generate.php api/openapi/openapi-private-info.php api/routes/ admin/routes/api/ kiosk/routes/api/ plugins/routes/api/ --exclude api/routes/public --output ../openapi/private-api.yaml --format yaml"
   }
 }
