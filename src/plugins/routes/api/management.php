@@ -8,17 +8,25 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 /**
- * Plugin management API routes.
- *
- * Provides AJAX endpoints for:
- * - Listing plugins
- * - Enabling/disabling plugins
- * - Getting plugin status
- *
- * These routes are under /plugins/api/ and require admin role.
+ * @OA\Get(
+ *     path="/plugins/api/plugins",
+ *     operationId="listPlugins",
+ *     summary="List all available plugins",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(
+ *         response=200,
+ *         description="Plugin list",
+ *         @OA\JsonContent(type="object",
+ *             @OA\Property(property="success", type="boolean"),
+ *             @OA\Property(property="data", type="array", @OA\Items(type="object"))
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=500, description="Error listing plugins")
+ * )
  */
-
-// Get all plugins
 $group->get('/plugins', function (Request $request, Response $response): Response {
     try {
         $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
@@ -42,7 +50,31 @@ $group->get('/plugins', function (Request $request, Response $response): Respons
     }
 });
 
-// Get single plugin details
+/**
+ * @OA\Get(
+ *     path="/plugins/api/plugins/{pluginId}",
+ *     operationId="getPlugin",
+ *     summary="Get plugin details",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="pluginId", in="path", required=true, @OA\Schema(type="string")),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Plugin details",
+ *         @OA\JsonContent(type="object",
+ *             @OA\Property(property="success", type="boolean"),
+ *             @OA\Property(property="data", type="object",
+ *                 @OA\Property(property="metadata", type="object"),
+ *                 @OA\Property(property="isActive", type="boolean"),
+ *                 @OA\Property(property="isConfigured", type="boolean")
+ *             )
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=404, description="Plugin not found")
+ * )
+ */
 $group->get('/plugins/{pluginId}', function (Request $request, Response $response, array $args): Response {
     try {
         $pluginId = $args['pluginId'];
@@ -81,7 +113,21 @@ $group->get('/plugins/{pluginId}', function (Request $request, Response $respons
     }
 });
 
-// Enable a plugin
+/**
+ * @OA\Post(
+ *     path="/plugins/api/plugins/{pluginId}/enable",
+ *     operationId="enablePlugin",
+ *     summary="Enable a plugin",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="pluginId", in="path", required=true, @OA\Schema(type="string")),
+ *     @OA\Response(response=200, description="Plugin enabled"),
+ *     @OA\Response(response=400, description="Plugin cannot be enabled (dependency or version issue)"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=500, description="Error enabling plugin")
+ * )
+ */
 $group->post('/plugins/{pluginId}/enable', function (Request $request, Response $response, array $args): Response {
     try {
         $pluginId = $args['pluginId'];
@@ -116,7 +162,21 @@ $group->post('/plugins/{pluginId}/enable', function (Request $request, Response 
     }
 });
 
-// Disable a plugin
+/**
+ * @OA\Post(
+ *     path="/plugins/api/plugins/{pluginId}/disable",
+ *     operationId="disablePlugin",
+ *     summary="Disable a plugin",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="pluginId", in="path", required=true, @OA\Schema(type="string")),
+ *     @OA\Response(response=200, description="Plugin disabled"),
+ *     @OA\Response(response=400, description="Plugin cannot be disabled (other plugins depend on it)"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=500, description="Error disabling plugin")
+ * )
+ */
 $group->post('/plugins/{pluginId}/disable', function (Request $request, Response $response, array $args): Response {
     try {
         $pluginId = $args['pluginId'];
@@ -151,7 +211,26 @@ $group->post('/plugins/{pluginId}/disable', function (Request $request, Response
     }
 });
 
-// Update plugin settings
+/**
+ * @OA\Post(
+ *     path="/plugins/api/plugins/{pluginId}/settings",
+ *     operationId="updatePluginSettings",
+ *     summary="Update plugin settings",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="pluginId", in="path", required=true, @OA\Schema(type="string")),
+ *     @OA\RequestBody(required=true,
+ *         @OA\JsonContent(type="object",
+ *             @OA\Property(property="settings", type="object", description="Key-value map of settings to update")
+ *         )
+ *     ),
+ *     @OA\Response(response=200, description="Settings updated"),
+ *     @OA\Response(response=400, description="No settings provided or plugin not found"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=404, description="Plugin not found")
+ * )
+ */
 $group->post('/plugins/{pluginId}/settings', function (Request $request, Response $response, array $args): Response {
     try {
         $pluginId = $args['pluginId'];
@@ -219,8 +298,27 @@ $group->post('/plugins/{pluginId}/settings', function (Request $request, Respons
     }
 });
 
-// Test plugin connection with the settings provided in the request body.
-// Password fields may be omitted — the plugin falls back to its saved value.
+/**
+ * @OA\Post(
+ *     path="/plugins/api/plugins/{pluginId}/test",
+ *     operationId="testPluginConnection",
+ *     summary="Test plugin connection with provided settings",
+ *     description="Password fields may be omitted — the plugin falls back to its saved value.",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="pluginId", in="path", required=true, @OA\Schema(type="string")),
+ *     @OA\RequestBody(required=false,
+ *         @OA\JsonContent(type="object",
+ *             @OA\Property(property="settings", type="object", description="Settings to test with (partial override)")
+ *         )
+ *     ),
+ *     @OA\Response(response=200, description="Connection successful"),
+ *     @OA\Response(response=400, description="Connection test failed"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=404, description="Plugin not found or not active")
+ * )
+ */
 $group->post('/plugins/{pluginId}/test', function (Request $request, Response $response, array $args): Response {
     try {
         $pluginId = $args['pluginId'];
@@ -244,7 +342,20 @@ $group->post('/plugins/{pluginId}/test', function (Request $request, Response $r
     }
 });
 
-// Reset plugin settings (clear all values)
+/**
+ * @OA\Post(
+ *     path="/plugins/api/plugins/{pluginId}/reset",
+ *     operationId="resetPluginSettings",
+ *     summary="Reset all settings for a plugin",
+ *     tags={"Plugins"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="pluginId", in="path", required=true, @OA\Schema(type="string")),
+ *     @OA\Response(response=200, description="Settings reset"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+ *     @OA\Response(response=404, description="Plugin not found")
+ * )
+ */
 $group->post('/plugins/{pluginId}/reset', function (Request $request, Response $response, array $args): Response {
     try {
         $pluginId = $args['pluginId'];

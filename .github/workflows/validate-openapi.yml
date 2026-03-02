@@ -1,0 +1,57 @@
+name: Validate OpenAPI Specs
+
+on:
+  push:
+    branches-ignore:
+      - master
+    paths:
+      - 'src/api/routes/**'
+      - 'src/admin/routes/api/**'
+      - 'src/api/openapi/**'
+      - 'src/kiosk/routes/api/**'
+      - 'src/plugins/routes/api/**'
+  pull_request:
+    paths:
+      - 'src/api/routes/**'
+      - 'src/admin/routes/api/**'
+      - 'src/api/openapi/**'
+      - 'src/kiosk/routes/api/**'
+      - 'src/plugins/routes/api/**'
+
+jobs:
+  validate:
+    name: Generate and validate OpenAPI specs
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout CRM
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, pdo, zip
+
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        with:
+          path: src/vendor
+          key: composer-dev-${{ hashFiles('src/composer.lock') }}
+          restore-keys: composer-dev-
+
+      - name: Install Composer dependencies (including dev)
+        run: cd src && composer install --no-interaction --prefer-dist
+
+      - name: Generate Public API spec
+        run: cd src && composer run openapi-public
+
+      - name: Generate Private API spec
+        run: cd src && composer run openapi-private
+
+      - name: Upload generated specs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: openapi-specs-${{ github.run_id }}
+          path: openapi/*.yaml
+          retention-days: 7

@@ -281,8 +281,89 @@ const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
 
 **Do NOT create API endpoints** if a service method is only called from a legacy page - call the service directly instead.
 
+## OpenAPI Documentation (REQUIRED for all API changes)
+
+ChurchCRM uses `zircote/swagger-php` 4.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference at `docs.churchcrm.io`.
+
+**When adding or updating any API endpoint, you MUST add/update the `@OA\*` annotation.**
+
+### Annotation placement rules
+
+**Named functions** — DocBlock immediately above the `function` definition:
+```php
+/**
+ * @OA\Get(
+ *     path="/events",
+ *     operationId="getAllEvents",
+ *     summary="List all events",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Event list", @OA\JsonContent(...)),
+ *     @OA\Response(response=401, description="Unauthorized")
+ * )
+ */
+function getAllEvents(Request $request, Response $response, array $args): Response {
+```
+
+**Closures / arrow functions** — standalone DocBlock immediately above the `$group->get(...)` call:
+```php
+/**
+ * @OA\Get(
+ *     path="/persons/search/{query}",
+ *     operationId="searchPersons",
+ *     summary="Search persons by name or email",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="query", in="path", required=true, @OA\Schema(type="string")),
+ *     @OA\Response(response=200, description="Matching persons (max 15)")
+ * )
+ */
+$group->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
+```
+
+### Auth security by middleware
+
+| Middleware | OpenAPI security | Extra responses |
+|---|---|---|
+| None (`/public/*`) | omit `security` key | — |
+| `AuthMiddleware` (global) | `security={{"ApiKeyAuth":{}}}` | 401 |
+| Role middleware (Finance, Admin, etc.) | `security={{"ApiKeyAuth":{}}}` | 401 + 403 |
+
+### Tags
+
+Public spec: `Utility`, `Auth`, `Registration`, `Calendar`, `Lookups`
+
+Private spec: `Calendar`, `People`, `Families`, `Groups`, `Properties`, `Finance`, `Users`, `2FA`, `System`, `Admin`, `Cart`, `Search`, `Map`
+
+### Regenerating the spec
+
+After annotating, run from `CRM/src/`:
+```bash
+composer run openapi-public   # → CRM/openapi/public-api.yaml
+composer run openapi-private  # → CRM/openapi/private-api.yaml
+```
+
+Commit the updated YAML files to the CRM repo. The rest is automated:
+
+- **On PR/branch push**: `validate-openapi.yml` generates both specs and uploads them as artifacts for review.
+- **On merge to master**: `publish-openapi.yml` regenerates specs, commits any changes to `CRM/openapi/`, then dispatches a `repository_dispatch` event to `docs.churchcrm.io`, which pulls the latest YAMLs and regenerates MDX automatically.
+
+To manually sync the docs site (e.g., during local dev):
+```bash
+cp CRM/openapi/public-api.yaml docs.churchcrm.io/openapi/
+cp CRM/openapi/private-api.yaml docs.churchcrm.io/openapi/
+cd docs.churchcrm.io && npm run regen
+```
+
+### Global annotations / tags
+
+Defined in `src/api/openapi/openapi-public-info.php` and `src/api/openapi/openapi-private-info.php`. If you add a new tag, add it there first.
+
 ## Files
 
 **API Routes:** `src/api/routes/`, `src/admin/routes/api/`
 **Utilities:** `src/ChurchCRM/Slim/SlimUtils.php`
 **Middleware:** `src/ChurchCRM/Slim/Middleware/`
+**OpenAPI info:** `src/api/openapi/openapi-public-info.php`, `src/api/openapi/openapi-private-info.php`
+**Generated specs:** `CRM/openapi/public-api.yaml`, `CRM/openapi/private-api.yaml`
+**Docs site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`

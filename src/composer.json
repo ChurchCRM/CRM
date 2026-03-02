@@ -60,9 +60,11 @@
     "vonage/client": "^4.3.0"
   },
   "require-dev": {
+    "doctrine/annotations": "^2.0",
     "phpstan/phpstan": "^2.1.6",
     "rector/rector": "^2.0.9",
-    "squizlabs/php_codesniffer": "^3.11.3"
+    "squizlabs/php_codesniffer": "^3.11.3",
+    "zircote/swagger-php": "^4.10"
   },
   "replace": {
     "symfony/polyfill-mbstring": "*",
@@ -98,6 +100,8 @@
     "sql-gen": "php vendor/bin/propel --config-dir=../orm sql:build",
     "graph-viz": "php vendor/bin/propel --config-dir=../orm graphviz:generate",
     "datadictionary": "php vendor/bin/propel --config-dir=../orm datadictionary:generate",
-    "post-autoload-dump": ["@orm-gen"]
+    "post-autoload-dump": ["@orm-gen"],
+    "openapi-public": "php vendor/bin/openapi --legacy api/openapi/openapi-public-info.php api/routes/public/ --output ../openapi/public-api.yaml --format yaml",
+    "openapi-private": "php vendor/bin/openapi --legacy api/openapi/openapi-private-info.php api/routes/ admin/routes/api/ kiosk/routes/api/ plugins/routes/api/ --exclude api/routes/public --output ../openapi/private-api.yaml --format yaml"
   }
 }

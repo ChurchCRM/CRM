@@ -18,6 +18,32 @@ $app->group('/public/user', function (RouteCollectorProxy $group): void {
     $group->post('/password-reset', 'passwordResetRequest');
 });
 
+/**
+ * @OA\Post(
+ *     path="/public/user/login",
+ *     operationId="userLogin",
+ *     summary="Log in and retrieve an API key",
+ *     description="Authenticates a user by username and password and returns their API key for use in subsequent authenticated requests.",
+ *     tags={"Auth"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"userName","password"},
+ *             @OA\Property(property="userName", type="string", example="admin"),
+ *             @OA\Property(property="password", type="string", format="password", example="secret")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Login successful",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="apiKey", type="string", example="abc123xyz")
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Invalid username or password"),
+ *     @OA\Response(response=404, description="User not found")
+ * )
+ */
 function userLogin(Request $request, Response $response, array $args): Response
 {
     $body = json_decode($request->getBody(), true, 512, JSON_THROW_ON_ERROR);
@@ -38,6 +64,30 @@ function userLogin(Request $request, Response $response, array $args): Response
     return SlimUtils::renderJSON($response, ['apiKey' => $user->getApiKey()]);
 }
 
+/**
+ * @OA\Post(
+ *     path="/public/user/password-reset",
+ *     operationId="passwordResetRequest",
+ *     summary="Request a password reset email",
+ *     description="Sends a password reset link to the email address associated with the given username. Always returns success to avoid user enumeration.",
+ *     tags={"Auth"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"userName"},
+ *             @OA\Property(property="userName", type="string", example="admin")
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Request accepted (email sent if account exists)",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean", example=true)
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="userName field is required")
+ * )
+ */
 function passwordResetRequest(Request $request, Response $response, array $args): Response
 {
     $logger = LoggerUtils::getAppLogger();

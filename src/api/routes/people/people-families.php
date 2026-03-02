@@ -20,19 +20,31 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     $group->get('/latest', 'getLatestFamilies');
     $group->get('/updated', 'getUpdatedFamilies');
     $group->get('/anniversaries', 'getFamiliesWithAnniversaries');
+
+    /**
+     * @OA\Get(
+     *     path="/families/familiesInCart",
+     *     summary="Get families whose all members are in the session cart",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="List of family IDs where every member is in the cart",
+     *         @OA\JsonContent(@OA\Property(property="familiesInCart", type="array", @OA\Items(type="integer")))
+     *     )
+     * )
+     */
     $group->get('/familiesInCart', function (Request $request, Response $response, array $args): Response {
         $familiesInCart = [];
-        
+
         // Check if cart has items
         if (!empty($_SESSION['aPeopleCart'])) {
             $cartPersonIDs = $_SESSION['aPeopleCart'];
-            
+
             // Optimized query: Query people by IDs in cart, get their families
             // This only loads people in cart (efficient) instead of all families
             $people = PersonQuery::create()
                 ->filterById($cartPersonIDs)
                 ->find();
-            
+
             // Collect unique family IDs from the people in cart
             $uniqueFamilyIds = [];
             foreach ($people as $person) {
@@ -47,10 +59,24 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
                 }
             }
         }
-        
+
         return SlimUtils::renderJSON($response, ['familiesInCart' => $familiesInCart]);
     });
 
+    /**
+     * @OA\Get(
+     *     path="/families/email/without",
+     *     summary="Get families with no email address on record",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Families without any email address",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="count", type="integer"),
+     *             @OA\Property(property="families", type="array", @OA\Items(type="object"))
+     *         )
+     *     )
+     * )
+     */
     $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()->joinWithPerson()->find();
 
@@ -73,6 +99,18 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, ['count' => count($familiesWithoutEmails), 'families' => $familiesWithoutEmails]);
     });
 
+    /**
+     * @OA\Get(
+     *     path="/families/search/{query}",
+     *     summary="Search families by name (max 15 results)",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="query", in="path", required=true, @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Matching families",
+     *         @OA\JsonContent(@OA\Property(property="Families", type="array", @OA\Items(type="object")))
+     *     )
+     * )
+     */
     $group->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
         $query = $args['query'];
         $results = [];
@@ -87,6 +125,17 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, ['Families' => $results]);
     });
 
+    /**
+     * @OA\Get(
+     *     path="/families/self-register",
+     *     summary="Get the last 100 self-registered families",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Self-registered families ordered by date entered descending",
+     *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(type="object")))
+     *     )
+     * )
+     */
     $group->get('/self-register', function (Request $request, Response $response, array $args): Response {
         $families = FamilyQuery::create()
             ->filterByEnteredBy(Person::SELF_REGISTER)
@@ -97,6 +146,17 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, ['families' => $families->toArray()]);
     });
 
+    /**
+     * @OA\Get(
+     *     path="/families/self-verify",
+     *     summary="Get the last 100 families with self-verification notes",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Families that submitted self-verification notes",
+     *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(type="object")))
+     *     )
+     * )
+     */
     $group->get('/self-verify', function (Request $request, Response $response, array $args): Response {
         $verificationNotes = NoteQuery::create()
             ->filterByEnteredBy(Person::SELF_VERIFY)
@@ -108,6 +168,17 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, ['families' => $verificationNotes->toArray()]);
     });
 
+    /**
+     * @OA\Get(
+     *     path="/families/pending-self-verify",
+     *     summary="Get families with pending (unused, non-expired) self-verify tokens",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Pending verification tokens with family names",
+     *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(type="object")))
+     *     )
+     * )
+     */
     $group->get('/pending-self-verify', function (Request $request, Response $response, array $args): Response {
         $pendingTokens = TokenQuery::create()
             ->filterByType(Token::TYPE_FAMILY_VERIFY)
@@ -122,6 +193,16 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, ['families' => $pendingTokens->toArray()]);
     });
 
+    /**
+     * @OA\Get(
+     *     path="/families/byCheckNumber/{scanString}",
+     *     summary="Find a family by check scan string",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="scanString", in="path", required=true, @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Family member matched by check scan string")
+     * )
+     */
     $group->get('/byCheckNumber/{scanString}', function (Request $request, Response $response, array $args): Response {
         $scanString = $args['scanString'];
 
@@ -131,6 +212,23 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
     });
 });
 
+/**
+ * @OA\Get(
+ *     path="/families/anniversaries",
+ *     summary="Get families with wedding anniversaries within 7 days of today",
+ *     tags={"Families"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Families with upcoming/recent anniversaries (±7 days)",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="families", type="array", @OA\Items(
+ *                 @OA\Property(property="FamilyId", type="integer"),
+ *                 @OA\Property(property="Name", type="string"),
+ *                 @OA\Property(property="WeddingDate", type="string")
+ *             ))
+ *         )
+ *     )
+ * )
+ */
 function getFamiliesWithAnniversaries(Request $request, Response $response, array $args): Response
 {
     // Get anniversaries for 14-day range: 7 days before to 7 days after today
@@ -156,6 +254,23 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
     return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }
 
+/**
+ * @OA\Get(
+ *     path="/families/latest",
+ *     summary="Get the 10 most recently added families",
+ *     tags={"Families"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="10 latest families by date entered",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="families", type="array", @OA\Items(
+ *                 @OA\Property(property="FamilyId", type="integer"),
+ *                 @OA\Property(property="Name", type="string"),
+ *                 @OA\Property(property="Created", type="string", format="date-time")
+ *             ))
+ *         )
+ *     )
+ * )
+ */
 function getLatestFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
@@ -166,6 +281,23 @@ function getLatestFamilies(Request $request, Response $response, array $args): R
     return SlimUtils::renderJSON($response, buildFormattedFamilies($families));
 }
 
+/**
+ * @OA\Get(
+ *     path="/families/updated",
+ *     summary="Get the 10 most recently updated families",
+ *     tags={"Families"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="10 families ordered by last edit date descending",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="families", type="array", @OA\Items(
+ *                 @OA\Property(property="FamilyId", type="integer"),
+ *                 @OA\Property(property="Name", type="string"),
+ *                 @OA\Property(property="LastEdited", type="string", format="date-time")
+ *             ))
+ *         )
+ *     )
+ * )
+ */
 function getUpdatedFamilies(Request $request, Response $response, array $args): Response
 {
     $families = FamilyQuery::create()
@@ -188,7 +320,7 @@ function buildFormattedFamilies($families): array
         $formattedFamily['HasPhoto'] = $family->getPhoto()->hasUploadedPhoto();
         $formattedFamily['IsActive'] = $family->isActive();
         $formattedFamily['StatusText'] = $family->getStatusText();
-        
+
         $formattedFamily['Created'] = $family->getDateEntered() ? $family->getDateEntered()->format('c') : null; // ISO 8601
         $formattedFamily['LastEdited'] = $family->getDateLastEdited() ? $family->getDateLastEdited()->format('c') : null; // ISO 8601
         $formattedFamily['WeddingDate'] = $family->getWeddingdate() ? $family->getWeddingdate()->format('F j, Y') : null;

@@ -18,6 +18,37 @@ use Slim\HttpCache\Cache;
 // This group does not load the person via middleware (to speed up the page loads)
 // Photo endpoint - returns uploaded photo only (404 if no photo exists)
 // Avatar info endpoint - returns JSON with initials, gravatar info for client-side rendering
+/**
+ * @OA\Get(
+ *     path="/person/{personId}/photo",
+ *     operationId="getPersonPhoto",
+ *     summary="Get a person's uploaded photo",
+ *     description="Returns the binary photo image. Returns 404 if no photo has been uploaded (use avatar endpoint for fallback).",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\Response(response=200, description="Photo image", @OA\MediaType(mediaType="image/jpeg", @OA\Schema(type="string", format="binary"))),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=404, description="No uploaded photo for this person")
+ * )
+ * @OA\Get(
+ *     path="/person/{personId}/avatar",
+ *     operationId="getPersonAvatar",
+ *     summary="Get a person's avatar info (initials, gravatar)",
+ *     description="Returns JSON with avatar metadata for client-side rendering. Always returns a result even if no photo is uploaded.",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\Response(response=200, description="Avatar info",
+ *         @OA\JsonContent(type="object",
+ *             @OA\Property(property="hasPhoto", type="boolean"),
+ *             @OA\Property(property="initials", type="string", example="JS"),
+ *             @OA\Property(property="gravatarUrl", type="string", nullable=true)
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized")
+ * )
+ */
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
     // Returns uploaded photo only - 404 if no uploaded photo
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
@@ -38,6 +69,79 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     });
 });
 
+/**
+ * @OA\Get(
+ *     path="/person/{personId}",
+ *     operationId="getPerson",
+ *     summary="Get a person by ID",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\Response(response=200, description="Person object (Propel JSON export)"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=404, description="Person not found")
+ * )
+ * @OA\Delete(
+ *     path="/person/{personId}",
+ *     operationId="deletePerson",
+ *     summary="Delete a person",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\Response(response=200, description="Person deleted",
+ *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="DeleteRecords role required, or cannot delete yourself"),
+ *     @OA\Response(response=404, description="Person not found")
+ * )
+ * @OA\Post(
+ *     path="/person/{personId}/addToCart",
+ *     operationId="addPersonToCart",
+ *     summary="Add a person to the selection cart",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\Response(response=200, description="Added to cart",
+ *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized")
+ * )
+ * @OA\Post(
+ *     path="/person/{personId}/photo",
+ *     operationId="uploadPersonPhoto",
+ *     summary="Upload a person's photo (base64)",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"imgBase64"},
+ *         @OA\Property(property="imgBase64", type="string", description="Base64-encoded image data", example="data:image/jpeg;base64,/9j/...")
+ *     )),
+ *     @OA\Response(response=200, description="Photo uploaded",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean", example=true),
+ *             @OA\Property(property="hasPhoto", type="boolean", example=true)
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="Upload failed"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="EditRecords role required")
+ * )
+ * @OA\Delete(
+ *     path="/person/{personId}/photo",
+ *     operationId="deletePersonPhoto",
+ *     summary="Delete a person's uploaded photo",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\Response(response=200, description="Photo deleted",
+ *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="DeleteRecords role required")
+ * )
+ */
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
@@ -86,6 +190,27 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     })->add(DeleteRecordRoleAuthMiddleware::class);
 })->add(PersonMiddleware::class);
 
+/**
+ * @OA\Post(
+ *     path="/person/{personId}/role/{roleId}",
+ *     operationId="setPersonRole",
+ *     summary="Set a person's family role",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\Parameter(name="roleId", in="path", required=true, description="Role ID from GET /persons/roles", @OA\Schema(type="integer", example=1)),
+ *     @OA\Response(response=200, description="Role updated",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean", example=true),
+ *             @OA\Property(property="msg", type="string", example="The role is successfully assigned.")
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="EditRecords role required"),
+ *     @OA\Response(response=404, description="Person or role not found"),
+ *     @OA\Response(response=500, description="Failed to save role")
+ * )
+ */
 function setPersonRoleAPI(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');

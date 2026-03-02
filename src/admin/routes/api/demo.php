@@ -10,6 +10,35 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/api/demo', function (RouteCollectorProxy $group): void {
 
+    /**
+     * @OA\Post(
+     *     path="/api/demo/load",
+     *     summary="Import demo data into the application (Admin role required)",
+     *     description="Only available on fresh installations with exactly 1 person, unless the force flag is set.",
+     *     tags={"Admin"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\RequestBody(required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="includeFinancial", type="boolean", default=false),
+     *             @OA\Property(property="includeEvents", type="boolean", default=false),
+     *             @OA\Property(property="includeSundaySchool", type="boolean", default=false),
+     *             @OA\Property(property="force", type="boolean", default=false, description="Skip the fresh-install guard")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Demo data imported successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean"),
+     *             @OA\Property(property="message", type="string"),
+     *             @OA\Property(property="imported", type="object"),
+     *             @OA\Property(property="warnings", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="errors", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="elapsedSeconds", type="number")
+     *         )
+     *     ),
+     *     @OA\Response(response=403, description="Admin role required — or database is not a fresh install"),
+     *     @OA\Response(response=500, description="Demo data import failed")
+     * )
+     */
     $group->post('/load', function (Request $request, Response $response): Response {
         $logger = LoggerUtils::getAppLogger();
 
@@ -28,7 +57,7 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
                 ], 403);
             }
         }
-        
+
 
         try {
             $logger->info('Admin demo data import started', ['includeFinancial' => $includeFinancial, 'includeEvents' => $includeEvents, 'includeSundaySchool' => $includeSundaySchool]);
@@ -51,7 +80,7 @@ $app->group('/api/demo', function (RouteCollectorProxy $group): void {
 
             // Return 500 status code if the import failed
             $statusCode = $result['success'] ? 200 : 500;
-            
+
             return SlimUtils::renderJSON($response, $responseData, $statusCode);
 
         } catch (\Throwable $e) {

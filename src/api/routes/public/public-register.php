@@ -18,6 +18,67 @@ $app->group('/public/register', function (RouteCollectorProxy $group): void {
     $group->post('/person/', 'registerPersonAPI');
 })->add(PublicRegistrationAuthMiddleware::class);
 
+/**
+ * @OA\Post(
+ *     path="/public/register/family",
+ *     operationId="registerFamilyAPI",
+ *     summary="Register a new family",
+ *     description="Creates a new family and its members via public self-registration. Requires public registration to be enabled in system settings.",
+ *     tags={"Registration"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"Name","Address1","City","State","Country","Zip","people"},
+ *             @OA\Property(property="Name", type="string", example="Smith"),
+ *             @OA\Property(property="Address1", type="string", example="123 Main St"),
+ *             @OA\Property(property="Address2", type="string", nullable=true, example="Apt 4B"),
+ *             @OA\Property(property="City", type="string", example="Seattle"),
+ *             @OA\Property(property="State", type="string", example="WA"),
+ *             @OA\Property(property="Country", type="string", example="US"),
+ *             @OA\Property(property="Zip", type="string", example="98101"),
+ *             @OA\Property(property="HomePhone", type="string", nullable=true, example="206-555-0100"),
+ *             @OA\Property(property="Email", type="string", format="email", nullable=true, example="smith@example.com"),
+ *             @OA\Property(
+ *                 property="people",
+ *                 type="array",
+ *                 minItems=1,
+ *                 @OA\Items(
+ *                     required={"role","gender","firstName","lastName"},
+ *                     @OA\Property(property="role", type="string", example="1", description="Family role ID (1=Head of Household). See GET /public/data for lookups."),
+ *                     @OA\Property(property="gender", type="string", enum={"1","2"}, description="1=Male, 2=Female"),
+ *                     @OA\Property(property="firstName", type="string", example="John"),
+ *                     @OA\Property(property="lastName", type="string", example="Smith"),
+ *                     @OA\Property(property="email", type="string", format="email", nullable=true),
+ *                     @OA\Property(property="birthday", type="string", nullable=true, example="10/02/1985", description="Format: MM/DD/YYYY"),
+ *                     @OA\Property(property="hideAge", type="boolean", default=false),
+ *                     @OA\Property(property="cellPhone", type="string", nullable=true),
+ *                     @OA\Property(property="homePhone", type="string", nullable=true),
+ *                     @OA\Property(property="workPhone", type="string", nullable=true)
+ *                 )
+ *             )
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Family registered successfully",
+ *         @OA\JsonContent(description="The newly created family object", type="object",
+ *             @OA\Property(property="Id", type="integer", example=42),
+ *             @OA\Property(property="Name", type="string", example="Smith"),
+ *             @OA\Property(property="Address1", type="string"),
+ *             @OA\Property(property="City", type="string"),
+ *             @OA\Property(property="State", type="string"),
+ *             @OA\Property(property="Zip", type="string")
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="Validation error",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="error", type="string", example="Validation Error"),
+ *             @OA\Property(property="failures", type="array", @OA\Items(type="string"))
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Person validation error or registration disabled")
+ * )
+ */
 function registerFamilyAPI(Request $request, Response $response, array $args): Response
 {
     $familyMetadata = [];
@@ -115,6 +176,48 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     return SlimUtils::renderJSON($response, $family->toArray());
 }
 
+/**
+ * @OA\Post(
+ *     path="/public/register/person",
+ *     operationId="registerPersonAPI",
+ *     summary="Register a new individual person",
+ *     description="Creates a standalone person record via public self-registration. Requires public registration to be enabled in system settings.",
+ *     tags={"Registration"},
+ *     @OA\RequestBody(
+ *         required=true,
+ *         @OA\JsonContent(
+ *             required={"firstName","lastName","gender"},
+ *             @OA\Property(property="firstName", type="string", example="Jane"),
+ *             @OA\Property(property="lastName", type="string", example="Doe"),
+ *             @OA\Property(property="gender", type="string", enum={"1","2"}, description="1=Male, 2=Female"),
+ *             @OA\Property(property="email", type="string", format="email", nullable=true),
+ *             @OA\Property(property="cellPhone", type="string", nullable=true),
+ *             @OA\Property(property="homePhone", type="string", nullable=true),
+ *             @OA\Property(property="workPhone", type="string", nullable=true),
+ *             @OA\Property(property="address1", type="string", nullable=true),
+ *             @OA\Property(property="address2", type="string", nullable=true),
+ *             @OA\Property(property="city", type="string", nullable=true),
+ *             @OA\Property(property="state", type="string", nullable=true),
+ *             @OA\Property(property="zip", type="string", nullable=true)
+ *         )
+ *     ),
+ *     @OA\Response(
+ *         response=200,
+ *         description="Person registered successfully",
+ *         @OA\JsonContent(description="The newly created person object (Propel JSON export)", type="object",
+ *             @OA\Property(property="Id", type="integer", example=99),
+ *             @OA\Property(property="FirstName", type="string", example="Jane"),
+ *             @OA\Property(property="LastName", type="string", example="Doe")
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="Validation error",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="error", type="string", example="Validation Error"),
+ *             @OA\Property(property="failures", type="array", @OA\Items(type="string"))
+ *         )
+ *     )
+ * )
+ */
 function registerPersonAPI(Request $request, Response $response, array $args): Response
 {
     // Sanitize input data before creating person

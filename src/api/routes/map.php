@@ -15,15 +15,32 @@ $app->group('/map', function (RouteCollectorProxy $group): void {
 });
 
 /**
- * GET /api/map/families
- *
- * Returns a list of geocoded families (or group members) as map items.
- *
- * Query params:
- *   groupId (int, optional) — when > 0, returns persons from that group instead of all families
- *
- * Each item:
- *   id, type, name, salutation, address, latitude, longitude, classificationId, profileUrl
+ * @OA\Get(
+ *     path="/map/families",
+ *     summary="Get geocoded map items — families, group members, or cart persons",
+ *     tags={"Map"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(
+ *         name="groupId",
+ *         in="query",
+ *         required=false,
+ *         @OA\Schema(type="integer"),
+ *         description="When omitted or null: all active geocoded families. When 0: persons in the session cart. When > 0: members of that group."
+ *     ),
+ *     @OA\Response(response=200, description="Array of map items",
+ *         @OA\JsonContent(type="array", @OA\Items(
+ *             @OA\Property(property="id", type="integer"),
+ *             @OA\Property(property="type", type="string", enum={"family","person"}),
+ *             @OA\Property(property="name", type="string"),
+ *             @OA\Property(property="salutation", type="string"),
+ *             @OA\Property(property="address", type="string"),
+ *             @OA\Property(property="latitude", type="number", format="float"),
+ *             @OA\Property(property="longitude", type="number", format="float"),
+ *             @OA\Property(property="classificationId", type="integer"),
+ *             @OA\Property(property="profileUrl", type="string")
+ *         ))
+ *     )
+ * )
  */
 function getMapFamilies(Request $request, Response $response, array $args): Response
 {

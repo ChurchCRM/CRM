@@ -35,6 +35,40 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
     $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
 });
 
+/**
+ * @OA\Get(
+ *     path="/events",
+ *     operationId="getAllEvents",
+ *     summary="List all events",
+ *     description="Returns all calendar events with their linked group associations.",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(
+ *         response=200,
+ *         description="List of events",
+ *         @OA\JsonContent(
+ *             type="object",
+ *             @OA\Property(property="Events", type="array",
+ *                 @OA\Items(type="object",
+ *                     @OA\Property(property="Id", type="integer", example=1),
+ *                     @OA\Property(property="Title", type="string", example="Sunday Service"),
+ *                     @OA\Property(property="Desc", type="string", nullable=true),
+ *                     @OA\Property(property="Start", type="string", format="date-time"),
+ *                     @OA\Property(property="End", type="string", format="date-time"),
+ *                     @OA\Property(property="Groups", type="array",
+ *                         @OA\Items(type="object",
+ *                             @OA\Property(property="Id", type="integer"),
+ *                             @OA\Property(property="Name", type="string")
+ *                         )
+ *                     )
+ *                 )
+ *             )
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=404, description="No events found")
+ * )
+ */
 function getAllEvents(Request $request, Response $response, array $args): Response
 {
     $Events = EventQuery::create()
@@ -63,6 +97,27 @@ function getAllEvents(Request $request, Response $response, array $args): Respon
     return SlimUtils::renderJSON($response, ['Events' => $eventsArray]);
 }
 
+/**
+ * @OA\Get(
+ *     path="/events/types",
+ *     operationId="getEventTypes",
+ *     summary="List all event types",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(
+ *         response=200,
+ *         description="Ordered list of event types",
+ *         @OA\JsonContent(type="array",
+ *             @OA\Items(type="object",
+ *                 @OA\Property(property="Id", type="integer", example=1),
+ *                 @OA\Property(property="Name", type="string", example="Worship Service")
+ *             )
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=404, description="No event types found")
+ * )
+ */
 function getEventTypes(Request $request, Response $response, array $args): Response
 {
     $EventTypes = EventTypeQuery::create()
@@ -74,6 +129,24 @@ function getEventTypes(Request $request, Response $response, array $args): Respo
     return SlimUtils::renderStringJSON($response, $EventTypes->toJSON());
 }
 
+/**
+ * @OA\Get(
+ *     path="/events/{id}",
+ *     operationId="getEvent",
+ *     summary="Get an event by ID",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer", example=1)),
+ *     @OA\Response(response=200, description="Event object", @OA\JsonContent(type="object",
+ *         @OA\Property(property="Id", type="integer"),
+ *         @OA\Property(property="Title", type="string"),
+ *         @OA\Property(property="Start", type="string", format="date-time"),
+ *         @OA\Property(property="End", type="string", format="date-time")
+ *     )),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=404, description="Event not found")
+ * )
+ */
 function getEvent(Request $request, Response $response, $args): Response
 {
     $Event = $request->getAttribute('event');
@@ -84,6 +157,19 @@ function getEvent(Request $request, Response $response, $args): Response
     return SlimUtils::renderStringJSON($response, $Event->toJSON());
 }
 
+/**
+ * @OA\Get(
+ *     path="/events/{id}/primarycontact",
+ *     operationId="getEventPrimaryContact",
+ *     summary="Get an event's primary contact person",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer", example=1)),
+ *     @OA\Response(response=200, description="Person object"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=404, description="Event or primary contact not found")
+ * )
+ */
 function getEventPrimaryContact(Request $request, Response $response, array $args): Response
 {
     /** @var Event $Event */
@@ -98,6 +184,19 @@ function getEventPrimaryContact(Request $request, Response $response, array $arg
     throw new HttpNotFoundException($request);
 }
 
+/**
+ * @OA\Get(
+ *     path="/events/{id}/secondarycontact",
+ *     operationId="getEventSecondaryContact",
+ *     summary="Get an event's secondary contact person",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer", example=1)),
+ *     @OA\Response(response=200, description="Person object"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=404, description="Event or secondary contact not found")
+ * )
+ */
 function getEventSecondaryContact(Request $request, Response $response, array $args): Response
 {
     $Contact = EventQuery::create()
@@ -109,6 +208,19 @@ function getEventSecondaryContact(Request $request, Response $response, array $a
     return SlimUtils::renderStringJSON($response, $Contact->toJSON());
 }
 
+/**
+ * @OA\Get(
+ *     path="/events/{id}/location",
+ *     operationId="getEventLocation",
+ *     summary="Get an event's location",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer", example=1)),
+ *     @OA\Response(response=200, description="Location object"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=404, description="Event or location not found")
+ * )
+ */
 function getEventLocation(Request $request, Response $response, array $args): Response
 {
     $Location = EventQuery::create()
@@ -121,6 +233,19 @@ function getEventLocation(Request $request, Response $response, array $args): Re
     return SlimUtils::renderStringJSON($response, $Location->toJSON());
 }
 
+/**
+ * @OA\Get(
+ *     path="/events/{id}/audience",
+ *     operationId="getEventAudience",
+ *     summary="Get an event's audience (linked groups)",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer", example=1)),
+ *     @OA\Response(response=200, description="Array of audience/group objects"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=404, description="Event or audience not found")
+ * )
+ */
 function getEventAudience(Request $request, Response $response, array $args): Response
 {
     $Audience = EventQuery::create()
@@ -133,6 +258,31 @@ function getEventAudience(Request $request, Response $response, array $args): Re
     return SlimUtils::renderStringJSON($response, $Audience->toJSON());
 }
 
+/**
+ * @OA\Post(
+ *     path="/events",
+ *     operationId="newEvent",
+ *     summary="Create a new event",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"Title","Type","Start","End","PinnedCalendars"},
+ *         @OA\Property(property="Title", type="string", example="Easter Service"),
+ *         @OA\Property(property="Type", type="integer", example=1, description="Event type ID from GET /events/types"),
+ *         @OA\Property(property="Desc", type="string", nullable=true),
+ *         @OA\Property(property="Start", type="string", format="date-time", example="2026-04-05T09:00:00"),
+ *         @OA\Property(property="End", type="string", format="date-time", example="2026-04-05T11:00:00"),
+ *         @OA\Property(property="Text", type="string", nullable=true, description="Rich text body (HTML allowed)"),
+ *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), example={1})
+ *     )),
+ *     @OA\Response(response=200, description="Event created",
+ *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
+ *     ),
+ *     @OA\Response(response=400, description="Invalid event type or calendar ID"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required")
+ * )
+ */
 function newEvent(Request $request, Response $response, array $args): Response
 {
     $input = $request->getParsedBody();
@@ -165,6 +315,30 @@ function newEvent(Request $request, Response $response, array $args): Response
     return SlimUtils::renderSuccessJSON($response);
 }
 
+/**
+ * @OA\Post(
+ *     path="/events/{id}",
+ *     operationId="updateEvent",
+ *     summary="Update an existing event",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer", example=1)),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         @OA\Property(property="Title", type="string"),
+ *         @OA\Property(property="Desc", type="string", nullable=true),
+ *         @OA\Property(property="Start", type="string", format="date-time"),
+ *         @OA\Property(property="End", type="string", format="date-time"),
+ *         @OA\Property(property="Text", type="string", nullable=true),
+ *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"))
+ *     )),
+ *     @OA\Response(response=200, description="Event updated",
+ *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required"),
+ *     @OA\Response(response=404, description="Event not found")
+ * )
+ */
 function updateEvent(Request $request, Response $response, array $args): Response
 {
     $input = $request->getParsedBody();
@@ -195,6 +369,27 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     return SlimUtils::renderSuccessJSON($response);
 }
 
+/**
+ * @OA\Post(
+ *     path="/events/{id}/time",
+ *     operationId="setEventTime",
+ *     summary="Update an event's start and end times",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer", example=1)),
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"startTime","endTime"},
+ *         @OA\Property(property="startTime", type="string", format="date-time", example="2026-04-05T09:00:00"),
+ *         @OA\Property(property="endTime", type="string", format="date-time", example="2026-04-05T11:00:00")
+ *     )),
+ *     @OA\Response(response=200, description="Time updated",
+ *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required"),
+ *     @OA\Response(response=404, description="Event not found")
+ * )
+ */
 function setEventTime(Request $request, Response $response, array $args): Response
 {
     $input = $request->getParsedBody();
@@ -240,6 +435,22 @@ function unusedSetEventAttendance(): void
     }
 }
 
+/**
+ * @OA\Delete(
+ *     path="/events/{id}",
+ *     operationId="deleteEvent",
+ *     summary="Delete an event",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer", example=1)),
+ *     @OA\Response(response=200, description="Event deleted",
+ *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required"),
+ *     @OA\Response(response=404, description="Event not found")
+ * )
+ */
 function deleteEvent(Request $request, Response $response, array $args): Response
 {
     $event = EventQuery::create()->findOneById($args['id']);

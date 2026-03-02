@@ -15,8 +15,37 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 $app->group('/api/database', function (RouteCollectorProxy $group): void {
 
+    /**
+     * @OA\Get(
+     *     path="/api/database/people/export/chmeetings",
+     *     summary="Export all people as a ChMeetings-compatible CSV file (Admin role required)",
+     *     tags={"Admin"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="CSV file download with person data in ChMeetings format")
+     * )
+     */
     $group->get('/people/export/chmeetings', 'exportChMeetings');
 
+    /**
+     * @OA\Delete(
+     *     path="/api/database/reset",
+     *     summary="Drop all database tables and views, clear uploaded images, and destroy the session (Admin role required)",
+     *     description="This operation is irreversible. After reset the session is destroyed and default credentials (admin/changeme) apply.",
+     *     tags={"Admin"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Database reset completed",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean"),
+     *             @OA\Property(property="msg", type="string"),
+     *             @OA\Property(property="dropped", type="integer"),
+     *             @OA\Property(property="defaultUsername", type="string"),
+     *             @OA\Property(property="defaultPassword", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(response=500, description="Database reset failed")
+     * )
+     */
     /**
      * Reset database - drops all tables and views
      * This operation is irreversible and ends the current session
@@ -30,7 +59,7 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
         try {
             // Disable foreign key checks to avoid constraint violations during drop
             $connection->exec('SET FOREIGN_KEY_CHECKS = 0;');
-            
+
             // Get all tables and views
             $statement = $connection->prepare('SHOW FULL TABLES;');
             $statement->execute();
@@ -40,14 +69,14 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
             foreach ($dbObjects as $dbObject) {
                 $objectName = $dbObject[0];
                 $objectType = $dbObject[1];
-                
+
                 try {
                     if ($objectType === 'VIEW') {
                         $dropSQL = "DROP VIEW `$objectName`;";
                     } else {
                         $dropSQL = "DROP TABLE `$objectName`;";
                     }
-                    
+
                     $connection->exec($dropSQL);
                     $droppedCount++;
                     $logger->debug("Dropped $objectType: $objectName");
@@ -89,7 +118,7 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
             $sessionName = session_name();
             $cookieParams = session_get_cookie_params();
             session_destroy();
-            
+
             // Build Set-Cookie header to expire the session cookie
             $expiredCookie = sprintf(
                 '%s=; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; path=%s%s%s',

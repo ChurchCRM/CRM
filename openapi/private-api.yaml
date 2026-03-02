@@ -1,0 +1,4257 @@
+openapi: 3.0.0
+info:
+  title: 'ChurchCRM Private API'
+  description: 'Authenticated REST API for ChurchCRM. All endpoints require an API key passed via the x-api-key header. Obtain your API key from Profile → API Key inside the application, or via POST /public/user/login. Many endpoints require specific role permissions beyond basic authentication.'
+  contact:
+    name: ChurchCRM
+    url: 'https://churchcrm.io'
+    email: info@churchcrm.io
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  version: 7.0.1
+servers:
+  -
+    url: '{scheme}://{host}/api'
+    description: 'Self-hosted ChurchCRM API (/api)'
+    variables:
+      scheme:
+        enum:
+          - https
+          - http
+        default: https
+        description: 'Protocol (https for production, http for local)'
+      host:
+        default: your-server.com
+        description: 'Your ChurchCRM server hostname'
+  -
+    url: '{scheme}://{host}/admin'
+    description: 'Self-hosted ChurchCRM Admin (/admin)'
+    variables:
+      scheme:
+        enum:
+          - https
+          - http
+        default: https
+        description: 'Protocol (https for production, http for local)'
+      host:
+        default: your-server.com
+        description: 'Your ChurchCRM server hostname'
+  -
+    url: '{scheme}://{host}'
+    description: 'Self-hosted ChurchCRM root (for /kiosk and /plugins)'
+    variables:
+      scheme:
+        enum:
+          - https
+          - http
+        default: https
+        description: 'Protocol (https for production, http for local)'
+      host:
+        default: your-server.com
+        description: 'Your ChurchCRM server hostname'
+  -
+    url: 'http://localhost/churchcrm/api'
+    description: 'Local development — API (/api)'
+  -
+    url: 'http://localhost/churchcrm/admin'
+    description: 'Local development — Admin (/admin)'
+  -
+    url: 'http://localhost/churchcrm'
+    description: 'Local development — root (for /kiosk and /plugins)'
+paths:
+  /api/database/people/export/chmeetings:
+    get:
+      tags:
+        - Admin
+      summary: 'Export all people as a ChMeetings-compatible CSV file (Admin role required)'
+      responses:
+        '200':
+          description: 'CSV file download with person data in ChMeetings format'
+      security:
+        -
+          ApiKeyAuth: []
+  /api/database/reset:
+    delete:
+      tags:
+        - Admin
+      summary: 'Drop all database tables and views, clear uploaded images, and destroy the session (Admin role required)'
+      description: 'This operation is irreversible. After reset the session is destroyed and default credentials (admin/changeme) apply.'
+      responses:
+        '200':
+          description: 'Database reset completed'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  msg: { type: string }
+                  dropped: { type: integer }
+                  defaultUsername: { type: string }
+                  defaultPassword: { type: string }
+                type: object
+        '403':
+          description: 'Admin role required'
+        '500':
+          description: 'Database reset failed'
+      security:
+        -
+          ApiKeyAuth: []
+  /api/demo/load:
+    post:
+      tags:
+        - Admin
+      summary: 'Import demo data into the application (Admin role required)'
+      description: 'Only available on fresh installations with exactly 1 person, unless the force flag is set.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                includeFinancial:
+                  type: boolean
+                  default: false
+                includeEvents:
+                  type: boolean
+                  default: false
+                includeSundaySchool:
+                  type: boolean
+                  default: false
+                force:
+                  description: 'Skip the fresh-install guard'
+                  type: boolean
+                  default: false
+              type: object
+      responses:
+        '200':
+          description: 'Demo data imported successfully'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  message: { type: string }
+                  imported: { type: object }
+                  warnings: { type: array, items: { type: string } }
+                  errors: { type: array, items: { type: string } }
+                  elapsedSeconds: { type: number }
+                type: object
+        '403':
+          description: 'Admin role required — or database is not a fresh install'
+        '500':
+          description: 'Demo data import failed'
+      security:
+        -
+          ApiKeyAuth: []
+  /api/orphaned-files:
+    get:
+      tags:
+        - Admin
+      summary: 'List orphaned files'
+      description: 'Returns files present on disk that are not part of the official ChurchCRM release.'
+      operationId: getOrphanedFiles
+      responses:
+        '200':
+          description: 'Orphaned file list'
+          content:
+            application/json:
+              schema:
+                properties:
+                  count: { type: integer }
+                  files: { type: array, items: { type: string } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /api/orphaned-files/delete-all:
+    post:
+      tags:
+        - Admin
+      summary: 'Delete all orphaned files'
+      operationId: deleteAllOrphanedFiles
+      responses:
+        '200':
+          description: 'Deletion results'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  deleted: { type: array, items: { type: string } }
+                  failed: { type: array, items: { type: string } }
+                  errors: { type: array, items: { type: string } }
+                  message: { type: string }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '500':
+          description: 'Error deleting files'
+      security:
+        -
+          ApiKeyAuth: []
+  /api/upgrade/download-latest-release:
+    get:
+      tags:
+        - Admin
+      summary: 'Download the latest release from GitHub'
+      operationId: downloadLatestRelease
+      responses:
+        '200':
+          description: 'Release file downloaded'
+          content:
+            application/json:
+              schema:
+                properties:
+                  fileName: { type: string }
+                  fullPath: { type: string }
+                  releaseNotes: { type: string }
+                  sha1: { type: string }
+                type: object
+        '400':
+          description: 'Error downloading release'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /api/upgrade/do-upgrade:
+    post:
+      tags:
+        - Admin
+      summary: 'Apply the system upgrade'
+      operationId: doUpgrade
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                fullPath:
+                  description: 'Full path to the upgrade file'
+                  type: string
+                sha1:
+                  description: 'SHA1 hash for verification'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Upgrade applied successfully'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '500':
+          description: 'Error applying upgrade'
+      security:
+        -
+          ApiKeyAuth: []
+  /api/upgrade/refresh-upgrade-info:
+    post:
+      tags:
+        - Admin
+      summary: 'Refresh upgrade information from GitHub'
+      description: 'Forces a fresh check of available updates from GitHub and updates session state.'
+      operationId: refreshUpgradeInfo
+      responses:
+        '200':
+          description: 'Upgrade information refreshed'
+          content:
+            application/json:
+              schema:
+                properties:
+                  data: { type: object }
+                  message: { type: string }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '500':
+          description: 'Error refreshing upgrade information'
+      security:
+        -
+          ApiKeyAuth: []
+  '/api/user/{userId}/password/reset':
+    post:
+      tags:
+        - Admin
+      summary: "Reset a user's password to a random value and email it to them (Admin role required)"
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Password reset and email sent'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/api/user/{userId}/disableTwoFactor':
+    post:
+      tags:
+        - Admin
+      summary: 'Disable two-factor authentication for a user (Admin role required)'
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: '2FA disabled for the user'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/api/user/{userId}/login/reset':
+    post:
+      tags:
+        - Admin
+      summary: 'Reset failed login counter and send unlock email (Admin role required)'
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Login counter reset and unlock email sent'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/api/user/{userId}/':
+    delete:
+      tags:
+        - Admin
+      summary: 'Delete a user account (Admin role required)'
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'User deleted'
+          content:
+            application/json:
+              schema:
+                properties:
+                  user: { description: 'Deleted username', type: string }
+                type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/api/user/{userId}/permissions':
+    get:
+      tags:
+        - Admin
+      summary: 'Get permission flags for a user (Admin role required)'
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'User permission data'
+          content:
+            application/json:
+              schema:
+                properties:
+                  user: { type: string }
+                  userId: { type: integer }
+                  addEvent: { type: boolean }
+                type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /background/timerjobs:
+    post:
+      tags:
+        - System
+      summary: 'Trigger background timer jobs (scheduled task runner)'
+      operationId: dc27d4ecd49d53f0f86cbcf381c25b8a
+      responses:
+        '200':
+          description: 'Timer jobs executed successfully'
+      security:
+        -
+          ApiKeyAuth: []
+  /systemcalendars:
+    get:
+      tags:
+        - Calendar
+      summary: 'List all system calendars'
+      description: 'Returns built-in system calendars (birthdays, anniversaries, events).'
+      operationId: getSystemCalendars
+      responses:
+        '200':
+          description: 'Array of system calendar objects'
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  '/systemcalendars/{id}/events':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get events from a system calendar'
+      operationId: getSystemCalendarEvents
+      parameters:
+        -
+          name: id
+          in: path
+          description: 'System calendar ID'
+          required: true
+          schema:
+            type: integer
+            example: 1
+        -
+          name: start
+          in: query
+          description: 'Filter start date (ISO 8601)'
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: end
+          in: query
+          description: 'Filter end date (ISO 8601)'
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: 'Array of event objects'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'System calendar not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/systemcalendars/{id}/events/{eventid}':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get a single event from a system calendar'
+      operationId: getSystemCalendarEventById
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: eventid
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Event object'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Calendar or event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/systemcalendars/{id}/fullcalendar':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get system calendar events in FullCalendar format'
+      operationId: getSystemCalendarFullCalendarEvents
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: start
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: end
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: 'FullCalendar-compatible event array'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Calendar or events not found'
+      security:
+        -
+          ApiKeyAuth: []
+  /calendars:
+    get:
+      tags:
+        - Calendar
+      summary: 'List user-created calendars'
+      description: 'Returns all user calendars. Optionally filter by ID using GET /calendars/{id}.'
+      operationId: getUserCalendars
+      responses:
+        '200':
+          description: 'Array of calendar objects'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'No calendars found'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Calendar
+      summary: 'Create a new calendar'
+      operationId: newCalendar
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - Name
+                - ForegroundColor
+                - BackgroundColor
+              properties:
+                Name:
+                  type: string
+                  example: 'Youth Group'
+                ForegroundColor:
+                  type: string
+                  example: '#ffffff'
+                BackgroundColor:
+                  type: string
+                  example: '#3788d8'
+              type: object
+      responses:
+        '200':
+          description: 'New calendar object'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/calendars/{id}':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get a specific user calendar'
+      operationId: getUserCalendarById
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Calendar object'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Calendar not found'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Calendar
+      summary: 'Delete a user calendar'
+      operationId: deleteUserCalendar
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Calendar deleted'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '400':
+          description: 'Missing or invalid calendar ID'
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  '/calendars/{id}/fullcalendar':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get user calendar events in FullCalendar format'
+      operationId: getUserCalendarFullCalendarEvents
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: start
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+        -
+          name: end
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: 'FullCalendar-compatible event array'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Calendar or events not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/calendars/{id}/events':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get events for a user calendar'
+      operationId: getUserCalendarEvents
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: start
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+        -
+          name: end
+          in: query
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: 'Array of event objects'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Calendar not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/calendars/{id}/NewAccessToken':
+    post:
+      tags:
+        - Calendar
+      summary: 'Generate a new public access token for a calendar'
+      operationId: newCalendarAccessToken
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Calendar object with new access token'
+        '400':
+          description: 'Missing or invalid calendar ID'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/calendars/{id}/AccessToken':
+    delete:
+      tags:
+        - Calendar
+      summary: 'Remove the public access token from a calendar'
+      operationId: deleteCalendarAccessToken
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Calendar object with access token cleared'
+        '400':
+          description: 'Missing or invalid calendar ID'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /calendar/events-counters:
+    get:
+      tags:
+        - Calendar
+      summary: "Get today's event counters for the dashboard menu badges"
+      description: 'Returns counts of upcoming birthdays, anniversaries, and events used to populate navigation badge counts.'
+      operationId: getEventsCounters
+      responses:
+        '200':
+          description: 'Counter object'
+          content:
+            application/json:
+              schema:
+                properties:
+                  birthdays: { type: integer, example: 2 }
+                  anniversaries: { type: integer, example: 1 }
+                  events: { type: integer, example: 3 }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  /events:
+    get:
+      tags:
+        - Calendar
+      summary: 'List all events'
+      description: 'Returns all calendar events with their linked group associations.'
+      operationId: getAllEvents
+      responses:
+        '200':
+          description: 'List of events'
+          content:
+            application/json:
+              schema:
+                properties:
+                  Events: { type: array, items: { properties: { Id: { type: integer, example: 1 }, Title: { type: string, example: 'Sunday Service' }, Desc: { type: string, nullable: true }, Start: { type: string, format: date-time }, End: { type: string, format: date-time }, Groups: { type: array, items: { properties: { Id: { type: integer }, Name: { type: string } }, type: object } } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'No events found'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Calendar
+      summary: 'Create a new event'
+      operationId: newEvent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - Title
+                - Type
+                - Start
+                - End
+                - PinnedCalendars
+              properties:
+                Title:
+                  type: string
+                  example: 'Easter Service'
+                Type:
+                  description: 'Event type ID from GET /events/types'
+                  type: integer
+                  example: 1
+                Desc:
+                  type: string
+                  nullable: true
+                Start:
+                  type: string
+                  format: date-time
+                  example: '2026-04-05T09:00:00'
+                End:
+                  type: string
+                  format: date-time
+                  example: '2026-04-05T11:00:00'
+                Text:
+                  description: 'Rich text body (HTML allowed)'
+                  type: string
+                  nullable: true
+                PinnedCalendars:
+                  type: array
+                  items: { type: integer }
+                  example: [1]
+              type: object
+      responses:
+        '200':
+          description: 'Event created'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '400':
+          description: 'Invalid event type or calendar ID'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /events/types:
+    get:
+      tags:
+        - Calendar
+      summary: 'List all event types'
+      operationId: getEventTypes
+      responses:
+        '200':
+          description: 'Ordered list of event types'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { Id: { type: integer, example: 1 }, Name: { type: string, example: 'Worship Service' } }
+                  type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'No event types found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get an event by ID'
+      operationId: getEvent
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Event object'
+          content:
+            application/json:
+              schema:
+                properties:
+                  Id: { type: integer }
+                  Title: { type: string }
+                  Start: { type: string, format: date-time }
+                  End: { type: string, format: date-time }
+                type: object
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Calendar
+      summary: 'Update an existing event'
+      operationId: updateEvent
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                Title:
+                  type: string
+                Desc:
+                  type: string
+                  nullable: true
+                Start:
+                  type: string
+                  format: date-time
+                End:
+                  type: string
+                  format: date-time
+                Text:
+                  type: string
+                  nullable: true
+                PinnedCalendars:
+                  type: array
+                  items: { type: integer }
+              type: object
+      responses:
+        '200':
+          description: 'Event updated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Calendar
+      summary: 'Delete an event'
+      operationId: deleteEvent
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Event deleted'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/primarycontact':
+    get:
+      tags:
+        - Calendar
+      summary: "Get an event's primary contact person"
+      operationId: getEventPrimaryContact
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Person object'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event or primary contact not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/secondarycontact':
+    get:
+      tags:
+        - Calendar
+      summary: "Get an event's secondary contact person"
+      operationId: getEventSecondaryContact
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Person object'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event or secondary contact not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/location':
+    get:
+      tags:
+        - Calendar
+      summary: "Get an event's location"
+      operationId: getEventLocation
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Location object'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event or location not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/audience':
+    get:
+      tags:
+        - Calendar
+      summary: "Get an event's audience (linked groups)"
+      operationId: getEventAudience
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Array of audience/group objects'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Event or audience not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/events/{id}/time':
+    post:
+      tags:
+        - Calendar
+      summary: "Update an event's start and end times"
+      operationId: setEventTime
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - startTime
+                - endTime
+              properties:
+                startTime:
+                  type: string
+                  format: date-time
+                  example: '2026-04-05T09:00:00'
+                endTime:
+                  type: string
+                  format: date-time
+                  example: '2026-04-05T11:00:00'
+              type: object
+      responses:
+        '200':
+          description: 'Time updated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'AddEvents role required'
+        '404':
+          description: 'Event not found'
+      security:
+        -
+          ApiKeyAuth: []
+  /cart/:
+    get:
+      tags:
+        - Cart
+      summary: 'Get the current session people cart contents'
+      responses:
+        '200':
+          description: 'Array of person IDs currently in the cart'
+          content:
+            application/json:
+              schema:
+                properties:
+                  PeopleCart: { type: array, items: { type: integer } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Cart
+      summary: 'Add persons, a family, or a group to the session cart'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                Persons:
+                  description: 'Array of person IDs to add'
+                  type: array
+                  items: { type: integer }
+                Family:
+                  description: 'Family ID to add all members from'
+                  type: integer
+                Group:
+                  description: 'Group ID to add all members from'
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Persons, family, or group added to cart'
+        '400':
+          description: 'Invalid or missing request data'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Cart
+      summary: 'Remove persons or a family from the cart, or empty the entire cart'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: 'Omit body to empty the entire cart'
+              properties:
+                Persons:
+                  description: 'Person IDs to remove'
+                  type: array
+                  items: { type: integer }
+                Family:
+                  description: 'Family ID — removes all family members from cart'
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Cart updated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  status: { type: string }
+                  message: { type: string }
+                type: object
+        '400':
+          description: 'Invalid request data'
+      security:
+        -
+          ApiKeyAuth: []
+  /cart/emptyToGroup:
+    post:
+      tags:
+        - Cart
+      summary: 'Move all persons in the cart into a group with a specified role'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - groupID
+                - groupRoleID
+              properties:
+                groupID:
+                  type: integer
+                groupRoleID:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Cart persons added to the group'
+        '400':
+          description: 'Invalid or missing groupID/groupRoleID'
+      security:
+        -
+          ApiKeyAuth: []
+  /cart/removeGroup:
+    post:
+      tags:
+        - Cart
+      summary: 'Remove all members of a group from the session cart'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - Group
+              properties:
+                Group:
+                  description: 'Group ID whose members should be removed from the cart'
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Group members removed from cart'
+        '400':
+          description: 'Invalid or missing Group ID'
+      security:
+        -
+          ApiKeyAuth: []
+  /deposits:
+    get:
+      tags:
+        - Finance
+      summary: 'Get all deposits (Finance role required)'
+      responses:
+        '200':
+          description: 'JSON array of all deposits'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Finance
+      summary: 'Create a new deposit (Finance role required)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - depositType
+              properties:
+                depositType:
+                  type: string
+                  enum: [Bank, CreditCard, BankDraft]
+                depositComment:
+                  type: string
+                depositDate:
+                  type: string
+                  format: date
+              type: object
+      responses:
+        '200':
+          description: 'Newly created deposit object'
+        '400':
+          description: 'Invalid or missing deposit type'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /deposits/dashboard:
+    get:
+      tags:
+        - Finance
+      summary: 'Get deposits from the last 90 days (Finance role required)'
+      responses:
+        '200':
+          description: 'Array of deposits within the last 90 days'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/deposits/{id}':
+    get:
+      tags:
+        - Finance
+      summary: 'Get a single deposit by ID (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Deposit object'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Finance
+      summary: 'Update an existing deposit (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                depositType:
+                  type: string
+                  enum: [Bank, CreditCard, BankDraft]
+                depositComment:
+                  type: string
+                depositDate:
+                  type: string
+                  format: date
+                depositClosed:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: 'Updated deposit object'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Finance
+      summary: 'Delete a deposit (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Deposit deleted successfully'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/deposits/{id}/ofx':
+    get:
+      tags:
+        - Finance
+      summary: 'Get OFX export data for a deposit (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'OFX content for the deposit'
+        '404':
+          description: 'Deposit not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/deposits/{id}/pdf':
+    get:
+      tags:
+        - Finance
+      summary: 'Generate and stream a PDF report for a deposit (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'PDF generated successfully'
+        '404':
+          description: 'Deposit not found or has no payments'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/deposits/{id}/csv':
+    get:
+      tags:
+        - Finance
+      summary: 'Download a CSV export of payments for a deposit (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'CSV file attachment with pledge/payment data'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/deposits/{id}/pledges':
+    get:
+      tags:
+        - Finance
+      summary: 'Get pledge items for a deposit (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Pledge items associated with the deposit'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/deposits/{id}/payments':
+    get:
+      tags:
+        - Finance
+      summary: 'Get payment items for a deposit (Finance role required)'
+      parameters:
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Payment items associated with the deposit'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /payments/:
+    get:
+      tags:
+        - Finance
+      summary: 'Get all payments (Finance role required)'
+      responses:
+        '200':
+          description: 'Array of payment records'
+          content:
+            application/json:
+              schema:
+                properties:
+                  payments: { type: array, items: { type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Finance
+      summary: 'Submit a new pledge or payment (Finance role required)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: 'Pledge or payment fields (FamilyId, FundId, Amount, Date, DepositId, etc.)'
+      responses:
+        '200':
+          description: 'Created pledge or payment record'
+          content:
+            application/json:
+              schema:
+                properties:
+                  payment: { type: object }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/payments/family/{familyId}/list':
+    get:
+      tags:
+        - Finance
+      summary: 'Get pledge and payment history for a family (Finance role required)'
+      description: "Results are filtered by the current user's ShowSince date and ShowPayments/ShowPledges preferences."
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Pledge/payment rows for the family'
+          content:
+            application/json:
+              schema:
+                properties:
+                  data: { type: array, items: { properties: { FormattedFY: { type: string }, Amount: { type: number }, PledgeOrPayment: { type: string }, Date: { type: string, format: date }, Fund: { type: string } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/payments/{groupKey}':
+    delete:
+      tags:
+        - Finance
+      summary: 'Delete a payment by group key (Finance role required)'
+      parameters:
+        -
+          name: groupKey
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Payment deleted successfully'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /geocoder/address:
+    post:
+      tags:
+        - Map
+      summary: 'Geocode an address — returns latitude and longitude'
+      operationId: 2598abc84c9af84ffe13f20625aa7bfb
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                address:
+                  description: 'Full address string to geocode'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Latitude and longitude for the provided address'
+          content:
+            application/json:
+              schema:
+                properties:
+                  Latitude: { type: number, format: float }
+                  Longitude: { type: number, format: float }
+                type: object
+        '400':
+          description: 'Empty or invalid request body'
+      security:
+        -
+          ApiKeyAuth: []
+  /map/families:
+    get:
+      tags:
+        - Map
+      summary: 'Get geocoded map items — families, group members, or cart persons'
+      operationId: b18edb4f383d3cf32ec4a82dd84b5a9e
+      parameters:
+        -
+          name: groupId
+          in: query
+          description: 'When omitted or null: all active geocoded families. When 0: persons in the session cart. When > 0: members of that group.'
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Array of map items'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, type: { type: string, enum: [family, person] }, name: { type: string }, salutation: { type: string }, address: { type: string }, latitude: { type: number, format: float }, longitude: { type: number, format: float }, classificationId: { type: integer }, profileUrl: { type: string } }
+                  type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /families/familiesInCart:
+    get:
+      tags:
+        - Families
+      summary: 'Get families whose all members are in the session cart'
+      responses:
+        '200':
+          description: 'List of family IDs where every member is in the cart'
+          content:
+            application/json:
+              schema:
+                properties:
+                  familiesInCart: { type: array, items: { type: integer } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /families/email/without:
+    get:
+      tags:
+        - Families
+      summary: 'Get families with no email address on record'
+      responses:
+        '200':
+          description: 'Families without any email address'
+          content:
+            application/json:
+              schema:
+                properties:
+                  count: { type: integer }
+                  families: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/families/search/{query}':
+    get:
+      tags:
+        - Families
+      summary: 'Search families by name (max 15 results)'
+      parameters:
+        -
+          name: query
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Matching families'
+          content:
+            application/json:
+              schema:
+                properties:
+                  Families: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /families/self-register:
+    get:
+      tags:
+        - Families
+      summary: 'Get the last 100 self-registered families'
+      responses:
+        '200':
+          description: 'Self-registered families ordered by date entered descending'
+          content:
+            application/json:
+              schema:
+                properties:
+                  families: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /families/self-verify:
+    get:
+      tags:
+        - Families
+      summary: 'Get the last 100 families with self-verification notes'
+      responses:
+        '200':
+          description: 'Families that submitted self-verification notes'
+          content:
+            application/json:
+              schema:
+                properties:
+                  families: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /families/pending-self-verify:
+    get:
+      tags:
+        - Families
+      summary: 'Get families with pending (unused, non-expired) self-verify tokens'
+      responses:
+        '200':
+          description: 'Pending verification tokens with family names'
+          content:
+            application/json:
+              schema:
+                properties:
+                  families: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/families/byCheckNumber/{scanString}':
+    get:
+      tags:
+        - Families
+      summary: 'Find a family by check scan string'
+      parameters:
+        -
+          name: scanString
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Family member matched by check scan string'
+      security:
+        -
+          ApiKeyAuth: []
+  /families/anniversaries:
+    get:
+      tags:
+        - Families
+      summary: 'Get families with wedding anniversaries within 7 days of today'
+      operationId: 12ab7668a38d4b9f9a09f2a6314fa41b
+      responses:
+        '200':
+          description: 'Families with upcoming/recent anniversaries (±7 days)'
+          content:
+            application/json:
+              schema:
+                properties:
+                  families: { type: array, items: { properties: { FamilyId: { type: integer }, Name: { type: string }, WeddingDate: { type: string } }, type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /families/latest:
+    get:
+      tags:
+        - Families
+      summary: 'Get the 10 most recently added families'
+      operationId: 78e3ca7d537e14b376d9603100d97ae1
+      responses:
+        '200':
+          description: '10 latest families by date entered'
+          content:
+            application/json:
+              schema:
+                properties:
+                  families: { type: array, items: { properties: { FamilyId: { type: integer }, Name: { type: string }, Created: { type: string, format: date-time } }, type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /families/updated:
+    get:
+      tags:
+        - Families
+      summary: 'Get the 10 most recently updated families'
+      operationId: 4c21568cb8dd4b4629d379ca1bd41894
+      responses:
+        '200':
+          description: '10 families ordered by last edit date descending'
+          content:
+            application/json:
+              schema:
+                properties:
+                  families: { type: array, items: { properties: { FamilyId: { type: integer }, Name: { type: string }, LastEdited: { type: string, format: date-time } }, type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/photo':
+    get:
+      tags:
+        - Families
+      summary: 'Get uploaded photo for a family (binary image)'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Binary image data'
+        '404':
+          description: 'No uploaded photo exists for this family'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Families
+      summary: 'Upload a family photo from base64 data (EditRecords role required)'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                imgBase64:
+                  description: 'Base64-encoded image data'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Photo uploaded successfully'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  hasPhoto: { type: boolean }
+                type: object
+        '400':
+          description: 'Failed to upload photo'
+        '403':
+          description: 'EditRecords role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Families
+      summary: "Delete a family's uploaded photo (EditRecords role required)"
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Photo deletion result'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                type: object
+        '403':
+          description: 'EditRecords role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/avatar':
+    get:
+      tags:
+        - Families
+      summary: 'Get avatar info JSON for a family (for client-side rendering)'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Avatar info object (type, url, initials, color, etc.)'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}':
+    get:
+      tags:
+        - Families
+      summary: 'Get a family object by ID'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Family object'
+        '404':
+          description: 'Family not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/geolocation':
+    get:
+      tags:
+        - Families
+      summary: 'Get geolocation and driving distance from church for a family'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Latitude, longitude, and driving distance info from church address'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/nav':
+    get:
+      tags:
+        - Families
+      summary: 'Get previous and next family IDs for navigation'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Navigation IDs'
+          content:
+            application/json:
+              schema:
+                properties:
+                  PreFamilyId: { type: integer }
+                  NextFamilyId: { type: integer }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/verify':
+    post:
+      tags:
+        - Families
+      summary: 'Send a verification email to the family'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Verification email sent successfully'
+        '500':
+          description: 'Error sending email'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/verify/url':
+    get:
+      tags:
+        - Families
+      summary: 'Generate a new family self-verify URL token'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Verification URL'
+          content:
+            application/json:
+              schema:
+                properties:
+                  url: { type: string, format: uri }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/verify/now':
+    post:
+      tags:
+        - Families
+      summary: 'Mark a family as verified immediately'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Family marked as verified'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/activate/{status}':
+    post:
+      tags:
+        - Families
+      summary: 'Activate or deactivate a family'
+      description: 'Pass status=true to activate or status=false to deactivate the family.'
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: status
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
+      responses:
+        '200':
+          description: 'Family activation status updated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                type: object
+        '400':
+          description: 'Invalid status value'
+      security:
+        -
+          ApiKeyAuth: []
+  /groups/:
+    get:
+      tags:
+        - Groups
+      summary: 'List all groups'
+      responses:
+        '200':
+          description: 'Array of all groups'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Groups
+      summary: 'Create a new group (ManageGroupRole role required)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - groupName
+              properties:
+                groupName:
+                  type: string
+                description:
+                  type: string
+                isSundaySchool:
+                  type: boolean
+                groupType:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Newly created group object'
+        '403':
+          description: 'ManageGroupRole role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /groups/calendars:
+    get:
+      tags:
+        - Groups
+      summary: 'Get groups formatted for calendar display'
+      responses:
+        '200':
+          description: 'Groups with type, groupID, and name fields'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { type: { type: string, example: group }, groupID: { type: integer }, name: { type: string } }
+                  type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /groups/groupsInCart:
+    get:
+      tags:
+        - Groups
+      summary: 'Get IDs of groups whose all members are in the session cart'
+      responses:
+        '200':
+          description: 'Group IDs where every member is in the cart'
+          content:
+            application/json:
+              schema:
+                properties:
+                  groupsInCart: { type: array, items: { type: integer } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}':
+    get:
+      tags:
+        - Groups
+      summary: 'Get a single group by ID'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Group object'
+        '404':
+          description: 'Group not found'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Groups
+      summary: 'Update group name, type, and description (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                groupName:
+                  type: string
+                groupType:
+                  type: integer
+                description:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Updated group object'
+        '403':
+          description: 'ManageGroupRole role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Groups
+      summary: 'Delete a group (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Group deleted successfully'
+        '403':
+          description: 'ManageGroupRole role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/cartStatus':
+    get:
+      tags:
+        - Groups
+      summary: 'Check whether all members of a group are in the session cart'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Cart status for the group'
+          content:
+            application/json:
+              schema:
+                properties:
+                  isInCart: { type: boolean }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/members':
+    get:
+      tags:
+        - Groups
+      summary: 'Get members of a group with family address info'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Group members enriched with family address fields'
+          content:
+            application/json:
+              schema:
+                properties:
+                  Person2group2roleP2g2rs: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/events':
+    get:
+      tags:
+        - Groups
+      summary: 'Get group member-role memberships (events/roles per member)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Person-to-group-to-role membership records'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/roles':
+    get:
+      tags:
+        - Groups
+      summary: 'Get the role options for a group'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Array of role list options for the group'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Groups
+      summary: 'Add a new role to a group (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                roleName:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'New role created'
+        '403':
+          description: 'ManageGroupRole role required'
+        '500':
+          description: 'Failed to add role'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/removeperson/{userID}':
+    delete:
+      tags:
+        - Groups
+      summary: 'Remove a person from a group (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: userID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Person removed from group'
+        '403':
+          description: 'ManageGroupRole role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/addperson/{userID}':
+    post:
+      tags:
+        - Groups
+      summary: 'Add a person to a group (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: userID
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - PersonID
+              properties:
+                PersonID:
+                  type: integer
+                RoleID:
+                  description: 'Defaults to group default role if omitted'
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Updated membership records for the person in the group'
+        '403':
+          description: 'ManageGroupRole role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/userRole/{userID}':
+    post:
+      tags:
+        - Groups
+      summary: "Update a group member's role (ManageGroupRole role required)"
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: userID
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                roleID:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Updated membership object'
+        '403':
+          description: 'ManageGroupRole role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/roles/{roleID}':
+    post:
+      tags:
+        - Groups
+      summary: 'Update a group role name or sort order (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: roleID
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                groupRoleName:
+                  description: 'New role name'
+                  type: string
+                groupRoleOrder:
+                  description: 'New sort order'
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Role updated successfully'
+        '403':
+          description: 'ManageGroupRole role required'
+        '500':
+          description: 'Failed to update role'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Groups
+      summary: 'Delete a group role (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: roleID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Role deleted successfully'
+        '403':
+          description: 'ManageGroupRole role required'
+        '500':
+          description: 'Failed to delete role'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/defaultRole':
+    post:
+      tags:
+        - Groups
+      summary: 'Set the default role for a group (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                roleID:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Default role updated'
+        '403':
+          description: 'ManageGroupRole role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/setGroupSpecificPropertyStatus':
+    post:
+      tags:
+        - Groups
+      summary: 'Enable or disable group-specific properties (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                GroupSpecificPropertyStatus:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: 'Property status updated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  status: { type: string }
+                type: object
+        '403':
+          description: 'ManageGroupRole role required'
+        '500':
+          description: 'Failed to update properties'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/settings/active/{value}':
+    post:
+      tags:
+        - Groups
+      summary: "Set a group's active status (ManageGroupRole role required)"
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: value
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
+      responses:
+        '200':
+          description: 'Active status updated'
+        '403':
+          description: 'ManageGroupRole role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/settings/email/export/{value}':
+    post:
+      tags:
+        - Groups
+      summary: 'Set the email export flag for a group (ManageGroupRole role required)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: value
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - 'true'
+              - 'false'
+      responses:
+        '200':
+          description: 'Email export flag updated'
+        '403':
+          description: 'ManageGroupRole role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}/photo':
+    get:
+      tags:
+        - People
+      summary: "Get a person's uploaded photo"
+      description: 'Returns the binary photo image. Returns 404 if no photo has been uploaded (use avatar endpoint for fallback).'
+      operationId: getPersonPhoto
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: 'Photo image'
+          content:
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'No uploaded photo for this person'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - People
+      summary: "Upload a person's photo (base64)"
+      operationId: uploadPersonPhoto
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - imgBase64
+              properties:
+                imgBase64:
+                  description: 'Base64-encoded image data'
+                  type: string
+                  example: 'data:image/jpeg;base64,/9j/...'
+              type: object
+      responses:
+        '200':
+          description: 'Photo uploaded'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  hasPhoto: { type: boolean, example: true }
+                type: object
+        '400':
+          description: 'Upload failed'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'EditRecords role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - People
+      summary: "Delete a person's uploaded photo"
+      operationId: deletePersonPhoto
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: 'Photo deleted'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'DeleteRecords role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}/avatar':
+    get:
+      tags:
+        - People
+      summary: "Get a person's avatar info (initials, gravatar)"
+      description: 'Returns JSON with avatar metadata for client-side rendering. Always returns a result even if no photo is uploaded.'
+      operationId: getPersonAvatar
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: 'Avatar info'
+          content:
+            application/json:
+              schema:
+                properties:
+                  hasPhoto: { type: boolean }
+                  initials: { type: string, example: JS }
+                  gravatarUrl: { type: string, nullable: true }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}':
+    get:
+      tags:
+        - People
+      summary: 'Get a person by ID'
+      operationId: getPerson
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: 'Person object (Propel JSON export)'
+        '401':
+          description: Unauthorized
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - People
+      summary: 'Delete a person'
+      operationId: deletePerson
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: 'Person deleted'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'DeleteRecords role required, or cannot delete yourself'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}/addToCart':
+    post:
+      tags:
+        - People
+      summary: 'Add a person to the selection cart'
+      operationId: addPersonToCart
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: 'Added to cart'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}/role/{roleId}':
+    post:
+      tags:
+        - People
+      summary: "Set a person's family role"
+      operationId: setPersonRole
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+        -
+          name: roleId
+          in: path
+          description: 'Role ID from GET /persons/roles'
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Role updated'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  msg: { type: string, example: 'The role is successfully assigned.' }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'EditRecords role required'
+        '404':
+          description: 'Person or role not found'
+        '500':
+          description: 'Failed to save role'
+      security:
+        -
+          ApiKeyAuth: []
+  '/persons/search/{query}':
+    get:
+      tags:
+        - People
+      summary: 'Search persons by name or email'
+      operationId: searchPersons
+      parameters:
+        -
+          name: query
+          in: path
+          description: 'Search term (name or email)'
+          required: true
+          schema:
+            type: string
+            example: John
+      responses:
+        '200':
+          description: 'Array of matching persons (max 15)'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, objid: { type: integer }, text: { type: string, example: 'John Smith' }, uri: { type: string, example: '/PersonView.php?PersonID=42' } }
+                  type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/self-register:
+    get:
+      tags:
+        - People
+      summary: 'List recently self-registered persons'
+      description: 'Returns up to 100 persons who registered via the public self-registration form, newest first.'
+      operationId: getSelfRegisteredPersons
+      responses:
+        '200':
+          description: 'List of self-registered persons'
+          content:
+            application/json:
+              schema:
+                properties:
+                  people: { type: array, items: { type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/roles:
+    get:
+      tags:
+        - People
+      summary: 'List all family roles'
+      description: 'Returns all family role options (e.g. Head of Household, Spouse, Child) used when registering persons.'
+      operationId: getAllRoles
+      responses:
+        '200':
+          description: 'Array of role objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { OptionId: { type: integer, example: 1 }, OptionName: { type: string, example: 'Head of Household' } }
+                  type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/duplicate/emails:
+    get:
+      tags:
+        - People
+      summary: 'Find duplicate email addresses across persons and families'
+      operationId: getEmailDuplicates
+      responses:
+        '200':
+          description: 'Emails used by more than one record'
+          content:
+            application/json:
+              schema:
+                properties:
+                  emails: { type: array, items: { properties: { email: { type: string, format: email }, people: { type: array, items: { properties: { id: { type: integer }, name: { type: string } }, type: object } }, families: { type: array, items: { properties: { id: { type: integer }, name: { type: string } }, type: object } } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/latest:
+    get:
+      tags:
+        - People
+      summary: 'List the 10 most recently added persons'
+      operationId: getLatestPersons
+      responses:
+        '200':
+          description: 'Recent persons with family info'
+          content:
+            application/json:
+              schema:
+                properties:
+                  people: { type: array, items: { properties: { PersonId: { type: integer }, FirstName: { type: string }, LastName: { type: string }, Email: { type: string }, FamilyId: { type: integer, nullable: true }, Created: { type: string, format: date-time } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/updated:
+    get:
+      tags:
+        - People
+      summary: 'List the 10 most recently edited persons'
+      operationId: getUpdatedPersons
+      responses:
+        '200':
+          description: 'Recently updated persons'
+          content:
+            application/json:
+              schema:
+                properties:
+                  people: { type: array, items: { properties: { PersonId: { type: integer }, FirstName: { type: string }, LastName: { type: string }, LastEdited: { type: string, format: date-time } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/birthday:
+    get:
+      tags:
+        - People
+      summary: 'List persons with birthdays in a ±7-day window around today'
+      operationId: getPersonsWithBirthdays
+      responses:
+        '200':
+          description: 'Persons with upcoming or recent birthdays, sorted by days until birthday'
+          content:
+            application/json:
+              schema:
+                properties:
+                  people: { type: array, items: { properties: { PersonId: { type: integer }, FirstName: { type: string }, LastName: { type: string }, Age: { type: integer, nullable: true }, DaysUntil: { description: 'Negative = past, 0 = today, positive = upcoming', type: integer }, Birthday: { type: string, example: 'March 15' } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+      security:
+        -
+          ApiKeyAuth: []
+  /people/properties/person:
+    get:
+      tags:
+        - Properties
+      summary: 'Get all available person property definitions'
+      operationId: c892797ab05f9f276d27a66e69893fd1
+      responses:
+        '200':
+          description: 'Array of person property definitions'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/people/properties/person/{personId}/{propertyId}':
+    post:
+      tags:
+        - Properties
+      summary: 'Add or update a property on a person (MenuOptions role required)'
+      operationId: 4664af36def75fb0d3fbdcdf49d21585
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  description: 'Property value (required only when property has a prompt)'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Property assigned successfully'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Properties
+      summary: 'Remove a property from a person (MenuOptions role required)'
+      operationId: 2af3cf88d42ba4c25b65401397f6568c
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property removed successfully'
+        '404':
+          description: 'Record not found'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /people/properties/family:
+    get:
+      tags:
+        - Properties
+      summary: 'Get all available family property definitions'
+      operationId: 2039dca67fb8dcd91b09c60b78094b20
+      responses:
+        '200':
+          description: 'Array of family property definitions'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/people/properties/person/{personId}':
+    get:
+      tags:
+        - Properties
+      summary: 'Get properties assigned to a specific person'
+      operationId: 7ef25b63c1711b96df7e22cd35c85d6f
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Array of assigned property records with edit/delete permissions'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, name: { type: string }, value: { type: string }, allowEdit: { type: boolean }, allowDelete: { type: boolean } }
+                  type: object
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/people/properties/family/{familyId}':
+    get:
+      tags:
+        - Properties
+      summary: 'Get properties assigned to a specific family'
+      operationId: 8fd4e3be5f9790c5e8e592435e549840
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Array of assigned property records with edit/delete permissions'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, name: { type: string }, value: { type: string }, allowEdit: { type: boolean }, allowDelete: { type: boolean } }
+                  type: object
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/people/properties/family/{familyId}/{propertyId}':
+    post:
+      tags:
+        - Properties
+      summary: 'Add or update a property on a family (MenuOptions role required)'
+      operationId: b52f1f13fae3920442a4977268aa2222
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  description: 'Property value (required only when property has a prompt)'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Property assigned successfully'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Properties
+      summary: 'Remove a property from a family (MenuOptions role required)'
+      operationId: 290de930428c9af8ddb84089d075d2fe
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property removed successfully'
+        '404':
+          description: 'Record not found'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/search/{query}':
+    get:
+      tags:
+        - Search
+      summary: 'Search persons, families, groups, deposits, payments, and calendar events'
+      parameters:
+        -
+          name: query
+          in: path
+          description: 'Search term to match against all supported entity types'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Array of search result provider groups, each containing a type label and matched results'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { results: { type: array, items: { type: object } } }
+                  type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /system/custom-fields/person:
+    get:
+      tags:
+        - System
+      summary: 'Get custom person fields filtered by type ID (Admin role required)'
+      operationId: 962bf4374c22a8090d2a6dd90efc0c4c
+      parameters:
+        -
+          name: typeId
+          in: query
+          description: 'Person type ID to filter custom fields by'
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Array of id/value pairs for matching custom fields'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, value: { type: string } }
+                  type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /database/backup:
+    post:
+      tags:
+        - System
+      summary: 'Create a local database backup (Admin role required)'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                BackupType:
+                  description: 'Backup type identifier'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Backup job result with file info'
+        '400':
+          description: 'Backup failed'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /database/backupRemote:
+    post:
+      tags:
+        - System
+      summary: 'Trigger a remote (WebDAV) backup via the External Backup plugin (Admin role required)'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                BackupType:
+                  description: 'Backup type (defaults to full backup)'
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Remote backup result'
+          content:
+            application/json:
+              schema:
+                properties:
+                  copyStatus: { type: object }
+                type: object
+        '400':
+          description: 'Plugin not enabled or not configured'
+        '403':
+          description: 'Admin role required'
+        '500':
+          description: 'Remote backup failed'
+      security:
+        -
+          ApiKeyAuth: []
+  /database/restore:
+    post:
+      tags:
+        - System
+      summary: 'Restore the database from a backup file (Admin role required)'
+      responses:
+        '200':
+          description: 'Restore job result'
+        '500':
+          description: 'Database restore failed'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/database/download/{filename}':
+    get:
+      tags:
+        - System
+      summary: 'Download a backup file by name (Admin role required)'
+      parameters:
+        -
+          name: filename
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Backup file download stream'
+        '400':
+          description: 'Download failed'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /system/debug/urls:
+    get:
+      tags:
+        - System
+      summary: 'Get internal system URL paths for debugging (Admin role required)'
+      operationId: 9589fd11a6970c70598c60b8553cfe5e
+      responses:
+        '200':
+          description: 'System URL paths'
+          content:
+            application/json:
+              schema:
+                properties:
+                  RootPath: { type: string }
+                  ImagesRoot: { type: string }
+                  DocumentRoot: { type: string }
+                  SupportURL: { type: string }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /issues:
+    post:
+      tags:
+        - System
+      summary: 'Generate a GitHub issue body pre-filled with system diagnostics'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                pageName:
+                  type: string
+                screenSize:
+                  properties: { height: { type: integer }, width: { type: integer } }
+                  type: object
+                windowSize:
+                  properties: { height: { type: integer }, width: { type: integer } }
+                  type: object
+                pageSize:
+                  properties: { height: { type: integer }, width: { type: integer } }
+                  type: object
+              type: object
+      responses:
+        '200':
+          description: 'Pre-formatted issue body string for GitHub'
+          content:
+            application/json:
+              schema:
+                properties:
+                  issueBody: { type: string }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /locale/database/terms:
+    get:
+      tags:
+        - System
+      summary: 'Get all translatable terms stored in the database (Admin role required)'
+      description: 'Returns distinct tooltip strings, query parameter options, report names/descriptions, and query parameter names/descriptions for i18n extraction.'
+      operationId: 039f967a16c76a56ac2a2042f40158be
+      responses:
+        '200':
+          description: 'Array of translatable term strings'
+          content:
+            application/json:
+              schema:
+                properties:
+                  terms: { type: array, items: { type: string } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /system/notification:
+    get:
+      tags:
+        - System
+      summary: 'Get current UI notifications (update alerts, system messages)'
+      operationId: d67011aae959ed9fd77c417c9bd9bd09
+      responses:
+        '200':
+          description: 'Array of UI notification objects'
+          content:
+            application/json:
+              schema:
+                properties:
+                  notifications: { type: array, items: { properties: { title: { type: string }, icon: { type: string }, type: { type: string }, message: { type: string }, link: { type: string } }, type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /user/current/refresh2fasecret:
+    post:
+      tags:
+        - 2FA
+      summary: 'Begin 2FA enrollment — provision a new TOTP secret and return a QR code data URI'
+      operationId: 4ef4967f921432b697d4e6b10f192e1e
+      responses:
+        '200':
+          description: 'QR code data URI for TOTP enrollment'
+          content:
+            application/json:
+              schema:
+                properties:
+                  TwoFAQRCodeDataUri: { type: string }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /user/current/refresh2farecoverycodes:
+    post:
+      tags:
+        - 2FA
+      summary: 'Generate new 2FA recovery codes for the current user'
+      operationId: 3eecff3759ce549b52249d1b862f24eb
+      responses:
+        '200':
+          description: 'Array of new recovery codes'
+          content:
+            application/json:
+              schema:
+                properties:
+                  TwoFARecoveryCodes: { type: array, items: { type: string } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /user/current/remove2fasecret:
+    post:
+      tags:
+        - 2FA
+      summary: 'Remove the 2FA secret from the current user (disables 2FA)'
+      operationId: 082cadb8d10369ca71a0ab95de48ef55
+      responses:
+        '200':
+          description: '2FA secret removed'
+      security:
+        -
+          ApiKeyAuth: []
+  /user/current/get2faqrcode:
+    get:
+      tags:
+        - 2FA
+      summary: "Get the current user's 2FA QR code as a PNG image"
+      operationId: 6487c0abc311e2f3adc531da5bb8a3c0
+      responses:
+        '200':
+          description: 'PNG image of the 2FA QR code'
+          content:
+            image/png: {  }
+      security:
+        -
+          ApiKeyAuth: []
+  /user/current/test2FAEnrollmentCode:
+    post:
+      tags:
+        - 2FA
+      summary: 'Validate a TOTP enrollment code to complete 2FA setup'
+      operationId: a7d29c600e46bbd933e54a003c030108
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                enrollmentCode:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Whether the enrollment code is valid'
+          content:
+            application/json:
+              schema:
+                properties:
+                  IsEnrollmentCodeValid: { type: boolean }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  /user/current/2fa-status:
+    get:
+      tags:
+        - 2FA
+      summary: 'Get the 2FA enabled status for the current user'
+      operationId: 79f52733691250300717c3ca5137c616
+      responses:
+        '200':
+          description: '2FA enabled status'
+          content:
+            application/json:
+              schema:
+                properties:
+                  IsEnabled: { type: boolean }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/user/{userId}/setting/{settingName}':
+    get:
+      tags:
+        - Users
+      summary: 'Get a named setting value for a user'
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: settingName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Setting value'
+          content:
+            application/json:
+              schema:
+                properties:
+                  value: { type: string }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Users
+      summary: 'Set a named setting value for a user'
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: settingName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Updated setting value'
+          content:
+            application/json:
+              schema:
+                properties:
+                  value: { type: string }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/user/{userId}/apikey/regen':
+    post:
+      tags:
+        - Users
+      summary: 'Regenerate the API key for a user'
+      operationId: 9c5b7f81e23978171e18bfaa621d3afb
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'New API key'
+          content:
+            application/json:
+              schema:
+                properties:
+                  apiKey: { type: string }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/user/{userId}/config/{key}':
+    post:
+      tags:
+        - Users
+      summary: 'Update a named config string for a user'
+      operationId: 59e86f576bf97599899bf3a42c85d068
+      parameters:
+        -
+          name: userId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Updated config key/value pair'
+      security:
+        -
+          ApiKeyAuth: []
+  /kiosk/api/devices:
+    get:
+      tags:
+        - Kiosk
+      summary: 'List all kiosk devices'
+      operationId: getKioskDevices
+      responses:
+        '200':
+          description: 'Kiosk device list'
+          content:
+            application/json:
+              schema:
+                properties:
+                  KioskDevices: { type: array, items: { properties: { Id: { type: integer }, Name: { type: string }, Accepted: { type: boolean } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /kiosk/api/allowRegistration:
+    post:
+      tags:
+        - Kiosk
+      summary: 'Open a 30-second kiosk registration window'
+      description: 'Allows a new kiosk device to register itself within the next 30 seconds.'
+      operationId: allowKioskRegistration
+      responses:
+        '200':
+          description: 'Registration window opened'
+          content:
+            application/json:
+              schema:
+                properties:
+                  visibleUntil: { type: string, format: date-time }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/kiosk/api/devices/{kioskId}/reload':
+    post:
+      tags:
+        - Kiosk
+      summary: 'Reload a kiosk device'
+      operationId: reloadKiosk
+      parameters:
+        -
+          name: kioskId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Kiosk reload triggered'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Kiosk not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/kiosk/api/devices/{kioskId}/identify':
+    post:
+      tags:
+        - Kiosk
+      summary: 'Trigger identification signal on a kiosk device'
+      operationId: identifyKiosk
+      parameters:
+        -
+          name: kioskId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Identification triggered'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Kiosk not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/kiosk/api/devices/{kioskId}/accept':
+    post:
+      tags:
+        - Kiosk
+      summary: 'Accept a pending kiosk device'
+      operationId: acceptKiosk
+      parameters:
+        -
+          name: kioskId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Kiosk accepted'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Kiosk not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/kiosk/api/devices/{kioskId}/assignment':
+    post:
+      tags:
+        - Kiosk
+      summary: 'Set kiosk event assignment'
+      operationId: setKioskAssignment
+      parameters:
+        -
+          name: kioskId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                assignmentType:
+                  description: 'Assignment type ID'
+                  type: integer
+                eventId:
+                  description: 'Event ID to assign (null to unassign)'
+                  type: integer
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'Assignment updated'
+        '400':
+          description: 'Invalid assignment type'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Kiosk not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/kiosk/api/devices/{kioskId}':
+    delete:
+      tags:
+        - Kiosk
+      summary: 'Delete a kiosk device'
+      operationId: deleteKiosk
+      parameters:
+        -
+          name: kioskId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Kiosk deleted'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Kiosk not found'
+        '500':
+          description: 'Error deleting kiosk'
+      security:
+        -
+          ApiKeyAuth: []
+  /plugins/api/plugins:
+    get:
+      tags:
+        - Plugins
+      summary: 'List all available plugins'
+      operationId: listPlugins
+      responses:
+        '200':
+          description: 'Plugin list'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  data: { type: array, items: { type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '500':
+          description: 'Error listing plugins'
+      security:
+        -
+          ApiKeyAuth: []
+  '/plugins/api/plugins/{pluginId}':
+    get:
+      tags:
+        - Plugins
+      summary: 'Get plugin details'
+      operationId: getPlugin
+      parameters:
+        -
+          name: pluginId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Plugin details'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  data: { properties: { metadata: { type: object }, isActive: { type: boolean }, isConfigured: { type: boolean } }, type: object }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Plugin not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/plugins/api/plugins/{pluginId}/enable':
+    post:
+      tags:
+        - Plugins
+      summary: 'Enable a plugin'
+      operationId: enablePlugin
+      parameters:
+        -
+          name: pluginId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Plugin enabled'
+        '400':
+          description: 'Plugin cannot be enabled (dependency or version issue)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '500':
+          description: 'Error enabling plugin'
+      security:
+        -
+          ApiKeyAuth: []
+  '/plugins/api/plugins/{pluginId}/disable':
+    post:
+      tags:
+        - Plugins
+      summary: 'Disable a plugin'
+      operationId: disablePlugin
+      parameters:
+        -
+          name: pluginId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Plugin disabled'
+        '400':
+          description: 'Plugin cannot be disabled (other plugins depend on it)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '500':
+          description: 'Error disabling plugin'
+      security:
+        -
+          ApiKeyAuth: []
+  '/plugins/api/plugins/{pluginId}/settings':
+    post:
+      tags:
+        - Plugins
+      summary: 'Update plugin settings'
+      operationId: updatePluginSettings
+      parameters:
+        -
+          name: pluginId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                settings:
+                  description: 'Key-value map of settings to update'
+                  type: object
+              type: object
+      responses:
+        '200':
+          description: 'Settings updated'
+        '400':
+          description: 'No settings provided or plugin not found'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Plugin not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/plugins/api/plugins/{pluginId}/test':
+    post:
+      tags:
+        - Plugins
+      summary: 'Test plugin connection with provided settings'
+      description: 'Password fields may be omitted — the plugin falls back to its saved value.'
+      operationId: testPluginConnection
+      parameters:
+        -
+          name: pluginId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              properties:
+                settings:
+                  description: 'Settings to test with (partial override)'
+                  type: object
+              type: object
+      responses:
+        '200':
+          description: 'Connection successful'
+        '400':
+          description: 'Connection test failed'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Plugin not found or not active'
+      security:
+        -
+          ApiKeyAuth: []
+  '/plugins/api/plugins/{pluginId}/reset':
+    post:
+      tags:
+        - Plugins
+      summary: 'Reset all settings for a plugin'
+      operationId: resetPluginSettings
+      parameters:
+        -
+          name: pluginId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Settings reset'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Forbidden — Admin role required'
+        '404':
+          description: 'Plugin not found'
+      security:
+        -
+          ApiKeyAuth: []
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      description: 'API key obtained from Profile → API Key in ChurchCRM, or via POST /public/user/login'
+      name: x-api-key
+      in: header
+tags:
+  -
+    name: Calendar
+    description: 'Calendar and event management'
+  -
+    name: People
+    description: 'Person records'
+  -
+    name: Families
+    description: 'Family records'
+  -
+    name: Groups
+    description: 'Group management'
+  -
+    name: Properties
+    description: 'Custom person and family properties'
+  -
+    name: Finance
+    description: 'Deposits and payments (Finance role required)'
+  -
+    name: Users
+    description: 'User settings and API key management'
+  -
+    name: 2FA
+    description: 'Two-factor authentication setup'
+  -
+    name: System
+    description: 'System configuration and notifications'
+  -
+    name: Admin
+    description: 'Administration operations (Admin role required)'
+  -
+    name: Cart
+    description: 'Selection cart for bulk operations'
+  -
+    name: Search
+    description: 'Global search'
+  -
+    name: Map
+    description: 'Geographic map data'
+  -
+    name: Kiosk
+    description: 'Kiosk device management (Admin role required)'
+  -
+    name: Plugins
+    description: 'Plugin management (Admin role required)'
