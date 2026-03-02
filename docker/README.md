@@ -56,7 +56,7 @@ Testing
 * Docker (with Compose v2+)
 * GIT
 * Node/NPM
-* PHP 8.4+ with extensions: `bcmath`, `curl`, `gd`, `gettext`, `iconv`, `mbstring`, `mysqli`, `pdo_mysql`, `sodium`, `zip`, `zlib`
+* PHP 8.4+ with extensions: `bcmath`, `curl`, `fileinfo`, `filter`, `gd`, `gettext`, `iconv`, `mbstring`, `mysqli`, `PDO`, `pdo_mysql`, `session`, `sodium`, `zip`, `zlib`
 * [Composer](https://getcomposer.org/) (PHP dependency manager)
 
 > **Note:** PHP and Composer are required on the **build host** because `npm run deploy` compiles PHP
@@ -66,11 +66,12 @@ Testing
 ## Steps
 
 1. Clone repo: `git clone git@github.com:ChurchCRM/CRM.git`
-2. Install Node dependencies: `npm ci`
-3. Build code locally: `npm run deploy`
-4. Start test containers: `npm run docker:test:start`
-5. Run tests: `npm run test`
-6. Stop docker: `npm run docker:test:stop`
+2. Change into project directory: `cd CRM`
+3. Install Node dependencies: `npm ci`
+4. Build code locally: `npm run deploy`
+5. Start test containers: `npm run docker:test:start`
+6. Run tests: `npm run test`
+7. Stop docker: `npm run docker:test:stop`
 
 ### Test Profile Services
    - **database**: MariaDB server (port 3306)

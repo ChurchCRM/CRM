@@ -50,8 +50,9 @@ If you prefer manual setup or the automatic options don't work:
    - [Git](https://github.com/git-guides/install-git) (or [GitHub Desktop](https://desktop.github.com/))
    - [Node.js version 20+](https://nodejs.org/en/download/)
    - [Docker](https://docs.docker.com/desktop/)
-   - **PHP 8.4+** with extensions: `bcmath`, `curl`, `gd`, `gettext`, `iconv`, `mbstring`, `mysqli`, `pdo_mysql`, `sodium`, `zip`, `zlib`
-     - Ubuntu/Debian example: `sudo apt-get install php8.4 php8.4-bcmath php8.4-curl php8.4-gd php8.4-gettext php8.4-iconv php8.4-mbstring php8.4-mysqli php8.4-pdo-mysql php8.4-sodium php8.4-zip`
+   - **PHP 8.4+** with extensions: `bcmath`, `curl`, `gd`, `gettext`, `iconv`, `mbstring`, `mysqli`, `pdo_mysql`, `sodium`, `zip`, `zlib` and the core extensions required by Composer: `fileinfo`, `filter`, `session`, `PDO` (these are usually enabled by default)
+     - Ubuntu/Debian example: `sudo apt-get install php php-bcmath php-curl php-gd php-gettext php-mbstring php-mysql php-sodium php-zip`
+     - Note: Package names may vary slightly by distribution/repository; use your package manager (e.g., `apt-cache search php<ext>`) to confirm the correct names.
      - PHP and Composer are required locally only for the manual build step (`npm run deploy`). The Quick Start options (Codespaces, Dev Containers, DDEV) handle PHP inside Docker automatically.
    - [Composer](https://getcomposer.org/download/) (PHP dependency manager)
 
