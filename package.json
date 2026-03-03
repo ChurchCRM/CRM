@@ -28,7 +28,7 @@
         "build:js:legacy": "grunt copy && grunt patchDataTablesCSS",
         "build:webpack": "webpack",
         "build:webpack:watch": "webpack --watch",
-        "build:php": "run-s composer:install",
+        "build:php": "run-s composer:install build:php:validate",
         "build:openapi": "cd src && composer install --no-interaction --prefer-dist && composer run openapi-public && composer run openapi-private",
         "build:orm": "cd src/ && ./vendor/bin/propel build --config-dir=propel",
         "clean": "rm -rf node_modules/ temp src/vendor/ src/skin/external src/locale/vendor ai-notes/ src/logs/*.log",

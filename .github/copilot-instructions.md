@@ -40,6 +40,10 @@ This file is a pointer to the canonical development guidance for AI agents (Copi
 4. **Test locally** and run `npm run build` + `npm run test`
 5. **Request human review** before committing
 
+## Pull Request Descriptions
+
+- Always provide the pull request description in Markdown using the repository PR template sections: **What Changed**, **Type**, **Testing**, and **Pre-Merge**. The PR body should be human-readable and use Markdown headings, bullets, and code blocks where appropriate so agents and reviewers can render it consistently.
+
 ## More Info
 
 - Full skill list and descriptions: [.agents/skills/README.md](../.agents/skills/README.md)

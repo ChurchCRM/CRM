@@ -1696,6 +1696,38 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/map/neighbors/{familyId}':
+    get:
+      tags:
+        - Map
+      summary: 'Get nearest neighbor families for a given familyId'
+      operationId: a2264154d69001f8e26a71599eec497d
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: maxNeighbors
+          in: query
+          required: false
+          schema:
+            type: integer
+        -
+          name: maxDistance
+          in: query
+          required: false
+          schema:
+            type: number
+            format: float
+      responses:
+        '200':
+          description: 'Array of neighbor families'
+      security:
+        -
+          ApiKeyAuth: []
   /families/familiesInCart:
     get:
       tags:
