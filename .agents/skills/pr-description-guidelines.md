@@ -19,7 +19,7 @@ This repository provides a PR template at `.github/PULL_REQUEST_TEMPLATE.md`. Wh
 gh pr create --title "<short title>" --body-file .github/PULL_REQUEST_TEMPLATE.md --base master --head <branch>
 ```
 
-Ensure the filled template remains in Markdown and includes the required sections (What Changed, Type, Testing, Security Check, Pre-Merge checklist).
+Ensure the filled template remains in Markdown and includes the required sections (What Changed, Type, Testing, Pre-Merge checklist).
 
 Safe workflow for using the repository template
 ----------------------------------------------
