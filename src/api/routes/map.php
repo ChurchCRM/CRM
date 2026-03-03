@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\SlimUtils;
@@ -135,16 +134,21 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
 }
 
 /**
- * @OA
-t+ *     path="/map/neighbors",
+ * @OA\Get(
+ *     path="/map/neighbors/{familyId}",
  *     summary="Get nearest neighbor families for a given familyId",
  *     tags={"Map"},
  *     security={{"ApiKeyAuth":{}}},
- *     @OA
- *     Parameter(name="familyId", in="query", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(
+ *         name="familyId",
+ *         in="path",
+ *         required=true,
+ *         @OA\Schema(type="integer")
+ *     ),
  *     @OA\Parameter(name="maxNeighbors", in="query", required=false, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="maxDistance", in="query", required=false, @OA\Schema(type="number", format="float")),
  *     @OA\Response(response=200, description="Array of neighbor families")
+ * )
  */
 function getMapNeighbors(Request $request, Response $response, array $args): Response
 {
@@ -154,21 +158,29 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
 
     /** @var \ChurchCRM\model\ChurchCRM\Family $selectedFamily */
     $selectedFamily = $request->getAttribute('family');
-    if (empty($selectedFamily)) {
-        return SlimUtils::renderJSON($response->withStatus(400), ["error" => "family not provided"]);
-    }
 
     $familyId = (int)$selectedFamily->getId();
     $selLat = (float)$selectedFamily->getLatitude();
     $selLng = (float)$selectedFamily->getLongitude();
     if ($selLat === 0.0 && $selLng === 0.0) {
-        return SlimUtils::renderJSON($response->withStatus(400), ["error" => "selected family has no coordinates"]);
+        return SlimUtils::renderErrorJSON($response->withStatus(400), gettext('selected family has no coordinates'));
     }
+
+    // Compute a conservative bounding box (30 units/degree) to pre-filter candidates in SQL.
+    // This always produces a box larger than the true maxDistance circle, ensuring no valid
+    // neighbors are excluded before the per-record distance calculation in PHP.
+    $deltaDeg  = $maxDistance / 30.0;
+    $minLat    = max(-90.0,  $selLat - $deltaDeg);
+    $maxLat    = min(90.0,   $selLat + $deltaDeg);
+    $minLng    = max(-180.0, $selLng - $deltaDeg);
+    $maxLng    = min(180.0,  $selLng + $deltaDeg);
 
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
         ->filterByLatitude(0, Criteria::NOT_EQUAL)
         ->filterByLongitude(0, Criteria::NOT_EQUAL)
+        ->filterByLatitude(['min' => $minLat, 'max' => $maxLat])
+        ->filterByLongitude(['min' => $minLng, 'max' => $maxLng])
         ->find();
 
     $items = [];
@@ -181,51 +193,25 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
 
         $lat = (float)$family->getLatitude();
         $lng = (float)$family->getLongitude();
-        // compute numeric distance (in configured units)
-        try {
-            $a = new \Location\Coordinate($selLat, $selLng);
-            $b = new \Location\Coordinate($lat, $lng);
-            $vincenty = new \Location\Distance\Vincenty();
-            $meters = $vincenty->getDistance($a, $b);
-            $km = $meters / 1000.0;
-            $distance = (strtoupper(SystemConfig::getValue('sDistanceUnit')) === 'MILES') ? $km * 0.6213712 : $km;
-        } catch (\Throwable $e) {
-            // fallback to GeoUtils formatted distance and try to cast
-            $distanceText = GeoUtils::latLonDistance($selLat, $selLng, $lat, $lng);
-            $distance = (float)str_replace(',', '', $distanceText);
-        }
 
-        // filter by maxDistance
+        $distanceText = GeoUtils::latLonDistance($selLat, $selLng, $lat, $lng);
+        $distance     = (float)$distanceText;
+
         if ($distance > $maxDistance) {
             continue;
         }
 
-        $bearing = GeoUtils::latLonBearing($selLat, $selLng, $lat, $lng);
-
-        // gather people in family
-        $persons = [];
-        $people = PersonQuery::create()->filterByFamId($fid)->find();
-        foreach ($people as $p) {
-            $persons[] = [
-                'id' => $p->getId(),
-                'firstName' => $p->getFirstName(),
-                'lastName' => $p->getLastName(),
-                'classificationId' => (int)$p->getClsId(),
-            ];
-        }
-
         $items[] = [
-            'id' => $fid,
-            'type' => 'family',
-            'name' => $family->getName(),
-            'address' => $family->getAddress(),
-            'latitude' => $lat,
-            'longitude' => $lng,
-            'distance' => $distance,
-            'distanceText' => GeoUtils::latLonDistance($selLat, $selLng, $lat, $lng),
-            'bearing' => $bearing,
-            'persons' => $persons,
-            'profileUrl' => SystemURLs::getRootPath() . '/v2/family/' . $fid,
+            'id'           => $fid,
+            'type'         => 'family',
+            'name'         => $family->getName(),
+            'address'      => $family->getAddress(),
+            'latitude'     => $lat,
+            'longitude'    => $lng,
+            'distance'     => $distance,
+            'distanceText' => $distanceText,
+            'bearing'      => GeoUtils::latLonBearing($selLat, $selLng, $lat, $lng),
+            'profileUrl'   => SystemURLs::getRootPath() . '/v2/family/' . $fid,
         ];
     }
 
