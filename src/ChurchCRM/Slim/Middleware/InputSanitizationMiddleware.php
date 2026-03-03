@@ -15,7 +15,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  * are affected. Missing fields are left absent (not set to empty string).
  *
  * Supported sanitization types:
- *  - 'text' → InputUtils::sanitizeText() (strips HTML tags and escapes)
+ *  - 'text' → InputUtils::sanitizeText() (trims and strips HTML tags)
  *  - 'html' → InputUtils::sanitizeHTML() (allows safe HTML, strips scripts)
  *
  * Usage:
