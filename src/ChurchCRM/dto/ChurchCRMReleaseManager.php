@@ -253,25 +253,29 @@ class ChurchCRMReleaseManager
             if (function_exists('curl_init')) {
                 // Use cURL for download (works even when allow_url_fopen is disabled)
                 $ch = curl_init($url);
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
-                curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-                curl_setopt($ch, CURLOPT_USERAGENT, 'ChurchCRM/' . VersionUtils::getInstalledVersion());
-                curl_setopt($ch, CURLOPT_TIMEOUT, 300);
-                $result = curl_exec($ch);
-                $curlErrno = curl_errno($ch);
-                $curlError = curl_error($ch);
-                $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                curl_close($ch);
+                if ($ch === false) {
+                    $lastErrorMsg = 'curl_init() failed to initialize (possibly malformed URL)';
+                } else {
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+                    curl_setopt($ch, CURLOPT_USERAGENT, 'ChurchCRM/' . VersionUtils::getInstalledVersion());
+                    curl_setopt($ch, CURLOPT_TIMEOUT, 300);
+                    $result = curl_exec($ch);
+                    $curlErrno = curl_errno($ch);
+                    $curlError = curl_error($ch);
+                    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                    curl_close($ch);
 
-                if ($result !== false && $httpCode >= 200 && $httpCode < 300 && strlen($result) > 0) {
-                    $downloadContent = $result;
-                    $logger->info('Download succeeded on attempt ' . $attempt . ' via cURL (HTTP ' . $httpCode . ')');
-                    break;
+                    if ($result !== false && $httpCode >= 200 && $httpCode < 300 && strlen($result) > 0) {
+                        $downloadContent = $result;
+                        $logger->info('Download succeeded on attempt ' . $attempt . ' via cURL (HTTP ' . $httpCode . ')');
+                        break;
+                    }
+
+                    $lastErrorMsg = !empty($curlError) ? 'cURL error (' . $curlErrno . '): ' . $curlError : 'HTTP ' . $httpCode;
                 }
-
-                $lastErrorMsg = !empty($curlError) ? 'cURL error (' . $curlErrno . '): ' . $curlError : 'HTTP ' . $httpCode;
             } else {
                 // Fallback: file_get_contents (requires allow_url_fopen = On)
                 @error_clear_last();
