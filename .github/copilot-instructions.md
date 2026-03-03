@@ -42,7 +42,7 @@ This file is a pointer to the canonical development guidance for AI agents (Copi
 
 ## Pull Request Descriptions
 
-- Always provide the pull request description in Markdown. Include sections for: Summary, Changes, Files Changed, Validation, and Testing instructions. The PR body should be human-readable and use Markdown headings, bullets, and code blocks where appropriate so agents and reviewers can render it consistently.
+- Always provide the pull request description in Markdown using the repository PR template sections: **What Changed**, **Type**, **Testing**, and **Pre-Merge**. The PR body should be human-readable and use Markdown headings, bullets, and code blocks where appropriate so agents and reviewers can render it consistently.
 
 ## More Info
 
