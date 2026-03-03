@@ -43,10 +43,10 @@ class PdfDirectory extends ChurchInfoReport
         $this->_NCols = $nc;
         $this->_ColWidth = 190 / $nc - $this->_Gutter;
 
-        $this->sChurchNameEncoded = iconv('UTF-8', 'ISO-8859-1', SystemConfig::getValue('sChurchName'));
-        $this->sChurchAddressEncoded = iconv('UTF-8', 'ISO-8859-1', SystemConfig::getValue('sChurchAddress'));
-        $this->sChurchCityEncoded = iconv('UTF-8', 'ISO-8859-1', SystemConfig::getValue('sChurchCity'));
-        $this->sChurchStateEncoded = iconv('UTF-8', 'ISO-8859-1', SystemConfig::getValue('sChurchState'));
+        $this->sChurchNameEncoded = self::convertToLatin1(SystemConfig::getValue('sChurchName'));
+        $this->sChurchAddressEncoded = self::convertToLatin1(SystemConfig::getValue('sChurchAddress'));
+        $this->sChurchCityEncoded = self::convertToLatin1(SystemConfig::getValue('sChurchCity'));
+        $this->sChurchStateEncoded = self::convertToLatin1(SystemConfig::getValue('sChurchState'));
     }
 
     public function header(): void
@@ -125,7 +125,7 @@ class PdfDirectory extends ChurchInfoReport
         );
         $this->MultiCell(197, 10, $sContact, 0, 'C');
         $this->Cell(10);
-        $sDirectoryDisclaimer = iconv('UTF-8', 'ISO-8859-1', $sDirectoryDisclaimer);
+        $sDirectoryDisclaimer = self::convertToLatin1($sDirectoryDisclaimer);
         $this->MultiCell(197, 10, $sDirectoryDisclaimer, 0, 'C');
         $this->addPage();
     }
@@ -489,7 +489,7 @@ class PdfDirectory extends ChurchInfoReport
         }
         $this->checkLines($numlines, $dirimg);
 
-        $this->printName(iconv('UTF-8', 'ISO-8859-1', $sName));
+        $this->printName(self::convertToLatin1($sName));
 
         $_PosX = ($this->_Column * ($this->_ColWidth + $this->_Gutter)) + $this->_Margin_Left;
         $_PosY = $this->GetY();
@@ -503,7 +503,7 @@ class PdfDirectory extends ChurchInfoReport
             $this->SetXY($_PosX, $_PosY + $h + 2);
         }
 
-        $this->MultiCell($this->_ColWidth, $this->_LS, iconv('UTF-8', 'ISO-8859-1', $text), 0, 'L');
+        $this->MultiCell($this->_ColWidth, $this->_LS, self::convertToLatin1($text), 0, 'L');
         $this->SetY($this->GetY() + $this->_LS);
     }
 }
