@@ -267,7 +267,11 @@ describe("API Private Group Operations", () => {
                 `/api/groups/${groupID}/roles/1`,
                 { groupRoleName: "<b>Bold</b>RoleName" },
                 200
-            );
+            ).then((resp) => {
+                expect(resp.body).to.have.property("Name");
+                expect(resp.body.Name).to.not.include("<b>");
+                expect(resp.body.Name).to.include("RoleName");
+            });
         });
     });
 
