@@ -235,6 +235,27 @@ class DemoDataService
                 $family->setZip($addr['zip'] ?? null);
                 $family->setCountry($addr['country'] ?? null);
 
+                // If demo JSON provides lat/lng, use them to set family's location
+                if (isset($addr['latitude']) || isset($addr['lat']) || isset($addr['longitude']) || isset($addr['lng'])) {
+                    $lat = $addr['latitude'] ?? $addr['lat'] ?? null;
+                    $lon = $addr['longitude'] ?? $addr['lng'] ?? null;
+                    if ($lat !== null && $lon !== null) {
+                        // normalize to float when possible
+                        $nLat = is_numeric($lat) ? (float)$lat : null;
+                        $nLon = is_numeric($lon) ? (float)$lon : null;
+                        if ($nLat !== null && $nLon !== null) {
+                            try {
+                                $family->setLatitude($nLat);
+                                $family->setLongitude($nLon);
+                            } catch (Exception $e) {
+                                $this->addWarning("Failed to set lat/lng for family '{$famData['name']}'", ['error' => $e->getMessage(), 'lat' => $lat, 'lon' => $lon]);
+                            }
+                        } else {
+                            $this->addWarning("Invalid lat/lng values for family '{$famData['name']}'", ['lat' => $lat, 'lon' => $lon]);
+                        }
+                    }
+                }
+
                 $contact = $famData['contact'] ?? [];
                 $phone = $contact['phone'] ?? [];
                 $family->setHomePhone($phone['home'] ?? null);

@@ -3,12 +3,12 @@
     {
       "name": "Garcia",
       "address": {
-        "line1": "3205 Madison Ave",
-        "line2": "Apt 100",
-        "city": "Olathe",
-        "state": "KS",
-        "zip": "66062",
-        "country": "Canada"
+        "line1": "100 Main St",
+        "line2": null,
+        "city": "Kansas City",
+        "state": "MO",
+        "zip": "64102",
+        "country": "United States"
       },
       "contact": {
         "phone": {
@@ -65,11 +65,11 @@
     {
       "name": "Hernandez",
       "address": {
-        "line1": "9445 Church St",
+        "line1": "173 Clay St",
         "line2": null,
-        "city": "Overland Park",
-        "state": "KS",
-        "zip": "66204",
+        "city": "North Kansas City",
+        "state": "MO",
+        "zip": "64116",
         "country": "United States"
       },
       "contact": {
@@ -161,11 +161,11 @@
     {
       "name": "Johnson",
       "address": {
-        "line1": "3620 Madison Ave",
+        "line1": "246 Claycomo Rd",
         "line2": null,
-        "city": "Lenexa",
-        "state": "KS",
-        "zip": "66219",
+        "city": "Claycomo",
+        "state": "MO",
+        "zip": "64119",
         "country": "United States"
       },
       "contact": {
@@ -282,11 +282,11 @@
     {
       "name": "Williams",
       "address": {
-        "line1": "2086 Jefferson St",
+        "line1": "319 5th St",
         "line2": null,
-        "city": "Lee's Summit",
+        "city": "Kansas City",
         "state": "MO",
-        "zip": "64064",
+        "zip": "64106",
         "country": "United States"
       },
       "contact": {
@@ -409,11 +409,11 @@
     {
       "name": "Scott",
       "address": {
-        "line1": "4790 Elm Ave",
+        "line1": "392 Raytown Rd",
         "line2": null,
-        "city": "Liberty",
+        "city": "Raytown",
         "state": "MO",
-        "zip": "64068",
+        "zip": "64133",
         "country": "United States"
       },
       "contact": {
@@ -557,11 +557,11 @@
     {
       "name": "Johnson",
       "address": {
-        "line1": "8133 Sunset Blvd",
-        "line2": "Apt 105",
-        "city": "Raytown",
+        "line1": "465 Pleasant St",
+        "line2": null,
+        "city": "Independence",
         "state": "MO",
-        "zip": "64133",
+        "zip": "64055",
         "country": "United States"
       },
       "contact": {
@@ -644,11 +644,11 @@
     {
       "name": "Baker",
       "address": {
-        "line1": "6044 Lake Dr",
+        "line1": "538 Metcalf Ave",
         "line2": null,
-        "city": "Lenexa",
+        "city": "Overland Park",
         "state": "KS",
-        "zip": "66215",
+        "zip": "66204",
         "country": "United States"
       },
       "contact": {
@@ -736,11 +736,11 @@
     {
       "name": "Thompson",
       "address": {
-        "line1": "6467 Valley View Dr",
+        "line1": "611 Lamar Ave",
         "line2": null,
-        "city": "Kansas City",
-        "state": "MO",
-        "zip": "64110",
+        "city": "Mission",
+        "state": "KS",
+        "zip": "66202",
         "country": "United States"
       },
       "contact": {
@@ -879,11 +879,11 @@
     {
       "name": "Nelson",
       "address": {
-        "line1": "3064 Spring Dr",
+        "line1": "684 Roe Ave",
         "line2": null,
-        "city": "Lenexa",
+        "city": "Leawood",
         "state": "KS",
-        "zip": "66215",
+        "zip": "66206",
         "country": "United States"
       },
       "contact": {
@@ -1021,12 +1021,12 @@
     {
       "name": "Lewis",
       "address": {
-        "line1": "734 Oak Ave",
+        "line1": "757 Prairie Ln",
         "line2": null,
-        "city": "Lenexa",
+        "city": "Prairie Village",
         "state": "KS",
-        "zip": "66219",
-        "country": "Canada"
+        "zip": "66208",
+        "country": "United States"
       },
       "contact": {
         "phone": {
@@ -1153,11 +1153,11 @@
     {
       "name": "Hernandez",
       "address": {
-        "line1": "3732 Spring Dr",
-        "line2": "Apt 110",
-        "city": "Blue Springs",
-        "state": "MO",
-        "zip": "64015",
+        "line1": "830 Johnson Dr",
+        "line2": null,
+        "city": "Shawnee",
+        "state": "KS",
+        "zip": "66203",
         "country": "United States"
       },
       "contact": {
@@ -1227,11 +1227,11 @@
     {
       "name": "Adams",
       "address": {
-        "line1": "3819 Cedar Ln",
+        "line1": "903 Santa Fe",
         "line2": null,
-        "city": "Overland Park",
+        "city": "Lenexa",
         "state": "KS",
-        "zip": "66204",
+        "zip": "66215",
         "country": "United States"
       },
       "contact": {
@@ -1376,11 +1376,11 @@
     {
       "name": "Thomas",
       "address": {
-        "line1": "5816 Maple Dr",
+        "line1": "976 Santa Fe",
         "line2": null,
-        "city": "Liberty",
-        "state": "MO",
-        "zip": "64068",
+        "city": "Olathe",
+        "state": "KS",
+        "zip": "66062",
         "country": "United States"
       },
       "contact": {
@@ -1450,11 +1450,11 @@
     {
       "name": "Clark",
       "address": {
-        "line1": "989 Market St",
+        "line1": "1049 Oak St",
         "line2": null,
-        "city": "Raytown",
+        "city": "Kansas City",
         "state": "MO",
-        "zip": "64133",
+        "zip": "64102",
         "country": "United States"
       },
       "contact": {
@@ -1592,11 +1592,11 @@
     {
       "name": "Jackson",
       "address": {
-        "line1": "586 River Rd",
+        "line1": "1122 Armour Blvd",
         "line2": null,
-        "city": "Shawnee",
-        "state": "KS",
-        "zip": "66216",
+        "city": "North Kansas City",
+        "state": "MO",
+        "zip": "64116",
         "country": "United States"
       },
       "contact": {
@@ -1676,11 +1676,11 @@
     {
       "name": "Lee",
       "address": {
-        "line1": "5779 Park Pl",
-        "line2": "Apt 115",
-        "city": "Raytown",
+        "line1": "1195 Parkway Ave",
+        "line2": null,
+        "city": "Claycomo",
         "state": "MO",
-        "zip": "64133",
+        "zip": "64119",
         "country": "United States"
       },
       "contact": {
@@ -1736,11 +1736,11 @@
     {
       "name": "Rodriguez",
       "address": {
-        "line1": "7354 Washington Blvd",
+        "line1": "1268 Main St",
         "line2": null,
-        "city": "Lenexa",
-        "state": "KS",
-        "zip": "66220",
+        "city": "Kansas City",
+        "state": "MO",
+        "zip": "64106",
         "country": "United States"
       },
       "contact": {
@@ -1847,11 +1847,11 @@
     {
       "name": "Johnson",
       "address": {
-        "line1": "2108 Sunset Blvd",
+        "line1": "1341 Blue Ridge Blvd",
         "line2": null,
-        "city": "Overland Park",
-        "state": "KS",
-        "zip": "66213",
+        "city": "Raytown",
+        "state": "MO",
+        "zip": "64133",
         "country": "United States"
       },
       "contact": {
@@ -1941,12 +1941,12 @@
     {
       "name": "Robinson",
       "address": {
-        "line1": "1977 Main St",
+        "line1": "1414 Main St",
         "line2": null,
-        "city": "Olathe",
-        "state": "KS",
-        "zip": "66062",
-        "country": "Canada"
+        "city": "Independence",
+        "state": "MO",
+        "zip": "64055",
+        "country": "United States"
       },
       "contact": {
         "phone": {
@@ -2001,11 +2001,11 @@
     {
       "name": "Williams",
       "address": {
-        "line1": "6355 Oak Ave",
+        "line1": "1487 Marty St",
         "line2": null,
-        "city": "Raytown",
-        "state": "MO",
-        "zip": "64133",
+        "city": "Overland Park",
+        "state": "KS",
+        "zip": "66204",
         "country": "United States"
       },
       "contact": {
@@ -2061,11 +2061,11 @@
     {
       "name": "Parker",
       "address": {
-        "line1": "3322 Church St",
-        "line2": "Apt 120",
-        "city": "Independence",
-        "state": "MO",
-        "zip": "64055",
+        "line1": "1560 Nall Ave",
+        "line2": null,
+        "city": "Mission",
+        "state": "KS",
+        "zip": "66202",
         "country": "United States"
       },
       "contact": {
@@ -2121,11 +2121,11 @@
     {
       "name": "Lopez",
       "address": {
-        "line1": "8574 Sunset Blvd",
+        "line1": "1633 135th St",
         "line2": null,
-        "city": "Kansas City",
-        "state": "MO",
-        "zip": "64114",
+        "city": "Leawood",
+        "state": "KS",
+        "zip": "66206",
         "country": "United States"
       },
       "contact": {
@@ -2181,11 +2181,11 @@
     {
       "name": "Robinson",
       "address": {
-        "line1": "1834 River Rd",
+        "line1": "1706 Mission Rd",
         "line2": null,
-        "city": "Shawnee",
+        "city": "Prairie Village",
         "state": "KS",
-        "zip": "66216",
+        "zip": "66208",
         "country": "United States"
       },
       "contact": {
@@ -2241,11 +2241,11 @@
     {
       "name": "Carter",
       "address": {
-        "line1": "701 Valley View Dr",
+        "line1": "1779 Shawnee Mission Parkway",
         "line2": null,
-        "city": "Raytown",
-        "state": "MO",
-        "zip": "64138",
+        "city": "Shawnee",
+        "state": "KS",
+        "zip": "66203",
         "country": "United States"
       },
       "contact": {
@@ -2342,11 +2342,11 @@
     {
       "name": "Brown",
       "address": {
-        "line1": "5155 River Rd",
+        "line1": "1852 Parallel Rd",
         "line2": null,
-        "city": "Overland Park",
+        "city": "Lenexa",
         "state": "KS",
-        "zip": "66212",
+        "zip": "66215",
         "country": "United States"
       },
       "contact": {
@@ -2419,11 +2419,11 @@
     {
       "name": "Rodriguez",
       "address": {
-        "line1": "5159 Lake Dr",
-        "line2": "Apt 125",
-        "city": "Lee's Summit",
-        "state": "MO",
-        "zip": "64064",
+        "line1": "1925 Strang Line Rd",
+        "line2": null,
+        "city": "Olathe",
+        "state": "KS",
+        "zip": "66062",
         "country": "United States"
       },
       "contact": {
@@ -2547,11 +2547,11 @@
     {
       "name": "Rivera",
       "address": {
-        "line1": "996 Cedar Ln",
+        "line1": "1998 Grand Ave",
         "line2": null,
-        "city": "Shawnee",
-        "state": "KS",
-        "zip": "66217",
+        "city": "Kansas City",
+        "state": "MO",
+        "zip": "64102",
         "country": "United States"
       },
       "contact": {
@@ -2658,12 +2658,12 @@
     {
       "name": "Nguyen",
       "address": {
-        "line1": "8114 Hill St",
+        "line1": "2071 Main St",
         "line2": null,
-        "city": "Independence",
+        "city": "North Kansas City",
         "state": "MO",
-        "zip": "64050",
-        "country": "Canada"
+        "zip": "64116",
+        "country": "United States"
       },
       "contact": {
         "phone": {
@@ -2752,11 +2752,11 @@
     {
       "name": "Torres",
       "address": {
-        "line1": "7285 Market St",
+        "line1": "2144 Claycomo Rd",
         "line2": null,
-        "city": "Olathe",
-        "state": "KS",
-        "zip": "66061",
+        "city": "Claycomo",
+        "state": "MO",
+        "zip": "64119",
         "country": "United States"
       },
       "contact": {
@@ -2819,11 +2819,11 @@
     {
       "name": "Johnson",
       "address": {
-        "line1": "8169 Jefferson St",
+        "line1": "2217 Commerce St",
         "line2": null,
-        "city": "Lee's Summit",
+        "city": "Kansas City",
         "state": "MO",
-        "zip": "64063",
+        "zip": "64106",
         "country": "United States"
       },
       "contact": {
@@ -2879,11 +2879,11 @@
     {
       "name": "Harris",
       "address": {
-        "line1": "3473 Sunset Blvd",
-        "line2": "Apt 130",
-        "city": "Independence",
+        "line1": "2290 Raytown Rd",
+        "line2": null,
+        "city": "Raytown",
         "state": "MO",
-        "zip": "64050",
+        "zip": "64133",
         "country": "United States"
       },
       "contact": {
@@ -2946,11 +2946,11 @@
     {
       "name": "Lee",
       "address": {
-        "line1": "2915 Main St",
+        "line1": "2363 Pleasant St",
         "line2": null,
-        "city": "Shawnee",
-        "state": "KS",
-        "zip": "66203",
+        "city": "Independence",
+        "state": "MO",
+        "zip": "64055",
         "country": "United States"
       },
       "contact": {
@@ -3064,11 +3064,11 @@
     {
       "name": "Flores",
       "address": {
-        "line1": "8618 Cedar Ln",
+        "line1": "2436 College Blvd",
         "line2": null,
-        "city": "Lee's Summit",
-        "state": "MO",
-        "zip": "64081",
+        "city": "Overland Park",
+        "state": "KS",
+        "zip": "66204",
         "country": "United States"
       },
       "contact": {
@@ -3158,11 +3158,11 @@
     {
       "name": "Flores",
       "address": {
-        "line1": "8591 Market St",
+        "line1": "2509 Johnson Dr",
         "line2": null,
-        "city": "Lenexa",
+        "city": "Mission",
         "state": "KS",
-        "zip": "66219",
+        "zip": "66202",
         "country": "United States"
       },
       "contact": {
@@ -3269,11 +3269,11 @@
     {
       "name": "Baker",
       "address": {
-        "line1": "3751 Park Pl",
+        "line1": "2582 College Blvd",
         "line2": null,
-        "city": "Liberty",
-        "state": "MO",
-        "zip": "64068",
+        "city": "Leawood",
+        "state": "KS",
+        "zip": "66206",
         "country": "United States"
       },
       "contact": {
@@ -3329,11 +3329,11 @@
     {
       "name": "Campbell",
       "address": {
-        "line1": "8670 Madison Ave",
-        "line2": "Apt 135",
-        "city": "Olathe",
+        "line1": "2655 Prairie Ln",
+        "line2": null,
+        "city": "Prairie Village",
         "state": "KS",
-        "zip": "66061",
+        "zip": "66208",
         "country": "United States"
       },
       "contact": {
@@ -3389,12 +3389,12 @@
     {
       "name": "Nelson",
       "address": {
-        "line1": "3947 Maple Dr",
+        "line1": "2728 Johnson Dr",
         "line2": null,
-        "city": "Kansas City",
-        "state": "MO",
-        "zip": "64112",
-        "country": "Canada"
+        "city": "Shawnee",
+        "state": "KS",
+        "zip": "66203",
+        "country": "United States"
       },
       "contact": {
         "phone": {
@@ -3500,11 +3500,11 @@
     {
       "name": "Davis",
       "address": {
-        "line1": "9272 Jefferson St",
+        "line1": "2801 Santa Fe",
         "line2": null,
-        "city": "Raytown",
-        "state": "MO",
-        "zip": "64138",
+        "city": "Lenexa",
+        "state": "KS",
+        "zip": "66215",
         "country": "United States"
       },
       "contact": {
@@ -3628,11 +3628,11 @@
     {
       "name": "Nguyen",
       "address": {
-        "line1": "8349 Maple Dr",
+        "line1": "2874 Santa Fe",
         "line2": null,
-        "city": "Shawnee",
+        "city": "Olathe",
         "state": "KS",
-        "zip": "66216",
+        "zip": "66062",
         "country": "United States"
       },
       "contact": {
@@ -3695,11 +3695,11 @@
     {
       "name": "Evans",
       "address": {
-        "line1": "7707 Spring Dr",
+        "line1": "2947 Walnut St",
         "line2": null,
         "city": "Kansas City",
         "state": "MO",
-        "zip": "64108",
+        "zip": "64102",
         "country": "United States"
       },
       "contact": {
@@ -3789,11 +3789,11 @@
     {
       "name": "Harris",
       "address": {
-        "line1": "7586 Market St",
-        "line2": "Apt 140",
-        "city": "Blue Springs",
+        "line1": "3020 Clay St",
+        "line2": null,
+        "city": "North Kansas City",
         "state": "MO",
-        "zip": "64014",
+        "zip": "64116",
         "country": "United States"
       },
       "contact": {
@@ -3849,11 +3849,11 @@
     {
       "name": "King",
       "address": {
-        "line1": "892 Jefferson St",
+        "line1": "3093 Parkway Ave",
         "line2": null,
-        "city": "Shawnee",
-        "state": "KS",
-        "zip": "66217",
+        "city": "Claycomo",
+        "state": "MO",
+        "zip": "64119",
         "country": "United States"
       },
       "contact": {
@@ -3916,11 +3916,11 @@
     {
       "name": "Jones",
       "address": {
-        "line1": "3742 Market St",
+        "line1": "3166 5th St",
         "line2": null,
-        "city": "Independence",
+        "city": "Kansas City",
         "state": "MO",
-        "zip": "64050",
+        "zip": "64106",
         "country": "United States"
       },
       "contact": {
@@ -4044,7 +4044,7 @@
     {
       "name": "King",
       "address": {
-        "line1": "5134 Park Pl",
+        "line1": "3239 Blue Ridge Blvd",
         "line2": null,
         "city": "Raytown",
         "state": "MO",
@@ -4172,11 +4172,11 @@
     {
       "name": "Rivera",
       "address": {
-        "line1": "7335 River Rd",
+        "line1": "3312 Main St",
         "line2": null,
-        "city": "Kansas City",
+        "city": "Independence",
         "state": "MO",
-        "zip": "64116",
+        "zip": "64055",
         "country": "United States"
       },
       "contact": {
@@ -4283,12 +4283,12 @@
     {
       "name": "Mitchell",
       "address": {
-        "line1": "9000 Maple Dr",
-        "line2": "Apt 145",
-        "city": "Lenexa",
+        "line1": "3385 Metcalf Ave",
+        "line2": null,
+        "city": "Overland Park",
         "state": "KS",
-        "zip": "66219",
-        "country": "Canada"
+        "zip": "66204",
+        "country": "United States"
       },
       "contact": {
         "phone": {
@@ -4394,11 +4394,11 @@
     {
       "name": "Hall",
       "address": {
-        "line1": "845 Hill St",
+        "line1": "3458 Lamar Ave",
         "line2": null,
-        "city": "Liberty",
-        "state": "MO",
-        "zip": "64068",
+        "city": "Mission",
+        "state": "KS",
+        "zip": "66202",
         "country": "United States"
       },
       "contact": {
@@ -4505,11 +4505,11 @@
     {
       "name": "Thompson",
       "address": {
-        "line1": "8618 Lake Dr",
+        "line1": "3531 Roe Ave",
         "line2": null,
-        "city": "Lenexa",
+        "city": "Leawood",
         "state": "KS",
-        "zip": "66215",
+        "zip": "66206",
         "country": "United States"
       },
       "contact": {
@@ -4616,11 +4616,11 @@
     {
       "name": "Brown",
       "address": {
-        "line1": "4634 Cedar Ln",
+        "line1": "3604 Mission Rd",
         "line2": null,
-        "city": "Liberty",
-        "state": "MO",
-        "zip": "64068",
+        "city": "Prairie Village",
+        "state": "KS",
+        "zip": "66208",
         "country": "United States"
       },
       "contact": {
@@ -4676,11 +4676,11 @@
     {
       "name": "Rodriguez",
       "address": {
-        "line1": "4161 Valley View Dr",
+        "line1": "3677 Shawnee Mission Parkway",
         "line2": null,
-        "city": "Independence",
-        "state": "MO",
-        "zip": "64052",
+        "city": "Shawnee",
+        "state": "KS",
+        "zip": "66203",
         "country": "United States"
       },
       "contact": {
@@ -4811,11 +4811,11 @@
     {
       "name": "Thomas",
       "address": {
-        "line1": "9151 Lincoln Dr",
-        "line2": "Apt 150",
-        "city": "Raytown",
-        "state": "MO",
-        "zip": "64133",
+        "line1": "3750 Parallel Rd",
+        "line2": null,
+        "city": "Lenexa",
+        "state": "KS",
+        "zip": "66215",
         "country": "United States"
       },
       "contact": {
@@ -4922,11 +4922,11 @@
     {
       "name": "Green",
       "address": {
-        "line1": "2335 Hill St",
+        "line1": "3823 Strang Line Rd",
         "line2": null,
-        "city": "Shawnee",
+        "city": "Olathe",
         "state": "KS",
-        "zip": "66203",
+        "zip": "66062",
         "country": "United States"
       },
       "contact": {
@@ -4982,11 +4982,11 @@
     {
       "name": "Young",
       "address": {
-        "line1": "7778 Hill St",
+        "line1": "3896 Troost Ave",
         "line2": null,
-        "city": "Liberty",
+        "city": "Kansas City",
         "state": "MO",
-        "zip": "64068",
+        "zip": "64102",
         "country": "United States"
       },
       "contact": {
@@ -5066,11 +5066,11 @@
     {
       "name": "Hall",
       "address": {
-        "line1": "1447 Cedar Ln",
+        "line1": "3969 Armour Blvd",
         "line2": null,
-        "city": "Independence",
+        "city": "North Kansas City",
         "state": "MO",
-        "zip": "64050",
+        "zip": "64116",
         "country": "United States"
       },
       "contact": {
@@ -5160,12 +5160,12 @@
     {
       "name": "Jones",
       "address": {
-        "line1": "5629 Valley View Dr",
+        "line1": "4042 Claycomo Rd",
         "line2": null,
-        "city": "Lenexa",
-        "state": "KS",
-        "zip": "66220",
-        "country": "Canada"
+        "city": "Claycomo",
+        "state": "MO",
+        "zip": "64119",
+        "country": "United States"
       },
       "contact": {
         "phone": {
@@ -5227,11 +5227,11 @@
     {
       "name": "Thompson",
       "address": {
-        "line1": "1015 Spring Dr",
-        "line2": "Apt 155",
-        "city": "Overland Park",
-        "state": "KS",
-        "zip": "66214",
+        "line1": "4115 Main St",
+        "line2": null,
+        "city": "Kansas City",
+        "state": "MO",
+        "zip": "64106",
         "country": "United States"
       },
       "contact": {
@@ -5304,11 +5304,11 @@
     {
       "name": "Torres",
       "address": {
-        "line1": "9237 Lake Dr",
+        "line1": "4188 Raytown Rd",
         "line2": null,
-        "city": "Lee's Summit",
+        "city": "Raytown",
         "state": "MO",
-        "zip": "64081",
+        "zip": "64133",
         "country": "United States"
       },
       "contact": {
@@ -5382,11 +5382,11 @@
     {
       "name": "Evans",
       "address": {
-        "line1": "8791 Washington Blvd",
+        "line1": "4261 Pleasant St",
         "line2": null,
-        "city": "Shawnee",
-        "state": "KS",
-        "zip": "66216",
+        "city": "Independence",
+        "state": "MO",
+        "zip": "64055",
         "country": "United States"
       },
       "contact": {
@@ -5510,11 +5510,11 @@
     {
       "name": "Anderson",
       "address": {
-        "line1": "1656 Madison Ave",
+        "line1": "4334 Marty St",
         "line2": null,
-        "city": "Raytown",
-        "state": "MO",
-        "zip": "64133",
+        "city": "Overland Park",
+        "state": "KS",
+        "zip": "66204",
         "country": "United States"
       },
       "contact": {
@@ -5645,11 +5645,11 @@
     {
       "name": "Hernandez",
       "address": {
-        "line1": "1602 Oak Ave",
+        "line1": "4407 Nall Ave",
         "line2": null,
-        "city": "Independence",
-        "state": "MO",
-        "zip": "64050",
+        "city": "Mission",
+        "state": "KS",
+        "zip": "66202",
         "country": "United States"
       },
       "contact": {
