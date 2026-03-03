@@ -13,7 +13,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  * Validates request body parameters before passing to the route handler.
  *
  * Supports:
- *  - Required field checks (returns 400 if missing or empty)
+ *  - Required field checks (returns 400 if missing; or blank after trimming for string values)
  *  - Enum checks (returns 400 if value not in allowed list)
  *
  * Usage:
@@ -25,7 +25,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 class RequestParameterValidationMiddleware implements MiddlewareInterface
 {
     /**
-     * @param string[] $required Field names that must be present and non-empty.
+     * @param string[] $required Field names that must be present; string values must be non-blank after trimming.
      * @param array<string, string[]> $enums Map of field name → allowed values.
      */
     public function __construct(
@@ -49,7 +49,9 @@ class RequestParameterValidationMiddleware implements MiddlewareInterface
             );
         }
         foreach ($this->required as $field) {
-            if (empty($body[$field] ?? '')) {
+            $missing = !array_key_exists($field, $body)
+                || (is_string($body[$field]) && trim($body[$field]) === '');
+            if ($missing) {
                 return SlimUtils::renderJSON(
                     new Response(),
                     ['error' => "$field is required"],
