@@ -42,3 +42,48 @@ rm -f "$TMP_BODY"
 ```
 
 Agents and scripts should follow this pattern whenever generating or programmatically editing PR bodies.
+
+Resolving review comments after pushing
+----------------------------------------
+
+After pushing fixes for PR review comments, **always resolve every addressed thread**. There is no native `gh pr` subcommand for this — use `gh api graphql` with the `resolveReviewThread` mutation.
+
+**Workflow:**
+
+```bash
+# 1. Get all unresolved thread node IDs
+gh api graphql -f query='
+{
+  repository(owner: "OWNER", name: "REPO") {
+    pullRequest(number: PR_NUMBER) {
+      reviewThreads(first: 50) {
+        nodes {
+          id
+          isResolved
+          comments(first: 1) { nodes { databaseId } }
+        }
+      }
+    }
+  }
+}' --jq '.data.repository.pullRequest.reviewThreads.nodes[] | select(.isResolved == false) | .id'
+
+# 2. Resolve each thread
+gh api graphql -f query='mutation {
+  resolveReviewThread(input: {threadId: "THREAD_NODE_ID"}) {
+    thread { id isResolved }
+  }
+}'
+```
+
+**Loop to resolve all at once:**
+
+```bash
+for thread_id in <id1> <id2> ...; do
+  gh api graphql -f query="mutation { resolveReviewThread(input: {threadId: \"$thread_id\"}) { thread { isResolved } } }"
+done
+```
+
+gh CLI preference
+-----------------
+
+Always prefer native `gh` subcommands (`gh pr`, `gh issue`, `gh repo`, etc.) over raw `gh api` REST calls. Use `gh api graphql` only for operations with no native command (e.g., resolving review threads, complex queries).
