@@ -20,3 +20,25 @@ gh pr create --title "<short title>" --body-file .github/PULL_REQUEST_TEMPLATE.m
 ```
 
 Ensure the filled template remains in Markdown and includes the required sections (What Changed, Type, Testing, Security Check, Pre-Merge checklist).
+
+Safe workflow for using the repository template
+----------------------------------------------
+
+Do NOT edit `.github/PULL_REQUEST_TEMPLATE.md` in-place. Always create a temporary copy, edit that copy, and use it when creating the PR. Example workflow (bash):
+
+```bash
+# create a timestamped copy in /tmp (do not write to repo template)
+TMP_BODY="/tmp/pr_body_$(date +%s).md"
+cp .github/PULL_REQUEST_TEMPLATE.md "$TMP_BODY"
+
+# open the copy in the user's editor
+${EDITOR:-vi} "$TMP_BODY"
+
+# create the PR using the copy as the body; this leaves the repo template untouched
+gh pr create --title "<short title>" --body-file "$TMP_BODY" --base master --head <branch>
+
+# optionally remove the temporary file when done
+rm -f "$TMP_BODY"
+```
+
+Agents and scripts should follow this pattern whenever generating or programmatically editing PR bodies.
