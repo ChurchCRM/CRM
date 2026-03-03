@@ -217,3 +217,19 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 ```
 
 **Why this matters:** Empty string literals are invalid for DATE type in strict mode. Use `ISNOTNULL` criteria when filtering for non-empty dates; use `null` value with `ISNOTNULL` criterion (not an empty string).
+
+### ObjectCollection Must Be Converted to Array for API Responses <!-- learned: 2026-03-03 -->
+
+`SlimUtils::renderJSON(array $obj)` requires a plain PHP array. Passing a Propel `ObjectCollection` directly causes a `TypeError` (HTTP 500) in PHP 8.4. Always call `->toArray()` before returning ORM results to the API.
+
+```php
+// ❌ WRONG — ObjectCollection passed to renderJSON(array) → TypeError → HTTP 500
+$events = $Calendar->getEvents($start, $end);
+return SlimUtils::renderJSON($response, $events);
+
+// ✅ CORRECT — convert to plain array first
+$events = $Calendar->getEvents($start, $end);
+return SlimUtils::renderJSON($response, $events->toArray());
+```
+
+This applies to any `->find()` result or relation collection returned by Perpl ORM.
