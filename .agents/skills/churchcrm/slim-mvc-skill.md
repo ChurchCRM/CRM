@@ -11,6 +11,24 @@ complexity: "intermediate"
 Overview
 - **Purpose:** Inventory current Slim MVCs (route groups / folders), explain what each is used for, list security and operational considerations, and provide a migration plan to create new MVC apps/groups (SundaySchool, Congregation) and move appropriate `v2` and `api` functionality into them.
 
+Middleware: FamilyMiddleware <!-- learned: 2026-03-03 -->
+
+- **Purpose:** When an API route accepts a `familyId` path parameter, prefer attaching the `FamilyMiddleware` to centralize lookup, validation, and error responses. The middleware loads the `Family` model and attaches it to the request as the `family` attribute so handlers receive a validated object.
+
+Example:
+
+```php
+// attach middleware to the route
+$group->get('/neighbors/{familyId:[0-9]+}', 'getMapNeighbors')->add(\ChurchCRM\Slim\Middleware\Api\FamilyMiddleware::class);
+
+// handler reads the validated family from the request
+function getMapNeighbors(Request $request, Response $response, array $args) {
+  /** @var \ChurchCRM\model\ChurchCRM\Family $family */
+  $family = $request->getAttribute('family');
+  // safe to use $family here — middleware handled validation/404 responses
+}
+```
+
 Current MVCs (folders & primary route files)
 - **API (`/api`)**: [src/api/routes](src/api/routes) — REST endpoints used by the frontend and external clients (people, families, calendar, finance, auth-related endpoints). Security: authenticated via app auth middleware; uses JSON error handling via centralized helpers. Keep backward-compatible API surface while migrating.
 - **v2 UI (`/v2`)**: [src/v2/routes](src/v2/routes) — new(er) UI routes, server-side endpoints supporting React/TS frontend (people, person, family, cart, calendar, user). Security: page-level permission checks and server-side rendering of initial state; interacts with services.

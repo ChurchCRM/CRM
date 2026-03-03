@@ -1,9 +1,12 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
+use ChurchCRM\Utils\GeoUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -12,6 +15,8 @@ use Slim\Routing\RouteCollectorProxy;
 $app->group('/map', function (RouteCollectorProxy $group): void {
     $group->get('/families', 'getMapFamilies');
     $group->get('/families/', 'getMapFamilies');
+    $group->get('/neighbors/{familyId:[0-9]+}', 'getMapNeighbors')->add(FamilyMiddleware::class);
+    $group->get('/neighbors/{familyId:[0-9]+}/', 'getMapNeighbors')->add(FamilyMiddleware::class);
 });
 
 /**
@@ -125,6 +130,112 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
             ];
         }
     }
+
+    return SlimUtils::renderJSON($response, $items);
+}
+
+/**
+ * @OA
+t+ *     path="/map/neighbors",
+ *     summary="Get nearest neighbor families for a given familyId",
+ *     tags={"Map"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA
+ *     Parameter(name="familyId", in="query", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="maxNeighbors", in="query", required=false, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="maxDistance", in="query", required=false, @OA\Schema(type="number", format="float")),
+ *     @OA\Response(response=200, description="Array of neighbor families")
+ */
+function getMapNeighbors(Request $request, Response $response, array $args): Response
+{
+    $params       = $request->getQueryParams();
+    $maxNeighbors = isset($params['maxNeighbors']) ? (int)$params['maxNeighbors'] : 15;
+    $maxDistance  = isset($params['maxDistance']) ? (float)$params['maxDistance'] : 10.0;
+
+    /** @var \ChurchCRM\model\ChurchCRM\Family $selectedFamily */
+    $selectedFamily = $request->getAttribute('family');
+    if (empty($selectedFamily)) {
+        return SlimUtils::renderJSON($response->withStatus(400), ["error" => "family not provided"]);
+    }
+
+    $familyId = (int)$selectedFamily->getId();
+    $selLat = (float)$selectedFamily->getLatitude();
+    $selLng = (float)$selectedFamily->getLongitude();
+    if ($selLat === 0.0 && $selLng === 0.0) {
+        return SlimUtils::renderJSON($response->withStatus(400), ["error" => "selected family has no coordinates"]);
+    }
+
+    $families = FamilyQuery::create()
+        ->filterByDateDeactivated(null)
+        ->filterByLatitude(0, Criteria::NOT_EQUAL)
+        ->filterByLongitude(0, Criteria::NOT_EQUAL)
+        ->find();
+
+    $items = [];
+
+    foreach ($families as $family) {
+        $fid = $family->getId();
+        if ($fid === $familyId) {
+            continue;
+        }
+
+        $lat = (float)$family->getLatitude();
+        $lng = (float)$family->getLongitude();
+        // compute numeric distance (in configured units)
+        try {
+            $a = new \Location\Coordinate($selLat, $selLng);
+            $b = new \Location\Coordinate($lat, $lng);
+            $vincenty = new \Location\Distance\Vincenty();
+            $meters = $vincenty->getDistance($a, $b);
+            $km = $meters / 1000.0;
+            $distance = (strtoupper(SystemConfig::getValue('sDistanceUnit')) === 'MILES') ? $km * 0.6213712 : $km;
+        } catch (\Throwable $e) {
+            // fallback to GeoUtils formatted distance and try to cast
+            $distanceText = GeoUtils::latLonDistance($selLat, $selLng, $lat, $lng);
+            $distance = (float)str_replace(',', '', $distanceText);
+        }
+
+        // filter by maxDistance
+        if ($distance > $maxDistance) {
+            continue;
+        }
+
+        $bearing = GeoUtils::latLonBearing($selLat, $selLng, $lat, $lng);
+
+        // gather people in family
+        $persons = [];
+        $people = PersonQuery::create()->filterByFamId($fid)->find();
+        foreach ($people as $p) {
+            $persons[] = [
+                'id' => $p->getId(),
+                'firstName' => $p->getFirstName(),
+                'lastName' => $p->getLastName(),
+                'classificationId' => (int)$p->getClsId(),
+            ];
+        }
+
+        $items[] = [
+            'id' => $fid,
+            'type' => 'family',
+            'name' => $family->getName(),
+            'address' => $family->getAddress(),
+            'latitude' => $lat,
+            'longitude' => $lng,
+            'distance' => $distance,
+            'distanceText' => GeoUtils::latLonDistance($selLat, $selLng, $lat, $lng),
+            'bearing' => $bearing,
+            'persons' => $persons,
+            'profileUrl' => SystemURLs::getRootPath() . '/v2/family/' . $fid,
+        ];
+    }
+
+    // sort by numeric distance
+    usort($items, function ($a, $b) {
+        return $a['distance'] <=> $b['distance'];
+    });
+
+    // limit to maxNeighbors
+    $items = array_slice($items, 0, max(0, $maxNeighbors));
 
     return SlimUtils::renderJSON($response, $items);
 }
