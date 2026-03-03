@@ -98,6 +98,32 @@ These rules apply to **every code change** in this project.
 
 ---
 
+## Mandatory Code Review Before Any Commit
+
+**NEVER commit or push without first showing the user the diff and getting explicit approval.**
+
+This applies even when the user asks you to "fix" or "make changes" — finishing the code is not permission to commit.
+
+### Required sequence for every commit:
+
+1. Make the changes
+2. Run `git diff` and show the output to the user
+3. Explicitly ask: *"Please review the changes above. Shall I commit?"*
+4. Wait for explicit approval (e.g. "yes", "looks good", "commit it")
+5. Only then run `git add` + `git commit` + `git push`
+
+### What counts as explicit approval
+
+✅ "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
+
+❌ Silence, continuing the conversation, asking follow-up questions — these are NOT approval
+
+### No exceptions
+
+Even if you are confident the changes are correct, even if the user said "fix the bug" — always show the diff and wait for approval before committing.
+
+---
+
 ## Git & PR Workflow
 
 @.agents/skills/churchcrm/git-workflow.md

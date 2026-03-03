@@ -317,29 +317,54 @@ Before marking PR ready for review, ensure:
 
 ## Agent-Specific Behaviors
 
-### Regarding Auto-Commits
+### Mandatory Code Review Before Any Commit <!-- learned: 2026-03-03 -->
 
-**DO NOT auto-commit changes** without explicit user request.
+**NEVER commit or push without showing the user the diff and receiving explicit approval.**
 
-**Pattern:**
+"Fix this bug" or "make the changes" is NOT permission to commit. Finishing the code and committing the code are two separate steps that always require explicit user confirmation.
+
+**Required sequence for every commit:**
+
 ```
-❌ WRONG - Auto-commits without asking
-I'll make these changes and commit them.
-[makes changes, runs git commit]
-
-✅ CORRECT - Ask permission first
-I've completed the changes and tests pass locally. Ready to commit with this message: 
-"Fix issue #1234: ..."
-
-Would you like me to proceed?
+1. Make the changes
+2. Run `git diff` — show the full diff to the user
+3. Ask: "Please review the changes above. Shall I commit?"
+4. Wait for explicit approval
+5. Only then: git add → git commit → git push
 ```
+
+**Examples:**
+
+```
+❌ WRONG — commits immediately after making changes
+I've fixed the bug. [runs git commit and git push]
+
+❌ WRONG — asks to commit without showing the diff
+I've made the changes. Ready to commit — shall I proceed?
+
+✅ CORRECT — shows diff first, then waits for approval
+I've made the following changes:
+
+[git diff output]
+
+Please review the above. Shall I commit with the message: "fix: ..."?
+```
+
+**What counts as explicit approval:** "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
+
+**What does NOT count as approval:** silence, asking a follow-up question, or continuing the conversation.
 
 ### When User Asks to Commit
 
-If user explicitly requests a commit:
+Even when the user explicitly says "commit" — still show the diff first if they haven't seen it yet:
 
 ```bash
-git add .
+# Show what will be committed
+git diff --staged   # if already staged
+git diff            # if not yet staged
+
+# Then, after user approves:
+git add <specific files>
 git commit -m "Fix issue #1234: Replace deprecated HTML with CSS"
 git push origin fix/issue-1234-description
 ```
