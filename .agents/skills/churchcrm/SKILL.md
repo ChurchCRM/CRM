@@ -86,6 +86,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 |-------|------------|
 | [Git Workflow](./git-workflow.md) | Commits, PRs, pre-commit validation |
 | [GitHub Interaction](./github-interaction.md) | Reviews, commits, PR management |
+| [PR Description Guidelines](./pr-description-guidelines.md) | Ensure PR bodies are written in Markdown with required sections (Summary, Changes, Files Changed, Validation, Testing) |
 | [Development Workflows](./development-workflows.md) | Setup, build, Docker management |
 | [Code Standards](./code-standards.md) | General coding, quality checks, PR reviews |
 | [Wiki Documentation](./wiki-documentation.md) | Complex documentation, admin guides |
