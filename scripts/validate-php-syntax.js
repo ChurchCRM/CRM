@@ -7,13 +7,23 @@ const { execSync } = require('child_process');
 console.log('🔍 PHP Syntax Validation');
 console.log('========================\n');
 
-// Read signatures file - use the actual signatures.json from build:signatures
-let signaturesPath = path.join(__dirname, '../src/admin/data/signatures.json');
+const srcDir = path.join(__dirname, '../src');
+const signaturesPath = path.join(srcDir, 'admin/data/signatures.json');
 
+// Generate signatures.json on-the-fly if it doesn't exist yet so that the
+// script works standalone without a prior full build.
 if (!fs.existsSync(signaturesPath)) {
-    console.error('❌ Error: signatures.json not found');
-    console.error('   Run "npm run build:signatures" first');
-    process.exit(1);
+    console.log('ℹ️  signatures.json not found — generating now...\n');
+    try {
+        execSync(`node "${path.join(__dirname, 'generate-signatures-node.js')}"`, {
+            stdio: 'inherit',
+            encoding: 'utf8'
+        });
+    } catch (err) {
+        console.error('❌ Error: Failed to generate signatures.json');
+        console.error(err.message || err);
+        process.exit(1);
+    }
 }
 
 const signatures = JSON.parse(fs.readFileSync(signaturesPath, 'utf8'));
@@ -25,59 +35,44 @@ if (!signatures.files || !Array.isArray(signatures.files)) {
 
 console.log(`📋 Found ${signatures.files.length} files in signatures\n`);
 
+const phpFiles = signatures.files
+    .map((f) => (typeof f === 'string' ? f : f.filename))
+    .filter((f) => f.endsWith('.php') && !f.includes('/vendor/') && !f.startsWith('vendor/'))
+    .map((f) => path.join(srcDir, f.replace(/\//g, path.sep)));
+
 let errors = 0;
 let validated = 0;
-let skipped = 0;
 let notFound = 0;
 
-// Validate each PHP file
-for (const fileObj of signatures.files) {
-    // Handle both object format (from signatures.json) and string format (legacy)
-    const file = typeof fileObj === 'string' ? fileObj : fileObj.filename;
-    
-    // Only validate PHP files (skip JS files - they're minified/bundled)
-    if (!file.endsWith('.php')) {
-        skipped++;
-        continue;
-    }
-    
-    // Skip vendor files - they are third-party and validation is handled by composer
-    if (file.includes('/vendor/') || file.startsWith('vendor/')) {
-        skipped++;
-        continue;
-    }
-    
-    // Convert forward slashes to correct path separators and prepend src/
-    const filePath = path.join(__dirname, '../src', file.replace(/\//g, path.sep));
-    
+for (const filePath of phpFiles) {
     if (!fs.existsSync(filePath)) {
         notFound++;
         continue;
     }
-    
+
     try {
         // Run php -l on the file
-        execSync(`php -l "${filePath}"`, { 
+        execSync(`php -l "${filePath}"`, {
             stdio: 'pipe',
             encoding: 'utf8'
         });
         validated++;
         process.stdout.write('.');
-        
+
         // Print progress every 50 files
         if (validated % 50 === 0) {
-            console.log(` ${validated}/${signatures.files.length}`);
+            console.log(` ${validated}`);
         }
     } catch (error) {
         errors++;
-        console.log(`\n❌ SYNTAX ERROR: ${file}`);
+        const rel = path.relative(srcDir, filePath);
+        console.log(`\n❌ SYNTAX ERROR: ${rel}`);
         console.log(error.stderr || error.message);
     }
 }
 
 console.log(`\n\n${'='.repeat(60)}`);
 console.log(`✅ Validated: ${validated} PHP files`);
-console.log(`⏭️  Skipped: ${skipped} non-PHP files`);
 if (notFound > 0) {
     console.log(`⚠️  Not found: ${notFound} PHP files`);
 }
