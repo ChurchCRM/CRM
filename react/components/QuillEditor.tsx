@@ -25,11 +25,19 @@ const QuillEditor: React.FunctionComponent<{
     onChangeRef.current = onChange;
   }, [onChange]);
 
+  // Sync value prop changes into Quill without re-initializing.
+  useEffect(() => {
+    if (quillRef.current && quillRef.current.root.innerHTML !== (value ?? "")) {
+      quillRef.current.root.innerHTML = value ?? "";
+    }
+  }, [value]);
+
   // Initialize Quill editor once on mount only.
   // Using an empty dependency array is intentional: re-running this effect would
   // create a duplicate toolbar inside the same container element each time the
   // parent re-renders (e.g. when the user interacts with other form fields).
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // name and placeholder are treated as mount-time constants.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: initialized once on mount; re-running appends duplicate toolbars. onChange handled via onChangeRef; value synced by separate effect above; name/placeholder are mount-time constants.
   useEffect(() => {
     if (!editorRef.current || quillRef.current) {
       return;

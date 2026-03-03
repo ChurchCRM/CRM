@@ -369,6 +369,58 @@ entry: {
 
 ---
 
+## Biome Lint — Suppression Comments <!-- learned: 2026-03-03 -->
+
+This project uses **Biome** (not ESLint) for TypeScript/React linting. ESLint suppression comments are silently ignored by Biome.
+
+### ❌ WRONG — ESLint comment does nothing in this repo
+```ts
+// eslint-disable-next-line react-hooks/exhaustive-deps
+useEffect(() => { ... }, []);
+```
+
+### ✅ CORRECT — Biome suppression syntax
+```ts
+// biome-ignore lint/correctness/useExhaustiveDependencies: <reason>
+useEffect(() => { ... }, []);
+```
+
+### Common rules to suppress
+
+| Rule | When |
+|------|------|
+| `lint/correctness/useExhaustiveDependencies` | `useEffect` / `useCallback` with intentional empty or partial deps |
+| `lint/suspicious/noExplicitAny` | Legitimate `any` in interop/legacy code |
+| `lint/style/noNonNullAssertion` | When null is structurally impossible |
+
+### React `useEffect` mount-once pattern (Quill, charts, D3, etc.)
+
+When initializing a third-party DOM library that must only run once:
+
+```ts
+// Keep a ref to the latest callback so the handler never goes stale
+const onChangeRef = useRef(onChange);
+useEffect(() => {
+  onChangeRef.current = onChange;
+}, [onChange]);
+
+// biome-ignore lint/correctness/useExhaustiveDependencies: initialized once on mount; re-running would create duplicate DOM nodes. name/placeholder are mount-time constants; onChange uses onChangeRef; value is synced by a separate effect.
+useEffect(() => {
+  // ... initialize library ...
+}, []);
+
+// Sync controlled value changes without re-initializing
+useEffect(() => {
+  if (instanceRef.current) {
+    instanceRef.current.root.innerHTML = value ?? "";
+  }
+}, [value]);
+```
+
+**Why `[]`?** Libraries like Quill append DOM nodes into a container. Re-running the effect without destroying the old instance first creates duplicate toolbars/canvases. The guard `if (instanceRef.current) return;` only partially mitigates this.
+
+---
+
 ## Related Knowledge
 - **API Utilities**: See webpack/api-utils.ts source
 - **Bootstrap Build**: See `npm run build:frontend` documentation
