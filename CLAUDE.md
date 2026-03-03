@@ -127,3 +127,34 @@ Even if you are confident the changes are correct, even if the user said "fix th
 ## Git & PR Workflow
 
 @.agents/skills/churchcrm/git-workflow.md
+
+---
+
+## Test Review & Commit Workflow
+
+**MANDATORY: Always test changes to test files BEFORE committing.**
+
+When fixing a failed test:
+
+1. **Run the failing test in isolation** — use `--spec` flag to test only that file
+2. **Identify root cause** — check logs, API responses, or browser errors
+3. **Update relevant skills** — if you discover a pattern, add it with `<!-- learned: YYYY-MM-DD -->`
+4. **Update master SKILL.md** — if it's a new testing category, add row to skill index
+5. **Commit with documentation**:
+   ```
+   test: fix {test name} - {reason}
+   
+   - Root cause: {what was wrong}
+   - Fix: {what changed}
+   - Updated: cypress-testing.md with {pattern/learning}
+   - Requires: Docker|Local environment
+   ```
+
+### Test-Related Skills to Update
+
+- `cypress-testing.md` — API patterns, session setup, data handling
+- `database-operations.md` — ORM query patterns
+- `webpack-typescript.md` — React/component patterns
+- `code-standards.md` — General best practices
+
+**Remember: Skills get documented the moment you learn something. Never defer skill updates.**

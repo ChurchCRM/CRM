@@ -246,7 +246,7 @@ function getFamiliesWithAnniversaries(Request $request, Response $response, arra
 
     $families = FamilyQuery::create()
         ->filterByDateDeactivated(null)
-        ->filterByWeddingdate(null, Criteria::NOT_EQUAL)
+        ->filterByWeddingdate(null, Criteria::ISNOTNULL)
         ->where(implode(' OR ', $conditions))
         ->orderByWeddingdate('DESC')
         ->find();

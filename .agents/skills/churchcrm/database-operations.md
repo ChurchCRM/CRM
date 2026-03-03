@@ -201,3 +201,19 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 
 **ORM Configuration:** `orm/schema.xml`, `orm/propel.php.dist`
 **Generated Models:** `src/ChurchCRM/model/ChurchCRM/` (don't edit directly)
+
+### MySQL 8.0 Strict Mode: DATE Comparisons <!-- learned: 2026-03-02 -->
+
+**CRITICAL:** MySQL 8.0+ strict mode rejects comparing DATE columns to empty strings (`''`), returning `SQLSTATE[HY000]: 1525 Incorrect DATE value: ''`.
+
+```php
+// ❌ WRONG - MySQL 8.0 strict mode rejects this
+->filterByWeddingdate('', Criteria::NOT_EQUAL)
+// Generates: WHERE wedding_date <> '' → SQL error in strict mode
+
+// ✅ CORRECT - Use IS NOT NULL for non-empty date checks
+->filterByWeddingdate(null, Criteria::ISNOTNULL)
+// Generates: WHERE wedding_date IS NOT NULL → Works on all MySQL versions
+```
+
+**Why this matters:** Empty string literals are invalid for DATE type in strict mode. Use `ISNOTNULL` criteria when filtering for non-empty dates; use `null` value with `ISNOTNULL` criterion (not an empty string).
