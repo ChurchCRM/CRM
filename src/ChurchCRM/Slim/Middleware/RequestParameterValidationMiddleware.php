@@ -35,8 +35,19 @@ class RequestParameterValidationMiddleware implements MiddlewareInterface
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $body = $request->getParsedBody() ?? [];
+        $body = $request->getParsedBody();
 
+        if ($body === null) {
+            $body = [];
+        } elseif (is_object($body)) {
+            $body = (array) $body;
+        } elseif (!is_array($body)) {
+            return SlimUtils::renderJSON(
+                new Response(),
+                ['error' => 'Invalid request body; expected a JSON object'],
+                400
+            );
+        }
         foreach ($this->required as $field) {
             if (empty($body[$field] ?? '')) {
                 return SlimUtils::renderJSON(
