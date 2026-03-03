@@ -85,7 +85,7 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
 
     $events = $Calendar->getEvents($start, $end);
 
-    return SlimUtils::renderJSON($response, $events);
+    return SlimUtils::renderJSON($response, $events->toArray());
 }
 
 /**
@@ -111,7 +111,7 @@ function getSystemCalendarEventById(Request $request, Response $response, array 
 
     $event = $Calendar->getEventById($args['eventid']);
 
-    return SlimUtils::renderJSON($response, $event);
+    return SlimUtils::renderJSON($response, $event->toArray());
 }
 
 /**
