@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-23 13:22-0800\n"
+"POT-Creation-Date: 2026-03-03 17:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1674,6 +1674,9 @@ msgstr ""
 msgid "Continue to Backup"
 msgstr ""
 
+msgid "Continue to Dashboard"
+msgstr ""
+
 msgid "Continue to Download & Apply"
 msgstr ""
 
@@ -1843,6 +1846,9 @@ msgid "Current Deposit"
 msgstr ""
 
 msgid "Current Fiscal Year"
+msgstr ""
+
+msgid "Current Password"
 msgstr ""
 
 msgid "Current Role"
@@ -5849,6 +5855,15 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+msgid "Password Change Required"
+msgstr ""
+
+msgid "Password Change Successful"
+msgstr ""
+
+msgid "Password Changed"
+msgstr ""
+
 msgid "Password Reset"
 msgstr ""
 
@@ -5868,6 +5883,9 @@ msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
 msgid "Passwords do not match"
+msgstr ""
+
+msgid "Passwords must be at least"
 msgstr ""
 
 msgid "Patriarch"
@@ -7224,6 +7242,9 @@ msgstr ""
 msgid "Set Inactive"
 msgstr ""
 
+msgid "Set New Password"
+msgstr ""
+
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
 msgstr ""
 
@@ -7803,6 +7824,10 @@ msgid "The minimum age for which you want records returned."
 msgstr ""
 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr ""
+
+#, php-format
+msgid "The password for %s has been updated."
 msgstr ""
 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8930,6 +8955,9 @@ msgstr ""
 msgid "You must select a type"
 msgstr ""
 
+msgid "You must set a new password before continuing."
+msgstr ""
+
 msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
 msgstr ""
 
@@ -9021,6 +9049,9 @@ msgid "Your new password must not match your old one."
 msgstr ""
 
 msgid "Your password choice is too obvious. Please choose something else."
+msgstr ""
+
+msgid "Your password has been updated successfully."
 msgstr ""
 
 msgid "Your previous session timed out.  Please login again."
@@ -9291,6 +9322,9 @@ msgid "seconds..."
 msgstr ""
 
 msgid "select an option"
+msgstr ""
+
+msgid "selected family has no coordinates"
 msgstr ""
 
 msgid "subscribers"
