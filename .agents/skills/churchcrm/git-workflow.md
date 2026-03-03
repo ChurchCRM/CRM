@@ -191,6 +191,28 @@ Fixes #7698
 - **Testing** - How to verify, test commands
 - **Related Issues** - Links to related issues/PRs
 
+### Keeping Branches Up to Date
+
+**Always merge master into a PR branch before reviewing or testing it.** A branch that has diverged from master may have hidden conflicts or stale code that makes the review misleading.
+
+```bash
+git fetch origin
+git checkout <branch-name>
+git merge origin/master   # Bring branch up to date
+
+# If conflicts arise: resolve, stage, commit, push
+git add <resolved-files>
+git commit -m "Merge master into <branch-name> to resolve conflicts"
+git push origin <branch-name>
+```
+
+**Rules:**
+- Resolve conflicts in favour of the PR's intent — do not silently drop changes
+- Push the merge commit back to origin so CI runs against the updated state
+- If you resolve conflicts on someone else's PR, leave a comment explaining what was resolved
+
+---
+
 ### Code Review Checklist
 
 Before marking PR ready for review, ensure:

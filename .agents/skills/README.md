@@ -73,6 +73,7 @@ All project-specific skills live in **[`churchcrm/`](./churchcrm/)**. See [`chur
 ### Development Process
 - [Git Workflow](./churchcrm/git-workflow.md)
 - [GitHub Interaction](./churchcrm/github-interaction.md)
+- [PR Review](./churchcrm/pr-review.md)
 - [Development Workflows](./churchcrm/development-workflows.md)
 - [Code Standards](./churchcrm/code-standards.md)
 - [Wiki Documentation](./churchcrm/wiki-documentation.md)
@@ -103,6 +104,7 @@ They are registered in `~/.claude/CLAUDE.md` for automatic discovery.
 
 **Example workflows:**
 
+- **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
 - **New API endpoint**: `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` → `cypress-testing.md` → `git-workflow.md`
 - **Migrate legacy page**: `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` → `database-operations.md` → `git-workflow.md`
 - **Fix security issue**: `security-best-practices.md` → `authorization-security.md` → `php-best-practices.md` → `git-workflow.md`
