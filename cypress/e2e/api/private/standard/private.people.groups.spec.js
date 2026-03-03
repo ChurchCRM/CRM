@@ -202,6 +202,75 @@ describe("API Private Group Operations", () => {
         });
     });
 
+    describe("Middleware Validation Tests", () => {
+        it("Returns 412 when updating a non-existent group", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/999999`,
+                { groupName: "Ghost Group", groupType: 0, description: "" },
+                412
+            );
+        });
+
+        it("Returns 412 when deleting a non-existent group", () => {
+            cy.makePrivateAdminAPICall(
+                "DELETE",
+                `/api/groups/999999`,
+                null,
+                412
+            );
+        });
+
+        it("Returns 412 when adding a person to a non-existent group", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/999999/addperson/1`,
+                { RoleID: 1 },
+                412
+            );
+        });
+
+        it("Sanitizes XSS in groupName when creating a group", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/`,
+                {
+                    groupName: "<script>alert('xss')</script>TestGroup",
+                    description: "safe description",
+                },
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("Name");
+                expect(resp.body.Name).to.not.include("<script>");
+            });
+        });
+
+        it("Sanitizes XSS in groupName when updating a group", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${groupID}`,
+                {
+                    groupName: "<img src=x onerror=alert(1)>CleanName",
+                    groupType: 0,
+                    description: "",
+                },
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("Name");
+                expect(resp.body.Name).to.not.include("onerror");
+            });
+        });
+
+        it("Sanitizes XSS in role name when updating group role", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${groupID}/roles/1`,
+                { groupRoleName: "<b>Bold</b>RoleName" },
+                200
+            );
+        });
+    });
+
     describe("Authorization Tests - Non-Admin Users", () => {
         it("Non-admin should be denied adding group members", () => {
             // Test that a user without bManageGroups permission is denied

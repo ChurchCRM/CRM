@@ -7,7 +7,9 @@ use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\DepositService;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\RequestParameterValidationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -39,25 +41,14 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->post('', function (Request $request, Response $response, array $args): Response {
         $depositService = new DepositService();
         $input = $request->getParsedBody();
-        $depositType = $input['depositType'] ?? '';
-        $depositComment = InputUtils::sanitizeText($input['depositComment']) ?? '';
+        $depositType = $input['depositType'];
+        $depositComment = $input['depositComment'] ?? '';
         $depositDate = $input['depositDate'] ?? DateTimeUtils::getTodayDate();
-
-        // Validate depositType against allowed values
-        $allowedTypes = ['Bank', 'CreditCard', 'BankDraft'];
-        if (!in_array($depositType, $allowedTypes, true)) {
-            $errorMsg = $depositType === ''
-                ? 'Deposit type is required. Please provide one of: ' . implode(', ', $allowedTypes)
-                : "Deposit type '$depositType' is invalid. Allowed types: " . implode(', ', $allowedTypes);
-            return SlimUtils::renderJSON($response->withStatus(400), [
-                'error' => $errorMsg,
-                'allowedTypes' => $allowedTypes
-            ]);
-        }
 
         $deposit = $depositService->createDeposit($depositType, $depositComment, $depositDate);
         return SlimUtils::renderJSON($response, $deposit->toArray());
-    });
+    })->add(new InputSanitizationMiddleware(['depositComment' => 'text']))
+      ->add(new RequestParameterValidationMiddleware(enums: ['depositType' => ['Bank', 'CreditCard', 'BankDraft']]));
 
     /**
      * @OA\Get(

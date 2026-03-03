@@ -16,7 +16,7 @@ class GroupMiddleware implements MiddlewareInterface
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = new Response();
-        $groupId = SlimUtils::getRouteArgument($request, 'groupId');
+        $groupId = SlimUtils::getRouteArgument($request, 'groupID');
         if (empty(trim($groupId))) {
             return $response->withStatus(412, gettext('Missing') . ' GroupId');
         }
