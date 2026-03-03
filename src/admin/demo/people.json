@@ -8,7 +8,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64102",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0997,
+        "longitude": -94.5786
       },
       "contact": {
         "phone": {
@@ -70,7 +72,9 @@
         "city": "North Kansas City",
         "state": "MO",
         "zip": "64116",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1192,
+        "longitude": -94.5208
       },
       "contact": {
         "phone": {
@@ -166,7 +170,9 @@
         "city": "Claycomo",
         "state": "MO",
         "zip": "64119",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1433,
+        "longitude": -94.6167
       },
       "contact": {
         "phone": {
@@ -287,7 +293,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64106",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0972,
+        "longitude": -94.5846
       },
       "contact": {
         "phone": {
@@ -414,7 +422,9 @@
         "city": "Raytown",
         "state": "MO",
         "zip": "64133",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9989,
+        "longitude": -94.4756
       },
       "contact": {
         "phone": {
@@ -562,7 +572,9 @@
         "city": "Independence",
         "state": "MO",
         "zip": "64055",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0908,
+        "longitude": -94.4089
       },
       "contact": {
         "phone": {
@@ -649,7 +661,9 @@
         "city": "Overland Park",
         "state": "KS",
         "zip": "66204",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9785,
+        "longitude": -94.6711
       },
       "contact": {
         "phone": {
@@ -741,7 +755,9 @@
         "city": "Mission",
         "state": "KS",
         "zip": "66202",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9495,
+        "longitude": -94.6362
       },
       "contact": {
         "phone": {
@@ -884,7 +900,9 @@
         "city": "Leawood",
         "state": "KS",
         "zip": "66206",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9713,
+        "longitude": -94.6054
       },
       "contact": {
         "phone": {
@@ -1026,7 +1044,9 @@
         "city": "Prairie Village",
         "state": "KS",
         "zip": "66208",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0046,
+        "longitude": -94.6362
       },
       "contact": {
         "phone": {
@@ -1158,7 +1178,9 @@
         "city": "Shawnee",
         "state": "KS",
         "zip": "66203",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0353,
+        "longitude": -94.7219
       },
       "contact": {
         "phone": {
@@ -1232,7 +1254,9 @@
         "city": "Lenexa",
         "state": "KS",
         "zip": "66215",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9689,
+        "longitude": -94.7633
       },
       "contact": {
         "phone": {
@@ -1381,7 +1405,9 @@
         "city": "Olathe",
         "state": "KS",
         "zip": "66062",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.8918,
+        "longitude": -94.819
       },
       "contact": {
         "phone": {
@@ -1455,7 +1481,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64102",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0997,
+        "longitude": -94.5786
       },
       "contact": {
         "phone": {
@@ -1597,7 +1625,9 @@
         "city": "North Kansas City",
         "state": "MO",
         "zip": "64116",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1192,
+        "longitude": -94.5208
       },
       "contact": {
         "phone": {
@@ -1681,7 +1711,9 @@
         "city": "Claycomo",
         "state": "MO",
         "zip": "64119",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1433,
+        "longitude": -94.6167
       },
       "contact": {
         "phone": {
@@ -1741,7 +1773,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64106",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0972,
+        "longitude": -94.5846
       },
       "contact": {
         "phone": {
@@ -1852,7 +1886,9 @@
         "city": "Raytown",
         "state": "MO",
         "zip": "64133",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9989,
+        "longitude": -94.4756
       },
       "contact": {
         "phone": {
@@ -1946,7 +1982,9 @@
         "city": "Independence",
         "state": "MO",
         "zip": "64055",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0908,
+        "longitude": -94.4089
       },
       "contact": {
         "phone": {
@@ -2006,7 +2044,9 @@
         "city": "Overland Park",
         "state": "KS",
         "zip": "66204",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9785,
+        "longitude": -94.6711
       },
       "contact": {
         "phone": {
@@ -2066,7 +2106,9 @@
         "city": "Mission",
         "state": "KS",
         "zip": "66202",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9495,
+        "longitude": -94.6362
       },
       "contact": {
         "phone": {
@@ -2126,7 +2168,9 @@
         "city": "Leawood",
         "state": "KS",
         "zip": "66206",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9713,
+        "longitude": -94.6054
       },
       "contact": {
         "phone": {
@@ -2186,7 +2230,9 @@
         "city": "Prairie Village",
         "state": "KS",
         "zip": "66208",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0046,
+        "longitude": -94.6362
       },
       "contact": {
         "phone": {
@@ -2246,7 +2292,9 @@
         "city": "Shawnee",
         "state": "KS",
         "zip": "66203",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0353,
+        "longitude": -94.7219
       },
       "contact": {
         "phone": {
@@ -2347,7 +2395,9 @@
         "city": "Lenexa",
         "state": "KS",
         "zip": "66215",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9689,
+        "longitude": -94.7633
       },
       "contact": {
         "phone": {
@@ -2424,7 +2474,9 @@
         "city": "Olathe",
         "state": "KS",
         "zip": "66062",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.8918,
+        "longitude": -94.819
       },
       "contact": {
         "phone": {
@@ -2552,7 +2604,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64102",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0997,
+        "longitude": -94.5786
       },
       "contact": {
         "phone": {
@@ -2663,7 +2717,9 @@
         "city": "North Kansas City",
         "state": "MO",
         "zip": "64116",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1192,
+        "longitude": -94.5208
       },
       "contact": {
         "phone": {
@@ -2757,7 +2813,9 @@
         "city": "Claycomo",
         "state": "MO",
         "zip": "64119",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1433,
+        "longitude": -94.6167
       },
       "contact": {
         "phone": {
@@ -2824,7 +2882,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64106",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0972,
+        "longitude": -94.5846
       },
       "contact": {
         "phone": {
@@ -2884,7 +2944,9 @@
         "city": "Raytown",
         "state": "MO",
         "zip": "64133",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9989,
+        "longitude": -94.4756
       },
       "contact": {
         "phone": {
@@ -2951,7 +3013,9 @@
         "city": "Independence",
         "state": "MO",
         "zip": "64055",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0908,
+        "longitude": -94.4089
       },
       "contact": {
         "phone": {
@@ -3069,7 +3133,9 @@
         "city": "Overland Park",
         "state": "KS",
         "zip": "66204",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9785,
+        "longitude": -94.6711
       },
       "contact": {
         "phone": {
@@ -3163,7 +3229,9 @@
         "city": "Mission",
         "state": "KS",
         "zip": "66202",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9495,
+        "longitude": -94.6362
       },
       "contact": {
         "phone": {
@@ -3274,7 +3342,9 @@
         "city": "Leawood",
         "state": "KS",
         "zip": "66206",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9713,
+        "longitude": -94.6054
       },
       "contact": {
         "phone": {
@@ -3334,7 +3404,9 @@
         "city": "Prairie Village",
         "state": "KS",
         "zip": "66208",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0046,
+        "longitude": -94.6362
       },
       "contact": {
         "phone": {
@@ -3394,7 +3466,9 @@
         "city": "Shawnee",
         "state": "KS",
         "zip": "66203",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0353,
+        "longitude": -94.7219
       },
       "contact": {
         "phone": {
@@ -3505,7 +3579,9 @@
         "city": "Lenexa",
         "state": "KS",
         "zip": "66215",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9689,
+        "longitude": -94.7633
       },
       "contact": {
         "phone": {
@@ -3633,7 +3709,9 @@
         "city": "Olathe",
         "state": "KS",
         "zip": "66062",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.8918,
+        "longitude": -94.819
       },
       "contact": {
         "phone": {
@@ -3700,7 +3778,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64102",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0997,
+        "longitude": -94.5786
       },
       "contact": {
         "phone": {
@@ -3794,7 +3874,9 @@
         "city": "North Kansas City",
         "state": "MO",
         "zip": "64116",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1192,
+        "longitude": -94.5208
       },
       "contact": {
         "phone": {
@@ -3854,7 +3936,9 @@
         "city": "Claycomo",
         "state": "MO",
         "zip": "64119",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1433,
+        "longitude": -94.6167
       },
       "contact": {
         "phone": {
@@ -3921,7 +4005,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64106",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0972,
+        "longitude": -94.5846
       },
       "contact": {
         "phone": {
@@ -4049,7 +4135,9 @@
         "city": "Raytown",
         "state": "MO",
         "zip": "64133",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9989,
+        "longitude": -94.4756
       },
       "contact": {
         "phone": {
@@ -4177,7 +4265,9 @@
         "city": "Independence",
         "state": "MO",
         "zip": "64055",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0908,
+        "longitude": -94.4089
       },
       "contact": {
         "phone": {
@@ -4288,7 +4378,9 @@
         "city": "Overland Park",
         "state": "KS",
         "zip": "66204",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9785,
+        "longitude": -94.6711
       },
       "contact": {
         "phone": {
@@ -4399,7 +4491,9 @@
         "city": "Mission",
         "state": "KS",
         "zip": "66202",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9495,
+        "longitude": -94.6362
       },
       "contact": {
         "phone": {
@@ -4510,7 +4604,9 @@
         "city": "Leawood",
         "state": "KS",
         "zip": "66206",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9713,
+        "longitude": -94.6054
       },
       "contact": {
         "phone": {
@@ -4621,7 +4717,9 @@
         "city": "Prairie Village",
         "state": "KS",
         "zip": "66208",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0046,
+        "longitude": -94.6362
       },
       "contact": {
         "phone": {
@@ -4681,7 +4779,9 @@
         "city": "Shawnee",
         "state": "KS",
         "zip": "66203",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0353,
+        "longitude": -94.7219
       },
       "contact": {
         "phone": {
@@ -4816,7 +4916,9 @@
         "city": "Lenexa",
         "state": "KS",
         "zip": "66215",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9689,
+        "longitude": -94.7633
       },
       "contact": {
         "phone": {
@@ -4927,7 +5029,9 @@
         "city": "Olathe",
         "state": "KS",
         "zip": "66062",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.8918,
+        "longitude": -94.819
       },
       "contact": {
         "phone": {
@@ -4987,7 +5091,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64102",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0997,
+        "longitude": -94.5786
       },
       "contact": {
         "phone": {
@@ -5071,7 +5177,9 @@
         "city": "North Kansas City",
         "state": "MO",
         "zip": "64116",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1192,
+        "longitude": -94.5208
       },
       "contact": {
         "phone": {
@@ -5165,7 +5273,9 @@
         "city": "Claycomo",
         "state": "MO",
         "zip": "64119",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.1433,
+        "longitude": -94.6167
       },
       "contact": {
         "phone": {
@@ -5232,7 +5342,9 @@
         "city": "Kansas City",
         "state": "MO",
         "zip": "64106",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0972,
+        "longitude": -94.5846
       },
       "contact": {
         "phone": {
@@ -5309,7 +5421,9 @@
         "city": "Raytown",
         "state": "MO",
         "zip": "64133",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9989,
+        "longitude": -94.4756
       },
       "contact": {
         "phone": {
@@ -5387,7 +5501,9 @@
         "city": "Independence",
         "state": "MO",
         "zip": "64055",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 39.0908,
+        "longitude": -94.4089
       },
       "contact": {
         "phone": {
@@ -5515,7 +5631,9 @@
         "city": "Overland Park",
         "state": "KS",
         "zip": "66204",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9785,
+        "longitude": -94.6711
       },
       "contact": {
         "phone": {
@@ -5650,7 +5768,9 @@
         "city": "Mission",
         "state": "KS",
         "zip": "66202",
-        "country": "United States"
+        "country": "United States",
+        "latitude": 38.9495,
+        "longitude": -94.6362
       },
       "contact": {
         "phone": {
