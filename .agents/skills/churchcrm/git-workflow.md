@@ -317,53 +317,60 @@ Before marking PR ready for review, ensure:
 
 ## Agent-Specific Behaviors
 
-### Mandatory Code Review Before Any Commit <!-- learned: 2026-03-03 -->
+### Mandatory Pre-Commit Sequence <!-- learned: 2026-03-03 -->
 
-**NEVER commit or push without showing the user the diff and receiving explicit approval.**
-
-"Fix this bug" or "make the changes" is NOT permission to commit. Finishing the code and committing the code are two separate steps that always require explicit user confirmation.
-
-**Required sequence for every commit:**
+**NEVER commit or push without completing ALL steps in order.**
 
 ```
 1. Make the changes
-2. Run `git diff` — show the full diff to the user
-3. Ask: "Please review the changes above. Shall I commit?"
-4. Wait for explicit approval
-5. Only then: git add → git commit → git push
+2. npm run lint          ← Biome lint (catches what CI catches)
+3. npm run build         ← TypeScript + PHP syntax + Biome format
+4. Fix any errors
+5. git diff              ← Show the full diff to the user
+6. Ask for approval      ← "Build passed. Please review. Shall I commit?"
+7. Wait for explicit yes ← "yes" / "lgtm" / "commit it" / "go ahead"
+8. git add → git commit → git push
 ```
 
 **Examples:**
 
 ```
-❌ WRONG — commits immediately after making changes
-I've fixed the bug. [runs git commit and git push]
+❌ WRONG — commits without building or showing diff
+I've fixed the bug. [runs git commit]
 
-❌ WRONG — asks to commit without showing the diff
-I've made the changes. Ready to commit — shall I proceed?
+❌ WRONG — asks to commit without running build first
+Changes look good. Ready to commit — shall I proceed?
 
-✅ CORRECT — shows diff first, then waits for approval
-I've made the following changes:
+✅ CORRECT
+npm run lint  → 0 errors
+npm run build → Build successful
 
+Here is the diff:
 [git diff output]
 
-Please review the above. Shall I commit with the message: "fix: ..."?
+Build and lint passed. Please review the changes above. Shall I commit with:
+"fix: ..."?
 ```
 
-**What counts as explicit approval:** "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
+**Explicit approval:** "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
 
-**What does NOT count as approval:** silence, asking a follow-up question, or continuing the conversation.
+**Not approval:** silence, a follow-up question, or continuing the conversation.
+
+**No exceptions** — not even for "small" or "obvious" changes.
 
 ### When User Asks to Commit
 
-Even when the user explicitly says "commit" — still show the diff first if they haven't seen it yet:
+Even when the user says "commit it" — still run build + lint first if not done yet, then show the diff:
 
 ```bash
-# Show what will be committed
-git diff --staged   # if already staged
-git diff            # if not yet staged
+# 1. Validate
+npm run lint
+npm run build
 
-# Then, after user approves:
+# 2. Show diff
+git diff
+
+# 3. After user approves:
 git add <specific files>
 git commit -m "Fix issue #1234: Replace deprecated HTML with CSS"
 git push origin fix/issue-1234-description
@@ -504,4 +511,4 @@ git push origin fix/issue-1234-description --force-with-lease
 
 ---
 
-Last updated: February 16, 2026
+Last updated: March 3, 2026
