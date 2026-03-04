@@ -4,6 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DepositService;
 use ChurchCRM\Slim\Middleware\Api\DepositMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
