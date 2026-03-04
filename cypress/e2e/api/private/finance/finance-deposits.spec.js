@@ -222,6 +222,53 @@ describe("API Private Deposit Operations", () => {
         });
     });
 
+    describe("Middleware Validation Tests", () => {
+        it("Rejects missing depositType with 400", () => {
+            const today = new Date().toISOString().split("T")[0];
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/deposits`,
+                { depositComment: "No type given", depositDate: today },
+                400
+            ).then((resp) => {
+                expect(resp.body).to.have.property("error");
+                expect(resp.body).to.have.property("allowed");
+                expect(resp.body.allowed).to.include("Bank");
+            });
+        });
+
+        it("Rejects invalid depositType with 400", () => {
+            const today = new Date().toISOString().split("T")[0];
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/deposits`,
+                { depositType: "Cash", depositDate: today },
+                400
+            ).then((resp) => {
+                expect(resp.body).to.have.property("error");
+                expect(resp.body.error).to.include("Cash");
+                expect(resp.body).to.have.property("allowed");
+            });
+        });
+
+        it("Sanitizes XSS in depositComment before saving", () => {
+            const today = new Date().toISOString().split("T")[0];
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/deposits`,
+                {
+                    depositType: "Bank",
+                    depositComment: "<script>alert('xss')</script>Test",
+                    depositDate: today,
+                },
+                200
+            ).then((resp) => {
+                expect(resp.body).to.have.property("Comment");
+                expect(resp.body.Comment).to.not.include("<script>");
+            });
+        });
+    });
+
     describe("Data Structure Validation", () => {
         it("Verify deposit data structure", () => {
             // Ensure deposit operations return proper structure
