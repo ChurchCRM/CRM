@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace ChurchCRM\Slim\Middleware\Api;
 
-use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\CalendarQuery;
 
-class GroupMiddleware extends AbstractEntityMiddleware
+class CalendarMiddleware extends AbstractEntityMiddleware
 {
     protected function getRouteParamName(): string
     {
-        return 'groupID';
+        return 'id';
     }
 
     protected function getAttributeName(): string
     {
-        return 'group';
+        return 'calendar';
     }
 
     protected function loadEntity(string $id): mixed
     {
-        return GroupQuery::create()->findPk($id);
+        return CalendarQuery::create()->findOneById($id);
     }
 
     protected function getNotFoundMessage(): string
     {
-        return gettext('Group not found');
+        return gettext('Calendar not found');
     }
 }

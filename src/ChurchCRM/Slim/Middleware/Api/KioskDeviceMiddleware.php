@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace ChurchCRM\Slim\Middleware\Api;
 
-use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 
-class GroupMiddleware extends AbstractEntityMiddleware
+class KioskDeviceMiddleware extends AbstractEntityMiddleware
 {
     protected function getRouteParamName(): string
     {
-        return 'groupID';
+        return 'kioskId';
     }
 
     protected function getAttributeName(): string
     {
-        return 'group';
+        return 'kioskDevice';
     }
 
     protected function loadEntity(string $id): mixed
     {
-        return GroupQuery::create()->findPk($id);
+        return KioskDeviceQuery::create()->findOneById($id);
     }
 
     protected function getNotFoundMessage(): string
     {
-        return gettext('Group not found');
+        return gettext('Kiosk not found');
     }
 }
