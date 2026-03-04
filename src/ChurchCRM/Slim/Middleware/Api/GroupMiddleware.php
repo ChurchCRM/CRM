@@ -18,12 +18,12 @@ class GroupMiddleware implements MiddlewareInterface
         $response = new Response();
         $groupId = SlimUtils::getRouteArgument($request, 'groupID');
         if (empty(trim($groupId))) {
-            return $response->withStatus(412, gettext('Missing') . ' GroupId');
+            return SlimUtils::renderErrorJSON($response, gettext('Missing') . ' GroupId', [], 412);
         }
 
         $group = GroupQuery::create()->findPk($groupId);
         if (empty($group)) {
-            return $response->withStatus(412, 'GroupId: ' . $groupId . ' ' . gettext('not found'));
+            return SlimUtils::renderErrorJSON($response, 'GroupId: ' . $groupId . ' ' . gettext('not found'), [], 412);
         }
 
         $request = $request->withAttribute('group', $group);
