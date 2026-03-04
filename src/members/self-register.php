@@ -60,7 +60,7 @@ use ChurchCRM\dto\SystemURLs;
                     data: 'Id',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href=' + window.CRM.root + '/v2/family/' + data + '>' + data + '</a>';
+                        return '<a href="' + window.CRM.root + '/v2/family/' + encodeURIComponent(data) + '">' + data + '</a>';
                     }
                 },
                 {
@@ -99,7 +99,7 @@ use ChurchCRM\dto\SystemURLs;
                     data: 'Id',
                     searchable: false,
                     render: function (data, type, full, meta) {
-                        return '<a href=' + window.CRM.root + '/PersonView.php?PersonID=' + data + '>' + data + '</a>';
+                        return '<a href="' + window.CRM.root + '/PersonView.php?PersonID=' + encodeURIComponent(data) + '">' + data + '</a>';
                     }
                 },
                 {
