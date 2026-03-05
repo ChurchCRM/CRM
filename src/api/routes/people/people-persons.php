@@ -269,8 +269,8 @@ function getUpdatedPersons(Request $request, Response $response, array $args): R
 function getPersonsWithBirthdays(Request $request, Response $response, array $args): Response
 {
     // Get birthdays for 14-day range: 7 days before to 7 days after today
-    // Use configured timezone to ensure correct "today" calculation
-    $today = DateTimeUtils::getToday();
+    // Use start of today (midnight) to ensure day-boundary comparisons are accurate
+    $today = DateTimeUtils::getStartOfToday();
     $dates = [];
     
     for ($i = -7; $i <= 7; $i++) {
