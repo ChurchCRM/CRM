@@ -33,19 +33,18 @@ abstract class BaseEmail
     private function setConnection(): void
     {
         $this->mail = new PHPMailer();
-        $this->mail->IsSMTP();
-        $this->mail->CharSet = 'UTF-8';
-        $this->mail->Timeout = SystemConfig::getIntValue('iSMTPTimeout');
-        $this->mail->Host = SystemConfig::getValue('sSMTPHost');
-        $this->mail->SMTPAutoTLS = SystemConfig::getBooleanValue('bPHPMailerAutoTLS');
-        $this->mail->SMTPSecure = SystemConfig::getValue('sPHPMailerSMTPSecure');
-        if (SystemConfig::getBooleanValue('bSMTPAuth')) {
+        $this->mail->isSMTP();
+        $this->mail->CharSet    = 'UTF-8';
+        $this->mail->Host       = SystemConfig::getValue('plugin.smtp.host');
+        $this->mail->Port       = (int) (SystemConfig::getValue('plugin.smtp.port') ?: 25);
+        $this->mail->Timeout    = (int) (SystemConfig::getValue('plugin.smtp.timeout') ?: 10);
+        $this->mail->SMTPAutoTLS = SystemConfig::getBooleanValue('plugin.smtp.autoTLS');
+        $this->mail->SMTPSecure = trim(SystemConfig::getValue('plugin.smtp.smtpSecure'));
+        if (SystemConfig::getBooleanValue('plugin.smtp.auth')) {
             $this->mail->SMTPAuth = true;
-            $this->mail->Username = SystemConfig::getValue('sSMTPUser');
-            $this->mail->Password = SystemConfig::getValue('sSMTPPass');
+            $this->mail->Username = SystemConfig::getValue('plugin.smtp.username');
+            $this->mail->Password = SystemConfig::getValue('plugin.smtp.password');
         }
-        // Keep SMTP debug off by default to avoid verbose SMTP dumps in logs.
-        // If deeper SMTP troubleshooting is needed enable PHPMailer debug explicitly.
         $this->mail->SMTPDebug = 0;
     }
 

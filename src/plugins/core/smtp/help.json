@@ -1,0 +1,39 @@
+{
+  "summary": "The SMTP Email plugin connects ChurchCRM to your email server so all outgoing notifications, password resets, event reminders, and reports are delivered reliably.",
+  "sections": [
+    {
+      "title": "Quick Setup",
+      "content": "1. Enable the plugin.\n2. Click the Gmail or Outlook preset button to pre-fill common settings, or enter your server details manually.\n3. Enter your SMTP Username and Password.\n4. Click \"Save Settings\", then \"Test Connection\" to verify everything works."
+    },
+    {
+      "title": "Gmail Setup",
+      "content": "Use the Gmail preset button, then:\n• Username: your full Gmail address (e.g. yourname@gmail.com)\n• Password: create an App Password at myaccount.google.com/apppasswords (2-Step Verification must be enabled)\n\nNote: Google requires an App Password — your regular Gmail password will not work with SMTP."
+    },
+    {
+      "title": "Outlook / Microsoft 365 Setup",
+      "content": "Use the Outlook preset button, then:\n• Username: your full Microsoft email address\n• Password: your Microsoft account password\n\nFor Microsoft 365 business accounts, your administrator may need to enable SMTP AUTH for your mailbox."
+    },
+    {
+      "title": "Custom SMTP Server",
+      "content": "Enter your provider's hostname, port, and credentials. Common ports:\n• 25  — Unencrypted (not recommended)\n• 587 — STARTTLS (recommended for most providers)\n• 465 — SSL/TLS\n\nCheck your hosting provider's documentation for the correct values."
+    },
+    {
+      "title": "Test Connection",
+      "content": "The \"Test Connection\" button sends a real email to your church address with full SMTP debug output so you can diagnose any connection issues. The debug log is shown inline after the test."
+    }
+  ],
+  "links": [
+    {
+      "label": "ChurchCRM Email Documentation",
+      "url": "https://docs.churchcrm.io/en/ChurchCRM/Email-Configuration"
+    },
+    {
+      "label": "Google App Passwords",
+      "url": "https://myaccount.google.com/apppasswords"
+    },
+    {
+      "label": "PHPMailer SMTP Guide",
+      "url": "https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting"
+    }
+  ]
+}

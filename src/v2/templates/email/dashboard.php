@@ -16,7 +16,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <a href="<?= SystemURLs::getRootPath()?>/v2/email/duplicate" class="btn btn-app bg-warning"><i class="fa-solid fa-exclamation-triangle fa-3x"></i><br><?= gettext('Find Duplicate Emails') ?></a>
             <a href="<?= SystemURLs::getRootPath()?>/v2/email/missing" class="btn btn-app bg-danger"><i class="fa-solid fa-bell-slash fa-3x"></i><br><?= gettext('Families Without Emails') ?></a>
             <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
-            <a href="<?= SystemURLs::getRootPath()?>/admin/system/debug/email" class="btn btn-app bg-secondary"><i class="fa-solid fa-stethoscope fa-3x"></i><br><?= gettext('Debug') ?></a>
+            <a href="<?= SystemURLs::getRootPath()?>/plugins/management#plugin-smtp" class="btn btn-app bg-secondary"><i class="fa-solid fa-stethoscope fa-3x"></i><br><?= gettext('SMTP Settings') ?></a>
             <?php } ?>
         </div>
     </div>
