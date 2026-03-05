@@ -203,30 +203,30 @@ describe("API Private Group Operations", () => {
     });
 
     describe("Middleware Validation Tests", () => {
-        it("Returns 412 when updating a non-existent group", () => {
+        it("Returns 404 when updating a non-existent group", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/groups/999999`,
                 { groupName: "Ghost Group", groupType: 0, description: "" },
-                412
+                404
             );
         });
 
-        it("Returns 412 when deleting a non-existent group", () => {
+        it("Returns 404 when deleting a non-existent group", () => {
             cy.makePrivateAdminAPICall(
                 "DELETE",
                 `/api/groups/999999`,
                 null,
-                412
+                404
             );
         });
 
-        it("Returns 412 when adding a person to a non-existent group", () => {
+        it("Returns 404 when adding a person to a non-existent group", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/groups/999999/addperson/1`,
                 { RoleID: 1 },
-                412
+                404
             );
         });
 

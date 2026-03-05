@@ -104,9 +104,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         '/{groupID:[0-9]+}',
         fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
             $response,
-            GroupQuery::create()->findOneById($args['groupID'])->toArray()
+            $request->getAttribute('group')->toArray()
         )
-    );
+    )->add(GroupMiddleware::class);
 
     /**
      * @OA\Get(
@@ -124,9 +124,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         '/{groupID:[0-9]+}/cartStatus',
         fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
             $response,
-            ['isInCart' => GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart()]
+            ['isInCart' => $request->getAttribute('group')->checkAgainstCart()]
         )
-    );
+    )->add(GroupMiddleware::class);
 
     /**
      * @OA\Get(
@@ -478,7 +478,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
             return SlimUtils::renderErrorJSON($response, gettext('Failed to add role. Please try again.'), [], $status, $e, $request);
         }
-    });
+    })->add(GroupMiddleware::class)
+      ->add(new InputSanitizationMiddleware(['roleName' => 'text']));
 
     /**
      * @OA\Post(

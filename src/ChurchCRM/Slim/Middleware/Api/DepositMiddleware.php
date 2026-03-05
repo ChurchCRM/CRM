@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace ChurchCRM\Slim\Middleware\Api;
 
-use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 
-class GroupMiddleware extends AbstractEntityMiddleware
+class DepositMiddleware extends AbstractEntityMiddleware
 {
     protected function getRouteParamName(): string
     {
-        return 'groupID';
+        return 'id';
     }
 
     protected function getAttributeName(): string
     {
-        return 'group';
+        return 'deposit';
     }
 
     protected function loadEntity(string $id): mixed
     {
-        return GroupQuery::create()->findPk($id);
+        return DepositQuery::create()->findOneById($id);
     }
 
     protected function getNotFoundMessage(): string
     {
-        return gettext('Group not found');
+        return gettext('Deposit not found');
     }
 }
