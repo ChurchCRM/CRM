@@ -5,6 +5,7 @@ namespace ChurchCRM\dto;
 use ChurchCRM\Config;
 use ChurchCRM\data\Countries;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Utils\InputUtils;
 use Exception;
 use Monolog\Level;
 use Monolog\Logger;
@@ -418,15 +419,38 @@ class   SystemConfig
             throw new \Exception(gettext('An invalid configuration name has been requested') . ': ' . $name);
         }
 
-        self::$configs[$name]->setValue($value);
+        $configItem = self::$configs[$name];
+
+        // If this config item is declared as JSON, validate and sanitize it before saving
+        if ($configItem->getType() === 'json') {
+            try {
+                $decoded = InputUtils::validateJson($value);
+            } catch (\InvalidArgumentException $e) {
+                throw new \Exception(gettext('Invalid JSON provided for configuration') . ': ' . $name . ' - ' . $e->getMessage());
+            }
+
+            // Recursively sanitize any string values to reduce XSS risk
+            $sanitized = InputUtils::sanitizeJsonStrings($decoded);
+
+            try {
+                $value = json_encode($sanitized, JSON_THROW_ON_ERROR);
+            } catch (\JsonException $e) {
+                throw new \Exception(gettext('Unable to re-encode JSON for configuration') . ': ' . $name . ' - ' . $e->getMessage());
+            }
+        }
+
+        $configItem->setValue($value);
     }
+
+    
 
     public static function setValueById(string $Id, $value): void
     {
         $success = false;
         foreach (self::$configs as $configItem) {
             if ($configItem->getId() == $Id) {
-                $configItem->setValue($value);
+                // Delegate to setValue by name so JSON validation/sanitization is applied
+                self::setValue($configItem->getName(), $value);
                 $success = true;
             }
         }

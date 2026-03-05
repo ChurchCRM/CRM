@@ -93,6 +93,57 @@ class InputUtils
     }
 
     /**
+     * Recursively sanitize JSON string values by stripping HTML tags.
+     * Use this for JSON configuration payloads where values should not contain HTML.
+     *
+     * @param mixed $data
+     * @return mixed
+     */
+    public static function sanitizeJsonStrings($data)
+    {
+        if (is_array($data)) {
+            $out = [];
+            foreach ($data as $k => $v) {
+                $out[$k] = self::sanitizeJsonStrings($v);
+            }
+
+            return $out;
+        }
+
+        if (is_string($data)) {
+            return self::sanitizeText($data);
+        }
+
+        return $data;
+    }
+
+    /**
+     * Validate JSON input and return decoded array/object.
+     * Accepts either a JSON string or already-decoded array. Throws on invalid JSON.
+     *
+     * @param mixed $json
+     * @return mixed
+     * @throws \InvalidArgumentException
+     */
+    public static function validateJson($json)
+    {
+        if (is_array($json) || is_object($json)) {
+            return $json;
+        }
+
+        if (is_string($json)) {
+            $trimmed = trim($json);
+            try {
+                return json_decode($trimmed, true, 512, JSON_THROW_ON_ERROR);
+            } catch (\JsonException $e) {
+                throw new \InvalidArgumentException('Invalid JSON: ' . $e->getMessage());
+            }
+        }
+
+        throw new \InvalidArgumentException('Invalid JSON input type');
+    }
+
+    /**
      * Escape HTML for safe display in HTML context (body content and attributes)
      * Converts special characters to HTML entities: &, <, >, ", '
      * Automatically handles stripslashes() for magic quotes compatibility
