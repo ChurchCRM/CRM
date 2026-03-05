@@ -486,18 +486,12 @@
         ],
         "dbVersion": "7.0.0"
     },
-    "pre-7.0.2": {
+    "current": {
         "versions": [
+            "7.0.0",
             "7.0.1"
         ],
         "scripts": [],
         "dbVersion": "7.0.2"
-    },
-    "current": {
-        "versions": [
-            "7.0.0"
-        ],
-        "scripts": [],
-        "dbVersion": "7.0.1"
     }
 }
