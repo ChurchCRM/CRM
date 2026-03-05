@@ -1,41 +1,57 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Slim\SlimUtils;
-
 use Laminas\Diactoros\Response;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Message\ResponseInterface;
 
-class UserMiddleware implements MiddlewareInterface
+class UserMiddleware extends AbstractEntityMiddleware
 {
+    protected function getRouteParamName(): string
+    {
+        return 'userId';
+    }
+
+    protected function getAttributeName(): string
+    {
+        return 'user';
+    }
+
+    protected function loadEntity(string $id): mixed
+    {
+        return UserQuery::create()->findPk($id);
+    }
+
+    protected function getNotFoundMessage(): string
+    {
+        return gettext('User not found');
+    }
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
         $response = new Response();
-        $userId = SlimUtils::getRouteArgument($request, 'userId');
+        $userId = SlimUtils::getRouteArgument($request, $this->getRouteParamName());
+
         if (empty(trim($userId))) {
-            return $response->withStatus(412, gettext('Missing') . ' UserId');
+            return SlimUtils::renderErrorJSON($response, gettext('Missing') . ' ' . $this->getRouteParamName(), [], 412);
         }
 
         $loggedInUser = AuthenticationManager::getCurrentUser();
         if ($loggedInUser->getId() == $userId) {
-            $user = $loggedInUser;
-        } elseif ($loggedInUser->isAdmin()) {
-            $user = UserQuery::create()->findPk($userId);
-            if (empty($user)) {
-                return $response->withStatus(412, 'User : ' . $userId . ' ' . gettext('not found'));
-            }
-        } else {
+            return $handler->handle($request->withAttribute($this->getAttributeName(), $loggedInUser));
+        }
+
+        if (!$loggedInUser->isAdmin()) {
             return $response->withStatus(401);
         }
 
-        $request = $request->withAttribute('user', $user);
-
-        return $handler->handle($request);
+        return parent::process($request, $handler);
     }
 }
