@@ -6,9 +6,9 @@ use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
+use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -193,11 +193,10 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/{groupID:[0-9]+}/roles', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $group = GroupQuery::create()->findOneById($groupID);
+        $group = $request->getAttribute('group');
         $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
         return SlimUtils::renderJSON($response, $roles->toArray());
-    });
+    })->add(GroupMiddleware::class);
 });
 
 $app->group('/groups', function (RouteCollectorProxy $group): void {
@@ -295,7 +294,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $person = PersonQuery::create()->findPk($args['userID']);
+        $person = $request->getAttribute('person');
         $group = $request->getAttribute('group');
         $groupRoleMemberships = $group->getPerson2group2roleP2g2rs();
         foreach ($groupRoleMemberships as $groupRoleMembership) {
@@ -310,7 +309,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             }
         }
         return SlimUtils::renderSuccessJSON($response);
-    })->add(GroupMiddleware::class);
+    })->add(GroupMiddleware::class)->add(new PersonMiddleware('userID'));
 
     /**
      * @OA\Post(
@@ -334,7 +333,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
-        $person = PersonQuery::create()->findPk($userID);
+        $person = $request->getAttribute('person');
         $input = $request->getParsedBody();
         $group = $request->getAttribute('group');
 
@@ -354,7 +353,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             ->filterByPersonId($input['PersonID'])
             ->findByGroupId($groupID);
         return SlimUtils::renderJSON($response, $members->toArray());
-    })->add(GroupMiddleware::class);
+    })->add(GroupMiddleware::class)->add(new PersonMiddleware('userID'));
 
     /**
      * @OA\Post(

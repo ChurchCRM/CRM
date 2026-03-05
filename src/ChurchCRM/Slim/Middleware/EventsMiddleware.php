@@ -1,33 +1,31 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\model\ChurchCRM\EventQuery;
-use ChurchCRM\Slim\SlimUtils;
-use Laminas\Diactoros\Response;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Message\ResponseInterface;
+use ChurchCRM\Slim\Middleware\Api\AbstractEntityMiddleware;
 
-class EventsMiddleware implements MiddlewareInterface
+class EventsMiddleware extends AbstractEntityMiddleware
 {
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    protected function getRouteParamName(): string
     {
-        $eventId = SlimUtils::getRouteArgument($request, 'id');
-        if (empty(trim($eventId))) {
-            $response = new Response();
-            return SlimUtils::renderJSON($response, ['message' => gettext('Missing event id')], 400);
-        }
+        return 'id';
+    }
 
-        $event = EventQuery::create()->findPk($eventId);
+    protected function getAttributeName(): string
+    {
+        return 'event';
+    }
 
-        if (empty($event)) {
-            $response = new Response();
-            return SlimUtils::renderJSON($response, ['message' => gettext('Event not found')], 404);
-        }
-        $request = $request->withAttribute('event', $event);
+    protected function loadEntity(string $id): mixed
+    {
+        return EventQuery::create()->findPk($id);
+    }
 
-        return $handler->handle($request);
+    protected function getNotFoundMessage(): string
+    {
+        return gettext('Event not found');
     }
 }
