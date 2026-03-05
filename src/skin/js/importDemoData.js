@@ -222,9 +222,9 @@
               <div class="demo-import-options mb-4">
                 <h4 class="mb-3">${i18next.t("Optional Data to Include")}</h4>
                 <div class="form-check mb-2">
-                  <input type="checkbox" class="form-check-input" id="includeDemoFinancial" disabled>
-                  <label class="form-check-label text-muted" for="includeDemoFinancial">
-                    ${i18next.t("Include financial data (donation funds, pledges)")} <span class="text-muted small">(${i18next.t("Coming soon")})</span>
+                  <input type="checkbox" class="form-check-input" id="includeDemoFinancial" checked>
+                  <label class="form-check-label" for="includeDemoFinancial">
+                    ${i18next.t("Include financial data (donation funds, pledges)")}
                   </label>
                 </div>
                 <div class="form-check mb-2">

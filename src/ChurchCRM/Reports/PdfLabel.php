@@ -169,7 +169,7 @@ class PdfLabel extends ChurchInfoReport
         $_PosX = $this->_Margin_Left + ($this->_COUNTX * ($this->_Width + $this->_X_Space));
         $_PosY = $this->_Margin_Top + ($this->_COUNTY * ($this->_Height + $this->_Y_Space));
         $this->SetXY($_PosX + 3, $_PosY + 3);
-        $this->MultiCell($this->_Width, $this->_Line_Height, iconv('UTF-8', 'ISO-8859-1', $texte));
+        $this->MultiCell($this->_Width, $this->_Line_Height, self::convertToLatin1($texte));
         $this->_COUNTY++;
 
         if ($this->_COUNTY == $this->_Y_Number) {

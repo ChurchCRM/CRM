@@ -12,6 +12,19 @@ use Slim\Routing\RouteCollectorProxy;
 use ChurchCRM\Service\FinancialService;
 
 $app->group('/payments', function (RouteCollectorProxy $group): void {
+    /**
+     * @OA\Get(
+     *     path="/payments/",
+     *     summary="Get all payments (Finance role required)",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Array of payment records",
+     *         @OA\JsonContent(@OA\Property(property="payments", type="array", @OA\Items(type="object")))
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
     $group->get('/', function (Request $request, Response $response, array $args): Response {
         $financialService = new FinancialService();
 
@@ -21,6 +34,22 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         );
     });
 
+    /**
+     * @OA\Post(
+     *     path="/payments/",
+     *     summary="Submit a new pledge or payment (Finance role required)",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\RequestBody(required=true,
+     *         @OA\JsonContent(description="Pledge or payment fields (FamilyId, FundId, Amount, Date, DepositId, etc.)")
+     *     ),
+     *     @OA\Response(response=200, description="Created pledge or payment record",
+     *         @OA\JsonContent(@OA\Property(property="payment", type="object"))
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
     $group->post('/', function (Request $request, Response $response, array $args): Response {
         $payment = (object) $request->getParsedBody();
         $financialService = new FinancialService();
@@ -31,6 +60,27 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         );
     });
 
+    /**
+     * @OA\Get(
+     *     path="/payments/family/{familyId}/list",
+     *     summary="Get pledge and payment history for a family (Finance role required)",
+     *     description="Results are filtered by the current user's ShowSince date and ShowPayments/ShowPledges preferences.",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Pledge/payment rows for the family",
+     *         @OA\JsonContent(@OA\Property(property="data", type="array", @OA\Items(
+     *             @OA\Property(property="FormattedFY", type="string"),
+     *             @OA\Property(property="Amount", type="number"),
+     *             @OA\Property(property="PledgeOrPayment", type="string"),
+     *             @OA\Property(property="Date", type="string", format="date"),
+     *             @OA\Property(property="Fund", type="string")
+     *         )))
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
     $group->get('/family/{familyId:[0-9]+}/list', function (Request $request, Response $response, array $args): Response {
         $familyId = SlimUtils::getRouteArgument($request, 'familyId');
         $query = PledgeQuery::create()->filterByFamId($familyId);
@@ -66,6 +116,18 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, ['data' => $rows]);
     });
 
+    /**
+     * @OA\Delete(
+     *     path="/payments/{groupKey}",
+     *     summary="Delete a payment by group key (Finance role required)",
+     *     tags={"Finance"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="groupKey", in="path", required=true, @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Payment deleted successfully"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
     $group->delete('/{groupKey}', function (Request $request, Response $response, array $args): Response {
         $groupKey = $args['groupKey'];
         $financialService = new FinancialService();

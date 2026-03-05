@@ -58,5 +58,6 @@ require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/users/user.php';
 require __DIR__ . '/routes/users/user-current.php';
 require __DIR__ . '/routes/users/user-settings.php';
+require __DIR__ . '/routes/map.php';
 
 $app->run();

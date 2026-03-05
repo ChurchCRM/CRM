@@ -17,12 +17,26 @@ describe('02 - Demo Data Import', () => {
         password: 'changeme'
     };
 
-    // Helper function to login
+    // Helper function to login, handling forced password-change redirect on first login
     const loginAsAdmin = () => {
+        const password = Cypress.env('newSystemAdminPassword') || adminCredentials.password;
         cy.visit('/login');
         cy.get('input[name=User]').type(adminCredentials.username);
-        cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
-        cy.url({ timeout: 15000 }).should('not.include', '/login');
+        cy.get('input[name=Password]').type(password + '{enter}');
+        cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+
+        // Fresh-install admin has NeedPasswordChange=true; complete the forced form if needed
+        cy.url().then((url) => {
+            if (url.includes('/changepassword')) {
+                const newPassword = 'Cypress@01!';
+                cy.get('#OldPassword').type(password);
+                cy.get('#NewPassword1').type(newPassword);
+                cy.get('#NewPassword2').type(newPassword);
+                cy.get('button[type=submit]').click();
+                cy.contains('Password Changed', { timeout: 10000 }).should('be.visible');
+                Cypress.env('newSystemAdminPassword', newPassword);
+            }
+        });
     };
 
     describe('Import Demo Data via Admin UI', () => {
@@ -141,18 +155,108 @@ describe('02 - Demo Data Import', () => {
 
         it('should show people listing with demo data', () => {
             cy.visit('/v2/people');
-            
+
             // Should see the people listing
             cy.contains('People').should('be.visible');
-            
+
             // Should have table with people data
             cy.get('table', { timeout: 10000 }).should('exist');
-            
+
             // Wait for table to populate (DataTable lazy loading)
             cy.wait(2000);
-            
+
             // Should have rows with people
             cy.get('table tbody tr').should('have.length.at.least', 1);
+        });
+    });
+
+    describe('Verify Finance Demo Data', () => {
+        beforeEach(() => {
+            loginAsAdmin();
+        });
+
+        it('should have deposits in the system after demo import', () => {
+            cy.request({
+                method: 'GET',
+                url: '/api/deposits',
+                timeout: 30000
+            }).then((response) => {
+                expect(response.status).to.equal(200);
+                // /api/deposits returns { Deposits: [...] } (Propel collection format)
+                expect(response.body).to.have.property('Deposits');
+                expect(response.body.Deposits).to.be.an('array');
+                expect(response.body.Deposits.length).to.be.greaterThan(0);
+                cy.log(`Found ${response.body.Deposits.length} deposit(s)`);
+            });
+        });
+
+        it('should have at least one open deposit', () => {
+            cy.request({
+                method: 'GET',
+                url: '/api/deposits',
+                timeout: 30000
+            }).then((response) => {
+                expect(response.status).to.equal(200);
+                // /api/deposits returns { Deposits: [...] } (Propel collection format)
+                expect(response.body).to.have.property('Deposits');
+                expect(response.body.Deposits).to.be.an('array');
+
+                // Closed is stored as bool (false = open, true = closed)
+                const openDeposits = response.body.Deposits.filter(d => !d.Closed);
+                expect(openDeposits.length).to.be.greaterThan(0);
+                cy.log(`Found ${openDeposits.length} open deposit(s) out of ${response.body.Deposits.length} total`);
+            });
+        });
+
+        it('should have payments in the system after demo import', () => {
+            cy.request({
+                method: 'GET',
+                url: '/api/deposits',
+                timeout: 30000
+            }).then((response) => {
+                expect(response.status).to.equal(200);
+                expect(response.body).to.have.property('Deposits');
+                const deposits = response.body.Deposits;
+                expect(deposits.length).to.be.greaterThan(0);
+
+                // Use the first deposit (oldest, closed) — it always has payments linked via dep_id
+                const depositId = deposits[0].Id;
+                return cy.request({
+                    method: 'GET',
+                    url: `/api/deposits/${depositId}/payments`,
+                    timeout: 30000
+                });
+            }).then((paymentsResponse) => {
+                expect(paymentsResponse.status).to.equal(200);
+                expect(paymentsResponse.body).to.be.an('array');
+                expect(paymentsResponse.body.length).to.be.greaterThan(0);
+                cy.log(`Found ${paymentsResponse.body.length} payment(s) in deposit`);
+            });
+        });
+
+        it('should show finance dashboard after demo import', () => {
+            cy.visit('/finance/');
+
+            // Should see the finance dashboard title
+            cy.contains('Finance Dashboard').should('be.visible');
+        });
+
+        it('should reset admin password back to changeme for subsequent tests', () => {
+            // Tests 03-04 expect 'changeme' as the default password
+            // Change password from 'Cypress@01!' back to 'changeme'
+            cy.visit('/v2/user/current/changepassword');
+
+            const currentPassword = 'Cypress@01!';
+            const newPassword = 'changeme';
+
+            // Fill in change password form
+            cy.get('#OldPassword').type(currentPassword);
+            cy.get('#NewPassword1').type(newPassword);
+            cy.get('#NewPassword2').type(newPassword);
+            cy.get('input[type=submit]').click();
+
+            // Should show success message
+            cy.contains('Password Change Successful', { timeout: 10000 }).should('be.visible');
         });
     });
 });

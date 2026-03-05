@@ -134,7 +134,6 @@ class BackupJob extends JobBase
         $this->BackupFile = new \SplFileInfo($this->BackupFileBaseName . '.tar');
         $phar = new PharData($this->BackupFile->getPathname());
         LoggerUtils::getAppLogger()->debug('Archive opened at: ' . $this->BackupFile->getPathname());
-        $phar->startBuffering();
 
         $SqlFile = new \SplFileInfo(sys_get_temp_dir() . '/ChurchCRM-Database.sql');
         $this->captureSQLFile($SqlFile);
@@ -157,7 +156,6 @@ class BackupJob extends JobBase
         }
         LoggerUtils::getAppLogger()->debug('Directories added to archive: ' . join(';', $directoriesAddedToArchive));
         LoggerUtils::getAppLogger()->debug('Images files added to archive: ' . join(';', $imagesAddedToArchive));
-        $phar->stopBuffering();
         LoggerUtils::getAppLogger()->debug('Finished creating archive.  Beginning to compress');
         $phar->compress(\Phar::GZ);
         LoggerUtils::getAppLogger()->debug('Archive compressed; should now be a .gz file');

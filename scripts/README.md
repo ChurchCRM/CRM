@@ -118,7 +118,6 @@ node scripts/startNewRelease.js <new-version>
 
 **What it updates:**
 - `package.json` version
-- `BuildConfig.json` version
 - Database upgrade configuration
 - Creates git tag
 

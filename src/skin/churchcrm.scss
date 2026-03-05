@@ -33,12 +33,11 @@
 @include meta.load-css("scss/forms");
 @include meta.load-css("scss/tables");
 @include meta.load-css("scss/financial-reports");
-@include meta.load-css("scss/profileImage");
+@include meta.load-css("scss/images");
 @include meta.load-css("scss/shortConfig");
 @include meta.load-css("scss/leftNav");
 @include meta.load-css("scss/imageOverlay");
 @include meta.load-css("scss/maps");
-@include meta.load-css("scss/spacing");
 @include meta.load-css("scss/SystemNotifications");
 @include meta.load-css("scss/cart");
 @include meta.load-css("scss/calendars");
@@ -47,9 +46,7 @@
 @include meta.load-css("scss/systemSettings");
 @include meta.load-css("scss/kiosk");
 @include meta.load-css("scss/groups");
-@include meta.load-css("scss/people-lazy-image-loading");
 @include meta.load-css("scss/finance");
-@include meta.load-css("scss/photo-gallery");
 
 html,
 body {

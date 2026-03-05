@@ -17,8 +17,18 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <div class="float-right d-none d-sm-block">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
-    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
-    | <a href="https://twitter.com/church_crm" target="_blank"><?= gettext("Follow us on") ?> <i class="fa-brands fa-x-twitter"></i></a>
+    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://churchcrm.io" target="_blank" rel="noopener noreferrer"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
+    <span class="ml-2">
+        <a href="https://www.facebook.com/getChurchCRM" target="_blank" rel="noopener noreferrer">Facebook <i class="fa-brands fa-facebook"></i></a>
+        &nbsp;|&nbsp;
+        <a href="https://www.instagram.com/getchurchcrm/" target="_blank" rel="noopener noreferrer">Instagram <i class="fa-brands fa-instagram"></i></a>
+        &nbsp;|&nbsp;
+        <a href="https://x.com/getChurchCRM" target="_blank" rel="noopener noreferrer">X <i class="fa-brands fa-x-twitter"></i></a>
+        &nbsp;|&nbsp;
+        <a href="https://www.linkedin.com/company/getchurchcrm/" target="_blank" rel="noopener noreferrer">LinkedIn <i class="fa-brands fa-linkedin"></i></a>
+        &nbsp;|&nbsp;
+        <a href="https://www.youtube.com/@getChurchCRM" target="_blank" rel="noopener noreferrer">YouTube <i class="fa-brands fa-youtube"></i></a>
+    </span>
 </footer>
 
 <!-- Floating Action Buttons -->

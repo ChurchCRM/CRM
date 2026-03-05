@@ -326,7 +326,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             }
                             // Add photo icon if person has photo
                             if ($column->displayFunction === 'getFullName' && $person->getPhoto()->hasUploadedPhoto()) {
-                                echo ' <button class="btn btn-xs btn-outline-secondary view-person-photo ml-1" data-person-id="' . $person->getId() . '" title="' . gettext('View Photo') . '">';
+                                echo ' <button class="btn btn-sm btn-outline-secondary view-person-photo ml-1" data-person-id="' . $person->getId() . '" title="' . gettext('View Photo') . '">';
                                 echo '<i class="fa-solid fa-camera"></i>';
                                 echo '</button>';
                             }

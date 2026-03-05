@@ -60,7 +60,6 @@ require_once __DIR__ . '/Include/Header.php';
     </table>
 </div>
 <div class="card card-body">
-  <!-- /.box-header -->
   <div class="card-body table-responsive">
     <table id="fundraisers" class="table table-striped table-bordered data-table w-100">
         <thead>

@@ -239,9 +239,18 @@
     "scripts": ["/mysql/upgrade/6.7.0.sql"],
     "dbVersion": "6.7.0"
   },
-  "current": {
+  "pre-7.0.0": {
     "versions": ["6.7.0", "6.7.1", "6.7.2", "6.7.3", "6.8.0", "6.8.1"],
-    "scripts": ["/mysql/upgrade/6.8.0.sql"],
+    "scripts": [
+      "/mysql/upgrade/6.8.0.sql",
+      "/mysql/upgrade/7.0.0-remove-bing-maps.sql",
+      "/mysql/upgrade/7.0.0-map.sql"
+    ],
     "dbVersion": "7.0.0"
+  },
+  "current": {
+    "versions": ["7.0.0"],
+    "scripts": [],
+    "dbVersion": "7.0.1"
   }
 }

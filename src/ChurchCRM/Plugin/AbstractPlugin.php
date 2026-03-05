@@ -196,8 +196,21 @@ abstract class AbstractPlugin implements PluginInterface
     }
 
     /**
+     * Get the settings schema for this plugin.
+     *
+     * Default returns an empty array (no settings). Override in subclass
+     * to define plugin-specific settings.
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function getSettingsSchema(): array
+    {
+        return [];
+    }
+
+    /**
      * Check if the plugin is properly configured.
-     * 
+     *
      * By default, checks that all required settings have values.
      * Override in subclass for custom configuration validation.
      */
@@ -340,6 +353,29 @@ abstract class AbstractPlugin implements PluginInterface
     public function getMenuItems(): array
     {
         return [];
+    }
+
+    /**
+     * Test the plugin connection using the provided settings.
+     *
+     * Override in plugins that support connection testing (declare "hasTest": true
+     * in plugin.json). The settings array contains the raw form values keyed by
+     * setting key (e.g. 'apiKey', 'fromNumber').
+     *
+     * Password fields may be absent from the settings array when the admin has
+     * not changed the value — implementations should fall back to the saved value
+     * in that case.
+     *
+     * @param array $settings Raw setting values from the admin form
+     *
+     * @return array{success: bool, message: string, details?: array<string, mixed>}
+     */
+    public function testWithSettings(array $settings): array
+    {
+        return [
+            'success' => false,
+            'message' => gettext('This plugin does not support connection testing.'),
+        ];
     }
 
     /**

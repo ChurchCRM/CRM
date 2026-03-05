@@ -4,8 +4,6 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
-use Geocoder\Collection;
-use Geocoder\Provider\BingMaps\BingMaps;
 use Geocoder\Provider\GoogleMaps\GoogleMaps;
 use Geocoder\Query\GeocodeQuery;
 use Geocoder\StatefulGeocoder;
@@ -18,21 +16,13 @@ class GeoUtils
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::getCurrentLocale();
 
-        $provider = null;
         $adapter = new Client();
+        $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('sGoogleMapsGeocodeKey'));
 
         $lat = 0;
         $long = 0;
 
         try {
-            switch (SystemConfig::getValue('sGeoCoderProvider')) {
-                case 'GoogleMaps':
-                    $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('sGoogleMapsGeocodeKey'));
-                    break;
-                case 'BingMaps':
-                    $provider = new BingMaps($adapter, SystemConfig::getValue('sBingMapKey'));
-                    break;
-            }
             $logger->debug('Using: Geo Provider -  ' . $provider->getName());
             $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
             $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
@@ -49,6 +39,25 @@ class GeoUtils
             'Latitude'  => $lat,
             'Longitude' => $long,
         ];
+    }
+
+    /**
+     * Returns a Google Maps directions deep-link URL.
+     *
+     * Prefer lat/lng when available — avoids client-side geocoding and gives a
+     * precise pin. Falls back to an address string otherwise.
+     * Returns an empty string when no destination can be determined.
+     */
+    public static function buildDirectionsUrl(string $address = '', float $lat = 0.0, float $lng = 0.0): string
+    {
+        $base = 'https://www.google.com/maps/dir/?api=1&destination=';
+        if ($lat !== 0.0 && $lng !== 0.0) {
+            return $base . $lat . ',' . $lng;
+        }
+        if (!empty($address)) {
+            return $base . urlencode($address);
+        }
+        return '';
     }
 
     public static function drivingDistanceMatrix($address1, $address2): array

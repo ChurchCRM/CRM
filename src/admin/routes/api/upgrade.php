@@ -9,11 +9,26 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
     /**
-     * Download the latest release from GitHub
-     * GET /admin/api/upgrade/download-latest-release
-     *
-     * @return 200 Success with file info (fileName, fullPath, releaseNotes, sha1)
-     * @return 400 Error downloading file
+     * @OA\Get(
+     *     path="/api/upgrade/download-latest-release",
+     *     operationId="downloadLatestRelease",
+     *     summary="Download the latest release from GitHub",
+     *     tags={"Admin"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Release file downloaded",
+     *         @OA\JsonContent(type="object",
+     *             @OA\Property(property="fileName", type="string"),
+     *             @OA\Property(property="fullPath", type="string"),
+     *             @OA\Property(property="releaseNotes", type="string"),
+     *             @OA\Property(property="sha1", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=400, description="Error downloading release"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Forbidden — Admin role required")
+     * )
      */
     $group->get('/download-latest-release', function (Request $request, Response $response, array $args): Response {
         try {
@@ -25,15 +40,24 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
     });
 
     /**
-     * Apply the system upgrade
-     * POST /admin/api/upgrade/do-upgrade
-     *
-     * Request body:
-     *   - fullPath (string): Full path to upgrade file
-     *   - sha1 (string): SHA1 hash for verification
-     *
-     * @return 200 Success with empty data
-     * @return 500 Error applying upgrade
+     * @OA\Post(
+     *     path="/api/upgrade/do-upgrade",
+     *     operationId="doUpgrade",
+     *     summary="Apply the system upgrade",
+     *     tags={"Admin"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(type="object",
+     *             @OA\Property(property="fullPath", type="string", description="Full path to the upgrade file"),
+     *             @OA\Property(property="sha1", type="string", description="SHA1 hash for verification")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Upgrade applied successfully"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=500, description="Error applying upgrade")
+     * )
      */
     $group->post('/do-upgrade', function (Request $request, Response $response, array $args): Response {
         try {
@@ -55,13 +79,25 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
     });
 
     /**
-     * Refresh upgrade information from GitHub
-     * POST /admin/api/upgrade/refresh-upgrade-info
-     *
-     * Forces a fresh check of available updates from GitHub and updates session state.
-     *
-     * @return 200 Success with updated session data
-     * @return 500 Error refreshing information
+     * @OA\Post(
+     *     path="/api/upgrade/refresh-upgrade-info",
+     *     operationId="refreshUpgradeInfo",
+     *     summary="Refresh upgrade information from GitHub",
+     *     description="Forces a fresh check of available updates from GitHub and updates session state.",
+     *     tags={"Admin"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Upgrade information refreshed",
+     *         @OA\JsonContent(type="object",
+     *             @OA\Property(property="data", type="object"),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=500, description="Error refreshing upgrade information")
+     * )
      */
     $group->post('/refresh-upgrade-info', function (Request $request, Response $response, array $args): Response {
         try {

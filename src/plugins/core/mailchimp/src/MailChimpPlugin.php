@@ -187,6 +187,61 @@ class MailChimpPlugin extends AbstractPlugin
         ];
     }
 
+    /**
+     * Test MailChimp connection using the provided API key.
+     *
+     * Falls back to the saved API key if the settings array omits it
+     * (e.g. password field not re-entered in the UI).
+     *
+     * {@inheritdoc}
+     */
+    public function testWithSettings(array $settings): array
+    {
+        $apiKey = $settings['apiKey'] ?? '';
+        if (empty($apiKey)) {
+            $apiKey = $this->getConfigValue('apiKey');
+        }
+
+        if (empty($apiKey)) {
+            return ['success' => false, 'message' => gettext('API Key is required.')];
+        }
+
+        try {
+            $service = new MailChimpService($apiKey);
+
+            if ($service->getLastError() !== null) {
+                return [
+                    'success' => false,
+                    'message' => gettext('Invalid API key format. Check your MailChimp API key.'),
+                ];
+            }
+
+            $accountInfo = $service->getAccountInfo();
+
+            if (empty($accountInfo)) {
+                return [
+                    'success' => false,
+                    'message' => gettext('Could not connect to MailChimp. Please check your API key.'),
+                ];
+            }
+
+            return [
+                'success' => true,
+                'message' => sprintf(
+                    gettext('Connected to MailChimp! Account: %s (%d subscribers)'),
+                    $accountInfo['account_name'] ?? 'Unknown',
+                    $accountInfo['total_subscribers'] ?? 0
+                ),
+                'details' => $accountInfo,
+            ];
+        } catch (\Throwable $e) {
+            return [
+                'success' => false,
+                'message' => gettext('MailChimp connection failed.'),
+            ];
+        }
+    }
+
     // =========================================================================
     // Hook Registration
     // =========================================================================
@@ -194,12 +249,12 @@ class MailChimpPlugin extends AbstractPlugin
     private function registerHooks(): void
     {
         // Listen for person email changes
-        HookManager::addAction(Hooks::PERSON_UPDATED, [$this, 'onPersonUpdated'], 10, 2);
-        HookManager::addAction(Hooks::PERSON_DELETED, [$this, 'onPersonDeleted'], 10, 2);
+        HookManager::addAction(Hooks::PERSON_UPDATED, [$this, 'onPersonUpdated'], 10);
+        HookManager::addAction(Hooks::PERSON_DELETED, [$this, 'onPersonDeleted'], 10);
 
         // Listen for group membership changes (for list sync)
-        HookManager::addAction(Hooks::GROUP_MEMBER_ADDED, [$this, 'onGroupMemberAdded'], 10, 3);
-        HookManager::addAction(Hooks::GROUP_MEMBER_REMOVED, [$this, 'onGroupMemberRemoved'], 10, 2);
+        HookManager::addAction(Hooks::GROUP_MEMBER_ADDED, [$this, 'onGroupMemberAdded'], 10);
+        HookManager::addAction(Hooks::GROUP_MEMBER_REMOVED, [$this, 'onGroupMemberRemoved'], 10);
     }
 
     // =========================================================================

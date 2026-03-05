@@ -186,10 +186,19 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fas fa-save mr-1"></i><?= gettext('Save Settings') ?>
                         </button>
+                        <?php if (!empty($plugin['hasTest'])): ?>
+                        <button type="button" class="btn btn-outline-info btn-sm btn-test-settings"
+                                data-plugin-id="<?= $pluginId ?>">
+                            <i class="fas fa-plug mr-1"></i><?= gettext('Test Connection') ?>
+                        </button>
+                        <?php endif; ?>
                         <button type="button" class="btn btn-outline-danger btn-sm btn-reset-settings" data-plugin-id="<?= $pluginId ?>">
                             <i class="fas fa-undo mr-1"></i><?= gettext('Reset') ?>
                         </button>
                     </div>
+                    <?php if (!empty($plugin['hasTest'])): ?>
+                    <div class="mt-2 plugin-test-result" id="test-result-<?= $pluginId ?>" style="display:none;"></div>
+                    <?php endif; ?>
                 </form>
             <?php endif; ?>
         </div>
@@ -439,6 +448,69 @@ $(document).ready(function() {
         })
         .always(function() {
             submitBtn.prop('disabled', false).html('<i class="fas fa-save mr-1"></i>' + i18next.t('Save Settings'));
+        });
+    });
+
+    // Collect current form settings for a plugin
+    function collectSettings(form) {
+        const settings = {};
+        form.find('.plugin-setting').each(function() {
+            const input = $(this);
+            const key   = input.data('setting-key');
+            if (input.attr('type') === 'checkbox') {
+                settings[key] = input.is(':checked') ? '1' : '0';
+            } else if (input.attr('type') === 'password') {
+                const val = input.val();
+                // Only include if the admin actually typed a new value
+                if (val !== '') {
+                    settings[key] = val;
+                }
+                // If empty, omit — the plugin will fall back to the saved secret
+            } else {
+                settings[key] = input.val();
+            }
+        });
+        return settings;
+    }
+
+    // Show inline test result below the button group
+    function showTestResult(pluginId, success, message) {
+        const resultDiv = $('#test-result-' + pluginId);
+        const alertClass = success ? 'alert-success' : 'alert-danger';
+        const icon = success ? 'fa-check-circle' : 'fa-exclamation-circle';
+        resultDiv
+            .removeClass('alert-success alert-danger')
+            .addClass('alert ' + alertClass)
+            .html('<i class="fas ' + icon + ' mr-1"></i>' + escapeHtml(message))
+            .show();
+    }
+
+    // Test Connection button
+    $('.btn-test-settings').on('click', function(e) {
+        e.preventDefault();
+        const btn      = $(this);
+        const pluginId = btn.data('plugin-id');
+        const form     = btn.closest('form');
+        const settings = collectSettings(form);
+
+        btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin mr-1"></i>' + i18next.t('Testing...'));
+
+        $.ajax({
+            url:         window.CRM.root + '/plugins/api/plugins/' + pluginId + '/test',
+            method:      'POST',
+            dataType:    'json',
+            contentType: 'application/json',
+            data:        JSON.stringify({ settings: settings }),
+        })
+        .done(function(response) {
+            showTestResult(pluginId, response.success, response.message);
+        })
+        .fail(function(xhr) {
+            const msg = xhr.responseJSON?.message || i18next.t('Connection test failed');
+            showTestResult(pluginId, false, msg);
+        })
+        .always(function() {
+            btn.prop('disabled', false).html('<i class="fas fa-plug mr-1"></i>' + i18next.t('Test Connection'));
         });
     });
 

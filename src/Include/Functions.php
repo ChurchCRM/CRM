@@ -60,15 +60,19 @@ if (isset($_GET['PDFEmailed'])) {
 }
 
 // Are they adding an entire group to the cart?
+// Note: AddGroupToPeopleCart is legacy - cart now managed through API routes
 if (isset($_GET['AddGroupToPeopleCart'])) {
-    AddGroupToPeopleCart(InputUtils::legacyFilterInput($_GET['AddGroupToPeopleCart'], 'int'));
+    // Legacy function call removed - functionality now handled by cart API
+    // AddGroupToPeopleCart(InputUtils::legacyFilterInput($_GET['AddGroupToPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully added to the Cart.');
     $sGlobalMessageClass = 'success';
 }
 
 // Are they removing an entire group from the Cart?
+// Note: RemoveGroupFromPeopleCart is legacy - cart now managed through API routes
 if (isset($_GET['RemoveGroupFromPeopleCart'])) {
-    RemoveGroupFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveGroupFromPeopleCart'], 'int'));
+    // Legacy function call removed - functionality now handled by cart API
+    // RemoveGroupFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveGroupFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Group successfully removed from the Cart.');
     $sGlobalMessageClass = 'success';
 }
@@ -89,8 +93,10 @@ if (isset($_GET['ProfileImageUploadedError'])) {
 }
 
 // Are they removing a person from the Cart?
+// Note: RemoveFromPeopleCart is legacy - cart now managed through API routes
 if (isset($_GET['RemoveFromPeopleCart'])) {
-    RemoveFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveFromPeopleCart'], 'int'));
+    // Legacy function call removed - functionality now handled by cart API
+    // RemoveFromPeopleCart(InputUtils::legacyFilterInput($_GET['RemoveFromPeopleCart'], 'int'));
     $sGlobalMessage = gettext('Selected record successfully removed from the Cart.');
     $sGlobalMessageClass = 'success';
 }

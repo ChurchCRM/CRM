@@ -5,7 +5,7 @@
  * 
  * Tests run after demo data has been imported:
  * 6. Create a backup of the system (current demo state)
- * 7. Restore ChurchCRM-Database.sql via restore page
+ * 7. Restore seed.sql via restore page
  * 8. Verify data from that restore is valid
  * 9. Restore the demo backup to ensure restore works
  * 
@@ -19,12 +19,14 @@ describe('03 - Backup and Restore', () => {
         password: 'changeme'
     };
 
-    // Helper function to login
+    // Helper function to login, handling forced password-change redirect on first login
     const loginAsAdmin = () => {
+        // Test 02 resets password back to 'changeme' after testing forced change
+        const password = adminCredentials.password;
         cy.visit('/login');
         cy.get('input[name=User]').type(adminCredentials.username);
-        cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
-        cy.url({ timeout: 15000 }).should('not.include', '/login');
+        cy.get('input[name=Password]').type(password + '{enter}');
+        cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
     };
 
     describe('Step 6: Create Backup', () => {
@@ -87,7 +89,7 @@ describe('03 - Backup and Restore', () => {
         });
     });
 
-    describe('Step 7: Restore ChurchCRM-Database.sql', () => {
+    describe('Step 7: Restore seed.sql', () => {
         beforeEach(() => {
             loginAsAdmin();
         });
@@ -101,11 +103,11 @@ describe('03 - Backup and Restore', () => {
             cy.contains('Restore Database').should('be.visible');
         });
 
-        it('should restore ChurchCRM-Database.sql file', () => {
+        it('should restore seed.sql file', () => {
             cy.visit('/admin/system/restore');
             
             // The demo SQL file path (relative to cypress project root)
-            const demoSqlPath = 'demo/ChurchCRM-Database.sql';
+            const demoSqlPath = 'cypress/data/seed.sql';
             
             // Use cy.selectFile to upload the file
             // The file input is hidden, so we need to force the action
@@ -113,7 +115,7 @@ describe('03 - Backup and Restore', () => {
             
             // File info should show
             cy.get('#fileInfo').should('be.visible');
-            cy.get('#fileName').should('contain', 'ChurchCRM-Database.sql');
+            cy.get('#fileName').should('contain', 'seed.sql');
             
             // Click restore button
             cy.get('#submitRestore').click();
@@ -150,7 +152,7 @@ describe('03 - Backup and Restore', () => {
                 expect(response.status).to.equal(200);
                 expect(response.body).to.have.property('families');
                 
-                // ChurchCRM-Database.sql should have multiple families
+                // seed.sql should have multiple families
                 const families = response.body.families;
                 expect(families.length).to.be.greaterThan(5);
                 cy.log(`Found ${families.length} families after restore`);

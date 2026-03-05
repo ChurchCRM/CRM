@@ -130,7 +130,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
             
             // Should redirect away from login
-            cy.url({ timeout: 15000 }).should('not.include', '/login');
+            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
             
             // Should be on some page (dashboard or admin)
             cy.get('body').should('exist');
@@ -140,14 +140,16 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/login');
+            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
             
             // Fresh system should show admin dashboard (no people yet)
             // The system may redirect to admin or v2/dashboard
+            // If the admin was created with NeedPasswordChange=true, may land on forced change-password page
             cy.url().then((url) => {
                 cy.log('Redirected to: ' + url);
-                // Just verify we're logged in and not on login page
-                cy.get('.main-sidebar, .wrapper, .content-wrapper').should('exist');
+                // Verify we're logged in and not on login page.
+                // Accept either the full dashboard layout or the forced change-password minimal layout (.login-box).
+                cy.get('.main-sidebar, .wrapper, .content-wrapper, .login-box').should('exist');
             });
         });
 
@@ -155,7 +157,7 @@ describe('01 - Setup Wizard', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
-            cy.url({ timeout: 15000 }).should('not.include', '/login');
+            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
             
             // Check people API - should return mostly empty (only admin user)
             cy.request({

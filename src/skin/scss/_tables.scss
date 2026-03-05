@@ -17,3 +17,9 @@ table.horizontal-scroll {
     padding-left: 5px;
   }
 }
+
+// Shrink-to-fit column: as narrow as content allows, no text wrapping
+.td-shrink {
+  width: 1%;
+  white-space: nowrap;
+}

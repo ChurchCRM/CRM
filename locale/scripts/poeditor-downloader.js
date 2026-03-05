@@ -11,9 +11,13 @@
  *   npm run locale:download -- --locale fi                  # Download Finnish only
  * 
  * Requires:
- * - BuildConfig.json (or BuildConfig.json.example) with POEditor.id and POEditor.token
+ * - POEDITOR_TOKEN environment variable (from .env or POEditor API Access)
  * - No additional npm packages (uses native https module)
+ * 
+ * Note: POEditor project ID is hardcoded as 77079 (ChurchCRM official project)
  */
+
+require('dotenv').config();
 
 const fs = require('fs');
 const path = require('path');
@@ -21,8 +25,6 @@ const https = require('https');
 const { URLSearchParams } = require('url');
 
 // Configuration
-const CONFIG_FILE = path.join(__dirname, '../../BuildConfig.json');
-const CONFIG_EXAMPLE_FILE = path.join(__dirname, '../../BuildConfig.json.example');
 const LOCALES_FILE = path.join(__dirname, '../../src/locale/locales.json');
 const JSON_OUTPUT_DIR = path.join(__dirname, '../../src/locale/i18n');
 const MASTER_LIST_DIR = path.join(__dirname, '../'); // /locale directory for master English list
@@ -38,29 +40,13 @@ const FILE_FORMATS = [
     { type: 'mo', dir: TEXTDOMAIN_OUTPUT_DIR, ext: 'mo', filename: (locale) => `${locale}/LC_MESSAGES/messages.mo` },
 ];
 
-// Load configuration
-let buildConfig;
-let configFile = CONFIG_FILE;
-try {
-    if (!fs.existsSync(CONFIG_FILE)) {
-        if (fs.existsSync(CONFIG_EXAMPLE_FILE)) {
-            console.log('⚠️  BuildConfig.json not found, using BuildConfig.json.example');
-            configFile = CONFIG_EXAMPLE_FILE;
-        } else {
-            throw new Error('Neither BuildConfig.json nor BuildConfig.json.example exist');
-        }
-    }
-    buildConfig = JSON.parse(fs.readFileSync(configFile, 'utf8'));
-} catch (e) {
-    console.error(`❌ Error reading configuration: ${e.message}`);
-    process.exit(1);
-}
+// Load configuration from environment
+const apiToken = process.env.POEDITOR_TOKEN;
+const projectId = '77079'; // ChurchCRM POEditor project ID
 
-const projectId = buildConfig?.POEditor?.id;
-const apiToken = buildConfig?.POEditor?.token;
-
-if (!projectId || !apiToken) {
-    console.error('❌ Missing POEditor configuration in BuildConfig.json');
+if (!apiToken) {
+    console.error('❌ POEDITOR_TOKEN environment variable is required');
+    console.error('   Get your token from: https://poeditor.com/account/api');
     process.exit(1);
 }
 

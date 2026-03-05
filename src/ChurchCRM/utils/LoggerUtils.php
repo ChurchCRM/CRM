@@ -14,6 +14,9 @@ use Monolog\Processor\PsrLogMessageProcessor;
 
 class LoggerUtils
 {
+    /** Number of daily log files to retain before the oldest is deleted. */
+    private const LOG_RETENTION_DAYS = 3;
+
     private static ?Logger $appLogger = null;
     private static ?RotatingFileHandler $appLogHandler = null;
     private static ?Logger $cspLogger = null;
@@ -21,7 +24,6 @@ class LoggerUtils
     private static ?Logger $slimLogger = null;
     private static ?RotatingFileHandler $authLogHandler = null;
     private static ?string $correlationId = null;
-    private static LineFormatter|JsonFormatter|null $formatter = null;
 
     public static function getCorrelationId(): ?string
     {
@@ -58,41 +60,30 @@ class LoggerUtils
     }
 
     /**
-     * Create a formatter based on system configuration
-     * Uses JsonFormatter for production/structured logging, LineFormatter for development
+     * Create a formatter based on the current log level.
+     * A new instance is returned each time so that loggers initialised before
+     * the database is ready (e.g. the app logger during bootstrap) re-evaluate
+     * the level correctly when they are later rebuilt — avoids a stale cached
+     * JSON formatter being used even when the system is in debug mode.
+     *
+     * Debug  → LineFormatter  (human-readable, one entry per line)
+     * Other  → JsonFormatter  (one JSON object per line, compatible with ELK/Splunk/Datadog)
      */
     private static function createFormatter(): LineFormatter|JsonFormatter
     {
-        if (self::$formatter === null) {
-            // In production, use JSON for better log viewer compatibility (ELK, Splunk, Datadog)
-            // In development, use text format for readability
-            $useJson = SystemConfig::getValue('sLogLevel') != Level::Debug->value;
-            
-            if ($useJson) {
-                // JsonFormatter with optimized settings for structured logging
-                self::$formatter = new JsonFormatter(
-                    JsonFormatter::BATCH_MODE_JSON,     // Batch mode for log aggregators
-                    false,                               // No pretty printing for compact output
-                    true,                                // Append newline for log viewer compatibility
-                    true                                 // Ignore empty context/extra
-                );
-                // Use unescaped output for better readability in log viewers
-                self::$formatter->setJsonEncodeOptions(JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-            } else {
-                // Plain text format for development with full context
-                self::$formatter = new LineFormatter(null, null, false, true);
-                
-                try {
-                    // Set explicit date format with timezone offset
-                    // Monolog uses PHP's timezone set by date_default_timezone_set() in Bootstrapper
-                    self::$formatter->setDateFormat('Y-m-d\TH:i:s.uP');
-                } catch (\Exception $e) {
-                    // Config not initialized - will use default format
-                }
-            }
+        if (self::isDebugLogLevel()) {
+            $formatter = new LineFormatter(null, 'Y-m-d\TH:i:s.uP', false, true);
+            $formatter->includeStacktraces(true);
+            return $formatter;
         }
-        
-        return self::$formatter;
+
+        // Monolog v3 JsonFormatter(batchMode, appendNewline, ignoreEmptyContextAndExtra, includeStacktraces)
+        return new JsonFormatter(
+            JsonFormatter::BATCH_MODE_NEWLINES,
+            true,
+            true,
+            false
+        );
     }
 
     public static function buildLogFilePath(string $type): string
@@ -111,21 +102,24 @@ class LoggerUtils
     }
 
     /**
-     * Build a rotating log file base path (without date/extension for RotatingFileHandler)
+     * Build a rotating log file base path for use with RotatingFileHandler.
+     * The path MUST include the .log extension so that RotatingFileHandler's
+     * getTimedFilename() preserves it, producing the standard YYYY-MM-DD-{type}.log
+     * when combined with setFilenameFormat('{date}-{filename}', 'Y-m-d').
      */
     private static function buildRotatingLogBasePath(string $type): string
     {
         try {
             $docRoot = SystemURLs::getDocumentRoot();
             if ($docRoot && is_dir($docRoot . '/logs') && is_writable($docRoot . '/logs')) {
-                return $docRoot . '/logs/' . $type;
+                return $docRoot . '/logs/' . $type . '.log';
             }
         } catch (\Exception $e) {
             // Config not initialized or logs directory not accessible
         }
         
         // Fallback to temp directory
-        return sys_get_temp_dir() . '/churchcrm-' . $type;
+        return sys_get_temp_dir() . '/churchcrm-' . $type . '.log';
     }
 
     public static function getSlimMVCLogger(): Logger
@@ -135,13 +129,10 @@ class LoggerUtils
             
             // Use RotatingFileHandler for automatic daily rotation
             try {
-                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('slim'), 30, self::getLogLevel()->value);
+                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('slim'), self::LOG_RETENTION_DAYS, self::getLogLevel()->value);
+                $handler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 $handler->setFormatter(self::createFormatter());
                 
-                // Add error callback for graceful failure handling
-                $handler->setOnFailureCallback(function (\Throwable $error) {
-                    error_log('Slim logger handler failed: ' . $error->getMessage());
-                });
                 
                 $slimLogger->pushHandler($handler);
             } catch (\Throwable $e) {
@@ -173,13 +164,10 @@ class LoggerUtils
             self::$appLogger = new Logger('defaultLogger');
             
             try {
-                self::$appLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('app'), 30, $level);
+                self::$appLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('app'), self::LOG_RETENTION_DAYS, $level);
+                self::$appLogHandler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 self::$appLogHandler->setFormatter(self::createFormatter());
                 
-                // Add error callback for graceful failure handling
-                self::$appLogHandler->setOnFailureCallback(function (\Throwable $error) {
-                    error_log('App logger handler failed: ' . $error->getMessage());
-                });
                 
                 self::$appLogger->pushHandler(self::$appLogHandler);
             } catch (\Throwable $e) {
@@ -192,12 +180,12 @@ class LoggerUtils
             // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
             self::$appLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\']));
             
-            self::$appLogger->pushProcessor(function (array $entry): array {
-                $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
-                $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
-                $entry['extra']['correlation_id'] = self::getCorrelationId();
-
-                return $entry;
+            self::$appLogger->pushProcessor(function (\Monolog\LogRecord $record): \Monolog\LogRecord {
+                return $record->with(extra: array_merge($record->extra, [
+                    'url'            => $_SERVER['REQUEST_URI'] ?? '',
+                    'remote_ip'      => $_SERVER['REMOTE_ADDR'] ?? '',
+                    'correlation_id' => self::getCorrelationId(),
+                ]));
             });
         }
 
@@ -227,13 +215,13 @@ class LoggerUtils
             self::$authLogger = new Logger('authLogger');
             
             try {
-                self::$authLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('auth'), 30, self::getLogLevelValue());
+                // Use RotatingFileHandler for consistency with other loggers
+                self::$authLogHandler = new RotatingFileHandler(self::buildRotatingLogBasePath('auth'), self::LOG_RETENTION_DAYS, self::getLogLevelValue());
+                self::$authLogHandler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
+                
+                // Use standard formatter to match other system logs
                 self::$authLogHandler->setFormatter(self::createFormatter());
                 
-                // Add error callback for graceful failure handling
-                self::$authLogHandler->setOnFailureCallback(function (\Throwable $error) {
-                    error_log('Auth logger handler failed: ' . $error->getMessage());
-                });
                 
                 self::$authLogger->pushHandler(self::$authLogHandler);
             } catch (\Throwable $e) {
@@ -244,13 +232,13 @@ class LoggerUtils
             // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
             self::$authLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\']));
             
-            self::$authLogger->pushProcessor(function (array $entry): array {
-                $entry['extra']['url'] = $_SERVER['REQUEST_URI'];
-                $entry['extra']['remote_ip'] = $_SERVER['REMOTE_ADDR'];
-                $entry['extra']['correlation_id'] = self::getCorrelationId();
-                $entry['extra']['context'] = self::getCaller();
-
-                return $entry;
+            self::$authLogger->pushProcessor(function (\Monolog\LogRecord $record): \Monolog\LogRecord {
+                return $record->with(extra: array_merge($record->extra, [
+                    'url'            => $_SERVER['REQUEST_URI'] ?? '',
+                    'remote_ip'      => $_SERVER['REMOTE_ADDR'] ?? '',
+                    'correlation_id' => self::getCorrelationId(),
+                    'context'        => self::getCaller(),
+                ]));
             });
         }
 
@@ -259,12 +247,17 @@ class LoggerUtils
 
     public static function resetAppLoggerLevel(): void
     {
-        // If the app log handler was initialized (in the bootstrapper) to a specific level
-        // before the database initialization occurred,
-        // we provide a function to reset the app logger to what's defined in the database.
-        if (self::$appLogHandler !== null) {
-            self::$appLogHandler->setLevel(self::getLogLevelValue());
-        }
+        // Called after DB initialisation so the real timezone and log level are now available.
+        // The bootstrapper forces UTC (date_default_timezone_set('UTC')) before the loggers are
+        // first created, but later reads sTimeZone from the DB and sets the correct local timezone.
+        // Nulling the cached loggers here forces them to be recreated on next use with the correct
+        // PHP default timezone, so that RotatingFileHandler names files and schedules rotation based
+        // on local midnight rather than UTC midnight.
+        self::$appLogger = null;
+        self::$appLogHandler = null;
+        self::$cspLogger = null;
+        self::$authLogger = null;
+        self::$slimLogger = null;
     }
 
     public static function getCSPLogger(): ?Logger
@@ -274,13 +267,10 @@ class LoggerUtils
             
             // Use RotatingFileHandler for automatic daily rotation and retention
             try {
-                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('csp'), 30, self::getLogLevel()->value);
+                $handler = new RotatingFileHandler(self::buildRotatingLogBasePath('csp'), self::LOG_RETENTION_DAYS, self::getLogLevel()->value);
+                $handler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
                 $handler->setFormatter(self::createFormatter());
                 
-                // Add error callback for graceful failure handling
-                $handler->setOnFailureCallback(function (\Throwable $error) {
-                    error_log('CSP logger handler failed: ' . $error->getMessage());
-                });
                 
                 self::$cspLogger->pushHandler($handler);
             } catch (\Throwable $e) {

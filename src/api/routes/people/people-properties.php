@@ -32,6 +32,16 @@ $app->group('/people/properties', function (RouteCollectorProxy $group): void {
     $group->delete('/family/{familyId}/{propertyId}', 'removePropertyFromFamily')->add($familyAPIMiddleware)->add($familyPropertyAPIMiddleware);
 })->add(MenuOptionsRoleAuthMiddleware::class);
 
+/**
+ * @OA\Get(
+ *     path="/people/properties/person",
+ *     summary="Get all available person property definitions",
+ *     tags={"Properties"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Array of person property definitions"),
+ *     @OA\Response(response=403, description="MenuOptions role required")
+ * )
+ */
 function getAllPersonProperties(Request $request, Response $response, array $args): Response
 {
     $properties = PropertyQuery::create()
@@ -41,6 +51,21 @@ function getAllPersonProperties(Request $request, Response $response, array $arg
     return SlimUtils::renderJSON($response, $properties->toArray());
 }
 
+/**
+ * @OA\Post(
+ *     path="/people/properties/person/{personId}/{propertyId}",
+ *     summary="Add or update a property on a person (MenuOptions role required)",
+ *     tags={"Properties"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="propertyId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(
+ *         @OA\JsonContent(@OA\Property(property="value", type="string", description="Property value (required only when property has a prompt)"))
+ *     ),
+ *     @OA\Response(response=200, description="Property assigned successfully"),
+ *     @OA\Response(response=403, description="MenuOptions role required")
+ * )
+ */
 function addPropertyToPerson(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');
@@ -48,6 +73,19 @@ function addPropertyToPerson(Request $request, Response $response, array $args):
     return addProperty($request, $response, $person->getId(), $request->getAttribute('property'));
 }
 
+/**
+ * @OA\Delete(
+ *     path="/people/properties/person/{personId}/{propertyId}",
+ *     summary="Remove a property from a person (MenuOptions role required)",
+ *     tags={"Properties"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="propertyId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=200, description="Property removed successfully"),
+ *     @OA\Response(response=404, description="Record not found"),
+ *     @OA\Response(response=403, description="MenuOptions role required")
+ * )
+ */
 function removePropertyFromPerson(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');
@@ -55,6 +93,16 @@ function removePropertyFromPerson(Request $request, Response $response, array $a
     return removeProperty($request, $response, $person->getId(), $request->getAttribute('property'));
 }
 
+/**
+ * @OA\Get(
+ *     path="/people/properties/family",
+ *     summary="Get all available family property definitions",
+ *     tags={"Properties"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Array of family property definitions"),
+ *     @OA\Response(response=403, description="MenuOptions role required")
+ * )
+ */
 function getAllFamilyProperties(Request $request, Response $response, array $args): Response
 {
     $properties = PropertyQuery::create()
@@ -64,6 +112,25 @@ function getAllFamilyProperties(Request $request, Response $response, array $arg
     return SlimUtils::renderJSON($response, $properties->toArray());
 }
 
+/**
+ * @OA\Get(
+ *     path="/people/properties/person/{personId}",
+ *     summary="Get properties assigned to a specific person",
+ *     tags={"Properties"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=200, description="Array of assigned property records with edit/delete permissions",
+ *         @OA\JsonContent(type="array", @OA\Items(
+ *             @OA\Property(property="id", type="integer"),
+ *             @OA\Property(property="name", type="string"),
+ *             @OA\Property(property="value", type="string"),
+ *             @OA\Property(property="allowEdit", type="boolean"),
+ *             @OA\Property(property="allowDelete", type="boolean")
+ *         ))
+ *     ),
+ *     @OA\Response(response=403, description="MenuOptions role required")
+ * )
+ */
 function getPersonProperties(Request $request, Response $response, array $args): Response
 {
     $person = $request->getAttribute('person');
@@ -71,6 +138,25 @@ function getPersonProperties(Request $request, Response $response, array $args):
     return getProperties($response, 'p', $person->getId());
 }
 
+/**
+ * @OA\Get(
+ *     path="/people/properties/family/{familyId}",
+ *     summary="Get properties assigned to a specific family",
+ *     tags={"Properties"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=200, description="Array of assigned property records with edit/delete permissions",
+ *         @OA\JsonContent(type="array", @OA\Items(
+ *             @OA\Property(property="id", type="integer"),
+ *             @OA\Property(property="name", type="string"),
+ *             @OA\Property(property="value", type="string"),
+ *             @OA\Property(property="allowEdit", type="boolean"),
+ *             @OA\Property(property="allowDelete", type="boolean")
+ *         ))
+ *     ),
+ *     @OA\Response(response=403, description="MenuOptions role required")
+ * )
+ */
 function getFamilyProperties(Request $request, Response $response, array $args): Response
 {
     $family = $request->getAttribute('family');
@@ -107,6 +193,21 @@ function getProperties(Response $response, string $type, int $id): Response
     return SlimUtils::renderJSON($response, $finalProperties);
 }
 
+/**
+ * @OA\Post(
+ *     path="/people/properties/family/{familyId}/{propertyId}",
+ *     summary="Add or update a property on a family (MenuOptions role required)",
+ *     tags={"Properties"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="propertyId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\RequestBody(
+ *         @OA\JsonContent(@OA\Property(property="value", type="string", description="Property value (required only when property has a prompt)"))
+ *     ),
+ *     @OA\Response(response=200, description="Property assigned successfully"),
+ *     @OA\Response(response=403, description="MenuOptions role required")
+ * )
+ */
 function addPropertyToFamily(Request $request, Response $response, array $args): Response
 {
     $family = $request->getAttribute('family');
@@ -114,6 +215,19 @@ function addPropertyToFamily(Request $request, Response $response, array $args):
     return addProperty($request, $response, $family->getId(), $request->getAttribute('property'));
 }
 
+/**
+ * @OA\Delete(
+ *     path="/people/properties/family/{familyId}/{propertyId}",
+ *     summary="Remove a property from a family (MenuOptions role required)",
+ *     tags={"Properties"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="propertyId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=200, description="Property removed successfully"),
+ *     @OA\Response(response=404, description="Record not found"),
+ *     @OA\Response(response=403, description="MenuOptions role required")
+ * )
+ */
 function removePropertyFromFamily(Request $request, Response $response, array $args): Response
 {
     $family = $request->getAttribute('family');

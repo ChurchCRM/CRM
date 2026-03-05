@@ -43,5 +43,6 @@
     "family.updated",
     "group.member.added",
     "group.member.removed"
-  ]
+  ],
+  "hasTest": true
 }

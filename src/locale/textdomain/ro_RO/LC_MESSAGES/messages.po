@@ -1878,14 +1878,6 @@ msgid "Assign starting at #"
 msgstr "Atribuirea incepand de la #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Imposibil de afișat harta din cauza lipsei latitudinii sau longitudinii Bisericii. Vă rugăm să actualizați adresa Bisericii în meniul de setări"
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Cheia API-ului Google Map nu este setată. Harta va funcționa pentru un set mai mic de locații. Vă rugăm să creați o cheie în secțiunile de hărți din meniul de setare."
-
-#: 
 msgid "Member Role Change"
 msgstr "Schimbare de Rol pentru Membru"
 
@@ -2383,14 +2375,6 @@ msgstr "Atenție"
 #: 
 msgid "This property type is still being used by at least one property."
 msgstr "Acest tip de proprietate este încă utilizat de către cel puțin o proprietate."
-
-#: 
-msgid "If you delete this type, you will also remove all properties using"
-msgstr "Dacă ștergeți acest tip, vă va elimina, de asemenea, toate proprietățile care utilizează"
-
-#: 
-msgid "it and lose any corresponding property assignments."
-msgstr "l și pierde orice misiuni de proprietate corespunzătoare."
 
 #: 
 #, fuzzy
@@ -3375,10 +3359,6 @@ msgid "Email Export"
 msgstr "Export email"
 
 #: 
-msgid "List"
-msgstr "Listă"
-
-#: 
 msgid "Import Data"
 msgstr "Import date"
 
@@ -3481,26 +3461,6 @@ msgstr "Back-up finalizat, gata de descărcare."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Back-up descărcar, copia de pe server eliminată"
-
-#: 
-msgid "Campaigns:"
-msgstr "Campanii:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Contor anulare subscripții"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Contor anulare subscripții de la ultima expediere"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Contor resetat:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Contor resetat de la ultima trimitere:"
 
 #: 
 msgid "Functions"
@@ -3627,10 +3587,6 @@ msgstr "Dată activare"
 #: 
 msgid "CSV Import"
 msgstr "Import CSV"
-
-#: 
-msgid "Members:"
-msgstr "Membri:"
 
 #: 
 msgid "There were "
@@ -3796,10 +3752,6 @@ msgid "Unit used to measure distance, miles or km."
 msgstr "Unități pentru distanță, mile sau km"
 
 #: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Numele markerelor pentru Google Maps pentru clasificare"
-
-#: 
 msgid "Enable non-deductible payments"
 msgstr "Permite plățile nedeductibile"
 
@@ -3878,34 +3830,6 @@ msgstr "Verbalizare pentru raportul directorului"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Calea și fișierul cu antetul Bisericii"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "căutarea de imagini ale utilizatorului pe Gravatar când nu este prezentă o imagine locală"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Activați copii de rezervă la distanță către un serviciu cloud"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Tip serviciu cloud (WebDAV, Local, etc.)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Utilizator copie rezervă la distanță"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Parolă copie rezervă la distanță"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Interval orar copie de rezervă la distanță"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Data ultimei copii de rezervă"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4443,14 +4367,6 @@ msgstr "mile"
 #: 
 msgid "kilometers"
 msgstr "kilometri"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Local"
 
 #. Context: countries
 #: 
@@ -5792,10 +5708,6 @@ msgstr "Transformă codurile poștale introduse de user în litere CAPITALIZAT l
 msgid "Used to end a letter before Signer"
 msgstr "Folosit pentru a încheia o scrisoare înainte de semnare"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Cod urmărire Google Analytics"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6102,10 +6014,6 @@ msgid "Your Cart is Empty"
 msgstr "Coșul tău este gol"
 
 #: 
-msgid "View on Map"
-msgstr "Vizualizare pe hartă"
-
-#: 
 msgid "Legend"
 msgstr "Legendă"
 
@@ -6150,18 +6058,6 @@ msgid "The role could not be assigned."
 msgstr "Rolul nu a putut fi alocat"
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Harta BING solicită o cheie unică"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Zoom hărți google"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Selectați furnizor GeoCode"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Contul tău ChurchCRM a fost blocat."
 
@@ -6204,10 +6100,6 @@ msgstr "parolă utilizator de rețea schimbată de către admin"
 #: 
 msgid "system user login reset"
 msgstr "resetare autentificare pentru utilizatorul sistemului"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Familia nu există? Actualizează latitudinea și longitudinea pentru familie"
 
 #: 
 msgid "Families without Geo Info"
@@ -6286,30 +6178,6 @@ msgid "Time zone"
 msgstr "Fus orar"
 
 #: 
-msgid "Nexmo SMS API Key"
-msgstr "Cheie API Nexmo SMS"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Secret API Nexmo SMS"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Număr Expeditor SMS Nexmo"
-
-#: 
-msgid "OpenLP URL"
-msgstr "URL OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Utilizator OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Parolă OpenLp"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6320,10 +6188,6 @@ msgstr "Afișează/Ascunde link pentru resetare parolă în meniul de autentific
 #: 
 msgid "Backup"
 msgstr "Copie de rezervă"
-
-#: 
-msgid "Integration"
-msgstr "Integrare"
 
 #: 
 msgid "Guardian(s) of"
@@ -6496,10 +6360,6 @@ msgstr "Indonezia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "înregistrări adăugate cu succes grupului selectat."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Pentru a exporta în altul Pentru utilizare CharSet european;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -7061,10 +6921,6 @@ msgid "Links"
 msgstr "Link-uri"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Arată link-urile personalizate în meniul din stânga"
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Activați meniul Școală Duminicală "
 
@@ -7091,10 +6947,6 @@ msgstr "Funcții activate"
 #: 
 msgid "Validation Error"
 msgstr "Eroare de validare"
-
-#: 
-msgid "Link Not found"
-msgstr "Link-ul nu a fost găsit"
 
 #: 
 msgid "Email Functions"
@@ -7135,11 +6987,6 @@ msgstr "Utilizatorul trebuie să aibă permisiuni pentru ștergerea înregistră
 #: 
 msgid "ChurchCRM Central Notifications URL"
 msgstr "URL-ul pentru Notificări Centrale ChurchCRM"
-
-#: 
-#, fuzzy
-msgid "Follow us on"
-msgstr "Urmărește-ne pe"
 
 #: 
 msgid "invalid event type id"
@@ -7188,10 +7035,6 @@ msgid "Updated People"
 msgstr "Persoane actualizate"
 
 #: 
-msgid "Custom Menus"
-msgstr "Meniu personalizat"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Utilizatorul trebuie să dețină permisiuni de gestiune a grupurilor"
 
@@ -7210,26 +7053,6 @@ msgstr "Nu poți să te ștergi pe tine"
 #: 
 msgid "The role could not be found."
 msgstr "Rolul nu se găsește"
-
-#: 
-msgid "Add Menu"
-msgstr "Adaugă meniu"
-
-#: 
-msgid "Menu Name"
-msgstr "Adaugă nume"
-
-#: 
-msgid "Link Address"
-msgstr "Link adresă"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Începe cu http:// sau https://"
-
-#: 
-msgid "Menus"
-msgstr "Meniuri"
 
 #: 
 msgid "is disabled"
@@ -7345,10 +7168,6 @@ msgstr "Estonă"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Eroare la decodarea fișierului de definire a semnăturii"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Endpoint de backup la distanță. Dacă este WebDAV, acesta trebuie să fie codificat în URL"
 
 #: 
 msgid "Age Histogram"
@@ -7550,28 +7369,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Nume, prenume, al doile prenume"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Gestionați autentificarea cu doi factori"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Stare cu doi factori"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vă rugăm să confirmați autentificare în 2 factori pentru acest utilizator"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Vă rugăm introduceți codul 2FA"
-
-#: 
-msgid "2FA Code"
-msgstr "Cod 2FA"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "Înscrierea în autentificarea cu doi factori"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7600,10 +7403,6 @@ msgstr "Cheia API Google Maps utilizată pentru geocodificarea adreselor"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Trimite un email prin care să notifici utilizatorii când contul lor a fost șters"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Cheia API Google Maps folosită pentru afișarea hărților în browser"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7649,12 +7448,6 @@ msgstr "se încarcă"
 msgid "List not found"
 msgstr "Lista nu a fost găsită"
 
-#. typo
-#: 
-#, fuzzy
-msgid "List not in the list"
-msgstr "Listă care nu este in Listă"
-
 #: 
 msgid "People not in"
 msgstr "Persoane care nu sunt în"
@@ -7671,18 +7464,6 @@ msgstr "Publicul care nu este în ChurchCRM"
 msgid "Web Server"
 msgstr "Server web"
 
-#: 
-msgid "List maintenance"
-msgstr "Întreținerea listelor"
-
-#: 
-msgid "People not in list"
-msgstr "Oameni care nu sunt în listă"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Audiența care nu este în CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7691,10 +7472,6 @@ msgstr "Ebraică"
 #: 
 msgid "open rate"
 msgstr "Rata de deschidere"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Nu s-au abonat"
 
 #: 
 msgid "Login Info"
@@ -7759,86 +7536,6 @@ msgstr "Text"
 #: 
 msgid "Event Description"
 msgstr "Descriere eveniment"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Înregistrarea contului dvs. de utilizator ChurchCRM în Autentificarea în Doi Pași oferă un strat suplimentar de protecție împotriva utilizatorilor rău voitori care încearcă să acceseze contul dvs"
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "Autentificarea în doi pași din ChurchCRM suportă orice aplicație autentificatoare TOTP, așa că aveți libertatea să alegeți între Microsoft Authenticator, Google Authenticator, Authy, LastPass și altele"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Când vă conectați la ChurchCRM, veți introduce în continuare numele de utilizator și parola ca de obicei"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "Totuși, va trebui să furnizați și un cod unic de la dispozitivul dvs de autentificare pentru a finaliza conectarea"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "După ce ați introdus cu succes atât datele de autentificare, cât și codul unic, veți fi conectat ca de obicei"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Pentru a evita să fiți blocat din contul dvs ChurchCRM, vă rugăm să vă asigurați că sunteți pregătit să finalizați înregistrarea în două pași înainte de a face clic pe începere"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Începerea înregistrării va anula orice dispozitive cu autentificare în 2 pași  și coduri de recuperare înregistrate anterior"
-
-#: 
-msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
-msgstr "Când faceți clic pe următorul pas, veți fi invitat să scanați un cod QR pentru a vă înregistra aplicația de autentificare"
-
-#: 
-msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
-msgstr "Pentru a confirma înregistrarea, va trebui să introduceți codul generat de aplicația dvs de autentificare"
-
-#: 
-msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
-msgstr "După confirmarea înregistrării aplicației, vor fi generate și afișate coduri de recuperare de utilizare unică"
-
-#: 
-msgid "Recovery codes can be used instead of a code generated from your authenticator app."
-msgstr "Codurile de recuperare pot fi folosite în locul unui cod generat de aplicația dvs de autentificare"
-
-#: 
-msgid "Store these in a secure location"
-msgstr "Stocați-le într-un loc sigur"
-
-#: 
-msgid "Begin Two Factor Authentication Enrollment"
-msgstr "Începeți Înregistrarea pentru Autentificarea în 2 Pași"
-
-#: 
-msgid "2 Factor Authentication Secret"
-msgstr "Secret pentru Autentificarea în 2 Pași"
-
-#: 
-msgid "Regenerate 2 Factor Authentication Secret"
-msgstr "Regenerați Secretul pentru Autentificarea în 2 Pași"
-
-#: 
-msgid "Remove 2 Factor Authentication Secret"
-msgstr "Ștergeți Secretul pentru Autentificarea în 2 Pași"
-
-#: 
-msgid "Enter TOTP code to confirm enrollment"
-msgstr "Introduceți codul TOTP pentru a confirma înregistrarea"
-
-#: 
-msgid "2 Factor Authentication Enrollment Success"
-msgstr "Înregistrarea pentru Autentificarea în 2 Pași a fost realizată cu succes"
-
-#: 
-msgid "Please store these recovery codes in a safe location"
-msgstr "Vă rugăm să stocați aceste coduri de recuperare într-un loc sigur"
-
-#: 
-msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
-msgstr "Dacă vreodată pierdeți accesul la aplicația de autentificare proaspăt înregistrată, va trebui să utilizați un cod de recuperare pentru a obține acces la contul dvs"
 
 #: 
 msgid "Help translate this project"
@@ -8069,10 +7766,6 @@ msgid "People who are configured to pay by credit card."
 msgstr "Persoane care sunt configurate să plătească prin card de credit."
 
 #: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
-msgstr "Ca parte a restaurării, copiile de rezervă externe au fost dezactivate. Dacă doriți să continuați copiile de rezervă automate, trebuie să reactivați manual setarea bEnableExternalBackupTarget."
-
-#: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
 msgstr "Verificarea anterioară a integrității a reușit. Toate hash-urile fișierelor de sistem corespund valorilor așteptate."
 
@@ -8083,10 +7776,6 @@ msgstr "Listă separată prin virgulă de clasificări care ar trebui să apară
 #: 
 msgid "MailChimp is not configured"
 msgstr "MailChimp nu este configurat"
-
-#: 
-msgid "Please update the MailChimp API key in:"
-msgstr "Vă rugăm să actualizați cheia API MailChimp în:"
 
 #. Context: locales
 #: 
@@ -8458,20 +8147,8 @@ msgid "Address is required"
 msgstr "Adresa este obligatorie"
 
 #: 
-msgid "Base URL is required"
-msgstr "URL-ul de bază este obligatoriu"
-
-#: 
 msgid "City is required"
 msgstr "Orașul este obligatoriu"
-
-#: 
-msgid "Database name is required"
-msgstr "Numele bazei de date este obligatoriu"
-
-#: 
-msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
-msgstr "Numele de gazdă sau adresa IP a serverului bazei de date este obligatorie (ex: localhost sau 127.0.0.1)"
 
 #: 
 msgid "Database server port is required (e.g., 3306)"

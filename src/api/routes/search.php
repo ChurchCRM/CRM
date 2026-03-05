@@ -14,6 +14,22 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 // Routes search
 
+/**
+ * @OA\Get(
+ *     path="/search/{query}",
+ *     summary="Search persons, families, groups, deposits, payments, and calendar events",
+ *     tags={"Search"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="query", in="path", required=true, @OA\Schema(type="string"),
+ *         description="Search term to match against all supported entity types"
+ *     ),
+ *     @OA\Response(response=200, description="Array of search result provider groups, each containing a type label and matched results",
+ *         @OA\JsonContent(type="array", @OA\Items(type="object",
+ *             @OA\Property(property="results", type="array", @OA\Items(type="object"))
+ *         ))
+ *     )
+ * )
+ */
 // search for a string in Persons, families, groups, Financial Deposits and Payments
 $app->get('/search/{query}', function (Request $request, Response $response, array $args): Response {
     $query = $args['query'];

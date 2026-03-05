@@ -35,18 +35,22 @@ ChurchCRM uses [POEditor](https://poeditor.com) as the primary translation manag
 
 ### Setup Requirements
 
-1. **POEditor Project Configuration**
-   - Project ID and API token must be configured in `BuildConfig.json`
-   - See `BuildConfig.json.example` for structure
+1. **Environment Configuration**
+   - Copy `.env.example` to `.env` (or `.env.local` for local-only overrides)
+   - Set `POEDITOR_TOKEN` from your POEditor API access (https://poeditor.com/account/api)
+   - Database credentials default to `localhost/churchcrm/changeme` (works for both local dev and Docker)
 
-2. **BuildConfig.json Structure**
-   ```json
-   {
-     "POEditor": {
-       "id": "YOUR_PROJECT_ID",
-       "token": "YOUR_API_TOKEN"
-     }
-   }
+2. **.env Configuration**
+   ```bash
+   # Database (optional - defaults shown)
+   DB_HOST=localhost
+   DB_PORT=3306
+   DB_NAME=churchcrm
+   DB_USER=churchcrm
+   DB_PASSWORD=changeme
+   
+   # POEditor (required for locale:download)
+   POEDITOR_TOKEN=your_api_token_here
    ```
 
 ### POEditor Workflow
@@ -63,12 +67,12 @@ For identifying and prioritizing untranslated terms:
 
 1. **Generate Missing Terms**: `npm run locale:missing`
    - Compares POEditor terms against each locale's translated terms
-   - Creates JSON files in `locale/terms/missing/new/{locale}/`
-   - Files are batched (default 100 terms per file) for easy POEditor import
+   - Creates JSON files in `locale/terms/missing/{locale}/`
+   - Files are batched (default 150 terms per file) for easy POEditor import
 
 2. **Upload to POEditor**: 
    - Go to POEditor → Your Project → Import
-   - Select language and upload the JSON files from `locale/terms/missing/new/{locale}/`
+   - Select language and upload the JSON files from `locale/terms/missing/{locale}/`
    - POEditor will highlight these as needing translation
 
 3. **Translation Priority**:
@@ -86,7 +90,6 @@ npm run locale:build      # Extract all terms from source code
 npm run locale:download   # Download translations from POEditor
 npm run locale:audit      # Generate completeness report
 npm run locale:missing    # Generate missing term files for each locale
-npm run locale:variants   # Populate regional variants from base language
 ```
 
 ## 📝 Gettext System
@@ -233,9 +236,9 @@ The system generates several runtime files:
    - Verify Gettext files exist in `textdomain/`
 
 2. **POEditor Sync Failures**
-   - Verify `BuildConfig.json` has correct API credentials
+   - Verify `POEDITOR_TOKEN` is set in `.env` file
    - Check network connectivity to POEditor API
-   - Ensure project ID matches your POEditor project
+   - Ensure token has proper POEditor API permissions
 
 3. **Term Extraction Errors**
    - Ensure `xgettext` is installed on system

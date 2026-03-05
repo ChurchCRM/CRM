@@ -90,15 +90,10 @@ jobs:
         fi
         echo "✅ POEditor token is configured"
 
-    - name: Create BuildConfig file
-      if: inputs.operation_mode != 'audit-only'
-      uses: jsdaniell/create-json@v1.2.3
-      with:
-        name: "BuildConfig.json"
-        json: '{"POEditor": { "id": "77079", "token": "${{ secrets.POEDITOR_TOKEN }}"}}'
-      
     - name: Download locales from POEditor
       if: inputs.operation_mode != 'audit-only'
+      env:
+        POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
       run: |
         set -e  # Exit on any command failure
         echo "🌍 Downloading locales from POEditor..."
@@ -209,17 +204,6 @@ jobs:
         echo ""
         echo "Git status after download:"
         git status --porcelain src/locale/i18n/
-        
-        # Check if base term updates exist
-        if [ -d "locale/base-term-updates" ]; then
-          base_updates_count=$(find locale/base-term-updates -name "*.json" -type f 2>/dev/null | wc -l)
-          if [ "$base_updates_count" -gt 0 ]; then
-            echo ""
-            echo "📋 Base Term Updates:"
-            echo "Generated files: $base_updates_count"
-            find locale/base-term-updates -name "*.json" -type f -exec ls -lh {} \;
-          fi
-        fi
 
     - name: Check for changes
       if: inputs.operation_mode != 'audit-only'
@@ -235,35 +219,11 @@ jobs:
           git diff --name-only
         fi
 
-    - name: Generate base term updates for variants
-      if: inputs.operation_mode != 'audit-only'
-      run: |
-        echo "🔄 Generating base term updates for locale variants..."
-        node locale/scripts/locale-populate-variants.js
-        echo "✅ Base term updates generated"
-
     - name: Configure Git
       if: inputs.operation_mode != 'audit-only'
       run: |
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
-
-    - name: Commit base term updates
-      if: inputs.operation_mode != 'audit-only'
-      run: |
-        if [ -d "locale/base-term-updates" ] && [ -n "$(find locale/base-term-updates -name '*.json' -type f 2>/dev/null)" ]; then
-          echo "📝 Committing base term updates..."
-          git add locale/base-term-updates/
-          # Check if there are staged changes to commit
-          if ! git diff --cached --quiet; then
-            git commit -m "📋 Base term updates: Add missing translation terms for locale variants"
-            echo "✅ Base term updates committed"
-          else
-            echo "ℹ️  No new base term updates to commit"
-          fi
-        else
-          echo "ℹ️  No base term updates generated"
-        fi
 
     - name: Generate missing terms for all locales
       if: inputs.operation_mode != 'audit-only'
@@ -309,7 +269,7 @@ jobs:
         body: |
           ## 🌍 Automatic Locale Update
           
-          This PR contains updated translations downloaded from POEditor, base term updates for locale variants, and missing term reports for all locales.
+          This PR contains updated translations downloaded from POEditor and missing term reports for all locales.
           
           **Details:**
           - 📅 **Date**: ${{ steps.date.outputs.date }}
@@ -319,12 +279,8 @@ jobs:
           **What's included:**
           - Updated translation files from POEditor
           - Generated locale JSON files
-          - 📋 Base term updates for locale variants (in `locale/base-term-updates/`)
           - 📊 Missing terms for all locales (in `locale/missing-terms/poeditor-*.json`)
           - Locale audit results
-          
-          **Base Term Updates:**
-          Syncs missing translations from base locales (Portuguese, Spanish) to their variants via POEditor.
           
           **Missing Terms Reports:**
           For each incomplete locale, a `poeditor-{locale}.json` file contains all missing/untranslated terms from the master English list. These can be imported into POEditor to help translators complete the translations.
@@ -349,7 +305,6 @@ jobs:
         echo "- **Operation mode**: ${{ inputs.operation_mode || 'download-and-audit' }}"
         echo "- **Download validation**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
         echo "- **Regression check**: ${{ inputs.operation_mode == 'audit-only' && 'Skipped (audit-only)' || 'Passed' }}"
-        echo "- **Base term updates**: Generated and committed"
         echo "- **Missing terms report**: Generated for all locales"
         echo "- **Changes detected**: ${{ inputs.operation_mode == 'audit-only' && 'N/A (audit-only)' || steps.changes.outputs.has_changes }}"
         echo "- **PR created**: ${{ inputs.operation_mode == 'audit-only' && 'No (audit-only)' || ((steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch') && 'Yes' || 'No') }}"

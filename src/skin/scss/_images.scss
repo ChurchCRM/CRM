@@ -1,0 +1,152 @@
+/**
+ * ChurchCRM Image Styles
+ *
+ * Consolidates image-related SCSS: profile images, lazy-loading, and photo gallery.
+ * Replaces: _profileImage.scss, _people-lazy-image-loading.scss, _photo-gallery.scss
+ */
+
+/* =========================
+   Lazy Image Loading Styles
+   ========================= */
+/* Base style for lazy-loading images */
+img[data-image-entity-type] {
+  background: linear-gradient(90deg, #f8f9fa 0%, #e9ecef 50%, #f8f9fa 100%);
+  background-size: 200% 100%;
+  min-height: 50px;
+  min-width: 50px;
+  object-fit: cover; /* Ensure images maintain aspect ratio when resized */
+}
+
+/* Loading animation */
+img[data-image-entity-type].loading {
+  opacity: 0.7;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Loaded state - smooth fade in */
+img[data-image-entity-type].loaded {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  background: transparent;
+}
+
+/* Error state */
+img[data-image-entity-type].error {
+  background: #ffebee;
+  border: 2px dashed #ef5350;
+  opacity: 0.8;
+}
+
+/* Specific styling for profile images */
+.profile-user-img[data-image-entity-type] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: 200% 200%;
+}
+
+.profile-user-img[data-image-entity-type].loading {
+  animation: shimmer-gradient 2s ease infinite;
+}
+
+@keyframes shimmer-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Circle images (avatars) */
+.img-circle[data-image-entity-type],
+.rounded-circle[data-image-entity-type] {
+  background: radial-gradient(circle, #e3f2fd 0%, #bbdefb 100%);
+}
+
+
+/* =========================
+   Profile Image Styles
+   ========================= */
+.profile-user-img {
+  height: 100px;
+}
+
+.profile-family-img,
+.profile-user-img-md {
+  height: 200px;
+  width: 200px;
+  border: 0;
+}
+
+.user-image {
+  border-radius: 50%;
+}
+
+.users-list > li:nth-child(4n + 1) {
+  clear: both;
+}
+
+
+/* =========================
+   Photo Utility Classes
+   ========================= */
+/* Base photo class - common styles for all photos */
+.photo-base {
+  object-fit: cover;
+  border-radius: 50%; /* Circle/avatar style */
+  display: inline-block;
+}
+
+/* Unified photo classes combining size + common styles */
+.photo-profile { @extend .photo-base; width: 200px; height: 200px; }
+.photo-tiny    { @extend .photo-base; width: 40px;  height: 40px; }
+.photo-small   { @extend .photo-base; width: 85px;  height: 85px; }
+.photo-medium  { @extend .photo-base; width: 100px; height: 100px; }
+.photo-large   { @extend .photo-base; width: 200px; height: 200px; }
+
+@media (max-width: 768px) {
+  .photo-large,
+  .photo-profile { width: 150px; height: 150px; }
+}
+
+
+/* =========================
+   Photo Gallery Styles
+   ========================= */
+.photo-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #dee2e6;
+}
+.photo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.photo-container {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f8f9fa;
+}
+
+.photo-thumbnail { max-height: 140px; max-width: 100%; object-fit: cover; }
+
+.avatar-placeholder {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.initials-text { user-select: none; }
+
+@media (max-width: 576px) {
+  .photo-container { height: 120px; }
+  .avatar-placeholder { width: 100px; height: 100px; font-size: 2rem; }
+  .photo-thumbnail { max-height: 110px; }
+}

@@ -42,23 +42,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="row mb-4">
         <!-- Total Pledges -->
         <div class="col-xl-3 col-md-6 mb-3">
-            <div class="card border-left-primary shadow h-100">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                <?= gettext('Total Pledges') ?>
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                $<?= number_format($totalPledges, 2) ?>
-                            </div>
-                            <div class="text-xs text-muted mt-1">
-                                <?= FinancialService::formatFiscalYear($selectedFyid) ?>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fa-solid fa-handshake fa-2x text-gray-300"></i>
-                        </div>
+            <div class="card finance-card shadow-sm border-0 h-100">
+                <div class="card-body text-center py-4 finance-metric-card metric-pledges">
+                    <div class="finance-metric-value">
+                        $<?= number_format($totalPledges, 2) ?>
+                    </div>
+                    <div class="text-white-50 text-uppercase small font-weight-bold mt-2 finance-metric-label">
+                        <?= gettext('Total Pledges') ?>
+                    </div>
+                    <div class="text-white-50 small mt-1">
+                        <?= FinancialService::formatFiscalYear($selectedFyid) ?>
                     </div>
                 </div>
             </div>
@@ -66,26 +59,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         <!-- Total Payments -->
         <div class="col-xl-3 col-md-6 mb-3">
-            <div class="card border-left-success shadow h-100">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                <?= gettext('Total Payments') ?>
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                $<?= number_format($totalPayments, 2) ?>
-                            </div>
-                            <?php 
-                            $overallPercent = $totalPledges > 0 ? ($totalPayments / $totalPledges) * 100 : 0;
-                            ?>
-                            <div class="text-xs text-muted mt-1">
-                                <?= number_format($overallPercent, 1) ?>% <?= gettext('of pledges') ?>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fa-solid fa-dollar-sign fa-2x text-gray-300"></i>
-                        </div>
+            <?php $overallPercent = $totalPledges > 0 ? ($totalPayments / $totalPledges) * 100 : 0; ?>
+            <div class="card finance-card shadow-sm border-0 h-100">
+                <div class="card-body text-center py-4 finance-metric-card metric-payments">
+                    <div class="finance-metric-value">
+                        $<?= number_format($totalPayments, 2) ?>
+                    </div>
+                    <div class="text-white-50 text-uppercase small font-weight-bold mt-2 finance-metric-label">
+                        <?= gettext('Total Payments') ?>
+                    </div>
+                    <div class="text-white-50 small mt-1">
+                        <?= number_format($overallPercent, 1) ?>% <?= gettext('of pledges') ?>
                     </div>
                 </div>
             </div>
@@ -94,31 +78,28 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <!-- Fund Summary Cards -->
         <?php if (!empty($fundTotals)): ?>
             <?php foreach ($fundTotals as $fundTotal): ?>
+                <?php $fundPercent = $fundTotal['total_pledged'] > 0 ? ($fundTotal['total_paid'] / $fundTotal['total_pledged']) * 100 : 0; ?>
                 <div class="col-xl-3 col-md-6 mb-3">
-                    <div class="card border-left-info shadow h-100">
+                    <div class="card finance-card shadow-sm border-0 h-100">
+                        <div class="card-header bg-info text-white py-2">
+                            <h5 class="mb-0">
+                                <i class="fa-solid fa-donate mr-1"></i>
+                                <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
+                            </h5>
+                        </div>
                         <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                        <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
-                                    </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        $<?= number_format($fundTotal['total_paid'], 2) ?>
-                                    </div>
-                                    <div class="text-xs text-muted mt-1">
-                                        <?= gettext('of') ?> $<?= number_format($fundTotal['total_pledged'], 2) ?> 
-                                        (<?php 
-                                        $fundPercent = $fundTotal['total_pledged'] > 0 ? ($fundTotal['total_paid'] / $fundTotal['total_pledged']) * 100 : 0;
-                                        echo number_format($fundPercent, 0);
-                                        ?>%)
-                                    </div>
-                                    <div class="text-xs text-muted">
-                                        <?= $fundTotal['family_count'] ?> <?= $fundTotal['family_count'] == 1 ? gettext('Family') : gettext('Families') ?>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                    <i class="fa-solid fa-donate fa-2x text-gray-300"></i>
-                                </div>
+                            <div class="h5 mb-1 font-weight-bold text-dark">
+                                $<?= number_format($fundTotal['total_paid'], 2) ?>
+                            </div>
+                            <div class="text-muted small mb-2">
+                                <?= gettext('of') ?> $<?= number_format($fundTotal['total_pledged'], 2) ?>
+                                (<?= number_format($fundPercent, 0) ?>%)
+                            </div>
+                            <div class="text-muted small mb-2">
+                                <?= $fundTotal['family_count'] ?> <?= $fundTotal['family_count'] == 1 ? gettext('Family') : gettext('Families') ?>
+                            </div>
+                            <div class="progress finance-progress">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: <?= min($fundPercent, 100) ?>%" aria-valuenow="<?= number_format($fundPercent, 0) ?>" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
@@ -140,17 +121,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </button>
                 </div>
             <?php else: ?>
-                <div class="card shadow">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">
-                            <?= gettext('Family Pledges') ?> 
-                            <span class="badge badge-primary ml-2"><?= count($familyPledges) ?></span>
-                        </h6>
+                <div class="card finance-card shadow-sm border-0">
+                    <div class="card-header bg-primary text-white py-2">
+                        <h5 class="mb-0">
+                            <i class="fa-solid fa-handshake mr-1"></i>
+                            <?= gettext('Family Pledges') ?>
+                            <span class="badge badge-light ml-2"><?= count($familyPledges) ?></span>
+                        </h5>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table table-sm table-striped table-hover mb-0">
-                                <thead class="bg-light">
+                            <table class="table table-hover mb-0">
+                                <thead class="thead-light">
                                     <tr>
                                         <th><?= gettext('Family Name') ?></th>
                                         <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
@@ -164,12 +146,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 </thead>
                                 <tbody>
                                     <?php foreach ($familyPledges as $familyIdx => $family): ?>
-                                        <?php 
+                                        <?php
                                         $pledgeCount = count($family['pledges']);
                                         $isMultiplePledges = $pledgeCount > 1;
                                         ?>
                                         <?php foreach ($family['pledges'] as $idx => $pledge): ?>
-                                            <tr class="<?= $isMultiplePledges ? 'border-left border-primary border-3' : '' ?>">
+                                            <tr <?= $isMultiplePledges ? 'style="border-left: 3px solid #007bff;"' : '' ?>>
                                                 <td class="<?= $idx === 0 ? 'font-weight-bold' : 'text-muted small pl-4' ?>">
                                                     <?php if ($idx === 0): ?>
                                                         <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family['family_id'] ?>">
@@ -191,10 +173,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <td class="text-right">
                                                     $<?= number_format($pledge['payment_amount'], 2) ?>
                                                 </td>
-                                                <?php 
+                                                <?php
                                                 $remaining = $pledge['pledge_amount'] - $pledge['payment_amount'];
                                                 $percentComplete = $pledge['pledge_amount'] > 0 ? ($pledge['payment_amount'] / $pledge['pledge_amount']) * 100 : 0;
-                                                $statusClass = '';
                                                 if ($percentComplete >= 100) {
                                                     $statusClass = 'text-success font-weight-bold';
                                                 } elseif ($percentComplete >= 75) {

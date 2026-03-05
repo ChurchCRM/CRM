@@ -313,7 +313,7 @@ class Family extends BaseFamily implements PhotoInterface
         $html = '<a href="' . $this->getViewURI() . '">' . $name . '</a>';
 
         if ($includePhoto && $this->getPhoto() && $this->getPhoto()->hasUploadedPhoto()) {
-            $html .= ' <button class="btn btn-xs btn-outline-secondary view-family-photo ml-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+            $html .= ' <button class="btn btn-sm btn-outline-secondary view-family-photo ml-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
         }
 
         return $html;
@@ -336,6 +336,19 @@ class Family extends BaseFamily implements PhotoInterface
     public function hasLatitudeAndLongitude(): bool
     {
         return !empty($this->getLatitude()) && !empty($this->getLongitude());
+    }
+
+    /**
+     * Returns a Google Maps directions deep-link for this family's address.
+     * Uses stored lat/lng when available (more accurate); falls back to the address string.
+     * Returns an empty string when no address is set.
+     */
+    public function getDirectionsUrl(): string
+    {
+        if ($this->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildDirectionsUrl('', (float) $this->getLatitude(), (float) $this->getLongitude());
+        }
+        return GeoUtils::buildDirectionsUrl($this->getAddress());
     }
 
     /**

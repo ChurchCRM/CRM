@@ -13,6 +13,9 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 
 $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 ?>
+<?php if ($doShowMap) : ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+<?php endif; ?>
 
 <div class="container-fluid py-4">
     <!-- Header Section -->
@@ -79,11 +82,11 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
     <div class="card shadow-sm">
         <div class="card-header bg-light">
             <h5 class="mb-0">
-                <i class="fa-solid fa-users text-primary me-2"></i><?= gettext("Family Members") ?>
+                <i class="fa-solid fa-users text-primary mr-2"></i><?= gettext("Family Members") ?>
             </h5>
         </div>
         <div class="card-body">
-            <div class="row g-4">
+            <div class="row">
                 <?php foreach ($family->getPeopleSorted() as $person) { ?>
                 <div class="col-lg-4 col-md-6">
                     <div class="card h-100 shadow-sm">
@@ -108,7 +111,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                                 <?= InputUtils::escapeHTML($person->getFullName()) ?>
                             </h5>
                             <p class="text-muted mb-3">
-                                <i class="fa-solid fa-<?= ($person->isMale() ? "mars" : "venus") ?> me-1"></i>
+                                <i class="fa-solid fa-<?= ($person->isMale() ? "mars" : "venus") ?> mr-1"></i>
                                 <?= InputUtils::escapeHTML($person->getFamilyRoleName()) ?>
                             </p>
 
@@ -117,37 +120,37 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                                 <?php if (!empty($person->getHomePhone())) { ?>
                                 <div class="mb-2 small">
                                     <i class="fa-solid fa-fw fa-phone text-primary"></i>
-                                    <span class="ms-2">(H) <?= InputUtils::escapeHTML($person->getHomePhone()) ?></span>
+                                    <span class="ml-2">(H) <?= InputUtils::escapeHTML($person->getHomePhone()) ?></span>
                                 </div>
                                 <?php } ?>
                                 <?php if (!empty($person->getWorkPhone())) { ?>
                                 <div class="mb-2 small">
                                     <i class="fa-solid fa-fw fa-briefcase text-primary"></i>
-                                    <span class="ms-2">(W) <?= InputUtils::escapeHTML($person->getWorkPhone()) ?></span>
+                                    <span class="ml-2">(W) <?= InputUtils::escapeHTML($person->getWorkPhone()) ?></span>
                                 </div>
                                 <?php } ?>
                                 <?php if (!empty($person->getCellPhone())) { ?>
                                 <div class="mb-2 small">
                                     <i class="fa-solid fa-fw fa-mobile text-primary"></i>
-                                    <span class="ms-2">(M) <?= InputUtils::escapeHTML($person->getCellPhone()) ?></span>
+                                    <span class="ml-2">(M) <?= InputUtils::escapeHTML($person->getCellPhone()) ?></span>
                                 </div>
                                 <?php } ?>
                                 <?php if (!empty($person->getEmail())) { ?>
                                 <div class="mb-2 small">
                                     <i class="fa-solid fa-fw fa-envelope text-primary"></i>
-                                    <span class="ms-2"><?= InputUtils::escapeHTML($person->getEmail()) ?></span>
+                                    <span class="ml-2"><?= InputUtils::escapeHTML($person->getEmail()) ?></span>
                                 </div>
                                 <?php } ?>
                                 <?php if (!empty($person->getWorkEmail())) { ?>
                                 <div class="mb-2 small">
                                     <i class="fa-solid fa-fw fa-envelope text-success"></i>
-                                    <span class="ms-2"><?= InputUtils::escapeHTML($person->getWorkEmail()) ?></span>
+                                    <span class="ml-2"><?= InputUtils::escapeHTML($person->getWorkEmail()) ?></span>
                                 </div>
                                 <?php } ?>
                                 <?php if (!empty($person->getFormattedBirthDate())) { ?>
                                 <div class="mb-2 small">
                                     <i class="fa-solid fa-fw fa-cake-candles text-warning"></i>
-                                    <span class="ms-2"><?= InputUtils::escapeHTML($person->getFormattedBirthDate()) ?></span>
+                                    <span class="ml-2"><?= InputUtils::escapeHTML($person->getFormattedBirthDate()) ?></span>
                                 </div>
                                 <?php } ?>
                             </div>
@@ -156,7 +159,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                             <div class="border-top mt-3 pt-3">
                                 <p class="mb-0">
                                     <strong><?= gettext("Classification") ?>:</strong><br>
-                                    <span class="badge bg-secondary"><?= InputUtils::escapeHTML(Classification::getName($person->getClsId())) ?></span>
+                                    <span class="badge badge-secondary"><?= InputUtils::escapeHTML(Classification::getName($person->getClsId())) ?></span>
                                 </p>
                             </div>
 
@@ -164,7 +167,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                             <?php if (count($person->getPerson2group2roleP2g2rs()) > 0) { ?>
                             <div class="border-top mt-3 pt-3">
                                 <p class="mb-2"><strong><?= gettext("Groups") ?></strong></p>
-                                <div class="text-start">
+                                <div class="text-left">
                                     <?php foreach ($person->getPerson2group2roleP2g2rs() as $groupMembership) {
                                         if ($groupMembership->getGroup() != null) {
                                             $listOption = ListOptionQuery::create()
@@ -175,7 +178,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                                     ?>
                                     <div class="small mb-2">
                                         <strong><?= InputUtils::escapeHTML($groupMembership->getGroup()->getName()) ?>:</strong>
-                                        <span class="badge bg-info"><?= InputUtils::escapeHTML($roleName) ?></span>
+                                        <span class="badge badge-info"><?= InputUtils::escapeHTML($roleName) ?></span>
                                     </div>
                                     <?php
                                         }
@@ -206,7 +209,9 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
         <div class="modal-content">
             <div class="modal-header bg-success text-white">
                 <h5 class="modal-title" id="verify-label"><?= gettext("Confirm Family Information") ?></h5>
-                <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 
             <div class="modal-body" id="confirm-modal-collect">
@@ -216,13 +221,13 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                         <div class="form-check mb-3">
                             <input class="form-check-input" type="radio" name="verifyType" id="NoChanges" value="no-change" checked>
                             <label class="form-check-label" for="NoChanges">
-                                <i class="fa-solid fa-check text-success me-2"></i><?= gettext("All information is correct") ?>
+                                <i class="fa-solid fa-check text-success mr-2"></i><?= gettext("All information is correct") ?>
                             </label>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="verifyType" id="UpdateNeeded" value="change-needed">
                             <label class="form-check-label" for="UpdateNeeded">
-                                <i class="fa-solid fa-pencil text-warning me-2"></i><?= gettext("Please update our records with corrections") ?>
+                                <i class="fa-solid fa-pencil text-warning mr-2"></i><?= gettext("Please update our records with corrections") ?>
                             </label>
                         </div>
                     </div>
@@ -235,7 +240,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
             <div class="modal-body d-none" id="confirm-modal-done">
                 <div class="alert alert-success" role="alert">
-                    <i class="fa-solid fa-check-circle me-2"></i>
+                    <i class="fa-solid fa-check-circle mr-2"></i>
                     <strong><?= gettext("Thank You!") ?></strong>
                     <p class="mb-0 mt-2"><?= gettext("Your verification request has been received. Thank you for keeping your information up to date.") ?></p>
                 </div>
@@ -243,7 +248,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
             <div class="modal-body d-none" id="confirm-modal-error">
                 <div class="alert alert-danger" role="alert">
-                    <i class="fa-solid fa-exclamation-circle me-2"></i>
+                    <i class="fa-solid fa-exclamation-circle mr-2"></i>
                     <strong><?= gettext("Error") ?></strong>
                     <p class="mb-0 mt-2"><?= gettext("We encountered an error processing your verification. Please try again or contact us directly.") ?></p>
                 </div>
@@ -252,23 +257,33 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id="onlineVerifyCancelBtn" data-dismiss="modal"><?= gettext("Cancel") ?></button>
                 <button type="button" class="btn btn-success" id="onlineVerifyBtn">
-                    <i class="fa-solid fa-paper-plane me-2"></i><?= gettext("Submit Verification") ?>
+                    <i class="fa-solid fa-paper-plane mr-2"></i><?= gettext("Submit Verification") ?>
                 </button>
                 <a href="<?= ChurchMetaData::getChurchWebSite() ?>" id="onlineVerifySiteBtn" class="btn btn-primary" target="_blank">
-                    <i class="fa-solid fa-globe me-2"></i><?= gettext("Visit Our Website") ?>
+                    <i class="fa-solid fa-globe mr-2"></i><?= gettext("Visit Our Website") ?>
                 </a>
             </div>
         </div>
     </div>
 </div>
 
-<script src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapsRenderKey") ?>"></script>
+<?php if ($doShowMap) : ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    <?php if ($doShowMap) { ?>
-        var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
-    <?php } else { ?>
-        var LatLng = null;
-    <?php } ?>
+    (function () {
+        var lat = <?= json_encode((float) $family->getLatitude()) ?>;
+        var lng = <?= json_encode((float) $family->getLongitude()) ?>;
+        var map = L.map('map1', { scrollWheelZoom: false, dragging: false, zoomControl: false })
+            .setView([lat, lng], 14);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        L.marker([lat, lng]).addTo(map);
+    })();
+</script>
+<?php endif; ?>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var token = '<?= $token->getToken()?>';
 </script>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-verify.min.css') ?>">

@@ -50,11 +50,19 @@ class ChurchCRMReleaseManager
 
         try {
             if ($allowPrerelease) {
-                $gitHubReleases = $client->api('repo')->releases()->all(
-                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
-                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME,
-                    ['per_page' => 5, 'page' => 1]
-                );
+                // Use the GitHub API client with proper method chaining
+                // knplabs/github-api v3 uses repos()->releases()
+                try {
+                    $gitHubReleases = $client->repo()
+                        ->releases()
+                        ->all(
+                            ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                            ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
+                        );
+                } catch (\Exception $e) {
+                    LoggerUtils::getAppLogger()->warning('Failed to fetch all releases from GitHub API', ['error' => $e->getMessage()]);
+                    $gitHubReleases = [];
+                }
 
                 foreach ($gitHubReleases as $r) {
                     $release = new ChurchCRMRelease($r);
@@ -67,10 +75,17 @@ class ChurchCRMReleaseManager
                     }
                 }
             } else {
-                $latestRelease = $client->api('repo')->releases()->latest(
-                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
-                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
-                );
+                try {
+                    $latestRelease = $client->repo()
+                        ->releases()
+                        ->latest(
+                            ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                            ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
+                        );
+                } catch (\Exception $e) {
+                    LoggerUtils::getAppLogger()->warning('Failed to fetch latest release from GitHub API', ['error' => $e->getMessage()]);
+                    $latestRelease = null;
+                }
 
                 if (is_array($latestRelease) && !empty($latestRelease)) {
                     $release = new ChurchCRMRelease($latestRelease);
@@ -230,30 +245,54 @@ class ChurchCRMReleaseManager
         // Download the file with retry logic (3 attempts total)
         $maxAttempts = 3;
         $downloadContent = false;
-        $lastError = null;
+        $lastErrorMsg = 'Unknown error';
 
         for ($attempt = 1; $attempt <= $maxAttempts; $attempt++) {
             $logger->info('Download attempt ' . $attempt . ' of ' . $maxAttempts);
 
-            // Clear any previous error
-            @error_clear_last();
+            if (function_exists('curl_init')) {
+                // Use cURL for download (works even when allow_url_fopen is disabled)
+                $ch = curl_init($url);
+                if ($ch === false) {
+                    $lastErrorMsg = 'curl_init() failed to initialize (possibly malformed URL)';
+                } else {
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+                    curl_setopt($ch, CURLOPT_USERAGENT, 'ChurchCRM/' . VersionUtils::getInstalledVersion());
+                    curl_setopt($ch, CURLOPT_TIMEOUT, 300);
+                    $result = curl_exec($ch);
+                    $curlErrno = curl_errno($ch);
+                    $curlError = curl_error($ch);
+                    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                    curl_close($ch);
 
-            $downloadContent = @file_get_contents($url);
+                    if ($result !== false && $httpCode >= 200 && $httpCode < 300 && strlen($result) > 0) {
+                        $downloadContent = $result;
+                        $logger->info('Download succeeded on attempt ' . $attempt . ' via cURL (HTTP ' . $httpCode . ')');
+                        break;
+                    }
 
-            // Check if download succeeded and content is not empty
-            if ($downloadContent !== false && strlen($downloadContent) > 0) {
-                $logger->info('Download succeeded on attempt ' . $attempt);
-                break;
+                    $lastErrorMsg = !empty($curlError) ? 'cURL error (' . $curlErrno . '): ' . $curlError : 'HTTP ' . $httpCode;
+                }
+            } else {
+                // Fallback: file_get_contents (requires allow_url_fopen = On)
+                @error_clear_last();
+                $result = @file_get_contents($url);
+                if ($result !== false && strlen($result) > 0) {
+                    $downloadContent = $result;
+                    $logger->info('Download succeeded on attempt ' . $attempt . ' via file_get_contents');
+                    break;
+                }
+                $phpError = error_get_last();
+                $lastErrorMsg = $phpError['message'] ?? 'Unknown error or empty response';
             }
-
-            // Capture the error for logging
-            $lastError = error_get_last();
-            $errorMsg = $lastError['message'] ?? 'Unknown error or empty response';
 
             if ($attempt < $maxAttempts) {
                 $logger->warning('Download attempt ' . $attempt . ' failed, retrying...', [
                     'url' => $url,
-                    'error' => $errorMsg,
+                    'error' => $lastErrorMsg,
                 ]);
                 // Wait before retry (1 second, then 2 seconds)
                 sleep($attempt);
@@ -262,12 +301,11 @@ class ChurchCRMReleaseManager
 
         // Check if all attempts failed
         if ($downloadContent === false) {
-            $errorMsg = $lastError['message'] ?? 'Unknown error';
             $logger->error('Failed to download release file after ' . $maxAttempts . ' attempts', [
                 'url' => $url,
-                'error' => $errorMsg,
+                'error' => $lastErrorMsg,
             ]);
-            throw new \Exception(gettext('Failed to download the release file from GitHub after multiple attempts. Please check your server\'s internet connection and try again.') . ' Error: ' . $errorMsg);
+            throw new \Exception(gettext('Failed to download the release file from GitHub after multiple attempts. Please check your server\'s internet connection and try again.') . ' Error: ' . $lastErrorMsg);
         }
 
         // Check if downloaded content is empty
@@ -412,8 +450,12 @@ class ChurchCRMReleaseManager
         $perms = $fileExists ? @fileperms($zipFilename) : false;
         $filePerms = ($perms !== false) ? substr(sprintf('%o', $perms), -4) : 'N/A';
         $currentUser = get_current_user();
-        $pwuid = $fileExists ? posix_getpwuid(fileowner($zipFilename)) : false;
-        $fileOwner = ($pwuid !== false && isset($pwuid['name'])) ? $pwuid['name'] : 'unknown';
+        $fileOwner = 'unknown';
+        // Only call posix_getpwuid if the function exists (not available on Windows)
+        if ($fileExists && function_exists('posix_getpwuid')) {
+            $pwuid = @posix_getpwuid(fileowner($zipFilename));
+            $fileOwner = ($pwuid !== false && isset($pwuid['name'])) ? $pwuid['name'] : 'unknown';
+        }
         $logger->debug('File pre-flight check', [
             'zipFilename' => $zipFilename,
             'fileExists' => $fileExists,

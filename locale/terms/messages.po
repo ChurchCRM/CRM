@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-16 02:06-0800\n"
+"POT-Creation-Date: 2026-03-03 17:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -210,6 +210,9 @@ msgid "ADD, Delete, and ordering changes are immediate. Name and Description cha
 msgstr ""
 
 msgid "ALERT"
+msgstr ""
+
+msgid "API Key is required."
 msgstr ""
 
 msgid "About WebDAV Backups"
@@ -667,6 +670,9 @@ msgstr ""
 msgid "Are you sure you want to move"
 msgstr ""
 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr ""
+
 msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
 msgstr ""
 
@@ -961,9 +967,6 @@ msgstr ""
 msgid "Bid"
 msgstr ""
 
-msgid "Bing map API requires a unique key"
-msgstr ""
-
 msgid "Birth & Family"
 msgstr ""
 
@@ -1030,6 +1033,9 @@ msgid "Browser"
 msgstr ""
 
 msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr ""
+
+msgid "Browser language preference detected"
 msgstr ""
 
 #. Context: countries
@@ -1148,6 +1154,17 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+msgid "Cancel and Return to Family View"
+msgstr ""
+
+#, php-format
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr ""
+
+#, php-format
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr ""
+
 msgid "Cannot execute query."
 msgstr ""
 
@@ -1217,6 +1234,9 @@ msgstr ""
 msgid "Change Settings"
 msgstr ""
 
+msgid "Change Your Locale"
+msgstr ""
+
 msgid "Change role"
 msgstr ""
 
@@ -1281,9 +1301,6 @@ msgid "Checked Out Time"
 msgstr ""
 
 msgid "Checking Cart Status"
-msgstr ""
-
-msgid "Checkout All"
 msgstr ""
 
 msgid "Checks"
@@ -1603,10 +1620,31 @@ msgstr ""
 msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr ""
 
+msgid "Congregation Map"
+msgstr ""
+
+msgid "Congregation Map — Setup Required"
+msgstr ""
+
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
 msgstr ""
 
 msgid "Connected"
+msgstr ""
+
+#, php-format
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr ""
+
+msgid "Connected to OpenLP server successfully."
+msgstr ""
+
+#, php-format
+msgid "Connected to OpenLP! Version: %s"
+msgstr ""
+
+#, php-format
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
 msgstr ""
 
 msgid "Connection failed"
@@ -1634,6 +1672,9 @@ msgid "Contact Information"
 msgstr ""
 
 msgid "Continue to Backup"
+msgstr ""
+
+msgid "Continue to Dashboard"
 msgstr ""
 
 msgid "Continue to Download & Apply"
@@ -1675,6 +1716,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Costa Rica"
+msgstr ""
+
+msgid "Could not connect to MailChimp. Please check your API key."
 msgstr ""
 
 msgid "Count"
@@ -1804,6 +1848,9 @@ msgstr ""
 msgid "Current Fiscal Year"
 msgstr ""
 
+msgid "Current Password"
+msgstr ""
+
 msgid "Current Role"
 msgstr ""
 
@@ -1817,6 +1864,9 @@ msgid "Current Version:"
 msgstr ""
 
 msgid "Current fiscal year"
+msgstr ""
+
+msgid "Custom"
 msgstr ""
 
 msgid "Custom Drop-Down List"
@@ -2276,6 +2326,9 @@ msgstr ""
 msgid "Disclaimer"
 msgstr ""
 
+msgid "Dismiss"
+msgstr ""
+
 msgid "Display bill counts on deposit slip"
 msgstr ""
 
@@ -2395,9 +2448,6 @@ msgid "Dutch - Netherlands"
 msgstr ""
 
 msgid "E"
-msgstr ""
-
-msgid "E.164 format, e.g., +14155551234"
 msgstr ""
 
 msgid "EMERGENCY"
@@ -2981,6 +3031,9 @@ msgstr ""
 msgid "Failed to apply upgrade. Please check the server logs for details."
 msgstr ""
 
+msgid "Failed to connect to OpenLP server."
+msgstr ""
+
 msgid "Failed to copy URL"
 msgstr ""
 
@@ -3078,9 +3131,6 @@ msgid "Failed to save settings"
 msgstr ""
 
 msgid "Failed to save the downloaded release file. Please check disk space and permissions."
-msgstr ""
-
-msgid "Failed to send SMS"
 msgstr ""
 
 msgid "Failed to set default role. Please try again."
@@ -3210,6 +3260,9 @@ msgid "Family Roles Editor"
 msgstr ""
 
 msgid "Family Select"
+msgstr ""
+
+msgid "Family Status"
 msgstr ""
 
 msgid "Family Type: used with Make Family records... option above"
@@ -3460,9 +3513,6 @@ msgstr ""
 msgid "Focus"
 msgstr ""
 
-msgid "Follow us on"
-msgstr ""
-
 msgid "Font"
 msgstr ""
 
@@ -3658,6 +3708,9 @@ msgstr ""
 msgid "Germany (Deutschland)"
 msgstr ""
 
+msgid "Get Directions"
+msgstr ""
+
 msgid "Get Started"
 msgstr ""
 
@@ -3696,16 +3749,7 @@ msgstr ""
 msgid "Go to Login"
 msgstr ""
 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr ""
-
 msgid "Google Maps API Key used for Geocoding addresses"
-msgstr ""
-
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr ""
-
-msgid "Google Maps Zoom"
 msgstr ""
 
 msgid "Graphic"
@@ -3995,6 +4039,9 @@ msgstr ""
 msgid "Iceland (Ísland)"
 msgstr ""
 
+msgid "Id"
+msgstr ""
+
 msgid "Identify members who have not made any donations within a date range."
 msgstr ""
 
@@ -4007,7 +4054,7 @@ msgstr ""
 msgid "If that doesn't work, copy and paste the following link in your browser"
 msgstr ""
 
-msgid "If you delete this type, you will also remove all properties using"
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
 msgstr ""
 
 msgid "If you need access to this feature, please contact your church administrator."
@@ -4076,6 +4123,9 @@ msgstr ""
 msgid "Include contact and demographic data in new member email notification body"
 msgstr ""
 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr ""
+
 msgid "Include events and calendars"
 msgstr ""
 
@@ -4136,7 +4186,17 @@ msgstr ""
 msgid "Intersect with Cart"
 msgstr ""
 
+#, php-format
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr ""
+
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr ""
+
 msgid "Invalid API key"
+msgstr ""
+
+msgid "Invalid API key format. Check your MailChimp API key."
 msgstr ""
 
 msgid "Invalid Birth Date."
@@ -4181,6 +4241,9 @@ msgstr ""
 msgid "Invalid date format in start parameter"
 msgstr ""
 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr ""
+
 msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
 msgstr ""
 
@@ -4203,6 +4266,9 @@ msgid "Invalid request data"
 msgstr ""
 
 msgid "Invalid request: Missing calendar id"
+msgstr ""
+
+msgid "Invalid server URL format."
 msgstr ""
 
 msgid "Invalid status"
@@ -4644,6 +4710,9 @@ msgstr ""
 msgid "MailChimp Dashboard"
 msgstr ""
 
+msgid "MailChimp connection failed."
+msgstr ""
+
 msgid "MailChimp is not configured"
 msgstr ""
 
@@ -4735,6 +4804,9 @@ msgid "Map Cart"
 msgstr ""
 
 msgid "Map Settings"
+msgstr ""
+
+msgid "Map Zoom Level"
 msgstr ""
 
 msgid "Map this group"
@@ -4952,9 +5024,6 @@ msgstr ""
 msgid "Missing"
 msgstr ""
 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr ""
-
 msgid "Missing Files"
 msgstr ""
 
@@ -4970,8 +5039,15 @@ msgstr ""
 msgid "Missing event id"
 msgstr ""
 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr ""
+
 #. Context: query_qry
 msgid "Missing pledges"
+msgstr ""
+
+#, php-format
+msgid "Missing required settings: %s"
 msgstr ""
 
 msgid "Mobile"
@@ -5055,6 +5131,9 @@ msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet a
 msgstr ""
 
 msgid "Move"
+msgstr ""
+
+msgid "Move Donations to Selected Family"
 msgstr ""
 
 msgid "Move Event"
@@ -5148,9 +5227,6 @@ msgid "Name Tags"
 msgstr ""
 
 msgid "Name for New"
-msgstr ""
-
-msgid "Names of markers for Google Maps in order of classification"
 msgstr ""
 
 #. Context: countries
@@ -5564,17 +5640,11 @@ msgstr ""
 msgid "October"
 msgstr ""
 
-msgid "Off"
-msgstr ""
-
 msgid "Old Password"
 msgstr ""
 
 #. Context: countries
 msgid "Oman (‫عُمان‬‎)"
-msgstr ""
-
-msgid "On"
 msgstr ""
 
 msgid "Once"
@@ -5785,6 +5855,15 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+msgid "Password Change Required"
+msgstr ""
+
+msgid "Password Change Successful"
+msgstr ""
+
+msgid "Password Changed"
+msgstr ""
+
 msgid "Password Reset"
 msgstr ""
 
@@ -5804,6 +5883,9 @@ msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
 msgid "Passwords do not match"
+msgstr ""
+
+msgid "Passwords must be at least"
 msgstr ""
 
 msgid "Patriarch"
@@ -5947,6 +6029,9 @@ msgstr ""
 msgid "Person has been already checked in for this event"
 msgstr ""
 
+msgid "Person has no family"
+msgstr ""
+
 msgid "Person not found"
 msgstr ""
 
@@ -5995,9 +6080,6 @@ msgid "Phone Type"
 msgstr ""
 
 msgid "Phone number"
-msgstr ""
-
-msgid "Phone number and message required"
 msgstr ""
 
 msgid "Photo Directory"
@@ -6258,6 +6340,9 @@ msgstr ""
 msgid "Plugin not found"
 msgstr ""
 
+msgid "Plugin not found or not active"
+msgstr ""
+
 msgid "Plugins"
 msgstr ""
 
@@ -6436,9 +6521,6 @@ msgid "Recent friends"
 msgstr ""
 
 msgid "Recipient Naming Method"
-msgstr ""
-
-msgid "Recipients and message required"
 msgstr ""
 
 msgid "Recommendation: Review and delete these files before or after the upgrade."
@@ -6780,9 +6862,6 @@ msgstr ""
 msgid "SHA1 Hash:"
 msgstr ""
 
-msgid "SMS sent"
-msgstr ""
-
 msgid "SMTP Host"
 msgstr ""
 
@@ -7004,9 +7083,6 @@ msgstr ""
 msgid "Select Gender"
 msgstr ""
 
-msgid "Select GeoCoder Provider"
-msgstr ""
-
 msgid "Select Group"
 msgstr ""
 
@@ -7149,6 +7225,9 @@ msgstr ""
 msgid "Server Information"
 msgstr ""
 
+msgid "Server URL is required."
+msgstr ""
+
 msgid "Server error"
 msgstr ""
 
@@ -7161,6 +7240,9 @@ msgid "Set Active"
 msgstr ""
 
 msgid "Set Inactive"
+msgstr ""
+
+msgid "Set New Password"
 msgstr ""
 
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
@@ -7744,6 +7826,10 @@ msgstr ""
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
 msgstr ""
 
+#, php-format
+msgid "The password for %s has been updated."
+msgstr ""
+
 msgid "The previous integrity check passed. All system file hashes match the expected values."
 msgstr ""
 
@@ -7863,6 +7949,9 @@ msgstr ""
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
 msgstr ""
 
+msgid "This plugin does not support connection testing."
+msgstr ""
+
 msgid "This property type is still being used by at least one property."
 msgstr ""
 
@@ -7949,9 +8038,6 @@ msgid "Title page"
 msgstr ""
 
 msgid "To"
-msgstr ""
-
-msgid "To export to another For european CharSet use ;"
 msgstr ""
 
 msgid "To select multiple hold CTL"
@@ -8168,7 +8254,7 @@ msgstr ""
 msgid "Unable To Begin Two Factor Authentication Enrollment"
 msgstr ""
 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
+msgid "Unable to display map: church address has not been geocoded yet."
 msgstr ""
 
 msgid "Unable to load"
@@ -8271,6 +8357,9 @@ msgid "Update Package Details"
 msgstr ""
 
 msgid "Update Properties"
+msgstr ""
+
+msgid "Update church address in Settings."
 msgstr ""
 
 msgid "Update it to a valid URL that:"
@@ -8418,6 +8507,9 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
+msgid "Username and password are required."
+msgstr ""
+
 #. Context: countries
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr ""
@@ -8429,6 +8521,10 @@ msgid "Valid Settings"
 msgstr ""
 
 msgid "Validation Error"
+msgstr ""
+
+#, php-format
+msgid "Validation failed: %s"
 msgstr ""
 
 msgid "Validation pending"
@@ -8583,9 +8679,6 @@ msgstr ""
 msgid "View application logs. Click on a log file to view its contents."
 msgstr ""
 
-msgid "View on Map"
-msgstr ""
-
 msgid "View, Add and Edit Notes"
 msgstr ""
 
@@ -8616,6 +8709,9 @@ msgid "Vonage API Key"
 msgstr ""
 
 msgid "Vonage API Secret"
+msgstr ""
+
+msgid "Vonage server error. Please try again later."
 msgstr ""
 
 msgid "Voting Members"
@@ -8677,6 +8773,9 @@ msgid "WebDAV Configuration"
 msgstr ""
 
 msgid "WebDAV Connection"
+msgstr ""
+
+msgid "WebDAV Endpoint URL is required."
 msgstr ""
 
 msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
@@ -8856,6 +8955,9 @@ msgstr ""
 msgid "You must select a type"
 msgstr ""
 
+msgid "You must set a new password before continuing."
+msgstr ""
+
 msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
 msgstr ""
 
@@ -8916,6 +9018,9 @@ msgstr ""
 msgid "Your authenticator app has been successfully enrolled"
 msgstr ""
 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr ""
+
 msgid "Your cart contains"
 msgstr ""
 
@@ -8944,6 +9049,9 @@ msgid "Your new password must not match your old one."
 msgstr ""
 
 msgid "Your password choice is too obvious. Please choose something else."
+msgstr ""
+
+msgid "Your password has been updated successfully."
 msgstr ""
 
 msgid "Your previous session timed out.  Please login again."
@@ -9103,9 +9211,6 @@ msgstr ""
 msgid "issues"
 msgstr ""
 
-msgid "it and lose any corresponding property assignments."
-msgstr ""
-
 msgid "item"
 msgstr ""
 
@@ -9217,6 +9322,9 @@ msgid "seconds..."
 msgstr ""
 
 msgid "select an option"
+msgstr ""
+
+msgid "selected family has no coordinates"
 msgstr ""
 
 msgid "subscribers"

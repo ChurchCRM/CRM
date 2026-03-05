@@ -1,6 +1,6 @@
 {
   "name": "ChurchCRM Development",
-  "image": "mcr.microsoft.com/devcontainers/php:8.2-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/php:8.4-bullseye",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "shutdownAction": "none",
   

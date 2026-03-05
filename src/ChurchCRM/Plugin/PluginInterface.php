@@ -138,4 +138,32 @@ interface PluginInterface
      * @return array Configuration key-value pairs for client-side use
      */
     public function getClientConfig(): array;
+
+    /**
+     * Get the settings schema for this plugin.
+     *
+     * Returns an array of setting definitions, each with at minimum:
+     * - 'key': Setting key (without plugin prefix)
+     * - 'label': Human-readable label
+     * - 'type': Field type ('text', 'password', 'boolean', 'select')
+     * - 'required' (optional): Whether the setting is required
+     * - 'help' (optional): Help text shown below the field
+     *
+     * @return array<int, array<string, mixed>>
+     */
+    public function getSettingsSchema(): array;
+
+    /**
+     * Get menu items to add to the navigation.
+     *
+     * Each item is an array with keys:
+     * - 'parent': Parent menu key (e.g., 'admin', 'email', 'people')
+     * - 'label': Display text
+     * - 'url': Relative URL path
+     * - 'icon': Optional FontAwesome icon class
+     * - 'permission': Optional permission required
+     *
+     * @return array<int, array{parent: string, label: string, url: string, icon?: string, permission?: string}>
+     */
+    public function getMenuItems(): array;
 }

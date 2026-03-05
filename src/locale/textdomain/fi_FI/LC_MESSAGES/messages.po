@@ -1811,14 +1811,6 @@ msgid "Assign starting at #"
 msgstr "Määritä alkaen numerosta #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Karttaa ei voida näyttää, koska kirkon koordinaatit puuttuvat. Päivitä kirkon osoite asetusvalikossa."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Map API -avainta ei ole asetettu. Kartta toimii vain rajoitetulla määrällä kohteita. Luo avain asetusvalikon karttaosiossa."
-
-#: 
 msgid "Member Role Change"
 msgstr "Jäsenen roolin muutos"
 
@@ -2306,14 +2298,6 @@ msgstr "Varoitus"
 #: 
 msgid "This property type is still being used by at least one property."
 msgstr "Tämä ominaisuustyyppi on vielä käytössä vähintään yhdessä ominaisuudessa."
-
-#: 
-msgid "If you delete this type, you will also remove all properties using"
-msgstr "Jos poistat tämän tyypin, poistat myös kaikki ominaisuudet, jotka käyttävät"
-
-#: 
-msgid "it and lose any corresponding property assignments."
-msgstr "sitä, ja menetät kaikki vastaavat ominaisuusmääritykset."
 
 #: 
 msgid "Please confirm deletion of this Property Type"
@@ -3261,10 +3245,6 @@ msgid "Email Export"
 msgstr "Sähköpostivienti"
 
 #: 
-msgid "List"
-msgstr "Lista"
-
-#: 
 msgid "Import Data"
 msgstr "Tuo tietoja"
 
@@ -3367,26 +3347,6 @@ msgstr "Varmuuskopio valmis, ladattavissa."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Varmuuskopio ladattu, kopio poistettu palvelimelta"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampanjat:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Lopettaneiden tilaajien määrä:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Lopettaneiden tilaajien määrä edellisen lähetyksen jälkeen:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Siivottujen määrä:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Siivottujen määrä edellisen lähetyksen jälkeen:"
 
 #: 
 msgid "Functions"
@@ -3511,10 +3471,6 @@ msgstr "Tallennuspäivä"
 #: 
 msgid "CSV Import"
 msgstr "CSV-tuonti"
-
-#: 
-msgid "Members:"
-msgstr "Jäsenet:"
 
 #: 
 msgid "There were "
@@ -3677,10 +3633,6 @@ msgid "Unit used to measure distance, miles or km."
 msgstr "Etäisyyden mittayksikkö (mailit tai kilometrit)."
 
 #: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Google Maps -merkkien nimet luokitusjärjestyksessä"
-
-#: 
 msgid "Enable non-deductible payments"
 msgstr "Ota käyttöön vähennyskelvottomat maksut"
 
@@ -3759,34 +3711,6 @@ msgstr "Hakemistoraportin teksti"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Kirkon kirjelomakkeen polku ja tiedosto"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "Hae käyttäjäkuvat Gravatarista, jos paikallista kuvaa ei ole"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Ota käyttöön etävarmuuskopiointi pilvipalveluihin"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Pilvipalvelun tyyppi (Tuetut arvot: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Etävarmuuskopioinnin käyttäjätunnus"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Etävarmuuskopioinnin salasana"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Automaattisten etävarmuuskopioiden aikaväli tunteina"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Viimeisimmän varmuuskopion aikaleima"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4323,14 +4247,6 @@ msgstr "mailia"
 #: 
 msgid "kilometers"
 msgstr "kilometriä"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Paikallinen"
 
 #. Context: countries
 #: 
@@ -5671,10 +5587,6 @@ msgstr "Muuta käyttäjän syöttämät postinumerot suuraakkosiksi tallennettae
 msgid "Used to end a letter before Signer"
 msgstr "Käytetään kirjeen lopussa ennen allekirjoittajaa"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics -seurantakoodi"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -5976,10 +5888,6 @@ msgid "Your Cart is Empty"
 msgstr "Ostoskorisi on tyhjä"
 
 #: 
-msgid "View on Map"
-msgstr "Näytä kartalla"
-
-#: 
 msgid "Legend"
 msgstr "Selite"
 
@@ -6024,18 +5932,6 @@ msgid "The role could not be assigned."
 msgstr "Roolin määrittäminen epäonnistui."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing Maps API vaatii yksilöllisen avaimen"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Mapsin zoomaustaso"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Valitse GeoCoder-palveluntarjoaja"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "ChurchCRM-tilisi on lukittu."
 
@@ -6078,10 +5974,6 @@ msgstr "ylläpitäjä vaihtoi järjestelmäkäyttäjän salasanan"
 #: 
 msgid "system user login reset"
 msgstr "järjestelmäkäyttäjän kirjautumisen nollaus"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Puuttuuko perheitä? Päivitä perheen koordinaatit nyt."
 
 #: 
 msgid "Families without Geo Info"
@@ -6160,30 +6052,6 @@ msgid "Time zone"
 msgstr "Aikavyöhyke"
 
 #: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API -avain"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API -salaisuus"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS lähettäjän numero"
-
-#: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL-osoite"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP-käyttäjätunnus"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP-salasana"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Kioskin näkyvyyden aikaleima"
 
@@ -6194,10 +6062,6 @@ msgstr "Näytä/piilota 'Unohdin salasanani' -linkki kirjautumissivulla"
 #: 
 msgid "Backup"
 msgstr "Varmuuskopio"
-
-#: 
-msgid "Integration"
-msgstr "Integraatio"
 
 #: 
 msgid "Guardian(s) of"
@@ -6369,10 +6233,6 @@ msgstr "Indonesia - Indonesia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "tietueet lisätty onnistuneesti valittuun ryhmään."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Käytä eurooppalaisille merkistöille erotinta ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6931,10 +6791,6 @@ msgid "Links"
 msgstr "Linkit"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Näytä mukautetut linkit vasemmassa valikossa."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Ota käyttöön pyhäkoulun vasen valikko."
 
@@ -6961,10 +6817,6 @@ msgstr "Käytössä olevat ominaisuudet"
 #: 
 msgid "Validation Error"
 msgstr "Vahvistusvirhe"
-
-#: 
-msgid "Link Not found"
-msgstr "Linkkiä ei löytynyt"
 
 #: 
 msgid "Email Functions"
@@ -7005,10 +6857,6 @@ msgstr "Käyttäjällä on oltava oikeus poistaa tietueita"
 #: 
 msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM:n keskitettyjen ilmoitusten URL"
-
-#: 
-msgid "Follow us on"
-msgstr "Seuraa meitä"
 
 #: 
 msgid "invalid event type id"
@@ -7055,10 +6903,6 @@ msgid "Updated People"
 msgstr "Päivitetyt henkilöt"
 
 #: 
-msgid "Custom Menus"
-msgstr "Mukautetut valikot"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Käyttäjällä on oltava oikeus hallinnoida ryhmiä"
 
@@ -7077,26 +6921,6 @@ msgstr "Et voi poistaa itseäsi"
 #: 
 msgid "The role could not be found."
 msgstr "Roolia ei löytynyt."
-
-#: 
-msgid "Add Menu"
-msgstr "Lisää valikko"
-
-#: 
-msgid "Menu Name"
-msgstr "Valikon nimi"
-
-#: 
-msgid "Link Address"
-msgstr "Linkin osoite"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Aloita http:// tai https://"
-
-#: 
-msgid "Menus"
-msgstr "Valikot"
 
 #: 
 msgid "is disabled"
@@ -7211,10 +7035,6 @@ msgstr "Viro"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Virhe allekirjoituksen määritystiedoston purkamisessa"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Etävarmuuskopion päätepiste. Jos WebDAV, tämän on oltava URL-koodattu."
 
 #: 
 msgid "Age Histogram"
@@ -7411,28 +7231,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Sukunimi, Etunimi Toinen-nimi"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Hallitse kaksivaiheista tunnistautumista"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Kaksivaiheisen tunnistautumisen tila"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vahvista kaksivaiheisen tunnistautumisen poistaminen tältä käyttäjältä"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Anna 2FA-koodi"
-
-#: 
-msgid "2FA Code"
-msgstr "2FA-koodi"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "Kaksivaiheisen tunnistautumisen käyttöönotto"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7461,10 +7265,6 @@ msgstr "Google Maps API -avain osoitteiden geokoodaukseen"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Lähetä sähköposti-ilmoitus käyttäjälle, kun hänen tilinsä on poistettu"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Google Maps API -avain karttojen piirtämiseen selaimessa"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7510,11 +7310,6 @@ msgstr "ladataan"
 msgid "List not found"
 msgstr "Listaa ei löytynyt"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "Lista ei ole luettelossa"
-
 #: 
 msgid "People not in"
 msgstr "Henkilöt, jotka eivät ole"
@@ -7531,18 +7326,6 @@ msgstr "Yleisöä ei ole ChurchCRM-järjestelmässä"
 msgid "Web Server"
 msgstr "Web-palvelin"
 
-#: 
-msgid "List maintenance"
-msgstr "Listan ylläpito"
-
-#: 
-msgid "People not in list"
-msgstr "Henkilöt, jotka eivät ole listalla"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Yleisöä ei ole CRM-järjestelmässä"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7551,10 +7334,6 @@ msgstr "Heprea"
 #: 
 msgid "open rate"
 msgstr "avausprosentti"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Ei tilattu "
 
 #: 
 msgid "Login Info"
@@ -7619,86 +7398,6 @@ msgstr "Teksti"
 #: 
 msgid "Event Description"
 msgstr "Tapahtuman kuvaus"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Kaksivaiheisen tunnistautumisen käyttöönotto tarjoaa lisäturvaa tilillesi."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM tukee kaikkia TOTP-tunnistussovelluksia, kuten Microsoft Authenticator, Google Authenticator, Authy tai LastPass."
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Kun kirjaudut ChurchCRM-järjestelmään, syötät edelleen käyttäjätunnuksesi ja salasanasi normaalisti."
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "Tämän lisäksi tarvitset kertakäyttöisen koodin tunnistuslaitteestasi viimeistelläksesi kirjautumisen."
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Kun olet syöttänyt tunnuksesi ja kertakoodin, kirjaudut sisään tavalliseen tapaan."
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Välttääksesi lukituksi tulemisen varmista, että olet valmis suorittamaan käyttöönoton ennen kuin napsautat 'Aloita'."
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Käyttöönoton aloittaminen mitätöi aiemmat tunnistuslaitteet ja palautuskoodit."
-
-#: 
-msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
-msgstr "Kun napsautat 'Seuraava', sinua pyydetään skannaamaan QR-koodi tunnistussovelluksellasi."
-
-#: 
-msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
-msgstr "Vahvistaaksesi käyttöönoton, sinun on syötettävä sovelluksen luoma koodi."
-
-#: 
-msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
-msgstr "Vahvistuksen jälkeen luodaan ja näytetään kertakäyttöiset palautuskoodit."
-
-#: 
-msgid "Recovery codes can be used instead of a code generated from your authenticator app."
-msgstr "Palautuskoodeja voidaan käyttää, jos et pääse käsiksi tunnistussovellukseesi."
-
-#: 
-msgid "Store these in a secure location"
-msgstr "Säilytä nämä turvallisessa paikassa"
-
-#: 
-msgid "Begin Two Factor Authentication Enrollment"
-msgstr "Aloita kaksivaiheisen tunnistautumisen käyttöönotto"
-
-#: 
-msgid "2 Factor Authentication Secret"
-msgstr "2-vaiheisen tunnistautumisen salaisuus"
-
-#: 
-msgid "Regenerate 2 Factor Authentication Secret"
-msgstr "Luo 2-vaiheisen tunnistautumisen salaisuus uudelleen"
-
-#: 
-msgid "Remove 2 Factor Authentication Secret"
-msgstr "Poista 2-vaiheisen tunnistautumisen salaisuus"
-
-#: 
-msgid "Enter TOTP code to confirm enrollment"
-msgstr "Syötä TOTP-koodi vahvistaaksesi käyttöönoton"
-
-#: 
-msgid "2 Factor Authentication Enrollment Success"
-msgstr "Kaksivaiheisen tunnistautumisen käyttöönotto onnistui"
-
-#: 
-msgid "Please store these recovery codes in a safe location"
-msgstr "Säilytä nämä palautuskoodit turvallisessa paikassa"
-
-#: 
-msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
-msgstr "Jos kadotat pääsyn sovellukseesi, tarvitset palautuskoodin päästäksesi takaisin tilillesi."
 
 #: 
 msgid "Help translate this project"
@@ -7929,10 +7628,6 @@ msgid "People who are configured to pay by credit card."
 msgstr "Henkilöt, joiden on määritetty maksavan luottokortilla."
 
 #: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
-msgstr "Palautuksen osana ulkoiset varmuuskopiot on otettu pois käytöstä. Jos haluat jatkaa automaattisia varmuuskopioita, ota bEnableExternalBackupTarget-asetus manuaalisesti uudelleen käyttöön."
-
-#: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
 msgstr "Edellinen eheystarkistus onnistui. Kaikkien järjestelmätiedostojen tiivisteet vastaavat odotettuja arvoja."
 
@@ -7943,10 +7638,6 @@ msgstr "Pilkulla erotettu luettelo luokituksista, joiden tulee näkyä epäaktii
 #: 
 msgid "MailChimp is not configured"
 msgstr "MailChimpiä ei ole määritetty"
-
-#: 
-msgid "Please update the MailChimp API key in:"
-msgstr "Päivitä MailChimp API-avain kohdassa:"
 
 #. Context: locales
 #: 
@@ -8318,20 +8009,8 @@ msgid "Address is required"
 msgstr "Osoite on pakollinen"
 
 #: 
-msgid "Base URL is required"
-msgstr "Perus-URL on pakollinen"
-
-#: 
 msgid "City is required"
 msgstr "Kaupunki on pakollinen"
-
-#: 
-msgid "Database name is required"
-msgstr "Tietokannan nimi on pakollinen"
-
-#: 
-msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
-msgstr "Tietokantapalvelimen isäntänimi tai IP-osoite on pakollinen (esim. localhost tai 127.0.0.1)"
 
 #: 
 msgid "Database server port is required (e.g., 3306)"

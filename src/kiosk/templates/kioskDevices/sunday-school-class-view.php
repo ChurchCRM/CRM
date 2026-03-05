@@ -82,14 +82,11 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
       <!-- Checked In Section -->
       <div class="col-lg-6 col-md-6 mb-3">
         <div class="kiosk-section">
-          <div class="kiosk-section-header checked-in d-flex justify-content-between align-items-center">
+          <div class="kiosk-section-header checked-in">
             <h4 class="mb-0">
               <i class="fas fa-check-circle mr-2"></i><?= gettext('Checked In') ?>
               <span class="badge badge-success ml-2" id="checkedInSectionCount">0</span>
             </h4>
-            <button type="button" class="btn btn-sm btn-outline-dark" id="checkoutAllBtn" style="display: none;">
-              <i class="fas fa-sign-out-alt mr-1"></i><?= gettext('Checkout All') ?>
-            </button>
           </div>
           <div class="kiosk-section-body" id="checkedInList">
             <div class="kiosk-empty">
@@ -101,6 +98,19 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
       </div>
     </div>
   </div>
+</div>
+
+<!-- Floating Action Buttons (FABs) -->
+<div class="kiosk-fab-container">
+  <button type="button" class="kiosk-fab kiosk-fab-refresh" id="refreshBtn" title="Refresh member list">
+    <i class="fas fa-sync-alt"></i>
+  </button>
+  <button type="button" class="kiosk-fab kiosk-fab-alert" id="alertAllBtn" style="display: none;" title="Send alert to all families">
+    <i class="fas fa-bullhorn"></i>
+  </button>
+  <button type="button" class="kiosk-fab kiosk-fab-checkout" id="checkoutAllBtn" style="display: none;" title="Checkout all students">
+    <i class="fas fa-sign-out-alt"></i>
+  </button>
 </div>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/kiosk.min.js') ?>"></script>

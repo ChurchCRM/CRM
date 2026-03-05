@@ -17,6 +17,7 @@ export interface ClassMember {
   birthdayToday: boolean;
   birthDay: number | null;
   birthMonth: number | null;
+  familyId: number | null;
 }
 
 export interface PersonApiData {
@@ -34,6 +35,7 @@ export interface PersonApiData {
   birthdayToday: boolean;
   birthDay: number | null;
   birthMonth: number | null;
+  familyId: number | null;
 }
 
 export interface ActiveClassMembersResponse {
@@ -96,6 +98,7 @@ export interface KioskJSOM {
   checkInPerson: (personId: number) => void;
   checkOutPerson: (personId: number) => void;
   checkOutAll: () => void;
+  alertAll: () => void;
   setCheckedOut: (personId: number) => void;
   setCheckedIn: (personId: number) => void;
   triggerNotification: (personId: number) => void;

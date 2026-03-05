@@ -16,7 +16,7 @@ services:
       - MYSQL_USER=${MYSQL_USER:-churchcrm}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-changeme}
     volumes:
-      - ../demo:/docker-entrypoint-initdb.d
+      - ../cypress/data:/docker-entrypoint-initdb.d
     hostname: crm-database-root
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
@@ -35,7 +35,7 @@ services:
       - MYSQL_USER=${MYSQL_USER:-churchcrm}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD:-changeme}
     volumes:
-      - ../demo:/docker-entrypoint-initdb.d
+      - ../cypress/data:/docker-entrypoint-initdb.d
     hostname: crm-database-subdir
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]

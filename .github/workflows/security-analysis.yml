@@ -224,7 +224,7 @@ jobs:
 
       - name: Archive security results
         if: always() && hashFiles('devskim-results.sarif') != ''
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: devskim-security-results
           path: devskim-results.sarif

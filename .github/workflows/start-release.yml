@@ -46,7 +46,7 @@ jobs:
       
       - name: Commit version changes
         run: |
-          git add package.json package-lock.json src/composer.json src/composer.lock src/mysql/upgrade.json demo/ChurchCRM-Database.sql
+          git add package.json package-lock.json src/composer.json src/composer.lock src/mysql/upgrade.json cypress/data/seed.sql
           git commit -m "Start ${{ inputs.version }} release"
       
       - name: Push branch

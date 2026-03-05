@@ -5,7 +5,8 @@
  * Component-specific - no Bootstrap duplicates.
  */
 
-.tab-pane {
+/* Scope these scrolling limits to the System Settings tab container only */
+#vert-tabs-tabContent .tab-pane {
   max-height: calc(100vh - 91px);
   overflow-y: auto;
   overflow-x: hidden;

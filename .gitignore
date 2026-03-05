@@ -3,6 +3,10 @@
 .idea/
 .DS_Store
 
+# Environment variables (local and overrides)
+.env
+.env.local
+
 #Exclude folders
 vendor
 node_modules
@@ -24,7 +28,6 @@ src/skin/external
 
 # Configuration files with passwords
 src/Include/Config.php
-BuildConfig.json
 orm/propel.php
 
 # Perpl/Propel generated config
@@ -41,4 +44,5 @@ cypress/screenshots
 cypress/videos
 cypress/downloads
 cypress.config.ts
+cypress.env.json
 

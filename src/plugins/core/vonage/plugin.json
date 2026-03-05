@@ -30,9 +30,10 @@
       "label": "From Phone Number",
       "type": "text",
       "required": true,
-      "help": "The phone number to send SMS from (E.164 format, e.g., +14155551234)"
+      "help": "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
     }
   ],
   "menuItems": [],
-  "hooks": []
+  "hooks": [],
+  "hasTest": true
 }

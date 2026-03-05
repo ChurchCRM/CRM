@@ -1,13 +1,13 @@
 services:
   database:
     profiles: [dev, test, ci]
-    image: mariadb
+    image: mariadb:10.11
     ports:
       - ${DATABASE_PORT:-3306}:3306
     env_file:
       - .env
     volumes:
-      - ../demo:/docker-entrypoint-initdb.d
+      - ../cypress/data:/docker-entrypoint-initdb.d
     hostname: crm-database
     healthcheck:
       test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
@@ -16,7 +16,7 @@ services:
 
   mailserver:
     profiles: [dev, test]
-    image: mailhog/mailhog
+    image: axllent/mailpit:latest
     ports:
       - ${MAILSERVER_PORT:-1025}:1025
       - ${MAILSERVER_GUI_PORT:-8025}:8025

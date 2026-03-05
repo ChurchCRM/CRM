@@ -1,0 +1,94 @@
+{
+  "%d month old": {
+    "one": "",
+    "other": ""
+  },
+  "%d year old": {
+    "one": "",
+    "other": ""
+  },
+  "%d event in %s": {
+    "one": "",
+    "other": ""
+  },
+  "person": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person added to the Cart.": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person successfully added to selected Family.": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person successfully added to selected Group.": {
+    "one": "",
+    "other": ""
+  },
+  "%d person": {
+    "one": "",
+    "other": ""
+  },
+  "%d hour": {
+    "one": "",
+    "other": ""
+  },
+  "Vonage API Key": "",
+  "Vonage API Secret": "",
+  "WebDAV Configuration": "",
+  "WebDAV Connection": "",
+  "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set.": "",
+  "WebDAV endpoint URL is required.": "",
+  "WebDAV password is required.": "",
+  "WebDAV username is required.": "",
+  "You can also use backup recovery codes if you lose access to your app": "",
+  "You can now use your authenticator app to sign in. Each code is valid for 30 seconds.": "",
+  "You'll receive backup codes that can be used if you lose access to your app": "",
+  "Your GA4 Measurement ID (G-XXXXXXXXXX)": "",
+  "Your MailChimp account does not have any audiences (lists) configured.": "",
+  "Your account is now protected": "",
+  "Your account is protected": "",
+  "Your authenticator app has been successfully enrolled": "",
+  "Your browser language preference differs from your ChurchCRM locale": "",
+  "e.g., Church Website": "",
+  "manifest.": "",
+  "subscribers": "",
+  "API Key is required.": "",
+  "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running.": "",
+  "Cannot connect to OpenLP at %s. Server returned HTTP %d.": "",
+  "Congregation Map": "",
+  "Congregation Map — Setup Required": "",
+  "Connected to MailChimp! Account: %s (%d subscribers)": "",
+  "Connected to OpenLP server successfully.": "",
+  "Connected to OpenLP! Version: %s": "",
+  "Connected! Account balance: €%.2f. Ready to send SMS.": "",
+  "Could not connect to MailChimp. Please check your API key.": "",
+  "Failed to connect to OpenLP server.": "",
+  "Get Directions": "",
+  "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)": "",
+  "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK).": "",
+  "Invalid API credentials. Please verify your API Key and API Secret.": "",
+  "Invalid API key format. Check your MailChimp API key.": "",
+  "Invalid endpoint URL. Must be a full URL starting with https://": "",
+  "Invalid server URL format.": "",
+  "MailChimp connection failed.": "",
+  "Map Zoom Level": "",
+  "Missing families? Update coordinates to include them on the map.": "",
+  "Missing required settings: %s": "",
+  "Person has no family": "",
+  "Plugin not found or not active": "",
+  "Server URL is required.": "",
+  "This plugin does not support connection testing.": "",
+  "Unable to display map: church address has not been geocoded yet.": "",
+  "Update church address in Settings.": "",
+  "Username and password are required.": "",
+  "Validation failed: %s": "",
+  "Vonage server error. Please try again later.": "",
+  "WebDAV Endpoint URL is required.": "",
+  "Are you sure you want to permanently delete this pledge record?": "",
+  "Cancel and Return to Family View": "",
+  "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "",
+  "Move Donations to Selected Family": ""
+}

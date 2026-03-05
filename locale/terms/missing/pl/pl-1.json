@@ -1,0 +1,39 @@
+{
+  "A": "",
+  "%d month old": {
+    "one": "",
+    "other": ""
+  },
+  "%d year old": {
+    "one": "",
+    "other": ""
+  },
+  "%d event in %s": {
+    "one": "",
+    "other": ""
+  },
+  "person": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person added to the Cart.": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person successfully added to selected Family.": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person successfully added to selected Group.": {
+    "one": "",
+    "other": ""
+  },
+  "%d person": {
+    "one": "",
+    "other": ""
+  },
+  "%d hour": {
+    "one": "",
+    "other": ""
+  }
+}

@@ -325,7 +325,7 @@ if (
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <div class="card-header with-border">
+                    <div class="card-header">
                         <h3 class="card-title"><?= $formTitle ?></h3>
                     </div>
 
@@ -392,10 +392,10 @@ if ($EventID > 0) {
                 <thead class="table-light">
                     <tr>
                         <th><?= gettext('Name') ?></th>
-                        <th><i class="fa-solid fa-door-open me-1"></i><?= gettext('Checked In Time') ?></th>
-                        <th><i class="fa-solid fa-user-check me-1"></i><?= gettext('Checked In By') ?></th>
-                        <th><i class="fa-solid fa-door-closed me-1"></i><?= gettext('Checked Out Time') ?></th>
-                        <th><i class="fa-solid fa-user-xmark me-1"></i><?= gettext('Checked Out By') ?></th>
+                        <th><i class="fa-solid fa-door-open mr-1"></i><?= gettext('Checked In Time') ?></th>
+                        <th><i class="fa-solid fa-user-check mr-1"></i><?= gettext('Checked In By') ?></th>
+                        <th><i class="fa-solid fa-door-closed mr-1"></i><?= gettext('Checked Out Time') ?></th>
+                        <th><i class="fa-solid fa-user-xmark mr-1"></i><?= gettext('Checked Out By') ?></th>
                         <th class="text-nowrap"><?= gettext('Action') ?></th>
                     </tr>
                 </thead>
@@ -435,7 +435,7 @@ if ($EventID > 0) {
                                 $personPhoto = new \ChurchCRM\dto\Photo('person', $per->getPersonId());
                                 if ($personPhoto->hasUploadedPhoto()) {
                                 ?>
-                                    <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $per->getPersonId() ?>" title="<?= gettext('View Photo') ?>">
+                                    <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="<?= $per->getPersonId() ?>" title="<?= gettext('View Photo') ?>">
                                         <i class="fa-solid fa-camera"></i>
                                     </button>
                                 <?php } ?>

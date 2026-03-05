@@ -41,6 +41,7 @@ function changepassword(Request $request, Response $response, array $args): Resp
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
         'user'      => $curUser,
+        'isForced'  => $curUser->getNeedPasswordChange(),
     ];
 
     if ($authenticationProvider instanceof LocalAuthentication) {

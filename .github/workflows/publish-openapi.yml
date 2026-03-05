@@ -1,0 +1,59 @@
+name: Publish OpenAPI Specs
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/api/routes/**'
+      - 'src/admin/routes/api/**'
+      - 'src/api/openapi/**'
+      - 'src/kiosk/routes/api/**'
+      - 'src/plugins/routes/api/**'
+
+jobs:
+  generate-and-publish:
+    name: Generate specs and trigger docs rebuild
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout CRM
+        uses: actions/checkout@v4
+
+      - name: Setup PHP 8.4
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, pdo, zip
+
+      - name: Cache Composer packages
+        uses: actions/cache@v4
+        with:
+          path: src/vendor
+          key: composer-${{ hashFiles('src/composer.lock') }}
+          restore-keys: composer-
+
+      - name: Install Composer dependencies
+        run: cd src && composer install --no-interaction --prefer-dist
+
+      - name: Generate Public API spec
+        run: cd src && composer run openapi-public
+
+      - name: Generate Private API spec
+        run: cd src && composer run openapi-private
+
+      - name: Commit updated specs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'chore: update OpenAPI specs [skip ci]'
+          file_pattern: 'openapi/*.yaml'
+          commit_user_name: 'github-actions[bot]'
+          commit_user_email: 'github-actions[bot]@users.noreply.github.com'
+
+      - name: Trigger docs.churchcrm.io rebuild
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DOCS_DEPLOY_TOKEN }}
+          repository: ChurchCRM/docs.churchcrm.io
+          event-type: openapi-updated
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'

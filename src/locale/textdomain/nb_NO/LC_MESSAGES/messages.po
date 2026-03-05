@@ -1890,14 +1890,6 @@ msgid "Assign starting at #"
 msgstr "Tilordning:"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Kan ikke vise kartet fordi kirkens breddegrad eller lengdegrad mangler. Vennligst oppdater kirkens adresse i innstillingsmenyen."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Map API-nøkkel er ikke angitt. Kartet vil fungere for et mindre antall lokasjoner. Vennligst opprett en nøkkel under kartseksjonen i innstillingsmenyen."
-
-#: 
 msgid "Member Role Change"
 msgstr "Medlem Rolle Endre"
 
@@ -2408,14 +2400,6 @@ msgstr "Advarsel"
 #: 
 msgid "This property type is still being used by at least one property."
 msgstr "Denne egenskapen attraksjon fortsatt brukes av minst en egenskap."
-
-#: 
-msgid "If you delete this type, you will also remove all properties using"
-msgstr "Hvis du sletter denne typen, vil du også fjerne alle egenskapene ved å bruke"
-
-#: 
-msgid "it and lose any corresponding property assignments."
-msgstr "det og miste noen tilsvarende eiendom oppdrag."
 
 #: 
 #, fuzzy
@@ -3408,10 +3392,6 @@ msgid "Email Export"
 msgstr "Eksporte"
 
 #: 
-msgid "List"
-msgstr "Liste"
-
-#: 
 msgid "Import Data"
 msgstr "Importer data"
 
@@ -3514,26 +3494,6 @@ msgstr "Sikkerhetskopiering fullført, klar for nedlasting."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Sikkerhetskopi lastet ned, kopi på server er slettet"
-
-#: 
-msgid "Campaigns:"
-msgstr "Kampanjer:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Antall avmeldte:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Antall avmeldte siden forrige utsending:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Antall rensede (feilaktige e-poster):"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Antall rensede siden forrige utsending:"
 
 #: 
 msgid "Functions"
@@ -3658,10 +3618,6 @@ msgstr "Dato lagt inn"
 #: 
 msgid "CSV Import"
 msgstr "CSV-import"
-
-#: 
-msgid "Members:"
-msgstr "Medlemmer:"
 
 #: 
 msgid "There were "
@@ -3824,10 +3780,6 @@ msgid "Unit used to measure distance, miles or km."
 msgstr "Enhet brukt for avstand, miles eller km."
 
 #: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Navn på markører for Google Maps i rekkefølge etter klassifisering"
-
-#: 
 msgid "Enable non-deductible payments"
 msgstr "Aktiver ikke-fradragsberettigede betalinger"
 
@@ -3906,34 +3858,6 @@ msgstr "Tekst for katalograpporten"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Sti og fil for kirkens brevhodepapir"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "Slå opp brukerbilder på Gravatar når lokalt bilde ikke finnes"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Aktiver ekstern sikkerhetskopiering til skytjenester"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Skytjenestetype (Støttede verdier: WebDAV, Lokal)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Brukernavn for ekstern sikkerhetskopiering"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Passord for ekstern sikkerhetskopiering"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Intervall i timer for automatisk ekstern sikkerhetskopiering"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Tidspunkt for siste sikkerhetskopiering"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4470,14 +4394,6 @@ msgstr "miles"
 #: 
 msgid "kilometers"
 msgstr "kilometer"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Lokal"
 
 #. Context: countries
 #: 
@@ -5818,10 +5734,6 @@ msgstr "Lagre brukerinndatate postnumre med STORE BOKSTAVER i databasen."
 msgid "Used to end a letter before Signer"
 msgstr "Brukt til å avslutte et brev før signatur"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Google Analytics-sporingskode"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -6123,10 +6035,6 @@ msgid "Your Cart is Empty"
 msgstr "Handlekurven din er tom"
 
 #: 
-msgid "View on Map"
-msgstr "Vis på kart"
-
-#: 
 msgid "Legend"
 msgstr "Tegnforklaring"
 
@@ -6171,18 +6079,6 @@ msgid "The role could not be assigned."
 msgstr "Rollen kunne ikke tildeles."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing map API krever en unik nøkkel"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Google Maps Zoom"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Velg GeoCoder-leverandør"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "Din ChurchCRM-konto ble låst."
 
@@ -6225,10 +6121,6 @@ msgstr "systembrukerens passord ble endret av administrator"
 #: 
 msgid "system user login reset"
 msgstr "innlogging for systembruker tilbakestilt"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Mangler du familier? Oppdater familiens bredde- eller lengdegrad nå."
 
 #: 
 msgid "Families without Geo Info"
@@ -6307,30 +6199,6 @@ msgid "Time zone"
 msgstr "Tidssone"
 
 #: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS API-nøkkel"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS API-hemmelighet"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMS fra-nummer"
-
-#: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLP brukernavn"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLP passord"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "KioskVisibilityTimestamp"
 
@@ -6341,10 +6209,6 @@ msgstr "Vis/skjul lenke for glemt passord på innloggingsskjermen"
 #: 
 msgid "Backup"
 msgstr "Sikkerhetskopi"
-
-#: 
-msgid "Integration"
-msgstr "Integrasjon"
 
 #: 
 msgid "Guardian(s) of"
@@ -6516,10 +6380,6 @@ msgstr "Indonesisk - Indonesia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "oppføring(er) lagt til i valgt gruppe."
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "For eksport til annet europeisk tegnsett, bruk ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -7078,10 +6938,6 @@ msgid "Links"
 msgstr "Lenker"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Vis egendefinerte lenker i venstremenyen."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Aktiver venstremeny for søndagsskole."
 
@@ -7108,10 +6964,6 @@ msgstr "Aktiverte funksjoner"
 #: 
 msgid "Validation Error"
 msgstr "Valideringsfeil"
-
-#: 
-msgid "Link Not found"
-msgstr "Lenke ikke funnet"
 
 #: 
 msgid "Email Functions"
@@ -7152,10 +7004,6 @@ msgstr "Brukeren må ha tillatelse til å slette oppføringer"
 #: 
 msgid "ChurchCRM Central Notifications URL"
 msgstr "URL for sentrale varsler i ChurchCRM"
-
-#: 
-msgid "Follow us on"
-msgstr "Følg oss på"
 
 #: 
 msgid "invalid event type id"
@@ -7202,10 +7050,6 @@ msgid "Updated People"
 msgstr "Oppdaterte personer"
 
 #: 
-msgid "Custom Menus"
-msgstr "Egendefinerte menyer"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "Brukeren må ha tillatelse til å administrere grupper"
 
@@ -7224,26 +7068,6 @@ msgstr "Du kan ikke slette deg selv"
 #: 
 msgid "The role could not be found."
 msgstr "Rollen ble ikke funnet."
-
-#: 
-msgid "Add Menu"
-msgstr "Legg til meny"
-
-#: 
-msgid "Menu Name"
-msgstr "Menynavn"
-
-#: 
-msgid "Link Address"
-msgstr "Lenkeadresse"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "Start med http:// eller https://"
-
-#: 
-msgid "Menus"
-msgstr "Menyer"
 
 #: 
 msgid "is disabled"
@@ -7358,10 +7182,6 @@ msgstr "Estisk"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Feil ved dekoding av signaturdefinisjonsfil"
-
-#: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Endepunkt for ekstern sikkerhetskopi. Hvis WebDAV, må denne være URL-kodet."
 
 #: 
 msgid "Age Histogram"
@@ -7558,28 +7378,12 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Etternavn, Fornavn Mellomnavn"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Administrer totrinnsverifisering"
-
-#: 
 msgid "Two Factor Status"
 msgstr "Status for totrinnsverifisering"
 
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vennligst bekreft deaktivering av totrinnsverifisering for denne brukeren"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Vennligst skriv inn 2FA-kode"
-
-#: 
-msgid "2FA Code"
-msgstr "2FA-kode"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "Påmelding til totrinnsverifisering"
 
 #: 
 msgid "Unsupported Two Factor Authentication Configuration"
@@ -7608,10 +7412,6 @@ msgstr "Google Maps API-nøkkel brukt for geokoding av adresser"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Send en e-post for å varsle brukere når kontoen deres har blitt slettet"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Google Maps API-nøkkel brukt for visning av kart i nettleseren"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7657,11 +7457,6 @@ msgstr "laster"
 msgid "List not found"
 msgstr "Listen ble ikke funnet"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "Listen er ikke i listen"
-
 #: 
 msgid "People not in"
 msgstr "Personer som ikke er i"
@@ -7678,18 +7473,6 @@ msgstr "Målgruppe ikke i ChurchCRM"
 msgid "Web Server"
 msgstr "Webserver"
 
-#: 
-msgid "List maintenance"
-msgstr "Vedlikehold av lister"
-
-#: 
-msgid "People not in list"
-msgstr "Personer ikke i listen"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Målgruppe ikke i CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7698,10 +7481,6 @@ msgstr "Hebraisk"
 #: 
 msgid "open rate"
 msgstr "åpningsrate"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Ikke abonnert "
 
 #: 
 msgid "Login Info"
@@ -7766,86 +7545,6 @@ msgstr "Tekst"
 #: 
 msgid "Event Description"
 msgstr "Hendelsesbeskrivelse"
-
-#: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Ved å aktivere tofaktorautentisering på din ChurchCRM-konto får du et ekstra lag med beskyttelse mot uvedkommende."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM støtter alle TOTP-apper, slik som Microsoft Authenticator, Google Authenticator, Authy, LastPass med flere."
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Når du logger inn, skriver du fortsatt brukernavn og passord som vanlig."
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "I tillegg må du oppgi en engangskode fra autentiseringsenheten din for å fullføre innloggingen."
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Når begge deler er tastet inn riktig, blir du logget inn som normalt."
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "For å unngå å bli låst ute, vennligst sørg for at du er klar til å fullføre oppsettet før du klikker på start."
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "Oppstart av ny registrering vil deaktivere alle tidligere enheter og gjenopprettingskoder."
-
-#: 
-msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
-msgstr "Når du klikker på neste, blir du bedt om å skanne en QR-kode med appen din."
-
-#: 
-msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
-msgstr "For å bekrefte registreringen må du skrive inn koden generert av appen."
-
-#: 
-msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
-msgstr "Etter bekreftelse vil engangskoder for gjenoppretting bli generert og vist."
-
-#: 
-msgid "Recovery codes can be used instead of a code generated from your authenticator app."
-msgstr "Gjenopprettingskoder kan brukes hvis du ikke har tilgang til appen."
-
-#: 
-msgid "Store these in a secure location"
-msgstr "Lagre disse på et sikkert sted."
-
-#: 
-msgid "Begin Two Factor Authentication Enrollment"
-msgstr "Start registrering for tofaktorautentisering"
-
-#: 
-msgid "2 Factor Authentication Secret"
-msgstr "Hemmelighet for tofaktorautentisering"
-
-#: 
-msgid "Regenerate 2 Factor Authentication Secret"
-msgstr "Regenerer hemmelighet for tofaktorautentisering"
-
-#: 
-msgid "Remove 2 Factor Authentication Secret"
-msgstr "Fjern hemmelighet for tofaktorautentisering"
-
-#: 
-msgid "Enter TOTP code to confirm enrollment"
-msgstr "Skriv inn TOTP-kode for å bekrefte registrering"
-
-#: 
-msgid "2 Factor Authentication Enrollment Success"
-msgstr "Registrering for tofaktorautentisering var vellykket"
-
-#: 
-msgid "Please store these recovery codes in a safe location"
-msgstr "Vennligst lagre disse gjenopprettingskodene på et trygt sted"
-
-#: 
-msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
-msgstr "Hvis du mister tilgangen til appen, må du bruke en gjenopprettingskode for å få tilgang til kontoen din."
 
 #: 
 msgid "Help translate this project"
@@ -8076,10 +7775,6 @@ msgid "People who are configured to pay by credit card."
 msgstr "Personer som er konfigurert til å betale med kredittkort."
 
 #: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
-msgstr "Som en del av gjenopprettingen har ekstern sikkerhetskopiering blitt deaktivert. Hvis du ønsker å fortsette med automatiske sikkerhetskopier, må du manuelt aktivere innstillingen bEnableExternalBackupTarget på nytt."
-
-#: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
 msgstr "Den forrige integritetssjekken var vellykket. Alle filhasher i systemet samsvarer med forventede verdier."
 
@@ -8090,10 +7785,6 @@ msgstr "Kommaseparert liste over klassifiseringer som skal vises som inaktive"
 #: 
 msgid "MailChimp is not configured"
 msgstr "MailChimp er ikke konfigurert"
-
-#: 
-msgid "Please update the MailChimp API key in:"
-msgstr "Vennligst oppdater MailChimp API-nøkkelen i:"
 
 #. Context: locales
 #: 
@@ -8465,20 +8156,8 @@ msgid "Address is required"
 msgstr "Adresse er obligatorisk"
 
 #: 
-msgid "Base URL is required"
-msgstr "Base-URL er obligatorisk"
-
-#: 
 msgid "City is required"
 msgstr "Sted er obligatorisk"
-
-#: 
-msgid "Database name is required"
-msgstr "Databasenavn er obligatorisk"
-
-#: 
-msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
-msgstr "Vertsnavn eller IP-adresse for databaseserver er obligatorisk (f.eks. localhost eller 127.0.0.1)"
 
 #: 
 msgid "Database server port is required (e.g., 3306)"

@@ -11,6 +11,23 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/notification', 'getUiNotificationAPI');
 });
 
+/**
+ * @OA\Get(
+ *     path="/system/notification",
+ *     summary="Get current UI notifications (update alerts, system messages)",
+ *     tags={"System"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Array of UI notification objects",
+ *         @OA\JsonContent(@OA\Property(property="notifications", type="array", @OA\Items(
+ *             @OA\Property(property="title", type="string"),
+ *             @OA\Property(property="icon", type="string"),
+ *             @OA\Property(property="type", type="string"),
+ *             @OA\Property(property="message", type="string"),
+ *             @OA\Property(property="link", type="string")
+ *         )))
+ *     )
+ * )
+ */
 function getUiNotificationAPI(Request $request, Response $response, array $args): Response
 {
     if (NotificationService::isUpdateRequired()) {

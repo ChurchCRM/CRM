@@ -38,6 +38,16 @@ $(document).on("click", ".checkoutButton", function (event) {
   kiosk.checkOutPerson(personId);
 });
 
+$(document).on("click", "#refreshBtn", function (event) {
+  event.preventDefault();
+  kiosk.updateActiveClassMembers();
+});
+
+$(document).on("click", "#alertAllBtn", function (event) {
+  event.preventDefault();
+  kiosk.alertAll();
+});
+
 $(document).on("click", "#checkoutAllBtn", function (event) {
   event.preventDefault();
   kiosk.checkOutAll();

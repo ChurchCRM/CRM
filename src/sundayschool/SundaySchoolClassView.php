@@ -139,7 +139,7 @@ require_once __DIR__ . '/../Include/Header.php';
   <div class="card-header">
     <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> <?= gettext('Quick Status') ?></h3>
 
-    <div class="card-tools pull-right">
+    <div class="card-tools float-right">
       <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
     </div>
   </div>
@@ -240,7 +240,7 @@ require_once __DIR__ . '/../Include/Header.php';
               <?= $child['LastName'] . ', ' . $child['firstName'] ?>
             </a>
             <?php if ($childPhoto->hasUploadedPhoto()) { ?>
-              <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="<?= $child['kidId'] ?>" title="<?= gettext('View Photo') ?>">
+              <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="<?= $child['kidId'] ?>" title="<?= gettext('View Photo') ?>">
                 <i class="fa-solid fa-camera"></i>
               </button>
             <?php } ?>
@@ -331,7 +331,7 @@ function implodeUnique($array, $withQuotes): string
           <button type="button" class="btn btn-danger" data-dismiss="modal"><i
               class="fa-solid fa-times"></i><?= gettext('Discard') ?></button>
 
-          <button type="submit" class="btn btn-primary pull-left"><i
+          <button type="submit" class="btn btn-primary float-left"><i
               class="fa-solid fa-envelope"></i><?= gettext('Send Message') ?></button>
         </div>
       </form>

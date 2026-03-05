@@ -183,7 +183,7 @@ $bOkToEdit = (
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3">
         <div class="card card-primary">
-            <div class="card-header with-border">
+            <div class="card-header">
                 <h3 class="card-title" style="font-size: 1.5rem; font-weight: 600;">
                     <?= $person->getFullName() ?>
                 </h3>
@@ -238,7 +238,7 @@ $bOkToEdit = (
                                 <strong><?= gettext('Family Role') ?>:</strong> <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole) ?>
                             </span>
                             <?php if ($bOkToEdit) : ?>
-                            <button id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-xs btn-primary" title="<?= gettext('Edit Role') ?>">
+                            <button id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit Role') ?>">
                                 <i class="fa-solid fa-pen"></i>
                             </button>
                             <?php endif; ?>
@@ -259,13 +259,12 @@ $bOkToEdit = (
                     </li>
                 </ul>
             </div>
-            <!-- /.box-body -->
         </div>
         <!-- /.box -->
 
         <!-- Contact & Personal Info -->
         <div class="card card-primary">
-            <div class="card-header with-border">
+            <div class="card-header">
                 <h3 class="card-title"><?= gettext('Contact & Personal Info') ?></h3>
             </div>
             <div class="card-body">
@@ -292,12 +291,49 @@ $bOkToEdit = (
                         <?php if (!empty($formattedMailingAddress)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-map-marker-alt mr-2 text-muted"></i>
-                            <a href="https://maps.google.com/?q=<?= $plaintextMailingAddress ?>" target="_blank">
+                            <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer">
                                 <?= $formattedMailingAddress ?>
                             </a>
                         </li>
+                        <?php $personDirectionsUrl = $person->getDirectionsUrl(); ?>
+                        <?php if (!empty($personDirectionsUrl)) : ?>
+                        <li class="mb-2">
+                            <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                               class="btn btn-sm btn-outline-primary">
+                                <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
+                            </a>
+                        </li>
+                        <?php endif; ?>
                         <?php endif; ?>
                     </ul>
+                    <?php
+                    // Build map config:
+                    // 1. Person's family has stored lat/lng → use coordinates directly (no API call).
+                    // 2. Unaffiliated person (bHidePersonAddress=false) with own address → pass
+                    //    address string; person-view.js geocodes via Nominatim client-side.
+                    $personMapConfig = null;
+                    $personFamily = $person->getFamily();
+                    if ($personFamily !== null && $personFamily->hasLatitudeAndLongitude()) {
+                        $personMapConfig = [
+                            'lat' => (float) $personFamily->getLatitude(),
+                            'lng' => (float) $personFamily->getLongitude(),
+                        ];
+                    } elseif ($fam_ID === '' && !empty($per_Address1) && !SystemConfig::getValue('bHidePersonAddress')) {
+                        $personMapConfig = ['address' => $plaintextMailingAddress];
+                    }
+                    ?>
+                    <?php if ($personMapConfig !== null) : ?>
+                    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+                    <div class="mt-2">
+                        <div id="person-map" style="height: 180px; border-radius: 4px;"></div>
+                    </div>
+                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                        window.CRM = window.CRM || {};
+                        window.CRM.personMapConfig = <?= json_encode($personMapConfig) ?>;
+                    </script>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
+                    <?php endif; ?>
                 </div>
                 <?php endif; ?>
 
@@ -655,7 +691,7 @@ $bOkToEdit = (
                                             </h3>
 
                                             <div class="timeline-body">
-                                                <pre style="line-height: 1.2;"><?= $item['text'] ?></pre>
+                                                <pre class="pre-compact"><?= $item['text'] ?></pre>
                                             </div>
 
                                         <?php
@@ -686,19 +722,19 @@ $bOkToEdit = (
                                         <table class="table table-hover table-striped" id="notes-table">
                                             <thead>
                                                 <tr>
-                                                    <th style="width: 1%; white-space: nowrap;"><?= gettext('Date') ?></th>
+                                                    <th class="td-shrink"><?= gettext('Date') ?></th>
                                                     <th><?= gettext('Note') ?></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($personNotes as $note) { ?>
                                                     <tr>
-                                                        <td style="width: 1%; white-space: nowrap; vertical-align: top;">
-                                                            <div style="text-align: center;">
+                                                        <td class="td-shrink align-top">
+                                                            <div class="text-center">
                                                                 <i class="fa-solid fa-calendar"></i><br>
                                                                 <?= date('Y-m-d', strtotime($note['datetime'])) ?><br>
                                                                 <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
-                                                                <div style="margin-top: 10px;">
+                                                                <div class="mt-2">
                                                                     <?php if (isset($note['editLink']) && $note['editLink']) { ?>
                                                                         <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
                                                                             <i class="fa-solid fa-pen"></i>
@@ -712,8 +748,8 @@ $bOkToEdit = (
                                                                 </div>
                                                             </div>
                                                         </td>
-                                                        <td style="width: 99%; vertical-align: top;">
-                                                            <div style="margin-bottom: 8px;">
+                                                        <td class="align-top">
+                                                            <div class="mb-2">
                                                                 <?= $note['text'] ?>
                                                             </div>
                                                             <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $note['header'] ?></small>
@@ -755,7 +791,7 @@ $bOkToEdit = (
                                                 <div class="card-header">
                                                     <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
-                                                    <div class="card-tools pull-right">
+                                                    <div class="card-tools float-right">
                                                         <div class="label bg-gray"><?= InputUtils::escapeHTML(gettext($roleName)) ?></div>
                                                     </div>
                                                 </div>
@@ -784,36 +820,33 @@ $bOkToEdit = (
                                                         }
                                                     }
 
-                                                    echo '</div><!-- /.box-body -->';
+                                                    echo '</div>';
                                                 } ?>
                                                 <div class="card-footer">
-                                                    <code>
-                                                        <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                                        ?>
-                                                            <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-secondary" role="button"><i class="fa-solid fa-list"></i></a>
-                                                            <div class="btn-group">
-                                                                <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
-                                                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
-                                                                    <span class="caret"></span>
-                                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                                </button>
-                                                                <ul class="dropdown-menu" role="menu">
-                                                                    <li><a class="changeRole" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a></li>
-                                                                    <?php if ($grp_hasSpecialProps) {
-                                                                    ?>
-                                                                        <li><a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><?= gettext('Update Properties') ?></a></li>
-                                                                    <?php
-                                                                    } ?>
-                                                                </ul>
+                                                    <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
+                                                    ?>
+                                                        <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-secondary" role="button"><i class="fa-solid fa-list"></i></a>
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
+                                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                                                                <span class="caret"></span>
+                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                            </button>
+                                                            <div class="dropdown-menu">
+                                                                <a class="changeRole dropdown-item" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a>
+                                                                <?php if ($grp_hasSpecialProps) {
+                                                                ?>
+                                                                    <a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>" class="dropdown-item"><?= gettext('Update Properties') ?></a>
+                                                                <?php
+                                                                } ?>
                                                             </div>
-                                                            <div class="btn-group">
-                                                                <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove" data-toggle="dropdown"><i class="fa-solid fa-trash-can"></i></button>
-                                                            </div>
-                                                        <?php
-                                                        } ?>
-                                                    </code>
+                                                        </div>
+                                                        <div class="btn-group">
+                                                            <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove"><i class="fa-solid fa-trash-can"></i></button>
+                                                        </div>
+                                                    <?php
+                                                    } ?>
                                                 </div>
-                                                <!-- /.box-footer-->
                                             </div>
                                             <!-- /.box -->
                                         </div>

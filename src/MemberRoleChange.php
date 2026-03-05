@@ -59,56 +59,54 @@ require_once __DIR__ . '/Include/Header.php'
 
 ?>
 
-<form method="post" action="MemberRoleChange.php?GroupID=<?= $iGroupID ?>&PersonID=<?= $iPersonID ?>&Return=<?= $iReturn ?>">
+<div class="card card-body">
+    <form method="post" action="MemberRoleChange.php?GroupID=<?= $iGroupID ?>&PersonID=<?= $iPersonID ?>&Return=<?= $iReturn ?>">
 
-<table cellpadding="4">
-    <tr>
-        <td align="right"><b><?= gettext('Group Name') ?>:</b></td>
-        <td><?php echo $grp_Name ?></td>
-    </tr>
-    <tr>
-        <td align="right"><b><?= gettext("Member's Name") ?>:</b></td>
-        <td><?php echo $per_LastName . ', ' . $per_FirstName ?></td>
-    </tr>
-    <tr>
-        <td align="right"><b><?= gettext('Current Role') ?>:</b></td>
-        <td><?php echo gettext($sRoleName) ?></td>
-    </tr>
-    <tr>
-        <td align="right"><b><?= gettext('New Role') ?>:</b></td>
-        <td>
-            <select name="NewRole">
-                <?php
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold text-right"><?= gettext('Group Name') ?>:</label>
+            <div class="col-sm-9 col-form-label"><?= InputUtils::escapeHTML($grp_Name) ?></div>
+        </div>
 
-                // Loop through all the possible roles
-                while ($aRow = mysqli_fetch_array($rsAllRoles)) {
-                    extract($aRow);
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold text-right"><?= gettext("Member's Name") ?>:</label>
+            <div class="col-sm-9 col-form-label"><?= InputUtils::escapeHTML($per_LastName) . ', ' . InputUtils::escapeHTML($per_FirstName) ?></div>
+        </div>
 
-                    // If this is the current role, select it
-                    if ($iRoleID == $lst_OptionID) {
-                        $sSelected = 'selected';
-                    } else {
-                        $sSelected = '';
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold text-right"><?= gettext('Current Role') ?>:</label>
+            <div class="col-sm-9 col-form-label"><?= gettext($sRoleName) ?></div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label font-weight-bold text-right" for="NewRole"><?= gettext('New Role') ?>:</label>
+            <div class="col-sm-4">
+                <select name="NewRole" id="NewRole" class="form-control">
+                    <?php
+                    // Loop through all the possible roles
+                    while ($aRow = mysqli_fetch_array($rsAllRoles)) {
+                        extract($aRow);
+
+                        // If this is the current role, select it
+                        $sSelected = ($iRoleID == $lst_OptionID) ? 'selected' : '';
+                        echo '<option value="' . $lst_OptionID . '" ' . $sSelected . '>' . gettext($lst_OptionName) . '</option>';
                     }
-                    echo '<option value="' . $lst_OptionID . '" ' . $sSelected . '>' . gettext($lst_OptionName) . '</option>';
-                }
-                ?>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2" class="text-center">
-            <input type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Update') ?>">
+                    ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Update') ?>">
             <?php
             if ($iReturn) {
-                echo '&nbsp;&nbsp;<input type="button" class="btn btn-secondary" name="Cancel" value="' . gettext('Cancel') . "\" onclick=\"document.location='GroupView.php?GroupID=" . $iGroupID . "';\">";
+                echo ' <a href="GroupView.php?GroupID=' . $iGroupID . '" class="btn btn-secondary ml-2">' . gettext('Cancel') . '</a>';
             } else {
-                echo '&nbsp;&nbsp;<input type="button" class="btn btn-secondary" name="Cancel" value="' . gettext('Cancel') . "\" onclick=\"document.location='PersonView.php?PersonID=" . $iPersonID . "';\">";
+                echo ' <a href="PersonView.php?PersonID=' . $iPersonID . '" class="btn btn-secondary ml-2">' . gettext('Cancel') . '</a>';
             }
             ?>
-        </td>
-    </tr>
-</table>
-</form>
+        </div>
+
+    </form>
+</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

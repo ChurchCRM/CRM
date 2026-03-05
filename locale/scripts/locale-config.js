@@ -3,6 +3,9 @@
  * 
  * Centralized configuration for all locale build scripts to ensure
  * consistent paths and settings across the build system.
+ * 
+ * Configuration is now loaded via environment variables (.env file).
+ * See .env.example for required variables.
  */
 
 const path = require('path');
@@ -22,8 +25,6 @@ const LocaleConfig = {
     i18nDir: path.join(PROJECT_ROOT, 'src/locale/i18n'),
     localesDir: path.join(PROJECT_ROOT, 'locale/locales'),
     
-    buildConfigJson: path.join(PROJECT_ROOT, 'BuildConfig.json'),
-    buildConfigExample: path.join(PROJECT_ROOT, 'BuildConfig.json.example'),
     i18nextParserConfig: path.join(__dirname, 'i18next-parser.config.js'),
     
     temp: {
@@ -39,7 +40,7 @@ const LocaleConfig = {
         root: path.join(PROJECT_ROOT, 'locale/terms'),
         base: path.join(PROJECT_ROOT, 'locale/terms/base'),
         missing: path.join(PROJECT_ROOT, 'locale/terms/missing'),
-        missingNew: path.join(PROJECT_ROOT, 'locale/terms/missing/new'),
+        missingNew: path.join(PROJECT_ROOT, 'locale/terms/missing'),
     },
     
     termsOutput: {
@@ -55,7 +56,7 @@ const LocaleConfig = {
     },
     
     settings: {
-        missingTermsBatchSize: 100,
+        missingTermsBatchSize: 150,
         wipThreshold: 5,
         completeThreshold: 90,
         goodThreshold: 75,

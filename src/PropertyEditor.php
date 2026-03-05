@@ -121,9 +121,8 @@ $rsPropertyTypes = RunQuery($sSQL);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="container-fluid mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="row justify-content-center mt-2">
+    <div class="col-md-8">
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">
@@ -180,6 +179,5 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
         </div>
     </div>
-</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

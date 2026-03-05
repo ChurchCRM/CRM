@@ -17,43 +17,49 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
         cy.visit("PersonView.php?PersonID=1");
         cy.contains("Person Profile");
 
-        // Click on the Volunteer tab
-        cy.get("#nav-item-volunteer").click();
-        cy.get("#volunteer").should("be.visible");
+        // Click on the Volunteer tab in the profile (use specific id to avoid sidebar matches)
+        cy.get('#nav-item-volunteer').click();
+        cy.get('#volunteer').should('be.visible');
+
 
         // Check if there are volunteer opportunities to assign
-        cy.get("#volunteer").then(($volunteerTab) => {
+        cy.get('#volunteer').then(($volunteerTab) => {
             // Look for the volunteer opportunity select/checkbox elements
             if ($volunteerTab.find('input[name="VolunteerOpportunityIDs[]"]').length > 0) {
                 // Get an unassigned opportunity checkbox
                 cy.get('input[name="VolunteerOpportunityIDs[]"]:not(:checked)').first().then(($checkbox) => {
                     if ($checkbox.length > 0) {
                         const opportunityId = $checkbox.val();
-                        
+
                         // Check the opportunity
-                        cy.wrap($checkbox).check();
-                        
-                        // Submit the form
-                        cy.get('input[name="VolunteerOpportunityAssign"]').click();
+                        cy.wrap($checkbox).check({ force: true });
+
+                        // Submit the form - try multiple possible submit controls to be resilient
+                        cy.get('input[name="VolunteerOpportunityAssign"]').then(($btn) => {
+                            if ($btn.length) {
+                                cy.wrap($btn).click();
+                            } else {
+                                cy.contains('button', /assign/i).click();
+                            }
+                        });
 
                         // Should not show an error - page should reload successfully
-                        cy.url().should("contain", "PersonView.php?PersonID=1");
-                        cy.contains("Person Profile");
+                        cy.url().should('contain', 'PersonView.php?PersonID=1');
+                        cy.contains('Person Profile');
 
                         // The opportunity should now be assigned (listed in assigned section)
-                        // This verifies the fix worked - previously this would show a blank page
-                        cy.get("#nav-item-volunteer").click();
-                        cy.get("#volunteer").should("be.visible");
+                        cy.get('#nav-item-volunteer').click();
+                        cy.get('#volunteer').should('be.visible');
 
-                        // Clean up: Remove the assigned opportunity
+                        // Clean up: Remove the assigned opportunity (look for remove button by href)
                         cy.get(`a[href*="RemoveVO=${opportunityId}"]`).first().click();
-                        cy.url().should("contain", "PersonView.php?PersonID=1");
+                        cy.url().should('contain', 'PersonView.php?PersonID=1');
                     } else {
-                        cy.log("No unassigned volunteer opportunities available to test");
+                        cy.log('No unassigned volunteer opportunities available to test');
                     }
                 });
             } else {
-                cy.log("No volunteer opportunities configured in the system");
+                cy.log('No volunteer opportunities configured in the system');
             }
         });
     });

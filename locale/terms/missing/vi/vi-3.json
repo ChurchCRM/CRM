@@ -1,0 +1,17 @@
+{
+  "Missing required settings: %s": "",
+  "Person has no family": "",
+  "Plugin not found or not active": "",
+  "Server URL is required.": "",
+  "This plugin does not support connection testing.": "",
+  "Unable to display map: church address has not been geocoded yet.": "",
+  "Update church address in Settings.": "",
+  "Username and password are required.": "",
+  "Validation failed: %s": "",
+  "Vonage server error. Please try again later.": "",
+  "WebDAV Endpoint URL is required.": "",
+  "Are you sure you want to permanently delete this pledge record?": "",
+  "Cancel and Return to Family View": "",
+  "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "",
+  "Move Donations to Selected Family": ""
+}

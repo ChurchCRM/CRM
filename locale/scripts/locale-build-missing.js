@@ -9,7 +9,7 @@
  * 3. Compares to find untranslated terms
  * 4. Creates JSON files with missing terms for POEditor import
  * 
- * Output: /locale/terms/missing/new/{locale}/
+ * Output: /locale/terms/missing/{locale}/
  * 
  * Usage: node locale-build-missing.js
  */
@@ -80,7 +80,7 @@ function saveMissingTermsFileBatched(poEditorCode, missingTerms) {
 }
 
 function cleanupMissingTermsDir() {
-    // Clean the 'new' status folder (remove per-locale subfolders and files)
+    // Clean the missing terms folder (remove per-locale subfolders and files)
     if (fs.existsSync(OUTPUT_DIR)) {
         const entries = fs.readdirSync(OUTPUT_DIR);
         entries.forEach(entry => {
@@ -207,7 +207,7 @@ function main() {
             return;
         }
 
-        // Generate missing terms files (batched into 300 terms per file)
+        // Generate missing terms files (batched into 150 terms per file)
         const missingFiles = saveMissingTermsFileBatched(poEditorCode, missingTerms);
         filesGenerated += missingFiles.length;
         totalMissing += missingKeys.length;

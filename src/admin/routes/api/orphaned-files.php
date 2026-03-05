@@ -9,7 +9,28 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/api/orphaned-files', function (RouteCollectorProxy $group): void {
 
-    // Get list of orphaned files
+    /**
+     * @OA\Get(
+     *     path="/api/orphaned-files",
+     *     operationId="getOrphanedFiles",
+     *     summary="List orphaned files",
+     *     description="Returns files present on disk that are not part of the official ChurchCRM release.",
+     *     tags={"Admin"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Orphaned file list",
+     *         @OA\JsonContent(type="object",
+     *             @OA\Property(property="count", type="integer"),
+     *             @OA\Property(property="files", type="array",
+     *                 @OA\Items(type="string")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Forbidden — Admin role required")
+     * )
+     */
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $orphanedFiles = AppIntegrityService::getOrphanedFiles();
 
@@ -19,7 +40,29 @@ $app->group('/api/orphaned-files', function (RouteCollectorProxy $group): void {
         ]);
     });
 
-    // Delete all orphaned files
+    /**
+     * @OA\Post(
+     *     path="/api/orphaned-files/delete-all",
+     *     operationId="deleteAllOrphanedFiles",
+     *     summary="Delete all orphaned files",
+     *     tags={"Admin"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Deletion results",
+     *         @OA\JsonContent(type="object",
+     *             @OA\Property(property="success", type="boolean"),
+     *             @OA\Property(property="deleted", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="failed", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="errors", type="array", @OA\Items(type="string")),
+     *             @OA\Property(property="message", type="string")
+     *         )
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Forbidden — Admin role required"),
+     *     @OA\Response(response=500, description="Error deleting files")
+     * )
+     */
     $group->post('/delete-all', function (Request $request, Response $response, array $args): Response {
         try {
             $result = AppIntegrityService::deleteOrphanedFiles();

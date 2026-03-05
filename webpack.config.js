@@ -23,11 +23,18 @@ module.exports = {
     kiosk: './webpack/kiosk',
     'people-list': './webpack/people/person-list',
     'people-family-list': './webpack/people/family-list',
+    'people-family-view': './webpack/people/family-view',
+    'people-person-view': './webpack/people/person-view',
   },
   output: {
     path: path.resolve('./src/skin/v2'),
     filename: '[name].min.js',
     publicPath: 'auto',
+  },
+  externals: {
+    // Leaflet is loaded as a global from skin/external/leaflet/leaflet.js (Grunt-copied).
+    // Mapping it here lets webpack entries import 'leaflet' without bundling it.
+    leaflet: 'L',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],

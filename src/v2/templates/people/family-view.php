@@ -50,7 +50,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title m-0"><?= $family->getName() ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <span class="badge badge-secondary"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
                 </div>
             </div>
@@ -102,12 +102,12 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             <div class="card-body">
                 <div class="row">
                     <div class="col-6 mb-2">
-                        <a class="btn btn-default btn-block" href="#" data-toggle="modal" data-target="#confirm-verify">
+                        <a class="btn btn-secondary btn-block" href="#" data-toggle="modal" data-target="#confirm-verify">
                             <i class="fa-solid fa-clipboard-check"></i><br><?= gettext('Verify') ?>
                         </a>
                     </div>
                     <div class="col-6 mb-2">
-                        <a class="btn btn-default btn-block AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                        <a class="btn btn-secondary btn-block AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
                             <i class="fa-solid fa-cart-plus"></i><br><?= gettext('Cart') ?>
                         </a>
                     </div>
@@ -133,33 +133,35 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <div class="card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
                     </button>
                 </div>
             </div>
             <div class="card-body">
-                <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
-                   target="_blank"><?= $familyAddress ?></a>
-                <!-- Maps Start -->
-                <?php if (!empty(SystemConfig::getValue("sGoogleMapsRenderKey")) && !empty($family->getLatitude())) : ?>
+                <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
+                   target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
+                <?php $directionsUrl = $family->getDirectionsUrl(); ?>
+                <?php if (!empty($directionsUrl)) : ?>
+                <div class="mt-2">
+                    <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                       class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
+                    </a>
+                </div>
+                <?php endif; ?>
+                <!-- Family location map (Leaflet + OpenStreetMap) -->
+                <?php if ($family->hasLatitudeAndLongitude()) : ?>
+                    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
                     <div class="border-right border-left mt-2">
-                        <section id="map">
-                            <div id="map1"></div>
-                        </section>
+                        <div id="map1" style="height: 200px;"></div>
                     </div>
-                    <!-- Map Scripts -->
-                    <script
-                            src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapsRenderKey") ?>&sensor=false"></script>
-                    <script>
-                        var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                        window.CRM = window.CRM || {};
+                        window.CRM.familyMapConfig = <?= json_encode(['lat' => (float) $family->getLatitude(), 'lng' => (float) $family->getLongitude()]) ?>;
                     </script>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/js/Map.js') ?>"></script>
-                    <style>
-                        #map1 {
-                            height: 200px;
-                        }
-                    </style>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                    <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
                 <?php endif; ?>
             </div>
         </div>
@@ -227,7 +229,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <div class="card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag"></i> <?= gettext("Properties") ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool d-block">
                         <i class="fa-solid fa-plus-circle text-blue"></i>
@@ -287,7 +289,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <div class="card card-outline card-info collapsed-card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-history"></i> <?= gettext("Timeline") ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
@@ -469,11 +471,11 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                                     <?php 
                                         $isInCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false);
                                     ?>
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>" class="btn-link">
+                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>">
                                         <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
                                     </a>
-                                    
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="btn-link">
+
+                                    <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>">
                                         <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
                                     </a>
                                     

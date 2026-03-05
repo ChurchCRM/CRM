@@ -18,6 +18,20 @@ use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/database', function (RouteCollectorProxy $group): void {
 
+    /**
+     * @OA\Post(
+     *     path="/database/backup",
+     *     summary="Create a local database backup (Admin role required)",
+     *     tags={"System"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\RequestBody(required=true,
+     *         @OA\JsonContent(@OA\Property(property="BackupType", type="string", description="Backup type identifier"))
+     *     ),
+     *     @OA\Response(response=200, description="Backup job result with file info"),
+     *     @OA\Response(response=400, description="Backup failed"),
+     *     @OA\Response(response=403, description="Admin role required")
+     * )
+     */
     $group->post('/backup', function (Request $request, Response $response, array $args): Response {
         try {
             $input = $request->getParsedBody();
@@ -44,6 +58,23 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
         }
     });
 
+    /**
+     * @OA\Post(
+     *     path="/database/backupRemote",
+     *     summary="Trigger a remote (WebDAV) backup via the External Backup plugin (Admin role required)",
+     *     tags={"System"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(@OA\Property(property="BackupType", type="integer", description="Backup type (defaults to full backup)"))
+     *     ),
+     *     @OA\Response(response=200, description="Remote backup result",
+     *         @OA\JsonContent(@OA\Property(property="copyStatus", type="object"))
+     *     ),
+     *     @OA\Response(response=400, description="Plugin not enabled or not configured"),
+     *     @OA\Response(response=403, description="Admin role required"),
+     *     @OA\Response(response=500, description="Remote backup failed")
+     * )
+     */
     $group->post('/backupRemote', function (Request $request, Response $response, array $args): Response {
         // Check if External Backup plugin is active and configured
         if (!PluginManager::isPluginActive('external-backup')) {
@@ -70,6 +101,17 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
         }
     });
 
+    /**
+     * @OA\Post(
+     *     path="/database/restore",
+     *     summary="Restore the database from a backup file (Admin role required)",
+     *     tags={"System"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Restore job result"),
+     *     @OA\Response(response=500, description="Database restore failed"),
+     *     @OA\Response(response=403, description="Admin role required")
+     * )
+     */
     $group->post('/restore', function (Request $request, Response $response, array $args): Response {
         try {
             $RestoreJob = new RestoreJob();
@@ -96,6 +138,18 @@ $app->group('/database', function (RouteCollectorProxy $group): void {
         }
     });
 
+    /**
+     * @OA\Get(
+     *     path="/database/download/{filename}",
+     *     summary="Download a backup file by name (Admin role required)",
+     *     tags={"System"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="filename", in="path", required=true, @OA\Schema(type="string")),
+     *     @OA\Response(response=200, description="Backup file download stream"),
+     *     @OA\Response(response=400, description="Download failed"),
+     *     @OA\Response(response=403, description="Admin role required")
+     * )
+     */
     $group->get('/download/{filename}', function (Request $request, Response $response, array $args): Response {
         $filename = $args['filename'];
         try {

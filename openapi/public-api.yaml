@@ -1,0 +1,433 @@
+openapi: 3.0.0
+info:
+  title: 'ChurchCRM Public API'
+  description: 'Publicly accessible endpoints requiring no authentication. Used for self-registration, public calendar access, country/state lookups, and login.'
+  contact:
+    name: ChurchCRM
+    url: 'https://churchcrm.io'
+    email: info@churchcrm.io
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
+  version: 7.0.1
+servers:
+  -
+    url: '{scheme}://{host}/api'
+    description: 'Self-hosted ChurchCRM instance'
+    variables:
+      scheme:
+        enum:
+          - https
+          - http
+        default: https
+        description: 'Protocol (https for production, http for local)'
+      host:
+        default: your-server.com
+        description: 'Your ChurchCRM server hostname'
+  -
+    url: 'http://localhost/churchcrm/api'
+    description: 'Local development (localhost)'
+paths:
+  '/public/calendar/{CalendarAccessToken}/events':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get public calendar events as JSON'
+      description: 'Returns events for a publicly shared calendar using its access token.'
+      operationId: getPublicCalendarEvents
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          description: "The calendar's public access token (found in calendar settings)"
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'Array of event objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { Id: { type: integer }, Title: { type: string }, Start: { type: string, format: date-time }, End: { type: string, format: date-time } }
+                  type: object
+        '404':
+          description: 'Invalid or expired access token'
+  '/public/calendar/{CalendarAccessToken}/ics':
+    get:
+      tags:
+        - Calendar
+      summary: 'Download public calendar as ICS file'
+      description: 'Returns an iCalendar (.ics) file for the publicly shared calendar, suitable for import into calendar apps.'
+      operationId: getPublicCalendarICS
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'iCalendar file'
+          content:
+            text/calendar:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: 'Invalid or expired access token'
+  '/public/calendar/{CalendarAccessToken}/fullcalendar':
+    get:
+      tags:
+        - Calendar
+      summary: 'Get public calendar events in FullCalendar format'
+      description: 'Returns events formatted for the FullCalendar JavaScript library.'
+      operationId: getPublicCalendarFullCalendarEvents
+      parameters:
+        -
+          name: CalendarAccessToken
+          in: path
+          required: true
+          schema:
+            type: string
+            example: abc123token
+      responses:
+        '200':
+          description: 'FullCalendar-compatible event array'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, title: { type: string }, start: { type: string, format: date-time }, end: { type: string, format: date-time } }
+                  type: object
+        '404':
+          description: 'Invalid or expired access token'
+  /public/data/countries:
+    get:
+      tags:
+        - Lookups
+      summary: 'List all countries'
+      description: 'Returns the full list of countries used in address fields.'
+      operationId: getCountries
+      responses:
+        '200':
+          description: 'Array of country objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { code: { type: string, example: US }, name: { type: string, example: 'United States' } }
+                  type: object
+  '/public/data/countries/{countryCode}/states':
+    get:
+      tags:
+        - Lookups
+      summary: 'List states/provinces for a country'
+      description: 'Returns all states or provinces for the given ISO country code.'
+      operationId: getStates
+      parameters:
+        -
+          name: countryCode
+          in: path
+          description: 'ISO 3166-1 alpha-2 country code'
+          required: true
+          schema:
+            type: string
+            example: US
+      responses:
+        '200':
+          description: 'Array of state/province objects'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { code: { type: string, example: WA }, name: { type: string, example: Washington } }
+                  type: object
+  /public/register/family:
+    post:
+      tags:
+        - Registration
+      summary: 'Register a new family'
+      description: 'Creates a new family and its members via public self-registration. Requires public registration to be enabled in system settings.'
+      operationId: registerFamilyAPI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - Name
+                - Address1
+                - City
+                - State
+                - Country
+                - Zip
+                - people
+              properties:
+                Name:
+                  type: string
+                  example: Smith
+                Address1:
+                  type: string
+                  example: '123 Main St'
+                Address2:
+                  type: string
+                  example: 'Apt 4B'
+                  nullable: true
+                City:
+                  type: string
+                  example: Seattle
+                State:
+                  type: string
+                  example: WA
+                Country:
+                  type: string
+                  example: US
+                Zip:
+                  type: string
+                  example: '98101'
+                HomePhone:
+                  type: string
+                  example: 206-555-0100
+                  nullable: true
+                Email:
+                  type: string
+                  format: email
+                  example: smith@example.com
+                  nullable: true
+                people:
+                  type: array
+                  items: { required: [role, gender, firstName, lastName], properties: { role: { description: 'Family role ID (1=Head of Household). See GET /public/data for lookups.', type: string, example: '1' }, gender: { description: '1=Male, 2=Female', type: string, enum: ['1', '2'] }, firstName: { type: string, example: John }, lastName: { type: string, example: Smith }, email: { type: string, format: email, nullable: true }, birthday: { description: 'Format: MM/DD/YYYY', type: string, example: 10/02/1985, nullable: true }, hideAge: { type: boolean, default: false }, cellPhone: { type: string, nullable: true }, homePhone: { type: string, nullable: true }, workPhone: { type: string, nullable: true } }, type: object }
+                  minItems: 1
+              type: object
+      responses:
+        '200':
+          description: 'Family registered successfully'
+          content:
+            application/json:
+              schema:
+                description: 'The newly created family object'
+                properties:
+                  Id: { type: integer, example: 42 }
+                  Name: { type: string, example: Smith }
+                  Address1: { type: string }
+                  City: { type: string }
+                  State: { type: string }
+                  Zip: { type: string }
+                type: object
+        '400':
+          description: 'Validation error'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error: { type: string, example: 'Validation Error' }
+                  failures: { type: array, items: { type: string } }
+                type: object
+        '401':
+          description: 'Person validation error or registration disabled'
+  /public/register/person:
+    post:
+      tags:
+        - Registration
+      summary: 'Register a new individual person'
+      description: 'Creates a standalone person record via public self-registration. Requires public registration to be enabled in system settings.'
+      operationId: registerPersonAPI
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - firstName
+                - lastName
+                - gender
+              properties:
+                firstName:
+                  type: string
+                  example: Jane
+                lastName:
+                  type: string
+                  example: Doe
+                gender:
+                  description: '1=Male, 2=Female'
+                  type: string
+                  enum: ['1', '2']
+                email:
+                  type: string
+                  format: email
+                  nullable: true
+                cellPhone:
+                  type: string
+                  nullable: true
+                homePhone:
+                  type: string
+                  nullable: true
+                workPhone:
+                  type: string
+                  nullable: true
+                address1:
+                  type: string
+                  nullable: true
+                address2:
+                  type: string
+                  nullable: true
+                city:
+                  type: string
+                  nullable: true
+                state:
+                  type: string
+                  nullable: true
+                zip:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: 'Person registered successfully'
+          content:
+            application/json:
+              schema:
+                description: 'The newly created person object (Propel JSON export)'
+                properties:
+                  Id: { type: integer, example: 99 }
+                  FirstName: { type: string, example: Jane }
+                  LastName: { type: string, example: Doe }
+                type: object
+        '400':
+          description: 'Validation error'
+          content:
+            application/json:
+              schema:
+                properties:
+                  error: { type: string, example: 'Validation Error' }
+                  failures: { type: array, items: { type: string } }
+                type: object
+  /public/user/login:
+    post:
+      tags:
+        - Auth
+      summary: 'Log in and retrieve an API key'
+      description: 'Authenticates a user by username and password and returns their API key for use in subsequent authenticated requests.'
+      operationId: userLogin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - userName
+                - password
+              properties:
+                userName:
+                  type: string
+                  example: admin
+                password:
+                  type: string
+                  format: password
+                  example: secret
+              type: object
+      responses:
+        '200':
+          description: 'Login successful'
+          content:
+            application/json:
+              schema:
+                properties:
+                  apiKey: { type: string, example: abc123xyz }
+                type: object
+        '401':
+          description: 'Invalid username or password'
+        '404':
+          description: 'User not found'
+  /public/user/password-reset:
+    post:
+      tags:
+        - Auth
+      summary: 'Request a password reset email'
+      description: 'Sends a password reset link to the email address associated with the given username. Always returns success to avoid user enumeration.'
+      operationId: passwordResetRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - userName
+              properties:
+                userName:
+                  type: string
+                  example: admin
+              type: object
+      responses:
+        '200':
+          description: 'Request accepted (email sent if account exists)'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '400':
+          description: 'userName field is required'
+  /public/echo:
+    get:
+      tags:
+        - Utility
+      summary: 'Health check / echo'
+      description: 'Returns a simple echo response. Useful for verifying the API is reachable.'
+      operationId: getEcho
+      responses:
+        '200':
+          description: 'Echo response'
+          content:
+            application/json:
+              schema:
+                properties:
+                  message: { type: string, example: echo }
+                type: object
+  /public/csp-report:
+    post:
+      tags:
+        - Utility
+      summary: 'Log a Content Security Policy violation report'
+      description: 'Receives browser-generated CSP violation reports and logs them server-side.'
+      operationId: logCSPReport
+      requestBody:
+        description: 'CSP violation report object (browser-generated)'
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              csp-report:
+                document-uri: 'https://example.com'
+                violated-directive: script-src
+      responses:
+        '204':
+          description: 'Report logged successfully (no content)'
+tags:
+  -
+    name: Utility
+    description: 'Health check and CSP reporting'
+  -
+    name: Auth
+    description: 'Login and password reset'
+  -
+    name: Registration
+    description: 'Public self-registration (requires registration to be enabled in system settings)'
+  -
+    name: Calendar
+    description: 'Public calendar access via shared token'
+  -
+    name: Lookups
+    description: 'Country and state/province reference data'

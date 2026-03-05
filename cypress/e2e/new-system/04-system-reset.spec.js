@@ -21,17 +21,32 @@ describe('04 - System Reset', () => {
         password: 'changeme'
     };
 
-    // Helper to manually login (skip session caching for this test)
+    // Helper to manually login, handling forced password-change redirect after a DB reset
     const manualLogin = () => {
         cy.clearCookies();
         cy.clearLocalStorage();
+        // Admin password is 'changeme'. After a DB reset NeedPasswordChange=true,
+        // which forces a redirect to /changepassword on first login.
+        const password = adminCredentials.password;
         cy.visit('/login');
         cy.get('input[name=User]', { timeout: 15000 }).type(adminCredentials.username);
-        cy.get('input[name=Password]').type(adminCredentials.password);
+        cy.get('input[name=Password]').type(password);
         cy.get('input[name=Password]').type('{enter}');
-        cy.url({ timeout: 30000 }).should('not.include', '/login');
+        cy.url({ timeout: 30000 }).should('not.include', '/session/begin');
         // Give the session time to establish
         cy.wait(1000);
+
+        // After a DB reset the admin has NeedPasswordChange=true; complete the forced form if needed.
+        // The forced form uses button[type=submit] (login-box layout, not card layout).
+        cy.url().then((url) => {
+            if (url.includes('/changepassword')) {
+                cy.get('#OldPassword').type(password);
+                cy.get('#NewPassword1').type('Cypress@01!');
+                cy.get('#NewPassword2').type('Cypress@01!');
+                cy.get('button[type=submit]').click();
+                cy.contains('Password Changed', { timeout: 10000 }).should('be.visible');
+            }
+        });
     };
 
     describe('Step 10a: Navigate to Reset Page', () => {
@@ -69,7 +84,7 @@ describe('04 - System Reset', () => {
     describe('Step 10b: Perform System Reset', () => {
         it('should reset the database via API', () => {
             manualLogin();
-            
+
             // Perform reset via API
             cy.request({
                 method: 'DELETE',
@@ -117,11 +132,18 @@ describe('04 - System Reset', () => {
         });
 
         it('should login with default credentials after reset', () => {
-            // Fresh login after reset (no session caching)
+            // manualLogin() uses 'changeme', detects forced /changepassword redirect,
+            // and completes it — leaving password as 'Cypress@01!' with NeedPasswordChange=false.
             manualLogin();
-            
-            // Should be redirected to admin dashboard (blank system)
-            cy.url().should('include', '/admin');
+
+            // Now change it back to 'changeme' so Steps 10d/10e can login cleanly.
+            // NeedPasswordChange=false so this shows the voluntary form (input[type=submit]).
+            cy.visit('/v2/user/current/changepassword');
+            cy.get('#OldPassword').type('Cypress@01!');
+            cy.get('#NewPassword1').type('changeme');
+            cy.get('#NewPassword2').type('changeme');
+            cy.get('input[type=submit]').click();
+            cy.contains('Password Change Successful', { timeout: 10000 }).should('be.visible');
         });
     });
 
