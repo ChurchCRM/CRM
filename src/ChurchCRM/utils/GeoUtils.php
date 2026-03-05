@@ -17,7 +17,7 @@ class GeoUtils
         $localeInfo = Bootstrapper::getCurrentLocale();
 
         $adapter = new Client();
-        $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('sGoogleMapsGeocodeKey'));
+        $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('plugin.maps.googleMapsGeocodeKey'));
 
         $lat = 0;
         $long = 0;

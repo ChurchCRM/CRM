@@ -1,0 +1,25 @@
+{
+  "id": "maps",
+  "name": "Maps & Geocoding",
+  "description": "Google Maps integration for address geocoding, church location display, and family mapping. Manages the Google Maps API key used for server-side geocoding.",
+  "version": "1.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\Maps\\MapsPlugin",
+  "dependencies": [],
+  "settingsUrl": null,
+  "settings": [
+    {
+      "key": "googleMapsGeocodeKey",
+      "label": "Google Maps API Key",
+      "type": "text",
+      "required": false,
+      "help": "Google Maps API Key used for server-side address geocoding. Get yours at https://developers.google.com/maps/documentation/javascript/get-api-key"
+    }
+  ],
+  "menuItems": [],
+  "hooks": [],
+  "hasTest": true
+}

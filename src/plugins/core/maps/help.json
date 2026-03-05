@@ -1,0 +1,23 @@
+{
+  "summary": "The Maps & Geocoding plugin manages the Google Maps API key used for server-side address geocoding across ChurchCRM.",
+  "sections": [
+    {
+      "title": "Getting Started",
+      "content": "1. Obtain a Google Maps API Key from https://developers.google.com/maps/documentation/javascript/get-api-key\n2. Enable the 'Geocoding API' product for your key in the Google Cloud Console.\n3. Enter the key in the Google Maps API Key field and save.\n4. Click 'Test Connection' to validate the key against your church address. On success the church latitude and longitude in Church Information settings are automatically updated."
+    },
+    {
+      "title": "Church Lat/Long",
+      "content": "The Test Connection button geocodes your church address and writes the result to the Church Latitude and Church Longitude fields in the Church Information settings panel. These are used to center the map on all map pages."
+    }
+  ],
+  "links": [
+    {
+      "label": "Google Maps API Key guide",
+      "url": "https://developers.google.com/maps/documentation/javascript/get-api-key"
+    },
+    {
+      "label": "Google Cloud Console",
+      "url": "https://console.cloud.google.com/"
+    }
+  ]
+}
