@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\model\ChurchCRM\EventQuery;
