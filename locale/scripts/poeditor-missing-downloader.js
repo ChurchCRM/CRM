@@ -202,7 +202,7 @@ function parseArguments() {
         if (args[i] === '--locale' && args[i + 1]) {
             targetLocale = args[i + 1].toLowerCase();
             break;
-        } else if (!args[i].startsWith('-') && !targetLocale) {
+        } else if (!args[i].startsWith('-')) {
             targetLocale = args[i].toLowerCase();
             break;
         }
