@@ -139,6 +139,55 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderJSON($response, ['success' => $deleted]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
     
+    /**
+     * @OA\Get(
+     *     path="/person/{personId}",
+     *     operationId="getPerson",
+     *     summary="Get a person's full record by ID",
+     *     description="Returns the complete person object including family info, addresses, and other related details.",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+     *     @OA\Response(response=200, description="Person object",
+     *         @OA\JsonContent(type="object", example={"id":42,"firstName":"John","lastName":"Doe"})
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=404, description="Person not found")
+     * )
+     * @OA\Delete(
+     *     path="/person/{personId}",
+     *     operationId="deletePerson",
+     *     summary="Delete a person record",
+     *     description="Permanently delete a person and all their associated records. Current user cannot delete their own account.",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+     *     @OA\Response(response=200, description="Person deleted successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Cannot delete yourself or DeleteRecords role required"),
+     *     @OA\Response(response=404, description="Person not found")
+     * )
+     * @OA\Post(
+     *     path="/person/{personId}/addToCart",
+     *     operationId="addPersonToCart",
+     *     summary="Add a person to the cart",
+     *     description="Add a person to the current user's cart for batch operations.",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+     *     @OA\Response(response=200, description="Person added to cart",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean", example=true)
+     *         )
+     *     ),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=404, description="Person not found")
+     * )
+     */
     // Get person by ID
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');

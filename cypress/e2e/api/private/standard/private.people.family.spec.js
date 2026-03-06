@@ -88,8 +88,8 @@ describe("API Private Family", () => {
         });
 
         it("Returns error for non-existent family", () => {
-            // API returns 412 Precondition Failed for non-existent family
-            cy.makePrivateAdminAPICall("GET", "/api/family/99999", null, 412);
+            // AbstractEntityMiddleware returns 404 Not Found for missing entity
+            cy.makePrivateAdminAPICall("GET", "/api/family/99999", null, 404);
         });
     });
 
