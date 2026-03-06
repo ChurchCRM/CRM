@@ -6730,14 +6730,6 @@ msgid "View User"
 msgstr "Kullanıcıyı görüntüle"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Geçersiz istek: Eksik takvim kimliği"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Bulunmadı: Bilinmeyen Takvim Kimliği"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "E -posta olmadan bulunamadı veya kullanıcı"
@@ -6906,10 +6898,6 @@ msgstr "Geçersiz olay türü kimliği"
 #: 
 msgid "invalid calendar pinning"
 msgstr "Geçersiz takvim sabitleme"
-
-#: 
-msgid "invalid group id"
-msgstr "Geçersiz grup kimliği"
 
 #: 
 msgid "invalid status value"
@@ -7083,10 +7071,6 @@ msgstr "İmza Tanım Dosyasını Kod Çözme Hata"
 #: 
 msgid "Age Histogram"
 msgstr "Yaş histogramı"
-
-#: 
-msgid "Missing event id"
-msgstr "Eksik Olay Kimliği"
 
 #: 
 msgid "Event not found"
@@ -7458,10 +7442,6 @@ msgstr "Bu projeyi tercüme etmeye yardım edin"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr " Tip bir uyumsuzluk var"
 
 #: 
 msgid "Loading"
@@ -8064,14 +8044,6 @@ msgid "City is required"
 msgstr "Şehir gereklidir"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Veritabanı sunucusu bağlantı noktası (port) gereklidir (örn. 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Veritabanı kullanıcı adı gereklidir"
-
-#: 
 msgid "Email Address"
 msgstr "E-posta Adresi"
 
@@ -8174,10 +8146,6 @@ msgstr "Telefon numarası"
 #: 
 msgid "Please add at least one family member."
 msgstr "Lütfen en az bir aile üyesi ekleyin."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Lütfen devam etmeden önce doğrulama hatalarını düzeltin."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8540,10 +8508,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Önceki rapordan hiçbir kayıt dönmedi. Lütfen filtrelerinizi veya tarih aralığınızı ayarlayıp tekrar deneyin."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Lütfen bir menü adı girin (2-50 karakter)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Lütfen http:// veya https:// ile başlayan geçerli bir URL girin"
 
@@ -8552,28 +8516,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Tüm sistem dosyası imzaları beklenen değerlerle eşleşiyor."
 
 #: 
-msgid "Files with issues"
-msgstr "Sorunlu dosyalar"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Bütünlük kontrolü başarısız oldu"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Bütünlük kontrolü başarıyla geçti"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "İmza tanımlama dosyası mevcut ancak okunabilir değil. Dosya izinlerini kontrol edin."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "İmza tanımlama dosyası %s konumunda eksik. İmzaları yeniden oluşturmak için paketleme görevini çalıştırın veya resmi bir sürüm yayınlayın."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Bütünlük uç noktasına ulaşılamıyor. Web sunucusu hata günlüklerini kontrol edin."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10304,10 +10252,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Önceden tanımlanmış eyaletleri olmayan ülkeler için eyalet/il girin)"
 
 #: 
-msgid "Available"
-msgstr "Mevcut"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Temel URL yapılandırması geçersiz. Lütfen Config.php dosyanızı kontrol edin."
 
@@ -10392,10 +10336,6 @@ msgid "No locales configured"
 msgstr "Yapılandırılmış yerel ayar yok"
 
 #: 
-msgid "Not Available"
-msgstr "Mevcut Değil"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Bu dosyayı bir metin düzenleyicide açın:"
 
@@ -10428,10 +10368,6 @@ msgid "System Locale Support"
 msgstr "Sistem Yerel Ayar Desteği"
 
 #: 
-msgid "System Support"
-msgstr "Sistem Desteği"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL geçerli bir ana bilgisayar adı içermiyor"
 
@@ -10450,18 +10386,6 @@ msgstr "URL bir eğik çizgi (/) ile bitmelidir"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL http:// veya https:// ile başlamalıdır"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Sistem yerel ayarları tespit edilemiyor"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Mevcut yerel ayarlar belirlenemiyor"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Yerel ayar bilgileri yüklenemiyor"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10678,10 +10602,6 @@ msgstr "Kişi fotoğrafı yüklenemedi"
 #: 
 msgid "Remote backup failed"
 msgstr "Uzak yedekleme başarısız oldu"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV yedeklemeleri doğru yapılandırılmamış. Lütfen uç nokta, kullanıcı adı ve şifrenin ayarlandığından emin olun"
 
 #: 
 msgid "2FA Enabled"

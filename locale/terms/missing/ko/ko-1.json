@@ -1,0 +1,56 @@
+{
+  "%d month old": {
+    "one": "",
+    "other": ""
+  },
+  "%d year old": {
+    "one": "",
+    "other": ""
+  },
+  "%d event in %s": {
+    "one": "",
+    "other": ""
+  },
+  "person": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person added to the Cart.": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person successfully added to selected Family.": {
+    "one": "",
+    "other": ""
+  },
+  "%d Person successfully added to selected Group.": {
+    "one": "",
+    "other": ""
+  },
+  "%d person": {
+    "one": "",
+    "other": ""
+  },
+  "%d hour": {
+    "one": "",
+    "other": ""
+  },
+  "Calendar not found": "",
+  "Continue to Dashboard": "",
+  "Current Password": "",
+  "Deposit not found": "",
+  "Group not found": "",
+  "Invalid JSON provided for configuration": "",
+  "Password Change Required": "",
+  "Password Change Successful": "",
+  "Password Changed": "",
+  "Passwords must be at least": "",
+  "Property not found": "",
+  "Set New Password": "",
+  "The password for %s has been updated.": "",
+  "Unable to re-encode JSON for configuration": "",
+  "User not found": "",
+  "You must set a new password before continuing.": "",
+  "Your password has been updated successfully.": "",
+  "selected family has no coordinates": ""
+}

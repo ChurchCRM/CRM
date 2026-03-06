@@ -6838,14 +6838,6 @@ msgid "View User"
 msgstr "Vis bruker"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Ugyldig forespørsel: Mangler kalender-ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Ikke funnet: Ukjent kalender-ID"
-
-#: 
 msgid "not found or user without an email"
 msgstr "ikke funnet eller bruker uten e-post"
 
@@ -7012,10 +7004,6 @@ msgstr "ugyldig hendelsestype-ID"
 #: 
 msgid "invalid calendar pinning"
 msgstr "ugyldig kalenderfeste"
-
-#: 
-msgid "invalid group id"
-msgstr "ugyldig gruppe-ID"
 
 #: 
 msgid "invalid status value"
@@ -7186,10 +7174,6 @@ msgstr "Feil ved dekoding av signaturdefinisjonsfil"
 #: 
 msgid "Age Histogram"
 msgstr "Aldershistogram"
-
-#: 
-msgid "Missing event id"
-msgstr "Hendelses-ID mangler"
 
 #: 
 msgid "Event not found"
@@ -7554,10 +7538,6 @@ msgstr "Hjelp til med å oversette dette prosjektet"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr " har en type-uoverensstemmelse"
 
 #: 
 msgid "Loading"
@@ -8160,14 +8140,6 @@ msgid "City is required"
 msgstr "Sted er obligatorisk"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Port for databaseserver er obligatorisk (f.eks. 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Brukernavn for database er obligatorisk"
-
-#: 
 msgid "Email Address"
 msgstr "E-postadresse"
 
@@ -8270,10 +8242,6 @@ msgstr "Telefonnummer"
 #: 
 msgid "Please add at least one family member."
 msgstr "Vennligst legg til minst ett familiemedlem."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Vennligst rett valideringsfeilene før du fortsetter."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8636,10 +8604,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Ingen poster ble returnert fra den forrige rapporten. Vennligst juster filtrene eller datointervallet og prøv igjen."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Vennligst skriv inn et menynavn (2-50 tegn)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Vennligst skriv inn en gyldig URL som starter med http:// eller https://"
 
@@ -8648,28 +8612,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Alle filsignaturer i systemet samsvarer med forventede verdier."
 
 #: 
-msgid "Files with issues"
-msgstr "Filer med problemer"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Integritetssjekk mislyktes"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Integritetssjekk bestått"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Signaturdefinisjonsfilen eksisterer, men er ikke lesbar. Sjekk filrettigheter."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Signaturdefinisjonsfilen mangler på %s. Kjør pakkeverktøyet eller bruk en offisiell utgivelse for å regenerere signaturer."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Kunne ikke kontakte endepunkt for integritetssjekk. Sjekk feillogger for webserver."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10400,10 +10348,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Skriv inn fylke/provins for land uten forhåndsdefinerte stater)"
 
 #: 
-msgid "Available"
-msgstr "Tilgjengelig"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurasjon av base-URL er ugyldig. Vennligst sjekk Config.php-filen din."
 
@@ -10488,10 +10432,6 @@ msgid "No locales configured"
 msgstr "Ingen lokaler konfigurert"
 
 #: 
-msgid "Not Available"
-msgstr "Ikke tilgjengelig"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Åpne denne filen i et tekstredigeringsprogram:"
 
@@ -10524,10 +10464,6 @@ msgid "System Locale Support"
 msgstr "Støtte for systemlokale"
 
 #: 
-msgid "System Support"
-msgstr "Systemstøtte"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL-en inneholder ikke et gyldig vertsnavn"
 
@@ -10546,18 +10482,6 @@ msgstr "URL-en må ende med en skråstrek (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL-en må starte med http:// eller https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Kan ikke oppdage systemlokaler"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Kan ikke bestemme tilgjengelige lokaler"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Kan ikke laste lokaleinformasjon"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10774,10 +10698,6 @@ msgstr "Kunne ikke laste opp personbilde"
 #: 
 msgid "Remote backup failed"
 msgstr "Ekstern sikkerhetskopiering mislyktes"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV-sikkerhetskopier er ikke riktig konfigurert. Vennligst sjekk at endepunkt, brukernavn og passord er satt"
 
 #: 
 msgid "2FA Enabled"

@@ -6752,14 +6752,6 @@ msgid "View User"
 msgstr "Visualizza utente"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Richiesta non valida: ID calendario mancante"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Non trovato: ID calendario sconosciuto"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "non trovato o utente senza e-mail"
@@ -6928,10 +6920,6 @@ msgstr "ID del tipo di evento non valido"
 #: 
 msgid "invalid calendar pinning"
 msgstr "Appunto del calendario non valido"
-
-#: 
-msgid "invalid group id"
-msgstr "ID di gruppo non valido"
 
 #: 
 msgid "invalid status value"
@@ -7105,10 +7093,6 @@ msgstr "Errore durante la decodifica del file di definizione della firma"
 #: 
 msgid "Age Histogram"
 msgstr "Istogramma di età"
-
-#: 
-msgid "Missing event id"
-msgstr "ID evento mancante"
 
 #: 
 msgid "Event not found"
@@ -7480,10 +7464,6 @@ msgstr "Aiutaci a tradurre questo progetto"
 #: 
 msgid "Afrikaans"
 msgstr "Africani"
-
-#: 
-msgid " has a type mismatch"
-msgstr " ha una mancata corrispondenza di tipo"
 
 #: 
 msgid "Loading"
@@ -8086,14 +8066,6 @@ msgid "City is required"
 msgstr "La città è obbligatoria"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "La porta del server del database è obbligatoria (ad es. 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Il nome utente del database è obbligatorio"
-
-#: 
 msgid "Email Address"
 msgstr "Indirizzo Email"
 
@@ -8196,10 +8168,6 @@ msgstr "Numero di telefono"
 #: 
 msgid "Please add at least one family member."
 msgstr "Aggiungi almeno un membro della famiglia."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Correggi gli errori di convalida prima di continuare."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8562,10 +8530,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Nessun record è stato restituito dal rapporto precedente. Modifica i tuoi filtri o l'intervallo di date e riprova."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Inserisci un nome di menu (2-50 caratteri)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Inserisci un URL valido che inizia con http:// o https://"
 
@@ -8574,28 +8538,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Tutte le firme dei file di sistema corrispondono ai valori previsti."
 
 #: 
-msgid "Files with issues"
-msgstr "File con problemi"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Verifica di integrità non riuscita"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Verifica di integrità superata"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Il file di definizione della firma esiste ma non è leggibile. Controlla i permessi del file."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Il file di definizione della firma è mancante in %s. Esegui l'attività di packaging o distribuisci una versione ufficiale per rigenerare le firme."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Impossibile contattare l'endpoint di integrità. Controlla i log degli errori del server web."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10326,10 +10274,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Inserisci stato/provincia per paesi senza stati predefiniti)"
 
 #: 
-msgid "Available"
-msgstr "Disponibile"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "La configurazione dell'URL di base non è valida. Controlla il tuo file Config.php."
 
@@ -10414,10 +10358,6 @@ msgid "No locales configured"
 msgstr "Nessuna locale configurata"
 
 #: 
-msgid "Not Available"
-msgstr "Non Disponibile"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Apri questo file in un editor di testo:"
 
@@ -10450,10 +10390,6 @@ msgid "System Locale Support"
 msgstr "Supporto Locale di Sistema"
 
 #: 
-msgid "System Support"
-msgstr "Supporto di Sistema"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "L'URL non contiene un nome host valido"
 
@@ -10472,18 +10408,6 @@ msgstr "L'URL deve terminare con una barra finale (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "L'URL deve iniziare con http:// o https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Impossibile rilevare le locale di sistema"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Impossibile determinare le locale disponibili"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Impossibile caricare le informazioni locale"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10700,10 +10624,6 @@ msgstr "Impossibile caricare la foto della persona"
 #: 
 msgid "Remote backup failed"
 msgstr "Backup remoto non riuscito"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "I backup WebDAV non sono configurati correttamente. Assicurati che endpoint, nome utente e password siano impostati"
 
 #: 
 msgid "2FA Enabled"
