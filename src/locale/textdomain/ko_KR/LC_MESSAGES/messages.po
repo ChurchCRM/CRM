@@ -6724,14 +6724,6 @@ msgid "View User"
 msgstr "사용자 보기"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "잘못된 요청: 캘린더 ID가 없습니다"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "찾을 수 없음: 알 수 없는 캘린더 ID"
-
-#: 
 msgid "not found or user without an email"
 msgstr "존재하지 않거나 이메일이 없는 사용자"
 
@@ -6898,10 +6890,6 @@ msgstr "잘못된 행사 유형 ID"
 #: 
 msgid "invalid calendar pinning"
 msgstr "잘못된 캘린더 고정"
-
-#: 
-msgid "invalid group id"
-msgstr "잘못된 그룹 ID"
 
 #: 
 msgid "invalid status value"
@@ -7074,10 +7062,6 @@ msgstr "서명 정의 파일을 해석하는 중 오류"
 #: 
 msgid "Age Histogram"
 msgstr "연령 히스토그램"
-
-#: 
-msgid "Missing event id"
-msgstr "행사 ID가 없습니다"
 
 #: 
 msgid "Event not found"
@@ -7446,10 +7430,6 @@ msgstr "이 프로젝트 번역에 참여하기"
 #: 
 msgid "Afrikaans"
 msgstr "아프리칸스어"
-
-#: 
-msgid " has a type mismatch"
-msgstr "에 타입 불일치가 있습니다"
 
 #: 
 msgid "Loading"
@@ -8052,14 +8032,6 @@ msgid "City is required"
 msgstr "도시는 필수입니다"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "데이터베이스 서버 포트는 필수입니다 (예: 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "데이터베이스 사용자명은 필수입니다"
-
-#: 
 msgid "Email Address"
 msgstr "이메일 주소"
 
@@ -8162,10 +8134,6 @@ msgstr "전화번호"
 #: 
 msgid "Please add at least one family member."
 msgstr "최소 한 명의 가족 구성원을 추가해 주세요."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "계속하기 전에 유효성 검사 오류를 수정해 주세요."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8528,10 +8496,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "이전 보고서에서 반환된 레코드가 없습니다. 필터 또는 날짜 범위를 조정한 후 다시 시도해 주세요."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "메뉴 이름을 입력해 주세요 (2-50자)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "http:// 또는 https://로 시작하는 유효한 URL을 입력해 주세요"
 
@@ -8540,28 +8504,12 @@ msgid "All system file signatures match the expected values."
 msgstr "모든 시스템 파일 서명이 예상 값과 일치합니다."
 
 #: 
-msgid "Files with issues"
-msgstr "문제가 있는 파일"
-
-#: 
-msgid "Integrity check failed"
-msgstr "무결성 검사 실패"
-
-#: 
-msgid "Integrity check passed"
-msgstr "무결성 검사 통과"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "서명 정의 파일이 존재하지만 읽을 수 없습니다. 파일 권한을 확인하세요."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "%s에 서명 정의 파일이 없습니다. 패키징 작업을 실행하거나 공식 릴리스를 배포하여 서명을 재생성하세요."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "무결성 엔드포인트에 연결할 수 없습니다. 웹 서버 오류 로그를 확인하세요."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10291,10 +10239,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(미리 정의된 주가 없는 국가의 경우 주/도를 입력하세요)"
 
 #: 
-msgid "Available"
-msgstr "사용 가능"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "기본 URL 구성이 잘못되었습니다. Config.php 파일을 확인하세요."
 
@@ -10379,10 +10323,6 @@ msgid "No locales configured"
 msgstr "구성된 로케일이 없습니다"
 
 #: 
-msgid "Not Available"
-msgstr "사용할 수 없음"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "텍스트 편집기에서 이 파일을 여세요:"
 
@@ -10416,10 +10356,6 @@ msgid "System Locale Support"
 msgstr "시스템 로케일 지원"
 
 #: 
-msgid "System Support"
-msgstr "시스템 지원"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL에 유효한 호스트명이 없습니다"
 
@@ -10438,18 +10374,6 @@ msgstr "URL은 끝에 슬래시 (/)로 끝나야 합니다"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL은 http:// 또는 https://로 시작해야 합니다"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "시스템 로케일을 감지할 수 없습니다"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "사용 가능한 로케일을 확인할 수 없습니다"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "로케일 정보를 불러올 수 없습니다"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10666,10 +10590,6 @@ msgstr "사람 사진 업로드 실패"
 #: 
 msgid "Remote backup failed"
 msgstr "원격 백업 실패"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV 백업이 올바르게 구성되지 않았습니다. 엔드포인트, 사용자명 및 비밀번호가 설정되어 있는지 확인하세요"
 
 #: 
 msgid "2FA Enabled"

@@ -6725,14 +6725,6 @@ msgid "View User"
 msgstr "Tazama Mtumiaji"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Ombi batili: Kitambulisho cha kalenda kinakosekana"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Haijapatikana: Kitambulisho cha kalenda kisichojulikana"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "hakuna kupatikana au mtumiaji bila barua pepe"
@@ -6900,10 +6892,6 @@ msgstr "kitambulisho cha aina ya tukio batili"
 #: 
 msgid "invalid calendar pinning"
 msgstr "kubandika kalenda batili"
-
-#: 
-msgid "invalid group id"
-msgstr "kitambulisho batili cha kikundi"
 
 #: 
 msgid "invalid status value"
@@ -7076,10 +7064,6 @@ msgstr "Hitilafu katika kusimbua faili ya ufafanuzi wa sahihi"
 #: 
 msgid "Age Histogram"
 msgstr "Histogram ya umri"
-
-#: 
-msgid "Missing event id"
-msgstr "Kitambulisho cha tukio hakipo"
 
 #: 
 msgid "Event not found"
@@ -7450,10 +7434,6 @@ msgstr "Saidia kutafsiri mradi huu"
 #: 
 msgid "Afrikaans"
 msgstr "Kiafrikana"
-
-#: 
-msgid " has a type mismatch"
-msgstr " ina aina ya kutolingana"
 
 #: 
 msgid "Loading"
@@ -8056,14 +8036,6 @@ msgid "City is required"
 msgstr "Mji/Jiji linahitajika"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Mlango (port) wa seva ya hifadhidata unahitajika"
-
-#: 
-msgid "Database username is required"
-msgstr "Jina la mtumiaji wa hifadhidata linahitajika"
-
-#: 
 msgid "Email Address"
 msgstr "Barua Pepe"
 
@@ -8166,10 +8138,6 @@ msgstr "Namba ya simu"
 #: 
 msgid "Please add at least one family member."
 msgstr "Tafadhali ongeza angalau mwanachama mmoja wa familia."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Tafadhali rekebisha makosa ya uhakiki kabla ya kuendelea."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8532,10 +8500,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Hakuna kumbukumbu zilizopatikana kutoka kwa ripoti iliyopita. Tafadhali rekebisha vichujio au muda wa tarehe na ujaribu tena."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Tafadhali ingiza jina la orodha (herufi 2-50)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Tafadhali ingiza URL sahihi inayoanza na http:// au https://"
 
@@ -8544,28 +8508,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Sahihi zote za faili za mfumo zinalingana na thamani zinazotarajiwa."
 
 #: 
-msgid "Files with issues"
-msgstr "Faili zenye matatizo"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Ukaguzi wa uadilifu umeshindikana"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Ukaguzi wa uadilifu umefaulu"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Faili la ufafanuzi wa sahihi lipo lakini haliwezi kusomwa. Kagua ruhusa za faili."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Faili la ufafanuzi wa sahihi linakosekana katika %s."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Imeshindikana kuwasiliana na upande wa uadilifu. Kagua kumbukumbu za seva."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10296,10 +10244,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Ingiza mkoa/jimbo kwa nchi zisizo na mikoa iliyofafanuliwa)"
 
 #: 
-msgid "Available"
-msgstr "Inapatikana"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Usanidi wa URL ya Msingi si sahihi. Tafadhali kagua faili yako ya Config.php."
 
@@ -10384,10 +10328,6 @@ msgid "No locales configured"
 msgstr "Hakuna lugha zilizosanidiwa"
 
 #: 
-msgid "Not Available"
-msgstr "Haipatikani"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Fungua faili hili kwenye kihariri cha maandishi:"
 
@@ -10420,10 +10360,6 @@ msgid "System Locale Support"
 msgstr "Usaidizi wa Lugha wa Mfumo"
 
 #: 
-msgid "System Support"
-msgstr "Usaidizi wa Mfumo"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL haina jina la seva sahihi"
 
@@ -10442,18 +10378,6 @@ msgstr "URL lazima iishe na mkwaju (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL lazima ianze na http:// au https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Imeshindikana kutambua lugha za mfumo"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Imeshindikana kuamua lugha zinazopatikana"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Imeshindikana kupakia taarifa za lugha"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10670,10 +10594,6 @@ msgstr "Imeshindikana kupakia picha ya mtu"
 #: 
 msgid "Remote backup failed"
 msgstr "Nakala ya mbali imeshindikana"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Nakala za WebDAV hazijasanidiwa kwa usahihi."
 
 #: 
 msgid "2FA Enabled"

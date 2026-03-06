@@ -6855,14 +6855,6 @@ msgid "View User"
 msgstr "Visa användare"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Ogiltig begäran: saknas kalender-ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Inte hittat: Okänt kalender-id"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "ingen hittad eller användare utan e-post"
@@ -7031,10 +7023,6 @@ msgstr "ogiltig händelsetyp-id"
 #: 
 msgid "invalid calendar pinning"
 msgstr "ogiltig fästning av kalendern"
-
-#: 
-msgid "invalid group id"
-msgstr "ogiltig grupp-id"
 
 #: 
 msgid "invalid status value"
@@ -7208,10 +7196,6 @@ msgstr "Fel vid avkodning av definitionsfil för signatur"
 #: 
 msgid "Age Histogram"
 msgstr "Åldershistogram"
-
-#: 
-msgid "Missing event id"
-msgstr "Händelse-id"
 
 #: 
 msgid "Event not found"
@@ -7583,10 +7567,6 @@ msgstr "Hjälpa till att översätta detta projekt"
 #: 
 msgid "Afrikaans"
 msgstr "afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr " har en typavvikelse"
 
 #: 
 msgid "Loading"
@@ -8189,14 +8169,6 @@ msgid "City is required"
 msgstr "Stad krävs"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Databasserverport krävs (t.ex. 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Databasanvändarnamn krävs"
-
-#: 
 msgid "Email Address"
 msgstr "E-postadress"
 
@@ -8299,10 +8271,6 @@ msgstr "Telefonnummer"
 #: 
 msgid "Please add at least one family member."
 msgstr "Lägg till minst en familjemedlem."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Korrigera valideringsfelen innan du fortsätter."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8665,10 +8633,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Inga poster returnerades från den föregående rapporten. Justera dina filter eller datumintervall och försök igen."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Ange ett menynamn (2-50 tecken)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Ange en giltig URL som börjar med http:// eller https://"
 
@@ -8677,28 +8641,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Alla systemfilssignaturer matchar de förväntade värdena."
 
 #: 
-msgid "Files with issues"
-msgstr "Filer med problem"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Integritetskontroll misslyckades"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Integritetskontroll godkänd"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Signaturdefinitionsfilen finns men är inte läsbar. Kontrollera filbehörigheter."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Signaturdefinitionsfilen saknas vid %s. Kör paketeringsuppgiften eller driftsätt en officiell utgåva för att återskapa signaturer."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Kunde inte kontakta integritetsslutpunkten. Kontrollera webbserverns felloggar."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10429,10 +10377,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Ange region/provins för länder utan fördefinierade stater)"
 
 #: 
-msgid "Available"
-msgstr "Tillgänglig"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Bas-URL-konfigurationen är ogiltig. Kontrollera din Config.php-fil."
 
@@ -10517,10 +10461,6 @@ msgid "No locales configured"
 msgstr "Inga språk konfigurerade"
 
 #: 
-msgid "Not Available"
-msgstr "Inte tillgänglig"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Öppna denna fil i en textredigerare:"
 
@@ -10553,10 +10493,6 @@ msgid "System Locale Support"
 msgstr "Systemspråkstöd"
 
 #: 
-msgid "System Support"
-msgstr "Systemstöd"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL:en innehåller inte ett giltigt värdnamn"
 
@@ -10575,18 +10511,6 @@ msgstr "URL:en måste sluta med ett avslutande snedstreck (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL:en måste börja med http:// eller https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Kunde inte detektera systemspråk"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Kunde inte fastställa tillgängliga språk"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Kunde inte ladda språkinformation"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10803,10 +10727,6 @@ msgstr "Misslyckades med att ladda upp personfoto"
 #: 
 msgid "Remote backup failed"
 msgstr "Fjärrsäkerhetskopiering misslyckades"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV-säkerhetskopieringar är inte korrekt konfigurerade. Se till att slutpunkt, användarnamn och lösenord är inställda"
 
 #: 
 msgid "2FA Enabled"

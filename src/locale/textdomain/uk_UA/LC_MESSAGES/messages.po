@@ -6731,14 +6731,6 @@ msgid "View User"
 msgstr "Переглянути користувача"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Недійсний запит: відсутній ідентифікатор календаря"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Не знайдено: невідомий ідентифікатор календаря"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "жодного знайденого або користувача без електронної пошти"
@@ -6907,10 +6899,6 @@ msgstr "недійсний ідентифікатор типу події"
 #: 
 msgid "invalid calendar pinning"
 msgstr "недійсне закріплення календаря"
-
-#: 
-msgid "invalid group id"
-msgstr "недійсний ідентифікатор групи"
 
 #: 
 msgid "invalid status value"
@@ -7084,10 +7072,6 @@ msgstr "Помилка декодування файлу визначення п
 #: 
 msgid "Age Histogram"
 msgstr "Вікова гістограма"
-
-#: 
-msgid "Missing event id"
-msgstr "Відсутній ідентифікатор події"
 
 #: 
 msgid "Event not found"
@@ -7447,10 +7431,6 @@ msgstr "Допоможіть перекласти цей проект"
 #: 
 msgid "Afrikaans"
 msgstr "Африкаанс"
-
-#: 
-msgid " has a type mismatch"
-msgstr " має невідповідність типу"
 
 #: 
 msgid "Loading"
@@ -8053,14 +8033,6 @@ msgid "City is required"
 msgstr "Місто обов'язкове"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Порт сервера бази даних обов'язковий (наприклад, 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Ім'я користувача бази даних обов'язкове"
-
-#: 
 msgid "Email Address"
 msgstr "Адреса електронної пошти"
 
@@ -8163,10 +8135,6 @@ msgstr "Номер телефону"
 #: 
 msgid "Please add at least one family member."
 msgstr "Будь ласка, додайте принаймні одного члена сім'ї."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Будь ласка, виправте помилки валідації перед продовженням."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8529,10 +8497,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Попередній звіт не повернув жодних записів. Будь ласка, налаштуйте фільтри або діапазон дат і спробуйте ще раз."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Будь ласка, введіть назву меню (2-50 символів)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Будь ласка, введіть дійсну URL-адресу, що починається з http:// або https://"
 
@@ -8541,28 +8505,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Усі підписи системних файлів відповідають очікуваним значенням."
 
 #: 
-msgid "Files with issues"
-msgstr "Файли з проблемами"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Перевірка цілісності не вдалася"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Перевірка цілісності пройдена"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Файл визначення підписів існує, але недоступний для читання. Перевірте права доступу до файлу."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Файл визначення підписів відсутній за шляхом %s. Запустіть завдання пакування або розгорніть офіційний реліз, щоб повторно створити підписи."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Не вдалося зв'язатися з кінцевою точкою цілісності. Перевірте журнали помилок веб-сервера."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10281,10 +10229,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Введіть область/регіон для країн без попередньо визначених штатів)"
 
 #: 
-msgid "Available"
-msgstr "Доступно"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Конфігурація базової URL-адреси недійсна. Перевірте Config.php."
 
@@ -10369,10 +10313,6 @@ msgid "No locales configured"
 msgstr "Мови не налаштовані"
 
 #: 
-msgid "Not Available"
-msgstr "Недоступно"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Відкрийте цей файл у текстовому редакторі:"
 
@@ -10405,10 +10345,6 @@ msgid "System Locale Support"
 msgstr "Підтримка системних локалей"
 
 #: 
-msgid "System Support"
-msgstr "Системна підтримка"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL не містить дійсного хостнейму"
 
@@ -10427,18 +10363,6 @@ msgstr "URL має закінчуватися косою рискою (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL має починатися з http:// або https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Не вдалося виявити системні локалі"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Не вдалося визначити доступні мови"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Не вдалося завантажити інформацію про мову"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10655,10 +10579,6 @@ msgstr "Не вдалося завантажити фото особи"
 #: 
 msgid "Remote backup failed"
 msgstr "Віддалене резервне копіювання не вдалося"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Backups WebDAV не налаштовані."
 
 #: 
 msgid "2FA Enabled"

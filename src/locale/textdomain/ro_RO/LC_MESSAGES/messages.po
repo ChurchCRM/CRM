@@ -6819,14 +6819,6 @@ msgid "View User"
 msgstr "Vizualizare utilizator"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Solicitare invalidă: Lipsește id calendar"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Negăsit: Id calendar necunoscut"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "negăsit sau utilizator fără email"
@@ -6995,10 +6987,6 @@ msgstr "ID-ul tipului de eveniment este invalid"
 #: 
 msgid "invalid calendar pinning"
 msgstr "Pinning-ul calendarului este invalid"
-
-#: 
-msgid "invalid group id"
-msgstr "ID-ul grupului este invalid"
 
 #: 
 msgid "invalid status value"
@@ -7172,10 +7160,6 @@ msgstr "Eroare la decodarea fișierului de definire a semnăturii"
 #: 
 msgid "Age Histogram"
 msgstr "Histograma vârstei"
-
-#: 
-msgid "Missing event id"
-msgstr "Id eveniment lipsa"
 
 #: 
 msgid "Event not found"
@@ -7545,10 +7529,6 @@ msgstr "Ajutați la traducerea acestui proiect"
 #: 
 msgid "Afrikaans"
 msgstr "Africană"
-
-#: 
-msgid " has a type mismatch"
-msgstr "există o neconcordanță de tip"
 
 #: 
 msgid "Loading"
@@ -8151,14 +8131,6 @@ msgid "City is required"
 msgstr "Orașul este obligatoriu"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Portul serverului bazei de date este obligatoriu (ex: 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Numele de utilizator al bazei de date este obligatoriu"
-
-#: 
 msgid "Email Address"
 msgstr "Adresă de e-mail"
 
@@ -8261,10 +8233,6 @@ msgstr "Număr de telefon"
 #: 
 msgid "Please add at least one family member."
 msgstr "Vă rugăm să adăugați cel puțin un membru de familie."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Vă rugăm să corectați erorile de validare înainte de a continua."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8627,10 +8595,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Nu s-au returnat înregistrări din raportul anterior. Vă rugăm să ajustați filtrele sau intervalul de date și să încercați din nou."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Vă rugăm să introduceți un nume de meniu (2-50 caractere)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Vă rugăm să introduceți un URL valid care începe cu http:// sau https://"
 
@@ -8639,28 +8603,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Toate semnăturile fișierelor de sistem corespund valorilor așteptate."
 
 #: 
-msgid "Files with issues"
-msgstr "Fișiere cu probleme"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Verificarea integrității a eșuat"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Verificarea integrității a reușit"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Fișierul de definire a semnăturii există, dar nu poate fi citit. Verificați permisiunile fișierului."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Fișierul de definire a semnăturii lipsește la %s. Rulați sarcina de împachetare sau implementați o lansare oficială pentru a regenera semnăturile."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Nu s-a putut contacta punctul final de integritate. Verificați jurnalele de erori ale serverului web."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10379,10 +10327,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Introduceți statul/provincia pentru țările fără state predefinite)"
 
 #: 
-msgid "Available"
-msgstr "Disponibil"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Configurația URL-ului de bază este nevalidă. Vă rugăm să verificați fișierul Config.php."
 
@@ -10467,10 +10411,6 @@ msgid "No locales configured"
 msgstr "Nicio localizare configurată"
 
 #: 
-msgid "Not Available"
-msgstr "Indisponibil"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Deschideți acest fișier într-un editor de text:"
 
@@ -10503,10 +10443,6 @@ msgid "System Locale Support"
 msgstr "Suport pentru localizarea sistemului"
 
 #: 
-msgid "System Support"
-msgstr "Suport sistem"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL-ul nu conține un nume de gazdă valid"
 
@@ -10525,18 +10461,6 @@ msgstr "URL-ul trebuie să se termine cu un slash la sfârșit (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL-ul trebuie să înceapă cu http:// sau https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Nu s-au putut detecta localizările sistemului"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Nu s-au putut determina localizările disponibile"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Nu s-au putut încărca informațiile de localizare"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10753,10 +10677,6 @@ msgstr "Eșec la încărcarea fotografiei persoanei"
 #: 
 msgid "Remote backup failed"
 msgstr "Backup-ul la distanță a eșuat"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Backup-urile WebDAV nu sunt configurate corect. Vă rugăm să vă asigurați că endpoint-ul, numele de utilizator și parola sunt setate"
 
 #: 
 msgid "2FA Enabled"
