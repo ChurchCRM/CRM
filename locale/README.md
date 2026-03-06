@@ -24,6 +24,8 @@ locale/
 ### Locale Management
 - `npm run locale:audit` - Generate locale completeness report
 - `npm run locale:download` - Download latest translations from POEditor
+- `npm run locale:download:missing` - Download **only untranslated (missing) terms** per locale from POEditor (faster alternative to `locale:missing`)
+- `npm run locale:missing` - Compute missing terms locally by diffing downloaded files against the master list
 - `npm run locale:term-extract` - Extract all translatable terms for POEditor upload
 
 ### Manual Scripts (require parameters)
@@ -63,33 +65,47 @@ ChurchCRM uses [POEditor](https://poeditor.com) as the primary translation manag
 
 ### Missing Terms Workflow
 
-For identifying and prioritizing untranslated terms:
+There are two ways to generate missing-term batch files for the `/locale-translate` workflow:
 
-1. **Generate Missing Terms**: `npm run locale:missing`
-   - Compares POEditor terms against each locale's translated terms
-   - Creates JSON files in `locale/terms/missing/{locale}/`
-   - Files are batched (default 150 terms per file) for easy POEditor import
+#### Option A — Download directly from POEditor (recommended)
 
-2. **Upload to POEditor**: 
-   - Go to POEditor → Your Project → Import
-   - Select language and upload the JSON files from `locale/terms/missing/{locale}/`
-   - POEditor will highlight these as needing translation
+Uses POEditor's `filters=untranslated` export filter to download only the missing terms
+**without** first downloading all locale files. Faster and always in sync with POEditor.
 
-3. **Translation Priority**:
-   - Files are named `{locale}-1.json`, `{locale}-2.json`, etc.
-   - Lower numbers = higher priority (most common terms)
-   - Translators should complete batch 1 before moving to batch 2
+```bash
+npm run locale:download:missing              # All locales
+npm run locale:download:missing -- --locale fr  # French only
+```
 
-4. **Download Updates**: After translators complete work, run `npm run locale:download`
+Output: `locale/terms/missing/{poEditorCode}/{code}-N.json`
+
+#### Option B — Compute locally from downloaded files
+
+Requires `locale:download` to have been run first (all locale JSON files must be present).
+
+```bash
+npm run locale:download   # (only if locale files are not yet downloaded)
+npm run locale:missing
+```
+
+Output: same location — `locale/terms/missing/{poEditorCode}/{code}-N.json`
+
+Both options produce the same batched JSON format, ready for `/locale-translate` or manual
+POEditor upload. Batch files contain at most 150 terms each.
+
+**Translation Priority**:
+- Files are named `{locale}-1.json`, `{locale}-2.json`, etc.
+- Locales with fewer than 10 missing terms are skipped automatically.
 
 ### Quick Reference Commands
 
 ```bash
 # Full translation workflow
-npm run locale:build      # Extract all terms from source code
-npm run locale:download   # Download translations from POEditor
-npm run locale:audit      # Generate completeness report
-npm run locale:missing    # Generate missing term files for each locale
+npm run locale:build                         # Extract all terms from source code
+npm run locale:download                      # Download translations from POEditor
+npm run locale:audit                         # Generate completeness report
+npm run locale:download:missing              # Fetch untranslated terms from POEditor (fast)
+npm run locale:missing                       # Compute missing terms locally (requires locale:download first)
 ```
 
 ## 📝 Gettext System

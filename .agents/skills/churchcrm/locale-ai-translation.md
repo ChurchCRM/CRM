@@ -67,7 +67,8 @@ npm run locale:download
 
 | Script | What it does |
 |--------|-------------|
-| `npm run locale:missing` | Regenerate missing-terms batch files |
+| `npm run locale:missing` | Compute missing-terms batch files locally (requires prior `locale:download`) |
+| `npm run locale:download:missing` | **Fetch untranslated terms directly from POEditor** — faster, no prior download needed |
 | `npm run locale:translate:list` | List locales with untranslated terms |
 | `npm run locale:audit` | Show translation coverage report |
 | `npm run locale:download` | Pull approved translations from POEditor |
