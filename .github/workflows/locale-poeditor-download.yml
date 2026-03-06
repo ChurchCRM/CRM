@@ -31,6 +31,8 @@ concurrency:
 jobs:
   download:
     runs-on: ubuntu-latest
+    env:
+      POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
     steps:
     - name: Checkout repository
       uses: actions/checkout@v6
@@ -81,7 +83,6 @@ jobs:
         npm install grunt-cli --save-dev
 
     - name: Check POEditor Token
-      if: inputs.operation_mode != 'audit-only'
       run: |
         if [ -z "${{ secrets.POEDITOR_TOKEN }}" ]; then
           echo "❌ POEDITOR_TOKEN secret is not set"
@@ -92,8 +93,6 @@ jobs:
 
     - name: Download locales from POEditor
       if: inputs.operation_mode != 'audit-only'
-      env:
-        POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
       run: |
         set -e  # Exit on any command failure
         echo "🌍 Downloading locales from POEditor..."
