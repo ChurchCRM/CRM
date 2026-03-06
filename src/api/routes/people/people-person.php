@@ -90,8 +90,9 @@ use Slim\HttpCache\Cache;
  *     @OA\Response(response=403, description="DeleteRecords role required")
  * )
  */
+// Photo GET and Avatar GET endpoints - no PersonMiddleware needed
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
-    // Returns uploaded photo only - 404 if no uploaded photo
+    // Photo endpoints - returns uploaded photo only (404 if no photo exists)
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
         $personId = (int)$args['personId'];
         $photo = new Photo('Person', $personId);
@@ -103,24 +104,22 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderPhoto($response, $photo);
     })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
     
-    // Returns avatar info JSON for client-side rendering
-    // No cache middleware - needs to reflect immediate photo upload changes
+    // Avatar info endpoint - returns JSON with initials, gravatar info for client-side rendering
+    // Returns fallback data even for invalid person IDs (no PersonMiddleware needed)
     $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
         $avatarInfo = Photo::getAvatarInfo('Person', (int)$args['personId']);
         return SlimUtils::renderJSON($response, $avatarInfo);
     });
-    
-    // Upload photo
+});
+
+// Main person operations - POST/DELETE/role operations with PersonMiddleware
+$app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    // Upload photo endpoint
     $group->post('/photo', function (Request $request, Response $response, array $args): Response {
-        $personId = (int)$args['personId'];
+        $person = $request->getAttribute('person');
+        $input = $request->getParsedBody();
         
         try {
-            $person = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk($personId);
-            if (!$person) {
-                return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
-            }
-            
-            $input = $request->getParsedBody();
             $person->setImageFromBase64($input['imgBase64']);
             // Refresh photo status and return updated info
             $person->getPhoto()->refresh();
@@ -133,106 +132,20 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
     })->add(EditRecordsRoleAuthMiddleware::class);
     
-    // Delete photo
+    // Delete photo endpoint
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
-        try {
-            $personId = (int)$args['personId'];
-            $person = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk($personId);
-            
-            if (!$person) {
-                // Return success for 404 since DELETE is idempotent
-                return SlimUtils::renderJSON($response, ['success' => true]);
-            }
-            
-            $deleted = $person->deletePhoto();
-            return SlimUtils::renderJSON($response, ['success' => $deleted]);
-        } catch (\Throwable $e) {
-            // Log the error but return 200 since DELETE is idempotent
-            return SlimUtils::renderJSON($response, ['success' => true]);
-        }
+        $person = $request->getAttribute('person');
+        $deleted = $person->deletePhoto();
+        return SlimUtils::renderJSON($response, ['success' => $deleted]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
-});
-
-/**
- * @OA\Get(
- *     path="/person/{personId}",
- *     operationId="getPerson",
- *     summary="Get a person by ID",
- *     tags={"People"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
- *     @OA\Response(response=200, description="Person object (Propel JSON export)"),
- *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=404, description="Person not found")
- * )
- * @OA\Delete(
- *     path="/person/{personId}",
- *     operationId="deletePerson",
- *     summary="Delete a person",
- *     tags={"People"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
- *     @OA\Response(response=200, description="Person deleted",
- *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
- *     ),
- *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="DeleteRecords role required, or cannot delete yourself"),
- *     @OA\Response(response=404, description="Person not found")
- * )
- * @OA\Post(
- *     path="/person/{personId}/addToCart",
- *     operationId="addPersonToCart",
- *     summary="Add a person to the selection cart",
- *     tags={"People"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
- *     @OA\Response(response=200, description="Added to cart",
- *         @OA\JsonContent(@OA\Property(property="success", type="boolean", example=true))
- *     ),
- *     @OA\Response(response=401, description="Unauthorized")
- * )
- * @OA\Post(
- *     path="/person/{personId}/photo",
- *     operationId="uploadPersonPhoto",
- *     summary="Upload a person's photo (base64)",
- *     tags={"People"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
- *     @OA\RequestBody(required=true, @OA\JsonContent(
- *         required={"imgBase64"},
- *         @OA\Property(property="imgBase64", type="string", description="Base64-encoded image data", example="data:image/jpeg;base64,/9j/...")
- *     )),
- *     @OA\Response(response=200, description="Photo uploaded",
- *         @OA\JsonContent(
- *             @OA\Property(property="success", type="boolean", example=true),
- *             @OA\Property(property="hasPhoto", type="boolean", example=true)
- *         )
- *     ),
- *     @OA\Response(response=400, description="Upload failed"),
- *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="EditRecords role required")
- * )
- * @OA\Delete(
- *     path="/person/{personId}/photo",
- *     operationId="deletePersonPhoto",
- *     summary="Delete a person's uploaded photo",
- *     tags={"People"},
- *     security={{"ApiKeyAuth":{}}},
- *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
- *     @OA\Response(response=200, description="Photo deleted",
- *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
- *     ),
- *     @OA\Response(response=401, description="Unauthorized"),
- *     @OA\Response(response=403, description="DeleteRecords role required")
- * )
- */
-$app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    
+    // Get person by ID
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
-
         return SlimUtils::renderStringJSON($response, $person->exportTo('JSON'));
     });
 
+    // Delete person
     $group->delete('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         if (AuthenticationManager::getCurrentUser()->getId() === (int) $person->getId()) {
@@ -243,13 +156,15 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);
 
+    // Set person role
     $group->post('/role/{roleId:[0-9]+}', 'setPersonRoleAPI')->add(new EditRecordsRoleAuthMiddleware());
 
+    // Add person to cart
     $group->post('/addToCart', function (Request $request, Response $response, array $args): Response {
         Cart::addPerson($args['personId']);
         return SlimUtils::renderSuccessJSON($response);
     });
-})->add(PersonMiddleware::class);
+})->add(new PersonMiddleware());
 
 /**
  * @OA\Post(
