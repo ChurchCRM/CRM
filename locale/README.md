@@ -24,8 +24,7 @@ locale/
 ### Locale Management
 - `npm run locale:audit` - Generate locale completeness report
 - `npm run locale:download` - Download latest translations from POEditor
-- `npm run locale:download:missing` - Download **only untranslated (missing) terms** per locale from POEditor (faster alternative to `locale:missing`)
-- `npm run locale:missing` - Compute missing terms locally by diffing downloaded files against the master list
+- `npm run locale:download:missing` - Download **only untranslated (missing) terms** per locale from POEditor
 - `npm run locale:term-extract` - Extract all translatable terms for POEditor upload
 
 ### Manual Scripts (require parameters)
@@ -65,12 +64,8 @@ ChurchCRM uses [POEditor](https://poeditor.com) as the primary translation manag
 
 ### Missing Terms Workflow
 
-There are two ways to generate missing-term batch files for the `/locale-translate` workflow:
-
-#### Option A — Download directly from POEditor (recommended)
-
 Uses POEditor's `filters=untranslated` export filter to download only the missing terms
-**without** first downloading all locale files. Faster and always in sync with POEditor.
+directly from the API — no prior `locale:download` needed.
 
 ```bash
 npm run locale:download:missing              # All locales
@@ -79,23 +74,8 @@ npm run locale:download:missing -- --locale fr  # French only
 
 Output: `locale/terms/missing/{poEditorCode}/{code}-N.json`
 
-#### Option B — Compute locally from downloaded files
-
-Requires `locale:download` to have been run first (all locale JSON files must be present).
-
-```bash
-npm run locale:download   # (only if locale files are not yet downloaded)
-npm run locale:missing
-```
-
-Output: same location — `locale/terms/missing/{poEditorCode}/{code}-N.json`
-
-Both options produce the same batched JSON format, ready for `/locale-translate` or manual
-POEditor upload. Batch files contain at most 150 terms each.
-
-**Translation Priority**:
-- Files are named `{locale}-1.json`, `{locale}-2.json`, etc.
-- Locales with fewer than 10 missing terms are skipped automatically.
+Batch files contain at most 150 terms each. Locales with fewer than 10 missing terms are
+skipped automatically. Files are ready for `/locale-translate` or direct upload to POEditor.
 
 ### Quick Reference Commands
 
@@ -104,8 +84,7 @@ POEditor upload. Batch files contain at most 150 terms each.
 npm run locale:build                         # Extract all terms from source code
 npm run locale:download                      # Download translations from POEditor
 npm run locale:audit                         # Generate completeness report
-npm run locale:download:missing              # Fetch untranslated terms from POEditor (fast)
-npm run locale:missing                       # Compute missing terms locally (requires locale:download first)
+npm run locale:download:missing              # Fetch untranslated terms from POEditor
 ```
 
 ## 📝 Gettext System

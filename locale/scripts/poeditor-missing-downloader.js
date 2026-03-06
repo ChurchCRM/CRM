@@ -6,14 +6,8 @@
  * Downloads untranslated (missing) terms per locale directly from the POEditor API
  * using the `filters=untranslated` export filter.
  *
- * This is faster than the local-diff approach used by locale-build-missing.js because:
- *   - No need to first download all translated locale files
- *   - Missing terms are computed server-side by POEditor
- *   - Works directly against the POEditor source of truth
- *
- * Output files are written to locale/terms/missing/{poEditorCode}/ in the same
- * batched JSON format as locale-build-missing.js, so they are immediately ready for
- * the /locale-translate workflow.
+ * Output files are written to locale/terms/missing/{poEditorCode}/ as batched JSON
+ * files (150 terms per file), ready for the /locale-translate workflow.
  *
  * Usage:
  *   node locale/scripts/poeditor-missing-downloader.js              # All locales
