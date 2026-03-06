@@ -2758,7 +2758,8 @@ paths:
     post:
       tags:
         - People
-      summary: "Upload a person's photo (base64)"
+      summary: "Upload a person's photo (base64 encoded)"
+      description: 'Upload a base64-encoded image file for a person. Supported formats: PNG, JPEG, JPG, GIF, WEBP. Maximum size: 10MB.'
       operationId: uploadPersonPhoto
       parameters:
         -
@@ -2769,6 +2770,7 @@ paths:
             type: integer
             example: 42
       requestBody:
+        description: 'Base64 encoded image data'
         required: true
         content:
           application/json:
@@ -2777,13 +2779,13 @@ paths:
                 - imgBase64
               properties:
                 imgBase64:
-                  description: 'Base64-encoded image data'
+                  description: 'Base64-encoded image data with data URI prefix'
                   type: string
-                  example: 'data:image/jpeg;base64,/9j/...'
+                  example: 'data:image/jpeg;base64,/9j/4AAQSkZJRg...'
               type: object
       responses:
         '200':
-          description: 'Photo uploaded'
+          description: 'Photo uploaded successfully'
           content:
             application/json:
               schema:
@@ -2792,11 +2794,13 @@ paths:
                   hasPhoto: { type: boolean, example: true }
                 type: object
         '400':
-          description: 'Upload failed'
+          description: 'Invalid image data or upload failed'
         '401':
           description: Unauthorized
         '403':
           description: 'EditRecords role required'
+        '404':
+          description: 'Person not found'
       security:
         -
           ApiKeyAuth: []
@@ -2804,6 +2808,7 @@ paths:
       tags:
         - People
       summary: "Delete a person's uploaded photo"
+      description: 'Remove the uploaded photo for a person. This operation is idempotent and will return success even if no photo exists.'
       operationId: deletePersonPhoto
       parameters:
         -
@@ -2815,12 +2820,12 @@ paths:
             example: 42
       responses:
         '200':
-          description: 'Photo deleted'
+          description: 'Photo deleted successfully'
           content:
             application/json:
               schema:
                 properties:
-                  success: { type: boolean }
+                  success: { type: boolean, example: true }
                 type: object
         '401':
           description: Unauthorized
@@ -2864,7 +2869,8 @@ paths:
     get:
       tags:
         - People
-      summary: 'Get a person by ID'
+      summary: "Get a person's full record by ID"
+      description: 'Returns the complete person object including family info, addresses, and other related details.'
       operationId: getPerson
       parameters:
         -
@@ -2876,7 +2882,15 @@ paths:
             example: 42
       responses:
         '200':
-          description: 'Person object (Propel JSON export)'
+          description: 'Person object'
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                id: 42
+                firstName: John
+                lastName: Doe
         '401':
           description: Unauthorized
         '404':
@@ -2887,7 +2901,8 @@ paths:
     delete:
       tags:
         - People
-      summary: 'Delete a person'
+      summary: 'Delete a person record'
+      description: 'Permanently delete a person and all their associated records. Current user cannot delete their own account.'
       operationId: deletePerson
       parameters:
         -
@@ -2899,7 +2914,7 @@ paths:
             example: 42
       responses:
         '200':
-          description: 'Person deleted'
+          description: 'Person deleted successfully'
           content:
             application/json:
               schema:
@@ -2909,7 +2924,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'DeleteRecords role required, or cannot delete yourself'
+          description: 'Cannot delete yourself or DeleteRecords role required'
         '404':
           description: 'Person not found'
       security:
@@ -2919,7 +2934,8 @@ paths:
     post:
       tags:
         - People
-      summary: 'Add a person to the selection cart'
+      summary: 'Add a person to the cart'
+      description: "Add a person to the current user's cart for batch operations."
       operationId: addPersonToCart
       parameters:
         -
@@ -2931,7 +2947,7 @@ paths:
             example: 42
       responses:
         '200':
-          description: 'Added to cart'
+          description: 'Person added to cart'
           content:
             application/json:
               schema:
@@ -2940,6 +2956,8 @@ paths:
                 type: object
         '401':
           description: Unauthorized
+        '404':
+          description: 'Person not found'
       security:
         -
           ApiKeyAuth: []
