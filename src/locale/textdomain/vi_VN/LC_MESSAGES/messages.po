@@ -6742,14 +6742,6 @@ msgid "View User"
 msgstr "Xem thành viên"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Yêu cầu không hợp lệ: Thiếu id lịch"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Không tìm thấy: Id lịch không xác định"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "không tìm thấy hoặc người dùng không có email"
@@ -6918,10 +6910,6 @@ msgstr "id loại sự kiện không hợp lệ"
 #: 
 msgid "invalid calendar pinning"
 msgstr "ghim lịch không hợp lệ"
-
-#: 
-msgid "invalid group id"
-msgstr "id nhóm không hợp lệ"
 
 #: 
 msgid "invalid status value"
@@ -7095,10 +7083,6 @@ msgstr "Lỗi giải mã tệp định nghĩa chữ ký"
 #: 
 msgid "Age Histogram"
 msgstr "Biểu đồ tuổi"
-
-#: 
-msgid "Missing event id"
-msgstr "Thiếu id sự kiện"
 
 #: 
 msgid "Event not found"
@@ -7461,10 +7445,6 @@ msgstr "Giúp dịch dự án này"
 #: 
 msgid "Afrikaans"
 msgstr "Người Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr "có kiểu không khớp"
 
 #: 
 msgid "Loading"
@@ -8067,14 +8047,6 @@ msgid "City is required"
 msgstr "Yêu cầu tên thành phố"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Yêu cầu cổng máy chủ cơ sở dữ liệu (ví dụ: 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Yêu cầu tên người dùng cơ sở dữ liệu"
-
-#: 
 msgid "Email Address"
 msgstr "Địa chỉ Email"
 
@@ -8177,10 +8149,6 @@ msgstr "Số điện thoại"
 #: 
 msgid "Please add at least one family member."
 msgstr "Vui lòng thêm ít nhất một thành viên trong gia đình."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Vui lòng sửa các lỗi xác thực trước khi tiếp tục."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8543,10 +8511,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Không có bản ghi nào được trả về từ báo cáo trước. Vui lòng điều chỉnh bộ lọc hoặc khoảng ngày và thử lại."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Vui lòng nhập tên menu (2-50 ký tự)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Vui lòng nhập URL hợp lệ bắt đầu bằng http:// hoặc https://"
 
@@ -8555,28 +8519,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Tất cả chữ ký tệp hệ thống đều khớp với giá trị dự kiến."
 
 #: 
-msgid "Files with issues"
-msgstr "Các tệp có vấn đề"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Kiểm tra tính toàn vẹn thất bại"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Kiểm tra tính toàn vẹn thành công"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Tệp định nghĩa chữ ký tồn tại nhưng không thể đọc. Kiểm tra quyền của tệp."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Thiếu tệp định nghĩa chữ ký tại %s."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Không thể kết nối với điểm cuối kiểm tra tính toàn vẹn. Kiểm tra nhật ký lỗi máy chủ."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10305,10 +10253,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Nhập tỉnh/thành phố cho các quốc gia không có danh sách sẵn)"
 
 #: 
-msgid "Available"
-msgstr "Có sẵn"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Cấu hình URL cơ sở không hợp lệ. Vui lòng kiểm tra file Config.php."
 
@@ -10393,10 +10337,6 @@ msgid "No locales configured"
 msgstr "Chưa có ngôn ngữ nào được cấu hình"
 
 #: 
-msgid "Not Available"
-msgstr "Không khả dụng"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Mở tệp này bằng trình soạn thảo văn bản:"
 
@@ -10429,10 +10369,6 @@ msgid "System Locale Support"
 msgstr "Hỗ trợ ngôn ngữ hệ thống"
 
 #: 
-msgid "System Support"
-msgstr "Hỗ trợ hệ thống"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL không chứa tên máy chủ hợp lệ"
 
@@ -10451,18 +10387,6 @@ msgstr "URL phải kết thúc bằng dấu gạch chéo (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL phải bắt đầu bằng http:// hoặc https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Không thể phát hiện ngôn ngữ hệ thống"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Không thể xác định các ngôn ngữ có sẵn"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Không thể tải thông tin ngôn ngữ"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10679,10 +10603,6 @@ msgstr "Tải ảnh cá nhân lên thất bại"
 #: 
 msgid "Remote backup failed"
 msgstr "Sao lưu từ xa thất bại"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Sao lưu WebDAV chưa được cấu hình đúng."
 
 #: 
 msgid "2FA Enabled"

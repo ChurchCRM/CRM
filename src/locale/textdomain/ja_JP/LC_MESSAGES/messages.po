@@ -6678,14 +6678,6 @@ msgid "View User"
 msgstr "ユーザーを表示"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "無効なリクエスト：カレンダーIDがありません"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "見つかりません：不明なカレンダーID"
-
-#: 
 msgid "not found or user without an email"
 msgstr "見つからない、またはメールのないユーザー"
 
@@ -6852,10 +6844,6 @@ msgstr "無効なイベントタイプID"
 #: 
 msgid "invalid calendar pinning"
 msgstr "無効なカレンダーピニング"
-
-#: 
-msgid "invalid group id"
-msgstr "無効なグループID"
 
 #: 
 msgid "invalid status value"
@@ -7026,10 +7014,6 @@ msgstr "署名定義ファイルのデコードエラー"
 #: 
 msgid "Age Histogram"
 msgstr "年齢ヒストグラム"
-
-#: 
-msgid "Missing event id"
-msgstr "イベントIDがありません"
 
 #: 
 msgid "Event not found"
@@ -7397,10 +7381,6 @@ msgstr "このプロジェクトの翻訳にご協力ください"
 #: 
 msgid "Afrikaans"
 msgstr "アフリカーンス語"
-
-#: 
-msgid " has a type mismatch"
-msgstr " に型の不一致があります"
 
 #: 
 msgid "Loading"
@@ -8003,14 +7983,6 @@ msgid "City is required"
 msgstr "市区町村が必要です"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "データベースサーバーポートが必要です (例: 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "データベースユーザー名は必須です"
-
-#: 
 msgid "Email Address"
 msgstr "メールアドレス"
 
@@ -8113,10 +8085,6 @@ msgstr "電話番号"
 #: 
 msgid "Please add at least one family member."
 msgstr "少なくとも1人の家族メンバーを追加してください。"
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "続行する前に検証エラーを修正してください。"
 
 #: 
 msgid "Please enter a valid URL"
@@ -8479,10 +8447,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "前回のレポートからレコードが返されませんでした。フィルターまたは日付範囲を調整して、もう一度お試しください。"
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "メニュー名を入力してください（2〜50文字）"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "http://またはhttps://で始まる有効なURLを入力してください"
 
@@ -8491,28 +8455,12 @@ msgid "All system file signatures match the expected values."
 msgstr "すべてのシステムファイル署名が期待値と一致しています。"
 
 #: 
-msgid "Files with issues"
-msgstr "問題のあるファイル"
-
-#: 
-msgid "Integrity check failed"
-msgstr "整合性チェックに失敗しました"
-
-#: 
-msgid "Integrity check passed"
-msgstr "整合性チェックに合格しました"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "署名定義ファイルは存在しますが、読み取りできません。ファイル権限を確認してください。"
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "署名定義ファイルが%sにありません。パッケージングタスクを実行するか、公式リリースをデプロイして署名を再生成してください。"
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "整合性エンドポイントに接続できません。Webサーバーエラーログを確認してください。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10241,10 +10189,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "（事前定義された州がない国の場合は、州/県を入力してください）"
 
 #: 
-msgid "Available"
-msgstr "利用可能"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "ベースURL設定が無効です。Config.phpファイルを確認してください。"
 
@@ -10329,10 +10273,6 @@ msgid "No locales configured"
 msgstr "ロケールが設定されていません"
 
 #: 
-msgid "Not Available"
-msgstr "利用不可"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "このファイルをテキストエディタで開く："
 
@@ -10365,10 +10305,6 @@ msgid "System Locale Support"
 msgstr "システムロケールサポート"
 
 #: 
-msgid "System Support"
-msgstr "システムサポート"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URLに有効なホスト名が含まれていません"
 
@@ -10387,18 +10323,6 @@ msgstr "URLは末尾のスラッシュ（/）で終わる必要があります"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URLはhttp://またはhttps://で始まる必要があります"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "システムロケールを検出できません"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "利用可能なロケールを判断できません"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "ロケール情報を読み込めません"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10615,10 +10539,6 @@ msgstr "人物写真のアップロードに失敗しました"
 #: 
 msgid "Remote backup failed"
 msgstr "リモートバックアップに失敗しました"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAVバックアップが正しく設定されていません。エンドポイント、ユーザー名、パスワードが設定されていることを確認してください"
 
 #: 
 msgid "2FA Enabled"

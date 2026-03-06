@@ -6731,14 +6731,6 @@ msgid "View User"
 msgstr "Lihat Pengguna"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Permintaan tidak valid: Id kalender tidak ada"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Tidak Ditemukan: Id kalender tidak dikenal"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "tidak ditemukan atau pengguna tanpa email"
@@ -6907,10 +6899,6 @@ msgstr "id jenis acara tidak valid"
 #: 
 msgid "invalid calendar pinning"
 msgstr "Pinning kalender tidak valid"
-
-#: 
-msgid "invalid group id"
-msgstr "id grup tidak valid"
 
 #: 
 msgid "invalid status value"
@@ -7084,10 +7072,6 @@ msgstr "Terjadi kesalahan saat mendekode file definisi tanda tangan"
 #: 
 msgid "Age Histogram"
 msgstr "Histogram Usia"
-
-#: 
-msgid "Missing event id"
-msgstr "Id acara tidak ada"
 
 #: 
 msgid "Event not found"
@@ -7450,10 +7434,6 @@ msgstr "Bantu terjemahkan proyek ini"
 #: 
 msgid "Afrikaans"
 msgstr "Afrika"
-
-#: 
-msgid " has a type mismatch"
-msgstr "memiliki tipe yang tidak sesuai"
 
 #: 
 msgid "Loading"
@@ -8056,14 +8036,6 @@ msgid "City is required"
 msgstr "Kota wajib diisi"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Port server wajib diisi"
-
-#: 
-msgid "Database username is required"
-msgstr "Username database wajib diisi"
-
-#: 
 msgid "Email Address"
 msgstr "Alamat Email"
 
@@ -8166,10 +8138,6 @@ msgstr "Nomor telepon"
 #: 
 msgid "Please add at least one family member."
 msgstr "Harap tambahkan setidaknya satu anggota keluarga."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Harap perbaiki kesalahan sebelum melanjutkan."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8532,10 +8500,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Tidak ada data pada laporan sebelumnya. Harap sesuaikan filter atau rentang tanggal."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Harap masukkan nama menu (2-50 karakter)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Harap masukkan URL valid yang diawali http:// atau https://"
 
@@ -8544,28 +8508,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Semua tanda tangan file sistem sesuai."
 
 #: 
-msgid "Files with issues"
-msgstr "File bermasalah"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Pemeriksaan integritas gagal"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Pemeriksaan integritas berhasil"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "File definisi tanda tangan ada namun tidak dapat dibaca. Cek izin file."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "File definisi tanda tangan hilang di %s."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Tidak dapat menghubungi endpoint integritas. Periksa log error server."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10294,10 +10242,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Masukkan provinsi jika tidak ada dalam daftar)"
 
 #: 
-msgid "Available"
-msgstr "Tersedia"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurasi URL Dasar tidak valid. Periksa file Config.php."
 
@@ -10382,10 +10326,6 @@ msgid "No locales configured"
 msgstr "Bahasa tidak dikonfigurasi"
 
 #: 
-msgid "Not Available"
-msgstr "Tidak Tersedia"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Buka file ini di editor teks:"
 
@@ -10418,10 +10358,6 @@ msgid "System Locale Support"
 msgstr "Dukungan Bahasa Sistem"
 
 #: 
-msgid "System Support"
-msgstr "Dukungan Sistem"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL tidak berisi nama host yang valid"
 
@@ -10440,18 +10376,6 @@ msgstr "URL harus diakhiri garis miring (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL harus diawali http:// atau https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Gagal mendeteksi bahasa sistem"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Gagal menentukan bahasa yang tersedia"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Gagal memuat informasi bahasa"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10668,10 +10592,6 @@ msgstr "Gagal mengunggah foto jemaat"
 #: 
 msgid "Remote backup failed"
 msgstr "Pencadangan jarak jauh gagal"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Cadangan WebDAV tidak dikonfigurasi dengan benar."
 
 #: 
 msgid "2FA Enabled"
