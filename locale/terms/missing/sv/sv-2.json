@@ -1,12 +1,4 @@
 {
-  "From dashboard.vonage.com": "",
-  "GA4 Measurement ID": "",
-  "Generate new code": "",
-  "Get Started": "",
-  "Get your API key from MailChimp: Account Settings > Extras > API Keys": "",
-  "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)": "",
-  "Help": "",
-  "Id": "",
   "Image shown when no Gravatar exists for the email address": "",
   "Important": "",
   "Install plugins by placing them in": "",
@@ -148,5 +140,13 @@
   "MailChimp connection failed.": "",
   "Map Zoom Level": "",
   "Missing families? Update coordinates to include them on the map.": "",
-  "Missing required settings: %s": ""
+  "Missing required settings: %s": "",
+  "Person has no family": "",
+  "Plugin not found or not active": "",
+  "Server URL is required.": "",
+  "This plugin does not support connection testing.": "",
+  "Unable to display map: church address has not been geocoded yet.": "",
+  "Update church address in Settings.": "",
+  "Username and password are required.": "",
+  "Validation failed: %s": ""
 }

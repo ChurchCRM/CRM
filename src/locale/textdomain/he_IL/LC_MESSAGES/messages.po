@@ -6727,14 +6727,6 @@ msgid "View User"
 msgstr "הצג משתמש"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "בקשה לא חוקית: מזהה לוח שנה חסר"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "לא נמצא: מזהה לוח שנה לא מוכר"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "לא נמצא או משתמש ללא אימייל"
@@ -6902,10 +6894,6 @@ msgstr "מזהה סוג אירוע לא חוקי"
 #: 
 msgid "invalid calendar pinning"
 msgstr "נעיצת לוח שנה לא חוקית"
-
-#: 
-msgid "invalid group id"
-msgstr "מזהה קבוצה לא חוקי"
 
 #: 
 msgid "invalid status value"
@@ -7078,10 +7066,6 @@ msgstr "שגיאה בפענוח קובץ הגדרות חתימה"
 #: 
 msgid "Age Histogram"
 msgstr "היסטוגרמת גילאים"
-
-#: 
-msgid "Missing event id"
-msgstr "מזהה אירוע חסר"
 
 #: 
 msgid "Event not found"
@@ -7452,10 +7436,6 @@ msgstr "עזור לתרגם את הפרויקט הזה"
 #: 
 msgid "Afrikaans"
 msgstr "אפריקאנס"
-
-#: 
-msgid " has a type mismatch"
-msgstr "ישנו חוסר התאמה בסוג"
 
 #: 
 msgid "Loading"
@@ -8058,14 +8038,6 @@ msgid "City is required"
 msgstr "עיר היא שדה חובה"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "פורט שרת מסד הנתונים נדרש (למשל, 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "שם המשתמש למסד הנתונים הוא שדה חובה"
-
-#: 
 msgid "Email Address"
 msgstr "כתובת אימייל"
 
@@ -8168,10 +8140,6 @@ msgstr "מספר טלפון"
 #: 
 msgid "Please add at least one family member."
 msgstr "אנא הוסף לפחות בן משפחה אחד."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "אנא תקן את שגיאות האימות לפני שתמשיך."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8534,10 +8502,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "לא הוחזרו רשומות מהדוח הקודם."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "אנא הזן שם תפריט (2-50 תווים)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "אנא הזן כתובת URL תקינה המתחילה ב-http:// או https://"
 
@@ -8546,28 +8510,12 @@ msgid "All system file signatures match the expected values."
 msgstr "כל חתימות קבצי המערכת תואמות לערכים הצפויים."
 
 #: 
-msgid "Files with issues"
-msgstr "קבצים עם בעיות"
-
-#: 
-msgid "Integrity check failed"
-msgstr "בדיקת תקינות נכשלה"
-
-#: 
-msgid "Integrity check passed"
-msgstr "בדיקת תקינות עברה"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "קובץ הגדרת החתימה קיים אך אינו קריא. בדוק הרשאות קבצים."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "קובץ הגדרת החתימה חסר ב-%s."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "לא ניתן ליצור קשר עם נקודת הקצה של התקינות."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10298,10 +10246,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(הזן מדינה/מחוז עבור מדינות ללא רשימה מוגדרת)"
 
 #: 
-msgid "Available"
-msgstr "זמין"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "תצורת Base URL לא תקינה. נא לבדוק את קובץ ה-Config.php."
 
@@ -10386,10 +10330,6 @@ msgid "No locales configured"
 msgstr "לא הוגדרו שפות"
 
 #: 
-msgid "Not Available"
-msgstr "לא זמין"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "פתח קובץ זה בעורך טקסט:"
 
@@ -10422,10 +10362,6 @@ msgid "System Locale Support"
 msgstr "תמיכה בשפת מערכת"
 
 #: 
-msgid "System Support"
-msgstr "תמיכת מערכת"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "ה-URL אינו מכיל שם מארח תקין"
 
@@ -10444,18 +10380,6 @@ msgstr "ה-URL חייב להסתיים בלוכסן (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "ה-URL חייב להתחיל ב-http:// או https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "לא ניתן לזהות שפות מערכת"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "לא ניתן לקבוע שפות זמינות"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "לא ניתן לטעון פרטי שפה"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10672,10 +10596,6 @@ msgstr "העלאת תמונת אדם נכשלה"
 #: 
 msgid "Remote backup failed"
 msgstr "גיבוי מרוחק נכשל"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "גיבויי WebDAV לא מוגדרים."
 
 #: 
 msgid "2FA Enabled"

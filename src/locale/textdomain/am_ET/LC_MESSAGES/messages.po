@@ -6731,14 +6731,6 @@ msgid "View User"
 msgstr "ተጠቃሚን ይመልከቱ"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "ልክ ያልሆነ ጥያቄ፡ የቀን መቁጠሪያ መታወቂያ ይጎድላል"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "አልተገኘም፡ ያልታወቀ የቀን መቁጠሪያ መታወቂያ"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "አልተገኘም ወይም ኢሜል የሌለው ተጠቃሚ አለ"
@@ -6908,10 +6900,6 @@ msgstr "ልክ ያልሆነ የክስተት አይነት መታወቂያ"
 #: 
 msgid "invalid calendar pinning"
 msgstr "ልክ ያልሆነ የቀን መቁጠሪያ መሰኪያ"
-
-#: 
-msgid "invalid group id"
-msgstr "ልክ ያልሆነ የቡድን መታወቂያ"
 
 #: 
 msgid "invalid status value"
@@ -7086,10 +7074,6 @@ msgstr "የፊርማ ፊቺ ፋይልን የመግለጽ ስህተት "
 #: 
 msgid "Age Histogram"
 msgstr "የዕድሜ ሂስቶግራም"
-
-#: 
-msgid "Missing event id"
-msgstr "የጠፋ ክስተት መታወቂያ"
 
 #: 
 msgid "Event not found"
@@ -7471,10 +7455,6 @@ msgstr "ይህንን ፕሮጀክት ለመተርጎም ያግዙ"
 msgid "Afrikaans"
 msgstr "\n"
 "አፍሪካንስ"
-
-#: 
-msgid " has a type mismatch"
-msgstr "የዓይነት አለመዛመድ አለው።"
 
 #: 
 msgid "Loading"
@@ -8077,14 +8057,6 @@ msgid "City is required"
 msgstr "ከተማ ያስፈልጋል"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "የዳታቤዝ አገልጋይ ፖርት ያስፈልጋል (ለምሳሌ 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "የዳታቤዝ ተጠቃሚ ስም ያስፈልጋል"
-
-#: 
 msgid "Email Address"
 msgstr "የኢሜይል አድራሻ"
 
@@ -8187,10 +8159,6 @@ msgstr "የስልክ ቁጥር"
 #: 
 msgid "Please add at least one family member."
 msgstr "እባክዎን ቢያንስ አንድ የቤተሰብ አባል ያክሉ።"
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "እባክዎን ከመቀጠልዎ በፊት የማረጋገጫ ስህተቶችን ያስተካክሉ።"
 
 #: 
 msgid "Please enter a valid URL"
@@ -8553,10 +8521,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "ከቀድሞው ሪፖርት ምንም መዝገብ አልተገኘም። እባክዎ ማጣሪያዎችን ወይም የቀን ገደቦችን አስተካክለው እንደገና ይሞክሩ።"
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "እባክዎን የሜኑ ስም ያስገቡ (ከ2-50 ፊደላት)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "እባክዎን በ http:// ወይም https:// የሚጀምር ትክክለኛ URL ያስገቡ"
 
@@ -8565,28 +8529,12 @@ msgid "All system file signatures match the expected values."
 msgstr "ሁሉም የሥርዓት ፋይል ፊርማዎች ከሚጠበቁት እሴቶች ጋር ይዛመዳሉ።"
 
 #: 
-msgid "Files with issues"
-msgstr "ችግር ያለባቸው ፋይሎች"
-
-#: 
-msgid "Integrity check failed"
-msgstr "የታማኝነት ፍተሻ አልተሳካም"
-
-#: 
-msgid "Integrity check passed"
-msgstr "የታማኝነት ፍተሻ አልፏል"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "የፊርማ መግለጫ ፋይሉ አለ ነገር ግን ሊነበብ አይችልም። የፋይል ፈቃዶችን ያረጋግጡ።"
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "የፊርማ መግለጫ ፋይሉ በ %s ላይ ይጎድላል። ፊርማዎችን እንደገና ለማመንጨት የማሸጊያ ስራውን ያሂዱ ወይም ኦፊሴላዊ ልቀት ይጫኑ።"
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "የታማኝነት መድረሻን ማግኘት አልተቻለም። የዌብ አገልጋይ ስህተት መዝገቦችን ያረጋግጡ።"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10317,10 +10265,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(ክልሎች ለሌሏቸው አገሮች ክፍለ ሀገር ያስገቡ)"
 
 #: 
-msgid "Available"
-msgstr "ይገኛል"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "የBase URL ውቅር ልክ አይደለም። እባክዎን Config.php ፋይልዎን ያረጋግጡ።"
 
@@ -10405,10 +10349,6 @@ msgid "No locales configured"
 msgstr "ምንም ቋንቋዎች አልተዋቀሩም"
 
 #: 
-msgid "Not Available"
-msgstr "አይገኝም"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "ይህንን ፋይል በጽሁፍ ማረሚያ (text editor) ይክፈቱ፡"
 
@@ -10441,10 +10381,6 @@ msgid "System Locale Support"
 msgstr "የሥርዓት ቋንቋ ድጋፍ"
 
 #: 
-msgid "System Support"
-msgstr "የሥርዓት ድጋፍ"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL ትክክለኛ የአስተናጋጅ ስም አልያዘም"
 
@@ -10463,18 +10399,6 @@ msgstr "URL በዝንባሌ ሰረዝ (/) ማብቃት አለበት"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL በ http:// ወይም https:// መጀመር አለበት"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "የሥርዓት ቋንቋዎችን ማግኘት አልተቻለም"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "የሚገኙ ቋንቋዎችን መለየት አልተቻለም"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "የቋንቋ መረጃ መጫን አልተቻለም"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10691,10 +10615,6 @@ msgstr "የሰው ፎቶ መጫን አልተሳካም"
 #: 
 msgid "Remote backup failed"
 msgstr "የሩቅ መጠባበቂያ አልተሳካም"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "የWebDAV መጠባበቂያዎች በትክክል አልተዋቀሩም።"
 
 #: 
 msgid "2FA Enabled"

@@ -1,35 +1,51 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d місяця",
+    "few": "",
+    "many": "",
+    "other": "%d місяців"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d річний",
+    "few": "",
+    "many": "",
+    "other": "%d років"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d подія у %s",
+    "few": "",
+    "many": "",
+    "other": "%d подій у %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "особа",
+    "few": "",
+    "many": "",
+    "other": "осіб"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d особу додано до кошика.",
+    "few": "",
+    "many": "",
+    "other": "%d осіб додано до кошика."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d особу успішно додано до вибраної сім'ї.",
+    "few": "",
+    "many": "",
+    "other": "%d осіб успішно додано до вибраної сім'ї."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d особу успішно додано до вибраної групи.",
+    "few": "",
+    "many": "",
+    "other": "%d осіб успішно додано до вибраної групи."
   },
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d особа",
+    "few": "",
+    "many": "",
+    "other": "%d осіб"
   },
   "Checkout All": "",
   "Expected": "",
@@ -91,6 +107,8 @@
   "mismatches detected": "",
   "%d hour": {
     "one": "",
+    "few": "",
+    "many": "",
     "other": ""
   },
   "About WebDAV Backups": "",

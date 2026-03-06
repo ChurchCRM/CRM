@@ -1,36 +1,4 @@
 {
-  "%d month old": {
-    "one": "",
-    "other": ""
-  },
-  "%d year old": {
-    "one": "",
-    "other": ""
-  },
-  "%d event in %s": {
-    "one": "",
-    "other": ""
-  },
-  "person": {
-    "one": "",
-    "other": ""
-  },
-  "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
-  },
-  "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
-  },
-  "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
-  },
-  "%d person": {
-    "one": "",
-    "other": ""
-  },
   "%d hour": {
     "one": "",
     "other": ""
@@ -175,5 +143,13 @@
   "Please configure the WebDAV settings before creating a remote backup.": "",
   "Please configure the WebDAV settings before testing the connection.": "",
   "Please configure your MailChimp API key to use this integration.": "",
-  "Please enter a link name (2-50 characters)": ""
+  "Please enter a link name (2-50 characters)": "",
+  "Please try again": "",
+  "Plugin Development": "",
+  "Plugin Help": "",
+  "Plugin Management": "",
+  "Plugin Settings": "",
+  "Plugin cannot be disabled because other plugins depend on it": "",
+  "Plugin cannot be enabled due to dependency or version requirements": "",
+  "Plugin disabled successfully": ""
 }

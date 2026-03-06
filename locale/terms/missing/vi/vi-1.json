@@ -1,37 +1,4 @@
 {
-  "A": "",
-  "%d month old": {
-    "one": "",
-    "other": ""
-  },
-  "%d year old": {
-    "one": "",
-    "other": ""
-  },
-  "%d event in %s": {
-    "one": "",
-    "other": ""
-  },
-  "person": {
-    "one": "",
-    "other": ""
-  },
-  "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
-  },
-  "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
-  },
-  "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
-  },
-  "%d person": {
-    "one": "",
-    "other": ""
-  },
   "Checkout All": "",
   "Expected": "",
   "Failed to delete kiosk": "",
@@ -91,7 +58,6 @@
   "mismatch detected": "",
   "mismatches detected": "",
   "%d hour": {
-    "one": "",
     "other": ""
   },
   "About WebDAV Backups": "",
@@ -175,5 +141,14 @@
   "Failed to send SMS": "",
   "Family Status": "",
   "Family not found": "",
-  "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID": ""
+  "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID": "",
+  "From Phone Number": "",
+  "From dashboard.vonage.com": "",
+  "GA4 Measurement ID": "",
+  "Generate new code": "",
+  "Get Started": "",
+  "Get your API key from MailChimp: Account Settings > Extras > API Keys": "",
+  "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)": "",
+  "Help": "",
+  "Id": ""
 }

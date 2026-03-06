@@ -6799,14 +6799,6 @@ msgid "View User"
 msgstr "Felhasználó megtekintése"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Érvénytelen kérés: Hiányzik a naptár azonosítója"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Nem található: Ismeretlen naptár azonosítója"
-
-#: 
 msgid "not found or user without an email"
 msgstr "nem található vagy felhasználó e-mail nélkül"
 
@@ -6973,10 +6965,6 @@ msgstr "érvénytelen eseménytípus azonosítója"
 #: 
 msgid "invalid calendar pinning"
 msgstr "érvénytelen naptár rögzítés"
-
-#: 
-msgid "invalid group id"
-msgstr "érvénytelen csoport azonosítója"
 
 #: 
 msgid "invalid status value"
@@ -7147,10 +7135,6 @@ msgstr "Hiba az aláírás definíciós fájl dekódolásakor"
 #: 
 msgid "Age Histogram"
 msgstr "Kor hisztogram"
-
-#: 
-msgid "Missing event id"
-msgstr "Hiányzó esemény azonosítója"
 
 #: 
 msgid "Event not found"
@@ -7520,10 +7504,6 @@ msgstr "Segítsen lefordítani ezt a projektet"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr "típus eltérést mutat"
 
 #: 
 msgid "Loading"
@@ -8126,14 +8106,6 @@ msgid "City is required"
 msgstr "A város szükséges"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Az adatbázis kiszolgáló port szükséges (például: 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Az adatbázis felhasználónév szükséges"
-
-#: 
 msgid "Email Address"
 msgstr "E-mail cím"
 
@@ -8236,10 +8208,6 @@ msgstr "Telefonszám"
 #: 
 msgid "Please add at least one family member."
 msgstr "Kérjük, adjon hozzá legalább egy család tagot."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Kérjük, javítsa ki az validáció hibáit a folytatás előtt."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8602,10 +8570,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Az előző jelentésből nem érkeztek rekordok. Kérjük, módosítsa a szűrőket vagy a dátumtartományt, és próbálkozzon újra."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Kérjük, adjon meg egy menü nevet (2-50 karakter)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Kérjük, adjon meg egy érvényes URL-t, amely http:// vagy https:// -vel kezdődik"
 
@@ -8614,28 +8578,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Az összes rendszerfájl aláírása egyezik a várt értékekkel."
 
 #: 
-msgid "Files with issues"
-msgstr "Problémás fájlok"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Az integritásellenőrzés sikertelen"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Az integritásellenőrzés megállt"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Az aláírás definíciós fájl létezik, de nem olvasható. Ellenőrizze a fájl engedélyeit."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Az aláírás definíciós fájl hiányzik a %s -nél. Futtassa a csomagolási feladatot vagy telepítsen egy oficiel kiadást az aláírások újragenerálásához."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Nem lehet kapcsolódni az integritási végponthoz. Tekintse meg a webkiszolgáló hibánaplóit."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10366,10 +10314,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Adja meg az államot/tartományt az elődefiniált államok nélküli országokhoz)"
 
 #: 
-msgid "Available"
-msgstr "Elérhető"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Az alapvető URL-konfiguráció érvénytelen. Ellenőrizze a Config.php fájlt."
 
@@ -10454,10 +10398,6 @@ msgid "No locales configured"
 msgstr "Nincsenek konfigurált területi beállítások"
 
 #: 
-msgid "Not Available"
-msgstr "Nem Elérhető"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Nyissa meg ezt a fájlt egy szövegszerkesztőben:"
 
@@ -10490,10 +10430,6 @@ msgid "System Locale Support"
 msgstr "Rendszer Helyi Támogatás"
 
 #: 
-msgid "System Support"
-msgstr "Rendszer Támogatás"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "Az URL nem tartalmaz érvényes kiszolgálónevet"
 
@@ -10512,18 +10448,6 @@ msgstr "Az URL-nek záró perjelel (/) végződnie kell"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "Az URL-nek http:// vagy https:// kezdődnie kell"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Nem lehet felismerni a rendszer területi beállításait"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Nem lehet meghatározni az elérhető területi beállításokat"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Nem lehet bet tölteni a terület információit"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10740,10 +10664,6 @@ msgstr "A személyi fotó feltöltése sikertelen"
 #: 
 msgid "Remote backup failed"
 msgstr "A távoli biztonsági mentés sikertelen"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "A WebDAV biztonsági mentések nincsenek megfelelően konfigurálva. Ellenőrizze a végpontot, a felhasználónevet és a jelszót."
 
 #: 
 msgid "2FA Enabled"

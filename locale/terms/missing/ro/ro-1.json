@@ -1,35 +1,33 @@
 {
-  "%d month old": {
-    "one": "",
-    "other": ""
-  },
-  "%d year old": {
-    "one": "",
-    "other": ""
-  },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d eveniment în %s",
+    "few": "",
+    "other": "%d evenimente în %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "persoană",
+    "few": "",
+    "other": "persoane"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d persoană adăugată în coș.",
+    "few": "",
+    "other": "%d persoane adăugate în coș."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d persoană adăugată cu succes la familia selectată.",
+    "few": "",
+    "other": "%d persoane adăugate cu succes la familia selectată."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d persoană adăugată cu succes la grupul selectat.",
+    "few": "",
+    "other": "%d persoane adăugate cu succes la grupul selectat."
   },
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d persoană",
+    "few": "",
+    "other": "%d persoane"
   },
   "Checkout All": "",
   "Expected": "",
@@ -91,6 +89,7 @@
   "mismatches detected": "",
   "%d hour": {
     "one": "",
+    "few": "",
     "other": ""
   },
   "About WebDAV Backups": "",
@@ -175,5 +174,7 @@
   "Family Status": "",
   "Family not found": "",
   "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID": "",
-  "From Phone Number": ""
+  "From Phone Number": "",
+  "From dashboard.vonage.com": "",
+  "GA4 Measurement ID": ""
 }

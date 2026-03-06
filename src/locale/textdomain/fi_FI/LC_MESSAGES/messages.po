@@ -6691,14 +6691,6 @@ msgid "View User"
 msgstr "Näytä käyttäjä"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Virheellinen pyyntö: Kalenteritunnus puuttuu"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Ei löytynyt: Tuntematon kalenteritunnus"
-
-#: 
 msgid "not found or user without an email"
 msgstr "ei löytynyt tai käyttäjällä ei ole sähköpostia"
 
@@ -6865,10 +6857,6 @@ msgstr "virheellinen tapahtumatyypin tunniste"
 #: 
 msgid "invalid calendar pinning"
 msgstr "virheellinen kalenterin kiinnitys"
-
-#: 
-msgid "invalid group id"
-msgstr "virheellinen ryhmätunniste"
 
 #: 
 msgid "invalid status value"
@@ -7039,10 +7027,6 @@ msgstr "Virhe allekirjoituksen määritystiedoston purkamisessa"
 #: 
 msgid "Age Histogram"
 msgstr "Ikäjakauma"
-
-#: 
-msgid "Missing event id"
-msgstr "Tapahtumatunnus puuttuu"
 
 #: 
 msgid "Event not found"
@@ -7407,10 +7391,6 @@ msgstr "Auta kääntämään tätä projektia"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr " tyyppi ei täsmää"
 
 #: 
 msgid "Loading"
@@ -8013,14 +7993,6 @@ msgid "City is required"
 msgstr "Kaupunki on pakollinen"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Tietokantapalvelimen portti on pakollinen (esim. 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Tietokannan käyttäjänimi on pakollinen"
-
-#: 
 msgid "Email Address"
 msgstr "Sähköpostiosoite"
 
@@ -8123,10 +8095,6 @@ msgstr "Puhelinnumero"
 #: 
 msgid "Please add at least one family member."
 msgstr "Lisää vähintään yksi perheenjäsen."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Korjaa vahvistusvirheet ennen jatkamista."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8489,10 +8457,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Edellinen raportti ei palauttanut tietoja. Säädä suodattimia tai aikaväliä ja yritä uudelleen."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Syötä valikon nimi (2-50 merkkiä)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Syötä kelvollinen URL-osoite, joka alkaa http:// tai https://"
 
@@ -8501,28 +8465,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Kaikki järjestelmätiedostojen allekirjoitukset vastaavat odotettuja arvoja."
 
 #: 
-msgid "Files with issues"
-msgstr "Tiedostot, joissa on ongelmia"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Eheystarkistus epäonnistui"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Eheystarkistus onnistui"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Allekirjoitusten määritystiedosto on olemassa, mutta se ei ole luettavissa. Tarkista oikeudet."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Allekirjoitusten määritystiedosto puuttuu polusta %s. Aja paketointi tai asenna virallinen julkaisu luodaksesi allekirjoitukset uudelleen."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Yhteyttä eheyden päätepisteeseen ei saatu. Tarkista palvelimen virhelokit."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10253,10 +10201,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Syötä osavaltio/maakunta maihin, joilla ei ole ennalta määritettyjä osavaltioita)"
 
 #: 
-msgid "Available"
-msgstr "Käytettävissä"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Base URL -määritys on virheellinen. Tarkista Config.php-tiedosto."
 
@@ -10341,10 +10285,6 @@ msgid "No locales configured"
 msgstr "Yhtään kieliasetusta ei ole määritetty"
 
 #: 
-msgid "Not Available"
-msgstr "Ei saatavilla"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Avaa tämä tiedosto tekstieditorissa:"
 
@@ -10377,10 +10317,6 @@ msgid "System Locale Support"
 msgstr "Järjestelmän kieliasetuksen tuki"
 
 #: 
-msgid "System Support"
-msgstr "Järjestelmän tuki"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL-osoite ei sisällä kelvollista isäntänimeä"
 
@@ -10399,18 +10335,6 @@ msgstr "URL-osoitteen on päädyttävä perässä olevaan vinoviivoihin (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL-osoitteen on alkava http:// tai https:// kanssa"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Järjestelmän kieliasetuksia ei voi havaita"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Käytettävissä olevia kieliasetuksia ei voi määrittää"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Kieliasetuksen tietoja ei voi ladata"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10627,10 +10551,6 @@ msgstr "Henkilön valokuvan lataaminen epäonnistui"
 #: 
 msgid "Remote backup failed"
 msgstr "Etävarmuuskopiointi epäonnistui"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV-varmuuskopioita ei ole määritetty oikein. Varmista, että päätepiste, käyttäjänimi ja salasana on asetettu"
 
 #: 
 msgid "2FA Enabled"

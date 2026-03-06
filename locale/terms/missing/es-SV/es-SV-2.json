@@ -1,12 +1,4 @@
 {
-  "Please try again": "",
-  "Plugin Development": "",
-  "Plugin Help": "",
-  "Plugin Management": "",
-  "Plugin Settings": "",
-  "Plugin cannot be disabled because other plugins depend on it": "",
-  "Plugin cannot be enabled due to dependency or version requirements": "",
-  "Plugin disabled successfully": "",
   "Plugin enabled successfully": "",
   "Plugin failed to load": "",
   "Plugin not found": "",

@@ -6729,14 +6729,6 @@ msgid "View User"
 msgstr "Kuva kasutaja"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Vale taotlus: puudub kalendri ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Pole leitud: Tundmatu kalendri ID"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "ei leitud ega kasuta ilma e-kirjata"
@@ -6905,10 +6897,6 @@ msgstr "kehtetu sündmuse tüübi ID"
 #: 
 msgid "invalid calendar pinning"
 msgstr "kehtetu kalendri kinnitamine"
-
-#: 
-msgid "invalid group id"
-msgstr "vale grupi ID"
 
 #: 
 msgid "invalid status value"
@@ -7082,10 +7070,6 @@ msgstr "Viga allkirja määratlusfaili dekodeerimisel"
 #: 
 msgid "Age Histogram"
 msgstr "Vanuse histogramm"
-
-#: 
-msgid "Missing event id"
-msgstr "Puudub sündmuse ID"
 
 #: 
 msgid "Event not found"
@@ -7457,10 +7441,6 @@ msgstr "Aidake seda projekti tõlkida"
 #: 
 msgid "Afrikaans"
 msgstr "afrikaani keel"
-
-#: 
-msgid " has a type mismatch"
-msgstr "on tüübi mittevastavus"
 
 #: 
 msgid "Loading"
@@ -8063,14 +8043,6 @@ msgid "City is required"
 msgstr "Linn on nõutav"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Andmebaasi serveri port on nõutav (nt 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Andmebaasi kasutajanimi on nõutav"
-
-#: 
 msgid "Email Address"
 msgstr "E-posti aadress"
 
@@ -8173,10 +8145,6 @@ msgstr "Telefoninumber"
 #: 
 msgid "Please add at least one family member."
 msgstr "Palun lisage vähemalt üks perekonnaliige."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Palun parandage valideerimise vead enne jätkamist."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8539,10 +8507,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Eelmisest aruandest ei tagastatud kirjeid. Palun kohandage oma filtreid või kuupäevavahemikku ja proovige uuesti."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Palun sisestage menüü nimi (2-50 tähemärki)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Palun sisestage kehtiv URL, mis algab http:// või https:// -ga"
 
@@ -8551,28 +8515,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Kõik süsteemifailide allkirjad vastavad oodatud väärtustele."
 
 #: 
-msgid "Files with issues"
-msgstr "Failid probleemidega"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Tervikluse kontroll ebaõnnestus"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Tervikluse kontroll õnnestus"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Allkirja määratluse fail on olemas, kuid pole loetav. Kontrollige faili õigusi."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Allkirja määratluse fail puudub %s kohast. Käivitage pakkimisülesanne või juurutage ametlik väljalaske allkirjade uuesti loomiseks."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Tervikluse lõpp-punktiga ühenduse võtmine ebaõnnestus. Kontrollige veebiserverisse tõrkesidemeid."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10303,10 +10251,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Sisestage riik/provintsi riikide jaoks ilma eelmääratletud osariikideta)"
 
 #: 
-msgid "Available"
-msgstr "Saadaval"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Base URL konfiguratsioon on sobimatu. Palun kontrollige oma Config.php faili."
 
@@ -10391,10 +10335,6 @@ msgid "No locales configured"
 msgstr "Lokaalse määranguid pole konfigureeritud"
 
 #: 
-msgid "Not Available"
-msgstr "Pole saadaval"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Avage see fail tekstiredaktoris:"
 
@@ -10427,10 +10367,6 @@ msgid "System Locale Support"
 msgstr "Süsteemi lokaalse toe tugi"
 
 #: 
-msgid "System Support"
-msgstr "Süsteemi tugi"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL ei sisalda kehtivat hosti nime"
 
@@ -10449,18 +10385,6 @@ msgstr "URL peab lõppema kaldkriipsuga (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL peab algama http:// või https:// -ga"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Süsteemi lokaalse määranguid ei saa tuvastada"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Saadaolevate lokaalse määranguid ei saa määrata"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Lokaalse teabe laadimise võimalus puudub"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10677,10 +10601,6 @@ msgstr "Inimese foto üleslaadimine ebaõnnestus"
 #: 
 msgid "Remote backup failed"
 msgstr "Kaugvarukoopia ebaõnnestus"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV varukoopiiad pole õigesti konfigureeritud. Veenduge, et lõpp-punkt, kasutajanimi ja parool on määratud"
 
 #: 
 msgid "2FA Enabled"

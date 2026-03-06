@@ -254,14 +254,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Set the encryption system to use - SSL (deprecated) or TLS"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Invalid request: Missing calendar ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Not Found: Unknown calendar ID"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "not found or user without an email"
@@ -277,14 +269,6 @@ msgstr "Background Colour"
 #: 
 msgid "invalid event type id"
 msgstr "invalid event type ID"
-
-#: 
-msgid "invalid group id"
-msgstr "invalid group ID"
-
-#: 
-msgid "Missing event id"
-msgstr "Missing event ID"
 
 #: 
 msgid "Unexpected Person Id"
