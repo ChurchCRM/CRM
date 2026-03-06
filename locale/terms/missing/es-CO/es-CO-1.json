@@ -1,39 +1,48 @@
 {
   "%d month old": {
-    "one": "",
-    "other": ""
+    "one": "%d mes de edad",
+    "many": "",
+    "other": "%d meses de edad"
   },
   "%d year old": {
-    "one": "",
-    "other": ""
+    "one": "%d año de edad",
+    "many": "",
+    "other": "%d años de edad"
   },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d evento en %s",
+    "many": "",
+    "other": "%d eventos en %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "Persona",
+    "many": "",
+    "other": "Personas"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d persona agregada al carrito.",
+    "many": "",
+    "other": "%d personas agregadas al carrito."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d persona agregada exitosamente a la familia seleccionada.",
+    "many": "",
+    "other": "%d personas agregadas exitosamente a la familia seleccionada."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d persona agregada exitosamente al grupo seleccionado.",
+    "many": "",
+    "other": "%d personas agregadas exitosamente al grupo seleccionado."
   },
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d persona",
+    "many": "",
+    "other": "%d personas"
   },
   "%d hour": {
-    "one": "",
-    "other": ""
+    "one": "%d hora",
+    "many": "",
+    "other": "%d horas"
   },
   "Calendar not found": "",
   "Continue to Dashboard": "",

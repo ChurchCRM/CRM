@@ -1,39 +1,45 @@
 {
-  "%d month old": {
-    "one": "",
-    "other": ""
-  },
-  "%d year old": {
-    "one": "",
-    "other": ""
-  },
   "%d event in %s": {
-    "one": "",
-    "other": ""
+    "one": "%d событие в %s",
+    "few": "",
+    "many": "",
+    "other": "%d событий в %s"
   },
   "person": {
-    "one": "",
-    "other": ""
+    "one": "человек",
+    "few": "",
+    "many": "",
+    "other": "человек"
   },
   "%d Person added to the Cart.": {
-    "one": "",
-    "other": ""
+    "one": "%d человек добавлен в корзину.",
+    "few": "",
+    "many": "",
+    "other": "%d человек добавлено в корзину."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "",
-    "other": ""
+    "one": "%d человек добавлен в семью.",
+    "few": "",
+    "many": "",
+    "other": "%d человек добавлено в семью."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "",
-    "other": ""
+    "one": "%d человек добавлен в группу.",
+    "few": "",
+    "many": "",
+    "other": "%d человек добавлено в группу."
   },
   "%d person": {
-    "one": "",
-    "other": ""
+    "one": "%d человек",
+    "few": "",
+    "many": "",
+    "other": "%d человек"
   },
   "%d hour": {
-    "one": "",
-    "other": ""
+    "one": "%d час",
+    "few": "",
+    "many": "",
+    "other": "%d часов"
   },
   "Image shown when no Gravatar exists for the email address": "",
   "Important": "",
@@ -175,5 +181,7 @@
   "Invalid server URL format.": "",
   "MailChimp connection failed.": "",
   "Map Zoom Level": "",
-  "Missing families? Update coordinates to include them on the map.": ""
+  "Missing families? Update coordinates to include them on the map.": "",
+  "Missing required settings: %s": "",
+  "Person has no family": ""
 }
