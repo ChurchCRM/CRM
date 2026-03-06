@@ -1,65 +1,47 @@
 {
   "%d month old": {
-    "one": "%d mes de edad",
-    "many": "",
-    "other": "%d meses de edad"
+    "many": "%d meses de edad"
   },
   "%d year old": {
-    "one": "%d año de edad",
-    "many": "",
-    "other": "%d años de edad"
+    "many": "%d años de edad"
   },
   "%d event in %s": {
-    "one": "%d evento en %s",
-    "many": "",
-    "other": "%d eventos en %s"
+    "many": "%d eventos en %s"
   },
   "person": {
-    "one": "Persona",
-    "many": "",
-    "other": "Personas"
+    "many": "Personas"
   },
   "%d Person added to the Cart.": {
-    "one": "%d persona agregada al carrito.",
-    "many": "",
-    "other": "%d personas agregadas al carrito."
+    "many": "%d personas agregadas al carrito."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "%d persona agregada exitosamente a la familia seleccionada.",
-    "many": "",
-    "other": "%d personas agregadas exitosamente a la familia seleccionada."
+    "many": "%d personas agregadas exitosamente a la familia seleccionada."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "%d persona agregada exitosamente al grupo seleccionado.",
-    "many": "",
-    "other": "%d personas agregadas exitosamente al grupo seleccionado."
+    "many": "%d personas agregadas exitosamente al grupo seleccionado."
   },
   "%d person": {
-    "one": "%d persona",
-    "many": "",
-    "other": "%d personas"
+    "many": "%d personas"
   },
   "%d hour": {
-    "one": "%d hora",
-    "many": "",
-    "other": "%d horas"
+    "many": "%d horas"
   },
-  "Calendar not found": "",
-  "Continue to Dashboard": "",
-  "Current Password": "",
-  "Deposit not found": "",
-  "Group not found": "",
-  "Invalid JSON provided for configuration": "",
-  "Password Change Required": "",
-  "Password Change Successful": "",
-  "Password Changed": "",
-  "Passwords must be at least": "",
-  "Property not found": "",
-  "Set New Password": "",
-  "The password for %s has been updated.": "",
-  "Unable to re-encode JSON for configuration": "",
-  "User not found": "",
-  "You must set a new password before continuing.": "",
-  "Your password has been updated successfully.": "",
-  "selected family has no coordinates": ""
+  "Calendar not found": "Calendario no encontrado",
+  "Continue to Dashboard": "Continuar al Tablero",
+  "Current Password": "Contraseña Actual",
+  "Deposit not found": "Depósito no encontrado",
+  "Group not found": "Grupo no encontrado",
+  "Invalid JSON provided for configuration": "JSON no válido para la configuración",
+  "Password Change Required": "Se Requiere Cambio de Contraseña",
+  "Password Change Successful": "Cambio de Contraseña Exitoso",
+  "Password Changed": "Contraseña Cambiada",
+  "Passwords must be at least": "Las contraseñas deben tener al menos",
+  "Property not found": "Propiedad no encontrada",
+  "Set New Password": "Establecer Nueva Contraseña",
+  "The password for %s has been updated.": "La contraseña de %s ha sido actualizada.",
+  "Unable to re-encode JSON for configuration": "No se puede recodificar el JSON para la configuración",
+  "User not found": "Usuario no encontrado",
+  "You must set a new password before continuing.": "Debe establecer una nueva contraseña antes de continuar.",
+  "Your password has been updated successfully.": "Su contraseña ha sido actualizada correctamente.",
+  "selected family has no coordinates": "la familia seleccionada no tiene coordenadas"
 }
