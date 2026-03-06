@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-03 17:31+0000\n"
+"POT-Creation-Date: 2026-03-06 15:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,9 +52,6 @@ msgid " for all funds"
 msgstr ""
 
 msgid " for fund "
-msgstr ""
-
-msgid " has a type mismatch"
 msgstr ""
 
 msgid " more entries will fit."
@@ -1121,6 +1118,9 @@ msgid "Calendar Year"
 msgstr ""
 
 msgid "Calendar access token not found"
+msgstr ""
+
+msgid "Calendar not found"
 msgstr ""
 
 msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
@@ -2251,6 +2251,9 @@ msgid "Deposit Type"
 msgstr ""
 
 msgid "Deposit closed"
+msgstr ""
+
+msgid "Deposit not found"
 msgstr ""
 
 msgid "Deposit saved successfully"
@@ -3843,6 +3846,9 @@ msgstr ""
 msgid "Group management access"
 msgstr ""
 
+msgid "Group not found"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Group of registered students"
 msgstr ""
@@ -4217,6 +4223,9 @@ msgstr ""
 msgid "Invalid Entry"
 msgstr ""
 
+msgid "Invalid JSON provided for configuration"
+msgstr ""
+
 msgid "Invalid List id"
 msgstr ""
 
@@ -4263,9 +4272,6 @@ msgid "Invalid person ID"
 msgstr ""
 
 msgid "Invalid request data"
-msgstr ""
-
-msgid "Invalid request: Missing calendar id"
 msgstr ""
 
 msgid "Invalid server URL format."
@@ -5036,9 +5042,6 @@ msgstr ""
 msgid "Missing calendar access token"
 msgstr ""
 
-msgid "Missing event id"
-msgstr ""
-
 msgid "Missing families? Update coordinates to include them on the map."
 msgstr ""
 
@@ -5541,9 +5544,6 @@ msgid "Not Configured"
 msgstr ""
 
 msgid "Not Found"
-msgstr ""
-
-msgid "Not Found: Unknown calendar id"
 msgstr ""
 
 msgid "Not Subscribed"
@@ -6443,6 +6443,9 @@ msgid "Property Type List"
 msgstr ""
 
 msgid "Property Types"
+msgstr ""
+
+msgid "Property not found"
 msgstr ""
 
 msgid "Property successfully assigned."
@@ -8269,6 +8272,9 @@ msgstr ""
 msgid "Unable to open file"
 msgstr ""
 
+msgid "Unable to re-encode JSON for configuration"
+msgstr ""
+
 msgid "Unassigned"
 msgstr ""
 
@@ -8487,6 +8493,9 @@ msgid "User must have Manage Groups permission"
 msgstr ""
 
 msgid "User must have Menu Options permission"
+msgstr ""
+
+msgid "User not found"
 msgstr ""
 
 #. Context: userconfig_ucfg
@@ -9194,9 +9203,6 @@ msgid "invalid event type id"
 msgstr ""
 
 msgid "invalid export value"
-msgstr ""
-
-msgid "invalid group id"
 msgstr ""
 
 msgid "invalid group request"
