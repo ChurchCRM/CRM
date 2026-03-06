@@ -224,22 +224,22 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
-    - name: Generate missing terms for all locales
+    - name: Download missing terms for all locales from POEditor
       if: inputs.operation_mode != 'audit-only'
       run: |
-        echo "📋 Generating missing translation terms for all locales..."
-        npm run locale:missing
-        echo "✅ Missing terms files generated"
+        echo "📋 Downloading missing translation terms for all locales from POEditor..."
+        npm run locale:download:missing
+        echo "✅ Missing terms files downloaded"
 
     - name: Commit missing terms for POEditor
       if: inputs.operation_mode != 'audit-only'
       run: |
-        if [ -d "locale/missing-terms" ] && [ -n "$(find locale/missing-terms -name 'poeditor-*.json' -type f 2>/dev/null)" ]; then
+        if [ -d "locale/terms/missing" ] && [ -n "$(find locale/terms/missing -name '*.json' -type f 2>/dev/null)" ]; then
           echo "📝 Committing missing terms files..."
-          git add locale/missing-terms/poeditor-*.json
+          git add locale/terms/missing/
           # Check if there are staged changes to commit
           if ! git diff --cached --quiet; then
-            git commit -m "📊 Missing translation terms: Updated for all locales from master list"
+            git commit -m "locale: update missing translation terms from POEditor"
             echo "✅ Missing terms files committed"
           else
             echo "ℹ️  No new missing terms to commit"
@@ -278,11 +278,11 @@ jobs:
           **What's included:**
           - Updated translation files from POEditor
           - Generated locale JSON files
-          - 📊 Missing terms for all locales (in `locale/missing-terms/poeditor-*.json`)
+          - 📊 Missing terms for all locales (in `locale/terms/missing/`)
           - Locale audit results
           
           **Missing Terms Reports:**
-          For each incomplete locale, a `poeditor-{locale}.json` file contains all missing/untranslated terms from the master English list. These can be imported into POEditor to help translators complete the translations.
+          For each incomplete locale, batch files under `locale/terms/missing/{locale}/` contain all untranslated terms downloaded directly from POEditor. These can be used with `/locale-translate` or uploaded directly to POEditor.
           
           This PR was automatically created by the POEditor workflow.
           
