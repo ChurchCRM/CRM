@@ -22,8 +22,8 @@ describe("API Private Person", () => {
         });
 
         it("Returns error for non-existent person", () => {
-            // API returns 412 Precondition Failed for non-existent person
-            cy.makePrivateAdminAPICall("GET", "/api/person/99999", null, 412);
+            // AbstractEntityMiddleware returns 404 Not Found for missing entity
+            cy.makePrivateAdminAPICall("GET", "/api/person/99999", null, 404);
         });
     });
 

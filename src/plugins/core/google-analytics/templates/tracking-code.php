@@ -6,8 +6,6 @@
  * - $trackingId: The GA4 Measurement ID (G-XXXXXXXXXX)
  */
 
-declare(strict_types=1);
-
 use ChurchCRM\Utils\InputUtils;
 
 if (empty($trackingId)) {
