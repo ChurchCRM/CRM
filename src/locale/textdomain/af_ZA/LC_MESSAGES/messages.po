@@ -6730,14 +6730,6 @@ msgid "View User"
 msgstr "Bekyk gebruiker"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Ongeldige versoek: ontbrekende kalender-ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Nie gevind nie: Onbekende kalender-ID"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "geen gevind of gebruiker sonder 'n e-pos nie"
@@ -6906,10 +6898,6 @@ msgstr "ongeldige gebeurtenis tipe ID"
 #: 
 msgid "invalid calendar pinning"
 msgstr "ongeldige kalender vas"
-
-#: 
-msgid "invalid group id"
-msgstr "ongeldige groep-ID"
 
 #: 
 msgid "invalid status value"
@@ -7083,10 +7071,6 @@ msgstr "Kon nie die definisie-lêer van handtekeninge dekodeer nie"
 #: 
 msgid "Age Histogram"
 msgstr "Ouderdomshistogram"
-
-#: 
-msgid "Missing event id"
-msgstr "Ontbrekende gebeurtenis-ID"
 
 #: 
 msgid "Event not found"
@@ -7458,10 +7442,6 @@ msgstr "Help om hierdie projek te vertaal"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr " het 'n tikfout begaan"
 
 #: 
 msgid "Loading"
@@ -8065,14 +8045,6 @@ msgid "City is required"
 msgstr "Dorp word vereis"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Databasisbedienerpoor word vereis (bv. 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Databasisbedienerkruinaam word vereis"
-
-#: 
 msgid "Email Address"
 msgstr "E-posadres"
 
@@ -8175,10 +8147,6 @@ msgstr "Telefoonnommer"
 #: 
 msgid "Please add at least one family member."
 msgstr "Voeg asseblief minstens een familielid by."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Herstel asseblief die validasiefout voordat u voortgaan."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8541,10 +8509,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Geen rekords is van die vorige rapport teruggestuur nie. Pas asseblief u filters of datumreeks aan en probeer weer."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Voer asseblief 'n menunaam in (2-50 karakters)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Voer asseblief 'n geldige URL in wat begin met http:// of https://"
 
@@ -8553,28 +8517,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Al die stelsellêertekens stem ooreen met die verwagte waardes."
 
 #: 
-msgid "Files with issues"
-msgstr "Lêers met Probleme"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Integriteitskontrole gefaal"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Integriteitskontrole geslaag"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Tekendefinisielêer bestaan, maar kan nie gelees word nie. Kontroleer lêertoestemmings."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Tekendefinisielêer ontbreek by %s. Voer die verpakkingstaak uit of stel 'n amptelike vrylasing in om tekens opnieuw te genereer."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Kon nie die integriteitseinpunt kontak nie. Kontroleer webwerf-bedienerfouttologboeke."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10305,10 +10253,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Voer staat/provinsie in vir lande sonder voorafbepaalde state)"
 
 #: 
-msgid "Available"
-msgstr "Beskikbaar"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Basis-URL-konfigurasie is ongeldig. Kontroleer asseblief jou Config.php-lêer."
 
@@ -10393,10 +10337,6 @@ msgid "No locales configured"
 msgstr "Geen landinstell opgestel"
 
 #: 
-msgid "Not Available"
-msgstr "Nie Beskikbaar"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Oopmaak hierdie lêer in 'n teksteditor:"
 
@@ -10429,10 +10369,6 @@ msgid "System Locale Support"
 msgstr "Stelsel Landinstelling Ondersteuning"
 
 #: 
-msgid "System Support"
-msgstr "Stelsel Ondersteuning"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL bevat nie 'n geldige gasheernaam nie"
 
@@ -10451,18 +10387,6 @@ msgstr "URL moet eindig met 'n agtervolgende skuinsstreep (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL moet begin met http:// of https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Kan stemsellokale nie opspoor nie"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Kan beskikbare lokale nie bepaal nie"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Kan lokale inligting nie laai nie"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10679,10 +10603,6 @@ msgstr "Misluk to upload person photo"
 #: 
 msgid "Remote backup failed"
 msgstr "Afgeleë rugsteun gefaal"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV-rugsteune is nie korrek opgestel nie. Maak asseblief seker dat eindpunt, gebruikernaam en wagwoord ingestel is"
 
 #: 
 msgid "2FA Enabled"

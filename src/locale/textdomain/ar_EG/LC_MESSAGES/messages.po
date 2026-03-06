@@ -6730,14 +6730,6 @@ msgid "View User"
 msgstr "عرض العضو"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "طلب غير صالح: مفقود معرف التقويم"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "لم يتم العثور: معرف تقويم غير معروف"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "لم يتم العثور على المستخدم أو البريد الإلكتروني دون"
@@ -6906,10 +6898,6 @@ msgstr "نوع الحدث غير صالح معرف"
 #: 
 msgid "invalid calendar pinning"
 msgstr "التدبيس تقويم غير صالح"
-
-#: 
-msgid "invalid group id"
-msgstr "معرف مجموعة غير صالح"
 
 #: 
 msgid "invalid status value"
@@ -7083,10 +7071,6 @@ msgstr "خطأ في ملف تعريف فك توقيع"
 #: 
 msgid "Age Histogram"
 msgstr "العمر الرسم البياني"
-
-#: 
-msgid "Missing event id"
-msgstr "مفقود معرف الحدث"
 
 #: 
 msgid "Event not found"
@@ -7459,10 +7443,6 @@ msgstr "ساعد في ترجمة هذا المشروع"
 #: 
 msgid "Afrikaans"
 msgstr "الأفريكانية"
-
-#: 
-msgid " has a type mismatch"
-msgstr " له نوع غير متطابق"
 
 #: 
 msgid "Loading"
@@ -8065,14 +8045,6 @@ msgid "City is required"
 msgstr "المدينة مطلوبة"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "منفذ خادم قاعدة البيانات مطلوب (على سبيل المثال، 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "اسم مستخدم قاعدة البيانات مطلوب"
-
-#: 
 msgid "Email Address"
 msgstr "عنوان البريد الإلكتروني"
 
@@ -8175,10 +8147,6 @@ msgstr "رقم الهاتف"
 #: 
 msgid "Please add at least one family member."
 msgstr "يرجى إضافة عضو عائلة واحد على الأقل."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "يرجى تصحيح أخطاء التحقق قبل المتابعة."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8541,10 +8509,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "لم يتم إرجاع أي سجلات من التقرير السابق. يرجى تعديل المرشحات أو نطاق التاريخ والمحاولة مجددا."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "يرجى إدخال اسم القائمة (2-50 حرفا)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "يرجى إدخال عنوان URL صحيح يبدأ بـ http:// أو https://"
 
@@ -8553,28 +8517,12 @@ msgid "All system file signatures match the expected values."
 msgstr "جميع توقيعات ملفات النظام تطابق القيم المتوقعة."
 
 #: 
-msgid "Files with issues"
-msgstr "الملفات التي تحتوي على مشاكل"
-
-#: 
-msgid "Integrity check failed"
-msgstr "فشل فحص السلامة"
-
-#: 
-msgid "Integrity check passed"
-msgstr "نجح فحص السلامة"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "ملف تعريف التوقيع موجود ولكنه غير قابل للقراءة. تحقق من أذونات الملف."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "ملف تعريف التوقيع مفقود في %s. قم بتشغيل مهمة التعبئة أو نشر إصدار رسمي لإعادة إنشاء التوقيعات."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "لا يمكن الاتصال بنقطة نهاية السلامة. تحقق من سجلات أخطاء خادم الويب."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10313,10 +10261,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(أدخل الولاية/المقاطعة للدول بدون ولايات معرفة مسبقا)"
 
 #: 
-msgid "Available"
-msgstr "متاح"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "تكوين عنوان URL الأساسي غير صحيح. يرجى التحقق من ملف Config.php الخاص بك."
 
@@ -10401,10 +10345,6 @@ msgid "No locales configured"
 msgstr "لم يتم تكوين لغات محلية"
 
 #: 
-msgid "Not Available"
-msgstr "غير متاح"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "افتح هذا الملف في محرر نصوص:"
 
@@ -10437,10 +10377,6 @@ msgid "System Locale Support"
 msgstr "دعم اللغات المحلية للنظام"
 
 #: 
-msgid "System Support"
-msgstr "دعم النظام"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "عنوان URL لا يحتوي على اسم مضيف صحيح"
 
@@ -10459,18 +10395,6 @@ msgstr "يجب أن ينتهي عنوان URL بشرطة زائدة (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "يجب أن يبدأ عنوان URL بـ http:// أو https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "لا يمكن الكشف عن لغات النظام المحلية"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "لا يمكن تحديد اللغات المحلية المتاحة"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "لا يمكن تحميل معلومات اللغة المحلية"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10687,10 +10611,6 @@ msgstr "فشل تحميل صورة الشخص"
 #: 
 msgid "Remote backup failed"
 msgstr "فشلت النسخة الاحتياطية البعيدة"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "لم يتم تكوين نسخ WebDAV احتياطية بشكل صحيح. يرجى التأكد من تعيين نقطة النهاية واسم المستخدم وكلمة المرور"
 
 #: 
 msgid "2FA Enabled"

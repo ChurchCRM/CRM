@@ -6827,14 +6827,6 @@ msgid "View User"
 msgstr "查看用户"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "请求无效：缺少日历ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "找不到：未知的日历ID"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "没有找到或没有电子邮件的用户"
@@ -7003,10 +6995,6 @@ msgstr "无效的事件类型ID"
 #: 
 msgid "invalid calendar pinning"
 msgstr "无效的日历pinning"
-
-#: 
-msgid "invalid group id"
-msgstr "无效的组ID"
 
 #: 
 msgid "invalid status value"
@@ -7180,10 +7168,6 @@ msgstr "解码签名定义文件时出错"
 #: 
 msgid "Age Histogram"
 msgstr "年龄直方图"
-
-#: 
-msgid "Missing event id"
-msgstr "缺少事件ID"
 
 #: 
 msgid "Event not found"
@@ -7553,10 +7537,6 @@ msgstr "帮助翻译这个项目"
 #: 
 msgid "Afrikaans"
 msgstr "南非语"
-
-#: 
-msgid " has a type mismatch"
-msgstr " 类型不匹配"
 
 #: 
 msgid "Loading"
@@ -8159,14 +8139,6 @@ msgid "City is required"
 msgstr "城市是必填项"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "数据库服务器端口是必填项（例如：3306）"
-
-#: 
-msgid "Database username is required"
-msgstr "数据库用户名是必填项"
-
-#: 
 msgid "Email Address"
 msgstr "电子邮件地址"
 
@@ -8269,10 +8241,6 @@ msgstr "电话号码"
 #: 
 msgid "Please add at least one family member."
 msgstr "请至少添加一名家庭成员。"
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "请在继续之前纠正验证错误。"
 
 #: 
 msgid "Please enter a valid URL"
@@ -8635,10 +8603,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "之前的报告未返回任何记录。请调整您的过滤器或日期范围，然后重试。"
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "请输入菜单名称（2-50 个字符）"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "请输入以 http:// 或 https:// 开头的有效 URL"
 
@@ -8647,28 +8611,12 @@ msgid "All system file signatures match the expected values."
 msgstr "所有系统文件签名均符合预期值。"
 
 #: 
-msgid "Files with issues"
-msgstr "有问题的文件"
-
-#: 
-msgid "Integrity check failed"
-msgstr "完整性检查失败"
-
-#: 
-msgid "Integrity check passed"
-msgstr "完整性检查通过"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "签名定义文件存在但不可读。检查文件权限。"
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "位于 %s 的签名定义文件丢失。请运行打包任务或部署官方版本以重新生成签名。"
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "无法联系完整性端点。请检查 Web 服务器错误日志。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10397,10 +10345,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "（为没有预定义州/省的国家输入州/省）"
 
 #: 
-msgid "Available"
-msgstr "可用"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "基础 URL 配置无效。请检查您的 Config.php 文件。"
 
@@ -10485,10 +10429,6 @@ msgid "No locales configured"
 msgstr "未配置语言环境"
 
 #: 
-msgid "Not Available"
-msgstr "不可用"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "在文本编辑器中打开此文件："
 
@@ -10521,10 +10461,6 @@ msgid "System Locale Support"
 msgstr "系统语言环境支持"
 
 #: 
-msgid "System Support"
-msgstr "系统支持"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL 不包含有效的主机名"
 
@@ -10543,18 +10479,6 @@ msgstr "URL 必须以结尾斜杠 (/) 结束"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL 必须以 http:// 或 https:// 开始"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "无法检测系统语言环境"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "无法确定可用语言环境"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "无法加载语言环境信息"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10771,10 +10695,6 @@ msgstr "上传个人照片失败"
 #: 
 msgid "Remote backup failed"
 msgstr "远程备份失败"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV 备份配置不正确。请确保已设置终端点、用户名和密码"
 
 #: 
 msgid "2FA Enabled"

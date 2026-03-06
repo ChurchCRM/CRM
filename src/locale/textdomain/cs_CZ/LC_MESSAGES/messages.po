@@ -6716,14 +6716,6 @@ msgid "View User"
 msgstr "Zobrazit uživatele"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Neplatný požadavek: Chybějící ID kalendáře"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Nenalezeno: Neznámé ID kalendáře"
-
-#: 
 msgid "not found or user without an email"
 msgstr "nenalezen nebo uživatel bez e-mailu"
 
@@ -6890,10 +6882,6 @@ msgstr "neplatné ID typu události"
 #: 
 msgid "invalid calendar pinning"
 msgstr "neplatné připnutí kalendáře"
-
-#: 
-msgid "invalid group id"
-msgstr "neplatné ID skupiny"
 
 #: 
 msgid "invalid status value"
@@ -7064,10 +7052,6 @@ msgstr "Chyba při dekódování souboru s definicí podpisu"
 #: 
 msgid "Age Histogram"
 msgstr "Věkový histogram"
-
-#: 
-msgid "Missing event id"
-msgstr "Chybějící ID události"
 
 #: 
 msgid "Event not found"
@@ -7439,10 +7423,6 @@ msgstr "Pomožte přeložit tento projekt"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikánština"
-
-#: 
-msgid " has a type mismatch"
-msgstr " má typový nesoulad"
 
 #: 
 msgid "Loading"
@@ -8045,14 +8025,6 @@ msgid "City is required"
 msgstr "Město je vyžadováno"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Je vyžadován port databázového serveru (např. 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Je vyžadováno uživatelské jméno databáze"
-
-#: 
 msgid "Email Address"
 msgstr "E-mailová adresa"
 
@@ -8155,10 +8127,6 @@ msgstr "Telefonní číslo"
 #: 
 msgid "Please add at least one family member."
 msgstr "Prosím zadejte alespoň jednoho člena rodiny."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Před pokračováním opravte chyby ověření."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8521,10 +8489,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Z předchozí zprávy nebyly vráceny žádné záznamy. Upravte filtry nebo rozsah dat a zkuste to znovu."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Zadejte název nabídky (2–50 znaků)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Zadejte platnou adresu URL začínající http:// nebo https://"
 
@@ -8533,28 +8497,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Všechny podpisy systémových souborů odpovídají očekávaným hodnotám."
 
 #: 
-msgid "Files with issues"
-msgstr "Soubory s problémy"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Kontrola integrity selhala"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Kontrola integrity proběhla úspěšně"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Soubor s definicí podpisu existuje, ale není čitelný. Zkontrolujte oprávnění k souboru."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Soubor s definicí podpisu chybí v %s. Spusťte balíčkovací úlohu nebo nahrajte oficiální verzi, aby se podpisy znovu vygenerovaly."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Nelze kontaktovat koncový bod integrity. Zkontrolujte protokoly chyb webového serveru."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -10287,10 +10235,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Zadejte stát/provincii pro země bez předdefinovaných států)"
 
 #: 
-msgid "Available"
-msgstr "Dostupné"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurace základní URL adresy je neplatná. Zkontrolujte prosím soubor Config.php."
 
@@ -10375,10 +10319,6 @@ msgid "No locales configured"
 msgstr "Není nakonfigurováno žádné loálí"
 
 #: 
-msgid "Not Available"
-msgstr "Není dostupné"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Otevříte tento soubor v textovém editoru:"
 
@@ -10411,10 +10351,6 @@ msgid "System Locale Support"
 msgstr "Podpora loálí systému"
 
 #: 
-msgid "System Support"
-msgstr "Podpora systému"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL neobsahuje platný název hostitele"
 
@@ -10433,18 +10369,6 @@ msgstr "URL musí končit lomítkem (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL musí začínat http:// nebo https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Nelze detekovat loálí systému"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Nelze určit dostupné národní prostředí"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Nelze načíst informace o místním nastavení"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10661,10 +10585,6 @@ msgstr "Nepodařilo se nahrát fotografii osoby"
 #: 
 msgid "Remote backup failed"
 msgstr "Vzdálená záloha se nezdařila"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Zálohy WebDAV nejsou správně nakonfigurovány. Ujistěte se, že je nastaven koncový bod, uživatelské jméno a heslo."
 
 #: 
 msgid "2FA Enabled"
