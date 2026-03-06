@@ -4,13 +4,13 @@ Run the full localization pipeline before a release: regenerate missing terms, t
 
 ## Steps
 
-### Step 1 — Regenerate missing terms
+### Step 1 — Download missing terms from POEditor
 
 ```bash
-npm run locale:missing
+npm run locale:download:missing
 ```
 
-This compares `locale/messages.json` against all installed `src/locale/i18n/*.json` files and writes fresh empty batch files to `locale/terms/missing/{locale}/`.
+This queries POEditor with `filters=untranslated` for each locale and writes fresh empty batch files to `locale/terms/missing/{locale}/`.
 
 ### Step 2 — Preview what needs translation
 

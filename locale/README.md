@@ -24,6 +24,7 @@ locale/
 ### Locale Management
 - `npm run locale:audit` - Generate locale completeness report
 - `npm run locale:download` - Download latest translations from POEditor
+- `npm run locale:download:missing` - Download **only untranslated (missing) terms** per locale from POEditor
 - `npm run locale:term-extract` - Extract all translatable terms for POEditor upload
 
 ### Manual Scripts (require parameters)
@@ -63,33 +64,27 @@ ChurchCRM uses [POEditor](https://poeditor.com) as the primary translation manag
 
 ### Missing Terms Workflow
 
-For identifying and prioritizing untranslated terms:
+Uses POEditor's `filters=untranslated` export filter to download only the missing terms
+directly from the API — no prior `locale:download` needed.
 
-1. **Generate Missing Terms**: `npm run locale:missing`
-   - Compares POEditor terms against each locale's translated terms
-   - Creates JSON files in `locale/terms/missing/{locale}/`
-   - Files are batched (default 150 terms per file) for easy POEditor import
+```bash
+npm run locale:download:missing              # All locales
+npm run locale:download:missing -- --locale fr  # French only
+```
 
-2. **Upload to POEditor**: 
-   - Go to POEditor → Your Project → Import
-   - Select language and upload the JSON files from `locale/terms/missing/{locale}/`
-   - POEditor will highlight these as needing translation
+Output: `locale/terms/missing/{poEditorCode}/{code}-N.json`
 
-3. **Translation Priority**:
-   - Files are named `{locale}-1.json`, `{locale}-2.json`, etc.
-   - Lower numbers = higher priority (most common terms)
-   - Translators should complete batch 1 before moving to batch 2
-
-4. **Download Updates**: After translators complete work, run `npm run locale:download`
+Batch files contain at most 150 terms each. Locales with fewer than 10 missing terms are
+skipped automatically. Files are ready for `/locale-translate` or direct upload to POEditor.
 
 ### Quick Reference Commands
 
 ```bash
 # Full translation workflow
-npm run locale:build      # Extract all terms from source code
-npm run locale:download   # Download translations from POEditor
-npm run locale:audit      # Generate completeness report
-npm run locale:missing    # Generate missing term files for each locale
+npm run locale:build                         # Extract all terms from source code
+npm run locale:download                      # Download translations from POEditor
+npm run locale:audit                         # Generate completeness report
+npm run locale:download:missing              # Fetch untranslated terms from POEditor
 ```
 
 ## 📝 Gettext System
