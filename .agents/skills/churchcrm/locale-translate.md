@@ -119,6 +119,25 @@ This returns **only the untranslated entries** (empty string values or plural ob
 
 6. Repeat for the next batch file.
 
+### Step 6.5 — Commit after every group <!-- learned: 2026-03-06 -->
+
+**MANDATORY: use `report_progress` after every group of locales is fully applied.** Never let more than one group accumulate without committing.
+
+Group boundaries (commit after each):
+1. All small locales (≤ 25 terms, 1 file) — commit with message `locale: translate small locales (af, sq, am, …)`
+2. Medium single-file locales (26–200 terms, 1 file, e.g. it, th) — commit with message `locale: translate medium locales (it, th)`
+3. Medium two-file locales (tr, sw, hu, ru, …) — commit with message `locale: translate medium two-file locales`
+4. Large two-file locales (pt-br, pt, es-SV, …) — commit with message `locale: translate large locales`
+5. Very large three-file locales (ro, et, fi, nb, sv, uk, vi) — commit with one message per locale or one message for the group
+
+**Why commit often?**
+- Protects work-in-progress from session failures
+- Keeps diffs reviewable per language family
+- Allows partial uploads to POEditor if the session is interrupted
+- The translation batch files are the deliverable — committing them is how you save progress
+
+In the main session use `report_progress`. In a background agent, stage and describe the files to apply in the main session so the main session can commit them.
+
 ### JSON Safety Rules (CRITICAL)
 
 These rules prevent the most common translation failures:
@@ -211,10 +230,12 @@ When translating many locales at once, sequential processing is slow. Use parall
 **Process order: smallest locales first, then scale up to larger ones.**
 
 **Group locales by size** and launch one agent per group:
-- **Small locales** (≤ 15 terms, 1 batch file): Do ALL of these in the main session first — fast and validate workflow
-- **Medium locales** (16–200 terms, 1–2 batch files): Group 3–4 per background agent after smalls are done
+- **Small locales** (≤ 25 terms, 1 batch file): Do ALL of these in the main session first — fast and validate workflow
+- **Medium locales** (26–200 terms, 1–2 batch files): Group 3–4 per background agent after smalls are done
 - **Large locales** (200+ terms, 3+ batch files): Group 2–4 per background agent
 - **Very large locales** (700+ terms, 6+ batch files): Dedicate 1 agent per locale, run last
+
+**⚠️ Commit after EVERY group using `report_progress`.** Do not proceed to the next group until the current group is committed. This ensures progress is saved even if a later group fails.
 
 **Background agents CANNOT use Bash** (they run without user interaction so Bash approval is never granted). Background agents must use only **Read** and **Write** tools to prepare translation files, then the main session runs the `--apply` Bash commands after agents complete.
 
@@ -222,14 +243,23 @@ When translating many locales at once, sequential processing is slow. Use parall
 ```
 Translate the following locales: <code1>, <code2>, ...
 
+Working directory: /home/runner/work/CRM/CRM
+
 For each locale:
 1. Run: node locale/scripts/locale-translate.js --info --locale <code>
 2. For each batch file, run: node locale/scripts/locale-translate.js --read-file --file <path>
-3. Translate all terms. IMPORTANT: Use a file-write helper to write translations to /tmp/<locale>-<n>.json (never bash heredoc/echo — it breaks Unicode)
-4. Apply: node locale/scripts/locale-translate.js --apply --file <path> --translations "$(cat /tmp/<locale>-<n>.json)"
-
-Working directory: /Users/gdawoud/Development/ChurchCRM/CRM
+3. Translate all terms. IMPORTANT: Use the `create` file-write tool to write translations to /tmp/<locale>-<n>.json (NEVER use bash heredoc/echo — it breaks Unicode)
+4. Validate: python3 -c "import json; json.load(open('/tmp/<locale>-<n>.json')); print('OK')"
+5. Apply: node locale/scripts/locale-translate.js --apply --file <path> --translations "$(cat /tmp/<locale>-<n>.json)"
+6. After ALL locales in your group are applied, the MAIN SESSION will commit with report_progress.
 ```
+
+**Main session commit flow for `--all` mode:**
+```
+Group 1 agents finish → main session verifies → report_progress → Group 2 agents start → …
+```
+
+Never start a new group of agents until the previous group is committed.
 
 **Small locales share the same term keys** — all locales with exactly 13 terms share this key set:
 `%d month old`, `%d year old`, `%d event in %s`, `person`, `%d Person added to the Cart.`,
