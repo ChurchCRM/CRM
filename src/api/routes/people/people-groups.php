@@ -309,7 +309,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             }
         }
         return SlimUtils::renderSuccessJSON($response);
-    })->add(GroupMiddleware::class)->add(new PersonMiddleware('userID'));
+    })->add(new PersonMiddleware('userID'))->add(GroupMiddleware::class);
 
     /**
      * @OA\Post(
@@ -353,7 +353,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             ->filterByPersonId($input['PersonID'])
             ->findByGroupId($groupID);
         return SlimUtils::renderJSON($response, $members->toArray());
-    })->add(GroupMiddleware::class)->add(new PersonMiddleware('userID'));
+    })->add(new PersonMiddleware('userID'))->add(GroupMiddleware::class);
 
     /**
      * @OA\Post(

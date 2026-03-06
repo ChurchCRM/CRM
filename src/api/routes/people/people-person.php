@@ -48,14 +48,56 @@ use Slim\HttpCache\Cache;
  *     ),
  *     @OA\Response(response=401, description="Unauthorized")
  * )
+ * @OA\Post(
+ *     path="/person/{personId}/photo",
+ *     operationId="uploadPersonPhoto",
+ *     summary="Upload a person's photo (base64 encoded)",
+ *     description="Upload a base64-encoded image file for a person. Supported formats: PNG, JPEG, JPG, GIF, WEBP. Maximum size: 10MB.",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\RequestBody(required=true, description="Base64 encoded image data",
+ *         @OA\JsonContent(
+ *             required={"imgBase64"},
+ *             @OA\Property(property="imgBase64", type="string", description="Base64-encoded image data with data URI prefix", example="data:image/jpeg;base64,/9j/4AAQSkZJRg...")
+ *         )
+ *     ),
+ *     @OA\Response(response=200, description="Photo uploaded successfully",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean", example=true),
+ *             @OA\Property(property="hasPhoto", type="boolean", example=true)
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="Invalid image data or upload failed"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="EditRecords role required"),
+ *     @OA\Response(response=404, description="Person not found")
+ * )
+ * @OA\Delete(
+ *     path="/person/{personId}/photo",
+ *     operationId="deletePersonPhoto",
+ *     summary="Delete a person's uploaded photo",
+ *     description="Remove the uploaded photo for a person. This operation is idempotent and will return success even if no photo exists.",
+ *     tags={"People"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
+ *     @OA\Response(response=200, description="Photo deleted successfully",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean", example=true)
+ *         )
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="DeleteRecords role required")
+ * )
  */
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
     // Returns uploaded photo only - 404 if no uploaded photo
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
-        $photo = new Photo('Person', (int)$args['personId']);
+        $personId = (int)$args['personId'];
+        $photo = new Photo('Person', $personId);
         
         if (!$photo->hasUploadedPhoto()) {
-            throw new HttpNotFoundException($request, 'No uploaded photo exists for this person');
+            return SlimUtils::renderErrorJSON($response, 'No uploaded photo exists for this person', [], 404);
         }
         
         return SlimUtils::renderPhoto($response, $photo);
@@ -67,6 +109,48 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $avatarInfo = Photo::getAvatarInfo('Person', (int)$args['personId']);
         return SlimUtils::renderJSON($response, $avatarInfo);
     });
+    
+    // Upload photo
+    $group->post('/photo', function (Request $request, Response $response, array $args): Response {
+        $personId = (int)$args['personId'];
+        
+        try {
+            $person = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk($personId);
+            if (!$person) {
+                return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
+            }
+            
+            $input = $request->getParsedBody();
+            $person->setImageFromBase64($input['imgBase64']);
+            // Refresh photo status and return updated info
+            $person->getPhoto()->refresh();
+            return SlimUtils::renderJSON($response, [
+                'success' => true,
+                'hasPhoto' => $person->getPhoto()->hasUploadedPhoto()
+            ]);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to upload person photo'), [], 400, $e, $request);
+        }
+    })->add(EditRecordsRoleAuthMiddleware::class);
+    
+    // Delete photo
+    $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
+        try {
+            $personId = (int)$args['personId'];
+            $person = \ChurchCRM\model\ChurchCRM\PersonQuery::create()->findPk($personId);
+            
+            if (!$person) {
+                // Return success for 404 since DELETE is idempotent
+                return SlimUtils::renderJSON($response, ['success' => true]);
+            }
+            
+            $deleted = $person->deletePhoto();
+            return SlimUtils::renderJSON($response, ['success' => $deleted]);
+        } catch (\Throwable $e) {
+            // Log the error but return 200 since DELETE is idempotent
+            return SlimUtils::renderJSON($response, ['success' => true]);
+        }
+    })->add(DeleteRecordRoleAuthMiddleware::class);
 });
 
 /**
@@ -165,29 +249,6 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         Cart::addPerson($args['personId']);
         return SlimUtils::renderSuccessJSON($response);
     });
-
-    $group->post('/photo', function (Request $request, Response $response, array $args): Response {
-        $person = $request->getAttribute('person');
-        $input = $request->getParsedBody();
-        
-        try {
-            $person->setImageFromBase64($input['imgBase64']);
-            // Refresh photo status and return updated info
-            $person->getPhoto()->refresh();
-            return SlimUtils::renderJSON($response, [
-                'success' => true,
-                'hasPhoto' => $person->getPhoto()->hasUploadedPhoto()
-            ]);
-        } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to upload person photo'), [], 400, $e, $request);
-        }
-    })->add(EditRecordsRoleAuthMiddleware::class);
-
-    $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
-        $person = $request->getAttribute('person');
-
-        return SlimUtils::renderJSON($response, ['success' => $person->deletePhoto()]);
-    })->add(DeleteRecordRoleAuthMiddleware::class);
 })->add(PersonMiddleware::class);
 
 /**
