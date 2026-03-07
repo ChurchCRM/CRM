@@ -86,7 +86,7 @@ function countUntranslated(terms) {
 function cmdList(localeMap) {
     const missingDir = config.terms.missing;
     if (!fs.existsSync(missingDir)) {
-        console.log('No missing terms directory found. Run: npm run locale:download:missing');
+        console.log('No missing terms directory found. Run: npm run locale:download (the downloader now generates missing-term batches)');
         return;
     }
 

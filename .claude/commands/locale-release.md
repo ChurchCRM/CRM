@@ -4,13 +4,17 @@ Run the full localization pipeline before a release: regenerate missing terms, t
 
 ## Steps
 
-### Step 1 — Download missing terms from POEditor
+### Step 1 — Generate missing-term batches (via main downloader)
 
 ```bash
-npm run locale:download:missing
+# Full run (all locales):
+npm run locale:download
+
+# Single-locale only (e.g. French):
+node locale/scripts/poeditor-downloader.js --locale fr
 ```
 
-This queries POEditor with `filters=untranslated` for each locale and writes fresh empty batch files to `locale/terms/missing/{locale}/`.
+The downloader now writes missing-term batch files to `locale/terms/missing/{locale}/` when appropriate.
 
 ### Step 2 — Preview what needs translation
 

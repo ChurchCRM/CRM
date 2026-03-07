@@ -33,6 +33,12 @@ const MASTER_LIST_DIR = path.join(__dirname, '../'); // /locale directory for ma
 const TEXTDOMAIN_OUTPUT_DIR = path.join(__dirname, '../../src/locale/textdomain');
 const POEDITOR_API = 'https://api.poeditor.com/v2/projects/export';
 
+// Use centralized locale config for missing-terms paths and settings
+const localeConfig = require('./locale-config');
+const MISSING_OUTPUT_DIR = localeConfig.terms.missingNew;
+const TERMS_PER_FILE = localeConfig.settings?.missingTermsBatchSize || 150;
+const MIN_MISSING_TERMS = 0; // never skip missing terms
+
 // File formats to download
 const FILE_FORMATS = [
     { type: 'key_value_json', dir: JSON_OUTPUT_DIR, ext: 'json', filename: (locale) => `${locale}.json` },
@@ -75,34 +81,165 @@ function sleep(ms) {
 }
 
 /**
+ * Fetch untranslated (missing) terms for a POEditor locale as a JS object.
+ * Returns an object mapping term->empty string (or the untranslated value)
+ */
+async function fetchUntranslatedTerms(poEditorLocale) {
+    const postData = new URLSearchParams({
+        api_token: apiToken,
+        id: projectId,
+        language: poEditorLocale,
+        type: 'key_value_json',
+        filters: 'untranslated',
+    }).toString();
+
+    const response = await makeRequest(POEDITOR_API, postData);
+    const result = JSON.parse(response.data);
+
+    if (result.response.status !== 'success') {
+        throw new Error(result.response.message || 'Unknown POEditor error');
+    }
+
+    const downloadUrl = result.result.url;
+
+    // fetch JSON from signed URL
+    return new Promise((resolve, reject) => {
+        https.get(downloadUrl, (res) => {
+            const { statusCode } = res;
+            let data = '';
+
+            res.on('data', (d) => { data += d; });
+            res.on('end', () => {
+                // Handle non-2xx responses with helpful error
+                if (statusCode < 200 || statusCode >= 300) {
+                    const snippet = (data || '').toString().slice(0, 200).replace(/\s+/g, ' ');
+                    reject(new Error(`Download failed: HTTP ${statusCode} from ${downloadUrl} — response: ${snippet}`));
+                    return;
+                }
+
+                const trimmed = (data || '').trim();
+                if (trimmed.length === 0) {
+                    // Empty export -> no missing terms
+                    resolve({});
+                    return;
+                }
+
+                try {
+                    const parsed = JSON.parse(data);
+                    resolve(parsed);
+                } catch (err) {
+                    const snippet = data.slice(0, 200);
+                    reject(new Error(`Failed to parse JSON from ${downloadUrl}: ${err.message} — snippet: ${snippet}`));
+                }
+            });
+        }).on('error', (err) => reject(err));
+    });
+}
+
+/**
+ * Save missing terms in batched JSON files under MISSING_OUTPUT_DIR/{poEditorCode}/
+ * Returns array of written file paths.
+ */
+function saveBatchedMissingTerms(poEditorCode, missingTerms) {
+    const localeOutDir = path.join(MISSING_OUTPUT_DIR, poEditorCode);
+
+    if (!fs.existsSync(localeOutDir)) {
+        fs.mkdirSync(localeOutDir, { recursive: true });
+    }
+
+    // Remove pre-existing batch files for a clean rebuild
+    try {
+        const existing = fs.readdirSync(localeOutDir).filter((f) => f.endsWith('.json'));
+        existing.forEach((f) => {
+            try { fs.unlinkSync(path.join(localeOutDir, f)); } catch (_) {}
+        });
+    } catch (_) {}
+
+    const entries = Object.entries(missingTerms);
+    const files = [];
+    let batchNumber = 1;
+
+    for (let i = 0; i < entries.length; i += TERMS_PER_FILE) {
+        const batch = Object.fromEntries(entries.slice(i, i + TERMS_PER_FILE));
+        const filename = path.join(localeOutDir, `${poEditorCode}-${batchNumber}.json`);
+        fs.writeFileSync(filename, JSON.stringify(batch, null, 2) + '\n');
+        files.push(filename);
+        batchNumber++;
+    }
+
+    return files;
+}
+
+
+/**
  * Make HTTPS request to POEditor API
  */
 function makeRequest(url, postData) {
-    return new Promise((resolve, reject) => {
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Content-Length': Buffer.byteLength(postData),
-            },
-        };
+    // Robust request with retry/backoff for rate limiting (HTTP 429) and 5xx
+    const MAX_RETRIES = 5;
+    const BASE_DELAY_MS = 1000; // 1s
+    const BACKOFF_FACTOR = 2;
 
-        const req = https.request(url, options, (res) => {
-            let data = '';
-            res.on('data', (chunk) => { data += chunk; });
-            res.on('end', () => {
-                if (res.statusCode >= 200 && res.statusCode < 300) {
-                    resolve({ status: res.statusCode, data });
-                } else {
-                    reject(new Error(`HTTP ${res.statusCode}: ${data}`));
-                }
+    function doRequest() {
+        return new Promise((resolve, reject) => {
+            const options = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Content-Length': Buffer.byteLength(postData),
+                },
+            };
+
+            const req = https.request(url, options, (res) => {
+                let data = '';
+                res.on('data', (chunk) => { data += chunk; });
+                res.on('end', () => {
+                    resolve({ statusCode: res.statusCode, data });
+                });
             });
-        });
 
-        req.on('error', reject);
-        req.write(postData);
-        req.end();
-    });
+            req.on('error', (err) => reject(err));
+            req.write(postData);
+            req.end();
+        });
+    }
+
+    return (async () => {
+        for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+            try {
+                const res = await doRequest();
+                const { statusCode, data } = res;
+                if (statusCode >= 200 && statusCode < 300) {
+                    return { status: statusCode, data };
+                }
+
+                // Retry on rate limit or server errors
+                if (statusCode === 429 || (statusCode >= 500 && statusCode < 600)) {
+                    if (attempt === MAX_RETRIES) {
+                        throw new Error(`HTTP ${statusCode}: ${data}`);
+                    }
+                    const backoff = Math.min(BASE_DELAY_MS * (BACKOFF_FACTOR ** (attempt - 1)), 30000);
+                    const jitter = Math.floor(Math.random() * Math.floor(backoff / 2));
+                    const wait = backoff + jitter;
+                    console.warn(`  ⚠️  Request rate-limited (HTTP ${statusCode}), retrying in ${wait}ms (attempt ${attempt}/${MAX_RETRIES})`);
+                    await sleep(wait);
+                    continue;
+                }
+
+                // Other client errors — do not retry
+                throw new Error(`HTTP ${statusCode}: ${data}`);
+            } catch (err) {
+                // Network errors — retry
+                if (attempt === MAX_RETRIES) throw err;
+                const backoff = Math.min(BASE_DELAY_MS * (BACKOFF_FACTOR ** (attempt - 1)), 30000);
+                const jitter = Math.floor(Math.random() * Math.floor(backoff / 2));
+                const wait = backoff + jitter;
+                console.warn(`  ⚠️  Network error, retrying in ${wait}ms (attempt ${attempt}/${MAX_RETRIES}): ${err.message}`);
+                await sleep(wait);
+            }
+        }
+        throw new Error('Exceeded retry attempts');
+    })();
 }
 
 /**
@@ -241,18 +378,38 @@ async function downloadEnglishMasterList() {
 /**
  * Download translation file from POEditor for all formats
  */
-async function downloadLanguage(locale, poEditorLocale, current, total) {
+async function downloadLanguage(locale, poEditorLocale, current, total, localeCfg) {
     console.log(`  ⏳ Downloading ${locale} (${current} of ${total})...`);
     
     for (const format of FILE_FORMATS) {
         try {
             await downloadLanguageFormat(locale, poEditorLocale, format);
-            // Delay between format downloads (500ms to handle 3 formats per language)
-            await sleep(500);
+            // Delay between format downloads (700ms to reduce rate pressure)
+            await sleep(700);
         } catch (error) {
             console.error(`    ❌ ${format.ext.toUpperCase()}: ${error.message}`);
             throw error;
         }
+    }
+
+    // Also fetch missing (untranslated) terms and write batched files
+    try {
+        if (localeCfg && localeCfg.skip_audit === true) {
+            console.log(`  ⏭️  Skipping missing-terms for ${locale} (skip_audit)`);
+        } else {
+            const missing = await fetchUntranslatedTerms(poEditorLocale);
+            const termCount = Object.keys(missing).length;
+
+            if (termCount === 0) {
+                console.log(`  ✅ No missing terms for ${locale} (${poEditorLocale})`);
+            } else {
+                if (!fs.existsSync(MISSING_OUTPUT_DIR)) fs.mkdirSync(MISSING_OUTPUT_DIR, { recursive: true });
+                const written = saveBatchedMissingTerms(poEditorLocale, missing);
+                console.log(`  📄 Saved ${termCount} missing term(s) → ${written.length} file(s) for ${poEditorLocale}`);
+            }
+        }
+    } catch (err) {
+        console.warn(`  ⚠️  Failed to fetch missing terms for ${locale}: ${err.message}`);
     }
 }
 
@@ -361,13 +518,13 @@ async function main() {
 
         totalAttempts++;
         try {
-            await downloadLanguage(locale, poEditorLocale, totalAttempts, totalToDownload);
+            await downloadLanguage(locale, poEditorLocale, totalAttempts, totalToDownload, localeConfig);
             successCount++;
             
             // Throttle requests to avoid rate limiting (1 second between languages)
             // We make 3 API calls per language (JSON, PO, MO) + download time
             if (totalAttempts < totalToDownload) {
-                await sleep(1000); // 1 second between languages
+                await sleep(1500); // 1.5 seconds between languages to reduce API pressure
             }
         } catch (error) {
             console.error(`  ❌ ${locale}: ${error.message}`);

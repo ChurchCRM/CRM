@@ -224,29 +224,7 @@ jobs:
         git config user.name "github-actions[bot]"
         git config user.email "github-actions[bot]@users.noreply.github.com"
 
-    - name: Download missing terms for all locales from POEditor
-      if: inputs.operation_mode != 'audit-only'
-      run: |
-        echo "📋 Downloading missing translation terms for all locales from POEditor..."
-        npm run locale:download:missing
-        echo "✅ Missing terms files downloaded"
-
-    - name: Commit missing terms for POEditor
-      if: inputs.operation_mode != 'audit-only'
-      run: |
-        if [ -d "locale/terms/missing" ] && [ -n "$(find locale/terms/missing -name '*.json' -type f 2>/dev/null)" ]; then
-          echo "📝 Committing missing terms files..."
-          git add locale/terms/missing/
-          # Check if there are staged changes to commit
-          if ! git diff --cached --quiet; then
-            git commit -m "locale: update missing translation terms from POEditor"
-            echo "✅ Missing terms files committed"
-          else
-            echo "ℹ️  No new missing terms to commit"
-          fi
-        else
-          echo "ℹ️  No missing terms files generated"
-        fi
+    # Missing-term generation/commit handled inside the main downloader; separate steps removed
 
     - name: Create Pull Request
       if: inputs.operation_mode != 'audit-only' && (steps.changes.outputs.has_changes == 'true' || github.event_name == 'workflow_dispatch')
