@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
@@ -263,11 +262,9 @@ $MenuFirst = 1;
                       <i class="fa-solid fa-key"></i> <?= gettext('Change Password') ?></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
                       <i class="fa-solid fa-cogs"></i> <?= gettext('Change Settings') ?></a>
-                  <?php if (LocalAuthentication::getIsTwoFactorAuthSupported()) { ?>
-                      <div class="dropdown-divider"></div>
-                      <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
-                          <i class="fa-solid fa-shield"></i> <?= gettext("Manage Two-Factor Authentication") ?></a>
-                  <?php } ?>
+                  <div class="dropdown-divider"></div>
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
+                      <i class="fa-solid fa-shield"></i> <?= gettext("Manage Two-Factor Authentication") ?></a>
                      <div class="dropdown-divider"></div>
                     <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">
                       <i class="fa-solid fa-sign-out-alt"></i> <?= gettext('Sign out') ?></a>

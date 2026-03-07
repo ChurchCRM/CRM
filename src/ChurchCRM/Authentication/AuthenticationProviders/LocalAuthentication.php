@@ -48,10 +48,6 @@ class LocalAuthentication implements IAuthenticationProvider
         return SystemURLs::getRootPath() . '/v2/user/current/changepassword';
     }
 
-    public static function getIsTwoFactorAuthSupported(): bool
-    {
-        return (SystemConfig::getBooleanValue('bEnable2FA') || SystemConfig::getBooleanValue('bRequire2FA')) && KeyManagerUtils::getAreAllSecretsDefined();
-    }
 
     public static function getTwoFactorQRCode($username, $secret): QrCode
     {
@@ -145,9 +141,8 @@ class LocalAuthentication implements IAuthenticationProvider
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
                 LoggerUtils::getAuthLogger()->warning('Invalid login attempt', $logCtx);
-            } elseif (SystemConfig::getBooleanValue('bEnable2FA') && $this->currentUser->is2FactorAuthEnabled()) {
-                // Only redirect the user to the 2FA sign-ing page if it's
-                // enabled both at system AND user level.
+            } elseif ($this->currentUser->is2FactorAuthEnabled()) {
+                // User has enrolled in 2FA — redirect to verification step
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
                 $this->bPendingTwoFactorAuth = true;

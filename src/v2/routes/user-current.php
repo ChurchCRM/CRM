@@ -1,10 +1,8 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -19,10 +17,6 @@ $app->group('/user/current', function (RouteCollectorProxy $group): void {
 
 function manage2fa(Request $request, Response $response, array $args): Response
 {
-    if (!LocalAuthentication::getIsTwoFactorAuthSupported()) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/dashboard');
-    }
-
     $renderer = new PhpRenderer('templates/user/');
     $curUser = AuthenticationManager::getCurrentUser();
     $pageArgs = [
