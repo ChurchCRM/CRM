@@ -289,7 +289,6 @@ class   SystemConfig
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Localization')       => ['sLanguage', 'sDistanceUnit', 'sPhoneFormat', 'sPhoneFormatWithExt', 'sPhoneFormatCell', 'sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder'],
             gettext('Church Services')    => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
-            gettext('Two-Factor Authentication') => ['sTwoFASecretKey'],
             gettext('System Settings')    => ['sLogLevel', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime'],
         ];
     }
@@ -356,12 +355,19 @@ class   SystemConfig
                 $tooltip = $configItem->getTooltip();
                 $label = strtok($tooltip, "\n") ?: ucwords(str_replace(['i', 'b', 's', 'a'], '', $settingName));
                 
-                $configurations[] = [
+                $entry = [
                     'name' => $settingName,
                     'type' => self::mapConfigTypeToSettingType($configItem->getType()),
                     'label' => $label,
                     'tooltip' => $tooltip
                 ];
+
+                // Add a generate button for the 2FA encryption key
+                if ($settingName === 'sTwoFASecretKey') {
+                    $entry['generate'] = true;
+                }
+
+                $configurations[] = $entry;
             }
         }
 
@@ -380,6 +386,8 @@ class   SystemConfig
                 return 'number';
             case 'boolean':
                 return 'boolean';
+            case 'password':
+                return 'password';
             case 'text':
             default:
                 return 'text';

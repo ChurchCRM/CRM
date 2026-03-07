@@ -117,7 +117,8 @@ class UserService
             'aDisallowedPasswords',
             'bEnable2FA',
             'bRequire2FA',
-            's2FAApplicationName'
+            's2FAApplicationName',
+            'sTwoFASecretKey'
         ];
 
         return SystemConfig::getSettingsConfig($userSettings);

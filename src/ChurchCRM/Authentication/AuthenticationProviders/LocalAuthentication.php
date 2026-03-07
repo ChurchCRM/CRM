@@ -50,7 +50,7 @@ class LocalAuthentication implements IAuthenticationProvider
 
     public static function getIsTwoFactorAuthSupported(): bool
     {
-        return SystemConfig::getBooleanValue('bEnable2FA') && KeyManagerUtils::getAreAllSecretsDefined();
+        return (SystemConfig::getBooleanValue('bEnable2FA') || SystemConfig::getBooleanValue('bRequire2FA')) && KeyManagerUtils::getAreAllSecretsDefined();
     }
 
     public static function getTwoFactorQRCode($username, $secret): QrCode
