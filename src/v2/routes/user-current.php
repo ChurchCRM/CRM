@@ -4,7 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -19,6 +19,10 @@ $app->group('/user/current', function (RouteCollectorProxy $group): void {
 
 function manage2fa(Request $request, Response $response, array $args): Response
 {
+    if (!LocalAuthentication::getIsTwoFactorAuthSupported()) {
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/dashboard');
+    }
+
     $renderer = new PhpRenderer('templates/user/');
     $curUser = AuthenticationManager::getCurrentUser();
     $pageArgs = [
@@ -26,11 +30,7 @@ function manage2fa(Request $request, Response $response, array $args): Response
         'user'      => $curUser,
     ];
 
-    if (LocalAuthentication::getIsTwoFactorAuthSupported()) {
-        return $renderer->render($response, 'manage-2fa.php', $pageArgs);
-    } else {
-        return $renderer->render($response, 'unsupported-2fa.php', $pageArgs);
-    }
+    return $renderer->render($response, 'manage-2fa.php', $pageArgs);
 }
 
 function changepassword(Request $request, Response $response, array $args): Response

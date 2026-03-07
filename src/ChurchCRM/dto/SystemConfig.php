@@ -227,7 +227,7 @@ class   SystemConfig
             'bAllowPrereleaseUpgrade'              => new ConfigItem(2065, 'bAllowPrereleaseUpgrade', 'boolean', '0', gettext("Allow system upgrades to release marked as 'pre release' on GitHub")),
             'bSearchIncludeCalendarEvents'         => new ConfigItem(2066, 'bSearchIncludeCalendarEvents', 'boolean', '1', gettext('Search Calendar Events')),
             'bSearchIncludeCalendarEventsMax'      => new ConfigItem(2067, 'bSearchIncludeCalendarEventsMax', 'text', '15', gettext('Maximum number of Calendar Events')),
-            'bEnable2FA'                           => new ConfigItem(2068, 'bEnable2FA', 'boolean', '1', gettext('Allow users to self-enroll in 2 factor authentication')),
+            'bEnable2FA'                           => new ConfigItem(2068, 'bEnable2FA', 'boolean', '0', gettext('Allow users to self-enroll in 2 factor authentication')),
             'bRequire2FA'                          => new ConfigItem(2069, 'bRequire2FA', 'boolean', '0', gettext('Requires users to self-enroll in 2 factor authentication')),
             's2FAApplicationName'                  => new ConfigItem(2070, 's2FAApplicationName', 'text', gettext('ChurchCRM'), gettext('Specify the application name to be displayed in authenticator app')),
             'sTwoFASecretKey'                      => new ConfigItem(2075, 'sTwoFASecretKey', 'password', '', gettext('Encryption key for storing 2FA secret keys in the database')),
@@ -361,11 +361,6 @@ class   SystemConfig
                     'label' => $label,
                     'tooltip' => $tooltip
                 ];
-
-                // Add a generate button for the 2FA encryption key
-                if ($settingName === 'sTwoFASecretKey') {
-                    $entry['generate'] = true;
-                }
 
                 $configurations[] = $entry;
             }
