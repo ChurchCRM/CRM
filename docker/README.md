@@ -1,5 +1,17 @@
-Getting Started with Docker for Development
+Getting Started with Docker for ChurchCRM
 ===========================
+
+This directory contains two types of Docker configurations:
+
+| Configuration | Use Case |
+|---------------|----------|
+| `docker-compose.yaml` | Development and testing (Apache + PHP). Used by the automated test suite and local development. |
+| `docker-compose.nginx.yaml` | Self-hosted or production reference (nginx + PHP-FPM). Starting point for your own deployment. |
+
+---
+
+Development & Testing (Apache)
+---
 
 ** THIS DOCKER CONFIGURATION IS INTENDED FOR DEVELOPMENT & TESTING PURPOSES ONLY**
 
@@ -118,3 +130,73 @@ ADMINER_PORT=8088
 MAILSERVER_PORT=1025
 MAILSERVER_GUI_PORT=8025
 ```
+
+---
+
+Self-Hosted / Production (nginx + PHP-FPM)
+---
+
+The `docker-compose.nginx.yaml` and `nginx/default.conf` files provide a reference
+configuration for deploying ChurchCRM with **nginx + PHP-FPM** instead of Apache.
+This is the setup most commonly used in self-hosted environments (reverse-proxy
+stacks, Kubernetes, etc.).
+
+### Why nginx needs explicit routing
+
+ChurchCRM is structured as multiple independent **Slim 4 PHP applications**, each
+in its own subdirectory with its own `index.php` entry point:
+
+| URL prefix | Entry point |
+|------------|-------------|
+| `/session/` | `session/index.php` — login, logout, 2FA |
+| `/api/` | `api/index.php` — REST API |
+| `/v2/` | `v2/index.php` — modern MVC pages |
+| `/admin/` | `admin/index.php` — admin panel |
+| `/finance/` | `finance/index.php` — finance module |
+| `/kiosk/` | `kiosk/index.php` — check-in kiosk |
+| `/plugins/` | `plugins/index.php` — plugin system |
+| `/external/` | `external/index.php` — public integrations |
+| `/setup/` | `setup/index.php` — first-run wizard |
+| `/` | `index.php` — legacy PHP pages |
+
+With **Apache**, each subdirectory's `.htaccess` file automatically routes
+requests to the correct entry point.
+
+With **nginx**, you must explicitly map each URL prefix to its entry point.
+**Routing all requests to the root `index.php`** (a common mistake) causes an
+infinite redirect loop because unauthenticated users are redirected to
+`/session/begin`, but that path also goes to `index.php`, which redirects again.
+
+### Quick start
+
+```bash
+# From the docker/ directory:
+docker compose -f docker-compose.nginx.yaml up -d
+```
+
+Visit `http://localhost/` — you will see the setup wizard on first run.
+
+### Files
+
+| File | Description |
+|------|-------------|
+| `docker-compose.nginx.yaml` | Example Compose file (nginx + PHP-FPM + MariaDB) |
+| `nginx/default.conf` | nginx server block with correct per-subdirectory routing |
+| `Dockerfile.churchcrm-fpm-php8` | PHP-FPM image with all required extensions |
+
+### Customising the nginx config
+
+1. Copy `nginx/default.conf` to your deployment.
+2. Replace `php-fpm:9000` with your PHP-FPM container hostname/port.
+3. Set `root` to the path where ChurchCRM's `src/` contents are served from.
+4. For a **subdirectory install** (e.g. `http://example.com/churchcrm/`):
+   - Set `$sRootPath = '/churchcrm'` in `Include/Config.php`.
+   - Prefix all `location` paths in the nginx config with `/churchcrm`.
+   - See the commented example at the bottom of `nginx/default.conf`.
+
+### Required PHP extensions
+
+`bcmath`, `curl`, `exif`, `gd`, `gettext`, `iconv`, `intl`, `mbstring`, `mysqli`,
+`opcache`, `pdo_mysql`, `sodium`, `xml`, `zip`
+
+The `Dockerfile.churchcrm-fpm-php8` installs all of these.
