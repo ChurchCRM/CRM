@@ -170,6 +170,34 @@ function saveBatchedMissingTerms(poEditorCode, missingTerms) {
     return files;
 }
 
+/**
+ * Remove any existing batched missing-term files for a given poEditorCode.
+ * Returns number of files removed.
+ */
+function removeBatchedMissingTerms(poEditorCode) {
+    const localeOutDir = path.join(MISSING_OUTPUT_DIR, poEditorCode);
+    if (!fs.existsSync(localeOutDir)) return 0;
+
+    const existing = fs.readdirSync(localeOutDir).filter((f) => f.endsWith('.json'));
+    let removed = 0;
+    for (const f of existing) {
+        try {
+            fs.unlinkSync(path.join(localeOutDir, f));
+            removed++;
+        } catch (err) {
+            // ignore individual unlink errors
+        }
+    }
+
+    // If directory is now empty, remove it
+    try {
+        const remain = fs.readdirSync(localeOutDir);
+        if (remain.length === 0) fs.rmdirSync(localeOutDir);
+    } catch (_) {}
+
+    return removed;
+}
+
 
 /**
  * Make HTTPS request to POEditor API
@@ -401,7 +429,13 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
             const termCount = Object.keys(missing).length;
 
             if (termCount === 0) {
-                console.log(`  ✅ No missing terms for ${locale} (${poEditorLocale})`);
+                // No missing terms — remove any previously existing local batch files
+                const removed = removeBatchedMissingTerms(poEditorLocale);
+                if (removed > 0) {
+                    console.log(`  🧹 No missing terms for ${locale} (${poEditorLocale}) — removed ${removed} stale batch file(s)`);
+                } else {
+                    console.log(`  ✅ No missing terms for ${locale} (${poEditorLocale})`);
+                }
             } else {
                 if (!fs.existsSync(MISSING_OUTPUT_DIR)) fs.mkdirSync(MISSING_OUTPUT_DIR, { recursive: true });
                 const written = saveBatchedMissingTerms(poEditorLocale, missing);
