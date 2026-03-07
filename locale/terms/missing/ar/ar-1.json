@@ -6,23 +6,5 @@
     "few": "",
     "many": "",
     "other": "%d ساعات"
-  },
-  "Calendar not found": "",
-  "Continue to Dashboard": "",
-  "Current Password": "",
-  "Deposit not found": "",
-  "Group not found": "",
-  "Invalid JSON provided for configuration": "",
-  "Password Change Required": "",
-  "Password Change Successful": "",
-  "Password Changed": "",
-  "Passwords must be at least": "",
-  "Property not found": "",
-  "Set New Password": "",
-  "The password for %s has been updated.": "",
-  "Unable to re-encode JSON for configuration": "",
-  "User not found": "",
-  "You must set a new password before continuing.": "",
-  "Your password has been updated successfully.": "",
-  "selected family has no coordinates": ""
+  }
 }

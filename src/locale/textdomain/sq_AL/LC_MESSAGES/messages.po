@@ -12319,3 +12319,75 @@ msgstr "Nëse e fshini këtë lloj, do të hiqni gjithashtu të gjitha vetitë q
 msgid "Move Donations to Selected Family"
 msgstr "Zhvendos Ofertat te Familja e Zgjedhur"
 
+#: 
+msgid "Calendar not found"
+msgstr "Kalendari nuk u gjet"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Vazhdo në Panelin e Kontrollit"
+
+#: 
+msgid "Current Password"
+msgstr "Fjalëkalimi Aktual"
+
+#: 
+msgid "Deposit not found"
+msgstr "Depozita nuk u gjet"
+
+#: 
+msgid "Group not found"
+msgstr "Grupi nuk u gjet"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON i pavlefshëm i dhënë për konfigurimin"
+
+#: 
+msgid "Password Change Required"
+msgstr "Kërkohet Ndryshimi i Fjalëkalimit"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Ndryshimi i Fjalëkalimit u Krye me Sukses"
+
+#: 
+msgid "Password Changed"
+msgstr "Fjalëkalimi u Ndryshua"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Fjalëkalimet duhet të jenë të paktën"
+
+#: 
+msgid "Property not found"
+msgstr "Prona nuk u gjet"
+
+#: 
+msgid "Set New Password"
+msgstr "Vendos Fjalëkalim të Ri"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Fjalëkalimi për %s është përditësuar."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Nuk mund të rikodohet JSON për konfigurimin"
+
+#: 
+msgid "User not found"
+msgstr "Përdoruesi nuk u gjet"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Duhet të vendosni një fjalëkalim të ri para se të vazhdoni."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Fjalëkalimi juaj është përditësuar me sukses."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "familja e zgjedhur nuk ka koordinata"
+

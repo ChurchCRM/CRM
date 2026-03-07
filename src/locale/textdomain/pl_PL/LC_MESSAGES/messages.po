@@ -12422,3 +12422,75 @@ msgstr "Jeśli usuniesz ten typ, usuniesz również wszystkie właściwości, kt
 msgid "Move Donations to Selected Family"
 msgstr "Przenieś ofiary do wybranej rodziny"
 
+#: 
+msgid "Calendar not found"
+msgstr "Kalendarz nie został znaleziony"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Przejdź do Pulpitu"
+
+#: 
+msgid "Current Password"
+msgstr "Aktualne Hasło"
+
+#: 
+msgid "Deposit not found"
+msgstr "Ofiara nie została znaleziona"
+
+#: 
+msgid "Group not found"
+msgstr "Grupa nie została znaleziona"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "Podano nieprawidłowy JSON dla konfiguracji"
+
+#: 
+msgid "Password Change Required"
+msgstr "Wymagana Zmiana Hasła"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Zmiana Hasła Zakończona Sukcesem"
+
+#: 
+msgid "Password Changed"
+msgstr "Hasło Zmienione"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Hasła muszą mieć co najmniej"
+
+#: 
+msgid "Property not found"
+msgstr "Właściwość nie została znaleziona"
+
+#: 
+msgid "Set New Password"
+msgstr "Ustaw Nowe Hasło"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Hasło dla %s zostało zaktualizowane."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Nie można ponownie zakodować JSON dla konfiguracji"
+
+#: 
+msgid "User not found"
+msgstr "Użytkownik nie został znaleziony"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Musisz ustawić nowe hasło przed kontynuowaniem."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Twoje hasło zostało pomyślnie zaktualizowane."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "wybrana rodzina nie ma współrzędnych"
+

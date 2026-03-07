@@ -12339,3 +12339,75 @@ msgstr "Si vous supprimez ce type, vous supprimerez également toutes les propri
 msgid "Move Donations to Selected Family"
 msgstr "Déplacer les offrandes vers la famille sélectionnée"
 
+#: 
+msgid "Calendar not found"
+msgstr "Calendrier introuvable"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Continuer vers le Tableau de bord"
+
+#: 
+msgid "Current Password"
+msgstr "Mot de passe actuel"
+
+#: 
+msgid "Deposit not found"
+msgstr "Offrande introuvable"
+
+#: 
+msgid "Group not found"
+msgstr "Groupe introuvable"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON invalide fourni pour la configuration"
+
+#: 
+msgid "Password Change Required"
+msgstr "Changement de mot de passe requis"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Changement de mot de passe réussi"
+
+#: 
+msgid "Password Changed"
+msgstr "Mot de passe modifié"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Les mots de passe doivent comporter au moins"
+
+#: 
+msgid "Property not found"
+msgstr "Propriété introuvable"
+
+#: 
+msgid "Set New Password"
+msgstr "Définir un nouveau mot de passe"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Le mot de passe pour %s a été mis à jour."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Impossible de ré-encoder le JSON pour la configuration"
+
+#: 
+msgid "User not found"
+msgstr "Utilisateur introuvable"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Vous devez définir un nouveau mot de passe avant de continuer."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Votre mot de passe a été mis à jour avec succès."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "la famille sélectionnée n'a pas de coordonnées"
+

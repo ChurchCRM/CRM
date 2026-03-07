@@ -12337,3 +12337,75 @@ msgstr "Als u dit type verwijdert, verwijdert u ook alle eigenschappen die het g
 msgid "Move Donations to Selected Family"
 msgstr "Gaven verplaatsen naar geselecteerd gezin"
 
+#: 
+msgid "Calendar not found"
+msgstr "Kalender niet gevonden"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Doorgaan naar Dashboard"
+
+#: 
+msgid "Current Password"
+msgstr "Huidig Wachtwoord"
+
+#: 
+msgid "Deposit not found"
+msgstr "Bijdrage niet gevonden"
+
+#: 
+msgid "Group not found"
+msgstr "Groep niet gevonden"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "Ongeldige JSON opgegeven voor configuratie"
+
+#: 
+msgid "Password Change Required"
+msgstr "Wachtwoordwijziging Vereist"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Wachtwoord Succesvol Gewijzigd"
+
+#: 
+msgid "Password Changed"
+msgstr "Wachtwoord Gewijzigd"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Wachtwoorden moeten minimaal"
+
+#: 
+msgid "Property not found"
+msgstr "Eigenschap niet gevonden"
+
+#: 
+msgid "Set New Password"
+msgstr "Nieuw Wachtwoord Instellen"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Het wachtwoord voor %s is bijgewerkt."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Kan JSON voor configuratie niet opnieuw coderen"
+
+#: 
+msgid "User not found"
+msgstr "Gebruiker niet gevonden"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "U moet een nieuw wachtwoord instellen voordat u verder kunt gaan."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Uw wachtwoord is succesvol bijgewerkt."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "geselecteerde familie heeft geen coördinaten"
+

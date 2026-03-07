@@ -12137,3 +12137,299 @@ msgstr "Verifica codice"
 msgid "Verifying"
 msgstr "Verifica in corso"
 
+#: 
+msgid "Vonage API Key"
+msgstr "Chiave API Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Secret API Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "Configurazione WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "Connessione WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "I backup WebDAV non sono configurati correttamente. Assicurati che endpoint, nome utente e password siano impostati."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "L'URL dell'endpoint WebDAV è obbligatorio."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "La password WebDAV è obbligatoria."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "Il nome utente WebDAV è obbligatorio."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Puoi anche usare i codici di recupero di backup se perdi l'accesso alla tua app"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Puoi ora usare la tua app di autenticazione per accedere. Ogni codice è valido per 30 secondi."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Riceverai codici di backup che possono essere usati se perdi l'accesso alla tua app"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "Il tuo ID di misurazione GA4 (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "Il tuo account MailChimp non ha alcun pubblico (lista) configurato."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Il tuo account è ora protetto"
+
+#: 
+msgid "Your account is protected"
+msgstr "Il tuo account è protetto"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "La tua app di autenticazione è stata registrata con successo"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "La lingua del browser differisce dalle impostazioni locali di ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "es., Sito Web della Parrocchia"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "iscritti"
+
+#: 
+msgid "API Key is required."
+msgstr "La chiave API è obbligatoria."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Impossibile connettersi a OpenLP su %s. Verifica l'URL del server e che OpenLP sia in esecuzione."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Impossibile connettersi a OpenLP su %s. Il server ha restituito HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Mappa dei Fedeli"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Mappa dei Fedeli — Configurazione Richiesta"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Connesso a MailChimp! Account: %s (%d iscritti)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Connesso al server OpenLP con successo."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Connesso a OpenLP! Versione: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Connesso! Saldo account: €%.2f. Pronto per inviare SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Impossibile connettersi a MailChimp. Verifica la tua chiave API."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Connessione al server OpenLP fallita."
+
+#: 
+msgid "Get Directions"
+msgstr "Ottieni Indicazioni"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Includi il prefisso internazionale, es. +39 (IT) o +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"Numero Mittente\" non valido: \"%s\". Includi il prefisso internazionale, es. +14155551234 (US) o +447911123456 (UK)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Credenziali API non valide. Verifica la tua chiave API e il tuo secret API."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Formato chiave API non valido. Verifica la tua chiave API MailChimp."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "URL endpoint non valido. Deve essere un URL completo che inizia con https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Formato URL server non valido."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "Connessione a MailChimp fallita."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Livello di Zoom della Mappa"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Famiglie mancanti? Aggiorna le coordinate per includerle sulla mappa."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Impostazioni obbligatorie mancanti: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "La persona non appartiene a nessuna famiglia"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Plugin non trovato o non attivo"
+
+#: 
+msgid "Server URL is required."
+msgstr "L'URL del server è obbligatorio."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Questo plugin non supporta il test di connessione."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Impossibile visualizzare la mappa: l'indirizzo della parrocchia non è ancora stato geocodificato."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Aggiorna l'indirizzo della parrocchia nelle Impostazioni."
+
+#: 
+msgid "Username and password are required."
+msgstr "Il nome utente e la password sono obbligatori."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Validazione fallita: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Errore del server Vonage. Riprova più tardi."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "L'URL dell'endpoint WebDAV è obbligatorio."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Sei sicuro di voler eliminare definitivamente questo impegno di offerta?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Annulla e Torna alla Vista Famiglia"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Se elimini questo tipo, rimuoverai anche tutte le proprietà che lo utilizzano e perderai le relative assegnazioni."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Sposta Donazioni nella Famiglia Selezionata"
+
+#: 
+msgid "Calendar not found"
+msgstr "Calendario non trovato"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Continua alla Dashboard"
+
+#: 
+msgid "Current Password"
+msgstr "Password Attuale"
+
+#: 
+msgid "Deposit not found"
+msgstr "Deposito offerte non trovato"
+
+#: 
+msgid "Group not found"
+msgstr "Gruppo non trovato"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON non valido fornito per la configurazione"
+
+#: 
+msgid "Password Change Required"
+msgstr "Cambio Password Obbligatorio"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Cambio Password Riuscito"
+
+#: 
+msgid "Password Changed"
+msgstr "Password Modificata"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Le password devono essere di almeno"
+
+#: 
+msgid "Property not found"
+msgstr "Proprietà non trovata"
+
+#: 
+msgid "Set New Password"
+msgstr "Imposta Nuova Password"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "La password per %s è stata aggiornata."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Impossibile ri-codificare il JSON per la configurazione"
+
+#: 
+msgid "User not found"
+msgstr "Utente non trovato"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Devi impostare una nuova password prima di continuare."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "La tua password è stata aggiornata con successo."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "la famiglia selezionata non ha coordinate"
+

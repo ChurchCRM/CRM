@@ -12333,3 +12333,75 @@ msgstr "אם תמחק סוג זה, תסיר גם את כל המאפיינים ה
 msgid "Move Donations to Selected Family"
 msgstr "העבר תרומות למשפחה הנבחרת"
 
+#: 
+msgid "Calendar not found"
+msgstr "לוח השנה לא נמצא"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "המשך ללוח הבקרה"
+
+#: 
+msgid "Current Password"
+msgstr "סיסמה נוכחית"
+
+#: 
+msgid "Deposit not found"
+msgstr "הפקדה לא נמצאה"
+
+#: 
+msgid "Group not found"
+msgstr "הקבוצה לא נמצאה"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON לא חוקי סופק לתצורה"
+
+#: 
+msgid "Password Change Required"
+msgstr "נדרש שינוי סיסמה"
+
+#: 
+msgid "Password Change Successful"
+msgstr "שינוי הסיסמה הצליח"
+
+#: 
+msgid "Password Changed"
+msgstr "הסיסמה שונתה"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "הסיסמאות חייבות להיות לפחות"
+
+#: 
+msgid "Property not found"
+msgstr "המאפיין לא נמצא"
+
+#: 
+msgid "Set New Password"
+msgstr "הגדר סיסמה חדשה"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "הסיסמה עבור %s עודכנה."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "לא ניתן לקודד מחדש את JSON לתצורה"
+
+#: 
+msgid "User not found"
+msgstr "המשתמש לא נמצא"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "עליך להגדיר סיסמה חדשה לפני שתמשיך."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "הסיסמה שלך עודכנה בהצלחה."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "למשפחה שנבחרה אין קואורדינטות"
+

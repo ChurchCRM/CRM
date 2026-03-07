@@ -12313,3 +12313,75 @@ msgstr "Pokud tento typ smažete, odeberete také všechny vlastnosti, které je
 msgid "Move Donations to Selected Family"
 msgstr "Přesunout dary do vybrané rodiny"
 
+#: 
+msgid "Calendar not found"
+msgstr "Kalendář nebyl nalezen"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Přejít na Přehled"
+
+#: 
+msgid "Current Password"
+msgstr "Aktuální Heslo"
+
+#: 
+msgid "Deposit not found"
+msgstr "Dar nebyl nalezen"
+
+#: 
+msgid "Group not found"
+msgstr "Skupina nebyla nalezena"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "Pro konfiguraci byl zadán neplatný JSON"
+
+#: 
+msgid "Password Change Required"
+msgstr "Vyžadována Změna Hesla"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Změna Hesla Úspěšná"
+
+#: 
+msgid "Password Changed"
+msgstr "Heslo Změněno"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Hesla musí mít alespoň"
+
+#: 
+msgid "Property not found"
+msgstr "Vlastnost nebyla nalezena"
+
+#: 
+msgid "Set New Password"
+msgstr "Nastavit Nové Heslo"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Heslo pro %s bylo aktualizováno."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Nelze znovu zakódovat JSON pro konfiguraci"
+
+#: 
+msgid "User not found"
+msgstr "Uživatel nebyl nalezen"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Před pokračováním musíte nastavit nové heslo."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Vaše heslo bylo úspěšně aktualizováno."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "vybraná rodina nemá souřadnice"
+

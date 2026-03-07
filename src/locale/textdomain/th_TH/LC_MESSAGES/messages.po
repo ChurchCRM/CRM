@@ -4548,6 +4548,11 @@ msgstr "คอสตาริกา"
 
 #. Context: countries
 #: 
+msgid "Côte d’Ivoire"
+msgstr "โกตดิวัวร์"
+
+#. Context: countries
+#: 
 msgid "Croatia (Hrvatska)"
 msgstr "โครเอเชีย (Hrvatska)"
 
@@ -11817,4 +11822,540 @@ msgstr "ไม่อยู่ใน CRM"
 #: 
 msgid "One-Time Code"
 msgstr "รหัสใช้ครั้งเดียว"
+
+#: 
+msgid "Open MailChimp"
+msgstr "เปิด MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "เปิดแอปตรวจสอบความถูกต้องและสแกนรหัส QR นี้"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "URL เซิร์ฟเวอร์ OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "ไม่บังคับ - ต้องกรอกเฉพาะเมื่อเปิดใช้งานการตรวจสอบสิทธิ์ OpenLP"
+
+#: 
+msgid "Phone number and message required"
+msgstr "ต้องระบุหมายเลขโทรศัพท์และข้อความ"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "โปรดกำหนดค่า endpoint ชื่อผู้ใช้ และรหัสผ่านก่อน"
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "โปรดกำหนดค่า WebDAV ก่อนสร้างการสำรองข้อมูลระยะไกล"
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "โปรดกำหนดค่า WebDAV ก่อนทดสอบการเชื่อมต่อ"
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "โปรดกำหนดค่า API key MailChimp เพื่อใช้การผสานนี้"
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "โปรดป้อนชื่อลิงก์ (2-50 อักขระ)"
+
+#: 
+msgid "Please try again"
+msgstr "โปรดลองอีกครั้ง"
+
+#: 
+msgid "Plugin Development"
+msgstr "การพัฒนาปลั๊กอิน"
+
+#: 
+msgid "Plugin Help"
+msgstr "ความช่วยเหลือปลั๊กอิน"
+
+#: 
+msgid "Plugin Management"
+msgstr "การจัดการปลั๊กอิน"
+
+#: 
+msgid "Plugin Settings"
+msgstr "การตั้งค่าปลั๊กอิน"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "ไม่สามารถปิดใช้งานปลั๊กอินได้เนื่องจากปลั๊กอินอื่นขึ้นอยู่กับมัน"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "ไม่สามารถเปิดใช้งานปลั๊กอินได้เนื่องจากข้อกำหนดด้านการพึ่งพาหรือเวอร์ชัน"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "ปิดใช้งานปลั๊กอินสำเร็จ"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "เปิดใช้งานปลั๊กอินสำเร็จ"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "ปลั๊กอินโหลดล้มเหลว"
+
+#: 
+msgid "Plugin not found"
+msgstr "ไม่พบปลั๊กอิน"
+
+#: 
+msgid "Plugins"
+msgstr "ปลั๊กอิน"
+
+#: 
+msgid "Print"
+msgstr "พิมพ์"
+
+#: 
+msgid "Recipients and message required"
+msgstr "ต้องระบุผู้รับและข้อความ"
+
+#: 
+msgid "Recovery Codes"
+msgstr "รหัสกู้คืน"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "การสำรองข้อมูลระยะไกลล้มเหลว ตรวจสอบบันทึกเซิร์ฟเวอร์สำหรับรายละเอียด"
+
+#: 
+msgid "SMS sent"
+msgstr "ส่ง SMS แล้ว"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "บันทึกรหัสกู้คืนเหล่านี้ในที่ปลอดภัย คุณสามารถใช้เข้าถึงบัญชีหากสูญเสียการเข้าถึงแอปตรวจสอบสิทธิ์"
+
+#: 
+msgid "Scan QR Code"
+msgstr "สแกนรหัส QR"
+
+#: 
+msgid "Secure"
+msgstr "ปลอดภัย"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "ตั้งค่าแอปตรวจสอบสิทธิ์"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "รีเซ็ตการตั้งค่าสำเร็จ"
+
+#: 
+msgid "Setup Complete"
+msgstr "การตั้งค่าเสร็จสมบูรณ์"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "มาพร้อมกับ ChurchCRM"
+
+#: 
+msgid "Sign In"
+msgstr "เข้าสู่ระบบ"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "ไม่สามารถรีเซ็ตการตั้งค่าบางอย่างได้"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "ไม่สามารถบันทึกการตั้งค่าบางอย่างได้"
+
+#: 
+msgid "Subscribers"
+msgstr "ผู้สมัครสมาชิก"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "ผู้สมัครสมาชิกที่ไม่อยู่ใน CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "ทดสอบการเชื่อมต่อ"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "ทดสอบการเชื่อมต่อ WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "ลิงก์เหล่านี้ปรากฏในเมนู \"ลิงก์\" ในแถบนำทางด้านข้างเมื่อเปิดใช้งานปลั๊กอินนี้"
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "บุคคลเหล่านี้สมัครสมาชิกกลุ่มเป้าหมาย MailChimp ของคุณแต่ไม่มีใน ChurchCRM พิจารณาเพิ่มในฐานข้อมูลหรือลบออกจาก MailChimp"
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "บุคคลเหล่านี้มีใน ChurchCRM พร้อมอีเมลแต่ไม่ได้สมัครสมาชิกกลุ่มเป้าหมาย MailChimp นี้ พิจารณาเชิญให้สมัครสมาชิก"
+
+#: 
+msgid "Third-party extensions."
+msgstr "ส่วนเสริมบุคคลที่สาม"
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "การดำเนินการนี้จะแทนที่วิธีการ 2FA ที่ลงทะเบียนไว้ก่อนหน้านี้"
+
+#: 
+msgid "Total Campaigns"
+msgstr "แคมเปญทั้งหมด"
+
+#: 
+msgid "Total Subscribers"
+msgstr "ผู้สมัครสมาชิกทั้งหมด"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "ข้อผิดพลาดในการลงทะเบียน 2FA"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "ปิดใช้งานการตรวจสอบสิทธิ์สองชั้นแล้ว"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "การตรวจสอบสิทธิ์สองชั้นเป็นหนึ่งในวิธีที่ดีที่สุดในการปกป้องบัญชีของคุณ เราแนะนำอย่างยิ่งให้เปิดใช้งานไว้"
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL ไปยังเซิร์ฟเวอร์ OpenLP ของคุณ (เช่น http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "ไม่สามารถโหลดได้"
+
+#: 
+msgid "Unsubscribed"
+msgstr "ยกเลิกการสมัครสมาชิกแล้ว"
+
+#: 
+msgid "Use a different account"
+msgstr "ใช้บัญชีอื่น"
+
+#: 
+msgid "Value is configured"
+msgstr "ค่าได้รับการกำหนดค่าแล้ว"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "ค่าถูกตั้งค่าแล้ว - เว้นว่างเพื่อเก็บค่าปัจจุบัน"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "ยืนยันและเข้าสู่ระบบ"
+
+#: 
+msgid "Verify Code"
+msgstr "ยืนยันรหัส"
+
+#: 
+msgid "Verifying"
+msgstr "กำลังยืนยัน"
+
+#: 
+msgid "Vonage API Key"
+msgstr "คีย์ API Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Secret API Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "การกำหนดค่า WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "การเชื่อมต่อ WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "การสำรองข้อมูล WebDAV ไม่ได้รับการกำหนดค่าอย่างถูกต้อง โปรดตรวจสอบว่า endpoint ชื่อผู้ใช้ และรหัสผ่านถูกตั้งค่าแล้ว"
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "ต้องระบุ URL endpoint WebDAV"
+
+#: 
+msgid "WebDAV password is required."
+msgstr "ต้องระบุรหัสผ่าน WebDAV"
+
+#: 
+msgid "WebDAV username is required."
+msgstr "ต้องระบุชื่อผู้ใช้ WebDAV"
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "คุณยังสามารถใช้รหัสกู้คืนสำรองได้หากสูญเสียการเข้าถึงแอป"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "ตอนนี้คุณสามารถใช้แอปตรวจสอบสิทธิ์เพื่อเข้าสู่ระบบ แต่ละรหัสมีอายุ 30 วินาที"
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "คุณจะได้รับรหัสสำรองที่สามารถใช้ได้หากสูญเสียการเข้าถึงแอป"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "ID การวัด GA4 ของคุณ (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "บัญชี MailChimp ของคุณไม่มีกลุ่มเป้าหมาย (รายชื่อ) ที่กำหนดค่าไว้"
+
+#: 
+msgid "Your account is now protected"
+msgstr "บัญชีของคุณได้รับการปกป้องแล้ว"
+
+#: 
+msgid "Your account is protected"
+msgstr "บัญชีของคุณได้รับการปกป้อง"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "แอปตรวจสอบสิทธิ์ของคุณได้ลงทะเบียนสำเร็จแล้ว"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "การตั้งค่าภาษาในเบราว์เซอร์ของคุณแตกต่างจากภาษาที่ตั้งใน ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "เช่น เว็บไซต์คริสตจักร"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "ผู้สมัครสมาชิก"
+
+#: 
+msgid "API Key is required."
+msgstr "ต้องระบุ API Key"
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "ไม่สามารถเชื่อมต่อ OpenLP ที่ %s ตรวจสอบ URL เซิร์ฟเวอร์และให้แน่ใจว่า OpenLP กำลังทำงาน"
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "ไม่สามารถเชื่อมต่อ OpenLP ที่ %s เซิร์ฟเวอร์ตอบกลับ HTTP %d"
+
+#: 
+msgid "Congregation Map"
+msgstr "แผนที่สมาชิกโบสถ์"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "แผนที่สมาชิกโบสถ์ — จำเป็นต้องตั้งค่า"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "เชื่อมต่อกับ MailChimp แล้ว! บัญชี: %s (%d ผู้สมัครสมาชิก)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "เชื่อมต่อกับเซิร์ฟเวอร์ OpenLP สำเร็จ"
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "เชื่อมต่อกับ OpenLP แล้ว! เวอร์ชัน: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "เชื่อมต่อแล้ว! ยอดเงินในบัญชี: €%.2f พร้อมส่ง SMS"
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "ไม่สามารถเชื่อมต่อกับ MailChimp โปรดตรวจสอบ API key ของคุณ"
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "การเชื่อมต่อกับเซิร์ฟเวอร์ OpenLP ล้มเหลว"
+
+#: 
+msgid "Get Directions"
+msgstr "ขอเส้นทาง"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "ใส่รหัสประเทศ เช่น +14155551234 (US) หรือ +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"หมายเลขผู้ส่ง\" ไม่ถูกต้อง: \"%s\" ใส่รหัสประเทศ เช่น +14155551234 (US) หรือ +447911123456 (UK)"
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "ข้อมูลรับรอง API ไม่ถูกต้อง โปรดยืนยัน API Key และ API Secret ของคุณ"
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "รูปแบบ API key ไม่ถูกต้อง ตรวจสอบ API key MailChimp ของคุณ"
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "URL endpoint ไม่ถูกต้อง ต้องเป็น URL แบบเต็มที่เริ่มต้นด้วย https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "รูปแบบ URL เซิร์ฟเวอร์ไม่ถูกต้อง"
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "การเชื่อมต่อ MailChimp ล้มเหลว"
+
+#: 
+msgid "Map Zoom Level"
+msgstr "ระดับการซูมแผนที่"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "ครอบครัวหายไปหรือ? อัปเดตพิกัดเพื่อรวมไว้ในแผนที่"
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "ขาดการตั้งค่าที่จำเป็น: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "บุคคลนี้ไม่มีครอบครัว"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "ไม่พบปลั๊กอินหรือไม่ได้เปิดใช้งาน"
+
+#: 
+msgid "Server URL is required."
+msgstr "ต้องระบุ URL เซิร์ฟเวอร์"
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "ปลั๊กอินนี้ไม่รองรับการทดสอบการเชื่อมต่อ"
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "ไม่สามารถแสดงแผนที่: ที่อยู่คริสตจักรยังไม่ได้รับการ geocode"
+
+#: 
+msgid "Update church address in Settings."
+msgstr "อัปเดตที่อยู่คริสตจักรใน การตั้งค่า"
+
+#: 
+msgid "Username and password are required."
+msgstr "ต้องระบุชื่อผู้ใช้และรหัสผ่าน"
+
+#: 
+msgid "Validation failed: %s"
+msgstr "การตรวจสอบล้มเหลว: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "ข้อผิดพลาดของเซิร์ฟเวอร์ Vonage โปรดลองอีกครั้งในภายหลัง"
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "ต้องระบุ URL endpoint WebDAV"
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "คุณแน่ใจหรือว่าต้องการลบรายการคำมั่นสัญญานี้อย่างถาวร?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "ยกเลิกและกลับสู่มุมมองครอบครัว"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "ถ้าคุณลบประเภทนี้ คุณจะลบคุณสมบัติทั้งหมดที่ใช้มันและสูญเสียการกำหนดคุณสมบัติที่เกี่ยวข้อง"
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "ย้ายเงินถวายไปยังครอบครัวที่เลือก"
+
+#: 
+msgid "Calendar not found"
+msgstr "ไม่พบปฏิทิน"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "ดำเนินการต่อไปยังแดชบอร์ด"
+
+#: 
+msgid "Current Password"
+msgstr "รหัสผ่านปัจจุบัน"
+
+#: 
+msgid "Deposit not found"
+msgstr "ไม่พบรายการฝากเงินถวาย"
+
+#: 
+msgid "Group not found"
+msgstr "ไม่พบกลุ่ม"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON ที่ให้ไว้สำหรับการกำหนดค่าไม่ถูกต้อง"
+
+#: 
+msgid "Password Change Required"
+msgstr "จำเป็นต้องเปลี่ยนรหัสผ่าน"
+
+#: 
+msgid "Password Change Successful"
+msgstr "เปลี่ยนรหัสผ่านสำเร็จ"
+
+#: 
+msgid "Password Changed"
+msgstr "รหัสผ่านถูกเปลี่ยนแล้ว"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "รหัสผ่านต้องมีอย่างน้อย"
+
+#: 
+msgid "Property not found"
+msgstr "ไม่พบคุณสมบัติ"
+
+#: 
+msgid "Set New Password"
+msgstr "ตั้งรหัสผ่านใหม่"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "รหัสผ่านสำหรับ %s ได้รับการอัปเดตแล้ว"
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "ไม่สามารถเข้ารหัส JSON ใหม่สำหรับการกำหนดค่า"
+
+#: 
+msgid "User not found"
+msgstr "ไม่พบผู้ใช้"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "คุณต้องตั้งรหัสผ่านใหม่ก่อนดำเนินการต่อ"
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "รหัสผ่านของคุณได้รับการอัปเดตเรียบร้อยแล้ว"
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "ครอบครัวที่เลือกไม่มีพิกัด"
 

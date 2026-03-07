@@ -12285,3 +12285,75 @@ msgstr "यदि आप इस प्रकार को हटाते है
 msgid "Move Donations to Selected Family"
 msgstr "चुने गए परिवार में चंदा स्थानांतरित करें"
 
+#: 
+msgid "Calendar not found"
+msgstr "कैलेंडर नहीं मिला"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "डैशबोर्ड पर जारी रखें"
+
+#: 
+msgid "Current Password"
+msgstr "वर्तमान पासवर्ड"
+
+#: 
+msgid "Deposit not found"
+msgstr "जमा राशि नहीं मिली"
+
+#: 
+msgid "Group not found"
+msgstr "समूह नहीं मिला"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "कॉन्फ़िगरेशन के लिए अमान्य JSON प्रदान किया गया"
+
+#: 
+msgid "Password Change Required"
+msgstr "पासवर्ड परिवर्तन आवश्यक है"
+
+#: 
+msgid "Password Change Successful"
+msgstr "पासवर्ड परिवर्तन सफल"
+
+#: 
+msgid "Password Changed"
+msgstr "पासवर्ड बदल गया"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "पासवर्ड कम से कम होना चाहिए"
+
+#: 
+msgid "Property not found"
+msgstr "संपत्ति नहीं मिली"
+
+#: 
+msgid "Set New Password"
+msgstr "नया पासवर्ड सेट करें"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "%s का पासवर्ड अपडेट कर दिया गया है।"
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "कॉन्फ़िगरेशन के लिए JSON को पुनः एन्कोड करने में असमर्थ"
+
+#: 
+msgid "User not found"
+msgstr "उपयोगकर्ता नहीं मिला"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "जारी रखने से पहले आपको एक नया पासवर्ड सेट करना होगा।"
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "आपका पासवर्ड सफलतापूर्वक अपडेट कर दिया गया है।"
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "चयनित परिवार के पास कोई निर्देशांक नहीं है"
+

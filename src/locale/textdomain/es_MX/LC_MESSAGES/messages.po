@@ -12287,3 +12287,75 @@ msgstr "Si elimina este tipo, también eliminará todas las propiedades que lo u
 msgid "Move Donations to Selected Family"
 msgstr "Mover ofrendas a la familia seleccionada"
 
+#: 
+msgid "Calendar not found"
+msgstr "Calendario no encontrado"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Continuar al Tablero"
+
+#: 
+msgid "Current Password"
+msgstr "Contraseña Actual"
+
+#: 
+msgid "Deposit not found"
+msgstr "Depósito no encontrado"
+
+#: 
+msgid "Group not found"
+msgstr "Grupo no encontrado"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON no válido para la configuración"
+
+#: 
+msgid "Password Change Required"
+msgstr "Se Requiere Cambio de Contraseña"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Cambio de Contraseña Exitoso"
+
+#: 
+msgid "Password Changed"
+msgstr "Contraseña Cambiada"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Las contraseñas deben tener al menos"
+
+#: 
+msgid "Property not found"
+msgstr "Propiedad no encontrada"
+
+#: 
+msgid "Set New Password"
+msgstr "Establecer Nueva Contraseña"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "La contraseña de %s ha sido actualizada."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "No se puede recodificar el JSON para la configuración"
+
+#: 
+msgid "User not found"
+msgstr "Usuario no encontrado"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Debe establecer una nueva contraseña antes de continuar."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Su contraseña ha sido actualizada correctamente."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "la familia seleccionada no tiene coordenadas"
+

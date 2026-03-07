@@ -4537,6 +4537,11 @@ msgstr "コスタリカ"
 
 #. Context: countries
 #: 
+msgid "Côte d’Ivoire"
+msgstr "コートジボワール"
+
+#. Context: countries
+#: 
 msgid "Croatia (Hrvatska)"
 msgstr "クロアチア (Hrvatska)"
 
@@ -12270,4 +12275,76 @@ msgstr "このタイプを削除すると、それを使用するすべての属
 #: 
 msgid "Move Donations to Selected Family"
 msgstr "献金を選択した家族に移動"
+
+#: 
+msgid "Calendar not found"
+msgstr "カレンダーが見つかりません"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "ダッシュボードへ進む"
+
+#: 
+msgid "Current Password"
+msgstr "現在のパスワード"
+
+#: 
+msgid "Deposit not found"
+msgstr "献金記録が見つかりません"
+
+#: 
+msgid "Group not found"
+msgstr "グループが見つかりません"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "設定に無効なJSONが指定されました"
+
+#: 
+msgid "Password Change Required"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "Password Change Successful"
+msgstr "パスワードが正常に変更されました"
+
+#: 
+msgid "Password Changed"
+msgstr "パスワードが変更されました"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "パスワードは最低でも"
+
+#: 
+msgid "Property not found"
+msgstr "プロパティが見つかりません"
+
+#: 
+msgid "Set New Password"
+msgstr "新しいパスワードを設定"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "%s のパスワードが更新されました。"
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "設定用のJSONを再エンコードできません"
+
+#: 
+msgid "User not found"
+msgstr "ユーザーが見つかりません"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "続行する前に新しいパスワードを設定してください。"
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "パスワードが正常に更新されました。"
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "選択した家族に座標がありません"
 

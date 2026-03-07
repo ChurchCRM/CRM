@@ -12427,3 +12427,75 @@ msgstr "如果删除此类型，您还将删除所有使用它的属性，并失
 msgid "Move Donations to Selected Family"
 msgstr "将奉献移至所选家庭"
 
+#: 
+msgid "Calendar not found"
+msgstr "日历未找到"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "继续到仪表板"
+
+#: 
+msgid "Current Password"
+msgstr "当前密码"
+
+#: 
+msgid "Deposit not found"
+msgstr "奉献记录未找到"
+
+#: 
+msgid "Group not found"
+msgstr "小组未找到"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "为配置提供的JSON无效"
+
+#: 
+msgid "Password Change Required"
+msgstr "需要更改密码"
+
+#: 
+msgid "Password Change Successful"
+msgstr "密码更改成功"
+
+#: 
+msgid "Password Changed"
+msgstr "密码已更改"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "密码长度至少为"
+
+#: 
+msgid "Property not found"
+msgstr "属性未找到"
+
+#: 
+msgid "Set New Password"
+msgstr "设置新密码"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "%s的密码已更新。"
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "无法为配置重新编码JSON"
+
+#: 
+msgid "User not found"
+msgstr "用户未找到"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "继续之前您必须设置新密码。"
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "您的密码已成功更新。"
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "所选家庭没有坐标"
+

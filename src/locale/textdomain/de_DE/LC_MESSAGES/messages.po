@@ -12448,3 +12448,75 @@ msgstr "Wenn Sie diesen Typ löschen, entfernen Sie auch alle Eigenschaften, die
 msgid "Move Donations to Selected Family"
 msgstr "Spenden zur ausgewählten Familie verschieben"
 
+#: 
+msgid "Calendar not found"
+msgstr "Kalender nicht gefunden"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Weiter zum Dashboard"
+
+#: 
+msgid "Current Password"
+msgstr "Aktuelles Passwort"
+
+#: 
+msgid "Deposit not found"
+msgstr "Spende nicht gefunden"
+
+#: 
+msgid "Group not found"
+msgstr "Gruppe nicht gefunden"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "Ungültiges JSON für die Konfiguration angegeben"
+
+#: 
+msgid "Password Change Required"
+msgstr "Passwortänderung erforderlich"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Passwortänderung erfolgreich"
+
+#: 
+msgid "Password Changed"
+msgstr "Passwort geändert"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Passwörter müssen mindestens"
+
+#: 
+msgid "Property not found"
+msgstr "Eigenschaft nicht gefunden"
+
+#: 
+msgid "Set New Password"
+msgstr "Neues Passwort festlegen"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Das Passwort für %s wurde aktualisiert."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "JSON für die Konfiguration konnte nicht neu kodiert werden"
+
+#: 
+msgid "User not found"
+msgstr "Benutzer nicht gefunden"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Sie müssen ein neues Passwort festlegen, bevor Sie fortfahren können."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Ihr Passwort wurde erfolgreich aktualisiert."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "ausgewählte Familie hat keine Koordinaten"
+

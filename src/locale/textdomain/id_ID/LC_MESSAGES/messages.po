@@ -12324,3 +12324,75 @@ msgstr "Jika Anda menghapus tipe ini, Anda juga akan menghapus semua properti ya
 msgid "Move Donations to Selected Family"
 msgstr "Pindahkan Persembahan ke Keluarga yang Dipilih"
 
+#: 
+msgid "Calendar not found"
+msgstr "Kalender tidak ditemukan"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Lanjutkan ke Dasbor"
+
+#: 
+msgid "Current Password"
+msgstr "Kata Sandi Saat Ini"
+
+#: 
+msgid "Deposit not found"
+msgstr "Persembahan tidak ditemukan"
+
+#: 
+msgid "Group not found"
+msgstr "Kelompok tidak ditemukan"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON tidak valid untuk konfigurasi"
+
+#: 
+msgid "Password Change Required"
+msgstr "Perubahan Kata Sandi Diperlukan"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Perubahan Kata Sandi Berhasil"
+
+#: 
+msgid "Password Changed"
+msgstr "Kata Sandi Diubah"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Kata sandi harus minimal"
+
+#: 
+msgid "Property not found"
+msgstr "Properti tidak ditemukan"
+
+#: 
+msgid "Set New Password"
+msgstr "Atur Kata Sandi Baru"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Kata sandi untuk %s telah diperbarui."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Tidak dapat menyandikan ulang JSON untuk konfigurasi"
+
+#: 
+msgid "User not found"
+msgstr "Pengguna tidak ditemukan"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Anda harus mengatur kata sandi baru sebelum melanjutkan."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Kata sandi Anda telah berhasil diperbarui."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "keluarga yang dipilih tidak memiliki koordinat"
+
