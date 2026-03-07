@@ -196,7 +196,7 @@ Visit `http://localhost/` — you will see the setup wizard on first run.
 
 ### Required PHP extensions
 
-`bcmath`, `exif`, `gd`, `gettext`, `iconv`, `intl`, `mbstring`, `mysqli`,
+`bcmath`, `curl`, `exif`, `gd`, `gettext`, `iconv`, `intl`, `mbstring`, `mysqli`,
 `opcache`, `pdo_mysql`, `sodium`, `xml`, `zip`
 
 The `Dockerfile.churchcrm-fpm-php8` installs all of these.

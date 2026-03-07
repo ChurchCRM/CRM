@@ -18,10 +18,10 @@ EXPOSE 9000
 # Install system dependencies required by PHP extensions
 RUN apt-get update && \
     apt-get install -y \
+        libcurl4-openssl-dev \
         libfreetype6-dev \
         libicu-dev \
         libjpeg-dev \
-        libmcrypt-dev \
         libonig-dev \
         libpng-dev \
         libxml2-dev \
@@ -36,6 +36,7 @@ RUN apt-get update && \
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) \
         bcmath \
+        curl \
         exif \
         gd \
         gettext \
