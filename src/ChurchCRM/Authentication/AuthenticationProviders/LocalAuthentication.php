@@ -153,9 +153,10 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->bPendingTwoFactorAuth = true;
                 LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
             } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled()) {
-                $authenticationResult->isAuthenticated = false;
-                $authenticationResult->message = gettext('Invalid login or password');
-                LoggerUtils::getAuthLogger()->warning('User attempted login with valid credentials, but missing mandatory 2FA enrollment.  Denying access for user', $logCtx);
+                // Allow login but force enrollment — user will be redirected on every request until enrolled
+                $this->prepareSuccessfulLoginOperations();
+                $authenticationResult->isAuthenticated = true;
+                LoggerUtils::getAuthLogger()->info('User logged in, redirecting to mandatory 2FA enrollment', $logCtx);
             } else {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
@@ -232,6 +233,16 @@ class LocalAuthentication implements IAuthenticationProvider
             LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);
             $authenticationResult->isAuthenticated = false;
             $authenticationResult->nextStepURL = $this->getPasswordChangeURL();
+        }
+
+        // If 2FA is required and user hasn't enrolled, redirect to enrollment on every request
+        // but don't redirect if they're already on the enrollment page
+        $enrollmentURL = SystemURLs::getRootPath() . '/v2/user/current/manage2fa';
+        $isOnEnrollmentPage = str_contains($_SERVER['REQUEST_URI'], '/v2/user/current/manage2fa')
+            || str_contains($_SERVER['REQUEST_URI'], '/v2/user/current/enroll2fa');
+        if (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
+            LoggerUtils::getAuthLogger()->info('User must enroll in mandatory 2FA before accessing system', $logCtx);
+            $authenticationResult->nextStepURL = $enrollmentURL;
         }
 
         // Finally, if the above tests pass, this user "is authenticated"
