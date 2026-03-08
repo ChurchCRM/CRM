@@ -270,6 +270,20 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $family->save();
         $family->reload();
 
+        // Auto-geocode family if address was modified
+        if (
+            ($family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS1)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS2)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_CITY)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_STATE)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP)
+                || $family->isColumnModified(FamilyTableMap::COL_FAM_COUNTRY))
+            && empty($family->getLatitude())
+        ) {
+            $familyService = new \ChurchCRM\Service\FamilyService();
+            $familyService->autoGeocodeFamily($family);
+        }
+
         //If the user added a new record, we need to key back to the route to the FamilyView page
         if ($iFamilyID < 1) {
             $iFamilyID = $family->getId();

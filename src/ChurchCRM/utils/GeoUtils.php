@@ -11,12 +11,22 @@ class GeoUtils
      * Geocode an address to latitude/longitude using OpenStreetMap's Nominatim service.
      *
      * Nominatim is free and requires no API key. No admin configuration needed.
+     * Supports both concatenated address strings and structured components.
      *
-     * @param string $address The address to geocode
+     * @param string $address The address to geocode (can be full address or just street)
+     * @param string|null $city City name (improves accuracy when provided)
+     * @param string|null $state State/province (improves accuracy when provided)
+     * @param string|null $zip Postal code (improves accuracy when provided)
+     * @param string|null $country Country name (improves accuracy when provided)
      * @return array{Latitude: float, Longitude: float} Latitude and longitude, or [0, 0] if not found
      */
-    public static function getLatLong(string $address): array
-    {
+    public static function getLatLong(
+        string $address,
+        ?string $city = null,
+        ?string $state = null,
+        ?string $zip = null,
+        ?string $country = null
+    ): array {
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::getCurrentLocale();
 
@@ -31,15 +41,53 @@ class GeoUtils
         try {
             $logger->debug('Using: Geo Provider - Nominatim (OpenStreetMap)');
 
-            // Call Nominatim API - no API key needed
-            $url = 'https://nominatim.openstreetmap.org/search?';
+            // Build structured query for better Nominatim accuracy
             $params = [
-                'q' => $address,
                 'format' => 'json',
                 'limit' => 1,
                 'accept-language' => $localeInfo->getShortLocale(),
             ];
-            $url .= http_build_query($params);
+
+            // Build address for simple query with proper formatting
+            $simplifiedAddress = trim($address);
+
+            // Use structured query if components provided
+            if (!empty($city) || !empty($state) || !empty($zip)) {
+                $params['street'] = trim($address);
+                if (!empty($city)) {
+                    $params['city'] = trim($city);
+                }
+                if (!empty($state)) {
+                    $params['state'] = trim($state);
+                }
+                if (!empty($zip)) {
+                    $params['postalcode'] = trim($zip);
+                }
+                // Only add country if it's actually provided (not empty/null)
+                if (!empty($country)) {
+                    $params['country'] = trim($country);
+                }
+            } else {
+                // Fallback: construct a clean address from available components
+                $parts = [];
+                $parts[] = $simplifiedAddress;
+                if (!empty($city)) {
+                    $parts[] = trim($city);
+                }
+                if (!empty($state)) {
+                    $parts[] = trim($state);
+                }
+                if (!empty($zip)) {
+                    $parts[] = trim($zip);
+                }
+                // Don't add country to simple query - it often causes matching to fail
+                $params['q'] = implode(', ', $parts);
+            }
+
+            $url = 'https://nominatim.openstreetmap.org/search?' . http_build_query($params);
+
+            // Log the actual URL being sent for debugging
+            $logger->debug('Nominatim request URL: ' . $url);
 
             // Nominatim ToS requires a User-Agent header
             $context = stream_context_create([
@@ -55,9 +103,12 @@ class GeoUtils
                 return ['Latitude' => $lat, 'Longitude' => $long];
             }
 
+            $logger->debug('Nominatim response: ' . $response);
+
             $results = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
-            if (empty($results) || !is_array($results)) {
+            if (empty($results) || !\is_array($results)) {
                 $logger->warning("Geocoding: No results found for address: $address");
+                $logger->debug("Parsed results: " . json_encode($results, JSON_THROW_ON_ERROR));
                 return ['Latitude' => $lat, 'Longitude' => $long];
             }
 

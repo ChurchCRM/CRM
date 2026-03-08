@@ -142,14 +142,22 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
                    target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
                 <?php $directionsUrl = $family->getDirectionsUrl(); ?>
-                <?php if (!empty($directionsUrl)) : ?>
                 <div class="mt-2">
+                    <?php if (!empty($directionsUrl)) : ?>
                     <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
                        class="btn btn-sm btn-outline-primary">
                         <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
                     </a>
+                    <?php endif; ?>
+                    <?php if (!$family->hasLatitudeAndLongitude()) : ?>
+                    <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
+                            data-family-id="<?= $family->getId() ?>"
+                            title="<?= gettext('Automatically detect coordinates using address') ?>">
+                        <i class="fa-solid fa-location-dot mr-1"></i><?= gettext('Refresh Coordinates') ?>
+                    </button>
+                    <?php endif; ?>
                 </div>
-                <?php endif; ?>
+
                 <!-- Family location map (Leaflet + OpenStreetMap) -->
                 <?php if ($family->hasLatitudeAndLongitude()) : ?>
                     <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
