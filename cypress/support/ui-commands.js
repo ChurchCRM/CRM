@@ -32,16 +32,11 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
             cy.url().should('not.include', '/login');
         },
         {
-            // Validate session server-side: a 200 response means the server
-            // still recognises the session. A 302 means the PHP session expired
-            // (server redirects to /session/begin), which tells Cypress to
-            // clear the cache and re-run the login setup function.
+            // Validate session by checking for a CRM cookie
             validate: () => {
-                cy.request({
-                    url: '/v2/dashboard',
-                    followRedirect: false,
-                    failOnStatusCode: false,
-                }).its('status').should('eq', 200);
+                cy.getCookies().should('satisfy', (cookies) => {
+                    return cookies.some(cookie => cookie.name.startsWith('CRM-'));
+                });
             }
         }
     );
