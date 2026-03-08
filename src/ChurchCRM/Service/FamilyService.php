@@ -24,7 +24,7 @@ class FamilyService
     public function getMissingCoordinatesCount(): int
     {
         return FamilyQuery::create()
-            ->filterByLatitude('')
+            ->filterByLatitude(null)
             ->count();
     }
 
@@ -54,7 +54,7 @@ class FamilyService
             $zip = $family->getZip();
             $country = $family->getCountry();
 
-            $this->logger->debug('autoGeocodeFamily params: street=' . json_encode($street) . ' city=' . json_encode($city) . ' state=' . json_encode($state) . ' zip=' . json_encode($zip) . ' country=' . json_encode($country));
+            $this->logger->debug('autoGeocodeFamily: geocoding family ' . $family->getId());
 
             $coords = GeoUtils::getLatLong(
                 $street,
@@ -68,7 +68,7 @@ class FamilyService
 
             // If geocoding failed (returns 0,0), log but don't break
             if ($lat === 0.0 && $lng === 0.0) {
-                $this->logger->warning('autoGeocodeFamily: Could not geocode address for family ' . $family->getId() . ': ' . $family->getAddress());
+                $this->logger->warning('autoGeocodeFamily: Could not geocode address for family ' . $family->getId());
                 return false;
             }
 

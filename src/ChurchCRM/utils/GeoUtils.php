@@ -86,14 +86,12 @@ class GeoUtils
 
             $url = 'https://nominatim.openstreetmap.org/search?' . http_build_query($params);
 
-            // Log the actual URL being sent for debugging
-            $logger->debug('Nominatim request URL: ' . $url);
-
-            // Nominatim ToS requires a User-Agent header
+            // Nominatim ToS requires a User-Agent header; add timeout to avoid hanging PHP workers
             $context = stream_context_create([
                 'http' => [
-                    'method' => 'GET',
-                    'header' => "User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)\r\n",
+                    'method'  => 'GET',
+                    'header'  => "User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)\r\n",
+                    'timeout' => 10,
                 ],
             ]);
 
@@ -103,12 +101,9 @@ class GeoUtils
                 return ['Latitude' => $lat, 'Longitude' => $long];
             }
 
-            $logger->debug('Nominatim response: ' . $response);
-
             $results = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
             if (empty($results) || !\is_array($results)) {
-                $logger->warning("Geocoding: No results found for address: $address");
-                $logger->debug("Parsed results: " . json_encode($results, JSON_THROW_ON_ERROR));
+                $logger->warning('Geocoding: No results found for address (see service log for familyId)');
                 return ['Latitude' => $lat, 'Longitude' => $long];
             }
 
@@ -116,7 +111,7 @@ class GeoUtils
             $lat = (float) $firstResult['lat'];
             $long = (float) $firstResult['lon'];
 
-            $logger->debug("Geocoding successful: $address -> $lat, $long");
+            $logger->debug('Geocoding successful: lat=' . $lat . ', lng=' . $long);
         } catch (\Throwable $exception) {
             $logger->warning('Geocoding error: ' . $exception->getMessage());
         }
