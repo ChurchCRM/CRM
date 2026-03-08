@@ -1,17 +1,15 @@
 {
   "%d hour": {
-    "zero": "",
-    "one": "%d ساعة",
-    "two": "",
-    "few": "",
-    "many": "",
-    "other": "%d ساعات"
+    "zero": "%d ساعات",
+    "two": "%d ساعتان",
+    "few": "%d ساعات",
+    "many": "%d ساعة"
   },
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "التحقق الثنائي",
+  "Find people who didn't attend an event": "ابحث عن الأشخاص الذين لم يحضروا حدثاً",
+  "Leave blank to keep existing": "اتركه فارغاً للاحتفاظ بالقيمة الحالية",
+  "Missing people": "الأشخاص الغائبون",
+  "Not enrolled": "غير مسجل",
+  "Require all users to enroll in two-factor authentication": "طلب من جميع المستخدمين التسجيل في المصادقة الثنائية",
+  "Select the desired event": "حدد الحدث المطلوب"
 }

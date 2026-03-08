@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Gjeni njerëzit që nuk morën pjesë në një ngjarje",
+  "Leave blank to keep existing": "Lëreni bosh për të mbajtur ekzistuesin",
+  "Missing people": "Njerëz që mungojnë",
+  "Not enrolled": "Jo i regjistruar",
+  "Require all users to enroll in two-factor authentication": "Kërko që të gjithë përdoruesit të regjistrohen në vërtetimin me dy faktorë",
+  "Select the desired event": "Zgjidhni ngjarjen e dëshiruar"
 }

@@ -1,54 +1,36 @@
 {
   "%d month old": {
-    "one": "%d mes de edad",
-    "many": "",
-    "other": "%d meses de edad"
+    "many": "%d meses de edad"
   },
   "%d year old": {
-    "one": "%d año de edad",
-    "many": "",
-    "other": "%d años de edad"
+    "many": "%d años de edad"
   },
   "%d event in %s": {
-    "one": "%d evento en %s",
-    "many": "",
-    "other": "%d eventos en %s"
+    "many": "%d eventos en %s"
   },
   "person": {
-    "one": "Persona",
-    "many": "",
-    "other": "Personas"
+    "many": "Personas"
   },
   "%d Person added to the Cart.": {
-    "one": "%d persona agregada al carrito.",
-    "many": "",
-    "other": "%d personas agregadas al carrito."
+    "many": "%d personas agregadas al carrito."
   },
   "%d Person successfully added to selected Family.": {
-    "one": "%d persona agregada exitosamente a la familia seleccionada.",
-    "many": "",
-    "other": "%d personas agregadas exitosamente a la familia seleccionada."
+    "many": "%d personas agregadas exitosamente a la familia seleccionada."
   },
   "%d Person successfully added to selected Group.": {
-    "one": "%d persona agregada exitosamente al grupo seleccionado.",
-    "many": "",
-    "other": "%d personas agregadas exitosamente al grupo seleccionado."
+    "many": "%d personas agregadas exitosamente al grupo seleccionado."
   },
   "%d person": {
-    "one": "%d persona",
-    "many": "",
-    "other": "%d personas"
+    "many": "%d personas"
   },
   "%d hour": {
-    "one": "%d hora",
-    "many": "",
-    "other": "%d horas"
+    "many": "%d horas"
   },
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Buscar personas que no asistieron a un evento",
+  "Leave blank to keep existing": "Dejar en blanco para mantener el valor existente",
+  "Missing people": "Personas ausentes",
+  "Not enrolled": "No inscrito",
+  "Require all users to enroll in two-factor authentication": "Requerir que todos los usuarios se inscriban en la autenticación de dos factores",
+  "Select the desired event": "Seleccionar el evento deseado"
 }

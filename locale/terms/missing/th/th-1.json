@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "ค้นหาผู้ที่ไม่ได้เข้าร่วมกิจกรรม",
+  "Leave blank to keep existing": "เว้นว่างเพื่อเก็บรักษาข้อมูลที่มีอยู่",
+  "Missing people": "ผู้ที่ขาดหาย",
+  "Not enrolled": "ยังไม่ลงทะเบียน",
+  "Require all users to enroll in two-factor authentication": "กำหนดให้ผู้ใช้ทั้งหมดลงทะเบียนการยืนยันตัวตนสองปัจจัย",
+  "Select the desired event": "เลือกกิจกรรมที่ต้องการ"
 }

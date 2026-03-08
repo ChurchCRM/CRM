@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Βρείτε άτομα που δεν παρακολούθησαν μια εκδήλωση",
+  "Leave blank to keep existing": "Αφήστε κενό για διατήρηση της υπάρχουσας τιμής",
+  "Missing people": "Απόντα μέλη",
+  "Not enrolled": "Μη εγγεγραμμένος",
+  "Require all users to enroll in two-factor authentication": "Απαιτήστε από όλους τους χρήστες να εγγραφούν στον έλεγχο ταυτότητας δύο παραγόντων",
+  "Select the desired event": "Επιλέξτε την επιθυμητή εκδήλωση"
 }

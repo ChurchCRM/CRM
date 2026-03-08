@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Encontrar pessoas que não participaram num evento",
+  "Leave blank to keep existing": "Deixe em branco para manter o valor existente",
+  "Missing people": "Pessoas em falta",
+  "Not enrolled": "Não inscrito",
+  "Require all users to enroll in two-factor authentication": "Exigir que todos os utilizadores se inscrevam na autenticação de dois fatores",
+  "Select the desired event": "Selecione o evento pretendido"
 }

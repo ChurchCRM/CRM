@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Hitta personer som inte deltog i ett evenemang",
+  "Leave blank to keep existing": "Lämna tomt för att behålla befintligt värde",
+  "Missing people": "Saknade personer",
+  "Not enrolled": "Inte registrerad",
+  "Require all users to enroll in two-factor authentication": "Kräv att alla användare registrerar sig för tvåfaktorsautentisering",
+  "Select the desired event": "Välj önskat evenemang"
 }

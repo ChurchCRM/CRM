@@ -1,12 +1,12 @@
 {
   "%d hour": {
-    "other": ""
+    "other": "%d giờ"
   },
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Tìm những người không tham dự sự kiện",
+  "Leave blank to keep existing": "Để trống để giữ nguyên giá trị hiện có",
+  "Missing people": "Người vắng mặt",
+  "Not enrolled": "Chưa đăng ký",
+  "Require all users to enroll in two-factor authentication": "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố",
+  "Select the desired event": "Chọn sự kiện mong muốn"
 }

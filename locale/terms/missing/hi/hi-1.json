@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "ऐसे लोगों को खोजें जो किसी कार्यक्रम में उपस्थित नहीं थे",
+  "Leave blank to keep existing": "मौजूदा मान को रखने के लिए खाली छोड़ें",
+  "Missing people": "अनुपस्थित लोग",
+  "Not enrolled": "नामांकित नहीं",
+  "Require all users to enroll in two-factor authentication": "सभी उपयोगकर्ताओं को दो-कारक प्रमाणीकरण में नामांकन की आवश्यकता है",
+  "Select the desired event": "वांछित कार्यक्रम चुनें"
 }

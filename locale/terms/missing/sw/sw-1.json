@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Tafuta watu ambao hawakuhudhuria tukio",
+  "Leave blank to keep existing": "Acha wazi ili kuhifadhi thamani iliyopo",
+  "Missing people": "Watu wanaokosekana",
+  "Not enrolled": "Haijasajiliwa",
+  "Require all users to enroll in two-factor authentication": "Lazimisha watumiaji wote kujiandikisha katika uthibitishaji wa hatua mbili",
+  "Select the desired event": "Chagua tukio unalotaka"
 }

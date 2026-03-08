@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Vind mense wat nie 'n geleentheid bygewoon het nie",
+  "Leave blank to keep existing": "Laat leeg om bestaande te behou",
+  "Missing people": "Ontbrekende mense",
+  "Not enrolled": "Nie ingeskryf nie",
+  "Require all users to enroll in two-factor authentication": "Vereis dat alle gebruikers tweefaktor-verifikasie aktiveer",
+  "Select the desired event": "Kies die gewenste geleentheid"
 }

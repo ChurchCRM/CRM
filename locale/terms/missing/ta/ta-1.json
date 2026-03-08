@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "நிகழ்வில் கலந்துகொள்ளாத நபர்களைக் கண்டறியுங்கள்",
+  "Leave blank to keep existing": "தற்போதுள்ள மதிப்பை வைத்திருக்க வெறுமையாக விடவும்",
+  "Missing people": "காணாமல் போன நபர்கள்",
+  "Not enrolled": "சேர்க்கப்படவில்லை",
+  "Require all users to enroll in two-factor authentication": "அனைத்து பயனர்களும் இரு-காரணி அங்கீகாரத்தில் சேர வேண்டும்",
+  "Select the desired event": "விரும்பிய நிகழ்வைத் தேர்ந்தெடுக்கவும்"
 }

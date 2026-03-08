@@ -1,19 +1,15 @@
 {
   "%d person": {
-    "one": "%d osoba",
-    "few": "",
-    "other": "%d osob"
+    "few": "%d osoby"
   },
   "%d hour": {
-    "one": "%d hodina",
-    "few": "",
-    "other": "%d hodin"
+    "few": "%d hodiny"
   },
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Najít lidi, kteří se nezúčastnili akce",
+  "Leave blank to keep existing": "Nechte prázdné pro zachování stávající hodnoty",
+  "Missing people": "Chybějící lidé",
+  "Not enrolled": "Nezaregistrován",
+  "Require all users to enroll in two-factor authentication": "Vyžadovat, aby se všichni uživatelé přihlásili k dvoufaktorovému ověřování",
+  "Select the desired event": "Vyberte požadovanou akci"
 }

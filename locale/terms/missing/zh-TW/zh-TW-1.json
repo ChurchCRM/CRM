@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "雙重驗證",
+  "Find people who didn't attend an event": "查找未參加活動的人員",
+  "Leave blank to keep existing": "留空以保留現有內容",
+  "Missing people": "缺席人員",
+  "Not enrolled": "未註冊",
+  "Require all users to enroll in two-factor authentication": "要求所有使用者註冊雙重身份驗證",
+  "Select the desired event": "選擇所需活動"
 }

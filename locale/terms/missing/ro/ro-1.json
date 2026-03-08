@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Găsiți persoanele care nu au participat la un eveniment",
+  "Leave blank to keep existing": "Lăsați necompletat pentru a păstra valoarea existentă",
+  "Missing people": "Persoane absente",
+  "Not enrolled": "Neînscris",
+  "Require all users to enroll in two-factor authentication": "Solicitați tuturor utilizatorilor să se înscrie pentru autentificarea în doi factori",
+  "Select the desired event": "Selectați evenimentul dorit"
 }

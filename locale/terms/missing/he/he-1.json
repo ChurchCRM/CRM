@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "מצא אנשים שלא השתתפו באירוע",
+  "Leave blank to keep existing": "השאר ריק לשמירה על הקיים",
+  "Missing people": "אנשים חסרים",
+  "Not enrolled": "לא רשום",
+  "Require all users to enroll in two-factor authentication": "דרוש מכל המשתמשים להירשם לאימות דו-שלבי",
+  "Select the desired event": "בחר את האירוע הרצוי"
 }

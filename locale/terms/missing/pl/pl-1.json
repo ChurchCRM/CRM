@@ -1,14 +1,12 @@
 {
   "%d hour": {
-    "one": "%d godzina",
-    "few": "",
-    "other": "%d godzin"
+    "few": "%d godziny"
   },
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2FA",
+  "Find people who didn't attend an event": "Znajdź osoby, które nie uczestniczyły w wydarzeniu",
+  "Leave blank to keep existing": "Pozostaw puste, aby zachować istniejącą wartość",
+  "Missing people": "Nieobecni",
+  "Not enrolled": "Niezarejestrowany",
+  "Require all users to enroll in two-factor authentication": "Wymagaj, aby wszyscy użytkownicy zarejestrowali się do uwierzytelniania dwuskładnikowego",
+  "Select the desired event": "Wybierz żądane wydarzenie"
 }

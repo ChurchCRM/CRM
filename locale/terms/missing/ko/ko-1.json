@@ -1,9 +1,9 @@
 {
-  "2FA": "",
-  "Find people who didn't attend an event": "",
-  "Leave blank to keep existing": "",
-  "Missing people": "",
-  "Not enrolled": "",
-  "Require all users to enroll in two-factor authentication": "",
-  "Select the desired event": ""
+  "2FA": "2단계 인증",
+  "Find people who didn't attend an event": "행사에 참석하지 않은 사람 찾기",
+  "Leave blank to keep existing": "기존 값을 유지하려면 비워두세요",
+  "Missing people": "불참자",
+  "Not enrolled": "미등록",
+  "Require all users to enroll in two-factor authentication": "모든 사용자에게 이중 인증 등록 요구",
+  "Select the desired event": "원하는 행사 선택"
 }
