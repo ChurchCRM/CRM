@@ -2625,10 +2625,6 @@ msgid "Last Login"
 msgstr "כניסה אחרונה"
 
 #: 
-msgid "Total Logins"
-msgstr "סך הכל כניסות"
-
-#: 
 msgid "Failed Logins"
 msgstr "כניסות שנכשלו"
 
@@ -4128,11 +4124,6 @@ msgstr "תו מפריד להפרדת אימיילים בקישורי mailto:"
 #: 
 msgid "User permission to create directories"
 msgstr "הרשאת משתמש ליצירת תיקיות"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "הרשאת משתמש לייצוא קבצי CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7212,14 +7203,6 @@ msgid "Holiday"
 msgstr "חופשה"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "אפשר למשתמשים להירשם באופן עצמאי לאימות דו-שלבי"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "דורש ממשתמשים להירשם באופן עצמאי לאימות דו-שלבי"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7260,32 +7243,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "שם משפחה, שם פרטי שם אמצעי"
 
 #: 
-msgid "Two Factor Status"
-msgstr "מצב אימות דו-שלבי"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "אנא אשר ביטול אימות דו-שלבי למשתמש זה"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "תצורת אימות דו-שלבי לא נתמכת"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "לא ניתן להתחיל הרשמה לאימות דו-שלבי"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "אימות דו-שלבי דורש ממנהלי ChurchCRM להגדיר מספר פרמטרים"
-
-#: 
-msgid "System configuration "
-msgstr "הגדרות מערכת "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "חייב להיות מוגדר כ-'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7641,16 +7600,6 @@ msgstr "תכונה"
 #: 
 msgid "Default Zip"
 msgstr "מיקוד ברירת מחדל"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "אנשים עם כרטיס אשראי"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "אנשים שמוגדרים לשלם בכרטיס אשראי."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8887,6 +8836,7 @@ msgstr "עורך אירוע"
 msgid "Enter event title..."
 msgstr "הזן כותרת לאירוע..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "אירוע"
@@ -9898,10 +9848,6 @@ msgid "Membership Reports"
 msgstr "דוחות חברות"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "מפתחות סודיים חסרים"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "ניתן לייצא את רוב הדוחות כ-PDF או CSV."
 
@@ -10040,10 +9986,6 @@ msgstr "הגדרות שרת SMTP אינן מוגדרות"
 #: 
 msgid "Save and Add New Family"
 msgstr "שמור והוסף משפחה חדשה"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "מפתחות סודיים חסרים בקובץ Config.php"
 
 #: 
 msgid "Sep"
@@ -10726,10 +10668,6 @@ msgid "Validation pending"
 msgstr "ממתין לאימות"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "חייב להיות מוגדר עם מפתח הצפנה"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "אדם %d נוסף לסל."
@@ -11082,14 +11020,6 @@ msgid "No people found matching your criteria."
 msgstr "לא נמצאו אנשים התואמים לקריטריונים שלך."
 
 #: 
-msgid "Off"
-msgstr "כבוי"
-
-#: 
-msgid "On"
-msgstr "פעיל"
-
-#: 
 msgid "Photo Directory"
 msgstr "ספריית תמונות"
 
@@ -11102,26 +11032,12 @@ msgid "Show only people with photos"
 msgstr "הצג רק אנשים עם תמונות"
 
 #: 
-msgid "Checkout All"
-msgstr "תשלום לכולם"
-
-#: 
 msgid "Expected"
 msgstr "צפוי"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "מחיקת הקיוסק נכשלה"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "התחייבות משפחתית לפי שנת כספים"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "חפש תלמידים רשומים"
 
 #. Context: queryparameters_qrp
 #: 

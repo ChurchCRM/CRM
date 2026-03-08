@@ -275,10 +275,6 @@ msgid "Unexpected Person Id"
 msgstr "Unexpected Person ID"
 
 #: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Unable To Begin Two Factor Authentication Enrolment"
-
-#: 
 msgid "Invalid List id"
 msgstr "Invalid List ID"
 

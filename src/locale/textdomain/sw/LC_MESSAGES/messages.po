@@ -2625,10 +2625,6 @@ msgid "Last Login"
 msgstr "Mwisho wa Kuingia"
 
 #: 
-msgid "Total Logins"
-msgstr "Jumla ya Ingia"
-
-#: 
 msgid "Failed Logins"
 msgstr "Imeshindwa Kuingia"
 
@@ -4128,11 +4124,6 @@ msgstr "Delimiter kutenganisha barua pepe katika mailto: viungo"
 #: 
 msgid "User permission to create directories"
 msgstr "Ruhusa ya mtumiaji kuunda saraka"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Ruhusa ya mtumiaji kuhamisha faili za CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7210,14 +7201,6 @@ msgid "Holiday"
 msgstr "Sikukuu"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Ruhusu watumiaji wajiandikishe wenyewe katika uthibitishaji wa vipengele viwili"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Inahitaji watumiaji kujiandikisha wenyewe katika uthibitishaji wa sababu 2"
-
-#: 
 msgid "ChurchCRM"
 msgstr "KanisaCRM"
 
@@ -7258,32 +7241,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Jina la Mwisho, Jina la Kwanza Jina la Kati"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Hali ya Mambo Mbili"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Tafadhali thibitisha kulemaza 2 Factor Auth kwa mtumiaji huyu"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Usanidi wa Uthibitishaji wa Factor Mbili Usiotumika"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Haijaweza Kuanza Uandikishaji wa Uthibitishaji wa Mambo Mbili"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Uthibitishaji wa sababu mbili unahitaji wasimamizi wa ChurchCRM kusanidi vigezo vichache"
-
-#: 
-msgid "System configuration "
-msgstr "Usanidi wa mfumo "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Lazima iwekwe kuwa 'kweli'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7639,16 +7598,6 @@ msgstr "mali"
 #: 
 msgid "Default Zip"
 msgstr "Zip Chaguomsingi"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Watu wa Kadi ya Mkopo"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Watu ambao wamesanidiwa kulipa kwa kadi ya mkopo."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8885,6 +8834,7 @@ msgstr "Inahariri Tukio"
 msgid "Enter event title..."
 msgstr "Ingiza kichwa cha tukio..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Tukio"
@@ -9896,10 +9846,6 @@ msgid "Membership Reports"
 msgstr "Ripoti za Uanachama"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Funguo za Siri Zinakosekana"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Ripoti nyingi zinaweza kutolewa kama PDF au CSV."
 
@@ -10038,10 +9984,6 @@ msgstr "Mipangilio ya seva ya SMTP haijasanidiwa"
 #: 
 msgid "Save and Add New Family"
 msgstr "Hifadhi na Ongeza Familia Mpya"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Funguo za siri zinakosekana kwenye Config.php"
 
 #: 
 msgid "Sep"
@@ -10724,10 +10666,6 @@ msgid "Validation pending"
 msgstr "Inasubiri uhakiki"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "lazima isanidiwe na ufunguo wa usimbuaji"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "Mtu %d ameongezwa kwenye Kigari."
@@ -11080,14 +11018,6 @@ msgid "No people found matching your criteria."
 msgstr "Hakuna watu waliopatikana wanaolingana na vigezo vyako."
 
 #: 
-msgid "Off"
-msgstr "Zima"
-
-#: 
-msgid "On"
-msgstr "Washa"
-
-#: 
 msgid "Photo Directory"
 msgstr "Saraka ya Picha"
 
@@ -11100,26 +11030,12 @@ msgid "Show only people with photos"
 msgstr "Onyesha watu wenye picha pekee"
 
 #: 
-msgid "Checkout All"
-msgstr "Toa Wote"
-
-#: 
 msgid "Expected"
 msgstr "Inayotarajiwa"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Imeshindwa kufuta kiosk"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Ahadi za Familia kwa Mwaka wa Fedha"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Tafuta wanafunzi waliosajiliwa"
 
 #. Context: queryparameters_qrp
 #: 

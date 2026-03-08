@@ -2627,10 +2627,6 @@ msgid "Last Login"
 msgstr "Τελευταία είσοδος"
 
 #: 
-msgid "Total Logins"
-msgstr "Συνολικές συνδέσεις"
-
-#: 
 msgid "Failed Logins"
 msgstr "Αποτυχημένες συνδέσεις"
 
@@ -4133,11 +4129,6 @@ msgstr "Οριοθέτηση για ξεχωριστά email σε mailto: συν
 #: 
 msgid "User permission to create directories"
 msgstr "Άδεια χρήστη για τη δημιουργία καταλόγων"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Άδεια χρήστη για εξαγωγή αρχείων CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7217,14 +7208,6 @@ msgid "Holiday"
 msgstr "Αργία"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Επιτρέψτε στους χρήστες να εγγραφούν μόνοι τους στον έλεγχο ταυτότητας 2 παραγόντων"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Απαιτεί από τους χρήστες να εγγραφούν μόνοι τους στον έλεγχο ταυτότητας 2 παραγόντων"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7265,32 +7248,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Επώνυμο, Όνομα MiddleName"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Κατάσταση δύο παραγόντων"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Επιβεβαιώστε την απενεργοποίηση του 2 Factor Auth για αυτόν τον χρήστη"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Μη υποστηριζόμενη διαμόρφωση ελέγχου ταυτότητας δύο παραγόντων"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Δεν είναι δυνατή η έναρξη της εγγραφής ελέγχου ταυτότητας δύο παραγόντων"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Ο έλεγχος ταυτότητας δύο παραγόντων απαιτεί από τους διαχειριστές του ChurchCRM να διαμορφώσουν μερικές παραμέτρους"
-
-#: 
-msgid "System configuration "
-msgstr "Διαμόρφωση συστήματος "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Πρέπει να οριστεί σε \"true\""
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7647,16 +7606,6 @@ msgstr "περιουσία"
 #: 
 msgid "Default Zip"
 msgstr "Προεπιλογή Ταχυδρομικού"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Ανθρώποι Πιστωτικής Κάρτας"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Άτομα που έχουν ρυθμιστεί να πληρώνουν με πιστωτική κάρτα."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8893,6 +8842,7 @@ msgstr "Επεξεργασίαing Event"
 msgid "Enter event title..."
 msgstr "Εισάγετε τίτλο συμβάντος..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Εκδήλωση"
@@ -9904,10 +9854,6 @@ msgid "Membership Reports"
 msgstr "Αναφορές Ιδιοκτησίας"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Ελλιπή Μυστικά Κλειδιά"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Οι περισσότερες αναφορές εξάγονται ως PDF ή CSV."
 
@@ -10046,10 +9992,6 @@ msgstr "Οι ρυθμίσεις διακομιστή SMTP δεν έχουν ορ
 #: 
 msgid "Save and Add New Family"
 msgstr "Αποθήκευση και Προσθήκη Νέας Οικογένειας"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Λείπουν τα κρυφά κλειδιά από το Config.php"
 
 #: 
 msgid "Sep"
@@ -10732,10 +10674,6 @@ msgid "Validation pending"
 msgstr "Επαλήθευση σε Αναμονή"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "πρέπει να ρυθμιστεί με ένα κλειδί κρυπτογράφησης"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d άτομο προστέθηκε στο καλάθι."
@@ -11088,14 +11026,6 @@ msgid "No people found matching your criteria."
 msgstr "Δεν βρέθηκαν άτομα που να ταιριάζουν με τα κριτήριά σας."
 
 #: 
-msgid "Off"
-msgstr "Απενεργοποιημένο"
-
-#: 
-msgid "On"
-msgstr "Ενεργοποιημένο"
-
-#: 
 msgid "Photo Directory"
 msgstr "Κατάλογος Φωτογραφιών"
 
@@ -11108,26 +11038,12 @@ msgid "Show only people with photos"
 msgstr "Εμφάνιση μόνο ατόμων με φωτογραφίες"
 
 #: 
-msgid "Checkout All"
-msgstr "Ολοκλήρωση όλων"
-
-#: 
 msgid "Expected"
 msgstr "Αναμενόμενο"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Αποτυχία διαγραφής κιόσκι"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Υπόσχεση οικογένειας ανά οικονομικό έτος"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Εύρεση εγγεγραμμένων μαθητών"
 
 #. Context: queryparameters_qrp
 #: 

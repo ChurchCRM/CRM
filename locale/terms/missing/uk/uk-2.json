@@ -1,7 +1,4 @@
 {
-  "From dashboard.vonage.com": "",
-  "GA4 Measurement ID": "",
-  "Generate new code": "",
   "Get Started": "",
   "Get your API key from MailChimp: Account Settings > Extras > API Keys": "",
   "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)": "",
@@ -148,5 +145,8 @@
   "MailChimp connection failed.": "",
   "Map Zoom Level": "",
   "Missing families? Update coordinates to include them on the map.": "",
-  "Missing required settings: %s": ""
+  "Missing required settings: %s": "",
+  "Person has no family": "",
+  "Plugin not found or not active": "",
+  "Server URL is required.": ""
 }

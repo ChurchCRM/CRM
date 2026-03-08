@@ -2639,10 +2639,6 @@ msgid "Last Login"
 msgstr "Đăng nhập mới nhất"
 
 #: 
-msgid "Total Logins"
-msgstr "Tổng số lần đăng nhập"
-
-#: 
 msgid "Failed Logins"
 msgstr "Đăng nhập thất bại"
 
@@ -4145,11 +4141,6 @@ msgstr "Dấu phân cách để tách các email trong mailto: links"
 #: 
 msgid "User permission to create directories"
 msgstr "Thành viên có quyền tạo ra danh bạ"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Thành viên có quyền xuất tập tin CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7220,14 +7211,6 @@ msgid "Holiday"
 msgstr "Ngày lễ"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Cho phép người dùng tự đăng ký xác thực 2 yếu tố"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Yêu cầu người dùng tự đăng ký xác thực 2 yếu tố"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7268,32 +7251,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "LastName, FirstName MiddleName"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Trạng thái hai yếu tố"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vui lòng xác nhận việc tắt 2 Factor Auth cho người dùng này"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Cấu hình xác thực hai yếu tố không được hỗ trợ"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Không thể bắt đầu đăng ký xác thực hai yếu tố"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Xác thực hai yếu tố yêu cầu quản trị viên ChurchCRM định cấu hình một vài tham số"
-
-#: 
-msgid "System configuration "
-msgstr "Cấu hình hệ thông"
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Phải được đặt thành 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7650,16 +7609,6 @@ msgstr "thuộc tính"
 #: 
 msgid "Default Zip"
 msgstr "Mã vùng mặc định"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Người có phương thức thanh toán là thẻ tín dụng"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Những người được cài đặt thanh toán bằng thẻ tín dụng."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8895,6 +8844,7 @@ msgstr "Đang chỉnh sửa sự kiện"
 msgid "Enter event title..."
 msgstr "Nhập tiêu đề sự kiện..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Sự kiện"
@@ -9905,10 +9855,6 @@ msgid "Membership Reports"
 msgstr "Báo cáo thành viên"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Thiếu các khóa bí mật (Secret Keys)"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Hầu hết các báo cáo có thể xuất ra PDF hoặc CSV."
 
@@ -10047,10 +9993,6 @@ msgstr "Cài đặt máy chủ SMTP chưa được cấu hình"
 #: 
 msgid "Save and Add New Family"
 msgstr "Lưu và Thêm gia đình mới"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Thiếu các khóa bí mật trong file Config.php"
 
 #: 
 msgid "Sep"
@@ -10733,10 +10675,6 @@ msgid "Validation pending"
 msgstr "Đang chờ xác thực"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "phải được cấu hình với một khóa mã hóa"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "Đã thêm %d người vào giỏ hàng."
@@ -11085,14 +11023,6 @@ msgid "No people found matching your criteria."
 msgstr "Không tìm thấy người nào phù hợp với tiêu chí của bạn."
 
 #: 
-msgid "Off"
-msgstr "Tắt"
-
-#: 
-msgid "On"
-msgstr "Bật"
-
-#: 
 msgid "Photo Directory"
 msgstr "Thư mục Ảnh"
 
@@ -11105,26 +11035,12 @@ msgid "Show only people with photos"
 msgstr "Chỉ hiển thị người có ảnh"
 
 #: 
-msgid "Checkout All"
-msgstr "Thanh toán tất cả"
-
-#: 
 msgid "Expected"
 msgstr "Dự kiến"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Không thể xóa ki-ốt"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Cam kết gia đình theo năm tài chính"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Tìm học sinh đã đăng ký"
 
 #. Context: queryparameters_qrp
 #: 
