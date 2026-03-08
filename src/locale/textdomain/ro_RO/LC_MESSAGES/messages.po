@@ -2698,10 +2698,6 @@ msgid "Last Login"
 msgstr "Ultima autentificare"
 
 #: 
-msgid "Total Logins"
-msgstr "Totalul Conectări"
-
-#: 
 msgid "Failed Logins"
 msgstr "Conectări nereușite"
 
@@ -4221,11 +4217,6 @@ msgstr "Delimitator pentru separarea adreselor de email în destinatar"
 #: 
 msgid "User permission to create directories"
 msgstr "Permisiunea utilizatorului de a create directoare"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Permisiunea utilizatorului de a exporta fișiere CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7305,14 +7296,6 @@ msgid "Holiday"
 msgstr "Vacanță"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Permiteți utilizatorilor să se înregistreze singuri în autentificarea cu doi factori"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Cere utilizatorilor să se înregistreze singuri în autentificarea cu doi factori"
-
-#: 
 msgid "ChurchCRM"
 msgstr "BisericaCRM"
 
@@ -7353,32 +7336,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Nume, prenume, al doile prenume"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Stare cu doi factori"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vă rugăm să confirmați autentificare în 2 factori pentru acest utilizator"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Configurație a autentificării cu doi factori neacceptată"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Imposibil de început înregistrarea autentificării în 2 pași"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Autentificarea în 2 pași necesită ca administratorii ChurchCRM să configureze câțiva parametri"
-
-#: 
-msgid "System configuration "
-msgstr "Configurare sistem"
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Trebuie setat pe true"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7734,16 +7693,6 @@ msgstr "proprietate"
 #: 
 msgid "Default Zip"
 msgstr "Cod poștal implicit"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Persoane cu card de credit"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Persoane care sunt configurate să plătească prin card de credit."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8981,6 +8930,7 @@ msgstr "Se editează evenimentul"
 msgid "Enter event title..."
 msgstr "Introduceți titlul evenimentului..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Eveniment"
@@ -9993,10 +9943,6 @@ msgid "Membership Reports"
 msgstr "Rapoarte de membru"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Chei secrete lipsă"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Majoritatea rapoartelor pot fi exportate ca PDF pentru tipărire sau CSV pentru analiză în tabel."
 
@@ -10135,10 +10081,6 @@ msgstr "Setările serverului SMTP nu sunt configurate"
 #: 
 msgid "Save and Add New Family"
 msgstr "Salvează și adaugă familie nouă"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Cheile secrete lipsesc din Config.php"
 
 #: 
 msgid "Sep"
@@ -10821,10 +10763,6 @@ msgid "Validation pending"
 msgstr "Validare în așteptare"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "trebuie configurat cu o cheie de criptare"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d persoană adăugată în coș."
@@ -11181,14 +11119,6 @@ msgid "No people found matching your criteria."
 msgstr "Nu s-au găsit persoane care să corespundă criteriilor dvs."
 
 #: 
-msgid "Off"
-msgstr "Oprit"
-
-#: 
-msgid "On"
-msgstr "Pornit"
-
-#: 
 msgid "Photo Directory"
 msgstr "Director Foto"
 
@@ -11201,26 +11131,12 @@ msgid "Show only people with photos"
 msgstr "Afișează doar persoanele cu fotografii"
 
 #: 
-msgid "Checkout All"
-msgstr "Finalizează Toate"
-
-#: 
 msgid "Expected"
 msgstr "Așteptat"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Ștergerea chioșcului a eșuat"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Angajament Familie pe An Fiscal"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Găsire Studenți Înregistrați"
 
 #. Context: queryparameters_qrp
 #: 

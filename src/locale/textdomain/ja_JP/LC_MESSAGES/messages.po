@@ -2597,10 +2597,6 @@ msgid "Last Login"
 msgstr "最終ログイン"
 
 #: 
-msgid "Total Logins"
-msgstr "総ログイン数"
-
-#: 
 msgid "Failed Logins"
 msgstr "ログイン失敗回数"
 
@@ -4093,11 +4089,6 @@ msgstr "mailtoリンクでメールを分離するデリミタ"
 #: 
 msgid "User permission to create directories"
 msgstr "ディレクトリを作成するユーザー権限"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "CSVファイルをエクスポートするユーザー権限"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7162,14 +7153,6 @@ msgid "Holiday"
 msgstr "祝日"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "ユーザーが2要素認証に自己登録することを許可"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "ユーザーに2要素認証への自己登録を要求"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7210,32 +7193,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "姓, 名, ミドルネーム"
 
 #: 
-msgid "Two Factor Status"
-msgstr "2要素認証ステータス"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "このユーザーの2要素認証を無効にすることを確認してください"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "サポートされていない2要素認証設定"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "2要素認証登録を開始できません"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "2要素認証では、ChurchCRM管理者がいくつかのパラメータを設定する必要があります"
-
-#: 
-msgid "System configuration "
-msgstr "システム設定 "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "'true'に設定する必要があります"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7591,16 +7550,6 @@ msgstr "プロパティ"
 #: 
 msgid "Default Zip"
 msgstr "デフォルト郵便番号"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "クレジットカード支払者"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "クレジットカードで支払うように設定されている人物。"
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8836,6 +8785,7 @@ msgstr "イベントを編集中"
 msgid "Enter event title..."
 msgstr "イベントタイトルを入力..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "イベント"
@@ -9846,10 +9796,6 @@ msgid "Membership Reports"
 msgstr "会員レポート"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "秘密鍵が不足しています"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "ほとんどのレポートは、印刷用にPDFとして、またはスプレッドシート分析用にCSVとしてエクスポートできます。"
 
@@ -9988,10 +9934,6 @@ msgstr "SMTPサーバー設定が構成されていません"
 #: 
 msgid "Save and Add New Family"
 msgstr "保存して新しい家族を追加"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Config.phpに秘密鍵がありません"
 
 #: 
 msgid "Sep"
@@ -10674,10 +10616,6 @@ msgid "Validation pending"
 msgstr "検証保留中"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "暗号化キーで設定する必要があります"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d人がカートに追加されました。"
@@ -11026,14 +10964,6 @@ msgid "No people found matching your criteria."
 msgstr "条件に一致する人物が見つかりません。"
 
 #: 
-msgid "Off"
-msgstr "オフ"
-
-#: 
-msgid "On"
-msgstr "オン"
-
-#: 
 msgid "Photo Directory"
 msgstr "写真ディレクトリ"
 
@@ -11046,26 +10976,12 @@ msgid "Show only people with photos"
 msgstr "写真のある人物のみ表示"
 
 #: 
-msgid "Checkout All"
-msgstr "全員チェックアウト"
-
-#: 
 msgid "Expected"
 msgstr "予定"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "キオスクの削除に失敗しました"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "会計年度別家族誓約"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "登録済み学生を検索"
 
 #. Context: queryparameters_qrp
 #: 

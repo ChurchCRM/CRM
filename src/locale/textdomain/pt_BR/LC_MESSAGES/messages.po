@@ -2596,10 +2596,6 @@ msgid "Last Login"
 msgstr "Último Login"
 
 #: 
-msgid "Total Logins"
-msgstr "Total de Logins"
-
-#: 
 msgid "Failed Logins"
 msgstr "Logins com falha"
 
@@ -4093,11 +4089,6 @@ msgstr "Delimitador para separar e-mails no mailto: links"
 #: 
 msgid "User permission to create directories"
 msgstr "Permissão para o usuário criar diretórios"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Permissão para o usuário exportar arquivos CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7165,14 +7156,6 @@ msgid "Holiday"
 msgstr "Feriado"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Permitir que usuários se cadastrem usando autenticação de 2 fatores"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Obrigar usuários a se cadastrarem usando autenticação de 2 fatores"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7213,32 +7196,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Sobrenome, PrimeiroNome, NomeDoMeio"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Status da autenticação de 2 fatores"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Por favor, confirme se deseja desabilitar a autenticação de 2 fatores para esse usuário."
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Configuração de 2 fatores não suportada"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Não foi possível iniciar o registro da autenticação de 2 fatores"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Autenticação de 2 fatores requer que usuários administradores configurem alguns parâmetros"
-
-#: 
-msgid "System configuration "
-msgstr "Configuração do sistema "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Defina como 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7594,16 +7553,6 @@ msgstr "propriedade"
 #: 
 msgid "Default Zip"
 msgstr "CEP Padrão"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Cartão de crédito"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Pessoas sem cartão de crédito configurado para pagamento"
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8840,6 +8789,7 @@ msgstr "Editando evento"
 msgid "Enter event title..."
 msgstr "Digite o título do evento..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Evento"
@@ -9851,10 +9801,6 @@ msgid "Membership Reports"
 msgstr "Relatórios de membresía"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Chaves secretas faltando"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "A maioria dos relatórios pode ser exportada como PDF para impressão ou CSV para análise de planilha."
 
@@ -9993,10 +9939,6 @@ msgstr "As configurações do servidor SMTP não estão configuradas"
 #: 
 msgid "Save and Add New Family"
 msgstr "Salvar e adicionar nova família"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Chaves secretas faltando em Config.php"
 
 #: 
 msgid "Sep"
@@ -10679,10 +10621,6 @@ msgid "Validation pending"
 msgstr "Validação pendente"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "deve ser configurado com uma chave de criptografia"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d pessoa adicionada ao carrinho."
@@ -11035,14 +10973,6 @@ msgid "No people found matching your criteria."
 msgstr "Nenhuma pessoa encontrada que corresponda aos seus critérios."
 
 #: 
-msgid "Off"
-msgstr "Desligado"
-
-#: 
-msgid "On"
-msgstr "Ligado"
-
-#: 
 msgid "Photo Directory"
 msgstr "Diretório de Fotos"
 
@@ -11055,26 +10985,12 @@ msgid "Show only people with photos"
 msgstr "Mostrar apenas pessoas com fotos"
 
 #: 
-msgid "Checkout All"
-msgstr "Registrar saída de todos"
-
-#: 
 msgid "Expected"
 msgstr "Esperado"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Falha ao excluir quiosque"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Compromisso familiar por ano fiscal"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Encontrar alunos registrados"
 
 #. Context: queryparameters_qrp
 #: 

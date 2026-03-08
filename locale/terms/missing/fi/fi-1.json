@@ -1,9 +1,6 @@
 {
-  "Checkout All": "",
   "Expected": "",
   "Failed to delete kiosk": "",
-  "Family Pledge by Fiscal Year": "",
-  "Find Registered students": "",
   "Fiscal Year.": "",
   "Group of registered students": "",
   "Here": "",
@@ -151,5 +148,8 @@
   "Get your API key from MailChimp: Account Settings > Extras > API Keys": "",
   "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)": "",
   "Help": "",
-  "Id": ""
+  "Id": "",
+  "Image shown when no Gravatar exists for the email address": "",
+  "Important": "",
+  "Install plugins by placing them in": ""
 }

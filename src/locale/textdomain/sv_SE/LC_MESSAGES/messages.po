@@ -2730,10 +2730,6 @@ msgid "Last Login"
 msgstr "Sista inloggning"
 
 #: 
-msgid "Total Logins"
-msgstr "Antal inloggningar"
-
-#: 
 msgid "Failed Logins"
 msgstr "Misslyckade inloggningar"
 
@@ -4258,11 +4254,6 @@ msgstr "Avgränsa för att separera e-postmeddelanden i mailto: länkar"
 #: 
 msgid "User permission to create directories"
 msgstr "Användartillstånd att skapa kataloger"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Användarbehörighet att exportera CSV-filer"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7342,14 +7333,6 @@ msgid "Holiday"
 msgstr "Semester"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Låt användarna självregistrera sig för tvåfaktorautentisering"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Kräver att användare registrerar sig i tvåfaktorautentisering"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7390,32 +7373,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Efternamn, Förstanamn andra namn"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Två faktorer status"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bekräfta att du avaktiverar 2 Factor Auth för denna användare"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Ostödda tvåfaktorautentiseringskonfiguration"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Det går inte att påbörja registrering av tvåfaktorautentisering"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Tvåfaktorautentisering kräver att ChurchCRM-administratörer konfigurerar några parametrar"
-
-#: 
-msgid "System configuration "
-msgstr "Systemkonfiguration "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Måste vara inställd på \"sant\""
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7772,16 +7731,6 @@ msgstr "egenskap"
 #: 
 msgid "Default Zip"
 msgstr "Standardpostnummer"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kreditkortspersoner"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personer som är konfigurerade att betala med kreditkort."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -9018,6 +8967,7 @@ msgstr "Redigerar händelse"
 msgid "Enter event title..."
 msgstr "Ange händelsetitel..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Händelse"
@@ -10029,10 +9979,6 @@ msgid "Membership Reports"
 msgstr "Medlemskapsrapporter"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Saknade hemliga nycklar"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "De flesta rapporter kan exporteras som PDF för utskrift eller CSV för kalkylbladsanalys."
 
@@ -10171,10 +10117,6 @@ msgstr "Inställningar för SMTP-server är inte konfigurerade"
 #: 
 msgid "Save and Add New Family"
 msgstr "Spara och lägg till ny familj"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Hemliga nycklar saknas i Config.php"
 
 #: 
 msgid "Sep"
@@ -10857,10 +10799,6 @@ msgid "Validation pending"
 msgstr "Validering pågår"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "måste konfigureras med en krypteringsnyckel"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d person tillagd i kundvagnen."
@@ -11213,14 +11151,6 @@ msgid "No people found matching your criteria."
 msgstr "Inga personer hittades som matchar dina kriterier."
 
 #: 
-msgid "Off"
-msgstr "Av"
-
-#: 
-msgid "On"
-msgstr "På"
-
-#: 
 msgid "Photo Directory"
 msgstr "Fotokatalog"
 
@@ -11233,26 +11163,12 @@ msgid "Show only people with photos"
 msgstr "Visa endast personer med foton"
 
 #: 
-msgid "Checkout All"
-msgstr "Checka ut alla"
-
-#: 
 msgid "Expected"
 msgstr "Förväntat"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Det gick inte att ta bort kiosken"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familjens löfte per räkenskapsår"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Hitta registrerade elever"
 
 #. Context: queryparameters_qrp
 #: 

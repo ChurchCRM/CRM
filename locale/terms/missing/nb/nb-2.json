@@ -1,7 +1,4 @@
 {
-  "Image shown when no Gravatar exists for the email address": "",
-  "Important": "",
-  "Install plugins by placing them in": "",
   "Invalid code. Please try again.": "",
   "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)": "",
   "Kiosk device not found": "",
@@ -148,5 +145,8 @@
   "Unable to display map: church address has not been geocoded yet.": "",
   "Update church address in Settings.": "",
   "Username and password are required.": "",
-  "Validation failed: %s": ""
+  "Validation failed: %s": "",
+  "Vonage server error. Please try again later.": "",
+  "WebDAV Endpoint URL is required.": "",
+  "Are you sure you want to permanently delete this pledge record?": ""
 }

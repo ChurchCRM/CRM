@@ -2608,10 +2608,6 @@ msgid "Last Login"
 msgstr "เข้าสู่ระบบครั้งล่าสุด"
 
 #: 
-msgid "Total Logins"
-msgstr "การเข้าสู่ระบบทั้งหมด"
-
-#: 
 msgid "Failed Logins"
 msgstr "การเข้าสู่ระบบที่ล้มเหลว"
 
@@ -4104,11 +4100,6 @@ msgstr "ตัวคั่นเพื่อแยกอีเมลในลิ
 #: 
 msgid "User permission to create directories"
 msgstr "สิทธิ์ผู้ใช้ในการสร้างไดเรกทอรี"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "สิทธิ์ผู้ใช้ในการส่งออกไฟล์ CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7173,14 +7164,6 @@ msgid "Holiday"
 msgstr "วันหยุด"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "อนุญาตให้ผู้ใช้ลงทะเบียนการยืนยันตัวตนแบบ 2 ปัจจัยด้วยตนเอง"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "กำหนดให้ผู้ใช้ลงทะเบียนการยืนยันตัวตนแบบ 2 ปัจจัยด้วยตนเอง"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7221,32 +7204,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "นามสกุล, ชื่อจริง ชื่อกลาง"
 
 #: 
-msgid "Two Factor Status"
-msgstr "สถานะ 2 ปัจจัย"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "กรุณายืนยันการปิดใช้งานการยืนยันตัวตนแบบ 2 ปัจจัยสำหรับผู้ใช้นี้"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "การกำหนดค่าการยืนยันตัวตนแบบ 2 ปัจจัยที่ไม่รองรับ"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "ไม่สามารถเริ่มการลงทะเบียนการยืนยันตัวตนแบบ 2 ปัจจัยได้"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "การยืนยันตัวตนแบบ 2 ปัจจัยต้องการให้ผู้ดูแลระบบ ChurchCRM กำหนดค่าพารามิเตอร์บางอย่าง"
-
-#: 
-msgid "System configuration "
-msgstr "การกำหนดค่าระบบ "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "ต้องตั้งค่าเป็น 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7602,16 +7561,6 @@ msgstr "คุณสมบัติ"
 #: 
 msgid "Default Zip"
 msgstr "รหัสไปรษณีย์เริ่มต้น"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "คนที่ชำระด้วยบัตรเครดิต"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "คนที่ถูกกำหนดค่าให้ชำระด้วยบัตรเครดิต"
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8847,6 +8796,7 @@ msgstr "กำลังแก้ไขกิจกรรม"
 msgid "Enter event title..."
 msgstr "ป้อนชื่อกิจกรรม..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "กิจกรรม"
@@ -9857,10 +9807,6 @@ msgid "Membership Reports"
 msgstr "รายงานสมาชิกภาพ"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "คีย์ลับหายไป"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "รายงานส่วนใหญ่สามารถส่งออกเป็น PDF สำหรับพิมพ์หรือ CSV สำหรับการวิเคราะห์สเปรดชีต"
 
@@ -9999,10 +9945,6 @@ msgstr "ไม่ได้กำหนดค่าการตั้งค่า
 #: 
 msgid "Save and Add New Family"
 msgstr "บันทึกและเพิ่มครอบครัวใหม่"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "คีย์ลับหายไปจาก Config.php"
 
 #: 
 msgid "Sep"
@@ -10685,10 +10627,6 @@ msgid "Validation pending"
 msgstr "รอการตรวจสอบ"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "ต้องกำหนดค่าด้วยคีย์เข้ารหัส"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "เพิ่ม %d คนลงในตะกร้าแล้ว"
@@ -11037,14 +10975,6 @@ msgid "No people found matching your criteria."
 msgstr "ไม่พบคนที่ตรงกับเกณฑ์ของคุณ"
 
 #: 
-msgid "Off"
-msgstr "ปิด"
-
-#: 
-msgid "On"
-msgstr "เปิด"
-
-#: 
 msgid "Photo Directory"
 msgstr "ไดเรกทอรีรูปภาพ"
 
@@ -11057,26 +10987,12 @@ msgid "Show only people with photos"
 msgstr "แสดงเฉพาะคนที่มีรูปภาพ"
 
 #: 
-msgid "Checkout All"
-msgstr "ชำระทั้งหมด"
-
-#: 
 msgid "Expected"
 msgstr "คาดหวัง"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "ลบคีออสก์ไม่สำเร็จ"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "คำมั่นสัญญาของครอบครัวตามปีงบประมาณ"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "ค้นหานักเรียนที่ลงทะเบียน"
 
 #. Context: queryparameters_qrp
 #: 
