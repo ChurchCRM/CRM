@@ -332,6 +332,52 @@ echo $notification?->title ?? 'No Title';
 echo $notification->title;  // TypeError if null
 ```
 
+## System Settings Panel Component <!-- learned: 2026-03-08 -->
+
+The `system-settings-panel.js` reusable component displays and edits SystemConfig settings with automatic API integration. Use this instead of building custom forms for settings management.
+
+**Setup (3 steps):**
+
+```php
+<!-- 1. Add container (collapsible via Bootstrap) -->
+<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
+<div class="collapse mb-3" id="mySettings"></div>
+<?php endif; ?>
+
+<!-- 2. Include CSS + JS (after other scripts) -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
+
+<!-- 3. Initialize with settings array -->
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
+window.CRM.settingsPanel.init({
+    container: '#mySettings',
+    title: '<?= gettext('My Settings') ?>',
+    icon: 'fa-solid fa-cog',
+    settings: [
+        'iFYMonth',  // Uses predefined config from SettingDefinitions
+        {
+            name: 'iMapZoom',  // Or inline custom settings
+            label: '<?= gettext('Zoom Level') ?>',
+            type: 'choice',
+            choices: [
+                { value: '5', label: '<?= gettext('Far') ?>' },
+                { value: '15', label: '<?= gettext('Close') ?>' }
+            ]
+        }
+    ],
+    showAllSettingsLink: false,  // Hide link to full SystemSettings page
+    onSave: function() { window.location.reload(); }
+});
+<?php endif; ?>
+</script>
+```
+
+**Setting Types:** `boolean` (toggle), `number` (with min/max), `text`, `choice` (dropdown), `password`
+
+**API:** Automatically saves via POST `/admin/api/system/config/{key}` — no custom endpoint needed.
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`
