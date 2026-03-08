@@ -64,10 +64,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <h3 class="card-title"><?= gettext('People Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app bg-primary">
-            <i class="fa-solid fa-user fa-3x"></i><br>
-            <?= gettext('All People') ?>
-        </a>
         <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app bg-info">
             <i class="fa-solid fa-clipboard-check fa-3x"></i><br>
             <?= gettext('Verify People') ?>
@@ -77,10 +73,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <i class="fa-solid fa-user-plus fa-3x"></i><br>
             <?= gettext('Self Register') ?>
         </div>
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="btn btn-app bg-success">
-            <i class="fa-solid fa-people-roof fa-3x"></i><br>
-            <?= gettext('All Families') ?>
-        </a>
         <a href="<?= SystemURLs::getRootPath() ?>/v2/map" class="btn btn-app bg-warning">
             <i class="fa-solid fa-map fa-3x"></i><br>
             <?= gettext('Family Map') ?>
