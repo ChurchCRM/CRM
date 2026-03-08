@@ -25,4 +25,11 @@ Bootstrapper::init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRoot
 
 // Initialize KeyManager with 2FA secret from SystemConfig
 $twoFASecretKey = SystemConfig::getValue('sTwoFASecretKey');
+
+// Auto-generate encryption key if not yet set (required for 2FA enrollment)
+if (empty($twoFASecretKey)) {
+    $twoFASecretKey = bin2hex(random_bytes(32));
+    SystemConfig::setValue('sTwoFASecretKey', $twoFASecretKey);
+}
+
 KeyManagerUtils::init($twoFASecretKey);

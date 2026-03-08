@@ -105,40 +105,41 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                         <th><?= gettext('Name') ?></th>
                         <th><?= gettext('Login Name') ?></th>
                         <th class="text-center"><?= gettext('Last Login') ?></th>
-                        <th class="text-center"><?= gettext('Total Logins') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
-                        <th class="text-center"><?= gettext('Two Factor Status') ?></th>
+                        <th class="text-center"><?= gettext('2FA') ?></th>
                         <th class="text-center"><?= gettext('Actions') ?></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($rsUsers as $user) { //Loop through the users
-                    ?>
+                    <?php foreach ($rsUsers as $user) { ?>
                         <tr>
                             <td>
-                                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $user->getId() ?>"> <?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
+                                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $user->getId() ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
                             </td>
                             <td>
-                                <code class="text-muted"><?= InputUtils::escapeHTML($user->getUserName()) ?></code>
+                                <code><?= InputUtils::escapeHTML($user->getUserName()) ?></code>
                             </td>
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
-                            <td class="text-center"><?= $user->getLoginCount() ?></td>
                             <td class="text-center">
-                                <?php if ($user->isLocked()) { ?>
-                                    <span class="text-red"><?= $user->getFailedLogins() ?></span>
-                                <?php } else {
-                                    echo $user->getFailedLogins();
-                                } ?>
+                                <?php if ($user->getFailedLogins() > 0) { ?>
+                                    <span class="badge <?= $user->isLocked() ? 'badge-danger' : 'badge-warning' ?>"><?= $user->getFailedLogins() ?></span>
+                                <?php } else { ?>
+                                    <span class="text-muted">—</span>
+                                <?php } ?>
                             </td>
                             <td class="text-center">
-                                <?= $user->is2FactorAuthEnabled() ? gettext("Enabled") : gettext("Disabled") ?>
+                                <?php if ($user->is2FactorAuthEnabled()) { ?>
+                                    <span class="badge badge-success"><?= gettext('Enabled') ?></span>
+                                <?php } else { ?>
+                                    <span class="badge badge-secondary"><?= gettext('Not enrolled') ?></span>
+                                <?php } ?>
                             </td>
                             <td class="text-center">
                                 <div class="dropdown">
                                     <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa-solid fa-ellipsis-v"></i>
                                     </button>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $user->getId() ?>">
                                             <i class="fa-solid fa-pen"></i> <?= gettext('Edit User') ?>
                                         </a>
@@ -189,7 +190,7 @@ $(document).ready(function() {
     // Initialize the user settings panel
     window.CRM.settingsPanel.init({
         container: '#userSettingsPanel',
-        title: i18next.t('User Settings'),
+        title: i18next.t('Quick Settings'),
         icon: 'fa-solid fa-user-cog',
         headerClass: 'bg-primary',
         settings: <?= json_encode($userSettingsConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
