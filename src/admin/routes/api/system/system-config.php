@@ -17,8 +17,13 @@ $app->group('/api/system/config/{configName}', function (RouteCollectorProxy $gr
 function getConfigValueByNameAPI(Request $request, Response $response, array $args): Response
 {
     $configName = $args['configName'];
+    $configItem = SystemConfig::getConfigItem($configName);
+    if ($configItem === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Configuration item not found'), [], 404, null, $request);
+    }
+
     // Never return password values to the browser
-    if (SystemConfig::getConfigItem($configName)->getType() === 'password') {
+    if ($configItem->getType() === 'password') {
         return SlimUtils::renderJSON($response, ['value' => '']);
     }
 
@@ -28,15 +33,22 @@ function getConfigValueByNameAPI(Request $request, Response $response, array $ar
 function setConfigValueByNameAPI(Request $request, Response $response, array $args): Response
 {
     $configName = $args['configName'];
+    $configItem = SystemConfig::getConfigItem($configName);
+    if ($configItem === null) {
+        return SlimUtils::renderErrorJSON($response, gettext('Configuration item not found'), [], 404, null, $request);
+    }
+
     $input = $request->getParsedBody();
     $value = $input['value'] ?? '';
+    $isPassword = $configItem->getType() === 'password';
 
     // Never overwrite a password with an empty value
-    if (SystemConfig::getConfigItem($configName)->getType() === 'password' && empty($value)) {
+    if ($isPassword && empty($value)) {
         return SlimUtils::renderJSON($response, ['value' => '']);
     }
 
     SystemConfig::setValue($configName, $value);
 
-    return SlimUtils::renderJSON($response, ['value' => '']);
+    // Never return the saved value for password types
+    return SlimUtils::renderJSON($response, ['value' => $isPassword ? '' : SystemConfig::getValue($configName)]);
 }

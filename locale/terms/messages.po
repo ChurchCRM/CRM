@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-07 09:55-0800\n"
+"POT-Creation-Date: 2026-03-07 16:37-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -171,6 +171,9 @@ msgid "0 - No Minimum"
 msgstr ""
 
 msgid "2-50 characters"
+msgstr ""
+
+msgid "2FA"
 msgstr ""
 
 msgid "2FA Enabled"
@@ -534,9 +537,6 @@ msgstr ""
 
 #. Context: userconfig_ucfg
 msgid "Allow user to add new event"
-msgstr ""
-
-msgid "Allow users to self-enroll in 2 factor authentication"
 msgstr ""
 
 msgid "Already in a family"
@@ -5555,6 +5555,9 @@ msgstr ""
 msgid "Not configured"
 msgstr ""
 
+msgid "Not enrolled"
+msgstr ""
+
 msgid "Not in CRM"
 msgstr ""
 
@@ -6678,6 +6681,9 @@ msgstr ""
 msgid "Request Password Reset"
 msgstr ""
 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr ""
+
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr ""
 
@@ -6691,9 +6697,6 @@ msgid "Required fields"
 msgstr ""
 
 msgid "Required permission"
-msgstr ""
-
-msgid "Requires users to self-enroll in 2 factor authentication"
 msgstr ""
 
 msgid "Reset"
@@ -8071,9 +8074,6 @@ msgstr ""
 msgid "Total Deposits:"
 msgstr ""
 
-msgid "Total Logins"
-msgstr ""
-
 msgid "Total Members"
 msgstr ""
 
@@ -8155,9 +8155,6 @@ msgid "Tuvalu"
 msgstr ""
 
 msgid "Two Factor Enrollment Error"
-msgstr ""
-
-msgid "Two Factor Status"
 msgstr ""
 
 msgid "Two characters from FirstName"
