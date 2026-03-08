@@ -47,10 +47,16 @@ function getMapView(Request $request, Response $response, array $args): Response
 
     $renderer = new PhpRenderer('templates/map/');
 
+    $mapSettingTooltips = [];
+    foreach (SystemConfig::getSettingsConfig(['bHideLatLon', 'bHidePersonAddress']) as $s) {
+        $mapSettingTooltips[$s['name']] = $s['tooltip'];
+    }
+
     $pageArgs = [
-        'sRootPath'  => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('Congregation Map'),
-        'mapConfig'  => [
+        'sRootPath'        => SystemURLs::getRootPath(),
+        'sPageTitle'       => gettext('Congregation Map'),
+        'mapSettingTooltips' => $mapSettingTooltips,
+        'mapConfig'        => [
             'churchLat'    => (float) ChurchMetaData::getChurchLatitude(),
             'churchLng'    => (float) ChurchMetaData::getChurchLongitude(),
             'churchName'   => ChurchMetaData::getChurchName(),

@@ -22,16 +22,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php else: ?>
 
 <div class="row mb-3">
-    <div class="col-12 d-flex align-items-center">
-        <a href="<?= $sRootPath ?>/UpdateAllLatLon.php" class="btn btn-sm btn-secondary mr-2">
-            <i class="fa-solid fa-location-dot"></i>
-        </a>
-        <span class="text-muted flex-grow-1"><?= gettext('Missing families? Update coordinates to include them on the map.') ?></span>
-        <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-        <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="collapse" data-target="#mapAdminSettings" aria-expanded="false" aria-controls="mapAdminSettings">
-            <i class="fa-solid fa-cog"></i> <?= gettext('Map Settings') ?>
-        </button>
-        <?php endif; ?>
+    <div class="col-12">
+        <div class="btn-group mb-2" role="group">
+            <a href="<?= $sRootPath ?>/GeoPage.php" class="btn btn-sm btn-info">
+                <i class="fa-solid fa-globe"></i> <?= gettext('Family Geographic') ?>
+            </a>
+            <a href="<?= $sRootPath ?>/UpdateAllLatLon.php" class="btn btn-sm btn-warning">
+                <i class="fa-solid fa-map-pin"></i> <?= gettext('Update All Family Coordinates') ?>
+            </a>
+            <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="collapse" data-target="#mapAdminSettings" aria-expanded="false" aria-controls="mapAdminSettings">
+                <i class="fa-solid fa-cog"></i> <?= gettext('Map Settings') ?>
+            </button>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
 
@@ -93,26 +97,40 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-    window.CRM.settingsPanel.init({
-        container: '#mapAdminSettings',
-        title: '<?= gettext('Map Settings') ?>',
-        icon: 'fa-solid fa-sliders-h',
-        settings: [
-            {
-                name: 'iMapZoom',
-                label: '<?= gettext('Default Map View') ?>',
-                type: 'choice',
-                choices: [
-                    { value: '3', label: '<?= gettext('Continent') ?>' },
-                    { value: '5', label: '<?= gettext('Country') ?>' },
-                    { value: '7', label: '<?= gettext('State') ?>' },
-                    { value: '10', label: '<?= gettext('City') ?>' },
-                    { value: '14', label: '<?= gettext('Neighborhood') ?>' },
-                    { value: '18', label: '<?= gettext('Street') ?>' }
-                ]
-            }
-        ],
-        showAllSettingsLink: false
+    $(document).ready(function() {
+        window.CRM.settingsPanel.init({
+            container: '#mapAdminSettings',
+            title: i18next.t('Map Settings'),
+            icon: 'fa-solid fa-sliders-h',
+            settings: [
+                {
+                    name: 'iMapZoom',
+                    label: i18next.t('Default Map View'),
+                    type: 'choice',
+                    choices: [
+                        { value: '3', label: i18next.t('Continent') },
+                        { value: '5', label: i18next.t('Country') },
+                        { value: '7', label: i18next.t('State') },
+                        { value: '10', label: i18next.t('City') },
+                        { value: '14', label: i18next.t('Neighborhood') },
+                        { value: '18', label: i18next.t('Street') }
+                    ]
+                },
+                {
+                    name: 'bHideLatLon',
+                    label: i18next.t('Hide Latitude/Longitude'),
+                    type: 'boolean',
+                    tooltip: <?= json_encode($mapSettingTooltips['bHideLatLon'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                },
+                {
+                    name: 'bHidePersonAddress',
+                    label: i18next.t('Hide Person Address'),
+                    type: 'boolean',
+                    tooltip: <?= json_encode($mapSettingTooltips['bHidePersonAddress'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                }
+            ],
+            showAllSettingsLink: false
+        });
     });
     <?php endif; ?>
 </script>

@@ -81,14 +81,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <i class="fa-solid fa-people-roof fa-3x"></i><br>
             <?= gettext('All Families') ?>
         </a>
-        <a href="GeoPage.php" class="btn btn-app bg-info">
-            <i class="fa-solid fa-globe fa-3x"></i><br>
-            <?= gettext('Family Geographic') ?>
-        </a>
-        <a href="UpdateAllLatLon.php" class="btn btn-app bg-purple">
-            <i class="fa-solid fa-map-pin fa-3x"></i><br>
-            <?= gettext('Update All Family Coordinates') ?>
-        </a>
 
         <?php
         if ($sEmailLink) {
