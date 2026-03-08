@@ -623,10 +623,10 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             GroupList: <?= json_encode($GroupList, JSON_THROW_ON_ERROR) ?>,
             ClassificationList: <?= json_encode($ClassificationList, JSON_THROW_ON_ERROR) ?>,
             FamilyStatusList: <?= json_encode([gettext('Active'), gettext('Inactive')], JSON_THROW_ON_ERROR) ?>,
-            filterByGender: <?= json_encode(isset($_GET['filterByGender']) ? $_GET['filterByGender'] : '', JSON_THROW_ON_ERROR) ?>,
-            filterByClsId: <?= json_encode(isset($_GET['filterByClsId']) ? $_GET['filterByClsId'] : '', JSON_THROW_ON_ERROR) ?>,
-            filterByFmrId: <?= json_encode(isset($_GET['filterByFmrId']) ? $_GET['filterByFmrId'] : '', JSON_THROW_ON_ERROR) ?>,
-            familyActiveStatus: <?= json_encode(isset($_GET['familyActiveStatus']) ? $_GET['familyActiveStatus'] : '', JSON_THROW_ON_ERROR) ?>
+            filterByGender: <?= json_encode($filterByGender, JSON_THROW_ON_ERROR) ?>,
+            filterByClsId: <?= json_encode($filterByClsId, JSON_THROW_ON_ERROR) ?>,
+            filterByFmrId: <?= json_encode($filterByFmrId, JSON_THROW_ON_ERROR) ?>,
+            familyActiveStatus: <?= json_encode($familyActiveStatus, JSON_THROW_ON_ERROR) ?>
         };
         if (window.initializePeopleListFromServer) {
             window.initializePeopleListFromServer(serverVars);

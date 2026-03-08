@@ -21,14 +21,14 @@ window.initializePeopleListFromServer = function (serverVars) {
   // Classification - use DOM APIs to escape server values and prevent XSS
   if (Array.isArray(serverVars.ClassificationList)) {
     for (let i = 0; i < serverVars.ClassificationList.length; i++) {
-      $("<option>").val(i).text(serverVars.ClassificationList[i]).appendTo(".filter-Classification");
+      const clsName = serverVars.ClassificationList[i];
+      $("<option>").val(clsName).text(clsName).appendTo(".filter-Classification");
     }
   }
 
-  // Populate Role select
   if (Array.isArray(RoleList)) {
     for (let i = 0; i < RoleList.length; i++) {
-      $("<option>").val(i).text(RoleList[i]).appendTo(".filter-Role");
+      $("<option>").val(RoleList[i]).text(RoleList[i]).appendTo(".filter-Role");
     }
   }
 
