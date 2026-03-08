@@ -450,6 +450,31 @@ document.addEventListener("DOMContentLoaded", function () {
 - Button state transitions: loading → success/error → recovery
 - Use template literals for HTML string interpolation: `` `<i class="..."></i>${t("text")}` ``
 
+## Webpack Bundle Conditional Loading Bug <!-- learned: 2026-03-07 -->
+
+**Never load a JS bundle inside a PHP conditional that hides the UI element it controls.**
+
+A classic bug: the "Refresh Coordinates" button is shown when a family has no coordinates, but the bundle containing its click handler was only loaded inside the `hasLatitudeAndLongitude()` block — so the handler never registered when the button was visible.
+
+```php
+// ❌ WRONG — bundle only loads when map is shown; button handler never runs when button is visible
+<?php if ($family->hasLatitudeAndLongitude()) : ?>
+    <div id="map1"></div>
+    <script src=".../people-family-view.min.js"></script>
+<?php endif; ?>
+<button id="refresh-coordinates-btn">Refresh</button>  <!-- shown when no coords -->
+
+// ✅ CORRECT — always load the bundle; PHP conditional only controls the map div and config
+<?php if ($family->hasLatitudeAndLongitude()) : ?>
+    <div id="map1"></div>
+    <script>window.CRM.familyMapConfig = ...;</script>
+<?php endif; ?>
+<script src=".../leaflet.js"></script>
+<script src=".../people-family-view.min.js"></script>  <!-- always loaded -->
+```
+
+**Rule:** JS bundles that contain event handlers must always be loaded. Use `if (!config) return;` guards inside the JS, not PHP conditionals wrapping the `<script>` tag.
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`
