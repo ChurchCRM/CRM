@@ -332,6 +332,149 @@ echo $notification?->title ?? 'No Title';
 echo $notification->title;  // TypeError if null
 ```
 
+## System Settings Panel Component <!-- learned: 2026-03-08 -->
+
+The `system-settings-panel.js` reusable component displays and edits SystemConfig settings with automatic API integration. Use this instead of building custom forms for settings management.
+
+**Setup (3 steps):**
+
+```php
+<!-- 1. Add container (collapsible via Bootstrap) -->
+<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
+<div class="collapse mb-3" id="mySettings"></div>
+<?php endif; ?>
+
+<!-- 2. Include CSS + JS (after other scripts) -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
+
+<!-- 3. Initialize with settings array -->
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
+window.CRM.settingsPanel.init({
+    container: '#mySettings',
+    title: '<?= gettext('My Settings') ?>',
+    icon: 'fa-solid fa-cog',
+    settings: [
+        'iFYMonth',  // Uses predefined config from SettingDefinitions
+        {
+            name: 'iMapZoom',  // Or inline custom settings
+            label: '<?= gettext('Zoom Level') ?>',
+            type: 'choice',
+            choices: [
+                { value: '5', label: '<?= gettext('Far') ?>' },
+                { value: '15', label: '<?= gettext('Close') ?>' }
+            ]
+        }
+    ],
+    showAllSettingsLink: false,  // Hide link to full SystemSettings page
+    onSave: function() { window.location.reload(); }
+});
+<?php endif; ?>
+</script>
+```
+
+**Setting Types:** `boolean` (toggle), `number` (with min/max), `text`, `choice` (dropdown), `password`
+
+**API:** Automatically saves via POST `/admin/api/system/config/{key}` — no custom endpoint needed.
+
+## Async Button Handlers with i18next <!-- learned: 2026-03-08 -->
+
+For action buttons that call APIs (refresh, save, delete), implement handlers in webpack entry points with proper localization.
+
+**Pattern: Async Button Handler**
+
+```javascript
+// webpack/people/family-view.js
+import { fetchAPIJSON } from "../api-utils";
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Initialize i18next translation function
+  const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
+
+  const refreshBtn = document.getElementById("refresh-coordinates-btn");
+  if (!refreshBtn) return;
+
+  const familyId = parseInt(refreshBtn.dataset.familyId || "0");
+  if (familyId <= 0) return;
+
+  refreshBtn.addEventListener("click", async function () {
+    const btn = this;
+    const originalText = btn.innerHTML;
+
+    try {
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i>${t("Refreshing...")}`;
+
+      const result = await fetchAPIJSON(`family/${familyId}/geocode`, {
+        method: "POST",
+      });
+
+      if (result.success) {
+        btn.classList.remove("btn-outline-success");
+        btn.classList.add("btn-outline-primary");
+        btn.innerHTML = `<i class="fa-solid fa-check mr-1"></i>${t("Coordinates Updated")}`;
+        setTimeout(() => location.reload(), 1500);
+      } else {
+        btn.classList.remove("btn-outline-success");
+        btn.classList.add("btn-outline-danger");
+        btn.innerHTML = `<i class="fa-solid fa-exclamation-triangle mr-1"></i>${t("Failed to geocode")}`;
+        btn.disabled = false;
+        setTimeout(() => {
+          btn.classList.remove("btn-outline-danger");
+          btn.classList.add("btn-outline-success");
+          btn.innerHTML = originalText;
+        }, 3000);
+      }
+    } catch (error) {
+      btn.classList.remove("btn-outline-success");
+      btn.classList.add("btn-outline-danger");
+      btn.innerHTML = `<i class="fa-solid fa-network-wired"></i> ${t("Error")}`;
+      btn.disabled = false;
+      console.error("API error:", error);
+      setTimeout(() => {
+        btn.classList.remove("btn-outline-danger");
+        btn.classList.add("btn-outline-success");
+        btn.innerHTML = originalText;
+      }, 3000);
+    }
+  });
+});
+```
+
+**Key Points:**
+- Use `fetchAPIJSON()` from api-utils (includes error handling, type-safe)
+- Initialize `i18next.t.bind()` once; reuse for all strings in that scope
+- Fallback to identity function if i18next not loaded: `window.i18next ? i18next.t.bind(i18next) : (s) => s`
+- All visible text wrapped with `${t("text")}` for translation support
+- Button state transitions: loading → success/error → recovery
+- Use template literals for HTML string interpolation: `` `<i class="..."></i>${t("text")}` ``
+
+## Webpack Bundle Conditional Loading Bug <!-- learned: 2026-03-07 -->
+
+**Never load a JS bundle inside a PHP conditional that hides the UI element it controls.**
+
+A classic bug: the "Refresh Coordinates" button is shown when a family has no coordinates, but the bundle containing its click handler was only loaded inside the `hasLatitudeAndLongitude()` block — so the handler never registered when the button was visible.
+
+```php
+// ❌ WRONG — bundle only loads when map is shown; button handler never runs when button is visible
+<?php if ($family->hasLatitudeAndLongitude()) : ?>
+    <div id="map1"></div>
+    <script src=".../people-family-view.min.js"></script>
+<?php endif; ?>
+<button id="refresh-coordinates-btn">Refresh</button>  <!-- shown when no coords -->
+
+// ✅ CORRECT — always load the bundle; PHP conditional only controls the map div and config
+<?php if ($family->hasLatitudeAndLongitude()) : ?>
+    <div id="map1"></div>
+    <script>window.CRM.familyMapConfig = ...;</script>
+<?php endif; ?>
+<script src=".../leaflet.js"></script>
+<script src=".../people-family-view.min.js"></script>  <!-- always loaded -->
+```
+
+**Rule:** JS bundles that contain event handlers must always be loaded. Use `if (!config) return;` guards inside the JS, not PHP conditionals wrapping the `<script>` tag.
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`

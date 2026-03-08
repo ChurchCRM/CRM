@@ -73,19 +73,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <i class="fa-solid fa-user-plus fa-3x"></i><br>
             <?= gettext('Self Register') ?>
         </div>
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/map" class="btn btn-app bg-warning">
-            <i class="fa-solid fa-map fa-3x"></i><br>
-            <?= gettext('Family Map') ?>
-        </a>
-        <a href="GeoPage.php" class="btn btn-app bg-info">
-            <i class="fa-solid fa-globe fa-3x"></i><br>
-            <?= gettext('Family Geographic') ?>
-        </a>
-        <a href="UpdateAllLatLon.php" class="btn btn-app bg-purple">
-            <i class="fa-solid fa-map-pin fa-3x"></i><br>
-            <?= gettext('Update All Family Coordinates') ?>
-        </a>
-
         <?php
         if ($sEmailLink) {
             // Add default email if default email has been set and is not already in string

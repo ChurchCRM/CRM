@@ -252,14 +252,17 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setLatitude($nLatitude)
             ->setLongitude($nLongitude);
 
+        // Capture address-changed flag BEFORE save() clears isColumnModified() flags
+        $addressChanged = $family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS1)
+            || $family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS2)
+            || $family->isColumnModified(FamilyTableMap::COL_FAM_CITY)
+            || $family->isColumnModified(FamilyTableMap::COL_FAM_STATE)
+            || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP)
+            || $family->isColumnModified(FamilyTableMap::COL_FAM_COUNTRY);
+
         // Update Lat/Long if address changes
         if (
-            ($family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS1)
-                || $family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS2)
-                || $family->isColumnModified(FamilyTableMap::COL_FAM_CITY)
-                || $family->isColumnModified(FamilyTableMap::COL_FAM_STATE)
-                || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP)
-                || $family->isColumnModified(FamilyTableMap::COL_FAM_COUNTRY))
+            $addressChanged
             && (!$family->isColumnModified(FamilyTableMap::COL_FAM_LATITUDE)
                 && !$family->isColumnModified(FamilyTableMap::COL_FAM_LONGITUDE))
         ) {
@@ -269,6 +272,12 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         $family->save();
         $family->reload();
+
+        // Auto-geocode family if address was modified (use pre-save flag — isColumnModified is cleared after save)
+        if ($addressChanged && empty($family->getLatitude())) {
+            $familyService = new \ChurchCRM\Service\FamilyService();
+            $familyService->autoGeocodeFamily($family);
+        }
 
         //If the user added a new record, we need to key back to the route to the FamilyView page
         if ($iFamilyID < 1) {
