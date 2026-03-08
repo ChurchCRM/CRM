@@ -2726,10 +2726,6 @@ msgid "Last Login"
 msgstr "Sist logget inn"
 
 #: 
-msgid "Total Logins"
-msgstr "Totalt pålogginger"
-
-#: 
 msgid "Failed Logins"
 msgstr "Mislykkede pålogginger"
 
@@ -4248,11 +4244,6 @@ msgstr "Skilletegn for e-postadresser i mailto-lenker"
 #: 
 msgid "User permission to create directories"
 msgstr "Brukertillatelse til å opprette kataloger"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Brukertillatelse til å eksportere CSV-filer"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7314,14 +7305,6 @@ msgid "Holiday"
 msgstr "Helligdag"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Tillat brukere å melde seg på tofaktorautentisering selv"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Krever at brukere melder seg på tofaktorautentisering selv"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7362,32 +7345,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Etternavn, Fornavn Mellomnavn"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Status for totrinnsverifisering"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vennligst bekreft deaktivering av totrinnsverifisering for denne brukeren"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Ikke støttet konfigurasjon for totrinnsverifisering"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Kan ikke starte påmelding til totrinnsverifisering"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Totrinnsverifisering krever at ChurchCRM-administratorer konfigurerer noen parametere"
-
-#: 
-msgid "System configuration "
-msgstr "Systemkonfigurasjon "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Må settes til 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7743,16 +7702,6 @@ msgstr "egenskap"
 #: 
 msgid "Default Zip"
 msgstr "Standard postnummer"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kredittkortpersoner"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personer som er konfigurert til å betale med kredittkort."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8989,6 +8938,7 @@ msgstr "Redigerer hendelse"
 msgid "Enter event title..."
 msgstr "Skriv inn tittel på hendelse..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Hendelse"
@@ -10000,10 +9950,6 @@ msgid "Membership Reports"
 msgstr "Medlemskapsrapporter"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Manglende hemmelige nøkler"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "De fleste rapporter kan eksporteres som PDF for utskrift eller CSV for regnearkanalyse."
 
@@ -10142,10 +10088,6 @@ msgstr "Innstillinger for SMTP-server er ikke konfigurert"
 #: 
 msgid "Save and Add New Family"
 msgstr "Lagre og legg til ny familie"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Hemmelige nøkler mangler i Config.php"
 
 #: 
 msgid "Sep"
@@ -10828,10 +10770,6 @@ msgid "Validation pending"
 msgstr "Venter på validering"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "må konfigureres med en krypteringsnøkkel"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d person lagt til i kurven."
@@ -11182,14 +11120,6 @@ msgstr "Alle Klassifiseringer"
 #: 
 msgid "No people found matching your criteria."
 msgstr "Ingen personer funnet som matcher kriteriene dine."
-
-#: 
-msgid "Off"
-msgstr "Av"
-
-#: 
-msgid "On"
-msgstr "På"
 
 #: 
 msgid "Photo Directory"

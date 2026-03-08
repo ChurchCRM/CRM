@@ -2700,10 +2700,6 @@ msgid "Last Login"
 msgstr "Ostatnio Zalogowany"
 
 #: 
-msgid "Total Logins"
-msgstr "Wyszystkich Logowań"
-
-#: 
 msgid "Failed Logins"
 msgstr "Błędnych Logowań"
 
@@ -4220,11 +4216,6 @@ msgstr "Separator e-maili w linkach mailto:"
 #: 
 msgid "User permission to create directories"
 msgstr "Uprawnienie użytkownika do tworzenia katalogów"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Uprawnienie użytkownika do eksportu plików CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7300,14 +7291,6 @@ msgid "Holiday"
 msgstr "Święto"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Zezwól użytkownikom na samozapisanie do 2FA"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Wymaga od użytkowników zapisanie do 2FA"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7348,32 +7331,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Nazwisko, Imię Drugie Imię"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Stan Uwieżytelniania Dwuskładnikowego"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Potwierdź wyłączenie uwierzytelnienia dwuskładikowego dla tego użytkownika"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Nie obsługiwane ustawenia 2FA"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Nie Mogę Rozpocząć Dodania Logowania 2FA"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Logowanie dwuskładnikowe wymaga od administratorów ChurchCRM ustawienia kilku parametrów"
-
-#: 
-msgid "System configuration "
-msgstr "Ustawienia systemu "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Musi być ustawiony na 'True'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7730,16 +7689,6 @@ msgstr "właściwość"
 #: 
 msgid "Default Zip"
 msgstr "Domyślny kod pocztowy"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Osoby płacące kartą"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Osoby skonfigurowane do płatności kartą kredytową."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8977,6 +8926,7 @@ msgstr "Edytowanie wydarzenia"
 msgid "Enter event title..."
 msgstr "Wpisz tytuł wydarzenia..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Wydarzenie"
@@ -9989,10 +9939,6 @@ msgid "Membership Reports"
 msgstr "Raporty członkostwa"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Brak kluczy sekretnych"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Większość raportów można zapisać jako PDF lub CSV."
 
@@ -10131,10 +10077,6 @@ msgstr "Ustawienia serwera SMTP nie są skonfigurowane"
 #: 
 msgid "Save and Add New Family"
 msgstr "Zapisz i dodaj nową rodzinę"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Brak kluczy sekretnych w Config.php"
 
 #: 
 msgid "Sep"
@@ -10817,10 +10759,6 @@ msgid "Validation pending"
 msgstr "Oczekiwanie na walidację"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "musi być skonfigurowany z kluczem szyfrowania"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d osoba dodana do koszyka."
@@ -11177,14 +11115,6 @@ msgid "No people found matching your criteria."
 msgstr "Nie znaleziono osób spełniających kryteria."
 
 #: 
-msgid "Off"
-msgstr "Wył"
-
-#: 
-msgid "On"
-msgstr "Wł"
-
-#: 
 msgid "Photo Directory"
 msgstr "Katalog Zdjęć"
 
@@ -11197,26 +11127,12 @@ msgid "Show only people with photos"
 msgstr "Pokaż tylko osoby ze zdjęciami"
 
 #: 
-msgid "Checkout All"
-msgstr "Wymelduj wszystkich"
-
-#: 
 msgid "Expected"
 msgstr "Oczekiwany"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Nie udało się usunąć kiosku"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Zobowiązanie rodziny według roku podatkowego"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Znajdź zarejestrowanych uczniów"
 
 #. Context: queryparameters_qrp
 #: 

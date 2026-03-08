@@ -2623,10 +2623,6 @@ msgid "Last Login"
 msgstr "Poslední přihlášení"
 
 #: 
-msgid "Total Logins"
-msgstr "Celkový počet přihlášení"
-
-#: 
 msgid "Failed Logins"
 msgstr "Neúspěšná přihlášení"
 
@@ -4124,11 +4120,6 @@ msgstr "Oddělovač pro oddělení e-mailů v odkazech mailto:"
 #: 
 msgid "User permission to create directories"
 msgstr "Oprávnění uživatele k vytváření adresářů"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Oprávnění uživatele k exportu souborů CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7199,14 +7190,6 @@ msgid "Holiday"
 msgstr "Svátek"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Povolit uživatelům registraci ke dvoufaktorovému ověření"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Vyžaduje od uživatelů registraci ke dvoufaktorovému ověření"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7247,32 +7230,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Příjmení, KřestníJméno ProstředníJméno"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Stav dvoufaktorového ověření"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Potvrďte zakázání dvoufaktorového ověření pro tohoto uživatele"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Nepodporovaná konfigurace dvoufaktorového ověření"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Není možné začít registraci dvoufaktorového ověření"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Dvoufaktorové ověření vyžaduje, aby správci systému ChurchCRM nakonfigurovali několik parametrů."
-
-#: 
-msgid "System configuration "
-msgstr "Konfigurace systému "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Musí být nastaveno na 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7628,16 +7587,6 @@ msgstr "vlastnost"
 #: 
 msgid "Default Zip"
 msgstr "Výchozí PSČ"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Osoby platící kartou"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Osoby, které mají nastaveny platbu kartou."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8875,6 +8824,7 @@ msgstr "Úprava akce"
 msgid "Enter event title..."
 msgstr "Zadejte název akce..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Událost"
@@ -9887,10 +9837,6 @@ msgid "Membership Reports"
 msgstr "Zprávy o členství"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Chybějící tajné klíče"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Většinu zpráv lze exportovat ve formátu PDF pro tisk nebo CSV pro analýzu v tabulkovém procesoru."
 
@@ -10029,10 +9975,6 @@ msgstr "Nastavení SMTP serveru není nakonfigurováno"
 #: 
 msgid "Save and Add New Family"
 msgstr "Uložit a přidat novou rodinu"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "V souboru Config.php chybí tajné klíče"
 
 #: 
 msgid "Sep"
@@ -10715,10 +10657,6 @@ msgid "Validation pending"
 msgstr "Očekává se ověření"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "musí být nakonfigurován s šifrovacím klíčem"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d osoba přidána do košíku."
@@ -11068,14 +11006,6 @@ msgid "No people found matching your criteria."
 msgstr "Nebyly nalezeny žádné osoby odpovídající vašim kritériím."
 
 #: 
-msgid "Off"
-msgstr "Vypnuto"
-
-#: 
-msgid "On"
-msgstr "Zapnuto"
-
-#: 
 msgid "Photo Directory"
 msgstr "Adresář fotografií"
 
@@ -11088,26 +11018,12 @@ msgid "Show only people with photos"
 msgstr "Zobrazit pouze osoby s fotografiemi"
 
 #: 
-msgid "Checkout All"
-msgstr "Odhlásit vše"
-
-#: 
 msgid "Expected"
 msgstr "Očekáváno"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Nepodařilo se smazat kiosek"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Závazek rodiny podle fiskálního roku"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Najít registrované studenty"
 
 #. Context: queryparameters_qrp
 #: 

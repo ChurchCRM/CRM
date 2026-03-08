@@ -2627,10 +2627,6 @@ msgid "Last Login"
 msgstr "Viimane sisselogimine"
 
 #: 
-msgid "Total Logins"
-msgstr "Sisselogimisi kokku"
-
-#: 
 msgid "Failed Logins"
 msgstr "Ebaõnnestunud sisselogimised"
 
@@ -4132,11 +4128,6 @@ msgstr "Eraldage e-kirjad mailto: linkides"
 #: 
 msgid "User permission to create directories"
 msgstr "Kasutaja luba kataloogide loomiseks"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Kasutaja luba CSV-failide eksportimiseks"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7216,14 +7207,6 @@ msgid "Holiday"
 msgstr "Püha"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Luba kasutajatel registreeruda kahefaktorilises autentimises"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Nõuab, et kasutajad registreeruksid ise kahefaktorilises autentimises"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7264,32 +7247,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Perekonnanimi, eesnimi keskminenimi"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Kahe faktori staatus"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Palun kinnitage, et keelataa selle kasutaja 2 Faktori Autoriseerimine"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Toetamata kahefaktorilise autentimise konfiguratsioon"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Kahe teguri autentimise registreerimist ei saa alustada"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Kahefaktoriline autentimine nõuab ChurchCRM-i administraatoritelt mõne parameetri konfigureerimist"
-
-#: 
-msgid "System configuration "
-msgstr "Süsteemi konfiguratsioon "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Peab olema seatud väärtusele „tõene”"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7646,16 +7605,6 @@ msgstr "omadus"
 #: 
 msgid "Default Zip"
 msgstr "Vaikimisi ZIP"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Krediitkaardi inimesed"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Inimesed kes on konfigureeritud krediitkaardiga maksma."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8892,6 +8841,7 @@ msgstr "Sündmuse muutmine"
 msgid "Enter event title..."
 msgstr "Sisestage sündmuse pealkiri..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Sündmus"
@@ -9903,10 +9853,6 @@ msgid "Membership Reports"
 msgstr "Liikmete aruanded"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Puuduvad salajased võtmed"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Enamikku aruandeid saab eksportida PDF-ina printimiseks või CSV-na arvutustabeli analüüsimiseks."
 
@@ -10045,10 +9991,6 @@ msgstr "SMTP serveri sätted pole konfigureeritud"
 #: 
 msgid "Save and Add New Family"
 msgstr "Salvesta ja lisa uus perekond"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Salajased võtmed puuduvad Config.php-st"
 
 #: 
 msgid "Sep"
@@ -10731,10 +10673,6 @@ msgid "Validation pending"
 msgstr "Valideerimine ootel"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "peab olema konfigureeritud krüptimise võtmega"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d inimene lisati ostukorvi."
@@ -11087,14 +11025,6 @@ msgid "No people found matching your criteria."
 msgstr "Teie kriteeriumidele vastavaid inimesi ei leitud."
 
 #: 
-msgid "Off"
-msgstr "Väljas"
-
-#: 
-msgid "On"
-msgstr "Sees"
-
-#: 
 msgid "Photo Directory"
 msgstr "Fotode Kataloog"
 
@@ -11107,26 +11037,12 @@ msgid "Show only people with photos"
 msgstr "Näita ainult fotodega inimesi"
 
 #: 
-msgid "Checkout All"
-msgstr "Registreeri Kõik Välja"
-
-#: 
 msgid "Expected"
 msgstr "Oodatud"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Kioski kustutamine ebaõnnestus"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Perekonna Lubadus Majandusaasta Järgi"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Otsi Registreeritud Õpilasi"
 
 #. Context: queryparameters_qrp
 #: 

@@ -2627,10 +2627,6 @@ msgid "Last Login"
 msgstr "Son giriş"
 
 #: 
-msgid "Total Logins"
-msgstr "Toplam girişler"
-
-#: 
 msgid "Failed Logins"
 msgstr "Başarısız girişler"
 
@@ -4133,11 +4129,6 @@ msgstr "Mailto'daki e -postaları ayıracak sınırlayıcı: bağlantılar"
 #: 
 msgid "User permission to create directories"
 msgstr "Dizinler oluşturmak için kullanıcı izni"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "CSV dosyalarını dışa aktarmak için kullanıcı izni"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7217,14 +7208,6 @@ msgid "Holiday"
 msgstr "Tatil"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Kullanıcıların 2 faktörlü kimlik doğrulamasında kendi kendine kayıt yapmasına izin verin"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Kullanıcıların 2 faktörlü kimlik doğrulamasında kendi kendine kayıt yapmasını gerektirir"
-
-#: 
 msgid "ChurchCRM"
 msgstr "Churchcrm"
 
@@ -7265,32 +7248,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Son ad ilk ad ikinci ad"
 
 #: 
-msgid "Two Factor Status"
-msgstr "İki Faktör Durumu"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Lütfen bu kullanıcı için 2 faktörlü kimliği devre dışı bırakmayı onaylayın"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Desteklenmemiş iki faktörlü kimlik doğrulama yapılandırması"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "İki faktörlü kimlik doğrulama kaydına başlayamıyor"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "İki faktörlü kimlik doğrulaması, ChurchCRM yöneticilerinin birkaç parametre yapılandırmasını gerektirir"
-
-#: 
-msgid "System configuration "
-msgstr "Sistem yapılandırması"
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "'True' olarak ayarlanmalı"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7647,16 +7606,6 @@ msgstr "özellik"
 #: 
 msgid "Default Zip"
 msgstr "Varsayılan Posta Kodu"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kredi Kartı Kullanan Kişiler"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Kredi kartı ile ödeme yapacak şekilde yapılandırılmış kişiler."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8893,6 +8842,7 @@ msgstr "Etkinlik Düzenleniyor"
 msgid "Enter event title..."
 msgstr "Etkinlik başlığı girin..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Etkinlik"
@@ -9904,10 +9854,6 @@ msgid "Membership Reports"
 msgstr "Üyelik Raporları"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Eksik Gizli Anahtarlar"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Çoğu rapor, yazdırmak için PDF veya hesap çizelgesi analizi için CSV olarak dışa aktarılabilir."
 
@@ -10046,10 +9992,6 @@ msgstr "SMTP sunucu ayarları yapılandırılmamış"
 #: 
 msgid "Save and Add New Family"
 msgstr "Kaydet ve Yeni Aile Ekle"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Gizli anahtarlar Config.php dosyasında eksik"
 
 #: 
 msgid "Sep"
@@ -10732,10 +10674,6 @@ msgid "Validation pending"
 msgstr "Doğrulama bekleniyor"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "bir şifreleme anahtarı ile yapılandırılmalıdır"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Kişi Sepete eklendi."
@@ -11088,14 +11026,6 @@ msgid "No people found matching your criteria."
 msgstr "Kriterlerinize uyan kişi bulunamadı."
 
 #: 
-msgid "Off"
-msgstr "Kapalı"
-
-#: 
-msgid "On"
-msgstr "Açık"
-
-#: 
 msgid "Photo Directory"
 msgstr "Fotoğraf Dizini"
 
@@ -11108,26 +11038,12 @@ msgid "Show only people with photos"
 msgstr "Yalnızca fotoğrafı olan kişileri göster"
 
 #: 
-msgid "Checkout All"
-msgstr "Tümünü Çıkış Yap"
-
-#: 
 msgid "Expected"
 msgstr "Beklenen"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Kiosk silinemedi"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Mali Yıla Göre Aile Mali Taahhüdü"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Kayıtlı öğrencileri bul"
 
 #. Context: queryparameters_qrp
 #: 

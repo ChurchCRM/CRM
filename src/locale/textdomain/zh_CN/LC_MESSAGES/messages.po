@@ -2702,10 +2702,6 @@ msgid "Last Login"
 msgstr "最后登录"
 
 #: 
-msgid "Total Logins"
-msgstr "总计登录"
-
-#: 
 msgid "Failed Logins"
 msgstr "登录失败"
 
@@ -4227,11 +4223,6 @@ msgstr "用于分隔 邮件到：链接 的电子邮件的分隔符"
 #: 
 msgid "User permission to create directories"
 msgstr "用户创建目录的权限"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "用户导出CSV文件的权限"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7312,14 +7303,6 @@ msgid "Holiday"
 msgstr "假期"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "允许用户自行注册2因子身份验证"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "要求用户自行注册2要素身份验证"
-
-#: 
 msgid "ChurchCRM"
 msgstr "教会客户关系管理"
 
@@ -7360,32 +7343,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "姓，名，中间名"
 
 #: 
-msgid "Two Factor Status"
-msgstr "两要素状态"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "请确认为此用户禁用2因子验证"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "不支持的两因素身份验证配置"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "无法开始两因素身份验证注册"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "两因素身份验证要求ChurchCRM管理员配置一些参数"
-
-#: 
-msgid "System configuration "
-msgstr "系统配置 "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "必须设置为“ true”"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7742,16 +7701,6 @@ msgstr "属性"
 #: 
 msgid "Default Zip"
 msgstr "默认邮编"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "信用卡支付人员"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置为通过信用卡支付的人员。"
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8987,6 +8936,7 @@ msgstr "正在编辑活动"
 msgid "Enter event title..."
 msgstr "输入活动标题..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "活动"
@@ -9997,10 +9947,6 @@ msgid "Membership Reports"
 msgstr "成员报告"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "缺失密钥"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "大多数报告可以导出为 PDF 供打印，或导出为 CSV 供电子表格分析。"
 
@@ -10139,10 +10085,6 @@ msgstr "SMTP 服务器设置未配置"
 #: 
 msgid "Save and Add New Family"
 msgstr "保存并添加家庭"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Config.php 中缺失密钥"
 
 #: 
 msgid "Sep"
@@ -10825,10 +10767,6 @@ msgid "Validation pending"
 msgstr "等待验证"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "必须配置加密密钥"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d 人已加入清单。"
@@ -11177,14 +11115,6 @@ msgid "No people found matching your criteria."
 msgstr "未找到符合您条件的人员。"
 
 #: 
-msgid "Off"
-msgstr "关闭"
-
-#: 
-msgid "On"
-msgstr "开启"
-
-#: 
 msgid "Photo Directory"
 msgstr "照片目录"
 
@@ -11197,26 +11127,12 @@ msgid "Show only people with photos"
 msgstr "只显示有照片的人"
 
 #: 
-msgid "Checkout All"
-msgstr "全部签出"
-
-#: 
 msgid "Expected"
 msgstr "预期"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "删除自助终端失败"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "按财年的家庭承诺"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "查找已注册学生"
 
 #. Context: queryparameters_qrp
 #: 

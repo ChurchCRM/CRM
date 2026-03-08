@@ -2698,10 +2698,6 @@ msgid "Last Login"
 msgstr "Последняя Войти"
 
 #: 
-msgid "Total Logins"
-msgstr "Всего посещение"
-
-#: 
 msgid "Failed Logins"
 msgstr "Неудачных попыток"
 
@@ -4221,11 +4217,6 @@ msgstr "Разделитель для разделения писем в mailto:
 #: 
 msgid "User permission to create directories"
 msgstr "Разрешение пользователя на создание каталогов"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Разрешение пользователя на экспорт файлов CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7299,14 +7290,6 @@ msgid "Holiday"
 msgstr "Праздник"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Разрешить пользователям самостоятельно регистрироваться с помощью двухфакторной аутентификации"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Требуется, чтобы пользователи самостоятельно регистрировались с помощью двухфакторной аутентификации"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7347,32 +7330,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Фамилия, Имя Отчество"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Статус двухфакторной аутентификации"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Пожалуйста подтвердите отключение двухфакторной аутентификации для данного пользователя"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Неподдерживаемая конфигурация двухфакторной аутентификации"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Невозможно начать регистрацию двухфакторной аутентификации"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Двухфакторная аутентификация требует от администраторов ChurchCRM настройки нескольких параметров"
-
-#: 
-msgid "System configuration "
-msgstr "Конфигурация системы␣"
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Должно быть установлено значение 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7729,16 +7688,6 @@ msgstr "свойство"
 #: 
 msgid "Default Zip"
 msgstr "Индекс по умолчанию"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Люди с кредитной картой"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Люди, настроенные на оплату кредитной картой."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8977,6 +8926,7 @@ msgstr "Редактирование события"
 msgid "Enter event title..."
 msgstr "Введите название события..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Событие"
@@ -9990,10 +9940,6 @@ msgid "Membership Reports"
 msgstr "Отчеты по членству"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Отсутствуют секретные ключи"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Отчеты можно экспортировать в PDF или CSV."
 
@@ -10132,10 +10078,6 @@ msgstr "Настройки SMTP не заданы"
 #: 
 msgid "Save and Add New Family"
 msgstr "Сохранить и добавить новую семью"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Ключи отсутствуют в Config.php"
 
 #: 
 msgid "Sep"
@@ -10818,10 +10760,6 @@ msgid "Validation pending"
 msgstr "Ожидает проверки"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "должен быть настроен с ключом шифрования"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d человек добавлен в корзину."
@@ -11182,14 +11120,6 @@ msgid "No people found matching your criteria."
 msgstr "Не найдено людей, соответствующих вашим критериям."
 
 #: 
-msgid "Off"
-msgstr "Выкл"
-
-#: 
-msgid "On"
-msgstr "Вкл"
-
-#: 
 msgid "Photo Directory"
 msgstr "Фотокаталог"
 
@@ -11202,26 +11132,12 @@ msgid "Show only people with photos"
 msgstr "Показать только людей с фотографиями"
 
 #: 
-msgid "Checkout All"
-msgstr "Выписать всех"
-
-#: 
 msgid "Expected"
 msgstr "Ожидается"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Не удалось удалить киоск"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Семейные обязательства по финансовому году"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Найти зарегистрированных студентов"
 
 #. Context: queryparameters_qrp
 #: 

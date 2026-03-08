@@ -2625,10 +2625,6 @@ msgid "Last Login"
 msgstr "Kycja e fundit"
 
 #: 
-msgid "Total Logins"
-msgstr "Gjithsej Logins"
-
-#: 
 msgid "Failed Logins"
 msgstr "Logins dështuara"
 
@@ -4127,11 +4123,6 @@ msgstr "Delimituesi për të ndarë emailet në lidhjet mailto:"
 #: 
 msgid "User permission to create directories"
 msgstr "Leja e përdoruesit për të krijuar direktori"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Leja e përdoruesit për të eksportuar skedarë CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7198,14 +7189,6 @@ msgid "Holiday"
 msgstr "Festë"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Lejo përdoruesit të vetë-regjistrohen në vërtetimin 2-faktorësh"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Kërkon që përdoruesit të vetë-regjistrohen në vërtetimin 2-faktorësh"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7246,32 +7229,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Mbiemri, Emri Emri i mesëm"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Statusi 2-faktorësh"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Ju lutem konfirmoni çaktivizimin e vërtetimit 2-faktorësh për këtë përdorues"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Konfigurim i pambështetur i vërtetimit 2-faktorësh"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Nuk mund të fillohet regjistrimi në vërtetimin 2-faktorësh"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Vërtetimi 2-faktorësh kërkon që administratorët e ChurchCRM të konfigurojnë disa parametra"
-
-#: 
-msgid "System configuration "
-msgstr "Konfigurimi i sistemit "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Duhet të vendoset në 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7627,16 +7586,6 @@ msgstr "veti"
 #: 
 msgid "Default Zip"
 msgstr "Kodi postar i parazgjedhur"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Personat me kartë krediti"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personat që janë konfiguruar të paguajnë me kartë krediti."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8873,6 +8822,7 @@ msgstr "Duke redaktuar ngjarjen"
 msgid "Enter event title..."
 msgstr "Vendosni titullin e ngjarjes..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Ngjarje"
@@ -9884,10 +9834,6 @@ msgid "Membership Reports"
 msgstr "Raportet e anëtarësisë"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Çelësat sekretë që mungojnë"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Shumica e raporteve mund të eksportohen si PDF për printim ose CSV për analizë spreadsheet."
 
@@ -10026,10 +9972,6 @@ msgstr "Cilësimet e serverit SMTP nuk janë konfiguruar"
 #: 
 msgid "Save and Add New Family"
 msgstr "Ruaj dhe shto familje të re"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Çelësat sekretë mungojnë nga Config.php"
 
 #: 
 msgid "Sep"
@@ -10712,10 +10654,6 @@ msgid "Validation pending"
 msgstr "Vërtetimi në pritje"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "duhet të konfigurohet me një çelës enkriptimi"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d person u shtua në shportë."
@@ -11068,14 +11006,6 @@ msgid "No people found matching your criteria."
 msgstr "Nuk u gjetën persona që përputhen me kriteret tuaja."
 
 #: 
-msgid "Off"
-msgstr "Fikur"
-
-#: 
-msgid "On"
-msgstr "Ndezur"
-
-#: 
 msgid "Photo Directory"
 msgstr "Drejtoria e fotografive"
 
@@ -11088,26 +11018,12 @@ msgid "Show only people with photos"
 msgstr "Trego vetëm personat me fotografi"
 
 #: 
-msgid "Checkout All"
-msgstr "Regjistro të Gjithë"
-
-#: 
 msgid "Expected"
 msgstr "Pritshmëri"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Dështoi fshirja e kioskut"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Zotimi i Familjes sipas Vitit Fiskal"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Gjej Studentët e Regjistruar"
 
 #. Context: queryparameters_qrp
 #: 

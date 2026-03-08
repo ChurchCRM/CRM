@@ -47,11 +47,8 @@
     "many": "",
     "other": "%d осіб"
   },
-  "Checkout All": "",
   "Expected": "",
   "Failed to delete kiosk": "",
-  "Family Pledge by Fiscal Year": "",
-  "Find Registered students": "",
   "Fiscal Year.": "",
   "Group of registered students": "",
   "Here": "",
@@ -193,5 +190,8 @@
   "Family Status": "",
   "Family not found": "",
   "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID": "",
-  "From Phone Number": ""
+  "From Phone Number": "",
+  "From dashboard.vonage.com": "",
+  "GA4 Measurement ID": "",
+  "Generate new code": ""
 }

@@ -2625,10 +2625,6 @@ msgid "Last Login"
 msgstr "마지막 로그인"
 
 #: 
-msgid "Total Logins"
-msgstr "로그인 횟수"
-
-#: 
 msgid "Failed Logins"
 msgstr "실패한 로그인"
 
@@ -4128,11 +4124,6 @@ msgstr "mailto 링크에서 이메일을 구분할 구분자"
 #: 
 msgid "User permission to create directories"
 msgstr "명부 생성 권한"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "CSV 내보내기 권한"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7206,14 +7197,6 @@ msgid "Holiday"
 msgstr "공휴일"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "사용자가 2단계 인증을 직접 등록할 수 있도록 허용"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "사용자에게 2단계 인증 등록을 강제"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7254,32 +7237,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "성, 이름 미들네임"
 
 #: 
-msgid "Two Factor Status"
-msgstr "2단계 인증 상태"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "이 사용자의 2단계 인증을 해제할지 확인하세요"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "지원되지 않는 2단계 인증 설정"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "2단계 인증 등록을 시작할 수 없습니다"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "2단계 인증을 사용하려면 ChurchCRM 관리자가 몇 가지 매개변수를 설정해야 합니다"
-
-#: 
-msgid "System configuration "
-msgstr "시스템 설정 "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "'true'로 설정해야 합니다"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7635,16 +7594,6 @@ msgstr "속성"
 #: 
 msgid "Default Zip"
 msgstr "기본 우편번호"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "신용카드 결제자"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "신용카드 결제로 설정된 사람들입니다."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8880,6 +8829,7 @@ msgstr "행사 편집 중"
 msgid "Enter event title..."
 msgstr "행사 제목을 입력하세요..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "행사"
@@ -9891,10 +9841,6 @@ msgid "Membership Reports"
 msgstr "회원 보고서"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "비밀 키 누락"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "대부분의 보고서는 인쇄용 PDF 또는 스프레드시트 분석용 CSV로 내보낼 수 있습니다."
 
@@ -10033,10 +9979,6 @@ msgstr "SMTP 서버 설정이 구성되지 않았습니다"
 #: 
 msgid "Save and Add New Family"
 msgstr "저장 및 새 가족 추가"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Config.php에 비밀 키가 없습니다"
 
 #: 
 msgid "Sep"
@@ -10720,10 +10662,6 @@ msgid "Validation pending"
 msgstr "검증 대기 중"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "암호화 키로 구성되어야 함"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d명이 카트에 추가됨."
@@ -11072,14 +11010,6 @@ msgid "No people found matching your criteria."
 msgstr "조건에 맞는 사람이 없습니다."
 
 #: 
-msgid "Off"
-msgstr "끔"
-
-#: 
-msgid "On"
-msgstr "켬"
-
-#: 
 msgid "Photo Directory"
 msgstr "사진 디렉토리"
 
@@ -11092,26 +11022,12 @@ msgid "Show only people with photos"
 msgstr "사진이 있는 사람만 표시"
 
 #: 
-msgid "Checkout All"
-msgstr "전체 체크아웃"
-
-#: 
 msgid "Expected"
 msgstr "예상"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "키오스크 삭제 실패"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "회계연도별 가족 서약"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "등록된 학생 찾기"
 
 #. Context: queryparameters_qrp
 #: 

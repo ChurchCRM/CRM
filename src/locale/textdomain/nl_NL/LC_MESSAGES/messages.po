@@ -2625,10 +2625,6 @@ msgid "Last Login"
 msgstr "Laatste Login"
 
 #: 
-msgid "Total Logins"
-msgstr "Aantal logins"
-
-#: 
 msgid "Failed Logins"
 msgstr "Mislukte Logins"
 
@@ -4134,11 +4130,6 @@ msgstr "Scheidingsteken om e-mails in mailto te scheiden: links"
 #: 
 msgid "User permission to create directories"
 msgstr "Gebruikersrechten om mappen te maken"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Gebruikersrechten om CSV-bestanden te exporteren"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7215,14 +7206,6 @@ msgid "Holiday"
 msgstr "Feestdag"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Sta gebruikers toe om zichzelf in te schrijven voor 2-factor authenticatie"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Vereist dat gebruikers zichzelf inschrijven voor 2-factor authenticatie"
-
-#: 
 msgid "ChurchCRM"
 msgstr "KerkCRM"
 
@@ -7263,32 +7246,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Achternaam, Voornaam Tussennaam"
 
 #: 
-msgid "Two Factor Status"
-msgstr "2-factor status"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bevestig a.u.b. het uitschakelen van 2 Factor Auth voor deze gebruiker"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Niet-ondersteunde configuratie voor twee-factorenauthenticatie"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Kan uitrol van 2-factorauthenticatie niet starten"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Twee-factor-authenticatie vereist dat ChurchCRM-beheerders een paar parameters configureren"
-
-#: 
-msgid "System configuration "
-msgstr "Systeem configuratie "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Moet zijn ingesteld op 'waar'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7644,16 +7603,6 @@ msgstr "Bezit"
 #: 
 msgid "Default Zip"
 msgstr "Standaard Postcode"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Credit Card mensen"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Mensen die staan ingesteld op betaling met creditcard"
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8891,6 +8840,7 @@ msgstr "Evenement aan het bewerken"
 msgid "Enter event title..."
 msgstr "Voer evenementtitel in..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Evenement"
@@ -9902,10 +9852,6 @@ msgid "Membership Reports"
 msgstr "Lidmaatschapsrapporten"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Ontbrekende Geheime Sleutels"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "De meeste rapporten kunnen als PDF voor afdrukken of CSV voor spreadsheetanalyse worden geëxporteerd."
 
@@ -10044,10 +9990,6 @@ msgstr "SMTP-serverinstellingen zijn niet geconfigureerd"
 #: 
 msgid "Save and Add New Family"
 msgstr "Opslaan en Nieuwe Familie Toevoegen"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Geheime sleutels ontbreken in Config.php"
 
 #: 
 msgid "Sep"
@@ -10730,10 +10672,6 @@ msgid "Validation pending"
 msgstr "Validatie in behandeling"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "moet worden geconfigureerd met een versleutelingssleutel"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d persoon aan winkelwagen toegevoegd."
@@ -11086,14 +11024,6 @@ msgid "No people found matching your criteria."
 msgstr "Geen personen gevonden die aan uw criteria voldoen."
 
 #: 
-msgid "Off"
-msgstr "Uit"
-
-#: 
-msgid "On"
-msgstr "Aan"
-
-#: 
 msgid "Photo Directory"
 msgstr "Fotomap"
 
@@ -11106,26 +11036,12 @@ msgid "Show only people with photos"
 msgstr "Toon alleen personen met foto's"
 
 #: 
-msgid "Checkout All"
-msgstr "Iedereen uitchecken"
-
-#: 
 msgid "Expected"
 msgstr "Verwacht"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Kiosk verwijderen mislukt"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familie toezegging per boekjaar"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Geregistreerde studenten zoeken"
 
 #. Context: queryparameters_qrp
 #: 

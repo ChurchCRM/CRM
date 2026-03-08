@@ -2605,10 +2605,6 @@ msgid "Last Login"
 msgstr "Viimeisin kirjautuminen"
 
 #: 
-msgid "Total Logins"
-msgstr "Kirjautumisia yhteensä"
-
-#: 
 msgid "Failed Logins"
 msgstr "Epäonnistuneita kirjautumisia"
 
@@ -4101,11 +4097,6 @@ msgstr "Erotin sähköpostien erottamiseen mailto-linkeissä"
 #: 
 msgid "User permission to create directories"
 msgstr "Käyttäjän oikeus luoda hakemistoja"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Käyttäjän oikeus viedä CSV-tiedostoja"
 
 #. Context: userconfig_ucfg
 #: 
@@ -7167,14 +7158,6 @@ msgid "Holiday"
 msgstr "Pyhäpäivä"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Salli käyttäjien ottaa kaksivaiheinen tunnistautuminen itse käyttöön"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Vaadi käyttäjiä ottamaan kaksivaiheinen tunnistautuminen itse käyttöön"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7215,32 +7198,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Sukunimi, Etunimi Toinen-nimi"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Kaksivaiheisen tunnistautumisen tila"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vahvista kaksivaiheisen tunnistautumisen poistaminen tältä käyttäjältä"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Tukematon kaksivaiheisen tunnistautumisen määritys"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Kaksivaiheisen tunnistautumisen käyttöönottoa ei voitu aloittaa"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Kaksivaiheinen tunnistautuminen vaatii, että ylläpitäjä määrittää muutamia asetuksia"
-
-#: 
-msgid "System configuration "
-msgstr "Järjestelmän määritys "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "On oltava 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7596,16 +7555,6 @@ msgstr "omaisuus"
 #: 
 msgid "Default Zip"
 msgstr "Oletuspostinumero"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Luottokorttimaksajat"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Henkilöt, joiden on määritetty maksavan luottokortilla."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8842,6 +8791,7 @@ msgstr "Tapahtuman muokkaaminen"
 msgid "Enter event title..."
 msgstr "Syötä tapahtuman otsikko..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Tapahtuma"
@@ -9853,10 +9803,6 @@ msgid "Membership Reports"
 msgstr "Jäsenyysraportit"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Puuttuvat salaiset avaimet"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Useimmat raportit voidaan viedä PDF-muodossa tulostusta varten tai CSV-muodossa taulukkolaskentaan."
 
@@ -9995,10 +9941,6 @@ msgstr "SMTP-palvelimen asetuksia ei ole määritetty"
 #: 
 msgid "Save and Add New Family"
 msgstr "Tallenna ja lisää uusi perhe"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Salaiset avaimet puuttuvat Config.php-tiedostosta"
 
 #: 
 msgid "Sep"
@@ -10681,10 +10623,6 @@ msgid "Validation pending"
 msgstr "Validointi odottaa"
 
 #: 
-msgid "must be configured with an encryption key"
-msgstr "on määritettävä salausavaimella"
-
-#: 
 msgid "%d Person added to the Cart."
 msgid_plural "%d People added to the Cart."
 msgstr[0] "%d Henkilö lisätty koriin."
@@ -11035,14 +10973,6 @@ msgstr "Kaikki Luokitukset"
 #: 
 msgid "No people found matching your criteria."
 msgstr "Kriteereitäsi vastaavia henkilöitä ei löytynyt."
-
-#: 
-msgid "Off"
-msgstr "Pois"
-
-#: 
-msgid "On"
-msgstr "Päällä"
 
 #: 
 msgid "Photo Directory"

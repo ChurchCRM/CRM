@@ -1,7 +1,4 @@
 {
-  "Vonage server error. Please try again later.": "",
-  "WebDAV Endpoint URL is required.": "",
-  "Are you sure you want to permanently delete this pledge record?": "",
   "Cancel and Return to Family View": "",
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "",
   "Move Donations to Selected Family": "",
@@ -22,5 +19,12 @@
   "User not found": "",
   "You must set a new password before continuing.": "",
   "Your password has been updated successfully.": "",
-  "selected family has no coordinates": ""
+  "selected family has no coordinates": "",
+  "2FA": "",
+  "Find people who didn't attend an event": "",
+  "Leave blank to keep existing": "",
+  "Missing people": "",
+  "Not enrolled": "",
+  "Require all users to enroll in two-factor authentication": "",
+  "Select the desired event": ""
 }
