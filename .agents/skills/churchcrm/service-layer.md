@@ -220,3 +220,75 @@ public function getUserSettingsConfig(): array
 **Service Container:** `src/ChurchCRM/ServiceContainerBuilder.php`
 **Logger:** `src/ChurchCRM/Utils/LoggerUtils.php`
 **Config:** `src/ChurchCRM/dto/SystemConfig.php`
+
+## Auto-Triggering Service Methods from Model Saves <!-- learned: 2026-03-08 -->
+
+For business logic that should automatically trigger when a model is saved (e.g., auto-geocoding on address change),
+hook into the save handler in the page that modifies the model. This keeps services clean and prevents duplicate logic.
+
+**Pattern:**
+1. Service method checks if action is needed (e.g., address was modified but no coordinates exist)
+2. Page/handler checks column modifications using `$model->isColumnModified(TableMap::COL_NAME)`
+3. Instantiate and call service after model is saved
+
+**Example: Auto-Geocode Family on Address Save**
+
+```php
+// Service: FamilyService->autoGeocodeFamily()
+public function autoGeocodeFamily(Family $family): bool
+{
+    $street = trim($family->getAddress1() ?? '');
+    if (empty($street)) {
+        $this->logger->debug('autoGeocodeFamily: skipping empty address');
+        return true;
+    }
+
+    try {
+        $coords = GeoUtils::getLatLong(
+            $street,
+            $family->getCity(),
+            $family->getState(),
+            $family->getZip()
+        );
+
+        if ((float)$coords['Latitude'] === 0.0 && (float)$coords['Longitude'] === 0.0) {
+            $this->logger->warning('autoGeocodeFamily: Could not geocode address');
+            return false;
+        }
+
+        $family->setLatitude((float)$coords['Latitude']);
+        $family->setLongitude((float)$coords['Longitude']);
+        $family->save();
+
+        $this->logger->info('autoGeocodeFamily: Geocoded successfully');
+        return true;
+    } catch (\Throwable $e) {
+        $this->logger->warning('autoGeocodeFamily error: ' . $e->getMessage());
+        return false;
+    }
+}
+
+// Handler: FamilyEditor.php
+use ChurchCRM\Service\FamilyService;
+
+$family->save();
+$family->reload();
+
+// Auto-geocode if address was modified but no coordinates exist
+if (
+    ($family->isColumnModified(FamilyTableMap::COL_FAM_ADDRESS1)
+        || $family->isColumnModified(FamilyTableMap::COL_FAM_CITY)
+        || $family->isColumnModified(FamilyTableMap::COL_FAM_STATE)
+        || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP))
+    && empty($family->getLatitude())
+) {
+    $familyService = new FamilyService();
+    $familyService->autoGeocodeFamily($family);
+}
+```
+
+**Guidelines:**
+- Service method should be idempotent (safe to call multiple times)
+- Always log what happened (success/failure/skipped)
+- Don't break the main transaction if the side-effect fails
+- Use logger->debug for parameter values, ->info for success, ->warning for expected failures
