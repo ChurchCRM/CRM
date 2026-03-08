@@ -752,6 +752,7 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="card card-info clearfix">
             <div class="card-header">
                 <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
+            </div>
             <div class="card-body">
                 <?php 
                 $customPhoneFields = [];
@@ -779,6 +780,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="card card-info clearfix">
         <div class="card-header">
             <h3 class="card-title"><?= gettext('Family Members') ?></h3>
+        </div>
         <div class="card-body">
 
             <?php if ($iFamilyMemberRows > 0) {
