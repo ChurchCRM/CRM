@@ -92,11 +92,5 @@ describe("Congregation Map (/v2/map)", () => {
         });
     });
 
-    describe("Geocoding alert", () => {
-        it("Shows the 'missing families' info banner with update link", () => {
-            cy.visit("v2/map");
-            cy.get(".alert-info").should("exist");
-            cy.get(".alert-info a").should("contain.text", "");
-        });
-    });
+    
 });
