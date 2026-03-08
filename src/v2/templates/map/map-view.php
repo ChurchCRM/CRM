@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = $mapConfig['hasLocation']
@@ -20,16 +21,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 <?php else: ?>
 
-<div class="row">
-    <div class="col-12">
-        <div class="alert alert-info d-flex align-items-center py-2">
-            <a href="<?= $sRootPath ?>/UpdateAllLatLon.php" class="btn btn-sm btn-secondary mr-2">
-                <i class="fa-solid fa-location-dot"></i>
-            </a>
-            <span><?= gettext('Missing families? Update coordinates to include them on the map.') ?></span>
-        </div>
+<div class="row mb-3">
+    <div class="col-12 d-flex align-items-center">
+        <a href="<?= $sRootPath ?>/UpdateAllLatLon.php" class="btn btn-sm btn-secondary mr-2">
+            <i class="fa-solid fa-location-dot"></i>
+        </a>
+        <span class="text-muted flex-grow-1"><?= gettext('Missing families? Update coordinates to include them on the map.') ?></span>
+        <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
+        <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="collapse" data-target="#mapAdminSettings" aria-expanded="false" aria-controls="mapAdminSettings">
+            <i class="fa-solid fa-cog"></i> <?= gettext('Map Settings') ?>
+        </button>
+        <?php endif; ?>
     </div>
 </div>
+
+<!-- Map Admin Settings (collapsible) -->
+<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
+<div class="collapse mb-3" id="mapAdminSettings"></div>
+<?php endif; ?>
 
 <div class="row">
     <div class="col-12">
@@ -80,6 +89,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     window.CRM.mapConfig = <?= json_encode($mapConfig, JSON_THROW_ON_ERROR) ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/map-view.js') ?>"></script>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
+    window.CRM.settingsPanel.init({
+        container: '#mapAdminSettings',
+        title: '<?= gettext('Map Settings') ?>',
+        icon: 'fa-solid fa-sliders-h',
+        settings: [
+            {
+                name: 'iMapZoom',
+                label: '<?= gettext('Default Map View') ?>',
+                type: 'choice',
+                choices: [
+                    { value: '3', label: '<?= gettext('Continent') ?>' },
+                    { value: '5', label: '<?= gettext('Country') ?>' },
+                    { value: '7', label: '<?= gettext('State') ?>' },
+                    { value: '10', label: '<?= gettext('City') ?>' },
+                    { value: '14', label: '<?= gettext('Neighborhood') ?>' },
+                    { value: '18', label: '<?= gettext('Street') ?>' }
+                ]
+            }
+        ],
+        showAllSettingsLink: false
+    });
+    <?php endif; ?>
+</script>
 
 <style nonce="<?= SystemURLs::getCSPNonce() ?>">
     .legend-dot {

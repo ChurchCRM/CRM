@@ -4,35 +4,70 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
-use Geocoder\Provider\GoogleMaps\GoogleMaps;
-use Geocoder\Query\GeocodeQuery;
-use Geocoder\StatefulGeocoder;
-use Http\Adapter\Guzzle7\Client;
 
 class GeoUtils
 {
+    /**
+     * Geocode an address to latitude/longitude using OpenStreetMap's Nominatim service.
+     *
+     * Nominatim is free and requires no API key. No admin configuration needed.
+     *
+     * @param string $address The address to geocode
+     * @return array{Latitude: float, Longitude: float} Latitude and longitude, or [0, 0] if not found
+     */
     public static function getLatLong(string $address): array
     {
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::getCurrentLocale();
 
-        $adapter = new Client();
-        $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('sGoogleMapsGeocodeKey'));
-
         $lat = 0;
         $long = 0;
 
+        if (empty(trim($address))) {
+            $logger->warning('Geocoding: empty address provided');
+            return ['Latitude' => $lat, 'Longitude' => $long];
+        }
+
         try {
-            $logger->debug('Using: Geo Provider -  ' . $provider->getName());
-            $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
-            $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
-            $logger->debug('We have ' . $result->count() . ' results');
-            $firstResult = $result->get(0);
-            $coordinates = $firstResult->getCoordinates();
-            $lat = $coordinates->getLatitude();
-            $long = $coordinates->getLongitude();
-        } catch (\Exception $exception) {
-            $logger->warning('issue creating geoCoder ' . $exception->getMessage());
+            $logger->debug('Using: Geo Provider - Nominatim (OpenStreetMap)');
+
+            // Call Nominatim API - no API key needed
+            $url = 'https://nominatim.openstreetmap.org/search?';
+            $params = [
+                'q' => $address,
+                'format' => 'json',
+                'limit' => 1,
+                'accept-language' => $localeInfo->getShortLocale(),
+            ];
+            $url .= http_build_query($params);
+
+            // Nominatim ToS requires a User-Agent header
+            $context = stream_context_create([
+                'http' => [
+                    'method' => 'GET',
+                    'header' => "User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)\r\n",
+                ],
+            ]);
+
+            $response = file_get_contents($url, false, $context);
+            if ($response === false) {
+                $logger->warning('Geocoding failed: Nominatim API request failed');
+                return ['Latitude' => $lat, 'Longitude' => $long];
+            }
+
+            $results = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
+            if (empty($results) || !is_array($results)) {
+                $logger->warning("Geocoding: No results found for address: $address");
+                return ['Latitude' => $lat, 'Longitude' => $long];
+            }
+
+            $firstResult = $results[0];
+            $lat = (float) $firstResult['lat'];
+            $long = (float) $firstResult['lon'];
+
+            $logger->debug("Geocoding successful: $address -> $lat, $long");
+        } catch (\Throwable $exception) {
+            $logger->warning('Geocoding error: ' . $exception->getMessage());
         }
 
         return [
