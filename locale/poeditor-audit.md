@@ -10,6 +10,7 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `ta` | Tamil | 2969 | 100% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
@@ -36,7 +37,6 @@
 | `es-sv` | Spanish (SV) | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
 | `sv` | Swedish | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
 | `te` | Telugu | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
