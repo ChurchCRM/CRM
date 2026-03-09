@@ -10986,3 +10986,1324 @@ msgstr "Nollaa Suodattimet"
 msgid "Show only people with photos"
 msgstr "Näytä vain henkilöt, joilla on kuva"
 
+#: 
+msgid "Expected"
+msgstr "Odotettu"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Kioskiasetusten poistaminen epäonnistui"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Tilikausi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Rekisteröityjen opiskelijoiden ryhmä"
+
+#: 
+msgid "Here"
+msgstr "Tässä"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Virheellinen tehtävätyyppi"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Virheellinen henkilötunnus"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Kioskirekisteröinti poistettu käytöstä"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kioskia ei löydy"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Linkitä tämä tapahtuma ryhmään kioski-sisäänkirjautumistoimintoa varten. Ryhmän jäsenet näkyvät kioskilla."
+
+#: 
+msgid "Linked Group"
+msgstr "Linkitetty ryhmä"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Uusien kioskilaitteiden rekisteröinti on tällä hetkellä poistettu käytöstä. Ota yhteyttä järjestelmänvalvojaasi ottaaksesi kioskirekisteröinnin käyttöön."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Ei ryhmää (Valitse kioskin sisäänkirjautumiseen)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Kukaan ei ole kirjautunut vielä sisään"
+
+#: 
+msgid "Person not found"
+msgstr "Henkilöä ei löydy"
+
+#: 
+msgid "Pickup Request"
+msgstr "Noutoilmoitus"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Siirry luokkahuoneeseen mahdollisimman pian."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Lupausten yhteenveto perhenimen mukaan kustakin rahastosta valitulle tilikaudelle"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Rekisteröidyt opiskelijat"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Opettaja lähetti tämän hälytyksen"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Tämä kioski toimii parhaiten tabletilla vaakasuunnassa optimaalisen sisäänkirjautumiskokemuksen saavuttamiseksi."
+
+#: 
+msgid "Tip"
+msgstr "Vinkki"
+
+#: 
+msgid "Try Again"
+msgstr "Yritä uudelleen"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Tulevat syntymäpäivät"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Odottaa sisäänkirjautumista"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Kun tämä on käytössä, uudet kioskiasemat voivat rekisteröityä 30 sekunnin ajan."
+
+#: 
+msgid "Your child"
+msgstr "Lapsesi"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "on haettava"
+
+#: 
+msgid "their classroom"
+msgstr "luokkahuoneestaan"
+
+#: 
+msgid "All timezones match"
+msgstr "Kaikki aikavyöhykkeet vastaavat toisiaan"
+
+#: 
+msgid "Baseline"
+msgstr "Vertailutaso"
+
+#: 
+msgid "Browser"
+msgstr "Selain"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Selain poikkeaa järjestelmäasetuksista – päivämäärät saattavat näkyä väärin tälle käyttäjälle."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "ChurchCRM-asennushakemistoon ei voida kirjoittaa. Tarkista, että web-palvelimella on kirjoitusoikeus."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Verrataan aikavyöhykkeitä..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Kohdehakemistoa ei ole olemassa. Varmista, että ChurchCRM on asennettu oikein."
+
+#: 
+msgid "Does not match system config"
+msgstr "Ei vastaa järjestelmäasetuksia"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Ladattu julkaisutiedosto on tyhjä. Tämä saattaa johtua verkko-ongelmista tai GitHubin nopeusrajoituksista. Yritä myöhemmin uudelleen."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Purku valmistui, mutta päivitystiedostoja ei löydy. Päivitysarkisto saattaa olla vioittunut."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Päivityksen asentaminen epäonnistui. Tarkista palvelimen lokit lisätietoja varten."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Päivityshakemiston luominen epäonnistui. Tarkista tiedostooikeudet."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Julkaisutiedoston lataaminen GitHubista epäonnistui useista yrityksistä huolimatta. Tarkista palvelimen internet-yhteys ja yritä uudelleen."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Päivitysarkiston purkaminen epäonnistui. Tarkista levytila ja tiedostooikeudet."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Päivitysarkiston avaaminen epäonnistui. Ladattu tiedosto saattaa olla vioittunut."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Ladatun julkaisutiedoston tallentaminen epäonnistui. Tarkista levytila ja käyttöoikeudet."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Virheellinen päivämäärämuoto aloitusparametrissa"
+
+#: 
+msgid "Mismatch"
+msgstr "Ristiriita"
+
+#: 
+msgid "Not set"
+msgstr "Ei asetettu"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP aktiivinen"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Lähdehakemistoa ei ole olemassa. Päivitysarkisto ei välttämättä purettu oikein. Tarkista tiedostooikeudet ja levytila."
+
+#: 
+msgid "System Config"
+msgstr "Järjestelmäasetukset"
+
+#: 
+msgid "Timezone Information"
+msgstr "Aikavyöhyketiedot"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Aikavyöhykeristiriita havaittu"
+
+#: 
+msgid "mismatch detected"
+msgstr "ristiriita havaittu"
+
+#: 
+msgid "mismatches detected"
+msgstr "ristiriitoja havaittu"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d tunti"
+msgstr[1] "%d tuntia"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "Tietoja WebDAV-varmuuskopioista"
+
+#: 
+msgid "Add Link"
+msgstr "Lisää linkki"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Lisää ylimääräinen suojakerros tiliisi"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Lisää mukautettuja ulkoisia linkkejä navigointivalikkoon."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Salli itseallekirjoitetut varmenteet"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Liitännäispyyntöä käsiteltäessä tapahtui virhe"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Haluatko varmasti poistaa kaksivaiheisen todennuksen käytöstä? Tilisi on sen jälkeen vähemmän suojattu."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "Osana palautusta ulkoiset varmuuskopiot on poistettu käytöstä. Jos haluat jatkaa automaattisia varmuuskopioita, ota käyttöön External Backup -liitännäinen kohdassa Ylläpito > Liitännäiset."
+
+#: 
+msgid "Audiences"
+msgstr "Kohderyhmät"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Todennus epäonnistui. Tarkista käyttäjätunnus ja salasana."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Automaattinen varmuuskopioväli"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Varmuuskopioi ChurchCRM-tietokantasi automaattisesti ulkoiseen pilvitallennustilaan WebDAV:n kautta."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Keskimääräinen klikkausprosentti"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Keskimääräinen avausprosentti"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Takaisin koontinäyttöön"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Varmuuskopio luotiin, mutta sen kopioiminen etäpalvelimelle epäonnistui"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Varmuuskopioi WebDAV:iin nyt"
+
+#: 
+msgid "Before You Start"
+msgstr "Ennen kuin aloitat"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Selaimen kieliasetukset havaittu"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "CRM-jäsenet, jotka eivät ole tilanneet"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Kampanjat lähetetty"
+
+#: 
+msgid "Can't scan?"
+msgstr "Etkö pysty skannaamaan?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Muuta alueasetusCasi"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM tukee liitännäisarkkitehtuuria toiminnallisuuden laajentamiseksi."
+
+#: 
+msgid "Cleaned"
+msgstr "Siivottu"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Napsauta alla olevaa painiketta testataksesi WebDAV-yhteysasetuksiasi."
+
+#: 
+msgid "Community Plugins"
+msgstr "Yhteisön liitännäiset"
+
+#: 
+msgid "Community plugins"
+msgstr "Yhteisön liitännäiset"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Määritä ulkoinen varmuuskopio"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Määritä MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Määritä nämä asetukset kohdassa"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Määritä tämä liitännäinen varmuuskopioimaan ChurchCRM-tietokantasi automaattisesti WebDAV-yhteensopiviin pilvitallennuspalveluihin, kuten Nextcloud, ownCloud tai mikä tahansa WebDAV-palvelin. Varmuuskopiot salataan siirron aikana HTTPS:n avulla."
+
+#: 
+msgid "Configured"
+msgstr "Määritetty"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Vahvista koodilla todennussovelluksestasi"
+
+#: 
+msgid "Connected"
+msgstr "Yhdistetty"
+
+#: 
+msgid "Connection failed"
+msgstr "Yhteys epäonnistui"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Yhteys epäonnistui HTTP-koodilla"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Yhteys onnistui! WebDAV-päätepiste on käytettävissä."
+
+#: 
+msgid "Connection test failed"
+msgstr "Yhteystesti epäonnistui"
+
+#: 
+msgid "Core Plugins"
+msgstr "Ydinliitännäiset"
+
+#: 
+msgid "Core plugins"
+msgstr "Ydinliitännäiset"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Luo varmuuskopio nyt ja lataa se WebDAV-palvelimellesi."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Luo kohderyhmä MailChimpissä"
+
+#: 
+msgid "Custom"
+msgstr "Mukautettu"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Mukautetut valikkolinkit"
+
+#: 
+msgid "Default Image Style"
+msgstr "Oletuskuvatyyli"
+
+#: 
+msgid "Default List ID"
+msgstr "Oletusluettelon tunnus"
+
+#: 
+msgid "Disable"
+msgstr "Poista käytöstä"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Poista liitännäinen käytöstä"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Poista kaksivaiheinen todennus käytöstä"
+
+#: 
+msgid "Dismiss"
+msgstr "Hylkää"
+
+#: 
+msgid "Done"
+msgstr "Valmis"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164-muoto, esim. +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Kukin liitännäinen vaatii"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Joka kerta kirjautuessasi sisään sinun tulee vahvistaa kirjautuminen todennussovelluksesi koodilla"
+
+#: 
+msgid "Email Addresses"
+msgstr "Sähköpostiosoitteet"
+
+#: 
+msgid "Enable"
+msgstr "Ota käyttöön"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Ota käyttöön External Backup -liitännäinen"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Ota liitännäinen käyttöön"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Ota kaksivaiheinen todennus käyttöön"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Ota käyttöön External Backup -liitännäinen WebDAV-pilvitallennusta varten."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Ota tämä käyttöön vain paikallisverkon palvelimille, joilla on itseallekirjoitetut SSL-varmenteet. Poistaa varmenteen tarkistuksen käytöstä."
+
+#: 
+msgid "Endpoint URL"
+msgstr "Päätepisteen URL-osoite"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Syötä 6-numeroinen koodi todennussovelluksestasi"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Syötä käyttäjätunnuksesi ja salasanasi normaalisti"
+
+#: 
+msgid "External Backup"
+msgstr "Ulkoinen varmuuskopio"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Ulkoinen varmuuskopio (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Ulkoisen varmuuskopion asetukset"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "External Backup -liitännäinen on käytössä, mutta sitä ei ole määritetty."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "External Backup -liitännäistä ei ole määritetty. Määritä WebDAV-asetukset liitännäisessä."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "External Backup -liitännäinen ei ole käytössä. Ota se käyttöön ja määritä se Liitännäisten hallinnassa."
+
+#: 
+msgid "Failed to create link"
+msgstr "Linkin luominen epäonnistui"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Linkin poistaminen epäonnistui"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Liitännäisen poistaminen käytöstä epäonnistui"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Liitännäisen käyttöönotto epäonnistui"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Liitännäistietojen hakeminen epäonnistui"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Liitännäisten listaaminen epäonnistui"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Asetusten nollaaminen epäonnistui"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "SMS-viestin lähettäminen epäonnistui"
+
+#: 
+msgid "Family Status"
+msgstr "Perheen tila"
+
+#: 
+msgid "Family not found"
+msgstr "Perhettä ei löydy"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Löydät MailChimpistä: Kohderyhmä > Asetukset > Kohderyhmän nimi ja oletukset > Kohderyhmän tunnus"
+
+#: 
+msgid "From Phone Number"
+msgstr "Lähettäjän puhelinnumero"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "Osoitteesta dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "GA4-mittaustunnus"
+
+#: 
+msgid "Generate new code"
+msgstr "Luo uusi koodi"
+
+#: 
+msgid "Get Started"
+msgstr "Aloita"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Hanki API-avain MailChimpistä: Tilin asetukset > Lisätoiminnot > API-avaimet"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Valmistele todennussovelluksesi (Google Authenticator, Microsoft Authenticator, Authy jne.)"
+
+#: 
+msgid "Help"
+msgstr "Ohje"
+
+#: 
+msgid "Id"
+msgstr "Tunnus"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Kuva, joka näytetään, kun sähköpostiosoitteelle ei ole Gravatar-kuvaa"
+
+#: 
+msgid "Important"
+msgstr "Tärkeää"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Asenna liitännäiset sijoittamalla ne kansioon"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Virheellinen koodi. Yritä uudelleen."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "Virheellinen päätepisteen URL-osoite. Sen täytyy olla täydellinen URL-osoite, joka alkaa https://-alkuisena (esim. https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Kioskiasemaa ei löydy"
+
+#: 
+msgid "Last Backup"
+msgstr "Viimeisin varmuuskopio"
+
+#: 
+msgid "Last Campaign"
+msgstr "Viimeisin kampanja"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Viimeisin tilaaja"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Viimeisin onnistunut varmuuskopio"
+
+#: 
+msgid "Last campaign"
+msgstr "Viimeisin kampanja"
+
+#: 
+msgid "Link Name"
+msgstr "Linkin nimi"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Linkkiosoite ei voi sisältää HTML-tageja"
+
+#: 
+msgid "Link address is required"
+msgstr "Linkkiosoite vaaditaan"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Linkin on oltava kelvollinen URL-osoite"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Linkin on alkettava http://- tai https://-etuliitteellä"
+
+#: 
+msgid "Link not found"
+msgstr "Linkkiä ei löydy"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Ladataan palautuskoodeja"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "MailChimp API-avain"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "MailChimp-hallintapaneeli"
+
+#: 
+msgid "Manage Links"
+msgstr "Hallinnoi linkkejä"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Hallinnoi kaksivaiheista todennusta"
+
+#: 
+msgid "Manual Backup"
+msgstr "Manuaalinen varmuuskopio"
+
+#: 
+msgid "Menu Links"
+msgstr "Valikkolinkit"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Valikon nimi ei voi sisältää HTML-tageja"
+
+#: 
+msgid "Menu name is required"
+msgstr "Valikon nimi vaaditaan"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Valikon nimen on oltava enintään 50 merkkiä"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Valikon nimen on oltava vähintään 2 merkkiä"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Täytyy alkaa http://- tai https://-etuliitteellä"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Vaatii määrityksiä"
+
+#: 
+msgid "Never"
+msgstr "Ei koskaan"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Kohderyhmiä ei löydy"
+
+#: 
+msgid "No backups recorded"
+msgstr "Varmuuskopioita ei ole tallennettu"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Yhteisön liitännäisiä ei ole asennettu"
+
+#: 
+msgid "No core plugins found"
+msgstr "Ydinliitännäisiä ei löydy"
+
+#: 
+msgid "No settings provided"
+msgstr "Asetuksia ei annettu"
+
+#: 
+msgid "Not Configured"
+msgstr "Ei määritetty"
+
+#: 
+msgid "Not in CRM"
+msgstr "Ei CRM:ssä"
+
+#: 
+msgid "One-Time Code"
+msgstr "Kertakäyttöinen koodi"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Avaa MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Avaa todennussovelluksesi ja skannaa tämä QR-koodi"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "OpenLP-palvelimen URL-osoite"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Valinnainen – vaaditaan vain, jos OpenLP-todennus on käytössä"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Puhelinnumero ja viesti vaaditaan"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Määritä ensin päätepiste, käyttäjätunnus ja salasana."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Määritä WebDAV-asetukset ennen etävarmuuskopion luomista."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Määritä WebDAV-asetukset ennen yhteyden testaamista."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Määritä MailChimp API-avain käyttääksesi tätä integraatiota."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Syötä linkin nimi (2–50 merkkiä)"
+
+#: 
+msgid "Please try again"
+msgstr "Yritä uudelleen"
+
+#: 
+msgid "Plugin Development"
+msgstr "Liitännäisten kehittäminen"
+
+#: 
+msgid "Plugin Help"
+msgstr "Liitännäisen ohje"
+
+#: 
+msgid "Plugin Management"
+msgstr "Liitännäisten hallinta"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Liitännäisen asetukset"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Liitännäistä ei voida poistaa käytöstä, koska muut liitännäiset riippuvat siitä"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Liitännäistä ei voida ottaa käyttöön riippuvuus- tai versiovaatimusten vuoksi"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Liitännäinen poistettiin käytöstä"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Liitännäinen otettiin käyttöön"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Liitännäisen lataaminen epäonnistui"
+
+#: 
+msgid "Plugin not found"
+msgstr "Liitännäistä ei löydy"
+
+#: 
+msgid "Plugins"
+msgstr "Liitännäiset"
+
+#: 
+msgid "Print"
+msgstr "Tulosta"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Vastaanottajat ja viesti vaaditaan"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Palautuskoodit"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Etävarmuuskopio epäonnistui. Tarkista palvelimen lokit lisätietoja varten."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS lähetetty"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Tallenna nämä palautuskoodit turvalliseen paikkaan. Voit käyttää niitä tililläsi pääsemiseen, jos menetät pääsyn todennussovellukseesi."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Skannaa QR-koodi"
+
+#: 
+msgid "Secure"
+msgstr "Suojattu"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Määritä todentaja"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Asetukset nollattiin"
+
+#: 
+msgid "Setup Complete"
+msgstr "Määritys valmis"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Toimitettu ChurchCRM:n mukana."
+
+#: 
+msgid "Sign In"
+msgstr "Kirjaudu sisään"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Joitakin asetuksia ei voitu nollata"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Joitakin asetuksia ei voitu tallentaa"
+
+#: 
+msgid "Subscribers"
+msgstr "Tilaajat"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Tilaajat, jotka eivät ole CRM:ssä"
+
+#: 
+msgid "Test Connection"
+msgstr "Testaa yhteys"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Testaa WebDAV-yhteys"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Nämä linkit näkyvät navigointisivupalkin \"Linkit\"-valikossa, kun tämä liitännäinen on käytössä."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Nämä henkilöt ovat tilanneet MailChimp-kohderyhmäsi, mutta heitä ei ole ChurchCRM:ssä. Harkitse heidän lisäämistä tietokantaasi tai poistamista MailChimpistä."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Nämä henkilöt ovat ChurchCRM:ssä sähköpostiosoitteella, mutta eivät ole tilanneet tätä MailChimp-kohderyhmää. Harkitse heidän kutsumista tilaamaan."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Kolmannen osapuolen laajennukset."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Tämä korvaa kaikki aiemmin rekisteröidyt kaksivaiheisen todennuksen menetelmät"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Kampanjoita yhteensä"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Tilaajia yhteensä"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Kaksivaiheisen todennuksen rekisteröintivirhe"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Kaksivaiheinen todennus on poistettu käytöstä"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Kaksivaiheinen todennus on yksi parhaista tavoista suojata tilisi. Suosittelemme vahvasti pitämään sen käytössä."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL-osoite OpenLP-palvelimellesi (esim. http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Lataaminen epäonnistui"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Tilauksen peruutettu"
+
+#: 
+msgid "Use a different account"
+msgstr "Käytä eri tiliä"
+
+#: 
+msgid "Value is configured"
+msgstr "Arvo on määritetty"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Arvo on asetettu – jätä tyhjäksi säilyttääksesi nykyisen"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Vahvista ja kirjaudu sisään"
+
+#: 
+msgid "Verify Code"
+msgstr "Vahvista koodi"
+
+#: 
+msgid "Verifying"
+msgstr "Vahvistetaan"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Vonage API-avain"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API-salaisuus"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV-määritykset"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV-yhteys"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV-varmuuskopiot eivät ole oikein määritetty. Varmista, että päätepiste, käyttäjätunnus ja salasana on asetettu."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV-päätepisteen URL-osoite vaaditaan."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV-salasana vaaditaan."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV-käyttäjätunnus vaaditaan."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Voit myös käyttää varapalautuskoodeja, jos menetät pääsyn sovellukseesi"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Voit nyt käyttää todennussovellustasi kirjautuaksesi sisään. Jokainen koodi on voimassa 30 sekuntia."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Saat varakoodeja, joita voit käyttää, jos menetät pääsyn sovellukseesi"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "GA4-mittaustunnuksesi (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "MailChimp-tililläsi ei ole määritettyjä kohderyhmiä (listoja)."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Tilisi on nyt suojattu"
+
+#: 
+msgid "Your account is protected"
+msgstr "Tilisi on suojattu"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Todennussovelluksesi on rekisteröity onnistuneesti"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Selaimesi kieliasetukset poikkeavat ChurchCRM-aluesuunnatuksestasi"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "esim. Seurakunnan verkkosivu"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "tilaajat"
+
+#: 
+msgid "API Key is required."
+msgstr "API-avain vaaditaan."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Ei voi muodostaa yhteyttä OpenLP:hen osoitteessa %s. Tarkista palvelimen URL-osoite ja että OpenLP on käynnissä."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Ei voi muodostaa yhteyttä OpenLP:hen osoitteessa %s. Palvelin palautti HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Seurakunnan kartta"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Seurakunnan kartta — Määritys vaaditaan"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Yhdistetty MailChimpiin! Tili: %s (%d tilaajaa)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Yhteys OpenLP-palvelimeen muodostettu onnistuneesti."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Yhdistetty OpenLP:hen! Versio: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Yhdistetty! Tilin saldo: €%.2f. Valmis lähettämään SMS-viestejä."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "MailChimpiin ei voida muodostaa yhteyttä. Tarkista API-avaimesi."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Yhteyden muodostaminen OpenLP-palvelimeen epäonnistui."
+
+#: 
+msgid "Get Directions"
+msgstr "Hae reittiohjeet"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Sisällytä maakoodi, esim. +14155551234 (USA) tai +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Virheellinen \"lähettäjänumero\": \"%s\". Sisällytä maakoodi, esim. +14155551234 (USA) tai +447911123456 (UK)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Virheelliset API-tunnukset. Tarkista API-avaimesi ja API-salaisuutesi."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Virheellinen API-avaimen muoto. Tarkista MailChimp API-avaimesi."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "Virheellinen päätepisteen URL-osoite. Sen täytyy olla täydellinen URL-osoite, joka alkaa https://-alkuisena"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Virheellinen palvelimen URL-muoto."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp-yhteys epäonnistui."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Kartan zoomaustaso"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Puuttuuko perheitä? Päivitä koordinaatit sisällyttääksesi heidät kartalle."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Puuttuvat pakolliset asetukset: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Henkilöllä ei ole perhettä"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Liitännäistä ei löydy tai se ei ole aktiivinen"
+
+#: 
+msgid "Server URL is required."
+msgstr "Palvelimen URL-osoite vaaditaan."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Tämä liitännäinen ei tue yhteystestejä."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Karttaa ei voida näyttää: seurakunnan osoitetta ei ole vielä geokoodattu."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Päivitä seurakunnan osoite asetuksissa."
+
+#: 
+msgid "Username and password are required."
+msgstr "Käyttäjätunnus ja salasana vaaditaan."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Vahvistus epäonnistui: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Vonage-palvelinvirhe. Yritä myöhemmin uudelleen."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV-päätepisteen URL-osoite vaaditaan."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Haluatko varmasti poistaa tämän lupauksen pysyvästi?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Peruuta ja palaa perheen näkymään"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Jos poistat tämän tyypin, poistat myös kaikki ominaisuudet, jotka käyttävät sitä, ja menetät vastaavat ominaisuusmääritykset."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Siirrä lahjoitukset valitulle perheelle"
+
+#: 
+msgid "Calendar not found"
+msgstr "Kalenteria ei löydy"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Jatka koontinäyttöön"
+
+#: 
+msgid "Current Password"
+msgstr "Nykyinen salasana"
+
+#: 
+msgid "Deposit not found"
+msgstr "Talletusta ei löydy"
+
+#: 
+msgid "Group not found"
+msgstr "Ryhmää ei löydy"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "Asetuksille annettu JSON-data on virheellinen"
+
+#: 
+msgid "Password Change Required"
+msgstr "Salasanan vaihto vaaditaan"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Salasanan vaihto onnistui"
+
+#: 
+msgid "Password Changed"
+msgstr "Salasana vaihdettu"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Salasanojen on oltava vähintään"
+
+#: 
+msgid "Property not found"
+msgstr "Ominaisuutta ei löydy"
+
+#: 
+msgid "Set New Password"
+msgstr "Aseta uusi salasana"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Käyttäjän %s salasana on päivitetty."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "JSON-datan uudelleenkoodaus asetuksia varten epäonnistui"
+
+#: 
+msgid "User not found"
+msgstr "Käyttäjää ei löydy"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Sinun täytyy asettaa uusi salasana ennen jatkamista."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Salasanasi on päivitetty."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "valitulla perheellä ei ole koordinaatteja"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Etsi henkilöitä, jotka eivät osallistuneet tapahtumaan"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Jätä tyhjäksi säilyttääksesi nykyisen arvon"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Puuttuvat seurakuntalaiset"
+
+#: 
+msgid "Not enrolled"
+msgstr "Ei rekisteröitynyt"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Edellytä kaikkien käyttäjien rekisteröitymistä kaksivaiheiseen todennukseen"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Valitse haluttu tapahtuma"
+

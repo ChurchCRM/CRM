@@ -12310,3 +12310,34 @@ msgstr "비밀번호가 성공적으로 업데이트되었습니다."
 msgid "selected family has no coordinates"
 msgstr "선택한 가족에 좌표가 없습니다"
 
+#: 
+msgid "2FA"
+msgstr "2단계 인증"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "행사에 참석하지 않은 사람 찾기"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "기존 값을 유지하려면 비워두세요"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "불참자"
+
+#: 
+msgid "Not enrolled"
+msgstr "미등록"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "모든 사용자에게 이중 인증 등록 요구"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "원하는 행사 선택"
+

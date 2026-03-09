@@ -2978,5 +2978,12 @@
     "User not found": "ユーザーが見つかりません",
     "You must set a new password before continuing.": "続行する前に新しいパスワードを設定してください。",
     "Your password has been updated successfully.": "パスワードが正常に更新されました。",
-    "selected family has no coordinates": "選択した家族に座標がありません"
+    "selected family has no coordinates": "選択した家族に座標がありません",
+    "2FA": "二段階認証",
+    "Find people who didn't attend an event": "イベントに参加しなかった人を検索する",
+    "Leave blank to keep existing": "既存の値を保持するには空白のままにしてください",
+    "Missing people": "欠席者",
+    "Not enrolled": "未登録",
+    "Require all users to enroll in two-factor authentication": "すべてのユーザーに二段階認証への登録を要求する",
+    "Select the desired event": "目的のイベントを選択してください"
 }

@@ -2987,5 +2987,12 @@
     "User not found": "பயனர் கிடைக்கவில்லை",
     "You must set a new password before continuing.": "தொடர்வதற்கு முன் புதிய கடவுச்சொல் அமைக்க வேண்டும்.",
     "Your password has been updated successfully.": "உங்கள் கடவுச்சொல் வெற்றிகரமாக புதுப்பிக்கப்பட்டது.",
-    "selected family has no coordinates": "தேர்ந்தெடுத்த குடும்பத்திற்கு ஆயங்கள் இல்லை"
+    "selected family has no coordinates": "தேர்ந்தெடுத்த குடும்பத்திற்கு ஆயங்கள் இல்லை",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "ஒரு நிகழ்வில் கலந்து கொள்ளாதவர்களைக் கண்டறியவும்",
+    "Leave blank to keep existing": "இருக்கும் இடத்தை காலியாக விடவும்",
+    "Missing people": "காணாமல் போனவர்கள்",
+    "Not enrolled": "பதிவு செய்யப்படாதவர்கள்",
+    "Require all users to enroll in two-factor authentication": "அனைத்து பயனர்களும் இரு காரணி அங்கீகாரத்தில் சேர வேண்டும்",
+    "Select the desired event": "விரும்பிய நிகழ்வைத் தேர்ந்தெடுக்கவும்"
 }

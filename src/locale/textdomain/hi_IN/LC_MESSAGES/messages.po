@@ -12273,3 +12273,34 @@ msgstr "आपका पासवर्ड सफलतापूर्वक अ
 msgid "selected family has no coordinates"
 msgstr "चयनित परिवार के पास कोई निर्देशांक नहीं है"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "ऐसे लोगों को खोजें जो किसी कार्यक्रम में उपस्थित नहीं थे"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "मौजूदा मान को रखने के लिए खाली छोड़ें"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "अनुपस्थित लोग"
+
+#: 
+msgid "Not enrolled"
+msgstr "नामांकित नहीं"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "सभी उपयोगकर्ताओं को दो-कारक प्रमाणीकरण में नामांकन की आवश्यकता है"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "वांछित कार्यक्रम चुनें"
+

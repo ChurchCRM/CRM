@@ -12312,3 +12312,34 @@ msgstr "Kata sandi Anda telah berhasil diperbarui."
 msgid "selected family has no coordinates"
 msgstr "keluarga yang dipilih tidak memiliki koordinat"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Temukan orang-orang yang tidak hadir dalam suatu acara"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Biarkan kosong untuk mempertahankan nilai yang ada"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Orang yang tidak hadir"
+
+#: 
+msgid "Not enrolled"
+msgstr "Belum terdaftar"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Haruskan semua pengguna mendaftar di autentikasi dua faktor"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Pilih acara yang diinginkan"
+

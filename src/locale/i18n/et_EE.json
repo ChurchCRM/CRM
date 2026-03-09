@@ -2808,6 +2808,11 @@
     "From Phone Number": "Telefoni Numbrilt",
     "From dashboard.vonage.com": "dashboard.vonage.com'ist",
     "GA4 Measurement ID": "GA4 Mõõtmise ID",
+    "Generate new code": "Genereeri uus kood",
+    "Get Started": "Alusta",
+    "Get your API key from MailChimp: Account Settings > Extras > API Keys": "Hangi oma API võti MailChimpist: Konto seaded > Lisad > API võtmed",
+    "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)": "Valmistage ette oma autentimisrakendus (Google Authenticator, Microsoft Authenticator, Authy jne)",
+    "Help": "Abi",
     "Id": "Id",
     "Image shown when no Gravatar exists for the email address": "Pilt, mida kuvatakse, kui e-posti aadressile pole Gravatari",
     "Important": "Oluline",
@@ -2982,5 +2987,12 @@
     "User not found": "Kasutajat ei leitud",
     "You must set a new password before continuing.": "Enne jätkamist peate seadma uue parooli.",
     "Your password has been updated successfully.": "Teie parool on edukalt uuendatud.",
-    "selected family has no coordinates": "valitud perekonnal pole koordinaate"
+    "selected family has no coordinates": "valitud perekonnal pole koordinaate",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Leia inimesed, kes ei osalenud üritusel",
+    "Leave blank to keep existing": "Jäta tühjaks olemasoleva väärtuse säilitamiseks",
+    "Missing people": "Puuduvad isikud",
+    "Not enrolled": "Registreerimata",
+    "Require all users to enroll in two-factor authentication": "Nõua kõigilt kasutajatelt kahefaktorilise autentimise kasutusele võtmist",
+    "Select the desired event": "Vali soovitud üritus"
 }

@@ -12289,3 +12289,34 @@ msgstr "మీ పాస్‌వర్డ్ విజయవంతంగా న
 msgid "selected family has no coordinates"
 msgstr "ఎంచుకున్న కుటుంబానికి కోఆర్డినేట్‌లు లేవు"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "ఒక కార్యక్రమానికి హాజరు కాని వ్యక్తులను కనుగొనండి"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "ప్రస్తుత విలువను ఉంచడానికి ఖాళీగా వదిలేయండి"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "తప్పిపోయిన వ్యక్తులు"
+
+#: 
+msgid "Not enrolled"
+msgstr "నమోదు కాలేదు"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "అన్ని వినియోగదారులు రెండు-కారకాల ప్రమాణీకరణలో నమోదు చేసుకోవడం అవసరం"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "కోరుకున్న కార్యక్రమాన్ని ఎంచుకోండి"
+

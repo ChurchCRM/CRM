@@ -12319,3 +12319,34 @@ msgstr "Nywila yako imesasishwa kwa mafanikio."
 msgid "selected family has no coordinates"
 msgstr "familia iliyochaguliwa haina kuratibu"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tafuta watu ambao hawakuhudhuria tukio"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Acha wazi ili kuhifadhi thamani iliyopo"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Watu wanaokosekana"
+
+#: 
+msgid "Not enrolled"
+msgstr "Haijasajiliwa"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Lazimisha watumiaji wote kujiandikisha katika uthibitishaji wa hatua mbili"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chagua tukio unalotaka"
+

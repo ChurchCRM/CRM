@@ -2987,5 +2987,12 @@
     "User not found": "Gebruiker nie gevind nie",
     "You must set a new password before continuing.": "U moet 'n nuwe wagwoord instel voordat u kan voortgaan.",
     "Your password has been updated successfully.": "U wagwoord is suksesvol opgedateer.",
-    "selected family has no coordinates": "gekose familie het geen koördinate nie"
+    "selected family has no coordinates": "gekose familie het geen koördinate nie",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Vind mense wat nie 'n geleentheid bygewoon het nie",
+    "Leave blank to keep existing": "Laat leeg om bestaande te behou",
+    "Missing people": "Ontbrekende mense",
+    "Not enrolled": "Nie ingeskryf nie",
+    "Require all users to enroll in two-factor authentication": "Vereis dat alle gebruikers tweefaktor-verifikasie aktiveer",
+    "Select the desired event": "Kies die gewenste geleentheid"
 }

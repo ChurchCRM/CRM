@@ -12327,3 +12327,34 @@ msgstr "Şifreniz başarıyla güncellendi."
 msgid "selected family has no coordinates"
 msgstr "seçilen ailenin koordinatları yok"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Bir etkinliğe katılmayan kişileri bul"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Mevcut değeri korumak için boş bırakın"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Eksik kişiler"
+
+#: 
+msgid "Not enrolled"
+msgstr "Kayıt yok"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Tüm kullanıcıların iki faktörlü kimlik doğrulamaya kaydolmasını zorunlu kılın"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "İstenen etkinliği seçin"
+

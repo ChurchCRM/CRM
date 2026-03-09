@@ -10990,3 +10990,1326 @@ msgstr "Скинути Фільтри"
 msgid "Show only people with photos"
 msgstr "Показати лише людей з фотографіями"
 
+#: 
+msgid "Expected"
+msgstr "Очікувано"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Не вдалося видалити кіоск"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Фінансовий рік."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Група зареєстрованих учнів"
+
+#: 
+msgid "Here"
+msgstr "Тут"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Недійсний тип завдання"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Недійсний ідентифікатор особи"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Реєстрацію кіосків вимкнено"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Кіоск не знайдено"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Прив'яжіть цю подію до групи для функції реєстрації через кіоск. Члени групи відображатимуться на кіоску."
+
+#: 
+msgid "Linked Group"
+msgstr "Прив'язана група"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Реєстрацію нових кіоскових пристроїв наразі вимкнено. Зверніться до системного адміністратора для увімкнення реєстрації кіосків."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Без групи (Виберіть для реєстрації через кіоск)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Ніхто ще не зареєструвався"
+
+#: 
+msgid "Person not found"
+msgstr "Особу не знайдено"
+
+#: 
+msgid "Pickup Request"
+msgstr "Запит на забір"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Будь ласка, якомога швидше пройдіть до класу."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Зведення пожертв за прізвищем сім'ї для кожного фонду за обраний фінансовий рік"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Зареєстровані учні"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Вчитель надіслав це сповіщення"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Цей кіоск найкраще переглядати на планшеті в горизонтальному режимі для оптимального досвіду реєстрації."
+
+#: 
+msgid "Tip"
+msgstr "Порада"
+
+#: 
+msgid "Try Again"
+msgstr "Спробуйте знову"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Найближчі дні народження"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Очікування реєстрації"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Після увімкнення нові кіоскові пристрої можуть реєструватися протягом 30 секунд."
+
+#: 
+msgid "Your child"
+msgstr "Ваша дитина"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "потребує забирання з"
+
+#: 
+msgid "their classroom"
+msgstr "свого класу"
+
+#: 
+msgid "All timezones match"
+msgstr "Усі часові пояси збігаються"
+
+#: 
+msgid "Baseline"
+msgstr "Базовий рівень"
+
+#: 
+msgid "Browser"
+msgstr "Браузер"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Браузер відрізняється від системної конфігурації — дати можуть відображатися неправильно для цього користувача."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Неможливо записати до каталогу встановлення ChurchCRM. Перевірте, чи має веб-сервер права на запис."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Порівнюємо часові пояси..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Цільовий каталог не існує. Переконайтеся, що ChurchCRM встановлено правильно."
+
+#: 
+msgid "Does not match system config"
+msgstr "Не збігається з системною конфігурацією"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Завантажений файл випуску порожній. Це може бути пов'язано з мережевими проблемами або обмеженнями GitHub. Спробуйте пізніше."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Розпакування завершено, але файли оновлення не знайдено. Архів оновлення може бути пошкоджено."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Не вдалося застосувати оновлення. Перевірте журнали сервера для отримання деталей."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Не вдалося створити каталог оновлення. Перевірте права доступу до файлів."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Не вдалося завантажити файл випуску з GitHub після кількох спроб. Перевірте інтернет-з'єднання сервера та повторіть спробу."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Не вдалося розпакувати архів оновлення. Перевірте вільне місце на диску та права доступу до файлів."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Не вдалося відкрити архів оновлення. Завантажений файл може бути пошкоджено."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Не вдалося зберегти завантажений файл випуску. Перевірте вільне місце на диску та права доступу."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Недійсний формат дати в параметрі початку"
+
+#: 
+msgid "Mismatch"
+msgstr "Невідповідність"
+
+#: 
+msgid "Not set"
+msgstr "Не встановлено"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP активний"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Вихідний каталог не існує. Архів оновлення міг бути розпакований неправильно. Перевірте права доступу до файлів та вільне місце на диску."
+
+#: 
+msgid "System Config"
+msgstr "Системна конфігурація"
+
+#: 
+msgid "Timezone Information"
+msgstr "Інформація про часовий пояс"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Виявлено невідповідність часового поясу"
+
+#: 
+msgid "mismatch detected"
+msgstr "невідповідність виявлено"
+
+#: 
+msgid "mismatches detected"
+msgstr "невідповідностей виявлено"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d година"
+msgstr[1] "%d години"
+msgstr[2] "%d годин"
+msgstr[3] "%d годин"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "Про резервні копії WebDAV"
+
+#: 
+msgid "Add Link"
+msgstr "Додати посилання"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Додайте додатковий рівень захисту до свого облікового запису"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Додайте власні зовнішні посилання до навігаційного меню."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Дозволити самопідписані сертифікати"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Виникла помилка під час обробки запиту плагіна"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Ви впевнені, що хочете вимкнути двофакторну автентифікацію? Ваш обліковий запис стане менш захищеним."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "Як частина відновлення, зовнішні резервні копії були вимкнені. Якщо ви бажаєте продовжити автоматичне резервне копіювання, увімкніть знову плагін External Backup у розділі Адмін > Плагіни."
+
+#: 
+msgid "Audiences"
+msgstr "Аудиторії"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Автентифікація не вдалася. Перевірте ім'я користувача та пароль."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Інтервал автоматичного резервного копіювання"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Автоматично резервуйте базу даних ChurchCRM до зовнішнього хмарного сховища через WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Середній рівень кліків"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Середній рівень відкриттів"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Назад до панелі"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Резервну копію створено, але не вдалося скопіювати на віддалений сервер"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Резервне копіювання до WebDAV зараз"
+
+#: 
+msgid "Before You Start"
+msgstr "Перш ніж почати"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Виявлено мовні налаштування браузера"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "Члени CRM, які не підписані"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Кампанії надіслано"
+
+#: 
+msgid "Can't scan?"
+msgstr "Не можете сканувати?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Змінити мовні налаштування"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM підтримує архітектуру плагінів для розширення функціональності."
+
+#: 
+msgid "Cleaned"
+msgstr "Очищено"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Натисніть кнопку нижче, щоб перевірити налаштування з'єднання WebDAV."
+
+#: 
+msgid "Community Plugins"
+msgstr "Плагіни спільноти"
+
+#: 
+msgid "Community plugins"
+msgstr "Плагіни спільноти"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Налаштувати зовнішнє резервне копіювання"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Налаштувати MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Налаштуйте ці параметри у"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Налаштуйте цей плагін для автоматичного резервного копіювання бази даних ChurchCRM до WebDAV-сумісних хмарних сховищ, таких як Nextcloud, ownCloud або будь-який WebDAV-сервер. Резервні копії шифруються під час передачі за допомогою HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Налаштовано"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Підтвердіть кодом із програми автентифікації"
+
+#: 
+msgid "Connected"
+msgstr "Підключено"
+
+#: 
+msgid "Connection failed"
+msgstr "З'єднання не вдалося"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "З'єднання не вдалося з кодом HTTP"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "З'єднання успішне! Кінцева точка WebDAV доступна."
+
+#: 
+msgid "Connection test failed"
+msgstr "Тест з'єднання не вдався"
+
+#: 
+msgid "Core Plugins"
+msgstr "Основні плагіни"
+
+#: 
+msgid "Core plugins"
+msgstr "Основні плагіни"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Створіть резервну копію зараз і завантажте її на ваш WebDAV-сервер."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Створіть аудиторію в MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Власний"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Власні посилання меню"
+
+#: 
+msgid "Default Image Style"
+msgstr "Стиль зображення за замовчуванням"
+
+#: 
+msgid "Default List ID"
+msgstr "Ідентифікатор списку за замовчуванням"
+
+#: 
+msgid "Disable"
+msgstr "Вимкнути"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Вимкнути плагін"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Вимкнути двофакторну автентифікацію"
+
+#: 
+msgid "Dismiss"
+msgstr "Відхилити"
+
+#: 
+msgid "Done"
+msgstr "Готово"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "Формат E.164, наприклад +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Кожен плагін потребує"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Щоразу під час входу вам потрібно буде підтверджувати кодом із програми автентифікації"
+
+#: 
+msgid "Email Addresses"
+msgstr "Електронні адреси"
+
+#: 
+msgid "Enable"
+msgstr "Увімкнути"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Увімкнути плагін External Backup"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Увімкнути плагін"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Увімкнути двофакторну автентифікацію"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Увімкніть плагін External Backup для хмарного сховища WebDAV."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Увімкніть це лише для серверів локальної мережі із самопідписаними SSL-сертифікатами. Вимикає перевірку сертифіката."
+
+#: 
+msgid "Endpoint URL"
+msgstr "URL кінцевої точки"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Введіть 6-значний код із програми автентифікації"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Введіть ім'я користувача та пароль як завжди"
+
+#: 
+msgid "External Backup"
+msgstr "Зовнішнє резервне копіювання"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Зовнішнє резервне копіювання (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Налаштування зовнішнього резервного копіювання"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "Плагін External Backup увімкнено, але не налаштовано."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "Плагін External Backup не налаштовано. Налаштуйте параметри WebDAV у плагіні."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "Плагін External Backup не увімкнено. Увімкніть та налаштуйте його в розділі Управління плагінами."
+
+#: 
+msgid "Failed to create link"
+msgstr "Не вдалося створити посилання"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Не вдалося видалити посилання"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Не вдалося вимкнути плагін"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Не вдалося увімкнути плагін"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Не вдалося отримати деталі плагіна"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Не вдалося отримати список плагінів"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Не вдалося скинути налаштування"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Не вдалося надіслати SMS"
+
+#: 
+msgid "Family Status"
+msgstr "Статус сім'ї"
+
+#: 
+msgid "Family not found"
+msgstr "Сім'ю не знайдено"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Знайдіть у MailChimp: Аудиторія > Налаштування > Назва аудиторії та значення за замовчуванням > Ідентифікатор аудиторії"
+
+#: 
+msgid "From Phone Number"
+msgstr "Номер телефону відправника"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "З dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "Ідентифікатор вимірювання GA4"
+
+#: 
+msgid "Generate new code"
+msgstr "Згенерувати новий код"
+
+#: 
+msgid "Get Started"
+msgstr "Почати"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Отримайте API-ключ у MailChimp: Налаштування облікового запису > Додатково > API-ключі"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Підготуйте програму автентифікації (Google Authenticator, Microsoft Authenticator, Authy тощо)"
+
+#: 
+msgid "Help"
+msgstr "Допомога"
+
+#: 
+msgid "Id"
+msgstr "Ідентифікатор"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Зображення, яке відображається, якщо для адреси електронної пошти немає Gravatar"
+
+#: 
+msgid "Important"
+msgstr "Важливо"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Встановіть плагіни, розмістивши їх у"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Недійсний код. Спробуйте ще раз."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "Недійсний URL кінцевої точки. Повинна бути повна URL-адреса, що починається з https:// (наприклад https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Пристрій кіоску не знайдено"
+
+#: 
+msgid "Last Backup"
+msgstr "Остання резервна копія"
+
+#: 
+msgid "Last Campaign"
+msgstr "Остання кампанія"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Останній підписник"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Остання успішна резервна копія"
+
+#: 
+msgid "Last campaign"
+msgstr "Остання кампанія"
+
+#: 
+msgid "Link Name"
+msgstr "Назва посилання"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Адреса посилання не може містити HTML-теги"
+
+#: 
+msgid "Link address is required"
+msgstr "Адреса посилання обов'язкова"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Посилання має бути дійсною URL-адресою"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Посилання має починатися з http:// або https://"
+
+#: 
+msgid "Link not found"
+msgstr "Посилання не знайдено"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Завантаження кодів відновлення"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "API-ключ MailChimp"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "Панель MailChimp"
+
+#: 
+msgid "Manage Links"
+msgstr "Управління посиланнями"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Управління двофакторною автентифікацією"
+
+#: 
+msgid "Manual Backup"
+msgstr "Ручне резервне копіювання"
+
+#: 
+msgid "Menu Links"
+msgstr "Посилання меню"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Назва меню не може містити HTML-теги"
+
+#: 
+msgid "Menu name is required"
+msgstr "Назва меню обов'язкова"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Назва меню має бути не більше 50 символів"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Назва меню має бути не менше 2 символів"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Має починатися з http:// або https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Потрібне налаштування"
+
+#: 
+msgid "Never"
+msgstr "Ніколи"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Аудиторій не знайдено"
+
+#: 
+msgid "No backups recorded"
+msgstr "Резервних копій не зафіксовано"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Плагінів спільноти не встановлено"
+
+#: 
+msgid "No core plugins found"
+msgstr "Основних плагінів не знайдено"
+
+#: 
+msgid "No settings provided"
+msgstr "Налаштувань не надано"
+
+#: 
+msgid "Not Configured"
+msgstr "Не налаштовано"
+
+#: 
+msgid "Not in CRM"
+msgstr "Немає в CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "Одноразовий код"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Відкрити MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Відкрийте програму автентифікації та скануйте цей QR-код"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "URL сервера OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Необов'язково – потрібно лише якщо автентифікацію OpenLP увімкнено"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Необхідні номер телефону та повідомлення"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Спочатку налаштуйте кінцеву точку, ім'я користувача та пароль."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Налаштуйте параметри WebDAV перед створенням віддаленої резервної копії."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Налаштуйте параметри WebDAV перед тестуванням з'єднання."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Налаштуйте свій API-ключ MailChimp для використання цієї інтеграції."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Введіть назву посилання (2–50 символів)"
+
+#: 
+msgid "Please try again"
+msgstr "Спробуйте ще раз"
+
+#: 
+msgid "Plugin Development"
+msgstr "Розробка плагінів"
+
+#: 
+msgid "Plugin Help"
+msgstr "Довідка плагіна"
+
+#: 
+msgid "Plugin Management"
+msgstr "Управління плагінами"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Налаштування плагіна"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Плагін не можна вимкнути, оскільки інші плагіни залежать від нього"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Плагін не можна увімкнути через вимоги залежностей або версій"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Плагін успішно вимкнено"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Плагін успішно увімкнено"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Плагін не завантажився"
+
+#: 
+msgid "Plugin not found"
+msgstr "Плагін не знайдено"
+
+#: 
+msgid "Plugins"
+msgstr "Плагіни"
+
+#: 
+msgid "Print"
+msgstr "Друк"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Необхідні одержувачі та повідомлення"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Коди відновлення"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Віддалене резервне копіювання не вдалося. Перевірте журнали сервера для отримання деталей."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS надіслано"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Збережіть ці коди відновлення в безпечному місці. Ви можете використовувати їх для доступу до облікового запису, якщо втратите доступ до програми автентифікації."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Сканувати QR-код"
+
+#: 
+msgid "Secure"
+msgstr "Захищено"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Налаштувати автентифікатор"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Налаштування успішно скинуто"
+
+#: 
+msgid "Setup Complete"
+msgstr "Налаштування завершено"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Постачається разом із ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Увійти"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Деякі налаштування не вдалося скинути"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Деякі налаштування не вдалося зберегти"
+
+#: 
+msgid "Subscribers"
+msgstr "Підписники"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Підписники, яких немає в CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "Перевірити з'єднання"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Перевірити з'єднання WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Ці посилання з'являються в меню \"Посилання\" на бічній панелі навігації, коли цей плагін увімкнено."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Ці люди підписані на вашу аудиторію MailChimp, але відсутні в ChurchCRM. Розгляньте можливість додавання їх до бази даних або видалення з MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Ці люди є в ChurchCRM з адресами електронної пошти, але не підписані на цю аудиторію MailChimp. Розгляньте можливість запрошення їх підписатися."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Розширення сторонніх розробників."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Це замінить усі раніше зареєстровані методи двофакторної автентифікації"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Всього кампаній"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Всього підписників"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Помилка реєстрації двофакторної автентифікації"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Двофакторну автентифікацію вимкнено"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Двофакторна автентифікація — один із найкращих способів захистити ваш обліковий запис. Ми наполегливо рекомендуємо залишати її увімкненою."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL вашого сервера OpenLP (наприклад http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Не вдалося завантажити"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Відписатися"
+
+#: 
+msgid "Use a different account"
+msgstr "Використати інший обліковий запис"
+
+#: 
+msgid "Value is configured"
+msgstr "Значення налаштовано"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Значення встановлено – залиште порожнім для збереження поточного"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Підтвердити і увійти"
+
+#: 
+msgid "Verify Code"
+msgstr "Підтвердити код"
+
+#: 
+msgid "Verifying"
+msgstr "Перевірка"
+
+#: 
+msgid "Vonage API Key"
+msgstr "API-ключ Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "API-секрет Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "Конфігурація WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "З'єднання WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "Резервні копії WebDAV налаштовані неправильно. Переконайтеся, що кінцева точка, ім'я користувача та пароль встановлені."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "URL кінцевої точки WebDAV обов'язковий."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "Пароль WebDAV обов'язковий."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "Ім'я користувача WebDAV обов'язкове."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Ви також можете використати резервні коди відновлення, якщо втратите доступ до програми"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Тепер ви можете використовувати програму автентифікації для входу. Кожен код дійсний 30 секунд."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Ви отримаєте резервні коди, які можна використати у разі втрати доступу до програми"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "Ваш ідентифікатор вимірювання GA4 (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "У вашому обліковому записі MailChimp не налаштовано жодної аудиторії (списку)."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Ваш обліковий запис тепер захищено"
+
+#: 
+msgid "Your account is protected"
+msgstr "Ваш обліковий запис захищено"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Вашу програму автентифікації успішно зареєстровано"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Мовні налаштування вашого браузера відрізняються від вашої мови в ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "наприклад, Вебсайт парафії"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "підписники"
+
+#: 
+msgid "API Key is required."
+msgstr "API-ключ обов'язковий."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Неможливо підключитися до OpenLP за адресою %s. Перевірте URL сервера та чи запущено OpenLP."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Неможливо підключитися до OpenLP за адресою %s. Сервер повернув HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Карта парафії"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Карта парафії — Необхідне налаштування"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Підключено до MailChimp! Обліковий запис: %s (%d підписників)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Успішно підключено до сервера OpenLP."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Підключено до OpenLP! Версія: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Підключено! Баланс облікового запису: €%.2f. Готово до надсилання SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Не вдалося підключитися до MailChimp. Перевірте свій API-ключ."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Не вдалося підключитися до сервера OpenLP."
+
+#: 
+msgid "Get Directions"
+msgstr "Прокласти маршрут"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Включіть код країни, наприклад +14155551234 (США) або +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Недійсний \"номер відправника\": \"%s\". Включіть код країни, наприклад +14155551234 (США) або +447911123456 (UK)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Недійсні облікові дані API. Перевірте свій API-ключ та API-секрет."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Недійсний формат API-ключа. Перевірте свій API-ключ MailChimp."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "Недійсний URL кінцевої точки. Повинна бути повна URL-адреса, що починається з https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Недійсний формат URL сервера."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "З'єднання з MailChimp не вдалося."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Рівень масштабування карти"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Відсутні сім'ї? Оновіть координати, щоб включити їх на карту."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Відсутні обов'язкові налаштування: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Особа не має сім'ї"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Плагін не знайдено або не активний"
+
+#: 
+msgid "Server URL is required."
+msgstr "URL сервера обов'язковий."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Цей плагін не підтримує тестування з'єднання."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Неможливо відобразити карту: адресу церкви ще не геокодовано."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Оновіть адресу церкви в Налаштуваннях."
+
+#: 
+msgid "Username and password are required."
+msgstr "Ім'я користувача та пароль обов'язкові."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Перевірка не вдалася: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Помилка сервера Vonage. Спробуйте пізніше."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "URL кінцевої точки WebDAV обов'язковий."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Ви впевнені, що хочете назавжди видалити цей запис про пожертву?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Скасувати і повернутися до перегляду сім'ї"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Якщо ви видалите цей тип, ви також видалите всі властивості, що його використовують, та втратите відповідні призначення властивостей."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Перемістити пожертви до вибраної сім'ї"
+
+#: 
+msgid "Calendar not found"
+msgstr "Календар не знайдено"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Продовжити до панелі"
+
+#: 
+msgid "Current Password"
+msgstr "Поточний пароль"
+
+#: 
+msgid "Deposit not found"
+msgstr "Депозит не знайдено"
+
+#: 
+msgid "Group not found"
+msgstr "Групу не знайдено"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "Для конфігурації надано недійсний JSON"
+
+#: 
+msgid "Password Change Required"
+msgstr "Необхідна зміна пароля"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Пароль успішно змінено"
+
+#: 
+msgid "Password Changed"
+msgstr "Пароль змінено"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Паролі мають бути не менше"
+
+#: 
+msgid "Property not found"
+msgstr "Властивість не знайдено"
+
+#: 
+msgid "Set New Password"
+msgstr "Встановити новий пароль"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Пароль для %s оновлено."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Неможливо повторно закодувати JSON для конфігурації"
+
+#: 
+msgid "User not found"
+msgstr "Користувача не знайдено"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Ви повинні встановити новий пароль перед продовженням."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Ваш пароль успішно оновлено."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "обрана сім'я не має координат"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Знайдіть людей, які не відвідали подію"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Залиште порожнім для збереження поточного значення"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Відсутні парафіяни"
+
+#: 
+msgid "Not enrolled"
+msgstr "Не зареєстровано"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Вимагати від усіх користувачів реєстрації в двофакторній автентифікації"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Виберіть потрібну подію"
+

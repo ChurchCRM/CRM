@@ -12452,3 +12452,34 @@ msgstr "Ditt lösenord har uppdaterats."
 msgid "selected family has no coordinates"
 msgstr "vald familj har inga koordinater"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Hitta personer som inte deltog i ett evenemang"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Lämna tomt för att behålla befintligt värde"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Saknade personer"
+
+#: 
+msgid "Not enrolled"
+msgstr "Inte registrerad"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Kräv att alla användare registrerar sig för tvåfaktorsautentisering"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Välj önskat evenemang"
+

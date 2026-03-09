@@ -12436,3 +12436,34 @@ msgstr "Ihr Passwort wurde erfolgreich aktualisiert."
 msgid "selected family has no coordinates"
 msgstr "ausgewählte Familie hat keine Koordinaten"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Personen finden, die an einer Veranstaltung nicht teilgenommen haben"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Leer lassen, um den bestehenden Wert zu behalten"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Fehlende Personen"
+
+#: 
+msgid "Not enrolled"
+msgstr "Nicht registriert"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Alle Benutzer zur Anmeldung bei der Zwei-Faktor-Authentifizierung verpflichten"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Gewünschte Veranstaltung auswählen"
+

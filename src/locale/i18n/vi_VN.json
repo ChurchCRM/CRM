@@ -2711,6 +2711,9 @@
     "Timezone mismatch detected": "Phát hiện múi giờ không khớp",
     "mismatch detected": "phát hiện không khớp",
     "mismatches detected": "phát hiện không khớp",
+    "%d hour": {
+        "other": "%d giờ"
+    },
     "About WebDAV Backups": "Giới thiệu về sao lưu WebDAV",
     "Add Link": "Thêm liên kết",
     "Add an extra layer of security to your account": "Thêm lớp bảo mật cho tài khoản của bạn",
@@ -2975,5 +2978,12 @@
     "User not found": "Không tìm thấy người dùng",
     "You must set a new password before continuing.": "Bạn phải đặt mật khẩu mới trước khi tiếp tục.",
     "Your password has been updated successfully.": "Mật khẩu của bạn đã được cập nhật thành công.",
-    "selected family has no coordinates": "gia đình đã chọn không có tọa độ"
+    "selected family has no coordinates": "gia đình đã chọn không có tọa độ",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Tìm những người không tham dự sự kiện",
+    "Leave blank to keep existing": "Để trống để giữ nguyên giá trị hiện có",
+    "Missing people": "Người vắng mặt",
+    "Not enrolled": "Chưa đăng ký",
+    "Require all users to enroll in two-factor authentication": "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố",
+    "Select the desired event": "Chọn sự kiện mong muốn"
 }
