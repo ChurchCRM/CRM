@@ -155,7 +155,7 @@ class LocalAuthentication implements IAuthenticationProvider
             } else {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
-                LoggerUtils::getAuthLogger()->debug('User successfully logged in without 2FA', $logCtx);
+                LoggerUtils::getAuthLogger()->info('User successfully logged in without 2FA', $logCtx);
             }
         } elseif ($AuthenticationRequest instanceof LocalTwoFactorTokenRequest && $this->bPendingTwoFactorAuth) {
             if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {

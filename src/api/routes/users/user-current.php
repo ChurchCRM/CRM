@@ -136,7 +136,7 @@ function test2FAEnrollmentCode(Request $request, Response $response, array $args
     if ($result) {
         LoggerUtils::getAuthLogger()->info('Completed 2FA enrollment for user: ' . $user->getUserName());
     } else {
-        LoggerUtils::getAuthLogger()->notice('Unsuccessful 2FA enrollment for user: ' . $user->getUserName());
+        LoggerUtils::getAuthLogger()->warning('Unsuccessful 2FA enrollment for user: ' . $user->getUserName());
     }
 
     return SlimUtils::renderJSON($response, ['IsEnrollmentCodeValid' => $result]);

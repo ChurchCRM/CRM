@@ -116,7 +116,7 @@ class FileSystemUtils
             return false;
         }
 
-        $logger->info('copyFile: copied file', ['src' => $src, 'dst' => $dst]);
+        $logger->debug('copyFile: copied file', ['src' => $src, 'dst' => $dst]);
         return true;
     }
 }
