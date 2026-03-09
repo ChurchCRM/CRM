@@ -111,9 +111,9 @@ class ChurchCRMReleaseManager
     public static function checkForUpdates(): void
     {
         $logger = LoggerUtils::getAppLogger();
-        $logger->info('=== checkForUpdates() CALLED ===');
+        $logger->debug('checkForUpdates() called');
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
-        $logger->info('=== checkForUpdates() COMPLETE - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached ===');
+        $logger->debug('checkForUpdates() complete - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached');
     }
 
     public static function isReleaseCurrent(ChurchCRMRelease $Release): bool
@@ -187,24 +187,24 @@ class ChurchCRMReleaseManager
         $rs = array_values($_SESSION['ChurchCRMReleases']);
         $nextStepRelease = self::getReleaseNextPatch($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (PATCH) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (patch): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
         $nextStepRelease = self::getReleaseNextMinor($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (MINOR) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (minor): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
         $nextStepRelease = self::getReleaseNextMajor($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (MAJOR) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (major): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
 
         if (null === $nextStepRelease) {
             // Check if current version is at or ahead of all available releases (e.g., development version)
             if (!empty($rs) && $currentRelease->compareTo($rs[0]) >= 0) {
-                $logger->info('*** Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
+                $logger->debug('Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
                 return null;
             }
             $logger->warning('Could not identify a suitable upgrade target release.  Current software version: ' . $currentRelease . '.  Highest available release: ' . (!empty($rs) ? $rs[0] : 'None'));

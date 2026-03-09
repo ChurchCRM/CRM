@@ -31,7 +31,7 @@ if (isset($_POST['Submit'])) {
 
     $whyCame = WhyCameQuery::create()->findOneByPerId($iPerson);
     if ($whyCame === null) {
-        LoggerUtils::getAppLogger()->info("person id " . $iPerson . " whycame id null" );
+        LoggerUtils::getAppLogger()->debug("person id " . $iPerson . " whycame id null");
         $whyCame = new WhyCame();
         $whyCame->setPerId($iPerson);
     }
