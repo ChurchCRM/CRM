@@ -2996,5 +2996,12 @@
     "User not found": "Utilizator negăsit",
     "You must set a new password before continuing.": "Trebuie să setați o parolă nouă înainte de a continua.",
     "Your password has been updated successfully.": "Parola dvs. a fost actualizată cu succes.",
-    "selected family has no coordinates": "familia selectată nu are coordonate"
+    "selected family has no coordinates": "familia selectată nu are coordonate",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Găsiți persoanele care nu au participat la un eveniment",
+    "Leave blank to keep existing": "Lăsați necompletat pentru a păstra valoarea existentă",
+    "Missing people": "Persoane absente",
+    "Not enrolled": "Neînscris",
+    "Require all users to enroll in two-factor authentication": "Solicitați tuturor utilizatorilor să se înscrie pentru autentificarea în doi factori",
+    "Select the desired event": "Selectați evenimentul dorit"
 }

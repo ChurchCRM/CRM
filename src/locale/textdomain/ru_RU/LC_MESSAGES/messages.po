@@ -12423,3 +12423,34 @@ msgstr "Ваш пароль успешно обновлён."
 msgid "selected family has no coordinates"
 msgstr "У выбранной семьи нет координат"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Найти людей, которые не посетили мероприятие"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Оставьте пустым для сохранения существующего значения"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Отсутствующие члены"
+
+#: 
+msgid "Not enrolled"
+msgstr "Не зарегистрирован"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Требовать от всех пользователей регистрации в двухфакторной аутентификации"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Выберите нужное мероприятие"
+

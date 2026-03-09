@@ -2987,5 +2987,12 @@
     "User not found": "המשתמש לא נמצא",
     "You must set a new password before continuing.": "עליך להגדיר סיסמה חדשה לפני שתמשיך.",
     "Your password has been updated successfully.": "הסיסמה שלך עודכנה בהצלחה.",
-    "selected family has no coordinates": "למשפחה שנבחרה אין קואורדינטות"
+    "selected family has no coordinates": "למשפחה שנבחרה אין קואורדינטות",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "מצא אנשים שלא השתתפו באירוע",
+    "Leave blank to keep existing": "השאר ריק לשמירה על הקיים",
+    "Missing people": "אנשים חסרים",
+    "Not enrolled": "לא רשום",
+    "Require all users to enroll in two-factor authentication": "דרוש מכל המשתמשים להירשם לאימות דו-שלבי",
+    "Select the desired event": "בחר את האירוע הרצוי"
 }

@@ -2987,5 +2987,12 @@
     "User not found": "Ο χρήστης δεν βρέθηκε",
     "You must set a new password before continuing.": "Πρέπει να ορίσετε νέο κωδικό πρόσβασης πριν συνεχίσετε.",
     "Your password has been updated successfully.": "Ο κωδικός σας ενημερώθηκε με επιτυχία.",
-    "selected family has no coordinates": "η επιλεγμένη οικογένεια δεν έχει συντεταγμένες"
+    "selected family has no coordinates": "η επιλεγμένη οικογένεια δεν έχει συντεταγμένες",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Βρείτε άτομα που δεν παρακολούθησαν μια εκδήλωση",
+    "Leave blank to keep existing": "Αφήστε κενό για διατήρηση της υπάρχουσας τιμής",
+    "Missing people": "Απόντα μέλη",
+    "Not enrolled": "Μη εγγεγραμμένος",
+    "Require all users to enroll in two-factor authentication": "Απαιτήστε από όλους τους χρήστες να εγγραφούν στον έλεγχο ταυτότητας δύο παραγόντων",
+    "Select the desired event": "Επιλέξτε την επιθυμητή εκδήλωση"
 }

@@ -12321,3 +12321,34 @@ msgstr "הסיסמה שלך עודכנה בהצלחה."
 msgid "selected family has no coordinates"
 msgstr "למשפחה שנבחרה אין קואורדינטות"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "מצא אנשים שלא השתתפו באירוע"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "השאר ריק לשמירה על הקיים"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "אנשים חסרים"
+
+#: 
+msgid "Not enrolled"
+msgstr "לא רשום"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "בחר את האירוע הרצוי"
+

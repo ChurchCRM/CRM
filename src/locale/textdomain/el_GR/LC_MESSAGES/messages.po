@@ -12327,3 +12327,34 @@ msgstr "Ο κωδικός σας ενημερώθηκε με επιτυχία."
 msgid "selected family has no coordinates"
 msgstr "η επιλεγμένη οικογένεια δεν έχει συντεταγμένες"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Βρείτε άτομα που δεν παρακολούθησαν μια εκδήλωση"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Αφήστε κενό για διατήρηση της υπάρχουσας τιμής"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Απόντα μέλη"
+
+#: 
+msgid "Not enrolled"
+msgstr "Μη εγγεγραμμένος"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Απαιτήστε από όλους τους χρήστες να εγγραφούν στον έλεγχο ταυτότητας δύο παραγόντων"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Επιλέξτε την επιθυμητή εκδήλωση"
+

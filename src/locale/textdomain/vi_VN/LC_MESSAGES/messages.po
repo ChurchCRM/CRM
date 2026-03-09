@@ -11259,6 +11259,11 @@ msgid "mismatches detected"
 msgstr "phát hiện không khớp"
 
 #: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d giờ"
+
+#: 
 msgid "About WebDAV Backups"
 msgstr "Giới thiệu về sao lưu WebDAV"
 
@@ -12317,4 +12322,35 @@ msgstr "Mật khẩu của bạn đã được cập nhật thành công."
 #: 
 msgid "selected family has no coordinates"
 msgstr "gia đình đã chọn không có tọa độ"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tìm những người không tham dự sự kiện"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Để trống để giữ nguyên giá trị hiện có"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Người vắng mặt"
+
+#: 
+msgid "Not enrolled"
+msgstr "Chưa đăng ký"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chọn sự kiện mong muốn"
 

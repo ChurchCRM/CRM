@@ -7111,6 +7111,20 @@ msgid "Maximum number of Calendar Events"
 msgstr "Número máximo de eventos de calendario"
 
 #: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d mes de edad"
+msgstr[1] "%d meses de edad"
+msgstr[2] "%d meses de edad"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d año de edad"
+msgstr[1] "%d años"
+msgstr[2] "%d años de edad"
+
+#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Archivo Zip de PHP Falta"
 
@@ -10598,6 +10612,27 @@ msgid "Validation pending"
 msgstr "Validación pendiente"
 
 #: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d persona agregada al carrito."
+msgstr[1] "%d Personas añadidas al Carrito."
+msgstr[2] "%d personas agregadas al carrito."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d persona agregada exitosamente a la familia seleccionada."
+msgstr[1] "%d personas añadidas satisfactoriamente a la familia seleccionada."
+msgstr[2] "%d personas agregadas exitosamente a la familia seleccionada."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d persona agregada exitosamente al grupo seleccionado."
+msgstr[1] "%d Personas agregadas exitosamente al grupo seleccionado."
+msgstr[2] "%d personas agregadas exitosamente al grupo seleccionado."
+
+#: 
 msgid "A "
 msgstr "Un "
 
@@ -10918,6 +10953,13 @@ msgid "Must start with / if not empty; no trailing slash. Only letters, numbers,
 msgstr "Debe comenzar con / si no está vacío; sin barra final. Solo se permiten letras, números, guión bajo, guión, punto y /."
 
 #: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d persona"
+msgstr[1] "%d personas"
+msgstr[2] "%d personas"
+
+#: 
 msgid "All Classifications"
 msgstr "Todas las Clasificaciones"
 
@@ -11160,6 +11202,13 @@ msgstr "discrepancia detectada"
 #: 
 msgid "mismatches detected"
 msgstr "discrepancias detectadas"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hora"
+msgstr[1] "%d horas"
+msgstr[2] "%d horas"
 
 #: 
 msgid "About WebDAV Backups"
@@ -12220,4 +12269,35 @@ msgstr "Su contraseña ha sido actualizada correctamente."
 #: 
 msgid "selected family has no coordinates"
 msgstr "la familia seleccionada no tiene coordenadas"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Buscar personas que no asistieron a un evento"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Dejar en blanco para mantener el valor existente"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Personas ausentes"
+
+#: 
+msgid "Not enrolled"
+msgstr "No inscrito"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Requerir que todos los usuarios se inscriban en la autenticación de dos factores"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Seleccionar el evento deseado"
 

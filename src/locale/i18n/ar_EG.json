@@ -2751,6 +2751,14 @@
     "Timezone mismatch detected": "تم اكتشاف عدم تطابق في المنطقة الزمنية",
     "mismatch detected": "تم اكتشاف عدم تطابق",
     "mismatches detected": "تم اكتشاف عدم تطابقات",
+    "%d hour": {
+        "zero": "%d ساعات",
+        "one": "%d ساعة",
+        "two": "%d ساعات",
+        "few": "%d ساعات",
+        "many": "%d ساعات",
+        "other": "%d ساعات"
+    },
     "About WebDAV Backups": "حول نسخ WebDAV الاحتياطية",
     "Add Link": "إضافة رابط",
     "Add an extra layer of security to your account": "أضف طبقة حماية إضافية لحسابك",
@@ -3015,5 +3023,12 @@
     "User not found": "المستخدم غير موجود",
     "You must set a new password before continuing.": "يجب عليك تعيين كلمة مرور جديدة قبل المتابعة.",
     "Your password has been updated successfully.": "تم تحديث كلمة مرورك بنجاح.",
-    "selected family has no coordinates": "الأسرة المختارة ليس لها إحداثيات"
+    "selected family has no coordinates": "الأسرة المختارة ليس لها إحداثيات",
+    "2FA": "التحقق الثنائي",
+    "Find people who didn't attend an event": "ابحث عن الأشخاص الذين لم يحضروا حدثاً",
+    "Leave blank to keep existing": "اتركه فارغاً للاحتفاظ بالقيمة الحالية",
+    "Missing people": "الأشخاص الغائبون",
+    "Not enrolled": "غير مسجل",
+    "Require all users to enroll in two-factor authentication": "طلب من جميع المستخدمين التسجيل في المصادقة الثنائية",
+    "Select the desired event": "حدد الحدث المطلوب"
 }
