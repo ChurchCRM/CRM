@@ -12340,3 +12340,34 @@ msgstr "ይለፍ ቃልዎ በተሳካ ሁኔታ ተዘምኗል።"
 msgid "selected family has no coordinates"
 msgstr "የተመረጠው ቤተሰብ መጋጠሚያዎች የሉትም"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "ወደ ዝግጅቱ ያልሄዱ ሰዎችን ያግኙ"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "ያለውን ለማቆየት ባዶ ይተው"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "የጠፉ ሰዎች"
+
+#: 
+msgid "Not enrolled"
+msgstr "አልተመዘገበም"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "ሁሉም ተጠቃሚዎች ሁለት-ደረጃ ማረጋገጫ እንዲሞሉ ይጠይቁ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "የሚፈለጉትን ዝግጅት ይምረጡ"
+

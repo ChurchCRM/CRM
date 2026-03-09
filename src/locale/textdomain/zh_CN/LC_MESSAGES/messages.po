@@ -12415,3 +12415,34 @@ msgstr "您的密码已成功更新。"
 msgid "selected family has no coordinates"
 msgstr "所选家庭没有坐标"
 
+#: 
+msgid "2FA"
+msgstr "双重验证"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "查找未参加活动的人员"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "留空以保留现有内容"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "缺席人员"
+
+#: 
+msgid "Not enrolled"
+msgstr "未注册"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "要求所有用户注册双重身份验证"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "选择所需活动"
+

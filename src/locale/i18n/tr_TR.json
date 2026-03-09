@@ -2987,5 +2987,12 @@
     "User not found": "Kullanıcı bulunamadı",
     "You must set a new password before continuing.": "Devam etmeden önce yeni bir şifre belirlemelisiniz.",
     "Your password has been updated successfully.": "Şifreniz başarıyla güncellendi.",
-    "selected family has no coordinates": "seçilen ailenin koordinatları yok"
+    "selected family has no coordinates": "seçilen ailenin koordinatları yok",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Bir etkinliğe katılmayan kişileri bul",
+    "Leave blank to keep existing": "Mevcut değeri korumak için boş bırakın",
+    "Missing people": "Eksik kişiler",
+    "Not enrolled": "Kayıt yok",
+    "Require all users to enroll in two-factor authentication": "Tüm kullanıcıların iki faktörlü kimlik doğrulamaya kaydolmasını zorunlu kılın",
+    "Select the desired event": "İstenen etkinliği seçin"
 }

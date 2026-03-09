@@ -12307,3 +12307,34 @@ msgstr "Fjalëkalimi juaj është përditësuar me sukses."
 msgid "selected family has no coordinates"
 msgstr "familja e zgjedhur nuk ka koordinata"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Gjeni njerëzit që nuk morën pjesë në një ngjarje"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Lëreni bosh për të mbajtur ekzistuesin"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Njerëz që mungojnë"
+
+#: 
+msgid "Not enrolled"
+msgstr "Jo i regjistruar"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Kërko që të gjithë përdoruesit të regjistrohen në vërtetimin me dy faktorë"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Zgjidhni ngjarjen e dëshiruar"
+

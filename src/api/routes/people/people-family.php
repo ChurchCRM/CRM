@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
+use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -335,5 +336,48 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);
+    });
+
+    /**
+     * @OA\Post(
+     *     path="/family/{familyId}/geocode",
+     *     summary="Refresh geocoding (latitude/longitude) for a family's address",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Geocoding result with lat/lng",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean"),
+     *             @OA\Property(property="message", type="string"),
+     *             @OA\Property(property="latitude", type="number", format="float"),
+     *             @OA\Property(property="longitude", type="number", format="float")
+     *         )
+     *     ),
+     *     @OA\Response(response=400, description="Family has no street address to geocode")
+     * )
+     */
+    $group->post('/geocode', function (Request $request, Response $response, array $args): Response {
+        $family = $request->getAttribute('family');
+
+        if (empty(trim($family->getAddress1() ?? ''))) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Family has no street address to geocode'),
+                [],
+                400
+            );
+        }
+
+        $familyService = new FamilyService();
+        $success = $familyService->autoGeocodeFamily($family);
+
+        $result = [
+            'success' => $success,
+            'message' => $success ? gettext('Geocoding successful') : gettext('Geocoding failed'),
+            'latitude' => $family->getLatitude(),
+            'longitude' => $family->getLongitude(),
+        ];
+
+        return SlimUtils::renderJSON($response, $result, $success ? 200 : 400);
     });
 })->add(FamilyMiddleware::class);

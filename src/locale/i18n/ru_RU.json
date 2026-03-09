@@ -3005,5 +3005,12 @@
     "User not found": "Пользователь не найден",
     "You must set a new password before continuing.": "Перед продолжением необходимо установить новый пароль.",
     "Your password has been updated successfully.": "Ваш пароль успешно обновлён.",
-    "selected family has no coordinates": "У выбранной семьи нет координат"
+    "selected family has no coordinates": "У выбранной семьи нет координат",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Найти людей, которые не посетили мероприятие",
+    "Leave blank to keep existing": "Оставьте пустым для сохранения существующего значения",
+    "Missing people": "Отсутствующие члены",
+    "Not enrolled": "Не зарегистрирован",
+    "Require all users to enroll in two-factor authentication": "Требовать от всех пользователей регистрации в двухфакторной аутентификации",
+    "Select the desired event": "Выберите нужное мероприятие"
 }

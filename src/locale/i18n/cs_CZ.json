@@ -2662,6 +2662,11 @@
     "of pledges": "ze slibů",
     "records": "záznamy",
     "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Musí začínat / pokud není prázdné; bez koncového lomítka. Povolena jsou pouze písmena, čísla, podtržítko, pomlčka, tečka a /.",
+    "%d person": {
+        "one": "%d osoba",
+        "few": "%d lidí",
+        "other": "%d osob"
+    },
     "All Classifications": "Všechny klasifikace",
     "No people found matching your criteria.": "Nebyly nalezeny žádné osoby odpovídající vašim kritériím.",
     "Photo Directory": "Adresář fotografií",
@@ -2722,6 +2727,11 @@
     "Timezone mismatch detected": "Zjištěna neshoda časového pásma",
     "mismatch detected": "zjištěna neshoda",
     "mismatches detected": "zjištěno neshod",
+    "%d hour": {
+        "one": "%d hodina",
+        "few": "%d hodin",
+        "other": "%d hodin"
+    },
     "About WebDAV Backups": "O zálohách WebDAV",
     "Add Link": "Přidat odkaz",
     "Add an extra layer of security to your account": "Přidejte ke svému účtu další vrstvu zabezpečení",
@@ -2986,5 +2996,12 @@
     "User not found": "Uživatel nebyl nalezen",
     "You must set a new password before continuing.": "Před pokračováním musíte nastavit nové heslo.",
     "Your password has been updated successfully.": "Vaše heslo bylo úspěšně aktualizováno.",
-    "selected family has no coordinates": "vybraná rodina nemá souřadnice"
+    "selected family has no coordinates": "vybraná rodina nemá souřadnice",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Najít lidi, kteří se nezúčastnili akce",
+    "Leave blank to keep existing": "Nechte prázdné pro zachování stávající hodnoty",
+    "Missing people": "Chybějící lidé",
+    "Not enrolled": "Nezaregistrován",
+    "Require all users to enroll in two-factor authentication": "Vyžadovat, aby se všichni uživatelé přihlásili k dvoufaktorovému ověřování",
+    "Select the desired event": "Vyberte požadovanou akci"
 }

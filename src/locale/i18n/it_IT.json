@@ -2987,5 +2987,12 @@
     "User not found": "Utente non trovato",
     "You must set a new password before continuing.": "Devi impostare una nuova password prima di continuare.",
     "Your password has been updated successfully.": "La tua password è stata aggiornata con successo.",
-    "selected family has no coordinates": "la famiglia selezionata non ha coordinate"
+    "selected family has no coordinates": "la famiglia selezionata non ha coordinate",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Trova le persone che non hanno partecipato a un evento",
+    "Leave blank to keep existing": "Lascia vuoto per mantenere il valore esistente",
+    "Missing people": "Persone assenti",
+    "Not enrolled": "Non iscritto",
+    "Require all users to enroll in two-factor authentication": "Richiedi a tutti gli utenti di iscriversi all'autenticazione a due fattori",
+    "Select the desired event": "Seleziona l'evento desiderato"
 }

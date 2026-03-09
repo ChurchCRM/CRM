@@ -142,17 +142,25 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
                    target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
                 <?php $directionsUrl = $family->getDirectionsUrl(); ?>
-                <?php if (!empty($directionsUrl)) : ?>
                 <div class="mt-2">
+                    <?php if (!empty($directionsUrl)) : ?>
                     <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
                        class="btn btn-sm btn-outline-primary">
                         <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
                     </a>
+                    <?php endif; ?>
+                    <?php if (!$family->hasLatitudeAndLongitude()) : ?>
+                    <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
+                            data-family-id="<?= $family->getId() ?>"
+                            title="<?= gettext('Automatically detect coordinates using address') ?>">
+                        <i class="fa-solid fa-location-dot mr-1"></i><?= gettext('Refresh Coordinates') ?>
+                    </button>
+                    <?php endif; ?>
                 </div>
-                <?php endif; ?>
+
                 <!-- Family location map (Leaflet + OpenStreetMap) -->
+                <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
                 <?php if ($family->hasLatitudeAndLongitude()) : ?>
-                    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
                     <div class="border-right border-left mt-2">
                         <div id="map1" style="height: 200px;"></div>
                     </div>
@@ -160,9 +168,9 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                         window.CRM = window.CRM || {};
                         window.CRM.familyMapConfig = <?= json_encode(['lat' => (float) $family->getLatitude(), 'lng' => (float) $family->getLongitude()]) ?>;
                     </script>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
                 <?php endif; ?>
+                <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
             </div>
         </div>
 

@@ -2172,6 +2172,35 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/family/{familyId}/geocode':
+    post:
+      tags:
+        - Families
+      summary: "Refresh geocoding (latitude/longitude) for a family's address"
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Geocoding result with lat/lng'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  message: { type: string }
+                  latitude: { type: number, format: float }
+                  longitude: { type: number, format: float }
+                type: object
+        '400':
+          description: 'Family has no street address to geocode'
+      security:
+        -
+          ApiKeyAuth: []
   /groups/:
     get:
       tags:

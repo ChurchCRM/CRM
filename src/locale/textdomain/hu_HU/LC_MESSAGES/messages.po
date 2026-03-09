@@ -12389,3 +12389,34 @@ msgstr "A jelszava sikeresen frissítve lett."
 msgid "selected family has no coordinates"
 msgstr "A kiválasztott családnak nincs koordinátája"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Olyan személyek keresése, akik nem vettek részt egy eseményen"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Hagyja üresen a meglévő érték megtartásához"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Hiányzó személyek"
+
+#: 
+msgid "Not enrolled"
+msgstr "Nem regisztrált"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Kötelezze az összes felhasználót a kétfaktoros hitelesítés aktiválására"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Válassza ki a kívánt eseményt"
+

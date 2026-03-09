@@ -309,21 +309,29 @@ $bOkToEdit = (
                     <?php
                     // Build map config:
                     // 1. Person's family has stored lat/lng → use coordinates directly (no API call).
+                    //    Use extracted SQL values ($fam_Latitude/$fam_Longitude) — more reliable
+                    //    than $person->getFamily() Propel lazy-load on this legacy page.
                     // 2. Unaffiliated person (bHidePersonAddress=false) with own address → pass
                     //    address string; person-view.js geocodes via Nominatim client-side.
                     $personMapConfig = null;
-                    $personFamily = $person->getFamily();
-                    if ($personFamily !== null && $personFamily->hasLatitudeAndLongitude()) {
-                        $personMapConfig = [
-                            'lat' => (float) $personFamily->getLatitude(),
-                            'lng' => (float) $personFamily->getLongitude(),
-                        ];
+                    $famLat = (float) ($fam_Latitude ?? 0);
+                    $famLng = (float) ($fam_Longitude ?? 0);
+                    $familyHasCoords = !empty($fam_ID) && $famLat !== 0.0 && $famLng !== 0.0;
+                    if ($familyHasCoords) {
+                        $personMapConfig = ['lat' => $famLat, 'lng' => $famLng];
                     } elseif ($fam_ID === '' && !empty($per_Address1) && !SystemConfig::getValue('bHidePersonAddress')) {
                         $personMapConfig = ['address' => $plaintextMailingAddress];
                     }
                     ?>
-                    <?php if ($personMapConfig !== null) : ?>
+                    <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
+                    <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
+                            data-family-id="<?= $fam_ID ?>"
+                            title="<?= gettext('Automatically detect coordinates using address') ?>">
+                        <i class="fa-solid fa-location-dot mr-1"></i><?= gettext('Refresh Coordinates') ?>
+                    </button>
+                    <?php endif; ?>
                     <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+                    <?php if ($personMapConfig !== null) : ?>
                     <div class="mt-2">
                         <div id="person-map" style="height: 180px; border-radius: 4px;"></div>
                     </div>
@@ -331,9 +339,9 @@ $bOkToEdit = (
                         window.CRM = window.CRM || {};
                         window.CRM.personMapConfig = <?= json_encode($personMapConfig) ?>;
                     </script>
+                    <?php endif; ?>
                     <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
                     <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
-                    <?php endif; ?>
                 </div>
                 <?php endif; ?>
 

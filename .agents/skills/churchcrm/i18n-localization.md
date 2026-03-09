@@ -107,6 +107,31 @@ echo strftime('%B %d, %Y', $timestamp);  // Not localized
 
 ---
 
+## i18next Load Order — Always Use $(document).ready() <!-- learned: 2026-03-07 -->
+
+`i18next` is loaded by `Footer.php` at the **end** of the page. Any inline `<script>` block that calls `i18next.t()` before the footer runs will throw `ReferenceError: i18next is not defined`.
+
+**Always wrap i18next calls in `$(document).ready()`:**
+
+```javascript
+// ✅ CORRECT — deferred until Footer.php has loaded i18next
+$(document).ready(function() {
+    window.CRM.settingsPanel.init({
+        title: i18next.t('Map Settings'),
+        // ...
+    });
+});
+
+// ❌ WRONG — i18next not yet loaded at script parse time
+window.CRM.settingsPanel.init({
+    title: i18next.t('Map Settings'),  // ReferenceError!
+});
+```
+
+This applies to all inline scripts in PHP templates that use `i18next.t()`. Webpack entry points are unaffected (they use `DOMContentLoaded`).
+
+---
+
 ## Adding New UI Terms
 
 ### Workflow

@@ -11351,6 +11351,13 @@ msgid "mismatches detected"
 msgstr "wykryto niezgodności"
 
 #: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d godzina"
+msgstr[1] "%d godzin"
+msgstr[2] "%d godzin"
+
+#: 
 msgid "About WebDAV Backups"
 msgstr "O kopiach zapasowych WebDAV"
 
@@ -12409,4 +12416,35 @@ msgstr "Twoje hasło zostało pomyślnie zaktualizowane."
 #: 
 msgid "selected family has no coordinates"
 msgstr "wybrana rodzina nie ma współrzędnych"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Znajdź osoby, które nie uczestniczyły w wydarzeniu"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Pozostaw puste, aby zachować istniejącą wartość"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Nieobecni"
+
+#: 
+msgid "Not enrolled"
+msgstr "Niezarejestrowany"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Wymagaj, aby wszyscy użytkownicy zarejestrowali się do uwierzytelniania dwuskładnikowego"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Wybierz żądane wydarzenie"
 

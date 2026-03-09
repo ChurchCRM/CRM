@@ -2727,6 +2727,11 @@
     "Timezone mismatch detected": "Wykryto niezgodność strefy czasowej",
     "mismatch detected": "wykryto niezgodność",
     "mismatches detected": "wykryto niezgodności",
+    "%d hour": {
+        "one": "%d godzina",
+        "few": "%d godzin",
+        "other": "%d godzin"
+    },
     "About WebDAV Backups": "O kopiach zapasowych WebDAV",
     "Add Link": "Dodaj link",
     "Add an extra layer of security to your account": "Dodaj dodatkową warstwę zabezpieczeń do swojego konta",
@@ -2991,5 +2996,12 @@
     "User not found": "Użytkownik nie został znaleziony",
     "You must set a new password before continuing.": "Musisz ustawić nowe hasło przed kontynuowaniem.",
     "Your password has been updated successfully.": "Twoje hasło zostało pomyślnie zaktualizowane.",
-    "selected family has no coordinates": "wybrana rodzina nie ma współrzędnych"
+    "selected family has no coordinates": "wybrana rodzina nie ma współrzędnych",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Znajdź osoby, które nie uczestniczyły w wydarzeniu",
+    "Leave blank to keep existing": "Pozostaw puste, aby zachować istniejącą wartość",
+    "Missing people": "Nieobecni",
+    "Not enrolled": "Niezarejestrowany",
+    "Require all users to enroll in two-factor authentication": "Wymagaj, aby wszyscy użytkownicy zarejestrowali się do uwierzytelniania dwuskładnikowego",
+    "Select the desired event": "Wybierz żądane wydarzenie"
 }

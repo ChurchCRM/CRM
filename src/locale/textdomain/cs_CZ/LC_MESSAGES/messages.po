@@ -10998,6 +10998,13 @@ msgid "Must start with / if not empty; no trailing slash. Only letters, numbers,
 msgstr "Musí začínat / pokud není prázdné; bez koncového lomítka. Povolena jsou pouze písmena, čísla, podtržítko, pomlčka, tečka a /."
 
 #: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d osoba"
+msgstr[1] "%d lidí"
+msgstr[2] "%d osob"
+
+#: 
 msgid "All Classifications"
 msgstr "Všechny klasifikace"
 
@@ -11240,6 +11247,13 @@ msgstr "zjištěna neshoda"
 #: 
 msgid "mismatches detected"
 msgstr "zjištěno neshod"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hodina"
+msgstr[1] "%d hodin"
+msgstr[2] "%d hodin"
 
 #: 
 msgid "About WebDAV Backups"
@@ -12300,4 +12314,35 @@ msgstr "Vaše heslo bylo úspěšně aktualizováno."
 #: 
 msgid "selected family has no coordinates"
 msgstr "vybraná rodina nemá souřadnice"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Najít lidi, kteří se nezúčastnili akce"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Nechte prázdné pro zachování stávající hodnoty"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Chybějící lidé"
+
+#: 
+msgid "Not enrolled"
+msgstr "Nezaregistrován"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Vyžadovat, aby se všichni uživatelé přihlásili k dvoufaktorovému ověřování"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Vyberte požadovanou akci"
 
