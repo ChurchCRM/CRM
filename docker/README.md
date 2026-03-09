@@ -204,8 +204,7 @@ The `Dockerfile.churchcrm-fpm-php8` installs all of these.
 
 ---
 
-Self-Hosted / Production (FrankenPHP)
----
+### Self-Hosted / Production (FrankenPHP)
 
 The `docker-compose.frankenphp.yaml` and `frankenphp/Caddyfile` files provide a
 reference configuration for deploying ChurchCRM with **FrankenPHP** — an
