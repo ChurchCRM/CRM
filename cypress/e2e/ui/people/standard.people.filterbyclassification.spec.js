@@ -1,4 +1,4 @@
-describe("template spec", () => {
+describe("People classification filters", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
@@ -36,5 +36,17 @@ describe("template spec", () => {
         cy.get(".dt-search input").first().clear();
         cy.wait(300);
         cy.get("#members tbody tr", { timeout: 5000 }).should("have.length.greaterThan", 0);
+    });
+
+    it("applies Classification query filter on initial load", () => {
+        cy.visit("v2/people?Classification=1&familyActiveStatus=all");
+
+        cy.url().should("include", "Classification=1");
+        cy.get(".filter-Classification")
+            .siblings(".select2-container")
+            .find(".select2-selection__rendered")
+            .should("contain", "Member");
+
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
     });
 });
