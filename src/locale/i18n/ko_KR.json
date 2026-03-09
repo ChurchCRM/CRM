@@ -2978,5 +2978,12 @@
     "User not found": "사용자를 찾을 수 없습니다",
     "You must set a new password before continuing.": "계속하기 전에 새 비밀번호를 설정해야 합니다.",
     "Your password has been updated successfully.": "비밀번호가 성공적으로 업데이트되었습니다.",
-    "selected family has no coordinates": "선택한 가족에 좌표가 없습니다"
+    "selected family has no coordinates": "선택한 가족에 좌표가 없습니다",
+    "2FA": "2단계 인증",
+    "Find people who didn't attend an event": "행사에 참석하지 않은 사람 찾기",
+    "Leave blank to keep existing": "기존 값을 유지하려면 비워두세요",
+    "Missing people": "불참자",
+    "Not enrolled": "미등록",
+    "Require all users to enroll in two-factor authentication": "모든 사용자에게 이중 인증 등록 요구",
+    "Select the desired event": "원하는 행사 선택"
 }

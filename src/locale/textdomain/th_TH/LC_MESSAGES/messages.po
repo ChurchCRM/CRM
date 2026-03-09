@@ -12275,3 +12275,34 @@ msgstr "รหัสผ่านของคุณได้รับการอ
 msgid "selected family has no coordinates"
 msgstr "ครอบครัวที่เลือกไม่มีพิกัด"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "ค้นหาผู้ที่ไม่ได้เข้าร่วมกิจกรรม"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "เว้นว่างเพื่อเก็บรักษาข้อมูลที่มีอยู่"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "ผู้ที่ขาดหาย"
+
+#: 
+msgid "Not enrolled"
+msgstr "ยังไม่ลงทะเบียน"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "กำหนดให้ผู้ใช้ทั้งหมดลงทะเบียนการยืนยันตัวตนสองปัจจัย"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "เลือกกิจกรรมที่ต้องการ"
+

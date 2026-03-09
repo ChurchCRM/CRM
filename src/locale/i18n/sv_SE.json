@@ -2987,5 +2987,12 @@
     "User not found": "Användare hittades inte",
     "You must set a new password before continuing.": "Du måste ange ett nytt lösenord innan du fortsätter.",
     "Your password has been updated successfully.": "Ditt lösenord har uppdaterats.",
-    "selected family has no coordinates": "vald familj har inga koordinater"
+    "selected family has no coordinates": "vald familj har inga koordinater",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Hitta personer som inte deltog i ett evenemang",
+    "Leave blank to keep existing": "Lämna tomt för att behålla befintligt värde",
+    "Missing people": "Saknade personer",
+    "Not enrolled": "Inte registrerad",
+    "Require all users to enroll in two-factor authentication": "Kräv att alla användare registrerar sig för tvåfaktorsautentisering",
+    "Select the desired event": "Välj önskat evenemang"
 }

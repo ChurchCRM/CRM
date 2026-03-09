@@ -1681,6 +1681,16 @@
     "Allow system upgrades to release marked as 'pre release' on GitHub": "Permitir actualizaciones de sistema marcadas como 'pre-release' en GitHub",
     "Search Calendar Events": "Buscar eventos de calendario",
     "Maximum number of Calendar Events": "Número máximo de eventos de calendario",
+    "%d month old": {
+        "one": "%d mes de edad",
+        "many": "%d meses de edad",
+        "other": "%d meses de edad"
+    },
+    "%d year old": {
+        "one": "%d año de edad",
+        "many": "%d años",
+        "other": "%d años de edad"
+    },
     "Missing PHP ZipArchive": "Archivo Zip de PHP Falta",
     "Add Results to Cart": "Agregar resultados al carrito",
     "Remove Results from Cart": "Eliminar resultados del carrito",
@@ -2548,6 +2558,21 @@
     "Encryption key for storing 2FA secret keys in the database": "Clave de cifrado para almacenar claves secretas 2FA en la base de datos",
     "Two-Factor Authentication": "Autenticación de dos factores",
     "Validation pending": "Validación pendiente",
+    "%d Person added to the Cart.": {
+        "one": "%d persona agregada al carrito.",
+        "many": "%d Personas añadidas al Carrito.",
+        "other": "%d personas agregadas al carrito."
+    },
+    "%d Person successfully added to selected Family.": {
+        "one": "%d persona agregada exitosamente a la familia seleccionada.",
+        "many": "%d personas añadidas satisfactoriamente a la familia seleccionada.",
+        "other": "%d personas agregadas exitosamente a la familia seleccionada."
+    },
+    "%d Person successfully added to selected Group.": {
+        "one": "%d persona agregada exitosamente al grupo seleccionado.",
+        "many": "%d Personas agregadas exitosamente al grupo seleccionado.",
+        "other": "%d personas agregadas exitosamente al grupo seleccionado."
+    },
     "A ": "Un ",
     "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.": "Los cambios de AGREGAR, Eliminar y ordenamiento son inmediatos. Los cambios de nombre y descripción deben guardarse haciendo clic en 'Guardar cambios'.",
     "Are you sure you want to delete": "¿Está seguro de que desea eliminar?",
@@ -2627,6 +2652,11 @@
     "of pledges": "de promesas",
     "records": "registros",
     "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed.": "Debe comenzar con / si no está vacío; sin barra final. Solo se permiten letras, números, guión bajo, guión, punto y /.",
+    "%d person": {
+        "one": "%d persona",
+        "many": "%d personas",
+        "other": "%d personas"
+    },
     "All Classifications": "Todas las Clasificaciones",
     "No people found matching your criteria.": "No se encontraron personas que coincidan con sus criterios.",
     "Photo Directory": "Directorio de Fotos",
@@ -2687,6 +2717,11 @@
     "Timezone mismatch detected": "Se detectó discrepancia en la zona horaria",
     "mismatch detected": "discrepancia detectada",
     "mismatches detected": "discrepancias detectadas",
+    "%d hour": {
+        "one": "%d hora",
+        "many": "%d horas",
+        "other": "%d horas"
+    },
     "About WebDAV Backups": "Acerca de las copias de seguridad WebDAV",
     "Add Link": "Agregar enlace",
     "Add an extra layer of security to your account": "Agregue una capa adicional de seguridad a su cuenta",
@@ -2951,5 +2986,12 @@
     "User not found": "Usuario no encontrado",
     "You must set a new password before continuing.": "Debe establecer una nueva contraseña antes de continuar.",
     "Your password has been updated successfully.": "Su contraseña ha sido actualizada correctamente.",
-    "selected family has no coordinates": "la familia seleccionada no tiene coordenadas"
+    "selected family has no coordinates": "la familia seleccionada no tiene coordenadas",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Buscar personas que no asistieron a un evento",
+    "Leave blank to keep existing": "Dejar en blanco para mantener el valor existente",
+    "Missing people": "Personas ausentes",
+    "Not enrolled": "No inscrito",
+    "Require all users to enroll in two-factor authentication": "Requerir que todos los usuarios se inscriban en la autenticación de dos factores",
+    "Select the desired event": "Seleccionar el evento deseado"
 }

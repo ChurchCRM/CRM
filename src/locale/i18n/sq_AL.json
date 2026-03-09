@@ -2987,5 +2987,12 @@
     "User not found": "Përdoruesi nuk u gjet",
     "You must set a new password before continuing.": "Duhet të vendosni një fjalëkalim të ri para se të vazhdoni.",
     "Your password has been updated successfully.": "Fjalëkalimi juaj është përditësuar me sukses.",
-    "selected family has no coordinates": "familja e zgjedhur nuk ka koordinata"
+    "selected family has no coordinates": "familja e zgjedhur nuk ka koordinata",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Gjeni njerëzit që nuk morën pjesë në një ngjarje",
+    "Leave blank to keep existing": "Lëreni bosh për të mbajtur ekzistuesin",
+    "Missing people": "Njerëz që mungojnë",
+    "Not enrolled": "Jo i regjistruar",
+    "Require all users to enroll in two-factor authentication": "Kërko që të gjithë përdoruesit të regjistrohen në vërtetimin me dy faktorë",
+    "Select the desired event": "Zgjidhni ngjarjen e dëshiruar"
 }

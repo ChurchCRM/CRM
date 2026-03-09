@@ -12328,3 +12328,34 @@ msgstr "U wagwoord is suksesvol opgedateer."
 msgid "selected family has no coordinates"
 msgstr "gekose familie het geen koördinate nie"
 
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Vind mense wat nie 'n geleentheid bygewoon het nie"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Laat leeg om bestaande te behou"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Ontbrekende mense"
+
+#: 
+msgid "Not enrolled"
+msgstr "Nie ingeskryf nie"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Vereis dat alle gebruikers tweefaktor-verifikasie aktiveer"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Kies die gewenste geleentheid"
+

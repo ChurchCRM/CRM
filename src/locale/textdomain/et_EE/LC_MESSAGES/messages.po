@@ -11607,6 +11607,26 @@ msgid "GA4 Measurement ID"
 msgstr "GA4 Mõõtmise ID"
 
 #: 
+msgid "Generate new code"
+msgstr "Genereeri uus kood"
+
+#: 
+msgid "Get Started"
+msgstr "Alusta"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Hangi oma API võti MailChimpist: Konto seaded > Lisad > API võtmed"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Valmistage ette oma autentimisrakendus (Google Authenticator, Microsoft Authenticator, Authy jne)"
+
+#: 
+msgid "Help"
+msgstr "Abi"
+
+#: 
 msgid "Id"
 msgstr "Id"
 
@@ -12305,4 +12325,35 @@ msgstr "Teie parool on edukalt uuendatud."
 #: 
 msgid "selected family has no coordinates"
 msgstr "valitud perekonnal pole koordinaate"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Leia inimesed, kes ei osalenud üritusel"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Jäta tühjaks olemasoleva väärtuse säilitamiseks"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Puuduvad isikud"
+
+#: 
+msgid "Not enrolled"
+msgstr "Registreerimata"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Nõua kõigilt kasutajatelt kahefaktorilise autentimise kasutusele võtmist"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Vali soovitud üritus"
 

@@ -2987,5 +2987,12 @@
     "User not found": "Mtumiaji hakupatikana",
     "You must set a new password before continuing.": "Lazima uweke nywila mpya kabla ya kuendelea.",
     "Your password has been updated successfully.": "Nywila yako imesasishwa kwa mafanikio.",
-    "selected family has no coordinates": "familia iliyochaguliwa haina kuratibu"
+    "selected family has no coordinates": "familia iliyochaguliwa haina kuratibu",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Tafuta watu ambao hawakuhudhuria tukio",
+    "Leave blank to keep existing": "Acha wazi ili kuhifadhi thamani iliyopo",
+    "Missing people": "Watu wanaokosekana",
+    "Not enrolled": "Haijasajiliwa",
+    "Require all users to enroll in two-factor authentication": "Lazimisha watumiaji wote kujiandikisha katika uthibitishaji wa hatua mbili",
+    "Select the desired event": "Chagua tukio unalotaka"
 }

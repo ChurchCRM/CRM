@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥90%):** 36
-**Good Locales (75-89%):** 3
+**Complete Locales (≥90%):** 39
+**Good Locales (75-89%):** 0
 **Needs Work (<75%):** 6
 **WIP Candidates (>5%, not yet added):** 6
 
@@ -10,45 +10,45 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `af` | Afrikaans | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `am` | Amharic | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `de` | German | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `tr` | Turkish | 2962 | 99.76% | 🟢 Complete | ✅ Yes |
-| `ar` | Arabic | 2961 | 99.73% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 2961 | 99.73% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 2961 | 99.73% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 2960 | 99.7% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 2957 | 99.6% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 2953 | 99.46% | 🟢 Complete | ✅ Yes |
-| `fi` | Finnish | 2641 | 88.95% | 🟡 Good | ✅ Yes |
-| `nb` | Norwegian Bokmål | 2641 | 88.95% | 🟡 Good | ✅ Yes |
-| `uk` | Ukrainian | 2633 | 88.68% | 🟡 Good | ✅ Yes |
+| `af` | Afrikaans | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `sq` | Albanian | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `fi` | Finnish | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `de` | German | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `hi` | Hindi | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `id` | Indonesian | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian Bokmål | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 2969 | 100% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 2967 | 99.93% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 2961 | 99.73% | 🟢 Complete | ✅ Yes |
 | `sl` | Slovenian | 82 | 2.76% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 80 | 2.69% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 74 | 2.49% | 🟠 Needs Work | ❌ No |
@@ -64,8 +64,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥90%):** 36 locales ready for production
-- **🟡 Good (75-89%):** 3 locales with solid translation coverage
+- **🟢 Complete (≥90%):** 39 locales ready for production
+- **🟡 Good (75-89%):** 0 locales with solid translation coverage
 - **🟠 Needs Work (<75%):** 0 locales requiring translator attention
 - **🔴 Incomplete:** 0 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)

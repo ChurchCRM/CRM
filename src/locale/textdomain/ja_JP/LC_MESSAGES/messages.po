@@ -12264,3 +12264,34 @@ msgstr "パスワードが正常に更新されました。"
 msgid "selected family has no coordinates"
 msgstr "選択した家族に座標がありません"
 
+#: 
+msgid "2FA"
+msgstr "二段階認証"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "イベントに参加しなかった人を検索する"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "既存の値を保持するには空白のままにしてください"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "欠席者"
+
+#: 
+msgid "Not enrolled"
+msgstr "未登録"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "すべてのユーザーに二段階認証への登録を要求する"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "目的のイベントを選択してください"
+

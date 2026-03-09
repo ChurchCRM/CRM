@@ -2987,5 +2987,12 @@
     "User not found": "A felhasználó nem található",
     "You must set a new password before continuing.": "Folytatás előtt be kell állítania egy új jelszót.",
     "Your password has been updated successfully.": "A jelszava sikeresen frissítve lett.",
-    "selected family has no coordinates": "A kiválasztott családnak nincs koordinátája"
+    "selected family has no coordinates": "A kiválasztott családnak nincs koordinátája",
+    "2FA": "2FA",
+    "Find people who didn't attend an event": "Olyan személyek keresése, akik nem vettek részt egy eseményen",
+    "Leave blank to keep existing": "Hagyja üresen a meglévő érték megtartásához",
+    "Missing people": "Hiányzó személyek",
+    "Not enrolled": "Nem regisztrált",
+    "Require all users to enroll in two-factor authentication": "Kötelezze az összes felhasználót a kétfaktoros hitelesítés aktiválására",
+    "Select the desired event": "Válassza ki a kívánt eseményt"
 }
