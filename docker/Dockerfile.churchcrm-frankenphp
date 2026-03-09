@@ -52,7 +52,7 @@ RUN install-php-extensions \
     zip
 
 # Configure PHP settings
-RUN cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
     sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2G/g' $PHP_INI_DIR/php.ini && \
     sed -i 's/^post_max_size.*$/post_max_size = 2G/g' $PHP_INI_DIR/php.ini && \
     sed -i 's/^memory_limit.*$/memory_limit = 256M/g' $PHP_INI_DIR/php.ini && \
