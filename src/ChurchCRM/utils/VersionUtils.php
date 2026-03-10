@@ -12,6 +12,16 @@ class VersionUtils
     private const COMPOSER_NAME = 'churchcrm/crm';
     private static ?string $cachedVersion = null;
 
+    /**
+     * Reset the in-process static version cache.
+     * Call this after a code upgrade so that the next call to getInstalledVersion()
+     * re-reads from the Composer autoloader with the newly-deployed package data.
+     */
+    public static function resetCache(): void
+    {
+        self::$cachedVersion = null;
+    }
+
     public static function getInstalledVersion(): string
     {
         // Return cached version if already fetched in this request
