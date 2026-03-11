@@ -27,6 +27,21 @@ describe("Standard People", () => {
     });
 
 
+    it("Listing all persons with classification url filter", () => {
+        // Classification 1 = Member; visiting with ?Classification=1 should pre-select the
+        // Classification filter and show only Members (regression test for the Dashboard link bug)
+        cy.visit("v2/people?Classification=1");
+        cy.get("#members tbody tr").should("be.visible");
+
+        // A known Member should appear in the filtered results
+        cy.get(".dt-search input").first().type("Mathew");
+        cy.get("#members tbody").contains("Mathew").should("exist");
+
+        // A known Regular Attender (cls_ID=2) should NOT appear when filtered to Members
+        cy.get(".dt-search input").first().clear().type("Tony Campbell");
+        cy.get("#members tbody").should("not.contain.text", "Regular Attender");
+    });
+
    it("Listing all persons with gender url filter", () => {
         cy.visit("v2/people?Gender=0");
         cy.wait(500);
