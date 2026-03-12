@@ -196,7 +196,10 @@ class SundaySchoolService
      */
     public function getKidsFullDetails(string $groupId): array
     {
-        // Get all the groups
+        // Get all the students in the group with their family details.
+        // Use LEFT JOIN for family_fam so students without a family record are
+        // still included. Do not filter by fam_DateDeactivated so students from
+        // deactivated families who remain enrolled in the class are shown.
         $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender,
                 kid.per_FirstName firstName, kid.per_Email kidEmail, kid.per_LastName LastName,
                   kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear,
@@ -209,16 +212,19 @@ class SundaySchoolService
                 mom.per_ID momId, mom.per_FirstName momFirstName, mom.per_LastName momLastName, mom.per_CellPhone momCellPhone, mom.per_Email momEmail,
                 fam.fam_Email famEmail, fam.fam_Address1 Address1, fam.fam_Address2 Address2, fam.fam_City city, fam.fam_State state, fam.fam_Zip zip
 
-              from list_lst lst, person_per kid, family_fam fam
-                left Join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 and ( dad.per_fmr_ID = 1 or dad.per_fmr_ID = 2)
-                left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and (mom.per_fmr_ID = 1 or mom.per_fmr_ID = 2),`group_grp` grp, `person2group2role_p2g2r` person_grp
+              from person_per kid
+                inner join `person2group2role_p2g2r` person_grp on person_grp.p2g2r_per_ID = kid.per_ID
+                inner join `group_grp` grp on grp.grp_ID = person_grp.p2g2r_grp_ID
+                inner join list_lst lst on lst.lst_ID = grp.grp_RoleListID and lst.lst_OptionID = person_grp.p2g2r_rle_ID
+                left join family_fam fam on kid.per_fam_id = fam.fam_ID
+                left join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 and (dad.per_fmr_ID = 1 or dad.per_fmr_ID = 2)
+                left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and (mom.per_fmr_ID = 1 or mom.per_fmr_ID = 2)
 
-            where kid.per_fam_id = fam.fam_ID and grp.grp_ID = ' . $groupId . "
-              and fam.fam_DateDeactivated is null
-              and grp_Type = 4 and grp.grp_ID = person_grp.p2g2r_grp_ID  and person_grp.p2g2r_per_ID = kid.per_ID
-              and lst.lst_OptionID = person_grp.p2g2r_rle_ID and lst.lst_ID = grp.grp_RoleListID and lst.lst_OptionName = 'Student'
+            where grp.grp_ID = ' . (int) $groupId . "
+              and grp.grp_Type = 4
+              and lst.lst_OptionName = 'Student'
 
-            order by grp.grp_Name, fam.fam_Name";
+            order by grp.grp_Name, kid.per_LastName, kid.per_FirstName";
 
         $rsKids = FunctionsUtils::runQuery($sSQL);
         $kids = [];
