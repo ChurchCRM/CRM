@@ -275,7 +275,7 @@
   },
   "current": {
     "versions": ["7.4.1"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.0.3-fund-category.sql"],
     "dbVersion": "7.4.2"
   }
 }
