@@ -67,7 +67,7 @@ foreach ($thisClassChildren as $child) {
 }
 
 foreach ($rsTeachers as $teacher) {
-    $TeachersEmails[] = $teacher['per_Email'];
+    $TeachersEmails[] = $teacher->getEmail();
 }
 
 require_once __DIR__ . '/../Include/Header.php';
@@ -182,15 +182,15 @@ require_once __DIR__ . '/../Include/Header.php';
         <!-- Begin user profile -->
         <div class="card card-primary text-center user-profile-2">
           <div class="user-profile-inner">
-            <h4 class="white mb-3"><?= $teacher['per_FirstName'] . ' ' . $teacher['per_LastName'] ?></h4>
+            <h4 class="white mb-3"><?= $teacher->getFirstName() . ' ' . $teacher->getLastName() ?></h4>
             <img data-image-entity-type="person" 
-                 data-image-entity-id="<?= $teacher['per_ID'] ?>"
+                 data-image-entity-id="<?= $teacher->getId() ?>"
                  class="photo-small" />
             <div class="btn-group btn-group-sm d-flex" role="group">
-                <a href="mailto:<?= $teacher['per_Email'] ?>" type="button" class="btn btn-success">
+                <a href="mailto:<?= $teacher->getEmail() ?>" type="button" class="btn btn-success">
                     <i class="fa-solid fa-envelope"></i>
                 </a>
-                <a href="../PersonView.php?PersonID=<?= $teacher['per_ID'] ?>" type="button" class="btn btn-primary">
+                <a href="../PersonView.php?PersonID=<?= $teacher->getId() ?>" type="button" class="btn btn-primary">
                     <i class="fa-solid fa-user"></i>
                 </a>
             </div>

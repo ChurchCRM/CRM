@@ -4,8 +4,10 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
-use ChurchCRM\Utils\FunctionsUtils;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 class SundaySchoolService
@@ -73,24 +75,36 @@ class SundaySchoolService
     }
 
     /**
-     * @return \non-empty-array<\string, \string>[]
+     * @return Person[]
      */
     public function getClassByRole(string $groupId, string $role): array
     {
-        $sql = 'select person_per.*
-              from person_per,group_grp grp, person2group2role_p2g2r person_grp, list_lst lst
-            where grp.grp_ID = ' . $groupId . "
-              and grp_Type = 4
-              and grp.grp_ID = person_grp.p2g2r_grp_ID
-              and person_grp.p2g2r_per_ID = per_ID
-              and lst.lst_ID = grp.grp_RoleListID
-              and lst.lst_OptionID = person_grp.p2g2r_rle_ID
-              and lst.lst_OptionName = '" . $role . "'
-            order by per_FirstName";
-        $rsMembers = FunctionsUtils::runQuery($sql);
+        $group = GroupQuery::create()
+            ->filterByType(4)
+            ->findPk((int) $groupId);
+
+        if ($group === null) {
+            return [];
+        }
+
+        $roleOption = ListOptionQuery::create()
+            ->filterById($group->getRoleListId())
+            ->filterByOptionName($role)
+            ->findOne();
+
+        if ($roleOption === null) {
+            return [];
+        }
+
+        $memberships = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId((int) $groupId)
+            ->filterByRoleId($roleOption->getOptionId())
+            ->joinWithPerson()
+            ->find();
+
         $members = [];
-        while ($row = mysqli_fetch_assoc($rsMembers)) {
-            $members[] = $row;
+        foreach ($memberships as $membership) {
+            $members[] = $membership->getPerson();
         }
 
         return $members;
@@ -104,7 +118,7 @@ class SundaySchoolService
         $unknown = 0;
 
         foreach ($kids as $kid) {
-            switch ($kid['per_Gender']) {
+            switch ($kid->getGender()) {
                 case 1:
                     $boys++;
                     break;
@@ -136,7 +150,7 @@ class SundaySchoolService
         $Dec = 0;
 
         foreach ($kids as $kid) {
-            switch ($kid['per_BirthMonth']) {
+            switch ($kid->getBirthMonth()) {
                 case 1:
                     $Jan++;
                     break;
@@ -192,91 +206,135 @@ class SundaySchoolService
     }
 
     /**
-     * @return \non-empty-array<\string, \string>[]
+     * @return array<int, array<string, mixed>>
      */
     public function getKidsFullDetails(string $groupId): array
     {
-        // Get all the students in the group with their family details.
-        // Use LEFT JOIN for family_fam so students without a family record are
-        // still included. Do not filter by fam_DateDeactivated so students from
-        // deactivated families who remain enrolled in the class are shown.
-        $sSQL = 'select grp.grp_Name sundayschoolClass, kid.per_ID kidId, kid.per_Gender kidGender,
-                kid.per_FirstName firstName, kid.per_Email kidEmail, kid.per_LastName LastName,
-                  kid.per_BirthDay birthDay,  kid.per_BirthMonth birthMonth, kid.per_BirthYear birthYear,
-                  kid.per_CellPhone mobilePhone, kid.per_Flags flags,
+        $group = GroupQuery::create()
+            ->filterByType(4)
+            ->findPk((int) $groupId);
 
-                fam.fam_HomePhone homePhone,fam.fam_id,
+        if ($group === null) {
+            return [];
+        }
 
-                dad.per_ID dadId, dad.per_FirstName dadFirstName, dad.per_LastName dadLastName,
-                  dad.per_CellPhone dadCellPhone, dad.per_Email dadEmail,
-                mom.per_ID momId, mom.per_FirstName momFirstName, mom.per_LastName momLastName, mom.per_CellPhone momCellPhone, mom.per_Email momEmail,
-                fam.fam_Email famEmail, fam.fam_Address1 Address1, fam.fam_Address2 Address2, fam.fam_City city, fam.fam_State state, fam.fam_Zip zip
+        $roleOption = ListOptionQuery::create()
+            ->filterById($group->getRoleListId())
+            ->filterByOptionName('Student')
+            ->findOne();
 
-              from person_per kid
-                inner join `person2group2role_p2g2r` person_grp on person_grp.p2g2r_per_ID = kid.per_ID
-                inner join `group_grp` grp on grp.grp_ID = person_grp.p2g2r_grp_ID
-                inner join list_lst lst on lst.lst_ID = grp.grp_RoleListID and lst.lst_OptionID = person_grp.p2g2r_rle_ID
-                left join family_fam fam on kid.per_fam_id = fam.fam_ID
-                left join person_per dad on fam.fam_id = dad.per_fam_id and dad.per_Gender = 1 and (dad.per_fmr_ID = 1 or dad.per_fmr_ID = 2)
-                left join person_per mom on fam.fam_id = mom.per_fam_id and mom.per_Gender = 2 and (mom.per_fmr_ID = 1 or mom.per_fmr_ID = 2)
+        if ($roleOption === null) {
+            return [];
+        }
 
-            where grp.grp_ID = ' . (int) $groupId . "
-              and grp.grp_Type = 4
-              and lst.lst_OptionName = 'Student'
+        $memberships = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId((int) $groupId)
+            ->filterByRoleId($roleOption->getOptionId())
+            ->joinWithPerson()
+            ->orderBy(PersonTableMap::COL_PER_LASTNAME)
+            ->_and()
+            ->orderBy(PersonTableMap::COL_PER_FIRSTNAME)
+            ->find();
 
-            order by grp.grp_Name, kid.per_LastName, kid.per_FirstName";
-
-        $rsKids = FunctionsUtils::runQuery($sSQL);
         $kids = [];
-        while ($row = mysqli_fetch_assoc($rsKids)) {
-            $kids[] = $row;
+        foreach ($memberships as $membership) {
+            $kid = $membership->getPerson();
+            $fam = $kid->getFamily();
+
+            $dad = null;
+            $mom = null;
+            if ($fam !== null) {
+                foreach ($fam->getAdults() as $adult) {
+                    if ($adult->getGender() === 1 && $dad === null) {
+                        $dad = $adult;
+                    } elseif ($adult->getGender() === 2 && $mom === null) {
+                        $mom = $adult;
+                    }
+                }
+            }
+
+            $kids[] = [
+                'sundayschoolClass' => $group->getName(),
+                'kidId'       => $kid->getId(),
+                'kidGender'   => $kid->getGender(),
+                'firstName'   => $kid->getFirstName(),
+                'kidEmail'    => $kid->getEmail(),
+                'LastName'    => $kid->getLastName(),
+                'birthDay'    => $kid->getBirthDay(),
+                'birthMonth'  => $kid->getBirthMonth(),
+                'birthYear'   => $kid->getBirthYear(),
+                'mobilePhone' => $kid->getCellPhone(),
+                'flags'       => $kid->getFlags(),
+                'homePhone'   => $fam?->getHomePhone(),
+                'fam_id'      => $fam?->getId(),
+                'dadId'       => $dad?->getId(),
+                'dadFirstName'=> $dad?->getFirstName(),
+                'dadLastName' => $dad?->getLastName(),
+                'dadCellPhone'=> $dad?->getCellPhone(),
+                'dadEmail'    => $dad?->getEmail(),
+                'momId'       => $mom?->getId(),
+                'momFirstName'=> $mom?->getFirstName(),
+                'momLastName' => $mom?->getLastName(),
+                'momCellPhone'=> $mom?->getCellPhone(),
+                'momEmail'    => $mom?->getEmail(),
+                'famEmail'    => $fam?->getEmail(),
+                'Address1'    => $fam?->getAddress1(),
+                'Address2'    => $fam?->getAddress2(),
+                'city'        => $fam?->getCity(),
+                'state'       => $fam?->getState(),
+                'zip'         => $fam?->getZip(),
+            ];
         }
 
         return $kids;
     }
 
     /**
-     * @return non-empty-array[]
+     * @return array<int, array<string, mixed>>
      */
     public function getKidsWithoutClasses(): array
     {
-        $sSQL = <<<'SQL'
-select
-    kid.per_ID kidId,
-    kid.per_FirstName firstName,
-    kid.per_LastName LastName,
-    kid.per_BirthDay birthDay,
-    kid.per_BirthMonth birthMonth,
-    kid.per_BirthYear birthYear,
-    kid.per_CellPhone mobilePhone,
-    kid.per_Flags flags,
-    fam.fam_Address1 Address1,
-    fam.fam_Address2 Address2,
-    fam.fam_City city,
-    fam.fam_State state,
-    fam.fam_Zip zip
-from person_per kid, family_fam fam
-where
-    per_fam_id = fam.fam_ID and
-    per_cls_ID in (1,2) and
-    kid.per_fmr_ID = 3 and
-    fam.fam_DateDeactivated is null and
-    per_ID not in
-        (
-            select
-                per_id
-            from person_per,group_grp grp, person2group2role_p2g2r person_grp
-            where
-                person_grp.p2g2r_rle_ID = 2 and
-                grp_Type = 4 and
-                grp.grp_ID = person_grp.p2g2r_grp_ID and
-                person_grp.p2g2r_per_ID = kid.per_ID
-        )
-SQL;
-        $rsKidsMissing = FunctionsUtils::runQuery($sSQL);
+        // Get all person IDs already enrolled as students (role ID 2) in any Sunday School group
+        $enrolledPersonIds = Person2group2roleP2g2rQuery::create()
+            ->useGroupQuery()
+                ->filterByType(4)
+            ->endUse()
+            ->filterByRoleId(2)
+            ->select(['PersonId'])
+            ->find()
+            ->toArray();
+
+        // Find children (family role = Child) with active classification in non-deactivated families
+        // who are not enrolled in any Sunday School class
+        $kidsQuery = PersonQuery::create()
+            ->filterByClsId([1, 2], Criteria::IN)
+            ->filterByFmrId(3)
+            ->useFamilyQuery()
+                ->filterByDateDeactivated(null, Criteria::ISNULL)
+            ->endUse();
+
+        if (!empty($enrolledPersonIds)) {
+            $kidsQuery->filterById($enrolledPersonIds, Criteria::NOT_IN);
+        }
+
         $kids = [];
-        while ($row = mysqli_fetch_array($rsKidsMissing)) {
-            $kids[] = $row;
+        foreach ($kidsQuery->find() as $kid) {
+            $fam = $kid->getFamily();
+            $kids[] = [
+                'kidId'       => $kid->getId(),
+                'firstName'   => $kid->getFirstName(),
+                'LastName'    => $kid->getLastName(),
+                'birthDay'    => $kid->getBirthDay(),
+                'birthMonth'  => $kid->getBirthMonth(),
+                'birthYear'   => $kid->getBirthYear(),
+                'mobilePhone' => $kid->getCellPhone(),
+                'flags'       => $kid->getFlags(),
+                'Address1'    => $fam?->getAddress1(),
+                'Address2'    => $fam?->getAddress2(),
+                'city'        => $fam?->getCity(),
+                'state'       => $fam?->getState(),
+                'zip'         => $fam?->getZip(),
+            ];
         }
 
         return $kids;
