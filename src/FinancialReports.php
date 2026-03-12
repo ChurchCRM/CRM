@@ -242,18 +242,35 @@ if ($sReportType == '') {
 
     // Filter by Account
     if (in_array($sReportType, ['Pledge Summary', 'Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) {
-        $sSQL = 'SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name';
+        $sSQL = 'SELECT fun_ID, fun_Name, fun_Active, fun_Category FROM donationfund_fun ORDER BY fun_Category, fun_Active, fun_Name';
         $rsFunds = RunQuery($sSQL); ?>
 
         <tr><td class="LabelColumn"><?= gettext('Filter by Fund') ?>:<br></td>
         <td><select name="funds[]" multiple id="fundsList" class="width-100pct">
         <?php
+        $currentCategory = null;
         while ($aRow = mysqli_fetch_array($rsFunds)) {
             extract($aRow);
+            $category = $fun_Category ?? '';
+            if ($category !== $currentCategory) {
+                if ($currentCategory !== null) {
+                    echo '</optgroup>';
+                }
+                if ($category !== '') {
+                    echo '<optgroup label="' . InputUtils::escapeHTML($category) . '">';
+                } else {
+                    echo '<optgroup label="' . gettext('Uncategorized') . '">';
+                }
+                $currentCategory = $category;
+            }
             echo '<option value="' . (int)$fun_ID . '">' . InputUtils::escapeHTML($fun_Name);
             if ($fun_Active == 'false') {
                 echo ' &nbsp; INACTIVE';
             }
+            echo '</option>';
+        }
+        if ($currentCategory !== null) {
+            echo '</optgroup>';
         } ?>
         </select></td></tr>
          <tr>
