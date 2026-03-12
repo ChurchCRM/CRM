@@ -204,7 +204,7 @@ class EventService
         while ($current <= $rangeEnd) {
             $year = (int) $current->format('Y');
             $month = (int) $current->format('m');
-            $daysInMonth = (int) (new \DateTime(sprintf('%04d-%02d-01', $year, $month)))->format('t');
+            $daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
             $actualDay = min($dom, $daysInMonth);
 
             $occurrence = new \DateTime(sprintf('%04d-%02d-%02d', $year, $month, $actualDay));
@@ -224,28 +224,45 @@ class EventService
      * Generate yearly occurrence dates within a range.
      *
      * One event per year, on the specified month-day (e.g. "04-12" for April 12).
+     * Dates that don't exist in a given year (e.g. Feb 29 in a non-leap year) are
+     * silently skipped.
      *
      * @param string    $doy        Month-day string in MM-DD format
      * @param \DateTime $rangeStart Inclusive start
      * @param \DateTime $rangeEnd   Inclusive end
      *
      * @return \DateTime[]
+     *
+     * @throws \InvalidArgumentException if $doy is not in MM-DD format
      */
     private function generateYearlyDates(string $doy, \DateTime $rangeStart, \DateTime $rangeEnd): array
     {
         $dates = [];
         $parts = explode('-', $doy);
-        if (count($parts) < 2) {
-            return $dates;
+        if (count($parts) !== 2 || !is_numeric($parts[0]) || !is_numeric($parts[1])) {
+            throw new \InvalidArgumentException(
+                gettext('Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)')
+            );
         }
 
         $month = (int) $parts[0];
         $day = (int) $parts[1];
 
+        if ($month < 1 || $month > 12 || $day < 1 || $day > 31) {
+            throw new \InvalidArgumentException(
+                gettext('Invalid yearly recurrence format; expected MM-DD (e.g. 04-12)')
+            );
+        }
+
         $startYear = (int) $rangeStart->format('Y');
         $endYear = (int) $rangeEnd->format('Y');
 
         for ($year = $startYear; $year <= $endYear; $year++) {
+            // Skip dates that don't exist in this year (e.g. Feb 29 in a non-leap year)
+            if (!checkdate($month, $day, $year)) {
+                continue;
+            }
+
             $occurrence = new \DateTime(sprintf('%04d-%02d-%02d', $year, $month, $day));
             $occurrence->setTime(0, 0, 0);
 

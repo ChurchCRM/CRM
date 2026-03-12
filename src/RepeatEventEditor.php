@@ -21,12 +21,7 @@ if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
 $sPageTitle = gettext('Create Repeat Events');
 
 // Pre-select an event type if passed via GET
-$tyid = 0;
-if (array_key_exists('EN_tyid', $_GET)) {
-    $tyid = InputUtils::filterInt($_GET['EN_tyid']);
-} elseif (array_key_exists('EN_tyid', $_POST)) {
-    $tyid = InputUtils::filterInt($_POST['EN_tyid']);
-}
+$tyid = InputUtils::filterInt($_GET['EN_tyid'] ?? $_POST['EN_tyid'] ?? 0);
 
 $successCount = 0;
 $iErrors = 0;
@@ -141,16 +136,20 @@ if ($iTypeID > 0) {
         }
         $sDefRecurType = $eventType->getDefRecurType() ?: 'weekly';
         $sDefRecurDOW = $eventType->getDefRecurDow() ?: 'Sunday';
-        $sDefRecurDOM = $eventType->getDefRecurDom();
-        $iDefRecurDOM = !empty($sDefRecurDOM) ? (int) $sDefRecurDOM : 1;
+        $rawDOM = $eventType->getDefRecurDom();
+        $iDefRecurDOM = ($rawDOM !== null && $rawDOM !== '') ? (int) $rawDOM : 1;
         $defDOY = $eventType->getDefRecurDoy();
         if ($defDOY instanceof \DateTime) {
             $sDefRecurDOY = $defDOY->format('m-d');
         } elseif (!empty($defDOY)) {
-            // Extract MM-DD from stored date string
+            // Extract MM-DD from stored date string (expected format: YYYY-MM-DD or MM-DD)
             $parts = explode('-', (string) $defDOY);
             if (count($parts) >= 3) {
+                // YYYY-MM-DD → use parts[1]-parts[2]
                 $sDefRecurDOY = $parts[1] . '-' . $parts[2];
+            } elseif (count($parts) === 2) {
+                // Already in MM-DD format
+                $sDefRecurDOY = (string) $defDOY;
             }
         }
     }
@@ -221,7 +220,8 @@ require_once __DIR__ . '/Include/Header.php';
                                     <select name="EventTypeID" id="EventTypeID" class="form-control" required>
                                         <option value=""><?= gettext('Select an event type…') ?></option>
                                         <?php foreach ($allEventTypes as $et): ?>
-                                            <option value="<?= InputUtils::escapeAttribute($et->getId()) ?>">
+                                            <option value="<?= InputUtils::escapeAttribute($et->getId()) ?>"
+                                                    data-name="<?= InputUtils::escapeAttribute($et->getName()) ?>">
                                                 <?= InputUtils::escapeHTML($et->getName()) ?>
                                             </option>
                                         <?php endforeach; ?>
@@ -450,7 +450,24 @@ $(document).ready(function () {
     $('input[name="RecurType"]').on('change', updateRecurrenceInputs);
     updateRecurrenceInputs();
 
-    // Validate end time >= start time
+    // Auto-populate title when an event type is selected from the dropdown
+    $('#EventTypeID').on('change', function () {
+        var selectedName = $(this).find(':selected').data('name') || '';
+        var $titleInput = $('#EventTitle');
+        // Only auto-fill if the title is still empty or was auto-filled previously
+        if ($titleInput.val() === '' || $titleInput.data('auto-filled')) {
+            $titleInput.val(selectedName);
+            $titleInput.data('auto-filled', selectedName !== '');
+        }
+    });
+
+    // Track manual edits to the title so auto-fill doesn't clobber them
+    $('#EventTitle').on('input', function () {
+        $(this).data('auto-filled', false);
+    });
+
+    // Validate end time > start time (HH:MM 24-hour string comparison works for same-day events;
+    // overnight events spanning midnight are not supported by this form)
     $('form[name="RepeatEventsForm"]').on('submit', function (e) {
         var startTime = $('#StartTime').val();
         var endTime = $('#EndTime').val();

@@ -28,8 +28,9 @@ describe("API Repeat Events", () => {
             if (!eventTypeId) this.skip();
 
             const today = new Date();
+            const TWENTY_EIGHT_DAYS_MS = 28 * 24 * 60 * 60 * 1000;
             const startDate = today.toISOString().slice(0, 10);
-            const endDate = new Date(today.getTime() + 28 * 24 * 60 * 60 * 1000)
+            const endDate = new Date(today.getTime() + TWENTY_EIGHT_DAYS_MS)
                 .toISOString()
                 .slice(0, 10);
 

@@ -371,7 +371,7 @@ function createRepeatEvents(Request $request, Response $response, array $args): 
             'recurDOY'       => $input['RecurDOY'] ?? null,
             'rangeStart'     => $input['RangeStart'],
             'rangeEnd'       => $input['RangeEnd'],
-            'pinnedCalendars' => $input['PinnedCalendars'] ?? [],
+            'pinnedCalendars' => array_map('intval', is_array($input['PinnedCalendars'] ?? null) ? $input['PinnedCalendars'] : []),
             'linkedGroupId'  => (int) ($input['LinkedGroupId'] ?? 0),
             'inactive'       => (int) ($input['Inactive'] ?? 0),
         ]);
