@@ -5,30 +5,12 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Ensure variables have defaults
-$saved = $saved ?? false;
-$validationError = $validationError ?? '';
+// Ensure variables have defaults (sGlobalMessage and sGlobalMessageClass are
+// consumed by Footer.php via showGlobalMessage() → window.CRM.notify())
+$sGlobalMessage      = $sGlobalMessage ?? '';
+$sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
+$validationError     = $validationError ?? '';
 ?>
-
-<?php if ($saved): ?>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    <i class="fa-solid fa-check-circle mr-2"></i>
-    <?= gettext('Church information saved successfully.') ?>
-</div>
-<?php endif; ?>
-
-<?php if (!empty($validationError)): ?>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    <i class="fa-solid fa-exclamation-circle mr-2"></i>
-    <?= InputUtils::escapeHTML($validationError) ?>
-</div>
-<?php endif; ?>
 
 <div class="row">
     <div class="col-12">

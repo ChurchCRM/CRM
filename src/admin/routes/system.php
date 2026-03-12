@@ -8,7 +8,9 @@ use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
+use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -219,8 +221,14 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/church-info', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-        $queryParams = $request->getQueryParams();
-        $saved = isset($queryParams['saved']) && $queryParams['saved'] === '1';
+        // Read flash message from session (set by POST handler)
+        $sGlobalMessage      = '';
+        $sGlobalMessageClass = 'success';
+        if (isset($_SESSION['sGlobalMessage'])) {
+            $sGlobalMessage      = $_SESSION['sGlobalMessage'];
+            $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
+            unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
+        }
 
         $churchInfo = [
             'sChurchName'      => SystemConfig::getValue('sChurchName'),
@@ -238,70 +246,110 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         ];
 
         $pageArgs = [
-            'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('Church Information'),
-            'churchInfo' => $churchInfo,
-            'countries'  => Countries::getNames(),
-            'timezones'  => timezone_identifiers_list(),
-            'saved'      => $saved,
+            'sRootPath'          => SystemURLs::getRootPath(),
+            'sPageTitle'         => gettext('Church Information'),
+            'churchInfo'         => $churchInfo,
+            'countries'          => Countries::getNames(),
+            'timezones'          => timezone_identifiers_list(),
+            'sGlobalMessage'     => $sGlobalMessage,
+            'sGlobalMessageClass' => $sGlobalMessageClass,
         ];
 
         return $renderer->render($response, 'church-info.php', $pageArgs);
     });
 
     $group->post('/church-info', function (Request $request, Response $response): Response {
+        // Body fields have already been sanitized by InputSanitizationMiddleware
         $body = $request->getParsedBody();
 
         $churchName = trim($body['sChurchName'] ?? '');
 
         if (empty($churchName)) {
-            // Re-render with validation error
+            // Re-render with validation error via the system-wide notify
             $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
             $churchInfo = [
                 'sChurchName'      => $churchName,
-                'sChurchAddress'   => trim($body['sChurchAddress'] ?? ''),
-                'sChurchCity'      => trim($body['sChurchCity'] ?? ''),
-                'sChurchState'     => trim($body['sChurchState'] ?? ''),
-                'sChurchZip'       => trim($body['sChurchZip'] ?? ''),
-                'sChurchCountry'   => trim($body['sChurchCountry'] ?? ''),
-                'sChurchPhone'     => trim($body['sChurchPhone'] ?? ''),
-                'sChurchEmail'     => trim($body['sChurchEmail'] ?? ''),
-                'iChurchLatitude'  => trim($body['iChurchLatitude'] ?? ''),
-                'iChurchLongitude' => trim($body['iChurchLongitude'] ?? ''),
-                'sTimeZone'        => trim($body['sTimeZone'] ?? ''),
-                'sChurchWebSite'   => trim($body['sChurchWebSite'] ?? ''),
+                'sChurchAddress'   => $body['sChurchAddress'] ?? '',
+                'sChurchCity'      => $body['sChurchCity'] ?? '',
+                'sChurchState'     => $body['sChurchState'] ?? '',
+                'sChurchZip'       => $body['sChurchZip'] ?? '',
+                'sChurchCountry'   => $body['sChurchCountry'] ?? '',
+                'sChurchPhone'     => $body['sChurchPhone'] ?? '',
+                'sChurchEmail'     => $body['sChurchEmail'] ?? '',
+                'iChurchLatitude'  => $body['iChurchLatitude'] ?? '',
+                'iChurchLongitude' => $body['iChurchLongitude'] ?? '',
+                'sTimeZone'        => $body['sTimeZone'] ?? '',
+                'sChurchWebSite'   => $body['sChurchWebSite'] ?? '',
             ];
 
             $pageArgs = [
-                'sRootPath'       => SystemURLs::getRootPath(),
-                'sPageTitle'      => gettext('Church Information'),
-                'churchInfo'      => $churchInfo,
-                'countries'       => Countries::getNames(),
-                'timezones'       => timezone_identifiers_list(),
-                'saved'           => false,
-                'validationError' => gettext('Church name is required.'),
+                'sRootPath'          => SystemURLs::getRootPath(),
+                'sPageTitle'         => gettext('Church Information'),
+                'churchInfo'         => $churchInfo,
+                'countries'          => Countries::getNames(),
+                'timezones'          => timezone_identifiers_list(),
+                'sGlobalMessage'     => gettext('Church name is required.'),
+                'sGlobalMessageClass' => 'danger',
+                'validationError'    => gettext('Church name is required.'),
             ];
 
             return $renderer->render($response->withStatus(422), 'church-info.php', $pageArgs);
         }
 
+        $address   = $body['sChurchAddress'] ?? '';
+        $city      = $body['sChurchCity'] ?? '';
+        $state     = $body['sChurchState'] ?? '';
+        $zip       = $body['sChurchZip'] ?? '';
+        $country   = $body['sChurchCountry'] ?? '';
+        $latitude  = trim($body['iChurchLatitude'] ?? '');
+        $longitude = trim($body['iChurchLongitude'] ?? '');
+
+        // Auto-geocode using GeoUtils when coordinates are absent but an address exists.
+        // GeoUtils uses Nominatim (OpenStreetMap) — no API key required.
+        if (($latitude === '' || $longitude === '') && $address !== '') {
+            $coords = GeoUtils::getLatLong($address, $city, $state, $zip, $country);
+            if ($coords['Latitude'] !== 0.0 || $coords['Longitude'] !== 0.0) {
+                $latitude  = (string) $coords['Latitude'];
+                $longitude = (string) $coords['Longitude'];
+            }
+            // If geocoding fails (returns 0,0), leave coordinates empty so the user
+            // can enter them manually without being overwritten with an invalid value.
+        }
+
         SystemConfig::setValue('sChurchName', $churchName);
-        SystemConfig::setValue('sChurchAddress', trim($body['sChurchAddress'] ?? ''));
-        SystemConfig::setValue('sChurchCity', trim($body['sChurchCity'] ?? ''));
-        SystemConfig::setValue('sChurchState', trim($body['sChurchState'] ?? ''));
-        SystemConfig::setValue('sChurchZip', trim($body['sChurchZip'] ?? ''));
-        SystemConfig::setValue('sChurchCountry', trim($body['sChurchCountry'] ?? ''));
-        SystemConfig::setValue('sChurchPhone', trim($body['sChurchPhone'] ?? ''));
-        SystemConfig::setValue('sChurchEmail', trim($body['sChurchEmail'] ?? ''));
-        SystemConfig::setValue('iChurchLatitude', trim($body['iChurchLatitude'] ?? ''));
-        SystemConfig::setValue('iChurchLongitude', trim($body['iChurchLongitude'] ?? ''));
-        SystemConfig::setValue('sTimeZone', trim($body['sTimeZone'] ?? ''));
-        SystemConfig::setValue('sChurchWebSite', trim($body['sChurchWebSite'] ?? ''));
+        SystemConfig::setValue('sChurchAddress', $address);
+        SystemConfig::setValue('sChurchCity', $city);
+        SystemConfig::setValue('sChurchState', $state);
+        SystemConfig::setValue('sChurchZip', $zip);
+        SystemConfig::setValue('sChurchCountry', $country);
+        SystemConfig::setValue('sChurchPhone', $body['sChurchPhone'] ?? '');
+        SystemConfig::setValue('sChurchEmail', $body['sChurchEmail'] ?? '');
+        SystemConfig::setValue('iChurchLatitude', $latitude);
+        SystemConfig::setValue('iChurchLongitude', $longitude);
+        SystemConfig::setValue('sTimeZone', $body['sTimeZone'] ?? '');
+        SystemConfig::setValue('sChurchWebSite', $body['sChurchWebSite'] ?? '');
+
+        // Flash success via the system-wide notify
+        $_SESSION['sGlobalMessage']     = gettext('Church information saved successfully.');
+        $_SESSION['sGlobalMessageClass'] = 'success';
 
         return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/church-info?saved=1')
+            ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/church-info')
             ->withStatus(303);
-    });
+    })->add(new InputSanitizationMiddleware([
+        'sChurchName'      => 'text',
+        'sChurchAddress'   => 'text',
+        'sChurchCity'      => 'text',
+        'sChurchState'     => 'text',
+        'sChurchZip'       => 'text',
+        'sChurchCountry'   => 'text',
+        'sChurchPhone'     => 'text',
+        'sChurchEmail'     => 'text',
+        'iChurchLatitude'  => 'text',
+        'iChurchLongitude' => 'text',
+        'sTimeZone'        => 'text',
+        'sChurchWebSite'   => 'text',
+    ]));
 
 });
