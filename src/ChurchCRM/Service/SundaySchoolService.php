@@ -254,7 +254,6 @@ class SundaySchoolService
             }
 
             $kids[] = [
-                'sundayschoolClass' => $group->getName(),
                 'kidId'       => $kid->getId(),
                 'kidGender'   => $kid->getGender(),
                 'firstName'   => $kid->getFirstName(),
@@ -277,7 +276,6 @@ class SundaySchoolService
                 'momLastName' => $mom?->getLastName(),
                 'momCellPhone'=> $mom?->getCellPhone(),
                 'momEmail'    => $mom?->getEmail(),
-                'famEmail'    => $fam?->getEmail(),
                 'Address1'    => $fam?->getAddress1(),
                 'Address2'    => $fam?->getAddress2(),
                 'city'        => $fam?->getCity(),
