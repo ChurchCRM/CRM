@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\data\Countries;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -212,6 +213,95 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         ];
 
         return $renderer->render($response, 'upgrade.php', $pageArgs);
+    });
+
+    // Church Information page
+    $group->get('/church-info', function (Request $request, Response $response): Response {
+        $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        $queryParams = $request->getQueryParams();
+        $saved = isset($queryParams['saved']) && $queryParams['saved'] === '1';
+
+        $churchInfo = [
+            'sChurchName'      => SystemConfig::getValue('sChurchName'),
+            'sChurchAddress'   => SystemConfig::getValue('sChurchAddress'),
+            'sChurchCity'      => SystemConfig::getValue('sChurchCity'),
+            'sChurchState'     => SystemConfig::getValue('sChurchState'),
+            'sChurchZip'       => SystemConfig::getValue('sChurchZip'),
+            'sChurchCountry'   => SystemConfig::getValue('sChurchCountry'),
+            'sChurchPhone'     => SystemConfig::getValue('sChurchPhone'),
+            'sChurchEmail'     => SystemConfig::getValue('sChurchEmail'),
+            'iChurchLatitude'  => SystemConfig::getValue('iChurchLatitude'),
+            'iChurchLongitude' => SystemConfig::getValue('iChurchLongitude'),
+            'sTimeZone'        => SystemConfig::getValue('sTimeZone'),
+            'sChurchWebSite'   => SystemConfig::getValue('sChurchWebSite'),
+        ];
+
+        $pageArgs = [
+            'sRootPath'  => SystemURLs::getRootPath(),
+            'sPageTitle' => gettext('Church Information'),
+            'churchInfo' => $churchInfo,
+            'countries'  => Countries::getNames(),
+            'timezones'  => timezone_identifiers_list(),
+            'saved'      => $saved,
+        ];
+
+        return $renderer->render($response, 'church-info.php', $pageArgs);
+    });
+
+    $group->post('/church-info', function (Request $request, Response $response): Response {
+        $body = $request->getParsedBody();
+
+        $churchName = trim($body['sChurchName'] ?? '');
+
+        if (empty($churchName)) {
+            // Re-render with validation error
+            $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+            $churchInfo = [
+                'sChurchName'      => $churchName,
+                'sChurchAddress'   => trim($body['sChurchAddress'] ?? ''),
+                'sChurchCity'      => trim($body['sChurchCity'] ?? ''),
+                'sChurchState'     => trim($body['sChurchState'] ?? ''),
+                'sChurchZip'       => trim($body['sChurchZip'] ?? ''),
+                'sChurchCountry'   => trim($body['sChurchCountry'] ?? ''),
+                'sChurchPhone'     => trim($body['sChurchPhone'] ?? ''),
+                'sChurchEmail'     => trim($body['sChurchEmail'] ?? ''),
+                'iChurchLatitude'  => trim($body['iChurchLatitude'] ?? ''),
+                'iChurchLongitude' => trim($body['iChurchLongitude'] ?? ''),
+                'sTimeZone'        => trim($body['sTimeZone'] ?? ''),
+                'sChurchWebSite'   => trim($body['sChurchWebSite'] ?? ''),
+            ];
+
+            $pageArgs = [
+                'sRootPath'       => SystemURLs::getRootPath(),
+                'sPageTitle'      => gettext('Church Information'),
+                'churchInfo'      => $churchInfo,
+                'countries'       => Countries::getNames(),
+                'timezones'       => timezone_identifiers_list(),
+                'saved'           => false,
+                'validationError' => gettext('Church name is required.'),
+            ];
+
+            return $renderer->render($response->withStatus(422), 'church-info.php', $pageArgs);
+        }
+
+        SystemConfig::setValue('sChurchName', $churchName);
+        SystemConfig::setValue('sChurchAddress', trim($body['sChurchAddress'] ?? ''));
+        SystemConfig::setValue('sChurchCity', trim($body['sChurchCity'] ?? ''));
+        SystemConfig::setValue('sChurchState', trim($body['sChurchState'] ?? ''));
+        SystemConfig::setValue('sChurchZip', trim($body['sChurchZip'] ?? ''));
+        SystemConfig::setValue('sChurchCountry', trim($body['sChurchCountry'] ?? ''));
+        SystemConfig::setValue('sChurchPhone', trim($body['sChurchPhone'] ?? ''));
+        SystemConfig::setValue('sChurchEmail', trim($body['sChurchEmail'] ?? ''));
+        SystemConfig::setValue('iChurchLatitude', trim($body['iChurchLatitude'] ?? ''));
+        SystemConfig::setValue('iChurchLongitude', trim($body['iChurchLongitude'] ?? ''));
+        SystemConfig::setValue('sTimeZone', trim($body['sTimeZone'] ?? ''));
+        SystemConfig::setValue('sChurchWebSite', trim($body['sChurchWebSite'] ?? ''));
+
+        return $response
+            ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/church-info?saved=1')
+            ->withStatus(303);
     });
 
 });
