@@ -292,12 +292,25 @@ class SundaySchoolService
      */
     public function getKidsWithoutClasses(): array
     {
-        // Get all person IDs already enrolled as students (role ID 2) in any Sunday School group
+        // Resolve the "Student" group role ID dynamically to avoid relying on a hardcoded value.
+        // This mirrors the approach used in other methods in this service.
+        $studentRoleId = ListOptionQuery::create()
+            ->filterByListId(3)
+            ->filterByOptionName('Student')
+            ->select('OptionId')
+            ->findOne();
+
+        // Fallback to the legacy hardcoded value if the "Student" role cannot be resolved.
+        if ($studentRoleId === null) {
+            $studentRoleId = 2;
+        }
+
+        // Get all person IDs already enrolled as students in any Sunday School group
         $enrolledPersonIds = Person2group2roleP2g2rQuery::create()
             ->useGroupQuery()
                 ->filterByType(4)
             ->endUse()
-            ->filterByRoleId(2)
+            ->filterByRoleId($studentRoleId)
             ->select(['PersonId'])
             ->find()
             ->toArray();
