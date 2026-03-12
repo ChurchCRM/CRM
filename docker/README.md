@@ -7,6 +7,7 @@ This directory contains two types of Docker configurations:
 |---------------|----------|
 | `docker-compose.yaml` | Development and testing (Apache + PHP). Used by the automated test suite and local development. |
 | `docker-compose.nginx.yaml` | Self-hosted or production reference (nginx + PHP-FPM). Starting point for your own deployment. |
+| `docker-compose.frankenphp.yaml` | Self-hosted or production reference (FrankenPHP). Simpler single-container alternative to nginx + PHP-FPM. |
 
 ---
 
@@ -200,3 +201,76 @@ Visit `http://localhost/` — you will see the setup wizard on first run.
 `opcache`, `pdo_mysql`, `sodium`, `xml`, `zip`
 
 The `Dockerfile.churchcrm-fpm-php8` installs all of these.
+
+---
+
+### Self-Hosted / Production (FrankenPHP)
+
+The `docker-compose.frankenphp.yaml` and `frankenphp/Caddyfile` files provide a
+reference configuration for deploying ChurchCRM with **FrankenPHP** — an
+all-in-one server that bundles Caddy and PHP in a single binary and container.
+This results in a simpler two-service stack compared to nginx + PHP-FPM.
+
+### Why FrankenPHP needs explicit routing
+
+The same routing requirement applies as for nginx: ChurchCRM is structured as
+multiple independent **Slim 4 PHP applications**, each in its own subdirectory
+with its own `index.php` entry point.
+
+| URL prefix | Entry point |
+|------------|-------------|
+| `/session/` | `session/index.php` — login, logout, 2FA |
+| `/api/` | `api/index.php` — REST API |
+| `/v2/` | `v2/index.php` — modern MVC pages |
+| `/admin/` | `admin/index.php` — admin panel |
+| `/finance/` | `finance/index.php` — finance module |
+| `/kiosk/` | `kiosk/index.php` — check-in kiosk |
+| `/plugins/` | `plugins/index.php` — plugin system |
+| `/external/` | `external/index.php` — public integrations |
+| `/setup/` | `setup/index.php` — first-run wizard |
+| `/` | `index.php` — legacy PHP pages |
+
+With **Apache**, each subdirectory's `.htaccess` file automatically routes
+requests to the correct entry point.
+
+With **FrankenPHP (Caddy)**, you must explicitly map each URL prefix to its
+entry point in the `Caddyfile`. **Routing all requests to the root `index.php`**
+(a common mistake) causes an infinite redirect loop because unauthenticated
+users are redirected to `/session/begin`, but that path also goes to
+`index.php`, which redirects again.
+
+### Quick start
+
+```bash
+# From the docker/ directory:
+docker compose -f docker-compose.frankenphp.yaml up -d
+```
+
+Visit `http://localhost/` — you will see the setup wizard on first run.
+
+### Files
+
+| File | Description |
+|------|-------------|
+| `docker-compose.frankenphp.yaml` | Example Compose file (FrankenPHP + MariaDB) |
+| `frankenphp/Caddyfile` | Caddy server block with correct per-subdirectory routing |
+| `Dockerfile.churchcrm-frankenphp` | FrankenPHP image with all required PHP extensions |
+
+### Customising the Caddyfile
+
+1. Copy `frankenphp/Caddyfile` to your deployment.
+2. Update `root` to the path where ChurchCRM's `src/` contents are served from.
+3. For a **subdirectory install** (e.g. `http://example.com/churchcrm/`):
+   - Set `$sRootPath = '/churchcrm'` in `Include/Config.php`.
+   - Prefix all `handle` paths in the Caddyfile with `/churchcrm`.
+   - See the commented example at the bottom of `frankenphp/Caddyfile`.
+4. To enable **automatic HTTPS**, replace `:80` with your domain name (Caddy
+   provisions a Let's Encrypt certificate automatically).
+
+### Required PHP extensions
+
+`bcmath`, `curl`, `exif`, `gd`, `gettext`, `iconv`, `intl`, `mbstring`, `mysqli`,
+`opcache`, `pdo_mysql`, `sodium`, `xml`, `zip`
+
+The `Dockerfile.churchcrm-frankenphp` installs all of these via the
+`install-php-extensions` helper bundled with the FrankenPHP base image.

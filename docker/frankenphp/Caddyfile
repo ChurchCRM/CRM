@@ -1,0 +1,187 @@
+# ChurchCRM Caddyfile for FrankenPHP
+#
+# This file configures FrankenPHP (Caddy + PHP) to correctly route requests
+# to ChurchCRM's multiple PHP entry points. ChurchCRM uses a Slim 4 architecture
+# where each module (session, api, v2, admin, finance, etc.) is an independent
+# PHP application with its own entry point (index.php) in its own subdirectory.
+#
+# Apache handles this automatically via per-directory .htaccess mod_rewrite rules.
+# With FrankenPHP, each sub-application path must be explicitly mapped to its own
+# index.php. Routing all requests to the root index.php causes an infinite
+# redirect loop when unauthenticated users are redirected to /session/begin.
+#
+# HOW TO USE
+# ----------
+# 1. Mount this file to /etc/caddy/Caddyfile in your FrankenPHP container.
+# 2. Update `root` to the path where ChurchCRM's `src/` contents are served from.
+# 3. For subdirectory installs (e.g., http://example.com/churchcrm/), see the
+#    SUBDIRECTORY INSTALLATION section at the bottom of this file.
+#
+# AUTOMATIC HTTPS
+# ---------------
+# Caddy enables HTTPS automatically when a real domain name is used. When
+# running on localhost or with an IP address, HTTP is used. To force HTTP
+# on a real domain, replace `:80` below with `http://yourdomain.com`.
+
+{
+    # Enable FrankenPHP PHP runtime
+    frankenphp
+
+    # php_server must run before file_server so PHP files are executed, not downloaded
+    order php_server before file_server
+}
+
+:80 {
+    # Document root: path to ChurchCRM's src/ directory
+    root * /var/www/html
+
+    # Enable compression for all responses
+    encode zstd br gzip
+
+    # ── Security: block access to sensitive paths ─────────────────────────
+
+    # Block .htaccess and other dot-files
+    @dotfiles path_regexp hidden (^|/)\.
+    respond @dotfiles 404
+
+    # Block access to PHP error/session logs
+    @logs path /logs/*
+    respond @logs 404
+
+    # Block access to uploaded file attachments (served via API only)
+    @tmp_attach path /tmp_attach/*
+    respond @tmp_attach 404
+
+    # ── Slim sub-application routing ──────────────────────────────────────
+    #
+    # Each block below handles one of ChurchCRM's Slim 4 sub-applications.
+    # The pattern:
+    #   try_files {path} /<subdir>/index.php
+    # serves real static files directly and falls back to the sub-app's
+    # index.php for all other requests (including clean URLs like /session/begin).
+
+    # Session management: /session/begin, /session/end, /session/two-factor, etc.
+    handle /session/* {
+        try_files {path} /session/index.php
+        php_server
+    }
+
+    # REST API: /api/persons, /api/families, /api/events, etc.
+    handle /api/* {
+        try_files {path} /api/index.php
+        php_server
+    }
+
+    # Modern MVC pages: /v2/dashboard, /v2/people, etc.
+    handle /v2/* {
+        try_files {path} /v2/index.php
+        php_server
+    }
+
+    # Admin panel: /admin/settings, /admin/users, etc.
+    handle /admin/* {
+        try_files {path} /admin/index.php
+        php_server
+    }
+
+    # Finance module: /finance/deposits, /finance/pledges, etc.
+    handle /finance/* {
+        try_files {path} /finance/index.php
+        php_server
+    }
+
+    # Kiosk / check-in module
+    handle /kiosk/* {
+        try_files {path} /kiosk/index.php
+        php_server
+    }
+
+    # Plugin system
+    handle /plugins/* {
+        try_files {path} /plugins/index.php
+        php_server
+    }
+
+    # External integrations (public calendar, self-registration, etc.)
+    handle /external/* {
+        try_files {path} /external/index.php
+        php_server
+    }
+
+    # Setup wizard (only needed on first install)
+    handle /setup/* {
+        try_files {path} /setup/index.php
+        php_server
+    }
+
+    # ── Legacy / root routing ─────────────────────────────────────────────
+    #
+    # The root index.php is the legacy router for classic .php pages
+    # (PersonEditor.php, FamilyEditor.php, etc.) as well as the smart URL
+    # handler that converts dashed paths (e.g. /list-events -> ListEvents.php).
+    # It is NOT a catch-all for the Slim sub-applications above.
+
+    handle {
+        try_files {path} {path}/ /index.php
+        php_server
+    }
+}
+
+# ── SUBDIRECTORY INSTALLATION ─────────────────────────────────────────────────
+#
+# If ChurchCRM is installed at a subdirectory (e.g., http://example.com/churchcrm/),
+# set $sRootPath = '/churchcrm' in Include/Config.php and replace the server block
+# above with the following (prefix all handle paths with /churchcrm):
+#
+# :80 {
+#     root * /var/www/html
+#     encode zstd br gzip
+#
+#     @dotfiles path_regexp hidden (^|/)\.
+#     respond @dotfiles 404
+#     @logs path /churchcrm/logs/*
+#     respond @logs 404
+#     @tmp_attach path /churchcrm/tmp_attach/*
+#     respond @tmp_attach 404
+#
+#     handle /churchcrm/session/* {
+#         try_files {path} /churchcrm/session/index.php
+#         php_server
+#     }
+#     handle /churchcrm/api/* {
+#         try_files {path} /churchcrm/api/index.php
+#         php_server
+#     }
+#     handle /churchcrm/v2/* {
+#         try_files {path} /churchcrm/v2/index.php
+#         php_server
+#     }
+#     handle /churchcrm/admin/* {
+#         try_files {path} /churchcrm/admin/index.php
+#         php_server
+#     }
+#     handle /churchcrm/finance/* {
+#         try_files {path} /churchcrm/finance/index.php
+#         php_server
+#     }
+#     handle /churchcrm/kiosk/* {
+#         try_files {path} /churchcrm/kiosk/index.php
+#         php_server
+#     }
+#     handle /churchcrm/plugins/* {
+#         try_files {path} /churchcrm/plugins/index.php
+#         php_server
+#     }
+#     handle /churchcrm/external/* {
+#         try_files {path} /churchcrm/external/index.php
+#         php_server
+#     }
+#     handle /churchcrm/setup/* {
+#         try_files {path} /churchcrm/setup/index.php
+#         php_server
+#     }
+#     handle /churchcrm/* {
+#         try_files {path} {path}/ /churchcrm/index.php
+#         php_server
+#     }
+# }
