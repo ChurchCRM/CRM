@@ -4,7 +4,7 @@
 **Complete Locales (≥90%):** 39
 **Good Locales (75-89%):** 0
 **Needs Work (<75%):** 6
-**WIP Candidates (>5%, not yet added):** 6
+**WIP Candidates (>5%, not yet added):** 7
 
 ## Locale Completeness Overview
 
@@ -56,6 +56,7 @@
 | `lv` | Latvian | 46 | 1.55% | 🟠 Needs Work | ❌ No |
 | `en-au` | English (AU) | 31 | 1.04% | N/A | ✅ Yes |
 | `hr` | Croatian | 30 | 1.01% | 🟠 Needs Work | ❌ No |
+| `fil` | Filipino | 18 | 0.61% | 🟠 Needs Work | ❌ No |
 | `en` | English | 18 | 0.61% | N/A | ✅ Yes |
 | `ml` | Malayalam | 17 | 0.57% | 🟠 Needs Work | ❌ No |
 | `en-ca` | English (CA) | 16 | 0.54% | N/A | ✅ Yes |
@@ -81,6 +82,7 @@ These locales have translations but are not yet in locales.json:
 | Serbian (Cyrillic) | `sr-cyrl` | 74 | 2.49% | 📝 Monitor |
 | Latvian | `lv` | 46 | 1.55% | 📝 Monitor |
 | Croatian | `hr` | 30 | 1.01% | 📝 Monitor |
+| Filipino | `fil` | 18 | 0.61% | 📝 Monitor |
 | Malayalam | `ml` | 17 | 0.57% | 📝 Monitor |
 
 **Note:** 
