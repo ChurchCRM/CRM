@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -234,16 +235,18 @@ if ($sReportType === '') {
     <?php endif; ?>
 
     <?php if (in_array($sReportType, ['Pledge Summary', 'Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) :
-        $sSQL = 'SELECT fun_ID, fun_Name, fun_Active, fun_Category FROM donationfund_fun ORDER BY fun_Category, fun_Active, fun_Name';
-        $rsFunds = RunQuery($sSQL); ?>
+        $funds = DonationFundQuery::create()
+            ->orderByCategory()
+            ->orderByActive()
+            ->orderByName()
+            ->find(); ?>
       <div class="mb-3">
         <label class="form-label" for="fundsList"><?= gettext('Filter by Fund') ?>:</label>
         <select name="funds[]" multiple id="fundsList" class="form-select">
           <?php
           $currentCategory = null;
-          while ($aRow = mysqli_fetch_array($rsFunds)) {
-              extract($aRow);
-              $category = $fun_Category ?? '';
+          foreach ($funds as $fund) {
+              $category = $fund->getCategory() ?? '';
               if ($category !== $currentCategory) {
                   if ($currentCategory !== null) {
                       echo '</optgroup>';
@@ -255,8 +258,8 @@ if ($sReportType === '') {
                   }
                   $currentCategory = $category;
               }
-              echo '<option value="' . (int)$fun_ID . '">' . InputUtils::escapeHTML($fun_Name);
-              if ($fun_Active === 'false') {
+              echo '<option value="' . (int)$fund->getId() . '">' . InputUtils::escapeHTML($fund->getName());
+              if ($fund->getActive() === 'false') {
                   echo ' — INACTIVE';
               }
               echo '</option>';
