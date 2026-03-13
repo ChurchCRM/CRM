@@ -171,6 +171,8 @@ $sRangeEnd = (new \DateTime('+1 year'))->format('Y-m-d');
 require_once __DIR__ . '/Include/Header.php';
 ?>
 
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/repeat-event-editor.min.css') ?>">
+
 <div class="mb-3">
     <a href="ListEvents.php" class="btn btn-outline-secondary">
         <i class="fas fa-chevron-left mr-1"></i>
@@ -212,7 +214,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <?php if ($iTypeID > 0 && $eventType !== null): ?>
                                     <input type="hidden" name="EventTypeID" value="<?= InputUtils::escapeAttribute($iTypeID) ?>">
                                     <div class="form-control-plaintext">
-                                        <span class="badge badge-info" style="font-size: 1rem;"><?= InputUtils::escapeHTML($sTypeName) ?></span>
+                                        <span class="badge badge-info event-type-badge"><?= InputUtils::escapeHTML($sTypeName) ?></span>
                                         <a href="RepeatEventEditor.php" class="btn btn-sm btn-outline-secondary ml-2">
                                             <i class="fas fa-exchange-alt mr-1"></i><?= gettext('Change') ?>
                                         </a>
@@ -292,8 +294,8 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="form-check mb-3 d-flex align-items-center flex-wrap">
                             <input class="form-check-input mt-0 mr-2" type="radio" name="RecurType" id="recurWeekly"
                                    value="weekly" <?= ($sDefRecurType === 'weekly') ? 'checked' : '' ?>>
-                            <label class="form-check-label mr-3 mb-0" for="recurWeekly" style="min-width: 120px;"><?= gettext('Every week on') ?></label>
-                            <select name="RecurDOW" id="RecurDOW" class="form-control form-control-sm" style="width: 160px;"
+                            <label class="form-check-label mr-3 mb-0 recur-label" for="recurWeekly"><?= gettext('Every week on') ?></label>
+                            <select name="RecurDOW" id="RecurDOW" class="form-control form-control-sm recur-select-dow"
                                 <?= ($sDefRecurType !== 'weekly') ? 'disabled' : '' ?>>
                                 <?php
                                 $days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -309,8 +311,8 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="form-check mb-3 d-flex align-items-center flex-wrap">
                             <input class="form-check-input mt-0 mr-2" type="radio" name="RecurType" id="recurMonthly"
                                    value="monthly" <?= ($sDefRecurType === 'monthly') ? 'checked' : '' ?>>
-                            <label class="form-check-label mr-3 mb-0" for="recurMonthly" style="min-width: 120px;"><?= gettext('Every month on the') ?></label>
-                            <select name="RecurDOM" id="RecurDOM" class="form-control form-control-sm" style="width: 100px;"
+                            <label class="form-check-label mr-3 mb-0 recur-label" for="recurMonthly"><?= gettext('Every month on the') ?></label>
+                            <select name="RecurDOM" id="RecurDOM" class="form-control form-control-sm recur-select-dom"
                                 <?= ($sDefRecurType !== 'monthly') ? 'disabled' : '' ?>>
                                 <?php for ($d = 1; $d <= 31; $d++): ?>
                                     <option value="<?= $d ?>" <?= ($iDefRecurDOM === $d) ? 'selected' : '' ?>>
@@ -324,9 +326,9 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="form-check mb-3 d-flex align-items-center flex-wrap">
                             <input class="form-check-input mt-0 mr-2" type="radio" name="RecurType" id="recurYearly"
                                    value="yearly" <?= ($sDefRecurType === 'yearly') ? 'checked' : '' ?>>
-                            <label class="form-check-label mr-3 mb-0" for="recurYearly" style="min-width: 120px;"><?= gettext('Every year on') ?></label>
-                            <input type="text" name="RecurDOY" id="RecurDOY" class="form-control form-control-sm"
-                                   style="width: 120px;" placeholder="MM-DD"
+                            <label class="form-check-label mr-3 mb-0 recur-label" for="recurYearly"><?= gettext('Every year on') ?></label>
+                            <input type="text" name="RecurDOY" id="RecurDOY" class="form-control form-control-sm recur-input-doy"
+                                   placeholder="MM-DD"
                                    value="<?= InputUtils::escapeAttribute($sDefRecurDOY) ?>"
                                    pattern="\d{2}-\d{2}" title="<?= gettext('Format: MM-DD (e.g. 04-12 for April 12)') ?>"
                                 <?= ($sDefRecurType !== 'yearly') ? 'disabled' : '' ?>>
@@ -438,56 +440,7 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
 </div>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function () {
-    // Recurrence type: enable/disable associated inputs
-    function updateRecurrenceInputs() {
-        var selected = $('input[name="RecurType"]:checked').val();
-        $('#RecurDOW').prop('disabled', selected !== 'weekly');
-        $('#RecurDOM').prop('disabled', selected !== 'monthly');
-        $('#RecurDOY').prop('disabled', selected !== 'yearly');
-    }
-
-    $('input[name="RecurType"]').on('change', updateRecurrenceInputs);
-    updateRecurrenceInputs();
-
-    // Auto-populate title when an event type is selected from the dropdown
-    $('#EventTypeID').on('change', function () {
-        var selectedName = $(this).find(':selected').data('name') || '';
-        var $titleInput = $('#EventTitle');
-        // Only auto-fill if the title is still empty or was auto-filled previously
-        if ($titleInput.val() === '' || $titleInput.data('auto-filled')) {
-            $titleInput.val(selectedName);
-            $titleInput.data('auto-filled', selectedName !== '');
-        }
-    });
-
-    // Track manual edits to the title so auto-fill doesn't clobber them
-    $('#EventTitle').on('input', function () {
-        $(this).data('auto-filled', false);
-    });
-
-    // Validate end time > start time (HH:MM 24-hour string comparison works for same-day events;
-    // overnight events spanning midnight are not supported by this form)
-    $('form[name="RepeatEventsForm"]').on('submit', function (e) {
-        var startTime = $('#StartTime').val();
-        var endTime = $('#EndTime').val();
-        if (startTime && endTime && endTime <= startTime) {
-            e.preventDefault();
-            window.CRM.notify('<?= addslashes(gettext('End time must be after start time.')) ?>', { type: 'warning', delay: 5000 });
-            return false;
-        }
-
-        var rangeStart = $('#RangeStart').val();
-        var rangeEnd = $('#RangeEnd').val();
-        if (rangeStart && rangeEnd && rangeEnd < rangeStart) {
-            e.preventDefault();
-            window.CRM.notify('<?= addslashes(gettext('Range end date must be on or after range start date.')) ?>', { type: 'warning', delay: 5000 });
-            return false;
-        }
-    });
-});
-</script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/repeat-event-editor.min.js') ?>"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     (function() {
