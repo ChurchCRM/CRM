@@ -191,39 +191,75 @@ $validationError     = $validationError ?? '';
                             </div>
                         </div>
 
-                        <!-- Tab 4: Map & Coordinates -->
+                        <!-- Tab 4: Map & Timezone -->
                         <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab">
-                            <h5 class="mb-3"><?= gettext('Map &amp; Coordinates') ?></h5>
+                            <h5 class="mb-3"><?= gettext('Map &amp; Timezone') ?></h5>
 
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="iChurchLatitude"><?= gettext('Latitude') ?></label>
-                                    <input type="number"
-                                           class="form-control"
-                                           id="iChurchLatitude"
-                                           name="iChurchLatitude"
-                                           value="<?= InputUtils::escapeHTML($churchInfo['iChurchLatitude']) ?>"
-                                           step="any"
-                                           min="-90"
-                                           max="90"
-                                           placeholder="39.7817">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="iChurchLongitude"><?= gettext('Longitude') ?></label>
-                                    <input type="number"
-                                           class="form-control"
-                                           id="iChurchLongitude"
-                                           name="iChurchLongitude"
-                                           value="<?= InputUtils::escapeHTML($churchInfo['iChurchLongitude']) ?>"
-                                           step="any"
-                                           min="-180"
-                                           max="180"
-                                           placeholder="-89.6501">
-                                </div>
+                            <?php
+                            $hasCoords = !empty($churchInfo['iChurchLatitude'])
+                                && !empty($churchInfo['iChurchLongitude'])
+                                && ((float) $churchInfo['iChurchLatitude'] !== 0.0
+                                    || (float) $churchInfo['iChurchLongitude'] !== 0.0);
+                            ?>
+
+                            <?php if ($hasCoords): ?>
+                            <!-- Leaflet map showing geocoded church location (auto-detected on save) -->
+                            <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+                            <div id="church-location-map" class="mb-2 rounded border" style="height:280px;"></div>
+                            <p class="text-muted small mb-3">
+                                <i class="fa-solid fa-location-dot mr-1"></i>
+                                <?= gettext('Geocoded coordinates:') ?>
+                                <?= InputUtils::escapeHTML($churchInfo['iChurchLatitude']) ?>,
+                                <?= InputUtils::escapeHTML($churchInfo['iChurchLongitude']) ?>
+                                &mdash; <?= gettext('Updated automatically on every save.') ?>
+                            </p>
+                            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                                window.CRM = window.CRM || {};
+                                window.CRM.churchMapConfig = <?= json_encode([
+                                    'lat'  => (float) $churchInfo['iChurchLatitude'],
+                                    'lng'  => (float) $churchInfo['iChurchLongitude'],
+                                    'name' => $churchInfo['sChurchName'],
+                                ]) ?>;
+                            </script>
+                            <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                            document.addEventListener('DOMContentLoaded', function () {
+                                var cfg = window.CRM.churchMapConfig;
+                                var churchMap = null;
+                                // Initialise only when the Map tab is visible; Leaflet needs a sized container.
+                                // Guard against re-initialisation when the tab is shown more than once.
+                                function initChurchMap() {
+                                    if (churchMap !== null) {
+                                        return;
+                                    }
+                                    churchMap = L.map('church-location-map', {
+                                        scrollWheelZoom: false,
+                                        zoomControl: true
+                                    }).setView([cfg.lat, cfg.lng], 15);
+                                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                        maxZoom: 19,
+                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+                                    }).addTo(churchMap);
+                                    L.marker([cfg.lat, cfg.lng])
+                                        .bindPopup('<strong>' + cfg.name + '</strong>')
+                                        .addTo(churchMap);
+                                }
+                                var mapTab = document.getElementById('map-tab');
+                                if (mapTab) {
+                                    mapTab.addEventListener('shown.bs.tab', initChurchMap);
+                                    // If the Map tab is already active on page load, init immediately.
+                                    if (mapTab.classList.contains('active')) {
+                                        initChurchMap();
+                                    }
+                                }
+                            });
+                            </script>
+                            <?php else: ?>
+                            <div class="alert alert-info">
+                                <i class="fa-solid fa-location-dot mr-2"></i>
+                                <?= gettext('A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required.') ?>
                             </div>
-                            <small class="form-text text-muted mb-3 d-block">
-                                <?= gettext('Coordinates used for mapping features and distance calculations.') ?>
-                            </small>
+                            <?php endif; ?>
 
                             <div class="form-group">
                                 <label for="sTimeZone"><?= gettext('Time Zone') ?></label>

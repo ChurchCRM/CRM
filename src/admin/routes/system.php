@@ -277,8 +277,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 'sChurchCountry'   => $body['sChurchCountry'] ?? '',
                 'sChurchPhone'     => $body['sChurchPhone'] ?? '',
                 'sChurchEmail'     => $body['sChurchEmail'] ?? '',
-                'iChurchLatitude'  => $body['iChurchLatitude'] ?? '',
-                'iChurchLongitude' => $body['iChurchLongitude'] ?? '',
+                'iChurchLatitude'  => SystemConfig::getValue('iChurchLatitude'),
+                'iChurchLongitude' => SystemConfig::getValue('iChurchLongitude'),
                 'sTimeZone'        => $body['sTimeZone'] ?? '',
                 'sChurchWebSite'   => $body['sChurchWebSite'] ?? '',
             ];
@@ -302,19 +302,18 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $state     = $body['sChurchState'] ?? '';
         $zip       = $body['sChurchZip'] ?? '';
         $country   = $body['sChurchCountry'] ?? '';
-        $latitude  = trim($body['iChurchLatitude'] ?? '');
-        $longitude = trim($body['iChurchLongitude'] ?? '');
 
-        // Auto-geocode using GeoUtils when coordinates are absent but an address exists.
-        // GeoUtils uses Nominatim (OpenStreetMap) — no API key required.
-        if (($latitude === '' || $longitude === '') && $address !== '') {
+        // Always re-geocode from address using GeoUtils (Nominatim / OpenStreetMap,
+        // no API key required). Coordinates are not exposed in the form — they are
+        // derived from the address automatically on every save.
+        $latitude  = '';
+        $longitude = '';
+        if ($address !== '') {
             $coords = GeoUtils::getLatLong($address, $city, $state, $zip, $country);
             if ($coords['Latitude'] !== 0.0 || $coords['Longitude'] !== 0.0) {
                 $latitude  = (string) $coords['Latitude'];
                 $longitude = (string) $coords['Longitude'];
             }
-            // If geocoding fails (returns 0,0), leave coordinates empty so the user
-            // can enter them manually without being overwritten with an invalid value.
         }
 
         SystemConfig::setValue('sChurchName', $churchName);
@@ -338,18 +337,16 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             ->withHeader('Location', SystemURLs::getRootPath() . '/admin/system/church-info')
             ->withStatus(303);
     })->add(new InputSanitizationMiddleware([
-        'sChurchName'      => 'text',
-        'sChurchAddress'   => 'text',
-        'sChurchCity'      => 'text',
-        'sChurchState'     => 'text',
-        'sChurchZip'       => 'text',
-        'sChurchCountry'   => 'text',
-        'sChurchPhone'     => 'text',
-        'sChurchEmail'     => 'text',
-        'iChurchLatitude'  => 'text',
-        'iChurchLongitude' => 'text',
-        'sTimeZone'        => 'text',
-        'sChurchWebSite'   => 'text',
+        'sChurchName'    => 'text',
+        'sChurchAddress' => 'text',
+        'sChurchCity'    => 'text',
+        'sChurchState'   => 'text',
+        'sChurchZip'     => 'text',
+        'sChurchCountry' => 'text',
+        'sChurchPhone'   => 'text',
+        'sChurchEmail'   => 'text',
+        'sTimeZone'      => 'text',
+        'sChurchWebSite' => 'text',
     ]));
 
 });
