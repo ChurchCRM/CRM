@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -242,18 +243,37 @@ if ($sReportType == '') {
 
     // Filter by Account
     if (in_array($sReportType, ['Pledge Summary', 'Pledge Family Summary', 'Giving Report', 'Advanced Deposit Report', 'Pledge Reminders'])) {
-        $sSQL = 'SELECT fun_ID, fun_Name, fun_Active FROM donationfund_fun ORDER BY fun_Active, fun_Name';
-        $rsFunds = RunQuery($sSQL); ?>
+        $funds = DonationFundQuery::create()
+            ->orderByCategory()
+            ->orderByActive()
+            ->orderByName()
+            ->find(); ?>
 
         <tr><td class="LabelColumn"><?= gettext('Filter by Fund') ?>:<br></td>
         <td><select name="funds[]" multiple id="fundsList" class="width-100pct">
         <?php
-        while ($aRow = mysqli_fetch_array($rsFunds)) {
-            extract($aRow);
-            echo '<option value="' . (int)$fun_ID . '">' . InputUtils::escapeHTML($fun_Name);
-            if ($fun_Active == 'false') {
+        $currentCategory = null;
+        foreach ($funds as $fund) {
+            $category = $fund->getCategory() ?? '';
+            if ($category !== $currentCategory) {
+                if ($currentCategory !== null) {
+                    echo '</optgroup>';
+                }
+                if ($category !== '') {
+                    echo '<optgroup label="' . InputUtils::escapeHTML($category) . '">';
+                } else {
+                    echo '<optgroup label="' . gettext('Uncategorized') . '">';
+                }
+                $currentCategory = $category;
+            }
+            echo '<option value="' . (int)$fund->getId() . '">' . InputUtils::escapeHTML($fund->getName());
+            if ($fund->getActive() === 'false') {
                 echo ' &nbsp; INACTIVE';
             }
+            echo '</option>';
+        }
+        if ($currentCategory !== null) {
+            echo '</optgroup>';
         } ?>
         </select></td></tr>
          <tr>

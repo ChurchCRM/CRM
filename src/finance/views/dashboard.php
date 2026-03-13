@@ -459,10 +459,24 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <span class="badge badge-light"><?= $activeFundCount ?></span>
                 </div>
                 <div class="card-body p-0">
-                    <?php if ($activeFunds->count() > 0): ?>
+                    <?php if ($activeFunds->count() > 0):
+                        // Group funds by category
+                        $fundsByCategory = [];
+                        foreach ($activeFunds as $fund) {
+                            $cat = $fund->getCategory() ?? '';
+                            $fundsByCategory[$cat][] = $fund;
+                        }
+                        ksort($fundsByCategory);
+                    ?>
+                    <?php foreach ($fundsByCategory as $category => $funds): ?>
+                    <?php if ($category !== ''): ?>
+                    <div class="px-3 pt-2 pb-1">
+                        <small class="text-muted font-weight-bold text-uppercase"><?= InputUtils::escapeHTML($category) ?></small>
+                    </div>
+                    <?php endif; ?>
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($activeFunds as $fund): ?>
-                        <li class="list-group-item d-flex justify-content-between align-items-center py-2">
+                        <?php foreach ($funds as $fund): ?>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-2 <?= $category !== '' ? 'pl-4' : '' ?>">
                             <span><?= InputUtils::escapeHTML($fund->getName()) ?></span>
                             <span class="badge badge-success badge-pill">
                                 <i class="fa-solid fa-check"></i>
@@ -470,6 +484,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         </li>
                         <?php endforeach; ?>
                     </ul>
+                    <?php endforeach; ?>
                     <?php else: ?>
                     <div class="text-center py-3">
                         <p class="text-muted mb-0"><?= gettext('No active funds configured.') ?></p>

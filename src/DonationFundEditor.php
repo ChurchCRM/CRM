@@ -54,6 +54,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             $donation = $donationFunds[$iFieldID];
             $donation->setName(InputUtils::sanitizeText($_POST[$iFieldID . 'name']));
             $donation->setDescription(InputUtils::legacyFilterInput($_POST[$iFieldID . 'desc']));
+            $donation->setCategory(InputUtils::sanitizeText($_POST[$iFieldID . 'category']));
             $donation->setActive($_POST[$iFieldID . 'active'] == 1);
             if (strlen($donation->getName()) === 0) {
                 $aNameErrors[$iFieldID] = true;
@@ -86,9 +87,11 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         ->findOne();
                     $nextOrder = $maxOrderFund !== null ? $maxOrderFund->getOrder() + 1 : 1;
                     
+                    $newFieldCategory = InputUtils::sanitizeText($_POST['newFieldCategory']);
                     $donation = new DonationFund();
                     $donation->setName($newFieldName);
                     $donation->setDescription($newFieldDesc);
+                    $donation->setCategory($newFieldCategory);
                     $donation->setOrder($nextOrder);
                     $donation->save();
                     $donationFunds = DonationFundQuery::create()
@@ -106,6 +109,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     $aNameFields = [];
     $aDescFields = [];
     $aActiveFields = [];
+    $aCategoryFields = [];
     
     for ($row = 0; $row < $donationFunds->count(); $row++) {
         $donation = $donationFunds[$row];
@@ -113,6 +117,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         $aNameFields[$row] = $donation->getName();
         $aDescFields[$row] = $donation->getDescription();
         $aActiveFields[$row] = boolval($donation->getActive());
+        $aCategoryFields[$row] = $donation->getCategory() ?? '';
     }
 
     // Construct the form
@@ -159,7 +164,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label for="newFieldName"><?= gettext('Name') ?>:</label>
                         <input type="text" id="newFieldName" class="form-control" name="newFieldName" maxlength="30">
                         <?php
@@ -171,7 +176,11 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         }
                         ?>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-3">
+                        <label for="newFieldCategory"><?= gettext('Category') ?>:</label>
+                        <input type="text" id="newFieldCategory" class="form-control" name="newFieldCategory" maxlength="50" placeholder="<?= gettext('e.g. Regular Offerings') ?>">
+                    </div>
+                    <div class="col-md-3">
                         <label for="newFieldDesc"><?= gettext('Description') ?>:</label>
                         <input type="text" id="newFieldDesc" class="form-control" name="newFieldDesc" maxlength="100">
                     </div>
@@ -231,6 +240,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             <thead class="table-light">
                                 <tr>
                                     <th><?= gettext('Name') ?></th>
+                                    <th><?= gettext('Category') ?></th>
                                     <th><?= gettext('Description') ?></th>
                                     <th><?= gettext('Active') ?></th>
                                     <th><?= gettext('Actions') ?></th>
@@ -247,6 +257,9 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                             if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
                                                 echo '<small class="text-danger d-block mt-1">' . gettext('You must enter a name') . '</small>';
                                             } ?>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="<?= $row . 'category' ?>" value="<?= InputUtils::escapeAttribute($aCategoryFields[$row]) ?>" class="form-control form-control-sm" maxlength="50" placeholder="<?= gettext('e.g. Regular Offerings') ?>">
                                         </td>
                                         <td>
                                             <input type="text" name="<?= $row . 'desc' ?>" value="<?= InputUtils::escapeAttribute($aDescFields[$row]) ?>" class="form-control form-control-sm" maxlength="100">
