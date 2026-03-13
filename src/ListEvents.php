@@ -79,13 +79,6 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
 }
 
 ?>
-<?php if (!empty($_SESSION['repeat_event_success'])): ?>
-<div class="alert alert-success alert-dismissible">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-  <i class="fas fa-check-circle mr-2"></i>
-  <?= InputUtils::escapeHTML($_SESSION['repeat_event_success']) ?>
-</div>
-<?php unset($_SESSION['repeat_event_success']); endif; ?>
 <div class="card">
   <div class="card-header">
     <h3 class="card-title"><?= gettext('Filter Events') ?></h3>

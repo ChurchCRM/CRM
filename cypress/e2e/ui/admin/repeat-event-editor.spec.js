@@ -88,9 +88,11 @@ describe('Repeat Event Editor', () => {
         // Submit
         cy.get('button[name="CreateRepeat"]').click();
 
-        // Should redirect to ListEvents with success flash message
+        // Should redirect to ListEvents with success Notyf toast
         cy.url().should('include', '/ListEvents.php');
-        cy.contains('repeat event').should('exist');
+        cy.get('.notyf__toast', { timeout: 5000 })
+            .should('be.visible')
+            .and('contain', 'repeat event');
     });
 
     it('should show Create Repeat Events button on ListEvents page', () => {

@@ -96,11 +96,12 @@ if (isset($_POST['CreateRepeat'])) {
         }
 
         if ($iErrors === 0) {
-            // Store success message in session and redirect
-            $_SESSION['repeat_event_success'] = sprintf(
+            // Use the standard global message system so the Notify framework handles the display
+            $_SESSION['sGlobalMessage'] = sprintf(
                 ngettext('%d repeat event created successfully.', '%d repeat events created successfully.', $successCount),
                 $successCount
             );
+            $_SESSION['sGlobalMessageClass'] = 'success';
             RedirectUtils::redirect('ListEvents.php');
         }
     }
@@ -473,7 +474,7 @@ $(document).ready(function () {
         var endTime = $('#EndTime').val();
         if (startTime && endTime && endTime <= startTime) {
             e.preventDefault();
-            alert('<?= addslashes(gettext('End time must be after start time.')) ?>');
+            window.CRM.notify('<?= addslashes(gettext('End time must be after start time.')) ?>', { type: 'warning', delay: 5000 });
             return false;
         }
 
@@ -481,7 +482,7 @@ $(document).ready(function () {
         var rangeEnd = $('#RangeEnd').val();
         if (rangeStart && rangeEnd && rangeEnd < rangeStart) {
             e.preventDefault();
-            alert('<?= addslashes(gettext('Range end date must be on or after range start date.')) ?>');
+            window.CRM.notify('<?= addslashes(gettext('Range end date must be on or after range start date.')) ?>', { type: 'warning', delay: 5000 });
             return false;
         }
     });
