@@ -230,8 +230,8 @@ require_once __DIR__ . '/../Include/Header.php';
       <?php
 
         foreach ($thisClassChildren as $child) {
-            $hideAge = $child['flags'] == 1 || empty($child['birthYear']);
-            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $child['flags']);
+            $hideAge = $child['hideAge'];
+            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $child['hideAge']);
             $childPhoto = new \ChurchCRM\dto\Photo('person', $child['kidId']);
             ?>
           <tr>
