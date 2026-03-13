@@ -292,17 +292,33 @@ class SundaySchoolService
      */
     public function getKidsWithoutClasses(): array
     {
-        // Resolve the "Student" group role ID dynamically to avoid relying on a hardcoded value.
-        // This mirrors the approach used in other methods in this service.
-        $studentRoleId = ListOptionQuery::create()
-            ->filterByListId(3)
-            ->filterByOptionName('Student')
-            ->select('OptionId')
-            ->findOne();
+        // Dynamically resolve all "Student" role option IDs from the role lists
+        // assigned to Sunday School groups (type 4).  Each group may define its
+        // own role list, so we collect every distinct list ID first, then look up
+        // the "Student" option within those lists.
+        $sundaySchoolGroups = GroupQuery::create()
+            ->filterByType(4)
+            ->find();
 
-        // Fallback to the legacy hardcoded value if the "Student" role cannot be resolved.
-        if ($studentRoleId === null) {
-            $studentRoleId = 2;
+        $roleListIds = [];
+        foreach ($sundaySchoolGroups as $ssGroup) {
+            if ($ssGroup->getRoleListId() !== null) {
+                $roleListIds[] = $ssGroup->getRoleListId();
+            }
+        }
+        $roleListIds = array_unique($roleListIds);
+
+        $studentRoleIds = [2]; // fallback: used when no Sunday School groups exist or none have a 'Student' role option
+        if (!empty($roleListIds)) {
+            $resolved = ListOptionQuery::create()
+                ->filterById($roleListIds, Criteria::IN)
+                ->filterByOptionName('Student')
+                ->select(['OptionId'])
+                ->find()
+                ->toArray();
+            if (!empty($resolved)) {
+                $studentRoleIds = array_unique($resolved);
+            }
         }
 
         // Get all person IDs already enrolled as students in any Sunday School group
@@ -310,7 +326,7 @@ class SundaySchoolService
             ->useGroupQuery()
                 ->filterByType(4)
             ->endUse()
-            ->filterByRoleId($studentRoleId)
+            ->filterByRoleId($studentRoleIds, Criteria::IN)
             ->select(['PersonId'])
             ->find()
             ->toArray();
