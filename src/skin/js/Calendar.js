@@ -594,6 +594,7 @@ function showAllUserCalendars() {
   window.CRM.APIRequest({
     method: "GET",
     path: "calendars",
+    suppressErrorDialog: true,
   }).done(function (calendars) {
     $("#userCalendars").empty();
     $.each(calendars.Calendars, function (idx, calendar) {
@@ -608,6 +609,7 @@ function showAllSystemCalendars() {
   window.CRM.APIRequest({
     method: "GET",
     path: "systemcalendars",
+    suppressErrorDialog: true,
   }).done(function (calendars) {
     $("#systemCalendars").empty();
     $.each(calendars.Calendars, function (idx, calendar) {
