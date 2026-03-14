@@ -1,0 +1,143 @@
+/* Sunday School Class View - Mobile & Responsive Improvements */
+
+/* Mobile improvements */
+@media (max-width: 767px) {
+  /* Better button spacing */
+  .btn-app {
+    min-height: 80px;
+    padding: 10px 5px;
+  }
+
+  /* Ensure buttons are full width on mobile */
+  .btn-block {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Touch-friendly button sizes */
+  .btn-sm {
+    padding: 0.5rem 0.75rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  /* Teacher cards full width */
+  .user-profile-2 {
+    margin-bottom: 1rem;
+  }
+
+  /* Better dropdown for email buttons */
+  .dropdown {
+    width: 100%;
+  }
+
+  .btn-lg {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Better touch targets globally */
+.btn-tool {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Better alert styling for filters */
+.birthday-filter {
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+/* Improve dropdown menu touch area */
+.dropdown-menu .dropdown-item {
+  padding: 0.75rem 1rem;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+/* Birthday filter clear button */
+.birthday-filter-clear {
+  cursor: pointer;
+}
+
+/* Student Table Improvements */
+.photo-small-thumb {
+  display: block;
+  flex-shrink: 0;
+}
+
+.student-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.student-row:hover {
+  background-color: #f5f5f5;
+}
+
+.details-row {
+  background-color: #fafafa;
+  border-top: 2px solid #e9ecef;
+}
+
+.details-row td {
+  padding: 0;
+}
+
+.details-row .collapse.show {
+  padding: 1rem 0;
+}
+
+.expand-details {
+  padding: 0.35rem 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.expand-details[aria-expanded="true"] {
+  transform: rotate(180deg);
+}
+
+/* Definition list styling in details */
+.details-row dl {
+  margin-bottom: 0;
+}
+
+.details-row dt {
+  font-weight: 600;
+  color: #495057;
+}
+
+.details-row dd {
+  margin-left: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Mobile improvements for table */
+@media (max-width: 767px) {
+  .data-table {
+    font-size: 0.9rem;
+  }
+
+  .photo-small-thumb {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .expand-details {
+    padding: 0.25rem 0.4rem;
+  }
+
+  /* Hide email column on mobile, show icon only */
+  .data-table thead th:nth-child(5),
+  .data-table tbody td:nth-child(5) {
+    display: none;
+  }
+}

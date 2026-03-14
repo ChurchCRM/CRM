@@ -130,7 +130,7 @@ class SundaySchoolService
             }
         }
 
-        return ['Boys' => $boys, 'Girls' => $girls, 'Unknown' => $unknown];
+        return ['Male' => $boys, 'Female' => $girls, 'Other' => $unknown];
     }
 
     public function getKidsBirthdayMonth(string $groupId): array

@@ -33,18 +33,6 @@ foreach ($sundaySchoolService->getKidsBirthdayMonth($iGroupId) as $birthDayMonth
 }
 $birthDayMonthChartJSON = json_encode($birthDayMonthChartArray, JSON_THROW_ON_ERROR);
 
-$genderChartArray = [];
-foreach ($sundaySchoolService->getKidsGender($iGroupId) as $gender => $kidsCount) {
-    if ($kidsCount === 0) {
-        continue;
-    }
-    $genderChartArray[] = [
-        'label' => gettext($gender),
-        'data' => $kidsCount
-    ];
-}
-$genderChartJSON = json_encode($genderChartArray, JSON_THROW_ON_ERROR);
-
 $rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, 'Teacher');
 $sPageTitle = gettext('Sunday School') . ': ' . $iGroupName;
 
@@ -78,7 +66,7 @@ require_once __DIR__ . '/../Include/Header.php';
   <div class="card-header">
     <h3 class="card-title"><i class="fa-solid fa-bars"></i> <?= gettext('Sunday School Class Functions') ?></h3>
   </div>
-  <div class="card-body">
+  <div class="card-body row">
     <?php
     $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
     $allEmails = array_unique([...$ParentsEmails, ...$KidsEmails, ...$TeachersEmails]);
@@ -93,40 +81,48 @@ require_once __DIR__ . '/../Include/Header.php';
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
     ?>
-    
-    <a class="btn btn-app bg-success" href="../GroupView.php?GroupID=<?= $iGroupId ?>">
-        <i class="fa-solid fa-user-plus fa-3x"></i><br>
-        <?= gettext('Add Students') ?>
-    </a>
 
-    <a class="btn btn-app bg-primary" href="../GroupEditor.php?GroupID=<?= $iGroupId?>">
-        <i class="fa-solid fa-pen fa-3x"></i><br>
-        <?= gettext("Edit this Class") ?>
-    </a>
+    <div class="col-12 col-md-3">
+      <a class="btn btn-app bg-success btn-block" href="../GroupView.php?GroupID=<?= $iGroupId ?>">
+          <i class="fa-solid fa-user-plus fa-3x"></i><br>
+          <?= gettext('Add Students') ?>
+      </a>
+    </div>
+
+    <div class="col-12 col-md-3">
+      <a class="btn btn-app bg-primary btn-block" href="../GroupEditor.php?GroupID=<?= $iGroupId?>">
+          <i class="fa-solid fa-pen fa-3x"></i><br>
+          <?= gettext("Edit this Class") ?>
+      </a>
+    </div>
 
     <?php
     if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
       // Display link
         ?>
-      <div class="dropdown d-inline-block">
-        <button class="btn btn-app bg-teal dropdown-toggle" type="button" id="emailClassDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa-solid fa-paper-plane fa-3x"></i><br>
-            <?= gettext('Email') ?>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="emailClassDropdown">
-          <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
-          <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
+      <div class="col-12 col-md-3">
+        <div class="dropdown">
+          <button class="btn btn-app bg-teal btn-block dropdown-toggle" type="button" id="emailClassDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Send email with recipients in To field') ?>">
+              <i class="fa-solid fa-paper-plane fa-3x"></i><br>
+              <?= gettext('Email (To)') ?>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="emailClassDropdown">
+            <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
+            <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
+          </div>
         </div>
       </div>
 
-      <div class="dropdown d-inline-block">
-        <button class="btn btn-app bg-navy dropdown-toggle" type="button" id="emailClassBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa-solid fa-user-secret fa-3x"></i><br>
-            <?= gettext('Email (BCC)') ?>
-        </button>
-        <div class="dropdown-menu" aria-labelledby="emailClassBccDropdown">
-          <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
-          <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
+      <div class="col-12 col-md-3">
+        <div class="dropdown">
+          <button class="btn btn-app bg-navy btn-block dropdown-toggle" type="button" id="emailClassBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Send email with recipients in BCC field (hidden from each other)') ?>">
+              <i class="fa-solid fa-user-secret fa-3x"></i><br>
+              <?= gettext('Email (BCC)') ?>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="emailClassBccDropdown">
+            <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
+            <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
+          </div>
         </div>
       </div>
         <?php
@@ -137,34 +133,74 @@ require_once __DIR__ . '/../Include/Header.php';
 
 <div class="card card-info card-outline">
   <div class="card-header">
-    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> <?= gettext('Quick Status') ?></h3>
-
+    <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> <?= gettext('Class Overview') ?></h3>
     <div class="card-tools float-right">
-      <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
+      <button type="button" class="btn btn-tool" data-card-widget="collapse" title="<?= gettext('Toggle overview') ?>">
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
     </div>
   </div>
   <div class="card-body row">
-    <div class="col-lg-6 col-md-6">
-      <!-- Bar chart -->
+    <?php
+    // Calculate statistics
+    $totalStudents = count($thisClassChildren);
+    $maleCount = 0;
+    $femaleCount = 0;
+    $otherCount = 0;
+
+    foreach ($thisClassChildren as $child) {
+      switch ($child['kidGender']) {
+        case 1:
+          $maleCount++;
+          break;
+        case 2:
+          $femaleCount++;
+          break;
+        default:
+          $otherCount++;
+      }
+    }
+    ?>
+
+    <!-- Birthday Chart -->
+    <div class="col-12 col-lg-6">
       <div class="card card-primary card-outline">
         <div class="card-header">
           <h3 class="card-title"><i class="fa-solid fa-chart-bar"></i> <?= gettext('Birthdays by Month') ?></h3>
         </div>
         <div class="card-body">
           <div class="disableSelection">
-              <canvas id="bar-chart"></canvas>
+            <canvas id="bar-chart"></canvas>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-3 col-md-6">
-      <!-- Donut chart -->
-      <div class="card card-primary card-outline">
-        <div class="card-header">
-          <h3 class="card-title"><i class="fa-solid fa-chart-pie"></i> <?= gettext('Gender') ?></h3>
+
+    <!-- Class Stats -->
+    <div class="col-12 col-lg-6">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3><?= $totalStudents ?></h3>
+              <p><?= gettext('Total Enrolled') ?></p>
+            </div>
+            <div class="icon">
+              <i class="fa-solid fa-users"></i>
+            </div>
+          </div>
         </div>
-        <div class="card-body">
-          <canvas id="donut-chart"></canvas>
+
+        <div class="col-12 col-sm-6">
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3><?= $maleCount ?> / <?= $femaleCount ?></h3>
+              <p><?= gettext('Male / Female') ?></p>
+            </div>
+            <div class="icon">
+              <i class="fa-solid fa-person-half-dress"></i>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -178,20 +214,20 @@ require_once __DIR__ . '/../Include/Header.php';
   <div class="card-body row">
     <?php foreach ($rsTeachers as $teacher) {
         ?>
-      <div class="col-sm-2">
+      <div class="col-12 col-sm-6 col-lg-3 mb-3">
         <!-- Begin user profile -->
-        <div class="card card-primary text-center user-profile-2">
+        <div class="card card-primary text-center user-profile-2 h-100">
           <div class="user-profile-inner">
             <h4 class="white mb-3"><?= $teacher->getFirstName() . ' ' . $teacher->getLastName() ?></h4>
-            <img data-image-entity-type="person" 
+            <img data-image-entity-type="person"
                  data-image-entity-id="<?= $teacher->getId() ?>"
                  class="photo-small" />
-            <div class="btn-group btn-group-sm d-flex" role="group">
-                <a href="mailto:<?= $teacher->getEmail() ?>" type="button" class="btn btn-success">
-                    <i class="fa-solid fa-envelope"></i>
+            <div class="btn-group btn-group d-flex flex-column gap-2 mt-3" role="group">
+                <a href="mailto:<?= $teacher->getEmail() ?>" type="button" class="btn btn-success btn-sm py-2" title="<?= gettext('Email') . ' ' . htmlspecialchars($teacher->getFirstName()) ?>">
+                    <i class="fa-solid fa-envelope"></i> <?= gettext('Email') ?>
                 </a>
-                <a href="../PersonView.php?PersonID=<?= $teacher->getId() ?>" type="button" class="btn btn-primary">
-                    <i class="fa-solid fa-user"></i>
+                <a href="../PersonView.php?PersonID=<?= $teacher->getId() ?>" type="button" class="btn btn-primary btn-sm py-2" title="<?= gettext('View Profile') ?>">
+                    <i class="fa-solid fa-user"></i> <?= gettext('Profile') ?>
                 </a>
             </div>
           </div>
@@ -204,67 +240,197 @@ require_once __DIR__ . '/../Include/Header.php';
 
 <div class="card card-primary card-outline">
   <div class="card-header">
-    <h3 class="card-title"><i class="fa-solid fa-users"></i> <?= gettext('Students') ?></h3>
+    <h3 class="card-title"><i class="fa-solid fa-users"></i> <?= gettext('Students') ?> <span class="badge badge-primary"><?= count($thisClassChildren) ?></span></h3>
   </div>
-  <div class="card-body table-responsive">
-    <h4 class="birthday-filter d-none"><?= gettext('Showing students with birthdays in') ?><span class="month"></span> <i style="cursor:pointer;" class="icon fa-solid fa-close text-danger"></i></h4>
-    <table id="sundayschool" class="table table-striped table-bordered data-table w-100">
-      <thead>
-      <tr>
-        <th><?= gettext('Name') ?></th>
-        <th><?= gettext('Birth Date') ?></th>
-        <th><?= gettext('Age') ?></th>
-        <th><?= gettext('Email') ?></th>
-        <th><?= gettext('Mobile') ?></th>
-        <th><?= gettext('Home Phone') ?></th>
-        <th><?= gettext('Home Address') ?></th>
-        <th><?= gettext('Dad Name') ?></th>
-        <th><?= gettext('Dad Mobile') ?></th>
-        <th><?= gettext('Dad Email') ?></th>
-        <th><?= gettext('Mom Name') ?></th>
-        <th><?= gettext('Mom Mobile') ?></th>
-        <th><?= gettext('Mom Email') ?></th>
-      </tr>
-      </thead>
-      <tbody>
-      <?php
-
-        foreach ($thisClassChildren as $child) {
+  <div class="card-body">
+    <h4 class="birthday-filter d-none alert alert-info mb-3">
+      <?= gettext('Showing students with birthdays in') ?> <span class="month font-weight-bold"></span>
+      <i class="icon fa-solid fa-times float-right birthday-filter-clear" title="<?= gettext('Clear filter') ?>"></i>
+    </h4>
+    <div class="table-responsive">
+      <table id="sundayschool" class="table table-striped table-hover data-table w-100">
+        <thead>
+          <tr>
+            <th><?= gettext('Name') ?></th>
+            <th><?= gettext('Age') ?></th>
+            <th><?= gettext('Mobile') ?></th>
+            <th><?= gettext('Email') ?></th>
+            <th><?= gettext('Father') ?></th>
+            <th><?= gettext('Mother') ?></th>
+          </tr>
+        </thead>
+        <tbody>
+        <?php
+          foreach ($thisClassChildren as $child) {
             $hideAge = $child['hideAge'];
-            $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $child['hideAge']);
-            $childPhoto = new \ChurchCRM\dto\Photo('person', $child['kidId']);
+            $age = MiscUtils::formatAge($child['birthMonth'], $child['birthDay'], $child['birthYear']);
             ?>
           <tr>
-          <td>
-            <a href="<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
-              <?= $child['LastName'] . ', ' . $child['firstName'] ?>
-            </a>
-            <?php if ($childPhoto->hasUploadedPhoto()) { ?>
-              <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="<?= $child['kidId'] ?>" title="<?= gettext('View Photo') ?>">
-                <i class="fa-solid fa-camera"></i>
+            <td>
+              <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+                <strong><?= htmlspecialchars($child['LastName'] . ', ' . $child['firstName']) ?></strong>
+              </a>
+            </td>
+            <td><?= $hideAge ? '—' : $age ?></td>
+            <td>
+              <?php if ($child['mobilePhone']) { ?>
+                <a href="tel:<?= urlencode($child['mobilePhone']) ?>" title="Call">
+                  <i class="fa-solid fa-phone text-primary"></i> <?= $child['mobilePhone'] ?>
+                </a>
+              <?php } else { ?>
+                <span class="text-muted">—</span>
+              <?php } ?>
+            </td>
+            <td>
+              <?php if ($child['kidEmail']) { ?>
+                <a href="mailto:<?= $child['kidEmail'] ?>" title="Email">
+                  <i class="fa-solid fa-envelope text-primary"></i>
+                </a>
+              <?php } else { ?>
+                <span class="text-muted">—</span>
+              <?php } ?>
+            </td>
+            <td>
+              <?php if ($child['dadFirstName']) { ?>
+                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $child['dadId'] ?>">
+                  <?= htmlspecialchars($child['dadFirstName'] . ' ' . $child['dadLastName']) ?>
+                </a>
+                <?php if ($child['dadCellPhone']) { ?>
+                  <br><small><a href="tel:<?= urlencode($child['dadCellPhone']) ?>"><?= $child['dadCellPhone'] ?></a></small>
+                <?php } ?>
+              <?php } else { ?>
+                <span class="text-muted">—</span>
+              <?php } ?>
+            </td>
+            <td>
+              <?php if ($child['momFirstName']) { ?>
+                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $child['momId'] ?>">
+                  <?= htmlspecialchars($child['momFirstName'] . ' ' . $child['momLastName']) ?>
+                </a>
+                <?php if ($child['momCellPhone']) { ?>
+                  <br><small><a href="tel:<?= urlencode($child['momCellPhone']) ?>"><?= $child['momCellPhone'] ?></a></small>
+                <?php } ?>
+              <?php } else { ?>
+                <span class="text-muted">—</span>
+              <?php } ?>
+              <button class="btn btn-xs btn-outline-primary float-right ml-2" data-toggle="modal" data-target="#studentModal-<?= $child['kidId'] ?>" title="<?= gettext('View Full Details') ?>">
+                <i class="fa-solid fa-info-circle"></i>
               </button>
-            <?php } ?>
-          </td>
-          <td><?= $birthDate ?> </td>
-          <td><?= MiscUtils::formatAge($child['birthMonth'], $child['birthDay'], $child['birthYear']) ?></td>
-          <td><?= $child['kidEmail'] ?></td>
-          <td><?= $child['mobilePhone'] ?></td>
-          <td><?= $child['homePhone'] ?></td>
-          <td><?= $child['Address1'] . ' ' . $child['Address2'] . ' ' . $child['city'] . ' ' . $child['state'] . ' ' . $child['zip'] ?></td>
-          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['dadId'] ?>'><?= $child['dadFirstName'] . ' ' . $child['dadLastName'] ?></a></td>
-          <td><?= $child['dadCellPhone'] ?></td>
-          <td><?= $child['dadEmail'] ?></td>
-          <td><a href='<?= SystemURLs::getRootPath(); ?>/PersonView.php?PersonID=<?= $child['momId'] ?>'><?= $child['momFirstName'] . ' ' . $child['momLastName'] ?></td>
-          <td><?= $child['momCellPhone'] ?></td>
-          <td><?= $child['momEmail'] ?></td>
+            </td>
           </tr>
+        <?php } ?>
+        </tbody>
+      </table>
+    </div>
 
-            <?php
-        }
-
+    <!-- Student Detail Modals -->
+    <?php
+      foreach ($thisClassChildren as $child) {
+        $hideAge = $child['hideAge'];
+        $birthDate = MiscUtils::formatBirthDate($child['birthYear'], $child['birthMonth'], $child['birthDay'], $hideAge);
+        $address = trim($child['Address1'] . ' ' . $child['Address2'] . ' ' . $child['city'] . ' ' . $child['state'] . ' ' . $child['zip']);
         ?>
-      </tbody>
-    </table>
+      <div class="modal fade" id="studentModal-<?= $child['kidId'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">
+                <i class="fa-solid fa-user"></i>
+                <?= htmlspecialchars($child['firstName'] . ' ' . $child['LastName']) ?>
+              </h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6">
+                  <h6 class="font-weight-bold mb-3"><i class="fa-solid fa-circle-info"></i> <?= gettext('Student Information') ?></h6>
+                  <dl class="row">
+                    <dt class="col-sm-5"><?= gettext('Birth Date:') ?></dt>
+                    <dd class="col-sm-7"><?= $birthDate ?></dd>
+                    <dt class="col-sm-5"><?= gettext('Kids Email:') ?></dt>
+                    <dd class="col-sm-7">
+                      <?php if ($child['kidEmail']) { ?>
+                        <a href="mailto:<?= $child['kidEmail'] ?>"><?= htmlspecialchars($child['kidEmail']) ?></a>
+                      <?php } else { ?>
+                        <span class="text-muted">—</span>
+                      <?php } ?>
+                    </dd>
+                    <dt class="col-sm-5"><?= gettext('Mobile:') ?></dt>
+                    <dd class="col-sm-7">
+                      <?php if ($child['mobilePhone']) { ?>
+                        <a href="tel:<?= urlencode($child['mobilePhone']) ?>"><?= $child['mobilePhone'] ?></a>
+                      <?php } else { ?>
+                        <span class="text-muted">—</span>
+                      <?php } ?>
+                    </dd>
+                    <dt class="col-sm-5"><?= gettext('Home Phone:') ?></dt>
+                    <dd class="col-sm-7">
+                      <?php if ($child['homePhone']) { ?>
+                        <a href="tel:<?= urlencode($child['homePhone']) ?>"><?= $child['homePhone'] ?></a>
+                      <?php } else { ?>
+                        <span class="text-muted">—</span>
+                      <?php } ?>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="col-md-6">
+                  <h6 class="font-weight-bold mb-3"><i class="fa-solid fa-home"></i> <?= gettext('Address') ?></h6>
+                  <address>
+                    <?php if ($address) { ?>
+                      <?= htmlspecialchars($address) ?>
+                    <?php } else { ?>
+                      <span class="text-muted">—</span>
+                    <?php } ?>
+                  </address>
+
+                  <h6 class="font-weight-bold mb-3 mt-4"><i class="fa-solid fa-users"></i> <?= gettext('Parents/Guardians') ?></h6>
+                  <?php if ($child['dadFirstName'] || $child['momFirstName']) { ?>
+                    <dl class="row">
+                      <?php if ($child['dadFirstName']) { ?>
+                        <dt class="col-sm-5"><?= gettext('Father:') ?></dt>
+                        <dd class="col-sm-7">
+                          <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $child['dadId'] ?>">
+                            <?= htmlspecialchars($child['dadFirstName'] . ' ' . $child['dadLastName']) ?>
+                          </a>
+                          <?php if ($child['dadCellPhone']) { ?>
+                            <br><small><a href="tel:<?= urlencode($child['dadCellPhone']) ?>"><?= $child['dadCellPhone'] ?></a></small>
+                          <?php } ?>
+                          <?php if ($child['dadEmail']) { ?>
+                            <br><small><a href="mailto:<?= $child['dadEmail'] ?>"><?= htmlspecialchars($child['dadEmail']) ?></a></small>
+                          <?php } ?>
+                        </dd>
+                      <?php } ?>
+                      <?php if ($child['momFirstName']) { ?>
+                        <dt class="col-sm-5"><?= gettext('Mother:') ?></dt>
+                        <dd class="col-sm-7">
+                          <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $child['momId'] ?>">
+                            <?= htmlspecialchars($child['momFirstName'] . ' ' . $child['momLastName']) ?>
+                          </a>
+                          <?php if ($child['momCellPhone']) { ?>
+                            <br><small><a href="tel:<?= urlencode($child['momCellPhone']) ?>"><?= $child['momCellPhone'] ?></a></small>
+                          <?php } ?>
+                          <?php if ($child['momEmail']) { ?>
+                            <br><small><a href="mailto:<?= $child['momEmail'] ?>"><?= htmlspecialchars($child['momEmail']) ?></a></small>
+                          <?php } ?>
+                        </dd>
+                      <?php } ?>
+                    </dl>
+                  <?php } else { ?>
+                    <span class="text-muted">—</span>
+                  <?php } ?>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>" class="btn btn-primary">
+                <i class="fa-solid fa-user"></i> <?= gettext('View Profile') ?>
+              </a>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Close') ?></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php } ?>
   </div>
 </div>
 
@@ -342,7 +508,7 @@ function implodeUnique($array, $withQuotes): string
 </div><!-- /.modal -->
 
 <!-- chartjs -->
-<script  src="<?= SystemURLs::assetVersioned('/skin/external/chartjs/chart.umd.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/chartjs/chart.umd.js') ?>"></script>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(function () {
@@ -373,41 +539,49 @@ function implodeUnique($array, $withQuotes): string
       birthDayFilter.hide();
     }
 
+    var birthDateColumn = dataTable.column(0);
+
+    function hideBirthDayFilter() {
+      birthDateColumn
+        .search('')
+        .draw();
+
+      birthDayFilter.hide();
+    }
+
     var birthDayFilter = $('.birthday-filter');
     var birthDayMonth = birthDayFilter.find('.month');
-    birthDayFilter.find('i.fa-close')
+    birthDayFilter.find('i.fa-times')
       .bind('click', hideBirthDayFilter);
 
-    document.getElementById('bar-chart').onclick = function(event) {
-      var activePoints = barChart.getElementsAtEvent(event);
+    // Birthday chart click filter
+    if (window.barChart) {
+      document.getElementById('bar-chart').onclick = function(event) {
+        var activePoints = window.barChart.getElementsAtEvent(event);
 
-      // If no active points, hide the filter and return
-      if (activePoints.length === 0) {
+        if (activePoints.length === 0) {
           hideBirthDayFilter();
           return;
-      }
+        }
 
-      var monthIndex = activePoints[0]._index;
-      var month = barChart.data.labels[monthIndex];
+        var monthIndex = activePoints[0]._index;
+        var month = window.barChart.data.labels[monthIndex];
 
-      // Update filter text
-      birthDayMonth.text(month);
-      birthDayFilter.show();
+        birthDayMonth.text(month);
+        birthDayFilter.show();
 
-      // Highlight the selected bar
-      activePoints.forEach(function(point) {
-          // Apply highlight styling as needed
+        activePoints.forEach(function(point) {
           point.custom = point.custom || {};
           point.custom.backgroundColor = 'red';
-      });
+        });
 
-      barChart.update();
-    };
+        window.barChart.update();
+      };
+    }
   });
 
   /*
-   * BAR CHART
-   * ---------
+   * BAR CHART - Birthdays by Month
    */
   var barData = <?= $birthDayMonthChartJSON ?>;
   var barLabels = barData.map(data => data[0]);
@@ -415,76 +589,32 @@ function implodeUnique($array, $withQuotes): string
   var maxBarValue = Math.max(...barValues);
 
   var barChartConfig = {
-      type: 'bar',
-      data: {
-          labels: barLabels,
-          datasets: [{
-              label: 'Birthdays by Month',
-              borderColor: '#3c8dbc',
-              backgroundColor: '#9ec5de',
-              borderWidth: 2,
-              data: barValues
-          }]
-      },
-      options: {
-        scales: {
-          y: {
-            max: maxBarValue + 1,
-            beginAtZero: true,
-            ticks: {
-              stepSize: 1,
-            }
+    type: 'bar',
+    data: {
+      labels: barLabels,
+      datasets: [{
+        label: 'Birthdays by Month',
+        borderColor: '#3c8dbc',
+        backgroundColor: '#9ec5de',
+        borderWidth: 2,
+        data: barValues
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          max: maxBarValue + 1,
+          beginAtZero: true,
+          ticks: {
+            stepSize: 1,
           }
         }
       }
+    }
   };
 
   var barChart = new Chart(document.getElementById('bar-chart'), barChartConfig);
-
-  /* END BAR CHART */
-
-  /*
-   * DONUT CHART
-   * -----------
-   */
-
-  var donutData = <?= $genderChartJSON ?>;
-  var donutLabels = donutData.map(data => data.label);
-  var donutValues = donutData.map(data => data.data);
-
-  var donutChartConfig = {
-      type: 'doughnut',
-      data: {
-          labels: donutLabels,
-          datasets: [{
-              data: donutValues,
-              backgroundColor: ['#3c8dbc', '#ff851b']
-          }]
-      },
-      options: {
-          plugins: {
-              legend: {
-                  position: 'bottom'
-              }
-          }
-      }
-  };
-
-  var donutChart = new Chart(document.getElementById('donut-chart'), donutChartConfig);
-  /*
-   * END DONUT CHART
-   */
-  /*
-   * Custom Label formatter
-   * ----------------------
-   */
-  function labelFormatter(label, series) {
-    return "<div style='font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;'>"
-      + label
-      + "<br/>"
-      + Math.round(series.percent) + "%</div>";
-  }
-
+  window.barChart = barChart;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <?php

@@ -50,4 +50,60 @@ describe("Standard Sunday School", () => {
         cy.get("#sundayschool").should("exist");
         cy.get(".card-title").should("contain", "Students");
     });
+
+    it("Class Overview section displays correctly", () => {
+        cy.visit(`sundayschool/SundaySchoolClassView.php?groupId=${ANGELS_CLASS_GROUP_ID}`);
+
+        // Verify Class Overview card exists
+        cy.contains("Class Overview").should("exist");
+
+        // Verify birthday chart is present
+        cy.get("#bar-chart").should("exist");
+
+        // Verify class stats are displayed
+        cy.contains("Total Enrolled").should("exist");
+        cy.contains("Male / Female").should("exist");
+
+        // Verify stats show the correct count
+        cy.contains("Total Enrolled").parent().parent().should("contain", "3");
+    });
+
+    it("Student table has correct columns and functionality", () => {
+        cy.visit(`sundayschool/SundaySchoolClassView.php?groupId=${ANGELS_CLASS_GROUP_ID}`);
+
+        // Verify table headers
+        cy.get("#sundayschool thead th").should((headers) => {
+            const headerText = Array.from(headers).map(h => h.textContent);
+            expect(headerText).to.include("Name");
+            expect(headerText).to.include("Age");
+            expect(headerText).to.include("Mobile");
+            expect(headerText).to.include("Email");
+            expect(headerText).to.include("Father");
+            expect(headerText).to.include("Mother");
+        });
+
+        // Verify student rows are clickable (links to PersonView)
+        cy.get("#sundayschool tbody tr td:first-child a").first().should("have.attr", "href").and("include", "PersonView.php");
+    });
+
+    it("Student details modal opens when info button clicked", () => {
+        cy.visit(`sundayschool/SundaySchoolClassView.php?groupId=${ANGELS_CLASS_GROUP_ID}`);
+
+        // Get the first student row and find the modal button
+        cy.get("#sundayschool tbody tr").first().within(() => {
+            // Get the data-target attribute from the info button
+            cy.get("button[data-target^='#studentModal-']").first().then(($btn) => {
+                const modalTarget = $btn.attr("data-target");
+
+                // Click the button to open modal
+                cy.wrap($btn).click();
+
+                // Verify the modal is visible
+                cy.get(modalTarget).should("be.visible");
+                cy.get(`${modalTarget} .modal-title`).should("exist");
+                cy.get(`${modalTarget} .modal-body`).should("contain", "Student Information");
+                cy.get(`${modalTarget} .modal-body`).should("contain", "Parents/Guardians");
+            });
+        });
+    });
 });
