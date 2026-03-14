@@ -318,6 +318,7 @@ class Menu
     {
         $menu = new MenuItem(gettext('Admin'), '', true, 'fa-tools');
         $menu->addSubMenu(new MenuItem(gettext('Admin Dashboard'), 'admin/', $isAdmin, 'fa-tachometer-alt'));
+        $menu->addSubMenu(new MenuItem(gettext('Church Information'), 'admin/system/church-info', $isAdmin, 'fa-church'));
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-cog'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-cog'));
         $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));
