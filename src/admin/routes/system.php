@@ -243,6 +243,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'iChurchLongitude' => SystemConfig::getValue('iChurchLongitude'),
             'sTimeZone'        => SystemConfig::getValue('sTimeZone'),
             'sChurchWebSite'   => SystemConfig::getValue('sChurchWebSite'),
+            'sLanguage'        => SystemConfig::getValue('sLanguage'),
         ];
 
         $pageArgs = [
@@ -262,25 +263,53 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         // Body fields have already been sanitized by InputSanitizationMiddleware
         $body = $request->getParsedBody();
 
-        $churchName = trim($body['sChurchName'] ?? '');
+        $churchName    = trim($body['sChurchName'] ?? '');
+        $churchAddress = trim($body['sChurchAddress'] ?? '');
+        $churchCity    = trim($body['sChurchCity'] ?? '');
+        $churchState   = trim($body['sChurchState'] ?? '');
+        $churchZip     = trim($body['sChurchZip'] ?? '');
+        $churchCountry = trim($body['sChurchCountry'] ?? '');
+        $churchPhone   = trim($body['sChurchPhone'] ?? '');
+        $churchEmail   = trim($body['sChurchEmail'] ?? '');
 
+        // Validation: Required fields
+        $validationError = '';
         if (empty($churchName)) {
+            $validationError = gettext('Church name is required.');
+        } elseif (empty($churchAddress)) {
+            $validationError = gettext('Street address is required.');
+        } elseif (empty($churchCity)) {
+            $validationError = gettext('City is required.');
+        } elseif (empty($churchState)) {
+            $validationError = gettext('State is required.');
+        } elseif (empty($churchZip)) {
+            $validationError = gettext('ZIP code is required.');
+        } elseif (empty($churchCountry)) {
+            $validationError = gettext('Country is required.');
+        } elseif (empty($churchPhone)) {
+            $validationError = gettext('Phone number is required.');
+        } elseif (empty($churchEmail)) {
+            $validationError = gettext('Email address is required.');
+        }
+
+        if (!empty($validationError)) {
             // Re-render with validation error via the system-wide notify
             $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
             $churchInfo = [
                 'sChurchName'      => $churchName,
-                'sChurchAddress'   => $body['sChurchAddress'] ?? '',
-                'sChurchCity'      => $body['sChurchCity'] ?? '',
-                'sChurchState'     => $body['sChurchState'] ?? '',
-                'sChurchZip'       => $body['sChurchZip'] ?? '',
-                'sChurchCountry'   => $body['sChurchCountry'] ?? '',
-                'sChurchPhone'     => $body['sChurchPhone'] ?? '',
-                'sChurchEmail'     => $body['sChurchEmail'] ?? '',
+                'sChurchAddress'   => $churchAddress,
+                'sChurchCity'      => $churchCity,
+                'sChurchState'     => $churchState,
+                'sChurchZip'       => $churchZip,
+                'sChurchCountry'   => $churchCountry,
+                'sChurchPhone'     => $churchPhone,
+                'sChurchEmail'     => $churchEmail,
                 'iChurchLatitude'  => SystemConfig::getValue('iChurchLatitude'),
                 'iChurchLongitude' => SystemConfig::getValue('iChurchLongitude'),
                 'sTimeZone'        => $body['sTimeZone'] ?? '',
                 'sChurchWebSite'   => $body['sChurchWebSite'] ?? '',
+                'sLanguage'        => $body['sLanguage'] ?? '',
             ];
 
             $pageArgs = [
@@ -289,19 +318,19 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 'churchInfo'         => $churchInfo,
                 'countries'          => Countries::getNames(),
                 'timezones'          => timezone_identifiers_list(),
-                'sGlobalMessage'     => gettext('Church name is required.'),
+                'sGlobalMessage'     => $validationError,
                 'sGlobalMessageClass' => 'danger',
-                'validationError'    => gettext('Church name is required.'),
+                'validationError'    => $validationError,
             ];
 
             return $renderer->render($response->withStatus(422), 'church-info.php', $pageArgs);
         }
 
-        $address   = $body['sChurchAddress'] ?? '';
-        $city      = $body['sChurchCity'] ?? '';
-        $state     = $body['sChurchState'] ?? '';
-        $zip       = $body['sChurchZip'] ?? '';
-        $country   = $body['sChurchCountry'] ?? '';
+        $address = $churchAddress;
+        $city    = $churchCity;
+        $state   = $churchState;
+        $zip     = $churchZip;
+        $country = $churchCountry;
 
         // Always re-geocode from address using GeoUtils (Nominatim / OpenStreetMap,
         // no API key required). Coordinates are not exposed in the form — they are
@@ -328,6 +357,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('iChurchLongitude', $longitude);
         SystemConfig::setValue('sTimeZone', $body['sTimeZone'] ?? '');
         SystemConfig::setValue('sChurchWebSite', $body['sChurchWebSite'] ?? '');
+        SystemConfig::setValue('sLanguage', $body['sLanguage'] ?? 'en_US');
 
         // Flash success via the system-wide notify
         $_SESSION['sGlobalMessage']     = gettext('Church information saved successfully.');
@@ -347,6 +377,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sChurchEmail'   => 'text',
         'sTimeZone'      => 'text',
         'sChurchWebSite' => 'text',
+        'sLanguage'      => 'text',
     ]));
 
 });

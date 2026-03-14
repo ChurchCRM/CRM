@@ -18,38 +18,24 @@ $validationError     = $validationError ?? '';
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="church-info-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="basic-tab"
+                        <a class="nav-link" id="basic-tab"
                            data-toggle="tab" href="#basic" role="tab"
                            aria-controls="basic" aria-selected="true">
-                            <i class="fa-solid fa-church mr-1"></i><?= gettext('Basic') ?>
+                            <i class="fa-solid fa-church mr-1"></i><?= gettext('Basic Information') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="location-tab"
                            data-toggle="tab" href="#location" role="tab"
                            aria-controls="location" aria-selected="false">
-                            <i class="fa-solid fa-map-marker-alt mr-1"></i><?= gettext('Location') ?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="contact-tab"
-                           data-toggle="tab" href="#contact" role="tab"
-                           aria-controls="contact" aria-selected="false">
-                            <i class="fa-solid fa-envelope mr-1"></i><?= gettext('Contact') ?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="map-tab"
-                           data-toggle="tab" href="#map" role="tab"
-                           aria-controls="map" aria-selected="false">
-                            <i class="fa-solid fa-globe mr-1"></i><?= gettext('Map') ?>
+                            <i class="fa-solid fa-map mr-1"></i><?= gettext('Location & Map') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="display-tab"
                            data-toggle="tab" href="#display" role="tab"
                            aria-controls="display" aria-selected="false">
-                            <i class="fa-solid fa-desktop mr-1"></i><?= gettext('Display') ?>
+                            <i class="fa-solid fa-desktop mr-1"></i><?= gettext('Display Preview') ?>
                         </a>
                     </li>
                 </ul>
@@ -60,9 +46,9 @@ $validationError     = $validationError ?? '';
                       id="church-info-form">
                     <div class="tab-content" id="church-info-tab-content">
 
-                        <!-- Tab 1: Basic Information -->
-                        <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
-                            <h5 class="mb-3"><?= gettext('Basic Information') ?></h5>
+                        <!-- Tab 1: Basic Information & Contact -->
+                        <div class="tab-pane fade" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                            <h5 class="mb-4"><?= gettext('Basic Information') ?></h5>
 
                             <div class="form-group">
                                 <label for="sChurchName">
@@ -98,102 +84,143 @@ $validationError     = $validationError ?? '';
                                     <?= gettext('Optional. URL for your church website.') ?>
                                 </small>
                             </div>
+
+                            <hr class="my-4">
+                            <h5 class="mb-3"><?= gettext('Contact Information') ?></h5>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="sChurchPhone">
+                                        <?= gettext('Phone Number') ?>
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="tel"
+                                           class="form-control"
+                                           id="sChurchPhone"
+                                           name="sChurchPhone"
+                                           value="<?= InputUtils::escapeHTML($churchInfo['sChurchPhone']) ?>"
+                                           maxlength="30"
+                                           placeholder="(555) 555-5555"
+                                           required>
+                                    <small class="form-text text-muted">
+                                        <?= gettext('Main contact phone number for the church.') ?>
+                                    </small>
+                                </div>
+
+                                <div class="form-group col-md-6">
+                                    <label for="sChurchEmail">
+                                        <?= gettext('Email Address') ?>
+                                        <span class="text-danger">*</span>
+                                    </label>
+                                    <input type="email"
+                                           class="form-control"
+                                           id="sChurchEmail"
+                                           name="sChurchEmail"
+                                           value="<?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?>"
+                                           maxlength="200"
+                                           placeholder="info@yourchurch.org"
+                                           required>
+                                    <small class="form-text text-muted">
+                                        <?= gettext('Main contact email for church communications.') ?>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+                            <h5 class="mb-3"><?= gettext('Language & Localization') ?></h5>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="sLanguage"><?= gettext('Language') ?></label>
+                                    <select class="form-control select2" id="sLanguage" name="sLanguage" style="width: 100%;">
+                                        <?php
+                                        $supportedLocales = json_decode(file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json'), true);
+                                        foreach ($supportedLocales as $locale => $localeData):
+                                            $label = gettext($locale);
+                                            $value = $localeData['locale'];
+                                        ?>
+                                        <option value="<?= InputUtils::escapeHTML($value) ?>"
+                                            <?= ($churchInfo['sLanguage'] === $value) ? 'selected' : '' ?>>
+                                            <?= InputUtils::escapeHTML($label) ?> [<?= InputUtils::escapeHTML($value) ?>]
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <small class="form-text text-muted">
+                                        <?= gettext('System language for the church. Affects date formats, phone formats, and other localizations.') ?>
+                                    </small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="sTimeZone"><?= gettext('Time Zone') ?></label>
+                                    <select class="form-control select2" id="sTimeZone" name="sTimeZone" style="width: 100%;">
+                                        <?php foreach ($timezones as $tz): ?>
+                                        <option value="<?= InputUtils::escapeHTML($tz) ?>"
+                                            <?= ($churchInfo['sTimeZone'] === $tz) ? 'selected' : '' ?>>
+                                            <?= InputUtils::escapeHTML($tz) ?>
+                                        </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <small class="form-text text-muted">
+                                        <?= gettext('Used for scheduling events and reporting times.') ?>
+                                    </small>
+                                </div>
+                            </div>
                         </div>
 
-                        <!-- Tab 2: Location -->
+                        <!-- Tab 2: Location & Map -->
                         <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="location-tab">
-                            <h5 class="mb-3"><?= gettext('Location') ?></h5>
+                            <h5 class="mb-4"><?= gettext('Location Information') ?></h5>
 
                             <div class="form-group">
-                                <label for="sChurchAddress"><?= gettext('Street Address') ?></label>
+                                <label for="sChurchAddress">
+                                    <?= gettext('Street Address') ?>
+                                    <span class="text-danger">*</span>
+                                </label>
                                 <input type="text"
                                        class="form-control"
                                        id="sChurchAddress"
                                        name="sChurchAddress"
                                        value="<?= InputUtils::escapeHTML($churchInfo['sChurchAddress']) ?>"
-                                       maxlength="200">
+                                       maxlength="200"
+                                       required>
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-5">
-                                    <label for="sChurchCity"><?= gettext('City') ?></label>
+                                <div class="form-group col-md-4">
+                                    <label for="sChurchCity"><?= gettext('City') ?> <span class="text-danger">*</span></label>
                                     <input type="text"
                                            class="form-control"
                                            id="sChurchCity"
                                            name="sChurchCity"
                                            value="<?= InputUtils::escapeHTML($churchInfo['sChurchCity']) ?>"
-                                           maxlength="100">
+                                           maxlength="100"
+                                           required>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="sChurchState"><?= gettext('State / Province') ?></label>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="sChurchState"
-                                           name="sChurchState"
-                                           value="<?= InputUtils::escapeHTML($churchInfo['sChurchState']) ?>"
-                                           maxlength="50">
+                                    <label for="sChurchState"><?= gettext('State') ?> <span class="text-danger">*</span></label>
+                                    <div id="sChurchStateContainer" style="width: 100%;"
+                                         data-user-selected-state="<?= InputUtils::escapeHTML($churchInfo['sChurchState']) ?>">
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="sChurchZip"><?= gettext('ZIP / Postal Code') ?></label>
+                                <div class="form-group col-md-2">
+                                    <label for="sChurchZip"><?= gettext('ZIP Code') ?> <span class="text-danger">*</span></label>
                                     <input type="text"
                                            class="form-control"
                                            id="sChurchZip"
                                            name="sChurchZip"
                                            value="<?= InputUtils::escapeHTML($churchInfo['sChurchZip']) ?>"
-                                           maxlength="20">
+                                           maxlength="20"
+                                           required>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="sChurchCountry"><?= gettext('Country') ?> <span class="text-danger">*</span></label>
+                                    <select class="form-control" id="sChurchCountry" name="sChurchCountry" style="width: 100%;"
+                                            data-user-selected="<?= InputUtils::escapeHTML($churchInfo['sChurchCountry']) ?>">
+                                    </select>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="sChurchCountry"><?= gettext('Country') ?></label>
-                                <select class="form-control" id="sChurchCountry" name="sChurchCountry">
-                                    <option value=""><?= gettext('— Select Country —') ?></option>
-                                    <?php foreach ($countries as $code => $name): ?>
-                                    <option value="<?= InputUtils::escapeHTML($code) ?>"
-                                        <?= ($churchInfo['sChurchCountry'] === $code) ? 'selected' : '' ?>>
-                                        <?= InputUtils::escapeHTML($name) ?>
-                                    </option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Tab 3: Contact Information -->
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                            <h5 class="mb-3"><?= gettext('Contact Information') ?></h5>
-
-                            <div class="form-group">
-                                <label for="sChurchPhone"><?= gettext('Phone Number') ?></label>
-                                <input type="tel"
-                                       class="form-control"
-                                       id="sChurchPhone"
-                                       name="sChurchPhone"
-                                       value="<?= InputUtils::escapeHTML($churchInfo['sChurchPhone']) ?>"
-                                       maxlength="30"
-                                       placeholder="(555) 555-5555">
-                                <small class="form-text text-muted">
-                                    <?= gettext('Main contact phone number for the church.') ?>
-                                </small>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="sChurchEmail"><?= gettext('Email Address') ?></label>
-                                <input type="email"
-                                       class="form-control"
-                                       id="sChurchEmail"
-                                       name="sChurchEmail"
-                                       value="<?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?>"
-                                       maxlength="200"
-                                       placeholder="info@yourchurch.org">
-                                <small class="form-text text-muted">
-                                    <?= gettext('Main contact email for church communications.') ?>
-                                </small>
-                            </div>
-                        </div>
-
-                        <!-- Tab 4: Map & Timezone -->
-                        <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab">
-                            <h5 class="mb-3"><?= gettext('Map &amp; Timezone') ?></h5>
+                            <hr class="my-4">
+                            <h5 class="mb-3"><?= gettext('Map') ?></h5>
 
                             <?php
                             $hasCoords = !empty($churchInfo['iChurchLatitude'])
@@ -222,62 +249,15 @@ $validationError     = $validationError ?? '';
                                 ]) ?>;
                             </script>
                             <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
-                            <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                            document.addEventListener('DOMContentLoaded', function () {
-                                var cfg = window.CRM.churchMapConfig;
-                                var churchMap = null;
-                                // Initialise only when the Map tab is visible; Leaflet needs a sized container.
-                                // Guard against re-initialisation when the tab is shown more than once.
-                                function initChurchMap() {
-                                    if (churchMap !== null) {
-                                        return;
-                                    }
-                                    churchMap = L.map('church-location-map', {
-                                        scrollWheelZoom: false,
-                                        zoomControl: true
-                                    }).setView([cfg.lat, cfg.lng], 15);
-                                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                        maxZoom: 19,
-                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
-                                    }).addTo(churchMap);
-                                    L.marker([cfg.lat, cfg.lng])
-                                        .bindPopup('<strong>' + cfg.name + '</strong>')
-                                        .addTo(churchMap);
-                                }
-                                var mapTab = document.getElementById('map-tab');
-                                if (mapTab) {
-                                    mapTab.addEventListener('shown.bs.tab', initChurchMap);
-                                    // If the Map tab is already active on page load, init immediately.
-                                    if (mapTab.classList.contains('active')) {
-                                        initChurchMap();
-                                    }
-                                }
-                            });
-                            </script>
                             <?php else: ?>
                             <div class="alert alert-info">
                                 <i class="fa-solid fa-location-dot mr-2"></i>
                                 <?= gettext('A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required.') ?>
                             </div>
                             <?php endif; ?>
-
-                            <div class="form-group">
-                                <label for="sTimeZone"><?= gettext('Time Zone') ?></label>
-                                <select class="form-control" id="sTimeZone" name="sTimeZone">
-                                    <?php foreach ($timezones as $tz): ?>
-                                    <option value="<?= InputUtils::escapeHTML($tz) ?>"
-                                        <?= ($churchInfo['sTimeZone'] === $tz) ? 'selected' : '' ?>>
-                                        <?= InputUtils::escapeHTML($tz) ?>
-                                    </option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <small class="form-text text-muted">
-                                    <?= gettext('Used for scheduling events and reporting times.') ?>
-                                </small>
-                            </div>
                         </div>
 
-                        <!-- Tab 5: Display -->
+                        <!-- Tab 3: Display Preview -->
                         <div class="tab-pane fade" id="display" role="tabpanel" aria-labelledby="display-tab">
                             <h5 class="mb-3"><?= gettext('Display Preview') ?></h5>
                             <p class="text-muted">
@@ -320,7 +300,7 @@ $validationError     = $validationError ?? '';
                             <?php if (empty($churchInfo['sChurchName'])): ?>
                             <div class="alert alert-warning mt-3">
                                 <i class="fa-solid fa-triangle-exclamation mr-2"></i>
-                                <?= gettext('Church name is required. Please complete the Basic tab.') ?>
+                                <?= gettext('Church name is required. Please complete the Basic Information tab.') ?>
                             </div>
                             <?php endif; ?>
                         </div>
@@ -348,5 +328,8 @@ $validationError     = $validationError ?? '';
         </div><!-- /.card -->
     </div>
 </div>
+
+<!-- Church Info page JavaScript - handles country/state sync and map initialization -->
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/church-info.min.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

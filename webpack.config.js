@@ -18,6 +18,7 @@ module.exports = {
     backup: './webpack/backup',
     restore: './webpack/restore',
     'admin-dashboard': './webpack/admin-dashboard',
+    'church-info': './webpack/church-info',
     'system-settings-panel': './webpack/system-settings-panel',
     'kiosk-registration-closed': './webpack/kiosk-registration-closed',
     kiosk: './webpack/kiosk',

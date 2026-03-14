@@ -249,6 +249,58 @@ npm run docker:test:rebuild     # Full rebuild with new images
 npm run docker:test:down        # Remove containers and volumes
 ```
 
+## CRITICAL: Keep Tests in Sync with Code Changes
+
+### Test Updates Are Part of the Commit
+
+**Whenever you change code that has tests, update those tests in the same commit.** Tests are not optional follow-up work — they're part of the feature.
+
+**Examples of changes that REQUIRE test updates:**
+
+1. **Required fields added/removed** — Update validation tests
+   ```javascript
+   // ✅ CORRECT: When adding required field City to a form
+   it("should require City field", () => {
+       cy.get("#sChurchCity").should("have.attr", "required");
+   });
+   ```
+
+2. **API response schema changed** — Update response assertion tests
+   ```javascript
+   // ✅ CORRECT: When API adds new 'status' field
+   cy.makeAdminAPICall("GET", "/api/users/1", null, 200).then((res) => {
+       expect(res.body).to.have.property('status');  // Updated
+   });
+   ```
+
+3. **Form field layout/labels changed** — Update element existence and positioning tests
+   ```javascript
+   // ✅ CORRECT: When moving form fields to a different tab or row
+   cy.get("#location-tab").click();
+   cy.get("#sChurchCity").should("exist");
+   ```
+
+4. **Dropdown/select options changed** — Update selector tests
+   ```javascript
+   // ✅ CORRECT: When dropdown now uses API instead of hardcoded data
+   cy.get("#sChurchState").find("option").should("have.length.greaterThan", 50);
+   ```
+
+### Workflow: Code Change → Test Update → Commit
+
+1. **Make the code change**
+2. **Run the existing tests** — They will likely fail
+3. **Update tests to match the new behavior** — Keep the test intent the same, just update assertions/selectors
+4. **Run tests again** — Verify they pass
+5. **Review both code AND test changes** before commit
+6. **Commit both together**
+
+**DO NOT:**
+- ❌ Commit code changes without updating failing tests
+- ❌ Add `skip()` or `.only()` to hide failing tests
+- ❌ Commit commented-out test code
+- ❌ Remove tests to make the build pass
+
 ## Test Requirements Before Committing
 
 **ALWAYS add API tests when creating new API endpoints:**

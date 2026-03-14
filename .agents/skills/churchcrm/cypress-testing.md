@@ -355,6 +355,90 @@ npm run docker:test:logs
 npm run docker:test:down
 ```
 
+## CRITICAL: Keep Tests in Sync with Code Changes <!-- learned: 2026-03-14 -->
+
+### Tests Are Part of Every Feature
+
+When you modify code, update the corresponding tests **in the same commit**. Tests are not optional follow-up work.
+
+### Common Test Updates Required
+
+#### 1. Form Field Changes
+**Situation:** You add a required field to a form.
+**Test update needed:** Add assertion that field has `required` attribute and that form validation fails without it.
+
+```typescript
+// BEFORE: Test checks only Name and Email are required
+it("should have required fields marked", () => {
+    cy.get("#sChurchName").should("have.attr", "required");
+    cy.get("#sChurchEmail").should("have.attr", "required");
+});
+
+// AFTER: Add City as required field
+it("should have required fields marked", () => {
+    cy.get("#sChurchName").should("have.attr", "required");
+    cy.get("#sChurchCity").should("have.attr", "required");  // NEW
+    cy.get("#sChurchEmail").should("have.attr", "required");
+});
+```
+
+#### 2. API Response Schema Changes
+**Situation:** API endpoint adds or removes a field.
+**Test update needed:** Update assertion to check for new field.
+
+```typescript
+// BEFORE: Check response has 'name' and 'email'
+cy.get('@response').then(res => {
+    expect(res.body).to.have.property('name');
+    expect(res.body).to.have.property('email');
+});
+
+// AFTER: Add check for new 'status' field
+cy.get('@response').then(res => {
+    expect(res.body).to.have.property('name');
+    expect(res.body).to.have.property('status');  // NEW
+    expect(res.body).to.have.property('email');
+});
+```
+
+#### 3. Element Selectors Change
+**Situation:** Form layout changes (fields move to different tab, container, or ID changes).
+**Test update needed:** Update selectors to find elements in new location.
+
+```typescript
+// BEFORE: City field was on Basic tab
+cy.get("#sChurchCity").should("exist");
+
+// AFTER: City field moved to Location tab
+cy.get("#location-tab").click();
+cy.get("#sChurchCity").should("exist");  // Updated selector path
+```
+
+#### 4. Dropdown Data Source Changed
+**Situation:** You change from hardcoded options to API-driven.
+**Test update needed:** Update how dropdown is tested (wait for API call, check for async data).
+
+```typescript
+// BEFORE: Hardcoded state options
+cy.get("#sChurchState").find("option").should("have.length", 51);
+
+// AFTER: API-driven states (need timeout for fetch)
+cy.get("#sChurchCountry").select("US");
+cy.get("#sChurchStateContainer")
+    .find("select", { timeout: 5000 })  // Wait for API
+    .should("exist");
+cy.get("#sChurchState").find("option").should("have.length.greaterThan", 50);
+```
+
+### Commit Checklist for Code Changes
+
+- [ ] Code change is complete
+- [ ] Run tests: `npm run test:ui -- --spec "path/to/test.spec.js"`
+- [ ] Did tests fail? Update them to match new behavior
+- [ ] Run tests again — all pass?
+- [ ] Review **both** code AND test changes in git diff
+- [ ] Commit together: code + test updates
+
 ## Test File Best Practices
 
 ### Clean Test Files
