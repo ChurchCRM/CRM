@@ -202,7 +202,7 @@ $validationError     = $validationError ?? '';
                                     </div>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="sChurchZip"><?= gettext('ZIP Code') ?> <span class="text-danger">*</span></label>
+                                    <label for="sChurchZip"><?= gettext('Zip Code') ?> <span class="text-danger">*</span></label>
                                     <input type="text"
                                            class="form-control"
                                            id="sChurchZip"

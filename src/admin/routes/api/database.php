@@ -170,7 +170,7 @@ function exportChMeetings(Request $request, Response $response, array $args): Re
         'Address Line 2',
         'City',
         'State',
-        'ZIP Code',
+        'Zip Code',
         'Notes',
         'Join Date',
         'Family Id',
