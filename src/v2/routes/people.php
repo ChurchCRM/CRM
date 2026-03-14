@@ -90,8 +90,10 @@ function listPeople(Request $request, Response $response, array $args): Response
     $members->find();
 
     $filterByClsId = '';
+    $filterByClsOptionId = '';
     if (isset($_GET['Classification'])) {
         $id = InputUtils::filterInt($_GET['Classification']);
+        $filterByClsOptionId = (string) $id;
         $option = ListOptionQuery::create()->filterById(1)->filterByOptionId($id)->findOne();
         if ($id === 0) {
             $filterByClsId = gettext('Unassigned');
@@ -103,8 +105,10 @@ function listPeople(Request $request, Response $response, array $args): Response
     }
 
     $filterByFmrId = '';
+    $filterByFmrOptionId = '';
     if (isset($_GET['FamilyRole'])) {
         $id = InputUtils::filterInt($_GET['FamilyRole']);
+        $filterByFmrOptionId = (string) $id;
         $option = ListOptionQuery::create()->filterById(2)->filterByOptionId($id)->findOne();
 
         if ($id === 0) {
@@ -143,7 +147,9 @@ function listPeople(Request $request, Response $response, array $args): Response
         'sRootPath'                       => SystemURLs::getRootPath(),
         'members'                         => $members,
         'filterByClsId'                   => $filterByClsId,
+        'filterByClsOptionId'             => $filterByClsOptionId,
         'filterByFmrId'                   => $filterByFmrId,
+        'filterByFmrOptionId'             => $filterByFmrOptionId,
         'filterByGender'                  => $filterByGender,
         'familyActiveStatus'              => $familyActiveStatus,
         // no precomputed familyStatusMap: templates will call Family::isActive()
